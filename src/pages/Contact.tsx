@@ -1,39 +1,40 @@
 const Contact = () => (
   <div className="container py-16">
     <div className="mx-auto max-w-2xl">
-      <h1 className="mb-2 text-3xl font-bold text-foreground">Contact Us</h1>
+      <h1 className="mb-2 text-3xl font-bold text-foreground">Get in Touch</h1>
       <p className="mb-8 text-muted-foreground">
-        Have questions, feedback, or partnership inquiries? We'd love to hear from you.
+        Have ideas, found a bug, or want to contribute a benchmark? Reach out to us
+        at{" "}
+        <a href="mailto:contact@intlayer.org" className="text-primary hover:underline">
+          contact@intlayer.org
+        </a>
+        .
       </p>
 
       <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
         <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label className="mb-1 block text-sm font-medium text-foreground">First Name</label>
-            <input className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring" placeholder="John" />
+            <label className="mb-1 block text-sm font-medium text-foreground">Name</label>
+            <input className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring" placeholder="Your name" />
           </div>
           <div>
-            <label className="mb-1 block text-sm font-medium text-foreground">Last Name</label>
-            <input className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring" placeholder="Doe" />
+            <label className="mb-1 block text-sm font-medium text-foreground">Email</label>
+            <input type="email" className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring" placeholder="you@example.com" />
           </div>
         </div>
         <div>
-          <label className="mb-1 block text-sm font-medium text-foreground">Email Address</label>
-          <input type="email" className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring" placeholder="john@example.com" />
-        </div>
-        <div>
-          <label className="mb-1 block text-sm font-medium text-foreground">Subject</label>
+          <label className="mb-1 block text-sm font-medium text-foreground">Topic</label>
           <select className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring">
-            <option>General Inquiry</option>
             <option>Bug Report</option>
-            <option>Feature Request</option>
-            <option>Partnership</option>
-            <option>Enterprise Sales</option>
+            <option>New Benchmark Idea</option>
+            <option>Methodology Question</option>
+            <option>Contribution</option>
+            <option>Other</option>
           </select>
         </div>
         <div>
           <label className="mb-1 block text-sm font-medium text-foreground">Message</label>
-          <textarea rows={5} className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring" placeholder="Tell us what's on your mind..." />
+          <textarea rows={5} className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring" placeholder="Describe your question or idea..." />
         </div>
         <button className="rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity">
           Send Message

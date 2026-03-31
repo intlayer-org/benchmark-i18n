@@ -1,8 +1,7 @@
 const footerLinks = [
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms of Service", href: "#" },
-  { label: "Cookie Settings", href: "#" },
-  { label: "Accessibility", href: "#" },
+  { label: "GitHub", href: "#" },
+  { label: "Methodology", href: "#" },
+  { label: "Contributing", href: "#" },
 ];
 
 export const Footer = () => (
@@ -12,12 +11,12 @@ export const Footer = () => (
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">i18n Benchmark</h3>
           <p className="text-sm text-muted-foreground">
-            A comprehensive benchmark application for comparing internationalization solutions
-            across different frameworks and libraries.
+            An open-source test application for measuring the real-world impact of
+            internationalization libraries on bundle size, loading time, and app reactivity.
           </p>
         </div>
         <div>
-          <h3 className="mb-2 text-sm font-semibold text-foreground">Quick Links</h3>
+          <h3 className="mb-2 text-sm font-semibold text-foreground">Resources</h3>
           <ul className="space-y-1">
             {footerLinks.map((l) => (
               <li key={l.label}>
@@ -30,12 +29,11 @@ export const Footer = () => (
         </div>
         <div>
           <h3 className="mb-2 text-sm font-semibold text-foreground">Contact</h3>
-          <p className="text-sm text-muted-foreground">hello@i18nbench.dev</p>
-          <p className="text-sm text-muted-foreground">123 Developer Street, San Francisco, CA 94102</p>
+          <p className="text-sm text-muted-foreground">contact@intlayer.org</p>
         </div>
       </div>
       <div className="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">
-        © 2026 i18n Benchmark. All rights reserved. Built with React, Vite & TanStack Router.
+        i18n Benchmark — Open-source project. Built with React, Vite & React Router.
       </div>
     </div>
   </footer>
