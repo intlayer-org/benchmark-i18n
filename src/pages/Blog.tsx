@@ -7,8 +7,11 @@ const posts = [
   { title: "Benchmark Methodology: How We Test", date: "January 20, 2026", excerpt: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.", category: "Meta" },
 ];
 
+import MockBanner from "@/components/MockBanner";
+
 const Blog = () => (
   <div className="container py-16">
+    <MockBanner />
     <h1 className="mb-2 text-3xl font-bold text-foreground">Blog</h1>
     <p className="mb-10 text-muted-foreground">Insights, tutorials, and analysis from the i18n community.</p>
 

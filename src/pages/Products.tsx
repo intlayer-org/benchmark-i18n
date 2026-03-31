@@ -7,8 +7,11 @@ const products = [
   { name: "Bundle Optimizer", desc: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.", price: "$49/mo" },
 ];
 
+import MockBanner from "@/components/MockBanner";
+
 const Products = () => (
   <div className="container py-16">
+    <MockBanner />
     <h1 className="mb-2 text-3xl font-bold text-foreground">Products</h1>
     <p className="mb-10 text-muted-foreground">
       Tools and services to streamline your internationalization workflow.

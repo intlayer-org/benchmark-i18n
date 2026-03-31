@@ -7,8 +7,11 @@ const members = [
   { name: "Elena Kowalski", role: "Community Manager", bio: "Manages community contributions, partnerships, and events. Background in open source governance." },
 ];
 
+import MockBanner from "@/components/MockBanner";
+
 const Team = () => (
   <div className="container py-16">
+    <MockBanner />
     <h1 className="mb-2 text-3xl font-bold text-foreground">Our Team</h1>
     <p className="mb-10 text-muted-foreground">
       Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools.
