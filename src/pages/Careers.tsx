@@ -1,3 +1,5 @@
+import MockBanner from "@/components/MockBanner";
+
 const openings = [
   { title: "Senior Frontend Engineer", location: "Remote", type: "Full-time", dept: "Engineering", desc: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite." },
   { title: "Backend Engineer", location: "Remote", type: "Full-time", dept: "Engineering", desc: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily." },

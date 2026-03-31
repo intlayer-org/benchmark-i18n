@@ -20,8 +20,11 @@ const tiers = [
   },
 ];
 
+import MockBanner from "@/components/MockBanner";
+
 const Pricing = () => (
   <div className="container py-16">
+    <MockBanner />
     <div className="mb-12 text-center">
       <h1 className="mb-3 text-3xl font-bold text-foreground">Simple, Transparent Pricing</h1>
       <p className="text-muted-foreground">Choose the plan that fits your team. No hidden fees.</p>
