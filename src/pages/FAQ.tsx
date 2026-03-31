@@ -9,8 +9,11 @@ const faqs = [
   { q: "How can I contribute?", a: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details." },
 ];
 
+import MockBanner from "@/components/MockBanner";
+
 const FAQ = () => (
   <div className="container py-16">
+    <MockBanner />
     <h1 className="mb-2 text-3xl font-bold text-foreground">Frequently Asked Questions</h1>
     <p className="mb-10 text-muted-foreground">Everything you need to know about i18n Benchmark.</p>
 

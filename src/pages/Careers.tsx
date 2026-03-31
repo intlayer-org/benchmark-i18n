@@ -1,3 +1,5 @@
+import MockBanner from "@/components/MockBanner";
+
 const openings = [
   { title: "Senior Frontend Engineer", location: "Remote", type: "Full-time", dept: "Engineering", desc: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite." },
   { title: "Backend Engineer", location: "Remote", type: "Full-time", dept: "Engineering", desc: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily." },
@@ -8,6 +10,7 @@ const openings = [
 
 const Careers = () => (
   <div className="container py-16">
+    <MockBanner />
     <h1 className="mb-2 text-3xl font-bold text-foreground">Careers</h1>
     <p className="mb-4 text-muted-foreground">
       Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning.

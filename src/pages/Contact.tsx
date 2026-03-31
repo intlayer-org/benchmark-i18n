@@ -1,5 +1,8 @@
+import MockBanner from "@/components/MockBanner";
+
 const Contact = () => (
   <div className="container py-16">
+    <MockBanner />
     <div className="mx-auto max-w-2xl">
       <h1 className="mb-2 text-3xl font-bold text-foreground">Get in Touch</h1>
       <p className="mb-8 text-muted-foreground">
