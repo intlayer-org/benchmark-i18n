@@ -2,16 +2,16 @@ import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
 const CareersHeader = lazy(
-  () => import("../components/pages/careers/CareersHeader")
+  () => import("../../components/pages/careers/CareersHeader"),
 );
 const CareersBenefits = lazy(
-  () => import("../components/pages/careers/CareersBenefits")
+  () => import("../../components/pages/careers/CareersBenefits"),
 );
 const OpenPositions = lazy(
-  () => import("../components/pages/careers/OpenPositions")
+  () => import("../../components/pages/careers/OpenPositions"),
 );
 
-export const Route = createFileRoute("/careers")({
+export const Route = createFileRoute("/$locale/careers")({
   component: Careers,
 });
 
@@ -26,7 +26,9 @@ function Careers() {
         <CareersBenefits />
       </Suspense>
 
-      <Suspense fallback={<div className="h-[600px] animate-pulse bg-muted/20" />}>
+      <Suspense
+        fallback={<div className="h-[600px] animate-pulse bg-muted/20" />}
+      >
         <OpenPositions />
       </Suspense>
     </div>

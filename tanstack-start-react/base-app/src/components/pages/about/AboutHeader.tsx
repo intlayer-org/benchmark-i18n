@@ -1,4 +1,7 @@
+import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
+
 export default function AboutHeader() {
+  usePerformanceMeasure("AboutHeader");
   return (
     <>
       <h1 className="mb-4 text-3xl font-bold text-foreground">

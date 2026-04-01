@@ -1,10 +1,23 @@
-const footerLinks = [
-  { label: "GitHub", href: "https://github.com/intlayer-org/benchmark-i18n" },
-  { label: "Methodology", href: "/about" },
-  { label: "Contributing", href: "/contact" },
-];
+import { Link, useParams } from "@tanstack/react-router";
 
 export default function Footer() {
+  const params = useParams({ strict: false });
+  const currentLocale = (params as any).locale ?? "en";
+
+  const footerLinks = [
+    {
+      label: "GitHub",
+      href: "https://github.com/intlayer-org/benchmark-i18n",
+      isInternal: false,
+    },
+    { label: "Methodology", to: "/$locale/about" as const, isInternal: true },
+    {
+      label: "Contributing",
+      to: "/$locale/contact" as const,
+      isInternal: true,
+    },
+  ];
+
   return (
     <footer className="mt-20 border-t border-border bg-card">
       <div className="container py-8">
@@ -24,14 +37,26 @@ export default function Footer() {
               Resources
             </h3>
             <ul className="space-y-1">
-              {footerLinks.map((l) => (
-                <li key={l.label}>
-                  <a
-                    href={l.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {l.label}
-                  </a>
+              {footerLinks.map((linkEl) => (
+                <li key={linkEl.label}>
+                  {linkEl.isInternal ? (
+                    <Link
+                      to={linkEl.to as any}
+                      params={{ locale: currentLocale } as any}
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {linkEl.label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={linkEl.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {linkEl.label}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>

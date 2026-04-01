@@ -1,13 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
-const AboutHeader = lazy(() => import("../components/pages/about/AboutHeader"));
-const AboutGrid = lazy(() => import("../components/pages/about/AboutGrid"));
+const AboutHeader = lazy(
+  () => import("../../components/pages/about/AboutHeader"),
+);
+const AboutGrid = lazy(() => import("../../components/pages/about/AboutGrid"));
 const WhatWeMeasure = lazy(
-  () => import("../components/pages/about/WhatWeMeasure")
+  () => import("../../components/pages/about/WhatWeMeasure"),
 );
 
-export const Route = createFileRoute("/about")({
+export const Route = createFileRoute("/$locale/about")({
   component: About,
 });
 

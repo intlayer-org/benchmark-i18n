@@ -2,22 +2,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
 const SettingsHeader = lazy(
-  () => import("../components/pages/settings/SettingsHeader")
+  () => import("../../components/pages/settings/SettingsHeader"),
 );
 const ProfileSection = lazy(
-  () => import("../components/pages/settings/ProfileSection")
+  () => import("../../components/pages/settings/ProfileSection"),
 );
 const PreferencesSection = lazy(
-  () => import("../components/pages/settings/PreferencesSection")
+  () => import("../../components/pages/settings/PreferencesSection"),
 );
 const ApiAccessSection = lazy(
-  () => import("../components/pages/settings/ApiAccessSection")
+  () => import("../../components/pages/settings/ApiAccessSection"),
 );
 const SettingsFooter = lazy(
-  () => import("../components/pages/settings/SettingsFooter")
+  () => import("../../components/pages/settings/SettingsFooter"),
 );
 
-export const Route = createFileRoute("/settings")({
+export const Route = createFileRoute("/$locale/settings")({
   component: Settings,
 });
 
@@ -30,19 +30,27 @@ function Settings() {
 
       <div className="mx-auto max-w-2xl space-y-8">
         <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-          <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20" />}>
+          <Suspense
+            fallback={<div className="h-48 animate-pulse bg-muted/20" />}
+          >
             <ProfileSection />
           </Suspense>
 
-          <Suspense fallback={<div className="h-64 animate-pulse bg-muted/20" />}>
+          <Suspense
+            fallback={<div className="h-64 animate-pulse bg-muted/20" />}
+          >
             <PreferencesSection />
           </Suspense>
 
-          <Suspense fallback={<div className="h-40 animate-pulse bg-muted/20" />}>
+          <Suspense
+            fallback={<div className="h-40 animate-pulse bg-muted/20" />}
+          >
             <ApiAccessSection />
           </Suspense>
 
-          <Suspense fallback={<div className="h-10 animate-pulse bg-muted/20" />}>
+          <Suspense
+            fallback={<div className="h-10 animate-pulse bg-muted/20" />}
+          >
             <SettingsFooter />
           </Suspense>
         </form>

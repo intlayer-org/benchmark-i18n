@@ -9,222 +9,172 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TeamRouteImport } from './routes/team'
-import { Route as SettingsRouteImport } from './routes/settings'
-import { Route as ProductsRouteImport } from './routes/products'
-import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as FaqRouteImport } from './routes/faq'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CareersRouteImport } from './routes/careers'
-import { Route as BlogRouteImport } from './routes/blog'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
+import { Route as LocaleTeamRouteImport } from './routes/$locale/team'
+import { Route as LocaleSettingsRouteImport } from './routes/$locale/settings'
+import { Route as LocaleProductsRouteImport } from './routes/$locale/products'
+import { Route as LocalePricingRouteImport } from './routes/$locale/pricing'
+import { Route as LocaleFaqRouteImport } from './routes/$locale/faq'
+import { Route as LocaleContactRouteImport } from './routes/$locale/contact'
+import { Route as LocaleCareersRouteImport } from './routes/$locale/careers'
+import { Route as LocaleBlogRouteImport } from './routes/$locale/blog'
+import { Route as LocaleAboutRouteImport } from './routes/$locale/about'
 
-const TeamRoute = TeamRouteImport.update({
-  id: '/team',
-  path: '/team',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SettingsRoute = SettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ProductsRoute = ProductsRouteImport.update({
-  id: '/products',
-  path: '/products',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FaqRoute = FaqRouteImport.update({
-  id: '/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CareersRoute = CareersRouteImport.update({
-  id: '/careers',
-  path: '/careers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocaleIndexRoute = LocaleIndexRouteImport.update({
+  id: '/$locale/',
+  path: '/$locale/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleTeamRoute = LocaleTeamRouteImport.update({
+  id: '/$locale/team',
+  path: '/$locale/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleSettingsRoute = LocaleSettingsRouteImport.update({
+  id: '/$locale/settings',
+  path: '/$locale/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleProductsRoute = LocaleProductsRouteImport.update({
+  id: '/$locale/products',
+  path: '/$locale/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocalePricingRoute = LocalePricingRouteImport.update({
+  id: '/$locale/pricing',
+  path: '/$locale/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleFaqRoute = LocaleFaqRouteImport.update({
+  id: '/$locale/faq',
+  path: '/$locale/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleContactRoute = LocaleContactRouteImport.update({
+  id: '/$locale/contact',
+  path: '/$locale/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleCareersRoute = LocaleCareersRouteImport.update({
+  id: '/$locale/careers',
+  path: '/$locale/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleBlogRoute = LocaleBlogRouteImport.update({
+  id: '/$locale/blog',
+  path: '/$locale/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocaleAboutRoute = LocaleAboutRouteImport.update({
+  id: '/$locale/about',
+  path: '/$locale/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
-  '/careers': typeof CareersRoute
-  '/contact': typeof ContactRoute
-  '/faq': typeof FaqRoute
-  '/pricing': typeof PricingRoute
-  '/products': typeof ProductsRoute
-  '/settings': typeof SettingsRoute
-  '/team': typeof TeamRoute
+  '/$locale/about': typeof LocaleAboutRoute
+  '/$locale/blog': typeof LocaleBlogRoute
+  '/$locale/careers': typeof LocaleCareersRoute
+  '/$locale/contact': typeof LocaleContactRoute
+  '/$locale/faq': typeof LocaleFaqRoute
+  '/$locale/pricing': typeof LocalePricingRoute
+  '/$locale/products': typeof LocaleProductsRoute
+  '/$locale/settings': typeof LocaleSettingsRoute
+  '/$locale/team': typeof LocaleTeamRoute
+  '/$locale/': typeof LocaleIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
-  '/careers': typeof CareersRoute
-  '/contact': typeof ContactRoute
-  '/faq': typeof FaqRoute
-  '/pricing': typeof PricingRoute
-  '/products': typeof ProductsRoute
-  '/settings': typeof SettingsRoute
-  '/team': typeof TeamRoute
+  '/$locale/about': typeof LocaleAboutRoute
+  '/$locale/blog': typeof LocaleBlogRoute
+  '/$locale/careers': typeof LocaleCareersRoute
+  '/$locale/contact': typeof LocaleContactRoute
+  '/$locale/faq': typeof LocaleFaqRoute
+  '/$locale/pricing': typeof LocalePricingRoute
+  '/$locale/products': typeof LocaleProductsRoute
+  '/$locale/settings': typeof LocaleSettingsRoute
+  '/$locale/team': typeof LocaleTeamRoute
+  '/$locale': typeof LocaleIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/about': typeof AboutRoute
-  '/blog': typeof BlogRoute
-  '/careers': typeof CareersRoute
-  '/contact': typeof ContactRoute
-  '/faq': typeof FaqRoute
-  '/pricing': typeof PricingRoute
-  '/products': typeof ProductsRoute
-  '/settings': typeof SettingsRoute
-  '/team': typeof TeamRoute
+  '/$locale/about': typeof LocaleAboutRoute
+  '/$locale/blog': typeof LocaleBlogRoute
+  '/$locale/careers': typeof LocaleCareersRoute
+  '/$locale/contact': typeof LocaleContactRoute
+  '/$locale/faq': typeof LocaleFaqRoute
+  '/$locale/pricing': typeof LocalePricingRoute
+  '/$locale/products': typeof LocaleProductsRoute
+  '/$locale/settings': typeof LocaleSettingsRoute
+  '/$locale/team': typeof LocaleTeamRoute
+  '/$locale/': typeof LocaleIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/about'
-    | '/blog'
-    | '/careers'
-    | '/contact'
-    | '/faq'
-    | '/pricing'
-    | '/products'
-    | '/settings'
-    | '/team'
+    | '/$locale/about'
+    | '/$locale/blog'
+    | '/$locale/careers'
+    | '/$locale/contact'
+    | '/$locale/faq'
+    | '/$locale/pricing'
+    | '/$locale/products'
+    | '/$locale/settings'
+    | '/$locale/team'
+    | '/$locale/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/about'
-    | '/blog'
-    | '/careers'
-    | '/contact'
-    | '/faq'
-    | '/pricing'
-    | '/products'
-    | '/settings'
-    | '/team'
+    | '/$locale/about'
+    | '/$locale/blog'
+    | '/$locale/careers'
+    | '/$locale/contact'
+    | '/$locale/faq'
+    | '/$locale/pricing'
+    | '/$locale/products'
+    | '/$locale/settings'
+    | '/$locale/team'
+    | '/$locale'
   id:
     | '__root__'
     | '/'
-    | '/about'
-    | '/blog'
-    | '/careers'
-    | '/contact'
-    | '/faq'
-    | '/pricing'
-    | '/products'
-    | '/settings'
-    | '/team'
+    | '/$locale/about'
+    | '/$locale/blog'
+    | '/$locale/careers'
+    | '/$locale/contact'
+    | '/$locale/faq'
+    | '/$locale/pricing'
+    | '/$locale/products'
+    | '/$locale/settings'
+    | '/$locale/team'
+    | '/$locale/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AboutRoute: typeof AboutRoute
-  BlogRoute: typeof BlogRoute
-  CareersRoute: typeof CareersRoute
-  ContactRoute: typeof ContactRoute
-  FaqRoute: typeof FaqRoute
-  PricingRoute: typeof PricingRoute
-  ProductsRoute: typeof ProductsRoute
-  SettingsRoute: typeof SettingsRoute
-  TeamRoute: typeof TeamRoute
+  LocaleAboutRoute: typeof LocaleAboutRoute
+  LocaleBlogRoute: typeof LocaleBlogRoute
+  LocaleCareersRoute: typeof LocaleCareersRoute
+  LocaleContactRoute: typeof LocaleContactRoute
+  LocaleFaqRoute: typeof LocaleFaqRoute
+  LocalePricingRoute: typeof LocalePricingRoute
+  LocaleProductsRoute: typeof LocaleProductsRoute
+  LocaleSettingsRoute: typeof LocaleSettingsRoute
+  LocaleTeamRoute: typeof LocaleTeamRoute
+  LocaleIndexRoute: typeof LocaleIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/team': {
-      id: '/team'
-      path: '/team'
-      fullPath: '/team'
-      preLoaderRoute: typeof TeamRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/settings': {
-      id: '/settings'
-      path: '/settings'
-      fullPath: '/settings'
-      preLoaderRoute: typeof SettingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/products': {
-      id: '/products'
-      path: '/products'
-      fullPath: '/products'
-      preLoaderRoute: typeof ProductsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/faq': {
-      id: '/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof FaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/careers': {
-      id: '/careers'
-      path: '/careers'
-      fullPath: '/careers'
-      preLoaderRoute: typeof CareersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -232,20 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$locale/': {
+      id: '/$locale/'
+      path: '/$locale'
+      fullPath: '/$locale/'
+      preLoaderRoute: typeof LocaleIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/team': {
+      id: '/$locale/team'
+      path: '/$locale/team'
+      fullPath: '/$locale/team'
+      preLoaderRoute: typeof LocaleTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/settings': {
+      id: '/$locale/settings'
+      path: '/$locale/settings'
+      fullPath: '/$locale/settings'
+      preLoaderRoute: typeof LocaleSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/products': {
+      id: '/$locale/products'
+      path: '/$locale/products'
+      fullPath: '/$locale/products'
+      preLoaderRoute: typeof LocaleProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/pricing': {
+      id: '/$locale/pricing'
+      path: '/$locale/pricing'
+      fullPath: '/$locale/pricing'
+      preLoaderRoute: typeof LocalePricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/faq': {
+      id: '/$locale/faq'
+      path: '/$locale/faq'
+      fullPath: '/$locale/faq'
+      preLoaderRoute: typeof LocaleFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/contact': {
+      id: '/$locale/contact'
+      path: '/$locale/contact'
+      fullPath: '/$locale/contact'
+      preLoaderRoute: typeof LocaleContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/careers': {
+      id: '/$locale/careers'
+      path: '/$locale/careers'
+      fullPath: '/$locale/careers'
+      preLoaderRoute: typeof LocaleCareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/blog': {
+      id: '/$locale/blog'
+      path: '/$locale/blog'
+      fullPath: '/$locale/blog'
+      preLoaderRoute: typeof LocaleBlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$locale/about': {
+      id: '/$locale/about'
+      path: '/$locale/about'
+      fullPath: '/$locale/about'
+      preLoaderRoute: typeof LocaleAboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AboutRoute: AboutRoute,
-  BlogRoute: BlogRoute,
-  CareersRoute: CareersRoute,
-  ContactRoute: ContactRoute,
-  FaqRoute: FaqRoute,
-  PricingRoute: PricingRoute,
-  ProductsRoute: ProductsRoute,
-  SettingsRoute: SettingsRoute,
-  TeamRoute: TeamRoute,
+  LocaleAboutRoute: LocaleAboutRoute,
+  LocaleBlogRoute: LocaleBlogRoute,
+  LocaleCareersRoute: LocaleCareersRoute,
+  LocaleContactRoute: LocaleContactRoute,
+  LocaleFaqRoute: LocaleFaqRoute,
+  LocalePricingRoute: LocalePricingRoute,
+  LocaleProductsRoute: LocaleProductsRoute,
+  LocaleSettingsRoute: LocaleSettingsRoute,
+  LocaleTeamRoute: LocaleTeamRoute,
+  LocaleIndexRoute: LocaleIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

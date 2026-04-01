@@ -2,13 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
 const ContactHeader = lazy(
-  () => import("../components/pages/contact/ContactHeader")
+  () => import("../../components/pages/contact/ContactHeader"),
 );
 const ContactForm = lazy(
-  () => import("../components/pages/contact/ContactForm")
+  () => import("../../components/pages/contact/ContactForm"),
 );
 
-export const Route = createFileRoute("/contact")({
+export const Route = createFileRoute("/$locale/contact")({
   component: Contact,
 });
 

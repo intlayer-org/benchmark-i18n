@@ -1,22 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
-const TeamHeader = lazy(() => import("../components/pages/team/TeamHeader"));
-const TeamGrid = lazy(() => import("../components/pages/team/TeamGrid"));
+const FAQHeader = lazy(() => import("../../components/pages/faq/FAQHeader"));
+const FAQList = lazy(() => import("../../components/pages/faq/FAQList"));
 
-export const Route = createFileRoute("/team")({
-  component: Team,
+export const Route = createFileRoute("/$locale/faq")({
+  component: FAQ,
 });
 
-function Team() {
+function FAQ() {
   return (
     <div className="container py-16">
       <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20" />}>
-        <TeamHeader />
+        <FAQHeader />
       </Suspense>
 
       <Suspense fallback={<div className="h-96 animate-pulse bg-muted/20" />}>
-        <TeamGrid />
+        <FAQList />
       </Suspense>
     </div>
   );

@@ -1,26 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
-const PricingHeader = lazy(
-  () => import("../components/pages/pricing/PricingHeader")
+const ProductsHeader = lazy(
+  () => import("../../components/pages/products/ProductsHeader"),
 );
-const PricingTiers = lazy(
-  () => import("../components/pages/pricing/PricingTiers")
+const ProductsGrid = lazy(
+  () => import("../../components/pages/products/ProductsGrid"),
 );
 
-export const Route = createFileRoute("/pricing")({
-  component: Pricing,
+export const Route = createFileRoute("/$locale/products")({
+  component: Products,
 });
 
-function Pricing() {
+function Products() {
   return (
     <div className="container py-16">
       <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20" />}>
-        <PricingHeader />
+        <ProductsHeader />
       </Suspense>
 
       <Suspense fallback={<div className="h-96 animate-pulse bg-muted/20" />}>
-        <PricingTiers />
+        <ProductsGrid />
       </Suspense>
     </div>
   );

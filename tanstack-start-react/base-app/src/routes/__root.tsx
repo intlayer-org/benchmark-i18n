@@ -1,15 +1,35 @@
+import { useEffect, Profiler } from "react";
+import type { ProfilerOnRenderCallback } from "react";
 import {
   HeadContent,
   Link,
   Scripts,
   createRootRoute,
+  useMatches,
 } from "@tanstack/react-router";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 import appCss from "../styles.css?url";
 
-const THEME_INIT_SCRIPT = `(function(){try{var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;}catch(e){}})();`;
+declare global {
+  interface Window {
+    __RENDER_METRICS__: Record<string, number[]>;
+  }
+}
+
+const onRender: ProfilerOnRenderCallback = (id, phase, actualDuration) => {
+  if (typeof window === "undefined") return;
+  if (phase !== "update") return;
+  window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+  window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+  window.__RENDER_METRICS__[id].push(actualDuration);
+};
+
+const defaultLocale = "en";
+
+const THEME_INIT_SCRIPT = `(function(){try{
+  var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;performance.mark('hydration_start');}catch(e){}})();`;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -41,7 +61,11 @@ export const Route = createRootRoute({
           <p className="mb-4 text-xl text-muted-foreground">
             Oops! Page not found
           </p>
-          <Link to="/" className="text-primary underline hover:text-primary/90">
+          <Link
+            to="/$locale"
+            params={{ locale: defaultLocale || "en" }}
+            className="text-primary underline hover:text-primary/90"
+          >
             Return to Home
           </Link>
         </div>
@@ -51,16 +75,54 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    console.log("--- BROWSER: RootDocument mounted");
+    // 2. Mark the end of the hydration process
+    performance.mark("hydration_end");
+
+    // 3. Calculate the duration safely
+    try {
+      if (performance.getEntriesByName("hydration_start").length > 0) {
+        performance.measure(
+          "hydration_duration",
+          "hydration_start",
+          "hydration_end",
+        );
+        console.log("--- BROWSER: hydration_duration measured");
+
+        // Optional: Log it for better debugging
+        const duration =
+          performance.getEntriesByName("hydration_duration")[0]?.duration;
+        if (duration) {
+          console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
+        }
+      } else {
+        console.warn("--- BROWSER: hydration_start NOT FOUND");
+      }
+    } catch (err) {
+      console.warn("Could not measure hydration duration:", err);
+    }
+  }, []);
+
+  const matches = useMatches();
+
+  // Try to find locale in params of any active match
+  // This assumes you use the dynamic segment "/{-$locale}" in your route tree
+  const localeRoute = matches.find((match) => match.routeId === "/$locale/");
+  const locale = localeRoute?.params?.locale ?? defaultLocale;
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
       <body className="antialiased [overflow-wrap:anywhere]">
-        <Header />
-        {children}
-        <Footer />
+        <Profiler id="AppRoot" onRender={onRender}>
+          <Header />
+          {children}
+          <Footer />
+        </Profiler>
         <Scripts />
       </body>
     </html>

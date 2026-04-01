@@ -1,28 +1,35 @@
-import { Link } from '@tanstack/react-router'
-import { ChevronDown } from 'lucide-react'
-import { useState } from 'react'
-import ThemeToggle from './ThemeToggle'
+import { Link, useParams } from "@tanstack/react-router";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
+import LocaleSwitcher from "./LocaleSwitcher";
+
+import { usePerformanceMeasure } from "../hooks/usePerformanceMeasure";
 
 export default function Header() {
-  const [isMockPagesOpen, setIsMockPagesOpen] = useState(false)
+  usePerformanceMeasure("Header");
+  const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
+  const params = useParams({ strict: false });
+  const currentLocale = (params as any).locale ?? "en";
 
   const mockPages = [
-    { to: '/products', label: 'Products' },
-    { to: '/pricing', label: 'Pricing' },
-    { to: '/team', label: 'Team' },
-    { to: '/blog', label: 'Blog' },
-    { to: '/careers', label: 'Careers' },
-    { to: '/faq', label: 'FAQ' },
-    { to: '/contact', label: 'Contact' },
-    { to: '/settings', label: 'Settings' },
-  ]
+    { to: "/$locale/products" as const, label: "Products" },
+    { to: "/$locale/pricing" as const, label: "Pricing" },
+    { to: "/$locale/team" as const, label: "Team" },
+    { to: "/$locale/blog" as const, label: "Blog" },
+    { to: "/$locale/careers" as const, label: "Careers" },
+    { to: "/$locale/faq" as const, label: "FAQ" },
+    { to: "/$locale/contact" as const, label: "Contact" },
+    { to: "/$locale/settings" as const, label: "Settings" },
+  ];
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">
       <nav className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <Link
-            to="/"
+            to="/$locale"
+            params={{ locale: currentLocale }}
             className="text-lg font-bold tracking-tight text-primary no-underline"
           >
             i18n Bench
@@ -30,17 +37,19 @@ export default function Header() {
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link
-              to="/"
-              className="nav-link"
+              to="/$locale"
+              params={{ locale: currentLocale }}
               activeOptions={{ exact: true }}
-              activeProps={{ className: 'is-active' }}
+              activeProps={{ className: "is-active" }}
+              className="nav-link"
             >
               Home
             </Link>
             <Link
-              to="/about"
+              to="/$locale/about"
+              params={{ locale: currentLocale }}
+              activeProps={{ className: "is-active" }}
               className="nav-link"
-              activeProps={{ className: 'is-active' }}
             >
               Methodology
             </Link>
@@ -55,7 +64,10 @@ export default function Header() {
                 onClick={() => setIsMockPagesOpen(!isMockPagesOpen)}
               >
                 Mock Pages
-                <ChevronDown size={14} className={`transition-transform ${isMockPagesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`}
+                />
               </button>
 
               {isMockPagesOpen && (
@@ -69,6 +81,7 @@ export default function Header() {
                       <Link
                         key={page.to}
                         to={page.to}
+                        params={{ locale: currentLocale }}
                         className="block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors"
                         onClick={() => setIsMockPagesOpen(false)}
                       >
@@ -97,9 +110,10 @@ export default function Header() {
               />
             </svg>
           </a>
+          <LocaleSwitcher />
           <ThemeToggle />
         </div>
       </nav>
     </header>
-  )
+  );
 }
