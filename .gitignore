@@ -7,6 +7,7 @@ dist-ssr
 .nitro
 .tanstack
 .wrangler
+.intlayer
 .output
 .vinxi
 __unconfig*
