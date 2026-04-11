@@ -1,0 +1,23 @@
+{
+  "Products": "产品",
+  "Pricing": "价格",
+  "Team": "团队",
+  "Blog": "博客",
+  "Careers": "职业生涯",
+  "FAQ": "常见问题",
+  "Contact": "联系我们",
+  "Settings": "设置",
+  "Home": "首页",
+  "Methodology": "方法论",
+  "Mock Pages": "模拟页面",
+  "i18n Benchmark": "i18n 基准测试",
+  "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.": "一个开源测试应用，用于衡量国际化库对包大小、加载时间和应用反应性的实际影响。",
+  "Resources": "资源",
+  "GitHub": "GitHub",
+  "Contributing": "贡献",
+  "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.": "i18n 基准测试 — 开源项目。由 React、Vite 和 TanStack Router 构建。",
+  "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.": "⚠️ 本页面包含仅用于基准测试的模拟数据。它与任何真实的业务或服务无关。",
+  "View Results": "查看结果",
+  "Learn More": "了解更多",
+  "Apply Now": "立即申请"
+}

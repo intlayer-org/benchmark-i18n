@@ -12,10 +12,10 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "test": "turbo run test:pages test:reactivity test:components",
-    "test:pages": "turbo run test:pages",
-    "test:reactivity": "turbo run test:reactivity",
-    "test:components": "turbo run test:components",
+    "test": "turbo run test:pages test:reactivity test:components --concurrency=1",
+    "test:pages": "turbo run test:pages --concurrency=1",
+    "test:reactivity": "turbo run test:reactivity --concurrency=1",
+    "test:components": "turbo run test:components --concurrency=1",
     "dev": "turbo run dev",
     "preview": "turbo run preview"
   },

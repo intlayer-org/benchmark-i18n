@@ -1,5 +1,8 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/$locale')({
+export const Route = createFileRoute("/$locale")({
+  loader: ({ params }) => {
+    return { locale: params.locale };
+  },
   component: Outlet,
-})
+});

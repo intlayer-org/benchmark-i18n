@@ -7,36 +7,19 @@ export default function LocaleSwitcher() {
   const navigate = useNavigate();
 
   const getLocaleName = (l: string) => {
-    switch (l) {
-      case "en":
-        return "English";
-      case "fr":
-        return "Français";
-      case "es":
-        return "Español";
-      case "de":
-        return "Deutsch";
-      case "ja":
-        return "日本語";
-      case "zh":
-        return "中文";
-      case "ko":
-        return "한국어";
-      case "it":
-        return "Italiano";
-      case "pt":
-        return "Português";
-      case "ru":
-        return "Русский";
-      default:
-        return l.toUpperCase();
+    try {
+      const displayNames = new Intl.DisplayNames([l], { type: "language" });
+      const name = displayNames.of(l);
+      return name ? name.charAt(0).toUpperCase() + name.slice(1) : l;
+    } catch (e) {
+      return l.toUpperCase();
     }
   };
 
   const handleLocaleChange = (newLocale: string) => {
     navigate({
       to: ".",
-      params: (prev: any) => ({ ...prev, locale: newLocale }),
+      params: (prev) => ({ ...prev, locale: newLocale }),
     });
   };
 

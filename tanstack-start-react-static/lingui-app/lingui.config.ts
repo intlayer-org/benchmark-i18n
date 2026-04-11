@@ -1,6 +1,8 @@
 import { defineConfig } from "@lingui/cli";
+import { formatter } from "@lingui/format-json";
 
 export default defineConfig({
+  format: formatter({ style: "minimal" }),
   catalogs: [
     {
       include: ["src"],

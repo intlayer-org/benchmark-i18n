@@ -1,17 +1,15 @@
 import { useNavigate, useParams } from "@tanstack/react-router";
+import { locales, getLocaleName } from "../i18n/lingui";
 
 export default function LocaleSwitcher() {
   const params = useParams({ strict: false });
   const locale = params.locale ?? "en";
   const navigate = useNavigate();
 
-  // Assuming some common locales for now
-  const locales = ["en", "fr", "es", "de", "it", "pt", "zh", "ja", "ko", "ru"];
-
   const handleLocaleChange = (newLocale: string) => {
     navigate({
       to: ".",
-      params: (prev: any) => ({ ...prev, locale: newLocale }),
+      params: (prev) => ({ ...prev, locale: newLocale }),
     });
   };
 
@@ -24,7 +22,7 @@ export default function LocaleSwitcher() {
       >
         {locales.map((loc) => (
           <option key={loc} value={loc}>
-            {loc.toUpperCase()}
+            {getLocaleName(loc)}
           </option>
         ))}
       </select>

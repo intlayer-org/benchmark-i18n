@@ -1,0 +1,23 @@
+{
+  "Products": "Produkte",
+  "Pricing": "Preise",
+  "Team": "Team",
+  "Blog": "Blog",
+  "Careers": "Karriere",
+  "FAQ": "FAQ",
+  "Contact": "Kontakt",
+  "Settings": "Einstellungen",
+  "Home": "Startseite",
+  "Methodology": "Methodik",
+  "Mock Pages": "Testseiten",
+  "i18n Benchmark": "i18n-Benchmark",
+  "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladezeit und die Reaktivität der App.",
+  "Resources": "Ressourcen",
+  "GitHub": "GitHub",
+  "Contributing": "Beitragen",
+  "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.": "i18n-Benchmark — Open-Source-Projekt. Erstellt mit React, Vite & TanStack Router.",
+  "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.": "⚠️ Diese Seite enthält fiktive Daten nur zu Benchmark-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder Dienst.",
+  "View Results": "Ergebnisse anzeigen",
+  "Learn More": "Mehr erfahren",
+  "Apply Now": "Jetzt bewerben"
+}

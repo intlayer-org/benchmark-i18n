@@ -1,44 +1,15 @@
 import { useNavigate, useParams } from "@tanstack/react-router";
+import { locales, getLocaleName } from "../i18n/config";
 
 export default function LocaleSwitcher() {
   const params = useParams({ strict: false });
   const locale = params.locale ?? "en";
   const navigate = useNavigate();
 
-  // Assuming some common locales for now
-  const locales = ["en", "fr", "es", "de", "it", "pt", "zh", "ja", "ko", "ru"];
-
-  const getLocaleName = (l: string) => {
-    switch (l) {
-      case "en":
-        return "English";
-      case "fr":
-        return "Français";
-      case "es":
-        return "Español";
-      case "de":
-        return "Deutsch";
-      case "ja":
-        return "日本語";
-      case "zh":
-        return "中文";
-      case "ko":
-        return "한국어";
-      case "it":
-        return "Italiano";
-      case "pt":
-        return "Português";
-      case "ru":
-        return "Русский";
-      default:
-        return l.toUpperCase();
-    }
-  };
-
   const handleLocaleChange = (newLocale: string) => {
     navigate({
       to: ".",
-      params: (prev: any) => ({ ...prev, locale: newLocale }),
+      params: (prev) => ({ ...prev, locale: newLocale }),
     });
   };
 

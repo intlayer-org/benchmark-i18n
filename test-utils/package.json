@@ -5,7 +5,8 @@
   "exports": {
     "./pages-test": "./src/pages-test.ts",
     "./measure-components": "./src/measure-components.ts",
-    "./reactivity-test": "./src/reactivity-test.ts"
+    "./reactivity-test": "./src/reactivity-test.ts",
+    "./browser-metrics": "./src/browser-metrics.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",

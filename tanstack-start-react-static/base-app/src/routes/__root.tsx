@@ -12,19 +12,10 @@ import Header from "../components/Header";
 
 import appCss from "../styles.css?url";
 
-declare global {
-  interface Window {
-    __RENDER_METRICS__: Record<string, number[]>;
-  }
-}
+import { recordHydrationDuration, onRenderCallback as onRender } from "test-utils/browser-metrics";
 
-const onRender: ProfilerOnRenderCallback = (id, phase, actualDuration) => {
-  if (typeof window === "undefined") return;
-  if (phase !== "update") return;
-  window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-  window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-  window.__RENDER_METRICS__[id].push(actualDuration);
-};
+// onRender now imported from test-utils
+
 
 const defaultLocale = "en";
 
@@ -76,32 +67,7 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   useEffect(() => {
-    console.log("--- BROWSER: RootDocument mounted");
-    // 2. Mark the end of the hydration process
-    performance.mark("hydration_end");
-
-    // 3. Calculate the duration safely
-    try {
-      if (performance.getEntriesByName("hydration_start").length > 0) {
-        performance.measure(
-          "hydration_duration",
-          "hydration_start",
-          "hydration_end",
-        );
-        console.log("--- BROWSER: hydration_duration measured");
-
-        // Optional: Log it for better debugging
-        const duration =
-          performance.getEntriesByName("hydration_duration")[0]?.duration;
-        if (duration) {
-          console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
-        }
-      } else {
-        console.warn("--- BROWSER: hydration_start NOT FOUND");
-      }
-    } catch (err) {
-      console.warn("Could not measure hydration duration:", err);
-    }
+    recordHydrationDuration();
   }, []);
 
   const { locale = defaultLocale } = LocaleRoute.useParams();

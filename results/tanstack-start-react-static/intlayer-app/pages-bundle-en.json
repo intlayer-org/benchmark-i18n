@@ -1,11 +1,11 @@
 {
   "app": "intlayer-app",
   "locale": "en",
-  "timestamp": "2026-04-11T01:40:39.592Z",
+  "timestamp": "2026-04-11T22:04:35.101Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 79,
-      "fr": 34
+      "en": 80,
+      "fr": 9
     },
     "page": {
       "home": 24,

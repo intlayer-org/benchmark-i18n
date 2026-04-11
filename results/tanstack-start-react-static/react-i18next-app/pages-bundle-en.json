@@ -1,10 +1,10 @@
 {
   "app": "react-i18next-app",
   "locale": "en",
-  "timestamp": "2026-04-11T01:40:02.205Z",
+  "timestamp": "2026-04-11T22:48:41.672Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 0,
+      "en": 11,
       "fr": 0
     },
     "page": {
@@ -25,8 +25,8 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 612017,
-      "jsSize": 573602,
+      "totalSize": 612043,
+      "jsSize": 573628,
       "cssSize": 23905,
       "htmlSize": 14510,
       "fileCount": 15,
@@ -38,13 +38,13 @@
           "type": "html"
         },
         {
-          "url": "/assets/jsx-runtime-CUBmso4R.js",
-          "size": 8399,
+          "url": "/assets/preload-helper-ca-nBW7U.js",
+          "size": 1193,
           "type": "js"
         },
         {
-          "url": "/assets/preload-helper-ca-nBW7U.js",
-          "size": 1193,
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
           "type": "js"
         },
         {
@@ -58,13 +58,18 @@
           "type": "js"
         },
         {
+          "url": "/assets/route-CEZNFmM6.js",
+          "size": 71,
+          "type": "js"
+        },
+        {
           "url": "/assets/styles-Csz1ONSG.css",
           "size": 23905,
           "type": "css"
         },
         {
-          "url": "/assets/route-CEZNFmM6.js",
-          "size": 71,
+          "url": "/assets/_locale-VYPF8vGE.js",
+          "size": 1417,
           "type": "js"
         },
         {
@@ -73,13 +78,8 @@
           "type": "js"
         },
         {
-          "url": "/assets/_locale-VYPF8vGE.js",
-          "size": 1417,
-          "type": "js"
-        },
-        {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -93,13 +93,13 @@
           "type": "js"
         },
         {
-          "url": "/assets/WhyItMatters-B8a95ft1.js",
-          "size": 1328,
+          "url": "/assets/UnderstandingImpact-BZbRp9aN.js",
+          "size": 2570,
           "type": "js"
         },
         {
-          "url": "/assets/UnderstandingImpact-BZbRp9aN.js",
-          "size": 2570,
+          "url": "/assets/WhyItMatters-B8a95ft1.js",
+          "size": 1328,
           "type": "js"
         },
         {
@@ -110,8 +110,19 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,
@@ -264,8 +275,8 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 605399,
-      "jsSize": 569898,
+      "totalSize": 605425,
+      "jsSize": 569924,
       "cssSize": 23905,
       "htmlSize": 11596,
       "fileCount": 14,
@@ -297,13 +308,18 @@
           "type": "js"
         },
         {
+          "url": "/assets/route-CEZNFmM6.js",
+          "size": 71,
+          "type": "js"
+        },
+        {
           "url": "/assets/styles-Csz1ONSG.css",
           "size": 23905,
           "type": "css"
         },
         {
-          "url": "/assets/route-CEZNFmM6.js",
-          "size": 71,
+          "url": "/assets/about-D9FL59zq.js",
+          "size": 1170,
           "type": "js"
         },
         {
@@ -312,13 +328,8 @@
           "type": "js"
         },
         {
-          "url": "/assets/about-D9FL59zq.js",
-          "size": 1170,
-          "type": "js"
-        },
-        {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -344,8 +355,19 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,
@@ -498,8 +520,8 @@
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 605133,
-      "jsSize": 569128,
+      "totalSize": 605159,
+      "jsSize": 569154,
       "cssSize": 23905,
       "htmlSize": 12100,
       "fileCount": 14,
@@ -511,13 +533,13 @@
           "type": "html"
         },
         {
-          "url": "/assets/jsx-runtime-CUBmso4R.js",
-          "size": 8399,
+          "url": "/assets/preload-helper-ca-nBW7U.js",
+          "size": 1193,
           "type": "js"
         },
         {
-          "url": "/assets/preload-helper-ca-nBW7U.js",
-          "size": 1193,
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
           "type": "js"
         },
         {
@@ -531,13 +553,13 @@
           "type": "js"
         },
         {
-          "url": "/assets/Match-QrGipkxm.js",
-          "size": 68530,
+          "url": "/assets/route-CEZNFmM6.js",
+          "size": 71,
           "type": "js"
         },
         {
-          "url": "/assets/route-CEZNFmM6.js",
-          "size": 71,
+          "url": "/assets/blog-DfZQ7DSw.js",
+          "size": 910,
           "type": "js"
         },
         {
@@ -546,13 +568,13 @@
           "type": "css"
         },
         {
-          "url": "/assets/blog-DfZQ7DSw.js",
-          "size": 910,
+          "url": "/assets/Match-QrGipkxm.js",
+          "size": 68530,
           "type": "js"
         },
         {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -578,8 +600,19 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,
@@ -732,8 +765,8 @@
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 606755,
-      "jsSize": 570376,
+      "totalSize": 606781,
+      "jsSize": 570402,
       "cssSize": 23905,
       "htmlSize": 12474,
       "fileCount": 15,
@@ -770,11 +803,6 @@
           "type": "js"
         },
         {
-          "url": "/assets/Match-QrGipkxm.js",
-          "size": 68530,
-          "type": "js"
-        },
-        {
           "url": "/assets/styles-Csz1ONSG.css",
           "size": 23905,
           "type": "css"
@@ -785,8 +813,13 @@
           "type": "js"
         },
         {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/Match-QrGipkxm.js",
+          "size": 68530,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -817,8 +850,19 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,
@@ -971,8 +1015,8 @@
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 603986,
-      "jsSize": 569992,
+      "totalSize": 604012,
+      "jsSize": 570018,
       "cssSize": 23905,
       "htmlSize": 10089,
       "fileCount": 14,
@@ -984,13 +1028,13 @@
           "type": "html"
         },
         {
-          "url": "/assets/preload-helper-ca-nBW7U.js",
-          "size": 1193,
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-CUBmso4R.js",
-          "size": 8399,
+          "url": "/assets/preload-helper-ca-nBW7U.js",
+          "size": 1193,
           "type": "js"
         },
         {
@@ -1004,14 +1048,14 @@
           "type": "js"
         },
         {
-          "url": "/assets/styles-Csz1ONSG.css",
-          "size": 23905,
-          "type": "css"
-        },
-        {
           "url": "/assets/route-CEZNFmM6.js",
           "size": 71,
           "type": "js"
+        },
+        {
+          "url": "/assets/styles-Csz1ONSG.css",
+          "size": 23905,
+          "type": "css"
         },
         {
           "url": "/assets/contact-2RjXwK1K.js",
@@ -1024,8 +1068,8 @@
           "type": "js"
         },
         {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -1051,8 +1095,20 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 11,
+          "found": [
+            "Methodology Question",
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,
@@ -1206,8 +1262,8 @@
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 602601,
-      "jsSize": 568259,
+      "totalSize": 602627,
+      "jsSize": 568285,
       "cssSize": 23905,
       "htmlSize": 10437,
       "fileCount": 14,
@@ -1217,11 +1273,6 @@
           "url": "/en/faq",
           "size": 10437,
           "type": "html"
-        },
-        {
-          "url": "/assets/styles-Csz1ONSG.css",
-          "size": 23905,
-          "type": "css"
         },
         {
           "url": "/assets/jsx-runtime-CUBmso4R.js",
@@ -1239,18 +1290,18 @@
           "type": "js"
         },
         {
-          "url": "/assets/route-CEZNFmM6.js",
-          "size": 71,
-          "type": "js"
-        },
-        {
-          "url": "/assets/faq-D3VJ6wM4.js",
-          "size": 906,
-          "type": "js"
+          "url": "/assets/styles-Csz1ONSG.css",
+          "size": 23905,
+          "type": "css"
         },
         {
           "url": "/assets/useTranslation-8cieyk6k.js",
           "size": 4548,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-CEZNFmM6.js",
+          "size": 71,
           "type": "js"
         },
         {
@@ -1259,8 +1310,13 @@
           "type": "js"
         },
         {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/faq-D3VJ6wM4.js",
+          "size": 906,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -1269,13 +1325,13 @@
           "type": "js"
         },
         {
-          "url": "/assets/FAQHeader-DpH7N6tR.js",
-          "size": 470,
+          "url": "/assets/MockBanner-BrI947Sb.js",
+          "size": 296,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BrI947Sb.js",
-          "size": 296,
+          "url": "/assets/FAQHeader-DpH7N6tR.js",
+          "size": 470,
           "type": "js"
         },
         {
@@ -1286,8 +1342,19 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,
@@ -1440,8 +1507,8 @@
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 605136,
-      "jsSize": 569553,
+      "totalSize": 605162,
+      "jsSize": 569579,
       "cssSize": 23905,
       "htmlSize": 11678,
       "fileCount": 14,
@@ -1453,13 +1520,13 @@
           "type": "html"
         },
         {
-          "url": "/assets/jsx-runtime-CUBmso4R.js",
-          "size": 8399,
+          "url": "/assets/preload-helper-ca-nBW7U.js",
+          "size": 1193,
           "type": "js"
         },
         {
-          "url": "/assets/preload-helper-ca-nBW7U.js",
-          "size": 1193,
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
           "type": "js"
         },
         {
@@ -1478,6 +1545,11 @@
           "type": "js"
         },
         {
+          "url": "/assets/styles-Csz1ONSG.css",
+          "size": 23905,
+          "type": "css"
+        },
+        {
           "url": "/assets/pricing-D_UCDrTU.js",
           "size": 924,
           "type": "js"
@@ -1488,13 +1560,8 @@
           "type": "js"
         },
         {
-          "url": "/assets/styles-Csz1ONSG.css",
-          "size": 23905,
-          "type": "css"
-        },
-        {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -1503,13 +1570,13 @@
           "type": "js"
         },
         {
-          "url": "/assets/PricingHeader-DXPq8fsD.js",
-          "size": 523,
+          "url": "/assets/MockBanner-BrI947Sb.js",
+          "size": 296,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BrI947Sb.js",
-          "size": 296,
+          "url": "/assets/PricingHeader-DXPq8fsD.js",
+          "size": 523,
           "type": "js"
         },
         {
@@ -1520,8 +1587,19 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,
@@ -1674,8 +1752,8 @@
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 603206,
-      "jsSize": 568683,
+      "totalSize": 603232,
+      "jsSize": 568709,
       "cssSize": 23905,
       "htmlSize": 10618,
       "fileCount": 14,
@@ -1697,11 +1775,6 @@
           "type": "js"
         },
         {
-          "url": "/assets/styles-Csz1ONSG.css",
-          "size": 23905,
-          "type": "css"
-        },
-        {
           "url": "/assets/usePerformanceMeasure-D5-RXn2A.js",
           "size": 370,
           "type": "js"
@@ -1712,14 +1785,19 @@
           "type": "js"
         },
         {
+          "url": "/assets/route-CEZNFmM6.js",
+          "size": 71,
+          "type": "js"
+        },
+        {
           "url": "/assets/Match-QrGipkxm.js",
           "size": 68530,
           "type": "js"
         },
         {
-          "url": "/assets/route-CEZNFmM6.js",
-          "size": 71,
-          "type": "js"
+          "url": "/assets/styles-Csz1ONSG.css",
+          "size": 23905,
+          "type": "css"
         },
         {
           "url": "/assets/products-DMbfAXNx.js",
@@ -1727,8 +1805,8 @@
           "type": "js"
         },
         {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -1737,13 +1815,13 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProductsHeader-fT1Oz7r4.js",
-          "size": 463,
+          "url": "/assets/MockBanner-BrI947Sb.js",
+          "size": 296,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BrI947Sb.js",
-          "size": 296,
+          "url": "/assets/ProductsHeader-fT1Oz7r4.js",
+          "size": 463,
           "type": "js"
         },
         {
@@ -1754,8 +1832,19 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,
@@ -1908,8 +1997,8 @@
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 608978,
-      "jsSize": 573489,
+      "totalSize": 609004,
+      "jsSize": 573515,
       "cssSize": 23905,
       "htmlSize": 11584,
       "fileCount": 17,
@@ -1921,13 +2010,13 @@
           "type": "html"
         },
         {
-          "url": "/assets/jsx-runtime-CUBmso4R.js",
-          "size": 8399,
+          "url": "/assets/preload-helper-ca-nBW7U.js",
+          "size": 1193,
           "type": "js"
         },
         {
-          "url": "/assets/preload-helper-ca-nBW7U.js",
-          "size": 1193,
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
           "type": "js"
         },
         {
@@ -1936,18 +2025,8 @@
           "type": "js"
         },
         {
-          "url": "/assets/styles-Csz1ONSG.css",
-          "size": 23905,
-          "type": "css"
-        },
-        {
           "url": "/assets/useTranslation-8cieyk6k.js",
           "size": 4548,
-          "type": "js"
-        },
-        {
-          "url": "/assets/route-CEZNFmM6.js",
-          "size": 71,
           "type": "js"
         },
         {
@@ -1956,13 +2035,23 @@
           "type": "js"
         },
         {
+          "url": "/assets/route-CEZNFmM6.js",
+          "size": 71,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-Csz1ONSG.css",
+          "size": 23905,
+          "type": "css"
+        },
+        {
           "url": "/assets/settings-BGKw9xVR.js",
           "size": 1836,
           "type": "js"
         },
         {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -1971,13 +2060,13 @@
           "type": "js"
         },
         {
-          "url": "/assets/SettingsHeader-CAeKrP8o.js",
-          "size": 472,
+          "url": "/assets/MockBanner-BrI947Sb.js",
+          "size": 296,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BrI947Sb.js",
-          "size": 296,
+          "url": "/assets/SettingsHeader-CAeKrP8o.js",
+          "size": 472,
           "type": "js"
         },
         {
@@ -1986,8 +2075,8 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-DScLar1F.js",
-          "size": 1193,
+          "url": "/assets/PreferencesSection-qAv0XG2g.js",
+          "size": 2334,
           "type": "js"
         },
         {
@@ -1996,15 +2085,26 @@
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-qAv0XG2g.js",
-          "size": 2334,
+          "url": "/assets/ProfileSection-DScLar1F.js",
+          "size": 1193,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,
@@ -2158,8 +2258,8 @@
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 603947,
-      "jsSize": 568852,
+      "totalSize": 603973,
+      "jsSize": 568878,
       "cssSize": 23905,
       "htmlSize": 11190,
       "fileCount": 14,
@@ -2171,13 +2271,13 @@
           "type": "html"
         },
         {
-          "url": "/assets/jsx-runtime-CUBmso4R.js",
-          "size": 8399,
+          "url": "/assets/preload-helper-ca-nBW7U.js",
+          "size": 1193,
           "type": "js"
         },
         {
-          "url": "/assets/preload-helper-ca-nBW7U.js",
-          "size": 1193,
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
           "type": "js"
         },
         {
@@ -2191,18 +2291,8 @@
           "type": "js"
         },
         {
-          "url": "/assets/Match-QrGipkxm.js",
-          "size": 68530,
-          "type": "js"
-        },
-        {
           "url": "/assets/route-CEZNFmM6.js",
           "size": 71,
-          "type": "js"
-        },
-        {
-          "url": "/assets/team-BUfh4R1K.js",
-          "size": 910,
           "type": "js"
         },
         {
@@ -2211,8 +2301,18 @@
           "type": "css"
         },
         {
-          "url": "/assets/main-DLxzKU4Q.js",
-          "size": 481702,
+          "url": "/assets/team-BUfh4R1K.js",
+          "size": 910,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Match-QrGipkxm.js",
+          "size": 68530,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-Deo7-vDm.js",
+          "size": 481728,
           "type": "js"
         },
         {
@@ -2221,13 +2321,13 @@
           "type": "js"
         },
         {
-          "url": "/assets/TeamHeader-gaMMoGV3.js",
-          "size": 459,
+          "url": "/assets/MockBanner-BrI947Sb.js",
+          "size": 296,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BrI947Sb.js",
-          "size": 296,
+          "url": "/assets/TeamHeader-gaMMoGV3.js",
+          "size": 459,
           "type": "js"
         },
         {
@@ -2238,8 +2338,19 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "We'll get back to you within 48 hours.",
+            "Public benchmark dashboard",
+            "Basic library comparisons",
+            "Community forum access",
+            "Monthly result digest",
+            "Custom benchmark configurations",
+            "Private results dashboard",
+            "API access (1,000 requests/day)",
+            "Dedicated benchmark infrastructure",
+            "Custom library integrations"
+          ]
         },
         "fr": {
           "count": 0,

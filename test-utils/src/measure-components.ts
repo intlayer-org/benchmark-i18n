@@ -4,17 +4,14 @@
  * WHAT THIS MEASURES
  * ──────────────────
  * Each React component (.tsx) in the app is compiled individually by Vite in
- * library mode. We record three size metrics:
+ * library mode. We record two size metrics:
  *
- *   Raw       — UTF-8 byte length of the source file as written on disk.
- *               Useful for comparing authoring overhead between libraries.
+ * Minified  — byte length of the compiled, minified ES module output.
+ * This is what gets shipped to users after the build step.
  *
- *   Minified  — byte length of the compiled, minified ES module output.
- *               This is what gets shipped to users after the build step.
- *
- *   Gzipped   — byte length of the minified output after gzip compression.
- *               This approximates the over-the-wire transfer size, which is
- *               the number that actually matters for real-world performance.
+ * Gzipped   — byte length of the minified output after gzip compression.
+ * This approximates the over-the-wire transfer size, which is
+ * the number that actually matters for real-world performance.
  *
  * WHY BUILD EACH COMPONENT SEPARATELY
  * ─────────────────────────────────────
@@ -23,12 +20,13 @@
  * Building each component in isolation lets us answer: "how much does this
  * particular component grow when we add i18n library X?"
  *
- * WHY INHERIT THE APP'S VITE CONFIG
- * ───────────────────────────────────
- * Each app has its own Vite plugins (e.g. intlayer(), paraglide(), etc.).
- * We pass `configFile: viteConfigFilePath` so those plugins are active during
- * the build. This ensures the measurement reflects reality — the same
- * transformations that happen in production are applied here.
+ * WHY WE DO NOT USE THE APP'S VITE CONFIG
+ * ─────────────────────────────────────────
+ * The full app config includes `tanstackStart()`, which overrides Vite's
+ * library mode and triggers a full app build for every component entry. This
+ * causes every component to report the same full-bundle size, making the
+ * measurement useless. Using `configFile: false` with esbuild's built-in JSX
+ * transform correctly isolates each component's own code and i18n runtime.
  *
  * WHY EXTERNALIZE REACT AND ROUTER
  * ──────────────────────────────────
@@ -38,9 +36,9 @@
  * i18n runtime it pulls in — not React itself, which is identical for every app.
  *
  * Usage in each app's scripts/measure-components.ts:
- *   import { measureComponents } from "test-utils/measure-components";
- *   import pkg from "../package.json" with { type: "json" };
- *   measureComponents({ appName: pkg.name });
+ * import { measureComponents } from "test-utils/measure-components";
+ * import pkg from "../package.json" with { type: "json" };
+ * measureComponents({ appName: pkg.name });
  */
 
 import fs from "node:fs";
@@ -70,13 +68,6 @@ export interface MeasureConfig {
    */
   additionalExternalPackages?: string[];
   /**
-   * Path to the app's Vite config file, resolved relative to `process.cwd()`.
-   * The app's own plugins (intlayer, paraglide, etc.) must be active here so
-   * that component transforms match a real production build.
-   * Default: "./vite.config.ts"
-   */
-  viteConfigFile?: string;
-  /**
    * Subfolder name under `<repo-root>/results/` that groups results by
    * benchmark category, e.g. `"tanstack-start-react-static"`.
    * Produces: `<repo-root>/results/<benchmarkCategory>/<appName>/`
@@ -94,8 +85,6 @@ interface ComponentSizeStats {
    * subdirectory name (e.g. "home" for src/components/pages/home/).
    */
   category: string;
-  /** UTF-8 byte length of the source file. */
-  sourceBytes: number;
   /** Byte length of the minified ES module output. */
   minifiedBytes: number;
   /** Byte length of the minified output after gzip compression (level 6). */
@@ -145,28 +134,34 @@ const deriveComponentCategory = (relativeFilePath: string): string =>
  * Builds a single component with Vite in library mode (in-memory, no disk
  * write) and returns its minified and gzipped byte sizes.
  *
- * Vite is invoked with the app's own config file so that any registered plugins
- * (e.g. intlayer()) apply the same transforms as in a production build.
- * The output is kept in memory (`write: false`) for speed and to avoid leaving
- * temporary files on disk.
+ * We intentionally use `configFile: false` instead of the app's vite.config.ts.
+ * The full app config includes `tanstackStart()` which overrides library mode
+ * and triggers a full app build — causing every component to report the same
+ * (full-bundle) size. By bypassing the config file, each component is built
+ * in true isolation.
+ *
+ * JSX is handled via esbuild's built-in `automatic` runtime (React 17+ new JSX
+ * transform), which matches what `@vitejs/plugin-react` produces in production
+ * without requiring the plugin to be a test-utils dependency.
  *
  * gzip is applied at level 6 (the default), matching most CDN and server
  * configurations, to give a realistic over-the-wire size estimate.
  *
  * @param componentFilePath - Absolute path to the .tsx component file.
- * @param viteConfigFilePath - Absolute path to the app's vite.config.ts.
  * @param externalPackages - Package names to exclude from the build output.
  * @returns Minified and gzipped byte sizes of the compiled component.
  * @throws If Vite fails to build the component (caller should catch and skip).
  */
 const buildComponentBundle = async (
   componentFilePath: string,
-  viteConfigFilePath: string,
   externalPackages: string[],
 ): Promise<{ minifiedBytes: number; gzipBytes: number }> => {
   const buildOutput = (await build({
-    configFile: viteConfigFilePath,
+    configFile: false, // bypass app config — tanstackStart() would override lib mode
     logLevel: "silent", // suppress Vite's build progress noise
+    esbuild: {
+      jsx: "automatic", // React 17+ new JSX transform, no plugin needed
+    },
     build: {
       write: false, // keep output in memory — faster, no temp files
       minify: true,
@@ -207,13 +202,11 @@ const buildComponentBundle = async (
  * confirm the script is still running (Vite builds are noticeably slow).
  *
  * @param directoryPath - Absolute path to the directory to scan.
- * @param viteConfigFilePath - Absolute path to the app's vite.config.ts.
  * @param externalPackages - Package names to exclude from each build.
  * @returns Size statistics for every successfully built component in the directory.
  */
 const scanAndMeasureDirectory = async (
   directoryPath: string,
-  viteConfigFilePath: string,
   externalPackages: string[],
 ): Promise<ComponentSizeStats[]> => {
   const componentStats: ComponentSizeStats[] = [];
@@ -225,16 +218,13 @@ const scanAndMeasureDirectory = async (
   })) {
     console.log(`  - Processing component: ${relativeFilePath}`);
     const absoluteFilePath = path.join(directoryPath, relativeFilePath);
-    const sourceContent = fs.readFileSync(absoluteFilePath, "utf-8");
-    const sourceBytes = Buffer.byteLength(sourceContent);
 
-    let minifiedBytes = sourceBytes;
-    let gzipBytes = sourceBytes;
+    let minifiedBytes = 0;
+    let gzipBytes = 0;
 
     try {
       ({ minifiedBytes, gzipBytes } = await buildComponentBundle(
         absoluteFilePath,
-        viteConfigFilePath,
         externalPackages,
       ));
     } catch (buildError) {
@@ -246,7 +236,6 @@ const scanAndMeasureDirectory = async (
     componentStats.push({
       name: path.basename(relativeFilePath),
       category: deriveComponentCategory(relativeFilePath),
-      sourceBytes,
       minifiedBytes,
       gzipBytes,
     });
@@ -283,7 +272,6 @@ const printComponentSizeTable = (
     componentStatsList.map((component) => ({
       Component: component.name,
       Category: component.category,
-      "Raw (KB)": (component.sourceBytes / 1024).toFixed(2),
       "Minified (KB)": (component.minifiedBytes / 1024).toFixed(2),
       "Gzipped (KB)": (component.gzipBytes / 1024).toFixed(2),
     })),
@@ -356,7 +344,6 @@ export const measureComponents = async (
     benchmarkCategory,
     componentDirectories = DEFAULT_COMPONENT_DIRECTORIES,
     additionalExternalPackages = [],
-    viteConfigFile = "./vite.config.ts",
   } = config;
 
   const resolvedComponentDirectories = componentDirectories.map(
@@ -366,7 +353,6 @@ export const measureComponents = async (
     ...BASE_EXTERNAL_PACKAGES,
     ...additionalExternalPackages,
   ];
-  const viteConfigFilePath = path.resolve(viteConfigFile);
   // From the app directory (tanstack-start-react/<app>/), two levels up
   // reaches the repo root.
   const resultsDirectory = path.resolve(
@@ -380,7 +366,6 @@ export const measureComponents = async (
   console.log(`\n--- COMPONENT SIZE MEASUREMENT CONFIG ---`);
   console.log(`App Name: ${appName}`);
   console.log(`Benchmark Category: ${benchmarkCategory}`);
-  console.log(`Vite Config: ${viteConfigFilePath}`);
   console.log(`Results Dir: ${resultsDirectory}`);
   console.log(`External Packages: ${allExternalPackages.join(", ")}`);
   console.log(`------------------------------------------\n`);
@@ -394,7 +379,6 @@ export const measureComponents = async (
 
     const directoryStats = await scanAndMeasureDirectory(
       directoryPath,
-      viteConfigFilePath,
       allExternalPackages,
     );
     allComponentStats.push(...directoryStats);
