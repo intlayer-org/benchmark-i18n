@@ -1,0 +1,6742 @@
+{
+  "version": 2,
+  "tree": {
+    "name": "root",
+    "children": [
+      {
+        "name": "component.js",
+        "children": [
+          {
+            "name": "\u0000rolldown/runtime.js",
+            "uid": "5f989740-1"
+          },
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun",
+            "children": [
+              {
+                "name": "scheduler@0.27.0/node_modules/scheduler",
+                "children": [
+                  {
+                    "name": "cjs/scheduler.production.js",
+                    "uid": "5f989740-3"
+                  },
+                  {
+                    "uid": "5f989740-5",
+                    "name": "index.js"
+                  }
+                ]
+              },
+              {
+                "name": "react-dom@19.2.5+3f10a4be4e334a9b/node_modules/react-dom",
+                "children": [
+                  {
+                    "name": "cjs/react-dom-client.production.js",
+                    "uid": "5f989740-7"
+                  },
+                  {
+                    "uid": "5f989740-9",
+                    "name": "client.js"
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "5f989740-11",
+                    "name": "constants.js"
+                  },
+                  {
+                    "uid": "5f989740-13",
+                    "name": "getStartOptions.js"
+                  },
+                  {
+                    "uid": "5f989740-37",
+                    "name": "getDefaultSerovalPlugins.js"
+                  },
+                  {
+                    "name": "client-rpc",
+                    "children": [
+                      {
+                        "uid": "5f989740-39",
+                        "name": "frame-decoder.js"
+                      },
+                      {
+                        "uid": "5f989740-41",
+                        "name": "serverFnFetcher.js"
+                      },
+                      {
+                        "uid": "5f989740-43",
+                        "name": "createClientRpc.js"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "client",
+                    "children": [
+                      {
+                        "uid": "5f989740-45",
+                        "name": "ServerFunctionSerializationAdapter.js"
+                      },
+                      {
+                        "uid": "5f989740-97",
+                        "name": "hydrateStart.js"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "5f989740-15",
+                    "name": "utils.js"
+                  },
+                  {
+                    "uid": "5f989740-19",
+                    "name": "not-found.js"
+                  },
+                  {
+                    "uid": "5f989740-21",
+                    "name": "qss.js"
+                  },
+                  {
+                    "uid": "5f989740-23",
+                    "name": "redirect.js"
+                  },
+                  {
+                    "name": "ssr",
+                    "children": [
+                      {
+                        "name": "serializer",
+                        "children": [
+                          {
+                            "uid": "5f989740-27",
+                            "name": "transformer.js"
+                          },
+                          {
+                            "uid": "5f989740-29",
+                            "name": "RawStream.js"
+                          },
+                          {
+                            "uid": "5f989740-31",
+                            "name": "ShallowErrorPlugin.js"
+                          },
+                          {
+                            "uid": "5f989740-35",
+                            "name": "seroval-plugins.js"
+                          }
+                        ]
+                      },
+                      {
+                        "uid": "5f989740-47",
+                        "name": "ssr-match-id.js"
+                      },
+                      {
+                        "uid": "5f989740-49",
+                        "name": "ssr-client.js"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "tiny-invariant@1.3.3/node_modules/tiny-invariant/dist/esm/tiny-invariant.js",
+                "uid": "5f989740-17"
+              },
+              {
+                "name": "seroval@1.5.2/node_modules/seroval/dist/esm/production/index.mjs",
+                "uid": "5f989740-25"
+              },
+              {
+                "name": "seroval-plugins@1.5.2+7cd651eebf40fbbb/node_modules/seroval-plugins/dist/esm/production/web.mjs",
+                "uid": "5f989740-33"
+              },
+              {
+                "name": "@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm",
+                "children": [
+                  {
+                    "uid": "5f989740-99",
+                    "name": "hydrateStart.js"
+                  },
+                  {
+                    "uid": "5f989740-101",
+                    "name": "StartClient.js"
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+react-start@1.167.1+a1b7793a9f967983/node_modules/@tanstack/react-start/dist/plugin/default-entry/client.tsx",
+                "uid": "5f989740-103"
+              }
+            ]
+          },
+          {
+            "name": "src",
+            "children": [
+              {
+                "name": "components",
+                "children": [
+                  {
+                    "uid": "5f989740-51",
+                    "name": "Footer.tsx"
+                  },
+                  {
+                    "uid": "5f989740-53",
+                    "name": "ThemeToggle.tsx"
+                  },
+                  {
+                    "uid": "5f989740-57",
+                    "name": "LocaleSwitcher.tsx"
+                  },
+                  {
+                    "uid": "5f989740-59",
+                    "name": "Header.tsx"
+                  }
+                ]
+              },
+              {
+                "name": "i18n",
+                "children": [
+                  {
+                    "uid": "5f989740-55",
+                    "name": "config.ts"
+                  },
+                  {
+                    "uid": "5f989740-61",
+                    "name": "getMessages.ts"
+                  }
+                ]
+              },
+              {
+                "name": "routes",
+                "children": [
+                  {
+                    "name": "$locale",
+                    "children": [
+                      {
+                        "uid": "5f989740-63",
+                        "name": "route.tsx"
+                      },
+                      {
+                        "uid": "5f989740-73",
+                        "name": "index.tsx"
+                      },
+                      {
+                        "uid": "5f989740-75",
+                        "name": "team.tsx"
+                      },
+                      {
+                        "uid": "5f989740-77",
+                        "name": "settings.tsx"
+                      },
+                      {
+                        "uid": "5f989740-79",
+                        "name": "products.tsx"
+                      },
+                      {
+                        "uid": "5f989740-81",
+                        "name": "pricing.tsx"
+                      },
+                      {
+                        "uid": "5f989740-83",
+                        "name": "faq.tsx"
+                      },
+                      {
+                        "uid": "5f989740-85",
+                        "name": "contact.tsx"
+                      },
+                      {
+                        "uid": "5f989740-87",
+                        "name": "careers.tsx"
+                      },
+                      {
+                        "uid": "5f989740-89",
+                        "name": "blog.tsx"
+                      },
+                      {
+                        "uid": "5f989740-91",
+                        "name": "about.tsx"
+                      }
+                    ]
+                  },
+                  {
+                    "uid": "5f989740-69",
+                    "name": "__root.tsx"
+                  },
+                  {
+                    "uid": "5f989740-71",
+                    "name": "index.tsx"
+                  }
+                ]
+              },
+              {
+                "uid": "5f989740-65",
+                "name": "styles.css?transform-only"
+              },
+              {
+                "uid": "5f989740-67",
+                "name": "styles.css?url"
+              },
+              {
+                "uid": "5f989740-93",
+                "name": "routeTree.gen.ts"
+              },
+              {
+                "uid": "5f989740-95",
+                "name": "router.tsx"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "AboutGrid-CcAPOpnB.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/AboutGrid.tsx",
+            "uid": "5f989740-105"
+          }
+        ]
+      },
+      {
+        "name": "AboutHeader-Dua7rj-H.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/AboutHeader.tsx",
+            "uid": "5f989740-107"
+          }
+        ]
+      },
+      {
+        "name": "ApiAccessSection-dnUzU8nN.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/ApiAccessSection.tsx",
+            "uid": "5f989740-109"
+          }
+        ]
+      },
+      {
+        "name": "BlogHeader-BYJ5gUKU.js",
+        "children": [
+          {
+            "name": "src/components/pages/blog/BlogHeader.tsx",
+            "uid": "5f989740-111"
+          }
+        ]
+      },
+      {
+        "name": "BlogList-CqmTx_EP.js",
+        "children": [
+          {
+            "name": "src/components/pages/blog/BlogList.tsx",
+            "uid": "5f989740-113"
+          }
+        ]
+      },
+      {
+        "name": "CareersBenefits-4WuGCqnd.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/CareersBenefits.tsx",
+            "uid": "5f989740-115"
+          }
+        ]
+      },
+      {
+        "name": "CareersHeader-Bpmq12mG.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/CareersHeader.tsx",
+            "uid": "5f989740-117"
+          }
+        ]
+      },
+      {
+        "name": "ContactForm-sLC6F6rz.js",
+        "children": [
+          {
+            "name": "src/components/pages/contact/ContactForm.tsx",
+            "uid": "5f989740-119"
+          }
+        ]
+      },
+      {
+        "name": "ContactHeader-Ys32oLg4.js",
+        "children": [
+          {
+            "name": "src/components/pages/contact/ContactHeader.tsx",
+            "uid": "5f989740-121"
+          }
+        ]
+      },
+      {
+        "name": "FAQHeader-BkNHiVPt.js",
+        "children": [
+          {
+            "name": "src/components/pages/faq/FAQHeader.tsx",
+            "uid": "5f989740-123"
+          }
+        ]
+      },
+      {
+        "name": "FAQList-CK7eaiyB.js",
+        "children": [
+          {
+            "name": "src/components/pages/faq/FAQList.tsx",
+            "uid": "5f989740-125"
+          }
+        ]
+      },
+      {
+        "name": "Hero-C31piO3u.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/Hero.tsx",
+            "uid": "5f989740-127"
+          }
+        ]
+      },
+      {
+        "name": "MockBanner-B91YS4gb.js",
+        "children": [
+          {
+            "name": "src/components/MockBanner.tsx",
+            "uid": "5f989740-129"
+          }
+        ]
+      },
+      {
+        "name": "OpenPositions-DP3ZydAu.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/OpenPositions.tsx",
+            "uid": "5f989740-131"
+          }
+        ]
+      },
+      {
+        "name": "PreferencesSection-D2dL2A_U.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/PreferencesSection.tsx",
+            "uid": "5f989740-133"
+          }
+        ]
+      },
+      {
+        "name": "PricingHeader-DC10h6V9.js",
+        "children": [
+          {
+            "name": "src/components/pages/pricing/PricingHeader.tsx",
+            "uid": "5f989740-135"
+          }
+        ]
+      },
+      {
+        "name": "PricingTiers-Ds8Mo0hV.js",
+        "children": [
+          {
+            "name": "src/components/pages/pricing/PricingTiers.tsx",
+            "uid": "5f989740-137"
+          }
+        ]
+      },
+      {
+        "name": "ProductsGrid-yqo76e3y.js",
+        "children": [
+          {
+            "name": "src/components/pages/products/ProductsGrid.tsx",
+            "uid": "5f989740-139"
+          }
+        ]
+      },
+      {
+        "name": "ProductsHeader-DWssQ9Q1.js",
+        "children": [
+          {
+            "name": "src/components/pages/products/ProductsHeader.tsx",
+            "uid": "5f989740-141"
+          }
+        ]
+      },
+      {
+        "name": "ProfileSection-DoUuzE6m.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/ProfileSection.tsx",
+            "uid": "5f989740-143"
+          }
+        ]
+      },
+      {
+        "name": "ResultsTable-A1YB-RL9.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/ResultsTable.tsx",
+            "uid": "5f989740-145"
+          }
+        ]
+      },
+      {
+        "name": "SettingsFooter-7Vm-7pY1.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/SettingsFooter.tsx",
+            "uid": "5f989740-147"
+          }
+        ]
+      },
+      {
+        "name": "SettingsHeader-YA3zoXXh.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/SettingsHeader.tsx",
+            "uid": "5f989740-149"
+          }
+        ]
+      },
+      {
+        "name": "TeamGrid-DxV3BcLE.js",
+        "children": [
+          {
+            "name": "src/components/pages/team/TeamGrid.tsx",
+            "uid": "5f989740-151"
+          }
+        ]
+      },
+      {
+        "name": "TeamHeader-Bxu62m7b.js",
+        "children": [
+          {
+            "name": "src/components/pages/team/TeamHeader.tsx",
+            "uid": "5f989740-153"
+          }
+        ]
+      },
+      {
+        "name": "UnderstandingImpact-4qsIJrBt.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/UnderstandingImpact.tsx",
+            "uid": "5f989740-155"
+          }
+        ]
+      },
+      {
+        "name": "WhatWeMeasure-DpXvauxM.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/WhatWeMeasure.tsx",
+            "uid": "5f989740-157"
+          }
+        ]
+      },
+      {
+        "name": "WhyItMatters-D3qdh3Uw.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/WhyItMatters.tsx",
+            "uid": "5f989740-159"
+          }
+        ]
+      },
+      {
+        "name": "_locale-BRfJgmXw.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/index.tsx?tsr-split=component",
+            "uid": "5f989740-161"
+          }
+        ]
+      },
+      {
+        "name": "about-CjwAwRJ5.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/about.tsx?tsr-split=component",
+            "uid": "5f989740-163"
+          }
+        ]
+      },
+      {
+        "name": "blog-D1hp8S9L.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/blog.tsx?tsr-split=component",
+            "uid": "5f989740-165"
+          }
+        ]
+      },
+      {
+        "name": "careers-DII_uvQg.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/careers.tsx?tsr-split=component",
+            "uid": "5f989740-167"
+          }
+        ]
+      },
+      {
+        "name": "contact-DivHYhdB.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/contact.tsx?tsr-split=component",
+            "uid": "5f989740-169"
+          }
+        ]
+      },
+      {
+        "name": "de-A-xI3QOV.js",
+        "children": [
+          {
+            "name": "src/messages/de.ts",
+            "uid": "5f989740-171"
+          }
+        ]
+      },
+      {
+        "name": "en-Cf3djFm7.js",
+        "children": [
+          {
+            "name": "src/messages/en.ts",
+            "uid": "5f989740-173"
+          }
+        ]
+      },
+      {
+        "name": "es-BQmL8lS-.js",
+        "children": [
+          {
+            "name": "src/messages/es.ts",
+            "uid": "5f989740-175"
+          }
+        ]
+      },
+      {
+        "name": "faq-DC1Rks1E.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/faq.tsx?tsr-split=component",
+            "uid": "5f989740-177"
+          }
+        ]
+      },
+      {
+        "name": "fr-CCTkvhXe.js",
+        "children": [
+          {
+            "name": "src/messages/fr.ts",
+            "uid": "5f989740-179"
+          }
+        ]
+      },
+      {
+        "name": "it-DV69RPad.js",
+        "children": [
+          {
+            "name": "src/messages/it.ts",
+            "uid": "5f989740-181"
+          }
+        ]
+      },
+      {
+        "name": "ja-BE_zj3L3.js",
+        "children": [
+          {
+            "name": "src/messages/ja.ts",
+            "uid": "5f989740-183"
+          }
+        ]
+      },
+      {
+        "name": "ko-BCCuAqYU.js",
+        "children": [
+          {
+            "name": "src/messages/ko.ts",
+            "uid": "5f989740-185"
+          }
+        ]
+      },
+      {
+        "name": "pricing-BGiCErWG.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/pricing.tsx?tsr-split=component",
+            "uid": "5f989740-187"
+          }
+        ]
+      },
+      {
+        "name": "products-hFEeUoAB.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/products.tsx?tsr-split=component",
+            "uid": "5f989740-189"
+          }
+        ]
+      },
+      {
+        "name": "pt-BdNc2S2j.js",
+        "children": [
+          {
+            "name": "src/messages/pt.ts",
+            "uid": "5f989740-191"
+          }
+        ]
+      },
+      {
+        "name": "react-DfXwJeq6.js",
+        "children": [
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun",
+            "children": [
+              {
+                "name": "@formatjs+fast-memoize@3.1.1/node_modules/@formatjs/fast-memoize/index.js",
+                "uid": "5f989740-193"
+              },
+              {
+                "name": "use-intl@4.9.1+3f10a4be4e334a9b/node_modules/use-intl/dist/esm/production",
+                "children": [
+                  {
+                    "uid": "5f989740-195",
+                    "name": "formatters-CJcico0N.js"
+                  },
+                  {
+                    "name": "format-message/index.js",
+                    "uid": "5f989740-223"
+                  },
+                  {
+                    "uid": "5f989740-225",
+                    "name": "initializeConfig-Brh10fyG.js"
+                  },
+                  {
+                    "uid": "5f989740-227",
+                    "name": "react.js"
+                  }
+                ]
+              },
+              {
+                "name": "@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser",
+                "children": [
+                  {
+                    "uid": "5f989740-197",
+                    "name": "date-time.js"
+                  },
+                  {
+                    "uid": "5f989740-199",
+                    "name": "regex.generated.js"
+                  },
+                  {
+                    "uid": "5f989740-201",
+                    "name": "number.js"
+                  }
+                ]
+              },
+              {
+                "name": "@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser",
+                "children": [
+                  {
+                    "uid": "5f989740-203",
+                    "name": "types.js"
+                  },
+                  {
+                    "uid": "5f989740-205",
+                    "name": "error.js"
+                  },
+                  {
+                    "uid": "5f989740-207",
+                    "name": "regex.generated.js"
+                  },
+                  {
+                    "uid": "5f989740-209",
+                    "name": "time-data.generated.js"
+                  },
+                  {
+                    "uid": "5f989740-211",
+                    "name": "date-time-pattern-generator.js"
+                  },
+                  {
+                    "uid": "5f989740-213",
+                    "name": "parser.js"
+                  },
+                  {
+                    "uid": "5f989740-215",
+                    "name": "index.js"
+                  }
+                ]
+              },
+              {
+                "name": "intl-messageformat@11.2.0/node_modules/intl-messageformat/src",
+                "children": [
+                  {
+                    "uid": "5f989740-217",
+                    "name": "error.js"
+                  },
+                  {
+                    "uid": "5f989740-219",
+                    "name": "formatters.js"
+                  },
+                  {
+                    "uid": "5f989740-221",
+                    "name": "core.js"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "route-JPJ7bTDB.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/route.tsx?tsr-split=component",
+            "uid": "5f989740-229"
+          }
+        ]
+      },
+      {
+        "name": "ru-DyscLcge.js",
+        "children": [
+          {
+            "name": "src/messages/ru.ts",
+            "uid": "5f989740-231"
+          }
+        ]
+      },
+      {
+        "name": "settings-DLd93WmG.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/settings.tsx?tsr-split=component",
+            "uid": "5f989740-233"
+          }
+        ]
+      },
+      {
+        "name": "team-B8vjqteb.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/team.tsx?tsr-split=component",
+            "uid": "5f989740-235"
+          }
+        ]
+      },
+      {
+        "name": "usePerformanceMeasure-CgVAPsMx.js",
+        "children": [
+          {
+            "name": "src/hooks/usePerformanceMeasure.ts",
+            "uid": "5f989740-237"
+          }
+        ]
+      },
+      {
+        "name": "zh-DRk9Hkkn.js",
+        "children": [
+          {
+            "name": "src/messages/zh.ts",
+            "uid": "5f989740-239"
+          }
+        ]
+      }
+    ],
+    "isRoot": true
+  },
+  "nodeParts": {
+    "5f989740-1": {
+      "renderedLength": 648,
+      "gzipLength": 392,
+      "brotliLength": 311,
+      "metaUid": "5f989740-0"
+    },
+    "5f989740-3": {
+      "renderedLength": 9035,
+      "gzipLength": 2315,
+      "brotliLength": 2010,
+      "metaUid": "5f989740-2"
+    },
+    "5f989740-5": {
+      "renderedLength": 229,
+      "gzipLength": 177,
+      "brotliLength": 142,
+      "metaUid": "5f989740-4"
+    },
+    "5f989740-7": {
+      "renderedLength": 452796,
+      "gzipLength": 85001,
+      "brotliLength": 69590,
+      "metaUid": "5f989740-6"
+    },
+    "5f989740-9": {
+      "renderedLength": 531,
+      "gzipLength": 334,
+      "brotliLength": 260,
+      "metaUid": "5f989740-8"
+    },
+    "5f989740-11": {
+      "renderedLength": 986,
+      "gzipLength": 526,
+      "brotliLength": 448,
+      "metaUid": "5f989740-10"
+    },
+    "5f989740-13": {
+      "renderedLength": 210,
+      "gzipLength": 167,
+      "brotliLength": 134,
+      "metaUid": "5f989740-12"
+    },
+    "5f989740-15": {
+      "renderedLength": 701,
+      "gzipLength": 301,
+      "brotliLength": 250,
+      "metaUid": "5f989740-14"
+    },
+    "5f989740-17": {
+      "renderedLength": 461,
+      "gzipLength": 269,
+      "brotliLength": 224,
+      "metaUid": "5f989740-16"
+    },
+    "5f989740-19": {
+      "renderedLength": 190,
+      "gzipLength": 156,
+      "brotliLength": 125,
+      "metaUid": "5f989740-18"
+    },
+    "5f989740-21": {
+      "renderedLength": 347,
+      "gzipLength": 252,
+      "brotliLength": 217,
+      "metaUid": "5f989740-20"
+    },
+    "5f989740-23": {
+      "renderedLength": 793,
+      "gzipLength": 422,
+      "brotliLength": 350,
+      "metaUid": "5f989740-22"
+    },
+    "5f989740-25": {
+      "renderedLength": 27266,
+      "gzipLength": 7309,
+      "brotliLength": 6489,
+      "metaUid": "5f989740-24"
+    },
+    "5f989740-27": {
+      "renderedLength": 798,
+      "gzipLength": 333,
+      "brotliLength": 298,
+      "metaUid": "5f989740-26"
+    },
+    "5f989740-29": {
+      "renderedLength": 6212,
+      "gzipLength": 1754,
+      "brotliLength": 1565,
+      "metaUid": "5f989740-28"
+    },
+    "5f989740-31": {
+      "renderedLength": 700,
+      "gzipLength": 324,
+      "brotliLength": 279,
+      "metaUid": "5f989740-30"
+    },
+    "5f989740-33": {
+      "renderedLength": 11960,
+      "gzipLength": 2275,
+      "brotliLength": 2005,
+      "metaUid": "5f989740-32"
+    },
+    "5f989740-35": {
+      "renderedLength": 233,
+      "gzipLength": 179,
+      "brotliLength": 175,
+      "metaUid": "5f989740-34"
+    },
+    "5f989740-37": {
+      "renderedLength": 314,
+      "gzipLength": 215,
+      "brotliLength": 179,
+      "metaUid": "5f989740-36"
+    },
+    "5f989740-39": {
+      "renderedLength": 6132,
+      "gzipLength": 1786,
+      "brotliLength": 1613,
+      "metaUid": "5f989740-38"
+    },
+    "5f989740-41": {
+      "renderedLength": 6863,
+      "gzipLength": 2138,
+      "brotliLength": 1877,
+      "metaUid": "5f989740-40"
+    },
+    "5f989740-43": {
+      "renderedLength": 532,
+      "gzipLength": 324,
+      "brotliLength": 283,
+      "metaUid": "5f989740-42"
+    },
+    "5f989740-45": {
+      "renderedLength": 565,
+      "gzipLength": 329,
+      "brotliLength": 272,
+      "metaUid": "5f989740-44"
+    },
+    "5f989740-47": {
+      "renderedLength": 233,
+      "gzipLength": 188,
+      "brotliLength": 174,
+      "metaUid": "5f989740-46"
+    },
+    "5f989740-49": {
+      "renderedLength": 6140,
+      "gzipLength": 1875,
+      "brotliLength": 1674,
+      "metaUid": "5f989740-48"
+    },
+    "5f989740-51": {
+      "renderedLength": 2369,
+      "gzipLength": 742,
+      "brotliLength": 640,
+      "metaUid": "5f989740-50"
+    },
+    "5f989740-53": {
+      "renderedLength": 2021,
+      "gzipLength": 796,
+      "brotliLength": 676,
+      "metaUid": "5f989740-52"
+    },
+    "5f989740-55": {
+      "renderedLength": 403,
+      "gzipLength": 312,
+      "brotliLength": 213,
+      "metaUid": "5f989740-54"
+    },
+    "5f989740-57": {
+      "renderedLength": 805,
+      "gzipLength": 449,
+      "brotliLength": 375,
+      "metaUid": "5f989740-56"
+    },
+    "5f989740-59": {
+      "renderedLength": 4588,
+      "gzipLength": 1627,
+      "brotliLength": 1373,
+      "metaUid": "5f989740-58"
+    },
+    "5f989740-61": {
+      "renderedLength": 1014,
+      "gzipLength": 386,
+      "brotliLength": 317,
+      "metaUid": "5f989740-60"
+    },
+    "5f989740-63": {
+      "renderedLength": 516,
+      "gzipLength": 308,
+      "brotliLength": 276,
+      "metaUid": "5f989740-62"
+    },
+    "5f989740-65": {
+      "renderedLength": 0,
+      "gzipLength": 0,
+      "brotliLength": 0,
+      "metaUid": "5f989740-64"
+    },
+    "5f989740-67": {
+      "renderedLength": 319,
+      "gzipLength": 230,
+      "brotliLength": 208,
+      "metaUid": "5f989740-66"
+    },
+    "5f989740-69": {
+      "renderedLength": 3615,
+      "gzipLength": 1537,
+      "brotliLength": 1290,
+      "metaUid": "5f989740-68"
+    },
+    "5f989740-71": {
+      "renderedLength": 176,
+      "gzipLength": 162,
+      "brotliLength": 128,
+      "metaUid": "5f989740-70"
+    },
+    "5f989740-73": {
+      "renderedLength": 244,
+      "gzipLength": 180,
+      "brotliLength": 147,
+      "metaUid": "5f989740-72"
+    },
+    "5f989740-75": {
+      "renderedLength": 244,
+      "gzipLength": 178,
+      "brotliLength": 149,
+      "metaUid": "5f989740-74"
+    },
+    "5f989740-77": {
+      "renderedLength": 256,
+      "gzipLength": 182,
+      "brotliLength": 152,
+      "metaUid": "5f989740-76"
+    },
+    "5f989740-79": {
+      "renderedLength": 256,
+      "gzipLength": 182,
+      "brotliLength": 152,
+      "metaUid": "5f989740-78"
+    },
+    "5f989740-81": {
+      "renderedLength": 253,
+      "gzipLength": 181,
+      "brotliLength": 155,
+      "metaUid": "5f989740-80"
+    },
+    "5f989740-83": {
+      "renderedLength": 241,
+      "gzipLength": 178,
+      "brotliLength": 151,
+      "metaUid": "5f989740-82"
+    },
+    "5f989740-85": {
+      "renderedLength": 253,
+      "gzipLength": 180,
+      "brotliLength": 150,
+      "metaUid": "5f989740-84"
+    },
+    "5f989740-87": {
+      "renderedLength": 253,
+      "gzipLength": 179,
+      "brotliLength": 151,
+      "metaUid": "5f989740-86"
+    },
+    "5f989740-89": {
+      "renderedLength": 244,
+      "gzipLength": 178,
+      "brotliLength": 149,
+      "metaUid": "5f989740-88"
+    },
+    "5f989740-91": {
+      "renderedLength": 241,
+      "gzipLength": 177,
+      "brotliLength": 141,
+      "metaUid": "5f989740-90"
+    },
+    "5f989740-93": {
+      "renderedLength": 1819,
+      "gzipLength": 426,
+      "brotliLength": 376,
+      "metaUid": "5f989740-92"
+    },
+    "5f989740-95": {
+      "renderedLength": 188,
+      "gzipLength": 152,
+      "brotliLength": 125,
+      "metaUid": "5f989740-94"
+    },
+    "5f989740-97": {
+      "renderedLength": 990,
+      "gzipLength": 413,
+      "brotliLength": 340,
+      "metaUid": "5f989740-96"
+    },
+    "5f989740-99": {
+      "renderedLength": 279,
+      "gzipLength": 206,
+      "brotliLength": 172,
+      "metaUid": "5f989740-98"
+    },
+    "5f989740-101": {
+      "renderedLength": 421,
+      "gzipLength": 272,
+      "brotliLength": 231,
+      "metaUid": "5f989740-100"
+    },
+    "5f989740-103": {
+      "renderedLength": 360,
+      "gzipLength": 265,
+      "brotliLength": 207,
+      "metaUid": "5f989740-102"
+    },
+    "5f989740-105": {
+      "renderedLength": 936,
+      "gzipLength": 359,
+      "brotliLength": 303,
+      "metaUid": "5f989740-104"
+    },
+    "5f989740-107": {
+      "renderedLength": 464,
+      "gzipLength": 298,
+      "brotliLength": 246,
+      "metaUid": "5f989740-106"
+    },
+    "5f989740-109": {
+      "renderedLength": 1277,
+      "gzipLength": 539,
+      "brotliLength": 480,
+      "metaUid": "5f989740-108"
+    },
+    "5f989740-111": {
+      "renderedLength": 508,
+      "gzipLength": 302,
+      "brotliLength": 260,
+      "metaUid": "5f989740-110"
+    },
+    "5f989740-113": {
+      "renderedLength": 2094,
+      "gzipLength": 799,
+      "brotliLength": 686,
+      "metaUid": "5f989740-112"
+    },
+    "5f989740-115": {
+      "renderedLength": 849,
+      "gzipLength": 449,
+      "brotliLength": 363,
+      "metaUid": "5f989740-114"
+    },
+    "5f989740-117": {
+      "renderedLength": 467,
+      "gzipLength": 286,
+      "brotliLength": 236,
+      "metaUid": "5f989740-116"
+    },
+    "5f989740-119": {
+      "renderedLength": 2951,
+      "gzipLength": 767,
+      "brotliLength": 649,
+      "metaUid": "5f989740-118"
+    },
+    "5f989740-121": {
+      "renderedLength": 664,
+      "gzipLength": 365,
+      "brotliLength": 304,
+      "metaUid": "5f989740-120"
+    },
+    "5f989740-123": {
+      "renderedLength": 472,
+      "gzipLength": 300,
+      "brotliLength": 249,
+      "metaUid": "5f989740-122"
+    },
+    "5f989740-125": {
+      "renderedLength": 1331,
+      "gzipLength": 656,
+      "brotliLength": 548,
+      "metaUid": "5f989740-124"
+    },
+    "5f989740-127": {
+      "renderedLength": 1109,
+      "gzipLength": 510,
+      "brotliLength": 434,
+      "metaUid": "5f989740-126"
+    },
+    "5f989740-129": {
+      "renderedLength": 267,
+      "gzipLength": 220,
+      "brotliLength": 190,
+      "metaUid": "5f989740-128"
+    },
+    "5f989740-131": {
+      "renderedLength": 2583,
+      "gzipLength": 848,
+      "brotliLength": 712,
+      "metaUid": "5f989740-130"
+    },
+    "5f989740-133": {
+      "renderedLength": 2903,
+      "gzipLength": 779,
+      "brotliLength": 662,
+      "metaUid": "5f989740-132"
+    },
+    "5f989740-135": {
+      "renderedLength": 552,
+      "gzipLength": 312,
+      "brotliLength": 254,
+      "metaUid": "5f989740-134"
+    },
+    "5f989740-137": {
+      "renderedLength": 2461,
+      "gzipLength": 933,
+      "brotliLength": 792,
+      "metaUid": "5f989740-136"
+    },
+    "5f989740-139": {
+      "renderedLength": 1774,
+      "gzipLength": 723,
+      "brotliLength": 630,
+      "metaUid": "5f989740-138"
+    },
+    "5f989740-141": {
+      "renderedLength": 532,
+      "gzipLength": 302,
+      "brotliLength": 252,
+      "metaUid": "5f989740-140"
+    },
+    "5f989740-143": {
+      "renderedLength": 1404,
+      "gzipLength": 488,
+      "brotliLength": 394,
+      "metaUid": "5f989740-142"
+    },
+    "5f989740-145": {
+      "renderedLength": 2247,
+      "gzipLength": 612,
+      "brotliLength": 527,
+      "metaUid": "5f989740-144"
+    },
+    "5f989740-147": {
+      "renderedLength": 657,
+      "gzipLength": 348,
+      "brotliLength": 286,
+      "metaUid": "5f989740-146"
+    },
+    "5f989740-149": {
+      "renderedLength": 534,
+      "gzipLength": 303,
+      "brotliLength": 248,
+      "metaUid": "5f989740-148"
+    },
+    "5f989740-151": {
+      "renderedLength": 1712,
+      "gzipLength": 737,
+      "brotliLength": 623,
+      "metaUid": "5f989740-150"
+    },
+    "5f989740-153": {
+      "renderedLength": 458,
+      "gzipLength": 285,
+      "brotliLength": 240,
+      "metaUid": "5f989740-152"
+    },
+    "5f989740-155": {
+      "renderedLength": 3022,
+      "gzipLength": 867,
+      "brotliLength": 696,
+      "metaUid": "5f989740-154"
+    },
+    "5f989740-157": {
+      "renderedLength": 1246,
+      "gzipLength": 574,
+      "brotliLength": 507,
+      "metaUid": "5f989740-156"
+    },
+    "5f989740-159": {
+      "renderedLength": 1618,
+      "gzipLength": 468,
+      "brotliLength": 394,
+      "metaUid": "5f989740-158"
+    },
+    "5f989740-161": {
+      "renderedLength": 1197,
+      "gzipLength": 392,
+      "brotliLength": 310,
+      "metaUid": "5f989740-160"
+    },
+    "5f989740-163": {
+      "renderedLength": 938,
+      "gzipLength": 360,
+      "brotliLength": 290,
+      "metaUid": "5f989740-162"
+    },
+    "5f989740-165": {
+      "renderedLength": 657,
+      "gzipLength": 322,
+      "brotliLength": 254,
+      "metaUid": "5f989740-164"
+    },
+    "5f989740-167": {
+      "renderedLength": 971,
+      "gzipLength": 365,
+      "brotliLength": 292,
+      "metaUid": "5f989740-166"
+    },
+    "5f989740-169": {
+      "renderedLength": 769,
+      "gzipLength": 345,
+      "brotliLength": 279,
+      "metaUid": "5f989740-168"
+    },
+    "5f989740-171": {
+      "renderedLength": 20507,
+      "gzipLength": 8453,
+      "brotliLength": 7698,
+      "metaUid": "5f989740-170"
+    },
+    "5f989740-173": {
+      "renderedLength": 18287,
+      "gzipLength": 7320,
+      "brotliLength": 6087,
+      "metaUid": "5f989740-172"
+    },
+    "5f989740-175": {
+      "renderedLength": 20609,
+      "gzipLength": 8086,
+      "brotliLength": 7089,
+      "metaUid": "5f989740-174"
+    },
+    "5f989740-177": {
+      "renderedLength": 649,
+      "gzipLength": 323,
+      "brotliLength": 257,
+      "metaUid": "5f989740-176"
+    },
+    "5f989740-179": {
+      "renderedLength": 21253,
+      "gzipLength": 8458,
+      "brotliLength": 7567,
+      "metaUid": "5f989740-178"
+    },
+    "5f989740-181": {
+      "renderedLength": 20244,
+      "gzipLength": 8069,
+      "brotliLength": 7306,
+      "metaUid": "5f989740-180"
+    },
+    "5f989740-183": {
+      "renderedLength": 23425,
+      "gzipLength": 9313,
+      "brotliLength": 7927,
+      "metaUid": "5f989740-182"
+    },
+    "5f989740-185": {
+      "renderedLength": 21189,
+      "gzipLength": 8974,
+      "brotliLength": 7637,
+      "metaUid": "5f989740-184"
+    },
+    "5f989740-187": {
+      "renderedLength": 684,
+      "gzipLength": 326,
+      "brotliLength": 274,
+      "metaUid": "5f989740-186"
+    },
+    "5f989740-189": {
+      "renderedLength": 689,
+      "gzipLength": 325,
+      "brotliLength": 264,
+      "metaUid": "5f989740-188"
+    },
+    "5f989740-191": {
+      "renderedLength": 20413,
+      "gzipLength": 8203,
+      "brotliLength": 7330,
+      "metaUid": "5f989740-190"
+    },
+    "5f989740-193": {
+      "renderedLength": 2160,
+      "gzipLength": 706,
+      "brotliLength": 605,
+      "metaUid": "5f989740-192"
+    },
+    "5f989740-195": {
+      "renderedLength": 1383,
+      "gzipLength": 672,
+      "brotliLength": 563,
+      "metaUid": "5f989740-194"
+    },
+    "5f989740-197": {
+      "renderedLength": 3105,
+      "gzipLength": 919,
+      "brotliLength": 792,
+      "metaUid": "5f989740-196"
+    },
+    "5f989740-199": {
+      "renderedLength": 210,
+      "gzipLength": 175,
+      "brotliLength": 155,
+      "metaUid": "5f989740-198"
+    },
+    "5f989740-201": {
+      "renderedLength": 7785,
+      "gzipLength": 1993,
+      "brotliLength": 1730,
+      "metaUid": "5f989740-200"
+    },
+    "5f989740-203": {
+      "renderedLength": 1562,
+      "gzipLength": 488,
+      "brotliLength": 418,
+      "metaUid": "5f989740-202"
+    },
+    "5f989740-205": {
+      "renderedLength": 2526,
+      "gzipLength": 584,
+      "brotliLength": 483,
+      "metaUid": "5f989740-204"
+    },
+    "5f989740-207": {
+      "renderedLength": 231,
+      "gzipLength": 185,
+      "brotliLength": 164,
+      "metaUid": "5f989740-206"
+    },
+    "5f989740-209": {
+      "renderedLength": 9426,
+      "gzipLength": 1264,
+      "brotliLength": 1148,
+      "metaUid": "5f989740-208"
+    },
+    "5f989740-211": {
+      "renderedLength": 1684,
+      "gzipLength": 667,
+      "brotliLength": 602,
+      "metaUid": "5f989740-210"
+    },
+    "5f989740-213": {
+      "renderedLength": 20461,
+      "gzipLength": 4465,
+      "brotliLength": 3934,
+      "metaUid": "5f989740-212"
+    },
+    "5f989740-215": {
+      "renderedLength": 1069,
+      "gzipLength": 501,
+      "brotliLength": 418,
+      "metaUid": "5f989740-214"
+    },
+    "5f989740-217": {
+      "renderedLength": 1347,
+      "gzipLength": 539,
+      "brotliLength": 434,
+      "metaUid": "5f989740-216"
+    },
+    "5f989740-219": {
+      "renderedLength": 5049,
+      "gzipLength": 1483,
+      "brotliLength": 1304,
+      "metaUid": "5f989740-218"
+    },
+    "5f989740-221": {
+      "renderedLength": 4551,
+      "gzipLength": 1447,
+      "brotliLength": 1256,
+      "metaUid": "5f989740-220"
+    },
+    "5f989740-223": {
+      "renderedLength": 1580,
+      "gzipLength": 770,
+      "brotliLength": 681,
+      "metaUid": "5f989740-222"
+    },
+    "5f989740-225": {
+      "renderedLength": 3246,
+      "gzipLength": 1357,
+      "brotliLength": 1209,
+      "metaUid": "5f989740-224"
+    },
+    "5f989740-227": {
+      "renderedLength": 1549,
+      "gzipLength": 740,
+      "brotliLength": 654,
+      "metaUid": "5f989740-226"
+    },
+    "5f989740-229": {
+      "renderedLength": 141,
+      "gzipLength": 143,
+      "brotliLength": 114,
+      "metaUid": "5f989740-228"
+    },
+    "5f989740-231": {
+      "renderedLength": 30207,
+      "gzipLength": 10077,
+      "brotliLength": 8416,
+      "metaUid": "5f989740-230"
+    },
+    "5f989740-233": {
+      "renderedLength": 1751,
+      "gzipLength": 496,
+      "brotliLength": 406,
+      "metaUid": "5f989740-232"
+    },
+    "5f989740-235": {
+      "renderedLength": 657,
+      "gzipLength": 321,
+      "brotliLength": 257,
+      "metaUid": "5f989740-234"
+    },
+    "5f989740-237": {
+      "renderedLength": 462,
+      "gzipLength": 232,
+      "brotliLength": 176,
+      "metaUid": "5f989740-236"
+    },
+    "5f989740-239": {
+      "renderedLength": 17354,
+      "gzipLength": 8565,
+      "brotliLength": 6723,
+      "metaUid": "5f989740-238"
+    }
+  },
+  "nodeMetas": {
+    "5f989740-0": {
+      "id": "\u0000rolldown/runtime.js",
+      "moduleParts": {
+        "component.js": "5f989740-1"
+      },
+      "imported": [],
+      "importedBy": []
+    },
+    "5f989740-2": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/scheduler@0.27.0/node_modules/scheduler/cjs/scheduler.production.js",
+      "moduleParts": {
+        "component.js": "5f989740-3"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-4"
+        }
+      ]
+    },
+    "5f989740-4": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/scheduler@0.27.0/node_modules/scheduler/index.js",
+      "moduleParts": {
+        "component.js": "5f989740-5"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-2"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-6"
+        }
+      ]
+    },
+    "5f989740-6": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-dom@19.2.5+3f10a4be4e334a9b/node_modules/react-dom/cjs/react-dom-client.production.js",
+      "moduleParts": {
+        "component.js": "5f989740-7"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-4"
+        },
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-244"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-8"
+        }
+      ]
+    },
+    "5f989740-8": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-dom@19.2.5+3f10a4be4e334a9b/node_modules/react-dom/client.js",
+      "moduleParts": {
+        "component.js": "5f989740-9"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-6"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-102"
+        }
+      ]
+    },
+    "5f989740-10": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/constants.js",
+      "moduleParts": {
+        "component.js": "5f989740-11"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-44"
+        },
+        {
+          "uid": "5f989740-42"
+        },
+        {
+          "uid": "5f989740-40"
+        },
+        {
+          "uid": "5f989740-38"
+        }
+      ]
+    },
+    "5f989740-12": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getStartOptions.js",
+      "moduleParts": {
+        "component.js": "5f989740-13"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-42"
+        },
+        {
+          "uid": "5f989740-36"
+        }
+      ]
+    },
+    "5f989740-14": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/utils.js",
+      "moduleParts": {
+        "component.js": "5f989740-15"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-267"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-48"
+        },
+        {
+          "uid": "5f989740-253"
+        },
+        {
+          "uid": "5f989740-254"
+        },
+        {
+          "uid": "5f989740-258"
+        },
+        {
+          "uid": "5f989740-259"
+        },
+        {
+          "uid": "5f989740-265"
+        },
+        {
+          "uid": "5f989740-268"
+        },
+        {
+          "uid": "5f989740-270"
+        }
+      ]
+    },
+    "5f989740-16": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/tiny-invariant@1.3.3/node_modules/tiny-invariant/dist/esm/tiny-invariant.js",
+      "moduleParts": {
+        "component.js": "5f989740-17"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-245"
+        },
+        {
+          "uid": "5f989740-48"
+        },
+        {
+          "uid": "5f989740-40"
+        },
+        {
+          "uid": "5f989740-263"
+        },
+        {
+          "uid": "5f989740-268"
+        },
+        {
+          "uid": "5f989740-270"
+        }
+      ]
+    },
+    "5f989740-18": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/not-found.js",
+      "moduleParts": {
+        "component.js": "5f989740-19"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-48"
+        },
+        {
+          "uid": "5f989740-259"
+        },
+        {
+          "uid": "5f989740-263"
+        },
+        {
+          "uid": "5f989740-270"
+        }
+      ]
+    },
+    "5f989740-20": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/qss.js",
+      "moduleParts": {
+        "component.js": "5f989740-21"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-255"
+        }
+      ]
+    },
+    "5f989740-22": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/redirect.js",
+      "moduleParts": {
+        "component.js": "5f989740-23"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-259"
+        },
+        {
+          "uid": "5f989740-263"
+        },
+        {
+          "uid": "5f989740-270"
+        }
+      ]
+    },
+    "5f989740-24": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval@1.5.2/node_modules/seroval/dist/esm/production/index.mjs",
+      "moduleParts": {
+        "component.js": "5f989740-25"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-40"
+        },
+        {
+          "uid": "5f989740-26"
+        },
+        {
+          "uid": "5f989740-28"
+        },
+        {
+          "uid": "5f989740-30"
+        },
+        {
+          "uid": "5f989740-32"
+        }
+      ]
+    },
+    "5f989740-26": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/transformer.js",
+      "moduleParts": {
+        "component.js": "5f989740-27"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-272"
+        },
+        {
+          "uid": "5f989740-24"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        }
+      ]
+    },
+    "5f989740-28": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStream.js",
+      "moduleParts": {
+        "component.js": "5f989740-29"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-24"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-34"
+        }
+      ]
+    },
+    "5f989740-30": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/ShallowErrorPlugin.js",
+      "moduleParts": {
+        "component.js": "5f989740-31"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-24"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-34"
+        }
+      ]
+    },
+    "5f989740-32": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval-plugins@1.5.2+7cd651eebf40fbbb/node_modules/seroval-plugins/dist/esm/production/web.mjs",
+      "moduleParts": {
+        "component.js": "5f989740-33"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-24"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-34"
+        }
+      ]
+    },
+    "5f989740-34": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/seroval-plugins.js",
+      "moduleParts": {
+        "component.js": "5f989740-35"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-30"
+        },
+        {
+          "uid": "5f989740-28"
+        },
+        {
+          "uid": "5f989740-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        }
+      ]
+    },
+    "5f989740-36": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getDefaultSerovalPlugins.js",
+      "moduleParts": {
+        "component.js": "5f989740-37"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-12"
+        },
+        {
+          "uid": "5f989740-250"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-40"
+        }
+      ]
+    },
+    "5f989740-38": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client-rpc/frame-decoder.js",
+      "moduleParts": {
+        "component.js": "5f989740-39"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-10"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-40"
+        }
+      ]
+    },
+    "5f989740-40": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client-rpc/serverFnFetcher.js",
+      "moduleParts": {
+        "component.js": "5f989740-41"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-10"
+        },
+        {
+          "uid": "5f989740-36"
+        },
+        {
+          "uid": "5f989740-38"
+        },
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-24"
+        },
+        {
+          "uid": "5f989740-16"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-42"
+        }
+      ]
+    },
+    "5f989740-42": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client-rpc/createClientRpc.js",
+      "moduleParts": {
+        "component.js": "5f989740-43"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-10"
+        },
+        {
+          "uid": "5f989740-12"
+        },
+        {
+          "uid": "5f989740-40"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-44"
+        }
+      ]
+    },
+    "5f989740-44": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client/ServerFunctionSerializationAdapter.js",
+      "moduleParts": {
+        "component.js": "5f989740-45"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-10"
+        },
+        {
+          "uid": "5f989740-42"
+        },
+        {
+          "uid": "5f989740-250"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-96"
+        }
+      ]
+    },
+    "5f989740-46": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-match-id.js",
+      "moduleParts": {
+        "component.js": "5f989740-47"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-48"
+        }
+      ]
+    },
+    "5f989740-48": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-client.js",
+      "moduleParts": {
+        "component.js": "5f989740-49"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-14"
+        },
+        {
+          "uid": "5f989740-18"
+        },
+        {
+          "uid": "5f989740-46"
+        },
+        {
+          "uid": "5f989740-16"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-248"
+        }
+      ]
+    },
+    "5f989740-50": {
+      "id": "/src/components/Footer.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-51"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-68"
+        }
+      ]
+    },
+    "5f989740-52": {
+      "id": "/src/components/ThemeToggle.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-53"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-58"
+        }
+      ]
+    },
+    "5f989740-54": {
+      "id": "/src/i18n/config.ts",
+      "moduleParts": {
+        "component.js": "5f989740-55"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-68"
+        },
+        {
+          "uid": "5f989740-62"
+        },
+        {
+          "uid": "5f989740-56"
+        }
+      ]
+    },
+    "5f989740-56": {
+      "id": "/src/components/LocaleSwitcher.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-57"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-54"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-58"
+        }
+      ]
+    },
+    "5f989740-58": {
+      "id": "/src/components/Header.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-59"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-275"
+        },
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-52"
+        },
+        {
+          "uid": "5f989740-56"
+        },
+        {
+          "uid": "5f989740-236"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-68"
+        }
+      ]
+    },
+    "5f989740-60": {
+      "id": "/src/i18n/getMessages.ts",
+      "moduleParts": {
+        "component.js": "5f989740-61"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-170",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-172",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-174",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-178",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-180",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-182",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-184",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-190",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-230",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-238",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-68"
+        },
+        {
+          "uid": "5f989740-62"
+        }
+      ]
+    },
+    "5f989740-62": {
+      "id": "/src/routes/$locale/route.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-63"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-60"
+        },
+        {
+          "uid": "5f989740-54"
+        },
+        {
+          "uid": "5f989740-228",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        },
+        {
+          "uid": "5f989740-68"
+        }
+      ]
+    },
+    "5f989740-64": {
+      "id": "/src/styles.css?transform-only",
+      "moduleParts": {
+        "component.js": "5f989740-65"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-66"
+        }
+      ]
+    },
+    "5f989740-66": {
+      "id": "/src/styles.css?url",
+      "moduleParts": {
+        "component.js": "5f989740-67"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-64"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-68"
+        }
+      ]
+    },
+    "5f989740-68": {
+      "id": "/src/routes/__root.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-69"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-50"
+        },
+        {
+          "uid": "5f989740-58"
+        },
+        {
+          "uid": "5f989740-54"
+        },
+        {
+          "uid": "5f989740-60"
+        },
+        {
+          "uid": "5f989740-62"
+        },
+        {
+          "uid": "5f989740-66"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-70": {
+      "id": "/src/routes/index.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-71"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-72": {
+      "id": "/src/routes/$locale/index.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-73"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-160",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-74": {
+      "id": "/src/routes/$locale/team.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-75"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-234",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-76": {
+      "id": "/src/routes/$locale/settings.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-77"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-232",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-78": {
+      "id": "/src/routes/$locale/products.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-79"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-188",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-80": {
+      "id": "/src/routes/$locale/pricing.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-81"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-186",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-82": {
+      "id": "/src/routes/$locale/faq.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-83"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-176",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-84": {
+      "id": "/src/routes/$locale/contact.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-85"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-168",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-86": {
+      "id": "/src/routes/$locale/careers.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-87"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-166",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-88": {
+      "id": "/src/routes/$locale/blog.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-89"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-164",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-90": {
+      "id": "/src/routes/$locale/about.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-91"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-162",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-92"
+        }
+      ]
+    },
+    "5f989740-92": {
+      "id": "/src/routeTree.gen.ts",
+      "moduleParts": {
+        "component.js": "5f989740-93"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-68"
+        },
+        {
+          "uid": "5f989740-62"
+        },
+        {
+          "uid": "5f989740-70"
+        },
+        {
+          "uid": "5f989740-72"
+        },
+        {
+          "uid": "5f989740-74"
+        },
+        {
+          "uid": "5f989740-76"
+        },
+        {
+          "uid": "5f989740-78"
+        },
+        {
+          "uid": "5f989740-80"
+        },
+        {
+          "uid": "5f989740-82"
+        },
+        {
+          "uid": "5f989740-84"
+        },
+        {
+          "uid": "5f989740-86"
+        },
+        {
+          "uid": "5f989740-88"
+        },
+        {
+          "uid": "5f989740-90"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-94"
+        }
+      ]
+    },
+    "5f989740-94": {
+      "id": "/src/router.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-95"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-92"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-96"
+        }
+      ]
+    },
+    "5f989740-96": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client/hydrateStart.js",
+      "moduleParts": {
+        "component.js": "5f989740-97"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-44"
+        },
+        {
+          "uid": "5f989740-248"
+        },
+        {
+          "uid": "5f989740-94"
+        },
+        {
+          "uid": "5f989740-249"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-246"
+        }
+      ]
+    },
+    "5f989740-98": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm/hydrateStart.js",
+      "moduleParts": {
+        "component.js": "5f989740-99"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-246"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-243"
+        },
+        {
+          "uid": "5f989740-100"
+        }
+      ]
+    },
+    "5f989740-100": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm/StartClient.js",
+      "moduleParts": {
+        "component.js": "5f989740-101"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-98"
+        },
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-243"
+        }
+      ]
+    },
+    "5f989740-102": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+a1b7793a9f967983/node_modules/@tanstack/react-start/dist/plugin/default-entry/client.tsx",
+      "moduleParts": {
+        "component.js": "5f989740-103"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-8"
+        },
+        {
+          "uid": "5f989740-241"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [],
+      "isEntry": true
+    },
+    "5f989740-104": {
+      "id": "/src/components/pages/about/AboutGrid.tsx",
+      "moduleParts": {
+        "AboutGrid-CcAPOpnB.js": "5f989740-105"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-162"
+        }
+      ]
+    },
+    "5f989740-106": {
+      "id": "/src/components/pages/about/AboutHeader.tsx",
+      "moduleParts": {
+        "AboutHeader-Dua7rj-H.js": "5f989740-107"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-236"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-162"
+        }
+      ]
+    },
+    "5f989740-108": {
+      "id": "/src/components/pages/settings/ApiAccessSection.tsx",
+      "moduleParts": {
+        "ApiAccessSection-dnUzU8nN.js": "5f989740-109"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-232"
+        }
+      ]
+    },
+    "5f989740-110": {
+      "id": "/src/components/pages/blog/BlogHeader.tsx",
+      "moduleParts": {
+        "BlogHeader-BYJ5gUKU.js": "5f989740-111"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-128"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-164"
+        }
+      ]
+    },
+    "5f989740-112": {
+      "id": "/src/components/pages/blog/BlogList.tsx",
+      "moduleParts": {
+        "BlogList-CqmTx_EP.js": "5f989740-113"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-164"
+        }
+      ]
+    },
+    "5f989740-114": {
+      "id": "/src/components/pages/careers/CareersBenefits.tsx",
+      "moduleParts": {
+        "CareersBenefits-4WuGCqnd.js": "5f989740-115"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-166"
+        }
+      ]
+    },
+    "5f989740-116": {
+      "id": "/src/components/pages/careers/CareersHeader.tsx",
+      "moduleParts": {
+        "CareersHeader-Bpmq12mG.js": "5f989740-117"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-128"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-166"
+        }
+      ]
+    },
+    "5f989740-118": {
+      "id": "/src/components/pages/contact/ContactForm.tsx",
+      "moduleParts": {
+        "ContactForm-sLC6F6rz.js": "5f989740-119"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-168"
+        }
+      ]
+    },
+    "5f989740-120": {
+      "id": "/src/components/pages/contact/ContactHeader.tsx",
+      "moduleParts": {
+        "ContactHeader-Ys32oLg4.js": "5f989740-121"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-128"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-168"
+        }
+      ]
+    },
+    "5f989740-122": {
+      "id": "/src/components/pages/faq/FAQHeader.tsx",
+      "moduleParts": {
+        "FAQHeader-BkNHiVPt.js": "5f989740-123"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-128"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-176"
+        }
+      ]
+    },
+    "5f989740-124": {
+      "id": "/src/components/pages/faq/FAQList.tsx",
+      "moduleParts": {
+        "FAQList-CK7eaiyB.js": "5f989740-125"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-176"
+        }
+      ]
+    },
+    "5f989740-126": {
+      "id": "/src/components/pages/home/Hero.tsx",
+      "moduleParts": {
+        "Hero-C31piO3u.js": "5f989740-127"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-236"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-160"
+        }
+      ]
+    },
+    "5f989740-128": {
+      "id": "/src/components/MockBanner.tsx",
+      "moduleParts": {
+        "MockBanner-B91YS4gb.js": "5f989740-129"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-152"
+        },
+        {
+          "uid": "5f989740-148"
+        },
+        {
+          "uid": "5f989740-140"
+        },
+        {
+          "uid": "5f989740-134"
+        },
+        {
+          "uid": "5f989740-122"
+        },
+        {
+          "uid": "5f989740-120"
+        },
+        {
+          "uid": "5f989740-116"
+        },
+        {
+          "uid": "5f989740-110"
+        }
+      ]
+    },
+    "5f989740-130": {
+      "id": "/src/components/pages/careers/OpenPositions.tsx",
+      "moduleParts": {
+        "OpenPositions-DP3ZydAu.js": "5f989740-131"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-166"
+        }
+      ]
+    },
+    "5f989740-132": {
+      "id": "/src/components/pages/settings/PreferencesSection.tsx",
+      "moduleParts": {
+        "PreferencesSection-D2dL2A_U.js": "5f989740-133"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-232"
+        }
+      ]
+    },
+    "5f989740-134": {
+      "id": "/src/components/pages/pricing/PricingHeader.tsx",
+      "moduleParts": {
+        "PricingHeader-DC10h6V9.js": "5f989740-135"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-128"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-186"
+        }
+      ]
+    },
+    "5f989740-136": {
+      "id": "/src/components/pages/pricing/PricingTiers.tsx",
+      "moduleParts": {
+        "PricingTiers-Ds8Mo0hV.js": "5f989740-137"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-186"
+        }
+      ]
+    },
+    "5f989740-138": {
+      "id": "/src/components/pages/products/ProductsGrid.tsx",
+      "moduleParts": {
+        "ProductsGrid-yqo76e3y.js": "5f989740-139"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-188"
+        }
+      ]
+    },
+    "5f989740-140": {
+      "id": "/src/components/pages/products/ProductsHeader.tsx",
+      "moduleParts": {
+        "ProductsHeader-DWssQ9Q1.js": "5f989740-141"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-128"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-188"
+        }
+      ]
+    },
+    "5f989740-142": {
+      "id": "/src/components/pages/settings/ProfileSection.tsx",
+      "moduleParts": {
+        "ProfileSection-DoUuzE6m.js": "5f989740-143"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-232"
+        }
+      ]
+    },
+    "5f989740-144": {
+      "id": "/src/components/pages/home/ResultsTable.tsx",
+      "moduleParts": {
+        "ResultsTable-A1YB-RL9.js": "5f989740-145"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-160"
+        }
+      ]
+    },
+    "5f989740-146": {
+      "id": "/src/components/pages/settings/SettingsFooter.tsx",
+      "moduleParts": {
+        "SettingsFooter-7Vm-7pY1.js": "5f989740-147"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-232"
+        }
+      ]
+    },
+    "5f989740-148": {
+      "id": "/src/components/pages/settings/SettingsHeader.tsx",
+      "moduleParts": {
+        "SettingsHeader-YA3zoXXh.js": "5f989740-149"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-128"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-232"
+        }
+      ]
+    },
+    "5f989740-150": {
+      "id": "/src/components/pages/team/TeamGrid.tsx",
+      "moduleParts": {
+        "TeamGrid-DxV3BcLE.js": "5f989740-151"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-234"
+        }
+      ]
+    },
+    "5f989740-152": {
+      "id": "/src/components/pages/team/TeamHeader.tsx",
+      "moduleParts": {
+        "TeamHeader-Bxu62m7b.js": "5f989740-153"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-128"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-234"
+        }
+      ]
+    },
+    "5f989740-154": {
+      "id": "/src/components/pages/home/UnderstandingImpact.tsx",
+      "moduleParts": {
+        "UnderstandingImpact-4qsIJrBt.js": "5f989740-155"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-160"
+        }
+      ]
+    },
+    "5f989740-156": {
+      "id": "/src/components/pages/about/WhatWeMeasure.tsx",
+      "moduleParts": {
+        "WhatWeMeasure-DpXvauxM.js": "5f989740-157"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-162"
+        }
+      ]
+    },
+    "5f989740-158": {
+      "id": "/src/components/pages/home/WhyItMatters.tsx",
+      "moduleParts": {
+        "WhyItMatters-D3qdh3Uw.js": "5f989740-159"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-160"
+        }
+      ]
+    },
+    "5f989740-160": {
+      "id": "/src/routes/$locale/index.tsx?tsr-split=component",
+      "moduleParts": {
+        "_locale-BRfJgmXw.js": "5f989740-161"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-126",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-158",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-154",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-144",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-72"
+        }
+      ]
+    },
+    "5f989740-162": {
+      "id": "/src/routes/$locale/about.tsx?tsr-split=component",
+      "moduleParts": {
+        "about-CjwAwRJ5.js": "5f989740-163"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-106",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-104",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-156",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-90"
+        }
+      ]
+    },
+    "5f989740-164": {
+      "id": "/src/routes/$locale/blog.tsx?tsr-split=component",
+      "moduleParts": {
+        "blog-D1hp8S9L.js": "5f989740-165"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-110",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-112",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-88"
+        }
+      ]
+    },
+    "5f989740-166": {
+      "id": "/src/routes/$locale/careers.tsx?tsr-split=component",
+      "moduleParts": {
+        "careers-DII_uvQg.js": "5f989740-167"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-116",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-114",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-130",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-86"
+        }
+      ]
+    },
+    "5f989740-168": {
+      "id": "/src/routes/$locale/contact.tsx?tsr-split=component",
+      "moduleParts": {
+        "contact-DivHYhdB.js": "5f989740-169"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-120",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-118",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-84"
+        }
+      ]
+    },
+    "5f989740-170": {
+      "id": "/src/messages/de.ts",
+      "moduleParts": {
+        "de-A-xI3QOV.js": "5f989740-171"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-172": {
+      "id": "/src/messages/en.ts",
+      "moduleParts": {
+        "en-Cf3djFm7.js": "5f989740-173"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-174": {
+      "id": "/src/messages/es.ts",
+      "moduleParts": {
+        "es-BQmL8lS-.js": "5f989740-175"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-176": {
+      "id": "/src/routes/$locale/faq.tsx?tsr-split=component",
+      "moduleParts": {
+        "faq-DC1Rks1E.js": "5f989740-177"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-122",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-124",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-82"
+        }
+      ]
+    },
+    "5f989740-178": {
+      "id": "/src/messages/fr.ts",
+      "moduleParts": {
+        "fr-CCTkvhXe.js": "5f989740-179"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-180": {
+      "id": "/src/messages/it.ts",
+      "moduleParts": {
+        "it-DV69RPad.js": "5f989740-181"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-182": {
+      "id": "/src/messages/ja.ts",
+      "moduleParts": {
+        "ja-BE_zj3L3.js": "5f989740-183"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-184": {
+      "id": "/src/messages/ko.ts",
+      "moduleParts": {
+        "ko-BCCuAqYU.js": "5f989740-185"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-186": {
+      "id": "/src/routes/$locale/pricing.tsx?tsr-split=component",
+      "moduleParts": {
+        "pricing-BGiCErWG.js": "5f989740-187"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-134",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-136",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-80"
+        }
+      ]
+    },
+    "5f989740-188": {
+      "id": "/src/routes/$locale/products.tsx?tsr-split=component",
+      "moduleParts": {
+        "products-hFEeUoAB.js": "5f989740-189"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-140",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-138",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-78"
+        }
+      ]
+    },
+    "5f989740-190": {
+      "id": "/src/messages/pt.ts",
+      "moduleParts": {
+        "pt-BdNc2S2j.js": "5f989740-191"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-192": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+fast-memoize@3.1.1/node_modules/@formatjs/fast-memoize/index.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-193"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-194"
+        },
+        {
+          "uid": "5f989740-220"
+        },
+        {
+          "uid": "5f989740-312"
+        },
+        {
+          "uid": "5f989740-326"
+        },
+        {
+          "uid": "5f989740-339"
+        }
+      ]
+    },
+    "5f989740-194": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/use-intl@4.9.1+3f10a4be4e334a9b/node_modules/use-intl/dist/esm/production/formatters-CJcico0N.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-195"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-192"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-274"
+        },
+        {
+          "uid": "5f989740-224"
+        },
+        {
+          "uid": "5f989740-226"
+        },
+        {
+          "uid": "5f989740-222"
+        }
+      ]
+    },
+    "5f989740-196": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/date-time.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-197"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-323"
+        }
+      ]
+    },
+    "5f989740-198": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/regex.generated.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-199"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-200"
+        }
+      ]
+    },
+    "5f989740-200": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/number.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-201"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-198"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-323"
+        }
+      ]
+    },
+    "5f989740-202": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/types.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-203"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-323"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-214"
+        },
+        {
+          "uid": "5f989740-204"
+        },
+        {
+          "uid": "5f989740-212"
+        },
+        {
+          "uid": "5f989740-278"
+        }
+      ]
+    },
+    "5f989740-204": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/error.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-205"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-202"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-214"
+        },
+        {
+          "uid": "5f989740-212"
+        }
+      ]
+    },
+    "5f989740-206": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/regex.generated.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-207"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-212"
+        }
+      ]
+    },
+    "5f989740-208": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/time-data.generated.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-209"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-210"
+        }
+      ]
+    },
+    "5f989740-210": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/date-time-pattern-generator.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-211"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-208"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-212"
+        }
+      ]
+    },
+    "5f989740-212": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/parser.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-213"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-204"
+        },
+        {
+          "uid": "5f989740-202"
+        },
+        {
+          "uid": "5f989740-206"
+        },
+        {
+          "uid": "5f989740-323"
+        },
+        {
+          "uid": "5f989740-210"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-214"
+        }
+      ]
+    },
+    "5f989740-214": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/index.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-215"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-204"
+        },
+        {
+          "uid": "5f989740-212"
+        },
+        {
+          "uid": "5f989740-202"
+        },
+        {
+          "uid": "5f989740-278"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-220"
+        },
+        {
+          "uid": "5f989740-218"
+        }
+      ]
+    },
+    "5f989740-216": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/error.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-217"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-276"
+        },
+        {
+          "uid": "5f989740-218"
+        }
+      ]
+    },
+    "5f989740-218": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/formatters.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-219"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-214"
+        },
+        {
+          "uid": "5f989740-216"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-276"
+        },
+        {
+          "uid": "5f989740-220"
+        }
+      ]
+    },
+    "5f989740-220": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/core.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-221"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-192"
+        },
+        {
+          "uid": "5f989740-214"
+        },
+        {
+          "uid": "5f989740-218"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-276"
+        }
+      ]
+    },
+    "5f989740-222": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/use-intl@4.9.1+3f10a4be4e334a9b/node_modules/use-intl/dist/esm/production/format-message/index.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-223"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-276"
+        },
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-194"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-224"
+        }
+      ]
+    },
+    "5f989740-224": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/use-intl@4.9.1+3f10a4be4e334a9b/node_modules/use-intl/dist/esm/production/initializeConfig-Brh10fyG.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-225"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-222"
+        },
+        {
+          "uid": "5f989740-194"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-273"
+        },
+        {
+          "uid": "5f989740-274"
+        },
+        {
+          "uid": "5f989740-226"
+        }
+      ]
+    },
+    "5f989740-226": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/use-intl@4.9.1+3f10a4be4e334a9b/node_modules/use-intl/dist/esm/production/react.js",
+      "moduleParts": {
+        "react-DfXwJeq6.js": "5f989740-227"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-194"
+        },
+        {
+          "uid": "5f989740-224"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-273"
+        }
+      ]
+    },
+    "5f989740-228": {
+      "id": "/src/routes/$locale/route.tsx?tsr-split=component",
+      "moduleParts": {
+        "route-JPJ7bTDB.js": "5f989740-229"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-247"
+        },
+        {
+          "uid": "5f989740-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-62"
+        }
+      ]
+    },
+    "5f989740-230": {
+      "id": "/src/messages/ru.ts",
+      "moduleParts": {
+        "ru-DyscLcge.js": "5f989740-231"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-232": {
+      "id": "/src/routes/$locale/settings.tsx?tsr-split=component",
+      "moduleParts": {
+        "settings-DLd93WmG.js": "5f989740-233"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-148",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-142",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-132",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-108",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-146",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-76"
+        }
+      ]
+    },
+    "5f989740-234": {
+      "id": "/src/routes/$locale/team.tsx?tsr-split=component",
+      "moduleParts": {
+        "team-B8vjqteb.js": "5f989740-235"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-242"
+        },
+        {
+          "uid": "5f989740-152",
+          "dynamic": true
+        },
+        {
+          "uid": "5f989740-150",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-74"
+        }
+      ]
+    },
+    "5f989740-236": {
+      "id": "/src/hooks/usePerformanceMeasure.ts",
+      "moduleParts": {
+        "usePerformanceMeasure-CgVAPsMx.js": "5f989740-237"
+      },
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-58"
+        },
+        {
+          "uid": "5f989740-126"
+        },
+        {
+          "uid": "5f989740-106"
+        }
+      ]
+    },
+    "5f989740-238": {
+      "id": "/src/messages/zh.ts",
+      "moduleParts": {
+        "zh-DRk9Hkkn.js": "5f989740-239"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-60"
+        }
+      ]
+    },
+    "5f989740-240": {
+      "id": "react",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-102"
+        },
+        {
+          "uid": "5f989740-6"
+        },
+        {
+          "uid": "5f989740-245"
+        },
+        {
+          "uid": "5f989740-68"
+        },
+        {
+          "uid": "5f989740-58"
+        },
+        {
+          "uid": "5f989740-160"
+        },
+        {
+          "uid": "5f989740-234"
+        },
+        {
+          "uid": "5f989740-232"
+        },
+        {
+          "uid": "5f989740-188"
+        },
+        {
+          "uid": "5f989740-186"
+        },
+        {
+          "uid": "5f989740-176"
+        },
+        {
+          "uid": "5f989740-168"
+        },
+        {
+          "uid": "5f989740-166"
+        },
+        {
+          "uid": "5f989740-164"
+        },
+        {
+          "uid": "5f989740-162"
+        },
+        {
+          "uid": "5f989740-224"
+        },
+        {
+          "uid": "5f989740-226"
+        },
+        {
+          "uid": "5f989740-52"
+        },
+        {
+          "uid": "5f989740-236"
+        },
+        {
+          "uid": "5f989740-142"
+        },
+        {
+          "uid": "5f989740-132"
+        },
+        {
+          "uid": "5f989740-108"
+        },
+        {
+          "uid": "5f989740-118"
+        },
+        {
+          "uid": "5f989740-222"
+        }
+      ]
+    },
+    "5f989740-241": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+a1b7793a9f967983/node_modules/@tanstack/react-start/dist/esm/client.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-243"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-102"
+        }
+      ]
+    },
+    "5f989740-242": {
+      "id": "react/jsx-runtime",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-102"
+        },
+        {
+          "uid": "5f989740-100"
+        },
+        {
+          "uid": "5f989740-68"
+        },
+        {
+          "uid": "5f989740-50"
+        },
+        {
+          "uid": "5f989740-58"
+        },
+        {
+          "uid": "5f989740-228"
+        },
+        {
+          "uid": "5f989740-160"
+        },
+        {
+          "uid": "5f989740-234"
+        },
+        {
+          "uid": "5f989740-232"
+        },
+        {
+          "uid": "5f989740-188"
+        },
+        {
+          "uid": "5f989740-186"
+        },
+        {
+          "uid": "5f989740-176"
+        },
+        {
+          "uid": "5f989740-168"
+        },
+        {
+          "uid": "5f989740-166"
+        },
+        {
+          "uid": "5f989740-164"
+        },
+        {
+          "uid": "5f989740-162"
+        },
+        {
+          "uid": "5f989740-226"
+        },
+        {
+          "uid": "5f989740-52"
+        },
+        {
+          "uid": "5f989740-56"
+        },
+        {
+          "uid": "5f989740-126"
+        },
+        {
+          "uid": "5f989740-158"
+        },
+        {
+          "uid": "5f989740-154"
+        },
+        {
+          "uid": "5f989740-144"
+        },
+        {
+          "uid": "5f989740-152"
+        },
+        {
+          "uid": "5f989740-150"
+        },
+        {
+          "uid": "5f989740-148"
+        },
+        {
+          "uid": "5f989740-142"
+        },
+        {
+          "uid": "5f989740-132"
+        },
+        {
+          "uid": "5f989740-108"
+        },
+        {
+          "uid": "5f989740-146"
+        },
+        {
+          "uid": "5f989740-140"
+        },
+        {
+          "uid": "5f989740-138"
+        },
+        {
+          "uid": "5f989740-134"
+        },
+        {
+          "uid": "5f989740-136"
+        },
+        {
+          "uid": "5f989740-122"
+        },
+        {
+          "uid": "5f989740-124"
+        },
+        {
+          "uid": "5f989740-120"
+        },
+        {
+          "uid": "5f989740-118"
+        },
+        {
+          "uid": "5f989740-116"
+        },
+        {
+          "uid": "5f989740-114"
+        },
+        {
+          "uid": "5f989740-130"
+        },
+        {
+          "uid": "5f989740-110"
+        },
+        {
+          "uid": "5f989740-112"
+        },
+        {
+          "uid": "5f989740-106"
+        },
+        {
+          "uid": "5f989740-104"
+        },
+        {
+          "uid": "5f989740-156"
+        },
+        {
+          "uid": "5f989740-128"
+        }
+      ]
+    },
+    "5f989740-243": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-98"
+        },
+        {
+          "uid": "5f989740-100"
+        },
+        {
+          "uid": "5f989740-245"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-241"
+        }
+      ]
+    },
+    "5f989740-244": {
+      "id": "react-dom",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-6"
+        }
+      ]
+    },
+    "5f989740-245": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm/renderRSC.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-240"
+        },
+        {
+          "uid": "5f989740-16"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-243"
+        }
+      ]
+    },
+    "5f989740-246": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-96"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-98"
+        }
+      ]
+    },
+    "5f989740-247": {
+      "id": "@tanstack/react-router",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-100"
+        },
+        {
+          "uid": "5f989740-94"
+        },
+        {
+          "uid": "5f989740-68"
+        },
+        {
+          "uid": "5f989740-62"
+        },
+        {
+          "uid": "5f989740-70"
+        },
+        {
+          "uid": "5f989740-72"
+        },
+        {
+          "uid": "5f989740-74"
+        },
+        {
+          "uid": "5f989740-76"
+        },
+        {
+          "uid": "5f989740-78"
+        },
+        {
+          "uid": "5f989740-80"
+        },
+        {
+          "uid": "5f989740-82"
+        },
+        {
+          "uid": "5f989740-84"
+        },
+        {
+          "uid": "5f989740-86"
+        },
+        {
+          "uid": "5f989740-88"
+        },
+        {
+          "uid": "5f989740-90"
+        },
+        {
+          "uid": "5f989740-50"
+        },
+        {
+          "uid": "5f989740-58"
+        },
+        {
+          "uid": "5f989740-228"
+        },
+        {
+          "uid": "5f989740-56"
+        }
+      ]
+    },
+    "5f989740-248": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/client.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-251"
+        },
+        {
+          "uid": "5f989740-252"
+        },
+        {
+          "uid": "5f989740-48"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-96"
+        }
+      ]
+    },
+    "5f989740-249": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+a1b7793a9f967983/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-96"
+        }
+      ]
+    },
+    "5f989740-250": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-14"
+        },
+        {
+          "uid": "5f989740-253"
+        },
+        {
+          "uid": "5f989740-18"
+        },
+        {
+          "uid": "5f989740-254"
+        },
+        {
+          "uid": "5f989740-20"
+        },
+        {
+          "uid": "5f989740-255"
+        },
+        {
+          "uid": "5f989740-256"
+        },
+        {
+          "uid": "5f989740-22"
+        },
+        {
+          "uid": "5f989740-257"
+        },
+        {
+          "uid": "5f989740-258"
+        },
+        {
+          "uid": "5f989740-259"
+        },
+        {
+          "uid": "5f989740-260"
+        },
+        {
+          "uid": "5f989740-261"
+        },
+        {
+          "uid": "5f989740-262"
+        },
+        {
+          "uid": "5f989740-263"
+        },
+        {
+          "uid": "5f989740-264"
+        },
+        {
+          "uid": "5f989740-265"
+        },
+        {
+          "uid": "5f989740-26"
+        },
+        {
+          "uid": "5f989740-28"
+        },
+        {
+          "uid": "5f989740-34"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-44"
+        },
+        {
+          "uid": "5f989740-40"
+        },
+        {
+          "uid": "5f989740-36"
+        }
+      ]
+    },
+    "5f989740-251": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/headers.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-266"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-248"
+        }
+      ]
+    },
+    "5f989740-252": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/json.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-248"
+        }
+      ]
+    },
+    "5f989740-253": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/path.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-14"
+        },
+        {
+          "uid": "5f989740-268"
+        },
+        {
+          "uid": "5f989740-267"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-257"
+        },
+        {
+          "uid": "5f989740-259"
+        },
+        {
+          "uid": "5f989740-263"
+        }
+      ]
+    },
+    "5f989740-254": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/scroll-restoration.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-14"
+        },
+        {
+          "uid": "5f989740-267"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-259"
+        }
+      ]
+    },
+    "5f989740-255": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/searchParams.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-20"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-259"
+        }
+      ]
+    },
+    "5f989740-256": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/root.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-259"
+        },
+        {
+          "uid": "5f989740-263"
+        },
+        {
+          "uid": "5f989740-270"
+        }
+      ]
+    },
+    "5f989740-257": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/rewrite.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-253"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-259"
+        }
+      ]
+    },
+    "5f989740-258": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/stores.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-14"
+        },
+        {
+          "uid": "5f989740-269"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-259"
+        }
+      ]
+    },
+    "5f989740-259": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/router.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-14"
+        },
+        {
+          "uid": "5f989740-269"
+        },
+        {
+          "uid": "5f989740-268"
+        },
+        {
+          "uid": "5f989740-253"
+        },
+        {
+          "uid": "5f989740-18"
+        },
+        {
+          "uid": "5f989740-254"
+        },
+        {
+          "uid": "5f989740-255"
+        },
+        {
+          "uid": "5f989740-256"
+        },
+        {
+          "uid": "5f989740-22"
+        },
+        {
+          "uid": "5f989740-270"
+        },
+        {
+          "uid": "5f989740-257"
+        },
+        {
+          "uid": "5f989740-258"
+        },
+        {
+          "uid": "5f989740-271"
+        },
+        {
+          "uid": "5f989740-267"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        },
+        {
+          "uid": "5f989740-260"
+        }
+      ]
+    },
+    "5f989740-260": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/defer.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-259"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        }
+      ]
+    },
+    "5f989740-261": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/link.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        }
+      ]
+    },
+    "5f989740-262": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/Matches.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        }
+      ]
+    },
+    "5f989740-263": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/route.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-253"
+        },
+        {
+          "uid": "5f989740-18"
+        },
+        {
+          "uid": "5f989740-256"
+        },
+        {
+          "uid": "5f989740-22"
+        },
+        {
+          "uid": "5f989740-16"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        }
+      ]
+    },
+    "5f989740-264": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/config.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        }
+      ]
+    },
+    "5f989740-265": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/searchMiddleware.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-14"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-250"
+        }
+      ]
+    },
+    "5f989740-266": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/cookie-es@2.0.1/node_modules/cookie-es/dist/index.mjs",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-251"
+        }
+      ]
+    },
+    "5f989740-267": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/isServer/client.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-14"
+        },
+        {
+          "uid": "5f989740-253"
+        },
+        {
+          "uid": "5f989740-254"
+        },
+        {
+          "uid": "5f989740-259"
+        },
+        {
+          "uid": "5f989740-270"
+        }
+      ]
+    },
+    "5f989740-268": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/new-process-route-tree.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-14"
+        },
+        {
+          "uid": "5f989740-269"
+        },
+        {
+          "uid": "5f989740-16"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-253"
+        },
+        {
+          "uid": "5f989740-259"
+        }
+      ]
+    },
+    "5f989740-269": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/lru-cache.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-258"
+        },
+        {
+          "uid": "5f989740-259"
+        },
+        {
+          "uid": "5f989740-268"
+        }
+      ]
+    },
+    "5f989740-270": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/load-matches.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-14"
+        },
+        {
+          "uid": "5f989740-18"
+        },
+        {
+          "uid": "5f989740-256"
+        },
+        {
+          "uid": "5f989740-22"
+        },
+        {
+          "uid": "5f989740-267"
+        },
+        {
+          "uid": "5f989740-16"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-259"
+        }
+      ]
+    },
+    "5f989740-271": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+history@1.161.6/node_modules/@tanstack/history/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-259"
+        }
+      ]
+    },
+    "5f989740-272": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/constants.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-26"
+        }
+      ]
+    },
+    "5f989740-273": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/use-intl@4.9.1+3f10a4be4e334a9b/node_modules/use-intl/dist/esm/production/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-194"
+        },
+        {
+          "uid": "5f989740-274"
+        },
+        {
+          "uid": "5f989740-224"
+        },
+        {
+          "uid": "5f989740-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-68"
+        },
+        {
+          "uid": "5f989740-50"
+        },
+        {
+          "uid": "5f989740-58"
+        },
+        {
+          "uid": "5f989740-52"
+        },
+        {
+          "uid": "5f989740-126"
+        },
+        {
+          "uid": "5f989740-158"
+        },
+        {
+          "uid": "5f989740-154"
+        },
+        {
+          "uid": "5f989740-144"
+        },
+        {
+          "uid": "5f989740-152"
+        },
+        {
+          "uid": "5f989740-150"
+        },
+        {
+          "uid": "5f989740-148"
+        },
+        {
+          "uid": "5f989740-142"
+        },
+        {
+          "uid": "5f989740-132"
+        },
+        {
+          "uid": "5f989740-108"
+        },
+        {
+          "uid": "5f989740-146"
+        },
+        {
+          "uid": "5f989740-140"
+        },
+        {
+          "uid": "5f989740-138"
+        },
+        {
+          "uid": "5f989740-134"
+        },
+        {
+          "uid": "5f989740-136"
+        },
+        {
+          "uid": "5f989740-122"
+        },
+        {
+          "uid": "5f989740-124"
+        },
+        {
+          "uid": "5f989740-120"
+        },
+        {
+          "uid": "5f989740-118"
+        },
+        {
+          "uid": "5f989740-116"
+        },
+        {
+          "uid": "5f989740-114"
+        },
+        {
+          "uid": "5f989740-130"
+        },
+        {
+          "uid": "5f989740-110"
+        },
+        {
+          "uid": "5f989740-112"
+        },
+        {
+          "uid": "5f989740-106"
+        },
+        {
+          "uid": "5f989740-104"
+        },
+        {
+          "uid": "5f989740-156"
+        },
+        {
+          "uid": "5f989740-128"
+        }
+      ]
+    },
+    "5f989740-274": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/use-intl@4.9.1+3f10a4be4e334a9b/node_modules/use-intl/dist/esm/production/core.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-194"
+        },
+        {
+          "uid": "5f989740-224"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-273"
+        }
+      ]
+    },
+    "5f989740-275": {
+      "id": "lucide-react",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-58"
+        }
+      ]
+    },
+    "5f989740-276": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-220"
+        },
+        {
+          "uid": "5f989740-216"
+        },
+        {
+          "uid": "5f989740-218"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-222"
+        }
+      ]
+    },
+    "5f989740-277": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-279"
+        },
+        {
+          "uid": "5f989740-280"
+        },
+        {
+          "uid": "5f989740-281"
+        },
+        {
+          "uid": "5f989740-282"
+        },
+        {
+          "uid": "5f989740-283"
+        },
+        {
+          "uid": "5f989740-284"
+        },
+        {
+          "uid": "5f989740-285"
+        },
+        {
+          "uid": "5f989740-286"
+        },
+        {
+          "uid": "5f989740-287"
+        },
+        {
+          "uid": "5f989740-288"
+        },
+        {
+          "uid": "5f989740-289"
+        },
+        {
+          "uid": "5f989740-290"
+        },
+        {
+          "uid": "5f989740-291"
+        },
+        {
+          "uid": "5f989740-292"
+        },
+        {
+          "uid": "5f989740-293"
+        },
+        {
+          "uid": "5f989740-294"
+        },
+        {
+          "uid": "5f989740-295"
+        },
+        {
+          "uid": "5f989740-296"
+        },
+        {
+          "uid": "5f989740-297"
+        },
+        {
+          "uid": "5f989740-298"
+        },
+        {
+          "uid": "5f989740-299"
+        },
+        {
+          "uid": "5f989740-300"
+        },
+        {
+          "uid": "5f989740-301"
+        },
+        {
+          "uid": "5f989740-302"
+        },
+        {
+          "uid": "5f989740-303"
+        },
+        {
+          "uid": "5f989740-304"
+        },
+        {
+          "uid": "5f989740-305"
+        },
+        {
+          "uid": "5f989740-306"
+        },
+        {
+          "uid": "5f989740-307"
+        },
+        {
+          "uid": "5f989740-308"
+        },
+        {
+          "uid": "5f989740-309"
+        },
+        {
+          "uid": "5f989740-310"
+        },
+        {
+          "uid": "5f989740-311"
+        },
+        {
+          "uid": "5f989740-312"
+        },
+        {
+          "uid": "5f989740-313"
+        },
+        {
+          "uid": "5f989740-314"
+        },
+        {
+          "uid": "5f989740-315"
+        },
+        {
+          "uid": "5f989740-316"
+        },
+        {
+          "uid": "5f989740-317"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-319"
+        },
+        {
+          "uid": "5f989740-320"
+        },
+        {
+          "uid": "5f989740-321"
+        },
+        {
+          "uid": "5f989740-322"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-218"
+        }
+      ]
+    },
+    "5f989740-278": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/manipulator.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-202"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-214"
+        }
+      ]
+    },
+    "5f989740-279": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/CanonicalizeLocaleList.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-303"
+        }
+      ]
+    },
+    "5f989740-280": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/CanonicalizeTimeZoneName.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-281": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/CoerceOptionsToObject.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-313"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-303"
+        }
+      ]
+    },
+    "5f989740-282": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/GetNumberOption.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-324"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-306"
+        }
+      ]
+    },
+    "5f989740-283": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/GetOption.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-313"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-303"
+        },
+        {
+          "uid": "5f989740-306"
+        },
+        {
+          "uid": "5f989740-307"
+        },
+        {
+          "uid": "5f989740-311"
+        }
+      ]
+    },
+    "5f989740-284": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/GetOptionsObject.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-285": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/GetStringOrBooleanOption.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-313"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-303"
+        }
+      ]
+    },
+    "5f989740-286": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/IsSanctionedSimpleUnitIdentifier.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-289"
+        }
+      ]
+    },
+    "5f989740-287": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/IsValidTimeZoneName.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-288": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/IsWellFormedCurrencyCode.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-307"
+        }
+      ]
+    },
+    "5f989740-289": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/IsWellFormedUnitIdentifier.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-286"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-307"
+        }
+      ]
+    },
+    "5f989740-290": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/ApplyUnsignedRoundingMode.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-308"
+        },
+        {
+          "uid": "5f989740-309"
+        }
+      ]
+    },
+    "5f989740-291": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/CollapseNumberRange.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-305"
+        }
+      ]
+    },
+    "5f989740-292": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/ComputeExponent.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-325"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-293"
+        },
+        {
+          "uid": "5f989740-301"
+        },
+        {
+          "uid": "5f989740-326"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-304"
+        }
+      ]
+    },
+    "5f989740-293": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/ComputeExponentForMagnitude.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        },
+        {
+          "uid": "5f989740-326"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-292"
+        }
+      ]
+    },
+    "5f989740-294": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/CurrencyDigits.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-313"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-303"
+        }
+      ]
+    },
+    "5f989740-295": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/format_to_parts.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-325"
+        },
+        {
+          "uid": "5f989740-327"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-326"
+        },
+        {
+          "uid": "5f989740-319"
+        },
+        {
+          "uid": "5f989740-328"
+        },
+        {
+          "uid": "5f989740-302"
+        },
+        {
+          "uid": "5f989740-308"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-304"
+        }
+      ]
+    },
+    "5f989740-296": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/FormatApproximately.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-305"
+        }
+      ]
+    },
+    "5f989740-297": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/FormatNumeric.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-304"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-305"
+        }
+      ]
+    },
+    "5f989740-298": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/FormatNumericRange.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-305"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-299": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/FormatNumericRangeToParts.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-305"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-300": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/FormatNumericToParts.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-313"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-304"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-301": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/FormatNumericToString.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-321"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        },
+        {
+          "uid": "5f989740-302"
+        },
+        {
+          "uid": "5f989740-308"
+        },
+        {
+          "uid": "5f989740-309"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-292"
+        },
+        {
+          "uid": "5f989740-304"
+        }
+      ]
+    },
+    "5f989740-302": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/GetUnsignedRoundingMode.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-295"
+        },
+        {
+          "uid": "5f989740-301"
+        }
+      ]
+    },
+    "5f989740-303": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/InitializeNumberFormat.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-329"
+        },
+        {
+          "uid": "5f989740-279"
+        },
+        {
+          "uid": "5f989740-281"
+        },
+        {
+          "uid": "5f989740-283"
+        },
+        {
+          "uid": "5f989740-285"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        },
+        {
+          "uid": "5f989740-294"
+        },
+        {
+          "uid": "5f989740-306"
+        },
+        {
+          "uid": "5f989740-307"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-304": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/PartitionNumberPattern.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        },
+        {
+          "uid": "5f989740-292"
+        },
+        {
+          "uid": "5f989740-295"
+        },
+        {
+          "uid": "5f989740-301"
+        },
+        {
+          "uid": "5f989740-326"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-297"
+        },
+        {
+          "uid": "5f989740-300"
+        },
+        {
+          "uid": "5f989740-305"
+        }
+      ]
+    },
+    "5f989740-305": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/PartitionNumberRangePattern.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        },
+        {
+          "uid": "5f989740-291"
+        },
+        {
+          "uid": "5f989740-296"
+        },
+        {
+          "uid": "5f989740-297"
+        },
+        {
+          "uid": "5f989740-304"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-298"
+        },
+        {
+          "uid": "5f989740-299"
+        }
+      ]
+    },
+    "5f989740-306": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/SetNumberFormatDigitOptions.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-324"
+        },
+        {
+          "uid": "5f989740-282"
+        },
+        {
+          "uid": "5f989740-283"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-303"
+        }
+      ]
+    },
+    "5f989740-307": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/SetNumberFormatUnitOptions.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-283"
+        },
+        {
+          "uid": "5f989740-288"
+        },
+        {
+          "uid": "5f989740-289"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-303"
+        }
+      ]
+    },
+    "5f989740-308": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/ToRawFixed.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        },
+        {
+          "uid": "5f989740-290"
+        },
+        {
+          "uid": "5f989740-326"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-295"
+        },
+        {
+          "uid": "5f989740-301"
+        }
+      ]
+    },
+    "5f989740-309": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/ToRawPrecision.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-321"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-312"
+        },
+        {
+          "uid": "5f989740-290"
+        },
+        {
+          "uid": "5f989740-326"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-301"
+        }
+      ]
+    },
+    "5f989740-310": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/PartitionPattern.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-312"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-311": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/SupportedLocales.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-329"
+        },
+        {
+          "uid": "5f989740-313"
+        },
+        {
+          "uid": "5f989740-283"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-312": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/utils.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-192"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-290"
+        },
+        {
+          "uid": "5f989740-293"
+        },
+        {
+          "uid": "5f989740-301"
+        },
+        {
+          "uid": "5f989740-303"
+        },
+        {
+          "uid": "5f989740-304"
+        },
+        {
+          "uid": "5f989740-305"
+        },
+        {
+          "uid": "5f989740-306"
+        },
+        {
+          "uid": "5f989740-307"
+        },
+        {
+          "uid": "5f989740-308"
+        },
+        {
+          "uid": "5f989740-309"
+        },
+        {
+          "uid": "5f989740-310"
+        },
+        {
+          "uid": "5f989740-313"
+        }
+      ]
+    },
+    "5f989740-313": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/262.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-325"
+        },
+        {
+          "uid": "5f989740-321"
+        },
+        {
+          "uid": "5f989740-312"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-281"
+        },
+        {
+          "uid": "5f989740-283"
+        },
+        {
+          "uid": "5f989740-285"
+        },
+        {
+          "uid": "5f989740-294"
+        },
+        {
+          "uid": "5f989740-300"
+        },
+        {
+          "uid": "5f989740-311"
+        },
+        {
+          "uid": "5f989740-322"
+        }
+      ]
+    },
+    "5f989740-314": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/data.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-315": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/types/date-time.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-316": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/types/displaynames.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-330"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-317": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/types/list.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-330"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-318": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/types/number.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-330"
+        },
+        {
+          "uid": "5f989740-319"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-290"
+        },
+        {
+          "uid": "5f989740-291"
+        },
+        {
+          "uid": "5f989740-292"
+        },
+        {
+          "uid": "5f989740-293"
+        },
+        {
+          "uid": "5f989740-295"
+        },
+        {
+          "uid": "5f989740-296"
+        },
+        {
+          "uid": "5f989740-297"
+        },
+        {
+          "uid": "5f989740-298"
+        },
+        {
+          "uid": "5f989740-299"
+        },
+        {
+          "uid": "5f989740-300"
+        },
+        {
+          "uid": "5f989740-301"
+        },
+        {
+          "uid": "5f989740-302"
+        },
+        {
+          "uid": "5f989740-303"
+        },
+        {
+          "uid": "5f989740-304"
+        },
+        {
+          "uid": "5f989740-305"
+        },
+        {
+          "uid": "5f989740-306"
+        },
+        {
+          "uid": "5f989740-307"
+        },
+        {
+          "uid": "5f989740-308"
+        },
+        {
+          "uid": "5f989740-309"
+        },
+        {
+          "uid": "5f989740-319"
+        }
+      ]
+    },
+    "5f989740-319": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/types/plural-rules.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-330"
+        },
+        {
+          "uid": "5f989740-318"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-295"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-320"
+        }
+      ]
+    },
+    "5f989740-320": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/types/relative-time.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-330"
+        },
+        {
+          "uid": "5f989740-319"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-321": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/constants.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-325"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        },
+        {
+          "uid": "5f989740-301"
+        },
+        {
+          "uid": "5f989740-309"
+        },
+        {
+          "uid": "5f989740-313"
+        }
+      ]
+    },
+    "5f989740-322": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/ToIntlMathematicalValue.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-325"
+        },
+        {
+          "uid": "5f989740-313"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-277"
+        }
+      ]
+    },
+    "5f989740-323": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-196"
+        },
+        {
+          "uid": "5f989740-200"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-212"
+        },
+        {
+          "uid": "5f989740-202"
+        }
+      ]
+    },
+    "5f989740-324": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/DefaultNumberOption.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-282"
+        },
+        {
+          "uid": "5f989740-306"
+        }
+      ]
+    },
+    "5f989740-325": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+bigdecimal@0.2.0/node_modules/@formatjs/bigdecimal/index.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-292"
+        },
+        {
+          "uid": "5f989740-295"
+        },
+        {
+          "uid": "5f989740-313"
+        },
+        {
+          "uid": "5f989740-321"
+        },
+        {
+          "uid": "5f989740-322"
+        },
+        {
+          "uid": "5f989740-326"
+        }
+      ]
+    },
+    "5f989740-326": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/decimal-cache.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-325"
+        },
+        {
+          "uid": "5f989740-192"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-292"
+        },
+        {
+          "uid": "5f989740-293"
+        },
+        {
+          "uid": "5f989740-295"
+        },
+        {
+          "uid": "5f989740-304"
+        },
+        {
+          "uid": "5f989740-308"
+        },
+        {
+          "uid": "5f989740-309"
+        }
+      ]
+    },
+    "5f989740-327": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/regex.generated.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-295"
+        }
+      ]
+    },
+    "5f989740-328": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/NumberFormat/digit-mapping.generated.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-295"
+        }
+      ]
+    },
+    "5f989740-329": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-331"
+        },
+        {
+          "uid": "5f989740-332"
+        },
+        {
+          "uid": "5f989740-333"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-303"
+        },
+        {
+          "uid": "5f989740-311"
+        }
+      ]
+    },
+    "5f989740-330": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+ecma402-abstract@3.2.0/node_modules/@formatjs/ecma402-abstract/types/core.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-316"
+        },
+        {
+          "uid": "5f989740-317"
+        },
+        {
+          "uid": "5f989740-318"
+        },
+        {
+          "uid": "5f989740-319"
+        },
+        {
+          "uid": "5f989740-320"
+        }
+      ]
+    },
+    "5f989740-331": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/CanonicalizeLocaleList.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-329"
+        }
+      ]
+    },
+    "5f989740-332": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/ResolveLocale.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-334"
+        },
+        {
+          "uid": "5f989740-335"
+        },
+        {
+          "uid": "5f989740-336"
+        },
+        {
+          "uid": "5f989740-337"
+        },
+        {
+          "uid": "5f989740-338"
+        },
+        {
+          "uid": "5f989740-339"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-329"
+        }
+      ]
+    },
+    "5f989740-333": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/LookupSupportedLocales.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-340"
+        },
+        {
+          "uid": "5f989740-339"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-329"
+        }
+      ]
+    },
+    "5f989740-334": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/BestFitMatcher.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-339"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-332"
+        }
+      ]
+    },
+    "5f989740-335": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/CanonicalizeUValue.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-339"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-332"
+        }
+      ]
+    },
+    "5f989740-336": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/InsertUnicodeExtensionAndCanonicalize.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-341"
+        },
+        {
+          "uid": "5f989740-339"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-332"
+        }
+      ]
+    },
+    "5f989740-337": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/LookupMatcher.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-340"
+        },
+        {
+          "uid": "5f989740-339"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-332"
+        }
+      ]
+    },
+    "5f989740-338": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/UnicodeExtensionComponents.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-339"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-332"
+        }
+      ]
+    },
+    "5f989740-339": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/utils.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "5f989740-192"
+        },
+        {
+          "uid": "5f989740-342"
+        },
+        {
+          "uid": "5f989740-343"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "5f989740-332"
+        },
+        {
+          "uid": "5f989740-333"
+        },
+        {
+          "uid": "5f989740-334"
+        },
+        {
+          "uid": "5f989740-335"
+        },
+        {
+          "uid": "5f989740-336"
+        },
+        {
+          "uid": "5f989740-337"
+        },
+        {
+          "uid": "5f989740-338"
+        }
+      ]
+    },
+    "5f989740-340": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/BestAvailableLocale.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-333"
+        },
+        {
+          "uid": "5f989740-337"
+        }
+      ]
+    },
+    "5f989740-341": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/CanonicalizeUnicodeLocaleId.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-336"
+        }
+      ]
+    },
+    "5f989740-342": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/languageMatching.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-339"
+        }
+      ]
+    },
+    "5f989740-343": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@formatjs+intl-localematcher@0.8.2/node_modules/@formatjs/intl-localematcher/abstract/regions.generated.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "5f989740-339"
+        }
+      ]
+    }
+  },
+  "env": {
+    "rollup": "4.23.0"
+  },
+  "options": {
+    "gzip": true,
+    "brotli": true,
+    "sourcemap": false
+  }
+}

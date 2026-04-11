@@ -1,0 +1,32 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "outputs": ["dist/**"]
+    },
+    "test:pages": {
+      "dependsOn": ["build"],
+      "outputs": ["../../results/**"]
+    },
+    "test:reactivity": {
+      "dependsOn": ["build"],
+      "outputs": ["../../results/**"]
+    },
+    "test:components": {
+      "dependsOn": ["build"],
+      "outputs": ["../../results/**"]
+    },
+    "test": {
+      "dependsOn": ["test:pages", "test:reactivity", "test:components"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "preview": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

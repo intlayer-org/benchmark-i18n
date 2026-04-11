@@ -1,0 +1,5233 @@
+{
+  "version": 2,
+  "tree": {
+    "name": "root",
+    "children": [
+      {
+        "name": "component.js",
+        "children": [
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun",
+            "children": [
+              {
+                "name": "scheduler@0.27.0/node_modules/scheduler",
+                "children": [
+                  {
+                    "name": "cjs/scheduler.production.js",
+                    "uid": "cc1c73cc-1"
+                  },
+                  {
+                    "uid": "cc1c73cc-3",
+                    "name": "index.js"
+                  }
+                ]
+              },
+              {
+                "name": "react-dom@19.2.5+3f10a4be4e334a9b/node_modules/react-dom",
+                "children": [
+                  {
+                    "name": "cjs/react-dom-client.production.js",
+                    "uid": "cc1c73cc-5"
+                  },
+                  {
+                    "uid": "cc1c73cc-7",
+                    "name": "client.js"
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "cc1c73cc-9",
+                    "name": "constants.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-11",
+                    "name": "getStartOptions.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-35",
+                    "name": "getDefaultSerovalPlugins.js"
+                  },
+                  {
+                    "name": "client-rpc",
+                    "children": [
+                      {
+                        "uid": "cc1c73cc-37",
+                        "name": "frame-decoder.js"
+                      },
+                      {
+                        "uid": "cc1c73cc-39",
+                        "name": "serverFnFetcher.js"
+                      },
+                      {
+                        "uid": "cc1c73cc-41",
+                        "name": "createClientRpc.js"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "client",
+                    "children": [
+                      {
+                        "uid": "cc1c73cc-43",
+                        "name": "ServerFunctionSerializationAdapter.js"
+                      },
+                      {
+                        "uid": "cc1c73cc-117",
+                        "name": "hydrateStart.js"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "cc1c73cc-13",
+                    "name": "utils.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-17",
+                    "name": "not-found.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-19",
+                    "name": "qss.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-21",
+                    "name": "redirect.js"
+                  },
+                  {
+                    "name": "ssr",
+                    "children": [
+                      {
+                        "name": "serializer",
+                        "children": [
+                          {
+                            "uid": "cc1c73cc-25",
+                            "name": "transformer.js"
+                          },
+                          {
+                            "uid": "cc1c73cc-27",
+                            "name": "RawStream.js"
+                          },
+                          {
+                            "uid": "cc1c73cc-29",
+                            "name": "ShallowErrorPlugin.js"
+                          },
+                          {
+                            "uid": "cc1c73cc-33",
+                            "name": "seroval-plugins.js"
+                          }
+                        ]
+                      },
+                      {
+                        "uid": "cc1c73cc-45",
+                        "name": "ssr-match-id.js"
+                      },
+                      {
+                        "uid": "cc1c73cc-47",
+                        "name": "ssr-client.js"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "tiny-invariant@1.3.3/node_modules/tiny-invariant/dist/esm/tiny-invariant.js",
+                "uid": "cc1c73cc-15"
+              },
+              {
+                "name": "seroval@1.5.2/node_modules/seroval/dist/esm/production/index.mjs",
+                "uid": "cc1c73cc-23"
+              },
+              {
+                "name": "seroval-plugins@1.5.2+7cd651eebf40fbbb/node_modules/seroval-plugins/dist/esm/production/web.mjs",
+                "uid": "cc1c73cc-31"
+              },
+              {
+                "name": "i18next@26.0.4+8e24a2f921b8d7be/node_modules/i18next/dist/esm/i18next.js",
+                "uid": "cc1c73cc-49"
+              },
+              {
+                "name": "@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm",
+                "children": [
+                  {
+                    "uid": "cc1c73cc-119",
+                    "name": "hydrateStart.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-121",
+                    "name": "StartClient.js"
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+react-start@1.167.1+a1b7793a9f967983/node_modules/@tanstack/react-start/dist/plugin/default-entry/client.tsx",
+                "uid": "cc1c73cc-123"
+              }
+            ]
+          },
+          {
+            "name": "src",
+            "children": [
+              {
+                "name": "i18n",
+                "children": [
+                  {
+                    "uid": "cc1c73cc-51",
+                    "name": "config.ts"
+                  },
+                  {
+                    "name": "locales",
+                    "children": [
+                      {
+                        "uid": "cc1c73cc-53",
+                        "name": "en.json"
+                      },
+                      {
+                        "uid": "cc1c73cc-55",
+                        "name": "fr.json"
+                      },
+                      {
+                        "uid": "cc1c73cc-57",
+                        "name": "es.json"
+                      },
+                      {
+                        "uid": "cc1c73cc-59",
+                        "name": "de.json"
+                      },
+                      {
+                        "uid": "cc1c73cc-61",
+                        "name": "it.json"
+                      },
+                      {
+                        "uid": "cc1c73cc-63",
+                        "name": "pt.json"
+                      },
+                      {
+                        "uid": "cc1c73cc-65",
+                        "name": "zh.json"
+                      },
+                      {
+                        "uid": "cc1c73cc-67",
+                        "name": "ja.json"
+                      },
+                      {
+                        "uid": "cc1c73cc-69",
+                        "name": "ko.json"
+                      },
+                      {
+                        "uid": "cc1c73cc-71",
+                        "name": "ru.json"
+                      }
+                    ]
+                  },
+                  {
+                    "uid": "cc1c73cc-73",
+                    "name": "i18n.ts"
+                  }
+                ]
+              },
+              {
+                "name": "routes",
+                "children": [
+                  {
+                    "name": "$locale",
+                    "children": [
+                      {
+                        "uid": "cc1c73cc-75",
+                        "name": "route.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-93",
+                        "name": "index.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-95",
+                        "name": "team.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-97",
+                        "name": "settings.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-99",
+                        "name": "products.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-101",
+                        "name": "pricing.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-103",
+                        "name": "faq.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-105",
+                        "name": "contact.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-107",
+                        "name": "careers.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-109",
+                        "name": "blog.tsx"
+                      },
+                      {
+                        "uid": "cc1c73cc-111",
+                        "name": "about.tsx"
+                      }
+                    ]
+                  },
+                  {
+                    "uid": "cc1c73cc-89",
+                    "name": "__root.tsx"
+                  },
+                  {
+                    "uid": "cc1c73cc-91",
+                    "name": "index.tsx"
+                  }
+                ]
+              },
+              {
+                "name": "components",
+                "children": [
+                  {
+                    "uid": "cc1c73cc-77",
+                    "name": "Footer.tsx"
+                  },
+                  {
+                    "uid": "cc1c73cc-79",
+                    "name": "ThemeToggle.tsx"
+                  },
+                  {
+                    "uid": "cc1c73cc-81",
+                    "name": "LocaleSwitcher.tsx"
+                  },
+                  {
+                    "uid": "cc1c73cc-83",
+                    "name": "Header.tsx"
+                  }
+                ]
+              },
+              {
+                "uid": "cc1c73cc-85",
+                "name": "styles.css?transform-only"
+              },
+              {
+                "uid": "cc1c73cc-87",
+                "name": "styles.css?url"
+              },
+              {
+                "uid": "cc1c73cc-113",
+                "name": "routeTree.gen.ts"
+              },
+              {
+                "uid": "cc1c73cc-115",
+                "name": "router.tsx"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "AboutGrid-DuYfhCtu.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/AboutGrid.tsx",
+            "uid": "cc1c73cc-125"
+          }
+        ]
+      },
+      {
+        "name": "AboutHeader-D_VtR2wW.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/AboutHeader.tsx",
+            "uid": "cc1c73cc-127"
+          }
+        ]
+      },
+      {
+        "name": "ApiAccessSection-DBamEsc6.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/ApiAccessSection.tsx",
+            "uid": "cc1c73cc-129"
+          }
+        ]
+      },
+      {
+        "name": "BlogHeader-BPjpfuVV.js",
+        "children": [
+          {
+            "name": "src/components/pages/blog/BlogHeader.tsx",
+            "uid": "cc1c73cc-131"
+          }
+        ]
+      },
+      {
+        "name": "BlogList-C_O2ESiH.js",
+        "children": [
+          {
+            "name": "src/components/pages/blog/BlogList.tsx",
+            "uid": "cc1c73cc-133"
+          }
+        ]
+      },
+      {
+        "name": "CareersBenefits-DExpcymw.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/CareersBenefits.tsx",
+            "uid": "cc1c73cc-135"
+          }
+        ]
+      },
+      {
+        "name": "CareersHeader-BSfRMzTn.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/CareersHeader.tsx",
+            "uid": "cc1c73cc-137"
+          }
+        ]
+      },
+      {
+        "name": "ContactForm-C5gGvIoW.js",
+        "children": [
+          {
+            "name": "src/components/pages/contact/ContactForm.tsx",
+            "uid": "cc1c73cc-139"
+          }
+        ]
+      },
+      {
+        "name": "ContactHeader-DoiKavgv.js",
+        "children": [
+          {
+            "name": "src/components/pages/contact/ContactHeader.tsx",
+            "uid": "cc1c73cc-141"
+          }
+        ]
+      },
+      {
+        "name": "FAQHeader-XUlKhE_7.js",
+        "children": [
+          {
+            "name": "src/components/pages/faq/FAQHeader.tsx",
+            "uid": "cc1c73cc-143"
+          }
+        ]
+      },
+      {
+        "name": "FAQList-CYSHo9i_.js",
+        "children": [
+          {
+            "name": "src/components/pages/faq/FAQList.tsx",
+            "uid": "cc1c73cc-145"
+          }
+        ]
+      },
+      {
+        "name": "Hero-DZgZ57qB.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/Hero.tsx",
+            "uid": "cc1c73cc-147"
+          }
+        ]
+      },
+      {
+        "name": "MockBanner-SleUvTwk.js",
+        "children": [
+          {
+            "name": "src/components/MockBanner.tsx",
+            "uid": "cc1c73cc-149"
+          }
+        ]
+      },
+      {
+        "name": "OpenPositions-A0Ls12qC.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/OpenPositions.tsx",
+            "uid": "cc1c73cc-151"
+          }
+        ]
+      },
+      {
+        "name": "PreferencesSection-DkUoPbsK.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/PreferencesSection.tsx",
+            "uid": "cc1c73cc-153"
+          }
+        ]
+      },
+      {
+        "name": "PricingHeader-CGFQO0Uc.js",
+        "children": [
+          {
+            "name": "src/components/pages/pricing/PricingHeader.tsx",
+            "uid": "cc1c73cc-155"
+          }
+        ]
+      },
+      {
+        "name": "PricingTiers-BoITpzIu.js",
+        "children": [
+          {
+            "name": "src/components/pages/pricing/PricingTiers.tsx",
+            "uid": "cc1c73cc-157"
+          }
+        ]
+      },
+      {
+        "name": "ProductsGrid-BL-wki4R.js",
+        "children": [
+          {
+            "name": "src/components/pages/products/ProductsGrid.tsx",
+            "uid": "cc1c73cc-159"
+          }
+        ]
+      },
+      {
+        "name": "ProductsHeader-B11nphoz.js",
+        "children": [
+          {
+            "name": "src/components/pages/products/ProductsHeader.tsx",
+            "uid": "cc1c73cc-161"
+          }
+        ]
+      },
+      {
+        "name": "ProfileSection-baZSiSnv.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/ProfileSection.tsx",
+            "uid": "cc1c73cc-163"
+          }
+        ]
+      },
+      {
+        "name": "ResultsTable-34rwFvg7.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/ResultsTable.tsx",
+            "uid": "cc1c73cc-165"
+          }
+        ]
+      },
+      {
+        "name": "SettingsFooter-4DDAlA2M.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/SettingsFooter.tsx",
+            "uid": "cc1c73cc-167"
+          }
+        ]
+      },
+      {
+        "name": "SettingsHeader-D7lZMdJV.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/SettingsHeader.tsx",
+            "uid": "cc1c73cc-169"
+          }
+        ]
+      },
+      {
+        "name": "TeamGrid-CNdP4_kA.js",
+        "children": [
+          {
+            "name": "src/components/pages/team/TeamGrid.tsx",
+            "uid": "cc1c73cc-171"
+          }
+        ]
+      },
+      {
+        "name": "TeamHeader-JgulWnt_.js",
+        "children": [
+          {
+            "name": "src/components/pages/team/TeamHeader.tsx",
+            "uid": "cc1c73cc-173"
+          }
+        ]
+      },
+      {
+        "name": "UnderstandingImpact-D4HEOneC.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/UnderstandingImpact.tsx",
+            "uid": "cc1c73cc-175"
+          }
+        ]
+      },
+      {
+        "name": "WhatWeMeasure-CfZknBBE.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/WhatWeMeasure.tsx",
+            "uid": "cc1c73cc-177"
+          }
+        ]
+      },
+      {
+        "name": "WhyItMatters-CtXeoLQn.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/WhyItMatters.tsx",
+            "uid": "cc1c73cc-179"
+          }
+        ]
+      },
+      {
+        "name": "_locale-CayOLJFG.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/index.tsx?tsr-split=component",
+            "uid": "cc1c73cc-181"
+          }
+        ]
+      },
+      {
+        "name": "about-DOBs6J7W.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/about.tsx?tsr-split=component",
+            "uid": "cc1c73cc-183"
+          }
+        ]
+      },
+      {
+        "name": "blog-qGiP-cfH.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/blog.tsx?tsr-split=component",
+            "uid": "cc1c73cc-185"
+          }
+        ]
+      },
+      {
+        "name": "careers-DgR9aJOy.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/careers.tsx?tsr-split=component",
+            "uid": "cc1c73cc-187"
+          }
+        ]
+      },
+      {
+        "name": "contact-C5OxH-ZY.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/contact.tsx?tsr-split=component",
+            "uid": "cc1c73cc-189"
+          }
+        ]
+      },
+      {
+        "name": "faq-BWgEGYVo.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/faq.tsx?tsr-split=component",
+            "uid": "cc1c73cc-191"
+          }
+        ]
+      },
+      {
+        "name": "pricing-CJcDIZwQ.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/pricing.tsx?tsr-split=component",
+            "uid": "cc1c73cc-193"
+          }
+        ]
+      },
+      {
+        "name": "products-CM2E14hz.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/products.tsx?tsr-split=component",
+            "uid": "cc1c73cc-195"
+          }
+        ]
+      },
+      {
+        "name": "route-RmgwZLEr.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/route.tsx?tsr-split=component",
+            "uid": "cc1c73cc-197"
+          }
+        ]
+      },
+      {
+        "name": "settings-42ik65sW.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/settings.tsx?tsr-split=component",
+            "uid": "cc1c73cc-199"
+          }
+        ]
+      },
+      {
+        "name": "team-C-WyBxoO.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/team.tsx?tsr-split=component",
+            "uid": "cc1c73cc-201"
+          }
+        ]
+      },
+      {
+        "name": "usePerformanceMeasure-CgVAPsMx.js",
+        "children": [
+          {
+            "name": "src/hooks/usePerformanceMeasure.ts",
+            "uid": "cc1c73cc-203"
+          }
+        ]
+      },
+      {
+        "name": "useTranslation-B_X5y4bS.js",
+        "children": [
+          {
+            "name": "\u0000rolldown/runtime.js",
+            "uid": "cc1c73cc-205"
+          },
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun",
+            "children": [
+              {
+                "name": "react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es",
+                "children": [
+                  {
+                    "uid": "cc1c73cc-207",
+                    "name": "utils.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-209",
+                    "name": "unescape.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-211",
+                    "name": "defaults.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-213",
+                    "name": "i18nInstance.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-215",
+                    "name": "initReactI18next.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-217",
+                    "name": "context.js"
+                  },
+                  {
+                    "uid": "cc1c73cc-223",
+                    "name": "useTranslation.js"
+                  }
+                ]
+              },
+              {
+                "name": "use-sync-external-store@1.6.0+3f10a4be4e334a9b/node_modules/use-sync-external-store",
+                "children": [
+                  {
+                    "name": "cjs/use-sync-external-store-shim.production.js",
+                    "uid": "cc1c73cc-219"
+                  },
+                  {
+                    "name": "shim/index.js",
+                    "uid": "cc1c73cc-221"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "isRoot": true
+  },
+  "nodeParts": {
+    "cc1c73cc-1": {
+      "renderedLength": 9035,
+      "gzipLength": 2315,
+      "brotliLength": 2010,
+      "metaUid": "cc1c73cc-0"
+    },
+    "cc1c73cc-3": {
+      "renderedLength": 229,
+      "gzipLength": 177,
+      "brotliLength": 142,
+      "metaUid": "cc1c73cc-2"
+    },
+    "cc1c73cc-5": {
+      "renderedLength": 452796,
+      "gzipLength": 85001,
+      "brotliLength": 69590,
+      "metaUid": "cc1c73cc-4"
+    },
+    "cc1c73cc-7": {
+      "renderedLength": 531,
+      "gzipLength": 334,
+      "brotliLength": 260,
+      "metaUid": "cc1c73cc-6"
+    },
+    "cc1c73cc-9": {
+      "renderedLength": 986,
+      "gzipLength": 526,
+      "brotliLength": 448,
+      "metaUid": "cc1c73cc-8"
+    },
+    "cc1c73cc-11": {
+      "renderedLength": 210,
+      "gzipLength": 167,
+      "brotliLength": 134,
+      "metaUid": "cc1c73cc-10"
+    },
+    "cc1c73cc-13": {
+      "renderedLength": 701,
+      "gzipLength": 301,
+      "brotliLength": 250,
+      "metaUid": "cc1c73cc-12"
+    },
+    "cc1c73cc-15": {
+      "renderedLength": 461,
+      "gzipLength": 269,
+      "brotliLength": 224,
+      "metaUid": "cc1c73cc-14"
+    },
+    "cc1c73cc-17": {
+      "renderedLength": 190,
+      "gzipLength": 156,
+      "brotliLength": 125,
+      "metaUid": "cc1c73cc-16"
+    },
+    "cc1c73cc-19": {
+      "renderedLength": 347,
+      "gzipLength": 252,
+      "brotliLength": 217,
+      "metaUid": "cc1c73cc-18"
+    },
+    "cc1c73cc-21": {
+      "renderedLength": 793,
+      "gzipLength": 422,
+      "brotliLength": 350,
+      "metaUid": "cc1c73cc-20"
+    },
+    "cc1c73cc-23": {
+      "renderedLength": 27266,
+      "gzipLength": 7309,
+      "brotliLength": 6489,
+      "metaUid": "cc1c73cc-22"
+    },
+    "cc1c73cc-25": {
+      "renderedLength": 798,
+      "gzipLength": 333,
+      "brotliLength": 298,
+      "metaUid": "cc1c73cc-24"
+    },
+    "cc1c73cc-27": {
+      "renderedLength": 6212,
+      "gzipLength": 1754,
+      "brotliLength": 1565,
+      "metaUid": "cc1c73cc-26"
+    },
+    "cc1c73cc-29": {
+      "renderedLength": 700,
+      "gzipLength": 324,
+      "brotliLength": 279,
+      "metaUid": "cc1c73cc-28"
+    },
+    "cc1c73cc-31": {
+      "renderedLength": 11960,
+      "gzipLength": 2275,
+      "brotliLength": 2005,
+      "metaUid": "cc1c73cc-30"
+    },
+    "cc1c73cc-33": {
+      "renderedLength": 233,
+      "gzipLength": 179,
+      "brotliLength": 175,
+      "metaUid": "cc1c73cc-32"
+    },
+    "cc1c73cc-35": {
+      "renderedLength": 314,
+      "gzipLength": 215,
+      "brotliLength": 179,
+      "metaUid": "cc1c73cc-34"
+    },
+    "cc1c73cc-37": {
+      "renderedLength": 6132,
+      "gzipLength": 1786,
+      "brotliLength": 1613,
+      "metaUid": "cc1c73cc-36"
+    },
+    "cc1c73cc-39": {
+      "renderedLength": 6863,
+      "gzipLength": 2138,
+      "brotliLength": 1877,
+      "metaUid": "cc1c73cc-38"
+    },
+    "cc1c73cc-41": {
+      "renderedLength": 532,
+      "gzipLength": 324,
+      "brotliLength": 283,
+      "metaUid": "cc1c73cc-40"
+    },
+    "cc1c73cc-43": {
+      "renderedLength": 565,
+      "gzipLength": 329,
+      "brotliLength": 272,
+      "metaUid": "cc1c73cc-42"
+    },
+    "cc1c73cc-45": {
+      "renderedLength": 233,
+      "gzipLength": 188,
+      "brotliLength": 174,
+      "metaUid": "cc1c73cc-44"
+    },
+    "cc1c73cc-47": {
+      "renderedLength": 6140,
+      "gzipLength": 1875,
+      "brotliLength": 1674,
+      "metaUid": "cc1c73cc-46"
+    },
+    "cc1c73cc-49": {
+      "renderedLength": 72685,
+      "gzipLength": 17625,
+      "brotliLength": 15670,
+      "metaUid": "cc1c73cc-48"
+    },
+    "cc1c73cc-51": {
+      "renderedLength": 403,
+      "gzipLength": 312,
+      "brotliLength": 213,
+      "metaUid": "cc1c73cc-50"
+    },
+    "cc1c73cc-53": {
+      "renderedLength": 18138,
+      "gzipLength": 6933,
+      "brotliLength": 5741,
+      "metaUid": "cc1c73cc-52"
+    },
+    "cc1c73cc-55": {
+      "renderedLength": 20708,
+      "gzipLength": 7901,
+      "brotliLength": 7025,
+      "metaUid": "cc1c73cc-54"
+    },
+    "cc1c73cc-57": {
+      "renderedLength": 20430,
+      "gzipLength": 7688,
+      "brotliLength": 6639,
+      "metaUid": "cc1c73cc-56"
+    },
+    "cc1c73cc-59": {
+      "renderedLength": 20127,
+      "gzipLength": 8052,
+      "brotliLength": 7260,
+      "metaUid": "cc1c73cc-58"
+    },
+    "cc1c73cc-61": {
+      "renderedLength": 19808,
+      "gzipLength": 7593,
+      "brotliLength": 6792,
+      "metaUid": "cc1c73cc-60"
+    },
+    "cc1c73cc-63": {
+      "renderedLength": 20009,
+      "gzipLength": 7744,
+      "brotliLength": 6836,
+      "metaUid": "cc1c73cc-62"
+    },
+    "cc1c73cc-65": {
+      "renderedLength": 17316,
+      "gzipLength": 8246,
+      "brotliLength": 6481,
+      "metaUid": "cc1c73cc-64"
+    },
+    "cc1c73cc-67": {
+      "renderedLength": 22906,
+      "gzipLength": 8750,
+      "brotliLength": 7412,
+      "metaUid": "cc1c73cc-66"
+    },
+    "cc1c73cc-69": {
+      "renderedLength": 20750,
+      "gzipLength": 8435,
+      "brotliLength": 7152,
+      "metaUid": "cc1c73cc-68"
+    },
+    "cc1c73cc-71": {
+      "renderedLength": 28534,
+      "gzipLength": 9370,
+      "brotliLength": 7822,
+      "metaUid": "cc1c73cc-70"
+    },
+    "cc1c73cc-73": {
+      "renderedLength": 549,
+      "gzipLength": 251,
+      "brotliLength": 205,
+      "metaUid": "cc1c73cc-72"
+    },
+    "cc1c73cc-75": {
+      "renderedLength": 400,
+      "gzipLength": 265,
+      "brotliLength": 226,
+      "metaUid": "cc1c73cc-74"
+    },
+    "cc1c73cc-77": {
+      "renderedLength": 2425,
+      "gzipLength": 751,
+      "brotliLength": 643,
+      "metaUid": "cc1c73cc-76"
+    },
+    "cc1c73cc-79": {
+      "renderedLength": 2094,
+      "gzipLength": 803,
+      "brotliLength": 672,
+      "metaUid": "cc1c73cc-78"
+    },
+    "cc1c73cc-81": {
+      "renderedLength": 833,
+      "gzipLength": 455,
+      "brotliLength": 387,
+      "metaUid": "cc1c73cc-80"
+    },
+    "cc1c73cc-83": {
+      "renderedLength": 4679,
+      "gzipLength": 1638,
+      "brotliLength": 1370,
+      "metaUid": "cc1c73cc-82"
+    },
+    "cc1c73cc-85": {
+      "renderedLength": 0,
+      "gzipLength": 0,
+      "brotliLength": 0,
+      "metaUid": "cc1c73cc-84"
+    },
+    "cc1c73cc-87": {
+      "renderedLength": 329,
+      "gzipLength": 233,
+      "brotliLength": 214,
+      "metaUid": "cc1c73cc-86"
+    },
+    "cc1c73cc-89": {
+      "renderedLength": 3377,
+      "gzipLength": 1448,
+      "brotliLength": 1219,
+      "metaUid": "cc1c73cc-88"
+    },
+    "cc1c73cc-91": {
+      "renderedLength": 176,
+      "gzipLength": 162,
+      "brotliLength": 128,
+      "metaUid": "cc1c73cc-90"
+    },
+    "cc1c73cc-93": {
+      "renderedLength": 244,
+      "gzipLength": 179,
+      "brotliLength": 150,
+      "metaUid": "cc1c73cc-92"
+    },
+    "cc1c73cc-95": {
+      "renderedLength": 244,
+      "gzipLength": 177,
+      "brotliLength": 150,
+      "metaUid": "cc1c73cc-94"
+    },
+    "cc1c73cc-97": {
+      "renderedLength": 256,
+      "gzipLength": 180,
+      "brotliLength": 152,
+      "metaUid": "cc1c73cc-96"
+    },
+    "cc1c73cc-99": {
+      "renderedLength": 256,
+      "gzipLength": 181,
+      "brotliLength": 152,
+      "metaUid": "cc1c73cc-98"
+    },
+    "cc1c73cc-101": {
+      "renderedLength": 253,
+      "gzipLength": 181,
+      "brotliLength": 157,
+      "metaUid": "cc1c73cc-100"
+    },
+    "cc1c73cc-103": {
+      "renderedLength": 241,
+      "gzipLength": 178,
+      "brotliLength": 153,
+      "metaUid": "cc1c73cc-102"
+    },
+    "cc1c73cc-105": {
+      "renderedLength": 253,
+      "gzipLength": 180,
+      "brotliLength": 150,
+      "metaUid": "cc1c73cc-104"
+    },
+    "cc1c73cc-107": {
+      "renderedLength": 253,
+      "gzipLength": 179,
+      "brotliLength": 151,
+      "metaUid": "cc1c73cc-106"
+    },
+    "cc1c73cc-109": {
+      "renderedLength": 244,
+      "gzipLength": 178,
+      "brotliLength": 149,
+      "metaUid": "cc1c73cc-108"
+    },
+    "cc1c73cc-111": {
+      "renderedLength": 241,
+      "gzipLength": 177,
+      "brotliLength": 141,
+      "metaUid": "cc1c73cc-110"
+    },
+    "cc1c73cc-113": {
+      "renderedLength": 1819,
+      "gzipLength": 426,
+      "brotliLength": 376,
+      "metaUid": "cc1c73cc-112"
+    },
+    "cc1c73cc-115": {
+      "renderedLength": 188,
+      "gzipLength": 152,
+      "brotliLength": 125,
+      "metaUid": "cc1c73cc-114"
+    },
+    "cc1c73cc-117": {
+      "renderedLength": 990,
+      "gzipLength": 413,
+      "brotliLength": 340,
+      "metaUid": "cc1c73cc-116"
+    },
+    "cc1c73cc-119": {
+      "renderedLength": 279,
+      "gzipLength": 206,
+      "brotliLength": 172,
+      "metaUid": "cc1c73cc-118"
+    },
+    "cc1c73cc-121": {
+      "renderedLength": 421,
+      "gzipLength": 272,
+      "brotliLength": 231,
+      "metaUid": "cc1c73cc-120"
+    },
+    "cc1c73cc-123": {
+      "renderedLength": 360,
+      "gzipLength": 265,
+      "brotliLength": 207,
+      "metaUid": "cc1c73cc-122"
+    },
+    "cc1c73cc-125": {
+      "renderedLength": 1823,
+      "gzipLength": 448,
+      "brotliLength": 376,
+      "metaUid": "cc1c73cc-124"
+    },
+    "cc1c73cc-127": {
+      "renderedLength": 491,
+      "gzipLength": 308,
+      "brotliLength": 255,
+      "metaUid": "cc1c73cc-126"
+    },
+    "cc1c73cc-129": {
+      "renderedLength": 1339,
+      "gzipLength": 539,
+      "brotliLength": 488,
+      "metaUid": "cc1c73cc-128"
+    },
+    "cc1c73cc-131": {
+      "renderedLength": 478,
+      "gzipLength": 288,
+      "brotliLength": 250,
+      "metaUid": "cc1c73cc-130"
+    },
+    "cc1c73cc-133": {
+      "renderedLength": 2268,
+      "gzipLength": 806,
+      "brotliLength": 706,
+      "metaUid": "cc1c73cc-132"
+    },
+    "cc1c73cc-135": {
+      "renderedLength": 920,
+      "gzipLength": 430,
+      "brotliLength": 358,
+      "metaUid": "cc1c73cc-134"
+    },
+    "cc1c73cc-137": {
+      "renderedLength": 495,
+      "gzipLength": 290,
+      "brotliLength": 241,
+      "metaUid": "cc1c73cc-136"
+    },
+    "cc1c73cc-139": {
+      "renderedLength": 3120,
+      "gzipLength": 768,
+      "brotliLength": 661,
+      "metaUid": "cc1c73cc-138"
+    },
+    "cc1c73cc-141": {
+      "renderedLength": 695,
+      "gzipLength": 373,
+      "brotliLength": 307,
+      "metaUid": "cc1c73cc-140"
+    },
+    "cc1c73cc-143": {
+      "renderedLength": 492,
+      "gzipLength": 303,
+      "brotliLength": 254,
+      "metaUid": "cc1c73cc-142"
+    },
+    "cc1c73cc-145": {
+      "renderedLength": 1128,
+      "gzipLength": 555,
+      "brotliLength": 497,
+      "metaUid": "cc1c73cc-144"
+    },
+    "cc1c73cc-147": {
+      "renderedLength": 1101,
+      "gzipLength": 506,
+      "brotliLength": 430,
+      "metaUid": "cc1c73cc-146"
+    },
+    "cc1c73cc-149": {
+      "renderedLength": 298,
+      "gzipLength": 239,
+      "brotliLength": 199,
+      "metaUid": "cc1c73cc-148"
+    },
+    "cc1c73cc-151": {
+      "renderedLength": 2554,
+      "gzipLength": 768,
+      "brotliLength": 658,
+      "metaUid": "cc1c73cc-150"
+    },
+    "cc1c73cc-153": {
+      "renderedLength": 3015,
+      "gzipLength": 796,
+      "brotliLength": 681,
+      "metaUid": "cc1c73cc-152"
+    },
+    "cc1c73cc-155": {
+      "renderedLength": 569,
+      "gzipLength": 310,
+      "brotliLength": 259,
+      "metaUid": "cc1c73cc-154"
+    },
+    "cc1c73cc-157": {
+      "renderedLength": 2801,
+      "gzipLength": 938,
+      "brotliLength": 785,
+      "metaUid": "cc1c73cc-156"
+    },
+    "cc1c73cc-159": {
+      "renderedLength": 1668,
+      "gzipLength": 677,
+      "brotliLength": 572,
+      "metaUid": "cc1c73cc-158"
+    },
+    "cc1c73cc-161": {
+      "renderedLength": 500,
+      "gzipLength": 290,
+      "brotliLength": 237,
+      "metaUid": "cc1c73cc-160"
+    },
+    "cc1c73cc-163": {
+      "renderedLength": 1449,
+      "gzipLength": 491,
+      "brotliLength": 393,
+      "metaUid": "cc1c73cc-162"
+    },
+    "cc1c73cc-165": {
+      "renderedLength": 2301,
+      "gzipLength": 620,
+      "brotliLength": 542,
+      "metaUid": "cc1c73cc-164"
+    },
+    "cc1c73cc-167": {
+      "renderedLength": 687,
+      "gzipLength": 357,
+      "brotliLength": 288,
+      "metaUid": "cc1c73cc-166"
+    },
+    "cc1c73cc-169": {
+      "renderedLength": 509,
+      "gzipLength": 294,
+      "brotliLength": 240,
+      "metaUid": "cc1c73cc-168"
+    },
+    "cc1c73cc-171": {
+      "renderedLength": 1880,
+      "gzipLength": 751,
+      "brotliLength": 627,
+      "metaUid": "cc1c73cc-170"
+    },
+    "cc1c73cc-173": {
+      "renderedLength": 484,
+      "gzipLength": 291,
+      "brotliLength": 252,
+      "metaUid": "cc1c73cc-172"
+    },
+    "cc1c73cc-175": {
+      "renderedLength": 3397,
+      "gzipLength": 883,
+      "brotliLength": 716,
+      "metaUid": "cc1c73cc-174"
+    },
+    "cc1c73cc-177": {
+      "renderedLength": 1400,
+      "gzipLength": 575,
+      "brotliLength": 493,
+      "metaUid": "cc1c73cc-176"
+    },
+    "cc1c73cc-179": {
+      "renderedLength": 1691,
+      "gzipLength": 460,
+      "brotliLength": 386,
+      "metaUid": "cc1c73cc-178"
+    },
+    "cc1c73cc-181": {
+      "renderedLength": 1197,
+      "gzipLength": 392,
+      "brotliLength": 310,
+      "metaUid": "cc1c73cc-180"
+    },
+    "cc1c73cc-183": {
+      "renderedLength": 938,
+      "gzipLength": 360,
+      "brotliLength": 290,
+      "metaUid": "cc1c73cc-182"
+    },
+    "cc1c73cc-185": {
+      "renderedLength": 657,
+      "gzipLength": 322,
+      "brotliLength": 254,
+      "metaUid": "cc1c73cc-184"
+    },
+    "cc1c73cc-187": {
+      "renderedLength": 971,
+      "gzipLength": 365,
+      "brotliLength": 292,
+      "metaUid": "cc1c73cc-186"
+    },
+    "cc1c73cc-189": {
+      "renderedLength": 769,
+      "gzipLength": 345,
+      "brotliLength": 279,
+      "metaUid": "cc1c73cc-188"
+    },
+    "cc1c73cc-191": {
+      "renderedLength": 649,
+      "gzipLength": 323,
+      "brotliLength": 257,
+      "metaUid": "cc1c73cc-190"
+    },
+    "cc1c73cc-193": {
+      "renderedLength": 684,
+      "gzipLength": 326,
+      "brotliLength": 274,
+      "metaUid": "cc1c73cc-192"
+    },
+    "cc1c73cc-195": {
+      "renderedLength": 689,
+      "gzipLength": 325,
+      "brotliLength": 264,
+      "metaUid": "cc1c73cc-194"
+    },
+    "cc1c73cc-197": {
+      "renderedLength": 101,
+      "gzipLength": 104,
+      "brotliLength": 86,
+      "metaUid": "cc1c73cc-196"
+    },
+    "cc1c73cc-199": {
+      "renderedLength": 1751,
+      "gzipLength": 496,
+      "brotliLength": 406,
+      "metaUid": "cc1c73cc-198"
+    },
+    "cc1c73cc-201": {
+      "renderedLength": 657,
+      "gzipLength": 321,
+      "brotliLength": 257,
+      "metaUid": "cc1c73cc-200"
+    },
+    "cc1c73cc-203": {
+      "renderedLength": 462,
+      "gzipLength": 232,
+      "brotliLength": 176,
+      "metaUid": "cc1c73cc-202"
+    },
+    "cc1c73cc-205": {
+      "renderedLength": 648,
+      "gzipLength": 392,
+      "brotliLength": 311,
+      "metaUid": "cc1c73cc-204"
+    },
+    "cc1c73cc-207": {
+      "renderedLength": 2090,
+      "gzipLength": 871,
+      "brotliLength": 746,
+      "metaUid": "cc1c73cc-206"
+    },
+    "cc1c73cc-209": {
+      "renderedLength": 724,
+      "gzipLength": 389,
+      "brotliLength": 356,
+      "metaUid": "cc1c73cc-208"
+    },
+    "cc1c73cc-211": {
+      "renderedLength": 559,
+      "gzipLength": 332,
+      "brotliLength": 279,
+      "metaUid": "cc1c73cc-210"
+    },
+    "cc1c73cc-213": {
+      "renderedLength": 247,
+      "gzipLength": 168,
+      "brotliLength": 153,
+      "metaUid": "cc1c73cc-212"
+    },
+    "cc1c73cc-215": {
+      "renderedLength": 268,
+      "gzipLength": 198,
+      "brotliLength": 178,
+      "metaUid": "cc1c73cc-214"
+    },
+    "cc1c73cc-217": {
+      "renderedLength": 455,
+      "gzipLength": 278,
+      "brotliLength": 226,
+      "metaUid": "cc1c73cc-216"
+    },
+    "cc1c73cc-219": {
+      "renderedLength": 1878,
+      "gzipLength": 716,
+      "brotliLength": 608,
+      "metaUid": "cc1c73cc-218"
+    },
+    "cc1c73cc-221": {
+      "renderedLength": 292,
+      "gzipLength": 223,
+      "brotliLength": 203,
+      "metaUid": "cc1c73cc-220"
+    },
+    "cc1c73cc-223": {
+      "renderedLength": 5541,
+      "gzipLength": 1865,
+      "brotliLength": 1633,
+      "metaUid": "cc1c73cc-222"
+    }
+  },
+  "nodeMetas": {
+    "cc1c73cc-0": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/scheduler@0.27.0/node_modules/scheduler/cjs/scheduler.production.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-1"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-2"
+        }
+      ]
+    },
+    "cc1c73cc-2": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/scheduler@0.27.0/node_modules/scheduler/index.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-3"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-0"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-4"
+        }
+      ]
+    },
+    "cc1c73cc-4": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-dom@19.2.5+3f10a4be4e334a9b/node_modules/react-dom/cjs/react-dom-client.production.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-5"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-2"
+        },
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-228"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-6"
+        }
+      ]
+    },
+    "cc1c73cc-6": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-dom@19.2.5+3f10a4be4e334a9b/node_modules/react-dom/client.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-7"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-4"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-122"
+        }
+      ]
+    },
+    "cc1c73cc-8": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/constants.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-9"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-42"
+        },
+        {
+          "uid": "cc1c73cc-40"
+        },
+        {
+          "uid": "cc1c73cc-38"
+        },
+        {
+          "uid": "cc1c73cc-36"
+        }
+      ]
+    },
+    "cc1c73cc-10": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getStartOptions.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-11"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-40"
+        },
+        {
+          "uid": "cc1c73cc-34"
+        }
+      ]
+    },
+    "cc1c73cc-12": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/utils.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-13"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-251"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-46"
+        },
+        {
+          "uid": "cc1c73cc-237"
+        },
+        {
+          "uid": "cc1c73cc-238"
+        },
+        {
+          "uid": "cc1c73cc-242"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        },
+        {
+          "uid": "cc1c73cc-249"
+        },
+        {
+          "uid": "cc1c73cc-252"
+        },
+        {
+          "uid": "cc1c73cc-254"
+        }
+      ]
+    },
+    "cc1c73cc-14": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/tiny-invariant@1.3.3/node_modules/tiny-invariant/dist/esm/tiny-invariant.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-15"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-229"
+        },
+        {
+          "uid": "cc1c73cc-46"
+        },
+        {
+          "uid": "cc1c73cc-38"
+        },
+        {
+          "uid": "cc1c73cc-247"
+        },
+        {
+          "uid": "cc1c73cc-252"
+        },
+        {
+          "uid": "cc1c73cc-254"
+        }
+      ]
+    },
+    "cc1c73cc-16": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/not-found.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-17"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-46"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        },
+        {
+          "uid": "cc1c73cc-247"
+        },
+        {
+          "uid": "cc1c73cc-254"
+        }
+      ]
+    },
+    "cc1c73cc-18": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/qss.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-19"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-239"
+        }
+      ]
+    },
+    "cc1c73cc-20": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/redirect.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-21"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        },
+        {
+          "uid": "cc1c73cc-247"
+        },
+        {
+          "uid": "cc1c73cc-254"
+        }
+      ]
+    },
+    "cc1c73cc-22": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval@1.5.2/node_modules/seroval/dist/esm/production/index.mjs",
+      "moduleParts": {
+        "component.js": "cc1c73cc-23"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-38"
+        },
+        {
+          "uid": "cc1c73cc-24"
+        },
+        {
+          "uid": "cc1c73cc-26"
+        },
+        {
+          "uid": "cc1c73cc-28"
+        },
+        {
+          "uid": "cc1c73cc-30"
+        }
+      ]
+    },
+    "cc1c73cc-24": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/transformer.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-25"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-256"
+        },
+        {
+          "uid": "cc1c73cc-22"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ]
+    },
+    "cc1c73cc-26": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStream.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-27"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-22"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-32"
+        }
+      ]
+    },
+    "cc1c73cc-28": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/ShallowErrorPlugin.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-29"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-22"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-32"
+        }
+      ]
+    },
+    "cc1c73cc-30": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval-plugins@1.5.2+7cd651eebf40fbbb/node_modules/seroval-plugins/dist/esm/production/web.mjs",
+      "moduleParts": {
+        "component.js": "cc1c73cc-31"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-22"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-32"
+        }
+      ]
+    },
+    "cc1c73cc-32": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/seroval-plugins.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-33"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-28"
+        },
+        {
+          "uid": "cc1c73cc-26"
+        },
+        {
+          "uid": "cc1c73cc-30"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ]
+    },
+    "cc1c73cc-34": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getDefaultSerovalPlugins.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-35"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-10"
+        },
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-38"
+        }
+      ]
+    },
+    "cc1c73cc-36": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client-rpc/frame-decoder.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-37"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-8"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-38"
+        }
+      ]
+    },
+    "cc1c73cc-38": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client-rpc/serverFnFetcher.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-39"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-8"
+        },
+        {
+          "uid": "cc1c73cc-34"
+        },
+        {
+          "uid": "cc1c73cc-36"
+        },
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-22"
+        },
+        {
+          "uid": "cc1c73cc-14"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-40"
+        }
+      ]
+    },
+    "cc1c73cc-40": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client-rpc/createClientRpc.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-41"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-8"
+        },
+        {
+          "uid": "cc1c73cc-10"
+        },
+        {
+          "uid": "cc1c73cc-38"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-42"
+        }
+      ]
+    },
+    "cc1c73cc-42": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client/ServerFunctionSerializationAdapter.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-43"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-8"
+        },
+        {
+          "uid": "cc1c73cc-40"
+        },
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-116"
+        }
+      ]
+    },
+    "cc1c73cc-44": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-match-id.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-45"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-46"
+        }
+      ]
+    },
+    "cc1c73cc-46": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-client.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-47"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-12"
+        },
+        {
+          "uid": "cc1c73cc-16"
+        },
+        {
+          "uid": "cc1c73cc-44"
+        },
+        {
+          "uid": "cc1c73cc-14"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-232"
+        }
+      ]
+    },
+    "cc1c73cc-48": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/i18next@26.0.4+8e24a2f921b8d7be/node_modules/i18next/dist/esm/i18next.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-49"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        },
+        {
+          "uid": "cc1c73cc-259"
+        }
+      ]
+    },
+    "cc1c73cc-50": {
+      "id": "/src/i18n/config.ts",
+      "moduleParts": {
+        "component.js": "cc1c73cc-51"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        },
+        {
+          "uid": "cc1c73cc-80"
+        }
+      ]
+    },
+    "cc1c73cc-52": {
+      "id": "/src/i18n/locales/en.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-53"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-54": {
+      "id": "/src/i18n/locales/fr.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-55"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-56": {
+      "id": "/src/i18n/locales/es.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-57"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-58": {
+      "id": "/src/i18n/locales/de.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-59"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-60": {
+      "id": "/src/i18n/locales/it.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-61"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-62": {
+      "id": "/src/i18n/locales/pt.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-63"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-64": {
+      "id": "/src/i18n/locales/zh.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-65"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-66": {
+      "id": "/src/i18n/locales/ja.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-67"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-68": {
+      "id": "/src/i18n/locales/ko.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-69"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-70": {
+      "id": "/src/i18n/locales/ru.json",
+      "moduleParts": {
+        "component.js": "cc1c73cc-71"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-72"
+        }
+      ]
+    },
+    "cc1c73cc-72": {
+      "id": "/src/i18n/i18n.ts",
+      "moduleParts": {
+        "component.js": "cc1c73cc-73"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-48"
+        },
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-50"
+        },
+        {
+          "uid": "cc1c73cc-52"
+        },
+        {
+          "uid": "cc1c73cc-54"
+        },
+        {
+          "uid": "cc1c73cc-56"
+        },
+        {
+          "uid": "cc1c73cc-58"
+        },
+        {
+          "uid": "cc1c73cc-60"
+        },
+        {
+          "uid": "cc1c73cc-62"
+        },
+        {
+          "uid": "cc1c73cc-64"
+        },
+        {
+          "uid": "cc1c73cc-66"
+        },
+        {
+          "uid": "cc1c73cc-68"
+        },
+        {
+          "uid": "cc1c73cc-70"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-74"
+        }
+      ]
+    },
+    "cc1c73cc-74": {
+      "id": "/src/routes/$locale/route.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-75"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-72"
+        },
+        {
+          "uid": "cc1c73cc-196",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        },
+        {
+          "uid": "cc1c73cc-88"
+        }
+      ]
+    },
+    "cc1c73cc-76": {
+      "id": "/src/components/Footer.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-77"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-88"
+        }
+      ]
+    },
+    "cc1c73cc-78": {
+      "id": "/src/components/ThemeToggle.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-79"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-82"
+        }
+      ]
+    },
+    "cc1c73cc-80": {
+      "id": "/src/components/LocaleSwitcher.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-81"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-50"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-82"
+        }
+      ]
+    },
+    "cc1c73cc-82": {
+      "id": "/src/components/Header.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-83"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-267"
+        },
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-78"
+        },
+        {
+          "uid": "cc1c73cc-80"
+        },
+        {
+          "uid": "cc1c73cc-202"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-88"
+        }
+      ]
+    },
+    "cc1c73cc-84": {
+      "id": "/src/styles.css?transform-only",
+      "moduleParts": {
+        "component.js": "cc1c73cc-85"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-86"
+        }
+      ]
+    },
+    "cc1c73cc-86": {
+      "id": "/src/styles.css?url",
+      "moduleParts": {
+        "component.js": "cc1c73cc-87"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-84"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-88"
+        }
+      ]
+    },
+    "cc1c73cc-88": {
+      "id": "/src/routes/__root.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-89"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-74"
+        },
+        {
+          "uid": "cc1c73cc-76"
+        },
+        {
+          "uid": "cc1c73cc-82"
+        },
+        {
+          "uid": "cc1c73cc-86"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-90": {
+      "id": "/src/routes/index.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-91"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-92": {
+      "id": "/src/routes/$locale/index.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-93"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-180",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-94": {
+      "id": "/src/routes/$locale/team.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-95"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-200",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-96": {
+      "id": "/src/routes/$locale/settings.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-97"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-198",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-98": {
+      "id": "/src/routes/$locale/products.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-99"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-194",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-100": {
+      "id": "/src/routes/$locale/pricing.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-101"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-192",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-102": {
+      "id": "/src/routes/$locale/faq.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-103"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-190",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-104": {
+      "id": "/src/routes/$locale/contact.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-105"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-188",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-106": {
+      "id": "/src/routes/$locale/careers.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-107"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-186",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-108": {
+      "id": "/src/routes/$locale/blog.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-109"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-184",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-110": {
+      "id": "/src/routes/$locale/about.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-111"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-182",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ]
+    },
+    "cc1c73cc-112": {
+      "id": "/src/routeTree.gen.ts",
+      "moduleParts": {
+        "component.js": "cc1c73cc-113"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-88"
+        },
+        {
+          "uid": "cc1c73cc-74"
+        },
+        {
+          "uid": "cc1c73cc-90"
+        },
+        {
+          "uid": "cc1c73cc-92"
+        },
+        {
+          "uid": "cc1c73cc-94"
+        },
+        {
+          "uid": "cc1c73cc-96"
+        },
+        {
+          "uid": "cc1c73cc-98"
+        },
+        {
+          "uid": "cc1c73cc-100"
+        },
+        {
+          "uid": "cc1c73cc-102"
+        },
+        {
+          "uid": "cc1c73cc-104"
+        },
+        {
+          "uid": "cc1c73cc-106"
+        },
+        {
+          "uid": "cc1c73cc-108"
+        },
+        {
+          "uid": "cc1c73cc-110"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-114"
+        }
+      ]
+    },
+    "cc1c73cc-114": {
+      "id": "/src/router.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-115"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-112"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-116"
+        }
+      ]
+    },
+    "cc1c73cc-116": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client/hydrateStart.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-117"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-42"
+        },
+        {
+          "uid": "cc1c73cc-232"
+        },
+        {
+          "uid": "cc1c73cc-114"
+        },
+        {
+          "uid": "cc1c73cc-233"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-230"
+        }
+      ]
+    },
+    "cc1c73cc-118": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm/hydrateStart.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-119"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-230"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-227"
+        },
+        {
+          "uid": "cc1c73cc-120"
+        }
+      ]
+    },
+    "cc1c73cc-120": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm/StartClient.js",
+      "moduleParts": {
+        "component.js": "cc1c73cc-121"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-118"
+        },
+        {
+          "uid": "cc1c73cc-231"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-227"
+        }
+      ]
+    },
+    "cc1c73cc-122": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+a1b7793a9f967983/node_modules/@tanstack/react-start/dist/plugin/default-entry/client.tsx",
+      "moduleParts": {
+        "component.js": "cc1c73cc-123"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-6"
+        },
+        {
+          "uid": "cc1c73cc-225"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [],
+      "isEntry": true
+    },
+    "cc1c73cc-124": {
+      "id": "/src/components/pages/about/AboutGrid.tsx",
+      "moduleParts": {
+        "AboutGrid-DuYfhCtu.js": "cc1c73cc-125"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-182"
+        }
+      ]
+    },
+    "cc1c73cc-126": {
+      "id": "/src/components/pages/about/AboutHeader.tsx",
+      "moduleParts": {
+        "AboutHeader-D_VtR2wW.js": "cc1c73cc-127"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-202"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-182"
+        }
+      ]
+    },
+    "cc1c73cc-128": {
+      "id": "/src/components/pages/settings/ApiAccessSection.tsx",
+      "moduleParts": {
+        "ApiAccessSection-DBamEsc6.js": "cc1c73cc-129"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-198"
+        }
+      ]
+    },
+    "cc1c73cc-130": {
+      "id": "/src/components/pages/blog/BlogHeader.tsx",
+      "moduleParts": {
+        "BlogHeader-BPjpfuVV.js": "cc1c73cc-131"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-184"
+        }
+      ]
+    },
+    "cc1c73cc-132": {
+      "id": "/src/components/pages/blog/BlogList.tsx",
+      "moduleParts": {
+        "BlogList-C_O2ESiH.js": "cc1c73cc-133"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-184"
+        }
+      ]
+    },
+    "cc1c73cc-134": {
+      "id": "/src/components/pages/careers/CareersBenefits.tsx",
+      "moduleParts": {
+        "CareersBenefits-DExpcymw.js": "cc1c73cc-135"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-186"
+        }
+      ]
+    },
+    "cc1c73cc-136": {
+      "id": "/src/components/pages/careers/CareersHeader.tsx",
+      "moduleParts": {
+        "CareersHeader-BSfRMzTn.js": "cc1c73cc-137"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-186"
+        }
+      ]
+    },
+    "cc1c73cc-138": {
+      "id": "/src/components/pages/contact/ContactForm.tsx",
+      "moduleParts": {
+        "ContactForm-C5gGvIoW.js": "cc1c73cc-139"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-188"
+        }
+      ]
+    },
+    "cc1c73cc-140": {
+      "id": "/src/components/pages/contact/ContactHeader.tsx",
+      "moduleParts": {
+        "ContactHeader-DoiKavgv.js": "cc1c73cc-141"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-188"
+        }
+      ]
+    },
+    "cc1c73cc-142": {
+      "id": "/src/components/pages/faq/FAQHeader.tsx",
+      "moduleParts": {
+        "FAQHeader-XUlKhE_7.js": "cc1c73cc-143"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-190"
+        }
+      ]
+    },
+    "cc1c73cc-144": {
+      "id": "/src/components/pages/faq/FAQList.tsx",
+      "moduleParts": {
+        "FAQList-CYSHo9i_.js": "cc1c73cc-145"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-190"
+        }
+      ]
+    },
+    "cc1c73cc-146": {
+      "id": "/src/components/pages/home/Hero.tsx",
+      "moduleParts": {
+        "Hero-DZgZ57qB.js": "cc1c73cc-147"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-202"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-180"
+        }
+      ]
+    },
+    "cc1c73cc-148": {
+      "id": "/src/components/MockBanner.tsx",
+      "moduleParts": {
+        "MockBanner-SleUvTwk.js": "cc1c73cc-149"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-172"
+        },
+        {
+          "uid": "cc1c73cc-168"
+        },
+        {
+          "uid": "cc1c73cc-160"
+        },
+        {
+          "uid": "cc1c73cc-154"
+        },
+        {
+          "uid": "cc1c73cc-142"
+        },
+        {
+          "uid": "cc1c73cc-140"
+        },
+        {
+          "uid": "cc1c73cc-136"
+        },
+        {
+          "uid": "cc1c73cc-130"
+        }
+      ]
+    },
+    "cc1c73cc-150": {
+      "id": "/src/components/pages/careers/OpenPositions.tsx",
+      "moduleParts": {
+        "OpenPositions-A0Ls12qC.js": "cc1c73cc-151"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-186"
+        }
+      ]
+    },
+    "cc1c73cc-152": {
+      "id": "/src/components/pages/settings/PreferencesSection.tsx",
+      "moduleParts": {
+        "PreferencesSection-DkUoPbsK.js": "cc1c73cc-153"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-198"
+        }
+      ]
+    },
+    "cc1c73cc-154": {
+      "id": "/src/components/pages/pricing/PricingHeader.tsx",
+      "moduleParts": {
+        "PricingHeader-CGFQO0Uc.js": "cc1c73cc-155"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-192"
+        }
+      ]
+    },
+    "cc1c73cc-156": {
+      "id": "/src/components/pages/pricing/PricingTiers.tsx",
+      "moduleParts": {
+        "PricingTiers-BoITpzIu.js": "cc1c73cc-157"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-192"
+        }
+      ]
+    },
+    "cc1c73cc-158": {
+      "id": "/src/components/pages/products/ProductsGrid.tsx",
+      "moduleParts": {
+        "ProductsGrid-BL-wki4R.js": "cc1c73cc-159"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-194"
+        }
+      ]
+    },
+    "cc1c73cc-160": {
+      "id": "/src/components/pages/products/ProductsHeader.tsx",
+      "moduleParts": {
+        "ProductsHeader-B11nphoz.js": "cc1c73cc-161"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-194"
+        }
+      ]
+    },
+    "cc1c73cc-162": {
+      "id": "/src/components/pages/settings/ProfileSection.tsx",
+      "moduleParts": {
+        "ProfileSection-baZSiSnv.js": "cc1c73cc-163"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-198"
+        }
+      ]
+    },
+    "cc1c73cc-164": {
+      "id": "/src/components/pages/home/ResultsTable.tsx",
+      "moduleParts": {
+        "ResultsTable-34rwFvg7.js": "cc1c73cc-165"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-180"
+        }
+      ]
+    },
+    "cc1c73cc-166": {
+      "id": "/src/components/pages/settings/SettingsFooter.tsx",
+      "moduleParts": {
+        "SettingsFooter-4DDAlA2M.js": "cc1c73cc-167"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-198"
+        }
+      ]
+    },
+    "cc1c73cc-168": {
+      "id": "/src/components/pages/settings/SettingsHeader.tsx",
+      "moduleParts": {
+        "SettingsHeader-D7lZMdJV.js": "cc1c73cc-169"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-198"
+        }
+      ]
+    },
+    "cc1c73cc-170": {
+      "id": "/src/components/pages/team/TeamGrid.tsx",
+      "moduleParts": {
+        "TeamGrid-CNdP4_kA.js": "cc1c73cc-171"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-200"
+        }
+      ]
+    },
+    "cc1c73cc-172": {
+      "id": "/src/components/pages/team/TeamHeader.tsx",
+      "moduleParts": {
+        "TeamHeader-JgulWnt_.js": "cc1c73cc-173"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-200"
+        }
+      ]
+    },
+    "cc1c73cc-174": {
+      "id": "/src/components/pages/home/UnderstandingImpact.tsx",
+      "moduleParts": {
+        "UnderstandingImpact-D4HEOneC.js": "cc1c73cc-175"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-180"
+        }
+      ]
+    },
+    "cc1c73cc-176": {
+      "id": "/src/components/pages/about/WhatWeMeasure.tsx",
+      "moduleParts": {
+        "WhatWeMeasure-CfZknBBE.js": "cc1c73cc-177"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-182"
+        }
+      ]
+    },
+    "cc1c73cc-178": {
+      "id": "/src/components/pages/home/WhyItMatters.tsx",
+      "moduleParts": {
+        "WhyItMatters-CtXeoLQn.js": "cc1c73cc-179"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-180"
+        }
+      ]
+    },
+    "cc1c73cc-180": {
+      "id": "/src/routes/$locale/index.tsx?tsr-split=component",
+      "moduleParts": {
+        "_locale-CayOLJFG.js": "cc1c73cc-181"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-146",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-178",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-174",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-164",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-92"
+        }
+      ]
+    },
+    "cc1c73cc-182": {
+      "id": "/src/routes/$locale/about.tsx?tsr-split=component",
+      "moduleParts": {
+        "about-DOBs6J7W.js": "cc1c73cc-183"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-126",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-124",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-176",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-110"
+        }
+      ]
+    },
+    "cc1c73cc-184": {
+      "id": "/src/routes/$locale/blog.tsx?tsr-split=component",
+      "moduleParts": {
+        "blog-qGiP-cfH.js": "cc1c73cc-185"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-130",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-132",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-108"
+        }
+      ]
+    },
+    "cc1c73cc-186": {
+      "id": "/src/routes/$locale/careers.tsx?tsr-split=component",
+      "moduleParts": {
+        "careers-DgR9aJOy.js": "cc1c73cc-187"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-136",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-134",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-150",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-106"
+        }
+      ]
+    },
+    "cc1c73cc-188": {
+      "id": "/src/routes/$locale/contact.tsx?tsr-split=component",
+      "moduleParts": {
+        "contact-C5OxH-ZY.js": "cc1c73cc-189"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-140",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-138",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-104"
+        }
+      ]
+    },
+    "cc1c73cc-190": {
+      "id": "/src/routes/$locale/faq.tsx?tsr-split=component",
+      "moduleParts": {
+        "faq-BWgEGYVo.js": "cc1c73cc-191"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-142",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-144",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-102"
+        }
+      ]
+    },
+    "cc1c73cc-192": {
+      "id": "/src/routes/$locale/pricing.tsx?tsr-split=component",
+      "moduleParts": {
+        "pricing-CJcDIZwQ.js": "cc1c73cc-193"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-154",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-156",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-100"
+        }
+      ]
+    },
+    "cc1c73cc-194": {
+      "id": "/src/routes/$locale/products.tsx?tsr-split=component",
+      "moduleParts": {
+        "products-CM2E14hz.js": "cc1c73cc-195"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-160",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-158",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-98"
+        }
+      ]
+    },
+    "cc1c73cc-196": {
+      "id": "/src/routes/$locale/route.tsx?tsr-split=component",
+      "moduleParts": {
+        "route-RmgwZLEr.js": "cc1c73cc-197"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-231"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-74"
+        }
+      ]
+    },
+    "cc1c73cc-198": {
+      "id": "/src/routes/$locale/settings.tsx?tsr-split=component",
+      "moduleParts": {
+        "settings-42ik65sW.js": "cc1c73cc-199"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-168",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-162",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-152",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-128",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-166",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-96"
+        }
+      ]
+    },
+    "cc1c73cc-200": {
+      "id": "/src/routes/$locale/team.tsx?tsr-split=component",
+      "moduleParts": {
+        "team-C-WyBxoO.js": "cc1c73cc-201"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-226"
+        },
+        {
+          "uid": "cc1c73cc-172",
+          "dynamic": true
+        },
+        {
+          "uid": "cc1c73cc-170",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-94"
+        }
+      ]
+    },
+    "cc1c73cc-202": {
+      "id": "/src/hooks/usePerformanceMeasure.ts",
+      "moduleParts": {
+        "usePerformanceMeasure-CgVAPsMx.js": "cc1c73cc-203"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-82"
+        },
+        {
+          "uid": "cc1c73cc-146"
+        },
+        {
+          "uid": "cc1c73cc-126"
+        }
+      ]
+    },
+    "cc1c73cc-204": {
+      "id": "\u0000rolldown/runtime.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-205"
+      },
+      "imported": [],
+      "importedBy": []
+    },
+    "cc1c73cc-206": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/utils.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-207"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-259"
+        },
+        {
+          "uid": "cc1c73cc-261"
+        },
+        {
+          "uid": "cc1c73cc-222"
+        },
+        {
+          "uid": "cc1c73cc-262"
+        },
+        {
+          "uid": "cc1c73cc-265"
+        },
+        {
+          "uid": "cc1c73cc-266"
+        }
+      ]
+    },
+    "cc1c73cc-208": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/unescape.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-209"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-259"
+        },
+        {
+          "uid": "cc1c73cc-210"
+        }
+      ]
+    },
+    "cc1c73cc-210": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/defaults.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-211"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-208"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-259"
+        },
+        {
+          "uid": "cc1c73cc-214"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        }
+      ]
+    },
+    "cc1c73cc-212": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/i18nInstance.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-213"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-259"
+        },
+        {
+          "uid": "cc1c73cc-261"
+        },
+        {
+          "uid": "cc1c73cc-214"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        }
+      ]
+    },
+    "cc1c73cc-214": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/initReactI18next.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-215"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-210"
+        },
+        {
+          "uid": "cc1c73cc-212"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        }
+      ]
+    },
+    "cc1c73cc-216": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/context.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-217"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-210"
+        },
+        {
+          "uid": "cc1c73cc-212"
+        },
+        {
+          "uid": "cc1c73cc-214"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-258"
+        },
+        {
+          "uid": "cc1c73cc-260"
+        },
+        {
+          "uid": "cc1c73cc-222"
+        },
+        {
+          "uid": "cc1c73cc-264"
+        },
+        {
+          "uid": "cc1c73cc-265"
+        },
+        {
+          "uid": "cc1c73cc-266"
+        }
+      ]
+    },
+    "cc1c73cc-218": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/use-sync-external-store@1.6.0+3f10a4be4e334a9b/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-219"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-220"
+        }
+      ]
+    },
+    "cc1c73cc-220": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/use-sync-external-store@1.6.0+3f10a4be4e334a9b/node_modules/use-sync-external-store/shim/index.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-221"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-218"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-222"
+        }
+      ]
+    },
+    "cc1c73cc-222": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/useTranslation.js",
+      "moduleParts": {
+        "useTranslation-B_X5y4bS.js": "cc1c73cc-223"
+      },
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-220"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        },
+        {
+          "uid": "cc1c73cc-206"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-262"
+        },
+        {
+          "uid": "cc1c73cc-263"
+        }
+      ]
+    },
+    "cc1c73cc-224": {
+      "id": "react",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-122"
+        },
+        {
+          "uid": "cc1c73cc-4"
+        },
+        {
+          "uid": "cc1c73cc-229"
+        },
+        {
+          "uid": "cc1c73cc-88"
+        },
+        {
+          "uid": "cc1c73cc-82"
+        },
+        {
+          "uid": "cc1c73cc-180"
+        },
+        {
+          "uid": "cc1c73cc-200"
+        },
+        {
+          "uid": "cc1c73cc-198"
+        },
+        {
+          "uid": "cc1c73cc-194"
+        },
+        {
+          "uid": "cc1c73cc-192"
+        },
+        {
+          "uid": "cc1c73cc-190"
+        },
+        {
+          "uid": "cc1c73cc-188"
+        },
+        {
+          "uid": "cc1c73cc-186"
+        },
+        {
+          "uid": "cc1c73cc-184"
+        },
+        {
+          "uid": "cc1c73cc-182"
+        },
+        {
+          "uid": "cc1c73cc-258"
+        },
+        {
+          "uid": "cc1c73cc-259"
+        },
+        {
+          "uid": "cc1c73cc-260"
+        },
+        {
+          "uid": "cc1c73cc-261"
+        },
+        {
+          "uid": "cc1c73cc-222"
+        },
+        {
+          "uid": "cc1c73cc-262"
+        },
+        {
+          "uid": "cc1c73cc-264"
+        },
+        {
+          "uid": "cc1c73cc-265"
+        },
+        {
+          "uid": "cc1c73cc-266"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        },
+        {
+          "uid": "cc1c73cc-78"
+        },
+        {
+          "uid": "cc1c73cc-202"
+        },
+        {
+          "uid": "cc1c73cc-162"
+        },
+        {
+          "uid": "cc1c73cc-152"
+        },
+        {
+          "uid": "cc1c73cc-128"
+        },
+        {
+          "uid": "cc1c73cc-138"
+        },
+        {
+          "uid": "cc1c73cc-274"
+        },
+        {
+          "uid": "cc1c73cc-218"
+        }
+      ]
+    },
+    "cc1c73cc-225": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+a1b7793a9f967983/node_modules/@tanstack/react-start/dist/esm/client.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-227"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-122"
+        }
+      ]
+    },
+    "cc1c73cc-226": {
+      "id": "react/jsx-runtime",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-122"
+        },
+        {
+          "uid": "cc1c73cc-120"
+        },
+        {
+          "uid": "cc1c73cc-88"
+        },
+        {
+          "uid": "cc1c73cc-76"
+        },
+        {
+          "uid": "cc1c73cc-82"
+        },
+        {
+          "uid": "cc1c73cc-180"
+        },
+        {
+          "uid": "cc1c73cc-200"
+        },
+        {
+          "uid": "cc1c73cc-198"
+        },
+        {
+          "uid": "cc1c73cc-194"
+        },
+        {
+          "uid": "cc1c73cc-192"
+        },
+        {
+          "uid": "cc1c73cc-190"
+        },
+        {
+          "uid": "cc1c73cc-188"
+        },
+        {
+          "uid": "cc1c73cc-186"
+        },
+        {
+          "uid": "cc1c73cc-184"
+        },
+        {
+          "uid": "cc1c73cc-182"
+        },
+        {
+          "uid": "cc1c73cc-78"
+        },
+        {
+          "uid": "cc1c73cc-80"
+        },
+        {
+          "uid": "cc1c73cc-146"
+        },
+        {
+          "uid": "cc1c73cc-178"
+        },
+        {
+          "uid": "cc1c73cc-174"
+        },
+        {
+          "uid": "cc1c73cc-164"
+        },
+        {
+          "uid": "cc1c73cc-172"
+        },
+        {
+          "uid": "cc1c73cc-170"
+        },
+        {
+          "uid": "cc1c73cc-168"
+        },
+        {
+          "uid": "cc1c73cc-162"
+        },
+        {
+          "uid": "cc1c73cc-152"
+        },
+        {
+          "uid": "cc1c73cc-128"
+        },
+        {
+          "uid": "cc1c73cc-166"
+        },
+        {
+          "uid": "cc1c73cc-160"
+        },
+        {
+          "uid": "cc1c73cc-158"
+        },
+        {
+          "uid": "cc1c73cc-154"
+        },
+        {
+          "uid": "cc1c73cc-156"
+        },
+        {
+          "uid": "cc1c73cc-142"
+        },
+        {
+          "uid": "cc1c73cc-144"
+        },
+        {
+          "uid": "cc1c73cc-140"
+        },
+        {
+          "uid": "cc1c73cc-138"
+        },
+        {
+          "uid": "cc1c73cc-136"
+        },
+        {
+          "uid": "cc1c73cc-134"
+        },
+        {
+          "uid": "cc1c73cc-150"
+        },
+        {
+          "uid": "cc1c73cc-130"
+        },
+        {
+          "uid": "cc1c73cc-132"
+        },
+        {
+          "uid": "cc1c73cc-126"
+        },
+        {
+          "uid": "cc1c73cc-124"
+        },
+        {
+          "uid": "cc1c73cc-176"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        }
+      ]
+    },
+    "cc1c73cc-227": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-118"
+        },
+        {
+          "uid": "cc1c73cc-120"
+        },
+        {
+          "uid": "cc1c73cc-229"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-225"
+        }
+      ]
+    },
+    "cc1c73cc-228": {
+      "id": "react-dom",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-4"
+        }
+      ]
+    },
+    "cc1c73cc-229": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-client@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-client/dist/esm/renderRSC.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-14"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-227"
+        }
+      ]
+    },
+    "cc1c73cc-230": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/client/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-116"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-118"
+        }
+      ]
+    },
+    "cc1c73cc-231": {
+      "id": "@tanstack/react-router",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-120"
+        },
+        {
+          "uid": "cc1c73cc-114"
+        },
+        {
+          "uid": "cc1c73cc-88"
+        },
+        {
+          "uid": "cc1c73cc-74"
+        },
+        {
+          "uid": "cc1c73cc-90"
+        },
+        {
+          "uid": "cc1c73cc-92"
+        },
+        {
+          "uid": "cc1c73cc-94"
+        },
+        {
+          "uid": "cc1c73cc-96"
+        },
+        {
+          "uid": "cc1c73cc-98"
+        },
+        {
+          "uid": "cc1c73cc-100"
+        },
+        {
+          "uid": "cc1c73cc-102"
+        },
+        {
+          "uid": "cc1c73cc-104"
+        },
+        {
+          "uid": "cc1c73cc-106"
+        },
+        {
+          "uid": "cc1c73cc-108"
+        },
+        {
+          "uid": "cc1c73cc-110"
+        },
+        {
+          "uid": "cc1c73cc-76"
+        },
+        {
+          "uid": "cc1c73cc-82"
+        },
+        {
+          "uid": "cc1c73cc-196"
+        },
+        {
+          "uid": "cc1c73cc-80"
+        }
+      ]
+    },
+    "cc1c73cc-232": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/client.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-235"
+        },
+        {
+          "uid": "cc1c73cc-236"
+        },
+        {
+          "uid": "cc1c73cc-46"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-116"
+        }
+      ]
+    },
+    "cc1c73cc-233": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+a1b7793a9f967983/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-116"
+        }
+      ]
+    },
+    "cc1c73cc-234": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-12"
+        },
+        {
+          "uid": "cc1c73cc-237"
+        },
+        {
+          "uid": "cc1c73cc-16"
+        },
+        {
+          "uid": "cc1c73cc-238"
+        },
+        {
+          "uid": "cc1c73cc-18"
+        },
+        {
+          "uid": "cc1c73cc-239"
+        },
+        {
+          "uid": "cc1c73cc-240"
+        },
+        {
+          "uid": "cc1c73cc-20"
+        },
+        {
+          "uid": "cc1c73cc-241"
+        },
+        {
+          "uid": "cc1c73cc-242"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        },
+        {
+          "uid": "cc1c73cc-244"
+        },
+        {
+          "uid": "cc1c73cc-245"
+        },
+        {
+          "uid": "cc1c73cc-246"
+        },
+        {
+          "uid": "cc1c73cc-247"
+        },
+        {
+          "uid": "cc1c73cc-248"
+        },
+        {
+          "uid": "cc1c73cc-249"
+        },
+        {
+          "uid": "cc1c73cc-24"
+        },
+        {
+          "uid": "cc1c73cc-26"
+        },
+        {
+          "uid": "cc1c73cc-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-42"
+        },
+        {
+          "uid": "cc1c73cc-38"
+        },
+        {
+          "uid": "cc1c73cc-34"
+        }
+      ]
+    },
+    "cc1c73cc-235": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/headers.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-250"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-232"
+        }
+      ]
+    },
+    "cc1c73cc-236": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/json.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-232"
+        }
+      ]
+    },
+    "cc1c73cc-237": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/path.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-12"
+        },
+        {
+          "uid": "cc1c73cc-252"
+        },
+        {
+          "uid": "cc1c73cc-251"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-241"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        },
+        {
+          "uid": "cc1c73cc-247"
+        }
+      ]
+    },
+    "cc1c73cc-238": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/scroll-restoration.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-12"
+        },
+        {
+          "uid": "cc1c73cc-251"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        }
+      ]
+    },
+    "cc1c73cc-239": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/searchParams.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-18"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        }
+      ]
+    },
+    "cc1c73cc-240": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/root.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        },
+        {
+          "uid": "cc1c73cc-247"
+        },
+        {
+          "uid": "cc1c73cc-254"
+        }
+      ]
+    },
+    "cc1c73cc-241": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/rewrite.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-237"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        }
+      ]
+    },
+    "cc1c73cc-242": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/stores.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-12"
+        },
+        {
+          "uid": "cc1c73cc-253"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        }
+      ]
+    },
+    "cc1c73cc-243": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/router.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-12"
+        },
+        {
+          "uid": "cc1c73cc-253"
+        },
+        {
+          "uid": "cc1c73cc-252"
+        },
+        {
+          "uid": "cc1c73cc-237"
+        },
+        {
+          "uid": "cc1c73cc-16"
+        },
+        {
+          "uid": "cc1c73cc-238"
+        },
+        {
+          "uid": "cc1c73cc-239"
+        },
+        {
+          "uid": "cc1c73cc-240"
+        },
+        {
+          "uid": "cc1c73cc-20"
+        },
+        {
+          "uid": "cc1c73cc-254"
+        },
+        {
+          "uid": "cc1c73cc-241"
+        },
+        {
+          "uid": "cc1c73cc-242"
+        },
+        {
+          "uid": "cc1c73cc-255"
+        },
+        {
+          "uid": "cc1c73cc-251"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        },
+        {
+          "uid": "cc1c73cc-244"
+        }
+      ]
+    },
+    "cc1c73cc-244": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/defer.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-243"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ]
+    },
+    "cc1c73cc-245": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/link.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ]
+    },
+    "cc1c73cc-246": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/Matches.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ]
+    },
+    "cc1c73cc-247": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/route.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-237"
+        },
+        {
+          "uid": "cc1c73cc-16"
+        },
+        {
+          "uid": "cc1c73cc-240"
+        },
+        {
+          "uid": "cc1c73cc-20"
+        },
+        {
+          "uid": "cc1c73cc-14"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ]
+    },
+    "cc1c73cc-248": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/config.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ]
+    },
+    "cc1c73cc-249": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/searchMiddleware.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-12"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-234"
+        }
+      ]
+    },
+    "cc1c73cc-250": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/cookie-es@2.0.1/node_modules/cookie-es/dist/index.mjs",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-235"
+        }
+      ]
+    },
+    "cc1c73cc-251": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/isServer/client.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-12"
+        },
+        {
+          "uid": "cc1c73cc-237"
+        },
+        {
+          "uid": "cc1c73cc-238"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        },
+        {
+          "uid": "cc1c73cc-254"
+        }
+      ]
+    },
+    "cc1c73cc-252": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/new-process-route-tree.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-12"
+        },
+        {
+          "uid": "cc1c73cc-253"
+        },
+        {
+          "uid": "cc1c73cc-14"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-237"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        }
+      ]
+    },
+    "cc1c73cc-253": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/lru-cache.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-242"
+        },
+        {
+          "uid": "cc1c73cc-243"
+        },
+        {
+          "uid": "cc1c73cc-252"
+        }
+      ]
+    },
+    "cc1c73cc-254": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/load-matches.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-12"
+        },
+        {
+          "uid": "cc1c73cc-16"
+        },
+        {
+          "uid": "cc1c73cc-240"
+        },
+        {
+          "uid": "cc1c73cc-20"
+        },
+        {
+          "uid": "cc1c73cc-251"
+        },
+        {
+          "uid": "cc1c73cc-14"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-243"
+        }
+      ]
+    },
+    "cc1c73cc-255": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+history@1.161.6/node_modules/@tanstack/history/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-243"
+        }
+      ]
+    },
+    "cc1c73cc-256": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/constants.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-24"
+        }
+      ]
+    },
+    "cc1c73cc-257": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-258"
+        },
+        {
+          "uid": "cc1c73cc-259"
+        },
+        {
+          "uid": "cc1c73cc-260"
+        },
+        {
+          "uid": "cc1c73cc-261"
+        },
+        {
+          "uid": "cc1c73cc-222"
+        },
+        {
+          "uid": "cc1c73cc-262"
+        },
+        {
+          "uid": "cc1c73cc-263"
+        },
+        {
+          "uid": "cc1c73cc-264"
+        },
+        {
+          "uid": "cc1c73cc-265"
+        },
+        {
+          "uid": "cc1c73cc-266"
+        },
+        {
+          "uid": "cc1c73cc-214"
+        },
+        {
+          "uid": "cc1c73cc-210"
+        },
+        {
+          "uid": "cc1c73cc-212"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-88"
+        },
+        {
+          "uid": "cc1c73cc-76"
+        },
+        {
+          "uid": "cc1c73cc-82"
+        },
+        {
+          "uid": "cc1c73cc-72"
+        },
+        {
+          "uid": "cc1c73cc-78"
+        },
+        {
+          "uid": "cc1c73cc-146"
+        },
+        {
+          "uid": "cc1c73cc-178"
+        },
+        {
+          "uid": "cc1c73cc-174"
+        },
+        {
+          "uid": "cc1c73cc-164"
+        },
+        {
+          "uid": "cc1c73cc-172"
+        },
+        {
+          "uid": "cc1c73cc-170"
+        },
+        {
+          "uid": "cc1c73cc-168"
+        },
+        {
+          "uid": "cc1c73cc-162"
+        },
+        {
+          "uid": "cc1c73cc-152"
+        },
+        {
+          "uid": "cc1c73cc-128"
+        },
+        {
+          "uid": "cc1c73cc-166"
+        },
+        {
+          "uid": "cc1c73cc-160"
+        },
+        {
+          "uid": "cc1c73cc-158"
+        },
+        {
+          "uid": "cc1c73cc-154"
+        },
+        {
+          "uid": "cc1c73cc-156"
+        },
+        {
+          "uid": "cc1c73cc-142"
+        },
+        {
+          "uid": "cc1c73cc-144"
+        },
+        {
+          "uid": "cc1c73cc-140"
+        },
+        {
+          "uid": "cc1c73cc-138"
+        },
+        {
+          "uid": "cc1c73cc-136"
+        },
+        {
+          "uid": "cc1c73cc-134"
+        },
+        {
+          "uid": "cc1c73cc-150"
+        },
+        {
+          "uid": "cc1c73cc-130"
+        },
+        {
+          "uid": "cc1c73cc-132"
+        },
+        {
+          "uid": "cc1c73cc-126"
+        },
+        {
+          "uid": "cc1c73cc-124"
+        },
+        {
+          "uid": "cc1c73cc-176"
+        },
+        {
+          "uid": "cc1c73cc-148"
+        }
+      ]
+    },
+    "cc1c73cc-258": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/Trans.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-259"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        }
+      ]
+    },
+    "cc1c73cc-259": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/TransWithoutContext.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-48"
+        },
+        {
+          "uid": "cc1c73cc-268"
+        },
+        {
+          "uid": "cc1c73cc-206"
+        },
+        {
+          "uid": "cc1c73cc-210"
+        },
+        {
+          "uid": "cc1c73cc-212"
+        },
+        {
+          "uid": "cc1c73cc-208"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-258"
+        }
+      ]
+    },
+    "cc1c73cc-260": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/IcuTrans.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-261"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        }
+      ]
+    },
+    "cc1c73cc-261": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/IcuTransWithoutContext.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-206"
+        },
+        {
+          "uid": "cc1c73cc-212"
+        },
+        {
+          "uid": "cc1c73cc-269"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-260"
+        }
+      ]
+    },
+    "cc1c73cc-262": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/withTranslation.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-222"
+        },
+        {
+          "uid": "cc1c73cc-206"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        }
+      ]
+    },
+    "cc1c73cc-263": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/Translation.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-222"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        }
+      ]
+    },
+    "cc1c73cc-264": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/I18nextProvider.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        }
+      ]
+    },
+    "cc1c73cc-265": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/withSSR.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-266"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        },
+        {
+          "uid": "cc1c73cc-206"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        }
+      ]
+    },
+    "cc1c73cc-266": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/useSSR.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-216"
+        },
+        {
+          "uid": "cc1c73cc-206"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-257"
+        },
+        {
+          "uid": "cc1c73cc-265"
+        }
+      ]
+    },
+    "cc1c73cc-267": {
+      "id": "lucide-react",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-82"
+        }
+      ]
+    },
+    "cc1c73cc-268": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/html-parse-stringify@3.0.1/node_modules/html-parse-stringify/dist/html-parse-stringify.module.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-270"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-259"
+        }
+      ]
+    },
+    "cc1c73cc-269": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/IcuTransUtils/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-271"
+        },
+        {
+          "uid": "cc1c73cc-272"
+        },
+        {
+          "uid": "cc1c73cc-273"
+        },
+        {
+          "uid": "cc1c73cc-274"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-261"
+        }
+      ]
+    },
+    "cc1c73cc-270": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/void-elements@3.1.0/node_modules/void-elements/index.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-268"
+        }
+      ]
+    },
+    "cc1c73cc-271": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/IcuTransUtils/TranslationParserError.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-269"
+        },
+        {
+          "uid": "cc1c73cc-274"
+        }
+      ]
+    },
+    "cc1c73cc-272": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/IcuTransUtils/htmlEntityDecoder.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-269"
+        },
+        {
+          "uid": "cc1c73cc-274"
+        }
+      ]
+    },
+    "cc1c73cc-273": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/IcuTransUtils/tokenizer.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-269"
+        },
+        {
+          "uid": "cc1c73cc-274"
+        }
+      ]
+    },
+    "cc1c73cc-274": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-i18next@17.0.2+7bc862f2056bc92b/node_modules/react-i18next/dist/es/IcuTransUtils/renderTranslation.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cc1c73cc-224"
+        },
+        {
+          "uid": "cc1c73cc-271"
+        },
+        {
+          "uid": "cc1c73cc-273"
+        },
+        {
+          "uid": "cc1c73cc-272"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cc1c73cc-269"
+        }
+      ]
+    }
+  },
+  "env": {
+    "rollup": "4.23.0"
+  },
+  "options": {
+    "gzip": true,
+    "brotli": true,
+    "sourcemap": false
+  }
+}

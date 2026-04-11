@@ -1,14 +1,29 @@
 {
   "name": "benchmark-bloom",
   "version": "1.0.0",
+  "packageManager": "bun@1.3.12",
   "main": "index.js",
   "author": "",
   "license": "ISC",
   "description": "",
   "workspaces": [
-    "tanstack-start-react/*"
+    "test-utils",
+    "tanstack-start-react-static/*"
   ],
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test:pages test:reactivity test:components",
+    "test:pages": "turbo run test:pages",
+    "test:reactivity": "turbo run test:reactivity",
+    "test:components": "turbo run test:components",
+    "dev": "turbo run dev",
+    "preview": "turbo run preview"
+  },
   "dependencies": {
     "biome": "^0.3.3"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.12",
+    "turbo": "^2.9.6"
   }
 }
