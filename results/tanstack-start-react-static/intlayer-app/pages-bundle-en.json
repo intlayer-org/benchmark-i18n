@@ -1,11 +1,11 @@
 {
   "app": "intlayer-app",
   "locale": "en",
-  "timestamp": "2026-04-11T22:04:35.101Z",
+  "timestamp": "2026-04-12T00:36:45.490Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 80,
-      "fr": 9
+      "en": 73,
+      "fr": 89
     },
     "page": {
       "home": 24,
@@ -25,28 +25,149 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 419024,
+      "totalGzipSize": 137163,
+      "jsSize": 380150,
+      "jsGzipSize": 126992,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 14500,
+      "htmlGzipSize": 5116,
+      "fileCount": 14,
+      "jsFileCount": 12,
+      "bundleFiles": [
+        {
+          "url": "/en",
+          "size": 14500,
+          "gzipSize": 5116,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/_locale-gne3pqKb.js",
+          "size": 1426,
+          "gzipSize": 541,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Hero-C58qtUNr.js",
+          "size": 3247,
+          "gzipSize": 1925,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-DV4y-3I_.js",
+          "size": 3520,
+          "gzipSize": 1385,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ResultsTable-B_4HC7B2.js",
+          "size": 2572,
+          "gzipSize": 1172,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-C2cGWWhK.js",
+          "size": 15305,
+          "gzipSize": 7575,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 6,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential."
+          ]
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 7,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle représente les données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement en poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
+            "connecter un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arborescence. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions à l'avance surcharge la charge utile initiale. le chargement dynamique (lazy) divise les traductions par route ou espace de noms, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade (waterfall), flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
+            "résultats d'échantillon"
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 53.84615384615385,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 0,
@@ -91,32 +212,152 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 419177,
+      "totalGzipSize": 139162,
+      "jsSize": 383578,
+      "jsGzipSize": 129702,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 11225,
+      "htmlGzipSize": 4405,
+      "fileCount": 13,
+      "jsFileCount": 11,
+      "bundleFiles": [
+        {
+          "url": "/en/about",
+          "size": 11225,
+          "gzipSize": 4405,
+          "type": "html"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/about-TbJOG25y.js",
+          "size": 1179,
+          "gzipSize": 504,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutGrid-BPxiZwaG.js",
+          "size": 10774,
+          "gzipSize": 5671,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutHeader-D32nf1K9.js",
+          "size": 3637,
+          "gzipSize": 2204,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhatWeMeasure-ck2762Kg.js",
+          "size": 13908,
+          "gzipSize": 6929,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "lazy loading effectiveness",
+            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+          ]
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 14,
+          "found": [
+            "à propos de ce benchmark",
+            "ceci est une application de test open-source — pas un produit ou une entreprise. son seul but est de fournir une application react multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques.",
+            "pourquoi ce projet existe",
+            "choisir une bibliothèque i18n est une décision d'architecture aux conséquences à long terme. la plupart des comparaisons se concentrent sur l'ergonomie de l'api, mais peu mesurent le coût en performance : quel poids la bibliothèque ajoute-t-elle au bundle ? quel est son impact sur le rendu lorsque des milliers de clés de traduction sont chargées ? le chargement asynchrone aide-t-il vraiment ou déplace-t-il simplement le coût ? ce benchmark répond à ces questions avec des données réelles.",
+            "la même application de 10 pages est construite une fois par bibliothèque. nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits lighthouse pour les métriques de chargement et utilisons le react profiler pour capturer les temps de rendu lors des changements de locale. tous les tests s'exécutent en ci sur du matériel constant pour garantir des résultats reproductibles.",
+            "ce que nous mesurons",
+            "impact sur la taille du bundle",
+            "les octets javascript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers de traduction sont inclus. cela affecte directement le temps de téléchargement sur les réseaux lents.",
+            "combien de temps supplémentaire la bibliothèque ajoute au cycle de rendu de react. les bibliothèques qui injectent des traductions via un seul fournisseur de contexte peuvent provoquer des rendus inutiles dans tout l'arbre des composants.",
+            "pendant le ssr, les données de traduction sont sérialisées en html. les dictionnaires volumineux augmentent la charge utile html et ralentissent l'hydratation — le moment où la page devient interactive.",
+            "efficacité du lazy loading",
+            "si diviser les traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
+            "vitesse de changement de langue",
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le rendu des composants et la mise à jour du dom."
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 58.333333333333336,
       "pageLeakage": {
         "home": {
           "count": 0,
           "found": []
         },
         "about": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "lazy loading effectiveness",
+            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+          ]
         },
         "blog": {
           "count": 0,
@@ -157,24 +398,133 @@
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 408233,
+      "totalGzipSize": 131737,
+      "jsSize": 371795,
+      "jsGzipSize": 122602,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 12064,
+      "htmlGzipSize": 4080,
+      "fileCount": 13,
+      "jsFileCount": 11,
+      "bundleFiles": [
+        {
+          "url": "/en/blog",
+          "size": 12064,
+          "gzipSize": 4080,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/blog-CXW1PnDj.js",
+          "size": 919,
+          "gzipSize": 463,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-EQOJFjX3.js",
+          "size": 336,
+          "gzipSize": 277,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogList-BvdqMlJ9.js",
+          "size": 15284,
+          "gzipSize": 6677,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogHeader-BKvNGspn.js",
+          "size": 1176,
+          "gzipSize": 791,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 12,
+          "found": [
+            "insights, tutorials, and analysis from the i18n community.",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
+            "how to reduce your i18n bundle by 60%",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
+            "migrating from react-i18next to lingui",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "server components and i18n: what changes?",
+            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
+            "benchmark methodology: how we test",
+            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+          ]
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 12,
+          "found": [
+            "aperçus, tutoriels et analyses de la communauté i18n.",
+            "nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la dx. voici les résultats surprenants.",
+            "comment réduire votre bundle i18n de 60 %",
+            "stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.",
+            "l'état de l'internationalisation dans react",
+            "un aperçu de l'écosystème i18n actuel dans react, couvrant les tendances, les modèles émergents et les préférences de la communauté.",
+            "migrer de react-i18next vers lingui",
+            "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
+            "server components et i18n : qu'est-ce qui change ?",
+            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
+            "méthodologie du benchmark : comment nous testons",
+            "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité."
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 50,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -185,8 +535,21 @@
           "found": []
         },
         "blog": {
-          "count": 0,
-          "found": []
+          "count": 12,
+          "found": [
+            "insights, tutorials, and analysis from the i18n community.",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
+            "how to reduce your i18n bundle by 60%",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
+            "migrating from react-i18next to lingui",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "server components and i18n: what changes?",
+            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
+            "benchmark methodology: how we test",
+            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+          ]
         },
         "careers": {
           "count": 0,
@@ -223,24 +586,137 @@
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 409102,
+      "totalGzipSize": 132708,
+      "jsSize": 371533,
+      "jsGzipSize": 123499,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 13195,
+      "htmlGzipSize": 4154,
+      "fileCount": 14,
+      "jsFileCount": 12,
+      "bundleFiles": [
+        {
+          "url": "/en/careers",
+          "size": 13195,
+          "gzipSize": 4154,
+          "type": "html"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/careers-BY3zAIpE.js",
+          "size": 1189,
+          "gzipSize": 506,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-EQOJFjX3.js",
+          "size": 336,
+          "gzipSize": 277,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersHeader-B8ZXWo22.js",
+          "size": 2654,
+          "gzipSize": 1712,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-DymdL05d.js",
+          "size": 2125,
+          "gzipSize": 1355,
+          "type": "js"
+        },
+        {
+          "url": "/assets/OpenPositions-DylAOck3.js",
+          "size": 11149,
+          "gzipSize": 5255,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+          ]
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 12,
+          "found": [
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
+            "rémunération compétitive",
+            "rémunération au-dessus du marché",
+            "temps alloué à l'open source",
+            "ingénieur frontend senior",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation."
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 54.54545454545454,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -255,8 +731,20 @@
           "found": []
         },
         "careers": {
-          "count": 0,
-          "found": []
+          "count": 11,
+          "found": [
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "20% time for oss contributions",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+          ]
         },
         "contact": {
           "count": 0,
@@ -289,24 +777,112 @@
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 395795,
+      "totalGzipSize": 127055,
+      "jsSize": 361383,
+      "jsGzipSize": 118181,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 10038,
+      "htmlGzipSize": 3819,
+      "fileCount": 13,
+      "jsFileCount": 11,
+      "bundleFiles": [
+        {
+          "url": "/en/contact",
+          "size": 10038,
+          "gzipSize": 3819,
+          "type": "html"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/contact-JEgnj3Ib.js",
+          "size": 989,
+          "gzipSize": 479,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-EQOJFjX3.js",
+          "size": 336,
+          "gzipSize": 277,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactHeader-QfyR0_Rx.js",
+          "size": 2007,
+          "gzipSize": 1314,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-CKbvffzW.js",
+          "size": 3971,
+          "gzipSize": 1717,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 1,
+          "found": [
+            "methodology question"
+          ]
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 2,
+          "found": [
+            "nouvelle idée de benchmark",
+            "question sur la méthodologie"
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 66.66666666666666,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -325,8 +901,10 @@
           "found": []
         },
         "contact": {
-          "count": 0,
-          "found": []
+          "count": 1,
+          "found": [
+            "methodology question"
+          ]
         },
         "faq": {
           "count": 0,
@@ -355,24 +933,128 @@
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 414695,
+      "totalGzipSize": 135157,
+      "jsSize": 378435,
+      "jsGzipSize": 125727,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 11886,
+      "htmlGzipSize": 4375,
+      "fileCount": 13,
+      "jsFileCount": 11,
+      "bundleFiles": [
+        {
+          "url": "/en/faq",
+          "size": 11886,
+          "gzipSize": 4375,
+          "type": "html"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/faq-BePpzv1-.js",
+          "size": 915,
+          "gzipSize": 464,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-EQOJFjX3.js",
+          "size": 336,
+          "gzipSize": 277,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQHeader-CqqU-bfL.js",
+          "size": 1378,
+          "gzipSize": 892,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQList-rgsLd4yn.js",
+          "size": 21726,
+          "gzipSize": 9700,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "frequently asked questions",
+            "everything you need to know about i18n benchmark.",
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?"
+          ]
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 9,
+          "found": [
+            "tout ce que vous devez savoir sur i18n benchmark.",
+            "qu'est-ce que i18n benchmark ?",
+            "comment les benchmarks sont-ils menés ?",
+            "quelles bibliothèques sont actuellement supportées ?",
+            "puis-je soumettre mes propres benchmarks ?",
+            "à quelle fréquence les benchmarks sont-ils mis à jour ?",
+            "les données sont-elles fiables ?",
+            "proposez-vous des services de conseil ?",
+            "comment puis-je contribuer ?"
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 47.368421052631575,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -395,8 +1077,19 @@
           "found": []
         },
         "faq": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "frequently asked questions",
+            "everything you need to know about i18n benchmark.",
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?"
+          ]
         },
         "pricing": {
           "count": 0,
@@ -421,24 +1114,123 @@
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 401692,
+      "totalGzipSize": 128842,
+      "jsSize": 365340,
+      "jsGzipSize": 119904,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 11978,
+      "htmlGzipSize": 3883,
+      "fileCount": 13,
+      "jsFileCount": 11,
+      "bundleFiles": [
+        {
+          "url": "/en/pricing",
+          "size": 11978,
+          "gzipSize": 3883,
+          "type": "html"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/pricing-Dym89TJ8.js",
+          "size": 933,
+          "gzipSize": 465,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-EQOJFjX3.js",
+          "size": 336,
+          "gzipSize": 277,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingHeader-7zey0ZPw.js",
+          "size": 1796,
+          "gzipSize": 1219,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingTiers-CjN06lYa.js",
+          "size": 8195,
+          "gzipSize": 3549,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 4,
+          "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "{runs} benchmark runs/day",
+            "dedicated account manager"
+          ]
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "tarification simple et transparente",
+            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
+            "{runs} lancements de benchmark/jour",
+            "{libs} bibliothèques",
+            "support de la communauté",
+            "lancements illimités",
+            "toutes les bibliothèques",
+            "gestionnaire de compte dédié",
+            "sessions de formation",
+            "contacter les ventes"
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 71.42857142857143,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -465,8 +1257,13 @@
           "found": []
         },
         "pricing": {
-          "count": 0,
-          "found": []
+          "count": 4,
+          "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "{runs} benchmark runs/day",
+            "dedicated account manager"
+          ]
         },
         "products": {
           "count": 0,
@@ -487,24 +1284,127 @@
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 403205,
+      "totalGzipSize": 130157,
+      "jsSize": 367088,
+      "jsGzipSize": 121169,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 11743,
+      "htmlGzipSize": 3933,
+      "fileCount": 13,
+      "jsFileCount": 11,
+      "bundleFiles": [
+        {
+          "url": "/en/products",
+          "size": 11743,
+          "gzipSize": 3933,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/products-D-yWj3ah.js",
+          "size": 935,
+          "gzipSize": 468,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-EQOJFjX3.js",
+          "size": 336,
+          "gzipSize": 277,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsHeader-DafWcFl7.js",
+          "size": 1410,
+          "gzipSize": 942,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsGrid-w0W3UYAS.js",
+          "size": 10327,
+          "gzipSize": 5088,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 8,
+          "found": [
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+          ]
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "outils et services pour rationaliser votre flux de travail d'internationalisation.",
+            "lancez des benchmarks localement depuis votre terminal. supporte les configurations personnalisées et l'intégration ci.",
+            "benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
+            "benchmark entreprise",
+            "déploiement sur site avec sso, journaux d'audit, sla personnalisés et support dédié.",
+            "assistant de migration",
+            "outil propulsé par l'ia qui aide à migrer votre codebase entre les bibliothèques i18n sans temps d'arrêt.",
+            "contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
+            "optimiseur de bundle",
+            "analyse et optimise votre bundle i18n pour la production avec le tree-shaking et le fractionnement du code."
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 55.55555555555556,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -535,8 +1435,17 @@
           "found": []
         },
         "products": {
-          "count": 0,
-          "found": []
+          "count": 8,
+          "found": [
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+          ]
         },
         "settings": {
           "count": 0,
@@ -553,13 +1462,114 @@
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 398473,
+      "totalGzipSize": 127298,
+      "jsSize": 362509,
+      "jsGzipSize": 118129,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 11590,
+      "htmlGzipSize": 4114,
+      "fileCount": 16,
+      "jsFileCount": 14,
+      "bundleFiles": [
+        {
+          "url": "/en/settings",
+          "size": 11590,
+          "gzipSize": 4114,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/settings-DrlcqCr-.js",
+          "size": 1845,
+          "gzipSize": 631,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-EQOJFjX3.js",
+          "size": 336,
+          "gzipSize": 277,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsHeader-D3kJVB5_.js",
+          "size": 593,
+          "gzipSize": 384,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProfileSection-DDeR--ig.js",
+          "size": 1275,
+          "gzipSize": 547,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-DWdFYNjP.js",
+          "size": 2440,
+          "gzipSize": 871,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-BpKBPiqj.js",
+          "size": 716,
+          "gzipSize": 415,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ApiAccessSection-Bz-w9C6q.js",
+          "size": 1224,
+          "gzipSize": 610,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
           "count": 0,
@@ -605,8 +1615,14 @@
           "found": []
         },
         "settings": {
-          "count": 0,
-          "found": []
+          "count": 5,
+          "found": [
+            "manage your account preferences and configuration.",
+            "receive weekly benchmark reports",
+            "use dark color scheme",
+            "chinese simplified (zh-cn)",
+            "use this key to access the benchmarking api programmatically."
+          ]
         },
         "team": {
           "count": 0,
@@ -619,24 +1635,130 @@
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 0,
-      "jsSize": 0,
-      "cssSize": 0,
-      "htmlSize": 0,
-      "fileCount": 0,
-      "jsFileCount": 0,
-      "bundleFiles": [],
+      "totalSize": 405504,
+      "totalGzipSize": 131153,
+      "jsSize": 369942,
+      "jsGzipSize": 122069,
+      "cssSize": 24374,
+      "cssGzipSize": 5055,
+      "htmlSize": 11188,
+      "htmlGzipSize": 4029,
+      "fileCount": 13,
+      "jsFileCount": 11,
+      "bundleFiles": [
+        {
+          "url": "/en/team",
+          "size": 11188,
+          "gzipSize": 4029,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-CEDYLJ4b.js",
+          "size": 9131,
+          "gzipSize": 3432,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-T2UsIWBS.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/team-CKgrwUYs.js",
+          "size": 919,
+          "gzipSize": 462,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-BfkbVNiQ.js",
+          "size": 265671,
+          "gzipSize": 84802,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-0Bs1p9yY.css",
+          "size": 24374,
+          "gzipSize": 5055,
+          "type": "css"
+        },
+        {
+          "url": "/assets/MockBanner-EQOJFjX3.js",
+          "size": 336,
+          "gzipSize": 277,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamHeader-DS9D8dBb.js",
+          "size": 2290,
+          "gzipSize": 1472,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamGrid-DPzsv_3-.js",
+          "size": 12317,
+          "gzipSize": 5464,
+          "type": "js"
+        }
+      ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 11,
+          "found": [
+            "découvrez les personnes derrière i18n benchmark. une équipe diverse unie par une passion partagée pour les excellents outils de développement.",
+            "fondatrice & ingénieure principale",
+            "ancienne ingénieure google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle.",
+            "ingénieur performance",
+            "spécialisé dans l'optimisation des performances javascript et la méthodologie de benchmarking. auparavant chez vercel.",
+            "passionnée par l'expérience développeur et l'éducation. conférencière à react conf, jsconf et i18nnext.",
+            "développeur full-stack",
+            "maintient l'infrastructure de benchmarking et le pipeline ci/cd. contributeur open source à lingui.",
+            "assure la rigueur statistique dans tous les résultats de benchmark. doctorat en statistiques appliquées du mit.",
+            "gestionnaire de communauté",
+            "gère les contributions de la communauté, les partenariats et les événements. expérience en gouvernance open source."
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 52.38095238095239,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -675,8 +1797,19 @@
           "found": []
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
       "pageLeakagePercent": 0

@@ -10,9 +10,9 @@ export const Route = createFileRoute("/$locale")({
       throw notFound();
     }
   },
-  loader: async ({ params }) => {
+  loader: ({ params }) => {
     const locale = params.locale ?? defaultLocale;
-    const messages = await getMessages(locale);
+    const messages = getMessages(locale);
     return { locale, messages };
   },
   component: LocaleLayout,

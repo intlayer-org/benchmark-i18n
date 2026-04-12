@@ -53,7 +53,7 @@ export function onRenderCallback(
   actualDuration: number,
 ) {
   if (typeof window === "undefined") return;
-  if (phase !== "update") return;
+  if (phase === "nested-update") return;
 
   window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
   window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];

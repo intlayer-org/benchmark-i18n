@@ -44,7 +44,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
-import { build } from "vite";
+import { build, loadConfigFromFile } from "vite";
 import type { RolldownOutput } from "rolldown";
 import Bun from "bun";
 
@@ -73,22 +73,21 @@ export interface MeasureConfig {
    * Produces: `<repo-root>/results/<benchmarkCategory>/<appName>/`
    */
   benchmarkCategory: string;
+  /**
+   * Optional function to wrap the component code on the fly.
+   * Returns the source code for a virtual module that imports the component.
+   */
+  wrapperTemplate?: (componentPath: string) => string;
 }
 
 /** Size measurements for a single compiled component. */
 interface ComponentSizeStats {
-  /** File name, e.g. "Header.tsx". */
   name: string;
-  /**
-   * Category derived from directory structure.
-   * "Shared" for files directly in src/components/, otherwise the first
-   * subdirectory name (e.g. "home" for src/components/pages/home/).
-   */
   category: string;
-  /** Byte length of the minified ES module output. */
+  unminifiedBytes: number;
+  unminifiedGzipBytes: number;
   minifiedBytes: number;
-  /** Byte length of the minified output after gzip compression (level 6). */
-  gzipBytes: number;
+  minifiedGzipBytes: number;
 }
 
 // ─── Defaults ────────────────────────────────────────────────────────────────
@@ -113,6 +112,13 @@ const BASE_EXTERNAL_PACKAGES = [
   "lucide-react",
 ];
 
+const BLOCKED_PLUGIN_SUBSTRINGS = [
+  "tanstack", // Strips tanstack-react-start:config and nested router plugins
+  "vite:react", // Strips vite:react-babel, vite:react-refresh, etc.
+  "tailwind", // Strips @tailwindcss/vite:*
+  "visualizer", // Strips rollup-plugin-visualizer
+];
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 /**
@@ -132,82 +138,110 @@ const deriveComponentCategory = (relativeFilePath: string): string =>
 
 /**
  * Builds a single component with Vite in library mode (in-memory, no disk
- * write) and returns its minified and gzipped byte sizes.
- *
- * We intentionally use `configFile: false` instead of the app's vite.config.ts.
- * The full app config includes `tanstackStart()` which overrides library mode
- * and triggers a full app build — causing every component to report the same
- * (full-bundle) size. By bypassing the config file, each component is built
- * in true isolation.
- *
- * JSX is handled via esbuild's built-in `automatic` runtime (React 17+ new JSX
- * transform), which matches what `@vitejs/plugin-react` produces in production
- * without requiring the plugin to be a test-utils dependency.
- *
- * gzip is applied at level 6 (the default), matching most CDN and server
- * configurations, to give a realistic over-the-wire size estimate.
+ * write) and returns its minified code, minified byte size, and gzipped byte size.
  *
  * @param componentFilePath - Absolute path to the .tsx component file.
  * @param externalPackages - Package names to exclude from the build output.
- * @returns Minified and gzipped byte sizes of the compiled component.
+ * @param wrapperTemplate - Optional function to generate a wrapper component.
+ * @returns Minified code string, minified bytes, and gzipped bytes.
  * @throws If Vite fails to build the component (caller should catch and skip).
  */
 const buildComponentBundle = async (
   componentFilePath: string,
   externalPackages: string[],
-): Promise<{ minifiedBytes: number; gzipBytes: number }> => {
-  const buildOutput = (await build({
-    configFile: false, // bypass app config — tanstackStart() would override lib mode
-    logLevel: "silent", // suppress Vite's build progress noise
-    esbuild: {
-      jsx: "automatic", // React 17+ new JSX transform, no plugin needed
-    },
-    build: {
-      write: false, // keep output in memory — faster, no temp files
-      minify: true,
-      lib: {
-        entry: componentFilePath,
-        formats: ["es"],
-        fileName: "component",
-      },
-      rollupOptions: {
-        external: externalPackages,
-      },
-    },
-  })) as RolldownOutput[];
+  minify: boolean,
+  wrapperTemplate?: (componentPath: string) => string,
+): Promise<{ bytes: number; gzipBytes: number; code: string }> => {
+  // Load the host application's Vite config
+  const loaded = await loadConfigFromFile({
+    command: "build",
+    mode: "production",
+  });
+  const appConfig = loaded?.config || {};
 
-  // Library mode normally produces one chunk per entry, but plugins can emit
-  // additional helper chunks. Concatenate all of them into a single buffer.
-  const outputChunks = buildOutput[0]?.output ?? [];
-  const minifiedCodeBuffer = Buffer.from(
-    outputChunks
+  // Filter out plugins that interfere with isolated library mode.
+  const filteredPlugins = ((appConfig.plugins || []) as any[])
+    .flat(Infinity)
+    .filter((plugin: any) => {
+      if (!plugin || !plugin.name) return true;
+
+      // Keep the plugin ONLY if its name does NOT match any of the blocked substrings
+      return !BLOCKED_PLUGIN_SUBSTRINGS.some((blockedSubstring) =>
+        plugin.name.includes(blockedSubstring),
+      );
+    });
+
+  // --- TEMPORARY FILE STRATEGY ---
+  let entryFilePath = componentFilePath;
+  let isTempFile = false;
+
+  if (wrapperTemplate) {
+    // Create a temporary physical file next to the actual component
+    // The .tsx extension ensures esbuild processes the JSX inside the wrapper
+    entryFilePath = componentFilePath.replace(/\.tsx$/, ".wrapper.tsx");
+    const normalizedPath = componentFilePath.replace(/\\/g, "/");
+    fs.writeFileSync(entryFilePath, wrapperTemplate(normalizedPath), "utf-8");
+    isTempFile = true;
+  }
+
+  try {
+    const buildOutput = (await build({
+      configFile: false, // We apply the extracted config manually
+      logLevel: "silent",
+      plugins: filteredPlugins,
+      resolve: appConfig.resolve, // Inherit path aliases (e.g., ~/*)
+      define: appConfig.define, // Inherit any app-level defines only
+      esbuild: {
+        jsx: "automatic",
+      },
+      build: {
+        write: false,
+        minify,
+        lib: {
+          entry: entryFilePath,
+          formats: ["es"],
+          fileName: "component",
+        },
+        rollupOptions: {
+          external: externalPackages,
+        },
+      },
+    })) as RolldownOutput[];
+
+    const outputChunks = buildOutput[0]?.output ?? [];
+    const code = outputChunks
       .map((outputChunk) => ("code" in outputChunk ? outputChunk.code : ""))
-      .join(""),
-  );
+      .join("");
 
-  return {
-    minifiedBytes: minifiedCodeBuffer.byteLength,
-    gzipBytes: zlib.gzipSync(minifiedCodeBuffer).length,
-  };
+    const codeBuffer = Buffer.from(code);
+
+    return {
+      bytes: codeBuffer.byteLength,
+      gzipBytes: zlib.gzipSync(codeBuffer).length,
+      code,
+    };
+  } finally {
+    // ALWAYS clean up the temporary file, even if the build fails
+    if (isTempFile && fs.existsSync(entryFilePath)) {
+      fs.unlinkSync(entryFilePath);
+    }
+  }
 };
 
 /**
  * Scans a single directory for `.tsx` files, builds each component with Vite,
- * and returns the collected size statistics.
- *
- * Failed component builds are logged and skipped rather than aborting the
- * entire run — one broken component should not hide all other measurements.
- *
- * A dot is printed to stdout for each processed component so the operator can
- * confirm the script is still running (Vite builds are noticeably slow).
+ * writes the resulting bundle to disk for inspection, and returns size stats.
  *
  * @param directoryPath - Absolute path to the directory to scan.
  * @param externalPackages - Package names to exclude from each build.
+ * @param bundlesOutputDir - Absolute path to the directory where bundles should be saved.
  * @returns Size statistics for every successfully built component in the directory.
  */
 const scanAndMeasureDirectory = async (
   directoryPath: string,
   externalPackages: string[],
+  bundlesOutputDir: string,
+  wrapperTemplate?: (componentPath: string) => string,
 ): Promise<ComponentSizeStats[]> => {
   const componentStats: ComponentSizeStats[] = [];
   const globPattern = new Bun.Glob("**/*.tsx");
@@ -218,35 +252,61 @@ const scanAndMeasureDirectory = async (
   })) {
     console.log(`  - Processing component: ${relativeFilePath}`);
     const absoluteFilePath = path.join(directoryPath, relativeFilePath);
-
-    let minifiedBytes = 0;
-    let gzipBytes = 0;
+    const category = deriveComponentCategory(relativeFilePath);
+    const componentName = path.basename(relativeFilePath);
 
     try {
-      ({ minifiedBytes, gzipBytes } = await buildComponentBundle(
+      // Build 1: Unminified
+      const unminified = await buildComponentBundle(
         absoluteFilePath,
         externalPackages,
-      ));
+        false,
+        wrapperTemplate,
+      );
+
+      // Build 2: Minified
+      const minified = await buildComponentBundle(
+        absoluteFilePath,
+        externalPackages,
+        true,
+        wrapperTemplate,
+      );
+
+      // Write both bundled code versions to disk for inspection
+      const componentBundleDir = path.join(bundlesOutputDir, category);
+      if (!fs.existsSync(componentBundleDir)) {
+        fs.mkdirSync(componentBundleDir, { recursive: true });
+      }
+      const componentBaseName = path.parse(componentName).name;
+
+      const unminifiedPath = path.join(
+        componentBundleDir,
+        `${componentBaseName}.js`,
+      );
+      fs.writeFileSync(unminifiedPath, unminified.code, "utf-8");
+
+      const minifiedPath = path.join(
+        componentBundleDir,
+        `${componentBaseName}_min.js`,
+      );
+      fs.writeFileSync(minifiedPath, minified.code, "utf-8");
+
+      componentStats.push({
+        name: componentName,
+        category,
+        unminifiedBytes: unminified.bytes,
+        unminifiedGzipBytes: unminified.gzipBytes,
+        minifiedBytes: minified.bytes,
+        minifiedGzipBytes: minified.gzipBytes,
+      });
+
+      console.log(
+        `    ✓ ${componentName}: Unminified=${(unminified.bytes / 1024).toFixed(2)}KB | Minified=${(minified.bytes / 1024).toFixed(2)}KB`,
+      );
     } catch (buildError) {
-      const componentFileName = path.basename(relativeFilePath);
-      console.error(`\nFailed to build ${componentFileName}:`, buildError);
+      console.error(`\nFailed to build ${componentName}:`, buildError);
       continue; // skip rather than recording misleading sizes
     }
-
-    componentStats.push({
-      name: path.basename(relativeFilePath),
-      category: deriveComponentCategory(relativeFilePath),
-      minifiedBytes,
-      gzipBytes,
-    });
-
-    console.log(
-      `    ✓ Build complete: minified=${(minifiedBytes / 1024).toFixed(
-        2,
-      )}KB, gzipped=${(gzipBytes / 1024).toFixed(2)}KB`,
-    );
-
-    // process.stdout.write(".");
   }
 
   console.log(
@@ -269,11 +329,13 @@ const printComponentSizeTable = (
 ): void => {
   console.log(`\n\n--- INDIVIDUAL COMPONENT SIZES ---`);
   console.table(
-    componentStatsList.map((component) => ({
-      Component: component.name,
-      Category: component.category,
-      "Minified (KB)": (component.minifiedBytes / 1024).toFixed(2),
-      "Gzipped (KB)": (component.gzipBytes / 1024).toFixed(2),
+    componentStatsList.map((c) => ({
+      Component: c.name,
+      Category: c.category,
+      "Raw (KB)": (c.unminifiedBytes / 1024).toFixed(2),
+      "Raw GZ (KB)": (c.unminifiedGzipBytes / 1024).toFixed(2),
+      "Min (KB)": (c.minifiedBytes / 1024).toFixed(2),
+      "Min GZ (KB)": (c.minifiedGzipBytes / 1024).toFixed(2),
     })),
   );
 };
@@ -306,12 +368,16 @@ const saveComponentMeasurements = (
         packageName: appName,
         summary: {
           totalComponents: componentStatsList.length,
+          totalUnminifiedBytes: componentStatsList.reduce(
+            (totalBytes, component) => totalBytes + component.unminifiedBytes,
+            0,
+          ),
           totalMinifiedBytes: componentStatsList.reduce(
             (totalBytes, component) => totalBytes + component.minifiedBytes,
             0,
           ),
           totalGzipBytes: componentStatsList.reduce(
-            (totalBytes, component) => totalBytes + component.gzipBytes,
+            (totalBytes, component) => totalBytes + component.minifiedGzipBytes,
             0,
           ),
         },
@@ -336,16 +402,13 @@ const saveComponentMeasurements = (
  *
  * @param config - Measurement configuration for the app under test.
  */
-export const measureComponents = async (
-  config: MeasureConfig,
-): Promise<void> => {
-  const {
-    appName,
-    benchmarkCategory,
-    componentDirectories = DEFAULT_COMPONENT_DIRECTORIES,
-    additionalExternalPackages = [],
-  } = config;
-
+export const measureComponents = async ({
+  appName,
+  benchmarkCategory,
+  componentDirectories = DEFAULT_COMPONENT_DIRECTORIES,
+  additionalExternalPackages = [],
+  wrapperTemplate,
+}: MeasureConfig): Promise<void> => {
   const resolvedComponentDirectories = componentDirectories.map(
     (directoryPath) => path.resolve(directoryPath),
   );
@@ -363,10 +426,13 @@ export const measureComponents = async (
     appName,
   );
 
+  const bundlesOutputDir = path.join(resultsDirectory, "bundles");
+
   console.log(`\n--- COMPONENT SIZE MEASUREMENT CONFIG ---`);
   console.log(`App Name: ${appName}`);
   console.log(`Benchmark Category: ${benchmarkCategory}`);
   console.log(`Results Dir: ${resultsDirectory}`);
+  console.log(`Bundles Output Dir: ${bundlesOutputDir}`);
   console.log(`External Packages: ${allExternalPackages.join(", ")}`);
   console.log(`------------------------------------------\n`);
 
@@ -380,6 +446,8 @@ export const measureComponents = async (
     const directoryStats = await scanAndMeasureDirectory(
       directoryPath,
       allExternalPackages,
+      bundlesOutputDir,
+      wrapperTemplate,
     );
     allComponentStats.push(...directoryStats);
   }

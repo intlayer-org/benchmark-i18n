@@ -3,9 +3,9 @@ import { getMessages } from '../../i18n/getMessages'
 import { defaultLocale } from '../../i18n/config'
 
 export const Route = createFileRoute('/$locale')({
-  loader: async ({ params }) => {
+  loader: ({ params }) => {
     const locale = params.locale || defaultLocale
-    const messages = await getMessages(locale)
+    const messages = getMessages(locale)
     return { locale, messages }
   },
   component: Outlet,

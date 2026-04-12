@@ -1,5 +1,6 @@
 import { useEffect, Profiler } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+import i18n from "../i18n/i18n";
 import {
   HeadContent,
   Link,
@@ -9,6 +10,7 @@ import {
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { defaultLocale } from "../i18n/config";
 
 import appCss from "../styles.css?url";
 
@@ -17,7 +19,7 @@ import {
   onRenderCallback as onRender,
 } from "test-utils/browser-metrics";
 
-const defaultLocale = "en";
+i18n.use(initReactI18next);
 
 const THEME_INIT_SCRIPT = `(function(){try{
   var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;performance.mark('hydration_start');}catch(e){}})();`;
@@ -72,6 +74,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   }, []);
 
   const { locale = defaultLocale } = LocaleRoute.useParams();
+
+  if (i18n.language !== locale) {
+    i18n.changeLanguage(locale);
+  }
 
   return (
     <html lang={locale} suppressHydrationWarning>

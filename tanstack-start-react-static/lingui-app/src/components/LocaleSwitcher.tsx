@@ -8,8 +8,7 @@ export default function LocaleSwitcher() {
 
   const handleLocaleChange = (newLocale: string) => {
     navigate({
-      to: ".",
-      params: (prev) => ({ ...prev, locale: newLocale }),
+      params: (prev: any) => ({ ...prev, locale: newLocale }),
     });
   };
 

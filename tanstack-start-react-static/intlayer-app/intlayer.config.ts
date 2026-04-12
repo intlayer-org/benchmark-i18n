@@ -71,7 +71,7 @@ const config: IntlayerConfig = {
     applicationContext: [""].join("\n"),
   },
   build: {
-    // minify: true,
+    minify: true,
   },
   compiler: {
     enabled: true,

@@ -1,22 +1,27 @@
-// import.meta.glob tells Vite about all locale files at build time, so they are
-// correctly included in both client and server bundles. A plain dynamic import
-// with a template-literal path generates hashed chunk references that the SSR
-// server cannot resolve at runtime.
-const messageModules = import.meta.glob("../messages/*.json");
+import de from "../messages/de.json";
+import en from "../messages/en.json";
+import es from "../messages/es.json";
+import fr from "../messages/fr.json";
+import it from "../messages/it.json";
+import ja from "../messages/ja.json";
+import ko from "../messages/ko.json";
+import pt from "../messages/pt.json";
+import ru from "../messages/ru.json";
+import zh from "../messages/zh.json";
 
-export async function getMessages(locale: string) {
-  const moduleLoader =
-    messageModules[`../messages/${locale}.json`] ??
-    messageModules["../messages/en.json"];
+const messageModules: Record<string, any> = {
+  de,
+  en,
+  es,
+  fr,
+  it,
+  ja,
+  ko,
+  pt,
+  ru,
+  zh,
+};
 
-  try {
-    const module = (await moduleLoader()) as { default: Record<string, string> };
-    return module.default;
-  } catch (error) {
-    console.error(`Failed to load messages for locale: ${locale}`, error);
-    const fallback = (await messageModules["../messages/en.json"]()) as {
-      default: Record<string, string>;
-    };
-    return fallback.default;
-  }
+export function getMessages(locale: string) {
+  return messageModules[locale] ?? messageModules["en"];
 }
