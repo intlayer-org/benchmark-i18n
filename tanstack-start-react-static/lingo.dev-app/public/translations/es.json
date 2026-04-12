@@ -1,0 +1,21 @@
+{
+  "version": 0.1,
+  "locale": "es",
+  "entries": {
+    "00eb4e9b4814": "Alternar notificaciones",
+    "2d4bfd1535a4": "Chino Simplificado (zh-CN)",
+    "4300ca2cf431": "Modo Oscuro",
+    "44688c9d5f6f": "Japonés (ja)",
+    "49391efc8b79": "Alternar modo oscuro",
+    "4e349c43b0c5": "Preferencias",
+    "7befbbae6794": "Inglés (en)",
+    "8545d83f3e07": "Francés (fr)",
+    "8da0f6d51480": "Idioma Predeterminado",
+    "bd284ebd791f": "Español (es)",
+    "bf4335e69758": "Alemán (de)",
+    "dc5c429344a7": "Usar esquema de color oscuro",
+    "e0f9db5c07a9": "Notificaciones por Correo",
+    "f296bd4f5206": "Recibir informes semanales de benchmark",
+    "fd6304ee4dc3": "Árabe (ar)"
+  }
+}

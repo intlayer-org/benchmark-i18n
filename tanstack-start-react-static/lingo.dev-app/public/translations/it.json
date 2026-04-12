@@ -1,0 +1,21 @@
+{
+  "version": 0.1,
+  "locale": "it",
+  "entries": {
+    "00eb4e9b4814": "Attiva/disattiva notifiche",
+    "2d4bfd1535a4": "Cinese Semplificato (zh-CN)",
+    "4300ca2cf431": "Modalità Scura",
+    "44688c9d5f6f": "Giapponese (ja)",
+    "49391efc8b79": "Attiva/disattiva modalità scura",
+    "4e349c43b0c5": "Preferenze",
+    "7befbbae6794": "Inglese (en)",
+    "8545d83f3e07": "Francese (fr)",
+    "8da0f6d51480": "Lingua Predefinita",
+    "bd284ebd791f": "Spagnolo (es)",
+    "bf4335e69758": "Tedesco (de)",
+    "dc5c429344a7": "Usa schema colori scuro",
+    "e0f9db5c07a9": "Notifiche Email",
+    "f296bd4f5206": "Ricevi report settimanali sui benchmark",
+    "fd6304ee4dc3": "Arabo (ar)"
+  }
+}

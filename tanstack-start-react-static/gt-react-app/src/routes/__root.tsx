@@ -1,5 +1,5 @@
 import { useEffect, Profiler } from "react";
-import type { ProfilerOnRenderCallback } from "react";
+
 import {
   HeadContent,
   Link,
@@ -24,10 +24,12 @@ initializeGT({
 
 import appCss from "../styles.css?url";
 
-import { recordHydrationDuration, onRenderCallback as onRender } from "test-utils/browser-metrics";
+import {
+  recordHydrationDuration,
+  onRenderCallback as onRender,
+} from "test-utils/browser-metrics";
 
 // onRender now imported from test-utils
-
 
 const defaultLocale = "en";
 

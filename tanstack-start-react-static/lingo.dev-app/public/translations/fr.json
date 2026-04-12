@@ -1,0 +1,21 @@
+{
+  "version": 0.1,
+  "locale": "fr",
+  "entries": {
+    "00eb4e9b4814": "Activer/désactiver les notifications",
+    "2d4bfd1535a4": "Chinois simplifié (zh-CN)",
+    "4300ca2cf431": "Mode Sombre",
+    "44688c9d5f6f": "Japonais (ja)",
+    "49391efc8b79": "Activer/désactiver le mode sombre",
+    "4e349c43b0c5": "Préférences",
+    "7befbbae6794": "Anglais (en)",
+    "8545d83f3e07": "Français (fr)",
+    "8da0f6d51480": "Langue par Défaut",
+    "bd284ebd791f": "Espagnol (es)",
+    "bf4335e69758": "Allemand (de)",
+    "dc5c429344a7": "Utiliser le jeu de couleurs sombre",
+    "e0f9db5c07a9": "Notifications par E-mail",
+    "f296bd4f5206": "Recevoir des rapports de benchmark hebdomadaires",
+    "fd6304ee4dc3": "Arabe (ar)"
+  }
+}
