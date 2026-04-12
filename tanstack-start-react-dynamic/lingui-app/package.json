@@ -1,5 +1,5 @@
 {
-  "name": "lingui-app",
+  "name": "dynamic-lingui-app",
   "private": true,
   "type": "module",
   "imports": {

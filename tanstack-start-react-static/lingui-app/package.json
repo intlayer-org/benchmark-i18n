@@ -1,5 +1,5 @@
 {
-  "name": "lingui-app",
+  "name": "static-lingui-app",
   "private": true,
   "type": "module",
   "imports": {

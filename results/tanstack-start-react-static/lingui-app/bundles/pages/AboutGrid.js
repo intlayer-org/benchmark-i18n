@@ -1,4 +1,4 @@
-import React, { createContext, use, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
 var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
@@ -69,6 +69,16 @@ function AboutGrid() {
 		})]
 	});
 }
+//#endregion
+//#region \0rolldown_dynamic_import_helper.js
+var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
+	const query = path.lastIndexOf("?");
+	const v = glob[query === -1 || query < path.lastIndexOf("/") ? path : path.slice(0, query)];
+	if (v) return typeof v === "function" ? v() : Promise.resolve(v);
+	return new Promise((_, reject) => {
+		(typeof queueMicrotask === "function" ? queueMicrotask : setTimeout)(reject.bind(null, /* @__PURE__ */ new Error("Unknown variable dynamic import: " + path + (path.split("/").length !== segments ? ". Note that variables only represent file names one level deep." : ""))));
+	});
+};
 //#endregion
 //#region ../../node_modules/.bun/moo@0.5.3/node_modules/moo/moo.js
 var require_moo = /* @__PURE__ */ __commonJSMin(((exports, module) => {
@@ -1326,9 +1336,9 @@ Message: ${message}`);
 var isString = (s) => typeof s === "string";
 var isFunction = (f) => typeof f === "function";
 var cache = /* @__PURE__ */ new Map();
-var defaultLocale$1 = "en";
+var defaultLocale = "en";
 function normalizeLocales(locales) {
-	return [...Array.isArray(locales) ? locales : [locales], defaultLocale$1];
+	return [...Array.isArray(locales) ? locales : [locales], defaultLocale];
 }
 function date(locales, value, format) {
 	const _locales = normalizeLocales(locales);
@@ -1527,7 +1537,7 @@ var I18n = class extends EventEmitter {
 		if (params.missing != null) this._missing = params.missing;
 		if (params.messages != null) this.load(params.messages);
 		if (params.localeData != null) this.loadLocaleData(params.localeData);
-		if (typeof params.locale === "string" || params.locales) this.activate(params.locale ?? defaultLocale$1, params.locales);
+		if (typeof params.locale === "string" || params.locales) this.activate(params.locale ?? defaultLocale, params.locales);
 	}
 	get locale() {
 		return this._locale;
@@ -1646,26 +1656,21 @@ function setupI18n(params = {}) {
 	return new I18n(params);
 }
 setupI18n();
-var messageModules = /* @__PURE__ */ Object.assign({
-	"../locales/de/messages.mjs": () => import("./messages-DoIlTrzk.js"),
-	"../locales/en/messages.mjs": () => import("./messages-Md0FGWI-.js"),
-	"../locales/es/messages.mjs": () => import("./messages--Paxrcou.js"),
-	"../locales/fr/messages.mjs": () => import("./messages-Cc9TMdgT.js"),
-	"../locales/it/messages.mjs": () => import("./messages-B3BlU_Vq.js"),
-	"../locales/ja/messages.mjs": () => import("./messages-CdobLr_o.js"),
-	"../locales/ko/messages.mjs": () => import("./messages-ClpJz3PO.js"),
-	"../locales/pt/messages.mjs": () => import("./messages-Bj9bBIFk.js"),
-	"../locales/ru/messages.mjs": () => import("./messages-CKCgodB_.js"),
-	"../locales/zh/messages.mjs": () => import("./messages-BKLN3sY9.js")
-});
-async function loadMessages(locale) {
-	const moduleLoader = messageModules[`../locales/${locale}/messages.mjs`] || messageModules[`../locales/en/messages.mjs`];
-	try {
-		return (await moduleLoader()).messages;
-	} catch (error) {
-		console.error(`Failed to load messages for locale: ${locale}`, error);
-		return (await messageModules[`../locales/en/messages.mjs`]()).messages;
-	}
+//#endregion
+//#region src/i18n/lingui.ts
+async function getMessages(locale) {
+	return (await _rolldown_dynamic_import_helper_default(/* @__PURE__ */ Object.assign({
+		"../locales/de/messages.mjs": () => import("./messages-DoIlTrzk.js"),
+		"../locales/en/messages.mjs": () => import("./messages-Md0FGWI-.js"),
+		"../locales/es/messages.mjs": () => import("./messages--Paxrcou.js"),
+		"../locales/fr/messages.mjs": () => import("./messages-Cc9TMdgT.js"),
+		"../locales/it/messages.mjs": () => import("./messages-B3BlU_Vq.js"),
+		"../locales/ja/messages.mjs": () => import("./messages-CdobLr_o.js"),
+		"../locales/ko/messages.mjs": () => import("./messages-ClpJz3PO.js"),
+		"../locales/pt/messages.mjs": () => import("./messages-Bj9bBIFk.js"),
+		"../locales/ru/messages.mjs": () => import("./messages-CKCgodB_.js"),
+		"../locales/zh/messages.mjs": () => import("./messages-BKLN3sY9.js")
+	}), `../locales/${locale}/messages.mjs`, 4)).messages;
 }
 function initLingui(locale, messages) {
 	const lingui = setupI18n();
@@ -1675,16 +1680,11 @@ function initLingui(locale, messages) {
 }
 //#endregion
 //#region scripts/Wrapper.tsx
-var messagesPromise = loadMessages("en");
 function Wrapper({ children }) {
-	const messages = use(messagesPromise);
-	const i18n = useMemo(() => initLingui("en", messages), [messages]);
-	return /* @__PURE__ */ jsx(React.Suspense, {
-		fallback: null,
-		children: /* @__PURE__ */ jsx(I18nProvider, {
-			i18n,
-			children
-		})
+	const messages = useMemo(() => getMessages("en"), []);
+	return /* @__PURE__ */ jsx(I18nProvider, {
+		i18n: useMemo(() => initLingui("en", messages), [messages]),
+		children
 	});
 }
 //#endregion

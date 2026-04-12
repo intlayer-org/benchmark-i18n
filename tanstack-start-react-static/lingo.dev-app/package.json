@@ -1,5 +1,5 @@
 {
-  "name": "lingo.dev-app",
+  "name": "static-lingo.dev-app",
   "private": true,
   "type": "module",
   "imports": {

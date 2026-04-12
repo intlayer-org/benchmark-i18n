@@ -1,5 +1,5 @@
 {
-  "name": "intlayer-app",
+  "name": "dynamic-intlayer-app",
   "private": true,
   "type": "module",
   "imports": {

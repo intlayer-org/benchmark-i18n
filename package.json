@@ -8,7 +8,10 @@
   "description": "",
   "workspaces": [
     "test-utils",
-    "tanstack-start-react-static/*"
+    "nextjs-static/*",
+    "nextjs-dynamic/*",
+    "tanstack-start-react-static/*",
+    "tanstack-start-react-dynamic/*"
   ],
   "scripts": {
     "build": "turbo run build",

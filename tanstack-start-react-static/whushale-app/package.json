@@ -1,5 +1,5 @@
 {
-  "name": "whushale-app",
+  "name": "static-whushale-app",
   "private": true,
   "type": "module",
   "imports": {

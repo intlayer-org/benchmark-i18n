@@ -1,7 +1,7 @@
 {
   "app": "tolgee-app",
   "locale": "en",
-  "timestamp": "2026-04-12T04:59:14.852Z",
+  "timestamp": "2026-04-12T20:42:51.006Z",
   "fingerprintCounts": {
     "locale": {
       "en": 51,
@@ -25,21 +25,21 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 604671,
-      "totalGzipSize": 193009,
-      "jsSize": 566252,
-      "jsGzipSize": 182895,
+      "totalSize": 431578,
+      "totalGzipSize": 136846,
+      "jsSize": 377154,
+      "jsGzipSize": 121276,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 14514,
-      "htmlGzipSize": 5130,
+      "htmlSize": 30519,
+      "htmlGzipSize": 10586,
       "fileCount": 14,
       "jsFileCount": 12,
       "bundleFiles": [
         {
           "url": "/en",
-          "size": 14514,
-          "gzipSize": 5130,
+          "size": 30519,
+          "gzipSize": 10586,
           "type": "html"
         },
         {
@@ -55,27 +55,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
-          "size": 29164,
-          "gzipSize": 10146,
-          "type": "js"
-        },
-        {
-          "url": "/assets/route-DV50Z_2T.js",
-          "size": 71,
-          "gzipSize": 86,
-          "type": "js"
-        },
-        {
           "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
           "size": 370,
           "gzipSize": 220,
-          "type": "js"
-        },
-        {
-          "url": "/assets/Match--ukx7GUf.js",
-          "size": 69245,
-          "gzipSize": 21971,
           "type": "js"
         },
         {
@@ -85,37 +67,55 @@
           "type": "css"
         },
         {
-          "url": "/assets/_locale-CbYqLOou.js",
+          "url": "/assets/route-DV50Z_2T.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
+          "size": 29164,
+          "gzipSize": 10146,
+          "type": "js"
+        },
+        {
+          "url": "/assets/_locale-BW5no3gR.js",
           "size": 1385,
-          "gzipSize": 538,
+          "gzipSize": 540,
           "type": "js"
         },
         {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/Hero-Dpbvu2uA.js",
-          "size": 1254,
-          "gzipSize": 603,
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
           "type": "js"
         },
         {
-          "url": "/assets/WhyItMatters-D04Rzs0N.js",
+          "url": "/assets/WhyItMatters-CSrzkkdu.js",
           "size": 2633,
           "gzipSize": 998,
           "type": "js"
         },
         {
-          "url": "/assets/UnderstandingImpact-BVydyxAW.js",
+          "url": "/assets/Hero-CMH-8JXx.js",
+          "size": 1254,
+          "gzipSize": 603,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-Dz7yXwc9.js",
           "size": 4622,
           "gzipSize": 1495,
           "type": "js"
         },
         {
-          "url": "/assets/ResultsTable-Av7spsZD.js",
+          "url": "/assets/ResultsTable-BEFox_Ge.js",
           "size": 1911,
           "gzipSize": 597,
           "type": "js"
@@ -176,70 +176,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -354,21 +295,21 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 595404,
-      "totalGzipSize": 190895,
-      "jsSize": 560268,
-      "jsGzipSize": 181497,
+      "totalSize": 422311,
+      "totalGzipSize": 135381,
+      "jsSize": 371170,
+      "jsGzipSize": 119877,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 11231,
-      "htmlGzipSize": 4414,
+      "htmlSize": 27236,
+      "htmlGzipSize": 10520,
       "fileCount": 13,
       "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/about",
-          "size": 11231,
-          "gzipSize": 4414,
+          "size": 27236,
+          "gzipSize": 10520,
           "type": "html"
         },
         {
@@ -390,6 +331,12 @@
           "type": "js"
         },
         {
+          "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
+          "size": 29164,
+          "gzipSize": 10146,
+          "type": "js"
+        },
+        {
           "url": "/assets/route-DV50Z_2T.js",
           "size": 71,
           "gzipSize": 86,
@@ -402,15 +349,9 @@
           "type": "css"
         },
         {
-          "url": "/assets/about-BK6n-s83.js",
+          "url": "/assets/about-DzpDvrWp.js",
           "size": 1140,
-          "gzipSize": 501,
-          "type": "js"
-        },
-        {
-          "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
-          "size": 29164,
-          "gzipSize": 10146,
+          "gzipSize": 502,
           "type": "js"
         },
         {
@@ -420,25 +361,25 @@
           "type": "js"
         },
         {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
           "type": "js"
         },
         {
-          "url": "/assets/AboutHeader-CEiWy3TZ.js",
+          "url": "/assets/AboutHeader-DfAqYHNl.js",
           "size": 796,
           "gzipSize": 483,
           "type": "js"
         },
         {
-          "url": "/assets/AboutGrid-DUg29t05.js",
+          "url": "/assets/AboutGrid-Cu7sEFcp.js",
           "size": 1682,
           "gzipSize": 780,
           "type": "js"
         },
         {
-          "url": "/assets/WhatWeMeasure-Bu1E9jQH.js",
+          "url": "/assets/WhatWeMeasure-zyoZOzpY.js",
           "size": 2203,
           "gzipSize": 1069,
           "type": "js"
@@ -499,70 +440,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -684,21 +566,21 @@
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 595563,
-      "totalGzipSize": 190198,
-      "jsSize": 559502,
-      "jsGzipSize": 181095,
+      "totalSize": 422470,
+      "totalGzipSize": 134662,
+      "jsSize": 370404,
+      "jsGzipSize": 119474,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 12156,
-      "htmlGzipSize": 4119,
+      "htmlSize": 28161,
+      "htmlGzipSize": 10204,
       "fileCount": 13,
       "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/blog",
-          "size": 12156,
-          "gzipSize": 4119,
+          "size": 28161,
+          "gzipSize": 10204,
           "type": "html"
         },
         {
@@ -714,15 +596,21 @@
           "type": "js"
         },
         {
-          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
-          "size": 370,
-          "gzipSize": 220,
-          "type": "js"
-        },
-        {
           "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
           "size": 29164,
           "gzipSize": 10146,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
           "type": "js"
         },
         {
@@ -732,9 +620,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/blog-DoLK2UmU.js",
+          "url": "/assets/blog-CcdGwdSh.js",
           "size": 882,
-          "gzipSize": 457,
+          "gzipSize": 458,
           "type": "js"
         },
         {
@@ -744,31 +632,25 @@
           "type": "css"
         },
         {
-          "url": "/assets/Match--ukx7GUf.js",
-          "size": 69245,
-          "gzipSize": 21971,
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
           "type": "js"
         },
         {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
-          "type": "js"
-        },
-        {
-          "url": "/assets/BlogHeader-CkwoPXLa.js",
-          "size": 584,
-          "gzipSize": 348,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-Dy8ZeN-j.js",
+          "url": "/assets/MockBanner-oYgy1eTK.js",
           "size": 431,
           "gzipSize": 330,
           "type": "js"
         },
         {
-          "url": "/assets/BlogList-CuR41hu1.js",
+          "url": "/assets/BlogHeader-Be5SpD-T.js",
+          "size": 584,
+          "gzipSize": 347,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogList-X9knVmFl.js",
           "size": 3158,
           "gzipSize": 1296,
           "type": "js"
@@ -829,70 +711,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1011,45 +834,27 @@
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 597906,
-      "totalGzipSize": 190650,
-      "jsSize": 560800,
-      "jsGzipSize": 181500,
+      "totalSize": 424813,
+      "totalGzipSize": 135362,
+      "jsSize": 371702,
+      "jsGzipSize": 119875,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 13201,
-      "htmlGzipSize": 4166,
+      "htmlSize": 29206,
+      "htmlGzipSize": 10503,
       "fileCount": 14,
       "jsFileCount": 12,
       "bundleFiles": [
         {
           "url": "/en/careers",
-          "size": 13201,
-          "gzipSize": 4166,
+          "size": 29206,
+          "gzipSize": 10503,
           "type": "html"
-        },
-        {
-          "url": "/assets/preload-helper-rov5CBGT.js",
-          "size": 1193,
-          "gzipSize": 681,
-          "type": "js"
         },
         {
           "url": "/assets/jsx-runtime-CUBmso4R.js",
           "size": 8399,
           "gzipSize": 3202,
-          "type": "js"
-        },
-        {
-          "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
-          "size": 29164,
-          "gzipSize": 10146,
-          "type": "js"
-        },
-        {
-          "url": "/assets/route-DV50Z_2T.js",
-          "size": 71,
-          "gzipSize": 86,
           "type": "js"
         },
         {
@@ -1059,15 +864,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/Match--ukx7GUf.js",
-          "size": 69245,
-          "gzipSize": 21971,
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
           "type": "js"
         },
         {
-          "url": "/assets/careers-qEdscRXM.js",
-          "size": 1150,
-          "gzipSize": 506,
+          "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
+          "size": 29164,
+          "gzipSize": 10146,
           "type": "js"
         },
         {
@@ -1077,31 +882,49 @@
           "type": "css"
         },
         {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
+          "url": "/assets/route-DV50Z_2T.js",
+          "size": 71,
+          "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/CareersHeader-CsAHgYVV.js",
-          "size": 671,
-          "gzipSize": 400,
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Dy8ZeN-j.js",
+          "url": "/assets/careers-DovA7Bq6.js",
+          "size": 1150,
+          "gzipSize": 503,
+          "type": "js"
+        },
+        {
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-oYgy1eTK.js",
           "size": 431,
           "gzipSize": 330,
           "type": "js"
         },
         {
-          "url": "/assets/CareersBenefits-CM1kwIA9.js",
+          "url": "/assets/CareersHeader-BvTgraAM.js",
+          "size": 671,
+          "gzipSize": 399,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-Dni8eks_.js",
           "size": 926,
           "gzipSize": 492,
           "type": "js"
         },
         {
-          "url": "/assets/OpenPositions-D0uQRUdp.js",
+          "url": "/assets/OpenPositions-DYJaTQO8.js",
           "size": 3175,
           "gzipSize": 1108,
           "type": "js"
@@ -1162,70 +985,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1352,21 +1116,21 @@
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 593547,
-      "totalGzipSize": 189583,
-      "jsSize": 559433,
-      "jsGzipSize": 180697,
+      "totalSize": 420454,
+      "totalGzipSize": 134367,
+      "jsSize": 370335,
+      "jsGzipSize": 119075,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 10209,
-      "htmlGzipSize": 3902,
+      "htmlSize": 26214,
+      "htmlGzipSize": 10308,
       "fileCount": 13,
       "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/contact",
-          "size": 10209,
-          "gzipSize": 3902,
+          "size": 26214,
+          "gzipSize": 10308,
           "type": "html"
         },
         {
@@ -1388,16 +1152,16 @@
           "type": "js"
         },
         {
-          "url": "/assets/styles-Csz1ONSG.css",
-          "size": 23905,
-          "gzipSize": 4984,
-          "type": "css"
-        },
-        {
           "url": "/assets/route-DV50Z_2T.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
+        },
+        {
+          "url": "/assets/styles-Csz1ONSG.css",
+          "size": 23905,
+          "gzipSize": 4984,
+          "type": "css"
         },
         {
           "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
@@ -1412,31 +1176,31 @@
           "type": "js"
         },
         {
-          "url": "/assets/contact-B9nxNj0O.js",
+          "url": "/assets/contact-CVmUH5YL.js",
           "size": 952,
-          "gzipSize": 474,
+          "gzipSize": 473,
           "type": "js"
         },
         {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Dy8ZeN-j.js",
-          "size": 431,
-          "gzipSize": 330,
-          "type": "js"
-        },
-        {
-          "url": "/assets/ContactHeader-urJTSrjx.js",
+          "url": "/assets/ContactHeader-CroMev7J.js",
           "size": 762,
           "gzipSize": 437,
           "type": "js"
         },
         {
-          "url": "/assets/ContactForm-CzRUx0AS.js",
+          "url": "/assets/MockBanner-oYgy1eTK.js",
+          "size": 431,
+          "gzipSize": 330,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-DLoU4Ikh.js",
           "size": 2841,
           "gzipSize": 792,
           "type": "js"
@@ -1497,70 +1261,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1677,33 +1382,33 @@
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 595228,
-      "totalGzipSize": 190667,
-      "jsSize": 559431,
-      "jsGzipSize": 181302,
+      "totalSize": 422135,
+      "totalGzipSize": 135279,
+      "jsSize": 370333,
+      "jsGzipSize": 119683,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 11892,
-      "htmlGzipSize": 4381,
+      "htmlSize": 27897,
+      "htmlGzipSize": 10612,
       "fileCount": 13,
       "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/faq",
-          "size": 11892,
-          "gzipSize": 4381,
+          "size": 27897,
+          "gzipSize": 10612,
           "type": "html"
-        },
-        {
-          "url": "/assets/jsx-runtime-CUBmso4R.js",
-          "size": 8399,
-          "gzipSize": 3202,
-          "type": "js"
         },
         {
           "url": "/assets/preload-helper-rov5CBGT.js",
           "size": 1193,
           "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
           "type": "js"
         },
         {
@@ -1713,15 +1418,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/route-DV50Z_2T.js",
-          "size": 71,
-          "gzipSize": 86,
-          "type": "js"
-        },
-        {
           "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
           "size": 29164,
           "gzipSize": 10146,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-DV50Z_2T.js",
+          "size": 71,
+          "gzipSize": 86,
           "type": "js"
         },
         {
@@ -1731,37 +1436,37 @@
           "type": "css"
         },
         {
-          "url": "/assets/faq-DKeXqYn7.js",
-          "size": 878,
-          "gzipSize": 455,
-          "type": "js"
-        },
-        {
           "url": "/assets/Match--ukx7GUf.js",
           "size": 69245,
           "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
+          "url": "/assets/faq-CVGMdlHi.js",
+          "size": 878,
+          "gzipSize": 459,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Dy8ZeN-j.js",
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQHeader-sbYINbUc.js",
+          "size": 610,
+          "gzipSize": 364,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-oYgy1eTK.js",
           "size": 431,
           "gzipSize": 330,
           "type": "js"
         },
         {
-          "url": "/assets/FAQHeader-CUNTjTmR.js",
-          "size": 610,
-          "gzipSize": 366,
-          "type": "js"
-        },
-        {
-          "url": "/assets/FAQList-BpjcUzl9.js",
+          "url": "/assets/FAQList-BeApbu4T.js",
           "size": 3065,
           "gzipSize": 1487,
           "type": "js"
@@ -1822,70 +1527,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2009,28 +1655,22 @@
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 594638,
-      "totalGzipSize": 189705,
-      "jsSize": 559051,
-      "jsGzipSize": 180831,
+      "totalSize": 421545,
+      "totalGzipSize": 134400,
+      "jsSize": 369953,
+      "jsGzipSize": 119210,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 11682,
-      "htmlGzipSize": 3890,
+      "htmlSize": 27687,
+      "htmlGzipSize": 10206,
       "fileCount": 13,
       "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/pricing",
-          "size": 11682,
-          "gzipSize": 3890,
+          "size": 27687,
+          "gzipSize": 10206,
           "type": "html"
-        },
-        {
-          "url": "/assets/preload-helper-rov5CBGT.js",
-          "size": 1193,
-          "gzipSize": 681,
-          "type": "js"
         },
         {
           "url": "/assets/jsx-runtime-CUBmso4R.js",
@@ -2039,15 +1679,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
-          "size": 370,
-          "gzipSize": 220,
+          "url": "/assets/preload-helper-rov5CBGT.js",
+          "size": 1193,
+          "gzipSize": 681,
           "type": "js"
         },
         {
-          "url": "/assets/route-DV50Z_2T.js",
-          "size": 71,
-          "gzipSize": 86,
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
           "type": "js"
         },
         {
@@ -2063,9 +1703,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/pricing-CcDx-E1q.js",
-          "size": 896,
-          "gzipSize": 462,
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-DV50Z_2T.js",
+          "size": 71,
+          "gzipSize": 86,
           "type": "js"
         },
         {
@@ -2075,25 +1721,25 @@
           "type": "js"
         },
         {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
+          "url": "/assets/pricing-cZ12dAMs.js",
+          "size": 896,
+          "gzipSize": 462,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Dy8ZeN-j.js",
+          "url": "/assets/MockBanner-oYgy1eTK.js",
           "size": 431,
           "gzipSize": 330,
           "type": "js"
         },
         {
-          "url": "/assets/PricingHeader-DJeQf_1B.js",
+          "url": "/assets/PricingHeader-BdnU7jBs.js",
           "size": 648,
           "gzipSize": 361,
           "type": "js"
         },
         {
-          "url": "/assets/PricingTiers-C5eaU7JW.js",
+          "url": "/assets/PricingTiers-CGwytEOq.js",
           "size": 2629,
           "gzipSize": 1014,
           "type": "js"
@@ -2154,70 +1800,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2332,21 +1919,21 @@
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 592864,
-      "totalGzipSize": 189531,
-      "jsSize": 558343,
-      "jsGzipSize": 180718,
+      "totalSize": 419771,
+      "totalGzipSize": 134146,
+      "jsSize": 369245,
+      "jsGzipSize": 119097,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 10616,
-      "htmlGzipSize": 3829,
+      "htmlSize": 26621,
+      "htmlGzipSize": 10065,
       "fileCount": 13,
       "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/products",
-          "size": 10616,
-          "gzipSize": 3829,
+          "size": 26621,
+          "gzipSize": 10065,
           "type": "html"
         },
         {
@@ -2368,6 +1955,12 @@
           "type": "js"
         },
         {
+          "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
+          "size": 29164,
+          "gzipSize": 10146,
+          "type": "js"
+        },
+        {
           "url": "/assets/route-DV50Z_2T.js",
           "size": 71,
           "gzipSize": 86,
@@ -2380,13 +1973,7 @@
           "type": "css"
         },
         {
-          "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
-          "size": 29164,
-          "gzipSize": 10146,
-          "type": "js"
-        },
-        {
-          "url": "/assets/products-DaQPHoRX.js",
+          "url": "/assets/products-DKJY3Q3W.js",
           "size": 898,
           "gzipSize": 461,
           "type": "js"
@@ -2398,25 +1985,25 @@
           "type": "js"
         },
         {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
           "type": "js"
         },
         {
-          "url": "/assets/ProductsHeader-Brylv6jz.js",
-          "size": 607,
-          "gzipSize": 360,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-Dy8ZeN-j.js",
+          "url": "/assets/MockBanner-oYgy1eTK.js",
           "size": 431,
           "gzipSize": 330,
           "type": "js"
         },
         {
-          "url": "/assets/ProductsGrid-DucRL1wX.js",
+          "url": "/assets/ProductsHeader-DDl7zo6h.js",
+          "size": 607,
+          "gzipSize": 360,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsGrid-CScAg612.js",
           "size": 1960,
           "gzipSize": 903,
           "type": "js"
@@ -2477,70 +2064,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2655,22 +2183,28 @@
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 599048,
-      "totalGzipSize": 191390,
-      "jsSize": 563555,
-      "jsGzipSize": 182287,
+      "totalSize": 425955,
+      "totalGzipSize": 136112,
+      "jsSize": 374457,
+      "jsGzipSize": 120665,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 11588,
-      "htmlGzipSize": 4119,
+      "htmlSize": 27593,
+      "htmlGzipSize": 10463,
       "fileCount": 16,
       "jsFileCount": 14,
       "bundleFiles": [
         {
           "url": "/en/settings",
-          "size": 11588,
-          "gzipSize": 4119,
+          "size": 27593,
+          "gzipSize": 10463,
           "type": "html"
+        },
+        {
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
+          "type": "js"
         },
         {
           "url": "/assets/jsx-runtime-CUBmso4R.js",
@@ -2697,6 +2231,12 @@
           "type": "css"
         },
         {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
+          "type": "js"
+        },
+        {
           "url": "/assets/tolgee-react.esm-CnO9PbqL.js",
           "size": 29164,
           "gzipSize": 10146,
@@ -2709,55 +2249,43 @@
           "type": "js"
         },
         {
-          "url": "/assets/settings-DNo45BIu.js",
+          "url": "/assets/settings-B_9GoVG9.js",
           "size": 1802,
-          "gzipSize": 626,
+          "gzipSize": 624,
           "type": "js"
         },
         {
-          "url": "/assets/Match--ukx7GUf.js",
-          "size": 69245,
-          "gzipSize": 21971,
-          "type": "js"
-        },
-        {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
-          "type": "js"
-        },
-        {
-          "url": "/assets/SettingsHeader-BWFGgkvA.js",
-          "size": 580,
-          "gzipSize": 338,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-Dy8ZeN-j.js",
+          "url": "/assets/MockBanner-oYgy1eTK.js",
           "size": 431,
           "gzipSize": 330,
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-BE0pFdWc.js",
+          "url": "/assets/SettingsHeader-CYQ92xWW.js",
+          "size": 580,
+          "gzipSize": 339,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProfileSection-CVpNseBl.js",
           "size": 1318,
           "gzipSize": 501,
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-xU8SrJzA.js",
+          "url": "/assets/PreferencesSection-BtnUHVLa.js",
           "size": 2986,
           "gzipSize": 882,
           "type": "js"
         },
         {
-          "url": "/assets/ApiAccessSection-D7NDMrH7.js",
+          "url": "/assets/ApiAccessSection-CljuRcSR.js",
           "size": 1312,
           "gzipSize": 579,
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-CuqkOtH4.js",
+          "url": "/assets/SettingsFooter-BXXsRKw9.js",
           "size": 679,
           "gzipSize": 367,
           "type": "js"
@@ -2818,70 +2346,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2997,33 +2466,33 @@
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 593669,
-      "totalGzipSize": 189883,
-      "jsSize": 558570,
-      "jsGzipSize": 180861,
+      "totalSize": 420576,
+      "totalGzipSize": 134381,
+      "jsSize": 369472,
+      "jsGzipSize": 119241,
       "cssSize": 23905,
       "cssGzipSize": 4984,
-      "htmlSize": 11194,
-      "htmlGzipSize": 4038,
+      "htmlSize": 27199,
+      "htmlGzipSize": 10156,
       "fileCount": 13,
       "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/team",
-          "size": 11194,
-          "gzipSize": 4038,
+          "size": 27199,
+          "gzipSize": 10156,
           "type": "html"
-        },
-        {
-          "url": "/assets/jsx-runtime-CUBmso4R.js",
-          "size": 8399,
-          "gzipSize": 3202,
-          "type": "js"
         },
         {
           "url": "/assets/preload-helper-rov5CBGT.js",
           "size": 1193,
           "gzipSize": 681,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
           "type": "js"
         },
         {
@@ -3045,6 +2514,12 @@
           "type": "js"
         },
         {
+          "url": "/assets/team-4JE4af41.js",
+          "size": 882,
+          "gzipSize": 459,
+          "type": "js"
+        },
+        {
           "url": "/assets/styles-Csz1ONSG.css",
           "size": 23905,
           "gzipSize": 4984,
@@ -3057,31 +2532,25 @@
           "type": "js"
         },
         {
-          "url": "/assets/team-CJ8H8ekL.js",
-          "size": 882,
-          "gzipSize": 458,
+          "url": "/assets/main-DhjgyFgi.js",
+          "size": 256907,
+          "gzipSize": 80737,
           "type": "js"
         },
         {
-          "url": "/assets/main-DG6CY_YL.js",
-          "size": 446005,
-          "gzipSize": 142358,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-Dy8ZeN-j.js",
+          "url": "/assets/MockBanner-oYgy1eTK.js",
           "size": 431,
           "gzipSize": 330,
           "type": "js"
         },
         {
-          "url": "/assets/TeamHeader-CNXEFy5t.js",
+          "url": "/assets/TeamHeader-CJtowdLc.js",
           "size": 635,
           "gzipSize": 388,
           "type": "js"
         },
         {
-          "url": "/assets/TeamGrid-Bo5cRRwZ.js",
+          "url": "/assets/TeamGrid-BWXbbHyg.js",
           "size": 2175,
           "gzipSize": 1021,
           "type": "js"
@@ -3142,70 +2611,11 @@
           ]
         },
         "fr": {
-          "count": 58,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "la connexion d'un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "le chargement de toutes les traductions à l'avance surcharge le payload initial. le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul json volumineux peut nuire aux performances",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "la division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "exemples de résultats",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "efficacité du chargement différé",
-            "si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. voici les résultats détaillés avec des graphiques interactifs.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour l'optimisation du chargement des fichiers de traduction, l'élimination des locales inutilisées et l'exploitation de la compilation au moment de la construction.",
-            "l'état de l'internationalisation en 2026",
-            "migration de react-i18next vers lingui",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "une tarification transparente pour chaque étape de votre voyage i18n.",
-            "tableau de bord public des benchmarks",
-            "comparaisons de base des bibliothèques",
-            "accès au forum de la communauté",
-            "résumé mensuel des résultats",
-            "toutes les fonctionnalités gratuites",
-            "configurations de benchmark personnalisées",
-            "tableau de bord des résultats privés",
-            "accès api (1 000 requêtes/jour)",
-            "toutes les fonctionnalités pro",
-            "infrastructure de benchmark dédiée",
-            "intégrations de bibliothèques personnalisées",
-            "contacter les ventes",
-            "des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation.",
-            "tableau de bord de référence",
-            "graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
-            "téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
-            "assistant de migration",
-            "codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
-            "moniteur de performance",
-            "suivi continu des performances pour votre implémentation i18n. recevez des alertes lorsque le chargement des traductions se dégrade.",
-            "notifications par email",
-            "utiliser le schéma de couleurs sombres",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
-            "fondatrice & ingénieure en chef",
-            "ingénieur performance",
-            "développeur full-stack",
-            "responsable de communauté"
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 54.71698113207547,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,

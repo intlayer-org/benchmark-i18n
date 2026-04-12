@@ -3,5 +3,5 @@ import pkg from "./package.json" with { type: "json" };
 
 registerReactivityTest({
   appName: pkg.name,
-  benchmarkCategory: "tanstack-start-react-static",
+  benchmarkCategory: "tanstack-start-react-dynamic",
 });

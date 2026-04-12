@@ -3578,27 +3578,30 @@ function PricingTiers() {
 	});
 }
 //#endregion
+//#region \0rolldown_dynamic_import_helper.js
+var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
+	const query = path.lastIndexOf("?");
+	const v = glob[query === -1 || query < path.lastIndexOf("/") ? path : path.slice(0, query)];
+	if (v) return typeof v === "function" ? v() : Promise.resolve(v);
+	return new Promise((_, reject) => {
+		(typeof queueMicrotask === "function" ? queueMicrotask : setTimeout)(reject.bind(null, /* @__PURE__ */ new Error("Unknown variable dynamic import: " + path + (path.split("/").length !== segments ? ". Note that variables only represent file names one level deep." : ""))));
+	});
+};
+//#endregion
 //#region src/i18n/getMessages.ts
-var messageModules = /* @__PURE__ */ Object.assign({
-	"../messages/de.json": () => import("./de-DW_MnVsP.js"),
-	"../messages/en.json": () => import("./en-C1VxQTrn.js"),
-	"../messages/es.json": () => import("./es-KrAJ7pBI.js"),
-	"../messages/fr.json": () => import("./fr-B-VF3dtP.js"),
-	"../messages/it.json": () => import("./it-sqQ0AM7U.js"),
-	"../messages/ja.json": () => import("./ja-DHfqPJNu.js"),
-	"../messages/ko.json": () => import("./ko-B9TK1L0R.js"),
-	"../messages/pt.json": () => import("./pt-B2xqV7gu.js"),
-	"../messages/ru.json": () => import("./ru-C1RlmGQ2.js"),
-	"../messages/zh.json": () => import("./zh-BDmv97DV.js")
-});
 async function getMessages(locale) {
-	const moduleLoader = messageModules[`../messages/${locale}.json`] ?? messageModules["../messages/en.json"];
-	try {
-		return (await moduleLoader()).default;
-	} catch (error) {
-		console.error(`Failed to load messages for locale: ${locale}`, error);
-		return (await messageModules["../messages/en.json"]()).default;
-	}
+	return (await _rolldown_dynamic_import_helper_default(/* @__PURE__ */ Object.assign({
+		"../messages/de.json": () => import("./de-DW_MnVsP.js"),
+		"../messages/en.json": () => import("./en-C1VxQTrn.js"),
+		"../messages/es.json": () => import("./es-KrAJ7pBI.js"),
+		"../messages/fr.json": () => import("./fr-B-VF3dtP.js"),
+		"../messages/it.json": () => import("./it-sqQ0AM7U.js"),
+		"../messages/ja.json": () => import("./ja-DHfqPJNu.js"),
+		"../messages/ko.json": () => import("./ko-B9TK1L0R.js"),
+		"../messages/pt.json": () => import("./pt-B2xqV7gu.js"),
+		"../messages/ru.json": () => import("./ru-C1RlmGQ2.js"),
+		"../messages/zh.json": () => import("./zh-BDmv97DV.js")
+	}), `../messages/${locale}.json`, 3)).default;
 }
 //#endregion
 //#region scripts/Wrapper.tsx

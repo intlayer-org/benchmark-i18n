@@ -1,5 +1,5 @@
 {
-  "name": "paraglide-app",
+  "name": "static-paraglide-app",
   "private": true,
   "type": "module",
   "imports": {

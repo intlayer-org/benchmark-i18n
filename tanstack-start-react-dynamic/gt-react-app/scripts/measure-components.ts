@@ -4,8 +4,13 @@ import pkg from "../package.json" with { type: "json" };
 
 measureComponents({
   appName: pkg.name,
-  benchmarkCategory: "tanstack-start-react-static",
-  additionalExternalPackages: ["@tanstack/react-start", "@tanstack/start-server-core", "@tanstack/start-client-core", "@tanstack/react-router"],
+  benchmarkCategory: "tanstack-start-react-dynamic",
+  additionalExternalPackages: [
+    "@tanstack/react-start",
+    "@tanstack/start-server-core",
+    "@tanstack/start-client-core",
+    "@tanstack/react-router",
+  ],
   wrapperTemplate: (componentPath) => `
     import React from 'react';
     import Component from '${componentPath}';

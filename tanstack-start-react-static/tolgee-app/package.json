@@ -1,5 +1,5 @@
 {
-  "name": "tolgee-app",
+  "name": "static-tolgee-app",
   "private": true,
   "type": "module",
   "imports": {

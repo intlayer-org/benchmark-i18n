@@ -4,7 +4,7 @@ import path from "node:path";
 
 measureComponents({
   appName: pkg.name,
-  benchmarkCategory: "tanstack-start-react-static",
+  benchmarkCategory: "tanstack-start-react-dynamic",
   wrapperTemplate: (componentPath) => `
     import React from 'react';
     import Component from '${componentPath}';

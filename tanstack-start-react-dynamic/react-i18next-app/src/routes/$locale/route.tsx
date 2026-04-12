@@ -6,7 +6,7 @@ export const Route = createFileRoute("/$locale")({
   loader: async ({ params }) => {
     const locale = params.locale ?? defaultLocale;
     if (!i18n.hasResourceBundle(locale, "translation")) {
-      const messages = await import(`../i18n/locales/${locale}.json`);
+      const messages = await import(`../../i18n/locales/${locale}.json`);
       i18n.addResourceBundle(locale, "translation", messages.default);
     }
     await i18n.changeLanguage(locale);

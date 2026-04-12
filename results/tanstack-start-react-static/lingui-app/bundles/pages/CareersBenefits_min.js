@@ -1,11 +1,11 @@
-import e, { createContext as t, use as n, useCallback as r, useEffect as i, useMemo as a, useRef as o, useState as s } from "react";
-import { jsx as c, jsxs as l } from "react/jsx-runtime";
+import { createContext as e, useCallback as t, useEffect as n, useMemo as r, useRef as i, useState as a } from "react";
+import { jsx as o, jsxs as s } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var u = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports);
+var c = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports);
 //#endregion
 //#region src/components/pages/careers/CareersBenefits.tsx
-function d() {
-	return /* @__PURE__ */ c("div", {
+function l() {
+	return /* @__PURE__ */ o("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
 		children: [
 			{
@@ -20,12 +20,12 @@ function d() {
 				label: "Open source time",
 				value: "20% time for OSS contributions"
 			}
-		].map((e) => /* @__PURE__ */ l("div", {
+		].map((e) => /* @__PURE__ */ s("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
-			children: [/* @__PURE__ */ c("p", {
+			children: [/* @__PURE__ */ o("p", {
 				className: "text-sm font-semibold text-foreground",
 				children: e.label
-			}), /* @__PURE__ */ c("p", {
+			}), /* @__PURE__ */ o("p", {
 				className: "text-xs text-muted-foreground",
 				children: e.value
 			})]
@@ -34,22 +34,27 @@ function d() {
 }
 //#endregion
 //#region ../../node_modules/.bun/@lingui+react@5.9.5+4eaac984f6d8e0a2/node_modules/@lingui/react/dist/index.mjs
-var f = t(null), p = ({ i18n: e, defaultComponent: t, children: n }) => {
-	let a = o(e.locale), l = r(() => ({
+var u = e(null), d = ({ i18n: e, defaultComponent: r, children: s }) => {
+	let c = i(e.locale), l = t(() => ({
 		i18n: e,
-		defaultComponent: t,
+		defaultComponent: r,
 		_: e.t.bind(e)
-	}), [e, t]), [u, d] = s(l());
-	return i(() => {
+	}), [e, r]), [d, f] = a(l());
+	return n(() => {
 		let t = () => {
-			a.current = e.locale, d(l());
+			c.current = e.locale, f(l());
 		}, n = e.on("change", t);
-		return a.current !== e.locale && t(), n;
-	}, [e, l]), a.current ? /* @__PURE__ */ c(f.Provider, {
-		value: u,
-		children: n
+		return c.current !== e.locale && t(), n;
+	}, [e, l]), c.current ? /* @__PURE__ */ o(u.Provider, {
+		value: d,
+		children: s
 	}) : (process.env.NODE_ENV === "development" && console.log("I18nProvider rendered `null`. A call to `i18n.activate` needs to happen in order for translations to be activated and for the I18nProvider to render.This is not an error but an informational message logged only in development."), null);
-}, m = /* @__PURE__ */ u(((e, t) => {
+}, f = (e, t, n) => {
+	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
+	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
+		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
+	});
+}, p = /* @__PURE__ */ c(((e, t) => {
 	(function(e, n) {
 		typeof define == "function" && define.amd ? define([], n) : typeof t == "object" && t.exports ? t.exports = n() : e.moo = n();
 	})(e, function() {
@@ -366,12 +371,12 @@ var f = t(null), p = ({ i18n: e, defaultComponent: t, children: n }) => {
 			keywords: x
 		};
 	});
-})), h = /* @__PURE__ */ u(((e) => {
+})), m = /* @__PURE__ */ c(((e) => {
 	var t = e && e.__importDefault || function(e) {
 		return e && e.__esModule ? e : { default: e };
 	};
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.lexer = e.states = void 0;
-	var n = t(m());
+	var n = t(p());
 	e.states = {
 		body: {
 			doubleapos: {
@@ -440,9 +445,9 @@ var f = t(null), p = ({ i18n: e, defaultComponent: t, children: n }) => {
 			}
 		}
 	}, e.lexer = n.default.states(e.states);
-})), g = (/* @__PURE__ */ u(((e) => {
+})), h = (/* @__PURE__ */ c(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.ParseError = void 0, e.parse = l;
-	var t = h(), n = (e) => ({
+	var t = m(), n = (e) => ({
 		offset: e.offset,
 		line: e.line,
 		col: e.col,
@@ -602,22 +607,22 @@ var f = t(null), p = ({ i18n: e, defaultComponent: t, children: n }) => {
 	function l(e, t = {}) {
 		return new c(e, t).parse();
 	}
-})))(), _ = class extends Error {
+})))(), g = class extends Error {
 	constructor(e, t, n) {
 		super(e), this.token = t, this.type = n || "error";
 	}
-}, v = (e) => e < 4 ? "short" : e === 4 ? "long" : "narrow", y = (e) => e % 2 == 0 ? "2-digit" : "numeric";
-function b(e, t) {
+}, _ = (e) => e < 4 ? "short" : e === 4 ? "long" : "narrow", v = (e) => e % 2 == 0 ? "2-digit" : "numeric";
+function y(e, t) {
 	switch (e.char) {
-		case "y": return { year: y(e.width) };
+		case "y": return { year: v(e.width) };
 		case "r": return {
 			calendar: "gregory",
 			year: "numeric"
 		};
-		default: return t(`${e.desc} is not supported; falling back to year:numeric`, _.WARNING), { year: "numeric" };
+		default: return t(`${e.desc} is not supported; falling back to year:numeric`, g.WARNING), { year: "numeric" };
 	}
 }
-function x(e, t) {
+function b(e, t) {
 	switch (e.width) {
 		case 1: return "numeric";
 		case 2: return "2-digit";
@@ -629,17 +634,17 @@ function x(e, t) {
 			return;
 	}
 }
-function S(e, t) {
+function x(e, t) {
 	let { char: n, desc: r, width: i } = e;
-	if (n === "d") return y(i);
+	if (n === "d") return v(i);
 	t(`${r} is not supported`);
 }
-function C(e, t) {
+function S(e, t) {
 	let { char: n, desc: r, width: i } = e;
-	return (n === "c" || n === "e") && i < 3 && t(`Numeric value is not supported for ${r}; falling back to weekday:short`, _.WARNING), v(i);
+	return (n === "c" || n === "e") && i < 3 && t(`Numeric value is not supported for ${r}; falling back to weekday:short`, g.WARNING), _(i);
 }
-function w(e) {
-	let t = y(e.width), n;
+function C(e) {
+	let t = v(e.width), n;
 	switch (e.char) {
 		case "h":
 			n = "h12";
@@ -659,7 +664,7 @@ function w(e) {
 		hourCycle: n
 	} : { hour: t };
 }
-function T(e, t) {
+function w(e, t) {
 	let { char: n, desc: r, width: i } = e;
 	switch (n) {
 		case "v":
@@ -674,18 +679,18 @@ function T(e, t) {
 	}
 	return "short";
 }
-function ee(e, t) {
+function T(e, t) {
 	switch (e.field) {
-		case "era": return { era: v(e.width) };
-		case "year": return b(e, t);
-		case "month": return { month: x(e, t) };
-		case "day": return { day: S(e, t) };
-		case "weekday": return { weekday: C(e, t) };
+		case "era": return { era: _(e.width) };
+		case "year": return y(e, t);
+		case "month": return { month: b(e, t) };
+		case "day": return { day: x(e, t) };
+		case "weekday": return { weekday: S(e, t) };
 		case "period": return;
-		case "hour": return w(e);
-		case "min": return { minute: y(e.width) };
-		case "sec": return { second: y(e.width) };
-		case "tz": return { timeZoneName: T(e, t) };
+		case "hour": return C(e);
+		case "min": return { minute: v(e.width) };
+		case "sec": return { second: v(e.width) };
+		case "tz": return { timeZoneName: w(e, t) };
 		case "quarter":
 		case "week":
 		case "sec-frac":
@@ -699,11 +704,11 @@ function E(e, t, n = (e) => {
 	for (let t of e) {
 		let { error: e, field: a, str: o } = t;
 		if (e) {
-			let r = new _(e.message, t);
+			let r = new g(e.message, t);
 			r.stack = e.stack, n(r);
 		}
-		o && n(new _(`Ignoring string part: ${o}`, t, _.WARNING)), a && (i.indexOf(a) === -1 ? i.push(a) : n(new _(`Duplicate ${a} token`, t)));
-		let s = ee(t, (e, r) => n(new _(e, t, r)));
+		o && n(new g(`Ignoring string part: ${o}`, t, g.WARNING)), a && (i.indexOf(a) === -1 ? i.push(a) : n(new g(`Duplicate ${a} token`, t)));
+		let s = T(t, (e, r) => n(new g(e, t, r)));
 		s && Object.assign(r, s);
 	}
 	return r;
@@ -870,7 +875,7 @@ var D = {
 		desc: "Time Zone: ISO8601"
 	}
 }, O = (e) => e >= "A" && e <= "Z" || e >= "a" && e <= "z";
-function te(e, t) {
+function k(e, t) {
 	let n = e[t], r = 1;
 	for (; e[++t] === n;) ++r;
 	let i = D[n];
@@ -889,7 +894,7 @@ function te(e, t) {
 		width: r
 	};
 }
-function ne(e, t) {
+function ee(e, t) {
 	let n = e[++t], r = 2;
 	if (n === "'") return {
 		char: "'",
@@ -917,11 +922,11 @@ function ne(e, t) {
 		n += i;
 	}
 }
-function re(e, t) {
+function te(e, t) {
 	let n = e[t];
 	if (!n) return null;
-	if (O(n)) return te(e, t);
-	if (n === "'") return ne(e, t);
+	if (O(n)) return k(e, t);
+	if (n === "'") return ee(e, t);
 	let r = n, i = 1;
 	for (;;) {
 		let a = e[++t];
@@ -933,10 +938,10 @@ function re(e, t) {
 		r += a, i += 1;
 	}
 }
-function k(e) {
+function ne(e) {
 	let t = [], n = 0;
 	for (;;) {
-		let r = re(e, n);
+		let r = te(e, n);
 		if (!r) return t;
 		t.push(r), n += r.width;
 	}
@@ -979,10 +984,10 @@ function A(e, t) {
 	}) : e.map((e) => t(e.value));
 }
 function j(e, t) {
-	return /^::/.test(e) ? E(k(e.substring(2)), void 0, t) : e;
+	return /^::/.test(e) ? E(ne(e.substring(2)), void 0, t) : e;
 }
 function M(e, t = (e) => e) {
-	return A((0, g.parse)(e), t);
+	return A((0, h.parse)(e), t);
 }
 function N(e, t = (e) => e) {
 	try {
@@ -1078,7 +1083,7 @@ var G = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, K = (e) => e.replace(/\\u([a-fA-F
 		time: (e, t) => B(r, e, i(t) || t)
 	};
 }, Y = (e, t) => t[e] ?? t.other;
-function ie(e, t, n) {
+function X(e, t, n) {
 	return (r = {}, i) => {
 		let a = J(t, n, i), o = (e, t = !1) => Array.isArray(e) ? e.reduce((e, n) => {
 			if (n === "#" && t) return e + q;
@@ -1097,14 +1102,14 @@ function ie(e, t, n) {
 		return P(s) && G.test(s) ? K(s) : P(s) ? s : s ? String(s) : "";
 	};
 }
-var ae = Object.defineProperty, oe = (e, t, n) => t in e ? ae(e, t, {
+var re = Object.defineProperty, ie = (e, t, n) => t in e ? re(e, t, {
 	enumerable: !0,
 	configurable: !0,
 	writable: !0,
 	value: n
-}) : e[t] = n, se = (e, t, n) => (oe(e, typeof t == "symbol" ? t : t + "", n), n), ce = class {
+}) : e[t] = n, ae = (e, t, n) => (ie(e, typeof t == "symbol" ? t : t + "", n), n), oe = class {
 	constructor() {
-		se(this, "_events", {});
+		ae(this, "_events", {});
 	}
 	on(e, t) {
 		var n;
@@ -1124,12 +1129,12 @@ var ae = Object.defineProperty, oe = (e, t, n) => t in e ? ae(e, t, {
 		let t = this._events[e];
 		return Array.isArray(t) ? t : !1;
 	}
-}, le = Object.defineProperty, X = (e, t, n) => t in e ? le(e, t, {
+}, se = Object.defineProperty, ce = (e, t, n) => t in e ? se(e, t, {
 	enumerable: !0,
 	configurable: !0,
 	writable: !0,
 	value: n
-}) : e[t] = n, Z = (e, t, n) => (X(e, typeof t == "symbol" ? t : t + "", n), n), ue = class extends ce {
+}) : e[t] = n, Z = (e, t, n) => (ce(e, typeof t == "symbol" ? t : t + "", n), n), le = class extends oe {
 	constructor(e) {
 		super(), Z(this, "_locale", ""), Z(this, "_locales"), Z(this, "_localeData", {}), Z(this, "_messages", {}), Z(this, "_missing"), Z(this, "_messageCompiler"), Z(this, "t", this._.bind(this)), process.env.NODE_ENV !== "production" && this.setMessagesCompiler(N), e.missing != null && (this._missing = e.missing), e.messages != null && this.load(e.messages), e.localeData != null && this.loadLocaleData(e.localeData), (typeof e.locale == "string" || e.locales) && this.activate(e.locale ?? L, e.locales);
 	}
@@ -1187,7 +1192,7 @@ That means you use raw catalog or your catalog doesn't have a translation for th
 ICU features such as interpolation and plurals will not work properly for that message. 
 
 Please compile your catalog first. 
-`)), P(s) && G.test(s) ? K(s) : P(s) ? s : ie(s, this._locale, this._locales)(t, n?.formats);
+`)), P(s) && G.test(s) ? K(s) : P(s) ? s : X(s, this._locale, this._locales)(t, n?.formats);
 	}
 	date(e, t) {
 		return z(this._locales || this._locale, e, t);
@@ -1197,53 +1202,45 @@ Please compile your catalog first.
 	}
 };
 function Q(e = {}) {
-	return new ue(e);
+	return new le(e);
 }
 Q();
-var $ = /* @__PURE__ */ Object.assign({
-	"../locales/de/messages.mjs": () => import("./messages-BVMBj6Rk.js"),
-	"../locales/en/messages.mjs": () => import("./messages-BAu-pRZz.js"),
-	"../locales/es/messages.mjs": () => import("./messages-DJcRzGMy.js"),
-	"../locales/fr/messages.mjs": () => import("./messages-ZWU6W9na.js"),
-	"../locales/it/messages.mjs": () => import("./messages-CV8_AAxU.js"),
-	"../locales/ja/messages.mjs": () => import("./messages--e4DtGVb.js"),
-	"../locales/ko/messages.mjs": () => import("./messages-CUZxLSC-.js"),
-	"../locales/pt/messages.mjs": () => import("./messages-BqO6bQHz.js"),
-	"../locales/ru/messages.mjs": () => import("./messages-GTRM9Ryz.js"),
-	"../locales/zh/messages.mjs": () => import("./messages-CSEnm5Bt.js")
-});
-async function de(e) {
-	let t = $[`../locales/${e}/messages.mjs`] || $["../locales/en/messages.mjs"];
-	try {
-		return (await t()).messages;
-	} catch (t) {
-		return console.error(`Failed to load messages for locale: ${e}`, t), (await $["../locales/en/messages.mjs"]()).messages;
-	}
+//#endregion
+//#region src/i18n/lingui.ts
+async function $(e) {
+	return (await f(/* @__PURE__ */ Object.assign({
+		"../locales/de/messages.mjs": () => import("./messages-BVMBj6Rk.js"),
+		"../locales/en/messages.mjs": () => import("./messages-BAu-pRZz.js"),
+		"../locales/es/messages.mjs": () => import("./messages-DJcRzGMy.js"),
+		"../locales/fr/messages.mjs": () => import("./messages-ZWU6W9na.js"),
+		"../locales/it/messages.mjs": () => import("./messages-CV8_AAxU.js"),
+		"../locales/ja/messages.mjs": () => import("./messages--e4DtGVb.js"),
+		"../locales/ko/messages.mjs": () => import("./messages-CUZxLSC-.js"),
+		"../locales/pt/messages.mjs": () => import("./messages-BqO6bQHz.js"),
+		"../locales/ru/messages.mjs": () => import("./messages-GTRM9Ryz.js"),
+		"../locales/zh/messages.mjs": () => import("./messages-CSEnm5Bt.js")
+	}), `../locales/${e}/messages.mjs`, 4)).messages;
 }
-function fe(e, t) {
+function ue(e, t) {
 	let n = Q();
 	return n.load(e, t), n.activate(e), n;
 }
 //#endregion
 //#region scripts/Wrapper.tsx
-var pe = de("en");
-function me({ children: t }) {
-	let r = n(pe), i = a(() => fe("en", r), [r]);
-	return /* @__PURE__ */ c(e.Suspense, {
-		fallback: null,
-		children: /* @__PURE__ */ c(p, {
-			i18n: i,
-			children: t
-		})
+function de({ children: e }) {
+	let t = r(() => $("en"), []);
+	return /* @__PURE__ */ o(d, {
+		i18n: r(() => ue("en", t), [t]),
+		children: e
 	});
 }
 //#endregion
 //#region src/components/pages/careers/CareersBenefits.wrapper.tsx
-function he() {
-	return /* @__PURE__ */ c(me, { children: /* @__PURE__ */ c(d, {}) });
+function fe() {
+	return /* @__PURE__ */ o(de, { children: /* @__PURE__ */ o(l, {}) });
 }
 //#endregion
-export { he as default };
+export { fe as default };
 //#region src/locales/ja/messages.mjs
 var e = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"i18nライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較はAPIの使い勝手に焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリがバンドルにどれだけの重量を加えるのか？数千の翻訳キーが読み込まれたとき、レンダリングにどのような影響を与えるのか？遅延読み込みは実際に役立つのか、それとも単にコストをシフトさせているだけなのか？このベンチマークは、実際のデータでそれらの疑問に答えます。\"],\"about-grid.methodology\":[\"方法論\"],\"about-grid.theSame10PageApp\":[\"同じ10ページのアプリがライブラリごとに1回構築されます。rollup-plugin-visualizerを介してプロダクションバンドルを測定し、ロード指標のLighthouse監査を実行し、React Profilerを使用してロケール切り替え中のレンダリング時間をキャプチャします。すべてのテストは、再現可能な結果を確実にするために、一貫したハードウェアを使用してCI上で実行されます。\"],\"about-grid.whyThisExists\":[\"なぜこれが存在するのか\"],\"about-header.aboutThisBenchmark\":[\"このベンチマークについて\"],\"about-header.thisIsAnOpenSource\":[\"これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、Identicalな条件下でさまざまなi18nライブラリを統合して測定できる、現実的なマルチページのReactアプリを提供することです。\"],\"api-access-section.apiAccess\":[\"APIアクセス\"],\"api-access-section.apiKey\":[\"APIキー\"],\"api-access-section.copy\":[\"コピー\"],\"api-access-section.useThisKeyToAccess\":[\"このキーを使用して、プログラムからベンチマークAPIにアクセスします。\"],\"blog-header.insightsTutorialsAndAnalysisFrom\":[\"i18nコミュニティからの洞察、チュートリアル、分析。\"],\"blog-list.aStepByStepGuide\":[\"50,000の翻訳キーを持つプロダクションアプリをreact-i18nextからLinguiに移行するためのステップバイステップガイド。\"],\"blog-list.aTransparentLookAtOur\":[\"テスト環境、統計手法、再現性を含む、私たちのベンチマーク方法論の透明性のある考察。\"],\"blog-list.anOverviewOfTheCurrent\":[\"トレンド、新興パターン、コミュニティの好みを網羅した、Reactにおける現在のi18nエコシステムの概要。\"],\"blog-list.benchmarkMethodologyHowWeTest\":[\"ベンチマーク方法論：私たちのテスト方法\"],\"blog-list.comparingI18nLibrariesIn2026\":[\"2026年のi18nライブラリ比較：ディープダイブ\"],\"blog-list.february12026\":[\"2026年2月1日\"],\"blog-list.february152026\":[\"2026年2月15日\"],\"blog-list.february282026\":[\"2026年2月28日\"],\"blog-list.howToReduceYourI18n\":[\"i18nバンドルを60％削減する方法\"],\"blog-list.january202026\":[\"2026年1月20日\"],\"blog-list.march82026\":[\"2026年3月8日特段\"],\"blog-list.migratingFromReactI18nextTo\":[\"react-i18nextからLinguiへの移行\"],\"blog-list.practicalStrategiesForOptimizingTranslation\":[\"遅延読み込み、コード分割、コンパイル時の最適化を含む、翻訳バンドルを最適化するための実践的な戦略。\"],\"blog-list.reactServerComponentsIntroduceNew\":[\"React Server Componentsは、国際化のための新しいパターンを導入します。その影響とベストプラクティスを探ります。\"],\"blog-list.readMore\":[\"続きを読む →\"],\"blog-list.serverComponentsAndI18nWhat\":[\"Server Componentsとi18n：何が変わるのか？\"],\"blog-list.theStateOfInternationalizationIn\":[\"Reactにおける国際化の現状\"],\"blog-list.weTested12DifferentInternationalization\":[\"パフォーマンス、バンドルサイズ、DXにわたって12の異なる国際化ライブラリをテストしました。驚くべき結果がここにあります。\"],\"careers-benefits.competitivePay\":[\"競争力のある給与\"],\"careers-benefits.openSourceTime\":[\"オープンソースへの貢献時間\"],\"careers-benefits.topOfMarketCompensation\":[\"市場最高水準の報酬\"],\"careers-benefits.workFromAnywhereInThe\":[\"世界中のどこからでも働けます\"],\"careers-header.joinOurMissionToImprove\":[\"国際化エコシステムを改善するという私たちのミッションに参加してください。私たちは、影響、透明性、継続的な学習を重視するリモートファーストの開発チームです。\"],\"careers-header.title\":[\"採用情報\"],\"contact-form.bugReport\":[\"バグ報告\"],\"contact-form.describeYourQuestionOrIdea\":[\"質問やアイデアの詳細を記入してください...\"],\"contact-form.methodologyQuestion\":[\"方法論に関する質問\"],\"contact-form.newBenchmarkIdea\":[\"新しいベンチマークのアイデア\"],\"contact-form.sendMessage\":[\"メッセージを送信\"],\"contact-form.yourName\":[\"お名前\"],\"contact-header.getInTouch\":[\"お問い合わせ\"],\"contact-header.haveIdeasFoundABug\":[\"アイデアがある、バグを見つけた、またはベンチマークを提供したいですか？こちらまでご連絡ください：\"],\"faq-header1.everythingYouNeedToKnow\":[\"i18n Benchmarkについて知っておくべきすべてのこと。\"],\"faq-header1.frequentlyAskedQuestions\":[\"よくある質問\"],\"faq-list.canISubmitMyOwn\":[\"自分のベンチマークを提出できますか？\"],\"faq-list.doYouOfferConsultingServices\":[\"コンサルティングサービスは提供していますか？\"],\"faq-list.howAreBenchmarksConducted\":[\"ベンチマークはどのように行われますか？\"],\"faq-list.howCanIContribute\":[\"どのように貢献できますか？\"],\"faq-list.howOftenAreBenchmarksUpdated\":[\"ベンチマークはどのくらいの頻度で更新されますか？\"],\"faq-list.isTheDataReliable\":[\"データは信頼できますか？\"],\"faq-list.thereAreManyWaysTo\":[\"貢献する方法はたくさんあります。ベンチマークの提出、ドキュメントの改善、バグ報告、新しい指標の提案、プロジェクトのスポンサーなどです。詳細はGitHubリポジトリをご覧ください。\"],\"faq-list.weFollowRigorousStatisticalMethodology\":[\"ウォームアップ実行、外れ値検出、信頼区間を含む厳格な統計手法に従っています。すべての生データは、完全な透明性を確保するために分析結果とともに公開されます。\"],\"faq-list.weReRunAllBenchmarks\":[\"各ライブラリの最新の安定版に対して、毎週すべてのベンチマークを再実行します。メジャーバージョンのリリース時は、即座に再ベンチマークサイクルが実行されます。\"],\"faq-list.weRunStandardizedTestsIn\":[\"一貫したハードウェアを使用し、隔離された環境で標準化されたテストを実行します。各ベンチマークは、統計的な有意性を確保するために複数回繰り返されます。すべてのテスト構成は、GitHubリポジトリで公開されています。\"],\"faq-list.weSupportReactI18nextReact\":[\"react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react、およびTolgeeをサポートしています。\"],\"faq-list.whatIsI18nBenchmark\":[\"i18n Benchmarkとは何ですか？\"],\"faq-list.whatIsI18nBenchmarkAnswer\":[\"i18n Benchmarkは、JavaScriptおよびReactアプリケーション向けの国際化ライブラリのパフォーマンス、バンドルサイズ、および開発者エクスペリエンスを測定および比較するオープンソースのベンチマークスイートです。\"],\"faq-list.whichLibrariesAreCurrentlySupported\":[\"現在サポートされているライブラリは何ですか？\"],\"faq-list.yesCommunityBenchmarkSubmissionsAre\":[\"はい！コミュニティからのベンチマークの提出を歓迎します。リポジトリをフォークし、貢献ガイドに従ってベンチマークを追加し、プルリクエストを送信してください。私たちのチームが内容を確認し、適格なものをマージします。\"],\"faq-list.yesOurEnterprisePlanIncludes\":[\"はい、Enterpriseプランにはi18nソリューションを評価するチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいたカスタマイズされた推奨事項を提供できます。\"],\"footer.anOpenSourceTestApplication\":[\"国際化ライブラリがバンドルサイズ、ロード時間、アプリの反応性に与える実際の影響を測定するためのオープンソースのテストアプリケーション。\"],\"footer.builtWith\":[\"i18n Benchmark — オープンソースプロジェクト。React、Vite、TanStack Routerで構築されています。\"],\"footer.contact\":[\"お問い合わせ\"],\"footer.contributing\":[\"貢献する\"],\"footer.github\":[\"GitHub\"],\"footer.methodology\":[\"方法論\"],\"footer.resources\":[\"リソース\"],\"header.blog\":[\"ブログ\"],\"header.careers\":[\"採用情報\"],\"header.contact\":[\"お問い合わせ\"],\"header.faq\":[\"FAQ\"],\"header.goToGithub\":[\"GitHubへ\"],\"header.home\":[\"ホーム\"],\"header.methodology\":[\"方法論\"],\"header.mockPages\":[\"モックページ\"],\"header.pricing\":[\"料金\"],\"header.products\":[\"製品\"],\"header.settings\":[\"設定\"],\"header.team\":[\"チーム\"],\"hero.aTestApplicationDesignedTo\":[\"国際化ライブラリがバンドルサイズ、ロード性能、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーション。\"],\"hero.viewResults\":[\"結果を見る\"],\"mockBanner\":[\"⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。\"],\"open-positions.applyNow\":[\"今すぐ応募\"],\"open-positions.backendEngineer\":[\"バックエンドエンジニア\"],\"open-positions.buildAndMaintainOurBenchmarking\":[\"React、TypeScript、Viteを使用して、私たちのベンチマークダッシュボードと開発者ツールを構築および維持します。\"],\"open-positions.community\":[\"コミュニティ\"],\"open-positions.createComprehensiveGuidesApiReferences\":[\"私たちのベンチマークプラットフォームのための包括的なガイド、APIリファレンス、チュートリアルを作成します。\"],\"open-positions.designAndScaleOurCloud\":[\"毎日数千の自動実行を処理するクラウドベンチマークインフラストラクチャを設計およびスケールさせます。\"],\"open-positions.devrelEngineer\":[\"DevRelエンジニア\"],\"open-positions.documentation\":[\"ドキュメンテーション\"],\"open-positions.engageWithTheI18nCommunity\":[\"講演、ワークショップ、ブログ投稿、オープンソースへの貢献を通じて、i18nコミュニティと交流します。\"],\"open-positions.engineering\":[\"エンジニアリング\"],\"open-positions.ensureTheAccuracyAndReliability\":[\"厳格なテストと改修を通じて、ベンチマーク結果の正確性と信頼性を確保します。\"],\"open-positions.fullTime\":[\"正社員\"],\"open-positions.openPositions\":[\"募集中の職種\"],\"open-positions.partTime\":[\"アルバイト\"],\"open-positions.qaEngineer\":[\"QAエンジニア\"],\"open-positions.remote\":[\"リモート\"],\"open-positions.sanFranciscoRemote\":[\"サンフランシスコ / リモート\"],\"open-positions.seniorFrontendEngineer\":[\"シニアフロントエンドエンジニア\"],\"open-positions.technicalWriter\":[\"テクニカルライター\"],\"preferences-section.arabicAr\":[\"アラビア語 (ar)\"],\"preferences-section.chineseSimplifiedZhCn\":[\"中国語 簡体字 (zh-CN)\"],\"preferences-section.darkMode\":[\"ダークモード\"],\"preferences-section.defaultLanguage\":[\"既定の言語\"],\"preferences-section.emailNotifications\":[\"メール通知\"],\"preferences-section.englishEn\":[\"英語 (en)\"],\"preferences-section.frenchFr\":[\"フランス語 (fr)\"],\"preferences-section.germanDe\":[\"ドイツ語 (de)\"],\"preferences-section.japaneseJa\":[\"日本語 (ja)\"],\"preferences-section.receiveWeeklyBenchmarkReports\":[\"毎週のベンチマークレポートを受け取る\"],\"preferences-section.spanishEs\":[\"スペイン語 (es)\"],\"preferences-section.toggleDarkMode\":[\"ダークモードの切り替え\"],\"preferences-section.toggleNotifications\":[\"通知の切り替え\"],\"preferences-section.useDarkColorScheme\":[\"ダークカラーの配色を使用する\"],\"pricing-header.chooseThePlanThatFits\":[\"チームに最適なプランをお選びください。隠れた費用はありません。\"],\"pricing-header.simpleTransparentPricing\":[\"シンプルで透明な価格設定\"],\"pricing-tiers.allLibraries\":[\"すべてのライブラリ\"],\"pricing-tiers.auditLogs\":[\"監査ログ\"],\"pricing-tiers.benchmarkRunPerDay\":[\"1日あたり \",[\"runs\"],\" 回のベンチマーク実行\"],\"pricing-tiers.ciIntegration\":[\"CI統合\"],\"pricing-tiers.communitySupport\":[\"コミュニティサポート\"],\"pricing-tiers.contactSales\":[\"営業に連絡\"],\"pricing-tiers.customPrice\":[\"カスタム\"],\"pricing-tiers.customSlas\":[\"カスタムSLA\"],\"pricing-tiers.dedicatedAccountManager\":[\"専任のアカウントマネージャー\"],\"pricing-tiers.enterprise\":[\"エンタープライズ\"],\"pricing-tiers.everythingInPro\":[\"Proプランの全機能\"],\"pricing-tiers.forever\":[\"永久に\"],\"pricing-tiers.getStarted\":[\"今すぐ始める\"],\"pricing-tiers.historicalData\":[\"履歴データ\"],\"pricing-tiers.librariesNumber\":[[\"libs\"],\" 個のライブラリ\"],\"pricing-tiers.month\":[\"/月\"],\"pricing-tiers.onPremiseOption\":[\"オンプレミスオプション\"],\"pricing-tiers.price0\":[\"¥0\"],\"pricing-tiers.price29\":[\"¥3,500\"],\"pricing-tiers.prioritySupport\":[\"優先サポート\"],\"pricing-tiers.privateResults\":[\"プライベート結果\"],\"pricing-tiers.pro\":[\"プロ\"],\"pricing-tiers.publicResults\":[\"公開結果\"],\"pricing-tiers.ssoSaml\":[\"SSO & SAML\"],\"pricing-tiers.starter\":[\"スターター\"],\"pricing-tiers.trainingSessions\":[\"トレーニングセッション\"],\"pricing-tiers.unlimitedRuns\":[\"無制限の実行\"],\"products-grid.aiPoweredToolThatHelps\":[\"ダウンタイムなしでi18nライブラリ間でコードベースを移行するのに役立つAI搭載ツール。\"],\"products-grid.analyzesAndOptimizesYourI18n\":[\"Tree-shakingとコード分割により、プロダクション向けのi18nバンドルを分析および最適化します。\"],\"products-grid.automatedCloudBasedBenchmarkingWith\":[\"履歴追跡、アラート、チームダッシュボードを備えた自動クラウドベースのベンチマーク。\"],\"products-grid.automatedQualityChecksForMissing\":[\"翻訳の欠落、複数形の問題、およびコンテキストエラーの自動品質チェック。\"],\"products-grid.benchmarkCli\":[\"Benchmark CLI\"],\"products-grid.benchmarkCloud\":[\"Benchmark Cloud\"],\"products-grid.benchmarkEnterprise\":[\"Benchmark Enterprise\"],\"products-grid.bundleOptimizer\":[\"バンドルオプティマイザー\"],\"products-grid.contactUs\":[\"お問い合わせ\"],\"products-grid.learnMore\":[\"詳細を見る\"],\"products-grid.migrationAssistant\":[\"移行アシスタント\"],\"products-grid.onPremiseDeploymentWithSso\":[\"SSO、監査ログ、カスタムSLA、および専用サポートを備えたオンプレミス展開。\"],\"products-grid.runBenchmarksLocallyFromYour\":[\"ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートしています。\"],\"products-grid.translationQa\":[\"翻訳QA\"],\"products-header.toolsAndServicesToStreamline\":[\"国際化ワークフローを合理化するためのツールとサービス。\"],\"profile-section.displayName\":[\"表示名\"],\"profile-section.email\":[\"メールアドレス\"],\"profile-section.profile\":[\"プロファイル\"],\"results-table.bundleSize\":[\"バンドルサイズ\"],\"results-table.lazyLoading\":[\"遅延読み込み\"],\"results-table.lookupTime\":[\"ルックアップ時間\"],\"results-table.sampleResults\":[\"サンプル結果\"],\"route.couldNotMeasureHydrationDuration\":[\"ハイドレーション時間を測定できませんでした：\"],\"route.oopsPageNotFound\":[\"おっと！ページが見つかりません\"],\"route.returnToHome\":[\"ホームに戻る\"],\"settings-footer.cancel\":[\"キャンセル\"],\"settings-footer.saveChanges\":[\"変更を保存\"],\"settings-header.manageYourAccountPreferencesAnd\":[\"アカウントの優先設定と構成を管理します。\"],\"team-grid.aishaPatel\":[\"Aisha Patel\"],\"team-grid.communityManager\":[\"コミュニティマネージャー\"],\"team-grid.dataAnalyst\":[\"データアナリスト\"],\"team-grid.developerAdvocate\":[\"デベロッパーアドボケイト\"],\"team-grid.elenaKowalski\":[\"Elena Kowalski\"],\"team-grid.ensuresStatisticalRigorInAll\":[\"すべてのベンチマーク結果における統計的な厳密さを保証します。MITで応用統計学の博士号を取得。\"],\"team-grid.formerGoogleEngineerWith10\":[\"計大規模な国際化システムの構築において10年の経験を持つ元Googleエンジニア。\"],\"team-grid.founderLeadEngineer\":[\"創設者 & リードエンジニア\"],\"team-grid.fullStackDeveloper\":[\"フルスタックデベロッパー\"],\"team-grid.maintainsTheBenchmarkingInfrastructureAnd\":[\"ベンチマークインフラストラクチャとCI/CDパイプラインを維持。Linguiのオープンソースコントリビューター。\"],\"team-grid.managesCommunityContributionsPartnershipsAnd\":[\"コミュニティの貢献、パートナーシップ、イベントを管理。オープンソースガバナンスの経歴を持つ。\"],\"team-grid.marcusWeber\":[\"Marcus Weber\"],\"team-grid.passionateAboutDeveloperExperienceAnd\":[\"開発者エクスペリエンスと教育に情熱を注いでいます。React Conf、JSConf、およびi18nNextのスピーカー。\"],\"team-grid.performanceEngineer\":[\"パフォーマンスエンジニア\"],\"team-grid.sarahChen\":[\"Sarah Chen\"],\"team-grid.specializesInJavascriptPerformanceOptimization\":[\"JavaScriptのパフォーマンス最適化とベンチマーク方法論を専門としています。以前はVercelに在籍。\"],\"team-grid.tomasRodriguez\":[\"Tomás Rodríguez\"],\"team-grid.yukiTanaka\":[\"Yuki Tanaka\"],\"team-header.meetThePeopleBehindI18n\":[\"i18n Benchmarkを支える人々を紹介します。優れた開発者ツールへの共通の情熱によって結ばれた多様なチームです。\"],\"team-header.ourTeam\":[\"私たちのチーム\"],\"theme-toggle.themeAuto\":[\"テーマ：自動\"],\"theme-toggle.themeDark\":[\"テーマ：ダーク\"],\"theme-toggle.themeLight\":[\"テーマ：ライト\"],\"theme-toggle.themeModeAutoSystemClick\":[\"テーマモード：自動（システム）。クリックしてライトモードに切り替えます。\"],\"theme-toggle.themeModeDarkClick\":[\"テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。\"],\"theme-toggle.themeModeLightClick\":[\"テーマモード：ライト。クリックしてダークモードに切り替えます。\"],\"understanding-impact.cacheInvalidation\":[\"キャッシュの無効化:\"],\"understanding-impact.contextBasedArchitecturesCanCause\":[\"コンテキストベースのアーキテクチャでは、ロケールが変更されると、特定のキーが変更されていなくてもすべてのコンシューマーに通知されるため、連鎖的な再レンダリングが発生する可能性があります。\"],\"understanding-impact.duringServerSideRenderingThe\":[\"サーバーサイドレンダリング中、辞書全体が HTML ペイロードにシリアライズされ、ダウンロードとハイドレーションが必要なドキュメントサイズが増加します。\"],\"understanding-impact.flashOfUntranslatedContentFouc\":[\"未翻訳コンテンツのフラッシュ (FOUC):\"],\"understanding-impact.manyI18nLibrariesStoreTranslations\":[\"多くの i18n ライブラリは、React コンテキストを介して提供される単一の JSON オブジェクトに翻訳を保存します。このオブジェクトが巨大（数千のキー）な場合、翻訳を消費するすべてのコンポーネントが辞書全体への参照を保持することになります。これは以下を意味します：\"],\"understanding-impact.splittingTranslationsIntoPerRoute\":[\"翻訳をルートごと、または名前空間ごとのチャンクに分割すると、初期ペイロードを劇的に削減できます。しかし、新たな課題も生じます：\"],\"understanding-impact.theJsonMustBeParsed\":[\"JSON はページ読み込みのたびにパースされる必要があり、メインスレッドをブロックします。\"],\"understanding-impact.theTradeOffsOfDynamic\":[\"動的読み込みのトレードオフ\"],\"understanding-impact.thisTestAppProvidesA\":[\"このテストアプリは、現実的なコンテンツを含む10ページという制御された環境を提供し、3つの軸でi18nライブラリを比較します：JavaScriptバンドルに追加される重量、翻訳されたコンテンツのパースとレンダリングに費やされる時間、そしてコード分割と遅延読み込み戦略の有効性です。各ライブラリは同じアプリに統合されているため、結果を直接比較できます。\"],\"understanding-impact.understandingTheImpact\":[\"影響を理解する\"],\"understanding-impact.waterfallRequests\":[\"ウォーターフォールリクエスト:\"],\"understanding-impact.whatThisBenchmarkMeasures\":[\"このベンチマークが測定するもの\"],\"understanding-impact.whyASingleLargeJson\":[\"ひとつの巨大な JSON がパフォーマンスを低下させる理由\"],\"what-we-measure.bundleSizeImpact\":[\"バンドルサイズへの影響\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"SSR中、翻訳データはHTMLにシリアライズされます。巨大な辞書はHTMLペイロードを増加させ、ページがインタラクティブになる瞬間であるハイドレーションを遅らせます。\"],\"what-we-measure.howFastTheAppCan\":[\"実行時にアプリが1つの言語から別の言語にどれだけ速く切り替えられるか。これには、新しい翻訳の取得、コンポーネントの再レンダリング、DOMの更新が含まれます。\"],\"what-we-measure.howMuchExtraTimeThe\":[\"ライブラリがReactのレンダリングサイクルに加える追加時間。単一のコンテキストプロバイダーを介して翻訳を注入するライブラリは、コンポーネントツリー全体で不要な再レンダリングを引き起こす可能性があります。\"],\"what-we-measure.hydrationCost\":[\"ハイドレーションコスト\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"遅延読み込みの有効性\"],\"what-we-measure.localeSwitchSpeed\":[\"ロケール切り替え速度\"],\"what-we-measure.renderingOverhead\":[\"レンダリングオーバーヘッド\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"i18nライブラリとその翻訳ファイルが含まれる際にユーザーに送信される追加のJavaScriptバイト。これは低速なネットワークでのダウンロード時間に直接影響します。\"],\"what-we-measure.whatWeMeasure\":[\"私たちが測定するもの\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"ルートまたは名前空間ごとに翻訳を分割することが実際に初期ロードを削減するのか、そしてどのようなトレードオフ（ウォーターフォールリクエスト、FOUC、キャッシュの複雑さ）をもたらすのか。\"],\"why-it-matters.bundleSize\":[\"バンドルサイズ\"],\"why-it-matters.connectingALargeJsonDictionary\":[\"巨大なJSON辞書をすべてのコンポーネントに接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更がツリー全体の再レンダリングを引き起こす可能性があります。SSRのハイドレーション中、巨大な翻訳オブジェクトのパースとアタッチにより、ページがインタラクティブになるまでの遅延が発生し、Time to Interactive (TTI) に直接影響します。\"],\"why-it-matters.dynamicLoading\":[\"動的ローディング\"],\"why-it-matters.loadingAllTranslationsUpfrontOverloads\":[\"すべての翻訳を事前に読み込むと、初期のペイロードが過負荷になります。動的（遅延）読み込みは、ルートまたは名前空間ごとに翻訳を分割し、現在のページに必要なものだけを送信します。ただし、遅延読み込みには、ウォーターフォールリクエスト、未翻訳コンテンツのフラッシュ、キャッシュの複雑化といった独自のトレードオフがあります。両方の戦略を測定することが不可欠です。\"],\"why-it-matters.renderingHydration\":[\"レンダリングとハイドレーション\"],\"why-it-matters.theBundleIsTheData\":[\"バンドルは、世界中のすべてのユーザーに送られるデータです。バンドルが大きいほどダウンロード時間が長くなります。特に多くの地域で一般的な低速な3G接続では顕著です。i18nライブラリはその重量が劇的に異なります。ランタイムコードだけで数キロバイトから数十キロバイト、さらに翻訳ファイル自体が加わります。\"],\"why-it-matters.whyTheseMetricsMatter\":[\"これらの指標が重要な理由\"]}");
 //#endregion

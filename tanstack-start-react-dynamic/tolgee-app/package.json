@@ -1,5 +1,5 @@
 {
-  "name": "tolgee-app",
+  "name": "dynamic-tolgee-app",
   "private": true,
   "type": "module",
   "imports": {

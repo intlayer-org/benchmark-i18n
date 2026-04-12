@@ -2112,57 +2112,57 @@ var M = /* @__PURE__ */ function(e) {
 	toString() {
 		return `[formatjs Error: ${this.code}] ${this.message}`;
 	}
-}, Ue = class extends N {
+}, P = class extends N {
 	constructor(e, t, n, r) {
 		super(`Invalid values for "${e}": "${t}". Options are "${Object.keys(n).join("\", \"")}"`, M.INVALID_VALUE, r);
 	}
-}, We = class extends N {
+}, Ue = class extends N {
 	constructor(e, t, n) {
 		super(`Value for "${e}" must be of type ${t}`, M.INVALID_VALUE, n);
 	}
-}, Ge = class extends N {
+}, We = class extends N {
 	constructor(e, t) {
 		super(`The intl string context variable "${e}" was not provided to the string "${t}"`, M.MISSING_VALUE, t);
 	}
-}, P = /* @__PURE__ */ function(e) {
+}, F = /* @__PURE__ */ function(e) {
 	return e[e.literal = 0] = "literal", e[e.object = 1] = "object", e;
 }({});
-function Ke(e) {
+function Ge(e) {
 	return e.length < 2 ? e : e.reduce((e, t) => {
 		let n = e[e.length - 1];
-		return !n || n.type !== P.literal || t.type !== P.literal ? e.push(t) : n.value += t.value, e;
+		return !n || n.type !== F.literal || t.type !== F.literal ? e.push(t) : n.value += t.value, e;
 	}, []);
 }
-function F(e) {
+function I(e) {
 	return typeof e == "function";
 }
-function I(e, t, n, r, i, a, o) {
+function L(e, t, n, r, i, a, o) {
 	if (e.length === 1 && be(e[0])) return [{
-		type: P.literal,
+		type: F.literal,
 		value: e[0].value
 	}];
 	let s = [];
 	for (let c of e) {
 		if (be(c)) {
 			s.push({
-				type: P.literal,
+				type: F.literal,
 				value: c.value
 			});
 			continue;
 		}
 		if (Ce(c)) {
 			typeof a == "number" && s.push({
-				type: P.literal,
+				type: F.literal,
 				value: n.getNumberFormat(t).format(a)
 			});
 			continue;
 		}
 		let { value: e } = c;
-		if (!(i && e in i)) throw new Ge(e, o);
+		if (!(i && e in i)) throw new We(e, o);
 		let l = i[e];
 		if (xe(c)) {
 			(!l || typeof l == "string" || typeof l == "number" || typeof l == "bigint") && (l = typeof l == "string" || typeof l == "number" || typeof l == "bigint" ? String(l) : ""), s.push({
-				type: typeof l == "string" ? P.literal : P.object,
+				type: typeof l == "string" ? F.literal : F.object,
 				value: l
 			});
 			continue;
@@ -2170,7 +2170,7 @@ function I(e, t, n, r, i, a, o) {
 		if (x(c)) {
 			let e = typeof c.style == "string" ? r.date[c.style] : E(c.style) ? c.style.parsedOptions : void 0;
 			s.push({
-				type: P.literal,
+				type: F.literal,
 				value: n.getDateTimeFormat(t, e).format(l)
 			});
 			continue;
@@ -2178,7 +2178,7 @@ function I(e, t, n, r, i, a, o) {
 		if (S(c)) {
 			let e = typeof c.style == "string" ? r.time[c.style] : E(c.style) ? c.style.parsedOptions : r.time.medium;
 			s.push({
-				type: P.literal,
+				type: F.literal,
 				value: n.getDateTimeFormat(t, e).format(l)
 			});
 			continue;
@@ -2193,24 +2193,24 @@ function I(e, t, n, r, i, a, o) {
 				} else l *= t;
 			}
 			s.push({
-				type: P.literal,
+				type: F.literal,
 				value: n.getNumberFormat(t, e).format(l)
 			});
 			continue;
 		}
 		if (T(c)) {
 			let { children: e, value: l } = c, u = i[l];
-			if (!F(u)) throw new We(l, "function", o);
-			let d = u(I(e, t, n, r, i, a).map((e) => e.value));
+			if (!I(u)) throw new Ue(l, "function", o);
+			let d = u(L(e, t, n, r, i, a).map((e) => e.value));
 			Array.isArray(d) || (d = [d]), s.push(...d.map((e) => ({
-				type: typeof e == "string" ? P.literal : P.object,
+				type: typeof e == "string" ? F.literal : F.object,
 				value: e
 			})));
 		}
 		if (C(c)) {
 			let e = l, a = (Object.prototype.hasOwnProperty.call(c.options, e) ? c.options[e] : void 0) || c.options.other;
-			if (!a) throw new Ue(c.value, l, Object.keys(c.options), o);
-			s.push(...I(a.value, t, n, r, i));
+			if (!a) throw new P(c.value, l, Object.keys(c.options), o);
+			s.push(...L(a.value, t, n, r, i));
 			continue;
 		}
 		if (w(c)) {
@@ -2220,17 +2220,17 @@ function I(e, t, n, r, i, a, o) {
 				let e = typeof l == "bigint" ? Number(l) : l, r = n.getPluralRules(t, { type: c.pluralType }).select(e - (c.offset || 0));
 				a = (Object.prototype.hasOwnProperty.call(c.options, r) ? c.options[r] : void 0) || c.options.other;
 			}
-			if (!a) throw new Ue(c.value, l, Object.keys(c.options), o);
+			if (!a) throw new P(c.value, l, Object.keys(c.options), o);
 			let u = typeof l == "bigint" ? Number(l) : l;
-			s.push(...I(a.value, t, n, r, i, u - (c.offset || 0)));
+			s.push(...L(a.value, t, n, r, i, u - (c.offset || 0)));
 			continue;
 		}
 	}
-	return Ke(s);
+	return Ge(s);
 }
 //#endregion
 //#region ../../node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/core.js
-function qe(e, t) {
+function Ke(e, t) {
 	return t ? {
 		...e,
 		...t,
@@ -2240,10 +2240,10 @@ function qe(e, t) {
 		}, n), {})
 	} : e;
 }
-function Je(e, t) {
-	return t ? Object.keys(e).reduce((n, r) => (n[r] = qe(e[r], t[r]), n), { ...e }) : e;
+function qe(e, t) {
+	return t ? Object.keys(e).reduce((n, r) => (n[r] = Ke(e[r], t[r]), n), { ...e }) : e;
 }
-function L(e) {
+function R(e) {
 	return { create() {
 		return {
 			get(t) {
@@ -2255,27 +2255,27 @@ function L(e) {
 		};
 	} };
 }
-function Ye(e = {
+function Je(e = {
 	number: {},
 	dateTime: {},
 	pluralRules: {}
 }) {
 	return {
 		getNumberFormat: p((...e) => new Intl.NumberFormat(...e), {
-			cache: L(e.number),
+			cache: R(e.number),
 			strategy: v.variadic
 		}),
 		getDateTimeFormat: p((...e) => new Intl.DateTimeFormat(...e), {
-			cache: L(e.dateTime),
+			cache: R(e.dateTime),
 			strategy: v.variadic
 		}),
 		getPluralRules: p((...e) => new Intl.PluralRules(...e), {
-			cache: L(e.pluralRules),
+			cache: R(e.pluralRules),
 			strategy: v.variadic
 		})
 	};
 }
-var R = class e {
+var z = class e {
 	ast;
 	locales;
 	resolvedLocale;
@@ -2297,15 +2297,15 @@ var R = class e {
 			});
 		} else this.ast = t;
 		if (!Array.isArray(this.ast)) throw TypeError("A message must be provided as a String or AST.");
-		this.formats = Je(e.formats, r), this.formatters = i && i.formatters || Ye(this.formatterCache);
+		this.formats = qe(e.formats, r), this.formatters = i && i.formatters || Je(this.formatterCache);
 	}
 	format = (e) => {
 		let t = this.formatToParts(e);
 		if (t.length === 1) return t[0].value;
-		let n = t.reduce((e, t) => (!e.length || t.type !== P.literal || typeof e[e.length - 1] != "string" ? e.push(t.value) : e[e.length - 1] += t.value, e), []);
+		let n = t.reduce((e, t) => (!e.length || t.type !== F.literal || typeof e[e.length - 1] != "string" ? e.push(t.value) : e[e.length - 1] += t.value, e), []);
 		return n.length <= 1 ? n[0] || "" : n;
 	};
-	formatToParts = (e) => I(this.ast, this.locales, this.formatters, this.formats, e, void 0, this.message);
+	formatToParts = (e) => L(this.ast, this.locales, this.formatters, this.formats, e, void 0, this.message);
 	resolvedOptions = () => ({ locale: this.resolvedLocale?.toString() || Intl.NumberFormat.supportedLocalesOf(this.locales)[0] });
 	getAst = () => this.ast;
 	static memoizedDefaultLocale = null;
@@ -2371,36 +2371,36 @@ var R = class e {
 			}
 		}
 	};
-}, z = /* @__PURE__ */ function(e) {
+}, B = /* @__PURE__ */ function(e) {
 	return e.FORMAT_ERROR = "FORMAT_ERROR", e.UNSUPPORTED_FORMATTER = "UNSUPPORTED_FORMATTER", e.INVALID_CONFIG = "INVALID_CONFIG", e.MISSING_DATA = "MISSING_DATA", e.MISSING_TRANSLATION = "MISSING_TRANSLATION", e;
-}({}), B = class e extends Error {
+}({}), V = class e extends Error {
 	code;
 	constructor(t, n, r) {
 		let i = r ? r instanceof Error ? r : Error(String(r)) : void 0;
 		super(`[@formatjs/intl Error ${t}] ${n}
 ${i ? `\n${i.message}\n${i.stack}` : ""}`), this.code = t, typeof Error.captureStackTrace == "function" && Error.captureStackTrace(this, e);
 	}
-}, Xe = class extends B {
+}, Ye = class extends V {
 	constructor(e, t) {
-		super(z.UNSUPPORTED_FORMATTER, e, t);
+		super(B.UNSUPPORTED_FORMATTER, e, t);
 	}
-}, Ze = class extends B {
+}, Xe = class extends V {
 	constructor(e, t) {
-		super(z.INVALID_CONFIG, e, t);
+		super(B.INVALID_CONFIG, e, t);
 	}
-}, Qe = class extends B {
+}, Ze = class extends V {
 	constructor(e, t) {
-		super(z.MISSING_DATA, e, t);
+		super(B.MISSING_DATA, e, t);
 	}
-}, V = class extends B {
+}, H = class extends V {
 	descriptor;
 	locale;
 	constructor(e, t, n) {
-		super(z.FORMAT_ERROR, `${e}
+		super(B.FORMAT_ERROR, `${e}
 Locale: ${t}
 `, n), this.locale = t;
 	}
-}, H = class extends V {
+}, U = class extends H {
 	descriptor;
 	locale;
 	constructor(e, t, n, r) {
@@ -2410,21 +2410,21 @@ Default Message: ${n?.defaultMessage}
 Description: ${n?.description}
 `, t, r), this.descriptor = n, this.locale = t;
 	}
-}, $e = class extends B {
+}, Qe = class extends V {
 	descriptor;
 	constructor(e, t) {
-		super(z.MISSING_TRANSLATION, `Missing message: "${e.id}" for locale "${t}", using ${e.defaultMessage ? `default message (${typeof e.defaultMessage == "string" ? e.defaultMessage : e.defaultMessage.map((e) => e.value ?? JSON.stringify(e)).join()})` : "id"} as fallback.`), this.descriptor = e;
+		super(B.MISSING_TRANSLATION, `Missing message: "${e.id}" for locale "${t}", using ${e.defaultMessage ? `default message (${typeof e.defaultMessage == "string" ? e.defaultMessage : e.defaultMessage.map((e) => e.value ?? JSON.stringify(e)).join()})` : "id"} as fallback.`), this.descriptor = e;
 	}
 };
 //#endregion
 //#region ../../node_modules/.bun/@formatjs+intl@4.1.5/node_modules/@formatjs/intl/src/utils.js
-function et(e, t, n = Error) {
+function $e(e, t, n = Error) {
 	if (!e) throw new n(t);
 }
-function U(e, t, n = {}) {
+function W(e, t, n = {}) {
 	return t.reduce((t, r) => (r in e ? t[r] = e[r] : r in n && (t[r] = n[r]), t), {});
 }
-var tt = {
+var et = {
 	formats: {},
 	messages: {},
 	timeZone: void 0,
@@ -2438,7 +2438,7 @@ var tt = {
 		process.env.NODE_ENV !== "production" && console.warn(e);
 	}
 };
-function nt() {
+function tt() {
 	return {
 		dateTime: {},
 		number: {},
@@ -2449,7 +2449,7 @@ function nt() {
 		displayNames: {}
 	};
 }
-function W(e) {
+function G(e) {
 	return { create() {
 		return {
 			get(t) {
@@ -2461,21 +2461,21 @@ function W(e) {
 		};
 	} };
 }
-function rt(e = nt()) {
+function nt(e = tt()) {
 	let t = Intl.RelativeTimeFormat, n = Intl.ListFormat, r = Intl.DisplayNames, i = p((...e) => new Intl.DateTimeFormat(...e), {
-		cache: W(e.dateTime),
+		cache: G(e.dateTime),
 		strategy: v.variadic
 	}), a = p((...e) => new Intl.NumberFormat(...e), {
-		cache: W(e.number),
+		cache: G(e.number),
 		strategy: v.variadic
 	}), o = p((...e) => new Intl.PluralRules(...e), {
-		cache: W(e.pluralRules),
+		cache: G(e.pluralRules),
 		strategy: v.variadic
 	});
 	return {
 		getDateTimeFormat: i,
 		getNumberFormat: a,
-		getMessageFormat: p((e, t, n, r) => new R(e, t, n, {
+		getMessageFormat: p((e, t, n, r) => new z(e, t, n, {
 			formatters: {
 				getNumberFormat: a,
 				getDateTimeFormat: i,
@@ -2483,38 +2483,38 @@ function rt(e = nt()) {
 			},
 			...r
 		}), {
-			cache: W(e.message),
+			cache: G(e.message),
 			strategy: v.variadic
 		}),
 		getRelativeTimeFormat: p((...e) => new t(...e), {
-			cache: W(e.relativeTime),
+			cache: G(e.relativeTime),
 			strategy: v.variadic
 		}),
 		getPluralRules: o,
 		getListFormat: p((...e) => new n(...e), {
-			cache: W(e.list),
+			cache: G(e.list),
 			strategy: v.variadic
 		}),
 		getDisplayNames: p((...e) => new r(...e), {
-			cache: W(e.displayNames),
+			cache: G(e.displayNames),
 			strategy: v.variadic
 		})
 	};
 }
-function G(e, t, n, r) {
+function K(e, t, n, r) {
 	let i = e && e[t], a;
 	if (i && (a = i[n]), a) return a;
-	r(new Xe(`No ${t} format named: ${n}`));
+	r(new Ye(`No ${t} format named: ${n}`));
 }
 //#endregion
 //#region ../../node_modules/.bun/@formatjs+intl@4.1.5/node_modules/@formatjs/intl/src/message.js
-function K(e, t) {
+function q(e, t) {
 	return Object.keys(e).reduce((n, r) => (n[r] = {
 		timeZone: t,
 		...e[r]
 	}, n), {});
 }
-function it(e, t) {
+function rt(e, t) {
 	return Object.keys({
 		...e,
 		...t
@@ -2523,30 +2523,30 @@ function it(e, t) {
 		...t[r]
 	}, n), {});
 }
-function at(e, t) {
+function it(e, t) {
 	if (!t) return e;
-	let n = R.formats;
+	let n = z.formats;
 	return {
 		...n,
 		...e,
-		date: it(K(n.date, t), K(e.date || {}, t)),
-		time: it(K(n.time, t), K(e.time || {}, t))
+		date: rt(q(n.date, t), q(e.date || {}, t)),
+		time: rt(q(n.time, t), q(e.time || {}, t))
 	};
 }
-var q = ({ locale: e, formats: t, messages: n, defaultLocale: r, defaultFormats: i, fallbackOnEmptyString: a, onError: o, timeZone: s, defaultRichTextElements: c }, l, u = { id: "" }, d, f) => {
+var J = ({ locale: e, formats: t, messages: n, defaultLocale: r, defaultFormats: i, fallbackOnEmptyString: a, onError: o, timeZone: s, defaultRichTextElements: c }, l, u = { id: "" }, d, f) => {
 	let { id: p, defaultMessage: m } = u;
-	et(!!p, "[@formatjs/intl] An `id` must be provided to format a message. You can either:\n1. Configure your build toolchain with [babel-plugin-formatjs](https://formatjs.github.io/docs/tooling/babel-plugin)\nor [@formatjs/ts-transformer](https://formatjs.github.io/docs/tooling/ts-transformer) OR\n2. Configure your `eslint` config to include [eslint-plugin-formatjs](https://formatjs.github.io/docs/tooling/linter#enforce-id)\nto autofix this issue");
+	$e(!!p, "[@formatjs/intl] An `id` must be provided to format a message. You can either:\n1. Configure your build toolchain with [babel-plugin-formatjs](https://formatjs.github.io/docs/tooling/babel-plugin)\nor [@formatjs/ts-transformer](https://formatjs.github.io/docs/tooling/ts-transformer) OR\n2. Configure your `eslint` config to include [eslint-plugin-formatjs](https://formatjs.github.io/docs/tooling/linter#enforce-id)\nto autofix this issue");
 	let h = String(p), g = n && Object.prototype.hasOwnProperty.call(n, h) && n[h];
 	if (Array.isArray(g) && g.length === 1 && g[0].type === y.literal) return g[0].value;
 	if (d = {
 		...c,
 		...d
-	}, t = at(t, s), i = at(i, s), !g) {
+	}, t = it(t, s), i = it(i, s), !g) {
 		if (a === !1 && g === "") return g;
-		if ((!m || e && e.toLowerCase() !== r.toLowerCase()) && o(new $e(u, e)), m) try {
+		if ((!m || e && e.toLowerCase() !== r.toLowerCase()) && o(new Qe(u, e)), m) try {
 			return l.getMessageFormat(m, r, i, f).format(d);
 		} catch (t) {
-			return o(new H(`Error formatting default message for: "${h}", rendering default message verbatim`, e, u, t)), typeof m == "string" ? m : h;
+			return o(new U(`Error formatting default message for: "${h}", rendering default message verbatim`, e, u, t)), typeof m == "string" ? m : h;
 		}
 		return h;
 	}
@@ -2556,15 +2556,15 @@ var q = ({ locale: e, formats: t, messages: n, defaultLocale: r, defaultFormats:
 			...f
 		}).format(d);
 	} catch (t) {
-		o(new H(`Error formatting message: "${h}", using ${m ? "default message" : "id"} as fallback.`, e, u, t));
+		o(new U(`Error formatting message: "${h}", using ${m ? "default message" : "id"} as fallback.`, e, u, t));
 	}
 	if (m) try {
 		return l.getMessageFormat(m, r, i, f).format(d);
 	} catch (t) {
-		o(new H(`Error formatting the default message for: "${h}", rendering message verbatim`, e, u, t));
+		o(new U(`Error formatting the default message for: "${h}", rendering message verbatim`, e, u, t));
 	}
 	return typeof g == "string" ? g : typeof m == "string" ? m : h;
-}, ot = [
+}, at = [
 	"formatMatcher",
 	"timeZone",
 	"hour12",
@@ -2584,10 +2584,10 @@ var q = ({ locale: e, formats: t, messages: n, defaultLocale: r, defaultFormats:
 	"numberingSystem",
 	"fractionalSecondDigits"
 ];
-function J({ locale: e, formats: t, onError: n, timeZone: r }, i, a, o = {}) {
-	let { format: s } = o, c = U(o, ot, {
+function Y({ locale: e, formats: t, onError: n, timeZone: r }, i, a, o = {}) {
+	let { format: s } = o, c = W(o, at, {
 		...r && { timeZone: r },
-		...s && G(t, i, s, n)
+		...s && K(t, i, s, n)
 	});
 	return i === "time" && !c.hour && !c.minute && !c.second && !c.timeStyle && !c.dateStyle && (c = {
 		...c,
@@ -2595,88 +2595,88 @@ function J({ locale: e, formats: t, onError: n, timeZone: r }, i, a, o = {}) {
 		minute: "numeric"
 	}), a(e, c);
 }
+function ot(e, t, n, r = {}) {
+	let i = typeof n == "string" ? new Date(n || 0) : n;
+	try {
+		return Y(e, "date", t, r).format(i);
+	} catch (t) {
+		e.onError(new H("Error formatting date.", e.locale, t));
+	}
+	return String(i);
+}
 function st(e, t, n, r = {}) {
 	let i = typeof n == "string" ? new Date(n || 0) : n;
 	try {
-		return J(e, "date", t, r).format(i);
+		return Y(e, "time", t, r).format(i);
 	} catch (t) {
-		e.onError(new V("Error formatting date.", e.locale, t));
+		e.onError(new H("Error formatting time.", e.locale, t));
 	}
 	return String(i);
 }
-function ct(e, t, n, r = {}) {
-	let i = typeof n == "string" ? new Date(n || 0) : n;
-	try {
-		return J(e, "time", t, r).format(i);
-	} catch (t) {
-		e.onError(new V("Error formatting time.", e.locale, t));
-	}
-	return String(i);
-}
-function lt(e, t, n, r, i = {}) {
+function ct(e, t, n, r, i = {}) {
 	let a = typeof n == "string" ? new Date(n || 0) : n, o = typeof r == "string" ? new Date(r || 0) : r;
 	try {
-		return J(e, "dateTimeRange", t, i).formatRange(a, o);
+		return Y(e, "dateTimeRange", t, i).formatRange(a, o);
 	} catch (t) {
-		e.onError(new V("Error formatting date time range.", e.locale, t));
+		e.onError(new H("Error formatting date time range.", e.locale, t));
 	}
 	return String(a);
+}
+function lt(e, t, n, r = {}) {
+	let i = typeof n == "string" ? new Date(n || 0) : n;
+	try {
+		return Y(e, "date", t, r).formatToParts(i);
+	} catch (t) {
+		e.onError(new H("Error formatting date.", e.locale, t));
+	}
+	return [];
 }
 function ut(e, t, n, r = {}) {
 	let i = typeof n == "string" ? new Date(n || 0) : n;
 	try {
-		return J(e, "date", t, r).formatToParts(i);
+		return Y(e, "time", t, r).formatToParts(i);
 	} catch (t) {
-		e.onError(new V("Error formatting date.", e.locale, t));
-	}
-	return [];
-}
-function dt(e, t, n, r = {}) {
-	let i = typeof n == "string" ? new Date(n || 0) : n;
-	try {
-		return J(e, "time", t, r).formatToParts(i);
-	} catch (t) {
-		e.onError(new V("Error formatting time.", e.locale, t));
+		e.onError(new H("Error formatting time.", e.locale, t));
 	}
 	return [];
 }
 //#endregion
 //#region ../../node_modules/.bun/@formatjs+intl@4.1.5/node_modules/@formatjs/intl/src/displayName.js
-var ft = [
+var dt = [
 	"style",
 	"type",
 	"fallback",
 	"languageDisplay"
 ];
-function pt({ locale: e, onError: t }, n, r, i) {
+function ft({ locale: e, onError: t }, n, r, i) {
 	Intl.DisplayNames || t(new N("Intl.DisplayNames is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-displaynames\"\n", M.MISSING_INTL_API));
-	let a = U(i, ft);
+	let a = W(i, dt);
 	try {
 		return n(e, a).of(r);
 	} catch (n) {
-		t(new V("Error formatting display name.", e, n));
+		t(new H("Error formatting display name.", e, n));
 	}
 }
 //#endregion
 //#region ../../node_modules/.bun/@formatjs+intl@4.1.5/node_modules/@formatjs/intl/src/list.js
-var mt = ["type", "style"], ht = Date.now();
-function gt(e) {
-	return `${ht}_${e}_${ht}`;
+var pt = ["type", "style"], mt = Date.now();
+function ht(e) {
+	return `${mt}_${e}_${mt}`;
 }
-function _t(e, t, n, r = {}) {
-	let i = vt(e, t, n, r).reduce((e, t) => {
+function gt(e, t, n, r = {}) {
+	let i = _t(e, t, n, r).reduce((e, t) => {
 		let n = t.value;
 		return typeof n == "string" && typeof e[e.length - 1] == "string" ? e[e.length - 1] += n : e.push(n), e;
 	}, []);
 	return i.length === 1 ? i[0] : i.length === 0 ? "" : i;
 }
-function vt({ locale: e, onError: t }, n, r, i = {}) {
+function _t({ locale: e, onError: t }, n, r, i = {}) {
 	Intl.ListFormat || t(new N("Intl.ListFormat is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-listformat\"\n", M.MISSING_INTL_API));
-	let a = U(i, mt);
+	let a = W(i, pt);
 	try {
 		let t = {}, i = Array.from(r).map((e, n) => {
 			if (typeof e == "object" && e) {
-				let r = gt(n);
+				let r = ht(n);
 				return t[r] = e, r;
 			}
 			return String(e);
@@ -2686,42 +2686,42 @@ function vt({ locale: e, onError: t }, n, r, i = {}) {
 			value: t[e.value] || e.value
 		});
 	} catch (n) {
-		t(new V("Error formatting list.", e, n));
+		t(new H("Error formatting list.", e, n));
 	}
 	return r;
 }
 //#endregion
 //#region ../../node_modules/.bun/@formatjs+intl@4.1.5/node_modules/@formatjs/intl/src/plural.js
-var yt = ["type"];
-function bt({ locale: e, onError: t }, n, r, i = {}) {
+var vt = ["type"];
+function yt({ locale: e, onError: t }, n, r, i = {}) {
 	Intl.PluralRules || t(new N("Intl.PluralRules is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-pluralrules\"\n", M.MISSING_INTL_API));
-	let a = U(i, yt);
+	let a = W(i, vt);
 	try {
 		return n(e, a).select(r);
 	} catch (n) {
-		t(new V("Error formatting plural.", e, n));
+		t(new H("Error formatting plural.", e, n));
 	}
 	return "other";
 }
 //#endregion
 //#region ../../node_modules/.bun/@formatjs+intl@4.1.5/node_modules/@formatjs/intl/src/relativeTime.js
-var xt = ["numeric", "style"];
-function St({ locale: e, formats: t, onError: n }, r, i = {}) {
+var bt = ["numeric", "style"];
+function xt({ locale: e, formats: t, onError: n }, r, i = {}) {
 	let { format: a } = i;
-	return r(e, U(i, xt, !!a && G(t, "relative", a, n) || {}));
+	return r(e, W(i, bt, !!a && K(t, "relative", a, n) || {}));
 }
-function Ct(e, t, n, r, i = {}) {
+function St(e, t, n, r, i = {}) {
 	r ||= "second", Intl.RelativeTimeFormat || e.onError(new N("Intl.RelativeTimeFormat is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-relativetimeformat\"\n", M.MISSING_INTL_API));
 	try {
-		return St(e, t, i).format(n, r);
+		return xt(e, t, i).format(n, r);
 	} catch (t) {
-		e.onError(new V("Error formatting relative time.", e.locale, t));
+		e.onError(new H("Error formatting relative time.", e.locale, t));
 	}
 	return String(n);
 }
 //#endregion
 //#region ../../node_modules/.bun/@formatjs+intl@4.1.5/node_modules/@formatjs/intl/src/number.js
-var wt = [
+var Ct = [
 	"style",
 	"currency",
 	"unit",
@@ -2745,76 +2745,76 @@ var wt = [
 	"roundingIncrement",
 	"roundingMode"
 ];
-function Tt({ locale: e, formats: t, onError: n }, r, i = {}) {
+function wt({ locale: e, formats: t, onError: n }, r, i = {}) {
 	let { format: a } = i;
-	return r(e, U(i, wt, a && G(t, "number", a, n) || {}));
+	return r(e, W(i, Ct, a && K(t, "number", a, n) || {}));
 }
-function Et(e, t, n, r = {}) {
+function Tt(e, t, n, r = {}) {
 	try {
-		return Tt(e, t, r).format(n);
+		return wt(e, t, r).format(n);
 	} catch (t) {
-		e.onError(new V("Error formatting number.", e.locale, t));
+		e.onError(new H("Error formatting number.", e.locale, t));
 	}
 	return String(n);
 }
-function Dt(e, t, n, r = {}) {
+function Et(e, t, n, r = {}) {
 	try {
-		return Tt(e, t, r).formatToParts(n);
+		return wt(e, t, r).formatToParts(n);
 	} catch (t) {
-		e.onError(new V("Error formatting number.", e.locale, t));
+		e.onError(new H("Error formatting number.", e.locale, t));
 	}
 	return [];
 }
 //#endregion
 //#region ../../node_modules/.bun/@formatjs+intl@4.1.5/node_modules/@formatjs/intl/src/create-intl.js
-function Ot(e) {
+function Dt(e) {
 	return typeof (e ? e[Object.keys(e)[0]] : void 0) == "string";
 }
-function kt(e) {
-	e.onWarn && e.defaultRichTextElements && Ot(e.messages || {}) && e.onWarn("[@formatjs/intl] \"defaultRichTextElements\" was specified but \"message\" was not pre-compiled. \nPlease consider using \"@formatjs/cli\" to pre-compile your messages for performance.\nFor more details see https://formatjs.github.io/docs/getting-started/message-distribution");
+function Ot(e) {
+	e.onWarn && e.defaultRichTextElements && Dt(e.messages || {}) && e.onWarn("[@formatjs/intl] \"defaultRichTextElements\" was specified but \"message\" was not pre-compiled. \nPlease consider using \"@formatjs/cli\" to pre-compile your messages for performance.\nFor more details see https://formatjs.github.io/docs/getting-started/message-distribution");
 }
-function At(e, t) {
-	let n = rt(t), r = {
-		...tt,
+function kt(e, t) {
+	let n = nt(t), r = {
+		...et,
 		...e
 	}, { locale: i, defaultLocale: a, onError: o } = r;
-	return i ? !Intl.NumberFormat.supportedLocalesOf(i).length && o ? o(new Qe(`Missing locale data for locale: "${i}" in Intl.NumberFormat. Using default locale: "${a}" as fallback. See https://formatjs.github.io/docs/react-intl#runtime-requirements for more details`)) : !Intl.DateTimeFormat.supportedLocalesOf(i).length && o && o(new Qe(`Missing locale data for locale: "${i}" in Intl.DateTimeFormat. Using default locale: "${a}" as fallback. See https://formatjs.github.io/docs/react-intl#runtime-requirements for more details`)) : (o && o(new Ze(`"locale" was not configured, using "${a}" as fallback. See https://formatjs.github.io/docs/react-intl/api#intlshape for more details`)), r.locale = r.defaultLocale || "en"), kt(r), {
+	return i ? !Intl.NumberFormat.supportedLocalesOf(i).length && o ? o(new Ze(`Missing locale data for locale: "${i}" in Intl.NumberFormat. Using default locale: "${a}" as fallback. See https://formatjs.github.io/docs/react-intl#runtime-requirements for more details`)) : !Intl.DateTimeFormat.supportedLocalesOf(i).length && o && o(new Ze(`Missing locale data for locale: "${i}" in Intl.DateTimeFormat. Using default locale: "${a}" as fallback. See https://formatjs.github.io/docs/react-intl#runtime-requirements for more details`)) : (o && o(new Xe(`"locale" was not configured, using "${a}" as fallback. See https://formatjs.github.io/docs/react-intl/api#intlshape for more details`)), r.locale = r.defaultLocale || "en"), Ot(r), {
 		...r,
 		formatters: n,
-		formatNumber: Et.bind(null, r, n.getNumberFormat),
-		formatNumberToParts: Dt.bind(null, r, n.getNumberFormat),
-		formatRelativeTime: Ct.bind(null, r, n.getRelativeTimeFormat),
-		formatDate: st.bind(null, r, n.getDateTimeFormat),
-		formatDateToParts: ut.bind(null, r, n.getDateTimeFormat),
-		formatTime: ct.bind(null, r, n.getDateTimeFormat),
-		formatDateTimeRange: lt.bind(null, r, n.getDateTimeFormat),
-		formatTimeToParts: dt.bind(null, r, n.getDateTimeFormat),
-		formatPlural: bt.bind(null, r, n.getPluralRules),
-		formatMessage: q.bind(null, r, n),
-		$t: q.bind(null, r, n),
-		formatList: _t.bind(null, r, n.getListFormat),
-		formatListToParts: vt.bind(null, r, n.getListFormat),
-		formatDisplayName: pt.bind(null, r, n.getDisplayNames)
+		formatNumber: Tt.bind(null, r, n.getNumberFormat),
+		formatNumberToParts: Et.bind(null, r, n.getNumberFormat),
+		formatRelativeTime: St.bind(null, r, n.getRelativeTimeFormat),
+		formatDate: ot.bind(null, r, n.getDateTimeFormat),
+		formatDateToParts: lt.bind(null, r, n.getDateTimeFormat),
+		formatTime: st.bind(null, r, n.getDateTimeFormat),
+		formatDateTimeRange: ct.bind(null, r, n.getDateTimeFormat),
+		formatTimeToParts: ut.bind(null, r, n.getDateTimeFormat),
+		formatPlural: yt.bind(null, r, n.getPluralRules),
+		formatMessage: J.bind(null, r, n),
+		$t: J.bind(null, r, n),
+		formatList: gt.bind(null, r, n.getListFormat),
+		formatListToParts: _t.bind(null, r, n.getListFormat),
+		formatDisplayName: ft.bind(null, r, n.getDisplayNames)
 	};
 }
 //#endregion
 //#region ../../node_modules/.bun/react-intl@10.1.1+b2e33729a97476bf/node_modules/react-intl/src/utils.js
-function jt(e, t, n = Error) {
+function At(e, t, n = Error) {
 	if (!e) throw new n(t);
 }
-function Mt(e) {
-	jt(e, "[React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry.");
+function jt(e) {
+	At(e, "[React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry.");
 }
-var Nt = {
-	...tt,
+var Mt = {
+	...et,
 	textComponent: e.Fragment
-}, Pt = (t) => e.Children.toArray(t).map((t, n) => e.isValidElement(t) ? /* @__PURE__ */ d(e.Fragment, { children: t }, n) : t);
-function Ft(e) {
+}, Nt = (t) => e.Children.toArray(t).map((t, n) => e.isValidElement(t) ? /* @__PURE__ */ d(e.Fragment, { children: t }, n) : t);
+function Pt(e) {
 	return function(t) {
-		return e(Pt(t));
+		return e(Nt(t));
 	};
 }
-function Y(e, t) {
+function X(e, t) {
 	if (e === t) return !0;
 	if (!e || !t) return !1;
 	var n = Object.keys(e), r = Object.keys(t), i = n.length;
@@ -2827,27 +2827,27 @@ function Y(e, t) {
 }
 //#endregion
 //#region ../../node_modules/.bun/react-intl@10.1.1+b2e33729a97476bf/node_modules/react-intl/src/components/context.js
-var It = e.createContext(null), Lt = It.Provider;
+var Ft = e.createContext(null), It = Ft.Provider;
 //#endregion
 //#region ../../node_modules/.bun/react-intl@10.1.1+b2e33729a97476bf/node_modules/react-intl/src/components/useIntl.js
-function Rt() {
-	let t = e.useContext(It);
-	return Mt(t), t;
+function Lt() {
+	let t = e.useContext(Ft);
+	return jt(t), t;
 }
 //#endregion
 //#region ../../node_modules/.bun/react-intl@10.1.1+b2e33729a97476bf/node_modules/react-intl/src/components/createIntl.js
-function zt(e) {
+function Rt(e) {
 	return e && Object.keys(e).reduce((t, n) => {
 		let r = e[n];
-		return t[n] = F(r) ? Ft(r) : r, t;
+		return t[n] = I(r) ? Pt(r) : r, t;
 	}, {});
 }
-var Bt = (e, t, n, r, ...i) => {
-	let a = q(e, t, n, zt(r), ...i);
-	return Array.isArray(a) ? Pt(a) : a;
-}, Vt = ({ defaultRichTextElements: e, ...t }, n) => {
-	let r = zt(e), i = At({
-		...Nt,
+var zt = (e, t, n, r, ...i) => {
+	let a = J(e, t, n, Rt(r), ...i);
+	return Array.isArray(a) ? Nt(a) : a;
+}, Bt = ({ defaultRichTextElements: e, ...t }, n) => {
+	let r = Rt(e), i = kt({
+		...Mt,
 		...t,
 		defaultRichTextElements: r
 	}, n), a = {
@@ -2863,30 +2863,30 @@ var Bt = (e, t, n, r, ...i) => {
 	};
 	return {
 		...i,
-		formatMessage: Bt.bind(null, a, i.formatters),
-		$t: Bt.bind(null, a, i.formatters)
+		formatMessage: zt.bind(null, a, i.formatters),
+		$t: zt.bind(null, a, i.formatters)
 	};
 };
 //#endregion
 //#region ../../node_modules/.bun/react-intl@10.1.1+b2e33729a97476bf/node_modules/react-intl/src/components/message.js
-function Ht(e, t) {
+function Vt(e, t) {
 	let { values: n, ...r } = e, { values: i, ...a } = t;
-	return Y(i, n) && Y(r, a);
+	return X(i, n) && X(r, a);
 }
-function Ut(t) {
-	let { formatMessage: n, textComponent: r = e.Fragment } = Rt(), { id: i, description: a, defaultMessage: o, values: s, children: c, tagName: l = r, ignoreTag: f } = t, p = n({
+function Ht(t) {
+	let { formatMessage: n, textComponent: r = e.Fragment } = Lt(), { id: i, description: a, defaultMessage: o, values: s, children: c, tagName: l = r, ignoreTag: f } = t, p = n({
 		id: i,
 		description: a,
 		defaultMessage: o
 	}, s, { ignoreTag: f });
 	return typeof c == "function" ? c(Array.isArray(p) ? p : [p]) : d(l || u, { children: p });
 }
-Ut.displayName = "FormattedMessage";
-var X = e.memo(Ut, Ht);
-X.displayName = "MemoizedFormattedMessage";
+Ht.displayName = "FormattedMessage";
+var Z = e.memo(Ht, Vt);
+Z.displayName = "MemoizedFormattedMessage";
 //#endregion
 //#region ../../node_modules/.bun/react-intl@10.1.1+b2e33729a97476bf/node_modules/react-intl/src/components/provider.js
-function Wt(e) {
+function Ut(e) {
 	return {
 		locale: e.locale,
 		timeZone: e.timeZone,
@@ -2902,48 +2902,48 @@ function Wt(e) {
 		defaultRichTextElements: e.defaultRichTextElements
 	};
 }
-function Z(t) {
-	let n = e.useRef(nt()), r = e.useRef(void 0), i = e.useRef(void 0), a = {};
+function Q(t) {
+	let n = e.useRef(tt()), r = e.useRef(void 0), i = e.useRef(void 0), a = {};
 	for (let e in t) t[e] !== void 0 && (a[e] = t[e]);
-	let o = Wt({
-		...Nt,
+	let o = Ut({
+		...Mt,
 		...a
 	});
-	return (!r.current || !Y(r.current, o)) && (r.current = o, i.current = Vt(o, n.current)), Mt(i.current), /* @__PURE__ */ d(Lt, {
+	return (!r.current || !X(r.current, o)) && (r.current = o, i.current = Bt(o, n.current)), jt(i.current), /* @__PURE__ */ d(It, {
 		value: i.current,
 		children: t.children
 	});
 }
-Z.displayName = "IntlProvider";
-var Gt = Z;
+Q.displayName = "IntlProvider";
+var Wt = Q;
 //#endregion
 //#region src/components/ThemeToggle.tsx
-function Kt() {
+function Gt() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function Q(e) {
+function $(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function qt() {
+function Kt() {
 	let [e, t] = a("auto");
 	r(() => {
-		let e = Kt();
-		t(e), Q(e);
+		let e = Gt();
+		t(e), $(e);
 	}, []), r(() => {
 		if (e !== "auto") return;
-		let t = window.matchMedia("(prefers-color-scheme: dark)"), n = () => Q("auto");
+		let t = window.matchMedia("(prefers-color-scheme: dark)"), n = () => $("auto");
 		return t.addEventListener("change", n), () => {
 			t.removeEventListener("change", n);
 		};
 	}, [e]);
 	function n() {
 		let n = e === "light" ? "dark" : e === "dark" ? "auto" : "light";
-		t(n), Q(n), window.localStorage.setItem("theme", n);
+		t(n), $(n), window.localStorage.setItem("theme", n);
 	}
-	let i = Rt(), o = e === "auto" ? i.formatMessage({ id: "theme-toggle.themeModeAutoSystemClick" }) : e === "light" ? i.formatMessage({ id: "theme-toggle.themeModeLightClick" }) : i.formatMessage({ id: "theme-toggle.themeModeDarkClick" });
+	let i = Lt(), o = e === "auto" ? i.formatMessage({ id: "theme-toggle.themeModeAutoSystemClick" }) : e === "light" ? i.formatMessage({ id: "theme-toggle.themeModeLightClick" }) : i.formatMessage({ id: "theme-toggle.themeModeDarkClick" });
 	return /* @__PURE__ */ d("button", {
 		type: "button",
 		onClick: n,
@@ -2955,7 +2955,7 @@ function qt() {
 }
 //#endregion
 //#region src/i18n/config.ts
-var Jt = [
+var qt = [
 	"en",
 	"de",
 	"fr",
@@ -2969,7 +2969,7 @@ var Jt = [
 ];
 //#endregion
 //#region src/components/LocaleSwitcher.tsx
-function Yt() {
+function Jt() {
 	let e = c({ strict: !1 }).locale ?? "en", t = s(), n = (e) => {
 		try {
 			let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
@@ -2992,7 +2992,7 @@ function Yt() {
 			value: e,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: Jt.map((e) => /* @__PURE__ */ d("option", {
+			children: qt.map((e) => /* @__PURE__ */ d("option", {
 				value: e,
 				children: n(e)
 			}, e))
@@ -3001,7 +3001,7 @@ function Yt() {
 }
 //#endregion
 //#region src/hooks/usePerformanceMeasure.ts
-function Xt(e) {
+function Yt(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), i(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -3013,8 +3013,8 @@ function Xt(e) {
 }
 //#endregion
 //#region src/components/Header.tsx
-function Zt() {
-	Xt("Header");
+function Xt() {
+	Yt("Header");
 	let [e, t] = a(!1), n = c({ strict: !1 }).locale ?? "en";
 	return /* @__PURE__ */ d("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
@@ -3036,14 +3036,14 @@ function Zt() {
 							activeOptions: { exact: !0 },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: /* @__PURE__ */ d(X, { id: "header.home" })
+							children: /* @__PURE__ */ d(Z, { id: "header.home" })
 						}),
 						/* @__PURE__ */ d(o, {
 							to: "/$locale/about",
 							params: { locale: n },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: /* @__PURE__ */ d(X, { id: "header.methodology" })
+							children: /* @__PURE__ */ d(Z, { id: "header.methodology" })
 						}),
 						/* @__PURE__ */ f("div", {
 							className: "relative",
@@ -3053,7 +3053,7 @@ function Zt() {
 								onMouseEnter: () => t(!0),
 								onMouseLeave: () => t(!1),
 								onClick: () => t(!e),
-								children: [/* @__PURE__ */ d(X, { id: "header.mockPages" }), /* @__PURE__ */ d(l, {
+								children: [/* @__PURE__ */ d(Z, { id: "header.mockPages" }), /* @__PURE__ */ d(l, {
 									size: 14,
 									className: `transition-transform ${e ? "rotate-180" : ""}`
 								})]
@@ -3101,7 +3101,7 @@ function Zt() {
 										params: { locale: n },
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => t(!1),
-										children: /* @__PURE__ */ d(X, { id: e.id })
+										children: /* @__PURE__ */ d(Z, { id: e.id })
 									}, e.to))
 								})
 							})]
@@ -3118,7 +3118,7 @@ function Zt() {
 						className: "text-muted-foreground transition hover:text-foreground",
 						children: [/* @__PURE__ */ d("span", {
 							className: "sr-only",
-							children: /* @__PURE__ */ d(X, { id: "header.goToGithub" })
+							children: /* @__PURE__ */ d(Z, { id: "header.goToGithub" })
 						}), /* @__PURE__ */ d("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
@@ -3130,34 +3130,36 @@ function Zt() {
 							})
 						})]
 					}),
-					/* @__PURE__ */ d(Yt, {}),
-					/* @__PURE__ */ d(qt, {})
+					/* @__PURE__ */ d(Jt, {}),
+					/* @__PURE__ */ d(Kt, {})
 				]
 			})]
 		})
 	});
 }
 //#endregion
+//#region \0rolldown_dynamic_import_helper.js
+var Zt = (e, t, n) => {
+	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
+	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
+		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
+	});
+};
+//#endregion
 //#region src/i18n/getMessages.ts
-var $ = /* @__PURE__ */ Object.assign({
-	"../messages/de.json": () => import("./de-zTsMS7m9.js"),
-	"../messages/en.json": () => import("./en-3l3AdKOU.js"),
-	"../messages/es.json": () => import("./es-LXU_BF19.js"),
-	"../messages/fr.json": () => import("./fr-Cjc5RYAb.js"),
-	"../messages/it.json": () => import("./it-C7HBozF4.js"),
-	"../messages/ja.json": () => import("./ja-BZ_pVXVF.js"),
-	"../messages/ko.json": () => import("./ko-BZ6bZ_vc.js"),
-	"../messages/pt.json": () => import("./pt-Bo3oxQRh.js"),
-	"../messages/ru.json": () => import("./ru-B2aq-hL5.js"),
-	"../messages/zh.json": () => import("./zh-Bbm5YZEn.js")
-});
 async function Qt(e) {
-	let t = $[`../messages/${e}.json`] ?? $["../messages/en.json"];
-	try {
-		return (await t()).default;
-	} catch (t) {
-		return console.error(`Failed to load messages for locale: ${e}`, t), (await $["../messages/en.json"]()).default;
-	}
+	return (await Zt(/* @__PURE__ */ Object.assign({
+		"../messages/de.json": () => import("./de-zTsMS7m9.js"),
+		"../messages/en.json": () => import("./en-3l3AdKOU.js"),
+		"../messages/es.json": () => import("./es-LXU_BF19.js"),
+		"../messages/fr.json": () => import("./fr-Cjc5RYAb.js"),
+		"../messages/it.json": () => import("./it-C7HBozF4.js"),
+		"../messages/ja.json": () => import("./ja-BZ_pVXVF.js"),
+		"../messages/ko.json": () => import("./ko-BZ6bZ_vc.js"),
+		"../messages/pt.json": () => import("./pt-Bo3oxQRh.js"),
+		"../messages/ru.json": () => import("./ru-B2aq-hL5.js"),
+		"../messages/zh.json": () => import("./zh-Bbm5YZEn.js")
+	}), `../messages/${e}.json`, 3)).default;
 }
 //#endregion
 //#region scripts/Wrapper.tsx
@@ -3166,7 +3168,7 @@ function en({ children: e }) {
 	let r = n($t);
 	return /* @__PURE__ */ d(t.Suspense, {
 		fallback: null,
-		children: /* @__PURE__ */ d(Gt, {
+		children: /* @__PURE__ */ d(Wt, {
 			messages: r,
 			locale: "en",
 			defaultLocale: "en",
@@ -3177,7 +3179,7 @@ function en({ children: e }) {
 //#endregion
 //#region src/components/Header.wrapper.tsx
 function tn() {
-	return /* @__PURE__ */ d(en, { children: /* @__PURE__ */ d(Zt, {}) });
+	return /* @__PURE__ */ d(en, { children: /* @__PURE__ */ d(Xt, {}) });
 }
 //#endregion
 export { tn as default };

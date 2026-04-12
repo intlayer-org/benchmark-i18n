@@ -86,7 +86,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     recordHydrationDuration();
   }, []);
 
-  const { locale = "en" } = LocaleRoute.useParams();
+  const { translations, locale } = LocaleRoute.useLoaderData();
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -96,7 +96,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body className="antialiased [overflow-wrap:anywhere]">
         <Profiler id="AppRoot" onRender={onRender}>
-          <GTProvider key={locale} locale={locale}>
+          <GTProvider key={locale} locale={locale} translations={translations}>
             <Header />
             {children}
             <Footer />

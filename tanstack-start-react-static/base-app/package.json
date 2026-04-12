@@ -1,5 +1,5 @@
 {
-  "name": "base-app",
+  "name": "base-app-tanstack",
   "private": true,
   "type": "module",
   "imports": {

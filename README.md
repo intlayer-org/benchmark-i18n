@@ -13,13 +13,27 @@ The suite measures several key performance indicators across different i18n impl
 ## Supported Libraries
 
 Currently, the following implementations are benchmarked:
-- **Base App** (No i18n - Baseline)
-- **Intlayer** (`intlayer-app`)
-- **Lingui** (`lingui-app`)
-- **Paraglide** (`paraglide-app`)
-- **react-i18next** (`react-i18next-app`)
-- **react-intl** (`react-intl-app`)
-- **use-intl** (`use-intl-app`)
+
+### Static Benchmarks (`tanstack-start-react-static`)
+- **Base App** (`static-base-app`)
+- **Intlayer** (`static-intlayer-app`)
+- **Lingui** (`static-lingui-app`)
+- **Paraglide** (`static-paraglide-app`)
+- **react-i18next** (`static-react-i18next-app`)
+- **react-intl** (`static-react-intl-app`)
+- **use-intl** (`static-use-intl-app`)
+- **GT** (`static-gt-react-app`)
+- **Lingo.dev** (`static-lingo.dev-app`)
+
+### Dynamic Benchmarks (`tanstack-start-react-dynamic`)
+- **Intlayer** (`dynamic-intlayer-app`)
+- **Lingui** (`dynamic-lingui-app`)
+- **react-i18next** (`dynamic-react-i18next-app`)
+- **react-intl** (`dynamic-react-intl-app`)
+- **use-intl** (`dynamic-use-intl-app`)
+- **GT** (`dynamic-gt-react-app`)
+- **Tolgee** (`dynamic-tolgee-app`)
+- **Whushale** (`dynamic-whushale-app`)
 
 ## Getting Started
 
@@ -83,9 +97,9 @@ You can also run specific parts of the benchmark:
 
 Benchmark results are saved as JSON files in the `results/` directory, organized by category and application:
 
-- `results/tanstack-start-react-static/<app-name>/pages.json`
-- `results/tanstack-start-react-static/<app-name>/reactivity-<locale>.json`
-- `results/tanstack-start-react-static/<app-name>/components-size.json`
+- `results/<benchmark-category>/<app-name>/pages.json`
+- `results/<benchmark-category>/<app-name>/reactivity-<locale>.json`
+- `results/<benchmark-category>/<app-name>/components-size.json`
 
 ## Project Structure
 
