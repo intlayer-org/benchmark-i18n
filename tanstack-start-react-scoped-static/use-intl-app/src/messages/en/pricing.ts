@@ -1,0 +1,36 @@
+export default {
+  "pricing-header": {
+    simpleTransparentPricing: "Simple, Transparent Pricing",
+    chooseThePlanThatFits:
+      "Choose the plan that fits your team. No hidden fees.",
+  },
+  "pricing-tiers": {
+    starter: "Starter",
+    price0: "$0",
+    forever: "forever",
+    benchmarkRunPerDay: "{runs} benchmark runs/day",
+    librariesNumber: "{libs} libraries",
+    communitySupport: "Community support",
+    publicResults: "Public results",
+    pro: "Pro",
+    price29: "$29",
+    month: "/month",
+    unlimitedRuns: "Unlimited runs",
+    allLibraries: "All libraries",
+    prioritySupport: "Priority support",
+    privateResults: "Private results",
+    ciIntegration: "CI integration",
+    historicalData: "Historical data",
+    enterprise: "Enterprise",
+    customPrice: "Custom",
+    everythingInPro: "Everything in Pro",
+    onPremiseOption: "On-premise option",
+    ssoSaml: "SSO & SAML",
+    dedicatedAccountManager: "Dedicated account manager",
+    customSlas: "Custom SLAs",
+    auditLogs: "Audit logs",
+    trainingSessions: "Training sessions",
+    contactSales: "Contact Sales",
+    getStarted: "Get Started",
+  }
+};

@@ -1,0 +1,17 @@
+{
+  "contact-form.name": "이름",
+  "contact-form.yourName": "성함",
+  "contact-form.email": "이메일",
+  "contact-form.emailPlaceholder": "you@example.com",
+  "contact-form.topic": "주제",
+  "contact-form.bugReport": "버그 보고",
+  "contact-form.newBenchmarkIdea": "새로운 벤치마크 아이디어",
+  "contact-form.methodologyQuestion": "방법론 질문",
+  "contact-form.contribution": "기여",
+  "contact-form.other": "기타",
+  "contact-form.message": "메시지",
+  "contact-form.describeYourQuestionOrIdea": "질문이나 아이디어를 설명해 주세요...",
+  "contact-form.sendMessage": "메시지 보내기",
+  "contact-header.getInTouch": "문의처",
+  "contact-header.haveIdeasFoundABug": "아이디어가 있거나, 버그를 발견했거나, 벤치마크에 기여하고 싶으신가요? 다음으로 문의해 주세요"
+}

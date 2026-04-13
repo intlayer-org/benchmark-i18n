@@ -1,0 +1,122 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/Footer.tsx
+#: src/components/pages/home/Hero.tsx
+msgid "i18n Benchmark"
+msgstr "i18n Benchmark"
+
+#: src/components/Footer.tsx
+#: src/components/Header.tsx
+#: src/components/pages/about/AboutGrid.tsx
+#: src/components/pages/home/Hero.tsx
+msgid "Methodology"
+msgstr "Metodologia"
+
+#: src/components/Header.tsx
+#: src/components/pages/blog/BlogHeader.tsx
+msgid "Blog"
+msgstr "Blog"
+
+#: src/components/Header.tsx
+#: src/components/pages/careers/CareersHeader.tsx
+msgid "Careers"
+msgstr "Carriere"
+
+#: src/components/Header.tsx
+#: src/components/pages/products/ProductsHeader.tsx
+msgid "Products"
+msgstr "Prodotti"
+
+#: src/components/Header.tsx
+#: src/components/pages/settings/SettingsHeader.tsx
+msgid "Settings"
+msgstr "Impostazioni"
+
+#: src/components/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/components/Footer.tsx
+msgid "Contributing"
+msgstr "Contribuire"
+
+#: src/components/Footer.tsx
+msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+msgstr "Un'applicazione di test open-source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app."
+
+#: src/components/Footer.tsx
+msgid "Resources"
+msgstr "Risorse"
+
+#: src/components/Footer.tsx
+#: src/components/Header.tsx
+msgid "Contact"
+msgstr "Contatti"
+
+#: src/components/Footer.tsx
+msgid "contact@intlayer.org"
+msgstr "contact@intlayer.org"
+
+#: src/components/Footer.tsx
+msgid "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
+msgstr "i18n Benchmark — Progetto open-source. Costruito con React, Vite e TanStack Router."
+
+#: src/components/Header.tsx
+msgid "Header"
+msgstr "Header"
+
+#: src/components/Header.tsx
+msgid "Pricing"
+msgstr "Prezzi"
+
+#: src/components/Header.tsx
+msgid "Team"
+msgstr "Team"
+
+#: src/components/Header.tsx
+msgid "i18n Bench"
+msgstr "i18n Bench"
+
+#: src/components/Header.tsx
+msgid "Home"
+msgstr "Home"
+
+#: src/components/Header.tsx
+msgid "Mock Pages <0/>"
+msgstr "Mock Pages <0/>"
+
+#: src/components/Header.tsx
+msgid "Go to GitHub"
+msgstr "Vai su GitHub"
+
+#: src/components/MockBanner.tsx
+msgid "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+msgstr "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale."
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme mode: auto (system). Click to switch to light mode."
+msgstr "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara."
+
+#. 0: mode
+#: src/components/ThemeToggle.tsx
+msgid "Theme mode: {0}. Click to switch mode."
+msgstr "Theme mode: {0}. Click to switch mode."
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Auto"
+msgstr "Tema: Auto"
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Dark"
+msgstr "Tema: Scuro"
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Light"
+msgstr "Tema: Chiaro"

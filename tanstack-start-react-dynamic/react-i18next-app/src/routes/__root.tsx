@@ -5,6 +5,7 @@ import {
   Link,
   Scripts,
   createRootRoute,
+  useRouter,
 } from "@tanstack/react-router";
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
@@ -71,6 +72,24 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   }, []);
 
   const { locale = defaultLocale } = LocaleRoute.useParams();
+  const router = useRouter();
+
+  const { i18n } = useTranslation();
+
+  if (i18n.language !== locale) {
+    i18n.changeLanguage(locale);
+  }
+
+  useEffect(() => {
+    const handler = () => {
+      router.invalidate();
+    };
+
+    i18n.on("languageChanged", handler);
+    return () => {
+      i18n.off("languageChanged", handler);
+    };
+  }, []);
 
   return (
     <html lang={locale} suppressHydrationWarning>

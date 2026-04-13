@@ -1,0 +1,89 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Starter"
+msgstr "Starter"
+
+msgid "$0"
+msgstr "$0"
+
+msgid "forever"
+msgstr "forever"
+
+msgid "5 benchmark runs/day"
+msgstr "5 benchmark runs/day"
+
+msgid "3 libraries"
+msgstr "3 libraries"
+
+msgid "Community support"
+msgstr "Community support"
+
+msgid "Public results"
+msgstr "Public results"
+
+msgid "Pro"
+msgstr "Pro"
+
+msgid "$29"
+msgstr "$29"
+
+msgid "/month"
+msgstr "/month"
+
+msgid "Unlimited runs"
+msgstr "Unlimited runs"
+
+msgid "All libraries"
+msgstr "All libraries"
+
+msgid "Priority support"
+msgstr "Priority support"
+
+msgid "Private results"
+msgstr "Private results"
+
+msgid "CI integration"
+msgstr "CI integration"
+
+msgid "Historical data"
+msgstr "Historical data"
+
+msgid "Enterprise"
+msgstr "Enterprise"
+
+msgid "Custom"
+msgstr "Custom"
+
+msgid "Everything in Pro"
+msgstr "Everything in Pro"
+
+msgid "On-premise option"
+msgstr "On-premise option"
+
+msgid "SSO & SAML"
+msgstr "SSO & SAML"
+
+msgid "Dedicated account manager"
+msgstr "Dedicated account manager"
+
+msgid "Custom SLAs"
+msgstr "Custom SLAs"
+
+msgid "Audit logs"
+msgstr "Audit logs"
+
+msgid "Training sessions"
+msgstr "Training sessions"
+
+msgid "Get Started"
+msgstr "Get Started"
+
+msgid "Contact Sales"
+msgstr "Contact Sales"

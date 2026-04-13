@@ -1,11 +1,11 @@
 import { useEffect, Profiler } from "react";
-import { useTranslation, initReactI18next } from "react-i18next";
-import i18n from "../i18n/i18n";
+import { useTranslation } from "react-i18next";
 import {
   HeadContent,
   Link,
   Scripts,
   createRootRoute,
+  useRouter,
 } from "@tanstack/react-router";
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
@@ -18,8 +18,6 @@ import {
   recordHydrationDuration,
   onRenderCallback as onRender,
 } from "test-utils/browser-metrics";
-
-i18n.use(initReactI18next);
 
 const THEME_INIT_SCRIPT = `(function(){try{
   var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;performance.mark('hydration_start');}catch(e){}})();`;
@@ -74,10 +72,24 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   }, []);
 
   const { locale = defaultLocale } = LocaleRoute.useParams();
+  const router = useRouter();
+
+  const { i18n } = useTranslation();
 
   if (i18n.language !== locale) {
     i18n.changeLanguage(locale);
   }
+
+  useEffect(() => {
+    const handler = () => {
+      router.invalidate();
+    };
+
+    i18n.on("languageChanged", handler);
+    return () => {
+      i18n.off("languageChanged", handler);
+    };
+  }, []);
 
   return (
     <html lang={locale} suppressHydrationWarning>

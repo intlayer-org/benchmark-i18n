@@ -1,0 +1,22 @@
+{
+  "team-header.ourTeam": "我们的团队",
+  "team-header.meetThePeopleBehindI18n": "认识 i18n Benchmark 背后的团队。一支多元化的团队，因为对优秀开发人员工具的共同热情而团结在一起。",
+  "team-grid.sarahChen": "陈莎拉 (Sarah Chen)",
+  "team-grid.founderLeadEngineer": "创始人兼首席工程师",
+  "team-grid.formerGoogleEngineerWith10": "前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。",
+  "team-grid.marcusWeber": "马库斯·韦伯 (Marcus Weber)",
+  "team-grid.performanceEngineer": "性能工程师",
+  "team-grid.specializesInJavascriptPerformanceOptimization": "专注于 JavaScript 性能优化和基准测试方法。曾任职于 Vercel。",
+  "team-grid.aishaPatel": "艾莎·帕特尔 (Aisha Patel)",
+  "team-grid.developerAdvocate": "开发者倡导者",
+  "team-grid.passionateAboutDeveloperExperienceAnd": "热爱开发者体验和教育。React Conf、JSConf 和 i18nNext 的演讲者。",
+  "team-grid.tomasRodriguez": "托马斯·罗德里格斯 (Tomás Rodríguez)",
+  "team-grid.fullStackDeveloper": "全栈开发人员",
+  "team-grid.maintainsTheBenchmarkingInfrastructureAnd": "维护基准测试基础架构和 CI/CD 流水线。Lingui 的开源贡献者。",
+  "team-grid.yukiTanaka": "田中由纪 (Yuki Tanaka)",
+  "team-grid.dataAnalyst": "数据分析师",
+  "team-grid.ensuresStatisticalRigorInAll": "确保所有基准测试结果的统计严谨性。麻省理工学院应用统计学博士。",
+  "team-grid.elenaKowalski": "埃琳娜·科瓦尔斯基 (Elena Kowalski)",
+  "team-grid.communityManager": "社区经理",
+  "team-grid.managesCommunityContributionsPartnershipsAnd": "管理社区贡献、合作伙伴关系和活动。具有开源治理背景。"
+}

@@ -1,0 +1,12 @@
+import "#/locales/about.loader";
+import "#/locales/blog.loader";
+import "#/locales/careers.loader";
+import "#/locales/contact.loader";
+import "#/locales/faq.loader";
+import "#/locales/home.loader";
+import "#/locales/pricing.loader";
+import "#/locales/products.loader";
+import "#/locales/route.loader";
+import "#/locales/settings.loader";
+import "#/locales/shared.loader";
+import "#/locales/team.loader";

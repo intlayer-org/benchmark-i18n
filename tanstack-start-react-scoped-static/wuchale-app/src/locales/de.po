@@ -1,0 +1,568 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/home/Hero.tsx
+msgid "Hero"
+msgstr ""
+
+#: src/components/Footer.tsx
+#: src/components/pages/home/Hero.tsx
+msgid "i18n Benchmark"
+msgstr ""
+
+#: src/components/pages/home/Hero.tsx
+msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+msgstr ""
+
+#: src/components/pages/home/Hero.tsx
+msgid "View Results"
+msgstr ""
+
+#: src/components/Footer.tsx
+#: src/components/Header.tsx
+#: src/components/pages/about/AboutGrid.tsx
+#: src/components/pages/home/Hero.tsx
+msgid "Methodology"
+msgstr ""
+
+#: src/components/pages/home/ResultsTable.tsx
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Yes"
+msgstr ""
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Manual"
+msgstr ""
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Built-in"
+msgstr ""
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Sample Results"
+msgstr ""
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Library"
+msgstr ""
+
+#: src/components/pages/home/ResultsTable.tsx
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Bundle Size"
+msgstr ""
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Lookup Time"
+msgstr ""
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Lazy Loading"
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Understanding the Impact"
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Why a single large JSON can hurt performance"
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "The JSON must be parsed on every page load — blocking the main thread."
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "The trade-offs of dynamic loading"
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+msgstr ""
+
+#. 0: " "
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "<0>Flash of untranslated content (FOUC):</0>{0} users may briefly see translation keys or a fallback language before the chunk arrives."
+msgstr ""
+
+#. 0: " "
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "<0>Cache invalidation:</0>{0} updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "What this benchmark measures"
+msgstr ""
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+msgstr ""
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Why These Metrics Matter"
+msgstr ""
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
+msgstr ""
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Rendering & Hydration"
+msgstr ""
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
+msgstr ""
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Dynamic Loading"
+msgstr ""
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+msgstr ""
+
+#: src/components/pages/about/AboutGrid.tsx
+msgid "Why This Exists"
+msgstr ""
+
+#: src/components/pages/about/AboutGrid.tsx
+msgid "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+msgstr ""
+
+#: src/components/pages/about/AboutGrid.tsx
+msgid "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+msgstr ""
+
+#: src/components/pages/about/AboutHeader.tsx
+msgid "AboutHeader"
+msgstr ""
+
+#: src/components/pages/about/AboutHeader.tsx
+msgid "About This Benchmark"
+msgstr ""
+
+#: src/components/pages/about/AboutHeader.tsx
+msgid "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "Bundle size impact"
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "Rendering overhead"
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "Hydration cost"
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "Lazy loading effectiveness"
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "Locale switch speed"
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+msgstr ""
+
+#: src/components/pages/about/WhatWeMeasure.tsx
+msgid "What We Measure"
+msgstr ""
+
+#: src/components/Header.tsx
+#: src/components/pages/blog/BlogHeader.tsx
+msgid "Blog"
+msgstr ""
+
+#: src/components/pages/blog/BlogHeader.tsx
+msgid "Insights, tutorials, and analysis from the i18n community."
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Read More →"
+msgstr ""
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Remote-first"
+msgstr ""
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Work from anywhere in the world"
+msgstr ""
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Competitive pay"
+msgstr ""
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Top-of-market compensation"
+msgstr ""
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Open source time"
+msgstr ""
+
+#: src/components/Header.tsx
+#: src/components/pages/careers/CareersHeader.tsx
+msgid "Careers"
+msgstr ""
+
+#: src/components/pages/careers/CareersHeader.tsx
+msgid "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+msgstr ""
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Open Positions"
+msgstr ""
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Apply Now"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Name"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Your name"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Email"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Topic"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Bug Report"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "New Benchmark Idea"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Methodology Question"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Contribution"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Other"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Message"
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Describe your question or idea..."
+msgstr ""
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Send Message"
+msgstr ""
+
+#: src/components/pages/contact/ContactHeader.tsx
+msgid "Get in Touch"
+msgstr ""
+
+#. 0: " "
+#: src/components/pages/contact/ContactHeader.tsx
+msgid "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at{0} <0>contact@intlayer.org</0> ."
+msgstr ""
+
+#: src/components/pages/faq/FAQHeader.tsx
+msgid "Frequently Asked Questions"
+msgstr ""
+
+#: src/components/pages/faq/FAQHeader.tsx
+msgid "Everything you need to know about i18n Benchmark."
+msgstr ""
+
+#: src/components/pages/pricing/PricingHeader.tsx
+msgid "Simple, Transparent Pricing"
+msgstr ""
+
+#: src/components/pages/pricing/PricingHeader.tsx
+msgid "Choose the plan that fits your team. No hidden fees."
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Enterprise"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Contact Sales"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Get Started"
+msgstr ""
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Learn More"
+msgstr ""
+
+#: src/components/Header.tsx
+#: src/components/pages/products/ProductsHeader.tsx
+msgid "Products"
+msgstr ""
+
+#: src/components/pages/products/ProductsHeader.tsx
+msgid "Tools and services to streamline your internationalization workflow."
+msgstr ""
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "API Access"
+msgstr ""
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "API Key"
+msgstr ""
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "Copy"
+msgstr ""
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "Use this key to access the benchmarking API programmatically."
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Preferences"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Email Notifications"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Receive weekly benchmark reports"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Toggle notifications"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Dark Mode"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Use dark color scheme"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Toggle dark mode"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Default Language"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "English (en)"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "French (fr)"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "German (de)"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Spanish (es)"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Japanese (ja)"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Chinese Simplified (zh-CN)"
+msgstr ""
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Arabic (ar)"
+msgstr ""
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Profile"
+msgstr ""
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Display Name"
+msgstr ""
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "John Developer"
+msgstr ""
+
+#: src/components/pages/settings/SettingsFooter.tsx
+msgid "Cancel"
+msgstr ""
+
+#: src/components/pages/settings/SettingsFooter.tsx
+msgid "Save Changes"
+msgstr ""
+
+#: src/components/Header.tsx
+#: src/components/pages/settings/SettingsHeader.tsx
+msgid "Settings"
+msgstr ""
+
+#: src/components/pages/settings/SettingsHeader.tsx
+msgid "Manage your account preferences and configuration."
+msgstr ""
+
+#: src/components/pages/team/TeamHeader.tsx
+msgid "Our Team"
+msgstr ""
+
+#: src/components/pages/team/TeamHeader.tsx
+msgid "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+msgstr ""
+
+#: src/routes/__root.tsx
+msgid "Oops! Page not found"
+msgstr ""
+
+#: src/routes/__root.tsx
+msgid "Return to Home"
+msgstr ""
+
+#: src/routes/__root.tsx
+msgid "AppRoot"
+msgstr ""
+
+#: src/components/Footer.tsx
+msgid "GitHub"
+msgstr ""
+
+#: src/components/Footer.tsx
+msgid "Contributing"
+msgstr ""
+
+#: src/components/Footer.tsx
+msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+msgstr ""
+
+#: src/components/Footer.tsx
+msgid "Resources"
+msgstr ""
+
+#: src/components/Footer.tsx
+#: src/components/Header.tsx
+msgid "Contact"
+msgstr ""
+
+#: src/components/Footer.tsx
+msgid "contact@intlayer.org"
+msgstr ""
+
+#: src/components/Footer.tsx
+msgid "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
+msgstr ""
+
+#: src/components/Header.tsx
+msgid "Header"
+msgstr ""
+
+#: src/components/Header.tsx
+msgid "Pricing"
+msgstr ""
+
+#: src/components/Header.tsx
+msgid "Team"
+msgstr ""
+
+#: src/components/Header.tsx
+msgid "i18n Bench"
+msgstr ""
+
+#: src/components/Header.tsx
+msgid "Home"
+msgstr ""
+
+#: src/components/Header.tsx
+msgid "Mock Pages <0/>"
+msgstr ""
+
+#: src/components/Header.tsx
+msgid "Go to GitHub"
+msgstr ""
+
+#: src/components/MockBanner.tsx
+msgid "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+msgstr ""
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme mode: auto (system). Click to switch to light mode."
+msgstr ""
+
+#. 0: mode
+#: src/components/ThemeToggle.tsx
+msgid "Theme mode: {0}. Click to switch mode."
+msgstr ""
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Auto"
+msgstr ""
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Dark"
+msgstr ""
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Light"
+msgstr ""

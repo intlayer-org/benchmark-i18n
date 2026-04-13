@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "API Access"
+msgstr "API 액세스"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "API Key"
+msgstr "API 키"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "Copy"
+msgstr "복사"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "Use this key to access the benchmarking API programmatically."
+msgstr "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오."
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Profile"
+msgstr "프로필"
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Display Name"
+msgstr "표시 이름"
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "John Developer"
+msgstr "John Developer"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Preferences"
+msgstr "기본 설정"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Email Notifications"
+msgstr "이메일 알림"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Receive weekly benchmark reports"
+msgstr "주간 벤치마크 보고서 받기"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Toggle notifications"
+msgstr "Toggle notifications"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Dark Mode"
+msgstr "다크 모드"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Use dark color scheme"
+msgstr "어두운 색상 체계 사용"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Toggle dark mode"
+msgstr "Toggle dark mode"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Default Language"
+msgstr "기본 언어"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "English (en)"
+msgstr "English (en)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "French (fr)"
+msgstr "French (fr)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "German (de)"
+msgstr "German (de)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Spanish (es)"
+msgstr "Spanish (es)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Japanese (ja)"
+msgstr "Japanese (ja)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Chinese Simplified (zh-CN)"
+msgstr "Chinese Simplified (zh-CN)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Arabic (ar)"
+msgstr "Arabic (ar)"
+
+#: src/components/pages/settings/SettingsFooter.tsx
+msgid "Cancel"
+msgstr "취소"
+
+#: src/components/pages/settings/SettingsFooter.tsx
+msgid "Save Changes"
+msgstr "변경 사항 저장"
+
+#: src/components/pages/settings/SettingsHeader.tsx
+msgid "Manage your account preferences and configuration."
+msgstr "계정 기본 설정 및 구성을 관리합니다."

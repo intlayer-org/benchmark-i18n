@@ -1,0 +1,122 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/Footer.tsx
+#: src/components/pages/home/Hero.tsx
+msgid "i18n Benchmark"
+msgstr "i18n Benchmark"
+
+#: src/components/Footer.tsx
+#: src/components/Header.tsx
+#: src/components/pages/about/AboutGrid.tsx
+#: src/components/pages/home/Hero.tsx
+msgid "Methodology"
+msgstr "방법론"
+
+#: src/components/Header.tsx
+#: src/components/pages/blog/BlogHeader.tsx
+msgid "Blog"
+msgstr "블로그"
+
+#: src/components/Header.tsx
+#: src/components/pages/careers/CareersHeader.tsx
+msgid "Careers"
+msgstr "채용"
+
+#: src/components/Header.tsx
+#: src/components/pages/products/ProductsHeader.tsx
+msgid "Products"
+msgstr "제품"
+
+#: src/components/Header.tsx
+#: src/components/pages/settings/SettingsHeader.tsx
+msgid "Settings"
+msgstr "설정"
+
+#: src/components/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/components/Footer.tsx
+msgid "Contributing"
+msgstr "기여하기"
+
+#: src/components/Footer.tsx
+msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+msgstr "국제화 라이브러리가 번들 크기, 로드 시간 및 앱 반응성에 미치는 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다."
+
+#: src/components/Footer.tsx
+msgid "Resources"
+msgstr "리소스"
+
+#: src/components/Footer.tsx
+#: src/components/Header.tsx
+msgid "Contact"
+msgstr "문의하기"
+
+#: src/components/Footer.tsx
+msgid "contact@intlayer.org"
+msgstr "contact@intlayer.org"
+
+#: src/components/Footer.tsx
+msgid "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
+msgstr "i18n Benchmark — 오픈 소스 프로젝트. React, Vite 및 TanStack Router로 구축되었습니다."
+
+#: src/components/Header.tsx
+msgid "Header"
+msgstr "Header"
+
+#: src/components/Header.tsx
+msgid "Pricing"
+msgstr "가격"
+
+#: src/components/Header.tsx
+msgid "Team"
+msgstr "팀"
+
+#: src/components/Header.tsx
+msgid "i18n Bench"
+msgstr "i18n Bench"
+
+#: src/components/Header.tsx
+msgid "Home"
+msgstr "홈"
+
+#: src/components/Header.tsx
+msgid "Mock Pages <0/>"
+msgstr "Mock Pages <0/>"
+
+#: src/components/Header.tsx
+msgid "Go to GitHub"
+msgstr "GitHub로 이동"
+
+#: src/components/MockBanner.tsx
+msgid "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+msgstr "⚠️ 이 페이지는 벤치마킹 목적으로만 사용되는 모의 데이터를 포함하고 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다."
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme mode: auto (system). Click to switch to light mode."
+msgstr "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환하십시오."
+
+#. 0: mode
+#: src/components/ThemeToggle.tsx
+msgid "Theme mode: {0}. Click to switch mode."
+msgstr "Theme mode: {0}. Click to switch mode."
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Auto"
+msgstr "테마: 자동"
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Dark"
+msgstr "테마: 다크"
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Light"
+msgstr "테마: 라이트"

@@ -1,0 +1,28 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/pricing/PricingHeader.tsx
+msgid "Simple, Transparent Pricing"
+msgstr "Simple, Transparent Pricing"
+
+#: src/components/pages/pricing/PricingHeader.tsx
+msgid "Choose the plan that fits your team. No hidden fees."
+msgstr "Choose the plan that fits your team. No hidden fees."
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Enterprise"
+msgstr "Enterprise"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Contact Sales"
+msgstr "Связаться с отделом продаж"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Get Started"
+msgstr "Начать"

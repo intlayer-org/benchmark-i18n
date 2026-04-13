@@ -1,46 +1,46 @@
-const tiers = [
-  {
-    name: "Starter",
-    price: "$0",
-    period: "forever",
-    features: [
-      "5 benchmark runs/day",
-      "3 libraries",
-      "Community support",
-      "Public results",
-    ],
-  },
-  {
-    name: "Pro",
-    price: "$29",
-    period: "/month",
-    features: [
-      "Unlimited runs",
-      "All libraries",
-      "Priority support",
-      "Private results",
-      "CI integration",
-      "Historical data",
-    ],
-    highlighted: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "",
-    features: [
-      "Everything in Pro",
-      "On-premise option",
-      "SSO & SAML",
-      "Dedicated account manager",
-      "Custom SLAs",
-      "Audit logs",
-      "Training sessions",
-    ],
-  },
-];
-
 export default function PricingTiers() {
+  const tiers = [
+    {
+      name: "Starter",
+      price: "$0",
+      period: "forever",
+      features: [
+        "5 benchmark runs/day",
+        "3 libraries",
+        "Community support",
+        "Public results",
+      ],
+    },
+    {
+      name: "Pro",
+      price: "$29",
+      period: "/month",
+      features: [
+        "Unlimited runs",
+        "All libraries",
+        "Priority support",
+        "Private results",
+        "CI integration",
+        "Historical data",
+      ],
+      highlighted: true,
+    },
+    {
+      name: "Enterprise",
+      price: "Custom",
+      period: "",
+      features: [
+        "Everything in Pro",
+        "On-premise option",
+        "SSO & SAML",
+        "Dedicated account manager",
+        "Custom SLAs",
+        "Audit logs",
+        "Training sessions",
+      ],
+    },
+  ];
+
   return (
     <div className="grid gap-6 md:grid-cols-3">
       {tiers.map((t) => (

@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/home/Hero.tsx
+msgid "Hero"
+msgstr "Hero"
+
+#: src/components/pages/home/Hero.tsx
+msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+msgstr "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu."
+
+#: src/components/pages/home/Hero.tsx
+msgid "View Results"
+msgstr "Voir les résultats"
+
+#: src/components/pages/home/ResultsTable.tsx
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Yes"
+msgstr "Yes"
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Manual"
+msgstr "Manual"
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Built-in"
+msgstr "Built-in"
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Sample Results"
+msgstr "Exemples de résultats"
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Library"
+msgstr "Library"
+
+#: src/components/pages/home/ResultsTable.tsx
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Bundle Size"
+msgstr "Taille du bundle"
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Lookup Time"
+msgstr "Temps de recherche"
+
+#: src/components/pages/home/ResultsTable.tsx
+msgid "Lazy Loading"
+msgstr "Chargement différé"
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Understanding the Impact"
+msgstr "Comprendre l'impact"
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Why a single large JSON can hurt performance"
+msgstr "Pourquoi un seul JSON volumineux peut nuire aux performances"
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
+msgstr "De nombreuses bibliothèques i18n stockent les traductions dans un seul objet JSON fourni via le contexte React. Lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. Cela signifie :"
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "The JSON must be parsed on every page load — blocking the main thread."
+msgstr "Le JSON doit être analysé à chaque chargement de page — bloquant le thread principal."
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
+msgstr "Les architectures basées sur le contexte peuvent provoquer des re-rendus en cascade lorsque la langue change, car chaque consommateur est notifié même si ses clés spécifiques n'ont pas changé."
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
+msgstr "Lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload HTML, augmentant la taille du document qui doit être téléchargé et hydraté."
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "The trade-offs of dynamic loading"
+msgstr "Les compromis du chargement dynamique"
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
+msgstr "La division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. Mais cela introduit de nouveaux défis :"
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+msgstr "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+
+#. 0: " "
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "<0>Flash of untranslated content (FOUC):</0>{0} users may briefly see translation keys or a fallback language before the chunk arrives."
+msgstr "<0>Flash of untranslated content (FOUC):</0>{0} users may briefly see translation keys or a fallback language before the chunk arrives."
+
+#. 0: " "
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "<0>Cache invalidation:</0>{0} updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+msgstr "<0>Cache invalidation:</0>{0} updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "What this benchmark measures"
+msgstr "Ce que ce benchmark mesure"
+
+#: src/components/pages/home/UnderstandingImpact.tsx
+msgid "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+msgstr "Cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle JavaScript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. Chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables."
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Why These Metrics Matter"
+msgstr "Pourquoi ces mesures sont importantes"
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
+msgstr "Le bundle représente les données envoyées à chaque utilisateur dans le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes."
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Rendering & Hydration"
+msgstr "Rendu & Hydratation"
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
+msgstr "La connexion d'un dictionnaire JSON volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. Pendant l'hydratation SSR, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le Time to Interactive (TTI)."
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Dynamic Loading"
+msgstr "Chargement dynamique"
+
+#: src/components/pages/home/WhyItMatters.tsx
+msgid "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+msgstr "Le chargement de toutes les traductions à l'avance surcharge le payload initial. Le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. Cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. Mesurer les deux stratégies est essentiel."

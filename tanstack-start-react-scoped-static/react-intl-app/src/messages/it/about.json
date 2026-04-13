@@ -1,0 +1,19 @@
+{
+  "about-grid.whyThisExists": "Perché esiste questo progetto",
+  "about-grid.choosingAnI18nLibraryIs": "La scelta di una libreria i18n è una decisione architettonica con conseguenze a lungo termine. La maggior parte dei confronti si concentra sull'ergonomia dell'API, ma pochi misurano il costo in termini di prestazioni: quanto peso aggiunge la libreria al bundle? In che modo influisce sul rendering quando vengono caricate migliaia di chiavi di traduzione? Il caricamento lento aiuta davvero o sposta solo il costo? Questo benchmark risponde a queste domande con dati reali.",
+  "about-grid.methodology": "Metodologia",
+  "about-grid.theSame10PageApp": "La stessa app di 10 pagine viene creata una volta per libreria. Misuriamo il bundle di produzione (tramite rollup-plugin-visualizer), eseguiamo audit Lighthouse per le metriche di caricamento e utilizziamo React Profiler per acquisire i tempi di rendering durante i cambi di lingua. Tutti i test vengono eseguiti in CI su hardware coerente per garantire risultati riproducibili.",
+  "about-header.aboutThisBenchmark": "Informazioni su questo benchmark",
+  "about-header.thisIsAnOpenSource": "Questa è un'applicazione di test open source, non un prodotto o un'azienda. Il suo unico scopo è fornire un'app React realistica e multipagina in cui diverse librerie i18n possono essere integrate e misurate in condizioni identiche.",
+  "what-we-measure.bundleSizeImpact": "Impatto sulla dimensione del bundle",
+  "what-we-measure.theAdditionalJavascriptBytesSent": "I byte JavaScript aggiuntivi inviati agli utenti quando la libreria i18n e i suoi file di traduzione sono inclusi. Ciò influisce direttamente sui tempi di download su reti lente.",
+  "what-we-measure.renderingOverhead": "Overhead di rendering",
+  "what-we-measure.howMuchExtraTimeThe": "Quanto tempo extra la libreria aggiunge al ciclo di rendering di React. Le librerie che inseriscono traduzioni tramite un singolo provider di contesto possono causare rendering non necessari in tutto l'albero dei componenti.",
+  "what-we-measure.hydrationCost": "Costo di idratazione",
+  "what-we-measure.duringSsrTranslationDataIs": "Durante l'SSR, i dati di traduzione vengono serializzati in HTML. Dizionari di grandi dimensioni aumentano il payload HTML e rallentano l'idratazione, il momento in cui la pagina diventa interattiva.",
+  "what-we-measure.lazyLoadingEffectiveness": "Efficacia del caricamento lento",
+  "what-we-measure.whetherSplittingTranslationsByRoute": "Se la suddivisione delle traduzioni per percorso o spazio dei nomi riduce effettivamente il carico iniziale e quali compromessi introduce (richieste a cascata, FOUC, complessità della cache).",
+  "what-we-measure.localeSwitchSpeed": "Velocità di cambio lingua",
+  "what-we-measure.howFastTheAppCan": "Quanto velocemente l'app può passare da una lingua all'altra in fase di esecuzione, incluso il recupero di nuove traduzioni, il nuovo rendering dei componenti e l'aggiornamento del DOM.",
+  "what-we-measure.whatWeMeasure": "Cosa misuriamo"
+}

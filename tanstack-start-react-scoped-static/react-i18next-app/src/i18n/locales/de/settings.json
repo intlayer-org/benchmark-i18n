@@ -1,0 +1,19 @@
+{
+  "preferencesSection.preferences": "Einstellungen",
+  "preferencesSection.emailNotifications": "E-Mail-Benachrichtigungen",
+  "preferencesSection.receiveWeeklyBenchmarkReports": "Wöchentliche Benchmark-Berichte erhalten",
+  "preferencesSection.darkMode": "Dunkelmodus",
+  "preferencesSection.useDarkColorScheme": "Dunkles Farbschema verwenden",
+  "preferencesSection.defaultLanguage": "Standardsprache",
+  "settingsHeader.settings": "Einstellungen",
+  "settingsHeader.manageYourAccountPreferences": "Verwalten Sie Ihre Kontoeinstellungen und -konfigurationen.",
+  "settingsFooter.cancel": "Abbrechen",
+  "settingsFooter.saveChanges": "Änderungen speichern",
+  "apiAccessSection.apiAccess": "API-Zugriff",
+  "apiAccessSection.apiKey": "API-Schlüssel",
+  "apiAccessSection.useThisKeyTo": "Verwenden Sie diesen Schlüssel für den programmgesteuerten Zugriff auf die Benchmarking-API.",
+  "apiAccessSection.copy": "Kopieren",
+  "profileSection.profile": "Profil",
+  "profileSection.displayName": "Anzeigename",
+  "profileSection.email": "E-Mail"
+}

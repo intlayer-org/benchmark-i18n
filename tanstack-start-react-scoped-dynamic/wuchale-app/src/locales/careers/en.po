@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Careers"
+msgstr "Careers"
+
+msgid "from anywhere in the world"
+msgstr "from anywhere in the world"
+
+msgid "Competitive pay"
+msgstr "Competitive pay"
+
+msgid "Top-of-market compensation"
+msgstr "Top-of-market compensation"
+
+msgid "Open source time"
+msgstr "Open source time"
+
+msgid "20% time for OSS"
+msgstr "20% time for OSS"
+
+msgid "Senior Frontend Engineer"
+msgstr "Senior Frontend Engineer"
+
+msgid "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+msgstr "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+
+msgid "Open Positions"
+msgstr "Open Positions"
+
+msgid "Remote"
+msgstr "Remote"
+
+msgid "Full-time"
+msgstr "Full-time"
+
+msgid "Engineering"
+msgstr "Engineering"
+
+msgid "Apply Now"
+msgstr "Apply Now"

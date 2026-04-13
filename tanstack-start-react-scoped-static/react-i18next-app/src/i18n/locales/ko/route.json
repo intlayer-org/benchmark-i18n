@@ -1,0 +1,5 @@
+{
+  "route.oopsPageNotFound": "앗! 페이지를 찾을 수 없습니다",
+  "route.returnToHome": "홈으로 돌아가기",
+  "route.couldNotMeasureHydrationDuration": "하이드레이션 시간을 측정할 수 없습니다:"
+}

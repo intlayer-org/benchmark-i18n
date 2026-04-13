@@ -84,7 +84,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
-      <body className="antialiased [overflow-wrap:anywhere]">
+      <body className="antialiased [overflow-wrap:anywhere]" key={locale}>
         <Profiler id="AppRoot" onRender={onRender}>
           <Header />
           {children}

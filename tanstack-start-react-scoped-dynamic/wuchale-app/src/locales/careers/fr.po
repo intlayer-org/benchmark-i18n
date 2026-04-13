@@ -1,0 +1,47 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Source-Language: en\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Careers"
+msgstr "Carrières"
+
+msgid "from anywhere in the world"
+msgstr "de n'importe où dans le monde"
+
+msgid "Competitive pay"
+msgstr "Salaire compétitif"
+
+msgid "Top-of-market compensation"
+msgstr "Rémunération au sommet du marché"
+
+msgid "Open source time"
+msgstr "Temps open source"
+
+msgid "20% time for OSS"
+msgstr "20 % du temps pour l'OSS"
+
+msgid "Senior Frontend Engineer"
+msgstr "Ingénieur Frontend Senior"
+
+msgid "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+msgstr "Construisez et maintenez notre tableau de bord de benchmarking et nos outils de développement en utilisant React, TypeScript et Vite."
+
+msgid "Open Positions"
+msgstr "Postes vacants"
+
+msgid "Remote"
+msgstr "À distance"
+
+msgid "Full-time"
+msgstr "Temps plein"
+
+msgid "Engineering"
+msgstr "Ingénierie"
+
+msgid "Apply Now"
+msgstr "Postuler maintenant"

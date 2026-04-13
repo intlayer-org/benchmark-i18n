@@ -1,0 +1,89 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"Source-Language: en\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Starter"
+msgstr "Starter"
+
+msgid "$0"
+msgstr "0 $"
+
+msgid "forever"
+msgstr "à vie"
+
+msgid "5 benchmark runs/day"
+msgstr "5 analyses de benchmark/jour"
+
+msgid "3 libraries"
+msgstr "3 bibliothèques"
+
+msgid "Community support"
+msgstr "Support communautaire"
+
+msgid "Public results"
+msgstr "Résultats publics"
+
+msgid "Pro"
+msgstr "Pro"
+
+msgid "$29"
+msgstr "29 $"
+
+msgid "/month"
+msgstr "/mois"
+
+msgid "Unlimited runs"
+msgstr "Analyses illimitées"
+
+msgid "All libraries"
+msgstr "Toutes les bibliothèques"
+
+msgid "Priority support"
+msgstr "Support prioritaire"
+
+msgid "Private results"
+msgstr "Résultats privés"
+
+msgid "CI integration"
+msgstr "Intégration CI"
+
+msgid "Historical data"
+msgstr "Données historiques"
+
+msgid "Enterprise"
+msgstr "Entreprise"
+
+msgid "Custom"
+msgstr "Sur mesure"
+
+msgid "Everything in Pro"
+msgstr "Tout ce qui est dans Pro"
+
+msgid "On-premise option"
+msgstr "Option sur site"
+
+msgid "SSO & SAML"
+msgstr "SSO & SAML"
+
+msgid "Dedicated account manager"
+msgstr "Gestionnaire de compte dédié"
+
+msgid "Custom SLAs"
+msgstr "SLAs personnalisés"
+
+msgid "Audit logs"
+msgstr "Journaux d'audit"
+
+msgid "Training sessions"
+msgstr "Sessions de formation"
+
+msgid "Get Started"
+msgstr "Démarrer"
+
+msgid "Contact Sales"
+msgstr "Contacter les ventes"

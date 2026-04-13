@@ -1,0 +1,122 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/Footer.tsx
+#: src/components/pages/home/Hero.tsx
+msgid "i18n Benchmark"
+msgstr "i18n Benchmark"
+
+#: src/components/Footer.tsx
+#: src/components/Header.tsx
+#: src/components/pages/about/AboutGrid.tsx
+#: src/components/pages/home/Hero.tsx
+msgid "Methodology"
+msgstr "方法学"
+
+#: src/components/Header.tsx
+#: src/components/pages/blog/BlogHeader.tsx
+msgid "Blog"
+msgstr "博客"
+
+#: src/components/Header.tsx
+#: src/components/pages/careers/CareersHeader.tsx
+msgid "Careers"
+msgstr "职业"
+
+#: src/components/Header.tsx
+#: src/components/pages/products/ProductsHeader.tsx
+msgid "Products"
+msgstr "产品"
+
+#: src/components/Header.tsx
+#: src/components/pages/settings/SettingsHeader.tsx
+msgid "Settings"
+msgstr "设置"
+
+#: src/components/Footer.tsx
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/components/Footer.tsx
+msgid "Contributing"
+msgstr "贡献"
+
+#: src/components/Footer.tsx
+msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+msgstr "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。"
+
+#: src/components/Footer.tsx
+msgid "Resources"
+msgstr "资源"
+
+#: src/components/Footer.tsx
+#: src/components/Header.tsx
+msgid "Contact"
+msgstr "联系我们"
+
+#: src/components/Footer.tsx
+msgid "contact@intlayer.org"
+msgstr "contact@intlayer.org"
+
+#: src/components/Footer.tsx
+msgid "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
+msgstr "i18n Benchmark — 开源项目。使用 React, Vite 和 TanStack Router 构建。"
+
+#: src/components/Header.tsx
+msgid "Header"
+msgstr "Header"
+
+#: src/components/Header.tsx
+msgid "Pricing"
+msgstr "价格"
+
+#: src/components/Header.tsx
+msgid "Team"
+msgstr "团队"
+
+#: src/components/Header.tsx
+msgid "i18n Bench"
+msgstr "i18n Bench"
+
+#: src/components/Header.tsx
+msgid "Home"
+msgstr "首页"
+
+#: src/components/Header.tsx
+msgid "Mock Pages <0/>"
+msgstr "Mock Pages <0/>"
+
+#: src/components/Header.tsx
+msgid "Go to GitHub"
+msgstr "前往 GitHub"
+
+#: src/components/MockBanner.tsx
+msgid "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+msgstr "⚠️ 此页面仅包含用于基准测试的模拟数据。它与任何真实的业务或服务无关。"
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme mode: auto (system). Click to switch to light mode."
+msgstr "主题模式：自动（系统）。点击切换到浅色模式。"
+
+#. 0: mode
+#: src/components/ThemeToggle.tsx
+msgid "Theme mode: {0}. Click to switch mode."
+msgstr "Theme mode: {0}. Click to switch mode."
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Auto"
+msgstr "主题：自动"
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Dark"
+msgstr "主题：深色"
+
+#: src/components/ThemeToggle.tsx
+msgid "Theme: Light"
+msgstr "主题：浅色"

@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Remote-first"
+msgstr "Remote-first"
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Work from anywhere in the world"
+msgstr "Work from anywhere in the world"
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Competitive pay"
+msgstr "Competitive pay"
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Top-of-market compensation"
+msgstr "Top-of-market compensation"
+
+#: src/components/pages/careers/CareersBenefits.tsx
+msgid "Open source time"
+msgstr "Open source time"
+
+#: src/components/pages/careers/CareersHeader.tsx
+msgid "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+msgstr "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Open Positions"
+msgstr "Posizioni aperte"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Apply Now"
+msgstr "Candidati ora"

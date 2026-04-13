@@ -1,0 +1,16 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/team/TeamHeader.tsx
+msgid "Our Team"
+msgstr "Наша команда"
+
+#: src/components/pages/team/TeamHeader.tsx
+msgid "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+msgstr "Познакомьтесь с людьми, стоящими за i18n Benchmark. Разнообразная команда, объединенная общей страстью к отличным инструментам для разработчиков."

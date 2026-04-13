@@ -1,0 +1,13 @@
+{
+  "productsGrid.benchmarkDashboard": "Дашборд бенчмарков",
+  "productsGrid.interactiveChartsAndTables": "Интерактивные графики и таблицы, сравнивающие библиотеки i18n по размеру бандла, времени рендеринга и стоимости гидратации.",
+  "productsGrid.bundleAnalyzer": "Анализатор бандла",
+  "productsGrid.uploadYourBuildOutput": "Загрузите вывод вашей сборки и получите подробный отчет о том, какую часть бандла составляют накладные расходы i18n.",
+  "productsGrid.migrationAssistant": "Помощник по миграции",
+  "productsGrid.automatedCodemodsAndGuides": "Автоматизированные кодомоды и руководства для миграции между библиотеками i18n с минимальными перерывами.",
+  "productsGrid.performanceMonitor": "Монитор производительности",
+  "productsGrid.continuousPerformanceTrackingFor": "Непрерывное отслеживание производительности вашей реализации i18n. Получайте оповещения при ухудшении загрузки переводов.",
+  "productsGrid.learnMore": "Узнать больше",
+  "productsHeader.products": "Продукты",
+  "productsHeader.toolsAndServicesTo": "Инструменты и услуги, которые помогут вам оптимизировать стратегию интернационализации."
+}
