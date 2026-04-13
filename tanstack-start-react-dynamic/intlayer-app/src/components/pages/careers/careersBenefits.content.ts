@@ -16,6 +16,19 @@ const careersBenefitsContent = {
       ru: "Работайте из любой точки мира",
     }),
 
+    remoteFirst: t({
+      en: "Remote-first",
+      fr: "Télétravail d'abord",
+      es: "Primero remoto",
+      de: "Remote-First",
+      it: "Remote-first",
+      pt: "Trabalho remoto primeiro",
+      zh: "远程优先",
+      ja: "リモートファースト",
+      ko: "원격 우선",
+      ru: "Удаленная работа прежде всего",
+    }),
+
     competitivePay: t({
       en: "Competitive pay",
       fr: "Rémunération compétitive",
@@ -54,6 +67,19 @@ const careersBenefitsContent = {
       ko: "오픈 소스 시간",
       ru: "Время на open source",
     }),
+
+    x20TimeForOssContributions: t({
+      en: "20% time for OSS contributions",
+      fr: "20 % du temps pour les contributions OSS",
+      es: "20% de tiempo para contribuciones de OSS",
+      de: "20 % Zeit für OSS-Beiträge",
+      it: "20% di tempo per contributi OSS",
+      pt: "20% de tempo para contribuições OSS",
+      zh: "20% 的时间用于 OSS 贡献",
+      ja: "OSS への貢献に 20% の時間を割く",
+      ko: "OSS 기여를 위한 20% 시간",
+      ru: "20% времени на вклад в OSS",
+    })
   },
 } satisfies Dictionary;
 

@@ -3,6 +3,7 @@ import { formatter } from "@lingui/format-json";
 
 export default defineConfig({
   format: formatter({ style: "minimal" }),
+  compileNamespace: "es",
   catalogs: [
     {
       include: ["src"],

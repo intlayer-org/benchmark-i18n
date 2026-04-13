@@ -93,6 +93,32 @@ const footerContent = {
       ko: "국제화 라이브러리가 번들 크기, 로드 시간 및 앱 반응성에 미치는 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
       ru: "Открытое приложение для тестирования реального влияния библиотек интернационализации на размер бандла, время загрузки и отзывчивость приложения.",
     }),
+
+    contactEmail: t({
+      en: "contact@intlayer.org",
+      fr: "contact@intlayer.org",
+      es: "contact@intlayer.org",
+      de: "contact@intlayer.org",
+      it: "contact@intlayer.org",
+      pt: "contact@intlayer.org",
+      zh: "contact@intlayer.org",
+      ja: "contact@intlayer.org",
+      ko: "contact@intlayer.org",
+      ru: "contact@intlayer.org",
+    }),
+
+    i18nBenchmarkTitle: t({
+      en: "i18n Benchmark",
+      fr: "Benchmark i18n",
+      es: "Benchmark i18n",
+      de: "i18n Benchmark",
+      it: "Benchmark i18n",
+      pt: "Benchmark i18n",
+      zh: "i18n 基准测试",
+      ja: "i18n ベンチマーク",
+      ko: "i18n 벤치마크",
+      ru: "i18n Бенчмарк",
+    }),
   },
 } satisfies Dictionary;
 

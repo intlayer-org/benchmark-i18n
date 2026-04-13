@@ -27,7 +27,46 @@ const heroContent = {
       ja: "結果を表示",
       ko: "결과 보기",
       ru: "Посмотреть результаты",
-    })
+    }),
+
+    hero: t({
+      en: "Hero",
+      fr: "Héros",
+      es: "Héroe",
+      de: "Held",
+      it: "Eroe",
+      pt: "Herói",
+      zh: "英雄",
+      ja: "ヒーロー",
+      ko: "영웅",
+      ru: "Герой",
+    }),
+
+    methodology: t({
+      en: "Methodology",
+      fr: "Méthodologie",
+      es: "Metodología",
+      de: "Methodik",
+      it: "Metodologia",
+      pt: "Metodologia",
+      zh: "方法论",
+      ja: "方法論",
+      ko: "방법론",
+      ru: "Методология",
+    }),
+
+    i18nBenchmarkTitle: t({
+      en: "i18n Benchmark",
+      fr: "Benchmark i18n",
+      es: "Benchmark i18n",
+      de: "i18n Benchmark",
+      it: "Benchmark i18n",
+      pt: "Benchmark i18n",
+      zh: "i18n 基准测试",
+      ja: "i18n ベンチマーク",
+      ko: "i18n 벤치마크",
+      ru: "i18n Бенчмарк",
+    }),
   },
 } satisfies Dictionary;
 

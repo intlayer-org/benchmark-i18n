@@ -3,11 +3,11 @@ export default function CareersBenefits() {
   const content = useIntlayer('careers-benefits');
 
   const benefits = [
-    { label: "Remote-first", value: content.workFromAnywhereInThe.value },
+    { label: content.remoteFirst.value, value: content.workFromAnywhereInThe.value },
     { label: content.competitivePay.value, value: content.topOfMarketCompensation.value },
     {
       label: content.openSourceTime.value,
-      value: "20% time for OSS contributions",
+      value: content.x20TimeForOssContributions.value,
     },
   ];
 

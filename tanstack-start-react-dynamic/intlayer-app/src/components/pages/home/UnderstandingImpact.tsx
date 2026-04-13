@@ -21,20 +21,11 @@ export default function UnderstandingImpact() {
         <p className="text-sm text-muted-foreground">{content.splittingTranslationsIntoPerRoute}</p>
         <ul className="mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5">
           <li>
-            <strong className="text-foreground">{content.waterfallRequests}</strong> the
-            app must first load, determine the locale, then fetch the right
-            chunk — adding network round-trips.
-          </li>
+            <strong className="text-foreground">{content.waterfallRequests}</strong>{content.theAppMustFirstLoad}</li>
           <li>
-            <strong className="text-foreground">{content.flashOfUntranslatedContentFouc}</strong>{" "}
-            users may briefly see translation keys or a fallback language before
-            the chunk arrives.
-          </li>
+            <strong className="text-foreground">{content.flashOfUntranslatedContentFouc}</strong>{" "}{content.usersMayBrieflySeeTranslation}</li>
           <li>
-            <strong className="text-foreground">{content.cacheInvalidation}</strong>{" "}
-            updating translations requires cache-busting strategies to ensure
-            users get fresh content without re-downloading unchanged chunks.
-          </li>
+            <strong className="text-foreground">{content.cacheInvalidation}</strong>{" "}{content.updatingTranslationsRequiresCacheBusting}</li>
         </ul>
       </div>
 

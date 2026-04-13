@@ -68,7 +68,7 @@ export default function ThemeToggle() {
   const label =
     mode === "auto"
       ? content.themeModeAutoSystemClick.value
-      : `Theme mode: ${mode}. Click to switch mode.`;
+      : content.themeModeModeClickTo({ mode: mode });
 
   return (
     <button

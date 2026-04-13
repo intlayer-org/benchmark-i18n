@@ -40,7 +40,20 @@ const routeContent = {
       ja: "ハイドレーション時間を測定できませんでした：",
       ko: "하이드레이션 기간을 측정할 수 없습니다:",
       ru: "Не удалось измерить продолжительность гидратации:",
-    })
+    }),
+
+    i18nBenchmarkTitle: t({
+      en: "i18n Benchmark",
+      fr: "Benchmark i18n",
+      es: "Benchmark i18n",
+      de: "i18n Benchmark",
+      it: "Benchmark i18n",
+      pt: "Benchmark i18n",
+      zh: "i18n 基准测试",
+      ja: "i18n ベンチマーク",
+      ko: "i18n 벤치마크",
+      ru: "i18n Бенчмарк",
+    }),
   },
 } satisfies Dictionary;
 

@@ -9,7 +9,7 @@ export default function ProfileSection() {
 
   return (
     <section className="rounded-lg border border-border bg-card p-6">
-      <h2 className="mb-4 text-lg font-semibold text-foreground">Profile</h2>
+      <h2 className="mb-4 text-lg font-semibold text-foreground">{content.profile}</h2>
       <div className="space-y-4">
         <div>
           <label
@@ -26,9 +26,7 @@ export default function ProfileSection() {
           <label
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
-          >
-            Email
-          </label>
+          >{content.email}</label>
           <input
             id={emailId}
             defaultValue="john@example.com"

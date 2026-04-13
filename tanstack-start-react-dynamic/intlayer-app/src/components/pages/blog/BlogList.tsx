@@ -5,40 +5,40 @@ export default function BlogList() {
 
   const posts = [
     {
-      title: "15/03/2026",
-      date: "15/03/2026",
+      title: content.comparingI18nLibrariesIn2026.value,
+      date: content.march152026.value,
       excerpt: content.weTested12DifferentInternationalization.value,
-      category: "Benchmark",
+      category: content.benchmark.value,
     },
     {
       title: content.howToReduceYourI18n.value,
       date: content.march82026.value,
       excerpt: content.practicalStrategiesForOptimizingTranslation.value,
-      category: "Tutorial",
+      category: content.tutorial.value,
     },
     {
       title: content.theStateOfInternationalizationIn.value,
       date: content.february282026.value,
       excerpt: content.anOverviewOfTheCurrent.value,
-      category: "Analysis",
+      category: content.analysis.value,
     },
     {
       title: content.migratingFromReactI18nextTo.value,
       date: content.february152026.value,
       excerpt: content.aStepByStepGuide.value,
-      category: "Tutorial",
+      category: content.tutorial.value,
     },
     {
       title: content.serverComponentsAndI18nWhat.value,
       date: content.february12026.value,
       excerpt: content.reactServerComponentsIntroduceNew.value,
-      category: "Analysis",
+      category: content.analysis.value,
     },
     {
       title: content.benchmarkMethodologyHowWeTest.value,
       date: content.january202026.value,
       excerpt: content.aTransparentLookAtOur.value,
-      category: "Meta",
+      category: content.meta.value,
     },
   ];
 

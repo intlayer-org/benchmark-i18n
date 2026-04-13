@@ -4,59 +4,198 @@ const preferencesSectionContent = {
   key: 'preferences-section',
   content: {
     emailNotifications: t({
-      en: "Email Notifications"
+      en: "Email Notifications",
+      fr: "Notifications par email",
+      es: "Notificaciones por correo electrónico",
+      de: "E-Mail-Benachrichtigungen",
+      it: "Notifiche via email",
+      pt: "Notificações por e-mail",
+      zh: "邮件通知",
+      ja: "メール通知",
+      ko: "이메일 알림",
+      ru: "Email-уведомления",
     }),
 
     receiveWeeklyBenchmarkReports: t({
-      en: "Receive weekly benchmark reports"
+      en: "Receive weekly benchmark reports",
+      fr: "Recevoir des rapports hebdomadaires de benchmark",
+      es: "Recibir informes semanales de benchmark",
+      de: "Wöchentliche Benchmark-Berichte erhalten",
+      it: "Ricevi rapporti settimanali sui benchmark",
+      pt: "Receber relatórios semanais de benchmarks",
+      zh: "接收每周基准测试报告",
+      ja: "ベンチマーク週報を受け取る",
+      ko: "주간 벤치마크 보고서 받기",
+      ru: "Получать еженедельные отчеты о бенчмарках",
     }),
 
     toggleNotifications: t({
-      en: "Toggle notifications"
+      en: "Toggle notifications",
+      fr: "Basculer les notifications",
+      es: "Alternar notificaciones",
+      de: "Benachrichtigungen umschalten",
+      it: "Attiva/disattiva notifiche",
+      pt: "Alternar notificações",
+      zh: "切换通知",
+      ja: "通知の切り替え",
+      ko: "알림 토글",
+      ru: "Переключить уведомления",
     }),
 
     darkMode: t({
-      en: "Dark Mode"
+      en: "Dark Mode",
+      fr: "Mode sombre",
+      es: "Modo oscuro",
+      de: "Dunkelmodus",
+      it: "Modalità scura",
+      pt: "Modo Escuro",
+      zh: "深色模式",
+      ja: "ダークモード",
+      ko: "다크 모드",
+      ru: "Темный режим",
     }),
 
     useDarkColorScheme: t({
-      en: "Use dark color scheme"
+      en: "Use dark color scheme",
+      fr: "Utiliser le schéma de couleurs sombres",
+      es: "Usar esquema de colores oscuros",
+      de: "Dunkles Farbschema verwenden",
+      it: "Usa lo schema colori scuro",
+      pt: "Usar esquema de cores escuras",
+      zh: "使用深色配色方案",
+      ja: "ダークカラー体系を使用する",
+      ko: "어두운 색상 체계 사용",
+      ru: "Использовать темную цветовою схему",
     }),
 
     toggleDarkMode: t({
-      en: "Toggle dark mode"
+      en: "Toggle dark mode",
+      fr: "Basculer le mode sombre",
+      es: "Alternar modo oscuro",
+      de: "Dunkelmodus umschalten",
+      it: "Attiva/disattiva modalità scura",
+      pt: "Alternar modo escuro",
+      zh: "切换深色模式",
+      ja: "ダークモードの切り替え",
+      ko: "다크 모드 토글",
+      ru: "Переключить темный режим",
     }),
 
     defaultLanguage: t({
-      en: "Default Language"
+      en: "Default Language",
+      fr: "Langue par défaut",
+      es: "Idioma predeterminado",
+      de: "Standardsprache",
+      it: "Lingua predefinita",
+      pt: "Idioma Padrão",
+      zh: "默认语言",
+      ja: "デフォルト言語",
+      ko: "기본 언어",
+      ru: "Язык по умолчанию",
     }),
 
     englishEn: t({
-      en: "English (en)"
+      en: "English (en)",
+      fr: "Anglais (en)",
+      es: "Inglés (en)",
+      de: "Englisch (en)",
+      it: "Inglese (en)",
+      pt: "Inglês (en)",
+      zh: "英语 (en)",
+      ja: "英語 (en)",
+      ko: "영어 (en)",
+      ru: "Английский (en)",
     }),
 
     frenchFr: t({
-      en: "French (fr)"
+      en: "French (fr)",
+      fr: "Français (fr)",
+      es: "Francés (fr)",
+      de: "Französisch (fr)",
+      it: "Francese (fr)",
+      pt: "Francês (fr)",
+      zh: "法语 (fr)",
+      ja: "フランス語 (fr)",
+      ko: "프랑스어 (fr)",
+      ru: "Французский (fr)",
     }),
 
     germanDe: t({
-      en: "German (de)"
+      en: "German (de)",
+      fr: "Allemand (de)",
+      es: "Alemán (de)",
+      de: "Deutsch (de)",
+      it: "Tedesco (de)",
+      pt: "Alemão (de)",
+      zh: "德语 (de)",
+      ja: "ドイツ語 (de)",
+      ko: "독일어 (de)",
+      ru: "Немецкий (de)",
     }),
 
     spanishEs: t({
-      en: "Spanish (es)"
+      en: "Spanish (es)",
+      fr: "Espagnol (es)",
+      es: "Español (es)",
+      de: "Spanisch (es)",
+      it: "Spagnolo (es)",
+      pt: "Espanhol (es)",
+      zh: "西班牙语 (es)",
+      ja: "スペイン語 (es)",
+      ko: "스페인어 (es)",
+      ru: "Испанский (es)",
     }),
 
     japaneseJa: t({
-      en: "Japanese (ja)"
+      en: "Japanese (ja)",
+      fr: "Japonais (ja)",
+      es: "Japonés (ja)",
+      de: "Japanisch (ja)",
+      it: "Giapponese (ja)",
+      pt: "Japonês (ja)",
+      zh: "日语 (ja)",
+      ja: "日本語 (ja)",
+      ko: "일본어 (ja)",
+      ru: "Японский (ja)",
     }),
 
     chineseSimplifiedZhCn: t({
-      en: "Chinese Simplified (zh-CN)"
+      en: "Chinese Simplified (zh)",
+      fr: "Chinois Simplifié (zh)",
+      es: "Chino simplificado (zh)",
+      de: "Chinesisch vereinfacht (zh)",
+      it: "Cinese semplificato (zh)",
+      pt: "Chinês Simplificado (zh)",
+      zh: "中文简体 (zh)",
+      ja: "中国語（簡体字）(zh)",
+      ko: "중국어 간체 (zh)",
+      ru: "Китайский упрощенный (zh)",
     }),
 
     arabicAr: t({
-      en: "Arabic (ar)"
+      en: "Arabic (ar)",
+      fr: "Arabe (ar)",
+      es: "Árabe (ar)",
+      de: "Arabisch (ar)",
+      it: "Arabo (ar)",
+      pt: "Árabe (ar)",
+      zh: "阿拉伯语 (ar)",
+      ja: "アラビア語 (ar)",
+      ko: "아랍어 (ar)",
+      ru: "Арабский (ar)",
+    }),
+
+    preferences: t({
+      en: "Preferences",
+      fr: "Préférences",
+      es: "Preferencias",
+      de: "Einstellungen",
+      it: "Preferenze",
+      pt: "Preferências",
+      zh: "偏好设置",
+      ja: "設定",
+      ko: "기본 설정",
+      ru: "Настройки",
     })
   },
 } satisfies Dictionary;

@@ -16,9 +16,7 @@ export default function ContactForm() {
           <label
             htmlFor={nameId}
             className="mb-1 block text-sm font-medium text-foreground"
-          >
-            Name
-          </label>
+          >{content.name}</label>
           <input
             id={nameId}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
@@ -29,9 +27,7 @@ export default function ContactForm() {
           <label
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
-          >
-            Email
-          </label>
+          >{content.email}</label>
           <input
             id={emailId}
             type="email"
@@ -44,9 +40,7 @@ export default function ContactForm() {
         <label
           htmlFor={topicId}
           className="mb-1 block text-sm font-medium text-foreground"
-        >
-          Topic
-        </label>
+        >{content.topic}</label>
         <select
           id={topicId}
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
@@ -54,17 +48,15 @@ export default function ContactForm() {
           <option>{content.bugReport}</option>
           <option>{content.newBenchmarkIdea}</option>
           <option>{content.methodologyQuestion}</option>
-          <option>Contribution</option>
-          <option>Other</option>
+          <option>{content.contribution}</option>
+          <option>{content.other}</option>
         </select>
       </div>
       <div>
         <label
           htmlFor={messageId}
           className="mb-1 block text-sm font-medium text-foreground"
-        >
-          Message
-        </label>
+        >{content.message}</label>
         <textarea
           id={messageId}
           rows={5}

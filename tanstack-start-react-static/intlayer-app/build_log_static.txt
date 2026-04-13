@@ -1,0 +1,155 @@
+$ vite build
+[38;5;239m[intlayer] [0m Dictionary minification [32menabled[0m
+[38;5;239m[intlayer] [0m Build optimization [32menabled[0m [38;5;239m(import mode:[0m [34mstatic[0m [38;5;239m)[0m
+[38;5;239m[intlayer] [0m Preparing Intlayer [38;5;239m(v8.7.1-canary-0)[0m
+[2K[38;5;239m[intlayer] [0m [32m✓[0m Local content: [32m0[0m[90m/0[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m0[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m1[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m2[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m3[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m4[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m5[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m6[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m7[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m8[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m9[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m10[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m11[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m12[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m13[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m14[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m15[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m16[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m17[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m18[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m19[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m20[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m21[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m22[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m23[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m24[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m25[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m26[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m27[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m28[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m29[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m30[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [34m⠋[0m Local content: [34m31[0m[90m/32[0m
+[1F[2K[38;5;239m[intlayer] [0m [32m✓[0m Local content: [32m32[0m[90m/32[0m
+[38;5;239m[intlayer] [0m Dictionaries built [38;5;239m(485ms)[0m
+[38;5;239m[intlayer] [0m Dictionary minification [32menabled[0m
+[38;5;239m[intlayer] [0m Build optimization [32menabled[0m [38;5;239m(import mode:[0m [34mstatic[0m [38;5;239m)[0m
+vite v8.0.8 building client environment for production...
+[2Ktransforming...✓ 2075 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/client/assets/styles-C_3Rg9Pf.css                  24.39 kB │ gzip:  5.10 kB
+dist/client/assets/route-T2UsIWBS.js                     0.07 kB │ gzip:  0.08 kB
+dist/client/assets/MarkdownRendererPlugin-DIFTKOva.js    0.30 kB │ gzip:  0.23 kB
+dist/client/assets/usePerformanceMeasure-Db4YRdyo.js     0.37 kB │ gzip:  0.22 kB
+dist/client/assets/faq-Z9InXcM2.js                       0.91 kB │ gzip:  0.45 kB
+dist/client/assets/blog-CgBC_HpI.js                      0.91 kB │ gzip:  0.46 kB
+dist/client/assets/team-DRNbRB8l.js                      0.91 kB │ gzip:  0.45 kB
+dist/client/assets/pricing-Ba1zbrP_.js                   0.93 kB │ gzip:  0.46 kB
+dist/client/assets/products-BawbTvxe.js                  0.93 kB │ gzip:  0.46 kB
+dist/client/assets/contact-B-bEdRzf.js                   0.98 kB │ gzip:  0.47 kB
+dist/client/assets/SettingsFooter-Baow_hf8.js            1.06 kB │ gzip:  0.67 kB
+dist/client/assets/about-BjvXAG-m.js                     1.17 kB │ gzip:  0.50 kB
+dist/client/assets/careers-yvnZJaNW.js                   1.18 kB │ gzip:  0.50 kB
+dist/client/assets/preload-helper-Bll5m_3I.js            1.19 kB │ gzip:  0.68 kB
+dist/client/assets/BlogHeader-DJgV75ZA.js                1.27 kB │ gzip:  0.83 kB
+dist/client/assets/SettingsHeader-CAeEEmuG.js            1.30 kB │ gzip:  0.85 kB
+dist/client/assets/FAQHeader-D37kKaA8.js                 1.37 kB │ gzip:  0.88 kB
+dist/client/assets/_locale-CEwvL-YZ.js                   1.42 kB │ gzip:  0.53 kB
+dist/client/assets/ProductsHeader-DOVKXZaU.js            1.53 kB │ gzip:  0.99 kB
+dist/client/assets/ProfileSection-BNs9Uumm.js            1.72 kB │ gzip:  0.86 kB
+dist/client/assets/PricingHeader-Ca7EKdNE.js             1.79 kB │ gzip:  1.21 kB
+dist/client/assets/settings-p6PkPr5_.js                  1.84 kB │ gzip:  0.62 kB
+dist/client/assets/MockBanner-D0NVeAAi.js                1.99 kB │ gzip:  1.33 kB
+dist/client/assets/ContactHeader-BxHCbINt.js             2.00 kB │ gzip:  1.31 kB
+dist/client/assets/HTMLRendererPlugin-Ckt62sZI.js        2.02 kB │ gzip:  0.99 kB
+dist/client/assets/TeamHeader-B9fxKEaI.js                2.29 kB │ gzip:  1.47 kB
+dist/client/assets/ApiAccessSection-DiDH9FIt.js          2.44 kB │ gzip:  1.32 kB
+dist/client/assets/CareersBenefits-28RSzydl.js           2.50 kB │ gzip:  1.52 kB
+dist/client/assets/CareersHeader-CCwPqR9x.js             2.65 kB │ gzip:  1.71 kB
+dist/client/assets/ResultsTable-LO070_UX.js              2.95 kB │ gzip:  1.37 kB
+dist/client/assets/Hero-Co6rDBUH.js                      3.51 kB │ gzip:  2.05 kB
+dist/client/assets/AboutHeader-BPu2GnBF.js               3.63 kB │ gzip:  2.20 kB
+dist/client/assets/ContactForm-GRn7syTc.js               4.69 kB │ gzip:  2.03 kB
+dist/client/assets/PreferencesSection-FAa9g7iJ.js        5.88 kB │ gzip:  2.56 kB
+dist/client/assets/PricingTiers-Y-y8RWaK.js              8.19 kB │ gzip:  3.55 kB
+dist/client/assets/jsx-runtime-CUBmso4R.js               8.39 kB │ gzip:  3.20 kB
+dist/client/assets/useDictionary-B-mg53cL.js             9.13 kB │ gzip:  3.44 kB
+dist/client/assets/ProductsGrid-U_hnD9bY.js             10.45 kB │ gzip:  5.16 kB
+dist/client/assets/AboutGrid-18iPf5Wy.js                10.77 kB │ gzip:  5.68 kB
+dist/client/assets/OpenPositions-RkLQPnza.js            11.14 kB │ gzip:  5.26 kB
+dist/client/assets/TeamGrid-rTlInb2N.js                 12.31 kB │ gzip:  5.46 kB
+dist/client/assets/WhatWeMeasure-Bv8DiFQJ.js            13.90 kB │ gzip:  6.95 kB
+dist/client/assets/WhyItMatters-DT8WZSjM.js             15.30 kB │ gzip:  7.60 kB
+dist/client/assets/BlogList-DJfwN76m.js                 15.91 kB │ gzip:  6.85 kB
+dist/client/assets/FAQList-CaxFALIc.js                  23.95 kB │ gzip: 10.64 kB
+dist/client/assets/UnderstandingImpact-lm_igUnU.js      26.07 kB │ gzip: 11.67 kB
+dist/client/assets/Match--ukx7GUf.js                    69.24 kB │ gzip: 22.18 kB
+dist/client/assets/main-DHZx48t-.js                    265.95 kB │ gzip: 85.77 kB
+
+[33m[PLUGIN_TIMINGS] Warning:[0m Your build spent significant time in plugins. Here is a breakdown:
+  - tanstack-start-core:import-protection (78%)
+  - vite-intlayer-babel-transform (10%)
+  - vite-intlayer-dictionary-minify (6%)
+  - tanstack-start-core:import-protection-transform-cache (3%)
+See https://rolldown.rs/options/checks#plugintimings for more details.
+
+✓ built in 3.30s
+vite v8.0.8 building ssr environment for production...
+[2Ktransforming...✓ 312 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/server/assets/route-CBnt59vd.js                         0.19 kB │ gzip:  0.14 kB
+dist/server/assets/start-Cz_xXy-V.js                         0.21 kB │ gzip:  0.16 kB
+dist/server/assets/usePerformanceMeasure-BPUv8Db_.js         0.75 kB │ gzip:  0.38 kB
+dist/server/assets/faq-BoS9eW3g.js                           0.76 kB │ gzip:  0.38 kB
+dist/server/assets/blog-B-scOpPX.js                          0.77 kB │ gzip:  0.38 kB
+dist/server/assets/team-DbZYV3D2.js                          0.77 kB │ gzip:  0.38 kB
+dist/server/assets/pricing-DhydQnLY.js                       0.80 kB │ gzip:  0.38 kB
+dist/server/assets/products-CJlGPRVg.js                      0.81 kB │ gzip:  0.38 kB
+dist/server/assets/MarkdownRendererPlugin-BQO7pFhb.js        0.81 kB │ gzip:  0.35 kB
+dist/server/assets/contact-S9XBHggW.js                       0.88 kB │ gzip:  0.41 kB
+dist/server/assets/about-H4gcZh25.js                         1.05 kB │ gzip:  0.42 kB
+dist/server/assets/careers-iDffHmm7.js                       1.09 kB │ gzip:  0.43 kB
+dist/server/assets/_locale-Y8B-nRbD.js                       1.31 kB │ gzip:  0.46 kB
+dist/server/assets/SettingsFooter-CvVASiAT.js                1.66 kB │ gzip:  0.81 kB
+dist/server/assets/settings-juH4cv31.js                      1.87 kB │ gzip:  0.57 kB
+dist/server/assets/BlogHeader-3hn2IiX_.js                    1.88 kB │ gzip:  0.96 kB
+dist/server/assets/SettingsHeader-BSUpiDei.js                1.93 kB │ gzip:  0.98 kB
+dist/server/assets/FAQHeader-Bxoo1hJm.js                     1.98 kB │ gzip:  1.02 kB
+dist/server/assets/ProductsHeader-xxkFMo1e.js                2.16 kB │ gzip:  1.13 kB
+dist/server/assets/MockBanner-DhuYGxBD.js                    2.33 kB │ gzip:  1.44 kB
+dist/server/assets/PricingHeader-BxzjhdYv.js                 2.43 kB │ gzip:  1.36 kB
+dist/server/assets/ProfileSection-DpL4yXKr.js                2.62 kB │ gzip:  1.01 kB
+dist/server/assets/ContactHeader-BXMrMEgQ.js                 2.69 kB │ gzip:  1.46 kB
+dist/server/assets/TeamHeader-BwehxkFV.js                    2.89 kB │ gzip:  1.61 kB
+dist/server/assets/_tanstack-start-manifest_v-Ceq0cO3r.js    3.17 kB │ gzip:  0.69 kB
+dist/server/assets/CareersHeader-nOCLu77g.js                 3.28 kB │ gzip:  1.85 kB
+dist/server/assets/ApiAccessSection-BwITqVQ3.js              3.41 kB │ gzip:  1.49 kB
+dist/server/assets/CareersBenefits-CbnuhZbB.js               3.44 kB │ gzip:  1.69 kB
+dist/server/assets/AboutHeader-CpsHRUJG.js                   4.24 kB │ gzip:  2.34 kB
+dist/server/assets/Hero-DdXN2_AB.js                          4.39 kB │ gzip:  2.22 kB
+dist/server/assets/ResultsTable-DqKx8OFt.js                  4.51 kB │ gzip:  1.58 kB
+dist/server/assets/HTMLRendererPlugin-BRVy668-.js            5.46 kB │ gzip:  1.84 kB
+dist/server/assets/ContactForm-DDfc78il.js                   6.71 kB │ gzip:  2.28 kB
+dist/server/assets/PreferencesSection-C5RDHtVU.js            8.25 kB │ gzip:  2.77 kB
+dist/server/assets/AboutGrid-CWpv7-P5.js                    11.37 kB │ gzip:  5.82 kB
+dist/server/assets/PricingTiers-09LGOdpz.js                 12.11 kB │ gzip:  3.86 kB
+dist/server/assets/ProductsGrid-s-qvEIAP.js                 12.45 kB │ gzip:  5.38 kB
+dist/server/assets/TeamGrid-0CA_hU7H.js                     13.72 kB │ gzip:  5.65 kB
+dist/server/assets/OpenPositions-C5t6af3I.js                13.73 kB │ gzip:  5.53 kB
+dist/server/assets/WhatWeMeasure-DckBJ55E.js                14.93 kB │ gzip:  7.14 kB
+dist/server/assets/WhyItMatters-Cy8OF1VR.js                 16.25 kB │ gzip:  7.77 kB
+dist/server/assets/BlogList-4MJHgjZK.js                     17.61 kB │ gzip:  7.07 kB
+dist/server/assets/FAQList-Cqa1lFV6.js                      25.18 kB │ gzip: 10.83 kB
+dist/server/assets/useDictionary-D9XG3YPf.js                27.74 kB │ gzip:  7.08 kB
+dist/server/assets/UnderstandingImpact-SUvo1ABH.js          28.04 kB │ gzip: 11.93 kB
+dist/server/assets/router-CAh4jDls.js                       39.37 kB │ gzip: 11.93 kB
+dist/server/server.js                                      148.31 kB │ gzip: 37.18 kB
+
+✓ built in 1.54s

@@ -357,6 +357,7 @@ const pricingTiersContent = {
       ko: "시작하기",
       ru: "Начать",
     }),
+
   },
 } satisfies Dictionary;
 

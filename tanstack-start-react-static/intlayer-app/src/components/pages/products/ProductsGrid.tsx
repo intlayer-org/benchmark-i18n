@@ -7,12 +7,12 @@ export default function ProductsGrid() {
     {
       name: content.benchmarkCli.value,
       desc: content.runBenchmarksLocallyFromYour.value,
-      price: "Free",
+      price: content.free.value,
     },
     {
       name: content.benchmarkCloud.value,
       desc: content.automatedCloudBasedBenchmarkingWith.value,
-      price: "$29/mo",
+      price: content.price29Mo.value,
     },
     {
       name: content.benchmarkEnterprise.value,
@@ -22,17 +22,17 @@ export default function ProductsGrid() {
     {
       name: content.migrationAssistant.value,
       desc: content.aiPoweredToolThatHelps.value,
-      price: "$99 one-time",
+      price: content.price99OneTime.value,
     },
     {
       name: content.translationQa.value,
       desc: content.automatedQualityChecksForMissing.value,
-      price: "$19/mo",
+      price: content.price19Mo.value,
     },
     {
       name: content.bundleOptimizer.value,
       desc: content.analyzesAndOptimizesYourI18n.value,
-      price: "$49/mo",
+      price: content.price49Mo.value,
     },
   ];
 

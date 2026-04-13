@@ -1,4 +1,4 @@
-import { type Dictionary, t } from 'intlayer';
+import { type Dictionary, insert, t } from 'intlayer';
 
 const themeToggleContent = {
   key: "theme-toggle",
@@ -80,6 +80,19 @@ const themeToggleContent = {
       ko: "테마: 라이트",
       ru: "Тема: Светлая",
     }),
+
+    themeModeModeClickTo: insert(t({
+      en: "Theme mode: {{mode}}. Click to switch mode.",
+      fr: "Mode de thème : {{mode}}. Cliquez pour changer de mode.",
+      es: "Modo de tema: {{mode}}. Haga clic para cambiar de modo.",
+      de: "Themenmodus: {{mode}}. Zum Umschalten klicken.",
+      it: "Modalità tema: {{mode}}. Clicca per cambiare modalità.",
+      pt: "Modo de tema: {{mode}}. Clique para alternar o modo.",
+      zh: "主题模式：{{mode}}。点击切换模式。",
+      ja: "テーマモード：{{mode}}。モードを切り替えるにはクリックしてください。",
+      ko: "테마 모드: {{mode}}. 모드를 전환하려면 클릭하세요.",
+      ru: "Режим темы: {{mode}}. Нажмите, чтобы переключить режим.",
+    }))
   },
 } satisfies Dictionary;
 

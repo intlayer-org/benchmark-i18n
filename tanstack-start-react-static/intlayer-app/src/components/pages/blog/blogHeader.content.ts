@@ -1,7 +1,7 @@
-import { type Dictionary, t } from "intlayer";
+import { type Dictionary, t } from 'intlayer';
 
 const blogHeaderContent = {
-  key: "blog-header",
+  key: 'blog-header',
   content: {
     insightsTutorialsAndAnalysisFrom: t({
       en: "Insights, tutorials, and analysis from the i18n community.",
@@ -15,6 +15,19 @@ const blogHeaderContent = {
       ko: "i18n 커뮤니티의 인사이트, 튜토리얼 및 분석.",
       ru: "Инсайты, руководства и анализ от сообщества i18n.",
     }),
+
+    blog: t({
+      en: "Blog",
+      fr: "Blog",
+      es: "Blog",
+      de: "Blog",
+      it: "Blog",
+      pt: "Blog",
+      zh: "博客",
+      ja: "ブログ",
+      ko: "블로그",
+      ru: "Блог",
+    })
   },
 } satisfies Dictionary;
 

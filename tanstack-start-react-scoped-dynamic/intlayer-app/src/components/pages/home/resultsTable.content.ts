@@ -1,4 +1,4 @@
-import { type Dictionary, t } from 'intlayer';
+import { type Dictionary, t, insert } from 'intlayer';
 
 const resultsTableContent = {
   key: 'results-table',
@@ -53,7 +53,85 @@ const resultsTableContent = {
       ja: "遅延読み込み",
       ko: "지연 로딩",
       ru: "Ленивая загрузка",
-    })
+    }),
+
+    yes: t({
+      en: "Yes",
+      fr: "Oui",
+      es: "Sí",
+      de: "Ja",
+      it: "Sì",
+      pt: "Sim",
+      zh: "是",
+      ja: "はい",
+      ko: "예",
+      ru: "Да",
+    }),
+
+    manual: t({
+      en: "Manual",
+      fr: "Manuel",
+      es: "Manual",
+      de: "Manuell",
+      it: "Manuale",
+      pt: "Manual",
+      zh: "手动",
+      ja: "マニュアル",
+      ko: "수동",
+      ru: "Вручную",
+    }),
+
+    library: t({
+      en: "Library",
+      fr: "Bibliothèque",
+      es: "Biblioteca",
+      de: "Bibliothek",
+      it: "Libreria",
+      pt: "Biblioteca",
+      zh: "库",
+      ja: "ライブラリ",
+      ko: "라이브러리",
+      ru: "Библиотека",
+    }),
+
+    builtIn: t({
+      en: "Built-in",
+      fr: "Intégré",
+      es: "Incorporado",
+      de: "Integriert",
+      it: "Integrato",
+      pt: "Integrado",
+      zh: "内置",
+      ja: "組み込み",
+      ko: "내장",
+      ru: "Встроенный",
+    }),
+
+    kilobytes: insert(t({
+      en: "{val} kB",
+      fr: "{val} ko",
+      es: "{val} kB",
+      de: "{val} kB",
+      it: "{val} kB",
+      pt: "{val} kB",
+      zh: "{val} kB",
+      ja: "{val} kB",
+      ko: "{val} kB",
+      ru: "{val} кБ",
+    })),
+
+    milliseconds: insert(t({
+      en: "{val}ms",
+      fr: "{val} ms",
+      es: "{val} ms",
+      de: "{val} ms",
+      it: "{val} ms",
+      pt: "{val} ms",
+      zh: "{val} 毫秒",
+      ja: "{val}ms",
+      ko: "{val}ms",
+      ru: "{val} мс",
+    }))
   },
 } satisfies Dictionary;
 

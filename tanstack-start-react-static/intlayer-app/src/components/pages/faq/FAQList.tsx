@@ -6,7 +6,7 @@ export default function FAQList() {
   const faqs = [
     {
       q: content.whatIsI18nBenchmark.value,
-      a: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.",
+      a: content.i18nBenchmarkIsAnOpen.value,
     },
     {
       q: content.howAreBenchmarksConducted.value,

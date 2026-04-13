@@ -10,7 +10,7 @@ import { usePerformanceMeasure } from "../hooks/usePerformanceMeasure";
 export default function Header() {
   const content = useIntlayer("header");
 
-  usePerformanceMeasure("Header");
+  usePerformanceMeasure(content.header.value);
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
   const params = useParams({ strict: false });
   const currentLocale = params.locale ?? "en";
@@ -35,7 +35,7 @@ export default function Header() {
             params={{ locale: currentLocale }}
             className="text-lg font-bold tracking-tight text-primary no-underline"
           >
-            i18n Bench
+            {content.i18nBench}
           </Link>
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">

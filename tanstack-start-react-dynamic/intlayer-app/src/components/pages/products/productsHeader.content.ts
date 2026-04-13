@@ -14,6 +14,19 @@ const productsHeaderContent = {
       ja: "国際化ワークフローを合理化するためのツールとサービス。",
       ko: "국제화 워크플로우를 합리화하기 위한 도구 및 서비스입니다.",
       ru: "Инструменты и услуги для оптимизации рабочего процесса интернационализации.",
+    }),
+
+    products: t({
+      en: "Products",
+      fr: "Produits",
+      es: "Productos",
+      de: "Produkte",
+      it: "Prodotti",
+      pt: "Produtos",
+      zh: "产品",
+      ja: "製品",
+      ko: "제품",
+      ru: "Продукты",
     })
   },
 } satisfies Dictionary;

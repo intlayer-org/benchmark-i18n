@@ -5,6 +5,7 @@ import {
   Link,
   Scripts,
   createRootRoute,
+  useLoaderData,
 } from "@tanstack/react-router";
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
@@ -72,9 +73,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
   const params = LocaleRoute.useParams();
   const locale = params.locale || defaultLocale;
-  const { messages } = LocaleRoute.useLoaderData();
-
-  const i18n = useMemo(() => initLingui(locale, messages), [locale, messages]);
+  const loaderData = useLoaderData({ strict: false });
+  const i18n = useMemo(
+    () => initLingui(locale, loaderData?.messages),
+    [locale, loaderData?.messages],
+  );
 
   return (
     <html lang={locale} suppressHydrationWarning>

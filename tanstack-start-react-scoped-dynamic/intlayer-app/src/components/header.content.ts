@@ -15,6 +15,7 @@ const headerContent = {
       ko: "홈",
       ru: "Главная",
     }),
+
     methodology: t({
       en: "Methodology",
       fr: "Méthodologie",
@@ -27,6 +28,7 @@ const headerContent = {
       ko: "방법론",
       ru: "Методология",
     }),
+
     mockPages: t({
       en: "Mock Pages",
       fr: "Pages de Test",
@@ -39,6 +41,7 @@ const headerContent = {
       ko: "모의 페이지",
       ru: "Тестовые страницы",
     }),
+
     products: t({
       en: "Products",
       fr: "Produits",
@@ -51,6 +54,7 @@ const headerContent = {
       ko: "제품",
       ru: "Продукты",
     }),
+
     pricing: t({
       en: "Pricing",
       fr: "Tarification",
@@ -63,6 +67,7 @@ const headerContent = {
       ko: "가격",
       ru: "Цены",
     }),
+
     team: t({
       en: "Team",
       fr: "Équipe",
@@ -75,6 +80,7 @@ const headerContent = {
       ko: "팀",
       ru: "Команда",
     }),
+
     blog: t({
       en: "Blog",
       fr: "Blog",
@@ -87,6 +93,7 @@ const headerContent = {
       ko: "블로그",
       ru: "Блог",
     }),
+
     careers: t({
       en: "Careers",
       fr: "Carrières",
@@ -99,6 +106,7 @@ const headerContent = {
       ko: "채용",
       ru: "Карьера",
     }),
+
     faq: t({
       en: "FAQ",
       fr: "FAQ",
@@ -111,6 +119,7 @@ const headerContent = {
       ko: "자주 묻는 질문",
       ru: "FAQ",
     }),
+
     contact: t({
       en: "Contact",
       fr: "Contact",
@@ -123,6 +132,7 @@ const headerContent = {
       ko: "연락처",
       ru: "Контакт",
     }),
+
     settings: t({
       en: "Settings",
       fr: "Paramètres",
@@ -135,6 +145,7 @@ const headerContent = {
       ko: "설정",
       ru: "Настройки",
     }),
+
     goToGithub: t({
       en: "Go to GitHub",
       fr: "Aller sur GitHub",
@@ -147,6 +158,32 @@ const headerContent = {
       ko: "GitHub으로 이동",
       ru: "Перейти на GitHub",
     }),
+
+    header: t({
+      en: "Header",
+      fr: "En-tête",
+      es: "Cabecera",
+      de: "Header",
+      it: "Intestazione",
+      pt: "Cabeçalho",
+      zh: "页眉",
+      ja: "ヘッダー",
+      ko: "헤더",
+      ru: "Шапка",
+    }),
+
+    i18nBench: t({
+      en: "i18n Bench",
+      fr: "Bench i18n",
+      es: "Bench i18n",
+      de: "i18n Bench",
+      it: "Bench i18n",
+      pt: "Bench i18n",
+      zh: "i18n 基准",
+      ja: "i18n ベンチ",
+      ko: "i18n 벤치",
+      ru: "i18n Бенчмарк",
+    })
   },
 } satisfies Dictionary;
 

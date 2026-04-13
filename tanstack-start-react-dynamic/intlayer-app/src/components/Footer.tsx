@@ -31,7 +31,7 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              i18n Benchmark
+              {content.i18nBenchmarkTitle}
             </h3>
             <p className="text-sm text-muted-foreground">
               {content.anOpenSourceTestApplication}
@@ -71,7 +71,7 @@ export default function Footer() {
               {content.contact}
             </h3>
             <p className="text-sm text-muted-foreground">
-              contact@intlayer.org
+              {content.contactEmail}
             </p>
           </div>
         </div>
