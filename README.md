@@ -15,6 +15,7 @@ The suite measures several key performance indicators across different i18n impl
 Currently, the following implementations are benchmarked:
 
 ### Static Benchmarks (`tanstack-start-react-static`)
+
 - **Base App** (`static-base-app`)
 - **Intlayer** (`static-intlayer-app`)
 - **Lingui** (`static-lingui-app`)
@@ -26,6 +27,7 @@ Currently, the following implementations are benchmarked:
 - **Lingo.dev** (`static-lingo.dev-app`)
 
 ### Dynamic Benchmarks (`tanstack-start-react-dynamic`)
+
 - **Intlayer** (`dynamic-intlayer-app`)
 - **Lingui** (`dynamic-lingui-app`)
 - **react-i18next** (`dynamic-react-i18next-app`)
@@ -33,7 +35,7 @@ Currently, the following implementations are benchmarked:
 - **use-intl** (`dynamic-use-intl-app`)
 - **GT** (`dynamic-gt-react-app`)
 - **Tolgee** (`dynamic-tolgee-app`)
-- **Whushale** (`dynamic-whushale-app`)
+- **wuchale** (`dynamic-wuchale-app`)
 
 ## Getting Started
 
@@ -45,12 +47,14 @@ Currently, the following implementations are benchmarked:
 ### Installation
 
 1.  Clone the repository:
+
     ```bash
     git clone https://github.com/intlayer-org/benchmark-bloom.git
     cd benchmark-bloom
     ```
 
 2.  Install dependencies:
+
     ```bash
     bun install
     ```
@@ -65,6 +69,7 @@ Currently, the following implementations are benchmarked:
 To run the full suite across all applications:
 
 1.  **Build the applications**:
+
     ```bash
     bun run build
     ```
@@ -79,11 +84,13 @@ To run the full suite across all applications:
 You can also run specific parts of the benchmark:
 
 - **Run bundle size & leakage tests only**:
+
   ```bash
   bun run test:pages
   ```
 
 - **Run reactivity benchmarks only**:
+
   ```bash
   bun run test:reactivity
   ```

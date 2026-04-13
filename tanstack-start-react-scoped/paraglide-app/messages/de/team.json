@@ -1,0 +1,22 @@
+{
+  "team-header.ourTeam": "Unser Team",
+  "team-header.meetThePeopleBehindI18n": "Lernen Sie die Menschen hinter i18n Benchmark kennen. Ein vielfältiges Team, vereint durch die Leidenschaft für großartige Entwickler-Tools.",
+  "team-grid.sarahChen": "Sarah Chen",
+  "team-grid.founderLeadEngineer": "Gründerin & Leitende Ingenieurin",
+  "team-grid.formerGoogleEngineerWith10": "Ehemalige Google-Ingenieurin mit 10 Jahren Erfahrung im Aufbau von Internationalisierungssystemen in großem Maßstab.",
+  "team-grid.marcusWeber": "Marcus Weber",
+  "team-grid.performanceEngineer": "Performance-Ingenieur",
+  "team-grid.specializesInJavascriptPerformanceOptimization": "Spezialisiert auf JavaScript-Leistungsoptimierung und Benchmarking-Methodik. Zuvor bei Vercel.",
+  "team-grid.aishaPatel": "Aisha Patel",
+  "team-grid.developerAdvocate": "Developer Advocate",
+  "team-grid.passionateAboutDeveloperExperienceAnd": "Begeistert von Entwicklererfahrung und Bildung. Sprecherin auf der React Conf, JSConf und i18nNext.",
+  "team-grid.tomasRodriguez": "Tomás Rodríguez",
+  "team-grid.fullStackDeveloper": "Full-Stack-Entwickler",
+  "team-grid.maintainsTheBenchmarkingInfrastructureAnd": "Wartet die Benchmarking-Infrastruktur und die CI/CD-Pipeline. Open-Source-Mitwirkender bei Lingui.",
+  "team-grid.yukiTanaka": "Yuki Tanaka",
+  "team-grid.dataAnalyst": "Datenanalyst",
+  "team-grid.ensuresStatisticalRigorInAll": "Gewährleistet statistische Strenge in allen Benchmark-Ergebnissen. Promotion in Angewandter Statistik am MIT.",
+  "team-grid.elenaKowalski": "Elena Kowalski",
+  "team-grid.communityManager": "Community-Managerin",
+  "team-grid.managesCommunityContributionsPartnershipsAnd": "Verwaltet Community-Beiträge, Partnerschaften und Veranstaltungen. Hintergrund in Open-Source-Governance."
+}

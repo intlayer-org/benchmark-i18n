@@ -1,0 +1,10 @@
+{
+  "contact-form.yourName": "Votre nom",
+  "contact-form.bugReport": "Rapport de bug",
+  "contact-form.newBenchmarkIdea": "Nouvelle idée de benchmark",
+  "contact-form.methodologyQuestion": "Question sur la méthodologie",
+  "contact-form.describeYourQuestionOrIdea": "Décrivez votre question ou idée...",
+  "contact-form.sendMessage": "Envoyer le message",
+  "contact-header.getInTouch": "Contactez-nous",
+  "contact-header.haveIdeasFoundABug": "Vous avez des idées, trouvé un bug ou voulez proposer un benchmark ? Contactez-nous à"
+}

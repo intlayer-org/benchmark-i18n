@@ -1,0 +1,8 @@
+{
+  "name": "お名前",
+  "email": "メールアドレス",
+  "subject": "件名",
+  "message": "メッセージ",
+  "sendMessage": "メッセージを送信",
+  "wellGetBackTo": "48時間以内に返信いたします。"
+}

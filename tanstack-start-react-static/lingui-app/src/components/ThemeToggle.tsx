@@ -34,7 +34,6 @@ function applyThemeMode(mode: ThemeMode) {
 
 export default function ThemeToggle() {
   const { i18n } = useLingui();
-  const t = (id: string) => i18n._(`theme-toggle.${id}`);
 
   const [mode, setMode] = useState<ThemeMode>("auto");
 
@@ -68,10 +67,10 @@ export default function ThemeToggle() {
 
   const label =
     mode === "auto"
-      ? t("themeModeAutoSystemClick")
+      ? i18n._("theme-toggle.themeModeAutoSystemClick")
       : mode === "light"
-        ? t("themeModeLightClick")
-        : t("themeModeDarkClick");
+        ? i18n._("theme-toggle.themeModeLightClick")
+        : i18n._("theme-toggle.themeModeDarkClick");
 
   return (
     <button
@@ -82,10 +81,10 @@ export default function ThemeToggle() {
       className="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
     >
       {mode === "auto"
-        ? t("themeAuto")
+        ? i18n._("theme-toggle.themeAuto")
         : mode === "dark"
-          ? t("themeDark")
-          : t("themeLight")}
+          ? i18n._("theme-toggle.themeDark")
+          : i18n._("theme-toggle.themeLight")}
     </button>
   );
 }

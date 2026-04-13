@@ -2,7 +2,6 @@ import { useLingui } from "@lingui/react";
 
 export default function ResultsTable() {
   const { i18n } = useLingui();
-  const t = (id: string) => i18n._(`results-table.${id}`);
 
   const results = [
     {
@@ -29,7 +28,7 @@ export default function ResultsTable() {
   return (
     <section>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        {t("sampleResults")}
+        {i18n._("results-table.sampleResults")}
       </h2>
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
@@ -39,13 +38,13 @@ export default function ResultsTable() {
                 Library
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                {t("bundleSize")}
+                {i18n._("results-table.bundleSize")}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                {t("lookupTime")}
+                {i18n._("results-table.lookupTime")}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                {t("lazyLoading")}
+                {i18n._("results-table.lazyLoading")}
               </th>
             </tr>
           </thead>

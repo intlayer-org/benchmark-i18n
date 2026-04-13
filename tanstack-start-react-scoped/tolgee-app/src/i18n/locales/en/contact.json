@@ -1,0 +1,10 @@
+{
+  "contactHeader.contactUs": "Contact Us",
+  "contactHeader.haveQuestionsOrWantTo": "Have questions or want to contribute? We'd love to hear from you.",
+  "contactForm.name": "Name",
+  "contactForm.email": "Email",
+  "contactForm.subject": "Subject",
+  "contactForm.message": "Message",
+  "contactForm.sendMessage": "Send Message",
+  "contactForm.wellGetBackTo": "We'll get back to you within 48 hours."
+}

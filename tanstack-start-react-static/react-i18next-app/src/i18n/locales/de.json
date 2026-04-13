@@ -161,9 +161,9 @@
     "sendMessage": "Nachricht senden",
     "wellGetBackTo": "Wir melden uns innerhalb von 48 Stunden bei Ihnen."
   },
-  "faqHeader": {
+  "faq-header1": {
     "frequentlyAskedQuestions": "Häufig gestellte Fragen",
-    "everythingYouNeedTo": "Alles, was Sie über das i18n-Benchmark-Projekt wissen müssen."
+    "everythingYouNeedToKnow": "Alles, was Sie über das i18n-Benchmark-Projekt wissen müssen."
   },
   "faqList": {
     "howAreTheBenchmarks": "Wie werden die Benchmarks durchgeführt?",

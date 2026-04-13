@@ -2,43 +2,42 @@ import { useLingui } from "@lingui/react";
 
 export default function BlogList() {
   const { i18n } = useLingui();
-  const t = (id: string) => i18n._(`blog-list.${id}`);
 
   const posts = [
     {
-      title: t("comparingI18nLibrariesIn2026"),
+      title: i18n._("blog-list.comparingI18nLibrariesIn2026"),
       date: "March 15, 2026",
-      excerpt: t("weTested12DifferentInternationalization"),
+      excerpt: i18n._("blog-list.weTested12DifferentInternationalization"),
       category: "Benchmark",
     },
     {
-      title: t("howToReduceYourI18n"),
-      date: t("march82026"),
-      excerpt: t("practicalStrategiesForOptimizingTranslation"),
+      title: i18n._("blog-list.howToReduceYourI18n"),
+      date: i18n._("blog-list.march82026"),
+      excerpt: i18n._("blog-list.practicalStrategiesForOptimizingTranslation"),
       category: "Tutorial",
     },
     {
-      title: t("theStateOfInternationalizationIn"),
-      date: t("february282026"),
-      excerpt: t("anOverviewOfTheCurrent"),
+      title: i18n._("blog-list.theStateOfInternationalizationIn"),
+      date: i18n._("blog-list.february282026"),
+      excerpt: i18n._("blog-list.anOverviewOfTheCurrent"),
       category: "Analysis",
     },
     {
-      title: t("migratingFromReactI18nextTo"),
-      date: t("february152026"),
-      excerpt: t("aStepByStepGuide"),
+      title: i18n._("blog-list.migratingFromReactI18nextTo"),
+      date: i18n._("blog-list.february152026"),
+      excerpt: i18n._("blog-list.aStepByStepGuide"),
       category: "Tutorial",
     },
     {
-      title: t("serverComponentsAndI18nWhat"),
-      date: t("february12026"),
-      excerpt: t("reactServerComponentsIntroduceNew"),
+      title: i18n._("blog-list.serverComponentsAndI18nWhat"),
+      date: i18n._("blog-list.february12026"),
+      excerpt: i18n._("blog-list.reactServerComponentsIntroduceNew"),
       category: "Analysis",
     },
     {
-      title: t("benchmarkMethodologyHowWeTest"),
-      date: t("january202026"),
-      excerpt: t("aTransparentLookAtOur"),
+      title: i18n._("blog-list.benchmarkMethodologyHowWeTest"),
+      date: i18n._("blog-list.january202026"),
+      excerpt: i18n._("blog-list.aTransparentLookAtOur"),
       category: "Meta",
     },
   ];
@@ -64,7 +63,7 @@ export default function BlogList() {
             type="button"
             className="text-sm font-medium text-primary hover:underline"
           >
-            {t("readMore")}
+            {i18n._("blog-list.readMore")}
           </button>
         </article>
       ))}

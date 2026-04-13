@@ -1,0 +1,20 @@
+{
+  "faq-header1.frequentlyAskedQuestions": "Preguntas frecuentes",
+  "faq-header1.everythingYouNeedToKnow": "Todo lo que necesitas saber sobre i18n Benchmark.",
+  "faq-list.whatIsI18nBenchmark": "¿Qué es i18n Benchmark?",
+  "faq-list.whatIsI18nBenchmarkAnswer": "i18n Benchmark es una suite de pruebas de código abierto que mide y compara el rendimiento, el tamaño del bundle y la experiencia del desarrollador de las bibliotecas de internacionalización para aplicaciones JavaScript y React.",
+  "faq-list.howAreBenchmarksConducted": "¿Cómo se realizan los benchmarks?",
+  "faq-list.weRunStandardizedTestsIn": "Realizamos pruebas estandarizadas en entornos aislados utilizando un hardware consistente. Cada benchmark se repite varias veces para garantizar la significancia estadística. Todas las configuraciones de prueba están disponibles públicamente en nuestro repositorio de GitHub.",
+  "faq-list.whichLibrariesAreCurrentlySupported": "¿Qué bibliotecas son compatibles actualmente?",
+  "faq-list.weSupportReactI18nextReact": "Soportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.",
+  "faq-list.canISubmitMyOwn": "¿Puedo enviar mis propios benchmarks?",
+  "faq-list.yesCommunityBenchmarkSubmissionsAre": "¡Sí! Las presentaciones de benchmarks de la comunidad son bienvenidas. Haz un fork de nuestro repositorio, añade tu benchmark siguiendo nuestra guía de contribución y envía un pull request. Nuestro equipo revisará y combinará las presentaciones que califiquen.",
+  "faq-list.howOftenAreBenchmarksUpdated": "¿Con qué frecuencia se funcionan los benchmarks?",
+  "faq-list.weReRunAllBenchmarks": "Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmarking inmediato.",
+  "faq-list.isTheDataReliable": "¿Son fiables los datos?",
+  "faq-list.weFollowRigorousStatisticalMethodology": "Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos brutos se publican junto con nuestro análisis para una total transparencia.",
+  "faq-list.doYouOfferConsultingServices": "¿Ofrecen servicios de consultoría?",
+  "faq-list.yesOurEnterprisePlanIncludes": "Sí, nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso, escala y limitaciones específicas.",
+  "faq-list.howCanIContribute": "¿Cómo puedo contribuir?",
+  "faq-list.thereAreManyWaysTo": "Hay muchas formas de contribuir: enviar benchmarks, mejorar la documentación, informar de bugs, sugerir nuevas métricas o patrocinar el proyecto. Visita nuestro repositorio de GitHub para más detalles."
+}

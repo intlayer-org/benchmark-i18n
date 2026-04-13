@@ -1,0 +1,66 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Name"
+msgstr "이름"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Your name"
+msgstr "Your name"
+
+#: src/components/pages/contact/ContactForm.tsx
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Email"
+msgstr "이메일"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Topic"
+msgstr "Topic"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Bug Report"
+msgstr "Bug Report"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "New Benchmark Idea"
+msgstr "New Benchmark Idea"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Methodology Question"
+msgstr "Methodology Question"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Contribution"
+msgstr "Contribution"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Other"
+msgstr "Other"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Message"
+msgstr "메시지"
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Describe your question or idea..."
+msgstr "Describe your question or idea..."
+
+#: src/components/pages/contact/ContactForm.tsx
+msgid "Send Message"
+msgstr "메시지 보내기"
+
+#: src/components/pages/contact/ContactHeader.tsx
+msgid "Get in Touch"
+msgstr "Get in Touch"
+
+#. 0: " "
+#: src/components/pages/contact/ContactHeader.tsx
+msgid "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at{0} <0>contact@intlayer.org</0> ."
+msgstr "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at{0} <0>contact@intlayer.org</0> ."

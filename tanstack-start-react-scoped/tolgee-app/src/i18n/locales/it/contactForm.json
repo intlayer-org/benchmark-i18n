@@ -1,0 +1,8 @@
+{
+  "name": "Nome",
+  "email": "Email",
+  "subject": "Oggetto",
+  "message": "Messaggio",
+  "sendMessage": "Invia messaggio",
+  "wellGetBackTo": "Ti risponderemo entro 48 ore."
+}

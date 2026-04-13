@@ -1,0 +1,5407 @@
+{
+  "version": 2,
+  "tree": {
+    "name": "root",
+    "children": [
+      {
+        "name": "server.js",
+        "children": [
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun",
+            "children": [
+              {
+                "name": "@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm",
+                "children": [
+                  {
+                    "uid": "cac4302f-1",
+                    "name": "StartServer.js"
+                  },
+                  {
+                    "uid": "cac4302f-3",
+                    "name": "defaultStreamHandler.js"
+                  }
+                ]
+              },
+              {
+                "name": "rou3@0.8.1/node_modules/rou3/dist/index.mjs",
+                "uid": "cac4302f-5"
+              },
+              {
+                "name": "srvx@0.11.15/node_modules/srvx/dist",
+                "children": [
+                  {
+                    "name": "_chunks/_url.mjs",
+                    "uid": "cac4302f-7"
+                  },
+                  {
+                    "name": "adapters/node.mjs",
+                    "uid": "cac4302f-9"
+                  }
+                ]
+              },
+              {
+                "name": "h3@2.0.1-rc.16/node_modules/h3/dist/h3-ByfIX5Jk.mjs",
+                "uid": "cac4302f-11"
+              },
+              {
+                "name": "@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "cac4302f-13",
+                    "name": "request-response.js"
+                  },
+                  {
+                    "uid": "cac4302f-15",
+                    "name": "constants.js"
+                  },
+                  {
+                    "uid": "cac4302f-45",
+                    "name": "router-manifest.js"
+                  },
+                  {
+                    "uid": "cac4302f-67",
+                    "name": "frame-protocol.js"
+                  },
+                  {
+                    "uid": "cac4302f-69",
+                    "name": "server-functions-handler.js"
+                  },
+                  {
+                    "uid": "cac4302f-71",
+                    "name": "transformAssetUrls.js"
+                  },
+                  {
+                    "name": "serializer/ServerFunctionSerializationAdapter.js",
+                    "uid": "cac4302f-73"
+                  },
+                  {
+                    "uid": "cac4302f-79",
+                    "name": "createStartHandler.js"
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "cac4302f-17",
+                    "name": "utils.js"
+                  },
+                  {
+                    "uid": "cac4302f-19",
+                    "name": "lru-cache.js"
+                  },
+                  {
+                    "uid": "cac4302f-21",
+                    "name": "not-found.js"
+                  },
+                  {
+                    "uid": "cac4302f-23",
+                    "name": "root.js"
+                  },
+                  {
+                    "uid": "cac4302f-25",
+                    "name": "redirect.js"
+                  },
+                  {
+                    "uid": "cac4302f-27",
+                    "name": "rewrite.js"
+                  },
+                  {
+                    "name": "ssr",
+                    "children": [
+                      {
+                        "uid": "cac4302f-31",
+                        "name": "constants.js"
+                      },
+                      {
+                        "name": "serializer",
+                        "children": [
+                          {
+                            "uid": "cac4302f-35",
+                            "name": "transformer.js"
+                          },
+                          {
+                            "uid": "cac4302f-37",
+                            "name": "RawStream.js"
+                          },
+                          {
+                            "uid": "cac4302f-39",
+                            "name": "ShallowErrorPlugin.js"
+                          },
+                          {
+                            "uid": "cac4302f-43",
+                            "name": "seroval-plugins.js"
+                          }
+                        ]
+                      },
+                      {
+                        "uid": "cac4302f-59",
+                        "name": "headers.js"
+                      },
+                      {
+                        "uid": "cac4302f-61",
+                        "name": "ssr-match-id.js"
+                      },
+                      {
+                        "uid": "cac4302f-75",
+                        "name": "tsrScript.js"
+                      },
+                      {
+                        "uid": "cac4302f-77",
+                        "name": "ssr-server.js"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+history@1.161.6/node_modules/@tanstack/history/dist/esm/index.js",
+                "uid": "cac4302f-29"
+              },
+              {
+                "name": "seroval@1.5.2/node_modules/seroval/dist/esm/production/index.mjs",
+                "uid": "cac4302f-33"
+              },
+              {
+                "name": "seroval-plugins@1.5.2+7cd651eebf40fbbb/node_modules/seroval-plugins/dist/esm/production/web.mjs",
+                "uid": "cac4302f-41"
+              },
+              {
+                "name": "@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "cac4302f-49",
+                    "name": "constants.js"
+                  },
+                  {
+                    "uid": "cac4302f-51",
+                    "name": "safeObjectMerge.js"
+                  },
+                  {
+                    "uid": "cac4302f-55",
+                    "name": "getStartOptions.js"
+                  },
+                  {
+                    "uid": "cac4302f-63",
+                    "name": "createServerFn.js"
+                  },
+                  {
+                    "uid": "cac4302f-65",
+                    "name": "getDefaultSerovalPlugins.js"
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+start-storage-context@1.166.15/node_modules/@tanstack/start-storage-context/dist/esm/async-local-storage.js",
+                "uid": "cac4302f-53"
+              },
+              {
+                "name": "cookie-es@2.0.1/node_modules/cookie-es/dist/index.mjs",
+                "uid": "cac4302f-57"
+              },
+              {
+                "name": "@tanstack+react-start@1.167.1+5b6ce2795a3c863a/node_modules/@tanstack/react-start/dist/plugin/default-entry/server.ts",
+                "uid": "cac4302f-81"
+              }
+            ]
+          },
+          {
+            "uid": "cac4302f-47",
+            "name": "\u0000#tanstack-start-server-fn-resolver"
+          }
+        ]
+      },
+      {
+        "name": "assets/AboutGrid-8426EfuK.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/AboutGrid.tsx",
+            "uid": "cac4302f-83"
+          }
+        ]
+      },
+      {
+        "name": "assets/AboutHeader-DqqNoF1L.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/AboutHeader.tsx",
+            "uid": "cac4302f-85"
+          }
+        ]
+      },
+      {
+        "name": "assets/ApiAccessSection-Colfbno6.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/ApiAccessSection.tsx",
+            "uid": "cac4302f-87"
+          }
+        ]
+      },
+      {
+        "name": "assets/BlogHeader-CPrc-jcd.js",
+        "children": [
+          {
+            "name": "src/components/pages/blog/BlogHeader.tsx",
+            "uid": "cac4302f-89"
+          }
+        ]
+      },
+      {
+        "name": "assets/BlogList-CIk520ar.js",
+        "children": [
+          {
+            "name": "src/components/pages/blog/BlogList.tsx",
+            "uid": "cac4302f-91"
+          }
+        ]
+      },
+      {
+        "name": "assets/CareersBenefits-Bq9R3n4D.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/CareersBenefits.tsx",
+            "uid": "cac4302f-93"
+          }
+        ]
+      },
+      {
+        "name": "assets/CareersHeader-CcBBmB8o.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/CareersHeader.tsx",
+            "uid": "cac4302f-95"
+          }
+        ]
+      },
+      {
+        "name": "assets/ContactForm-yqzy8CrL.js",
+        "children": [
+          {
+            "name": "src/components/pages/contact/ContactForm.tsx",
+            "uid": "cac4302f-97"
+          }
+        ]
+      },
+      {
+        "name": "assets/ContactHeader-C5UxjSd2.js",
+        "children": [
+          {
+            "name": "src/components/pages/contact/ContactHeader.tsx",
+            "uid": "cac4302f-99"
+          }
+        ]
+      },
+      {
+        "name": "assets/FAQHeader-Cr3DOsKI.js",
+        "children": [
+          {
+            "name": "src/components/pages/faq/FAQHeader.tsx",
+            "uid": "cac4302f-101"
+          }
+        ]
+      },
+      {
+        "name": "assets/FAQList-vovT1MPl.js",
+        "children": [
+          {
+            "name": "src/components/pages/faq/FAQList.tsx",
+            "uid": "cac4302f-103"
+          }
+        ]
+      },
+      {
+        "name": "assets/Hero-DMK19zVh.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/Hero.tsx",
+            "uid": "cac4302f-105"
+          }
+        ]
+      },
+      {
+        "name": "assets/MockBanner-8SzAUsiT.js",
+        "children": [
+          {
+            "name": "src/components/MockBanner.tsx",
+            "uid": "cac4302f-107"
+          }
+        ]
+      },
+      {
+        "name": "assets/OpenPositions-Cldo3q-R.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/OpenPositions.tsx",
+            "uid": "cac4302f-109"
+          }
+        ]
+      },
+      {
+        "name": "assets/PreferencesSection-DkkL04-k.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/PreferencesSection.tsx",
+            "uid": "cac4302f-111"
+          }
+        ]
+      },
+      {
+        "name": "assets/PricingHeader-GpAcdXPq.js",
+        "children": [
+          {
+            "name": "src/components/pages/pricing/PricingHeader.tsx",
+            "uid": "cac4302f-113"
+          }
+        ]
+      },
+      {
+        "name": "assets/PricingTiers-D2K_1tym.js",
+        "children": [
+          {
+            "name": "src/components/pages/pricing/PricingTiers.tsx",
+            "uid": "cac4302f-115"
+          }
+        ]
+      },
+      {
+        "name": "assets/ProductsGrid-lYXTDQRO.js",
+        "children": [
+          {
+            "name": "src/components/pages/products/ProductsGrid.tsx",
+            "uid": "cac4302f-117"
+          }
+        ]
+      },
+      {
+        "name": "assets/ProductsHeader-BN5gfmXw.js",
+        "children": [
+          {
+            "name": "src/components/pages/products/ProductsHeader.tsx",
+            "uid": "cac4302f-119"
+          }
+        ]
+      },
+      {
+        "name": "assets/ProfileSection-B7Hctnqu.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/ProfileSection.tsx",
+            "uid": "cac4302f-121"
+          }
+        ]
+      },
+      {
+        "name": "assets/ResultsTable-Bfsbiq19.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/ResultsTable.tsx",
+            "uid": "cac4302f-123"
+          }
+        ]
+      },
+      {
+        "name": "assets/SettingsFooter-BznvbBrS.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/SettingsFooter.tsx",
+            "uid": "cac4302f-125"
+          }
+        ]
+      },
+      {
+        "name": "assets/SettingsHeader-DO5SaR_5.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/SettingsHeader.tsx",
+            "uid": "cac4302f-127"
+          }
+        ]
+      },
+      {
+        "name": "assets/TeamGrid-B2yOvWt5.js",
+        "children": [
+          {
+            "name": "src/components/pages/team/TeamGrid.tsx",
+            "uid": "cac4302f-129"
+          }
+        ]
+      },
+      {
+        "name": "assets/TeamHeader-BH0rOSGI.js",
+        "children": [
+          {
+            "name": "src/components/pages/team/TeamHeader.tsx",
+            "uid": "cac4302f-131"
+          }
+        ]
+      },
+      {
+        "name": "assets/UnderstandingImpact-C9EKmpie.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/UnderstandingImpact.tsx",
+            "uid": "cac4302f-133"
+          }
+        ]
+      },
+      {
+        "name": "assets/WhatWeMeasure-DofjvA8k.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/WhatWeMeasure.tsx",
+            "uid": "cac4302f-135"
+          }
+        ]
+      },
+      {
+        "name": "assets/WhyItMatters-DcWSz0HJ.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/WhyItMatters.tsx",
+            "uid": "cac4302f-137"
+          }
+        ]
+      },
+      {
+        "name": "assets/_locale-BQZti5B3.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/index.tsx?tsr-split=component",
+            "uid": "cac4302f-139"
+          }
+        ]
+      },
+      {
+        "name": "assets/_tanstack-start-manifest_v-g60Dwn3l.js",
+        "children": [
+          {
+            "uid": "cac4302f-141",
+            "name": "\u0000tanstack-start-manifest:v"
+          }
+        ]
+      },
+      {
+        "name": "assets/about-CZfrTVPJ.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/about.tsx?tsr-split=component",
+            "uid": "cac4302f-143"
+          }
+        ]
+      },
+      {
+        "name": "assets/blog-BkaDdWFJ.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/blog.tsx?tsr-split=component",
+            "uid": "cac4302f-145"
+          }
+        ]
+      },
+      {
+        "name": "assets/careers-t0deu5ry.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/careers.tsx?tsr-split=component",
+            "uid": "cac4302f-147"
+          }
+        ]
+      },
+      {
+        "name": "assets/contact-CD00sAYT.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/contact.tsx?tsr-split=component",
+            "uid": "cac4302f-149"
+          }
+        ]
+      },
+      {
+        "name": "assets/faq-B57oiTd5.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/faq.tsx?tsr-split=component",
+            "uid": "cac4302f-151"
+          }
+        ]
+      },
+      {
+        "name": "assets/pricing-B_HBsxZ_.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/pricing.tsx?tsr-split=component",
+            "uid": "cac4302f-153"
+          }
+        ]
+      },
+      {
+        "name": "assets/products-CQpGmMqU.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/products.tsx?tsr-split=component",
+            "uid": "cac4302f-155"
+          }
+        ]
+      },
+      {
+        "name": "assets/route-f3nV6Kah.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/route.tsx?tsr-split=component",
+            "uid": "cac4302f-157"
+          }
+        ]
+      },
+      {
+        "name": "assets/router-CF6pcMwO.js",
+        "children": [
+          {
+            "name": "src",
+            "children": [
+              {
+                "name": "components",
+                "children": [
+                  {
+                    "uid": "cac4302f-159",
+                    "name": "Footer.tsx"
+                  },
+                  {
+                    "uid": "cac4302f-161",
+                    "name": "ThemeToggle.tsx"
+                  },
+                  {
+                    "uid": "cac4302f-165",
+                    "name": "LocaleSwitcher.tsx"
+                  },
+                  {
+                    "uid": "cac4302f-167",
+                    "name": "Header.tsx"
+                  }
+                ]
+              },
+              {
+                "name": "i18n",
+                "children": [
+                  {
+                    "uid": "cac4302f-163",
+                    "name": "config.ts"
+                  },
+                  {
+                    "uid": "cac4302f-189",
+                    "name": "getMessages.ts"
+                  }
+                ]
+              },
+              {
+                "name": "messages",
+                "children": [
+                  {
+                    "uid": "cac4302f-169",
+                    "name": "de.ts"
+                  },
+                  {
+                    "uid": "cac4302f-171",
+                    "name": "en.ts"
+                  },
+                  {
+                    "uid": "cac4302f-173",
+                    "name": "es.ts"
+                  },
+                  {
+                    "uid": "cac4302f-175",
+                    "name": "fr.ts"
+                  },
+                  {
+                    "uid": "cac4302f-177",
+                    "name": "it.ts"
+                  },
+                  {
+                    "uid": "cac4302f-179",
+                    "name": "ja.ts"
+                  },
+                  {
+                    "uid": "cac4302f-181",
+                    "name": "ko.ts"
+                  },
+                  {
+                    "uid": "cac4302f-183",
+                    "name": "pt.ts"
+                  },
+                  {
+                    "uid": "cac4302f-185",
+                    "name": "ru.ts"
+                  },
+                  {
+                    "uid": "cac4302f-187",
+                    "name": "zh.ts"
+                  }
+                ]
+              },
+              {
+                "name": "routes",
+                "children": [
+                  {
+                    "name": "$locale",
+                    "children": [
+                      {
+                        "uid": "cac4302f-191",
+                        "name": "route.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-203",
+                        "name": "index.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-205",
+                        "name": "team.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-207",
+                        "name": "settings.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-209",
+                        "name": "products.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-211",
+                        "name": "pricing.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-213",
+                        "name": "faq.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-215",
+                        "name": "contact.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-217",
+                        "name": "careers.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-219",
+                        "name": "blog.tsx"
+                      },
+                      {
+                        "uid": "cac4302f-221",
+                        "name": "about.tsx"
+                      }
+                    ]
+                  },
+                  {
+                    "uid": "cac4302f-199",
+                    "name": "__root.tsx"
+                  },
+                  {
+                    "uid": "cac4302f-201",
+                    "name": "index.tsx"
+                  }
+                ]
+              },
+              {
+                "uid": "cac4302f-193",
+                "name": "styles.css?transform-only"
+              },
+              {
+                "uid": "cac4302f-195",
+                "name": "styles.css?url"
+              },
+              {
+                "uid": "cac4302f-223",
+                "name": "routeTree.gen.ts"
+              },
+              {
+                "uid": "cac4302f-225",
+                "name": "router.tsx"
+              }
+            ]
+          },
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/test-utils/src/browser-metrics.ts",
+            "uid": "cac4302f-197"
+          }
+        ]
+      },
+      {
+        "name": "assets/settings-CtOHlGYN.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/settings.tsx?tsr-split=component",
+            "uid": "cac4302f-227"
+          }
+        ]
+      },
+      {
+        "name": "assets/start-ByyaQDA7.js",
+        "children": [
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+5b6ce2795a3c863a/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+            "uid": "cac4302f-229"
+          }
+        ]
+      },
+      {
+        "name": "assets/team-CYCtzOJb.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/team.tsx?tsr-split=component",
+            "uid": "cac4302f-231"
+          }
+        ]
+      },
+      {
+        "name": "assets/usePerformanceMeasure-CwkSmokA.js",
+        "children": [
+          {
+            "name": "src/hooks/usePerformanceMeasure.ts",
+            "uid": "cac4302f-233"
+          }
+        ]
+      }
+    ],
+    "isRoot": true
+  },
+  "nodeParts": {
+    "cac4302f-1": {
+      "renderedLength": 271,
+      "gzipLength": 209,
+      "brotliLength": 170,
+      "metaUid": "cac4302f-0"
+    },
+    "cac4302f-3": {
+      "renderedLength": 389,
+      "gzipLength": 270,
+      "brotliLength": 220,
+      "metaUid": "cac4302f-2"
+    },
+    "cac4302f-5": {
+      "renderedLength": 241,
+      "gzipLength": 200,
+      "brotliLength": 168,
+      "metaUid": "cac4302f-4"
+    },
+    "cac4302f-7": {
+      "renderedLength": 4537,
+      "gzipLength": 1497,
+      "brotliLength": 1274,
+      "metaUid": "cac4302f-6"
+    },
+    "cac4302f-9": {
+      "renderedLength": 4186,
+      "gzipLength": 1266,
+      "brotliLength": 1105,
+      "metaUid": "cac4302f-8"
+    },
+    "cac4302f-11": {
+      "renderedLength": 8988,
+      "gzipLength": 2803,
+      "brotliLength": 2499,
+      "metaUid": "cac4302f-10"
+    },
+    "cac4302f-13": {
+      "renderedLength": 2059,
+      "gzipLength": 757,
+      "brotliLength": 664,
+      "metaUid": "cac4302f-12"
+    },
+    "cac4302f-15": {
+      "renderedLength": 190,
+      "gzipLength": 160,
+      "brotliLength": 135,
+      "metaUid": "cac4302f-14"
+    },
+    "cac4302f-17": {
+      "renderedLength": 1436,
+      "gzipLength": 678,
+      "brotliLength": 579,
+      "metaUid": "cac4302f-16"
+    },
+    "cac4302f-19": {
+      "renderedLength": 1442,
+      "gzipLength": 537,
+      "brotliLength": 471,
+      "metaUid": "cac4302f-18"
+    },
+    "cac4302f-21": {
+      "renderedLength": 256,
+      "gzipLength": 198,
+      "brotliLength": 158,
+      "metaUid": "cac4302f-20"
+    },
+    "cac4302f-23": {
+      "renderedLength": 225,
+      "gzipLength": 172,
+      "brotliLength": 162,
+      "metaUid": "cac4302f-22"
+    },
+    "cac4302f-25": {
+      "renderedLength": 570,
+      "gzipLength": 266,
+      "brotliLength": 218,
+      "metaUid": "cac4302f-24"
+    },
+    "cac4302f-27": {
+      "renderedLength": 448,
+      "gzipLength": 273,
+      "brotliLength": 220,
+      "metaUid": "cac4302f-26"
+    },
+    "cac4302f-29": {
+      "renderedLength": 5886,
+      "gzipLength": 1877,
+      "brotliLength": 1649,
+      "metaUid": "cac4302f-28"
+    },
+    "cac4302f-31": {
+      "renderedLength": 215,
+      "gzipLength": 178,
+      "brotliLength": 149,
+      "metaUid": "cac4302f-30"
+    },
+    "cac4302f-33": {
+      "renderedLength": 47385,
+      "gzipLength": 11537,
+      "brotliLength": 10196,
+      "metaUid": "cac4302f-32"
+    },
+    "cac4302f-35": {
+      "renderedLength": 1521,
+      "gzipLength": 545,
+      "brotliLength": 477,
+      "metaUid": "cac4302f-34"
+    },
+    "cac4302f-37": {
+      "renderedLength": 7711,
+      "gzipLength": 2339,
+      "brotliLength": 2045,
+      "metaUid": "cac4302f-36"
+    },
+    "cac4302f-39": {
+      "renderedLength": 869,
+      "gzipLength": 416,
+      "brotliLength": 368,
+      "metaUid": "cac4302f-38"
+    },
+    "cac4302f-41": {
+      "renderedLength": 11960,
+      "gzipLength": 2275,
+      "brotliLength": 2005,
+      "metaUid": "cac4302f-40"
+    },
+    "cac4302f-43": {
+      "renderedLength": 233,
+      "gzipLength": 179,
+      "brotliLength": 175,
+      "metaUid": "cac4302f-42"
+    },
+    "cac4302f-45": {
+      "renderedLength": 1601,
+      "gzipLength": 781,
+      "brotliLength": 627,
+      "metaUid": "cac4302f-44"
+    },
+    "cac4302f-47": {
+      "renderedLength": 679,
+      "gzipLength": 313,
+      "brotliLength": 287,
+      "metaUid": "cac4302f-46"
+    },
+    "cac4302f-49": {
+      "renderedLength": 715,
+      "gzipLength": 449,
+      "brotliLength": 359,
+      "metaUid": "cac4302f-48"
+    },
+    "cac4302f-51": {
+      "renderedLength": 975,
+      "gzipLength": 435,
+      "brotliLength": 360,
+      "metaUid": "cac4302f-50"
+    },
+    "cac4302f-53": {
+      "renderedLength": 777,
+      "gzipLength": 409,
+      "brotliLength": 336,
+      "metaUid": "cac4302f-52"
+    },
+    "cac4302f-55": {
+      "renderedLength": 212,
+      "gzipLength": 155,
+      "brotliLength": 130,
+      "metaUid": "cac4302f-54"
+    },
+    "cac4302f-57": {
+      "renderedLength": 1426,
+      "gzipLength": 518,
+      "brotliLength": 451,
+      "metaUid": "cac4302f-56"
+    },
+    "cac4302f-59": {
+      "renderedLength": 750,
+      "gzipLength": 382,
+      "brotliLength": 335,
+      "metaUid": "cac4302f-58"
+    },
+    "cac4302f-61": {
+      "renderedLength": 212,
+      "gzipLength": 178,
+      "brotliLength": 167,
+      "metaUid": "cac4302f-60"
+    },
+    "cac4302f-63": {
+      "renderedLength": 675,
+      "gzipLength": 390,
+      "brotliLength": 340,
+      "metaUid": "cac4302f-62"
+    },
+    "cac4302f-65": {
+      "renderedLength": 314,
+      "gzipLength": 215,
+      "brotliLength": 179,
+      "metaUid": "cac4302f-64"
+    },
+    "cac4302f-67": {
+      "renderedLength": 4322,
+      "gzipLength": 1417,
+      "brotliLength": 1243,
+      "metaUid": "cac4302f-66"
+    },
+    "cac4302f-69": {
+      "renderedLength": 6583,
+      "gzipLength": 1962,
+      "brotliLength": 1710,
+      "metaUid": "cac4302f-68"
+    },
+    "cac4302f-71": {
+      "renderedLength": 3303,
+      "gzipLength": 1206,
+      "brotliLength": 1041,
+      "metaUid": "cac4302f-70"
+    },
+    "cac4302f-73": {
+      "renderedLength": 707,
+      "gzipLength": 401,
+      "brotliLength": 347,
+      "metaUid": "cac4302f-72"
+    },
+    "cac4302f-75": {
+      "renderedLength": 380,
+      "gzipLength": 249,
+      "brotliLength": 214,
+      "metaUid": "cac4302f-74"
+    },
+    "cac4302f-77": {
+      "renderedLength": 9119,
+      "gzipLength": 2995,
+      "brotliLength": 2615,
+      "metaUid": "cac4302f-76"
+    },
+    "cac4302f-79": {
+      "renderedLength": 13983,
+      "gzipLength": 4215,
+      "brotliLength": 3711,
+      "metaUid": "cac4302f-78"
+    },
+    "cac4302f-81": {
+      "renderedLength": 395,
+      "gzipLength": 256,
+      "brotliLength": 205,
+      "metaUid": "cac4302f-80"
+    },
+    "cac4302f-83": {
+      "renderedLength": 950,
+      "gzipLength": 366,
+      "brotliLength": 309,
+      "metaUid": "cac4302f-82"
+    },
+    "cac4302f-85": {
+      "renderedLength": 478,
+      "gzipLength": 306,
+      "brotliLength": 254,
+      "metaUid": "cac4302f-84"
+    },
+    "cac4302f-87": {
+      "renderedLength": 1291,
+      "gzipLength": 543,
+      "brotliLength": 484,
+      "metaUid": "cac4302f-86"
+    },
+    "cac4302f-89": {
+      "renderedLength": 536,
+      "gzipLength": 310,
+      "brotliLength": 268,
+      "metaUid": "cac4302f-88"
+    },
+    "cac4302f-91": {
+      "renderedLength": 2108,
+      "gzipLength": 804,
+      "brotliLength": 697,
+      "metaUid": "cac4302f-90"
+    },
+    "cac4302f-93": {
+      "renderedLength": 863,
+      "gzipLength": 456,
+      "brotliLength": 366,
+      "metaUid": "cac4302f-92"
+    },
+    "cac4302f-95": {
+      "renderedLength": 481,
+      "gzipLength": 294,
+      "brotliLength": 236,
+      "metaUid": "cac4302f-94"
+    },
+    "cac4302f-97": {
+      "renderedLength": 2979,
+      "gzipLength": 773,
+      "brotliLength": 645,
+      "metaUid": "cac4302f-96"
+    },
+    "cac4302f-99": {
+      "renderedLength": 678,
+      "gzipLength": 372,
+      "brotliLength": 313,
+      "metaUid": "cac4302f-98"
+    },
+    "cac4302f-101": {
+      "renderedLength": 486,
+      "gzipLength": 306,
+      "brotliLength": 251,
+      "metaUid": "cac4302f-100"
+    },
+    "cac4302f-103": {
+      "renderedLength": 1345,
+      "gzipLength": 660,
+      "brotliLength": 548,
+      "metaUid": "cac4302f-102"
+    },
+    "cac4302f-105": {
+      "renderedLength": 1137,
+      "gzipLength": 516,
+      "brotliLength": 428,
+      "metaUid": "cac4302f-104"
+    },
+    "cac4302f-107": {
+      "renderedLength": 281,
+      "gzipLength": 229,
+      "brotliLength": 183,
+      "metaUid": "cac4302f-106"
+    },
+    "cac4302f-109": {
+      "renderedLength": 2597,
+      "gzipLength": 855,
+      "brotliLength": 716,
+      "metaUid": "cac4302f-108"
+    },
+    "cac4302f-111": {
+      "renderedLength": 2917,
+      "gzipLength": 784,
+      "brotliLength": 662,
+      "metaUid": "cac4302f-110"
+    },
+    "cac4302f-113": {
+      "renderedLength": 566,
+      "gzipLength": 318,
+      "brotliLength": 260,
+      "metaUid": "cac4302f-112"
+    },
+    "cac4302f-115": {
+      "renderedLength": 2475,
+      "gzipLength": 940,
+      "brotliLength": 802,
+      "metaUid": "cac4302f-114"
+    },
+    "cac4302f-117": {
+      "renderedLength": 1788,
+      "gzipLength": 728,
+      "brotliLength": 634,
+      "metaUid": "cac4302f-116"
+    },
+    "cac4302f-119": {
+      "renderedLength": 560,
+      "gzipLength": 311,
+      "brotliLength": 260,
+      "metaUid": "cac4302f-118"
+    },
+    "cac4302f-121": {
+      "renderedLength": 1418,
+      "gzipLength": 494,
+      "brotliLength": 398,
+      "metaUid": "cac4302f-120"
+    },
+    "cac4302f-123": {
+      "renderedLength": 2261,
+      "gzipLength": 620,
+      "brotliLength": 563,
+      "metaUid": "cac4302f-122"
+    },
+    "cac4302f-125": {
+      "renderedLength": 671,
+      "gzipLength": 362,
+      "brotliLength": 289,
+      "metaUid": "cac4302f-124"
+    },
+    "cac4302f-127": {
+      "renderedLength": 562,
+      "gzipLength": 312,
+      "brotliLength": 270,
+      "metaUid": "cac4302f-126"
+    },
+    "cac4302f-129": {
+      "renderedLength": 1726,
+      "gzipLength": 743,
+      "brotliLength": 628,
+      "metaUid": "cac4302f-128"
+    },
+    "cac4302f-131": {
+      "renderedLength": 472,
+      "gzipLength": 292,
+      "brotliLength": 249,
+      "metaUid": "cac4302f-130"
+    },
+    "cac4302f-133": {
+      "renderedLength": 3036,
+      "gzipLength": 868,
+      "brotliLength": 700,
+      "metaUid": "cac4302f-132"
+    },
+    "cac4302f-135": {
+      "renderedLength": 1260,
+      "gzipLength": 577,
+      "brotliLength": 507,
+      "metaUid": "cac4302f-134"
+    },
+    "cac4302f-137": {
+      "renderedLength": 1632,
+      "gzipLength": 471,
+      "brotliLength": 394,
+      "metaUid": "cac4302f-136"
+    },
+    "cac4302f-139": {
+      "renderedLength": 1197,
+      "gzipLength": 392,
+      "brotliLength": 310,
+      "metaUid": "cac4302f-138"
+    },
+    "cac4302f-141": {
+      "renderedLength": 3115,
+      "gzipLength": 673,
+      "brotliLength": 595,
+      "metaUid": "cac4302f-140"
+    },
+    "cac4302f-143": {
+      "renderedLength": 938,
+      "gzipLength": 360,
+      "brotliLength": 290,
+      "metaUid": "cac4302f-142"
+    },
+    "cac4302f-145": {
+      "renderedLength": 657,
+      "gzipLength": 323,
+      "brotliLength": 254,
+      "metaUid": "cac4302f-144"
+    },
+    "cac4302f-147": {
+      "renderedLength": 971,
+      "gzipLength": 365,
+      "brotliLength": 294,
+      "metaUid": "cac4302f-146"
+    },
+    "cac4302f-149": {
+      "renderedLength": 769,
+      "gzipLength": 345,
+      "brotliLength": 279,
+      "metaUid": "cac4302f-148"
+    },
+    "cac4302f-151": {
+      "renderedLength": 649,
+      "gzipLength": 323,
+      "brotliLength": 257,
+      "metaUid": "cac4302f-150"
+    },
+    "cac4302f-153": {
+      "renderedLength": 684,
+      "gzipLength": 326,
+      "brotliLength": 274,
+      "metaUid": "cac4302f-152"
+    },
+    "cac4302f-155": {
+      "renderedLength": 689,
+      "gzipLength": 325,
+      "brotliLength": 264,
+      "metaUid": "cac4302f-154"
+    },
+    "cac4302f-157": {
+      "renderedLength": 141,
+      "gzipLength": 143,
+      "brotliLength": 114,
+      "metaUid": "cac4302f-156"
+    },
+    "cac4302f-159": {
+      "renderedLength": 2381,
+      "gzipLength": 748,
+      "brotliLength": 641,
+      "metaUid": "cac4302f-158"
+    },
+    "cac4302f-161": {
+      "renderedLength": 2033,
+      "gzipLength": 800,
+      "brotliLength": 673,
+      "metaUid": "cac4302f-160"
+    },
+    "cac4302f-163": {
+      "renderedLength": 373,
+      "gzipLength": 258,
+      "brotliLength": 236,
+      "metaUid": "cac4302f-162"
+    },
+    "cac4302f-165": {
+      "renderedLength": 805,
+      "gzipLength": 449,
+      "brotliLength": 375,
+      "metaUid": "cac4302f-164"
+    },
+    "cac4302f-167": {
+      "renderedLength": 4600,
+      "gzipLength": 1632,
+      "brotliLength": 1371,
+      "metaUid": "cac4302f-166"
+    },
+    "cac4302f-169": {
+      "renderedLength": 20507,
+      "gzipLength": 8453,
+      "brotliLength": 7698,
+      "metaUid": "cac4302f-168"
+    },
+    "cac4302f-171": {
+      "renderedLength": 18287,
+      "gzipLength": 7320,
+      "brotliLength": 6087,
+      "metaUid": "cac4302f-170"
+    },
+    "cac4302f-173": {
+      "renderedLength": 20609,
+      "gzipLength": 8087,
+      "brotliLength": 7089,
+      "metaUid": "cac4302f-172"
+    },
+    "cac4302f-175": {
+      "renderedLength": 21253,
+      "gzipLength": 8458,
+      "brotliLength": 7567,
+      "metaUid": "cac4302f-174"
+    },
+    "cac4302f-177": {
+      "renderedLength": 20244,
+      "gzipLength": 8069,
+      "brotliLength": 7306,
+      "metaUid": "cac4302f-176"
+    },
+    "cac4302f-179": {
+      "renderedLength": 23425,
+      "gzipLength": 9316,
+      "brotliLength": 7927,
+      "metaUid": "cac4302f-178"
+    },
+    "cac4302f-181": {
+      "renderedLength": 21189,
+      "gzipLength": 8974,
+      "brotliLength": 7637,
+      "metaUid": "cac4302f-180"
+    },
+    "cac4302f-183": {
+      "renderedLength": 20413,
+      "gzipLength": 8203,
+      "brotliLength": 7330,
+      "metaUid": "cac4302f-182"
+    },
+    "cac4302f-185": {
+      "renderedLength": 30207,
+      "gzipLength": 10079,
+      "brotliLength": 8416,
+      "metaUid": "cac4302f-184"
+    },
+    "cac4302f-187": {
+      "renderedLength": 17354,
+      "gzipLength": 8565,
+      "brotliLength": 6723,
+      "metaUid": "cac4302f-186"
+    },
+    "cac4302f-189": {
+      "renderedLength": 211,
+      "gzipLength": 165,
+      "brotliLength": 126,
+      "metaUid": "cac4302f-188"
+    },
+    "cac4302f-191": {
+      "renderedLength": 504,
+      "gzipLength": 299,
+      "brotliLength": 269,
+      "metaUid": "cac4302f-190"
+    },
+    "cac4302f-193": {
+      "renderedLength": 0,
+      "gzipLength": 0,
+      "brotliLength": 0,
+      "metaUid": "cac4302f-192"
+    },
+    "cac4302f-195": {
+      "renderedLength": 319,
+      "gzipLength": 230,
+      "brotliLength": 208,
+      "metaUid": "cac4302f-194"
+    },
+    "cac4302f-197": {
+      "renderedLength": 1712,
+      "gzipLength": 798,
+      "brotliLength": 613,
+      "metaUid": "cac4302f-196"
+    },
+    "cac4302f-199": {
+      "renderedLength": 2661,
+      "gzipLength": 1211,
+      "brotliLength": 1014,
+      "metaUid": "cac4302f-198"
+    },
+    "cac4302f-201": {
+      "renderedLength": 176,
+      "gzipLength": 162,
+      "brotliLength": 128,
+      "metaUid": "cac4302f-200"
+    },
+    "cac4302f-203": {
+      "renderedLength": 244,
+      "gzipLength": 180,
+      "brotliLength": 148,
+      "metaUid": "cac4302f-202"
+    },
+    "cac4302f-205": {
+      "renderedLength": 244,
+      "gzipLength": 177,
+      "brotliLength": 149,
+      "metaUid": "cac4302f-204"
+    },
+    "cac4302f-207": {
+      "renderedLength": 256,
+      "gzipLength": 180,
+      "brotliLength": 150,
+      "metaUid": "cac4302f-206"
+    },
+    "cac4302f-209": {
+      "renderedLength": 256,
+      "gzipLength": 181,
+      "brotliLength": 152,
+      "metaUid": "cac4302f-208"
+    },
+    "cac4302f-211": {
+      "renderedLength": 253,
+      "gzipLength": 180,
+      "brotliLength": 158,
+      "metaUid": "cac4302f-210"
+    },
+    "cac4302f-213": {
+      "renderedLength": 241,
+      "gzipLength": 179,
+      "brotliLength": 153,
+      "metaUid": "cac4302f-212"
+    },
+    "cac4302f-215": {
+      "renderedLength": 253,
+      "gzipLength": 180,
+      "brotliLength": 150,
+      "metaUid": "cac4302f-214"
+    },
+    "cac4302f-217": {
+      "renderedLength": 253,
+      "gzipLength": 179,
+      "brotliLength": 150,
+      "metaUid": "cac4302f-216"
+    },
+    "cac4302f-219": {
+      "renderedLength": 244,
+      "gzipLength": 178,
+      "brotliLength": 149,
+      "metaUid": "cac4302f-218"
+    },
+    "cac4302f-221": {
+      "renderedLength": 241,
+      "gzipLength": 177,
+      "brotliLength": 141,
+      "metaUid": "cac4302f-220"
+    },
+    "cac4302f-223": {
+      "renderedLength": 1835,
+      "gzipLength": 434,
+      "brotliLength": 378,
+      "metaUid": "cac4302f-222"
+    },
+    "cac4302f-225": {
+      "renderedLength": 188,
+      "gzipLength": 152,
+      "brotliLength": 125,
+      "metaUid": "cac4302f-224"
+    },
+    "cac4302f-227": {
+      "renderedLength": 1751,
+      "gzipLength": 496,
+      "brotliLength": 405,
+      "metaUid": "cac4302f-226"
+    },
+    "cac4302f-229": {
+      "renderedLength": 192,
+      "gzipLength": 159,
+      "brotliLength": 129,
+      "metaUid": "cac4302f-228"
+    },
+    "cac4302f-231": {
+      "renderedLength": 657,
+      "gzipLength": 321,
+      "brotliLength": 257,
+      "metaUid": "cac4302f-230"
+    },
+    "cac4302f-233": {
+      "renderedLength": 674,
+      "gzipLength": 350,
+      "brotliLength": 272,
+      "metaUid": "cac4302f-232"
+    }
+  },
+  "nodeMetas": {
+    "cac4302f-0": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm/StartServer.js",
+      "moduleParts": {
+        "server.js": "cac4302f-1"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-235"
+        },
+        {
+          "uid": "cac4302f-2"
+        },
+        {
+          "uid": "cac4302f-236"
+        }
+      ]
+    },
+    "cac4302f-2": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm/defaultStreamHandler.js",
+      "moduleParts": {
+        "server.js": "cac4302f-3"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-0"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-241"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-235"
+        }
+      ]
+    },
+    "cac4302f-4": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/rou3@0.8.1/node_modules/rou3/dist/index.mjs",
+      "moduleParts": {
+        "server.js": "cac4302f-5"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-10"
+        }
+      ]
+    },
+    "cac4302f-6": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_url.mjs",
+      "moduleParts": {
+        "server.js": "cac4302f-7"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-8"
+        }
+      ]
+    },
+    "cac4302f-8": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/adapters/node.mjs",
+      "moduleParts": {
+        "server.js": "cac4302f-9"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-6"
+        },
+        {
+          "uid": "cac4302f-275"
+        },
+        {
+          "uid": "cac4302f-276"
+        },
+        {
+          "uid": "cac4302f-277"
+        },
+        {
+          "uid": "cac4302f-274"
+        },
+        {
+          "uid": "cac4302f-278"
+        },
+        {
+          "uid": "cac4302f-279"
+        },
+        {
+          "uid": "cac4302f-280"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-245"
+        },
+        {
+          "uid": "cac4302f-10"
+        }
+      ]
+    },
+    "cac4302f-10": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/h3@2.0.1-rc.16/node_modules/h3/dist/h3-ByfIX5Jk.mjs",
+      "moduleParts": {
+        "server.js": "cac4302f-11"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-4"
+        },
+        {
+          "uid": "cac4302f-8"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-245"
+        }
+      ]
+    },
+    "cac4302f-12": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/request-response.js",
+      "moduleParts": {
+        "server.js": "cac4302f-13"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-244"
+        },
+        {
+          "uid": "cac4302f-245"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-237"
+        },
+        {
+          "uid": "cac4302f-78"
+        },
+        {
+          "uid": "cac4302f-68"
+        }
+      ]
+    },
+    "cac4302f-14": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/constants.js",
+      "moduleParts": {
+        "server.js": "cac4302f-15"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-237"
+        },
+        {
+          "uid": "cac4302f-78"
+        }
+      ]
+    },
+    "cac4302f-16": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/utils.js",
+      "moduleParts": {
+        "server.js": "cac4302f-17"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-286"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-76"
+        },
+        {
+          "uid": "cac4302f-261"
+        },
+        {
+          "uid": "cac4302f-262"
+        },
+        {
+          "uid": "cac4302f-265"
+        },
+        {
+          "uid": "cac4302f-266"
+        },
+        {
+          "uid": "cac4302f-272"
+        },
+        {
+          "uid": "cac4302f-283"
+        },
+        {
+          "uid": "cac4302f-287"
+        },
+        {
+          "uid": "cac4302f-288"
+        }
+      ]
+    },
+    "cac4302f-18": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/lru-cache.js",
+      "moduleParts": {
+        "server.js": "cac4302f-19"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-76"
+        },
+        {
+          "uid": "cac4302f-265"
+        },
+        {
+          "uid": "cac4302f-266"
+        },
+        {
+          "uid": "cac4302f-287"
+        }
+      ]
+    },
+    "cac4302f-20": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/not-found.js",
+      "moduleParts": {
+        "server.js": "cac4302f-21"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-266"
+        },
+        {
+          "uid": "cac4302f-270"
+        },
+        {
+          "uid": "cac4302f-283"
+        },
+        {
+          "uid": "cac4302f-288"
+        }
+      ]
+    },
+    "cac4302f-22": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/root.js",
+      "moduleParts": {
+        "server.js": "cac4302f-23"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-266"
+        },
+        {
+          "uid": "cac4302f-270"
+        },
+        {
+          "uid": "cac4302f-288"
+        }
+      ]
+    },
+    "cac4302f-24": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/redirect.js",
+      "moduleParts": {
+        "server.js": "cac4302f-25"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-266"
+        },
+        {
+          "uid": "cac4302f-270"
+        },
+        {
+          "uid": "cac4302f-288"
+        }
+      ]
+    },
+    "cac4302f-26": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/rewrite.js",
+      "moduleParts": {
+        "server.js": "cac4302f-27"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-261"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-266"
+        }
+      ]
+    },
+    "cac4302f-28": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+history@1.161.6/node_modules/@tanstack/history/dist/esm/index.js",
+      "moduleParts": {
+        "server.js": "cac4302f-29"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        },
+        {
+          "uid": "cac4302f-249"
+        },
+        {
+          "uid": "cac4302f-266"
+        }
+      ]
+    },
+    "cac4302f-30": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/constants.js",
+      "moduleParts": {
+        "server.js": "cac4302f-31"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-76"
+        },
+        {
+          "uid": "cac4302f-251"
+        },
+        {
+          "uid": "cac4302f-34"
+        }
+      ]
+    },
+    "cac4302f-32": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval@1.5.2/node_modules/seroval/dist/esm/production/index.mjs",
+      "moduleParts": {
+        "server.js": "cac4302f-33"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-68"
+        },
+        {
+          "uid": "cac4302f-76"
+        },
+        {
+          "uid": "cac4302f-34"
+        },
+        {
+          "uid": "cac4302f-36"
+        },
+        {
+          "uid": "cac4302f-38"
+        },
+        {
+          "uid": "cac4302f-40"
+        }
+      ]
+    },
+    "cac4302f-34": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/transformer.js",
+      "moduleParts": {
+        "server.js": "cac4302f-35"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-30"
+        },
+        {
+          "uid": "cac4302f-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-76"
+        }
+      ]
+    },
+    "cac4302f-36": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStream.js",
+      "moduleParts": {
+        "server.js": "cac4302f-37"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-42"
+        }
+      ]
+    },
+    "cac4302f-38": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/ShallowErrorPlugin.js",
+      "moduleParts": {
+        "server.js": "cac4302f-39"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-42"
+        }
+      ]
+    },
+    "cac4302f-40": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval-plugins@1.5.2+7cd651eebf40fbbb/node_modules/seroval-plugins/dist/esm/production/web.mjs",
+      "moduleParts": {
+        "server.js": "cac4302f-41"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-42"
+        }
+      ]
+    },
+    "cac4302f-42": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/seroval-plugins.js",
+      "moduleParts": {
+        "server.js": "cac4302f-43"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-38"
+        },
+        {
+          "uid": "cac4302f-36"
+        },
+        {
+          "uid": "cac4302f-40"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-76"
+        }
+      ]
+    },
+    "cac4302f-44": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/router-manifest.js",
+      "moduleParts": {
+        "server.js": "cac4302f-45"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-140",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        }
+      ]
+    },
+    "cac4302f-46": {
+      "id": "\u0000#tanstack-start-server-fn-resolver",
+      "moduleParts": {
+        "server.js": "cac4302f-47"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-253"
+        }
+      ]
+    },
+    "cac4302f-48": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/constants.js",
+      "moduleParts": {
+        "server.js": "cac4302f-49"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        },
+        {
+          "uid": "cac4302f-62"
+        }
+      ]
+    },
+    "cac4302f-50": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/safeObjectMerge.js",
+      "moduleParts": {
+        "server.js": "cac4302f-51"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        },
+        {
+          "uid": "cac4302f-62"
+        }
+      ]
+    },
+    "cac4302f-52": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-storage-context@1.166.15/node_modules/@tanstack/start-storage-context/dist/esm/async-local-storage.js",
+      "moduleParts": {
+        "server.js": "cac4302f-53"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-244"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-248"
+        }
+      ]
+    },
+    "cac4302f-54": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getStartOptions.js",
+      "moduleParts": {
+        "server.js": "cac4302f-55"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-248"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-62"
+        },
+        {
+          "uid": "cac4302f-64"
+        }
+      ]
+    },
+    "cac4302f-56": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/cookie-es@2.0.1/node_modules/cookie-es/dist/index.mjs",
+      "moduleParts": {
+        "server.js": "cac4302f-57"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-58"
+        }
+      ]
+    },
+    "cac4302f-58": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/headers.js",
+      "moduleParts": {
+        "server.js": "cac4302f-59"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-56"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-249"
+        },
+        {
+          "uid": "cac4302f-259"
+        }
+      ]
+    },
+    "cac4302f-60": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-match-id.js",
+      "moduleParts": {
+        "server.js": "cac4302f-61"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-76"
+        },
+        {
+          "uid": "cac4302f-283"
+        }
+      ]
+    },
+    "cac4302f-62": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/createServerFn.js",
+      "moduleParts": {
+        "server.js": "cac4302f-63"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-48"
+        },
+        {
+          "uid": "cac4302f-54"
+        },
+        {
+          "uid": "cac4302f-281"
+        },
+        {
+          "uid": "cac4302f-50"
+        },
+        {
+          "uid": "cac4302f-259"
+        },
+        {
+          "uid": "cac4302f-247"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        }
+      ]
+    },
+    "cac4302f-64": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getDefaultSerovalPlugins.js",
+      "moduleParts": {
+        "server.js": "cac4302f-65"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-54"
+        },
+        {
+          "uid": "cac4302f-247"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        }
+      ]
+    },
+    "cac4302f-66": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/frame-protocol.js",
+      "moduleParts": {
+        "server.js": "cac4302f-67"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-246"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-68"
+        }
+      ]
+    },
+    "cac4302f-68": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/server-functions-handler.js",
+      "moduleParts": {
+        "server.js": "cac4302f-69"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-12"
+        },
+        {
+          "uid": "cac4302f-253"
+        },
+        {
+          "uid": "cac4302f-66"
+        },
+        {
+          "uid": "cac4302f-246"
+        },
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-254"
+        },
+        {
+          "uid": "cac4302f-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        }
+      ]
+    },
+    "cac4302f-70": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/transformAssetUrls.js",
+      "moduleParts": {
+        "server.js": "cac4302f-71"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-247"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        }
+      ]
+    },
+    "cac4302f-72": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/serializer/ServerFunctionSerializationAdapter.js",
+      "moduleParts": {
+        "server.js": "cac4302f-73"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-253"
+        },
+        {
+          "uid": "cac4302f-246"
+        },
+        {
+          "uid": "cac4302f-247"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        }
+      ]
+    },
+    "cac4302f-74": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/tsrScript.js",
+      "moduleParts": {
+        "server.js": "cac4302f-75"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-76"
+        }
+      ]
+    },
+    "cac4302f-76": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-server.js",
+      "moduleParts": {
+        "server.js": "cac4302f-77"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-18"
+        },
+        {
+          "uid": "cac4302f-30"
+        },
+        {
+          "uid": "cac4302f-34"
+        },
+        {
+          "uid": "cac4302f-42"
+        },
+        {
+          "uid": "cac4302f-60"
+        },
+        {
+          "uid": "cac4302f-74"
+        },
+        {
+          "uid": "cac4302f-254"
+        },
+        {
+          "uid": "cac4302f-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-243"
+        },
+        {
+          "uid": "cac4302f-249"
+        }
+      ]
+    },
+    "cac4302f-78": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/createStartHandler.js",
+      "moduleParts": {
+        "server.js": "cac4302f-79"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-12"
+        },
+        {
+          "uid": "cac4302f-44"
+        },
+        {
+          "uid": "cac4302f-68"
+        },
+        {
+          "uid": "cac4302f-70"
+        },
+        {
+          "uid": "cac4302f-14"
+        },
+        {
+          "uid": "cac4302f-72"
+        },
+        {
+          "uid": "cac4302f-28"
+        },
+        {
+          "uid": "cac4302f-246"
+        },
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-243"
+        },
+        {
+          "uid": "cac4302f-248"
+        },
+        {
+          "uid": "cac4302f-224",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-228",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-237"
+        }
+      ]
+    },
+    "cac4302f-80": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+5b6ce2795a3c863a/node_modules/@tanstack/react-start/dist/plugin/default-entry/server.ts",
+      "moduleParts": {
+        "server.js": "cac4302f-81"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-234"
+        }
+      ],
+      "importedBy": [],
+      "isEntry": true
+    },
+    "cac4302f-82": {
+      "id": "/src/components/pages/about/AboutGrid.tsx",
+      "moduleParts": {
+        "assets/AboutGrid-8426EfuK.js": "cac4302f-83"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-142"
+        }
+      ]
+    },
+    "cac4302f-84": {
+      "id": "/src/components/pages/about/AboutHeader.tsx",
+      "moduleParts": {
+        "assets/AboutHeader-DqqNoF1L.js": "cac4302f-85"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-232"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-142"
+        }
+      ]
+    },
+    "cac4302f-86": {
+      "id": "/src/components/pages/settings/ApiAccessSection.tsx",
+      "moduleParts": {
+        "assets/ApiAccessSection-Colfbno6.js": "cac4302f-87"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-226"
+        }
+      ]
+    },
+    "cac4302f-88": {
+      "id": "/src/components/pages/blog/BlogHeader.tsx",
+      "moduleParts": {
+        "assets/BlogHeader-CPrc-jcd.js": "cac4302f-89"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-106"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-144"
+        }
+      ]
+    },
+    "cac4302f-90": {
+      "id": "/src/components/pages/blog/BlogList.tsx",
+      "moduleParts": {
+        "assets/BlogList-CIk520ar.js": "cac4302f-91"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-144"
+        }
+      ]
+    },
+    "cac4302f-92": {
+      "id": "/src/components/pages/careers/CareersBenefits.tsx",
+      "moduleParts": {
+        "assets/CareersBenefits-Bq9R3n4D.js": "cac4302f-93"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-146"
+        }
+      ]
+    },
+    "cac4302f-94": {
+      "id": "/src/components/pages/careers/CareersHeader.tsx",
+      "moduleParts": {
+        "assets/CareersHeader-CcBBmB8o.js": "cac4302f-95"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-106"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-146"
+        }
+      ]
+    },
+    "cac4302f-96": {
+      "id": "/src/components/pages/contact/ContactForm.tsx",
+      "moduleParts": {
+        "assets/ContactForm-yqzy8CrL.js": "cac4302f-97"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-148"
+        }
+      ]
+    },
+    "cac4302f-98": {
+      "id": "/src/components/pages/contact/ContactHeader.tsx",
+      "moduleParts": {
+        "assets/ContactHeader-C5UxjSd2.js": "cac4302f-99"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-106"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-148"
+        }
+      ]
+    },
+    "cac4302f-100": {
+      "id": "/src/components/pages/faq/FAQHeader.tsx",
+      "moduleParts": {
+        "assets/FAQHeader-Cr3DOsKI.js": "cac4302f-101"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-106"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-150"
+        }
+      ]
+    },
+    "cac4302f-102": {
+      "id": "/src/components/pages/faq/FAQList.tsx",
+      "moduleParts": {
+        "assets/FAQList-vovT1MPl.js": "cac4302f-103"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-150"
+        }
+      ]
+    },
+    "cac4302f-104": {
+      "id": "/src/components/pages/home/Hero.tsx",
+      "moduleParts": {
+        "assets/Hero-DMK19zVh.js": "cac4302f-105"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-232"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-138"
+        }
+      ]
+    },
+    "cac4302f-106": {
+      "id": "/src/components/MockBanner.tsx",
+      "moduleParts": {
+        "assets/MockBanner-8SzAUsiT.js": "cac4302f-107"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-130"
+        },
+        {
+          "uid": "cac4302f-126"
+        },
+        {
+          "uid": "cac4302f-118"
+        },
+        {
+          "uid": "cac4302f-112"
+        },
+        {
+          "uid": "cac4302f-100"
+        },
+        {
+          "uid": "cac4302f-98"
+        },
+        {
+          "uid": "cac4302f-94"
+        },
+        {
+          "uid": "cac4302f-88"
+        }
+      ]
+    },
+    "cac4302f-108": {
+      "id": "/src/components/pages/careers/OpenPositions.tsx",
+      "moduleParts": {
+        "assets/OpenPositions-Cldo3q-R.js": "cac4302f-109"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-146"
+        }
+      ]
+    },
+    "cac4302f-110": {
+      "id": "/src/components/pages/settings/PreferencesSection.tsx",
+      "moduleParts": {
+        "assets/PreferencesSection-DkkL04-k.js": "cac4302f-111"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-226"
+        }
+      ]
+    },
+    "cac4302f-112": {
+      "id": "/src/components/pages/pricing/PricingHeader.tsx",
+      "moduleParts": {
+        "assets/PricingHeader-GpAcdXPq.js": "cac4302f-113"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-106"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-152"
+        }
+      ]
+    },
+    "cac4302f-114": {
+      "id": "/src/components/pages/pricing/PricingTiers.tsx",
+      "moduleParts": {
+        "assets/PricingTiers-D2K_1tym.js": "cac4302f-115"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-152"
+        }
+      ]
+    },
+    "cac4302f-116": {
+      "id": "/src/components/pages/products/ProductsGrid.tsx",
+      "moduleParts": {
+        "assets/ProductsGrid-lYXTDQRO.js": "cac4302f-117"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-154"
+        }
+      ]
+    },
+    "cac4302f-118": {
+      "id": "/src/components/pages/products/ProductsHeader.tsx",
+      "moduleParts": {
+        "assets/ProductsHeader-BN5gfmXw.js": "cac4302f-119"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-106"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-154"
+        }
+      ]
+    },
+    "cac4302f-120": {
+      "id": "/src/components/pages/settings/ProfileSection.tsx",
+      "moduleParts": {
+        "assets/ProfileSection-B7Hctnqu.js": "cac4302f-121"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-226"
+        }
+      ]
+    },
+    "cac4302f-122": {
+      "id": "/src/components/pages/home/ResultsTable.tsx",
+      "moduleParts": {
+        "assets/ResultsTable-Bfsbiq19.js": "cac4302f-123"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-138"
+        }
+      ]
+    },
+    "cac4302f-124": {
+      "id": "/src/components/pages/settings/SettingsFooter.tsx",
+      "moduleParts": {
+        "assets/SettingsFooter-BznvbBrS.js": "cac4302f-125"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-226"
+        }
+      ]
+    },
+    "cac4302f-126": {
+      "id": "/src/components/pages/settings/SettingsHeader.tsx",
+      "moduleParts": {
+        "assets/SettingsHeader-DO5SaR_5.js": "cac4302f-127"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-106"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-226"
+        }
+      ]
+    },
+    "cac4302f-128": {
+      "id": "/src/components/pages/team/TeamGrid.tsx",
+      "moduleParts": {
+        "assets/TeamGrid-B2yOvWt5.js": "cac4302f-129"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-230"
+        }
+      ]
+    },
+    "cac4302f-130": {
+      "id": "/src/components/pages/team/TeamHeader.tsx",
+      "moduleParts": {
+        "assets/TeamHeader-BH0rOSGI.js": "cac4302f-131"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-106"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-230"
+        }
+      ]
+    },
+    "cac4302f-132": {
+      "id": "/src/components/pages/home/UnderstandingImpact.tsx",
+      "moduleParts": {
+        "assets/UnderstandingImpact-C9EKmpie.js": "cac4302f-133"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-138"
+        }
+      ]
+    },
+    "cac4302f-134": {
+      "id": "/src/components/pages/about/WhatWeMeasure.tsx",
+      "moduleParts": {
+        "assets/WhatWeMeasure-DofjvA8k.js": "cac4302f-135"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-142"
+        }
+      ]
+    },
+    "cac4302f-136": {
+      "id": "/src/components/pages/home/WhyItMatters.tsx",
+      "moduleParts": {
+        "assets/WhyItMatters-DcWSz0HJ.js": "cac4302f-137"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-138"
+        }
+      ]
+    },
+    "cac4302f-138": {
+      "id": "/src/routes/$locale/index.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/_locale-BQZti5B3.js": "cac4302f-139"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-104",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-136",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-132",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-122",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-202"
+        }
+      ]
+    },
+    "cac4302f-140": {
+      "id": "\u0000tanstack-start-manifest:v",
+      "moduleParts": {
+        "assets/_tanstack-start-manifest_v-g60Dwn3l.js": "cac4302f-141"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-44"
+        }
+      ]
+    },
+    "cac4302f-142": {
+      "id": "/src/routes/$locale/about.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/about-CZfrTVPJ.js": "cac4302f-143"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-84",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-82",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-134",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-220"
+        }
+      ]
+    },
+    "cac4302f-144": {
+      "id": "/src/routes/$locale/blog.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/blog-BkaDdWFJ.js": "cac4302f-145"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-88",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-90",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-218"
+        }
+      ]
+    },
+    "cac4302f-146": {
+      "id": "/src/routes/$locale/careers.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/careers-t0deu5ry.js": "cac4302f-147"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-94",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-92",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-108",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-216"
+        }
+      ]
+    },
+    "cac4302f-148": {
+      "id": "/src/routes/$locale/contact.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/contact-CD00sAYT.js": "cac4302f-149"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-98",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-96",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-214"
+        }
+      ]
+    },
+    "cac4302f-150": {
+      "id": "/src/routes/$locale/faq.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/faq-B57oiTd5.js": "cac4302f-151"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-100",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-102",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-212"
+        }
+      ]
+    },
+    "cac4302f-152": {
+      "id": "/src/routes/$locale/pricing.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/pricing-B_HBsxZ_.js": "cac4302f-153"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-112",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-114",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-210"
+        }
+      ]
+    },
+    "cac4302f-154": {
+      "id": "/src/routes/$locale/products.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/products-CQpGmMqU.js": "cac4302f-155"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-118",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-116",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-208"
+        }
+      ]
+    },
+    "cac4302f-156": {
+      "id": "/src/routes/$locale/route.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/route-f3nV6Kah.js": "cac4302f-157"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-190"
+        }
+      ]
+    },
+    "cac4302f-158": {
+      "id": "/src/components/Footer.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-159"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-198"
+        }
+      ]
+    },
+    "cac4302f-160": {
+      "id": "/src/components/ThemeToggle.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-161"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-166"
+        }
+      ]
+    },
+    "cac4302f-162": {
+      "id": "/src/i18n/config.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-163"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-198"
+        },
+        {
+          "uid": "cac4302f-190"
+        },
+        {
+          "uid": "cac4302f-164"
+        }
+      ]
+    },
+    "cac4302f-164": {
+      "id": "/src/components/LocaleSwitcher.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-165"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-162"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-166"
+        }
+      ]
+    },
+    "cac4302f-166": {
+      "id": "/src/components/Header.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-167"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-291"
+        },
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-160"
+        },
+        {
+          "uid": "cac4302f-164"
+        },
+        {
+          "uid": "cac4302f-232"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-198"
+        }
+      ]
+    },
+    "cac4302f-168": {
+      "id": "/src/messages/de.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-169"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-170": {
+      "id": "/src/messages/en.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-171"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-172": {
+      "id": "/src/messages/es.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-173"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-174": {
+      "id": "/src/messages/fr.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-175"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-176": {
+      "id": "/src/messages/it.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-177"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-178": {
+      "id": "/src/messages/ja.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-179"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-180": {
+      "id": "/src/messages/ko.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-181"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-182": {
+      "id": "/src/messages/pt.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-183"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-184": {
+      "id": "/src/messages/ru.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-185"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-186": {
+      "id": "/src/messages/zh.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-187"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-188"
+        }
+      ]
+    },
+    "cac4302f-188": {
+      "id": "/src/i18n/getMessages.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-189"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-168"
+        },
+        {
+          "uid": "cac4302f-170"
+        },
+        {
+          "uid": "cac4302f-172"
+        },
+        {
+          "uid": "cac4302f-174"
+        },
+        {
+          "uid": "cac4302f-176"
+        },
+        {
+          "uid": "cac4302f-178"
+        },
+        {
+          "uid": "cac4302f-180"
+        },
+        {
+          "uid": "cac4302f-182"
+        },
+        {
+          "uid": "cac4302f-184"
+        },
+        {
+          "uid": "cac4302f-186"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-190"
+        }
+      ]
+    },
+    "cac4302f-190": {
+      "id": "/src/routes/$locale/route.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-191"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-188"
+        },
+        {
+          "uid": "cac4302f-162"
+        },
+        {
+          "uid": "cac4302f-156",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        },
+        {
+          "uid": "cac4302f-198"
+        }
+      ]
+    },
+    "cac4302f-192": {
+      "id": "/src/styles.css?transform-only",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-193"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-194"
+        }
+      ]
+    },
+    "cac4302f-194": {
+      "id": "/src/styles.css?url",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-195"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-192"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-198"
+        }
+      ]
+    },
+    "cac4302f-196": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/test-utils/src/browser-metrics.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-197"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-198"
+        }
+      ]
+    },
+    "cac4302f-198": {
+      "id": "/src/routes/__root.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-199"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-290"
+        },
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-158"
+        },
+        {
+          "uid": "cac4302f-166"
+        },
+        {
+          "uid": "cac4302f-162"
+        },
+        {
+          "uid": "cac4302f-190"
+        },
+        {
+          "uid": "cac4302f-194"
+        },
+        {
+          "uid": "cac4302f-196"
+        },
+        {
+          "uid": "cac4302f-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-200": {
+      "id": "/src/routes/index.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-201"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-202": {
+      "id": "/src/routes/$locale/index.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-203"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-138",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-204": {
+      "id": "/src/routes/$locale/team.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-205"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-230",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-206": {
+      "id": "/src/routes/$locale/settings.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-207"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-226",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-208": {
+      "id": "/src/routes/$locale/products.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-209"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-154",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-210": {
+      "id": "/src/routes/$locale/pricing.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-211"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-152",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-212": {
+      "id": "/src/routes/$locale/faq.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-213"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-150",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-214": {
+      "id": "/src/routes/$locale/contact.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-215"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-148",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-216": {
+      "id": "/src/routes/$locale/careers.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-217"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-146",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-218": {
+      "id": "/src/routes/$locale/blog.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-219"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-144",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-220": {
+      "id": "/src/routes/$locale/about.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-221"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-142",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-222"
+        }
+      ]
+    },
+    "cac4302f-222": {
+      "id": "/src/routeTree.gen.ts",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-223"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-198"
+        },
+        {
+          "uid": "cac4302f-190"
+        },
+        {
+          "uid": "cac4302f-200"
+        },
+        {
+          "uid": "cac4302f-202"
+        },
+        {
+          "uid": "cac4302f-204"
+        },
+        {
+          "uid": "cac4302f-206"
+        },
+        {
+          "uid": "cac4302f-208"
+        },
+        {
+          "uid": "cac4302f-210"
+        },
+        {
+          "uid": "cac4302f-212"
+        },
+        {
+          "uid": "cac4302f-214"
+        },
+        {
+          "uid": "cac4302f-216"
+        },
+        {
+          "uid": "cac4302f-218"
+        },
+        {
+          "uid": "cac4302f-220"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-224"
+        }
+      ]
+    },
+    "cac4302f-224": {
+      "id": "/src/router.tsx",
+      "moduleParts": {
+        "assets/router-CF6pcMwO.js": "cac4302f-225"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-239"
+        },
+        {
+          "uid": "cac4302f-222"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        }
+      ]
+    },
+    "cac4302f-226": {
+      "id": "/src/routes/$locale/settings.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/settings-CtOHlGYN.js": "cac4302f-227"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-126",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-120",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-110",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-86",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-124",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-206"
+        }
+      ]
+    },
+    "cac4302f-228": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+5b6ce2795a3c863a/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+      "moduleParts": {
+        "assets/start-ByyaQDA7.js": "cac4302f-229"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        }
+      ]
+    },
+    "cac4302f-230": {
+      "id": "/src/routes/$locale/team.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/team-CYCtzOJb.js": "cac4302f-231"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-130",
+          "dynamic": true
+        },
+        {
+          "uid": "cac4302f-128",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-204"
+        }
+      ]
+    },
+    "cac4302f-232": {
+      "id": "/src/hooks/usePerformanceMeasure.ts",
+      "moduleParts": {
+        "assets/usePerformanceMeasure-CwkSmokA.js": "cac4302f-233"
+      },
+      "imported": [
+        {
+          "uid": "cac4302f-238"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-166"
+        },
+        {
+          "uid": "cac4302f-104"
+        },
+        {
+          "uid": "cac4302f-84"
+        }
+      ]
+    },
+    "cac4302f-234": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+5b6ce2795a3c863a/node_modules/@tanstack/react-start/dist/esm/server.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-235"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-80"
+        }
+      ]
+    },
+    "cac4302f-235": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-0"
+        },
+        {
+          "uid": "cac4302f-2"
+        },
+        {
+          "uid": "cac4302f-236"
+        },
+        {
+          "uid": "cac4302f-237"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-234"
+        }
+      ]
+    },
+    "cac4302f-236": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm/defaultRenderHandler.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-0"
+        },
+        {
+          "uid": "cac4302f-240"
+        },
+        {
+          "uid": "cac4302f-241"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-235"
+        }
+      ]
+    },
+    "cac4302f-237": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-12"
+        },
+        {
+          "uid": "cac4302f-14"
+        },
+        {
+          "uid": "cac4302f-78"
+        },
+        {
+          "uid": "cac4302f-242"
+        },
+        {
+          "uid": "cac4302f-243"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-235"
+        }
+      ]
+    },
+    "cac4302f-238": {
+      "id": "react",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-0"
+        },
+        {
+          "uid": "cac4302f-198"
+        },
+        {
+          "uid": "cac4302f-166"
+        },
+        {
+          "uid": "cac4302f-138"
+        },
+        {
+          "uid": "cac4302f-230"
+        },
+        {
+          "uid": "cac4302f-226"
+        },
+        {
+          "uid": "cac4302f-154"
+        },
+        {
+          "uid": "cac4302f-152"
+        },
+        {
+          "uid": "cac4302f-150"
+        },
+        {
+          "uid": "cac4302f-148"
+        },
+        {
+          "uid": "cac4302f-146"
+        },
+        {
+          "uid": "cac4302f-144"
+        },
+        {
+          "uid": "cac4302f-142"
+        },
+        {
+          "uid": "cac4302f-160"
+        },
+        {
+          "uid": "cac4302f-232"
+        },
+        {
+          "uid": "cac4302f-120"
+        },
+        {
+          "uid": "cac4302f-110"
+        },
+        {
+          "uid": "cac4302f-86"
+        },
+        {
+          "uid": "cac4302f-96"
+        }
+      ]
+    },
+    "cac4302f-239": {
+      "id": "@tanstack/react-router",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-0"
+        },
+        {
+          "uid": "cac4302f-224"
+        },
+        {
+          "uid": "cac4302f-198"
+        },
+        {
+          "uid": "cac4302f-190"
+        },
+        {
+          "uid": "cac4302f-200"
+        },
+        {
+          "uid": "cac4302f-202"
+        },
+        {
+          "uid": "cac4302f-204"
+        },
+        {
+          "uid": "cac4302f-206"
+        },
+        {
+          "uid": "cac4302f-208"
+        },
+        {
+          "uid": "cac4302f-210"
+        },
+        {
+          "uid": "cac4302f-212"
+        },
+        {
+          "uid": "cac4302f-214"
+        },
+        {
+          "uid": "cac4302f-216"
+        },
+        {
+          "uid": "cac4302f-218"
+        },
+        {
+          "uid": "cac4302f-220"
+        },
+        {
+          "uid": "cac4302f-158"
+        },
+        {
+          "uid": "cac4302f-166"
+        },
+        {
+          "uid": "cac4302f-156"
+        },
+        {
+          "uid": "cac4302f-164"
+        }
+      ]
+    },
+    "cac4302f-240": {
+      "id": "react/jsx-runtime",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-0"
+        },
+        {
+          "uid": "cac4302f-2"
+        },
+        {
+          "uid": "cac4302f-236"
+        },
+        {
+          "uid": "cac4302f-198"
+        },
+        {
+          "uid": "cac4302f-158"
+        },
+        {
+          "uid": "cac4302f-166"
+        },
+        {
+          "uid": "cac4302f-156"
+        },
+        {
+          "uid": "cac4302f-138"
+        },
+        {
+          "uid": "cac4302f-230"
+        },
+        {
+          "uid": "cac4302f-226"
+        },
+        {
+          "uid": "cac4302f-154"
+        },
+        {
+          "uid": "cac4302f-152"
+        },
+        {
+          "uid": "cac4302f-150"
+        },
+        {
+          "uid": "cac4302f-148"
+        },
+        {
+          "uid": "cac4302f-146"
+        },
+        {
+          "uid": "cac4302f-144"
+        },
+        {
+          "uid": "cac4302f-142"
+        },
+        {
+          "uid": "cac4302f-160"
+        },
+        {
+          "uid": "cac4302f-164"
+        },
+        {
+          "uid": "cac4302f-104"
+        },
+        {
+          "uid": "cac4302f-136"
+        },
+        {
+          "uid": "cac4302f-132"
+        },
+        {
+          "uid": "cac4302f-122"
+        },
+        {
+          "uid": "cac4302f-130"
+        },
+        {
+          "uid": "cac4302f-128"
+        },
+        {
+          "uid": "cac4302f-126"
+        },
+        {
+          "uid": "cac4302f-120"
+        },
+        {
+          "uid": "cac4302f-110"
+        },
+        {
+          "uid": "cac4302f-86"
+        },
+        {
+          "uid": "cac4302f-124"
+        },
+        {
+          "uid": "cac4302f-118"
+        },
+        {
+          "uid": "cac4302f-116"
+        },
+        {
+          "uid": "cac4302f-112"
+        },
+        {
+          "uid": "cac4302f-114"
+        },
+        {
+          "uid": "cac4302f-100"
+        },
+        {
+          "uid": "cac4302f-102"
+        },
+        {
+          "uid": "cac4302f-98"
+        },
+        {
+          "uid": "cac4302f-96"
+        },
+        {
+          "uid": "cac4302f-94"
+        },
+        {
+          "uid": "cac4302f-92"
+        },
+        {
+          "uid": "cac4302f-108"
+        },
+        {
+          "uid": "cac4302f-88"
+        },
+        {
+          "uid": "cac4302f-90"
+        },
+        {
+          "uid": "cac4302f-84"
+        },
+        {
+          "uid": "cac4302f-82"
+        },
+        {
+          "uid": "cac4302f-134"
+        },
+        {
+          "uid": "cac4302f-106"
+        }
+      ]
+    },
+    "cac4302f-241": {
+      "id": "@tanstack/react-router/ssr/server",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-2"
+        },
+        {
+          "uid": "cac4302f-236"
+        }
+      ]
+    },
+    "cac4302f-242": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/virtual-modules.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-237"
+        }
+      ]
+    },
+    "cac4302f-243": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/server.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-76"
+        },
+        {
+          "uid": "cac4302f-249"
+        },
+        {
+          "uid": "cac4302f-250"
+        },
+        {
+          "uid": "cac4302f-251"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-237"
+        },
+        {
+          "uid": "cac4302f-78"
+        }
+      ]
+    },
+    "cac4302f-244": {
+      "id": "node:async_hooks",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-12"
+        },
+        {
+          "uid": "cac4302f-52"
+        }
+      ]
+    },
+    "cac4302f-245": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/h3@2.0.1-rc.16/node_modules/h3/dist/_entries/node.mjs",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-10"
+        },
+        {
+          "uid": "cac4302f-252"
+        },
+        {
+          "uid": "cac4302f-8"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-12"
+        }
+      ]
+    },
+    "cac4302f-246": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-48"
+        },
+        {
+          "uid": "cac4302f-50"
+        },
+        {
+          "uid": "cac4302f-62"
+        },
+        {
+          "uid": "cac4302f-255"
+        },
+        {
+          "uid": "cac4302f-256"
+        },
+        {
+          "uid": "cac4302f-257"
+        },
+        {
+          "uid": "cac4302f-64"
+        },
+        {
+          "uid": "cac4302f-258"
+        },
+        {
+          "uid": "cac4302f-259"
+        },
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-260"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        },
+        {
+          "uid": "cac4302f-68"
+        },
+        {
+          "uid": "cac4302f-72"
+        },
+        {
+          "uid": "cac4302f-66"
+        }
+      ]
+    },
+    "cac4302f-247": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-261"
+        },
+        {
+          "uid": "cac4302f-20"
+        },
+        {
+          "uid": "cac4302f-262"
+        },
+        {
+          "uid": "cac4302f-263"
+        },
+        {
+          "uid": "cac4302f-264"
+        },
+        {
+          "uid": "cac4302f-22"
+        },
+        {
+          "uid": "cac4302f-24"
+        },
+        {
+          "uid": "cac4302f-26"
+        },
+        {
+          "uid": "cac4302f-265"
+        },
+        {
+          "uid": "cac4302f-266"
+        },
+        {
+          "uid": "cac4302f-267"
+        },
+        {
+          "uid": "cac4302f-268"
+        },
+        {
+          "uid": "cac4302f-269"
+        },
+        {
+          "uid": "cac4302f-270"
+        },
+        {
+          "uid": "cac4302f-271"
+        },
+        {
+          "uid": "cac4302f-272"
+        },
+        {
+          "uid": "cac4302f-34"
+        },
+        {
+          "uid": "cac4302f-36"
+        },
+        {
+          "uid": "cac4302f-42"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        },
+        {
+          "uid": "cac4302f-44"
+        },
+        {
+          "uid": "cac4302f-68"
+        },
+        {
+          "uid": "cac4302f-70"
+        },
+        {
+          "uid": "cac4302f-72"
+        },
+        {
+          "uid": "cac4302f-246"
+        },
+        {
+          "uid": "cac4302f-62"
+        },
+        {
+          "uid": "cac4302f-64"
+        }
+      ]
+    },
+    "cac4302f-248": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-storage-context@1.166.15/node_modules/@tanstack/start-storage-context/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-52"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-78"
+        },
+        {
+          "uid": "cac4302f-257"
+        },
+        {
+          "uid": "cac4302f-258"
+        },
+        {
+          "uid": "cac4302f-54"
+        },
+        {
+          "uid": "cac4302f-281"
+        }
+      ]
+    },
+    "cac4302f-249": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/createRequestHandler.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-58"
+        },
+        {
+          "uid": "cac4302f-76"
+        },
+        {
+          "uid": "cac4302f-28"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-243"
+        }
+      ]
+    },
+    "cac4302f-250": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/handlerCallback.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-243"
+        }
+      ]
+    },
+    "cac4302f-251": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/transformStreamWithRouter.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-30"
+        },
+        {
+          "uid": "cac4302f-273"
+        },
+        {
+          "uid": "cac4302f-274"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-243"
+        }
+      ]
+    },
+    "cac4302f-252": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/h3@2.0.1-rc.16/node_modules/h3/dist/h3-DagAgogP.mjs",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-245"
+        }
+      ]
+    },
+    "cac4302f-253": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/getServerFnById.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-46"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-68"
+        },
+        {
+          "uid": "cac4302f-72"
+        }
+      ]
+    },
+    "cac4302f-254": {
+      "id": "tiny-invariant",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-68"
+        },
+        {
+          "uid": "cac4302f-76"
+        },
+        {
+          "uid": "cac4302f-270"
+        },
+        {
+          "uid": "cac4302f-283"
+        },
+        {
+          "uid": "cac4302f-287"
+        },
+        {
+          "uid": "cac4302f-288"
+        }
+      ]
+    },
+    "cac4302f-255": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/createMiddleware.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        },
+        {
+          "uid": "cac4302f-256"
+        }
+      ]
+    },
+    "cac4302f-256": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/createStart.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-255"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        }
+      ]
+    },
+    "cac4302f-257": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getRouterInstance.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-248"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        }
+      ]
+    },
+    "cac4302f-258": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getGlobalStartContext.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-248"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        }
+      ]
+    },
+    "cac4302f-259": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/client.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-58"
+        },
+        {
+          "uid": "cac4302f-282"
+        },
+        {
+          "uid": "cac4302f-283"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        },
+        {
+          "uid": "cac4302f-62"
+        }
+      ]
+    },
+    "cac4302f-260": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-fn-stubs@1.161.6/node_modules/@tanstack/start-fn-stubs/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-284"
+        },
+        {
+          "uid": "cac4302f-285"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-246"
+        }
+      ]
+    },
+    "cac4302f-261": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/path.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-287"
+        },
+        {
+          "uid": "cac4302f-286"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-26"
+        },
+        {
+          "uid": "cac4302f-266"
+        },
+        {
+          "uid": "cac4302f-270"
+        }
+      ]
+    },
+    "cac4302f-262": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/scroll-restoration.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-286"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-266"
+        }
+      ]
+    },
+    "cac4302f-263": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/qss.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-264"
+        }
+      ]
+    },
+    "cac4302f-264": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/searchParams.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-263"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-266"
+        }
+      ]
+    },
+    "cac4302f-265": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/stores.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-18"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-266"
+        }
+      ]
+    },
+    "cac4302f-266": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/router.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-18"
+        },
+        {
+          "uid": "cac4302f-287"
+        },
+        {
+          "uid": "cac4302f-261"
+        },
+        {
+          "uid": "cac4302f-20"
+        },
+        {
+          "uid": "cac4302f-262"
+        },
+        {
+          "uid": "cac4302f-264"
+        },
+        {
+          "uid": "cac4302f-22"
+        },
+        {
+          "uid": "cac4302f-24"
+        },
+        {
+          "uid": "cac4302f-288"
+        },
+        {
+          "uid": "cac4302f-26"
+        },
+        {
+          "uid": "cac4302f-265"
+        },
+        {
+          "uid": "cac4302f-28"
+        },
+        {
+          "uid": "cac4302f-286"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        },
+        {
+          "uid": "cac4302f-267"
+        }
+      ]
+    },
+    "cac4302f-267": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/defer.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-266"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        }
+      ]
+    },
+    "cac4302f-268": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/link.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        }
+      ]
+    },
+    "cac4302f-269": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/Matches.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        }
+      ]
+    },
+    "cac4302f-270": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/route.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-261"
+        },
+        {
+          "uid": "cac4302f-20"
+        },
+        {
+          "uid": "cac4302f-22"
+        },
+        {
+          "uid": "cac4302f-24"
+        },
+        {
+          "uid": "cac4302f-254"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        }
+      ]
+    },
+    "cac4302f-271": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/config.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        }
+      ]
+    },
+    "cac4302f-272": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/searchMiddleware.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-247"
+        }
+      ]
+    },
+    "cac4302f-273": {
+      "id": "node:stream/web",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-251"
+        }
+      ]
+    },
+    "cac4302f-274": {
+      "id": "node:stream",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-251"
+        },
+        {
+          "uid": "cac4302f-8"
+        }
+      ]
+    },
+    "cac4302f-275": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_utils2.mjs",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-8"
+        }
+      ]
+    },
+    "cac4302f-276": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_plugins.mjs",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-289"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-8"
+        }
+      ]
+    },
+    "cac4302f-277": {
+      "id": "node:http",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-8"
+        }
+      ]
+    },
+    "cac4302f-278": {
+      "id": "node:stream/promises",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-8"
+        }
+      ]
+    },
+    "cac4302f-279": {
+      "id": "node:https",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-8"
+        }
+      ]
+    },
+    "cac4302f-280": {
+      "id": "node:http2",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-8"
+        }
+      ]
+    },
+    "cac4302f-281": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getStartContextServerOnly.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-248"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-62"
+        }
+      ]
+    },
+    "cac4302f-282": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/json.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-259"
+        }
+      ]
+    },
+    "cac4302f-283": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-client.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-20"
+        },
+        {
+          "uid": "cac4302f-60"
+        },
+        {
+          "uid": "cac4302f-254"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-259"
+        }
+      ]
+    },
+    "cac4302f-284": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-fn-stubs@1.161.6/node_modules/@tanstack/start-fn-stubs/dist/esm/createIsomorphicFn.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-260"
+        }
+      ]
+    },
+    "cac4302f-285": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-fn-stubs@1.161.6/node_modules/@tanstack/start-fn-stubs/dist/esm/envOnly.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-260"
+        }
+      ]
+    },
+    "cac4302f-286": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/isServer/server.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-261"
+        },
+        {
+          "uid": "cac4302f-262"
+        },
+        {
+          "uid": "cac4302f-266"
+        },
+        {
+          "uid": "cac4302f-288"
+        }
+      ]
+    },
+    "cac4302f-287": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/new-process-route-tree.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-18"
+        },
+        {
+          "uid": "cac4302f-254"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-261"
+        },
+        {
+          "uid": "cac4302f-266"
+        }
+      ]
+    },
+    "cac4302f-288": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/load-matches.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "cac4302f-16"
+        },
+        {
+          "uid": "cac4302f-20"
+        },
+        {
+          "uid": "cac4302f-22"
+        },
+        {
+          "uid": "cac4302f-24"
+        },
+        {
+          "uid": "cac4302f-286"
+        },
+        {
+          "uid": "cac4302f-254"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "cac4302f-266"
+        }
+      ]
+    },
+    "cac4302f-289": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_utils.mjs",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-276"
+        }
+      ]
+    },
+    "cac4302f-290": {
+      "id": "use-intl",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-198"
+        },
+        {
+          "uid": "cac4302f-158"
+        },
+        {
+          "uid": "cac4302f-166"
+        },
+        {
+          "uid": "cac4302f-160"
+        },
+        {
+          "uid": "cac4302f-104"
+        },
+        {
+          "uid": "cac4302f-136"
+        },
+        {
+          "uid": "cac4302f-132"
+        },
+        {
+          "uid": "cac4302f-122"
+        },
+        {
+          "uid": "cac4302f-130"
+        },
+        {
+          "uid": "cac4302f-128"
+        },
+        {
+          "uid": "cac4302f-126"
+        },
+        {
+          "uid": "cac4302f-120"
+        },
+        {
+          "uid": "cac4302f-110"
+        },
+        {
+          "uid": "cac4302f-86"
+        },
+        {
+          "uid": "cac4302f-124"
+        },
+        {
+          "uid": "cac4302f-118"
+        },
+        {
+          "uid": "cac4302f-116"
+        },
+        {
+          "uid": "cac4302f-112"
+        },
+        {
+          "uid": "cac4302f-114"
+        },
+        {
+          "uid": "cac4302f-100"
+        },
+        {
+          "uid": "cac4302f-102"
+        },
+        {
+          "uid": "cac4302f-98"
+        },
+        {
+          "uid": "cac4302f-96"
+        },
+        {
+          "uid": "cac4302f-94"
+        },
+        {
+          "uid": "cac4302f-92"
+        },
+        {
+          "uid": "cac4302f-108"
+        },
+        {
+          "uid": "cac4302f-88"
+        },
+        {
+          "uid": "cac4302f-90"
+        },
+        {
+          "uid": "cac4302f-84"
+        },
+        {
+          "uid": "cac4302f-82"
+        },
+        {
+          "uid": "cac4302f-134"
+        },
+        {
+          "uid": "cac4302f-106"
+        }
+      ]
+    },
+    "cac4302f-291": {
+      "id": "lucide-react",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "cac4302f-166"
+        }
+      ]
+    }
+  },
+  "env": {
+    "rollup": "4.23.0"
+  },
+  "options": {
+    "gzip": true,
+    "brotli": true,
+    "sourcemap": false
+  }
+}

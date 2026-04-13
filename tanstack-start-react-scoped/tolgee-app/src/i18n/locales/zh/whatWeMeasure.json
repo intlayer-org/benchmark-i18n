@@ -1,0 +1,13 @@
+{
+  "bundleSizeImpact": "包大小影响",
+  "theAdditionalJavascriptBytesSent": "包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络上的下载时间。",
+  "renderingOverhead": "渲染开销",
+  "howMuchExtraTimeThe": "库为 React 的渲染周期增加了多少额外时间。通过单个上下文提供程序注入翻译的库可能会导致整个组件树中不必要的重新渲染。",
+  "hydrationCost": "注水成本",
+  "duringSsrTranslationDataIs": "在 SSR 期间，翻译数据被序列化为 HTML。大型词典会增加 HTML 负载并减慢注水速度——即页面变得可交互的时刻。",
+  "lazyLoadingEffectiveness": "延迟加载有效性",
+  "whetherSplittingTranslationsByRoute": "按路线或命名空间拆分翻译是否真的能减少初始负载，以及它引入了哪些权衡（瀑布请求、FOUC、缓存复杂性）。",
+  "localeSwitchSpeed": "本地语言切换速度",
+  "howFastTheAppCan": "应用程序在运行时从一种语言切换到另一种语言的速度——包括获取新翻译、重新渲染组件和更新 DOM。",
+  "whatWeMeasure": "我们测量什么"
+}

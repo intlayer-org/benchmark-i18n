@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "API Access"
+msgstr "Acceso API"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "API Key"
+msgstr "Clave API"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "Copy"
+msgstr "Copiar"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "Use this key to access the benchmarking API programmatically."
+msgstr "Utilice esta clave para acceder a la API de benchmarking de forma programática."
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Profile"
+msgstr "Perfil"
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Display Name"
+msgstr "Nombre de pantalla"
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "John Developer"
+msgstr "John Developer"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Email Notifications"
+msgstr "Notificaciones por correo electrónico"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Receive weekly benchmark reports"
+msgstr "Recibir informes semanales de benchmark"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Toggle notifications"
+msgstr "Toggle notifications"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Dark Mode"
+msgstr "Modo oscuro"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Use dark color scheme"
+msgstr "Usar esquema de colores oscuros"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Toggle dark mode"
+msgstr "Toggle dark mode"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Default Language"
+msgstr "Idioma predeterminado"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "English (en)"
+msgstr "English (en)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "French (fr)"
+msgstr "French (fr)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "German (de)"
+msgstr "German (de)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Spanish (es)"
+msgstr "Spanish (es)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Japanese (ja)"
+msgstr "Japanese (ja)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Chinese Simplified (zh-CN)"
+msgstr "Chinese Simplified (zh-CN)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Arabic (ar)"
+msgstr "Arabic (ar)"
+
+#: src/components/pages/settings/SettingsFooter.tsx
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: src/components/pages/settings/SettingsFooter.tsx
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: src/components/pages/settings/SettingsHeader.tsx
+msgid "Manage your account preferences and configuration."
+msgstr "Gestione sus preferencias de cuenta y configuración."

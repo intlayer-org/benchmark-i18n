@@ -161,9 +161,9 @@
     "sendMessage": "Send Message",
     "wellGetBackTo": "We'll get back to you within 48 hours."
   },
-  "faqHeader": {
+  "faq-header1": {
     "frequentlyAskedQuestions": "Frequently Asked Questions",
-    "everythingYouNeedTo": "Everything you need to know about the i18n Benchmark project."
+    "everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
   },
   "faqList": {
     "howAreTheBenchmarks": "How are the benchmarks run?",

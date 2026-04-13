@@ -1,0 +1,22 @@
+{
+  "teamGrid.sarahChen": "Сара Чен",
+  "teamGrid.founderLeadEngineer": "Основатель и ведущий инженер",
+  "teamGrid.formerGoogleEngineerWith10": "Бывший инженер Google с 10-летним опытом создания систем интернационализации в масштабе.",
+  "teamGrid.marcusWeber": "Маркус Вебер",
+  "teamGrid.performanceEngineer": "Инженер по производительности",
+  "teamGrid.specializesInJavascriptPerformanceOptimization": "Специализируется на оптимизации производительности JavaScript и методологии бенчмаркинга. Ранее работал в Vercel.",
+  "teamGrid.aishaPatel": "Айша Патель",
+  "teamGrid.developerAdvocate": "Адвокат разработчиков",
+  "teamGrid.passionateAboutDeveloperExperienceAnd": "Увлечена опытом разработчиков и образованием. Спикер на React Conf, JSConf и i18nNext.",
+  "teamGrid.tomasRodriguez": "Томас Родригес",
+  "teamGrid.fullStackDeveloper": "Full-Stack разработчик",
+  "teamGrid.maintainsTheBenchmarkingInfrastructureAnd": "Поддерживает инфраструктуру бенчмаркинга и пайплайн CI/CD. Участник разработки Lingui с открытым исходным кодом.",
+  "teamGrid.yukiTanaka": "Юки Танака",
+  "teamGrid.dataAnalyst": "Аналитик данных",
+  "teamGrid.ensuresStatisticalRigorInAll": "Обеспечивает статистическую строгость всех результатов бенчмарков. Доктор прикладной статистики из Массачусетского технологического института (MIT).",
+  "teamGrid.elenaKowalski": "Елена Ковальски",
+  "teamGrid.communityManager": "Комьюнити-менеджер",
+  "teamGrid.managesCommunityContributionsPartnershipsAnd": "Управляет вкладом сообщества, партнерствами и мероприятиями. Опыт в управлении проектами с открытым исходным кодом.",
+  "teamHeader.ourTeam": "Наша команда",
+  "teamHeader.meetThePeopleBehindI18n": "Познакомьтесь с людьми, стоящими за i18n Benchmark. Разнообразная команда, объединенная общей страстью к отличным инструментам для разработчиков."
+}

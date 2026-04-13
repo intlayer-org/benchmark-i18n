@@ -1,0 +1,8 @@
+{
+  "name": "Nombre",
+  "email": "Correo electrónico",
+  "subject": "Asunto",
+  "message": "Mensaje",
+  "sendMessage": "Enviar mensaje",
+  "wellGetBackTo": "Nos pondremos en contacto con usted en un plazo de 48 horas."
+}

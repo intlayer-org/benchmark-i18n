@@ -161,9 +161,9 @@
     "sendMessage": "发送消息",
     "wellGetBackTo": "我们将在 48 小时内回复您。"
   },
-  "faqHeader": {
+  "faq-header1": {
     "frequentlyAskedQuestions": "常见问题",
-    "everythingYouNeedTo": "关于 i18n 基准测试项目，你需要知道的一切。"
+    "everythingYouNeedToKnow": "关于 i18n 基准测试项目，你需要知道的一切。"
   },
   "faqList": {
     "howAreTheBenchmarks": "基准测试是如何运行的？",

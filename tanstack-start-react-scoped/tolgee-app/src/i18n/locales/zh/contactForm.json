@@ -1,0 +1,8 @@
+{
+  "name": "姓名",
+  "email": "电子邮件",
+  "subject": "主题",
+  "message": "留言",
+  "sendMessage": "发送消息",
+  "wellGetBackTo": "我们将在 48 小时内回复您。"
+}

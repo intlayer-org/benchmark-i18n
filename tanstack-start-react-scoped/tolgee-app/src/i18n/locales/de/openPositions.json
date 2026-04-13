@@ -1,0 +1,15 @@
+{
+  "openPositions": "Offene Stellen",
+  "seniorPerformanceEngineer": "Senior Performance Engineer",
+  "fullTime": "Vollzeit",
+  "remote": "Remote",
+  "leadBenchmarkDesignAnd": "Leiten Sie das Benchmark-Design und die Implementierung. Fundierte Kenntnisse der V8-Interna, der Browser-Performance-APIs und der statistischen Analyse erforderlich.",
+  "technicalWriter": "Technischer Redakteur",
+  "partTime": "Teilzeit",
+  "createAndMaintainDocumentation": "Erstellen und pflegen Sie Dokumentationen, Blog-Beiträge und Schulungsinhalte zu Best Practices für die i18n-Leistung.",
+  "frontendDeveloper": "Frontend-Entwickler",
+  "buildAndMaintainThe": "Erstellen und pflegen Sie das Benchmark-Dashboard, Vergleichstools und interaktive Visualisierungen.",
+  "devOpsEngineer": "DevOps-Ingenieur",
+  "designAndMaintainThe": "Design und Wartung der CI/CD-Pipeline, die Benchmarks automatisch bei jedem Bibliotheks-Update ausführt.",
+  "applyNow": "Jetzt bewerben"
+}

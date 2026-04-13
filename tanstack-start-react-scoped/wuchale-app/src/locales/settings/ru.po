@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "API Access"
+msgstr "Доступ к API"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "API Key"
+msgstr "Ключ API"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "Copy"
+msgstr "Копировать"
+
+#: src/components/pages/settings/ApiAccessSection.tsx
+msgid "Use this key to access the benchmarking API programmatically."
+msgstr "Используйте этот ключ для программного доступа к API бенчмаркинга."
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Profile"
+msgstr "Профиль"
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "Display Name"
+msgstr "Отображаемое имя"
+
+#: src/components/pages/settings/ProfileSection.tsx
+msgid "John Developer"
+msgstr "John Developer"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Preferences"
+msgstr "Настройки"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Email Notifications"
+msgstr "Email-уведомления"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Receive weekly benchmark reports"
+msgstr "Получать еженедельные отчеты о бенчмарках"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Toggle notifications"
+msgstr "Toggle notifications"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Dark Mode"
+msgstr "Темный режим"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Use dark color scheme"
+msgstr "Использовать темную цветовою схему"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Toggle dark mode"
+msgstr "Toggle dark mode"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Default Language"
+msgstr "Язык по умолчанию"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "English (en)"
+msgstr "English (en)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "French (fr)"
+msgstr "French (fr)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "German (de)"
+msgstr "German (de)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Spanish (es)"
+msgstr "Spanish (es)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Japanese (ja)"
+msgstr "Japanese (ja)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Chinese Simplified (zh-CN)"
+msgstr "Chinese Simplified (zh-CN)"
+
+#: src/components/pages/settings/PreferencesSection.tsx
+msgid "Arabic (ar)"
+msgstr "Arabic (ar)"
+
+#: src/components/pages/settings/SettingsFooter.tsx
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/components/pages/settings/SettingsFooter.tsx
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: src/components/pages/settings/SettingsHeader.tsx
+msgid "Manage your account preferences and configuration."
+msgstr "Управляйте настройками своего аккаунта и конфигурацией."

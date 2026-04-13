@@ -1,0 +1,8 @@
+{
+  "themeModeAutoSystemClick": "主题模式：自动（系统）。点击切换到浅色模式。",
+  "themeModeLightClick": "主题模式：浅色。点击切换到深色模式。",
+  "themeModeDarkClick": "主题模式：深色。点击切换到自动（系统）模式。",
+  "themeAuto": "主题：自动",
+  "themeDark": "主题：深色",
+  "themeLight": "主题：浅色"
+}

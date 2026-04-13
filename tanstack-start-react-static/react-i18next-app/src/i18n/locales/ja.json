@@ -161,9 +161,9 @@
     "sendMessage": "メッセージを送信",
     "wellGetBackTo": "48時間以内に返信いたします。"
   },
-  "faqHeader": {
+  "faq-header1": {
     "frequentlyAskedQuestions": "よくある質問",
-    "everythingYouNeedTo": "i18nベンチマークプロジェクトについて知っておくべきことのすべて。"
+    "everythingYouNeedToKnow": "i18nベンチマークプロジェクトについて知っておくべきことのすべて。"
   },
   "faqList": {
     "howAreTheBenchmarks": "ベンチマークはどのように実行されますか？",

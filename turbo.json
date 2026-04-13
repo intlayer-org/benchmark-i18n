@@ -8,6 +8,9 @@
       "dependsOn": ["build"],
       "outputs": ["../../results/**"]
     },
+    "test:consistency": {
+      "outputs": []
+    },
     "test:reactivity": {
       "dependsOn": ["build"],
       "outputs": ["../../results/**"]

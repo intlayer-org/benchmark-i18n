@@ -2,35 +2,34 @@ import { useLingui } from "@lingui/react";
 
 export default function WhatWeMeasure() {
   const { i18n } = useLingui();
-  const t = (id: string) => i18n._(`what-we-measure.${id}`);
 
   const metrics = [
     {
-      metric: t("bundleSizeImpact"),
-      desc: t("theAdditionalJavascriptBytesSent"),
+      metric: i18n._("what-we-measure.bundleSizeImpact"),
+      desc: i18n._("what-we-measure.theAdditionalJavascriptBytesSent"),
     },
     {
-      metric: t("renderingOverhead"),
-      desc: t("howMuchExtraTimeThe"),
+      metric: i18n._("what-we-measure.renderingOverhead"),
+      desc: i18n._("what-we-measure.howMuchExtraTimeThe"),
     },
     {
-      metric: t("hydrationCost"),
-      desc: t("duringSsrTranslationDataIs"),
+      metric: i18n._("what-we-measure.hydrationCost"),
+      desc: i18n._("what-we-measure.duringSsrTranslationDataIs"),
     },
     {
-      metric: t("lazyLoadingEffectiveness"),
-      desc: t("whetherSplittingTranslationsByRoute"),
+      metric: i18n._("what-we-measure.lazyLoadingEffectiveness"),
+      desc: i18n._("what-we-measure.whetherSplittingTranslationsByRoute"),
     },
     {
-      metric: t("localeSwitchSpeed"),
-      desc: t("howFastTheAppCan"),
+      metric: i18n._("what-we-measure.localeSwitchSpeed"),
+      desc: i18n._("what-we-measure.howFastTheAppCan"),
     },
   ];
 
   return (
     <section className="mt-12 mx-auto max-w-3xl">
       <h2 className="mb-4 text-2xl font-bold text-foreground">
-        {t("whatWeMeasure")}
+        {i18n._("what-we-measure.whatWeMeasure")}
       </h2>
       <ul className="space-y-4">
         {metrics.map((m) => (

@@ -1,0 +1,15 @@
+{
+  "openPositions": "Open Positions",
+  "seniorPerformanceEngineer": "Senior Performance Engineer",
+  "fullTime": "Full-Time",
+  "remote": "Remote",
+  "leadBenchmarkDesignAnd": "Lead benchmark design and implementation. Deep knowledge of V8 internals, browser performance APIs, and statistical analysis required.",
+  "technicalWriter": "Technical Writer",
+  "partTime": "Part-Time",
+  "createAndMaintainDocumentation": "Create and maintain documentation, blog posts, and educational content about i18n performance best practices.",
+  "frontendDeveloper": "Frontend Developer",
+  "buildAndMaintainThe": "Build and maintain the benchmark dashboard, comparison tools, and interactive visualizations.",
+  "devOpsEngineer": "DevOps Engineer",
+  "designAndMaintainThe": "Design and maintain the CI/CD pipeline that runs benchmarks automatically on every library update.",
+  "applyNow": "Apply Now"
+}

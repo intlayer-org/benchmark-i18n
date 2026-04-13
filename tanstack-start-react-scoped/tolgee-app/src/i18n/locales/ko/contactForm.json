@@ -1,0 +1,8 @@
+{
+  "name": "이름",
+  "email": "이메일",
+  "subject": "제목",
+  "message": "메시지",
+  "sendMessage": "메시지 보내기",
+  "wellGetBackTo": "48시간 이내에 답변해 드리겠습니다."
+}

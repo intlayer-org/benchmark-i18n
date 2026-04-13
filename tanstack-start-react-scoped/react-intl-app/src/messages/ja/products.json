@@ -1,0 +1,17 @@
+{
+  "products-grid.benchmarkCli": "Benchmark CLI",
+  "products-grid.runBenchmarksLocallyFromYour": "ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートします。",
+  "products-grid.benchmarkCloud": "Benchmark Cloud",
+  "products-grid.automatedCloudBasedBenchmarkingWith": "履歴追跡、アラート、チームダッシュボードを備えた自動化されたクラウドベースのベンチマーク。",
+  "products-grid.benchmarkEnterprise": "Benchmark Enterprise",
+  "products-grid.onPremiseDeploymentWithSso": "SSO、監査ログ、カスタムSLA、専任のサポートを備えたオンプレミスデプロイ。",
+  "products-grid.contactUs": "お問い合わせ",
+  "products-grid.migrationAssistant": "移行アシスタント",
+  "products-grid.aiPoweredToolThatHelps": "ダウンタイムなしでi18nライブラリ間でコードベースを移行するのを支援するAI駆動型ツール。",
+  "products-grid.translationQa": "翻訳品質管理",
+  "products-grid.automatedQualityChecksForMissing": "翻訳漏れ、複数形の問題、コンテキストエラーの自動品質チェック。",
+  "products-grid.bundleOptimizer": "バンドルオプティマイザー",
+  "products-grid.analyzesAndOptimizesYourI18n": "Tree-shakingとコード分割を使用して、プロダクション向けにi18nバンドルを分析および最適化します。",
+  "products-grid.learnMore": "詳細はこちら",
+  "products-header.toolsAndServicesToStreamline": "国際化ワークフローを合理化するためのツールとサービス。"
+}

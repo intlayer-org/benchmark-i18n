@@ -1,0 +1,16 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/components/pages/faq/FAQHeader.tsx
+msgid "Frequently Asked Questions"
+msgstr "Frequently Asked Questions"
+
+#: src/components/pages/faq/FAQHeader.tsx
+msgid "Everything you need to know about i18n Benchmark."
+msgstr "Everything you need to know about i18n Benchmark."

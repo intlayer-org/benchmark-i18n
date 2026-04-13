@@ -1,0 +1,15 @@
+{
+  "openPositions": "开放职位",
+  "seniorPerformanceEngineer": "高级性能工程师",
+  "fullTime": "全职",
+  "remote": "远程",
+  "leadBenchmarkDesignAnd": "领导基准设计和实施。需要深入了解 V8 内部、浏览器性能 API 和统计分析。",
+  "technicalWriter": "技术文档工程师",
+  "partTime": "兼职",
+  "createAndMaintainDocumentation": "创建并维护有关 i18n 性能最佳实践的文档、博客文章和教育内容。",
+  "frontendDeveloper": "前端开发人员",
+  "buildAndMaintainThe": "构建并维护基准仪表板、比较工具和交互式可视化效果。",
+  "devOpsEngineer": "运维工程师",
+  "designAndMaintainThe": "设计并维护在每次库更新时自动运行基准测试的 CI/CD 流水线。",
+  "applyNow": "立即申请"
+}

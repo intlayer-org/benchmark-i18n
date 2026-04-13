@@ -1,0 +1,13 @@
+{
+  "bundleSizeImpact": "Bundle size impact",
+  "theAdditionalJavascriptBytesSent": "The additional JavaScript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
+  "renderingOverhead": "Rendering overhead",
+  "howMuchExtraTimeThe": "How much extra time the i18n layer adds to each component render — measured using React Profiler's actualDuration.",
+  "hydrationCost": "Hydration cost",
+  "duringSsrTranslationDataIs": "During SSR, translation data is serialized into the HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
+  "lazyLoadingEffectiveness": "Lazy loading effectiveness",
+  "whetherSplittingTranslationsByRoute": "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).",
+  "localeSwitchSpeed": "Locale switch speed",
+  "howFastTheAppCan": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.",
+  "whatWeMeasure": "What We Measure"
+}

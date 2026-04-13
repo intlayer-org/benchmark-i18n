@@ -1,0 +1,21 @@
+{
+  "i18nBenchmark2026Results": "Результаты i18n Benchmark 2026",
+  "march152026": "15 марта 2026 года",
+  "weTested12DifferentInternationalization": "Мы протестировали 12 различных библиотек интернационализации на 10 страницах. Вот подробные результаты с интерактивными графиками.",
+  "howToReduceYourI18n": "Как уменьшить бандл i18n на 60%",
+  "march82026": "8 марта 2026 года",
+  "practicalStrategiesForOptimizingTranslation": "Практические стратегии по оптимизации загрузки файлов перевода, tree-shaking неиспользуемых локалей и использование компиляции во время сборки.",
+  "theStateOfInternationalizationIn": "Состояние интернационализации в 2026 году",
+  "february282026": "28 февраля 2026 года",
+  "anOverviewOfTheCurrent": "Обзор текущей экосистемы i18n, сравнение подходов от каталогов сообщений до решений на основе компиляторов.",
+  "migratingFromReactI18nextTo": "Миграция с react-i18next на Lingui",
+  "february152026": "15 февраля 2026 года",
+  "aStepByStepGuide": "Пошаговое руководство по миграции продакшн-приложения с 50 000 ключами перевода с react-i18next на Lingui.",
+  "serverComponentsAndI18nWhat": "Server Components и i18n: что меняется?",
+  "february12026": "1 февраля 2026 года",
+  "reactServerComponentsIntroduceNew": "React Server Components представляют новые паттерны для интернационализации. Мы исследуем последствия и лучшие практики.",
+  "benchmarkMethodologyHowWeTest": "Методология бенчмарка: как мы тестируем",
+  "january202026": "20 января 2026 года",
+  "aTransparentLookAtOur": "Прозрачный взгляд на нашу методологию бенчмаркинга, включая тестовые среды, статистические методы и воспроизводимость.",
+  "readMore": "Читать далее →"
+}

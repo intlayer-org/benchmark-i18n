@@ -9,7 +9,6 @@ import { usePerformanceMeasure } from "../hooks/usePerformanceMeasure";
 
 export default function Header() {
   const { i18n } = useLingui();
-  const t = (id: string) => i18n._(`header.${id}`);
 
   usePerformanceMeasure("Header");
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
@@ -17,14 +16,14 @@ export default function Header() {
   const currentLocale = params.locale ?? "en";
 
   const mockPages = [
-    { to: "/$locale/products" as const, label: t("products") },
-    { to: "/$locale/pricing" as const, label: t("pricing") },
-    { to: "/$locale/team" as const, label: t("team") },
-    { to: "/$locale/blog" as const, label: t("blog") },
-    { to: "/$locale/careers" as const, label: t("careers") },
-    { to: "/$locale/faq" as const, label: t("faq") },
-    { to: "/$locale/contact" as const, label: t("contact") },
-    { to: "/$locale/settings" as const, label: t("settings") },
+    { to: "/$locale/products" as const, label: i18n._("header.products") },
+    { to: "/$locale/pricing" as const, label: i18n._("header.pricing") },
+    { to: "/$locale/team" as const, label: i18n._("header.team") },
+    { to: "/$locale/blog" as const, label: i18n._("header.blog") },
+    { to: "/$locale/careers" as const, label: i18n._("header.careers") },
+    { to: "/$locale/faq" as const, label: i18n._("header.faq") },
+    { to: "/$locale/contact" as const, label: i18n._("header.contact") },
+    { to: "/$locale/settings" as const, label: i18n._("header.settings") },
   ];
 
   return (
@@ -47,7 +46,7 @@ export default function Header() {
               activeProps={{ className: "is-active" }}
               className="nav-link"
             >
-              {t("home")}
+              {i18n._("header.home")}
             </Link>
             <Link
               to="/$locale/about"
@@ -55,7 +54,7 @@ export default function Header() {
               activeProps={{ className: "is-active" }}
               className="nav-link"
             >
-              {t("methodology")}
+              {i18n._("header.methodology")}
             </Link>
 
             {/* Mock Pages Dropdown */}
@@ -67,7 +66,7 @@ export default function Header() {
                 onMouseLeave={() => setIsMockPagesOpen(false)}
                 onClick={() => setIsMockPagesOpen(!isMockPagesOpen)}
               >
-                {t("mockPages")}
+                {i18n._("header.mockPages")}
                 <ChevronDown
                   size={14}
                   className={`transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`}
@@ -106,7 +105,7 @@ export default function Header() {
             rel="noreferrer"
             className="text-muted-foreground transition hover:text-foreground"
           >
-            <span className="sr-only">{t("goToGithub")}</span>
+            <span className="sr-only">{i18n._("header.goToGithub")}</span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
               <path
                 fill="currentColor"

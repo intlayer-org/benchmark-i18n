@@ -3,7 +3,8 @@ import { formatter } from "@lingui/format-json";
 
 export default defineConfig({
   format: formatter({ style: "minimal" }),
-  catalogs: [
+  compileNamespace: "es", 
+    catalogs: [
     {
       include: ["src"],
       path: "<rootDir>/src/locales/{locale}/messages",

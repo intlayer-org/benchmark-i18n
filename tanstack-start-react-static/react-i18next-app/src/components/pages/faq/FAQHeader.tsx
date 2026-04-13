@@ -7,10 +7,10 @@ export default function FAQHeader() {
     <>
       <MockBanner />
       <h1 className="mb-2 text-3xl font-bold text-foreground">
-        {t("faqHeader.frequentlyAskedQuestions")}
+        {t("faq-header1.frequentlyAskedQuestions")}
       </h1>
       <p className="mb-10 text-muted-foreground">
-        {t("faqHeader.everythingYouNeedTo")}
+        {t("faq-header1.everythingYouNeedToKnow")}
       </p>
     </>
   );

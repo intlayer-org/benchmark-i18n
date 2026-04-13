@@ -1,0 +1,17 @@
+{
+  "products-grid.benchmarkCli": "CLI для бенчмаркинга",
+  "products-grid.runBenchmarksLocallyFromYour": "Запуск тестов локально из терминала. Поддержка пользовательских конфигураций и интеграции с CI.",
+  "products-grid.benchmarkCloud": "Облачный бенчмаркинг",
+  "products-grid.automatedCloudBasedBenchmarkingWith": "Автоматизированное облачное тестирование с отслеживанием истории, оповещениями и командными панелями.",
+  "products-grid.benchmarkEnterprise": "Корпоративный бенчмаркинг",
+  "products-grid.onPremiseDeploymentWithSso": "Локальное развертывание с поддержкой SSO, журналами аудита, настраиваемыми SLA и выделенной поддержкой.",
+  "products-grid.contactUs": "Связаться с нами",
+  "products-grid.migrationAssistant": "Помощник по миграции",
+  "products-grid.aiPoweredToolThatHelps": "Инструмент на базе ИИ, помогающий мигрировать вашу кодовую базу между библиотеками i18n без простоев.",
+  "products-grid.translationQa": "Контроль качества перевода",
+  "products-grid.automatedQualityChecksForMissing": "Автоматизированная проверка качества на предмет отсутствующих переводов, проблем с плюрализацией и контекстных ошибок.",
+  "products-grid.bundleOptimizer": "Оптимизатор бандлов",
+  "products-grid.analyzesAndOptimizesYourI18n": "Анализирует и оптимизирует ваш бандл i18n для продакшна с использованием tree-shaking и разделения кода.",
+  "products-grid.learnMore": "Узнать больше",
+  "products-header.toolsAndServicesToStreamline": "Инструменты и услуги для оптимизации рабочего процесса интернационализации."
+}

@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
+"Source-Language: en\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/routes/__root.tsx
+msgid "Oops! Page not found"
+msgstr "おっと！ページが見つかりません"
+
+#: src/routes/__root.tsx
+msgid "Return to Home"
+msgstr "ホームに戻る"
+
+#: src/routes/__root.tsx
+msgid "AppRoot"
+msgstr "AppRoot"

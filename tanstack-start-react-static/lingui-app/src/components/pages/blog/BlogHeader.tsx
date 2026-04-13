@@ -3,7 +3,6 @@ import MockBanner from "../../MockBanner";
 
 export default function BlogHeader() {
   const { i18n } = useLingui();
-  const t = (id: string) => i18n._(`blog-header.${id}`);
 
   return (
     <>
@@ -12,7 +11,7 @@ export default function BlogHeader() {
         {i18n._("header.blog")}
       </h1>
       <p className="mb-10 text-muted-foreground">
-        {t("insightsTutorialsAndAnalysisFrom")}
+        {i18n._("blog-header.insightsTutorialsAndAnalysisFrom")}
       </p>
     </>
   );

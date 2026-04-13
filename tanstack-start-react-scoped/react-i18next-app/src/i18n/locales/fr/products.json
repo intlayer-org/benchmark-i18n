@@ -1,0 +1,13 @@
+{
+  "productsGrid.benchmarkDashboard": "Tableau de bord de référence",
+  "productsGrid.interactiveChartsAndTables": "Graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
+  "productsGrid.bundleAnalyzer": "Analyseur de bundle",
+  "productsGrid.uploadYourBuildOutput": "Téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
+  "productsGrid.migrationAssistant": "Assistant de migration",
+  "productsGrid.automatedCodemodsAndGuides": "Codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
+  "productsGrid.performanceMonitor": "Moniteur de performance",
+  "productsGrid.continuousPerformanceTrackingFor": "Suivi continu des performances pour votre implémentation i18n. Recevez des alertes lorsque le chargement des traductions se dégrade.",
+  "productsGrid.learnMore": "En savoir plus",
+  "productsHeader.products": "Produits",
+  "productsHeader.toolsAndServicesTo": "Des outils et des services pour vous aider à optimiser votre stratégie d'internationalisation."
+}

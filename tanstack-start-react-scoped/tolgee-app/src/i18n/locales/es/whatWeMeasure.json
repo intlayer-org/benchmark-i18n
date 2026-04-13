@@ -1,0 +1,13 @@
+{
+  "bundleSizeImpact": "Impacto en el tamaño del paquete",
+  "theAdditionalJavascriptBytesSent": "Los bytes adicionales de JavaScript enviados al cliente específicamente debido al tiempo de ejecución de la biblioteca i18n, además de los archivos de traducción para el local actual.",
+  "renderingOverhead": "Sobrecarga de renderizado",
+  "howMuchExtraTimeThe": "Cuánto tiempo extra añade la capa i18n a cada renderizado de componente — medido con actualDuration del React Profiler.",
+  "hydrationCost": "Costo de hidratación",
+  "duringSsrTranslationDataIs": "Durante el SSR, los datos de traducción se serializan en el HTML. Los diccionarios grandes aumentan la carga útil de HTML y ralentizan la hidratación — el momento en que la página se vuelve interactiva.",
+  "lazyLoadingEffectiveness": "Eficacia de la carga diferida",
+  "whetherSplittingTranslationsByRoute": "Si dividir las traducciones por ruta o por espacio de nombres realmente reduce la carga inicial, y qué compensaciones introduce (solicitudes en cascada, FOUC, complejidad de la caché).",
+  "localeSwitchSpeed": "Velocidad de cambio de idioma",
+  "howFastTheAppCan": "Qué tan rápido puede la aplicación cambiar de un idioma a otro en tiempo de ejecución — incluyendo la obtención de nuevas traducciones, el renderizado de componentes y la actualización del DOM.",
+  "whatWeMeasure": "Lo que medimos"
+}

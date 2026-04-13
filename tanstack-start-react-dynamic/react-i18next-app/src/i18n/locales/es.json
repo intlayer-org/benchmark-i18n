@@ -161,9 +161,9 @@
     "sendMessage": "Enviar mensaje",
     "wellGetBackTo": "Nos pondremos en contacto con usted en un plazo de 48 horas."
   },
-  "faqHeader": {
+  "faq-header1": {
     "frequentlyAskedQuestions": "Preguntas frecuentes",
-    "everythingYouNeedTo": "Todo lo que necesita saber sobre el proyecto i18n Benchmark."
+    "everythingYouNeedToKnow": "Todo lo que necesita saber sobre el proyecto i18n Benchmark."
   },
   "faqList": {
     "howAreTheBenchmarks": "¿Cómo se ejecutan los benchmarks?",

@@ -1,5 +1,5 @@
 {
-  "app": "whushale-app",
+  "app": "wuchale-app",
   "locale": "en",
   "timestamp": "2026-04-12T20:43:01.223Z",
   "fingerprintCounts": {
@@ -235,9 +235,7 @@
         },
         "faq": {
           "count": 1,
-          "found": [
-            "frequently asked questions"
-          ]
+          "found": ["frequently asked questions"]
         },
         "pricing": {
           "count": 10,
@@ -506,9 +504,7 @@
         },
         "faq": {
           "count": 1,
-          "found": [
-            "frequently asked questions"
-          ]
+          "found": ["frequently asked questions"]
         },
         "pricing": {
           "count": 10,
@@ -774,9 +770,7 @@
         },
         "faq": {
           "count": 1,
-          "found": [
-            "frequently asked questions"
-          ]
+          "found": ["frequently asked questions"]
         },
         "pricing": {
           "count": 10,
@@ -1056,9 +1050,7 @@
         },
         "faq": {
           "count": 1,
-          "found": [
-            "frequently asked questions"
-          ]
+          "found": ["frequently asked questions"]
         },
         "pricing": {
           "count": 10,
@@ -1316,15 +1308,11 @@
         },
         "contact": {
           "count": 1,
-          "found": [
-            "methodology question"
-          ]
+          "found": ["methodology question"]
         },
         "faq": {
           "count": 1,
-          "found": [
-            "frequently asked questions"
-          ]
+          "found": ["frequently asked questions"]
         },
         "pricing": {
           "count": 10,
@@ -1859,9 +1847,7 @@
         },
         "faq": {
           "count": 1,
-          "found": [
-            "frequently asked questions"
-          ]
+          "found": ["frequently asked questions"]
         },
         "pricing": {
           "count": 10,
@@ -2123,9 +2109,7 @@
         },
         "faq": {
           "count": 1,
-          "found": [
-            "frequently asked questions"
-          ]
+          "found": ["frequently asked questions"]
         },
         "pricing": {
           "count": 10,
@@ -2405,9 +2389,7 @@
         },
         "faq": {
           "count": 1,
-          "found": [
-            "frequently asked questions"
-          ]
+          "found": ["frequently asked questions"]
         },
         "pricing": {
           "count": 10,
@@ -2670,9 +2652,7 @@
         },
         "faq": {
           "count": 1,
-          "found": [
-            "frequently asked questions"
-          ]
+          "found": ["frequently asked questions"]
         },
         "pricing": {
           "count": 10,

@@ -1,0 +1,17 @@
+{
+  "contact-form.name": "Имя",
+  "contact-form.yourName": "Ваше имя",
+  "contact-form.email": "Email",
+  "contact-form.emailPlaceholder": "you@example.com",
+  "contact-form.topic": "Тема",
+  "contact-form.bugReport": "Отчет об ошибке",
+  "contact-form.newBenchmarkIdea": "Новая идея для бенчмарка",
+  "contact-form.methodologyQuestion": "Вопрос по методологии",
+  "contact-form.contribution": "Вклад",
+  "contact-form.other": "Другое",
+  "contact-form.message": "Сообщение",
+  "contact-form.describeYourQuestionOrIdea": "Опишите ваш вопрос или идею...",
+  "contact-form.sendMessage": "Отправить сообщение",
+  "contact-header.getInTouch": "Связаться с нами",
+  "contact-header.haveIdeasFoundABug": "Есть идеи, нашли баг или хотите предложить бенчмарк? Свяжитесь с нами по адресу"
+}

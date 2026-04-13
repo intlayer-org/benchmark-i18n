@@ -1,0 +1,17 @@
+{
+  "products-grid.benchmarkCli": "CLI de Benchmark",
+  "products-grid.runBenchmarksLocallyFromYour": "Realice benchmarks localmente desde su terminal. Admite configuraciones personalizadas e integración de CI.",
+  "products-grid.benchmarkCloud": "Benchmark Cloud",
+  "products-grid.automatedCloudBasedBenchmarkingWith": "Benchmarking automatizado basado en la nube con seguimiento histórico, alertas y paneles de equipo.",
+  "products-grid.benchmarkEnterprise": "Benchmark para Empresas",
+  "products-grid.onPremiseDeploymentWithSso": "Implementación local con SSO, registros de auditoría, SLA personalizados y soporte dedicado.",
+  "products-grid.contactUs": "Contáctenos",
+  "products-grid.migrationAssistant": "Asistente de Migración",
+  "products-grid.aiPoweredToolThatHelps": "Herramienta impulsada por IA que ayuda a migrar su base de código entre bibliotecas de i18n sin tiempo de inactividad.",
+  "products-grid.translationQa": "QA de Traducción",
+  "products-grid.automatedQualityChecksForMissing": "Comprobaciones de calidad automatizadas para traducciones faltantes, problemas de pluralización y errores de contexto.",
+  "products-grid.bundleOptimizer": "Optimizador de Bundles",
+  "products-grid.analyzesAndOptimizesYourI18n": "Analiza y optimiza su bundle i18n para producción con tree-shaking y división de código.",
+  "products-grid.learnMore": "Más información",
+  "products-header.toolsAndServicesToStreamline": "Herramientas y servicios para simplificar su flujo de trabajo de internacionalización."
+}

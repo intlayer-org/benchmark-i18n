@@ -1,0 +1,15 @@
+{
+  "understandingTheImpact": "Entendendo o impacto",
+  "whyASingleLargeJson": "Por que um único JSON grande pode prejudicar o desempenho",
+  "manyI18nLibrariesStoreTranslations": "Muitas bibliotecas de i18n armazenam as traduções em um único objeto JSON fornecido através do contexto de React. Quando este objeto é grande (milhares de chaves), cada componente que consome traduções mantém uma referência a todo o dicionário. Isto significa:",
+  "theJsonMustBeParsed": "O JSON deve ser analisado em cada carga de página — bloqueando a thread principal.",
+  "contextBasedArchitecturesCanCause": "As arquiteturas baseadas no contexto podem causar renderizações em cascata quando a localidade muda, porque cada consumidor é notificado mesmo que as suas chaves específicas não tenham mudado.",
+  "duringServerSideRenderingThe": "Durante a renderização do lado do servidor, o dicionário completo é serializado na carga útil de HTML, aumentando o tamanho do documento que deve ser descarregado e hidratado.",
+  "theTradeOffsOfDynamic": "As compensações do carregamento dinâmico",
+  "splittingTranslationsIntoPerRoute": "Dividir as traduções em partes por rota ou por namespace pode reduzir drasticamente a carga útil inicial. Mas introduz novos desafios:",
+  "waterfallRequests": "Pedidos em cascata:",
+  "flashOfUntranslatedContentFouc": "Flash de conteúdo não traduzido (FOUC):",
+  "cacheInvalidation": "Invalidação da cache:",
+  "whatThisBenchmarkMeasures": "O que este benchmark mede",
+  "thisTestAppProvidesA": "Esta aplicação de teste fornece um ambiente controlado — 10 páginas com conteúdo realista — para comparar bibliotecas de i18n em três eixos: o peso que adicionam ao seu pacote de JavaScript, o tempo gasto a analisar e renderizar conteúdo traduzido e a eficácia das suas estratégias de divisão de código e de carregamento preguiçoso. Cada biblioteca é integrada na mesma aplicação para que os resultados sejam diretamente comparáveis."
+}

@@ -1,0 +1,12 @@
+{
+  "howAreTheBenchmarks": "¿Cómo se ejecutan los benchmarks?",
+  "allBenchmarksAreRun": "Todos los benchmarks se ejecutan utilizando Playwright en una configuración de hardware consistente (M2 MacBook Pro) con condiciones de red 4G simuladas. Cada prueba realiza 50 iteraciones y reportamos la mediana, los valores P95 y P99.",
+  "whatLibrariesAreCurrently": "¿Qué bibliotecas se prueban actualmente?",
+  "weCurrentlyBenchmarkReactI18next": "Actualmente probamos react-i18next, react-intl (FormatJS), LinguiJS, typesafe-i18n, next-intl y Paraglide. Planeamos añadir más basándonos en las peticiones de la comunidad.",
+  "canIContributeA": "¿Puedo contribuir con una nueva integración de biblioteca?",
+  "absolutelyWeWelcomeCommunity": "¡Absolutamente! Damos la bienvenida a las contribuciones de la comunidad. Bifurque el repositorio, añada su integración de biblioteca siguiendo nuestra plantilla y envíe una pull request.",
+  "howOftenAreResults": "¿Con qué frecuencia se actualizan los resultados?",
+  "benchmarksRunAutomaticallyVia": "Los benchmarks se ejecutan automáticamente a través de CI en cada actualización de dependencia y semanalmente en la rama principal. Los resultados se publican en el tablero en un plazo de 24 horas.",
+  "areTheResultsStatistically": "¿Son los resultados estadísticamente significativos?",
+  "yesWeUseThe": "Sí. Utilizamos la prueba U de Mann-Whitney con un nivel de significación de 0,05 para comparar distribuciones. También reportamos intervalos de confianza y tamaños del efecto."
+}

@@ -1,0 +1,21 @@
+{
+  "blog-header.insightsTutorialsAndAnalysisFrom": "i18n 커뮤니티의 통찰력, 튜토리얼 및 분석.",
+  "blog-list.comparingI18nLibrariesIn2026": "2026년 i18n 라이브러리 비교: 심층 분석",
+  "blog-list.weTested12DifferentInternationalization": "성능, 번들 크기 및 DX에 대해 12가지 서로 다른 국제화 라이브러리를 테스트했습니다. 놀라운 결과는 다음과 같습니다.",
+  "blog-list.howToReduceYourI18n": "i18n 번들을 60% 줄이는 방법",
+  "blog-list.march82026": "2026년 3월 8일",
+  "blog-list.practicalStrategiesForOptimizingTranslation": "지연 로딩, 코드 분할 및 컴파일 시간 최적화를 포함한 번역 번들 최적화를 위한 실질적인 전략.",
+  "blog-list.theStateOfInternationalizationIn": "React 국제화의 현주소",
+  "blog-list.february282026": "2026년 2월 28일",
+  "blog-list.anOverviewOfTheCurrent": "트렌드, 새로운 패턴 및 커뮤니티 선호도를 포함한 React의 현재 i18n 생태계 개요.",
+  "blog-list.migratingFromReactI18nextTo": "react-i18next에서 Lingui로 마이그레이션",
+  "blog-list.february152026": "2026년 2월 15일",
+  "blog-list.aStepByStepGuide": "50,000개의 번역 키가 있는 프로덕션 앱을 react-i18next에서 Lingui로 마이그레이션하기 위한 단계별 가이드.",
+  "blog-list.serverComponentsAndI18nWhat": "서버 구성 요소와 i18n: 무엇이 변하는가?",
+  "blog-list.february12026": "2026년 2월 1일",
+  "blog-list.reactServerComponentsIntroduceNew": "React 서버 구성 요소는 국제화를 위한 새로운 패턴을 도입합니다. 그 영향과 모범 사례를 살펴봅니다.",
+  "blog-list.benchmarkMethodologyHowWeTest": "벤치마크 방법론: 테스트 방법",
+  "blog-list.january202026": "2026년 1월 20일",
+  "blog-list.aTransparentLookAtOur": "테스트 환경, 통계적 방법 및 재현성을 포함한 벤치마크 방법론에 대한 투명한 공개.",
+  "blog-list.readMore": "더 읽어보기 →"
+}

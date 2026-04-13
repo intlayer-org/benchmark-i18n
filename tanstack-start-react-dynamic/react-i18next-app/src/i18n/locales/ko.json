@@ -161,9 +161,9 @@
     "sendMessage": "메시지 보내기",
     "wellGetBackTo": "48시간 이내에 답변해 드리겠습니다."
   },
-  "faqHeader": {
+  "faq-header1": {
     "frequentlyAskedQuestions": "자주 묻는 질문",
-    "everythingYouNeedTo": "i18n Benchmark 프로젝트에 대해 알아야 할 모든 것."
+    "everythingYouNeedToKnow": "i18n Benchmark 프로젝트에 대해 알아야 할 모든 것."
   },
   "faqList": {
     "howAreTheBenchmarks": "벤치마크는 어떻게 실행되나요?",

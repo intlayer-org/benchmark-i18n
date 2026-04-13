@@ -1,0 +1,15 @@
+{
+  "openPositions": "募集中の職種",
+  "seniorPerformanceEngineer": "シニアパフォーマンスエンジニア",
+  "fullTime": "正社員",
+  "remote": "リモート",
+  "leadBenchmarkDesignAnd": "ベンチマークの設計と実装をリード。V8の内部構造、ブラウザのパフォーマンスAPI、および統計分析に関する深い知識が必要です。",
+  "technicalWriter": "テクニカルライター",
+  "partTime": "パートタイム",
+  "createAndMaintainDocumentation": "i18nパフォーマンスのベストプラクティスに関するドキュメント、ブログ記事、教育コンテンツを作成および維持管理します。",
+  "frontendDeveloper": "フロントエンドデベロッパー",
+  "buildAndMaintainThe": "ベンチマークダッシュボード、比較ツール、インタラクティブな視覚化を構築および維持管理します。",
+  "devOpsEngineer": "DevOpsエンジニア",
+  "designAndMaintainThe": "ライブラリの更新ごとにベンチマークを自動的に実行するCI/CDパイプラインを設計および維持管理します。",
+  "applyNow": "今すぐ応募"
+}
