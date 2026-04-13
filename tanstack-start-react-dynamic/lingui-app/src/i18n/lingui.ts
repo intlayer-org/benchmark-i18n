@@ -25,9 +25,24 @@ export function getLocaleName(locale: string): string {
   }
 }
 
-export async function getMessages(locale: string) {
-  const module = await import(`../locales/${locale}/messages.mjs`);
-  return module.messages;
+export async function getMessages(
+  locale: string,
+  namespaces: string[] = ["shared", "route"],
+) {
+  const allMessages: Record<string, any> = {};
+
+  await Promise.all(
+    namespaces.map(async (ns) => {
+      try {
+        const module = await import(`../locales/${locale}/${ns}.mjs`);
+        Object.assign(allMessages, module.messages);
+      } catch (e) {
+        console.warn(`Could not load namespace ${ns} for locale ${locale}`);
+      }
+    }),
+  );
+
+  return allMessages;
 }
 
 export function initLingui(locale: string, messages: any) {

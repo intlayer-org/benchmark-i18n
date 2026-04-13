@@ -17,7 +17,10 @@ export const Route = createFileRoute("/$locale")({
     await initServerLoadersFn();
 
     // Fetches the compiled catalog array and updates the runtime
-    await loadLocale(locale);
+    await Promise.all([
+      loadLocale(locale, "shared"),
+      loadLocale(locale, "route"),
+    ]);
 
     return { locale };
   },

@@ -5,7 +5,7 @@ import { defaultLocale } from "../../i18n/lingui";
 export const Route = createFileRoute("/$locale")({
   loader: async ({ params }) => {
     const locale = params.locale ?? defaultLocale;
-    const messages = await getMessages(locale);
+    const messages = await getMessages(locale, ["shared", "route"]);
     return { locale, messages };
   },
   component: Outlet,

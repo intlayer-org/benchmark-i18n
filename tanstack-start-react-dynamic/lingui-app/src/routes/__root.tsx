@@ -5,7 +5,6 @@ import {
   Link,
   Scripts,
   createRootRoute,
-  useLoaderData,
 } from "@tanstack/react-router";
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
@@ -17,8 +16,6 @@ import {
   recordHydrationDuration,
   onRenderCallback as onRender,
 } from "test-utils/browser-metrics";
-
-// onRender now imported from test-utils
 
 const THEME_INIT_SCRIPT = `(function(){try{
   var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;performance.mark('hydration_start');}catch(e){}})();`;
@@ -71,13 +68,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     recordHydrationDuration();
   }, []);
 
-  const params = LocaleRoute.useParams();
-  const locale = params.locale || defaultLocale;
-  const loaderData = useLoaderData({ strict: false });
-  const i18n = useMemo(
-    () => initLingui(locale, loaderData?.messages),
-    [locale, loaderData?.messages],
-  );
+  const { locale = defaultLocale, messages } = LocaleRoute.useLoaderData();
+  const i18n = useMemo(() => initLingui(locale, messages), [locale, messages]);
 
   return (
     <html lang={locale} suppressHydrationWarning>

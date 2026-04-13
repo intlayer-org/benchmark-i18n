@@ -80,7 +80,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   }, []);
 
   const { locale = defaultLocale } = LocaleRoute.useParams();
-  const { messages } = LocaleRoute.useLoaderData({ strict: false }) || {};
+  const { messages } = LocaleRoute.useLoaderData();
 
   return (
     <IntlProvider

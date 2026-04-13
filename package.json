@@ -13,7 +13,8 @@
     "tanstack-start-react-static/*",
     "tanstack-start-react-dynamic/*",
     "tanstack-start-react-scoped-static/*",
-    "tanstack-start-react-scoped-dynamic/*"
+    "tanstack-start-react-scoped-dynamic/*",
+    "vite+react-static/*"
   ],
   "scripts": {
     "build": "turbo run build --concurrency=1",

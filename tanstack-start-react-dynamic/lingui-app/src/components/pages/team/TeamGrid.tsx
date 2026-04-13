@@ -1,37 +1,41 @@
-const members = [
-  {
-    name: "Sarah Chen",
-    role: "Founder & Lead Engineer",
-    bio: "Former Google engineer with 10 years of experience building internationalization systems at scale.",
-  },
-  {
-    name: "Marcus Weber",
-    role: "Performance Engineer",
-    bio: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
-  },
-  {
-    name: "Aisha Patel",
-    role: "Developer Advocate",
-    bio: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
-  },
-  {
-    name: "Tomás Rodríguez",
-    role: "Full-Stack Developer",
-    bio: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
-  },
-  {
-    name: "Yuki Tanaka",
-    role: "Data Analyst",
-    bio: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
-  },
-  {
-    name: "Elena Kowalski",
-    role: "Community Manager",
-    bio: "Manages community contributions, partnerships, and events. Background in open source governance.",
-  },
-];
+import { useLingui } from "@lingui/react";
 
 export default function TeamGrid() {
+  const { i18n } = useLingui();
+
+  const members = [
+    {
+      name: i18n._({ id: "team-grid.sarahChen", message: "Sarah Chen" }),
+      role: i18n._({ id: "team-grid.founderLeadEngineer", message: "Founder & Lead Engineer" }),
+      bio: i18n._({ id: "team-grid.formerGoogleEngineerWith10", message: "Former Google engineer with 10 years of experience building internationalization systems at scale." }),
+    },
+    {
+      name: i18n._({ id: "team-grid.marcusWeber", message: "Marcus Weber" }),
+      role: i18n._({ id: "team-grid.performanceEngineer", message: "Performance Engineer" }),
+      bio: i18n._({ id: "team-grid.specializesInJavascriptPerformanceOptimization", message: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel." }),
+    },
+    {
+      name: i18n._({ id: "team-grid.aishaPatel", message: "Aisha Patel" }),
+      role: i18n._({ id: "team-grid.developerAdvocate", message: "Developer Advocate" }),
+      bio: i18n._({ id: "team-grid.passionateAboutDeveloperExperienceAnd", message: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext." }),
+    },
+    {
+      name: i18n._({ id: "team-grid.tomasRodriguez", message: "Tomás Rodríguez" }),
+      role: i18n._({ id: "team-grid.fullStackDeveloper", message: "Full-Stack Developer" }),
+      bio: i18n._({ id: "team-grid.maintainsTheBenchmarkingInfrastructureAnd", message: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui." }),
+    },
+    {
+      name: i18n._({ id: "team-grid.yukiTanaka", message: "Yuki Tanaka" }),
+      role: i18n._({ id: "team-grid.dataAnalyst", message: "Data Analyst" }),
+      bio: i18n._({ id: "team-grid.ensuresStatisticalRigorInAll", message: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT." }),
+    },
+    {
+      name: i18n._({ id: "team-grid.elenaKowalski", message: "Elena Kowalski" }),
+      role: i18n._({ id: "team-grid.communityManager", message: "Community Manager" }),
+      bio: i18n._({ id: "team-grid.managesCommunityContributionsPartnershipsAnd", message: "Manages community contributions, partnerships, and events. Background in open source governance." }),
+    },
+  ];
+
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {members.map((m) => (

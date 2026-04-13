@@ -1,6 +1,8 @@
 import { useId } from "react";
+import { useLingui } from "@lingui/react";
 
 export default function ProfileSection() {
+  const { i18n } = useLingui();
   const displayNameId = useId();
   const emailId = useId();
 
@@ -13,7 +15,7 @@ export default function ProfileSection() {
             htmlFor={displayNameId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Display Name
+            {i18n._({ id: "profile-section.displayName", message: "Display Name" })}
           </label>
           <input
             id={displayNameId}

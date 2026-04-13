@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
+import { loadLocale } from "wuchale/load-utils";
 
 const Hero = lazy(() => import("../../components/pages/home/Hero"));
 const WhyItMatters = lazy(
@@ -13,6 +14,10 @@ const ResultsTable = lazy(
 );
 
 export const Route = createFileRoute("/$locale/")({
+  loader: async ({ params }) => {
+    const locale = params.locale || "en";
+    await loadLocale(locale, "home");
+  },
   component: Home,
 });
 

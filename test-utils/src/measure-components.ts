@@ -193,6 +193,7 @@ const buildComponentBundle = async (
       define: appConfig.define, // Inherit any app-level defines only
       esbuild: {
         jsx: "automatic",
+        legalComments: "none",
       },
       build: {
         write: false,
