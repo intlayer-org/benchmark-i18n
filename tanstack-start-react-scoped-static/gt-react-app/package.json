@@ -1,5 +1,5 @@
 {
-  "name": "static-gt-react-app",
+  "name": "scoped-static-gt-react-app",
   "private": true,
   "type": "module",
   "imports": {

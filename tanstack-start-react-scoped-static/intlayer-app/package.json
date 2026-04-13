@@ -1,5 +1,5 @@
 {
-  "name": "static-intlayer-app",
+  "name": "scoped-static-intlayer-app",
   "private": true,
   "type": "module",
   "imports": {
@@ -21,13 +21,13 @@
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "1.167.1",
     "@tanstack/router-plugin": "^1.167.12",
-    "intlayer": "^8.7.0-canary.0",
+    "intlayer": "canary",
     "lucide-react": "^1.8.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-intlayer": "^8.7.0-canary.0",
+    "react-intlayer": "canary",
     "tailwindcss": "^4.2.2",
-    "vite-intlayer": "^8.7.0-canary.0"
+    "vite-intlayer": "canary"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",

@@ -1,5 +1,5 @@
 {
-  "name": "static-use-intl-app",
+  "name": "scoped-dynamic-use-intl-app",
   "private": true,
   "type": "module",
   "imports": {

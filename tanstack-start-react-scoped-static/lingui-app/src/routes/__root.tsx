@@ -9,7 +9,7 @@ import {
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { defaultLocale, initLingui, getMessages } from "../i18n/lingui";
+import { defaultLocale, initLingui } from "../i18n/lingui";
 import appCss from "../styles.css?url";
 
 import {
@@ -70,7 +70,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     recordHydrationDuration();
   }, []);
 
-  const { locale = defaultLocale, messages } = LocaleRoute.useLoaderData({ strict: false }) || {};
+  const { locale = defaultLocale, messages } = LocaleRoute.useLoaderData();
   const i18n = useMemo(() => initLingui(locale, messages), [locale, messages]);
 
   return (

@@ -11,7 +11,9 @@
     "nextjs-static/*",
     "nextjs-dynamic/*",
     "tanstack-start-react-static/*",
-    "tanstack-start-react-dynamic/*"
+    "tanstack-start-react-dynamic/*",
+    "tanstack-start-react-scoped-static/*",
+    "tanstack-start-react-scoped-dynamic/*"
   ],
   "scripts": {
     "build": "turbo run build --concurrency=1",

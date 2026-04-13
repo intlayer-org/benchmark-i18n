@@ -1,5 +1,5 @@
 {
-  "name": "static-react-intl-app",
+  "name": "scoped-dynamic-react-intl-app",
   "private": true,
   "type": "module",
   "imports": {

@@ -34,7 +34,7 @@ var routing = {
 	"basePath": ""
 };
 //#endregion
-//#region ../../node_modules/.bun/@intlayer+core@8.7.0-canary.0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/localeResolver.mjs
+//#region ../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/localeResolver.mjs
 /**
 * Resolves the most specific locale from a user-provided list,
 * or falls back to the default locale if no match is found.
@@ -55,7 +55,7 @@ var localeResolver = (selectedLocale, locales = internationalization?.locales, d
 	return defaultLocale;
 };
 //#endregion
-//#region ../../node_modules/.bun/@intlayer+core@8.7.0-canary.0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/utils/localeStorage.mjs
+//#region ../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/utils/localeStorage.mjs
 /**
 * True when cookie storage is explicitly disabled at build time.
 */
@@ -106,7 +106,7 @@ var setLocaleInStorageClient = (locale, options) => {
 	}
 };
 //#endregion
-//#region ../../node_modules/.bun/@intlayer+core@8.7.0-canary.0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/getBrowserLocale.mjs
+//#region ../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/getBrowserLocale.mjs
 var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
@@ -127,7 +127,7 @@ var localeStorageOptions = {
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
 };
 //#endregion
-//#region ../../node_modules/.bun/react-intlayer@8.7.0-canary.0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocaleStorage.mjs
+//#region ../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocaleStorage.mjs
 /**
 * Get the locale cookie
 */
@@ -143,7 +143,7 @@ var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(l
 	isCookieEnabled
 });
 //#endregion
-//#region ../../node_modules/.bun/react-intlayer@8.7.0-canary.0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/useEditor.mjs
+//#region ../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/useEditor.mjs
 /**
 * Initializes the Intlayer editor client singleton when the editor is enabled.
 * Syncs the current locale from the Intlayer context into the editor manager so
@@ -159,13 +159,13 @@ var useEditor = () => {
 	}, [locale]);
 };
 //#endregion
-//#region ../../node_modules/.bun/react-intlayer@8.7.0-canary.0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/EditorProvider.mjs
+//#region ../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/EditorProvider.mjs
 var EditorProvider = ({ children }) => {
 	useEditor();
 	return children;
 };
 //#endregion
-//#region ../../node_modules/.bun/@intlayer+config@8.7.0-canary.0+3f10a4be4e334a9b/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs
+//#region ../../node_modules/.bun/@intlayer+config@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs
 /**
 * Sets the version of Intlayer in the window object.
 * This is used for Intlayer detection in the browser.
@@ -174,7 +174,7 @@ var setIntlayerIdentifier = () => {
 	if (typeof window !== "undefined") window.intlayer = { enabled: true };
 };
 //#endregion
-//#region ../../node_modules/.bun/react-intlayer@8.7.0-canary.0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/IntlayerProvider.mjs
+//#region ../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/IntlayerProvider.mjs
 /**
 * Context that stores the current locale on the client side.
 */

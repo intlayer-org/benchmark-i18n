@@ -1,5 +1,5 @@
 {
-  "name": "static-react-i18next-app",
+  "name": "scoped-static-react-i18next-app",
   "private": true,
   "type": "module",
   "imports": {
