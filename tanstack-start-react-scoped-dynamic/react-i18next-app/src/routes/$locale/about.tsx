@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
+import { loadNamespaces } from "#/i18n/i18n";
+import { defaultLocale } from "#/i18n/config";
 
 const AboutHeader = lazy(
   () => import("../../components/pages/about/AboutHeader"),
@@ -10,6 +12,15 @@ const WhatWeMeasure = lazy(
 );
 
 export const Route = createFileRoute("/$locale/about")({
+  loader: async ({ params, context }) => {
+    const { i18n } = context;
+    const resources = await loadNamespaces(
+      params.locale ?? defaultLocale,
+      ["about"],
+      i18n,
+    );
+    return { resources };
+  },
   component: About,
 });
 

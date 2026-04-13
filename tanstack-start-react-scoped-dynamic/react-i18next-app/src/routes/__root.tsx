@@ -1,12 +1,19 @@
 import { useEffect, Profiler } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation, I18nextProvider } from "react-i18next";
 import {
   HeadContent,
   Link,
   Scripts,
-  createRootRoute,
+  createRootRouteWithContext,
+  useMatches,
   useRouter,
 } from "@tanstack/react-router";
+import type { i18n } from "i18next";
+
+interface MyRouterContext {
+  i18n: i18n;
+}
+
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -22,7 +29,7 @@ import {
 const THEME_INIT_SCRIPT = `(function(){try{
   var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;performance.mark('hydration_start');}catch(e){}})();`;
 
-export const Route = createRootRoute({
+export const Route = createRootRouteWithContext<MyRouterContext>()({
   head: () => ({
     meta: [
       {
@@ -72,9 +79,21 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   }, []);
 
   const { locale = defaultLocale } = LocaleRoute.useParams();
+  const matches = useMatches();
   const router = useRouter();
+  const i18n = router.options.context!.i18n;
 
-  const { i18n } = useTranslation();
+  // Restore namespaces from dehydrated loader data before any component renders
+  matches.forEach((match) => {
+    const data = match.loaderData as any;
+    if (data?.resources) {
+      for (const [ns, bundle] of Object.entries(data.resources)) {
+        if (!i18n.hasResourceBundle(locale, ns)) {
+          i18n.addResourceBundle(locale, ns, bundle as any);
+        }
+      }
+    }
+  });
 
   if (i18n.language !== locale) {
     i18n.changeLanguage(locale);
@@ -89,22 +108,24 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     return () => {
       i18n.off("languageChanged", handler);
     };
-  }, []);
+  }, [i18n]);
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-        <HeadContent />
-      </head>
-      <body className="antialiased [overflow-wrap:anywhere]">
-        <Profiler id="AppRoot" onRender={onRender}>
-          <Header />
-          {children}
-          <Footer />
-        </Profiler>
-        <Scripts />
-      </body>
-    </html>
+    <I18nextProvider i18n={i18n}>
+      <html lang={locale} suppressHydrationWarning>
+        <head>
+          <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+          <HeadContent />
+        </head>
+        <body className="antialiased [overflow-wrap:anywhere]">
+          <Profiler id="AppRoot" onRender={onRender}>
+            <Header />
+            {children}
+            <Footer />
+          </Profiler>
+          <Scripts />
+        </body>
+      </html>
+    </I18nextProvider>
   );
 }

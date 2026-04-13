@@ -1,0 +1,20 @@
+{
+  "Benchmark CLI": "CLI de benchmark",
+  "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.": "Ejecute benchmarks localmente desde su terminal. Admite configuraciones personalizadas e integración de CI.",
+  "Free": "Gratis",
+  "Benchmark Cloud": "Benchmark Cloud",
+  "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.": "Benchmarking automatizado basado en la nube con seguimiento histórico, alertas y paneles de equipo.",
+  "Benchmark Enterprise": "Benchmark Enterprise",
+  "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.": "Implementación local con SSO, registros de auditoría, SLAs personalizados y soporte dedicado.",
+  "Contact Us": "Contáctenos",
+  "Migration Assistant": "Asistente de migración",
+  "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.": "Herramienta impulsada por IA que ayuda a migrar su base de código entre bibliotecas de i18n sin tiempo de inactividad.",
+  "$99 one-time": "$99 una sola vez",
+  "Translation QA": "Control de calidad de traducción",
+  "Automated quality checks for missing translations, pluralization issues, and context errors.": "Verificaciones de calidad automatizadas para traducciones faltantes, problemas de pluralización y errores de contexto.",
+  "Bundle Optimizer": "Optimizador de paquetes",
+  "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.": "Analiza y optimiza su paquete de i18n para producción con tree-shaking y división de código.",
+  "Learn More": "Saber más",
+  "Products": "Productos",
+  "Tools and services to streamline your internationalization workflow.": "Herramientas y servicios para agilizar su flujo de trabajo de internacionalización."
+}

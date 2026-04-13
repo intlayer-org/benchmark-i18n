@@ -1,14 +1,16 @@
-import { useIntlayer } from 'react-intlayer';
+import { useIntlayer } from "react-intlayer";
 import MockBanner from "../../MockBanner";
 
 export default function BlogHeader() {
-  const content = useIntlayer('blog-header');
+  const content = useIntlayer("blog-header");
 
   return (
     <>
       <MockBanner />
       <h1 className="mb-2 text-3xl font-bold text-foreground">Blog</h1>
-      <p className="mb-10 text-muted-foreground">{content.insightsTutorialsAndAnalysisFrom}</p>
+      <p className="mb-10 text-muted-foreground">
+        {content.insightsTutorialsAndAnalysisFrom}
+      </p>
     </>
   );
 }

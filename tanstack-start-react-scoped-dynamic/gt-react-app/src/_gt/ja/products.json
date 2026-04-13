@@ -1,0 +1,20 @@
+{
+  "Benchmark CLI": "Benchmark CLI",
+  "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.": "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+  "Free": "無料",
+  "Benchmark Cloud": "Benchmark Cloud",
+  "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.": "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+  "Benchmark Enterprise": "Benchmark Enterprise",
+  "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.": "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+  "Contact Us": "お問い合わせ",
+  "Migration Assistant": "移行アシスタント",
+  "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.": "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+  "$99 one-time": "$99 one-time",
+  "Translation QA": "Translation QA",
+  "Automated quality checks for missing translations, pluralization issues, and context errors.": "Automated quality checks for missing translations, pluralization issues, and context errors.",
+  "Bundle Optimizer": "Bundle Optimizer",
+  "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.": "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
+  "Learn More": "詳細はこちら",
+  "Products": "製品",
+  "Tools and services to streamline your internationalization workflow.": "Tools and services to streamline your internationalization workflow."
+}

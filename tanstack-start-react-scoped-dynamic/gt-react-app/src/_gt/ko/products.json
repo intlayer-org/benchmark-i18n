@@ -1,0 +1,20 @@
+{
+  "Benchmark CLI": "벤치마크 CLI",
+  "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.": "터미널에서 로컬로 벤치마크를 실행합니다. 사용자 지정 구성 및 CI 통합을 지원합니다.",
+  "Free": "무료",
+  "Benchmark Cloud": "벤치마크 클라우드",
+  "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.": "과거 기록, 경고 및 팀 대시보드를 갖춘 자동화된 클라우드 기반 벤치마킹.",
+  "Benchmark Enterprise": "벤치마크 엔터프라이즈",
+  "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.": "SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 포함하는 온프레미스 배포.",
+  "Contact Us": "문의처",
+  "Migration Assistant": "마이그레이션 도우미",
+  "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.": "제로 다운타임으로 i18n 라이브러리 간 코드베이스 마이그레이션을 돕는 AI 기반 도구입니다.",
+  "$99 one-time": "일회성 $99",
+  "Translation QA": "번역 품질 보증(QA)",
+  "Automated quality checks for missing translations, pluralization issues, and context errors.": "누락된 번역, 복수형 문제 및 문맥 오류에 대한 자동화된 품질 검사입니다.",
+  "Bundle Optimizer": "번들 최적화 도구",
+  "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.": "트리 쉐이킹 및 코드 분할을 사용하여 프로덕션용 i18n 번들을 분석하고 최적화합니다.",
+  "Learn More": "더 알아보기",
+  "Products": "제품",
+  "Tools and services to streamline your internationalization workflow.": "국제화 워크플로우를 간소화하는 도구 및 서비스입니다."
+}

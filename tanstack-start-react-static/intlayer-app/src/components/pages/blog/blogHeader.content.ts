@@ -1,7 +1,7 @@
-import { type Dictionary, t } from 'intlayer';
+import { type Dictionary, t } from "intlayer";
 
 const blogHeaderContent = {
-  key: 'blog-header',
+  key: "blog-header",
   content: {
     insightsTutorialsAndAnalysisFrom: t({
       en: "Insights, tutorials, and analysis from the i18n community.",

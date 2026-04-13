@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
+import { loadNamespaces } from "#/i18n/i18n";
+import { defaultLocale } from "#/i18n/config";
 
 const CareersHeader = lazy(
   () => import("../../components/pages/careers/CareersHeader"),
@@ -12,6 +14,15 @@ const OpenPositions = lazy(
 );
 
 export const Route = createFileRoute("/$locale/careers")({
+  loader: async ({ params, context }) => {
+    const { i18n } = context;
+    const resources = await loadNamespaces(
+      params.locale ?? defaultLocale,
+      ["careers"],
+      i18n,
+    );
+    return { resources };
+  },
   component: Careers,
 });
 

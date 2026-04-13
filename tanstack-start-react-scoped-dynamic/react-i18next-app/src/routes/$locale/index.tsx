@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
+import { loadNamespaces } from "#/i18n/i18n";
+import { defaultLocale } from "#/i18n/config";
 
 const Hero = lazy(() => import("../../components/pages/home/Hero"));
 const WhyItMatters = lazy(
@@ -13,6 +15,15 @@ const ResultsTable = lazy(
 );
 
 export const Route = createFileRoute("/$locale/")({
+  loader: async ({ params, context }) => {
+    const { i18n } = context;
+    const resources = await loadNamespaces(
+      params.locale ?? defaultLocale,
+      ["home"],
+      i18n,
+    );
+    return { resources };
+  },
   component: Home,
 });
 
