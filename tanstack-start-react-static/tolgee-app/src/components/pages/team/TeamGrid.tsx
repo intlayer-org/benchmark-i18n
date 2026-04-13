@@ -1,4 +1,4 @@
-import { useTranslate } from "@tolgee/react";
+import { useTranslate } from "../../../i18n/config";
 
 export default function TeamGrid() {
   const { t } = useTranslate();
@@ -9,7 +9,7 @@ export default function TeamGrid() {
       role: t("teamGrid.founderLeadEngineer", "Founder & Lead Engineer"),
       bio: t(
         "teamGrid.formerGoogleEngineerWith",
-        "Former Google engineer with 10 years of experience building internationalization systems at scale."
+        "Former Google engineer with 10 years of experience building internationalization systems at scale.",
       ),
     },
     {
@@ -17,7 +17,7 @@ export default function TeamGrid() {
       role: t("teamGrid.performanceEngineer", "Performance Engineer"),
       bio: t(
         "teamGrid.specializesInJavascriptPerformance",
-        "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+        "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
       ),
     },
     {
@@ -25,7 +25,7 @@ export default function TeamGrid() {
       role: t("teamGrid.developerAdvocate", "Developer Advocate"),
       bio: t(
         "teamGrid.passionateAboutDeveloperExperience",
-        "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+        "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
       ),
     },
     {
@@ -33,7 +33,7 @@ export default function TeamGrid() {
       role: t("teamGrid.fullStackDeveloper", "Full-Stack Developer"),
       bio: t(
         "teamGrid.maintainsTheBenchmarkingInfrastructure",
-        "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+        "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
       ),
     },
     {
@@ -41,7 +41,7 @@ export default function TeamGrid() {
       role: t("teamGrid.dataAnalyst", "Data Analyst"),
       bio: t(
         "teamGrid.ensuresStatisticalRigorIn",
-        "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+        "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
       ),
     },
     {
@@ -49,7 +49,7 @@ export default function TeamGrid() {
       role: t("teamGrid.communityManager", "Community Manager"),
       bio: t(
         "teamGrid.managesCommunityContributions",
-        "Manages community contributions, partnerships, and events. Background in open source governance."
+        "Manages community contributions, partnerships, and events. Background in open source governance.",
       ),
     },
   ];

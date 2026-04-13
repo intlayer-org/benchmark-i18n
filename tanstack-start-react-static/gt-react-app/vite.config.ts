@@ -4,8 +4,17 @@ import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { visualizer } from "rollup-plugin-visualizer";
 import packageJson from "./package.json" with { type: "json" };
+import { resolve } from "path";
 
 const config = defineConfig({
+  resolve: {
+    alias: {
+      "@formatjs/icu-messageformat-parser/printer": resolve(
+        __dirname,
+        "./fix.ts",
+      ),
+    },
+  },
   plugins: [
     tailwindcss(),
     tanstackStart(),

@@ -35,7 +35,7 @@ export default function Header() {
             params={{ locale: currentLocale }}
             className="text-lg font-bold tracking-tight text-primary no-underline"
           >
-            i18n Bench
+            {i18n._("header.i18nBench")}
           </Link>
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">

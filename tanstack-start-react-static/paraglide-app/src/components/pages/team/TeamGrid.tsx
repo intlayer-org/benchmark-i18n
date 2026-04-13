@@ -1,37 +1,39 @@
-const members = [
-  {
-    name: "Sarah Chen",
-    role: "Founder & Lead Engineer",
-    bio: "Former Google engineer with 10 years of experience building internationalization systems at scale.",
-  },
-  {
-    name: "Marcus Weber",
-    role: "Performance Engineer",
-    bio: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
-  },
-  {
-    name: "Aisha Patel",
-    role: "Developer Advocate",
-    bio: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
-  },
-  {
-    name: "Tomás Rodríguez",
-    role: "Full-Stack Developer",
-    bio: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
-  },
-  {
-    name: "Yuki Tanaka",
-    role: "Data Analyst",
-    bio: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
-  },
-  {
-    name: "Elena Kowalski",
-    role: "Community Manager",
-    bio: "Manages community contributions, partnerships, and events. Background in open source governance.",
-  },
-];
+import * as m from "../../../paraglide/messages";
 
 export default function TeamGrid() {
+  const members = [
+    {
+      name: m["team-grid.sarahChen"](),
+      role: m["team-grid.founderLeadEngineer"](),
+      bio: m["team-grid.formerGoogleEngineerWith10"](),
+    },
+    {
+      name: m["team-grid.marcusWeber"](),
+      role: m["team-grid.performanceEngineer"](),
+      bio: m["team-grid.specializesInJavascriptPerformanceOptimization"](),
+    },
+    {
+      name: m["team-grid.aishaPatel"](),
+      role: m["team-grid.developerAdvocate"](),
+      bio: m["team-grid.passionateAboutDeveloperExperienceAnd"](),
+    },
+    {
+      name: m["team-grid.tomasRodriguez"](),
+      role: m["team-grid.fullStackDeveloper"](),
+      bio: m["team-grid.maintainsTheBenchmarkingInfrastructureAnd"](),
+    },
+    {
+      name: m["team-grid.yukiTanaka"](),
+      role: m["team-grid.dataAnalyst"](),
+      bio: m["team-grid.ensuresStatisticalRigorInAll"](),
+    },
+    {
+      name: m["team-grid.elenaKowalski"](),
+      role: m["team-grid.communityManager"](),
+      bio: m["team-grid.managesCommunityContributionsPartnershipsAnd"](),
+    },
+  ];
+
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {members.map((m) => (

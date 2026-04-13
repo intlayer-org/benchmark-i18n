@@ -1,69 +1,69 @@
 import { T } from "gt-react";
 
-const openings = [
-  {
-    title: <T>Senior Frontend Engineer</T>,
-    location: <T>Remote</T>,
-    type: <T>Full-time</T>,
-    dept: <T>Engineering</T>,
-    desc: (
-      <T>
-        Build and maintain our benchmarking dashboard and developer tools using
-        React, TypeScript, and Vite.
-      </T>
-    ),
-  },
-  {
-    title: <T>Backend Engineer</T>,
-    location: <T>Remote</T>,
-    type: <T>Full-time</T>,
-    dept: <T>Engineering</T>,
-    desc: (
-      <T>
-        Design and scale our cloud benchmarking infrastructure handling
-        thousands of automated runs daily.
-      </T>
-    ),
-  },
-  {
-    title: <T>Technical Writer</T>,
-    location: <T>Remote</T>,
-    type: <T>Part-time</T>,
-    dept: <T>Documentation</T>,
-    desc: (
-      <T>
-        Create comprehensive guides, API references, and tutorials for our
-        benchmarking platform.
-      </T>
-    ),
-  },
-  {
-    title: <T>DevRel Engineer</T>,
-    location: <T>San Francisco / Remote</T>,
-    type: <T>Full-time</T>,
-    dept: <T>Community</T>,
-    desc: (
-      <T>
-        Engage with the i18n community through talks, workshops, blog posts, and
-        open source contributions.
-      </T>
-    ),
-  },
-  {
-    title: <T>QA Engineer</T>,
-    location: <T>Remote</T>,
-    type: <T>Full-time</T>,
-    dept: <T>Engineering</T>,
-    desc: (
-      <T>
-        Ensure the accuracy and reliability of benchmark results through
-        rigorous testing and validation.
-      </T>
-    ),
-  },
-];
-
 export default function OpenPositions() {
+  const openings = [
+    {
+      title: <T>Senior Frontend Engineer</T>,
+      location: <T>Remote</T>,
+      type: <T>Full-time</T>,
+      dept: <T>Engineering</T>,
+      desc: (
+        <T>
+          Build and maintain our benchmarking dashboard and developer tools
+          using React, TypeScript, and Vite.
+        </T>
+      ),
+    },
+    {
+      title: <T>Backend Engineer</T>,
+      location: <T>Remote</T>,
+      type: <T>Full-time</T>,
+      dept: <T>Engineering</T>,
+      desc: (
+        <T>
+          Design and scale our cloud benchmarking infrastructure handling
+          thousands of automated runs daily.
+        </T>
+      ),
+    },
+    {
+      title: <T>Technical Writer</T>,
+      location: <T>Remote</T>,
+      type: <T>Part-time</T>,
+      dept: <T>Documentation</T>,
+      desc: (
+        <T>
+          Create comprehensive guides, API references, and tutorials for our
+          benchmarking platform.
+        </T>
+      ),
+    },
+    {
+      title: <T>DevRel Engineer</T>,
+      location: <T>San Francisco / Remote</T>,
+      type: <T>Full-time</T>,
+      dept: <T>Community</T>,
+      desc: (
+        <T>
+          Engage with the i18n community through talks, workshops, blog posts,
+          and open source contributions.
+        </T>
+      ),
+    },
+    {
+      title: <T>QA Engineer</T>,
+      location: <T>Remote</T>,
+      type: <T>Full-time</T>,
+      dept: <T>Engineering</T>,
+      desc: (
+        <T>
+          Ensure the accuracy and reliability of benchmark results through
+          rigorous testing and validation.
+        </T>
+      ),
+    },
+  ];
+
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">

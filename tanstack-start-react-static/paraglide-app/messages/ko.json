@@ -52,7 +52,8 @@
     "sampleResults": "샘플 결과",
     "bundleSize": "번들 크기",
     "lookupTime": "조회 시간",
-    "lazyLoading": "지연 로딩"
+    "lazyLoading": "지연 로딩",
+    "library": "라이브러리"
   },
   "understanding-impact": {
     "understandingTheImpact": "영향 이해하기",
@@ -156,7 +157,11 @@
     "newBenchmarkIdea": "새로운 벤치마크 아이디어",
     "methodologyQuestion": "방법론 질문",
     "describeYourQuestionOrIdea": "질문이나 아이디어를 설명해주세요...",
-    "sendMessage": "메시지 보내기"
+    "sendMessage": "메시지 보내기",
+    "topic": "주제",
+    "contribution": "기여",
+    "other": "기타",
+    "message": "메시지"
   },
   "faq-header1": {
     "frequentlyAskedQuestions": "자주 묻는 질문",
@@ -278,7 +283,8 @@
     "spanishEs": "스페인어 (es)",
     "japaneseJa": "일본어 (ja)",
     "chineseSimplifiedZhCn": "중국어 간체 (zh-CN)",
-    "arabicAr": "아랍어 (ar)"
+    "arabicAr": "아랍어 (ar)",
+    "preferences": "환경 설정"
   },
   "api-access-section": {
     "apiAccess": "API 액세스",

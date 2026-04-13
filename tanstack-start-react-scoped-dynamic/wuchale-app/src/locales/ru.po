@@ -18,84 +18,84 @@ msgstr ""
 
 #: src/components/pages/home/Hero.tsx
 msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
-msgstr ""
+msgstr "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга."
 
 #: src/components/pages/home/Hero.tsx
 msgid "View Results"
-msgstr ""
+msgstr "Посмотреть результаты"
 
 #: src/components/Footer.tsx
 #: src/components/Header.tsx
 #: src/components/pages/about/AboutGrid.tsx
 #: src/components/pages/home/Hero.tsx
 msgid "Methodology"
-msgstr ""
+msgstr "Методология"
 
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Manual"
-msgstr ""
+msgstr "Вручную"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Built-in"
-msgstr ""
+msgstr "Встроенный"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Sample Results"
-msgstr ""
+msgstr "Примеры результатов"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Library"
-msgstr ""
+msgstr "Библиотека"
 
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Bundle Size"
-msgstr ""
+msgstr "Размер бандла"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Lookup Time"
-msgstr ""
+msgstr "Время поиска"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Lazy Loading"
-msgstr ""
+msgstr "Ленивая загрузка"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Understanding the Impact"
-msgstr ""
+msgstr "Понимание влияния"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Why a single large JSON can hurt performance"
-msgstr ""
+msgstr "Почему один большой JSON может снизить производительность"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
-msgstr ""
+msgstr "Многие библиотеки i18n хранят переводы в одном объекте JSON, предоставляемом через контекст React. Когда этот объект большой (тысячи ключей), каждый компонент, использующий переводы, хранит ссылку на весь словарь. Это означает:"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "The JSON must be parsed on every page load — blocking the main thread."
-msgstr ""
+msgstr "JSON должен парситься при каждой загрузке страницы — блокируя основной поток."
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
-msgstr ""
+msgstr "Архитектуры на основе контекста могут вызывать каскадные повторные рендеринги при изменении локали, потому что каждый потребитель уведомляется, даже если его конкретные ключи не изменились."
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
-msgstr ""
+msgstr "Во время серверного рендеринга весь словарь сериализуется в HTML-пейлоад, увеличивая размер документа, который необходимо загрузить и гидратировать."
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "The trade-offs of dynamic loading"
-msgstr ""
+msgstr "Компромиссы динамической загрузки"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
-msgstr ""
+msgstr "Разделение переводов на чанки для каждого маршрута или пространства имен может значительно уменьшить начальный пейлоад. Но это создает новые проблемы:"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
@@ -113,35 +113,35 @@ msgstr ""
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "What this benchmark measures"
-msgstr ""
+msgstr "Что измеряет этот бенчмарк"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
-msgstr ""
+msgstr "Это тестовое приложение предоставляет контролируемую среду — 10 страниц с реалистичным контентом — для сравнения библиотек i18n по трем осям: вес, который они добавляют вашему JavaScript-бандлу, время, затраченное на парсинг и рендеринг переведенного контента, и эффективность их стратегий разделения кода и ленивой загрузки. Каждая библиотека интегрирована в одно и то же приложение, поэтому результаты напрямую сопоставимы."
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Why These Metrics Matter"
-msgstr ""
+msgstr "Почему эти показатели важны"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
-msgstr ""
+msgstr "Бандл — это данные, которые отправляются каждому пользователю по всему миру. Большой размер бандла означает более долгое время загрузки, особенно при медленном 3G-соединении, характерном для многих регионов. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт рантайм-кода, плюс сами файлы переводов."
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Rendering & Hydration"
-msgstr ""
+msgstr "Рендеринг и гидратация"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
-msgstr ""
+msgstr "Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг всего дерева. Во время гидратации SSR парсинг и присоединение массивных объектов перевода добавляют задержку до того, как страница станет интерактивной, что напрямую влияет на Time to Interactive (TTI)."
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Dynamic Loading"
-msgstr ""
+msgstr "Динамическая загрузка"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
-msgstr ""
+msgstr "Загрузка всех переводов сразу перегружает начальную полезную нагрузку. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно для текущей страницы. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы (waterfall), мерцание непереведенного контента и сложность кэширования. Измерение обеих стратегий необходимо."
 
 #: src/components/pages/about/AboutGrid.tsx
 msgid "Why This Exists"
@@ -169,7 +169,7 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Bundle size impact"
-msgstr ""
+msgstr "Влияние на размер бандла"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
@@ -177,7 +177,7 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Rendering overhead"
-msgstr ""
+msgstr "Затраты на рендеринг"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
@@ -185,7 +185,7 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Hydration cost"
-msgstr ""
+msgstr "Стоимость гидратации"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
@@ -193,28 +193,28 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Lazy loading effectiveness"
-msgstr ""
+msgstr "Эффективность ленивой загрузки"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
-msgstr ""
+msgstr "Действительно ли разделение переводов по маршрутам или пространствам имен снижает начальную нагрузку, и какие компромиссы оно вносит (каскадные запросы, FOUC, сложность кэширования)."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Locale switch speed"
-msgstr ""
+msgstr "Скорость переключения языка"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
-msgstr ""
+msgstr "Как быстро приложение может переключаться с одного языка на другой во время выполнения — включая получение новых переводов, повторный рендеринг компонентов и обновление DOM."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "What We Measure"
-msgstr ""
+msgstr "Что мы измеряем"
 
 #: src/components/Header.tsx
 #: src/components/pages/blog/BlogHeader.tsx
 msgid "Blog"
-msgstr ""
+msgstr "Блог"
 
 #: src/components/pages/blog/BlogHeader.tsx
 msgid "Insights, tutorials, and analysis from the i18n community."
@@ -222,7 +222,7 @@ msgstr ""
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Read More →"
-msgstr ""
+msgstr "Читать далее →"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Remote-first"
@@ -247,19 +247,19 @@ msgstr ""
 #: src/components/Header.tsx
 #: src/components/pages/careers/CareersHeader.tsx
 msgid "Careers"
-msgstr ""
+msgstr "Карьера"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Open Positions"
-msgstr ""
+msgstr "Открытые вакансии"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Apply Now"
-msgstr ""
+msgstr "Подать заявку"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Name"
-msgstr ""
+msgstr "Имя"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Your name"
@@ -268,7 +268,7 @@ msgstr ""
 #: src/components/pages/contact/ContactForm.tsx
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Topic"
@@ -296,7 +296,7 @@ msgstr ""
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Message"
-msgstr ""
+msgstr "Сообщение"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Describe your question or idea..."
@@ -304,7 +304,7 @@ msgstr ""
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Send Message"
-msgstr ""
+msgstr "Отправить сообщение"
 
 #: src/components/pages/contact/ContactHeader.tsx
 msgid "Get in Touch"
@@ -317,11 +317,11 @@ msgstr ""
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Часто задаваемые вопросы"
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Everything you need to know about i18n Benchmark."
-msgstr ""
+msgstr "Все, что вам нужно знать о проекте i18n Benchmark."
 
 #: src/components/pages/pricing/PricingHeader.tsx
 msgid "Simple, Transparent Pricing"
@@ -337,21 +337,20 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Contact Sales"
-msgstr ""
+msgstr "Связаться с отделом продаж"
 
 #: src/components/pages/pricing/PricingTiers.tsx
-#: src/components/pages/pricing/PricingTiers.tsx
 msgid "Get Started"
-msgstr ""
+msgstr "Начать"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Learn More"
-msgstr ""
+msgstr "Узнать больше"
 
 #: src/components/Header.tsx
 #: src/components/pages/products/ProductsHeader.tsx
 msgid "Products"
-msgstr ""
+msgstr "Продукты"
 
 #: src/components/pages/products/ProductsHeader.tsx
 msgid "Tools and services to streamline your internationalization workflow."
@@ -359,31 +358,31 @@ msgstr ""
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "API Access"
-msgstr ""
+msgstr "Доступ к API"
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "API Key"
-msgstr ""
+msgstr "Ключ API"
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "Copy"
-msgstr ""
+msgstr "Копировать"
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "Use this key to access the benchmarking API programmatically."
-msgstr ""
+msgstr "Используйте этот ключ для программного доступа к API бенчмаркинга."
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Preferences"
-msgstr ""
+msgstr "Настройки"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Email Notifications"
-msgstr ""
+msgstr "Email-уведомления"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Receive weekly benchmark reports"
-msgstr ""
+msgstr "Получать еженедельные отчеты о бенчмарках"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle notifications"
@@ -391,11 +390,11 @@ msgstr ""
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Dark Mode"
-msgstr ""
+msgstr "Темный режим"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Use dark color scheme"
-msgstr ""
+msgstr "Использовать темную цветовою схему"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle dark mode"
@@ -403,7 +402,7 @@ msgstr ""
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Default Language"
-msgstr ""
+msgstr "Язык по умолчанию"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "English (en)"
@@ -435,11 +434,11 @@ msgstr ""
 
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "Profile"
-msgstr ""
+msgstr "Профиль"
 
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "Display Name"
-msgstr ""
+msgstr "Отображаемое имя"
 
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "John Developer"
@@ -447,36 +446,36 @@ msgstr ""
 
 #: src/components/pages/settings/SettingsFooter.tsx
 msgid "Cancel"
-msgstr ""
+msgstr "Отмена"
 
 #: src/components/pages/settings/SettingsFooter.tsx
 msgid "Save Changes"
-msgstr ""
+msgstr "Сохранить изменения"
 
 #: src/components/Header.tsx
 #: src/components/pages/settings/SettingsHeader.tsx
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 #: src/components/pages/settings/SettingsHeader.tsx
 msgid "Manage your account preferences and configuration."
-msgstr ""
+msgstr "Управляйте настройками своего аккаунта и конфигурацией."
 
 #: src/components/pages/team/TeamHeader.tsx
 msgid "Our Team"
-msgstr ""
+msgstr "Наша команда"
 
 #: src/components/pages/team/TeamHeader.tsx
 msgid "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
-msgstr ""
+msgstr "Познакомьтесь с людьми, стоящими за i18n Benchmark. Разнообразная команда, объединенная общей страстью к отличным инструментам для разработчиков."
 
 #: src/routes/__root.tsx
 msgid "Oops! Page not found"
-msgstr ""
+msgstr "Упс! Страница не найдена"
 
 #: src/routes/__root.tsx
 msgid "Return to Home"
-msgstr ""
+msgstr "Вернуться на главную"
 
 #: src/routes/__root.tsx
 msgid "AppRoot"
@@ -484,24 +483,24 @@ msgstr ""
 
 #: src/components/Footer.tsx
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/components/Footer.tsx
 msgid "Contributing"
-msgstr ""
+msgstr "Вклад"
 
 #: src/components/Footer.tsx
 msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
-msgstr ""
+msgstr "Открытое приложение для тестирования реального влияния библиотек интернационализации на размер бандла, время загрузки и отзывчивость приложения."
 
 #: src/components/Footer.tsx
 msgid "Resources"
-msgstr ""
+msgstr "Ресурсы"
 
 #: src/components/Footer.tsx
 #: src/components/Header.tsx
 msgid "Contact"
-msgstr ""
+msgstr "Контакт"
 
 #: src/components/Footer.tsx
 msgid "contact@intlayer.org"
@@ -509,7 +508,7 @@ msgstr ""
 
 #: src/components/Footer.tsx
 msgid "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
-msgstr ""
+msgstr "i18n Benchmark — Открытый проект. Построен на React, Vite и TanStack Router."
 
 #: src/components/Header.tsx
 msgid "Header"
@@ -517,11 +516,11 @@ msgstr ""
 
 #: src/components/Header.tsx
 msgid "Pricing"
-msgstr ""
+msgstr "Цены"
 
 #: src/components/Header.tsx
 msgid "Team"
-msgstr ""
+msgstr "Команда"
 
 #: src/components/Header.tsx
 msgid "i18n Bench"
@@ -529,7 +528,7 @@ msgstr ""
 
 #: src/components/Header.tsx
 msgid "Home"
-msgstr ""
+msgstr "Главная"
 
 #: src/components/Header.tsx
 msgid "Mock Pages <0/>"
@@ -537,15 +536,15 @@ msgstr ""
 
 #: src/components/Header.tsx
 msgid "Go to GitHub"
-msgstr ""
+msgstr "Перейти на GitHub"
 
 #: src/components/MockBanner.tsx
 msgid "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
-msgstr ""
+msgstr "⚠️ Эта страница содержит фиктивные данные только для целей тестирования производительности. Она не связана с каким-либо реальным бизнесом или услугой."
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme mode: auto (system). Click to switch to light mode."
-msgstr ""
+msgstr "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему."
 
 #. 0: mode
 #: src/components/ThemeToggle.tsx
@@ -554,15 +553,15 @@ msgstr ""
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme: Auto"
-msgstr ""
+msgstr "Тема: Авто"
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme: Dark"
-msgstr ""
+msgstr "Тема: Темная"
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme: Light"
-msgstr ""
+msgstr "Тема: Светлая"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Senior Frontend Engineer"
@@ -570,7 +569,7 @@ msgstr ""
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Remote"
-msgstr ""
+msgstr "Удаленно"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Full-time"
@@ -610,7 +609,7 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Priority support"
-msgstr ""
+msgstr "Приоритетная поддержка"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Private results"
@@ -626,7 +625,7 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Custom"
-msgstr ""
+msgstr "Индивидуально"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Everything in Pro"

@@ -1,4 +1,14 @@
 import { Tolgee, DevTools, FormatSimple } from "@tolgee/web";
+import en from "./locales/en.json";
+import de from "./locales/de.json";
+import es from "./locales/es.json";
+import fr from "./locales/fr.json";
+import it from "./locales/it.json";
+import ja from "./locales/ja.json";
+import ko from "./locales/ko.json";
+import pt from "./locales/pt.json";
+import ru from "./locales/ru.json";
+import zh from "./locales/zh.json";
 
 export const tolgee = Tolgee()
   // Enables in-context editing (ALT + Click) in development
@@ -12,15 +22,15 @@ export const tolgee = Tolgee()
     apiKey: import.meta.env.VITE_TOLGEE_API_KEY,
     // Provide local translation files for production fallback
     staticData: {
-      en: () => import("./locales/en.json"),
-      fr: () => import("./locales/fr.json"),
-      es: () => import("./locales/es.json"),
-      de: () => import("./locales/de.json"),
-      it: () => import("./locales/it.json"),
-      pt: () => import("./locales/pt.json"),
-      zh: () => import("./locales/zh.json"),
-      ja: () => import("./locales/ja.json"),
-      ko: () => import("./locales/ko.json"),
-      ru: () => import("./locales/ru.json"),
+      en,
+      de,
+      es,
+      fr,
+      it,
+      ja,
+      ko,
+      pt,
+      ru,
+      zh,
     },
   });

@@ -1,69 +1,69 @@
 import { T } from "gt-react";
 
-const products = [
-  {
-    name: <T>Benchmark CLI</T>,
-    desc: (
-      <T>
-        Run benchmarks locally from your terminal. Supports custom
-        configurations and CI integration.
-      </T>
-    ),
-    price: <T>Free</T>,
-  },
-  {
-    name: <T>Benchmark Cloud</T>,
-    desc: (
-      <T>
-        Automated cloud-based benchmarking with historical tracking, alerts, and
-        team dashboards.
-      </T>
-    ),
-    price: "$29/mo",
-  },
-  {
-    name: <T>Benchmark Enterprise</T>,
-    desc: (
-      <T>
-        On-premise deployment with SSO, audit logs, custom SLAs, and dedicated
-        support.
-      </T>
-    ),
-    price: <T>Contact Us</T>,
-  },
-  {
-    name: <T>Migration Assistant</T>,
-    desc: (
-      <T>
-        AI-powered tool that helps migrate your codebase between i18n libraries
-        with zero downtime.
-      </T>
-    ),
-    price: <T>$99 one-time</T>,
-  },
-  {
-    name: <T>Translation QA</T>,
-    desc: (
-      <T>
-        Automated quality checks for missing translations, pluralization issues,
-        and context errors.
-      </T>
-    ),
-    price: "$19/mo",
-  },
-  {
-    name: <T>Bundle Optimizer</T>,
-    desc: (
-      <T>
-        Analyzes and optimizes your i18n bundle for production with tree-shaking
-        and code splitting.
-      </T>
-    ),
-    price: "$49/mo",
-  },
-];
-
 export default function ProductsGrid() {
+  const products = [
+    {
+      name: <T>Benchmark CLI</T>,
+      desc: (
+        <T>
+          Run benchmarks locally from your terminal. Supports custom
+          configurations and CI integration.
+        </T>
+      ),
+      price: <T>Free</T>,
+    },
+    {
+      name: <T>Benchmark Cloud</T>,
+      desc: (
+        <T>
+          Automated cloud-based benchmarking with historical tracking, alerts,
+          and team dashboards.
+        </T>
+      ),
+      price: "$29/mo",
+    },
+    {
+      name: <T>Benchmark Enterprise</T>,
+      desc: (
+        <T>
+          On-premise deployment with SSO, audit logs, custom SLAs, and dedicated
+          support.
+        </T>
+      ),
+      price: <T>Contact Us</T>,
+    },
+    {
+      name: <T>Migration Assistant</T>,
+      desc: (
+        <T>
+          AI-powered tool that helps migrate your codebase between i18n
+          libraries with zero downtime.
+        </T>
+      ),
+      price: <T>$99 one-time</T>,
+    },
+    {
+      name: <T>Translation QA</T>,
+      desc: (
+        <T>
+          Automated quality checks for missing translations, pluralization
+          issues, and context errors.
+        </T>
+      ),
+      price: "$19/mo",
+    },
+    {
+      name: <T>Bundle Optimizer</T>,
+      desc: (
+        <T>
+          Analyzes and optimizes your i18n bundle for production with
+          tree-shaking and code splitting.
+        </T>
+      ),
+      price: "$49/mo",
+    },
+  ];
+
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {products.map((p) => (

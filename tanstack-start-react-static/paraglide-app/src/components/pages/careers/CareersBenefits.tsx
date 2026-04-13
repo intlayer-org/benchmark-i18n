@@ -1,9 +1,17 @@
+import * as m from "../../../paraglide/messages";
+
 export default function CareersBenefits() {
   const benefits = [
-    { label: "Remote-first", value: "Work from anywhere in the world" },
-    { label: "Competitive pay", value: "Top-of-market compensation" },
     {
-      label: "Open source time",
+      label: m["open-positions.remote"](),
+      value: m["careers-benefits.workFromAnywhereInThe"](),
+    },
+    {
+      label: m["careers-benefits.competitivePay"](),
+      value: m["careers-benefits.topOfMarketCompensation"](),
+    },
+    {
+      label: m["careers-benefits.openSourceTime"](),
       value: "20% time for OSS contributions",
     },
   ];

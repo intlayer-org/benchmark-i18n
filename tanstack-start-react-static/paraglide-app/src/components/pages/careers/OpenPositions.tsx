@@ -1,46 +1,48 @@
+import * as m from "../../../paraglide/messages";
+
 export default function OpenPositions() {
   const openings = [
     {
-      title: "Senior Frontend Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+      title: m["open-positions.seniorFrontendEngineer"](),
+      location: m["open-positions.remote"](),
+      type: m["open-positions.fullTime"](),
+      dept: m["open-positions.engineering"](),
+      desc: m["open-positions.buildAndMaintainOurBenchmarking"](),
     },
     {
-      title: "Backend Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+      title: m["open-positions.backendEngineer"](),
+      location: m["open-positions.remote"](),
+      type: m["open-positions.fullTime"](),
+      dept: m["open-positions.engineering"](),
+      desc: m["open-positions.designAndScaleOurCloud"](),
     },
     {
-      title: "Technical Writer",
-      location: "Remote",
-      type: "Part-time",
-      dept: "Documentation",
-      desc: "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
+      title: m["open-positions.technicalWriter"](),
+      location: m["open-positions.remote"](),
+      type: m["open-positions.partTime"](),
+      dept: m["open-positions.documentation"](),
+      desc: m["open-positions.createComprehensiveGuidesApiReferences"](),
     },
     {
-      title: "DevRel Engineer",
-      location: "San Francisco / Remote",
-      type: "Full-time",
-      dept: "Community",
-      desc: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+      title: m["open-positions.devrelEngineer"](),
+      location: m["open-positions.sanFranciscoRemote"](),
+      type: m["open-positions.fullTime"](),
+      dept: m["open-positions.community"](),
+      desc: m["open-positions.engageWithTheI18nCommunity"](),
     },
     {
-      title: "QA Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
+      title: m["open-positions.qaEngineer"](),
+      location: m["open-positions.remote"](),
+      type: m["open-positions.fullTime"](),
+      dept: m["open-positions.engineering"](),
+      desc: m["open-positions.ensureTheAccuracyAndReliability"](),
     },
   ];
 
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        Open Positions
+        {m["open-positions.openPositions"]()}
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
@@ -69,7 +71,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              Apply Now
+              {m["open-positions.applyNow"]()}
             </button>
           </div>
         ))}

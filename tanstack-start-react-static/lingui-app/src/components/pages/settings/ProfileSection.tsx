@@ -1,19 +1,24 @@
 import { useId } from "react";
+import { Trans } from "@lingui/react";
+import { useLingui } from "@lingui/react";
 
 export default function ProfileSection() {
+  const { i18n } = useLingui();
   const displayNameId = useId();
   const emailId = useId();
 
   return (
     <section className="rounded-lg border border-border bg-card p-6">
-      <h2 className="mb-4 text-lg font-semibold text-foreground">Profile</h2>
+      <h2 className="mb-4 text-lg font-semibold text-foreground">
+        <Trans id="settings.profile.title" message="Profile" />
+      </h2>
       <div className="space-y-4">
         <div>
           <label
             htmlFor={displayNameId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Display Name
+            <Trans id="settings.profile.displayName" message="Display Name" />
           </label>
           <input
             id={displayNameId}
@@ -26,7 +31,7 @@ export default function ProfileSection() {
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Email
+            <Trans id="settings.profile.email" message="Email" />
           </label>
           <input
             id={emailId}

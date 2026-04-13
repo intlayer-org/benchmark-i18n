@@ -1,7 +1,7 @@
 import { Link, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { T, useTranslate } from "@tolgee/react";
+import { T, useTranslate } from "../i18n/config";
 import ThemeToggle from "./ThemeToggle";
 import LocaleSwitcher from "./LocaleSwitcher";
 

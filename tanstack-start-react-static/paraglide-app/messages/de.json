@@ -49,10 +49,9 @@
     "loadingAllTranslationsUpfrontOverloads": "Das Laden aller Übersetzungen im Voraus überlastet den initialen Payload. Dynamisches (Lazy) Loading teilt Übersetzungen nach Route oder Namensraum auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Aufblitzen von nicht übersetzten Inhalten (FOUC) und Cache-Komplexität. Die Messung beider Strategien ist essenziell."
   },
   "results-table": {
-    "sampleResults": "Beispielergebnisse",
-    "bundleSize": "Bundle-Größe",
     "lookupTime": "Suchzeit",
-    "lazyLoading": "Lazy Loading"
+    "lazyLoading": "Lazy Loading",
+    "library": "Bibliothek"
   },
   "understanding-impact": {
     "understandingTheImpact": "Die Auswirkungen verstehen",
@@ -156,7 +155,11 @@
     "newBenchmarkIdea": "Neue Benchmark-Idee",
     "methodologyQuestion": "Frage zur Methodik",
     "describeYourQuestionOrIdea": "Beschreiben Sie Ihre Frage oder Idee...",
-    "sendMessage": "Nachricht senden"
+    "sendMessage": "Nachricht senden",
+    "topic": "Thema",
+    "contribution": "Beitrag",
+    "other": "Andere",
+    "message": "Nachricht"
   },
   "faq-header1": {
     "frequentlyAskedQuestions": "Häufig gestellte Fragen",
@@ -265,6 +268,7 @@
     "email": "E-Mail"
   },
   "preferences-section": {
+    "preferences": "Einstellungen",
     "emailNotifications": "E-Mail-Benachrichtigungen",
     "receiveWeeklyBenchmarkReports": "Wöchentliche Benchmark-Berichte erhalten",
     "toggleNotifications": "Benachrichtigungen umschalten",

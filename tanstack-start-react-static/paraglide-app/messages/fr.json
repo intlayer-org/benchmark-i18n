@@ -52,7 +52,8 @@
     "sampleResults": "Exemples de résultats",
     "bundleSize": "Taille du bundle",
     "lookupTime": "Temps de recherche",
-    "lazyLoading": "Chargement différé"
+    "lazyLoading": "Chargement différé",
+    "library": "Bibliothèque"
   },
   "understanding-impact": {
     "understandingTheImpact": "Comprendre l'impact",
@@ -64,8 +65,11 @@
     "theTradeOffsOfDynamic": "Les compromis du chargement dynamique",
     "splittingTranslationsIntoPerRoute": "La division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. Mais cela introduit de nouveaux défis :",
     "waterfallRequests": "Requêtes en cascade :",
+    "waterfallRequestsDesc": "l'application doit d'abord se charger, déterminer la langue, puis récupérer le bon morceau — ajoutant des allers-retours réseau.",
     "flashOfUntranslatedContentFouc": "Flash de contenu non traduit (FOUC) :",
+    "flashOfUntranslatedContentFoucDesc": "les utilisateurs peuvent brièvement voir les clés de traduction ou une langue de repli avant l'arrivée du morceau.",
     "cacheInvalidation": "Invalidation du cache :",
+    "cacheInvalidationDesc": "la mise à jour des traductions nécessite des stratégies de purge du cache pour garantir que les utilisateurs reçoivent le contenu frais sans re-télécharger les morceaux inchangés.",
     "whatThisBenchmarkMeasures": "Ce que ce benchmark mesure",
     "thisTestAppProvidesA": "Cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle JavaScript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. Chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables."
   },
@@ -156,7 +160,11 @@
     "newBenchmarkIdea": "Nouvelle idée de benchmark",
     "methodologyQuestion": "Question sur la méthodologie",
     "describeYourQuestionOrIdea": "Décrivez votre question ou idée...",
-    "sendMessage": "Envoyer le message"
+    "sendMessage": "Envoyer le message",
+    "topic": "Sujet",
+    "contribution": "Contribution",
+    "other": "Autre",
+    "message": "Message"
   },
   "faq-header1": {
     "frequentlyAskedQuestions": "Foire aux questions",
@@ -230,7 +238,12 @@
     "automatedQualityChecksForMissing": "Contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
     "bundleOptimizer": "Optimiseur de bundle",
     "analyzesAndOptimizesYourI18n": "Analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.",
-    "learnMore": "En savoir plus"
+    "learnMore": "En savoir plus",
+    "priceFree": "Gratuit",
+    "price29mo": "29 €/mois",
+    "price99once": "99 € une fois",
+    "price19mo": "19 €/mois",
+    "price49mo": "49 €/mois"
   },
   "team-header": {
     "ourTeam": "Notre équipe",
@@ -278,7 +291,8 @@
     "spanishEs": "Espagnol (es)",
     "japaneseJa": "Japonais (ja)",
     "chineseSimplifiedZhCn": "Chinois simplifié (zh-CN)",
-    "arabicAr": "Arabe (ar)"
+    "arabicAr": "Arabe (ar)",
+    "preferences": "Préférences"
   },
   "api-access-section": {
     "apiAccess": "Accès API",

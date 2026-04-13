@@ -1,4 +1,3 @@
-import { t } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 
 export default function CareersBenefits() {
@@ -6,12 +5,12 @@ export default function CareersBenefits() {
 
   const benefits = [
     {
-      label: i18n._(t({ id: "careers-benefits.competitivePay", message: "Competitive pay" })),
-      value: i18n._(t({ id: "careers-benefits.topOfMarketCompensation", message: "Top-of-market compensation" })),
+      label: i18n._({ id: "careers-benefits.competitivePay", message: "Competitive pay" }),
+      value: i18n._({ id: "careers-benefits.topOfMarketCompensation", message: "Top-of-market compensation" }),
     },
     {
-      label: i18n._(t({ id: "careers-benefits.openSourceTime", message: "Open source time" })),
-      value: i18n._(t({ id: "careers-benefits.twentyPercentTime", message: "20% time for OSS" })),
+      label: i18n._({ id: "careers-benefits.openSourceTime", message: "Open source time" }),
+      value: i18n._({ id: "careers-benefits.twentyPercentTime", message: "20% time for OSS" }),
     },
   ];
 

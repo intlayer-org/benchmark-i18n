@@ -6,7 +6,8 @@ import {
   Scripts,
   createRootRoute,
 } from "@tanstack/react-router";
-import { T, TolgeeProvider } from "@tolgee/react";
+import { TolgeeProvider } from "@tolgee/react";
+import { T } from "../i18n/config";
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
 import Header from "../components/Header";

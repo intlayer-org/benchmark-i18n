@@ -18,84 +18,84 @@ msgstr ""
 
 #: src/components/pages/home/Hero.tsx
 msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
-msgstr ""
+msgstr "一个测试应用程序，旨在衡量国际化库对包大小、加载性能和渲染反应性的实际影响。"
 
 #: src/components/pages/home/Hero.tsx
 msgid "View Results"
-msgstr ""
+msgstr "查看结果"
 
 #: src/components/Footer.tsx
 #: src/components/Header.tsx
 #: src/components/pages/about/AboutGrid.tsx
 #: src/components/pages/home/Hero.tsx
 msgid "Methodology"
-msgstr ""
+msgstr "方法学"
 
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Yes"
-msgstr ""
+msgstr "是"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Manual"
-msgstr ""
+msgstr "手动"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Built-in"
-msgstr ""
+msgstr "内置"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Sample Results"
-msgstr ""
+msgstr "样本结果"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Library"
-msgstr ""
+msgstr "库"
 
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Bundle Size"
-msgstr ""
+msgstr "包大小"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Lookup Time"
-msgstr ""
+msgstr "查询时间"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Lazy Loading"
-msgstr ""
+msgstr "延迟加载"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Understanding the Impact"
-msgstr ""
+msgstr "理解影响"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Why a single large JSON can hurt performance"
-msgstr ""
+msgstr "为什么单个大型 JSON 会损害性能"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
-msgstr ""
+msgstr "许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当这个对象很大（数千个键）时，每个使用翻译的组件都会持有对整个字典的引用。这意味着："
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "The JSON must be parsed on every page load — blocking the main thread."
-msgstr ""
+msgstr "JSON 必须在每次页面加载时进行解析 —— 这会阻塞主线程。"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
-msgstr ""
+msgstr "当本地化发生变化时，基于上下文的架构可能会导致级联重新渲染，因为即使某些组件的特定键没有变化，每个消费者也会收到通知。"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
-msgstr ""
+msgstr "在服务器端渲染期间，整个字典会被序列化到 HTML 负载中，从而增加了必须下载和注水的文件大小。"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "The trade-offs of dynamic loading"
-msgstr ""
+msgstr "动态加载的权衡"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
-msgstr ""
+msgstr "将翻译拆分为按路由或按命名空间的块可以显著减少初始负载。但它引入了新的挑战："
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
@@ -113,35 +113,35 @@ msgstr ""
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "What this benchmark measures"
-msgstr ""
+msgstr "此基准测试测量什么"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
-msgstr ""
+msgstr "此测试应用提供了一个受控环境 —— 10 个具有现实内容的页面 —— 以在三个维度上比较 i18n 库：它们为 JavaScript 包增加的重量、解析和渲染翻译内容所花费的时间，以及它们的代码拆分和懒加载策略的有效性。每个库都集成到同一个应用中，因此结果具有直接可比性。"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Why These Metrics Matter"
-msgstr ""
+msgstr "为什么这些指标很重要"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
-msgstr ""
+msgstr "Bundle 是运送给全球每一位用户的数据。更大的 Bundle 意味着更长的下载时间——尤其是在许多地区常见的缓慢 3G 连接上。i18n 库的重量差异巨大：从几 KB 到数十 KB 的运行时代码，再加上翻译文件本身。"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Rendering & Hydration"
-msgstr ""
+msgstr "渲染与注水"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
-msgstr ""
+msgstr "将大型 JSON 字典连接到每个组件会创建一个隐藏的依赖关系：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 注水期间，解析和附加庞大的翻译对象会在页面变得可交互之前增加延迟——直接影响可交互时间 (TTI)。"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Dynamic Loading"
-msgstr ""
+msgstr "动态加载"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
-msgstr ""
+msgstr "预先加载所有翻译会使初始有效载荷过载。动态（懒）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，懒加载也会带来自身的权衡：瀑布请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。"
 
 #: src/components/pages/about/AboutGrid.tsx
 msgid "Why This Exists"
@@ -169,7 +169,7 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Bundle size impact"
-msgstr ""
+msgstr "包大小影响"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
@@ -177,7 +177,7 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Rendering overhead"
-msgstr ""
+msgstr "渲染开销"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
@@ -185,7 +185,7 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Hydration cost"
-msgstr ""
+msgstr "注水成本"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
@@ -193,28 +193,28 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Lazy loading effectiveness"
-msgstr ""
+msgstr "延迟加载有效性"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
-msgstr ""
+msgstr "按路线或命名空间拆分翻译是否真的能减少初始负载，以及它引入了哪些权衡（瀑布请求、FOUC、缓存复杂性）。"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Locale switch speed"
-msgstr ""
+msgstr "本地语言切换速度"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
-msgstr ""
+msgstr "应用程序在运行时从一种语言切换到另一种语言的速度——包括获取新翻译、重新渲染组件和更新 DOM。"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "What We Measure"
-msgstr ""
+msgstr "我们测量什么"
 
 #: src/components/Header.tsx
 #: src/components/pages/blog/BlogHeader.tsx
 msgid "Blog"
-msgstr ""
+msgstr "博客"
 
 #: src/components/pages/blog/BlogHeader.tsx
 msgid "Insights, tutorials, and analysis from the i18n community."
@@ -222,7 +222,7 @@ msgstr ""
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Read More →"
-msgstr ""
+msgstr "阅读更多 →"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Remote-first"
@@ -247,19 +247,19 @@ msgstr ""
 #: src/components/Header.tsx
 #: src/components/pages/careers/CareersHeader.tsx
 msgid "Careers"
-msgstr ""
+msgstr "职业"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Open Positions"
-msgstr ""
+msgstr "开放职位"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Apply Now"
-msgstr ""
+msgstr "立即申请"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Name"
-msgstr ""
+msgstr "姓名"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Your name"
@@ -268,7 +268,7 @@ msgstr ""
 #: src/components/pages/contact/ContactForm.tsx
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "Email"
-msgstr ""
+msgstr "电子邮件"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Topic"
@@ -296,7 +296,7 @@ msgstr ""
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Message"
-msgstr ""
+msgstr "留言"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Describe your question or idea..."
@@ -304,7 +304,7 @@ msgstr ""
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Send Message"
-msgstr ""
+msgstr "发送消息"
 
 #: src/components/pages/contact/ContactHeader.tsx
 msgid "Get in Touch"
@@ -317,11 +317,11 @@ msgstr ""
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "常见问题"
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Everything you need to know about i18n Benchmark."
-msgstr ""
+msgstr "关于 i18n 基准测试项目，你需要知道的一切。"
 
 #: src/components/pages/pricing/PricingHeader.tsx
 msgid "Simple, Transparent Pricing"
@@ -337,21 +337,20 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Contact Sales"
-msgstr ""
+msgstr "联系销售人员"
 
 #: src/components/pages/pricing/PricingTiers.tsx
-#: src/components/pages/pricing/PricingTiers.tsx
 msgid "Get Started"
-msgstr ""
+msgstr "开始使用"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Learn More"
-msgstr ""
+msgstr "了解更多"
 
 #: src/components/Header.tsx
 #: src/components/pages/products/ProductsHeader.tsx
 msgid "Products"
-msgstr ""
+msgstr "产品"
 
 #: src/components/pages/products/ProductsHeader.tsx
 msgid "Tools and services to streamline your internationalization workflow."
@@ -359,31 +358,31 @@ msgstr ""
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "API Access"
-msgstr ""
+msgstr "API 访问"
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "API Key"
-msgstr ""
+msgstr "API 密钥"
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "Copy"
-msgstr ""
+msgstr "复制"
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "Use this key to access the benchmarking API programmatically."
-msgstr ""
+msgstr "使用此密钥以编程方式访问基准测试 API。"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Preferences"
-msgstr ""
+msgstr "偏好设置"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Email Notifications"
-msgstr ""
+msgstr "邮件通知"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Receive weekly benchmark reports"
-msgstr ""
+msgstr "接收每周基准测试报告"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle notifications"
@@ -391,11 +390,11 @@ msgstr ""
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Dark Mode"
-msgstr ""
+msgstr "深色模式"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Use dark color scheme"
-msgstr ""
+msgstr "使用深色配色方案"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle dark mode"
@@ -403,7 +402,7 @@ msgstr ""
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Default Language"
-msgstr ""
+msgstr "默认语言"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "English (en)"
@@ -435,11 +434,11 @@ msgstr ""
 
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "Profile"
-msgstr ""
+msgstr "个人资料"
 
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "Display Name"
-msgstr ""
+msgstr "显示名称"
 
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "John Developer"
@@ -447,36 +446,36 @@ msgstr ""
 
 #: src/components/pages/settings/SettingsFooter.tsx
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: src/components/pages/settings/SettingsFooter.tsx
 msgid "Save Changes"
-msgstr ""
+msgstr "保存更改"
 
 #: src/components/Header.tsx
 #: src/components/pages/settings/SettingsHeader.tsx
 msgid "Settings"
-msgstr ""
+msgstr "设置"
 
 #: src/components/pages/settings/SettingsHeader.tsx
 msgid "Manage your account preferences and configuration."
-msgstr ""
+msgstr "管理您的账户偏好和配置。"
 
 #: src/components/pages/team/TeamHeader.tsx
 msgid "Our Team"
-msgstr ""
+msgstr "我们的团队"
 
 #: src/components/pages/team/TeamHeader.tsx
 msgid "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
-msgstr ""
+msgstr "认识 i18n 基准测试背后的团队。一支多元化的团队，因为对优秀开发人员工具的共同热情而团结在一起。"
 
 #: src/routes/__root.tsx
 msgid "Oops! Page not found"
-msgstr ""
+msgstr "糟糕！找不到页面"
 
 #: src/routes/__root.tsx
 msgid "Return to Home"
-msgstr ""
+msgstr "返回首页"
 
 #: src/routes/__root.tsx
 msgid "AppRoot"
@@ -484,24 +483,24 @@ msgstr ""
 
 #: src/components/Footer.tsx
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/components/Footer.tsx
 msgid "Contributing"
-msgstr ""
+msgstr "贡献"
 
 #: src/components/Footer.tsx
 msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
-msgstr ""
+msgstr "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。"
 
 #: src/components/Footer.tsx
 msgid "Resources"
-msgstr ""
+msgstr "资源"
 
 #: src/components/Footer.tsx
 #: src/components/Header.tsx
 msgid "Contact"
-msgstr ""
+msgstr "联系我们"
 
 #: src/components/Footer.tsx
 msgid "contact@intlayer.org"
@@ -509,7 +508,7 @@ msgstr ""
 
 #: src/components/Footer.tsx
 msgid "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
-msgstr ""
+msgstr "i18n Benchmark — 开源项目。使用 React, Vite 和 TanStack Router 构建。"
 
 #: src/components/Header.tsx
 msgid "Header"
@@ -517,11 +516,11 @@ msgstr ""
 
 #: src/components/Header.tsx
 msgid "Pricing"
-msgstr ""
+msgstr "价格"
 
 #: src/components/Header.tsx
 msgid "Team"
-msgstr ""
+msgstr "团队"
 
 #: src/components/Header.tsx
 msgid "i18n Bench"
@@ -529,7 +528,7 @@ msgstr ""
 
 #: src/components/Header.tsx
 msgid "Home"
-msgstr ""
+msgstr "首页"
 
 #: src/components/Header.tsx
 msgid "Mock Pages <0/>"
@@ -537,15 +536,15 @@ msgstr ""
 
 #: src/components/Header.tsx
 msgid "Go to GitHub"
-msgstr ""
+msgstr "前往 GitHub"
 
 #: src/components/MockBanner.tsx
 msgid "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
-msgstr ""
+msgstr "⚠️ 此页面仅包含用于基准测试的模拟数据。它与任何真实的业务或服务无关。"
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme mode: auto (system). Click to switch to light mode."
-msgstr ""
+msgstr "主题模式：自动（系统）。点击切换到浅色模式。"
 
 #. 0: mode
 #: src/components/ThemeToggle.tsx
@@ -554,15 +553,15 @@ msgstr ""
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme: Auto"
-msgstr ""
+msgstr "主题：自动"
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme: Dark"
-msgstr ""
+msgstr "主题：深色"
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme: Light"
-msgstr ""
+msgstr "主题：浅色"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Senior Frontend Engineer"
@@ -570,7 +569,7 @@ msgstr ""
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Remote"
-msgstr ""
+msgstr "远程"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Full-time"
@@ -610,7 +609,7 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Priority support"
-msgstr ""
+msgstr "优先支持"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Private results"
@@ -626,7 +625,7 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Custom"
-msgstr ""
+msgstr "定制"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Everything in Pro"

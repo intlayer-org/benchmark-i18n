@@ -5,12 +5,12 @@ export default function ProductsGrid() {
     {
       name: m["products-grid.benchmarkCli"](),
       desc: m["products-grid.runBenchmarksLocallyFromYour"](),
-      price: "Free",
+      price: m["products-grid.priceFree"] ? m["products-grid.priceFree"]() : "Free",
     },
     {
       name: m["products-grid.benchmarkCloud"](),
       desc: m["products-grid.automatedCloudBasedBenchmarkingWith"](),
-      price: "$29/mo",
+      price: m["products-grid.price29mo"] ? m["products-grid.price29mo"]() : "$29/mo",
     },
     {
       name: m["products-grid.benchmarkEnterprise"](),
@@ -20,17 +20,17 @@ export default function ProductsGrid() {
     {
       name: m["products-grid.migrationAssistant"](),
       desc: m["products-grid.aiPoweredToolThatHelps"](),
-      price: "$99 one-time",
+      price: m["products-grid.price99once"] ? m["products-grid.price99once"]() : "$99 one-time",
     },
     {
       name: m["products-grid.translationQa"](),
       desc: m["products-grid.automatedQualityChecksForMissing"](),
-      price: "$19/mo",
+      price: m["products-grid.price19mo"] ? m["products-grid.price19mo"]() : "$19/mo",
     },
     {
       name: m["products-grid.bundleOptimizer"](),
       desc: m["products-grid.analyzesAndOptimizesYourI18n"](),
-      price: "$49/mo",
+      price: m["products-grid.price49mo"] ? m["products-grid.price49mo"]() : "$49/mo",
     },
   ];
 

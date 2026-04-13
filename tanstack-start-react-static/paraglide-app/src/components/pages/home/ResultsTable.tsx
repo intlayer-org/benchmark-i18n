@@ -33,7 +33,7 @@ export default function ResultsTable() {
           <thead className="bg-muted">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                Library
+                {m["results-table.library"] ? m["results-table.library"]() : "Library"}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
                 {m["results-table.bundleSize"]()}

@@ -1,4 +1,4 @@
-import { useEffect, Profiler } from "react";
+import { useEffect, Profiler, useState } from "react";
 import {
   HeadContent,
   Link,
@@ -14,6 +14,7 @@ import {
   recordHydrationDuration,
   onRenderCallback as onRender,
 } from "test-utils/browser-metrics";
+import { loadLocale } from "wuchale/load-utils";
 
 // onRender now imported from test-utils
 
@@ -72,13 +73,32 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
   const { locale = defaultLocale } = LocaleRoute.useParams();
 
+  const [renderTick, setRenderTick] = useState(0);
+
+  // Sync wuchale's external state with React's lifecycle
+  useEffect(() => {
+    let isMounted = true;
+
+    loadLocale(locale).then(() => {
+      if (isMounted) {
+        // This forces React to update the DOM with the loaded strings
+        setRenderTick((prev) => prev + 1);
+      }
+    });
+
+    return () => {
+      isMounted = false;
+    };
+  }, [locale]);
+
   return (
     <html lang={locale} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         <HeadContent />
       </head>
-      <body className="antialiased [overflow-wrap:anywhere]">
+
+      <body className="antialiased [overflow-wrap:anywhere]" key={renderTick}>
         <Profiler id="AppRoot" onRender={onRender}>
           <Header />
           {children}

@@ -1,4 +1,4 @@
-import { T, useTranslate } from "@tolgee/react";
+import { T, useTranslate } from "../../../i18n/config";
 
 export default function OpenPositions() {
   const { t } = useTranslate();

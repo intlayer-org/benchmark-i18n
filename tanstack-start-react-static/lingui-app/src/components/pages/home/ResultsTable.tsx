@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/react";
 import { useLingui } from "@lingui/react";
 
 export default function ResultsTable() {
@@ -28,14 +29,14 @@ export default function ResultsTable() {
   return (
     <section>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        {i18n._("results-table.sampleResults")}
+        <Trans id="results-table.sampleResults" message="Sample Results" />
       </h2>
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
           <thead className="bg-muted">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                Library
+                <Trans id="results-table.library" message="Library" />
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
                 {i18n._("results-table.bundleSize")}

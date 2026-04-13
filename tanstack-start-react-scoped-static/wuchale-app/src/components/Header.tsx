@@ -13,14 +13,14 @@ export default function Header() {
   const currentLocale = params.locale ?? "en";
 
   const mockPages = [
-    { to: "/$locale/products" as const, label: "Products" },
-    { to: "/$locale/pricing" as const, label: "Pricing" },
-    { to: "/$locale/team" as const, label: "Team" },
-    { to: "/$locale/blog" as const, label: "Blog" },
-    { to: "/$locale/careers" as const, label: "Careers" },
-    { to: "/$locale/faq" as const, label: "FAQ" },
-    { to: "/$locale/contact" as const, label: "Contact" },
-    { to: "/$locale/settings" as const, label: "Settings" },
+    { to: "/$locale/products", label: "Products" },
+    { to: "/$locale/pricing", label: "Pricing" },
+    { to: "/$locale/team", label: "Team" },
+    { to: "/$locale/blog", label: "Blog" },
+    { to: "/$locale/careers", label: "Careers" },
+    { to: "/$locale/faq", label: "FAQ" },
+    { to: "/$locale/contact", label: "Contact" },
+    { to: "/$locale/settings", label: "Settings" },
   ];
 
   return (

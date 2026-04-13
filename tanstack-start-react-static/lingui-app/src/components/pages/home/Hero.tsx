@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/react";
 import { useLingui } from "@lingui/react";
 import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
 
@@ -8,10 +9,13 @@ export default function Hero() {
   return (
     <section className="mb-16 text-center">
       <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground">
-        i18n Benchmark
+        <Trans id="hero.title" message="i18n Benchmark" />
       </h1>
       <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-        {i18n._("hero.aTestApplicationDesignedTo")}
+        <Trans
+          id="hero.aTestApplicationDesignedTo"
+          message="A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+        />
       </p>
       <div className="mt-8 flex justify-center gap-4">
         <button

@@ -52,7 +52,8 @@
     "sampleResults": "Resultados de muestra",
     "bundleSize": "Tamaño del bundle",
     "lookupTime": "Tiempo de búsqueda",
-    "lazyLoading": "Carga diferida"
+    "lazyLoading": "Carga diferida",
+    "library": "Biblioteca"
   },
   "understanding-impact": {
     "understandingTheImpact": "Entendiendo el impacto",
@@ -156,7 +157,11 @@
     "newBenchmarkIdea": "Nueva idea de benchmark",
     "methodologyQuestion": "Pregunta sobre metodología",
     "describeYourQuestionOrIdea": "Describe tu pregunta o idea...",
-    "sendMessage": "Enviar mensaje"
+    "sendMessage": "Enviar mensaje",
+    "topic": "Tema",
+    "contribution": "Contribución",
+    "other": "Otro",
+    "message": "Mensaje"
   },
   "faq-header1": {
     "frequentlyAskedQuestions": "Preguntas frecuentes",
@@ -265,6 +270,7 @@
     "email": "Correo electrónico"
   },
   "preferences-section": {
+    "preferences": "Preferencias",
     "emailNotifications": "Notificaciones por correo electrónico",
     "receiveWeeklyBenchmarkReports": "Recibir informes semanales de benchmarks",
     "toggleNotifications": "Alternar notificaciones",

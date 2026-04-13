@@ -1,22 +1,18 @@
-import { t } from "wuchale";
-
 export default function OpenPositions() {
   const openings = [
     {
-      title: t("Senior Frontend Engineer"),
-      location: t("Remote"),
-      type: t("Full-time"),
-      dept: t("Engineering"),
-      desc: t(
-        "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
-      ),
+      title: "Senior Frontend Engineer",
+      location: "Remote",
+      type: "Full-time",
+      dept: "Engineering",
+      desc: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
     },
   ];
 
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        {t("Open Positions")}
+        Open Positions
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
@@ -45,7 +41,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              {t("Apply Now")}
+              Apply Now
             </button>
           </div>
         ))}

@@ -1,37 +1,71 @@
-const products = [
-  {
-    name: "Benchmark CLI",
-    desc: "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
-    price: "Free",
-  },
-  {
-    name: "Benchmark Cloud",
-    desc: "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
-    price: "$29/mo",
-  },
-  {
-    name: "Benchmark Enterprise",
-    desc: "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
-    price: "Contact Us",
-  },
-  {
-    name: "Migration Assistant",
-    desc: "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
-    price: "$99 one-time",
-  },
-  {
-    name: "Translation QA",
-    desc: "Automated quality checks for missing translations, pluralization issues, and context errors.",
-    price: "$19/mo",
-  },
-  {
-    name: "Bundle Optimizer",
-    desc: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
-    price: "$49/mo",
-  },
-];
+import { useLingui } from "@lingui/react";
 
 export default function ProductsGrid() {
+  const { i18n } = useLingui();
+
+  const products = [
+    {
+      name: i18n._({ id: "products.benchmarkCli", message: "Benchmark CLI" }),
+      desc: i18n._({
+        id: "products.benchmarkCliDesc",
+        message:
+          "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+      }),
+      price: i18n._({ id: "products.free", message: "Free" }),
+    },
+    {
+      name: i18n._({ id: "products.benchmarkCloud", message: "Benchmark Cloud" }),
+      desc: i18n._({
+        id: "products.benchmarkCloudDesc",
+        message:
+          "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+      }),
+      price: "$29/mo",
+    },
+    {
+      name: i18n._({
+        id: "products.benchmarkEnterprise",
+        message: "Benchmark Enterprise",
+      }),
+      desc: i18n._({
+        id: "products.benchmarkEnterpriseDesc",
+        message:
+          "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+      }),
+      price: i18n._({ id: "products.contactUs", message: "Contact Us" }),
+    },
+    {
+      name: i18n._({
+        id: "products.migrationAssistant",
+        message: "Migration Assistant",
+      }),
+      desc: i18n._({
+        id: "products.migrationAssistantDesc",
+        message:
+          "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+      }),
+      price: "$99 one-time",
+    },
+    {
+      name: i18n._({ id: "products.translationQa", message: "Translation QA" }),
+      desc: i18n._({
+        id: "products.translationQaDesc",
+        message:
+          "Automated quality checks for missing translations, pluralization issues, and context errors.",
+      }),
+      price: "$19/mo",
+    },
+    {
+      name: i18n._({ id: "products.bundleOptimizer", message: "Bundle Optimizer" }),
+      desc: i18n._({
+        id: "products.bundleOptimizerDesc",
+        message:
+          "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
+      }),
+      price: "$49/mo",
+    },
+  ];
+
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {products.map((p) => (

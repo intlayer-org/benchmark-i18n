@@ -1,15 +1,21 @@
+import { useLingui } from "@lingui/react";
+
 export default function CareersBenefits() {
+  const { i18n } = useLingui();
+
   const benefits = [
-    { label: "Remote-first", value: "Work from anywhere in the world" },
-    { label: "Competitive pay", value: "Top-of-market compensation" },
     {
-      label: "Open source time",
-      value: "20% time for OSS contributions",
+      label: i18n._({ id: "careers-benefits.competitivePay", message: "Competitive pay" }),
+      value: i18n._({ id: "careers-benefits.topOfMarketCompensation", message: "Top-of-market compensation" }),
+    },
+    {
+      label: i18n._({ id: "careers-benefits.openSourceTime", message: "Open source time" }),
+      value: i18n._({ id: "careers-benefits.twentyPercentTime", message: "20% time for OSS" }),
     },
   ];
 
   return (
-    <div className="mb-12 grid gap-4 md:grid-cols-3">
+    <div className="mb-12 grid gap-4 md:grid-cols-2">
       {benefits.map((b) => (
         <div
           key={b.label}

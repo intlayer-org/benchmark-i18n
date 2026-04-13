@@ -1,49 +1,45 @@
-const posts = [
-  {
-    title: "Comparing i18n Libraries in 2026: A Deep Dive",
-    date: "March 15, 2026",
-    excerpt:
-      "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
-    category: "Benchmark",
-  },
-  {
-    title: "How to Reduce Your i18n Bundle by 60%",
-    date: "March 8, 2026",
-    excerpt:
-      "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-    category: "Tutorial",
-  },
-  {
-    title: "The State of Internationalization in React",
-    date: "February 28, 2026",
-    excerpt:
-      "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
-    category: "Analysis",
-  },
-  {
-    title: "Migrating from react-i18next to Lingui",
-    date: "February 15, 2026",
-    excerpt:
-      "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
-    category: "Tutorial",
-  },
-  {
-    title: "Server Components and i18n: What Changes?",
-    date: "February 1, 2026",
-    excerpt:
-      "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
-    category: "Analysis",
-  },
-  {
-    title: "Benchmark Methodology: How We Test",
-    date: "January 20, 2026",
-    excerpt:
-      "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-    category: "Meta",
-  },
-];
+import * as m from "../../../paraglide/messages";
 
 export default function BlogList() {
+  const posts = [
+    {
+      title: m["blog-list.comparingI18nLibrariesIn2026"](),
+      date: m["blog-list.march82026"](),
+      excerpt: m["blog-list.weTested12DifferentInternationalization"](),
+      category: "Benchmark",
+    },
+    {
+      title: m["blog-list.howToReduceYourI18n"](),
+      date: m["blog-list.march82026"](),
+      excerpt: m["blog-list.practicalStrategiesForOptimizingTranslation"](),
+      category: "Tutorial",
+    },
+    {
+      title: m["blog-list.theStateOfInternationalizationIn"](),
+      date: m["blog-list.february282026"](),
+      excerpt: m["blog-list.anOverviewOfTheCurrent"](),
+      category: "Analysis",
+    },
+    {
+      title: m["blog-list.migratingFromReactI18nextTo"](),
+      date: m["blog-list.february152026"](),
+      excerpt: m["blog-list.aStepByStepGuide"](),
+      category: "Tutorial",
+    },
+    {
+      title: m["blog-list.serverComponentsAndI18nWhat"](),
+      date: m["blog-list.february12026"](),
+      excerpt: m["blog-list.reactServerComponentsIntroduceNew"](),
+      category: "Analysis",
+    },
+    {
+      title: m["blog-list.benchmarkMethodologyHowWeTest"](),
+      date: m["blog-list.january202026"](),
+      excerpt: m["blog-list.aTransparentLookAtOur"](),
+      category: "Meta",
+    },
+  ];
+
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {posts.map((p) => (
@@ -65,7 +61,7 @@ export default function BlogList() {
             type="button"
             className="text-sm font-medium text-primary hover:underline"
           >
-            Read More →
+            {m["blog-list.readMore"]()}
           </button>
         </article>
       ))}

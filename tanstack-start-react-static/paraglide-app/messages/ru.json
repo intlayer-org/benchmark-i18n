@@ -52,7 +52,8 @@
     "sampleResults": "Примеры результатов",
     "bundleSize": "Размер бандла",
     "lookupTime": "Время поиска",
-    "lazyLoading": "Ленивая загрузка"
+    "lazyLoading": "Ленивая загрузка",
+    "library": "Библиотека"
   },
   "understanding-impact": {
     "understandingTheImpact": "Понимание влияния",
@@ -156,7 +157,11 @@
     "newBenchmarkIdea": "Новая идея для бенчмарка",
     "methodologyQuestion": "Вопрос по методологии",
     "describeYourQuestionOrIdea": "Опишите ваш вопрос или идею...",
-    "sendMessage": "Отправить сообщение"
+    "sendMessage": "Отправить сообщение",
+    "topic": "Теما",
+    "contribution": "Вклад",
+    "other": "Другое",
+    "message": "Сообщение"
   },
   "faq-header1": {
     "frequentlyAskedQuestions": "Часто задаваемые вопросы",
@@ -278,7 +283,8 @@
     "spanishEs": "Испанский (es)",
     "japaneseJa": "Японский (ja)",
     "chineseSimplifiedZhCn": "Китайский упрощенный (zh-CN)",
-    "arabicAr": "Арабский (ar)"
+    "arabicAr": "Арабский (ar)",
+    "preferences": "Настройки"
   },
   "api-access-section": {
     "apiAccess": "Доступ к API",

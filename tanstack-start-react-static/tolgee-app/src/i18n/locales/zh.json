@@ -1,18 +1,18 @@
 {
   "route": {
-    "oopsPageNotFound": "糟糕！找不到页面",
+    "oopsPageNotFound": "糟糕！未找到页面",
     "returnToHome": "返回首页",
-    "couldNotMeasureHydrationDuration": "无法测量注水时长："
+    "couldNotMeasureHydrationDuration": "无法测量静态化水合时间："
   },
   "header": {
     "home": "首页",
-    "methodology": "方法学",
+    "methodology": "测试方法",
     "mockPages": "模拟页面",
     "products": "产品",
-    "pricing": "价格",
+    "pricing": "定价",
     "team": "团队",
     "blog": "博客",
-    "careers": "职业",
+    "careers": "职业生涯",
     "faq": "常见问题",
     "contact": "联系我们",
     "settings": "设置",
@@ -20,12 +20,18 @@
   },
   "footer": {
     "resources": "资源",
-    "contact": "联系",
+    "contact": "联系我们",
     "github": "GitHub",
-    "methodology": "方法学",
-    "contributing": "贡献",
-    "builtWith": "i18n Benchmark — 开源项目。使用 React, Vite 和 TanStack Router 构建。",
-    "anOpenSourceTestApplication": "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。"
+    "methodology": "测试方法",
+    "contributing": "贡献代码",
+    "builtWith": "i18n 基准测试 — 开源项目。使用 React, Vite 和 TanStack Router 构建。",
+    "anOpenSourceTestApplication": "一个开源测试应用，用于衡量国际化库在包大小、加载时间和应用响应能力方面的真实影响。"
+  },
+  "common": {
+    "readMore": "阅读更多",
+    "copy": "复制",
+    "cancel": "取消",
+    "saveChanges": "保存更改"
   },
   "themeToggle": {
     "themeModeAutoSystemClick": "主题模式：自动（系统）。点击切换到浅色模式。",
@@ -36,157 +42,231 @@
     "themeLight": "主题：浅色"
   },
   "hero": {
-    "aTestApplicationDesignedTo": "一个测试应用程序，旨在衡量国际化库对包大小、加载性能和渲染反应性的实际影响。",
+    "aTestApplicationDesignedTo": "一个旨在衡量国际化库在包大小、加载性能和渲染响应能力方面的真实影响的测试应用。",
     "viewResults": "查看结果"
   },
   "whyItMatters": {
     "whyTheseMetricsMatter": "为什么这些指标很重要",
-    "bundleSize": "包大小",
-    "theBundleIsTheData": "Bundle 是运送给全球每一位用户的数据。更大的 Bundle 意味着更长的下载时间——尤其是在许多地区常见的缓慢 3G 连接上。i18n 库的重量差异巨大：从几 KB 到数十 KB 的运行时代码，再加上翻译文件本身。",
-    "renderingHydration": "渲染与注水",
-    "connectingALargeJson": "将大型 JSON 字典连接到每个组件会创建一个隐藏的依赖关系：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 注水期间，解析和附加庞大的翻译对象会在页面变得可交互之前增加延迟——直接影响可交互时间 (TTI)。",
+    "bundleSize": "包包大小 (Bundle Size)",
+    "theBundleIsTheData": "包包是分发给全球每一位用户的核心数据。更大的包包意味着更长的下载时间，特别是在许多地区常见的慢速 3G 连接下。国际化库的权重差异巨大：从几 KB 到数十 KB 的运行时代码，外加翻译文件本身。",
+    "renderingHydration": "渲染与水合 (Rendering & Hydration)",
+    "connectingALargeJson": "将庞大的 JSON 字典连接到每个组件会产生隐藏依赖：翻译上下文中的任何更改都可能触发布满整个组件树的重新渲染。在 SSR 水合过程中，解析和附加庞大的翻译对象会在页面变得可交互之前增加延迟——直接影响可交互时间 (TTI)。",
     "dynamicLoading": "动态加载",
-    "loadingAllTranslationsUpfront": "预先加载所有翻译会使初始有效载荷过载。动态（懒）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，懒加载也会带来自身的权衡：瀑布请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。"
+    "loadingAllTranslationsUpfront": "预先加载所有翻译会使初始负载过重。动态（懒）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，懒加载引入了自身的权衡：瀑布式请求、未翻译内容的闪烁以及缓存复杂性。同时衡量这两种策略至关重要。"
   },
   "understandingImpact": {
-    "understandingTheImpact": "理解影响",
+    "understandingTheImpact": "了解其影响",
     "whyASingleLargeJson": "为什么单个大型 JSON 会损害性能",
-    "manyI18nLibrariesStoreTranslations": "许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当这个对象很大（数千个键）时，每个使用翻译的组件都会持有对整个字典的引用。这意味着：",
-    "theJsonMustBeParsed": "JSON 必须在每次页面加载时进行解析 —— 这会阻塞主线程。",
-    "contextBasedArchitecturesCanCause": "当本地化发生变化时，基于上下文的架构可能会导致级联重新渲染，因为即使某些组件的特定键没有变化，每个消费者也会收到通知。",
-    "duringServerSideRenderingThe": "在服务器端渲染期间，整个字典会被序列化到 HTML 负载中，从而增加了必须下载和注水的文件大小。",
+    "manyI18nLibrariesStore": "许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当此对象很大（数千个键）时，每个使用翻译的组件都会持有对整个字典的引用。这意味着：",
+    "manyI18nLibrariesStoreTranslations": "许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当此对象很大（数千个键）时，每个使用翻译的组件都会持有对整个字典的引用。这意味着：",
+    "theJsonMustBeParsed": "每次页面加载时都必须解析 JSON——阻塞主线程。",
+    "contextBasedArchitecturesCan": "基于上下文的架构可能会在语言区域更改时导致级联重新渲染，因为每个消费者都会收到通知，即使他们的特定键没有更改。",
+    "contextBasedArchitecturesCanCause": "基于上下文的架构可能会在语言区域更改时导致级联重新渲染，因为每个消费者都会收到通知，即使他们的特定键没有更改。",
+    "duringServerSideRenderingThe": "在服务端渲染期间，整个字典都会被序列化到 HTML 负载中，从而增加了必须下载和水合的文档大小。",
     "theTradeOffsOfDynamic": "动态加载的权衡",
-    "splittingTranslationsIntoPerRoute": "将翻译拆分为按路由或按命名空间的块可以显著减少初始负载。但它引入了新的挑战：",
-    "waterfallRequests": "瀑布请求：",
+    "splittingTranslationsIntoPerRoute": "按路由或按命名空间拆分翻译可以大幅减少初始负载。但它引入了新的挑战：",
+    "waterfallRequests": "瀑布式请求：",
+    "theAppMustFirstLoad": "应用必须首先加载，确定语言区域，然后获取正确的区块——增加了网络往返时间。",
+    "flashOfUntranslatedContent": "未翻译内容闪烁 (FOUC)：",
     "flashOfUntranslatedContentFouc": "未翻译内容闪烁 (FOUC)：",
+    "usersMayBrieflySeeTranslation": "用户可能会在区块到达之前短暂看到翻译键或回退语言。",
     "cacheInvalidation": "缓存失效：",
-    "whatThisBenchmarkMeasures": "此基准测试测量什么",
-    "thisTestAppProvidesA": "此测试应用提供了一个受控环境 —— 10 个具有现实内容的页面 —— 以在三个维度上比较 i18n 库：它们为 JavaScript 包增加的重量、解析和渲染翻译内容所花费的时间，以及它们的代码拆分和懒加载策略的有效性。每个库都集成到同一个应用中，因此结果具有直接可比性。"
+    "updatingTranslationsRequiresCache": "更新翻译需要缓存刷新策略，以确保用户获得最新内容，而无需重新下载未更改的区块。",
+    "whatThisBenchmarkMeasures": "本基准测试衡量什么",
+    "thisTestAppProvidesA": "此测试应用提供了一个受控环境——包含 10 个现实内容的页面——在三个维度上比较 i18n 库：它们为 JavaScript 包增加的权重、解析和渲染翻译内容所花费的时间，以及它们代码拆分和懒加载策略的有效性。每个库都集成到相同的应用中，以便结果具有直接可比性。"
   },
   "resultsTable": {
-    "sampleResults": "样本结果",
+    "sampleResults": "示例结果",
     "bundleSize": "包大小",
-    "lookupTime": "查询时间",
-    "lazyLoading": "延迟加载"
+    "lookupTime": "查找时间",
+    "lazyLoading": "懒加载",
+    "library": "库"
   },
   "aboutHeader": {
-    "methodology": "方法学",
-    "weDesignedThisBenchmarkTo": "我们设计这个基准是为了提供公平、可重现和有意义的 i18n 库比较。"
+    "methodology": "测试方法",
+    "weDesignedThisBenchmarkTo": "我们设计此基准测试是为了对 i18n 库提供公平、可重复且有意义的比较。这是我们的方法。",
+    "aboutThisBenchmark": "关于此基准测试",
+    "thisIsAnOpenSource": "这是一个开源测试应用——不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用，可以在相同条件下集成和衡量不同的 i18n 库。"
   },
   "aboutGrid": {
     "testEnvironment": "测试环境",
-    "allBenchmarksRunOn": "所有基准测试都在相同的硬件（M2 MacBook Pro, 16 GB RAM）、相同的浏览器（通过 Playwright 运行 Chromium 120）和相同的网络条件（模拟 4G）下运行。每项测试重复 50 次，我们报告 P95/P99 百分位数的平均值。",
+    "allBenchmarksRunOn": "所有基准测试都在相同的硬件（M2 MacBook Pro，16 GB RAM）、相同的浏览器（Chromium 120，通过 Playwright）和相同的网络条件（模拟 4G）下运行。每次测试重复 50 次，我们报告中位数以及 P95/P99 百分位值。",
     "applicationDesign": "应用设计",
-    "theBenchmarkAppHas10": "该基准测试应用有 10 个页面，包含现实内容 —— 导航、表单、动态列表和静态文本。每个页面使用 15-30 个翻译键，以代表真实世界的使用模式。",
-    "measurementMethodology": "测量方法学",
-    "weUseBrowserNativeApis": "我们使用浏览器原生的 API（Performance Timeline, Resource Timing, Layout Instability）结合 React Profiler 数据。包大小在 gzip 后使用 source-map-explorer 测量以确保准确性。",
+    "theBenchmarkAppHas10": "基准测试应用包含 10 个现实内容的页面——导航、表单、动态列表和静态文本。每个页面使用 15-30 个翻译键，以代表现实世界的使用模式，而非综合微基准测试。",
+    "measurementMethodology": "测量方法",
+    "weUseBrowserNativeApis": "我们结合使用浏览器原生 API（Performance Timeline, Resource Timing, Layout Instability）和 React Profiler 数据。包大小在 gzip 压缩后使用 source-map-explorer 测量，以确保准确性。",
     "fairComparison": "公平比较",
-    "eachI18nLibraryIsIntegrated": "每个 i18n 库都按照其官方文档和最佳实践进行集成。我们尽可能咨询维护者以确保最佳配置。相同的 React 应用，相同的 Vite 配置，相同的部署。"
+    "eachI18nLibraryIsIntegrated": "每个 i18n 库都遵循其官方文档和最佳实践进行集成。我们尽可能咨询维护者以确保最佳配置。相同的 React 应用，相同的 Vite 配置，相同的部署方式。",
+    "whyThisExists": "为什么存在这个基准测试",
+    "choosingAnI18nLibrary": "选择一个 i18n 库是一个具有长期影响的架构决策。大多数比较侧重于 API 的人体工程学，但很少衡量性能成本：库为包增加了多少权重？当加载数千个翻译键时，它如何影响渲染？懒加载是否真的有帮助，还是仅仅转移了成本？本基准测试用真实数据回答了这些问题。",
+    "methodology": "测试方法",
+    "theSame10PageApp": "相同的 10 页面应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行 Lighthouse 审计以获取加载指标，并使用 React Profiler 捕捉语言切换期间的渲染时间。所有测试都在具有一致硬件的 CI 上运行，以确保结果可重复。"
   },
   "whatWeMeasure": {
     "bundleSizeImpact": "包大小影响",
-    "theAdditionalJavascriptBytesSent": "包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络上的下载时间。",
+    "theAdditionalJavascriptBytes": "包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络下的下载时间。",
+    "theAdditionalJavascriptBytesSent": "专门由于 i18n 库运行时以及当前语言区域的翻译文件而发送到客户端的额外 JavaScript 字节。",
     "renderingOverhead": "渲染开销",
-    "howMuchExtraTimeThe": "库为 React 的渲染周期增加了多少额外时间。通过单个上下文提供程序注入翻译的库可能会导致整个组件树中不必要的重新渲染。",
-    "hydrationCost": "注水成本",
-    "duringSsrTranslationDataIs": "在 SSR 期间，翻译数据被序列化为 HTML。大型词典会增加 HTML 负载并减慢注水速度——即页面变得可交互的时刻。",
-    "lazyLoadingEffectiveness": "延迟加载有效性",
-    "whetherSplittingTranslationsByRoute": "按路线或命名空间拆分翻译是否真的能减少初始负载，以及它引入了哪些权衡（瀑布请求、FOUC、缓存复杂性）。",
-    "localeSwitchSpeed": "本地语言切换速度",
-    "howFastTheAppCan": "应用程序在运行时从一种语言切换到另一种语言的速度——包括获取新翻译、重新渲染组件和更新 DOM。",
-    "whatWeMeasure": "我们测量什么"
+    "howMuchExtraTimeTheLibraryAdds": "库为 React 的渲染周期增加了多少额外时间。通过单个上下文提供者注入翻译的库可能会在整个组件树中导致不必要的重新渲染。",
+    "howMuchExtraTimeThe": "i18n 层为每个组件渲染增加了多少额外时间——使用 React Profiler 的 actualDuration 测量。",
+    "hydrationCost": "水合成本",
+    "duringSsrTranslationDataIsSerialized": "在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢水合过程——即页面变得可交互的瞬间。",
+    "duringSsrTranslationDataIs": "在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢水合过程——即页面变得可交互的瞬间。",
+    "lazyLoadingEffectiveness": "懒加载有效性",
+    "whetherSplittingTranslationsByRoute": "按路由或命名空间拆分翻译是否真的减少了初始加载，以及它引入了哪些权衡（瀑布式请求、FOUC、缓存复杂性）。",
+    "localeSwitchSpeed": "语言区域切换速度",
+    "howFastTheAppCan": "应用在运行时从一种语言切换到另一种语言的速度——包括获取新翻译、重新渲染组件和更新 DOM。",
+    "howFastTheAppCanSwitchFromOne": "应用在运行时从一种语言切换到另一种语言的速度——包括获取新翻译、重新渲染组件和更新 DOM。",
+    "whatWeMeasure": "我们的测量指标"
   },
   "blogHeader": {
     "blog": "博客",
-    "insightsDeepDivesAnd": "来自 i18n 基准测试社区的见解、深入探讨和更新。"
+    "insightsDeepDivesAnd": "来自 i18n 基准测试社区的见解、深入探究和更新。",
+    "insightsTutorialsAndAnalysis": "来自 i18n 社区的见解、教程和分析。"
   },
   "blogList": {
-    "i18nBenchmark2026Results": "i18n 基准测试 2026 结果",
+    "comparingI18nLibrariesIn": "2026 年 i18n 库比较：深入探究",
+    "comparingI18nLibrariesIn2026": "2026 年 i18n 库比较：深入探究",
     "march152026": "2026年3月15日",
-    "weTested12DifferentInternationalization": "我们针对 10 个页面测试了 12 种不同的国际化库。以下是带有交互式图表的详细结果。",
-    "howToReduceYourI18n": "如何将 i18n 包大小减少 60%",
+    "weTested12DifferentInternationalization": "我们在性能、包大小和开发人员体验方面测试了 12 个不同的国际化库。以下是令人惊讶的结果。",
+    "howToReduceYourI18n": "如何将 i18n 包减小 60%",
     "march82026": "2026年3月8日",
-    "practicalStrategiesForOptimizingTranslation": "优化翻译包的实用策略，包括延迟加载、代码拆分和编译时优化。",
+    "practicalStrategiesForOptimizingTranslation": "优化翻译包的实用策略，包括懒加载、代码拆分和编译时优化。",
     "theStateOfInternationalizationIn": "React 国际化的现状",
     "february282026": "2026年2月28日",
-    "anOverviewOfTheCurrent": "React 当前 i18n 生态系统概览，涵盖趋势、新兴模式和社区偏好。",
+    "anOverviewOfTheCurrent": "当前 i18n 生态系统概述，比较了从消息目录到基于编译器的解决方案等各种方法。",
+    "anOverviewOfTheCurrentI18n": "React 中当前 i18n 生态系统的概述，涵盖了趋势、新兴模式和社区偏好。",
     "migratingFromReactI18nextTo": "从 react-i18next 迁移到 Lingui",
     "february152026": "2026年2月15日",
-    "aStepByStepGuide": "从 react-i18next 迁移拥有 50,000 个翻译键的生产应用程序到 Lingui 的逐步指南。",
-    "serverComponentsAndI18nWhat": "服务器组件和 i18n：有什么变化？",
+    "aStepByStepGuide": "关于将包含 50,000 个翻译键的生产应用从 react-i18next 迁移到 Lingui 的分步指南。",
+    "aStepByStepGuideOnMigrating": "关于将包含 50,000 个翻译键的生产应用从 react-i18next 迁移到 Lingui 的分步指南。",
+    "serverComponentsAndI18nWhat": "Server Components 与 i18n：有哪些变化？",
     "february12026": "2026年2月1日",
-    "reactServerComponentsIntroduceNew": "React 服务器组件为国际化引入了新模式。我们探讨了其影响和最佳实践。",
-    "benchmarkMethodologyHowWeTest": "基准测试方法学：我们如何测试",
+    "reactServerComponentsIntroduce": "React Server Components 为国际化引入了新模式。我们探讨了其影响和最佳实践。",
+    "benchmarkMethodologyHowWe": "基准测试方法：我们如何测试",
+    "benchmarkMethodologyHowWeTest": "基准测试方法：我们如何测试",
     "january202026": "2026年1月20日",
-    "aTransparentLookAtOur": "透明地了解我们的基准测试方法，包括测试环境、统计方法和可重现性。",
-    "readMore": "阅读更多 →"
+    "aTransparentLookAtOur": "对我们基准测试方法的透明观察，包括测试环境、统计方法和可重复性。",
+    "aTransparentLookAtOurBenchmarking": "对我们基准测试方法的透明观察，包括测试环境、统计方法和可重复性。",
+    "readMore": "阅读更多 →",
+    "benchmark": "基准测试",
+    "tutorial": "教程",
+    "analysis": "分析",
+    "meta": "元数据"
   },
   "careersHeader": {
-    "careers": "职业",
-    "joinOurMissionToMake": "加入我们的使命，让网络对世界各地的每一个人都更快、更方便。"
+    "careers": "职业生涯",
+    "joinOurMissionToMake": "加入我们的使命，让网络对每个人、每个地方都更快、更易于访问。",
+    "joinOurMission": "加入我们的使命，改善国际化生态系统。我们是一个远程优先的团队，重视影响力、透明度和持续学习。"
   },
   "careersBenefits": {
     "whyJoinUs": "为什么加入我们？",
     "remoteFirst": "远程优先",
-    "workFromAnywhereFully": "在任何地方工作。完全分布在 6 个时区的团队。",
+    "workFromAnywhereFully": "在任何地方工作。团队完全分布在 6 个时区。",
+    "workFromAnywhere": "在世界任何地方工作",
     "openSource": "开源",
-    "allOurWorkIs": "我们所有的工作都是开源的。在产生影响的同时建立你的公共投资组合。",
-    "impactful": "有影响力的",
-    "yourWorkDirectlyHelps": "你的工作直接帮助开发人员构建更好、更快的国际化应用程序。"
+    "allOurWorkIs": "我们所有的工作都是开源的。在创造影响力的同时建立您的公开个人履历。",
+    "impactful": "具有影响力",
+    "yourWorkDirectlyHelps": "您的工作直接帮助开发人员构建更好、更快的国际化应用。",
+    "competitivePay": "具有竞争力的薪酬",
+    "topOfMarketCompensation": "市场领先的薪酬水平",
+    "openSourceTime": "开源时间",
+    "percentTimeForOss": "20% 的时间用于 OSS 贡献"
   },
   "openPositions": {
     "openPositions": "开放职位",
     "seniorPerformanceEngineer": "高级性能工程师",
+    "seniorFrontendEngineer": "高级前端工程师",
     "fullTime": "全职",
     "remote": "远程",
-    "leadBenchmarkDesignAnd": "领导基准设计和实施。需要深入了解 V8 内部、浏览器性能 API 和统计分析。",
-    "technicalWriter": "技术文档工程师",
+    "leadBenchmarkDesignAnd": "领导基准测试的设计和实现。需要对 V8 内部机制、浏览器性能 API 和统计分析有深入了解。",
+    "technicalWriter": "技术作家",
     "partTime": "兼职",
     "createAndMaintainDocumentation": "创建并维护有关 i18n 性能最佳实践的文档、博客文章和教育内容。",
     "frontendDeveloper": "前端开发人员",
-    "buildAndMaintainThe": "构建并维护基准仪表板、比较工具和交互式可视化效果。",
-    "devOpsEngineer": "运维工程师",
-    "designAndMaintainThe": "设计并维护在每次库更新时自动运行基准测试的 CI/CD 流水线。",
-    "applyNow": "立即申请"
+    "buildAndMaintainThe": "构建和维护基准测试仪表板、比较工具和交互式可视化效果。",
+    "buildAndMaintainOur": "使用 React, TypeScript 和 Vite 构建并维护我们的基准测试仪表板和开发人员工具。",
+    "devOpsEngineer": "DevOps 工程师",
+    "designAndMaintainThe": "设计并维护 CI/CD 管道，在每次库更新时自动运行基准测试。",
+    "applyNow": "立即申请",
+    "engineering": "工程",
+    "backendEngineer": "后端工程师",
+    "designAndScaleOur": "设计并扩展我们的云基准测试基础设施，每天处理数千次自动化运行。",
+    "documentation": "文档",
+    "createComprehensiveGuidesApi": "为我们的基准测试平台创建全面的指南、API 参考和教程。",
+    "devrelEngineer": "DevRel 工程师",
+    "sfRemote": "旧金山 / 远程",
+    "community": "社区",
+    "engageWithTheI18n": "通过演讲、研讨会、博客文章和开源贡献与 i18n 社区互动。",
+    "qaEngineer": "QA 工程师",
+    "ensureTheAccuracyAnd": "通过严格的测试和验证确保基准测试结果的准确性和可靠性。"
   },
   "contactHeader": {
     "contactUs": "联系我们",
-    "haveQuestionsOrWantTo": "有疑问或想做出贡献？我们很期待听到你的声音。"
+    "haveQuestionsOrWantTo": "有疑问或想贡献？我们很乐意听到您的声音。",
+    "getInTouch": "保持联系",
+    "haveIdeasFoundABug": "有想法、发现 Bug 或想贡献基准测试？请联系我们。"
   },
   "contactForm": {
     "name": "姓名",
+    "yourName": "您的姓名",
     "email": "电子邮件",
+    "emailPlaceholder": "you@example.com",
     "subject": "主题",
-    "message": "留言",
+    "topic": "话题",
+    "bugReport": "错误报告",
+    "newBenchmarkIdea": "新基准测试思路",
+    "methodologyQuestion": "测试方法问题",
+    "contribution": "贡献",
+    "other": "其他",
+    "message": "内容",
+    "messagePlaceholder": "描述您的问题或想法...",
     "sendMessage": "发送消息",
     "wellGetBackTo": "我们将在 48 小时内回复您。"
   },
   "faqHeader": {
     "frequentlyAskedQuestions": "常见问题",
-    "everythingYouNeedTo": "关于 i18n 基准测试项目，你需要知道的一切。"
+    "everythingYouNeedTo": "关于 i18n 基准测试项目您需要了解的一切。",
+    "everythingYouNeedToKnow": "关于 i18n 基准测试您需要了解的一切。"
   },
   "faqList": {
     "howAreTheBenchmarks": "基准测试是如何运行的？",
-    "allBenchmarksAreRun": "所有的基准测试都是使用 Playwright 在一致的硬件设置（M2 MacBook Pro）上运行的，并模拟了 4G 网络条件。每个测试运行 50 次迭代，我们报告中位数、P95 和 P99 值。",
+    "allBenchmarksAreRun": "所有基准测试都使用 Playwright 在一致的硬件设置（M2 MacBook Pro）和模拟 4G 网络条件下运行。每次测试运行 50 个迭代，我们报告中位数、P95 和 P99 值。",
     "whatLibrariesAreCurrently": "目前测试了哪些库？",
-    "weCurrentlyBenchmarkReactI18next": "我们目前对 react-i18next、react-intl (FormatJS)、LinguiJS、typesafe-i18n、next-intl 和 Paraglide 进行基准测试。我们计划根据社区要求增加更多。",
-    "canIContributeA": "我可以贡献一个新的库集成吗？",
-    "absolutelyWeWelcomeCommunity": "当然可以！我们欢迎社区做出贡献。Fork 该仓库，按照我们的模板添加您的库集成，并提交拉取请求。",
+    "weCurrentlyBenchmarkReactI18next": "我们目前对 react-i18next, react-intl (FormatJS), LinguiJS, typesafe-i18n, next-intl 和 Paraglide 进行基准测试。我们计划根据社区要求添加更多内容。",
+    "canISubmitMyOwn": "我可以提交自己的基准测试吗？",
+    "canISubmitMyOwnBenchmarks": "我可以提交自己的基准测试吗？",
+    "absolutelyWeWelcomeCommunity": "当然可以！我们欢迎社区贡献。Fork 仓库，按照我们的模板添加您的库集成，并提交 Pull Request。详情请参阅贡献指南。",
     "howOftenAreResults": "结果多久更新一次？",
-    "benchmarksRunAutomaticallyVia": "基准测试在每次依赖项更新时通过 CI 自动运行，并每周在主分支上运行。结果会在 24 小时内发布到仪表板上。",
+    "benchmarksRunAutomaticallyVia": "基准测试在每次依赖更新时通过 CI 自动运行，并且在主分支上每周运行一次。结果会在 24 小时内发布到仪表板。",
     "areTheResultsStatistically": "结果是否具有统计学意义？",
-    "yesWeUseThe": "是的。我们使用 Mann-Whitney U 检验（显着性水平为 0.05）来比较分布。我们还报告置信区间和效应大小。"
+    "yesWeUseThe": "是的。我们使用显著性水平为 0.05 的 Mann-Whitney U 检验来比较分布。我们还报告置信区间和效应量大小。",
+    "whatIsI18nBenchmark": "什么是 i18n 基准测试？",
+    "i18nBenchmarkIsAnOpenSource": "i18n 基准测试是一个开源基准测试套件，衡量并比较 JavaScript 和 React 应用的国际化库的性能、包大小和开发人员体验。",
+    "howAreBenchmarksConducted": "基准测试是如何进行的？",
+    "weRunStandardizedTestsInIsolated": "我们在隔离环境中使用一致的硬件运行标准化测试。每个基准测试重复多次以确保统计显著性。所有测试配置都在我们的 GitHub 仓库中公开。",
+    "whichLibrariesAreCurrentlySupported": "目前支持哪些库？",
+    "weSupportReactI18nextReactIntl": "我们支持 react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 和 Tolgee。",
+    "yesCommunityBenchmarkSubmissionsAre": "是的！欢迎社区提交基准测试。Fork 我们的仓库，按照我们的贡献指南添加您的基准测试，并提交 Pull Request。我们的团队将审查并合并合格的提交。",
+    "howOftenAreBenchmarksUpdated": "基准测试多久更新一次？",
+    "weReRunAllBenchmarksWeekly": "我们每周针对每个库的最新稳定版本重新运行所有基准测试。重大版本发布会触发立即重新测试循环。",
+    "isTheDataReliable": "数据可靠吗？",
+    "weFollowRigorousStatisticalMethodologyIncluding": "我们遵循严谨的统计方法，包括热身运行、离群值检测和置信区间。所有原始数据都随我们的分析一起发布，以确保完全透明。",
+    "doYouOfferConsultingServices": "你们提供咨询服务吗？",
+    "yesOurEnterprisePlanIncludesConsulting": "是的，我们的企业计划包括为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的具体用例、规模和约束提供量身定制的建议。",
+    "howCanIContribute": "我该如何贡献？",
+    "thereAreManyWaysToContribute": "有许多贡献方式：提交基准测试、改进文档、报告 Bug、建议新指标或赞助项目。访问我们的 GitHub 仓库了解更多详情。"
   },
   "pricingHeader": {
-    "pricing": "价格",
-    "transparentPricingForEvery": "为您 i18n 旅程的每个阶段提供透明的价格。"
+    "pricing": "定价",
+    "transparentPricingForEvery": "为您 i18n 旅程的每个阶段提供透明的定价。"
   },
   "pricingTiers": {
     "freeTier": "免费版",
     "free": "免费",
-    "publicBenchmarkDashboard": "公共基准测试仪表板",
-    "basicLibraryComparisons": "基本库比较",
-    "communityForumAccess": "社区论坛访问权限",
+    "publicBenchmarkDashboard": "公开基准测试仪表板",
+    "basicLibraryComparisons": "基础库对比",
+    "communityForumAccess": "社区论坛访问",
     "monthlyResultDigest": "每月结果摘要",
     "getStarted": "开始使用",
     "proTier": "专业版",
@@ -204,26 +284,27 @@
     "customLibraryIntegrations": "自定义库集成",
     "slaGuarantees": "SLA 保证",
     "prioritySupport": "优先支持",
-    "contactSales": "联系销售人员"
+    "contactSales": "联系销售"
   },
   "productsHeader": {
     "products": "产品",
-    "toolsAndServicesTo": "帮助您优化国际化战略的工具和服务。"
+    "toolsAndServicesTo": "帮助您优化国际化策略的工具和服务。"
   },
   "productsGrid": {
     "benchmarkDashboard": "基准测试仪表板",
-    "interactiveChartsAndTables": "交互式图表和表格，对比了不同 i18n 库在包大小、渲染时间和注水成本方面的表现。",
+    "interactiveChartsAndTables": "交互式图表和表格，比较 i18n 库在包大小、渲染时间和水合成本方面的差异。",
     "bundleAnalyzer": "包分析器",
-    "uploadYourBuildOutput": "上传您的构建输出，获取关于 i18n 开销在您的包中占比的详细分析。",
+    "uploadYourBuildOutput": "上传您的构建输出，获取关于 i18n 开销占包大小比例的详细细分。",
     "migrationAssistant": "迁移助手",
-    "automatedCodemodsAndGuides": "自动化代码修改工具和指南，助您在 i18n 库之间平滑迁移，最大程度减少中断。",
-    "performanceMonitor": "性能监控器",
-    "continuousPerformanceTrackingFor": "对您的 i18n 实现进行持续的性能跟踪。当翻译加载速度下降时获得警报。",
+    "automatedCodemodsAndGuides": "自动化的 Codemod 和指南，用于在 i18n 库之间迁移，并将干扰降至最低。",
+    "performanceMonitor": "性能监控",
+    "continuousPerformanceTrackingFor": "为您 i18n 实现提供的持续性能跟踪。当翻译加载性能下降时获取警报。",
     "learnMore": "了解更多"
   },
   "settingsHeader": {
     "settings": "设置",
-    "manageYourAccountPreferences": "管理您的账户偏好和配置。"
+    "manageYourAccountPreferences": "管理您的账户偏好和配置。",
+    "manageYourAccount": "管理您的账户偏好和配置。"
   },
   "profileSection": {
     "profile": "个人资料",
@@ -233,10 +314,20 @@
   "preferencesSection": {
     "preferences": "偏好设置",
     "emailNotifications": "邮件通知",
+    "receiveWeeklyBenchmark": "接收每周基准测试报告",
     "receiveWeeklyBenchmarkReports": "接收每周基准测试报告",
+    "toggleNotifications": "切换通知",
     "darkMode": "深色模式",
     "useDarkColorScheme": "使用深色配色方案",
-    "defaultLanguage": "默认语言"
+    "toggleDarkMode": "切换深色模式",
+    "defaultLanguage": "默认语言",
+    "englishEn": "英语 (en)",
+    "frenchFr": "法语 (fr)",
+    "germanDe": "德语 (de)",
+    "spanishEs": "西班牙语 (es)",
+    "japaneseJa": "日语 (ja)",
+    "chineseSimplifiedZhCn": "简体中文 (zh-CN)",
+    "arabicAr": "阿拉伯语 (ar)"
   },
   "apiAccessSection": {
     "apiAccess": "API 访问",
@@ -250,27 +341,33 @@
   },
   "teamHeader": {
     "ourTeam": "我们的团队",
-    "meetThePeopleBehindI18n": "认识 i18n 基准测试背后的团队。一支多元化的团队，因为对优秀开发人员工具的共同热情而团结在一起。"
+    "meetThePeopleBehindI18n": "认识 i18n 基准测试背后的团队。这是一支因共同热爱伟大开发工具而凝聚在一起的多元化团队。"
   },
   "teamGrid": {
     "sarahChen": "Sarah Chen",
     "founderLeadEngineer": "创始人兼首席工程师",
-    "formerGoogleEngineerWith10": "前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。",
+    "formerGoogleEngineerWith": "前 Google 工程师，拥有 10 年大规模构建国际化系统的经验。",
+    "formerGoogleEngineerWith10": "前 Google 工程师，拥有 10 年大规模构建国际化系统的经验。",
     "marcusWeber": "Marcus Weber",
     "performanceEngineer": "性能工程师",
+    "specializesInJavascriptPerformance": "专注于 JavaScript 性能优化和基准测试方法。曾任职于 Vercel。",
     "specializesInJavascriptPerformanceOptimization": "专注于 JavaScript 性能优化和基准测试方法。曾任职于 Vercel。",
     "aishaPatel": "Aisha Patel",
-    "developerAdvocate": "开发者倡导者",
-    "passionateAboutDeveloperExperienceAnd": "热爱开发者体验和教育。React Conf、JSConf 和 i18nNext 的演讲者。",
+    "developerAdvocate": "开发者倡导者 (DevAdvocate)",
+    "passionateAboutDeveloperExperience": "热衷于开发者体验和教育。React Conf, JSConf 和 i18nNext 的演讲者。",
+    "passionateAboutDeveloperExperienceAnd": "热衷于开发者体验和教育。React Conf, JSConf 和 i18nNext 的演讲者。",
     "tomasRodriguez": "Tomás Rodríguez",
     "fullStackDeveloper": "全栈开发人员",
-    "maintainsTheBenchmarkingInfrastructureAnd": "维护基准测试基础架构和 CI/CD 流水线。Lingui 的开源贡献者。",
+    "maintainsTheBenchmarkingInfrastructure": "负责维护基准测试基础设施和 CI/CD 管道。Lingui 的开源贡献者。",
+    "maintainsTheBenchmarkingInfrastructureAnd": "负责维护基准测试基础设施和 CI/CD 管道。Lingui 的开源贡献者。",
     "yukiTanaka": "Yuki Tanaka",
     "dataAnalyst": "数据分析师",
-    "ensuresStatisticalRigorInAll": "确保所有基准测试结果的统计严谨性。麻省理工学院应用统计学博士。",
+    "ensuresStatisticalRigorIn": "确保所有基准测试结果的统计严谨性。MIT 应用统计学博士。",
+    "ensuresStatisticalRigorInAll": "确保所有基准测试结果的统计严谨性。MIT 应用统计学博士。",
     "elenaKowalski": "Elena Kowalski",
     "communityManager": "社区经理",
+    "managesCommunityContributions": "管理社区贡献、合作伙伴关系和活动。具有开源治理背景。",
     "managesCommunityContributionsPartnershipsAnd": "管理社区贡献、合作伙伴关系和活动。具有开源治理背景。"
   },
-  "mockBanner": "⚠️ 此页面仅包含用于基准测试的模拟数据。它与任何真实的业务或服务无关。"
+  "mockBanner": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实业务或服务无关。"
 }

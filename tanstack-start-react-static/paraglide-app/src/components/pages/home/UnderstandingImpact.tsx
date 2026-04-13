@@ -35,22 +35,25 @@ export default function UnderstandingImpact() {
             <strong className="text-foreground">
               {m["understanding-impact.waterfallRequests"]()}
             </strong>{" "}
-            the app must first load, determine the locale, then fetch the right
-            chunk — adding network round-trips.
+            {m["understanding-impact.waterfallRequestsDesc"]
+              ? m["understanding-impact.waterfallRequestsDesc"]()
+              : "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."}
           </li>
           <li>
             <strong className="text-foreground">
               {m["understanding-impact.flashOfUntranslatedContentFouc"]()}
             </strong>{" "}
-            users may briefly see translation keys or a fallback language before
-            the chunk arrives.
+            {m["understanding-impact.flashOfUntranslatedContentFoucDesc"]
+              ? m["understanding-impact.flashOfUntranslatedContentFoucDesc"]()
+              : "users may briefly see translation keys or a fallback language before the chunk arrives."}
           </li>
           <li>
             <strong className="text-foreground">
               {m["understanding-impact.cacheInvalidation"]()}
             </strong>{" "}
-            updating translations requires cache-busting strategies to ensure
-            users get fresh content without re-downloading unchanged chunks.
+            {m["understanding-impact.cacheInvalidationDesc"]
+              ? m["understanding-impact.cacheInvalidationDesc"]()
+              : "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."}
           </li>
         </ul>
       </div>

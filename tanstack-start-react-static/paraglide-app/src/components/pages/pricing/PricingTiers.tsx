@@ -1,42 +1,44 @@
+import * as m from "../../../paraglide/messages";
+
 export default function PricingTiers() {
   const tiers = [
     {
-      name: "Starter",
-      price: "$0",
-      period: "forever",
+      name: m["pricing-tiers.starter"](),
+      price: m["pricing-tiers.price0"](),
+      period: m["pricing-tiers.forever"](),
       features: [
-        "5 benchmark runs/day",
-        "3 libraries",
-        "Community support",
-        "Public results",
+        m["pricing-tiers.benchmarkRunPerDay"]({ runs: "5" }),
+        m["pricing-tiers.librariesNumber"]({ libs: "3" }),
+        m["pricing-tiers.communitySupport"](),
+        m["pricing-tiers.publicResults"](),
       ],
     },
     {
-      name: "Pro",
-      price: "$29",
-      period: "/month",
+      name: m["pricing-tiers.pro"](),
+      price: m["pricing-tiers.price29"](),
+      period: m["pricing-tiers.month"](),
       features: [
-        "Unlimited runs",
-        "All libraries",
-        "Priority support",
-        "Private results",
-        "CI integration",
-        "Historical data",
+        m["pricing-tiers.unlimitedRuns"](),
+        m["pricing-tiers.allLibraries"](),
+        m["pricing-tiers.prioritySupport"](),
+        m["pricing-tiers.privateResults"](),
+        m["pricing-tiers.ciIntegration"](),
+        m["pricing-tiers.historicalData"](),
       ],
       highlighted: true,
     },
     {
-      name: "Enterprise",
-      price: "Custom",
+      name: m["pricing-tiers.enterprise"](),
+      price: m["pricing-tiers.customPrice"](),
       period: "",
       features: [
-        "Everything in Pro",
-        "On-premise option",
-        "SSO & SAML",
-        "Dedicated account manager",
-        "Custom SLAs",
-        "Audit logs",
-        "Training sessions",
+        m["pricing-tiers.everythingInPro"](),
+        m["pricing-tiers.onPremiseOption"](),
+        m["pricing-tiers.ssoSaml"](),
+        m["pricing-tiers.dedicatedAccountManager"](),
+        m["pricing-tiers.customSlas"](),
+        m["pricing-tiers.auditLogs"](),
+        m["pricing-tiers.trainingSessions"](),
       ],
     },
   ];
@@ -75,7 +77,9 @@ export default function PricingTiers() {
                 : "border border-border text-foreground hover:bg-accent"
             }`}
           >
-            {t.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+            {t.name === m["pricing-tiers.enterprise"]()
+              ? m["pricing-tiers.contactSales"]()
+              : m["pricing-tiers.getStarted"]()}
           </button>
         </div>
       ))}

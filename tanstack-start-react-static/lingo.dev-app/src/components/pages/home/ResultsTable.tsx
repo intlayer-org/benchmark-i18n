@@ -1,26 +1,4 @@
 export default function ResultsTable() {
-  const results = [
-    {
-      lib: "react-i18next",
-      size: "42.3 kB",
-      time: "0.12ms",
-      lazy: "Yes",
-    },
-    {
-      lib: "react-intl",
-      size: "38.1 kB",
-      time: "0.15ms",
-      lazy: "Manual",
-    },
-    { lib: "lingui", size: "12.8 kB", time: "0.08ms", lazy: "Yes" },
-    {
-      lib: "typesafe-i18n",
-      size: "5.2 kB",
-      time: "0.05ms",
-      lazy: "Built-in",
-    },
-  ];
-
   return (
     <section>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
@@ -45,16 +23,38 @@ export default function ResultsTable() {
             </tr>
           </thead>
           <tbody>
-            {results.map((r) => (
-              <tr key={r.lib} className="border-t border-border">
-                <td className="px-4 py-3 font-medium text-foreground">
-                  {r.lib}
-                </td>
-                <td className="px-4 py-3 text-muted-foreground">{r.size}</td>
-                <td className="px-4 py-3 text-muted-foreground">{r.time}</td>
-                <td className="px-4 py-3 text-muted-foreground">{r.lazy}</td>
-              </tr>
-            ))}
+            <tr className="border-t border-border">
+              <td className="px-4 py-3 font-medium text-foreground">
+                react-i18next
+              </td>
+              <td className="px-4 py-3 text-muted-foreground">42.3 kB</td>
+              <td className="px-4 py-3 text-muted-foreground">0.12ms</td>
+              <td className="px-4 py-3 text-muted-foreground">Yes</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-3 font-medium text-foreground">
+                react-intl
+              </td>
+              <td className="px-4 py-3 text-muted-foreground">38.1 kB</td>
+              <td className="px-4 py-3 text-muted-foreground">0.15ms</td>
+              <td className="px-4 py-3 text-muted-foreground">Manual</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-3 font-medium text-foreground">
+                lingui
+              </td>
+              <td className="px-4 py-3 text-muted-foreground">12.8 kB</td>
+              <td className="px-4 py-3 text-muted-foreground">0.08ms</td>
+              <td className="px-4 py-3 text-muted-foreground">Yes</td>
+            </tr>
+            <tr className="border-t border-border">
+              <td className="px-4 py-3 font-medium text-foreground">
+                typesafe-i18n
+              </td>
+              <td className="px-4 py-3 text-muted-foreground">5.2 kB</td>
+              <td className="px-4 py-3 text-muted-foreground">0.05ms</td>
+              <td className="px-4 py-3 text-muted-foreground">Built-in</td>
+            </tr>
           </tbody>
         </table>
       </div>

@@ -8,10 +8,14 @@ import { lingui } from "@lingui/vite-plugin";
 
 const config = defineConfig({
   plugins: [
+    lingui(),
     tailwindcss(),
     tanstackStart(),
-    viteReact(),
-    lingui(),
+    viteReact({
+      babel: {
+        plugins: ["@lingui/babel-plugin-lingui-macro"],
+      },
+    }),
 
     visualizer({
       filename: `../results/${packageJson.name}/bundle/stats.json`, // Change extension to .json

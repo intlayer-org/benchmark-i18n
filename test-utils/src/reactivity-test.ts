@@ -330,7 +330,6 @@ const printReactivitySummary = (
  */
 const saveReactivityResults = (
   resultsDirectory: string,
-  appName: string,
   activeLocale: string,
   iterationCount: number,
   e2eStats: TimingStats,
@@ -463,7 +462,6 @@ export const registerReactivityTest = (config: ReactivityTestConfig): void => {
     );
     saveReactivityResults(
       resultsDirectory,
-      appName,
       activeLocale,
       iterationCount,
       e2eStats,

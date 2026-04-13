@@ -340,7 +340,6 @@ msgid "Contact Sales"
 msgstr "Contact Sales"
 
 #: src/components/pages/pricing/PricingTiers.tsx
-#: src/components/pages/pricing/PricingTiers.tsx
 msgid "Get Started"
 msgstr "Get Started"
 

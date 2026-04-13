@@ -30,7 +30,7 @@ export default function ContactForm() {
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Email
+            {i18n._("contact-form.email")}
           </label>
           <input
             id={emailId}
@@ -45,7 +45,7 @@ export default function ContactForm() {
           htmlFor={topicId}
           className="mb-1 block text-sm font-medium text-foreground"
         >
-          Topic
+          {i18n._("contact-form.topic")}
         </label>
         <select
           id={topicId}
@@ -54,8 +54,8 @@ export default function ContactForm() {
           <option>{i18n._("contact-form.bugReport")}</option>
           <option>{i18n._("contact-form.newBenchmarkIdea")}</option>
           <option>{i18n._("contact-form.methodologyQuestion")}</option>
-          <option>Contribution</option>
-          <option>Other</option>
+          <option>{i18n._("contact-form.contribution")}</option>
+          <option>{i18n._("contact-form.other")}</option>
         </select>
       </div>
       <div>
@@ -63,7 +63,7 @@ export default function ContactForm() {
           htmlFor={messageId}
           className="mb-1 block text-sm font-medium text-foreground"
         >
-          Message
+          {i18n._("contact-form.message")}
         </label>
         <textarea
           id={messageId}

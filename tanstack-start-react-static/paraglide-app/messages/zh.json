@@ -52,7 +52,8 @@
     "sampleResults": "样本结果",
     "bundleSize": "包大小",
     "lookupTime": "查找时间",
-    "lazyLoading": "延迟加载"
+    "lazyLoading": "延迟加载",
+    "library": "库"
   },
   "understanding-impact": {
     "understandingTheImpact": "理解影响",
@@ -156,7 +157,11 @@
     "newBenchmarkIdea": "新基准测试想法",
     "methodologyQuestion": "方法论问题",
     "describeYourQuestionOrIdea": "描述您的问题或想法...",
-    "sendMessage": "发送消息"
+    "sendMessage": "发送消息",
+    "topic": "主题",
+    "contribution": "贡献",
+    "other": "其他",
+    "message": "消息"
   },
   "faq-header1": {
     "frequentlyAskedQuestions": "常见问题",
@@ -265,6 +270,7 @@
     "email": "邮件地址"
   },
   "preferences-section": {
+    "preferences": "偏好设置",
     "emailNotifications": "邮件通知",
     "receiveWeeklyBenchmarkReports": "接收每周基准测试报告",
     "toggleNotifications": "切换通知",

@@ -18,84 +18,84 @@ msgstr ""
 
 #: src/components/pages/home/Hero.tsx
 msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
-msgstr ""
+msgstr "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga y la reactividad de renderizado."
 
 #: src/components/pages/home/Hero.tsx
 msgid "View Results"
-msgstr ""
+msgstr "Ver resultados"
 
 #: src/components/Footer.tsx
 #: src/components/Header.tsx
 #: src/components/pages/about/AboutGrid.tsx
 #: src/components/pages/home/Hero.tsx
 msgid "Methodology"
-msgstr ""
+msgstr "Metodología"
 
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Yes"
-msgstr ""
+msgstr "Sí"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Manual"
-msgstr ""
+msgstr "Manual"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Built-in"
-msgstr ""
+msgstr "Integrado"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Sample Results"
-msgstr ""
+msgstr "Resultados de muestra"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Library"
-msgstr ""
+msgstr "Biblioteca"
 
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Bundle Size"
-msgstr ""
+msgstr "Tamaño del paquete"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Lookup Time"
-msgstr ""
+msgstr "Tiempo de búsqueda"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Lazy Loading"
-msgstr ""
+msgstr "Carga diferida"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Understanding the Impact"
-msgstr ""
+msgstr "Entendiendo el impacto"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Why a single large JSON can hurt performance"
-msgstr ""
+msgstr "Por qué un solo JSON grande puede perjudicar el rendimiento"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
-msgstr ""
+msgstr "Muchas bibliotecas i18n almacenan las traducciones en un solo objeto JSON proporcionado a través del contexto de React. Cuando este objeto es grande (miles de claves), cada componente que consume traducciones mantiene una referencia a todo el diccionario. Esto significa:"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "The JSON must be parsed on every page load — blocking the main thread."
-msgstr ""
+msgstr "El JSON debe ser analizado en cada carga de página — bloqueando el hilo principal."
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
-msgstr ""
+msgstr "Las arquitecturas basadas en el contexto pueden causar renderizados en cascada cuando cambia el local, porque cada consumidor es notificado incluso si sus claves específicas no han cambiado."
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
-msgstr ""
+msgstr "Durante la renderización del lado del servidor, el diccionario completo se serializa en la carga útil de HTML, aumentando el tamaño del documento que debe descargarse e hidratarse."
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "The trade-offs of dynamic loading"
-msgstr ""
+msgstr "Las compensaciones de la carga dinámica"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
-msgstr ""
+msgstr "Dividir las traducciones en fragmentos por ruta o por espacio de nombres puede reducir drásticamente la carga útil inicial. Pero introduce nuevos desafíos:"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
@@ -113,35 +113,35 @@ msgstr ""
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "What this benchmark measures"
-msgstr ""
+msgstr "Lo que mide este benchmark"
 
 #: src/components/pages/home/UnderstandingImpact.tsx
 msgid "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
-msgstr ""
+msgstr "Esta aplicación de prueba proporciona un entorno controlado — 10 páginas con contenido realista — para comparar las bibliotecas i18n en tres ejes: el peso que añaden a su paquete de JavaScript, el tiempo dedicado a analizar y renderizar el contenido traducido y la eficacia de sus estrategias de división de código y carga diferida. Cada biblioteca se integra en la misma aplicación para que los resultados sean directamente comparables."
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Why These Metrics Matter"
-msgstr ""
+msgstr "Por qué son importantes estas métricas"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
-msgstr ""
+msgstr "El paquete representa los datos enviados a cada usuario en todo el mundo. Un paquete más grande significa tiempos de descarga más largos — especialmente en conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código de tiempo de ejecución, además de los propios archivos de traducción."
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Rendering & Hydration"
-msgstr ""
+msgstr "Renderizado e hidratación"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
-msgstr ""
+msgstr "Conectar un gran diccionario JSON a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede desencadenar nuevos renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la anexión de objetos de traducción masivos añaden latencia antes de que la página se vuelva interactiva — impactando directamente el tiempo de interacción (TTI)."
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Dynamic Loading"
-msgstr ""
+msgstr "Carga dinámica"
 
 #: src/components/pages/home/WhyItMatters.tsx
 msgid "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
-msgstr ""
+msgstr "Cargar todas las traducciones por adelantado sobrecarga la carga útil inicial. La carga dinámica (lazy) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, el lazy loading introduce sus propias compensaciones: solicitudes en cascada, parpadeo de contenido no traducido y complejidad de la caché. Medir ambas estrategias es esencial."
 
 #: src/components/pages/about/AboutGrid.tsx
 msgid "Why This Exists"
@@ -169,7 +169,7 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Bundle size impact"
-msgstr ""
+msgstr "Impacto en el tamaño del paquete"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
@@ -177,7 +177,7 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Rendering overhead"
-msgstr ""
+msgstr "Sobrecarga de renderizado"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
@@ -185,7 +185,7 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Hydration cost"
-msgstr ""
+msgstr "Costo de hidratación"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
@@ -193,28 +193,28 @@ msgstr ""
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Lazy loading effectiveness"
-msgstr ""
+msgstr "Eficacia de la carga diferida"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
-msgstr ""
+msgstr "Si dividir las traducciones por ruta o por espacio de nombres realmente reduce la carga inicial, y qué compensaciones introduce (solicitudes en cascada, FOUC, complejidad de la caché)."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Locale switch speed"
-msgstr ""
+msgstr "Velocidad de cambio de idioma"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
-msgstr ""
+msgstr "Qué tan rápido puede la aplicación cambiar de un idioma a otro en tiempo de ejecución — incluyendo la obtención de nuevas traducciones, el renderizado de componentes y la actualización del DOM."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "What We Measure"
-msgstr ""
+msgstr "Lo que medimos"
 
 #: src/components/Header.tsx
 #: src/components/pages/blog/BlogHeader.tsx
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: src/components/pages/blog/BlogHeader.tsx
 msgid "Insights, tutorials, and analysis from the i18n community."
@@ -222,7 +222,7 @@ msgstr ""
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Read More →"
-msgstr ""
+msgstr "Leer más →"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Remote-first"
@@ -247,7 +247,7 @@ msgstr ""
 #: src/components/Header.tsx
 #: src/components/pages/careers/CareersHeader.tsx
 msgid "Careers"
-msgstr ""
+msgstr "Carreras"
 
 #: src/components/pages/careers/CareersHeader.tsx
 msgid "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -255,15 +255,15 @@ msgstr ""
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Open Positions"
-msgstr ""
+msgstr "Puestos abiertos"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Apply Now"
-msgstr ""
+msgstr "Solicitar ahora"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Your name"
@@ -272,7 +272,7 @@ msgstr ""
 #: src/components/pages/contact/ContactForm.tsx
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Topic"
@@ -300,7 +300,7 @@ msgstr ""
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Message"
-msgstr ""
+msgstr "Mensaje"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Describe your question or idea..."
@@ -308,7 +308,7 @@ msgstr ""
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Send Message"
-msgstr ""
+msgstr "Enviar mensaje"
 
 #: src/components/pages/contact/ContactHeader.tsx
 msgid "Get in Touch"
@@ -321,11 +321,11 @@ msgstr ""
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Preguntas frecuentes"
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Everything you need to know about i18n Benchmark."
-msgstr ""
+msgstr "Todo lo que necesita saber sobre el proyecto i18n Benchmark."
 
 #: src/components/pages/pricing/PricingHeader.tsx
 msgid "Simple, Transparent Pricing"
@@ -341,20 +341,20 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Contact Sales"
-msgstr ""
+msgstr "Contactar con ventas"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Get Started"
-msgstr ""
+msgstr "Comenzar"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Learn More"
-msgstr ""
+msgstr "Saber más"
 
 #: src/components/Header.tsx
 #: src/components/pages/products/ProductsHeader.tsx
 msgid "Products"
-msgstr ""
+msgstr "Productos"
 
 #: src/components/pages/products/ProductsHeader.tsx
 msgid "Tools and services to streamline your internationalization workflow."
@@ -362,31 +362,31 @@ msgstr ""
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "API Access"
-msgstr ""
+msgstr "Acceso API"
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "API Key"
-msgstr ""
+msgstr "Clave API"
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "Copy"
-msgstr ""
+msgstr "Copiar"
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "Use this key to access the benchmarking API programmatically."
-msgstr ""
+msgstr "Utilice esta clave para acceder a la API de benchmarking de forma programática."
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Preferences"
-msgstr ""
+msgstr "Preferencias"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Email Notifications"
-msgstr ""
+msgstr "Notificaciones por correo electrónico"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Receive weekly benchmark reports"
-msgstr ""
+msgstr "Recibir informes semanales de benchmark"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle notifications"
@@ -394,11 +394,11 @@ msgstr ""
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Dark Mode"
-msgstr ""
+msgstr "Modo oscuro"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Use dark color scheme"
-msgstr ""
+msgstr "Usar esquema de colores oscuros"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle dark mode"
@@ -406,7 +406,7 @@ msgstr ""
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Default Language"
-msgstr ""
+msgstr "Idioma predeterminado"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "English (en)"
@@ -438,11 +438,11 @@ msgstr ""
 
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "Profile"
-msgstr ""
+msgstr "Perfil"
 
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre de pantalla"
 
 #: src/components/pages/settings/ProfileSection.tsx
 msgid "John Developer"
@@ -450,36 +450,36 @@ msgstr ""
 
 #: src/components/pages/settings/SettingsFooter.tsx
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: src/components/pages/settings/SettingsFooter.tsx
 msgid "Save Changes"
-msgstr ""
+msgstr "Guardar cambios"
 
 #: src/components/Header.tsx
 #: src/components/pages/settings/SettingsHeader.tsx
 msgid "Settings"
-msgstr ""
+msgstr "Configuración"
 
 #: src/components/pages/settings/SettingsHeader.tsx
 msgid "Manage your account preferences and configuration."
-msgstr ""
+msgstr "Gestione sus preferencias de cuenta y configuración."
 
 #: src/components/pages/team/TeamHeader.tsx
 msgid "Our Team"
-msgstr ""
+msgstr "Nuestro equipo"
 
 #: src/components/pages/team/TeamHeader.tsx
 msgid "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
-msgstr ""
+msgstr "Conozca a la gente detrás de i18n Benchmark. Un equipo diverso unido por una pasión compartida por las excelentes herramientas de desarrollo."
 
 #: src/routes/__root.tsx
 msgid "Oops! Page not found"
-msgstr ""
+msgstr "¡Ups! Página no encontrada"
 
 #: src/routes/__root.tsx
 msgid "Return to Home"
-msgstr ""
+msgstr "Volver al inicio"
 
 #: src/routes/__root.tsx
 msgid "AppRoot"
@@ -487,24 +487,24 @@ msgstr ""
 
 #: src/components/Footer.tsx
 msgid "GitHub"
-msgstr ""
+msgstr "GitHub"
 
 #: src/components/Footer.tsx
 msgid "Contributing"
-msgstr ""
+msgstr "Contribuir"
 
 #: src/components/Footer.tsx
 msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
-msgstr ""
+msgstr "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación."
 
 #: src/components/Footer.tsx
 msgid "Resources"
-msgstr ""
+msgstr "Recursos"
 
 #: src/components/Footer.tsx
 #: src/components/Header.tsx
 msgid "Contact"
-msgstr ""
+msgstr "Contacto"
 
 #: src/components/Footer.tsx
 msgid "contact@intlayer.org"
@@ -512,7 +512,7 @@ msgstr ""
 
 #: src/components/Footer.tsx
 msgid "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
-msgstr ""
+msgstr "i18n Benchmark — Proyecto de código abierto. Construido con React, Vite y TanStack Router."
 
 #: src/components/Header.tsx
 msgid "Header"
@@ -520,11 +520,11 @@ msgstr ""
 
 #: src/components/Header.tsx
 msgid "Pricing"
-msgstr ""
+msgstr "Precios"
 
 #: src/components/Header.tsx
 msgid "Team"
-msgstr ""
+msgstr "Equipo"
 
 #: src/components/Header.tsx
 msgid "i18n Bench"
@@ -532,7 +532,7 @@ msgstr ""
 
 #: src/components/Header.tsx
 msgid "Home"
-msgstr ""
+msgstr "Inicio"
 
 #: src/components/Header.tsx
 msgid "Mock Pages <0/>"
@@ -540,15 +540,15 @@ msgstr ""
 
 #: src/components/Header.tsx
 msgid "Go to GitHub"
-msgstr ""
+msgstr "Ir a GitHub"
 
 #: src/components/MockBanner.tsx
 msgid "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
-msgstr ""
+msgstr "⚠️ Esta página contiene datos simulados solo para fines de benchmarking. No está relacionada con ningún negocio o servicio real."
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme mode: auto (system). Click to switch to light mode."
-msgstr ""
+msgstr "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro."
 
 #. 0: mode
 #: src/components/ThemeToggle.tsx
@@ -557,12 +557,12 @@ msgstr ""
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme: Auto"
-msgstr ""
+msgstr "Tema: Auto"
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme: Dark"
-msgstr ""
+msgstr "Tema: Oscuro"
 
 #: src/components/ThemeToggle.tsx
 msgid "Theme: Light"
-msgstr ""
+msgstr "Tema: Claro"

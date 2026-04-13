@@ -52,7 +52,8 @@
     "sampleResults": "サンプル結果",
     "bundleSize": "バンドルサイズ",
     "lookupTime": "ルックアップ時間",
-    "lazyLoading": "遅延読み込み"
+    "lazyLoading": "遅延読み込み",
+    "library": "ライブラリ"
   },
   "understanding-impact": {
     "understandingTheImpact": "影響を理解する",
@@ -156,7 +157,11 @@
     "newBenchmarkIdea": "新しいベンチマークのアイデア",
     "methodologyQuestion": "方法論に関する質問",
     "describeYourQuestionOrIdea": "質問やアイデアの詳細を記入してください...",
-    "sendMessage": "メッセージを送信"
+    "sendMessage": "メッセージを送信",
+    "topic": "トピック",
+    "contribution": "コントリビューション",
+    "other": "その他",
+    "message": "メッセージ"
   },
   "faq-header1": {
     "frequentlyAskedQuestions": "よくある質問",
@@ -265,6 +270,7 @@
     "email": "メールアドレス"
   },
   "preferences-section": {
+    "preferences": "設定",
     "emailNotifications": "メール通知",
     "receiveWeeklyBenchmarkReports": "毎週のベンチマークレポートを受け取る",
     "toggleNotifications": "通知の切り替え",

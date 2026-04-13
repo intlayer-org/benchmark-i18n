@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
+    "extract": "bun x @inlang/paraglide-js compile --project ./project.inlang",
     "test": "bun test:pages && bun test:components && bun test:reactivity",
     "test:pages": "playwright test pages.test.ts",
     "test:consistency": "playwright test structure-consistency.test.ts",

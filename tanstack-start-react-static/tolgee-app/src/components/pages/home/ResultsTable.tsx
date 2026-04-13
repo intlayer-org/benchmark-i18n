@@ -1,4 +1,4 @@
-import { T } from "@tolgee/react";
+import { T } from "../../../i18n/config";
 
 export default function ResultsTable() {
   const results = [

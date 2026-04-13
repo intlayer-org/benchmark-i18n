@@ -1,4 +1,4 @@
-import { T, useTranslate } from "@tolgee/react";
+import { useTranslate } from "../../../i18n/config";
 
 export default function PricingTiers() {
   const { t } = useTranslate();

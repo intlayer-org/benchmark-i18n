@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { T, useTranslate } from "@tolgee/react";
+import { T, useTranslate } from "../i18n/config";
 
 type ThemeMode = "light" | "dark" | "auto";
 

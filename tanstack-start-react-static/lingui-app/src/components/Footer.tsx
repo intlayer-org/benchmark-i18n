@@ -1,5 +1,5 @@
 import { Link, useParams } from "@tanstack/react-router";
-import { useLingui } from "@lingui/react";
+import { Trans, useLingui } from "@lingui/react";
 
 export default function Footer() {
   const { i18n } = useLingui();
@@ -31,7 +31,7 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              i18n Benchmark
+              <Trans id="footer.i18nBenchmark" message="i18n Benchmark" />
             </h3>
             <p className="text-sm text-muted-foreground">
               {i18n._("footer.anOpenSourceTestApplication")}

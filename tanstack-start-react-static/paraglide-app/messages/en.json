@@ -50,9 +50,10 @@
   },
   "results-table": {
     "sampleResults": "Sample Results",
-    "bundleSize": "Bundle Size",
-    "lookupTime": "Lookup Time",
-    "lazyLoading": "Lazy Loading"
+    "bundleSize": "Bundle size",
+    "lookupTime": "Lookup time",
+    "lazyLoading": "Lazy loading",
+    "library": "Library"
   },
   "understanding-impact": {
     "understandingTheImpact": "Understanding the Impact",
@@ -64,8 +65,11 @@
     "theTradeOffsOfDynamic": "The trade-offs of dynamic loading",
     "splittingTranslationsIntoPerRoute": "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:",
     "waterfallRequests": "Waterfall requests:",
+    "waterfallRequestsDesc": "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips.",
     "flashOfUntranslatedContentFouc": "Flash of untranslated content (FOUC):",
+    "flashOfUntranslatedContentFoucDesc": "users may briefly see translation keys or a fallback language before the chunk arrives.",
     "cacheInvalidation": "Cache invalidation:",
+    "cacheInvalidationDesc": "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks.",
     "whatThisBenchmarkMeasures": "What this benchmark measures",
     "thisTestAppProvidesA": "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
   },
@@ -156,7 +160,11 @@
     "newBenchmarkIdea": "New Benchmark Idea",
     "methodologyQuestion": "Methodology Question",
     "describeYourQuestionOrIdea": "Describe your question or idea...",
-    "sendMessage": "Send Message"
+    "sendMessage": "Send Message",
+    "topic": "Topic",
+    "contribution": "Contribution",
+    "other": "Other",
+    "message": "Message"
   },
   "faq-header1": {
     "frequentlyAskedQuestions": "Frequently Asked Questions",
@@ -230,7 +238,12 @@
     "automatedQualityChecksForMissing": "Automated quality checks for missing translations, pluralization issues, and context errors.",
     "bundleOptimizer": "Bundle Optimizer",
     "analyzesAndOptimizesYourI18n": "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
-    "learnMore": "Learn More"
+    "learnMore": "Learn More",
+    "priceFree": "Free",
+    "price29mo": "$29/mo",
+    "price99once": "$99 one-time",
+    "price19mo": "$19/mo",
+    "price49mo": "$49/mo"
   },
   "team-header": {
     "ourTeam": "Our Team",
@@ -265,6 +278,7 @@
     "email": "Email"
   },
   "preferences-section": {
+    "preferences": "Preferences",
     "emailNotifications": "Email Notifications",
     "receiveWeeklyBenchmarkReports": "Receive weekly benchmark reports",
     "toggleNotifications": "Toggle notifications",

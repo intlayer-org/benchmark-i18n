@@ -16,6 +16,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formatjs/icu-messageformat-parser": "^3.5.4",
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/react-router": "1.168.13",
     "@tanstack/react-router-ssr-query": "latest",

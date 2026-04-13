@@ -1,3 +1,4 @@
+import * as m from "../../../paraglide/messages";
 import { useId } from "react";
 
 export default function ProfileSection() {
@@ -6,14 +7,16 @@ export default function ProfileSection() {
 
   return (
     <section className="rounded-lg border border-border bg-card p-6">
-      <h2 className="mb-4 text-lg font-semibold text-foreground">Profile</h2>
+      <h2 className="mb-4 text-lg font-semibold text-foreground">
+        {m["profile-section.profile"]()}
+      </h2>
       <div className="space-y-4">
         <div>
           <label
             htmlFor={displayNameId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Display Name
+            {m["profile-section.displayName"]()}
           </label>
           <input
             id={displayNameId}
@@ -26,7 +29,7 @@ export default function ProfileSection() {
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Email
+            {m["profile-section.email"]()}
           </label>
           <input
             id={emailId}
