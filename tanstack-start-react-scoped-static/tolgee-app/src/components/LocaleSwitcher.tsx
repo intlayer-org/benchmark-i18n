@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "@tanstack/react-router";
-import { locales, getLocaleName } from "../i18n/tolgee";
+import { locales, getLocaleName } from "../i18n/config";
 
 export default function LocaleSwitcher() {
   const params = useParams({ strict: false });
