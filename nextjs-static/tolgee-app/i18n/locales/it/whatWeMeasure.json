@@ -1,0 +1,17 @@
+{
+  "bundleSizeImpact": "Impatto sulla dimensione del bundle",
+  "duringSsrTranslationDataIs": "Durante l'SSR, i dati di traduzione vengono serializzati nell'HTML. I grandi dizionari aumentano il payload HTML e rallentano l'idratazione, il momento in cui la pagina diventa interattiva.",
+  "duringSsrTranslationDataIsSerialized": "During SSR, translation data is serialized into the HTML. We measure the size of this payload and its effect on Time to Interactive (TTI).",
+  "howFastTheAppCan": "Quanto velocemente l'app può passare da una lingua all'altra in esecuzione, includendo il recupero delle nuove traduzioni, il re-rendering dei componenti e l'aggiornamento del DOM.",
+  "howFastTheAppCanSwitchFromOne": "How fast the app can switch from one language to another. We measure the re-render time and any network delays for lazy-loaded locales.",
+  "howMuchExtraTimeThe": "Quanto tempo extra aggiunge lo strato i18n a ogni rendering di componente — misurato utilizzando actualDuration di React Profiler.",
+  "howMuchExtraTimeTheLibraryAdds": "How much extra time the library adds to the initial page load. This includes script execution and the time to fetch/parse translation data.",
+  "hydrationCost": "Costo di idratazione",
+  "lazyLoadingEffectiveness": "Efficacia del caricamento lazy",
+  "localeSwitchSpeed": "Velocità di cambio localizzazione",
+  "renderingOverhead": "Sovrapprezzo di rendering",
+  "theAdditionalJavascriptBytes": "The additional Javascript bytes that the library adds to your production build. We measure both the library itself and its mandatory dependencies.",
+  "theAdditionalJavascriptBytesSent": "I byte JavaScript aggiuntivi inviati al client specificamente a causa del runtime della libreria i18n, oltre ai file di traduzione per la localizzazione corrente.",
+  "whatWeMeasure": "Cosa misuriamo",
+  "whetherSplittingTranslationsByRoute": "Se la scomposizione delle traduzioni per rotta o namespace riduca effettivamente il carico iniziale e quali compromessi introduca (richieste a cascata, FOUC, complessità della cache)."
+}

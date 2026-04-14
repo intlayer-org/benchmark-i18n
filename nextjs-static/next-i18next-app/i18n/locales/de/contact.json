@@ -1,0 +1,10 @@
+{
+  "contactForm.name": "Name",
+  "contactForm.email": "E-Mail",
+  "contactForm.subject": "Betreff",
+  "contactForm.message": "Nachricht",
+  "contactForm.sendMessage": "Nachricht senden",
+  "contactForm.wellGetBackTo": "Wir melden uns innerhalb von 48 Stunden bei Ihnen.",
+  "contactHeader.contactUs": "Kontaktieren Sie uns",
+  "contactHeader.haveQuestionsOrWantTo": "Haben Sie Fragen oder möchten Sie einen Beitrag leisten? Wir würden uns freuen, von Ihnen zu hören."
+}
