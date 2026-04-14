@@ -1,56 +1,40 @@
 import { T, useTranslate } from "../../../i18n/tolgee";
 
 export default function ProductsGrid() {
-  const { t } = useTranslate("products");
+  const { t } = useTranslate();
 
   const products = [
     {
-      name: t("products.benchmarkCLI", "Benchmark CLI"),
+      name: t("productsGrid.benchmarkDashboard", "Benchmark Dashboard"),
       desc: t(
-        "products.benchmarkCLIDesc",
-        "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+        "productsGrid.interactiveChartsAndTables",
+        "Interactive charts and tables comparing i18n libraries across bundle size, render time, and hydration cost."
       ),
-      price: t("products.benchmarkCLIPrice", "Free"),
+      price: t("pricingTiers.free", "Free"),
     },
     {
-      name: t("products.benchmarkCloud", "Benchmark Cloud"),
+      name: t("productsGrid.bundleAnalyzer", "Bundle Analyzer"),
       desc: t(
-        "products.benchmarkCloudDesc",
-        "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+        "productsGrid.uploadYourBuildOutput",
+        "Upload your build output and get a detailed breakdown of how much of your bundle is i18n overhead."
       ),
-      price: t("products.benchmarkCloudPrice", "$29/mo"),
+      price: "$29/mo",
     },
     {
-      name: t("products.benchmarkEnterprise", "Benchmark Enterprise"),
+      name: t("productsGrid.migrationAssistant", "Migration Assistant"),
       desc: t(
-        "products.benchmarkEnterpriseDesc",
-        "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+        "productsGrid.automatedCodemodsAndGuides",
+        "Automated codemods and guides for migrating between i18n libraries with minimal disruption."
       ),
-      price: t("products.benchmarkEnterprisePrice", "Contact Us"),
+      price: t("pricingTiers.custom", "Custom"),
     },
     {
-      name: t("products.migrationAssistant", "Migration Assistant"),
+      name: t("productsGrid.performanceMonitor", "Performance Monitor"),
       desc: t(
-        "products.migrationAssistantDesc",
-        "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+        "productsGrid.continuousPerformanceTrackingFor",
+        "Continuous performance tracking for your i18n implementation. Get alerts when translation loading degrades."
       ),
-      price: t("products.migrationAssistantPrice", "$99 one-time"),
-    },
-    {
-      name: t("products.translationQA", "Translation QA"),
-      desc: t(
-        "products.translationQADesc",
-        "Automated quality checks for missing translations, pluralization issues, and context errors."
-      ),
-      price: t("products.translationQAPrice", "$19/mo"),
-    },
-    {
-      name: t("products.bundleOptimizer", "Bundle Optimizer"),
-      desc: t(
-        "products.bundleOptimizerDesc",
-        "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
-      ),
-      price: t("products.bundleOptimizerPrice", "$49/mo"),
+      price: "$49/mo",
     },
   ];
 
@@ -73,7 +57,7 @@ export default function ProductsGrid() {
               type="button"
               className="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              <T ns="products" keyName="products.learnMore" defaultValue="Learn More" />
+              <T keyName="productsGrid.learnMore" defaultValue="Learn More" />
             </button>
           </div>
         </div>

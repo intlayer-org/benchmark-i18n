@@ -4,16 +4,16 @@ import { Link as h, useNavigate as ee, useParams as te } from "@tanstack/react-r
 import { ChevronDown as ne } from "lucide-react";
 //#region .intlayer/dynamic_dictionary/header.mjs
 var g = {
-	de: () => import("./de-BXH_OLh0.js").then((e) => e.default),
-	en: () => import("./en-MaDdRTtm.js").then((e) => e.default),
-	es: () => import("./es-D5F2XoiF.js").then((e) => e.default),
-	fr: () => import("./fr-62knq6DP.js").then((e) => e.default),
-	it: () => import("./it-DpxhDvqi.js").then((e) => e.default),
-	ja: () => import("./ja-fgL3YPu-.js").then((e) => e.default),
-	ko: () => import("./ko-ignqgvch.js").then((e) => e.default),
-	pt: () => import("./pt-mnOLIixk.js").then((e) => e.default),
-	ru: () => import("./ru-BMunEFaT.js").then((e) => e.default),
-	zh: () => import("./zh-CotDhS0m.js").then((e) => e.default)
+	de: () => import("./de-BbeHT7hB.js").then((e) => e.default),
+	en: () => import("./en-Ic2W4Gg9.js").then((e) => e.default),
+	es: () => import("./es-CHfMNmW0.js").then((e) => e.default),
+	fr: () => import("./fr-BM7lJyCH.js").then((e) => e.default),
+	it: () => import("./it-DG4R8ojH.js").then((e) => e.default),
+	ja: () => import("./ja-B3rwfXYy.js").then((e) => e.default),
+	ko: () => import("./ko-VS_hjf_t.js").then((e) => e.default),
+	pt: () => import("./pt-BAzAJTM3.js").then((e) => e.default),
+	ru: () => import("./ru-DsCbhhtQ.js").then((e) => e.default),
+	zh: () => import("./zh-CZH0tfOg.js").then((e) => e.default)
 }, _ = {
 	locales: [
 		"en",
@@ -459,16 +459,16 @@ var ve = (e, t, n) => {
 		])
 	};
 }, Me = {
-	de: () => import("./de-BGygBe6_.js").then((e) => e.default),
-	en: () => import("./en-DwjeWtAu.js").then((e) => e.default),
-	es: () => import("./es-BK62j7qB.js").then((e) => e.default),
-	fr: () => import("./fr-B4P75No9.js").then((e) => e.default),
-	it: () => import("./it-BbZfNBtC.js").then((e) => e.default),
-	ja: () => import("./ja-7Akh6xb_.js").then((e) => e.default),
-	ko: () => import("./ko-D7l9ICxL.js").then((e) => e.default),
-	pt: () => import("./pt-CdQ1Msuv.js").then((e) => e.default),
-	ru: () => import("./ru-4dYJDfgZ.js").then((e) => e.default),
-	zh: () => import("./zh-DhcWkRUX.js").then((e) => e.default)
+	de: () => import("./de-B-_Y39v3.js").then((e) => e.default),
+	en: () => import("./en-CDgoQTBm.js").then((e) => e.default),
+	es: () => import("./es-BK3zqr-A.js").then((e) => e.default),
+	fr: () => import("./fr-Dct_PFKX.js").then((e) => e.default),
+	it: () => import("./it-Bw0zwDkr.js").then((e) => e.default),
+	ja: () => import("./ja-CdIE67Bg.js").then((e) => e.default),
+	ko: () => import("./ko-Dl9a9PBP.js").then((e) => e.default),
+	pt: () => import("./pt-DoSH0uGo.js").then((e) => e.default),
+	ru: () => import("./ru-CXciZv7Z.js").then((e) => e.default),
+	zh: () => import("./zh-C93OrOBo.js").then((e) => e.default)
 };
 //#endregion
 //#region src/components/ThemeToggle.tsx
@@ -497,7 +497,7 @@ function Pe() {
 		let e = t === "light" ? "dark" : t === "dark" ? "auto" : "light";
 		n(e), $(e), window.localStorage.setItem("theme", e);
 	}
-	let i = t === "auto" ? e.d.value : `Theme mode: ${t}. Click to switch mode.`;
+	let i = t === "auto" ? e.d.value : e.e({ mode: t });
 	return /* @__PURE__ */ p("button", {
 		type: "button",
 		onClick: r,
@@ -548,19 +548,19 @@ function Ie(e) {
 //#region src/components/Header.tsx
 function Le() {
 	let e = Z(g, "header");
-	Ie("Header");
+	Ie(e.f.value);
 	let [t, n] = d(!1), r = te({ strict: !1 }).locale ?? "en", i = [
 		{
 			to: "/$locale/products",
-			label: e.j
+			label: e.l
 		},
 		{
 			to: "/$locale/pricing",
-			label: e.i
+			label: e.k
 		},
 		{
 			to: "/$locale/team",
-			label: e.l
+			label: e.n
 		},
 		{
 			to: "/$locale/blog",
@@ -580,7 +580,7 @@ function Le() {
 		},
 		{
 			to: "/$locale/settings",
-			label: e.k
+			label: e.m
 		}
 	];
 	return /* @__PURE__ */ p("header", {
@@ -593,7 +593,7 @@ function Le() {
 					to: "/$locale",
 					params: { locale: r },
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
-					children: "i18n Bench"
+					children: e.h
 				}), /* @__PURE__ */ m("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
@@ -603,14 +603,14 @@ function Le() {
 							activeOptions: { exact: !0 },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: e.f
+							children: e.g
 						}),
 						/* @__PURE__ */ p(h, {
 							to: "/$locale/about",
 							params: { locale: r },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: e.g
+							children: e.i
 						}),
 						/* @__PURE__ */ m("div", {
 							className: "relative",
@@ -620,7 +620,7 @@ function Le() {
 								onMouseEnter: () => n(!0),
 								onMouseLeave: () => n(!1),
 								onClick: () => n(!t),
-								children: [e.h, /* @__PURE__ */ p(ne, {
+								children: [e.j, /* @__PURE__ */ p(ne, {
 									size: 14,
 									className: `transition-transform ${t ? "rotate-180" : ""}`
 								})]
@@ -806,7 +806,12 @@ var e = {
 		themeModeDarkClick: "Design-Modus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.",
 		a: "Design: Auto",
 		b: "Design: Dunkel",
-		c: "Design: Hell"
+		c: "Design: Hell",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Themenmodus: {{mode}}. Zum Umschalten klicken."
+		}
 	}
 };
 //#endregion
@@ -814,18 +819,20 @@ export { e as default };
 var e = {
 	key: "header",
 	content: {
-		f: "Startseite",
-		g: "Methodik",
-		h: "Testseiten",
-		j: "Produkte",
-		i: "Preise",
-		l: "Team",
+		g: "Startseite",
+		i: "Methodik",
+		j: "Testseiten",
+		l: "Produkte",
+		k: "Preise",
+		n: "Team",
 		a: "Blog",
 		b: "Karriere",
 		d: "FAQ",
 		c: "Kontakt",
-		k: "Einstellungen",
-		e: "Zu GitHub gehen"
+		m: "Einstellungen",
+		e: "Zu GitHub gehen",
+		f: "Header",
+		h: "i18n Bench"
 	}
 };
 //#endregion
@@ -838,7 +845,12 @@ var e = {
 		themeModeDarkClick: "Theme mode: dark. Click to switch to auto (system) mode.",
 		a: "Theme: Auto",
 		b: "Theme: Dark",
-		c: "Theme: Light"
+		c: "Theme: Light",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Theme mode: {{mode}}. Click to switch mode."
+		}
 	}
 };
 //#endregion
@@ -846,18 +858,20 @@ export { e as default };
 var e = {
 	key: "header",
 	content: {
-		f: "Home",
-		g: "Methodology",
-		h: "Mock Pages",
-		j: "Products",
-		i: "Pricing",
-		l: "Team",
+		g: "Home",
+		i: "Methodology",
+		j: "Mock Pages",
+		l: "Products",
+		k: "Pricing",
+		n: "Team",
 		a: "Blog",
 		b: "Careers",
 		d: "FAQ",
 		c: "Contact",
-		k: "Settings",
-		e: "Go to GitHub"
+		m: "Settings",
+		e: "Go to GitHub",
+		f: "Header",
+		h: "i18n Bench"
 	}
 };
 //#endregion
@@ -870,7 +884,12 @@ var e = {
 		themeModeDarkClick: "Modo de tema: oscuro. Haga clic para cambiar al modo automático (sistema).",
 		a: "Tema: Auto",
 		b: "Tema: Oscuro",
-		c: "Tema: Claro"
+		c: "Tema: Claro",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Modo de tema: {{mode}}. Haga clic para cambiar de modo."
+		}
 	}
 };
 //#endregion
@@ -878,18 +897,20 @@ export { e as default };
 var e = {
 	key: "header",
 	content: {
-		f: "Inicio",
-		g: "Metodología",
-		h: "Páginas de Prueba",
-		j: "Productos",
-		i: "Precios",
-		l: "Equipo",
+		g: "Inicio",
+		i: "Metodología",
+		j: "Páginas de Prueba",
+		l: "Productos",
+		k: "Precios",
+		n: "Equipo",
 		a: "Blog",
 		b: "Carreras",
 		d: "FAQ",
 		c: "Contacto",
-		k: "Ajustes",
-		e: "Ir a GitHub"
+		m: "Ajustes",
+		e: "Ir a GitHub",
+		f: "Cabecera",
+		h: "Bench i18n"
 	}
 };
 //#endregion
@@ -897,18 +918,20 @@ export { e as default };
 var e = {
 	key: "header",
 	content: {
-		f: "Accueil",
-		g: "Méthodologie",
-		h: "Pages de Test",
-		j: "Produits",
-		i: "Tarification",
-		l: "Équipe",
+		g: "Accueil",
+		i: "Méthodologie",
+		j: "Pages de Test",
+		l: "Produits",
+		k: "Tarification",
+		n: "Équipe",
 		a: "Blog",
 		b: "Carrières",
 		d: "FAQ",
 		c: "Contact",
-		k: "Paramètres",
-		e: "Aller sur GitHub"
+		m: "Paramètres",
+		e: "Aller sur GitHub",
+		f: "En-tête",
+		h: "Bench i18n"
 	}
 };
 //#endregion
@@ -921,7 +944,12 @@ var e = {
 		themeModeDarkClick: "Mode de thème : sombre. Cliquez pour passer au mode auto (système).",
 		a: "Thème : Auto",
 		b: "Thème : Sombre",
-		c: "Thème : Clair"
+		c: "Thème : Clair",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Mode de thème : {{mode}}. Cliquez pour changer de mode."
+		}
 	}
 };
 //#endregion
@@ -934,7 +962,12 @@ var e = {
 		themeModeDarkClick: "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).",
 		a: "Tema: Auto",
 		b: "Tema: Scuro",
-		c: "Tema: Chiaro"
+		c: "Tema: Chiaro",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Modalità tema: {{mode}}. Clicca per cambiare modalità."
+		}
 	}
 };
 //#endregion
@@ -942,18 +975,41 @@ export { e as default };
 var e = {
 	key: "header",
 	content: {
-		f: "Home",
-		g: "Metodologia",
-		h: "Pagine di test",
-		j: "Prodotti",
-		i: "Prezzi",
-		l: "Team",
+		g: "Home",
+		i: "Metodologia",
+		j: "Pagine di test",
+		l: "Prodotti",
+		k: "Prezzi",
+		n: "Team",
 		a: "Blog",
 		b: "Carriere",
 		d: "FAQ",
 		c: "Contatti",
-		k: "Impostazioni",
-		e: "Vai su GitHub"
+		m: "Impostazioni",
+		e: "Vai su GitHub",
+		f: "Intestazione",
+		h: "Bench i18n"
+	}
+};
+//#endregion
+export { e as default };
+var e = {
+	key: "header",
+	content: {
+		g: "ホーム",
+		i: "方法論",
+		j: "モックページ",
+		l: "製品",
+		k: "価格",
+		n: "チーム",
+		a: "ブログ",
+		b: "採用情報",
+		d: "よくある質問",
+		c: "お問い合わせ",
+		m: "設定",
+		e: "GitHubへ移動",
+		f: "ヘッダー",
+		h: "i18n ベンチ"
 	}
 };
 //#endregion
@@ -966,26 +1022,12 @@ var e = {
 		themeModeDarkClick: "テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。",
 		a: "テーマ：自動",
 		b: "テーマ：ダーク",
-		c: "テーマ：ライト"
-	}
-};
-//#endregion
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "ホーム",
-		g: "方法論",
-		h: "モックページ",
-		j: "製品",
-		i: "価格",
-		l: "チーム",
-		a: "ブログ",
-		b: "採用情報",
-		d: "よくある質問",
-		c: "お問い合わせ",
-		k: "設定",
-		e: "GitHubへ移動"
+		c: "テーマ：ライト",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "テーマモード：{{mode}}。モードを切り替えるにはクリックしてください。"
+		}
 	}
 };
 //#endregion
@@ -998,7 +1040,12 @@ var e = {
 		themeModeDarkClick: "테마 모드: 다크. 자동(시스템) 모드로 전환하려면 클릭하세요.",
 		a: "테마: 자동",
 		b: "테마: 다크",
-		c: "테마: 라이트"
+		c: "테마: 라이트",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "테마 모드: {{mode}}. 모드를 전환하려면 클릭하세요."
+		}
 	}
 };
 //#endregion
@@ -1006,18 +1053,41 @@ export { e as default };
 var e = {
 	key: "header",
 	content: {
-		f: "홈",
-		g: "방법론",
-		h: "모의 페이지",
-		j: "제품",
-		i: "가격",
-		l: "팀",
+		g: "홈",
+		i: "방법론",
+		j: "모의 페이지",
+		l: "제품",
+		k: "가격",
+		n: "팀",
 		a: "블로그",
 		b: "채용",
 		d: "자주 묻는 질문",
 		c: "연락처",
-		k: "설정",
-		e: "GitHub으로 이동"
+		m: "설정",
+		e: "GitHub으로 이동",
+		f: "헤더",
+		h: "i18n 벤치"
+	}
+};
+//#endregion
+export { e as default };
+var e = {
+	key: "header",
+	content: {
+		g: "Início",
+		i: "Metodologia",
+		j: "Páginas de teste",
+		l: "Produtos",
+		k: "Preços",
+		n: "Equipe",
+		a: "Blog",
+		b: "Carreiras",
+		d: "FAQ",
+		c: "Contato",
+		m: "Configurações",
+		e: "Ir para GitHub",
+		f: "Cabeçalho",
+		h: "Bench i18n"
 	}
 };
 //#endregion
@@ -1030,26 +1100,12 @@ var e = {
 		themeModeDarkClick: "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).",
 		a: "Tema: Auto",
 		b: "Tema: Escuro",
-		c: "Tema: Claro"
-	}
-};
-//#endregion
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Início",
-		g: "Metodologia",
-		h: "Páginas de teste",
-		j: "Produtos",
-		i: "Preços",
-		l: "Equipe",
-		a: "Blog",
-		b: "Carreiras",
-		d: "FAQ",
-		c: "Contato",
-		k: "Configurações",
-		e: "Ir para GitHub"
+		c: "Tema: Claro",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Modo de tema: {{mode}}. Clique para alternar o modo."
+		}
 	}
 };
 //#endregion
@@ -1062,7 +1118,12 @@ var e = {
 		themeModeDarkClick: "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.",
 		a: "Тема: Авто",
 		b: "Тема: Темная",
-		c: "Тема: Светлая"
+		c: "Тема: Светлая",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Режим темы: {{mode}}. Нажмите, чтобы переключить режим."
+		}
 	}
 };
 //#endregion
@@ -1070,37 +1131,20 @@ export { e as default };
 var e = {
 	key: "header",
 	content: {
-		f: "Главная",
-		g: "Методология",
-		h: "Тестовые страницы",
-		j: "Продукты",
-		i: "Цены",
-		l: "Команда",
+		g: "Главная",
+		i: "Методология",
+		j: "Тестовые страницы",
+		l: "Продукты",
+		k: "Цены",
+		n: "Команда",
 		a: "Блог",
 		b: "Карьера",
 		d: "FAQ",
 		c: "Контакт",
-		k: "Настройки",
-		e: "Перейти на GitHub"
-	}
-};
-//#endregion
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "首页",
-		g: "方法学",
-		h: "模拟页面",
-		j: "产品",
-		i: "价格",
-		l: "团队",
-		a: "博客",
-		b: "职业",
-		d: "常见问题",
-		c: "联系我们",
-		k: "设置",
-		e: "前往 GitHub"
+		m: "Настройки",
+		e: "Перейти на GitHub",
+		f: "Шапка",
+		h: "i18n Бенчмарк"
 	}
 };
 //#endregion
@@ -1113,7 +1157,33 @@ var e = {
 		themeModeDarkClick: "主题模式：深色。点击切换到自动（系统）模式。",
 		a: "主题：自动",
 		b: "主题：深色",
-		c: "主题：浅色"
+		c: "主题：浅色",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "主题模式：{{mode}}。点击切换模式。"
+		}
+	}
+};
+//#endregion
+export { e as default };
+var e = {
+	key: "header",
+	content: {
+		g: "首页",
+		i: "方法学",
+		j: "模拟页面",
+		l: "产品",
+		k: "价格",
+		n: "团队",
+		a: "博客",
+		b: "职业",
+		d: "常见问题",
+		c: "联系我们",
+		m: "设置",
+		e: "前往 GitHub",
+		f: "页眉",
+		h: "i18n 基准"
 	}
 };
 //#endregion

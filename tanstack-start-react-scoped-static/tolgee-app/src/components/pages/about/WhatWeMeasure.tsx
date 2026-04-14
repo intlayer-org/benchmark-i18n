@@ -1,7 +1,7 @@
 import { T, useTranslate } from "../../../i18n/tolgee";
 
 export default function WhatWeMeasure() {
-  const { t } = useTranslate("about");
+  const { t } = useTranslate();
 
   const metrics = [
     {
@@ -47,7 +47,7 @@ export default function WhatWeMeasure() {
   return (
     <section className="mt-12 mx-auto max-w-3xl">
       <h2 className="mb-4 text-2xl font-bold text-foreground">
-        <T ns="about" keyName="whatWeMeasure.whatWeMeasure" defaultValue="What We Measure" />
+        <T keyName="whatWeMeasure.whatWeMeasure" defaultValue="What We Measure" />
       </h2>
       <ul className="space-y-4">
         {metrics.map((m) => (

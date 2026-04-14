@@ -1,17 +1,17 @@
 import { Fragment, createContext, createElement, isValidElement, lazy, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/blog-header.mjs
-var content = {
-	"de": () => import("./de-Fb2uYYnS.js").then((m) => m.default),
-	"en": () => import("./en-DW-ONanI.js").then((m) => m.default),
-	"es": () => import("./es-C-1gYcHH.js").then((m) => m.default),
-	"fr": () => import("./fr-DJqfG4Xs.js").then((m) => m.default),
-	"it": () => import("./it-D71mhswR.js").then((m) => m.default),
-	"ja": () => import("./ja-DDmepmBV.js").then((m) => m.default),
-	"ko": () => import("./ko-BpqzQ1fZ.js").then((m) => m.default),
-	"pt": () => import("./pt-B3-9usCO.js").then((m) => m.default),
-	"ru": () => import("./ru-CJ4NyLoW.js").then((m) => m.default),
-	"zh": () => import("./zh-B2yS8uGE.js").then((m) => m.default)
+var content$1 = {
+	"de": () => import("./de-D-pV8PH4.js").then((m) => m.default),
+	"en": () => import("./en-_GOm62g2.js").then((m) => m.default),
+	"es": () => import("./es-_g_OUaCp.js").then((m) => m.default),
+	"fr": () => import("./fr-CQ0cuczd.js").then((m) => m.default),
+	"it": () => import("./it-4Cub1CLV.js").then((m) => m.default),
+	"ja": () => import("./ja-Co_aTP5G.js").then((m) => m.default),
+	"ko": () => import("./ko-DP-nLHCR.js").then((m) => m.default),
+	"pt": () => import("./pt-BGyNcpal.js").then((m) => m.default),
+	"ru": () => import("./ru-Du9l8Spd.js").then((m) => m.default),
+	"zh": () => import("./zh-CfWG4KMm.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -762,24 +762,40 @@ var useDictionaryDynamic = (dictionaryPromise, key, locale) => {
 	return useDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, dictionaryPromise[localeTarget]?.()), localeTarget);
 };
 //#endregion
+//#region .intlayer/dynamic_dictionary/mock-banner.mjs
+var content = {
+	"de": () => import("./de-OXkVxMcY.js").then((m) => m.default),
+	"en": () => import("./en-BBh-dbYS.js").then((m) => m.default),
+	"es": () => import("./es-CDrIbhEP.js").then((m) => m.default),
+	"fr": () => import("./fr-BbTLfSp5.js").then((m) => m.default),
+	"it": () => import("./it-C6w0xCmh.js").then((m) => m.default),
+	"ja": () => import("./ja-IuSp8kU1.js").then((m) => m.default),
+	"ko": () => import("./ko-CDjT-kJk.js").then((m) => m.default),
+	"pt": () => import("./pt-CwF7BH2X.js").then((m) => m.default),
+	"ru": () => import("./ru-D96Ig5my.js").then((m) => m.default),
+	"zh": () => import("./zh-BHpA2KQG.js").then((m) => m.default)
+};
+//#endregion
 //#region src/components/MockBanner.tsx
-var MockBanner = () => /* @__PURE__ */ jsx("div", {
-	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
-});
+var MockBanner = () => {
+	return /* @__PURE__ */ jsx("div", {
+		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
+		children: useDictionaryDynamic(content, "mock-banner").a
+	});
+};
 //#endregion
 //#region src/components/pages/blog/BlogHeader.tsx
 function BlogHeader() {
-	const content$1 = useDictionaryDynamic(content, "blog-header");
+	const content = useDictionaryDynamic(content$1, "blog-header");
 	return /* @__PURE__ */ jsxs(Fragment$1, { children: [
 		/* @__PURE__ */ jsx(MockBanner, {}),
 		/* @__PURE__ */ jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
-			children: "Blog"
+			children: content.a
 		}),
 		/* @__PURE__ */ jsx("p", {
 			className: "mb-10 text-muted-foreground",
-			children: content$1.a
+			children: content.b
 		})
 	] });
 }
@@ -968,61 +984,151 @@ var MarkdownRendererPlugin = (props) => {
 export { MarkdownRendererPlugin };
 var de_default = {
 	key: "blog-header",
-	content: { "a": "Einblicke, Tutorials und Analysen aus der i18n-Community." }
+	content: {
+		"b": "Einblicke, Tutorials und Analysen aus der i18n-Community.",
+		"a": "Blog"
+	}
+};
+//#endregion
+export { de_default as default };
+var de_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Diese Seite enthält fiktive Daten, die nur Benchmark-Zwecken dienen. Sie stehen in keinem Zusammenhang mit realen Unternehmen oder Dienstleistungen." }
 };
 //#endregion
 export { de_default as default };
 var en_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
+};
+//#endregion
+export { en_default as default };
+var en_default = {
 	key: "blog-header",
-	content: { "a": "Insights, tutorials, and analysis from the i18n community." }
+	content: {
+		"b": "Insights, tutorials, and analysis from the i18n community.",
+		"a": "Blog"
+	}
 };
 //#endregion
 export { en_default as default };
 var es_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contiene datos simulados solo para fines de benchmarking. No está relacionada con ningún negocio o servicio real." }
+};
+//#endregion
+export { es_default as default };
+var es_default = {
 	key: "blog-header",
-	content: { "a": "Información, tutoriales y análisis de la comunidad i18n." }
+	content: {
+		"b": "Información, tutoriales y análisis de la comunidad i18n.",
+		"a": "Blog"
+	}
 };
 //#endregion
 export { es_default as default };
 var fr_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
+};
+//#endregion
+export { fr_default as default };
+var fr_default = {
 	key: "blog-header",
-	content: { "a": "Aperçus, tutoriels et analyses de la communauté i18n." }
+	content: {
+		"b": "Aperçus, tutoriels et analyses de la communauté i18n.",
+		"a": "Blog"
+	}
 };
 //#endregion
 export { fr_default as default };
 var it_default = {
 	key: "blog-header",
-	content: { "a": "Approfondimenti, tutorial e analisi dalla comunità i18n." }
+	content: {
+		"b": "Approfondimenti, tutorial e analisi dalla comunità i18n.",
+		"a": "Blog"
+	}
+};
+//#endregion
+export { it_default as default };
+var it_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
 };
 //#endregion
 export { it_default as default };
 var ja_default = {
 	key: "blog-header",
-	content: { "a": "i18n コミュニティからの洞察、チュートリアル、分析。" }
+	content: {
+		"b": "i18n コミュニティからの洞察、チュートリアル、分析。",
+		"a": "ブログ"
+	}
+};
+//#endregion
+export { ja_default as default };
+var ja_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ このページにはベンチマークのみを目的とした模擬データが含まれています。実際のビジネスやサービスとは関係ありません。" }
 };
 //#endregion
 export { ja_default as default };
 var ko_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 이 페이지는 벤치마킹 목적으로만 사용되는 모의 데이터를 포함하고 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
+};
+//#endregion
+export { ko_default as default };
+var ko_default = {
 	key: "blog-header",
-	content: { "a": "i18n 커뮤니티의 인사이트, 튜토리얼 및 분석." }
+	content: {
+		"b": "i18n 커뮤니티의 인사이트, 튜토리얼 및 분석.",
+		"a": "블로그"
+	}
 };
 //#endregion
 export { ko_default as default };
 var pt_default = {
 	key: "blog-header",
-	content: { "a": "Insights, tutoriais e análises da comunidade i18n." }
+	content: {
+		"b": "Insights, tutoriais e análises da comunidade i18n.",
+		"a": "Blog"
+	}
+};
+//#endregion
+export { pt_default as default };
+var pt_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada com qualquer negócio o serviço real." }
 };
 //#endregion
 export { pt_default as default };
 var ru_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Эта страница содержит фиктивные данные только для целей тестирования производительности. Она не связана с каким-либо реальным бизнесом или услугой." }
+};
+//#endregion
+export { ru_default as default };
+var ru_default = {
 	key: "blog-header",
-	content: { "a": "Инсайты, руководства и анализ от сообщества i18n." }
+	content: {
+		"b": "Инсайты, руководства и анализ от сообщества i18n.",
+		"a": "Блог"
+	}
 };
 //#endregion
 export { ru_default as default };
 var zh_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 此页面仅包含用于基准测试的模拟数据。它与任何真实的业务或服务无关。" }
+};
+//#endregion
+export { zh_default as default };
+var zh_default = {
 	key: "blog-header",
-	content: { "a": "来自 i18n 社区 de 见解、教程和分析。" }
+	content: {
+		"b": "来自 i18n 社区 de 见解、教程和分析。",
+		"a": "博客"
+	}
 };
 //#endregion
 export { zh_default as default };

@@ -2,16 +2,16 @@ import { Fragment as e, createContext as t, createElement as n, isValidElement a
 import { Fragment as u, jsx as d, jsxs as f } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/profile-section.mjs
 var p = {
-	de: () => import("./de-Rv7OI-BR.js").then((e) => e.default),
-	en: () => import("./en-DXBs1r1B.js").then((e) => e.default),
-	es: () => import("./es-_8kqDm7l.js").then((e) => e.default),
-	fr: () => import("./fr-C4ypq602.js").then((e) => e.default),
-	it: () => import("./it-B1t4xLQW.js").then((e) => e.default),
-	ja: () => import("./ja-D-JDUxAY.js").then((e) => e.default),
-	ko: () => import("./ko-B4peQNeg.js").then((e) => e.default),
-	pt: () => import("./pt-DaCQgoJg.js").then((e) => e.default),
-	ru: () => import("./ru-llHJi688.js").then((e) => e.default),
-	zh: () => import("./zh-Bz0oaNnm.js").then((e) => e.default)
+	de: () => import("./de-CMGuaslR.js").then((e) => e.default),
+	en: () => import("./en-BRZfgOsy.js").then((e) => e.default),
+	es: () => import("./es-CZuC6rKC.js").then((e) => e.default),
+	fr: () => import("./fr-C7stf9HU.js").then((e) => e.default),
+	it: () => import("./it-C2g-dGrx.js").then((e) => e.default),
+	ja: () => import("./ja-DAlbevs4.js").then((e) => e.default),
+	ko: () => import("./ko-nSE2D3yY.js").then((e) => e.default),
+	pt: () => import("./pt-C42Yctdk.js").then((e) => e.default),
+	ru: () => import("./ru-B7YQtUpY.js").then((e) => e.default),
+	zh: () => import("./zh-uWQ88nYM.js").then((e) => e.default)
 }, m = {
 	locales: [
 		"en",
@@ -416,7 +416,7 @@ function be() {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [/* @__PURE__ */ d("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: "Profile"
+			children: e.c
 		}), /* @__PURE__ */ f("div", {
 			className: "space-y-4",
 			children: [/* @__PURE__ */ f("div", { children: [/* @__PURE__ */ d("label", {
@@ -430,7 +430,7 @@ function be() {
 			})] }), /* @__PURE__ */ f("div", { children: [/* @__PURE__ */ d("label", {
 				htmlFor: n,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: "Email"
+				children: e.b
 			}), /* @__PURE__ */ d("input", {
 				id: n,
 				defaultValue: "john@example.com",
@@ -568,61 +568,101 @@ var n = e(void 0), r = () => t(n), i = (e) => {
 export { i as MarkdownRendererPlugin };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "Anzeigename",
+		c: "Profil",
+		b: "E-Mail"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "Display Name",
+		c: "Profile",
+		b: "Email"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "Nombre de pantalla",
+		c: "Perfil",
+		b: "Correo electrónico"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "Nom d'affichage",
+		c: "Profil",
+		b: "Email"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "Nome visualizzato",
+		c: "Profilo",
+		b: "Email"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "表示名",
+		c: "プロフィール",
+		b: "メールアドレス"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "표시 이름",
+		c: "프로필",
+		b: "이메일"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "Nome de exibição",
+		c: "Perfil",
+		b: "E-mail"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "Отображаемое имя",
+		c: "Профиль",
+		b: "Email"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "profile-section",
-	content: { a: "Display Name" }
+	content: {
+		a: "显示名称",
+		c: "个人资料",
+		b: "电子邮件"
+	}
 };
 //#endregion
 export { e as default };

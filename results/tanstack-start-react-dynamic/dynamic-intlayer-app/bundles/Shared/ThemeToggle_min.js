@@ -2,16 +2,16 @@ import { Fragment as e, createContext as t, createElement as n, isValidElement a
 import { Fragment as u, jsx as d, jsxs as f } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/theme-toggle.mjs
 var p = {
-	de: () => import("./de-CqHYMyYD.js").then((e) => e.default),
-	en: () => import("./en-CTA-xeWM.js").then((e) => e.default),
-	es: () => import("./es-Bz-nYjFH.js").then((e) => e.default),
-	fr: () => import("./fr-BPhIC-A1.js").then((e) => e.default),
-	it: () => import("./it-BmOQXGCL.js").then((e) => e.default),
-	ja: () => import("./ja-QuI8DYbH.js").then((e) => e.default),
-	ko: () => import("./ko-spcignIs.js").then((e) => e.default),
-	pt: () => import("./pt-VUrJQFSy.js").then((e) => e.default),
-	ru: () => import("./ru-tMKfm1j6.js").then((e) => e.default),
-	zh: () => import("./zh-OTFYDfaC.js").then((e) => e.default)
+	de: () => import("./de-79_6jp1I.js").then((e) => e.default),
+	en: () => import("./en-D8uySRy4.js").then((e) => e.default),
+	es: () => import("./es-745DV9gp.js").then((e) => e.default),
+	fr: () => import("./fr-Dh9aPf-D.js").then((e) => e.default),
+	it: () => import("./it-BMG4_1yV.js").then((e) => e.default),
+	ja: () => import("./ja-BZnEWwzc.js").then((e) => e.default),
+	ko: () => import("./ko-CD7LCNZj.js").then((e) => e.default),
+	pt: () => import("./pt-3Kx2QZjR.js").then((e) => e.default),
+	ru: () => import("./ru-BZoFpS99.js").then((e) => e.default),
+	zh: () => import("./zh--Zb9t9nu.js").then((e) => e.default)
 }, m = {
 	locales: [
 		"en",
@@ -435,7 +435,7 @@ function xe() {
 		let e = t === "light" ? "dark" : t === "dark" ? "auto" : "light";
 		n(e), $(e), window.localStorage.setItem("theme", e);
 	}
-	let i = t === "auto" ? e.d.value : `Theme mode: ${t}. Click to switch mode.`;
+	let i = t === "auto" ? e.d.value : e.e({ mode: t });
 	return /* @__PURE__ */ d("button", {
 		type: "button",
 		onClick: r,
@@ -580,7 +580,12 @@ var e = {
 		themeModeDarkClick: "Design-Modus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.",
 		a: "Design: Auto",
 		b: "Design: Dunkel",
-		c: "Design: Hell"
+		c: "Design: Hell",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Themenmodus: {{mode}}. Zum Umschalten klicken."
+		}
 	}
 };
 //#endregion
@@ -593,7 +598,12 @@ var e = {
 		themeModeDarkClick: "Theme mode: dark. Click to switch to auto (system) mode.",
 		a: "Theme: Auto",
 		b: "Theme: Dark",
-		c: "Theme: Light"
+		c: "Theme: Light",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Theme mode: {{mode}}. Click to switch mode."
+		}
 	}
 };
 //#endregion
@@ -606,7 +616,12 @@ var e = {
 		themeModeDarkClick: "Modo de tema: oscuro. Haga clic para cambiar al modo automático (sistema).",
 		a: "Tema: Auto",
 		b: "Tema: Oscuro",
-		c: "Tema: Claro"
+		c: "Tema: Claro",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Modo de tema: {{mode}}. Haga clic para cambiar de modo."
+		}
 	}
 };
 //#endregion
@@ -619,7 +634,12 @@ var e = {
 		themeModeDarkClick: "Mode de thème : sombre. Cliquez pour passer au mode auto (système).",
 		a: "Thème : Auto",
 		b: "Thème : Sombre",
-		c: "Thème : Clair"
+		c: "Thème : Clair",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Mode de thème : {{mode}}. Cliquez pour changer de mode."
+		}
 	}
 };
 //#endregion
@@ -632,7 +652,12 @@ var e = {
 		themeModeDarkClick: "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).",
 		a: "Tema: Auto",
 		b: "Tema: Scuro",
-		c: "Tema: Chiaro"
+		c: "Tema: Chiaro",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Modalità tema: {{mode}}. Clicca per cambiare modalità."
+		}
 	}
 };
 //#endregion
@@ -645,7 +670,12 @@ var e = {
 		themeModeDarkClick: "テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。",
 		a: "テーマ：自動",
 		b: "テーマ：ダーク",
-		c: "テーマ：ライト"
+		c: "テーマ：ライト",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "テーマモード：{{mode}}。モードを切り替えるにはクリックしてください。"
+		}
 	}
 };
 //#endregion
@@ -658,7 +688,12 @@ var e = {
 		themeModeDarkClick: "테마 모드: 다크. 자동(시스템) 모드로 전환하려면 클릭하세요.",
 		a: "테마: 자동",
 		b: "테마: 다크",
-		c: "테마: 라이트"
+		c: "테마: 라이트",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "테마 모드: {{mode}}. 모드를 전환하려면 클릭하세요."
+		}
 	}
 };
 //#endregion
@@ -671,7 +706,12 @@ var e = {
 		themeModeDarkClick: "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).",
 		a: "Tema: Auto",
 		b: "Tema: Escuro",
-		c: "Tema: Claro"
+		c: "Tema: Claro",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Modo de tema: {{mode}}. Clique para alternar o modo."
+		}
 	}
 };
 //#endregion
@@ -684,7 +724,12 @@ var e = {
 		themeModeDarkClick: "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.",
 		a: "Тема: Авто",
 		b: "Тема: Темная",
-		c: "Тема: Светлая"
+		c: "Тема: Светлая",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "Режим темы: {{mode}}. Нажмите, чтобы переключить режим."
+		}
 	}
 };
 //#endregion
@@ -697,7 +742,12 @@ var e = {
 		themeModeDarkClick: "主题模式：深色。点击切换到自动（系统）模式。",
 		a: "主题：自动",
 		b: "主题：深色",
-		c: "主题：浅色"
+		c: "主题：浅色",
+		e: {
+			fields: ["mode"],
+			nodeType: "insertion",
+			insertion: "主题模式：{{mode}}。点击切换模式。"
+		}
 	}
 };
 //#endregion

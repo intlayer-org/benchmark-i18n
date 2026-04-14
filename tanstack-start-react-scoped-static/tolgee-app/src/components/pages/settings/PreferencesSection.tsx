@@ -2,24 +2,26 @@ import { T, useTranslate } from "../../../i18n/tolgee";
 import { useId } from "react";
 
 export default function PreferencesSection() {
-  const { t } = useTranslate("settings");
+  const { t } = useTranslate();
   const languageId = useId();
 
   return (
     <section className="rounded-lg border border-border bg-card p-6">
       <h2 className="mb-4 text-lg font-semibold text-foreground">
-        <T ns="settings" keyName="preferencesSection.preferences" defaultValue="Preferences" />
+        <T keyName="preferencesSection.preferences" defaultValue="Preferences" />
       </h2>
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-foreground">
-              <T ns="settings" keyName="preferencesSection.emailNotifications"
+              <T
+                keyName="preferencesSection.emailNotifications"
                 defaultValue="Email Notifications"
               />
             </p>
             <p className="text-xs text-muted-foreground">
-              <T ns="settings" keyName="preferencesSection.receiveWeeklyBenchmark"
+              <T
+                keyName="preferencesSection.receiveWeeklyBenchmark"
                 defaultValue="Receive weekly benchmark reports"
               />
             </p>
@@ -38,10 +40,11 @@ export default function PreferencesSection() {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-foreground">
-              <T ns="settings" keyName="preferencesSection.darkMode" defaultValue="Dark Mode" />
+              <T keyName="preferencesSection.darkMode" defaultValue="Dark Mode" />
             </p>
             <p className="text-xs text-muted-foreground">
-              <T ns="settings" keyName="preferencesSection.useDarkColorScheme"
+              <T
+                keyName="preferencesSection.useDarkColorScheme"
                 defaultValue="Use dark color scheme"
               />
             </p>
@@ -59,7 +62,8 @@ export default function PreferencesSection() {
             htmlFor={languageId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            <T ns="settings" keyName="preferencesSection.defaultLanguage"
+            <T
+              keyName="preferencesSection.defaultLanguage"
               defaultValue="Default Language"
             />
           </label>

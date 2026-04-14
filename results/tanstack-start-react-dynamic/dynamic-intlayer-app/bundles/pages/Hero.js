@@ -2,16 +2,16 @@ import { Fragment, createContext, createElement, isValidElement, lazy, useContex
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/hero.mjs
 var content = {
-	"de": () => import("./de-sthvJRxm.js").then((m) => m.default),
-	"en": () => import("./en-BD4yl--a.js").then((m) => m.default),
-	"es": () => import("./es-a0N6_QWZ.js").then((m) => m.default),
-	"fr": () => import("./fr-BXgACAbh.js").then((m) => m.default),
-	"it": () => import("./it-CA3GVqjf.js").then((m) => m.default),
-	"ja": () => import("./ja-zXI9VL_V.js").then((m) => m.default),
-	"ko": () => import("./ko-BLNpySeM.js").then((m) => m.default),
-	"pt": () => import("./pt-DJsZ1O7G.js").then((m) => m.default),
-	"ru": () => import("./ru-BteImCGV.js").then((m) => m.default),
-	"zh": () => import("./zh-BGX7330D.js").then((m) => m.default)
+	"de": () => import("./de-CMy7NBVa.js").then((m) => m.default),
+	"en": () => import("./en-Dd-jmCj0.js").then((m) => m.default),
+	"es": () => import("./es-lt9vDN1t.js").then((m) => m.default),
+	"fr": () => import("./fr-deGUkpPN.js").then((m) => m.default),
+	"it": () => import("./it-Dxj5UODA.js").then((m) => m.default),
+	"ja": () => import("./ja-Btmr7rDY.js").then((m) => m.default),
+	"ko": () => import("./ko-DpStB7Qs.js").then((m) => m.default),
+	"pt": () => import("./pt-8caqb1UD.js").then((m) => m.default),
+	"ru": () => import("./ru-roMU08q2.js").then((m) => m.default),
+	"zh": () => import("./zh-DtiJlfem.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -784,13 +784,13 @@ function usePerformanceMeasure(name) {
 //#region src/components/pages/home/Hero.tsx
 function Hero() {
 	const content$1 = useDictionaryDynamic(content, "hero");
-	usePerformanceMeasure("Hero");
+	usePerformanceMeasure(content$1.b.value);
 	return /* @__PURE__ */ jsxs("section", {
 		className: "mb-16 text-center",
 		children: [
 			/* @__PURE__ */ jsx("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
-				children: "i18n Benchmark"
+				children: content$1.c
 			}),
 			/* @__PURE__ */ jsx("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
@@ -801,11 +801,11 @@ function Hero() {
 				children: [/* @__PURE__ */ jsx("button", {
 					type: "button",
 					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-					children: content$1.b
+					children: content$1.e
 				}), /* @__PURE__ */ jsx("button", {
 					type: "button",
 					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
-					children: "Methodology"
+					children: content$1.d
 				})]
 			})
 		]
@@ -998,7 +998,10 @@ var de_default = {
 	key: "hero",
 	content: {
 		"a": "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungs-Bibliotheken auf die Bundle-Größe, Ladeleistung und Rendering-Reaktivität zu messen.",
-		"b": "Ergebnisse anzeigen"
+		"e": "Ergebnisse anzeigen",
+		"b": "Held",
+		"d": "Methodik",
+		"c": "i18n Benchmark"
 	}
 };
 //#endregion
@@ -1007,7 +1010,10 @@ var en_default = {
 	key: "hero",
 	content: {
 		"a": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-		"b": "View Results"
+		"e": "View Results",
+		"b": "Hero",
+		"d": "Methodology",
+		"c": "i18n Benchmark"
 	}
 };
 //#endregion
@@ -1016,7 +1022,10 @@ var es_default = {
 	key: "hero",
 	content: {
 		"a": "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el rendimiento de carga y la reactividad del renderizado.",
-		"b": "Ver Resultados"
+		"e": "Ver Resultados",
+		"b": "Héroe",
+		"d": "Metodología",
+		"c": "Benchmark i18n"
 	}
 };
 //#endregion
@@ -1025,7 +1034,10 @@ var fr_default = {
 	key: "hero",
 	content: {
 		"a": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-		"b": "Voir les Résultats"
+		"e": "Voir les Résultats",
+		"b": "Héros",
+		"d": "Méthodologie",
+		"c": "Benchmark i18n"
 	}
 };
 //#endregion
@@ -1034,7 +1046,10 @@ var it_default = {
 	key: "hero",
 	content: {
 		"a": "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
-		"b": "Visualizza i risultati"
+		"e": "Visualizza i risultati",
+		"b": "Eroe",
+		"d": "Metodologia",
+		"c": "Benchmark i18n"
 	}
 };
 //#endregion
@@ -1043,7 +1058,10 @@ var ja_default = {
 	key: "hero",
 	content: {
 		"a": "国際化ライブラリがバンドルサイズ、読み込みパフォーマンス、およびレンダリングの反応性に与える実際の影を測定するために設計されたテストアプリケーション。",
-		"b": "結果を表示"
+		"e": "結果を表示",
+		"b": "ヒーロー",
+		"d": "方法論",
+		"c": "i18n ベンチマーク"
 	}
 };
 //#endregion
@@ -1052,7 +1070,10 @@ var ko_default = {
 	key: "hero",
 	content: {
 		"a": "번들 크기, 로딩 성능 및 렌더링 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하도록 설계된 테스트 애플리케이션입니다.",
-		"b": "결과 보기"
+		"e": "결과 보기",
+		"b": "영웅",
+		"d": "방법론",
+		"c": "i18n 벤치마크"
 	}
 };
 //#endregion
@@ -1061,7 +1082,10 @@ var pt_default = {
 	key: "hero",
 	content: {
 		"a": "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade da renderização.",
-		"b": "Ver Resultados"
+		"e": "Ver Resultados",
+		"b": "Herói",
+		"d": "Metodologia",
+		"c": "Benchmark i18n"
 	}
 };
 //#endregion
@@ -1070,7 +1094,10 @@ var ru_default = {
 	key: "hero",
 	content: {
 		"a": "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
-		"b": "Посмотреть результаты"
+		"e": "Посмотреть результаты",
+		"b": "Герой",
+		"d": "Методология",
+		"c": "i18n Бенчмарк"
 	}
 };
 //#endregion
@@ -1079,7 +1106,10 @@ var zh_default = {
 	key: "hero",
 	content: {
 		"a": "一个测试应用程序，旨在衡量国际化库对包大小、加载性能和渲染反应性的实际影响。",
-		"b": "查看结果"
+		"e": "查看结果",
+		"b": "英雄",
+		"d": "方法论",
+		"c": "i18n 基准测试"
 	}
 };
 //#endregion

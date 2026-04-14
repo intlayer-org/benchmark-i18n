@@ -1,50 +1,49 @@
 import { jsx, jsxs } from "react/jsx-runtime";
 //#region app/components/pages/pricing/PricingTiers.tsx
-var tiers = [
-	{
-		name: "Starter",
-		price: "$0",
-		period: "forever",
-		features: [
-			"5 benchmark runs/day",
-			"3 libraries",
-			"Community support",
-			"Public results"
-		]
-	},
-	{
-		name: "Pro",
-		price: "$29",
-		period: "/month",
-		features: [
-			"Unlimited runs",
-			"All libraries",
-			"Priority support",
-			"Private results",
-			"CI integration",
-			"Historical data"
-		],
-		highlighted: true
-	},
-	{
-		name: "Enterprise",
-		price: "Custom",
-		period: "",
-		features: [
-			"Everything in Pro",
-			"On-premise option",
-			"SSO & SAML",
-			"Dedicated account manager",
-			"Custom SLAs",
-			"Audit logs",
-			"Training sessions"
-		]
-	}
-];
 function PricingTiers() {
 	return /* @__PURE__ */ jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((t) => /* @__PURE__ */ jsxs("div", {
+		children: [
+			{
+				name: "Starter",
+				price: "$0",
+				period: "forever",
+				features: [
+					"5 benchmark runs/day",
+					"3 libraries",
+					"Community support",
+					"Public results"
+				]
+			},
+			{
+				name: "Pro",
+				price: "$29",
+				period: "/month",
+				features: [
+					"Unlimited runs",
+					"All libraries",
+					"Priority support",
+					"Private results",
+					"CI integration",
+					"Historical data"
+				],
+				highlighted: true
+			},
+			{
+				name: "Enterprise",
+				price: "Custom",
+				period: "",
+				features: [
+					"Everything in Pro",
+					"On-premise option",
+					"SSO & SAML",
+					"Dedicated account manager",
+					"Custom SLAs",
+					"Audit logs",
+					"Training sessions"
+				]
+			}
+		].map((t) => /* @__PURE__ */ jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
 				/* @__PURE__ */ jsx("h3", {

@@ -2,16 +2,16 @@ import { Fragment, createContext, createElement, isValidElement, lazy, useContex
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/faq-list.mjs
 var content = {
-	"de": () => import("./de-D3Gb0XRu.js").then((m) => m.default),
-	"en": () => import("./en-C0syN9Kj.js").then((m) => m.default),
-	"es": () => import("./es-CpMPtElB.js").then((m) => m.default),
-	"fr": () => import("./fr-Dsoiu5A9.js").then((m) => m.default),
-	"it": () => import("./it-DrKzGdQf.js").then((m) => m.default),
-	"ja": () => import("./ja-BpwWT7H4.js").then((m) => m.default),
-	"ko": () => import("./ko-D0VF5g1C.js").then((m) => m.default),
-	"pt": () => import("./pt-CcmlE9kf.js").then((m) => m.default),
-	"ru": () => import("./ru-DVvSG-y9.js").then((m) => m.default),
-	"zh": () => import("./zh-CfSmpI34.js").then((m) => m.default)
+	"de": () => import("./de-Cr4kT9tm.js").then((m) => m.default),
+	"en": () => import("./en-CKnmjLss.js").then((m) => m.default),
+	"es": () => import("./es-mRksy1-y.js").then((m) => m.default),
+	"fr": () => import("./fr-ulgDFEy3.js").then((m) => m.default),
+	"it": () => import("./it-7xY_IEwu.js").then((m) => m.default),
+	"ja": () => import("./ja-DXNmm8h9.js").then((m) => m.default),
+	"ko": () => import("./ko-Bp2i3urR.js").then((m) => m.default),
+	"pt": () => import("./pt-tTFbLGC0.js").then((m) => m.default),
+	"ru": () => import("./ru-DfQ5viPh.js").then((m) => m.default),
+	"zh": () => import("./zh-1rRQeaKc.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -769,36 +769,36 @@ function FAQList() {
 		className: "mx-auto max-w-3xl space-y-4",
 		children: [
 			{
-				q: content$1.l.value,
-				a: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
+				q: content$1.m.value,
+				a: content$1.f.value
 			},
 			{
 				q: content$1.c.value,
-				a: content$1.j.value
-			},
-			{
-				q: content$1.m.value,
 				a: content$1.k.value
 			},
 			{
+				q: content$1.n.value,
+				a: content$1.l.value
+			},
+			{
 				q: content$1.a.value,
-				a: content$1.n.value
-			},
-			{
-				q: content$1.e.value,
-				a: content$1.i.value
-			},
-			{
-				q: content$1.f.value,
-				a: content$1.h.value
-			},
-			{
-				q: content$1.b.value,
 				a: content$1.o.value
 			},
 			{
+				q: content$1.e.value,
+				a: content$1.j.value
+			},
+			{
+				q: content$1.g.value,
+				a: content$1.i.value
+			},
+			{
+				q: content$1.b.value,
+				a: content$1.p.value
+			},
+			{
 				q: content$1.d.value,
-				a: content$1.g.value
+				a: content$1.h.value
 			}
 		].map((f) => /* @__PURE__ */ jsxs("details", {
 			className: "group rounded-lg border border-border bg-card",
@@ -998,21 +998,22 @@ export { MarkdownRendererPlugin };
 var de_default = {
 	key: "faq-list",
 	content: {
-		"l": "Was ist i18n Benchmark ?",
+		"m": "Was ist i18n Benchmark ?",
 		"c": "Wie werden die Benchmarks durchgeführt ?",
-		"j": "Wir führen standardisierte Tests in isolierten Umgebungen mit konsistenter Hardware durch. Jeder Benchmark wird mehrfach wiederholt, um statistische Signifikanz zu gewährleisten. Alle Testkonfigurationen sind öffentlich in unserem GitHub-Repository verfügbar.",
-		"m": "Welche Bibliotheken werden derzeit unterstützt ?",
-		"k": "Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.",
+		"k": "Wir führen standardisierte Tests in isolierten Umgebungen mit konsistenter Hardware durch. Jeder Benchmark wird mehrfach wiederholt, um statistische Signifikanz zu gewährleisten. Alle Testkonfigurationen sind öffentlich in unserem GitHub-Repository verfügbar.",
+		"n": "Welche Bibliotheken werden derzeit unterstützt ?",
+		"l": "Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.",
 		"a": "Kann ich meine eigenen Benchmarks einreichen ?",
-		"n": "Ja! Einreichungen von Benchmarks aus der Community sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Beiträge hinzu und senden Sie einen Pull Request. Unser Team wird qualifizierte Einreichungen prüfen und zusammenführen.",
+		"o": "Ja! Einreichungen von Benchmarks aus der Community sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Beiträge hinzu und senden Sie einen Pull Request. Unser Team wird qualifizierte Einreichungen prüfen und zusammenführen.",
 		"e": "Wie oft werden die Benchmarks aktualisiert ?",
-		"i": "Wir führen alle Benchmarks wöchentlich mit den neuesten stabilen Versionen jeder Bibliothek erneut durch. Hauptversionen lösen einen sofortigen Re-Benchmark-Zyklus aus.",
-		"f": "Sind die Daten zuverlässig ?",
-		"h": "Wir folgen einer strengen statistischen Methodik, einschließlich Aufwärmphasen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.",
+		"j": "Wir führen alle Benchmarks wöchentlich mit den neuesten stabilen Versionen jeder Bibliothek erneut durch. Hauptversionen lösen einen sofortigen Re-Benchmark-Zyklus aus.",
+		"g": "Sind die Daten zuverlässig ?",
+		"i": "Wir folgen einer strengen statistischen Methodik, einschließlich Aufwärmphasen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.",
 		"b": "Bieten Sie Beratungsdienstleistungen an ?",
-		"o": "Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen validieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Einschränkungen geben.",
+		"p": "Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen validieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Einschränkungen geben.",
 		"d": "Wie kann ich beitragen ?",
-		"g": "Es gibt viele Möglichkeiten, beizutragen: Reichen Sie Benchmarks ein, verbessern Sie die Dokumentation, melden Sie Fehler, schlagen Sie neue Metriken vor oder sponsern Sie das Projekt. Besuchen Sie unser GitHub-Repository für weitere Details."
+		"h": "Es gibt viele Möglichkeiten, beizutragen: Reichen Sie Benchmarks ein, verbessern Sie die Dokumentation, melden Sie Fehler, schlagen Sie neue Metriken vor oder sponsern Sie das Projekt. Besuchen Sie unser GitHub-Repository für weitere Details.",
+		"f": "i18n Benchmark ist eine Open-Source-Benchmarking-Suite, die die Leistung, die Bundle-Größe und die Entwicklererfahrung von Internationalisierungsbibliotheken für JavaScript- und React-Anwendungen misst und vergleicht."
 	}
 };
 //#endregion
@@ -1020,21 +1021,22 @@ export { de_default as default };
 var en_default = {
 	key: "faq-list",
 	content: {
-		"l": "What is i18n Benchmark?",
+		"m": "What is i18n Benchmark?",
 		"c": "How are benchmarks conducted?",
-		"j": "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
-		"m": "Which libraries are currently supported?",
-		"k": "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+		"k": "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+		"n": "Which libraries are currently supported?",
+		"l": "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
 		"a": "Can I submit my own benchmarks?",
-		"n": "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+		"o": "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
 		"e": "How often are benchmarks updated?",
-		"i": "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
-		"f": "Is the data reliable?",
-		"h": "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+		"j": "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+		"g": "Is the data reliable?",
+		"i": "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
 		"b": "Do you offer consulting services?",
-		"o": "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+		"p": "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
 		"d": "How can I contribute?",
-		"g": "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+		"h": "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
+		"f": "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
 	}
 };
 //#endregion
@@ -1042,21 +1044,22 @@ export { en_default as default };
 var es_default = {
 	key: "faq-list",
 	content: {
-		"l": "¿Qué es i18n Benchmark ?",
+		"m": "¿Qué es i18n Benchmark ?",
 		"c": "¿Cómo se realizan los benchmarks ?",
-		"j": "Realizamos pruebas estandarizadas en entornos aislados utilizando hardware consistente. Cada benchmark se repite varias veces para garantizar la significación estadística. Todas las configuraciones de prueba están disponibles públicamente en nuestro repositorio de GitHub.",
-		"m": "¿Qué bibliotecas son compatibles actualmente ?",
-		"k": "Soportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.",
+		"k": "Realizamos pruebas estandarizadas en entornos aislados utilizando hardware consistente. Cada benchmark se repite varias veces para garantizar la significación estadística. Todas las configuraciones de prueba están disponibles públicamente en nuestro repositorio de GitHub.",
+		"n": "¿Qué bibliotecas son compatibles actualmente ?",
+		"l": "Soportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.",
 		"a": "¿Puedo enviar mis propios benchmarks ?",
-		"n": "¡Sí! Las presentaciones de benchmarks de la comunidad son bienvenidas. Bifurca nuestro repositorio, agrega tu benchmark siguiendo nuestra guía de contribución y envía una pull request. Nuestro equipo revisará y fusionará las presentaciones que califiquen.",
+		"o": "¡Sí! Las presentaciones de benchmarks de la comunidad son bienvenidas. Bifurca nuestro repositorio, agrega tu benchmark siguiendo nuestra guía de contribución y envía una pull request. Nuestro equipo revisará y fusionará las presentaciones que califiquen.",
 		"e": "¿Con qué frecuencia se actualizan los benchmarks ?",
-		"i": "Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmarking inmediato.",
-		"f": "¿Son fiables los datos ?",
-		"h": "Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos sin procesar se publican junto con nuestro análisis para una total transparencia.",
+		"j": "Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmarking inmediato.",
+		"g": "¿Son fiables los datos ?",
+		"i": "Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos sin procesar se publican junto con nuestro análisis para una total transparencia.",
 		"b": "¿Ofrecen servicios de consultoría ?",
-		"o": "¡Sí! Nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones de i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso específico, escala y restricciones.",
+		"p": "¡Sí! Nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones de i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso específico, escala y restricciones.",
 		"d": "¿Cómo puedo contribuir ?",
-		"g": "Hay muchas formas de contribuir: enviando benchmarks, mejorando la documentación, informando errores, sugiriendo nuevas métricas o patrocinando el proyecto. Visite nuestro repositorio de GitHub para más detalles."
+		"h": "Hay muchas formas de contribuir: enviando benchmarks, mejorando la documentación, informando errores, sugiriendo nuevas métricas o patrocinando el proyecto. Visite nuestro repositorio de GitHub para más detalles.",
+		"f": "i18n Benchmark es una suite de benchmarking de código abierto que mide y compara el rendimiento, el tamaño del bundle y la experiencia del desarrollador de las bibliotecas de internacionalización para aplicaciones JavaScript y React."
 	}
 };
 //#endregion
@@ -1064,21 +1067,22 @@ export { es_default as default };
 var fr_default = {
 	key: "faq-list",
 	content: {
-		"l": "Qu'est-ce que i18n Benchmark ?",
+		"m": "Qu'est-ce que i18n Benchmark ?",
 		"c": "Comment les benchmarks sont-ils menés ?",
-		"j": "Nous effectuons des tests standardisés dans des environnements isolés en utilisant un matériel cohérent. Chaque benchmark est répété plusieurs fois pour garantir une signification statistique. Toutes les configurations de test sont disponibles publiquement dans notre dépôt GitHub.",
-		"m": "Quelles bibliothèques sont actuellement supportées ?",
-		"k": "Nous supportons react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react et Tolgee.",
+		"k": "Nous effectuons des tests standardisés dans des environnements isolés en utilisant un matériel cohérent. Chaque benchmark est répété plusieurs fois pour garantir une signification statistique. Toutes les configurations de test sont disponibles publiquement dans notre dépôt GitHub.",
+		"n": "Quelles bibliothèques sont actuellement supportées ?",
+		"l": "Nous supportons react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react et Tolgee.",
 		"a": "Puis-je soumettre mes propres benchmarks ?",
-		"n": "Oui ! Les soumissions de benchmarks de la communauté sont les bienvenues. Forkez notre dépôt, ajoutez votre benchmark en suivant notre guide de contribution et soumettez une pull request. Notre équipe examinera et fusionnera les soumissions qualifiées.",
+		"o": "Oui ! Les soumissions de benchmarks de la communauté sont les bienvenues. Forkez notre dépôt, ajoutez votre benchmark en suivant notre guide de contribution et soumettez une pull request. Notre équipe examinera et fusionnera les soumissions qualifiées.",
 		"e": "À quelle fréquence les benchmarks sont-ils mis à jour ?",
-		"i": "Nous relançons tous les benchmarks chaque semaine avec les dernières versions stables de chaque bibliothèque. Les versions majeures déclenchent un cycle immédiat de re-benchmarking.",
-		"f": "Les données sont-elles fiables ?",
-		"h": "Nous suivons une méthodologie statistique rigoureuse incluant des phases de préchauffage, la détection des valeurs aberrantes et des intervalles de confiance. Toutes les données brutes sont publiées aux côtés de notre analyse pour une transparence totale.",
+		"j": "Nous relançons tous les benchmarks chaque semaine avec les dernières versions stables de chaque bibliothèque. Les versions majeures déclenchent un cycle immédiat de re-benchmarking.",
+		"g": "Les données sont-elles fiables ?",
+		"i": "Nous suivons une méthodologie statistique rigoureuse incluant des phases de préchauffage, la détection des valeurs aberrantes et des intervalles de confiance. Toutes les données brutes sont publiées aux côtés de notre analyse pour une transparence totale.",
 		"b": "Proposez-vous des services de conseil ?",
-		"o": "Oui, notre plan Entreprise inclut des heures de conseil pour les équipes évaluant les solutions i18n. Nous pouvons fournir des recommandations personnalisées basées sur votre cas d'utilisation spécifique, votre échelle et vos contraintes.",
+		"p": "Oui, notre plan Entreprise inclut des heures de conseil pour les équipes évaluant les solutions i18n. Nous pouvons fournir des recommandations personnalisées basées sur votre cas d'utilisation spécifique, votre échelle et vos contraintes.",
 		"d": "Comment puis-je contribuer ?",
-		"g": "Il existe de nombreuses façons de contribuer : soumettre des benchmarks, améliorer la documentation, signaler des bugs, suggérer de nouvelles métriques ou parrainer le projet. Visitez notre dépôt GitHub pour plus de détails."
+		"h": "Il existe de nombreuses façons de contribuer : soumettre des benchmarks, améliorer la documentation, signaler des bugs, suggérer de nouvelles métriques ou parrainer le projet. Visitez notre dépôt GitHub pour plus de détails.",
+		"f": "i18n Benchmark est une suite d'analyse comparative open source qui mesure et compare les performances, la taille du bundle et l'expérience développeur des bibliothèques d'internationalisation pour les applications JavaScript et React."
 	}
 };
 //#endregion
@@ -1086,21 +1090,22 @@ export { fr_default as default };
 var it_default = {
 	key: "faq-list",
 	content: {
-		"l": "Cos'è i18n Benchmark ?",
+		"m": "Cos'è i18n Benchmark ?",
 		"c": "Come vengono condotti i benchmark ?",
-		"j": "Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni dei test sono disponibili pubblicamente nel nostro repository GitHub.",
-		"m": "Quali librerie sono attualmente supportate ?",
-		"k": "Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.",
+		"k": "Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni dei test sono disponibili pubblicamente nel nostro repository GitHub.",
+		"n": "Quali librerie sono attualmente supportate ?",
+		"l": "Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.",
 		"a": "Posso inviare i miei benchmark ?",
-		"n": "Sì! I contributi ai benchmark della comunità sono benvenuti. Esegui il fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà i contributi idonei.",
+		"o": "Sì! I contributi ai benchmark della comunità sono benvenuti. Esegui il fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà i contributi idonei.",
 		"e": "Ogni quanto vengono aggiornati i benchmark ?",
-		"i": "Eseguiamo nuovamente tutti i benchmark settimanalmente con le ultime versioni stabili di ogni libreria. Le versioni principali attivano un ciclo di benchmarking immediato.",
-		"f": "I dati sono affidabili ?",
-		"h": "Seguiamo una rigorosa metodologia statistica che include fasi di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi vengono pubblicati insieme alla nostra analisi per la massima trasparenza.",
+		"j": "Eseguiamo nuovamente tutti i benchmark settimanalmente con le ultime versioni stabili di ogni libreria. Le versioni principali attivano un ciclo di benchmarking immediato.",
+		"g": "I dati sono affidabili ?",
+		"i": "Seguiamo una rigorosa metodologia statistica che include fasi di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi vengono pubblicati insieme alla nostra analisi per la massima trasparenza.",
 		"b": "Offrite servizi di consulenza ?",
-		"o": "Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano le soluzioni i18n. Possiamo fornire consigli su misura in base al tuo caso d’uso specifico, alle dimensioni e ai vincoli.",
+		"p": "Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano le soluzioni i18n. Possiamo fornire consigli su misura in base al tuo caso d’uso specifico, alle dimensioni e ai vincoli.",
 		"d": "Come posso contribuire ?",
-		"g": "Esistono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per ulteriori dettagli."
+		"h": "Esistono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per ulteriori dettagli.",
+		"f": "i18n Benchmark è una suite di benchmarking open source che misura e confronta le prestazioni, le dimensioni del bundle e l'esperienza dello sviluppatore delle librerie di internazionalizzazione per applicazioni JavaScript e React."
 	}
 };
 //#endregion
@@ -1108,21 +1113,22 @@ export { it_default as default };
 var ja_default = {
 	key: "faq-list",
 	content: {
-		"l": "i18n Benchmark とは何ですか？",
+		"m": "i18n Benchmark とは何ですか？",
 		"c": "ベンチマークはどのように行われますか？",
-		"j": "一貫したハードウェアを使用し、分離された環境で標準化されたテストを実行します。各ベンチマークは、統計的有意性を確保するために複数回繰り返されます。すべてのテスト構成は、GitHub リポジトリで公開されています。",
-		"m": "現在サポートされているライブラリは何ですか？",
-		"k": "react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react、Tolgee をサポートしています。",
+		"k": "一貫したハードウェアを使用し、分離された環境で標準化されたテストを実行します。各ベンチマークは、統計的有意性を確保するために複数回繰り返されます。すべてのテスト構成は、GitHub リポジトリで公開されています。",
+		"n": "現在サポートされているライブラリは何ですか？",
+		"l": "react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react、Tolgee をサポートしています。",
 		"a": "独自のベンチマークを送信できますか？",
-		"n": "はい！コミュニティからのベンチマークの送信を歓迎します。当社のリポジトリをフォークし、コントリビューションガイドに従ってベンチマークを追加し、プルリクエストを送信してください。当社のチームが、資格のある送信内容をレビューしてマージします。",
+		"o": "はい！コミュニティからのベンチマークの送信を歓迎します。当社のリポジトリをフォークし、コントリビューションガイドに従ってベンチマークを追加し、プルリクエストを送信してください。当社のチームが、資格のある送信内容をレビューしてマージします。",
 		"e": "ベンチマークはどのくらいの頻度で更新されますか？",
-		"i": "各ライブラリの最新の安定バージョンに対して、毎週すべてのベンチマークを再実行します。メジャーバージョンのリリースにより、即座に再ベンチマークサイクルが実行されます。",
-		"f": "データは信頼できますか？",
-		"h": "ウォームアップ実行、外れ値の検出、信頼区間などの厳密な統計的手法に従います。すべての生データは、完全な透明性のために当社の分析とともに公開されます。",
+		"j": "各ライブラリの最新の安定バージョンに対して、毎週すべてのベンチマークを再実行します。メジャーバージョンのリリースにより、即座に再ベンチマークサイクルが実行されます。",
+		"g": "データは信頼できますか？",
+		"i": "ウォームアップ実行、外れ値の検出、信頼区間などの厳密な統計的手法に従います。すべての生データは、完全な透明性のために当社の分析とともに公開されます。",
 		"b": "コンサルティングサービスを提供していますか？",
-		"o": "はい、当社のエンタープライズプランには、i18n ソリューションを評価するチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいて、カスタマイズされた推奨事項を提供できます。",
+		"p": "はい、当社のエンタープライズプランには、i18n ソリューションを評価するチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいて、カスタマイズされた推奨事項を提供できます。",
 		"d": "どのように貢献できますか？",
-		"g": "貢献する方法はたくさんあります。ベンチマークの送信、ドキュメントの改善、バグの報告、新しい指標の提案、プロジェクトのスポンサーなどです。詳細については、GitHub リポジトリをご覧ください。"
+		"h": "貢献する方法はたくさんあります。ベンチマークの送信、ドキュメントの改善、バグの報告、新しい指標の提案、プロジェクトのスポンサーなどです。詳細については、GitHub リポジトリをご覧ください。",
+		"f": "i18n Benchmark は、JavaScript および React アプリケーション用の国際化ライブラリのパフォーマンス、バンドルサイズ、および開発者エクスペリエンスを測定および比較するオープンソースのベンチマークスイートです。"
 	}
 };
 //#endregion
@@ -1130,21 +1136,22 @@ export { ja_default as default };
 var ko_default = {
 	key: "faq-list",
 	content: {
-		"l": "i18n Benchmark란 무엇인가요?",
+		"m": "i18n Benchmark란 무엇인가요?",
 		"c": "벤치마크는 어떻게 진행되나요?",
-		"j": "우리는 일관된 하드웨어를 사용하여 격리된 환경에서 표준화된 테스트를 실행합니다. 각 벤치마크는 통계적 유의성을 보장하기 위해 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 리포지토리에서 공개적으로 사용할 수 있습니다.",
-		"m": "현재 어떤 라이브러리가 지원되나요?",
-		"k": "react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 및 Tolgee를 지원합니다.",
+		"k": "우리는 일관된 하드웨어를 사용하여 격리된 환경에서 표준화된 테스트를 실행합니다. 각 벤치마크는 통계적 유의성을 보장하기 위해 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 리포지토리에서 공개적으로 사용할 수 있습니다.",
+		"n": "현재 어떤 라이브러리가 지원되나요?",
+		"l": "react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 및 Tolgee를 지원합니다.",
 		"a": "직접 벤치마크를 제출할 수 있나요?",
-		"n": "네! 커뮤니티의 벤치마크 제출을 환영합니다. 리포지토리를 포크하고 기여 가이드에 따라 벤치마크를 추가한 후 풀 리퀘스트를 제출하세요. 저희 팀이 자격이 되는 제출물을 검토하고 병합할 것입니다.",
+		"o": "네! 커뮤니티의 벤치마크 제출을 환영합니다. 리포지토리를 포크하고 기여 가이드에 따라 벤치마크를 추가한 후 풀 리퀘스트를 제출하세요. 저희 팀이 자격이 되는 제출물을 검토하고 병합할 것입니다.",
 		"e": "벤치마크는 얼마나 자주 업데이트되나요?",
-		"i": "우리는 매주 각 라이브러리의 최신 안정 버전에 대해 모든 벤치마크를 재실행합니다. 메이저 버전이 출시되면 즉시 재벤치마크 주기가 시작됩니다.",
-		"f": "데이터가 신뢰할 수 있나요?",
-		"h": "우리는 웜업 실행, 이상값 탐지 및 신뢰 구간을 포함한 엄격한 통계 방법론을 따릅니다. 모든 원시 데이터는 완전한 투명성을 위해 분석과 함께 게시됩니다.",
+		"j": "우리는 매주 각 라이브러리의 최신 안정 버전에 대해 모든 벤치마크를 재실행합니다. 메이저 버전이 출시되면 즉시 재벤치마크 주기가 시작됩니다.",
+		"g": "데이터가 신뢰할 수 있나요?",
+		"i": "우리는 웜업 실행, 이상값 탐지 및 신뢰 구간을 포함한 엄격한 통계 방법론을 따릅니다. 모든 원시 데이터는 완전한 투명성을 위해 분석과 함께 게시됩니다.",
 		"b": "컨설팅 서비스를 제공합나요?",
-		"o": "네, 엔터프라이즈 요금제에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 귀하의 특정 사용 사례, 규모 및 제약 조건에 따라 맞춤형 권장 사항을 제공할 수 있습니다.",
+		"p": "네, 엔터프라이즈 요금제에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 귀하의 특정 사용 사례, 규모 및 제약 조건에 따라 맞춤형 권장 사항을 제공할 수 있습니다.",
 		"d": "어떻게 기여할 수 있나요?",
-		"g": "기여할 수 있는 방법은 많습니다. 벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 또는 프로젝트 후원 등이 있습니다. 자세한 내용은 GitHub 리포지토리를 참조하세요."
+		"h": "기여할 수 있는 방법은 많습니다. 벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 또는 프로젝트 후원 등이 있습니다. 자세한 내용은 GitHub 리포지토리를 참조하세요.",
+		"f": "i18n Benchmark는 JavaScript 및 React 애플리케이션용 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 도구 모음입니다."
 	}
 };
 //#endregion
@@ -1152,21 +1159,22 @@ export { ko_default as default };
 var pt_default = {
 	key: "faq-list",
 	content: {
-		"l": "O que é o i18n Benchmark ?",
+		"m": "O que é o i18n Benchmark ?",
 		"c": "Como os benchmarks são conduzidos ?",
-		"j": "Realizamos testes padronizados em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir a significância estatística. Todas as configurações de teste estão disponíveis publicamente em nosso repositório no GitHub.",
-		"m": "Quais bibliotecas são suportadas atualmente ?",
-		"k": "Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.",
+		"k": "Realizamos testes padronizados em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir a significância estatística. Todas as configurações de teste estão disponíveis publicamente em nosso repositório no GitHub.",
+		"n": "Quais bibliotecas são suportadas atualmente ?",
+		"l": "Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.",
 		"a": "Posso enviar meus próprios benchmarks ?",
-		"n": "Sim! As submissões de benchmarks da comunidade são bem-vindas. Faça um fork do nosso repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe revisará e mesclará as submissões qualificadas.",
+		"o": "Sim! As submissões de benchmarks da comunidade são bem-vindas. Faça um fork do nosso repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe revisará e mesclará as submissões qualificadas.",
 		"e": "Com que frequência os benchmarks são cập nhật ?",
-		"i": "Executamos novamente todos os benchmarks semanalmente com as versões estáveis mais recentes de cada biblioteca. Lançamentos de versões principais desencadeiam um ciclo imediato de novos benchmarks.",
-		"f": "Os dados são confiáveis ?",
-		"h": "Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de outliers e intervalos de confiança. Todos os dados brutos são publicados junto com nossa análise para total transparência.",
+		"j": "Executamos novamente todos os benchmarks semanalmente com as versões estáveis mais recentes de cada biblioteca. Lançamentos de versões principais desencadeiam um ciclo imediato de novos benchmarks.",
+		"g": "Os dados são confiáveis ?",
+		"i": "Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de outliers e intervalos de confiança. Todos os dados brutos são publicados junto com nossa análise para total transparência.",
 		"b": "Vocês oferecem serviços de consultoria ?",
-		"o": "Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Podemos fornecer recomendações personalizadas com base em seu caso de uso, escala e restrições específicos.",
+		"p": "Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Podemos fornecer recomendações personalizadas com base em seu caso de uso, escala e restrições específicos.",
 		"d": "Como posso contribuir ?",
-		"g": "Existem muitas maneiras de contribuir: enviar benchmarks, melhorar a documentazione, relatar bugs, sugerir novas métricas ou patrocinar o projeto. Visite nosso repositório no GitHub para mais detalhes."
+		"h": "Existem muitas maneiras de contribuir: enviar benchmarks, melhorar a documentazione, relatar bugs, sugerir novas métricas ou patrocinar o projeto. Visite nosso repositório no GitHub para mais detalhes.",
+		"f": "o i18n Benchmark é uma suíte de benchmarking de código aberto que mede e compara o desempenho, o tamanho do bundle e a experiência do desenvolvedor de bibliotecas de internacionalização para aplicativos JavaScript e React."
 	}
 };
 //#endregion
@@ -1174,21 +1182,22 @@ export { pt_default as default };
 var ru_default = {
 	key: "faq-list",
 	content: {
-		"l": "Что такое i18n Benchmark ?",
+		"m": "Что такое i18n Benchmark ?",
 		"c": "Как проводятся бенчмарки ?",
-		"j": "Мы проводим стандартизированные тесты в изолированных средах с использованием единообразного оборудования. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов открыты в нашем репозитории GitHub.",
-		"m": "Какие библиотеки поддерживаются в настоящее время ?",
-		"k": "Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react и Tolgee.",
+		"k": "Мы проводим стандартизированные тесты в изолированных средах с использованием единообразного оборудования. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов открыты в нашем репозитории GitHub.",
+		"n": "Какие библиотеки поддерживаются в настоящее время ?",
+		"l": "Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react и Tolgee.",
 		"a": "Могу ли я отправить свои собственные бенчмарки ?",
-		"n": "Да! Мы приветствуем отправку бенчмарков от сообщества. Сделайте форк нашего репозитория, добавьте свой бенчмарк, следуя нашему руководству по внесению вклада, и отправьте пулл-реквест. Наша команда рассмотрит и примет квалифицированные заявки.",
+		"o": "Да! Мы приветствуем отправку бенчмарков от сообщества. Сделайте форк нашего репозитория, добавьте свой бенчмарк, следуя нашему руководству по внесению вклада, и отправьте пулл-реквест. Наша команда рассмотрит и примет квалифицированные заявки.",
 		"e": "Как часто обновляются бенчмарки ?",
-		"i": "Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Выход мажорных версий вызывает немедленный цикл повторного тестирования.",
-		"f": "Надежны ли данные ?",
-		"h": "Мы следуем строгой статистической методологии, включая прогревочные запуски, обнаружение выбросов и доверительные интервалы. Все необработанные данные публикуются вместе с нашим анализом для полной прозрачности.",
+		"j": "Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Выход мажорных версий вызывает немедленный цикл повторного тестирования.",
+		"g": "Надежны ли данные ?",
+		"i": "Мы следуем строгой статистической методологии, включая прогревочные запуски, обнаружение выбросов и доверительные интервалы. Все необработанные данные публикуются вместе с нашим анализом для полной прозрачности.",
 		"b": "Предлагаете ли вы консультационные услуги ?",
-		"o": "Да, наш корпоративный план включает консультационные часы для команд, оценивающих решения i18n. Мы можем предоставить индивидуальные рекомендации, основанные на вашем конкретном случае использования, масштабе и ограничениях.",
+		"p": "Да, наш корпоративный план включает консультационные часы для команд, оценивающих решения i18n. Мы можем предоставить индивидуальные рекомендации, основанные на вашем конкретном случае использования, масштабе и ограничениях.",
 		"d": "Как я могу помочь ?",
-		"g": "Есть много способов внести свой вклад: отправить бенчмарки, улучшить документацию, сообщить о багах, предложить новые метрики или спонсировать проект. Посетите наш репозиторий GitHub для более подробной информации."
+		"h": "Есть много способов внести свой вклад: отправить бенчмарки, улучшить документацию, сообщить о багах, предложить новые метрики или спонсировать проект. Посетите наш репозиторий GitHub для более подробной информации.",
+		"f": "i18n Benchmark — это открытый набор тестов, который измеряет и сравнивает производительность, размер бандла и опыт разработки библиотек интернационализации для приложений JavaScript и React."
 	}
 };
 //#endregion
@@ -1196,21 +1205,22 @@ export { ru_default as default };
 var zh_default = {
 	key: "faq-list",
 	content: {
-		"l": "什么是 i18n Benchmark？",
+		"m": "什么是 i18n Benchmark？",
 		"c": "如何进行基准测试？",
-		"j": "我们在隔离的环境中使用一致的硬件运行标准化测试。每个基准测试都重复多次，以确保统计学意义。所有测试配置都可以在我们的 GitHub 存储库中公开获得。",
-		"m": "目前支持哪些库？",
-		"k": "我们支持 react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react 和 Tolgee。",
+		"k": "我们在隔离的环境中使用一致的硬件运行标准化测试。每个基准测试都重复多次，以确保统计学意义。所有测试配置都可以在我们的 GitHub 存储库中公开获得。",
+		"n": "目前支持哪些库？",
+		"l": "我们支持 react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react 和 Tolgee。",
 		"a": "我可以提交自己的基准测试吗？",
-		"n": "是的！欢迎社区提交基准测试。Fork 我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审查并合并合格的提交。",
+		"o": "是的！欢迎社区提交基准测试。Fork 我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审查并合并合格的提交。",
 		"e": "基准测试多久更新一次？",
-		"i": "我们每周针对每个库的最新稳定版本重新运行所有基准测试。主要版本发布会触发立即重新进行基准测试。",
-		"f": "数据可靠吗？",
-		"h": "我们遵循严格的统计方法，包括热身运行、异常值检测和置信区间。所有原始数据都与我们的分析一起发布，以实现完全透明。",
+		"j": "我们每周针对每个库的最新稳定版本重新运行所有基准测试。主要版本发布会触发立即重新进行基准测试。",
+		"g": "数据可靠吗？",
+		"i": "我们遵循严格的统计方法，包括热身运行、异常值检测和置信区间。所有原始数据都与我们的分析一起发布，以实现完全透明。",
 		"b": "你们提供咨询服务吗？",
-		"o": "是的，我们的企业版计划包括为评估 i18n 解决方案的团队提供的咨询时间。我们可以根据您的具体用例、规模和约束提供定制建议。",
+		"p": "是的，我们的企业版计划包括为评估 i18n 解决方案的团队提供的咨询时间。我们可以根据您的具体用例、规模和约束提供定制建议。",
 		"d": "我该如何贡献？",
-		"g": "有很多贡献方式：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。"
+		"h": "有很多贡献方式：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。",
+		"f": "i18n Benchmark 是一个开源基准测试套件，用于测量和比较 JavaScript 和 React 应用程序的 international化库的性能、包大小和开发人员体验。"
 	}
 };
 //#endregion

@@ -1,50 +1,49 @@
 import { jsx as e, jsxs as t } from "react/jsx-runtime";
 //#region app/components/pages/pricing/PricingTiers.tsx
-var n = [
-	{
-		name: "Starter",
-		price: "$0",
-		period: "forever",
-		features: [
-			"5 benchmark runs/day",
-			"3 libraries",
-			"Community support",
-			"Public results"
-		]
-	},
-	{
-		name: "Pro",
-		price: "$29",
-		period: "/month",
-		features: [
-			"Unlimited runs",
-			"All libraries",
-			"Priority support",
-			"Private results",
-			"CI integration",
-			"Historical data"
-		],
-		highlighted: !0
-	},
-	{
-		name: "Enterprise",
-		price: "Custom",
-		period: "",
-		features: [
-			"Everything in Pro",
-			"On-premise option",
-			"SSO & SAML",
-			"Dedicated account manager",
-			"Custom SLAs",
-			"Audit logs",
-			"Training sessions"
-		]
-	}
-];
-function r() {
+function n() {
 	return /* @__PURE__ */ e("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: n.map((n) => /* @__PURE__ */ t("div", {
+		children: [
+			{
+				name: "Starter",
+				price: "$0",
+				period: "forever",
+				features: [
+					"5 benchmark runs/day",
+					"3 libraries",
+					"Community support",
+					"Public results"
+				]
+			},
+			{
+				name: "Pro",
+				price: "$29",
+				period: "/month",
+				features: [
+					"Unlimited runs",
+					"All libraries",
+					"Priority support",
+					"Private results",
+					"CI integration",
+					"Historical data"
+				],
+				highlighted: !0
+			},
+			{
+				name: "Enterprise",
+				price: "Custom",
+				period: "",
+				features: [
+					"Everything in Pro",
+					"On-premise option",
+					"SSO & SAML",
+					"Dedicated account manager",
+					"Custom SLAs",
+					"Audit logs",
+					"Training sessions"
+				]
+			}
+		].map((n) => /* @__PURE__ */ t("div", {
 			className: `flex flex-col rounded-lg border p-6 ${n.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
 				/* @__PURE__ */ e("h3", {
@@ -85,4 +84,4 @@ function r() {
 	});
 }
 //#endregion
-export { r as default };
+export { n as default };

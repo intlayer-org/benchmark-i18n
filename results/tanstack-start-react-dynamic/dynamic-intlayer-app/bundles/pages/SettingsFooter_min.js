@@ -2,16 +2,16 @@ import { Fragment as e, createContext as t, createElement as n, isValidElement a
 import { Fragment as l, jsx as u, jsxs as d } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/settings-footer.mjs
 var f = {
-	de: () => import("./de-CrV0o-Kp.js").then((e) => e.default),
-	en: () => import("./en-Do28i-C1.js").then((e) => e.default),
-	es: () => import("./es-wBjJswa0.js").then((e) => e.default),
-	fr: () => import("./fr-BivFZu4O.js").then((e) => e.default),
-	it: () => import("./it-BVRbeWHU.js").then((e) => e.default),
-	ja: () => import("./ja-BuvfU4NY.js").then((e) => e.default),
-	ko: () => import("./ko-Bu4wubdh.js").then((e) => e.default),
-	pt: () => import("./pt-CBfumEco.js").then((e) => e.default),
-	ru: () => import("./ru-BvvQpYFN.js").then((e) => e.default),
-	zh: () => import("./zh-DcePGn8f.js").then((e) => e.default)
+	de: () => import("./de-D9vm0y6-.js").then((e) => e.default),
+	en: () => import("./en-92pAZ-9L.js").then((e) => e.default),
+	es: () => import("./es-dBd5pA-Y.js").then((e) => e.default),
+	fr: () => import("./fr-CrlmWRt6.js").then((e) => e.default),
+	it: () => import("./it-CnM27jm7.js").then((e) => e.default),
+	ja: () => import("./ja-B0GRpf2z.js").then((e) => e.default),
+	ko: () => import("./ko-DINQoitL.js").then((e) => e.default),
+	pt: () => import("./pt-BZZXkaqp.js").then((e) => e.default),
+	ru: () => import("./ru-DEjjsgiG.js").then((e) => e.default),
+	zh: () => import("./zh-aL7d5bWs.js").then((e) => e.default)
 }, p = {
 	locales: [
 		"en",
@@ -417,11 +417,11 @@ function ye() {
 		children: [/* @__PURE__ */ u("button", {
 			type: "button",
 			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
-			children: "Cancel"
+			children: e.a
 		}), /* @__PURE__ */ u("button", {
 			type: "submit",
 			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-			children: e.a
+			children: e.b
 		})]
 	});
 }
@@ -554,61 +554,91 @@ var n = e(void 0), r = () => t(n), i = (e) => {
 export { i as MarkdownRendererPlugin };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "Änderungen speichern",
+		a: "Abbrechen"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "Save Changes",
+		a: "Cancel"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "Guardar cambios",
+		a: "Cancelar"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "Enregistrer les modifications",
+		a: "Annuler"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "Salva modifiche",
+		a: "Annulla"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "変更を保存",
+		a: "キャンセル"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "변경 사항 저장",
+		a: "취소"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "Salvar alterações",
+		a: "Cancelar"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "Сохранить изменения",
+		a: "Отмена"
+	}
 };
 //#endregion
 export { e as default };
 var e = {
 	key: "settings-footer",
-	content: { a: "Save Changes" }
+	content: {
+		b: "保存更改",
+		a: "取消"
+	}
 };
 //#endregion
 export { e as default };

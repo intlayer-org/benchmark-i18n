@@ -1,17 +1,17 @@
 import { Fragment, createContext, createElement, isValidElement, lazy, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/pricing-header.mjs
-var content = {
-	"de": () => import("./de-BbV0JgKA.js").then((m) => m.default),
-	"en": () => import("./en-DRJrLhIS.js").then((m) => m.default),
-	"es": () => import("./es-BWf0ihpu.js").then((m) => m.default),
-	"fr": () => import("./fr-CFtFOxSH.js").then((m) => m.default),
-	"it": () => import("./it-CeIeQiOj.js").then((m) => m.default),
-	"ja": () => import("./ja-Bv8lYBQU.js").then((m) => m.default),
-	"ko": () => import("./ko-BmmH90eR.js").then((m) => m.default),
-	"pt": () => import("./pt-BtUXZTNE.js").then((m) => m.default),
-	"ru": () => import("./ru-BcSMtK5v.js").then((m) => m.default),
-	"zh": () => import("./zh-o_Vl-uig.js").then((m) => m.default)
+var content$1 = {
+	"de": () => import("./de-DDcGD8xO.js").then((m) => m.default),
+	"en": () => import("./en-BTKX4PLO.js").then((m) => m.default),
+	"es": () => import("./es-DPFkaFol.js").then((m) => m.default),
+	"fr": () => import("./fr-CbUR0uIT.js").then((m) => m.default),
+	"it": () => import("./it-BhZmbp6R.js").then((m) => m.default),
+	"ja": () => import("./ja-BZ-MUCao.js").then((m) => m.default),
+	"ko": () => import("./ko-DSgFL2tv.js").then((m) => m.default),
+	"pt": () => import("./pt-C_iy4CN5.js").then((m) => m.default),
+	"ru": () => import("./ru-CJRk2EpK.js").then((m) => m.default),
+	"zh": () => import("./zh-D_1Fq9bm.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -762,23 +762,39 @@ var useDictionaryDynamic = (dictionaryPromise, key, locale) => {
 	return useDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, dictionaryPromise[localeTarget]?.()), localeTarget);
 };
 //#endregion
+//#region .intlayer/dynamic_dictionary/mock-banner.mjs
+var content = {
+	"de": () => import("./de-De_qHIZ7.js").then((m) => m.default),
+	"en": () => import("./en-D_hqNyCr.js").then((m) => m.default),
+	"es": () => import("./es-BocvaE-o.js").then((m) => m.default),
+	"fr": () => import("./fr-CctfLhrE.js").then((m) => m.default),
+	"it": () => import("./it-DLq85STr.js").then((m) => m.default),
+	"ja": () => import("./ja-uYqV-_-1.js").then((m) => m.default),
+	"ko": () => import("./ko-D8K8RyIb.js").then((m) => m.default),
+	"pt": () => import("./pt-DJkWNrk5.js").then((m) => m.default),
+	"ru": () => import("./ru-CZBbrPGU.js").then((m) => m.default),
+	"zh": () => import("./zh-oT0l-UAL.js").then((m) => m.default)
+};
+//#endregion
 //#region src/components/MockBanner.tsx
-var MockBanner = () => /* @__PURE__ */ jsx("div", {
-	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
-});
+var MockBanner = () => {
+	return /* @__PURE__ */ jsx("div", {
+		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
+		children: useDictionaryDynamic(content, "mock-banner").a
+	});
+};
 //#endregion
 //#region src/components/pages/pricing/PricingHeader.tsx
 function PricingHeader() {
-	const content$1 = useDictionaryDynamic(content, "pricing-header");
+	const content = useDictionaryDynamic(content$1, "pricing-header");
 	return /* @__PURE__ */ jsxs(Fragment$1, { children: [/* @__PURE__ */ jsx(MockBanner, {}), /* @__PURE__ */ jsxs("div", {
 		className: "mb-12 text-center",
 		children: [/* @__PURE__ */ jsx("h1", {
 			className: "mb-3 text-3xl font-bold text-foreground",
-			children: content$1.b
+			children: content.b
 		}), /* @__PURE__ */ jsx("p", {
 			className: "text-muted-foreground",
-			children: content$1.a
+			children: content.a
 		})]
 	})] });
 }
@@ -974,6 +990,12 @@ var de_default = {
 };
 //#endregion
 export { de_default as default };
+var de_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Diese Seite enthält fiktive Daten, die nur Benchmark-Zwecken dienen. Sie stehen in keinem Zusammenhang mit realen Unternehmen oder Dienstleistungen." }
+};
+//#endregion
+export { de_default as default };
 var en_default = {
 	key: "pricing-header",
 	content: {
@@ -983,6 +1005,18 @@ var en_default = {
 };
 //#endregion
 export { en_default as default };
+var en_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
+};
+//#endregion
+export { en_default as default };
+var es_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contiene datos simulados solo para fines de benchmarking. No está relacionada con ningún negocio o servicio real." }
+};
+//#endregion
+export { es_default as default };
 var es_default = {
 	key: "pricing-header",
 	content: {
@@ -1001,12 +1035,24 @@ var fr_default = {
 };
 //#endregion
 export { fr_default as default };
+var fr_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
+};
+//#endregion
+export { fr_default as default };
 var it_default = {
 	key: "pricing-header",
 	content: {
 		"b": "Prezzi semplici e trasparenti",
 		"a": "Scegli il piano più adatto al tuo team. Nessun costo nascosto."
 	}
+};
+//#endregion
+export { it_default as default };
+var it_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
 };
 //#endregion
 export { it_default as default };
@@ -1019,6 +1065,18 @@ var ja_default = {
 };
 //#endregion
 export { ja_default as default };
+var ja_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ このページにはベンチマークのみを目的とした模擬データが含まれています。実際のビジネスやサービスとは関係ありません。" }
+};
+//#endregion
+export { ja_default as default };
+var ko_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 이 페이지는 벤치마킹 목적으로만 사용되는 모의 데이터를 포함하고 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
+};
+//#endregion
+export { ko_default as default };
 var ko_default = {
 	key: "pricing-header",
 	content: {
@@ -1037,6 +1095,12 @@ var pt_default = {
 };
 //#endregion
 export { pt_default as default };
+var pt_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada com qualquer negócio o serviço real." }
+};
+//#endregion
+export { pt_default as default };
 var ru_default = {
 	key: "pricing-header",
 	content: {
@@ -1046,12 +1110,24 @@ var ru_default = {
 };
 //#endregion
 export { ru_default as default };
+var ru_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Эта страница содержит фиктивные данные только для целей тестирования производительности. Она не связана с каким-либо реальным бизнесом или услугой." }
+};
+//#endregion
+export { ru_default as default };
 var zh_default = {
 	key: "pricing-header",
 	content: {
 		"b": "简单透明的定价",
 		"a": "选择适合您团队的计划。无隐藏费用。"
 	}
+};
+//#endregion
+export { zh_default as default };
+var zh_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 此页面仅包含用于基准测试的模拟数据。它与任何真实的业务或服务无关。" }
 };
 //#endregion
 export { zh_default as default };

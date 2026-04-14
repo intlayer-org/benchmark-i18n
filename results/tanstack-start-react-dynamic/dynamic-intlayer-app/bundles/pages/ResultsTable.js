@@ -2,16 +2,16 @@ import { Fragment, createContext, createElement, isValidElement, lazy, useContex
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/results-table.mjs
 var content = {
-	"de": () => import("./de-BXWgCkSh.js").then((m) => m.default),
-	"en": () => import("./en-DNku74Yq.js").then((m) => m.default),
-	"es": () => import("./es-qyt2qk27.js").then((m) => m.default),
-	"fr": () => import("./fr-W6DisEXB.js").then((m) => m.default),
-	"it": () => import("./it--5wILQ3f.js").then((m) => m.default),
-	"ja": () => import("./ja-G9cASoVa.js").then((m) => m.default),
-	"ko": () => import("./ko-B-GbtKog.js").then((m) => m.default),
-	"pt": () => import("./pt-Cad5QNKf.js").then((m) => m.default),
-	"ru": () => import("./ru-CXn-N0cS.js").then((m) => m.default),
-	"zh": () => import("./zh-Bny3mUGk.js").then((m) => m.default)
+	"de": () => import("./de-91IJzAv_.js").then((m) => m.default),
+	"en": () => import("./en-DT2lecVw.js").then((m) => m.default),
+	"es": () => import("./es-DQl0J-Hv.js").then((m) => m.default),
+	"fr": () => import("./fr-BpArFPIs.js").then((m) => m.default),
+	"it": () => import("./it-CRg3AH1Z.js").then((m) => m.default),
+	"ja": () => import("./ja-mE7yuqnT.js").then((m) => m.default),
+	"ko": () => import("./ko-CHMHPc4r.js").then((m) => m.default),
+	"pt": () => import("./pt-BnhzgmEr.js").then((m) => m.default),
+	"ru": () => import("./ru-yOuqX60u.js").then((m) => m.default),
+	"zh": () => import("./zh-B_s2m8D3.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -765,9 +765,35 @@ var useDictionaryDynamic = (dictionaryPromise, key, locale) => {
 //#region src/components/pages/home/ResultsTable.tsx
 function ResultsTable() {
 	const content$1 = useDictionaryDynamic(content, "results-table");
+	const results = [
+		{
+			lib: "react-i18next",
+			size: content$1.c({ val: "42.3" }),
+			time: content$1.h({ val: "0.12" }),
+			lazy: content$1.j.value
+		},
+		{
+			lib: "react-intl",
+			size: content$1.c({ val: "38.1" }),
+			time: content$1.h({ val: "0.15" }),
+			lazy: content$1.g.value
+		},
+		{
+			lib: "lingui",
+			size: content$1.c({ val: "12.8" }),
+			time: content$1.h({ val: "0.08" }),
+			lazy: content$1.j.value
+		},
+		{
+			lib: "typesafe-i18n",
+			size: content$1.c({ val: "5.2" }),
+			time: content$1.h({ val: "0.05" }),
+			lazy: content$1.a.value
+		}
+	];
 	return /* @__PURE__ */ jsxs("section", { children: [/* @__PURE__ */ jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
-		children: content$1.d
+		children: content$1.i
 	}), /* @__PURE__ */ jsx("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
 		children: /* @__PURE__ */ jsxs("table", {
@@ -777,47 +803,22 @@ function ResultsTable() {
 				children: /* @__PURE__ */ jsxs("tr", { children: [
 					/* @__PURE__ */ jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
-						children: "Library"
-					}),
-					/* @__PURE__ */ jsx("th", {
-						className: "px-4 py-3 text-left font-medium text-muted-foreground",
-						children: content$1.a
-					}),
-					/* @__PURE__ */ jsx("th", {
-						className: "px-4 py-3 text-left font-medium text-muted-foreground",
-						children: content$1.c
+						children: content$1.e
 					}),
 					/* @__PURE__ */ jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: content$1.b
+					}),
+					/* @__PURE__ */ jsx("th", {
+						className: "px-4 py-3 text-left font-medium text-muted-foreground",
+						children: content$1.f
+					}),
+					/* @__PURE__ */ jsx("th", {
+						className: "px-4 py-3 text-left font-medium text-muted-foreground",
+						children: content$1.d
 					})
 				] })
-			}), /* @__PURE__ */ jsx("tbody", { children: [
-				{
-					lib: "react-i18next",
-					size: "42.3 kB",
-					time: "0.12ms",
-					lazy: "Yes"
-				},
-				{
-					lib: "react-intl",
-					size: "38.1 kB",
-					time: "0.15ms",
-					lazy: "Manual"
-				},
-				{
-					lib: "lingui",
-					size: "12.8 kB",
-					time: "0.08ms",
-					lazy: "Yes"
-				},
-				{
-					lib: "typesafe-i18n",
-					size: "5.2 kB",
-					time: "0.05ms",
-					lazy: "Built-in"
-				}
-			].map((r) => /* @__PURE__ */ jsxs("tr", {
+			}), /* @__PURE__ */ jsx("tbody", { children: results.map((r) => /* @__PURE__ */ jsxs("tr", {
 				className: "border-t border-border",
 				children: [
 					/* @__PURE__ */ jsx("td", {
@@ -1027,10 +1028,24 @@ export { MarkdownRendererPlugin };
 var de_default = {
 	key: "results-table",
 	content: {
-		"d": "Beispielergebnisse",
-		"a": "Bundle-Größe",
-		"c": "Abfragezeit",
-		"b": "Lazy Loading"
+		"i": "Beispielergebnisse",
+		"b": "Bundle-Größe",
+		"f": "Abfragezeit",
+		"d": "Lazy Loading",
+		"j": "Ja",
+		"g": "Manuell",
+		"e": "Bibliothek",
+		"a": "Integriert",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} kB"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} ms"
+		}
 	}
 };
 //#endregion
@@ -1038,10 +1053,24 @@ export { de_default as default };
 var en_default = {
 	key: "results-table",
 	content: {
-		"d": "Sample Results",
-		"a": "Bundle Size",
-		"c": "Lookup Time",
-		"b": "Lazy Loading"
+		"i": "Sample Results",
+		"b": "Bundle Size",
+		"f": "Lookup Time",
+		"d": "Lazy Loading",
+		"j": "Yes",
+		"g": "Manual",
+		"e": "Library",
+		"a": "Built-in",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} kB"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val}ms"
+		}
 	}
 };
 //#endregion
@@ -1049,10 +1078,24 @@ export { en_default as default };
 var es_default = {
 	key: "results-table",
 	content: {
-		"d": "Resultados de muestra",
-		"a": "Tamaño del bundle",
-		"c": "Tiempo de consulta",
-		"b": "Carga diferida"
+		"i": "Resultados de muestra",
+		"b": "Tamaño del bundle",
+		"f": "Tiempo de consulta",
+		"d": "Carga diferida",
+		"j": "Sí",
+		"g": "Manual",
+		"e": "Biblioteca",
+		"a": "Incorporado",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} kB"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} ms"
+		}
 	}
 };
 //#endregion
@@ -1060,10 +1103,24 @@ export { es_default as default };
 var fr_default = {
 	key: "results-table",
 	content: {
-		"d": "Résultats d'échantillon",
-		"a": "Taille du bundle",
-		"c": "Temps de consultation",
-		"b": "Chargement différé"
+		"i": "Résultats d'échantillon",
+		"b": "Taille du bundle",
+		"f": "Temps de consultation",
+		"d": "Chargement différé",
+		"j": "Oui",
+		"g": "Manuel",
+		"e": "Bibliothèque",
+		"a": "Intégré",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} ko"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} ms"
+		}
 	}
 };
 //#endregion
@@ -1071,10 +1128,24 @@ export { fr_default as default };
 var it_default = {
 	key: "results-table",
 	content: {
-		"d": "Risultati del campione",
-		"a": "Dimensioni del bundle",
-		"c": "Tempo di ricerca",
-		"b": "Caricamento lento"
+		"i": "Risultati del campione",
+		"b": "Dimensioni del bundle",
+		"f": "Tempo di ricerca",
+		"d": "Caricamento lento",
+		"j": "Sì",
+		"g": "Manuale",
+		"e": "Libreria",
+		"a": "Integrato",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} kB"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} ms"
+		}
 	}
 };
 //#endregion
@@ -1082,10 +1153,24 @@ export { it_default as default };
 var ja_default = {
 	key: "results-table",
 	content: {
-		"d": "サンプル結果",
-		"a": "バンドルサイズ",
-		"c": "検索時間",
-		"b": "遅延読み込み"
+		"i": "サンプル結果",
+		"b": "バンドルサイズ",
+		"f": "検索時間",
+		"d": "遅延読み込み",
+		"j": "はい",
+		"g": "マニュアル",
+		"e": "ライブラリ",
+		"a": "組み込み",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} kB"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val}ms"
+		}
 	}
 };
 //#endregion
@@ -1093,10 +1178,24 @@ export { ja_default as default };
 var ko_default = {
 	key: "results-table",
 	content: {
-		"d": "샘플 결과",
-		"a": "번들 크기",
-		"c": "조회 시간",
-		"b": "지연 로딩"
+		"i": "샘플 결과",
+		"b": "번들 크기",
+		"f": "조회 시간",
+		"d": "지연 로딩",
+		"j": "예",
+		"g": "수동",
+		"e": "라이브러리",
+		"a": "내장",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} kB"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val}ms"
+		}
 	}
 };
 //#endregion
@@ -1104,10 +1203,24 @@ export { ko_default as default };
 var pt_default = {
 	key: "results-table",
 	content: {
-		"d": "Resultados de amostra",
-		"a": "Tamanho do bundle",
-		"c": "Tempo de consulta",
-		"b": "Carregamento lento"
+		"i": "Resultados de amostra",
+		"b": "Tamanho do bundle",
+		"f": "Tempo de consulta",
+		"d": "Carregamento lento",
+		"j": "Sim",
+		"g": "Manual",
+		"e": "Biblioteca",
+		"a": "Integrado",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} kB"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} ms"
+		}
 	}
 };
 //#endregion
@@ -1115,10 +1228,24 @@ export { pt_default as default };
 var ru_default = {
 	key: "results-table",
 	content: {
-		"d": "Примеры результатов",
-		"a": "Размер бандла",
-		"c": "Время поиска",
-		"b": "Ленивая загрузка"
+		"i": "Примеры результатов",
+		"b": "Размер бандла",
+		"f": "Время поиска",
+		"d": "Ленивая загрузка",
+		"j": "Да",
+		"g": "Вручную",
+		"e": "Библиотека",
+		"a": "Встроенный",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} кБ"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} мс"
+		}
 	}
 };
 //#endregion
@@ -1126,10 +1253,24 @@ export { ru_default as default };
 var zh_default = {
 	key: "results-table",
 	content: {
-		"d": "样本结果",
-		"a": "包大小",
-		"c": "查询时间",
-		"b": "延迟加载"
+		"i": "样本结果",
+		"b": "包大小",
+		"f": "查询时间",
+		"d": "延迟加载",
+		"j": "是",
+		"g": "手动",
+		"e": "库",
+		"a": "内置",
+		"c": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} kB"
+		},
+		"h": {
+			"fields": [],
+			"nodeType": "insertion",
+			"insertion": "{val} 毫秒"
+		}
 	}
 };
 //#endregion

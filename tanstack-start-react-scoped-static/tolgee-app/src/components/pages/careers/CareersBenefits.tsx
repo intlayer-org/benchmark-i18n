@@ -1,16 +1,20 @@
 import { useTranslate } from "../../../i18n/tolgee";
 
 export default function CareersBenefits() {
-  const { t } = useTranslate("careers");
+  const { t } = useTranslate();
 
   const benefits = [
     {
+      label: t("careersBenefits.remoteFirst", "Remote-first"),
+      value: t("careersBenefits.workFromAnywhere", "Work from anywhere in the world"),
+    },
+    {
       label: t("careersBenefits.competitivePay", "Competitive pay"),
-      value: t("careersBenefits.topOfMarket", "Top-of-market compensation"),
+      value: t("careersBenefits.topOfMarketCompensation", "Top-of-market compensation"),
     },
     {
       label: t("careersBenefits.openSourceTime", "Open source time"),
-      value: t("careersBenefits.twentyPercentTime", "20% time for OSS"),
+      value: t("careersBenefits.percentTimeForOss", "20% time for OSS contributions"),
     },
   ];
 

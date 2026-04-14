@@ -2,16 +2,16 @@ import { Fragment, createContext, createElement, isValidElement, lazy, useContex
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/profile-section.mjs
 var content = {
-	"de": () => import("./de-Cd3g6mMp.js").then((m) => m.default),
-	"en": () => import("./en-DkFvjz5N.js").then((m) => m.default),
-	"es": () => import("./es-B5vpX5DT.js").then((m) => m.default),
-	"fr": () => import("./fr-DVu6g3BV.js").then((m) => m.default),
-	"it": () => import("./it-k6uNkBHB.js").then((m) => m.default),
-	"ja": () => import("./ja-Ccd-12Sv.js").then((m) => m.default),
-	"ko": () => import("./ko-DLlxxZQj.js").then((m) => m.default),
-	"pt": () => import("./pt-DQAqiPak.js").then((m) => m.default),
-	"ru": () => import("./ru-BNHfwWWi.js").then((m) => m.default),
-	"zh": () => import("./zh-D00D4DbP.js").then((m) => m.default)
+	"de": () => import("./de-BFP_WyXT.js").then((m) => m.default),
+	"en": () => import("./en-BE1PWRcY.js").then((m) => m.default),
+	"es": () => import("./es-BwGuwzg0.js").then((m) => m.default),
+	"fr": () => import("./fr-CqXXS5r9.js").then((m) => m.default),
+	"it": () => import("./it-Dw_AgG6a.js").then((m) => m.default),
+	"ja": () => import("./ja-BIcJtSBb.js").then((m) => m.default),
+	"ko": () => import("./ko-CgZ7lmK9.js").then((m) => m.default),
+	"pt": () => import("./pt-BZRpo8kw.js").then((m) => m.default),
+	"ru": () => import("./ru-DiDjM7-Q.js").then((m) => m.default),
+	"zh": () => import("./zh-D3aGuLxL.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -771,7 +771,7 @@ function ProfileSection() {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [/* @__PURE__ */ jsx("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: "Profile"
+			children: content$1.c
 		}), /* @__PURE__ */ jsxs("div", {
 			className: "space-y-4",
 			children: [/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
@@ -785,7 +785,7 @@ function ProfileSection() {
 			})] }), /* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
 				htmlFor: emailId,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: "Email"
+				children: content$1.b
 			}), /* @__PURE__ */ jsx("input", {
 				id: emailId,
 				defaultValue: "john@example.com",
@@ -979,61 +979,101 @@ var MarkdownRendererPlugin = (props) => {
 export { MarkdownRendererPlugin };
 var de_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "Anzeigename",
+		"c": "Profil",
+		"b": "E-Mail"
+	}
 };
 //#endregion
 export { de_default as default };
 var en_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "Display Name",
+		"c": "Profile",
+		"b": "Email"
+	}
 };
 //#endregion
 export { en_default as default };
 var es_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "Nombre de pantalla",
+		"c": "Perfil",
+		"b": "Correo electrónico"
+	}
 };
 //#endregion
 export { es_default as default };
 var fr_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "Nom d'affichage",
+		"c": "Profil",
+		"b": "Email"
+	}
 };
 //#endregion
 export { fr_default as default };
 var it_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "Nome visualizzato",
+		"c": "Profilo",
+		"b": "Email"
+	}
 };
 //#endregion
 export { it_default as default };
 var ja_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "表示名",
+		"c": "プロフィール",
+		"b": "メールアドレス"
+	}
 };
 //#endregion
 export { ja_default as default };
 var ko_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "표시 이름",
+		"c": "프로필",
+		"b": "이메일"
+	}
 };
 //#endregion
 export { ko_default as default };
 var pt_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "Nome de exibição",
+		"c": "Perfil",
+		"b": "E-mail"
+	}
 };
 //#endregion
 export { pt_default as default };
 var ru_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "Отображаемое имя",
+		"c": "Профиль",
+		"b": "Email"
+	}
 };
 //#endregion
 export { ru_default as default };
 var zh_default = {
 	key: "profile-section",
-	content: { "a": "Display Name" }
+	content: {
+		"a": "显示名称",
+		"c": "个人资料",
+		"b": "电子邮件"
+	}
 };
 //#endregion
 export { zh_default as default };

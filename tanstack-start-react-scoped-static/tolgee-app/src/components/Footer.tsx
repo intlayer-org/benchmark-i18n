@@ -2,7 +2,7 @@ import { Link, useParams } from "@tanstack/react-router";
 import { T, useTranslate } from "../i18n/tolgee";
 
 export default function Footer() {
-  const { t } = useTranslate("shared");
+  const { t } = useTranslate();
   const params = useParams({ strict: false });
   const currentLocale = params.locale ?? "en";
 
@@ -33,14 +33,15 @@ export default function Footer() {
               i18n Benchmark
             </h3>
             <p className="text-sm text-muted-foreground">
-              <T ns="shared" keyName="footer.anOpenSourceTestApplication"
+              <T
+                keyName="footer.anOpenSourceTestApplication"
                 defaultValue="An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
               />
             </p>
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              <T ns="shared" keyName="footer.resources" defaultValue="Resources" />
+              <T keyName="footer.resources" defaultValue="Resources" />
             </h3>
             <ul className="space-y-1">
               {footerLinks.map((linkEl) => (
@@ -69,7 +70,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              <T ns="shared" keyName="footer.contact" defaultValue="Contact" />
+              <T keyName="footer.contact" defaultValue="Contact" />
             </h3>
             <p className="text-sm text-muted-foreground">
               contact@intlayer.org
@@ -77,7 +78,8 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">
-          <T ns="shared" keyName="footer.builtWith"
+          <T
+            keyName="footer.builtWith"
             defaultValue="i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
           />
         </div>

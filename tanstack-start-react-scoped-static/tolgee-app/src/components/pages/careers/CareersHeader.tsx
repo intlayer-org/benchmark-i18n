@@ -10,8 +10,8 @@ export default function CareersHeader() {
       </h1>
       <p className="mb-4 text-muted-foreground">
         <T
-          keyName="careersHero.fromAnywhere"
-          defaultValue="from anywhere in the world"
+          keyName="careersHeader.joinOurMission"
+          defaultValue="Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
         />
       </p>
     </>

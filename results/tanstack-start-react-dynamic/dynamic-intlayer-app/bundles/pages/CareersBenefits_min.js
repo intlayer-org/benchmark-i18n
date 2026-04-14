@@ -2,16 +2,16 @@ import { Fragment as e, createContext as t, createElement as n, isValidElement a
 import { Fragment as l, jsx as u, jsxs as d } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/careers-benefits.mjs
 var f = {
-	de: () => import("./de-C0W-nM8J.js").then((e) => e.default),
-	en: () => import("./en-C_3SIqhF.js").then((e) => e.default),
-	es: () => import("./es-BoVRMy9F.js").then((e) => e.default),
-	fr: () => import("./fr-g1XttdKx.js").then((e) => e.default),
-	it: () => import("./it-CQZ_bD4V.js").then((e) => e.default),
-	ja: () => import("./ja-BEl2nO91.js").then((e) => e.default),
-	ko: () => import("./ko-roOnHkBH.js").then((e) => e.default),
-	pt: () => import("./pt-C2DLiqzP.js").then((e) => e.default),
-	ru: () => import("./ru-DoVgM6ZT.js").then((e) => e.default),
-	zh: () => import("./zh-Caz1v9et.js").then((e) => e.default)
+	de: () => import("./de-B-fFTid9.js").then((e) => e.default),
+	en: () => import("./en-DQz940Fo.js").then((e) => e.default),
+	es: () => import("./es-DzhUHOeT.js").then((e) => e.default),
+	fr: () => import("./fr-CkdkyoUQ.js").then((e) => e.default),
+	it: () => import("./it-D4rxQ9yi.js").then((e) => e.default),
+	ja: () => import("./ja-BSnPDg5e.js").then((e) => e.default),
+	ko: () => import("./ko-D9Madg8N.js").then((e) => e.default),
+	pt: () => import("./pt-2m5USKye.js").then((e) => e.default),
+	ru: () => import("./ru-Cb-n5sts.js").then((e) => e.default),
+	zh: () => import("./zh-BVV5nGDc.js").then((e) => e.default)
 }, p = {
 	locales: [
 		"en",
@@ -416,16 +416,16 @@ function ye() {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
 		children: [
 			{
-				label: "Remote-first",
-				value: e.d.value
+				label: e.c.value,
+				value: e.e.value
 			},
 			{
 				label: e.a.value,
-				value: e.c.value
+				value: e.d.value
 			},
 			{
 				label: e.b.value,
-				value: "20% time for OSS contributions"
+				value: e.f.value
 			}
 		].map((e) => /* @__PURE__ */ d("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
@@ -569,10 +569,12 @@ export { i as MarkdownRendererPlugin };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "Arbeiten von überall auf der Welt",
+		e: "Arbeiten von überall auf der Welt",
+		c: "Remote-First",
 		a: "Wettbewerbsfähige Bezahlung",
-		c: "Spitzenvergütung",
-		b: "Open-Source-Zeit"
+		d: "Spitzenvergütung",
+		b: "Open-Source-Zeit",
+		f: "20 % Zeit für OSS-Beiträge"
 	}
 };
 //#endregion
@@ -580,10 +582,12 @@ export { e as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "Work from anywhere in the world",
+		e: "Work from anywhere in the world",
+		c: "Remote-first",
 		a: "Competitive pay",
-		c: "Top-of-market compensation",
-		b: "Open source time"
+		d: "Top-of-market compensation",
+		b: "Open source time",
+		f: "20% time for OSS contributions"
 	}
 };
 //#endregion
@@ -591,10 +595,12 @@ export { e as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "Trabaja desde cualquier parte del mundo",
+		e: "Trabaja desde cualquier parte del mundo",
+		c: "Primero remoto",
 		a: "Salario competitivo",
-		c: "Compensación superior al mercado",
-		b: "Tiempo dedicado al código abierto"
+		d: "Compensación superior al mercado",
+		b: "Tiempo dedicado al código abierto",
+		f: "20% de tiempo para contribuciones de OSS"
 	}
 };
 //#endregion
@@ -602,10 +608,12 @@ export { e as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "Travailler de n'importe où dans le monde",
+		e: "Travailler de n'importe où dans le monde",
+		c: "Télétravail d'abord",
 		a: "Rémunération compétitive",
-		c: "Rémunération au-dessus du marché",
-		b: "Temps alloué à l'open source"
+		d: "Rémunération au-dessus du marché",
+		b: "Temps alloué à l'open source",
+		f: "20 % du temps pour les contributions OSS"
 	}
 };
 //#endregion
@@ -613,10 +621,12 @@ export { e as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "Lavora da qualsiasi parte del mondo",
+		e: "Lavora da qualsiasi parte del mondo",
+		c: "Remote-first",
 		a: "Retribuzione competitiva",
-		c: "Compensi ai vertici del mercato",
-		b: "Tempo per l'open source"
+		d: "Compensi ai vertici del mercato",
+		b: "Tempo per l'open source",
+		f: "20% di tempo per contributi OSS"
 	}
 };
 //#endregion
@@ -624,10 +634,12 @@ export { e as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "世界中どこからでも仕事ができます",
+		e: "世界中どこからでも仕事ができます",
+		c: "リモートファースト",
 		a: "競争力のある報酬",
-		c: "市場最高水准の報酬",
-		b: "オープンソースの時間"
+		d: "市場最高水准の報酬",
+		b: "オープンソースの時間",
+		f: "OSS への貢献に 20% の時間を割く"
 	}
 };
 //#endregion
@@ -635,10 +647,12 @@ export { e as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "전 세계 어디서나 근무하십시오",
+		e: "전 세계 어디서나 근무하십시오",
+		c: "원격 우선",
 		a: "경쟁력있는 보수",
-		c: "시장 최고의 보상",
-		b: "오픈 소스 시간"
+		d: "시장 최고의 보상",
+		b: "오픈 소스 시간",
+		f: "OSS 기여를 위한 20% 시간"
 	}
 };
 //#endregion
@@ -646,10 +660,12 @@ export { e as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "Trabalhe de qualquer lugar do mundo",
+		e: "Trabalhe de qualquer lugar do mundo",
+		c: "Trabalho remoto primeiro",
 		a: "Pagamento competitivo",
-		c: "Compensação acima do mercado",
-		b: "Tempo dedicado ao código aberto"
+		d: "Compensação acima do mercado",
+		b: "Tempo dedicado ao código aberto",
+		f: "20% de tempo para contribuições OSS"
 	}
 };
 //#endregion
@@ -657,10 +673,12 @@ export { e as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "Работайте из любой точки мира",
+		e: "Работайте из любой точки мира",
+		c: "Удаленная работа прежде всего",
 		a: "Конкурентоспособная оплата",
-		c: "Компенсация выше рыночной",
-		b: "Время на open source"
+		d: "Компенсация выше рыночной",
+		b: "Время на open source",
+		f: "20% времени на вклад в OSS"
 	}
 };
 //#endregion
@@ -668,10 +686,12 @@ export { e as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "在全球任何地方工作",
+		e: "在全球任何地方工作",
+		c: "远程优先",
 		a: "有竞争力的薪酬",
-		c: "市场顶级薪酬",
-		b: "开源贡献时间"
+		d: "市场顶级薪酬",
+		b: "开源贡献时间",
+		f: "20% 的时间用于 OSS 贡献"
 	}
 };
 //#endregion

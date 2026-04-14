@@ -1,17 +1,57 @@
 import { T, useTranslate } from "../../../i18n/tolgee";
 
 export default function OpenPositions() {
-  const { t } = useTranslate("careers");
+  const { t } = useTranslate();
 
   const openings = [
     {
-      title: t("careersPositions.seniorFrontendEngineer", "Senior Frontend Engineer"),
+      title: t("openPositions.seniorFrontendEngineer", "Senior Frontend Engineer"),
       location: t("openPositions.remote", "Remote"),
       type: t("openPositions.fullTime", "Full-time"),
       dept: t("openPositions.engineering", "Engineering"),
       desc: t(
-        "careersPositions.seniorFrontendEngineerDesc",
+        "openPositions.buildAndMaintainOur",
         "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+      ),
+    },
+    {
+      title: t("openPositions.backendEngineer", "Backend Engineer"),
+      location: t("openPositions.remote", "Remote"),
+      type: t("openPositions.fullTime", "Full-time"),
+      dept: t("openPositions.engineering", "Engineering"),
+      desc: t(
+        "openPositions.designAndScaleOur",
+        "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+      ),
+    },
+    {
+      title: t("openPositions.technicalWriter", "Technical Writer"),
+      location: t("openPositions.remote", "Remote"),
+      type: t("openPositions.partTime", "Part-time"),
+      dept: t("openPositions.documentation", "Documentation"),
+      desc: t(
+        "openPositions.createComprehensiveGuidesApi",
+        "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+      ),
+    },
+    {
+      title: t("openPositions.devrelEngineer", "DevRel Engineer"),
+      location: t("openPositions.sfRemote", "San Francisco / Remote"),
+      type: t("openPositions.fullTime", "Full-time"),
+      dept: t("openPositions.community", "Community"),
+      desc: t(
+        "openPositions.engageWithTheI18n",
+        "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+      ),
+    },
+    {
+      title: t("openPositions.qaEngineer", "QA Engineer"),
+      location: t("openPositions.remote", "Remote"),
+      type: t("openPositions.fullTime", "Full-time"),
+      dept: t("openPositions.engineering", "Engineering"),
+      desc: t(
+        "openPositions.ensureTheAccuracyAnd",
+        "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
       ),
     },
   ];
@@ -19,7 +59,7 @@ export default function OpenPositions() {
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        <T ns="careers" keyName="openPositions.openPositions" defaultValue="Open Positions" />
+        <T keyName="openPositions.openPositions" defaultValue="Open Positions" />
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
@@ -48,7 +88,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              <T ns="careers" keyName="openPositions.applyNow" defaultValue="Apply Now" />
+              <T keyName="openPositions.applyNow" defaultValue="Apply Now" />
             </button>
           </div>
         ))}

@@ -2,7 +2,7 @@ import { T, useTranslate } from "../../../i18n/tolgee";
 import { useId } from "react";
 
 export default function ContactForm() {
-  const { t } = useTranslate("contact");
+  const { t } = useTranslate();
   const nameId = useId();
   const emailId = useId();
   const topicId = useId();
@@ -16,7 +16,7 @@ export default function ContactForm() {
             htmlFor={nameId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            <T ns="contact" keyName="contactForm.name" defaultValue="Name" />
+            <T keyName="contactForm.name" defaultValue="Name" />
           </label>
           <input
             id={nameId}
@@ -29,7 +29,7 @@ export default function ContactForm() {
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            <T ns="contact" keyName="contactForm.email" defaultValue="Email" />
+            <T keyName="contactForm.email" defaultValue="Email" />
           </label>
           <input
             id={emailId}
@@ -44,7 +44,7 @@ export default function ContactForm() {
           htmlFor={topicId}
           className="mb-1 block text-sm font-medium text-foreground"
         >
-          <T ns="contact" keyName="contactForm.topic" defaultValue="Topic" />
+          <T keyName="contactForm.topic" defaultValue="Topic" />
         </label>
         <select
           id={topicId}
@@ -66,7 +66,7 @@ export default function ContactForm() {
           htmlFor={messageId}
           className="mb-1 block text-sm font-medium text-foreground"
         >
-          <T ns="contact" keyName="contactForm.message" defaultValue="Message" />
+          <T keyName="contactForm.message" defaultValue="Message" />
         </label>
         <textarea
           id={messageId}
@@ -82,7 +82,7 @@ export default function ContactForm() {
         type="submit"
         className="rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
       >
-        <T ns="contact" keyName="contactForm.sendMessage" defaultValue="Send Message" />
+        <T keyName="contactForm.sendMessage" defaultValue="Send Message" />
       </button>
     </form>
   );

@@ -8,7 +8,7 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import { usePerformanceMeasure } from "../hooks/usePerformanceMeasure";
 
 export default function Header() {
-  const { t } = useTranslate("shared");
+  const { t } = useTranslate();
   usePerformanceMeasure("Header");
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
   const params = useParams({ strict: false });
@@ -45,7 +45,7 @@ export default function Header() {
               activeProps={{ className: "is-active" }}
               className="nav-link"
             >
-              <T ns="shared" keyName="header.home" defaultValue="Home" />
+              <T keyName="header.home" defaultValue="Home" />
             </Link>
             <Link
               to="/$locale/about"
@@ -53,7 +53,7 @@ export default function Header() {
               activeProps={{ className: "is-active" }}
               className="nav-link"
             >
-              <T ns="shared" keyName="header.methodology" defaultValue="Methodology" />
+              <T keyName="header.methodology" defaultValue="Methodology" />
             </Link>
 
             {/* Mock Pages Dropdown */}
@@ -65,7 +65,7 @@ export default function Header() {
                 onMouseLeave={() => setIsMockPagesOpen(false)}
                 onClick={() => setIsMockPagesOpen(!isMockPagesOpen)}
               >
-                <T ns="shared" keyName="header.mockPages" defaultValue="Mock Pages" />
+                <T keyName="header.mockPages" defaultValue="Mock Pages" />
                 <ChevronDown
                   size={14}
                   className={`transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`}
@@ -105,7 +105,7 @@ export default function Header() {
             className="text-muted-foreground transition hover:text-foreground"
           >
             <span className="sr-only">
-              <T ns="shared" keyName="header.goToGithub" defaultValue="Go to GitHub" />
+              <T keyName="header.goToGithub" defaultValue="Go to GitHub" />
             </span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
               <path

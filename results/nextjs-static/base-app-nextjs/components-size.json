@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-04-12T22:00:23.542Z",
+  "timestamp": "2026-04-14T00:16:05.619Z",
   "packageName": "base-app-nextjs",
   "summary": {
     "totalComponents": 33,
-    "totalUnminifiedBytes": 66488,
-    "totalMinifiedBytes": 61204,
-    "totalGzipBytes": 25935
+    "totalUnminifiedBytes": 66776,
+    "totalMinifiedBytes": 61554,
+    "totalGzipBytes": 25941
   },
   "components": [
     {
@@ -43,26 +43,26 @@
     {
       "name": "OpenPositions.tsx",
       "category": "pages",
-      "unminifiedBytes": 2797,
-      "unminifiedGzipBytes": 1034,
-      "minifiedBytes": 2739,
-      "minifiedGzipBytes": 1029
+      "unminifiedBytes": 2844,
+      "unminifiedGzipBytes": 1030,
+      "minifiedBytes": 2800,
+      "minifiedGzipBytes": 1032
     },
     {
       "name": "BlogList.tsx",
       "category": "pages",
-      "unminifiedBytes": 2678,
-      "unminifiedGzipBytes": 1117,
-      "minifiedBytes": 2648,
-      "minifiedGzipBytes": 1111
+      "unminifiedBytes": 2733,
+      "unminifiedGzipBytes": 1116,
+      "minifiedBytes": 2711,
+      "minifiedGzipBytes": 1116
     },
     {
       "name": "FAQList.tsx",
       "category": "pages",
-      "unminifiedBytes": 2613,
-      "unminifiedGzipBytes": 1313,
-      "minifiedBytes": 2596,
-      "minifiedGzipBytes": 1312
+      "unminifiedBytes": 2662,
+      "unminifiedGzipBytes": 1308,
+      "minifiedBytes": 2651,
+      "minifiedGzipBytes": 1309
     },
     {
       "name": "WhyItMatters.tsx",
@@ -83,10 +83,10 @@
     {
       "name": "PricingTiers.tsx",
       "category": "pages",
-      "unminifiedBytes": 2323,
-      "unminifiedGzipBytes": 942,
-      "minifiedBytes": 2278,
-      "minifiedGzipBytes": 935
+      "unminifiedBytes": 2384,
+      "unminifiedGzipBytes": 934,
+      "minifiedBytes": 2347,
+      "minifiedGzipBytes": 933
     },
     {
       "name": "ResultsTable.tsx",
@@ -99,18 +99,18 @@
     {
       "name": "ProductsGrid.tsx",
       "category": "pages",
-      "unminifiedBytes": 2120,
-      "unminifiedGzipBytes": 930,
-      "minifiedBytes": 2075,
-      "minifiedGzipBytes": 924
+      "unminifiedBytes": 2157,
+      "unminifiedGzipBytes": 926,
+      "minifiedBytes": 2126,
+      "minifiedGzipBytes": 928
     },
     {
       "name": "TeamGrid.tsx",
       "category": "pages",
-      "unminifiedBytes": 2043,
-      "unminifiedGzipBytes": 976,
-      "minifiedBytes": 2014,
-      "minifiedGzipBytes": 970
+      "unminifiedBytes": 2082,
+      "unminifiedGzipBytes": 968,
+      "minifiedBytes": 2065,
+      "minifiedGzipBytes": 969
     },
     {
       "name": "WhatWeMeasure.tsx",

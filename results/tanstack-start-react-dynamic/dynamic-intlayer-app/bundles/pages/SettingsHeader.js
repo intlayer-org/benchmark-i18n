@@ -1,17 +1,17 @@
 import { Fragment, createContext, createElement, isValidElement, lazy, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/settings-header.mjs
-var content = {
-	"de": () => import("./de-igDOUhF8.js").then((m) => m.default),
-	"en": () => import("./en-D9c1WmiT.js").then((m) => m.default),
-	"es": () => import("./es-CTELKd6v.js").then((m) => m.default),
-	"fr": () => import("./fr-B53GlVZr.js").then((m) => m.default),
-	"it": () => import("./it-D81l2-tj.js").then((m) => m.default),
-	"ja": () => import("./ja-WGliDvvE.js").then((m) => m.default),
-	"ko": () => import("./ko-tIbDBO09.js").then((m) => m.default),
-	"pt": () => import("./pt-DzgyY6cM.js").then((m) => m.default),
-	"ru": () => import("./ru-Bzf_4uw9.js").then((m) => m.default),
-	"zh": () => import("./zh-IZANnJUU.js").then((m) => m.default)
+var content$1 = {
+	"de": () => import("./de-kdVM2wvi.js").then((m) => m.default),
+	"en": () => import("./en-kCar82HC.js").then((m) => m.default),
+	"es": () => import("./es--7JDEBmS.js").then((m) => m.default),
+	"fr": () => import("./fr-BzBHv0kU.js").then((m) => m.default),
+	"it": () => import("./it-DKdJPhqr.js").then((m) => m.default),
+	"ja": () => import("./ja-BNDkaMb9.js").then((m) => m.default),
+	"ko": () => import("./ko-Vl4nOsQU.js").then((m) => m.default),
+	"pt": () => import("./pt-VDn_cfuZ.js").then((m) => m.default),
+	"ru": () => import("./ru-DVqUSrww.js").then((m) => m.default),
+	"zh": () => import("./zh-BfyA3TDU.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -762,24 +762,40 @@ var useDictionaryDynamic = (dictionaryPromise, key, locale) => {
 	return useDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, dictionaryPromise[localeTarget]?.()), localeTarget);
 };
 //#endregion
+//#region .intlayer/dynamic_dictionary/mock-banner.mjs
+var content = {
+	"de": () => import("./de-De_qHIZ7.js").then((m) => m.default),
+	"en": () => import("./en-D_hqNyCr.js").then((m) => m.default),
+	"es": () => import("./es-BocvaE-o.js").then((m) => m.default),
+	"fr": () => import("./fr-CctfLhrE.js").then((m) => m.default),
+	"it": () => import("./it-DLq85STr.js").then((m) => m.default),
+	"ja": () => import("./ja-uYqV-_-1.js").then((m) => m.default),
+	"ko": () => import("./ko-D8K8RyIb.js").then((m) => m.default),
+	"pt": () => import("./pt-DJkWNrk5.js").then((m) => m.default),
+	"ru": () => import("./ru-CZBbrPGU.js").then((m) => m.default),
+	"zh": () => import("./zh-oT0l-UAL.js").then((m) => m.default)
+};
+//#endregion
 //#region src/components/MockBanner.tsx
-var MockBanner = () => /* @__PURE__ */ jsx("div", {
-	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
-});
+var MockBanner = () => {
+	return /* @__PURE__ */ jsx("div", {
+		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
+		children: useDictionaryDynamic(content, "mock-banner").a
+	});
+};
 //#endregion
 //#region src/components/pages/settings/SettingsHeader.tsx
 function SettingsHeader() {
-	const content$1 = useDictionaryDynamic(content, "settings-header");
+	const content = useDictionaryDynamic(content$1, "settings-header");
 	return /* @__PURE__ */ jsxs(Fragment$1, { children: [
 		/* @__PURE__ */ jsx(MockBanner, {}),
 		/* @__PURE__ */ jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
-			children: "Settings"
+			children: content.b
 		}),
 		/* @__PURE__ */ jsx("p", {
 			className: "mb-8 text-muted-foreground",
-			children: content$1.a
+			children: content.a
 		})
 	] });
 }
@@ -967,62 +983,152 @@ var MarkdownRendererPlugin = (props) => {
 //#endregion
 export { MarkdownRendererPlugin };
 var de_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Diese Seite enthält fiktive Daten, die nur Benchmark-Zwecken dienen. Sie stehen in keinem Zusammenhang mit realen Unternehmen oder Dienstleistungen." }
+};
+//#endregion
+export { de_default as default };
+var de_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "Verwalten Sie Ihre Kontoeinstellungen und Konfiguration.",
+		"b": "Einstellungen"
+	}
 };
 //#endregion
 export { de_default as default };
 var en_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
+};
+//#endregion
+export { en_default as default };
+var en_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "Manage your account preferences and configuration.",
+		"b": "Settings"
+	}
 };
 //#endregion
 export { en_default as default };
 var es_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "Gestione sus preferencias de cuenta y configuración.",
+		"b": "Ajustes"
+	}
+};
+//#endregion
+export { es_default as default };
+var es_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contiene datos simulados solo para fines de benchmarking. No está relacionada con ningún negocio o servicio real." }
 };
 //#endregion
 export { es_default as default };
 var fr_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "Gérez vos préférences de compte et votre configuration.",
+		"b": "Paramètres"
+	}
+};
+//#endregion
+export { fr_default as default };
+var fr_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
 };
 //#endregion
 export { fr_default as default };
 var it_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "Gestisci le preferenze del tuo account e la configurazione.",
+		"b": "Impostazioni"
+	}
+};
+//#endregion
+export { it_default as default };
+var it_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
 };
 //#endregion
 export { it_default as default };
 var ja_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "アカウント設定と構成を管理します。",
+		"b": "設定"
+	}
+};
+//#endregion
+export { ja_default as default };
+var ja_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ このページにはベンチマークのみを目的とした模擬データが含まれています。実際のビジネスやサービスとは関係ありません。" }
 };
 //#endregion
 export { ja_default as default };
 var ko_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 이 페이지는 벤치마킹 목적으로만 사용되는 모의 데이터를 포함하고 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
+};
+//#endregion
+export { ko_default as default };
+var ko_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "계정 기본 설정 및 구성을 관리하십시오.",
+		"b": "설정"
+	}
 };
 //#endregion
 export { ko_default as default };
 var pt_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada com qualquer negócio o serviço real." }
+};
+//#endregion
+export { pt_default as default };
+var pt_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "Gerencie as preferências e configurações de sua conta.",
+		"b": "Configurações"
+	}
 };
 //#endregion
 export { pt_default as default };
 var ru_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Эта страница содержит фиктивные данные только для целей тестирования производительности. Она не связана с каким-либо реальным бизнесом или услугой." }
+};
+//#endregion
+export { ru_default as default };
+var ru_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "Управляйте настройками и конфигурацией своего аккаунта.",
+		"b": "Настройки"
+	}
 };
 //#endregion
 export { ru_default as default };
 var zh_default = {
 	key: "settings-header",
-	content: { "a": "Manage your account preferences and configuration." }
+	content: {
+		"a": "管理您的账户偏好和配置。",
+		"b": "设置"
+	}
+};
+//#endregion
+export { zh_default as default };
+var zh_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 此页面仅包含用于基准测试的模拟数据。它与任何真实的业务或服务无关。" }
 };
 //#endregion
 export { zh_default as default };

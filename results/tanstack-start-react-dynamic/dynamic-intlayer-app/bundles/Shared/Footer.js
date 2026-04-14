@@ -3,16 +3,16 @@ import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 import { Link, useParams } from "@tanstack/react-router";
 //#region .intlayer/dynamic_dictionary/footer.mjs
 var content = {
-	"de": () => import("./de-D2za3Cij.js").then((m) => m.default),
-	"en": () => import("./en-D2PDiMrE.js").then((m) => m.default),
-	"es": () => import("./es-hCbMmE_d.js").then((m) => m.default),
-	"fr": () => import("./fr-CAFhVwDt.js").then((m) => m.default),
-	"it": () => import("./it-DU9-m_sw.js").then((m) => m.default),
-	"ja": () => import("./ja-DCYFugoB.js").then((m) => m.default),
-	"ko": () => import("./ko-01blZ9ag.js").then((m) => m.default),
-	"pt": () => import("./pt-D7UGWBqP.js").then((m) => m.default),
-	"ru": () => import("./ru-BoBHFOrL.js").then((m) => m.default),
-	"zh": () => import("./zh-BBOGZD1G.js").then((m) => m.default)
+	"de": () => import("./de-DQ4emoni.js").then((m) => m.default),
+	"en": () => import("./en-Cg9w7VE1.js").then((m) => m.default),
+	"es": () => import("./es-CQ9sAVXn.js").then((m) => m.default),
+	"fr": () => import("./fr-aiH0LrbA.js").then((m) => m.default),
+	"it": () => import("./it-DruXgxfR.js").then((m) => m.default),
+	"ja": () => import("./ja-PljO4FID.js").then((m) => m.default),
+	"ko": () => import("./ko-iM7RM7rp.js").then((m) => m.default),
+	"pt": () => import("./pt-C78ZrueB.js").then((m) => m.default),
+	"ru": () => import("./ru-BuYgbuqt.js").then((m) => m.default),
+	"zh": () => import("./zh-BOjjUFaK.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -769,17 +769,17 @@ function Footer() {
 	const currentLocale = useParams({ strict: false }).locale ?? "en";
 	const footerLinks = [
 		{
-			label: content$1.e,
+			label: content$1.f,
 			href: "https://github.com/intlayer-org/benchmark-i18n",
 			isInternal: false
 		},
 		{
-			label: content$1.f,
+			label: content$1.h,
 			to: "/$locale/about",
 			isInternal: true
 		},
 		{
-			label: content$1.d,
+			label: content$1.e,
 			to: "/$locale/contact",
 			isInternal: true
 		}
@@ -793,14 +793,14 @@ function Footer() {
 				children: [
 					/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: "i18n Benchmark"
+						children: content$1.g
 					}), /* @__PURE__ */ jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: content$1.a
 					})] }),
 					/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: content$1.g
+						children: content$1.i
 					}), /* @__PURE__ */ jsx("ul", {
 						className: "space-y-1",
 						children: footerLinks.map((linkEl) => /* @__PURE__ */ jsx("li", { children: linkEl.isInternal ? /* @__PURE__ */ jsx(Link, {
@@ -821,7 +821,7 @@ function Footer() {
 						children: content$1.c
 					}), /* @__PURE__ */ jsx("p", {
 						className: "text-sm text-muted-foreground",
-						children: "contact@intlayer.org"
+						children: content$1.d
 					})] })
 				]
 			}), /* @__PURE__ */ jsx("div", {
@@ -1017,13 +1017,15 @@ export { MarkdownRendererPlugin };
 var de_default = {
 	key: "footer",
 	content: {
-		"g": "Ressourcen",
+		"i": "Ressourcen",
 		"c": "Kontakt",
-		"e": "GitHub",
-		"f": "Methodik",
-		"d": "Mitwirken",
+		"f": "GitHub",
+		"h": "Methodik",
+		"e": "Mitwirken",
 		"b": "i18n Benchmark — Open-Source-Projekt. Erstellt mit React, Vite & TanStack Router.",
-		"a": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungs-Bibliotheken auf die Bundle-Größe, Ladezeit und App-Reaktivität."
+		"a": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungs-Bibliotheken auf die Bundle-Größe, Ladezeit und App-Reaktivität.",
+		"d": "contact@intlayer.org",
+		"g": "i18n Benchmark"
 	}
 };
 //#endregion
@@ -1031,13 +1033,15 @@ export { de_default as default };
 var en_default = {
 	key: "footer",
 	content: {
-		"g": "Resources",
+		"i": "Resources",
 		"c": "Contact",
-		"e": "GitHub",
-		"f": "Methodology",
-		"d": "Contributing",
+		"f": "GitHub",
+		"h": "Methodology",
+		"e": "Contributing",
 		"b": "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.",
-		"a": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+		"a": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+		"d": "contact@intlayer.org",
+		"g": "i18n Benchmark"
 	}
 };
 //#endregion
@@ -1045,13 +1049,15 @@ export { en_default as default };
 var es_default = {
 	key: "footer",
 	content: {
-		"g": "Recursos",
+		"i": "Recursos",
 		"c": "Contacto",
-		"e": "GitHub",
-		"f": "Metodología",
-		"d": "Contribuir",
+		"f": "GitHub",
+		"h": "Metodología",
+		"e": "Contribuir",
 		"b": "i18n Benchmark — Proyecto de código abierto. Construido con React, Vite y TanStack Router.",
-		"a": "Una aplicación de prueba de código abierto para medir el impacto en el mundo real de las bibliotecas de internacionalización en el tamaño del bundle, el tiempo de carga y la reactividad de la aplicación."
+		"a": "Una aplicación de prueba de código abierto para medir el impacto en el mundo real de las bibliotecas de internacionalización en el tamaño del bundle, el tiempo de carga y la reactividad de la aplicación.",
+		"d": "contact@intlayer.org",
+		"g": "Benchmark i18n"
 	}
 };
 //#endregion
@@ -1059,13 +1065,15 @@ export { es_default as default };
 var fr_default = {
 	key: "footer",
 	content: {
-		"g": "Ressources",
+		"i": "Ressources",
 		"c": "Contact",
-		"e": "GitHub",
-		"f": "Méthodologie",
-		"d": "Contribuer",
+		"f": "GitHub",
+		"h": "Méthodologie",
+		"e": "Contribuer",
 		"b": "i18n Benchmark — Projet open-source. Construit avec React, Vite & TanStack Router.",
-		"a": "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application."
+		"a": "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+		"d": "contact@intlayer.org",
+		"g": "Benchmark i18n"
 	}
 };
 //#endregion
@@ -1073,13 +1081,15 @@ export { fr_default as default };
 var it_default = {
 	key: "footer",
 	content: {
-		"g": "Risorse",
+		"i": "Risorse",
 		"c": "Contatti",
-		"e": "GitHub",
-		"f": "Metodologia",
-		"d": "Contribuire",
+		"f": "GitHub",
+		"h": "Metodologia",
+		"e": "Contribuire",
 		"b": "i18n Benchmark — Progetto open source. Costruito con React, Vite e TanStack Router.",
-		"a": "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app."
+		"a": "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app.",
+		"d": "contact@intlayer.org",
+		"g": "Benchmark i18n"
 	}
 };
 //#endregion
@@ -1087,13 +1097,15 @@ export { it_default as default };
 var ja_default = {
 	key: "footer",
 	content: {
-		"g": "リソース",
+		"i": "リソース",
 		"c": "連絡先",
-		"e": "GitHub",
-		"f": "方法論",
-		"d": "貢献",
+		"f": "GitHub",
+		"h": "方法論",
+		"e": "貢献",
 		"b": "i18n Benchmark — オープンソースプロジェクト。React, Vite & TanStack Router で構築。",
-		"a": "国際化ライブラリがバンドルサイズ、読み込み時間、アプリの反応性に与える実際の影響を測定するためのオープンソースのテストアプリケーション。"
+		"a": "国際化ライブラリがバンドルサイズ、読み込み時間、アプリの反応性に与える実際の影響を測定するためのオープンソースのテストアプリケーション。",
+		"d": "contact@intlayer.org",
+		"g": "i18n ベンチマーク"
 	}
 };
 //#endregion
@@ -1101,13 +1113,15 @@ export { ja_default as default };
 var ko_default = {
 	key: "footer",
 	content: {
-		"g": "리소스",
+		"i": "리소스",
 		"c": "연락처",
-		"e": "GitHub",
-		"f": "방법론",
-		"d": "기여",
+		"f": "GitHub",
+		"h": "방법론",
+		"e": "기여",
 		"b": "i18n Benchmark — 오픈 소스 프로젝트. React, Vite 및 TanStack Router로 구축되었습니다.",
-		"a": "국제화 라이브러리가 번들 크기, 로드 시간 및 앱 반응성에 미치는 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다."
+		"a": "국제화 라이브러리가 번들 크기, 로드 시간 및 앱 반응성에 미치는 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
+		"d": "contact@intlayer.org",
+		"g": "i18n 벤치마크"
 	}
 };
 //#endregion
@@ -1115,13 +1129,15 @@ export { ko_default as default };
 var pt_default = {
 	key: "footer",
 	content: {
-		"g": "Recursos",
+		"i": "Recursos",
 		"c": "Contato",
-		"e": "GitHub",
-		"f": "Metodologia",
-		"d": "Contribuir",
+		"f": "GitHub",
+		"h": "Metodologia",
+		"e": "Contribuir",
 		"b": "i18n Benchmark — Projeto de código aberto. Construído com React, Vite e TanStack Router.",
-		"a": "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo."
+		"a": "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.",
+		"d": "contact@intlayer.org",
+		"g": "Benchmark i18n"
 	}
 };
 //#endregion
@@ -1129,13 +1145,15 @@ export { pt_default as default };
 var ru_default = {
 	key: "footer",
 	content: {
-		"g": "Ресурсы",
+		"i": "Ресурсы",
 		"c": "Контакт",
-		"e": "GitHub",
-		"f": "Методология",
-		"d": "Вклад",
+		"f": "GitHub",
+		"h": "Методология",
+		"e": "Вклад",
 		"b": "i18n Benchmark — Открытый проект. Построен на React, Vite и TanStack Router.",
-		"a": "Открытое приложение для тестирования реального влияния библиотек интернационализации на размер бандла, время загрузки и отзывчивость приложения."
+		"a": "Открытое приложение для тестирования реального влияния библиотек интернационализации на размер бандла, время загрузки и отзывчивость приложения.",
+		"d": "contact@intlayer.org",
+		"g": "i18n Бенчмарк"
 	}
 };
 //#endregion
@@ -1143,13 +1161,15 @@ export { ru_default as default };
 var zh_default = {
 	key: "footer",
 	content: {
-		"g": "资源",
+		"i": "资源",
 		"c": "联系",
-		"e": "GitHub",
-		"f": "方法论",
-		"d": "贡献",
+		"f": "GitHub",
+		"h": "方法论",
+		"e": "贡献",
 		"b": "i18n Benchmark — 开源项目。使用 React, Vite 和 TanStack Router 构建。",
-		"a": "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。"
+		"a": "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。",
+		"d": "contact@intlayer.org",
+		"g": "i18n 基准测试"
 	}
 };
 //#endregion

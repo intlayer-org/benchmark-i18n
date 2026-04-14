@@ -2,16 +2,16 @@ import { Fragment as e, createContext as t, createElement as n, isValidElement a
 import { Fragment as u, jsx as d, jsxs as f } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/contact-form.mjs
 var p = {
-	de: () => import("./de-DVm_1YDe.js").then((e) => e.default),
-	en: () => import("./en-Dk4UvZjV.js").then((e) => e.default),
-	es: () => import("./es-DAmksv4H.js").then((e) => e.default),
-	fr: () => import("./fr-BJq8Qprq.js").then((e) => e.default),
-	it: () => import("./it-DkaSmYoK.js").then((e) => e.default),
-	ja: () => import("./ja-y2ONXK74.js").then((e) => e.default),
-	ko: () => import("./ko-Bgv2EryA.js").then((e) => e.default),
-	pt: () => import("./pt-BhY5Zbre.js").then((e) => e.default),
-	ru: () => import("./ru-BNIJgg0A.js").then((e) => e.default),
-	zh: () => import("./zh-BVTMFWCC.js").then((e) => e.default)
+	de: () => import("./de-HeqQumNA.js").then((e) => e.default),
+	en: () => import("./en-Bnk24QK1.js").then((e) => e.default),
+	es: () => import("./es-CxghJN1x.js").then((e) => e.default),
+	fr: () => import("./fr-BZjl67BN.js").then((e) => e.default),
+	it: () => import("./it-Brfi54vG.js").then((e) => e.default),
+	ja: () => import("./ja-DKzDBEaV.js").then((e) => e.default),
+	ko: () => import("./ko-RTx3Q5Ol.js").then((e) => e.default),
+	pt: () => import("./pt-dC1_UWvf.js").then((e) => e.default),
+	ru: () => import("./ru-CuRMUhnJ.js").then((e) => e.default),
+	zh: () => import("./zh-D1XazkHD.js").then((e) => e.default)
 }, m = {
 	locales: [
 		"en",
@@ -421,15 +421,15 @@ function be() {
 				children: [/* @__PURE__ */ f("div", { children: [/* @__PURE__ */ d("label", {
 					htmlFor: t,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: "Name"
+					children: e.g
 				}), /* @__PURE__ */ d("input", {
 					id: t,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: e.f.value
+					placeholder: e.l.value
 				})] }), /* @__PURE__ */ f("div", { children: [/* @__PURE__ */ d("label", {
 					htmlFor: n,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: "Email"
+					children: e.d
 				}), /* @__PURE__ */ d("input", {
 					id: n,
 					type: "email",
@@ -440,32 +440,32 @@ function be() {
 			/* @__PURE__ */ f("div", { children: [/* @__PURE__ */ d("label", {
 				htmlFor: r,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: "Topic"
+				children: e.k
 			}), /* @__PURE__ */ f("select", {
 				id: r,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
 					/* @__PURE__ */ d("option", { children: e.a }),
-					/* @__PURE__ */ d("option", { children: e.d }),
-					/* @__PURE__ */ d("option", { children: e.c }),
-					/* @__PURE__ */ d("option", { children: "Contribution" }),
-					/* @__PURE__ */ d("option", { children: "Other" })
+					/* @__PURE__ */ d("option", { children: e.h }),
+					/* @__PURE__ */ d("option", { children: e.f }),
+					/* @__PURE__ */ d("option", { children: e.b }),
+					/* @__PURE__ */ d("option", { children: e.i })
 				]
 			})] }),
 			/* @__PURE__ */ f("div", { children: [/* @__PURE__ */ d("label", {
 				htmlFor: i,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: "Message"
+				children: e.e
 			}), /* @__PURE__ */ d("textarea", {
 				id: i,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-				placeholder: e.b.value
+				placeholder: e.c.value
 			})] }),
 			/* @__PURE__ */ d("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-				children: e.e
+				children: e.j
 			})
 		]
 	});
@@ -600,12 +600,18 @@ export { i as MarkdownRendererPlugin };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "Ihr Name",
+		l: "Ihr Name",
 		a: "Fehlerbericht",
-		d: "Neue Benchmark-Idee",
-		c: "Frage zur Methodik",
-		b: "Beschreiben Sie Ihre Frage oder Idee...",
-		e: "Nachricht senden"
+		h: "Neue Benchmark-Idee",
+		f: "Frage zur Methodik",
+		c: "Beschreiben Sie Ihre Frage oder Idee...",
+		j: "Nachricht senden",
+		g: "Name",
+		d: "E-Mail",
+		k: "Thema",
+		b: "Beitrag",
+		i: "Andere",
+		e: "Nachricht"
 	}
 };
 //#endregion
@@ -613,12 +619,18 @@ export { e as default };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "Your name",
+		l: "Your name",
 		a: "Bug Report",
-		d: "New Benchmark Idea",
-		c: "Methodology Question",
-		b: "Describe your question or idea...",
-		e: "Send Message"
+		h: "New Benchmark Idea",
+		f: "Methodology Question",
+		c: "Describe your question or idea...",
+		j: "Send Message",
+		g: "Name",
+		d: "Email",
+		k: "Topic",
+		b: "Contribution",
+		i: "Other",
+		e: "Message"
 	}
 };
 //#endregion
@@ -626,12 +638,18 @@ export { e as default };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "Tu nombre",
+		l: "Tu nombre",
 		a: "Informe de Errores",
-		d: "Nueva Idea de Benchmark",
-		c: "Pregunta sobre Metodología",
-		b: "Describe tu pregunta o idea...",
-		e: "Enviar Mensaje"
+		h: "Nueva Idea de Benchmark",
+		f: "Pregunta sobre Metodología",
+		c: "Describe tu pregunta o idea...",
+		j: "Enviar Mensaje",
+		g: "Nombre",
+		d: "Correo electrónico",
+		k: "Tema",
+		b: "Contribución",
+		i: "Otro",
+		e: "Mensaje"
 	}
 };
 //#endregion
@@ -639,12 +657,18 @@ export { e as default };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "Votre nom",
+		l: "Votre nom",
 		a: "Rapport de Bug",
-		d: "Nouvelle Idée de Benchmark",
-		c: "Question sur la Méthodologie",
-		b: "Décrivez votre question ou idée...",
-		e: "Envoyer le Message"
+		h: "Nouvelle Idée de Benchmark",
+		f: "Question sur la Méthodologie",
+		c: "Décrivez votre question ou idée...",
+		j: "Envoyer le Message",
+		g: "Nom",
+		d: "Email",
+		k: "Sujet",
+		b: "Contribution",
+		i: "Autre",
+		e: "Message"
 	}
 };
 //#endregion
@@ -652,12 +676,18 @@ export { e as default };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "Il tuo nome",
+		l: "Il tuo nome",
 		a: "Segnalazione bug",
-		d: "Nuova idea di benchmark",
-		c: "Domanda sulla metodologia",
-		b: "Descrivi la tua domanda o idea...",
-		e: "Invia messaggio"
+		h: "Nuova idea di benchmark",
+		f: "Domanda sulla metodologia",
+		c: "Descrivi la tua domanda o idea...",
+		j: "Invia messaggio",
+		g: "Nome",
+		d: "Email",
+		k: "Argomento",
+		b: "Contributo",
+		i: "Altro",
+		e: "Messaggio"
 	}
 };
 //#endregion
@@ -665,12 +695,18 @@ export { e as default };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "お名前",
+		l: "お名前",
 		a: "バグ報告",
-		d: "新しいベンチマークのアイデア",
-		c: "方法論に関する質問",
-		b: "質問やアイデアを説明してください...",
-		e: "メッセージを送信"
+		h: "新しいベンチマークのアイデア",
+		f: "方法論に関する質問",
+		c: "質問やアイデアを説明してください...",
+		j: "メッセージを送信",
+		g: "名前",
+		d: "メール",
+		k: "トピック",
+		b: "貢献",
+		i: "その他",
+		e: "メッセージ"
 	}
 };
 //#endregion
@@ -678,12 +714,18 @@ export { e as default };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "이름",
+		l: "이름",
 		a: "버그 보고",
-		d: "새로운 벤치마크 아이디어",
-		c: "방법론 질문",
-		b: "질문이나 아이디어를 설명하세요...",
-		e: "메시지 보내기"
+		h: "새로운 벤치마크 아이디어",
+		f: "방법론 질문",
+		c: "질문이나 아이디어를 설명하세요...",
+		j: "메시지 보내기",
+		g: "이름",
+		d: "이메일",
+		k: "주제",
+		b: "기여",
+		i: "기타",
+		e: "메시지"
 	}
 };
 //#endregion
@@ -691,12 +733,18 @@ export { e as default };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "Seu nome",
+		l: "Seu nome",
 		a: "Relatório de Bug",
-		d: "Nova Ideia de Benchmark",
-		c: "Pergunta sobre Metodologia",
-		b: "Descreva sua pergunta ou ideia...",
-		e: "Enviar Mensagem"
+		h: "Nova Ideia de Benchmark",
+		f: "Pergunta sobre Metodologia",
+		c: "Descreva sua pergunta ou ideia...",
+		j: "Enviar Mensagem",
+		g: "Nome",
+		d: "E-mail",
+		k: "Tópico",
+		b: "Contribuição",
+		i: "Outro",
+		e: "Mensagem"
 	}
 };
 //#endregion
@@ -704,12 +752,18 @@ export { e as default };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "Ваше имя",
+		l: "Ваше имя",
 		a: "Отчет об ошибке",
-		d: "Новая идея для бенчмарка",
-		c: "Вопрос по методологии",
-		b: "Опишите ваш вопрос или идею...",
-		e: "Отправить сообщение"
+		h: "Новая идея для бенчмарка",
+		f: "Вопрос по методологии",
+		c: "Опишите ваш вопрос или идею...",
+		j: "Отправить сообщение",
+		g: "Имя",
+		d: "Email",
+		k: "Тема",
+		b: "Вклад",
+		i: "Другое",
+		e: "Сообщение"
 	}
 };
 //#endregion
@@ -717,12 +771,18 @@ export { e as default };
 var e = {
 	key: "contact-form",
 	content: {
-		f: "您的姓名",
+		l: "您的姓名",
 		a: "错误报告",
-		d: "新基准测试想法",
-		c: "方法论问题",
-		b: "描述您的问题或想法...",
-		e: "发送消息"
+		h: "新基准测试想法",
+		f: "方法论问题",
+		c: "描述您的问题或想法...",
+		j: "发送消息",
+		g: "姓名",
+		d: "电子邮件",
+		k: "主题",
+		b: "贡献",
+		i: "其他",
+		e: "消息"
 	}
 };
 //#endregion

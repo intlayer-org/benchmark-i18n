@@ -1,7 +1,7 @@
 import { T, useTranslate } from "../../../i18n/tolgee";
 
 export default function BlogList() {
-  const { t } = useTranslate("blog");
+  const { t } = useTranslate();
 
   const posts = [
     {

@@ -1,17 +1,17 @@
 import { Fragment, createContext, createElement, isValidElement, lazy, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/products-header.mjs
-var content = {
-	"de": () => import("./de-ClkBxxIg.js").then((m) => m.default),
-	"en": () => import("./en-D8YTpFGK.js").then((m) => m.default),
-	"es": () => import("./es-BS3O3Ksi.js").then((m) => m.default),
-	"fr": () => import("./fr-CX79-Thl.js").then((m) => m.default),
-	"it": () => import("./it-CMooeHcw.js").then((m) => m.default),
-	"ja": () => import("./ja-Bp0bYQla.js").then((m) => m.default),
-	"ko": () => import("./ko-Bgt6BA9A.js").then((m) => m.default),
-	"pt": () => import("./pt-EP6zf7qC.js").then((m) => m.default),
-	"ru": () => import("./ru-BkQNFULQ.js").then((m) => m.default),
-	"zh": () => import("./zh-iT7mvd0z.js").then((m) => m.default)
+var content$1 = {
+	"de": () => import("./de-o9qQFH2U.js").then((m) => m.default),
+	"en": () => import("./en-knj3q2Ni.js").then((m) => m.default),
+	"es": () => import("./es-WcwxGvbT.js").then((m) => m.default),
+	"fr": () => import("./fr-BqgutgRs.js").then((m) => m.default),
+	"it": () => import("./it-uPyFzFEp.js").then((m) => m.default),
+	"ja": () => import("./ja-BG2ncSBV.js").then((m) => m.default),
+	"ko": () => import("./ko-BsdPpfGj.js").then((m) => m.default),
+	"pt": () => import("./pt-5CUdh0-8.js").then((m) => m.default),
+	"ru": () => import("./ru-DKXSQp2n.js").then((m) => m.default),
+	"zh": () => import("./zh-DIdgbRKb.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -762,24 +762,40 @@ var useDictionaryDynamic = (dictionaryPromise, key, locale) => {
 	return useDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, dictionaryPromise[localeTarget]?.()), localeTarget);
 };
 //#endregion
+//#region .intlayer/dynamic_dictionary/mock-banner.mjs
+var content = {
+	"de": () => import("./de-De_qHIZ7.js").then((m) => m.default),
+	"en": () => import("./en-D_hqNyCr.js").then((m) => m.default),
+	"es": () => import("./es-BocvaE-o.js").then((m) => m.default),
+	"fr": () => import("./fr-CctfLhrE.js").then((m) => m.default),
+	"it": () => import("./it-DLq85STr.js").then((m) => m.default),
+	"ja": () => import("./ja-uYqV-_-1.js").then((m) => m.default),
+	"ko": () => import("./ko-D8K8RyIb.js").then((m) => m.default),
+	"pt": () => import("./pt-DJkWNrk5.js").then((m) => m.default),
+	"ru": () => import("./ru-CZBbrPGU.js").then((m) => m.default),
+	"zh": () => import("./zh-oT0l-UAL.js").then((m) => m.default)
+};
+//#endregion
 //#region src/components/MockBanner.tsx
-var MockBanner = () => /* @__PURE__ */ jsx("div", {
-	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
-});
+var MockBanner = () => {
+	return /* @__PURE__ */ jsx("div", {
+		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
+		children: useDictionaryDynamic(content, "mock-banner").a
+	});
+};
 //#endregion
 //#region src/components/pages/products/ProductsHeader.tsx
 function ProductsHeader() {
-	const content$1 = useDictionaryDynamic(content, "products-header");
+	const content = useDictionaryDynamic(content$1, "products-header");
 	return /* @__PURE__ */ jsxs(Fragment$1, { children: [
 		/* @__PURE__ */ jsx(MockBanner, {}),
 		/* @__PURE__ */ jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
-			children: "Products"
+			children: content.a
 		}),
 		/* @__PURE__ */ jsx("p", {
 			className: "mb-10 text-muted-foreground",
-			children: content$1.a
+			children: content.b
 		})
 	] });
 }
@@ -967,62 +983,152 @@ var MarkdownRendererPlugin = (props) => {
 //#endregion
 export { MarkdownRendererPlugin };
 var de_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Diese Seite enthält fiktive Daten, die nur Benchmark-Zwecken dienen. Sie stehen in keinem Zusammenhang mit realen Unternehmen oder Dienstleistungen." }
+};
+//#endregion
+export { de_default as default };
+var de_default = {
 	key: "products-header",
-	content: { "a": "Tools und Dienste zur Optimierung Ihres Internationalisierungs-Worflows." }
+	content: {
+		"b": "Tools und Dienste zur Optimierung Ihres Internationalisierungs-Worflows.",
+		"a": "Produkte"
+	}
 };
 //#endregion
 export { de_default as default };
 var en_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
+};
+//#endregion
+export { en_default as default };
+var en_default = {
 	key: "products-header",
-	content: { "a": "Tools and services to streamline your internationalization workflow." }
+	content: {
+		"b": "Tools and services to streamline your internationalization workflow.",
+		"a": "Products"
+	}
 };
 //#endregion
 export { en_default as default };
 var es_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contiene datos simulados solo para fines de benchmarking. No está relacionada con ningún negocio o servicio real." }
+};
+//#endregion
+export { es_default as default };
+var es_default = {
 	key: "products-header",
-	content: { "a": "Herramientas y servicios para simplificar su flujo de trabajo de internacionalización." }
+	content: {
+		"b": "Herramientas y servicios para simplificar su flujo de trabajo de internacionalización.",
+		"a": "Productos"
+	}
 };
 //#endregion
 export { es_default as default };
 var fr_default = {
 	key: "products-header",
-	content: { "a": "Outils et services pour rationaliser votre flux de travail d'internationalisation." }
+	content: {
+		"b": "Outils et services pour rationaliser votre flux de travail d'internationalisation.",
+		"a": "Produits"
+	}
+};
+//#endregion
+export { fr_default as default };
+var fr_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
 };
 //#endregion
 export { fr_default as default };
 var it_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
+};
+//#endregion
+export { it_default as default };
+var it_default = {
 	key: "products-header",
-	content: { "a": "Strumenti e servizi per semplificare il flusso di lavoro di internazionalizzazione." }
+	content: {
+		"b": "Strumenti e servizi per semplificare il flusso di lavoro di internazionalizzazione.",
+		"a": "Prodotti"
+	}
 };
 //#endregion
 export { it_default as default };
 var ja_default = {
 	key: "products-header",
-	content: { "a": "国際化ワークフローを合理化するためのツールとサービス。" }
+	content: {
+		"b": "国際化ワークフローを合理化するためのツールとサービス。",
+		"a": "製品"
+	}
+};
+//#endregion
+export { ja_default as default };
+var ja_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ このページにはベンチマークのみを目的とした模擬データが含まれています。実際のビジネスやサービスとは関係ありません。" }
 };
 //#endregion
 export { ja_default as default };
 var ko_default = {
 	key: "products-header",
-	content: { "a": "국제화 워크플로우를 합리화하기 위한 도구 및 서비스입니다." }
+	content: {
+		"b": "국제화 워크플로우를 합리화하기 위한 도구 및 서비스입니다.",
+		"a": "제품"
+	}
+};
+//#endregion
+export { ko_default as default };
+var ko_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 이 페이지는 벤치마킹 목적으로만 사용되는 모의 데이터를 포함하고 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
 };
 //#endregion
 export { ko_default as default };
 var pt_default = {
 	key: "products-header",
-	content: { "a": "Ferramentas e serviços para otimizar seu fluxo de trabalho de internacionalización." }
+	content: {
+		"b": "Ferramentas e serviços para otimizar seu fluxo de trabalho de internacionalización.",
+		"a": "Produtos"
+	}
+};
+//#endregion
+export { pt_default as default };
+var pt_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada com qualquer negócio o serviço real." }
 };
 //#endregion
 export { pt_default as default };
 var ru_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Эта страница содержит фиктивные данные только для целей тестирования производительности. Она не связана с каким-либо реальным бизнесом или услугой." }
+};
+//#endregion
+export { ru_default as default };
+var ru_default = {
 	key: "products-header",
-	content: { "a": "Инструменты и услуги для оптимизации рабочего процесса интернационализации." }
+	content: {
+		"b": "Инструменты и услуги для оптимизации рабочего процесса интернационализации.",
+		"a": "Продукты"
+	}
 };
 //#endregion
 export { ru_default as default };
 var zh_default = {
 	key: "products-header",
-	content: { "a": "简化国际化工作流程的工具和服务。" }
+	content: {
+		"b": "简化国际化工作流程的工具和服务。",
+		"a": "产品"
+	}
+};
+//#endregion
+export { zh_default as default };
+var zh_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 此页面仅包含用于基准测试的模拟数据。它与任何真实的业务或服务无关。" }
 };
 //#endregion
 export { zh_default as default };

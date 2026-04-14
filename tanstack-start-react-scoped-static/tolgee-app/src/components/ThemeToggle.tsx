@@ -33,7 +33,7 @@ function applyThemeMode(mode: ThemeMode) {
 }
 
 export default function ThemeToggle() {
-  const { t } = useTranslate("shared");
+  const { t } = useTranslate();
   const [mode, setMode] = useState<ThemeMode>("auto");
 
   useEffect(() => {
@@ -80,11 +80,11 @@ export default function ThemeToggle() {
       className="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
     >
       {mode === "auto" ? (
-        <T ns="shared" keyName="themeToggle.themeAuto" defaultValue="Theme: Auto" />
+        <T keyName="themeToggle.themeAuto" defaultValue="Theme: Auto" />
       ) : mode === "dark" ? (
-        <T ns="shared" keyName="themeToggle.themeDark" defaultValue="Theme: Dark" />
+        <T keyName="themeToggle.themeDark" defaultValue="Theme: Dark" />
       ) : (
-        <T ns="shared" keyName="themeToggle.themeLight" defaultValue="Theme: Light" />
+        <T keyName="themeToggle.themeLight" defaultValue="Theme: Light" />
       )}
     </button>
   );

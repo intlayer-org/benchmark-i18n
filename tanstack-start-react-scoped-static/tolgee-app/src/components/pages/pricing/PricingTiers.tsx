@@ -1,48 +1,54 @@
-import { T, useTranslate } from "../../../i18n/tolgee";
+import { useTranslate } from "../../../i18n/tolgee";
 
 export default function PricingTiers() {
-  const { t } = useTranslate("pricing");
+  const { t } = useTranslate();
 
   const tiers = [
     {
-      name: t("pricingTiers.starterTier", "Starter"),
-      price: t("pricingTiers.starterPrice", "$0"),
-      period: t("pricingTiers.forever", "forever"),
+      name: t("pricingTiers.freeTier", "Free Tier"),
+      price: t("pricingTiers.free", "Free"),
+      period: "",
       features: [
-        t("pricingTiers.runsPerDay", "5 benchmark runs/day"),
-        t("pricingTiers.libraries3", "3 libraries"),
-        t("pricingTiers.communitySupport", "Community support"),
-        t("pricingTiers.publicResults", "Public results"),
+        t("pricingTiers.publicBenchmarkDashboard", "Public benchmark dashboard"),
+        t("pricingTiers.basicLibraryComparisons", "Basic library comparisons"),
+        t("pricingTiers.communityForumAccess", "Community forum access"),
+        t("pricingTiers.monthlyResultDigest", "Monthly result digest"),
       ],
       cta: t("pricingTiers.getStarted", "Get Started"),
     },
     {
-      name: t("pricingTiers.proTier", "Pro"),
-      price: t("pricingTiers.proPrice", "$29"),
+      name: t("pricingTiers.proTier", "Pro Tier"),
+      price: "$29",
       period: t("pricingTiers.perMonth", "/month"),
       features: [
-        t("pricingTiers.unlimitedRuns", "Unlimited runs"),
-        t("pricingTiers.allLibraries", "All libraries"),
-        t("pricingTiers.prioritySupport", "Priority support"),
-        t("pricingTiers.privateResults", "Private results"),
-        t("pricingTiers.ciIntegration", "CI integration"),
-        t("pricingTiers.historicalData", "Historical data"),
+        t("pricingTiers.allFreeFeatures", "All Free features"),
+        t(
+          "pricingTiers.customBenchmarkConfigurations",
+          "Custom benchmark configurations"
+        ),
+        t("pricingTiers.privateResultsDashboard", "Private results dashboard"),
+        t("pricingTiers.apiAccess1000Requests", "API access (1,000 requests/day)"),
+        t("pricingTiers.slackIntegration", "Slack integration"),
       ],
       highlighted: true,
-      cta: t("pricingTiers.getStarted", "Get Started"),
+      cta: t("pricingTiers.subscribeToPro", "Subscribe to Pro"),
     },
     {
-      name: t("pricingTiers.enterpriseTier", "Enterprise"),
+      name: t("pricingTiers.enterpriseTier", "Enterprise Tier"),
       price: t("pricingTiers.custom", "Custom"),
       period: "",
       features: [
-        t("pricingTiers.everythingInPro", "Everything in Pro"),
-        t("pricingTiers.onPremiseOption", "On-premise option"),
-        t("pricingTiers.ssoSaml", "SSO & SAML"),
-        t("pricingTiers.dedicatedAccountManager", "Dedicated account manager"),
-        t("pricingTiers.customSLAs", "Custom SLAs"),
-        t("pricingTiers.auditLogs", "Audit logs"),
-        t("pricingTiers.trainingSessions", "Training sessions"),
+        t("pricingTiers.allProFeatures", "All Pro features"),
+        t(
+          "pricingTiers.dedicatedBenchmarkInfrastructure",
+          "Dedicated benchmark infrastructure"
+        ),
+        t(
+          "pricingTiers.customLibraryIntegrations",
+          "Custom library integrations"
+        ),
+        t("pricingTiers.slaGuarantees", "SLA guarantees"),
+        t("pricingTiers.prioritySupport", "Priority support"),
       ],
       cta: t("pricingTiers.contactSales", "Contact Sales"),
     },

@@ -2,16 +2,16 @@ import { Fragment, createContext, createElement, isValidElement, lazy, useContex
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/careers-benefits.mjs
 var content = {
-	"de": () => import("./de-DDpUrTMw.js").then((m) => m.default),
-	"en": () => import("./en-BuJYZhJH.js").then((m) => m.default),
-	"es": () => import("./es-DfeBBosu.js").then((m) => m.default),
-	"fr": () => import("./fr-lDVT5kHN.js").then((m) => m.default),
-	"it": () => import("./it-DcGeVRJ1.js").then((m) => m.default),
-	"ja": () => import("./ja-DJl4FZOM.js").then((m) => m.default),
-	"ko": () => import("./ko-8WOF83PX.js").then((m) => m.default),
-	"pt": () => import("./pt-DQmJACcb.js").then((m) => m.default),
-	"ru": () => import("./ru-B5frzRUF.js").then((m) => m.default),
-	"zh": () => import("./zh-Bhcqe5ah.js").then((m) => m.default)
+	"de": () => import("./de-CJYRhABg.js").then((m) => m.default),
+	"en": () => import("./en-A_KD95Uw.js").then((m) => m.default),
+	"es": () => import("./es-BG5QIlZa.js").then((m) => m.default),
+	"fr": () => import("./fr-DufE35wD.js").then((m) => m.default),
+	"it": () => import("./it-CkzW5Eqi.js").then((m) => m.default),
+	"ja": () => import("./ja-CKzWZCdq.js").then((m) => m.default),
+	"ko": () => import("./ko-BUnHNYvf.js").then((m) => m.default),
+	"pt": () => import("./pt-Bi5z2N9p.js").then((m) => m.default),
+	"ru": () => import("./ru-CQx4nTHs.js").then((m) => m.default),
+	"zh": () => import("./zh-cUIjBEhA.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -769,16 +769,16 @@ function CareersBenefits() {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
 		children: [
 			{
-				label: "Remote-first",
-				value: content$1.d.value
+				label: content$1.c.value,
+				value: content$1.e.value
 			},
 			{
 				label: content$1.a.value,
-				value: content$1.c.value
+				value: content$1.d.value
 			},
 			{
 				label: content$1.b.value,
-				value: "20% time for OSS contributions"
+				value: content$1.f.value
 			}
 		].map((b) => /* @__PURE__ */ jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
@@ -978,10 +978,12 @@ export { MarkdownRendererPlugin };
 var de_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "Arbeiten von überall auf der Welt",
+		"e": "Arbeiten von überall auf der Welt",
+		"c": "Remote-First",
 		"a": "Wettbewerbsfähige Bezahlung",
-		"c": "Spitzenvergütung",
-		"b": "Open-Source-Zeit"
+		"d": "Spitzenvergütung",
+		"b": "Open-Source-Zeit",
+		"f": "20 % Zeit für OSS-Beiträge"
 	}
 };
 //#endregion
@@ -989,10 +991,12 @@ export { de_default as default };
 var en_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "Work from anywhere in the world",
+		"e": "Work from anywhere in the world",
+		"c": "Remote-first",
 		"a": "Competitive pay",
-		"c": "Top-of-market compensation",
-		"b": "Open source time"
+		"d": "Top-of-market compensation",
+		"b": "Open source time",
+		"f": "20% time for OSS contributions"
 	}
 };
 //#endregion
@@ -1000,10 +1004,12 @@ export { en_default as default };
 var es_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "Trabaja desde cualquier parte del mundo",
+		"e": "Trabaja desde cualquier parte del mundo",
+		"c": "Primero remoto",
 		"a": "Salario competitivo",
-		"c": "Compensación superior al mercado",
-		"b": "Tiempo dedicado al código abierto"
+		"d": "Compensación superior al mercado",
+		"b": "Tiempo dedicado al código abierto",
+		"f": "20% de tiempo para contribuciones de OSS"
 	}
 };
 //#endregion
@@ -1011,10 +1017,12 @@ export { es_default as default };
 var fr_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "Travailler de n'importe où dans le monde",
+		"e": "Travailler de n'importe où dans le monde",
+		"c": "Télétravail d'abord",
 		"a": "Rémunération compétitive",
-		"c": "Rémunération au-dessus du marché",
-		"b": "Temps alloué à l'open source"
+		"d": "Rémunération au-dessus du marché",
+		"b": "Temps alloué à l'open source",
+		"f": "20 % du temps pour les contributions OSS"
 	}
 };
 //#endregion
@@ -1022,10 +1030,12 @@ export { fr_default as default };
 var it_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "Lavora da qualsiasi parte del mondo",
+		"e": "Lavora da qualsiasi parte del mondo",
+		"c": "Remote-first",
 		"a": "Retribuzione competitiva",
-		"c": "Compensi ai vertici del mercato",
-		"b": "Tempo per l'open source"
+		"d": "Compensi ai vertici del mercato",
+		"b": "Tempo per l'open source",
+		"f": "20% di tempo per contributi OSS"
 	}
 };
 //#endregion
@@ -1033,10 +1043,12 @@ export { it_default as default };
 var ja_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "世界中どこからでも仕事ができます",
+		"e": "世界中どこからでも仕事ができます",
+		"c": "リモートファースト",
 		"a": "競争力のある報酬",
-		"c": "市場最高水准の報酬",
-		"b": "オープンソースの時間"
+		"d": "市場最高水准の報酬",
+		"b": "オープンソースの時間",
+		"f": "OSS への貢献に 20% の時間を割く"
 	}
 };
 //#endregion
@@ -1044,10 +1056,12 @@ export { ja_default as default };
 var ko_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "전 세계 어디서나 근무하십시오",
+		"e": "전 세계 어디서나 근무하십시오",
+		"c": "원격 우선",
 		"a": "경쟁력있는 보수",
-		"c": "시장 최고의 보상",
-		"b": "오픈 소스 시간"
+		"d": "시장 최고의 보상",
+		"b": "오픈 소스 시간",
+		"f": "OSS 기여를 위한 20% 시간"
 	}
 };
 //#endregion
@@ -1055,10 +1069,12 @@ export { ko_default as default };
 var pt_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "Trabalhe de qualquer lugar do mundo",
+		"e": "Trabalhe de qualquer lugar do mundo",
+		"c": "Trabalho remoto primeiro",
 		"a": "Pagamento competitivo",
-		"c": "Compensação acima do mercado",
-		"b": "Tempo dedicado ao código aberto"
+		"d": "Compensação acima do mercado",
+		"b": "Tempo dedicado ao código aberto",
+		"f": "20% de tempo para contribuições OSS"
 	}
 };
 //#endregion
@@ -1066,10 +1082,12 @@ export { pt_default as default };
 var ru_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "Работайте из любой точки мира",
+		"e": "Работайте из любой точки мира",
+		"c": "Удаленная работа прежде всего",
 		"a": "Конкурентоспособная оплата",
-		"c": "Компенсация выше рыночной",
-		"b": "Время на open source"
+		"d": "Компенсация выше рыночной",
+		"b": "Время на open source",
+		"f": "20% времени на вклад в OSS"
 	}
 };
 //#endregion
@@ -1077,10 +1095,12 @@ export { ru_default as default };
 var zh_default = {
 	key: "careers-benefits",
 	content: {
-		"d": "在全球任何地方工作",
+		"e": "在全球任何地方工作",
+		"c": "远程优先",
 		"a": "有竞争力的薪酬",
-		"c": "市场顶级薪酬",
-		"b": "开源贡献时间"
+		"d": "市场顶级薪酬",
+		"b": "开源贡献时间",
+		"f": "20% 的时间用于 OSS 贡献"
 	}
 };
 //#endregion

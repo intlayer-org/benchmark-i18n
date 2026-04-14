@@ -4,16 +4,16 @@ import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 //#region .intlayer/dynamic_dictionary/header.mjs
 var content$1 = {
-	"de": () => import("./de-DREVu9K0.js").then((m) => m.default),
-	"en": () => import("./en-JzS0GZWj.js").then((m) => m.default),
-	"es": () => import("./es-HMV0oAk3.js").then((m) => m.default),
-	"fr": () => import("./fr-B7UMXlyj.js").then((m) => m.default),
-	"it": () => import("./it-CvFqa-J7.js").then((m) => m.default),
-	"ja": () => import("./ja-Dcq-OZvT.js").then((m) => m.default),
-	"ko": () => import("./ko-BsEDMhBq.js").then((m) => m.default),
-	"pt": () => import("./pt-DRe4xKsc.js").then((m) => m.default),
-	"ru": () => import("./ru-BhsnUr_0.js").then((m) => m.default),
-	"zh": () => import("./zh-DQUvCTtF.js").then((m) => m.default)
+	"de": () => import("./de-DIMwa-MU.js").then((m) => m.default),
+	"en": () => import("./en-jxOMueWc.js").then((m) => m.default),
+	"es": () => import("./es-D_84rC7A.js").then((m) => m.default),
+	"fr": () => import("./fr-DI5xdRXk.js").then((m) => m.default),
+	"it": () => import("./it-DSxDZqsF.js").then((m) => m.default),
+	"ja": () => import("./ja-DM7hbnYD.js").then((m) => m.default),
+	"ko": () => import("./ko-BZZ6T0lf.js").then((m) => m.default),
+	"pt": () => import("./pt-Bhm83Cxu.js").then((m) => m.default),
+	"ru": () => import("./ru-ky_UN3AQ.js").then((m) => m.default),
+	"zh": () => import("./zh-BsXqr4Y0.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -893,16 +893,16 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 //#endregion
 //#region .intlayer/dynamic_dictionary/theme-toggle.mjs
 var content = {
-	"de": () => import("./de-BAt0JFJh.js").then((m) => m.default),
-	"en": () => import("./en-DdT6_7KO.js").then((m) => m.default),
-	"es": () => import("./es-BUE-qML-.js").then((m) => m.default),
-	"fr": () => import("./fr-DhO8twZL.js").then((m) => m.default),
-	"it": () => import("./it-xUrQGRHm.js").then((m) => m.default),
-	"ja": () => import("./ja-JR4XSLBC.js").then((m) => m.default),
-	"ko": () => import("./ko-DhkhfYe3.js").then((m) => m.default),
-	"pt": () => import("./pt-D0APLn86.js").then((m) => m.default),
-	"ru": () => import("./ru-H9V7ODF8.js").then((m) => m.default),
-	"zh": () => import("./zh-DVPbLcth.js").then((m) => m.default)
+	"de": () => import("./de-6VR5xYAM.js").then((m) => m.default),
+	"en": () => import("./en-D15qqczR.js").then((m) => m.default),
+	"es": () => import("./es-C_kP-fkq.js").then((m) => m.default),
+	"fr": () => import("./fr-DH9ht374.js").then((m) => m.default),
+	"it": () => import("./it-0Iz7vuee.js").then((m) => m.default),
+	"ja": () => import("./ja-BQc6wKVp.js").then((m) => m.default),
+	"ko": () => import("./ko-BcR7xkzR.js").then((m) => m.default),
+	"pt": () => import("./pt-Bt1GtwdA.js").then((m) => m.default),
+	"ru": () => import("./ru-Dzz4Qm63.js").then((m) => m.default),
+	"zh": () => import("./zh-CA7n_8-2.js").then((m) => m.default)
 };
 //#endregion
 //#region src/components/ThemeToggle.tsx
@@ -944,7 +944,7 @@ function ThemeToggle() {
 		applyThemeMode(nextMode);
 		window.localStorage.setItem("theme", nextMode);
 	}
-	const label = mode === "auto" ? content$2.d.value : `Theme mode: ${mode}. Click to switch mode.`;
+	const label = mode === "auto" ? content$2.d.value : content$2.e({ mode });
 	return /* @__PURE__ */ jsx("button", {
 		type: "button",
 		onClick: toggleMode,
@@ -1003,21 +1003,21 @@ function usePerformanceMeasure(name) {
 //#region src/components/Header.tsx
 function Header() {
 	const content = useDictionaryDynamic(content$1, "header");
-	usePerformanceMeasure("Header");
+	usePerformanceMeasure(content.f.value);
 	const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
 	const currentLocale = useParams({ strict: false }).locale ?? "en";
 	const mockPages = [
 		{
 			to: "/$locale/products",
-			label: content.j
+			label: content.l
 		},
 		{
 			to: "/$locale/pricing",
-			label: content.i
+			label: content.k
 		},
 		{
 			to: "/$locale/team",
-			label: content.l
+			label: content.n
 		},
 		{
 			to: "/$locale/blog",
@@ -1037,7 +1037,7 @@ function Header() {
 		},
 		{
 			to: "/$locale/settings",
-			label: content.k
+			label: content.m
 		}
 	];
 	return /* @__PURE__ */ jsx("header", {
@@ -1050,7 +1050,7 @@ function Header() {
 					to: "/$locale",
 					params: { locale: currentLocale },
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
-					children: "i18n Bench"
+					children: content.h
 				}), /* @__PURE__ */ jsxs("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
@@ -1060,14 +1060,14 @@ function Header() {
 							activeOptions: { exact: true },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: content.f
+							children: content.g
 						}),
 						/* @__PURE__ */ jsx(Link, {
 							to: "/$locale/about",
 							params: { locale: currentLocale },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: content.g
+							children: content.i
 						}),
 						/* @__PURE__ */ jsxs("div", {
 							className: "relative",
@@ -1077,7 +1077,7 @@ function Header() {
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [content.h, /* @__PURE__ */ jsx(ChevronDown, {
+								children: [content.j, /* @__PURE__ */ jsx(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
 								})]
@@ -1319,7 +1319,12 @@ var de_default = {
 		"themeModeDarkClick": "Design-Modus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.",
 		"a": "Design: Auto",
 		"b": "Design: Dunkel",
-		"c": "Design: Hell"
+		"c": "Design: Hell",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "Themenmodus: {{mode}}. Zum Umschalten klicken."
+		}
 	}
 };
 //#endregion
@@ -1327,18 +1332,20 @@ export { de_default as default };
 var de_default = {
 	key: "header",
 	content: {
-		"f": "Startseite",
-		"g": "Methodik",
-		"h": "Testseiten",
-		"j": "Produkte",
-		"i": "Preise",
-		"l": "Team",
+		"g": "Startseite",
+		"i": "Methodik",
+		"j": "Testseiten",
+		"l": "Produkte",
+		"k": "Preise",
+		"n": "Team",
 		"a": "Blog",
 		"b": "Karriere",
 		"d": "FAQ",
 		"c": "Kontakt",
-		"k": "Einstellungen",
-		"e": "Zu GitHub gehen"
+		"m": "Einstellungen",
+		"e": "Zu GitHub gehen",
+		"f": "Header",
+		"h": "i18n Bench"
 	}
 };
 //#endregion
@@ -1351,7 +1358,12 @@ var en_default = {
 		"themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
 		"a": "Theme: Auto",
 		"b": "Theme: Dark",
-		"c": "Theme: Light"
+		"c": "Theme: Light",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "Theme mode: {{mode}}. Click to switch mode."
+		}
 	}
 };
 //#endregion
@@ -1359,18 +1371,20 @@ export { en_default as default };
 var en_default = {
 	key: "header",
 	content: {
-		"f": "Home",
-		"g": "Methodology",
-		"h": "Mock Pages",
-		"j": "Products",
-		"i": "Pricing",
-		"l": "Team",
+		"g": "Home",
+		"i": "Methodology",
+		"j": "Mock Pages",
+		"l": "Products",
+		"k": "Pricing",
+		"n": "Team",
 		"a": "Blog",
 		"b": "Careers",
 		"d": "FAQ",
 		"c": "Contact",
-		"k": "Settings",
-		"e": "Go to GitHub"
+		"m": "Settings",
+		"e": "Go to GitHub",
+		"f": "Header",
+		"h": "i18n Bench"
 	}
 };
 //#endregion
@@ -1383,7 +1397,12 @@ var es_default = {
 		"themeModeDarkClick": "Modo de tema: oscuro. Haga clic para cambiar al modo automático (sistema).",
 		"a": "Tema: Auto",
 		"b": "Tema: Oscuro",
-		"c": "Tema: Claro"
+		"c": "Tema: Claro",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "Modo de tema: {{mode}}. Haga clic para cambiar de modo."
+		}
 	}
 };
 //#endregion
@@ -1391,41 +1410,24 @@ export { es_default as default };
 var es_default = {
 	key: "header",
 	content: {
-		"f": "Inicio",
-		"g": "Metodología",
-		"h": "Páginas de Prueba",
-		"j": "Productos",
-		"i": "Precios",
-		"l": "Equipo",
+		"g": "Inicio",
+		"i": "Metodología",
+		"j": "Páginas de Prueba",
+		"l": "Productos",
+		"k": "Precios",
+		"n": "Equipo",
 		"a": "Blog",
 		"b": "Carreras",
 		"d": "FAQ",
 		"c": "Contacto",
-		"k": "Ajustes",
-		"e": "Ir a GitHub"
+		"m": "Ajustes",
+		"e": "Ir a GitHub",
+		"f": "Cabecera",
+		"h": "Bench i18n"
 	}
 };
 //#endregion
 export { es_default as default };
-var fr_default = {
-	key: "header",
-	content: {
-		"f": "Accueil",
-		"g": "Méthodologie",
-		"h": "Pages de Test",
-		"j": "Produits",
-		"i": "Tarification",
-		"l": "Équipe",
-		"a": "Blog",
-		"b": "Carrières",
-		"d": "FAQ",
-		"c": "Contact",
-		"k": "Paramètres",
-		"e": "Aller sur GitHub"
-	}
-};
-//#endregion
-export { fr_default as default };
 var fr_default = {
 	key: "theme-toggle",
 	content: {
@@ -1434,30 +1436,37 @@ var fr_default = {
 		"themeModeDarkClick": "Mode de thème : sombre. Cliquez pour passer au mode auto (système).",
 		"a": "Thème : Auto",
 		"b": "Thème : Sombre",
-		"c": "Thème : Clair"
+		"c": "Thème : Clair",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "Mode de thème : {{mode}}. Cliquez pour changer de mode."
+		}
 	}
 };
 //#endregion
 export { fr_default as default };
-var it_default = {
+var fr_default = {
 	key: "header",
 	content: {
-		"f": "Home",
-		"g": "Metodologia",
-		"h": "Pagine di test",
-		"j": "Prodotti",
-		"i": "Prezzi",
-		"l": "Team",
+		"g": "Accueil",
+		"i": "Méthodologie",
+		"j": "Pages de Test",
+		"l": "Produits",
+		"k": "Tarification",
+		"n": "Équipe",
 		"a": "Blog",
-		"b": "Carriere",
+		"b": "Carrières",
 		"d": "FAQ",
-		"c": "Contatti",
-		"k": "Impostazioni",
-		"e": "Vai su GitHub"
+		"c": "Contact",
+		"m": "Paramètres",
+		"e": "Aller sur GitHub",
+		"f": "En-tête",
+		"h": "Bench i18n"
 	}
 };
 //#endregion
-export { it_default as default };
+export { fr_default as default };
 var it_default = {
 	key: "theme-toggle",
 	content: {
@@ -1466,30 +1475,37 @@ var it_default = {
 		"themeModeDarkClick": "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).",
 		"a": "Tema: Auto",
 		"b": "Tema: Scuro",
-		"c": "Tema: Chiaro"
+		"c": "Tema: Chiaro",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "Modalità tema: {{mode}}. Clicca per cambiare modalità."
+		}
 	}
 };
 //#endregion
 export { it_default as default };
-var ja_default = {
+var it_default = {
 	key: "header",
 	content: {
-		"f": "ホーム",
-		"g": "方法論",
-		"h": "モックページ",
-		"j": "製品",
-		"i": "価格",
-		"l": "チーム",
-		"a": "ブログ",
-		"b": "採用情報",
-		"d": "よくある質問",
-		"c": "お問い合わせ",
-		"k": "設定",
-		"e": "GitHubへ移動"
+		"g": "Home",
+		"i": "Metodologia",
+		"j": "Pagine di test",
+		"l": "Prodotti",
+		"k": "Prezzi",
+		"n": "Team",
+		"a": "Blog",
+		"b": "Carriere",
+		"d": "FAQ",
+		"c": "Contatti",
+		"m": "Impostazioni",
+		"e": "Vai su GitHub",
+		"f": "Intestazione",
+		"h": "Bench i18n"
 	}
 };
 //#endregion
-export { ja_default as default };
+export { it_default as default };
 var ja_default = {
 	key: "theme-toggle",
 	content: {
@@ -1498,7 +1514,33 @@ var ja_default = {
 		"themeModeDarkClick": "テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。",
 		"a": "テーマ：自動",
 		"b": "テーマ：ダーク",
-		"c": "テーマ：ライト"
+		"c": "テーマ：ライト",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "テーマモード：{{mode}}。モードを切り替えるにはクリックしてください。"
+		}
+	}
+};
+//#endregion
+export { ja_default as default };
+var ja_default = {
+	key: "header",
+	content: {
+		"g": "ホーム",
+		"i": "方法論",
+		"j": "モックページ",
+		"l": "製品",
+		"k": "価格",
+		"n": "チーム",
+		"a": "ブログ",
+		"b": "採用情報",
+		"d": "よくある質問",
+		"c": "お問い合わせ",
+		"m": "設定",
+		"e": "GitHubへ移動",
+		"f": "ヘッダー",
+		"h": "i18n ベンチ"
 	}
 };
 //#endregion
@@ -1506,18 +1548,20 @@ export { ja_default as default };
 var ko_default = {
 	key: "header",
 	content: {
-		"f": "홈",
-		"g": "방법론",
-		"h": "모의 페이지",
-		"j": "제품",
-		"i": "가격",
-		"l": "팀",
+		"g": "홈",
+		"i": "방법론",
+		"j": "모의 페이지",
+		"l": "제품",
+		"k": "가격",
+		"n": "팀",
 		"a": "블로그",
 		"b": "채용",
 		"d": "자주 묻는 질문",
 		"c": "연락처",
-		"k": "설정",
-		"e": "GitHub으로 이동"
+		"m": "설정",
+		"e": "GitHub으로 이동",
+		"f": "헤더",
+		"h": "i18n 벤치"
 	}
 };
 //#endregion
@@ -1530,11 +1574,37 @@ var ko_default = {
 		"themeModeDarkClick": "테마 모드: 다크. 자동(시스템) 모드로 전환하려면 클릭하세요.",
 		"a": "테마: 자동",
 		"b": "테마: 다크",
-		"c": "테마: 라이트"
+		"c": "테마: 라이트",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "테마 모드: {{mode}}. 모드를 전환하려면 클릭하세요."
+		}
 	}
 };
 //#endregion
 export { ko_default as default };
+var pt_default = {
+	key: "header",
+	content: {
+		"g": "Início",
+		"i": "Metodologia",
+		"j": "Páginas de teste",
+		"l": "Produtos",
+		"k": "Preços",
+		"n": "Equipe",
+		"a": "Blog",
+		"b": "Carreiras",
+		"d": "FAQ",
+		"c": "Contato",
+		"m": "Configurações",
+		"e": "Ir para GitHub",
+		"f": "Cabeçalho",
+		"h": "Bench i18n"
+	}
+};
+//#endregion
+export { pt_default as default };
 var pt_default = {
 	key: "theme-toggle",
 	content: {
@@ -1543,49 +1613,16 @@ var pt_default = {
 		"themeModeDarkClick": "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).",
 		"a": "Tema: Auto",
 		"b": "Tema: Escuro",
-		"c": "Tema: Claro"
+		"c": "Tema: Claro",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "Modo de tema: {{mode}}. Clique para alternar o modo."
+		}
 	}
 };
 //#endregion
 export { pt_default as default };
-var pt_default = {
-	key: "header",
-	content: {
-		"f": "Início",
-		"g": "Metodologia",
-		"h": "Páginas de teste",
-		"j": "Produtos",
-		"i": "Preços",
-		"l": "Equipe",
-		"a": "Blog",
-		"b": "Carreiras",
-		"d": "FAQ",
-		"c": "Contato",
-		"k": "Configurações",
-		"e": "Ir para GitHub"
-	}
-};
-//#endregion
-export { pt_default as default };
-var ru_default = {
-	key: "header",
-	content: {
-		"f": "Главная",
-		"g": "Методология",
-		"h": "Тестовые страницы",
-		"j": "Продукты",
-		"i": "Цены",
-		"l": "Команда",
-		"a": "Блог",
-		"b": "Карьера",
-		"d": "FAQ",
-		"c": "Контакт",
-		"k": "Настройки",
-		"e": "Перейти на GitHub"
-	}
-};
-//#endregion
-export { ru_default as default };
 var ru_default = {
 	key: "theme-toggle",
 	content: {
@@ -1594,7 +1631,33 @@ var ru_default = {
 		"themeModeDarkClick": "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.",
 		"a": "Тема: Авто",
 		"b": "Тема: Темная",
-		"c": "Тема: Светлая"
+		"c": "Тема: Светлая",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "Режим темы: {{mode}}. Нажмите, чтобы переключить режим."
+		}
+	}
+};
+//#endregion
+export { ru_default as default };
+var ru_default = {
+	key: "header",
+	content: {
+		"g": "Главная",
+		"i": "Методология",
+		"j": "Тестовые страницы",
+		"l": "Продукты",
+		"k": "Цены",
+		"n": "Команда",
+		"a": "Блог",
+		"b": "Карьера",
+		"d": "FAQ",
+		"c": "Контакт",
+		"m": "Настройки",
+		"e": "Перейти на GitHub",
+		"f": "Шапка",
+		"h": "i18n Бенчмарк"
 	}
 };
 //#endregion
@@ -1602,18 +1665,20 @@ export { ru_default as default };
 var zh_default = {
 	key: "header",
 	content: {
-		"f": "首页",
-		"g": "方法学",
-		"h": "模拟页面",
-		"j": "产品",
-		"i": "价格",
-		"l": "团队",
+		"g": "首页",
+		"i": "方法学",
+		"j": "模拟页面",
+		"l": "产品",
+		"k": "价格",
+		"n": "团队",
 		"a": "博客",
 		"b": "职业",
 		"d": "常见问题",
 		"c": "联系我们",
-		"k": "设置",
-		"e": "前往 GitHub"
+		"m": "设置",
+		"e": "前往 GitHub",
+		"f": "页眉",
+		"h": "i18n 基准"
 	}
 };
 //#endregion
@@ -1626,7 +1691,12 @@ var zh_default = {
 		"themeModeDarkClick": "主题模式：深色。点击切换到自动（系统）模式。",
 		"a": "主题：自动",
 		"b": "主题：深色",
-		"c": "主题：浅色"
+		"c": "主题：浅色",
+		"e": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "主题模式：{{mode}}。点击切换模式。"
+		}
 	}
 };
 //#endregion

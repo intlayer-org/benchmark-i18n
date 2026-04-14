@@ -1,55 +1,55 @@
 import { useTranslate } from "../../../i18n/tolgee";
 
 export default function TeamGrid() {
-  const { t } = useTranslate("teamGrid");
+  const { t } = useTranslate();
 
   const members = [
     {
-      name: t("sarahChen", "Sarah Chen"),
-      role: t("founderLeadEngineer", "Founder & Lead Engineer"),
+      name: "Sarah Chen",
+      role: t("teamGrid.founderLeadEngineer", "Founder & Lead Engineer"),
       bio: t(
-        "formerGoogleEngineerWith10",
-        "Former Google engineer with 10 years of experience building internationalization systems at scale."
+        "teamGrid.formerGoogleEngineerWith",
+        "Former Google engineer with 10 years of experience building internationalization systems at scale.",
       ),
     },
     {
-      name: t("marcusWeber", "Marcus Weber"),
-      role: t("performanceEngineer", "Performance Engineer"),
+      name: "Marcus Weber",
+      role: t("teamGrid.performanceEngineer", "Performance Engineer"),
       bio: t(
-        "specializesInJavascriptPerformanceOptimization",
-        "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+        "teamGrid.specializesInJavascriptPerformance",
+        "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
       ),
     },
     {
-      name: t("aishaPatel", "Aisha Patel"),
-      role: t("developerAdvocate", "Developer Advocate"),
+      name: "Aisha Patel",
+      role: t("teamGrid.developerAdvocate", "Developer Advocate"),
       bio: t(
-        "passionateAboutDeveloperExperienceAnd",
-        "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+        "teamGrid.passionateAboutDeveloperExperience",
+        "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
       ),
     },
     {
-      name: t("tomasRodriguez", "Tomás Rodríguez"),
-      role: t("fullStackDeveloper", "Full-Stack Developer"),
+      name: "Tomás Rodríguez",
+      role: t("teamGrid.fullStackDeveloper", "Full-Stack Developer"),
       bio: t(
-        "maintainsTheBenchmarkingInfrastructureAnd",
-        "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+        "teamGrid.maintainsTheBenchmarkingInfrastructure",
+        "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
       ),
     },
     {
-      name: t("yukiTanaka", "Yuki Tanaka"),
-      role: t("dataAnalyst", "Data Analyst"),
+      name: "Yuki Tanaka",
+      role: t("teamGrid.dataAnalyst", "Data Analyst"),
       bio: t(
-        "ensuresStatisticalRigorInAll",
-        "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+        "teamGrid.ensuresStatisticalRigorIn",
+        "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
       ),
     },
     {
-      name: t("elenaKowalski", "Elena Kowalski"),
-      role: t("communityManager", "Community Manager"),
+      name: "Elena Kowalski",
+      role: t("teamGrid.communityManager", "Community Manager"),
       bio: t(
-        "managesCommunityContributionsPartnershipsAnd",
-        "Manages community contributions, partnerships, and events. Background in open source governance."
+        "teamGrid.managesCommunityContributions",
+        "Manages community contributions, partnerships, and events. Background in open source governance.",
       ),
     },
   ];

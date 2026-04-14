@@ -2,16 +2,16 @@ import { Fragment, createContext, createElement, isValidElement, lazy, useContex
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/preferences-section.mjs
 var content = {
-	"de": () => import("./de-DO9-aPGa.js").then((m) => m.default),
-	"en": () => import("./en-BPuC5xFS.js").then((m) => m.default),
-	"es": () => import("./es-BnwtEcEU.js").then((m) => m.default),
-	"fr": () => import("./fr-C6Mukr41.js").then((m) => m.default),
-	"it": () => import("./it-kpIK2Wac.js").then((m) => m.default),
-	"ja": () => import("./ja-BF3rNlO8.js").then((m) => m.default),
-	"ko": () => import("./ko-Bj1IPkCi.js").then((m) => m.default),
-	"pt": () => import("./pt-kqXlCCaC.js").then((m) => m.default),
-	"ru": () => import("./ru-DagSry8J.js").then((m) => m.default),
-	"zh": () => import("./zh-DhEw4069.js").then((m) => m.default)
+	"de": () => import("./de-BOd8LJCL.js").then((m) => m.default),
+	"en": () => import("./en-BQO8YXV2.js").then((m) => m.default),
+	"es": () => import("./es-CQk8z6cf.js").then((m) => m.default),
+	"fr": () => import("./fr-C7okD5uK.js").then((m) => m.default),
+	"it": () => import("./it-XQP1w7Ll.js").then((m) => m.default),
+	"ja": () => import("./ja-B4pat7Xg.js").then((m) => m.default),
+	"ko": () => import("./ko-DCeOvyzP.js").then((m) => m.default),
+	"pt": () => import("./pt-BDe30oFQ.js").then((m) => m.default),
+	"ru": () => import("./ru-HXIcribM.js").then((m) => m.default),
+	"zh": () => import("./zh-CMSLytqy.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -770,7 +770,7 @@ function PreferencesSection() {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [/* @__PURE__ */ jsx("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: "Preferences"
+			children: content$1.j
 		}), /* @__PURE__ */ jsxs("div", {
 			className: "space-y-4",
 			children: [
@@ -781,11 +781,11 @@ function PreferencesSection() {
 						children: content$1.e
 					}), /* @__PURE__ */ jsx("p", {
 						className: "text-xs text-muted-foreground",
-						children: content$1.j
+						children: content$1.k
 					})] }), /* @__PURE__ */ jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
-						"aria-label": content$1.m.value,
+						"aria-label": content$1.n.value,
 						children: /* @__PURE__ */ jsx("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
 					})]
 				}),
@@ -796,11 +796,11 @@ function PreferencesSection() {
 						children: content$1.c
 					}), /* @__PURE__ */ jsx("p", {
 						className: "text-xs text-muted-foreground",
-						children: content$1.n
+						children: content$1.o
 					})] }), /* @__PURE__ */ jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
-						"aria-label": content$1.l.value,
+						"aria-label": content$1.m.value,
 						children: /* @__PURE__ */ jsx("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
 					})]
 				}),
@@ -815,7 +815,7 @@ function PreferencesSection() {
 						/* @__PURE__ */ jsx("option", { children: content$1.f }),
 						/* @__PURE__ */ jsx("option", { children: content$1.g }),
 						/* @__PURE__ */ jsx("option", { children: content$1.h }),
-						/* @__PURE__ */ jsx("option", { children: content$1.k }),
+						/* @__PURE__ */ jsx("option", { children: content$1.l }),
 						/* @__PURE__ */ jsx("option", { children: content$1.i }),
 						/* @__PURE__ */ jsx("option", { children: content$1.b }),
 						/* @__PURE__ */ jsx("option", { children: content$1.a })
@@ -1011,20 +1011,21 @@ export { MarkdownRendererPlugin };
 var de_default = {
 	key: "preferences-section",
 	content: {
-		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
-		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
-		"d": "Default Language",
-		"f": "English (en)",
-		"g": "French (fr)",
-		"h": "German (de)",
-		"k": "Spanish (es)",
-		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"e": "E-Mail-Benachrichtigungen",
+		"k": "Wöchentliche Benchmark-Berichte erhalten",
+		"n": "Benachrichtigungen umschalten",
+		"c": "Dunkelmodus",
+		"o": "Dunkles Farbschema verwenden",
+		"m": "Dunkelmodus umschalten",
+		"d": "Standardsprache",
+		"f": "Englisch (en)",
+		"g": "Französisch (fr)",
+		"h": "Deutsch (de)",
+		"l": "Spanisch (es)",
+		"i": "Japanisch (ja)",
+		"b": "Chinesisch vereinfacht (zh)",
+		"a": "Arabisch (ar)",
+		"j": "Einstellungen"
 	}
 };
 //#endregion
@@ -1033,19 +1034,20 @@ var en_default = {
 	key: "preferences-section",
 	content: {
 		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
+		"k": "Receive weekly benchmark reports",
+		"n": "Toggle notifications",
 		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
+		"o": "Use dark color scheme",
+		"m": "Toggle dark mode",
 		"d": "Default Language",
 		"f": "English (en)",
 		"g": "French (fr)",
 		"h": "German (de)",
-		"k": "Spanish (es)",
+		"l": "Spanish (es)",
 		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"b": "Chinese Simplified (zh)",
+		"a": "Arabic (ar)",
+		"j": "Preferences"
 	}
 };
 //#endregion
@@ -1053,20 +1055,21 @@ export { en_default as default };
 var es_default = {
 	key: "preferences-section",
 	content: {
-		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
-		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
-		"d": "Default Language",
-		"f": "English (en)",
-		"g": "French (fr)",
-		"h": "German (de)",
-		"k": "Spanish (es)",
-		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"e": "Notificaciones por correo electrónico",
+		"k": "Recibir informes semanales de benchmark",
+		"n": "Alternar notificaciones",
+		"c": "Modo oscuro",
+		"o": "Usar esquema de colores oscuros",
+		"m": "Alternar modo oscuro",
+		"d": "Idioma predeterminado",
+		"f": "Inglés (en)",
+		"g": "Francés (fr)",
+		"h": "Alemán (de)",
+		"l": "Español (es)",
+		"i": "Japonés (ja)",
+		"b": "Chino simplificado (zh)",
+		"a": "Árabe (ar)",
+		"j": "Preferencias"
 	}
 };
 //#endregion
@@ -1074,20 +1077,21 @@ export { es_default as default };
 var fr_default = {
 	key: "preferences-section",
 	content: {
-		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
-		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
-		"d": "Default Language",
-		"f": "English (en)",
-		"g": "French (fr)",
-		"h": "German (de)",
-		"k": "Spanish (es)",
-		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"e": "Notifications par email",
+		"k": "Recevoir des rapports hebdomadaires de benchmark",
+		"n": "Basculer les notifications",
+		"c": "Mode sombre",
+		"o": "Utiliser le schéma de couleurs sombres",
+		"m": "Basculer le mode sombre",
+		"d": "Langue par défaut",
+		"f": "Anglais (en)",
+		"g": "Français (fr)",
+		"h": "Allemand (de)",
+		"l": "Espagnol (es)",
+		"i": "Japonais (ja)",
+		"b": "Chinois Simplifié (zh)",
+		"a": "Arabe (ar)",
+		"j": "Préférences"
 	}
 };
 //#endregion
@@ -1095,20 +1099,21 @@ export { fr_default as default };
 var it_default = {
 	key: "preferences-section",
 	content: {
-		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
-		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
-		"d": "Default Language",
-		"f": "English (en)",
-		"g": "French (fr)",
-		"h": "German (de)",
-		"k": "Spanish (es)",
-		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"e": "Notifiche via email",
+		"k": "Ricevi rapporti settimanali sui benchmark",
+		"n": "Attiva/disattiva notifiche",
+		"c": "Modalità scura",
+		"o": "Usa lo schema colori scuro",
+		"m": "Attiva/disattiva modalità scura",
+		"d": "Lingua predefinita",
+		"f": "Inglese (en)",
+		"g": "Francese (fr)",
+		"h": "Tedesco (de)",
+		"l": "Spagnolo (es)",
+		"i": "Giapponese (ja)",
+		"b": "Cinese semplificato (zh)",
+		"a": "Arabo (ar)",
+		"j": "Preferenze"
 	}
 };
 //#endregion
@@ -1116,20 +1121,21 @@ export { it_default as default };
 var ja_default = {
 	key: "preferences-section",
 	content: {
-		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
-		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
-		"d": "Default Language",
-		"f": "English (en)",
-		"g": "French (fr)",
-		"h": "German (de)",
-		"k": "Spanish (es)",
-		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"e": "メール通知",
+		"k": "ベンチマーク週報を受け取る",
+		"n": "通知の切り替え",
+		"c": "ダークモード",
+		"o": "ダークカラー体系を使用する",
+		"m": "ダークモードの切り替え",
+		"d": "デフォルト言語",
+		"f": "英語 (en)",
+		"g": "フランス語 (fr)",
+		"h": "ドイツ語 (de)",
+		"l": "スペイン語 (es)",
+		"i": "日本語 (ja)",
+		"b": "中国語（簡体字）(zh)",
+		"a": "アラビア語 (ar)",
+		"j": "設定"
 	}
 };
 //#endregion
@@ -1137,20 +1143,21 @@ export { ja_default as default };
 var ko_default = {
 	key: "preferences-section",
 	content: {
-		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
-		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
-		"d": "Default Language",
-		"f": "English (en)",
-		"g": "French (fr)",
-		"h": "German (de)",
-		"k": "Spanish (es)",
-		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"e": "이메일 알림",
+		"k": "주간 벤치마크 보고서 받기",
+		"n": "알림 토글",
+		"c": "다크 모드",
+		"o": "어두운 색상 체계 사용",
+		"m": "다크 모드 토글",
+		"d": "기본 언어",
+		"f": "영어 (en)",
+		"g": "프랑스어 (fr)",
+		"h": "독일어 (de)",
+		"l": "스페인어 (es)",
+		"i": "일본어 (ja)",
+		"b": "중국어 간체 (zh)",
+		"a": "아랍어 (ar)",
+		"j": "기본 설정"
 	}
 };
 //#endregion
@@ -1158,20 +1165,21 @@ export { ko_default as default };
 var pt_default = {
 	key: "preferences-section",
 	content: {
-		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
-		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
-		"d": "Default Language",
-		"f": "English (en)",
-		"g": "French (fr)",
-		"h": "German (de)",
-		"k": "Spanish (es)",
-		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"e": "Notificações por e-mail",
+		"k": "Receber relatórios semanais de benchmarks",
+		"n": "Alternar notificações",
+		"c": "Modo Escuro",
+		"o": "Usar esquema de cores escuras",
+		"m": "Alternar modo escuro",
+		"d": "Idioma Padrão",
+		"f": "Inglês (en)",
+		"g": "Francês (fr)",
+		"h": "Alemão (de)",
+		"l": "Espanhol (es)",
+		"i": "Japonês (ja)",
+		"b": "Chinês Simplificado (zh)",
+		"a": "Árabe (ar)",
+		"j": "Preferências"
 	}
 };
 //#endregion
@@ -1179,20 +1187,21 @@ export { pt_default as default };
 var ru_default = {
 	key: "preferences-section",
 	content: {
-		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
-		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
-		"d": "Default Language",
-		"f": "English (en)",
-		"g": "French (fr)",
-		"h": "German (de)",
-		"k": "Spanish (es)",
-		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"e": "Email-уведомления",
+		"k": "Получать еженедельные отчеты о бенчмарках",
+		"n": "Переключить уведомления",
+		"c": "Темный режим",
+		"o": "Использовать темную цветовою схему",
+		"m": "Переключить темный режим",
+		"d": "Язык по умолчанию",
+		"f": "Английский (en)",
+		"g": "Французский (fr)",
+		"h": "Немецкий (de)",
+		"l": "Испанский (es)",
+		"i": "Японский (ja)",
+		"b": "Китайский упрощенный (zh)",
+		"a": "Арабский (ar)",
+		"j": "Настройки"
 	}
 };
 //#endregion
@@ -1200,20 +1209,21 @@ export { ru_default as default };
 var zh_default = {
 	key: "preferences-section",
 	content: {
-		"e": "Email Notifications",
-		"j": "Receive weekly benchmark reports",
-		"m": "Toggle notifications",
-		"c": "Dark Mode",
-		"n": "Use dark color scheme",
-		"l": "Toggle dark mode",
-		"d": "Default Language",
-		"f": "English (en)",
-		"g": "French (fr)",
-		"h": "German (de)",
-		"k": "Spanish (es)",
-		"i": "Japanese (ja)",
-		"b": "Chinese Simplified (zh-CN)",
-		"a": "Arabic (ar)"
+		"e": "邮件通知",
+		"k": "接收每周基准测试报告",
+		"n": "切换通知",
+		"c": "深色模式",
+		"o": "使用深色配色方案",
+		"m": "切换深色模式",
+		"d": "默认语言",
+		"f": "英语 (en)",
+		"g": "法语 (fr)",
+		"h": "德语 (de)",
+		"l": "西班牙语 (es)",
+		"i": "日语 (ja)",
+		"b": "中文简体 (zh)",
+		"a": "阿拉伯语 (ar)",
+		"j": "偏好设置"
 	}
 };
 //#endregion

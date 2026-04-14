@@ -2,16 +2,16 @@ import { Fragment, createContext, createElement, isValidElement, lazy, useContex
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/api-access-section.mjs
 var content = {
-	"de": () => import("./de-Yr1d0Set.js").then((m) => m.default),
-	"en": () => import("./en-D2uiWSnZ.js").then((m) => m.default),
-	"es": () => import("./es-Bf8UPfTp.js").then((m) => m.default),
-	"fr": () => import("./fr-C6WQ5PCY.js").then((m) => m.default),
-	"it": () => import("./it-DGUD1Jw4.js").then((m) => m.default),
-	"ja": () => import("./ja-DFTd7WSj.js").then((m) => m.default),
-	"ko": () => import("./ko-BcYTDoya.js").then((m) => m.default),
-	"pt": () => import("./pt-DxmjRl5g.js").then((m) => m.default),
-	"ru": () => import("./ru-BaomJbxY.js").then((m) => m.default),
-	"zh": () => import("./zh-1wGP-sQl.js").then((m) => m.default)
+	"de": () => import("./de-BIGVHu-x.js").then((m) => m.default),
+	"en": () => import("./en-CQhv-45_.js").then((m) => m.default),
+	"es": () => import("./es-if3b6Hlc.js").then((m) => m.default),
+	"fr": () => import("./fr-DvPOBg53.js").then((m) => m.default),
+	"it": () => import("./it-Ry9rn6Uv.js").then((m) => m.default),
+	"ja": () => import("./ja-DcEScxhk.js").then((m) => m.default),
+	"ko": () => import("./ko-0WBS1I4S.js").then((m) => m.default),
+	"pt": () => import("./pt-DzeKtVYp.js").then((m) => m.default),
+	"ru": () => import("./ru-oET1rh8o.js").then((m) => m.default),
+	"zh": () => import("./zh-BNBRg7M7.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -787,12 +787,12 @@ function ApiAccessSection() {
 				}), /* @__PURE__ */ jsx("button", {
 					type: "button",
 					className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
-					children: "Copy"
+					children: content$1.c
 				})]
 			}),
 			/* @__PURE__ */ jsx("p", {
 				className: "mt-1 text-xs text-muted-foreground",
-				children: content$1.c
+				children: content$1.d
 			})
 		] })]
 	});
@@ -983,9 +983,10 @@ export { MarkdownRendererPlugin };
 var de_default = {
 	key: "api-access-section",
 	content: {
-		"a": "API Access",
-		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"a": "API-Zugriff",
+		"b": "API-Schlüssel",
+		"d": "Verwenden Sie diesen Schlüssel für den programmgesteuerten Zugriff auf die Benchmarking-API.",
+		"c": "Kopieren"
 	}
 };
 //#endregion
@@ -995,7 +996,8 @@ var en_default = {
 	content: {
 		"a": "API Access",
 		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"d": "Use this key to access the benchmarking API programmatically.",
+		"c": "Copy"
 	}
 };
 //#endregion
@@ -1003,9 +1005,10 @@ export { en_default as default };
 var es_default = {
 	key: "api-access-section",
 	content: {
-		"a": "API Access",
-		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"a": "Acceso API",
+		"b": "Clave API",
+		"d": "Utilice esta clave para acceder a la API de benchmarking de forma programática.",
+		"c": "Copiar"
 	}
 };
 //#endregion
@@ -1013,9 +1016,10 @@ export { es_default as default };
 var fr_default = {
 	key: "api-access-section",
 	content: {
-		"a": "API Access",
-		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"a": "Accès API",
+		"b": "Clé API",
+		"d": "Utilisez cette clé pour accéder à l'API de benchmarking par programmation.",
+		"c": "Copier"
 	}
 };
 //#endregion
@@ -1023,9 +1027,10 @@ export { fr_default as default };
 var it_default = {
 	key: "api-access-section",
 	content: {
-		"a": "API Access",
-		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"a": "Accesso API",
+		"b": "Chiave API",
+		"d": "Usa questa chiave per accedere programmaticamente all'API di benchmarking.",
+		"c": "Copia"
 	}
 };
 //#endregion
@@ -1033,9 +1038,10 @@ export { it_default as default };
 var ja_default = {
 	key: "api-access-section",
 	content: {
-		"a": "API Access",
-		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"a": "APIアクセス",
+		"b": "APIキー",
+		"d": "このキーを使用して、ベンチマークAPIにプログラムでアクセスします。",
+		"c": "コピー"
 	}
 };
 //#endregion
@@ -1043,9 +1049,10 @@ export { ja_default as default };
 var ko_default = {
 	key: "api-access-section",
 	content: {
-		"a": "API Access",
-		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"a": "API 액세스",
+		"b": "API 키",
+		"d": "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오.",
+		"c": "복사"
 	}
 };
 //#endregion
@@ -1053,9 +1060,10 @@ export { ko_default as default };
 var pt_default = {
 	key: "api-access-section",
 	content: {
-		"a": "API Access",
-		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"a": "Acesso à API",
+		"b": "Chave da API",
+		"d": "Utilize esta chave para aceder à API de benchmarking de forma programática.",
+		"c": "Copiar"
 	}
 };
 //#endregion
@@ -1063,9 +1071,10 @@ export { pt_default as default };
 var ru_default = {
 	key: "api-access-section",
 	content: {
-		"a": "API Access",
-		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"a": "Доступ к API",
+		"b": "Ключ API",
+		"d": "Используйте этот ключ для программного доступа к API бенчмаркинга.",
+		"c": "Копировать"
 	}
 };
 //#endregion
@@ -1073,9 +1082,10 @@ export { ru_default as default };
 var zh_default = {
 	key: "api-access-section",
 	content: {
-		"a": "API Access",
-		"b": "API Key",
-		"c": "Use this key to access the benchmarking API programmatically."
+		"a": "API 访问",
+		"b": "API 密钥",
+		"d": "使用此密钥以编程方式访问基准测试 API。",
+		"c": "复制"
 	}
 };
 //#endregion

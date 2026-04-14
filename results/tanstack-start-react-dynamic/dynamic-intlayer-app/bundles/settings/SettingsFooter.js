@@ -2,16 +2,16 @@ import { Fragment, createContext, createElement, isValidElement, lazy, useContex
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/settings-footer.mjs
 var content = {
-	"de": () => import("./de-CDz5WRSN.js").then((m) => m.default),
-	"en": () => import("./en-Bcv69mGn.js").then((m) => m.default),
-	"es": () => import("./es-DUxCD9FU.js").then((m) => m.default),
-	"fr": () => import("./fr-COt0vqlC.js").then((m) => m.default),
-	"it": () => import("./it-BQfCmYhX.js").then((m) => m.default),
-	"ja": () => import("./ja-C87f6XsT.js").then((m) => m.default),
-	"ko": () => import("./ko-C_JlTrzR.js").then((m) => m.default),
-	"pt": () => import("./pt-Bye6R2FL.js").then((m) => m.default),
-	"ru": () => import("./ru-DjO3Es-l.js").then((m) => m.default),
-	"zh": () => import("./zh-DAoyNfY6.js").then((m) => m.default)
+	"de": () => import("./de-BuhuKlkS.js").then((m) => m.default),
+	"en": () => import("./en-BjhwAt15.js").then((m) => m.default),
+	"es": () => import("./es-_-jT0pCk.js").then((m) => m.default),
+	"fr": () => import("./fr-CNtn8zWB.js").then((m) => m.default),
+	"it": () => import("./it-BZXBiNbR.js").then((m) => m.default),
+	"ja": () => import("./ja-CiLZKCmt.js").then((m) => m.default),
+	"ko": () => import("./ko-CQLYvAqU.js").then((m) => m.default),
+	"pt": () => import("./pt-BFHNuwvO.js").then((m) => m.default),
+	"ru": () => import("./ru-DjmgIox8.js").then((m) => m.default),
+	"zh": () => import("./zh-DK9zpT4G.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -770,11 +770,11 @@ function SettingsFooter() {
 		children: [/* @__PURE__ */ jsx("button", {
 			type: "button",
 			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
-			children: "Cancel"
+			children: content$1.a
 		}), /* @__PURE__ */ jsx("button", {
 			type: "submit",
 			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-			children: content$1.a
+			children: content$1.b
 		})]
 	});
 }
@@ -963,61 +963,91 @@ var MarkdownRendererPlugin = (props) => {
 export { MarkdownRendererPlugin };
 var de_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "Änderungen speichern",
+		"a": "Abbrechen"
+	}
 };
 //#endregion
 export { de_default as default };
 var en_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "Save Changes",
+		"a": "Cancel"
+	}
 };
 //#endregion
 export { en_default as default };
 var es_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "Guardar cambios",
+		"a": "Cancelar"
+	}
 };
 //#endregion
 export { es_default as default };
 var fr_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "Enregistrer les modifications",
+		"a": "Annuler"
+	}
 };
 //#endregion
 export { fr_default as default };
 var it_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "Salva modifiche",
+		"a": "Annulla"
+	}
 };
 //#endregion
 export { it_default as default };
 var ja_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "変更を保存",
+		"a": "キャンセル"
+	}
 };
 //#endregion
 export { ja_default as default };
 var ko_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "변경 사항 저장",
+		"a": "취소"
+	}
 };
 //#endregion
 export { ko_default as default };
 var pt_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "Salvar alterações",
+		"a": "Cancelar"
+	}
 };
 //#endregion
 export { pt_default as default };
 var ru_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "Сохранить изменения",
+		"a": "Отмена"
+	}
 };
 //#endregion
 export { ru_default as default };
 var zh_default = {
 	key: "settings-footer",
-	content: { "a": "Save Changes" }
+	content: {
+		"b": "保存更改",
+		"a": "取消"
+	}
 };
 //#endregion
 export { zh_default as default };

@@ -2,16 +2,16 @@ import { Fragment, createContext, createElement, isValidElement, lazy, useContex
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 //#region .intlayer/dynamic_dictionary/contact-form.mjs
 var content = {
-	"de": () => import("./de-BKvt-UbA.js").then((m) => m.default),
-	"en": () => import("./en-Dq6eVQWd.js").then((m) => m.default),
-	"es": () => import("./es-B0469IK3.js").then((m) => m.default),
-	"fr": () => import("./fr-CcwpdDb4.js").then((m) => m.default),
-	"it": () => import("./it-W9SpVufd.js").then((m) => m.default),
-	"ja": () => import("./ja-DYLQCNPY.js").then((m) => m.default),
-	"ko": () => import("./ko-CDvY0b9t.js").then((m) => m.default),
-	"pt": () => import("./pt-Cuq3D2Py.js").then((m) => m.default),
-	"ru": () => import("./ru-CXL3sI-Z.js").then((m) => m.default),
-	"zh": () => import("./zh-VsgfzVQi.js").then((m) => m.default)
+	"de": () => import("./de-BBqfglPj.js").then((m) => m.default),
+	"en": () => import("./en-BnO4SfgV.js").then((m) => m.default),
+	"es": () => import("./es-DbFJscxG.js").then((m) => m.default),
+	"fr": () => import("./fr-0mAI9CE2.js").then((m) => m.default),
+	"it": () => import("./it-C1HyVEKP.js").then((m) => m.default),
+	"ja": () => import("./ja-BtyFcflA.js").then((m) => m.default),
+	"ko": () => import("./ko-Dindja-9.js").then((m) => m.default),
+	"pt": () => import("./pt-CJ2hpUCJ.js").then((m) => m.default),
+	"ru": () => import("./ru-3pbxVBwY.js").then((m) => m.default),
+	"zh": () => import("./zh-BhgLtokO.js").then((m) => m.default)
 };
 //#endregion
 //#region .intlayer/config/configuration.mjs
@@ -778,15 +778,15 @@ function ContactForm() {
 				children: [/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: "Name"
+					children: content$1.g
 				}), /* @__PURE__ */ jsx("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: content$1.f.value
+					placeholder: content$1.l.value
 				})] }), /* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: "Email"
+					children: content$1.d
 				}), /* @__PURE__ */ jsx("input", {
 					id: emailId,
 					type: "email",
@@ -797,32 +797,32 @@ function ContactForm() {
 			/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: "Topic"
+				children: content$1.k
 			}), /* @__PURE__ */ jsxs("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
 					/* @__PURE__ */ jsx("option", { children: content$1.a }),
-					/* @__PURE__ */ jsx("option", { children: content$1.d }),
-					/* @__PURE__ */ jsx("option", { children: content$1.c }),
-					/* @__PURE__ */ jsx("option", { children: "Contribution" }),
-					/* @__PURE__ */ jsx("option", { children: "Other" })
+					/* @__PURE__ */ jsx("option", { children: content$1.h }),
+					/* @__PURE__ */ jsx("option", { children: content$1.f }),
+					/* @__PURE__ */ jsx("option", { children: content$1.b }),
+					/* @__PURE__ */ jsx("option", { children: content$1.i })
 				]
 			})] }),
 			/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: "Message"
+				children: content$1.e
 			}), /* @__PURE__ */ jsx("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-				placeholder: content$1.b.value
+				placeholder: content$1.c.value
 			})] }),
 			/* @__PURE__ */ jsx("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-				children: content$1.e
+				children: content$1.j
 			})
 		]
 	});
@@ -1013,12 +1013,18 @@ export { MarkdownRendererPlugin };
 var de_default = {
 	key: "contact-form",
 	content: {
-		"f": "Ihr Name",
+		"l": "Ihr Name",
 		"a": "Fehlerbericht",
-		"d": "Neue Benchmark-Idee",
-		"c": "Frage zur Methodik",
-		"b": "Beschreiben Sie Ihre Frage oder Idee...",
-		"e": "Nachricht senden"
+		"h": "Neue Benchmark-Idee",
+		"f": "Frage zur Methodik",
+		"c": "Beschreiben Sie Ihre Frage oder Idee...",
+		"j": "Nachricht senden",
+		"g": "Name",
+		"d": "E-Mail",
+		"k": "Thema",
+		"b": "Beitrag",
+		"i": "Andere",
+		"e": "Nachricht"
 	}
 };
 //#endregion
@@ -1026,12 +1032,18 @@ export { de_default as default };
 var en_default = {
 	key: "contact-form",
 	content: {
-		"f": "Your name",
+		"l": "Your name",
 		"a": "Bug Report",
-		"d": "New Benchmark Idea",
-		"c": "Methodology Question",
-		"b": "Describe your question or idea...",
-		"e": "Send Message"
+		"h": "New Benchmark Idea",
+		"f": "Methodology Question",
+		"c": "Describe your question or idea...",
+		"j": "Send Message",
+		"g": "Name",
+		"d": "Email",
+		"k": "Topic",
+		"b": "Contribution",
+		"i": "Other",
+		"e": "Message"
 	}
 };
 //#endregion
@@ -1039,12 +1051,18 @@ export { en_default as default };
 var es_default = {
 	key: "contact-form",
 	content: {
-		"f": "Tu nombre",
+		"l": "Tu nombre",
 		"a": "Informe de Errores",
-		"d": "Nueva Idea de Benchmark",
-		"c": "Pregunta sobre Metodología",
-		"b": "Describe tu pregunta o idea...",
-		"e": "Enviar Mensaje"
+		"h": "Nueva Idea de Benchmark",
+		"f": "Pregunta sobre Metodología",
+		"c": "Describe tu pregunta o idea...",
+		"j": "Enviar Mensaje",
+		"g": "Nombre",
+		"d": "Correo electrónico",
+		"k": "Tema",
+		"b": "Contribución",
+		"i": "Otro",
+		"e": "Mensaje"
 	}
 };
 //#endregion
@@ -1052,12 +1070,18 @@ export { es_default as default };
 var fr_default = {
 	key: "contact-form",
 	content: {
-		"f": "Votre nom",
+		"l": "Votre nom",
 		"a": "Rapport de Bug",
-		"d": "Nouvelle Idée de Benchmark",
-		"c": "Question sur la Méthodologie",
-		"b": "Décrivez votre question ou idée...",
-		"e": "Envoyer le Message"
+		"h": "Nouvelle Idée de Benchmark",
+		"f": "Question sur la Méthodologie",
+		"c": "Décrivez votre question ou idée...",
+		"j": "Envoyer le Message",
+		"g": "Nom",
+		"d": "Email",
+		"k": "Sujet",
+		"b": "Contribution",
+		"i": "Autre",
+		"e": "Message"
 	}
 };
 //#endregion
@@ -1065,12 +1089,18 @@ export { fr_default as default };
 var it_default = {
 	key: "contact-form",
 	content: {
-		"f": "Il tuo nome",
+		"l": "Il tuo nome",
 		"a": "Segnalazione bug",
-		"d": "Nuova idea di benchmark",
-		"c": "Domanda sulla metodologia",
-		"b": "Descrivi la tua domanda o idea...",
-		"e": "Invia messaggio"
+		"h": "Nuova idea di benchmark",
+		"f": "Domanda sulla metodologia",
+		"c": "Descrivi la tua domanda o idea...",
+		"j": "Invia messaggio",
+		"g": "Nome",
+		"d": "Email",
+		"k": "Argomento",
+		"b": "Contributo",
+		"i": "Altro",
+		"e": "Messaggio"
 	}
 };
 //#endregion
@@ -1078,12 +1108,18 @@ export { it_default as default };
 var ja_default = {
 	key: "contact-form",
 	content: {
-		"f": "お名前",
+		"l": "お名前",
 		"a": "バグ報告",
-		"d": "新しいベンチマークのアイデア",
-		"c": "方法論に関する質問",
-		"b": "質問やアイデアを説明してください...",
-		"e": "メッセージを送信"
+		"h": "新しいベンチマークのアイデア",
+		"f": "方法論に関する質問",
+		"c": "質問やアイデアを説明してください...",
+		"j": "メッセージを送信",
+		"g": "名前",
+		"d": "メール",
+		"k": "トピック",
+		"b": "貢献",
+		"i": "その他",
+		"e": "メッセージ"
 	}
 };
 //#endregion
@@ -1091,12 +1127,18 @@ export { ja_default as default };
 var ko_default = {
 	key: "contact-form",
 	content: {
-		"f": "이름",
+		"l": "이름",
 		"a": "버그 보고",
-		"d": "새로운 벤치마크 아이디어",
-		"c": "방법론 질문",
-		"b": "질문이나 아이디어를 설명하세요...",
-		"e": "메시지 보내기"
+		"h": "새로운 벤치마크 아이디어",
+		"f": "방법론 질문",
+		"c": "질문이나 아이디어를 설명하세요...",
+		"j": "메시지 보내기",
+		"g": "이름",
+		"d": "이메일",
+		"k": "주제",
+		"b": "기여",
+		"i": "기타",
+		"e": "메시지"
 	}
 };
 //#endregion
@@ -1104,12 +1146,18 @@ export { ko_default as default };
 var pt_default = {
 	key: "contact-form",
 	content: {
-		"f": "Seu nome",
+		"l": "Seu nome",
 		"a": "Relatório de Bug",
-		"d": "Nova Ideia de Benchmark",
-		"c": "Pergunta sobre Metodologia",
-		"b": "Descreva sua pergunta ou ideia...",
-		"e": "Enviar Mensagem"
+		"h": "Nova Ideia de Benchmark",
+		"f": "Pergunta sobre Metodologia",
+		"c": "Descreva sua pergunta ou ideia...",
+		"j": "Enviar Mensagem",
+		"g": "Nome",
+		"d": "E-mail",
+		"k": "Tópico",
+		"b": "Contribuição",
+		"i": "Outro",
+		"e": "Mensagem"
 	}
 };
 //#endregion
@@ -1117,12 +1165,18 @@ export { pt_default as default };
 var ru_default = {
 	key: "contact-form",
 	content: {
-		"f": "Ваше имя",
+		"l": "Ваше имя",
 		"a": "Отчет об ошибке",
-		"d": "Новая идея для бенчмарка",
-		"c": "Вопрос по методологии",
-		"b": "Опишите ваш вопрос или идею...",
-		"e": "Отправить сообщение"
+		"h": "Новая идея для бенчмарка",
+		"f": "Вопрос по методологии",
+		"c": "Опишите ваш вопрос или идею...",
+		"j": "Отправить сообщение",
+		"g": "Имя",
+		"d": "Email",
+		"k": "Тема",
+		"b": "Вклад",
+		"i": "Другое",
+		"e": "Сообщение"
 	}
 };
 //#endregion
@@ -1130,12 +1184,18 @@ export { ru_default as default };
 var zh_default = {
 	key: "contact-form",
 	content: {
-		"f": "您的姓名",
+		"l": "您的姓名",
 		"a": "错误报告",
-		"d": "新基准测试想法",
-		"c": "方法论问题",
-		"b": "描述您的问题或想法...",
-		"e": "发送消息"
+		"h": "新基准测试想法",
+		"f": "方法论问题",
+		"c": "描述您的问题或想法...",
+		"j": "发送消息",
+		"g": "姓名",
+		"d": "电子邮件",
+		"k": "主题",
+		"b": "贡献",
+		"i": "其他",
+		"e": "消息"
 	}
 };
 //#endregion
