@@ -1,4 +1,4 @@
-import { T } from "@tolgee/react";
+import { T } from "../../../i18n/tolgee";
 import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
 
 export default function AboutHeader() {

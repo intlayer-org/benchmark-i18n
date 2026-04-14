@@ -1,4 +1,4 @@
-import { T, useTranslate } from "@tolgee/react";
+import { T, useTranslate } from "../../../i18n/tolgee";
 
 export default function BlogList() {
   const { t } = useTranslate();

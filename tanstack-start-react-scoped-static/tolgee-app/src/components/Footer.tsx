@@ -1,5 +1,5 @@
 import { Link, useParams } from "@tanstack/react-router";
-import { T, useTranslate } from "@tolgee/react";
+import { T, useTranslate } from "../i18n/tolgee";
 
 export default function Footer() {
   const { t } = useTranslate("shared");

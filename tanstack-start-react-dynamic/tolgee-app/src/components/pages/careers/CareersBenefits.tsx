@@ -1,4 +1,4 @@
-import { useTranslate } from "@tolgee/react";
+import { useTranslate } from "../../../i18n/tolgee";
 
 export default function CareersBenefits() {
   const { t } = useTranslate();

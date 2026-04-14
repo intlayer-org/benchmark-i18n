@@ -1,4 +1,4 @@
-import { T, useTranslate } from "@tolgee/react";
+import { T, useTranslate } from "../../../i18n/tolgee";
 import { useId } from "react";
 
 export default function ContactForm() {

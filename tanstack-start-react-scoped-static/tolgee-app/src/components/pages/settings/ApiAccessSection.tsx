@@ -1,4 +1,4 @@
-import { T } from "@tolgee/react";
+import { T } from "../../../i18n/tolgee";
 import { useId } from "react";
 
 export default function ApiAccessSection() {

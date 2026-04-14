@@ -1,4 +1,4 @@
-import { useTranslate } from "@tolgee/react";
+import { useTranslate } from "../../../i18n/tolgee";
 import MockBanner from "../../MockBanner";
 
 export default function TeamHeader() {
