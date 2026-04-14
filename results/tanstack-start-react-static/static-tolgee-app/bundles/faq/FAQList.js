@@ -254,7 +254,7 @@ var useTranslateInternal = (ns, options) => {
 		isLoading: !isLoaded
 	};
 };
-var useTranslate = (ns, options) => {
+var useTranslate$1 = (ns, options) => {
 	const { t: tInternal, isLoading } = useTranslateInternal(ns, options);
 	return {
 		t: useCallback((...params) => {
@@ -263,6 +263,15 @@ var useTranslate = (ns, options) => {
 		isLoading
 	};
 };
+//#endregion
+//#region src/i18n/config.tsx
+function useTranslate() {
+	const { t, ...rest } = useTranslate$1();
+	return {
+		...rest,
+		t: (key, defaultValue) => t(key, defaultValue)
+	};
+}
 //#endregion
 //#region src/components/pages/faq/FAQList.tsx
 function FAQList() {

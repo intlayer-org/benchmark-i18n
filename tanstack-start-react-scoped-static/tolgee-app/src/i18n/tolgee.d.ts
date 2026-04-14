@@ -1,7 +1,7 @@
 import { getMessages } from "./getMessages";
 
 declare module "@tolgee/core/lib/types" {
-  type TranslationsType = typeof getMessages("en");
+  type TranslationsType = ReturnType<typeof getMessages>;
 
   // Recursively converts nested JSON structure to dot notation strings (e.g., "faqList.howAreTheBenchmarks")
   type DotNotationEntries<T> = T extends object

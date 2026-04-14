@@ -4,7 +4,7 @@ import pkg from "../package.json" with { type: "json" };
 
 measureComponents({
   appName: pkg.name,
-  benchmarkCategory: "tanstack-start-react-static",
+  benchmarkCategory: "tanstack-start-react-scoped-static",
   wrapperTemplate: (componentPath) => `
     import React from 'react';
     import Component from '${componentPath}';

@@ -243,9 +243,21 @@ var A = (t) => {
 	return e.createElement(j, Object.assign({ t: n }, t));
 };
 //#endregion
-//#region src/components/pages/careers/OpenPositions.tsx
+//#region src/i18n/config.tsx
 function N() {
-	let { t: e } = E(), t = [
+	let { t: e, ...t } = E();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+function P(e) {
+	return /* @__PURE__ */ s(M, { ...e });
+}
+//#endregion
+//#region src/components/pages/careers/OpenPositions.tsx
+function F() {
+	let { t: e } = N(), t = [
 		{
 			title: e("openPositions.seniorFrontendEngineer", "Senior Frontend Engineer"),
 			location: e("openPositions.remote", "Remote"),
@@ -284,7 +296,7 @@ function N() {
 	];
 	return /* @__PURE__ */ c(o, { children: [/* @__PURE__ */ s("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
-		children: /* @__PURE__ */ s(M, {
+		children: /* @__PURE__ */ s(P, {
 			keyName: "openPositions.openPositions",
 			defaultValue: "Open Positions"
 		})
@@ -321,7 +333,7 @@ function N() {
 			] }), /* @__PURE__ */ s("button", {
 				type: "button",
 				className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-				children: /* @__PURE__ */ s(M, {
+				children: /* @__PURE__ */ s(P, {
 					keyName: "openPositions.applyNow",
 					defaultValue: "Apply Now"
 				})
@@ -330,4 +342,4 @@ function N() {
 	})] });
 }
 //#endregion
-export { N as default };
+export { F as default };

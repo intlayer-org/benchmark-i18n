@@ -1,6 +1,7 @@
 {
-  "sampleResults": "样本结果",
   "bundleSize": "包大小",
+  "lazyLoading": "延迟加载",
+  "library": "Library",
   "lookupTime": "查询时间",
-  "lazyLoading": "延迟加载"
+  "sampleResults": "样本结果"
 }

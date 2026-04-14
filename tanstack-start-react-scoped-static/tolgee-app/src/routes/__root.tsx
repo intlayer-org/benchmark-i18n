@@ -11,7 +11,7 @@ import { T } from "../i18n/tolgee";
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { tolgee, rootLocales } from "../i18n/tolgee";
+import { tolgee } from "../i18n/tolgee";
 import { defaultLocale } from "../i18n/config";
 
 import appCss from "../styles.css?url";

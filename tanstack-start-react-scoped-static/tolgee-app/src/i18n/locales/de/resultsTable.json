@@ -1,6 +1,7 @@
 {
-  "sampleResults": "Beispielergebnisse",
   "bundleSize": "Bundle-Größe",
+  "lazyLoading": "Lazy Loading",
+  "library": "Library",
   "lookupTime": "Suchzeit",
-  "lazyLoading": "Lazy Loading"
+  "sampleResults": "Beispielergebnisse"
 }

@@ -243,56 +243,7 @@ var P = (e) => {
 }, I = (e) => {
 	let { t } = k();
 	return i.createElement(F, Object.assign({ t }, e));
-};
-//#endregion
-//#region src/components/ThemeToggle.tsx
-function L() {
-	if (typeof window > "u") return "auto";
-	let e = window.localStorage.getItem("theme");
-	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
-}
-function R(e) {
-	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
-	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
-}
-function z() {
-	let { t: e } = A(), [t, n] = u("auto");
-	s(() => {
-		let e = L();
-		n(e), R(e);
-	}, []), s(() => {
-		if (t !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => R("auto");
-		return e.addEventListener("change", n), () => {
-			e.removeEventListener("change", n);
-		};
-	}, [t]);
-	function r() {
-		let e = t === "light" ? "dark" : t === "dark" ? "auto" : "light";
-		n(e), R(e), window.localStorage.setItem("theme", e);
-	}
-	let i = e(t === "auto" ? "themeToggle.themeModeAutoSystemClick" : t === "light" ? "themeToggle.themeModeLightClick" : "themeToggle.themeModeDarkClick");
-	return /* @__PURE__ */ d("button", {
-		type: "button",
-		onClick: r,
-		"aria-label": i,
-		title: i,
-		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
-		children: t === "auto" ? /* @__PURE__ */ d(I, {
-			keyName: "themeToggle.themeAuto",
-			defaultValue: "Theme: Auto"
-		}) : t === "dark" ? /* @__PURE__ */ d(I, {
-			keyName: "themeToggle.themeDark",
-			defaultValue: "Theme: Dark"
-		}) : /* @__PURE__ */ d(I, {
-			keyName: "themeToggle.themeLight",
-			defaultValue: "Theme: Light"
-		})
-	});
-}
-//#endregion
-//#region src/i18n/config.ts
-var B = [
+}, L = [
 	"en",
 	"fr",
 	"es",
@@ -303,7 +254,7 @@ var B = [
 	"ja",
 	"ko",
 	"ru"
-], V = (e) => {
+], R = (e) => {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
@@ -311,9 +262,65 @@ var B = [
 		return e.toUpperCase();
 	}
 };
+function z() {
+	let { t: e, ...t } = A();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+function B(e) {
+	return /* @__PURE__ */ d(I, { ...e });
+}
+//#endregion
+//#region src/components/ThemeToggle.tsx
+function V() {
+	if (typeof window > "u") return "auto";
+	let e = window.localStorage.getItem("theme");
+	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
+}
+function H(e) {
+	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
+	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
+}
+function U() {
+	let { t: e } = z(), [t, n] = u("auto");
+	s(() => {
+		let e = V();
+		n(e), H(e);
+	}, []), s(() => {
+		if (t !== "auto") return;
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => H("auto");
+		return e.addEventListener("change", n), () => {
+			e.removeEventListener("change", n);
+		};
+	}, [t]);
+	function r() {
+		let e = t === "light" ? "dark" : t === "dark" ? "auto" : "light";
+		n(e), H(e), window.localStorage.setItem("theme", e);
+	}
+	let i = e(t === "auto" ? "themeToggle.themeModeAutoSystemClick" : t === "light" ? "themeToggle.themeModeLightClick" : "themeToggle.themeModeDarkClick");
+	return /* @__PURE__ */ d("button", {
+		type: "button",
+		onClick: r,
+		"aria-label": i,
+		title: i,
+		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
+		children: t === "auto" ? /* @__PURE__ */ d(B, {
+			keyName: "themeToggle.themeAuto",
+			defaultValue: "Theme: Auto"
+		}) : t === "dark" ? /* @__PURE__ */ d(B, {
+			keyName: "themeToggle.themeDark",
+			defaultValue: "Theme: Dark"
+		}) : /* @__PURE__ */ d(B, {
+			keyName: "themeToggle.themeLight",
+			defaultValue: "Theme: Light"
+		})
+	});
+}
 //#endregion
 //#region src/components/LocaleSwitcher.tsx
-function H() {
+function W() {
 	let e = n({ strict: !1 }).locale ?? "en", r = t(), i = (e) => {
 		r({
 			to: ".",
@@ -329,16 +336,16 @@ function H() {
 			value: e,
 			onChange: (e) => i(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: B.map((e) => /* @__PURE__ */ d("option", {
+			children: L.map((e) => /* @__PURE__ */ d("option", {
 				value: e,
-				children: V(e)
+				children: R(e)
 			}, e))
 		})
 	});
 }
 //#endregion
 //#region src/hooks/usePerformanceMeasure.ts
-function U(e) {
+function G(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), c(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -350,9 +357,9 @@ function U(e) {
 }
 //#endregion
 //#region src/components/Header.tsx
-function W() {
-	let { t } = A();
-	U("Header");
+function K() {
+	let { t } = z();
+	G("Header");
 	let [i, a] = u(!1), o = n({ strict: !1 }).locale ?? "en", s = [
 		{
 			to: "/$locale/products",
@@ -407,7 +414,7 @@ function W() {
 							activeOptions: { exact: !0 },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: /* @__PURE__ */ d(I, {
+							children: /* @__PURE__ */ d(B, {
 								keyName: "header.home",
 								defaultValue: "Home"
 							})
@@ -417,7 +424,7 @@ function W() {
 							params: { locale: o },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: /* @__PURE__ */ d(I, {
+							children: /* @__PURE__ */ d(B, {
 								keyName: "header.methodology",
 								defaultValue: "Methodology"
 							})
@@ -430,7 +437,7 @@ function W() {
 								onMouseEnter: () => a(!0),
 								onMouseLeave: () => a(!1),
 								onClick: () => a(!i),
-								children: [/* @__PURE__ */ d(I, {
+								children: [/* @__PURE__ */ d(B, {
 									keyName: "header.mockPages",
 									defaultValue: "Mock Pages"
 								}), /* @__PURE__ */ d(r, {
@@ -465,7 +472,7 @@ function W() {
 						className: "text-muted-foreground transition hover:text-foreground",
 						children: [/* @__PURE__ */ d("span", {
 							className: "sr-only",
-							children: /* @__PURE__ */ d(I, {
+							children: /* @__PURE__ */ d(B, {
 								keyName: "header.goToGithub",
 								defaultValue: "Go to GitHub"
 							})
@@ -480,12 +487,12 @@ function W() {
 							})
 						})]
 					}),
-					/* @__PURE__ */ d(H, {}),
-					/* @__PURE__ */ d(z, {})
+					/* @__PURE__ */ d(W, {}),
+					/* @__PURE__ */ d(U, {})
 				]
 			})]
 		})
 	});
 }
 //#endregion
-export { W as default };
+export { K as default };

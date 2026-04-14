@@ -1,8 +1,18 @@
 {
-  "preferences": "設定",
-  "emailNotifications": "メール通知",
-  "receiveWeeklyBenchmarkReports": "ベンチマーク週報を受け取る",
+  "arabicAr": "Arabic (ar)",
+  "chineseSimplifiedZhCn": "Chinese (Simplified, zh-CN)",
   "darkMode": "ダークモード",
-  "useDarkColorScheme": "ダークカラー体系を使用する",
-  "defaultLanguage": "デフォルト言語"
+  "defaultLanguage": "デフォルト言語",
+  "emailNotifications": "メール通知",
+  "englishEn": "English (en)",
+  "frenchFr": "French (fr)",
+  "germanDe": "German (de)",
+  "japaneseJa": "Japanese (ja)",
+  "preferences": "設定",
+  "receiveWeeklyBenchmark": "Receive weekly benchmark reports",
+  "receiveWeeklyBenchmarkReports": "ベンチマーク週報を受け取る",
+  "spanishEs": "Spanish (es)",
+  "toggleDarkMode": "Toggle dark mode",
+  "toggleNotifications": "Toggle Notifications",
+  "useDarkColorScheme": "ダークカラー体系を使用する"
 }

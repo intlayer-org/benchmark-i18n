@@ -224,11 +224,16 @@ var D = (t) => {
 	return e.createElement(O, Object.assign({ t: n }, t));
 };
 //#endregion
+//#region src/i18n/config.tsx
+function A(e) {
+	return /* @__PURE__ */ o(k, { ...e });
+}
+//#endregion
 //#region src/components/pages/home/ResultsTable.tsx
-function A() {
+function j() {
 	return /* @__PURE__ */ s("section", { children: [/* @__PURE__ */ o("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
-		children: /* @__PURE__ */ o(k, {
+		children: /* @__PURE__ */ o(A, {
 			keyName: "resultsTable.sampleResults",
 			defaultValue: "Sample Results"
 		})
@@ -241,28 +246,28 @@ function A() {
 				children: /* @__PURE__ */ s("tr", { children: [
 					/* @__PURE__ */ o("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
-						children: /* @__PURE__ */ o(k, {
+						children: /* @__PURE__ */ o(A, {
 							keyName: "resultsTable.library",
 							defaultValue: "Library"
 						})
 					}),
 					/* @__PURE__ */ o("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
-						children: /* @__PURE__ */ o(k, {
+						children: /* @__PURE__ */ o(A, {
 							keyName: "resultsTable.bundleSize",
 							defaultValue: "Bundle Size"
 						})
 					}),
 					/* @__PURE__ */ o("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
-						children: /* @__PURE__ */ o(k, {
+						children: /* @__PURE__ */ o(A, {
 							keyName: "resultsTable.lookupTime",
 							defaultValue: "Lookup Time"
 						})
 					}),
 					/* @__PURE__ */ o("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
-						children: /* @__PURE__ */ o(k, {
+						children: /* @__PURE__ */ o(A, {
 							keyName: "resultsTable.lazyLoading",
 							defaultValue: "Lazy Loading"
 						})
@@ -318,4 +323,4 @@ function A() {
 	})] });
 }
 //#endregion
-export { A as default };
+export { j as default };

@@ -243,9 +243,21 @@ var k = (t) => {
 	return e.createElement(A, Object.assign({ t: n }, t));
 };
 //#endregion
-//#region src/components/pages/blog/BlogList.tsx
+//#region src/i18n/config.tsx
 function M() {
-	let { t: e } = T();
+	let { t: e, ...t } = T();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+function N(e) {
+	return /* @__PURE__ */ o(j, { ...e });
+}
+//#endregion
+//#region src/components/pages/blog/BlogList.tsx
+function P() {
+	let { t: e } = M();
 	return /* @__PURE__ */ o("div", {
 		className: "grid gap-6 md:grid-cols-2",
 		children: [
@@ -309,7 +321,7 @@ function M() {
 				/* @__PURE__ */ s("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
-					children: [/* @__PURE__ */ o(j, {
+					children: [/* @__PURE__ */ o(N, {
 						keyName: "common.readMore",
 						defaultValue: "Read More"
 					}), " →"]
@@ -319,4 +331,4 @@ function M() {
 	});
 }
 //#endregion
-export { M as default };
+export { P as default };

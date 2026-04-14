@@ -224,14 +224,19 @@ var O = (t) => {
 	return e.createElement(k, Object.assign({ t: n }, t));
 };
 //#endregion
+//#region src/i18n/config.tsx
+function j(e) {
+	return /* @__PURE__ */ s(A, { ...e });
+}
+//#endregion
 //#region src/components/pages/settings/ProfileSection.tsx
-function j() {
+function M() {
 	let e = i(), t = i();
 	return /* @__PURE__ */ c("section", {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [/* @__PURE__ */ s("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: /* @__PURE__ */ s(A, {
+			children: /* @__PURE__ */ s(j, {
 				keyName: "profileSection.profile",
 				defaultValue: "Profile"
 			})
@@ -240,7 +245,7 @@ function j() {
 			children: [/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("label", {
 				htmlFor: e,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: /* @__PURE__ */ s(A, {
+				children: /* @__PURE__ */ s(j, {
 					keyName: "profileSection.displayName",
 					defaultValue: "Display Name"
 				})
@@ -251,7 +256,7 @@ function j() {
 			})] }), /* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("label", {
 				htmlFor: t,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: /* @__PURE__ */ s(A, {
+				children: /* @__PURE__ */ s(j, {
 					keyName: "profileSection.email",
 					defaultValue: "Email"
 				})
@@ -264,4 +269,4 @@ function j() {
 	});
 }
 //#endregion
-export { j as default };
+export { M as default };

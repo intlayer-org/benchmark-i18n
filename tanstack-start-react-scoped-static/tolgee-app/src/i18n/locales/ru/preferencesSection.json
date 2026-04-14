@@ -1,8 +1,18 @@
 {
-  "preferences": "Настройки",
-  "emailNotifications": "Email-уведомления",
-  "receiveWeeklyBenchmarkReports": "Получать еженедельные отчеты о бенчмарках",
+  "arabicAr": "Arabic (ar)",
+  "chineseSimplifiedZhCn": "Chinese (Simplified, zh-CN)",
   "darkMode": "Темный режим",
-  "useDarkColorScheme": "Использовать темную цветовою схему",
-  "defaultLanguage": "Язык по умолчанию"
+  "defaultLanguage": "Язык по умолчанию",
+  "emailNotifications": "Email-уведомления",
+  "englishEn": "English (en)",
+  "frenchFr": "French (fr)",
+  "germanDe": "German (de)",
+  "japaneseJa": "Japanese (ja)",
+  "preferences": "Настройки",
+  "receiveWeeklyBenchmark": "Receive weekly benchmark reports",
+  "receiveWeeklyBenchmarkReports": "Получать еженедельные отчеты о бенчмарках",
+  "spanishEs": "Spanish (es)",
+  "toggleDarkMode": "Toggle dark mode",
+  "toggleNotifications": "Toggle Notifications",
+  "useDarkColorScheme": "Использовать темную цветовою схему"
 }

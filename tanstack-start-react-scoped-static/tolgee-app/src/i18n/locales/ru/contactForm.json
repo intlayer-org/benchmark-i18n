@@ -1,8 +1,17 @@
 {
-  "name": "Имя",
+  "bugReport": "Bug Report",
+  "contribution": "Contribution",
   "email": "Email",
-  "subject": "Тема",
+  "emailPlaceholder": "you@example.com",
   "message": "Сообщение",
+  "messagePlaceholder": "Your message...",
+  "methodologyQuestion": "Methodology Question",
+  "name": "Имя",
+  "newBenchmarkIdea": "New Benchmark Idea",
+  "other": "Other",
   "sendMessage": "Отправить сообщение",
-  "wellGetBackTo": "Мы ответим вам в течение 48 часов."
+  "subject": "Тема",
+  "topic": "Topic",
+  "wellGetBackTo": "Мы ответим вам в течение 48 часов.",
+  "yourName": "Your name"
 }

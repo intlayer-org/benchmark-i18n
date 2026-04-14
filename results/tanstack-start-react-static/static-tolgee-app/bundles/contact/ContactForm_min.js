@@ -243,9 +243,21 @@ var A = (t) => {
 	return e.createElement(j, Object.assign({ t: n }, t));
 };
 //#endregion
-//#region src/components/pages/contact/ContactForm.tsx
+//#region src/i18n/config.tsx
 function N() {
-	let { t: e } = E(), t = i(), n = i(), r = i(), a = i();
+	let { t: e, ...t } = E();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+function P(e) {
+	return /* @__PURE__ */ s(M, { ...e });
+}
+//#endregion
+//#region src/components/pages/contact/ContactForm.tsx
+function F() {
+	let { t: e } = N(), t = i(), n = i(), r = i(), a = i();
 	return /* @__PURE__ */ c("form", {
 		className: "space-y-6",
 		onSubmit: (e) => e.preventDefault(),
@@ -255,7 +267,7 @@ function N() {
 				children: [/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("label", {
 					htmlFor: t,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: /* @__PURE__ */ s(M, {
+					children: /* @__PURE__ */ s(P, {
 						keyName: "contactForm.name",
 						defaultValue: "Name"
 					})
@@ -266,7 +278,7 @@ function N() {
 				})] }), /* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("label", {
 					htmlFor: n,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: /* @__PURE__ */ s(M, {
+					children: /* @__PURE__ */ s(P, {
 						keyName: "contactForm.email",
 						defaultValue: "Email"
 					})
@@ -280,7 +292,7 @@ function N() {
 			/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("label", {
 				htmlFor: r,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: /* @__PURE__ */ s(M, {
+				children: /* @__PURE__ */ s(P, {
 					keyName: "contactForm.topic",
 					defaultValue: "Topic"
 				})
@@ -298,7 +310,7 @@ function N() {
 			/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("label", {
 				htmlFor: a,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: /* @__PURE__ */ s(M, {
+				children: /* @__PURE__ */ s(P, {
 					keyName: "contactForm.message",
 					defaultValue: "Message"
 				})
@@ -311,7 +323,7 @@ function N() {
 			/* @__PURE__ */ s("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-				children: /* @__PURE__ */ s(M, {
+				children: /* @__PURE__ */ s(P, {
 					keyName: "contactForm.sendMessage",
 					defaultValue: "Send Message"
 				})
@@ -320,4 +332,4 @@ function N() {
 	});
 }
 //#endregion
-export { N as default };
+export { F as default };

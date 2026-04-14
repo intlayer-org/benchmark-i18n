@@ -254,7 +254,7 @@ var useTranslateInternal = (ns, options) => {
 		isLoading: !isLoaded
 	};
 };
-var useTranslate = (ns, options) => {
+var useTranslate$1 = (ns, options) => {
 	const { t: tInternal, isLoading } = useTranslateInternal(ns, options);
 	return {
 		t: useCallback((...params) => {
@@ -306,10 +306,22 @@ var TBase = (props) => {
 	}));
 	return React.createElement(React.Fragment, null, translation);
 };
-var T = (props) => {
+var T$1 = (props) => {
 	const { t } = useTranslateInternal();
 	return React.createElement(TBase, Object.assign({ t }, props));
 };
+//#endregion
+//#region src/i18n/config.tsx
+function useTranslate() {
+	const { t, ...rest } = useTranslate$1();
+	return {
+		...rest,
+		t: (key, defaultValue) => t(key, defaultValue)
+	};
+}
+function T(props) {
+	return /* @__PURE__ */ jsx(T$1, { ...props });
+}
 //#endregion
 //#region src/components/ThemeToggle.tsx
 function getInitialMode() {

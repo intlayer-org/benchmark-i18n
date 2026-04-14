@@ -1,9 +1,14 @@
 {
-  "whyJoinUs": "Perché unirti a noi?",
-  "remoteFirst": "Remoto-first",
-  "workFromAnywhereFully": "Lavora da ovunque. Team completamente distribuito in 6 fusi orari.",
-  "openSource": "Open Source",
   "allOurWorkIs": "Tutto il nostro lavoro è open source. Costruisci il tuo portfolio pubblico mentre generi un impatto.",
+  "competitivePay": "Competitive pay",
   "impactful": "Impattante",
+  "openSource": "Open Source",
+  "openSourceTime": "Open source time",
+  "percentTimeForOss": "20% time for OSS contributions",
+  "remoteFirst": "Remoto-first",
+  "topOfMarketCompensation": "Top-of-market compensation",
+  "whyJoinUs": "Perché unirti a noi?",
+  "workFromAnywhere": "Work from anywhere in the world",
+  "workFromAnywhereFully": "Lavora da ovunque. Team completamente distribuito in 6 fusi orari.",
   "yourWorkDirectlyHelps": "Il tuo lavoro aiuta direttamente i sviluppatori a creare applicazioni internazionalizzate migliori e più veloci."
 }

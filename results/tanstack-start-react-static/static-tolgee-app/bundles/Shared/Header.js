@@ -256,7 +256,7 @@ var useTranslateInternal = (ns, options) => {
 		isLoading: !isLoaded
 	};
 };
-var useTranslate = (ns, options) => {
+var useTranslate$1 = (ns, options) => {
 	const { t: tInternal, isLoading } = useTranslateInternal(ns, options);
 	return {
 		t: useCallback((...params) => {
@@ -308,10 +308,42 @@ var TBase = (props) => {
 	}));
 	return React.createElement(React.Fragment, null, translation);
 };
-var T = (props) => {
+var T$1 = (props) => {
 	const { t } = useTranslateInternal();
 	return React.createElement(TBase, Object.assign({ t }, props));
 };
+//#endregion
+//#region src/i18n/config.tsx
+var locales = [
+	"en",
+	"fr",
+	"es",
+	"de",
+	"it",
+	"pt",
+	"zh",
+	"ja",
+	"ko",
+	"ru"
+];
+var getLocaleName = (locale) => {
+	try {
+		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
+		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
+	} catch (e) {
+		return locale.toUpperCase();
+	}
+};
+function useTranslate() {
+	const { t, ...rest } = useTranslate$1();
+	return {
+		...rest,
+		t: (key, defaultValue) => t(key, defaultValue)
+	};
+}
+function T(props) {
+	return /* @__PURE__ */ jsx(T$1, { ...props });
+}
 //#endregion
 //#region src/components/ThemeToggle.tsx
 function getInitialMode() {
@@ -371,28 +403,6 @@ function ThemeToggle() {
 		})
 	});
 }
-//#endregion
-//#region src/i18n/config.ts
-var locales = [
-	"en",
-	"fr",
-	"es",
-	"de",
-	"it",
-	"pt",
-	"zh",
-	"ja",
-	"ko",
-	"ru"
-];
-var getLocaleName = (locale) => {
-	try {
-		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
-		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
-	} catch (e) {
-		return locale.toUpperCase();
-	}
-};
 //#endregion
 //#region src/components/LocaleSwitcher.tsx
 function LocaleSwitcher() {

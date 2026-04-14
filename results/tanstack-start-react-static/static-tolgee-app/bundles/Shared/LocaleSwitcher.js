@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "@tanstack/react-router";
 import { jsx } from "react/jsx-runtime";
-//#region src/i18n/config.ts
+//#region src/i18n/config.tsx
 var locales = [
 	"en",
 	"fr",

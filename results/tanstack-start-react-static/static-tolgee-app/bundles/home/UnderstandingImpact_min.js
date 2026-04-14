@@ -224,14 +224,19 @@ var D = (t) => {
 	return e.createElement(O, Object.assign({ t: n }, t));
 };
 //#endregion
+//#region src/i18n/config.tsx
+function A(e) {
+	return /* @__PURE__ */ o(k, { ...e });
+}
+//#endregion
 //#region src/components/pages/home/UnderstandingImpact.tsx
-function A() {
+function j() {
 	return /* @__PURE__ */ s("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
 			/* @__PURE__ */ o("h2", {
 				className: "text-2xl font-bold text-foreground",
-				children: /* @__PURE__ */ o(k, {
+				children: /* @__PURE__ */ o(A, {
 					keyName: "understandingImpact.understandingTheImpact",
 					defaultValue: "Understanding the Impact"
 				})
@@ -241,14 +246,14 @@ function A() {
 				children: [
 					/* @__PURE__ */ o("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: /* @__PURE__ */ o(k, {
+						children: /* @__PURE__ */ o(A, {
 							keyName: "understandingImpact.whyASingleLargeJson",
 							defaultValue: "Why a single large JSON can hurt performance"
 						})
 					}),
 					/* @__PURE__ */ o("p", {
 						className: "text-sm text-muted-foreground",
-						children: /* @__PURE__ */ o(k, {
+						children: /* @__PURE__ */ o(A, {
 							keyName: "understandingImpact.manyI18nLibrariesStore",
 							defaultValue: "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
 						})
@@ -256,15 +261,15 @@ function A() {
 					/* @__PURE__ */ s("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							/* @__PURE__ */ o("li", { children: /* @__PURE__ */ o(k, {
+							/* @__PURE__ */ o("li", { children: /* @__PURE__ */ o(A, {
 								keyName: "understandingImpact.theJsonMustBeParsed",
 								defaultValue: "The JSON must be parsed on every page load — blocking the main thread."
 							}) }),
-							/* @__PURE__ */ o("li", { children: /* @__PURE__ */ o(k, {
+							/* @__PURE__ */ o("li", { children: /* @__PURE__ */ o(A, {
 								keyName: "understandingImpact.contextBasedArchitecturesCan",
 								defaultValue: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
 							}) }),
-							/* @__PURE__ */ o("li", { children: /* @__PURE__ */ o(k, {
+							/* @__PURE__ */ o("li", { children: /* @__PURE__ */ o(A, {
 								keyName: "understandingImpact.duringServerSideRenderingThe",
 								defaultValue: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
 							}) })
@@ -277,14 +282,14 @@ function A() {
 				children: [
 					/* @__PURE__ */ o("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: /* @__PURE__ */ o(k, {
+						children: /* @__PURE__ */ o(A, {
 							keyName: "understandingImpact.theTradeOffsOfDynamic",
 							defaultValue: "The trade-offs of dynamic loading"
 						})
 					}),
 					/* @__PURE__ */ o("p", {
 						className: "text-sm text-muted-foreground",
-						children: /* @__PURE__ */ o(k, {
+						children: /* @__PURE__ */ o(A, {
 							keyName: "understandingImpact.splittingTranslationsIntoPerRoute",
 							defaultValue: "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
 						})
@@ -295,13 +300,13 @@ function A() {
 							/* @__PURE__ */ s("li", { children: [
 								/* @__PURE__ */ o("strong", {
 									className: "text-foreground",
-									children: /* @__PURE__ */ o(k, {
+									children: /* @__PURE__ */ o(A, {
 										keyName: "understandingImpact.waterfallRequests",
 										defaultValue: "Waterfall requests:"
 									})
 								}),
 								" ",
-								/* @__PURE__ */ o(k, {
+								/* @__PURE__ */ o(A, {
 									keyName: "understandingImpact.theAppMustFirstLoad",
 									defaultValue: "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
 								})
@@ -309,13 +314,13 @@ function A() {
 							/* @__PURE__ */ s("li", { children: [
 								/* @__PURE__ */ o("strong", {
 									className: "text-foreground",
-									children: /* @__PURE__ */ o(k, {
+									children: /* @__PURE__ */ o(A, {
 										keyName: "understandingImpact.flashOfUntranslatedContent",
 										defaultValue: "Flash of untranslated content (FOUC):"
 									})
 								}),
 								" ",
-								/* @__PURE__ */ o(k, {
+								/* @__PURE__ */ o(A, {
 									keyName: "understandingImpact.usersMayBrieflySeeTranslation",
 									defaultValue: "users may briefly see translation keys or a fallback language before the chunk arrives."
 								})
@@ -323,13 +328,13 @@ function A() {
 							/* @__PURE__ */ s("li", { children: [
 								/* @__PURE__ */ o("strong", {
 									className: "text-foreground",
-									children: /* @__PURE__ */ o(k, {
+									children: /* @__PURE__ */ o(A, {
 										keyName: "understandingImpact.cacheInvalidation",
 										defaultValue: "Cache invalidation:"
 									})
 								}),
 								" ",
-								/* @__PURE__ */ o(k, {
+								/* @__PURE__ */ o(A, {
 									keyName: "understandingImpact.updatingTranslationsRequiresCache",
 									defaultValue: "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
 								})
@@ -342,13 +347,13 @@ function A() {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [/* @__PURE__ */ o("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
-					children: /* @__PURE__ */ o(k, {
+					children: /* @__PURE__ */ o(A, {
 						keyName: "understandingImpact.whatThisBenchmarkMeasures",
 						defaultValue: "What this benchmark measures"
 					})
 				}), /* @__PURE__ */ o("p", {
 					className: "text-sm text-muted-foreground",
-					children: /* @__PURE__ */ o(k, {
+					children: /* @__PURE__ */ o(A, {
 						keyName: "understandingImpact.thisTestAppProvidesA",
 						defaultValue: "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
 					})
@@ -358,4 +363,4 @@ function A() {
 	});
 }
 //#endregion
-export { A as default };
+export { j as default };

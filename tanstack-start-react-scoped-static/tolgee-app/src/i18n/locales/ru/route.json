@@ -1,5 +1,7 @@
 {
+  "oopsPageNotFound": "Oops! Page not found.",
+  "returnToHome": "Return to Home",
+  "route.couldNotMeasureHydrationDuration": "Не удалось измерить продолжительность гидратации:",
   "route.oopsPageNotFound": "Упс! Страница не найдена",
-  "route.returnToHome": "Вернуться на главную",
-  "route.couldNotMeasureHydrationDuration": "Не удалось измерить продолжительность гидратации:"
+  "route.returnToHome": "Вернуться на главную"
 }

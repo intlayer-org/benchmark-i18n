@@ -207,9 +207,18 @@ var S = () => {
 	};
 };
 //#endregion
-//#region src/components/pages/careers/CareersBenefits.tsx
+//#region src/i18n/config.tsx
 function E() {
-	let { t: e } = T();
+	let { t: e, ...t } = T();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+//#endregion
+//#region src/components/pages/careers/CareersBenefits.tsx
+function D() {
+	let { t: e } = E();
 	return /* @__PURE__ */ o("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
 		children: [
@@ -238,4 +247,4 @@ function E() {
 	});
 }
 //#endregion
-export { E as default };
+export { D as default };

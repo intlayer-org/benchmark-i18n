@@ -222,28 +222,36 @@ var O = (t) => {
 }, A = (t) => {
 	let { t: n } = w();
 	return e.createElement(k, Object.assign({ t: n }, t));
-}, j = () => /* @__PURE__ */ s("div", {
+};
+//#endregion
+//#region src/i18n/config.tsx
+function j(e) {
+	return /* @__PURE__ */ s(A, { ...e });
+}
+//#endregion
+//#region src/components/MockBanner.tsx
+var M = () => /* @__PURE__ */ s("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: /* @__PURE__ */ s(A, {
+	children: /* @__PURE__ */ s(j, {
 		keyName: "mockBanner",
 		defaultValue: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
 	})
 });
 //#endregion
 //#region src/components/pages/faq/FAQHeader.tsx
-function M() {
+function N() {
 	return /* @__PURE__ */ c(o, { children: [
-		/* @__PURE__ */ s(j, {}),
+		/* @__PURE__ */ s(M, {}),
 		/* @__PURE__ */ s("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
-			children: /* @__PURE__ */ s(A, {
+			children: /* @__PURE__ */ s(j, {
 				keyName: "faqHeader.frequentlyAskedQuestions",
 				defaultValue: "Frequently Asked Questions"
 			})
 		}),
 		/* @__PURE__ */ s("p", {
 			className: "mb-10 text-muted-foreground",
-			children: /* @__PURE__ */ s(A, {
+			children: /* @__PURE__ */ s(j, {
 				keyName: "faqHeader.everythingYouNeedToKnow",
 				defaultValue: "Everything you need to know about i18n Benchmark."
 			})
@@ -251,4 +259,4 @@ function M() {
 	] });
 }
 //#endregion
-export { M as default };
+export { N as default };

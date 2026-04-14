@@ -1,4 +1,5 @@
 {
-  "settings": "Настройки",
-  "manageYourAccountPreferences": "Управляйте настройками своего аккаунта и конфигурацией."
+  "manageYourAccount": "Manage your account settings and preferences.",
+  "manageYourAccountPreferences": "Управляйте настройками своего аккаунта и конфигурацией.",
+  "settings": "Настройки"
 }

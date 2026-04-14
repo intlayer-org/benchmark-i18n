@@ -1,13 +1,17 @@
 {
   "bundleSizeImpact": "Auswirkung auf die Bundle-Größe",
-  "theAdditionalJavascriptBytesSent": "Die zusätzlichen JavaScript-Bytes, die speziell aufgrund der Laufzeit der i18n-Bibliothek an den Client gesendet werden, plus die Übersetzungsdateien für das aktuelle Gebietsschema.",
-  "renderingOverhead": "Rendering-Overhead",
-  "howMuchExtraTimeThe": "Wie viel zusätzliche Zeit die i18n-Schicht zu jedem Komponenten-Rendering hinzufügt — gemessen mit actualDuration des React Profilers.",
-  "hydrationCost": "Hydratationskosten",
   "duringSsrTranslationDataIs": "Während des SSR werden Übersetzungsdaten in das HTML serialisiert. Große Wörterbücher erhöhen die HTML-Payload und verlangsamen die Hydratation — den Moment, in dem die Seite interaktiv wird.",
-  "lazyLoadingEffectiveness": "Effektivität von Lazy Loading",
-  "whetherSplittingTranslationsByRoute": "Ob das Aufteilen von Übersetzungen nach Route oder Namespace die anfängliche Belastung tatsächlich reduziert und welche Kompromisse es mit sich bringt (Waterfall-Anfragen, FOUC, Cache-Komplexität).",
-  "localeSwitchSpeed": "Geschwindigkeit des Sprachwechsels",
+  "duringSsrTranslationDataIsSerialized": "During SSR, translation data is serialized into the HTML. We measure the size of this payload and its effect on Time to Interactive (TTI).",
   "howFastTheAppCan": "Wie schnell die App zur Laufzeit von einer Sprache in eine andere wechseln kann — einschließlich des Abrufens neuer Übersetzungen, des erneuten Renderings von Komponenten und der Aktualisierung des DOM.",
-  "whatWeMeasure": "Was wir messen"
+  "howFastTheAppCanSwitchFromOne": "How fast the app can switch from one language to another. We measure the re-render time and any network delays for lazy-loaded locales.",
+  "howMuchExtraTimeThe": "Wie viel zusätzliche Zeit die i18n-Schicht zu jedem Komponenten-Rendering hinzufügt — gemessen mit actualDuration des React Profilers.",
+  "howMuchExtraTimeTheLibraryAdds": "How much extra time the library adds to the initial page load. This includes script execution and the time to fetch/parse translation data.",
+  "hydrationCost": "Hydratationskosten",
+  "lazyLoadingEffectiveness": "Effektivität von Lazy Loading",
+  "localeSwitchSpeed": "Geschwindigkeit des Sprachwechsels",
+  "renderingOverhead": "Rendering-Overhead",
+  "theAdditionalJavascriptBytes": "The additional Javascript bytes that the library adds to your production build. We measure both the library itself and its mandatory dependencies.",
+  "theAdditionalJavascriptBytesSent": "Die zusätzlichen JavaScript-Bytes, die speziell aufgrund der Laufzeit der i18n-Bibliothek an den Client gesendet werden, plus die Übersetzungsdateien für das aktuelle Gebietsschema.",
+  "whatWeMeasure": "Was wir messen",
+  "whetherSplittingTranslationsByRoute": "Ob das Aufteilen von Übersetzungen nach Route oder Namespace die anfängliche Belastung tatsächlich reduziert und welche Kompromisse es mit sich bringt (Waterfall-Anfragen, FOUC, Cache-Komplexität)."
 }

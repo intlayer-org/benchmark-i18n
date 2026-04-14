@@ -224,14 +224,19 @@ var O = (t) => {
 	return e.createElement(k, Object.assign({ t: n }, t));
 };
 //#endregion
+//#region src/i18n/config.tsx
+function j(e) {
+	return /* @__PURE__ */ s(A, { ...e });
+}
+//#endregion
 //#region src/components/pages/settings/ApiAccessSection.tsx
-function j() {
+function M() {
 	let e = i();
 	return /* @__PURE__ */ c("section", {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [/* @__PURE__ */ s("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: /* @__PURE__ */ s(A, {
+			children: /* @__PURE__ */ s(j, {
 				keyName: "apiAccessSection.apiAccess",
 				defaultValue: "API Access"
 			})
@@ -239,7 +244,7 @@ function j() {
 			/* @__PURE__ */ s("label", {
 				htmlFor: e,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: /* @__PURE__ */ s(A, {
+				children: /* @__PURE__ */ s(j, {
 					keyName: "apiAccessSection.apiKey",
 					defaultValue: "API Key"
 				})
@@ -254,7 +259,7 @@ function j() {
 				}), /* @__PURE__ */ s("button", {
 					type: "button",
 					className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
-					children: /* @__PURE__ */ s(A, {
+					children: /* @__PURE__ */ s(j, {
 						keyName: "common.copy",
 						defaultValue: "Copy"
 					})
@@ -262,7 +267,7 @@ function j() {
 			}),
 			/* @__PURE__ */ s("p", {
 				className: "mt-1 text-xs text-muted-foreground",
-				children: /* @__PURE__ */ s(A, {
+				children: /* @__PURE__ */ s(j, {
 					keyName: "apiAccessSection.useThisKeyTo",
 					defaultValue: "Use this key to access the benchmarking API programmatically."
 				})
@@ -271,4 +276,4 @@ function j() {
 	});
 }
 //#endregion
-export { j as default };
+export { M as default };

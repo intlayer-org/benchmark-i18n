@@ -260,10 +260,15 @@ var TBase = (props) => {
 	}));
 	return React.createElement(React.Fragment, null, translation);
 };
-var T = (props) => {
+var T$1 = (props) => {
 	const { t } = useTranslateInternal();
 	return React.createElement(TBase, Object.assign({ t }, props));
 };
+//#endregion
+//#region src/i18n/config.tsx
+function T(props) {
+	return /* @__PURE__ */ jsx(T$1, { ...props });
+}
 //#endregion
 //#region src/hooks/usePerformanceMeasure.ts
 /**

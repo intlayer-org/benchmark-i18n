@@ -224,21 +224,26 @@ var D = (t) => {
 	return e.createElement(O, Object.assign({ t: n }, t));
 };
 //#endregion
+//#region src/i18n/config.tsx
+function A(e) {
+	return /* @__PURE__ */ o(k, { ...e });
+}
+//#endregion
 //#region src/components/pages/settings/SettingsFooter.tsx
-function A() {
+function j() {
 	return /* @__PURE__ */ s("div", {
 		className: "flex justify-end gap-3",
 		children: [/* @__PURE__ */ o("button", {
 			type: "button",
 			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
-			children: /* @__PURE__ */ o(k, {
+			children: /* @__PURE__ */ o(A, {
 				keyName: "common.cancel",
 				defaultValue: "Cancel"
 			})
 		}), /* @__PURE__ */ o("button", {
 			type: "submit",
 			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-			children: /* @__PURE__ */ o(k, {
+			children: /* @__PURE__ */ o(A, {
 				keyName: "common.saveChanges",
 				defaultValue: "Save Changes"
 			})
@@ -246,4 +251,4 @@ function A() {
 	});
 }
 //#endregion
-export { A as default };
+export { j as default };

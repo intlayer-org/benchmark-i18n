@@ -222,12 +222,20 @@ var E = (t) => {
 }, O = (t) => {
 	let { t: n } = S();
 	return e.createElement(D, Object.assign({ t: n }, t));
-}, k = () => /* @__PURE__ */ o("div", {
+};
+//#endregion
+//#region src/i18n/config.tsx
+function k(e) {
+	return /* @__PURE__ */ o(O, { ...e });
+}
+//#endregion
+//#region src/components/MockBanner.tsx
+var A = () => /* @__PURE__ */ o("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: /* @__PURE__ */ o(O, {
+	children: /* @__PURE__ */ o(k, {
 		keyName: "mockBanner",
 		defaultValue: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
 	})
 });
 //#endregion
-export { k as default };
+export { A as default };

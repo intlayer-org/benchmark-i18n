@@ -243,9 +243,21 @@ var k = (t) => {
 	return e.createElement(A, Object.assign({ t: n }, t));
 };
 //#endregion
-//#region src/components/pages/products/ProductsGrid.tsx
+//#region src/i18n/config.tsx
 function M() {
-	let { t: e } = T();
+	let { t: e, ...t } = T();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+function N(e) {
+	return /* @__PURE__ */ o(j, { ...e });
+}
+//#endregion
+//#region src/components/pages/products/ProductsGrid.tsx
+function P() {
+	let { t: e } = M();
 	return /* @__PURE__ */ o("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
 		children: [
@@ -285,7 +297,7 @@ function M() {
 				}), /* @__PURE__ */ o("button", {
 					type: "button",
 					className: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-					children: /* @__PURE__ */ o(j, {
+					children: /* @__PURE__ */ o(N, {
 						keyName: "productsGrid.learnMore",
 						defaultValue: "Learn More"
 					})
@@ -295,4 +307,4 @@ function M() {
 	});
 }
 //#endregion
-export { M as default };
+export { P as default };

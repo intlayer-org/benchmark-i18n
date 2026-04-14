@@ -1,7 +1,10 @@
 import { Tolgee, DevTools, FormatSimple } from "@tolgee/web";
 import { getMessages } from "./getMessages";
 import { locales } from "./config";
-import { useTranslate as useTolgeeTranslate, T as TolgeeT } from "@tolgee/react";
+import {
+  useTranslate as useTolgeeTranslate,
+  T as TolgeeT,
+} from "@tolgee/react";
 
 // Generate root objects for every locale (e.g., { en: {...messages}, fr: {...messages}, de: {...messages} })
 export const rootLocales = locales.reduce(
@@ -26,8 +29,6 @@ export const tolgee = Tolgee()
     staticData: rootLocales,
   });
 
-
-
 // Extracts strict dot-notation keys from the JSON structure
 type Leaves<T> = T extends object
   ? {
@@ -37,7 +38,7 @@ type Leaves<T> = T extends object
     }[Extract<keyof T, string>]
   : never;
 
-export type TranslationKey = Leaves<typeof getMessages('en')>
+export type TranslationKey = Leaves<ReturnType<typeof getMessages>>;
 
 // Typed Hook
 export function useTranslate() {

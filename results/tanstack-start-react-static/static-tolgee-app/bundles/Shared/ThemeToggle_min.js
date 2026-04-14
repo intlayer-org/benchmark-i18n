@@ -243,31 +243,43 @@ var O = (t) => {
 	return e.createElement(k, Object.assign({ t: n }, t));
 };
 //#endregion
-//#region src/components/ThemeToggle.tsx
+//#region src/i18n/config.tsx
 function j() {
+	let { t: e, ...t } = w();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+function M(e) {
+	return /* @__PURE__ */ o(A, { ...e });
+}
+//#endregion
+//#region src/components/ThemeToggle.tsx
+function N() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function M(e) {
+function P(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function N() {
-	let { t: e } = w(), [t, n] = a("auto");
+function F() {
+	let { t: e } = j(), [t, n] = a("auto");
 	r(() => {
-		let e = j();
-		n(e), M(e);
+		let e = N();
+		n(e), P(e);
 	}, []), r(() => {
 		if (t !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => M("auto");
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => P("auto");
 		return e.addEventListener("change", n), () => {
 			e.removeEventListener("change", n);
 		};
 	}, [t]);
 	function i() {
 		let e = t === "light" ? "dark" : t === "dark" ? "auto" : "light";
-		n(e), M(e), window.localStorage.setItem("theme", e);
+		n(e), P(e), window.localStorage.setItem("theme", e);
 	}
 	let s = e(t === "auto" ? "themeToggle.themeModeAutoSystemClick" : t === "light" ? "themeToggle.themeModeLightClick" : "themeToggle.themeModeDarkClick");
 	return /* @__PURE__ */ o("button", {
@@ -276,17 +288,17 @@ function N() {
 		"aria-label": s,
 		title: s,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
-		children: t === "auto" ? /* @__PURE__ */ o(A, {
+		children: t === "auto" ? /* @__PURE__ */ o(M, {
 			keyName: "themeToggle.themeAuto",
 			defaultValue: "Theme: Auto"
-		}) : t === "dark" ? /* @__PURE__ */ o(A, {
+		}) : t === "dark" ? /* @__PURE__ */ o(M, {
 			keyName: "themeToggle.themeDark",
 			defaultValue: "Theme: Dark"
-		}) : /* @__PURE__ */ o(A, {
+		}) : /* @__PURE__ */ o(M, {
 			keyName: "themeToggle.themeLight",
 			defaultValue: "Theme: Light"
 		})
 	});
 }
 //#endregion
-export { N as default };
+export { F as default };

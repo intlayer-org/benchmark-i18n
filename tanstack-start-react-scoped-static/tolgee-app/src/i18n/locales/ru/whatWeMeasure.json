@@ -1,13 +1,17 @@
 {
   "bundleSizeImpact": "Влияние на размер бандла",
-  "theAdditionalJavascriptBytesSent": "Дополнительные байты JavaScript, отправляемые клиенту специально из-за рантайма библиотеки i18n, плюс файлы перевода для текущего языка.",
-  "renderingOverhead": "Затраты на рендеринг",
-  "howMuchExtraTimeThe": "Сколько дополнительного времени слой i18n добавляет к рендерингу каждого компонента — измеряется с помощью actualDuration в React Profiler.",
-  "hydrationCost": "Стоимость гидратации",
   "duringSsrTranslationDataIs": "Во время SSR данные перевода сериализуются в HTML. Большие словари увеличивают HTML-пейлоад и замедляют гидратацию — момент, когда страница становится интерактивной.",
-  "lazyLoadingEffectiveness": "Эффективность ленивой загрузки",
-  "whetherSplittingTranslationsByRoute": "Действительно ли разделение переводов по маршрутам или пространствам имен снижает начальную нагрузку, и какие компромиссы оно вносит (каскадные запросы, FOUC, сложность кэширования).",
-  "localeSwitchSpeed": "Скорость переключения языка",
+  "duringSsrTranslationDataIsSerialized": "During SSR, translation data is serialized into the HTML. We measure the size of this payload and its effect on Time to Interactive (TTI).",
   "howFastTheAppCan": "Как быстро приложение может переключаться с одного языка на другой во время выполнения — включая получение новых переводов, повторный рендеринг компонентов и обновление DOM.",
-  "whatWeMeasure": "Что мы измеряем"
+  "howFastTheAppCanSwitchFromOne": "How fast the app can switch from one language to another. We measure the re-render time and any network delays for lazy-loaded locales.",
+  "howMuchExtraTimeThe": "Сколько дополнительного времени слой i18n добавляет к рендерингу каждого компонента — измеряется с помощью actualDuration в React Profiler.",
+  "howMuchExtraTimeTheLibraryAdds": "How much extra time the library adds to the initial page load. This includes script execution and the time to fetch/parse translation data.",
+  "hydrationCost": "Стоимость гидратации",
+  "lazyLoadingEffectiveness": "Эффективность ленивой загрузки",
+  "localeSwitchSpeed": "Скорость переключения языка",
+  "renderingOverhead": "Затраты на рендеринг",
+  "theAdditionalJavascriptBytes": "The additional Javascript bytes that the library adds to your production build. We measure both the library itself and its mandatory dependencies.",
+  "theAdditionalJavascriptBytesSent": "Дополнительные байты JavaScript, отправляемые клиенту специально из-за рантайма библиотеки i18n, плюс файлы перевода для текущего языка.",
+  "whatWeMeasure": "Что мы измеряем",
+  "whetherSplittingTranslationsByRoute": "Действительно ли разделение переводов по маршрутам или пространствам имен снижает начальную нагрузку, и какие компромиссы оно вносит (каскадные запросы, FOUC, сложность кэширования)."
 }

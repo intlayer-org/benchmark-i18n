@@ -1,4 +1,5 @@
 {
-  "settings": "设置",
-  "manageYourAccountPreferences": "管理您的账户偏好和配置。"
+  "manageYourAccount": "Manage your account settings and preferences.",
+  "manageYourAccountPreferences": "管理您的账户偏好和配置。",
+  "settings": "设置"
 }

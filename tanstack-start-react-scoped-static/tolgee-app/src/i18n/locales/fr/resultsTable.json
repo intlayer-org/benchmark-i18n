@@ -1,6 +1,7 @@
 {
-  "sampleResults": "Exemples de résultats",
   "bundleSize": "Taille du bundle",
+  "lazyLoading": "Chargement différé",
+  "library": "Library",
   "lookupTime": "Temps de recherche",
-  "lazyLoading": "Chargement différé"
+  "sampleResults": "Exemples de résultats"
 }

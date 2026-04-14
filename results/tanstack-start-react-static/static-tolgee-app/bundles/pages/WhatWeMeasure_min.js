@@ -243,9 +243,21 @@ var k = (t) => {
 	return e.createElement(A, Object.assign({ t: n }, t));
 };
 //#endregion
-//#region src/components/pages/about/WhatWeMeasure.tsx
+//#region src/i18n/config.tsx
 function M() {
-	let { t: e } = T(), t = [
+	let { t: e, ...t } = T();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+function N(e) {
+	return /* @__PURE__ */ o(j, { ...e });
+}
+//#endregion
+//#region src/components/pages/about/WhatWeMeasure.tsx
+function P() {
+	let { t: e } = M(), t = [
 		{
 			metric: e("whatWeMeasure.bundleSizeImpact", "Bundle size impact"),
 			desc: e("whatWeMeasure.theAdditionalJavascriptBytes", "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.")
@@ -271,7 +283,7 @@ function M() {
 		className: "mt-12 mx-auto max-w-3xl",
 		children: [/* @__PURE__ */ o("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
-			children: /* @__PURE__ */ o(j, {
+			children: /* @__PURE__ */ o(N, {
 				keyName: "whatWeMeasure.whatWeMeasure",
 				defaultValue: "What We Measure"
 			})
@@ -291,4 +303,4 @@ function M() {
 	});
 }
 //#endregion
-export { M as default };
+export { P as default };

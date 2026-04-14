@@ -1,4 +1,5 @@
 {
-  "settings": "Configuración",
-  "manageYourAccountPreferences": "Gestione sus preferencias de cuenta y configuración."
+  "manageYourAccount": "Manage your account settings and preferences.",
+  "manageYourAccountPreferences": "Gestione sus preferencias de cuenta y configuración.",
+  "settings": "Configuración"
 }

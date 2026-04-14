@@ -1,8 +1,18 @@
 {
-  "preferences": "Preferencias",
-  "emailNotifications": "Notificaciones por correo electrónico",
-  "receiveWeeklyBenchmarkReports": "Recibir informes semanales de benchmark",
+  "arabicAr": "Arabic (ar)",
+  "chineseSimplifiedZhCn": "Chinese (Simplified, zh-CN)",
   "darkMode": "Modo oscuro",
-  "useDarkColorScheme": "Usar esquema de colores oscuros",
-  "defaultLanguage": "Idioma predeterminado"
+  "defaultLanguage": "Idioma predeterminado",
+  "emailNotifications": "Notificaciones por correo electrónico",
+  "englishEn": "English (en)",
+  "frenchFr": "French (fr)",
+  "germanDe": "German (de)",
+  "japaneseJa": "Japanese (ja)",
+  "preferences": "Preferencias",
+  "receiveWeeklyBenchmark": "Receive weekly benchmark reports",
+  "receiveWeeklyBenchmarkReports": "Recibir informes semanales de benchmark",
+  "spanishEs": "Spanish (es)",
+  "toggleDarkMode": "Toggle dark mode",
+  "toggleNotifications": "Toggle Notifications",
+  "useDarkColorScheme": "Usar esquema de colores oscuros"
 }

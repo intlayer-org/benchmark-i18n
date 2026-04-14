@@ -16,7 +16,7 @@ import deCareersbenefits from "./locales/de/careersBenefits.json";
 import deOpenpositions from "./locales/de/openPositions.json";
 import deContactheader from "./locales/de/contactHeader.json";
 import deContactform from "./locales/de/contactForm.json";
-import deFaq_header1 from "./locales/de/faq-header1.json";
+import deFaqheader from "./locales/de/faqHeader.json";
 import deFaqlist from "./locales/de/faqList.json";
 import dePricingheader from "./locales/de/pricingHeader.json";
 import dePricingtiers from "./locales/de/pricingTiers.json";
@@ -29,8 +29,7 @@ import deApiaccesssection from "./locales/de/apiAccessSection.json";
 import deSettingsfooter from "./locales/de/settingsFooter.json";
 import deTeamheader from "./locales/de/teamHeader.json";
 import deTeamgrid from "./locales/de/teamGrid.json";
-import deMockbanner from "./locales/de/mockBanner.json";
-import deShared from "./locales/de/shared.json";
+import deCommon from "./locales/de/common.json";
 import deHome from "./locales/de/home.json";
 import deAbout from "./locales/de/about.json";
 import deBlog from "./locales/de/blog.json";
@@ -60,7 +59,7 @@ import enCareersbenefits from "./locales/en/careersBenefits.json";
 import enOpenpositions from "./locales/en/openPositions.json";
 import enContactheader from "./locales/en/contactHeader.json";
 import enContactform from "./locales/en/contactForm.json";
-import enFaq_header1 from "./locales/en/faq-header1.json";
+import enFaqheader from "./locales/en/faqHeader.json";
 import enFaqlist from "./locales/en/faqList.json";
 import enPricingheader from "./locales/en/pricingHeader.json";
 import enPricingtiers from "./locales/en/pricingTiers.json";
@@ -73,8 +72,7 @@ import enApiaccesssection from "./locales/en/apiAccessSection.json";
 import enSettingsfooter from "./locales/en/settingsFooter.json";
 import enTeamheader from "./locales/en/teamHeader.json";
 import enTeamgrid from "./locales/en/teamGrid.json";
-import enMockbanner from "./locales/en/mockBanner.json";
-import enShared from "./locales/en/shared.json";
+import enCommon from "./locales/en/common.json";
 import enHome from "./locales/en/home.json";
 import enAbout from "./locales/en/about.json";
 import enBlog from "./locales/en/blog.json";
@@ -104,7 +102,7 @@ import esCareersbenefits from "./locales/es/careersBenefits.json";
 import esOpenpositions from "./locales/es/openPositions.json";
 import esContactheader from "./locales/es/contactHeader.json";
 import esContactform from "./locales/es/contactForm.json";
-import esFaq_header1 from "./locales/es/faq-header1.json";
+import esFaqheader from "./locales/es/faqHeader.json";
 import esFaqlist from "./locales/es/faqList.json";
 import esPricingheader from "./locales/es/pricingHeader.json";
 import esPricingtiers from "./locales/es/pricingTiers.json";
@@ -117,8 +115,7 @@ import esApiaccesssection from "./locales/es/apiAccessSection.json";
 import esSettingsfooter from "./locales/es/settingsFooter.json";
 import esTeamheader from "./locales/es/teamHeader.json";
 import esTeamgrid from "./locales/es/teamGrid.json";
-import esMockbanner from "./locales/es/mockBanner.json";
-import esShared from "./locales/es/shared.json";
+import esCommon from "./locales/es/common.json";
 import esHome from "./locales/es/home.json";
 import esAbout from "./locales/es/about.json";
 import esBlog from "./locales/es/blog.json";
@@ -148,7 +145,7 @@ import frCareersbenefits from "./locales/fr/careersBenefits.json";
 import frOpenpositions from "./locales/fr/openPositions.json";
 import frContactheader from "./locales/fr/contactHeader.json";
 import frContactform from "./locales/fr/contactForm.json";
-import frFaq_header1 from "./locales/fr/faq-header1.json";
+import frFaqheader from "./locales/fr/faqHeader.json";
 import frFaqlist from "./locales/fr/faqList.json";
 import frPricingheader from "./locales/fr/pricingHeader.json";
 import frPricingtiers from "./locales/fr/pricingTiers.json";
@@ -161,8 +158,7 @@ import frApiaccesssection from "./locales/fr/apiAccessSection.json";
 import frSettingsfooter from "./locales/fr/settingsFooter.json";
 import frTeamheader from "./locales/fr/teamHeader.json";
 import frTeamgrid from "./locales/fr/teamGrid.json";
-import frMockbanner from "./locales/fr/mockBanner.json";
-import frShared from "./locales/fr/shared.json";
+import frCommon from "./locales/fr/common.json";
 import frHome from "./locales/fr/home.json";
 import frAbout from "./locales/fr/about.json";
 import frBlog from "./locales/fr/blog.json";
@@ -192,7 +188,7 @@ import itCareersbenefits from "./locales/it/careersBenefits.json";
 import itOpenpositions from "./locales/it/openPositions.json";
 import itContactheader from "./locales/it/contactHeader.json";
 import itContactform from "./locales/it/contactForm.json";
-import itFaq_header1 from "./locales/it/faq-header1.json";
+import itFaqheader from "./locales/it/faqHeader.json";
 import itFaqlist from "./locales/it/faqList.json";
 import itPricingheader from "./locales/it/pricingHeader.json";
 import itPricingtiers from "./locales/it/pricingTiers.json";
@@ -205,8 +201,7 @@ import itApiaccesssection from "./locales/it/apiAccessSection.json";
 import itSettingsfooter from "./locales/it/settingsFooter.json";
 import itTeamheader from "./locales/it/teamHeader.json";
 import itTeamgrid from "./locales/it/teamGrid.json";
-import itMockbanner from "./locales/it/mockBanner.json";
-import itShared from "./locales/it/shared.json";
+import itCommon from "./locales/it/common.json";
 import itHome from "./locales/it/home.json";
 import itAbout from "./locales/it/about.json";
 import itBlog from "./locales/it/blog.json";
@@ -236,7 +231,7 @@ import jaCareersbenefits from "./locales/ja/careersBenefits.json";
 import jaOpenpositions from "./locales/ja/openPositions.json";
 import jaContactheader from "./locales/ja/contactHeader.json";
 import jaContactform from "./locales/ja/contactForm.json";
-import jaFaq_header1 from "./locales/ja/faq-header1.json";
+import jaFaqheader from "./locales/ja/faqHeader.json";
 import jaFaqlist from "./locales/ja/faqList.json";
 import jaPricingheader from "./locales/ja/pricingHeader.json";
 import jaPricingtiers from "./locales/ja/pricingTiers.json";
@@ -249,8 +244,7 @@ import jaApiaccesssection from "./locales/ja/apiAccessSection.json";
 import jaSettingsfooter from "./locales/ja/settingsFooter.json";
 import jaTeamheader from "./locales/ja/teamHeader.json";
 import jaTeamgrid from "./locales/ja/teamGrid.json";
-import jaMockbanner from "./locales/ja/mockBanner.json";
-import jaShared from "./locales/ja/shared.json";
+import jaCommon from "./locales/ja/common.json";
 import jaHome from "./locales/ja/home.json";
 import jaAbout from "./locales/ja/about.json";
 import jaBlog from "./locales/ja/blog.json";
@@ -280,7 +274,7 @@ import koCareersbenefits from "./locales/ko/careersBenefits.json";
 import koOpenpositions from "./locales/ko/openPositions.json";
 import koContactheader from "./locales/ko/contactHeader.json";
 import koContactform from "./locales/ko/contactForm.json";
-import koFaq_header1 from "./locales/ko/faq-header1.json";
+import koFaqheader from "./locales/ko/faqHeader.json";
 import koFaqlist from "./locales/ko/faqList.json";
 import koPricingheader from "./locales/ko/pricingHeader.json";
 import koPricingtiers from "./locales/ko/pricingTiers.json";
@@ -293,8 +287,7 @@ import koApiaccesssection from "./locales/ko/apiAccessSection.json";
 import koSettingsfooter from "./locales/ko/settingsFooter.json";
 import koTeamheader from "./locales/ko/teamHeader.json";
 import koTeamgrid from "./locales/ko/teamGrid.json";
-import koMockbanner from "./locales/ko/mockBanner.json";
-import koShared from "./locales/ko/shared.json";
+import koCommon from "./locales/ko/common.json";
 import koHome from "./locales/ko/home.json";
 import koAbout from "./locales/ko/about.json";
 import koBlog from "./locales/ko/blog.json";
@@ -324,7 +317,7 @@ import ptCareersbenefits from "./locales/pt/careersBenefits.json";
 import ptOpenpositions from "./locales/pt/openPositions.json";
 import ptContactheader from "./locales/pt/contactHeader.json";
 import ptContactform from "./locales/pt/contactForm.json";
-import ptFaq_header1 from "./locales/pt/faq-header1.json";
+import ptFaqheader from "./locales/pt/faqHeader.json";
 import ptFaqlist from "./locales/pt/faqList.json";
 import ptPricingheader from "./locales/pt/pricingHeader.json";
 import ptPricingtiers from "./locales/pt/pricingTiers.json";
@@ -337,8 +330,7 @@ import ptApiaccesssection from "./locales/pt/apiAccessSection.json";
 import ptSettingsfooter from "./locales/pt/settingsFooter.json";
 import ptTeamheader from "./locales/pt/teamHeader.json";
 import ptTeamgrid from "./locales/pt/teamGrid.json";
-import ptMockbanner from "./locales/pt/mockBanner.json";
-import ptShared from "./locales/pt/shared.json";
+import ptCommon from "./locales/pt/common.json";
 import ptHome from "./locales/pt/home.json";
 import ptAbout from "./locales/pt/about.json";
 import ptBlog from "./locales/pt/blog.json";
@@ -368,7 +360,7 @@ import ruCareersbenefits from "./locales/ru/careersBenefits.json";
 import ruOpenpositions from "./locales/ru/openPositions.json";
 import ruContactheader from "./locales/ru/contactHeader.json";
 import ruContactform from "./locales/ru/contactForm.json";
-import ruFaq_header1 from "./locales/ru/faq-header1.json";
+import ruFaqheader from "./locales/ru/faqHeader.json";
 import ruFaqlist from "./locales/ru/faqList.json";
 import ruPricingheader from "./locales/ru/pricingHeader.json";
 import ruPricingtiers from "./locales/ru/pricingTiers.json";
@@ -381,8 +373,7 @@ import ruApiaccesssection from "./locales/ru/apiAccessSection.json";
 import ruSettingsfooter from "./locales/ru/settingsFooter.json";
 import ruTeamheader from "./locales/ru/teamHeader.json";
 import ruTeamgrid from "./locales/ru/teamGrid.json";
-import ruMockbanner from "./locales/ru/mockBanner.json";
-import ruShared from "./locales/ru/shared.json";
+import ruCommon from "./locales/ru/common.json";
 import ruHome from "./locales/ru/home.json";
 import ruAbout from "./locales/ru/about.json";
 import ruBlog from "./locales/ru/blog.json";
@@ -412,7 +403,7 @@ import zhCareersbenefits from "./locales/zh/careersBenefits.json";
 import zhOpenpositions from "./locales/zh/openPositions.json";
 import zhContactheader from "./locales/zh/contactHeader.json";
 import zhContactform from "./locales/zh/contactForm.json";
-import zhFaq_header1 from "./locales/zh/faq-header1.json";
+import zhFaqheader from "./locales/zh/faqHeader.json";
 import zhFaqlist from "./locales/zh/faqList.json";
 import zhPricingheader from "./locales/zh/pricingHeader.json";
 import zhPricingtiers from "./locales/zh/pricingTiers.json";
@@ -425,8 +416,7 @@ import zhApiaccesssection from "./locales/zh/apiAccessSection.json";
 import zhSettingsfooter from "./locales/zh/settingsFooter.json";
 import zhTeamheader from "./locales/zh/teamHeader.json";
 import zhTeamgrid from "./locales/zh/teamGrid.json";
-import zhMockbanner from "./locales/zh/mockBanner.json";
-import zhShared from "./locales/zh/shared.json";
+import zhCommon from "./locales/zh/common.json";
 import zhHome from "./locales/zh/home.json";
 import zhAbout from "./locales/zh/about.json";
 import zhBlog from "./locales/zh/blog.json";
@@ -458,7 +448,7 @@ const locales = {
     openPositions: deOpenpositions,
     contactHeader: deContactheader,
     contactForm: deContactform,
-    "faq-header1": deFaq_header1,
+    faqHeader: deFaqheader,
     faqList: deFaqlist,
     pricingHeader: dePricingheader,
     pricingTiers: dePricingtiers,
@@ -471,8 +461,7 @@ const locales = {
     settingsFooter: deSettingsfooter,
     teamHeader: deTeamheader,
     teamGrid: deTeamgrid,
-    mockBanner: deMockbanner,
-    shared: deShared,
+    common: deCommon, ...deCommon,
     home: deHome,
     about: deAbout,
     blog: deBlog,
@@ -503,7 +492,7 @@ const locales = {
     openPositions: enOpenpositions,
     contactHeader: enContactheader,
     contactForm: enContactform,
-    "faq-header1": enFaq_header1,
+    faqHeader: enFaqheader,
     faqList: enFaqlist,
     pricingHeader: enPricingheader,
     pricingTiers: enPricingtiers,
@@ -516,8 +505,7 @@ const locales = {
     settingsFooter: enSettingsfooter,
     teamHeader: enTeamheader,
     teamGrid: enTeamgrid,
-    mockBanner: enMockbanner,
-    shared: enShared,
+    common: enCommon, ...enCommon,
     home: enHome,
     about: enAbout,
     blog: enBlog,
@@ -548,7 +536,7 @@ const locales = {
     openPositions: esOpenpositions,
     contactHeader: esContactheader,
     contactForm: esContactform,
-    "faq-header1": esFaq_header1,
+    faqHeader: esFaqheader,
     faqList: esFaqlist,
     pricingHeader: esPricingheader,
     pricingTiers: esPricingtiers,
@@ -561,8 +549,7 @@ const locales = {
     settingsFooter: esSettingsfooter,
     teamHeader: esTeamheader,
     teamGrid: esTeamgrid,
-    mockBanner: esMockbanner,
-    shared: esShared,
+    common: esCommon, ...esCommon,
     home: esHome,
     about: esAbout,
     blog: esBlog,
@@ -593,7 +580,7 @@ const locales = {
     openPositions: frOpenpositions,
     contactHeader: frContactheader,
     contactForm: frContactform,
-    "faq-header1": frFaq_header1,
+    faqHeader: frFaqheader,
     faqList: frFaqlist,
     pricingHeader: frPricingheader,
     pricingTiers: frPricingtiers,
@@ -606,8 +593,7 @@ const locales = {
     settingsFooter: frSettingsfooter,
     teamHeader: frTeamheader,
     teamGrid: frTeamgrid,
-    mockBanner: frMockbanner,
-    shared: frShared,
+    common: frCommon, ...frCommon,
     home: frHome,
     about: frAbout,
     blog: frBlog,
@@ -638,7 +624,7 @@ const locales = {
     openPositions: itOpenpositions,
     contactHeader: itContactheader,
     contactForm: itContactform,
-    "faq-header1": itFaq_header1,
+    faqHeader: itFaqheader,
     faqList: itFaqlist,
     pricingHeader: itPricingheader,
     pricingTiers: itPricingtiers,
@@ -651,8 +637,7 @@ const locales = {
     settingsFooter: itSettingsfooter,
     teamHeader: itTeamheader,
     teamGrid: itTeamgrid,
-    mockBanner: itMockbanner,
-    shared: itShared,
+    common: itCommon, ...itCommon,
     home: itHome,
     about: itAbout,
     blog: itBlog,
@@ -683,7 +668,7 @@ const locales = {
     openPositions: jaOpenpositions,
     contactHeader: jaContactheader,
     contactForm: jaContactform,
-    "faq-header1": jaFaq_header1,
+    faqHeader: jaFaqheader,
     faqList: jaFaqlist,
     pricingHeader: jaPricingheader,
     pricingTiers: jaPricingtiers,
@@ -696,8 +681,7 @@ const locales = {
     settingsFooter: jaSettingsfooter,
     teamHeader: jaTeamheader,
     teamGrid: jaTeamgrid,
-    mockBanner: jaMockbanner,
-    shared: jaShared,
+    common: jaCommon, ...jaCommon,
     home: jaHome,
     about: jaAbout,
     blog: jaBlog,
@@ -728,7 +712,7 @@ const locales = {
     openPositions: koOpenpositions,
     contactHeader: koContactheader,
     contactForm: koContactform,
-    "faq-header1": koFaq_header1,
+    faqHeader: koFaqheader,
     faqList: koFaqlist,
     pricingHeader: koPricingheader,
     pricingTiers: koPricingtiers,
@@ -741,8 +725,7 @@ const locales = {
     settingsFooter: koSettingsfooter,
     teamHeader: koTeamheader,
     teamGrid: koTeamgrid,
-    mockBanner: koMockbanner,
-    shared: koShared,
+    common: koCommon, ...koCommon,
     home: koHome,
     about: koAbout,
     blog: koBlog,
@@ -773,7 +756,7 @@ const locales = {
     openPositions: ptOpenpositions,
     contactHeader: ptContactheader,
     contactForm: ptContactform,
-    "faq-header1": ptFaq_header1,
+    faqHeader: ptFaqheader,
     faqList: ptFaqlist,
     pricingHeader: ptPricingheader,
     pricingTiers: ptPricingtiers,
@@ -786,8 +769,7 @@ const locales = {
     settingsFooter: ptSettingsfooter,
     teamHeader: ptTeamheader,
     teamGrid: ptTeamgrid,
-    mockBanner: ptMockbanner,
-    shared: ptShared,
+    common: ptCommon, ...ptCommon,
     home: ptHome,
     about: ptAbout,
     blog: ptBlog,
@@ -818,7 +800,7 @@ const locales = {
     openPositions: ruOpenpositions,
     contactHeader: ruContactheader,
     contactForm: ruContactform,
-    "faq-header1": ruFaq_header1,
+    faqHeader: ruFaqheader,
     faqList: ruFaqlist,
     pricingHeader: ruPricingheader,
     pricingTiers: ruPricingtiers,
@@ -831,8 +813,7 @@ const locales = {
     settingsFooter: ruSettingsfooter,
     teamHeader: ruTeamheader,
     teamGrid: ruTeamgrid,
-    mockBanner: ruMockbanner,
-    shared: ruShared,
+    common: ruCommon, ...ruCommon,
     home: ruHome,
     about: ruAbout,
     blog: ruBlog,
@@ -863,7 +844,7 @@ const locales = {
     openPositions: zhOpenpositions,
     contactHeader: zhContactheader,
     contactForm: zhContactform,
-    "faq-header1": zhFaq_header1,
+    faqHeader: zhFaqheader,
     faqList: zhFaqlist,
     pricingHeader: zhPricingheader,
     pricingTiers: zhPricingtiers,
@@ -876,8 +857,7 @@ const locales = {
     settingsFooter: zhSettingsfooter,
     teamHeader: zhTeamheader,
     teamGrid: zhTeamgrid,
-    mockBanner: zhMockbanner,
-    shared: zhShared,
+    common: zhCommon, ...zhCommon,
     home: zhHome,
     about: zhAbout,
     blog: zhBlog,

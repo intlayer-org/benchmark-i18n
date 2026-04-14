@@ -224,8 +224,13 @@ var k = (t) => {
 	return e.createElement(A, Object.assign({ t: n }, t));
 };
 //#endregion
-//#region src/hooks/usePerformanceMeasure.ts
+//#region src/i18n/config.tsx
 function M(e) {
+	return /* @__PURE__ */ c(j, { ...e });
+}
+//#endregion
+//#region src/hooks/usePerformanceMeasure.ts
+function N(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), i(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -237,20 +242,20 @@ function M(e) {
 }
 //#endregion
 //#region src/components/pages/about/AboutHeader.tsx
-function N() {
-	return M("AboutHeader"), /* @__PURE__ */ l(s, { children: [/* @__PURE__ */ c("h1", {
+function P() {
+	return N("AboutHeader"), /* @__PURE__ */ l(s, { children: [/* @__PURE__ */ c("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
-		children: /* @__PURE__ */ c(j, {
+		children: /* @__PURE__ */ c(M, {
 			keyName: "aboutHeader.aboutThisBenchmark",
 			defaultValue: "About This Benchmark"
 		})
 	}), /* @__PURE__ */ c("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
-		children: /* @__PURE__ */ c(j, {
+		children: /* @__PURE__ */ c(M, {
 			keyName: "aboutHeader.thisIsAnOpenSource",
 			defaultValue: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
 		})
 	})] });
 }
 //#endregion
-export { N as default };
+export { P as default };

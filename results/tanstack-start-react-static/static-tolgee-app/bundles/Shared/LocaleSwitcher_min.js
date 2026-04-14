@@ -1,6 +1,6 @@
 import { useNavigate as e, useParams as t } from "@tanstack/react-router";
 import { jsx as n } from "react/jsx-runtime";
-//#region src/i18n/config.ts
+//#region src/i18n/config.tsx
 var r = [
 	"en",
 	"fr",

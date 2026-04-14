@@ -244,9 +244,21 @@ var j = (e) => {
 	return n.createElement(M, Object.assign({ t }, e));
 };
 //#endregion
-//#region src/components/Footer.tsx
+//#region src/i18n/config.tsx
 function P() {
-	let { t: n } = D(), r = t({ strict: !1 }).locale ?? "en", i = [
+	let { t: e, ...t } = D();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+function F(e) {
+	return /* @__PURE__ */ c(N, { ...e });
+}
+//#endregion
+//#region src/components/Footer.tsx
+function I() {
+	let { t: n } = P(), r = t({ strict: !1 }).locale ?? "en", i = [
 		{
 			label: n("footer.github", "GitHub"),
 			href: "https://github.com/intlayer-org/benchmark-i18n",
@@ -275,14 +287,14 @@ function P() {
 						children: "i18n Benchmark"
 					}), /* @__PURE__ */ c("p", {
 						className: "text-sm text-muted-foreground",
-						children: /* @__PURE__ */ c(N, {
+						children: /* @__PURE__ */ c(F, {
 							keyName: "footer.anOpenSourceTestApplication",
 							defaultValue: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
 						})
 					})] }),
 					/* @__PURE__ */ l("div", { children: [/* @__PURE__ */ c("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: /* @__PURE__ */ c(N, {
+						children: /* @__PURE__ */ c(F, {
 							keyName: "footer.resources",
 							defaultValue: "Resources"
 						})
@@ -303,7 +315,7 @@ function P() {
 					})] }),
 					/* @__PURE__ */ l("div", { children: [/* @__PURE__ */ c("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: /* @__PURE__ */ c(N, {
+						children: /* @__PURE__ */ c(F, {
 							keyName: "footer.contact",
 							defaultValue: "Contact"
 						})
@@ -314,7 +326,7 @@ function P() {
 				]
 			}), /* @__PURE__ */ c("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
-				children: /* @__PURE__ */ c(N, {
+				children: /* @__PURE__ */ c(F, {
 					keyName: "footer.builtWith",
 					defaultValue: "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
 				})
@@ -323,4 +335,4 @@ function P() {
 	});
 }
 //#endregion
-export { P as default };
+export { I as default };

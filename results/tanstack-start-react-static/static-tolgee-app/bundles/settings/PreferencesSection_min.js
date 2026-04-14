@@ -243,14 +243,26 @@ var A = (t) => {
 	return e.createElement(j, Object.assign({ t: n }, t));
 };
 //#endregion
-//#region src/components/pages/settings/PreferencesSection.tsx
+//#region src/i18n/config.tsx
 function N() {
-	let { t: e } = E(), t = i();
+	let { t: e, ...t } = E();
+	return {
+		...t,
+		t: (t, n) => e(t, n)
+	};
+}
+function P(e) {
+	return /* @__PURE__ */ s(M, { ...e });
+}
+//#endregion
+//#region src/components/pages/settings/PreferencesSection.tsx
+function F() {
+	let { t: e } = N(), t = i();
 	return /* @__PURE__ */ c("section", {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [/* @__PURE__ */ s("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: /* @__PURE__ */ s(M, {
+			children: /* @__PURE__ */ s(P, {
 				keyName: "preferencesSection.preferences",
 				defaultValue: "Preferences"
 			})
@@ -261,13 +273,13 @@ function N() {
 					className: "flex items-center justify-between",
 					children: [/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("p", {
 						className: "text-sm font-medium text-foreground",
-						children: /* @__PURE__ */ s(M, {
+						children: /* @__PURE__ */ s(P, {
 							keyName: "preferencesSection.emailNotifications",
 							defaultValue: "Email Notifications"
 						})
 					}), /* @__PURE__ */ s("p", {
 						className: "text-xs text-muted-foreground",
-						children: /* @__PURE__ */ s(M, {
+						children: /* @__PURE__ */ s(P, {
 							keyName: "preferencesSection.receiveWeeklyBenchmark",
 							defaultValue: "Receive weekly benchmark reports"
 						})
@@ -282,13 +294,13 @@ function N() {
 					className: "flex items-center justify-between",
 					children: [/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("p", {
 						className: "text-sm font-medium text-foreground",
-						children: /* @__PURE__ */ s(M, {
+						children: /* @__PURE__ */ s(P, {
 							keyName: "preferencesSection.darkMode",
 							defaultValue: "Dark Mode"
 						})
 					}), /* @__PURE__ */ s("p", {
 						className: "text-xs text-muted-foreground",
-						children: /* @__PURE__ */ s(M, {
+						children: /* @__PURE__ */ s(P, {
 							keyName: "preferencesSection.useDarkColorScheme",
 							defaultValue: "Use dark color scheme"
 						})
@@ -302,7 +314,7 @@ function N() {
 				/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("label", {
 					htmlFor: t,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: /* @__PURE__ */ s(M, {
+					children: /* @__PURE__ */ s(P, {
 						keyName: "preferencesSection.defaultLanguage",
 						defaultValue: "Default Language"
 					})
@@ -324,4 +336,4 @@ function N() {
 	});
 }
 //#endregion
-export { N as default };
+export { F as default };
