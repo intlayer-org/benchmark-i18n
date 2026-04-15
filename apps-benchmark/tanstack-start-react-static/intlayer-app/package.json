@@ -13,6 +13,7 @@
     "test:consistency": "playwright test structure-consistency.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:components": "bun scripts/measure-components.ts",
+    "test:lib-size": "bun scripts/measure-lib-size.ts",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -21,13 +22,13 @@
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "1.167.1",
     "@tanstack/router-plugin": "^1.167.12",
-    "intlayer": "canary",
+    "intlayer": "8.7.1-canary-1",
     "lucide-react": "^1.8.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-intlayer": "canary",
+    "react-intlayer": "8.7.1-canary-1",
     "tailwindcss": "^4.2.2",
-    "vite-intlayer": "canary"
+    "vite-intlayer": "8.7.1-canary-1"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",

@@ -44,7 +44,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
-import { build, loadConfigFromFile } from "vite";
+import { build, loadConfigFromFile, type PluginOption } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import type { RolldownOutput } from "rolldown";
 import Bun from "bun";
@@ -96,13 +96,6 @@ interface ComponentSizeStats {
   minifiedGzipBytes: number;
 }
 
-interface SyntheticEntryConfig {
-  filePath: string;
-  outputFileName: string;
-  category: string;
-  wrapperTemplate?: (componentPath: string) => string;
-}
-
 // ─── Defaults ────────────────────────────────────────────────────────────────
 
 /** Directories scanned when none are provided in the config. */
@@ -138,18 +131,6 @@ const BLOCKED_PLUGIN_SUBSTRINGS = [
   "visualizer", // Strips rollup-plugin-visualizer
 ];
 
-/**
- * EmptyComponent is only useful for plain static benchmark baselines.
- * Dynamic and scoped categories should skip it to avoid misleading comparisons.
- */
-const shouldMeasureEmptyComponent = (benchmarkCategory: string): boolean => {
-  const normalizedCategory = benchmarkCategory.toLowerCase();
-  return !(
-    normalizedCategory.endsWith("-dynamic") ||
-    normalizedCategory.endsWith("-scoped-static") ||
-    normalizedCategory.endsWith("-scoped-dynamic")
-  );
-};
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -193,7 +174,7 @@ const buildComponentBundle = async (
   const appConfig = loaded?.config || {};
 
   // Filter out plugins that interfere with isolated library mode.
-  const filteredPlugins = ((appConfig.plugins || []) as any[])
+  const filteredPlugins : PluginOption[] = ((appConfig.plugins || []) as any[])
     .flat(Infinity)
     .filter((plugin: any) => {
       if (!plugin || !plugin.name) return true;
@@ -206,6 +187,15 @@ const buildComponentBundle = async (
 
   // Ensure Vite can resolve Next.js tsconfig paths (e.g. @/*)
   filteredPlugins.push(tsconfigPaths());
+
+  // Add this custom plugin to strip JSDoc and other block comments
+  filteredPlugins.push({
+    name: "strip-jsdoc",
+    renderChunk(code) {
+      // Matches standard block comments /* ... */ and JSDoc /** ... */
+      return code.replace(/\/\*[\s\S]*?\*\//g, "");
+    },
+  });
 
   // Add additional plugins provided via config
   for (const plugin of additionalPlugins) {
@@ -230,6 +220,7 @@ const buildComponentBundle = async (
               // For now, let's just run the requested plugin.
               babelrc: false,
               configFile: false,
+              comments: false,
             });
             return result?.code || null;
           } catch (e) {
@@ -248,6 +239,8 @@ const buildComponentBundle = async (
       // It's a single Vite plugin
       filteredPlugins.push(plugin);
     }
+
+    
   }
 
   // --- TEMPORARY FILE STRATEGY ---
@@ -439,40 +432,49 @@ const saveComponentMeasurements = (
   appName: string,
   componentStatsList: ComponentSizeStats[],
 ): void => {
-  if (!fs.existsSync(resultsDirectory)) {
-    fs.mkdirSync(resultsDirectory, { recursive: true });
-  }
+  try {
+    if (!fs.existsSync(resultsDirectory)) {
+      fs.mkdirSync(resultsDirectory, { recursive: true });
+    }
 
-  const outputFilePath = path.join(resultsDirectory, outputFileName);
-  fs.writeFileSync(
-    outputFilePath,
-    JSON.stringify(
-      {
-        timestamp: new Date().toISOString(),
-        packageName: appName,
-        summary: {
-          totalComponents: componentStatsList.length,
-          totalUnminifiedBytes: componentStatsList.reduce(
-            (totalBytes, component) => totalBytes + component.unminifiedBytes,
-            0,
-          ),
-          totalMinifiedBytes: componentStatsList.reduce(
-            (totalBytes, component) => totalBytes + component.minifiedBytes,
-            0,
-          ),
-          totalGzipBytes: componentStatsList.reduce(
-            (totalBytes, component) => totalBytes + component.minifiedGzipBytes,
-            0,
-          ),
+    const outputFilePath = path.join(resultsDirectory, outputFileName);
+    fs.writeFileSync(
+      outputFilePath,
+      JSON.stringify(
+        {
+          timestamp: new Date().toISOString(),
+          packageName: appName,
+          summary: {
+            totalComponents: componentStatsList.length,
+            totalUnminifiedBytes: componentStatsList.reduce(
+              (totalBytes, component) =>
+                totalBytes + component.unminifiedBytes,
+              0,
+            ),
+            totalMinifiedBytes: componentStatsList.reduce(
+              (totalBytes, component) => totalBytes + component.minifiedBytes,
+              0,
+            ),
+            totalGzipBytes: componentStatsList.reduce(
+              (totalBytes, component) =>
+                totalBytes + component.minifiedGzipBytes,
+              0,
+            ),
+          },
+          components: componentStatsList,
         },
-        components: componentStatsList,
-      },
-      null,
-      2,
-    ),
-  );
+        null,
+        2,
+      ),
+    );
 
-  console.log(`\nResults saved to: ${outputFilePath}\n`);
+    console.log(`\nResults saved to: ${outputFilePath}\n`);
+  } catch (err) {
+    console.error(
+      `Failed to save component measurements to ${resultsDirectory}:`,
+      err,
+    );
+  }
 };
 
 // ─── Entry point ──────────────────────────────────────────────────────────────
@@ -512,35 +514,6 @@ export const measureComponents = async ({
   );
 
   const bundlesOutputDir = path.join(resultsDirectory, "bundles");
-  const syntheticEntries: SyntheticEntryConfig[] = [];
-
-  const emptyComponentPath = path.resolve("./scripts/EmptyComponent.tsx");
-  if (
-    shouldMeasureEmptyComponent(benchmarkCategory) &&
-    fs.existsSync(emptyComponentPath)
-  ) {
-    const emptyWrapperPath = path.resolve("./scripts/EmptyWrapper.tsx");
-    syntheticEntries.push({
-      filePath: emptyComponentPath,
-      outputFileName: "empty-component-size.json",
-      category: "Synthetic",
-      wrapperTemplate: fs.existsSync(emptyWrapperPath)
-        ? (componentPath) => `
-    import React from 'react';
-    import Component from '${componentPath}';
-    import Wrapper from '${emptyWrapperPath.replace(/\\/g, "/")}';
-
-    export default function Wrapped() {
-      return (
-        <Wrapper>
-          <Component />
-        </Wrapper>
-      );
-    }
-  `
-        : wrapperTemplate,
-    });
-  }
 
   console.log(`\n--- COMPONENT SIZE MEASUREMENT CONFIG ---`);
   console.log(`App Name: ${appName}`);
@@ -580,30 +553,107 @@ export const measureComponents = async ({
     appName,
     allComponentStats,
   );
+};
 
-  for (const syntheticEntry of syntheticEntries) {
-    console.log(`Measuring synthetic entry: ${syntheticEntry.filePath}`);
+// ─── Library size measurement ─────────────────────────────────────────────────
 
+/**
+ * Builds `scripts/EmptyComponent.tsx` in isolation to measure the pure i18n
+ * library overhead — the bytes added to a component that uses the library's
+ * hooks/APIs but renders nothing and loads no translation JSON.
+ *
+ * The wrapper is resolved in this order:
+ *  1. `scripts/EmptyWrapper.tsx` if present (provides the minimal provider
+ *     context that the lib hooks require, without loading any locale files).
+ *  2. The `wrapperTemplate` from the config (falls back to the app's regular
+ *     Wrapper so router/context hooks still resolve).
+ *
+ * Saves results to `<results-dir>/empty-component-size.json`.
+ *
+ * Call this from a dedicated `scripts/measure-lib-size.ts` entry point so it
+ * runs independently of the per-component scan.
+ */
+export const measureLibSize = async ({
+  appName,
+  benchmarkCategory,
+  additionalExternalPackages = [],
+  wrapperTemplate,
+  additionalPlugins = [],
+}: MeasureConfig): Promise<void> => {
+  const emptyComponentPath = path.resolve("./scripts/EmptyComponent.tsx");
+  if (!fs.existsSync(emptyComponentPath)) {
+    console.log(
+      `[measureLibSize] No EmptyComponent.tsx found at ${emptyComponentPath} — skipping.`,
+    );
+    return;
+  }
+
+  const allExternalPackages = [
+    ...BASE_EXTERNAL_PACKAGES,
+    ...additionalExternalPackages,
+  ];
+
+  const resultsDirectory = path.resolve(
+    "..",
+    "..",
+    "results",
+    benchmarkCategory,
+    appName,
+  );
+
+  // Prefer a dedicated EmptyWrapper that sets up only the minimal provider
+  // context the lib needs, without loading any translation files.
+  const emptyWrapperPath = path.resolve("./scripts/EmptyWrapper.tsx");
+  const resolvedWrapperTemplate = fs.existsSync(emptyWrapperPath)
+    ? (componentPath: string) => `
+    import React from 'react';
+    import Component from '${componentPath}';
+    import Wrapper from '${emptyWrapperPath.replace(/\\/g, "/")}';
+
+    export default function Wrapped() {
+      return (
+        <Wrapper>
+          <Component />
+        </Wrapper>
+      );
+    }
+  `
+    : wrapperTemplate;
+
+  console.log(`\n--- LIB SIZE MEASUREMENT ---`);
+  console.log(`App Name: ${appName}`);
+  console.log(`Benchmark Category: ${benchmarkCategory}`);
+  console.log(`EmptyComponent: ${emptyComponentPath}`);
+  console.log(
+    `EmptyWrapper: ${fs.existsSync(emptyWrapperPath) ? emptyWrapperPath : "(none — using app Wrapper)"}`,
+  );
+  console.log(`----------------------------\n`);
+
+  try {
     const unminified = await buildComponentBundle(
-      syntheticEntry.filePath,
+      emptyComponentPath,
       allExternalPackages,
       false,
-      syntheticEntry.wrapperTemplate,
+      resolvedWrapperTemplate,
       additionalPlugins,
     );
 
     const minified = await buildComponentBundle(
-      syntheticEntry.filePath,
+      emptyComponentPath,
       allExternalPackages,
       true,
-      syntheticEntry.wrapperTemplate,
+      resolvedWrapperTemplate,
       additionalPlugins,
     );
 
-    const syntheticStats: ComponentSizeStats[] = [
+    console.log(
+      `EmptyComponent.tsx: Unminified=${(unminified.bytes / 1024).toFixed(2)}KB | Minified=${(minified.bytes / 1024).toFixed(2)}KB | Gzip=${(minified.gzipBytes / 1024).toFixed(2)}KB`,
+    );
+
+    const stats: ComponentSizeStats[] = [
       {
-        name: path.basename(syntheticEntry.filePath),
-        category: syntheticEntry.category,
+        name: "EmptyComponent.tsx",
+        category: "Synthetic",
         unminifiedBytes: unminified.bytes,
         unminifiedGzipBytes: unminified.gzipBytes,
         minifiedBytes: minified.bytes,
@@ -613,9 +663,11 @@ export const measureComponents = async ({
 
     saveComponentMeasurements(
       resultsDirectory,
-      syntheticEntry.outputFileName,
+      "empty-component-size.json",
       appName,
-      syntheticStats,
+      stats,
     );
+  } catch (err) {
+    console.error("[measureLibSize] Build or save failed:", err);
   }
 };

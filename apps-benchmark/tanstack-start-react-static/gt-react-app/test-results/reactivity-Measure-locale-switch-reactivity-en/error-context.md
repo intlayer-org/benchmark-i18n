@@ -12,18 +12,13 @@
 # Error details
 
 ```
-Error: page.evaluate: Error: LocaleSwitcher <select> not found
-    at eval (eval at evaluate (:302:30), <anonymous>:23:12)
-    at new Promise (<anonymous>)
-    at eval (eval at evaluate (:302:30), <anonymous>:3:7)
-    at UtilityScript.evaluate (<anonymous>:304:16)
-    at UtilityScript.<anonymous> (<anonymous>:1:44)
-```
-
-# Page snapshot
-
-```yaml
-- generic [ref=e3]:
-  - strong [ref=e4]: Something went wrong!
-  - button "Show Error" [ref=e5]
+Error: browserType.launch: Executable doesn't exist at /var/folders/kq/wp486_dx4fq4dnglg5jss6qc0000gn/T/cursor-sandbox-cache/ba31b2f38810b00ab13601a36a16a421/playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-x64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     npx playwright install                                 ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝
 ```

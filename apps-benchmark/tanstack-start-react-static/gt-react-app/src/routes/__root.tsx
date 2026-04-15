@@ -12,15 +12,8 @@ import Header from "../components/Header";
 
 import { T } from "gt-react";
 
-import { initializeGT, GTProvider } from "gt-tanstack-start";
-import gtConfig from "../../gt.config.json";
-import loadTranslations from "../../loadTranslations";
+import { GTProvider } from "gt-tanstack-start";
 
-// Initialize GT at the module level
-initializeGT({
-  ...gtConfig,
-  loadTranslations,
-});
 
 import appCss from "../styles.css?url";
 

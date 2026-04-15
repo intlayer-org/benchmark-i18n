@@ -1,6 +1,15 @@
 import { useNavigate } from "@tanstack/react-router";
-import { getLocaleName } from "intlayer";
 import { useLocale } from "react-intlayer";
+
+function getLocaleName(locale: string): string {
+  try {
+    const displayNames = new Intl.DisplayNames([locale], { type: "language" });
+    const name = displayNames.of(locale);
+    return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
+  } catch (e) {
+    return locale.toUpperCase();
+  }
+}
 
 export default function LocaleSwitcher() {
   const navigate = useNavigate();

@@ -22,6 +22,7 @@ const translationsMap: Record<string, any> = {
   zh,
 };
 
-export default async function loadTranslations(locale: string) {
+
+export function loadTranslations(locale: string) {
   return translationsMap[locale] || translationsMap["en"];
 }

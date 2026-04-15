@@ -15,6 +15,7 @@
     "test:consistency": "playwright test structure-consistency.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:components": "bun scripts/measure-components.ts",
+    "test:lib-size": "bun scripts/measure-lib-size.ts",
     "preview": "vite preview"
   },
   "dependencies": {

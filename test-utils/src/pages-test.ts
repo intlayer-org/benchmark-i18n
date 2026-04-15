@@ -495,28 +495,32 @@ const saveBundleResults = (
   pageFingerprints: Record<string, string[]>,
   pageResults: PageBundleResult[],
 ): void => {
-  fs.writeFileSync(
-    outputFilePath,
-    JSON.stringify(
-      {
-        app: appName,
-        locale: activeLocale,
-        timestamp: new Date().toISOString(),
-        fingerprintCounts: {
-          locale: Object.fromEntries(
-            Object.entries(localeFingerprints).map(([k, v]) => [k, v.length]),
-          ),
-          page: Object.fromEntries(
-            Object.entries(pageFingerprints).map(([k, v]) => [k, v.length]),
-          ),
+  try {
+    fs.writeFileSync(
+      outputFilePath,
+      JSON.stringify(
+        {
+          app: appName,
+          locale: activeLocale,
+          timestamp: new Date().toISOString(),
+          fingerprintCounts: {
+            locale: Object.fromEntries(
+              Object.entries(localeFingerprints).map(([k, v]) => [k, v.length]),
+            ),
+            page: Object.fromEntries(
+              Object.entries(pageFingerprints).map(([k, v]) => [k, v.length]),
+            ),
+          },
+          results: pageResults,
         },
-        results: pageResults,
-      },
-      null,
-      2,
-    ),
-  );
-  console.log(`\nResults saved to: ${outputFilePath}\n`);
+        null,
+        2,
+      ),
+    );
+    console.log(`\nResults saved to: ${outputFilePath}\n`);
+  } catch (err) {
+    console.error(`Failed to save bundle results to ${outputFilePath}:`, err);
+  }
 };
 
 // ─── Test registration ────────────────────────────────────────────────────────
@@ -596,8 +600,12 @@ export const registerBundleTest = (config: BundleTestConfig): void => {
       appName,
     );
 
-    if (!fs.existsSync(resultsDirectory)) {
-      fs.mkdirSync(resultsDirectory, { recursive: true });
+    try {
+      if (!fs.existsSync(resultsDirectory)) {
+        fs.mkdirSync(resultsDirectory, { recursive: true });
+      }
+    } catch (err) {
+      console.error(`Failed to create results directory ${resultsDirectory}:`, err);
     }
     const outputFilePath = path.join(
       resultsDirectory,

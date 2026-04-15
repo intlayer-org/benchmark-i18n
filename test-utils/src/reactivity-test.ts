@@ -292,8 +292,8 @@ const aggregateTimingSamples = (samples: number[]): TimingStats => ({
           0,
         ) / samples.length
       : 0,
-  min: Math.min(...samples),
-  max: Math.max(...samples),
+  min: samples.length > 0 ? Math.min(...samples) : 0,
+  max: samples.length > 0 ? Math.max(...samples) : 0,
 });
 
 // ─── Reporting ────────────────────────────────────────────────────────────────
@@ -335,39 +335,46 @@ const saveReactivityResults = (
   e2eStats: TimingStats,
   profilerStats: TimingStats,
 ): void => {
-  if (!fs.existsSync(resultsDirectory)) {
-    fs.mkdirSync(resultsDirectory, { recursive: true });
+  try {
+    if (!fs.existsSync(resultsDirectory)) {
+      fs.mkdirSync(resultsDirectory, { recursive: true });
+    }
+
+    const outputFilePath = path.join(
+      resultsDirectory,
+      `reactivity-${activeLocale}.json`,
+    );
+
+    fs.writeFileSync(
+      outputFilePath,
+      JSON.stringify(
+        {
+          locale: activeLocale,
+          timestamp: new Date().toISOString(),
+          iterations: iterationCount,
+          e2e: {
+            description:
+              "Perceived reactivity: time from select change to html[lang] DOM update (ms)",
+            ...e2eStats,
+          },
+          reactProfiler: {
+            description:
+              "Internal React render time: sum of Profiler actualDuration for update phases (ms)",
+            ...profilerStats,
+          },
+        },
+        null,
+        2,
+      ),
+    );
+
+    console.log(`Results saved to: ${outputFilePath}\n`);
+  } catch (err) {
+    console.error(
+      `Failed to save reactivity results under ${resultsDirectory}:`,
+      err,
+    );
   }
-
-  const outputFilePath = path.join(
-    resultsDirectory,
-    `reactivity-${activeLocale}.json`,
-  );
-
-  fs.writeFileSync(
-    outputFilePath,
-    JSON.stringify(
-      {
-        locale: activeLocale,
-        timestamp: new Date().toISOString(),
-        iterations: iterationCount,
-        e2e: {
-          description:
-            "Perceived reactivity: time from select change to html[lang] DOM update (ms)",
-          ...e2eStats,
-        },
-        reactProfiler: {
-          description:
-            "Internal React render time: sum of Profiler actualDuration for update phases (ms)",
-          ...profilerStats,
-        },
-      },
-      null,
-      2,
-    ),
-  );
-
-  console.log(`Results saved to: ${outputFilePath}\n`);
 };
 
 // ─── Test registration ────────────────────────────────────────────────────────
@@ -427,16 +434,23 @@ export const registerReactivityTest = (config: ReactivityTestConfig): void => {
       iterationIndex <= iterationCount;
       iterationIndex++
     ) {
-      const { e2eDuration, profilerRenderTime } = await runSingleIteration(
-        page,
-        iterationIndex,
-        iterationCount,
-        activeLocale,
-        `/${fromLocale}`,
-        toLocale,
-      );
-      e2eDurations.push(e2eDuration);
-      profilerRenderTimes.push(profilerRenderTime);
+      try {
+        const { e2eDuration, profilerRenderTime } = await runSingleIteration(
+          page,
+          iterationIndex,
+          iterationCount,
+          activeLocale,
+          `/${fromLocale}`,
+          toLocale,
+        );
+        e2eDurations.push(e2eDuration);
+        profilerRenderTimes.push(profilerRenderTime);
+      } catch (iterationError) {
+        console.error(
+          `[${activeLocale}] Iteration ${iterationIndex}/${iterationCount} failed:`,
+          iterationError,
+        );
+      }
     }
 
     // Clean up the CDP session; ignore errors if the page was already closed.

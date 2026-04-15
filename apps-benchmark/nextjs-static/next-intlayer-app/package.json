@@ -10,17 +10,18 @@
     "test:consistency": "playwright test structure-consistency.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:components": "bun scripts/measure-components.ts",
+    "test:lib-size": "bun scripts/measure-lib-size.ts",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
-    "@intlayer/swc": "^8.7.1-canary-0",
+    "@intlayer/swc": "^8.7.1-8.7.1-canary-1-0",
     "@tailwindcss/typography": "^0.5.19",
-    "intlayer": "canary",
+    "intlayer": "8.7.1-canary-1",
     "lucide-react": "^1.8.0",
     "next": "16.2.3",
-    "next-intlayer": "canary",
+    "next-intlayer": "8.7.1-canary-1",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
