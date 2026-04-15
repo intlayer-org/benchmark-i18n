@@ -426,8 +426,8 @@ export const registerReactivityTest = (config: ReactivityTestConfig): void => {
     // Warm-up navigation: let the browser JIT-compile the app's JavaScript and
     // prime internal caches before timed iterations begin. Without this, the
     // first iteration is systematically slower than subsequent ones.
-    console.log(`[${activeLocale}] WARM-UP: loading /${fromLocale}`);
-    await page.goto(`/${fromLocale}`, { waitUntil: "networkidle" });
+    console.log(`[${activeLocale}] WARM-UP: loading /${toLocale}`);
+    await page.goto(`/${toLocale}`, { waitUntil: "networkidle" });
 
     for (
       let iterationIndex = 1;

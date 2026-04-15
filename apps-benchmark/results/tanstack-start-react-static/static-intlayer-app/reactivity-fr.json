@@ -1,19 +1,19 @@
 {
   "locale": "fr",
-  "timestamp": "2026-04-15T20:41:42.451Z",
+  "timestamp": "2026-04-15T20:57:24.768Z",
   "iterations": 5,
   "e2e": {
     "description": "Perceived reactivity: time from select change to html[lang] DOM update (ms)",
     "raw": [
-      7.299999997019768,
-      4,
-      3.7999999970197678,
-      3.800000011920929,
-      3.4000000059604645
+      12.400000005960464,
+      4.5,
+      7,
+      7.200000002980232,
+      3
     ],
-    "avg": 4.460000002384186,
-    "min": 3.4000000059604645,
-    "max": 7.299999997019768
+    "avg": 6.82000000178814,
+    "min": 3,
+    "max": 12.400000005960464
   },
   "reactProfiler": {
     "description": "Internal React render time: sum of Profiler actualDuration for update phases (ms)",
