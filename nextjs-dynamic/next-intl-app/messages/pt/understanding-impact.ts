@@ -1,0 +1,22 @@
+const understandingImpact = {
+  understandingTheImpact: "Understanding the Impact",
+  whyASingleLargeJson: "Why a single large JSON can hurt performance",
+  manyI18nLibrariesStoreTranslations:
+    "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:",
+  theJsonMustBeParsed:
+    "The JSON must be parsed on every page load — blocking the main thread.",
+  contextBasedArchitecturesCanCause:
+    "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+  duringServerSideRenderingThe:
+    "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.",
+  theTradeOffsOfDynamic: "The trade-offs of dynamic loading",
+  splittingTranslationsIntoPerRoute:
+    "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:",
+  waterfallRequests: "Waterfall requests:",
+  flashOfUntranslatedContentFouc: "Flash of untranslated content (FOUC):",
+  cacheInvalidation: "Cache invalidation:",
+  whatThisBenchmarkMeasures: "What this benchmark measures",
+  thisTestAppProvidesA:
+    "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.",
+};
+export default understandingImpact;
