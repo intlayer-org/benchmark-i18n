@@ -1,27 +1,12 @@
-import enShared from "./src/_gt/en/shared.json";
-import frShared from "./src/_gt/fr/shared.json";
-import deShared from "./src/_gt/de/shared.json";
-import esShared from "./src/_gt/es/shared.json";
-import itShared from "./src/_gt/it/shared.json";
-import jaShared from "./src/_gt/ja/shared.json";
-import koShared from "./src/_gt/ko/shared.json";
-import ptShared from "./src/_gt/pt/shared.json";
-import ruShared from "./src/_gt/ru/shared.json";
-import zhShared from "./src/_gt/zh/shared.json";
-
-const translationsMap: Record<string, Record<string, string>> = {
-  en: { ...enShared },
-  fr: { ...frShared },
-  de: { ...deShared },
-  es: { ...esShared },
-  it: { ...itShared },
-  ja: { ...jaShared },
-  ko: { ...koShared },
-  pt: { ...ptShared },
-  ru: { ...ruShared },
-  zh: { ...zhShared },
-};
+const locales = ["en", "fr", "de", "es", "it", "ja", "ko", "pt", "ru", "zh"];
 
 export default async function loadTranslations(locale: string) {
-  return translationsMap[locale] || translationsMap["en"];
+  const safeLocale = locales.includes(locale) ? locale : "en";
+  try {
+    const module = await import(`./src/_gt/${safeLocale}/shared.json`);
+    return module.default as Record<string, string>;
+  } catch {
+    const fallback = await import("./src/_gt/en/shared.json");
+    return fallback.default as Record<string, string>;
+  }
 }

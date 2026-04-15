@@ -1,14 +1,15 @@
 import React from "react";
 import AppProviders from "../components/AppProviders";
-import messages from "../i18n/enMessages";
+import { getAllMessages } from "../i18n/getMessages";
 
 const locale = "en";
 
-export default function Wrapper({
+export default async function Wrapper({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const messages = await getAllMessages(locale);
   return (
     <AppProviders locale={locale} messages={messages}>
       {children}

@@ -9,7 +9,7 @@ export default async function SettingsLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages(locale, ["settings"] as const);
+  const messages = await getMessages(locale, ["settings"] as const);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

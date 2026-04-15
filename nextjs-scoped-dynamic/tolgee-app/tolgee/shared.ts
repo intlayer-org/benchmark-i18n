@@ -12,7 +12,7 @@ export function TolgeeBase() {
       apiKey: process.env.NEXT_PUBLIC_TOLGEE_API_KEY,
       apiUrl: process.env.NEXT_PUBLIC_TOLGEE_API_URL,
       staticData: Object.fromEntries(
-        ALL_LOCALES.map((locale) => [locale, () => Promise.resolve(getMessages(locale as any))])
+        ALL_LOCALES.map((locale) => [locale, () => getMessages(locale as any)])
       ),
     });
 }

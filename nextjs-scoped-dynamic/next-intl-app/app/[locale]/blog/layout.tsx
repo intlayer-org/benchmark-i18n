@@ -9,7 +9,7 @@ export default async function BlogLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages(locale, ["blog"] as const);
+  const messages = await getMessages(locale, ["blog"] as const);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

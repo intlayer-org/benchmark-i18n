@@ -14,7 +14,7 @@ type Leaves<T> = T extends object
     }[Extract<keyof T, string>]
   : never;
 
-export type TranslationKey = Leaves<ReturnType<typeof getMessages>>;
+export type TranslationKey = Leaves<Awaited<ReturnType<typeof getMessages>>>;
 
 // Typed Hook
 export function useTranslate() {

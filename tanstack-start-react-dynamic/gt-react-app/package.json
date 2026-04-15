@@ -21,7 +21,7 @@
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "1.167.1",
     "@tanstack/router-plugin": "^1.167.12",
-    "gt-react": "latest",
+    "gt-react": "10.18.3",
     "gt-tanstack-start": "^0.4.1",
     "lucide-react": "^1.8.0",
     "react": "^19.2.5",

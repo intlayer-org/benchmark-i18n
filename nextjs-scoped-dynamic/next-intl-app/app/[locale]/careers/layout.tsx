@@ -9,7 +9,7 @@ export default async function CareersLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages(locale, ["careers"] as const);
+  const messages = await getMessages(locale, ["careers"] as const);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

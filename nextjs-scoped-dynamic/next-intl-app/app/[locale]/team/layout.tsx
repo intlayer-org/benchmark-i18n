@@ -9,7 +9,7 @@ export default async function TeamLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages(locale, ["team"] as const);
+  const messages = await getMessages(locale, ["team"] as const);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

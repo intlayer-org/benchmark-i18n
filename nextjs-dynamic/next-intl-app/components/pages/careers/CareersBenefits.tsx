@@ -15,7 +15,7 @@ export default function CareersBenefits() {
     },
     {
       label: t("careers.careers-benefits.openSourceTime"),
-      value: t("careers.careers-benefits.twentyPercentTime"),
+      value: t("careers.careers-benefits.openSourceTime"),
     },
   ];
 

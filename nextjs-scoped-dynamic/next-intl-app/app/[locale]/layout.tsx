@@ -2,6 +2,11 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import AppProviders from "../../components/AppProviders";
 import { getMessages } from "../../i18n/getMessages";
+import { locales } from "../../i18n/config";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export default async function LocaleLayout({
   children,
@@ -11,7 +16,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages(locale, ["shared"] as const);
+  const messages = await getMessages(locale, ["shared"] as const);
 
   return (
     <AppProviders locale={locale} messages={messages}>

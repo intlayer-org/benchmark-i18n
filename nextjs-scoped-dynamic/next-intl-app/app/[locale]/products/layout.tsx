@@ -9,7 +9,7 @@ export default async function ProductsLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages(locale, ["products"] as const);
+  const messages = await getMessages(locale, ["products"] as const);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

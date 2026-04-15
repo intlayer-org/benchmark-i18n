@@ -9,7 +9,7 @@ export default async function PricingLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages(locale, ["pricing"] as const);
+  const messages = await getMessages(locale, ["pricing"] as const);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

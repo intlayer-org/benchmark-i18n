@@ -1,5 +1,5 @@
 import { getAllMessages } from "./getMessages";
 
-const enMessages = getAllMessages("en");
+const getEnMessages = () => getAllMessages("en");
 
-export default enMessages;
+export default getEnMessages;

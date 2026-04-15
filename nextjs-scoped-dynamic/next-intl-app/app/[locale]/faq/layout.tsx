@@ -9,7 +9,7 @@ export default async function FAQLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = getMessages(locale, ["faq"] as const);
+  const messages = await getMessages(locale, ["faq"] as const);
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
