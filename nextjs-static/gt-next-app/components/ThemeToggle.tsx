@@ -1,6 +1,5 @@
-"use client";
-
 import { useEffect, useState } from "react";
+import { T } from "gt-next";
 
 type ThemeMode = "light" | "dark" | "auto";
 
@@ -77,7 +76,13 @@ export default function ThemeToggle() {
       title={label}
       className="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
     >
-      {mode === "auto" ? "Theme: Auto" : mode === "dark" ? "Theme: Dark" : "Theme: Light"}
+      {mode === "auto" ? (
+        <T>Theme: Auto</T>
+      ) : mode === "dark" ? (
+        <T>Theme: Dark</T>
+      ) : (
+        <T>Theme: Light</T>
+      )}
     </button>
   );
 }

@@ -1,6 +1,0 @@
-{
-  "aboutThisBenchmark": "About This Benchmark",
-  "methodology": "方法学",
-  "thisIsAnOpenSource": "This is an open-source test application for measuring the real-world impact of internationalization libraries.",
-  "weDesignedThisBenchmarkTo": "我们设计这个基准是为了提供公平、可重现和有意义的 i18n 库比较。"
-}

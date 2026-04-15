@@ -1,16 +1,17 @@
-import { useNavigate, useParams } from "@tanstack/react-router";
+"use client";
+
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { locales, getLocaleName } from "../i18n/config";
 
 export default function LocaleSwitcher() {
-  const params = useParams({ strict: false });
-  const locale = params.locale ?? "en";
-  const navigate = useNavigate();
+  const params = useParams();
+  const locale = (params.locale as string) ?? "en";
+  const pathname = usePathname();
+  const router = useRouter();
 
   const handleLocaleChange = (newLocale: string) => {
-    navigate({
-      to: ".",
-      params: (prev) => ({ ...prev, locale: newLocale }),
-    });
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPath);
   };
 
   return (

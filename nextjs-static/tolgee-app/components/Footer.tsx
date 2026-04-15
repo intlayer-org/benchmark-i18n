@@ -1,10 +1,10 @@
-import { Link, useParams } from "@tanstack/react-router";
-import { T, useTranslate } from "../i18n/tolgee";
+"use client";
+
+import Link from "./Link";
+import { T, useTranslate } from "@/i18n/tolgee";
 
 export default function Footer() {
   const { t } = useTranslate();
-  const params = useParams({ strict: false });
-  const currentLocale = params.locale ?? "en";
 
   const footerLinks = [
     {
@@ -14,12 +14,12 @@ export default function Footer() {
     },
     {
       label: t("footer.methodology", "Methodology"),
-      to: "/$locale/about" as const,
+      href: "/about",
       isInternal: true,
     },
     {
       label: t("footer.contributing", "Contributing"),
-      to: "/$locale/contact" as const,
+      href: "/contact",
       isInternal: true,
     },
   ];
@@ -48,8 +48,7 @@ export default function Footer() {
                 <li key={linkEl.label}>
                   {linkEl.isInternal ? (
                     <Link
-                      to={linkEl.to as any}
-                      params={{ locale: currentLocale } as any}
+                      href={linkEl.href!}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {linkEl.label}

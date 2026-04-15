@@ -1,0 +1,31 @@
+{
+  "locale": "fr",
+  "timestamp": "2026-04-14T22:32:31.534Z",
+  "iterations": 5,
+  "e2e": {
+    "description": "Perceived reactivity: time from select change to html[lang] DOM update (ms)",
+    "raw": [
+      20.40000000037253,
+      16.600000000558794,
+      20.800000000745058,
+      23,
+      16
+    ],
+    "avg": 19.360000000335276,
+    "min": 16,
+    "max": 23
+  },
+  "reactProfiler": {
+    "description": "Internal React render time: sum of Profiler actualDuration for update phases (ms)",
+    "raw": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "avg": 0,
+    "min": 0,
+    "max": 0
+  }
+}

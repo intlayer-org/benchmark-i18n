@@ -1,16 +1,16 @@
-import { useNavigate, useParams } from "@tanstack/react-router";
-import { locales, getLocaleName } from "../i18n/config";
+"use client";
+
+import { useTolgee } from "@tolgee/react";
+import { setLanguage } from "@/tolgee/language";
+import { locales, getLocaleName } from "@/i18n/config";
 
 export default function LocaleSwitcher() {
-  const params = useParams({ strict: false });
-  const locale = params.locale ?? "en";
-  const navigate = useNavigate();
+  const tolgee = useTolgee();
+  const locale = tolgee.getLanguage() || "en";
 
-  const handleLocaleChange = (newLocale: string) => {
-    navigate({
-      to: ".",
-      params: (prev) => ({ ...prev, locale: newLocale }),
-    });
+  const handleLocaleChange = async (newLocale: string) => {
+    await setLanguage(newLocale);
+    await tolgee.changeLanguage(newLocale);
   };
 
   return (

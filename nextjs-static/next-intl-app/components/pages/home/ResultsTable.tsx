@@ -1,7 +1,9 @@
-import { useTranslations } from "use-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 export default function ResultsTable() {
-  const t = useTranslations("results-table");
+  const t = useTranslations();
   const results = [
     {
       lib: "react-i18next",
@@ -27,7 +29,7 @@ export default function ResultsTable() {
   return (
     <section>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        {t("sampleResults")}
+        {t("results-table.sampleResults")}
       </h2>
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
@@ -37,13 +39,13 @@ export default function ResultsTable() {
                 Library
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                {t("bundleSize")}
+                {t("results-table.bundleSize")}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                {t("lookupTime")}
+                {t("results-table.lookupTime")}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                {t("lazyLoading")}
+                {t("results-table.lazyLoading")}
               </th>
             </tr>
           </thead>

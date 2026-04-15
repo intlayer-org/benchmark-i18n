@@ -24,5 +24,10 @@ export default {
     analyzesAndOptimizesYourI18n:
       "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
     learnMore: "Learn More",
-  }
+      free: "Free",
+    price29mo: "$29/mo",
+    price99oneTime: "$99 one-time",
+    price19mo: "$19/mo",
+    price49mo: "$49/mo",
+}
 };

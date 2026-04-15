@@ -1,34 +1,36 @@
+"use client";
+
 import { useTranslation } from "react-i18next";
 
 export default function WhatWeMeasure() {
-  const { t } = useTranslation("about");
+  const { t } = useTranslation();
   const metrics = [
     {
-      metric: t("whatWeMeasure.bundleSizeImpact"),
-      desc: t("whatWeMeasure.theAdditionalJavascriptBytesSent"),
+      metric: t("about.whatWeMeasure.bundleSizeImpact"),
+      desc: t("about.whatWeMeasure.theAdditionalJavascriptBytesSent"),
     },
     {
-      metric: t("whatWeMeasure.renderingOverhead"),
-      desc: t("whatWeMeasure.howMuchExtraTimeThe"),
+      metric: t("about.whatWeMeasure.renderingOverhead"),
+      desc: t("about.whatWeMeasure.howMuchExtraTimeThe"),
     },
     {
-      metric: t("whatWeMeasure.hydrationCost"),
-      desc: t("whatWeMeasure.duringSsrTranslationDataIs"),
+      metric: t("about.whatWeMeasure.hydrationCost"),
+      desc: t("about.whatWeMeasure.duringSsrTranslationDataIs"),
     },
     {
-      metric: t("whatWeMeasure.lazyLoadingEffectiveness"),
-      desc: t("whatWeMeasure.whetherSplittingTranslationsByRoute"),
+      metric: t("about.whatWeMeasure.lazyLoadingEffectiveness"),
+      desc: t("about.whatWeMeasure.whetherSplittingTranslationsByRoute"),
     },
     {
-      metric: t("whatWeMeasure.localeSwitchSpeed"),
-      desc: t("whatWeMeasure.howFastTheAppCan"),
+      metric: t("about.whatWeMeasure.localeSwitchSpeed"),
+      desc: t("about.whatWeMeasure.howFastTheAppCan"),
     },
   ];
 
   return (
     <section className="mt-12 mx-auto max-w-3xl">
       <h2 className="mb-4 text-2xl font-bold text-foreground">
-        {t("whatWeMeasure.whatWeMeasure")}
+        {t("about.whatWeMeasure.whatWeMeasure")}
       </h2>
       <ul className="space-y-4">
         {metrics.map((m) => (

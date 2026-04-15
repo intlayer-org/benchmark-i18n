@@ -1,3 +1,5 @@
+"use client";
+
 import { useLingui } from "@lingui/react";
 
 const MockBanner = () => {

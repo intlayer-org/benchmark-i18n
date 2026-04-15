@@ -1,10 +1,9 @@
-import { Link, useParams } from "@tanstack/react-router";
+"use client";
+
+import Link from "./Link";
 import * as m from "../paraglide/messages";
 
 export default function Footer() {
-  const params = useParams({ strict: false });
-  const currentLocale = params.locale ?? "en";
-
   const footerLinks = [
     {
       label: m["footer.github"](),
@@ -13,12 +12,12 @@ export default function Footer() {
     },
     {
       label: m["footer.methodology"](),
-      to: "/$locale/about" as const,
+      href: "/about",
       isInternal: true,
     },
     {
       label: m["footer.contributing"](),
-      to: "/$locale/contact" as const,
+      href: "/contact",
       isInternal: true,
     },
   ];
@@ -44,8 +43,7 @@ export default function Footer() {
                 <li key={linkEl.label}>
                   {linkEl.isInternal ? (
                     <Link
-                      to={linkEl.to as any}
-                      params={{ locale: currentLocale } as any}
+                      href={linkEl.href!}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {linkEl.label}

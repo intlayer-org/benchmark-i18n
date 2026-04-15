@@ -1,11 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import Link from "./Link";
 import { useParams, usePathname } from "next/navigation";
+import { T } from "gt-next";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import LocaleSwitcher from "./LocaleSwitcher";
+
 import { usePerformanceMeasure } from "../hooks/usePerformanceMeasure";
 
 export default function Header() {
@@ -16,14 +18,14 @@ export default function Header() {
   const pathname = usePathname();
 
   const mockPages = [
-    { href: `/${currentLocale}/products`, label: "Products" },
-    { href: `/${currentLocale}/pricing`, label: "Pricing" },
-    { href: `/${currentLocale}/team`, label: "Team" },
-    { href: `/${currentLocale}/blog`, label: "Blog" },
-    { href: `/${currentLocale}/careers`, label: "Careers" },
-    { href: `/${currentLocale}/faq`, label: "FAQ" },
-    { href: `/${currentLocale}/contact`, label: "Contact" },
-    { href: `/${currentLocale}/settings`, label: "Settings" },
+    { href: "/products", label: <T>Products</T> },
+    { href: "/pricing", label: <T>Pricing</T> },
+    { href: "/team", label: <T>Team</T> },
+    { href: "/blog", label: <T>Blog</T> },
+    { href: "/careers", label: <T>Careers</T> },
+    { href: "/faq", label: <T>FAQ</T> },
+    { href: "/contact", label: <T>Contact</T> },
+    { href: "/settings", label: <T>Settings</T> },
   ];
 
   const isExactActive = (href: string) => pathname === href;
@@ -34,7 +36,7 @@ export default function Header() {
       <nav className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <Link
-            href={`/${currentLocale}`}
+            href="/"
             className="text-lg font-bold tracking-tight text-primary no-underline"
           >
             i18n Bench
@@ -42,16 +44,16 @@ export default function Header() {
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link
-              href={`/${currentLocale}`}
+              href="/"
               className={`nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`}
             >
-              Home
+              <T>Home</T>
             </Link>
             <Link
-              href={`/${currentLocale}/about`}
+              href="/about"
               className={`nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`}
             >
-              Methodology
+              <T>Methodology</T>
             </Link>
 
             {/* Mock Pages Dropdown */}
@@ -63,7 +65,7 @@ export default function Header() {
                 onMouseLeave={() => setIsMockPagesOpen(false)}
                 onClick={() => setIsMockPagesOpen(!isMockPagesOpen)}
               >
-                Mock Pages
+                <T>Mock Pages</T>
                 <ChevronDown
                   size={14}
                   className={`transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`}
@@ -116,3 +118,4 @@ export default function Header() {
     </header>
   );
 }
+

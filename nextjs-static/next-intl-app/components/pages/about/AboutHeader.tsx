@@ -1,16 +1,18 @@
-import { useTranslations } from "use-intl";
-import { usePerformanceMeasure } from "../../../src/hooks/usePerformanceMeasure";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
 
 export default function AboutHeader() {
-  const t = useTranslations("about-header");
+  const t = useTranslations();
   usePerformanceMeasure("AboutHeader");
   return (
     <>
       <h1 className="mb-4 text-3xl font-bold text-foreground">
-        {t("aboutThisBenchmark")}
+        {t("about-header.aboutThisBenchmark")}
       </h1>
       <p className="mb-8 max-w-3xl text-muted-foreground">
-        {t("thisIsAnOpenSource")}
+        {t("about-header.thisIsAnOpenSource")}
       </p>
     </>
   );

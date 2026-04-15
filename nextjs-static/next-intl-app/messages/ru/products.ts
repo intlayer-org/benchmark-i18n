@@ -17,5 +17,10 @@ export default {
     bundleOptimizer: "Оптимизатор бандлов",
     analyzesAndOptimizesYourI18n: "Анализирует и оптимизирует ваш бандл i18n для продакшна с использованием tree-shaking и разделения кода.",
     learnMore: "Узнать больше",
-  }
+      free: "Бесплатно",
+    price29mo: "29 $/мес",
+    price99oneTime: "$99 один раз",
+    price19mo: "19 $/мес",
+    price49mo: "49 $/мес",
+}
 };

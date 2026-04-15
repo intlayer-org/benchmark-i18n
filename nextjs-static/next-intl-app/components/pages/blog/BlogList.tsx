@@ -1,43 +1,45 @@
-import { useTranslations } from "use-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 export default function BlogList() {
-  const t = useTranslations("blog-list");
+  const t = useTranslations();
 
   const posts = [
     {
-      title: t("comparingI18nLibrariesIn2026"),
-      date: t("march82026"), // The en.ts has march82026 for the first one too? Let's check.
-      excerpt: t("weTested12DifferentInternationalization"),
+      title: t("blog-list.comparingI18nLibrariesIn2026"),
+      date: t("blog.blog-list.march82026"), // The en.ts has march82026 for the first one too? Let's check.
+      excerpt: t("blog.blog-list.weTested12DifferentInternationalization"),
       category: "Benchmark",
     },
     {
-      title: t("howToReduceYourI18n"),
-      date: t("march82026"),
-      excerpt: t("practicalStrategiesForOptimizingTranslation"),
+      title: t("blog.blog-list.howToReduceYourI18n"),
+      date: t("blog.blog-list.march82026"),
+      excerpt: t("blog.blog-list.practicalStrategiesForOptimizingTranslation"),
       category: "Tutorial",
     },
     {
-      title: t("theStateOfInternationalizationIn"),
-      date: t("february282026"),
-      excerpt: t("anOverviewOfTheCurrent"),
+      title: t("blog.blog-list.theStateOfInternationalizationIn"),
+      date: t("blog.blog-list.february282026"),
+      excerpt: t("blog.blog-list.anOverviewOfTheCurrent"),
       category: "Analysis",
     },
     {
-      title: t("migratingFromReactI18nextTo"),
-      date: t("february152026"),
-      excerpt: t("aStepByStepGuide"),
+      title: t("blog.blog-list.migratingFromReactI18nextTo"),
+      date: t("blog.blog-list.february152026"),
+      excerpt: t("blog.blog-list.aStepByStepGuide"),
       category: "Tutorial",
     },
     {
-      title: t("serverComponentsAndI18nWhat"),
-      date: t("february12026"),
-      excerpt: t("reactServerComponentsIntroduceNew"),
+      title: t("blog.blog-list.serverComponentsAndI18nWhat"),
+      date: t("blog.blog-list.february12026"),
+      excerpt: t("blog.blog-list.reactServerComponentsIntroduceNew"),
       category: "Analysis",
     },
     {
-      title: t("benchmarkMethodologyHowWeTest"),
-      date: t("january202026"),
-      excerpt: t("aTransparentLookAtOur"),
+      title: t("blog.blog-list.benchmarkMethodologyHowWeTest"),
+      date: t("blog.blog-list.january202026"),
+      excerpt: t("blog.blog-list.aTransparentLookAtOur"),
       category: "Meta",
     },
   ];
@@ -63,7 +65,7 @@ export default function BlogList() {
             type="button"
             className="text-sm font-medium text-primary hover:underline"
           >
-            {t("readMore")}
+            {t("blog.blog-list.readMore")}
           </button>
         </article>
       ))}

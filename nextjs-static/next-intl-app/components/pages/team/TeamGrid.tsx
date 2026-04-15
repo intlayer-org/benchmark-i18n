@@ -1,38 +1,40 @@
-import { useTranslations } from "use-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 export default function TeamGrid() {
-  const t = useTranslations("team-grid");
+  const t = useTranslations();
 
   const members = [
     {
-      name: t("sarahChen"),
-      role: t("founderLeadEngineer"),
-      bio: t("formerGoogleEngineerWith10"),
+      name: t("team.team-grid.sarahChen"),
+      role: t("team.team-grid.founderLeadEngineer"),
+      bio: t("team.team-grid.formerGoogleEngineerWith10"),
     },
     {
-      name: t("marcusWeber"),
-      role: t("performanceEngineer"),
-      bio: t("specializesInJavascriptPerformanceOptimization"),
+      name: t("team.team-grid.marcusWeber"),
+      role: t("team.team-grid.performanceEngineer"),
+      bio: t("team.team-grid.specializesInJavascriptPerformanceOptimization"),
     },
     {
-      name: t("aishaPatel"),
-      role: t("developerAdvocate"),
-      bio: t("passionateAboutDeveloperExperienceAnd"),
+      name: t("team.team-grid.aishaPatel"),
+      role: t("team.team-grid.developerAdvocate"),
+      bio: t("team.team-grid.passionateAboutDeveloperExperienceAnd"),
     },
     {
-      name: t("tomasRodriguez"),
-      role: t("fullStackDeveloper"),
-      bio: t("maintainsTheBenchmarkingInfrastructureAnd"),
+      name: t("team.team-grid.tomasRodriguez"),
+      role: t("team.team-grid.fullStackDeveloper"),
+      bio: t("team.team-grid.maintainsTheBenchmarkingInfrastructureAnd"),
     },
     {
-      name: t("yukiTanaka"),
-      role: t("dataAnalyst"),
-      bio: t("ensuresStatisticalRigorInAll"),
+      name: t("team.team-grid.yukiTanaka"),
+      role: t("team.team-grid.dataAnalyst"),
+      bio: t("team.team-grid.ensuresStatisticalRigorInAll"),
     },
     {
-      name: t("elenaKowalski"),
-      role: t("communityManager"),
-      bio: t("managesCommunityContributionsPartnershipsAnd"),
+      name: t("team.team-grid.elenaKowalski"),
+      role: t("team.team-grid.communityManager"),
+      bio: t("team.team-grid.managesCommunityContributionsPartnershipsAnd"),
     },
   ];
 
@@ -45,7 +47,7 @@ export default function TeamGrid() {
         >
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground">
             {m.name
-              .split(" ")
+              .split("team-grid. ")
               .map((n) => n[0])
               .join("")}
           </div>

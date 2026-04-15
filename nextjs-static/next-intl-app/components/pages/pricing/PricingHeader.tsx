@@ -1,16 +1,18 @@
-import { useTranslations } from "use-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 import MockBanner from "../../MockBanner";
 
 export default function PricingHeader() {
-  const t = useTranslations("pricing-header");
+  const t = useTranslations();
   return (
     <>
       <MockBanner />
       <div className="mb-12 text-center">
         <h1 className="mb-3 text-3xl font-bold text-foreground">
-          {t("simpleTransparentPricing")}
+          {t("pricing.pricing-header.simpleTransparentPricing")}
         </h1>
-        <p className="text-muted-foreground">{t("chooseThePlanThatFits")}</p>
+        <p className="text-muted-foreground">{t("pricing.pricing-header.chooseThePlanThatFits")}</p>
       </div>
     </>
   );

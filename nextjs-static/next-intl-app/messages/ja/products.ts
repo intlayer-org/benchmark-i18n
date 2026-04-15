@@ -17,5 +17,10 @@ export default {
     bundleOptimizer: "バンドルオプティマイザー",
     analyzesAndOptimizesYourI18n: "プロダクション用にi18nバンドルを分析し、ツリーシェイキングやコード分割によって最適化します。",
     learnMore: "詳しく見る",
-  }
+      free: "無料",
+    price29mo: "$29/月",
+    price99oneTime: "$99 一回限り",
+    price19mo: "$19/月",
+    price49mo: "$49/月",
+}
 };

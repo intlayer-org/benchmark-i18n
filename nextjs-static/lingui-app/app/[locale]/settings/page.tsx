@@ -1,55 +1,37 @@
 "use client";
 
-import { lazy, Suspense } from "react";
+import dynamic from "next/dynamic";
 
-const SettingsHeader = lazy(
-  () => import("../../../components/pages/settings/SettingsHeader"),
-);
-const ProfileSection = lazy(
-  () => import("../../../components/pages/settings/ProfileSection"),
-);
-const PreferencesSection = lazy(
-  () => import("../../../components/pages/settings/PreferencesSection"),
-);
-const ApiAccessSection = lazy(
-  () => import("../../../components/pages/settings/ApiAccessSection"),
-);
-const SettingsFooter = lazy(
-  () => import("../../../components/pages/settings/SettingsFooter"),
-);
+const SettingsHeader = dynamic(() => import("../../../components/pages/settings/SettingsHeader"), {
+  loading: () => <div className="h-24 animate-pulse bg-muted/20" />,
+});
+const ProfileSection = dynamic(() => import("../../../components/pages/settings/ProfileSection"), {
+  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
+});
+const PreferencesSection = dynamic(() => import("../../../components/pages/settings/PreferencesSection"), {
+  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
+});
+const ApiAccessSection = dynamic(() => import("../../../components/pages/settings/ApiAccessSection"), {
+  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
+});
+const SettingsFooter = dynamic(() => import("../../../components/pages/settings/SettingsFooter"), {
+  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
+});
 
 export default function Settings() {
   return (
     <div className="container py-16">
-      <Suspense fallback={<div className="h-24 animate-pulse bg-muted/20" />}>
-        <SettingsHeader />
-      </Suspense>
+      <SettingsHeader />
 
       <div className="mx-auto max-w-2xl space-y-8">
         <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
-          <Suspense
-            fallback={<div className="h-48 animate-pulse bg-muted/20" />}
-          >
-            <ProfileSection />
-          </Suspense>
+          <ProfileSection />
 
-          <Suspense
-            fallback={<div className="h-64 animate-pulse bg-muted/20" />}
-          >
-            <PreferencesSection />
-          </Suspense>
+          <PreferencesSection />
 
-          <Suspense
-            fallback={<div className="h-40 animate-pulse bg-muted/20" />}
-          >
-            <ApiAccessSection />
-          </Suspense>
+          <ApiAccessSection />
 
-          <Suspense
-            fallback={<div className="h-10 animate-pulse bg-muted/20" />}
-          >
-            <SettingsFooter />
-          </Suspense>
+          <SettingsFooter />
         </form>
       </div>
     </div>

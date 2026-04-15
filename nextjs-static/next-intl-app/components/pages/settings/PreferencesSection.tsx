@@ -1,8 +1,10 @@
+"use client";
+
 import { useId } from "react";
-import { useTranslations } from "use-intl";
+import { useTranslations } from "next-intl";
 
 export default function PreferencesSection() {
-  const t = useTranslations("preferences-section");
+  const t = useTranslations();
   const languageId = useId();
 
   return (
@@ -14,16 +16,16 @@ export default function PreferencesSection() {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-foreground">
-              {t("emailNotifications")}
+              {t("settings.preferences-section.emailNotifications")}
             </p>
             <p className="text-xs text-muted-foreground">
-              {t("receiveWeeklyBenchmarkReports")}
+              {t("settings.preferences-section.receiveWeeklyBenchmarkReports")}
             </p>
           </div>
           <button
             type="button"
             className="h-6 w-11 rounded-full bg-primary transition-colors"
-            aria-label={t("toggleNotifications")}
+            aria-label={t("settings.preferences-section.toggleNotifications")}
           >
             <span className="block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" />
           </button>
@@ -31,16 +33,16 @@ export default function PreferencesSection() {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-foreground">
-              {t("darkMode")}
+              {t("settings.preferences-section.darkMode")}
             </p>
             <p className="text-xs text-muted-foreground">
-              {t("useDarkColorScheme")}
+              {t("settings.preferences-section.useDarkColorScheme")}
             </p>
           </div>
           <button
             type="button"
             className="h-6 w-11 rounded-full bg-muted transition-colors"
-            aria-label={t("toggleDarkMode")}
+            aria-label={t("settings.preferences-section.toggleDarkMode")}
           >
             <span className="block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" />
           </button>
@@ -50,19 +52,19 @@ export default function PreferencesSection() {
             htmlFor={languageId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            {t("defaultLanguage")}
+            {t("settings.preferences-section.defaultLanguage")}
           </label>
           <select
             id={languageId}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
           >
-            <option>{t("englishEn")}</option>
-            <option>{t("frenchFr")}</option>
-            <option>{t("germanDe")}</option>
-            <option>{t("spanishEs")}</option>
-            <option>{t("japaneseJa")}</option>
-            <option>{t("chineseSimplifiedZhCn")}</option>
-            <option>{t("arabicAr")}</option>
+            <option>{t("settings.preferences-section.englishEn")}</option>
+            <option>{t("settings.preferences-section.frenchFr")}</option>
+            <option>{t("settings.preferences-section.germanDe")}</option>
+            <option>{t("settings.preferences-section.spanishEs")}</option>
+            <option>{t("settings.preferences-section.japaneseJa")}</option>
+            <option>{t("settings.preferences-section.chineseSimplifiedZhCn")}</option>
+            <option>{t("settings.preferences-section.arabicAr")}</option>
           </select>
         </div>
       </div>

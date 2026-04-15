@@ -1,26 +1,23 @@
 "use client";
 
-import Link from "next/link";
-import { useParams } from "next/navigation";
+import Link from "./Link";
+import { T } from "gt-next";
 
 export default function Footer() {
-  const params = useParams();
-  const currentLocale = (params.locale as string) ?? "en";
-
   const footerLinks = [
     {
-      label: "GitHub",
+      label: <T>GitHub</T>,
       href: "https://github.com/intlayer-org/benchmark-i18n",
       isInternal: false,
     },
     {
-      label: "Methodology",
-      href: `/${currentLocale}/about`,
+      label: <T>Methodology</T>,
+      href: "/about",
       isInternal: true,
     },
     {
-      label: "Contributing",
-      href: `/${currentLocale}/contact`,
+      label: <T>Contributing</T>,
+      href: "/contact",
       isInternal: true,
     },
   ];
@@ -31,24 +28,26 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              i18n Benchmark
+              <T>i18n Benchmark</T>
             </h3>
             <p className="text-sm text-muted-foreground">
-              An open-source test application for measuring the real-world
-              impact of internationalization libraries on bundle size, loading
-              time, and app reactivity.
+              <T>
+                An open-source test application for measuring the real-world
+                impact of internationalization libraries on bundle size, loading
+                time, and app reactivity.
+              </T>
             </p>
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              Resources
+              <T>Resources</T>
             </h3>
             <ul className="space-y-1">
               {footerLinks.map((linkEl) => (
-                <li key={linkEl.label}>
+                <li key={linkEl.href}>
                   {linkEl.isInternal ? (
                     <Link
-                      href={linkEl.href}
+                      href={linkEl.href!}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {linkEl.label}
@@ -69,7 +68,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              Contact
+              <T>Contact</T>
             </h3>
             <p className="text-sm text-muted-foreground">
               contact@intlayer.org
@@ -77,9 +76,10 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">
-          i18n Benchmark — Open-source project. Built with React &amp; Next.js.
+          <T>i18n Benchmark — Open-source project. Built with Next.js.</T>
         </div>
       </div>
     </footer>
   );
 }
+

@@ -1,46 +1,48 @@
+import { T } from "gt-next";
+
 export default function ResultsTable() {
   const results = [
     {
       lib: "react-i18next",
       size: "42.3 kB",
       time: "0.12ms",
-      lazy: "Yes",
+      lazy: <T>Yes</T>,
     },
     {
       lib: "react-intl",
       size: "38.1 kB",
       time: "0.15ms",
-      lazy: "Manual",
+      lazy: <T>Manual</T>,
     },
-    { lib: "lingui", size: "12.8 kB", time: "0.08ms", lazy: "Yes" },
+    { lib: "lingui", size: "12.8 kB", time: "0.08ms", lazy: <T>Yes</T> },
     {
       lib: "typesafe-i18n",
       size: "5.2 kB",
       time: "0.05ms",
-      lazy: "Built-in",
+      lazy: <T>Built-in</T>,
     },
   ];
 
   return (
     <section>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        Sample Results
+        <T>Sample Results</T>
       </h2>
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
           <thead className="bg-muted">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                Library
+                <T>Library</T>
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                Bundle Size
+                <T>Bundle Size</T>
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                Lookup Time
+                <T>Lookup Time</T>
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                Lazy Loading
+                <T>Lazy Loading</T>
               </th>
             </tr>
           </thead>

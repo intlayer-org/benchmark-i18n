@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,10 +18,14 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-      </head>
-      <body className="antialiased [overflow-wrap:anywhere]">{children}</body>
+      <body className="antialiased [overflow-wrap:anywhere]">
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

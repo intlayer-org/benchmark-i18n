@@ -352,7 +352,7 @@ var f = (e, t, n) => {
 	],
 	defaultLocale: "en"
 }, h = {
-	mode: "prefix-no-default",
+	mode: "prefix-all",
 	storage: {
 		cookies: [{
 			name: "INTLAYER_LOCALE",

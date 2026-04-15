@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { T } from "gt-next";
 
 export default function PreferencesSection() {
   const languageId = useId();
@@ -6,16 +7,16 @@ export default function PreferencesSection() {
   return (
     <section className="rounded-lg border border-border bg-card p-6">
       <h2 className="mb-4 text-lg font-semibold text-foreground">
-        Preferences
+        <T>Preferences</T>
       </h2>
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-foreground">
-              Email Notifications
+              <T>Email Notifications</T>
             </p>
             <p className="text-xs text-muted-foreground">
-              Receive weekly benchmark reports
+              <T>Receive weekly benchmark reports</T>
             </p>
           </div>
           <button
@@ -28,8 +29,12 @@ export default function PreferencesSection() {
         </div>
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm font-medium text-foreground">Dark Mode</p>
-            <p className="text-xs text-muted-foreground">Use dark color scheme</p>
+            <p className="text-sm font-medium text-foreground">
+              <T>Dark Mode</T>
+            </p>
+            <p className="text-xs text-muted-foreground">
+              <T>Use dark color scheme</T>
+            </p>
           </div>
           <button
             type="button"
@@ -44,19 +49,33 @@ export default function PreferencesSection() {
             htmlFor={languageId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Default Language
+            <T>Default Language</T>
           </label>
           <select
             id={languageId}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
           >
-            <option>English (en)</option>
-            <option>French (fr)</option>
-            <option>German (de)</option>
-            <option>Spanish (es)</option>
-            <option>Japanese (ja)</option>
-            <option>Chinese Simplified (zh-CN)</option>
-            <option>Arabic (ar)</option>
+            <option>
+              <T>English (en)</T>
+            </option>
+            <option>
+              <T>French (fr)</T>
+            </option>
+            <option>
+              <T>German (de)</T>
+            </option>
+            <option>
+              <T>Spanish (es)</T>
+            </option>
+            <option>
+              <T>Japanese (ja)</T>
+            </option>
+            <option>
+              <T>Chinese Simplified (zh-CN)</T>
+            </option>
+            <option>
+              <T>Arabic (ar)</T>
+            </option>
           </select>
         </div>
       </div>

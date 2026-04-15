@@ -1,8 +1,10 @@
-import { useTranslations } from "use-intl";
-import { usePerformanceMeasure } from "../../../src/hooks/usePerformanceMeasure";
+"use client";
+
+import { useTranslations } from "next-intl";
+import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
 
 export default function Hero() {
-  const t = useTranslations("hero");
+  const t = useTranslations();
   const tHeader = useTranslations("header");
   usePerformanceMeasure("Hero");
   return (
@@ -11,14 +13,14 @@ export default function Hero() {
         i18n Benchmark
       </h1>
       <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-        {t("aTestApplicationDesignedTo")}
+        {t("home.hero.aTestApplicationDesignedTo")}
       </p>
       <div className="mt-8 flex justify-center gap-4">
         <button
           type="button"
           className="rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
         >
-          {t("viewResults")}
+          {t("home.hero.viewResults")}
         </button>
         <button
           type="button"

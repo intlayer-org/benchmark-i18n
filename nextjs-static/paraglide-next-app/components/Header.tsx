@@ -1,4 +1,7 @@
-import { Link, useParams } from "@tanstack/react-router";
+"use client";
+
+import Link from "./Link";
+import { useParams, usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import * as m from "../paraglide/messages";
@@ -10,27 +13,30 @@ import { usePerformanceMeasure } from "../hooks/usePerformanceMeasure";
 export default function Header() {
   usePerformanceMeasure("Header");
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
-  const params = useParams({ strict: false });
-  const currentLocale = params.locale ?? "en";
+  const params = useParams();
+  const currentLocale = (params.locale as string) ?? "en";
+  const pathname = usePathname();
 
   const mockPages = [
-    { to: "/$locale/products" as const, label: m["header.products"]() },
-    { to: "/$locale/pricing" as const, label: m["header.pricing"]() },
-    { to: "/$locale/team" as const, label: m["header.team"]() },
-    { to: "/$locale/blog" as const, label: m["header.blog"]() },
-    { to: "/$locale/careers" as const, label: m["header.careers"]() },
-    { to: "/$locale/faq" as const, label: m["header.faq"]() },
-    { to: "/$locale/contact" as const, label: m["header.contact"]() },
-    { to: "/$locale/settings" as const, label: m["header.settings"]() },
+    { href: "/products", label: m["header.products"]() },
+    { href: "/pricing", label: m["header.pricing"]() },
+    { href: "/team", label: m["header.team"]() },
+    { href: "/blog", label: m["header.blog"]() },
+    { href: "/careers", label: m["header.careers"]() },
+    { href: "/faq", label: m["header.faq"]() },
+    { href: "/contact", label: m["header.contact"]() },
+    { href: "/settings", label: m["header.settings"]() },
   ];
+
+  const isExactActive = (href: string) => pathname === href;
+  const isActive = (href: string) => pathname.startsWith(href);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">
       <nav className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <Link
-            to="/$locale"
-            params={{ locale: currentLocale }}
+            href="/"
             className="text-lg font-bold tracking-tight text-primary no-underline"
           >
             i18n Bench
@@ -38,19 +44,14 @@ export default function Header() {
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link
-              to="/$locale"
-              params={{ locale: currentLocale }}
-              activeOptions={{ exact: true }}
-              activeProps={{ className: "is-active" }}
-              className="nav-link"
+              href="/"
+              className={`nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`}
             >
               {m["header.home"]()}
             </Link>
             <Link
-              to="/$locale/about"
-              params={{ locale: currentLocale }}
-              activeProps={{ className: "is-active" }}
-              className="nav-link"
+              href="/about"
+              className={`nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`}
             >
               {m["header.methodology"]()}
             </Link>
@@ -80,9 +81,8 @@ export default function Header() {
                   <div className="bg-card border border-border rounded-md shadow-lg overflow-hidden py-1">
                     {mockPages.map((page) => (
                       <Link
-                        key={page.to}
-                        to={page.to}
-                        params={{ locale: currentLocale }}
+                        key={page.href}
+                        href={page.href}
                         className="block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors"
                         onClick={() => setIsMockPagesOpen(false)}
                       >

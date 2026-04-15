@@ -1,54 +1,56 @@
-import { useTranslations } from "use-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 export default function OpenPositions() {
-  const t = useTranslations("open-positions");
+  const t = useTranslations();
 
   const openings = [
     {
-      title: t("seniorFrontendEngineer"),
-      location: t("remote"),
-      type: t("fullTime"),
-      dept: t("engineering"),
-      desc: t("seniorFrontendEngineer"), // Wait, en.ts has seniorFrontendEngineer: "Senior Frontend Engineer" but no description key?
+      title: t("careers.open-positions.seniorFrontendEngineer"),
+      location: t("careers.open-positions.remote"),
+      type: t("careers.open-positions.fullTime"),
+      dept: t("open-positions.engineering"),
+      desc: t("careers.open-positions.seniorFrontendEngineer"), // Wait, en.ts has seniorFrontendEngineer: "Senior Frontend Engineer" but no description key?
       // Actually, en.ts has: seniorFrontendEngineer: "Senior Frontend Engineer",
       // buildAndMaintainOurBenchmarking: "Build and maintain our...",
       // Let's use those.
-      description: t("buildAndMaintainOurBenchmarking"),
+      description: t("open-positions.buildAndMaintainOurBenchmarking"),
     },
     {
-      title: t("backendEngineer"),
-      location: t("remote"),
-      type: t("fullTime"),
-      dept: t("engineering"),
-      description: t("designAndScaleOurCloud"),
+      title: t("open-positions.backendEngineer"),
+      location: t("careers.open-positions.remote"),
+      type: t("careers.open-positions.fullTime"),
+      dept: t("open-positions.engineering"),
+      description: t("open-positions.designAndScaleOurCloud"),
     },
     {
-      title: t("technicalWriter"),
-      location: t("remote"),
-      type: t("partTime"),
-      dept: t("documentation"),
-      description: t("createComprehensiveGuidesApiReferences"),
+      title: t("open-positions.technicalWriter"),
+      location: t("careers.open-positions.remote"),
+      type: t("open-positions.partTime"),
+      dept: t("open-positions.documentation"),
+      description: t("open-positions.createComprehensiveGuidesApiReferences"),
     },
     {
-      title: t("devrelEngineer"),
-      location: t("sanFranciscoRemote"),
-      type: t("fullTime"),
-      dept: t("community"),
-      description: t("engageWithTheI18nCommunity"),
+      title: t("open-positions.devrelEngineer"),
+      location: t("open-positions.sanFranciscoRemote"),
+      type: t("careers.open-positions.fullTime"),
+      dept: t("open-positions.community"),
+      description: t("open-positions.engageWithTheI18nCommunity"),
     },
     {
-      title: t("qaEngineer"),
-      location: t("remote"),
-      type: t("fullTime"),
-      dept: t("engineering"),
-      description: t("ensureTheAccuracyAndReliability"),
+      title: t("open-positions.qaEngineer"),
+      location: t("careers.open-positions.remote"),
+      type: t("careers.open-positions.fullTime"),
+      dept: t("open-positions.engineering"),
+      description: t("open-positions.ensureTheAccuracyAndReliability"),
     },
   ];
 
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        {t("openPositions")}
+        {t("careers.open-positions.openPositions")}
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
@@ -77,7 +79,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              {t("applyNow")}
+              {t("careers.open-positions.applyNow")}
             </button>
           </div>
         ))}

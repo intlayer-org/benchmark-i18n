@@ -1,28 +1,30 @@
+"use client";
+
 import { useTranslation } from "react-i18next";
 
 export default function FAQList() {
-  const { t } = useTranslation("faq");
+  const { t } = useTranslation();
 
   const faqs = [
     {
-      q: t("faqList.howAreTheBenchmarks"),
-      a: t("faqList.allBenchmarksAreRun"),
+      q: t("faq.faqList.howAreTheBenchmarks"),
+      a: t("faq.faqList.allBenchmarksAreRun"),
     },
     {
-      q: t("faqList.whatLibrariesAreCurrently"),
-      a: t("faqList.weCurrentlyBenchmarkReactI18next"),
+      q: t("faq.faqList.whatLibrariesAreCurrently"),
+      a: t("faq.faqList.weCurrentlyBenchmarkReactI18next"),
     },
     {
-      q: t("faqList.canIContributeA"),
-      a: t("faqList.absolutelyWeWelcomeCommunity"),
+      q: t("faq.faqList.canIContributeA"),
+      a: t("faq.faqList.absolutelyWeWelcomeCommunity"),
     },
     {
-      q: t("faqList.howOftenAreResults"),
-      a: t("faqList.benchmarksRunAutomaticallyVia"),
+      q: t("faq.faqList.howOftenAreResults"),
+      a: t("faq.faqList.benchmarksRunAutomaticallyVia"),
     },
     {
-      q: t("faqList.areTheResultsStatistically"),
-      a: t("faqList.yesWeUseThe"),
+      q: t("faq.faqList.areTheResultsStatistically"),
+      a: t("faq.faqList.yesWeUseThe"),
     },
   ];
 

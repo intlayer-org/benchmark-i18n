@@ -1,51 +1,54 @@
+import { T } from "gt-next";
+
 export default function PricingTiers() {
   const tiers = [
     {
-      name: "Starter",
-      price: "$0",
-      period: "forever",
+      name: <T>Starter</T>,
+      price: <T>$0</T>,
+      period: <T>forever</T>,
       features: [
-        "5 benchmark runs/day",
-        "3 libraries",
-        "Community support",
-        "Public results",
+        <T key="f1">5 benchmark runs/day</T>,
+        <T key="f2">3 libraries</T>,
+        <T key="f3">Community support</T>,
+        <T key="f4">Public results</T>,
       ],
     },
     {
-      name: "Pro",
-      price: "$29",
-      period: "/month",
+      name: <T>Pro</T>,
+      price: <T>$29</T>,
+      period: <T>/month</T>,
       features: [
-        "Unlimited runs",
-        "All libraries",
-        "Priority support",
-        "Private results",
-        "CI integration",
-        "Historical data",
+        <T key="f1">Unlimited runs</T>,
+        <T key="f2">All libraries</T>,
+        <T key="f3">Priority support</T>,
+        <T key="f4">Private results</T>,
+        <T key="f5">CI integration</T>,
+        <T key="f6">Historical data</T>,
       ],
       highlighted: true,
     },
     {
-      name: "Enterprise",
-      price: "Custom",
-      period: "",
+      name: <T>Enterprise</T>,
+      price: <T>Custom</T>,
+      period: <T>{""}</T>,
       features: [
-        "Everything in Pro",
-        "On-premise option",
-        "SSO & SAML",
-        "Dedicated account manager",
-        "Custom SLAs",
-        "Audit logs",
-        "Training sessions",
+        <T key="f1">Everything in Pro</T>,
+        <T key="f2">On-premise option</T>,
+        <T key="f3">SSO & SAML</T>,
+        <T key="f4">Dedicated account manager</T>,
+        <T key="f5">Custom SLAs</T>,
+        <T key="f6">Audit logs</T>,
+        <T key="f7">Training sessions</T>,
       ],
+      isEnterprise: true,
     },
   ];
 
   return (
     <div className="grid gap-6 md:grid-cols-3">
-      {tiers.map((t) => (
+      {tiers.map((t, i) => (
         <div
-          key={t.name}
+          key={i}
           className={`flex flex-col rounded-lg border p-6 ${
             t.highlighted
               ? "border-primary bg-primary/5 ring-1 ring-primary"
@@ -60,9 +63,9 @@ export default function PricingTiers() {
             <span className="text-sm text-muted-foreground">{t.period}</span>
           </div>
           <ul className="mb-6 flex-1 space-y-2">
-            {t.features.map((f) => (
+            {t.features.map((f, fi) => (
               <li
-                key={f}
+                key={fi}
                 className="flex items-center gap-2 text-sm text-muted-foreground"
               >
                 <span className="text-primary">✓</span> {f}
@@ -77,7 +80,7 @@ export default function PricingTiers() {
                 : "border border-border text-foreground hover:bg-accent"
             }`}
           >
-            {t.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+            {t.isEnterprise ? <T>Contact Sales</T> : <T>Get Started</T>}
           </button>
         </div>
       ))}

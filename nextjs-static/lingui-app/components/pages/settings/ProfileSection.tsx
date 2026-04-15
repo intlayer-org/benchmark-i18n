@@ -1,3 +1,5 @@
+"use client";
+
 import { useId } from "react";
 import { Trans } from "@lingui/react";
 import { useLingui } from "@lingui/react";

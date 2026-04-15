@@ -1,21 +1,23 @@
+"use client";
+
 import { useId } from "react";
-import { useTranslations } from "use-intl";
+import { useTranslations } from "next-intl";
 
 export default function ApiAccessSection() {
-  const t = useTranslations("api-access-section");
+  const t = useTranslations();
   const apiKeyId = useId();
 
   return (
     <section className="rounded-lg border border-border bg-card p-6">
       <h2 className="mb-4 text-lg font-semibold text-foreground">
-        {t("apiAccess")}
+        {t("settings.api-access-section.apiAccess")}
       </h2>
       <div>
         <label
           htmlFor={apiKeyId}
           className="mb-1 block text-sm font-medium text-foreground"
         >
-          {t("apiKey")}
+          {t("settings.api-access-section.apiKey")}
         </label>
         <div className="flex gap-2">
           <input
@@ -32,7 +34,7 @@ export default function ApiAccessSection() {
           </button>
         </div>
         <p className="mt-1 text-xs text-muted-foreground">
-          {t("useThisKeyToAccess")}
+          {t("settings.api-access-section.useThisKeyToAccess")}
         </p>
       </div>
     </section>

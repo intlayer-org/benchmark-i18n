@@ -1,0 +1,6 @@
+const hero = {
+  aTestApplicationDesignedTo:
+    "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+  viewResults: "View Results",
+};
+export default hero;

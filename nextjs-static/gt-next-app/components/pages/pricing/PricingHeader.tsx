@@ -1,3 +1,4 @@
+import { T } from "gt-next";
 import MockBanner from "../../MockBanner";
 
 export default function PricingHeader() {
@@ -6,10 +7,10 @@ export default function PricingHeader() {
       <MockBanner />
       <div className="mb-12 text-center">
         <h1 className="mb-3 text-3xl font-bold text-foreground">
-          Simple, Transparent Pricing
+          <T>Simple, Transparent Pricing</T>
         </h1>
         <p className="text-muted-foreground">
-          Choose the plan that fits your team. No hidden fees.
+          <T>Choose the plan that fits your team. No hidden fees.</T>
         </p>
       </div>
     </>

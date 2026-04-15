@@ -1,3 +1,5 @@
+"use client";
+
 import * as m from "../../../paraglide/messages";
 
 export default function FAQList() {

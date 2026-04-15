@@ -1,38 +1,40 @@
-import { useTranslations } from "use-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 export default function ProductsGrid() {
-  const t = useTranslations("products-grid");
+  const t = useTranslations();
 
   const products = [
     {
-      name: t("benchmarkCli"),
-      desc: t("runBenchmarksLocallyFromYour"),
-      price: "Free",
+      name: t("products.products-grid.benchmarkCli"),
+      desc: t("products.products-grid.runBenchmarksLocallyFromYour"),
+      price: t("products.products-grid.free"),
     },
     {
-      name: t("benchmarkCloud"),
-      desc: t("automatedCloudBasedBenchmarkingWith"),
-      price: "$29/mo",
+      name: t("products.products-grid.benchmarkCloud"),
+      desc: t("products.products-grid.automatedCloudBasedBenchmarkingWith"),
+      price: t("products.products-grid.price29mo"),
     },
     {
-      name: t("benchmarkEnterprise"),
-      desc: t("onPremiseDeploymentWithSso"),
-      price: t("contactUs"),
+      name: t("products.products-grid.benchmarkEnterprise"),
+      desc: t("products.products-grid.onPremiseDeploymentWithSso"),
+      price: t("products.products-grid.contactUs"),
     },
     {
-      name: t("migrationAssistant"),
-      desc: t("aiPoweredToolThatHelps"),
-      price: "$99 one-time",
+      name: t("products.products-grid.migrationAssistant"),
+      desc: t("products.products-grid.aiPoweredToolThatHelps"),
+      price: t("products.products-grid.price99oneTime"),
     },
     {
-      name: t("translationQa"),
-      desc: t("automatedQualityChecksForMissing"),
-      price: "$19/mo",
+      name: t("products.products-grid.translationQa"),
+      desc: t("products.products-grid.automatedQualityChecksForMissing"),
+      price: t("products.products-grid.price19mo"),
     },
     {
-      name: t("bundleOptimizer"),
-      desc: t("analyzesAndOptimizesYourI18n"),
-      price: "$49/mo",
+      name: t("products.products-grid.bundleOptimizer"),
+      desc: t("products.products-grid.analyzesAndOptimizesYourI18n"),
+      price: t("products.products-grid.price49mo"),
     },
   ];
 
@@ -55,7 +57,7 @@ export default function ProductsGrid() {
               type="button"
               className="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              {t("learnMore")}
+              {t("products.products-grid.learnMore")}
             </button>
           </div>
         </div>

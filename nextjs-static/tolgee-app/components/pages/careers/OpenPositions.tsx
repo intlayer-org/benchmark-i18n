@@ -1,4 +1,6 @@
-import { T, useTranslate } from "../../../i18n/tolgee";
+"use client";
+
+import { T, useTranslate } from "@/i18n/tolgee";
 
 export default function OpenPositions() {
   const { t } = useTranslate();

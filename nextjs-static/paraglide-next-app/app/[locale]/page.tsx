@@ -1,34 +1,28 @@
-import { lazy, Suspense } from "react";
+import dynamic from "next/dynamic";
 
-const Hero = lazy(() => import("../../components/pages/home/Hero"));
-const WhyItMatters = lazy(
-  () => import("../../components/pages/home/WhyItMatters"),
-);
-const UnderstandingImpact = lazy(
-  () => import("../../components/pages/home/UnderstandingImpact"),
-);
-const ResultsTable = lazy(
-  () => import("../../components/pages/home/ResultsTable"),
-);
+const Hero = dynamic(() => import("../../components/pages/home/Hero"), {
+  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
+});
+const WhyItMatters = dynamic(() => import("../../components/pages/home/WhyItMatters"), {
+  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
+});
+const UnderstandingImpact = dynamic(() => import("../../components/pages/home/UnderstandingImpact"), {
+  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
+});
+const ResultsTable = dynamic(() => import("../../components/pages/home/ResultsTable"), {
+  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
+});
 
 export default function Home() {
   return (
     <div className="container py-16">
-      <Suspense fallback={<div className="h-96 animate-pulse bg-muted/20" />}>
-        <Hero />
-      </Suspense>
+      <Hero />
 
-      <Suspense fallback={<div className="h-64 animate-pulse bg-muted/20" />}>
-        <WhyItMatters />
-      </Suspense>
+      <WhyItMatters />
 
-      <Suspense fallback={<div className="h-96 animate-pulse bg-muted/20" />}>
-        <UnderstandingImpact />
-      </Suspense>
+      <UnderstandingImpact />
 
-      <Suspense fallback={<div className="h-64 animate-pulse bg-muted/20" />}>
-        <ResultsTable />
-      </Suspense>
+      <ResultsTable />
     </div>
   );
 }

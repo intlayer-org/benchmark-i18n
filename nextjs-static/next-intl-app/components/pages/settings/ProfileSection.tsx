@@ -1,21 +1,25 @@
+"use client";
+
 import { useId } from "react";
-import { useTranslations } from "use-intl";
+import { useTranslations } from "next-intl";
 
 export default function ProfileSection() {
-  const t = useTranslations("profile-section");
+  const t = useTranslations();
   const displayNameId = useId();
   const emailId = useId();
 
   return (
     <section className="rounded-lg border border-border bg-card p-6">
-      <h2 className="mb-4 text-lg font-semibold text-foreground">{t("profile")}</h2>
+      <h2 className="mb-4 text-lg font-semibold text-foreground">
+        {t("settings.profile-section.profile")}
+      </h2>
       <div className="space-y-4">
         <div>
           <label
             htmlFor={displayNameId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            {t("displayName")}
+            {t("settings.profile-section.displayName")}
           </label>
           <input
             id={displayNameId}
@@ -28,7 +32,7 @@ export default function ProfileSection() {
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            {t("email")}
+            {t("settings.profile-section.email")}
           </label>
           <input
             id={emailId}

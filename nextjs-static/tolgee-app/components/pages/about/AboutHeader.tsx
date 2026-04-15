@@ -1,5 +1,7 @@
-import { T } from "../../../i18n/tolgee";
-import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
+"use client";
+
+import { T } from "@/i18n/tolgee";
+import { usePerformanceMeasure } from "@/hooks/usePerformanceMeasure";
 
 export default function AboutHeader() {
   usePerformanceMeasure("AboutHeader");

@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -33,7 +35,7 @@ function applyThemeMode(mode: ThemeMode) {
 }
 
 export default function ThemeToggle() {
-  const { t } = useTranslation("shared");
+  const { t } = useTranslation();
   const [mode, setMode] = useState<ThemeMode>("auto");
 
   useEffect(() => {
@@ -66,10 +68,10 @@ export default function ThemeToggle() {
 
   const label =
     mode === "auto"
-      ? t("themeToggle.themeModeAutoSystemClick")
+      ? t("shared.themeToggle.themeModeAutoSystemClick")
       : mode === "light"
-        ? t("themeToggle.themeModeLightClick")
-        : t("themeToggle.themeModeDarkClick");
+        ? t("shared.themeToggle.themeModeLightClick")
+        : t("shared.themeToggle.themeModeDarkClick");
 
   return (
     <button
@@ -80,10 +82,10 @@ export default function ThemeToggle() {
       className="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
     >
       {mode === "auto"
-        ? t("themeToggle.themeAuto")
+        ? t("shared.themeToggle.themeAuto")
         : mode === "dark"
-          ? t("themeToggle.themeDark")
-          : t("themeToggle.themeLight")}
+          ? t("shared.themeToggle.themeDark")
+          : t("shared.themeToggle.themeLight")}
     </button>
   );
 }

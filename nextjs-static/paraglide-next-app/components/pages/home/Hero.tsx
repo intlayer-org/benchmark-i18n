@@ -1,3 +1,5 @@
+"use client";
+
 import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
 import * as m from "../../../paraglide/messages";
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { Profiler, useEffect } from "react";
-import { useParams } from "next/navigation";
 import {
   onRenderCallback,
   recordHydrationDuration,
@@ -9,12 +8,11 @@ import {
 
 export default function AppProviders({
   children,
+  locale,
 }: {
   children: React.ReactNode;
+  locale: string;
 }) {
-  const params = useParams();
-  const locale = (params.locale as string) ?? "en";
-
   // Keep html[lang] in sync with the active locale so the reactivity test can
   // observe it via MutationObserver (mirrors the TanStack RootDocument behavior).
   useEffect(() => {

@@ -1,4 +1,6 @@
-import { useTranslations } from "use-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 const MockBanner = () => {
   const t = useTranslations();

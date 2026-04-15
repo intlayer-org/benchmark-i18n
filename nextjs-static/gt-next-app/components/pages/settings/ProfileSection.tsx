@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { T } from "gt-next";
 
 export default function ProfileSection() {
   const displayNameId = useId();
@@ -6,14 +7,16 @@ export default function ProfileSection() {
 
   return (
     <section className="rounded-lg border border-border bg-card p-6">
-      <h2 className="mb-4 text-lg font-semibold text-foreground">Profile</h2>
+      <h2 className="mb-4 text-lg font-semibold text-foreground">
+        <T>Profile</T>
+      </h2>
       <div className="space-y-4">
         <div>
           <label
             htmlFor={displayNameId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Display Name
+            <T>Display Name</T>
           </label>
           <input
             id={displayNameId}
@@ -26,7 +29,7 @@ export default function ProfileSection() {
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Email
+            <T>Email</T>
           </label>
           <input
             id={emailId}

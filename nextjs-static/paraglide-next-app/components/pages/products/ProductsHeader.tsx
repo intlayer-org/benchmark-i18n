@@ -1,3 +1,5 @@
+"use client";
+
 import * as m from "../../../paraglide/messages";
 import MockBanner from "../../MockBanner";
 

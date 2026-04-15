@@ -1,29 +1,23 @@
-import { lazy, Suspense } from "react";
+import dynamic from "next/dynamic";
 
-const AboutHeader = lazy(
-  () => import("../../../components/pages/about/AboutHeader"),
-);
-const AboutGrid = lazy(
-  () => import("../../../components/pages/about/AboutGrid"),
-);
-const WhatWeMeasure = lazy(
-  () => import("../../../components/pages/about/WhatWeMeasure"),
-);
+const AboutHeader = dynamic(() => import("../../../components/pages/about/AboutHeader"), {
+  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
+});
+const AboutGrid = dynamic(() => import("../../../components/pages/about/AboutGrid"), {
+  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
+});
+const WhatWeMeasure = dynamic(() => import("../../../components/pages/about/WhatWeMeasure"), {
+  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
+});
 
 export default function About() {
   return (
     <div className="container py-16">
-      <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20" />}>
-        <AboutHeader />
-      </Suspense>
+      <AboutHeader />
 
-      <Suspense fallback={<div className="h-64 animate-pulse bg-muted/20" />}>
-        <AboutGrid />
-      </Suspense>
+      <AboutGrid />
 
-      <Suspense fallback={<div className="h-96 animate-pulse bg-muted/20" />}>
-        <WhatWeMeasure />
-      </Suspense>
+      <WhatWeMeasure />
     </div>
   );
 }

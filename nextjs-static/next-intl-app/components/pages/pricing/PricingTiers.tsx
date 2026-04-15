@@ -1,46 +1,48 @@
-import { useTranslations } from "use-intl";
+"use client";
+
+import { useTranslations } from "next-intl";
 
 export default function PricingTiers() {
-  const t = useTranslations("pricing-tiers");
+  const t = useTranslations();
 
   const tiers = [
     {
-      name: t("starter"),
-      price: t("price0"),
-      period: t("forever"),
+      name: t("pricing.pricing-tiers.starter"),
+      price: t("pricing.pricing-tiers.price0"),
+      period: t("pricing.pricing-tiers.forever"),
       features: [
-        t("benchmarkRunPerDay", { runs: 5 }),
-        t("librariesNumber", { libs: 3 }),
-        t("communitySupport"),
-        t("publicResults"),
+        t("pricing.pricing-tiers.benchmarkRunPerDay", { runs: 5 }),
+        t("pricing.pricing-tiers.librariesNumber", { libs: 3 }),
+        t("pricing.pricing-tiers.communitySupport"),
+        t("pricing.pricing-tiers.publicResults"),
       ],
     },
     {
-      name: t("pro"),
-      price: t("price29"),
-      period: t("month"),
+      name: t("pricing.pricing-tiers.pro"),
+      price: t("pricing.pricing-tiers.price29"),
+      period: t("pricing.pricing-tiers.month"),
       features: [
-        t("unlimitedRuns"),
-        t("allLibraries"),
-        t("prioritySupport"),
-        t("privateResults"),
-        t("ciIntegration"),
-        t("historicalData"),
+        t("pricing.pricing-tiers.unlimitedRuns"),
+        t("pricing.pricing-tiers.allLibraries"),
+        t("pricing.pricing-tiers.prioritySupport"),
+        t("pricing.pricing-tiers.privateResults"),
+        t("pricing.pricing-tiers.ciIntegration"),
+        t("pricing.pricing-tiers.historicalData"),
       ],
       highlighted: true,
     },
     {
-      name: t("enterprise"),
-      price: t("customPrice"),
+      name: t("pricing.pricing-tiers.enterprise"),
+      price: t("pricing.pricing-tiers.customPrice"),
       period: "",
       features: [
-        t("everythingInPro"),
-        t("onPremiseOption"),
-        t("ssoSaml"),
-        t("dedicatedAccountManager"),
-        t("customSlas"),
-        t("auditLogs"),
-        t("trainingSessions"),
+        t("pricing.pricing-tiers.everythingInPro"),
+        t("pricing.pricing-tiers.onPremiseOption"),
+        t("pricing.pricing-tiers.ssoSaml"),
+        t("pricing.pricing-tiers.dedicatedAccountManager"),
+        t("pricing.pricing-tiers.customSlas"),
+        t("pricing.pricing-tiers.auditLogs"),
+        t("pricing.pricing-tiers.trainingSessions"),
       ],
     },
   ];
@@ -81,9 +83,9 @@ export default function PricingTiers() {
                 : "border border-border text-foreground hover:bg-accent"
             }`}
           >
-            {tier.name === t("enterprise")
-              ? t("contactSales")
-              : t("getStarted")}
+            {tier.name === t("pricing.pricing-tiers.enterprise")
+              ? t("pricing.pricing-tiers.contactSales")
+              : t("pricing.pricing-tiers.getStarted")}
           </button>
         </div>
       ))}

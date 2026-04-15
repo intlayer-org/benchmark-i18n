@@ -1,9 +1,0 @@
-{
-  "resources": "资源",
-  "contact": "联系",
-  "github": "GitHub",
-  "methodology": "方法学",
-  "contributing": "贡献",
-  "builtWith": "i18n Benchmark — 开源项目。使用 React, Vite 和 TanStack Router 构建。",
-  "anOpenSourceTestApplication": "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。"
-}

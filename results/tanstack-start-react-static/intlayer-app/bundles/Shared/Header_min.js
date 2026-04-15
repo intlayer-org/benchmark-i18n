@@ -354,7 +354,7 @@ var g = (e, t, n) => {
 	],
 	defaultLocale: "en"
 }, b = {
-	mode: "prefix-no-default",
+	mode: "prefix-all",
 	storage: {
 		cookies: [{
 			name: "INTLAYER_LOCALE",

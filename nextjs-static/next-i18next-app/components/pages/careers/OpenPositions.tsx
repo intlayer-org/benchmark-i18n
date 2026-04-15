@@ -1,22 +1,24 @@
+"use client";
+
 import { useTranslation } from "react-i18next";
 
 export default function OpenPositions() {
-  const { t } = useTranslation("careers");
+  const { t } = useTranslation();
 
   const openings = [
     {
-      title: t("careersPositions.seniorFrontendEngineer"),
-      location: t("openPositions.remote"),
-      type: t("openPositions.fullTime"),
+      title: t("careers.careersPositions.seniorFrontendEngineer"),
+      location: t("careers.openPositions.remote"),
+      type: t("careers.openPositions.fullTime"),
       dept: "Engineering",
-      desc: t("careersPositions.seniorFrontendEngineerDesc"),
+      desc: t("careers.careersPositions.seniorFrontendEngineerDesc"),
     },
   ];
 
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        {t("openPositions.openPositions")}
+        {t("careers.openPositions.openPositions")}
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
@@ -45,7 +47,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              {t("openPositions.applyNow")}
+              {t("careers.openPositions.applyNow")}
             </button>
           </div>
         ))}

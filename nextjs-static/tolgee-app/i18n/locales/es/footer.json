@@ -1,9 +1,0 @@
-{
-  "resources": "Recursos",
-  "contact": "Contacto",
-  "github": "GitHub",
-  "methodology": "Metodología",
-  "contributing": "Contribuir",
-  "builtWith": "i18n Benchmark — Proyecto de código abierto. Construido con React, Vite y TanStack Router.",
-  "anOpenSourceTestApplication": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación."
-}

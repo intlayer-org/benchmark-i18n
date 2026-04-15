@@ -1,14 +1,20 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import AppProviders from "../../components/AppProviders";
+import { getMessages } from "../../i18n/getMessages";
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
+  const messages = await getMessages(locale);
+
   return (
-    <AppProviders>
+    <AppProviders locale={locale} messages={messages}>
       <Header />
       {children}
       <Footer />

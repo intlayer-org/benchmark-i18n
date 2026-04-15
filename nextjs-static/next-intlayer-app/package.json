@@ -1,5 +1,5 @@
 {
-  "name": "base-app-nextjs",
+  "name": "nextjs-static-next-intlayer-app",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -15,9 +15,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@intlayer/swc": "^8.7.1-canary-0",
     "@tailwindcss/typography": "^0.5.19",
+    "intlayer": "canary",
     "lucide-react": "^1.8.0",
     "next": "16.2.3",
+    "next-intlayer": "canary",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -27,13 +30,13 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@vitejs/plugin-react": "^6.0.1",
     "bun": "^1.3.12",
     "eslint": "^9",
     "eslint-config-next": "16.2.3",
     "tailwindcss": "^4",
     "test-utils": "workspace:*",
     "typescript": "^5",
-    "vite": "^8.0.8"
+    "vite": "^8.0.8",
+    "vite-intlayer": "^8.7.0"
   }
 }

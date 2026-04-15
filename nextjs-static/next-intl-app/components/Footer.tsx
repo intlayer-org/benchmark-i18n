@@ -1,25 +1,25 @@
-import { Link, useParams } from "@tanstack/react-router";
-import { useTranslations } from "use-intl";
+"use client";
+
+import Link from "./Link";
+import { useTranslations } from "next-intl";
 
 export default function Footer() {
-  const t = useTranslations("footer");
-  const params = useParams({ strict: false });
-  const currentLocale = params.locale ?? "en";
+  const t = useTranslations();
 
   const footerLinks = [
     {
-      label: t("github"),
+      label: t("footer.github"),
       href: "https://github.com/intlayer-org/benchmark-i18n",
       isInternal: false,
     },
     {
-      label: t("methodology"),
-      to: "/$locale/about" as const,
+      label: t("footer.methodology"),
+      href: "/about",
       isInternal: true,
     },
     {
-      label: t("contributing"),
-      to: "/$locale/contact" as const,
+      label: t("footer.contributing"),
+      href: "/contact",
       isInternal: true,
     },
   ];
@@ -33,20 +33,19 @@ export default function Footer() {
               i18n Benchmark
             </h3>
             <p className="text-sm text-muted-foreground">
-              {t("anOpenSourceTestApplication")}
+              {t("footer.anOpenSourceTestApplication")}
             </p>
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              {t("resources")}
+              {t("footer.resources")}
             </h3>
             <ul className="space-y-1">
               {footerLinks.map((linkEl) => (
                 <li key={linkEl.label}>
                   {linkEl.isInternal ? (
                     <Link
-                      to={linkEl.to as any}
-                      params={{ locale: currentLocale } as any}
+                      href={linkEl.href!}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {linkEl.label}
@@ -67,7 +66,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              {t("contact")}
+              {t("footer.contact")}
             </h3>
             <p className="text-sm text-muted-foreground">
               contact@intlayer.org
@@ -75,7 +74,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">
-          {t("builtWith")}
+          {t("footer.builtWith")}
         </div>
       </div>
     </footer>

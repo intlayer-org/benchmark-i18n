@@ -1,4 +1,6 @@
-import { useTranslate } from "../../../i18n/tolgee";
+"use client";
+
+import { useTranslate } from "@/i18n/tolgee";
 
 export default function PricingTiers() {
   const { t } = useTranslate();

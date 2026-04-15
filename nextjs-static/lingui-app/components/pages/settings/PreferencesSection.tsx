@@ -1,8 +1,11 @@
-import { Trans } from "@lingui/react";
+"use client";
+
+import { Trans, useLingui } from "@lingui/react";
 import { useId } from "react";
 
 export default function PreferencesSection() {
   const languageId = useId();
+  const { i18n } = useLingui();
 
   return (
     <section className="rounded-lg border border-border bg-card p-6">

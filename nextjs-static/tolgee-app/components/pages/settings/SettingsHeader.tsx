@@ -1,5 +1,7 @@
-import { T } from "../../../i18n/tolgee";
-import MockBanner from "../../MockBanner";
+"use client";
+
+import { T } from "@/i18n/tolgee";
+import MockBanner from "@/components/MockBanner";
 
 export default function SettingsHeader() {
   return (

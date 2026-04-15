@@ -1,4 +1,6 @@
-import { T, useTranslate } from "../../../i18n/tolgee";
+"use client";
+
+import { T, useTranslate } from "@/i18n/tolgee";
 import { useId } from "react";
 
 export default function PreferencesSection() {

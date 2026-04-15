@@ -17,5 +17,10 @@ export default {
     bundleOptimizer: "捆绑包优化器",
     analyzesAndOptimizesYourI18n: "分析并优化用于生产的 i18n 捆绑包，采用摇树优化 (tree-shaking) 和代码拆分。",
     learnMore: "了解更多",
-  }
+      free: "免费",
+    price29mo: "$29/月",
+    price99oneTime: "$99 一次性",
+    price19mo: "$19/月",
+    price49mo: "$49/月",
+}
 };

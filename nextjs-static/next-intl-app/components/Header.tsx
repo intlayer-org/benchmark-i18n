@@ -1,37 +1,43 @@
-import { Link, useParams } from "@tanstack/react-router";
+"use client";
+
+import Link from "./Link";
+import { useParams, usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import { useTranslations } from "use-intl";
+import { useTranslations } from "next-intl";
 import ThemeToggle from "./ThemeToggle";
 import LocaleSwitcher from "./LocaleSwitcher";
 
-import { usePerformanceMeasure } from "../src/hooks/usePerformanceMeasure";
+import { usePerformanceMeasure } from "../hooks/usePerformanceMeasure";
 
 export default function Header() {
-  const t = useTranslations("header");
+  const t = useTranslations();
   usePerformanceMeasure("Header");
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
-  const params = useParams({ strict: false });
-  const currentLocale = params.locale ?? "en";
+  const params = useParams();
+  const currentLocale = (params.locale as string) ?? "en";
+  const pathname = usePathname();
 
   const mockPages = [
-    { to: "/$locale/products" as const, label: t("products") },
-    { to: "/$locale/pricing" as const, label: t("pricing") },
-    { to: "/$locale/team" as const, label: t("team") },
-    { to: "/$locale/blog" as const, label: t("blog") },
-    { to: "/$locale/careers" as const, label: t("careers") },
-    { to: "/$locale/faq" as const, label: t("faq") },
-    { to: "/$locale/contact" as const, label: t("contact") },
-    { to: "/$locale/settings" as const, label: t("settings") },
+    { href: "/products", label: t("header.products") },
+    { href: "/pricing", label: t("header.pricing") },
+    { href: "/team", label: t("header.team") },
+    { href: "/blog", label: t("header.blog") },
+    { href: "/careers", label: t("header.careers") },
+    { href: "/faq", label: t("header.faq") },
+    { href: "/contact", label: t("footer.contact") },
+    { href: "/settings", label: t("header.settings") },
   ];
+
+  const isExactActive = (href: string) => pathname === href;
+  const isActive = (href: string) => pathname.startsWith(href);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">
       <nav className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <Link
-            to="/$locale"
-            params={{ locale: currentLocale }}
+            href="/"
             className="text-lg font-bold tracking-tight text-primary no-underline"
           >
             i18n Bench
@@ -39,21 +45,16 @@ export default function Header() {
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link
-              to="/$locale"
-              params={{ locale: currentLocale }}
-              activeOptions={{ exact: true }}
-              activeProps={{ className: "is-active" }}
-              className="nav-link"
+              href="/"
+              className={`nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`}
             >
-              {t("home")}
+              {t("header.home")}
             </Link>
             <Link
-              to="/$locale/about"
-              params={{ locale: currentLocale }}
-              activeProps={{ className: "is-active" }}
-              className="nav-link"
+              href="/about"
+              className={`nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`}
             >
-              {t("methodology")}
+              {t("footer.methodology")}
             </Link>
 
             {/* Mock Pages Dropdown */}
@@ -65,7 +66,7 @@ export default function Header() {
                 onMouseLeave={() => setIsMockPagesOpen(false)}
                 onClick={() => setIsMockPagesOpen(!isMockPagesOpen)}
               >
-                {t("mockPages")}
+                {t("header.mockPages")}
                 <ChevronDown
                   size={14}
                   className={`transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`}
@@ -81,9 +82,8 @@ export default function Header() {
                   <div className="bg-card border border-border rounded-md shadow-lg overflow-hidden py-1">
                     {mockPages.map((page) => (
                       <Link
-                        key={page.to}
-                        to={page.to}
-                        params={{ locale: currentLocale }}
+                        key={page.href}
+                        href={page.href}
                         className="block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors"
                         onClick={() => setIsMockPagesOpen(false)}
                       >
@@ -104,7 +104,7 @@ export default function Header() {
             rel="noreferrer"
             className="text-muted-foreground transition hover:text-foreground"
           >
-            <span className="sr-only">{t("goToGithub")}</span>
+            <span className="sr-only">{t("header.goToGithub")}</span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
               <path
                 fill="currentColor"

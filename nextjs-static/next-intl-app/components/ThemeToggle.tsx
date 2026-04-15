@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { useTranslations } from "use-intl";
+import { useTranslations } from "next-intl";
 
 type ThemeMode = "light" | "dark" | "auto";
 
@@ -33,7 +35,7 @@ function applyThemeMode(mode: ThemeMode) {
 }
 
 export default function ThemeToggle() {
-  const t = useTranslations("theme-toggle");
+  const t = useTranslations();
   const [mode, setMode] = useState<ThemeMode>("auto");
 
   useEffect(() => {
@@ -66,10 +68,10 @@ export default function ThemeToggle() {
 
   const label =
     mode === "auto"
-      ? t("themeModeAutoSystemClick")
+      ? t("theme-toggle.themeModeAutoSystemClick")
       : mode === "light"
-        ? t("themeModeLightClick")
-        : t("themeModeDarkClick");
+        ? t("theme-toggle.themeModeLightClick")
+        : t("theme-toggle.themeModeDarkClick");
 
   return (
     <button
@@ -80,10 +82,10 @@ export default function ThemeToggle() {
       className="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
     >
       {mode === "auto"
-        ? t("themeAuto")
+        ? t("theme-toggle.themeAuto")
         : mode === "dark"
-          ? t("themeDark")
-          : t("themeLight")}
+          ? t("theme-toggle.themeDark")
+          : t("theme-toggle.themeLight")}
     </button>
   );
 }

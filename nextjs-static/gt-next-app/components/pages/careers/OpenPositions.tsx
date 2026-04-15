@@ -1,51 +1,78 @@
+import { T } from "gt-next";
+
 export default function OpenPositions() {
   const openings = [
     {
-      title: "Senior Frontend Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+      title: <T>Senior Frontend Engineer</T>,
+      location: <T>Remote</T>,
+      type: <T>Full-time</T>,
+      dept: <T>Engineering</T>,
+      desc: (
+        <T>
+          Build and maintain our benchmarking dashboard and developer tools
+          using React, TypeScript, and Vite.
+        </T>
+      ),
     },
     {
-      title: "Backend Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+      title: <T>Backend Engineer</T>,
+      location: <T>Remote</T>,
+      type: <T>Full-time</T>,
+      dept: <T>Engineering</T>,
+      desc: (
+        <T>
+          Design and scale our cloud benchmarking infrastructure handling
+          thousands of automated runs daily.
+        </T>
+      ),
     },
     {
-      title: "Technical Writer",
-      location: "Remote",
-      type: "Part-time",
-      dept: "Documentation",
-      desc: "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
+      title: <T>Technical Writer</T>,
+      location: <T>Remote</T>,
+      type: <T>Part-time</T>,
+      dept: <T>Documentation</T>,
+      desc: (
+        <T>
+          Create comprehensive guides, API references, and tutorials for our
+          benchmarking platform.
+        </T>
+      ),
     },
     {
-      title: "DevRel Engineer",
-      location: "San Francisco / Remote",
-      type: "Full-time",
-      dept: "Community",
-      desc: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+      title: <T>DevRel Engineer</T>,
+      location: <T>San Francisco / Remote</T>,
+      type: <T>Full-time</T>,
+      dept: <T>Community</T>,
+      desc: (
+        <T>
+          Engage with the i18n community through talks, workshops, blog posts,
+          and open source contributions.
+        </T>
+      ),
     },
     {
-      title: "QA Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
+      title: <T>QA Engineer</T>,
+      location: <T>Remote</T>,
+      type: <T>Full-time</T>,
+      dept: <T>Engineering</T>,
+      desc: (
+        <T>
+          Ensure the accuracy and reliability of benchmark results through
+          rigorous testing and validation.
+        </T>
+      ),
     },
   ];
 
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        Open Positions
+        <T>Open Positions</T>
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
           <div
-            key={o.title}
+            key={o.title?.toString() || ""}
             className="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"
           >
             <div>
@@ -69,7 +96,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              Apply Now
+              <T>Apply Now</T>
             </button>
           </div>
         ))}

@@ -1,17 +1,34 @@
 "use client";
 
-import { useParams, usePathname, useRouter } from "next/navigation";
-import { locales, getLocaleName } from "../i18n/config";
+import { useRouter, useParams, usePathname } from "next/navigation";
+import { T } from "gt-next";
+import { locales } from "../gt.config.json";
 
 export default function LocaleSwitcher() {
   const params = useParams();
   const locale = (params.locale as string) ?? "en";
-  const pathname = usePathname();
   const router = useRouter();
+  const pathname = usePathname();
+
+  const getLocaleName = (l: string) => {
+    try {
+      const displayNames = new Intl.DisplayNames([l], { type: "language" });
+      const name = displayNames.of(l);
+      return name ? name.charAt(0).toUpperCase() + name.slice(1) : l;
+    } catch (e) {
+      return l.toUpperCase();
+    }
+  };
 
   const handleLocaleChange = (newLocale: string) => {
-    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPath);
+    // Replace the locale part of the pathname
+    const segments = pathname.split("/");
+    // pathname usually starts with /locale/...
+    // segments[0] is "", segments[1] is the locale
+    segments[1] = newLocale;
+    const newPathname = segments.join("/");
+
+    router.push(newPathname);
   };
 
   return (

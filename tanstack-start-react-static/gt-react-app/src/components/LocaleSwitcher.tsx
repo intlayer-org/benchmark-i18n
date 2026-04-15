@@ -1,11 +1,10 @@
-import { useNavigate, useParams, useRouter } from "@tanstack/react-router";
+import { useParams, useRouter } from "@tanstack/react-router";
 import { T } from "gt-react";
 import { locales } from "../../gt.config.json";
 
 export default function LocaleSwitcher() {
   const params = useParams({ strict: false });
   const locale = params.locale ?? "en";
-  const navigate = useNavigate();
 
   const getLocaleName = (l: string) => {
     try {
@@ -21,7 +20,10 @@ export default function LocaleSwitcher() {
 
   const handleLocaleChange = (newLocale: string) => {
     console.log("handleLocaleChange", newLocale);
-    const newPath = window.location.pathname.replace(new RegExp(`^\\/${locale}`), `/${newLocale}`);
+    const newPath = window.location.pathname.replace(
+      new RegExp(`^\\/${locale}`),
+      `/${newLocale}`,
+    );
     router.navigate({
       to: newPath as any, // Bypass strict TS checks for absolute paths if needed
     });

@@ -1,3 +1,5 @@
+"use client";
+
 import { Trans } from "@lingui/react";
 import MockBanner from "../../MockBanner";
 

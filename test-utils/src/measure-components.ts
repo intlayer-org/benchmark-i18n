@@ -45,6 +45,7 @@ import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
 import { build, loadConfigFromFile } from "vite";
+import tsconfigPaths from "vite-tsconfig-paths";
 import type { RolldownOutput } from "rolldown";
 import Bun from "bun";
 
@@ -66,7 +67,7 @@ export interface MeasureConfig {
    * Use this when you want to exclude an i18n library from the measurement to
    * isolate pure component logic.
    */
-  additionalExternalPackages?: string[];
+  additionalExternalPackages?: (string | RegExp)[];
   /**
    * Subfolder name under `<repo-root>/results/` that groups results by
    * benchmark category, e.g. `"tanstack-start-react-static"`.
@@ -78,6 +79,11 @@ export interface MeasureConfig {
    * Returns the source code for a virtual module that imports the component.
    */
   wrapperTemplate?: (componentPath: string) => string;
+  /**
+   * Additional Vite plugins or Babel plugins to apply during the build.
+   * Babel plugins should be passed as [plugin, options].
+   */
+  additionalPlugins?: any[];
 }
 
 /** Size measurements for a single compiled component. */
@@ -103,13 +109,19 @@ const DEFAULT_COMPONENT_DIRECTORIES = [
  * across i18n libraries. Externalising them ensures each component's measured
  * size reflects only its own logic plus any i18n runtime it pulls in.
  */
-const BASE_EXTERNAL_PACKAGES = [
+const BASE_EXTERNAL_PACKAGES: (string | RegExp)[] = [
   "react",
   "react-dom",
   "react/jsx-runtime",
   "react/jsx-dev-runtime",
   "@tanstack/react-router",
   "lucide-react",
+  /^next(\/.*)?$/,
+
+  // Filter out non-English locale JSON imports
+  // Matches patterns like: /locales/zh.json or /locales/zh/home.json
+  // It excludes any locale that isn't 'en'
+  /[\\/](?!(en)[\\/\.])[a-z]{2}(?:-[A-Z]{2})?([\\/].*)?\.json$/,
 ];
 
 const BLOCKED_PLUGIN_SUBSTRINGS = [
@@ -148,9 +160,10 @@ const deriveComponentCategory = (relativeFilePath: string): string =>
  */
 const buildComponentBundle = async (
   componentFilePath: string,
-  externalPackages: string[],
+  externalPackages: (string | RegExp)[],
   minify: boolean,
   wrapperTemplate?: (componentPath: string) => string,
+  additionalPlugins: any[] = [],
 ): Promise<{ bytes: number; gzipBytes: number; code: string }> => {
   // Load the host application's Vite config
   const loaded = await loadConfigFromFile({
@@ -170,6 +183,52 @@ const buildComponentBundle = async (
         plugin.name.includes(blockedSubstring),
       );
     });
+
+  // Ensure Vite can resolve Next.js tsconfig paths (e.g. @/*)
+  filteredPlugins.push(tsconfigPaths());
+
+  // Add additional plugins provided via config
+  for (const plugin of additionalPlugins) {
+    if (!plugin) continue;
+
+    if (Array.isArray(plugin) && typeof plugin[0] === "function") {
+      const [babelPlugin, options] = plugin;
+      // Wrap Babel plugin in a simple Vite plugin
+      filteredPlugins.push({
+        name: `babel-plugin-wrapper-${babelPlugin.name || "anonymous"}`,
+        async transform(code: string, id: string) {
+          if (!id.endsWith(".tsx") && !id.endsWith(".ts")) return null;
+
+          try {
+            // Dynamically import @babel/core to avoid it being a hard dependency of test-utils
+            const babel = await import("@babel/core");
+            const result = await babel.transformAsync(code, {
+              filename: id,
+              plugins: [[babelPlugin, options]],
+              // Ensure we don't process JSX if esbuild is going to do it,
+              // OR if we want babel to do it, we should add the react preset.
+              // For now, let's just run the requested plugin.
+              babelrc: false,
+              configFile: false,
+            });
+            return result?.code || null;
+          } catch (e) {
+            console.error(
+              `Error applying Babel plugin ${babelPlugin.name}:`,
+              e,
+            );
+            return null;
+          }
+        },
+      });
+    } else if (Array.isArray(plugin)) {
+      // It's a list of Vite plugins, flatten and add them
+      filteredPlugins.push(...plugin.flat(Infinity));
+    } else {
+      // It's a single Vite plugin
+      filteredPlugins.push(plugin);
+    }
+  }
 
   // --- TEMPORARY FILE STRATEGY ---
   let entryFilePath = componentFilePath;
@@ -240,9 +299,10 @@ const buildComponentBundle = async (
  */
 const scanAndMeasureDirectory = async (
   directoryPath: string,
-  externalPackages: string[],
+  externalPackages: (string | RegExp)[],
   bundlesOutputDir: string,
   wrapperTemplate?: (componentPath: string) => string,
+  additionalPlugins: any[] = [],
 ): Promise<ComponentSizeStats[]> => {
   const componentStats: ComponentSizeStats[] = [];
   const globPattern = new Bun.Glob("**/*.tsx");
@@ -263,6 +323,7 @@ const scanAndMeasureDirectory = async (
         externalPackages,
         false,
         wrapperTemplate,
+        additionalPlugins,
       );
 
       // Build 2: Minified
@@ -271,6 +332,7 @@ const scanAndMeasureDirectory = async (
         externalPackages,
         true,
         wrapperTemplate,
+        additionalPlugins,
       );
 
       // Write both bundled code versions to disk for inspection
@@ -409,6 +471,7 @@ export const measureComponents = async ({
   componentDirectories = DEFAULT_COMPONENT_DIRECTORIES,
   additionalExternalPackages = [],
   wrapperTemplate,
+  additionalPlugins = [],
 }: MeasureConfig): Promise<void> => {
   const resolvedComponentDirectories = componentDirectories.map(
     (directoryPath) => path.resolve(directoryPath),
@@ -449,6 +512,7 @@ export const measureComponents = async ({
       allExternalPackages,
       bundlesOutputDir,
       wrapperTemplate,
+      additionalPlugins,
     );
     allComponentStats.push(...directoryStats);
   }

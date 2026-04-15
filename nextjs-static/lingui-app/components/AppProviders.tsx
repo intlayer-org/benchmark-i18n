@@ -1,0 +1,33 @@
+"use client";
+
+import { Profiler, useEffect, useMemo } from "react";
+import { useParams } from "next/navigation";
+import { I18nProvider } from "@lingui/react";
+import { onRenderCallback, recordHydrationDuration } from "test-utils/browser-metrics";
+import { initLingui, getMessages } from "../i18n/lingui";
+
+export default function AppProviders({ children }: { children: React.ReactNode }) {
+  const params = useParams();
+  const locale = (params.locale as string) ?? "en";
+
+  const messages = useMemo(() => getMessages(locale), [locale]);
+  const i18n = useMemo(() => initLingui(locale, messages), [locale, messages]);
+
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
+
+  // Measure time from the inline theme-init script (hydration_start mark) to
+  // first client mount, matching the pattern used in the TanStack root document.
+  useEffect(() => {
+    recordHydrationDuration();
+  }, []);
+
+  return (
+    <Profiler id="AppRoot" onRender={onRenderCallback}>
+      <I18nProvider i18n={i18n}>
+        {children}
+      </I18nProvider>
+    </Profiler>
+  );
+}

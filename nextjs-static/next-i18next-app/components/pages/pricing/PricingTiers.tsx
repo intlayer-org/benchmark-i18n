@@ -1,50 +1,52 @@
+"use client";
+
 import { useTranslation } from "react-i18next";
 
 export default function PricingTiers() {
-  const { t } = useTranslation("pricing");
+  const { t } = useTranslation();
 
   const tiers = [
     {
-      name: t("pricingTiers.starterTier"),
-      price: t("pricingTiers.starterPrice"),
-      period: t("pricingTiers.forever"),
+      name: t("pricing.pricingTiers.starterTier"),
+      price: t("pricing.pricingTiers.starterPrice"),
+      period: t("pricing.pricingTiers.forever"),
       features: [
-        t("pricingTiers.runsPerDay"),
-        t("pricingTiers.libraries3"),
-        t("pricingTiers.communitySupport"),
-        t("pricingTiers.publicResults"),
+        t("pricing.pricingTiers.runsPerDay"),
+        t("pricing.pricingTiers.libraries3"),
+        t("pricing.pricingTiers.communitySupport"),
+        t("pricing.pricingTiers.publicResults"),
       ],
-      buttonText: t("pricingTiers.getStarted"),
+      buttonText: t("pricing.pricingTiers.getStarted"),
     },
     {
-      name: t("pricingTiers.proTier"),
-      price: t("pricingTiers.proPrice"),
-      period: t("pricingTiers.perMonth"),
+      name: t("pricing.pricingTiers.proTier"),
+      price: t("pricing.pricingTiers.proPrice"),
+      period: t("pricing.pricingTiers.perMonth"),
       features: [
-        t("pricingTiers.unlimitedRuns"),
-        t("pricingTiers.allLibraries"),
-        t("pricingTiers.prioritySupport"),
-        t("pricingTiers.privateResults"),
-        t("pricingTiers.ciIntegration"),
-        t("pricingTiers.historicalData"),
+        t("pricing.pricingTiers.unlimitedRuns"),
+        t("pricing.pricingTiers.allLibraries"),
+        t("pricing.pricingTiers.prioritySupport"),
+        t("pricing.pricingTiers.privateResults"),
+        t("pricing.pricingTiers.ciIntegration"),
+        t("pricing.pricingTiers.historicalData"),
       ],
-      buttonText: t("pricingTiers.getStarted"),
+      buttonText: t("pricing.pricingTiers.getStarted"),
       highlighted: true,
     },
     {
-      name: t("pricingTiers.enterpriseTier"),
-      price: t("pricingTiers.custom"),
+      name: t("pricing.pricingTiers.enterpriseTier"),
+      price: t("pricing.pricingTiers.custom"),
       period: "",
       features: [
-        t("pricingTiers.everythingInPro"),
-        t("pricingTiers.onPremiseOption"),
-        t("pricingTiers.ssoSaml"),
-        t("pricingTiers.dedicatedAccountManager"),
-        t("pricingTiers.customSLAs"),
-        t("pricingTiers.auditLogs"),
-        t("pricingTiers.trainingSessions"),
+        t("pricing.pricingTiers.everythingInPro"),
+        t("pricing.pricingTiers.onPremiseOption"),
+        t("pricing.pricingTiers.ssoSaml"),
+        t("pricing.pricingTiers.dedicatedAccountManager"),
+        t("pricing.pricingTiers.customSLAs"),
+        t("pricing.pricingTiers.auditLogs"),
+        t("pricing.pricingTiers.trainingSessions"),
       ],
-      buttonText: t("pricingTiers.contactSales"),
+      buttonText: t("pricing.pricingTiers.contactSales"),
     },
   ];
 

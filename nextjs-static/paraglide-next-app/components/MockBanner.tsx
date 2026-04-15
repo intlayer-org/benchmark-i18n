@@ -1,3 +1,5 @@
+"use client";
+
 import * as m from "../paraglide/messages";
 
 const MockBanner = () => (

@@ -1,23 +1,19 @@
-import { lazy, Suspense } from "react";
+import dynamic from "next/dynamic";
 
-const ContactHeader = lazy(
-  () => import("../../../components/pages/contact/ContactHeader"),
-);
-const ContactForm = lazy(
-  () => import("../../../components/pages/contact/ContactForm"),
-);
+const ContactHeader = dynamic(() => import("../../../components/pages/contact/ContactHeader"), {
+  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
+});
+const ContactForm = dynamic(() => import("../../../components/pages/contact/ContactForm"), {
+  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
+});
 
 export default function Contact() {
   return (
     <div className="container py-16">
       <div className="mx-auto max-w-2xl">
-        <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20" />}>
-          <ContactHeader />
-        </Suspense>
+        <ContactHeader />
 
-        <Suspense fallback={<div className="h-96 animate-pulse bg-muted/20" />}>
-          <ContactForm />
-        </Suspense>
+        <ContactForm />
       </div>
     </div>
   );

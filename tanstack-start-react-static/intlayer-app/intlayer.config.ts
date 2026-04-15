@@ -33,7 +33,7 @@ const config: IntlayerConfig = {
      * - "search-params": Use ?locale=...
      * Default: "prefix-no-default"
      */
-    mode: "prefix-no-default",
+    mode: "prefix-all",
   },
   editor: {
     /**

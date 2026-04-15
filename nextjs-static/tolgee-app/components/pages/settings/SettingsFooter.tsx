@@ -1,4 +1,6 @@
-import { T } from "../../../i18n/tolgee";
+"use client";
+
+import { T } from "@/i18n/tolgee";
 
 export default function SettingsFooter() {
   return (

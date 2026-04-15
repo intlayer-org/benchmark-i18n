@@ -1,11 +1,10 @@
-import { Link, useParams } from "@tanstack/react-router";
+"use client";
+
+import Link from "./Link";
 import { Trans, useLingui } from "@lingui/react";
 
 export default function Footer() {
   const { i18n } = useLingui();
-
-  const params = useParams({ strict: false });
-  const currentLocale = params.locale ?? "en";
 
   const footerLinks = [
     {
@@ -15,12 +14,12 @@ export default function Footer() {
     },
     {
       label: i18n._("footer.methodology"),
-      to: "/$locale/about" as const,
+      href: "/about",
       isInternal: true,
     },
     {
       label: i18n._("footer.contributing"),
-      to: "/$locale/contact" as const,
+      href: "/contact",
       isInternal: true,
     },
   ];
@@ -46,8 +45,7 @@ export default function Footer() {
                 <li key={linkEl.label}>
                   {linkEl.isInternal ? (
                     <Link
-                      to={linkEl.to as any}
-                      params={{ locale: currentLocale } as any}
+                      href={linkEl.href!}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {linkEl.label}

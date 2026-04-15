@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { T, useTranslate } from "../i18n/tolgee";
+import { T, useTranslate } from "@/i18n/tolgee";
 
 type ThemeMode = "light" | "dark" | "auto";
 

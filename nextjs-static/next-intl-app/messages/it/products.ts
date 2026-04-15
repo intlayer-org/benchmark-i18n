@@ -17,5 +17,10 @@ export default {
     bundleOptimizer: "Ottimizzatore del Bundle",
     analyzesAndOptimizesYourI18n: "Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.",
     learnMore: "Scopri di più",
-  }
+      free: "Gratis",
+    price29mo: "29 $/mese",
+    price99oneTime: "$99 una tantum",
+    price19mo: "19 $/mese",
+    price49mo: "49 $/mese",
+}
 };

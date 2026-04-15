@@ -1,18 +1,18 @@
-import { lazy, Suspense } from "react";
+import dynamic from "next/dynamic";
 
-const FAQHeader = lazy(() => import("../../../components/pages/faq/FAQHeader"));
-const FAQList = lazy(() => import("../../../components/pages/faq/FAQList"));
+const FAQHeader = dynamic(() => import("../../../components/pages/faq/FAQHeader"), {
+  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
+});
+const FAQList = dynamic(() => import("../../../components/pages/faq/FAQList"), {
+  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
+});
 
 export default function FAQ() {
   return (
     <div className="container py-16">
-      <Suspense fallback={<div className="h-48 animate-pulse bg-muted/20" />}>
-        <FAQHeader />
-      </Suspense>
+      <FAQHeader />
 
-      <Suspense fallback={<div className="h-96 animate-pulse bg-muted/20" />}>
-        <FAQList />
-      </Suspense>
+      <FAQList />
     </div>
   );
 }

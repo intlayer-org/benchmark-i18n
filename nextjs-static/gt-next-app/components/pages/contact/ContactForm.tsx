@@ -1,6 +1,5 @@
-"use client";
-
 import { useId } from "react";
+import { T } from "gt-next";
 
 export default function ContactForm() {
   const nameId = useId();
@@ -16,7 +15,7 @@ export default function ContactForm() {
             htmlFor={nameId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Name
+            <T>Name</T>
           </label>
           <input
             id={nameId}
@@ -29,7 +28,7 @@ export default function ContactForm() {
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Email
+            <T>Email</T>
           </label>
           <input
             id={emailId}
@@ -44,17 +43,27 @@ export default function ContactForm() {
           htmlFor={topicId}
           className="mb-1 block text-sm font-medium text-foreground"
         >
-          Topic
+          <T>Topic</T>
         </label>
         <select
           id={topicId}
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
         >
-          <option>Bug Report</option>
-          <option>New Benchmark Idea</option>
-          <option>Methodology Question</option>
-          <option>Contribution</option>
-          <option>Other</option>
+          <option>
+            <T>Bug Report</T>
+          </option>
+          <option>
+            <T>New Benchmark Idea</T>
+          </option>
+          <option>
+            <T>Methodology Question</T>
+          </option>
+          <option>
+            <T>Contribution</T>
+          </option>
+          <option>
+            <T>Other</T>
+          </option>
         </select>
       </div>
       <div>
@@ -62,7 +71,7 @@ export default function ContactForm() {
           htmlFor={messageId}
           className="mb-1 block text-sm font-medium text-foreground"
         >
-          Message
+          <T>Message</T>
         </label>
         <textarea
           id={messageId}
@@ -75,7 +84,7 @@ export default function ContactForm() {
         type="submit"
         className="rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
       >
-        Send Message
+        <T>Send Message</T>
       </button>
     </form>
   );

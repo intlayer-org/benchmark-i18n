@@ -17,5 +17,10 @@ export default {
     bundleOptimizer: "번들 옵티마이저",
     analyzesAndOptimizesYourI18n: "트리 쉐이킹(tree-shaking) 및 코드 분할을 통해 프로덕션용 i18n 번들을 분석하고 최적화합니다.",
     learnMore: "더 알아보기",
-  }
+      free: "무료",
+    price29mo: "$29/월",
+    price99oneTime: "$99 일회성",
+    price19mo: "$19/월",
+    price49mo: "$49/월",
+}
 };

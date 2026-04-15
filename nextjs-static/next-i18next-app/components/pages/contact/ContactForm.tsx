@@ -1,8 +1,10 @@
+"use client";
+
 import { useId } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function ContactForm() {
-  const { t } = useTranslation("contact");
+  const { t } = useTranslation();
   const nameId = useId();
   const emailId = useId();
   const topicId = useId();
@@ -16,12 +18,12 @@ export default function ContactForm() {
             htmlFor={nameId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            {t("contactForm.name")}
+            {t("contact.contactForm.name")}
           </label>
           <input
             id={nameId}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-            placeholder={t("contactForm.name")}
+            placeholder={t("contact.contactForm.name")}
           />
         </div>
         <div>
@@ -29,7 +31,7 @@ export default function ContactForm() {
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            {t("contactForm.email")}
+            {t("contact.contactForm.email")}
           </label>
           <input
             id={emailId}
@@ -44,7 +46,7 @@ export default function ContactForm() {
           htmlFor={topicId}
           className="mb-1 block text-sm font-medium text-foreground"
         >
-          {t("contactForm.subject")}
+          {t("contact.contactForm.subject")}
         </label>
         <select
           id={topicId}
@@ -62,23 +64,23 @@ export default function ContactForm() {
           htmlFor={messageId}
           className="mb-1 block text-sm font-medium text-foreground"
         >
-          {t("contactForm.message")}
+          {t("contact.contactForm.message")}
         </label>
         <textarea
           id={messageId}
           rows={5}
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-          placeholder={t("contactForm.message")}
+          placeholder={t("contact.contactForm.message")}
         />
       </div>
       <button
         type="submit"
         className="rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
       >
-        {t("contactForm.sendMessage")}
+        {t("contact.contactForm.sendMessage")}
       </button>
       <p className="text-xs text-muted-foreground">
-        {t("contactForm.wellGetBackTo")}
+        {t("contact.contactForm.wellGetBackTo")}
       </p>
     </form>
   );

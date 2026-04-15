@@ -1,7 +1,7 @@
 import type { NextConfig } from "next";
+import { withGTConfig } from "gt-next/config";
+import { loadDictionaries } from "intlayer/cli";
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
+const nextConfig: NextConfig = {};
 
-export default nextConfig;
+export default withGTConfig(nextConfig, {});
