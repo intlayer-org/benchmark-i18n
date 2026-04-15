@@ -37,7 +37,7 @@ const config = defineConfig({
     //   brotliSize: true,
     // }),
     // visualizer({
-    //   filename: `../../results/${packageJson.name}/bundle/rollup-visualizer-i18n.html`,
+    //   filename: `../../../results/${packageJson.name}/bundle/rollup-visualizer-i18n.html`,
     //   include: [
     //     { file: "**/node_modules/i18next/**" },
     //     { file: "**/node_modules/react-i18next/**" },

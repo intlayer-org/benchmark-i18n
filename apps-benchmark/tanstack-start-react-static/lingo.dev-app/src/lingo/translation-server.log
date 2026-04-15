@@ -16197,3 +16197,49 @@
 2026-04-13T23:02:17.406Z [INFO] [Lingo.dev] Translating all 260 entries to ko
 2026-04-13T23:02:17.409Z [INFO] [Lingo.dev] Translating all 260 entries to ru
 2026-04-13T23:02:17.412Z [INFO] [Lingo.dev] Translation server stopped
+2026-04-15T08:29:41.618Z [INFO] [Lingo.dev] 🔧 Initializing translator...
+2026-04-15T08:29:41.642Z [DEBUG] [Lingo.dev] Starting translation server on port 60000
+2026-04-15T08:29:41.646Z [INFO] [Lingo.dev] Translation server listening on http://127.0.0.1:60000
+2026-04-15T08:29:41.653Z [INFO] [Lingo.dev] WebSocket server initialized
+2026-04-15T08:29:41.661Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:41.668Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:41.674Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:41.678Z [INFO] [Lingo.dev] Translating all 260 entries to es
+2026-04-15T08:29:41.682Z [INFO] [Lingo.dev] Translating all 260 entries to fr
+2026-04-15T08:29:41.852Z [INFO] [Lingo.dev] Translating all 260 entries to de
+2026-04-15T08:29:41.856Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:41.870Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:41.876Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:41.969Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:41.980Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:41.984Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:41.987Z [INFO] [Lingo.dev] Translating all 260 entries to pt
+2026-04-15T08:29:41.996Z [INFO] [Lingo.dev] Translating all 260 entries to zh
+2026-04-15T08:29:41.999Z [INFO] [Lingo.dev] Translating all 260 entries to ja
+2026-04-15T08:29:42.002Z [INFO] [Lingo.dev] Translating all 260 entries to ko
+2026-04-15T08:29:42.005Z [INFO] [Lingo.dev] Translating all 260 entries to ru
+2026-04-15T08:29:42.007Z [INFO] [Lingo.dev] Translating all 260 entries to it
+2026-04-15T08:29:42.010Z [INFO] [Lingo.dev] Translation server stopped
+2026-04-15T08:29:44.780Z [INFO] [Lingo.dev] 🔧 Initializing translator...
+2026-04-15T08:29:44.886Z [DEBUG] [Lingo.dev] Starting translation server on port 60000
+2026-04-15T08:29:44.893Z [INFO] [Lingo.dev] Translation server listening on http://127.0.0.1:60000
+2026-04-15T08:29:44.900Z [INFO] [Lingo.dev] WebSocket server initialized
+2026-04-15T08:29:45.076Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:45.081Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:45.086Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:45.091Z [INFO] [Lingo.dev] Translating all 260 entries to es
+2026-04-15T08:29:45.100Z [INFO] [Lingo.dev] Translating all 260 entries to fr
+2026-04-15T08:29:45.105Z [INFO] [Lingo.dev] Translating all 260 entries to de
+2026-04-15T08:29:45.108Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:45.113Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:45.119Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:45.126Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:45.131Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:45.139Z [DEBUG] [Lingo.dev] Reloaded metadata: 260 entries
+2026-04-15T08:29:45.144Z [INFO] [Lingo.dev] Translating all 260 entries to zh
+2026-04-15T08:29:45.150Z [INFO] [Lingo.dev] Translating all 260 entries to ja
+2026-04-15T08:29:45.168Z [INFO] [Lingo.dev] Translating all 260 entries to ko
+2026-04-15T08:29:45.176Z [INFO] [Lingo.dev] Translating all 260 entries to ru
+2026-04-15T08:29:45.182Z [INFO] [Lingo.dev] Translating all 260 entries to it
+2026-04-15T08:29:45.188Z [INFO] [Lingo.dev] Translating all 260 entries to pt
+2026-04-15T08:29:45.203Z [INFO] [Lingo.dev] Translation server stopped

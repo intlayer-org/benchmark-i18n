@@ -1,0 +1,5487 @@
+{
+  "version": 2,
+  "tree": {
+    "name": "root",
+    "children": [
+      {
+        "name": "server.js",
+        "children": [
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun",
+            "children": [
+              {
+                "name": "@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm",
+                "children": [
+                  {
+                    "uid": "07677434-1",
+                    "name": "StartServer.js"
+                  },
+                  {
+                    "uid": "07677434-3",
+                    "name": "defaultStreamHandler.js"
+                  }
+                ]
+              },
+              {
+                "name": "rou3@0.8.1/node_modules/rou3/dist/index.mjs",
+                "uid": "07677434-5"
+              },
+              {
+                "name": "srvx@0.11.15/node_modules/srvx/dist",
+                "children": [
+                  {
+                    "name": "_chunks/_url.mjs",
+                    "uid": "07677434-7"
+                  },
+                  {
+                    "name": "adapters/node.mjs",
+                    "uid": "07677434-9"
+                  }
+                ]
+              },
+              {
+                "name": "h3@2.0.1-rc.16/node_modules/h3/dist/h3-ByfIX5Jk.mjs",
+                "uid": "07677434-11"
+              },
+              {
+                "name": "@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "07677434-13",
+                    "name": "request-response.js"
+                  },
+                  {
+                    "uid": "07677434-15",
+                    "name": "constants.js"
+                  },
+                  {
+                    "uid": "07677434-45",
+                    "name": "router-manifest.js"
+                  },
+                  {
+                    "uid": "07677434-67",
+                    "name": "frame-protocol.js"
+                  },
+                  {
+                    "uid": "07677434-69",
+                    "name": "server-functions-handler.js"
+                  },
+                  {
+                    "uid": "07677434-71",
+                    "name": "transformAssetUrls.js"
+                  },
+                  {
+                    "name": "serializer/ServerFunctionSerializationAdapter.js",
+                    "uid": "07677434-73"
+                  },
+                  {
+                    "uid": "07677434-79",
+                    "name": "createStartHandler.js"
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "07677434-17",
+                    "name": "utils.js"
+                  },
+                  {
+                    "uid": "07677434-19",
+                    "name": "lru-cache.js"
+                  },
+                  {
+                    "uid": "07677434-21",
+                    "name": "not-found.js"
+                  },
+                  {
+                    "uid": "07677434-23",
+                    "name": "root.js"
+                  },
+                  {
+                    "uid": "07677434-25",
+                    "name": "redirect.js"
+                  },
+                  {
+                    "uid": "07677434-27",
+                    "name": "rewrite.js"
+                  },
+                  {
+                    "name": "ssr",
+                    "children": [
+                      {
+                        "uid": "07677434-31",
+                        "name": "constants.js"
+                      },
+                      {
+                        "name": "serializer",
+                        "children": [
+                          {
+                            "uid": "07677434-35",
+                            "name": "transformer.js"
+                          },
+                          {
+                            "uid": "07677434-37",
+                            "name": "RawStream.js"
+                          },
+                          {
+                            "uid": "07677434-39",
+                            "name": "ShallowErrorPlugin.js"
+                          },
+                          {
+                            "uid": "07677434-43",
+                            "name": "seroval-plugins.js"
+                          }
+                        ]
+                      },
+                      {
+                        "uid": "07677434-59",
+                        "name": "headers.js"
+                      },
+                      {
+                        "uid": "07677434-61",
+                        "name": "ssr-match-id.js"
+                      },
+                      {
+                        "uid": "07677434-75",
+                        "name": "tsrScript.js"
+                      },
+                      {
+                        "uid": "07677434-77",
+                        "name": "ssr-server.js"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+history@1.161.6/node_modules/@tanstack/history/dist/esm/index.js",
+                "uid": "07677434-29"
+              },
+              {
+                "name": "seroval@1.5.2/node_modules/seroval/dist/esm/production/index.mjs",
+                "uid": "07677434-33"
+              },
+              {
+                "name": "seroval-plugins@1.5.2+7cd651eebf40fbbb/node_modules/seroval-plugins/dist/esm/production/web.mjs",
+                "uid": "07677434-41"
+              },
+              {
+                "name": "@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm",
+                "children": [
+                  {
+                    "uid": "07677434-49",
+                    "name": "constants.js"
+                  },
+                  {
+                    "uid": "07677434-51",
+                    "name": "safeObjectMerge.js"
+                  },
+                  {
+                    "uid": "07677434-55",
+                    "name": "getStartOptions.js"
+                  },
+                  {
+                    "uid": "07677434-63",
+                    "name": "createServerFn.js"
+                  },
+                  {
+                    "uid": "07677434-65",
+                    "name": "getDefaultSerovalPlugins.js"
+                  }
+                ]
+              },
+              {
+                "name": "@tanstack+start-storage-context@1.166.15/node_modules/@tanstack/start-storage-context/dist/esm/async-local-storage.js",
+                "uid": "07677434-53"
+              },
+              {
+                "name": "cookie-es@2.0.1/node_modules/cookie-es/dist/index.mjs",
+                "uid": "07677434-57"
+              },
+              {
+                "name": "@tanstack+react-start@1.167.1+dbc3f4f8bf8c1b00/node_modules/@tanstack/react-start/dist/plugin/default-entry/server.ts",
+                "uid": "07677434-81"
+              }
+            ]
+          },
+          {
+            "uid": "07677434-47",
+            "name": "\u0000#tanstack-start-server-fn-resolver"
+          }
+        ]
+      },
+      {
+        "name": "assets/AboutGrid-Cnn6TV9x.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/AboutGrid.tsx",
+            "uid": "07677434-83"
+          }
+        ]
+      },
+      {
+        "name": "assets/AboutHeader-Cn1YmA2w.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/AboutHeader.tsx",
+            "uid": "07677434-85"
+          }
+        ]
+      },
+      {
+        "name": "assets/ApiAccessSection-ClT7e_Il.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/ApiAccessSection.tsx",
+            "uid": "07677434-87"
+          }
+        ]
+      },
+      {
+        "name": "assets/BlogHeader-DTxXnU8y.js",
+        "children": [
+          {
+            "name": "src/components/pages/blog/BlogHeader.tsx",
+            "uid": "07677434-89"
+          }
+        ]
+      },
+      {
+        "name": "assets/BlogList-DmlDRMxK.js",
+        "children": [
+          {
+            "name": "src/components/pages/blog/BlogList.tsx",
+            "uid": "07677434-91"
+          }
+        ]
+      },
+      {
+        "name": "assets/CareersBenefits-Vt3JlAs5.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/CareersBenefits.tsx",
+            "uid": "07677434-93"
+          }
+        ]
+      },
+      {
+        "name": "assets/CareersHeader-BFsm1LIo.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/CareersHeader.tsx",
+            "uid": "07677434-95"
+          }
+        ]
+      },
+      {
+        "name": "assets/ContactForm-BeIJtJSh.js",
+        "children": [
+          {
+            "name": "src/components/pages/contact/ContactForm.tsx",
+            "uid": "07677434-97"
+          }
+        ]
+      },
+      {
+        "name": "assets/ContactHeader-Zb4ipLsK.js",
+        "children": [
+          {
+            "name": "src/components/pages/contact/ContactHeader.tsx",
+            "uid": "07677434-99"
+          }
+        ]
+      },
+      {
+        "name": "assets/FAQHeader-DY29W7SU.js",
+        "children": [
+          {
+            "name": "src/components/pages/faq/FAQHeader.tsx",
+            "uid": "07677434-101"
+          }
+        ]
+      },
+      {
+        "name": "assets/FAQList-RkiuFZzS.js",
+        "children": [
+          {
+            "name": "src/components/pages/faq/FAQList.tsx",
+            "uid": "07677434-103"
+          }
+        ]
+      },
+      {
+        "name": "assets/Hero-0Ne_R7rg.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/Hero.tsx",
+            "uid": "07677434-105"
+          }
+        ]
+      },
+      {
+        "name": "assets/MockBanner-OnkJPJkv.js",
+        "children": [
+          {
+            "name": "src/components/MockBanner.tsx",
+            "uid": "07677434-107"
+          }
+        ]
+      },
+      {
+        "name": "assets/OpenPositions-U_8OESYo.js",
+        "children": [
+          {
+            "name": "src/components/pages/careers/OpenPositions.tsx",
+            "uid": "07677434-109"
+          }
+        ]
+      },
+      {
+        "name": "assets/PreferencesSection-D-Dvaz7T.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/PreferencesSection.tsx",
+            "uid": "07677434-111"
+          }
+        ]
+      },
+      {
+        "name": "assets/PricingHeader-BRFB7Tcs.js",
+        "children": [
+          {
+            "name": "src/components/pages/pricing/PricingHeader.tsx",
+            "uid": "07677434-113"
+          }
+        ]
+      },
+      {
+        "name": "assets/PricingTiers-Cj13xGvD.js",
+        "children": [
+          {
+            "name": "src/components/pages/pricing/PricingTiers.tsx",
+            "uid": "07677434-115"
+          }
+        ]
+      },
+      {
+        "name": "assets/ProductsGrid-CE7clUYS.js",
+        "children": [
+          {
+            "name": "src/components/pages/products/ProductsGrid.tsx",
+            "uid": "07677434-117"
+          }
+        ]
+      },
+      {
+        "name": "assets/ProductsHeader-D1BIi3xS.js",
+        "children": [
+          {
+            "name": "src/components/pages/products/ProductsHeader.tsx",
+            "uid": "07677434-119"
+          }
+        ]
+      },
+      {
+        "name": "assets/ProfileSection-R2fkk3yQ.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/ProfileSection.tsx",
+            "uid": "07677434-121"
+          }
+        ]
+      },
+      {
+        "name": "assets/ResultsTable-BMWEdwzi.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/ResultsTable.tsx",
+            "uid": "07677434-123"
+          }
+        ]
+      },
+      {
+        "name": "assets/SettingsFooter-D6XifyKU.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/SettingsFooter.tsx",
+            "uid": "07677434-125"
+          }
+        ]
+      },
+      {
+        "name": "assets/SettingsHeader-Db6pyIQV.js",
+        "children": [
+          {
+            "name": "src/components/pages/settings/SettingsHeader.tsx",
+            "uid": "07677434-127"
+          }
+        ]
+      },
+      {
+        "name": "assets/TeamGrid-Bv-vevau.js",
+        "children": [
+          {
+            "name": "src/components/pages/team/TeamGrid.tsx",
+            "uid": "07677434-129"
+          }
+        ]
+      },
+      {
+        "name": "assets/TeamHeader-YQLstJDr.js",
+        "children": [
+          {
+            "name": "src/components/pages/team/TeamHeader.tsx",
+            "uid": "07677434-131"
+          }
+        ]
+      },
+      {
+        "name": "assets/UnderstandingImpact-B9fwUcVw.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/UnderstandingImpact.tsx",
+            "uid": "07677434-133"
+          }
+        ]
+      },
+      {
+        "name": "assets/WhatWeMeasure-DKWC4K7w.js",
+        "children": [
+          {
+            "name": "src/components/pages/about/WhatWeMeasure.tsx",
+            "uid": "07677434-135"
+          }
+        ]
+      },
+      {
+        "name": "assets/WhyItMatters-SXxgUUKj.js",
+        "children": [
+          {
+            "name": "src/components/pages/home/WhyItMatters.tsx",
+            "uid": "07677434-137"
+          }
+        ]
+      },
+      {
+        "name": "assets/_locale-BjE3DjO_.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/index.tsx?tsr-split=component",
+            "uid": "07677434-139"
+          }
+        ]
+      },
+      {
+        "name": "assets/_tanstack-start-manifest_v-B-nOvmm8.js",
+        "children": [
+          {
+            "uid": "07677434-141",
+            "name": "\u0000tanstack-start-manifest:v"
+          }
+        ]
+      },
+      {
+        "name": "assets/about-otaAN_1U.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/about.tsx?tsr-split=component",
+            "uid": "07677434-143"
+          }
+        ]
+      },
+      {
+        "name": "assets/blog-DPweKLsc.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/blog.tsx?tsr-split=component",
+            "uid": "07677434-145"
+          }
+        ]
+      },
+      {
+        "name": "assets/careers-wRzXmOKv.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/careers.tsx?tsr-split=component",
+            "uid": "07677434-147"
+          }
+        ]
+      },
+      {
+        "name": "assets/contact-Buw4uHoo.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/contact.tsx?tsr-split=component",
+            "uid": "07677434-149"
+          }
+        ]
+      },
+      {
+        "name": "assets/de-CNb0umMD.js",
+        "children": [
+          {
+            "name": "src/messages/de.json",
+            "uid": "07677434-151"
+          }
+        ]
+      },
+      {
+        "name": "assets/en-CcDNdw-t.js",
+        "children": [
+          {
+            "name": "src/messages/en.json",
+            "uid": "07677434-153"
+          }
+        ]
+      },
+      {
+        "name": "assets/es-rUZcRsEs.js",
+        "children": [
+          {
+            "name": "src/messages/es.json",
+            "uid": "07677434-155"
+          }
+        ]
+      },
+      {
+        "name": "assets/faq-ZyGv6vAR.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/faq.tsx?tsr-split=component",
+            "uid": "07677434-157"
+          }
+        ]
+      },
+      {
+        "name": "assets/fr-CzMs5UeS.js",
+        "children": [
+          {
+            "name": "src/messages/fr.json",
+            "uid": "07677434-159"
+          }
+        ]
+      },
+      {
+        "name": "assets/it--bfqdRBD.js",
+        "children": [
+          {
+            "name": "src/messages/it.json",
+            "uid": "07677434-161"
+          }
+        ]
+      },
+      {
+        "name": "assets/ja-CShYdfNo.js",
+        "children": [
+          {
+            "name": "src/messages/ja.json",
+            "uid": "07677434-163"
+          }
+        ]
+      },
+      {
+        "name": "assets/ko-D7prirA_.js",
+        "children": [
+          {
+            "name": "src/messages/ko.json",
+            "uid": "07677434-165"
+          }
+        ]
+      },
+      {
+        "name": "assets/pricing-FedlE1B6.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/pricing.tsx?tsr-split=component",
+            "uid": "07677434-167"
+          }
+        ]
+      },
+      {
+        "name": "assets/products-D0veHkIP.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/products.tsx?tsr-split=component",
+            "uid": "07677434-169"
+          }
+        ]
+      },
+      {
+        "name": "assets/pt-C0QqKY1Q.js",
+        "children": [
+          {
+            "name": "src/messages/pt.json",
+            "uid": "07677434-171"
+          }
+        ]
+      },
+      {
+        "name": "assets/route-CViWSj7K.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/route.tsx?tsr-split=component",
+            "uid": "07677434-173"
+          }
+        ]
+      },
+      {
+        "name": "assets/router-DSzbENLW.js",
+        "children": [
+          {
+            "name": "src",
+            "children": [
+              {
+                "name": "components",
+                "children": [
+                  {
+                    "uid": "07677434-175",
+                    "name": "Footer.tsx"
+                  },
+                  {
+                    "uid": "07677434-177",
+                    "name": "ThemeToggle.tsx"
+                  },
+                  {
+                    "uid": "07677434-181",
+                    "name": "LocaleSwitcher.tsx"
+                  },
+                  {
+                    "uid": "07677434-183",
+                    "name": "Header.tsx"
+                  }
+                ]
+              },
+              {
+                "name": "i18n",
+                "children": [
+                  {
+                    "uid": "07677434-179",
+                    "name": "config.ts"
+                  },
+                  {
+                    "uid": "07677434-187",
+                    "name": "getMessages.ts"
+                  }
+                ]
+              },
+              {
+                "name": "routes",
+                "children": [
+                  {
+                    "name": "$locale",
+                    "children": [
+                      {
+                        "uid": "07677434-189",
+                        "name": "route.tsx"
+                      },
+                      {
+                        "uid": "07677434-201",
+                        "name": "index.tsx"
+                      },
+                      {
+                        "uid": "07677434-203",
+                        "name": "team.tsx"
+                      },
+                      {
+                        "uid": "07677434-205",
+                        "name": "settings.tsx"
+                      },
+                      {
+                        "uid": "07677434-207",
+                        "name": "products.tsx"
+                      },
+                      {
+                        "uid": "07677434-209",
+                        "name": "pricing.tsx"
+                      },
+                      {
+                        "uid": "07677434-211",
+                        "name": "faq.tsx"
+                      },
+                      {
+                        "uid": "07677434-213",
+                        "name": "contact.tsx"
+                      },
+                      {
+                        "uid": "07677434-215",
+                        "name": "careers.tsx"
+                      },
+                      {
+                        "uid": "07677434-217",
+                        "name": "blog.tsx"
+                      },
+                      {
+                        "uid": "07677434-219",
+                        "name": "about.tsx"
+                      }
+                    ]
+                  },
+                  {
+                    "uid": "07677434-197",
+                    "name": "__root.tsx"
+                  },
+                  {
+                    "uid": "07677434-199",
+                    "name": "index.tsx"
+                  }
+                ]
+              },
+              {
+                "uid": "07677434-191",
+                "name": "styles.css?transform-only"
+              },
+              {
+                "uid": "07677434-193",
+                "name": "styles.css?url"
+              },
+              {
+                "uid": "07677434-221",
+                "name": "routeTree.gen.ts"
+              },
+              {
+                "uid": "07677434-223",
+                "name": "router.tsx"
+              }
+            ]
+          },
+          {
+            "uid": "07677434-185",
+            "name": "\u0000rolldown_dynamic_import_helper.js"
+          },
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/test-utils/src/browser-metrics.ts",
+            "uid": "07677434-195"
+          }
+        ]
+      },
+      {
+        "name": "assets/ru-R-S-vwhY.js",
+        "children": [
+          {
+            "name": "src/messages/ru.json",
+            "uid": "07677434-225"
+          }
+        ]
+      },
+      {
+        "name": "assets/settings-CI6Ljtch.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/settings.tsx?tsr-split=component",
+            "uid": "07677434-227"
+          }
+        ]
+      },
+      {
+        "name": "assets/start-DpJCVhMu.js",
+        "children": [
+          {
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+dbc3f4f8bf8c1b00/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+            "uid": "07677434-229"
+          }
+        ]
+      },
+      {
+        "name": "assets/team-BirFqkRv.js",
+        "children": [
+          {
+            "name": "src/routes/$locale/team.tsx?tsr-split=component",
+            "uid": "07677434-231"
+          }
+        ]
+      },
+      {
+        "name": "assets/usePerformanceMeasure-Czf_WT9b.js",
+        "children": [
+          {
+            "name": "src/hooks/usePerformanceMeasure.ts",
+            "uid": "07677434-233"
+          }
+        ]
+      },
+      {
+        "name": "assets/zh-D8wXGQzw.js",
+        "children": [
+          {
+            "name": "src/messages/zh.json",
+            "uid": "07677434-235"
+          }
+        ]
+      }
+    ],
+    "isRoot": true
+  },
+  "nodeParts": {
+    "07677434-1": {
+      "renderedLength": 274,
+      "gzipLength": 209,
+      "brotliLength": 173,
+      "metaUid": "07677434-0"
+    },
+    "07677434-3": {
+      "renderedLength": 392,
+      "gzipLength": 271,
+      "brotliLength": 222,
+      "metaUid": "07677434-2"
+    },
+    "07677434-5": {
+      "renderedLength": 244,
+      "gzipLength": 200,
+      "brotliLength": 163,
+      "metaUid": "07677434-4"
+    },
+    "07677434-7": {
+      "renderedLength": 4540,
+      "gzipLength": 1496,
+      "brotliLength": 1274,
+      "metaUid": "07677434-6"
+    },
+    "07677434-9": {
+      "renderedLength": 4189,
+      "gzipLength": 1266,
+      "brotliLength": 1105,
+      "metaUid": "07677434-8"
+    },
+    "07677434-11": {
+      "renderedLength": 8991,
+      "gzipLength": 2804,
+      "brotliLength": 2499,
+      "metaUid": "07677434-10"
+    },
+    "07677434-13": {
+      "renderedLength": 2062,
+      "gzipLength": 757,
+      "brotliLength": 670,
+      "metaUid": "07677434-12"
+    },
+    "07677434-15": {
+      "renderedLength": 193,
+      "gzipLength": 160,
+      "brotliLength": 135,
+      "metaUid": "07677434-14"
+    },
+    "07677434-17": {
+      "renderedLength": 1439,
+      "gzipLength": 679,
+      "brotliLength": 579,
+      "metaUid": "07677434-16"
+    },
+    "07677434-19": {
+      "renderedLength": 1445,
+      "gzipLength": 538,
+      "brotliLength": 470,
+      "metaUid": "07677434-18"
+    },
+    "07677434-21": {
+      "renderedLength": 259,
+      "gzipLength": 198,
+      "brotliLength": 158,
+      "metaUid": "07677434-20"
+    },
+    "07677434-23": {
+      "renderedLength": 228,
+      "gzipLength": 173,
+      "brotliLength": 168,
+      "metaUid": "07677434-22"
+    },
+    "07677434-25": {
+      "renderedLength": 573,
+      "gzipLength": 266,
+      "brotliLength": 218,
+      "metaUid": "07677434-24"
+    },
+    "07677434-27": {
+      "renderedLength": 451,
+      "gzipLength": 273,
+      "brotliLength": 220,
+      "metaUid": "07677434-26"
+    },
+    "07677434-29": {
+      "renderedLength": 5889,
+      "gzipLength": 1878,
+      "brotliLength": 1642,
+      "metaUid": "07677434-28"
+    },
+    "07677434-31": {
+      "renderedLength": 218,
+      "gzipLength": 178,
+      "brotliLength": 149,
+      "metaUid": "07677434-30"
+    },
+    "07677434-33": {
+      "renderedLength": 47388,
+      "gzipLength": 11537,
+      "brotliLength": 10194,
+      "metaUid": "07677434-32"
+    },
+    "07677434-35": {
+      "renderedLength": 1524,
+      "gzipLength": 546,
+      "brotliLength": 477,
+      "metaUid": "07677434-34"
+    },
+    "07677434-37": {
+      "renderedLength": 7714,
+      "gzipLength": 2340,
+      "brotliLength": 2045,
+      "metaUid": "07677434-36"
+    },
+    "07677434-39": {
+      "renderedLength": 872,
+      "gzipLength": 417,
+      "brotliLength": 368,
+      "metaUid": "07677434-38"
+    },
+    "07677434-41": {
+      "renderedLength": 11963,
+      "gzipLength": 2275,
+      "brotliLength": 2004,
+      "metaUid": "07677434-40"
+    },
+    "07677434-43": {
+      "renderedLength": 236,
+      "gzipLength": 179,
+      "brotliLength": 176,
+      "metaUid": "07677434-42"
+    },
+    "07677434-45": {
+      "renderedLength": 1604,
+      "gzipLength": 781,
+      "brotliLength": 628,
+      "metaUid": "07677434-44"
+    },
+    "07677434-47": {
+      "renderedLength": 679,
+      "gzipLength": 313,
+      "brotliLength": 287,
+      "metaUid": "07677434-46"
+    },
+    "07677434-49": {
+      "renderedLength": 718,
+      "gzipLength": 450,
+      "brotliLength": 359,
+      "metaUid": "07677434-48"
+    },
+    "07677434-51": {
+      "renderedLength": 978,
+      "gzipLength": 436,
+      "brotliLength": 360,
+      "metaUid": "07677434-50"
+    },
+    "07677434-53": {
+      "renderedLength": 780,
+      "gzipLength": 412,
+      "brotliLength": 336,
+      "metaUid": "07677434-52"
+    },
+    "07677434-55": {
+      "renderedLength": 215,
+      "gzipLength": 157,
+      "brotliLength": 129,
+      "metaUid": "07677434-54"
+    },
+    "07677434-57": {
+      "renderedLength": 1429,
+      "gzipLength": 518,
+      "brotliLength": 451,
+      "metaUid": "07677434-56"
+    },
+    "07677434-59": {
+      "renderedLength": 753,
+      "gzipLength": 382,
+      "brotliLength": 339,
+      "metaUid": "07677434-58"
+    },
+    "07677434-61": {
+      "renderedLength": 215,
+      "gzipLength": 178,
+      "brotliLength": 168,
+      "metaUid": "07677434-60"
+    },
+    "07677434-63": {
+      "renderedLength": 678,
+      "gzipLength": 391,
+      "brotliLength": 341,
+      "metaUid": "07677434-62"
+    },
+    "07677434-65": {
+      "renderedLength": 317,
+      "gzipLength": 216,
+      "brotliLength": 179,
+      "metaUid": "07677434-64"
+    },
+    "07677434-67": {
+      "renderedLength": 4325,
+      "gzipLength": 1418,
+      "brotliLength": 1243,
+      "metaUid": "07677434-66"
+    },
+    "07677434-69": {
+      "renderedLength": 6586,
+      "gzipLength": 1962,
+      "brotliLength": 1707,
+      "metaUid": "07677434-68"
+    },
+    "07677434-71": {
+      "renderedLength": 3306,
+      "gzipLength": 1205,
+      "brotliLength": 1042,
+      "metaUid": "07677434-70"
+    },
+    "07677434-73": {
+      "renderedLength": 710,
+      "gzipLength": 401,
+      "brotliLength": 349,
+      "metaUid": "07677434-72"
+    },
+    "07677434-75": {
+      "renderedLength": 383,
+      "gzipLength": 249,
+      "brotliLength": 211,
+      "metaUid": "07677434-74"
+    },
+    "07677434-77": {
+      "renderedLength": 9122,
+      "gzipLength": 2995,
+      "brotliLength": 2615,
+      "metaUid": "07677434-76"
+    },
+    "07677434-79": {
+      "renderedLength": 13986,
+      "gzipLength": 4216,
+      "brotliLength": 3709,
+      "metaUid": "07677434-78"
+    },
+    "07677434-81": {
+      "renderedLength": 398,
+      "gzipLength": 258,
+      "brotliLength": 204,
+      "metaUid": "07677434-80"
+    },
+    "07677434-83": {
+      "renderedLength": 1077,
+      "gzipLength": 387,
+      "brotliLength": 328,
+      "metaUid": "07677434-82"
+    },
+    "07677434-85": {
+      "renderedLength": 535,
+      "gzipLength": 322,
+      "brotliLength": 270,
+      "metaUid": "07677434-84"
+    },
+    "07677434-87": {
+      "renderedLength": 1445,
+      "gzipLength": 562,
+      "brotliLength": 471,
+      "metaUid": "07677434-86"
+    },
+    "07677434-89": {
+      "renderedLength": 529,
+      "gzipLength": 314,
+      "brotliLength": 271,
+      "metaUid": "07677434-88"
+    },
+    "07677434-91": {
+      "renderedLength": 2723,
+      "gzipLength": 845,
+      "brotliLength": 734,
+      "metaUid": "07677434-90"
+    },
+    "07677434-93": {
+      "renderedLength": 1052,
+      "gzipLength": 472,
+      "brotliLength": 391,
+      "metaUid": "07677434-92"
+    },
+    "07677434-95": {
+      "renderedLength": 540,
+      "gzipLength": 309,
+      "brotliLength": 257,
+      "metaUid": "07677434-94"
+    },
+    "07677434-97": {
+      "renderedLength": 3389,
+      "gzipLength": 734,
+      "brotliLength": 632,
+      "metaUid": "07677434-96"
+    },
+    "07677434-99": {
+      "renderedLength": 737,
+      "gzipLength": 390,
+      "brotliLength": 328,
+      "metaUid": "07677434-98"
+    },
+    "07677434-101": {
+      "renderedLength": 542,
+      "gzipLength": 324,
+      "brotliLength": 272,
+      "metaUid": "07677434-100"
+    },
+    "07677434-103": {
+      "renderedLength": 1874,
+      "gzipLength": 683,
+      "brotliLength": 569,
+      "metaUid": "07677434-102"
+    },
+    "07677434-105": {
+      "renderedLength": 1200,
+      "gzipLength": 509,
+      "brotliLength": 424,
+      "metaUid": "07677434-104"
+    },
+    "07677434-107": {
+      "renderedLength": 293,
+      "gzipLength": 227,
+      "brotliLength": 188,
+      "metaUid": "07677434-106"
+    },
+    "07677434-109": {
+      "renderedLength": 3576,
+      "gzipLength": 876,
+      "brotliLength": 728,
+      "metaUid": "07677434-108"
+    },
+    "07677434-111": {
+      "renderedLength": 3569,
+      "gzipLength": 804,
+      "brotliLength": 687,
+      "metaUid": "07677434-110"
+    },
+    "07677434-113": {
+      "renderedLength": 625,
+      "gzipLength": 336,
+      "brotliLength": 284,
+      "metaUid": "07677434-112"
+    },
+    "07677434-115": {
+      "renderedLength": 3520,
+      "gzipLength": 972,
+      "brotliLength": 829,
+      "metaUid": "07677434-114"
+    },
+    "07677434-117": {
+      "renderedLength": 2314,
+      "gzipLength": 760,
+      "brotliLength": 662,
+      "metaUid": "07677434-116"
+    },
+    "07677434-119": {
+      "renderedLength": 545,
+      "gzipLength": 314,
+      "brotliLength": 261,
+      "metaUid": "07677434-118"
+    },
+    "07677434-121": {
+      "renderedLength": 1519,
+      "gzipLength": 510,
+      "brotliLength": 408,
+      "metaUid": "07677434-120"
+    },
+    "07677434-123": {
+      "renderedLength": 2439,
+      "gzipLength": 630,
+      "brotliLength": 542,
+      "metaUid": "07677434-122"
+    },
+    "07677434-125": {
+      "renderedLength": 731,
+      "gzipLength": 378,
+      "brotliLength": 300,
+      "metaUid": "07677434-124"
+    },
+    "07677434-127": {
+      "renderedLength": 547,
+      "gzipLength": 315,
+      "brotliLength": 260,
+      "metaUid": "07677434-126"
+    },
+    "07677434-129": {
+      "renderedLength": 2340,
+      "gzipLength": 769,
+      "brotliLength": 647,
+      "metaUid": "07677434-128"
+    },
+    "07677434-131": {
+      "renderedLength": 528,
+      "gzipLength": 307,
+      "brotliLength": 264,
+      "metaUid": "07677434-130"
+    },
+    "07677434-133": {
+      "renderedLength": 3908,
+      "gzipLength": 755,
+      "brotliLength": 639,
+      "metaUid": "07677434-132"
+    },
+    "07677434-135": {
+      "renderedLength": 1689,
+      "gzipLength": 604,
+      "brotliLength": 529,
+      "metaUid": "07677434-134"
+    },
+    "07677434-137": {
+      "renderedLength": 1999,
+      "gzipLength": 482,
+      "brotliLength": 398,
+      "metaUid": "07677434-136"
+    },
+    "07677434-139": {
+      "renderedLength": 1197,
+      "gzipLength": 392,
+      "brotliLength": 310,
+      "metaUid": "07677434-138"
+    },
+    "07677434-141": {
+      "renderedLength": 3368,
+      "gzipLength": 695,
+      "brotliLength": 622,
+      "metaUid": "07677434-140"
+    },
+    "07677434-143": {
+      "renderedLength": 938,
+      "gzipLength": 360,
+      "brotliLength": 290,
+      "metaUid": "07677434-142"
+    },
+    "07677434-145": {
+      "renderedLength": 657,
+      "gzipLength": 322,
+      "brotliLength": 254,
+      "metaUid": "07677434-144"
+    },
+    "07677434-147": {
+      "renderedLength": 971,
+      "gzipLength": 365,
+      "brotliLength": 292,
+      "metaUid": "07677434-146"
+    },
+    "07677434-149": {
+      "renderedLength": 769,
+      "gzipLength": 345,
+      "brotliLength": 279,
+      "metaUid": "07677434-148"
+    },
+    "07677434-151": {
+      "renderedLength": 24131,
+      "gzipLength": 8933,
+      "brotliLength": 8149,
+      "metaUid": "07677434-150"
+    },
+    "07677434-153": {
+      "renderedLength": 21767,
+      "gzipLength": 7738,
+      "brotliLength": 6472,
+      "metaUid": "07677434-152"
+    },
+    "07677434-155": {
+      "renderedLength": 24279,
+      "gzipLength": 8633,
+      "brotliLength": 7584,
+      "metaUid": "07677434-154"
+    },
+    "07677434-157": {
+      "renderedLength": 649,
+      "gzipLength": 323,
+      "brotliLength": 257,
+      "metaUid": "07677434-156"
+    },
+    "07677434-159": {
+      "renderedLength": 24759,
+      "gzipLength": 8875,
+      "brotliLength": 7971,
+      "metaUid": "07677434-158"
+    },
+    "07677434-161": {
+      "renderedLength": 23721,
+      "gzipLength": 8524,
+      "brotliLength": 7682,
+      "metaUid": "07677434-160"
+    },
+    "07677434-163": {
+      "renderedLength": 27472,
+      "gzipLength": 9919,
+      "brotliLength": 8427,
+      "metaUid": "07677434-162"
+    },
+    "07677434-165": {
+      "renderedLength": 24588,
+      "gzipLength": 9357,
+      "brotliLength": 7981,
+      "metaUid": "07677434-164"
+    },
+    "07677434-167": {
+      "renderedLength": 684,
+      "gzipLength": 326,
+      "brotliLength": 274,
+      "metaUid": "07677434-166"
+    },
+    "07677434-169": {
+      "renderedLength": 689,
+      "gzipLength": 325,
+      "brotliLength": 264,
+      "metaUid": "07677434-168"
+    },
+    "07677434-171": {
+      "renderedLength": 24009,
+      "gzipLength": 8689,
+      "brotliLength": 7756,
+      "metaUid": "07677434-170"
+    },
+    "07677434-173": {
+      "renderedLength": 101,
+      "gzipLength": 104,
+      "brotliLength": 86,
+      "metaUid": "07677434-172"
+    },
+    "07677434-175": {
+      "renderedLength": 2681,
+      "gzipLength": 743,
+      "brotliLength": 642,
+      "metaUid": "07677434-174"
+    },
+    "07677434-177": {
+      "renderedLength": 2242,
+      "gzipLength": 825,
+      "brotliLength": 707,
+      "metaUid": "07677434-176"
+    },
+    "07677434-179": {
+      "renderedLength": 130,
+      "gzipLength": 112,
+      "brotliLength": 103,
+      "metaUid": "07677434-178"
+    },
+    "07677434-181": {
+      "renderedLength": 1035,
+      "gzipLength": 558,
+      "brotliLength": 472,
+      "metaUid": "07677434-180"
+    },
+    "07677434-183": {
+      "renderedLength": 5052,
+      "gzipLength": 1639,
+      "brotliLength": 1369,
+      "metaUid": "07677434-182"
+    },
+    "07677434-185": {
+      "renderedLength": 652,
+      "gzipLength": 404,
+      "brotliLength": 290,
+      "metaUid": "07677434-184"
+    },
+    "07677434-187": {
+      "renderedLength": 810,
+      "gzipLength": 310,
+      "brotliLength": 252,
+      "metaUid": "07677434-186"
+    },
+    "07677434-189": {
+      "renderedLength": 388,
+      "gzipLength": 261,
+      "brotliLength": 236,
+      "metaUid": "07677434-188"
+    },
+    "07677434-191": {
+      "renderedLength": 0,
+      "gzipLength": 0,
+      "brotliLength": 0,
+      "metaUid": "07677434-190"
+    },
+    "07677434-193": {
+      "renderedLength": 355,
+      "gzipLength": 238,
+      "brotliLength": 221,
+      "metaUid": "07677434-192"
+    },
+    "07677434-195": {
+      "renderedLength": 1715,
+      "gzipLength": 798,
+      "brotliLength": 613,
+      "metaUid": "07677434-194"
+    },
+    "07677434-197": {
+      "renderedLength": 2693,
+      "gzipLength": 1198,
+      "brotliLength": 998,
+      "metaUid": "07677434-196"
+    },
+    "07677434-199": {
+      "renderedLength": 176,
+      "gzipLength": 162,
+      "brotliLength": 128,
+      "metaUid": "07677434-198"
+    },
+    "07677434-201": {
+      "renderedLength": 244,
+      "gzipLength": 180,
+      "brotliLength": 147,
+      "metaUid": "07677434-200"
+    },
+    "07677434-203": {
+      "renderedLength": 244,
+      "gzipLength": 178,
+      "brotliLength": 150,
+      "metaUid": "07677434-202"
+    },
+    "07677434-205": {
+      "renderedLength": 256,
+      "gzipLength": 181,
+      "brotliLength": 152,
+      "metaUid": "07677434-204"
+    },
+    "07677434-207": {
+      "renderedLength": 256,
+      "gzipLength": 182,
+      "brotliLength": 152,
+      "metaUid": "07677434-206"
+    },
+    "07677434-209": {
+      "renderedLength": 253,
+      "gzipLength": 181,
+      "brotliLength": 155,
+      "metaUid": "07677434-208"
+    },
+    "07677434-211": {
+      "renderedLength": 241,
+      "gzipLength": 179,
+      "brotliLength": 151,
+      "metaUid": "07677434-210"
+    },
+    "07677434-213": {
+      "renderedLength": 253,
+      "gzipLength": 180,
+      "brotliLength": 148,
+      "metaUid": "07677434-212"
+    },
+    "07677434-215": {
+      "renderedLength": 253,
+      "gzipLength": 179,
+      "brotliLength": 152,
+      "metaUid": "07677434-214"
+    },
+    "07677434-217": {
+      "renderedLength": 244,
+      "gzipLength": 178,
+      "brotliLength": 148,
+      "metaUid": "07677434-216"
+    },
+    "07677434-219": {
+      "renderedLength": 241,
+      "gzipLength": 177,
+      "brotliLength": 141,
+      "metaUid": "07677434-218"
+    },
+    "07677434-221": {
+      "renderedLength": 1835,
+      "gzipLength": 434,
+      "brotliLength": 378,
+      "metaUid": "07677434-220"
+    },
+    "07677434-223": {
+      "renderedLength": 188,
+      "gzipLength": 152,
+      "brotliLength": 125,
+      "metaUid": "07677434-222"
+    },
+    "07677434-225": {
+      "renderedLength": 34237,
+      "gzipLength": 10620,
+      "brotliLength": 8872,
+      "metaUid": "07677434-224"
+    },
+    "07677434-227": {
+      "renderedLength": 1710,
+      "gzipLength": 470,
+      "brotliLength": 388,
+      "metaUid": "07677434-226"
+    },
+    "07677434-229": {
+      "renderedLength": 195,
+      "gzipLength": 158,
+      "brotliLength": 129,
+      "metaUid": "07677434-228"
+    },
+    "07677434-231": {
+      "renderedLength": 657,
+      "gzipLength": 321,
+      "brotliLength": 257,
+      "metaUid": "07677434-230"
+    },
+    "07677434-233": {
+      "renderedLength": 674,
+      "gzipLength": 350,
+      "brotliLength": 272,
+      "metaUid": "07677434-232"
+    },
+    "07677434-235": {
+      "renderedLength": 20888,
+      "gzipLength": 9167,
+      "brotliLength": 7223,
+      "metaUid": "07677434-234"
+    }
+  },
+  "nodeMetas": {
+    "07677434-0": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm/StartServer.js",
+      "moduleParts": {
+        "server.js": "07677434-1"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-237"
+        },
+        {
+          "uid": "07677434-2"
+        },
+        {
+          "uid": "07677434-238"
+        }
+      ]
+    },
+    "07677434-2": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm/defaultStreamHandler.js",
+      "moduleParts": {
+        "server.js": "07677434-3"
+      },
+      "imported": [
+        {
+          "uid": "07677434-0"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-243"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-237"
+        }
+      ]
+    },
+    "07677434-4": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/rou3@0.8.1/node_modules/rou3/dist/index.mjs",
+      "moduleParts": {
+        "server.js": "07677434-5"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-10"
+        }
+      ]
+    },
+    "07677434-6": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_url.mjs",
+      "moduleParts": {
+        "server.js": "07677434-7"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-8"
+        }
+      ]
+    },
+    "07677434-8": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/adapters/node.mjs",
+      "moduleParts": {
+        "server.js": "07677434-9"
+      },
+      "imported": [
+        {
+          "uid": "07677434-6"
+        },
+        {
+          "uid": "07677434-277"
+        },
+        {
+          "uid": "07677434-278"
+        },
+        {
+          "uid": "07677434-279"
+        },
+        {
+          "uid": "07677434-276"
+        },
+        {
+          "uid": "07677434-280"
+        },
+        {
+          "uid": "07677434-281"
+        },
+        {
+          "uid": "07677434-282"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-247"
+        },
+        {
+          "uid": "07677434-10"
+        }
+      ]
+    },
+    "07677434-10": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/h3@2.0.1-rc.16/node_modules/h3/dist/h3-ByfIX5Jk.mjs",
+      "moduleParts": {
+        "server.js": "07677434-11"
+      },
+      "imported": [
+        {
+          "uid": "07677434-4"
+        },
+        {
+          "uid": "07677434-8"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-247"
+        }
+      ]
+    },
+    "07677434-12": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/request-response.js",
+      "moduleParts": {
+        "server.js": "07677434-13"
+      },
+      "imported": [
+        {
+          "uid": "07677434-246"
+        },
+        {
+          "uid": "07677434-247"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-239"
+        },
+        {
+          "uid": "07677434-78"
+        },
+        {
+          "uid": "07677434-68"
+        }
+      ]
+    },
+    "07677434-14": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/constants.js",
+      "moduleParts": {
+        "server.js": "07677434-15"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-239"
+        },
+        {
+          "uid": "07677434-78"
+        }
+      ]
+    },
+    "07677434-16": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/utils.js",
+      "moduleParts": {
+        "server.js": "07677434-17"
+      },
+      "imported": [
+        {
+          "uid": "07677434-288"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-76"
+        },
+        {
+          "uid": "07677434-263"
+        },
+        {
+          "uid": "07677434-264"
+        },
+        {
+          "uid": "07677434-267"
+        },
+        {
+          "uid": "07677434-268"
+        },
+        {
+          "uid": "07677434-274"
+        },
+        {
+          "uid": "07677434-285"
+        },
+        {
+          "uid": "07677434-289"
+        },
+        {
+          "uid": "07677434-290"
+        }
+      ]
+    },
+    "07677434-18": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/lru-cache.js",
+      "moduleParts": {
+        "server.js": "07677434-19"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-76"
+        },
+        {
+          "uid": "07677434-267"
+        },
+        {
+          "uid": "07677434-268"
+        },
+        {
+          "uid": "07677434-289"
+        }
+      ]
+    },
+    "07677434-20": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/not-found.js",
+      "moduleParts": {
+        "server.js": "07677434-21"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-268"
+        },
+        {
+          "uid": "07677434-272"
+        },
+        {
+          "uid": "07677434-285"
+        },
+        {
+          "uid": "07677434-290"
+        }
+      ]
+    },
+    "07677434-22": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/root.js",
+      "moduleParts": {
+        "server.js": "07677434-23"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-268"
+        },
+        {
+          "uid": "07677434-272"
+        },
+        {
+          "uid": "07677434-290"
+        }
+      ]
+    },
+    "07677434-24": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/redirect.js",
+      "moduleParts": {
+        "server.js": "07677434-25"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-268"
+        },
+        {
+          "uid": "07677434-272"
+        },
+        {
+          "uid": "07677434-290"
+        }
+      ]
+    },
+    "07677434-26": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/rewrite.js",
+      "moduleParts": {
+        "server.js": "07677434-27"
+      },
+      "imported": [
+        {
+          "uid": "07677434-263"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-268"
+        }
+      ]
+    },
+    "07677434-28": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+history@1.161.6/node_modules/@tanstack/history/dist/esm/index.js",
+      "moduleParts": {
+        "server.js": "07677434-29"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        },
+        {
+          "uid": "07677434-251"
+        },
+        {
+          "uid": "07677434-268"
+        }
+      ]
+    },
+    "07677434-30": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/constants.js",
+      "moduleParts": {
+        "server.js": "07677434-31"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-76"
+        },
+        {
+          "uid": "07677434-253"
+        },
+        {
+          "uid": "07677434-34"
+        }
+      ]
+    },
+    "07677434-32": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval@1.5.2/node_modules/seroval/dist/esm/production/index.mjs",
+      "moduleParts": {
+        "server.js": "07677434-33"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-68"
+        },
+        {
+          "uid": "07677434-76"
+        },
+        {
+          "uid": "07677434-34"
+        },
+        {
+          "uid": "07677434-36"
+        },
+        {
+          "uid": "07677434-38"
+        },
+        {
+          "uid": "07677434-40"
+        }
+      ]
+    },
+    "07677434-34": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/transformer.js",
+      "moduleParts": {
+        "server.js": "07677434-35"
+      },
+      "imported": [
+        {
+          "uid": "07677434-30"
+        },
+        {
+          "uid": "07677434-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-76"
+        }
+      ]
+    },
+    "07677434-36": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStream.js",
+      "moduleParts": {
+        "server.js": "07677434-37"
+      },
+      "imported": [
+        {
+          "uid": "07677434-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-42"
+        }
+      ]
+    },
+    "07677434-38": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/ShallowErrorPlugin.js",
+      "moduleParts": {
+        "server.js": "07677434-39"
+      },
+      "imported": [
+        {
+          "uid": "07677434-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-42"
+        }
+      ]
+    },
+    "07677434-40": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval-plugins@1.5.2+7cd651eebf40fbbb/node_modules/seroval-plugins/dist/esm/production/web.mjs",
+      "moduleParts": {
+        "server.js": "07677434-41"
+      },
+      "imported": [
+        {
+          "uid": "07677434-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-42"
+        }
+      ]
+    },
+    "07677434-42": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/seroval-plugins.js",
+      "moduleParts": {
+        "server.js": "07677434-43"
+      },
+      "imported": [
+        {
+          "uid": "07677434-38"
+        },
+        {
+          "uid": "07677434-36"
+        },
+        {
+          "uid": "07677434-40"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-76"
+        }
+      ]
+    },
+    "07677434-44": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/router-manifest.js",
+      "moduleParts": {
+        "server.js": "07677434-45"
+      },
+      "imported": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-140",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        }
+      ]
+    },
+    "07677434-46": {
+      "id": "\u0000#tanstack-start-server-fn-resolver",
+      "moduleParts": {
+        "server.js": "07677434-47"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-255"
+        }
+      ]
+    },
+    "07677434-48": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/constants.js",
+      "moduleParts": {
+        "server.js": "07677434-49"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        },
+        {
+          "uid": "07677434-62"
+        }
+      ]
+    },
+    "07677434-50": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/safeObjectMerge.js",
+      "moduleParts": {
+        "server.js": "07677434-51"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        },
+        {
+          "uid": "07677434-62"
+        }
+      ]
+    },
+    "07677434-52": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-storage-context@1.166.15/node_modules/@tanstack/start-storage-context/dist/esm/async-local-storage.js",
+      "moduleParts": {
+        "server.js": "07677434-53"
+      },
+      "imported": [
+        {
+          "uid": "07677434-246"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-250"
+        }
+      ]
+    },
+    "07677434-54": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getStartOptions.js",
+      "moduleParts": {
+        "server.js": "07677434-55"
+      },
+      "imported": [
+        {
+          "uid": "07677434-250"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-62"
+        },
+        {
+          "uid": "07677434-64"
+        }
+      ]
+    },
+    "07677434-56": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/cookie-es@2.0.1/node_modules/cookie-es/dist/index.mjs",
+      "moduleParts": {
+        "server.js": "07677434-57"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-58"
+        }
+      ]
+    },
+    "07677434-58": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/headers.js",
+      "moduleParts": {
+        "server.js": "07677434-59"
+      },
+      "imported": [
+        {
+          "uid": "07677434-56"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-251"
+        },
+        {
+          "uid": "07677434-261"
+        }
+      ]
+    },
+    "07677434-60": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-match-id.js",
+      "moduleParts": {
+        "server.js": "07677434-61"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-76"
+        },
+        {
+          "uid": "07677434-285"
+        }
+      ]
+    },
+    "07677434-62": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/createServerFn.js",
+      "moduleParts": {
+        "server.js": "07677434-63"
+      },
+      "imported": [
+        {
+          "uid": "07677434-48"
+        },
+        {
+          "uid": "07677434-54"
+        },
+        {
+          "uid": "07677434-283"
+        },
+        {
+          "uid": "07677434-50"
+        },
+        {
+          "uid": "07677434-261"
+        },
+        {
+          "uid": "07677434-249"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        }
+      ]
+    },
+    "07677434-64": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getDefaultSerovalPlugins.js",
+      "moduleParts": {
+        "server.js": "07677434-65"
+      },
+      "imported": [
+        {
+          "uid": "07677434-54"
+        },
+        {
+          "uid": "07677434-249"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        }
+      ]
+    },
+    "07677434-66": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/frame-protocol.js",
+      "moduleParts": {
+        "server.js": "07677434-67"
+      },
+      "imported": [
+        {
+          "uid": "07677434-248"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-68"
+        }
+      ]
+    },
+    "07677434-68": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/server-functions-handler.js",
+      "moduleParts": {
+        "server.js": "07677434-69"
+      },
+      "imported": [
+        {
+          "uid": "07677434-12"
+        },
+        {
+          "uid": "07677434-255"
+        },
+        {
+          "uid": "07677434-66"
+        },
+        {
+          "uid": "07677434-248"
+        },
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-256"
+        },
+        {
+          "uid": "07677434-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        }
+      ]
+    },
+    "07677434-70": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/transformAssetUrls.js",
+      "moduleParts": {
+        "server.js": "07677434-71"
+      },
+      "imported": [
+        {
+          "uid": "07677434-249"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        }
+      ]
+    },
+    "07677434-72": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/serializer/ServerFunctionSerializationAdapter.js",
+      "moduleParts": {
+        "server.js": "07677434-73"
+      },
+      "imported": [
+        {
+          "uid": "07677434-255"
+        },
+        {
+          "uid": "07677434-248"
+        },
+        {
+          "uid": "07677434-249"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        }
+      ]
+    },
+    "07677434-74": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/tsrScript.js",
+      "moduleParts": {
+        "server.js": "07677434-75"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-76"
+        }
+      ]
+    },
+    "07677434-76": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-server.js",
+      "moduleParts": {
+        "server.js": "07677434-77"
+      },
+      "imported": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-18"
+        },
+        {
+          "uid": "07677434-30"
+        },
+        {
+          "uid": "07677434-34"
+        },
+        {
+          "uid": "07677434-42"
+        },
+        {
+          "uid": "07677434-60"
+        },
+        {
+          "uid": "07677434-74"
+        },
+        {
+          "uid": "07677434-256"
+        },
+        {
+          "uid": "07677434-32"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-245"
+        },
+        {
+          "uid": "07677434-251"
+        }
+      ]
+    },
+    "07677434-78": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/createStartHandler.js",
+      "moduleParts": {
+        "server.js": "07677434-79"
+      },
+      "imported": [
+        {
+          "uid": "07677434-12"
+        },
+        {
+          "uid": "07677434-44"
+        },
+        {
+          "uid": "07677434-68"
+        },
+        {
+          "uid": "07677434-70"
+        },
+        {
+          "uid": "07677434-14"
+        },
+        {
+          "uid": "07677434-72"
+        },
+        {
+          "uid": "07677434-28"
+        },
+        {
+          "uid": "07677434-248"
+        },
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-245"
+        },
+        {
+          "uid": "07677434-250"
+        },
+        {
+          "uid": "07677434-222",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-228",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-239"
+        }
+      ]
+    },
+    "07677434-80": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+dbc3f4f8bf8c1b00/node_modules/@tanstack/react-start/dist/plugin/default-entry/server.ts",
+      "moduleParts": {
+        "server.js": "07677434-81"
+      },
+      "imported": [
+        {
+          "uid": "07677434-236"
+        }
+      ],
+      "importedBy": [],
+      "isEntry": true
+    },
+    "07677434-82": {
+      "id": "/src/components/pages/about/AboutGrid.tsx",
+      "moduleParts": {
+        "assets/AboutGrid-Cnn6TV9x.js": "07677434-83"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-142"
+        }
+      ]
+    },
+    "07677434-84": {
+      "id": "/src/components/pages/about/AboutHeader.tsx",
+      "moduleParts": {
+        "assets/AboutHeader-Cn1YmA2w.js": "07677434-85"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-232"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-142"
+        }
+      ]
+    },
+    "07677434-86": {
+      "id": "/src/components/pages/settings/ApiAccessSection.tsx",
+      "moduleParts": {
+        "assets/ApiAccessSection-ClT7e_Il.js": "07677434-87"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-226"
+        }
+      ]
+    },
+    "07677434-88": {
+      "id": "/src/components/pages/blog/BlogHeader.tsx",
+      "moduleParts": {
+        "assets/BlogHeader-DTxXnU8y.js": "07677434-89"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-106"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-144"
+        }
+      ]
+    },
+    "07677434-90": {
+      "id": "/src/components/pages/blog/BlogList.tsx",
+      "moduleParts": {
+        "assets/BlogList-DmlDRMxK.js": "07677434-91"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-144"
+        }
+      ]
+    },
+    "07677434-92": {
+      "id": "/src/components/pages/careers/CareersBenefits.tsx",
+      "moduleParts": {
+        "assets/CareersBenefits-Vt3JlAs5.js": "07677434-93"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-146"
+        }
+      ]
+    },
+    "07677434-94": {
+      "id": "/src/components/pages/careers/CareersHeader.tsx",
+      "moduleParts": {
+        "assets/CareersHeader-BFsm1LIo.js": "07677434-95"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-106"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-146"
+        }
+      ]
+    },
+    "07677434-96": {
+      "id": "/src/components/pages/contact/ContactForm.tsx",
+      "moduleParts": {
+        "assets/ContactForm-BeIJtJSh.js": "07677434-97"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-148"
+        }
+      ]
+    },
+    "07677434-98": {
+      "id": "/src/components/pages/contact/ContactHeader.tsx",
+      "moduleParts": {
+        "assets/ContactHeader-Zb4ipLsK.js": "07677434-99"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-106"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-148"
+        }
+      ]
+    },
+    "07677434-100": {
+      "id": "/src/components/pages/faq/FAQHeader.tsx",
+      "moduleParts": {
+        "assets/FAQHeader-DY29W7SU.js": "07677434-101"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-106"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-156"
+        }
+      ]
+    },
+    "07677434-102": {
+      "id": "/src/components/pages/faq/FAQList.tsx",
+      "moduleParts": {
+        "assets/FAQList-RkiuFZzS.js": "07677434-103"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-156"
+        }
+      ]
+    },
+    "07677434-104": {
+      "id": "/src/components/pages/home/Hero.tsx",
+      "moduleParts": {
+        "assets/Hero-0Ne_R7rg.js": "07677434-105"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-232"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-138"
+        }
+      ]
+    },
+    "07677434-106": {
+      "id": "/src/components/MockBanner.tsx",
+      "moduleParts": {
+        "assets/MockBanner-OnkJPJkv.js": "07677434-107"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-130"
+        },
+        {
+          "uid": "07677434-126"
+        },
+        {
+          "uid": "07677434-118"
+        },
+        {
+          "uid": "07677434-112"
+        },
+        {
+          "uid": "07677434-100"
+        },
+        {
+          "uid": "07677434-98"
+        },
+        {
+          "uid": "07677434-94"
+        },
+        {
+          "uid": "07677434-88"
+        }
+      ]
+    },
+    "07677434-108": {
+      "id": "/src/components/pages/careers/OpenPositions.tsx",
+      "moduleParts": {
+        "assets/OpenPositions-U_8OESYo.js": "07677434-109"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-146"
+        }
+      ]
+    },
+    "07677434-110": {
+      "id": "/src/components/pages/settings/PreferencesSection.tsx",
+      "moduleParts": {
+        "assets/PreferencesSection-D-Dvaz7T.js": "07677434-111"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-226"
+        }
+      ]
+    },
+    "07677434-112": {
+      "id": "/src/components/pages/pricing/PricingHeader.tsx",
+      "moduleParts": {
+        "assets/PricingHeader-BRFB7Tcs.js": "07677434-113"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-106"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-166"
+        }
+      ]
+    },
+    "07677434-114": {
+      "id": "/src/components/pages/pricing/PricingTiers.tsx",
+      "moduleParts": {
+        "assets/PricingTiers-Cj13xGvD.js": "07677434-115"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-166"
+        }
+      ]
+    },
+    "07677434-116": {
+      "id": "/src/components/pages/products/ProductsGrid.tsx",
+      "moduleParts": {
+        "assets/ProductsGrid-CE7clUYS.js": "07677434-117"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-168"
+        }
+      ]
+    },
+    "07677434-118": {
+      "id": "/src/components/pages/products/ProductsHeader.tsx",
+      "moduleParts": {
+        "assets/ProductsHeader-D1BIi3xS.js": "07677434-119"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-106"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-168"
+        }
+      ]
+    },
+    "07677434-120": {
+      "id": "/src/components/pages/settings/ProfileSection.tsx",
+      "moduleParts": {
+        "assets/ProfileSection-R2fkk3yQ.js": "07677434-121"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-226"
+        }
+      ]
+    },
+    "07677434-122": {
+      "id": "/src/components/pages/home/ResultsTable.tsx",
+      "moduleParts": {
+        "assets/ResultsTable-BMWEdwzi.js": "07677434-123"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-138"
+        }
+      ]
+    },
+    "07677434-124": {
+      "id": "/src/components/pages/settings/SettingsFooter.tsx",
+      "moduleParts": {
+        "assets/SettingsFooter-D6XifyKU.js": "07677434-125"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-226"
+        }
+      ]
+    },
+    "07677434-126": {
+      "id": "/src/components/pages/settings/SettingsHeader.tsx",
+      "moduleParts": {
+        "assets/SettingsHeader-Db6pyIQV.js": "07677434-127"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-106"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-226"
+        }
+      ]
+    },
+    "07677434-128": {
+      "id": "/src/components/pages/team/TeamGrid.tsx",
+      "moduleParts": {
+        "assets/TeamGrid-Bv-vevau.js": "07677434-129"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-230"
+        }
+      ]
+    },
+    "07677434-130": {
+      "id": "/src/components/pages/team/TeamHeader.tsx",
+      "moduleParts": {
+        "assets/TeamHeader-YQLstJDr.js": "07677434-131"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-106"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-230"
+        }
+      ]
+    },
+    "07677434-132": {
+      "id": "/src/components/pages/home/UnderstandingImpact.tsx",
+      "moduleParts": {
+        "assets/UnderstandingImpact-B9fwUcVw.js": "07677434-133"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-138"
+        }
+      ]
+    },
+    "07677434-134": {
+      "id": "/src/components/pages/about/WhatWeMeasure.tsx",
+      "moduleParts": {
+        "assets/WhatWeMeasure-DKWC4K7w.js": "07677434-135"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-142"
+        }
+      ]
+    },
+    "07677434-136": {
+      "id": "/src/components/pages/home/WhyItMatters.tsx",
+      "moduleParts": {
+        "assets/WhyItMatters-SXxgUUKj.js": "07677434-137"
+      },
+      "imported": [
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-138"
+        }
+      ]
+    },
+    "07677434-138": {
+      "id": "/src/routes/$locale/index.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/_locale-BjE3DjO_.js": "07677434-139"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-104",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-136",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-132",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-122",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-200"
+        }
+      ]
+    },
+    "07677434-140": {
+      "id": "\u0000tanstack-start-manifest:v",
+      "moduleParts": {
+        "assets/_tanstack-start-manifest_v-B-nOvmm8.js": "07677434-141"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-44"
+        }
+      ]
+    },
+    "07677434-142": {
+      "id": "/src/routes/$locale/about.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/about-otaAN_1U.js": "07677434-143"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-84",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-82",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-134",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-218"
+        }
+      ]
+    },
+    "07677434-144": {
+      "id": "/src/routes/$locale/blog.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/blog-DPweKLsc.js": "07677434-145"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-88",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-90",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-216"
+        }
+      ]
+    },
+    "07677434-146": {
+      "id": "/src/routes/$locale/careers.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/careers-wRzXmOKv.js": "07677434-147"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-94",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-92",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-108",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-214"
+        }
+      ]
+    },
+    "07677434-148": {
+      "id": "/src/routes/$locale/contact.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/contact-Buw4uHoo.js": "07677434-149"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-98",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-96",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-212"
+        }
+      ]
+    },
+    "07677434-150": {
+      "id": "/src/messages/de.json",
+      "moduleParts": {
+        "assets/de-CNb0umMD.js": "07677434-151"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-152": {
+      "id": "/src/messages/en.json",
+      "moduleParts": {
+        "assets/en-CcDNdw-t.js": "07677434-153"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-154": {
+      "id": "/src/messages/es.json",
+      "moduleParts": {
+        "assets/es-rUZcRsEs.js": "07677434-155"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-156": {
+      "id": "/src/routes/$locale/faq.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/faq-ZyGv6vAR.js": "07677434-157"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-100",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-102",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-210"
+        }
+      ]
+    },
+    "07677434-158": {
+      "id": "/src/messages/fr.json",
+      "moduleParts": {
+        "assets/fr-CzMs5UeS.js": "07677434-159"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-160": {
+      "id": "/src/messages/it.json",
+      "moduleParts": {
+        "assets/it--bfqdRBD.js": "07677434-161"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-162": {
+      "id": "/src/messages/ja.json",
+      "moduleParts": {
+        "assets/ja-CShYdfNo.js": "07677434-163"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-164": {
+      "id": "/src/messages/ko.json",
+      "moduleParts": {
+        "assets/ko-D7prirA_.js": "07677434-165"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-166": {
+      "id": "/src/routes/$locale/pricing.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/pricing-FedlE1B6.js": "07677434-167"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-112",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-114",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-208"
+        }
+      ]
+    },
+    "07677434-168": {
+      "id": "/src/routes/$locale/products.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/products-D0veHkIP.js": "07677434-169"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-118",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-116",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-206"
+        }
+      ]
+    },
+    "07677434-170": {
+      "id": "/src/messages/pt.json",
+      "moduleParts": {
+        "assets/pt-C0QqKY1Q.js": "07677434-171"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-172": {
+      "id": "/src/routes/$locale/route.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/route-CViWSj7K.js": "07677434-173"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-188"
+        }
+      ]
+    },
+    "07677434-174": {
+      "id": "/src/components/Footer.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-175"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-196"
+        }
+      ]
+    },
+    "07677434-176": {
+      "id": "/src/components/ThemeToggle.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-177"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-182"
+        }
+      ]
+    },
+    "07677434-178": {
+      "id": "/src/i18n/config.ts",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-179"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-196"
+        },
+        {
+          "uid": "07677434-188"
+        },
+        {
+          "uid": "07677434-180"
+        }
+      ]
+    },
+    "07677434-180": {
+      "id": "/src/components/LocaleSwitcher.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-181"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-178"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-182"
+        }
+      ]
+    },
+    "07677434-182": {
+      "id": "/src/components/Header.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-183"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-293"
+        },
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-176"
+        },
+        {
+          "uid": "07677434-180"
+        },
+        {
+          "uid": "07677434-232"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-196"
+        }
+      ]
+    },
+    "07677434-184": {
+      "id": "\u0000rolldown_dynamic_import_helper.js",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-185"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-186": {
+      "id": "/src/i18n/getMessages.ts",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-187"
+      },
+      "imported": [
+        {
+          "uid": "07677434-184"
+        },
+        {
+          "uid": "07677434-150",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-152",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-154",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-158",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-160",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-162",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-164",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-170",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-224",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-234",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-196"
+        },
+        {
+          "uid": "07677434-188"
+        }
+      ]
+    },
+    "07677434-188": {
+      "id": "/src/routes/$locale/route.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-189"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-186"
+        },
+        {
+          "uid": "07677434-178"
+        },
+        {
+          "uid": "07677434-172",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        },
+        {
+          "uid": "07677434-196"
+        }
+      ]
+    },
+    "07677434-190": {
+      "id": "/src/styles.css?transform-only",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-191"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-192"
+        }
+      ]
+    },
+    "07677434-192": {
+      "id": "/src/styles.css?url",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-193"
+      },
+      "imported": [
+        {
+          "uid": "07677434-190"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-196"
+        }
+      ]
+    },
+    "07677434-194": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/test-utils/src/browser-metrics.ts",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-195"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-196"
+        }
+      ]
+    },
+    "07677434-196": {
+      "id": "/src/routes/__root.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-197"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-292"
+        },
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-174"
+        },
+        {
+          "uid": "07677434-182"
+        },
+        {
+          "uid": "07677434-178"
+        },
+        {
+          "uid": "07677434-186"
+        },
+        {
+          "uid": "07677434-188"
+        },
+        {
+          "uid": "07677434-192"
+        },
+        {
+          "uid": "07677434-194"
+        },
+        {
+          "uid": "07677434-242"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-198": {
+      "id": "/src/routes/index.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-199"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-200": {
+      "id": "/src/routes/$locale/index.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-201"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-138",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-202": {
+      "id": "/src/routes/$locale/team.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-203"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-230",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-204": {
+      "id": "/src/routes/$locale/settings.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-205"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-226",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-206": {
+      "id": "/src/routes/$locale/products.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-207"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-168",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-208": {
+      "id": "/src/routes/$locale/pricing.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-209"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-166",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-210": {
+      "id": "/src/routes/$locale/faq.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-211"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-156",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-212": {
+      "id": "/src/routes/$locale/contact.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-213"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-148",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-214": {
+      "id": "/src/routes/$locale/careers.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-215"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-146",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-216": {
+      "id": "/src/routes/$locale/blog.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-217"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-144",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-218": {
+      "id": "/src/routes/$locale/about.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-219"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-142",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-220"
+        }
+      ]
+    },
+    "07677434-220": {
+      "id": "/src/routeTree.gen.ts",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-221"
+      },
+      "imported": [
+        {
+          "uid": "07677434-196"
+        },
+        {
+          "uid": "07677434-188"
+        },
+        {
+          "uid": "07677434-198"
+        },
+        {
+          "uid": "07677434-200"
+        },
+        {
+          "uid": "07677434-202"
+        },
+        {
+          "uid": "07677434-204"
+        },
+        {
+          "uid": "07677434-206"
+        },
+        {
+          "uid": "07677434-208"
+        },
+        {
+          "uid": "07677434-210"
+        },
+        {
+          "uid": "07677434-212"
+        },
+        {
+          "uid": "07677434-214"
+        },
+        {
+          "uid": "07677434-216"
+        },
+        {
+          "uid": "07677434-218"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-222"
+        }
+      ]
+    },
+    "07677434-222": {
+      "id": "/src/router.tsx",
+      "moduleParts": {
+        "assets/router-DSzbENLW.js": "07677434-223"
+      },
+      "imported": [
+        {
+          "uid": "07677434-241"
+        },
+        {
+          "uid": "07677434-220"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        }
+      ]
+    },
+    "07677434-224": {
+      "id": "/src/messages/ru.json",
+      "moduleParts": {
+        "assets/ru-R-S-vwhY.js": "07677434-225"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-226": {
+      "id": "/src/routes/$locale/settings.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/settings-CI6Ljtch.js": "07677434-227"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-126",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-120",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-110",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-86",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-124",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-204"
+        }
+      ]
+    },
+    "07677434-228": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+dbc3f4f8bf8c1b00/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+      "moduleParts": {
+        "assets/start-DpJCVhMu.js": "07677434-229"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        }
+      ]
+    },
+    "07677434-230": {
+      "id": "/src/routes/$locale/team.tsx?tsr-split=component",
+      "moduleParts": {
+        "assets/team-BirFqkRv.js": "07677434-231"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-130",
+          "dynamic": true
+        },
+        {
+          "uid": "07677434-128",
+          "dynamic": true
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-202"
+        }
+      ]
+    },
+    "07677434-232": {
+      "id": "/src/hooks/usePerformanceMeasure.ts",
+      "moduleParts": {
+        "assets/usePerformanceMeasure-Czf_WT9b.js": "07677434-233"
+      },
+      "imported": [
+        {
+          "uid": "07677434-240"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-182"
+        },
+        {
+          "uid": "07677434-104"
+        },
+        {
+          "uid": "07677434-84"
+        }
+      ]
+    },
+    "07677434-234": {
+      "id": "/src/messages/zh.json",
+      "moduleParts": {
+        "assets/zh-D8wXGQzw.js": "07677434-235"
+      },
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-186"
+        }
+      ]
+    },
+    "07677434-236": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.167.1+dbc3f4f8bf8c1b00/node_modules/@tanstack/react-start/dist/esm/server.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-237"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-80"
+        }
+      ]
+    },
+    "07677434-237": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-0"
+        },
+        {
+          "uid": "07677434-2"
+        },
+        {
+          "uid": "07677434-238"
+        },
+        {
+          "uid": "07677434-239"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-236"
+        }
+      ]
+    },
+    "07677434-238": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.166.16+21ccd8898788a04d/node_modules/@tanstack/react-start-server/dist/esm/defaultRenderHandler.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-0"
+        },
+        {
+          "uid": "07677434-242"
+        },
+        {
+          "uid": "07677434-243"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-237"
+        }
+      ]
+    },
+    "07677434-239": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-12"
+        },
+        {
+          "uid": "07677434-14"
+        },
+        {
+          "uid": "07677434-78"
+        },
+        {
+          "uid": "07677434-244"
+        },
+        {
+          "uid": "07677434-245"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-237"
+        }
+      ]
+    },
+    "07677434-240": {
+      "id": "react",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-0"
+        },
+        {
+          "uid": "07677434-196"
+        },
+        {
+          "uid": "07677434-182"
+        },
+        {
+          "uid": "07677434-138"
+        },
+        {
+          "uid": "07677434-230"
+        },
+        {
+          "uid": "07677434-226"
+        },
+        {
+          "uid": "07677434-168"
+        },
+        {
+          "uid": "07677434-166"
+        },
+        {
+          "uid": "07677434-156"
+        },
+        {
+          "uid": "07677434-148"
+        },
+        {
+          "uid": "07677434-146"
+        },
+        {
+          "uid": "07677434-144"
+        },
+        {
+          "uid": "07677434-142"
+        },
+        {
+          "uid": "07677434-176"
+        },
+        {
+          "uid": "07677434-232"
+        },
+        {
+          "uid": "07677434-120"
+        },
+        {
+          "uid": "07677434-110"
+        },
+        {
+          "uid": "07677434-86"
+        },
+        {
+          "uid": "07677434-96"
+        }
+      ]
+    },
+    "07677434-241": {
+      "id": "@tanstack/react-router",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-0"
+        },
+        {
+          "uid": "07677434-222"
+        },
+        {
+          "uid": "07677434-196"
+        },
+        {
+          "uid": "07677434-188"
+        },
+        {
+          "uid": "07677434-198"
+        },
+        {
+          "uid": "07677434-200"
+        },
+        {
+          "uid": "07677434-202"
+        },
+        {
+          "uid": "07677434-204"
+        },
+        {
+          "uid": "07677434-206"
+        },
+        {
+          "uid": "07677434-208"
+        },
+        {
+          "uid": "07677434-210"
+        },
+        {
+          "uid": "07677434-212"
+        },
+        {
+          "uid": "07677434-214"
+        },
+        {
+          "uid": "07677434-216"
+        },
+        {
+          "uid": "07677434-218"
+        },
+        {
+          "uid": "07677434-174"
+        },
+        {
+          "uid": "07677434-182"
+        },
+        {
+          "uid": "07677434-172"
+        },
+        {
+          "uid": "07677434-180"
+        }
+      ]
+    },
+    "07677434-242": {
+      "id": "react/jsx-runtime",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-0"
+        },
+        {
+          "uid": "07677434-2"
+        },
+        {
+          "uid": "07677434-238"
+        },
+        {
+          "uid": "07677434-196"
+        },
+        {
+          "uid": "07677434-174"
+        },
+        {
+          "uid": "07677434-182"
+        },
+        {
+          "uid": "07677434-138"
+        },
+        {
+          "uid": "07677434-230"
+        },
+        {
+          "uid": "07677434-226"
+        },
+        {
+          "uid": "07677434-168"
+        },
+        {
+          "uid": "07677434-166"
+        },
+        {
+          "uid": "07677434-156"
+        },
+        {
+          "uid": "07677434-148"
+        },
+        {
+          "uid": "07677434-146"
+        },
+        {
+          "uid": "07677434-144"
+        },
+        {
+          "uid": "07677434-142"
+        },
+        {
+          "uid": "07677434-176"
+        },
+        {
+          "uid": "07677434-180"
+        },
+        {
+          "uid": "07677434-104"
+        },
+        {
+          "uid": "07677434-136"
+        },
+        {
+          "uid": "07677434-132"
+        },
+        {
+          "uid": "07677434-122"
+        },
+        {
+          "uid": "07677434-130"
+        },
+        {
+          "uid": "07677434-128"
+        },
+        {
+          "uid": "07677434-126"
+        },
+        {
+          "uid": "07677434-120"
+        },
+        {
+          "uid": "07677434-110"
+        },
+        {
+          "uid": "07677434-86"
+        },
+        {
+          "uid": "07677434-124"
+        },
+        {
+          "uid": "07677434-118"
+        },
+        {
+          "uid": "07677434-116"
+        },
+        {
+          "uid": "07677434-112"
+        },
+        {
+          "uid": "07677434-114"
+        },
+        {
+          "uid": "07677434-100"
+        },
+        {
+          "uid": "07677434-102"
+        },
+        {
+          "uid": "07677434-98"
+        },
+        {
+          "uid": "07677434-96"
+        },
+        {
+          "uid": "07677434-94"
+        },
+        {
+          "uid": "07677434-92"
+        },
+        {
+          "uid": "07677434-108"
+        },
+        {
+          "uid": "07677434-88"
+        },
+        {
+          "uid": "07677434-90"
+        },
+        {
+          "uid": "07677434-84"
+        },
+        {
+          "uid": "07677434-82"
+        },
+        {
+          "uid": "07677434-134"
+        },
+        {
+          "uid": "07677434-106"
+        }
+      ]
+    },
+    "07677434-243": {
+      "id": "@tanstack/react-router/ssr/server",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-2"
+        },
+        {
+          "uid": "07677434-238"
+        }
+      ]
+    },
+    "07677434-244": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/virtual-modules.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-239"
+        }
+      ]
+    },
+    "07677434-245": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/server.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-76"
+        },
+        {
+          "uid": "07677434-251"
+        },
+        {
+          "uid": "07677434-252"
+        },
+        {
+          "uid": "07677434-253"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-239"
+        },
+        {
+          "uid": "07677434-78"
+        }
+      ]
+    },
+    "07677434-246": {
+      "id": "node:async_hooks",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-12"
+        },
+        {
+          "uid": "07677434-52"
+        }
+      ]
+    },
+    "07677434-247": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/h3@2.0.1-rc.16/node_modules/h3/dist/_entries/node.mjs",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-10"
+        },
+        {
+          "uid": "07677434-254"
+        },
+        {
+          "uid": "07677434-8"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-12"
+        }
+      ]
+    },
+    "07677434-248": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-48"
+        },
+        {
+          "uid": "07677434-50"
+        },
+        {
+          "uid": "07677434-62"
+        },
+        {
+          "uid": "07677434-257"
+        },
+        {
+          "uid": "07677434-258"
+        },
+        {
+          "uid": "07677434-259"
+        },
+        {
+          "uid": "07677434-64"
+        },
+        {
+          "uid": "07677434-260"
+        },
+        {
+          "uid": "07677434-261"
+        },
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-262"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        },
+        {
+          "uid": "07677434-68"
+        },
+        {
+          "uid": "07677434-72"
+        },
+        {
+          "uid": "07677434-66"
+        }
+      ]
+    },
+    "07677434-249": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-263"
+        },
+        {
+          "uid": "07677434-20"
+        },
+        {
+          "uid": "07677434-264"
+        },
+        {
+          "uid": "07677434-265"
+        },
+        {
+          "uid": "07677434-266"
+        },
+        {
+          "uid": "07677434-22"
+        },
+        {
+          "uid": "07677434-24"
+        },
+        {
+          "uid": "07677434-26"
+        },
+        {
+          "uid": "07677434-267"
+        },
+        {
+          "uid": "07677434-268"
+        },
+        {
+          "uid": "07677434-269"
+        },
+        {
+          "uid": "07677434-270"
+        },
+        {
+          "uid": "07677434-271"
+        },
+        {
+          "uid": "07677434-272"
+        },
+        {
+          "uid": "07677434-273"
+        },
+        {
+          "uid": "07677434-274"
+        },
+        {
+          "uid": "07677434-34"
+        },
+        {
+          "uid": "07677434-36"
+        },
+        {
+          "uid": "07677434-42"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        },
+        {
+          "uid": "07677434-44"
+        },
+        {
+          "uid": "07677434-68"
+        },
+        {
+          "uid": "07677434-70"
+        },
+        {
+          "uid": "07677434-72"
+        },
+        {
+          "uid": "07677434-248"
+        },
+        {
+          "uid": "07677434-62"
+        },
+        {
+          "uid": "07677434-64"
+        }
+      ]
+    },
+    "07677434-250": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-storage-context@1.166.15/node_modules/@tanstack/start-storage-context/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-52"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-78"
+        },
+        {
+          "uid": "07677434-259"
+        },
+        {
+          "uid": "07677434-260"
+        },
+        {
+          "uid": "07677434-54"
+        },
+        {
+          "uid": "07677434-283"
+        }
+      ]
+    },
+    "07677434-251": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/createRequestHandler.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-58"
+        },
+        {
+          "uid": "07677434-76"
+        },
+        {
+          "uid": "07677434-28"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-245"
+        }
+      ]
+    },
+    "07677434-252": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/handlerCallback.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-245"
+        }
+      ]
+    },
+    "07677434-253": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/transformStreamWithRouter.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-30"
+        },
+        {
+          "uid": "07677434-275"
+        },
+        {
+          "uid": "07677434-276"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-245"
+        }
+      ]
+    },
+    "07677434-254": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/h3@2.0.1-rc.16/node_modules/h3/dist/h3-DagAgogP.mjs",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-247"
+        }
+      ]
+    },
+    "07677434-255": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.167.1/node_modules/@tanstack/start-server-core/dist/esm/getServerFnById.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-46"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-68"
+        },
+        {
+          "uid": "07677434-72"
+        }
+      ]
+    },
+    "07677434-256": {
+      "id": "tiny-invariant",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-68"
+        },
+        {
+          "uid": "07677434-76"
+        },
+        {
+          "uid": "07677434-272"
+        },
+        {
+          "uid": "07677434-285"
+        },
+        {
+          "uid": "07677434-289"
+        },
+        {
+          "uid": "07677434-290"
+        }
+      ]
+    },
+    "07677434-257": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/createMiddleware.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        },
+        {
+          "uid": "07677434-258"
+        }
+      ]
+    },
+    "07677434-258": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/createStart.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-257"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        }
+      ]
+    },
+    "07677434-259": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getRouterInstance.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-250"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        }
+      ]
+    },
+    "07677434-260": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getGlobalStartContext.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-250"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        }
+      ]
+    },
+    "07677434-261": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/client.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-58"
+        },
+        {
+          "uid": "07677434-284"
+        },
+        {
+          "uid": "07677434-285"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        },
+        {
+          "uid": "07677434-62"
+        }
+      ]
+    },
+    "07677434-262": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-fn-stubs@1.161.6/node_modules/@tanstack/start-fn-stubs/dist/esm/index.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-286"
+        },
+        {
+          "uid": "07677434-287"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-248"
+        }
+      ]
+    },
+    "07677434-263": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/path.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-289"
+        },
+        {
+          "uid": "07677434-288"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-26"
+        },
+        {
+          "uid": "07677434-268"
+        },
+        {
+          "uid": "07677434-272"
+        }
+      ]
+    },
+    "07677434-264": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/scroll-restoration.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-288"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-268"
+        }
+      ]
+    },
+    "07677434-265": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/qss.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-266"
+        }
+      ]
+    },
+    "07677434-266": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/searchParams.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-265"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-268"
+        }
+      ]
+    },
+    "07677434-267": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/stores.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-18"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-268"
+        }
+      ]
+    },
+    "07677434-268": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/router.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-18"
+        },
+        {
+          "uid": "07677434-289"
+        },
+        {
+          "uid": "07677434-263"
+        },
+        {
+          "uid": "07677434-20"
+        },
+        {
+          "uid": "07677434-264"
+        },
+        {
+          "uid": "07677434-266"
+        },
+        {
+          "uid": "07677434-22"
+        },
+        {
+          "uid": "07677434-24"
+        },
+        {
+          "uid": "07677434-290"
+        },
+        {
+          "uid": "07677434-26"
+        },
+        {
+          "uid": "07677434-267"
+        },
+        {
+          "uid": "07677434-28"
+        },
+        {
+          "uid": "07677434-288"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        },
+        {
+          "uid": "07677434-269"
+        }
+      ]
+    },
+    "07677434-269": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/defer.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-268"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        }
+      ]
+    },
+    "07677434-270": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/link.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        }
+      ]
+    },
+    "07677434-271": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/Matches.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        }
+      ]
+    },
+    "07677434-272": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/route.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-263"
+        },
+        {
+          "uid": "07677434-20"
+        },
+        {
+          "uid": "07677434-22"
+        },
+        {
+          "uid": "07677434-24"
+        },
+        {
+          "uid": "07677434-256"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        }
+      ]
+    },
+    "07677434-273": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/config.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        }
+      ]
+    },
+    "07677434-274": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/searchMiddleware.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-16"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-249"
+        }
+      ]
+    },
+    "07677434-275": {
+      "id": "node:stream/web",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-253"
+        }
+      ]
+    },
+    "07677434-276": {
+      "id": "node:stream",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-253"
+        },
+        {
+          "uid": "07677434-8"
+        }
+      ]
+    },
+    "07677434-277": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_utils2.mjs",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-8"
+        }
+      ]
+    },
+    "07677434-278": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_plugins.mjs",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-291"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-8"
+        }
+      ]
+    },
+    "07677434-279": {
+      "id": "node:http",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-8"
+        }
+      ]
+    },
+    "07677434-280": {
+      "id": "node:stream/promises",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-8"
+        }
+      ]
+    },
+    "07677434-281": {
+      "id": "node:https",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-8"
+        }
+      ]
+    },
+    "07677434-282": {
+      "id": "node:http2",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-8"
+        }
+      ]
+    },
+    "07677434-283": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.167.1/node_modules/@tanstack/start-client-core/dist/esm/getStartContextServerOnly.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-250"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-62"
+        }
+      ]
+    },
+    "07677434-284": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/json.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-261"
+        }
+      ]
+    },
+    "07677434-285": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-client.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-20"
+        },
+        {
+          "uid": "07677434-60"
+        },
+        {
+          "uid": "07677434-256"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-261"
+        }
+      ]
+    },
+    "07677434-286": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-fn-stubs@1.161.6/node_modules/@tanstack/start-fn-stubs/dist/esm/createIsomorphicFn.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-262"
+        }
+      ]
+    },
+    "07677434-287": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-fn-stubs@1.161.6/node_modules/@tanstack/start-fn-stubs/dist/esm/envOnly.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-262"
+        }
+      ]
+    },
+    "07677434-288": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/isServer/server.js",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-263"
+        },
+        {
+          "uid": "07677434-264"
+        },
+        {
+          "uid": "07677434-268"
+        },
+        {
+          "uid": "07677434-290"
+        }
+      ]
+    },
+    "07677434-289": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/new-process-route-tree.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-18"
+        },
+        {
+          "uid": "07677434-256"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-263"
+        },
+        {
+          "uid": "07677434-268"
+        }
+      ]
+    },
+    "07677434-290": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.168.1/node_modules/@tanstack/router-core/dist/esm/load-matches.js",
+      "moduleParts": {},
+      "imported": [
+        {
+          "uid": "07677434-16"
+        },
+        {
+          "uid": "07677434-20"
+        },
+        {
+          "uid": "07677434-22"
+        },
+        {
+          "uid": "07677434-24"
+        },
+        {
+          "uid": "07677434-288"
+        },
+        {
+          "uid": "07677434-256"
+        }
+      ],
+      "importedBy": [
+        {
+          "uid": "07677434-268"
+        }
+      ]
+    },
+    "07677434-291": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_utils.mjs",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-278"
+        }
+      ]
+    },
+    "07677434-292": {
+      "id": "react-intl",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-196"
+        },
+        {
+          "uid": "07677434-174"
+        },
+        {
+          "uid": "07677434-182"
+        },
+        {
+          "uid": "07677434-176"
+        },
+        {
+          "uid": "07677434-104"
+        },
+        {
+          "uid": "07677434-136"
+        },
+        {
+          "uid": "07677434-132"
+        },
+        {
+          "uid": "07677434-122"
+        },
+        {
+          "uid": "07677434-130"
+        },
+        {
+          "uid": "07677434-128"
+        },
+        {
+          "uid": "07677434-126"
+        },
+        {
+          "uid": "07677434-120"
+        },
+        {
+          "uid": "07677434-110"
+        },
+        {
+          "uid": "07677434-86"
+        },
+        {
+          "uid": "07677434-124"
+        },
+        {
+          "uid": "07677434-118"
+        },
+        {
+          "uid": "07677434-116"
+        },
+        {
+          "uid": "07677434-112"
+        },
+        {
+          "uid": "07677434-114"
+        },
+        {
+          "uid": "07677434-100"
+        },
+        {
+          "uid": "07677434-102"
+        },
+        {
+          "uid": "07677434-98"
+        },
+        {
+          "uid": "07677434-96"
+        },
+        {
+          "uid": "07677434-94"
+        },
+        {
+          "uid": "07677434-92"
+        },
+        {
+          "uid": "07677434-108"
+        },
+        {
+          "uid": "07677434-88"
+        },
+        {
+          "uid": "07677434-90"
+        },
+        {
+          "uid": "07677434-84"
+        },
+        {
+          "uid": "07677434-82"
+        },
+        {
+          "uid": "07677434-134"
+        },
+        {
+          "uid": "07677434-106"
+        }
+      ]
+    },
+    "07677434-293": {
+      "id": "lucide-react",
+      "moduleParts": {},
+      "imported": [],
+      "importedBy": [
+        {
+          "uid": "07677434-182"
+        }
+      ]
+    }
+  },
+  "env": {
+    "rollup": "4.23.0"
+  },
+  "options": {
+    "gzip": true,
+    "brotli": true,
+    "sourcemap": false
+  }
+}
