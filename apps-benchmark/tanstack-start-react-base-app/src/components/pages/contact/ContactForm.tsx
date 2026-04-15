@@ -7,7 +7,7 @@ export default function ContactForm() {
   const messageId = useId();
 
   return (
-    <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+    <form className="space-y-6" >
       <div className="grid gap-4 md:grid-cols-2">
         <div>
           <label

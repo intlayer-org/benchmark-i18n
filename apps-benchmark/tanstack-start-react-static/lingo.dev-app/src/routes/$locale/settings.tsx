@@ -29,7 +29,7 @@ function Settings() {
       </Suspense>
 
       <div className="mx-auto max-w-2xl space-y-8">
-        <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-8">
           <Suspense
             fallback={<div className="h-48 animate-pulse bg-muted/20" />}
           >

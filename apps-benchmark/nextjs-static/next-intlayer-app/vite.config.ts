@@ -1,6 +1,5 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
-import { intlayer } from "vite-intlayer";
+import {intlayer} from "vite-intlayer";
 
 /**
  * Minimal Vite config used exclusively by scripts/measure-components.ts.
@@ -8,5 +7,5 @@ import { intlayer } from "vite-intlayer";
  * library mode without the full Next.js build pipeline.
  */
 export default defineConfig({
-  plugins: [react(), intlayer()],
+  plugins: [intlayer()],
 });

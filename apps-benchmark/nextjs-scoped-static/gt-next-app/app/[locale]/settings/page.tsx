@@ -1,5 +1,3 @@
-"use client";
-
 import dynamic from "next/dynamic";
 
 const SettingsHeader = dynamic(() => import("../../../components/pages/settings/SettingsHeader"), {
@@ -24,7 +22,7 @@ export default function Settings() {
       <SettingsHeader />
 
       <div className="mx-auto max-w-2xl space-y-8">
-        <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+        <form className="space-y-8">
           <ProfileSection />
 
           <PreferencesSection />
