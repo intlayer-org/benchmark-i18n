@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-04-15T08:50:03.358Z",
+  "packageName": "nextjs-scoped-dynamic-lingui-app",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 51198,
+    "totalMinifiedBytes": 33946,
+    "totalGzipBytes": 10551
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.tsx",
+      "category": "Synthetic",
+      "unminifiedBytes": 51198,
+      "unminifiedGzipBytes": 14222,
+      "minifiedBytes": 33946,
+      "minifiedGzipBytes": 10551
+    }
+  ]
+}

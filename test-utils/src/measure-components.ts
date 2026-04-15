@@ -138,6 +138,19 @@ const BLOCKED_PLUGIN_SUBSTRINGS = [
   "visualizer", // Strips rollup-plugin-visualizer
 ];
 
+/**
+ * EmptyComponent is only useful for plain static benchmark baselines.
+ * Dynamic and scoped categories should skip it to avoid misleading comparisons.
+ */
+const shouldMeasureEmptyComponent = (benchmarkCategory: string): boolean => {
+  const normalizedCategory = benchmarkCategory.toLowerCase();
+  return !(
+    normalizedCategory.endsWith("-dynamic") ||
+    normalizedCategory.endsWith("-scoped-static") ||
+    normalizedCategory.endsWith("-scoped-dynamic")
+  );
+};
+
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 /**
@@ -502,7 +515,10 @@ export const measureComponents = async ({
   const syntheticEntries: SyntheticEntryConfig[] = [];
 
   const emptyComponentPath = path.resolve("./scripts/EmptyComponent.tsx");
-  if (fs.existsSync(emptyComponentPath)) {
+  if (
+    shouldMeasureEmptyComponent(benchmarkCategory) &&
+    fs.existsSync(emptyComponentPath)
+  ) {
     const emptyWrapperPath = path.resolve("./scripts/EmptyWrapper.tsx");
     syntheticEntries.push({
       filePath: emptyComponentPath,
