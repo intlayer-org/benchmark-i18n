@@ -96,6 +96,13 @@ interface ComponentSizeStats {
   minifiedGzipBytes: number;
 }
 
+interface SyntheticEntryConfig {
+  filePath: string;
+  outputFileName: string;
+  category: string;
+  wrapperTemplate?: (componentPath: string) => string;
+}
+
 // ─── Defaults ────────────────────────────────────────────────────────────────
 
 /** Directories scanned when none are provided in the config. */
@@ -415,6 +422,7 @@ const printComponentSizeTable = (
  */
 const saveComponentMeasurements = (
   resultsDirectory: string,
+  outputFileName: string,
   appName: string,
   componentStatsList: ComponentSizeStats[],
 ): void => {
@@ -422,7 +430,7 @@ const saveComponentMeasurements = (
     fs.mkdirSync(resultsDirectory, { recursive: true });
   }
 
-  const outputFilePath = path.join(resultsDirectory, "components-size.json");
+  const outputFilePath = path.join(resultsDirectory, outputFileName);
   fs.writeFileSync(
     outputFilePath,
     JSON.stringify(
@@ -491,6 +499,32 @@ export const measureComponents = async ({
   );
 
   const bundlesOutputDir = path.join(resultsDirectory, "bundles");
+  const syntheticEntries: SyntheticEntryConfig[] = [];
+
+  const emptyComponentPath = path.resolve("./scripts/EmptyComponent.tsx");
+  if (fs.existsSync(emptyComponentPath)) {
+    const emptyWrapperPath = path.resolve("./scripts/EmptyWrapper.tsx");
+    syntheticEntries.push({
+      filePath: emptyComponentPath,
+      outputFileName: "empty-component-size.json",
+      category: "Synthetic",
+      wrapperTemplate: fs.existsSync(emptyWrapperPath)
+        ? (componentPath) => `
+    import React from 'react';
+    import Component from '${componentPath}';
+    import Wrapper from '${emptyWrapperPath.replace(/\\/g, "/")}';
+
+    export default function Wrapped() {
+      return (
+        <Wrapper>
+          <Component />
+        </Wrapper>
+      );
+    }
+  `
+        : wrapperTemplate,
+    });
+  }
 
   console.log(`\n--- COMPONENT SIZE MEASUREMENT CONFIG ---`);
   console.log(`App Name: ${appName}`);
@@ -524,5 +558,48 @@ export const measureComponents = async ({
   );
 
   printComponentSizeTable(allComponentStats);
-  saveComponentMeasurements(resultsDirectory, appName, allComponentStats);
+  saveComponentMeasurements(
+    resultsDirectory,
+    "components-size.json",
+    appName,
+    allComponentStats,
+  );
+
+  for (const syntheticEntry of syntheticEntries) {
+    console.log(`Measuring synthetic entry: ${syntheticEntry.filePath}`);
+
+    const unminified = await buildComponentBundle(
+      syntheticEntry.filePath,
+      allExternalPackages,
+      false,
+      syntheticEntry.wrapperTemplate,
+      additionalPlugins,
+    );
+
+    const minified = await buildComponentBundle(
+      syntheticEntry.filePath,
+      allExternalPackages,
+      true,
+      syntheticEntry.wrapperTemplate,
+      additionalPlugins,
+    );
+
+    const syntheticStats: ComponentSizeStats[] = [
+      {
+        name: path.basename(syntheticEntry.filePath),
+        category: syntheticEntry.category,
+        unminifiedBytes: unminified.bytes,
+        unminifiedGzipBytes: unminified.gzipBytes,
+        minifiedBytes: minified.bytes,
+        minifiedGzipBytes: minified.gzipBytes,
+      },
+    ];
+
+    saveComponentMeasurements(
+      resultsDirectory,
+      syntheticEntry.outputFileName,
+      appName,
+      syntheticStats,
+    );
+  }
 };
