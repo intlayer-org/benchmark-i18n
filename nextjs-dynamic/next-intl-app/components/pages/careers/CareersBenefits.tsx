@@ -5,11 +5,17 @@ import { useTranslations } from "next-intl";
 export default function CareersBenefits() {
   const t = useTranslations();
   const benefits = [
-    { label: "Remote-first", value: t("careers-benefits.workFromAnywhereInThe") },
-    { label: t("careers.careers-benefits.competitivePay"), value: t("careers-benefits.topOfMarketCompensation") },
+    {
+      label: t("careers.careers-benefits.workFromAnywhereInThe"),
+      value: t("careers.open-positions.remote"),
+    },
+    {
+      label: t("careers.careers-benefits.competitivePay"),
+      value: t("careers.careers-benefits.topOfMarketCompensation"),
+    },
     {
       label: t("careers.careers-benefits.openSourceTime"),
-      value: "20% time for OSS contributions",
+      value: t("careers.careers-benefits.twentyPercentTime"),
     },
   ];
 

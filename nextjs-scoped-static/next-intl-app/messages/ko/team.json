@@ -1,0 +1,22 @@
+{
+  "team-header.ourTeam": "우리 팀",
+  "team-header.meetThePeopleBehindI18n": "i18n Benchmark를 만드는 사람들을 만나보세요. 훌륭한 개발자 도구에 대한 열정으로 뭉친 다양한 팀입니다.",
+  "team-grid.sarahChen": "사라 첸 (Sarah Chen)",
+  "team-grid.founderLeadEngineer": "창립자 및 리드 엔지니어",
+  "team-grid.formerGoogleEngineerWith10": "전 Google 엔지니어로 대규모 국제화 시스템 구축에 10년의 경험이 있습니다.",
+  "team-grid.marcusWeber": "마르쿠스 베버 (Marcus Weber)",
+  "team-grid.performanceEngineer": "성능 엔지니어",
+  "team-grid.specializesInJavascriptPerformanceOptimization": "JavaScript 성능 최적화 및 벤치마킹 방법론을 전문으로 합니다. 이전 Vercel 근무.",
+  "team-grid.aishaPatel": "아이샤 파텔 (Aisha Patel)",
+  "team-grid.developerAdvocate": "개발자 에반젤리스트",
+  "team-grid.passionateAboutDeveloperExperienceAnd": "개발자 경험과 교육에 열정적입니다. React Conf, JSConf 및 i18nNext 강연자.",
+  "team-grid.tomasRodriguez": "토마스 로드리게스 (Tomás Rodríguez)",
+  "team-grid.fullStackDeveloper": "풀스택 개발자",
+  "team-grid.maintainsTheBenchmarkingInfrastructureAnd": "벤치마킹 인프라 및 CI/CD 파이프라인 유지 관리. Lingui 오픈 소스 기여자.",
+  "team-grid.yukiTanaka": "유키 다나카 (Yuki Tanaka)",
+  "team-grid.dataAnalyst": "데이터 분석가",
+  "team-grid.ensuresStatisticalRigorInAll": "모든 벤치마크 결과의 통계적 엄격함을 보장합니다. MIT 응용통계학 박사.",
+  "team-grid.elenaKowalski": "엘레나 코발스키 (Elena Kowalski)",
+  "team-grid.communityManager": "커뮤니티 매니저",
+  "team-grid.managesCommunityContributionsPartnershipsAnd": "커뮤니티 기여, 파트너십 및 이벤트를 관리합니다. 오픈 소스 거버넌스 배경 보유."
+}

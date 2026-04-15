@@ -1,0 +1,8 @@
+{
+  "themeModeAutoSystemClick": "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환하십시오.",
+  "themeModeLightClick": "테마 모드: 라이트. 클릭하여 다크 모드로 전환하십시오.",
+  "themeModeDarkClick": "테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환하십시오.",
+  "themeAuto": "테마: 자동",
+  "themeDark": "테마: 다크",
+  "themeLight": "테마: 라이트"
+}

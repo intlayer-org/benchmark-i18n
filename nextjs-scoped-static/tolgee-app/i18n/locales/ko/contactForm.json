@@ -1,0 +1,17 @@
+{
+  "bugReport": "버그 리포트",
+  "contribution": "Contribution",
+  "email": "이메일",
+  "emailPlaceholder": "you@example.com",
+  "message": "메시지",
+  "messagePlaceholder": "메시지를 입력하세요...",
+  "methodologyQuestion": "Methodology Question",
+  "name": "이름",
+  "newBenchmarkIdea": "New Benchmark Idea",
+  "other": "Other",
+  "sendMessage": "메시지 보내기",
+  "subject": "제목",
+  "topic": "주제",
+  "wellGetBackTo": "48시간 이내에 답변해 드리겠습니다.",
+  "yourName": "이름을 입력하세요"
+}

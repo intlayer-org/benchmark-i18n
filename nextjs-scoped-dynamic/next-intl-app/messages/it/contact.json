@@ -1,0 +1,17 @@
+{
+  "contact-form.name": "Nome",
+  "contact-form.yourName": "Il tuo nome",
+  "contact-form.email": "Email",
+  "contact-form.emailPlaceholder": "tuo@esempio.it",
+  "contact-form.topic": "Argomento",
+  "contact-form.bugReport": "Segnalazione bug",
+  "contact-form.newBenchmarkIdea": "Nuova idea di benchmark",
+  "contact-form.methodologyQuestion": "Domanda sulla metodologia",
+  "contact-form.contribution": "Contributo",
+  "contact-form.other": "Altro",
+  "contact-form.message": "Messaggio",
+  "contact-form.describeYourQuestionOrIdea": "Descrivi la tua domanda o idea...",
+  "contact-form.sendMessage": "Invia messaggio",
+  "contact-header.getInTouch": "Mettiti in contatto",
+  "contact-header.haveIdeasFoundABug": "Hai delle idee, hai trovato un bug o vuoi contribuire con un benchmark? Contattaci all'indirizzo"
+}

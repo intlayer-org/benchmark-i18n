@@ -1,0 +1,14 @@
+{
+  "faqHeader.frequentlyAskedQuestions": "Perguntas Frequentes",
+  "faqHeader.everythingYouNeedTo": "Tudo o que você precisa saber sobre o projeto i18n Benchmark.",
+  "faqList.howAreTheBenchmarks": "Como os benchmarks são executados?",
+  "faqList.allBenchmarksAreRun": "Todos os benchmarks são executados usando o Playwright em uma configuração de hardware consistente (M2 MacBook Pro) com condições de rede 4G simuladas. Cada teste executa 50 iterações e relatamos a mediana, e os valores P95 e P99.",
+  "faqList.whatLibrariesAreCurrently": "Quais bibliotecas são testadas atualmente?",
+  "faqList.weCurrentlyBenchmarkReactI18next": "Atualmente testamos react-i18next, react-intl (FormatJS), LinguiJS, typesafe-i18n, next-intl e Paraglide. Planejamos adicionar mais com base nas solicitações da comunidade.",
+  "faqList.canIContributeA": "Posso contribuir com uma nova integração de biblioteca?",
+  "faqList.absolutelyWeWelcomeCommunity": "Com certeza! Aceitamos contribuições da comunidade. Faça um fork do repositório, adicione a integração da sua biblioteca seguindo o nosso modelo e envie um pull request.",
+  "faqList.howOftenAreResults": "Com que frequência os resultados são atualizados?",
+  "faqList.benchmarksRunAutomaticallyVia": "Os benchmarks são executados automaticamente via CI a cada atualização de dependência e semanalmente no branch main. Os resultados são publicados no dashboard em até 24 horas.",
+  "faqList.areTheResultsStatistically": "Os resultados são estatisticamente significativos?",
+  "faqList.yesWeUseThe": "Sim. Usamos o teste U de Mann-Whitney com um nível de significância de 0,05 para comparar distribuições. Também relatamos intervalos de confiança e tamanhos de efeito."
+}

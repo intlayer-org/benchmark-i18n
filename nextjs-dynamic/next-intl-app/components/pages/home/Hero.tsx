@@ -7,6 +7,7 @@ export default function Hero() {
   const t = useTranslations();
   const tHeader = useTranslations("header");
   usePerformanceMeasure("Hero");
+
   return (
     <section className="mb-16 text-center">
       <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground">

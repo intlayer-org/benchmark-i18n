@@ -1,0 +1,68 @@
+"use client";
+
+import { T, useTranslate } from "@/i18n/tolgee";
+
+export default function WhatWeMeasure() {
+  const { t } = useTranslate();
+
+  const metrics = [
+    {
+      metric: t("whatWeMeasure.bundleSizeImpact", "Bundle size impact"),
+      desc: t(
+        "whatWeMeasure.theAdditionalJavascriptBytes",
+        "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+      ),
+    },
+    {
+      metric: t("whatWeMeasure.renderingOverhead", "Rendering overhead"),
+      desc: t(
+        "whatWeMeasure.howMuchExtraTimeTheLibraryAdds",
+        "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+      ),
+    },
+    {
+      metric: t("whatWeMeasure.hydrationCost", "Hydration cost"),
+      desc: t(
+        "whatWeMeasure.duringSsrTranslationDataIsSerialized",
+        "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+      ),
+    },
+    {
+      metric: t(
+        "whatWeMeasure.lazyLoadingEffectiveness",
+        "Lazy loading effectiveness"
+      ),
+      desc: t(
+        "whatWeMeasure.whetherSplittingTranslationsByRoute",
+        "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
+      ),
+    },
+    {
+      metric: t("whatWeMeasure.localeSwitchSpeed", "Locale switch speed"),
+      desc: t(
+        "whatWeMeasure.howFastTheAppCanSwitchFromOne",
+        "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+      ),
+    },
+  ];
+
+  return (
+    <section className="mt-12 mx-auto max-w-3xl">
+      <h2 className="mb-4 text-2xl font-bold text-foreground">
+        <T keyName="whatWeMeasure.whatWeMeasure" defaultValue="What We Measure" />
+      </h2>
+      <ul className="space-y-4">
+        {metrics.map((m) => (
+          <li key={m.metric} className="rounded-md border border-border p-4">
+            <span className="block text-sm font-bold text-primary">
+              {m.metric}
+            </span>
+            <span className="block mt-1 text-sm text-muted-foreground">
+              {m.desc}
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

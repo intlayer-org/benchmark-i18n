@@ -61,16 +61,10 @@ export default function PricingTiers() {
               : "border-border bg-card"
           }`}
         >
-          <h3 className="text-lg font-semibold text-foreground">
-            {tItem.name}
-          </h3>
+          <h3 className="text-lg font-semibold text-foreground">{tItem.name}</h3>
           <div className="my-4">
-            <span className="text-3xl font-bold text-foreground">
-              {tItem.price}
-            </span>
-            <span className="text-sm text-muted-foreground">
-              {tItem.period}
-            </span>
+            <span className="text-3xl font-bold text-foreground">{tItem.price}</span>
+            <span className="text-sm text-muted-foreground">{tItem.period}</span>
           </div>
           <ul className="mb-6 flex-1 space-y-2">
             {tItem.features.map((f) => (

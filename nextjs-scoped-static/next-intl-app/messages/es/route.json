@@ -1,0 +1,5 @@
+{
+  "route.oopsPageNotFound": "¡Vaya! Página no encontrada",
+  "route.returnToHome": "Volver al Inicio",
+  "route.couldNotMeasureHydrationDuration": "No se pudo medir la duración de la hidratación:"
+}

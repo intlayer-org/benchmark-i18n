@@ -1,0 +1,14 @@
+{
+  "careersHeader.careers": "Careers",
+  "careersHero.fromAnywhere": "from anywhere in the world",
+  "careersBenefits.competitivePay": "Competitive pay",
+  "careersBenefits.topOfMarket": "Top-of-market compensation",
+  "careersBenefits.openSourceTime": "Open source time",
+  "careersBenefits.twentyPercentTime": "20% time for OSS",
+  "careersPositions.seniorFrontendEngineer": "Senior Frontend Engineer",
+  "careersPositions.seniorFrontendEngineerDesc": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+  "openPositions.openPositions": "Open Positions",
+  "openPositions.remote": "Remote",
+  "openPositions.fullTime": "Full-time",
+  "openPositions.applyNow": "Apply Now"
+}

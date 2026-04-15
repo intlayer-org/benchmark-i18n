@@ -1,0 +1,42 @@
+{
+  "name": "nextjs-scoped-static-next-i18next-app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "test": "bun test:pages && bun test:components && bun test:reactivity",
+    "test:pages": "playwright test pages.test.ts",
+    "test:consistency": "playwright test structure-consistency.test.ts",
+    "test:reactivity": "playwright test reactivity.test.ts",
+    "test:components": "bun scripts/measure-components.ts",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "^0.5.19",
+    "i18next": "^26.0.4",
+    "lucide-react": "^1.8.0",
+    "next": "16.2.3",
+    "next-i18next": "^16.0.5",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-i18next": "^17.0.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.0.1",
+    "bun": "^1.3.12",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.3",
+    "tailwindcss": "^4",
+    "test-utils": "workspace:*",
+    "typescript": "^5",
+    "vite": "^8.0.8"
+  }
+}

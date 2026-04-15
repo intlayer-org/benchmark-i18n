@@ -1,0 +1,23 @@
+{
+  "aboutHeader.methodology": "Metodología",
+  "aboutHeader.weDesignedThisBenchmarkTo": "Diseñamos este benchmark para proporcionar comparaciones justas, reproducibles y significativas de las bibliotecas i18n.",
+  "aboutGrid.testEnvironment": "Entorno de prueba",
+  "aboutGrid.allBenchmarksRunOn": "Todos los benchmarks se ejecutan en el mismo hardware (M2 MacBook Pro, 16 GB de RAM), el mismo navegador (Chromium 120 a través de Playwright) y las mismas condiciones de red (4G simulado). Cada prueba se repite 50 veces y reportamos la mediana con los percentiles P95/P99.",
+  "aboutGrid.applicationDesign": "Diseño de la aplicación",
+  "aboutGrid.theBenchmarkAppHas10": "La aplicación del benchmark tiene 10 páginas con contenido realista — navegación, formularios, listas dinámicas y texto estático. Cada página utiliza entre 15 y 30 claves de traducción para representar patrones de uso del mundo real.",
+  "aboutGrid.measurementMethodology": "Metodología de medición",
+  "aboutGrid.weUseBrowserNativeApis": "Utilizamos las API nativas del navegador (Performance Timeline, Resource Timing, Layout Instability) combinadas con los datos del React Profiler. Los tamaños de los paquetes se miden después de gzip utilizando source-map-explorer para mayor precisión.",
+  "aboutGrid.fairComparison": "Comparación justa",
+  "aboutGrid.eachI18nLibraryIsIntegrated": "Cada biblioteca i18n se integra siguiendo su documentación oficial y sus mejores prácticas. Consultamos a los mantenedores cuando es posible para garantizar una configuración óptima. La misma aplicación React, la misma configuración Vite, el mismo despliegue.",
+  "whatWeMeasure.bundleSizeImpact": "Impacto en el tamaño del paquete",
+  "whatWeMeasure.theAdditionalJavascriptBytesSent": "Los bytes adicionales de JavaScript enviados al cliente específicamente debido al tiempo de ejecución de la biblioteca i18n, además de los archivos de traducción para el local actual.",
+  "whatWeMeasure.renderingOverhead": "Sobrecarga de renderizado",
+  "whatWeMeasure.howMuchExtraTimeThe": "Cuánto tiempo extra añade la capa i18n a cada renderizado de componente — medido con actualDuration del React Profiler.",
+  "whatWeMeasure.hydrationCost": "Costo de hidratación",
+  "whatWeMeasure.duringSsrTranslationDataIs": "Durante el SSR, los datos de traducción se serializan en el HTML. Los diccionarios grandes aumentan la carga útil de HTML y ralentizan la hidratación — el momento en que la página se vuelve interactiva.",
+  "whatWeMeasure.lazyLoadingEffectiveness": "Eficacia de la carga diferida",
+  "whatWeMeasure.whetherSplittingTranslationsByRoute": "Si dividir las traducciones por ruta o por espacio de nombres realmente reduce la carga inicial, y qué compensaciones introduce (solicitudes en cascada, FOUC, complejidad de la caché).",
+  "whatWeMeasure.localeSwitchSpeed": "Velocidad de cambio de idioma",
+  "whatWeMeasure.howFastTheAppCan": "Qué tan rápido puede la aplicación cambiar de un idioma a otro en tiempo de ejecución — incluyendo la obtención de nuevas traducciones, el renderizado de componentes y la actualización del DOM.",
+  "whatWeMeasure.whatWeMeasure": "Lo que medimos"
+}

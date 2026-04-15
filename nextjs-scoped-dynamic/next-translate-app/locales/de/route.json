@@ -1,0 +1,5 @@
+{
+  "route.oopsPageNotFound": "Hoppla! Seite nicht gefunden",
+  "route.returnToHome": "Zurück zur Startseite",
+  "route.couldNotMeasureHydrationDuration": "Hydratationsdauer konnte nicht gemessen werden:"
+}

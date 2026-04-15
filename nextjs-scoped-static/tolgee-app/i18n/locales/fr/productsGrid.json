@@ -1,0 +1,11 @@
+{
+  "benchmarkDashboard": "Tableau de bord de référence",
+  "interactiveChartsAndTables": "Graphiques et tableaux interactifs comparant les bibliothèques i18n selon la taille du bundle, le temps de rendu et le coût d'hydratation.",
+  "bundleAnalyzer": "Analyseur de bundle",
+  "uploadYourBuildOutput": "Téléchargez votre sortie de build et obtenez une ventilation détaillée de la part de surcharge i18n dans votre bundle.",
+  "migrationAssistant": "Assistant de migration",
+  "automatedCodemodsAndGuides": "Codemods et guides automatisés pour migrer entre les bibliothèques i18n avec un minimum d'interruption.",
+  "performanceMonitor": "Moniteur de performance",
+  "continuousPerformanceTrackingFor": "Suivi continu des performances pour votre implémentation i18n. Recevez des alertes lorsque le chargement des traductions se dégrade.",
+  "learnMore": "En savoir plus"
+}

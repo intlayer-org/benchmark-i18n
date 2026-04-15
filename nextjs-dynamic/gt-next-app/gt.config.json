@@ -7,7 +7,7 @@
       "include": [""]
     },
     "gt": {
-      "output": "public/_gt/[locale].json"
+      "output": "src/_gt/[locale].json"
     }
   }
 }

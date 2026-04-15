@@ -1,0 +1,17 @@
+{
+  "bugReport": "Сообщение об ошибке",
+  "contribution": "Contribution",
+  "email": "Электронная почта",
+  "emailPlaceholder": "you@example.com",
+  "message": "Сообщение",
+  "messagePlaceholder": "Ваше сообщение...",
+  "methodologyQuestion": "Methodology Question",
+  "name": "Имя",
+  "newBenchmarkIdea": "New Benchmark Idea",
+  "other": "Other",
+  "sendMessage": "Отправить сообщение",
+  "subject": "Тема",
+  "topic": "Тема",
+  "wellGetBackTo": "Мы ответим вам в течение 48 часов.",
+  "yourName": "Ваше имя"
+}

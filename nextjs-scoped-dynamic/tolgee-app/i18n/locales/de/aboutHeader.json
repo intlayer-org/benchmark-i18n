@@ -1,0 +1,6 @@
+{
+  "aboutThisBenchmark": "About This Benchmark",
+  "methodology": "Methodik",
+  "thisIsAnOpenSource": "This is an open-source test application for measuring the real-world impact of internationalization libraries.",
+  "weDesignedThisBenchmarkTo": "Wir haben diesen Benchmark so konzipiert, dass er faire, reproduzierbare und aussagekräftige Vergleiche von i18n-Bibliotheken ermöglicht."
+}

@@ -1,0 +1,20 @@
+{
+  "faq-header1.frequentlyAskedQuestions": "Domande frequenti",
+  "faq-header1.everythingYouNeedToKnow": "Tutto quello che c'è da sapere su i18n Benchmark.",
+  "faq-list.whatIsI18nBenchmark": "Cos'è i18n Benchmark?",
+  "faq-list.whatIsI18nBenchmarkAnswer": "i18n Benchmark è una suite di benchmarking open source che misura e confronta le prestazioni, la dimensione del bundle e l'esperienza dello sviluppatore delle librerie di internazionalizzazione per applicazioni JavaScript e React.",
+  "faq-list.howAreBenchmarksConducted": "Come vengono condotti i benchmark?",
+  "faq-list.weRunStandardizedTestsIn": "Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni dei test sono disponibili pubblicamente nel nostro repository GitHub.",
+  "faq-list.whichLibrariesAreCurrentlySupported": "Quali librerie sono attualmente supportate?",
+  "faq-list.weSupportReactI18nextReact": "Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.",
+  "faq-list.canISubmitMyOwn": "Posso inviare i miei benchmark?",
+  "faq-list.yesCommunityBenchmarkSubmissionsAre": "Sì! I contributi ai benchmark della comunità sono benvenuti. Esegui il fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà i contributi idonei.",
+  "faq-list.howOftenAreBenchmarksUpdated": "Ogni quanto vengono aggiornati i benchmark?",
+  "faq-list.weReRunAllBenchmarks": "Eseguiamo nuovamente tutti i benchmark settimanalmente con le ultime versioni stabili di ogni libreria. Le versioni principali attivano un ciclo di benchmarking immediato.",
+  "faq-list.isTheDataReliable": "I dati sono affidabili?",
+  "faq-list.weFollowRigorousStatisticalMethodology": "Seguiamo una rigorosa metodologia statistica che include fasi di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi vengono pubblicati insieme alla nostra analisi per la massima trasparenza.",
+  "faq-list.doYouOfferConsultingServices": "Offrite servizi di consulenza?",
+  "faq-list.yesOurEnterprisePlanIncludes": "Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano le soluzioni i18n. Possiamo fornire consigli su misura in base al tuo caso d'uso specifico, alle dimensioni e ai vincoli.",
+  "faq-list.howCanIContribute": "Come posso contribuire?",
+  "faq-list.thereAreManyWaysTo": "Esistono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per ulteriori dettagli."
+}

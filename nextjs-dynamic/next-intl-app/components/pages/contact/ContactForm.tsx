@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 
 export default function ContactForm() {
   const t = useTranslations();
-  const tHeader = useTranslations("header");
   const nameId = useId();
   const emailId = useId();
   const topicId = useId();
@@ -19,12 +18,12 @@ export default function ContactForm() {
             htmlFor={nameId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            Name
+            {t("contact.contact-form.yourName")}
           </label>
           <input
             id={nameId}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-            placeholder={t("contact-form.yourName")}
+            placeholder={t("contact.contact-form.yourName")}
           />
         </div>
         <div>
@@ -53,11 +52,10 @@ export default function ContactForm() {
           id={topicId}
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
         >
-          <option>{t("contact-form.bugReport")}</option>
-          <option>{t("contact-form.newBenchmarkIdea")}</option>
-          <option>{t("contact-form.methodologyQuestion")}</option>
-          <option>{tHeader("contact")}</option>
-          <option>Other</option>
+          <option>{t("contact.contact-form.bugReport")}</option>
+          <option>{t("contact.contact-form.newBenchmarkIdea")}</option>
+          <option>{t("contact.contact-form.methodologyQuestion")}</option>
+          <option>{t("contact-header.getInTouch")}</option>
         </select>
       </div>
       <div>
@@ -71,7 +69,7 @@ export default function ContactForm() {
           id={messageId}
           rows={5}
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-          placeholder={t("contact-form.describeYourQuestionOrIdea")}
+          placeholder={t("contact.contact-form.describeYourQuestionOrIdea")}
         />
       </div>
       <button

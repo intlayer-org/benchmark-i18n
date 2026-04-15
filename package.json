@@ -10,6 +10,8 @@
     "test-utils",
     "nextjs-static/*",
     "nextjs-dynamic/*",
+    "nextjs-scoped-static/*",
+    "nextjs-scoped-dynamic/*",
     "tanstack-start-react-static/*",
     "tanstack-start-react-dynamic/*",
     "tanstack-start-react-scoped-static/*",

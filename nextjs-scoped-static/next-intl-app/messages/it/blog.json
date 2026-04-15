@@ -1,0 +1,21 @@
+{
+  "blog-header.insightsTutorialsAndAnalysisFrom": "Approfondimenti, tutorial e analisi dalla comunità i18n.",
+  "blog-list.comparingI18nLibrariesIn2026": "Confronto tra librerie i18n nel 2026: un'analisi approfondita",
+  "blog-list.weTested12DifferentInternationalization": "Abbiamo testato 12 diverse librerie di internazionalizzazione in base a prestazioni, dimensioni del bundle e DX. Ecco i risultati sorprendenti.",
+  "blog-list.howToReduceYourI18n": "Come ridurre il bundle i18n del 60%",
+  "blog-list.march82026": "8 marzo 2026",
+  "blog-list.practicalStrategiesForOptimizingTranslation": "Strategie pratiche per ottimizzare i bundle di traduzione tra cui caricamento lento, suddivisione del codice e ottimizzazioni in fase di compilazione.",
+  "blog-list.theStateOfInternationalizationIn": "Lo stato dell'internazionalizzazione in React",
+  "blog-list.february282026": "28 febbraio 2026",
+  "blog-list.anOverviewOfTheCurrent": "Una panoramica dell'attuale ecosistema i18n in React, con tendenze, pattern emergenti e preferenze della comunità.",
+  "blog-list.migratingFromReactI18nextTo": "Migrazione da react-i18next a Lingui",
+  "blog-list.february152026": "15 febbraio 2026",
+  "blog-list.aStepByStepGuide": "Una guida dettagliata sulla migrazione di un'app di produzione con 50.000 chiavi di traduzione da react-i18next a Lingui.",
+  "blog-list.serverComponentsAndI18nWhat": "Server Components e i18n: cosa cambia?",
+  "blog-list.february12026": "1 febbraio 2026",
+  "blog-list.reactServerComponentsIntroduceNew": "I React Server Components introducono nuovi pattern per l'internazionalizzazione. Esploriamo implicazioni e best practice.",
+  "blog-list.benchmarkMethodologyHowWeTest": "Metodologia del benchmark: come testiamo",
+  "blog-list.january202026": "20 gennaio 2026",
+  "blog-list.aTransparentLookAtOur": "Uno sguardo trasparente alla nostra metodologia di benchmark, inclusi ambienti di test, metodi statistici e riproducibilità.",
+  "blog-list.readMore": "Leggi di più →"
+}

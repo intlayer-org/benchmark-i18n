@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 export default function WhyItMatters() {
   const t = useTranslations();
+
   return (
     <section className="mb-16">
       <h2 className="mb-6 text-2xl font-bold text-foreground">
@@ -23,7 +24,7 @@ export default function WhyItMatters() {
             {t("home.why-it-matters.renderingHydration")}
           </h3>
           <p className="text-sm text-muted-foreground">
-            {t("why-it-matters.connectingALargeJsonDictionary")}
+            {t("home.why-it-matters.connectingALargeJsonDictionary")}
           </p>
         </div>
         <div className="rounded-lg border border-border bg-card p-6">
@@ -31,7 +32,7 @@ export default function WhyItMatters() {
             {t("home.why-it-matters.dynamicLoading")}
           </h3>
           <p className="text-sm text-muted-foreground">
-            {t("why-it-matters.loadingAllTranslationsUpfrontOverloads")}
+            {t("home.why-it-matters.loadingAllTranslationsUpfrontOverloads")}
           </p>
         </div>
       </div>

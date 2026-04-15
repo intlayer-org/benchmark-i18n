@@ -1,0 +1,22 @@
+{
+  "team-header.ourTeam": "私たちのチーム",
+  "team-header.meetThePeopleBehindI18n": "i18n Benchmarkを支える人々を紹介します。優れた開発者ツールへの情熱によって団結した多様なチームです。",
+  "team-grid.sarahChen": "サラ・チェン (Sarah Chen)",
+  "team-grid.founderLeadEngineer": "創設者 & リードエンジニア",
+  "team-grid.formerGoogleEngineerWith10": "以前はGoogleのエンジニアで、大規模な国際化システムの構築に10年の経験があります。",
+  "team-grid.marcusWeber": "マーカス・ウェーバー (Marcus Weber)",
+  "team-grid.performanceEngineer": "パフォーマンスエンジニア",
+  "team-grid.specializesInJavascriptPerformanceOptimization": "JavaScriptのパフォーマンス最適化とベンチマーク手法を専門としています。以前はVercelに在籍。",
+  "team-grid.aishaPatel": "アイシャ・パテル (Aisha Patel)",
+  "team-grid.developerAdvocate": "デベロッパーアドボケイト",
+  "team-grid.passionateAboutDeveloperExperienceAnd": "開発者体験と教育に情熱を注いでいます。React Conf、JSConf、i18nNextのスピーカー。",
+  "team-grid.tomasRodriguez": "トマス・ロドリゲス (Tomás Rodríguez)",
+  "team-grid.fullStackDeveloper": "フルスタックデベロッパー",
+  "team-grid.maintainsTheBenchmarkingInfrastructureAnd": "ベンチマークインフラストラクチャとCI/CDパイプラインを維持。Linguiのオープンソースコントリビューター。",
+  "team-grid.yukiTanaka": "田中由紀 (Yuki Tanaka)",
+  "team-grid.dataAnalyst": "データアナリスト",
+  "team-grid.ensuresStatisticalRigorInAll": "すべてのベンチマーク結果において統計的な厳密さを確保。MITで応用統計学の博士号を取得。",
+  "team-grid.elenaKowalski": "エレナ・コワルスキー (Elena Kowalski)",
+  "team-grid.communityManager": "コミュニティマネージャー",
+  "team-grid.managesCommunityContributionsPartnershipsAnd": "コミュニティの貢献、パートナーシップ、イベントを管理。オープンソース・ガバナンスの経歴を持つ。"
+}

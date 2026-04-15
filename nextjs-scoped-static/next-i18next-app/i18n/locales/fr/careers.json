@@ -1,0 +1,14 @@
+{
+  "careersHeader.careers": "Carrières",
+  "careersHero.fromAnywhere": "de n'importe où dans le monde",
+  "careersBenefits.competitivePay": "Salaire compétitif",
+  "careersBenefits.topOfMarket": "Rémunération au sommet du marché",
+  "careersBenefits.openSourceTime": "Temps open source",
+  "careersBenefits.twentyPercentTime": "20 % du temps pour l'OSS",
+  "careersPositions.seniorFrontendEngineer": "Ingénieur Frontend Senior",
+  "careersPositions.seniorFrontendEngineerDesc": "Construisez et maintenez notre tableau de bord de benchmarking et nos outils de développement en utilisant React, TypeScript et Vite.",
+  "openPositions.openPositions": "Postes vacants",
+  "openPositions.remote": "À distance",
+  "openPositions.fullTime": "Temps plein",
+  "openPositions.applyNow": "Postuler maintenant"
+}

@@ -41,21 +41,14 @@ export default function ProductsGrid() {
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       {products.map((p) => (
-        <div
-          key={p.name}
-          className="flex flex-col justify-between rounded-lg border border-border bg-card p-6"
-        >
-          <div>
-            <h3 className="mb-2 text-lg font-semibold text-foreground">
-              {p.name}
-            </h3>
-            <p className="mb-4 text-sm text-muted-foreground">{p.desc}</p>
-          </div>
+        <div key={p.name} className="rounded-lg border border-border bg-card p-6">
+          <h3 className="mb-2 text-lg font-semibold text-foreground">{p.name}</h3>
+          <p className="mb-4 text-sm text-muted-foreground">{p.desc}</p>
           <div className="flex items-center justify-between">
-            <span className="text-sm font-bold text-primary">{p.price}</span>
+            <span className="text-sm font-medium text-primary">{p.price}</span>
             <button
               type="button"
-              className="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+              className="text-sm text-primary underline-offset-4 hover:underline"
             >
               {t("products.products.learnMore")}
             </button>

@@ -1,0 +1,23 @@
+{
+  "products.benchmarkCLI": "Benchmark CLI",
+  "products.benchmarkCLIDesc": "Ejecuta benchmarks localmente desde tu terminal. Compatible con configuraciones personalizadas e integración CI.",
+  "products.benchmarkCLIPrice": "Gratis",
+  "products.benchmarkCloud": "Benchmark Cloud",
+  "products.benchmarkCloudDesc": "Benchmarking automatizado en la nube con historial, alertas y paneles de equipo.",
+  "products.benchmarkCloudPrice": "$29/mes",
+  "products.benchmarkEnterprise": "Benchmark Enterprise",
+  "products.benchmarkEnterpriseDesc": "Despliegue on-premise con SSO, registros de auditoría, SLA personalizados y soporte dedicado.",
+  "products.benchmarkEnterprisePrice": "Contáctanos",
+  "products.migrationAssistant": "Asistente de migración",
+  "products.migrationAssistantDesc": "Herramienta con IA que te ayuda a migrar tu código entre bibliotecas i18n sin tiempo de inactividad.",
+  "products.migrationAssistantPrice": "$99 pago único",
+  "products.translationQA": "QA de traducciones",
+  "products.translationQADesc": "Comprobaciones automáticas de calidad para traducciones faltantes, problemas de pluralización y errores de contexto.",
+  "products.translationQAPrice": "$19/mes",
+  "products.bundleOptimizer": "Optimizador de bundle",
+  "products.bundleOptimizerDesc": "Analiza y optimiza tu bundle i18n para producción con tree-shaking y code splitting.",
+  "products.bundleOptimizerPrice": "$49/mes",
+  "products.learnMore": "Saber más",
+  "productsHeader.ourProducts": "Nuestros productos",
+  "productsHeader.exploreOurSuiteOfTools": "Explora nuestra suite de herramientas para crear mejores aplicaciones i18n."
+}

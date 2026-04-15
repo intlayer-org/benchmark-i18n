@@ -1,0 +1,20 @@
+{
+  "faq-header1.frequentlyAskedQuestions": "자주 묻는 질문",
+  "faq-header1.everythingYouNeedToKnow": "i18n Benchmark에 대해 알아야 할 모든 것.",
+  "faq-list.whatIsI18nBenchmark": "i18n Benchmark란 무엇인가요?",
+  "faq-list.whatIsI18nBenchmarkAnswer": "i18n Benchmark는 JavaScript 및 React 애플리케이션을 위한 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 제품군입니다.",
+  "faq-list.howAreBenchmarksConducted": "벤치마크는 어떻게 진행되나요?",
+  "faq-list.weRunStandardizedTestsIn": "일관된 하드웨어를 사용하는 격리된 환경에서 표준화된 테스트를 실행합니다. 통계적 유의성을 확보하기 위해 각 벤치마크는 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 저장소에 공개되어 있습니다.",
+  "faq-list.whichLibrariesAreCurrentlySupported": "현재 어떤 라이브러리가 지원되나요?",
+  "faq-list.weSupportReactI18nextReact": "react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, Tolgee를 지원합니다.",
+  "faq-list.canISubmitMyOwn": "나만의 벤치마크를 제출할 수 있나요?",
+  "faq-list.yesCommunityBenchmarkSubmissionsAre": "네! 커뮤니티의 벤치마크 제출을 환영합니다. 저장소를 포크하고 기여 가이드에 따라 벤치마크를 추가한 후 풀 리퀘스트를 제출하세요. 저희 팀이 검토 후 병합할 것입니다.",
+  "faq-list.howOftenAreBenchmarksUpdated": "벤치마크는 얼마나 자주 업데이트되나요?",
+  "faq-list.weReRunAllBenchmarks": "매주 각 라이브러리의 최신 안정 버전을 사용하여 모든 벤치마크를 다시 실행합니다. 메이저 버전 릴리스 시 즉시 재벤치마크 주기가 트리거됩니다.",
+  "faq-list.isTheDataReliable": "데이터가 신뢰할 수 있나요?",
+  "faq-list.weFollowRigorousStatisticalMethodology": "웜업 실행, 이상치 탐지 및 신뢰 구간을 포함한 엄격한 통계 방법론을 따릅니다. 투명성을 위해 모든 원시 데이터는 분석 결과와 함께 게시됩니다.",
+  "faq-list.doYouOfferConsultingServices": "컨설팅 서비스를 제공하나요?",
+  "faq-list.yesOurEnterprisePlanIncludes": "네, 엔터프라이즈 플랜에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 특정 사용 사례, 규모 및 제약 조건에 따른 맞춤형 권장 사항을 제공할 수 있습니다.",
+  "faq-list.howCanIContribute": "어떻게 기여할 수 있나요?",
+  "faq-list.thereAreManyWaysTo": "기여할 수 있는 방법은 많습니다: 벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 또는 프로젝트 후원. 자세한 내용은 GitHub 저장소를 방문하세요."
+}

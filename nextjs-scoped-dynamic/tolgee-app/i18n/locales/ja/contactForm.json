@@ -1,0 +1,17 @@
+{
+  "bugReport": "バグ報告",
+  "contribution": "Contribution",
+  "email": "メールアドレス",
+  "emailPlaceholder": "you@example.com",
+  "message": "メッセージ",
+  "messagePlaceholder": "メッセージを入力してください...",
+  "methodologyQuestion": "Methodology Question",
+  "name": "お名前",
+  "newBenchmarkIdea": "New Benchmark Idea",
+  "other": "Other",
+  "sendMessage": "メッセージを送信",
+  "subject": "件名",
+  "topic": "トピック",
+  "wellGetBackTo": "48時間以内に返信いたします。",
+  "yourName": "お名前"
+}

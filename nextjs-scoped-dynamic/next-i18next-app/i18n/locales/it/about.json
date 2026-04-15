@@ -1,0 +1,23 @@
+{
+  "aboutHeader.methodology": "Metodologia",
+  "aboutHeader.weDesignedThisBenchmarkTo": "Abbiamo progettato questo benchmark per fornire confronti equi, riproducibili e significativi delle librerie i18n.",
+  "whatWeMeasure.bundleSizeImpact": "Impatto sulla dimensione del bundle",
+  "whatWeMeasure.theAdditionalJavascriptBytesSent": "I byte JavaScript aggiuntivi inviati al client specificamente a causa del runtime della libreria i18n, oltre ai file di traduzione per la localizzazione corrente.",
+  "whatWeMeasure.renderingOverhead": "Sovrapprezzo di rendering",
+  "whatWeMeasure.howMuchExtraTimeThe": "Quanto tempo extra aggiunge lo strato i18n a ogni rendering di componente — misurato utilizzando actualDuration di React Profiler.",
+  "whatWeMeasure.hydrationCost": "Costo di idratazione",
+  "whatWeMeasure.duringSsrTranslationDataIs": "Durante l'SSR, i dati di traduzione vengono serializzati nell'HTML. I grandi dizionari aumentano il payload HTML e rallentano l'idratazione, il momento in cui la pagina diventa interattiva.",
+  "whatWeMeasure.lazyLoadingEffectiveness": "Efficacia del caricamento lazy",
+  "whatWeMeasure.whetherSplittingTranslationsByRoute": "Se la scomposizione delle traduzioni per rotta o namespace riduca effettivamente il carico iniziale e quali compromessi introduca (richieste a cascata, FOUC, complessità della cache).",
+  "whatWeMeasure.localeSwitchSpeed": "Velocità di cambio localizzazione",
+  "whatWeMeasure.howFastTheAppCan": "Quanto velocemente l'app può passare da una lingua all'altra in esecuzione, includendo il recupero delle nuove traduzioni, il re-rendering dei componenti e l'aggiornamento del DOM.",
+  "whatWeMeasure.whatWeMeasure": "Cosa misuriamo",
+  "aboutGrid.testEnvironment": "Ambiente di test",
+  "aboutGrid.allBenchmarksRunOn": "Tutti i benchmark vengono eseguiti sullo stesso hardware (M2 MacBook Pro, 16 GB di RAM), lo stesso browser (Chromium 120 tramite Playwright) e le stesse condizioni di rete (4G simulato). Ogni test viene ripetuto 50 volte e riportiamo la mediana con i percentili P95/P99.",
+  "aboutGrid.applicationDesign": "Design dell'applicazione",
+  "aboutGrid.theBenchmarkAppHas10": "L'app di benchmark ha 10 pagine con contenuti realistici: navigazione, moduli, elenchi dinamici e testo statico. Ogni pagina utilizza 15-30 chiavi di traduzione per rappresentare modelli di utilizzo reali.",
+  "aboutGrid.measurementMethodology": "Metodologia di misurazione",
+  "aboutGrid.weUseBrowserNativeApis": "Utilizziamo le API native del browser (Performance Timeline, Resource Timing, Layout Instability) combinate con i dati di React Profiler. Le dimensioni dei bundle vengono misurate dopo la compressione gzip utilizzando source-map-explorer per accuratezza.",
+  "aboutGrid.fairComparison": "Confronto equo",
+  "aboutGrid.eachI18nLibraryIsIntegrated": "Ogni libreria i18n viene integrata seguendo la sua documentazione ufficiale e le migliori pratiche. Consultiamo i manutentori, quando possibile, per garantire una configurazione ottimale. Stessa app React, stessa configurazione Vite, stessa distribuzione."
+}
