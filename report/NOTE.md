@@ -44,7 +44,7 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - **next-intl** blocks static rendering of Next.js pages. It provides a fix function named `setRequestLocale()`, but it is not easy to understand the cause of the issue or how to fix it.
 - Both solutions do not offer a way to translate synchronous server components such as design-system navbar, footer, etc. As a result, all components have to be translated on the client side.
 - All constants are transformed into functions, leading to an anti-pattern. Syntax such as `const t = useTranslation('xx')` + `<>{t('xx.xx')}</>` introduces unnecessary complexity and leads to JavaScript execution overhead.
-- **next-international** includes a custom `scopedT()` function that allows you to translate content in a specific namespace which make the refactoring process harder for optimization purpose.
+- **next-international** includes a custom `scopedT()` function that allows you to translate content in a specific namespace which make the refactoring process harder for optimization purpose. But because there is no way to split the jsons in namespaces, this function is quite useless. It only improves the DX, but has no impact on the bundle size.
 
 **Lingui**
 
