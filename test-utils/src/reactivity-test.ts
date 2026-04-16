@@ -26,20 +26,15 @@
  * strips that away and shows how much the i18n layer itself costs React.
  * Comparing both lets us separate "slow router" from "slow i18n runtime".
  *
- * WHY EVERYTHING RUNS INSIDE page.evaluate()
- * ───────────────────────────────────────────
- * Measuring timing via Node ↔ browser IPC (e.g. checking the DOM after
- * `await page.click()`) introduces unpredictable latency from the CDP
- * protocol round-trip. By running the timer, the MutationObserver, and
- * the event dispatch all inside a single `page.evaluate()` call we stay
- * entirely within the browser's event loop and get sub-millisecond accuracy.
- *
- * WHY WE USE A NATIVE VALUE SETTER INSTEAD OF page.selectOption()
- * ─────────────────────────────────────────────────────────────────
- * Playwright's `selectOption()` fires synthetic events that React 18+ may
- * not pick up reliably in some configurations. Using the native HTMLSelectElement
- * value setter + a real `change` event replicates exactly what a real browser
- * user interaction produces, which React's event delegation handles correctly.
+ * TIMING AND THE LOCALE SWITCH TRIGGER
+ * ────────────────────────────────────
+ * The MutationObserver and `performance.now()` timing still run in the browser
+ * (first `page.evaluate`) so we avoid CDP round-trips in the measured window.
+ * The actual `<select>` change must use Playwright `locator.selectOption()`:
+ * React 19 + controlled `<select>` often ignores programmatic value assignment
+ * plus `dispatchEvent(new Event("change"))` — the DOM shows the new option as
+ * selected but `onChange` never runs, so the router and `html[lang]` never
+ * update. `selectOption()` goes through the same input path as a real user.
  *
  * WHY WE RESET __RENDER_METRICS__ BEFORE EACH ITERATION
  * ──────────────────────────────────────────────────────
@@ -57,6 +52,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { test, expect, type Page } from "@playwright/test";
+import { benchmarkBloomRoot } from "./repo-root";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -115,6 +111,8 @@ interface TimingStats {
 declare global {
   interface Window {
     __RENDER_METRICS__: Record<string, number[]>;
+    /** Set during E2E locale measurement; awaited after Playwright triggers the <select>. */
+    __reactivityLangPromise?: Promise<number>;
   }
 }
 
@@ -127,45 +125,40 @@ const E2E_LOCALE_SWITCH_TIMEOUT_MS = 15_000;
 // ─── Browser-side measurement helpers ────────────────────────────────────────
 
 /**
- * Measures the E2E duration of a single locale switch by running the entire
- * timing loop inside the browser to eliminate Node ↔ browser IPC latency.
- *
- * A MutationObserver on `html[lang]` is armed *before* the <select> event fires,
- * so there is no gap between the trigger and the start of observation.
- * The timer starts at the exact moment the observer is armed, and resolves the
- * moment the `lang` attribute changes to the target locale.
- *
- * The native HTMLSelectElement value setter is used instead of direct property
- * assignment (`select.value = …`) because React intercepts the setter via a
- * property descriptor on the prototype. Using the native setter ensures React's
- * synthetic event system correctly detects the value change and triggers navigation.
+ * Measures the E2E duration of a single locale switch: timing and the
+ * MutationObserver run in the browser; the `<select>` is updated via
+ * Playwright `selectOption` so React 19 controlled `onChange` runs reliably.
  *
  * @param page - Playwright Page to run the evaluation on.
  * @param targetLocale - Locale code the select should switch to.
- * @returns Elapsed milliseconds from event dispatch to html[lang] DOM update.
+ * @returns Elapsed milliseconds from observer setup to html[lang] DOM update.
  */
 const measureE2ELocaleSwitchDuration = async (
   page: Page,
   targetLocale: string,
-): Promise<number> =>
-  page.evaluate(
+): Promise<number> => {
+  await page.evaluate(
     ({
       targetLocaleCode,
       e2eTimeoutMs,
     }: {
       targetLocaleCode: string;
       e2eTimeoutMs: number;
-    }): Promise<number> =>
-      new Promise((resolve, reject) => {
-        const startTime = performance.now();
-        const htmlElement = document.documentElement;
+    }) => {
+      const startTime = performance.now();
+      const htmlElement = document.documentElement;
 
-        // html[lang] is updated by the router as part of RootDocument re-rendering
-        // with the new locale. Its mutation is the clearest DOM signal that the
-        // full locale switch (routing + i18n + React) has completed.
+      window.__reactivityLangPromise = new Promise<number>((resolve, reject) => {
+        // html[lang] is updated by the app (i18n + layout) when the locale switch finishes.
+        if (htmlElement.lang === targetLocaleCode) {
+          resolve(0);
+          return;
+        }
+
         const mutationObserver = new MutationObserver(() => {
           if (htmlElement.lang === targetLocaleCode) {
             mutationObserver.disconnect();
+            window.clearTimeout(timeoutId);
             resolve(performance.now() - startTime);
           }
         });
@@ -175,29 +168,7 @@ const measureE2ELocaleSwitchDuration = async (
           attributeFilter: ["lang"],
         });
 
-        // Prefer the header switcher — some pages (e.g. settings) include other <select> nodes.
-        const localeSelectElement =
-          document.querySelector<HTMLSelectElement>("header select") ??
-          document.querySelector<HTMLSelectElement>("select");
-        if (!localeSelectElement) {
-          reject(new Error("LocaleSwitcher <select> not found (expected header select)"));
-          return;
-        }
-
-        const nativeValueSetter = Object.getOwnPropertyDescriptor(
-          window.HTMLSelectElement.prototype,
-          "value",
-        )?.set;
-        nativeValueSetter?.call(localeSelectElement, targetLocaleCode);
-
-        // The event must bubble so that React's root-container event delegation
-        // picks it up and triggers the onChange → navigate() chain.
-        localeSelectElement.dispatchEvent(
-          new Event("change", { bubbles: true }),
-        );
-
-        // Safety valve: reject if the locale switch does not complete in time.
-        setTimeout(() => {
+        const timeoutId = window.setTimeout(() => {
           mutationObserver.disconnect();
           reject(
             new Error(
@@ -205,12 +176,29 @@ const measureE2ELocaleSwitchDuration = async (
             ),
           );
         }, e2eTimeoutMs);
-      }),
+      });
+    },
     {
       targetLocaleCode: targetLocale,
       e2eTimeoutMs: E2E_LOCALE_SWITCH_TIMEOUT_MS,
     },
   );
+
+  const localeSelectLocator = page
+    .locator("header select")
+    .or(page.locator("select"))
+    .first();
+  await localeSelectLocator.selectOption({ value: targetLocale });
+
+  return page.evaluate(() => {
+    const p = window.__reactivityLangPromise;
+    window.__reactivityLangPromise = undefined;
+    if (!p) {
+      throw new Error("Locale reactivity promise was not initialised");
+    }
+    return p;
+  });
+};
 
 /**
  * Reads the React Profiler render durations accumulated during the most recent
@@ -500,12 +488,8 @@ export const registerReactivityTest = (config: ReactivityTestConfig): void => {
     printReactivitySummary(activeLocale, e2eStats, profilerStats);
 
     // Results land in <repo-root>/results/<benchmarkCategory>/<appName>/.
-    // From the app directory (tanstack-start-react/<app>/), two levels up
-    // reaches the repo root.
-    const resultsDirectory = path.resolve(
-      process.cwd(),
-      "..",
-      "..",
+    const resultsDirectory = path.join(
+      benchmarkBloomRoot(process.cwd()),
       "results",
       benchmarkCategory,
       appName,

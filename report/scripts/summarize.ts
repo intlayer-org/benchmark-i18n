@@ -2,7 +2,7 @@
 /**
  * Benchmark Bloom — Result Summarizer
  *
- * Reads all benchmark result JSON files from apps-benchmark/results/
+ * Reads all benchmark result JSON files from results/
  * and prints a human-readable summary table.
  *
  * Usage:
@@ -25,7 +25,7 @@ import { dirname, join, relative, resolve } from "path";
 // ---------------------------------------------------------------------------
 
 const REPO_ROOT = resolve(import.meta.dir, "../..");
-const RESULTS_DIR = join(REPO_ROOT, "apps-benchmark/results");
+const RESULTS_DIR = join(REPO_ROOT, "results");
 const APPS_DIR = join(REPO_ROOT, "apps-benchmark");
 
 // ---------------------------------------------------------------------------
@@ -625,7 +625,7 @@ function main() {
   const payload: SummaryJsonFile = {
     meta: {
       generatedAt: new Date().toISOString(),
-      resultsDir: relative(REPO_ROOT, RESULTS_DIR) || "apps-benchmark/results",
+      resultsDir: relative(REPO_ROOT, RESULTS_DIR) || "results",
       filters: {
         framework: filterFramework,
         category: filterCategory,

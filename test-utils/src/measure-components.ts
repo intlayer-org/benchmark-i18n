@@ -44,6 +44,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
+import { benchmarkBloomRoot } from "./repo-root";
 import { build, loadConfigFromFile, type PluginOption } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import type { RolldownOutput } from "rolldown";
@@ -509,11 +510,8 @@ export const measureComponents = async ({
     ...BASE_EXTERNAL_PACKAGES,
     ...additionalExternalPackages,
   ];
-  // From the app directory (tanstack-start-react/<app>/), two levels up
-  // reaches the repo root.
-  const resultsDirectory = path.resolve(
-    "..",
-    "..",
+  const resultsDirectory = path.join(
+    benchmarkBloomRoot(process.cwd()),
     "results",
     benchmarkCategory,
     appName,
@@ -599,9 +597,8 @@ export const measureLibSize = async ({
     ...additionalExternalPackages,
   ];
 
-  const resultsDirectory = path.resolve(
-    "..",
-    "..",
+  const resultsDirectory = path.join(
+    benchmarkBloomRoot(process.cwd()),
     "results",
     benchmarkCategory,
     appName,

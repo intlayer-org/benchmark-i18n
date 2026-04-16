@@ -13,7 +13,8 @@
     "test:lib-size": "bun scripts/measure-lib-size.ts",
     "extract": "bun x @inlang/paraglide-js compile --project ./project.inlang --outdir ./paraglide",
     "build": "bun run extract && next build --webpack",
-    "start": "next start",
+      "start": "next start",
+
     "lint": "eslint"
   },
   "dependencies": {

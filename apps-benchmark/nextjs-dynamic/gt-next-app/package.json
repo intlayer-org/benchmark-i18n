@@ -11,7 +11,8 @@
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:components": "bun scripts/measure-components.ts",
     "build": "next build",
-    "start": "next start",
+      "start": "next start",
+
     "lint": "eslint"
   },
   "dependencies": {

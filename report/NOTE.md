@@ -7,6 +7,8 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - While implementing **gt-tanstack-start-react**, I also came across an [issue](https://github.com/generaltranslation/gt/issues/1210#event-24510646961) with the library: `does not provide an export named 'printAST' - @formatjs/icu-messageformat-parser`, which was making the application break. After reporting this issue, the maintainer fixed it within 24 hours.
 - This library requires a dependency on the General Translation server for translation. Even a single translation attempt returned an error: `Quota Exceeded, please upgrade your plan`. The risk of vendor lock-in is high.
 - These libraries use an anti-pattern through the `initializeGT()` function, blocking the bundle from tree-shaking cleanly.
+- For nextjs implementation, the library blocks static rendering of Next.js pages.
+
 
 **Lingo.dev**
 
@@ -36,6 +38,9 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - Even if that solution is >6 years old, the library is still actively maintained.
 - There is no website and no online documentation; they are only available on GitHub.
 - On tanstack start I also met reactivity issues with the library. On locale change I had to force the rerendering of the provider to make it work. I had to subcribe to the locale change event to make it work when loading the page in another locale.
+- For nextjs implementation, the library blocks static rendering of Next.js pages.
+
+
 
 **next-intl** / **use-intl** / **next-i18next** / **react-i18next** / **next-international**
 
@@ -44,7 +49,7 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - All these libraries offer a similar approach, well connected with the React reactivity system. But `next-intl` offers additional features, such as middleware support, formatters, etc.
 - The message formats diverge between libraries. `next-intl` uses the ICU MessageFormat format, while `i18next` uses its own format.
 - **next-intl** is a much lighter solution than **i18next**, but remains heavy and poorly optimized.
-- **next-intl** used to block static rendering of Next.js pages. It provides a fix function named `setRequestLocale()`, that was not easy to understand the cause of the issue or how to fix it. This issue has now been fixed and no longer blocks static rendering.
+- **next-intl** used to block static rendering of Next.js pages. It provides a fix function named `setRequestLocale()`, that was not easy to understand the cause of the issue or how to fix it. This issue seems to have been solved and no longer blocks static rendering for centralized content such as `en.json` / `fr.json` / `es.json` / etc. Note that it still blocks static rendering when content is scoped into namespaces such as `en/shared.json` / `fr/shared.json` / `es/shared.json` / etc.
 - Both solutions do not offer a way to translate synchronous server components such as design-system navbar, footer, etc. As a result, all components have to be translated on the client side.
 - All constants are transformed into functions, leading to an anti-pattern. Syntax such as `const t = useTranslation('xx')` + `<>{t('xx.xx')}</>` introduces unnecessary complexity and leads to JavaScript execution overhead.
 - **next-international** includes a custom `scopedT()` function that allows you to translate content in a specific namespace which make the refactoring process harder for optimization purpose. But because there is no way to split the jsons in namespaces, this function is quite useless. It only improves the DX, but has no impact on the bundle size.

@@ -12,7 +12,8 @@
     "test:components": "bun scripts/measure-components.ts",
     "test:lib-size": "bun scripts/measure-lib-size.ts",
     "build": "next build --webpack",
-    "start": "next start",
+      "start": "next start",
+
     "lint": "eslint"
   },
   "dependencies": {

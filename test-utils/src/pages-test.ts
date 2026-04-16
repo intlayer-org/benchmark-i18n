@@ -23,6 +23,7 @@ import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
 import { test, expect, type Browser } from "@playwright/test";
+import { benchmarkBloomRoot } from "./repo-root";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -591,10 +592,8 @@ export const registerBundleTest = (config: BundleTestConfig): void => {
     printLocaleLeakageDetails(pageResults);
     printPageLeakageDetails(pageResults);
 
-    const resultsDirectory = path.resolve(
-      process.cwd(),
-      "..",
-      "..",
+    const resultsDirectory = path.join(
+      benchmarkBloomRoot(process.cwd()),
       "results",
       benchmarkCategory,
       appName,
