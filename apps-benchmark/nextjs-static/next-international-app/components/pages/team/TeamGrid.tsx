@@ -1,0 +1,61 @@
+"use client";
+
+import { useI18n } from "../../../locales/client";
+
+export default function TeamGrid() {
+  const t = useI18n();
+
+  const members = [
+    {
+      name: t("team.team-grid.sarahChen"),
+      role: t("team.team-grid.founderLeadEngineer"),
+      bio: t("team.team-grid.formerGoogleEngineerWith10"),
+    },
+    {
+      name: t("team.team-grid.marcusWeber"),
+      role: t("team.team-grid.performanceEngineer"),
+      bio: t("team.team-grid.specializesInJavascriptPerformanceOptimization"),
+    },
+    {
+      name: t("team.team-grid.aishaPatel"),
+      role: t("team.team-grid.developerAdvocate"),
+      bio: t("team.team-grid.passionateAboutDeveloperExperienceAnd"),
+    },
+    {
+      name: t("team.team-grid.tomasRodriguez"),
+      role: t("team.team-grid.fullStackDeveloper"),
+      bio: t("team.team-grid.maintainsTheBenchmarkingInfrastructureAnd"),
+    },
+    {
+      name: t("team.team-grid.yukiTanaka"),
+      role: t("team.team-grid.dataAnalyst"),
+      bio: t("team.team-grid.ensuresStatisticalRigorInAll"),
+    },
+    {
+      name: t("team.team-grid.elenaKowalski"),
+      role: t("team.team-grid.communityManager"),
+      bio: t("team.team-grid.managesCommunityContributionsPartnershipsAnd"),
+    },
+  ];
+
+  return (
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {members.map((m) => (
+        <div
+          key={m.name}
+          className="rounded-lg border border-border bg-card p-6 text-center"
+        >
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground">
+            {m.name
+              .split(" ")
+              .map((n) => n[0])
+              .join("")}
+          </div>
+          <h3 className="text-base font-semibold text-foreground">{m.name}</h3>
+          <p className="mb-2 text-xs font-medium text-primary">{m.role}</p>
+          <p className="text-sm text-muted-foreground">{m.bio}</p>
+        </div>
+      ))}
+    </div>
+  );
+}

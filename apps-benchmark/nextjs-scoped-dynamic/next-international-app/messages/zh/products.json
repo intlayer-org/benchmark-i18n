@@ -1,0 +1,22 @@
+{
+  "products-grid.benchmarkCli": "基准测试 CLI",
+  "products-grid.runBenchmarksLocallyFromYour": "在终端本地运行基准测试。支持自定义配置和 CI 集成。",
+  "products-grid.benchmarkCloud": "基准测试云",
+  "products-grid.automatedCloudBasedBenchmarkingWith": "基于云的自动化基准测试，具有历史跟踪、警报和团队仪表板。",
+  "products-grid.benchmarkEnterprise": "基准测试企业版",
+  "products-grid.onPremiseDeploymentWithSso": "采用 SSO、审核日志、自定义 SLA 和专用支持的本地部署。",
+  "products-grid.contactUs": "联系我们",
+  "products-grid.migrationAssistant": "迁移助手",
+  "products-grid.aiPoweredToolThatHelps": "由人工智能驱动的工具，可帮助您在 i18n 库之间迁移代码库，实现零停机时间。",
+  "products-grid.translationQa": "翻译质量保证",
+  "products-grid.automatedQualityChecksForMissing": "针对缺失翻译、复数问题和上下文错误的自动化质量检查。",
+  "products-grid.bundleOptimizer": "包优化器",
+  "products-grid.analyzesAndOptimizesYourI18n": "通过摇树优化和代码拆分，分析并在生产环境中优化 i18n 包。",
+  "products-grid.learnMore": "了解更多",
+  "products-header.toolsAndServicesToStreamline": "简化国际化工作流程的工具和服务。",
+  "products-grid.free": "Free",
+  "products-grid.price29mo": "$29/mo",
+  "products-grid.price99oneTime": "$99 one-time",
+  "products-grid.price19mo": "$19/mo",
+  "products-grid.price49mo": "$49/mo"
+}

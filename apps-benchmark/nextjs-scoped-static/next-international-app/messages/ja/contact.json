@@ -1,0 +1,17 @@
+{
+  "contact-form.name": "お名前",
+  "contact-form.yourName": "お名前",
+  "contact-form.email": "メールアドレス",
+  "contact-form.emailPlaceholder": "name@example.jp",
+  "contact-form.topic": "トピック",
+  "contact-form.bugReport": "バグ報告",
+  "contact-form.newBenchmarkIdea": "新しいベンチマークのアイデア",
+  "contact-form.methodologyQuestion": "メソッドに関する質問",
+  "contact-form.contribution": "貢献",
+  "contact-form.other": "その他",
+  "contact-form.message": "メッセージ",
+  "contact-form.describeYourQuestionOrIdea": "質問やアイデアの内容を記述してください...",
+  "contact-form.sendMessage": "メッセージを送信",
+  "contact-header.getInTouch": "お問い合わせ",
+  "contact-header.haveIdeasFoundABug": "アイデアがある、バグを見つけた、またはベンチマークに貢献したいですか？以下までご連絡ください"
+}

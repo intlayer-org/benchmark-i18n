@@ -1,0 +1,22 @@
+{
+  "products-grid.benchmarkCli": "벤치마크 CLI",
+  "products-grid.runBenchmarksLocallyFromYour": "터미널에서 로컬로 벤치마크를 실행합니다. 커스텀 구성 및 CI 통합을 지원합니다.",
+  "products-grid.benchmarkCloud": "벤치마크 클라우드",
+  "products-grid.automatedCloudBasedBenchmarkingWith": "기록 추적, 알림 및 팀 대시보드가 포함된 자동화된 클라우드 기반 벤치마킹.",
+  "products-grid.benchmarkEnterprise": "벤치마크 엔터프라이즈",
+  "products-grid.onPremiseDeploymentWithSso": "SSO, 감사 로그, 커스텀 SLA 및 전담 지원을 갖춘 온프레미스 배포.",
+  "products-grid.contactUs": "문의하기",
+  "products-grid.migrationAssistant": "마이그레이션 도우미",
+  "products-grid.aiPoweredToolThatHelps": "다운타임 없이 i18n 라이브러리 간의 코드베이스 마이그레이션을 돕는 AI 기반 도구.",
+  "products-grid.translationQa": "번역 품질 관리",
+  "products-grid.automatedQualityChecksForMissing": "번역 누락, 복수형 문제 및 컨텍스트 오류에 대한 자동 품질 검사.",
+  "products-grid.bundleOptimizer": "번들 최적화 도구",
+  "products-grid.analyzesAndOptimizesYourI18n": "Tree-shaking 및 코드 분할을 사용하여 프로덕션용 i18n 번들을 분석하고 최적화합니다.",
+  "products-grid.learnMore": "더 알아보기",
+  "products-header.toolsAndServicesToStreamline": "국제화 워크플로우를 간소화하는 도구 및 서비스.",
+  "products-grid.free": "Free",
+  "products-grid.price29mo": "$29/mo",
+  "products-grid.price99oneTime": "$99 one-time",
+  "products-grid.price19mo": "$19/mo",
+  "products-grid.price49mo": "$49/mo"
+}

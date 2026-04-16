@@ -1,0 +1,22 @@
+{
+  "products-grid.benchmarkCli": "Benchmark CLI",
+  "products-grid.runBenchmarksLocallyFromYour": "Führen Sie Benchmarks lokal von Ihrem Terminal aus durch. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.",
+  "products-grid.benchmarkCloud": "Benchmark Cloud",
+  "products-grid.automatedCloudBasedBenchmarkingWith": "Automatisierte cloudbasierte Benchmarks mit Verlaufsverfolgung, Benachrichtigungen und Team-Dashboards.",
+  "products-grid.benchmarkEnterprise": "Benchmark Enterprise",
+  "products-grid.onPremiseDeploymentWithSso": "On-Premise-Bereitstellung mit SSO, Audit-Logs, benutzerdefinierten SLAs und dediziertem Support.",
+  "products-grid.contactUs": "Kontaktieren Sie uns",
+  "products-grid.migrationAssistant": "Migrations-Assistent",
+  "products-grid.aiPoweredToolThatHelps": "KI-gestütztes Tool, das bei der Migration Ihrer Codebasis zwischen i18n-Bibliotheken ohne Ausfallzeiten hilft.",
+  "products-grid.translationQa": "Übersetzungs-QA",
+  "products-grid.automatedQualityChecksForMissing": "Automatisierte Qualitätsprüfungen auf fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.",
+  "products-grid.bundleOptimizer": "Bundle-Optimierer",
+  "products-grid.analyzesAndOptimizesYourI18n": "Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code Splitting.",
+  "products-grid.learnMore": "Mehr erfahren",
+  "products-header.toolsAndServicesToStreamline": "Tools und Dienste zur Optimierung Ihres Internationalisierungs-Workflows.",
+  "products-grid.free": "Free",
+  "products-grid.price29mo": "$29/mo",
+  "products-grid.price99oneTime": "$99 one-time",
+  "products-grid.price19mo": "$19/mo",
+  "products-grid.price49mo": "$49/mo"
+}

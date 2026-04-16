@@ -6,17 +6,17 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "dev": "vite dev --port 3000",
+    "dev": "bunx --bun vite dev --port 3000",
     "extract": "lingui extract",
     "compile": "lingui compile",
-    "build": "vite build",
+    "build": "bunx --bun vite build",
     "test": "bun test:pages && bun test:components && bun test:reactivity",
     "test:pages": "playwright test pages.test.ts",
     "test:consistency": "playwright test structure-consistency.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:components": "bun scripts/measure-components.ts",
     "test:lib-size": "bun scripts/measure-lib-size.ts",
-    "preview": "vite preview"
+    "preview": "bunx --bun vite preview"
   },
   "dependencies": {
     "@lingui/core": "^5.3.0",

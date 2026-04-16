@@ -1,0 +1,19 @@
+{
+  "about-grid.whyThisExists": "なぜこれが存在するのか",
+  "about-grid.choosingAnI18nLibraryIs": "i18nライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較はAPIの使い勝手に焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリがバンドルにどれだけの重量を追加するか？数千の翻訳キーが読み込まれたときにレンダリングにどのように影響するか？遅延読み込みは本当に役立っているのか、それとも単にコストを先送りしているだけなのか？このベンチマークは、実際のデータでこれらの問いに答えます。",
+  "about-grid.methodology": "メソッド",
+  "about-grid.theSame10PageApp": "同じ10ページのアプリがライブラリごとに1回構築されます。生産バンドルを測定し（rollup-plugin-visualizer経由）、読み込み指標のLighthouse監査を実行し、React Profilerを使用して言語切り替え中のレンダリング時間を取得します。すべてのテストは、再現可能な結果を確実にするために、一貫したハードウェアを備えたCIで実行されます。",
+  "about-header.aboutThisBenchmark": "このベンチマークについて",
+  "about-header.thisIsAnOpenSource": "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、現実的なマルチページReactアプリを提供し、そこでさまざまなi18nライブラリを同一条件下で統合および測定できるようにすることです。",
+  "what-we-measure.bundleSizeImpact": "バンドルサイズへの影響",
+  "what-we-measure.theAdditionalJavascriptBytesSent": "i18nライブラリとその翻訳ファイルが含まれているときにユーザーに送信される追加のJavaScriptバイト。これは、低速なネットワークでのダウンロード時間に直接影響します。",
+  "what-we-measure.renderingOverhead": "レンダリングのオーバーヘッド",
+  "what-we-measure.howMuchExtraTimeThe": "ライブラリがReactのレンダリングサイクルに追加する余分な時間。単一のコンテキストプロバイダーを介して翻訳を注入するライブラリは、コンポーネントツリー全体で不要な再レンダリングを引き起こす可能性があります。",
+  "what-we-measure.hydrationCost": "ハイドレーションのコスト",
+  "what-we-measure.duringSsrTranslationDataIs": "SSR中、翻訳データはHTMLにシリアル化されます。大きな辞書はHTMLペイロードを増加させ、ハイドレーション（ページがインタラクティブになる瞬間）を遅らせます。",
+  "what-we-measure.lazyLoadingEffectiveness": "遅延読み込みの有効性",
+  "what-we-measure.whetherSplittingTranslationsByRoute": "ルートまたは名前空間ごとに翻訳を分割することで、初期負荷が実際に軽減されるか、またどのようなトレードオフ（ウォーターフォールリクエスト、FOUC、キャッシュの複雑さ）が生じるかがわかります。",
+  "what-we-measure.localeSwitchSpeed": "ロケール切り替え速度",
+  "what-we-measure.howFastTheAppCan": "実行時にアプリが1つの言語から別の言語にどれだけ速く切り替えられるか（新しい翻訳の取得、コンポーネントの再レンダリング、DOMの更新を含む）。",
+  "what-we-measure.whatWeMeasure": "測定するもの"
+}

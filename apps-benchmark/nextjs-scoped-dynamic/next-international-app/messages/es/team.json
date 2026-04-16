@@ -1,0 +1,22 @@
+{
+  "team-header.ourTeam": "Nuestro Equipo",
+  "team-header.meetThePeopleBehindI18n": "Conozca a las personas detrás de i18n Benchmark. Un equipo diverso unido por una pasión compartida por las grandes herramientas de desarrollo.",
+  "team-grid.sarahChen": "Sarah Chen",
+  "team-grid.founderLeadEngineer": "Fundadora e Ingeniera Principal",
+  "team-grid.formerGoogleEngineerWith10": "Ex ingeniera de Google con 10 años de experiencia construyendo sistemas de internacionalización a escala.",
+  "team-grid.marcusWeber": "Marcus Weber",
+  "team-grid.performanceEngineer": "Ingeniero de Rendimiento",
+  "team-grid.specializesInJavascriptPerformanceOptimization": "Especialista en optimización de rendimiento de JavaScript y metodología de benchmarking. Anteriormente en Vercel.",
+  "team-grid.aishaPatel": "Aisha Patel",
+  "team-grid.developerAdvocate": "Evangelista de Desarrolladores",
+  "team-grid.passionateAboutDeveloperExperienceAnd": "Apasionada por la experiencia del desarrollador y la educación. Ponente en React Conf, JSConf e i18nNext.",
+  "team-grid.tomasRodriguez": "Tomás Rodríguez",
+  "team-grid.fullStackDeveloper": "Desarrollador Full-Stack",
+  "team-grid.maintainsTheBenchmarkingInfrastructureAnd": "Mantiene la infraestructura de benchmarking y el pipeline CI/CD. Colaborador de código abierto en Lingui.",
+  "team-grid.yukiTanaka": "Yuki Tanaka",
+  "team-grid.dataAnalyst": "Analista de Datos",
+  "team-grid.ensuresStatisticalRigorInAll": "Asegura el rigor estadístico en todos los resultados de los benchmarks. Doctorado en Estadística Aplicada del MIT.",
+  "team-grid.elenaKowalski": "Elena Kowalski",
+  "team-grid.communityManager": "Gerente de Comunidad",
+  "team-grid.managesCommunityContributionsPartnershipsAnd": "Gestiona las contribuciones de la comunidad, las asociaciones y los eventos. Experiencia en gobernanza de código abierto."
+}

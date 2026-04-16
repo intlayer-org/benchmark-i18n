@@ -128,6 +128,33 @@
         "vite": "^8.0.8",
       },
     },
+    "apps-benchmark/nextjs-dynamic/next-international-app": {
+      "name": "nextjs-dynamic-next-international-app",
+      "version": "0.1.0",
+      "dependencies": {
+        "@tailwindcss/typography": "^0.5.19",
+        "lucide-react": "^1.8.0",
+        "next": "16.2.3",
+        "next-international": "^1.3.1",
+        "react": "19.2.4",
+        "react-dom": "19.2.4",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.59.1",
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@vitejs/plugin-react": "^6.0.1",
+        "bun": "^1.3.12",
+        "eslint": "^9",
+        "eslint-config-next": "16.2.3",
+        "tailwindcss": "^4",
+        "test-utils": "workspace:*",
+        "typescript": "^5",
+        "vite": "^8.0.8",
+      },
+    },
     "apps-benchmark/nextjs-dynamic/next-intl-app": {
       "name": "nextjs-dynamic-next-intl-app",
       "version": "0.1.0",
@@ -302,6 +329,33 @@
         "vite": "^8.0.8",
       },
     },
+    "apps-benchmark/nextjs-scoped-dynamic/next-international-app": {
+      "name": "nextjs-scoped-dynamic-next-international-app",
+      "version": "0.1.0",
+      "dependencies": {
+        "@tailwindcss/typography": "^0.5.19",
+        "lucide-react": "^1.8.0",
+        "next": "16.2.3",
+        "next-international": "^1.3.1",
+        "react": "19.2.4",
+        "react-dom": "19.2.4",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.59.1",
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@vitejs/plugin-react": "^6.0.1",
+        "bun": "^1.3.12",
+        "eslint": "^9",
+        "eslint-config-next": "16.2.3",
+        "tailwindcss": "^4",
+        "test-utils": "workspace:*",
+        "typescript": "^5",
+        "vite": "^8.0.8",
+      },
+    },
     "apps-benchmark/nextjs-scoped-dynamic/next-intl-app": {
       "name": "nextjs-scoped-dynamic-next-intl-app",
       "version": "0.1.0",
@@ -457,6 +511,33 @@
         "react": "19.2.4",
         "react-dom": "19.2.4",
         "react-i18next": "^17.0.2",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.59.1",
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@vitejs/plugin-react": "^6.0.1",
+        "bun": "^1.3.12",
+        "eslint": "^9",
+        "eslint-config-next": "16.2.3",
+        "tailwindcss": "^4",
+        "test-utils": "workspace:*",
+        "typescript": "^5",
+        "vite": "^8.0.8",
+      },
+    },
+    "apps-benchmark/nextjs-scoped-static/next-international-app": {
+      "name": "nextjs-scoped-static-next-international-app",
+      "version": "0.1.0",
+      "dependencies": {
+        "@tailwindcss/typography": "^0.5.19",
+        "lucide-react": "^1.8.0",
+        "next": "16.2.3",
+        "next-international": "^1.3.1",
+        "react": "19.2.4",
+        "react-dom": "19.2.4",
       },
       "devDependencies": {
         "@playwright/test": "^1.59.1",
@@ -656,6 +737,33 @@
         "react": "19.2.4",
         "react-dom": "19.2.4",
         "react-i18next": "^17.0.2",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.59.1",
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@vitejs/plugin-react": "^6.0.1",
+        "bun": "^1.3.12",
+        "eslint": "^9",
+        "eslint-config-next": "16.2.3",
+        "tailwindcss": "^4",
+        "test-utils": "workspace:*",
+        "typescript": "^5",
+        "vite": "^8.0.8",
+      },
+    },
+    "apps-benchmark/nextjs-static/next-international-app": {
+      "name": "nextjs-static-next-international-app",
+      "version": "0.1.0",
+      "dependencies": {
+        "@tailwindcss/typography": "^0.5.19",
+        "lucide-react": "^1.8.0",
+        "next": "16.2.3",
+        "next-international": "^1.3.1",
+        "react": "19.2.4",
+        "react-dom": "19.2.4",
       },
       "devDependencies": {
         "@playwright/test": "^1.59.1",
@@ -3728,6 +3836,8 @@
 
     "internal-slot": ["internal-slot@1.1.0", "", { "dependencies": { "es-errors": "^1.3.0", "hasown": "^2.0.2", "side-channel": "^1.1.0" } }, "sha512-4gd7VpWNQNB4UKKCFFVcp1AVv+FMOgs9NKzjHKusc8jTMhd5eL1NqQqOpE0KzMds804/yHlglp3uxgluOqAPLw=="],
 
+    "international-types": ["international-types@0.8.1", "", {}, "sha512-tajBCAHo4I0LIFlmQ9ZWfjMWVyRffzuvfbXCd6ssFt5u1Zw15DN0UBpVTItXdNa1ls+cpQt3Yw8+TxsfGF8JcA=="],
+
     "intl-messageformat": ["intl-messageformat@11.2.0", "", { "dependencies": { "@formatjs/ecma402-abstract": "3.2.0", "@formatjs/fast-memoize": "3.1.1", "@formatjs/icu-messageformat-parser": "3.5.3" } }, "sha512-IhghAA8n4KSlXuWKzYsWyWb82JoYTzShfyvdSF85oJPnNOjvv4kAo7S7Jtkm3/vJ53C7dQNRO+Gpnj3iWgTjBQ=="],
 
     "intlayer": ["intlayer@8.7.1-canary-1", "", { "dependencies": { "@intlayer/cli": "8.7.1-canary-1", "@intlayer/config": "8.7.1-canary-1", "@intlayer/core": "8.7.1-canary-1", "@intlayer/types": "8.7.1-canary-1" }, "bin": { "intlayer": "dist/cjs/cli/script.cjs" } }, "sha512-DCz0DTI0SKfurrHtQCIlwlqMPHFgrcyVkU06f9LGOiouDUBNOWHQu+0Wq9LFhVUjCAPdXAcg6DJqVbwHHQ98rg=="],
@@ -4166,6 +4276,8 @@
 
     "next-i18next": ["next-i18next@16.0.5", "", { "dependencies": { "@types/hoist-non-react-statics": "^3.3.7", "hoist-non-react-statics": "^3.3.2", "i18next-resources-to-backend": "^1.2.1" }, "peerDependencies": { "i18next": ">= 23.7.13", "next": ">= 14.1.0", "react": ">= 18.0.0", "react-i18next": ">= 14.0.0" } }, "sha512-f9+WycNPxG5ruto1jacLZxlTJGsHGy312x4FpiE3ZUgE5K5peEJedQNBR/TSzkYqmvQ3kCqc94JKbjU88iP+LA=="],
 
+    "next-international": ["next-international@1.3.1", "", { "dependencies": { "client-only": "^0.0.1", "international-types": "^0.8.1", "server-only": "^0.0.1" } }, "sha512-ydU9jQe+4MohMWltbZae/yuWeKhmp0QKQqJNNi8WCCMwrly03qfMAHw/tWbT2qgAlG++CxF5jMXmGQZgOHeVOw=="],
+
     "next-intl": ["next-intl@4.9.1", "", { "dependencies": { "@formatjs/intl-localematcher": "^0.8.1", "@parcel/watcher": "^2.4.1", "@swc/core": "^1.15.2", "icu-minify": "^4.9.1", "negotiator": "^1.0.0", "next-intl-swc-plugin-extractor": "^4.9.1", "po-parser": "^2.1.1", "use-intl": "^4.9.1" }, "peerDependencies": { "next": "^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0", "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || >=19.0.0-rc <19.0.0 || ^19.0.0" } }, "sha512-N7ga0CjtYcdxNvaKNIi6eJ2mmatlHK5hp8rt0YO2Omoc1m0gean242/Ukdj6+gJNiReBVcYIjK0HZeNx7CV1ug=="],
 
     "next-intl-swc-plugin-extractor": ["next-intl-swc-plugin-extractor@4.9.1", "", {}, "sha512-8whJJ6oxJz8JqkHarggmmuEDyXgC7nEnaPhZD91CJwEWW4xp0AST3Mw17YxvHyP2vAF3taWfFbs1maD+WWtz3w=="],
@@ -4182,6 +4294,8 @@
 
     "nextjs-dynamic-next-i18next-app": ["nextjs-dynamic-next-i18next-app@workspace:apps-benchmark/nextjs-dynamic/next-i18next-app"],
 
+    "nextjs-dynamic-next-international-app": ["nextjs-dynamic-next-international-app@workspace:apps-benchmark/nextjs-dynamic/next-international-app"],
+
     "nextjs-dynamic-next-intl-app": ["nextjs-dynamic-next-intl-app@workspace:apps-benchmark/nextjs-dynamic/next-intl-app"],
 
     "nextjs-dynamic-next-intlayer-app": ["nextjs-dynamic-next-intlayer-app@workspace:apps-benchmark/nextjs-dynamic/next-intlayer-app"],
@@ -4193,6 +4307,8 @@
     "nextjs-scoped-dynamic-lingui-app": ["nextjs-scoped-dynamic-lingui-app@workspace:apps-benchmark/nextjs-scoped-dynamic/lingui-app"],
 
     "nextjs-scoped-dynamic-next-i18next-app": ["nextjs-scoped-dynamic-next-i18next-app@workspace:apps-benchmark/nextjs-scoped-dynamic/next-i18next-app"],
+
+    "nextjs-scoped-dynamic-next-international-app": ["nextjs-scoped-dynamic-next-international-app@workspace:apps-benchmark/nextjs-scoped-dynamic/next-international-app"],
 
     "nextjs-scoped-dynamic-next-intl-app": ["nextjs-scoped-dynamic-next-intl-app@workspace:apps-benchmark/nextjs-scoped-dynamic/next-intl-app"],
 
@@ -4206,6 +4322,8 @@
 
     "nextjs-scoped-static-next-i18next-app": ["nextjs-scoped-static-next-i18next-app@workspace:apps-benchmark/nextjs-scoped-static/next-i18next-app"],
 
+    "nextjs-scoped-static-next-international-app": ["nextjs-scoped-static-next-international-app@workspace:apps-benchmark/nextjs-scoped-static/next-international-app"],
+
     "nextjs-scoped-static-next-intl-app": ["nextjs-scoped-static-next-intl-app@workspace:apps-benchmark/nextjs-scoped-static/next-intl-app"],
 
     "nextjs-scoped-static-next-translate-app": ["nextjs-scoped-static-next-translate-app@workspace:apps-benchmark/nextjs-scoped-static/next-translate-app"],
@@ -4217,6 +4335,8 @@
     "nextjs-static-lingui-app": ["nextjs-static-lingui-app@workspace:apps-benchmark/nextjs-static/lingui-app"],
 
     "nextjs-static-next-i18next-app": ["nextjs-static-next-i18next-app@workspace:apps-benchmark/nextjs-static/next-i18next-app"],
+
+    "nextjs-static-next-international-app": ["nextjs-static-next-international-app@workspace:apps-benchmark/nextjs-static/next-international-app"],
 
     "nextjs-static-next-intl-app": ["nextjs-static-next-intl-app@workspace:apps-benchmark/nextjs-static/next-intl-app"],
 
@@ -4595,6 +4715,8 @@
     "serve-index": ["serve-index@1.9.2", "", { "dependencies": { "accepts": "~1.3.8", "batch": "0.6.1", "debug": "2.6.9", "escape-html": "~1.0.3", "http-errors": "~1.8.0", "mime-types": "~2.1.35", "parseurl": "~1.3.3" } }, "sha512-KDj11HScOaLmrPxl70KYNW1PksP4Nb/CLL2yvC+Qd2kHMPEEpfc4Re2e4FOay+bC/+XQl/7zAcWON3JVo5v3KQ=="],
 
     "serve-static": ["serve-static@2.2.1", "", { "dependencies": { "encodeurl": "^2.0.0", "escape-html": "^1.0.3", "parseurl": "^1.3.3", "send": "^1.2.0" } }, "sha512-xRXBn0pPqQTVQiC8wyQrKs2MOlX24zQ0POGaj0kultvoOCstBQM5yvOhAVSUwOMjQtTvsPWoNCHfPGwaaQJhTw=="],
+
+    "server-only": ["server-only@0.0.1", "", {}, "sha512-qepMx2JxAa5jjfzxG79yPPq+8BuFToHd1hm7kI+Z4zAq1ftQiP7HcxMhDDItrbtwVeLg/cY2JnKnrcFkmiswNA=="],
 
     "set-cookie-parser": ["set-cookie-parser@2.7.2", "", {}, "sha512-oeM1lpU/UvhTxw+g3cIfxXHyJRc/uidd3yK1P242gzHds0udQBYzs3y8j4gCCW+ZJ7ad0yctld8RYO+bdurlvw=="],
 

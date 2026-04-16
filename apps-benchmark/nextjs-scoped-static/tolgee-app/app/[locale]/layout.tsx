@@ -1,5 +1,4 @@
-import { getLanguage } from "@/tolgee/language";
-import { getTolgee } from "@/tolgee/server";
+import { TolgeeBase } from "@/tolgee/shared";
 import AppProviders from "@/components/AppProviders";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,11 +10,13 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = await getLanguage();
-  const tolgee = await getTolgee();
+  const { locale } = await params;
+  const tolgee = TolgeeBase().init({ language: locale });
   const staticData = await tolgee.loadRequired();
 
   return (

@@ -1,16 +1,17 @@
 "use client";
 
-import { useTolgee } from "@tolgee/react";
-import { setLanguage } from "@/tolgee/language";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { locales, getLocaleName } from "@/i18n/config";
 
 export default function LocaleSwitcher() {
-  const tolgee = useTolgee();
-  const locale = tolgee.getLanguage() || "en";
+  const params = useParams();
+  const locale = (params.locale as string) ?? "en";
+  const pathname = usePathname();
+  const router = useRouter();
 
-  const handleLocaleChange = async (newLocale: string) => {
-    await setLanguage(newLocale);
-    await tolgee.changeLanguage(newLocale);
+  const handleLocaleChange = (newLocale: string) => {
+    const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPath);
   };
 
   return (

@@ -1,0 +1,23 @@
+import { Fragment as e, jsx as t, jsxs as n } from "react/jsx-runtime";
+//#region components/MockBanner.tsx
+var r = () => t("div", {
+	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
+	children: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+});
+//#endregion
+//#region components/pages/team/TeamHeader.tsx
+function i() {
+	return n(e, { children: [
+		t(r, {}),
+		t("h1", {
+			className: "mb-2 text-3xl font-bold text-foreground",
+			children: "Our Team"
+		}),
+		t("p", {
+			className: "mb-10 text-muted-foreground",
+			children: "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+		})
+	] });
+}
+//#endregion
+export { i as default };

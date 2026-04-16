@@ -1,0 +1,21 @@
+{
+  "blog-header.insightsTutorialsAndAnalysisFrom": "Información, tutoriales y análisis de la comunidad i18n.",
+  "blog-list.comparingI18nLibrariesIn2026": "Comparativa de bibliotecas i18n en 2026: un análisis profundo",
+  "blog-list.weTested12DifferentInternationalization": "Probamos 12 bibliotecas de internacionalización diferentes en cuanto a rendimiento, tamaño del bundle y DX. Estos son los resultados sorprendentes.",
+  "blog-list.howToReduceYourI18n": "Cómo reducir su bundle i18n en un 60 %",
+  "blog-list.march82026": "8 de marzo de 2026",
+  "blog-list.practicalStrategiesForOptimizingTranslation": "Estrategias prácticas para optimizar los conjuntos de traducción, incluido el lazy loading, la división del código y las optimizaciones en el momento de la compilación.",
+  "blog-list.theStateOfInternationalizationIn": "El estado de la internacionalización en React",
+  "blog-list.february282026": "28 de febrero de 2026",
+  "blog-list.anOverviewOfTheCurrent": "Una visión general del ecosistema actual de i18n en React, que cubre tendencias, patrones emergentes y preferencias de la comunidad.",
+  "blog-list.migratingFromReactI18nextTo": "Migración de react-i18next a Lingui",
+  "blog-list.february152026": "15 de febrero de 2026",
+  "blog-list.aStepByStepGuide": "Una guía paso a paso sobre la migración de una aplicación de producción con 50.000 claves de traducción de react-i18next a Lingui.",
+  "blog-list.serverComponentsAndI18nWhat": "Server Components e i18n: ¿Qué cambia?",
+  "blog-list.february12026": "1 de febrero de 2026",
+  "blog-list.reactServerComponentsIntroduceNew": "Los React Server Components introducen nuevos patrones para la internacionalización. Exploramos las implicaciones y las mejores prácticas.",
+  "blog-list.benchmarkMethodologyHowWeTest": "Metodología del Benchmark: Cómo probamos",
+  "blog-list.january202026": "20 de enero de 2026",
+  "blog-list.aTransparentLookAtOur": "Una mirada transparente a nuestra metodología de benchmarking, incluidos los entornos de prueba, los métodos estadísticos y la reproductibilidad.",
+  "blog-list.readMore": "Leer más →"
+}

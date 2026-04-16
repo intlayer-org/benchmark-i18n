@@ -1,0 +1,61 @@
+import { jsx, jsxs } from "react/jsx-runtime";
+//#region components/pages/team/TeamGrid.tsx
+function TeamGrid() {
+	return jsx("div", {
+		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
+		children: [
+			{
+				name: "Sarah Chen",
+				role: "Founder & Lead Engineer",
+				bio: "Former Google engineer with 10 years of experience building internationalization systems at scale."
+			},
+			{
+				name: "Marcus Weber",
+				role: "Performance Engineer",
+				bio: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+			},
+			{
+				name: "Aisha Patel",
+				role: "Developer Advocate",
+				bio: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+			},
+			{
+				name: "Tomás Rodríguez",
+				role: "Full-Stack Developer",
+				bio: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+			},
+			{
+				name: "Yuki Tanaka",
+				role: "Data Analyst",
+				bio: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+			},
+			{
+				name: "Elena Kowalski",
+				role: "Community Manager",
+				bio: "Manages community contributions, partnerships, and events. Background in open source governance."
+			}
+		].map((m) => jsxs("div", {
+			className: "rounded-lg border border-border bg-card p-6 text-center",
+			children: [
+				jsx("div", {
+					className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
+					children: m.name.split(" ").map((n) => n[0]).join("")
+				}),
+				jsx("h3", {
+					className: "text-base font-semibold text-foreground",
+					children: m.name
+				}),
+				jsx("p", {
+					className: "mb-2 text-xs font-medium text-primary",
+					children: m.role
+				}),
+				jsx("p", {
+					className: "text-sm text-muted-foreground",
+					children: m.bio
+				})
+			]
+		}, m.name))
+	});
+}
+//#endregion
+export { TeamGrid as default };

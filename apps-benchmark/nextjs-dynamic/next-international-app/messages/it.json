@@ -1,0 +1,482 @@
+{
+  "careers-header": {
+    "title": "Careers",
+    "joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+  },
+  "contact": {
+    "contact-header": {
+      "getInTouch": "Mettiti in contatto",
+      "haveIdeasFoundABug": "Hai idee, hai trovato un bug o vuoi contribuire con un benchmark? Contattaci all'indirizzo"
+    },
+    "contact-form": {
+      "yourName": "Il tuo nome",
+      "bugReport": "Segnalazione di bug",
+      "newBenchmarkIdea": "Nuova idea di benchmark",
+      "methodologyQuestion": "Domanda sulla metodologia",
+      "describeYourQuestionOrIdea": "Descrivi la tua domanda o idea...",
+      "sendMessage": "Invia messaggio",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "topicLabel": "Topic",
+      "messageLabel": "Message",
+      "emailPlaceholder": "you@example.com",
+      "topicOther": "Other"
+    }
+  },
+  "about-header": {
+    "aboutThisBenchmark": "About This Benchmark",
+    "thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+  },
+  "hero": {
+    "aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+    "viewResults": "View Results",
+    "title": "i18n Benchmark"
+  },
+  "blog": {
+    "blog-header": {
+      "insightsTutorialsAndAnalysisFrom": "Approfondimenti, tutorial e analisi dalla comunità i18n."
+    },
+    "blog-list": {
+      "comparingI18nLibrariesIn2026": "Confronto tra librerie i18n nel 2026: un approfondimento",
+      "weTested12DifferentInternationalization": "Abbiamo testato 12 diverse librerie di internazionalizzazione su prestazioni, dimensioni del bundle e DX. Ecco i risultati sorprendenti.",
+      "howToReduceYourI18n": "Come ridurre il bundle i18n del 60%",
+      "march82026": "8 marzo 2026",
+      "practicalStrategiesForOptimizingTranslation": "Strategie pratiche per ottimizzare i bundle di traduzione, inclusi caricamento pigro, code splitting e ottimizzazioni in fase di compilazione.",
+      "theStateOfInternationalizationIn": "Lo stato dell'internazionalizzazione in React",
+      "february282026": "28 febbraio 2026",
+      "anOverviewOfTheCurrent": "Una panoramica dell'attuale ecosistema i18n in React, che copre tendenze, modelli emergenti e preferenze della comunità.",
+      "migratingFromReactI18nextTo": "Migrazione da react-i18next a Lingui",
+      "february152026": "15 febbraio 2026",
+      "aStepByStepGuide": "Una guida passo passo sulla migrazione di un'app di produzione con 50.000 chiavi di traduzione da react-i18next a Lingui.",
+      "serverComponentsAndI18nWhat": "Server Components e i18n: cosa cambia?",
+      "february12026": "1 febbraio 2026",
+      "reactServerComponentsIntroduceNew": "I React Server Components introducono nuovi modelli per l'internazionalizzazione. Esploriamo le implicazioni e le migliori pratiche.",
+      "benchmarkMethodologyHowWeTest": "Metodologia del benchmark: come testiamo",
+      "january202026": "20 gennaio 2026",
+      "aTransparentLookAtOur": "Uno sguardo trasparente alla nostra metodologia di benchmarking, compresi gli ambienti di test, i metodi statistici e la riproducibilità.",
+      "readMore": "Leggi di più →",
+      "categoryBenchmark": "Benchmark",
+      "categoryTutorial": "Tutorial",
+      "categoryAnalysis": "Analysis",
+      "categoryMeta": "Meta"
+    }
+  },
+  "faq": {
+    "faq-list": {
+      "whatIsI18nBenchmark": "Cos'è i18n Benchmark ?",
+      "whatIsI18nBenchmarkAnswer": "i18n Benchmark è una suite di test open source che misura e confronta le prestazioni, la dimensione del bundle e l'esperienza degli sviluppatori delle librerie di internazionalizzazione per applicazioni JavaScript e React.",
+      "howAreBenchmarksConducted": "Come vengono condotti i benchmark ?",
+      "weRunStandardizedTestsIn": "Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni di test sono disponibili pubblicamente nel nostro repository GitHub.",
+      "whichLibrariesAreCurrentlySupported": "Quali librerie sono attualmente supportate ?",
+      "weSupportReactI18nextReact": "Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.",
+      "canISubmitMyOwn": "Posso inviare i miei benchmark ?",
+      "yesCommunityBenchmarkSubmissionsAre": "Sì! Gli invii di benchmark da parte della comunità sono i benvenuti. Fai un fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà gli invii idonei.",
+      "howOftenAreBenchmarksUpdated": "Con quale frequenza vengono aggiornati i benchmark ?",
+      "weReRunAllBenchmarks": "Eseguiamo nuovamente tutti i benchmark settimanalmente rispetto alle ultime versioni stabili di ogni libreria. Le versioni principali in uscita attivano un immediato ciclo di re-benchmark.",
+      "isTheDataReliable": "I dati sono affidabili ?",
+      "weFollowRigorousStatisticalMethodology": "Seguiamo una rigorosa metodologia statistica che include corse di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi sono pubblicati insieme alla nostra analisi per una completa trasparenza.",
+      "doYouOfferConsultingServices": "Offrite servizi di consulenza ?",
+      "yesOurEnterprisePlanIncludes": "Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano le soluzioni i18n. Abbiamo la possibilità di fornire raccomandazioni personalizzate basate sul caso d'uso specifico, sulla scala e sui vincoli.",
+      "howCanIContribute": "Come posso contribuire ?",
+      "thereAreManyWaysTo": "Ci sono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per maggiori dettagli."
+    }
+  },
+  "blog-list": {
+    "comparingI18nLibrariesIn2026": "Comparing i18n Libraries in 2026: A Deep Dive",
+    "weTested12DifferentInternationalization": "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+    "howToReduceYourI18n": "How to Reduce Your i18n Bundle by 60%",
+    "march82026": "March 8, 2026",
+    "practicalStrategiesForOptimizingTranslation": "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+    "theStateOfInternationalizationIn": "The State of Internationalization in React",
+    "february282026": "February 28, 2026",
+    "anOverviewOfTheCurrent": "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+    "migratingFromReactI18nextTo": "Migrating from react-i18next to Lingui",
+    "february152026": "February 15, 2026",
+    "aStepByStepGuide": "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+    "serverComponentsAndI18nWhat": "Server Components and i18n: What Changes?",
+    "february12026": "February 1, 2026",
+    "reactServerComponentsIntroduceNew": "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+    "benchmarkMethodologyHowWeTest": "Benchmark Methodology: How We Test",
+    "january202026": "January 20, 2026",
+    "aTransparentLookAtOur": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+    "readMore": "Read More →"
+  },
+  "understanding-impact": {
+    "understandingTheImpact": "Understanding the Impact",
+    "whyASingleLargeJson": "Why a single large JSON can hurt performance",
+    "manyI18nLibrariesStoreTranslations": "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:",
+    "theJsonMustBeParsed": "The JSON must be parsed on every page load — blocking the main thread.",
+    "contextBasedArchitecturesCanCause": "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+    "duringServerSideRenderingThe": "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.",
+    "theTradeOffsOfDynamic": "The trade-offs of dynamic loading",
+    "splittingTranslationsIntoPerRoute": "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:",
+    "waterfallRequests": "Waterfall requests:",
+    "flashOfUntranslatedContentFouc": "Flash of untranslated content (FOUC):",
+    "cacheInvalidation": "Cache invalidation:",
+    "whatThisBenchmarkMeasures": "What this benchmark measures",
+    "thisTestAppProvidesA": "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+  },
+  "settings": {
+    "settings-header": {
+      "manageYourAccountPreferencesAnd": "Gestisci le preferenze del tuo account e la configurazione."
+    },
+    "profile-section": {
+      "displayName": "Nome visualizzato",
+      "profile": "Profilo",
+      "email": "Email"
+    },
+    "preferences-section": {
+      "emailNotifications": "Notifiche via email",
+      "receiveWeeklyBenchmarkReports": "Ricevi rapporti settimanali sui benchmark",
+      "toggleNotifications": "Attiva/disattiva notifiche",
+      "darkMode": "Modalità scura",
+      "useDarkColorScheme": "Usa lo schema colori scuro",
+      "toggleDarkMode": "Attiva/disattiva modalità scura",
+      "defaultLanguage": "Lingua predefinita",
+      "englishEn": "Inglese (en)",
+      "frenchFr": "Francese (fr)",
+      "germanDe": "Tedesco (de)",
+      "spanishEs": "Spagnolo (es)",
+      "japaneseJa": "Giapponese (ja)",
+      "chineseSimplifiedZhCn": "Chinese semplificato (zh-CN)",
+      "arabicAr": "Arabo (ar)",
+      "preferences": "Preferences"
+    },
+    "api-access-section": {
+      "apiAccess": "Accesso API",
+      "apiKey": "Chiave API",
+      "useThisKeyToAccess": "Usa questa chiave per accedere programmaticamente alle API di benchmarking.",
+      "copy": "Copy"
+    },
+    "settings-footer": {
+      "saveChanges": "Salva modifiche",
+      "cancel": "Annulla"
+    }
+  },
+  "faq-list": {
+    "whatIsI18nBenchmark": "What is i18n Benchmark?",
+    "whatIsI18nBenchmarkAnswer": "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.",
+    "howAreBenchmarksConducted": "How are benchmarks conducted?",
+    "weRunStandardizedTestsIn": "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+    "whichLibrariesAreCurrentlySupported": "Which libraries are currently supported?",
+    "weSupportReactI18nextReact": "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+    "canISubmitMyOwn": "Can I submit my own benchmarks?",
+    "yesCommunityBenchmarkSubmissionsAre": "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+    "howOftenAreBenchmarksUpdated": "How often are benchmarks updated?",
+    "weReRunAllBenchmarks": "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+    "isTheDataReliable": "Is the data reliable?",
+    "weFollowRigorousStatisticalMethodology": "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+    "doYouOfferConsultingServices": "Do you offer consulting services?",
+    "yesOurEnterprisePlanIncludes": "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+    "howCanIContribute": "How can I contribute?",
+    "thereAreManyWaysTo": "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+  },
+  "pricing": {
+    "pricing-header": {
+      "simpleTransparentPricing": "Prezzi Semplici e Trasparenti",
+      "chooseThePlanThatFits": "Scegli il piano adatto al tuo team. Nessun costo nascosto."
+    },
+    "pricing-tiers": {
+      "starter": "Starter",
+      "price0": "0 $",
+      "forever": "per sempre",
+      "benchmarkRunPerDay": "{runs} esecuzioni benchmark/giorno",
+      "librariesNumber": "{libs} librerie",
+      "communitySupport": "Supporto della comunità",
+      "publicResults": "Risultati pubblici",
+      "pro": "Pro",
+      "price29": "29 $",
+      "month": "/mese",
+      "unlimitedRuns": "Esecuzioni illimitate",
+      "allLibraries": "Tutte le librerie",
+      "prioritySupport": "Supporto prioritario",
+      "privateResults": "Risultati privati",
+      "ciIntegration": "Integrazione CI",
+      "historicalData": "Dati storici",
+      "enterprise": "Enterprise",
+      "customPrice": "Personalizzato",
+      "everythingInPro": "Tutto quello che c'è in Pro",
+      "onPremiseOption": "Opzione in locale",
+      "ssoSaml": "SSO e SAML",
+      "dedicatedAccountManager": "Account manager dedicato",
+      "customSlas": "SLA personalizzati",
+      "auditLogs": "Registri di controllo",
+      "trainingSessions": "Sessioni di formazione",
+      "contactSales": "Contatta l'ufficio vendite",
+      "getStarted": "Inizia ora"
+    }
+  },
+  "footer": {
+    "resources": "Risorse",
+    "contact": "Contatti",
+    "github": "GitHub",
+    "methodology": "Metodologia",
+    "contributing": "Contribuire",
+    "builtWith": "i18n Benchmark — Progetto open-source. Costruito con React, Vite e TanStack Router.",
+    "anOpenSourceTestApplication": "Un'applicazione di test open-source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app."
+  },
+  "theme-toggle": {
+    "themeModeAutoSystemClick": "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.",
+    "themeModeLightClick": "Modalità tema: chiara. Clicca per passare alla modalità scura.",
+    "themeModeDarkClick": "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).",
+    "themeAuto": "Tema: Auto",
+    "themeDark": "Tema: Scuro",
+    "themeLight": "Tema: Chiaro"
+  },
+  "contact-header": {
+    "getInTouch": "Get in Touch",
+    "haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+  },
+  "what-we-measure": {
+    "bundleSizeImpact": "Bundle size impact",
+    "theAdditionalJavascriptBytesSent": "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.",
+    "renderingOverhead": "Rendering overhead",
+    "howMuchExtraTimeThe": "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+    "hydrationCost": "Hydration cost",
+    "duringSsrTranslationDataIs": "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
+    "lazyLoadingEffectiveness": "Lazy loading effectiveness",
+    "whetherSplittingTranslationsByRoute": "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).",
+    "localeSwitchSpeed": "Locale switch speed",
+    "howFastTheAppCan": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.",
+    "whatWeMeasure": "What We Measure"
+  },
+  "results-table": {
+    "sampleResults": "Sample Results",
+    "bundleSize": "Bundle Size",
+    "lookupTime": "Lookup Time",
+    "lazyLoading": "Lazy Loading",
+    "libraryColumn": "Library"
+  },
+  "careers": {
+    "careers-header": {
+      "title": "Carriere",
+      "joinOurMissionToImprove": "Unisciti alla nostra missione per migliorare l'ecosistema dell'internazionalizzazione. Siamo un team che lavora principalmente in remoto e che valorizza l'impatto, la trasparenza e l'apprendimento continuo."
+    },
+    "careers-benefits": {
+      "workFromAnywhereInThe": "Lavora da qualsiasi parte del mondo",
+      "competitivePay": "Retribuzione competitiva",
+      "topOfMarketCompensation": "Compensazione ai vertici del mercato",
+      "openSourceTime": "Tempo dedicato all'open source",
+      "remoteFirstLabel": "Remote-first",
+      "ossTimeValue": "20% time for OSS contributions"
+    },
+    "open-positions": {
+      "seniorFrontendEngineer": "Ingegnere Frontend Senior",
+      "buildAndMaintainOurBenchmarking": "Costruisci e mantieni la nostra dashboard di benchmarking e gli strumenti per sviluppatori utilizzando React, TypeScript e Vite.",
+      "backendEngineer": "Ingegnere Backend",
+      "designAndScaleOurCloud": "Progetta e scala la nostra infrastruttura di benchmarking cloud gestendo migliaia di esecuzioni automatiche giornaliere.",
+      "technicalWriter": "Scrittore tecnico",
+      "createComprehensiveGuidesApiReferences": "Crea guide complete, riferimenti API e tutorial per la nostra piattaforma di benchmarking.",
+      "devrelEngineer": "Ingegnere DevOps",
+      "sanFranciscoRemote": "San Francisco / Remoto",
+      "engageWithTheI18nCommunity": "Interagisci con la comunità i18n attraverso conferenze, workshop, post sul blog e contributi open source.",
+      "qaEngineer": "Ingegnere QA",
+      "ensureTheAccuracyAndReliability": "Garantisci l'accuratezza e l'affidabilità dei risultati dei benchmark attraverso test e validazioni rigorosi.",
+      "openPositions": "Posizioni aperte",
+      "applyNow": "Candidati ora",
+      "remote": "Remoto",
+      "fullTime": "Tempo pieno",
+      "partTime": "Part-time",
+      "engineering": "Ingegneria",
+      "documentation": "Documentazione",
+      "community": "Comunità"
+    }
+  },
+  "header": {
+    "home": "Home",
+    "methodology": "Methodology",
+    "mockPages": "Mock Pages",
+    "products": "Products",
+    "pricing": "Pricing",
+    "team": "Team",
+    "blog": "Blog",
+    "careers": "Careers",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "settings": "Settings",
+    "goToGithub": "Go to GitHub"
+  },
+  "mockBanner": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.",
+  "team": {
+    "team-header": {
+      "ourTeam": "Il nostro team",
+      "meetThePeopleBehindI18n": "Incontra le persone che stanno dietro i18n Benchmark. Un team eterogeneo unito dalla passione comune per i grandi strumenti per gli sviluppatori."
+    },
+    "team-grid": {
+      "sarahChen": "Sarah Chen",
+      "founderLeadEngineer": "Fondatrice e Responsabile tecnico",
+      "formerGoogleEngineerWith10": "Ex ingegnere Google con 10 anni di esperienza nella costruzione di sistemi di internazionalizzazione su scala.",
+      "marcusWeber": "Marcus Weber",
+      "performanceEngineer": "Ingegnere delle prestazioni",
+      "specializesInJavascriptPerformanceOptimization": "Specializzato nell'ottimizzazione delle prestazioni JavaScript e nella metodologia di benchmarking. Precedentemente presso Vercel.",
+      "aishaPatel": "Aisha Patel",
+      "developerAdvocate": "Developer Advocate",
+      "passionateAboutDeveloperExperienceAnd": "Appassionata di esperienza degli sviluppatori e formazione. Relatrice a React Conf, JSConf e i18nNext.",
+      "tomasRodriguez": "Tomás Rodríguez",
+      "fullStackDeveloper": "Sviluppatore Full-Stack",
+      "maintainsTheBenchmarkingInfrastructureAnd": "Mantiene l'infrastruttura di benchmarking e la pipeline CI/CD. Collaboratore open source di Lingui.",
+      "yukiTanaka": "Yuki Tanaka",
+      "dataAnalyst": "Analista dati",
+      "ensuresStatisticalRigorInAll": "Garantisce il rigore statistico in tutti i risultati dei benchmark. Dottorato in statistica applicata al MIT.",
+      "elenaKowalski": "Elena Kowalski",
+      "communityManager": "Responsable della comunità",
+      "managesCommunityContributionsPartnershipsAnd": "Gestisce i contributi della comunità, le partnership e gli eventi. Background nella governance open source."
+    }
+  },
+  "about": {
+    "about-header": {
+      "aboutThisBenchmark": "Informazioni su questo benchmark",
+      "thisIsAnOpenSource": "Questa è un'applicazione di test open-source, non un prodotto o un'azienda. Il suo unico scopo è fornire un'applicazione React multi-pagina realistica dove diverse librerie i18n possono essere integrate e mesurate in condizioni identiche."
+    },
+    "about-grid": {
+      "whyThisExists": "Perché esiste questo progetto",
+      "choosingAnI18nLibraryIs": "Scegliere una libreria i18n è una decisione architettonica con conseguenze a lungo termine. La maggior parte dei confronti si concentra sull'ergonomia delle API, ma pochi misurano il costo delle prestazioni: quanto peso aggiunge la libreria al bundle? In che modo influisce sul rendering quando vengono caricate migliaia di chiavi di traduzione? Il caricamento pigro aiuta davvero o sposta solo il costo? Questo benchmark risponde a queste domande con dati reali.",
+      "methodology": "Metodologia",
+      "theSame10PageApp": "La stessa app di 10 pagine viene costruita una volta per libreria. Misuriamo il bundle di produzione (tramite rollup-plugin-visualizer), eseguiamo audit Lighthouse per le metriche di caricamento e utilizziamo React Profiler per catturare i tempi di rendering durante i cambi di lingua. Tutti i test vengono eseguiti in CI su hardware coerente per garantire risultati riproducibili."
+    },
+    "what-we-measure": {
+      "bundleSizeImpact": "Impatto sulla dimensione del bundle",
+      "theAdditionalJavascriptBytesSent": "I byte JavaScript aggiuntivi inviati agli utenti quando la libreria i18n e i suoi file di traduzione sono inclusi. Ciò influisce direttamente sul tempo di download sulle reti lente.",
+      "renderingOverhead": "Sovrapprezzo di rendering",
+      "howMuchExtraTimeThe": "Quanto tempo extra la libreria aggiunge al ciclo di rendering di React. Le librerie che iniettano traduzioni tramite un unico provider di contesto possono causare rendering non necessari in tutto l'albero dei componenti.",
+      "hydrationCost": "Costo di idratazione",
+      "duringSsrTranslationDataIs": "Durante l'SSR, i dati di traduzione vengono serializzati nell'HTML. Dizionari di grandi dimensioni aumentano il payload HTML e rallentano l'idratazione — il momento in cui la pagina diventa interattiva.",
+      "lazyLoadingEffectiveness": "Efficacia del caricamento pigro",
+      "whetherSplittingTranslationsByRoute": "Se la scomposizione delle traduzioni per rotta o namespace riduca effettivamente il carico iniziale e quali compromessi introduca (richieste a cascata, FOUC, complessità della cache).",
+      "localeSwitchSpeed": "Velocità di cambio lingua",
+      "howFastTheAppCan": "Quanto velocemente l'app può passare da una lingua all'altra in fase di esecuzione — inclusi il recupero delle nuove traduzioni, il rendering dei componenti e l'aggiornamento del DOM.",
+      "whatWeMeasure": "Cosa misuriamo"
+    }
+  },
+  "contact-form": {
+    "yourName": "Your name",
+    "bugReport": "Bug Report",
+    "newBenchmarkIdea": "New Benchmark Idea",
+    "methodologyQuestion": "Methodology Question",
+    "describeYourQuestionOrIdea": "Describe your question or idea...",
+    "sendMessage": "Send Message"
+  },
+  "products": {
+    "products-header": {
+      "toolsAndServicesToStreamline": "Strumenti e servizi per snellire il flusso di lavoro dell'internazionalizzazione."
+    },
+    "products-grid": {
+      "benchmarkCli": "CLI del Benchmark",
+      "runBenchmarksLocallyFromYour": "Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.",
+      "benchmarkCloud": "Benchmark Cloud",
+      "automatedCloudBasedBenchmarkingWith": "Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.",
+      "benchmarkEnterprise": "Benchmark Enterprise",
+      "onPremiseDeploymentWithSso": "Distribuzione in locale con SSO, log di controllo, SLA personalizzati e supporto dedicato.",
+      "contactUs": "Contattaci",
+      "migrationAssistant": "Assistente alla Migrazione",
+      "aiPoweredToolThatHelps": "Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n con tempi di inattività minimi.",
+      "translationQa": "QA delle Traduzioni",
+      "automatedQualityChecksForMissing": "Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.",
+      "bundleOptimizer": "Ottimizzatore del Bundle",
+      "analyzesAndOptimizesYourI18n": "Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.",
+      "learnMore": "Scopri di più",
+      "free": "Gratis",
+      "price29mo": "29 $/mese",
+      "price99oneTime": "$99 una tantum",
+      "price19mo": "19 $/mese",
+      "price49mo": "49 $/mese"
+    }
+  },
+  "open-positions": {
+    "seniorFrontendEngineer": "Senior Frontend Engineer",
+    "buildAndMaintainOurBenchmarking": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+    "backendEngineer": "Backend Engineer",
+    "designAndScaleOurCloud": "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+    "technicalWriter": "Technical Writer",
+    "createComprehensiveGuidesApiReferences": "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
+    "devrelEngineer": "DevRel Engineer",
+    "sanFranciscoRemote": "San Francisco / Remote",
+    "engageWithTheI18nCommunity": "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+    "qaEngineer": "QA Engineer",
+    "ensureTheAccuracyAndReliability": "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
+    "openPositions": "Open Positions",
+    "applyNow": "Apply Now",
+    "remote": "Remote",
+    "fullTime": "Full-time",
+    "partTime": "Part-time",
+    "engineering": "Engineering",
+    "documentation": "Documentation",
+    "community": "Community"
+  },
+  "route": {
+    "route": {
+      "oopsPageNotFound": "Ops! Pagina non trovata",
+      "returnToHome": "Torna alla Home",
+      "couldNotMeasureHydrationDuration": "Impossibile misurare la durata dell'idratazione:"
+    }
+  },
+  "blog-header": {
+    "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community."
+  },
+  "faq-header1": {
+    "frequentlyAskedQuestions": "Frequently Asked Questions",
+    "everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+  },
+  "about-grid": {
+    "whyThisExists": "Why This Exists",
+    "choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+    "methodology": "Methodology",
+    "theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+  },
+  "home": {
+    "hero": {
+      "aTestApplicationDesignedTo": "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
+      "viewResults": "Visualizza i risultati",
+      "title": "i18n Benchmark"
+    },
+    "why-it-matters": {
+      "whyTheseMetricsMatter": "Perché queste metriche sono importanti",
+      "bundleSize": "Dimensione del bundle",
+      "theBundleIsTheData": "Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.",
+      "renderingHydration": "Rendering e idratazione",
+      "connectingALargeJsonDictionary": "Il collegamento di un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può scatenare nuovi rendering in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'aggiunta di enormi oggetti di traduzione aggiungono latenza prima che la pagina diventi interattiva, influenzando direttamente il Time to Interactive (TTI).",
+      "dynamicLoading": "Caricamento dinamico",
+      "loadingAllTranslationsUpfrontOverloads": "Il caricamento di tutte le traduzioni in anticipo sovraccarica il payload iniziale. Il caricamento dinamico (lazy) divide le traduzioni per rotta o namespace, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il lazy loading introduce i propri compromessi: richieste a cascata, flash di contenuti non tradotti e complessità della cache. Misurare entrambe le strategie è essenziale."
+    },
+    "understanding-impact": {
+      "understandingTheImpact": "Capire l'impatto",
+      "whyASingleLargeJson": "Perché un singolo JSON di grandi dimensioni può danneggiare le prestazioni",
+      "manyI18nLibrariesStoreTranslations": "Molte librerie i18n memorizzano le traduzioni in un unico oggetto JSON fornito tramite il contesto React. Quando questo oggetto è grande (migliaia di chiavi), ogni componente che consuma le traduzioni mantiene un riferimento all'intero dizionario. Questo significa :",
+      "theJsonMustBeParsed": "Il JSON deve essere analizzato a ogni caricamento della pagina, bloccando il thread principale.",
+      "contextBasedArchitecturesCanCause": "Le architetture basate sul contesto possono causare rendering a cascata quando la localizzazione cambia, perché ogni consumatore viene notificato anche se le sue chiavi specifiche non sono cambiate.",
+      "duringServerSideRenderingThe": "Durante il rendering lato server, l'intero dizionario viene serializzato nel payload HTML, aumentando la dimensione del documento che deve essere scaricato e idrato.",
+      "theTradeOffsOfDynamic": "I compromessi del caricamento dinamico",
+      "splittingTranslationsIntoPerRoute": "La scomposizione delle traduzioni in chunk per rotta o per namespace può ridurre drasticamente il payload iniziale. Ma introduce nuove sfide:",
+      "waterfallRequests": "Richieste a cascata:",
+      "flashOfUntranslatedContentFouc": "Flash di contenuti non tradotti (FOUC):",
+      "cacheInvalidation": "Invalidazione della cache:",
+      "whatThisBenchmarkMeasures": "Cosa misura questo benchmark",
+      "thisTestAppProvidesA": "Questa applicazione di test fornisce un ambiente controllato — 10 pagine con contenuti realistici — per confrontare le librerie i18n su tre assi: il peso che aggiungono al tuo bundle JavaScript, il tempo dedicato all'analisi e al rendering dei contenuti tradotti e l'efficacia delle loro strategie di code-splitting e lazy-loading. Ogni libreria è integrata nella stessa app in modo che i risultati siano direttamente confrontabili.",
+      "waterfallRequestsDetail": " the app must first load, determine the locale, then fetch the right chunk — adding network round-trips.",
+      "flashOfUntranslatedContentDetail": " users may briefly see translation keys or a fallback language before the chunk arrives.",
+      "cacheInvalidationDetail": " updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+    },
+    "results-table": {
+      "sampleResults": "Risultati di esempio",
+      "bundleSize": "Dimensione del bundle",
+      "lookupTime": "Tempo di ricerca",
+      "lazyLoading": "Caricamento lazy",
+      "libraryColumn": "Library"
+    }
+  },
+  "careers-benefits": {
+    "workFromAnywhereInThe": "Work from anywhere in the world",
+    "competitivePay": "Competitive pay",
+    "topOfMarketCompensation": "Top-of-market compensation",
+    "openSourceTime": "Open source time"
+  },
+  "why-it-matters": {
+    "whyTheseMetricsMatter": "Why These Metrics Matter",
+    "bundleSize": "Bundle Size",
+    "theBundleIsTheData": "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+    "renderingHydration": "Rendering & Hydration",
+    "connectingALargeJsonDictionary": "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).",
+    "dynamicLoading": "Dynamic Loading",
+    "loadingAllTranslationsUpfrontOverloads": "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+  }
+}

@@ -21,6 +21,7 @@
     "apps-benchmark/vite+react-base-app"
   ],
   "scripts": {
+    "report": "bun report/scripts/summarize.ts",
     "build": "turbo run build --concurrency=1",
     "test": "turbo run test:pages test:reactivity test:components --concurrency=1",
     "test:pages": "turbo run test:pages --concurrency=1",

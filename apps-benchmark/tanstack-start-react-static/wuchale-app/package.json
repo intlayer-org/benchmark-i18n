@@ -6,8 +6,8 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "dev": "vite dev --port 3000",
-    "build": "vite build",
+    "dev": "bunx --bun vite dev --port 3000",
+    "build": "bunx --bun vite build",
     "extract": "wuchale",
     "test": "bun test:pages && bun test:components && bun test:reactivity",
     "test:pages": "playwright test pages.test.ts",
@@ -15,7 +15,7 @@
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:components": "bun scripts/measure-components.ts",
     "test:lib-size": "bun scripts/measure-lib-size.ts",
-    "preview": "vite preview"
+    "preview": "bunx --bun vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",

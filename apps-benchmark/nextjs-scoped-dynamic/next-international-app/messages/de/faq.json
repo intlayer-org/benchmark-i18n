@@ -1,0 +1,20 @@
+{
+  "faq-header1.frequentlyAskedQuestions": "Häufig gestellte Fragen",
+  "faq-header1.everythingYouNeedToKnow": "Alles, was Sie über i18n Benchmark wissen müssen.",
+  "faq-list.whatIsI18nBenchmark": "Was ist i18n Benchmark?",
+  "faq-list.whatIsI18nBenchmarkAnswer": "i18n Benchmark ist eine Open-Source-Benchmarking-Suite, die die Leistung, Bundle-Größe und Entwicklererfahrung von Internationalisierungsbibliotheken für JavaScript- und React-Anwendungen misst und vergleicht.",
+  "faq-list.howAreBenchmarksConducted": "Wie werden Benchmarks durchgeführt?",
+  "faq-list.weRunStandardizedTestsIn": "Wir führen standardisierte Tests in isolierten Umgebungen mit konsistenter Hardware durch. Jeder Benchmark wird mehrfach wiederholt, um statistische Signifikanz zu gewährleisten. Alle Testkonfigurationen sind öffentlich in unserem GitHub-Repository verfügbar.",
+  "faq-list.whichLibrariesAreCurrentlySupported": "Welche Bibliotheken werden derzeit unterstützt?",
+  "faq-list.weSupportReactI18nextReact": "Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.",
+  "faq-list.canISubmitMyOwn": "Kann ich meine eigenen Benchmarks einreichen?",
+  "faq-list.yesCommunityBenchmarkSubmissionsAre": "Ja! Einreichungen von Benchmarks aus der Community sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Beiträge hinzu und senden Sie einen Pull Request. Unser Team wird qualifizierte Einreichungen prüfen und zusammenführen.",
+  "faq-list.howOftenAreBenchmarksUpdated": "Wie oft werden Benchmarks aktualisiert?",
+  "faq-list.weReRunAllBenchmarks": "Wir führen alle Benchmarks wöchentlich mit den neuesten stabilen Versionen jeder Bibliothek erneut durch. Hauptversionen lösen einen sofortigen Re-Benchmark-Zyklus aus.",
+  "faq-list.isTheDataReliable": "Sind die Daten zuverlässig?",
+  "faq-list.weFollowRigorousStatisticalMethodology": "Wir folgen einer strengen statistischen Methodik, einschließlich Aufwärmphasen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.",
+  "faq-list.doYouOfferConsultingServices": "Bieten Sie Beratungsdienstleistungen an?",
+  "faq-list.yesOurEnterprisePlanIncludes": "Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen bewerten. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Einschränkungen geben.",
+  "faq-list.howCanIContribute": "Wie kann ich beitragen?",
+  "faq-list.thereAreManyWaysTo": "Es gibt viele Möglichkeiten, beizutragen: Reichen Sie Benchmarks ein, verbessern Sie die Dokumentation, melden Sie Fehler, schlagen Sie neue Metriken vor oder sponsern Sie das Projekt. Besuchen Sie unser GitHub-Repository für weitere Details."
+}

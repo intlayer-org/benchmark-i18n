@@ -1,0 +1,17 @@
+{
+  "contact-form.name": "Nom",
+  "contact-form.yourName": "Votre nom",
+  "contact-form.email": "E-mail",
+  "contact-form.emailPlaceholder": "vous@exemple.com",
+  "contact-form.topic": "Sujet",
+  "contact-form.bugReport": "Rapport de Bug",
+  "contact-form.newBenchmarkIdea": "Nouvelle Idée de Benchmark",
+  "contact-form.methodologyQuestion": "Question sur la Méthodologie",
+  "contact-form.contribution": "Contribution",
+  "contact-form.other": "Autre",
+  "contact-form.message": "Message",
+  "contact-form.describeYourQuestionOrIdea": "Décrivez votre question ou idée...",
+  "contact-form.sendMessage": "Envoyer le Message",
+  "contact-header.getInTouch": "Contactez-nous",
+  "contact-header.haveIdeasFoundABug": "Vous avez des idées, trouvé un bug ou vous voulez contribuer à un benchmark ? Contactez-nous à"
+}
