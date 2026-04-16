@@ -1,4 +1,13 @@
 import { Profiler, useEffect } from "react";
+import messages from "../../../messages/de.json";
+import messages$1 from "../../../messages/es.json";
+import messages$2 from "../../../messages/fr.json";
+import messages$3 from "../../../messages/it.json";
+import messages$4 from "../../../messages/ja.json";
+import messages$5 from "../../../messages/ko.json";
+import messages$6 from "../../../messages/pt.json";
+import messages$7 from "../../../messages/ru.json";
+import messages$8 from "../../../messages/zh.json";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
 var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
@@ -9,7 +18,9 @@ var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy 
 //#endregion
 //#region ../../../node_modules/.bun/client-only@0.0.1/node_modules/client-only/index.js
 var require_client_only = __commonJSMin((() => {}));
-var client = (0, __commonJSMin(((exports, module) => {
+//#endregion
+//#region i18n/flatten.ts
+var import_client = __commonJSMin(((exports, module) => {
 	var __create = Object.create;
 	var __defProp = Object.defineProperty;
 	var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -209,115 +220,19 @@ var client = (0, __commonJSMin(((exports, module) => {
 			useCurrentLocale
 		};
 	}
-}))().createI18nClient)({
-	en: () => import("./en-8JcIIsH7.js"),
-	fr: () => import("./fr-DM1VOmlZ.js"),
-	es: () => import("./es-Cy8Nd8yU.js"),
-	de: () => import("./de-CJB-t81u.js"),
-	it: () => import("./it-BRcOR3LW.js"),
-	pt: () => import("./pt-joa40aOD.js"),
-	zh: () => import("./zh-ClyckgOR.js"),
-	ja: () => import("./ja-mqsdqXUF.js"),
-	ko: () => import("./ko-I68T2YoU.js"),
-	ru: () => import("./ru-CaU0LSSD.js")
-});
-function useI18n() {
-	return client.useI18n();
-}
-var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
-//#endregion
-//#region components/MockBanner.tsx
-var MockBanner = () => {
-	return jsx("div", {
-		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-		children: useI18n()("mockBanner")
-	});
-};
-//#endregion
-//#region components/pages/blog/BlogHeader.tsx
-function BlogHeader() {
-	const t = useI18n();
-	return jsxs(Fragment, { children: [
-		jsx(MockBanner, {}),
-		jsx("h1", {
-			className: "mb-2 text-3xl font-bold text-foreground",
-			children: t("header.blog")
-		}),
-		jsx("p", {
-			className: "mb-10 text-muted-foreground",
-			children: t("blog.blog-header.insightsTutorialsAndAnalysisFrom")
-		})
-	] });
-}
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
-function recordHydrationDuration() {
-	if (typeof window === "undefined") return;
-	console.log("--- BROWSER: RootDocument mounted");
-	performance.mark("hydration_end");
-	try {
-		if (performance.getEntriesByName("hydration_start").length > 0) {
-			performance.measure("hydration_duration", "hydration_start", "hydration_end");
-			console.log("--- BROWSER: hydration_duration measured");
-			const duration = performance.getEntriesByName("hydration_duration")[0]?.duration;
-			if (duration) console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
-		} else console.warn("--- BROWSER: hydration_start NOT FOUND");
-	} catch (err) {
-		console.warn("Could not measure hydration duration:", err);
+}))();
+function flattenMessages(obj, prefix = "") {
+	const result = {};
+	for (const key in obj) {
+		const fullKey = prefix ? `${prefix}.${key}` : key;
+		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
+		else result[fullKey] = String(obj[key]);
 	}
-}
-function onRenderCallback(id, phase, actualDuration) {
-	if (typeof window === "undefined") return;
-	if (phase === "nested-update") return;
-	try {
-		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-		window.__RENDER_METRICS__[id].push(actualDuration);
-	} catch (err) {
-		console.warn("onRenderCallback failed:", err);
-	}
+	return result;
 }
 //#endregion
-//#region components/AppProviders.tsx
-function AppProviders({ children, locale }) {
-	useEffect(() => {
-		document.documentElement.lang = locale;
-	}, [locale]);
-	useEffect(() => {
-		recordHydrationDuration();
-	}, []);
-	return jsx(Profiler, {
-		id: "AppRoot",
-		onRender: onRenderCallback,
-		children: jsx(I18nProviderClient, {
-			locale,
-			children
-		})
-	});
-}
-//#endregion
-//#region scripts/Wrapper.tsx
-var locale = "en";
-function Wrapper({ children }) {
-	return jsx(AppProviders, {
-		locale,
-		children
-	});
-}
-//#endregion
-//#region components/pages/blog/BlogHeader.wrapper.tsx
-function Wrapped() {
-	return jsx(Wrapper, { children: jsx(BlogHeader, {}) });
-}
-//#endregion
-export { Wrapped as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../../../messages/de.json";
 //#region locales/de.ts
 var de_default = flattenMessages(messages);
-//#endregion
-export { de_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
 //#endregion
 //#region locales/en.ts
 var en_default = flattenMessages({
@@ -791,64 +706,130 @@ var en_default = flattenMessages({
 	}
 });
 //#endregion
-export { en_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../../../messages/es.json";
 //#region locales/es.ts
-var es_default = flattenMessages(messages);
+var es_default = flattenMessages(messages$1);
 //#endregion
-export { es_default as default };
-//#region i18n/flatten.ts
-function flattenMessages(obj, prefix = "") {
-	const result = {};
-	for (const key in obj) {
-		const fullKey = prefix ? `${prefix}.${key}` : key;
-		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
-		else result[fullKey] = String(obj[key]);
-	}
-	return result;
+//#region locales/fr.ts
+var fr_default = flattenMessages(messages$2);
+//#endregion
+//#region locales/it.ts
+var it_default = flattenMessages(messages$3);
+//#endregion
+//#region locales/ja.ts
+var ja_default = flattenMessages(messages$4);
+//#endregion
+//#region locales/ko.ts
+var ko_default = flattenMessages(messages$5);
+//#endregion
+//#region locales/pt.ts
+var pt_default = flattenMessages(messages$6);
+//#endregion
+//#region locales/ru.ts
+var ru_default = flattenMessages(messages$7);
+//#endregion
+//#region locales/zh.ts
+var zh_default = flattenMessages(messages$8);
+//#endregion
+//#region locales/client.ts
+var client = (0, import_client.createI18nClient)({
+	en: () => Promise.resolve({ default: en_default }),
+	fr: () => Promise.resolve({ default: fr_default }),
+	es: () => Promise.resolve({ default: es_default }),
+	de: () => Promise.resolve({ default: de_default }),
+	it: () => Promise.resolve({ default: it_default }),
+	pt: () => Promise.resolve({ default: pt_default }),
+	zh: () => Promise.resolve({ default: zh_default }),
+	ja: () => Promise.resolve({ default: ja_default }),
+	ko: () => Promise.resolve({ default: ko_default }),
+	ru: () => Promise.resolve({ default: ru_default })
+});
+function useI18n() {
+	return client.useI18n();
+}
+var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+//#endregion
+//#region components/MockBanner.tsx
+var MockBanner = () => {
+	return jsx("div", {
+		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
+		children: useI18n()("mockBanner")
+	});
+};
+//#endregion
+//#region components/pages/blog/BlogHeader.tsx
+function BlogHeader() {
+	const t = useI18n();
+	return jsxs(Fragment, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
+			className: "mb-2 text-3xl font-bold text-foreground",
+			children: t("header.blog")
+		}),
+		jsx("p", {
+			className: "mb-10 text-muted-foreground",
+			children: t("blog.blog-header.insightsTutorialsAndAnalysisFrom")
+		})
+	] });
 }
 //#endregion
-export { flattenMessages as t };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../../../messages/fr.json";
-//#region locales/fr.ts
-var fr_default = flattenMessages(messages);
+//#region ../../../test-utils/src/browser-metrics.ts
+function recordHydrationDuration() {
+	if (typeof window === "undefined") return;
+	console.log("--- BROWSER: RootDocument mounted");
+	performance.mark("hydration_end");
+	try {
+		if (performance.getEntriesByName("hydration_start").length > 0) {
+			performance.measure("hydration_duration", "hydration_start", "hydration_end");
+			console.log("--- BROWSER: hydration_duration measured");
+			const duration = performance.getEntriesByName("hydration_duration")[0]?.duration;
+			if (duration) console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
+		} else console.warn("--- BROWSER: hydration_start NOT FOUND");
+	} catch (err) {
+		console.warn("Could not measure hydration duration:", err);
+	}
+}
+function onRenderCallback(id, phase, actualDuration) {
+	if (typeof window === "undefined") return;
+	if (phase === "nested-update") return;
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
+}
 //#endregion
-export { fr_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../../../messages/it.json";
-//#region locales/it.ts
-var it_default = flattenMessages(messages);
+//#region components/AppProviders.tsx
+function AppProviders({ children, locale }) {
+	useEffect(() => {
+		document.documentElement.lang = locale;
+	}, [locale]);
+	useEffect(() => {
+		recordHydrationDuration();
+	}, []);
+	return jsx(Profiler, {
+		id: "AppRoot",
+		onRender: onRenderCallback,
+		children: jsx(I18nProviderClient, {
+			locale,
+			children
+		})
+	});
+}
 //#endregion
-export { it_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../../../messages/ja.json";
-//#region locales/ja.ts
-var ja_default = flattenMessages(messages);
+//#region scripts/Wrapper.tsx
+var locale = "en";
+function Wrapper({ children }) {
+	return jsx(AppProviders, {
+		locale,
+		children
+	});
+}
 //#endregion
-export { ja_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../../../messages/ko.json";
-//#region locales/ko.ts
-var ko_default = flattenMessages(messages);
+//#region components/pages/blog/BlogHeader.wrapper.tsx
+function Wrapped() {
+	return jsx(Wrapper, { children: jsx(BlogHeader, {}) });
+}
 //#endregion
-export { ko_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../../../messages/pt.json";
-//#region locales/pt.ts
-var pt_default = flattenMessages(messages);
-//#endregion
-export { pt_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../../../messages/ru.json";
-//#region locales/ru.ts
-var ru_default = flattenMessages(messages);
-//#endregion
-export { ru_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../../../messages/zh.json";
-//#region locales/zh.ts
-var zh_default = flattenMessages(messages);
-//#endregion
-export { zh_default as default };
+export { Wrapped as default };

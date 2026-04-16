@@ -1,36 +1,45 @@
 import { Profiler as e, useEffect as t, useLayoutEffect as n } from "react";
-import { Fragment as r, jsx as i, jsxs as a } from "react/jsx-runtime";
+import r from "../../../messages/de.json";
+import i from "../../../messages/es.json";
+import a from "../../../messages/fr.json";
+import o from "../../../messages/it.json";
+import s from "../../../messages/ja.json";
+import c from "../../../messages/ko.json";
+import l from "../../../messages/pt.json";
+import u from "../../../messages/ru.json";
+import d from "../../../messages/zh.json";
+import { Fragment as f, jsx as p, jsxs as m } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var h = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), g = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), c = o((() => {})), l = (0, o(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+}), _ = h((() => {})), v = h(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, s = Object.getPrototypeOf, c = Object.prototype.hasOwnProperty, l = Object.prototype.propertyIsEnumerable, u = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
 		value: n
-	}) : e[t] = n, p = (e, t) => {
-		for (var n in t ||= {}) u.call(t, n) && f(e, n, t[n]);
-		if (o) for (var n of o(t)) d.call(t, n) && f(e, n, t[n]);
+	}) : e[t] = n, d = (e, t) => {
+		for (var n in t ||= {}) c.call(t, n) && u(e, n, t[n]);
+		if (o) for (var n of o(t)) l.call(t, n) && u(e, n, t[n]);
 		return e;
-	}, m = (e, t) => {
+	}, f = (e, t) => {
 		for (var n in t) r(e, n, {
 			get: t[n],
 			enumerable: !0
 		});
-	}, h = (e, t, n, o) => {
-		if (t && typeof t == "object" || typeof t == "function") for (let s of a(t)) !u.call(e, s) && s !== n && r(e, s, {
+	}, p = (e, t, n, o) => {
+		if (t && typeof t == "object" || typeof t == "function") for (let s of a(t)) !c.call(e, s) && s !== n && r(e, s, {
 			get: () => t[s],
 			enumerable: !(o = i(t, s)) || o.enumerable
 		});
 		return e;
-	}, g = (e, t, i) => (i = e == null ? {} : n(l(e)), h(t || !e || !e.__esModule ? r(i, "default", {
+	}, m = (e, t, i) => (i = e == null ? {} : n(s(e)), p(t || !e || !e.__esModule ? r(i, "default", {
 		value: e,
 		enumerable: !0
-	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), c();
-	var y = s("next/navigation"), b = g(s("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	}) : i, e)), h = (e) => p(r({}, "__esModule", { value: !0 }), e), v = {};
+	f(v, { createI18nClient: () => V }), t.exports = h(v), _();
+	var y = g("next/navigation"), b = m(g("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => d(d({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -54,7 +63,7 @@ var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s
 			}, i));
 		};
 	}
-	var D = s("react"), O = s("react"), k = s("react");
+	var D = g("react"), O = g("react"), k = g("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -84,7 +93,7 @@ var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = s("react");
+	var M = g("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -92,7 +101,7 @@ var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = s("next/navigation");
+	var P = g("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -114,7 +123,7 @@ var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s
 			return e;
 		};
 	}
-	var L = s("next/navigation"), R = s("react"), z = "locale";
+	var L = g("next/navigation"), R = g("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -136,111 +145,18 @@ var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s
 			useCurrentLocale: i
 		};
 	}
-}))().createI18nClient)({
-	en: () => import("./en-BBd0GnsG.js"),
-	fr: () => import("./fr-CNa8JY_j.js"),
-	es: () => import("./es-toYnKglo.js"),
-	de: () => import("./de-DmBOKccE.js"),
-	it: () => import("./it-CYhFiVhP.js"),
-	pt: () => import("./pt-Duai3FUr.js"),
-	zh: () => import("./zh-HzKZFYcG.js"),
-	ja: () => import("./ja-DU6HOe56.js"),
-	ko: () => import("./ko-DTj-sywg.js"),
-	ru: () => import("./ru-C6skHjGf.js")
-});
-function u() {
-	return l.useI18n();
-}
-var { useScopedI18n: d, I18nProviderClient: f, useChangeLocale: p, useCurrentLocale: m } = l;
-//#endregion
-//#region hooks/usePerformanceMeasure.ts
-function h(e) {
-	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), n(() => {
-		if (typeof performance < "u" && performance.mark && performance.measure) {
-			performance.mark(`${e}-end`);
-			try {
-				performance.measure(`${e}-render`, `${e}-start`, `${e}-end`);
-			} catch {}
-		}
-	}, [e]);
-}
-//#endregion
-//#region components/pages/about/AboutHeader.tsx
-function g() {
-	let e = u();
-	return h("AboutHeader"), a(r, { children: [i("h1", {
-		className: "mb-4 text-3xl font-bold text-foreground",
-		children: e("about.about-header.aboutThisBenchmark")
-	}), i("p", {
-		className: "mb-8 max-w-3xl text-muted-foreground",
-		children: e("about.about-header.thisIsAnOpenSource")
-	})] });
-}
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
-function _() {
-	if (!(typeof window > "u")) {
-		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
-		try {
-			if (performance.getEntriesByName("hydration_start").length > 0) {
-				performance.measure("hydration_duration", "hydration_start", "hydration_end"), console.log("--- BROWSER: hydration_duration measured");
-				let e = performance.getEntriesByName("hydration_duration")[0]?.duration;
-				e && console.log(`Hydration Duration: ${e.toFixed(2)}ms`);
-			} else console.warn("--- BROWSER: hydration_start NOT FOUND");
-		} catch (e) {
-			console.warn("Could not measure hydration duration:", e);
-		}
+}))();
+function y(e, t = "") {
+	let n = {};
+	for (let r in e) {
+		let i = t ? `${t}.${r}` : r;
+		typeof e[r] == "object" && e[r] !== null ? Object.assign(n, y(e[r], i)) : n[i] = String(e[r]);
 	}
-}
-function v(e, t, n) {
-	if (!(typeof window > "u") && t !== "nested-update") try {
-		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
-	} catch (e) {
-		console.warn("onRenderCallback failed:", e);
-	}
+	return n;
 }
 //#endregion
-//#region components/AppProviders.tsx
-function y({ children: n, locale: r }) {
-	return t(() => {
-		document.documentElement.lang = r;
-	}, [r]), t(() => {
-		_();
-	}, []), i(e, {
-		id: "AppRoot",
-		onRender: v,
-		children: i(f, {
-			locale: r,
-			children: n
-		})
-	});
-}
-//#endregion
-//#region scripts/Wrapper.tsx
-var b = "en";
-function x({ children: e }) {
-	return i(y, {
-		locale: b,
-		children: e
-	});
-}
-//#endregion
-//#region components/pages/about/AboutHeader.wrapper.tsx
-function S() {
-	return i(x, { children: i(g, {}) });
-}
-//#endregion
-export { S as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../../../messages/de.json";
 //#region locales/de.ts
-var n = e(t);
-//#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-//#endregion
-//#region locales/en.ts
-var t = e({
+var b = y(r), x = y({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -709,65 +625,98 @@ var t = e({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
+}), S = y(i), C = y(a), w = y(o), T = y(s), E = y(c), D = y(l), O = y(u), k = y(d), A = (0, v.createI18nClient)({
+	en: () => Promise.resolve({ default: x }),
+	fr: () => Promise.resolve({ default: C }),
+	es: () => Promise.resolve({ default: S }),
+	de: () => Promise.resolve({ default: b }),
+	it: () => Promise.resolve({ default: w }),
+	pt: () => Promise.resolve({ default: D }),
+	zh: () => Promise.resolve({ default: k }),
+	ja: () => Promise.resolve({ default: T }),
+	ko: () => Promise.resolve({ default: E }),
+	ru: () => Promise.resolve({ default: O })
 });
+function j() {
+	return A.useI18n();
+}
+var { useScopedI18n: M, I18nProviderClient: N, useChangeLocale: P, useCurrentLocale: F } = A;
 //#endregion
-export { t as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../../../messages/es.json";
-//#region locales/es.ts
-var n = e(t);
-//#endregion
-export { n as default };
-//#region i18n/flatten.ts
-function e(t, n = "") {
-	let r = {};
-	for (let i in t) {
-		let a = n ? `${n}.${i}` : i;
-		typeof t[i] == "object" && t[i] !== null ? Object.assign(r, e(t[i], a)) : r[a] = String(t[i]);
-	}
-	return r;
+//#region hooks/usePerformanceMeasure.ts
+function I(e) {
+	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), n(() => {
+		if (typeof performance < "u" && performance.mark && performance.measure) {
+			performance.mark(`${e}-end`);
+			try {
+				performance.measure(`${e}-render`, `${e}-start`, `${e}-end`);
+			} catch {}
+		}
+	}, [e]);
 }
 //#endregion
-export { e as t };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../../../messages/fr.json";
-//#region locales/fr.ts
-var n = e(t);
+//#region components/pages/about/AboutHeader.tsx
+function L() {
+	let e = j();
+	return I("AboutHeader"), m(f, { children: [p("h1", {
+		className: "mb-4 text-3xl font-bold text-foreground",
+		children: e("about.about-header.aboutThisBenchmark")
+	}), p("p", {
+		className: "mb-8 max-w-3xl text-muted-foreground",
+		children: e("about.about-header.thisIsAnOpenSource")
+	})] });
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../../../messages/it.json";
-//#region locales/it.ts
-var n = e(t);
+//#region ../../../test-utils/src/browser-metrics.ts
+function R() {
+	if (!(typeof window > "u")) {
+		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
+		try {
+			if (performance.getEntriesByName("hydration_start").length > 0) {
+				performance.measure("hydration_duration", "hydration_start", "hydration_end"), console.log("--- BROWSER: hydration_duration measured");
+				let e = performance.getEntriesByName("hydration_duration")[0]?.duration;
+				e && console.log(`Hydration Duration: ${e.toFixed(2)}ms`);
+			} else console.warn("--- BROWSER: hydration_start NOT FOUND");
+		} catch (e) {
+			console.warn("Could not measure hydration duration:", e);
+		}
+	}
+}
+function z(e, t, n) {
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../../../messages/ja.json";
-//#region locales/ja.ts
-var n = e(t);
+//#region components/AppProviders.tsx
+function B({ children: n, locale: r }) {
+	return t(() => {
+		document.documentElement.lang = r;
+	}, [r]), t(() => {
+		R();
+	}, []), p(e, {
+		id: "AppRoot",
+		onRender: z,
+		children: p(N, {
+			locale: r,
+			children: n
+		})
+	});
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../../../messages/ko.json";
-//#region locales/ko.ts
-var n = e(t);
+//#region scripts/Wrapper.tsx
+var V = "en";
+function H({ children: e }) {
+	return p(B, {
+		locale: V,
+		children: e
+	});
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../../../messages/pt.json";
-//#region locales/pt.ts
-var n = e(t);
+//#region components/pages/about/AboutHeader.wrapper.tsx
+function U() {
+	return p(H, { children: p(L, {}) });
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../../../messages/ru.json";
-//#region locales/ru.ts
-var n = e(t);
-//#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../../../messages/zh.json";
-//#region locales/zh.ts
-var n = e(t);
-//#endregion
-export { n as default };
+export { U as default };

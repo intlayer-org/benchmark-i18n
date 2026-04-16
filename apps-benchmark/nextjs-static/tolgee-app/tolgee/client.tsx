@@ -25,11 +25,22 @@ export const TolgeeNextProvider = ({
   const router = useRouter();
 
   useEffect(() => {
-    // this ensures server components refresh, after translation change
-    const { unsubscribe } = tolgee.on('permanentChange', () => {
+    // Refresh server components when a translation is permanently changed (dev/in-context editor).
+    const { unsubscribe: unsubPermanentChange } = tolgee.on('permanentChange', () => {
       router.refresh();
     });
-    return () => unsubscribe();
+
+    // Update html[lang] immediately on client-side language switch, then refresh
+    // server components so they re-render with the new locale from the cookie.
+    const { unsubscribe: unsubLanguage } = tolgee.on('language', ({ value }) => {
+      document.documentElement.lang = value;
+      router.refresh();
+    });
+
+    return () => {
+      unsubPermanentChange();
+      unsubLanguage();
+    };
   }, [router]);
 
   return (

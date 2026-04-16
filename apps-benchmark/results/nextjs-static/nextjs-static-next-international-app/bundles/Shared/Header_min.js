@@ -2,12 +2,21 @@ import { Profiler as e, useEffect as t, useLayoutEffect as n, useState as r } fr
 import i from "next/link";
 import { useParams as a, usePathname as o, useRouter as s } from "next/navigation";
 import { ChevronDown as c } from "lucide-react";
-import { jsx as l, jsxs as u } from "react/jsx-runtime";
+import l from "../messages/de.json";
+import u from "../messages/es.json";
+import d from "../messages/fr.json";
+import f from "../messages/it.json";
+import p from "../messages/ja.json";
+import m from "../messages/ko.json";
+import h from "../messages/pt.json";
+import g from "../messages/ru.json";
+import _ from "../messages/zh.json";
+import { jsx as v, jsxs as y } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var b = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), x = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), p = d((() => {})), m = (0, d(((e, t) => {
+}), S = b((() => {})), C = b(((e, t) => {
 	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, s = Object.getPrototypeOf, c = Object.prototype.hasOwnProperty, l = Object.prototype.propertyIsEnumerable, u = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
@@ -17,47 +26,47 @@ var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f
 		for (var n in t ||= {}) c.call(t, n) && u(e, n, t[n]);
 		if (o) for (var n of o(t)) l.call(t, n) && u(e, n, t[n]);
 		return e;
-	}, m = (e, t) => {
+	}, f = (e, t) => {
 		for (var n in t) r(e, n, {
 			get: t[n],
 			enumerable: !0
 		});
-	}, h = (e, t, n, o) => {
+	}, p = (e, t, n, o) => {
 		if (t && typeof t == "object" || typeof t == "function") for (let s of a(t)) !c.call(e, s) && s !== n && r(e, s, {
 			get: () => t[s],
 			enumerable: !(o = i(t, s)) || o.enumerable
 		});
 		return e;
-	}, g = (e, t, i) => (i = e == null ? {} : n(s(e)), h(t || !e || !e.__esModule ? r(i, "default", {
+	}, m = (e, t, i) => (i = e == null ? {} : n(s(e)), p(t || !e || !e.__esModule ? r(i, "default", {
 		value: e,
 		enumerable: !0
-	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), p();
-	var y = f("next/navigation"), b = g(f("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => d(d({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
-	function S(e, t) {
+	}) : i, e)), h = (e) => p(r({}, "__esModule", { value: !0 }), e), g = {};
+	f(g, { createI18nClient: () => V }), t.exports = h(g), S();
+	var _ = x("next/navigation"), v = m(x("react")), y = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => d(d({}, e), typeof r == "string" ? { [t + n]: r } : y(r, `${t}${n}.`)), {});
+	function b(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
-	var C = (e) => S("warn", e), w = (e) => S("error", e), T = /* @__PURE__ */ new Map();
+	var C = (e) => b("warn", e), w = (e) => b("error", e), T = /* @__PURE__ */ new Map();
 	function E(e, t, n) {
 		function r({ locale: t, importLocale: r, children: i }) {
-			let a = T.get(t) ?? (0, b.use)(r).default;
+			let a = T.get(t) ?? (0, v.use)(r).default;
 			T.has(t) || T.set(t, a);
-			let o = (0, b.useMemo)(() => ({
-				localeContent: x(a),
-				fallbackLocale: n ? x(n) : void 0,
+			let o = (0, v.useMemo)(() => ({
+				localeContent: y(a),
+				fallbackLocale: n ? y(n) : void 0,
 				locale: t
 			}), [a, t]);
-			return b.default.createElement(e.Provider, { value: o }, i);
+			return v.default.createElement(e.Provider, { value: o }, i);
 		}
 		return function({ locale: e, fallback: n, children: i }) {
 			let a = t[e];
-			return a || (w(`The locale '${e}' is not supported. Defined locales are: [${Object.keys(t).join(", ")}].`), (0, y.notFound)()), b.default.createElement(b.Suspense, { fallback: n }, b.default.createElement(r, {
+			return a || (w(`The locale '${e}' is not supported. Defined locales are: [${Object.keys(t).join(", ")}].`), (0, _.notFound)()), v.default.createElement(v.Suspense, { fallback: n }, v.default.createElement(r, {
 				locale: e,
 				importLocale: a()
 			}, i));
 		};
 	}
-	var D = f("react"), O = f("react"), k = f("react");
+	var D = x("react"), O = x("react"), k = x("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -87,7 +96,7 @@ var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = f("react");
+	var M = x("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -95,7 +104,7 @@ var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = f("next/navigation");
+	var P = x("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -117,7 +126,7 @@ var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f
 			return e;
 		};
 	}
-	var L = f("next/navigation"), R = f("react"), z = "locale";
+	var L = x("next/navigation"), R = x("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -139,297 +148,18 @@ var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f
 			useCurrentLocale: i
 		};
 	}
-}))().createI18nClient)({
-	en: () => import("./en-BBd0GnsG.js"),
-	fr: () => import("./fr-Bv7g5aBq.js"),
-	es: () => import("./es-B-8t91li.js"),
-	de: () => import("./de-iaWb6pZK.js"),
-	it: () => import("./it-H2qsQl3n.js"),
-	pt: () => import("./pt-BwaiAWB-.js"),
-	zh: () => import("./zh-DhSddXji.js"),
-	ja: () => import("./ja-D3pIQ60m.js"),
-	ko: () => import("./ko-BpFg42aw.js"),
-	ru: () => import("./ru-BNWIJP5j.js")
-});
-function h() {
-	return m.useI18n();
-}
-var { useScopedI18n: g, I18nProviderClient: _, useChangeLocale: v, useCurrentLocale: y } = m;
-//#endregion
-//#region components/ThemeToggle.tsx
-function b() {
-	if (typeof window > "u") return "auto";
-	let e = window.localStorage.getItem("theme");
-	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
-}
-function x(e) {
-	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
-	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
-}
-function S() {
-	let e = h(), [n, i] = r("auto");
-	t(() => {
-		let e = b();
-		i(e), x(e);
-	}, []), t(() => {
-		if (n !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => x("auto");
-		return e.addEventListener("change", t), () => {
-			e.removeEventListener("change", t);
-		};
-	}, [n]);
-	function a() {
-		let e = n === "light" ? "dark" : n === "dark" ? "auto" : "light";
-		i(e), x(e), window.localStorage.setItem("theme", e);
+}))();
+function w(e, t = "") {
+	let n = {};
+	for (let r in e) {
+		let i = t ? `${t}.${r}` : r;
+		typeof e[r] == "object" && e[r] !== null ? Object.assign(n, w(e[r], i)) : n[i] = String(e[r]);
 	}
-	let o = e(n === "auto" ? "theme-toggle.themeModeAutoSystemClick" : n === "light" ? "theme-toggle.themeModeLightClick" : "theme-toggle.themeModeDarkClick");
-	return l("button", {
-		type: "button",
-		onClick: a,
-		"aria-label": o,
-		title: o,
-		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
-		children: e(n === "auto" ? "theme-toggle.themeAuto" : n === "dark" ? "theme-toggle.themeDark" : "theme-toggle.themeLight")
-	});
+	return n;
 }
 //#endregion
-//#region i18n/config.ts
-var C = [
-	"en",
-	"fr",
-	"es",
-	"de",
-	"it",
-	"pt",
-	"zh",
-	"ja",
-	"ko",
-	"ru"
-], w = (e) => {
-	try {
-		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
-		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
-	} catch {
-		return e.toUpperCase();
-	}
-};
-//#endregion
-//#region components/LocaleSwitcher.tsx
-function T() {
-	let e = a().locale ?? "en", t = o(), n = s(), r = (r) => {
-		let i = t.replace(`/${e}`, `/${r}`);
-		n.push(i);
-	};
-	return l("div", {
-		className: "flex items-center gap-2",
-		children: l("select", {
-			value: e,
-			onChange: (e) => r(e.target.value),
-			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: C.map((e) => l("option", {
-				value: e,
-				children: w(e)
-			}, e))
-		})
-	});
-}
-//#endregion
-//#region hooks/usePerformanceMeasure.ts
-function E(e) {
-	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), n(() => {
-		if (typeof performance < "u" && performance.mark && performance.measure) {
-			performance.mark(`${e}-end`);
-			try {
-				performance.measure(`${e}-render`, `${e}-start`, `${e}-end`);
-			} catch {}
-		}
-	}, [e]);
-}
-//#endregion
-//#region components/Header.tsx
-function D() {
-	let e = h();
-	E("Header");
-	let [t, n] = r(!1), s = a().locale ?? "en", d = o(), f = [
-		{
-			href: `/${s}/products`,
-			label: e("header.products")
-		},
-		{
-			href: `/${s}/pricing`,
-			label: e("header.pricing")
-		},
-		{
-			href: `/${s}/team`,
-			label: e("header.team")
-		},
-		{
-			href: `/${s}/blog`,
-			label: e("header.blog")
-		},
-		{
-			href: `/${s}/careers`,
-			label: e("header.careers")
-		},
-		{
-			href: `/${s}/faq`,
-			label: e("header.faq")
-		},
-		{
-			href: `/${s}/contact`,
-			label: e("footer.contact")
-		},
-		{
-			href: `/${s}/settings`,
-			label: e("header.settings")
-		}
-	];
-	return l("header", {
-		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: u("nav", {
-			className: "container flex h-16 items-center justify-between",
-			children: [u("div", {
-				className: "flex items-center gap-8",
-				children: [l(i, {
-					href: `/${s}`,
-					className: "text-lg font-bold tracking-tight text-primary no-underline",
-					children: "i18n Bench"
-				}), u("div", {
-					className: "hidden items-center gap-6 text-sm font-medium md:flex",
-					children: [
-						l(i, {
-							href: `/${s}`,
-							className: `nav-link${((e) => d === e)(`/${s}`) ? " is-active" : ""}`,
-							children: e("header.home")
-						}),
-						l(i, {
-							href: `/${s}/about`,
-							className: `nav-link${((e) => d.startsWith(e))(`/${s}/about`) ? " is-active" : ""}`,
-							children: e("footer.methodology")
-						}),
-						u("div", {
-							className: "relative",
-							children: [u("button", {
-								type: "button",
-								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-								onMouseEnter: () => n(!0),
-								onMouseLeave: () => n(!1),
-								onClick: () => n(!t),
-								children: [e("header.mockPages"), l(c, {
-									size: 14,
-									className: `transition-transform ${t ? "rotate-180" : ""}`
-								})]
-							}), t && l("div", {
-								className: "absolute left-0 top-full pt-2 w-48",
-								onMouseEnter: () => n(!0),
-								onMouseLeave: () => n(!1),
-								children: l("div", {
-									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: f.map((e) => l(i, {
-										href: e.href,
-										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-										onClick: () => n(!1),
-										children: e.label
-									}, e.href))
-								})
-							})]
-						})
-					]
-				})]
-			}), u("div", {
-				className: "flex items-center gap-4",
-				children: [
-					u("a", {
-						href: "https://github.com/intlayer-org/benchmark-i18n",
-						target: "_blank",
-						rel: "noreferrer",
-						className: "text-muted-foreground transition hover:text-foreground",
-						children: [l("span", {
-							className: "sr-only",
-							children: e("header.goToGithub")
-						}), l("svg", {
-							viewBox: "0 0 16 16",
-							"aria-hidden": "true",
-							width: "20",
-							height: "20",
-							children: l("path", {
-								fill: "currentColor",
-								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							})
-						})]
-					}),
-					l(T, {}),
-					l(S, {})
-				]
-			})]
-		})
-	});
-}
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
-function O() {
-	if (!(typeof window > "u")) {
-		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
-		try {
-			if (performance.getEntriesByName("hydration_start").length > 0) {
-				performance.measure("hydration_duration", "hydration_start", "hydration_end"), console.log("--- BROWSER: hydration_duration measured");
-				let e = performance.getEntriesByName("hydration_duration")[0]?.duration;
-				e && console.log(`Hydration Duration: ${e.toFixed(2)}ms`);
-			} else console.warn("--- BROWSER: hydration_start NOT FOUND");
-		} catch (e) {
-			console.warn("Could not measure hydration duration:", e);
-		}
-	}
-}
-function k(e, t, n) {
-	if (!(typeof window > "u") && t !== "nested-update") try {
-		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
-	} catch (e) {
-		console.warn("onRenderCallback failed:", e);
-	}
-}
-//#endregion
-//#region components/AppProviders.tsx
-function A({ children: n, locale: r }) {
-	return t(() => {
-		document.documentElement.lang = r;
-	}, [r]), t(() => {
-		O();
-	}, []), l(e, {
-		id: "AppRoot",
-		onRender: k,
-		children: l(_, {
-			locale: r,
-			children: n
-		})
-	});
-}
-//#endregion
-//#region scripts/Wrapper.tsx
-var j = "en";
-function M({ children: e }) {
-	return l(A, {
-		locale: j,
-		children: e
-	});
-}
-//#endregion
-//#region components/Header.wrapper.tsx
-function N() {
-	return l(M, { children: l(D, {}) });
-}
-//#endregion
-export { N as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../messages/de.json";
 //#region locales/de.ts
-var n = e(t);
-//#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-//#endregion
-//#region locales/en.ts
-var t = e({
+var T = w(l), E = w({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -898,65 +628,284 @@ var t = e({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
+}), D = w(u), O = w(d), k = w(f), A = w(p), j = w(m), M = w(h), N = w(g), P = w(_), F = (0, C.createI18nClient)({
+	en: () => Promise.resolve({ default: E }),
+	fr: () => Promise.resolve({ default: O }),
+	es: () => Promise.resolve({ default: D }),
+	de: () => Promise.resolve({ default: T }),
+	it: () => Promise.resolve({ default: k }),
+	pt: () => Promise.resolve({ default: M }),
+	zh: () => Promise.resolve({ default: P }),
+	ja: () => Promise.resolve({ default: A }),
+	ko: () => Promise.resolve({ default: j }),
+	ru: () => Promise.resolve({ default: N })
 });
+function I() {
+	return F.useI18n();
+}
+var { useScopedI18n: L, I18nProviderClient: R, useChangeLocale: z, useCurrentLocale: B } = F;
 //#endregion
-export { t as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../messages/es.json";
-//#region locales/es.ts
-var n = e(t);
-//#endregion
-export { n as default };
-//#region i18n/flatten.ts
-function e(t, n = "") {
-	let r = {};
-	for (let i in t) {
-		let a = n ? `${n}.${i}` : i;
-		typeof t[i] == "object" && t[i] !== null ? Object.assign(r, e(t[i], a)) : r[a] = String(t[i]);
+//#region components/ThemeToggle.tsx
+function V() {
+	if (typeof window > "u") return "auto";
+	let e = window.localStorage.getItem("theme");
+	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
+}
+function H(e) {
+	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
+	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
+}
+function U() {
+	let e = I(), [n, i] = r("auto");
+	t(() => {
+		let e = V();
+		i(e), H(e);
+	}, []), t(() => {
+		if (n !== "auto") return;
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => H("auto");
+		return e.addEventListener("change", t), () => {
+			e.removeEventListener("change", t);
+		};
+	}, [n]);
+	function a() {
+		let e = n === "light" ? "dark" : n === "dark" ? "auto" : "light";
+		i(e), H(e), window.localStorage.setItem("theme", e);
 	}
-	return r;
+	let o = e(n === "auto" ? "theme-toggle.themeModeAutoSystemClick" : n === "light" ? "theme-toggle.themeModeLightClick" : "theme-toggle.themeModeDarkClick");
+	return v("button", {
+		type: "button",
+		onClick: a,
+		"aria-label": o,
+		title: o,
+		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
+		children: e(n === "auto" ? "theme-toggle.themeAuto" : n === "dark" ? "theme-toggle.themeDark" : "theme-toggle.themeLight")
+	});
 }
 //#endregion
-export { e as t };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../messages/fr.json";
-//#region locales/fr.ts
-var n = e(t);
+//#region i18n/config.ts
+var W = [
+	"en",
+	"fr",
+	"es",
+	"de",
+	"it",
+	"pt",
+	"zh",
+	"ja",
+	"ko",
+	"ru"
+], G = (e) => {
+	try {
+		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
+		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
+	} catch {
+		return e.toUpperCase();
+	}
+};
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../messages/it.json";
-//#region locales/it.ts
-var n = e(t);
+//#region components/LocaleSwitcher.tsx
+function K() {
+	let e = a().locale ?? "en", t = o(), n = s(), r = (r) => {
+		let i = t.replace(`/${e}`, `/${r}`);
+		n.push(i);
+	};
+	return v("div", {
+		className: "flex items-center gap-2",
+		children: v("select", {
+			value: e,
+			onChange: (e) => r(e.target.value),
+			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
+			children: W.map((e) => v("option", {
+				value: e,
+				children: G(e)
+			}, e))
+		})
+	});
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../messages/ja.json";
-//#region locales/ja.ts
-var n = e(t);
+//#region hooks/usePerformanceMeasure.ts
+function q(e) {
+	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), n(() => {
+		if (typeof performance < "u" && performance.mark && performance.measure) {
+			performance.mark(`${e}-end`);
+			try {
+				performance.measure(`${e}-render`, `${e}-start`, `${e}-end`);
+			} catch {}
+		}
+	}, [e]);
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../messages/ko.json";
-//#region locales/ko.ts
-var n = e(t);
+//#region components/Header.tsx
+function J() {
+	let e = I();
+	q("Header");
+	let [t, n] = r(!1), s = a().locale ?? "en", l = o(), u = [
+		{
+			href: `/${s}/products`,
+			label: e("header.products")
+		},
+		{
+			href: `/${s}/pricing`,
+			label: e("header.pricing")
+		},
+		{
+			href: `/${s}/team`,
+			label: e("header.team")
+		},
+		{
+			href: `/${s}/blog`,
+			label: e("header.blog")
+		},
+		{
+			href: `/${s}/careers`,
+			label: e("header.careers")
+		},
+		{
+			href: `/${s}/faq`,
+			label: e("header.faq")
+		},
+		{
+			href: `/${s}/contact`,
+			label: e("footer.contact")
+		},
+		{
+			href: `/${s}/settings`,
+			label: e("header.settings")
+		}
+	];
+	return v("header", {
+		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
+		children: y("nav", {
+			className: "container flex h-16 items-center justify-between",
+			children: [y("div", {
+				className: "flex items-center gap-8",
+				children: [v(i, {
+					href: `/${s}`,
+					className: "text-lg font-bold tracking-tight text-primary no-underline",
+					children: "i18n Bench"
+				}), y("div", {
+					className: "hidden items-center gap-6 text-sm font-medium md:flex",
+					children: [
+						v(i, {
+							href: `/${s}`,
+							className: `nav-link${((e) => l === e)(`/${s}`) ? " is-active" : ""}`,
+							children: e("header.home")
+						}),
+						v(i, {
+							href: `/${s}/about`,
+							className: `nav-link${((e) => l.startsWith(e))(`/${s}/about`) ? " is-active" : ""}`,
+							children: e("footer.methodology")
+						}),
+						y("div", {
+							className: "relative",
+							children: [y("button", {
+								type: "button",
+								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+								onMouseEnter: () => n(!0),
+								onMouseLeave: () => n(!1),
+								onClick: () => n(!t),
+								children: [e("header.mockPages"), v(c, {
+									size: 14,
+									className: `transition-transform ${t ? "rotate-180" : ""}`
+								})]
+							}), t && v("div", {
+								className: "absolute left-0 top-full pt-2 w-48",
+								onMouseEnter: () => n(!0),
+								onMouseLeave: () => n(!1),
+								children: v("div", {
+									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
+									children: u.map((e) => v(i, {
+										href: e.href,
+										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+										onClick: () => n(!1),
+										children: e.label
+									}, e.href))
+								})
+							})]
+						})
+					]
+				})]
+			}), y("div", {
+				className: "flex items-center gap-4",
+				children: [
+					y("a", {
+						href: "https://github.com/intlayer-org/benchmark-i18n",
+						target: "_blank",
+						rel: "noreferrer",
+						className: "text-muted-foreground transition hover:text-foreground",
+						children: [v("span", {
+							className: "sr-only",
+							children: e("header.goToGithub")
+						}), v("svg", {
+							viewBox: "0 0 16 16",
+							"aria-hidden": "true",
+							width: "20",
+							height: "20",
+							children: v("path", {
+								fill: "currentColor",
+								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+							})
+						})]
+					}),
+					v(K, {}),
+					v(U, {})
+				]
+			})]
+		})
+	});
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../messages/pt.json";
-//#region locales/pt.ts
-var n = e(t);
+//#region ../../../test-utils/src/browser-metrics.ts
+function Y() {
+	if (!(typeof window > "u")) {
+		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
+		try {
+			if (performance.getEntriesByName("hydration_start").length > 0) {
+				performance.measure("hydration_duration", "hydration_start", "hydration_end"), console.log("--- BROWSER: hydration_duration measured");
+				let e = performance.getEntriesByName("hydration_duration")[0]?.duration;
+				e && console.log(`Hydration Duration: ${e.toFixed(2)}ms`);
+			} else console.warn("--- BROWSER: hydration_start NOT FOUND");
+		} catch (e) {
+			console.warn("Could not measure hydration duration:", e);
+		}
+	}
+}
+function X(e, t, n) {
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../messages/ru.json";
-//#region locales/ru.ts
-var n = e(t);
+//#region components/AppProviders.tsx
+function Z({ children: n, locale: r }) {
+	return t(() => {
+		document.documentElement.lang = r;
+	}, [r]), t(() => {
+		Y();
+	}, []), v(e, {
+		id: "AppRoot",
+		onRender: X,
+		children: v(R, {
+			locale: r,
+			children: n
+		})
+	});
+}
 //#endregion
-export { n as default };
-import { t as e } from "./flatten-BwyvFymq.js";
-import t from "../messages/zh.json";
-//#region locales/zh.ts
-var n = e(t);
+//#region scripts/Wrapper.tsx
+var Q = "en";
+function $({ children: e }) {
+	return v(Z, {
+		locale: Q,
+		children: e
+	});
+}
 //#endregion
-export { n as default };
+//#region components/Header.wrapper.tsx
+function ee() {
+	return v($, { children: v(J, {}) });
+}
+//#endregion
+export { ee as default };

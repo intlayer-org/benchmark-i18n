@@ -1,16 +1,22 @@
 "use client";
 
 import { useTolgee } from "@tolgee/react";
-import { setLanguage } from "@/tolgee/language";
 import { locales, getLocaleName } from "@/i18n/config";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function LocaleSwitcher() {
-  const tolgee = useTolgee();
+  const tolgee = useTolgee(["language"]);
+  const router = useRouter();
+  const pathname = usePathname();
   const locale = tolgee.getLanguage() || "en";
 
   const handleLocaleChange = async (newLocale: string) => {
-    await setLanguage(newLocale);
-    await tolgee.changeLanguage(newLocale);
+    // Update Tolgee client-side immediately for fast perceived reactivity.
+    tolgee.changeLanguage(newLocale);
+    // Navigate to the same page under the new locale prefix (e.g. /en/about → /fr/about).
+    const segments = pathname.split("/");
+    segments[1] = newLocale;
+    router.push(segments.join("/") || `/${newLocale}`);
   };
 
   return (

@@ -5,7 +5,7 @@ import MockBanner from "../../MockBanner";
 
 export default function BlogHeader() {
   const tHeader = useTranslations();
-  const tBlog = useTranslations("blog.blog-header");
+  const tBlog = useTranslations("blog-header");
   return (
     <>
       <MockBanner />

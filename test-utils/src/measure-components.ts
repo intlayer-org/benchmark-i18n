@@ -190,10 +190,16 @@ const buildComponentBundle = async (
 
   // Add this custom plugin to strip JSDoc and other block comments
   filteredPlugins.push({
-    name: "strip-jsdoc",
+    name: "strip-comments",
+    enforce: "post",
     renderChunk(code) {
-      // Matches standard block comments /* ... */ and JSDoc /** ... */
-      return code.replace(/\/\*[\s\S]*?\*\//g, "");
+      return code
+        // 1. Strip standard block comments and JSDoc
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        // 2. Strip bundler-injected region markers (//#region, //#endregion)
+        .replace(/\/\/#.*?$/gm, "")
+        // 3. Strip standalone single-line comments safely
+        .replace(/^\s*\/\/.*$/gm, "");
     },
   });
 

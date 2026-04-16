@@ -1,6 +1,15 @@
 import { Profiler, useEffect } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import messages from "../messages/de.json";
+import messages$1 from "../messages/es.json";
+import messages$2 from "../messages/fr.json";
+import messages$3 from "../messages/it.json";
+import messages$4 from "../messages/ja.json";
+import messages$5 from "../messages/ko.json";
+import messages$6 from "../messages/pt.json";
+import messages$7 from "../messages/ru.json";
+import messages$8 from "../messages/zh.json";
 import { jsx, jsxs } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
 var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
@@ -11,7 +20,9 @@ var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy 
 //#endregion
 //#region ../../../node_modules/.bun/client-only@0.0.1/node_modules/client-only/index.js
 var require_client_only = __commonJSMin((() => {}));
-var client = (0, __commonJSMin(((exports, module) => {
+//#endregion
+//#region i18n/flatten.ts
+var import_client = __commonJSMin(((exports, module) => {
 	var __create = Object.create;
 	var __defProp = Object.defineProperty;
 	var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -211,159 +222,19 @@ var client = (0, __commonJSMin(((exports, module) => {
 			useCurrentLocale
 		};
 	}
-}))().createI18nClient)({
-	en: () => import("./en-8JcIIsH7.js"),
-	fr: () => import("./fr-l0h16XEr.js"),
-	es: () => import("./es-EKnvUB6-.js"),
-	de: () => import("./de-JiMO7-nb.js"),
-	it: () => import("./it-TfEp-TW3.js"),
-	pt: () => import("./pt-BJzI-Sxf.js"),
-	zh: () => import("./zh-o1UkqWLM.js"),
-	ja: () => import("./ja-Dgwh0DST.js"),
-	ko: () => import("./ko-DgyQp74i.js"),
-	ru: () => import("./ru-Cklikn17.js")
-});
-function useI18n() {
-	return client.useI18n();
-}
-var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
-//#endregion
-//#region components/Footer.tsx
-function Footer() {
-	const t = useI18n();
-	const currentLocale = useParams().locale ?? "en";
-	const footerLinks = [
-		{
-			label: t("footer.github"),
-			href: "https://github.com/intlayer-org/benchmark-i18n",
-			isInternal: false
-		},
-		{
-			label: t("footer.methodology"),
-			href: `/${currentLocale}/about`,
-			isInternal: true
-		},
-		{
-			label: t("footer.contributing"),
-			href: `/${currentLocale}/contact`,
-			isInternal: true
-		}
-	];
-	return jsx("footer", {
-		className: "mt-20 border-t border-border bg-card",
-		children: jsxs("div", {
-			className: "container py-8",
-			children: [jsxs("div", {
-				className: "grid gap-8 md:grid-cols-3",
-				children: [
-					jsxs("div", { children: [jsx("h3", {
-						className: "mb-2 text-sm font-semibold text-foreground",
-						children: "i18n Benchmark"
-					}), jsx("p", {
-						className: "text-sm text-muted-foreground",
-						children: t("footer.anOpenSourceTestApplication")
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
-						className: "mb-2 text-sm font-semibold text-foreground",
-						children: t("footer.resources")
-					}), jsx("ul", {
-						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
-							href: linkEl.href,
-							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
-							children: linkEl.label
-						}) : jsx("a", {
-							href: linkEl.href,
-							target: "_blank",
-							rel: "noreferrer",
-							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
-							children: linkEl.label
-						}) }, linkEl.href))
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
-						className: "mb-2 text-sm font-semibold text-foreground",
-						children: t("footer.contact")
-					}), jsx("p", {
-						className: "text-sm text-muted-foreground",
-						children: "contact@intlayer.org"
-					})] })
-				]
-			}), jsx("div", {
-				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
-				children: t("footer.builtWith")
-			})]
-		})
-	});
-}
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
-function recordHydrationDuration() {
-	if (typeof window === "undefined") return;
-	console.log("--- BROWSER: RootDocument mounted");
-	performance.mark("hydration_end");
-	try {
-		if (performance.getEntriesByName("hydration_start").length > 0) {
-			performance.measure("hydration_duration", "hydration_start", "hydration_end");
-			console.log("--- BROWSER: hydration_duration measured");
-			const duration = performance.getEntriesByName("hydration_duration")[0]?.duration;
-			if (duration) console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
-		} else console.warn("--- BROWSER: hydration_start NOT FOUND");
-	} catch (err) {
-		console.warn("Could not measure hydration duration:", err);
+}))();
+function flattenMessages(obj, prefix = "") {
+	const result = {};
+	for (const key in obj) {
+		const fullKey = prefix ? `${prefix}.${key}` : key;
+		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
+		else result[fullKey] = String(obj[key]);
 	}
-}
-function onRenderCallback(id, phase, actualDuration) {
-	if (typeof window === "undefined") return;
-	if (phase === "nested-update") return;
-	try {
-		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-		window.__RENDER_METRICS__[id].push(actualDuration);
-	} catch (err) {
-		console.warn("onRenderCallback failed:", err);
-	}
+	return result;
 }
 //#endregion
-//#region components/AppProviders.tsx
-function AppProviders({ children, locale }) {
-	useEffect(() => {
-		document.documentElement.lang = locale;
-	}, [locale]);
-	useEffect(() => {
-		recordHydrationDuration();
-	}, []);
-	return jsx(Profiler, {
-		id: "AppRoot",
-		onRender: onRenderCallback,
-		children: jsx(I18nProviderClient, {
-			locale,
-			children
-		})
-	});
-}
-//#endregion
-//#region scripts/Wrapper.tsx
-var locale = "en";
-function Wrapper({ children }) {
-	return jsx(AppProviders, {
-		locale,
-		children
-	});
-}
-//#endregion
-//#region components/Footer.wrapper.tsx
-function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Footer, {}) });
-}
-//#endregion
-export { Wrapped as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/de.json";
 //#region locales/de.ts
 var de_default = flattenMessages(messages);
-//#endregion
-export { de_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
 //#endregion
 //#region locales/en.ts
 var en_default = flattenMessages({
@@ -837,64 +708,174 @@ var en_default = flattenMessages({
 	}
 });
 //#endregion
-export { en_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/es.json";
 //#region locales/es.ts
-var es_default = flattenMessages(messages);
+var es_default = flattenMessages(messages$1);
 //#endregion
-export { es_default as default };
-//#region i18n/flatten.ts
-function flattenMessages(obj, prefix = "") {
-	const result = {};
-	for (const key in obj) {
-		const fullKey = prefix ? `${prefix}.${key}` : key;
-		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
-		else result[fullKey] = String(obj[key]);
-	}
-	return result;
+//#region locales/fr.ts
+var fr_default = flattenMessages(messages$2);
+//#endregion
+//#region locales/it.ts
+var it_default = flattenMessages(messages$3);
+//#endregion
+//#region locales/ja.ts
+var ja_default = flattenMessages(messages$4);
+//#endregion
+//#region locales/ko.ts
+var ko_default = flattenMessages(messages$5);
+//#endregion
+//#region locales/pt.ts
+var pt_default = flattenMessages(messages$6);
+//#endregion
+//#region locales/ru.ts
+var ru_default = flattenMessages(messages$7);
+//#endregion
+//#region locales/zh.ts
+var zh_default = flattenMessages(messages$8);
+//#endregion
+//#region locales/client.ts
+var client = (0, import_client.createI18nClient)({
+	en: () => Promise.resolve({ default: en_default }),
+	fr: () => Promise.resolve({ default: fr_default }),
+	es: () => Promise.resolve({ default: es_default }),
+	de: () => Promise.resolve({ default: de_default }),
+	it: () => Promise.resolve({ default: it_default }),
+	pt: () => Promise.resolve({ default: pt_default }),
+	zh: () => Promise.resolve({ default: zh_default }),
+	ja: () => Promise.resolve({ default: ja_default }),
+	ko: () => Promise.resolve({ default: ko_default }),
+	ru: () => Promise.resolve({ default: ru_default })
+});
+function useI18n() {
+	return client.useI18n();
+}
+var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+//#endregion
+//#region components/Footer.tsx
+function Footer() {
+	const t = useI18n();
+	const currentLocale = useParams().locale ?? "en";
+	const footerLinks = [
+		{
+			label: t("footer.github"),
+			href: "https://github.com/intlayer-org/benchmark-i18n",
+			isInternal: false
+		},
+		{
+			label: t("footer.methodology"),
+			href: `/${currentLocale}/about`,
+			isInternal: true
+		},
+		{
+			label: t("footer.contributing"),
+			href: `/${currentLocale}/contact`,
+			isInternal: true
+		}
+	];
+	return jsx("footer", {
+		className: "mt-20 border-t border-border bg-card",
+		children: jsxs("div", {
+			className: "container py-8",
+			children: [jsxs("div", {
+				className: "grid gap-8 md:grid-cols-3",
+				children: [
+					jsxs("div", { children: [jsx("h3", {
+						className: "mb-2 text-sm font-semibold text-foreground",
+						children: "i18n Benchmark"
+					}), jsx("p", {
+						className: "text-sm text-muted-foreground",
+						children: t("footer.anOpenSourceTestApplication")
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
+						className: "mb-2 text-sm font-semibold text-foreground",
+						children: t("footer.resources")
+					}), jsx("ul", {
+						className: "space-y-1",
+						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
+							href: linkEl.href,
+							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
+							children: linkEl.label
+						}) : jsx("a", {
+							href: linkEl.href,
+							target: "_blank",
+							rel: "noreferrer",
+							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
+							children: linkEl.label
+						}) }, linkEl.href))
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
+						className: "mb-2 text-sm font-semibold text-foreground",
+						children: t("footer.contact")
+					}), jsx("p", {
+						className: "text-sm text-muted-foreground",
+						children: "contact@intlayer.org"
+					})] })
+				]
+			}), jsx("div", {
+				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
+				children: t("footer.builtWith")
+			})]
+		})
+	});
 }
 //#endregion
-export { flattenMessages as t };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/fr.json";
-//#region locales/fr.ts
-var fr_default = flattenMessages(messages);
+//#region ../../../test-utils/src/browser-metrics.ts
+function recordHydrationDuration() {
+	if (typeof window === "undefined") return;
+	console.log("--- BROWSER: RootDocument mounted");
+	performance.mark("hydration_end");
+	try {
+		if (performance.getEntriesByName("hydration_start").length > 0) {
+			performance.measure("hydration_duration", "hydration_start", "hydration_end");
+			console.log("--- BROWSER: hydration_duration measured");
+			const duration = performance.getEntriesByName("hydration_duration")[0]?.duration;
+			if (duration) console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
+		} else console.warn("--- BROWSER: hydration_start NOT FOUND");
+	} catch (err) {
+		console.warn("Could not measure hydration duration:", err);
+	}
+}
+function onRenderCallback(id, phase, actualDuration) {
+	if (typeof window === "undefined") return;
+	if (phase === "nested-update") return;
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
+}
 //#endregion
-export { fr_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/it.json";
-//#region locales/it.ts
-var it_default = flattenMessages(messages);
+//#region components/AppProviders.tsx
+function AppProviders({ children, locale }) {
+	useEffect(() => {
+		document.documentElement.lang = locale;
+	}, [locale]);
+	useEffect(() => {
+		recordHydrationDuration();
+	}, []);
+	return jsx(Profiler, {
+		id: "AppRoot",
+		onRender: onRenderCallback,
+		children: jsx(I18nProviderClient, {
+			locale,
+			children
+		})
+	});
+}
 //#endregion
-export { it_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/ja.json";
-//#region locales/ja.ts
-var ja_default = flattenMessages(messages);
+//#region scripts/Wrapper.tsx
+var locale = "en";
+function Wrapper({ children }) {
+	return jsx(AppProviders, {
+		locale,
+		children
+	});
+}
 //#endregion
-export { ja_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/ko.json";
-//#region locales/ko.ts
-var ko_default = flattenMessages(messages);
+//#region components/Footer.wrapper.tsx
+function Wrapped() {
+	return jsx(Wrapper, { children: jsx(Footer, {}) });
+}
 //#endregion
-export { ko_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/pt.json";
-//#region locales/pt.ts
-var pt_default = flattenMessages(messages);
-//#endregion
-export { pt_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/ru.json";
-//#region locales/ru.ts
-var ru_default = flattenMessages(messages);
-//#endregion
-export { ru_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/zh.json";
-//#region locales/zh.ts
-var zh_default = flattenMessages(messages);
-//#endregion
-export { zh_default as default };
+export { Wrapped as default };

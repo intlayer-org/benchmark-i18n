@@ -2,6 +2,15 @@ import { Profiler, useEffect, useLayoutEffect, useState } from "react";
 import Link from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
+import messages from "../messages/de.json";
+import messages$1 from "../messages/es.json";
+import messages$2 from "../messages/fr.json";
+import messages$3 from "../messages/it.json";
+import messages$4 from "../messages/ja.json";
+import messages$5 from "../messages/ko.json";
+import messages$6 from "../messages/pt.json";
+import messages$7 from "../messages/ru.json";
+import messages$8 from "../messages/zh.json";
 import { jsx, jsxs } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
 var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
@@ -12,7 +21,9 @@ var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy 
 //#endregion
 //#region ../../../node_modules/.bun/client-only@0.0.1/node_modules/client-only/index.js
 var require_client_only = __commonJSMin((() => {}));
-var client = (0, __commonJSMin(((exports, module) => {
+//#endregion
+//#region i18n/flatten.ts
+var import_client = __commonJSMin(((exports, module) => {
 	var __create = Object.create;
 	var __defProp = Object.defineProperty;
 	var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -212,324 +223,19 @@ var client = (0, __commonJSMin(((exports, module) => {
 			useCurrentLocale
 		};
 	}
-}))().createI18nClient)({
-	en: () => import("./en-8JcIIsH7.js"),
-	fr: () => import("./fr-l0h16XEr.js"),
-	es: () => import("./es-EKnvUB6-.js"),
-	de: () => import("./de-JiMO7-nb.js"),
-	it: () => import("./it-TfEp-TW3.js"),
-	pt: () => import("./pt-BJzI-Sxf.js"),
-	zh: () => import("./zh-o1UkqWLM.js"),
-	ja: () => import("./ja-Dgwh0DST.js"),
-	ko: () => import("./ko-DgyQp74i.js"),
-	ru: () => import("./ru-Cklikn17.js")
-});
-function useI18n() {
-	return client.useI18n();
-}
-var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
-//#endregion
-//#region components/ThemeToggle.tsx
-function getInitialMode() {
-	if (typeof window === "undefined") return "auto";
-	const stored = window.localStorage.getItem("theme");
-	if (stored === "light" || stored === "dark" || stored === "auto") return stored;
-	return "auto";
-}
-function applyThemeMode(mode) {
-	const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-	const resolved = mode === "auto" ? prefersDark ? "dark" : "light" : mode;
-	document.documentElement.classList.remove("light", "dark");
-	document.documentElement.classList.add(resolved);
-	if (mode === "auto") document.documentElement.removeAttribute("data-theme");
-	else document.documentElement.setAttribute("data-theme", mode);
-	document.documentElement.style.colorScheme = resolved;
-}
-function ThemeToggle() {
-	const t = useI18n();
-	const [mode, setMode] = useState("auto");
-	useEffect(() => {
-		const initialMode = getInitialMode();
-		setMode(initialMode);
-		applyThemeMode(initialMode);
-	}, []);
-	useEffect(() => {
-		if (mode !== "auto") return;
-		const media = window.matchMedia("(prefers-color-scheme: dark)");
-		const onChange = () => applyThemeMode("auto");
-		media.addEventListener("change", onChange);
-		return () => {
-			media.removeEventListener("change", onChange);
-		};
-	}, [mode]);
-	function toggleMode() {
-		const nextMode = mode === "light" ? "dark" : mode === "dark" ? "auto" : "light";
-		setMode(nextMode);
-		applyThemeMode(nextMode);
-		window.localStorage.setItem("theme", nextMode);
+}))();
+function flattenMessages(obj, prefix = "") {
+	const result = {};
+	for (const key in obj) {
+		const fullKey = prefix ? `${prefix}.${key}` : key;
+		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
+		else result[fullKey] = String(obj[key]);
 	}
-	const label = mode === "auto" ? t("theme-toggle.themeModeAutoSystemClick") : mode === "light" ? t("theme-toggle.themeModeLightClick") : t("theme-toggle.themeModeDarkClick");
-	return jsx("button", {
-		type: "button",
-		onClick: toggleMode,
-		"aria-label": label,
-		title: label,
-		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
-		children: mode === "auto" ? t("theme-toggle.themeAuto") : mode === "dark" ? t("theme-toggle.themeDark") : t("theme-toggle.themeLight")
-	});
+	return result;
 }
 //#endregion
-//#region i18n/config.ts
-var locales = [
-	"en",
-	"fr",
-	"es",
-	"de",
-	"it",
-	"pt",
-	"zh",
-	"ja",
-	"ko",
-	"ru"
-];
-var getLocaleName = (locale) => {
-	try {
-		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
-		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
-	} catch (e) {
-		return locale.toUpperCase();
-	}
-};
-//#endregion
-//#region components/LocaleSwitcher.tsx
-function LocaleSwitcher() {
-	const locale = useParams().locale ?? "en";
-	const pathname = usePathname();
-	const router = useRouter();
-	const handleLocaleChange = (newLocale) => {
-		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-		router.push(newPath);
-	};
-	return jsx("div", {
-		className: "flex items-center gap-2",
-		children: jsx("select", {
-			value: locale,
-			onChange: (e) => handleLocaleChange(e.target.value),
-			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeItem) => jsx("option", {
-				value: localeItem,
-				children: getLocaleName(localeItem)
-			}, localeItem))
-		})
-	});
-}
-//#endregion
-//#region hooks/usePerformanceMeasure.ts
-function usePerformanceMeasure(name) {
-	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
-	useLayoutEffect(() => {
-		if (typeof performance !== "undefined" && performance.mark && performance.measure) {
-			performance.mark(`${name}-end`);
-			try {
-				performance.measure(`${name}-render`, `${name}-start`, `${name}-end`);
-			} catch (e) {}
-		}
-	}, [name]);
-}
-//#endregion
-//#region components/Header.tsx
-function Header() {
-	const t = useI18n();
-	usePerformanceMeasure("Header");
-	const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
-	const currentLocale = useParams().locale ?? "en";
-	const pathname = usePathname();
-	const mockPages = [
-		{
-			href: `/${currentLocale}/products`,
-			label: t("header.products")
-		},
-		{
-			href: `/${currentLocale}/pricing`,
-			label: t("header.pricing")
-		},
-		{
-			href: `/${currentLocale}/team`,
-			label: t("header.team")
-		},
-		{
-			href: `/${currentLocale}/blog`,
-			label: t("header.blog")
-		},
-		{
-			href: `/${currentLocale}/careers`,
-			label: t("header.careers")
-		},
-		{
-			href: `/${currentLocale}/faq`,
-			label: t("header.faq")
-		},
-		{
-			href: `/${currentLocale}/contact`,
-			label: t("footer.contact")
-		},
-		{
-			href: `/${currentLocale}/settings`,
-			label: t("header.settings")
-		}
-	];
-	const isExactActive = (href) => pathname === href;
-	const isActive = (href) => pathname.startsWith(href);
-	return jsx("header", {
-		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxs("nav", {
-			className: "container flex h-16 items-center justify-between",
-			children: [jsxs("div", {
-				className: "flex items-center gap-8",
-				children: [jsx(Link, {
-					href: `/${currentLocale}`,
-					className: "text-lg font-bold tracking-tight text-primary no-underline",
-					children: "i18n Bench"
-				}), jsxs("div", {
-					className: "hidden items-center gap-6 text-sm font-medium md:flex",
-					children: [
-						jsx(Link, {
-							href: `/${currentLocale}`,
-							className: `nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`,
-							children: t("header.home")
-						}),
-						jsx(Link, {
-							href: `/${currentLocale}/about`,
-							className: `nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`,
-							children: t("footer.methodology")
-						}),
-						jsxs("div", {
-							className: "relative",
-							children: [jsxs("button", {
-								type: "button",
-								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-								onMouseEnter: () => setIsMockPagesOpen(true),
-								onMouseLeave: () => setIsMockPagesOpen(false),
-								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [t("header.mockPages"), jsx(ChevronDown, {
-									size: 14,
-									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
-								})]
-							}), isMockPagesOpen && jsx("div", {
-								className: "absolute left-0 top-full pt-2 w-48",
-								onMouseEnter: () => setIsMockPagesOpen(true),
-								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: jsx("div", {
-									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => jsx(Link, {
-										href: page.href,
-										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-										onClick: () => setIsMockPagesOpen(false),
-										children: page.label
-									}, page.href))
-								})
-							})]
-						})
-					]
-				})]
-			}), jsxs("div", {
-				className: "flex items-center gap-4",
-				children: [
-					jsxs("a", {
-						href: "https://github.com/intlayer-org/benchmark-i18n",
-						target: "_blank",
-						rel: "noreferrer",
-						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsx("span", {
-							className: "sr-only",
-							children: t("header.goToGithub")
-						}), jsx("svg", {
-							viewBox: "0 0 16 16",
-							"aria-hidden": "true",
-							width: "20",
-							height: "20",
-							children: jsx("path", {
-								fill: "currentColor",
-								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							})
-						})]
-					}),
-					jsx(LocaleSwitcher, {}),
-					jsx(ThemeToggle, {})
-				]
-			})]
-		})
-	});
-}
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
-function recordHydrationDuration() {
-	if (typeof window === "undefined") return;
-	console.log("--- BROWSER: RootDocument mounted");
-	performance.mark("hydration_end");
-	try {
-		if (performance.getEntriesByName("hydration_start").length > 0) {
-			performance.measure("hydration_duration", "hydration_start", "hydration_end");
-			console.log("--- BROWSER: hydration_duration measured");
-			const duration = performance.getEntriesByName("hydration_duration")[0]?.duration;
-			if (duration) console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
-		} else console.warn("--- BROWSER: hydration_start NOT FOUND");
-	} catch (err) {
-		console.warn("Could not measure hydration duration:", err);
-	}
-}
-function onRenderCallback(id, phase, actualDuration) {
-	if (typeof window === "undefined") return;
-	if (phase === "nested-update") return;
-	try {
-		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-		window.__RENDER_METRICS__[id].push(actualDuration);
-	} catch (err) {
-		console.warn("onRenderCallback failed:", err);
-	}
-}
-//#endregion
-//#region components/AppProviders.tsx
-function AppProviders({ children, locale }) {
-	useEffect(() => {
-		document.documentElement.lang = locale;
-	}, [locale]);
-	useEffect(() => {
-		recordHydrationDuration();
-	}, []);
-	return jsx(Profiler, {
-		id: "AppRoot",
-		onRender: onRenderCallback,
-		children: jsx(I18nProviderClient, {
-			locale,
-			children
-		})
-	});
-}
-//#endregion
-//#region scripts/Wrapper.tsx
-var locale = "en";
-function Wrapper({ children }) {
-	return jsx(AppProviders, {
-		locale,
-		children
-	});
-}
-//#endregion
-//#region components/Header.wrapper.tsx
-function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Header, {}) });
-}
-//#endregion
-export { Wrapped as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/de.json";
 //#region locales/de.ts
 var de_default = flattenMessages(messages);
-//#endregion
-export { de_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
 //#endregion
 //#region locales/en.ts
 var en_default = flattenMessages({
@@ -1003,64 +709,339 @@ var en_default = flattenMessages({
 	}
 });
 //#endregion
-export { en_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/es.json";
 //#region locales/es.ts
-var es_default = flattenMessages(messages);
+var es_default = flattenMessages(messages$1);
 //#endregion
-export { es_default as default };
-//#region i18n/flatten.ts
-function flattenMessages(obj, prefix = "") {
-	const result = {};
-	for (const key in obj) {
-		const fullKey = prefix ? `${prefix}.${key}` : key;
-		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
-		else result[fullKey] = String(obj[key]);
+//#region locales/fr.ts
+var fr_default = flattenMessages(messages$2);
+//#endregion
+//#region locales/it.ts
+var it_default = flattenMessages(messages$3);
+//#endregion
+//#region locales/ja.ts
+var ja_default = flattenMessages(messages$4);
+//#endregion
+//#region locales/ko.ts
+var ko_default = flattenMessages(messages$5);
+//#endregion
+//#region locales/pt.ts
+var pt_default = flattenMessages(messages$6);
+//#endregion
+//#region locales/ru.ts
+var ru_default = flattenMessages(messages$7);
+//#endregion
+//#region locales/zh.ts
+var zh_default = flattenMessages(messages$8);
+//#endregion
+//#region locales/client.ts
+var client = (0, import_client.createI18nClient)({
+	en: () => Promise.resolve({ default: en_default }),
+	fr: () => Promise.resolve({ default: fr_default }),
+	es: () => Promise.resolve({ default: es_default }),
+	de: () => Promise.resolve({ default: de_default }),
+	it: () => Promise.resolve({ default: it_default }),
+	pt: () => Promise.resolve({ default: pt_default }),
+	zh: () => Promise.resolve({ default: zh_default }),
+	ja: () => Promise.resolve({ default: ja_default }),
+	ko: () => Promise.resolve({ default: ko_default }),
+	ru: () => Promise.resolve({ default: ru_default })
+});
+function useI18n() {
+	return client.useI18n();
+}
+var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+//#endregion
+//#region components/ThemeToggle.tsx
+function getInitialMode() {
+	if (typeof window === "undefined") return "auto";
+	const stored = window.localStorage.getItem("theme");
+	if (stored === "light" || stored === "dark" || stored === "auto") return stored;
+	return "auto";
+}
+function applyThemeMode(mode) {
+	const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+	const resolved = mode === "auto" ? prefersDark ? "dark" : "light" : mode;
+	document.documentElement.classList.remove("light", "dark");
+	document.documentElement.classList.add(resolved);
+	if (mode === "auto") document.documentElement.removeAttribute("data-theme");
+	else document.documentElement.setAttribute("data-theme", mode);
+	document.documentElement.style.colorScheme = resolved;
+}
+function ThemeToggle() {
+	const t = useI18n();
+	const [mode, setMode] = useState("auto");
+	useEffect(() => {
+		const initialMode = getInitialMode();
+		setMode(initialMode);
+		applyThemeMode(initialMode);
+	}, []);
+	useEffect(() => {
+		if (mode !== "auto") return;
+		const media = window.matchMedia("(prefers-color-scheme: dark)");
+		const onChange = () => applyThemeMode("auto");
+		media.addEventListener("change", onChange);
+		return () => {
+			media.removeEventListener("change", onChange);
+		};
+	}, [mode]);
+	function toggleMode() {
+		const nextMode = mode === "light" ? "dark" : mode === "dark" ? "auto" : "light";
+		setMode(nextMode);
+		applyThemeMode(nextMode);
+		window.localStorage.setItem("theme", nextMode);
 	}
-	return result;
+	const label = mode === "auto" ? t("theme-toggle.themeModeAutoSystemClick") : mode === "light" ? t("theme-toggle.themeModeLightClick") : t("theme-toggle.themeModeDarkClick");
+	return jsx("button", {
+		type: "button",
+		onClick: toggleMode,
+		"aria-label": label,
+		title: label,
+		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
+		children: mode === "auto" ? t("theme-toggle.themeAuto") : mode === "dark" ? t("theme-toggle.themeDark") : t("theme-toggle.themeLight")
+	});
 }
 //#endregion
-export { flattenMessages as t };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/fr.json";
-//#region locales/fr.ts
-var fr_default = flattenMessages(messages);
+//#region i18n/config.ts
+var locales = [
+	"en",
+	"fr",
+	"es",
+	"de",
+	"it",
+	"pt",
+	"zh",
+	"ja",
+	"ko",
+	"ru"
+];
+var getLocaleName = (locale) => {
+	try {
+		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
+		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
+	} catch (e) {
+		return locale.toUpperCase();
+	}
+};
 //#endregion
-export { fr_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/it.json";
-//#region locales/it.ts
-var it_default = flattenMessages(messages);
+//#region components/LocaleSwitcher.tsx
+function LocaleSwitcher() {
+	const locale = useParams().locale ?? "en";
+	const pathname = usePathname();
+	const router = useRouter();
+	const handleLocaleChange = (newLocale) => {
+		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+		router.push(newPath);
+	};
+	return jsx("div", {
+		className: "flex items-center gap-2",
+		children: jsx("select", {
+			value: locale,
+			onChange: (e) => handleLocaleChange(e.target.value),
+			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
+			children: locales.map((localeItem) => jsx("option", {
+				value: localeItem,
+				children: getLocaleName(localeItem)
+			}, localeItem))
+		})
+	});
+}
 //#endregion
-export { it_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/ja.json";
-//#region locales/ja.ts
-var ja_default = flattenMessages(messages);
+//#region hooks/usePerformanceMeasure.ts
+function usePerformanceMeasure(name) {
+	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
+	useLayoutEffect(() => {
+		if (typeof performance !== "undefined" && performance.mark && performance.measure) {
+			performance.mark(`${name}-end`);
+			try {
+				performance.measure(`${name}-render`, `${name}-start`, `${name}-end`);
+			} catch (e) {}
+		}
+	}, [name]);
+}
 //#endregion
-export { ja_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/ko.json";
-//#region locales/ko.ts
-var ko_default = flattenMessages(messages);
+//#region components/Header.tsx
+function Header() {
+	const t = useI18n();
+	usePerformanceMeasure("Header");
+	const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
+	const currentLocale = useParams().locale ?? "en";
+	const pathname = usePathname();
+	const mockPages = [
+		{
+			href: `/${currentLocale}/products`,
+			label: t("header.products")
+		},
+		{
+			href: `/${currentLocale}/pricing`,
+			label: t("header.pricing")
+		},
+		{
+			href: `/${currentLocale}/team`,
+			label: t("header.team")
+		},
+		{
+			href: `/${currentLocale}/blog`,
+			label: t("header.blog")
+		},
+		{
+			href: `/${currentLocale}/careers`,
+			label: t("header.careers")
+		},
+		{
+			href: `/${currentLocale}/faq`,
+			label: t("header.faq")
+		},
+		{
+			href: `/${currentLocale}/contact`,
+			label: t("footer.contact")
+		},
+		{
+			href: `/${currentLocale}/settings`,
+			label: t("header.settings")
+		}
+	];
+	const isExactActive = (href) => pathname === href;
+	const isActive = (href) => pathname.startsWith(href);
+	return jsx("header", {
+		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
+		children: jsxs("nav", {
+			className: "container flex h-16 items-center justify-between",
+			children: [jsxs("div", {
+				className: "flex items-center gap-8",
+				children: [jsx(Link, {
+					href: `/${currentLocale}`,
+					className: "text-lg font-bold tracking-tight text-primary no-underline",
+					children: "i18n Bench"
+				}), jsxs("div", {
+					className: "hidden items-center gap-6 text-sm font-medium md:flex",
+					children: [
+						jsx(Link, {
+							href: `/${currentLocale}`,
+							className: `nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`,
+							children: t("header.home")
+						}),
+						jsx(Link, {
+							href: `/${currentLocale}/about`,
+							className: `nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`,
+							children: t("footer.methodology")
+						}),
+						jsxs("div", {
+							className: "relative",
+							children: [jsxs("button", {
+								type: "button",
+								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+								onMouseEnter: () => setIsMockPagesOpen(true),
+								onMouseLeave: () => setIsMockPagesOpen(false),
+								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
+								children: [t("header.mockPages"), jsx(ChevronDown, {
+									size: 14,
+									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
+								})]
+							}), isMockPagesOpen && jsx("div", {
+								className: "absolute left-0 top-full pt-2 w-48",
+								onMouseEnter: () => setIsMockPagesOpen(true),
+								onMouseLeave: () => setIsMockPagesOpen(false),
+								children: jsx("div", {
+									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
+									children: mockPages.map((page) => jsx(Link, {
+										href: page.href,
+										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+										onClick: () => setIsMockPagesOpen(false),
+										children: page.label
+									}, page.href))
+								})
+							})]
+						})
+					]
+				})]
+			}), jsxs("div", {
+				className: "flex items-center gap-4",
+				children: [
+					jsxs("a", {
+						href: "https://github.com/intlayer-org/benchmark-i18n",
+						target: "_blank",
+						rel: "noreferrer",
+						className: "text-muted-foreground transition hover:text-foreground",
+						children: [jsx("span", {
+							className: "sr-only",
+							children: t("header.goToGithub")
+						}), jsx("svg", {
+							viewBox: "0 0 16 16",
+							"aria-hidden": "true",
+							width: "20",
+							height: "20",
+							children: jsx("path", {
+								fill: "currentColor",
+								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+							})
+						})]
+					}),
+					jsx(LocaleSwitcher, {}),
+					jsx(ThemeToggle, {})
+				]
+			})]
+		})
+	});
+}
 //#endregion
-export { ko_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/pt.json";
-//#region locales/pt.ts
-var pt_default = flattenMessages(messages);
+//#region ../../../test-utils/src/browser-metrics.ts
+function recordHydrationDuration() {
+	if (typeof window === "undefined") return;
+	console.log("--- BROWSER: RootDocument mounted");
+	performance.mark("hydration_end");
+	try {
+		if (performance.getEntriesByName("hydration_start").length > 0) {
+			performance.measure("hydration_duration", "hydration_start", "hydration_end");
+			console.log("--- BROWSER: hydration_duration measured");
+			const duration = performance.getEntriesByName("hydration_duration")[0]?.duration;
+			if (duration) console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
+		} else console.warn("--- BROWSER: hydration_start NOT FOUND");
+	} catch (err) {
+		console.warn("Could not measure hydration duration:", err);
+	}
+}
+function onRenderCallback(id, phase, actualDuration) {
+	if (typeof window === "undefined") return;
+	if (phase === "nested-update") return;
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
+}
 //#endregion
-export { pt_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/ru.json";
-//#region locales/ru.ts
-var ru_default = flattenMessages(messages);
+//#region components/AppProviders.tsx
+function AppProviders({ children, locale }) {
+	useEffect(() => {
+		document.documentElement.lang = locale;
+	}, [locale]);
+	useEffect(() => {
+		recordHydrationDuration();
+	}, []);
+	return jsx(Profiler, {
+		id: "AppRoot",
+		onRender: onRenderCallback,
+		children: jsx(I18nProviderClient, {
+			locale,
+			children
+		})
+	});
+}
 //#endregion
-export { ru_default as default };
-import { t as flattenMessages } from "./flatten-BrxV4SVh.js";
-import messages from "../messages/zh.json";
-//#region locales/zh.ts
-var zh_default = flattenMessages(messages);
+//#region scripts/Wrapper.tsx
+var locale = "en";
+function Wrapper({ children }) {
+	return jsx(AppProviders, {
+		locale,
+		children
+	});
+}
 //#endregion
-export { zh_default as default };
+//#region components/Header.wrapper.tsx
+function Wrapped() {
+	return jsx(Wrapper, { children: jsx(Header, {}) });
+}
+//#endregion
+export { Wrapped as default };
