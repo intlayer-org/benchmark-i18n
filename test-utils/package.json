@@ -8,7 +8,8 @@
     "./reactivity-test": "./src/reactivity-test.ts",
     "./browser-metrics": "./src/browser-metrics.ts",
     "./structure-consistency": "./src/structure-consistency.ts",
-    "./structure-consistency-test": "./src/structure-consistency-test.ts"
+    "./structure-consistency-test": "./src/structure-consistency-test.ts",
+    "./repo-root": "./src/repo-root.ts"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",

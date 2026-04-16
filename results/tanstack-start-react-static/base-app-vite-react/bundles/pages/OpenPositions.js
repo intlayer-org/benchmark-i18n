@@ -1,5 +1,4 @@
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/careers/OpenPositions.tsx
 function OpenPositions() {
 	return jsxs(Fragment, { children: [jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
@@ -78,5 +77,4 @@ function OpenPositions() {
 		}, o.title))
 	})] });
 }
-//#endregion
 export { OpenPositions as default };

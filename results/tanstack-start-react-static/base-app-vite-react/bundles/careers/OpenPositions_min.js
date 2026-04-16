@@ -1,5 +1,4 @@
 import { Fragment as e, jsx as t, jsxs as n } from "react/jsx-runtime";
-//#region src/components/pages/careers/OpenPositions.tsx
 function r() {
 	return n(e, { children: [t("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
@@ -78,5 +77,4 @@ function r() {
 		}, e.title))
 	})] });
 }
-//#endregion
 export { r as default };

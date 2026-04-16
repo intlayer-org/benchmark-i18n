@@ -16,7 +16,8 @@ export default defineConfig({
 
   webServer: {
     command: "node_modules/.bin/next start -p 4173",
-    url: "http://localhost:4173",
+    // No root `/` route (only `/[locale]/...`); probe a real page so startup resolves.
+    url: "http://localhost:4173/en",
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
   },

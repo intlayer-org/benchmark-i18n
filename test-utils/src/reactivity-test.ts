@@ -118,6 +118,12 @@ declare global {
   }
 }
 
+/** Prefer `load` over `networkidle` — the latter hangs on CI when long-lived connections stay open. */
+const NAV_WAIT_UNTIL: "load" = "load";
+
+/** Per-iteration E2E timeout (locale switch must finish within this window on slow runners). */
+const E2E_LOCALE_SWITCH_TIMEOUT_MS = 15_000;
+
 // ─── Browser-side measurement helpers ────────────────────────────────────────
 
 /**
@@ -143,7 +149,13 @@ const measureE2ELocaleSwitchDuration = async (
   targetLocale: string,
 ): Promise<number> =>
   page.evaluate(
-    ({ targetLocaleCode }: { targetLocaleCode: string }): Promise<number> =>
+    ({
+      targetLocaleCode,
+      e2eTimeoutMs,
+    }: {
+      targetLocaleCode: string;
+      e2eTimeoutMs: number;
+    }): Promise<number> =>
       new Promise((resolve, reject) => {
         const startTime = performance.now();
         const htmlElement = document.documentElement;
@@ -163,10 +175,12 @@ const measureE2ELocaleSwitchDuration = async (
           attributeFilter: ["lang"],
         });
 
+        // Prefer the header switcher — some pages (e.g. settings) include other <select> nodes.
         const localeSelectElement =
+          document.querySelector<HTMLSelectElement>("header select") ??
           document.querySelector<HTMLSelectElement>("select");
         if (!localeSelectElement) {
-          reject(new Error("LocaleSwitcher <select> not found"));
+          reject(new Error("LocaleSwitcher <select> not found (expected header select)"));
           return;
         }
 
@@ -182,7 +196,7 @@ const measureE2ELocaleSwitchDuration = async (
           new Event("change", { bubbles: true }),
         );
 
-        // Safety valve: reject if the locale switch does not complete within 5 s.
+        // Safety valve: reject if the locale switch does not complete in time.
         setTimeout(() => {
           mutationObserver.disconnect();
           reject(
@@ -190,9 +204,12 @@ const measureE2ELocaleSwitchDuration = async (
               `E2E timeout: html[lang] did not change to '${targetLocaleCode}'`,
             ),
           );
-        }, 5000);
+        }, e2eTimeoutMs);
       }),
-    { targetLocaleCode: targetLocale },
+    {
+      targetLocaleCode: targetLocale,
+      e2eTimeoutMs: E2E_LOCALE_SWITCH_TIMEOUT_MS,
+    },
   );
 
 /**
@@ -255,7 +272,7 @@ const runSingleIteration = async (
   );
 
   // Full navigation ensures router-level caches are also reset between runs.
-  await page.goto(fromLocaleUrl, { waitUntil: "networkidle" });
+  await page.goto(fromLocaleUrl, { waitUntil: NAV_WAIT_UNTIL });
 
   // Clear Profiler metrics written during the navigation above so that only
   // the locale-switch renders are counted in this iteration's measurement.
@@ -266,8 +283,26 @@ const runSingleIteration = async (
   const e2eDuration = await measureE2ELocaleSwitchDuration(page, targetLocale);
   console.log(`  E2E perceived reactivity:   ${e2eDuration.toFixed(2)}ms`);
 
-  const { totalRenderTime: profilerRenderTime, updatePhaseCount } =
-    await readReactProfilerRenderTime(page);
+  let profilerRenderTime = 0;
+  let updatePhaseCount = 0;
+  try {
+    const profiler = await readReactProfilerRenderTime(page);
+    profilerRenderTime = profiler.totalRenderTime;
+    updatePhaseCount = profiler.updatePhaseCount;
+  } catch (readError) {
+    const message =
+      readError instanceof Error ? readError.message : String(readError);
+    // Some stacks (e.g. Paraglide middleware + RSC) update `html[lang]` then
+    // complete a navigation slightly later; the next evaluate can lose its context.
+    if (message.includes("Execution context was destroyed")) {
+      await page.waitForLoadState(NAV_WAIT_UNTIL);
+      const profiler = await readReactProfilerRenderTime(page);
+      profilerRenderTime = profiler.totalRenderTime;
+      updatePhaseCount = profiler.updatePhaseCount;
+    } else {
+      throw readError;
+    }
+  }
   console.log(
     `  React Profiler render time: ${profilerRenderTime.toFixed(2)}ms (${updatePhaseCount} update phase(s))`,
   );
@@ -399,7 +434,7 @@ export const registerReactivityTest = (config: ReactivityTestConfig): void => {
   } = config;
 
   test("Measure locale switch reactivity", async ({ page }) => {
-    test.slow(); // multiple iterations + networkidle waits exceed the default timeout
+    test.slow(); // multiple iterations + navigation waits exceed the default timeout
 
     // The Playwright project name is used as a label in logs and output file names.
     const activeLocale = test.info().project.name;
@@ -427,7 +462,7 @@ export const registerReactivityTest = (config: ReactivityTestConfig): void => {
     // prime internal caches before timed iterations begin. Without this, the
     // first iteration is systematically slower than subsequent ones.
     console.log(`[${activeLocale}] WARM-UP: loading /${toLocale}`);
-    await page.goto(`/${toLocale}`, { waitUntil: "networkidle" });
+    await page.goto(`/${toLocale}`, { waitUntil: NAV_WAIT_UNTIL });
 
     for (
       let iterationIndex = 1;
@@ -450,6 +485,7 @@ export const registerReactivityTest = (config: ReactivityTestConfig): void => {
           `[${activeLocale}] Iteration ${iterationIndex}/${iterationCount} failed:`,
           iterationError,
         );
+        throw iterationError;
       }
     }
 

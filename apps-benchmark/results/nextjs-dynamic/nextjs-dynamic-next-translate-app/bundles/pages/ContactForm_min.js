@@ -179,61 +179,61 @@ function T(e) {
 //#region components/pages/contact/ContactForm.tsx
 function E() {
 	let { t: e } = T("common"), t = i(), n = i(), r = i(), a = i();
-	return /* @__PURE__ */ s("form", {
+	return s("form", {
 		className: "space-y-6",
 		children: [
-			/* @__PURE__ */ s("div", {
+			s("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [/* @__PURE__ */ s("div", { children: [/* @__PURE__ */ o("label", {
+				children: [s("div", { children: [o("label", {
 					htmlFor: t,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: e("contact.contactForm.name")
-				}), /* @__PURE__ */ o("input", {
+				}), o("input", {
 					id: t,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: e("contact.contactForm.name")
-				})] }), /* @__PURE__ */ s("div", { children: [/* @__PURE__ */ o("label", {
+				})] }), s("div", { children: [o("label", {
 					htmlFor: n,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: e("contact.contactForm.email")
-				}), /* @__PURE__ */ o("input", {
+				}), o("input", {
 					id: n,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
 				})] })]
 			}),
-			/* @__PURE__ */ s("div", { children: [/* @__PURE__ */ o("label", {
+			s("div", { children: [o("label", {
 				htmlFor: r,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: e("contact.contactForm.subject")
-			}), /* @__PURE__ */ s("select", {
+			}), s("select", {
 				id: r,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					/* @__PURE__ */ o("option", { children: "Bug Report" }),
-					/* @__PURE__ */ o("option", { children: "New Benchmark Idea" }),
-					/* @__PURE__ */ o("option", { children: "Methodology Question" }),
-					/* @__PURE__ */ o("option", { children: "Contribution" }),
-					/* @__PURE__ */ o("option", { children: "Other" })
+					o("option", { children: "Bug Report" }),
+					o("option", { children: "New Benchmark Idea" }),
+					o("option", { children: "Methodology Question" }),
+					o("option", { children: "Contribution" }),
+					o("option", { children: "Other" })
 				]
 			})] }),
-			/* @__PURE__ */ s("div", { children: [/* @__PURE__ */ o("label", {
+			s("div", { children: [o("label", {
 				htmlFor: a,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: e("contact.contactForm.message")
-			}), /* @__PURE__ */ o("textarea", {
+			}), o("textarea", {
 				id: a,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: e("contact.contactForm.message")
 			})] }),
-			/* @__PURE__ */ o("button", {
+			o("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: e("contact.contactForm.sendMessage")
 			}),
-			/* @__PURE__ */ o("p", {
+			o("p", {
 				className: "text-xs text-muted-foreground",
 				children: e("contact.contactForm.wellGetBackTo")
 			})
@@ -257,7 +257,11 @@ function D() {
 	}
 }
 function O(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -266,7 +270,7 @@ function k({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		D();
-	}, []), /* @__PURE__ */ o(t, {
+	}, []), o(t, {
 		id: "AppRoot",
 		onRender: O,
 		children: e
@@ -275,7 +279,7 @@ function k({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function A({ children: e }) {
-	return /* @__PURE__ */ o(k, {
+	return o(k, {
 		locale: "en",
 		children: e
 	});
@@ -283,7 +287,7 @@ function A({ children: e }) {
 //#endregion
 //#region components/pages/contact/ContactForm.wrapper.tsx
 function j() {
-	return /* @__PURE__ */ o(A, { children: /* @__PURE__ */ o(E, {}) });
+	return o(A, { children: o(E, {}) });
 }
 //#endregion
 export { j as default };

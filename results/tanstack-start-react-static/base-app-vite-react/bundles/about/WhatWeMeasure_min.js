@@ -1,5 +1,4 @@
 import { jsx as e, jsxs as t } from "react/jsx-runtime";
-//#region src/components/pages/about/WhatWeMeasure.tsx
 function n() {
 	return t("section", {
 		className: "mt-12 mx-auto max-w-3xl",
@@ -42,5 +41,4 @@ function n() {
 		})]
 	});
 }
-//#endregion
 export { n as default };

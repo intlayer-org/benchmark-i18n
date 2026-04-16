@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/settings/SettingsFooter.tsx
 function SettingsFooter() {
 	return jsxs("div", {
 		className: "flex justify-end gap-3",
@@ -14,5 +13,4 @@ function SettingsFooter() {
 		})]
 	});
 }
-//#endregion
 export { SettingsFooter as default };

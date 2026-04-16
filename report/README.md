@@ -337,6 +337,8 @@ Library overhead measured via a synthetic empty component.
 
 See [`RESULTS.md`](./RESULTS.md) for the latest benchmark findings with analysis and commentary on each metric.
 
+Structured aggregates (all app rows + metadata) are written to [`summary.json`](./summary.json) when you run `bun run report` (or `bun report/scripts/summarize.ts --out`).
+
 ---
 
 ## Summary Script
@@ -361,8 +363,14 @@ bun report/scripts/summarize.ts --category static
 # Filter to a specific library:
 bun report/scripts/summarize.ts --lib intlayer
 
-# Output as JSON:
+# Output as JSON (stdout, app rows only):
 bun report/scripts/summarize.ts --json
+
+# Save full JSON (metadata + all app rows) to report/summary.json:
+bun report/scripts/summarize.ts --out
+
+# Custom path:
+bun report/scripts/summarize.ts --out path/to/summary.json
 ```
 
 ### What it outputs

@@ -1,8 +1,7 @@
-import { t as e } from "./en-JS3tXsF1.js";
+import { t as e } from "./en-XNO2V14Y.js";
 import t, { Suspense as n, useCallback as r, useContext as i, useEffect as a, useMemo as o, useRef as s, useState as c } from "react";
 import { Link as l, useParams as u } from "@tanstack/react-router";
 import { jsx as d, jsxs as f } from "react/jsx-runtime";
-//#region ../../../node_modules/.bun/@tolgee+web@7.0.0/node_modules/@tolgee/web/dist/tolgee-web.production.esm.js
 var p = Object.defineProperty, m = Object.getOwnPropertySymbols, h = Object.prototype.hasOwnProperty, g = Object.prototype.propertyIsEnumerable, _ = (e, t, n) => t in e ? p(e, t, {
 	enumerable: !0,
 	configurable: !0,
@@ -1226,8 +1225,6 @@ function qe() {
 	return _e().use(Ke());
 }
 var Je = () => (e) => e;
-//#endregion
-//#region ../../../node_modules/.bun/@tolgee+react@7.0.0+3f10a4be4e334a9b/node_modules/@tolgee/react/dist/tolgee-react.esm.js
 function Ye(e) {
 	return Object.assign(Object.assign({}, e), { t(...t) {
 		let n = V(...t);
@@ -1351,7 +1348,7 @@ var Q = (e) => {
 	apiUrl: void 0,
 	apiKey: void 0,
 	staticData: {
-		en: () => import("./en-JS3tXsF1.js").then((e) => e.n),
+		en: () => import("./en-XNO2V14Y.js").then((e) => e.n),
 		fr: () => import("../i18n/locales/fr.json"),
 		es: () => import("../i18n/locales/es.json"),
 		de: () => import("../i18n/locales/de.json"),
@@ -1373,8 +1370,6 @@ function pt() {
 function $(e) {
 	return d(dt, { ...e });
 }
-//#endregion
-//#region src/components/Footer.tsx
 function mt() {
 	let { t: e } = pt(), t = u({ strict: !1 }).locale ?? "en", n = [
 		{
@@ -1452,8 +1447,6 @@ function mt() {
 		})
 	});
 }
-//#endregion
-//#region scripts/Wrapper.tsx
 function ht({ children: t }) {
 	return d(et, {
 		tolgee: ft,
@@ -1464,14 +1457,10 @@ function ht({ children: t }) {
 		children: t
 	});
 }
-//#endregion
-//#region src/components/Footer.wrapper.tsx
 function gt() {
 	return d(ht, { children: d(mt, {}) });
 }
-//#endregion
 export { gt as default };
-//#region \0rolldown/runtime.js
 var e = Object.defineProperty, t = ((t, n) => {
 	let r = {};
 	for (var i in t) e(r, i, {
@@ -1887,5 +1876,4 @@ var e = Object.defineProperty, t = ((t, n) => {
 	teamGrid: N,
 	mockBanner: P
 };
-//#endregion
 export { t as n, F as t };

@@ -179,7 +179,7 @@ function T(e) {
 //#region components/MockBanner.tsx
 var E = () => {
 	let { t: e } = T("common");
-	return /* @__PURE__ */ o("div", {
+	return o("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e("shared.mockBanner.text")
 	});
@@ -188,13 +188,13 @@ var E = () => {
 //#region components/pages/blog/BlogHeader.tsx
 function D() {
 	let { t: e } = T("common");
-	return /* @__PURE__ */ s(a, { children: [
-		/* @__PURE__ */ o(E, {}),
-		/* @__PURE__ */ o("h1", {
+	return s(a, { children: [
+		o(E, {}),
+		o("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: e("blog.blogHeader.blog")
 		}),
-		/* @__PURE__ */ o("p", {
+		o("p", {
 			className: "mb-10 text-muted-foreground",
 			children: e("blog.blogHeader.insightsDeepDivesAnd")
 		})
@@ -217,7 +217,11 @@ function O() {
 	}
 }
 function k(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -226,7 +230,7 @@ function A({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		O();
-	}, []), /* @__PURE__ */ o(t, {
+	}, []), o(t, {
 		id: "AppRoot",
 		onRender: k,
 		children: e
@@ -235,7 +239,7 @@ function A({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function j({ children: e }) {
-	return /* @__PURE__ */ o(A, {
+	return o(A, {
 		locale: "en",
 		children: e
 	});
@@ -243,7 +247,7 @@ function j({ children: e }) {
 //#endregion
 //#region components/pages/blog/BlogHeader.wrapper.tsx
 function M() {
-	return /* @__PURE__ */ o(j, { children: /* @__PURE__ */ o(D, {}) });
+	return o(j, { children: o(D, {}) });
 }
 //#endregion
 export { M as default };

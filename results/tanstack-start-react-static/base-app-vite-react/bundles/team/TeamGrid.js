@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/team/TeamGrid.tsx
 function TeamGrid() {
 	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
@@ -57,5 +56,4 @@ function TeamGrid() {
 		}, m.name))
 	});
 }
-//#endregion
 export { TeamGrid as default };

@@ -1,4 +1,4 @@
-import { Fragment, createContext, createElement, isValidElement, lazy, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
@@ -44,9 +44,9 @@ var routing = {
 	"basePath": ""
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/IntlayerNode.mjs
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/IntlayerNode.mjs
 var renderIntlayerNode = ({ children, value, additionalProps }) => {
-	const element = isValidElement(children) ? children : /* @__PURE__ */ jsx(Fragment$1, { children });
+	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
 	return new Proxy(element, { get(target, prop, receiver) {
 		if (prop === "value") return value;
 		if (additionalProps && Object.keys(additionalProps).includes(prop)) return additionalProps[prop];
@@ -54,7 +54,7 @@ var renderIntlayerNode = ({ children, value, additionalProps }) => {
 	} });
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/reactElement/renderReactElement.mjs
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/reactElement/renderReactElement.mjs
 var renderReactElement = (element) => {
 	if (element === null || typeof element !== "object") return element;
 	const convertChildrenAsArray = (element) => {
@@ -100,18 +100,13 @@ var renderReactElement = (element) => {
 	return createElement(type ?? "span", props, ...props.children);
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+types@8.7.1-canary-0/node_modules/@intlayer/types/dist/esm/nodeType.mjs
+//#region ../../../node_modules/.bun/@intlayer+types@8.7.1-canary-1/node_modules/@intlayer/types/dist/esm/nodeType.mjs
 var TRANSLATION = "translation";
 var INSERTION = "insertion";
 var OBJECT = "object";
 var ARRAY = "array";
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getContent/deepTransform.mjs
-/**
-* Recursively traverses a node (object/array/primitive).
-* Applies the *first* plugin that can transform a node, then stops descending further.
-* If no plugin transforms it, it recurses into its children.
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getContent/deepTransform.mjs
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
 	if (node === null || typeof node !== "object") return node;
@@ -141,29 +136,12 @@ var deepTransformNode = (node, props) => {
 	return result;
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getInsertion.mjs
-/**
-* Allow to insert values in a string.
-*
-* Usage:
-*
-* ```ts
-* const content = getInsertion('Hello {{name}}!', {
-*  name: 'John',
-* });
-* // 'Hello John!'
-* ```
-*
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getInsertion.mjs
 var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
 	return (values[key.trim()] ?? "").toString();
 });
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getTranslation.mjs
-/**
-* Check if a value is a plain object that can be safely merged.
-* Returns false for Promises, React elements, class instances, etc.
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getTranslation.mjs
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
 	if (typeof value.then === "function") return false;
@@ -171,10 +149,6 @@ var isPlainObject = (value) => {
 	const proto = Object.getPrototypeOf(value);
 	return proto === Object.prototype || proto === null || Array.isArray(value);
 };
-/**
-* Recursively merges two objects, skipping undefined source values.
-* First argument takes precedence. Arrays replace rather than merge.
-*/
 var deepMerge = (target, source) => {
 	if (target === void 0) return source;
 	if (source === void 0) return target;
@@ -189,29 +163,6 @@ var deepMerge = (target, source) => {
 	}
 	return target;
 };
-/**
-* Picks the appropriate content from a locale map based on the provided locale.
-*
-* It handles:
-* 1. Exact locale match (e.g., 'en-US').
-* 2. Generic locale fallback (e.g., 'en' if 'en-US' is not found).
-* 3. Explicit fallback locale.
-* 4. Deep merging of objects to ensure partial translations are complemented by fallbacks.
-*
-* @param languageContent - A map of locales to content.
-* @param locale - The target locale to retrieve.
-* @param fallback - Optional fallback locale if the target is not found.
-* @returns The translated content.
-*
-* @example
-* ```ts
-* const content = getTranslation({
-*   en: 'Hello',
-*   fr: 'Bonjour',
-* }, 'fr');
-* // 'Bonjour'
-* ```
-*/
 var getTranslation = (languageContent, locale, fallback) => {
 	const get = (loc) => languageContent[loc];
 	const seen = /* @__PURE__ */ new Set();
@@ -242,26 +193,14 @@ var getTranslation = (languageContent, locale, fallback) => {
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getContent/plugins.mjs
-/**
-* True when the translation node type is explicitly disabled at build time.
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getContent/plugins.mjs
 var TREE_SHAKE_TRANSLATION = process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false";
-/**
-* True when the insertion node type is explicitly disabled at build time.
-*/
 var TREE_SHAKE_INSERTION$1 = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false";
-/** ---------------------------------------------
-* FALLBACK PLUGIN
-*
-* Used to fallback a tree-shaken plugin
-* --------------------------------------------- */
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
 	transform: (node) => node
 };
-/** Translation plugin. Replaces node with a locale string if nodeType = Translation. */
 var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
@@ -281,18 +220,14 @@ var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackP
 		return getTranslation(result, locale, fallback);
 	}
 };
-/** Enumeration plugin. Replaces node with a function that takes quantity => string. */
 var enumerationPlugin = fallbackPlugin;
-/** Condition plugin. Replaces node with a function that takes boolean => string. */
 var conditionPlugin = fallbackPlugin;
-/** Insertion plugin. Replaces node with a function that takes quantity => string. */
 var insertionPlugin$1 = TREE_SHAKE_INSERTION$1 ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
 		const newKeyPath = [...props.keyPath, { type: INSERTION }];
 		const children = node[INSERTION];
-		/** Insertion string plugin. Replaces string node with a component that render the insertion. */
 		const insertionStringPlugin = {
 			id: "insertion-string-plugin",
 			canHandle: (node) => typeof node === "string",
@@ -320,14 +255,11 @@ var insertionPlugin$1 = TREE_SHAKE_INSERTION$1 ? fallbackPlugin : {
 		});
 	}
 };
-/** Gender plugin. Replaces node with a function that takes gender => string. */
 var genderPlugin = fallbackPlugin;
-/** Nested plugin. Replaces node with the result of `getNesting`. */
 var nestedPlugin = (locale) => fallbackPlugin;
-/** File plugin. Replaces node with the result of `getNesting`. */
 var filePlugin = fallbackPlugin;
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getContent/getContent.mjs
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getContent/getContent.mjs
 var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
@@ -337,26 +269,12 @@ var getBasePlugins = (locale, fallback = true) => [
 	filePlugin,
 	genderPlugin
 ].filter(Boolean);
-/**
-* Transforms a node in a single pass, applying each plugin as needed.
-*
-* @param node The node to transform.
-* @param locale The locale to use if your transformers need it (e.g. for translations).
-*/
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getDictionary.mjs
-/**
-* Transforms a dictionary in a single pass, applying each plugin as needed.
-*
-* @param dictionary The dictionary to transform.
-* @param locale The locale to use if your transformers need it (e.g. for translations).
-* @param additionalPlugins An array of NodeTransformer that define how to transform recognized nodes.
-*                      If omitted, we’ll use a default set of plugins.
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getDictionary.mjs
 var getDictionary$1 = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	const props = {
 		dictionaryKey: dictionary.key,
@@ -367,11 +285,7 @@ var getDictionary$1 = (dictionary, locale, plugins = getBasePlugins(locale)) => 
 	return getContent(dictionary.content, props, plugins);
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/splitAndJoinInsertion.mjs
-/**
-* Check if a value is a complex object (not a primitive)
-* Used to determine if values need to be wrapped in fragments
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/splitAndJoinInsertion.mjs
 var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
 var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
 var splitInsertionTemplate = (template, values = {}) => {
@@ -393,22 +307,10 @@ var splitInsertionTemplate = (template, values = {}) => {
 	};
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/plugins.mjs
-/**
-* True when the intlayer node type is explicitly disabled at build time.
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/plugins.mjs
 var TREE_SHAKE_INTLAYER_NODE = process.env["INTLAYER_NODE_TYPE_INTLAYER_NODE"] === "false";
-/**
-* True when the react node type is explicitly disabled at build time.
-*/
 var TREE_SHAKE_REACT_NODE = process.env["INTLAYER_NODE_TYPE_REACT_NODE"] === "false";
-/**
-* True when the insertion node type is explicitly disabled at build time.
-*/
 var TREE_SHAKE_INSERTION = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false";
-lazy(() => import("./MarkdownRendererPlugin-v3hQtzh-.js").then((m) => ({ default: m.MarkdownRendererPlugin })));
-lazy(() => import("./HTMLRendererPlugin-D6uzgbdM.js").then((m) => ({ default: m.HTMLRendererPlugin })));
-/** Translation plugin. Replaces node with a locale string if nodeType = Translation. */
 var intlayerNodePlugins = TREE_SHAKE_INTLAYER_NODE ? fallbackPlugin : {
 	id: "intlayer-node-plugin",
 	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
@@ -418,7 +320,6 @@ var intlayerNodePlugins = TREE_SHAKE_INTLAYER_NODE ? fallbackPlugin : {
 		children: rest.children
 	})
 };
-/** Translation plugin. Replaces node with a locale string if nodeType = Translation. */
 var reactNodePlugins = TREE_SHAKE_REACT_NODE ? fallbackPlugin : {
 	id: "react-node-plugin",
 	canHandle: (node) => typeof node === "object" && typeof node?.props !== "undefined" && typeof node.key !== "undefined",
@@ -428,22 +329,17 @@ var reactNodePlugins = TREE_SHAKE_REACT_NODE ? fallbackPlugin : {
 		children: renderReactElement(node)
 	})
 };
-/**
-* Split insertion string and join with React nodes using shared core logic
-*/
 var splitAndJoinInsertion = (template, values) => {
 	const result = splitInsertionTemplate(template, values);
 	if (result.isSimple) return result.parts;
 	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
 };
-/** Insertion plugin for React. Handles component/node insertion. */
 var insertionPlugin = TREE_SHAKE_INSERTION ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
 		const newKeyPath = [...props.keyPath, { type: INSERTION }];
 		const children = node[INSERTION];
-		/** Insertion string plugin. Replaces string node with a component that render the insertion. */
 		const insertionStringPlugin = {
 			id: "insertion-string-plugin",
 			canHandle: (node) => typeof node === "string",
@@ -478,12 +374,7 @@ var insertionPlugin = TREE_SHAKE_INSERTION ? fallbackPlugin : {
 	}
 };
 var markdownPlugin = fallbackPlugin;
-/** HTML plugin. Replaces node with a function that takes components => ReactNode. */
 var htmlPlugin = fallbackPlugin;
-/**
-* Get the plugins array for React content transformation.
-* This function is used by both getIntlayer and getDictionary to ensure consistent plugin configuration.
-*/
 var getPlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
@@ -498,14 +389,10 @@ var getPlugins = (locale, fallback = true) => [
 	htmlPlugin
 ].filter(Boolean);
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/getDictionary.mjs
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/getDictionary.mjs
 var getDictionary = (dictionary, locale) => getDictionary$1(dictionary, locale, getPlugins(locale));
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/localeResolver.mjs
-/**
-* Resolves the most specific locale from a user-provided list,
-* or falls back to the default locale if no match is found.
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/localeResolver.mjs
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
 	const requestedLocales = [selectedLocale].flat();
 	const normalize = (locale) => locale.trim().toLowerCase();
@@ -522,10 +409,7 @@ var localeResolver = (selectedLocale, locales = internationalization?.locales, d
 	return defaultLocale;
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/utils/localeStorage.mjs
-/**
-* True when cookie storage is explicitly disabled at build time.
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/utils/localeStorage.mjs
 var TREE_SHAKE_STORAGE_COOKIES = process.env["INTLAYER_ROUTING_STORAGE_COOKIES"] === "false";
 process.env["INTLAYER_ROUTING_STORAGE_HEADERS"];
 var buildCookieString = (name, value, attributes) => {
@@ -537,11 +421,6 @@ var buildCookieString = (name, value, attributes) => {
 	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
 	return parts.join("; ");
 };
-/**
-* Retrieves the locale from browser storage mechanisms
-* (cookies, localStorage, sessionStorage).
-* Does not read from headers — use `getLocaleFromStorageServer` for that.
-*/
 var getLocaleFromStorageClient = (options) => {
 	const { locales } = internationalization;
 	if (options?.isCookieEnabled === false) return void 0;
@@ -551,11 +430,6 @@ var getLocaleFromStorageClient = (options) => {
 		if (isValidLocale(value)) return value;
 	} catch {}
 };
-/**
-* Stores the locale in browser storage mechanisms
-* (cookies, localStorage, sessionStorage).
-* Does not write to headers — use `setLocaleInStorageServer` for that.
-*/
 var setLocaleInStorageClient = (locale, options) => {
 	if (options?.isCookieEnabled === false) return;
 	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
@@ -573,7 +447,7 @@ var setLocaleInStorageClient = (locale, options) => {
 	}
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/getBrowserLocale.mjs
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/getBrowserLocale.mjs
 var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
@@ -594,107 +468,14 @@ var localeStorageOptions = {
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/utils/intl.mjs
-/**
-* Cached Intl helper – drop‑in replacement for the global `Intl` object.
-* ‑‑‑
-* • Uses a `Proxy` to lazily wrap every *constructor* hanging off `Intl` (NumberFormat, DateTimeFormat, …).
-* • Each wrapped constructor keeps an in‑memory cache keyed by `[locales, options]` so that identical requests
-* reuse the same heavy instance instead of reparsing CLDR data every time.
-* • A polyfill warning for `Intl.DisplayNames` is emitted only once and only in dev.
-* • The public API is fully type‑safe and mirrors the native `Intl` surface exactly –
-* you can treat `CachedIntl` just like the built‑in `Intl`.
-*
-* Usage @example:
-* ---------------
-* ```ts
-* import { CachedIntl } from "./cached-intl";
-*
-* const nf = CachedIntl.NumberFormat("en-US", { style: "currency", currency: "USD" });
-* console.log(nf.format(1234));
-*
-* const dn = CachedIntl.DisplayNames(["fr"], { type: "language" });
-* console.log(dn.of("en")); * → "anglais"
-*
-* You can also spin up an isolated instance with its own caches (handy in test suites):
-* const TestIntl = createCachedIntl();
-* ```
-*/
-var MAX_CACHE_SIZE = 50;
-var cache$1 = /* @__PURE__ */ new Map();
-/**
-* Generic caching instantiator for Intl constructors.
-*/
-var getCachedIntl = (Ctor, locale, options) => {
-	const resLoc = locale ?? internationalization?.defaultLocale;
-	const key = `${resLoc}|${options ? JSON.stringify(options) : ""}`;
-	let ctorCache = cache$1.get(Ctor);
-	if (!ctorCache) {
-		ctorCache = /* @__PURE__ */ new Map();
-		cache$1.set(Ctor, ctorCache);
-	}
-	let instance = ctorCache.get(key);
-	if (!instance) {
-		if (ctorCache.size > MAX_CACHE_SIZE) ctorCache.clear();
-		instance = new Ctor(resLoc, options);
-		ctorCache.set(key, instance);
-	}
-	return instance;
-};
-var CachedIntl = {
-	Collator: function Collator(locales, options) {
-		return getCachedIntl(Intl.Collator, locales, options);
-	},
-	DateTimeFormat: function DateTimeFormat(locales, options) {
-		return getCachedIntl(Intl.DateTimeFormat, locales, options);
-	},
-	DisplayNames: function DisplayNames(locales, options) {
-		return getCachedIntl(Intl.DisplayNames, locales, options);
-	},
-	ListFormat: function ListFormat(locales, options) {
-		return getCachedIntl(Intl.ListFormat, locales, options);
-	},
-	NumberFormat: function NumberFormat(locales, options) {
-		return getCachedIntl(Intl.NumberFormat, locales, options);
-	},
-	PluralRules: function PluralRules(locales, options) {
-		return getCachedIntl(Intl.PluralRules, locales, options);
-	},
-	RelativeTimeFormat: function RelativeTimeFormat(locales, options) {
-		return getCachedIntl(Intl.RelativeTimeFormat, locales, options);
-	},
-	Segmenter: function Segmenter(locales, options) {
-		return getCachedIntl(Intl.Segmenter, locales, options);
-	}
-};
-//#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/getLocaleName.mjs
-var getLocaleName = (displayLocale, targetLocale = displayLocale) => {
-	return new CachedIntl.DisplayNames(targetLocale, { type: "language" }).of(displayLocale) ?? "Unknown locale";
-};
-//#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocaleStorage.mjs
-/**
-* Get the locale cookie
-*/
-/**
-* Get the locale cookie
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocaleStorage.mjs
 var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
-/**
-* Set the locale cookie
-*/
 var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
 	...localeStorageOptions,
 	isCookieEnabled
 });
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/useEditor.mjs
-/**
-* Initializes the Intlayer editor client singleton when the editor is enabled.
-* Syncs the current locale from the Intlayer context into the editor manager so
-* the editor always knows which locale the app is displaying.
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/useEditor.mjs
 var useEditor = () => {
 	const { locale } = useContext(IntlayerClientContext) ?? {};
 	const managerRef = useRef(null);
@@ -705,38 +486,23 @@ var useEditor = () => {
 	}, [locale]);
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/EditorProvider.mjs
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/EditorProvider.mjs
 var EditorProvider = ({ children }) => {
 	useEditor();
 	return children;
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+config@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs
-/**
-* Sets the version of Intlayer in the window object.
-* This is used for Intlayer detection in the browser.
-*/
+//#region ../../../node_modules/.bun/@intlayer+config@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs
 var setIntlayerIdentifier = () => {
 	if (typeof window !== "undefined") window.intlayer = { enabled: true };
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/IntlayerProvider.mjs
-/**
-* Context that stores the current locale on the client side.
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/IntlayerProvider.mjs
 var IntlayerClientContext = createContext({
 	locale: localeInStorage ?? internationalization?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: true
 });
-/**
-* Provider that stores the current locale on the client side.
-*
-* This component is focused on content delivery without the editor features.
-*
-* @param props - The provider props.
-* @returns The provider component.
-*/
 var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
 	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
 	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
@@ -757,7 +523,7 @@ var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocal
 	};
 	const setLocale = setLocaleProp ?? setLocaleBase;
 	const resolvedLocale = localeResolver(currentLocale);
-	return /* @__PURE__ */ jsx(IntlayerClientContext.Provider, {
+	return jsx(IntlayerClientContext.Provider, {
 		value: {
 			locale: resolvedLocale,
 			setLocale,
@@ -766,37 +532,12 @@ var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocal
 		children
 	});
 };
-/**
-* Main provider for Intlayer in React applications.
-*
-* It includes the editor provider by default, allowing for live content editing
-* if configured.
-*
-* @param props - The provider props.
-* @returns The provider component with editor support.
-*
-* @example
-* ```tsx
-* import { IntlayerProvider } from 'react-intlayer';
-*
-* const App = () => (
-*   <IntlayerProvider>
-*     <MyComponent />
-*   </IntlayerProvider>
-* );
-* ```
-*/
-var IntlayerProvider = ({ children, ...props }) => /* @__PURE__ */ jsxs(IntlayerProviderContent, {
+var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
 	...props,
-	children: [/* @__PURE__ */ jsx(EditorProvider, {}), children]
+	children: [jsx(EditorProvider, {}), children]
 });
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useDictionary.mjs
-/**
-* On the server side, Hook that transform a dictionary and return the content
-*
-* If the locale is not provided, it will use the locale from the client context
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useDictionary.mjs
 var useDictionary = (dictionary, locale) => {
 	const { locale: currentLocale } = useContext(IntlayerClientContext) ?? {};
 	return useMemo(() => {
@@ -808,7 +549,7 @@ var useDictionary = (dictionary, locale) => {
 	]);
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLoadDynamic.mjs
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLoadDynamic.mjs
 var createSuspender = (promise) => {
 	let status = "pending";
 	let result;
@@ -831,42 +572,14 @@ var useLoadDynamic = (key, promise) => {
 	return cache.get(key).read();
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useDictionaryDynamic.mjs
-/**
-* On the server side, Hook that transform a dictionary and return the content
-*
-* If the locale is not provided, it will use the locale from the client context
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useDictionaryDynamic.mjs
 var useDictionaryDynamic = (dictionaryPromise, key, locale) => {
 	const { locale: currentLocale } = useContext(IntlayerClientContext) ?? {};
 	const localeTarget = useMemo(() => locale ?? currentLocale ?? internationalization.defaultLocale, [currentLocale, locale]);
 	return useDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, dictionaryPromise[localeTarget]?.()), localeTarget);
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocale.mjs
-/**
-* Client-side hook to get the current locale and related locale management functions.
-*
-* @param props - Optional properties for the hook.
-* @returns An object containing the current locale, default locale, available locales, and a function to update the locale.
-*
-* @example
-* ```tsx
-* import { useLocale } from 'react-intlayer';
-*
-* const LocaleSwitcher = () => {
-*   const { locale, setLocale, availableLocales } = useLocale();
-*
-*   return (
-*     <select value={locale} onChange={(e) => setLocale(e.target.value)}>
-*       {availableLocales.map((loc) => (
-*         <option key={loc} value={loc}>{loc}</option>
-*       ))}
-*     </select>
-*   );
-* };
-* ```
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocale.mjs
 var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
 	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
@@ -894,7 +607,7 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 //#region .intlayer/dynamic_dictionary/theme-toggle.mjs
 var content = {
 	"de": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((m) => m.default),
-	"en": () => import("./en-C9AGS7k3.js").then((m) => m.default),
+	"en": () => import("./en-C5u7Pc7k.js").then((m) => m.default),
 	"es": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((m) => m.default),
 	"fr": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((m) => m.default),
 	"it": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((m) => m.default),
@@ -944,8 +657,8 @@ function ThemeToggle() {
 		applyThemeMode(nextMode);
 		window.localStorage.setItem("theme", nextMode);
 	}
-	const label = mode === "auto" ? content$2.d.value : content$2.e({ mode });
-	return /* @__PURE__ */ jsx("button", {
+	const label = mode === "auto" ? content$2.d.value : content$2.g({ mode });
+	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
@@ -956,6 +669,14 @@ function ThemeToggle() {
 }
 //#endregion
 //#region src/components/LocaleSwitcher.tsx
+function getLocaleName(locale) {
+	try {
+		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
+		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
+	} catch (e) {
+		return locale.toUpperCase();
+	}
+}
 function LocaleSwitcher() {
 	const navigate = useNavigate();
 	const { locale, availableLocales, setLocale } = useLocale({ onLocaleChange: (newLocale) => {
@@ -967,13 +688,13 @@ function LocaleSwitcher() {
 			})
 		});
 	} });
-	return /* @__PURE__ */ jsx("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: /* @__PURE__ */ jsx("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => setLocale(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: availableLocales.map((locale) => /* @__PURE__ */ jsx("option", {
+			children: availableLocales.map((locale) => jsx("option", {
 				value: locale,
 				children: getLocaleName(locale)
 			}, locale))
@@ -982,12 +703,6 @@ function LocaleSwitcher() {
 }
 //#endregion
 //#region src/hooks/usePerformanceMeasure.ts
-/**
-* Custom hook to measure the render-to-layout duration of a component.
-* It uses the Browser User Timing API (performance.mark/measure).
-*
-* @param name The name of the measurement (e.g., 'HeroComponent')
-*/
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -1040,21 +755,21 @@ function Header() {
 			label: content.m
 		}
 	];
-	return /* @__PURE__ */ jsx("header", {
+	return jsx("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: /* @__PURE__ */ jsxs("nav", {
+		children: jsxs("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [/* @__PURE__ */ jsxs("div", {
+			children: [jsxs("div", {
 				className: "flex items-center gap-8",
-				children: [/* @__PURE__ */ jsx(Link, {
+				children: [jsx(Link, {
 					to: "/$locale",
 					params: { locale: currentLocale },
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: content.h
-				}), /* @__PURE__ */ jsxs("div", {
+				}), jsxs("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						/* @__PURE__ */ jsx(Link, {
+						jsx(Link, {
 							to: "/$locale",
 							params: { locale: currentLocale },
 							activeOptions: { exact: true },
@@ -1062,32 +777,32 @@ function Header() {
 							className: "nav-link",
 							children: content.g
 						}),
-						/* @__PURE__ */ jsx(Link, {
+						jsx(Link, {
 							to: "/$locale/about",
 							params: { locale: currentLocale },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
 							children: content.i
 						}),
-						/* @__PURE__ */ jsxs("div", {
+						jsxs("div", {
 							className: "relative",
-							children: [/* @__PURE__ */ jsxs("button", {
+							children: [jsxs("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [content.j, /* @__PURE__ */ jsx(ChevronDown, {
+								children: [content.j, jsx(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
 								})]
-							}), isMockPagesOpen && /* @__PURE__ */ jsx("div", {
+							}), isMockPagesOpen && jsx("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: /* @__PURE__ */ jsx("div", {
+								children: jsx("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => /* @__PURE__ */ jsx(Link, {
+									children: mockPages.map((page) => jsx(Link, {
 										to: page.to,
 										params: { locale: currentLocale },
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
@@ -1099,30 +814,30 @@ function Header() {
 						})
 					]
 				})]
-			}), /* @__PURE__ */ jsxs("div", {
+			}), jsxs("div", {
 				className: "flex items-center gap-4",
 				children: [
-					/* @__PURE__ */ jsxs("a", {
+					jsxs("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [/* @__PURE__ */ jsx("span", {
+						children: [jsx("span", {
 							className: "sr-only",
 							children: content.e
-						}), /* @__PURE__ */ jsx("svg", {
+						}), jsx("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: /* @__PURE__ */ jsx("path", {
+							children: jsx("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
 							})
 						})]
 					}),
-					/* @__PURE__ */ jsx(LocaleSwitcher, {}),
-					/* @__PURE__ */ jsx(ThemeToggle, {})
+					jsx(LocaleSwitcher, {}),
+					jsx(ThemeToggle, {})
 				]
 			})]
 		})
@@ -1131,7 +846,7 @@ function Header() {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
 	});
@@ -1139,178 +854,28 @@ function Wrapper({ children }) {
 //#endregion
 //#region src/components/Header.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(Header, {}) });
+	return jsx(Wrapper, { children: jsx(Header, {}) });
 }
 //#endregion
 export { Wrapped as default };
-import { Fragment, createContext, createElement, useContext } from "react";
-import { jsx } from "react/jsx-runtime";
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/interpreter/getHTML.mjs
-/**
-* Helper to parse attributes from a tag string.
-*/
-var parseAttributes = (attributes) => {
-	const props = {};
-	const attrRegex = /([a-zA-Z0-9-]+)="([^"]*)"/g;
-	let match = attrRegex.exec(attributes);
-	while (match !== null) {
-		props[match[1]] = match[2];
-		match = attrRegex.exec(attributes);
+var en_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Theme mode: auto (system). Click to switch to light mode.",
+		"f": "Theme mode: light. Click to switch to dark mode.",
+		"e": "Theme mode: dark. Click to switch to auto (system) mode.",
+		"a": "Theme: Auto",
+		"b": "Theme: Dark",
+		"c": "Theme: Light",
+		"g": {
+			"fields": ["mode"],
+			"nodeType": "insertion",
+			"insertion": "Theme mode: {{mode}}. Click to switch mode."
+		}
 	}
-	return props;
-};
-var astCache = /* @__PURE__ */ new Map();
-var parseHTML = (content) => {
-	if (astCache.has(content)) return astCache.get(content);
-	if (typeof content !== "string") return [];
-	const tagRegex = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g;
-	const elements = [];
-	const stack = [];
-	let lastIndex = 0;
-	let match = tagRegex.exec(content);
-	const appendChild = (child) => {
-		(stack.length > 0 ? stack[stack.length - 1].children : elements).push(child);
-	};
-	while (match !== null) {
-		const [fullMatch, isClosingRaw, tagName, attributesRaw, isSelfClosingRaw] = match;
-		const matchIndex = match.index;
-		if (matchIndex > lastIndex) appendChild(content.slice(lastIndex, matchIndex));
-		const isClosing = isClosingRaw === "/";
-		const isSelfClosing = isSelfClosingRaw === "/" || attributesRaw.trim().endsWith("/") || fullMatch.endsWith("/>");
-		const cleanedAttributes = attributesRaw.trim().replace(/\/$/, "").trim();
-		if (isClosing) {
-			const last = stack[stack.length - 1];
-			if (last && last.tagName === tagName) {
-				const popped = stack.pop();
-				if (popped) appendChild({
-					tagName: popped.tagName,
-					props: popped.props,
-					children: popped.children
-				});
-			}
-		} else if (isSelfClosing) appendChild({
-			tagName,
-			props: parseAttributes(cleanedAttributes),
-			children: []
-		});
-		else {
-			const tagProps = parseAttributes(cleanedAttributes);
-			stack.push({
-				tagName,
-				children: [],
-				props: tagProps
-			});
-		}
-		lastIndex = matchIndex + fullMatch.length;
-		match = tagRegex.exec(content);
-	}
-	if (lastIndex < content.length) appendChild(content.slice(lastIndex));
-	while (stack.length > 0) {
-		const last = stack.pop();
-		if (last) appendChild({
-			tagName: last.tagName,
-			props: last.props,
-			children: last.children
-		});
-	}
-	astCache.set(content, elements);
-	return elements;
-};
-/**
-* Interprets a string containing HTML-like tags and replaces them with provided components or strings.
-*/
-var getHTML = (content, values) => {
-	const ast = parseHTML(content);
-	let keyCounter = 0;
-	const renderASTNode = (node) => {
-		if (typeof node === "string") return node;
-		const { tagName, props, children } = node;
-		const renderedChildren = children.flatMap(renderASTNode);
-		const index = keyCounter++;
-		let override = values[tagName];
-		if (!override) {
-			const lowerTagName = tagName.toLowerCase();
-			const foundKey = Object.keys(values).find((key) => key.toLowerCase() === lowerTagName);
-			if (foundKey) override = values[foundKey];
-		}
-		const key = `html-tag-${tagName}-${index}`;
-		if (typeof override === "function") return override({
-			...props,
-			children: renderedChildren,
-			key
-		});
-		if (typeof override === "string") {
-			const component = values[override];
-			if (typeof component === "function") return component({
-				...props,
-				children: renderedChildren,
-				key
-			});
-			return renderedChildren;
-		}
-		if (typeof override === "object" && override !== null && "tag" in override) {
-			const { tag: targetTag, props: extraProps } = override;
-			const component = values[targetTag];
-			if (typeof component === "function") return component({
-				...props,
-				...extraProps,
-				children: renderedChildren,
-				key
-			});
-			return renderedChildren;
-		}
-		return renderedChildren;
-	};
-	const result = ast.flatMap(renderASTNode);
-	return result.length === 1 ? result[0] : result;
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/html/HTMLProvider.mjs
-var HTMLContext = createContext(void 0);
-var useHTMLContext = () => useContext(HTMLContext);
-//#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/html/HTMLRenderer.mjs
-/**
-* Renders HTML-like content to JSX with the provided components.
-*
-* This function does not use context from HTMLProvider. Use `useHTMLRenderer`
-* hook if you want to leverage provider context.
-*/
-var renderHTML = (content, { components = {} } = {}) => {
-	const userComponents = Object.fromEntries(Object.entries(components).filter(([, Component]) => Component).map(([key, Component]) => [key, (props) => createElement(Component, props)]));
-	return /* @__PURE__ */ jsx(Fragment, { children: getHTML(content, new Proxy(userComponents, { get(target, prop) {
-		if (typeof prop === "string" && prop in target) return target[prop];
-		if (typeof prop === "string" && /^[a-z][a-z0-9]*$/.test(prop)) return (props) => createElement(prop, props);
-	} })) });
-};
-//#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/html/HTMLRendererPlugin.mjs
-var HTMLRendererPlugin = (props) => {
-	const { html, userComponents } = props;
-	return renderHTML(html, { components: {
-		...useHTMLContext()?.components,
-		...userComponents
-	} });
-};
-//#endregion
-export { HTMLRendererPlugin };
-import { createContext, useContext } from "react";
-import "react/jsx-runtime";
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/markdown/MarkdownProvider.mjs
-var MarkdownContext = createContext(void 0);
-var useMarkdownContext = () => useContext(MarkdownContext);
-//#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/markdown/MarkdownRendererPlugin.mjs
-var MarkdownRendererPlugin = (props) => {
-	const { children, options, components } = props;
-	const context = useMarkdownContext();
-	return (context?.renderMarkdown ?? ((md) => md))(children, options, {
-		...context?.components ?? {},
-		...components ?? {}
-	});
-};
-//#endregion
-export { MarkdownRendererPlugin };
+export { en_default as default };
 var en_default = {
 	key: "header",
 	content: {
@@ -1328,24 +893,6 @@ var en_default = {
 		"e": "Go to GitHub",
 		"f": "Header",
 		"h": "i18n Bench"
-	}
-};
-//#endregion
-export { en_default as default };
-var en_default = {
-	key: "theme-toggle",
-	content: {
-		"d": "Theme mode: auto (system). Click to switch to light mode.",
-		"themeModeLightClick": "Theme mode: light. Click to switch to dark mode.",
-		"themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
-		"a": "Theme: Auto",
-		"b": "Theme: Dark",
-		"c": "Theme: Light",
-		"e": {
-			"fields": ["mode"],
-			"nodeType": "insertion",
-			"insertion": "Theme mode: {{mode}}. Click to switch mode."
-		}
 	}
 };
 //#endregion

@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/home/WhyItMatters.tsx
 function WhyItMatters() {
 	return jsxs("section", {
 		className: "mb-16",
@@ -43,5 +42,4 @@ function WhyItMatters() {
 		})]
 	});
 }
-//#endregion
 export { WhyItMatters as default };

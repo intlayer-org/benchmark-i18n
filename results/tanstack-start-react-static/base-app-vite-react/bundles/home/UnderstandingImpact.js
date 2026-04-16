@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/home/UnderstandingImpact.tsx
 function UnderstandingImpact() {
 	return jsxs("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
@@ -80,5 +79,4 @@ function UnderstandingImpact() {
 		]
 	});
 }
-//#endregion
 export { UnderstandingImpact as default };

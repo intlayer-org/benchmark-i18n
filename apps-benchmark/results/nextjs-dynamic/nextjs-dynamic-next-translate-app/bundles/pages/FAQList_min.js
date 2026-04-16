@@ -179,7 +179,7 @@ function w(e) {
 //#region components/pages/faq/FAQList.tsx
 function T() {
 	let { t: e } = w("common");
-	return /* @__PURE__ */ a("div", {
+	return a("div", {
 		className: "mx-auto max-w-3xl space-y-4",
 		children: [
 			{
@@ -202,12 +202,12 @@ function T() {
 				q: e("faq.faqList.areTheResultsStatistically"),
 				a: e("faq.faqList.yesWeUseThe")
 			}
-		].map((e) => /* @__PURE__ */ o("details", {
+		].map((e) => o("details", {
 			className: "group rounded-lg border border-border bg-card",
-			children: [/* @__PURE__ */ a("summary", {
+			children: [a("summary", {
 				className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 				children: e.q
-			}), /* @__PURE__ */ a("p", {
+			}), a("p", {
 				className: "px-6 pb-4 text-sm text-muted-foreground",
 				children: e.a
 			})]
@@ -231,7 +231,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -240,7 +244,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -249,7 +253,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -257,7 +261,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/faq/FAQList.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

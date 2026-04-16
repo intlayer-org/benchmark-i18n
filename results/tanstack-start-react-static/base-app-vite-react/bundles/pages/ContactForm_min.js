@@ -1,6 +1,5 @@
 import { useId as e } from "react";
 import { jsx as t, jsxs as n } from "react/jsx-runtime";
-//#region src/components/pages/contact/ContactForm.tsx
 function r() {
 	let r = e(), i = e(), a = e(), o = e();
 	return n("form", {
@@ -60,5 +59,4 @@ function r() {
 		]
 	});
 }
-//#endregion
 export { r as default };

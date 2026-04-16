@@ -191,10 +191,10 @@ function D(e) {
 //#region components/pages/about/AboutHeader.tsx
 function O() {
 	let { t: e } = E("common");
-	return D("AboutHeader"), /* @__PURE__ */ c(o, { children: [/* @__PURE__ */ s("h1", {
+	return D("AboutHeader"), c(o, { children: [s("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: e("about.aboutHeader.methodology")
-	}), /* @__PURE__ */ s("p", {
+	}), s("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: e("about.aboutHeader.weDesignedThisBenchmarkTo")
 	})] });
@@ -216,7 +216,11 @@ function k() {
 	}
 }
 function A(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -225,7 +229,7 @@ function j({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		k();
-	}, []), /* @__PURE__ */ s(t, {
+	}, []), s(t, {
 		id: "AppRoot",
 		onRender: A,
 		children: e
@@ -234,7 +238,7 @@ function j({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function M({ children: e }) {
-	return /* @__PURE__ */ s(j, {
+	return s(j, {
 		locale: "en",
 		children: e
 	});
@@ -242,7 +246,7 @@ function M({ children: e }) {
 //#endregion
 //#region components/pages/about/AboutHeader.wrapper.tsx
 function N() {
-	return /* @__PURE__ */ s(M, { children: /* @__PURE__ */ s(O, {}) });
+	return s(M, { children: s(O, {}) });
 }
 //#endregion
 export { N as default };

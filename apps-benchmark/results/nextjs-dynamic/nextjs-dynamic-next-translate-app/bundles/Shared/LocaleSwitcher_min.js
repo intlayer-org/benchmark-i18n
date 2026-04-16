@@ -28,13 +28,13 @@ function c() {
 		let r = t.replace(`/${e}`, `/${n}`);
 		c.push(r);
 	};
-	return /* @__PURE__ */ a("div", {
+	return a("div", {
 		className: "flex items-center gap-2",
-		children: /* @__PURE__ */ a("select", {
+		children: a("select", {
 			value: e,
 			onChange: (e) => l(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: o.map((e) => /* @__PURE__ */ a("option", {
+			children: o.map((e) => a("option", {
 				value: e,
 				children: s(e)
 			}, e))
@@ -58,7 +58,11 @@ function l() {
 	}
 }
 function u(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -67,7 +71,7 @@ function d({ children: n, locale: r }) {
 		document.documentElement.lang = r;
 	}, [r]), t(() => {
 		l();
-	}, []), /* @__PURE__ */ a(e, {
+	}, []), a(e, {
 		id: "AppRoot",
 		onRender: u,
 		children: n
@@ -76,7 +80,7 @@ function d({ children: n, locale: r }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function f({ children: e }) {
-	return /* @__PURE__ */ a(d, {
+	return a(d, {
 		locale: "en",
 		children: e
 	});
@@ -84,7 +88,7 @@ function f({ children: e }) {
 //#endregion
 //#region components/LocaleSwitcher.wrapper.tsx
 function p() {
-	return /* @__PURE__ */ a(f, { children: /* @__PURE__ */ a(c, {}) });
+	return a(f, { children: a(c, {}) });
 }
 //#endregion
 export { p as default };

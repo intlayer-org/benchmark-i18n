@@ -179,40 +179,40 @@ function w(e) {
 //#region components/pages/home/WhyItMatters.tsx
 function T() {
 	let { t: e } = w("common");
-	return /* @__PURE__ */ o("section", {
+	return o("section", {
 		className: "mb-16",
-		children: [/* @__PURE__ */ a("h2", {
+		children: [a("h2", {
 			className: "mb-6 text-2xl font-bold text-foreground",
 			children: e("home.whyItMatters.whyTheseMetricsMatter")
-		}), /* @__PURE__ */ o("div", {
+		}), o("div", {
 			className: "grid gap-6 md:grid-cols-3",
 			children: [
-				/* @__PURE__ */ o("div", {
+				o("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [/* @__PURE__ */ a("h3", {
+					children: [a("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: e("home.whyItMatters.bundleSize")
-					}), /* @__PURE__ */ a("p", {
+					}), a("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("home.whyItMatters.theBundleIsTheData")
 					})]
 				}),
-				/* @__PURE__ */ o("div", {
+				o("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [/* @__PURE__ */ a("h3", {
+					children: [a("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: e("home.whyItMatters.renderingHydration")
-					}), /* @__PURE__ */ a("p", {
+					}), a("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("home.whyItMatters.connectingALargeJson")
 					})]
 				}),
-				/* @__PURE__ */ o("div", {
+				o("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [/* @__PURE__ */ a("h3", {
+					children: [a("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: e("home.whyItMatters.dynamicLoading")
-					}), /* @__PURE__ */ a("p", {
+					}), a("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("home.whyItMatters.loadingAllTranslationsUpfront")
 					})]
@@ -238,7 +238,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -247,7 +251,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -256,7 +260,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -264,7 +268,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/home/WhyItMatters.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

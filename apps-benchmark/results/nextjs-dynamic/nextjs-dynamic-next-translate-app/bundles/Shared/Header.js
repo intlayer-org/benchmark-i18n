@@ -4,20 +4,11 @@ import NextLink from "next/link";
 import { jsx, jsxs } from "react/jsx-runtime";
 import { ChevronDown } from "lucide-react";
 //#region components/Link.tsx
-/**
-* Utility function to check whether a given URL is external.
-* If the URL starts with http:// or https://, it's considered external.
-*/
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
-/**
-* A custom Link component that adapts the href attribute based on the current locale.
-* For internal links, it adds the locale prefix (e.g., /en/about).
-* This ensures that navigation stays within the same locale context.
-*/
 var Link = ({ href, children, ...props }) => {
 	const currentLocale = useParams().lang ?? "en";
 	const isExternalLink = checkIsExternalLink(href.toString());
-	return /* @__PURE__ */ jsx(NextLink, {
+	return jsx(NextLink, {
 		href: href && !isExternalLink && !href.toString().startsWith(`/${currentLocale}`) ? `/${currentLocale}${href}` : href,
 		...props,
 		children
@@ -284,7 +275,7 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? t("shared.themeToggle.themeModeAutoSystemClick") : mode === "light" ? t("shared.themeToggle.themeModeLightClick") : t("shared.themeToggle.themeModeDarkClick");
-	return /* @__PURE__ */ jsx("button", {
+	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
@@ -325,13 +316,13 @@ function LocaleSwitcher() {
 		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
 		router.push(newPath);
 	};
-	return /* @__PURE__ */ jsx("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: /* @__PURE__ */ jsx("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeEl) => /* @__PURE__ */ jsx("option", {
+			children: locales.map((localeEl) => jsx("option", {
 				value: localeEl,
 				children: getLocaleName(localeEl)
 			}, localeEl))
@@ -340,12 +331,6 @@ function LocaleSwitcher() {
 }
 //#endregion
 //#region hooks/usePerformanceMeasure.ts
-/**
-* Custom hook to measure the render-to-layout duration of a component.
-* It uses the Browser User Timing API (performance.mark/measure).
-*
-* @param name The name of the measurement (e.g., 'HeroComponent')
-*/
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -401,48 +386,48 @@ function Header() {
 	];
 	const isExactActive = (href) => pathname === href;
 	const isActive = (href) => pathname.startsWith(href);
-	return /* @__PURE__ */ jsx("header", {
+	return jsx("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: /* @__PURE__ */ jsxs("nav", {
+		children: jsxs("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [/* @__PURE__ */ jsxs("div", {
+			children: [jsxs("div", {
 				className: "flex items-center gap-8",
-				children: [/* @__PURE__ */ jsx(Link, {
+				children: [jsx(Link, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}), /* @__PURE__ */ jsxs("div", {
+				}), jsxs("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						/* @__PURE__ */ jsx(Link, {
+						jsx(Link, {
 							href: "/",
 							className: `nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`,
 							children: t("shared.header.home")
 						}),
-						/* @__PURE__ */ jsx(Link, {
+						jsx(Link, {
 							href: "/about",
 							className: `nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`,
 							children: t("shared.header.methodology")
 						}),
-						/* @__PURE__ */ jsxs("div", {
+						jsxs("div", {
 							className: "relative",
-							children: [/* @__PURE__ */ jsxs("button", {
+							children: [jsxs("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [t("shared.header.mockPages"), /* @__PURE__ */ jsx(ChevronDown, {
+								children: [t("shared.header.mockPages"), jsx(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
 								})]
-							}), isMockPagesOpen && /* @__PURE__ */ jsx("div", {
+							}), isMockPagesOpen && jsx("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: /* @__PURE__ */ jsx("div", {
+								children: jsx("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => /* @__PURE__ */ jsx(Link, {
+									children: mockPages.map((page) => jsx(Link, {
 										href: page.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
@@ -453,30 +438,30 @@ function Header() {
 						})
 					]
 				})]
-			}), /* @__PURE__ */ jsxs("div", {
+			}), jsxs("div", {
 				className: "flex items-center gap-4",
 				children: [
-					/* @__PURE__ */ jsxs("a", {
+					jsxs("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [/* @__PURE__ */ jsx("span", {
+						children: [jsx("span", {
 							className: "sr-only",
 							children: t("shared.header.goToGithub")
-						}), /* @__PURE__ */ jsx("svg", {
+						}), jsx("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: /* @__PURE__ */ jsx("path", {
+							children: jsx("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
 							})
 						})]
 					}),
-					/* @__PURE__ */ jsx(LocaleSwitcher, {}),
-					/* @__PURE__ */ jsx(ThemeToggle, {})
+					jsx(LocaleSwitcher, {}),
+					jsx(ThemeToggle, {})
 				]
 			})]
 		})
@@ -484,18 +469,6 @@ function Header() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -511,16 +484,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -531,7 +504,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -540,7 +513,7 @@ function AppProviders({ children, locale }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
 	});
@@ -548,7 +521,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/Header.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(Header, {}) });
+	return jsx(Wrapper, { children: jsx(Header, {}) });
 }
 //#endregion
 export { Wrapped as default };

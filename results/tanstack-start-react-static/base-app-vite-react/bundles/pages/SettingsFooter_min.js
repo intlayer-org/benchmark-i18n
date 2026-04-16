@@ -1,5 +1,4 @@
 import { jsx as e, jsxs as t } from "react/jsx-runtime";
-//#region src/components/pages/settings/SettingsFooter.tsx
 function n() {
 	return t("div", {
 		className: "flex justify-end gap-3",
@@ -14,5 +13,4 @@ function n() {
 		})]
 	});
 }
-//#endregion
 export { n as default };

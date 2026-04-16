@@ -1,5 +1,4 @@
 import { jsx as e, jsxs as t } from "react/jsx-runtime";
-//#region src/components/pages/home/ResultsTable.tsx
 function n() {
 	return t("section", { children: [e("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
@@ -77,5 +76,4 @@ function n() {
 		})
 	})] });
 }
-//#endregion
 export { n as default };

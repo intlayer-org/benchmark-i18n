@@ -2,18 +2,18 @@ import { Profiler, useEffect } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
 var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
+var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 });
 //#endregion
 //#region __vite-browser-external
-var require___vite_browser_external = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+var require___vite_browser_external = __commonJSMin(((exports, module) => {
 	module.exports = {};
 }));
 //#endregion
 //#region ../../../node_modules/.bun/generaltranslation@8.2.3/node_modules/generaltranslation/dist/index.cjs.min.cjs
-var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_index_cjs_min$2 = __commonJSMin(((exports) => {
 	var e = function(t, r) {
 		return e = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -1716,11 +1716,6 @@ var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	var yt, _t = { exports: {} };
 	function Et() {
 		return yt || (yt = 1, _t.exports = function(e) {
-			/** @preserve
-			* Counter block mode compatible with  Dr Brian Gladman fileenc.c
-			* derived from CryptoJS.mode.CTR
-			* Jan Hruby jhruby.web@gmail.com
-			*/
 			return e.mode.CTRGladman = function() {
 				var t = e.lib.BlockCipherMode.extend();
 				function r(e) {
@@ -3656,16 +3651,6 @@ var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 		}), t.SHA384 = a._createHelper(s), t.HmacSHA384 = a._createHmacHelper(s), e.SHA384;
 		var t, r, n, o, i, a, s;
 	}(ye(), be(), We())), Qe(), $e || ($e = 1, et.exports = function(e) {
-		/** @preserve
-		(c) 2012 by Cédric Mesnil. All rights reserved.
-		
-		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-		
-		- Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-		- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-		
-		THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-		*/
 		return function() {
 			var t = e, r = t.lib, n = r.WordArray, o = r.Hasher, i = t.algo, a = n.create([
 				0,
@@ -8533,7 +8518,7 @@ var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/@generaltranslation+supported-locales@2.0.61/node_modules/@generaltranslation/supported-locales/dist/index.cjs.min.cjs
-var require_index_cjs_min$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_index_cjs_min$1 = __commonJSMin(((exports) => {
 	var e = require_index_cjs_min$2(), r = function() {
 		return r = Object.assign || function(e) {
 			for (var r, n = 1, t = arguments.length; n < t; n++) for (var a in r = arguments[n]) Object.prototype.hasOwnProperty.call(r, a) && (e[a] = r[a]);
@@ -8722,7 +8707,7 @@ var require_index_cjs_min$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/@generaltranslation+react-core@1.8.2+b1ab299f0a400331/node_modules/@generaltranslation/react-core/dist/index.cjs.min.cjs
-var require_index_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_index_cjs_min = __commonJSMin(((exports) => {
 	var e$1 = __require("react/jsx-runtime"), t$1 = __require("react"), r$1 = require_index_cjs_min$2(), n$1 = require_index_cjs_min$1();
 	function o(e) {
 		var t = Object.create(null);
@@ -17160,7 +17145,7 @@ var require_index_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/gt-react@10.18.2+bf16f8eded5e12ee/node_modules/gt-react/dist/client.cjs.min.cjs
-var require_client_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_client_cjs_min = __commonJSMin(((exports) => {
 	var e = __require("react/jsx-runtime"), t = __require("react"), r = require_index_cjs_min$2(), n = require_index_cjs_min();
 	function o(e) {
 		var t = Object.create(null);
@@ -24046,7 +24031,7 @@ var require_client_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/gt-next@6.16.5+4766e5f4053ef6d3/node_modules/gt-next/dist/plugin/constants.js
-var require_constants = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_constants = __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.STABLE_TURBO_CONFIG_VERSION = exports.ROOT_PARAM_STABILITY = exports.SWC_PLUGIN_SUPPORT = exports.BABEL_PLUGIN_SUPPORT = void 0;
 	exports.BABEL_PLUGIN_SUPPORT = "17.0.0";
@@ -24060,7 +24045,7 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/gt-next@6.16.5+4766e5f4053ef6d3/node_modules/gt-next/dist/errors/createErrors.js
-var require_createErrors = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_createErrors = __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.swcPluginCompatibilityChangeWarning = exports.createStringRenderWarning = exports.disablingCompileTimeHashWarning = exports.createGTCompilerUnavailableWarning = exports.createGTCompilerUnresolvedWarning = exports.deprecatedLocaleMappingWarning = exports.standardizedCanonicalLocalesWarning = exports.standardizedLocalesWarning = exports.dictionaryNotFoundWarning = exports.runtimeTranslationTimeoutWarning = exports.createTranslationLoadingWarning = exports.APIKeyMissingWarn = exports.noInitGTWarn = exports.projectIdMissingWarn = exports.createMismatchingHashWarning = exports.createUnsupportedLocalesWarning = exports.createInvalidDictionaryTranslationEntryWarning = exports.createInvalidDictionaryEntryWarning = exports.createNoEntryFoundWarning = exports.usingDefaultsWarning = exports.createBadFilepathWarning = exports.createInvalidIcuDictionaryEntryWarning = exports.createInvalidIcuDictionaryEntryError = exports.invalidCanonicalLocalesError = exports.invalidLocalesError = exports.createStringRenderError = exports.missingVariablesError = exports.txUseClientError = exports.gtProviderUseClientError = exports.typesFileError = exports.conflictingConfigurationBuildError = exports.unresolvedGetLocaleBuildError = exports.unresolvedLoadTranslationsBuildError = exports.unresolvedLoadDictionaryBuildError = exports.unresolvedCustomLoadTranslationsError = exports.unresolvedCustomLoadDictionaryError = exports.dictionaryDisabledError = exports.createDictionarySubsetError = exports.devApiKeyIncludedInProductionError = exports.createRequiredPrefixError = exports.createDictionaryTranslationError = exports.createStringTranslationError = exports.createUnresolvedReactVersionError = exports.createUnresolvedNextVersionError = exports.customLoadDictionaryWarning = exports.customLoadTranslationsError = exports.remoteTranslationsError = void 0;
 	var generaltranslation_1 = require_index_cjs_min$2();
@@ -24212,7 +24197,7 @@ var require_createErrors = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region components/pages/blog/BlogList.tsx
-var import_index_client = (/* @__PURE__ */ __commonJSMin(((exports) => {
+var import_index_client = __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.gtFallback = exports.mFallback = exports.decodeVars = exports.declareVar = exports.derive = exports.declareStatic = exports.decodeOptions = exports.decodeMsg = exports.msg = exports.useMessages = exports.useVersionId = exports.useLocaleDirection = exports.useLocaleProperties = exports.useGTClass = exports.useDefaultLocale = exports.useLocales = exports.useLocale = exports.useTranslations = exports.useGT = exports.RegionSelector = exports.LocaleSelector = exports.Plural = exports.Branch = exports.Derive = exports.Static = exports.RelativeTime = exports.DateTime = exports.Currency = exports.Num = exports.Var = exports.T = void 0;
 	exports.GTProvider = GTProvider;
@@ -24407,72 +24392,72 @@ var import_index_client = (/* @__PURE__ */ __commonJSMin(((exports) => {
 	function GTProvider() {
 		throw new Error(createErrors_1.gtProviderUseClientError);
 	}
-})))();
+}))();
 function BlogList() {
-	return /* @__PURE__ */ jsx("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2",
 		children: [
 			{
-				title: /* @__PURE__ */ jsx(import_index_client.T, { children: "Comparing i18n Libraries in 2026: A Deep Dive" }),
-				date: /* @__PURE__ */ jsx(import_index_client.T, { children: "March 15, 2026" }),
-				excerpt: /* @__PURE__ */ jsx(import_index_client.T, { children: "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results." }),
-				category: /* @__PURE__ */ jsx(import_index_client.T, { children: "Benchmark" })
+				title: jsx(import_index_client.T, { children: "Comparing i18n Libraries in 2026: A Deep Dive" }),
+				date: jsx(import_index_client.T, { children: "March 15, 2026" }),
+				excerpt: jsx(import_index_client.T, { children: "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results." }),
+				category: jsx(import_index_client.T, { children: "Benchmark" })
 			},
 			{
-				title: /* @__PURE__ */ jsx(import_index_client.T, { children: "How to Reduce Your i18n Bundle by 60%" }),
-				date: /* @__PURE__ */ jsx(import_index_client.T, { children: "March 8, 2026" }),
-				excerpt: /* @__PURE__ */ jsx(import_index_client.T, { children: "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations." }),
-				category: /* @__PURE__ */ jsx(import_index_client.T, { children: "Tutorial" })
+				title: jsx(import_index_client.T, { children: "How to Reduce Your i18n Bundle by 60%" }),
+				date: jsx(import_index_client.T, { children: "March 8, 2026" }),
+				excerpt: jsx(import_index_client.T, { children: "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations." }),
+				category: jsx(import_index_client.T, { children: "Tutorial" })
 			},
 			{
-				title: /* @__PURE__ */ jsx(import_index_client.T, { children: "The State of Internationalization in React" }),
-				date: /* @__PURE__ */ jsx(import_index_client.T, { children: "February 28, 2026" }),
-				excerpt: /* @__PURE__ */ jsx(import_index_client.T, { children: "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences." }),
-				category: /* @__PURE__ */ jsx(import_index_client.T, { children: "Analysis" })
+				title: jsx(import_index_client.T, { children: "The State of Internationalization in React" }),
+				date: jsx(import_index_client.T, { children: "February 28, 2026" }),
+				excerpt: jsx(import_index_client.T, { children: "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences." }),
+				category: jsx(import_index_client.T, { children: "Analysis" })
 			},
 			{
-				title: /* @__PURE__ */ jsx(import_index_client.T, { children: "Migrating from react-i18next to Lingui" }),
-				date: /* @__PURE__ */ jsx(import_index_client.T, { children: "February 15, 2026" }),
-				excerpt: /* @__PURE__ */ jsx(import_index_client.T, { children: "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui." }),
-				category: /* @__PURE__ */ jsx(import_index_client.T, { children: "Tutorial" })
+				title: jsx(import_index_client.T, { children: "Migrating from react-i18next to Lingui" }),
+				date: jsx(import_index_client.T, { children: "February 15, 2026" }),
+				excerpt: jsx(import_index_client.T, { children: "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui." }),
+				category: jsx(import_index_client.T, { children: "Tutorial" })
 			},
 			{
-				title: /* @__PURE__ */ jsx(import_index_client.T, { children: "Server Components and i18n: What Changes?" }),
-				date: /* @__PURE__ */ jsx(import_index_client.T, { children: "February 1, 2026" }),
-				excerpt: /* @__PURE__ */ jsx(import_index_client.T, { children: "React Server Components introduce new patterns for internationalization. We explore the implications and best practices." }),
-				category: /* @__PURE__ */ jsx(import_index_client.T, { children: "Analysis" })
+				title: jsx(import_index_client.T, { children: "Server Components and i18n: What Changes?" }),
+				date: jsx(import_index_client.T, { children: "February 1, 2026" }),
+				excerpt: jsx(import_index_client.T, { children: "React Server Components introduce new patterns for internationalization. We explore the implications and best practices." }),
+				category: jsx(import_index_client.T, { children: "Analysis" })
 			},
 			{
-				title: /* @__PURE__ */ jsx(import_index_client.T, { children: "Benchmark Methodology: How We Test" }),
-				date: /* @__PURE__ */ jsx(import_index_client.T, { children: "January 20, 2026" }),
-				excerpt: /* @__PURE__ */ jsx(import_index_client.T, { children: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility." }),
-				category: /* @__PURE__ */ jsx(import_index_client.T, { children: "Meta" })
+				title: jsx(import_index_client.T, { children: "Benchmark Methodology: How We Test" }),
+				date: jsx(import_index_client.T, { children: "January 20, 2026" }),
+				excerpt: jsx(import_index_client.T, { children: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility." }),
+				category: jsx(import_index_client.T, { children: "Meta" })
 			}
-		].map((p, i) => /* @__PURE__ */ jsxs("article", {
+		].map((p, i) => jsxs("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				/* @__PURE__ */ jsxs("div", {
+				jsxs("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [/* @__PURE__ */ jsx("span", {
+					children: [jsx("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: p.category
-					}), /* @__PURE__ */ jsx("span", {
+					}), jsx("span", {
 						className: "text-xs text-muted-foreground",
 						children: p.date
 					})]
 				}),
-				/* @__PURE__ */ jsx("h2", {
+				jsx("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: p.title
 				}),
-				/* @__PURE__ */ jsx("p", {
+				jsx("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: p.excerpt
 				}),
-				/* @__PURE__ */ jsx("button", {
+				jsx("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
-					children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Read More →" })
+					children: jsx(import_index_client.T, { children: "Read More →" })
 				})
 			]
 		}, i))
@@ -24480,18 +24465,6 @@ function BlogList() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -24507,16 +24480,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -24527,7 +24500,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -24537,9 +24510,9 @@ function AppProviders({ children, locale }) {
 //#region scripts/Wrapper.tsx
 var locale = "en";
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(import_index_client.GTProvider, {
+	return jsx(import_index_client.GTProvider, {
 		locale,
-		children: /* @__PURE__ */ jsx(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
 		})
@@ -24548,7 +24521,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/pages/blog/BlogList.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(BlogList, {}) });
+	return jsx(Wrapper, { children: jsx(BlogList, {}) });
 }
 //#endregion
 export { Wrapped as default };

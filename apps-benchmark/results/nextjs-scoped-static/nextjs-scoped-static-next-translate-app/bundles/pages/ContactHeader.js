@@ -223,7 +223,7 @@ function useTranslation(defaultNS) {
 //#region components/MockBanner.tsx
 var MockBanner = () => {
 	const { t } = useTranslation("common");
-	return /* @__PURE__ */ jsx("div", {
+	return jsx("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: t("shared.mockBanner.text")
 	});
@@ -232,18 +232,18 @@ var MockBanner = () => {
 //#region components/pages/contact/ContactHeader.tsx
 function ContactHeader() {
 	const { t } = useTranslation("common");
-	return /* @__PURE__ */ jsxs(Fragment, { children: [
-		/* @__PURE__ */ jsx(MockBanner, {}),
-		/* @__PURE__ */ jsx("h1", {
+	return jsxs(Fragment, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: t("contact.contactHeader.contactUs")
 		}),
-		/* @__PURE__ */ jsxs("p", {
+		jsxs("p", {
 			className: "mb-8 text-muted-foreground",
 			children: [
 				t("contact.contactHeader.haveQuestionsOrWantTo"),
 				" ",
-				/* @__PURE__ */ jsx("a", {
+				jsx("a", {
 					href: "mailto:contact@intlayer.org",
 					className: "text-primary hover:underline",
 					children: "contact@intlayer.org"
@@ -255,18 +255,6 @@ function ContactHeader() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -282,16 +270,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -302,7 +290,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -311,7 +299,7 @@ function AppProviders({ children, locale }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
 	});
@@ -319,7 +307,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/pages/contact/ContactHeader.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(ContactHeader, {}) });
+	return jsx(Wrapper, { children: jsx(ContactHeader, {}) });
 }
 //#endregion
 export { Wrapped as default };

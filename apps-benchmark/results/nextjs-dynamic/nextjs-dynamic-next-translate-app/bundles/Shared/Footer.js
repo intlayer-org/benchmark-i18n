@@ -3,20 +3,11 @@ import { useParams } from "next/navigation";
 import NextLink from "next/link";
 import { jsx, jsxs } from "react/jsx-runtime";
 //#region components/Link.tsx
-/**
-* Utility function to check whether a given URL is external.
-* If the URL starts with http:// or https://, it's considered external.
-*/
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
-/**
-* A custom Link component that adapts the href attribute based on the current locale.
-* For internal links, it adds the locale prefix (e.g., /en/about).
-* This ensures that navigation stays within the same locale context.
-*/
 var Link = ({ href, children, ...props }) => {
 	const currentLocale = useParams().lang ?? "en";
 	const isExternalLink = checkIsExternalLink(href.toString());
-	return /* @__PURE__ */ jsx(NextLink, {
+	return jsx(NextLink, {
 		href: href && !isExternalLink && !href.toString().startsWith(`/${currentLocale}`) ? `/${currentLocale}${href}` : href,
 		...props,
 		children
@@ -263,30 +254,30 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return /* @__PURE__ */ jsx("footer", {
+	return jsx("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: /* @__PURE__ */ jsxs("div", {
+		children: jsxs("div", {
 			className: "container py-8",
-			children: [/* @__PURE__ */ jsxs("div", {
+			children: [jsxs("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("h3", {
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), /* @__PURE__ */ jsx("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("shared.footer.anOpenSourceTestApplication")
 					})] }),
-					/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("h3", {
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("shared.footer.resources")
-					}), /* @__PURE__ */ jsx("ul", {
+					}), jsx("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => /* @__PURE__ */ jsx("li", { children: linkEl.isInternal ? /* @__PURE__ */ jsx(Link, {
+						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
 							href: linkEl.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) : /* @__PURE__ */ jsx("a", {
+						}) : jsx("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
@@ -294,15 +285,15 @@ function Footer() {
 							children: linkEl.label
 						}) }, linkEl.label))
 					})] }),
-					/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("h3", {
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("shared.footer.contact")
-					}), /* @__PURE__ */ jsx("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
 					})] })
 				]
-			}), /* @__PURE__ */ jsx("div", {
+			}), jsx("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: t("shared.footer.builtWith")
 			})]
@@ -311,18 +302,6 @@ function Footer() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -338,16 +317,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -358,7 +337,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -367,7 +346,7 @@ function AppProviders({ children, locale }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
 	});
@@ -375,7 +354,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/Footer.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(Footer, {}) });
+	return jsx(Wrapper, { children: jsx(Footer, {}) });
 }
 //#endregion
 export { Wrapped as default };

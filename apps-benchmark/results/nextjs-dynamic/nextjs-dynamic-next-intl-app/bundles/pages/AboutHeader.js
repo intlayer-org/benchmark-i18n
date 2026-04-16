@@ -1,6 +1,5 @@
 import { Profiler, cloneElement, createContext, isValidElement, useContext, useEffect, useLayoutEffect, useMemo } from "react";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-//#region ../../../node_modules/.bun/@formatjs+fast-memoize@3.1.1/node_modules/@formatjs/fast-memoize/index.js
 function memoize(fn, options) {
 	const cache = options && options.cache ? options.cache : cacheDefault;
 	const serializer = options && options.serializer ? options.serializer : serializerDefault;
@@ -66,8 +65,6 @@ var strategies = {
 	variadic: strategyVariadic,
 	monadic: strategyMonadic
 };
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/formatters-CJcico0N.js
 var a = class extends Error {
 	constructor(e, t) {
 		let a = e;
@@ -113,8 +110,6 @@ function l$1(e) {
 		getDisplayNames: I$1(Intl.DisplayNames, e.displayNames)
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/date-time.js
 var DATE_TIME_REGEX = /(?:[Eec]{1,6}|G{1,5}|[Qq]{1,5}|(?:[yYur]+|U{1,5})|[ML]{1,5}|d{1,2}|D{1,3}|F{1}|[abB]{1,5}|[hkHK]{1,2}|w{1,2}|W{1}|m{1,2}|s{1,2}|[zZOvVxX]{1,4})(?=([^']*'[^']*')*[^']*$)/g;
 function parseDateTimeSkeleton(skeleton) {
 	const result = {};
@@ -218,11 +213,7 @@ function parseDateTimeSkeleton(skeleton) {
 	});
 	return result;
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/regex.generated.js
 var WHITE_SPACE_REGEX = /[\t-\r \x85\u200E\u200F\u2028\u2029]/i;
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/number.js
 function parseNumberSkeletonFromString(skeleton) {
 	if (skeleton.length === 0) throw new Error("Number skeleton cannot be empty");
 	const stringTokens = skeleton.split(WHITE_SPACE_REGEX).filter((x) => x.length > 0);
@@ -476,8 +467,6 @@ function parseNumberSkeleton(tokens) {
 	}
 	return result;
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/types.js
 var TYPE = function(TYPE) {
 	TYPE[TYPE["literal"] = 0] = "literal";
 	TYPE[TYPE["argument"] = 1] = "argument";
@@ -528,8 +517,6 @@ function isNumberSkeleton(el) {
 function isDateTimeSkeleton(el) {
 	return !!(el && typeof el === "object" && el.type === SKELETON_TYPE.dateTime);
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/error.js
 var ErrorKind = function(ErrorKind) {
 	ErrorKind[ErrorKind["EXPECT_ARGUMENT_CLOSING_BRACE"] = 1] = "EXPECT_ARGUMENT_CLOSING_BRACE";
 	ErrorKind[ErrorKind["EMPTY_ARGUMENT"] = 2] = "EMPTY_ARGUMENT";
@@ -559,11 +546,7 @@ var ErrorKind = function(ErrorKind) {
 	ErrorKind[ErrorKind["UNCLOSED_TAG"] = 27] = "UNCLOSED_TAG";
 	return ErrorKind;
 }({});
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/regex.generated.js
 var SPACE_SEPARATOR_REGEX = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/;
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/time-data.generated.js
 var timeData = {
 	"001": ["H", "h"],
 	"419": [
@@ -1727,8 +1710,6 @@ var timeData = {
 		"h"
 	]
 };
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/date-time-pattern-generator.js
 function getBestPattern(skeleton, locale) {
 	let skeletonCopy = "";
 	for (let patternPos = 0; patternPos < skeleton.length; patternPos++) {
@@ -1766,8 +1747,6 @@ function getDefaultHourSymbolFromLocale(locale) {
 	if (languageTag !== "root") regionTag = locale.maximize().region;
 	return (timeData[regionTag || ""] || timeData[languageTag || ""] || timeData[`${languageTag}-001`] || timeData["001"])[0];
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/parser.js
 var SPACE_SEPARATOR_START_REGEX = new RegExp(`^${SPACE_SEPARATOR_REGEX.source}*`);
 var SPACE_SEPARATOR_END_REGEX = new RegExp(`${SPACE_SEPARATOR_REGEX.source}*$`);
 function createLocation(start, end) {
@@ -2349,8 +2328,6 @@ function _isPotentialElementNameChar(c) {
 function _isWhiteSpace(c) {
 	return c >= 9 && c <= 13 || c === 32 || c === 133 || c >= 8206 && c <= 8207 || c === 8232 || c === 8233;
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/index.js
 function pruneLocation(els) {
 	els.forEach((el) => {
 		delete el.location;
@@ -2379,8 +2356,6 @@ function parse(message, opts = {}) {
 	if (!opts?.captureLocation) pruneLocation(result.val);
 	return result.val;
 }
-//#endregion
-//#region ../../../node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/error.js
 var ErrorCode = function(ErrorCode) {
 	ErrorCode["MISSING_VALUE"] = "MISSING_VALUE";
 	ErrorCode["INVALID_VALUE"] = "INVALID_VALUE";
@@ -2414,8 +2389,6 @@ var MissingValueError = class extends FormatError {
 		super(`The intl string context variable "${variableId}" was not provided to the string "${originalMessage}"`, ErrorCode.MISSING_VALUE, originalMessage);
 	}
 };
-//#endregion
-//#region ../../../node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/formatters.js
 var PART_TYPE = function(PART_TYPE) {
 	PART_TYPE[PART_TYPE["literal"] = 0] = "literal";
 	PART_TYPE[PART_TYPE["object"] = 1] = "object";
@@ -2535,8 +2508,6 @@ Try polyfilling it using "@formatjs/intl-pluralrules"
 	}
 	return mergeLiteral(result);
 }
-//#endregion
-//#region ../../../node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/core.js
 function mergeConfig(c1, c2) {
 	if (!c2) return c1;
 	return {
@@ -2698,8 +2669,6 @@ var IntlMessageFormat = class IntlMessageFormat {
 		}
 	};
 };
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/format-message/index.js
 function m$1(...[m, s, i, n]) {
 	if (Array.isArray(s)) throw new a(r.INVALID_MESSAGE, void 0);
 	if ("object" == typeof s) throw new a(r.INSUFFICIENT_PATH, void 0);
@@ -2757,8 +2726,6 @@ function m$1(...[m, s, i, n]) {
 	return isValidElement(w) || Array.isArray(w) || "string" == typeof w ? w : String(w);
 }
 m$1.raw = !0;
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/initializeConfig-Brh10fyG.js
 function c(...e) {
 	return e.filter(Boolean).join(".");
 }
@@ -2981,8 +2948,6 @@ function M({ formats: e, getMessageFallback: t, messages: r, onError: n, ...o })
 		getMessageFallback: t || i
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/react.js
 var d = createContext(void 0);
 function v({ children: e, formats: o, getMessageFallback: n, locale: c, messages: i, now: f, onError: u, timeZone: l }) {
 	const v = useContext(d), w = useMemo((() => v?.cache || s()), [c, v?.cache]), p = useMemo((() => v?.formatters || l$1(w)), [w, v?.formatters]), h = useMemo((() => ({
@@ -3065,8 +3030,6 @@ function I() {
 		s
 	]);
 }
-//#endregion
-//#region ../../../node_modules/.bun/next-intl@4.9.1+77ae5f1145ea432b/node_modules/next-intl/dist/esm/production/react-client/index.js
 function o(r, t) {
 	return (...r) => {
 		try {
@@ -3078,8 +3041,6 @@ function o(r, t) {
 }
 var n = o(0, E);
 o(0, I);
-//#endregion
-//#region ../../../node_modules/.bun/next-intl@4.9.1+77ae5f1145ea432b/node_modules/next-intl/dist/esm/production/shared/NextIntlClientProvider.js
 function t({ locale: t, ...e }) {
 	if (!t) throw new Error(void 0);
 	return jsx(v, {
@@ -3087,8 +3048,6 @@ function t({ locale: t, ...e }) {
 		...e
 	});
 }
-//#endregion
-//#region hooks/usePerformanceMeasure.ts
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -3100,8 +3059,6 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-//#endregion
-//#region components/pages/about/AboutHeader.tsx
 function AboutHeader() {
 	const t = n();
 	usePerformanceMeasure("AboutHeader");
@@ -3113,8 +3070,6 @@ function AboutHeader() {
 		children: t("about-header.thisIsAnOpenSource")
 	})] });
 }
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -3141,8 +3096,6 @@ function onRenderCallback(id, phase, actualDuration) {
 		console.warn("onRenderCallback failed:", err);
 	}
 }
-//#endregion
-//#region components/AppProviders.tsx
 function AppProviders({ children, locale, messages }) {
 	useEffect(() => {
 		document.documentElement.lang = locale;
@@ -3610,8 +3563,6 @@ var en_default = {
 		"loadingAllTranslationsUpfrontOverloads": "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
 };
-//#endregion
-//#region scripts/Wrapper.tsx
 var locale = "en";
 function Wrapper({ children }) {
 	return jsx(AppProviders, {
@@ -3620,10 +3571,7 @@ function Wrapper({ children }) {
 		children
 	});
 }
-//#endregion
-//#region components/pages/about/AboutHeader.wrapper.tsx
 function Wrapped() {
 	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
 }
-//#endregion
 export { Wrapped as default };

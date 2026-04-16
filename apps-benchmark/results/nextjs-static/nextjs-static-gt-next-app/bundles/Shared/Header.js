@@ -5,26 +5,17 @@ import { jsx, jsxs } from "react/jsx-runtime";
 import { ChevronDown } from "lucide-react";
 //#region \0rolldown/runtime.js
 var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
+var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 });
 //#endregion
 //#region components/Link.tsx
-/**
-* Utility function to check whether a given URL is external.
-* If the URL starts with http:// or https://, it's considered external.
-*/
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
-/**
-* A custom Link component that adapts the href attribute based on the current locale.
-* For internal links, it adds the locale prefix (e.g., /en/about).
-* This ensures that navigation stays within the same locale context.
-*/
 var Link = ({ href, children, ...props }) => {
 	const currentLocale = useParams().locale ?? "en";
 	const isExternalLink = checkIsExternalLink(href.toString());
-	return /* @__PURE__ */ jsx(NextLink, {
+	return jsx(NextLink, {
 		href: href && !isExternalLink && !href.toString().startsWith(`/${currentLocale}`) ? `/${currentLocale}${href}` : href,
 		...props,
 		children
@@ -32,12 +23,12 @@ var Link = ({ href, children, ...props }) => {
 };
 //#endregion
 //#region __vite-browser-external
-var require___vite_browser_external = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+var require___vite_browser_external = __commonJSMin(((exports, module) => {
 	module.exports = {};
 }));
 //#endregion
 //#region ../../../node_modules/.bun/generaltranslation@8.2.3/node_modules/generaltranslation/dist/index.cjs.min.cjs
-var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_index_cjs_min$2 = __commonJSMin(((exports) => {
 	var e = function(t, r) {
 		return e = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -1740,11 +1731,6 @@ var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	var yt, _t = { exports: {} };
 	function Et() {
 		return yt || (yt = 1, _t.exports = function(e) {
-			/** @preserve
-			* Counter block mode compatible with  Dr Brian Gladman fileenc.c
-			* derived from CryptoJS.mode.CTR
-			* Jan Hruby jhruby.web@gmail.com
-			*/
 			return e.mode.CTRGladman = function() {
 				var t = e.lib.BlockCipherMode.extend();
 				function r(e) {
@@ -3680,16 +3666,6 @@ var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 		}), t.SHA384 = a._createHelper(s), t.HmacSHA384 = a._createHmacHelper(s), e.SHA384;
 		var t, r, n, o, i, a, s;
 	}(ye(), be(), We())), Qe(), $e || ($e = 1, et.exports = function(e) {
-		/** @preserve
-		(c) 2012 by Cédric Mesnil. All rights reserved.
-		
-		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-		
-		- Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-		- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-		
-		THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-		*/
 		return function() {
 			var t = e, r = t.lib, n = r.WordArray, o = r.Hasher, i = t.algo, a = n.create([
 				0,
@@ -8557,7 +8533,7 @@ var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/@generaltranslation+supported-locales@2.0.61/node_modules/@generaltranslation/supported-locales/dist/index.cjs.min.cjs
-var require_index_cjs_min$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_index_cjs_min$1 = __commonJSMin(((exports) => {
 	var e = require_index_cjs_min$2(), r = function() {
 		return r = Object.assign || function(e) {
 			for (var r, n = 1, t = arguments.length; n < t; n++) for (var a in r = arguments[n]) Object.prototype.hasOwnProperty.call(r, a) && (e[a] = r[a]);
@@ -8746,7 +8722,7 @@ var require_index_cjs_min$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/@generaltranslation+react-core@1.8.2+b1ab299f0a400331/node_modules/@generaltranslation/react-core/dist/index.cjs.min.cjs
-var require_index_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_index_cjs_min = __commonJSMin(((exports) => {
 	var e$1 = __require("react/jsx-runtime"), t$1 = __require("react"), r$1 = require_index_cjs_min$2(), n$1 = require_index_cjs_min$1();
 	function o(e) {
 		var t = Object.create(null);
@@ -17184,7 +17160,7 @@ var require_index_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/gt-react@10.18.2+bf16f8eded5e12ee/node_modules/gt-react/dist/client.cjs.min.cjs
-var require_client_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_client_cjs_min = __commonJSMin(((exports) => {
 	var e = __require("react/jsx-runtime"), t = __require("react"), r = require_index_cjs_min$2(), n = require_index_cjs_min();
 	function o(e) {
 		var t = Object.create(null);
@@ -24070,7 +24046,7 @@ var require_client_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/gt-next@6.16.5+4766e5f4053ef6d3/node_modules/gt-next/dist/plugin/constants.js
-var require_constants = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_constants = __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.STABLE_TURBO_CONFIG_VERSION = exports.ROOT_PARAM_STABILITY = exports.SWC_PLUGIN_SUPPORT = exports.BABEL_PLUGIN_SUPPORT = void 0;
 	exports.BABEL_PLUGIN_SUPPORT = "17.0.0";
@@ -24084,7 +24060,7 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/gt-next@6.16.5+4766e5f4053ef6d3/node_modules/gt-next/dist/errors/createErrors.js
-var require_createErrors = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_createErrors = __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.swcPluginCompatibilityChangeWarning = exports.createStringRenderWarning = exports.disablingCompileTimeHashWarning = exports.createGTCompilerUnavailableWarning = exports.createGTCompilerUnresolvedWarning = exports.deprecatedLocaleMappingWarning = exports.standardizedCanonicalLocalesWarning = exports.standardizedLocalesWarning = exports.dictionaryNotFoundWarning = exports.runtimeTranslationTimeoutWarning = exports.createTranslationLoadingWarning = exports.APIKeyMissingWarn = exports.noInitGTWarn = exports.projectIdMissingWarn = exports.createMismatchingHashWarning = exports.createUnsupportedLocalesWarning = exports.createInvalidDictionaryTranslationEntryWarning = exports.createInvalidDictionaryEntryWarning = exports.createNoEntryFoundWarning = exports.usingDefaultsWarning = exports.createBadFilepathWarning = exports.createInvalidIcuDictionaryEntryWarning = exports.createInvalidIcuDictionaryEntryError = exports.invalidCanonicalLocalesError = exports.invalidLocalesError = exports.createStringRenderError = exports.missingVariablesError = exports.txUseClientError = exports.gtProviderUseClientError = exports.typesFileError = exports.conflictingConfigurationBuildError = exports.unresolvedGetLocaleBuildError = exports.unresolvedLoadTranslationsBuildError = exports.unresolvedLoadDictionaryBuildError = exports.unresolvedCustomLoadTranslationsError = exports.unresolvedCustomLoadDictionaryError = exports.dictionaryDisabledError = exports.createDictionarySubsetError = exports.devApiKeyIncludedInProductionError = exports.createRequiredPrefixError = exports.createDictionaryTranslationError = exports.createStringTranslationError = exports.createUnresolvedReactVersionError = exports.createUnresolvedNextVersionError = exports.customLoadDictionaryWarning = exports.customLoadTranslationsError = exports.remoteTranslationsError = void 0;
 	var generaltranslation_1 = require_index_cjs_min$2();
@@ -24236,7 +24212,7 @@ var require_createErrors = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region components/ThemeToggle.tsx
-var import_index_client = (/* @__PURE__ */ __commonJSMin(((exports) => {
+var import_index_client = __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.gtFallback = exports.mFallback = exports.decodeVars = exports.declareVar = exports.derive = exports.declareStatic = exports.decodeOptions = exports.decodeMsg = exports.msg = exports.useMessages = exports.useVersionId = exports.useLocaleDirection = exports.useLocaleProperties = exports.useGTClass = exports.useDefaultLocale = exports.useLocales = exports.useLocale = exports.useTranslations = exports.useGT = exports.RegionSelector = exports.LocaleSelector = exports.Plural = exports.Branch = exports.Derive = exports.Static = exports.RelativeTime = exports.DateTime = exports.Currency = exports.Num = exports.Var = exports.T = void 0;
 	exports.GTProvider = GTProvider;
@@ -24431,7 +24407,7 @@ var import_index_client = (/* @__PURE__ */ __commonJSMin(((exports) => {
 	function GTProvider() {
 		throw new Error(createErrors_1.gtProviderUseClientError);
 	}
-})))();
+}))();
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -24470,13 +24446,13 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? "Theme mode: auto (system). Click to switch to light mode." : `Theme mode: ${mode}. Click to switch mode.`;
-	return /* @__PURE__ */ jsx("button", {
+	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
-		children: mode === "auto" ? /* @__PURE__ */ jsx(import_index_client.T, { children: "Theme: Auto" }) : mode === "dark" ? /* @__PURE__ */ jsx(import_index_client.T, { children: "Theme: Dark" }) : /* @__PURE__ */ jsx(import_index_client.T, { children: "Theme: Light" })
+		children: mode === "auto" ? jsx(import_index_client.T, { children: "Theme: Auto" }) : mode === "dark" ? jsx(import_index_client.T, { children: "Theme: Dark" }) : jsx(import_index_client.T, { children: "Theme: Light" })
 	});
 }
 //#endregion
@@ -24513,13 +24489,13 @@ function LocaleSwitcher() {
 		const newPathname = segments.join("/");
 		router.push(newPathname);
 	};
-	return /* @__PURE__ */ jsx("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: /* @__PURE__ */ jsx("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeItem) => /* @__PURE__ */ jsx("option", {
+			children: locales.map((localeItem) => jsx("option", {
 				value: localeItem,
 				children: getLocaleName(localeItem)
 			}, localeItem))
@@ -24528,12 +24504,6 @@ function LocaleSwitcher() {
 }
 //#endregion
 //#region hooks/usePerformanceMeasure.ts
-/**
-* Custom hook to measure the render-to-layout duration of a component.
-* It uses the Browser User Timing API (performance.mark/measure).
-*
-* @param name The name of the measurement (e.g., 'HeroComponent')
-*/
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -24555,81 +24525,81 @@ function Header() {
 	const mockPages = [
 		{
 			href: "/products",
-			label: /* @__PURE__ */ jsx(import_index_client.T, { children: "Products" })
+			label: jsx(import_index_client.T, { children: "Products" })
 		},
 		{
 			href: "/pricing",
-			label: /* @__PURE__ */ jsx(import_index_client.T, { children: "Pricing" })
+			label: jsx(import_index_client.T, { children: "Pricing" })
 		},
 		{
 			href: "/team",
-			label: /* @__PURE__ */ jsx(import_index_client.T, { children: "Team" })
+			label: jsx(import_index_client.T, { children: "Team" })
 		},
 		{
 			href: "/blog",
-			label: /* @__PURE__ */ jsx(import_index_client.T, { children: "Blog" })
+			label: jsx(import_index_client.T, { children: "Blog" })
 		},
 		{
 			href: "/careers",
-			label: /* @__PURE__ */ jsx(import_index_client.T, { children: "Careers" })
+			label: jsx(import_index_client.T, { children: "Careers" })
 		},
 		{
 			href: "/faq",
-			label: /* @__PURE__ */ jsx(import_index_client.T, { children: "FAQ" })
+			label: jsx(import_index_client.T, { children: "FAQ" })
 		},
 		{
 			href: "/contact",
-			label: /* @__PURE__ */ jsx(import_index_client.T, { children: "Contact" })
+			label: jsx(import_index_client.T, { children: "Contact" })
 		},
 		{
 			href: "/settings",
-			label: /* @__PURE__ */ jsx(import_index_client.T, { children: "Settings" })
+			label: jsx(import_index_client.T, { children: "Settings" })
 		}
 	];
 	const isExactActive = (href) => pathname === href;
 	const isActive = (href) => pathname.startsWith(href);
-	return /* @__PURE__ */ jsx("header", {
+	return jsx("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: /* @__PURE__ */ jsxs("nav", {
+		children: jsxs("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [/* @__PURE__ */ jsxs("div", {
+			children: [jsxs("div", {
 				className: "flex items-center gap-8",
-				children: [/* @__PURE__ */ jsx(Link, {
+				children: [jsx(Link, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}), /* @__PURE__ */ jsxs("div", {
+				}), jsxs("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						/* @__PURE__ */ jsx(Link, {
+						jsx(Link, {
 							href: "/",
 							className: `nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`,
-							children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Home" })
+							children: jsx(import_index_client.T, { children: "Home" })
 						}),
-						/* @__PURE__ */ jsx(Link, {
+						jsx(Link, {
 							href: "/about",
 							className: `nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`,
-							children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Methodology" })
+							children: jsx(import_index_client.T, { children: "Methodology" })
 						}),
-						/* @__PURE__ */ jsxs("div", {
+						jsxs("div", {
 							className: "relative",
-							children: [/* @__PURE__ */ jsxs("button", {
+							children: [jsxs("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [/* @__PURE__ */ jsx(import_index_client.T, { children: "Mock Pages" }), /* @__PURE__ */ jsx(ChevronDown, {
+								children: [jsx(import_index_client.T, { children: "Mock Pages" }), jsx(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
 								})]
-							}), isMockPagesOpen && /* @__PURE__ */ jsx("div", {
+							}), isMockPagesOpen && jsx("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: /* @__PURE__ */ jsx("div", {
+								children: jsx("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => /* @__PURE__ */ jsx(Link, {
+									children: mockPages.map((page) => jsx(Link, {
 										href: page.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
@@ -24640,30 +24610,30 @@ function Header() {
 						})
 					]
 				})]
-			}), /* @__PURE__ */ jsxs("div", {
+			}), jsxs("div", {
 				className: "flex items-center gap-4",
 				children: [
-					/* @__PURE__ */ jsxs("a", {
+					jsxs("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [/* @__PURE__ */ jsx("span", {
+						children: [jsx("span", {
 							className: "sr-only",
 							children: "Go to GitHub"
-						}), /* @__PURE__ */ jsx("svg", {
+						}), jsx("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: /* @__PURE__ */ jsx("path", {
+							children: jsx("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
 							})
 						})]
 					}),
-					/* @__PURE__ */ jsx(LocaleSwitcher, {}),
-					/* @__PURE__ */ jsx(ThemeToggle, {})
+					jsx(LocaleSwitcher, {}),
+					jsx(ThemeToggle, {})
 				]
 			})]
 		})
@@ -24671,18 +24641,6 @@ function Header() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -24698,16 +24656,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -24718,7 +24676,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -24728,9 +24686,9 @@ function AppProviders({ children, locale }) {
 //#region scripts/Wrapper.tsx
 var locale = "en";
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(import_index_client.GTProvider, {
+	return jsx(import_index_client.GTProvider, {
 		locale,
-		children: /* @__PURE__ */ jsx(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
 		})
@@ -24739,7 +24697,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/Header.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(Header, {}) });
+	return jsx(Wrapper, { children: jsx(Header, {}) });
 }
 //#endregion
 export { Wrapped as default };

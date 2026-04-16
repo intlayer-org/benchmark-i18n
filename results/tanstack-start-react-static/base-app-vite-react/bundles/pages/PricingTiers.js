@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/pricing/PricingTiers.tsx
 function PricingTiers() {
 	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
@@ -83,5 +82,4 @@ function PricingTiers() {
 		}, t.name))
 	});
 }
-//#endregion
 export { PricingTiers as default };

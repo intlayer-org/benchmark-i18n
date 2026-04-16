@@ -1,12 +1,12 @@
 import { Profiler as e, useEffect as t } from "react";
 import { Fragment as n, jsx as r, jsxs as i } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o = /* @__PURE__ */ ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), s = /* @__PURE__ */ a(((e, t) => {
+}), s = a(((e, t) => {
 	t.exports = {};
-})), c = /* @__PURE__ */ a(((e) => {
+})), c = a(((e) => {
 	var t = function(e, n) {
 		return t = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -8449,7 +8449,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 	}, e.standardizeLocale = function(e) {
 		return rn(e);
 	};
-})), l = /* @__PURE__ */ a(((e) => {
+})), l = a(((e) => {
 	var t = c(), n = function() {
 		return n = Object.assign || function(e) {
 			for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
@@ -8633,7 +8633,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 		}
 		return e.sort();
 	};
-})), u = /* @__PURE__ */ a(((e) => {
+})), u = a(((e) => {
 	var t = o("react/jsx-runtime"), n = o("react"), r = c(), i = l();
 	function a(e) {
 		var t = Object.create(null);
@@ -16985,7 +16985,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 	}, e.useVersionId = function() {
 		return Di("useVersionId(): Unable to access version ID outside of a <GTProvider>")._versionId;
 	};
-})), d = /* @__PURE__ */ a(((e) => {
+})), d = a(((e) => {
 	var t = o("react/jsx-runtime"), n = o("react"), r = c(), i = u();
 	function a(e) {
 		var t = Object.create(null);
@@ -23845,13 +23845,13 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			}, e))]
 		}));
 	};
-})), f = /* @__PURE__ */ a(((e) => {
+})), f = a(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.STABLE_TURBO_CONFIG_VERSION = e.ROOT_PARAM_STABILITY = e.SWC_PLUGIN_SUPPORT = e.BABEL_PLUGIN_SUPPORT = void 0, e.BABEL_PLUGIN_SUPPORT = "17.0.0", e.SWC_PLUGIN_SUPPORT = "16.1.0", e.ROOT_PARAM_STABILITY = {
 		unsupported: "0.0.0",
 		unstable: "15.2.0",
 		experimental: "15.5.0"
 	}, e.STABLE_TURBO_CONFIG_VERSION = "15.3.0";
-})), p = /* @__PURE__ */ a(((e) => {
+})), p = a(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.swcPluginCompatibilityChangeWarning = e.createStringRenderWarning = e.disablingCompileTimeHashWarning = e.createGTCompilerUnavailableWarning = e.createGTCompilerUnresolvedWarning = e.deprecatedLocaleMappingWarning = e.standardizedCanonicalLocalesWarning = e.standardizedLocalesWarning = e.dictionaryNotFoundWarning = e.runtimeTranslationTimeoutWarning = e.createTranslationLoadingWarning = e.APIKeyMissingWarn = e.noInitGTWarn = e.projectIdMissingWarn = e.createMismatchingHashWarning = e.createUnsupportedLocalesWarning = e.createInvalidDictionaryTranslationEntryWarning = e.createInvalidDictionaryEntryWarning = e.createNoEntryFoundWarning = e.usingDefaultsWarning = e.createBadFilepathWarning = e.createInvalidIcuDictionaryEntryWarning = e.createInvalidIcuDictionaryEntryError = e.invalidCanonicalLocalesError = e.invalidLocalesError = e.createStringRenderError = e.missingVariablesError = e.txUseClientError = e.gtProviderUseClientError = e.typesFileError = e.conflictingConfigurationBuildError = e.unresolvedGetLocaleBuildError = e.unresolvedLoadTranslationsBuildError = e.unresolvedLoadDictionaryBuildError = e.unresolvedCustomLoadTranslationsError = e.unresolvedCustomLoadDictionaryError = e.dictionaryDisabledError = e.createDictionarySubsetError = e.devApiKeyIncludedInProductionError = e.createRequiredPrefixError = e.createDictionaryTranslationError = e.createStringTranslationError = e.createUnresolvedReactVersionError = e.createUnresolvedNextVersionError = e.customLoadDictionaryWarning = e.customLoadTranslationsError = e.remoteTranslationsError = void 0;
 	var t = c(), n = f();
 	e.remoteTranslationsError = "gt-next Error: fetching remote translation.", e.customLoadTranslationsError = function(e) {
@@ -23919,7 +23919,7 @@ ${e.join("\n")}`;
 	}, e.disablingCompileTimeHashWarning = "gt-next (plugin): Compile-time hash is disabled. Compiler optimizations are inactive.", e.createStringRenderWarning = function(e, t) {
 		return `gt-next: failed to render string ${t ? `for id: "${t}"` : ""} original message: "${e}"`;
 	}, e.swcPluginCompatibilityChangeWarning = `gt-next (plugin): As of gt-next@6.12.4, SWC plugin support is disabled for Next.js versions prior to ${n.SWC_PLUGIN_SUPPORT}. Update to the latest version of Next.js.`;
-})), m = (/* @__PURE__ */ a(((e) => {
+})), m = a(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.gtFallback = e.mFallback = e.decodeVars = e.declareVar = e.derive = e.declareStatic = e.decodeOptions = e.decodeMsg = e.msg = e.useMessages = e.useVersionId = e.useLocaleDirection = e.useLocaleProperties = e.useGTClass = e.useDefaultLocale = e.useLocales = e.useLocale = e.useTranslations = e.useGT = e.RegionSelector = e.LocaleSelector = e.Plural = e.Branch = e.Derive = e.Static = e.RelativeTime = e.DateTime = e.Currency = e.Num = e.Var = e.T = void 0, e.GTProvider = r;
 	var t = d();
 	Object.defineProperty(e, "Var", {
@@ -24082,81 +24082,81 @@ ${e.join("\n")}`;
 	function r() {
 		throw Error(n.gtProviderUseClientError);
 	}
-})))();
+}))();
 function h() {
-	return /* @__PURE__ */ i(n, { children: [/* @__PURE__ */ r("h2", {
+	return i(n, { children: [r("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
-		children: /* @__PURE__ */ r(m.T, { children: "Open Positions" })
-	}), /* @__PURE__ */ r("div", {
+		children: r(m.T, { children: "Open Positions" })
+	}), r("div", {
 		className: "space-y-4",
 		children: [
 			{
-				title: /* @__PURE__ */ r(m.T, { children: "Senior Frontend Engineer" }),
-				location: /* @__PURE__ */ r(m.T, { children: "Remote" }),
-				type: /* @__PURE__ */ r(m.T, { children: "Full-time" }),
-				dept: /* @__PURE__ */ r(m.T, { children: "Engineering" }),
-				desc: /* @__PURE__ */ r(m.T, { children: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite." })
+				title: r(m.T, { children: "Senior Frontend Engineer" }),
+				location: r(m.T, { children: "Remote" }),
+				type: r(m.T, { children: "Full-time" }),
+				dept: r(m.T, { children: "Engineering" }),
+				desc: r(m.T, { children: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite." })
 			},
 			{
-				title: /* @__PURE__ */ r(m.T, { children: "Backend Engineer" }),
-				location: /* @__PURE__ */ r(m.T, { children: "Remote" }),
-				type: /* @__PURE__ */ r(m.T, { children: "Full-time" }),
-				dept: /* @__PURE__ */ r(m.T, { children: "Engineering" }),
-				desc: /* @__PURE__ */ r(m.T, { children: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily." })
+				title: r(m.T, { children: "Backend Engineer" }),
+				location: r(m.T, { children: "Remote" }),
+				type: r(m.T, { children: "Full-time" }),
+				dept: r(m.T, { children: "Engineering" }),
+				desc: r(m.T, { children: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily." })
 			},
 			{
-				title: /* @__PURE__ */ r(m.T, { children: "Technical Writer" }),
-				location: /* @__PURE__ */ r(m.T, { children: "Remote" }),
-				type: /* @__PURE__ */ r(m.T, { children: "Part-time" }),
-				dept: /* @__PURE__ */ r(m.T, { children: "Documentation" }),
-				desc: /* @__PURE__ */ r(m.T, { children: "Create comprehensive guides, API references, and tutorials for our benchmarking platform." })
+				title: r(m.T, { children: "Technical Writer" }),
+				location: r(m.T, { children: "Remote" }),
+				type: r(m.T, { children: "Part-time" }),
+				dept: r(m.T, { children: "Documentation" }),
+				desc: r(m.T, { children: "Create comprehensive guides, API references, and tutorials for our benchmarking platform." })
 			},
 			{
-				title: /* @__PURE__ */ r(m.T, { children: "DevRel Engineer" }),
-				location: /* @__PURE__ */ r(m.T, { children: "San Francisco / Remote" }),
-				type: /* @__PURE__ */ r(m.T, { children: "Full-time" }),
-				dept: /* @__PURE__ */ r(m.T, { children: "Community" }),
-				desc: /* @__PURE__ */ r(m.T, { children: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions." })
+				title: r(m.T, { children: "DevRel Engineer" }),
+				location: r(m.T, { children: "San Francisco / Remote" }),
+				type: r(m.T, { children: "Full-time" }),
+				dept: r(m.T, { children: "Community" }),
+				desc: r(m.T, { children: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions." })
 			},
 			{
-				title: /* @__PURE__ */ r(m.T, { children: "QA Engineer" }),
-				location: /* @__PURE__ */ r(m.T, { children: "Remote" }),
-				type: /* @__PURE__ */ r(m.T, { children: "Full-time" }),
-				dept: /* @__PURE__ */ r(m.T, { children: "Engineering" }),
-				desc: /* @__PURE__ */ r(m.T, { children: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation." })
+				title: r(m.T, { children: "QA Engineer" }),
+				location: r(m.T, { children: "Remote" }),
+				type: r(m.T, { children: "Full-time" }),
+				dept: r(m.T, { children: "Engineering" }),
+				desc: r(m.T, { children: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation." })
 			}
-		].map((e) => /* @__PURE__ */ i("div", {
+		].map((e) => i("div", {
 			className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-			children: [/* @__PURE__ */ i("div", { children: [
-				/* @__PURE__ */ r("h3", {
+			children: [i("div", { children: [
+				r("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: e.title
 				}),
-				/* @__PURE__ */ r("p", {
+				r("p", {
 					className: "text-sm text-muted-foreground",
 					children: e.desc
 				}),
-				/* @__PURE__ */ i("div", {
+				i("div", {
 					className: "mt-2 flex gap-2",
 					children: [
-						/* @__PURE__ */ r("span", {
+						r("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: e.dept
 						}),
-						/* @__PURE__ */ r("span", {
+						r("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: e.location
 						}),
-						/* @__PURE__ */ r("span", {
+						r("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: e.type
 						})
 					]
 				})
-			] }), /* @__PURE__ */ r("button", {
+			] }), r("button", {
 				type: "button",
 				className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-				children: /* @__PURE__ */ r(m.T, { children: "Apply Now" })
+				children: r(m.T, { children: "Apply Now" })
 			})]
 		}, e.title?.toString() || ""))
 	})] });
@@ -24178,7 +24178,11 @@ function g() {
 	}
 }
 function _(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -24187,7 +24191,7 @@ function v({ children: n, locale: i }) {
 		document.documentElement.lang = i;
 	}, [i]), t(() => {
 		g();
-	}, []), /* @__PURE__ */ r(e, {
+	}, []), r(e, {
 		id: "AppRoot",
 		onRender: _,
 		children: n
@@ -24197,9 +24201,9 @@ function v({ children: n, locale: i }) {
 //#region scripts/Wrapper.tsx
 var y = "en";
 function b({ children: e }) {
-	return /* @__PURE__ */ r(m.GTProvider, {
+	return r(m.GTProvider, {
 		locale: y,
-		children: /* @__PURE__ */ r(v, {
+		children: r(v, {
 			locale: y,
 			children: e
 		})
@@ -24208,7 +24212,7 @@ function b({ children: e }) {
 //#endregion
 //#region components/pages/careers/OpenPositions.wrapper.tsx
 function x() {
-	return /* @__PURE__ */ r(b, { children: /* @__PURE__ */ r(h, {}) });
+	return r(b, { children: r(h, {}) });
 }
 //#endregion
 export { x as default };

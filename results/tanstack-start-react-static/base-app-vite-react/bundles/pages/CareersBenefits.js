@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/careers/CareersBenefits.tsx
 function CareersBenefits() {
 	return jsx("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
@@ -28,5 +27,4 @@ function CareersBenefits() {
 		}, b.label))
 	});
 }
-//#endregion
 export { CareersBenefits as default };

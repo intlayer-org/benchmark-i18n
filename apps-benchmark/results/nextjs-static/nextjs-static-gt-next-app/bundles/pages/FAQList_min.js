@@ -1,12 +1,12 @@
 import { Profiler as e, useEffect as t } from "react";
 import { jsx as n, jsxs as r } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a = /* @__PURE__ */ ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), o = /* @__PURE__ */ i(((e, t) => {
+}), o = i(((e, t) => {
 	t.exports = {};
-})), s = /* @__PURE__ */ i(((e) => {
+})), s = i(((e) => {
 	var t = function(e, n) {
 		return t = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -8449,7 +8449,7 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 	}, e.standardizeLocale = function(e) {
 		return rn(e);
 	};
-})), c = /* @__PURE__ */ i(((e) => {
+})), c = i(((e) => {
 	var t = s(), n = function() {
 		return n = Object.assign || function(e) {
 			for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
@@ -8633,7 +8633,7 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 		}
 		return e.sort();
 	};
-})), l = /* @__PURE__ */ i(((e) => {
+})), l = i(((e) => {
 	var t = a("react/jsx-runtime"), n = a("react"), r = s(), i = c();
 	function o(e) {
 		var t = Object.create(null);
@@ -16985,7 +16985,7 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 	}, e.useVersionId = function() {
 		return Di("useVersionId(): Unable to access version ID outside of a <GTProvider>")._versionId;
 	};
-})), u = /* @__PURE__ */ i(((e) => {
+})), u = i(((e) => {
 	var t = a("react/jsx-runtime"), n = a("react"), r = s(), i = l();
 	function o(e) {
 		var t = Object.create(null);
@@ -23845,13 +23845,13 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 			}, e))]
 		}));
 	};
-})), d = /* @__PURE__ */ i(((e) => {
+})), d = i(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.STABLE_TURBO_CONFIG_VERSION = e.ROOT_PARAM_STABILITY = e.SWC_PLUGIN_SUPPORT = e.BABEL_PLUGIN_SUPPORT = void 0, e.BABEL_PLUGIN_SUPPORT = "17.0.0", e.SWC_PLUGIN_SUPPORT = "16.1.0", e.ROOT_PARAM_STABILITY = {
 		unsupported: "0.0.0",
 		unstable: "15.2.0",
 		experimental: "15.5.0"
 	}, e.STABLE_TURBO_CONFIG_VERSION = "15.3.0";
-})), f = /* @__PURE__ */ i(((e) => {
+})), f = i(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.swcPluginCompatibilityChangeWarning = e.createStringRenderWarning = e.disablingCompileTimeHashWarning = e.createGTCompilerUnavailableWarning = e.createGTCompilerUnresolvedWarning = e.deprecatedLocaleMappingWarning = e.standardizedCanonicalLocalesWarning = e.standardizedLocalesWarning = e.dictionaryNotFoundWarning = e.runtimeTranslationTimeoutWarning = e.createTranslationLoadingWarning = e.APIKeyMissingWarn = e.noInitGTWarn = e.projectIdMissingWarn = e.createMismatchingHashWarning = e.createUnsupportedLocalesWarning = e.createInvalidDictionaryTranslationEntryWarning = e.createInvalidDictionaryEntryWarning = e.createNoEntryFoundWarning = e.usingDefaultsWarning = e.createBadFilepathWarning = e.createInvalidIcuDictionaryEntryWarning = e.createInvalidIcuDictionaryEntryError = e.invalidCanonicalLocalesError = e.invalidLocalesError = e.createStringRenderError = e.missingVariablesError = e.txUseClientError = e.gtProviderUseClientError = e.typesFileError = e.conflictingConfigurationBuildError = e.unresolvedGetLocaleBuildError = e.unresolvedLoadTranslationsBuildError = e.unresolvedLoadDictionaryBuildError = e.unresolvedCustomLoadTranslationsError = e.unresolvedCustomLoadDictionaryError = e.dictionaryDisabledError = e.createDictionarySubsetError = e.devApiKeyIncludedInProductionError = e.createRequiredPrefixError = e.createDictionaryTranslationError = e.createStringTranslationError = e.createUnresolvedReactVersionError = e.createUnresolvedNextVersionError = e.customLoadDictionaryWarning = e.customLoadTranslationsError = e.remoteTranslationsError = void 0;
 	var t = s(), n = d();
 	e.remoteTranslationsError = "gt-next Error: fetching remote translation.", e.customLoadTranslationsError = function(e) {
@@ -23919,7 +23919,7 @@ ${e.join("\n")}`;
 	}, e.disablingCompileTimeHashWarning = "gt-next (plugin): Compile-time hash is disabled. Compiler optimizations are inactive.", e.createStringRenderWarning = function(e, t) {
 		return `gt-next: failed to render string ${t ? `for id: "${t}"` : ""} original message: "${e}"`;
 	}, e.swcPluginCompatibilityChangeWarning = `gt-next (plugin): As of gt-next@6.12.4, SWC plugin support is disabled for Next.js versions prior to ${n.SWC_PLUGIN_SUPPORT}. Update to the latest version of Next.js.`;
-})), p = (/* @__PURE__ */ i(((e) => {
+})), p = i(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.gtFallback = e.mFallback = e.decodeVars = e.declareVar = e.derive = e.declareStatic = e.decodeOptions = e.decodeMsg = e.msg = e.useMessages = e.useVersionId = e.useLocaleDirection = e.useLocaleProperties = e.useGTClass = e.useDefaultLocale = e.useLocales = e.useLocale = e.useTranslations = e.useGT = e.RegionSelector = e.LocaleSelector = e.Plural = e.Branch = e.Derive = e.Static = e.RelativeTime = e.DateTime = e.Currency = e.Num = e.Var = e.T = void 0, e.GTProvider = r;
 	var t = u();
 	Object.defineProperty(e, "Var", {
@@ -24082,49 +24082,49 @@ ${e.join("\n")}`;
 	function r() {
 		throw Error(n.gtProviderUseClientError);
 	}
-})))();
+}))();
 function m() {
-	return /* @__PURE__ */ n("div", {
+	return n("div", {
 		className: "mx-auto max-w-3xl space-y-4",
 		children: [
 			{
-				q: /* @__PURE__ */ n(p.T, { children: "What is i18n Benchmark?" }),
-				a: /* @__PURE__ */ n(p.T, { children: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications." })
+				q: n(p.T, { children: "What is i18n Benchmark?" }),
+				a: n(p.T, { children: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications." })
 			},
 			{
-				q: /* @__PURE__ */ n(p.T, { children: "How are benchmarks conducted?" }),
-				a: /* @__PURE__ */ n(p.T, { children: "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository." })
+				q: n(p.T, { children: "How are benchmarks conducted?" }),
+				a: n(p.T, { children: "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository." })
 			},
 			{
-				q: /* @__PURE__ */ n(p.T, { children: "Which libraries are currently supported?" }),
-				a: /* @__PURE__ */ n(p.T, { children: "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee." })
+				q: n(p.T, { children: "Which libraries are currently supported?" }),
+				a: n(p.T, { children: "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee." })
 			},
 			{
-				q: /* @__PURE__ */ n(p.T, { children: "Can I submit my own benchmarks?" }),
-				a: /* @__PURE__ */ n(p.T, { children: "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions." })
+				q: n(p.T, { children: "Can I submit my own benchmarks?" }),
+				a: n(p.T, { children: "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions." })
 			},
 			{
-				q: /* @__PURE__ */ n(p.T, { children: "How often are benchmarks updated?" }),
-				a: /* @__PURE__ */ n(p.T, { children: "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle." })
+				q: n(p.T, { children: "How often are benchmarks updated?" }),
+				a: n(p.T, { children: "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle." })
 			},
 			{
-				q: /* @__PURE__ */ n(p.T, { children: "Is the data reliable?" }),
-				a: /* @__PURE__ */ n(p.T, { children: "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency." })
+				q: n(p.T, { children: "Is the data reliable?" }),
+				a: n(p.T, { children: "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency." })
 			},
 			{
-				q: /* @__PURE__ */ n(p.T, { children: "Do you offer consulting services?" }),
-				a: /* @__PURE__ */ n(p.T, { children: "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints." })
+				q: n(p.T, { children: "Do you offer consulting services?" }),
+				a: n(p.T, { children: "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints." })
 			},
 			{
-				q: /* @__PURE__ */ n(p.T, { children: "How can I contribute?" }),
-				a: /* @__PURE__ */ n(p.T, { children: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details." })
+				q: n(p.T, { children: "How can I contribute?" }),
+				a: n(p.T, { children: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details." })
 			}
-		].map((e, t) => /* @__PURE__ */ r("details", {
+		].map((e, t) => r("details", {
 			className: "group rounded-lg border border-border bg-card",
-			children: [/* @__PURE__ */ n("summary", {
+			children: [n("summary", {
 				className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 				children: e.q
-			}), /* @__PURE__ */ n("p", {
+			}), n("p", {
 				className: "px-6 pb-4 text-sm text-muted-foreground",
 				children: e.a
 			})]
@@ -24148,7 +24148,11 @@ function h() {
 	}
 }
 function g(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -24157,7 +24161,7 @@ function _({ children: r, locale: i }) {
 		document.documentElement.lang = i;
 	}, [i]), t(() => {
 		h();
-	}, []), /* @__PURE__ */ n(e, {
+	}, []), n(e, {
 		id: "AppRoot",
 		onRender: g,
 		children: r
@@ -24167,9 +24171,9 @@ function _({ children: r, locale: i }) {
 //#region scripts/Wrapper.tsx
 var v = "en";
 function y({ children: e }) {
-	return /* @__PURE__ */ n(p.GTProvider, {
+	return n(p.GTProvider, {
 		locale: v,
-		children: /* @__PURE__ */ n(_, {
+		children: n(_, {
 			locale: v,
 			children: e
 		})
@@ -24178,7 +24182,7 @@ function y({ children: e }) {
 //#endregion
 //#region components/pages/faq/FAQList.wrapper.tsx
 function b() {
-	return /* @__PURE__ */ n(y, { children: /* @__PURE__ */ n(m, {}) });
+	return n(y, { children: n(m, {}) });
 }
 //#endregion
 export { b as default };

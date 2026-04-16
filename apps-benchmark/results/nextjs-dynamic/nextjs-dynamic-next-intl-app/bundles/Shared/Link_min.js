@@ -2,7 +2,6 @@ import { Profiler as e, createContext as t, useContext as n, useEffect as r, use
 import { useParams as a } from "next/navigation";
 import o from "next/link";
 import { jsx as s } from "react/jsx-runtime";
-//#region components/Link.tsx
 var c = (e) => /^https?:\/\//.test(e ?? ""), l = ({ href: e, children: t, ...n }) => {
 	let r = a().locale ?? "en", i = c(e.toString());
 	return s(o, {
@@ -11,8 +10,6 @@ var c = (e) => /^https?:\/\//.test(e ?? ""), l = ({ href: e, children: t, ...n }
 		children: t
 	});
 };
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+fast-memoize@3.1.1/node_modules/@formatjs/fast-memoize/index.js
 function u(e, t) {
 	let n = t && t.cache ? t.cache : b, r = t && t.serializer ? t.serializer : v;
 	return (t && t.strategy ? t.strategy : h)(e, {
@@ -101,8 +98,6 @@ function E(e) {
 		getDisplayNames: T(Intl.DisplayNames, e.displayNames)
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/initializeConfig-Brh10fyG.js
 function D(...e) {
 	return e.filter(Boolean).join(".");
 }
@@ -123,8 +118,6 @@ function j({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i })
 		getMessageFallback: t || O
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/react.js
 var M = t(void 0);
 function N({ children: e, formats: t, getMessageFallback: r, locale: a, messages: o, now: c, onError: l, timeZone: u }) {
 	let d = n(M), f = i((() => d?.cache || C()), [a, d?.cache]), p = i((() => d?.formatters || E(f)), [f, d?.formatters]), m = i((() => ({
@@ -156,8 +149,6 @@ function N({ children: e, formats: t, getMessageFallback: r, locale: a, messages
 		children: e
 	});
 }
-//#endregion
-//#region ../../../node_modules/.bun/next-intl@4.9.1+77ae5f1145ea432b/node_modules/next-intl/dist/esm/production/shared/NextIntlClientProvider.js
 function P({ locale: e, ...t }) {
 	if (!e) throw Error(void 0);
 	return s(N, {
@@ -165,8 +156,6 @@ function P({ locale: e, ...t }) {
 		...t
 	});
 }
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
 function F() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
@@ -188,8 +177,6 @@ function I(e, t, n) {
 		console.warn("onRenderCallback failed:", e);
 	}
 }
-//#endregion
-//#region components/AppProviders.tsx
 function L({ children: t, locale: n, messages: i }) {
 	return r(() => {
 		document.documentElement.lang = n;
@@ -662,10 +649,7 @@ function B({ children: e }) {
 		children: e
 	});
 }
-//#endregion
-//#region components/Link.wrapper.tsx
 function V() {
 	return s(B, { children: s(l, {}) });
 }
-//#endregion
 export { V as default };

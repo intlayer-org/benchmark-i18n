@@ -1,5 +1,4 @@
 import { jsx as e, jsxs as t } from "react/jsx-runtime";
-//#region src/components/pages/blog/BlogList.tsx
 function n() {
 	return e("div", {
 		className: "grid gap-6 md:grid-cols-2",
@@ -70,5 +69,4 @@ function n() {
 		}, n.title))
 	});
 }
-//#endregion
 export { n as default };

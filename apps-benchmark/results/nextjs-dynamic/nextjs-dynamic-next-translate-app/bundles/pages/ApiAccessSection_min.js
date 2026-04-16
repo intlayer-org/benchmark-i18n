@@ -179,31 +179,31 @@ function T(e) {
 //#region components/pages/settings/ApiAccessSection.tsx
 function E() {
 	let { t: e } = T("common"), t = i();
-	return /* @__PURE__ */ s("section", {
+	return s("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [/* @__PURE__ */ o("h2", {
+		children: [o("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: e("settings.apiAccessSection.apiAccess")
-		}), /* @__PURE__ */ s("div", { children: [
-			/* @__PURE__ */ o("label", {
+		}), s("div", { children: [
+			o("label", {
 				htmlFor: t,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: e("settings.apiAccessSection.apiKey")
 			}),
-			/* @__PURE__ */ s("div", {
+			s("div", {
 				className: "flex gap-2",
-				children: [/* @__PURE__ */ o("input", {
+				children: [o("input", {
 					id: t,
 					readOnly: !0,
 					defaultValue: "sk_bench_xxxxxxxxxxxxxxxxxxxx",
 					className: "flex-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-muted-foreground"
-				}), /* @__PURE__ */ o("button", {
+				}), o("button", {
 					type: "button",
 					className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: e("settings.apiAccessSection.copy")
 				})]
 			}),
-			/* @__PURE__ */ o("p", {
+			o("p", {
 				className: "mt-1 text-xs text-muted-foreground",
 				children: e("settings.apiAccessSection.useThisKeyTo")
 			})
@@ -227,7 +227,11 @@ function D() {
 	}
 }
 function O(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -236,7 +240,7 @@ function k({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		D();
-	}, []), /* @__PURE__ */ o(t, {
+	}, []), o(t, {
 		id: "AppRoot",
 		onRender: O,
 		children: e
@@ -245,7 +249,7 @@ function k({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function A({ children: e }) {
-	return /* @__PURE__ */ o(k, {
+	return o(k, {
 		locale: "en",
 		children: e
 	});
@@ -253,7 +257,7 @@ function A({ children: e }) {
 //#endregion
 //#region components/pages/settings/ApiAccessSection.wrapper.tsx
 function j() {
-	return /* @__PURE__ */ o(A, { children: /* @__PURE__ */ o(E, {}) });
+	return o(A, { children: o(E, {}) });
 }
 //#endregion
 export { j as default };

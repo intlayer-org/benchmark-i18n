@@ -1,5 +1,6 @@
-import React, { Profiler, Suspense, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { cookies } from "next/headers";
+import React, { Profiler, Suspense, useEffect, useMemo, useState } from "react";
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { jsx } from "react/jsx-runtime";
 import deRoute from "../i18n/locales/de/route.json";
 import deHeader from "../i18n/locales/de/header.json";
 import deFooter from "../i18n/locales/de/footer.json";
@@ -378,8 +379,51 @@ import zhPricing from "../i18n/locales/zh/pricing.json";
 import zhProducts from "../i18n/locales/zh/products.json";
 import zhSettings from "../i18n/locales/zh/settings.json";
 import zhTeam from "../i18n/locales/zh/team.json";
-import { jsx } from "react/jsx-runtime";
-import { useRouter } from "next/navigation";
+//#region i18n/config.ts
+var locales$1 = [
+	"en",
+	"fr",
+	"es",
+	"de",
+	"it",
+	"pt",
+	"zh",
+	"ja",
+	"ko",
+	"ru"
+];
+var getLocaleName = (locale) => {
+	try {
+		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
+		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
+	} catch (e) {
+		return locale.toUpperCase();
+	}
+};
+//#endregion
+//#region components/LocaleSwitcher.tsx
+function LocaleSwitcher() {
+	const locale = useParams().locale ?? "en";
+	const pathname = usePathname();
+	const router = useRouter();
+	const handleLocaleChange = (newLocale) => {
+		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+		router.push(newPath);
+	};
+	return jsx("div", {
+		className: "flex items-center gap-2",
+		children: jsx("select", {
+			value: locale,
+			onChange: (e) => handleLocaleChange(e.target.value),
+			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
+			children: locales$1.map((localeItem) => jsx("option", {
+				value: localeItem,
+				children: getLocaleName(localeItem)
+			}, localeItem))
+		})
+	});
+}
+//#endregion
 //#region ../../../node_modules/.bun/@tolgee+web@7.0.0/node_modules/@tolgee/web/dist/tolgee-web.production.esm.js
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -2017,35 +2061,6 @@ var TolgeeProvider = ({ tolgee, options, children, fallback, ssr }) => {
 		options: optionsWithDefault
 	} }, loading ? fallback : children);
 };
-var globalContext;
-function getGlobalContext() {
-	return globalContext;
-}
-var useTolgeeContext = () => {
-	const context = useContext(getProviderInstance()) || getGlobalContext();
-	if (!context) throw new Error("Couldn't find tolgee instance, did you forgot to use `TolgeeProvider`?");
-	return context;
-};
-var useRerender = () => {
-	const [instance, setCounter] = useState(0);
-	return {
-		instance,
-		rerender: useCallback(() => {
-			setCounter((num) => num + 1);
-		}, [setCounter])
-	};
-};
-var useTolgee = (events) => {
-	const { tolgee } = useTolgeeContext();
-	const { rerender } = useRerender();
-	useEffect(() => {
-		const listeners = events === null || events === void 0 ? void 0 : events.map((e) => tolgee.on(e, rerender));
-		return () => {
-			listeners === null || listeners === void 0 || listeners.forEach((listener) => listener.unsubscribe());
-		};
-	}, [events === null || events === void 0 ? void 0 : events.join(":")]);
-	return tolgee;
-};
 var route_default = {
 	oopsPageNotFound: "Oops! Page not found.",
 	returnToHome: "Return to Home",
@@ -2663,7 +2678,7 @@ var team_default = {
 };
 //#endregion
 //#region i18n/getMessages.ts
-var locales$1 = {
+var locales = {
 	de: {
 		route: deRoute,
 		header: deHeader,
@@ -3116,7 +3131,7 @@ var locales$1 = {
 	}
 };
 function getMessages(locale) {
-	return locales$1[locale] || locales$1.en;
+	return locales[locale] || locales.en;
 }
 //#endregion
 //#region tolgee/shared.ts
@@ -3137,56 +3152,6 @@ function TolgeeBase() {
 		apiKey: process.env.NEXT_PUBLIC_TOLGEE_API_KEY,
 		apiUrl: process.env.NEXT_PUBLIC_TOLGEE_API_URL,
 		staticData: Object.fromEntries(ALL_LOCALES.map((locale) => [locale, () => Promise.resolve(getMessages(locale))]))
-	});
-}
-//#endregion
-//#region tolgee/language.ts
-var LANGUAGE_COOKIE = "NEXT_LOCALE";
-async function setLanguage(locale) {
-	(await cookies()).set(LANGUAGE_COOKIE, locale, { maxAge: 1e3 * 60 * 60 * 24 * 365 });
-}
-//#endregion
-//#region i18n/config.ts
-var locales = [
-	"en",
-	"fr",
-	"es",
-	"de",
-	"it",
-	"pt",
-	"zh",
-	"ja",
-	"ko",
-	"ru"
-];
-var getLocaleName = (locale) => {
-	try {
-		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
-		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
-	} catch (e) {
-		return locale.toUpperCase();
-	}
-};
-//#endregion
-//#region components/LocaleSwitcher.tsx
-function LocaleSwitcher() {
-	const tolgee = useTolgee();
-	const locale = tolgee.getLanguage() || "en";
-	const handleLocaleChange = async (newLocale) => {
-		await setLanguage(newLocale);
-		await tolgee.changeLanguage(newLocale);
-	};
-	return jsx("div", {
-		className: "flex items-center gap-2",
-		children: jsx("select", {
-			value: locale,
-			onChange: (e) => handleLocaleChange(e.target.value),
-			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeItem) => jsx("option", {
-				value: localeItem,
-				children: getLocaleName(localeItem)
-			}, localeItem))
-		})
 	});
 }
 //#endregion

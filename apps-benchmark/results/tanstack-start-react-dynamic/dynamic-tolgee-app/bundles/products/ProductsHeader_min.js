@@ -1,7 +1,6 @@
-import { t as e } from "./en-JS3tXsF1.js";
+import { t as e } from "./en-XNO2V14Y.js";
 import t, { Suspense as n, useCallback as r, useContext as i, useEffect as a, useMemo as o, useRef as s, useState as c } from "react";
 import { Fragment as l, jsx as u, jsxs as d } from "react/jsx-runtime";
-//#region ../../../node_modules/.bun/@tolgee+web@7.0.0/node_modules/@tolgee/web/dist/tolgee-web.production.esm.js
 var f = Object.defineProperty, p = Object.getOwnPropertySymbols, m = Object.prototype.hasOwnProperty, h = Object.prototype.propertyIsEnumerable, g = (e, t, n) => t in e ? f(e, t, {
 	enumerable: !0,
 	configurable: !0,
@@ -1225,8 +1224,6 @@ function Ke() {
 	return he().use(Ge());
 }
 var qe = () => (e) => e;
-//#endregion
-//#region ../../../node_modules/.bun/@tolgee+react@7.0.0+3f10a4be4e334a9b/node_modules/@tolgee/react/dist/tolgee-react.esm.js
 function Je(e) {
 	return Object.assign(Object.assign({}, e), { t(...t) {
 		let n = H(...t);
@@ -1344,7 +1341,7 @@ var Q = (e) => {
 	apiUrl: void 0,
 	apiKey: void 0,
 	staticData: {
-		en: () => import("./en-JS3tXsF1.js").then((e) => e.n),
+		en: () => import("./en-XNO2V14Y.js").then((e) => e.n),
 		fr: () => import("../../../i18n/locales/fr.json"),
 		es: () => import("../../../i18n/locales/es.json"),
 		de: () => import("../../../i18n/locales/de.json"),
@@ -1359,8 +1356,6 @@ var Q = (e) => {
 function $(e) {
 	return u(lt, { ...e });
 }
-//#endregion
-//#region src/components/MockBanner.tsx
 var dt = () => u("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: u($, {
@@ -1368,8 +1363,6 @@ var dt = () => u("div", {
 		defaultValue: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
 	})
 });
-//#endregion
-//#region src/components/pages/products/ProductsHeader.tsx
 function ft() {
 	return d(l, { children: [
 		u(dt, {}),
@@ -1389,8 +1382,6 @@ function ft() {
 		})
 	] });
 }
-//#endregion
-//#region scripts/Wrapper.tsx
 function pt({ children: t }) {
 	return u($e, {
 		tolgee: ut,
@@ -1401,14 +1392,10 @@ function pt({ children: t }) {
 		children: t
 	});
 }
-//#endregion
-//#region src/components/pages/products/ProductsHeader.wrapper.tsx
 function mt() {
 	return u(pt, { children: u(ft, {}) });
 }
-//#endregion
 export { mt as default };
-//#region \0rolldown/runtime.js
 var e = Object.defineProperty, t = ((t, n) => {
 	let r = {};
 	for (var i in t) e(r, i, {
@@ -1824,5 +1811,4 @@ var e = Object.defineProperty, t = ((t, n) => {
 	teamGrid: N,
 	mockBanner: P
 };
-//#endregion
 export { t as n, F as t };

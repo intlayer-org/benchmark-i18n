@@ -14,32 +14,6 @@ const namespaces = [
   "team",
 ];
 
-function mergeNamespace(prefix, data) {
-  const merged = {};
-  for (const [key, value] of Object.entries(data)) {
-    merged[`${prefix}.${key}`] = value;
-  }
-  return merged;
-}
-
-async function loadNamespace(locale, namespace) {
-  const safeLocale = locales.includes(locale) ? locale : "en";
-  try {
-    const module = await import(`./locales/${safeLocale}/${namespace}.json`, {
-      with: { type: "json" },
-    });
-    return module.default;
-  } catch {
-    if (safeLocale === "en") {
-      return {};
-    }
-    const fallbackModule = await import(`./locales/en/${namespace}.json`, {
-      with: { type: "json" },
-    });
-    return fallbackModule.default;
-  }
-}
-
 /** @type {import('next-translate').I18nConfig} */
 export default {
   locales,
@@ -51,14 +25,30 @@ export default {
   },
   loadLocaleFrom: async (lang, namespace) => {
     const locale = lang ?? "en";
-    if (!namespace || namespace === "common") {
-      const merged = {};
-      for (const ns of namespaces) {
-        const nsMessages = await loadNamespace(locale, ns);
-        Object.assign(merged, mergeNamespace(ns, nsMessages));
+    const safeLocale = locales.includes(locale) ? locale : "en";
+
+    const translations = {};
+    for (const ns of namespaces) {
+      try {
+        const module = await import(`./locales/${safeLocale}/${ns}.json`, {
+          with: { type: "json" },
+        });
+        for (const [key, value] of Object.entries(module.default)) {
+          translations[`${ns}.${key}`] = value;
+        }
+      } catch {
+        try {
+          const fallbackModule = await import(`./locales/en/${ns}.json`, {
+            with: { type: "json" },
+          });
+          for (const [key, value] of Object.entries(fallbackModule.default)) {
+            translations[`${ns}.${key}`] = value;
+          }
+        } catch (e) {
+          console.error(`Failed to load namespace ${ns} for locale ${safeLocale}:`, e);
+        }
       }
-      return merged;
     }
-    return loadNamespace(locale, namespace);
+    return translations;
   },
 };

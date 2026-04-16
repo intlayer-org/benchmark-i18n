@@ -1,8 +1,7 @@
-import { t as e } from "./en-JS3tXsF1.js";
+import { t as e } from "./en-XNO2V14Y.js";
 import t, { Suspense as n, useEffect as r, useMemo as i, useState as a } from "react";
 import { useNavigate as o, useParams as s } from "@tanstack/react-router";
 import { jsx as c } from "react/jsx-runtime";
-//#region src/i18n/config.ts
 var l = [
 	"en",
 	"fr",
@@ -22,8 +21,6 @@ var l = [
 		return e.toUpperCase();
 	}
 };
-//#endregion
-//#region src/components/LocaleSwitcher.tsx
 function d() {
 	let e = s({ strict: !1 }).locale ?? "en", t = o(), n = (e) => {
 		t({
@@ -47,8 +44,6 @@ function d() {
 		})
 	});
 }
-//#endregion
-//#region ../../../node_modules/.bun/@tolgee+web@7.0.0/node_modules/@tolgee/web/dist/tolgee-web.production.esm.js
 var f = Object.defineProperty, p = Object.getOwnPropertySymbols, m = Object.prototype.hasOwnProperty, h = Object.prototype.propertyIsEnumerable, g = (e, t, n) => t in e ? f(e, t, {
 	enumerable: !0,
 	configurable: !0,
@@ -1272,8 +1267,6 @@ function We() {
 	return me().use(Ue());
 }
 var Ge = () => (e) => e;
-//#endregion
-//#region ../../../node_modules/.bun/@tolgee+react@7.0.0+3f10a4be4e334a9b/node_modules/@tolgee/react/dist/tolgee-react.esm.js
 function Ke(e) {
 	return Object.assign(Object.assign({}, e), { t(...t) {
 		let n = U(...t);
@@ -1320,7 +1313,7 @@ var Je = { useSuspense: !1 }, Ye, Xe = () => (Ye ||= t.createContext(void 0), Ye
 	apiUrl: void 0,
 	apiKey: void 0,
 	staticData: {
-		en: () => import("./en-JS3tXsF1.js").then((e) => e.n),
+		en: () => import("./en-XNO2V14Y.js").then((e) => e.n),
 		fr: () => import("../i18n/locales/fr.json"),
 		es: () => import("../i18n/locales/es.json"),
 		de: () => import("../i18n/locales/de.json"),
@@ -1332,8 +1325,6 @@ var Je = { useSuspense: !1 }, Ye, Xe = () => (Ye ||= t.createContext(void 0), Ye
 		ru: () => import("../i18n/locales/ru.json")
 	}
 });
-//#endregion
-//#region scripts/Wrapper.tsx
 function $e({ children: t }) {
 	return c(Ze, {
 		tolgee: Qe,
@@ -1344,14 +1335,10 @@ function $e({ children: t }) {
 		children: t
 	});
 }
-//#endregion
-//#region src/components/LocaleSwitcher.wrapper.tsx
 function et() {
 	return c($e, { children: c(d, {}) });
 }
-//#endregion
 export { et as default };
-//#region \0rolldown/runtime.js
 var e = Object.defineProperty, t = ((t, n) => {
 	let r = {};
 	for (var i in t) e(r, i, {
@@ -1767,5 +1754,4 @@ var e = Object.defineProperty, t = ((t, n) => {
 	teamGrid: N,
 	mockBanner: P
 };
-//#endregion
 export { t as n, F as t };

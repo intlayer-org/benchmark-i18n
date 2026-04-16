@@ -1,7 +1,6 @@
-import { t as e } from "./en-JS3tXsF1.js";
+import { t as e } from "./en-XNO2V14Y.js";
 import t, { Suspense as n, useCallback as r, useContext as i, useEffect as a, useMemo as o, useRef as s, useState as c } from "react";
 import { Fragment as l, jsx as u, jsxs as d } from "react/jsx-runtime";
-//#region ../../../node_modules/.bun/@tolgee+web@7.0.0/node_modules/@tolgee/web/dist/tolgee-web.production.esm.js
 var f = Object.defineProperty, p = Object.getOwnPropertySymbols, m = Object.prototype.hasOwnProperty, h = Object.prototype.propertyIsEnumerable, g = (e, t, n) => t in e ? f(e, t, {
 	enumerable: !0,
 	configurable: !0,
@@ -1225,8 +1224,6 @@ function Ge() {
 	return ge().use(We());
 }
 var Ke = () => (e) => e;
-//#endregion
-//#region ../../../node_modules/.bun/@tolgee+react@7.0.0+3f10a4be4e334a9b/node_modules/@tolgee/react/dist/tolgee-react.esm.js
 function qe(e) {
 	return Object.assign(Object.assign({}, e), { t(...t) {
 		let n = V(...t);
@@ -1350,7 +1347,7 @@ var $ = (e) => {
 	apiUrl: void 0,
 	apiKey: void 0,
 	staticData: {
-		en: () => import("./en-JS3tXsF1.js").then((e) => e.n),
+		en: () => import("./en-XNO2V14Y.js").then((e) => e.n),
 		fr: () => import("../../../i18n/locales/fr.json"),
 		es: () => import("../../../i18n/locales/es.json"),
 		de: () => import("../../../i18n/locales/de.json"),
@@ -1372,8 +1369,6 @@ function dt() {
 function ft(e) {
 	return u(lt, { ...e });
 }
-//#endregion
-//#region src/components/pages/careers/OpenPositions.tsx
 function pt() {
 	let { t: e } = dt(), t = [
 		{
@@ -1459,8 +1454,6 @@ function pt() {
 		}, e.title))
 	})] });
 }
-//#endregion
-//#region scripts/Wrapper.tsx
 function mt({ children: t }) {
 	return u(Qe, {
 		tolgee: ut,
@@ -1471,14 +1464,10 @@ function mt({ children: t }) {
 		children: t
 	});
 }
-//#endregion
-//#region src/components/pages/careers/OpenPositions.wrapper.tsx
 function ht() {
 	return u(mt, { children: u(pt, {}) });
 }
-//#endregion
 export { ht as default };
-//#region \0rolldown/runtime.js
 var e = Object.defineProperty, t = ((t, n) => {
 	let r = {};
 	for (var i in t) e(r, i, {
@@ -1894,5 +1883,4 @@ var e = Object.defineProperty, t = ((t, n) => {
 	teamGrid: N,
 	mockBanner: P
 };
-//#endregion
 export { t as n, F as t };

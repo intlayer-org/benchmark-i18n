@@ -1,6 +1,5 @@
 import { useId } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/settings/ApiAccessSection.tsx
 function ApiAccessSection() {
 	const apiKeyId = useId();
 	return jsxs("section", {
@@ -34,5 +33,4 @@ function ApiAccessSection() {
 		] })]
 	});
 }
-//#endregion
 export { ApiAccessSection as default };

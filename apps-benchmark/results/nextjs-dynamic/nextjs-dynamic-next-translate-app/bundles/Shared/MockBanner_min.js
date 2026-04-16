@@ -179,7 +179,7 @@ function C(e) {
 //#region components/MockBanner.tsx
 var w = () => {
 	let { t: e } = C("common");
-	return /* @__PURE__ */ a("div", {
+	return a("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e("shared.mockBanner.text")
 	});
@@ -201,7 +201,11 @@ function T() {
 	}
 }
 function E(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -210,7 +214,7 @@ function D({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		T();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: E,
 		children: e
@@ -219,7 +223,7 @@ function D({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function O({ children: e }) {
-	return /* @__PURE__ */ a(D, {
+	return a(D, {
 		locale: "en",
 		children: e
 	});
@@ -227,7 +231,7 @@ function O({ children: e }) {
 //#endregion
 //#region components/MockBanner.wrapper.tsx
 function k() {
-	return /* @__PURE__ */ a(O, { children: /* @__PURE__ */ a(w, {}) });
+	return a(O, { children: a(w, {}) });
 }
 //#endregion
 export { k as default };

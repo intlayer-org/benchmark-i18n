@@ -1,12 +1,12 @@
 import { Profiler as e, useEffect as t } from "react";
 import { jsx as n, jsxs as r } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a = /* @__PURE__ */ ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), o = /* @__PURE__ */ i(((e, t) => {
+}), o = i(((e, t) => {
 	t.exports = {};
-})), s = /* @__PURE__ */ i(((e) => {
+})), s = i(((e) => {
 	var t = function(e, n) {
 		return t = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -8449,7 +8449,7 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 	}, e.standardizeLocale = function(e) {
 		return rn(e);
 	};
-})), c = /* @__PURE__ */ i(((e) => {
+})), c = i(((e) => {
 	var t = s(), n = function() {
 		return n = Object.assign || function(e) {
 			for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
@@ -8633,7 +8633,7 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 		}
 		return e.sort();
 	};
-})), l = /* @__PURE__ */ i(((e) => {
+})), l = i(((e) => {
 	var t = a("react/jsx-runtime"), n = a("react"), r = s(), i = c();
 	function o(e) {
 		var t = Object.create(null);
@@ -16985,7 +16985,7 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 	}, e.useVersionId = function() {
 		return Di("useVersionId(): Unable to access version ID outside of a <GTProvider>")._versionId;
 	};
-})), u = /* @__PURE__ */ i(((e) => {
+})), u = i(((e) => {
 	var t = a("react/jsx-runtime"), n = a("react"), r = s(), i = l();
 	function o(e) {
 		var t = Object.create(null);
@@ -23845,13 +23845,13 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 			}, e))]
 		}));
 	};
-})), d = /* @__PURE__ */ i(((e) => {
+})), d = i(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.STABLE_TURBO_CONFIG_VERSION = e.ROOT_PARAM_STABILITY = e.SWC_PLUGIN_SUPPORT = e.BABEL_PLUGIN_SUPPORT = void 0, e.BABEL_PLUGIN_SUPPORT = "17.0.0", e.SWC_PLUGIN_SUPPORT = "16.1.0", e.ROOT_PARAM_STABILITY = {
 		unsupported: "0.0.0",
 		unstable: "15.2.0",
 		experimental: "15.5.0"
 	}, e.STABLE_TURBO_CONFIG_VERSION = "15.3.0";
-})), f = /* @__PURE__ */ i(((e) => {
+})), f = i(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.swcPluginCompatibilityChangeWarning = e.createStringRenderWarning = e.disablingCompileTimeHashWarning = e.createGTCompilerUnavailableWarning = e.createGTCompilerUnresolvedWarning = e.deprecatedLocaleMappingWarning = e.standardizedCanonicalLocalesWarning = e.standardizedLocalesWarning = e.dictionaryNotFoundWarning = e.runtimeTranslationTimeoutWarning = e.createTranslationLoadingWarning = e.APIKeyMissingWarn = e.noInitGTWarn = e.projectIdMissingWarn = e.createMismatchingHashWarning = e.createUnsupportedLocalesWarning = e.createInvalidDictionaryTranslationEntryWarning = e.createInvalidDictionaryEntryWarning = e.createNoEntryFoundWarning = e.usingDefaultsWarning = e.createBadFilepathWarning = e.createInvalidIcuDictionaryEntryWarning = e.createInvalidIcuDictionaryEntryError = e.invalidCanonicalLocalesError = e.invalidLocalesError = e.createStringRenderError = e.missingVariablesError = e.txUseClientError = e.gtProviderUseClientError = e.typesFileError = e.conflictingConfigurationBuildError = e.unresolvedGetLocaleBuildError = e.unresolvedLoadTranslationsBuildError = e.unresolvedLoadDictionaryBuildError = e.unresolvedCustomLoadTranslationsError = e.unresolvedCustomLoadDictionaryError = e.dictionaryDisabledError = e.createDictionarySubsetError = e.devApiKeyIncludedInProductionError = e.createRequiredPrefixError = e.createDictionaryTranslationError = e.createStringTranslationError = e.createUnresolvedReactVersionError = e.createUnresolvedNextVersionError = e.customLoadDictionaryWarning = e.customLoadTranslationsError = e.remoteTranslationsError = void 0;
 	var t = s(), n = d();
 	e.remoteTranslationsError = "gt-next Error: fetching remote translation.", e.customLoadTranslationsError = function(e) {
@@ -23919,7 +23919,7 @@ ${e.join("\n")}`;
 	}, e.disablingCompileTimeHashWarning = "gt-next (plugin): Compile-time hash is disabled. Compiler optimizations are inactive.", e.createStringRenderWarning = function(e, t) {
 		return `gt-next: failed to render string ${t ? `for id: "${t}"` : ""} original message: "${e}"`;
 	}, e.swcPluginCompatibilityChangeWarning = `gt-next (plugin): As of gt-next@6.12.4, SWC plugin support is disabled for Next.js versions prior to ${n.SWC_PLUGIN_SUPPORT}. Update to the latest version of Next.js.`;
-})), p = (/* @__PURE__ */ i(((e) => {
+})), p = i(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.gtFallback = e.mFallback = e.decodeVars = e.declareVar = e.derive = e.declareStatic = e.decodeOptions = e.decodeMsg = e.msg = e.useMessages = e.useVersionId = e.useLocaleDirection = e.useLocaleProperties = e.useGTClass = e.useDefaultLocale = e.useLocales = e.useLocale = e.useTranslations = e.useGT = e.RegionSelector = e.LocaleSelector = e.Plural = e.Branch = e.Derive = e.Static = e.RelativeTime = e.DateTime = e.Currency = e.Num = e.Var = e.T = void 0, e.GTProvider = r;
 	var t = u();
 	Object.defineProperty(e, "Var", {
@@ -24082,42 +24082,42 @@ ${e.join("\n")}`;
 	function r() {
 		throw Error(n.gtProviderUseClientError);
 	}
-})))();
+}))();
 function m() {
-	return /* @__PURE__ */ r("section", {
+	return r("section", {
 		className: "mt-12 mx-auto max-w-3xl",
-		children: [/* @__PURE__ */ n("h2", {
+		children: [n("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
-			children: /* @__PURE__ */ n(p.T, { children: "What We Measure" })
-		}), /* @__PURE__ */ n("ul", {
+			children: n(p.T, { children: "What We Measure" })
+		}), n("ul", {
 			className: "space-y-4",
 			children: [
 				{
-					metric: /* @__PURE__ */ n(p.T, { children: "Bundle size impact" }),
-					desc: /* @__PURE__ */ n(p.T, { children: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks." })
+					metric: n(p.T, { children: "Bundle size impact" }),
+					desc: n(p.T, { children: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks." })
 				},
 				{
-					metric: /* @__PURE__ */ n(p.T, { children: "Rendering overhead" }),
-					desc: /* @__PURE__ */ n(p.T, { children: "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree." })
+					metric: n(p.T, { children: "Rendering overhead" }),
+					desc: n(p.T, { children: "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree." })
 				},
 				{
-					metric: /* @__PURE__ */ n(p.T, { children: "Hydration cost" }),
-					desc: /* @__PURE__ */ n(p.T, { children: "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive." })
+					metric: n(p.T, { children: "Hydration cost" }),
+					desc: n(p.T, { children: "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive." })
 				},
 				{
-					metric: /* @__PURE__ */ n(p.T, { children: "Lazy loading effectiveness" }),
-					desc: /* @__PURE__ */ n(p.T, { children: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)." })
+					metric: n(p.T, { children: "Lazy loading effectiveness" }),
+					desc: n(p.T, { children: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)." })
 				},
 				{
-					metric: /* @__PURE__ */ n(p.T, { children: "Locale switch speed" }),
-					desc: /* @__PURE__ */ n(p.T, { children: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM." })
+					metric: n(p.T, { children: "Locale switch speed" }),
+					desc: n(p.T, { children: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM." })
 				}
-			].map((e) => /* @__PURE__ */ r("li", {
+			].map((e) => r("li", {
 				className: "rounded-md border border-border p-4",
-				children: [/* @__PURE__ */ n("span", {
+				children: [n("span", {
 					className: "block text-sm font-bold text-primary",
 					children: e.metric
-				}), /* @__PURE__ */ n("span", {
+				}), n("span", {
 					className: "block mt-1 text-sm text-muted-foreground",
 					children: e.desc
 				})]
@@ -24142,7 +24142,11 @@ function h() {
 	}
 }
 function g(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -24151,7 +24155,7 @@ function _({ children: r, locale: i }) {
 		document.documentElement.lang = i;
 	}, [i]), t(() => {
 		h();
-	}, []), /* @__PURE__ */ n(e, {
+	}, []), n(e, {
 		id: "AppRoot",
 		onRender: g,
 		children: r
@@ -24161,9 +24165,9 @@ function _({ children: r, locale: i }) {
 //#region scripts/Wrapper.tsx
 var v = "en";
 function y({ children: e }) {
-	return /* @__PURE__ */ n(p.GTProvider, {
+	return n(p.GTProvider, {
 		locale: v,
-		children: /* @__PURE__ */ n(_, {
+		children: n(_, {
 			locale: v,
 			children: e
 		})
@@ -24172,7 +24176,7 @@ function y({ children: e }) {
 //#endregion
 //#region components/pages/about/WhatWeMeasure.wrapper.tsx
 function b() {
-	return /* @__PURE__ */ n(y, { children: /* @__PURE__ */ n(m, {}) });
+	return n(y, { children: n(m, {}) });
 }
 //#endregion
 export { b as default };

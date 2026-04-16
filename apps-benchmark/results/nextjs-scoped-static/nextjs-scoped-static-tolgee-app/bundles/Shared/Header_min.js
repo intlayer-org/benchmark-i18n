@@ -1,9 +1,8 @@
 import e, { Profiler as t, Suspense as n, useCallback as r, useContext as i, useEffect as a, useLayoutEffect as o, useMemo as s, useRef as c, useState as l } from "react";
 import u from "next/link";
 import { jsx as d, jsxs as f } from "react/jsx-runtime";
-import { usePathname as p, useRouter as m } from "next/navigation";
-import { ChevronDown as h } from "lucide-react";
-import { cookies as g } from "next/headers";
+import { useParams as p, usePathname as m, useRouter as h } from "next/navigation";
+import { ChevronDown as g } from "lucide-react";
 import _ from "../i18n/locales/de/route.json";
 import v from "../i18n/locales/de/header.json";
 import y from "../i18n/locales/de/footer.json";
@@ -77,175 +76,175 @@ import ct from "../i18n/locales/es/apiAccessSection.json";
 import lt from "../i18n/locales/es/settingsFooter.json";
 import ut from "../i18n/locales/es/teamHeader.json";
 import dt from "../i18n/locales/es/teamGrid.json";
-import ft from "../i18n/locales/es/common.json";
-import pt from "../i18n/locales/es/home.json";
-import mt from "../i18n/locales/es/about.json";
-import ht from "../i18n/locales/es/blog.json";
-import gt from "../i18n/locales/es/careers.json";
-import _t from "../i18n/locales/es/contact.json";
-import vt from "../i18n/locales/es/faq.json";
-import yt from "../i18n/locales/es/pricing.json";
-import bt from "../i18n/locales/es/products.json";
-import xt from "../i18n/locales/es/settings.json";
-import St from "../i18n/locales/es/team.json";
-import Ct from "../i18n/locales/fr/route.json";
-import wt from "../i18n/locales/fr/header.json";
-import Tt from "../i18n/locales/fr/footer.json";
-import Et from "../i18n/locales/fr/themeToggle.json";
-import Dt from "../i18n/locales/fr/hero.json";
-import Ot from "../i18n/locales/fr/whyItMatters.json";
-import kt from "../i18n/locales/fr/understandingImpact.json";
-import At from "../i18n/locales/fr/resultsTable.json";
-import jt from "../i18n/locales/fr/aboutHeader.json";
-import Mt from "../i18n/locales/fr/aboutGrid.json";
-import Nt from "../i18n/locales/fr/whatWeMeasure.json";
-import Pt from "../i18n/locales/fr/blogHeader.json";
-import Ft from "../i18n/locales/fr/blogList.json";
-import It from "../i18n/locales/fr/careersHeader.json";
-import Lt from "../i18n/locales/fr/careersBenefits.json";
-import Rt from "../i18n/locales/fr/openPositions.json";
-import zt from "../i18n/locales/fr/contactHeader.json";
-import Bt from "../i18n/locales/fr/contactForm.json";
-import Vt from "../i18n/locales/fr/faqHeader.json";
-import Ht from "../i18n/locales/fr/faqList.json";
-import Ut from "../i18n/locales/fr/pricingHeader.json";
-import Wt from "../i18n/locales/fr/pricingTiers.json";
-import Gt from "../i18n/locales/fr/productsHeader.json";
-import Kt from "../i18n/locales/fr/productsGrid.json";
-import qt from "../i18n/locales/fr/settingsHeader.json";
-import Jt from "../i18n/locales/fr/profileSection.json";
-import Yt from "../i18n/locales/fr/preferencesSection.json";
-import Xt from "../i18n/locales/fr/apiAccessSection.json";
-import Zt from "../i18n/locales/fr/settingsFooter.json";
-import Qt from "../i18n/locales/fr/teamHeader.json";
-import $t from "../i18n/locales/fr/teamGrid.json";
-import en from "../i18n/locales/fr/common.json";
-import tn from "../i18n/locales/fr/home.json";
-import nn from "../i18n/locales/fr/about.json";
-import rn from "../i18n/locales/fr/blog.json";
-import an from "../i18n/locales/fr/careers.json";
-import on from "../i18n/locales/fr/contact.json";
-import sn from "../i18n/locales/fr/faq.json";
-import cn from "../i18n/locales/fr/pricing.json";
-import ln from "../i18n/locales/fr/products.json";
-import un from "../i18n/locales/fr/settings.json";
-import dn from "../i18n/locales/fr/team.json";
-import fn from "../i18n/locales/it/route.json";
-import pn from "../i18n/locales/it/header.json";
-import mn from "../i18n/locales/it/footer.json";
-import hn from "../i18n/locales/it/themeToggle.json";
-import gn from "../i18n/locales/it/hero.json";
-import _n from "../i18n/locales/it/whyItMatters.json";
-import vn from "../i18n/locales/it/understandingImpact.json";
-import yn from "../i18n/locales/it/resultsTable.json";
-import bn from "../i18n/locales/it/aboutHeader.json";
-import xn from "../i18n/locales/it/aboutGrid.json";
-import Sn from "../i18n/locales/it/whatWeMeasure.json";
-import Cn from "../i18n/locales/it/blogHeader.json";
-import wn from "../i18n/locales/it/blogList.json";
-import Tn from "../i18n/locales/it/careersHeader.json";
-import En from "../i18n/locales/it/careersBenefits.json";
-import Dn from "../i18n/locales/it/openPositions.json";
-import On from "../i18n/locales/it/contactHeader.json";
-import kn from "../i18n/locales/it/contactForm.json";
-import An from "../i18n/locales/it/faqHeader.json";
-import jn from "../i18n/locales/it/faqList.json";
-import Mn from "../i18n/locales/it/pricingHeader.json";
-import Nn from "../i18n/locales/it/pricingTiers.json";
-import Pn from "../i18n/locales/it/productsHeader.json";
-import Fn from "../i18n/locales/it/productsGrid.json";
-import In from "../i18n/locales/it/settingsHeader.json";
-import Ln from "../i18n/locales/it/profileSection.json";
-import Rn from "../i18n/locales/it/preferencesSection.json";
-import zn from "../i18n/locales/it/apiAccessSection.json";
-import Bn from "../i18n/locales/it/settingsFooter.json";
-import Vn from "../i18n/locales/it/teamHeader.json";
-import Hn from "../i18n/locales/it/teamGrid.json";
-import Un from "../i18n/locales/it/common.json";
-import Wn from "../i18n/locales/it/home.json";
-import Gn from "../i18n/locales/it/about.json";
-import Kn from "../i18n/locales/it/blog.json";
-import qn from "../i18n/locales/it/careers.json";
-import Jn from "../i18n/locales/it/contact.json";
-import Yn from "../i18n/locales/it/faq.json";
-import Xn from "../i18n/locales/it/pricing.json";
-import Zn from "../i18n/locales/it/products.json";
-import Qn from "../i18n/locales/it/settings.json";
-import $n from "../i18n/locales/it/team.json";
-import er from "../i18n/locales/ja/route.json";
-import tr from "../i18n/locales/ja/header.json";
-import nr from "../i18n/locales/ja/footer.json";
-import rr from "../i18n/locales/ja/themeToggle.json";
-import ir from "../i18n/locales/ja/hero.json";
-import ar from "../i18n/locales/ja/whyItMatters.json";
-import or from "../i18n/locales/ja/understandingImpact.json";
-import sr from "../i18n/locales/ja/resultsTable.json";
-import cr from "../i18n/locales/ja/aboutHeader.json";
-import lr from "../i18n/locales/ja/aboutGrid.json";
-import ur from "../i18n/locales/ja/whatWeMeasure.json";
-import dr from "../i18n/locales/ja/blogHeader.json";
-import fr from "../i18n/locales/ja/blogList.json";
-import pr from "../i18n/locales/ja/careersHeader.json";
-import mr from "../i18n/locales/ja/careersBenefits.json";
-import hr from "../i18n/locales/ja/openPositions.json";
-import gr from "../i18n/locales/ja/contactHeader.json";
-import _r from "../i18n/locales/ja/contactForm.json";
-import vr from "../i18n/locales/ja/faqHeader.json";
-import yr from "../i18n/locales/ja/faqList.json";
-import br from "../i18n/locales/ja/pricingHeader.json";
-import xr from "../i18n/locales/ja/pricingTiers.json";
-import Sr from "../i18n/locales/ja/productsHeader.json";
-import Cr from "../i18n/locales/ja/productsGrid.json";
-import wr from "../i18n/locales/ja/settingsHeader.json";
-import Tr from "../i18n/locales/ja/profileSection.json";
-import Er from "../i18n/locales/ja/preferencesSection.json";
-import Dr from "../i18n/locales/ja/apiAccessSection.json";
-import Or from "../i18n/locales/ja/settingsFooter.json";
-import kr from "../i18n/locales/ja/teamHeader.json";
-import Ar from "../i18n/locales/ja/teamGrid.json";
-import jr from "../i18n/locales/ja/common.json";
-import Mr from "../i18n/locales/ja/home.json";
-import Nr from "../i18n/locales/ja/about.json";
-import Pr from "../i18n/locales/ja/blog.json";
-import Fr from "../i18n/locales/ja/careers.json";
-import Ir from "../i18n/locales/ja/contact.json";
-import Lr from "../i18n/locales/ja/faq.json";
-import Rr from "../i18n/locales/ja/pricing.json";
-import zr from "../i18n/locales/ja/products.json";
-import Br from "../i18n/locales/ja/settings.json";
-import Vr from "../i18n/locales/ja/team.json";
-import Hr from "../i18n/locales/ko/route.json";
-import Ur from "../i18n/locales/ko/header.json";
-import Wr from "../i18n/locales/ko/footer.json";
-import Gr from "../i18n/locales/ko/themeToggle.json";
-import Kr from "../i18n/locales/ko/hero.json";
-import qr from "../i18n/locales/ko/whyItMatters.json";
-import Jr from "../i18n/locales/ko/understandingImpact.json";
-import Yr from "../i18n/locales/ko/resultsTable.json";
-import Xr from "../i18n/locales/ko/aboutHeader.json";
-import Zr from "../i18n/locales/ko/aboutGrid.json";
-import Qr from "../i18n/locales/ko/whatWeMeasure.json";
-import $r from "../i18n/locales/ko/blogHeader.json";
-import ei from "../i18n/locales/ko/blogList.json";
-import ti from "../i18n/locales/ko/careersHeader.json";
-import ni from "../i18n/locales/ko/careersBenefits.json";
-import ri from "../i18n/locales/ko/openPositions.json";
-import ii from "../i18n/locales/ko/contactHeader.json";
-import ai from "../i18n/locales/ko/contactForm.json";
-import oi from "../i18n/locales/ko/faqHeader.json";
-import si from "../i18n/locales/ko/faqList.json";
-import ci from "../i18n/locales/ko/pricingHeader.json";
-import li from "../i18n/locales/ko/pricingTiers.json";
-import ui from "../i18n/locales/ko/productsHeader.json";
-import di from "../i18n/locales/ko/productsGrid.json";
-import fi from "../i18n/locales/ko/settingsHeader.json";
-import pi from "../i18n/locales/ko/profileSection.json";
-import mi from "../i18n/locales/ko/preferencesSection.json";
-import hi from "../i18n/locales/ko/apiAccessSection.json";
-import gi from "../i18n/locales/ko/settingsFooter.json";
-import _i from "../i18n/locales/ko/teamHeader.json";
-import vi from "../i18n/locales/ko/teamGrid.json";
-import w from "../i18n/locales/ko/common.json";
+import w from "../i18n/locales/es/common.json";
+import ft from "../i18n/locales/es/home.json";
+import pt from "../i18n/locales/es/about.json";
+import mt from "../i18n/locales/es/blog.json";
+import ht from "../i18n/locales/es/careers.json";
+import gt from "../i18n/locales/es/contact.json";
+import _t from "../i18n/locales/es/faq.json";
+import vt from "../i18n/locales/es/pricing.json";
+import yt from "../i18n/locales/es/products.json";
+import bt from "../i18n/locales/es/settings.json";
+import xt from "../i18n/locales/es/team.json";
+import St from "../i18n/locales/fr/route.json";
+import Ct from "../i18n/locales/fr/header.json";
+import wt from "../i18n/locales/fr/footer.json";
+import Tt from "../i18n/locales/fr/themeToggle.json";
+import Et from "../i18n/locales/fr/hero.json";
+import Dt from "../i18n/locales/fr/whyItMatters.json";
+import Ot from "../i18n/locales/fr/understandingImpact.json";
+import kt from "../i18n/locales/fr/resultsTable.json";
+import At from "../i18n/locales/fr/aboutHeader.json";
+import jt from "../i18n/locales/fr/aboutGrid.json";
+import Mt from "../i18n/locales/fr/whatWeMeasure.json";
+import Nt from "../i18n/locales/fr/blogHeader.json";
+import Pt from "../i18n/locales/fr/blogList.json";
+import Ft from "../i18n/locales/fr/careersHeader.json";
+import It from "../i18n/locales/fr/careersBenefits.json";
+import Lt from "../i18n/locales/fr/openPositions.json";
+import Rt from "../i18n/locales/fr/contactHeader.json";
+import zt from "../i18n/locales/fr/contactForm.json";
+import Bt from "../i18n/locales/fr/faqHeader.json";
+import Vt from "../i18n/locales/fr/faqList.json";
+import Ht from "../i18n/locales/fr/pricingHeader.json";
+import Ut from "../i18n/locales/fr/pricingTiers.json";
+import Wt from "../i18n/locales/fr/productsHeader.json";
+import Gt from "../i18n/locales/fr/productsGrid.json";
+import Kt from "../i18n/locales/fr/settingsHeader.json";
+import qt from "../i18n/locales/fr/profileSection.json";
+import Jt from "../i18n/locales/fr/preferencesSection.json";
+import Yt from "../i18n/locales/fr/apiAccessSection.json";
+import Xt from "../i18n/locales/fr/settingsFooter.json";
+import Zt from "../i18n/locales/fr/teamHeader.json";
+import Qt from "../i18n/locales/fr/teamGrid.json";
+import $t from "../i18n/locales/fr/common.json";
+import en from "../i18n/locales/fr/home.json";
+import tn from "../i18n/locales/fr/about.json";
+import nn from "../i18n/locales/fr/blog.json";
+import rn from "../i18n/locales/fr/careers.json";
+import an from "../i18n/locales/fr/contact.json";
+import on from "../i18n/locales/fr/faq.json";
+import sn from "../i18n/locales/fr/pricing.json";
+import cn from "../i18n/locales/fr/products.json";
+import ln from "../i18n/locales/fr/settings.json";
+import un from "../i18n/locales/fr/team.json";
+import dn from "../i18n/locales/it/route.json";
+import fn from "../i18n/locales/it/header.json";
+import pn from "../i18n/locales/it/footer.json";
+import mn from "../i18n/locales/it/themeToggle.json";
+import hn from "../i18n/locales/it/hero.json";
+import gn from "../i18n/locales/it/whyItMatters.json";
+import _n from "../i18n/locales/it/understandingImpact.json";
+import vn from "../i18n/locales/it/resultsTable.json";
+import yn from "../i18n/locales/it/aboutHeader.json";
+import bn from "../i18n/locales/it/aboutGrid.json";
+import xn from "../i18n/locales/it/whatWeMeasure.json";
+import Sn from "../i18n/locales/it/blogHeader.json";
+import Cn from "../i18n/locales/it/blogList.json";
+import wn from "../i18n/locales/it/careersHeader.json";
+import Tn from "../i18n/locales/it/careersBenefits.json";
+import En from "../i18n/locales/it/openPositions.json";
+import Dn from "../i18n/locales/it/contactHeader.json";
+import On from "../i18n/locales/it/contactForm.json";
+import kn from "../i18n/locales/it/faqHeader.json";
+import An from "../i18n/locales/it/faqList.json";
+import jn from "../i18n/locales/it/pricingHeader.json";
+import Mn from "../i18n/locales/it/pricingTiers.json";
+import Nn from "../i18n/locales/it/productsHeader.json";
+import Pn from "../i18n/locales/it/productsGrid.json";
+import Fn from "../i18n/locales/it/settingsHeader.json";
+import In from "../i18n/locales/it/profileSection.json";
+import Ln from "../i18n/locales/it/preferencesSection.json";
+import Rn from "../i18n/locales/it/apiAccessSection.json";
+import zn from "../i18n/locales/it/settingsFooter.json";
+import Bn from "../i18n/locales/it/teamHeader.json";
+import Vn from "../i18n/locales/it/teamGrid.json";
+import Hn from "../i18n/locales/it/common.json";
+import Un from "../i18n/locales/it/home.json";
+import Wn from "../i18n/locales/it/about.json";
+import Gn from "../i18n/locales/it/blog.json";
+import Kn from "../i18n/locales/it/careers.json";
+import qn from "../i18n/locales/it/contact.json";
+import Jn from "../i18n/locales/it/faq.json";
+import Yn from "../i18n/locales/it/pricing.json";
+import Xn from "../i18n/locales/it/products.json";
+import Zn from "../i18n/locales/it/settings.json";
+import Qn from "../i18n/locales/it/team.json";
+import $n from "../i18n/locales/ja/route.json";
+import er from "../i18n/locales/ja/header.json";
+import tr from "../i18n/locales/ja/footer.json";
+import nr from "../i18n/locales/ja/themeToggle.json";
+import rr from "../i18n/locales/ja/hero.json";
+import ir from "../i18n/locales/ja/whyItMatters.json";
+import ar from "../i18n/locales/ja/understandingImpact.json";
+import or from "../i18n/locales/ja/resultsTable.json";
+import sr from "../i18n/locales/ja/aboutHeader.json";
+import cr from "../i18n/locales/ja/aboutGrid.json";
+import lr from "../i18n/locales/ja/whatWeMeasure.json";
+import ur from "../i18n/locales/ja/blogHeader.json";
+import dr from "../i18n/locales/ja/blogList.json";
+import fr from "../i18n/locales/ja/careersHeader.json";
+import pr from "../i18n/locales/ja/careersBenefits.json";
+import mr from "../i18n/locales/ja/openPositions.json";
+import hr from "../i18n/locales/ja/contactHeader.json";
+import gr from "../i18n/locales/ja/contactForm.json";
+import _r from "../i18n/locales/ja/faqHeader.json";
+import vr from "../i18n/locales/ja/faqList.json";
+import yr from "../i18n/locales/ja/pricingHeader.json";
+import br from "../i18n/locales/ja/pricingTiers.json";
+import xr from "../i18n/locales/ja/productsHeader.json";
+import Sr from "../i18n/locales/ja/productsGrid.json";
+import Cr from "../i18n/locales/ja/settingsHeader.json";
+import wr from "../i18n/locales/ja/profileSection.json";
+import Tr from "../i18n/locales/ja/preferencesSection.json";
+import Er from "../i18n/locales/ja/apiAccessSection.json";
+import Dr from "../i18n/locales/ja/settingsFooter.json";
+import Or from "../i18n/locales/ja/teamHeader.json";
+import kr from "../i18n/locales/ja/teamGrid.json";
+import Ar from "../i18n/locales/ja/common.json";
+import jr from "../i18n/locales/ja/home.json";
+import Mr from "../i18n/locales/ja/about.json";
+import Nr from "../i18n/locales/ja/blog.json";
+import Pr from "../i18n/locales/ja/careers.json";
+import Fr from "../i18n/locales/ja/contact.json";
+import Ir from "../i18n/locales/ja/faq.json";
+import Lr from "../i18n/locales/ja/pricing.json";
+import Rr from "../i18n/locales/ja/products.json";
+import zr from "../i18n/locales/ja/settings.json";
+import Br from "../i18n/locales/ja/team.json";
+import Vr from "../i18n/locales/ko/route.json";
+import Hr from "../i18n/locales/ko/header.json";
+import Ur from "../i18n/locales/ko/footer.json";
+import Wr from "../i18n/locales/ko/themeToggle.json";
+import Gr from "../i18n/locales/ko/hero.json";
+import Kr from "../i18n/locales/ko/whyItMatters.json";
+import qr from "../i18n/locales/ko/understandingImpact.json";
+import Jr from "../i18n/locales/ko/resultsTable.json";
+import Yr from "../i18n/locales/ko/aboutHeader.json";
+import Xr from "../i18n/locales/ko/aboutGrid.json";
+import Zr from "../i18n/locales/ko/whatWeMeasure.json";
+import Qr from "../i18n/locales/ko/blogHeader.json";
+import $r from "../i18n/locales/ko/blogList.json";
+import ei from "../i18n/locales/ko/careersHeader.json";
+import ti from "../i18n/locales/ko/careersBenefits.json";
+import ni from "../i18n/locales/ko/openPositions.json";
+import ri from "../i18n/locales/ko/contactHeader.json";
+import ii from "../i18n/locales/ko/contactForm.json";
+import ai from "../i18n/locales/ko/faqHeader.json";
+import oi from "../i18n/locales/ko/faqList.json";
+import si from "../i18n/locales/ko/pricingHeader.json";
+import ci from "../i18n/locales/ko/pricingTiers.json";
+import li from "../i18n/locales/ko/productsHeader.json";
+import ui from "../i18n/locales/ko/productsGrid.json";
+import di from "../i18n/locales/ko/settingsHeader.json";
+import fi from "../i18n/locales/ko/profileSection.json";
+import pi from "../i18n/locales/ko/preferencesSection.json";
+import mi from "../i18n/locales/ko/apiAccessSection.json";
+import hi from "../i18n/locales/ko/settingsFooter.json";
+import gi from "../i18n/locales/ko/teamHeader.json";
+import _i from "../i18n/locales/ko/teamGrid.json";
+import vi from "../i18n/locales/ko/common.json";
 import yi from "../i18n/locales/ko/home.json";
 import bi from "../i18n/locales/ko/about.json";
 import xi from "../i18n/locales/ko/blog.json";
@@ -1668,7 +1667,7 @@ var fc = () => {
 			t((e) => e + 1);
 		}, [t])
 	};
-}, X = (e, t) => {
+}, mc = (e, t) => {
 	let { tolgee: n, options: i } = fc(), o = rs(e), s = A(o).join(":"), l = Object.assign(Object.assign({}, i), t), { rerender: u, instance: d } = pc(), f = c([]);
 	f.current = [];
 	let p = n.isLoaded(o);
@@ -1687,72 +1686,64 @@ var fc = () => {
 		t: m,
 		isLoading: !p
 	};
-}, mc = (e, t) => {
-	let { t: n, isLoading: i } = X(e, t);
+}, hc = (e, t) => {
+	let { t: n, isLoading: i } = mc(e, t);
 	return {
 		t: r((...e) => n(V(...e)), [n]),
 		isLoading: i
 	};
 };
-function hc(e) {
+function gc(e) {
 	return Array.isArray(e) && e.length === 1 ? e[0] : e;
 }
-var gc = (t) => {
+var _c = (t) => {
 	if (!t) return;
 	let n = {};
 	return Object.entries(t || {}).forEach(([t, r]) => {
-		if (typeof r == "function") n[t] = (e) => r(Z(e));
+		if (typeof r == "function") n[t] = (e) => r(X(e));
 		else if (e.isValidElement(r)) {
 			let i = r;
-			n[t] = (t) => i.props.children === void 0 && t?.length ? e.cloneElement(i, {}, Z(t)) : e.cloneElement(i);
+			n[t] = (t) => i.props.children === void 0 && t?.length ? e.cloneElement(i, {}, X(t)) : e.cloneElement(i);
 		} else n[t] = r;
 	}), n;
 };
-function _c(e) {
+function vc(e) {
 	return typeof e == "function" ? e() : e;
 }
-var Z = (t) => {
-	let n = hc(t);
-	return Array.isArray(n) ? n.map((t, n) => e.createElement(e.Fragment, { key: n }, _c(t))) : _c(n);
-}, vc = (t) => {
+var X = (t) => {
+	let n = gc(t);
+	return Array.isArray(n) ? n.map((t, n) => e.createElement(e.Fragment, { key: n }, vc(t))) : vc(n);
+}, yc = (t) => {
 	let n = t.keyName || t.children;
 	n === void 0 && console.error("T component: keyName not defined");
-	let r = t.defaultValue || (t.keyName ? t.children : void 0), i = Z(t.t({
+	let r = t.defaultValue || (t.keyName ? t.children : void 0), i = X(t.t({
 		key: n,
-		params: gc(t.params),
+		params: _c(t.params),
 		defaultValue: r,
 		noWrap: t.noWrap,
 		ns: t.ns,
 		language: t.language
 	}));
 	return e.createElement(e.Fragment, null, i);
-}, yc = (t) => {
-	let { t: n } = X();
-	return e.createElement(vc, Object.assign({ t: n }, t));
-}, bc = (e) => {
-	let { tolgee: t } = fc(), { rerender: n } = pc();
-	return a(() => {
-		let r = e?.map((e) => t.on(e, n));
-		return () => {
-			r?.forEach((e) => e.unsubscribe());
-		};
-	}, [e?.join(":")]), t;
+}, bc = (t) => {
+	let { t: n } = mc();
+	return e.createElement(yc, Object.assign({ t: n }, t));
 };
 //#endregion
 //#region i18n/tolgee.tsx
-function xc() {
-	let { t: e, ...t } = mc();
+function Z() {
+	let { t: e, ...t } = hc();
 	return {
 		...t,
 		t: (t, n, r) => e(t, n, r)
 	};
 }
 function Q(e) {
-	return d(yc, { ...e });
+	return d(bc, { ...e });
 }
 //#endregion
 //#region components/ThemeToggle.tsx
-function Sc() {
+function xc() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
@@ -1761,10 +1752,10 @@ function $(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function Cc() {
-	let { t: e } = xc(), [t, n] = l("auto");
+function Sc() {
+	let { t: e } = Z(), [t, n] = l("auto");
 	a(() => {
-		let e = Sc();
+		let e = xc();
 		n(e), $(e);
 	}, []), a(() => {
 		if (t !== "auto") return;
@@ -1796,13 +1787,198 @@ function Cc() {
 		})
 	});
 }
-var wc = {
+//#endregion
+//#region i18n/config.ts
+var Cc = [
+	"en",
+	"fr",
+	"es",
+	"de",
+	"it",
+	"pt",
+	"zh",
+	"ja",
+	"ko",
+	"ru"
+], wc = (e) => {
+	try {
+		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
+		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
+	} catch {
+		return e.toUpperCase();
+	}
+};
+//#endregion
+//#region components/LocaleSwitcher.tsx
+function Tc() {
+	let e = p().locale ?? "en", t = m(), n = h(), r = (r) => {
+		let i = t.replace(`/${e}`, `/${r}`);
+		n.push(i);
+	};
+	return d("div", {
+		className: "flex items-center gap-2",
+		children: d("select", {
+			value: e,
+			onChange: (e) => r(e.target.value),
+			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
+			children: Cc.map((e) => d("option", {
+				value: e,
+				children: wc(e)
+			}, e))
+		})
+	});
+}
+//#endregion
+//#region hooks/usePerformanceMeasure.ts
+function Ec(e) {
+	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), o(() => {
+		if (typeof performance < "u" && performance.mark && performance.measure) {
+			performance.mark(`${e}-end`);
+			try {
+				performance.measure(`${e}-render`, `${e}-start`, `${e}-end`);
+			} catch {}
+		}
+	}, [e]);
+}
+//#endregion
+//#region components/Header.tsx
+function Dc() {
+	let { t: e } = Z();
+	Ec("Header");
+	let [t, n] = l(!1), r = m(), i = [
+		{
+			href: "/products",
+			label: e("header.products", "Products")
+		},
+		{
+			href: "/pricing",
+			label: e("header.pricing", "Pricing")
+		},
+		{
+			href: "/team",
+			label: e("header.team", "Team")
+		},
+		{
+			href: "/blog",
+			label: e("header.blog", "Blog")
+		},
+		{
+			href: "/careers",
+			label: e("header.careers", "Careers")
+		},
+		{
+			href: "/faq",
+			label: e("header.faq", "FAQ")
+		},
+		{
+			href: "/contact",
+			label: e("header.contact", "Contact")
+		},
+		{
+			href: "/settings",
+			label: e("header.settings", "Settings")
+		}
+	];
+	return d("header", {
+		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
+		children: f("nav", {
+			className: "container flex h-16 items-center justify-between",
+			children: [f("div", {
+				className: "flex items-center gap-8",
+				children: [d(T, {
+					href: "/",
+					className: "text-lg font-bold tracking-tight text-primary no-underline",
+					children: "i18n Bench"
+				}), f("div", {
+					className: "hidden items-center gap-6 text-sm font-medium md:flex",
+					children: [
+						d(T, {
+							href: "/",
+							className: `nav-link${((e) => r === e)("/") ? " is-active" : ""}`,
+							children: d(Q, {
+								keyName: "header.home",
+								defaultValue: "Home"
+							})
+						}),
+						d(T, {
+							href: "/about",
+							className: `nav-link${((e) => r.startsWith(e) && (e !== "/" || r === "/"))("/about") ? " is-active" : ""}`,
+							children: d(Q, {
+								keyName: "header.methodology",
+								defaultValue: "Methodology"
+							})
+						}),
+						f("div", {
+							className: "relative",
+							children: [f("button", {
+								type: "button",
+								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+								onMouseEnter: () => n(!0),
+								onMouseLeave: () => n(!1),
+								onClick: () => n(!t),
+								children: [d(Q, {
+									keyName: "header.mockPages",
+									defaultValue: "Mock Pages"
+								}), d(g, {
+									size: 14,
+									className: `transition-transform ${t ? "rotate-180" : ""}`
+								})]
+							}), t && d("div", {
+								className: "absolute left-0 top-full pt-2 w-48",
+								onMouseEnter: () => n(!0),
+								onMouseLeave: () => n(!1),
+								children: d("div", {
+									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
+									children: i.map((e) => d(T, {
+										href: e.href,
+										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+										onClick: () => n(!1),
+										children: e.label
+									}, e.href))
+								})
+							})]
+						})
+					]
+				})]
+			}), f("div", {
+				className: "flex items-center gap-4",
+				children: [
+					f("a", {
+						href: "https://github.com/intlayer-org/benchmark-i18n",
+						target: "_blank",
+						rel: "noreferrer",
+						className: "text-muted-foreground transition hover:text-foreground",
+						children: [d("span", {
+							className: "sr-only",
+							children: d(Q, {
+								keyName: "header.goToGithub",
+								defaultValue: "Go to GitHub"
+							})
+						}), d("svg", {
+							viewBox: "0 0 16 16",
+							"aria-hidden": "true",
+							width: "20",
+							height: "20",
+							children: d("path", {
+								fill: "currentColor",
+								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+							})
+						})]
+					}),
+					d(Tc, {}),
+					d(Sc, {})
+				]
+			})]
+		})
+	});
+}
+var Oc = {
 	oopsPageNotFound: "Oops! Page not found.",
 	returnToHome: "Return to Home",
 	"route.couldNotMeasureHydrationDuration": "Could not measure hydration duration:",
 	"route.oopsPageNotFound": "Oops! Page not found",
 	"route.returnToHome": "Return to Home"
-}, Tc = {
+}, kc = {
 	home: "Home",
 	methodology: "Methodology",
 	mockPages: "Mock Pages",
@@ -1815,7 +1991,7 @@ var wc = {
 	contact: "Contact",
 	settings: "Settings",
 	goToGithub: "Go to GitHub"
-}, Ec = {
+}, Ac = {
 	resources: "Resources",
 	contact: "Contact",
 	github: "GitHub",
@@ -1823,17 +1999,17 @@ var wc = {
 	contributing: "Contributing",
 	builtWith: "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.",
 	anOpenSourceTestApplication: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
-}, Dc = {
+}, jc = {
 	themeModeAutoSystemClick: "Theme mode: auto (system). Click to switch to light mode.",
 	themeModeLightClick: "Theme mode: light. Click to switch to dark mode.",
 	themeModeDarkClick: "Theme mode: dark. Click to switch to auto (system) mode.",
 	themeAuto: "Theme: Auto",
 	themeDark: "Theme: Dark",
 	themeLight: "Theme: Light"
-}, Oc = {
+}, Mc = {
 	aTestApplicationDesignedTo: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
 	viewResults: "View Results"
-}, kc = {
+}, Nc = {
 	whyTheseMetricsMatter: "Why These Metrics Matter",
 	bundleSize: "Bundle Size",
 	theBundleIsTheData: "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
@@ -1841,7 +2017,7 @@ var wc = {
 	connectingALargeJson: "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).",
 	dynamicLoading: "Dynamic Loading",
 	loadingAllTranslationsUpfront: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
-}, Ac = {
+}, Pc = {
 	cacheInvalidation: "Cache invalidation:",
 	contextBasedArchitecturesCan: "Context-based architectures can cause the entire app to re-render when the language changes. For large apps with thousands of components, this can lead to noticeable lag during locale switches.",
 	contextBasedArchitecturesCanCause: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
@@ -1861,18 +2037,18 @@ var wc = {
 	waterfallRequests: "Waterfall requests:",
 	whatThisBenchmarkMeasures: "What this benchmark measures",
 	whyASingleLargeJson: "Why a single large JSON can hurt performance"
-}, jc = {
+}, Fc = {
 	bundleSize: "Bundle Size",
 	lazyLoading: "Lazy Loading",
 	library: "Library",
 	lookupTime: "Lookup Time",
 	sampleResults: "Sample Results"
-}, Mc = {
+}, Ic = {
 	aboutThisBenchmark: "About This Benchmark",
 	methodology: "Methodology",
 	thisIsAnOpenSource: "This is an open-source test application for measuring the real-world impact of internationalization libraries.",
 	weDesignedThisBenchmarkTo: "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach."
-}, Nc = {
+}, Lc = {
 	allBenchmarksRunOn: "All benchmarks run on the same hardware (M2 MacBook Pro, 16 GB RAM), same browser (Chromium 120 via Playwright), and same network conditions (simulated 4G). Each test is repeated 50 times and we report the median with P95/P99 percentiles.",
 	applicationDesign: "Application Design",
 	choosingAnI18nLibrary: "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
@@ -1885,7 +2061,7 @@ var wc = {
 	theSame10PageApp: "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results.",
 	weUseBrowserNativeApis: "We use browser-native APIs (Performance Timeline, Resource Timing, Layout Instability) combined with React Profiler data. Bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
 	whyThisExists: "Why This Exists"
-}, Pc = {
+}, Rc = {
 	bundleSizeImpact: "Bundle size impact",
 	duringSsrTranslationDataIs: "During SSR, translation data is serialized into the HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
 	duringSsrTranslationDataIsSerialized: "During SSR, translation data is serialized into the HTML. We measure the size of this payload and its effect on Time to Interactive (TTI).",
@@ -1901,11 +2077,11 @@ var wc = {
 	theAdditionalJavascriptBytesSent: "The additional JavaScript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
 	whatWeMeasure: "What We Measure",
 	whetherSplittingTranslationsByRoute: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
-}, Fc = {
+}, zc = {
 	blog: "Blog",
 	insightsDeepDivesAnd: "Insights, deep dives, and updates from the i18n benchmarking community.",
 	insightsTutorialsAndAnalysis: "Insights, Tutorials, and Analysis"
-}, Ic = {
+}, Bc = {
 	aStepByStepGuide: "A step-by-step guide for migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
 	aStepByStepGuideOnMigrating: "A step-by-step guide on migrating from legacy i18n solutions to modern, high-performance libraries.",
 	aTransparentLookAtOur: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
@@ -1934,11 +2110,11 @@ var wc = {
 	theStateOfInternationalizationIn: "The State of Internationalization in 2026",
 	tutorial: "Tutorial",
 	weTested12DifferentInternationalization: "We tested 12 different internationalization libraries across 10 pages. Here are the detailed results with interactive charts."
-}, Lc = {
+}, Vc = {
 	careers: "Careers",
 	joinOurMission: "Join our mission to make internationalization fast, easy, and performant for everyone.",
 	joinOurMissionToMake: "Join our mission to make the web faster and more accessible for everyone, everywhere."
-}, Rc = {
+}, Hc = {
 	allOurWorkIs: "All our work is open source. Build your public portfolio while making an impact.",
 	competitivePay: "Competitive pay",
 	impactful: "Impactful",
@@ -1951,7 +2127,7 @@ var wc = {
 	workFromAnywhere: "Work from anywhere in the world",
 	workFromAnywhereFully: "Work from anywhere. Fully distributed team across 6 time zones.",
 	yourWorkDirectlyHelps: "Your work directly helps developers build better, faster internationalized applications."
-}, zc = {
+}, Uc = {
 	applyNow: "Apply Now",
 	backendEngineer: "Backend Engineer",
 	buildAndMaintainOur: "Build and maintain our benchmarking suite and core application infrastructure.",
@@ -1978,12 +2154,12 @@ var wc = {
 	seniorPerformanceEngineer: "Senior Performance Engineer",
 	sfRemote: "San Francisco / Remote",
 	technicalWriter: "Technical Writer"
-}, Bc = {
+}, Wc = {
 	contactUs: "Contact Us",
 	getInTouch: "Get in Touch",
 	haveIdeasFoundABug: "Have ideas? Found a bug? We'd love to hear from you.",
 	haveQuestionsOrWantTo: "Have questions or want to contribute? We'd love to hear from you."
-}, Vc = {
+}, Gc = {
 	bugReport: "Bug Report",
 	contribution: "Contribution",
 	email: "Email",
@@ -1999,10 +2175,10 @@ var wc = {
 	topic: "Topic",
 	wellGetBackTo: "We'll get back to you within 48 hours.",
 	yourName: "Your name"
-}, Hc = {
+}, Kc = {
 	everythingYouNeedToKnow: "Everything you need to know about i18n Benchmark.",
 	frequentlyAskedQuestions: "Frequently Asked Questions"
-}, Uc = {
+}, qc = {
 	absolutelyWeWelcomeCommunity: "Absolutely! We welcome community contributions. Fork the repository, add your library integration following our template, and submit a pull request. See the Contributing guide for details.",
 	allBenchmarksAreRun: "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",
 	areTheResultsStatistically: "Are the results statistically significant?",
@@ -2029,10 +2205,10 @@ var wc = {
 	yesCommunityBenchmarkSubmissionsAre: "Yes! Community benchmark submissions are encouraged and reviewed by our core team.",
 	yesOurEnterprisePlanIncludesConsulting: "Yes, our Enterprise plan includes consulting services for optimizing your app's i18n performance.",
 	yesWeUseThe: "Yes. We use the Mann-Whitney U test with a significance level of 0.05 to compare distributions. We also report confidence intervals and effect sizes."
-}, Wc = {
+}, Jc = {
 	pricing: "Pricing",
 	transparentPricingForEvery: "Transparent pricing for every stage of your i18n journey."
-}, Gc = {
+}, Yc = {
 	freeTier: "Free Tier",
 	free: "Free",
 	publicBenchmarkDashboard: "Public benchmark dashboard",
@@ -2056,10 +2232,10 @@ var wc = {
 	slaGuarantees: "SLA guarantees",
 	prioritySupport: "Priority support",
 	contactSales: "Contact Sales"
-}, Kc = {
+}, Xc = {
 	products: "Products",
 	toolsAndServicesTo: "Tools and services to help you optimize your internationalization strategy."
-}, qc = {
+}, Zc = {
 	benchmarkDashboard: "Benchmark Dashboard",
 	interactiveChartsAndTables: "Interactive charts and tables comparing i18n libraries across bundle size, render time, and hydration cost.",
 	bundleAnalyzer: "Bundle Analyzer",
@@ -2069,15 +2245,15 @@ var wc = {
 	performanceMonitor: "Performance Monitor",
 	continuousPerformanceTrackingFor: "Continuous performance tracking for your i18n implementation. Get alerts when translation loading degrades.",
 	learnMore: "Learn More"
-}, Jc = {
+}, Qc = {
 	manageYourAccount: "Manage your account settings and preferences.",
 	manageYourAccountPreferences: "Manage your account preferences and configuration.",
 	settings: "Settings"
-}, Yc = {
+}, $c = {
 	profile: "Profile",
 	displayName: "Display Name",
 	email: "Email"
-}, Xc = {
+}, el = {
 	arabicAr: "Arabic (ar)",
 	chineseSimplifiedZhCn: "Chinese (Simplified, zh-CN)",
 	darkMode: "Dark Mode",
@@ -2094,18 +2270,18 @@ var wc = {
 	toggleDarkMode: "Toggle dark mode",
 	toggleNotifications: "Toggle Notifications",
 	useDarkColorScheme: "Use dark color scheme"
-}, Zc = {
+}, tl = {
 	apiAccess: "API Access",
 	apiKey: "API Key",
 	useThisKeyTo: "Use this key to access the benchmarking API programmatically.",
 	copy: "Copy"
-}, Qc = {
+}, nl = {
 	cancel: "Cancel",
 	saveChanges: "Save Changes"
-}, $c = {
+}, rl = {
 	ourTeam: "Our Team",
 	meetThePeopleBehindI18n: "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
-}, el = {
+}, il = {
 	aishaPatel: "Aisha Patel",
 	communityManager: "Community Manager",
 	dataAnalyst: "Data Analyst",
@@ -2130,7 +2306,7 @@ var wc = {
 	specializesInJavascriptPerformanceOptimization: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
 	tomasRodriguez: "Tomás Rodríguez",
 	yukiTanaka: "Yuki Tanaka"
-}, tl = {
+}, al = {
 	cancel: "Cancel",
 	copy: "Copy",
 	"footer.anOpenSourceTestApplication": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
@@ -2161,7 +2337,7 @@ var wc = {
 	"themeToggle.themeModeAutoSystemClick": "Theme mode: auto (system). Click to switch to light mode.",
 	"themeToggle.themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
 	"themeToggle.themeModeLightClick": "Theme mode: light. Click to switch to dark mode."
-}, nl = {
+}, ol = {
 	"hero.aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
 	"hero.viewResults": "View Results",
 	"whyItMatters.whyTheseMetricsMatter": "Why These Metrics Matter",
@@ -2188,7 +2364,7 @@ var wc = {
 	"resultsTable.bundleSize": "Bundle Size",
 	"resultsTable.lookupTime": "Lookup Time",
 	"resultsTable.lazyLoading": "Lazy Loading"
-}, rl = {
+}, sl = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",
 	"aboutGrid.testEnvironment": "Test Environment",
@@ -2210,7 +2386,7 @@ var wc = {
 	"whatWeMeasure.localeSwitchSpeed": "Locale switch speed",
 	"whatWeMeasure.howFastTheAppCan": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.",
 	"whatWeMeasure.whatWeMeasure": "What We Measure"
-}, il = {
+}, cl = {
 	"blogHeader.blog": "Blog",
 	"blogHeader.insightsDeepDivesAnd": "Insights, deep dives, and updates from the i18n benchmarking community.",
 	"blogList.i18nBenchmark2026Results": "i18n Benchmark 2026 Results",
@@ -2232,7 +2408,7 @@ var wc = {
 	"blogList.january202026": "January 20, 2026",
 	"blogList.aTransparentLookAtOur": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
 	"blogList.readMore": "Read More →"
-}, al = {
+}, ll = {
 	"careersHeader.careers": "Careers",
 	"careersHero.fromAnywhere": "from anywhere in the world",
 	"careersBenefits.competitivePay": "Competitive pay",
@@ -2246,7 +2422,7 @@ var wc = {
 	"openPositions.fullTime": "Full-time",
 	"openPositions.engineering": "Engineering",
 	"openPositions.applyNow": "Apply Now"
-}, ol = {
+}, ul = {
 	"contactHeader.contactUs": "Contact Us",
 	"contactHeader.haveQuestionsOrWantTo": "Have questions or want to contribute? We'd love to hear from you.",
 	"contactForm.name": "Name",
@@ -2255,7 +2431,7 @@ var wc = {
 	"contactForm.message": "Message",
 	"contactForm.sendMessage": "Send Message",
 	"contactForm.wellGetBackTo": "We'll get back to you within 48 hours."
-}, sl = {
+}, dl = {
 	"faqHeader.frequentlyAskedQuestions": "Frequently Asked Questions",
 	"faqHeader.everythingYouNeedTo": "Everything you need to know about the i18n Benchmark project.",
 	"faqList.howAreTheBenchmarks": "How are the benchmarks run?",
@@ -2268,7 +2444,7 @@ var wc = {
 	"faqList.benchmarksRunAutomaticallyVia": "Benchmarks run automatically via CI on every dependency update and weekly on the main branch. Results are published to the dashboard within 24 hours.",
 	"faqList.areTheResultsStatistically": "Are the results statistically significant?",
 	"faqList.yesWeUseThe": "Yes. We use the Mann-Whitney U test with a significance level of 0.05 to compare distributions. We also report confidence intervals and effect sizes."
-}, cl = {
+}, fl = {
 	"pricingTiers.starterTier": "Starter",
 	"pricingTiers.starterPrice": "$0",
 	"pricingTiers.forever": "forever",
@@ -2298,7 +2474,7 @@ var wc = {
 	"pricingTiers.contactSales": "Contact Sales",
 	"pricingHeader.pricing": "Pricing",
 	"pricingHeader.transparentPricingForEvery": "Transparent pricing for every stage of your i18n journey."
-}, ll = {
+}, pl = {
 	"productsHeader.products": "Products",
 	"productsHeader.toolsAndServicesTo": "Tools and services to help you optimize your internationalization strategy.",
 	"productsGrid.benchmarkDashboard": "Benchmark Dashboard",
@@ -2310,7 +2486,7 @@ var wc = {
 	"productsGrid.performanceMonitor": "Performance Monitor",
 	"productsGrid.continuousPerformanceTrackingFor": "Continuous performance tracking for your i18n implementation. Get alerts when translation loading degrades.",
 	"productsGrid.learnMore": "Learn More"
-}, ul = {
+}, ml = {
 	"settingsHeader.settings": "Settings",
 	"settingsHeader.manageYourAccountPreferences": "Manage your account preferences and configuration.",
 	"profileSection.profile": "Profile",
@@ -2328,7 +2504,7 @@ var wc = {
 	"apiAccessSection.copy": "Copy",
 	"settingsFooter.cancel": "Cancel",
 	"settingsFooter.saveChanges": "Save Changes"
-}, dl = {
+}, hl = {
 	"teamHeader.ourTeam": "Our Team",
 	"teamHeader.meetThePeopleBehindI18n": "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools.",
 	"teamGrid.sarahChen": "Sarah Chen",
@@ -2349,7 +2525,7 @@ var wc = {
 	"teamGrid.elenaKowalski": "Elena Kowalski",
 	"teamGrid.communityManager": "Community Manager",
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Manages community contributions, partnerships, and events. Background in open source governance."
-}, fl = {
+}, gl = {
 	de: {
 		route: _,
 		header: v,
@@ -2396,49 +2572,49 @@ var wc = {
 		team: Pe
 	},
 	en: {
-		route: wc,
-		header: Tc,
-		footer: Ec,
-		themeToggle: Dc,
-		hero: Oc,
-		whyItMatters: kc,
-		understandingImpact: Ac,
-		resultsTable: jc,
-		aboutHeader: Mc,
-		aboutGrid: Nc,
-		whatWeMeasure: Pc,
-		blogHeader: Fc,
-		blogList: Ic,
-		careersHeader: Lc,
-		careersBenefits: Rc,
-		openPositions: zc,
-		contactHeader: Bc,
-		contactForm: Vc,
-		faqHeader: Hc,
-		faqList: Uc,
-		pricingHeader: Wc,
-		pricingTiers: Gc,
-		productsHeader: Kc,
-		productsGrid: qc,
-		settingsHeader: Jc,
-		profileSection: Yc,
-		preferencesSection: Xc,
-		apiAccessSection: Zc,
-		settingsFooter: Qc,
-		teamHeader: $c,
-		teamGrid: el,
-		common: tl,
-		...tl,
-		home: nl,
-		about: rl,
-		blog: il,
-		careers: al,
-		contact: ol,
-		faq: sl,
-		pricing: cl,
-		products: ll,
-		settings: ul,
-		team: dl
+		route: Oc,
+		header: kc,
+		footer: Ac,
+		themeToggle: jc,
+		hero: Mc,
+		whyItMatters: Nc,
+		understandingImpact: Pc,
+		resultsTable: Fc,
+		aboutHeader: Ic,
+		aboutGrid: Lc,
+		whatWeMeasure: Rc,
+		blogHeader: zc,
+		blogList: Bc,
+		careersHeader: Vc,
+		careersBenefits: Hc,
+		openPositions: Uc,
+		contactHeader: Wc,
+		contactForm: Gc,
+		faqHeader: Kc,
+		faqList: qc,
+		pricingHeader: Jc,
+		pricingTiers: Yc,
+		productsHeader: Xc,
+		productsGrid: Zc,
+		settingsHeader: Qc,
+		profileSection: $c,
+		preferencesSection: el,
+		apiAccessSection: tl,
+		settingsFooter: nl,
+		teamHeader: rl,
+		teamGrid: il,
+		common: al,
+		...al,
+		home: ol,
+		about: sl,
+		blog: cl,
+		careers: ll,
+		contact: ul,
+		faq: dl,
+		pricing: fl,
+		products: pl,
+		settings: ml,
+		team: hl
 	},
 	es: {
 		route: Fe,
@@ -2472,188 +2648,188 @@ var wc = {
 		settingsFooter: lt,
 		teamHeader: ut,
 		teamGrid: dt,
-		common: ft,
-		...ft,
-		home: pt,
-		about: mt,
-		blog: ht,
-		careers: gt,
-		contact: _t,
-		faq: vt,
-		pricing: yt,
-		products: bt,
-		settings: xt,
-		team: St
-	},
-	fr: {
-		route: Ct,
-		header: wt,
-		footer: Tt,
-		themeToggle: Et,
-		hero: Dt,
-		whyItMatters: Ot,
-		understandingImpact: kt,
-		resultsTable: At,
-		aboutHeader: jt,
-		aboutGrid: Mt,
-		whatWeMeasure: Nt,
-		blogHeader: Pt,
-		blogList: Ft,
-		careersHeader: It,
-		careersBenefits: Lt,
-		openPositions: Rt,
-		contactHeader: zt,
-		contactForm: Bt,
-		faqHeader: Vt,
-		faqList: Ht,
-		pricingHeader: Ut,
-		pricingTiers: Wt,
-		productsHeader: Gt,
-		productsGrid: Kt,
-		settingsHeader: qt,
-		profileSection: Jt,
-		preferencesSection: Yt,
-		apiAccessSection: Xt,
-		settingsFooter: Zt,
-		teamHeader: Qt,
-		teamGrid: $t,
-		common: en,
-		...en,
-		home: tn,
-		about: nn,
-		blog: rn,
-		careers: an,
-		contact: on,
-		faq: sn,
-		pricing: cn,
-		products: ln,
-		settings: un,
-		team: dn
-	},
-	it: {
-		route: fn,
-		header: pn,
-		footer: mn,
-		themeToggle: hn,
-		hero: gn,
-		whyItMatters: _n,
-		understandingImpact: vn,
-		resultsTable: yn,
-		aboutHeader: bn,
-		aboutGrid: xn,
-		whatWeMeasure: Sn,
-		blogHeader: Cn,
-		blogList: wn,
-		careersHeader: Tn,
-		careersBenefits: En,
-		openPositions: Dn,
-		contactHeader: On,
-		contactForm: kn,
-		faqHeader: An,
-		faqList: jn,
-		pricingHeader: Mn,
-		pricingTiers: Nn,
-		productsHeader: Pn,
-		productsGrid: Fn,
-		settingsHeader: In,
-		profileSection: Ln,
-		preferencesSection: Rn,
-		apiAccessSection: zn,
-		settingsFooter: Bn,
-		teamHeader: Vn,
-		teamGrid: Hn,
-		common: Un,
-		...Un,
-		home: Wn,
-		about: Gn,
-		blog: Kn,
-		careers: qn,
-		contact: Jn,
-		faq: Yn,
-		pricing: Xn,
-		products: Zn,
-		settings: Qn,
-		team: $n
-	},
-	ja: {
-		route: er,
-		header: tr,
-		footer: nr,
-		themeToggle: rr,
-		hero: ir,
-		whyItMatters: ar,
-		understandingImpact: or,
-		resultsTable: sr,
-		aboutHeader: cr,
-		aboutGrid: lr,
-		whatWeMeasure: ur,
-		blogHeader: dr,
-		blogList: fr,
-		careersHeader: pr,
-		careersBenefits: mr,
-		openPositions: hr,
-		contactHeader: gr,
-		contactForm: _r,
-		faqHeader: vr,
-		faqList: yr,
-		pricingHeader: br,
-		pricingTiers: xr,
-		productsHeader: Sr,
-		productsGrid: Cr,
-		settingsHeader: wr,
-		profileSection: Tr,
-		preferencesSection: Er,
-		apiAccessSection: Dr,
-		settingsFooter: Or,
-		teamHeader: kr,
-		teamGrid: Ar,
-		common: jr,
-		...jr,
-		home: Mr,
-		about: Nr,
-		blog: Pr,
-		careers: Fr,
-		contact: Ir,
-		faq: Lr,
-		pricing: Rr,
-		products: zr,
-		settings: Br,
-		team: Vr
-	},
-	ko: {
-		route: Hr,
-		header: Ur,
-		footer: Wr,
-		themeToggle: Gr,
-		hero: Kr,
-		whyItMatters: qr,
-		understandingImpact: Jr,
-		resultsTable: Yr,
-		aboutHeader: Xr,
-		aboutGrid: Zr,
-		whatWeMeasure: Qr,
-		blogHeader: $r,
-		blogList: ei,
-		careersHeader: ti,
-		careersBenefits: ni,
-		openPositions: ri,
-		contactHeader: ii,
-		contactForm: ai,
-		faqHeader: oi,
-		faqList: si,
-		pricingHeader: ci,
-		pricingTiers: li,
-		productsHeader: ui,
-		productsGrid: di,
-		settingsHeader: fi,
-		profileSection: pi,
-		preferencesSection: mi,
-		apiAccessSection: hi,
-		settingsFooter: gi,
-		teamHeader: _i,
-		teamGrid: vi,
 		common: w,
 		...w,
+		home: ft,
+		about: pt,
+		blog: mt,
+		careers: ht,
+		contact: gt,
+		faq: _t,
+		pricing: vt,
+		products: yt,
+		settings: bt,
+		team: xt
+	},
+	fr: {
+		route: St,
+		header: Ct,
+		footer: wt,
+		themeToggle: Tt,
+		hero: Et,
+		whyItMatters: Dt,
+		understandingImpact: Ot,
+		resultsTable: kt,
+		aboutHeader: At,
+		aboutGrid: jt,
+		whatWeMeasure: Mt,
+		blogHeader: Nt,
+		blogList: Pt,
+		careersHeader: Ft,
+		careersBenefits: It,
+		openPositions: Lt,
+		contactHeader: Rt,
+		contactForm: zt,
+		faqHeader: Bt,
+		faqList: Vt,
+		pricingHeader: Ht,
+		pricingTiers: Ut,
+		productsHeader: Wt,
+		productsGrid: Gt,
+		settingsHeader: Kt,
+		profileSection: qt,
+		preferencesSection: Jt,
+		apiAccessSection: Yt,
+		settingsFooter: Xt,
+		teamHeader: Zt,
+		teamGrid: Qt,
+		common: $t,
+		...$t,
+		home: en,
+		about: tn,
+		blog: nn,
+		careers: rn,
+		contact: an,
+		faq: on,
+		pricing: sn,
+		products: cn,
+		settings: ln,
+		team: un
+	},
+	it: {
+		route: dn,
+		header: fn,
+		footer: pn,
+		themeToggle: mn,
+		hero: hn,
+		whyItMatters: gn,
+		understandingImpact: _n,
+		resultsTable: vn,
+		aboutHeader: yn,
+		aboutGrid: bn,
+		whatWeMeasure: xn,
+		blogHeader: Sn,
+		blogList: Cn,
+		careersHeader: wn,
+		careersBenefits: Tn,
+		openPositions: En,
+		contactHeader: Dn,
+		contactForm: On,
+		faqHeader: kn,
+		faqList: An,
+		pricingHeader: jn,
+		pricingTiers: Mn,
+		productsHeader: Nn,
+		productsGrid: Pn,
+		settingsHeader: Fn,
+		profileSection: In,
+		preferencesSection: Ln,
+		apiAccessSection: Rn,
+		settingsFooter: zn,
+		teamHeader: Bn,
+		teamGrid: Vn,
+		common: Hn,
+		...Hn,
+		home: Un,
+		about: Wn,
+		blog: Gn,
+		careers: Kn,
+		contact: qn,
+		faq: Jn,
+		pricing: Yn,
+		products: Xn,
+		settings: Zn,
+		team: Qn
+	},
+	ja: {
+		route: $n,
+		header: er,
+		footer: tr,
+		themeToggle: nr,
+		hero: rr,
+		whyItMatters: ir,
+		understandingImpact: ar,
+		resultsTable: or,
+		aboutHeader: sr,
+		aboutGrid: cr,
+		whatWeMeasure: lr,
+		blogHeader: ur,
+		blogList: dr,
+		careersHeader: fr,
+		careersBenefits: pr,
+		openPositions: mr,
+		contactHeader: hr,
+		contactForm: gr,
+		faqHeader: _r,
+		faqList: vr,
+		pricingHeader: yr,
+		pricingTiers: br,
+		productsHeader: xr,
+		productsGrid: Sr,
+		settingsHeader: Cr,
+		profileSection: wr,
+		preferencesSection: Tr,
+		apiAccessSection: Er,
+		settingsFooter: Dr,
+		teamHeader: Or,
+		teamGrid: kr,
+		common: Ar,
+		...Ar,
+		home: jr,
+		about: Mr,
+		blog: Nr,
+		careers: Pr,
+		contact: Fr,
+		faq: Ir,
+		pricing: Lr,
+		products: Rr,
+		settings: zr,
+		team: Br
+	},
+	ko: {
+		route: Vr,
+		header: Hr,
+		footer: Ur,
+		themeToggle: Wr,
+		hero: Gr,
+		whyItMatters: Kr,
+		understandingImpact: qr,
+		resultsTable: Jr,
+		aboutHeader: Yr,
+		aboutGrid: Xr,
+		whatWeMeasure: Zr,
+		blogHeader: Qr,
+		blogList: $r,
+		careersHeader: ei,
+		careersBenefits: ti,
+		openPositions: ni,
+		contactHeader: ri,
+		contactForm: ii,
+		faqHeader: ai,
+		faqList: oi,
+		pricingHeader: si,
+		pricingTiers: ci,
+		productsHeader: li,
+		productsGrid: ui,
+		settingsHeader: di,
+		profileSection: fi,
+		preferencesSection: pi,
+		apiAccessSection: mi,
+		settingsFooter: hi,
+		teamHeader: gi,
+		teamGrid: _i,
+		common: vi,
+		...vi,
 		home: yi,
 		about: bi,
 		blog: xi,
@@ -2801,12 +2977,12 @@ var wc = {
 		team: qo
 	}
 };
-function pl(e) {
-	return fl[e] || fl.en;
+function _l(e) {
+	return gl[e] || gl.en;
 }
 //#endregion
 //#region tolgee/shared.ts
-var ml = [
+var vl = [
 	"en",
 	"fr",
 	"es",
@@ -2818,214 +2994,24 @@ var ml = [
 	"ru",
 	"zh"
 ];
-function hl() {
+function yl() {
 	return nc().use(Fs()).use(rc()).updateDefaults({
 		apiKey: process.env.NEXT_PUBLIC_TOLGEE_API_KEY,
 		apiUrl: process.env.NEXT_PUBLIC_TOLGEE_API_URL,
-		staticData: Object.fromEntries(ml.map((e) => [e, () => Promise.resolve(pl(e))]))
-	});
-}
-//#endregion
-//#region tolgee/language.ts
-var gl = "NEXT_LOCALE";
-async function _l(e) {
-	(await g()).set(gl, e, { maxAge: 1e3 * 60 * 60 * 24 * 365 });
-}
-//#endregion
-//#region i18n/config.ts
-var vl = [
-	"en",
-	"fr",
-	"es",
-	"de",
-	"it",
-	"pt",
-	"zh",
-	"ja",
-	"ko",
-	"ru"
-], yl = (e) => {
-	try {
-		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
-		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
-	} catch {
-		return e.toUpperCase();
-	}
-};
-//#endregion
-//#region components/LocaleSwitcher.tsx
-function bl() {
-	let e = bc(), t = e.getLanguage() || "en", n = async (t) => {
-		await _l(t), await e.changeLanguage(t);
-	};
-	return d("div", {
-		className: "flex items-center gap-2",
-		children: d("select", {
-			value: t,
-			onChange: (e) => n(e.target.value),
-			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: vl.map((e) => d("option", {
-				value: e,
-				children: yl(e)
-			}, e))
-		})
-	});
-}
-//#endregion
-//#region hooks/usePerformanceMeasure.ts
-function xl(e) {
-	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), o(() => {
-		if (typeof performance < "u" && performance.mark && performance.measure) {
-			performance.mark(`${e}-end`);
-			try {
-				performance.measure(`${e}-render`, `${e}-start`, `${e}-end`);
-			} catch {}
-		}
-	}, [e]);
-}
-//#endregion
-//#region components/Header.tsx
-function Sl() {
-	let { t: e } = xc();
-	xl("Header");
-	let [t, n] = l(!1), r = p(), i = [
-		{
-			href: "/products",
-			label: e("header.products", "Products")
-		},
-		{
-			href: "/pricing",
-			label: e("header.pricing", "Pricing")
-		},
-		{
-			href: "/team",
-			label: e("header.team", "Team")
-		},
-		{
-			href: "/blog",
-			label: e("header.blog", "Blog")
-		},
-		{
-			href: "/careers",
-			label: e("header.careers", "Careers")
-		},
-		{
-			href: "/faq",
-			label: e("header.faq", "FAQ")
-		},
-		{
-			href: "/contact",
-			label: e("header.contact", "Contact")
-		},
-		{
-			href: "/settings",
-			label: e("header.settings", "Settings")
-		}
-	];
-	return d("header", {
-		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: f("nav", {
-			className: "container flex h-16 items-center justify-between",
-			children: [f("div", {
-				className: "flex items-center gap-8",
-				children: [d(T, {
-					href: "/",
-					className: "text-lg font-bold tracking-tight text-primary no-underline",
-					children: "i18n Bench"
-				}), f("div", {
-					className: "hidden items-center gap-6 text-sm font-medium md:flex",
-					children: [
-						d(T, {
-							href: "/",
-							className: `nav-link${((e) => r === e)("/") ? " is-active" : ""}`,
-							children: d(Q, {
-								keyName: "header.home",
-								defaultValue: "Home"
-							})
-						}),
-						d(T, {
-							href: "/about",
-							className: `nav-link${((e) => r.startsWith(e) && (e !== "/" || r === "/"))("/about") ? " is-active" : ""}`,
-							children: d(Q, {
-								keyName: "header.methodology",
-								defaultValue: "Methodology"
-							})
-						}),
-						f("div", {
-							className: "relative",
-							children: [f("button", {
-								type: "button",
-								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-								onMouseEnter: () => n(!0),
-								onMouseLeave: () => n(!1),
-								onClick: () => n(!t),
-								children: [d(Q, {
-									keyName: "header.mockPages",
-									defaultValue: "Mock Pages"
-								}), d(h, {
-									size: 14,
-									className: `transition-transform ${t ? "rotate-180" : ""}`
-								})]
-							}), t && d("div", {
-								className: "absolute left-0 top-full pt-2 w-48",
-								onMouseEnter: () => n(!0),
-								onMouseLeave: () => n(!1),
-								children: d("div", {
-									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: i.map((e) => d(T, {
-										href: e.href,
-										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-										onClick: () => n(!1),
-										children: e.label
-									}, e.href))
-								})
-							})]
-						})
-					]
-				})]
-			}), f("div", {
-				className: "flex items-center gap-4",
-				children: [
-					f("a", {
-						href: "https://github.com/intlayer-org/benchmark-i18n",
-						target: "_blank",
-						rel: "noreferrer",
-						className: "text-muted-foreground transition hover:text-foreground",
-						children: [d("span", {
-							className: "sr-only",
-							children: d(Q, {
-								keyName: "header.goToGithub",
-								defaultValue: "Go to GitHub"
-							})
-						}), d("svg", {
-							viewBox: "0 0 16 16",
-							"aria-hidden": "true",
-							width: "20",
-							height: "20",
-							children: d("path", {
-								fill: "currentColor",
-								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							})
-						})]
-					}),
-					d(bl, {}),
-					d(Cc, {})
-				]
-			})]
-		})
+		staticData: Object.fromEntries(vl.map((e) => [e, () => Promise.resolve(_l(e))]))
 	});
 }
 //#endregion
 //#region tolgee/client.tsx
-var Cl = hl().init(), wl = ({ language: e, staticData: t, children: n }) => {
-	let r = m();
+var bl = yl().init(), xl = ({ language: e, staticData: t, children: n }) => {
+	let r = h();
 	return a(() => {
-		let { unsubscribe: e } = Cl.on("permanentChange", () => {
+		let { unsubscribe: e } = bl.on("permanentChange", () => {
 			r.refresh();
 		});
 		return () => e();
 	}, [r]), d(lc, {
-		tolgee: Cl,
+		tolgee: bl,
 		fallback: "Loading",
 		ssr: {
 			language: e,
@@ -3036,7 +3022,7 @@ var Cl = hl().init(), wl = ({ language: e, staticData: t, children: n }) => {
 };
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-function Tl() {
+function Sl() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -3050,7 +3036,7 @@ function Tl() {
 		}
 	}
 }
-function El(e, t, n) {
+function Cl(e, t, n) {
 	if (!(typeof window > "u") && t !== "nested-update") try {
 		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 	} catch (e) {
@@ -3059,15 +3045,15 @@ function El(e, t, n) {
 }
 //#endregion
 //#region components/AppProviders.tsx
-function Dl({ children: e, locale: n, staticData: r }) {
+function wl({ children: e, locale: n, staticData: r }) {
 	return a(() => {
 		document.documentElement.lang = n;
 	}, [n]), a(() => {
-		Tl();
+		Sl();
 	}, []), d(t, {
 		id: "AppRoot",
-		onRender: El,
-		children: d(wl, {
+		onRender: Cl,
+		children: d(xl, {
 			language: n,
 			staticData: r,
 			children: e
@@ -3076,18 +3062,18 @@ function Dl({ children: e, locale: n, staticData: r }) {
 }
 //#endregion
 //#region scripts/Wrapper.tsx
-var Ol = "en", kl = pl(Ol);
-function Al({ children: e }) {
-	return d(Dl, {
-		locale: Ol,
-		staticData: kl,
+var Tl = "en", El = _l(Tl);
+function Dl({ children: e }) {
+	return d(wl, {
+		locale: Tl,
+		staticData: El,
 		children: e
 	});
 }
 //#endregion
 //#region components/Header.wrapper.tsx
-function jl() {
-	return d(Al, { children: d(Sl, {}) });
+function Ol() {
+	return d(Dl, { children: d(Dc, {}) });
 }
 //#endregion
-export { jl as default };
+export { Ol as default };

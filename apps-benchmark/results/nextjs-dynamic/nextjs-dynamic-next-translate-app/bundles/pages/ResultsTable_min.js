@@ -179,34 +179,34 @@ function w(e) {
 //#region components/pages/home/ResultsTable.tsx
 function T() {
 	let { t: e } = w("common");
-	return /* @__PURE__ */ o("section", { children: [/* @__PURE__ */ a("h2", {
+	return o("section", { children: [a("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: e("home.resultsTable.sampleResults")
-	}), /* @__PURE__ */ a("div", {
+	}), a("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
-		children: /* @__PURE__ */ o("table", {
+		children: o("table", {
 			className: "w-full text-sm",
-			children: [/* @__PURE__ */ a("thead", {
+			children: [a("thead", {
 				className: "bg-muted",
-				children: /* @__PURE__ */ o("tr", { children: [
-					/* @__PURE__ */ a("th", {
+				children: o("tr", { children: [
+					a("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: "Library"
 					}),
-					/* @__PURE__ */ a("th", {
+					a("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: e("home.resultsTable.bundleSize")
 					}),
-					/* @__PURE__ */ a("th", {
+					a("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: e("home.resultsTable.lookupTime")
 					}),
-					/* @__PURE__ */ a("th", {
+					a("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: e("home.resultsTable.lazyLoading")
 					})
 				] })
-			}), /* @__PURE__ */ a("tbody", { children: [
+			}), a("tbody", { children: [
 				{
 					lib: "react-i18next",
 					size: "42.3 kB",
@@ -231,22 +231,22 @@ function T() {
 					time: "0.05ms",
 					lazy: "Built-in"
 				}
-			].map((e) => /* @__PURE__ */ o("tr", {
+			].map((e) => o("tr", {
 				className: "border-t border-border",
 				children: [
-					/* @__PURE__ */ a("td", {
+					a("td", {
 						className: "px-4 py-3 font-medium text-foreground",
 						children: e.lib
 					}),
-					/* @__PURE__ */ a("td", {
+					a("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: e.size
 					}),
-					/* @__PURE__ */ a("td", {
+					a("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: e.time
 					}),
-					/* @__PURE__ */ a("td", {
+					a("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: e.lazy
 					})
@@ -272,7 +272,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -281,7 +285,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -290,7 +294,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -298,7 +302,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/home/ResultsTable.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

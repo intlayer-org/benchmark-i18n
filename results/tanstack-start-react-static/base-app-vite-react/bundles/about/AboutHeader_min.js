@@ -1,6 +1,5 @@
 import { useLayoutEffect as e } from "react";
 import { Fragment as t, jsx as n, jsxs as r } from "react/jsx-runtime";
-//#region src/hooks/usePerformanceMeasure.ts
 function i(t) {
 	typeof performance < "u" && performance.mark && performance.mark(`${t}-start`), e(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
@@ -11,8 +10,6 @@ function i(t) {
 		}
 	}, [t]);
 }
-//#endregion
-//#region src/components/pages/about/AboutHeader.tsx
 function a() {
 	return i("AboutHeader"), r(t, { children: [n("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
@@ -22,5 +19,4 @@ function a() {
 		children: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
 	})] });
 }
-//#endregion
 export { a as default };

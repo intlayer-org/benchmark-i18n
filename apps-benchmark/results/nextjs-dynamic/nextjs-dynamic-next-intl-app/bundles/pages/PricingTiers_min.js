@@ -1,6 +1,5 @@
 import { Profiler as e, cloneElement as t, createContext as n, isValidElement as r, useContext as i, useEffect as a, useMemo as o } from "react";
 import { jsx as s, jsxs as c } from "react/jsx-runtime";
-//#region ../../../node_modules/.bun/@formatjs+fast-memoize@3.1.1/node_modules/@formatjs/fast-memoize/index.js
 function l(e, t) {
 	let n = t && t.cache ? t.cache : ee, r = t && t.serializer ? t.serializer : _;
 	return (t && t.strategy ? t.strategy : m)(e, {
@@ -94,8 +93,6 @@ function ne(e) {
 		getDisplayNames: C(Intl.DisplayNames, e.displayNames)
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/date-time.js
 var re = /(?:[Eec]{1,6}|G{1,5}|[Qq]{1,5}|(?:[yYur]+|U{1,5})|[ML]{1,5}|d{1,2}|D{1,3}|F{1}|[abB]{1,5}|[hkHK]{1,2}|w{1,2}|W{1}|m{1,2}|s{1,2}|[zZOvVxX]{1,4})(?=([^']*'[^']*')*[^']*$)/g;
 function ie(e) {
 	let t = {};
@@ -194,11 +191,7 @@ function ie(e) {
 		return "";
 	}), t;
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/regex.generated.js
 var ae = /[\t-\r \x85\u200E\u200F\u2028\u2029]/i;
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/number.js
 function oe(e) {
 	if (e.length === 0) throw Error("Number skeleton cannot be empty");
 	let t = e.split(ae).filter((e) => e.length > 0), n = [];
@@ -401,8 +394,6 @@ function he(e) {
 	}
 	return t;
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/types.js
 var T = function(e) {
 	return e[e.literal = 0] = "literal", e[e.argument = 1] = "argument", e[e.number = 2] = "number", e[e.date = 3] = "date", e[e.time = 4] = "time", e[e.select = 5] = "select", e[e.plural = 6] = "plural", e[e.pound = 7] = "pound", e[e.tag = 8] = "tag", e;
 }({}), E = function(e) {
@@ -441,8 +432,6 @@ function P(e) {
 function F(e) {
 	return !!(e && typeof e == "object" && e.type === E.dateTime);
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/error.js
 var I = function(e) {
 	return e[e.EXPECT_ARGUMENT_CLOSING_BRACE = 1] = "EXPECT_ARGUMENT_CLOSING_BRACE", e[e.EMPTY_ARGUMENT = 2] = "EMPTY_ARGUMENT", e[e.MALFORMED_ARGUMENT = 3] = "MALFORMED_ARGUMENT", e[e.EXPECT_ARGUMENT_TYPE = 4] = "EXPECT_ARGUMENT_TYPE", e[e.INVALID_ARGUMENT_TYPE = 5] = "INVALID_ARGUMENT_TYPE", e[e.EXPECT_ARGUMENT_STYLE = 6] = "EXPECT_ARGUMENT_STYLE", e[e.INVALID_NUMBER_SKELETON = 7] = "INVALID_NUMBER_SKELETON", e[e.INVALID_DATE_TIME_SKELETON = 8] = "INVALID_DATE_TIME_SKELETON", e[e.EXPECT_NUMBER_SKELETON = 9] = "EXPECT_NUMBER_SKELETON", e[e.EXPECT_DATE_TIME_SKELETON = 10] = "EXPECT_DATE_TIME_SKELETON", e[e.UNCLOSED_QUOTE_IN_ARGUMENT_STYLE = 11] = "UNCLOSED_QUOTE_IN_ARGUMENT_STYLE", e[e.EXPECT_SELECT_ARGUMENT_OPTIONS = 12] = "EXPECT_SELECT_ARGUMENT_OPTIONS", e[e.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE = 13] = "EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE", e[e.INVALID_PLURAL_ARGUMENT_OFFSET_VALUE = 14] = "INVALID_PLURAL_ARGUMENT_OFFSET_VALUE", e[e.EXPECT_SELECT_ARGUMENT_SELECTOR = 15] = "EXPECT_SELECT_ARGUMENT_SELECTOR", e[e.EXPECT_PLURAL_ARGUMENT_SELECTOR = 16] = "EXPECT_PLURAL_ARGUMENT_SELECTOR", e[e.EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT = 17] = "EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT", e[e.EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT = 18] = "EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT", e[e.INVALID_PLURAL_ARGUMENT_SELECTOR = 19] = "INVALID_PLURAL_ARGUMENT_SELECTOR", e[e.DUPLICATE_PLURAL_ARGUMENT_SELECTOR = 20] = "DUPLICATE_PLURAL_ARGUMENT_SELECTOR", e[e.DUPLICATE_SELECT_ARGUMENT_SELECTOR = 21] = "DUPLICATE_SELECT_ARGUMENT_SELECTOR", e[e.MISSING_OTHER_CLAUSE = 22] = "MISSING_OTHER_CLAUSE", e[e.INVALID_TAG = 23] = "INVALID_TAG", e[e.INVALID_TAG_NAME = 25] = "INVALID_TAG_NAME", e[e.UNMATCHED_CLOSING_TAG = 26] = "UNMATCHED_CLOSING_TAG", e[e.UNCLOSED_TAG = 27] = "UNCLOSED_TAG", e;
 }({}), L = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/, R = {
@@ -1608,8 +1597,6 @@ var I = function(e) {
 		"h"
 	]
 };
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/date-time-pattern-generator.js
 function ve(e, t) {
 	let n = "";
 	for (let r = 0; r < e.length; r++) {
@@ -1636,8 +1623,6 @@ function ye(e) {
 	let n = e.language, r;
 	return n !== "root" && (r = e.maximize().region), (R[r || ""] || R[n || ""] || R[`${n}-001`] || R["001"])[0];
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/parser.js
 var be = RegExp(`^${L.source}*`), xe = RegExp(`${L.source}*$`);
 function z(e, t) {
 	return {
@@ -2121,8 +2106,6 @@ function Ae(e) {
 function je(e) {
 	return e >= 9 && e <= 13 || e === 32 || e === 133 || e >= 8206 && e <= 8207 || e === 8232 || e === 8233;
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/index.js
 function U(e) {
 	e.forEach((e) => {
 		if (delete e.location, j(e) || M(e)) for (let t in e.options) delete e.options[t].location, U(e.options[t].value);
@@ -2142,8 +2125,6 @@ function Me(e, t = {}) {
 	}
 	return t?.captureLocation || U(n.val), n.val;
 }
-//#endregion
-//#region ../../../node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/error.js
 var W = function(e) {
 	return e.MISSING_VALUE = "MISSING_VALUE", e.INVALID_VALUE = "INVALID_VALUE", e.MISSING_INTL_API = "MISSING_INTL_API", e;
 }({}), G = class extends Error {
@@ -2271,8 +2252,6 @@ function q(e, t, n, r, i, a, o) {
 	}
 	return Ie(s);
 }
-//#endregion
-//#region ../../../node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/core.js
 function Re(e, t) {
 	return t ? {
 		...e,
@@ -2415,8 +2394,6 @@ var Y = class e {
 		}
 	};
 };
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/format-message/index.js
 function Ve(...[e, t, n, i]) {
 	if (Array.isArray(t)) throw new b(x.INVALID_MESSAGE, void 0);
 	if (typeof t == "object") throw new b(x.INSUFFICIENT_PATH, void 0);
@@ -2473,8 +2450,6 @@ function Ve(...[e, t, n, i]) {
 	return r(f) || Array.isArray(f) || typeof f == "string" ? f : String(f);
 }
 Ve.raw = !0;
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/initializeConfig-Brh10fyG.js
 function X(...e) {
 	return e.filter(Boolean).join(".");
 }
@@ -2599,8 +2574,6 @@ function Ke({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }
 		getMessageFallback: t || He
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/react.js
 var $ = n(void 0);
 function qe({ children: e, formats: t, getMessageFallback: n, locale: r, messages: a, now: c, onError: l, timeZone: u }) {
 	let d = i($), f = o((() => d?.cache || te()), [r, d?.cache]), p = o((() => d?.formatters || ne(f)), [f, d?.formatters]), m = o((() => ({
@@ -2664,8 +2637,6 @@ function Ze(e) {
 		]);
 	}({ "!": Je().messages }, e ? `!.${e}` : "!", "!");
 }
-//#endregion
-//#region ../../../node_modules/.bun/next-intl@4.9.1+77ae5f1145ea432b/node_modules/next-intl/dist/esm/production/react-client/index.js
 function Qe(e, t) {
 	return (...e) => {
 		try {
@@ -2676,8 +2647,6 @@ function Qe(e, t) {
 	};
 }
 var $e = Qe(0, Ze);
-//#endregion
-//#region ../../../node_modules/.bun/next-intl@4.9.1+77ae5f1145ea432b/node_modules/next-intl/dist/esm/production/shared/NextIntlClientProvider.js
 function et({ locale: e, ...t }) {
 	if (!e) throw Error(void 0);
 	return s(qe, {
@@ -2685,8 +2654,6 @@ function et({ locale: e, ...t }) {
 		...t
 	});
 }
-//#endregion
-//#region components/pages/pricing/PricingTiers.tsx
 function tt() {
 	let e = $e();
 	return s("div", {
@@ -2771,8 +2738,6 @@ function tt() {
 		}, t.name))
 	});
 }
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
 function nt() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
@@ -2794,8 +2759,6 @@ function rt(e, t, n) {
 		console.warn("onRenderCallback failed:", e);
 	}
 }
-//#endregion
-//#region components/AppProviders.tsx
 function it({ children: t, locale: n, messages: r }) {
 	return a(() => {
 		document.documentElement.lang = n;
@@ -3268,10 +3231,7 @@ function st({ children: e }) {
 		children: e
 	});
 }
-//#endregion
-//#region components/pages/pricing/PricingTiers.wrapper.tsx
 function ct() {
 	return s(st, { children: s(tt, {}) });
 }
-//#endregion
 export { ct as default };

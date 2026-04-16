@@ -19,6 +19,7 @@
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/react-router": "1.168.13",
     "@tanstack/react-router-ssr-query": "latest",
+    "i18next-resources-to-backend": "^1.2.1",    
     "@tanstack/react-start": "1.167.1",
     "@tanstack/router-plugin": "^1.167.12",
     "i18next": "^26.0.4",

@@ -4,19 +4,19 @@ import s from "next/link";
 import { jsx as c, jsxs as l } from "react/jsx-runtime";
 import { ChevronDown as u } from "lucide-react";
 //#region \0rolldown/runtime.js
-var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f = /* @__PURE__ */ ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 }), p = (e) => /^https?:\/\//.test(e ?? ""), m = ({ href: e, children: t, ...n }) => {
 	let r = i().locale ?? "en", a = p(e.toString());
-	return /* @__PURE__ */ c(s, {
+	return c(s, {
 		href: e && !a && !e.toString().startsWith(`/${r}`) ? `/${r}${e}` : e,
 		...n,
 		children: t
 	});
-}, h = /* @__PURE__ */ d(((e, t) => {
+}, h = d(((e, t) => {
 	t.exports = {};
-})), g = /* @__PURE__ */ d(((e) => {
+})), g = d(((e) => {
 	var t = function(e, n) {
 		return t = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -8459,7 +8459,7 @@ var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f
 	}, e.standardizeLocale = function(e) {
 		return rn(e);
 	};
-})), _ = /* @__PURE__ */ d(((e) => {
+})), _ = d(((e) => {
 	var t = g(), n = function() {
 		return n = Object.assign || function(e) {
 			for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
@@ -8643,7 +8643,7 @@ var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f
 		}
 		return e.sort();
 	};
-})), v = /* @__PURE__ */ d(((e) => {
+})), v = d(((e) => {
 	var t = f("react/jsx-runtime"), n = f("react"), r = g(), i = _();
 	function a(e) {
 		var t = Object.create(null);
@@ -16995,7 +16995,7 @@ var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f
 	}, e.useVersionId = function() {
 		return Di("useVersionId(): Unable to access version ID outside of a <GTProvider>")._versionId;
 	};
-})), y = /* @__PURE__ */ d(((e) => {
+})), y = d(((e) => {
 	var t = f("react/jsx-runtime"), n = f("react"), r = g(), i = v();
 	function a(e) {
 		var t = Object.create(null);
@@ -23855,13 +23855,13 @@ var d = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), f
 			}, e))]
 		}));
 	};
-})), b = /* @__PURE__ */ d(((e) => {
+})), b = d(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.STABLE_TURBO_CONFIG_VERSION = e.ROOT_PARAM_STABILITY = e.SWC_PLUGIN_SUPPORT = e.BABEL_PLUGIN_SUPPORT = void 0, e.BABEL_PLUGIN_SUPPORT = "17.0.0", e.SWC_PLUGIN_SUPPORT = "16.1.0", e.ROOT_PARAM_STABILITY = {
 		unsupported: "0.0.0",
 		unstable: "15.2.0",
 		experimental: "15.5.0"
 	}, e.STABLE_TURBO_CONFIG_VERSION = "15.3.0";
-})), x = /* @__PURE__ */ d(((e) => {
+})), x = d(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.swcPluginCompatibilityChangeWarning = e.createStringRenderWarning = e.disablingCompileTimeHashWarning = e.createGTCompilerUnavailableWarning = e.createGTCompilerUnresolvedWarning = e.deprecatedLocaleMappingWarning = e.standardizedCanonicalLocalesWarning = e.standardizedLocalesWarning = e.dictionaryNotFoundWarning = e.runtimeTranslationTimeoutWarning = e.createTranslationLoadingWarning = e.APIKeyMissingWarn = e.noInitGTWarn = e.projectIdMissingWarn = e.createMismatchingHashWarning = e.createUnsupportedLocalesWarning = e.createInvalidDictionaryTranslationEntryWarning = e.createInvalidDictionaryEntryWarning = e.createNoEntryFoundWarning = e.usingDefaultsWarning = e.createBadFilepathWarning = e.createInvalidIcuDictionaryEntryWarning = e.createInvalidIcuDictionaryEntryError = e.invalidCanonicalLocalesError = e.invalidLocalesError = e.createStringRenderError = e.missingVariablesError = e.txUseClientError = e.gtProviderUseClientError = e.typesFileError = e.conflictingConfigurationBuildError = e.unresolvedGetLocaleBuildError = e.unresolvedLoadTranslationsBuildError = e.unresolvedLoadDictionaryBuildError = e.unresolvedCustomLoadTranslationsError = e.unresolvedCustomLoadDictionaryError = e.dictionaryDisabledError = e.createDictionarySubsetError = e.devApiKeyIncludedInProductionError = e.createRequiredPrefixError = e.createDictionaryTranslationError = e.createStringTranslationError = e.createUnresolvedReactVersionError = e.createUnresolvedNextVersionError = e.customLoadDictionaryWarning = e.customLoadTranslationsError = e.remoteTranslationsError = void 0;
 	var t = g(), n = b();
 	e.remoteTranslationsError = "gt-next Error: fetching remote translation.", e.customLoadTranslationsError = function(e) {
@@ -23929,7 +23929,7 @@ ${e.join("\n")}`;
 	}, e.disablingCompileTimeHashWarning = "gt-next (plugin): Compile-time hash is disabled. Compiler optimizations are inactive.", e.createStringRenderWarning = function(e, t) {
 		return `gt-next: failed to render string ${t ? `for id: "${t}"` : ""} original message: "${e}"`;
 	}, e.swcPluginCompatibilityChangeWarning = `gt-next (plugin): As of gt-next@6.12.4, SWC plugin support is disabled for Next.js versions prior to ${n.SWC_PLUGIN_SUPPORT}. Update to the latest version of Next.js.`;
-})), S = (/* @__PURE__ */ d(((e) => {
+})), S = d(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.gtFallback = e.mFallback = e.decodeVars = e.declareVar = e.derive = e.declareStatic = e.decodeOptions = e.decodeMsg = e.msg = e.useMessages = e.useVersionId = e.useLocaleDirection = e.useLocaleProperties = e.useGTClass = e.useDefaultLocale = e.useLocales = e.useLocale = e.useTranslations = e.useGT = e.RegionSelector = e.LocaleSelector = e.Plural = e.Branch = e.Derive = e.Static = e.RelativeTime = e.DateTime = e.Currency = e.Num = e.Var = e.T = void 0, e.GTProvider = r;
 	var t = y();
 	Object.defineProperty(e, "Var", {
@@ -24092,7 +24092,7 @@ ${e.join("\n")}`;
 	function r() {
 		throw Error(n.gtProviderUseClientError);
 	}
-})))();
+}))();
 function C() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
@@ -24119,13 +24119,13 @@ function T() {
 		n(t), w(t), window.localStorage.setItem("theme", t);
 	}
 	let a = e === "auto" ? "Theme mode: auto (system). Click to switch to light mode." : `Theme mode: ${e}. Click to switch mode.`;
-	return /* @__PURE__ */ c("button", {
+	return c("button", {
 		type: "button",
 		onClick: i,
 		"aria-label": a,
 		title: a,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
-		children: e === "auto" ? /* @__PURE__ */ c(S.T, { children: "Theme: Auto" }) : e === "dark" ? /* @__PURE__ */ c(S.T, { children: "Theme: Dark" }) : /* @__PURE__ */ c(S.T, { children: "Theme: Light" })
+		children: e === "auto" ? c(S.T, { children: "Theme: Auto" }) : e === "dark" ? c(S.T, { children: "Theme: Dark" }) : c(S.T, { children: "Theme: Light" })
 	});
 }
 //#endregion
@@ -24158,13 +24158,13 @@ function D() {
 		let i = r.join("/");
 		t.push(i);
 	};
-	return /* @__PURE__ */ c("div", {
+	return c("div", {
 		className: "flex items-center gap-2",
-		children: /* @__PURE__ */ c("select", {
+		children: c("select", {
 			value: e,
 			onChange: (e) => s(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: E.map((e) => /* @__PURE__ */ c("option", {
+			children: E.map((e) => c("option", {
 				value: e,
 				children: r(e)
 			}, e))
@@ -24190,79 +24190,79 @@ function k() {
 	let [e, t] = r(!1), n = i().locale ?? "en", o = a(), s = [
 		{
 			href: "/products",
-			label: /* @__PURE__ */ c(S.T, { children: "Products" })
+			label: c(S.T, { children: "Products" })
 		},
 		{
 			href: "/pricing",
-			label: /* @__PURE__ */ c(S.T, { children: "Pricing" })
+			label: c(S.T, { children: "Pricing" })
 		},
 		{
 			href: "/team",
-			label: /* @__PURE__ */ c(S.T, { children: "Team" })
+			label: c(S.T, { children: "Team" })
 		},
 		{
 			href: "/blog",
-			label: /* @__PURE__ */ c(S.T, { children: "Blog" })
+			label: c(S.T, { children: "Blog" })
 		},
 		{
 			href: "/careers",
-			label: /* @__PURE__ */ c(S.T, { children: "Careers" })
+			label: c(S.T, { children: "Careers" })
 		},
 		{
 			href: "/faq",
-			label: /* @__PURE__ */ c(S.T, { children: "FAQ" })
+			label: c(S.T, { children: "FAQ" })
 		},
 		{
 			href: "/contact",
-			label: /* @__PURE__ */ c(S.T, { children: "Contact" })
+			label: c(S.T, { children: "Contact" })
 		},
 		{
 			href: "/settings",
-			label: /* @__PURE__ */ c(S.T, { children: "Settings" })
+			label: c(S.T, { children: "Settings" })
 		}
 	];
-	return /* @__PURE__ */ c("header", {
+	return c("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: /* @__PURE__ */ l("nav", {
+		children: l("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [/* @__PURE__ */ l("div", {
+			children: [l("div", {
 				className: "flex items-center gap-8",
-				children: [/* @__PURE__ */ c(m, {
+				children: [c(m, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}), /* @__PURE__ */ l("div", {
+				}), l("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						/* @__PURE__ */ c(m, {
+						c(m, {
 							href: "/",
 							className: `nav-link${((e) => o === e)(`/${n}`) ? " is-active" : ""}`,
-							children: /* @__PURE__ */ c(S.T, { children: "Home" })
+							children: c(S.T, { children: "Home" })
 						}),
-						/* @__PURE__ */ c(m, {
+						c(m, {
 							href: "/about",
 							className: `nav-link${((e) => o.startsWith(e))(`/${n}/about`) ? " is-active" : ""}`,
-							children: /* @__PURE__ */ c(S.T, { children: "Methodology" })
+							children: c(S.T, { children: "Methodology" })
 						}),
-						/* @__PURE__ */ l("div", {
+						l("div", {
 							className: "relative",
-							children: [/* @__PURE__ */ l("button", {
+							children: [l("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => t(!0),
 								onMouseLeave: () => t(!1),
 								onClick: () => t(!e),
-								children: [/* @__PURE__ */ c(S.T, { children: "Mock Pages" }), /* @__PURE__ */ c(u, {
+								children: [c(S.T, { children: "Mock Pages" }), c(u, {
 									size: 14,
 									className: `transition-transform ${e ? "rotate-180" : ""}`
 								})]
-							}), e && /* @__PURE__ */ c("div", {
+							}), e && c("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => t(!0),
 								onMouseLeave: () => t(!1),
-								children: /* @__PURE__ */ c("div", {
+								children: c("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: s.map((e) => /* @__PURE__ */ c(m, {
+									children: s.map((e) => c(m, {
 										href: e.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => t(!1),
@@ -24273,30 +24273,30 @@ function k() {
 						})
 					]
 				})]
-			}), /* @__PURE__ */ l("div", {
+			}), l("div", {
 				className: "flex items-center gap-4",
 				children: [
-					/* @__PURE__ */ l("a", {
+					l("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [/* @__PURE__ */ c("span", {
+						children: [c("span", {
 							className: "sr-only",
 							children: "Go to GitHub"
-						}), /* @__PURE__ */ c("svg", {
+						}), c("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: /* @__PURE__ */ c("path", {
+							children: c("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
 							})
 						})]
 					}),
-					/* @__PURE__ */ c(D, {}),
-					/* @__PURE__ */ c(T, {})
+					c(D, {}),
+					c(T, {})
 				]
 			})]
 		})
@@ -24319,7 +24319,11 @@ function A() {
 	}
 }
 function j(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -24328,7 +24332,7 @@ function M({ children: n, locale: r }) {
 		document.documentElement.lang = r;
 	}, [r]), t(() => {
 		A();
-	}, []), /* @__PURE__ */ c(e, {
+	}, []), c(e, {
 		id: "AppRoot",
 		onRender: j,
 		children: n
@@ -24338,9 +24342,9 @@ function M({ children: n, locale: r }) {
 //#region scripts/Wrapper.tsx
 var N = "en";
 function P({ children: e }) {
-	return /* @__PURE__ */ c(S.GTProvider, {
+	return c(S.GTProvider, {
 		locale: N,
-		children: /* @__PURE__ */ c(M, {
+		children: c(M, {
 			locale: N,
 			children: e
 		})
@@ -24349,7 +24353,7 @@ function P({ children: e }) {
 //#endregion
 //#region components/Header.wrapper.tsx
 function F() {
-	return /* @__PURE__ */ c(P, { children: /* @__PURE__ */ c(k, {}) });
+	return c(P, { children: c(k, {}) });
 }
 //#endregion
 export { F as default };

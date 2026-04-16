@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/products/ProductsGrid.tsx
 function ProductsGrid() {
 	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
@@ -56,5 +55,4 @@ function ProductsGrid() {
 		}, p.name))
 	});
 }
-//#endregion
 export { ProductsGrid as default };

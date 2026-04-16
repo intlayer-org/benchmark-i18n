@@ -1,7 +1,6 @@
-import { t as e } from "./en-JS3tXsF1.js";
+import { t as e } from "./en-XNO2V14Y.js";
 import t, { Suspense as n, useCallback as r, useContext as i, useEffect as a, useMemo as o, useRef as s, useState as c } from "react";
 import { jsx as l } from "react/jsx-runtime";
-//#region ../../../node_modules/.bun/@tolgee+web@7.0.0/node_modules/@tolgee/web/dist/tolgee-web.production.esm.js
 var u = Object.defineProperty, d = Object.getOwnPropertySymbols, f = Object.prototype.hasOwnProperty, p = Object.prototype.propertyIsEnumerable, m = (e, t, n) => t in e ? u(e, t, {
 	enumerable: !0,
 	configurable: !0,
@@ -1225,8 +1224,6 @@ function Ue() {
 	return me().use(He());
 }
 var We = () => (e) => e;
-//#endregion
-//#region ../../../node_modules/.bun/@tolgee+react@7.0.0+3f10a4be4e334a9b/node_modules/@tolgee/react/dist/tolgee-react.esm.js
 function Ge(e) {
 	return Object.assign(Object.assign({}, e), { t(...t) {
 		let n = V(...t);
@@ -1344,7 +1341,7 @@ var $ = (e) => {
 	apiUrl: void 0,
 	apiKey: void 0,
 	staticData: {
-		en: () => import("./en-JS3tXsF1.js").then((e) => e.n),
+		en: () => import("./en-XNO2V14Y.js").then((e) => e.n),
 		fr: () => import("../i18n/locales/fr.json"),
 		es: () => import("../i18n/locales/es.json"),
 		de: () => import("../i18n/locales/de.json"),
@@ -1359,8 +1356,6 @@ var $ = (e) => {
 function ct(e) {
 	return l(ot, { ...e });
 }
-//#endregion
-//#region src/components/MockBanner.tsx
 var lt = () => l("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: l(ct, {
@@ -1368,8 +1363,6 @@ var lt = () => l("div", {
 		defaultValue: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
 	})
 });
-//#endregion
-//#region scripts/Wrapper.tsx
 function ut({ children: t }) {
 	return l(Xe, {
 		tolgee: st,
@@ -1380,14 +1373,10 @@ function ut({ children: t }) {
 		children: t
 	});
 }
-//#endregion
-//#region src/components/MockBanner.wrapper.tsx
 function dt() {
 	return l(ut, { children: l(lt, {}) });
 }
-//#endregion
 export { dt as default };
-//#region \0rolldown/runtime.js
 var e = Object.defineProperty, t = ((t, n) => {
 	let r = {};
 	for (var i in t) e(r, i, {
@@ -1803,5 +1792,4 @@ var e = Object.defineProperty, t = ((t, n) => {
 	teamGrid: N,
 	mockBanner: P
 };
-//#endregion
 export { t as n, F as t };

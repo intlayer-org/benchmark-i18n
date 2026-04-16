@@ -2,18 +2,18 @@ import { Profiler, useEffect } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
 var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
-var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
+var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 });
 //#endregion
 //#region __vite-browser-external
-var require___vite_browser_external = /* @__PURE__ */ __commonJSMin(((exports, module) => {
+var require___vite_browser_external = __commonJSMin(((exports, module) => {
 	module.exports = {};
 }));
 //#endregion
 //#region ../../../node_modules/.bun/generaltranslation@8.2.3/node_modules/generaltranslation/dist/index.cjs.min.cjs
-var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_index_cjs_min$2 = __commonJSMin(((exports) => {
 	var e = function(t, r) {
 		return e = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -1716,11 +1716,6 @@ var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 	var yt, _t = { exports: {} };
 	function Et() {
 		return yt || (yt = 1, _t.exports = function(e) {
-			/** @preserve
-			* Counter block mode compatible with  Dr Brian Gladman fileenc.c
-			* derived from CryptoJS.mode.CTR
-			* Jan Hruby jhruby.web@gmail.com
-			*/
 			return e.mode.CTRGladman = function() {
 				var t = e.lib.BlockCipherMode.extend();
 				function r(e) {
@@ -3656,16 +3651,6 @@ var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 		}), t.SHA384 = a._createHelper(s), t.HmacSHA384 = a._createHmacHelper(s), e.SHA384;
 		var t, r, n, o, i, a, s;
 	}(ye(), be(), We())), Qe(), $e || ($e = 1, et.exports = function(e) {
-		/** @preserve
-		(c) 2012 by Cédric Mesnil. All rights reserved.
-		
-		Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-		
-		- Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-		- Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-		
-		THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-		*/
 		return function() {
 			var t = e, r = t.lib, n = r.WordArray, o = r.Hasher, i = t.algo, a = n.create([
 				0,
@@ -8533,7 +8518,7 @@ var require_index_cjs_min$2 = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/@generaltranslation+supported-locales@2.0.61/node_modules/@generaltranslation/supported-locales/dist/index.cjs.min.cjs
-var require_index_cjs_min$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_index_cjs_min$1 = __commonJSMin(((exports) => {
 	var e = require_index_cjs_min$2(), r = function() {
 		return r = Object.assign || function(e) {
 			for (var r, n = 1, t = arguments.length; n < t; n++) for (var a in r = arguments[n]) Object.prototype.hasOwnProperty.call(r, a) && (e[a] = r[a]);
@@ -8722,7 +8707,7 @@ var require_index_cjs_min$1 = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/@generaltranslation+react-core@1.8.2+b1ab299f0a400331/node_modules/@generaltranslation/react-core/dist/index.cjs.min.cjs
-var require_index_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_index_cjs_min = __commonJSMin(((exports) => {
 	var e$1 = __require("react/jsx-runtime"), t$1 = __require("react"), r$1 = require_index_cjs_min$2(), n$1 = require_index_cjs_min$1();
 	function o(e) {
 		var t = Object.create(null);
@@ -17160,7 +17145,7 @@ var require_index_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/gt-react@10.18.2+bf16f8eded5e12ee/node_modules/gt-react/dist/client.cjs.min.cjs
-var require_client_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_client_cjs_min = __commonJSMin(((exports) => {
 	var e = __require("react/jsx-runtime"), t = __require("react"), r = require_index_cjs_min$2(), n = require_index_cjs_min();
 	function o(e) {
 		var t = Object.create(null);
@@ -24046,7 +24031,7 @@ var require_client_cjs_min = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/gt-next@6.16.5+4766e5f4053ef6d3/node_modules/gt-next/dist/plugin/constants.js
-var require_constants = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_constants = __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.STABLE_TURBO_CONFIG_VERSION = exports.ROOT_PARAM_STABILITY = exports.SWC_PLUGIN_SUPPORT = exports.BABEL_PLUGIN_SUPPORT = void 0;
 	exports.BABEL_PLUGIN_SUPPORT = "17.0.0";
@@ -24060,7 +24045,7 @@ var require_constants = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region ../../../node_modules/.bun/gt-next@6.16.5+4766e5f4053ef6d3/node_modules/gt-next/dist/errors/createErrors.js
-var require_createErrors = /* @__PURE__ */ __commonJSMin(((exports) => {
+var require_createErrors = __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.swcPluginCompatibilityChangeWarning = exports.createStringRenderWarning = exports.disablingCompileTimeHashWarning = exports.createGTCompilerUnavailableWarning = exports.createGTCompilerUnresolvedWarning = exports.deprecatedLocaleMappingWarning = exports.standardizedCanonicalLocalesWarning = exports.standardizedLocalesWarning = exports.dictionaryNotFoundWarning = exports.runtimeTranslationTimeoutWarning = exports.createTranslationLoadingWarning = exports.APIKeyMissingWarn = exports.noInitGTWarn = exports.projectIdMissingWarn = exports.createMismatchingHashWarning = exports.createUnsupportedLocalesWarning = exports.createInvalidDictionaryTranslationEntryWarning = exports.createInvalidDictionaryEntryWarning = exports.createNoEntryFoundWarning = exports.usingDefaultsWarning = exports.createBadFilepathWarning = exports.createInvalidIcuDictionaryEntryWarning = exports.createInvalidIcuDictionaryEntryError = exports.invalidCanonicalLocalesError = exports.invalidLocalesError = exports.createStringRenderError = exports.missingVariablesError = exports.txUseClientError = exports.gtProviderUseClientError = exports.typesFileError = exports.conflictingConfigurationBuildError = exports.unresolvedGetLocaleBuildError = exports.unresolvedLoadTranslationsBuildError = exports.unresolvedLoadDictionaryBuildError = exports.unresolvedCustomLoadTranslationsError = exports.unresolvedCustomLoadDictionaryError = exports.dictionaryDisabledError = exports.createDictionarySubsetError = exports.devApiKeyIncludedInProductionError = exports.createRequiredPrefixError = exports.createDictionaryTranslationError = exports.createStringTranslationError = exports.createUnresolvedReactVersionError = exports.createUnresolvedNextVersionError = exports.customLoadDictionaryWarning = exports.customLoadTranslationsError = exports.remoteTranslationsError = void 0;
 	var generaltranslation_1 = require_index_cjs_min$2();
@@ -24212,7 +24197,7 @@ var require_createErrors = /* @__PURE__ */ __commonJSMin(((exports) => {
 }));
 //#endregion
 //#region components/pages/home/UnderstandingImpact.tsx
-var import_index_client = (/* @__PURE__ */ __commonJSMin(((exports) => {
+var import_index_client = __commonJSMin(((exports) => {
 	Object.defineProperty(exports, "__esModule", { value: true });
 	exports.gtFallback = exports.mFallback = exports.decodeVars = exports.declareVar = exports.derive = exports.declareStatic = exports.decodeOptions = exports.decodeMsg = exports.msg = exports.useMessages = exports.useVersionId = exports.useLocaleDirection = exports.useLocaleProperties = exports.useGTClass = exports.useDefaultLocale = exports.useLocales = exports.useLocale = exports.useTranslations = exports.useGT = exports.RegionSelector = exports.LocaleSelector = exports.Plural = exports.Branch = exports.Derive = exports.Static = exports.RelativeTime = exports.DateTime = exports.Currency = exports.Num = exports.Var = exports.T = void 0;
 	exports.GTProvider = GTProvider;
@@ -24407,86 +24392,86 @@ var import_index_client = (/* @__PURE__ */ __commonJSMin(((exports) => {
 	function GTProvider() {
 		throw new Error(createErrors_1.gtProviderUseClientError);
 	}
-})))();
+}))();
 function UnderstandingImpact() {
-	return /* @__PURE__ */ jsxs("section", {
+	return jsxs("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
-			/* @__PURE__ */ jsx("h2", {
+			jsx("h2", {
 				className: "text-2xl font-bold text-foreground",
-				children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Understanding the Impact" })
+				children: jsx(import_index_client.T, { children: "Understanding the Impact" })
 			}),
-			/* @__PURE__ */ jsxs("div", {
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					/* @__PURE__ */ jsx("h3", {
+					jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Why a single large JSON can hurt performance" })
+						children: jsx(import_index_client.T, { children: "Why a single large JSON can hurt performance" })
 					}),
-					/* @__PURE__ */ jsx("p", {
+					jsx("p", {
 						className: "text-sm text-muted-foreground",
-						children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:" })
+						children: jsx(import_index_client.T, { children: "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:" })
 					}),
-					/* @__PURE__ */ jsxs("ul", {
+					jsxs("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							/* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(import_index_client.T, { children: "The JSON must be parsed on every page load — blocking the main thread." }) }),
-							/* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change." }) }),
-							/* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(import_index_client.T, { children: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated." }) })
+							jsx("li", { children: jsx(import_index_client.T, { children: "The JSON must be parsed on every page load — blocking the main thread." }) }),
+							jsx("li", { children: jsx(import_index_client.T, { children: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change." }) }),
+							jsx("li", { children: jsx(import_index_client.T, { children: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated." }) })
 						]
 					})
 				]
 			}),
-			/* @__PURE__ */ jsxs("div", {
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					/* @__PURE__ */ jsx("h3", {
+					jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: /* @__PURE__ */ jsx(import_index_client.T, { children: "The trade-offs of dynamic loading" })
+						children: jsx(import_index_client.T, { children: "The trade-offs of dynamic loading" })
 					}),
-					/* @__PURE__ */ jsx("p", {
+					jsx("p", {
 						className: "text-sm text-muted-foreground",
-						children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:" })
+						children: jsx(import_index_client.T, { children: "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:" })
 					}),
-					/* @__PURE__ */ jsxs("ul", {
+					jsxs("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							/* @__PURE__ */ jsxs("li", { children: [
-								/* @__PURE__ */ jsx("strong", {
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
-									children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Waterfall requests:" })
+									children: jsx(import_index_client.T, { children: "Waterfall requests:" })
 								}),
 								" ",
-								/* @__PURE__ */ jsx(import_index_client.T, { children: "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips." })
+								jsx(import_index_client.T, { children: "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips." })
 							] }),
-							/* @__PURE__ */ jsxs("li", { children: [
-								/* @__PURE__ */ jsx("strong", {
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
-									children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Flash of untranslated content (FOUC):" })
+									children: jsx(import_index_client.T, { children: "Flash of untranslated content (FOUC):" })
 								}),
 								" ",
-								/* @__PURE__ */ jsx(import_index_client.T, { children: "users may briefly see translation keys or a fallback language before the chunk arrives." })
+								jsx(import_index_client.T, { children: "users may briefly see translation keys or a fallback language before the chunk arrives." })
 							] }),
-							/* @__PURE__ */ jsxs("li", { children: [
-								/* @__PURE__ */ jsx("strong", {
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
-									children: /* @__PURE__ */ jsx(import_index_client.T, { children: "Cache invalidation:" })
+									children: jsx(import_index_client.T, { children: "Cache invalidation:" })
 								}),
 								" ",
-								/* @__PURE__ */ jsx(import_index_client.T, { children: "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks." })
+								jsx(import_index_client.T, { children: "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks." })
 							] })
 						]
 					})
 				]
 			}),
-			/* @__PURE__ */ jsxs("div", {
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [/* @__PURE__ */ jsx("h3", {
+				children: [jsx("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
-					children: /* @__PURE__ */ jsx(import_index_client.T, { children: "What this benchmark measures" })
-				}), /* @__PURE__ */ jsx("p", {
+					children: jsx(import_index_client.T, { children: "What this benchmark measures" })
+				}), jsx("p", {
 					className: "text-sm text-muted-foreground",
-					children: /* @__PURE__ */ jsx(import_index_client.T, { children: "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable." })
+					children: jsx(import_index_client.T, { children: "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable." })
 				})]
 			})
 		]
@@ -24494,18 +24479,6 @@ function UnderstandingImpact() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -24521,16 +24494,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -24541,7 +24514,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -24551,9 +24524,9 @@ function AppProviders({ children, locale }) {
 //#region scripts/Wrapper.tsx
 var locale = "en";
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(import_index_client.GTProvider, {
+	return jsx(import_index_client.GTProvider, {
 		locale,
-		children: /* @__PURE__ */ jsx(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
 		})
@@ -24562,7 +24535,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/pages/home/UnderstandingImpact.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(UnderstandingImpact, {}) });
+	return jsx(Wrapper, { children: jsx(UnderstandingImpact, {}) });
 }
 //#endregion
 export { Wrapped as default };

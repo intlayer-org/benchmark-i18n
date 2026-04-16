@@ -179,7 +179,7 @@ function w(e) {
 //#region components/pages/team/TeamGrid.tsx
 function T() {
 	let { t: e } = w("common");
-	return /* @__PURE__ */ a("div", {
+	return a("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
 		children: [
 			{
@@ -212,22 +212,22 @@ function T() {
 				role: e("team.teamGrid.communityManager"),
 				bio: e("team.teamGrid.managesCommunityContributionsPartnershipsAnd")
 			}
-		].map((e) => /* @__PURE__ */ o("div", {
+		].map((e) => o("div", {
 			className: "rounded-lg border border-border bg-card p-6 text-center",
 			children: [
-				/* @__PURE__ */ a("div", {
+				a("div", {
 					className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 					children: e.name.split("team. ").map((e) => e[0]).join("")
 				}),
-				/* @__PURE__ */ a("h3", {
+				a("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: e.name
 				}),
-				/* @__PURE__ */ a("p", {
+				a("p", {
 					className: "mb-2 text-xs font-medium text-primary",
 					children: e.role
 				}),
-				/* @__PURE__ */ a("p", {
+				a("p", {
 					className: "text-sm text-muted-foreground",
 					children: e.bio
 				})
@@ -252,7 +252,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -261,7 +265,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -270,7 +274,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -278,7 +282,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/team/TeamGrid.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

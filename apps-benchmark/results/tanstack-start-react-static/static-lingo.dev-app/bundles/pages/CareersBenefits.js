@@ -1,0 +1,3262 @@
+import { t as logger } from "./logger-aqUiye9e.js";
+import { Fragment, createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
+var LingoContext = createContext(null);
+function useLingoContext() {
+	const context = useContext(LingoContext);
+	if (!context) throw new Error("useLingoContext must be used within LingoProvider");
+	return context;
+}
+async function fetchTranslations(targetLocale, hashes, serverUrl) {
+	if (!serverUrl) return {};
+	if (!hashes || hashes.length === 0) return {};
+	const url = `${serverUrl}/translations/${targetLocale}`;
+	const controller = new AbortController();
+	const timeoutId = setTimeout(() => controller.abort(), 3e4);
+	try {
+		let response = await fetch(url, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ hashes }),
+			signal: controller.signal
+		});
+		if (!response.ok) throw new Error(`Translation API error: ${response.statusText}`);
+		const result = await response.json();
+		logger.debug(`Fetched translations for ${targetLocale}: ${JSON.stringify(result)}`);
+		return result.translations || {};
+	} catch (error) {
+		if (error instanceof Error && error.name === "AbortError") throw new Error(`Translation request to ${targetLocale} timed out after 30 seconds`);
+		throw error;
+	} finally {
+		clearTimeout(timeoutId);
+	}
+}
+function getClientLocale() {
+	if (typeof document !== "undefined") {
+		const match = document.cookie.match(/locale=([^;]+)/);
+		if (match) return match[1];
+	}
+	return "en";
+}
+function persistLocale(locale) {
+	if (typeof document !== "undefined") document.cookie = `locale=${locale}; path=/; max-age=31536000`;
+}
+var noop = () => {};
+var IS_DEV = process.env.NODE_ENV === "development";
+var BATCH_DELAY = 200;
+var LingoProvider = IS_DEV ? LingoProvider__Dev : LingoProvider__Prod;
+function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, children }) {
+	const [locale, setLocaleState] = useState(() => {
+		if (initialLocale) return initialLocale;
+		if (typeof window !== "undefined") return getClientLocale();
+		return "en";
+	});
+	const [translations, setTranslations] = useState(initialTranslations);
+	const [isLoading, setIsLoading] = useState(false);
+	logger.debug(`LingoProvider initialized with locale: ${locale}`, initialTranslations);
+	useEffect(() => {
+		if (typeof document !== "undefined") document.documentElement.lang = locale;
+	}, [locale]);
+	const loadTranslations = useCallback(async (targetLocale) => {
+		if (Object.keys(initialTranslations).length > 0) return;
+		setIsLoading(true);
+		try {
+			const response = await fetch(`/translations/${targetLocale}.json`);
+			if (!response.ok) throw new Error(`Failed to load translations for ${targetLocale}: ${response.statusText}`);
+			const data = await response.json();
+			setTranslations(data.entries || data);
+			logger.debug(`Loaded translations for ${targetLocale}:`, Object.keys(data.entries || data).length);
+		} catch (error) {
+			logger.error(`Failed to load translations for ${targetLocale}:`, error);
+			setTranslations({});
+		} finally {
+			setIsLoading(false);
+		}
+	}, [initialTranslations]);
+	useEffect(() => {
+		if (Object.keys(initialTranslations).length === 0) loadTranslations(locale);
+	}, []);
+	useEffect(() => {
+		if (router) setTranslations(initialTranslations);
+	}, [initialTranslations, router]);
+	const setLocale = useCallback(async (newLocale) => {
+		persistLocale(newLocale);
+		setLocaleState(newLocale);
+		if (router) router.refresh();
+		else await loadTranslations(newLocale);
+	}, [router, loadTranslations]);
+	return jsx(LingoContext.Provider, {
+		value: {
+			locale,
+			setLocale,
+			translations,
+			registerHashes: noop,
+			isLoading,
+			sourceLocale: "en"
+		},
+		children
+	});
+}
+function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, devWidget, children }) {
+	const [locale, setLocaleState] = useState(() => {
+		if (initialLocale) return initialLocale;
+		return getClientLocale();
+	});
+	const [translations, setTranslations] = useState(initialTranslations);
+	const [isLoading, setIsLoading] = useState(false);
+	const [allSeenHashes, setAllSeenHashes] = useState(/* @__PURE__ */ new Set());
+	const registeredHashesRef = useRef(/* @__PURE__ */ new Set());
+	const pendingHashesRef = useRef(/* @__PURE__ */ new Set());
+	const erroredHashesRef = useRef(/* @__PURE__ */ new Set());
+	const batchTimerRef = useRef(null);
+	const translationsRef = useRef(initialTranslations);
+	const localeRef = useRef(locale);
+	useEffect(() => {
+		translationsRef.current = translations;
+	}, [translations]);
+	useEffect(() => {
+		localeRef.current = locale;
+	}, [locale]);
+	useEffect(() => {
+		if (typeof document !== "undefined") document.documentElement.lang = locale;
+	}, [locale]);
+	const registerHashes = useCallback((hashes) => {
+		let wasNew = false;
+		hashes.forEach((hash) => {
+			wasNew = wasNew || !registeredHashesRef.current.has(hash);
+			registeredHashesRef.current.add(hash);
+		});
+		logger.debug(`Registering hashes: ${hashes.join(", ")}. Registered hashes: ${registeredHashesRef.current.values()}. wasNew: ${wasNew}`);
+		if (wasNew) setAllSeenHashes((prev) => {
+			const next = prev.union(new Set(hashes));
+			logger.debug(`New allSeenHashes: ${[...next.values()]}`);
+			return next;
+		});
+	}, []);
+	useEffect(() => {
+		logger.debug(`LingoProvider checking translations for locale ${locale}, seen hashes: ${allSeenHashes.size}`);
+		const missingHashes = [];
+		logger.debug("allSeenHashes: ", [...allSeenHashes.values()], [...pendingHashesRef.current.values()]);
+		for (const hash of allSeenHashes) if (!translations[hash] && !pendingHashesRef.current.has(hash) && !erroredHashesRef.current.has(hash)) {
+			missingHashes.push(hash);
+			pendingHashesRef.current.add(hash);
+		}
+		logger.debug("Missing hashes: ", missingHashes.join(","));
+		if (missingHashes.length === 0 && localeRef.current == locale) return;
+		logger.debug(`Requesting translations for ${missingHashes.length} hashes in locale ${locale}`);
+		if (batchTimerRef.current) clearTimeout(batchTimerRef.current);
+		batchTimerRef.current = setTimeout(async () => {
+			const hashesToFetch = Array.from(pendingHashesRef.current);
+			pendingHashesRef.current.clear();
+			logger.debug(`Fetching translations for ${hashesToFetch.length} hashes`);
+			if (hashesToFetch.length === 0) return;
+			setIsLoading(true);
+			try {
+				const newTranslations = await fetchTranslations(localeRef.current, hashesToFetch, void 0);
+				logger.debug(`Fetched translations for ${hashesToFetch.length} hashes:`, newTranslations);
+				const receivedHashes = new Set(Object.keys(newTranslations));
+				const missingHashes$1 = hashesToFetch.filter((hash) => !receivedHashes.has(hash));
+				if (missingHashes$1.length > 0) {
+					logger.warn(`Server did not return translations for ${missingHashes$1.length} hashes: ${missingHashes$1.join(", ")}`);
+					for (const hash of missingHashes$1) erroredHashesRef.current.add(hash);
+				}
+				setTranslations((prev) => ({
+					...prev,
+					...newTranslations
+				}));
+				for (const hash of hashesToFetch) registeredHashesRef.current.add(hash);
+			} catch (error) {
+				logger.warn(`Failed to fetch translations from translation server: ${error}.`);
+				for (const hash of hashesToFetch) {
+					pendingHashesRef.current.delete(hash);
+					erroredHashesRef.current.add(hash);
+				}
+			} finally {
+				setIsLoading(false);
+			}
+		}, BATCH_DELAY);
+	}, [
+		allSeenHashes,
+		locale,
+		translations
+	]);
+	useEffect(() => {
+		return () => {
+			if (batchTimerRef.current) clearTimeout(batchTimerRef.current);
+		};
+	}, []);
+	const setLocale = useCallback(async (newLocale) => {
+		persistLocale(newLocale);
+		setLocaleState(newLocale);
+		if (router) router.refresh();
+		setIsLoading(true);
+		const startTime = performance.now();
+		try {
+			logger.info(`Fetching translations for locale: ${newLocale}. Server url: undefined`);
+			const translatedDict = await fetchTranslations(newLocale, [], void 0);
+			const endTime = performance.now();
+			logger.info(`Translation fetch complete for ${newLocale} in ${(endTime - startTime).toFixed(2)}ms`);
+			const allTranslations = translatedDict.entries || {};
+			logger.debug(`Translations loaded for ${newLocale}:`, allTranslations);
+			setTranslations(allTranslations);
+		} catch (error) {
+			logger.error(`Failed to load translations for ${newLocale}:`, error);
+			setTranslations({});
+		} finally {
+			setIsLoading(false);
+		}
+	}, [router]);
+	useEffect(() => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+			logger.error("Failed to load dev widget:", err, err.message);
+		});
+	}, [devWidget?.enabled]);
+	useEffect(() => {
+		if (typeof window !== "undefined" && devWidget?.enabled !== false) {
+			window.__LINGO_DEV_STATE__ = {
+				isLoading,
+				locale,
+				sourceLocale: "en",
+				pendingCount: pendingHashesRef.current.size,
+				position: devWidget?.position || "bottom-left"
+			};
+			window.__LINGO_DEV_WS_URL__ = void 0;
+			window.__LINGO_DEV_UPDATE__?.();
+		}
+	}, [
+		isLoading,
+		locale,
+		"en",
+		devWidget
+	]);
+	return jsx(LingoContext.Provider, {
+		value: {
+			locale,
+			setLocale,
+			translations,
+			registerHashes,
+			isLoading,
+			sourceLocale: "en",
+			_devStats: {
+				pendingCount: pendingHashesRef.current.size,
+				totalRegisteredCount: registeredHashesRef.current.size
+			}
+		},
+		children
+	});
+}
+var extendStatics = function(d, b) {
+	extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d, b) {
+		d.__proto__ = b;
+	} || function(d, b) {
+		for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+	};
+	return extendStatics(d, b);
+};
+function __extends(d, b) {
+	if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+	extendStatics(d, b);
+	function __() {
+		this.constructor = d;
+	}
+	d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+}
+var __assign = function() {
+	__assign = Object.assign || function __assign(t) {
+		for (var s, i = 1, n = arguments.length; i < n; i++) {
+			s = arguments[i];
+			for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
+		}
+		return t;
+	};
+	return __assign.apply(this, arguments);
+};
+function __rest(s, e) {
+	var t = {};
+	for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0) t[p] = s[p];
+	if (s != null && typeof Object.getOwnPropertySymbols === "function") {
+		for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i])) t[p[i]] = s[p[i]];
+	}
+	return t;
+}
+function __spreadArray(to, from, pack) {
+	if (pack || arguments.length === 2) {
+		for (var i = 0, l = from.length, ar; i < l; i++) if (ar || !(i in from)) {
+			if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+			ar[i] = from[i];
+		}
+	}
+	return to.concat(ar || Array.prototype.slice.call(from));
+}
+function memoize(fn, options) {
+	var cache = options && options.cache ? options.cache : cacheDefault;
+	var serializer = options && options.serializer ? options.serializer : serializerDefault;
+	return (options && options.strategy ? options.strategy : strategyDefault)(fn, {
+		cache,
+		serializer
+	});
+}
+function isPrimitive(value) {
+	return value == null || typeof value === "number" || typeof value === "boolean";
+}
+function monadic(fn, cache, serializer, arg) {
+	var cacheKey = isPrimitive(arg) ? arg : serializer(arg);
+	var computedValue = cache.get(cacheKey);
+	if (typeof computedValue === "undefined") {
+		computedValue = fn.call(this, arg);
+		cache.set(cacheKey, computedValue);
+	}
+	return computedValue;
+}
+function variadic(fn, cache, serializer) {
+	var args = Array.prototype.slice.call(arguments, 3);
+	var cacheKey = serializer(args);
+	var computedValue = cache.get(cacheKey);
+	if (typeof computedValue === "undefined") {
+		computedValue = fn.apply(this, args);
+		cache.set(cacheKey, computedValue);
+	}
+	return computedValue;
+}
+function assemble(fn, context, strategy, cache, serialize) {
+	return strategy.bind(context, fn, cache, serialize);
+}
+function strategyDefault(fn, options) {
+	var strategy = fn.length === 1 ? monadic : variadic;
+	return assemble(fn, this, strategy, options.cache.create(), options.serializer);
+}
+function strategyVariadic(fn, options) {
+	return assemble(fn, this, variadic, options.cache.create(), options.serializer);
+}
+function strategyMonadic(fn, options) {
+	return assemble(fn, this, monadic, options.cache.create(), options.serializer);
+}
+var serializerDefault = function() {
+	return JSON.stringify(arguments);
+};
+var ObjectWithoutPrototypeCache = function() {
+	function ObjectWithoutPrototypeCache() {
+		this.cache = Object.create(null);
+	}
+	ObjectWithoutPrototypeCache.prototype.get = function(key) {
+		return this.cache[key];
+	};
+	ObjectWithoutPrototypeCache.prototype.set = function(key, value) {
+		this.cache[key] = value;
+	};
+	return ObjectWithoutPrototypeCache;
+}();
+var cacheDefault = { create: function create() {
+	return new ObjectWithoutPrototypeCache();
+} };
+var strategies = {
+	variadic: strategyVariadic,
+	monadic: strategyMonadic
+};
+var ErrorKind;
+(function(ErrorKind) {
+	ErrorKind[ErrorKind["EXPECT_ARGUMENT_CLOSING_BRACE"] = 1] = "EXPECT_ARGUMENT_CLOSING_BRACE";
+	ErrorKind[ErrorKind["EMPTY_ARGUMENT"] = 2] = "EMPTY_ARGUMENT";
+	ErrorKind[ErrorKind["MALFORMED_ARGUMENT"] = 3] = "MALFORMED_ARGUMENT";
+	ErrorKind[ErrorKind["EXPECT_ARGUMENT_TYPE"] = 4] = "EXPECT_ARGUMENT_TYPE";
+	ErrorKind[ErrorKind["INVALID_ARGUMENT_TYPE"] = 5] = "INVALID_ARGUMENT_TYPE";
+	ErrorKind[ErrorKind["EXPECT_ARGUMENT_STYLE"] = 6] = "EXPECT_ARGUMENT_STYLE";
+	ErrorKind[ErrorKind["INVALID_NUMBER_SKELETON"] = 7] = "INVALID_NUMBER_SKELETON";
+	ErrorKind[ErrorKind["INVALID_DATE_TIME_SKELETON"] = 8] = "INVALID_DATE_TIME_SKELETON";
+	ErrorKind[ErrorKind["EXPECT_NUMBER_SKELETON"] = 9] = "EXPECT_NUMBER_SKELETON";
+	ErrorKind[ErrorKind["EXPECT_DATE_TIME_SKELETON"] = 10] = "EXPECT_DATE_TIME_SKELETON";
+	ErrorKind[ErrorKind["UNCLOSED_QUOTE_IN_ARGUMENT_STYLE"] = 11] = "UNCLOSED_QUOTE_IN_ARGUMENT_STYLE";
+	ErrorKind[ErrorKind["EXPECT_SELECT_ARGUMENT_OPTIONS"] = 12] = "EXPECT_SELECT_ARGUMENT_OPTIONS";
+	ErrorKind[ErrorKind["EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE"] = 13] = "EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE";
+	ErrorKind[ErrorKind["INVALID_PLURAL_ARGUMENT_OFFSET_VALUE"] = 14] = "INVALID_PLURAL_ARGUMENT_OFFSET_VALUE";
+	ErrorKind[ErrorKind["EXPECT_SELECT_ARGUMENT_SELECTOR"] = 15] = "EXPECT_SELECT_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["EXPECT_PLURAL_ARGUMENT_SELECTOR"] = 16] = "EXPECT_PLURAL_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT"] = 17] = "EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT";
+	ErrorKind[ErrorKind["EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT"] = 18] = "EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT";
+	ErrorKind[ErrorKind["INVALID_PLURAL_ARGUMENT_SELECTOR"] = 19] = "INVALID_PLURAL_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["DUPLICATE_PLURAL_ARGUMENT_SELECTOR"] = 20] = "DUPLICATE_PLURAL_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["DUPLICATE_SELECT_ARGUMENT_SELECTOR"] = 21] = "DUPLICATE_SELECT_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["MISSING_OTHER_CLAUSE"] = 22] = "MISSING_OTHER_CLAUSE";
+	ErrorKind[ErrorKind["INVALID_TAG"] = 23] = "INVALID_TAG";
+	ErrorKind[ErrorKind["INVALID_TAG_NAME"] = 25] = "INVALID_TAG_NAME";
+	ErrorKind[ErrorKind["UNMATCHED_CLOSING_TAG"] = 26] = "UNMATCHED_CLOSING_TAG";
+	ErrorKind[ErrorKind["UNCLOSED_TAG"] = 27] = "UNCLOSED_TAG";
+})(ErrorKind || (ErrorKind = {}));
+var TYPE;
+(function(TYPE) {
+	TYPE[TYPE["literal"] = 0] = "literal";
+	TYPE[TYPE["argument"] = 1] = "argument";
+	TYPE[TYPE["number"] = 2] = "number";
+	TYPE[TYPE["date"] = 3] = "date";
+	TYPE[TYPE["time"] = 4] = "time";
+	TYPE[TYPE["select"] = 5] = "select";
+	TYPE[TYPE["plural"] = 6] = "plural";
+	TYPE[TYPE["pound"] = 7] = "pound";
+	TYPE[TYPE["tag"] = 8] = "tag";
+})(TYPE || (TYPE = {}));
+var SKELETON_TYPE;
+(function(SKELETON_TYPE) {
+	SKELETON_TYPE[SKELETON_TYPE["number"] = 0] = "number";
+	SKELETON_TYPE[SKELETON_TYPE["dateTime"] = 1] = "dateTime";
+})(SKELETON_TYPE || (SKELETON_TYPE = {}));
+function isLiteralElement(el) {
+	return el.type === TYPE.literal;
+}
+function isArgumentElement(el) {
+	return el.type === TYPE.argument;
+}
+function isNumberElement(el) {
+	return el.type === TYPE.number;
+}
+function isDateElement(el) {
+	return el.type === TYPE.date;
+}
+function isTimeElement(el) {
+	return el.type === TYPE.time;
+}
+function isSelectElement(el) {
+	return el.type === TYPE.select;
+}
+function isPluralElement(el) {
+	return el.type === TYPE.plural;
+}
+function isPoundElement(el) {
+	return el.type === TYPE.pound;
+}
+function isTagElement(el) {
+	return el.type === TYPE.tag;
+}
+function isNumberSkeleton(el) {
+	return !!(el && typeof el === "object" && el.type === SKELETON_TYPE.number);
+}
+function isDateTimeSkeleton(el) {
+	return !!(el && typeof el === "object" && el.type === SKELETON_TYPE.dateTime);
+}
+var SPACE_SEPARATOR_REGEX = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/;
+var DATE_TIME_REGEX = /(?:[Eec]{1,6}|G{1,5}|[Qq]{1,5}|(?:[yYur]+|U{1,5})|[ML]{1,5}|d{1,2}|D{1,3}|F{1}|[abB]{1,5}|[hkHK]{1,2}|w{1,2}|W{1}|m{1,2}|s{1,2}|[zZOvVxX]{1,4})(?=([^']*'[^']*')*[^']*$)/g;
+function parseDateTimeSkeleton(skeleton) {
+	var result = {};
+	skeleton.replace(DATE_TIME_REGEX, function(match) {
+		var len = match.length;
+		switch (match[0]) {
+			case "G":
+				result.era = len === 4 ? "long" : len === 5 ? "narrow" : "short";
+				break;
+			case "y":
+				result.year = len === 2 ? "2-digit" : "numeric";
+				break;
+			case "Y":
+			case "u":
+			case "U":
+			case "r": throw new RangeError("`Y/u/U/r` (year) patterns are not supported, use `y` instead");
+			case "q":
+			case "Q": throw new RangeError("`q/Q` (quarter) patterns are not supported");
+			case "M":
+			case "L":
+				result.month = [
+					"numeric",
+					"2-digit",
+					"short",
+					"long",
+					"narrow"
+				][len - 1];
+				break;
+			case "w":
+			case "W": throw new RangeError("`w/W` (week) patterns are not supported");
+			case "d":
+				result.day = ["numeric", "2-digit"][len - 1];
+				break;
+			case "D":
+			case "F":
+			case "g": throw new RangeError("`D/F/g` (day) patterns are not supported, use `d` instead");
+			case "E":
+				result.weekday = len === 4 ? "long" : len === 5 ? "narrow" : "short";
+				break;
+			case "e":
+				if (len < 4) throw new RangeError("`e..eee` (weekday) patterns are not supported");
+				result.weekday = [
+					"short",
+					"long",
+					"narrow",
+					"short"
+				][len - 4];
+				break;
+			case "c":
+				if (len < 4) throw new RangeError("`c..ccc` (weekday) patterns are not supported");
+				result.weekday = [
+					"short",
+					"long",
+					"narrow",
+					"short"
+				][len - 4];
+				break;
+			case "a":
+				result.hour12 = true;
+				break;
+			case "b":
+			case "B": throw new RangeError("`b/B` (period) patterns are not supported, use `a` instead");
+			case "h":
+				result.hourCycle = "h12";
+				result.hour = ["numeric", "2-digit"][len - 1];
+				break;
+			case "H":
+				result.hourCycle = "h23";
+				result.hour = ["numeric", "2-digit"][len - 1];
+				break;
+			case "K":
+				result.hourCycle = "h11";
+				result.hour = ["numeric", "2-digit"][len - 1];
+				break;
+			case "k":
+				result.hourCycle = "h24";
+				result.hour = ["numeric", "2-digit"][len - 1];
+				break;
+			case "j":
+			case "J":
+			case "C": throw new RangeError("`j/J/C` (hour) patterns are not supported, use `h/H/K/k` instead");
+			case "m":
+				result.minute = ["numeric", "2-digit"][len - 1];
+				break;
+			case "s":
+				result.second = ["numeric", "2-digit"][len - 1];
+				break;
+			case "S":
+			case "A": throw new RangeError("`S/A` (second) patterns are not supported, use `s` instead");
+			case "z":
+				result.timeZoneName = len < 4 ? "short" : "long";
+				break;
+			case "Z":
+			case "O":
+			case "v":
+			case "V":
+			case "X":
+			case "x": throw new RangeError("`Z/O/v/V/X/x` (timeZone) patterns are not supported, use `z` instead");
+		}
+		return "";
+	});
+	return result;
+}
+var WHITE_SPACE_REGEX = /[\t-\r \x85\u200E\u200F\u2028\u2029]/i;
+function parseNumberSkeletonFromString(skeleton) {
+	if (skeleton.length === 0) throw new Error("Number skeleton cannot be empty");
+	var stringTokens = skeleton.split(WHITE_SPACE_REGEX).filter(function(x) {
+		return x.length > 0;
+	});
+	var tokens = [];
+	for (var _i = 0, stringTokens_1 = stringTokens; _i < stringTokens_1.length; _i++) {
+		var stemAndOptions = stringTokens_1[_i].split("/");
+		if (stemAndOptions.length === 0) throw new Error("Invalid number skeleton");
+		var stem = stemAndOptions[0], options = stemAndOptions.slice(1);
+		for (var _a = 0, options_1 = options; _a < options_1.length; _a++) if (options_1[_a].length === 0) throw new Error("Invalid number skeleton");
+		tokens.push({
+			stem,
+			options
+		});
+	}
+	return tokens;
+}
+function icuUnitToEcma(unit) {
+	return unit.replace(/^(.*?)-/, "");
+}
+var FRACTION_PRECISION_REGEX = /^\.(?:(0+)(\*)?|(#+)|(0+)(#+))$/g;
+var SIGNIFICANT_PRECISION_REGEX = /^(@+)?(\+|#+)?[rs]?$/g;
+var INTEGER_WIDTH_REGEX = /(\*)(0+)|(#+)(0+)|(0+)/g;
+var CONCISE_INTEGER_WIDTH_REGEX = /^(0+)$/;
+function parseSignificantPrecision(str) {
+	var result = {};
+	if (str[str.length - 1] === "r") result.roundingPriority = "morePrecision";
+	else if (str[str.length - 1] === "s") result.roundingPriority = "lessPrecision";
+	str.replace(SIGNIFICANT_PRECISION_REGEX, function(_, g1, g2) {
+		if (typeof g2 !== "string") {
+			result.minimumSignificantDigits = g1.length;
+			result.maximumSignificantDigits = g1.length;
+		} else if (g2 === "+") result.minimumSignificantDigits = g1.length;
+		else if (g1[0] === "#") result.maximumSignificantDigits = g1.length;
+		else {
+			result.minimumSignificantDigits = g1.length;
+			result.maximumSignificantDigits = g1.length + (typeof g2 === "string" ? g2.length : 0);
+		}
+		return "";
+	});
+	return result;
+}
+function parseSign(str) {
+	switch (str) {
+		case "sign-auto": return { signDisplay: "auto" };
+		case "sign-accounting":
+		case "()": return { currencySign: "accounting" };
+		case "sign-always":
+		case "+!": return { signDisplay: "always" };
+		case "sign-accounting-always":
+		case "()!": return {
+			signDisplay: "always",
+			currencySign: "accounting"
+		};
+		case "sign-except-zero":
+		case "+?": return { signDisplay: "exceptZero" };
+		case "sign-accounting-except-zero":
+		case "()?": return {
+			signDisplay: "exceptZero",
+			currencySign: "accounting"
+		};
+		case "sign-never":
+		case "+_": return { signDisplay: "never" };
+	}
+}
+function parseConciseScientificAndEngineeringStem(stem) {
+	var result;
+	if (stem[0] === "E" && stem[1] === "E") {
+		result = { notation: "engineering" };
+		stem = stem.slice(2);
+	} else if (stem[0] === "E") {
+		result = { notation: "scientific" };
+		stem = stem.slice(1);
+	}
+	if (result) {
+		var signDisplay = stem.slice(0, 2);
+		if (signDisplay === "+!") {
+			result.signDisplay = "always";
+			stem = stem.slice(2);
+		} else if (signDisplay === "+?") {
+			result.signDisplay = "exceptZero";
+			stem = stem.slice(2);
+		}
+		if (!CONCISE_INTEGER_WIDTH_REGEX.test(stem)) throw new Error("Malformed concise eng/scientific notation");
+		result.minimumIntegerDigits = stem.length;
+	}
+	return result;
+}
+function parseNotationOptions(opt) {
+	var result = {};
+	var signOpts = parseSign(opt);
+	if (signOpts) return signOpts;
+	return result;
+}
+function parseNumberSkeleton(tokens) {
+	var result = {};
+	for (var _i = 0, tokens_1 = tokens; _i < tokens_1.length; _i++) {
+		var token = tokens_1[_i];
+		switch (token.stem) {
+			case "percent":
+			case "%":
+				result.style = "percent";
+				continue;
+			case "%x100":
+				result.style = "percent";
+				result.scale = 100;
+				continue;
+			case "currency":
+				result.style = "currency";
+				result.currency = token.options[0];
+				continue;
+			case "group-off":
+			case ",_":
+				result.useGrouping = false;
+				continue;
+			case "precision-integer":
+			case ".":
+				result.maximumFractionDigits = 0;
+				continue;
+			case "measure-unit":
+			case "unit":
+				result.style = "unit";
+				result.unit = icuUnitToEcma(token.options[0]);
+				continue;
+			case "compact-short":
+			case "K":
+				result.notation = "compact";
+				result.compactDisplay = "short";
+				continue;
+			case "compact-long":
+			case "KK":
+				result.notation = "compact";
+				result.compactDisplay = "long";
+				continue;
+			case "scientific":
+				result = __assign(__assign(__assign({}, result), { notation: "scientific" }), token.options.reduce(function(all, opt) {
+					return __assign(__assign({}, all), parseNotationOptions(opt));
+				}, {}));
+				continue;
+			case "engineering":
+				result = __assign(__assign(__assign({}, result), { notation: "engineering" }), token.options.reduce(function(all, opt) {
+					return __assign(__assign({}, all), parseNotationOptions(opt));
+				}, {}));
+				continue;
+			case "notation-simple":
+				result.notation = "standard";
+				continue;
+			case "unit-width-narrow":
+				result.currencyDisplay = "narrowSymbol";
+				result.unitDisplay = "narrow";
+				continue;
+			case "unit-width-short":
+				result.currencyDisplay = "code";
+				result.unitDisplay = "short";
+				continue;
+			case "unit-width-full-name":
+				result.currencyDisplay = "name";
+				result.unitDisplay = "long";
+				continue;
+			case "unit-width-iso-code":
+				result.currencyDisplay = "symbol";
+				continue;
+			case "scale":
+				result.scale = parseFloat(token.options[0]);
+				continue;
+			case "rounding-mode-floor":
+				result.roundingMode = "floor";
+				continue;
+			case "rounding-mode-ceiling":
+				result.roundingMode = "ceil";
+				continue;
+			case "rounding-mode-down":
+				result.roundingMode = "trunc";
+				continue;
+			case "rounding-mode-up":
+				result.roundingMode = "expand";
+				continue;
+			case "rounding-mode-half-even":
+				result.roundingMode = "halfEven";
+				continue;
+			case "rounding-mode-half-down":
+				result.roundingMode = "halfTrunc";
+				continue;
+			case "rounding-mode-half-up":
+				result.roundingMode = "halfExpand";
+				continue;
+			case "integer-width":
+				if (token.options.length > 1) throw new RangeError("integer-width stems only accept a single optional option");
+				token.options[0].replace(INTEGER_WIDTH_REGEX, function(_, g1, g2, g3, g4, g5) {
+					if (g1) result.minimumIntegerDigits = g2.length;
+					else if (g3 && g4) throw new Error("We currently do not support maximum integer digits");
+					else if (g5) throw new Error("We currently do not support exact integer digits");
+					return "";
+				});
+				continue;
+		}
+		if (CONCISE_INTEGER_WIDTH_REGEX.test(token.stem)) {
+			result.minimumIntegerDigits = token.stem.length;
+			continue;
+		}
+		if (FRACTION_PRECISION_REGEX.test(token.stem)) {
+			if (token.options.length > 1) throw new RangeError("Fraction-precision stems only accept a single optional option");
+			token.stem.replace(FRACTION_PRECISION_REGEX, function(_, g1, g2, g3, g4, g5) {
+				if (g2 === "*") result.minimumFractionDigits = g1.length;
+				else if (g3 && g3[0] === "#") result.maximumFractionDigits = g3.length;
+				else if (g4 && g5) {
+					result.minimumFractionDigits = g4.length;
+					result.maximumFractionDigits = g4.length + g5.length;
+				} else {
+					result.minimumFractionDigits = g1.length;
+					result.maximumFractionDigits = g1.length;
+				}
+				return "";
+			});
+			var opt = token.options[0];
+			if (opt === "w") result = __assign(__assign({}, result), { trailingZeroDisplay: "stripIfInteger" });
+			else if (opt) result = __assign(__assign({}, result), parseSignificantPrecision(opt));
+			continue;
+		}
+		if (SIGNIFICANT_PRECISION_REGEX.test(token.stem)) {
+			result = __assign(__assign({}, result), parseSignificantPrecision(token.stem));
+			continue;
+		}
+		var signOpts = parseSign(token.stem);
+		if (signOpts) result = __assign(__assign({}, result), signOpts);
+		var conciseScientificAndEngineeringOpts = parseConciseScientificAndEngineeringStem(token.stem);
+		if (conciseScientificAndEngineeringOpts) result = __assign(__assign({}, result), conciseScientificAndEngineeringOpts);
+	}
+	return result;
+}
+var timeData = {
+	"001": ["H", "h"],
+	"419": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"AC": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"AD": ["H", "hB"],
+	"AE": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"AF": [
+		"H",
+		"hb",
+		"hB",
+		"h"
+	],
+	"AG": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"AI": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"AL": [
+		"h",
+		"H",
+		"hB"
+	],
+	"AM": ["H", "hB"],
+	"AO": ["H", "hB"],
+	"AR": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"AS": ["h", "H"],
+	"AT": ["H", "hB"],
+	"AU": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"AW": ["H", "hB"],
+	"AX": ["H"],
+	"AZ": [
+		"H",
+		"hB",
+		"h"
+	],
+	"BA": [
+		"H",
+		"hB",
+		"h"
+	],
+	"BB": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"BD": [
+		"h",
+		"hB",
+		"H"
+	],
+	"BE": ["H", "hB"],
+	"BF": ["H", "hB"],
+	"BG": [
+		"H",
+		"hB",
+		"h"
+	],
+	"BH": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"BI": ["H", "h"],
+	"BJ": ["H", "hB"],
+	"BL": ["H", "hB"],
+	"BM": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"BN": [
+		"hb",
+		"hB",
+		"h",
+		"H"
+	],
+	"BO": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"BQ": ["H"],
+	"BR": ["H", "hB"],
+	"BS": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"BT": ["h", "H"],
+	"BW": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"BY": ["H", "h"],
+	"BZ": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"CA": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"CC": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"CD": ["hB", "H"],
+	"CF": [
+		"H",
+		"h",
+		"hB"
+	],
+	"CG": ["H", "hB"],
+	"CH": [
+		"H",
+		"hB",
+		"h"
+	],
+	"CI": ["H", "hB"],
+	"CK": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"CL": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"CM": [
+		"H",
+		"h",
+		"hB"
+	],
+	"CN": [
+		"H",
+		"hB",
+		"hb",
+		"h"
+	],
+	"CO": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"CP": ["H"],
+	"CR": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"CU": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"CV": ["H", "hB"],
+	"CW": ["H", "hB"],
+	"CX": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"CY": [
+		"h",
+		"H",
+		"hb",
+		"hB"
+	],
+	"CZ": ["H"],
+	"DE": ["H", "hB"],
+	"DG": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"DJ": ["h", "H"],
+	"DK": ["H"],
+	"DM": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"DO": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"DZ": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"EA": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"EC": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"EE": ["H", "hB"],
+	"EG": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"EH": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"ER": ["h", "H"],
+	"ES": [
+		"H",
+		"hB",
+		"h",
+		"hb"
+	],
+	"ET": [
+		"hB",
+		"hb",
+		"h",
+		"H"
+	],
+	"FI": ["H"],
+	"FJ": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"FK": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"FM": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"FO": ["H", "h"],
+	"FR": ["H", "hB"],
+	"GA": ["H", "hB"],
+	"GB": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"GD": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"GE": [
+		"H",
+		"hB",
+		"h"
+	],
+	"GF": ["H", "hB"],
+	"GG": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"GH": ["h", "H"],
+	"GI": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"GL": ["H", "h"],
+	"GM": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"GN": ["H", "hB"],
+	"GP": ["H", "hB"],
+	"GQ": [
+		"H",
+		"hB",
+		"h",
+		"hb"
+	],
+	"GR": [
+		"h",
+		"H",
+		"hb",
+		"hB"
+	],
+	"GT": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"GU": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"GW": ["H", "hB"],
+	"GY": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"HK": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"HN": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"HR": ["H", "hB"],
+	"HU": ["H", "h"],
+	"IC": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"ID": ["H"],
+	"IE": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"IL": ["H", "hB"],
+	"IM": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"IN": ["h", "H"],
+	"IO": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"IQ": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"IR": ["hB", "H"],
+	"IS": ["H"],
+	"IT": ["H", "hB"],
+	"JE": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"JM": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"JO": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"JP": [
+		"H",
+		"K",
+		"h"
+	],
+	"KE": [
+		"hB",
+		"hb",
+		"H",
+		"h"
+	],
+	"KG": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"KH": [
+		"hB",
+		"h",
+		"H",
+		"hb"
+	],
+	"KI": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"KM": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"KN": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"KP": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"KR": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"KW": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"KY": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"KZ": ["H", "hB"],
+	"LA": [
+		"H",
+		"hb",
+		"hB",
+		"h"
+	],
+	"LB": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"LC": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"LI": [
+		"H",
+		"hB",
+		"h"
+	],
+	"LK": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"LR": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"LS": ["h", "H"],
+	"LT": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"LU": [
+		"H",
+		"h",
+		"hB"
+	],
+	"LV": [
+		"H",
+		"hB",
+		"hb",
+		"h"
+	],
+	"LY": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"MA": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"MC": ["H", "hB"],
+	"MD": ["H", "hB"],
+	"ME": [
+		"H",
+		"hB",
+		"h"
+	],
+	"MF": ["H", "hB"],
+	"MG": ["H", "h"],
+	"MH": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"MK": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"ML": ["H"],
+	"MM": [
+		"hB",
+		"hb",
+		"H",
+		"h"
+	],
+	"MN": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"MO": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"MP": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"MQ": ["H", "hB"],
+	"MR": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"MS": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"MT": ["H", "h"],
+	"MU": ["H", "h"],
+	"MV": ["H", "h"],
+	"MW": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"MX": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"MY": [
+		"hb",
+		"hB",
+		"h",
+		"H"
+	],
+	"MZ": ["H", "hB"],
+	"NA": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"NC": ["H", "hB"],
+	"NE": ["H"],
+	"NF": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"NG": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"NI": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"NL": ["H", "hB"],
+	"NO": ["H", "h"],
+	"NP": [
+		"H",
+		"h",
+		"hB"
+	],
+	"NR": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"NU": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"NZ": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"OM": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"PA": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"PE": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"PF": [
+		"H",
+		"h",
+		"hB"
+	],
+	"PG": ["h", "H"],
+	"PH": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"PK": [
+		"h",
+		"hB",
+		"H"
+	],
+	"PL": ["H", "h"],
+	"PM": ["H", "hB"],
+	"PN": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"PR": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"PS": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"PT": ["H", "hB"],
+	"PW": ["h", "H"],
+	"PY": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"QA": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"RE": ["H", "hB"],
+	"RO": ["H", "hB"],
+	"RS": [
+		"H",
+		"hB",
+		"h"
+	],
+	"RU": ["H"],
+	"RW": ["H", "h"],
+	"SA": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"SB": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"SC": [
+		"H",
+		"h",
+		"hB"
+	],
+	"SD": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"SE": ["H"],
+	"SG": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"SH": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"SI": ["H", "hB"],
+	"SJ": ["H"],
+	"SK": ["H"],
+	"SL": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"SM": [
+		"H",
+		"h",
+		"hB"
+	],
+	"SN": [
+		"H",
+		"h",
+		"hB"
+	],
+	"SO": ["h", "H"],
+	"SR": ["H", "hB"],
+	"SS": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"ST": ["H", "hB"],
+	"SV": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"SX": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"SY": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"SZ": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"TA": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"TC": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"TD": [
+		"h",
+		"H",
+		"hB"
+	],
+	"TF": [
+		"H",
+		"h",
+		"hB"
+	],
+	"TG": ["H", "hB"],
+	"TH": ["H", "h"],
+	"TJ": ["H", "h"],
+	"TL": [
+		"H",
+		"hB",
+		"hb",
+		"h"
+	],
+	"TM": ["H", "h"],
+	"TN": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"TO": ["h", "H"],
+	"TR": ["H", "hB"],
+	"TT": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"TW": [
+		"hB",
+		"hb",
+		"h",
+		"H"
+	],
+	"TZ": [
+		"hB",
+		"hb",
+		"H",
+		"h"
+	],
+	"UA": [
+		"H",
+		"hB",
+		"h"
+	],
+	"UG": [
+		"hB",
+		"hb",
+		"H",
+		"h"
+	],
+	"UM": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"US": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"UY": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"UZ": [
+		"H",
+		"hB",
+		"h"
+	],
+	"VA": [
+		"H",
+		"h",
+		"hB"
+	],
+	"VC": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"VE": [
+		"h",
+		"H",
+		"hB",
+		"hb"
+	],
+	"VG": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"VI": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"VN": ["H", "h"],
+	"VU": ["h", "H"],
+	"WF": ["H", "hB"],
+	"WS": ["h", "H"],
+	"XK": [
+		"H",
+		"hB",
+		"h"
+	],
+	"YE": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"YT": ["H", "hB"],
+	"ZA": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"ZM": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"ZW": ["H", "h"],
+	"af-ZA": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"ar-001": [
+		"h",
+		"hB",
+		"hb",
+		"H"
+	],
+	"ca-ES": [
+		"H",
+		"h",
+		"hB"
+	],
+	"en-001": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"en-HK": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"en-IL": [
+		"H",
+		"h",
+		"hb",
+		"hB"
+	],
+	"en-MY": [
+		"h",
+		"hb",
+		"H",
+		"hB"
+	],
+	"es-BR": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"es-ES": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"es-GQ": [
+		"H",
+		"h",
+		"hB",
+		"hb"
+	],
+	"fr-CA": [
+		"H",
+		"h",
+		"hB"
+	],
+	"gl-ES": [
+		"H",
+		"h",
+		"hB"
+	],
+	"gu-IN": [
+		"hB",
+		"hb",
+		"h",
+		"H"
+	],
+	"hi-IN": [
+		"hB",
+		"h",
+		"H"
+	],
+	"it-CH": [
+		"H",
+		"h",
+		"hB"
+	],
+	"it-IT": [
+		"H",
+		"h",
+		"hB"
+	],
+	"kn-IN": [
+		"hB",
+		"h",
+		"H"
+	],
+	"ml-IN": [
+		"hB",
+		"h",
+		"H"
+	],
+	"mr-IN": [
+		"hB",
+		"hb",
+		"h",
+		"H"
+	],
+	"pa-IN": [
+		"hB",
+		"hb",
+		"h",
+		"H"
+	],
+	"ta-IN": [
+		"hB",
+		"h",
+		"hb",
+		"H"
+	],
+	"te-IN": [
+		"hB",
+		"h",
+		"H"
+	],
+	"zu-ZA": [
+		"H",
+		"hB",
+		"hb",
+		"h"
+	]
+};
+function getBestPattern(skeleton, locale) {
+	var skeletonCopy = "";
+	for (var patternPos = 0; patternPos < skeleton.length; patternPos++) {
+		var patternChar = skeleton.charAt(patternPos);
+		if (patternChar === "j") {
+			var extraLength = 0;
+			while (patternPos + 1 < skeleton.length && skeleton.charAt(patternPos + 1) === patternChar) {
+				extraLength++;
+				patternPos++;
+			}
+			var hourLen = 1 + (extraLength & 1);
+			var dayPeriodLen = extraLength < 2 ? 1 : 3 + (extraLength >> 1);
+			var dayPeriodChar = "a";
+			var hourChar = getDefaultHourSymbolFromLocale(locale);
+			if (hourChar == "H" || hourChar == "k") dayPeriodLen = 0;
+			while (dayPeriodLen-- > 0) skeletonCopy += dayPeriodChar;
+			while (hourLen-- > 0) skeletonCopy = hourChar + skeletonCopy;
+		} else if (patternChar === "J") skeletonCopy += "H";
+		else skeletonCopy += patternChar;
+	}
+	return skeletonCopy;
+}
+function getDefaultHourSymbolFromLocale(locale) {
+	var hourCycle = locale.hourCycle;
+	if (hourCycle === void 0 && locale.hourCycles && locale.hourCycles.length) hourCycle = locale.hourCycles[0];
+	if (hourCycle) switch (hourCycle) {
+		case "h24": return "k";
+		case "h23": return "H";
+		case "h12": return "h";
+		case "h11": return "K";
+		default: throw new Error("Invalid hourCycle");
+	}
+	var languageTag = locale.language;
+	var regionTag;
+	if (languageTag !== "root") regionTag = locale.maximize().region;
+	return (timeData[regionTag || ""] || timeData[languageTag || ""] || timeData["".concat(languageTag, "-001")] || timeData["001"])[0];
+}
+var SPACE_SEPARATOR_START_REGEX = new RegExp("^".concat(SPACE_SEPARATOR_REGEX.source, "*"));
+var SPACE_SEPARATOR_END_REGEX = new RegExp("".concat(SPACE_SEPARATOR_REGEX.source, "*$"));
+function createLocation(start, end) {
+	return {
+		start,
+		end
+	};
+}
+var hasNativeFromEntries = !!Object.fromEntries;
+var hasTrimStart = !!String.prototype.trimStart;
+var hasTrimEnd = !!String.prototype.trimEnd;
+var fromEntries = hasNativeFromEntries ? Object.fromEntries : function fromEntries(entries) {
+	var obj = {};
+	for (var _i = 0, entries_1 = entries; _i < entries_1.length; _i++) {
+		var _a = entries_1[_i], k = _a[0];
+		obj[k] = _a[1];
+	}
+	return obj;
+};
+var trimStart = hasTrimStart ? function trimStart(s) {
+	return s.trimStart();
+} : function trimStart(s) {
+	return s.replace(SPACE_SEPARATOR_START_REGEX, "");
+};
+var trimEnd = hasTrimEnd ? function trimEnd(s) {
+	return s.trimEnd();
+} : function trimEnd(s) {
+	return s.replace(SPACE_SEPARATOR_END_REGEX, "");
+};
+var IDENTIFIER_PREFIX_RE = /* @__PURE__ */ new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+function matchIdentifierAtIndex(s, index) {
+	var _a;
+	IDENTIFIER_PREFIX_RE.lastIndex = index;
+	return (_a = IDENTIFIER_PREFIX_RE.exec(s)[1]) !== null && _a !== void 0 ? _a : "";
+}
+var Parser = function() {
+	function Parser(message, options) {
+		if (options === void 0) options = {};
+		this.message = message;
+		this.position = {
+			offset: 0,
+			line: 1,
+			column: 1
+		};
+		this.ignoreTag = !!options.ignoreTag;
+		this.locale = options.locale;
+		this.requiresOtherClause = !!options.requiresOtherClause;
+		this.shouldParseSkeletons = !!options.shouldParseSkeletons;
+	}
+	Parser.prototype.parse = function() {
+		if (this.offset() !== 0) throw Error("parser can only be used once");
+		return this.parseMessage(0, "", false);
+	};
+	Parser.prototype.parseMessage = function(nestingLevel, parentArgType, expectingCloseTag) {
+		var elements = [];
+		while (!this.isEOF()) {
+			var char = this.char();
+			if (char === 123) {
+				var result = this.parseArgument(nestingLevel, expectingCloseTag);
+				if (result.err) return result;
+				elements.push(result.val);
+			} else if (char === 125 && nestingLevel > 0) break;
+			else if (char === 35 && (parentArgType === "plural" || parentArgType === "selectordinal")) {
+				var position = this.clonePosition();
+				this.bump();
+				elements.push({
+					type: TYPE.pound,
+					location: createLocation(position, this.clonePosition())
+				});
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
+			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+				var result = this.parseTag(nestingLevel, parentArgType);
+				if (result.err) return result;
+				elements.push(result.val);
+			} else {
+				var result = this.parseLiteral(nestingLevel, parentArgType);
+				if (result.err) return result;
+				elements.push(result.val);
+			}
+		}
+		return {
+			val: elements,
+			err: null
+		};
+	};
+	Parser.prototype.parseTag = function(nestingLevel, parentArgType) {
+		var startPosition = this.clonePosition();
+		this.bump();
+		var tagName = this.parseTagName();
+		this.bumpSpace();
+		if (this.bumpIf("/>")) return {
+			val: {
+				type: TYPE.literal,
+				value: "<".concat(tagName, "/>"),
+				location: createLocation(startPosition, this.clonePosition())
+			},
+			err: null
+		};
+		else if (this.bumpIf(">")) {
+			var childrenResult = this.parseMessage(nestingLevel + 1, parentArgType, true);
+			if (childrenResult.err) return childrenResult;
+			var children = childrenResult.val;
+			var endTagStartPosition = this.clonePosition();
+			if (this.bumpIf("</")) {
+				if (this.isEOF() || !_isAlpha(this.char())) return this.error(ErrorKind.INVALID_TAG, createLocation(endTagStartPosition, this.clonePosition()));
+				var closingTagNameStartPosition = this.clonePosition();
+				if (tagName !== this.parseTagName()) return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(closingTagNameStartPosition, this.clonePosition()));
+				this.bumpSpace();
+				if (!this.bumpIf(">")) return this.error(ErrorKind.INVALID_TAG, createLocation(endTagStartPosition, this.clonePosition()));
+				return {
+					val: {
+						type: TYPE.tag,
+						value: tagName,
+						children,
+						location: createLocation(startPosition, this.clonePosition())
+					},
+					err: null
+				};
+			} else return this.error(ErrorKind.UNCLOSED_TAG, createLocation(startPosition, this.clonePosition()));
+		} else return this.error(ErrorKind.INVALID_TAG, createLocation(startPosition, this.clonePosition()));
+	};
+	Parser.prototype.parseTagName = function() {
+		var startOffset = this.offset();
+		this.bump();
+		while (!this.isEOF() && _isPotentialElementNameChar(this.char())) this.bump();
+		return this.message.slice(startOffset, this.offset());
+	};
+	Parser.prototype.parseLiteral = function(nestingLevel, parentArgType) {
+		var start = this.clonePosition();
+		var value = "";
+		while (true) {
+			var parseQuoteResult = this.tryParseQuote(parentArgType);
+			if (parseQuoteResult) {
+				value += parseQuoteResult;
+				continue;
+			}
+			var parseUnquotedResult = this.tryParseUnquoted(nestingLevel, parentArgType);
+			if (parseUnquotedResult) {
+				value += parseUnquotedResult;
+				continue;
+			}
+			var parseLeftAngleResult = this.tryParseLeftAngleBracket();
+			if (parseLeftAngleResult) {
+				value += parseLeftAngleResult;
+				continue;
+			}
+			break;
+		}
+		var location = createLocation(start, this.clonePosition());
+		return {
+			val: {
+				type: TYPE.literal,
+				value,
+				location
+			},
+			err: null
+		};
+	};
+	Parser.prototype.tryParseLeftAngleBracket = function() {
+		if (!this.isEOF() && this.char() === 60 && (this.ignoreTag || !_isAlphaOrSlash(this.peek() || 0))) {
+			this.bump();
+			return "<";
+		}
+		return null;
+	};
+	Parser.prototype.tryParseQuote = function(parentArgType) {
+		if (this.isEOF() || this.char() !== 39) return null;
+		switch (this.peek()) {
+			case 39:
+				this.bump();
+				this.bump();
+				return "'";
+			case 123:
+			case 60:
+			case 62:
+			case 125: break;
+			case 35:
+				if (parentArgType === "plural" || parentArgType === "selectordinal") break;
+				return null;
+			default: return null;
+		}
+		this.bump();
+		var codePoints = [this.char()];
+		this.bump();
+		while (!this.isEOF()) {
+			var ch = this.char();
+			if (ch === 39) if (this.peek() === 39) {
+				codePoints.push(39);
+				this.bump();
+			} else {
+				this.bump();
+				break;
+			}
+			else codePoints.push(ch);
+			this.bump();
+		}
+		return String.fromCodePoint.apply(String, codePoints);
+	};
+	Parser.prototype.tryParseUnquoted = function(nestingLevel, parentArgType) {
+		if (this.isEOF()) return null;
+		var ch = this.char();
+		if (ch === 60 || ch === 123 || ch === 35 && (parentArgType === "plural" || parentArgType === "selectordinal") || ch === 125 && nestingLevel > 0) return null;
+		else {
+			this.bump();
+			return String.fromCodePoint(ch);
+		}
+	};
+	Parser.prototype.parseArgument = function(nestingLevel, expectingCloseTag) {
+		var openingBracePosition = this.clonePosition();
+		this.bump();
+		this.bumpSpace();
+		if (this.isEOF()) return this.error(ErrorKind.EXPECT_ARGUMENT_CLOSING_BRACE, createLocation(openingBracePosition, this.clonePosition()));
+		if (this.char() === 125) {
+			this.bump();
+			return this.error(ErrorKind.EMPTY_ARGUMENT, createLocation(openingBracePosition, this.clonePosition()));
+		}
+		var value = this.parseIdentifierIfPossible().value;
+		if (!value) return this.error(ErrorKind.MALFORMED_ARGUMENT, createLocation(openingBracePosition, this.clonePosition()));
+		this.bumpSpace();
+		if (this.isEOF()) return this.error(ErrorKind.EXPECT_ARGUMENT_CLOSING_BRACE, createLocation(openingBracePosition, this.clonePosition()));
+		switch (this.char()) {
+			case 125:
+				this.bump();
+				return {
+					val: {
+						type: TYPE.argument,
+						value,
+						location: createLocation(openingBracePosition, this.clonePosition())
+					},
+					err: null
+				};
+			case 44:
+				this.bump();
+				this.bumpSpace();
+				if (this.isEOF()) return this.error(ErrorKind.EXPECT_ARGUMENT_CLOSING_BRACE, createLocation(openingBracePosition, this.clonePosition()));
+				return this.parseArgumentOptions(nestingLevel, expectingCloseTag, value, openingBracePosition);
+			default: return this.error(ErrorKind.MALFORMED_ARGUMENT, createLocation(openingBracePosition, this.clonePosition()));
+		}
+	};
+	Parser.prototype.parseIdentifierIfPossible = function() {
+		var startingPosition = this.clonePosition();
+		var startOffset = this.offset();
+		var value = matchIdentifierAtIndex(this.message, startOffset);
+		var endOffset = startOffset + value.length;
+		this.bumpTo(endOffset);
+		return {
+			value,
+			location: createLocation(startingPosition, this.clonePosition())
+		};
+	};
+	Parser.prototype.parseArgumentOptions = function(nestingLevel, expectingCloseTag, value, openingBracePosition) {
+		var _a;
+		var typeStartPosition = this.clonePosition();
+		var argType = this.parseIdentifierIfPossible().value;
+		var typeEndPosition = this.clonePosition();
+		switch (argType) {
+			case "": return this.error(ErrorKind.EXPECT_ARGUMENT_TYPE, createLocation(typeStartPosition, typeEndPosition));
+			case "number":
+			case "date":
+			case "time":
+				this.bumpSpace();
+				var styleAndLocation = null;
+				if (this.bumpIf(",")) {
+					this.bumpSpace();
+					var styleStartPosition = this.clonePosition();
+					var result = this.parseSimpleArgStyleIfPossible();
+					if (result.err) return result;
+					var style = trimEnd(result.val);
+					if (style.length === 0) return this.error(ErrorKind.EXPECT_ARGUMENT_STYLE, createLocation(this.clonePosition(), this.clonePosition()));
+					styleAndLocation = {
+						style,
+						styleLocation: createLocation(styleStartPosition, this.clonePosition())
+					};
+				}
+				var argCloseResult = this.tryParseArgumentClose(openingBracePosition);
+				if (argCloseResult.err) return argCloseResult;
+				var location_1 = createLocation(openingBracePosition, this.clonePosition());
+				if (styleAndLocation && styleAndLocation.style.startsWith("::")) {
+					var skeleton = trimStart(styleAndLocation.style.slice(2));
+					if (argType === "number") {
+						var result = this.parseNumberSkeletonFromString(skeleton, styleAndLocation.styleLocation);
+						if (result.err) return result;
+						return {
+							val: {
+								type: TYPE.number,
+								value,
+								location: location_1,
+								style: result.val
+							},
+							err: null
+						};
+					} else {
+						if (skeleton.length === 0) return this.error(ErrorKind.EXPECT_DATE_TIME_SKELETON, location_1);
+						var dateTimePattern = skeleton;
+						if (this.locale) dateTimePattern = getBestPattern(skeleton, this.locale);
+						var style = {
+							type: SKELETON_TYPE.dateTime,
+							pattern: dateTimePattern,
+							location: styleAndLocation.styleLocation,
+							parsedOptions: this.shouldParseSkeletons ? parseDateTimeSkeleton(dateTimePattern) : {}
+						};
+						return {
+							val: {
+								type: argType === "date" ? TYPE.date : TYPE.time,
+								value,
+								location: location_1,
+								style
+							},
+							err: null
+						};
+					}
+				}
+				return {
+					val: {
+						type: argType === "number" ? TYPE.number : argType === "date" ? TYPE.date : TYPE.time,
+						value,
+						location: location_1,
+						style: (_a = styleAndLocation === null || styleAndLocation === void 0 ? void 0 : styleAndLocation.style) !== null && _a !== void 0 ? _a : null
+					},
+					err: null
+				};
+			case "plural":
+			case "selectordinal":
+			case "select":
+				var typeEndPosition_1 = this.clonePosition();
+				this.bumpSpace();
+				if (!this.bumpIf(",")) return this.error(ErrorKind.EXPECT_SELECT_ARGUMENT_OPTIONS, createLocation(typeEndPosition_1, __assign({}, typeEndPosition_1)));
+				this.bumpSpace();
+				var identifierAndLocation = this.parseIdentifierIfPossible();
+				var pluralOffset = 0;
+				if (argType !== "select" && identifierAndLocation.value === "offset") {
+					if (!this.bumpIf(":")) return this.error(ErrorKind.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE, createLocation(this.clonePosition(), this.clonePosition()));
+					this.bumpSpace();
+					var result = this.tryParseDecimalInteger(ErrorKind.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE, ErrorKind.INVALID_PLURAL_ARGUMENT_OFFSET_VALUE);
+					if (result.err) return result;
+					this.bumpSpace();
+					identifierAndLocation = this.parseIdentifierIfPossible();
+					pluralOffset = result.val;
+				}
+				var optionsResult = this.tryParsePluralOrSelectOptions(nestingLevel, argType, expectingCloseTag, identifierAndLocation);
+				if (optionsResult.err) return optionsResult;
+				var argCloseResult = this.tryParseArgumentClose(openingBracePosition);
+				if (argCloseResult.err) return argCloseResult;
+				var location_2 = createLocation(openingBracePosition, this.clonePosition());
+				if (argType === "select") return {
+					val: {
+						type: TYPE.select,
+						value,
+						options: fromEntries(optionsResult.val),
+						location: location_2
+					},
+					err: null
+				};
+				else return {
+					val: {
+						type: TYPE.plural,
+						value,
+						options: fromEntries(optionsResult.val),
+						offset: pluralOffset,
+						pluralType: argType === "plural" ? "cardinal" : "ordinal",
+						location: location_2
+					},
+					err: null
+				};
+			default: return this.error(ErrorKind.INVALID_ARGUMENT_TYPE, createLocation(typeStartPosition, typeEndPosition));
+		}
+	};
+	Parser.prototype.tryParseArgumentClose = function(openingBracePosition) {
+		if (this.isEOF() || this.char() !== 125) return this.error(ErrorKind.EXPECT_ARGUMENT_CLOSING_BRACE, createLocation(openingBracePosition, this.clonePosition()));
+		this.bump();
+		return {
+			val: true,
+			err: null
+		};
+	};
+	Parser.prototype.parseSimpleArgStyleIfPossible = function() {
+		var nestedBraces = 0;
+		var startPosition = this.clonePosition();
+		while (!this.isEOF()) switch (this.char()) {
+			case 39:
+				this.bump();
+				var apostrophePosition = this.clonePosition();
+				if (!this.bumpUntil("'")) return this.error(ErrorKind.UNCLOSED_QUOTE_IN_ARGUMENT_STYLE, createLocation(apostrophePosition, this.clonePosition()));
+				this.bump();
+				break;
+			case 123:
+				nestedBraces += 1;
+				this.bump();
+				break;
+			case 125:
+				if (nestedBraces > 0) nestedBraces -= 1;
+				else return {
+					val: this.message.slice(startPosition.offset, this.offset()),
+					err: null
+				};
+				break;
+			default:
+				this.bump();
+				break;
+		}
+		return {
+			val: this.message.slice(startPosition.offset, this.offset()),
+			err: null
+		};
+	};
+	Parser.prototype.parseNumberSkeletonFromString = function(skeleton, location) {
+		var tokens = [];
+		try {
+			tokens = parseNumberSkeletonFromString(skeleton);
+		} catch (_a) {
+			return this.error(ErrorKind.INVALID_NUMBER_SKELETON, location);
+		}
+		return {
+			val: {
+				type: SKELETON_TYPE.number,
+				tokens,
+				location,
+				parsedOptions: this.shouldParseSkeletons ? parseNumberSkeleton(tokens) : {}
+			},
+			err: null
+		};
+	};
+	Parser.prototype.tryParsePluralOrSelectOptions = function(nestingLevel, parentArgType, expectCloseTag, parsedFirstIdentifier) {
+		var _a;
+		var hasOtherClause = false;
+		var options = [];
+		var parsedSelectors = /* @__PURE__ */ new Set();
+		var selector = parsedFirstIdentifier.value, selectorLocation = parsedFirstIdentifier.location;
+		while (true) {
+			if (selector.length === 0) {
+				var startPosition = this.clonePosition();
+				if (parentArgType !== "select" && this.bumpIf("=")) {
+					var result = this.tryParseDecimalInteger(ErrorKind.EXPECT_PLURAL_ARGUMENT_SELECTOR, ErrorKind.INVALID_PLURAL_ARGUMENT_SELECTOR);
+					if (result.err) return result;
+					selectorLocation = createLocation(startPosition, this.clonePosition());
+					selector = this.message.slice(startPosition.offset, this.offset());
+				} else break;
+			}
+			if (parsedSelectors.has(selector)) return this.error(parentArgType === "select" ? ErrorKind.DUPLICATE_SELECT_ARGUMENT_SELECTOR : ErrorKind.DUPLICATE_PLURAL_ARGUMENT_SELECTOR, selectorLocation);
+			if (selector === "other") hasOtherClause = true;
+			this.bumpSpace();
+			var openingBracePosition = this.clonePosition();
+			if (!this.bumpIf("{")) return this.error(parentArgType === "select" ? ErrorKind.EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT : ErrorKind.EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT, createLocation(this.clonePosition(), this.clonePosition()));
+			var fragmentResult = this.parseMessage(nestingLevel + 1, parentArgType, expectCloseTag);
+			if (fragmentResult.err) return fragmentResult;
+			var argCloseResult = this.tryParseArgumentClose(openingBracePosition);
+			if (argCloseResult.err) return argCloseResult;
+			options.push([selector, {
+				value: fragmentResult.val,
+				location: createLocation(openingBracePosition, this.clonePosition())
+			}]);
+			parsedSelectors.add(selector);
+			this.bumpSpace();
+			_a = this.parseIdentifierIfPossible(), selector = _a.value, selectorLocation = _a.location;
+		}
+		if (options.length === 0) return this.error(parentArgType === "select" ? ErrorKind.EXPECT_SELECT_ARGUMENT_SELECTOR : ErrorKind.EXPECT_PLURAL_ARGUMENT_SELECTOR, createLocation(this.clonePosition(), this.clonePosition()));
+		if (this.requiresOtherClause && !hasOtherClause) return this.error(ErrorKind.MISSING_OTHER_CLAUSE, createLocation(this.clonePosition(), this.clonePosition()));
+		return {
+			val: options,
+			err: null
+		};
+	};
+	Parser.prototype.tryParseDecimalInteger = function(expectNumberError, invalidNumberError) {
+		var sign = 1;
+		var startingPosition = this.clonePosition();
+		if (this.bumpIf("+")) {} else if (this.bumpIf("-")) sign = -1;
+		var hasDigits = false;
+		var decimal = 0;
+		while (!this.isEOF()) {
+			var ch = this.char();
+			if (ch >= 48 && ch <= 57) {
+				hasDigits = true;
+				decimal = decimal * 10 + (ch - 48);
+				this.bump();
+			} else break;
+		}
+		var location = createLocation(startingPosition, this.clonePosition());
+		if (!hasDigits) return this.error(expectNumberError, location);
+		decimal *= sign;
+		if (!Number.isSafeInteger(decimal)) return this.error(invalidNumberError, location);
+		return {
+			val: decimal,
+			err: null
+		};
+	};
+	Parser.prototype.offset = function() {
+		return this.position.offset;
+	};
+	Parser.prototype.isEOF = function() {
+		return this.offset() === this.message.length;
+	};
+	Parser.prototype.clonePosition = function() {
+		return {
+			offset: this.position.offset,
+			line: this.position.line,
+			column: this.position.column
+		};
+	};
+	Parser.prototype.char = function() {
+		var offset = this.position.offset;
+		if (offset >= this.message.length) throw Error("out of bound");
+		var code = this.message.codePointAt(offset);
+		if (code === void 0) throw Error("Offset ".concat(offset, " is at invalid UTF-16 code unit boundary"));
+		return code;
+	};
+	Parser.prototype.error = function(kind, location) {
+		return {
+			val: null,
+			err: {
+				kind,
+				message: this.message,
+				location
+			}
+		};
+	};
+	Parser.prototype.bump = function() {
+		if (this.isEOF()) return;
+		var code = this.char();
+		if (code === 10) {
+			this.position.line += 1;
+			this.position.column = 1;
+			this.position.offset += 1;
+		} else {
+			this.position.column += 1;
+			this.position.offset += code < 65536 ? 1 : 2;
+		}
+	};
+	Parser.prototype.bumpIf = function(prefix) {
+		if (this.message.startsWith(prefix, this.offset())) {
+			for (var i = 0; i < prefix.length; i++) this.bump();
+			return true;
+		}
+		return false;
+	};
+	Parser.prototype.bumpUntil = function(pattern) {
+		var currentOffset = this.offset();
+		var index = this.message.indexOf(pattern, currentOffset);
+		if (index >= 0) {
+			this.bumpTo(index);
+			return true;
+		} else {
+			this.bumpTo(this.message.length);
+			return false;
+		}
+	};
+	Parser.prototype.bumpTo = function(targetOffset) {
+		if (this.offset() > targetOffset) throw Error("targetOffset ".concat(targetOffset, " must be greater than or equal to the current offset ").concat(this.offset()));
+		targetOffset = Math.min(targetOffset, this.message.length);
+		while (true) {
+			var offset = this.offset();
+			if (offset === targetOffset) break;
+			if (offset > targetOffset) throw Error("targetOffset ".concat(targetOffset, " is at invalid UTF-16 code unit boundary"));
+			this.bump();
+			if (this.isEOF()) break;
+		}
+	};
+	Parser.prototype.bumpSpace = function() {
+		while (!this.isEOF() && _isWhiteSpace(this.char())) this.bump();
+	};
+	Parser.prototype.peek = function() {
+		if (this.isEOF()) return null;
+		var code = this.char();
+		var offset = this.offset();
+		var nextCode = this.message.charCodeAt(offset + (code >= 65536 ? 2 : 1));
+		return nextCode !== null && nextCode !== void 0 ? nextCode : null;
+	};
+	return Parser;
+}();
+function _isAlpha(codepoint) {
+	return codepoint >= 97 && codepoint <= 122 || codepoint >= 65 && codepoint <= 90;
+}
+function _isAlphaOrSlash(codepoint) {
+	return _isAlpha(codepoint) || codepoint === 47;
+}
+function _isPotentialElementNameChar(c) {
+	return c === 45 || c === 46 || c >= 48 && c <= 57 || c === 95 || c >= 97 && c <= 122 || c >= 65 && c <= 90 || c == 183 || c >= 192 && c <= 214 || c >= 216 && c <= 246 || c >= 248 && c <= 893 || c >= 895 && c <= 8191 || c >= 8204 && c <= 8205 || c >= 8255 && c <= 8256 || c >= 8304 && c <= 8591 || c >= 11264 && c <= 12271 || c >= 12289 && c <= 55295 || c >= 63744 && c <= 64975 || c >= 65008 && c <= 65533 || c >= 65536 && c <= 983039;
+}
+function _isWhiteSpace(c) {
+	return c >= 9 && c <= 13 || c === 32 || c === 133 || c >= 8206 && c <= 8207 || c === 8232 || c === 8233;
+}
+function pruneLocation(els) {
+	els.forEach(function(el) {
+		delete el.location;
+		if (isSelectElement(el) || isPluralElement(el)) for (var k in el.options) {
+			delete el.options[k].location;
+			pruneLocation(el.options[k].value);
+		}
+		else if (isNumberElement(el) && isNumberSkeleton(el.style)) delete el.style.location;
+		else if ((isDateElement(el) || isTimeElement(el)) && isDateTimeSkeleton(el.style)) delete el.style.location;
+		else if (isTagElement(el)) pruneLocation(el.children);
+	});
+}
+function parse(message, opts) {
+	if (opts === void 0) opts = {};
+	opts = __assign({
+		shouldParseSkeletons: true,
+		requiresOtherClause: true
+	}, opts);
+	var result = new Parser(message, opts).parse();
+	if (result.err) {
+		var error = SyntaxError(ErrorKind[result.err.kind]);
+		error.location = result.err.location;
+		error.originalMessage = result.err.message;
+		throw error;
+	}
+	if (!(opts === null || opts === void 0 ? void 0 : opts.captureLocation)) pruneLocation(result.val);
+	return result.val;
+}
+var ErrorCode;
+(function(ErrorCode) {
+	ErrorCode["MISSING_VALUE"] = "MISSING_VALUE";
+	ErrorCode["INVALID_VALUE"] = "INVALID_VALUE";
+	ErrorCode["MISSING_INTL_API"] = "MISSING_INTL_API";
+})(ErrorCode || (ErrorCode = {}));
+var FormatError = function(_super) {
+	__extends(FormatError, _super);
+	function FormatError(msg, code, originalMessage) {
+		var _this = _super.call(this, msg) || this;
+		_this.code = code;
+		_this.originalMessage = originalMessage;
+		return _this;
+	}
+	FormatError.prototype.toString = function() {
+		return "[formatjs Error: ".concat(this.code, "] ").concat(this.message);
+	};
+	return FormatError;
+}(Error);
+var InvalidValueError = function(_super) {
+	__extends(InvalidValueError, _super);
+	function InvalidValueError(variableId, value, options, originalMessage) {
+		return _super.call(this, "Invalid values for \"".concat(variableId, "\": \"").concat(value, "\". Options are \"").concat(Object.keys(options).join("\", \""), "\""), ErrorCode.INVALID_VALUE, originalMessage) || this;
+	}
+	return InvalidValueError;
+}(FormatError);
+var InvalidValueTypeError = function(_super) {
+	__extends(InvalidValueTypeError, _super);
+	function InvalidValueTypeError(value, type, originalMessage) {
+		return _super.call(this, "Value for \"".concat(value, "\" must be of type ").concat(type), ErrorCode.INVALID_VALUE, originalMessage) || this;
+	}
+	return InvalidValueTypeError;
+}(FormatError);
+var MissingValueError = function(_super) {
+	__extends(MissingValueError, _super);
+	function MissingValueError(variableId, originalMessage) {
+		return _super.call(this, "The intl string context variable \"".concat(variableId, "\" was not provided to the string \"").concat(originalMessage, "\""), ErrorCode.MISSING_VALUE, originalMessage) || this;
+	}
+	return MissingValueError;
+}(FormatError);
+var PART_TYPE;
+(function(PART_TYPE) {
+	PART_TYPE[PART_TYPE["literal"] = 0] = "literal";
+	PART_TYPE[PART_TYPE["object"] = 1] = "object";
+})(PART_TYPE || (PART_TYPE = {}));
+function mergeLiteral(parts) {
+	if (parts.length < 2) return parts;
+	return parts.reduce(function(all, part) {
+		var lastPart = all[all.length - 1];
+		if (!lastPart || lastPart.type !== PART_TYPE.literal || part.type !== PART_TYPE.literal) all.push(part);
+		else lastPart.value += part.value;
+		return all;
+	}, []);
+}
+function isFormatXMLElementFn(el) {
+	return typeof el === "function";
+}
+function formatToParts(els, locales, formatters, formats, values, currentPluralValue, originalMessage) {
+	if (els.length === 1 && isLiteralElement(els[0])) return [{
+		type: PART_TYPE.literal,
+		value: els[0].value
+	}];
+	var result = [];
+	for (var _i = 0, els_1 = els; _i < els_1.length; _i++) {
+		var el = els_1[_i];
+		if (isLiteralElement(el)) {
+			result.push({
+				type: PART_TYPE.literal,
+				value: el.value
+			});
+			continue;
+		}
+		if (isPoundElement(el)) {
+			if (typeof currentPluralValue === "number") result.push({
+				type: PART_TYPE.literal,
+				value: formatters.getNumberFormat(locales).format(currentPluralValue)
+			});
+			continue;
+		}
+		var varName = el.value;
+		if (!(values && varName in values)) throw new MissingValueError(varName, originalMessage);
+		var value = values[varName];
+		if (isArgumentElement(el)) {
+			if (!value || typeof value === "string" || typeof value === "number") value = typeof value === "string" || typeof value === "number" ? String(value) : "";
+			result.push({
+				type: typeof value === "string" ? PART_TYPE.literal : PART_TYPE.object,
+				value
+			});
+			continue;
+		}
+		if (isDateElement(el)) {
+			var style = typeof el.style === "string" ? formats.date[el.style] : isDateTimeSkeleton(el.style) ? el.style.parsedOptions : void 0;
+			result.push({
+				type: PART_TYPE.literal,
+				value: formatters.getDateTimeFormat(locales, style).format(value)
+			});
+			continue;
+		}
+		if (isTimeElement(el)) {
+			var style = typeof el.style === "string" ? formats.time[el.style] : isDateTimeSkeleton(el.style) ? el.style.parsedOptions : formats.time.medium;
+			result.push({
+				type: PART_TYPE.literal,
+				value: formatters.getDateTimeFormat(locales, style).format(value)
+			});
+			continue;
+		}
+		if (isNumberElement(el)) {
+			var style = typeof el.style === "string" ? formats.number[el.style] : isNumberSkeleton(el.style) ? el.style.parsedOptions : void 0;
+			if (style && style.scale) value = value * (style.scale || 1);
+			result.push({
+				type: PART_TYPE.literal,
+				value: formatters.getNumberFormat(locales, style).format(value)
+			});
+			continue;
+		}
+		if (isTagElement(el)) {
+			var children = el.children, value_1 = el.value;
+			var formatFn = values[value_1];
+			if (!isFormatXMLElementFn(formatFn)) throw new InvalidValueTypeError(value_1, "function", originalMessage);
+			var chunks = formatFn(formatToParts(children, locales, formatters, formats, values, currentPluralValue).map(function(p) {
+				return p.value;
+			}));
+			if (!Array.isArray(chunks)) chunks = [chunks];
+			result.push.apply(result, chunks.map(function(c) {
+				return {
+					type: typeof c === "string" ? PART_TYPE.literal : PART_TYPE.object,
+					value: c
+				};
+			}));
+		}
+		if (isSelectElement(el)) {
+			var opt = el.options[value] || el.options.other;
+			if (!opt) throw new InvalidValueError(el.value, value, Object.keys(el.options), originalMessage);
+			result.push.apply(result, formatToParts(opt.value, locales, formatters, formats, values));
+			continue;
+		}
+		if (isPluralElement(el)) {
+			var opt = el.options["=".concat(value)];
+			if (!opt) {
+				if (!Intl.PluralRules) throw new FormatError("Intl.PluralRules is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-pluralrules\"\n", ErrorCode.MISSING_INTL_API, originalMessage);
+				var rule = formatters.getPluralRules(locales, { type: el.pluralType }).select(value - (el.offset || 0));
+				opt = el.options[rule] || el.options.other;
+			}
+			if (!opt) throw new InvalidValueError(el.value, value, Object.keys(el.options), originalMessage);
+			result.push.apply(result, formatToParts(opt.value, locales, formatters, formats, values, value - (el.offset || 0)));
+			continue;
+		}
+	}
+	return mergeLiteral(result);
+}
+function mergeConfig(c1, c2) {
+	if (!c2) return c1;
+	return __assign(__assign(__assign({}, c1), c2), Object.keys(c1).reduce(function(all, k) {
+		all[k] = __assign(__assign({}, c1[k]), c2[k]);
+		return all;
+	}, {}));
+}
+function mergeConfigs(defaultConfig, configs) {
+	if (!configs) return defaultConfig;
+	return Object.keys(defaultConfig).reduce(function(all, k) {
+		all[k] = mergeConfig(defaultConfig[k], configs[k]);
+		return all;
+	}, __assign({}, defaultConfig));
+}
+function createFastMemoizeCache(store) {
+	return { create: function() {
+		return {
+			get: function(key) {
+				return store[key];
+			},
+			set: function(key, value) {
+				store[key] = value;
+			}
+		};
+	} };
+}
+function createDefaultFormatters(cache) {
+	if (cache === void 0) cache = {
+		number: {},
+		dateTime: {},
+		pluralRules: {}
+	};
+	return {
+		getNumberFormat: memoize(function() {
+			var _a;
+			var args = [];
+			for (var _i = 0; _i < arguments.length; _i++) args[_i] = arguments[_i];
+			return new ((_a = Intl.NumberFormat).bind.apply(_a, __spreadArray([void 0], args, false)))();
+		}, {
+			cache: createFastMemoizeCache(cache.number),
+			strategy: strategies.variadic
+		}),
+		getDateTimeFormat: memoize(function() {
+			var _a;
+			var args = [];
+			for (var _i = 0; _i < arguments.length; _i++) args[_i] = arguments[_i];
+			return new ((_a = Intl.DateTimeFormat).bind.apply(_a, __spreadArray([void 0], args, false)))();
+		}, {
+			cache: createFastMemoizeCache(cache.dateTime),
+			strategy: strategies.variadic
+		}),
+		getPluralRules: memoize(function() {
+			var _a;
+			var args = [];
+			for (var _i = 0; _i < arguments.length; _i++) args[_i] = arguments[_i];
+			return new ((_a = Intl.PluralRules).bind.apply(_a, __spreadArray([void 0], args, false)))();
+		}, {
+			cache: createFastMemoizeCache(cache.pluralRules),
+			strategy: strategies.variadic
+		})
+	};
+}
+var intl_messageformat_default = function() {
+	function IntlMessageFormat(message, locales, overrideFormats, opts) {
+		if (locales === void 0) locales = IntlMessageFormat.defaultLocale;
+		var _this = this;
+		this.formatterCache = {
+			number: {},
+			dateTime: {},
+			pluralRules: {}
+		};
+		this.format = function(values) {
+			var parts = _this.formatToParts(values);
+			if (parts.length === 1) return parts[0].value;
+			var result = parts.reduce(function(all, part) {
+				if (!all.length || part.type !== PART_TYPE.literal || typeof all[all.length - 1] !== "string") all.push(part.value);
+				else all[all.length - 1] += part.value;
+				return all;
+			}, []);
+			if (result.length <= 1) return result[0] || "";
+			return result;
+		};
+		this.formatToParts = function(values) {
+			return formatToParts(_this.ast, _this.locales, _this.formatters, _this.formats, values, void 0, _this.message);
+		};
+		this.resolvedOptions = function() {
+			var _a;
+			return { locale: ((_a = _this.resolvedLocale) === null || _a === void 0 ? void 0 : _a.toString()) || Intl.NumberFormat.supportedLocalesOf(_this.locales)[0] };
+		};
+		this.getAst = function() {
+			return _this.ast;
+		};
+		this.locales = locales;
+		this.resolvedLocale = IntlMessageFormat.resolveLocale(locales);
+		if (typeof message === "string") {
+			this.message = message;
+			if (!IntlMessageFormat.__parse) throw new TypeError("IntlMessageFormat.__parse must be set to process `message` of type `string`");
+			var parseOpts = __rest(opts || {}, []);
+			this.ast = IntlMessageFormat.__parse(message, __assign(__assign({}, parseOpts), { locale: this.resolvedLocale }));
+		} else this.ast = message;
+		if (!Array.isArray(this.ast)) throw new TypeError("A message must be provided as a String or AST.");
+		this.formats = mergeConfigs(IntlMessageFormat.formats, overrideFormats);
+		this.formatters = opts && opts.formatters || createDefaultFormatters(this.formatterCache);
+	}
+	Object.defineProperty(IntlMessageFormat, "defaultLocale", {
+		get: function() {
+			if (!IntlMessageFormat.memoizedDefaultLocale) IntlMessageFormat.memoizedDefaultLocale = new Intl.NumberFormat().resolvedOptions().locale;
+			return IntlMessageFormat.memoizedDefaultLocale;
+		},
+		enumerable: false,
+		configurable: true
+	});
+	IntlMessageFormat.memoizedDefaultLocale = null;
+	IntlMessageFormat.resolveLocale = function(locales) {
+		if (typeof Intl.Locale === "undefined") return;
+		var supportedLocales = Intl.NumberFormat.supportedLocalesOf(locales);
+		if (supportedLocales.length > 0) return new Intl.Locale(supportedLocales[0]);
+		return new Intl.Locale(typeof locales === "string" ? locales : locales[0]);
+	};
+	IntlMessageFormat.__parse = parse;
+	IntlMessageFormat.formats = {
+		number: {
+			integer: { maximumFractionDigits: 0 },
+			currency: { style: "currency" },
+			percent: { style: "percent" }
+		},
+		date: {
+			short: {
+				month: "numeric",
+				day: "numeric",
+				year: "2-digit"
+			},
+			medium: {
+				month: "short",
+				day: "numeric",
+				year: "numeric"
+			},
+			long: {
+				month: "long",
+				day: "numeric",
+				year: "numeric"
+			},
+			full: {
+				weekday: "long",
+				month: "long",
+				day: "numeric",
+				year: "numeric"
+			}
+		},
+		time: {
+			short: {
+				hour: "numeric",
+				minute: "numeric"
+			},
+			medium: {
+				hour: "numeric",
+				minute: "numeric",
+				second: "numeric"
+			},
+			long: {
+				hour: "numeric",
+				minute: "numeric",
+				second: "numeric",
+				timeZoneName: "short"
+			},
+			full: {
+				hour: "numeric",
+				minute: "numeric",
+				second: "numeric",
+				timeZoneName: "short"
+			}
+		}
+	};
+	return IntlMessageFormat;
+}();
+function assignUniqueKeysToParts(formatXMLElementFn) {
+	return function(parts) {
+		return formatXMLElementFn(parts);
+	};
+}
+function assignUniqueKeysToParams(params) {
+	const result = {};
+	for (const [key, value] of Object.entries(params)) if (typeof value === "function") result[key] = assignUniqueKeysToParts(value);
+	else result[key] = value;
+	return result;
+}
+function renderRichText(text, params, locale) {
+	try {
+		const formatter = new intl_messageformat_default(text, locale);
+		const keyedParams = assignUniqueKeysToParams(params);
+		const result = formatter.format(keyedParams);
+		if (Array.isArray(result)) return result.map((item, index) => {
+			return jsx(Fragment, { children: item }, index);
+		});
+		return result;
+	} catch (error) {
+		logger.warn(`Error rendering rich text (${text}): ${error}`);
+		return text;
+	}
+}
+var useTranslation = (hashes) => {
+	const { translations, registerHashes, locale, sourceLocale } = useLingoContext();
+	useEffect(() => {
+		logger.debug(`Registering ${hashes.length} hashes for component`);
+		registerHashes(hashes);
+	}, [
+		hashes,
+		registerHashes,
+		locale,
+		sourceLocale
+	]);
+	return {
+		t: useCallback((hash, source, params) => {
+			logger.debug(`Client. The translations for locale ${locale} are: ${JSON.stringify(translations)}`);
+			const text = translations[hash] || source;
+			if (!params) return text;
+			return renderRichText(text, params, locale);
+		}, [
+			translations,
+			locale,
+			sourceLocale
+		]),
+		locale
+	};
+};
+function CareersBenefits() {
+	const { t } = useTranslation([
+		"1c4fe05d5e50",
+		"c0da1ddfd7b7",
+		"bb278cd7bf85",
+		"0ca315b2c859",
+		"6b09f13a29fd",
+		"57b7df20f714"
+	]);
+	return jsxs("div", {
+		className: "mb-12 grid gap-4 md:grid-cols-3",
+		children: [
+			jsxs("div", {
+				className: "rounded-lg border border-border bg-card p-4 text-center",
+				children: [jsx("p", {
+					className: "text-sm font-semibold text-foreground",
+					children: t("1c4fe05d5e50", "Remote-first")
+				}), jsx("p", {
+					className: "text-xs text-muted-foreground",
+					children: t("c0da1ddfd7b7", "Work from anywhere in the world")
+				})]
+			}),
+			jsxs("div", {
+				className: "rounded-lg border border-border bg-card p-4 text-center",
+				children: [jsx("p", {
+					className: "text-sm font-semibold text-foreground",
+					children: t("bb278cd7bf85", "Competitive pay")
+				}), jsx("p", {
+					className: "text-xs text-muted-foreground",
+					children: t("0ca315b2c859", "Top-of-market compensation")
+				})]
+			}),
+			jsxs("div", {
+				className: "rounded-lg border border-border bg-card p-4 text-center",
+				children: [jsx("p", {
+					className: "text-sm font-semibold text-foreground",
+					children: t("6b09f13a29fd", "Open source time")
+				}), jsx("p", {
+					className: "text-xs text-muted-foreground",
+					children: t("57b7df20f714", "20% time for OSS contributions")
+				})]
+			})
+		]
+	});
+}
+function Wrapper({ children }) {
+	return jsx(LingoProvider, {
+		initialLocale: "en",
+		children
+	});
+}
+function Wrapped() {
+	return jsx(Wrapper, { children: jsx(CareersBenefits, {}) });
+}
+export { Wrapped as default };
+import { t as logger } from "./logger-aqUiye9e.js";
+var LingoDevWidget = class extends HTMLElement {
+	shadow;
+	state = null;
+	ws = null;
+	reconnectAttempts = 0;
+	maxReconnectAttempts = 5;
+	constructor() {
+		super();
+		this.shadow = this.attachShadow({ mode: "open" });
+	}
+	connectedCallback() {
+		window.__LINGO_DEV_UPDATE__ = () => {
+			this.state = window.__LINGO_DEV_STATE__ || null;
+			this.render();
+		};
+		if (window.__LINGO_DEV_STATE__) {
+			this.state = window.__LINGO_DEV_STATE__;
+			this.render();
+		}
+		this.connectWebSocket();
+	}
+	disconnectedCallback() {
+		if (window.__LINGO_DEV_UPDATE__) delete window.__LINGO_DEV_UPDATE__;
+		if (this.ws) {
+			this.ws.close();
+			this.ws = null;
+		}
+	}
+	connectWebSocket() {
+		const wsUrl = window.__LINGO_DEV_WS_URL__;
+		if (!wsUrl) {
+			logger.warn("WebSocket URL not available, real-time updates disabled");
+			return;
+		}
+		try {
+			const url = new URL(wsUrl);
+			url.protocol = url.protocol === "https:" ? "wss:" : "ws:";
+			this.ws = new WebSocket(url.toString());
+			this.ws.onopen = () => {
+				logger.info("WebSocket connected");
+				this.reconnectAttempts = 0;
+			};
+			this.ws.onmessage = (event) => {
+				try {
+					const data = JSON.parse(event.data);
+					this.handleServerEvent(data);
+				} catch (error) {
+					logger.error("Failed to parse WebSocket message:", error);
+				}
+			};
+			this.ws.onerror = (error) => {
+				logger.error("WebSocket error:", error);
+			};
+			this.ws.onclose = () => {
+				logger.info("WebSocket disconnected");
+				this.ws = null;
+				if (this.reconnectAttempts < this.maxReconnectAttempts) {
+					const delay = Math.min(1e3 * Math.pow(2, this.reconnectAttempts), 1e4);
+					this.reconnectAttempts++;
+					logger.info(`Reconnecting in ${delay}ms (attempt ${this.reconnectAttempts}/${this.maxReconnectAttempts})`);
+					setTimeout(() => this.connectWebSocket(), delay);
+				}
+			};
+		} catch (error) {
+			logger.error("Failed to create WebSocket connection:", error);
+		}
+	}
+	handleServerEvent(event) {
+		switch (event.type) {
+			case "connected":
+				logger.info(`Connected to translation server: ${event.serverUrl}`);
+				break;
+			case "batch:start":
+				if (this.state) {
+					this.state.serverProgress = {
+						locale: event.locale,
+						total: event.total,
+						completed: 0,
+						status: "in-progress"
+					};
+					this.render();
+				}
+				break;
+			case "batch:progress":
+				if (this.state && this.state.serverProgress) {
+					this.state.serverProgress.completed = event.completed;
+					this.render();
+				}
+				break;
+			case "batch:complete":
+				if (this.state && this.state.serverProgress) {
+					this.state.serverProgress.status = "complete";
+					this.render();
+					setTimeout(() => {
+						if (this.state) {
+							this.state.serverProgress = void 0;
+							this.render();
+						}
+					}, 2e3);
+				}
+				break;
+			case "batch:error":
+				if (this.state && this.state.serverProgress) {
+					this.state.serverProgress.status = "error";
+					this.render();
+				}
+				break;
+		}
+	}
+	render() {
+		if (!this.state) {
+			this.shadow.innerHTML = "";
+			return;
+		}
+		const { isLoading, locale, pendingCount, position, serverProgress } = this.state;
+		const showLoader = isLoading || serverProgress?.status === "in-progress";
+		this.shadow.innerHTML = `
+      <style>
+        ${this.getStyles(position)}
+      </style>
+      <div class="container">
+        ${showLoader ? this.renderLoader() : this.renderLogo()}
+        <svg height="26" viewBox="0 0 650 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M391.372 137.084H373.458V119.326H391.372V137.084Z" fill="white"/>
+<path d="M420.766 133.46C415.204 130 410.808 125.121 407.566 118.842C404.329 112.562 402.685 105.422 402.685 97.4631C402.685 89.5033 404.306 82.4043 407.566 76.1645C410.808 69.925 415.227 65.0853 420.766 61.6257C426.327 58.1659 432.506 56.446 439.326 56.446C449.283 56.446 457.245 60.2258 463.222 67.7652H464.001V27.0283H479.56V137.08H466.204L464.624 127.02H463.845C457.764 134.78 449.583 138.66 439.326 138.66C432.506 138.66 426.327 136.94 420.766 133.48V133.46ZM452.606 120.881C456.102 118.681 458.883 115.542 460.943 111.442C462.985 107.362 464.001 102.683 464.001 97.4429C464.001 92.2033 462.985 87.5637 460.943 83.5241C458.906 79.4843 456.126 76.3645 452.606 74.1647C449.087 71.9649 445.285 70.865 441.206 70.865C437.127 70.865 433.187 71.9649 429.726 74.1647C426.264 76.3645 423.506 79.4843 421.464 83.5241C419.427 87.5637 418.406 92.2033 418.406 97.4429C418.406 102.683 419.427 107.482 421.464 111.522C423.506 115.562 426.264 118.681 429.726 120.881C433.187 123.081 437.006 124.181 441.206 124.181C445.406 124.181 449.087 123.081 452.606 120.881Z" fill="white"/>
+<path d="M516.206 119.059C521.006 122.619 525.904 125.118 532.083 125.118C536.485 125.118 540.362 124.118 543.725 122.139C547.083 120.139 549.581 117.579 551.266 114.44H567.46C565.043 121.459 560.802 127.258 554.722 131.818C548.641 136.378 541.106 138.658 532.083 138.658C524.745 138.658 518.087 136.897 512.127 133.398C506.145 129.898 501.466 125.018 498.045 118.779C494.647 112.54 492.945 105.44 492.945 97.481C492.945 89.5212 494.647 82.5819 498.045 76.3423C501.448 70.1028 506.145 65.2432 512.127 61.7234C518.104 58.2237 524.745 56.4638 532.083 56.4638C539.422 56.4638 545.462 58.1437 551.185 61.5034C556.902 64.8632 561.402 69.4628 564.702 75.3424C568.002 81.2221 569.664 87.8216 569.664 95.141C569.664 98.8004 569.404 101.581 568.879 103.48H508.447L521.404 91.541H554.283C553.764 85.2618 551.445 80.062 547.366 75.9824C543.281 71.9026 538.181 69.8428 532.124 69.8428C526.066 69.8428 520.545 71.8826 516.247 75.9824C511.948 80.062 509.387 85.2618 508.545 91.541C508.545 91.541 505.227 110.98 516.247 119.119L516.206 119.059Z" fill="white"/>
+<path d="M621.998 137.084H599.197L571.378 58.0104H587.74L609.115 119.486H612.259L633.634 58.0104H649.996L622.015 137.084H621.998Z" fill="white"/>
+<path d="M96.158 43.0674H79.18V27.3486H96.158V43.0674ZM95.378 137.08H79.82V58.0063H95.378V137.08Z" fill="white"/>
+<path d="M112.508 137.082V58.0083H125.867L127.447 66.1877H128.227C130.207 63.6678 133.247 61.428 137.346 59.4281C141.426 57.4283 146.146 56.4484 151.505 56.4484C157.585 56.4484 163.004 57.8483 167.784 60.6081C172.544 63.3879 176.284 67.2876 178.943 72.3272C181.623 77.3668 182.943 83.1266 182.943 89.6257V137.102H167.384V90.8857C167.384 85.2261 165.544 80.5066 161.885 76.7269C158.225 72.9471 153.665 71.0673 148.205 71.0673C144.546 71.0673 141.166 71.9672 138.066 73.7471C134.967 75.5269 132.546 77.9468 130.747 80.9868C128.967 84.0261 128.067 87.3261 128.067 90.8857V137.102H112.508V137.082Z" fill="white"/>
+<path d="M214.923 165.84C209.523 163.02 205.403 159.481 202.583 155.221C199.763 150.962 198.244 146.662 198.024 142.243H213.742C214.162 145.902 216.162 149.142 219.722 151.901C223.282 154.682 228.221 156.061 234.501 156.061C240.78 156.061 246.18 154.221 250.06 150.562C253.939 146.882 255.88 142.022 255.88 135.943V123.364H255.1C252.379 126.404 248.96 128.823 244.88 130.603C240.801 132.383 236.281 133.283 231.361 133.283C224.542 133.283 218.402 131.663 212.883 128.403C207.383 125.163 203.063 120.604 199.924 114.725C196.784 108.865 195.204 102.205 195.204 94.766C195.204 87.3266 196.784 80.6873 199.924 74.8875C203.063 69.0679 207.383 64.5482 212.883 61.2885C218.382 58.0487 224.542 56.4088 231.361 56.4088C236.401 56.4088 241.02 57.4088 245.28 59.3887C249.52 61.3885 252.96 64.0483 255.58 67.4081H256.36L257.939 57.9687H271.458V136.103C271.458 142.802 269.998 148.722 267.059 153.861C264.119 159.001 259.859 162.981 254.239 165.801C248.64 168.64 242.06 170.04 234.501 170.04C226.942 170.04 220.322 168.62 214.923 165.801V165.84ZM244.78 116.084C248.18 114.044 250.88 111.165 252.88 107.445C254.879 103.726 255.859 99.5054 255.859 94.7862C255.859 90.0664 254.86 85.8866 252.88 82.2069C250.88 78.5472 248.18 75.6874 244.78 73.6476C241.38 71.6077 237.581 70.5878 233.381 70.5878C226.882 70.5878 221.522 72.8476 217.262 77.3473C213.023 81.8469 210.903 87.6664 210.903 94.8058C210.903 101.945 213.023 107.905 217.262 112.405C221.502 116.904 226.882 119.164 233.381 119.164C237.581 119.164 241.38 118.144 244.78 116.105V116.084Z" fill="white"/>
+<path d="M303.031 133.382C297.051 129.883 292.372 125.003 288.952 118.764C285.552 112.524 283.852 105.425 283.852 97.4655C283.852 89.5057 285.552 82.5664 288.952 76.3269C292.351 70.0874 297.051 65.2277 303.031 61.708C309.011 58.2082 315.65 56.4484 322.989 56.4484C330.329 56.4484 336.948 58.2082 342.868 61.708C348.787 65.2277 353.447 70.0874 356.867 76.3269C360.267 82.5664 361.966 89.6061 361.966 97.4655C361.966 105.325 360.267 112.524 356.867 118.764C353.467 125.003 348.787 129.883 342.868 133.382C336.948 136.902 330.309 138.642 322.989 138.642C315.67 138.642 308.99 136.882 303.031 133.382ZM334.848 120.883C338.468 118.684 341.328 115.544 343.408 111.444C345.507 107.364 346.548 102.685 346.548 97.4453C346.548 92.2057 345.507 87.5661 343.408 83.5264C341.308 79.4867 338.448 76.3669 334.848 74.1671C331.228 71.9672 327.269 70.8673 322.989 70.8673C318.71 70.8673 314.73 71.9672 311.13 74.1671C307.511 76.3669 304.651 79.4867 302.571 83.5264C300.471 87.5661 299.431 92.2057 299.431 97.4453C299.431 102.685 300.471 107.345 302.571 111.444C304.67 115.524 307.53 118.684 311.13 120.883C314.75 123.083 318.71 124.183 322.989 124.183C327.269 124.183 331.249 123.083 334.848 120.883Z" fill="white"/>
+<path d="M69.795 135.861H0V25.81H16.498V120.143L16.798 135.861L34.097 120.143H69.795V135.861Z" fill="white"/>
+</svg>
+      </div>
+    `;
+	}
+	getStyles(position) {
+		return `
+      :host {
+        position: fixed;
+        z-index: 99999;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", sans-serif;
+        font-size: 12px;
+        pointer-events: auto;
+        ${{
+			"bottom-left": "bottom: 60px; left: 16px;",
+			"bottom-right": "bottom: 60px; right: 16px;",
+			"top-left": "top: 16px; left: 16px;",
+			"top-right": "top: 16px; right: 16px;"
+		}[position]}
+      }
+
+      .container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s ease-in-out;
+        border-radius: 8px;
+        padding: 8px 12px;
+        background: rgba(0, 0, 0, 0.8);
+        box-shadow: 0 0 0 1px #373737, inset 0 0 0 1px rgba(0, 0, 0, 0.24), 0px 16px 32px -8px rgba(0, 0, 0, 0.24);
+        backdrop-filter: blur(48px);
+      }
+
+      .logo {
+        width: 26px;
+        height: 26px;
+        flex-shrink: 0;
+      }
+    `;
+	}
+	renderLogo() {
+		return `
+<svg height="26" viewBox="0 0 147 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.304987 76.63L54.9149 136.206C55.1326 136.441 55.4362 136.579 55.757 136.579H145.288C146.308 136.579 146.817 135.347 146.096 134.625L106.804 95.3334H75.87V110.801L39.7802 74.711H1.14708C0.150317 74.711 -0.370977 75.8968 0.304987 76.63Z" fill="#69E300"/>
+<path d="M146.304 93.4186L91.6883 33.8424C91.4702 33.6075 91.1668 33.47 90.846 33.47H1.31509C0.289683 33.47 -0.220155 34.7017 0.501637 35.4235L39.7935 74.7153H70.7275V59.2483L106.817 95.3381H145.456C146.453 95.3381 146.974 94.1519 146.298 93.4186H146.304Z" fill="#69E300"/>
+</g>
+</svg>
+    `;
+	}
+	renderLoader() {
+		return `
+<svg height="26" viewBox="0 0 147 171" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+  @keyframes moveDown {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(12px); }
+  }
+  @keyframes moveUp {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  .bottom-part { animation: moveDown 1.5s ease-in-out infinite; transform-origin: center; }
+  .top-part { animation: moveUp 1.5s ease-in-out infinite; transform-origin: center; }
+</style>
+<path class="bottom-part" d="M0.304987 76.63L54.9149 136.206C55.1326 136.441 55.4362 136.579 55.757 136.579H145.288C146.308 136.579 146.817 135.347 146.096 134.625L106.804 95.3334H75.87V110.801L39.7802 74.711H1.14708C0.150317 74.711 -0.370977 75.8968 0.304987 76.63Z" fill="grey"/>
+<path class="top-part" d="M146.304 93.4186L91.6883 33.8424C91.4702 33.6075 91.1668 33.47 90.846 33.47H1.31509C0.289683 33.47 -0.220155 34.7017 0.501637 35.4235L39.7935 74.7153H70.7275V59.2483L106.817 95.3381H145.456C146.453 95.3381 146.974 94.1519 146.298 93.4186H146.304Z" fill="grey"/>
+</g>
+</svg>
+    `;
+	}
+};
+logger.debug("Loading Lingo Dev Widget...");
+if (typeof window !== "undefined") {
+	customElements.define("lingo-dev-widget", LingoDevWidget);
+	const widget = document.createElement("lingo-dev-widget");
+	document.body.appendChild(widget);
+	if (!window.__LINGO_DEV_STATE__) window.__LINGO_DEV_STATE__ = {
+		isLoading: false,
+		locale: "en",
+		sourceLocale: "en",
+		pendingCount: 0,
+		position: "bottom-left"
+	};
+	if (window.__LINGO_DEV_UPDATE__) window.__LINGO_DEV_UPDATE__();
+}
+export { LingoDevWidget };
+var Logger = class {
+	config;
+	prefix = "\x1B[42m\x1B[30m[Lingo.dev]\x1B[0m";
+	constructor(config = {}) {
+		this.config = {
+			enableDebug: config.enableDebug ?? (typeof process !== "undefined" && process.env?.LINGO_DEBUG === "true"),
+			enableConsole: config.enableConsole ?? true,
+			writeToFile: config.writeToFile
+		};
+	}
+	setDebug(enabled) {
+		this.config.enableDebug = enabled;
+	}
+	setConsoleEnabled(enabled) {
+		this.config.enableConsole = enabled;
+	}
+	setFileWriter(writer) {
+		this.config.writeToFile = writer;
+	}
+	formatMessage(...args) {
+		return args.map((arg) => typeof arg === "object" ? JSON.stringify(arg, null, 2) : String(arg)).join(" ");
+	}
+	log(level, ...args) {
+		const message = this.formatMessage(...args);
+		if (this.config.enableConsole) (level === "debug" || level === "info" ? console.log : console[level])(this.prefix, message);
+		if (this.config.writeToFile) this.config.writeToFile(level, message);
+	}
+	debug(...args) {
+		if (this.config.enableDebug) this.log("debug", ...args);
+	}
+	info(...args) {
+		this.log("info", ...args);
+	}
+	warn(...args) {
+		this.log("warn", ...args);
+	}
+	error(...args) {
+		this.log("error", ...args);
+	}
+};
+var logger = new Logger({ enableConsole: true });
+export { logger as t };

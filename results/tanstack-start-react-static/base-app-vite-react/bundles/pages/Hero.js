@@ -1,6 +1,5 @@
 import { useLayoutEffect } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/hooks/usePerformanceMeasure.ts
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -12,8 +11,6 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-//#endregion
-//#region src/components/pages/home/Hero.tsx
 function Hero() {
 	usePerformanceMeasure("Hero");
 	return jsxs("section", {
@@ -42,5 +39,4 @@ function Hero() {
 		]
 	});
 }
-//#endregion
 export { Hero as default };

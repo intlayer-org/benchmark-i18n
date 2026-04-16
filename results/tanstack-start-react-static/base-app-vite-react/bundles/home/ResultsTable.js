@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/home/ResultsTable.tsx
 function ResultsTable() {
 	return jsxs("section", { children: [jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
@@ -77,5 +76,4 @@ function ResultsTable() {
 		})
 	})] });
 }
-//#endregion
 export { ResultsTable as default };

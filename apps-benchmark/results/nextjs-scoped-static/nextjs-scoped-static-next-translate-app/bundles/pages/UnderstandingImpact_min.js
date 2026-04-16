@@ -179,66 +179,66 @@ function w(e) {
 //#region components/pages/home/UnderstandingImpact.tsx
 function T() {
 	let { t: e } = w("common");
-	return /* @__PURE__ */ o("section", {
+	return o("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
-			/* @__PURE__ */ a("h2", {
+			a("h2", {
 				className: "text-2xl font-bold text-foreground",
 				children: e("home.understandingImpact.understandingTheImpact")
 			}),
-			/* @__PURE__ */ o("div", {
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					/* @__PURE__ */ a("h3", {
+					a("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: e("home.understandingImpact.whyASingleLargeJson")
 					}),
-					/* @__PURE__ */ a("p", {
+					a("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("home.understandingImpact.manyI18nLibrariesStoreTranslations")
 					}),
-					/* @__PURE__ */ o("ul", {
+					o("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							/* @__PURE__ */ a("li", { children: e("home.understandingImpact.theJsonMustBeParsed") }),
-							/* @__PURE__ */ a("li", { children: e("home.understandingImpact.contextBasedArchitecturesCanCause") }),
-							/* @__PURE__ */ a("li", { children: e("home.understandingImpact.duringServerSideRenderingThe") })
+							a("li", { children: e("home.understandingImpact.theJsonMustBeParsed") }),
+							a("li", { children: e("home.understandingImpact.contextBasedArchitecturesCanCause") }),
+							a("li", { children: e("home.understandingImpact.duringServerSideRenderingThe") })
 						]
 					})
 				]
 			}),
-			/* @__PURE__ */ o("div", {
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					/* @__PURE__ */ a("h3", {
+					a("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: e("home.understandingImpact.theTradeOffsOfDynamic")
 					}),
-					/* @__PURE__ */ a("p", {
+					a("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("home.understandingImpact.splittingTranslationsIntoPerRoute")
 					}),
-					/* @__PURE__ */ o("ul", {
+					o("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							/* @__PURE__ */ o("li", { children: [
-								/* @__PURE__ */ a("strong", {
+							o("li", { children: [
+								a("strong", {
 									className: "text-foreground",
 									children: e("home.understandingImpact.waterfallRequests")
 								}),
 								" ",
 								"the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
 							] }),
-							/* @__PURE__ */ o("li", { children: [
-								/* @__PURE__ */ a("strong", {
+							o("li", { children: [
+								a("strong", {
 									className: "text-foreground",
 									children: e("home.understandingImpact.flashOfUntranslatedContentFouc")
 								}),
 								" ",
 								"users may briefly see translation keys or a fallback language before the chunk arrives."
 							] }),
-							/* @__PURE__ */ o("li", { children: [
-								/* @__PURE__ */ a("strong", {
+							o("li", { children: [
+								a("strong", {
 									className: "text-foreground",
 									children: e("home.understandingImpact.cacheInvalidation")
 								}),
@@ -249,12 +249,12 @@ function T() {
 					})
 				]
 			}),
-			/* @__PURE__ */ o("div", {
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [/* @__PURE__ */ a("h3", {
+				children: [a("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: e("home.understandingImpact.whatThisBenchmarkMeasures")
-				}), /* @__PURE__ */ a("p", {
+				}), a("p", {
 					className: "text-sm text-muted-foreground",
 					children: e("home.understandingImpact.thisTestAppProvidesA")
 				})]
@@ -279,7 +279,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -288,7 +292,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -297,7 +301,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -305,7 +309,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/home/UnderstandingImpact.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

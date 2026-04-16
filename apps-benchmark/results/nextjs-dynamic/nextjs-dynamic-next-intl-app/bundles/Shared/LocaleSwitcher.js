@@ -1,7 +1,6 @@
 import { Profiler, createContext, useContext, useEffect, useMemo } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { jsx } from "react/jsx-runtime";
-//#region i18n/config.ts
 var locales = [
 	"en",
 	"fr",
@@ -22,8 +21,6 @@ function getLocaleName(locale) {
 		return locale.toUpperCase();
 	}
 }
-//#endregion
-//#region components/LocaleSwitcher.tsx
 function LocaleSwitcher() {
 	const locale = useParams().locale ?? "en";
 	const pathname = usePathname();
@@ -45,8 +42,6 @@ function LocaleSwitcher() {
 		})
 	});
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+fast-memoize@3.1.1/node_modules/@formatjs/fast-memoize/index.js
 function memoize(fn, options) {
 	const cache = options && options.cache ? options.cache : cacheDefault;
 	const serializer = options && options.serializer ? options.serializer : serializerDefault;
@@ -112,8 +107,6 @@ var strategies = {
 	variadic: strategyVariadic,
 	monadic: strategyMonadic
 };
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/formatters-CJcico0N.js
 var r = function(e) {
 	return e.MISSING_MESSAGE = "MISSING_MESSAGE", e.MISSING_FORMAT = "MISSING_FORMAT", e.ENVIRONMENT_FALLBACK = "ENVIRONMENT_FALLBACK", e.INSUFFICIENT_PATH = "INSUFFICIENT_PATH", e.INVALID_MESSAGE = "INVALID_MESSAGE", e.INVALID_KEY = "INVALID_KEY", e.FORMATTING_ERROR = "FORMATTING_ERROR", e;
 }(r || {});
@@ -153,8 +146,6 @@ function l(e) {
 		getDisplayNames: I(Intl.DisplayNames, e.displayNames)
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/initializeConfig-Brh10fyG.js
 function c(...e) {
 	return e.filter(Boolean).join(".");
 }
@@ -176,8 +167,6 @@ function M({ formats: e, getMessageFallback: t, messages: r, onError: n, ...o })
 		getMessageFallback: t || i
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/react.js
 var d = createContext(void 0);
 function v({ children: e, formats: o, getMessageFallback: n, locale: c, messages: i, now: f, onError: u, timeZone: l$1 }) {
 	const v = useContext(d), w = useMemo((() => v?.cache || s()), [c, v?.cache]), p = useMemo((() => v?.formatters || l(w)), [w, v?.formatters]), h = useMemo((() => ({
@@ -209,8 +198,6 @@ function v({ children: e, formats: o, getMessageFallback: n, locale: c, messages
 		children: e
 	});
 }
-//#endregion
-//#region ../../../node_modules/.bun/next-intl@4.9.1+77ae5f1145ea432b/node_modules/next-intl/dist/esm/production/shared/NextIntlClientProvider.js
 function t({ locale: t, ...e }) {
 	if (!t) throw new Error(void 0);
 	return jsx(v, {
@@ -218,8 +205,6 @@ function t({ locale: t, ...e }) {
 		...e
 	});
 }
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -246,8 +231,6 @@ function onRenderCallback(id, phase, actualDuration) {
 		console.warn("onRenderCallback failed:", err);
 	}
 }
-//#endregion
-//#region components/AppProviders.tsx
 function AppProviders({ children, locale, messages }) {
 	useEffect(() => {
 		document.documentElement.lang = locale;
@@ -715,8 +698,6 @@ var en_default = {
 		"loadingAllTranslationsUpfrontOverloads": "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
 };
-//#endregion
-//#region scripts/Wrapper.tsx
 var locale = "en";
 function Wrapper({ children }) {
 	return jsx(AppProviders, {
@@ -725,10 +706,7 @@ function Wrapper({ children }) {
 		children
 	});
 }
-//#endregion
-//#region components/LocaleSwitcher.wrapper.tsx
 function Wrapped() {
 	return jsx(Wrapper, { children: jsx(LocaleSwitcher, {}) });
 }
-//#endregion
 export { Wrapped as default };

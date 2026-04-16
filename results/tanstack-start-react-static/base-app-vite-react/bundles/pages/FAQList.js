@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/faq/FAQList.tsx
 function FAQList() {
 	return jsx("div", {
 		className: "mx-auto max-w-3xl space-y-4",
@@ -48,5 +47,4 @@ function FAQList() {
 		}, f.q))
 	});
 }
-//#endregion
 export { FAQList as default };

@@ -227,61 +227,61 @@ function ContactForm() {
 	const emailId = useId();
 	const topicId = useId();
 	const messageId = useId();
-	return /* @__PURE__ */ jsxs("form", {
+	return jsxs("form", {
 		className: "space-y-6",
 		children: [
-			/* @__PURE__ */ jsxs("div", {
+			jsxs("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
+				children: [jsxs("div", { children: [jsx("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("contact.contactForm.name")
-				}), /* @__PURE__ */ jsx("input", {
+				}), jsx("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: t("contact.contactForm.name")
-				})] }), /* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
+				})] }), jsxs("div", { children: [jsx("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("contact.contactForm.email")
-				}), /* @__PURE__ */ jsx("input", {
+				}), jsx("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
 				})] })]
 			}),
-			/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: t("contact.contactForm.subject")
-			}), /* @__PURE__ */ jsxs("select", {
+			}), jsxs("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					/* @__PURE__ */ jsx("option", { children: "Bug Report" }),
-					/* @__PURE__ */ jsx("option", { children: "New Benchmark Idea" }),
-					/* @__PURE__ */ jsx("option", { children: "Methodology Question" }),
-					/* @__PURE__ */ jsx("option", { children: "Contribution" }),
-					/* @__PURE__ */ jsx("option", { children: "Other" })
+					jsx("option", { children: "Bug Report" }),
+					jsx("option", { children: "New Benchmark Idea" }),
+					jsx("option", { children: "Methodology Question" }),
+					jsx("option", { children: "Contribution" }),
+					jsx("option", { children: "Other" })
 				]
 			})] }),
-			/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: t("contact.contactForm.message")
-			}), /* @__PURE__ */ jsx("textarea", {
+			}), jsx("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: t("contact.contactForm.message")
 			})] }),
-			/* @__PURE__ */ jsx("button", {
+			jsx("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: t("contact.contactForm.sendMessage")
 			}),
-			/* @__PURE__ */ jsx("p", {
+			jsx("p", {
 				className: "text-xs text-muted-foreground",
 				children: t("contact.contactForm.wellGetBackTo")
 			})
@@ -290,18 +290,6 @@ function ContactForm() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -317,16 +305,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -337,7 +325,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -346,7 +334,7 @@ function AppProviders({ children, locale }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
 	});
@@ -354,7 +342,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/pages/contact/ContactForm.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(ContactForm, {}) });
+	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
 }
 //#endregion
 export { Wrapped as default };

@@ -3,6 +3,8 @@ import Footer from "../../components/Footer";
 import AppProviders from "../../components/AppProviders";
 import i18nConfig from "../../i18n.mjs";
 
+export const dynamic = "force-dynamic";
+
 export function generateStaticParams() {
   return (i18nConfig.locales ?? []).map((lang: string) => ({ lang }));
 }

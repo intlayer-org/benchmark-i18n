@@ -224,59 +224,59 @@ function useTranslation(defaultNS) {
 function PreferencesSection() {
 	const { t } = useTranslation("common");
 	const languageId = useId();
-	return /* @__PURE__ */ jsxs("section", {
+	return jsxs("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [/* @__PURE__ */ jsx("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: t("settings.preferencesSection.preferences")
-		}), /* @__PURE__ */ jsxs("div", {
+		}), jsxs("div", {
 			className: "space-y-4",
 			children: [
-				/* @__PURE__ */ jsxs("div", {
+				jsxs("div", {
 					className: "flex items-center justify-between",
-					children: [/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("p", {
+					children: [jsxs("div", { children: [jsx("p", {
 						className: "text-sm font-medium text-foreground",
 						children: t("settings.preferencesSection.emailNotifications")
-					}), /* @__PURE__ */ jsx("p", {
+					}), jsx("p", {
 						className: "text-xs text-muted-foreground",
 						children: t("settings.preferencesSection.receiveWeeklyBenchmarkReports")
-					})] }), /* @__PURE__ */ jsx("button", {
+					})] }), jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
 						"aria-label": "Toggle notifications",
-						children: /* @__PURE__ */ jsx("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
+						children: jsx("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
 					})]
 				}),
-				/* @__PURE__ */ jsxs("div", {
+				jsxs("div", {
 					className: "flex items-center justify-between",
-					children: [/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("p", {
+					children: [jsxs("div", { children: [jsx("p", {
 						className: "text-sm font-medium text-foreground",
 						children: t("settings.preferencesSection.darkMode")
-					}), /* @__PURE__ */ jsx("p", {
+					}), jsx("p", {
 						className: "text-xs text-muted-foreground",
 						children: t("settings.preferencesSection.useDarkColorScheme")
-					})] }), /* @__PURE__ */ jsx("button", {
+					})] }), jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
 						"aria-label": "Toggle dark mode",
-						children: /* @__PURE__ */ jsx("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
+						children: jsx("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
 					})]
 				}),
-				/* @__PURE__ */ jsxs("div", { children: [/* @__PURE__ */ jsx("label", {
+				jsxs("div", { children: [jsx("label", {
 					htmlFor: languageId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("settings.preferencesSection.defaultLanguage")
-				}), /* @__PURE__ */ jsxs("select", {
+				}), jsxs("select", {
 					id: languageId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					children: [
-						/* @__PURE__ */ jsx("option", { children: "English (en)" }),
-						/* @__PURE__ */ jsx("option", { children: "French (fr)" }),
-						/* @__PURE__ */ jsx("option", { children: "German (de)" }),
-						/* @__PURE__ */ jsx("option", { children: "Spanish (es)" }),
-						/* @__PURE__ */ jsx("option", { children: "Japanese (ja)" }),
-						/* @__PURE__ */ jsx("option", { children: "Chinese Simplified (zh-CN)" }),
-						/* @__PURE__ */ jsx("option", { children: "Arabic (ar)" })
+						jsx("option", { children: "English (en)" }),
+						jsx("option", { children: "French (fr)" }),
+						jsx("option", { children: "German (de)" }),
+						jsx("option", { children: "Spanish (es)" }),
+						jsx("option", { children: "Japanese (ja)" }),
+						jsx("option", { children: "Chinese Simplified (zh-CN)" }),
+						jsx("option", { children: "Arabic (ar)" })
 					]
 				})] })
 			]
@@ -285,18 +285,6 @@ function PreferencesSection() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -312,16 +300,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -332,7 +320,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -341,7 +329,7 @@ function AppProviders({ children, locale }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
 	});
@@ -349,7 +337,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/pages/settings/PreferencesSection.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(PreferencesSection, {}) });
+	return jsx(Wrapper, { children: jsx(PreferencesSection, {}) });
 }
 //#endregion
 export { Wrapped as default };

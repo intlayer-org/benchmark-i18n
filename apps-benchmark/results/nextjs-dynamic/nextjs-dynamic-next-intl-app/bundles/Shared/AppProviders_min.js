@@ -1,6 +1,5 @@
 import { Profiler as e, createContext as t, useContext as n, useEffect as r, useMemo as i } from "react";
 import { jsx as a } from "react/jsx-runtime";
-//#region ../../../node_modules/.bun/@formatjs+fast-memoize@3.1.1/node_modules/@formatjs/fast-memoize/index.js
 function o(e, t) {
 	let n = t && t.cache ? t.cache : g, r = t && t.serializer ? t.serializer : m;
 	return (t && t.strategy ? t.strategy : d)(e, {
@@ -89,8 +88,6 @@ function S(e) {
 		getDisplayNames: x(Intl.DisplayNames, e.displayNames)
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/initializeConfig-Brh10fyG.js
 function C(...e) {
 	return e.filter(Boolean).join(".");
 }
@@ -111,8 +108,6 @@ function D({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i })
 		getMessageFallback: t || w
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/react.js
 var O = t(void 0);
 function k({ children: e, formats: t, getMessageFallback: r, locale: o, messages: s, now: c, onError: l, timeZone: u }) {
 	let d = n(O), f = i((() => d?.cache || y()), [o, d?.cache]), p = i((() => d?.formatters || S(f)), [f, d?.formatters]), m = i((() => ({
@@ -144,8 +139,6 @@ function k({ children: e, formats: t, getMessageFallback: r, locale: o, messages
 		children: e
 	});
 }
-//#endregion
-//#region ../../../node_modules/.bun/next-intl@4.9.1+77ae5f1145ea432b/node_modules/next-intl/dist/esm/production/shared/NextIntlClientProvider.js
 function A({ locale: e, ...t }) {
 	if (!e) throw Error(void 0);
 	return a(k, {
@@ -153,8 +146,6 @@ function A({ locale: e, ...t }) {
 		...t
 	});
 }
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
 function j() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
@@ -176,8 +167,6 @@ function M(e, t, n) {
 		console.warn("onRenderCallback failed:", e);
 	}
 }
-//#endregion
-//#region components/AppProviders.tsx
 function N({ children: t, locale: n, messages: i }) {
 	return r(() => {
 		document.documentElement.lang = n;
@@ -650,10 +639,7 @@ function I({ children: e }) {
 		children: e
 	});
 }
-//#endregion
-//#region components/AppProviders.wrapper.tsx
 function L() {
 	return a(I, { children: a(N, {}) });
 }
-//#endregion
 export { L as default };

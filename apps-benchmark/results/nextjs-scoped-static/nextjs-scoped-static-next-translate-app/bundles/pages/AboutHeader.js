@@ -221,12 +221,6 @@ function useTranslation(defaultNS) {
 }
 //#endregion
 //#region hooks/usePerformanceMeasure.ts
-/**
-* Custom hook to measure the render-to-layout duration of a component.
-* It uses the Browser User Timing API (performance.mark/measure).
-*
-* @param name The name of the measurement (e.g., 'HeroComponent')
-*/
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -243,28 +237,16 @@ function usePerformanceMeasure(name) {
 function AboutHeader() {
 	const { t } = useTranslation("common");
 	usePerformanceMeasure("AboutHeader");
-	return /* @__PURE__ */ jsxs(Fragment, { children: [/* @__PURE__ */ jsx("h1", {
+	return jsxs(Fragment, { children: [jsx("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: t("about.aboutHeader.methodology")
-	}), /* @__PURE__ */ jsx("p", {
+	}), jsx("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: t("about.aboutHeader.weDesignedThisBenchmarkTo")
 	})] });
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -280,16 +262,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -300,7 +282,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -309,7 +291,7 @@ function AppProviders({ children, locale }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
 	});
@@ -317,7 +299,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/pages/about/AboutHeader.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(AboutHeader, {}) });
+	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
 }
 //#endregion
 export { Wrapped as default };

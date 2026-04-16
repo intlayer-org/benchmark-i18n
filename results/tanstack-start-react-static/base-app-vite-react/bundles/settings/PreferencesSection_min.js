@@ -1,6 +1,5 @@
 import { useId as e } from "react";
 import { jsx as t, jsxs as n } from "react/jsx-runtime";
-//#region src/components/pages/settings/PreferencesSection.tsx
 function r() {
 	let r = e();
 	return n("section", {
@@ -62,5 +61,4 @@ function r() {
 		})]
 	});
 }
-//#endregion
 export { r as default };

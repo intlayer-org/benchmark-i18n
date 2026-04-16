@@ -1,21 +1,13 @@
 {
-  "timestamp": "2026-04-15T22:00:40.796Z",
+  "timestamp": "2026-04-16T03:33:22.512Z",
   "packageName": "nextjs-scoped-static-tolgee-app",
   "summary": {
     "totalComponents": 34,
-    "totalUnminifiedBytes": 4913622,
-    "totalMinifiedBytes": 3842647,
-    "totalGzipBytes": 963018
+    "totalUnminifiedBytes": 4911819,
+    "totalMinifiedBytes": 3841553,
+    "totalGzipBytes": 962506
   },
   "components": [
-    {
-      "name": "Header.tsx",
-      "category": "Shared",
-      "unminifiedBytes": 150653,
-      "unminifiedGzipBytes": 35330,
-      "minifiedBytes": 117291,
-      "minifiedGzipBytes": 30439
-    },
     {
       "name": "UnderstandingImpact.tsx",
       "category": "pages",
@@ -23,6 +15,14 @@
       "unminifiedGzipBytes": 33046,
       "minifiedBytes": 117086,
       "minifiedGzipBytes": 28569
+    },
+    {
+      "name": "Header.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 150002,
+      "unminifiedGzipBytes": 35065,
+      "minifiedBytes": 116907,
+      "minifiedGzipBytes": 30175
     },
     {
       "name": "OpenPositions.tsx",
@@ -259,10 +259,10 @@
     {
       "name": "LocaleSwitcher.tsx",
       "category": "Shared",
-      "unminifiedBytes": 139820,
-      "unminifiedGzipBytes": 32191,
-      "minifiedBytes": 108979,
-      "minifiedGzipBytes": 27886
+      "unminifiedBytes": 138668,
+      "unminifiedGzipBytes": 31937,
+      "minifiedBytes": 108269,
+      "minifiedGzipBytes": 27638
     },
     {
       "name": "AppProviders.tsx",

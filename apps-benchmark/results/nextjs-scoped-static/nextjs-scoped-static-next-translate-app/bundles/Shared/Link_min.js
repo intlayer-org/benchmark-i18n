@@ -5,7 +5,7 @@ import { jsx as i } from "react/jsx-runtime";
 //#region components/Link.tsx
 var a = (e) => /^https?:\/\//.test(e ?? ""), o = ({ href: e, children: t, ...o }) => {
 	let s = n().lang ?? "en", c = a(e.toString());
-	return /* @__PURE__ */ i(r, {
+	return i(r, {
 		href: e && !c && !e.toString().startsWith(`/${s}`) ? `/${s}${e}` : e,
 		...o,
 		children: t
@@ -28,7 +28,11 @@ function s() {
 	}
 }
 function c(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -37,7 +41,7 @@ function l({ children: n, locale: r }) {
 		document.documentElement.lang = r;
 	}, [r]), t(() => {
 		s();
-	}, []), /* @__PURE__ */ i(e, {
+	}, []), i(e, {
 		id: "AppRoot",
 		onRender: c,
 		children: n
@@ -46,7 +50,7 @@ function l({ children: n, locale: r }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function u({ children: e }) {
-	return /* @__PURE__ */ i(l, {
+	return i(l, {
 		locale: "en",
 		children: e
 	});
@@ -54,7 +58,7 @@ function u({ children: e }) {
 //#endregion
 //#region components/Link.wrapper.tsx
 function d() {
-	return /* @__PURE__ */ i(u, { children: /* @__PURE__ */ i(o, {}) });
+	return i(u, { children: i(o, {}) });
 }
 //#endregion
 export { d as default };

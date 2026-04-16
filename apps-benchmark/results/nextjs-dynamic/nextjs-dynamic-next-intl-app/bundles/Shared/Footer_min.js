@@ -2,7 +2,6 @@ import { Profiler as e, cloneElement as t, createContext as n, isValidElement as
 import { useParams as s } from "next/navigation";
 import c from "next/link";
 import { jsx as l, jsxs as u } from "react/jsx-runtime";
-//#region components/Link.tsx
 var d = (e) => /^https?:\/\//.test(e ?? ""), f = ({ href: e, children: t, ...n }) => {
 	let r = s().locale ?? "en", i = d(e.toString());
 	return l(c, {
@@ -11,8 +10,6 @@ var d = (e) => /^https?:\/\//.test(e ?? ""), f = ({ href: e, children: t, ...n }
 		children: t
 	});
 };
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+fast-memoize@3.1.1/node_modules/@formatjs/fast-memoize/index.js
 function p(e, t) {
 	let n = t && t.cache ? t.cache : ie, r = t && t.serializer ? t.serializer : ne;
 	return (t && t.strategy ? t.strategy : v)(e, {
@@ -106,8 +103,6 @@ function se(e) {
 		getDisplayNames: S(Intl.DisplayNames, e.displayNames)
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/date-time.js
 var ce = /(?:[Eec]{1,6}|G{1,5}|[Qq]{1,5}|(?:[yYur]+|U{1,5})|[ML]{1,5}|d{1,2}|D{1,3}|F{1}|[abB]{1,5}|[hkHK]{1,2}|w{1,2}|W{1}|m{1,2}|s{1,2}|[zZOvVxX]{1,4})(?=([^']*'[^']*')*[^']*$)/g;
 function le(e) {
 	let t = {};
@@ -206,11 +201,7 @@ function le(e) {
 		return "";
 	}), t;
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/regex.generated.js
 var ue = /[\t-\r \x85\u200E\u200F\u2028\u2029]/i;
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-skeleton-parser@2.1.3/node_modules/@formatjs/icu-skeleton-parser/number.js
 function de(e) {
 	if (e.length === 0) throw Error("Number skeleton cannot be empty");
 	let t = e.split(ue).filter((e) => e.length > 0), n = [];
@@ -413,8 +404,6 @@ function _e(e) {
 	}
 	return t;
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/types.js
 var D = function(e) {
 	return e[e.literal = 0] = "literal", e[e.argument = 1] = "argument", e[e.number = 2] = "number", e[e.date = 3] = "date", e[e.time = 4] = "time", e[e.select = 5] = "select", e[e.plural = 6] = "plural", e[e.pound = 7] = "pound", e[e.tag = 8] = "tag", e;
 }({}), O = function(e) {
@@ -453,8 +442,6 @@ function F(e) {
 function I(e) {
 	return !!(e && typeof e == "object" && e.type === O.dateTime);
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/error.js
 var L = function(e) {
 	return e[e.EXPECT_ARGUMENT_CLOSING_BRACE = 1] = "EXPECT_ARGUMENT_CLOSING_BRACE", e[e.EMPTY_ARGUMENT = 2] = "EMPTY_ARGUMENT", e[e.MALFORMED_ARGUMENT = 3] = "MALFORMED_ARGUMENT", e[e.EXPECT_ARGUMENT_TYPE = 4] = "EXPECT_ARGUMENT_TYPE", e[e.INVALID_ARGUMENT_TYPE = 5] = "INVALID_ARGUMENT_TYPE", e[e.EXPECT_ARGUMENT_STYLE = 6] = "EXPECT_ARGUMENT_STYLE", e[e.INVALID_NUMBER_SKELETON = 7] = "INVALID_NUMBER_SKELETON", e[e.INVALID_DATE_TIME_SKELETON = 8] = "INVALID_DATE_TIME_SKELETON", e[e.EXPECT_NUMBER_SKELETON = 9] = "EXPECT_NUMBER_SKELETON", e[e.EXPECT_DATE_TIME_SKELETON = 10] = "EXPECT_DATE_TIME_SKELETON", e[e.UNCLOSED_QUOTE_IN_ARGUMENT_STYLE = 11] = "UNCLOSED_QUOTE_IN_ARGUMENT_STYLE", e[e.EXPECT_SELECT_ARGUMENT_OPTIONS = 12] = "EXPECT_SELECT_ARGUMENT_OPTIONS", e[e.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE = 13] = "EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE", e[e.INVALID_PLURAL_ARGUMENT_OFFSET_VALUE = 14] = "INVALID_PLURAL_ARGUMENT_OFFSET_VALUE", e[e.EXPECT_SELECT_ARGUMENT_SELECTOR = 15] = "EXPECT_SELECT_ARGUMENT_SELECTOR", e[e.EXPECT_PLURAL_ARGUMENT_SELECTOR = 16] = "EXPECT_PLURAL_ARGUMENT_SELECTOR", e[e.EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT = 17] = "EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT", e[e.EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT = 18] = "EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT", e[e.INVALID_PLURAL_ARGUMENT_SELECTOR = 19] = "INVALID_PLURAL_ARGUMENT_SELECTOR", e[e.DUPLICATE_PLURAL_ARGUMENT_SELECTOR = 20] = "DUPLICATE_PLURAL_ARGUMENT_SELECTOR", e[e.DUPLICATE_SELECT_ARGUMENT_SELECTOR = 21] = "DUPLICATE_SELECT_ARGUMENT_SELECTOR", e[e.MISSING_OTHER_CLAUSE = 22] = "MISSING_OTHER_CLAUSE", e[e.INVALID_TAG = 23] = "INVALID_TAG", e[e.INVALID_TAG_NAME = 25] = "INVALID_TAG_NAME", e[e.UNMATCHED_CLOSING_TAG = 26] = "UNMATCHED_CLOSING_TAG", e[e.UNCLOSED_TAG = 27] = "UNCLOSED_TAG", e;
 }({}), R = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/, z = {
@@ -1620,8 +1607,6 @@ var L = function(e) {
 		"h"
 	]
 };
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/date-time-pattern-generator.js
 function xe(e, t) {
 	let n = "";
 	for (let r = 0; r < e.length; r++) {
@@ -1648,8 +1633,6 @@ function Se(e) {
 	let n = e.language, r;
 	return n !== "root" && (r = e.maximize().region), (z[r || ""] || z[n || ""] || z[`${n}-001`] || z["001"])[0];
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/parser.js
 var Ce = RegExp(`^${R.source}*`), we = RegExp(`${R.source}*$`);
 function B(e, t) {
 	return {
@@ -2133,8 +2116,6 @@ function Ne(e) {
 function Pe(e) {
 	return e >= 9 && e <= 13 || e === 32 || e === 133 || e >= 8206 && e <= 8207 || e === 8232 || e === 8233;
 }
-//#endregion
-//#region ../../../node_modules/.bun/@formatjs+icu-messageformat-parser@3.5.3/node_modules/@formatjs/icu-messageformat-parser/index.js
 function W(e) {
 	e.forEach((e) => {
 		if (delete e.location, M(e) || N(e)) for (let t in e.options) delete e.options[t].location, W(e.options[t].value);
@@ -2154,8 +2135,6 @@ function Fe(e, t = {}) {
 	}
 	return t?.captureLocation || W(n.val), n.val;
 }
-//#endregion
-//#region ../../../node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/error.js
 var G = function(e) {
 	return e.MISSING_VALUE = "MISSING_VALUE", e.INVALID_VALUE = "INVALID_VALUE", e.MISSING_INTL_API = "MISSING_INTL_API", e;
 }({}), K = class extends Error {
@@ -2283,8 +2262,6 @@ function J(e, t, n, r, i, a, o) {
 	}
 	return ze(s);
 }
-//#endregion
-//#region ../../../node_modules/.bun/intl-messageformat@11.2.0/node_modules/intl-messageformat/src/core.js
 function Ve(e, t) {
 	return t ? {
 		...e,
@@ -2427,8 +2404,6 @@ var X = class e {
 		}
 	};
 };
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/format-message/index.js
 function We(...[e, t, n, i]) {
 	if (Array.isArray(t)) throw new b(x.INVALID_MESSAGE, void 0);
 	if (typeof t == "object") throw new b(x.INSUFFICIENT_PATH, void 0);
@@ -2485,8 +2460,6 @@ function We(...[e, t, n, i]) {
 	return r(f) || Array.isArray(f) || typeof f == "string" ? f : String(f);
 }
 We.raw = !0;
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/initializeConfig-Brh10fyG.js
 function Z(...e) {
 	return e.filter(Boolean).join(".");
 }
@@ -2611,8 +2584,6 @@ function Xe({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }
 		getMessageFallback: t || Ge
 	};
 }
-//#endregion
-//#region ../../../node_modules/.bun/use-intl@4.9.1+b1ab299f0a400331/node_modules/use-intl/dist/esm/production/react.js
 var $ = n(void 0);
 function Ze({ children: e, formats: t, getMessageFallback: n, locale: r, messages: a, now: s, onError: c, timeZone: u }) {
 	let d = i($), f = o((() => d?.cache || ae()), [r, d?.cache]), p = o((() => d?.formatters || se(f)), [f, d?.formatters]), m = o((() => ({
@@ -2676,8 +2647,6 @@ function tt(e) {
 		]);
 	}({ "!": Qe().messages }, e ? `!.${e}` : "!", "!");
 }
-//#endregion
-//#region ../../../node_modules/.bun/next-intl@4.9.1+77ae5f1145ea432b/node_modules/next-intl/dist/esm/production/react-client/index.js
 function nt(e, t) {
 	return (...e) => {
 		try {
@@ -2688,8 +2657,6 @@ function nt(e, t) {
 	};
 }
 var rt = nt(0, tt);
-//#endregion
-//#region ../../../node_modules/.bun/next-intl@4.9.1+77ae5f1145ea432b/node_modules/next-intl/dist/esm/production/shared/NextIntlClientProvider.js
 function it({ locale: e, ...t }) {
 	if (!e) throw Error(void 0);
 	return l(Ze, {
@@ -2697,8 +2664,6 @@ function it({ locale: e, ...t }) {
 		...t
 	});
 }
-//#endregion
-//#region components/Footer.tsx
 function at() {
 	let e = rt(), t = [
 		{
@@ -2763,8 +2728,6 @@ function at() {
 		})
 	});
 }
-//#endregion
-//#region ../../../test-utils/src/browser-metrics.ts
 function ot() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
@@ -2786,8 +2749,6 @@ function st(e, t, n) {
 		console.warn("onRenderCallback failed:", e);
 	}
 }
-//#endregion
-//#region components/AppProviders.tsx
 function ct({ children: t, locale: n, messages: r }) {
 	return a(() => {
 		document.documentElement.lang = n;
@@ -3260,10 +3221,7 @@ function dt({ children: e }) {
 		children: e
 	});
 }
-//#endregion
-//#region components/Footer.wrapper.tsx
 function ft() {
 	return l(dt, { children: l(at, {}) });
 }
-//#endregion
 export { ft as default };

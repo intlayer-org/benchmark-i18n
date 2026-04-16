@@ -203,7 +203,7 @@ function D() {
 		n(e), E(e), window.localStorage.setItem("theme", e);
 	}
 	let s = e(t === "auto" ? "shared.themeToggle.themeModeAutoSystemClick" : t === "light" ? "shared.themeToggle.themeModeLightClick" : "shared.themeToggle.themeModeDarkClick");
-	return /* @__PURE__ */ o("button", {
+	return o("button", {
 		type: "button",
 		onClick: i,
 		"aria-label": s,
@@ -229,7 +229,11 @@ function O() {
 	}
 }
 function k(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -238,7 +242,7 @@ function A({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		O();
-	}, []), /* @__PURE__ */ o(t, {
+	}, []), o(t, {
 		id: "AppRoot",
 		onRender: k,
 		children: e
@@ -247,7 +251,7 @@ function A({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function j({ children: e }) {
-	return /* @__PURE__ */ o(A, {
+	return o(A, {
 		locale: "en",
 		children: e
 	});
@@ -255,7 +259,7 @@ function j({ children: e }) {
 //#endregion
 //#region components/ThemeToggle.wrapper.tsx
 function M() {
-	return /* @__PURE__ */ o(j, { children: /* @__PURE__ */ o(D, {}) });
+	return o(j, { children: o(D, {}) });
 }
 //#endregion
 export { M as default };

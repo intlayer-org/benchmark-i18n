@@ -21,7 +21,7 @@
     "apps-benchmark/vite+react-base-app"
   ],
   "scripts": {
-    "report": "bun report/scripts/summarize.ts",
+    "report": "bun report/scripts/summarize.ts --out",
     "build": "turbo run build --concurrency=1",
     "test": "turbo run test:pages test:reactivity test:components --concurrency=1",
     "test:pages": "turbo run test:pages --concurrency=1",
@@ -52,8 +52,7 @@
     "build:vite+react:static": "turbo run build --concurrency=1 --filter=\"vite+react-static\""
   },
   "dependencies": {
-    "biome": "^0.3.3",
-    "i18next-resources-to-backend": "^1.2.1"
+    "@biomejs/biome": "2.4.12"
   },
   "devDependencies": {
     "@types/bun": "^1.3.12",

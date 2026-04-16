@@ -223,66 +223,66 @@ function useTranslation(defaultNS) {
 //#region components/pages/home/UnderstandingImpact.tsx
 function UnderstandingImpact() {
 	const { t } = useTranslation("common");
-	return /* @__PURE__ */ jsxs("section", {
+	return jsxs("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
-			/* @__PURE__ */ jsx("h2", {
+			jsx("h2", {
 				className: "text-2xl font-bold text-foreground",
 				children: t("home.understandingImpact.understandingTheImpact")
 			}),
-			/* @__PURE__ */ jsxs("div", {
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					/* @__PURE__ */ jsx("h3", {
+					jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("home.understandingImpact.whyASingleLargeJson")
 					}),
-					/* @__PURE__ */ jsx("p", {
+					jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("home.understandingImpact.manyI18nLibrariesStoreTranslations")
 					}),
-					/* @__PURE__ */ jsxs("ul", {
+					jsxs("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							/* @__PURE__ */ jsx("li", { children: t("home.understandingImpact.theJsonMustBeParsed") }),
-							/* @__PURE__ */ jsx("li", { children: t("home.understandingImpact.contextBasedArchitecturesCanCause") }),
-							/* @__PURE__ */ jsx("li", { children: t("home.understandingImpact.duringServerSideRenderingThe") })
+							jsx("li", { children: t("home.understandingImpact.theJsonMustBeParsed") }),
+							jsx("li", { children: t("home.understandingImpact.contextBasedArchitecturesCanCause") }),
+							jsx("li", { children: t("home.understandingImpact.duringServerSideRenderingThe") })
 						]
 					})
 				]
 			}),
-			/* @__PURE__ */ jsxs("div", {
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					/* @__PURE__ */ jsx("h3", {
+					jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("home.understandingImpact.theTradeOffsOfDynamic")
 					}),
-					/* @__PURE__ */ jsx("p", {
+					jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("home.understandingImpact.splittingTranslationsIntoPerRoute")
 					}),
-					/* @__PURE__ */ jsxs("ul", {
+					jsxs("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							/* @__PURE__ */ jsxs("li", { children: [
-								/* @__PURE__ */ jsx("strong", {
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
 									children: t("home.understandingImpact.waterfallRequests")
 								}),
 								" ",
 								"the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
 							] }),
-							/* @__PURE__ */ jsxs("li", { children: [
-								/* @__PURE__ */ jsx("strong", {
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
 									children: t("home.understandingImpact.flashOfUntranslatedContentFouc")
 								}),
 								" ",
 								"users may briefly see translation keys or a fallback language before the chunk arrives."
 							] }),
-							/* @__PURE__ */ jsxs("li", { children: [
-								/* @__PURE__ */ jsx("strong", {
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
 									children: t("home.understandingImpact.cacheInvalidation")
 								}),
@@ -293,12 +293,12 @@ function UnderstandingImpact() {
 					})
 				]
 			}),
-			/* @__PURE__ */ jsxs("div", {
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [/* @__PURE__ */ jsx("h3", {
+				children: [jsx("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: t("home.understandingImpact.whatThisBenchmarkMeasures")
-				}), /* @__PURE__ */ jsx("p", {
+				}), jsx("p", {
 					className: "text-sm text-muted-foreground",
 					children: t("home.understandingImpact.thisTestAppProvidesA")
 				})]
@@ -308,18 +308,6 @@ function UnderstandingImpact() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -335,16 +323,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -355,7 +343,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -364,7 +352,7 @@ function AppProviders({ children, locale }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
 	});
@@ -372,7 +360,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/pages/home/UnderstandingImpact.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(UnderstandingImpact, {}) });
+	return jsx(Wrapper, { children: jsx(UnderstandingImpact, {}) });
 }
 //#endregion
 export { Wrapped as default };

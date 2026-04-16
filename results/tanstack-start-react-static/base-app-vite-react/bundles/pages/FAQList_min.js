@@ -1,5 +1,4 @@
 import { jsx as e, jsxs as t } from "react/jsx-runtime";
-//#region src/components/pages/faq/FAQList.tsx
 function n() {
 	return e("div", {
 		className: "mx-auto max-w-3xl space-y-4",
@@ -48,5 +47,4 @@ function n() {
 		}, n.q))
 	});
 }
-//#endregion
 export { n as default };

@@ -1,247 +1,248 @@
-import e, { Profiler as t, Suspense as n, useCallback as r, useContext as i, useEffect as a, useMemo as o, useState as s } from "react";
-import { cookies as c } from "next/headers";
-import l from "../i18n/locales/de/route.json";
-import u from "../i18n/locales/de/header.json";
-import d from "../i18n/locales/de/footer.json";
-import f from "../i18n/locales/de/themeToggle.json";
-import p from "../i18n/locales/de/hero.json";
-import m from "../i18n/locales/de/whyItMatters.json";
-import h from "../i18n/locales/de/understandingImpact.json";
-import g from "../i18n/locales/de/resultsTable.json";
-import _ from "../i18n/locales/de/aboutHeader.json";
-import v from "../i18n/locales/de/aboutGrid.json";
-import y from "../i18n/locales/de/whatWeMeasure.json";
-import b from "../i18n/locales/de/blogHeader.json";
-import x from "../i18n/locales/de/blogList.json";
-import S from "../i18n/locales/de/careersHeader.json";
-import ee from "../i18n/locales/de/careersBenefits.json";
-import te from "../i18n/locales/de/openPositions.json";
-import ne from "../i18n/locales/de/contactHeader.json";
-import re from "../i18n/locales/de/contactForm.json";
-import C from "../i18n/locales/de/faqHeader.json";
-import ie from "../i18n/locales/de/faqList.json";
-import ae from "../i18n/locales/de/pricingHeader.json";
-import oe from "../i18n/locales/de/pricingTiers.json";
-import se from "../i18n/locales/de/productsHeader.json";
-import ce from "../i18n/locales/de/productsGrid.json";
-import le from "../i18n/locales/de/settingsHeader.json";
-import ue from "../i18n/locales/de/profileSection.json";
-import de from "../i18n/locales/de/preferencesSection.json";
-import fe from "../i18n/locales/de/apiAccessSection.json";
-import pe from "../i18n/locales/de/settingsFooter.json";
-import me from "../i18n/locales/de/teamHeader.json";
-import he from "../i18n/locales/de/teamGrid.json";
-import ge from "../i18n/locales/de/common.json";
-import _e from "../i18n/locales/de/home.json";
-import ve from "../i18n/locales/de/about.json";
-import ye from "../i18n/locales/de/blog.json";
-import be from "../i18n/locales/de/careers.json";
-import xe from "../i18n/locales/de/contact.json";
-import Se from "../i18n/locales/de/faq.json";
-import Ce from "../i18n/locales/de/pricing.json";
-import we from "../i18n/locales/de/products.json";
-import Te from "../i18n/locales/de/settings.json";
-import Ee from "../i18n/locales/de/team.json";
-import De from "../i18n/locales/es/route.json";
-import Oe from "../i18n/locales/es/header.json";
-import ke from "../i18n/locales/es/footer.json";
-import Ae from "../i18n/locales/es/themeToggle.json";
-import je from "../i18n/locales/es/hero.json";
-import Me from "../i18n/locales/es/whyItMatters.json";
-import Ne from "../i18n/locales/es/understandingImpact.json";
-import Pe from "../i18n/locales/es/resultsTable.json";
-import Fe from "../i18n/locales/es/aboutHeader.json";
-import Ie from "../i18n/locales/es/aboutGrid.json";
-import Le from "../i18n/locales/es/whatWeMeasure.json";
-import Re from "../i18n/locales/es/blogHeader.json";
-import ze from "../i18n/locales/es/blogList.json";
-import Be from "../i18n/locales/es/careersHeader.json";
-import Ve from "../i18n/locales/es/careersBenefits.json";
-import He from "../i18n/locales/es/openPositions.json";
-import Ue from "../i18n/locales/es/contactHeader.json";
-import We from "../i18n/locales/es/contactForm.json";
-import Ge from "../i18n/locales/es/faqHeader.json";
-import Ke from "../i18n/locales/es/faqList.json";
-import qe from "../i18n/locales/es/pricingHeader.json";
-import Je from "../i18n/locales/es/pricingTiers.json";
-import Ye from "../i18n/locales/es/productsHeader.json";
-import Xe from "../i18n/locales/es/productsGrid.json";
-import Ze from "../i18n/locales/es/settingsHeader.json";
-import Qe from "../i18n/locales/es/profileSection.json";
-import $e from "../i18n/locales/es/preferencesSection.json";
-import et from "../i18n/locales/es/apiAccessSection.json";
-import tt from "../i18n/locales/es/settingsFooter.json";
-import nt from "../i18n/locales/es/teamHeader.json";
-import rt from "../i18n/locales/es/teamGrid.json";
-import it from "../i18n/locales/es/common.json";
-import at from "../i18n/locales/es/home.json";
-import ot from "../i18n/locales/es/about.json";
-import st from "../i18n/locales/es/blog.json";
-import ct from "../i18n/locales/es/careers.json";
-import lt from "../i18n/locales/es/contact.json";
-import ut from "../i18n/locales/es/faq.json";
-import dt from "../i18n/locales/es/pricing.json";
-import ft from "../i18n/locales/es/products.json";
-import pt from "../i18n/locales/es/settings.json";
-import mt from "../i18n/locales/es/team.json";
-import ht from "../i18n/locales/fr/route.json";
-import gt from "../i18n/locales/fr/header.json";
-import _t from "../i18n/locales/fr/footer.json";
-import vt from "../i18n/locales/fr/themeToggle.json";
-import yt from "../i18n/locales/fr/hero.json";
-import bt from "../i18n/locales/fr/whyItMatters.json";
-import xt from "../i18n/locales/fr/understandingImpact.json";
-import St from "../i18n/locales/fr/resultsTable.json";
-import Ct from "../i18n/locales/fr/aboutHeader.json";
-import wt from "../i18n/locales/fr/aboutGrid.json";
-import Tt from "../i18n/locales/fr/whatWeMeasure.json";
-import Et from "../i18n/locales/fr/blogHeader.json";
-import Dt from "../i18n/locales/fr/blogList.json";
-import Ot from "../i18n/locales/fr/careersHeader.json";
-import kt from "../i18n/locales/fr/careersBenefits.json";
-import At from "../i18n/locales/fr/openPositions.json";
-import jt from "../i18n/locales/fr/contactHeader.json";
-import Mt from "../i18n/locales/fr/contactForm.json";
-import Nt from "../i18n/locales/fr/faqHeader.json";
-import Pt from "../i18n/locales/fr/faqList.json";
-import Ft from "../i18n/locales/fr/pricingHeader.json";
-import It from "../i18n/locales/fr/pricingTiers.json";
-import Lt from "../i18n/locales/fr/productsHeader.json";
-import Rt from "../i18n/locales/fr/productsGrid.json";
-import zt from "../i18n/locales/fr/settingsHeader.json";
-import Bt from "../i18n/locales/fr/profileSection.json";
-import Vt from "../i18n/locales/fr/preferencesSection.json";
-import Ht from "../i18n/locales/fr/apiAccessSection.json";
-import Ut from "../i18n/locales/fr/settingsFooter.json";
-import Wt from "../i18n/locales/fr/teamHeader.json";
-import Gt from "../i18n/locales/fr/teamGrid.json";
-import Kt from "../i18n/locales/fr/common.json";
-import qt from "../i18n/locales/fr/home.json";
-import Jt from "../i18n/locales/fr/about.json";
-import Yt from "../i18n/locales/fr/blog.json";
-import Xt from "../i18n/locales/fr/careers.json";
-import Zt from "../i18n/locales/fr/contact.json";
-import Qt from "../i18n/locales/fr/faq.json";
-import $t from "../i18n/locales/fr/pricing.json";
-import en from "../i18n/locales/fr/products.json";
-import tn from "../i18n/locales/fr/settings.json";
-import nn from "../i18n/locales/fr/team.json";
-import rn from "../i18n/locales/it/route.json";
-import an from "../i18n/locales/it/header.json";
-import on from "../i18n/locales/it/footer.json";
-import sn from "../i18n/locales/it/themeToggle.json";
-import cn from "../i18n/locales/it/hero.json";
-import ln from "../i18n/locales/it/whyItMatters.json";
-import un from "../i18n/locales/it/understandingImpact.json";
-import dn from "../i18n/locales/it/resultsTable.json";
-import fn from "../i18n/locales/it/aboutHeader.json";
-import pn from "../i18n/locales/it/aboutGrid.json";
-import mn from "../i18n/locales/it/whatWeMeasure.json";
-import hn from "../i18n/locales/it/blogHeader.json";
-import gn from "../i18n/locales/it/blogList.json";
-import _n from "../i18n/locales/it/careersHeader.json";
-import vn from "../i18n/locales/it/careersBenefits.json";
-import yn from "../i18n/locales/it/openPositions.json";
-import bn from "../i18n/locales/it/contactHeader.json";
-import xn from "../i18n/locales/it/contactForm.json";
-import Sn from "../i18n/locales/it/faqHeader.json";
-import Cn from "../i18n/locales/it/faqList.json";
-import wn from "../i18n/locales/it/pricingHeader.json";
-import Tn from "../i18n/locales/it/pricingTiers.json";
-import En from "../i18n/locales/it/productsHeader.json";
-import Dn from "../i18n/locales/it/productsGrid.json";
-import On from "../i18n/locales/it/settingsHeader.json";
-import kn from "../i18n/locales/it/profileSection.json";
-import An from "../i18n/locales/it/preferencesSection.json";
-import jn from "../i18n/locales/it/apiAccessSection.json";
-import Mn from "../i18n/locales/it/settingsFooter.json";
-import Nn from "../i18n/locales/it/teamHeader.json";
-import Pn from "../i18n/locales/it/teamGrid.json";
-import Fn from "../i18n/locales/it/common.json";
-import In from "../i18n/locales/it/home.json";
-import Ln from "../i18n/locales/it/about.json";
-import Rn from "../i18n/locales/it/blog.json";
-import zn from "../i18n/locales/it/careers.json";
-import Bn from "../i18n/locales/it/contact.json";
-import Vn from "../i18n/locales/it/faq.json";
-import Hn from "../i18n/locales/it/pricing.json";
-import Un from "../i18n/locales/it/products.json";
-import Wn from "../i18n/locales/it/settings.json";
-import Gn from "../i18n/locales/it/team.json";
-import Kn from "../i18n/locales/ja/route.json";
-import qn from "../i18n/locales/ja/header.json";
-import Jn from "../i18n/locales/ja/footer.json";
-import Yn from "../i18n/locales/ja/themeToggle.json";
-import Xn from "../i18n/locales/ja/hero.json";
-import Zn from "../i18n/locales/ja/whyItMatters.json";
-import Qn from "../i18n/locales/ja/understandingImpact.json";
-import $n from "../i18n/locales/ja/resultsTable.json";
-import er from "../i18n/locales/ja/aboutHeader.json";
-import tr from "../i18n/locales/ja/aboutGrid.json";
-import nr from "../i18n/locales/ja/whatWeMeasure.json";
-import rr from "../i18n/locales/ja/blogHeader.json";
-import ir from "../i18n/locales/ja/blogList.json";
-import ar from "../i18n/locales/ja/careersHeader.json";
-import or from "../i18n/locales/ja/careersBenefits.json";
-import sr from "../i18n/locales/ja/openPositions.json";
-import cr from "../i18n/locales/ja/contactHeader.json";
-import lr from "../i18n/locales/ja/contactForm.json";
-import ur from "../i18n/locales/ja/faqHeader.json";
-import dr from "../i18n/locales/ja/faqList.json";
-import fr from "../i18n/locales/ja/pricingHeader.json";
-import pr from "../i18n/locales/ja/pricingTiers.json";
-import mr from "../i18n/locales/ja/productsHeader.json";
-import hr from "../i18n/locales/ja/productsGrid.json";
-import gr from "../i18n/locales/ja/settingsHeader.json";
-import _r from "../i18n/locales/ja/profileSection.json";
-import vr from "../i18n/locales/ja/preferencesSection.json";
-import yr from "../i18n/locales/ja/apiAccessSection.json";
-import br from "../i18n/locales/ja/settingsFooter.json";
-import xr from "../i18n/locales/ja/teamHeader.json";
-import Sr from "../i18n/locales/ja/teamGrid.json";
-import w from "../i18n/locales/ja/common.json";
-import Cr from "../i18n/locales/ja/home.json";
-import wr from "../i18n/locales/ja/about.json";
-import Tr from "../i18n/locales/ja/blog.json";
-import Er from "../i18n/locales/ja/careers.json";
-import Dr from "../i18n/locales/ja/contact.json";
-import Or from "../i18n/locales/ja/faq.json";
-import kr from "../i18n/locales/ja/pricing.json";
-import Ar from "../i18n/locales/ja/products.json";
-import jr from "../i18n/locales/ja/settings.json";
-import Mr from "../i18n/locales/ja/team.json";
-import Nr from "../i18n/locales/ko/route.json";
-import Pr from "../i18n/locales/ko/header.json";
-import Fr from "../i18n/locales/ko/footer.json";
-import Ir from "../i18n/locales/ko/themeToggle.json";
-import Lr from "../i18n/locales/ko/hero.json";
-import Rr from "../i18n/locales/ko/whyItMatters.json";
-import zr from "../i18n/locales/ko/understandingImpact.json";
-import Br from "../i18n/locales/ko/resultsTable.json";
-import Vr from "../i18n/locales/ko/aboutHeader.json";
-import Hr from "../i18n/locales/ko/aboutGrid.json";
-import Ur from "../i18n/locales/ko/whatWeMeasure.json";
-import Wr from "../i18n/locales/ko/blogHeader.json";
-import Gr from "../i18n/locales/ko/blogList.json";
-import Kr from "../i18n/locales/ko/careersHeader.json";
-import qr from "../i18n/locales/ko/careersBenefits.json";
-import Jr from "../i18n/locales/ko/openPositions.json";
-import Yr from "../i18n/locales/ko/contactHeader.json";
-import Xr from "../i18n/locales/ko/contactForm.json";
-import Zr from "../i18n/locales/ko/faqHeader.json";
-import Qr from "../i18n/locales/ko/faqList.json";
-import $r from "../i18n/locales/ko/pricingHeader.json";
-import ei from "../i18n/locales/ko/pricingTiers.json";
-import ti from "../i18n/locales/ko/productsHeader.json";
-import ni from "../i18n/locales/ko/productsGrid.json";
-import ri from "../i18n/locales/ko/settingsHeader.json";
-import ii from "../i18n/locales/ko/profileSection.json";
-import ai from "../i18n/locales/ko/preferencesSection.json";
-import oi from "../i18n/locales/ko/apiAccessSection.json";
-import si from "../i18n/locales/ko/settingsFooter.json";
-import ci from "../i18n/locales/ko/teamHeader.json";
-import li from "../i18n/locales/ko/teamGrid.json";
-import T from "../i18n/locales/ko/common.json";
+import e, { Profiler as t, Suspense as n, useEffect as r, useMemo as i, useState as a } from "react";
+import { useParams as o, usePathname as s, useRouter as c } from "next/navigation";
+import { jsx as l } from "react/jsx-runtime";
+import u from "../i18n/locales/de/route.json";
+import d from "../i18n/locales/de/header.json";
+import f from "../i18n/locales/de/footer.json";
+import p from "../i18n/locales/de/themeToggle.json";
+import m from "../i18n/locales/de/hero.json";
+import h from "../i18n/locales/de/whyItMatters.json";
+import g from "../i18n/locales/de/understandingImpact.json";
+import _ from "../i18n/locales/de/resultsTable.json";
+import v from "../i18n/locales/de/aboutHeader.json";
+import y from "../i18n/locales/de/aboutGrid.json";
+import b from "../i18n/locales/de/whatWeMeasure.json";
+import x from "../i18n/locales/de/blogHeader.json";
+import S from "../i18n/locales/de/blogList.json";
+import ee from "../i18n/locales/de/careersHeader.json";
+import te from "../i18n/locales/de/careersBenefits.json";
+import C from "../i18n/locales/de/openPositions.json";
+import w from "../i18n/locales/de/contactHeader.json";
+import T from "../i18n/locales/de/contactForm.json";
+import ne from "../i18n/locales/de/faqHeader.json";
+import re from "../i18n/locales/de/faqList.json";
+import ie from "../i18n/locales/de/pricingHeader.json";
+import ae from "../i18n/locales/de/pricingTiers.json";
+import oe from "../i18n/locales/de/productsHeader.json";
+import se from "../i18n/locales/de/productsGrid.json";
+import ce from "../i18n/locales/de/settingsHeader.json";
+import le from "../i18n/locales/de/profileSection.json";
+import ue from "../i18n/locales/de/preferencesSection.json";
+import de from "../i18n/locales/de/apiAccessSection.json";
+import fe from "../i18n/locales/de/settingsFooter.json";
+import pe from "../i18n/locales/de/teamHeader.json";
+import me from "../i18n/locales/de/teamGrid.json";
+import E from "../i18n/locales/de/common.json";
+import he from "../i18n/locales/de/home.json";
+import ge from "../i18n/locales/de/about.json";
+import _e from "../i18n/locales/de/blog.json";
+import ve from "../i18n/locales/de/careers.json";
+import ye from "../i18n/locales/de/contact.json";
+import be from "../i18n/locales/de/faq.json";
+import xe from "../i18n/locales/de/pricing.json";
+import Se from "../i18n/locales/de/products.json";
+import Ce from "../i18n/locales/de/settings.json";
+import we from "../i18n/locales/de/team.json";
+import Te from "../i18n/locales/es/route.json";
+import Ee from "../i18n/locales/es/header.json";
+import De from "../i18n/locales/es/footer.json";
+import Oe from "../i18n/locales/es/themeToggle.json";
+import ke from "../i18n/locales/es/hero.json";
+import Ae from "../i18n/locales/es/whyItMatters.json";
+import je from "../i18n/locales/es/understandingImpact.json";
+import Me from "../i18n/locales/es/resultsTable.json";
+import Ne from "../i18n/locales/es/aboutHeader.json";
+import Pe from "../i18n/locales/es/aboutGrid.json";
+import Fe from "../i18n/locales/es/whatWeMeasure.json";
+import Ie from "../i18n/locales/es/blogHeader.json";
+import Le from "../i18n/locales/es/blogList.json";
+import Re from "../i18n/locales/es/careersHeader.json";
+import ze from "../i18n/locales/es/careersBenefits.json";
+import Be from "../i18n/locales/es/openPositions.json";
+import Ve from "../i18n/locales/es/contactHeader.json";
+import He from "../i18n/locales/es/contactForm.json";
+import Ue from "../i18n/locales/es/faqHeader.json";
+import We from "../i18n/locales/es/faqList.json";
+import Ge from "../i18n/locales/es/pricingHeader.json";
+import Ke from "../i18n/locales/es/pricingTiers.json";
+import qe from "../i18n/locales/es/productsHeader.json";
+import Je from "../i18n/locales/es/productsGrid.json";
+import Ye from "../i18n/locales/es/settingsHeader.json";
+import Xe from "../i18n/locales/es/profileSection.json";
+import Ze from "../i18n/locales/es/preferencesSection.json";
+import Qe from "../i18n/locales/es/apiAccessSection.json";
+import $e from "../i18n/locales/es/settingsFooter.json";
+import et from "../i18n/locales/es/teamHeader.json";
+import tt from "../i18n/locales/es/teamGrid.json";
+import nt from "../i18n/locales/es/common.json";
+import rt from "../i18n/locales/es/home.json";
+import it from "../i18n/locales/es/about.json";
+import at from "../i18n/locales/es/blog.json";
+import ot from "../i18n/locales/es/careers.json";
+import st from "../i18n/locales/es/contact.json";
+import ct from "../i18n/locales/es/faq.json";
+import lt from "../i18n/locales/es/pricing.json";
+import ut from "../i18n/locales/es/products.json";
+import dt from "../i18n/locales/es/settings.json";
+import ft from "../i18n/locales/es/team.json";
+import pt from "../i18n/locales/fr/route.json";
+import mt from "../i18n/locales/fr/header.json";
+import ht from "../i18n/locales/fr/footer.json";
+import gt from "../i18n/locales/fr/themeToggle.json";
+import _t from "../i18n/locales/fr/hero.json";
+import vt from "../i18n/locales/fr/whyItMatters.json";
+import yt from "../i18n/locales/fr/understandingImpact.json";
+import bt from "../i18n/locales/fr/resultsTable.json";
+import xt from "../i18n/locales/fr/aboutHeader.json";
+import St from "../i18n/locales/fr/aboutGrid.json";
+import Ct from "../i18n/locales/fr/whatWeMeasure.json";
+import wt from "../i18n/locales/fr/blogHeader.json";
+import Tt from "../i18n/locales/fr/blogList.json";
+import Et from "../i18n/locales/fr/careersHeader.json";
+import Dt from "../i18n/locales/fr/careersBenefits.json";
+import Ot from "../i18n/locales/fr/openPositions.json";
+import kt from "../i18n/locales/fr/contactHeader.json";
+import At from "../i18n/locales/fr/contactForm.json";
+import jt from "../i18n/locales/fr/faqHeader.json";
+import Mt from "../i18n/locales/fr/faqList.json";
+import Nt from "../i18n/locales/fr/pricingHeader.json";
+import Pt from "../i18n/locales/fr/pricingTiers.json";
+import Ft from "../i18n/locales/fr/productsHeader.json";
+import It from "../i18n/locales/fr/productsGrid.json";
+import Lt from "../i18n/locales/fr/settingsHeader.json";
+import Rt from "../i18n/locales/fr/profileSection.json";
+import zt from "../i18n/locales/fr/preferencesSection.json";
+import Bt from "../i18n/locales/fr/apiAccessSection.json";
+import Vt from "../i18n/locales/fr/settingsFooter.json";
+import Ht from "../i18n/locales/fr/teamHeader.json";
+import Ut from "../i18n/locales/fr/teamGrid.json";
+import Wt from "../i18n/locales/fr/common.json";
+import Gt from "../i18n/locales/fr/home.json";
+import Kt from "../i18n/locales/fr/about.json";
+import qt from "../i18n/locales/fr/blog.json";
+import Jt from "../i18n/locales/fr/careers.json";
+import Yt from "../i18n/locales/fr/contact.json";
+import Xt from "../i18n/locales/fr/faq.json";
+import Zt from "../i18n/locales/fr/pricing.json";
+import Qt from "../i18n/locales/fr/products.json";
+import $t from "../i18n/locales/fr/settings.json";
+import en from "../i18n/locales/fr/team.json";
+import tn from "../i18n/locales/it/route.json";
+import nn from "../i18n/locales/it/header.json";
+import rn from "../i18n/locales/it/footer.json";
+import an from "../i18n/locales/it/themeToggle.json";
+import on from "../i18n/locales/it/hero.json";
+import sn from "../i18n/locales/it/whyItMatters.json";
+import cn from "../i18n/locales/it/understandingImpact.json";
+import ln from "../i18n/locales/it/resultsTable.json";
+import un from "../i18n/locales/it/aboutHeader.json";
+import dn from "../i18n/locales/it/aboutGrid.json";
+import fn from "../i18n/locales/it/whatWeMeasure.json";
+import pn from "../i18n/locales/it/blogHeader.json";
+import mn from "../i18n/locales/it/blogList.json";
+import hn from "../i18n/locales/it/careersHeader.json";
+import gn from "../i18n/locales/it/careersBenefits.json";
+import _n from "../i18n/locales/it/openPositions.json";
+import vn from "../i18n/locales/it/contactHeader.json";
+import yn from "../i18n/locales/it/contactForm.json";
+import bn from "../i18n/locales/it/faqHeader.json";
+import xn from "../i18n/locales/it/faqList.json";
+import Sn from "../i18n/locales/it/pricingHeader.json";
+import Cn from "../i18n/locales/it/pricingTiers.json";
+import wn from "../i18n/locales/it/productsHeader.json";
+import Tn from "../i18n/locales/it/productsGrid.json";
+import En from "../i18n/locales/it/settingsHeader.json";
+import Dn from "../i18n/locales/it/profileSection.json";
+import On from "../i18n/locales/it/preferencesSection.json";
+import kn from "../i18n/locales/it/apiAccessSection.json";
+import An from "../i18n/locales/it/settingsFooter.json";
+import jn from "../i18n/locales/it/teamHeader.json";
+import Mn from "../i18n/locales/it/teamGrid.json";
+import Nn from "../i18n/locales/it/common.json";
+import Pn from "../i18n/locales/it/home.json";
+import Fn from "../i18n/locales/it/about.json";
+import In from "../i18n/locales/it/blog.json";
+import Ln from "../i18n/locales/it/careers.json";
+import Rn from "../i18n/locales/it/contact.json";
+import zn from "../i18n/locales/it/faq.json";
+import Bn from "../i18n/locales/it/pricing.json";
+import Vn from "../i18n/locales/it/products.json";
+import Hn from "../i18n/locales/it/settings.json";
+import Un from "../i18n/locales/it/team.json";
+import Wn from "../i18n/locales/ja/route.json";
+import Gn from "../i18n/locales/ja/header.json";
+import Kn from "../i18n/locales/ja/footer.json";
+import qn from "../i18n/locales/ja/themeToggle.json";
+import Jn from "../i18n/locales/ja/hero.json";
+import Yn from "../i18n/locales/ja/whyItMatters.json";
+import Xn from "../i18n/locales/ja/understandingImpact.json";
+import Zn from "../i18n/locales/ja/resultsTable.json";
+import Qn from "../i18n/locales/ja/aboutHeader.json";
+import $n from "../i18n/locales/ja/aboutGrid.json";
+import er from "../i18n/locales/ja/whatWeMeasure.json";
+import tr from "../i18n/locales/ja/blogHeader.json";
+import nr from "../i18n/locales/ja/blogList.json";
+import rr from "../i18n/locales/ja/careersHeader.json";
+import ir from "../i18n/locales/ja/careersBenefits.json";
+import ar from "../i18n/locales/ja/openPositions.json";
+import or from "../i18n/locales/ja/contactHeader.json";
+import sr from "../i18n/locales/ja/contactForm.json";
+import cr from "../i18n/locales/ja/faqHeader.json";
+import lr from "../i18n/locales/ja/faqList.json";
+import ur from "../i18n/locales/ja/pricingHeader.json";
+import dr from "../i18n/locales/ja/pricingTiers.json";
+import fr from "../i18n/locales/ja/productsHeader.json";
+import pr from "../i18n/locales/ja/productsGrid.json";
+import mr from "../i18n/locales/ja/settingsHeader.json";
+import hr from "../i18n/locales/ja/profileSection.json";
+import gr from "../i18n/locales/ja/preferencesSection.json";
+import _r from "../i18n/locales/ja/apiAccessSection.json";
+import vr from "../i18n/locales/ja/settingsFooter.json";
+import yr from "../i18n/locales/ja/teamHeader.json";
+import br from "../i18n/locales/ja/teamGrid.json";
+import xr from "../i18n/locales/ja/common.json";
+import Sr from "../i18n/locales/ja/home.json";
+import Cr from "../i18n/locales/ja/about.json";
+import wr from "../i18n/locales/ja/blog.json";
+import Tr from "../i18n/locales/ja/careers.json";
+import Er from "../i18n/locales/ja/contact.json";
+import Dr from "../i18n/locales/ja/faq.json";
+import Or from "../i18n/locales/ja/pricing.json";
+import kr from "../i18n/locales/ja/products.json";
+import Ar from "../i18n/locales/ja/settings.json";
+import jr from "../i18n/locales/ja/team.json";
+import Mr from "../i18n/locales/ko/route.json";
+import Nr from "../i18n/locales/ko/header.json";
+import Pr from "../i18n/locales/ko/footer.json";
+import Fr from "../i18n/locales/ko/themeToggle.json";
+import Ir from "../i18n/locales/ko/hero.json";
+import Lr from "../i18n/locales/ko/whyItMatters.json";
+import Rr from "../i18n/locales/ko/understandingImpact.json";
+import zr from "../i18n/locales/ko/resultsTable.json";
+import Br from "../i18n/locales/ko/aboutHeader.json";
+import Vr from "../i18n/locales/ko/aboutGrid.json";
+import Hr from "../i18n/locales/ko/whatWeMeasure.json";
+import Ur from "../i18n/locales/ko/blogHeader.json";
+import Wr from "../i18n/locales/ko/blogList.json";
+import Gr from "../i18n/locales/ko/careersHeader.json";
+import Kr from "../i18n/locales/ko/careersBenefits.json";
+import qr from "../i18n/locales/ko/openPositions.json";
+import Jr from "../i18n/locales/ko/contactHeader.json";
+import Yr from "../i18n/locales/ko/contactForm.json";
+import Xr from "../i18n/locales/ko/faqHeader.json";
+import Zr from "../i18n/locales/ko/faqList.json";
+import Qr from "../i18n/locales/ko/pricingHeader.json";
+import $r from "../i18n/locales/ko/pricingTiers.json";
+import ei from "../i18n/locales/ko/productsHeader.json";
+import ti from "../i18n/locales/ko/productsGrid.json";
+import ni from "../i18n/locales/ko/settingsHeader.json";
+import ri from "../i18n/locales/ko/profileSection.json";
+import ii from "../i18n/locales/ko/preferencesSection.json";
+import ai from "../i18n/locales/ko/apiAccessSection.json";
+import oi from "../i18n/locales/ko/settingsFooter.json";
+import si from "../i18n/locales/ko/teamHeader.json";
+import ci from "../i18n/locales/ko/teamGrid.json";
+import li from "../i18n/locales/ko/common.json";
 import ui from "../i18n/locales/ko/home.json";
 import di from "../i18n/locales/ko/about.json";
 import fi from "../i18n/locales/ko/blog.json";
@@ -283,91 +284,91 @@ import qi from "../i18n/locales/pt/apiAccessSection.json";
 import Ji from "../i18n/locales/pt/settingsFooter.json";
 import Yi from "../i18n/locales/pt/teamHeader.json";
 import Xi from "../i18n/locales/pt/teamGrid.json";
-import E from "../i18n/locales/pt/common.json";
-import Zi from "../i18n/locales/pt/home.json";
-import Qi from "../i18n/locales/pt/about.json";
-import $i from "../i18n/locales/pt/blog.json";
-import ea from "../i18n/locales/pt/careers.json";
-import ta from "../i18n/locales/pt/contact.json";
-import na from "../i18n/locales/pt/faq.json";
-import ra from "../i18n/locales/pt/pricing.json";
-import ia from "../i18n/locales/pt/products.json";
-import aa from "../i18n/locales/pt/settings.json";
-import oa from "../i18n/locales/pt/team.json";
-import sa from "../i18n/locales/ru/route.json";
-import ca from "../i18n/locales/ru/header.json";
-import la from "../i18n/locales/ru/footer.json";
-import ua from "../i18n/locales/ru/themeToggle.json";
-import da from "../i18n/locales/ru/hero.json";
-import fa from "../i18n/locales/ru/whyItMatters.json";
-import pa from "../i18n/locales/ru/understandingImpact.json";
-import ma from "../i18n/locales/ru/resultsTable.json";
-import ha from "../i18n/locales/ru/aboutHeader.json";
-import ga from "../i18n/locales/ru/aboutGrid.json";
-import _a from "../i18n/locales/ru/whatWeMeasure.json";
-import va from "../i18n/locales/ru/blogHeader.json";
-import ya from "../i18n/locales/ru/blogList.json";
-import ba from "../i18n/locales/ru/careersHeader.json";
-import xa from "../i18n/locales/ru/careersBenefits.json";
-import Sa from "../i18n/locales/ru/openPositions.json";
-import Ca from "../i18n/locales/ru/contactHeader.json";
-import wa from "../i18n/locales/ru/contactForm.json";
-import Ta from "../i18n/locales/ru/faqHeader.json";
-import Ea from "../i18n/locales/ru/faqList.json";
-import Da from "../i18n/locales/ru/pricingHeader.json";
-import Oa from "../i18n/locales/ru/pricingTiers.json";
-import ka from "../i18n/locales/ru/productsHeader.json";
-import Aa from "../i18n/locales/ru/productsGrid.json";
-import ja from "../i18n/locales/ru/settingsHeader.json";
-import Ma from "../i18n/locales/ru/profileSection.json";
-import Na from "../i18n/locales/ru/preferencesSection.json";
-import Pa from "../i18n/locales/ru/apiAccessSection.json";
-import Fa from "../i18n/locales/ru/settingsFooter.json";
-import Ia from "../i18n/locales/ru/teamHeader.json";
-import La from "../i18n/locales/ru/teamGrid.json";
-import Ra from "../i18n/locales/ru/common.json";
-import za from "../i18n/locales/ru/home.json";
-import Ba from "../i18n/locales/ru/about.json";
-import Va from "../i18n/locales/ru/blog.json";
-import Ha from "../i18n/locales/ru/careers.json";
-import Ua from "../i18n/locales/ru/contact.json";
-import Wa from "../i18n/locales/ru/faq.json";
-import Ga from "../i18n/locales/ru/pricing.json";
-import Ka from "../i18n/locales/ru/products.json";
-import qa from "../i18n/locales/ru/settings.json";
-import Ja from "../i18n/locales/ru/team.json";
-import Ya from "../i18n/locales/zh/route.json";
-import Xa from "../i18n/locales/zh/header.json";
-import Za from "../i18n/locales/zh/footer.json";
-import Qa from "../i18n/locales/zh/themeToggle.json";
-import $a from "../i18n/locales/zh/hero.json";
-import eo from "../i18n/locales/zh/whyItMatters.json";
-import to from "../i18n/locales/zh/understandingImpact.json";
-import no from "../i18n/locales/zh/resultsTable.json";
-import ro from "../i18n/locales/zh/aboutHeader.json";
-import io from "../i18n/locales/zh/aboutGrid.json";
-import ao from "../i18n/locales/zh/whatWeMeasure.json";
-import oo from "../i18n/locales/zh/blogHeader.json";
-import so from "../i18n/locales/zh/blogList.json";
-import co from "../i18n/locales/zh/careersHeader.json";
-import lo from "../i18n/locales/zh/careersBenefits.json";
-import uo from "../i18n/locales/zh/openPositions.json";
-import fo from "../i18n/locales/zh/contactHeader.json";
-import po from "../i18n/locales/zh/contactForm.json";
-import mo from "../i18n/locales/zh/faqHeader.json";
-import ho from "../i18n/locales/zh/faqList.json";
-import go from "../i18n/locales/zh/pricingHeader.json";
-import _o from "../i18n/locales/zh/pricingTiers.json";
-import vo from "../i18n/locales/zh/productsHeader.json";
-import yo from "../i18n/locales/zh/productsGrid.json";
-import bo from "../i18n/locales/zh/settingsHeader.json";
-import xo from "../i18n/locales/zh/profileSection.json";
-import So from "../i18n/locales/zh/preferencesSection.json";
-import Co from "../i18n/locales/zh/apiAccessSection.json";
-import wo from "../i18n/locales/zh/settingsFooter.json";
-import To from "../i18n/locales/zh/teamHeader.json";
-import Eo from "../i18n/locales/zh/teamGrid.json";
-import Do from "../i18n/locales/zh/common.json";
+import Zi from "../i18n/locales/pt/common.json";
+import Qi from "../i18n/locales/pt/home.json";
+import $i from "../i18n/locales/pt/about.json";
+import ea from "../i18n/locales/pt/blog.json";
+import ta from "../i18n/locales/pt/careers.json";
+import na from "../i18n/locales/pt/contact.json";
+import ra from "../i18n/locales/pt/faq.json";
+import ia from "../i18n/locales/pt/pricing.json";
+import aa from "../i18n/locales/pt/products.json";
+import oa from "../i18n/locales/pt/settings.json";
+import sa from "../i18n/locales/pt/team.json";
+import ca from "../i18n/locales/ru/route.json";
+import la from "../i18n/locales/ru/header.json";
+import ua from "../i18n/locales/ru/footer.json";
+import da from "../i18n/locales/ru/themeToggle.json";
+import fa from "../i18n/locales/ru/hero.json";
+import pa from "../i18n/locales/ru/whyItMatters.json";
+import ma from "../i18n/locales/ru/understandingImpact.json";
+import ha from "../i18n/locales/ru/resultsTable.json";
+import ga from "../i18n/locales/ru/aboutHeader.json";
+import _a from "../i18n/locales/ru/aboutGrid.json";
+import va from "../i18n/locales/ru/whatWeMeasure.json";
+import ya from "../i18n/locales/ru/blogHeader.json";
+import ba from "../i18n/locales/ru/blogList.json";
+import xa from "../i18n/locales/ru/careersHeader.json";
+import Sa from "../i18n/locales/ru/careersBenefits.json";
+import Ca from "../i18n/locales/ru/openPositions.json";
+import wa from "../i18n/locales/ru/contactHeader.json";
+import Ta from "../i18n/locales/ru/contactForm.json";
+import Ea from "../i18n/locales/ru/faqHeader.json";
+import Da from "../i18n/locales/ru/faqList.json";
+import Oa from "../i18n/locales/ru/pricingHeader.json";
+import ka from "../i18n/locales/ru/pricingTiers.json";
+import Aa from "../i18n/locales/ru/productsHeader.json";
+import ja from "../i18n/locales/ru/productsGrid.json";
+import Ma from "../i18n/locales/ru/settingsHeader.json";
+import Na from "../i18n/locales/ru/profileSection.json";
+import Pa from "../i18n/locales/ru/preferencesSection.json";
+import Fa from "../i18n/locales/ru/apiAccessSection.json";
+import Ia from "../i18n/locales/ru/settingsFooter.json";
+import La from "../i18n/locales/ru/teamHeader.json";
+import Ra from "../i18n/locales/ru/teamGrid.json";
+import za from "../i18n/locales/ru/common.json";
+import Ba from "../i18n/locales/ru/home.json";
+import Va from "../i18n/locales/ru/about.json";
+import Ha from "../i18n/locales/ru/blog.json";
+import Ua from "../i18n/locales/ru/careers.json";
+import Wa from "../i18n/locales/ru/contact.json";
+import Ga from "../i18n/locales/ru/faq.json";
+import Ka from "../i18n/locales/ru/pricing.json";
+import qa from "../i18n/locales/ru/products.json";
+import Ja from "../i18n/locales/ru/settings.json";
+import Ya from "../i18n/locales/ru/team.json";
+import Xa from "../i18n/locales/zh/route.json";
+import Za from "../i18n/locales/zh/header.json";
+import Qa from "../i18n/locales/zh/footer.json";
+import $a from "../i18n/locales/zh/themeToggle.json";
+import eo from "../i18n/locales/zh/hero.json";
+import to from "../i18n/locales/zh/whyItMatters.json";
+import no from "../i18n/locales/zh/understandingImpact.json";
+import ro from "../i18n/locales/zh/resultsTable.json";
+import io from "../i18n/locales/zh/aboutHeader.json";
+import ao from "../i18n/locales/zh/aboutGrid.json";
+import oo from "../i18n/locales/zh/whatWeMeasure.json";
+import so from "../i18n/locales/zh/blogHeader.json";
+import co from "../i18n/locales/zh/blogList.json";
+import lo from "../i18n/locales/zh/careersHeader.json";
+import uo from "../i18n/locales/zh/careersBenefits.json";
+import fo from "../i18n/locales/zh/openPositions.json";
+import po from "../i18n/locales/zh/contactHeader.json";
+import mo from "../i18n/locales/zh/contactForm.json";
+import ho from "../i18n/locales/zh/faqHeader.json";
+import go from "../i18n/locales/zh/faqList.json";
+import _o from "../i18n/locales/zh/pricingHeader.json";
+import vo from "../i18n/locales/zh/pricingTiers.json";
+import yo from "../i18n/locales/zh/productsHeader.json";
+import bo from "../i18n/locales/zh/productsGrid.json";
+import xo from "../i18n/locales/zh/settingsHeader.json";
+import So from "../i18n/locales/zh/profileSection.json";
+import Co from "../i18n/locales/zh/preferencesSection.json";
+import wo from "../i18n/locales/zh/apiAccessSection.json";
+import To from "../i18n/locales/zh/settingsFooter.json";
+import Eo from "../i18n/locales/zh/teamHeader.json";
+import Do from "../i18n/locales/zh/teamGrid.json";
+import D from "../i18n/locales/zh/common.json";
 import Oo from "../i18n/locales/zh/home.json";
 import ko from "../i18n/locales/zh/about.json";
 import Ao from "../i18n/locales/zh/blog.json";
@@ -378,20 +379,59 @@ import Po from "../i18n/locales/zh/pricing.json";
 import Fo from "../i18n/locales/zh/products.json";
 import Io from "../i18n/locales/zh/settings.json";
 import Lo from "../i18n/locales/zh/team.json";
-import { jsx as D } from "react/jsx-runtime";
-import { useRouter as Ro } from "next/navigation";
+//#region i18n/config.ts
+var Ro = [
+	"en",
+	"fr",
+	"es",
+	"de",
+	"it",
+	"pt",
+	"zh",
+	"ja",
+	"ko",
+	"ru"
+], zo = (e) => {
+	try {
+		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
+		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
+	} catch {
+		return e.toUpperCase();
+	}
+};
+//#endregion
+//#region components/LocaleSwitcher.tsx
+function Bo() {
+	let e = o().locale ?? "en", t = s(), n = c(), r = (r) => {
+		let i = t.replace(`/${e}`, `/${r}`);
+		n.push(i);
+	};
+	return l("div", {
+		className: "flex items-center gap-2",
+		children: l("select", {
+			value: e,
+			onChange: (e) => r(e.target.value),
+			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
+			children: Ro.map((e) => l("option", {
+				value: e,
+				children: zo(e)
+			}, e))
+		})
+	});
+}
+//#endregion
 //#region ../../../node_modules/.bun/@tolgee+web@7.0.0/node_modules/@tolgee/web/dist/tolgee-web.production.esm.js
-var zo = Object.defineProperty, Bo = Object.getOwnPropertySymbols, Vo = Object.prototype.hasOwnProperty, Ho = Object.prototype.propertyIsEnumerable, Uo = (e, t, n) => t in e ? zo(e, t, {
+var Vo = Object.defineProperty, Ho = Object.getOwnPropertySymbols, Uo = Object.prototype.hasOwnProperty, Wo = Object.prototype.propertyIsEnumerable, Go = (e, t, n) => t in e ? Vo(e, t, {
 	enumerable: !0,
 	configurable: !0,
 	writable: !0,
 	value: n
-}) : e[t] = n, Wo = (e, t) => {
-	for (var n in t ||= {}) Vo.call(t, n) && Uo(e, n, t[n]);
-	if (Bo) for (var n of Bo(t)) Ho.call(t, n) && Uo(e, n, t[n]);
+}) : e[t] = n, Ko = (e, t) => {
+	for (var n in t ||= {}) Uo.call(t, n) && Go(e, n, t[n]);
+	if (Ho) for (var n of Ho(t)) Wo.call(t, n) && Go(e, n, t[n]);
 	return e;
-}, Go;
-function Ko(e, t) {
+}, qo;
+function Jo(e, t) {
 	for (var n = 0; n < t.length; n++) {
 		let r = t[n];
 		if (typeof r != "string" && !Array.isArray(r)) {
@@ -428,18 +468,18 @@ function j(e) {
 	let t = (Array.isArray(e) ? e : [e]).map((e) => `'${e}'`), n = t.slice(-2).join(" or ");
 	return `Tolgee: You need to specify ${[...t.slice(0, -2), n].join(", ")} option`;
 }
-function qo(e) {
+function Yo(e) {
 	return typeof e == "object" && !Array.isArray(e) && e !== null;
 }
-function Jo(e) {
+function Xo(e) {
 	if (typeof e == "string") return [e];
 	if (Array.isArray(e)) return e;
 }
 function M(e) {
-	return Jo(e) || [];
+	return Xo(e) || [];
 }
-function Yo(e, t) {
-	return qo(t) ? M(t?.[e]) : M(t);
+function Zo(e, t) {
+	return Yo(t) ? M(t?.[e]) : M(t);
 }
 function N(e) {
 	return Array.from(new Set(e));
@@ -447,16 +487,16 @@ function N(e) {
 function P(e) {
 	return e && e.replace(/\/+$/, "");
 }
-function Xo(e) {
+function Qo(e) {
 	if (typeof e == "string") return e;
 	if (typeof e?.message == "string") return e.message;
 }
-var Zo = (e, t) => fetch(e, t);
-function Qo(e) {
+var $o = (e, t) => fetch(e, t);
+function es(e) {
 	return Object.fromEntries(new Headers(e).entries());
 }
-var F = (e = Zo) => (t, n) => {
-	let r = Qo(n?.headers);
+var F = (e = $o) => (t, n) => {
+	let r = es(n?.headers);
 	return r["x-api-key"] && (r = Object.assign({
 		"x-tolgee-sdk-type": "JS",
 		"x-tolgee-sdk-version": "prerelease"
@@ -480,7 +520,7 @@ var F = (e = Zo) => (t, n) => {
 		}
 	};
 };
-function $o(e) {
+function ts(e) {
 	let t = [], n = [];
 	function r() {
 		if (n.length === 0) return;
@@ -503,7 +543,7 @@ function $o(e) {
 		}
 	});
 }
-function es() {
+function ns() {
 	let e = !0;
 	function t() {
 		return e;
@@ -518,7 +558,7 @@ function es() {
 		onCacheChange: I("cache", t),
 		onPermanentChange: I("permanentChange", t),
 		onError: I("error", t),
-		onUpdate: $o(t),
+		onUpdate: ts(t),
 		setEmitterActive(t) {
 			e = t;
 		},
@@ -544,7 +584,7 @@ var L = class extends Error {
 		let { language: r, namespace: i } = e;
 		super(`Tolgee: Failed to fetch record for "${r}"${i && ` and "${i}"`}`), this.cause = t, this.isDev = n, this.name = "RecordFetchError", this.language = r, this.namespace = i;
 	}
-}, ts = class extends Error {
+}, rs = class extends Error {
 	constructor(e, t) {
 		super(e), this.cause = t, this.name = "LanguageDetectorError";
 	}
@@ -572,7 +612,7 @@ var L = class extends Error {
 		namespace: n.join(":") || ""
 	};
 }, H = ({ language: e, namespace: t }) => t ? `${e}:${t}` : e;
-function ns(e, t, n, r, i, a, o) {
+function is(e, t, n, r, i, a, o) {
 	let s = /* @__PURE__ */ new Map(), c = /* @__PURE__ */ new Map(), l = {}, u = 0;
 	function d(t, n, r) {
 		let i = H(t);
@@ -718,13 +758,13 @@ function ns(e, t, n, r, i, a, o) {
 	});
 	return m;
 }
-function rs(e, t) {
+function as(e, t) {
 	var n = {};
 	for (var r in e) Object.prototype.hasOwnProperty.call(e, r) && t.indexOf(r) < 0 && (n[r] = e[r]);
 	if (e != null && typeof Object.getOwnPropertySymbols == "function") for (var i = 0, r = Object.getOwnPropertySymbols(e); i < r.length; i++) t.indexOf(r[i]) < 0 && Object.prototype.propertyIsEnumerable.call(e, r[i]) && (n[r[i]] = e[r[i]]);
 	return n;
 }
-var is = {
+var os = {
 	tagAttributes: {
 		textarea: ["placeholder"],
 		input: ["value", "placeholder"],
@@ -739,8 +779,8 @@ var is = {
 	inputSuffix: "%-%",
 	passToParent: ["option", "optgroup"],
 	fullKeyEncode: !1
-}, U = "invalid", as = {
-	observerOptions: is,
+}, U = "invalid", ss = {
+	observerOptions: os,
 	observerType: "invisible",
 	onFormatError: U,
 	apiUrl: "https://app.tolgee.io",
@@ -753,8 +793,8 @@ var is = {
 		t = Object.assign(Object.assign(Object.assign({}, t), e), { observerOptions: Object.assign(Object.assign({}, t.observerOptions), e?.observerOptions) });
 	}), t;
 };
-function os(e, t) {
-	let n = W(as, t?.initialOptions, e);
+function cs(e, t) {
+	let n = W(ss, t?.initialOptions, e);
 	return n.apiUrl = P(n.apiUrl), e?.fetch && (n.fetch = F(e.fetch)), {
 		initialOptions: n,
 		activeNamespaces: t?.activeNamespaces || /* @__PURE__ */ new Map(),
@@ -764,7 +804,7 @@ function os(e, t) {
 		isRunning: !1
 	};
 }
-function ss(e, t, n, r, i, a, o, s) {
+function ls(e, t, n, r, i, a, o, s) {
 	let c = { ui: void 0 }, l = {
 		formatters: [],
 		finalFormatter: void 0,
@@ -796,7 +836,7 @@ function ss(e, t, n, r, i, a, o, s) {
 			key: e.key,
 			ns: e.ns
 		});
-		return C.formatTranslation(Object.assign(Object.assign({}, e), {
+		return T.formatTranslation(Object.assign(Object.assign({}, e), {
 			translation: t,
 			formatEnabled: !0
 		}));
@@ -834,15 +874,15 @@ function ss(e, t, n, r, i, a, o, s) {
 	function ee() {
 		if (!l.languageDetector) return;
 		let e = n();
-		return A(s.onError, (e) => new ts("Tolgee: Failed to detect language", e), () => l.languageDetector?.getLanguage(Object.assign({ availableLanguages: e }, p())));
+		return A(s.onError, (e) => new rs("Tolgee: Failed to detect language", e), () => l.languageDetector?.getLanguage(Object.assign({ availableLanguages: e }, p())));
 	}
 	function te(e) {
 		e && l.backends.push(e);
 	}
-	function ne(e) {
+	function C(e) {
 		l.devBackend = e;
 	}
-	function re(e, t) {
+	function w(e, t) {
 		t(e, Object.freeze({
 			setFinalFormatter: _,
 			addFormatter: g,
@@ -850,14 +890,14 @@ function ss(e, t, n, r, i, a, o, s) {
 			hasObserver: h,
 			setUi: v,
 			hasUi: y,
-			setDevBackend: ne,
+			setDevBackend: C,
 			addBackend: te,
 			setLanguageDetector: x,
 			setLanguageStorage: b
 		}));
 	}
-	let C = Object.freeze({
-		addPlugin: re,
+	let T = Object.freeze({
+		addPlugin: w,
 		findPositions: d,
 		run() {
 			var e;
@@ -867,7 +907,7 @@ function ss(e, t, n, r, i, a, o, s) {
 				apiUrl: r,
 				projectId: i,
 				branch: a,
-				highlight: C.highlight,
+				highlight: T.highlight,
 				changeTranslation: o,
 				findPositions: d,
 				onPermanentChange: (e) => s.onPermanentChange.emit(e),
@@ -908,7 +948,7 @@ function ss(e, t, n, r, i, a, o, s) {
 		},
 		getBackendDevRecord: async ({ language: e, namespace: n }) => {
 			let { apiKey: r, apiUrl: i, projectId: a, branch: o, filterTag: s } = t();
-			if (!(!r || !i || !C.hasDevBackend())) return l.devBackend?.getRecord(Object.assign({
+			if (!(!r || !i || !T.hasDevBackend())) return l.devBackend?.getRecord(Object.assign({
 				apiKey: r,
 				apiUrl: i,
 				projectId: a,
@@ -939,10 +979,10 @@ function ss(e, t, n, r, i, a, o, s) {
 			return l.observer ? l.observer?.wrap(e) : e.translation;
 		},
 		hasDevBackend() {
-			return !!C.getDevBackend();
+			return !!T.getDevBackend();
 		},
 		formatTranslation(n) {
-			var { formatEnabled: r } = n, i = rs(n, ["formatEnabled"]);
+			var { formatEnabled: r } = n, i = as(n, ["formatEnabled"]);
 			let { key: a, translation: o, defaultValue: s, noWrap: c, params: u, ns: d, orEmpty: f } = i, p = o ?? s, m = "";
 			o ?? (m = t().onTranslationMissing(i));
 			let h = p ?? (f ? "" : m), g = e(), _ = r || !l.observer?.outputNotFormattable, v = (e) => l.observer && !c ? l.observer.wrap({
@@ -966,15 +1006,15 @@ function ss(e, t, n, r, i, a, o, s) {
 				}));
 			} catch (e) {
 				console.error(e);
-				let n = Xo(e) || U, r = t().onFormatError, a = typeof r;
+				let n = Qo(e) || U, r = t().onFormatError, a = typeof r;
 				h = a === "string" ? r : a === "function" ? r(n, i) : U, h = v(h);
 			}
 			return h;
 		}
 	});
-	return C;
+	return T;
 }
-var cs = (e, t, n) => {
+var us = (e, t, n) => {
 	let r = e;
 	return Object.freeze({
 		init(e) {
@@ -986,10 +1026,10 @@ var cs = (e, t, n) => {
 		}
 	});
 };
-function ls(e, t, n) {
-	let r = os(), i, a = Object.freeze({
+function ds(e, t, n) {
+	let r = cs(), i, a = Object.freeze({
 		init(e) {
-			r = os(e, r);
+			r = cs(e, r);
 		},
 		isRunning() {
 			return r.isRunning;
@@ -1040,7 +1080,7 @@ function ls(e, t, n) {
 		},
 		getFallbackLangs(e) {
 			let t = e || a.getLanguage();
-			return t ? N([t, ...Yo(t, r.initialOptions.fallbackLanguage)]) : [];
+			return t ? N([t, ...Zo(t, r.initialOptions.fallbackLanguage)]) : [];
 		},
 		getFallbackNs() {
 			return M(r.initialOptions.fallbackNs);
@@ -1073,8 +1113,8 @@ function ls(e, t, n) {
 	});
 	return a;
 }
-function us(e) {
-	var { ns: t, noWrap: n, orEmpty: r, params: i, language: a } = e, o = rs(e, [
+function fs(e) {
+	var { ns: t, noWrap: n, orEmpty: r, params: i, language: a } = e, o = as(e, [
 		"ns",
 		"noWrap",
 		"orEmpty",
@@ -1088,12 +1128,12 @@ function us(e) {
 		language: a
 	}), { params: Object.assign({}, o) });
 }
-var ds = (e, ...t) => {
+var ps = (e, ...t) => {
 	let n = {}, r;
-	return typeof e == "object" && e ? n = e : (n.key = e, typeof t[0] == "string" ? (n.defaultValue = t[0], r = t[1]) : typeof t[0] == "object" && (r = t[0])), r && (n = Object.assign(Object.assign({}, us(r)), n)), n;
+	return typeof e == "object" && e ? n = e : (n.key = e, typeof t[0] == "string" ? (n.defaultValue = t[0], r = t[1]) : typeof t[0] == "object" && (r = t[0])), r && (n = Object.assign(Object.assign({}, fs(r)), n)), n;
 };
-function fs({ options: e }) {
-	let t = es(), n = cs(!1, () => o.isFetching(), t.onFetchingChange.emit), r = cs(!1, () => S.isLoading(), t.onLoadingChange.emit), i = ls(t.onLanguageChange, t.onPendingLanguageChange, t.onRunningChange), a = ss(i.getLanguage, i.getInitialOptions, i.getAvailableLanguages, u, _, v, f, t), o = ns(t, a.getBackendRecord, a.getBackendDevRecord, i.withDefaultNs, i.isInitialLoading, n, r);
+function ms({ options: e }) {
+	let t = ns(), n = us(!1, () => o.isFetching(), t.onFetchingChange.emit), r = us(!1, () => S.isLoading(), t.onLoadingChange.emit), i = ds(t.onLanguageChange, t.onPendingLanguageChange, t.onRunningChange), a = ls(i.getLanguage, i.getInitialOptions, i.getAvailableLanguages, u, _, v, f, t), o = is(t, a.getBackendRecord, a.getBackendDevRecord, i.withDefaultNs, i.isInitialLoading, n, r);
 	e && p(e);
 	let s;
 	t.onUpdate.listen(() => {
@@ -1223,7 +1263,7 @@ function fs({ options: e }) {
 			}), a.length === 0;
 		},
 		t: (...e) => {
-			let t = ds(...e), n = v(t);
+			let t = ps(...e), n = v(t);
 			return a.formatTranslation(Object.assign(Object.assign({}, t), { translation: n }));
 		},
 		isDev() {
@@ -1247,8 +1287,8 @@ function fs({ options: e }) {
 	}));
 	return S;
 }
-function ps(e) {
-	let t = fs({ options: e });
+function hs(e) {
+	let t = ms({ options: e });
 	t.isDev() && t.invalidate();
 	function n(e) {
 		let n = t.isRunning();
@@ -1297,7 +1337,7 @@ function ps(e) {
 	});
 	return r;
 }
-var ms = () => {
+var gs = () => {
 	let e = {
 		plugins: [],
 		options: {}
@@ -1309,60 +1349,60 @@ var ms = () => {
 			return e.options = W(e.options, n), t;
 		},
 		init(t) {
-			let n = ps(W(e.options, t));
+			let n = hs(W(e.options, t));
 			return e.plugins.forEach(n.addPlugin), n;
 		}
 	});
 	return t;
-}, hs = 0, G = 1, gs = 2, _s = class extends Error {
+}, _s = 0, G = 1, vs = 2, ys = class extends Error {
 	constructor(e, t, n) {
 		let r, i = "";
-		e === hs ? r = "Empty parameter" : e === G ? (r = "Unexpected character", i = "Did you forget to use FormatIcu to render ICU message syntax?") : r = "Unexpected end", super(`Tolgee parser: ${r} at ${t} in "${n}"` + (i ? "\n" + i : "")), this.code = e, this.index = t;
+		e === _s ? r = "Empty parameter" : e === G ? (r = "Unexpected character", i = "Did you forget to use FormatIcu to render ICU message syntax?") : r = "Unexpected end", super(`Tolgee parser: ${r} at ${t} in "${n}"` + (i ? "\n" + i : "")), this.code = e, this.index = t;
 	}
 };
-function vs(e) {
+function bs(e) {
 	return /\s/.test(e);
 }
-var K = 0, q = 1, J = 2, Y = 3, X = 4, ys = new Set([
+var K = 0, q = 1, J = 2, Y = 3, X = 4, xs = new Set([
 	J,
 	q,
 	K
-]), Z = "'", bs = new Set([
+]), Z = "'", Ss = new Set([
 	"{",
 	"}",
 	Z
-]), xs = (e) => /[0-9a-zA-Z_]/.test(e);
-function Ss(e) {
+]), Cs = (e) => /[0-9a-zA-Z_]/.test(e);
+function ws(e) {
 	let t = K, n = "", r = "", i = "", a = [], o = [], s = 0;
 	function c(t) {
-		throw new _s(t, s, e);
+		throw new ys(t, s, e);
 	}
 	let l = () => {
 		a.push(n), n = "";
 	}, u = () => {
-		xs(i) || c(G), r += i;
+		Cs(i) || c(G), r += i;
 	}, d = () => {
-		r === "" && c(hs), o.push(r), r = "";
+		r === "" && c(_s), o.push(r), r = "";
 	};
 	for (s = 0; s < e.length; s++) switch (i = e[s], t) {
 		case K:
 			i === Z ? (n += i, t = q) : i === "{" ? (l(), t = Y) : (n += i, t = K);
 			break;
 		case q:
-			bs.has(i) ? (n = n.slice(0, -1) + i, t = J) : (n += i, t = K);
+			Ss.has(i) ? (n = n.slice(0, -1) + i, t = J) : (n += i, t = K);
 			break;
 		case J:
 			i === Z ? t = K : (n += i, t = J);
 			break;
 		case Y:
-			i === "}" ? (d(), t = K) : vs(i) ? r !== "" && (d(), t = X) : (u(), t = Y);
+			i === "}" ? (d(), t = K) : bs(i) ? r !== "" && (d(), t = X) : (u(), t = Y);
 			break;
-		case X: i == "}" ? t = K : vs(i) ? t = X : c(G);
+		case X: i == "}" ? t = K : bs(i) ? t = X : c(G);
 	}
-	return ys.has(t) || c(gs), l(), [a, o];
+	return xs.has(t) || c(vs), l(), [a, o];
 }
-function Cs(e, t) {
-	let [n, r] = Ss(e), i = [n[0]];
+function Ts(e, t) {
+	let [n, r] = ws(e), i = [n[0]];
 	for (let a = 1; a < n.length; a++) {
 		let o = t?.[r[a - 1]];
 		if (o === void 0) throw Error(`Missing parameter "${r[a - 1]}" in "${e}"`);
@@ -1370,10 +1410,10 @@ function Cs(e, t) {
 	}
 	return i.join("");
 }
-function ws() {
-	return { format: ({ translation: e, params: t }) => Cs(e, t) };
+function Es() {
+	return { format: ({ translation: e, params: t }) => Ts(e, t) };
 }
-var Ts = () => (e, t) => (t.setFinalFormatter(ws()), e), Es = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, Ds = {};
+var Ds = () => (e, t) => (t.setFinalFormatter(Es()), e), Os = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, ks = {};
 (function(e) {
 	function t(e, t) {
 		var n;
@@ -1474,13 +1514,13 @@ var Ts = () => (e, t) => (t.setFinalFormatter(ws()), e), Es = typeof globalThis 
 		var n;
 		return n = e instanceof Uint8Array ? e : e.buffer instanceof ArrayBuffer ? new Uint8Array(e.buffer) : new Uint8Array(e), p(n, this.encoding);
 	}, e.TextEncoder = e.TextEncoder || l, e.TextDecoder = e.TextDecoder || g;
-})(typeof window < "u" ? window : Es);
-var Os = Ko({
+})(typeof window < "u" ? window : Os);
+var As = Jo({
 	__proto__: null,
-	default: Ds
-}, [Ds]);
-(Go = console.assert) == null || Go.call(console, Os), RegExp(`([${["‌", "‍"].join("")}]{9})+`, "g");
-function ks(e, t) {
+	default: ks
+}, [ks]);
+(qo = console.assert) == null || qo.call(console, As), RegExp(`([${["‌", "‍"].join("")}]{9})+`, "g");
+function js(e, t) {
 	let n = (n) => {
 		e.includes(n.data?.type) && t(n.data?.data);
 	};
@@ -1488,9 +1528,9 @@ function ks(e, t) {
 		window.removeEventListener("message", n);
 	} };
 }
-function As({ message: e, recievingMessage: t, data: n, attempts: r = 1, timeout: i = 300 }) {
+function Ms({ message: e, recievingMessage: t, data: n, attempts: r = 1, timeout: i = 300 }) {
 	let a = !1, o = () => new Promise((r, a) => {
-		let o = ks(t, c);
+		let o = js(t, c);
 		window.postMessage({
 			type: e,
 			data: n
@@ -1524,11 +1564,11 @@ function As({ message: e, recievingMessage: t, data: n, attempts: r = 1, timeout
 		})()
 	};
 }
-function js() {
+function Ns() {
 	let e;
 	async function t(t) {
 		e?.();
-		let { cancel: n, promise: r } = As({
+		let { cancel: n, promise: r } = Ms({
 			message: "TOLGEE_READY",
 			recievingMessage: ["TOLGEE_PLUGIN_READY", "TOLGEE_PLUGIN_UPDATED"],
 			data: t,
@@ -1538,34 +1578,34 @@ function js() {
 	}
 	return { update: t };
 }
-var Ms = "tolgee-in-context-tools.umd.min.js", Ns = "@tolgee/in-context-tools", Ps = "InContextTools", Fs = "https://cdn.jsdelivr.net/npm";
-function Is(e) {
+var Ps = "tolgee-in-context-tools.umd.min.js", Fs = "@tolgee/in-context-tools", Is = "InContextTools", Ls = "https://cdn.jsdelivr.net/npm";
+function Rs(e) {
 	return new Promise((t, n) => {
 		let r = document.createElement("script");
 		r.src = e, r.addEventListener("load", () => t()), r.addEventListener("error", (e) => n(e.error)), document.head.appendChild(r);
 	});
 }
-var Ls = null;
-function Rs(e) {
-	return Ls ||= Is(`${Fs}/@tolgee/web@${e}/dist/${Ms}`).then(() => window[Ns][Ps]), Ls;
+var Q = null;
+function zs(e) {
+	return Q ||= Rs(`${Ls}/@tolgee/web@${e}/dist/${Ps}`).then(() => window[Fs][Is]), Q;
 }
-var zs = "__tolgee_apiKey", Bs = "__tolgee_apiUrl", Vs = "__tolgee_branch";
-function Hs() {
-	let e = sessionStorage.getItem(zs) || void 0, t = sessionStorage.getItem(Bs) || void 0, n = sessionStorage.getItem(Vs) || void 0;
-	if (!(!e || !t)) return Wo({
+var Bs = "__tolgee_apiKey", Vs = "__tolgee_apiUrl", Hs = "__tolgee_branch";
+function Us() {
+	let e = sessionStorage.getItem(Bs) || void 0, t = sessionStorage.getItem(Vs) || void 0, n = sessionStorage.getItem(Hs) || void 0;
+	if (!(!e || !t)) return Ko({
 		apiKey: e,
 		apiUrl: t
 	}, n === void 0 ? {} : { branch: n });
 }
-function Us() {
-	sessionStorage.removeItem(zs), sessionStorage.removeItem(Bs), sessionStorage.removeItem(Vs);
+function Ws() {
+	sessionStorage.removeItem(Bs), sessionStorage.removeItem(Vs), sessionStorage.removeItem(Hs);
 }
-function Ws(e) {
+function Gs(e) {
 	document.readyState === "loading" ? document.addEventListener && document.addEventListener("DOMContentLoaded", e) : Promise.resolve().then(() => {
 		e();
 	});
 }
-var Q = () => (e) => e;
+var Ks = () => (e) => e;
 (() => {
 	if (typeof window > "u") return !1;
 	try {
@@ -1573,8 +1613,8 @@ var Q = () => (e) => e;
 	} catch (e) {
 		return console.error("sessionStorage not available", e), !1;
 	}
-})() && (Q = () => (e) => {
-	let t = js(), n = () => ({
+})() && (Ks = () => (e) => {
+	let t = Ns(), n = () => ({
 		uiPresent: !0,
 		uiVersion: void 0,
 		mode: e.isDev() ? "development" : "production",
@@ -1585,13 +1625,13 @@ var Q = () => (e) => e;
 		}
 	});
 	return e.on("running", ({ value: e }) => {
-		e && Ws(() => {
-			t.update(n()).catch(Us);
+		e && Gs(() => {
+			t.update(n()).catch(Ws);
 		});
-	}), Hs() && (async () => {
-		let e = await Rs("prerelease");
+	}), Us() && (async () => {
+		let e = await zs("prerelease");
 		return (t) => {
-			let n = Hs();
+			let n = Us();
 			return t.addPlugin(e({ credentials: n })), t;
 		};
 	})().then((t) => {
@@ -1600,37 +1640,37 @@ var Q = () => (e) => e;
 		console.error("Tolgee: Failed to load in-context tools"), console.error(e);
 	}), e;
 });
-function Gs() {
-	return ms().use(Q());
+function qs() {
+	return gs().use(Ks());
 }
-var Ks = () => (e) => e;
+var Js = () => (e) => e;
 //#endregion
 //#region ../../../node_modules/.bun/@tolgee+react@7.0.0+b1ab299f0a400331/node_modules/@tolgee/react/dist/tolgee-react.esm.js
-function qs(e) {
+function Ys(e) {
 	return Object.assign(Object.assign({}, e), { t(...t) {
-		let n = ds(...t);
+		let n = ps(...t);
 		return e.t(Object.assign(Object.assign({}, n), { noWrap: !0 }));
 	} });
 }
-function Js(e, t, n, r = !0) {
-	let [i] = s(() => qs(e)), [c, l] = s(r);
-	return a(() => {
+function Xs(e, t, n, o = !0) {
+	let [s] = a(() => Ys(e)), [c, l] = a(o);
+	return r(() => {
 		l(!1);
-	}, []), o(() => {
-		r && (e.setEmitterActive(!1), e.addStaticData(n), e.changeLanguage(t), e.setEmitterActive(!0));
+	}, []), i(() => {
+		o && (e.setEmitterActive(!1), e.addStaticData(n), e.changeLanguage(t), e.setEmitterActive(!0));
 	}, [
 		t,
 		n,
 		e
-	]), s(() => {
-		if (!e.isLoaded() && r) {
+	]), a(() => {
+		if (!e.isLoaded() && o) {
 			let n = e.getRequiredDescriptors(t), r = e.getAllRecords(), i = n.map(({ namespace: e, language: t }) => e ? `${e}:${t}` : t).filter((e) => !r.find((t) => t?.cacheKey === e));
 			console.warn(`Tolgee: Missing records in "staticData" for proper SSR functionality: ${i.map((e) => `"${e}"`).join(", ")}`);
 		}
-	}), c ? i : e;
+	}), c ? s : e;
 }
-var Ys = { useSuspense: !1 }, Xs, Zs = () => (Xs ||= e.createContext(void 0), Xs), $ = void 0, Qs = ({ tolgee: t, options: r, children: i, fallback: o, ssr: c }) => {
-	a(() => {
+var Zs = { useSuspense: !1 }, Qs, $s = () => (Qs ||= e.createContext(void 0), Qs), $ = void 0, ec = ({ tolgee: t, options: i, children: o, fallback: s, ssr: c }) => {
+	r(() => {
 		$?.run !== t.run && ($ && $.stop(), $ = t, t.run().catch((e) => {
 			console.error(e);
 		}).finally(() => {
@@ -1638,46 +1678,22 @@ var Ys = { useSuspense: !1 }, Xs, Zs = () => (Xs ||= e.createContext(void 0), Xs
 		}));
 	}, [t]);
 	let l = t, { language: u, staticData: d } = typeof c == "object" ? c : {};
-	l = Js(t, u, d, !!c);
-	let [f, p] = s(!l.isLoaded()), m = Object.assign(Object.assign({}, Ys), r), h = Zs();
+	l = Xs(t, u, d, !!c);
+	let [f, p] = a(!l.isLoaded()), m = Object.assign(Object.assign({}, Zs), i), h = $s();
 	return m.useSuspense ? e.createElement(h.Provider, { value: {
 		tolgee: l,
 		options: m
-	} }, f ? o : e.createElement(n, { fallback: o || null }, i)) : e.createElement(h.Provider, { value: {
+	} }, f ? s : e.createElement(n, { fallback: s || null }, o)) : e.createElement(h.Provider, { value: {
 		tolgee: l,
 		options: m
-	} }, f ? o : i);
-}, $s;
-function ec() {
-	return $s;
-}
-var tc = () => {
-	let e = i(Zs()) || ec();
-	if (!e) throw Error("Couldn't find tolgee instance, did you forgot to use `TolgeeProvider`?");
-	return e;
-}, nc = () => {
-	let [e, t] = s(0);
-	return {
-		instance: e,
-		rerender: r(() => {
-			t((e) => e + 1);
-		}, [t])
-	};
-}, rc = (e) => {
-	let { tolgee: t } = tc(), { rerender: n } = nc();
-	return a(() => {
-		let r = e?.map((e) => t.on(e, n));
-		return () => {
-			r?.forEach((e) => e.unsubscribe());
-		};
-	}, [e?.join(":")]), t;
-}, ic = {
+	} }, f ? s : o);
+}, tc = {
 	oopsPageNotFound: "Oops! Page not found.",
 	returnToHome: "Return to Home",
 	"route.couldNotMeasureHydrationDuration": "Could not measure hydration duration:",
 	"route.oopsPageNotFound": "Oops! Page not found",
 	"route.returnToHome": "Return to Home"
-}, ac = {
+}, nc = {
 	home: "Home",
 	methodology: "Methodology",
 	mockPages: "Mock Pages",
@@ -1690,7 +1706,7 @@ var tc = () => {
 	contact: "Contact",
 	settings: "Settings",
 	goToGithub: "Go to GitHub"
-}, oc = {
+}, rc = {
 	resources: "Resources",
 	contact: "Contact",
 	github: "GitHub",
@@ -1698,17 +1714,17 @@ var tc = () => {
 	contributing: "Contributing",
 	builtWith: "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.",
 	anOpenSourceTestApplication: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
-}, sc = {
+}, ic = {
 	themeModeAutoSystemClick: "Theme mode: auto (system). Click to switch to light mode.",
 	themeModeLightClick: "Theme mode: light. Click to switch to dark mode.",
 	themeModeDarkClick: "Theme mode: dark. Click to switch to auto (system) mode.",
 	themeAuto: "Theme: Auto",
 	themeDark: "Theme: Dark",
 	themeLight: "Theme: Light"
-}, cc = {
+}, ac = {
 	aTestApplicationDesignedTo: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
 	viewResults: "View Results"
-}, lc = {
+}, oc = {
 	whyTheseMetricsMatter: "Why These Metrics Matter",
 	bundleSize: "Bundle Size",
 	theBundleIsTheData: "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
@@ -1716,7 +1732,7 @@ var tc = () => {
 	connectingALargeJson: "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).",
 	dynamicLoading: "Dynamic Loading",
 	loadingAllTranslationsUpfront: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
-}, uc = {
+}, sc = {
 	cacheInvalidation: "Cache invalidation:",
 	contextBasedArchitecturesCan: "Context-based architectures can cause the entire app to re-render when the language changes. For large apps with thousands of components, this can lead to noticeable lag during locale switches.",
 	contextBasedArchitecturesCanCause: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
@@ -1736,18 +1752,18 @@ var tc = () => {
 	waterfallRequests: "Waterfall requests:",
 	whatThisBenchmarkMeasures: "What this benchmark measures",
 	whyASingleLargeJson: "Why a single large JSON can hurt performance"
-}, dc = {
+}, cc = {
 	bundleSize: "Bundle Size",
 	lazyLoading: "Lazy Loading",
 	library: "Library",
 	lookupTime: "Lookup Time",
 	sampleResults: "Sample Results"
-}, fc = {
+}, lc = {
 	aboutThisBenchmark: "About This Benchmark",
 	methodology: "Methodology",
 	thisIsAnOpenSource: "This is an open-source test application for measuring the real-world impact of internationalization libraries.",
 	weDesignedThisBenchmarkTo: "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach."
-}, pc = {
+}, uc = {
 	allBenchmarksRunOn: "All benchmarks run on the same hardware (M2 MacBook Pro, 16 GB RAM), same browser (Chromium 120 via Playwright), and same network conditions (simulated 4G). Each test is repeated 50 times and we report the median with P95/P99 percentiles.",
 	applicationDesign: "Application Design",
 	choosingAnI18nLibrary: "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
@@ -1760,7 +1776,7 @@ var tc = () => {
 	theSame10PageApp: "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results.",
 	weUseBrowserNativeApis: "We use browser-native APIs (Performance Timeline, Resource Timing, Layout Instability) combined with React Profiler data. Bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
 	whyThisExists: "Why This Exists"
-}, mc = {
+}, dc = {
 	bundleSizeImpact: "Bundle size impact",
 	duringSsrTranslationDataIs: "During SSR, translation data is serialized into the HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
 	duringSsrTranslationDataIsSerialized: "During SSR, translation data is serialized into the HTML. We measure the size of this payload and its effect on Time to Interactive (TTI).",
@@ -1776,11 +1792,11 @@ var tc = () => {
 	theAdditionalJavascriptBytesSent: "The additional JavaScript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
 	whatWeMeasure: "What We Measure",
 	whetherSplittingTranslationsByRoute: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
-}, hc = {
+}, fc = {
 	blog: "Blog",
 	insightsDeepDivesAnd: "Insights, deep dives, and updates from the i18n benchmarking community.",
 	insightsTutorialsAndAnalysis: "Insights, Tutorials, and Analysis"
-}, gc = {
+}, pc = {
 	aStepByStepGuide: "A step-by-step guide for migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
 	aStepByStepGuideOnMigrating: "A step-by-step guide on migrating from legacy i18n solutions to modern, high-performance libraries.",
 	aTransparentLookAtOur: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
@@ -1809,11 +1825,11 @@ var tc = () => {
 	theStateOfInternationalizationIn: "The State of Internationalization in 2026",
 	tutorial: "Tutorial",
 	weTested12DifferentInternationalization: "We tested 12 different internationalization libraries across 10 pages. Here are the detailed results with interactive charts."
-}, _c = {
+}, mc = {
 	careers: "Careers",
 	joinOurMission: "Join our mission to make internationalization fast, easy, and performant for everyone.",
 	joinOurMissionToMake: "Join our mission to make the web faster and more accessible for everyone, everywhere."
-}, vc = {
+}, hc = {
 	allOurWorkIs: "All our work is open source. Build your public portfolio while making an impact.",
 	competitivePay: "Competitive pay",
 	impactful: "Impactful",
@@ -1826,7 +1842,7 @@ var tc = () => {
 	workFromAnywhere: "Work from anywhere in the world",
 	workFromAnywhereFully: "Work from anywhere. Fully distributed team across 6 time zones.",
 	yourWorkDirectlyHelps: "Your work directly helps developers build better, faster internationalized applications."
-}, yc = {
+}, gc = {
 	applyNow: "Apply Now",
 	backendEngineer: "Backend Engineer",
 	buildAndMaintainOur: "Build and maintain our benchmarking suite and core application infrastructure.",
@@ -1853,12 +1869,12 @@ var tc = () => {
 	seniorPerformanceEngineer: "Senior Performance Engineer",
 	sfRemote: "San Francisco / Remote",
 	technicalWriter: "Technical Writer"
-}, bc = {
+}, _c = {
 	contactUs: "Contact Us",
 	getInTouch: "Get in Touch",
 	haveIdeasFoundABug: "Have ideas? Found a bug? We'd love to hear from you.",
 	haveQuestionsOrWantTo: "Have questions or want to contribute? We'd love to hear from you."
-}, xc = {
+}, vc = {
 	bugReport: "Bug Report",
 	contribution: "Contribution",
 	email: "Email",
@@ -1874,10 +1890,10 @@ var tc = () => {
 	topic: "Topic",
 	wellGetBackTo: "We'll get back to you within 48 hours.",
 	yourName: "Your name"
-}, Sc = {
+}, yc = {
 	everythingYouNeedToKnow: "Everything you need to know about i18n Benchmark.",
 	frequentlyAskedQuestions: "Frequently Asked Questions"
-}, Cc = {
+}, bc = {
 	absolutelyWeWelcomeCommunity: "Absolutely! We welcome community contributions. Fork the repository, add your library integration following our template, and submit a pull request. See the Contributing guide for details.",
 	allBenchmarksAreRun: "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",
 	areTheResultsStatistically: "Are the results statistically significant?",
@@ -1904,10 +1920,10 @@ var tc = () => {
 	yesCommunityBenchmarkSubmissionsAre: "Yes! Community benchmark submissions are encouraged and reviewed by our core team.",
 	yesOurEnterprisePlanIncludesConsulting: "Yes, our Enterprise plan includes consulting services for optimizing your app's i18n performance.",
 	yesWeUseThe: "Yes. We use the Mann-Whitney U test with a significance level of 0.05 to compare distributions. We also report confidence intervals and effect sizes."
-}, wc = {
+}, xc = {
 	pricing: "Pricing",
 	transparentPricingForEvery: "Transparent pricing for every stage of your i18n journey."
-}, Tc = {
+}, Sc = {
 	freeTier: "Free Tier",
 	free: "Free",
 	publicBenchmarkDashboard: "Public benchmark dashboard",
@@ -1931,10 +1947,10 @@ var tc = () => {
 	slaGuarantees: "SLA guarantees",
 	prioritySupport: "Priority support",
 	contactSales: "Contact Sales"
-}, Ec = {
+}, Cc = {
 	products: "Products",
 	toolsAndServicesTo: "Tools and services to help you optimize your internationalization strategy."
-}, Dc = {
+}, wc = {
 	benchmarkDashboard: "Benchmark Dashboard",
 	interactiveChartsAndTables: "Interactive charts and tables comparing i18n libraries across bundle size, render time, and hydration cost.",
 	bundleAnalyzer: "Bundle Analyzer",
@@ -1944,15 +1960,15 @@ var tc = () => {
 	performanceMonitor: "Performance Monitor",
 	continuousPerformanceTrackingFor: "Continuous performance tracking for your i18n implementation. Get alerts when translation loading degrades.",
 	learnMore: "Learn More"
-}, Oc = {
+}, Tc = {
 	manageYourAccount: "Manage your account settings and preferences.",
 	manageYourAccountPreferences: "Manage your account preferences and configuration.",
 	settings: "Settings"
-}, kc = {
+}, Ec = {
 	profile: "Profile",
 	displayName: "Display Name",
 	email: "Email"
-}, Ac = {
+}, Dc = {
 	arabicAr: "Arabic (ar)",
 	chineseSimplifiedZhCn: "Chinese (Simplified, zh-CN)",
 	darkMode: "Dark Mode",
@@ -1969,18 +1985,18 @@ var tc = () => {
 	toggleDarkMode: "Toggle dark mode",
 	toggleNotifications: "Toggle Notifications",
 	useDarkColorScheme: "Use dark color scheme"
-}, jc = {
+}, Oc = {
 	apiAccess: "API Access",
 	apiKey: "API Key",
 	useThisKeyTo: "Use this key to access the benchmarking API programmatically.",
 	copy: "Copy"
-}, Mc = {
+}, kc = {
 	cancel: "Cancel",
 	saveChanges: "Save Changes"
-}, Nc = {
+}, Ac = {
 	ourTeam: "Our Team",
 	meetThePeopleBehindI18n: "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
-}, Pc = {
+}, jc = {
 	aishaPatel: "Aisha Patel",
 	communityManager: "Community Manager",
 	dataAnalyst: "Data Analyst",
@@ -2005,7 +2021,7 @@ var tc = () => {
 	specializesInJavascriptPerformanceOptimization: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
 	tomasRodriguez: "Tomás Rodríguez",
 	yukiTanaka: "Yuki Tanaka"
-}, Fc = {
+}, Mc = {
 	cancel: "Cancel",
 	copy: "Copy",
 	"footer.anOpenSourceTestApplication": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
@@ -2036,7 +2052,7 @@ var tc = () => {
 	"themeToggle.themeModeAutoSystemClick": "Theme mode: auto (system). Click to switch to light mode.",
 	"themeToggle.themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
 	"themeToggle.themeModeLightClick": "Theme mode: light. Click to switch to dark mode."
-}, Ic = {
+}, Nc = {
 	"hero.aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
 	"hero.viewResults": "View Results",
 	"whyItMatters.whyTheseMetricsMatter": "Why These Metrics Matter",
@@ -2063,7 +2079,7 @@ var tc = () => {
 	"resultsTable.bundleSize": "Bundle Size",
 	"resultsTable.lookupTime": "Lookup Time",
 	"resultsTable.lazyLoading": "Lazy Loading"
-}, Lc = {
+}, Pc = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",
 	"aboutGrid.testEnvironment": "Test Environment",
@@ -2085,7 +2101,7 @@ var tc = () => {
 	"whatWeMeasure.localeSwitchSpeed": "Locale switch speed",
 	"whatWeMeasure.howFastTheAppCan": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.",
 	"whatWeMeasure.whatWeMeasure": "What We Measure"
-}, Rc = {
+}, Fc = {
 	"blogHeader.blog": "Blog",
 	"blogHeader.insightsDeepDivesAnd": "Insights, deep dives, and updates from the i18n benchmarking community.",
 	"blogList.i18nBenchmark2026Results": "i18n Benchmark 2026 Results",
@@ -2107,7 +2123,7 @@ var tc = () => {
 	"blogList.january202026": "January 20, 2026",
 	"blogList.aTransparentLookAtOur": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
 	"blogList.readMore": "Read More →"
-}, zc = {
+}, Ic = {
 	"careersHeader.careers": "Careers",
 	"careersHero.fromAnywhere": "from anywhere in the world",
 	"careersBenefits.competitivePay": "Competitive pay",
@@ -2121,7 +2137,7 @@ var tc = () => {
 	"openPositions.fullTime": "Full-time",
 	"openPositions.engineering": "Engineering",
 	"openPositions.applyNow": "Apply Now"
-}, Bc = {
+}, Lc = {
 	"contactHeader.contactUs": "Contact Us",
 	"contactHeader.haveQuestionsOrWantTo": "Have questions or want to contribute? We'd love to hear from you.",
 	"contactForm.name": "Name",
@@ -2130,7 +2146,7 @@ var tc = () => {
 	"contactForm.message": "Message",
 	"contactForm.sendMessage": "Send Message",
 	"contactForm.wellGetBackTo": "We'll get back to you within 48 hours."
-}, Vc = {
+}, Rc = {
 	"faqHeader.frequentlyAskedQuestions": "Frequently Asked Questions",
 	"faqHeader.everythingYouNeedTo": "Everything you need to know about the i18n Benchmark project.",
 	"faqList.howAreTheBenchmarks": "How are the benchmarks run?",
@@ -2143,7 +2159,7 @@ var tc = () => {
 	"faqList.benchmarksRunAutomaticallyVia": "Benchmarks run automatically via CI on every dependency update and weekly on the main branch. Results are published to the dashboard within 24 hours.",
 	"faqList.areTheResultsStatistically": "Are the results statistically significant?",
 	"faqList.yesWeUseThe": "Yes. We use the Mann-Whitney U test with a significance level of 0.05 to compare distributions. We also report confidence intervals and effect sizes."
-}, Hc = {
+}, zc = {
 	"pricingTiers.starterTier": "Starter",
 	"pricingTiers.starterPrice": "$0",
 	"pricingTiers.forever": "forever",
@@ -2173,7 +2189,7 @@ var tc = () => {
 	"pricingTiers.contactSales": "Contact Sales",
 	"pricingHeader.pricing": "Pricing",
 	"pricingHeader.transparentPricingForEvery": "Transparent pricing for every stage of your i18n journey."
-}, Uc = {
+}, Bc = {
 	"productsHeader.products": "Products",
 	"productsHeader.toolsAndServicesTo": "Tools and services to help you optimize your internationalization strategy.",
 	"productsGrid.benchmarkDashboard": "Benchmark Dashboard",
@@ -2185,7 +2201,7 @@ var tc = () => {
 	"productsGrid.performanceMonitor": "Performance Monitor",
 	"productsGrid.continuousPerformanceTrackingFor": "Continuous performance tracking for your i18n implementation. Get alerts when translation loading degrades.",
 	"productsGrid.learnMore": "Learn More"
-}, Wc = {
+}, Vc = {
 	"settingsHeader.settings": "Settings",
 	"settingsHeader.manageYourAccountPreferences": "Manage your account preferences and configuration.",
 	"profileSection.profile": "Profile",
@@ -2203,7 +2219,7 @@ var tc = () => {
 	"apiAccessSection.copy": "Copy",
 	"settingsFooter.cancel": "Cancel",
 	"settingsFooter.saveChanges": "Save Changes"
-}, Gc = {
+}, Hc = {
 	"teamHeader.ourTeam": "Our Team",
 	"teamHeader.meetThePeopleBehindI18n": "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools.",
 	"teamGrid.sarahChen": "Sarah Chen",
@@ -2224,311 +2240,311 @@ var tc = () => {
 	"teamGrid.elenaKowalski": "Elena Kowalski",
 	"teamGrid.communityManager": "Community Manager",
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Manages community contributions, partnerships, and events. Background in open source governance."
-}, Kc = {
+}, Uc = {
 	de: {
-		route: l,
-		header: u,
-		footer: d,
-		themeToggle: f,
-		hero: p,
-		whyItMatters: m,
-		understandingImpact: h,
-		resultsTable: g,
-		aboutHeader: _,
-		aboutGrid: v,
-		whatWeMeasure: y,
-		blogHeader: b,
-		blogList: x,
-		careersHeader: S,
-		careersBenefits: ee,
-		openPositions: te,
-		contactHeader: ne,
-		contactForm: re,
-		faqHeader: C,
-		faqList: ie,
-		pricingHeader: ae,
-		pricingTiers: oe,
-		productsHeader: se,
-		productsGrid: ce,
-		settingsHeader: le,
-		profileSection: ue,
-		preferencesSection: de,
-		apiAccessSection: fe,
-		settingsFooter: pe,
-		teamHeader: me,
-		teamGrid: he,
-		common: ge,
-		...ge,
-		home: _e,
-		about: ve,
-		blog: ye,
-		careers: be,
-		contact: xe,
-		faq: Se,
-		pricing: Ce,
-		products: we,
-		settings: Te,
-		team: Ee
+		route: u,
+		header: d,
+		footer: f,
+		themeToggle: p,
+		hero: m,
+		whyItMatters: h,
+		understandingImpact: g,
+		resultsTable: _,
+		aboutHeader: v,
+		aboutGrid: y,
+		whatWeMeasure: b,
+		blogHeader: x,
+		blogList: S,
+		careersHeader: ee,
+		careersBenefits: te,
+		openPositions: C,
+		contactHeader: w,
+		contactForm: T,
+		faqHeader: ne,
+		faqList: re,
+		pricingHeader: ie,
+		pricingTiers: ae,
+		productsHeader: oe,
+		productsGrid: se,
+		settingsHeader: ce,
+		profileSection: le,
+		preferencesSection: ue,
+		apiAccessSection: de,
+		settingsFooter: fe,
+		teamHeader: pe,
+		teamGrid: me,
+		common: E,
+		...E,
+		home: he,
+		about: ge,
+		blog: _e,
+		careers: ve,
+		contact: ye,
+		faq: be,
+		pricing: xe,
+		products: Se,
+		settings: Ce,
+		team: we
 	},
 	en: {
-		route: ic,
-		header: ac,
-		footer: oc,
-		themeToggle: sc,
-		hero: cc,
-		whyItMatters: lc,
-		understandingImpact: uc,
-		resultsTable: dc,
-		aboutHeader: fc,
-		aboutGrid: pc,
-		whatWeMeasure: mc,
-		blogHeader: hc,
-		blogList: gc,
-		careersHeader: _c,
-		careersBenefits: vc,
-		openPositions: yc,
-		contactHeader: bc,
-		contactForm: xc,
-		faqHeader: Sc,
-		faqList: Cc,
-		pricingHeader: wc,
-		pricingTiers: Tc,
-		productsHeader: Ec,
-		productsGrid: Dc,
-		settingsHeader: Oc,
-		profileSection: kc,
-		preferencesSection: Ac,
-		apiAccessSection: jc,
-		settingsFooter: Mc,
-		teamHeader: Nc,
-		teamGrid: Pc,
-		common: Fc,
-		...Fc,
-		home: Ic,
-		about: Lc,
-		blog: Rc,
-		careers: zc,
-		contact: Bc,
-		faq: Vc,
-		pricing: Hc,
-		products: Uc,
-		settings: Wc,
-		team: Gc
+		route: tc,
+		header: nc,
+		footer: rc,
+		themeToggle: ic,
+		hero: ac,
+		whyItMatters: oc,
+		understandingImpact: sc,
+		resultsTable: cc,
+		aboutHeader: lc,
+		aboutGrid: uc,
+		whatWeMeasure: dc,
+		blogHeader: fc,
+		blogList: pc,
+		careersHeader: mc,
+		careersBenefits: hc,
+		openPositions: gc,
+		contactHeader: _c,
+		contactForm: vc,
+		faqHeader: yc,
+		faqList: bc,
+		pricingHeader: xc,
+		pricingTiers: Sc,
+		productsHeader: Cc,
+		productsGrid: wc,
+		settingsHeader: Tc,
+		profileSection: Ec,
+		preferencesSection: Dc,
+		apiAccessSection: Oc,
+		settingsFooter: kc,
+		teamHeader: Ac,
+		teamGrid: jc,
+		common: Mc,
+		...Mc,
+		home: Nc,
+		about: Pc,
+		blog: Fc,
+		careers: Ic,
+		contact: Lc,
+		faq: Rc,
+		pricing: zc,
+		products: Bc,
+		settings: Vc,
+		team: Hc
 	},
 	es: {
-		route: De,
-		header: Oe,
-		footer: ke,
-		themeToggle: Ae,
-		hero: je,
-		whyItMatters: Me,
-		understandingImpact: Ne,
-		resultsTable: Pe,
-		aboutHeader: Fe,
-		aboutGrid: Ie,
-		whatWeMeasure: Le,
-		blogHeader: Re,
-		blogList: ze,
-		careersHeader: Be,
-		careersBenefits: Ve,
-		openPositions: He,
-		contactHeader: Ue,
-		contactForm: We,
-		faqHeader: Ge,
-		faqList: Ke,
-		pricingHeader: qe,
-		pricingTiers: Je,
-		productsHeader: Ye,
-		productsGrid: Xe,
-		settingsHeader: Ze,
-		profileSection: Qe,
-		preferencesSection: $e,
-		apiAccessSection: et,
-		settingsFooter: tt,
-		teamHeader: nt,
-		teamGrid: rt,
-		common: it,
-		...it,
-		home: at,
-		about: ot,
-		blog: st,
-		careers: ct,
-		contact: lt,
-		faq: ut,
-		pricing: dt,
-		products: ft,
-		settings: pt,
-		team: mt
+		route: Te,
+		header: Ee,
+		footer: De,
+		themeToggle: Oe,
+		hero: ke,
+		whyItMatters: Ae,
+		understandingImpact: je,
+		resultsTable: Me,
+		aboutHeader: Ne,
+		aboutGrid: Pe,
+		whatWeMeasure: Fe,
+		blogHeader: Ie,
+		blogList: Le,
+		careersHeader: Re,
+		careersBenefits: ze,
+		openPositions: Be,
+		contactHeader: Ve,
+		contactForm: He,
+		faqHeader: Ue,
+		faqList: We,
+		pricingHeader: Ge,
+		pricingTiers: Ke,
+		productsHeader: qe,
+		productsGrid: Je,
+		settingsHeader: Ye,
+		profileSection: Xe,
+		preferencesSection: Ze,
+		apiAccessSection: Qe,
+		settingsFooter: $e,
+		teamHeader: et,
+		teamGrid: tt,
+		common: nt,
+		...nt,
+		home: rt,
+		about: it,
+		blog: at,
+		careers: ot,
+		contact: st,
+		faq: ct,
+		pricing: lt,
+		products: ut,
+		settings: dt,
+		team: ft
 	},
 	fr: {
-		route: ht,
-		header: gt,
-		footer: _t,
-		themeToggle: vt,
-		hero: yt,
-		whyItMatters: bt,
-		understandingImpact: xt,
-		resultsTable: St,
-		aboutHeader: Ct,
-		aboutGrid: wt,
-		whatWeMeasure: Tt,
-		blogHeader: Et,
-		blogList: Dt,
-		careersHeader: Ot,
-		careersBenefits: kt,
-		openPositions: At,
-		contactHeader: jt,
-		contactForm: Mt,
-		faqHeader: Nt,
-		faqList: Pt,
-		pricingHeader: Ft,
-		pricingTiers: It,
-		productsHeader: Lt,
-		productsGrid: Rt,
-		settingsHeader: zt,
-		profileSection: Bt,
-		preferencesSection: Vt,
-		apiAccessSection: Ht,
-		settingsFooter: Ut,
-		teamHeader: Wt,
-		teamGrid: Gt,
-		common: Kt,
-		...Kt,
-		home: qt,
-		about: Jt,
-		blog: Yt,
-		careers: Xt,
-		contact: Zt,
-		faq: Qt,
-		pricing: $t,
-		products: en,
-		settings: tn,
-		team: nn
+		route: pt,
+		header: mt,
+		footer: ht,
+		themeToggle: gt,
+		hero: _t,
+		whyItMatters: vt,
+		understandingImpact: yt,
+		resultsTable: bt,
+		aboutHeader: xt,
+		aboutGrid: St,
+		whatWeMeasure: Ct,
+		blogHeader: wt,
+		blogList: Tt,
+		careersHeader: Et,
+		careersBenefits: Dt,
+		openPositions: Ot,
+		contactHeader: kt,
+		contactForm: At,
+		faqHeader: jt,
+		faqList: Mt,
+		pricingHeader: Nt,
+		pricingTiers: Pt,
+		productsHeader: Ft,
+		productsGrid: It,
+		settingsHeader: Lt,
+		profileSection: Rt,
+		preferencesSection: zt,
+		apiAccessSection: Bt,
+		settingsFooter: Vt,
+		teamHeader: Ht,
+		teamGrid: Ut,
+		common: Wt,
+		...Wt,
+		home: Gt,
+		about: Kt,
+		blog: qt,
+		careers: Jt,
+		contact: Yt,
+		faq: Xt,
+		pricing: Zt,
+		products: Qt,
+		settings: $t,
+		team: en
 	},
 	it: {
-		route: rn,
-		header: an,
-		footer: on,
-		themeToggle: sn,
-		hero: cn,
-		whyItMatters: ln,
-		understandingImpact: un,
-		resultsTable: dn,
-		aboutHeader: fn,
-		aboutGrid: pn,
-		whatWeMeasure: mn,
-		blogHeader: hn,
-		blogList: gn,
-		careersHeader: _n,
-		careersBenefits: vn,
-		openPositions: yn,
-		contactHeader: bn,
-		contactForm: xn,
-		faqHeader: Sn,
-		faqList: Cn,
-		pricingHeader: wn,
-		pricingTiers: Tn,
-		productsHeader: En,
-		productsGrid: Dn,
-		settingsHeader: On,
-		profileSection: kn,
-		preferencesSection: An,
-		apiAccessSection: jn,
-		settingsFooter: Mn,
-		teamHeader: Nn,
-		teamGrid: Pn,
-		common: Fn,
-		...Fn,
-		home: In,
-		about: Ln,
-		blog: Rn,
-		careers: zn,
-		contact: Bn,
-		faq: Vn,
-		pricing: Hn,
-		products: Un,
-		settings: Wn,
-		team: Gn
+		route: tn,
+		header: nn,
+		footer: rn,
+		themeToggle: an,
+		hero: on,
+		whyItMatters: sn,
+		understandingImpact: cn,
+		resultsTable: ln,
+		aboutHeader: un,
+		aboutGrid: dn,
+		whatWeMeasure: fn,
+		blogHeader: pn,
+		blogList: mn,
+		careersHeader: hn,
+		careersBenefits: gn,
+		openPositions: _n,
+		contactHeader: vn,
+		contactForm: yn,
+		faqHeader: bn,
+		faqList: xn,
+		pricingHeader: Sn,
+		pricingTiers: Cn,
+		productsHeader: wn,
+		productsGrid: Tn,
+		settingsHeader: En,
+		profileSection: Dn,
+		preferencesSection: On,
+		apiAccessSection: kn,
+		settingsFooter: An,
+		teamHeader: jn,
+		teamGrid: Mn,
+		common: Nn,
+		...Nn,
+		home: Pn,
+		about: Fn,
+		blog: In,
+		careers: Ln,
+		contact: Rn,
+		faq: zn,
+		pricing: Bn,
+		products: Vn,
+		settings: Hn,
+		team: Un
 	},
 	ja: {
-		route: Kn,
-		header: qn,
-		footer: Jn,
-		themeToggle: Yn,
-		hero: Xn,
-		whyItMatters: Zn,
-		understandingImpact: Qn,
-		resultsTable: $n,
-		aboutHeader: er,
-		aboutGrid: tr,
-		whatWeMeasure: nr,
-		blogHeader: rr,
-		blogList: ir,
-		careersHeader: ar,
-		careersBenefits: or,
-		openPositions: sr,
-		contactHeader: cr,
-		contactForm: lr,
-		faqHeader: ur,
-		faqList: dr,
-		pricingHeader: fr,
-		pricingTiers: pr,
-		productsHeader: mr,
-		productsGrid: hr,
-		settingsHeader: gr,
-		profileSection: _r,
-		preferencesSection: vr,
-		apiAccessSection: yr,
-		settingsFooter: br,
-		teamHeader: xr,
-		teamGrid: Sr,
-		common: w,
-		...w,
-		home: Cr,
-		about: wr,
-		blog: Tr,
-		careers: Er,
-		contact: Dr,
-		faq: Or,
-		pricing: kr,
-		products: Ar,
-		settings: jr,
-		team: Mr
+		route: Wn,
+		header: Gn,
+		footer: Kn,
+		themeToggle: qn,
+		hero: Jn,
+		whyItMatters: Yn,
+		understandingImpact: Xn,
+		resultsTable: Zn,
+		aboutHeader: Qn,
+		aboutGrid: $n,
+		whatWeMeasure: er,
+		blogHeader: tr,
+		blogList: nr,
+		careersHeader: rr,
+		careersBenefits: ir,
+		openPositions: ar,
+		contactHeader: or,
+		contactForm: sr,
+		faqHeader: cr,
+		faqList: lr,
+		pricingHeader: ur,
+		pricingTiers: dr,
+		productsHeader: fr,
+		productsGrid: pr,
+		settingsHeader: mr,
+		profileSection: hr,
+		preferencesSection: gr,
+		apiAccessSection: _r,
+		settingsFooter: vr,
+		teamHeader: yr,
+		teamGrid: br,
+		common: xr,
+		...xr,
+		home: Sr,
+		about: Cr,
+		blog: wr,
+		careers: Tr,
+		contact: Er,
+		faq: Dr,
+		pricing: Or,
+		products: kr,
+		settings: Ar,
+		team: jr
 	},
 	ko: {
-		route: Nr,
-		header: Pr,
-		footer: Fr,
-		themeToggle: Ir,
-		hero: Lr,
-		whyItMatters: Rr,
-		understandingImpact: zr,
-		resultsTable: Br,
-		aboutHeader: Vr,
-		aboutGrid: Hr,
-		whatWeMeasure: Ur,
-		blogHeader: Wr,
-		blogList: Gr,
-		careersHeader: Kr,
-		careersBenefits: qr,
-		openPositions: Jr,
-		contactHeader: Yr,
-		contactForm: Xr,
-		faqHeader: Zr,
-		faqList: Qr,
-		pricingHeader: $r,
-		pricingTiers: ei,
-		productsHeader: ti,
-		productsGrid: ni,
-		settingsHeader: ri,
-		profileSection: ii,
-		preferencesSection: ai,
-		apiAccessSection: oi,
-		settingsFooter: si,
-		teamHeader: ci,
-		teamGrid: li,
-		common: T,
-		...T,
+		route: Mr,
+		header: Nr,
+		footer: Pr,
+		themeToggle: Fr,
+		hero: Ir,
+		whyItMatters: Lr,
+		understandingImpact: Rr,
+		resultsTable: zr,
+		aboutHeader: Br,
+		aboutGrid: Vr,
+		whatWeMeasure: Hr,
+		blogHeader: Ur,
+		blogList: Wr,
+		careersHeader: Gr,
+		careersBenefits: Kr,
+		openPositions: qr,
+		contactHeader: Jr,
+		contactForm: Yr,
+		faqHeader: Xr,
+		faqList: Zr,
+		pricingHeader: Qr,
+		pricingTiers: $r,
+		productsHeader: ei,
+		productsGrid: ti,
+		settingsHeader: ni,
+		profileSection: ri,
+		preferencesSection: ii,
+		apiAccessSection: ai,
+		settingsFooter: oi,
+		teamHeader: si,
+		teamGrid: ci,
+		common: li,
+		...li,
 		home: ui,
 		about: di,
 		blog: fi,
@@ -2572,98 +2588,98 @@ var tc = () => {
 		settingsFooter: Ji,
 		teamHeader: Yi,
 		teamGrid: Xi,
-		common: E,
-		...E,
-		home: Zi,
-		about: Qi,
-		blog: $i,
-		careers: ea,
-		contact: ta,
-		faq: na,
-		pricing: ra,
-		products: ia,
-		settings: aa,
-		team: oa
+		common: Zi,
+		...Zi,
+		home: Qi,
+		about: $i,
+		blog: ea,
+		careers: ta,
+		contact: na,
+		faq: ra,
+		pricing: ia,
+		products: aa,
+		settings: oa,
+		team: sa
 	},
 	ru: {
-		route: sa,
-		header: ca,
-		footer: la,
-		themeToggle: ua,
-		hero: da,
-		whyItMatters: fa,
-		understandingImpact: pa,
-		resultsTable: ma,
-		aboutHeader: ha,
-		aboutGrid: ga,
-		whatWeMeasure: _a,
-		blogHeader: va,
-		blogList: ya,
-		careersHeader: ba,
-		careersBenefits: xa,
-		openPositions: Sa,
-		contactHeader: Ca,
-		contactForm: wa,
-		faqHeader: Ta,
-		faqList: Ea,
-		pricingHeader: Da,
-		pricingTiers: Oa,
-		productsHeader: ka,
-		productsGrid: Aa,
-		settingsHeader: ja,
-		profileSection: Ma,
-		preferencesSection: Na,
-		apiAccessSection: Pa,
-		settingsFooter: Fa,
-		teamHeader: Ia,
-		teamGrid: La,
-		common: Ra,
-		...Ra,
-		home: za,
-		about: Ba,
-		blog: Va,
-		careers: Ha,
-		contact: Ua,
-		faq: Wa,
-		pricing: Ga,
-		products: Ka,
-		settings: qa,
-		team: Ja
+		route: ca,
+		header: la,
+		footer: ua,
+		themeToggle: da,
+		hero: fa,
+		whyItMatters: pa,
+		understandingImpact: ma,
+		resultsTable: ha,
+		aboutHeader: ga,
+		aboutGrid: _a,
+		whatWeMeasure: va,
+		blogHeader: ya,
+		blogList: ba,
+		careersHeader: xa,
+		careersBenefits: Sa,
+		openPositions: Ca,
+		contactHeader: wa,
+		contactForm: Ta,
+		faqHeader: Ea,
+		faqList: Da,
+		pricingHeader: Oa,
+		pricingTiers: ka,
+		productsHeader: Aa,
+		productsGrid: ja,
+		settingsHeader: Ma,
+		profileSection: Na,
+		preferencesSection: Pa,
+		apiAccessSection: Fa,
+		settingsFooter: Ia,
+		teamHeader: La,
+		teamGrid: Ra,
+		common: za,
+		...za,
+		home: Ba,
+		about: Va,
+		blog: Ha,
+		careers: Ua,
+		contact: Wa,
+		faq: Ga,
+		pricing: Ka,
+		products: qa,
+		settings: Ja,
+		team: Ya
 	},
 	zh: {
-		route: Ya,
-		header: Xa,
-		footer: Za,
-		themeToggle: Qa,
-		hero: $a,
-		whyItMatters: eo,
-		understandingImpact: to,
-		resultsTable: no,
-		aboutHeader: ro,
-		aboutGrid: io,
-		whatWeMeasure: ao,
-		blogHeader: oo,
-		blogList: so,
-		careersHeader: co,
-		careersBenefits: lo,
-		openPositions: uo,
-		contactHeader: fo,
-		contactForm: po,
-		faqHeader: mo,
-		faqList: ho,
-		pricingHeader: go,
-		pricingTiers: _o,
-		productsHeader: vo,
-		productsGrid: yo,
-		settingsHeader: bo,
-		profileSection: xo,
-		preferencesSection: So,
-		apiAccessSection: Co,
-		settingsFooter: wo,
-		teamHeader: To,
-		teamGrid: Eo,
-		common: Do,
-		...Do,
+		route: Xa,
+		header: Za,
+		footer: Qa,
+		themeToggle: $a,
+		hero: eo,
+		whyItMatters: to,
+		understandingImpact: no,
+		resultsTable: ro,
+		aboutHeader: io,
+		aboutGrid: ao,
+		whatWeMeasure: oo,
+		blogHeader: so,
+		blogList: co,
+		careersHeader: lo,
+		careersBenefits: uo,
+		openPositions: fo,
+		contactHeader: po,
+		contactForm: mo,
+		faqHeader: ho,
+		faqList: go,
+		pricingHeader: _o,
+		pricingTiers: vo,
+		productsHeader: yo,
+		productsGrid: bo,
+		settingsHeader: xo,
+		profileSection: So,
+		preferencesSection: Co,
+		apiAccessSection: wo,
+		settingsFooter: To,
+		teamHeader: Eo,
+		teamGrid: Do,
+		common: D,
+		...D,
 		home: Oo,
 		about: ko,
 		blog: Ao,
@@ -2676,12 +2692,12 @@ var tc = () => {
 		team: Lo
 	}
 };
-function qc(e) {
-	return Kc[e] || Kc.en;
+function Wc(e) {
+	return Uc[e] || Uc.en;
 }
 //#endregion
 //#region tolgee/shared.ts
-var Jc = [
+var Gc = [
 	"en",
 	"fr",
 	"es",
@@ -2693,70 +2709,24 @@ var Jc = [
 	"ru",
 	"zh"
 ];
-function Yc() {
-	return Gs().use(Ts()).use(Ks()).updateDefaults({
+function Kc() {
+	return qs().use(Ds()).use(Js()).updateDefaults({
 		apiKey: process.env.NEXT_PUBLIC_TOLGEE_API_KEY,
 		apiUrl: process.env.NEXT_PUBLIC_TOLGEE_API_URL,
-		staticData: Object.fromEntries(Jc.map((e) => [e, () => Promise.resolve(qc(e))]))
-	});
-}
-//#endregion
-//#region tolgee/language.ts
-var Xc = "NEXT_LOCALE";
-async function Zc(e) {
-	(await c()).set(Xc, e, { maxAge: 1e3 * 60 * 60 * 24 * 365 });
-}
-//#endregion
-//#region i18n/config.ts
-var Qc = [
-	"en",
-	"fr",
-	"es",
-	"de",
-	"it",
-	"pt",
-	"zh",
-	"ja",
-	"ko",
-	"ru"
-], $c = (e) => {
-	try {
-		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
-		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
-	} catch {
-		return e.toUpperCase();
-	}
-};
-//#endregion
-//#region components/LocaleSwitcher.tsx
-function el() {
-	let e = rc(), t = e.getLanguage() || "en", n = async (t) => {
-		await Zc(t), await e.changeLanguage(t);
-	};
-	return D("div", {
-		className: "flex items-center gap-2",
-		children: D("select", {
-			value: t,
-			onChange: (e) => n(e.target.value),
-			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: Qc.map((e) => D("option", {
-				value: e,
-				children: $c(e)
-			}, e))
-		})
+		staticData: Object.fromEntries(Gc.map((e) => [e, () => Promise.resolve(Wc(e))]))
 	});
 }
 //#endregion
 //#region tolgee/client.tsx
-var tl = Yc().init(), nl = ({ language: e, staticData: t, children: n }) => {
-	let r = Ro();
-	return a(() => {
-		let { unsubscribe: e } = tl.on("permanentChange", () => {
-			r.refresh();
+var qc = Kc().init(), Jc = ({ language: e, staticData: t, children: n }) => {
+	let i = c();
+	return r(() => {
+		let { unsubscribe: e } = qc.on("permanentChange", () => {
+			i.refresh();
 		});
 		return () => e();
-	}, [r]), D(Qs, {
-		tolgee: tl,
+	}, [i]), l(ec, {
+		tolgee: qc,
 		fallback: "Loading",
 		ssr: {
 			language: e,
@@ -2767,7 +2737,7 @@ var tl = Yc().init(), nl = ({ language: e, staticData: t, children: n }) => {
 };
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-function rl() {
+function Yc() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -2781,7 +2751,7 @@ function rl() {
 		}
 	}
 }
-function il(e, t, n) {
+function Xc(e, t, n) {
 	if (!(typeof window > "u") && t !== "nested-update") try {
 		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 	} catch (e) {
@@ -2790,35 +2760,35 @@ function il(e, t, n) {
 }
 //#endregion
 //#region components/AppProviders.tsx
-function al({ children: e, locale: n, staticData: r }) {
-	return a(() => {
+function Zc({ children: e, locale: n, staticData: i }) {
+	return r(() => {
 		document.documentElement.lang = n;
-	}, [n]), a(() => {
-		rl();
-	}, []), D(t, {
+	}, [n]), r(() => {
+		Yc();
+	}, []), l(t, {
 		id: "AppRoot",
-		onRender: il,
-		children: D(nl, {
+		onRender: Xc,
+		children: l(Jc, {
 			language: n,
-			staticData: r,
+			staticData: i,
 			children: e
 		})
 	});
 }
 //#endregion
 //#region scripts/Wrapper.tsx
-var ol = "en", sl = qc(ol);
-function cl({ children: e }) {
-	return D(al, {
-		locale: ol,
-		staticData: sl,
+var Qc = "en", $c = Wc(Qc);
+function el({ children: e }) {
+	return l(Zc, {
+		locale: Qc,
+		staticData: $c,
 		children: e
 	});
 }
 //#endregion
 //#region components/LocaleSwitcher.wrapper.tsx
-function ll() {
-	return D(cl, { children: D(el, {}) });
+function tl() {
+	return l(el, { children: l(Bo, {}) });
 }
 //#endregion
-export { ll as default };
+export { tl as default };

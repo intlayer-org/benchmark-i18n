@@ -1,6 +1,5 @@
 import { useId } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/contact/ContactForm.tsx
 function ContactForm() {
 	const nameId = useId();
 	const emailId = useId();
@@ -63,5 +62,4 @@ function ContactForm() {
 		]
 	});
 }
-//#endregion
 export { ContactForm as default };

@@ -1,6 +1,5 @@
 import { useEffect as e, useState as t } from "react";
 import { jsx as n } from "react/jsx-runtime";
-//#region src/components/ThemeToggle.tsx
 function r() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
@@ -36,5 +35,4 @@ function a() {
 		children: a === "auto" ? "Theme: Auto" : a === "dark" ? "Theme: Dark" : "Theme: Light"
 	});
 }
-//#endregion
 export { a as default };

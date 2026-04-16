@@ -179,45 +179,45 @@ function w(e) {
 //#region components/pages/about/AboutGrid.tsx
 function T() {
 	let { t: e } = w("common");
-	return /* @__PURE__ */ o("div", {
+	return o("div", {
 		className: "grid gap-8 md:grid-cols-2",
 		children: [
-			/* @__PURE__ */ o("div", {
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [/* @__PURE__ */ a("h2", {
+				children: [a("h2", {
 					className: "mb-3 text-xl font-semibold text-foreground",
 					children: e("about.aboutGrid.testEnvironment")
-				}), /* @__PURE__ */ a("p", {
+				}), a("p", {
 					className: "text-sm text-muted-foreground",
 					children: e("about.aboutGrid.allBenchmarksRunOn")
 				})]
 			}),
-			/* @__PURE__ */ o("div", {
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [/* @__PURE__ */ a("h2", {
+				children: [a("h2", {
 					className: "mb-3 text-xl font-semibold text-foreground",
 					children: e("about.aboutGrid.applicationDesign")
-				}), /* @__PURE__ */ a("p", {
+				}), a("p", {
 					className: "text-sm text-muted-foreground",
 					children: e("about.aboutGrid.theBenchmarkAppHas10")
 				})]
 			}),
-			/* @__PURE__ */ o("div", {
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [/* @__PURE__ */ a("h2", {
+				children: [a("h2", {
 					className: "mb-3 text-xl font-semibold text-foreground",
 					children: e("about.aboutGrid.measurementMethodology")
-				}), /* @__PURE__ */ a("p", {
+				}), a("p", {
 					className: "text-sm text-muted-foreground",
 					children: e("about.aboutGrid.weUseBrowserNativeApis")
 				})]
 			}),
-			/* @__PURE__ */ o("div", {
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [/* @__PURE__ */ a("h2", {
+				children: [a("h2", {
 					className: "mb-3 text-xl font-semibold text-foreground",
 					children: e("about.aboutGrid.fairComparison")
-				}), /* @__PURE__ */ a("p", {
+				}), a("p", {
 					className: "text-sm text-muted-foreground",
 					children: e("about.aboutGrid.eachI18nLibraryIsIntegrated")
 				})]
@@ -242,7 +242,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -251,7 +255,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -260,7 +264,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -268,7 +272,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/about/AboutGrid.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

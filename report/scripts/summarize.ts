@@ -12,12 +12,13 @@
  *   --framework <name>   Filter by framework (nextjs, tanstack)
  *   --category  <name>   Filter by test category (static, dynamic, scoped-static, scoped-dynamic)
  *   --lib       <name>   Filter by library name (partial match)
- *   --json               Output raw aggregated data as JSON
+ *   --json               Output raw aggregated app rows as JSON (stdout)
+ *   --out [path]         Write full JSON (metadata + apps) to file (default: report/summary.json)
  *   --help               Show this help message
  */
 
-import { readdirSync, readFileSync, existsSync } from "fs";
-import { join, resolve } from "path";
+import { readdirSync, readFileSync, existsSync, writeFileSync, mkdirSync } from "fs";
+import { dirname, join, relative, resolve } from "path";
 
 // ---------------------------------------------------------------------------
 // Paths
@@ -44,7 +45,8 @@ Options:
   --framework <name>   Filter by framework: "nextjs" or "tanstack"
   --category  <name>   Filter by test category: static | dynamic | scoped-static | scoped-dynamic
   --lib       <name>   Filter by library name (partial match, e.g. "intlayer")
-  --json               Output raw aggregated data as JSON instead of tables
+  --json               Output aggregated app rows as JSON on stdout
+  --out [path]         Write full JSON (metadata + apps) to file (default: report/summary.json)
   --help               Show this help
   `);
   process.exit(0);
@@ -59,6 +61,18 @@ const filterFramework = getArg("--framework")?.toLowerCase() ?? null;
 const filterCategory = getArg("--category")?.toLowerCase() ?? null;
 const filterLib = getArg("--lib")?.toLowerCase() ?? null;
 const outputJson = args.includes("--json");
+
+function getOutPath(): string | null {
+  const idx = args.indexOf("--out");
+  if (idx === -1) return null;
+  const next = args[idx + 1];
+  if (!next || next.startsWith("-")) {
+    return join(REPO_ROOT, "report/summary.json");
+  }
+  return resolve(REPO_ROOT, next);
+}
+
+const outPath = getOutPath();
 
 // ---------------------------------------------------------------------------
 // Type definitions
@@ -129,6 +143,26 @@ interface AppSummary {
   // Reactivity (reactivity-*.json)
   e2eAvgMs: number | null;
   profilerAvgMs: number | null;
+}
+
+interface SummaryJsonFile {
+  meta: {
+    generatedAt: string;
+    resultsDir: string;
+    filters: {
+      framework: string | null;
+      category: string | null;
+      lib: string | null;
+    };
+    counts: {
+      totalApps: number;
+      withPageData: number;
+      withComponentData: number;
+      withReactivityData: number;
+      withLibSizeData: number;
+    };
+  };
+  apps: AppSummary[];
 }
 
 // ---------------------------------------------------------------------------
@@ -583,6 +617,37 @@ function main() {
   }
   const deduped = [...seen.values()];
 
+  const withPages = deduped.filter((s) => s.pageJsGzipAvg != null).length;
+  const withComponents = deduped.filter((s) => s.componentGzipAvg != null).length;
+  const withReactivity = deduped.filter((s) => s.e2eAvgMs != null).length;
+  const withLibSize = deduped.filter((s) => s.libSizeGzip != null).length;
+
+  const payload: SummaryJsonFile = {
+    meta: {
+      generatedAt: new Date().toISOString(),
+      resultsDir: relative(REPO_ROOT, RESULTS_DIR) || "apps-benchmark/results",
+      filters: {
+        framework: filterFramework,
+        category: filterCategory,
+        lib: filterLib,
+      },
+      counts: {
+        totalApps: deduped.length,
+        withPageData: withPages,
+        withComponentData: withComponents,
+        withReactivityData: withReactivity,
+        withLibSizeData: withLibSize,
+      },
+    },
+    apps: deduped,
+  };
+
+  if (outPath) {
+    mkdirSync(dirname(outPath), { recursive: true });
+    writeFileSync(outPath, JSON.stringify(payload, null, 2), "utf-8");
+    console.error(`Wrote ${outPath}`);
+  }
+
   if (outputJson) {
     console.log(JSON.stringify(deduped, null, 2));
     return;
@@ -657,17 +722,13 @@ function main() {
   // Print overall counts
   console.log("─".repeat(80));
   console.log(`Total apps summarized: ${deduped.length}`);
-  const withPages = deduped.filter((s) => s.pageJsGzipAvg != null).length;
-  const withComponents = deduped.filter((s) => s.componentGzipAvg != null).length;
-  const withReactivity = deduped.filter((s) => s.e2eAvgMs != null).length;
-  const withLibSize = deduped.filter((s) => s.libSizeGzip != null).length;
   console.log(`  with page data:        ${withPages}`);
   console.log(`  with component data:   ${withComponents}`);
   console.log(`  with reactivity data:  ${withReactivity}`);
   console.log(`  with lib size data:    ${withLibSize}`);
   console.log();
   console.log(
-    "Tip: Use --json to output raw data. Use --framework, --category, --lib to filter."
+    "Tip: Use --json for stdout rows; --out [path] saves full JSON with metadata. Filters: --framework, --category, --lib."
   );
 }
 

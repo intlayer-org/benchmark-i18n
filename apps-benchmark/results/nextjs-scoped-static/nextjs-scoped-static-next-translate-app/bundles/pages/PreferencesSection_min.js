@@ -179,59 +179,59 @@ function T(e) {
 //#region components/pages/settings/PreferencesSection.tsx
 function E() {
 	let { t: e } = T("common"), t = i();
-	return /* @__PURE__ */ s("section", {
+	return s("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [/* @__PURE__ */ o("h2", {
+		children: [o("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: e("settings.preferencesSection.preferences")
-		}), /* @__PURE__ */ s("div", {
+		}), s("div", {
 			className: "space-y-4",
 			children: [
-				/* @__PURE__ */ s("div", {
+				s("div", {
 					className: "flex items-center justify-between",
-					children: [/* @__PURE__ */ s("div", { children: [/* @__PURE__ */ o("p", {
+					children: [s("div", { children: [o("p", {
 						className: "text-sm font-medium text-foreground",
 						children: e("settings.preferencesSection.emailNotifications")
-					}), /* @__PURE__ */ o("p", {
+					}), o("p", {
 						className: "text-xs text-muted-foreground",
 						children: e("settings.preferencesSection.receiveWeeklyBenchmarkReports")
-					})] }), /* @__PURE__ */ o("button", {
+					})] }), o("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
 						"aria-label": "Toggle notifications",
-						children: /* @__PURE__ */ o("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
+						children: o("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
 					})]
 				}),
-				/* @__PURE__ */ s("div", {
+				s("div", {
 					className: "flex items-center justify-between",
-					children: [/* @__PURE__ */ s("div", { children: [/* @__PURE__ */ o("p", {
+					children: [s("div", { children: [o("p", {
 						className: "text-sm font-medium text-foreground",
 						children: e("settings.preferencesSection.darkMode")
-					}), /* @__PURE__ */ o("p", {
+					}), o("p", {
 						className: "text-xs text-muted-foreground",
 						children: e("settings.preferencesSection.useDarkColorScheme")
-					})] }), /* @__PURE__ */ o("button", {
+					})] }), o("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
 						"aria-label": "Toggle dark mode",
-						children: /* @__PURE__ */ o("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
+						children: o("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
 					})]
 				}),
-				/* @__PURE__ */ s("div", { children: [/* @__PURE__ */ o("label", {
+				s("div", { children: [o("label", {
 					htmlFor: t,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: e("settings.preferencesSection.defaultLanguage")
-				}), /* @__PURE__ */ s("select", {
+				}), s("select", {
 					id: t,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					children: [
-						/* @__PURE__ */ o("option", { children: "English (en)" }),
-						/* @__PURE__ */ o("option", { children: "French (fr)" }),
-						/* @__PURE__ */ o("option", { children: "German (de)" }),
-						/* @__PURE__ */ o("option", { children: "Spanish (es)" }),
-						/* @__PURE__ */ o("option", { children: "Japanese (ja)" }),
-						/* @__PURE__ */ o("option", { children: "Chinese Simplified (zh-CN)" }),
-						/* @__PURE__ */ o("option", { children: "Arabic (ar)" })
+						o("option", { children: "English (en)" }),
+						o("option", { children: "French (fr)" }),
+						o("option", { children: "German (de)" }),
+						o("option", { children: "Spanish (es)" }),
+						o("option", { children: "Japanese (ja)" }),
+						o("option", { children: "Chinese Simplified (zh-CN)" }),
+						o("option", { children: "Arabic (ar)" })
 					]
 				})] })
 			]
@@ -255,7 +255,11 @@ function D() {
 	}
 }
 function O(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -264,7 +268,7 @@ function k({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		D();
-	}, []), /* @__PURE__ */ o(t, {
+	}, []), o(t, {
 		id: "AppRoot",
 		onRender: O,
 		children: e
@@ -273,7 +277,7 @@ function k({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function A({ children: e }) {
-	return /* @__PURE__ */ o(k, {
+	return o(k, {
 		locale: "en",
 		children: e
 	});
@@ -281,7 +285,7 @@ function A({ children: e }) {
 //#endregion
 //#region components/pages/settings/PreferencesSection.wrapper.tsx
 function j() {
-	return /* @__PURE__ */ o(A, { children: /* @__PURE__ */ o(E, {}) });
+	return o(A, { children: o(E, {}) });
 }
 //#endregion
 export { j as default };

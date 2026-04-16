@@ -2,7 +2,7 @@ import { Profiler as e, useEffect as t } from "react";
 import { useParams as n, usePathname as r, useRouter as i } from "next/navigation";
 import { jsx as a } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s = /* @__PURE__ */ ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 }), c = [
@@ -33,13 +33,13 @@ function l() {
 		let r = n.join("/");
 		t.push(r);
 	};
-	return /* @__PURE__ */ a("div", {
+	return a("div", {
 		className: "flex items-center gap-2",
-		children: /* @__PURE__ */ a("select", {
+		children: a("select", {
 			value: e,
 			onChange: (e) => l(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: c.map((e) => /* @__PURE__ */ a("option", {
+			children: c.map((e) => a("option", {
 				value: e,
 				children: s(e)
 			}, e))
@@ -63,7 +63,11 @@ function u() {
 	}
 }
 function d(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -72,7 +76,7 @@ function f({ children: n, locale: r }) {
 		document.documentElement.lang = r;
 	}, [r]), t(() => {
 		u();
-	}, []), /* @__PURE__ */ a(e, {
+	}, []), a(e, {
 		id: "AppRoot",
 		onRender: d,
 		children: n
@@ -80,9 +84,9 @@ function f({ children: n, locale: r }) {
 }
 //#endregion
 //#region __vite-browser-external
-var p = /* @__PURE__ */ o(((e, t) => {
+var p = o(((e, t) => {
 	t.exports = {};
-})), m = /* @__PURE__ */ o(((e) => {
+})), m = o(((e) => {
 	var t = function(e, n) {
 		return t = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -8525,7 +8529,7 @@ var p = /* @__PURE__ */ o(((e, t) => {
 	}, e.standardizeLocale = function(e) {
 		return rn(e);
 	};
-})), h = /* @__PURE__ */ o(((e) => {
+})), h = o(((e) => {
 	var t = m(), n = function() {
 		return n = Object.assign || function(e) {
 			for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
@@ -8709,7 +8713,7 @@ var p = /* @__PURE__ */ o(((e, t) => {
 		}
 		return e.sort();
 	};
-})), g = /* @__PURE__ */ o(((e) => {
+})), g = o(((e) => {
 	var t = s("react/jsx-runtime"), n = s("react"), r = m(), i = h();
 	function a(e) {
 		var t = Object.create(null);
@@ -17061,7 +17065,7 @@ var p = /* @__PURE__ */ o(((e, t) => {
 	}, e.useVersionId = function() {
 		return Di("useVersionId(): Unable to access version ID outside of a <GTProvider>")._versionId;
 	};
-})), _ = /* @__PURE__ */ o(((e) => {
+})), _ = o(((e) => {
 	var t = s("react/jsx-runtime"), n = s("react"), r = m(), i = g();
 	function a(e) {
 		var t = Object.create(null);
@@ -23921,13 +23925,13 @@ var p = /* @__PURE__ */ o(((e, t) => {
 			}, e))]
 		}));
 	};
-})), v = /* @__PURE__ */ o(((e) => {
+})), v = o(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.STABLE_TURBO_CONFIG_VERSION = e.ROOT_PARAM_STABILITY = e.SWC_PLUGIN_SUPPORT = e.BABEL_PLUGIN_SUPPORT = void 0, e.BABEL_PLUGIN_SUPPORT = "17.0.0", e.SWC_PLUGIN_SUPPORT = "16.1.0", e.ROOT_PARAM_STABILITY = {
 		unsupported: "0.0.0",
 		unstable: "15.2.0",
 		experimental: "15.5.0"
 	}, e.STABLE_TURBO_CONFIG_VERSION = "15.3.0";
-})), y = /* @__PURE__ */ o(((e) => {
+})), y = o(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.swcPluginCompatibilityChangeWarning = e.createStringRenderWarning = e.disablingCompileTimeHashWarning = e.createGTCompilerUnavailableWarning = e.createGTCompilerUnresolvedWarning = e.deprecatedLocaleMappingWarning = e.standardizedCanonicalLocalesWarning = e.standardizedLocalesWarning = e.dictionaryNotFoundWarning = e.runtimeTranslationTimeoutWarning = e.createTranslationLoadingWarning = e.APIKeyMissingWarn = e.noInitGTWarn = e.projectIdMissingWarn = e.createMismatchingHashWarning = e.createUnsupportedLocalesWarning = e.createInvalidDictionaryTranslationEntryWarning = e.createInvalidDictionaryEntryWarning = e.createNoEntryFoundWarning = e.usingDefaultsWarning = e.createBadFilepathWarning = e.createInvalidIcuDictionaryEntryWarning = e.createInvalidIcuDictionaryEntryError = e.invalidCanonicalLocalesError = e.invalidLocalesError = e.createStringRenderError = e.missingVariablesError = e.txUseClientError = e.gtProviderUseClientError = e.typesFileError = e.conflictingConfigurationBuildError = e.unresolvedGetLocaleBuildError = e.unresolvedLoadTranslationsBuildError = e.unresolvedLoadDictionaryBuildError = e.unresolvedCustomLoadTranslationsError = e.unresolvedCustomLoadDictionaryError = e.dictionaryDisabledError = e.createDictionarySubsetError = e.devApiKeyIncludedInProductionError = e.createRequiredPrefixError = e.createDictionaryTranslationError = e.createStringTranslationError = e.createUnresolvedReactVersionError = e.createUnresolvedNextVersionError = e.customLoadDictionaryWarning = e.customLoadTranslationsError = e.remoteTranslationsError = void 0;
 	var t = m(), n = v();
 	e.remoteTranslationsError = "gt-next Error: fetching remote translation.", e.customLoadTranslationsError = function(e) {
@@ -23995,7 +23999,7 @@ ${e.join("\n")}`;
 	}, e.disablingCompileTimeHashWarning = "gt-next (plugin): Compile-time hash is disabled. Compiler optimizations are inactive.", e.createStringRenderWarning = function(e, t) {
 		return `gt-next: failed to render string ${t ? `for id: "${t}"` : ""} original message: "${e}"`;
 	}, e.swcPluginCompatibilityChangeWarning = `gt-next (plugin): As of gt-next@6.12.4, SWC plugin support is disabled for Next.js versions prior to ${n.SWC_PLUGIN_SUPPORT}. Update to the latest version of Next.js.`;
-})), b = (/* @__PURE__ */ o(((e) => {
+})), b = o(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.gtFallback = e.mFallback = e.decodeVars = e.declareVar = e.derive = e.declareStatic = e.decodeOptions = e.decodeMsg = e.msg = e.useMessages = e.useVersionId = e.useLocaleDirection = e.useLocaleProperties = e.useGTClass = e.useDefaultLocale = e.useLocales = e.useLocale = e.useTranslations = e.useGT = e.RegionSelector = e.LocaleSelector = e.Plural = e.Branch = e.Derive = e.Static = e.RelativeTime = e.DateTime = e.Currency = e.Num = e.Var = e.T = void 0, e.GTProvider = r;
 	var t = _();
 	Object.defineProperty(e, "Var", {
@@ -24158,11 +24162,11 @@ ${e.join("\n")}`;
 	function r() {
 		throw Error(n.gtProviderUseClientError);
 	}
-})))(), x = "en";
+}))(), x = "en";
 function S({ children: e }) {
-	return /* @__PURE__ */ a(b.GTProvider, {
+	return a(b.GTProvider, {
 		locale: x,
-		children: /* @__PURE__ */ a(f, {
+		children: a(f, {
 			locale: x,
 			children: e
 		})
@@ -24171,7 +24175,7 @@ function S({ children: e }) {
 //#endregion
 //#region components/LocaleSwitcher.wrapper.tsx
 function C() {
-	return /* @__PURE__ */ a(S, { children: /* @__PURE__ */ a(l, {}) });
+	return a(S, { children: a(l, {}) });
 }
 //#endregion
 export { C as default };

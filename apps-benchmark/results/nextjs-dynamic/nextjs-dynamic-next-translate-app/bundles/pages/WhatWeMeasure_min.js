@@ -200,19 +200,19 @@ function T() {
 			desc: e("about.whatWeMeasure.howFastTheAppCan")
 		}
 	];
-	return /* @__PURE__ */ o("section", {
+	return o("section", {
 		className: "mt-12 mx-auto max-w-3xl",
-		children: [/* @__PURE__ */ a("h2", {
+		children: [a("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
 			children: e("about.whatWeMeasure.whatWeMeasure")
-		}), /* @__PURE__ */ a("ul", {
+		}), a("ul", {
 			className: "space-y-4",
-			children: t.map((e) => /* @__PURE__ */ o("li", {
+			children: t.map((e) => o("li", {
 				className: "rounded-md border border-border p-4",
-				children: [/* @__PURE__ */ a("span", {
+				children: [a("span", {
 					className: "block text-sm font-bold text-primary",
 					children: e.metric
-				}), /* @__PURE__ */ a("span", {
+				}), a("span", {
 					className: "block mt-1 text-sm text-muted-foreground",
 					children: e.desc
 				})]
@@ -237,7 +237,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -246,7 +250,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -255,7 +259,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -263,7 +267,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/about/WhatWeMeasure.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

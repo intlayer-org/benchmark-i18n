@@ -179,7 +179,7 @@ function w(e) {
 //#region components/pages/blog/BlogList.tsx
 function T() {
 	let { t: e } = w("common");
-	return /* @__PURE__ */ a("div", {
+	return a("div", {
 		className: "grid gap-6 md:grid-cols-2",
 		children: [
 			{
@@ -218,28 +218,28 @@ function T() {
 				excerpt: e("blog.blogList.aTransparentLookAtOur"),
 				category: "Meta"
 			}
-		].map((t) => /* @__PURE__ */ o("article", {
+		].map((t) => o("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				/* @__PURE__ */ o("div", {
+				o("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [/* @__PURE__ */ a("span", {
+					children: [a("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: t.category
-					}), /* @__PURE__ */ a("span", {
+					}), a("span", {
 						className: "text-xs text-muted-foreground",
 						children: t.date
 					})]
 				}),
-				/* @__PURE__ */ a("h2", {
+				a("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: t.title
 				}),
-				/* @__PURE__ */ a("p", {
+				a("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: t.excerpt
 				}),
-				/* @__PURE__ */ a("button", {
+				a("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: e("blog.blogList.readMore")
@@ -265,7 +265,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -274,7 +278,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -283,7 +287,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -291,7 +295,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/blog/BlogList.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

@@ -185,40 +185,40 @@ function E() {
 		dept: "Engineering",
 		desc: e("careers.careersPositions.seniorFrontendEngineerDesc")
 	}];
-	return /* @__PURE__ */ s(a, { children: [/* @__PURE__ */ o("h2", {
+	return s(a, { children: [o("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: e("careers.openPositions.openPositions")
-	}), /* @__PURE__ */ o("div", {
+	}), o("div", {
 		className: "space-y-4",
-		children: t.map((t) => /* @__PURE__ */ s("div", {
+		children: t.map((t) => s("div", {
 			className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-			children: [/* @__PURE__ */ s("div", { children: [
-				/* @__PURE__ */ o("h3", {
+			children: [s("div", { children: [
+				o("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: t.title
 				}),
-				/* @__PURE__ */ o("p", {
+				o("p", {
 					className: "text-sm text-muted-foreground",
 					children: t.desc
 				}),
-				/* @__PURE__ */ s("div", {
+				s("div", {
 					className: "mt-2 flex gap-2",
 					children: [
-						/* @__PURE__ */ o("span", {
+						o("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: t.dept
 						}),
-						/* @__PURE__ */ o("span", {
+						o("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: t.location
 						}),
-						/* @__PURE__ */ o("span", {
+						o("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: t.type
 						})
 					]
 				})
-			] }), /* @__PURE__ */ o("button", {
+			] }), o("button", {
 				type: "button",
 				className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: e("careers.openPositions.applyNow")
@@ -243,7 +243,11 @@ function D() {
 	}
 }
 function O(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -252,7 +256,7 @@ function k({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		D();
-	}, []), /* @__PURE__ */ o(t, {
+	}, []), o(t, {
 		id: "AppRoot",
 		onRender: O,
 		children: e
@@ -261,7 +265,7 @@ function k({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function A({ children: e }) {
-	return /* @__PURE__ */ o(k, {
+	return o(k, {
 		locale: "en",
 		children: e
 	});
@@ -269,7 +273,7 @@ function A({ children: e }) {
 //#endregion
 //#region components/pages/careers/OpenPositions.wrapper.tsx
 function j() {
-	return /* @__PURE__ */ o(A, { children: /* @__PURE__ */ o(E, {}) });
+	return o(A, { children: o(E, {}) });
 }
 //#endregion
 export { j as default };

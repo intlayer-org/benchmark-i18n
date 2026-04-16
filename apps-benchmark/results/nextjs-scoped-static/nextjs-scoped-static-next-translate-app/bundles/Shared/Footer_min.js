@@ -5,7 +5,7 @@ import { jsx as s, jsxs as c } from "react/jsx-runtime";
 //#region components/Link.tsx
 var l = (e) => /^https?:\/\//.test(e ?? ""), u = ({ href: e, children: t, ...n }) => {
 	let r = a().lang ?? "en", i = l(e.toString());
-	return /* @__PURE__ */ s(o, {
+	return s(o, {
 		href: e && !i && !e.toString().startsWith(`/${r}`) ? `/${r}${e}` : e,
 		...n,
 		children: t
@@ -204,30 +204,30 @@ function k() {
 			isInternal: !0
 		}
 	];
-	return /* @__PURE__ */ s("footer", {
+	return s("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: /* @__PURE__ */ c("div", {
+		children: c("div", {
 			className: "container py-8",
-			children: [/* @__PURE__ */ c("div", {
+			children: [c("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("h3", {
+					c("div", { children: [s("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), /* @__PURE__ */ s("p", {
+					}), s("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("shared.footer.anOpenSourceTestApplication")
 					})] }),
-					/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("h3", {
+					c("div", { children: [s("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("shared.footer.resources")
-					}), /* @__PURE__ */ s("ul", {
+					}), s("ul", {
 						className: "space-y-1",
-						children: t.map((e) => /* @__PURE__ */ s("li", { children: e.isInternal ? /* @__PURE__ */ s(u, {
+						children: t.map((e) => s("li", { children: e.isInternal ? s(u, {
 							href: e.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) : /* @__PURE__ */ s("a", {
+						}) : s("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
@@ -235,15 +235,15 @@ function k() {
 							children: e.label
 						}) }, e.label))
 					})] }),
-					/* @__PURE__ */ c("div", { children: [/* @__PURE__ */ s("h3", {
+					c("div", { children: [s("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("shared.footer.contact")
-					}), /* @__PURE__ */ s("p", {
+					}), s("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
 					})] })
 				]
-			}), /* @__PURE__ */ s("div", {
+			}), s("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: e("shared.footer.builtWith")
 			})]
@@ -267,7 +267,11 @@ function A() {
 	}
 }
 function j(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -276,7 +280,7 @@ function M({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		A();
-	}, []), /* @__PURE__ */ s(t, {
+	}, []), s(t, {
 		id: "AppRoot",
 		onRender: j,
 		children: e
@@ -285,7 +289,7 @@ function M({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function N({ children: e }) {
-	return /* @__PURE__ */ s(M, {
+	return s(M, {
 		locale: "en",
 		children: e
 	});
@@ -293,7 +297,7 @@ function N({ children: e }) {
 //#endregion
 //#region components/Footer.wrapper.tsx
 function P() {
-	return /* @__PURE__ */ s(N, { children: /* @__PURE__ */ s(k, {}) });
+	return s(N, { children: s(k, {}) });
 }
 //#endregion
 export { P as default };

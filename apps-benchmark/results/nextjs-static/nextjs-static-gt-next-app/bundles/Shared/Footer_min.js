@@ -3,19 +3,19 @@ import { useParams as n } from "next/navigation";
 import r from "next/link";
 import { jsx as i, jsxs as a } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s = /* @__PURE__ */ ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 }), c = (e) => /^https?:\/\//.test(e ?? ""), l = ({ href: e, children: t, ...a }) => {
 	let o = n().locale ?? "en", s = c(e.toString());
-	return /* @__PURE__ */ i(r, {
+	return i(r, {
 		href: e && !s && !e.toString().startsWith(`/${o}`) ? `/${o}${e}` : e,
 		...a,
 		children: t
 	});
-}, u = /* @__PURE__ */ o(((e, t) => {
+}, u = o(((e, t) => {
 	t.exports = {};
-})), d = /* @__PURE__ */ o(((e) => {
+})), d = o(((e) => {
 	var t = function(e, n) {
 		return t = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -8458,7 +8458,7 @@ var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s
 	}, e.standardizeLocale = function(e) {
 		return rn(e);
 	};
-})), f = /* @__PURE__ */ o(((e) => {
+})), f = o(((e) => {
 	var t = d(), n = function() {
 		return n = Object.assign || function(e) {
 			for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
@@ -8642,7 +8642,7 @@ var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s
 		}
 		return e.sort();
 	};
-})), p = /* @__PURE__ */ o(((e) => {
+})), p = o(((e) => {
 	var t = s("react/jsx-runtime"), n = s("react"), r = d(), i = f();
 	function a(e) {
 		var t = Object.create(null);
@@ -16994,7 +16994,7 @@ var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s
 	}, e.useVersionId = function() {
 		return Di("useVersionId(): Unable to access version ID outside of a <GTProvider>")._versionId;
 	};
-})), m = /* @__PURE__ */ o(((e) => {
+})), m = o(((e) => {
 	var t = s("react/jsx-runtime"), n = s("react"), r = d(), i = p();
 	function a(e) {
 		var t = Object.create(null);
@@ -23854,13 +23854,13 @@ var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s
 			}, e))]
 		}));
 	};
-})), h = /* @__PURE__ */ o(((e) => {
+})), h = o(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.STABLE_TURBO_CONFIG_VERSION = e.ROOT_PARAM_STABILITY = e.SWC_PLUGIN_SUPPORT = e.BABEL_PLUGIN_SUPPORT = void 0, e.BABEL_PLUGIN_SUPPORT = "17.0.0", e.SWC_PLUGIN_SUPPORT = "16.1.0", e.ROOT_PARAM_STABILITY = {
 		unsupported: "0.0.0",
 		unstable: "15.2.0",
 		experimental: "15.5.0"
 	}, e.STABLE_TURBO_CONFIG_VERSION = "15.3.0";
-})), g = /* @__PURE__ */ o(((e) => {
+})), g = o(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.swcPluginCompatibilityChangeWarning = e.createStringRenderWarning = e.disablingCompileTimeHashWarning = e.createGTCompilerUnavailableWarning = e.createGTCompilerUnresolvedWarning = e.deprecatedLocaleMappingWarning = e.standardizedCanonicalLocalesWarning = e.standardizedLocalesWarning = e.dictionaryNotFoundWarning = e.runtimeTranslationTimeoutWarning = e.createTranslationLoadingWarning = e.APIKeyMissingWarn = e.noInitGTWarn = e.projectIdMissingWarn = e.createMismatchingHashWarning = e.createUnsupportedLocalesWarning = e.createInvalidDictionaryTranslationEntryWarning = e.createInvalidDictionaryEntryWarning = e.createNoEntryFoundWarning = e.usingDefaultsWarning = e.createBadFilepathWarning = e.createInvalidIcuDictionaryEntryWarning = e.createInvalidIcuDictionaryEntryError = e.invalidCanonicalLocalesError = e.invalidLocalesError = e.createStringRenderError = e.missingVariablesError = e.txUseClientError = e.gtProviderUseClientError = e.typesFileError = e.conflictingConfigurationBuildError = e.unresolvedGetLocaleBuildError = e.unresolvedLoadTranslationsBuildError = e.unresolvedLoadDictionaryBuildError = e.unresolvedCustomLoadTranslationsError = e.unresolvedCustomLoadDictionaryError = e.dictionaryDisabledError = e.createDictionarySubsetError = e.devApiKeyIncludedInProductionError = e.createRequiredPrefixError = e.createDictionaryTranslationError = e.createStringTranslationError = e.createUnresolvedReactVersionError = e.createUnresolvedNextVersionError = e.customLoadDictionaryWarning = e.customLoadTranslationsError = e.remoteTranslationsError = void 0;
 	var t = d(), n = h();
 	e.remoteTranslationsError = "gt-next Error: fetching remote translation.", e.customLoadTranslationsError = function(e) {
@@ -23928,7 +23928,7 @@ ${e.join("\n")}`;
 	}, e.disablingCompileTimeHashWarning = "gt-next (plugin): Compile-time hash is disabled. Compiler optimizations are inactive.", e.createStringRenderWarning = function(e, t) {
 		return `gt-next: failed to render string ${t ? `for id: "${t}"` : ""} original message: "${e}"`;
 	}, e.swcPluginCompatibilityChangeWarning = `gt-next (plugin): As of gt-next@6.12.4, SWC plugin support is disabled for Next.js versions prior to ${n.SWC_PLUGIN_SUPPORT}. Update to the latest version of Next.js.`;
-})), _ = (/* @__PURE__ */ o(((e) => {
+})), _ = o(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.gtFallback = e.mFallback = e.decodeVars = e.declareVar = e.derive = e.declareStatic = e.decodeOptions = e.decodeMsg = e.msg = e.useMessages = e.useVersionId = e.useLocaleDirection = e.useLocaleProperties = e.useGTClass = e.useDefaultLocale = e.useLocales = e.useLocale = e.useTranslations = e.useGT = e.RegionSelector = e.LocaleSelector = e.Plural = e.Branch = e.Derive = e.Static = e.RelativeTime = e.DateTime = e.Currency = e.Num = e.Var = e.T = void 0, e.GTProvider = r;
 	var t = m();
 	Object.defineProperty(e, "Var", {
@@ -24091,48 +24091,48 @@ ${e.join("\n")}`;
 	function r() {
 		throw Error(n.gtProviderUseClientError);
 	}
-})))();
+}))();
 function v() {
-	return /* @__PURE__ */ i("footer", {
+	return i("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: /* @__PURE__ */ a("div", {
+		children: a("div", {
 			className: "container py-8",
-			children: [/* @__PURE__ */ a("div", {
+			children: [a("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					/* @__PURE__ */ a("div", { children: [/* @__PURE__ */ i("h3", {
+					a("div", { children: [i("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: /* @__PURE__ */ i(_.T, { children: "i18n Benchmark" })
-					}), /* @__PURE__ */ i("p", {
+						children: i(_.T, { children: "i18n Benchmark" })
+					}), i("p", {
 						className: "text-sm text-muted-foreground",
-						children: /* @__PURE__ */ i(_.T, { children: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity." })
+						children: i(_.T, { children: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity." })
 					})] }),
-					/* @__PURE__ */ a("div", { children: [/* @__PURE__ */ i("h3", {
+					a("div", { children: [i("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: /* @__PURE__ */ i(_.T, { children: "Resources" })
-					}), /* @__PURE__ */ i("ul", {
+						children: i(_.T, { children: "Resources" })
+					}), i("ul", {
 						className: "space-y-1",
 						children: [
 							{
-								label: /* @__PURE__ */ i(_.T, { children: "GitHub" }),
+								label: i(_.T, { children: "GitHub" }),
 								href: "https://github.com/intlayer-org/benchmark-i18n",
 								isInternal: !1
 							},
 							{
-								label: /* @__PURE__ */ i(_.T, { children: "Methodology" }),
+								label: i(_.T, { children: "Methodology" }),
 								href: "/about",
 								isInternal: !0
 							},
 							{
-								label: /* @__PURE__ */ i(_.T, { children: "Contributing" }),
+								label: i(_.T, { children: "Contributing" }),
 								href: "/contact",
 								isInternal: !0
 							}
-						].map((e) => /* @__PURE__ */ i("li", { children: e.isInternal ? /* @__PURE__ */ i(l, {
+						].map((e) => i("li", { children: e.isInternal ? i(l, {
 							href: e.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) : /* @__PURE__ */ i("a", {
+						}) : i("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
@@ -24140,17 +24140,17 @@ function v() {
 							children: e.label
 						}) }, e.href))
 					})] }),
-					/* @__PURE__ */ a("div", { children: [/* @__PURE__ */ i("h3", {
+					a("div", { children: [i("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: /* @__PURE__ */ i(_.T, { children: "Contact" })
-					}), /* @__PURE__ */ i("p", {
+						children: i(_.T, { children: "Contact" })
+					}), i("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
 					})] })
 				]
-			}), /* @__PURE__ */ i("div", {
+			}), i("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
-				children: /* @__PURE__ */ i(_.T, { children: "i18n Benchmark — Open-source project. Built with Next.js." })
+				children: i(_.T, { children: "i18n Benchmark — Open-source project. Built with Next.js." })
 			})]
 		})
 	});
@@ -24172,7 +24172,11 @@ function y() {
 	}
 }
 function b(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -24181,7 +24185,7 @@ function x({ children: n, locale: r }) {
 		document.documentElement.lang = r;
 	}, [r]), t(() => {
 		y();
-	}, []), /* @__PURE__ */ i(e, {
+	}, []), i(e, {
 		id: "AppRoot",
 		onRender: b,
 		children: n
@@ -24191,9 +24195,9 @@ function x({ children: n, locale: r }) {
 //#region scripts/Wrapper.tsx
 var S = "en";
 function C({ children: e }) {
-	return /* @__PURE__ */ i(_.GTProvider, {
+	return i(_.GTProvider, {
 		locale: S,
-		children: /* @__PURE__ */ i(x, {
+		children: i(x, {
 			locale: S,
 			children: e
 		})
@@ -24202,7 +24206,7 @@ function C({ children: e }) {
 //#endregion
 //#region components/Footer.wrapper.tsx
 function w() {
-	return /* @__PURE__ */ i(C, { children: /* @__PURE__ */ i(v, {}) });
+	return i(C, { children: i(v, {}) });
 }
 //#endregion
 export { w as default };

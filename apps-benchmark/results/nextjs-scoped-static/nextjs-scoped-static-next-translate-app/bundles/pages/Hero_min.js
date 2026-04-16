@@ -191,24 +191,24 @@ function E(e) {
 //#region components/pages/home/Hero.tsx
 function D() {
 	let { t: e } = T("common");
-	return E("Hero"), /* @__PURE__ */ s("section", {
+	return E("Hero"), s("section", {
 		className: "mb-16 text-center",
 		children: [
-			/* @__PURE__ */ o("h1", {
+			o("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
 				children: "i18n Benchmark"
 			}),
-			/* @__PURE__ */ o("p", {
+			o("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
 				children: e("home.hero.aTestApplicationDesignedTo")
 			}),
-			/* @__PURE__ */ s("div", {
+			s("div", {
 				className: "mt-8 flex justify-center gap-4",
-				children: [/* @__PURE__ */ o("button", {
+				children: [o("button", {
 					type: "button",
 					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: e("home.hero.viewResults")
-				}), /* @__PURE__ */ o("button", {
+				}), o("button", {
 					type: "button",
 					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: e("shared.header.methodology")
@@ -234,7 +234,11 @@ function O() {
 	}
 }
 function k(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -243,7 +247,7 @@ function A({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		O();
-	}, []), /* @__PURE__ */ o(t, {
+	}, []), o(t, {
 		id: "AppRoot",
 		onRender: k,
 		children: e
@@ -252,7 +256,7 @@ function A({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function j({ children: e }) {
-	return /* @__PURE__ */ o(A, {
+	return o(A, {
 		locale: "en",
 		children: e
 	});
@@ -260,7 +264,7 @@ function j({ children: e }) {
 //#endregion
 //#region components/pages/home/Hero.wrapper.tsx
 function M() {
-	return /* @__PURE__ */ o(j, { children: /* @__PURE__ */ o(D, {}) });
+	return o(j, { children: o(D, {}) });
 }
 //#endregion
 export { M as default };

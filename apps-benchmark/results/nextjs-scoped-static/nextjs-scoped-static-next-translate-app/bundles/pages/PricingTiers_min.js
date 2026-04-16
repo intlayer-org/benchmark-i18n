@@ -179,7 +179,7 @@ function w(e) {
 //#region components/pages/pricing/PricingTiers.tsx
 function T() {
 	let { t: e } = w("common");
-	return /* @__PURE__ */ a("div", {
+	return a("div", {
 		className: "grid gap-6 md:grid-cols-3",
 		children: [
 			{
@@ -224,29 +224,29 @@ function T() {
 				],
 				buttonText: e("pricing.pricingTiers.contactSales")
 			}
-		].map((e) => /* @__PURE__ */ o("div", {
+		].map((e) => o("div", {
 			className: `flex flex-col rounded-lg border p-6 ${e.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				/* @__PURE__ */ a("h3", {
+				a("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: e.name
 				}),
-				/* @__PURE__ */ o("div", {
+				o("div", {
 					className: "my-4",
-					children: [/* @__PURE__ */ a("span", {
+					children: [a("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: e.price
-					}), /* @__PURE__ */ a("span", {
+					}), a("span", {
 						className: "text-sm text-muted-foreground",
 						children: e.period
 					})]
 				}),
-				/* @__PURE__ */ a("ul", {
+				a("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: e.features.map((e) => /* @__PURE__ */ o("li", {
+					children: e.features.map((e) => o("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							/* @__PURE__ */ a("span", {
+							a("span", {
 								className: "text-primary",
 								children: "✓"
 							}),
@@ -255,7 +255,7 @@ function T() {
 						]
 					}, e))
 				}),
-				/* @__PURE__ */ a("button", {
+				a("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${e.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: e.buttonText
@@ -281,7 +281,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -290,7 +294,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -299,7 +303,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -307,7 +311,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/pricing/PricingTiers.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

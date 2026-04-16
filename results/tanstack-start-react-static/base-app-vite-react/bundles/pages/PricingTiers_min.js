@@ -1,5 +1,4 @@
 import { jsx as e, jsxs as t } from "react/jsx-runtime";
-//#region src/components/pages/pricing/PricingTiers.tsx
 function n() {
 	return e("div", {
 		className: "grid gap-6 md:grid-cols-3",
@@ -83,5 +82,4 @@ function n() {
 		}, n.name))
 	});
 }
-//#endregion
 export { n as default };

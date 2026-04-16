@@ -245,19 +245,19 @@ function WhatWeMeasure() {
 			desc: t("about.whatWeMeasure.howFastTheAppCan")
 		}
 	];
-	return /* @__PURE__ */ jsxs("section", {
+	return jsxs("section", {
 		className: "mt-12 mx-auto max-w-3xl",
-		children: [/* @__PURE__ */ jsx("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
 			children: t("about.whatWeMeasure.whatWeMeasure")
-		}), /* @__PURE__ */ jsx("ul", {
+		}), jsx("ul", {
 			className: "space-y-4",
-			children: metrics.map((m) => /* @__PURE__ */ jsxs("li", {
+			children: metrics.map((m) => jsxs("li", {
 				className: "rounded-md border border-border p-4",
-				children: [/* @__PURE__ */ jsx("span", {
+				children: [jsx("span", {
 					className: "block text-sm font-bold text-primary",
 					children: m.metric
-				}), /* @__PURE__ */ jsx("span", {
+				}), jsx("span", {
 					className: "block mt-1 text-sm text-muted-foreground",
 					children: m.desc
 				})]
@@ -267,18 +267,6 @@ function WhatWeMeasure() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -294,16 +282,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -314,7 +302,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -323,7 +311,7 @@ function AppProviders({ children, locale }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
 	});
@@ -331,7 +319,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/pages/about/WhatWeMeasure.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(WhatWeMeasure, {}) });
+	return jsx(Wrapper, { children: jsx(WhatWeMeasure, {}) });
 }
 //#endregion
 export { Wrapped as default };

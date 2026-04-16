@@ -25,6 +25,8 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - Even if that solution is >6 years old, the library is still actively maintained.
 - There is no website and no online documentation; they are only available on GitHub. I like finding great libraries and fixing problems in a clean way, without extra marketing layers.
 - All constants are transformed into functions, leading to an anti-pattern. Syntax such as `const t = useTranslation('xx')` + `<>{t('xx.xx')}</>` introduces unnecessary complexity and leads to JavaScript execution overhead.
+- The library blocks static rendering of Next.js pages. 
+
 
 **Tolgee**
 
@@ -42,7 +44,7 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - All these libraries offer a similar approach, well connected with the React reactivity system. But `next-intl` offers additional features, such as middleware support, formatters, etc.
 - The message formats diverge between libraries. `next-intl` uses the ICU MessageFormat format, while `i18next` uses its own format.
 - **next-intl** is a much lighter solution than **i18next**, but remains heavy and poorly optimized.
-- **next-intl** blocks static rendering of Next.js pages. It provides a fix function named `setRequestLocale()`, but it is not easy to understand the cause of the issue or how to fix it.
+- **next-intl** used to block static rendering of Next.js pages. It provides a fix function named `setRequestLocale()`, that was not easy to understand the cause of the issue or how to fix it. This issue has now been fixed and no longer blocks static rendering.
 - Both solutions do not offer a way to translate synchronous server components such as design-system navbar, footer, etc. As a result, all components have to be translated on the client side.
 - All constants are transformed into functions, leading to an anti-pattern. Syntax such as `const t = useTranslation('xx')` + `<>{t('xx.xx')}</>` introduces unnecessary complexity and leads to JavaScript execution overhead.
 - **next-international** includes a custom `scopedT()` function that allows you to translate content in a specific namespace which make the refactoring process harder for optimization purpose. But because there is no way to split the jsons in namespaces, this function is quite useless. It only improves the DX, but has no impact on the bundle size.

@@ -16,7 +16,11 @@ function r() {
 	}
 }
 function i(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -25,7 +29,7 @@ function a({ children: a, locale: o }) {
 		document.documentElement.lang = o;
 	}, [o]), t(() => {
 		r();
-	}, []), /* @__PURE__ */ n(e, {
+	}, []), n(e, {
 		id: "AppRoot",
 		onRender: i,
 		children: a
@@ -34,7 +38,7 @@ function a({ children: a, locale: o }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function o({ children: e }) {
-	return /* @__PURE__ */ n(a, {
+	return n(a, {
 		locale: "en",
 		children: e
 	});
@@ -42,7 +46,7 @@ function o({ children: e }) {
 //#endregion
 //#region components/AppProviders.wrapper.tsx
 function s() {
-	return /* @__PURE__ */ n(o, { children: /* @__PURE__ */ n(a, {}) });
+	return n(o, { children: n(a, {}) });
 }
 //#endregion
 export { s as default };

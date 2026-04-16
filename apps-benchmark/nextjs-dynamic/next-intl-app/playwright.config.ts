@@ -1,4 +1,9 @@
 import { defineConfig, devices } from "@playwright/test";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { nextStandaloneServerEntry } from "test-utils/repo-root";
+
+const appDir = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   testDir: ".",
@@ -15,7 +20,8 @@ export default defineConfig({
   },
 
   webServer: {
-    command: "node_modules/.bin/next start -p 4173",
+    cwd: appDir,
+    command: `PORT=4173 node ${nextStandaloneServerEntry(appDir)}`,
     url: "http://localhost:4173",
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,

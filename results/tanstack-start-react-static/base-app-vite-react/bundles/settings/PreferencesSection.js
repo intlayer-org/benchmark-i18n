@@ -1,6 +1,5 @@
 import { useId } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/settings/PreferencesSection.tsx
 function PreferencesSection() {
 	const languageId = useId();
 	return jsxs("section", {
@@ -62,5 +61,4 @@ function PreferencesSection() {
 		})]
 	});
 }
-//#endregion
 export { PreferencesSection as default };

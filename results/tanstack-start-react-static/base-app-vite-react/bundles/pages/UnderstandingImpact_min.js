@@ -1,5 +1,4 @@
 import { jsx as e, jsxs as t } from "react/jsx-runtime";
-//#region src/components/pages/home/UnderstandingImpact.tsx
 function n() {
 	return t("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
@@ -80,5 +79,4 @@ function n() {
 		]
 	});
 }
-//#endregion
 export { n as default };

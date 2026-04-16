@@ -1,5 +1,4 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/about/AboutGrid.tsx
 function AboutGrid() {
 	return jsxs("div", {
 		className: "grid gap-8 md:grid-cols-2",
@@ -24,5 +23,4 @@ function AboutGrid() {
 		})]
 	});
 }
-//#endregion
 export { AboutGrid as default };

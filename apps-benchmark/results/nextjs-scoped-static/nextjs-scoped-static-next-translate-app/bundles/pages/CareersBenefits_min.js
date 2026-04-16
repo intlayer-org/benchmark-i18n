@@ -179,7 +179,7 @@ function w(e) {
 //#region components/pages/careers/CareersBenefits.tsx
 function T() {
 	let { t: e } = w("common");
-	return /* @__PURE__ */ a("div", {
+	return a("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
 		children: [{
 			label: e("careers.careersBenefits.competitivePay"),
@@ -187,12 +187,12 @@ function T() {
 		}, {
 			label: e("careers.careersBenefits.openSourceTime"),
 			value: e("careers.careersBenefits.twentyPercentTime")
-		}].map((e) => /* @__PURE__ */ o("div", {
+		}].map((e) => o("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
-			children: [/* @__PURE__ */ a("p", {
+			children: [a("p", {
 				className: "text-sm font-semibold text-foreground",
 				children: e.label
-			}), /* @__PURE__ */ a("p", {
+			}), a("p", {
 				className: "text-xs text-muted-foreground",
 				children: e.value
 			})]
@@ -216,7 +216,11 @@ function E() {
 	}
 }
 function D(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -225,7 +229,7 @@ function O({ children: e, locale: n }) {
 		document.documentElement.lang = n;
 	}, [n]), r(() => {
 		E();
-	}, []), /* @__PURE__ */ a(t, {
+	}, []), a(t, {
 		id: "AppRoot",
 		onRender: D,
 		children: e
@@ -234,7 +238,7 @@ function O({ children: e, locale: n }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function k({ children: e }) {
-	return /* @__PURE__ */ a(O, {
+	return a(O, {
 		locale: "en",
 		children: e
 	});
@@ -242,7 +246,7 @@ function k({ children: e }) {
 //#endregion
 //#region components/pages/careers/CareersBenefits.wrapper.tsx
 function A() {
-	return /* @__PURE__ */ a(k, { children: /* @__PURE__ */ a(T, {}) });
+	return a(k, { children: a(T, {}) });
 }
 //#endregion
 export { A as default };

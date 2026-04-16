@@ -1,6 +1,5 @@
 import { useLayoutEffect as e } from "react";
 import { jsx as t, jsxs as n } from "react/jsx-runtime";
-//#region src/hooks/usePerformanceMeasure.ts
 function r(t) {
 	typeof performance < "u" && performance.mark && performance.mark(`${t}-start`), e(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
@@ -11,8 +10,6 @@ function r(t) {
 		}
 	}, [t]);
 }
-//#endregion
-//#region src/components/pages/home/Hero.tsx
 function i() {
 	return r("Hero"), n("section", {
 		className: "mb-16 text-center",
@@ -40,5 +37,4 @@ function i() {
 		]
 	});
 }
-//#endregion
 export { i as default };

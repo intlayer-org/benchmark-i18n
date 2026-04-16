@@ -1,14 +1,14 @@
 import { cache } from "react";
 import type { Metadata } from "next";
-import { headers } from "next/headers";
+import { notFound } from "next/navigation";
 import {
   assertIsLocale,
   baseLocale,
   getLocale,
   getTextDirection,
+  isLocale,
   overwriteGetLocale,
   overwriteGetUrlOrigin,
-  type Locale,
 } from "../../paraglide/runtime.js";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
@@ -59,7 +59,10 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  ssrLocale().locale = assertIsLocale(locale);
+  if (!isLocale(locale)) {
+    notFound();
+  }
+  ssrLocale().locale = locale;
 
   return (
     <html lang={getLocale()} dir={getTextDirection()} suppressHydrationWarning>

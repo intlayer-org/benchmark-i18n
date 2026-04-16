@@ -1,9 +1,8 @@
-import { t as en_default } from "./en-D2O6w_UK.js";
+import { t as en_default } from "./en-CMFc584c.js";
 import React, { Suspense, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region ../../../node_modules/.bun/@tolgee+web@7.0.0/node_modules/@tolgee/web/dist/tolgee-web.production.esm.js
 var __defProp = Object.defineProperty;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
@@ -1570,8 +1569,6 @@ function Tolgee() {
 	return TolgeeCore().use(BrowserExtensionPlugin());
 }
 var DevTools = () => (tolgee) => tolgee;
-//#endregion
-//#region ../../../node_modules/.bun/@tolgee+react@7.0.0+3f10a4be4e334a9b/node_modules/@tolgee/react/dist/tolgee-react.esm.js
 function getTolgeeWithDeactivatedWrapper(tolgee) {
 	return Object.assign(Object.assign({}, tolgee), { t(...args) {
 		const props = getTranslateProps(...args);
@@ -1744,14 +1741,12 @@ var T$1 = (props) => {
 	const { t } = useTranslateInternal();
 	return React.createElement(TBase, Object.assign({ t }, props));
 };
-//#endregion
-//#region src/i18n/tolgee.tsx
 var tolgee = Tolgee().use(DevTools()).use(FormatSimple()).init({
 	language: "en",
 	apiUrl: void 0,
 	apiKey: void 0,
 	staticData: {
-		en: () => import("./en-D2O6w_UK.js").then((n) => n.n),
+		en: () => import("./en-CMFc584c.js").then((n) => n.n),
 		fr: () => import("../i18n/locales/fr.json"),
 		es: () => import("../i18n/locales/es.json"),
 		de: () => import("../i18n/locales/de.json"),
@@ -1773,8 +1768,6 @@ function useTranslate() {
 function T(props) {
 	return jsx(T$1, { ...props });
 }
-//#endregion
-//#region src/components/ThemeToggle.tsx
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -1832,8 +1825,6 @@ function ThemeToggle() {
 		})
 	});
 }
-//#endregion
-//#region src/i18n/config.ts
 var locales = [
 	"en",
 	"fr",
@@ -1854,8 +1845,6 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
-//#endregion
-//#region src/components/LocaleSwitcher.tsx
 function LocaleSwitcher() {
 	const locale = useParams({ strict: false }).locale ?? "en";
 	const navigate = useNavigate();
@@ -1881,8 +1870,6 @@ function LocaleSwitcher() {
 		})
 	});
 }
-//#endregion
-//#region src/hooks/usePerformanceMeasure.ts
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -1894,8 +1881,6 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-//#endregion
-//#region src/components/Header.tsx
 function Header() {
 	const { t } = useTranslate();
 	usePerformanceMeasure("Header");
@@ -2035,8 +2020,6 @@ function Header() {
 		})
 	});
 }
-//#endregion
-//#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
 	return jsx(TolgeeProvider, {
 		tolgee,
@@ -2047,14 +2030,10 @@ function Wrapper({ children }) {
 		children
 	});
 }
-//#endregion
-//#region src/components/Header.wrapper.tsx
 function Wrapped() {
 	return jsx(Wrapper, { children: jsx(Header, {}) });
 }
-//#endregion
 export { Wrapped as default };
-//#region \0rolldown/runtime.js
 var __defProp = Object.defineProperty;
 var __exportAll = (all, no_symbols) => {
 	let target = {};
@@ -2065,8 +2044,6 @@ var __exportAll = (all, no_symbols) => {
 	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
 	return target;
 };
-//#endregion
-//#region src/i18n/locales/en.json
 var en_exports = __exportAll({
 	aboutGrid: () => aboutGrid,
 	aboutHeader: () => aboutHeader,
@@ -2509,5 +2486,4 @@ var en_default = {
 	teamGrid,
 	mockBanner
 };
-//#endregion
 export { en_exports as n, en_default as t };

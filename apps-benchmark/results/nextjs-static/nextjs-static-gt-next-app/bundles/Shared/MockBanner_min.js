@@ -1,12 +1,12 @@
 import { Profiler as e, useEffect as t } from "react";
 import { jsx as n } from "react/jsx-runtime";
 //#region \0rolldown/runtime.js
-var r = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), i = /* @__PURE__ */ ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var r = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), i = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), a = /* @__PURE__ */ r(((e, t) => {
+}), a = r(((e, t) => {
 	t.exports = {};
-})), o = /* @__PURE__ */ r(((e) => {
+})), o = r(((e) => {
 	var t = function(e, n) {
 		return t = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(e, t) {
 			e.__proto__ = t;
@@ -8449,7 +8449,7 @@ var r = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), i
 	}, e.standardizeLocale = function(e) {
 		return rn(e);
 	};
-})), s = /* @__PURE__ */ r(((e) => {
+})), s = r(((e) => {
 	var t = o(), n = function() {
 		return n = Object.assign || function(e) {
 			for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n]) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
@@ -8633,7 +8633,7 @@ var r = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), i
 		}
 		return e.sort();
 	};
-})), c = /* @__PURE__ */ r(((e) => {
+})), c = r(((e) => {
 	var t = i("react/jsx-runtime"), n = i("react"), r = o(), a = s();
 	function c(e) {
 		var t = Object.create(null);
@@ -16985,7 +16985,7 @@ var r = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), i
 	}, e.useVersionId = function() {
 		return Di("useVersionId(): Unable to access version ID outside of a <GTProvider>")._versionId;
 	};
-})), l = /* @__PURE__ */ r(((e) => {
+})), l = r(((e) => {
 	var t = i("react/jsx-runtime"), n = i("react"), r = o(), a = c();
 	function s(e) {
 		var t = Object.create(null);
@@ -23845,13 +23845,13 @@ var r = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), i
 			}, e))]
 		}));
 	};
-})), u = /* @__PURE__ */ r(((e) => {
+})), u = r(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.STABLE_TURBO_CONFIG_VERSION = e.ROOT_PARAM_STABILITY = e.SWC_PLUGIN_SUPPORT = e.BABEL_PLUGIN_SUPPORT = void 0, e.BABEL_PLUGIN_SUPPORT = "17.0.0", e.SWC_PLUGIN_SUPPORT = "16.1.0", e.ROOT_PARAM_STABILITY = {
 		unsupported: "0.0.0",
 		unstable: "15.2.0",
 		experimental: "15.5.0"
 	}, e.STABLE_TURBO_CONFIG_VERSION = "15.3.0";
-})), d = /* @__PURE__ */ r(((e) => {
+})), d = r(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.swcPluginCompatibilityChangeWarning = e.createStringRenderWarning = e.disablingCompileTimeHashWarning = e.createGTCompilerUnavailableWarning = e.createGTCompilerUnresolvedWarning = e.deprecatedLocaleMappingWarning = e.standardizedCanonicalLocalesWarning = e.standardizedLocalesWarning = e.dictionaryNotFoundWarning = e.runtimeTranslationTimeoutWarning = e.createTranslationLoadingWarning = e.APIKeyMissingWarn = e.noInitGTWarn = e.projectIdMissingWarn = e.createMismatchingHashWarning = e.createUnsupportedLocalesWarning = e.createInvalidDictionaryTranslationEntryWarning = e.createInvalidDictionaryEntryWarning = e.createNoEntryFoundWarning = e.usingDefaultsWarning = e.createBadFilepathWarning = e.createInvalidIcuDictionaryEntryWarning = e.createInvalidIcuDictionaryEntryError = e.invalidCanonicalLocalesError = e.invalidLocalesError = e.createStringRenderError = e.missingVariablesError = e.txUseClientError = e.gtProviderUseClientError = e.typesFileError = e.conflictingConfigurationBuildError = e.unresolvedGetLocaleBuildError = e.unresolvedLoadTranslationsBuildError = e.unresolvedLoadDictionaryBuildError = e.unresolvedCustomLoadTranslationsError = e.unresolvedCustomLoadDictionaryError = e.dictionaryDisabledError = e.createDictionarySubsetError = e.devApiKeyIncludedInProductionError = e.createRequiredPrefixError = e.createDictionaryTranslationError = e.createStringTranslationError = e.createUnresolvedReactVersionError = e.createUnresolvedNextVersionError = e.customLoadDictionaryWarning = e.customLoadTranslationsError = e.remoteTranslationsError = void 0;
 	var t = o(), n = u();
 	e.remoteTranslationsError = "gt-next Error: fetching remote translation.", e.customLoadTranslationsError = function(e) {
@@ -23919,7 +23919,7 @@ ${e.join("\n")}`;
 	}, e.disablingCompileTimeHashWarning = "gt-next (plugin): Compile-time hash is disabled. Compiler optimizations are inactive.", e.createStringRenderWarning = function(e, t) {
 		return `gt-next: failed to render string ${t ? `for id: "${t}"` : ""} original message: "${e}"`;
 	}, e.swcPluginCompatibilityChangeWarning = `gt-next (plugin): As of gt-next@6.12.4, SWC plugin support is disabled for Next.js versions prior to ${n.SWC_PLUGIN_SUPPORT}. Update to the latest version of Next.js.`;
-})), f = (/* @__PURE__ */ r(((e) => {
+})), f = r(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.gtFallback = e.mFallback = e.decodeVars = e.declareVar = e.derive = e.declareStatic = e.decodeOptions = e.decodeMsg = e.msg = e.useMessages = e.useVersionId = e.useLocaleDirection = e.useLocaleProperties = e.useGTClass = e.useDefaultLocale = e.useLocales = e.useLocale = e.useTranslations = e.useGT = e.RegionSelector = e.LocaleSelector = e.Plural = e.Branch = e.Derive = e.Static = e.RelativeTime = e.DateTime = e.Currency = e.Num = e.Var = e.T = void 0, e.GTProvider = r;
 	var t = l();
 	Object.defineProperty(e, "Var", {
@@ -24082,9 +24082,9 @@ ${e.join("\n")}`;
 	function r() {
 		throw Error(n.gtProviderUseClientError);
 	}
-})))(), p = () => /* @__PURE__ */ n("div", {
+}))(), p = () => n("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: /* @__PURE__ */ n(f.T, { children: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." })
+	children: n(f.T, { children: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." })
 });
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
@@ -24103,7 +24103,11 @@ function m() {
 	}
 }
 function h(e, t, n) {
-	typeof window > "u" || t !== "nested-update" && (window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n));
+	if (!(typeof window > "u") && t !== "nested-update") try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+	} catch (e) {
+		console.warn("onRenderCallback failed:", e);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -24112,7 +24116,7 @@ function g({ children: r, locale: i }) {
 		document.documentElement.lang = i;
 	}, [i]), t(() => {
 		m();
-	}, []), /* @__PURE__ */ n(e, {
+	}, []), n(e, {
 		id: "AppRoot",
 		onRender: h,
 		children: r
@@ -24122,9 +24126,9 @@ function g({ children: r, locale: i }) {
 //#region scripts/Wrapper.tsx
 var _ = "en";
 function v({ children: e }) {
-	return /* @__PURE__ */ n(f.GTProvider, {
+	return n(f.GTProvider, {
 		locale: _,
-		children: /* @__PURE__ */ n(g, {
+		children: n(g, {
 			locale: _,
 			children: e
 		})
@@ -24133,7 +24137,7 @@ function v({ children: e }) {
 //#endregion
 //#region components/MockBanner.wrapper.tsx
 function y() {
-	return /* @__PURE__ */ n(v, { children: /* @__PURE__ */ n(p, {}) });
+	return n(v, { children: n(p, {}) });
 }
 //#endregion
 export { y as default };

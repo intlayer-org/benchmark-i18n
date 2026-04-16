@@ -8,38 +8,38 @@ export default function BlogList() {
   const posts = [
     {
       title: t("blog-list.comparingI18nLibrariesIn2026"),
-      date: t("blog.blog-list.march82026"), // The en.ts has march82026 for the first one too? Let's check.
-      excerpt: t("blog.blog-list.weTested12DifferentInternationalization"),
+      date: t("blog-list.march82026"),
+      excerpt: t("blog-list.weTested12DifferentInternationalization"),
       category: "Benchmark",
     },
     {
-      title: t("blog.blog-list.howToReduceYourI18n"),
-      date: t("blog.blog-list.march82026"),
-      excerpt: t("blog.blog-list.practicalStrategiesForOptimizingTranslation"),
+      title: t("blog-list.howToReduceYourI18n"),
+      date: t("blog-list.march82026"),
+      excerpt: t("blog-list.practicalStrategiesForOptimizingTranslation"),
       category: "Tutorial",
     },
     {
-      title: t("blog.blog-list.theStateOfInternationalizationIn"),
-      date: t("blog.blog-list.february282026"),
-      excerpt: t("blog.blog-list.anOverviewOfTheCurrent"),
+      title: t("blog-list.theStateOfInternationalizationIn"),
+      date: t("blog-list.february282026"),
+      excerpt: t("blog-list.anOverviewOfTheCurrent"),
       category: "Analysis",
     },
     {
-      title: t("blog.blog-list.migratingFromReactI18nextTo"),
-      date: t("blog.blog-list.february152026"),
-      excerpt: t("blog.blog-list.aStepByStepGuide"),
+      title: t("blog-list.migratingFromReactI18nextTo"),
+      date: t("blog-list.february152026"),
+      excerpt: t("blog-list.aStepByStepGuide"),
       category: "Tutorial",
     },
     {
-      title: t("blog.blog-list.serverComponentsAndI18nWhat"),
-      date: t("blog.blog-list.february12026"),
-      excerpt: t("blog.blog-list.reactServerComponentsIntroduceNew"),
+      title: t("blog-list.serverComponentsAndI18nWhat"),
+      date: t("blog-list.february12026"),
+      excerpt: t("blog-list.reactServerComponentsIntroduceNew"),
       category: "Analysis",
     },
     {
-      title: t("blog.blog-list.benchmarkMethodologyHowWeTest"),
-      date: t("blog.blog-list.january202026"),
-      excerpt: t("blog.blog-list.aTransparentLookAtOur"),
+      title: t("blog-list.benchmarkMethodologyHowWeTest"),
+      date: t("blog-list.january202026"),
+      excerpt: t("blog-list.aTransparentLookAtOur"),
       category: "Meta",
     },
   ];
@@ -65,7 +65,7 @@ export default function BlogList() {
             type="button"
             className="text-sm font-medium text-primary hover:underline"
           >
-            {t("blog.blog-list.readMore")}
+            {t("blog-list.readMore")}
           </button>
         </article>
       ))}

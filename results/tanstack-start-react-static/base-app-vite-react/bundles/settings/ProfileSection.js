@@ -1,6 +1,5 @@
 import { useId } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
-//#region src/components/pages/settings/ProfileSection.tsx
 function ProfileSection() {
 	const displayNameId = useId();
 	const emailId = useId();
@@ -31,5 +30,4 @@ function ProfileSection() {
 		})]
 	});
 }
-//#endregion
 export { ProfileSection as default };

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { jsx } from "react/jsx-runtime";
-//#region src/components/ThemeToggle.tsx
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -48,5 +47,4 @@ function ThemeToggle() {
 		children: mode === "auto" ? "Theme: Auto" : mode === "dark" ? "Theme: Dark" : "Theme: Light"
 	});
 }
-//#endregion
 export { ThemeToggle as default };

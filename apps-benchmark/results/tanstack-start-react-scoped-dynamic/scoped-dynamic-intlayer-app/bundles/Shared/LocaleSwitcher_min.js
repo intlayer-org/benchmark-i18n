@@ -26,37 +26,7 @@ var l = {
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, d = 50, f = /* @__PURE__ */ new Map(), p = (e, t, n) => {
-	let r = t ?? l?.defaultLocale, i = `${r}|${n ? JSON.stringify(n) : ""}`, a = f.get(e);
-	a || (a = /* @__PURE__ */ new Map(), f.set(e, a));
-	let o = a.get(i);
-	return o || (a.size > d && a.clear(), o = new e(r, n), a.set(i, o)), o;
-}, m = {
-	Collator: function(e, t) {
-		return p(Intl.Collator, e, t);
-	},
-	DateTimeFormat: function(e, t) {
-		return p(Intl.DateTimeFormat, e, t);
-	},
-	DisplayNames: function(e, t) {
-		return p(Intl.DisplayNames, e, t);
-	},
-	ListFormat: function(e, t) {
-		return p(Intl.ListFormat, e, t);
-	},
-	NumberFormat: function(e, t) {
-		return p(Intl.NumberFormat, e, t);
-	},
-	PluralRules: function(e, t) {
-		return p(Intl.PluralRules, e, t);
-	},
-	RelativeTimeFormat: function(e, t) {
-		return p(Intl.RelativeTimeFormat, e, t);
-	},
-	Segmenter: function(e, t) {
-		return p(Intl.Segmenter, e, t);
-	}
-}, h = (e, t = l?.locales, n = l?.defaultLocale) => {
+}, d = (e, t = l?.locales, n = l?.defaultLocale) => {
 	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
 	try {
 		for (let e of r) {
@@ -67,21 +37,21 @@ var l = {
 		}
 	} catch {}
 	return n;
-}, g = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+}, f = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var _ = (e, t, n) => {
+var p = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	return n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`), n.expires instanceof Date && r.push(`Expires=${n.expires.toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, v = (e) => {
+}, m = (e) => {
 	let { locales: t } = l;
 	if (e?.isCookieEnabled === !1) return;
 	let n = (e) => !!e && t.includes(e);
-	if (!g) for (let t = 0; t < (u.storage.cookies ?? []).length; t++) try {
+	if (!f) for (let t = 0; t < (u.storage.cookies ?? []).length; t++) try {
 		let r = e?.getCookie?.(u.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-}, y = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !g && u.storage.cookies) for (let n = 0; n < u.storage.cookies.length; n++) {
+}, h = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && !f && u.storage.cookies) for (let n = 0; n < u.storage.cookies.length; n++) {
 		let { name: r, attributes: i } = u.storage.cookies[n];
 		try {
 			t?.setCookieStore && t.setCookieStore(r, e, {
@@ -90,11 +60,11 @@ var _ = (e, t, n) => {
 			});
 		} catch {
 			try {
-				t?.setCookieString && t.setCookieString(r, _(r, e, i));
+				t?.setCookieString && t.setCookieString(r, p(r, e, i));
 			} catch {}
 		}
 	}
-}, b = {
+}, g = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -112,49 +82,49 @@ var _ = (e, t, n) => {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, x = (e, t = e) => new m.DisplayNames(t, { type: "language" }).of(e) ?? "Unknown locale", S = v(b), C = (e, t) => y(e, {
-	...b,
+}, _ = m(g), v = (e, t) => h(e, {
+	...g,
 	isCookieEnabled: t
-}), w = () => {
-	let { locale: e } = n(D) ?? {}, t = i(null);
+}), y = () => {
+	let { locale: e } = n(S) ?? {}, t = i(null);
 	r(() => {}, []), r(() => {
 		!e || !t.current || t.current.currentLocale.set(e);
 	}, [e]);
-}, T = ({ children: e }) => (w(), e), E = () => {
+}, b = ({ children: e }) => (y(), e), x = () => {
 	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, D = e({
-	locale: S ?? l?.defaultLocale,
+}, S = e({
+	locale: _ ?? l?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), O = ({ locale: e, defaultLocale: t, children: n, setLocale: i, disableEditor: o, isCookieEnabled: c }) => {
-	let { locales: u, defaultLocale: d } = l ?? {}, [f, p] = a(e ?? S ?? t ?? d);
+}), C = ({ locale: e, defaultLocale: t, children: n, setLocale: i, disableEditor: o, isCookieEnabled: c }) => {
+	let { locales: u, defaultLocale: f } = l ?? {}, [p, m] = a(e ?? _ ?? t ?? f);
 	r(() => {
-		e && e !== f && p(e);
+		e && e !== p && m(e);
 	}, [e]), r(() => {
-		E();
+		x();
 	}, []);
-	let m = i ?? ((e) => {
-		if (f.toString() !== e.toString()) {
+	let h = i ?? ((e) => {
+		if (p.toString() !== e.toString()) {
 			if (!u?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			p(e), C(e, c);
+			m(e), v(e, c);
 		}
-	}), g = h(f);
-	return /* @__PURE__ */ s(D.Provider, {
+	}), g = d(p);
+	return s(S.Provider, {
 		value: {
 			locale: g,
-			setLocale: m,
+			setLocale: h,
 			disableEditor: o
 		},
 		children: n
 	});
-}, k = ({ children: e, ...t }) => /* @__PURE__ */ c(O, {
+}, w = ({ children: e, ...t }) => c(C, {
 	...t,
-	children: [/* @__PURE__ */ s(T, {}), e]
-}), A = ({ isCookieEnabled: e, onLocaleChange: r } = {}) => {
-	let { defaultLocale: i, locales: a } = l ?? {}, { locale: o, setLocale: s, isCookieEnabled: c } = n(D) ?? {};
+	children: [s(b, {}), e]
+}), T = ({ isCookieEnabled: e, onLocaleChange: r } = {}) => {
+	let { defaultLocale: i, locales: a } = l ?? {}, { locale: o, setLocale: s, isCookieEnabled: c } = n(S) ?? {};
 	return {
 		locale: o,
 		defaultLocale: i,
@@ -164,7 +134,7 @@ var _ = (e, t, n) => {
 				console.error(`Locale ${t} is not available`);
 				return;
 			}
-			s(t), C(t, e ?? c ?? !0), r?.(t);
+			s(t), v(t, e ?? c ?? !0), r?.(t);
 		}, [
 			a,
 			r,
@@ -175,8 +145,16 @@ var _ = (e, t, n) => {
 };
 //#endregion
 //#region src/components/LocaleSwitcher.tsx
-function j() {
-	let e = o(), { locale: t, availableLocales: n, setLocale: r } = A({ onLocaleChange: (t) => {
+function E(e) {
+	try {
+		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
+		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
+	} catch {
+		return e.toUpperCase();
+	}
+}
+function D() {
+	let e = o(), { locale: t, availableLocales: n, setLocale: r } = T({ onLocaleChange: (t) => {
 		e({
 			to: ".",
 			params: (e) => ({
@@ -185,31 +163,31 @@ function j() {
 			})
 		});
 	} });
-	return /* @__PURE__ */ s("div", {
+	return s("div", {
 		className: "flex items-center gap-2",
-		children: /* @__PURE__ */ s("select", {
+		children: s("select", {
 			value: t,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: n.map((e) => /* @__PURE__ */ s("option", {
+			children: n.map((e) => s("option", {
 				value: e,
-				children: x(e)
+				children: E(e)
 			}, e))
 		})
 	});
 }
 //#endregion
 //#region scripts/Wrapper.tsx
-function M({ children: e }) {
-	return /* @__PURE__ */ s(k, {
+function O({ children: e }) {
+	return s(w, {
 		locale: "en",
 		children: e
 	});
 }
 //#endregion
 //#region src/components/LocaleSwitcher.wrapper.tsx
-function N() {
-	return /* @__PURE__ */ s(M, { children: /* @__PURE__ */ s(j, {}) });
+function k() {
+	return s(O, { children: s(D, {}) });
 }
 //#endregion
-export { N as default };
+export { k as default };

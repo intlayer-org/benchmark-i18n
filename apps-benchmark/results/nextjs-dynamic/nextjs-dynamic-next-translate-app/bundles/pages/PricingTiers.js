@@ -223,7 +223,7 @@ function useTranslation(defaultNS) {
 //#region components/pages/pricing/PricingTiers.tsx
 function PricingTiers() {
 	const { t } = useTranslation("common");
-	return /* @__PURE__ */ jsx("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
 		children: [
 			{
@@ -268,29 +268,29 @@ function PricingTiers() {
 				],
 				buttonText: t("pricing.pricingTiers.contactSales")
 			}
-		].map((tItem) => /* @__PURE__ */ jsxs("div", {
+		].map((tItem) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${tItem.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				/* @__PURE__ */ jsx("h3", {
+				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: tItem.name
 				}),
-				/* @__PURE__ */ jsxs("div", {
+				jsxs("div", {
 					className: "my-4",
-					children: [/* @__PURE__ */ jsx("span", {
+					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: tItem.price
-					}), /* @__PURE__ */ jsx("span", {
+					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
 						children: tItem.period
 					})]
 				}),
-				/* @__PURE__ */ jsx("ul", {
+				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: tItem.features.map((f) => /* @__PURE__ */ jsxs("li", {
+					children: tItem.features.map((f) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							/* @__PURE__ */ jsx("span", {
+							jsx("span", {
 								className: "text-primary",
 								children: "✓"
 							}),
@@ -299,7 +299,7 @@ function PricingTiers() {
 						]
 					}, f))
 				}),
-				/* @__PURE__ */ jsx("button", {
+				jsx("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tItem.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: tItem.buttonText
@@ -310,18 +310,6 @@ function PricingTiers() {
 }
 //#endregion
 //#region ../../../test-utils/src/browser-metrics.ts
-/**
-* Utilities for browser-side performance measurement and monitoring.
-* These are intended to be used within the benchmark applications.
-*/
-/**
-* Records and logs hydration duration using the Performance API.
-* This should be called in a \`useEffect\` hook within the root component
-* to mark the end of the hydration process.
-*
-* It expects a "hydration_start" mark to have been previously set
-* (e.g., in a script tag in the document's head).
-*/
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -337,16 +325,16 @@ function recordHydrationDuration() {
 		console.warn("Could not measure hydration duration:", err);
 	}
 }
-/**
-* A standard Profiler onRender callback that collects metrics into a global object.
-* This allows automated tests to retrieve render performance data from the browser.
-*/
 function onRenderCallback(id, phase, actualDuration) {
 	if (typeof window === "undefined") return;
 	if (phase === "nested-update") return;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
-	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
-	window.__RENDER_METRICS__[id].push(actualDuration);
+	try {
+		window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+		window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+		window.__RENDER_METRICS__[id].push(actualDuration);
+	} catch (err) {
+		console.warn("onRenderCallback failed:", err);
+	}
 }
 //#endregion
 //#region components/AppProviders.tsx
@@ -357,7 +345,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return /* @__PURE__ */ jsx(Profiler, {
+	return jsx(Profiler, {
 		id: "AppRoot",
 		onRender: onRenderCallback,
 		children
@@ -366,7 +354,7 @@ function AppProviders({ children, locale }) {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
 	});
@@ -374,7 +362,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region components/pages/pricing/PricingTiers.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(PricingTiers, {}) });
+	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
 }
 //#endregion
 export { Wrapped as default };

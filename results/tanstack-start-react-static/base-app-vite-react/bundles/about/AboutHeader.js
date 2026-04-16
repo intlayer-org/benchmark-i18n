@@ -1,6 +1,5 @@
 import { useLayoutEffect } from "react";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-//#region src/hooks/usePerformanceMeasure.ts
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -12,8 +11,6 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-//#endregion
-//#region src/components/pages/about/AboutHeader.tsx
 function AboutHeader() {
 	usePerformanceMeasure("AboutHeader");
 	return jsxs(Fragment, { children: [jsx("h1", {
@@ -24,5 +21,4 @@ function AboutHeader() {
 		children: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
 	})] });
 }
-//#endregion
 export { AboutHeader as default };

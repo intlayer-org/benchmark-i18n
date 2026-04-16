@@ -29,85 +29,7 @@ var routing = {
 	"basePath": ""
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/utils/intl.mjs
-/**
-* Cached Intl helper – drop‑in replacement for the global `Intl` object.
-* ‑‑‑
-* • Uses a `Proxy` to lazily wrap every *constructor* hanging off `Intl` (NumberFormat, DateTimeFormat, …).
-* • Each wrapped constructor keeps an in‑memory cache keyed by `[locales, options]` so that identical requests
-* reuse the same heavy instance instead of reparsing CLDR data every time.
-* • A polyfill warning for `Intl.DisplayNames` is emitted only once and only in dev.
-* • The public API is fully type‑safe and mirrors the native `Intl` surface exactly –
-* you can treat `CachedIntl` just like the built‑in `Intl`.
-*
-* Usage @example:
-* ---------------
-* ```ts
-* import { CachedIntl } from "./cached-intl";
-*
-* const nf = CachedIntl.NumberFormat("en-US", { style: "currency", currency: "USD" });
-* console.log(nf.format(1234));
-*
-* const dn = CachedIntl.DisplayNames(["fr"], { type: "language" });
-* console.log(dn.of("en")); * → "anglais"
-*
-* You can also spin up an isolated instance with its own caches (handy in test suites):
-* const TestIntl = createCachedIntl();
-* ```
-*/
-var MAX_CACHE_SIZE = 50;
-var cache = /* @__PURE__ */ new Map();
-/**
-* Generic caching instantiator for Intl constructors.
-*/
-var getCachedIntl = (Ctor, locale, options) => {
-	const resLoc = locale ?? internationalization?.defaultLocale;
-	const key = `${resLoc}|${options ? JSON.stringify(options) : ""}`;
-	let ctorCache = cache.get(Ctor);
-	if (!ctorCache) {
-		ctorCache = /* @__PURE__ */ new Map();
-		cache.set(Ctor, ctorCache);
-	}
-	let instance = ctorCache.get(key);
-	if (!instance) {
-		if (ctorCache.size > MAX_CACHE_SIZE) ctorCache.clear();
-		instance = new Ctor(resLoc, options);
-		ctorCache.set(key, instance);
-	}
-	return instance;
-};
-var CachedIntl = {
-	Collator: function Collator(locales, options) {
-		return getCachedIntl(Intl.Collator, locales, options);
-	},
-	DateTimeFormat: function DateTimeFormat(locales, options) {
-		return getCachedIntl(Intl.DateTimeFormat, locales, options);
-	},
-	DisplayNames: function DisplayNames(locales, options) {
-		return getCachedIntl(Intl.DisplayNames, locales, options);
-	},
-	ListFormat: function ListFormat(locales, options) {
-		return getCachedIntl(Intl.ListFormat, locales, options);
-	},
-	NumberFormat: function NumberFormat(locales, options) {
-		return getCachedIntl(Intl.NumberFormat, locales, options);
-	},
-	PluralRules: function PluralRules(locales, options) {
-		return getCachedIntl(Intl.PluralRules, locales, options);
-	},
-	RelativeTimeFormat: function RelativeTimeFormat(locales, options) {
-		return getCachedIntl(Intl.RelativeTimeFormat, locales, options);
-	},
-	Segmenter: function Segmenter(locales, options) {
-		return getCachedIntl(Intl.Segmenter, locales, options);
-	}
-};
-//#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/localeResolver.mjs
-/**
-* Resolves the most specific locale from a user-provided list,
-* or falls back to the default locale if no match is found.
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/localeResolver.mjs
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
 	const requestedLocales = [selectedLocale].flat();
 	const normalize = (locale) => locale.trim().toLowerCase();
@@ -124,10 +46,7 @@ var localeResolver = (selectedLocale, locales = internationalization?.locales, d
 	return defaultLocale;
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/utils/localeStorage.mjs
-/**
-* True when cookie storage is explicitly disabled at build time.
-*/
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/utils/localeStorage.mjs
 var TREE_SHAKE_STORAGE_COOKIES = process.env["INTLAYER_ROUTING_STORAGE_COOKIES"] === "false";
 process.env["INTLAYER_ROUTING_STORAGE_HEADERS"];
 var buildCookieString = (name, value, attributes) => {
@@ -139,11 +58,6 @@ var buildCookieString = (name, value, attributes) => {
 	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
 	return parts.join("; ");
 };
-/**
-* Retrieves the locale from browser storage mechanisms
-* (cookies, localStorage, sessionStorage).
-* Does not read from headers — use `getLocaleFromStorageServer` for that.
-*/
 var getLocaleFromStorageClient = (options) => {
 	const { locales } = internationalization;
 	if (options?.isCookieEnabled === false) return void 0;
@@ -153,11 +67,6 @@ var getLocaleFromStorageClient = (options) => {
 		if (isValidLocale(value)) return value;
 	} catch {}
 };
-/**
-* Stores the locale in browser storage mechanisms
-* (cookies, localStorage, sessionStorage).
-* Does not write to headers — use `setLocaleInStorageServer` for that.
-*/
 var setLocaleInStorageClient = (locale, options) => {
 	if (options?.isCookieEnabled === false) return;
 	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
@@ -175,7 +84,7 @@ var setLocaleInStorageClient = (locale, options) => {
 	}
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/getBrowserLocale.mjs
+//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/getBrowserLocale.mjs
 var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
@@ -196,33 +105,14 @@ var localeStorageOptions = {
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+core@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/core/dist/esm/localization/getLocaleName.mjs
-var getLocaleName = (displayLocale, targetLocale = displayLocale) => {
-	return new CachedIntl.DisplayNames(targetLocale, { type: "language" }).of(displayLocale) ?? "Unknown locale";
-};
-//#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocaleStorage.mjs
-/**
-* Get the locale cookie
-*/
-/**
-* Get the locale cookie
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocaleStorage.mjs
 var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
-/**
-* Set the locale cookie
-*/
 var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
 	...localeStorageOptions,
 	isCookieEnabled
 });
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/useEditor.mjs
-/**
-* Initializes the Intlayer editor client singleton when the editor is enabled.
-* Syncs the current locale from the Intlayer context into the editor manager so
-* the editor always knows which locale the app is displaying.
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/useEditor.mjs
 var useEditor = () => {
 	const { locale } = useContext(IntlayerClientContext) ?? {};
 	const managerRef = useRef(null);
@@ -233,38 +123,23 @@ var useEditor = () => {
 	}, [locale]);
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/EditorProvider.mjs
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/editor/EditorProvider.mjs
 var EditorProvider = ({ children }) => {
 	useEditor();
 	return children;
 };
 //#endregion
-//#region ../../../node_modules/.bun/@intlayer+config@8.7.1-canary-0+3f10a4be4e334a9b/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs
-/**
-* Sets the version of Intlayer in the window object.
-* This is used for Intlayer detection in the browser.
-*/
+//#region ../../../node_modules/.bun/@intlayer+config@8.7.1-canary-1+3f10a4be4e334a9b/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs
 var setIntlayerIdentifier = () => {
 	if (typeof window !== "undefined") window.intlayer = { enabled: true };
 };
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/IntlayerProvider.mjs
-/**
-* Context that stores the current locale on the client side.
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/IntlayerProvider.mjs
 var IntlayerClientContext = createContext({
 	locale: localeInStorage ?? internationalization?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: true
 });
-/**
-* Provider that stores the current locale on the client side.
-*
-* This component is focused on content delivery without the editor features.
-*
-* @param props - The provider props.
-* @returns The provider component.
-*/
 var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
 	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
 	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
@@ -285,7 +160,7 @@ var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocal
 	};
 	const setLocale = setLocaleProp ?? setLocaleBase;
 	const resolvedLocale = localeResolver(currentLocale);
-	return /* @__PURE__ */ jsx(IntlayerClientContext.Provider, {
+	return jsx(IntlayerClientContext.Provider, {
 		value: {
 			locale: resolvedLocale,
 			setLocale,
@@ -294,55 +169,12 @@ var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocal
 		children
 	});
 };
-/**
-* Main provider for Intlayer in React applications.
-*
-* It includes the editor provider by default, allowing for live content editing
-* if configured.
-*
-* @param props - The provider props.
-* @returns The provider component with editor support.
-*
-* @example
-* ```tsx
-* import { IntlayerProvider } from 'react-intlayer';
-*
-* const App = () => (
-*   <IntlayerProvider>
-*     <MyComponent />
-*   </IntlayerProvider>
-* );
-* ```
-*/
-var IntlayerProvider = ({ children, ...props }) => /* @__PURE__ */ jsxs(IntlayerProviderContent, {
+var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
 	...props,
-	children: [/* @__PURE__ */ jsx(EditorProvider, {}), children]
+	children: [jsx(EditorProvider, {}), children]
 });
 //#endregion
-//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-0+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocale.mjs
-/**
-* Client-side hook to get the current locale and related locale management functions.
-*
-* @param props - Optional properties for the hook.
-* @returns An object containing the current locale, default locale, available locales, and a function to update the locale.
-*
-* @example
-* ```tsx
-* import { useLocale } from 'react-intlayer';
-*
-* const LocaleSwitcher = () => {
-*   const { locale, setLocale, availableLocales } = useLocale();
-*
-*   return (
-*     <select value={locale} onChange={(e) => setLocale(e.target.value)}>
-*       {availableLocales.map((loc) => (
-*         <option key={loc} value={loc}>{loc}</option>
-*       ))}
-*     </select>
-*   );
-* };
-* ```
-*/
+//#region ../../../node_modules/.bun/react-intlayer@8.7.1-canary-1+21ccd8898788a04d/node_modules/react-intlayer/dist/esm/client/useLocale.mjs
 var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
 	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
@@ -368,6 +200,14 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 };
 //#endregion
 //#region src/components/LocaleSwitcher.tsx
+function getLocaleName(locale) {
+	try {
+		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
+		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
+	} catch (e) {
+		return locale.toUpperCase();
+	}
+}
 function LocaleSwitcher() {
 	const navigate = useNavigate();
 	const { locale, availableLocales, setLocale } = useLocale({ onLocaleChange: (newLocale) => {
@@ -379,13 +219,13 @@ function LocaleSwitcher() {
 			})
 		});
 	} });
-	return /* @__PURE__ */ jsx("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: /* @__PURE__ */ jsx("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => setLocale(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: availableLocales.map((locale) => /* @__PURE__ */ jsx("option", {
+			children: availableLocales.map((locale) => jsx("option", {
 				value: locale,
 				children: getLocaleName(locale)
 			}, locale))
@@ -395,7 +235,7 @@ function LocaleSwitcher() {
 //#endregion
 //#region scripts/Wrapper.tsx
 function Wrapper({ children }) {
-	return /* @__PURE__ */ jsx(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
 	});
@@ -403,7 +243,7 @@ function Wrapper({ children }) {
 //#endregion
 //#region src/components/LocaleSwitcher.wrapper.tsx
 function Wrapped() {
-	return /* @__PURE__ */ jsx(Wrapper, { children: /* @__PURE__ */ jsx(LocaleSwitcher, {}) });
+	return jsx(Wrapper, { children: jsx(LocaleSwitcher, {}) });
 }
 //#endregion
 export { Wrapped as default };
