@@ -48,7 +48,6 @@ import { benchmarkBloomRoot } from "./repo-root";
 import { build, loadConfigFromFile, type PluginOption } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import type { RolldownOutput } from "rolldown";
-import Bun from "bun";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -85,6 +84,20 @@ export interface MeasureConfig {
    * Babel plugins should be passed as [plugin, options].
    */
   additionalPlugins?: any[];
+  /**
+   * Absolute path to the app root directory. Overrides `process.cwd()` for
+   * all path resolution in {@link measureLibSize} (EmptyComponent, EmptyWrapper,
+   * results dir, Vite config lookup). Useful when the test runner's cwd differs
+   * from the app directory (e.g. Playwright invoked from the repo root).
+   */
+  appDir?: string;
+  /**
+   * When true, skips loading the app's vite.config.ts entirely. Use for libs
+   * whose vite plugin performs transforms incompatible with isolated lib builds
+   * (e.g. intlayer's dictionary injection). Provide all necessary plugins via
+   * additionalPlugins instead.
+   */
+  skipViteConfig?: boolean;
 }
 
 /** Size measurements for a single compiled component. */
@@ -116,6 +129,7 @@ const BASE_EXTERNAL_PACKAGES: (string | RegExp)[] = [
   "react/jsx-runtime",
   "react/jsx-dev-runtime",
   "@tanstack/react-router",
+  new RegExp("^@tanstack/start"),
   "lucide-react",
   /^next(\/.*)?$/,
 
@@ -131,7 +145,6 @@ const BLOCKED_PLUGIN_SUBSTRINGS = [
   "tailwind", // Strips @tailwindcss/vite:*
   "visualizer", // Strips rollup-plugin-visualizer
 ];
-
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -166,16 +179,21 @@ const buildComponentBundle = async (
   minify: boolean,
   wrapperTemplate?: (componentPath: string) => string,
   additionalPlugins: any[] = [],
+  configRoot?: string,
+  skipViteConfig?: boolean,
 ): Promise<{ bytes: number; gzipBytes: number; code: string }> => {
-  // Load the host application's Vite config
-  const loaded = await loadConfigFromFile({
-    command: "build",
-    mode: "production",
-  });
+  // Load the host application's Vite config (unless caller opts out)
+  const loaded = skipViteConfig
+    ? null
+    : await loadConfigFromFile(
+        { command: "build", mode: "production" },
+        undefined,
+        configRoot,
+      );
   const appConfig = loaded?.config || {};
 
   // Filter out plugins that interfere with isolated library mode.
-  const filteredPlugins : PluginOption[] = ((appConfig.plugins || []) as any[])
+  const filteredPlugins: PluginOption[] = ((appConfig.plugins || []) as any[])
     .flat(Infinity)
     .filter((plugin: any) => {
       if (!plugin || !plugin.name) return true;
@@ -194,13 +212,15 @@ const buildComponentBundle = async (
     name: "strip-comments",
     enforce: "post",
     renderChunk(code) {
-      return code
-        // 1. Strip standard block comments and JSDoc
-        .replace(/\/\*[\s\S]*?\*\//g, "")
-        // 2. Strip bundler-injected region markers (//#region, //#endregion)
-        .replace(/\/\/#.*?$/gm, "")
-        // 3. Strip standalone single-line comments safely
-        .replace(/^\s*\/\/.*$/gm, "");
+      return (
+        code
+          // 1. Strip standard block comments and JSDoc
+          .replace(/\/\*[\s\S]*?\*\//g, "")
+          // 2. Strip bundler-injected region markers (//#region, //#endregion)
+          .replace(/\/\/#.*?$/gm, "")
+          // 3. Strip standalone single-line comments safely
+          .replace(/^\s*\/\/.*$/gm, "")
+      );
     },
   });
 
@@ -246,8 +266,6 @@ const buildComponentBundle = async (
       // It's a single Vite plugin
       filteredPlugins.push(plugin);
     }
-
-    
   }
 
   // --- TEMPORARY FILE STRATEGY ---
@@ -325,12 +343,18 @@ const scanAndMeasureDirectory = async (
   additionalPlugins: any[] = [],
 ): Promise<ComponentSizeStats[]> => {
   const componentStats: ComponentSizeStats[] = [];
-  const globPattern = new Bun.Glob("**/*.tsx");
+
+  const collectTsx = (dir: string, base: string): string[] => {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    return entries.flatMap((e) => {
+      const rel = base ? `${base}/${e.name}` : e.name;
+      if (e.isDirectory()) return collectTsx(path.join(dir, e.name), rel);
+      return e.name.endsWith(".tsx") ? [rel] : [];
+    });
+  };
 
   console.log(`Scanning directory: ${directoryPath}`);
-  for await (const relativeFilePath of globPattern.scan({
-    cwd: directoryPath,
-  })) {
+  for (const relativeFilePath of collectTsx(directoryPath, "")) {
     console.log(`  - Processing component: ${relativeFilePath}`);
     const absoluteFilePath = path.join(directoryPath, relativeFilePath);
     const category = deriveComponentCategory(relativeFilePath);
@@ -454,8 +478,7 @@ const saveComponentMeasurements = (
           summary: {
             totalComponents: componentStatsList.length,
             totalUnminifiedBytes: componentStatsList.reduce(
-              (totalBytes, component) =>
-                totalBytes + component.unminifiedBytes,
+              (totalBytes, component) => totalBytes + component.unminifiedBytes,
               0,
             ),
             totalMinifiedBytes: componentStatsList.reduce(
@@ -583,8 +606,14 @@ export const measureLibSize = async ({
   additionalExternalPackages = [],
   wrapperTemplate,
   additionalPlugins = [],
+  appDir,
+  skipViteConfig,
 }: MeasureConfig): Promise<void> => {
-  const emptyComponentPath = path.resolve("./scripts/EmptyComponent.tsx");
+  const effectiveDir = appDir ?? process.cwd();
+  const emptyComponentPath = path.resolve(
+    effectiveDir,
+    "scripts/EmptyComponent.tsx",
+  );
   if (!fs.existsSync(emptyComponentPath)) {
     console.log(
       `[measureLibSize] No EmptyComponent.tsx found at ${emptyComponentPath} — skipping.`,
@@ -598,7 +627,7 @@ export const measureLibSize = async ({
   ];
 
   const resultsDirectory = path.join(
-    benchmarkBloomRoot(process.cwd()),
+    benchmarkBloomRoot(effectiveDir),
     "results",
     benchmarkCategory,
     appName,
@@ -606,7 +635,10 @@ export const measureLibSize = async ({
 
   // Prefer a dedicated EmptyWrapper that sets up only the minimal provider
   // context the lib needs, without loading any translation files.
-  const emptyWrapperPath = path.resolve("./scripts/EmptyWrapper.tsx");
+  const emptyWrapperPath = path.resolve(
+    effectiveDir,
+    "scripts/EmptyWrapper.tsx",
+  );
   const resolvedWrapperTemplate = fs.existsSync(emptyWrapperPath)
     ? (componentPath: string) => `
     import React from 'react';
@@ -639,6 +671,8 @@ export const measureLibSize = async ({
       false,
       resolvedWrapperTemplate,
       additionalPlugins,
+      effectiveDir,
+      skipViteConfig,
     );
 
     const minified = await buildComponentBundle(
@@ -647,6 +681,8 @@ export const measureLibSize = async ({
       true,
       resolvedWrapperTemplate,
       additionalPlugins,
+      effectiveDir,
+      skipViteConfig,
     );
 
     console.log(

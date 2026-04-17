@@ -1,11 +1,24 @@
 import React from "react";
-import { useLingui } from "@lingui/react";
+import { setupI18n } from "@lingui/core";
+import { I18nProvider, useLingui } from "@lingui/react";
 
-export default function EmptyComponent() {
+const i18n = setupI18n();
+i18n.load("en", {});
+i18n.activate("en");
+
+const TestComponent = () => {
   const { _, i18n } = useLingui();
 
   void _;
   void i18n.locale;
 
-  return <></>;
+  return null;
+};
+
+export default function EmptyComponent() {
+  return (
+    <I18nProvider i18n={i18n}>
+      <TestComponent />
+    </I18nProvider>
+  );
 }

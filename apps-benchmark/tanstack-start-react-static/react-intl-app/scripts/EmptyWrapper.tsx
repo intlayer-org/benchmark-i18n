@@ -1,5 +1,11 @@
 import React from "react";
-import { IntlProvider } from "react-intl";
+import { IntlProvider, useIntl } from "react-intl";
+
+const TestComponent = () => {
+  const intl = useIntl();
+  void intl.locale;
+  return null;
+};
 
 export default function EmptyWrapper({
   children,
@@ -8,6 +14,7 @@ export default function EmptyWrapper({
 }) {
   return (
     <IntlProvider locale="en" defaultLocale="en" messages={{}}>
+      <TestComponent />
       {children}
     </IntlProvider>
   );

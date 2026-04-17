@@ -1,5 +1,5 @@
 import React from "react";
-import { initializeGT, GTProvider } from "gt-tanstack-start";
+import { initializeGT, GTProvider, useTranslations } from "gt-tanstack-start";
 import gtConfig from "../gt.config.json";
 
 initializeGT({
@@ -8,6 +8,12 @@ initializeGT({
   loadTranslations: async () => ({}),
 });
 
+const TestComponent = () => {
+  const t = useTranslations();
+  void t;
+  return null;
+};
+
 export default function EmptyWrapper({
   children,
 }: {
@@ -15,6 +21,7 @@ export default function EmptyWrapper({
 }) {
   return (
     <GTProvider locale="en" translations={{}}>
+      <TestComponent />
       {children}
     </GTProvider>
   );

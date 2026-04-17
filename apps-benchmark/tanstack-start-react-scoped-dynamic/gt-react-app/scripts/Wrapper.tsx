@@ -10,9 +10,5 @@ initializeGT({
 });
 
 export default function Wrapper({ children }: { children: React.ReactNode }) {
-  return (
-    <GTProvider locale="en">
-      {children}
-    </GTProvider>
-  );
+  return <GTProvider locale="en">{children}</GTProvider>;
 }

@@ -1,12 +1,16 @@
 import React from "react";
-import { useIntlayer, useLocale } from "react-intlayer";
+import { IntlayerProvider, useIntlayer } from "react-intlayer";
+
+const TestComponent = () => {
+  const content = useIntlayer("route" as never);
+  void content;
+  return null;
+};
 
 export default function EmptyComponent() {
-  const content = useIntlayer("route" as never);
-  const { locale } = useLocale();
-
-  void content;
-  void locale;
-
-  return <></>;
+  return (
+    <IntlayerProvider locale="en">
+      <TestComponent />
+    </IntlayerProvider>
+  );
 }

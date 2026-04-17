@@ -7,18 +7,19 @@
 # Test info
 
 - Name: reactivity.test.ts >> Measure locale switch reactivity
-- Location: ../../../test-utils/src/reactivity-test.ts:394:3
+- Location: ../../../test-utils/src/reactivity-test.ts:317:3
 
 # Error details
 
 ```
-Error: browserType.launch: Executable doesn't exist at /var/folders/kq/wp486_dx4fq4dnglg5jss6qc0000gn/T/cursor-sandbox-cache/ba31b2f38810b00ab13601a36a16a421/playwright/chromium_headless_shell-1217/chrome-headless-shell-mac-x64/chrome-headless-shell
-╔════════════════════════════════════════════════════════════╗
-║ Looks like Playwright was just installed or updated.       ║
-║ Please run the following command to download new browsers: ║
-║                                                            ║
-║     npx playwright install                                 ║
-║                                                            ║
-║ <3 Playwright Team                                         ║
-╚════════════════════════════════════════════════════════════╝
+Error: page.evaluate: Error: E2E timeout: html[lang] did not change to 'fr'
+    at eval (eval at evaluate (:302:30), <anonymous>:30:12)
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - strong [ref=e4]: Something went wrong!
+  - button "Show Error" [ref=e5]
 ```

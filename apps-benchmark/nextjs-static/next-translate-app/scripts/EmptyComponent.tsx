@@ -1,16 +1,19 @@
 "use client";
 
 import React from "react";
-import { useParams } from "next/navigation";
+import I18nProvider from "next-translate/I18nProvider";
 import useTranslation from "next-translate/useTranslation";
 
-export default function EmptyComponent() {
+const TestComponent = () => {
   const { t } = useTranslation("common");
-  const params = useParams();
-  const locale = (params.lang as string) ?? "en";
-
   void t;
-  void locale;
+  return null;
+};
 
-  return <></>;
+export default function EmptyComponent() {
+  return (
+    <I18nProvider lang="en" namespaces={{}}>
+      <TestComponent />
+    </I18nProvider>
+  );
 }

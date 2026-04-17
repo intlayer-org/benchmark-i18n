@@ -1,12 +1,16 @@
 import React from "react";
-import { useLocale, useTranslations } from "gt-next";
+import { GTProvider, useTranslations } from "gt-next";
+
+const TestComponent = () => {
+  const t = useTranslations();
+  void t;
+  return null;
+};
 
 export default function EmptyComponent() {
-  const t = useTranslations();
-  const locale = useLocale();
-
-  void t;
-  void locale;
-
-  return <></>;
+  return (
+    <GTProvider>
+      <TestComponent />
+    </GTProvider>
+  );
 }

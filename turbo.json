@@ -23,8 +23,12 @@
       "dependsOn": ["build"],
       "outputs": ["../../results/**"]
     },
+    "test:lib-size": {
+      "dependsOn": ["build"],
+      "outputs": ["../../results/**"]
+    },
     "test": {
-      "dependsOn": ["test:pages", "test:rendering", "test:reactivity", "test:components"]
+      "dependsOn": ["test:pages", "test:rendering", "test:reactivity", "test:components", "test:lib-size"]
     },
     "dev": {
       "cache": false,

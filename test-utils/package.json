@@ -11,7 +11,8 @@
     "./browser-metrics": "./src/browser-metrics.ts",
     "./structure-consistency": "./src/structure-consistency.ts",
     "./structure-consistency-test": "./src/structure-consistency-test.ts",
-    "./repo-root": "./src/repo-root.ts"
+    "./repo-root": "./src/repo-root.ts",
+    "./lib-size-test": "./src/lib-size-test.ts"
   },
   "peerDependencies": {
     "@playwright/test": "^1.59.1"

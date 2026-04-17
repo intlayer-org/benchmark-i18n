@@ -10,10 +10,10 @@
     "extract": "bunx @lingui/cli extract",
     "lint": "eslint",
     "start": "next start",
-    "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity",
+    "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity && bun test:lib-size",
     "test:components": "bun scripts/measure-components.ts",
     "test:consistency": "playwright test structure-consistency.test.ts",
-    "test:lib-size": "bun scripts/measure-lib-size.ts",
+    "test:lib-size": "playwright test lib-size.test.ts",
     "test:pages": "playwright test pages.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:rendering": "playwright test rendering.test.ts"

@@ -1,10 +1,16 @@
 import React from "react";
-import { useIntl } from "react-intl";
+import { IntlProvider, useIntl } from "react-intl";
+
+const TestComponent = () => {
+  const intl = useIntl();
+  void intl.locale;
+  return null;
+};
 
 export default function EmptyComponent() {
-  const intl = useIntl();
-
-  void intl.locale;
-
-  return <></>;
+  return (
+    <IntlProvider locale="en" defaultLocale="en" messages={{}}>
+      <TestComponent />
+    </IntlProvider>
+  );
 }

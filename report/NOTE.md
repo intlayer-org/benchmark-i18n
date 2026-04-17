@@ -9,7 +9,6 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - These libraries use an anti-pattern through the `initializeGT()` function, blocking the bundle from tree-shaking cleanly.
 - For nextjs implementation, the library blocks static rendering of Next.js pages.
 
-
 **Lingo.dev**
 
 - Heavy dependency on the lingo.dev server to generate the translations. Even if they include a more generous free tier than General Translation, the risk of vendor lock-in is high.
@@ -17,6 +16,7 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - Their CLI is buggy and used to rewrite the config file each time I used it.
 - The compiler was missing almost 40% of the translated content. I had to rewrite all `.map` into flat component blocks to make it work.
 - I met reactivity issues with the library. On locale change I had to force rerendering of the provider to make it work.
+- On rebuild it used to randomly remove all generated translations without any reason.
 
 **next-translate**
 
@@ -27,8 +27,7 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - Even if that solution is >6 years old, the library is still actively maintained.
 - There is no website and no online documentation; they are only available on GitHub. I like finding great libraries and fixing problems in a clean way, without extra marketing layers.
 - All constants are transformed into functions, leading to an anti-pattern. Syntax such as `const t = useTranslation('xx')` + `<>{t('xx.xx')}</>` introduces unnecessary complexity and leads to JavaScript execution overhead.
-- The library blocks static rendering of Next.js pages. 
-
+- The library blocks static rendering of Next.js pages.
 
 **Tolgee**
 
@@ -39,7 +38,7 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - There is no website and no online documentation; they are only available on GitHub.
 - On tanstack start I also met reactivity issues with the library. On locale change I had to force the rerendering of the provider to make it work. I had to subcribe to the locale change event to make it work when loading the page in another locale.
 - For nextjs implementation, the library blocks static rendering of Next.js pages.
-- I also met issues with the DevTools provided by the library. It used to log errors in the server side console. 
+- I also met issues with the DevTools provided by the library. It used to log errors in the server side console.
 
 **next-intl** / **use-intl** / **next-i18next** / **react-i18next** / **next-international**
 

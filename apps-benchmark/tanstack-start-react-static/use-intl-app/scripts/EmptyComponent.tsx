@@ -1,12 +1,16 @@
 import React from "react";
-import { useLocale, useTranslations } from "use-intl";
+import { IntlProvider, useTranslations } from "use-intl";
+
+const TestComponent = () => {
+  const t = useTranslations();
+  void t;
+  return null;
+};
 
 export default function EmptyComponent() {
-  const t = useTranslations();
-  const locale = useLocale();
-
-  void t;
-  void locale;
-
-  return <></>;
+  return (
+    <IntlProvider locale="en" messages={{}} timeZone="UTC">
+      <TestComponent />
+    </IntlProvider>
+  );
 }

@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import {intlayer} from "vite-intlayer";
+import { intlayer } from "vite-intlayer";
 
 /**
  * Minimal Vite config used exclusively by scripts/measure-components.ts.
