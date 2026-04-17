@@ -305,7 +305,7 @@ const saveReactivityResults = (
 
 // ─── Test registration ────────────────────────────────────────────────────────
 
-export const registerReactivityTest = (config: ReactivityTestConfig): void => {
+export const registerReactivityTest = (test: any, expect: any, config: ReactivityTestConfig): void => {
   const {
     appName,
     benchmarkCategory,
@@ -314,7 +314,7 @@ export const registerReactivityTest = (config: ReactivityTestConfig): void => {
     toLocale = "fr",
   } = config;
 
-  test("Measure locale switch reactivity", async ({ page }) => {
+  test("Measure locale switch reactivity", async ({ page }: { page: Page }) => {
     test.slow();
 
     const activeLocale = test.info().project.name;

@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useMemo } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { I18nProvider } from "@lingui/react";
 import {
   HeadContent,
@@ -62,11 +62,13 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const renderStart =
-    typeof performance !== 'undefined' ? performance.now() : 0;
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
   useLayoutEffect(() => {
-    recordRenderTime('AppRoot', renderStart);
-  });
+    recordRenderTime("AppRoot", renderStart);
+  }, [renderStart]);
 
   useEffect(() => {
     recordHydrationDuration();

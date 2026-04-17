@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { I18nProviderClient } from "../locales/client";
 import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 
@@ -10,11 +10,13 @@ interface Props {
 }
 
 export default function AppProviders({ children, locale }: Props) {
-  const renderStart =
-    typeof performance !== "undefined" ? performance.now() : 0;
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
   useLayoutEffect(() => {
     recordRenderTime("AppRoot", renderStart);
-  });
+  }, [renderStart]);
 
   useEffect(() => {
     document.documentElement.lang = locale;

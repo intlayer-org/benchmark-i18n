@@ -1,17 +1,17 @@
  
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import { DEFAULT_PAGES, DEFAULT_LOCALES } from './pages-test';
 import { getStructuralBlueprint } from './structure-consistency';
 
 // The URL of the base-app reference (e.g., http://localhost:3000)
 
-export function registerStructureConsistencyTest(group: string): void {
+export function registerStructureConsistencyTest(test: any, expect: any, group: string): void {
   test.describe(`Cross-App Structural Consistency - ${group}`, () => {
     
     for (const pageConfig of DEFAULT_PAGES) {
       for (const locale of DEFAULT_LOCALES) {
         
-        test(`Match Reference App structure for [${locale}] - ${pageConfig.name}`, async ({ page }) => {
+        test(`Match Reference App structure for [${locale}] - ${pageConfig.name}`, async ({ page }: { page: Page }) => {
           const path = `${locale}${pageConfig.path === '/' ? '' : pageConfig.path}`;
           
           let baseBlueprint = "";

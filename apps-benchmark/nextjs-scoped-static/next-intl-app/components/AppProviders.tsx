@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 
@@ -11,11 +11,13 @@ interface Props {
 }
 
 export default function AppProviders({ children, locale, messages }: Props) {
-  const renderStart =
-    typeof performance !== "undefined" ? performance.now() : 0;
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
   useLayoutEffect(() => {
     recordRenderTime("AppRoot", renderStart);
-  });
+  }, [renderStart]);
 
   useEffect(() => {
     document.documentElement.lang = locale;

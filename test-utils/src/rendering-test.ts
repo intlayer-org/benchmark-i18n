@@ -307,7 +307,7 @@ const saveRenderingResults = (
  * Call this at the top level of your `rendering.test.ts` file.
  * The Playwright project name is used as the locale label in output files.
  */
-export const registerRenderingTest = (config: RenderingTestConfig): void => {
+export const registerRenderingTest = (test: any, expect: any, config: RenderingTestConfig): void => {
   const {
     appName,
     benchmarkCategory,
@@ -315,7 +315,7 @@ export const registerRenderingTest = (config: RenderingTestConfig): void => {
     locale = "fr",
   } = config;
 
-  test("Measure initial page rendering performance", async ({ page }) => {
+  test("Measure initial page rendering performance", async ({ page }: { page: Page }) => {
     test.slow(); // multiple cold-start navigations can take time
 
     const activeLocale = test.info().project.name;

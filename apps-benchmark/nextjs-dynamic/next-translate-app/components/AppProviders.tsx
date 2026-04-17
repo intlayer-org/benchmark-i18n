@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 
 export default function AppProviders({
@@ -10,11 +10,13 @@ export default function AppProviders({
   children: React.ReactNode;
   locale: string;
 }) {
-  const renderStart =
-    typeof performance !== "undefined" ? performance.now() : 0;
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
   useLayoutEffect(() => {
     recordRenderTime("AppRoot", renderStart);
-  });
+  }, [renderStart]);
 
   useEffect(() => {
     document.documentElement.lang = locale;

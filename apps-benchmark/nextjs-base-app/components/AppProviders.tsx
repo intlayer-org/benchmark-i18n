@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import {
   recordHydrationDuration,
@@ -17,11 +17,13 @@ export default function AppProviders({
 
   // Keep html[lang] in sync with the active locale so the reactivity test can
   // observe it via MutationObserver (mirrors the TanStack RootDocument behavior).
-  const renderStart =
-    typeof performance !== "undefined" ? performance.now() : 0;
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
   useLayoutEffect(() => {
     recordRenderTime("AppRoot", renderStart);
-  });
+  }, [renderStart]);
 
   useEffect(() => {
     document.documentElement.lang = locale;

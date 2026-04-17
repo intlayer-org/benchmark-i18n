@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo } from "react";
+import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { I18nProvider } from "@lingui/react";
 import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 import { initLingui } from "../i18n/lingui";
@@ -19,11 +19,13 @@ export default function AppProviders({
     [locale, messages],
   );
 
-  const renderStart =
-    typeof performance !== "undefined" ? performance.now() : 0;
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
   useLayoutEffect(() => {
     recordRenderTime("AppRoot", renderStart);
-  });
+  }, [renderStart]);
 
   useEffect(() => {
     document.documentElement.lang = locale;

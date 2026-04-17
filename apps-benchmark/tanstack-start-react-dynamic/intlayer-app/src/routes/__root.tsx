@@ -1,5 +1,5 @@
 import { defaultLocale, getIntlayer } from "intlayer";
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   HeadContent,
   Link,
@@ -64,11 +64,13 @@ export const Route = createRootRoute({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const renderStart =
-    typeof performance !== 'undefined' ? performance.now() : 0;
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
   useLayoutEffect(() => {
-    recordRenderTime('AppRoot', renderStart);
-  });
+    recordRenderTime("AppRoot", renderStart);
+  }, [renderStart]);
 
   useEffect(() => {
     recordHydrationDuration();

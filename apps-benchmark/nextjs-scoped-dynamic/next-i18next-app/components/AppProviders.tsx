@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { I18nextProvider } from "react-i18next";
 import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
@@ -10,11 +10,13 @@ export default function AppProviders({ children }: { children: React.ReactNode }
   const params = useParams();
   const locale = (params.locale as string) ?? "en";
 
-  const renderStart =
-    typeof performance !== "undefined" ? performance.now() : 0;
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
   useLayoutEffect(() => {
     recordRenderTime("AppRoot", renderStart);
-  });
+  }, [renderStart]);
 
   useEffect(() => {
     let cancelled = false;

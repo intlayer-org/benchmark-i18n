@@ -526,7 +526,7 @@ const saveBundleResults = (
 
 // ─── Test registration ────────────────────────────────────────────────────────
 
-export const registerBundleTest = (config: BundleTestConfig): void => {
+export const registerBundleTest = (test: any, expect: any, config: BundleTestConfig): void => {
   const {
     appName,
     benchmarkCategory,
@@ -538,6 +538,9 @@ export const registerBundleTest = (config: BundleTestConfig): void => {
   test("Bundle size & content leakage analysis", async ({
     browser,
     baseURL,
+  }: {
+    browser: Browser;
+    baseURL: string | undefined;
   }) => {
     const activeLocale = test.info().project.name;
     test.slow();

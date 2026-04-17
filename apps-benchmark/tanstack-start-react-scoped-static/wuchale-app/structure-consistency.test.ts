@@ -1,3 +1,4 @@
+import { test, expect } from "@playwright/test";
 import { registerStructureConsistencyTest } from "test-utils/structure-consistency-test";
 
-registerStructureConsistencyTest("tanstack-start-react-scoped");
+registerStructureConsistencyTest(test, expect, "tanstack-start-react-scoped");
