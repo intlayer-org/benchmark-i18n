@@ -1,12 +1,9 @@
 "use client";
 
-import { Profiler, useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { IntlayerClientProvider } from "next-intlayer";
 import type { LocalesValues } from "intlayer";
-import {
-  onRenderCallback,
-  recordHydrationDuration,
-} from "test-utils/browser-metrics";
+import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 
 export default function AppProviders({
   children,
@@ -15,6 +12,12 @@ export default function AppProviders({
   children: React.ReactNode;
   locale?: LocalesValues;
 }) {
+  const renderStart =
+    typeof performance !== "undefined" ? performance.now() : 0;
+  useLayoutEffect(() => {
+    recordRenderTime("AppRoot", renderStart);
+  });
+
   useEffect(() => {
     if (locale) document.documentElement.lang = locale;
   }, [locale]);
@@ -26,10 +29,8 @@ export default function AppProviders({
   }, []);
 
   return (
-    <Profiler id="AppRoot" onRender={onRenderCallback}>
       <IntlayerClientProvider locale={locale}>
         {children}
       </IntlayerClientProvider>
-    </Profiler>
   );
 }

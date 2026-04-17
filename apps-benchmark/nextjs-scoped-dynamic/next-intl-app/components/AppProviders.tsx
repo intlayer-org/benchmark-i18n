@@ -1,8 +1,8 @@
 "use client";
 
-import { Profiler, useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { NextIntlClientProvider } from "next-intl";
-import { onRenderCallback, recordHydrationDuration } from "test-utils/browser-metrics";
+import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 
 interface Props {
   children: React.ReactNode;
@@ -11,6 +11,12 @@ interface Props {
 }
 
 export default function AppProviders({ children, locale, messages }: Props) {
+  const renderStart =
+    typeof performance !== "undefined" ? performance.now() : 0;
+  useLayoutEffect(() => {
+    recordRenderTime("AppRoot", renderStart);
+  });
+
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);
@@ -22,10 +28,8 @@ export default function AppProviders({ children, locale, messages }: Props) {
   }, []);
 
   return (
-    <Profiler id="AppRoot" onRender={onRenderCallback}>
       <NextIntlClientProvider locale={locale} messages={messages} timeZone="UTC">
         {children}
       </NextIntlClientProvider>
-    </Profiler>
   );
 }

@@ -65,6 +65,27 @@ export function onRenderCallback(
 }
 
 /**
+ * Records a render duration sample into window.__RENDER_METRICS__[id].
+ *
+ * React's <Profiler> onRender is a no-op in production builds. Use this
+ * function instead by capturing performance.now() at the top of the component
+ * body and calling recordRenderTime inside useLayoutEffect:
+ *
+ *   function AppProviders({ children }) {
+ *     const renderStart = typeof performance !== "undefined" ? performance.now() : 0;
+ *     useLayoutEffect(() => { recordRenderTime("AppRoot", renderStart); });
+ *     return <Provider>{children}</Provider>;
+ *   }
+ */
+export function recordRenderTime(id: string, startTime: number): void {
+  if (typeof window === "undefined") return;
+  const renderTime = performance.now() - startTime;
+  window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+  window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+  window.__RENDER_METRICS__[id].push(renderTime);
+}
+
+/**
  * Global type augmentation for the window object to include benchmark-specific properties.
  */
 declare global {

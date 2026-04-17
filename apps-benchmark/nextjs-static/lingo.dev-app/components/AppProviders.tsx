@@ -1,11 +1,8 @@
 "use client";
 
-import { Profiler, useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useParams } from "next/navigation";
-import {
-  onRenderCallback,
-  recordHydrationDuration,
-} from "test-utils/browser-metrics";
+import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 
 export default function AppProviders({
   children,
@@ -17,6 +14,12 @@ export default function AppProviders({
 
   // Keep html[lang] in sync with the active locale so the reactivity test can
   // observe it via MutationObserver (mirrors the TanStack RootDocument behavior).
+  const renderStart =
+    typeof performance !== "undefined" ? performance.now() : 0;
+  useLayoutEffect(() => {
+    recordRenderTime("AppRoot", renderStart);
+  });
+
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);
@@ -27,9 +30,5 @@ export default function AppProviders({
     recordHydrationDuration();
   }, []);
 
-  return (
-    <Profiler id="AppRoot" onRender={onRenderCallback}>
-      {children}
-    </Profiler>
-  );
+  return <>{children}</>;
 }

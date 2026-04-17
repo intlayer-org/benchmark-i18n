@@ -1,14 +1,20 @@
 "use client";
 
-import { Profiler, useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useParams } from "next/navigation";
 import { I18nextProvider } from "react-i18next";
-import { onRenderCallback, recordHydrationDuration } from "test-utils/browser-metrics";
+import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 import i18n, { namespaces, preloadNamespaces } from "../i18n/i18n";
 
 export default function AppProviders({ children }: { children: React.ReactNode }) {
   const params = useParams();
   const locale = (params.locale as string) ?? "en";
+
+  const renderStart =
+    typeof performance !== "undefined" ? performance.now() : 0;
+  useLayoutEffect(() => {
+    recordRenderTime("AppRoot", renderStart);
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -34,10 +40,8 @@ export default function AppProviders({ children }: { children: React.ReactNode }
   }, []);
 
   return (
-    <Profiler id="AppRoot" onRender={onRenderCallback}>
       <I18nextProvider i18n={i18n}>
         {children}
       </I18nextProvider>
-    </Profiler>
   );
 }

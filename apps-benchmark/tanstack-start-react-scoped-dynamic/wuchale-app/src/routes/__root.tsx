@@ -1,4 +1,4 @@
-import { useEffect, Profiler, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from 'react';
 import {
   HeadContent,
   Link,
@@ -10,13 +10,9 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import appCss from "../styles.css?url";
 
-import {
-  recordHydrationDuration,
-  onRenderCallback as onRender,
-} from "test-utils/browser-metrics";
+import { recordHydrationDuration, recordRenderTime } from 'test-utils/browser-metrics';
 import { loadLocale } from "wuchale/load-utils";
 
-// onRender now imported from test-utils
 
 const defaultLocale = "en";
 
@@ -48,7 +44,7 @@ export const Route = createRootRoute({
   notFoundComponent: () => {
     return (
       <div className="flex min-h-[60vh] items-center justify-center bg-muted/30">
-        <div className="text-center">
+      <div className="text-center">
           <h1 className="mb-4 text-4xl font-bold">404</h1>
           <p className="mb-4 text-xl text-muted-foreground">
             Oops! Page not found
@@ -60,13 +56,19 @@ export const Route = createRootRoute({
           >
             Return to Home
           </Link>
-        </div>
+      </div>
       </div>
     );
   },
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
+  const renderStart =
+    typeof performance !== 'undefined' ? performance.now() : 0;
+  useLayoutEffect(() => {
+    recordRenderTime('AppRoot', renderStart);
+  });
+
   useEffect(() => {
     recordHydrationDuration();
   }, []);
@@ -95,15 +97,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang={locale} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-        <HeadContent />
+      <HeadContent />
       </head>
       <body className="antialiased [overflow-wrap:anywhere]" key={renderTick}>
-        <Profiler id="AppRoot" onRender={onRender}>
           <Header />
           {children}
           <Footer />
-        </Profiler>
-        <Scripts />
+      <Scripts />
       </body>
     </html>
   );

@@ -1,8 +1,8 @@
 "use client";
 
-import { Profiler, useEffect, useMemo } from "react";
+import { useEffect, useLayoutEffect, useMemo } from "react";
 import { I18nProvider } from "@lingui/react";
-import { onRenderCallback, recordHydrationDuration } from "test-utils/browser-metrics";
+import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 import { initLingui } from "../i18n/lingui";
 
 export default function AppProviders({
@@ -19,6 +19,12 @@ export default function AppProviders({
     [locale, messages],
   );
 
+  const renderStart =
+    typeof performance !== "undefined" ? performance.now() : 0;
+  useLayoutEffect(() => {
+    recordRenderTime("AppRoot", renderStart);
+  });
+
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);
@@ -28,10 +34,8 @@ export default function AppProviders({
   }, []);
 
   return (
-    <Profiler id="AppRoot" onRender={onRenderCallback}>
       <I18nProvider i18n={i18n}>
         {children}
       </I18nProvider>
-    </Profiler>
   );
 }

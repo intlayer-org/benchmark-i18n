@@ -1,12 +1,9 @@
 "use client";
 
-import { Profiler, useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { TolgeeNextProvider } from "@/tolgee/client";
 import type { TolgeeStaticData, CachePublicRecord } from "@tolgee/react";
-import {
-  onRenderCallback,
-  recordHydrationDuration,
-} from "test-utils/browser-metrics";
+import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 
 export default function AppProviders({
   children,
@@ -17,6 +14,12 @@ export default function AppProviders({
   locale: string;
   staticData: TolgeeStaticData | CachePublicRecord[];
 }) {
+  const renderStart =
+    typeof performance !== "undefined" ? performance.now() : 0;
+  useLayoutEffect(() => {
+    recordRenderTime("AppRoot", renderStart);
+  });
+
   useEffect(() => {
     document.documentElement.lang = locale;
   }, [locale]);
@@ -28,10 +31,8 @@ export default function AppProviders({
   }, []);
 
   return (
-    <Profiler id="AppRoot" onRender={onRenderCallback}>
       <TolgeeNextProvider language={locale} staticData={staticData}>
         {children}
       </TolgeeNextProvider>
-    </Profiler>
   );
 }

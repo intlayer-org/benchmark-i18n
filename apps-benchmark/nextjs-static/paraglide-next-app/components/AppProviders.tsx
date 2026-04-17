@@ -1,13 +1,19 @@
 "use client";
 
-import { Profiler, useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useParams } from "next/navigation";
-import { onRenderCallback, recordHydrationDuration } from "test-utils/browser-metrics";
+import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 import { setLocale } from "../paraglide/runtime";
 
 export default function AppProviders({ children }: { children: React.ReactNode }) {
   const params = useParams();
   const locale = (params.locale as string) ?? "en";
+
+  const renderStart =
+    typeof performance !== "undefined" ? performance.now() : 0;
+  useLayoutEffect(() => {
+    recordRenderTime("AppRoot", renderStart);
+  });
 
   useEffect(() => {
     setLocale(locale as any);
@@ -20,9 +26,5 @@ export default function AppProviders({ children }: { children: React.ReactNode }
     recordHydrationDuration();
   }, []);
 
-  return (
-    <Profiler id="AppRoot" onRender={onRenderCallback}>
-      {children}
-    </Profiler>
-  );
+  return <>{children}</>;
 }
