@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link, { localizeHref } from "./Link";
 import { useParams, usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
@@ -12,29 +12,35 @@ export default function Header() {
   usePerformanceMeasure("Header");
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
   const params = useParams();
-  const currentLocale = (params.locale as string) ?? "en";
   const pathname = usePathname();
+  const locale = (params.locale as string) ?? "en";
 
   const mockPages = [
-    { href: `/${currentLocale}/products`, label: "Products" },
-    { href: `/${currentLocale}/pricing`, label: "Pricing" },
-    { href: `/${currentLocale}/team`, label: "Team" },
-    { href: `/${currentLocale}/blog`, label: "Blog" },
-    { href: `/${currentLocale}/careers`, label: "Careers" },
-    { href: `/${currentLocale}/faq`, label: "FAQ" },
-    { href: `/${currentLocale}/contact`, label: "Contact" },
-    { href: `/${currentLocale}/settings`, label: "Settings" },
+    { href: `/products`, label: "Products" },
+    { href: `/pricing`, label: "Pricing" },
+    { href: `/team`, label: "Team" },
+    { href: `/blog`, label: "Blog" },
+    { href: `/careers`, label: "Careers" },
+    { href: `/faq`, label: "FAQ" },
+    { href: `/contact`, label: "Contact" },
+    { href: `/settings`, label: "Settings" },
   ];
 
-  const isExactActive = (href: string) => pathname === href;
-  const isActive = (href: string) => pathname.startsWith(href);
+  const isExactActive = (href: string) => pathname === localizeHref(href, locale);
+  const isActive = (href: string) => {
+    const localized = localizeHref(href, locale);
+    return (
+      pathname.startsWith(localized) &&
+      (href !== "/" || pathname === localized)
+    );
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">
       <nav className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <Link
-            href={`/${currentLocale}`}
+            href="/"
             className="text-lg font-bold tracking-tight text-primary no-underline"
           >
             i18n Bench
@@ -42,14 +48,14 @@ export default function Header() {
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link
-              href={`/${currentLocale}`}
-              className={`nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`}
+              href="/"
+              className={`nav-link${isExactActive("/") ? " is-active" : ""}`}
             >
               Home
             </Link>
             <Link
-              href={`/${currentLocale}/about`}
-              className={`nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`}
+              href="/about"
+              className={`nav-link${isActive("/about") ? " is-active" : ""}`}
             >
               Methodology
             </Link>

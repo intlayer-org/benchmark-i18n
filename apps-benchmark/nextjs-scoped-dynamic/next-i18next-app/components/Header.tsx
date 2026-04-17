@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "./Link";
+import Link, { localizeHref } from "./Link";
 import { useParams, usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
@@ -15,8 +15,8 @@ export default function Header() {
   usePerformanceMeasure("Header");
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
   const params = useParams();
-  const currentLocale = (params.locale as string) ?? "en";
   const pathname = usePathname();
+  const locale = (params.locale as string) ?? "en";
 
   const mockPages = [
     { href: "/products", label: t("header.products") },
@@ -29,8 +29,14 @@ export default function Header() {
     { href: "/settings", label: t("header.settings") },
   ];
 
-  const isExactActive = (href: string) => pathname === href;
-  const isActive = (href: string) => pathname.startsWith(href);
+  const isExactActive = (href: string) => pathname === localizeHref(href, locale);
+  const isActive = (href: string) => {
+    const localized = localizeHref(href, locale);
+    return (
+      pathname.startsWith(localized) &&
+      (href !== "/" || pathname === localized)
+    );
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">
@@ -46,13 +52,13 @@ export default function Header() {
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link
               href="/"
-              className={`nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`}
+              className={`nav-link${isExactActive("/") ? " is-active" : ""}`}
             >
               {t("header.home")}
             </Link>
             <Link
               href="/about"
-              className={`nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`}
+              className={`nav-link${isActive("/about") ? " is-active" : ""}`}
             >
               {t("header.methodology")}
             </Link>

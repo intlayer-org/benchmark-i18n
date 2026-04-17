@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "i18n Benchmark",
+    "description": "Открытый бенчмарк для измерения реального влияния библиотек интернационализации."
+  },
   "productsGrid": {
     "benchmarkDashboard": "Дашборд бенчмарков",
     "interactiveChartsAndTables": "Интерактивные графики и таблицы, сравнивающие библиотеки i18n по размеру бандла, времени рендеринга и стоимости гидратации.",
@@ -25,6 +29,7 @@
     "faqList.yesWeUseThe": "Да. Мы используем U-критерий Манна-Уитни с уровнем значимости 0,05 для сравнения распределений. Мы также сообщаем доверительные интервалы и размеры эффекта."
   },
   "header": {
+    "brandShort": "i18n Bench",
     "home": "Главная",
     "methodology": "Методология",
     "mockPages": "Тестовые страницы",
@@ -205,6 +210,7 @@
     "frequentlyAskedQuestions": "Frequently Asked Questions"
   },
   "footer": {
+    "contactEmail": "contact@intlayer.org",
     "resources": "Ресурсы",
     "contact": "Контакт",
     "github": "GitHub",
@@ -572,8 +578,11 @@
   },
   "resultsTable": {
     "bundleSize": "Размер бандла",
+    "lazyBuiltIn": "Встроено",
     "lazyLoading": "Ленивая загрузка",
-    "library": "Library",
+    "lazyManual": "Вручную",
+    "lazyYes": "Да",
+    "library": "Библиотека",
     "lookupTime": "Время поиска",
     "sampleResults": "Примеры результатов"
   },
@@ -629,6 +638,7 @@
   },
   "hero": {
     "aTestApplicationDesignedTo": "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
+    "title": "i18n Benchmark",
     "viewResults": "Посмотреть результаты"
   }
 }

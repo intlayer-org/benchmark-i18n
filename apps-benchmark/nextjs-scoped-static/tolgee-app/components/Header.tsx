@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "./Link";
-import { usePathname } from "next/navigation";
+import Link, { localizeHref } from "./Link";
+import { usePathname, useParams } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { T, useTranslate } from "@/i18n/tolgee";
@@ -15,6 +15,8 @@ export default function Header() {
   usePerformanceMeasure("Header");
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
   const pathname = usePathname();
+  const params = useParams();
+  const locale = (params.locale as string) ?? "en";
 
   const mockPages = [
     { href: "/products", label: t("header.products", "Products") },
@@ -27,8 +29,14 @@ export default function Header() {
     { href: "/settings", label: t("header.settings", "Settings") },
   ];
 
-  const isExactActive = (href: string) => pathname === href;
-  const isActive = (href: string) => pathname.startsWith(href) && (href !== "/" || pathname === "/");
+  const isExactActive = (href: string) => pathname === localizeHref(href, locale);
+  const isActive = (href: string) => {
+    const localized = localizeHref(href, locale);
+    return (
+      pathname.startsWith(localized) &&
+      (href !== "/" || pathname === localized)
+    );
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">

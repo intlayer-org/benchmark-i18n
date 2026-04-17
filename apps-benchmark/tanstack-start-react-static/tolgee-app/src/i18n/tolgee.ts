@@ -1,4 +1,4 @@
-import { Tolgee, DevTools, FormatSimple } from "@tolgee/web";
+import { Tolgee, FormatSimple } from "@tolgee/web";
 import en from "./locales/en.json";
 import de from "./locales/de.json";
 import es from "./locales/es.json";
@@ -11,8 +11,6 @@ import ru from "./locales/ru.json";
 import zh from "./locales/zh.json";
 
 export const tolgee = Tolgee()
-  // Enables in-context editing (ALT + Click) in development
-  .use(DevTools())
   // Formatter for passing variables into translations
   .use(FormatSimple())
   .init({

@@ -1,12 +1,10 @@
-import { Tolgee, DevTools, FormatSimple } from "@tolgee/web";
+import { Tolgee, FormatSimple } from "@tolgee/web";
 import {
   useTranslate as useTolgeeTranslate,
   T as TolgeeT,
 } from "@tolgee/react";
 
 export const tolgee = Tolgee()
-  // Enables in-context editing (ALT + Click) in development
-  .use(DevTools())
   // Formatter for passing variables into translations
   .use(FormatSimple())
   .init({

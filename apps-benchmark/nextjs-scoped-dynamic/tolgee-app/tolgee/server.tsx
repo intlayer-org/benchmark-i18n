@@ -1,6 +1,8 @@
+// tolgee/server.tsx
 import { createServerInstance } from '@tolgee/react/server';
+import { TolgeeBase, ALL_LOCALES } from './shared';
 import { getLanguage } from './language';
-import { TolgeeBase } from './shared';
+import { getMessages } from '@/i18n/getMessages'; // <-- IMPORT ONLY HERE
 
 export const { getTolgee, getTranslate, T } = createServerInstance({
   getLocale: getLanguage,
@@ -10,6 +12,9 @@ export const { getTolgee, getTranslate, T } = createServerInstance({
         fullKeyEncode: true,
       },
       language,
-    });
+      staticData: Object.fromEntries(
+        ALL_LOCALES.map((locale) => [locale, () => getMessages(locale as any)])
+      ),
+    })
   },
 });

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link, { localizeHref } from "./Link";
 import { useParams, usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
@@ -14,29 +14,35 @@ export default function Header() {
   usePerformanceMeasure("Header");
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
   const params = useParams();
-  const currentLocale = (params.locale as string) ?? "en";
   const pathname = usePathname();
+  const locale = (params.locale as string) ?? "en";
 
   const mockPages = [
-    { href: `/${currentLocale}/products`, label: t("header.products") },
-    { href: `/${currentLocale}/pricing`, label: t("header.pricing") },
-    { href: `/${currentLocale}/team`, label: t("header.team") },
-    { href: `/${currentLocale}/blog`, label: t("header.blog") },
-    { href: `/${currentLocale}/careers`, label: t("header.careers") },
-    { href: `/${currentLocale}/faq`, label: t("header.faq") },
-    { href: `/${currentLocale}/contact`, label: t("footer.contact") },
-    { href: `/${currentLocale}/settings`, label: t("header.settings") },
+    { href: `/products`, label: t("header.products") },
+    { href: `/pricing`, label: t("header.pricing") },
+    { href: `/team`, label: t("header.team") },
+    { href: `/blog`, label: t("header.blog") },
+    { href: `/careers`, label: t("header.careers") },
+    { href: `/faq`, label: t("header.faq") },
+    { href: `/contact`, label: t("footer.contact") },
+    { href: `/settings`, label: t("header.settings") },
   ];
 
-  const isExactActive = (href: string) => pathname === href;
-  const isActive = (href: string) => pathname.startsWith(href);
+  const isExactActive = (href: string) => pathname === localizeHref(href, locale);
+  const isActive = (href: string) => {
+    const localized = localizeHref(href, locale);
+    return (
+      pathname.startsWith(localized) &&
+      (href !== "/" || pathname === localized)
+    );
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">
       <nav className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <Link
-            href={`/${currentLocale}`}
+            href="/"
             className="text-lg font-bold tracking-tight text-primary no-underline"
           >
             i18n Bench
@@ -44,14 +50,14 @@ export default function Header() {
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link
-              href={`/${currentLocale}`}
-              className={`nav-link${isExactActive(`/${currentLocale}`) ? " is-active" : ""}`}
+              href="/"
+              className={`nav-link${isExactActive("/") ? " is-active" : ""}`}
             >
               {t("header.home")}
             </Link>
             <Link
-              href={`/${currentLocale}/about`}
-              className={`nav-link${isActive(`/${currentLocale}/about`) ? " is-active" : ""}`}
+              href="/about"
+              className={`nav-link${isActive("/about") ? " is-active" : ""}`}
             >
               {t("footer.methodology")}
             </Link>

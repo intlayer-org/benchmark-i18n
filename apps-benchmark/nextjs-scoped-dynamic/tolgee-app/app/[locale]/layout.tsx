@@ -3,6 +3,7 @@ import AppProviders from "@/components/AppProviders";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { locales, defaultLocale, type Locale } from "../../i18n/config";
+import { getMessages } from "@/i18n/getMessages";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -20,12 +21,9 @@ export default async function LocaleLayout({
     ? (rawLocale as Locale)
     : defaultLocale;
 
-  const tolgee = TolgeeBase().init({
-    observerOptions: { fullKeyEncode: true },
-    language: locale,
-  });
-  const staticData = await tolgee.loadRequired();
-
+    const messages = await getMessages(locale);
+    const staticData = { [locale]: messages };
+    
   return (
     <AppProviders locale={locale} staticData={staticData}>
       <Header />

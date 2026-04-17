@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "i18n Benchmark",
+    "description": "Un benchmark de código abierto para medir el impacto real de las bibliotecas de internacionalización."
+  },
   "productsGrid": {
     "benchmarkDashboard": "Tablero de benchmarks",
     "interactiveChartsAndTables": "Gráficos y tablas interactivos que comparan las bibliotecas i18n por tamaño de paquete, tiempo de renderizado y costo de hidratación.",
@@ -25,6 +29,7 @@
     "faqList.yesWeUseThe": "Sí. Utilizamos la prueba U de Mann-Whitney con un nivel de significación de 0,05 para comparar distribuciones. También reportamos intervalos de confianza y tamaños del efecto."
   },
   "header": {
+    "brandShort": "i18n Bench",
     "home": "Inicio",
     "methodology": "Metodología",
     "mockPages": "Páginas de prueba",
@@ -205,6 +210,7 @@
     "frequentlyAskedQuestions": "Frequently Asked Questions"
   },
   "footer": {
+    "contactEmail": "contact@intlayer.org",
     "resources": "Recursos",
     "contact": "Contacto",
     "github": "GitHub",
@@ -572,8 +578,11 @@
   },
   "resultsTable": {
     "bundleSize": "Tamaño del paquete",
+    "lazyBuiltIn": "Integrado",
     "lazyLoading": "Carga diferida",
-    "library": "Library",
+    "lazyManual": "Manual",
+    "lazyYes": "Sí",
+    "library": "Biblioteca",
     "lookupTime": "Tiempo de búsqueda",
     "sampleResults": "Resultados de muestra"
   },
@@ -629,6 +638,7 @@
   },
   "hero": {
     "aTestApplicationDesignedTo": "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga y la reactividad de renderizado.",
+    "title": "i18n Benchmark",
     "viewResults": "Ver resultados"
   }
 }

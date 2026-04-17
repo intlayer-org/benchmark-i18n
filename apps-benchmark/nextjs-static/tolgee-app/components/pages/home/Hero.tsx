@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section className="mb-16 text-center">
       <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground">
-        i18n Benchmark
+        <T keyName="hero.title" defaultValue="i18n Benchmark" />
       </h1>
       <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
         <T

@@ -1,27 +1,34 @@
 "use client";
 
-import { T } from "@/i18n/tolgee";
+import { T, useTranslate } from "@/i18n/tolgee";
 
 export default function ResultsTable() {
+  const { t } = useTranslate();
+
   const results = [
     {
       lib: "react-i18next",
       size: "42.3 kB",
       time: "0.12ms",
-      lazy: "Yes",
+      lazy: t("resultsTable.lazyYes", "Yes"),
     },
     {
       lib: "react-intl",
       size: "38.1 kB",
       time: "0.15ms",
-      lazy: "Manual",
+      lazy: t("resultsTable.lazyManual", "Manual"),
     },
-    { lib: "lingui", size: "12.8 kB", time: "0.08ms", lazy: "Yes" },
+    {
+      lib: "lingui",
+      size: "12.8 kB",
+      time: "0.08ms",
+      lazy: t("resultsTable.lazyYes", "Yes"),
+    },
     {
       lib: "typesafe-i18n",
       size: "5.2 kB",
       time: "0.05ms",
-      lazy: "Built-in",
+      lazy: t("resultsTable.lazyBuiltIn", "Built-in"),
     },
   ];
 

@@ -1,4 +1,4 @@
-import { Tolgee, DevTools, FormatSimple } from "@tolgee/web";
+import { Tolgee, FormatSimple } from "@tolgee/web";
 import { getMessages } from "./getMessages";
 import { locales } from "./config";
 import {
@@ -16,8 +16,6 @@ export const rootLocales = locales.reduce(
 );
 
 export const tolgee = Tolgee()
-  // Enables in-context editing (ALT + Click) in development
-  .use(DevTools())
   // Formatter for passing variables into translations
   .use(FormatSimple())
   .init({

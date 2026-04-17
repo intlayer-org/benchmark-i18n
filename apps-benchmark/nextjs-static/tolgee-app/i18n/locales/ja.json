@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "i18n Benchmark",
+    "description": "国際化ライブラリの実世界への影響を測定するオープンソースベンチマーク。"
+  },
   "productsGrid": {
     "benchmarkDashboard": "ベンチマークダッシュボード",
     "interactiveChartsAndTables": "バンドルサイズ、レンダリング時間、ハイドレーションコストにわたってi18nライブラリを比較するインタラクティブなチャートと表。",
@@ -25,6 +29,7 @@
     "faqList.yesWeUseThe": "はい。分布を比較するために、有意水準0.05のマン・ホイットニーのU検定を使用します。また、信頼区間と効果量も報告します。"
   },
   "header": {
+    "brandShort": "i18n Bench",
     "home": "ホーム",
     "methodology": "メソッド",
     "mockPages": "テストページ",
@@ -205,6 +210,7 @@
     "frequentlyAskedQuestions": "Frequently Asked Questions"
   },
   "footer": {
+    "contactEmail": "contact@intlayer.org",
     "resources": "リソース",
     "contact": "お問い合わせ",
     "github": "GitHub",
@@ -572,8 +578,11 @@
   },
   "resultsTable": {
     "bundleSize": "バンドルサイズ",
+    "lazyBuiltIn": "組み込み",
     "lazyLoading": "遅延読み込み",
-    "library": "Library",
+    "lazyManual": "手動",
+    "lazyYes": "はい",
+    "library": "ライブラリ",
     "lookupTime": "検索時間",
     "sampleResults": "サンプル結果"
   },
@@ -629,6 +638,7 @@
   },
   "hero": {
     "aTestApplicationDesignedTo": "国際化ライブラリがバンドルサイズ、読み込みパフォーマンス、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーション。",
+    "title": "i18n Benchmark",
     "viewResults": "結果を表示"
   }
 }

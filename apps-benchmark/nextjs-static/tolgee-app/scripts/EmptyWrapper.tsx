@@ -9,5 +9,5 @@ export default function EmptyWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  return <TolgeeProvider tolgee={tolgee}>{children}</TolgeeProvider>;
+  return <TolgeeProvider tolgee={tolgee} options={{ useSuspense: false }}>{children}</TolgeeProvider>;
 }

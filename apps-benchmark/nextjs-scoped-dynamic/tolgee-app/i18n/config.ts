@@ -18,7 +18,7 @@ export const getLocaleName = (locale: string): string => {
     const displayNames = new Intl.DisplayNames([locale], { type: "language" });
     const name = displayNames.of(locale);
     return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
-  } catch (e) {
+  } catch {
     return locale.toUpperCase();
   }
 };

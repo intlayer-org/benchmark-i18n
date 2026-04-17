@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "i18n Benchmark",
+    "description": "An open-source benchmark for measuring the real-world impact of internationalization libraries."
+  },
   "productsGrid": {
     "benchmarkDashboard": "Benchmark Dashboard",
     "interactiveChartsAndTables": "Interactive charts and tables comparing i18n libraries across bundle size, render time, and hydration cost.",
@@ -25,6 +29,7 @@
     "faqList.yesWeUseThe": "Yes. We use the Mann-Whitney U test with a significance level of 0.05 to compare distributions. We also report confidence intervals and effect sizes."
   },
   "header": {
+    "brandShort": "i18n Bench",
     "home": "Home",
     "methodology": "Methodology",
     "mockPages": "Mock Pages",
@@ -205,6 +210,7 @@
     "frequentlyAskedQuestions": "Frequently Asked Questions"
   },
   "footer": {
+    "contactEmail": "contact@intlayer.org",
     "resources": "Resources",
     "contact": "Contact",
     "github": "GitHub",
@@ -567,7 +573,10 @@
   },
   "resultsTable": {
     "bundleSize": "Bundle Size",
+    "lazyBuiltIn": "Built-in",
     "lazyLoading": "Lazy Loading",
+    "lazyManual": "Manual",
+    "lazyYes": "Yes",
     "library": "Library",
     "lookupTime": "Lookup Time",
     "sampleResults": "Sample Results"
@@ -624,6 +633,7 @@
   },
   "hero": {
     "aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+    "title": "i18n Benchmark",
     "viewResults": "View Results"
   }
 }

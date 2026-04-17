@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --webpack",
+    "dev": "next dev",
     "test": "bun test:pages && bun test:components && bun test:reactivity",
     "test:pages": "playwright test pages.test.ts",
     "test:consistency": "playwright test structure-consistency.test.ts",

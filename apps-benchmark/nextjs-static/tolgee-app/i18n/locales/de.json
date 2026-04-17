@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "i18n Benchmark",
+    "description": "Ein Open-Source-Benchmark zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken."
+  },
   "productsGrid": {
     "benchmarkDashboard": "Benchmark-Dashboard",
     "interactiveChartsAndTables": "Interaktive Diagramme und Tabellen, die i18n-Bibliotheken hinsichtlich Bundle-Größe, Renderzeit und Hydratationskosten vergleichen.",
@@ -25,6 +29,7 @@
     "faqList.yesWeUseThe": "Ja. Wir verwenden den Mann-Whitney-U-Test mit einem Signifikanzniveau von 0,05, um Verteilungen zu vergleichen. Wir geben auch Konfidenzintervalle und Effektstärken an."
   },
   "header": {
+    "brandShort": "i18n Bench",
     "home": "Startseite",
     "methodology": "Methodik",
     "mockPages": "Testseiten",
@@ -205,6 +210,7 @@
     "frequentlyAskedQuestions": "Frequently Asked Questions"
   },
   "footer": {
+    "contactEmail": "contact@intlayer.org",
     "resources": "Ressourcen",
     "contact": "Kontakt",
     "github": "GitHub",
@@ -572,8 +578,11 @@
   },
   "resultsTable": {
     "bundleSize": "Bundle-Größe",
+    "lazyBuiltIn": "Eingebaut",
     "lazyLoading": "Lazy Loading",
-    "library": "Library",
+    "lazyManual": "Manuell",
+    "lazyYes": "Ja",
+    "library": "Bibliothek",
     "lookupTime": "Suchzeit",
     "sampleResults": "Beispielergebnisse"
   },
@@ -629,6 +638,7 @@
   },
   "hero": {
     "aTestApplicationDesignedTo": "Eine Testanwendung, die darauf ausgelegt ist, die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.",
+    "title": "i18n Benchmark",
     "viewResults": "Ergebnisse anzeigen"
   }
 }

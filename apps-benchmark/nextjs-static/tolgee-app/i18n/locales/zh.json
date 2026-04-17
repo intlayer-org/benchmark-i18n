@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "i18n Benchmark",
+    "description": "用于衡量国际化库实际影响的开源基准测试。"
+  },
   "productsGrid": {
     "benchmarkDashboard": "基准测试仪表板",
     "interactiveChartsAndTables": "交互式图表和表格，对比了不同 i18n 库在包大小、渲染时间和注水成本方面的表现。",
@@ -25,6 +29,7 @@
     "faqList.yesWeUseThe": "是的。我们使用 Mann-Whitney U 检验（显着性水平为 0.05）来比较分布。我们还报告置信区间和效应大小。"
   },
   "header": {
+    "brandShort": "i18n Bench",
     "home": "首页",
     "methodology": "方法学",
     "mockPages": "模拟页面",
@@ -205,6 +210,7 @@
     "frequentlyAskedQuestions": "Frequently Asked Questions"
   },
   "footer": {
+    "contactEmail": "contact@intlayer.org",
     "resources": "资源",
     "contact": "联系",
     "github": "GitHub",
@@ -572,8 +578,11 @@
   },
   "resultsTable": {
     "bundleSize": "包大小",
+    "lazyBuiltIn": "内置",
     "lazyLoading": "延迟加载",
-    "library": "Library",
+    "lazyManual": "手动",
+    "lazyYes": "是",
+    "library": "库",
     "lookupTime": "查询时间",
     "sampleResults": "样本结果"
   },
@@ -629,6 +638,7 @@
   },
   "hero": {
     "aTestApplicationDesignedTo": "一个测试应用程序，旨在衡量国际化库对包大小、加载性能和渲染反应性的实际影响。",
+    "title": "i18n Benchmark",
     "viewResults": "查看结果"
   }
 }

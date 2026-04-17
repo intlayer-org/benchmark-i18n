@@ -2,16 +2,41 @@
 
 import NextLink, { type LinkProps as NextLinkProps } from "next/link";
 import type { PropsWithChildren, FC, ComponentProps } from "react";
+import { useParams } from "next/navigation";
 
-/**
- * A custom Link component for Tolgee.
- * Since Tolgee uses cookie/header-based locale detection (not URL prefixes),
- * this is a simple pass-through to next/link.
- */
+export const checkIsExternalLink = (href?: string): boolean =>
+  /^https?:\/\//.test(href ?? "");
+
+export function localizeHref(href: string, locale: string): string {
+  if (!href.startsWith("/")) return href;
+  if (href === `/${locale}` || href.startsWith(`/${locale}/`)) return href;
+  return `/${locale}${href === "/" ? "" : href}`;
+}
+
 export const Link: FC<
   PropsWithChildren<NextLinkProps & ComponentProps<"a">>
-> = ({ children, ...props }) => {
-  return <NextLink {...props}>{children}</NextLink>;
+> = ({ href, children, ...props }) => {
+  const params = useParams();
+  const locale = (params.locale as string) ?? "en";
+  if (href == null || typeof href !== "string") {
+    return (
+      <NextLink href={href} {...props}>
+        {children}
+      </NextLink>
+    );
+  }
+  if (checkIsExternalLink(href)) {
+    return (
+      <NextLink href={href} {...props}>
+        {children}
+      </NextLink>
+    );
+  }
+  return (
+    <NextLink href={localizeHref(href, locale)} {...props}>
+      {children}
+    </NextLink>
+  );
 };
 
 export default Link;

@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "title": "i18n Benchmark",
+    "description": "국제화 라이브러리의 실제 영향을 측정하는 오픈 소스 벤치마크입니다."
+  },
   "productsGrid": {
     "benchmarkDashboard": "벤치마크 대시보드",
     "interactiveChartsAndTables": "번들 크기, 렌더링 시간, 하이드레이션 비용에 따라 i18n 라이브러리를 비교하는 대화형 차트와 표.",
@@ -25,6 +29,7 @@
     "faqList.yesWeUseThe": "네. 0.05 유의 수준에서 Mann-Whitney U 검정을 사용하여 분포를 비교합니다. 또한 신뢰 구간과 효과 크기를 보고합니다."
   },
   "header": {
+    "brandShort": "i18n Bench",
     "home": "홈",
     "methodology": "방법론",
     "mockPages": "테스트 페이지",
@@ -205,6 +210,7 @@
     "frequentlyAskedQuestions": "Frequently Asked Questions"
   },
   "footer": {
+    "contactEmail": "contact@intlayer.org",
     "resources": "리소스",
     "contact": "문의",
     "github": "GitHub",
@@ -572,8 +578,11 @@
   },
   "resultsTable": {
     "bundleSize": "번들 크기",
+    "lazyBuiltIn": "내장",
     "lazyLoading": "지연 로딩",
-    "library": "Library",
+    "lazyManual": "수동",
+    "lazyYes": "예",
+    "library": "라이브러리",
     "lookupTime": "조회 시간",
     "sampleResults": "샘플 결과"
   },
@@ -629,6 +638,7 @@
   },
   "hero": {
     "aTestApplicationDesignedTo": "국제화 라이브러리가 번들 크기, 로드 성능 및 렌더링 반응성에 미치는 실제 영향을 측정하도록 설계된 테스트 애플리케이션입니다.",
+    "title": "i18n Benchmark",
     "viewResults": "결과 보기"
   }
 }

@@ -30,7 +30,7 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-3">
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              i18n Benchmark
+              <T keyName="hero.title" defaultValue="i18n Benchmark" />
             </h3>
             <p className="text-sm text-muted-foreground">
               <T
@@ -72,7 +72,10 @@ export default function Footer() {
               <T keyName="footer.contact" defaultValue="Contact" />
             </h3>
             <p className="text-sm text-muted-foreground">
-              contact@intlayer.org
+              <T
+                keyName="footer.contactEmail"
+                defaultValue="contact@intlayer.org"
+              />
             </p>
           </div>
         </div>

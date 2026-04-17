@@ -9,6 +9,7 @@ export default function Wrapper({ children }: { children: React.ReactNode }) {
   return (
     <TolgeeProvider
       tolgee={tolgee}
+      options={{ useSuspense: false }}
       ssr={{
         language: "en",
         staticData: { en: messages },

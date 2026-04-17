@@ -4,14 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --webpack",
+    "dev": "next dev",
     "test": "bun test:pages && bun test:components && bun test:reactivity",
     "test:pages": "playwright test pages.test.ts",
     "test:consistency": "playwright test structure-consistency.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:components": "bun scripts/measure-components.ts",
     "test:lib-size": "bun scripts/measure-lib-size.ts",
-    "build": "next build --webpack",
+    "build": "next build",
       "start": "next start",
 
     "lint": "eslint"

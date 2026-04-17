@@ -39,8 +39,7 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 - There is no website and no online documentation; they are only available on GitHub.
 - On tanstack start I also met reactivity issues with the library. On locale change I had to force the rerendering of the provider to make it work. I had to subcribe to the locale change event to make it work when loading the page in another locale.
 - For nextjs implementation, the library blocks static rendering of Next.js pages.
-
-
+- I also met issues with the DevTools provided by the library. It used to log errors in the server side console. 
 
 **next-intl** / **use-intl** / **next-i18next** / **react-i18next** / **next-international**
 

@@ -102,6 +102,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <TolgeeProvider
             tolgee={tolgee}
             fallback={<div>Loading translations...</div>}
+            options={{ useSuspense: false }}
             ssr={{
               language: locale,
               staticData: { [locale]: messages },

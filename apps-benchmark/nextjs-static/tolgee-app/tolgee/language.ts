@@ -8,19 +8,18 @@ const LANGUAGE_COOKIE = 'NEXT_LOCALE';
 
 export async function setLanguage(locale: string) {
   const cookieStore = await cookies();
-  cookieStore.set(LANGUAGE_COOKIE, locale, {
-    maxAge: 1000 * 60 * 60 * 24 * 365, // one year in milisecods
-  });
+  cookieStore.set(LANGUAGE_COOKIE, locale, { maxAge: 31536000 });
 }
 
 export async function getLanguage() {
+  // Restore cookie reading
   const cookieStore = await cookies();
   const locale = cookieStore.get(LANGUAGE_COOKIE)?.value;
+  
   if (locale && ALL_LOCALES.includes(locale)) {
     return locale;
   }
 
-  // try to detect language from headers or use default
   const detected = detectLanguageFromHeaders(await headers(), ALL_LOCALES);
   return detected || DEFAULT_LOCALE;
 }
