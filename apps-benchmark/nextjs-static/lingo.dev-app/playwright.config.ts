@@ -1,7 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { nextStandaloneServerEntry } from "test-utils/repo-root";
 
 const appDir = path.dirname(fileURLToPath(import.meta.url));
 
@@ -21,7 +20,7 @@ export default defineConfig({
 
   webServer: {
     cwd: appDir,
-    command: `PORT=4173 node ${nextStandaloneServerEntry(appDir)}`,
+    command: "npx next start -p 4173", // Starts standard Next.js server on 4173
     url: "http://localhost:4173",
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,
