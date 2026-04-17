@@ -178,6 +178,27 @@ const runSingleIteration = async (
 
   console.log(`  Status: ${response?.status()} — ${response?.url()}`);
 
+  // Wait for React's useEffect + Profiler onRender to fire before sampling.
+  // `waitUntil: "load"` only guarantees the browser load event — React's
+  // useEffect (which calls recordHydrationDuration → sets hydration_end mark)
+  // and the Profiler onRender callback are scheduled *after* the initial paint
+  // commit and may run after the load event, especially on static/pre-rendered
+  // pages where the HTML is already fully formed.
+  // We poll for either signal with a 3-second cap so we don't hang when the
+  // app is intentionally un-instrumented.
+  await page
+    .waitForFunction(
+      () =>
+        performance.getEntriesByName("hydration_end").length > 0 ||
+        (window.__RENDER_METRICS__ != null &&
+          Object.keys(window.__RENDER_METRICS__).length > 0),
+      undefined,
+      { timeout: 3_000 },
+    )
+    .catch(() => {
+      // Instrumentation not present — proceed anyway and log 0s
+    });
+
   const metrics = await readRenderingMetrics(page);
 
   // Log each metric with a note if it reads 0 (likely means the app is missing

@@ -1,16 +1,7 @@
 import type { NextConfig } from "next";
 import { paraglideWebpackPlugin } from "@inlang/paraglide-js";
 
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const configDir = path.dirname(fileURLToPath(import.meta.url));
-const monorepoRoot =
-  path.basename(configDir) === "nextjs-base-app"
-    ? path.join(configDir, "../..")
-    : path.join(configDir, "../../..");
 const nextConfig: NextConfig = {
-  outputFileTracingRoot: monorepoRoot,
   webpack: (config, { dev }) => {
     // In production, `paraglideWebpackPlugin` compiles twice (buildStart +
     // beforeRun) and the incremental pass can leave a stub `messages/_index.js`,
