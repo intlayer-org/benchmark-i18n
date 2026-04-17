@@ -142,7 +142,7 @@
       "pageJsGzipAvg": 156581.7,
       "pageJsGzipMax": 157167,
       "localeLeakAvgPct": 0,
-      "pageLeakAvgPct": 89.77202259564179,
+      "pageLeakAvgPct": 89.77202259564173,
       "componentGzipMin": 716,
       "componentGzipAvg": 3029.5588235294117,
       "componentGzipMax": 5200,

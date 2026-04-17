@@ -6,16 +6,17 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "dev": "bunx --bun vite dev --port 3000",
     "build": "bunx --bun vite build",
+    "dev": "bunx --bun vite dev --port 3000",
     "extract": "bun x @inlang/paraglide-js compile --project ./project.inlang --outdir ./src/paraglide",
-    "test": "bun test:pages && bun test:components && bun test:reactivity",
-    "test:pages": "playwright test pages.test.ts",
-    "test:consistency": "playwright test structure-consistency.test.ts",
-    "test:reactivity": "playwright test reactivity.test.ts",
+    "preview": "bunx --bun vite preview",
+    "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity",
     "test:components": "bun scripts/measure-components.ts",
+    "test:consistency": "playwright test structure-consistency.test.ts",
     "test:lib-size": "bun scripts/measure-lib-size.ts",
-    "preview": "bunx --bun vite preview"
+    "test:pages": "playwright test pages.test.ts",
+    "test:reactivity": "playwright test reactivity.test.ts",
+    "test:rendering": "playwright test rendering.test.ts"
   },
   "dependencies": {
     "@inlang/paraglide-js": "^2.15.1",

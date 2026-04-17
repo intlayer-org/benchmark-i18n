@@ -6,6 +6,8 @@
     "./pages-test": "./src/pages-test.ts",
     "./measure-components": "./src/measure-components.ts",
     "./reactivity-test": "./src/reactivity-test.ts",
+    "./rendering-test": "./src/rendering-test.ts",
+    "./timing-utils": "./src/timing-utils.ts",
     "./browser-metrics": "./src/browser-metrics.ts",
     "./structure-consistency": "./src/structure-consistency.ts",
     "./structure-consistency-test": "./src/structure-consistency-test.ts",
