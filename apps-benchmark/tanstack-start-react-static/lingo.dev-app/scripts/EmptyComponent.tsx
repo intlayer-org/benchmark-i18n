@@ -1,11 +1,6 @@
-import React from "react";
-import { useParams } from "@tanstack/react-router";
+import { LingoProvider } from "@lingo.dev/compiler/react";
+import { locale } from "react-intlayer/server";
 
 export default function EmptyComponent() {
-  const params = useParams({ strict: false });
-  const locale = params.locale ?? "en";
-
-  void locale;
-
-  return <></>;
+  return <LingoProvider initialLocale={locale as "en"}>{}</LingoProvider>;
 }

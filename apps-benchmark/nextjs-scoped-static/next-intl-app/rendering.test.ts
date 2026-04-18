@@ -4,5 +4,5 @@ import pkg from "./package.json" with { type: "json" };
 
 registerRenderingTest(test, expect, {
   appName: pkg.name,
-  benchmarkCategory: "nextjs-static",
+  benchmarkCategory: "nextjs-scoped-static",
 });

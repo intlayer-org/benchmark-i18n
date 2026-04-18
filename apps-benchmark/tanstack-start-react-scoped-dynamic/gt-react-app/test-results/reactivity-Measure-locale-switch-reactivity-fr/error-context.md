@@ -7,13 +7,13 @@
 # Test info
 
 - Name: reactivity.test.ts >> Measure locale switch reactivity
-- Location: ../../../test-utils/src/reactivity-test.ts:317:3
+- Location: ../../../test-utils/src/reactivity-test.ts:317:2
 
 # Error details
 
 ```
-Error: page.evaluate: Error: E2E timeout: html[lang] did not change to 'fr'
-    at eval (eval at evaluate (:302:30), <anonymous>:30:12)
+Error: evaluate: Error: E2E timeout: html[lang] did not change to 'fr'
+    at eval (eval at evaluate (:302:30), <anonymous>:24:12)
 ```
 
 # Page snapshot

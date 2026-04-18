@@ -1,11 +1,20 @@
 "use client";
 
-import { useScopedI18n, useCurrentLocale } from "../locales/client";
+import React from "react";
+import { I18nProviderClient, useScopedI18n, useCurrentLocale } from "../locales/client";
+
+const TestComponent = () => {
+  const scopedT = useScopedI18n("header");
+  void scopedT;
+  return null;
+};
 
 export default function EmptyComponent() {
-  const scopedT = useScopedI18n("header");
   const locale = useCurrentLocale();
-  void scopedT;
-  void locale;
-  return null;
+
+  return (
+    <I18nProviderClient locale={locale}>
+      <TestComponent />
+    </I18nProviderClient>
+  );
 }

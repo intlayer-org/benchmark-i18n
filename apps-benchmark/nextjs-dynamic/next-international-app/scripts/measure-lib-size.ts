@@ -4,7 +4,7 @@ import pkg from "../package.json" with { type: "json" };
 
 measureLibSize({
   appName: pkg.name,
-  benchmarkCategory: "nextjs-static",
+  benchmarkCategory: "nextjs-dynamic",
   additionalExternalPackages: [
     "next",
     "next/link",

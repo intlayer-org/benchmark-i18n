@@ -1,12 +1,18 @@
 import React from "react";
-import { useI18n, useCurrentLocale } from "../locales/client";
+import { I18nProviderClient, useI18n, useCurrentLocale } from "../locales/client";
+
+const TestComponent = () => {
+  const t = useI18n();
+  void t;
+  return null;
+};
 
 export default function EmptyComponent() {
-  const t = useI18n();
   const locale = useCurrentLocale();
 
-  void t;
-  void locale;
-
-  return <></>;
+  return (
+    <I18nProviderClient locale={locale}>
+      <TestComponent />
+    </I18nProviderClient>
+  );
 }

@@ -4,5 +4,5 @@ import pkg from "./package.json" with { type: "json" };
 
 registerRenderingTest(test, expect, {
   appName: pkg.name,
-  benchmarkCategory: "tanstack-start-react-static",
+  benchmarkCategory: "tanstack-start-react-scoped-dynamic",
 });

@@ -20,7 +20,7 @@ export default defineConfig({
 
   webServer: {
     cwd: appDir,
-    command: "npx next start -p 4173", // Starts standard Next.js server on 4173
+    command: "bun next start -p 4173", // Starts standard Next.js server on 4173
     url: "http://localhost:4173",
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,

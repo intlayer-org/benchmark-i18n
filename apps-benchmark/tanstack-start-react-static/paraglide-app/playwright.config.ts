@@ -29,7 +29,7 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: "bunx --bun vite preview --port 4175",
+    command: "bun x --bun vite preview --port 4175",
     url: "http://localhost:4175",
     reuseExistingServer: !process.env.CI,
     timeout: 120 * 1000,

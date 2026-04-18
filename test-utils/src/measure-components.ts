@@ -86,7 +86,7 @@ export interface MeasureConfig {
   additionalPlugins?: any[];
   /**
    * Absolute path to the app root directory. Overrides `process.cwd()` for
-   * all path resolution in {@link measureLibSize} (EmptyComponent, EmptyWrapper,
+   * all path resolution in {@link measureLibSize} (EmptyComponent,
    * results dir, Vite config lookup). Useful when the test runner's cwd differs
    * from the app directory (e.g. Playwright invoked from the repo root).
    */
@@ -589,12 +589,6 @@ export const measureComponents = async ({
  * library overhead — the bytes added to a component that uses the library's
  * hooks/APIs but renders nothing and loads no translation JSON.
  *
- * The wrapper is resolved in this order:
- *  1. `scripts/EmptyWrapper.tsx` if present (provides the minimal provider
- *     context that the lib hooks require, without loading any locale files).
- *  2. The `wrapperTemplate` from the config (falls back to the app's regular
- *     Wrapper so router/context hooks still resolve).
- *
  * Saves results to `<results-dir>/empty-component-size.json`.
  *
  * Call this from a dedicated `scripts/measure-lib-size.ts` entry point so it
@@ -633,35 +627,15 @@ export const measureLibSize = async ({
     appName,
   );
 
-  // Prefer a dedicated EmptyWrapper that sets up only the minimal provider
-  // context the lib needs, without loading any translation files.
-  const emptyWrapperPath = path.resolve(
-    effectiveDir,
-    "scripts/EmptyWrapper.tsx",
-  );
-  const resolvedWrapperTemplate = fs.existsSync(emptyWrapperPath)
-    ? (componentPath: string) => `
-    import React from 'react';
-    import Component from '${componentPath}';
-    import Wrapper from '${emptyWrapperPath.replace(/\\/g, "/")}';
-
-    export default function Wrapped() {
-      return (
-        <Wrapper>
-          <Component />
-        </Wrapper>
-      );
-    }
-  `
-    : wrapperTemplate;
+  // EmptyComponent.tsx already includes the provider context and the hook usage
+  // (as refactored in previous steps), so we build it directly without any
+  // additional wrapping.
+  const resolvedWrapperTemplate = undefined;
 
   console.log(`\n--- LIB SIZE MEASUREMENT ---`);
   console.log(`App Name: ${appName}`);
   console.log(`Benchmark Category: ${benchmarkCategory}`);
   console.log(`EmptyComponent: ${emptyComponentPath}`);
-  console.log(
-    `EmptyWrapper: ${fs.existsSync(emptyWrapperPath) ? emptyWrapperPath : "(none — using app Wrapper)"}`,
-  );
   console.log(`----------------------------\n`);
 
   try {

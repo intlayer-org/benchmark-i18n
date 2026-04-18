@@ -1,14 +1,25 @@
 "use client";
 
 import React from "react";
-import { useTolgee, useTranslate } from "@tolgee/react";
+import { TolgeeProvider, useTolgee, useTranslate } from "@tolgee/react";
+import { Tolgee, FormatSimple } from "@tolgee/web";
 
-export default function EmptyComponent() {
+const tolgeeInstance = Tolgee().use(FormatSimple()).init({ language: "en" });
+
+const TestComponent = () => {
   const tolgee = useTolgee();
   const { t } = useTranslate();
 
   void t;
   void tolgee.getLanguage();
 
-  return <></>;
+  return null;
+};
+
+export default function EmptyComponent() {
+  return (
+    <TolgeeProvider tolgee={tolgeeInstance} options={{ useSuspense: false }}>
+      <TestComponent />
+    </TolgeeProvider>
+  );
 }

@@ -74,7 +74,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     recordHydrationDuration();
   }, []);
 
-  const { locale = defaultLocale, messages } = LocaleRoute.useLoaderData();
+  const { locale = defaultLocale } = LocaleRoute.useParams();
+  const { messages } = LocaleRoute.useLoaderData();
   const i18n = useMemo(() => initLingui(locale, messages), [locale, messages]);
 
   return (

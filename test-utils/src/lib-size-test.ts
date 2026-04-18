@@ -2,9 +2,8 @@
  * lib-size-test.ts — i18n library overhead measurement via Vite
  *
  * Registers a single Playwright test that builds scripts/EmptyComponent.tsx
- * (wrapped by scripts/EmptyWrapper.tsx when present) with Vite in library mode
- * to measure the pure i18n runtime cost — provider + translation hook — with
- * no translation JSON in the bundle.
+ * with Vite in library mode to measure the pure i18n runtime cost —
+ * provider + translation hook — with no translation JSON in the bundle.
  *
  * The test is skipped for all non-"en" Playwright projects so it runs exactly
  * once per app regardless of how many locale projects are configured.

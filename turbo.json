@@ -6,26 +6,26 @@
     },
     "test:pages": {
       "dependsOn": ["build"],
-      "outputs": ["../../results/**"]
+      "outputs": ["../../results/**", "../../../results/**"]
     },
     "test:consistency": {
       "outputs": []
     },
     "test:rendering": {
       "dependsOn": ["build"],
-      "outputs": ["../../results/**"]
+      "outputs": ["../../results/**", "../../../results/**"]
     },
     "test:reactivity": {
       "dependsOn": ["build"],
-      "outputs": ["../../results/**"]
+      "outputs": ["../../results/**", "../../../results/**"]
     },
     "test:components": {
       "dependsOn": ["build"],
-      "outputs": ["../../results/**"]
+      "outputs": ["../../results/**", "../../../results/**"]
     },
     "test:lib-size": {
       "dependsOn": ["build"],
-      "outputs": ["../../results/**"]
+      "outputs": ["../../results/**", "../../../results/**"]
     },
     "test": {
       "dependsOn": ["test:pages", "test:rendering", "test:reactivity", "test:components", "test:lib-size"]

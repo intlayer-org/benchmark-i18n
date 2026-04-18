@@ -18,7 +18,7 @@ export default function AppProviders({ children }: { children: React.ReactNode }
   }, [renderStart]);
 
   useEffect(() => {
-    setLocale(locale as any);
+    setLocale(locale as any, { reload: false });
     document.documentElement.lang = locale;
   }, [locale]);
 

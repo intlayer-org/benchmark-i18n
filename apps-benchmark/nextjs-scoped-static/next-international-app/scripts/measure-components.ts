@@ -4,7 +4,7 @@ import pkg from "../package.json" with { type: "json" };
 
 measureComponents({
   appName: pkg.name,
-  benchmarkCategory: "nextjs-static",
+  benchmarkCategory: "nextjs-scoped-static",
   componentDirectories: ["./src/components", "./components"],
   additionalExternalPackages: [
     "next",
