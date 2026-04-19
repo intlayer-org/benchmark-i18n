@@ -25,13 +25,13 @@ const config = defineConfig({
     viteReact(),
 
     visualizer({
-      filename: `../../../results/${packageJson.name}/bundle/stats.json`,
+      filename: `../../results/tanstack-start-react-static/${packageJson.name}/stats.json`,
       template: "raw-data",
       gzipSize: true,
       brotliSize: true,
     }),
     visualizer({
-      filename: `../../../results/${packageJson.name}/bundle/rollup-visualizer.html`,
+      filename: `../../results/tanstack-start-react-static/${packageJson.name}/rollup-visualizer.html`,
       open: false,
       gzipSize: true,
       brotliSize: true,

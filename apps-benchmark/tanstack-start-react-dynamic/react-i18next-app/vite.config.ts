@@ -27,19 +27,19 @@ const config = defineConfig({
     viteReact(),
 
     visualizer({
-      filename: `../../../results/${packageJson.name}/bundle/stats.json`, // Change extension to .json
-      template: "raw-data", // This instructs the plugin to output the data structure instead of HTML
+      filename: `../../../results/tanstack-start-react-dynamic/${packageJson.name}/stats.json`,
+      template: "raw-data",
       gzipSize: true,
       brotliSize: true,
     }),
     visualizer({
-      filename: `../../../results/${packageJson.name}/bundle/rollup-visualizer.html`,
+      filename: `../../../results/tanstack-start-react-dynamic/${packageJson.name}/rollup-visualizer.html`,
       open: false,
       gzipSize: true,
       brotliSize: true,
     }),
     // visualizer({
-    //   filename: `../../../results/${packageJson.name}/bundle/stats-i18n.json`, // Change extension to .json
+    //   filename: `../../../results/${packageJson.name}/stats-i18n.json`, // Change extension to .json
     //   template: "raw-data", // This instructs the plugin to output the data structure instead of HTML
     //   gzipSize: true,
     //   brotliSize: true,

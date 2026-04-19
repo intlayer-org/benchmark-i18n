@@ -34,25 +34,25 @@ const config = defineConfig({
     intlayer(),
 
     visualizer({
-      filename: `../../../results/${packageJson.name}/bundle/stats.json`, // Change extension to .json
+      filename: `../../../results/tanstack-start-react-scoped-dynamic/${packageJson.name}/stats.json`, // Change extension to .json
       template: "raw-data", // This instructs the plugin to output the data structure instead of HTML
       gzipSize: true,
       brotliSize: true,
     }),
     visualizer({
-      filename: `../../../results/${packageJson.name}/bundle/rollup-visualizer.html`,
+      filename: `../../../results/tanstack-start-react-scoped-dynamic/${packageJson.name}/rollup-visualizer.html`,
       open: false,
       gzipSize: true,
       brotliSize: true,
     }),
     // visualizer({
-    //   filename: `../../../results/${packageJson.name}/bundle/stats-i18n.json`, // Change extension to .json
+    //   filename: `../../../results/${packageJson.name}/stats-i18n.json`, // Change extension to .json
     //   template: "raw-data", // This instructs the plugin to output the data structure instead of HTML
     //   gzipSize: true,
     //   brotliSize: true,
     // }),
     // visualizer({
-    //   filename: `../../../results/${packageJson.name}/bundle/rollup-visualizer-i18n.html`,
+    //   filename: `../../../results/${packageJson.name}/rollup-visualizer-i18n.html`,
     //   include: [
     //     { file: "**/node_modules/i18next/**" },
     //     { file: "**/node_modules/react-i18next/**" },
