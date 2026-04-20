@@ -1,9 +1,4 @@
-"use client";
-
-import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
-
 export default function Hero() {
-  usePerformanceMeasure("Hero");
   return (
     <section className="mb-16 text-center">
       <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground">

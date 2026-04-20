@@ -71,6 +71,5 @@ i18n.use(initReactI18next).init({
   },
 });
 
-void preloadNamespaces(defaultLocale, namespaces);
 
 export default i18n;

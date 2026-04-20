@@ -5,6 +5,7 @@ import {
   Link,
   Scripts,
   createRootRoute,
+  useMatches,
 } from "@tanstack/react-router";
 import { TolgeeProvider } from "@tolgee/react";
 import { T } from "../i18n/tolgee";
@@ -82,7 +83,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   }, []);
 
   const { locale = defaultLocale } = LocaleRoute.useParams();
-  const { messages } = LocaleRoute.useLoaderData();
+  const matches = useMatches();
+  const allMessages = matches.reduce((acc, match) => {
+    const data = match.loaderData as any;
+    if (data?.messages) {
+      Object.assign(acc, data.messages);
+    }
+    return acc;
+  }, {});
 
   // Set language on server-side or if it changed
   if (typeof window === "undefined" || tolgee.getLanguage() !== locale) {
@@ -106,10 +114,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             tolgee={tolgee}
             fallback={<div>Loading translations...</div>}
             options={{ useSuspense: false }}
-            ssr={{
-              language: locale,
-              staticData: { [locale]: messages },
-            }}
+              ssr={{
+                language: locale,
+                staticData: { [locale]: allMessages },
+              }}
           >
             <Header />
             {children}

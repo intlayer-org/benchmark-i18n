@@ -1,6 +1,6 @@
 # Vite — i18n Benchmark Results
 
-_Generated: 2026-04-19_
+_Generated: 2026-04-20_
 
 ## Metric Legend
 
@@ -69,7 +69,7 @@ _Generated: 2026-04-19_
 | `/fr/settings` | 85.0 KB | 0.0% | 0.0% |
 | `/fr/team` | 83.9 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/aymericzip/benchmark-bloom/tree/main/apps-benchmark/vite-base-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/vite-base-app)
 
 </details>
 
