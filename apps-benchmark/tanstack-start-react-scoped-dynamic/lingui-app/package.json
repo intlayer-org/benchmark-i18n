@@ -1,5 +1,5 @@
 {
-  "name": "scoped-dynamic-lingui-app",
+  "name": "tanstack-scoped-dynamic-lingui-app",
   "private": true,
   "type": "module",
   "imports": {

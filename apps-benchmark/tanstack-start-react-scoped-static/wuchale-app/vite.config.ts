@@ -28,13 +28,13 @@ const config = defineConfig({
     tanstackStart(),
     viteReact(),
     visualizer({
-      filename: `../../../results/tanstack-start-react-scoped-static/${packageJson.name}/stats.json`, // Change extension to .json
+      filename: `../../../results/${packageJson.name}/bundle/stats.json`, // Change extension to .json
       template: "raw-data", // This instructs the plugin to output the data structure instead of HTML
       gzipSize: true,
       brotliSize: true,
     }),
     visualizer({
-      filename: `../../../results/tanstack-start-react-scoped-static/${packageJson.name}/rollup-visualizer.html`,
+      filename: `../../../results/${packageJson.name}/bundle/rollup-visualizer.html`,
       open: false,
       gzipSize: true,
       brotliSize: true,

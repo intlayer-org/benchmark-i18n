@@ -598,7 +598,6 @@ export const registerBundleTest = (test: any, expect: any, config: BundleTestCon
     const resultsDirectory = path.join(
       benchmarkBloomRoot(process.cwd()),
       "results",
-      benchmarkCategory,
       appName,
     );
 

@@ -5,6 +5,7 @@ import {
   Link,
   Scripts,
   createRootRoute,
+  useRouterState,
   useRouter,
 } from "@tanstack/react-router";
 import { Route as LocaleRoute } from "./$locale/route";
@@ -76,7 +77,12 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     recordHydrationDuration();
   }, []);
 
-  const { locale = defaultLocale } = LocaleRoute.useParams();
+  const { locale: committedLocale = defaultLocale } = LocaleRoute.useParams();
+  const pendingLocale = useRouterState({
+    select: (s) =>
+      (s.pendingMatches as any)?.find((m: any) => m.params?.locale)?.params?.locale as string | undefined,
+  });
+  const locale = pendingLocale ?? committedLocale;
   const router = useRouter();
 
   const { i18n } = useTranslation();

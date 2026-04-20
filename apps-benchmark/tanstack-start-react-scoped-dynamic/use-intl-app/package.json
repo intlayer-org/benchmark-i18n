@@ -1,5 +1,5 @@
 {
-  "name": "scoped-dynamic-use-intl-app",
+  "name": "tanstack-scoped-dynamic-use-intl-app",
   "private": true,
   "type": "module",
   "imports": {

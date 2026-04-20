@@ -24,6 +24,7 @@
     "report": "bun report/scripts/summarize.ts --out report/scripts/summarize --md report/scripts/summarize",
     "build": "turbo run build --concurrency=1 --continue",
     "test": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size test:next test:tanstack --concurrency=1 --continue",
+    "test:bundle": "turbo run test:bundle --concurrency=1 --continue",
     "test:pages": "turbo run test:pages --concurrency=1 --continue",
     "test:consistency": "turbo run test:consistency --concurrency=1 --continue",
     "test:rendering": "turbo run test:rendering --concurrency=1 --continue",

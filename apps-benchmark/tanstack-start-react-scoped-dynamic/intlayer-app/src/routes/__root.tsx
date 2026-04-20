@@ -1,5 +1,5 @@
 import { defaultLocale, getIntlayer } from "intlayer";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { Suspense, useEffect, useLayoutEffect, useState } from "react";
 import {
   HeadContent,
   Link,
@@ -86,8 +86,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <body className="antialiased [overflow-wrap:anywhere]">
           <IntlayerProvider locale={locale}>
-            <Header />
-            {children}
+            <Suspense fallback={null}>
+              <Header />
+              {children}
+            </Suspense>
           </IntlayerProvider>
           <Footer />
       <Scripts />

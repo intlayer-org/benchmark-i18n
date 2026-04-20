@@ -1,5 +1,5 @@
 {
-  "name": "scoped-static-react-i18next-app",
+  "name": "tanstack-scoped-static-react-i18next-app",
   "private": true,
   "type": "module",
   "imports": {

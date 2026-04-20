@@ -125,12 +125,14 @@ interface PageData {
   jsFileCount: number;
   localeLeakagePercent: number;
   pageLeakagePercent: number;
+  otherPageContentLeakagePercent: number;
 }
 
 interface PageBundleLocaleData {
   jsGzip: MetricStats | null;
   localeLeakPct: MetricStats | null;
   pageLeakPct: MetricStats | null;
+  otherPageContentLeakPct: MetricStats | null;
   pages: PageData[];
 }
 
@@ -142,6 +144,7 @@ interface PageBundleData {
   jsGzipMax: number | null;
   localeLeakAvgPct: number | null;
   pageLeakAvgPct: number | null;
+  otherPageContentLeakAvgPct: number | null;
 }
 
 interface ComponentItem {
@@ -211,6 +214,7 @@ interface AppSummary {
 
 interface CategoryData {
   appName: string;
+  bundleLink: string;
   overallStatus: "ok" | "partial" | "missing" | "error";
   pageBundle: PageBundleData;
   components: ComponentsData;
@@ -264,6 +268,7 @@ interface RawPageResult {
   localeLeakagePercent: number;
   pageLeakage?: Record<string, { count: number; found: string[] }>;
   pageLeakagePercent: number;
+  otherPageContentLeakagePercent?: number;
 }
 
 interface RawPagesBundleFile {
@@ -380,56 +385,51 @@ function ms(value: number): string {
 // ---------------------------------------------------------------------------
 
 function parseCategory(
-  categoryDir: string,
   appName: string,
 ): { framework: string; testCategory: string } {
-  const source = appName || categoryDir;
-
   let framework = "unknown";
-  if (source.startsWith("nextjs") || categoryDir.startsWith("nextjs")) {
+  if (appName.startsWith("nextjs-")) {
     framework = "nextjs";
-  } else if (
-    source.startsWith("tanstack") ||
-    categoryDir.startsWith("tanstack") ||
-    /^(static|dynamic|scoped)/.test(source)
-  ) {
+  } else if (appName.startsWith("tanstack-")) {
     framework = "tanstack-start-react";
+  } else if (appName.startsWith("vite-")) {
+    framework = "vite";
   }
 
   let testCategory = "unknown";
-  if (source.includes("scoped-dynamic")) {
+  if (appName.includes("-scoped-dynamic-")) {
     testCategory = "scoped-dynamic";
-  } else if (source.includes("scoped-static")) {
+  } else if (appName.includes("-scoped-static-")) {
     testCategory = "scoped-static";
-  } else if (source.includes("dynamic")) {
+  } else if (appName.includes("-dynamic-")) {
     testCategory = "dynamic";
-  } else if (source.includes("static")) {
+  } else if (appName.includes("-static-")) {
     testCategory = "static";
-  } else if (source.includes("base")) {
+  } else if (appName.includes("-base-app")) {
     testCategory = "base";
   }
 
   return { framework, testCategory };
 }
 
-function deriveLibraryName(appName: string, categoryDir: string): string {
+function deriveLibraryName(appName: string): string {
   let name = appName;
 
-  if (name.startsWith(`${categoryDir}-`)) {
-    name = name.slice(categoryDir.length + 1);
-  }
-
-  const shortPrefixes = [
+  const prefixes = [
     "nextjs-scoped-dynamic-",
     "nextjs-scoped-static-",
     "nextjs-dynamic-",
     "nextjs-static-",
-    "scoped-dynamic-",
-    "scoped-static-",
-    "dynamic-",
-    "static-",
+    "tanstack-scoped-dynamic-",
+    "tanstack-scoped-static-",
+    "tanstack-dynamic-",
+    "tanstack-static-",
+    "vite-",
+    "nextjs-",
+    "tanstack-",
   ];
-  for (const prefix of shortPrefixes) {
+
+  for (const prefix of prefixes) {
     if (name.startsWith(prefix)) {
       name = name.slice(prefix.length);
       break;
@@ -452,7 +452,7 @@ const LIBRARY_PACKAGES: Record<string, string[]> = {
   "next-intlayer": ["next-intlayer"],
   intlayer: ["intlayer"],
   lingui: ["@lingui/react"],
-  "paraglide-next": ["@inlang/paraglide-next"],
+  "paraglide-next": ["@inlang/paraglide-next", "@inlang/paraglide-js"],
   paraglide: ["@inlang/paraglide-js"],
   tolgee: ["@tolgee/react"],
   "react-i18next": ["react-i18next"],
@@ -518,6 +518,9 @@ function collectLibSize(appResultDir: string): LibSizeData {
   const filePath = join(appResultDir, "empty-component-size.json");
 
   if (!fileExists(filePath)) {
+    if (appResultDir.includes("-base-app")) {
+      return { status: "ok", gzip: 0, minified: 0, unminified: 0 };
+    }
     return { status: "missing", gzip: null, minified: null, unminified: null };
   }
 
@@ -570,6 +573,8 @@ function collectPageBundle(
       jsFileCount: r.jsFileCount ?? 0,
       localeLeakagePercent: r.localeLeakagePercent ?? 0,
       pageLeakagePercent: r.pageLeakagePercent ?? 0,
+      otherPageContentLeakagePercent:
+        r.otherPageContentLeakagePercent ?? r.pageLeakagePercent ?? 0,
     }));
 
     const jsSizes = pages.map((p) => p.jsGzipSize);
@@ -582,6 +587,9 @@ function collectPageBundle(
       jsGzip: validJsSizes.length > 0 ? statsFromArray(validJsSizes) : null,
       localeLeakPct: statsFromArray(localeLeak),
       pageLeakPct: statsFromArray(pageLeak),
+      otherPageContentLeakPct: statsFromArray(
+        pages.map((p) => p.otherPageContentLeakagePercent ?? 0),
+      ),
       pages,
     };
 
@@ -597,6 +605,7 @@ function collectPageBundle(
       jsGzipMax: null,
       localeLeakAvgPct: null,
       pageLeakAvgPct: null,
+      otherPageContentLeakAvgPct: null,
     };
   }
 
@@ -609,12 +618,14 @@ function collectPageBundle(
       jsGzipMax: null,
       localeLeakAvgPct: null,
       pageLeakAvgPct: null,
+      otherPageContentLeakAvgPct: null,
     };
   }
 
   const allJsSizes: number[] = [];
   const allLocaleLeak: number[] = [];
   const allPageLeak: number[] = [];
+  const allOtherPageLeak: number[] = [];
 
   for (const localeData of Object.values(byLocale)) {
     if (localeData.jsGzip) {
@@ -624,6 +635,9 @@ function collectPageBundle(
     }
     allLocaleLeak.push(...localeData.pages.map((p) => p.localeLeakagePercent));
     allPageLeak.push(...localeData.pages.map((p) => p.pageLeakagePercent));
+    allOtherPageLeak.push(
+      ...localeData.pages.map((p) => p.otherPageContentLeakagePercent ?? 0),
+    );
   }
 
   const status: DataStatus = !anyData ? "invalid" : anyError ? "error" : "ok";
@@ -636,6 +650,8 @@ function collectPageBundle(
     jsGzipMax: allJsSizes.length > 0 ? maxOf(allJsSizes) : null,
     localeLeakAvgPct: allLocaleLeak.length > 0 ? avgOf(allLocaleLeak) : null,
     pageLeakAvgPct: allPageLeak.length > 0 ? avgOf(allPageLeak) : null,
+    otherPageContentLeakAvgPct:
+      allOtherPageLeak.length > 0 ? avgOf(allOtherPageLeak) : null,
   };
 }
 
@@ -871,9 +887,9 @@ function buildAppDirectoryIndex(): Map<
     { dirs: Set<string>; canonicalCategoryDir: string }
   >();
 
-  let categoryDirs: string[];
+  let appDirs: string[];
   try {
-    categoryDirs = readdirSync(RESULTS_DIR, { withFileTypes: true })
+    appDirs = readdirSync(RESULTS_DIR, { withFileTypes: true })
       .filter((d) => d.isDirectory())
       .map((d) => d.name);
   } catch {
@@ -882,49 +898,27 @@ function buildAppDirectoryIndex(): Map<
     process.exit(1);
   }
 
-  for (const categoryDir of categoryDirs) {
-    const catPath = join(RESULTS_DIR, categoryDir);
-    let appDirs: string[];
-    try {
-      appDirs = readdirSync(catPath, { withFileTypes: true })
-        .filter((d) => d.isDirectory())
-        .map((d) => d.name);
-    } catch {
-      continue;
-    }
+  for (const appDir of appDirs) {
+    const appResultDir = join(RESULTS_DIR, appDir);
+    const hasContent = [
+      "empty-component-size.json",
+      "components-size.json",
+      "pages-bundle-en.json",
+      "pages-bundle-fr.json",
+      "reactivity-en.json",
+      "reactivity-fr.json",
+      "rendering-en.json",
+      "rendering-fr.json",
+    ].some((f) => fileExists(join(appResultDir, f)));
 
-    for (const appDir of appDirs) {
-      const appResultDir = join(catPath, appDir);
-      const hasContent = [
-        "empty-component-size.json",
-        "components-size.json",
-        "pages-bundle-en.json",
-        "pages-bundle-fr.json",
-        "reactivity-en.json",
-        "reactivity-fr.json",
-        "rendering-en.json",
-        "rendering-fr.json",
-      ].some((f) => fileExists(join(appResultDir, f)));
+    if (!hasContent) continue;
 
-      if (!hasContent) continue;
+    const { testCategory } = parseCategory(appDir);
 
-      const existing = index.get(appDir);
-      const { testCategory } = parseCategory(categoryDir, appDir);
-      const isCanonical =
-        categoryDir.includes(testCategory) && testCategory !== "unknown";
-
-      if (!existing) {
-        index.set(appDir, {
-          dirs: new Set([appResultDir]),
-          canonicalCategoryDir: categoryDir,
-        });
-      } else {
-        existing.dirs.add(appResultDir);
-        if (isCanonical) {
-          existing.canonicalCategoryDir = categoryDir;
-        }
-      }
-    }
+    index.set(appDir, {
+      dirs: new Set([appResultDir]),
+      canonicalCategoryDir: appDir, // In flat structure, the appDir itself is the category indicator
+    });
   }
 
   return new Map(
@@ -953,10 +947,9 @@ function collectAppSummary(
   canonicalCategoryDir: string,
 ): AppSummary {
   const { framework, testCategory } = parseCategory(
-    canonicalCategoryDir,
     appName,
   );
-  const library = deriveLibraryName(appName, canonicalCategoryDir);
+  const library = deriveLibraryName(appName);
 
   const libSize = mergeFromDirs(
     dirs,
@@ -1043,6 +1036,7 @@ function applyFilters(summaries: AppSummary[]): AppSummary[] {
 const FRAMEWORK_LABELS: Record<string, string> = {
   nextjs: "Next.js",
   "tanstack-start-react": "TanStack Start (React)",
+  vite: "Vite",
 };
 
 const CATEGORY_ORDER = [
@@ -1058,6 +1052,7 @@ function buildFrameworkSummary(
   framework: string,
   apps: AppSummary[],
   generatedAt: string,
+  targetCategory?: TestCategory
 ): FrameworkSummary {
   const libMap = new Map<string, AppSummary[]>();
   for (const app of apps) {
@@ -1068,15 +1063,23 @@ function buildFrameworkSummary(
   const libs: Record<string, LibrarySummary> = {};
 
   for (const [lib, libApps] of libMap) {
+    const isBase = lib === "base" || lib.includes("base");
+
+    if (isBase) {
+      if (framework === "nextjs" && !lib.includes("nextjs") && lib !== "base") continue;
+      if (framework.includes("tanstack") && !lib.includes("tanstack") && lib !== "base") continue;
+    }
+
     const version = libApps.find((a) => a.version != null)?.version ?? null;
     const libSizeApp =
       libApps.find((a) => a.libSize.status === "ok") ?? libApps[0];
 
-    const getCategory = (cat: TestCategory): CategoryData | null => {
+    const getCategory = (cat: string): CategoryData | null => {
       const app = libApps.find((a) => a.testCategory === cat);
       if (!app) return null;
       return {
         appName: app.appName,
+        bundleLink: getBundleLink(cat, app.appName),
         overallStatus: app.overallStatus,
         pageBundle: app.pageBundle,
         components: app.components,
@@ -1085,15 +1088,48 @@ function buildFrameworkSummary(
       };
     };
 
+    let staticCat = getCategory("static");
+    let dynamicCat = getCategory("dynamic");
+    let scopedStaticCat = getCategory("scoped-static");
+    let scopedDynamicCat = getCategory("scoped-dynamic");
+
+    if (targetCategory) {
+      let catData: CategoryData | null = null;
+      if (lib === "base" || lib.includes("base-app")) {
+        catData = getCategory("base");
+      } else {
+        catData = getCategory(targetCategory);
+        if (!catData && targetCategory === "scoped-dynamic") {
+          catData = getCategory("scoped-static") || getCategory("static");
+        } else if (!catData && targetCategory === "scoped-static") {
+          catData = getCategory("static");
+        } else if (!catData && targetCategory === "dynamic") {
+          catData = getCategory("static");
+        }
+      }
+      staticCat = targetCategory === "static" ? catData : null;
+      dynamicCat = targetCategory === "dynamic" ? catData : null;
+      scopedStaticCat = targetCategory === "scoped-static" ? catData : null;
+      scopedDynamicCat = targetCategory === "scoped-dynamic" ? catData : null;
+    } else {
+      if (lib === "base" || lib.includes("base-app")) {
+        const bd = getCategory("base");
+        staticCat = bd;
+        dynamicCat = bd;
+        scopedStaticCat = bd;
+        scopedDynamicCat = bd;
+      }
+    }
+
     libs[lib] = {
       global: {
         version,
         libSize: libSizeApp.libSize,
       },
-      static: getCategory("static"),
-      dynamic: getCategory("dynamic"),
-      "scoped-static": getCategory("scoped-static"),
-      "scoped-dynamic": getCategory("scoped-dynamic"),
+      static: staticCat,
+      dynamic: dynamicCat,
+      "scoped-static": scopedStaticCat,
+      "scoped-dynamic": scopedDynamicCat,
     };
   }
 
@@ -1185,7 +1221,7 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
     "| **React Profiler** | Sum of React `actualDuration` during locale-switch re-renders (ms) |",
   );
   lines.push(
-    "| **Page load avg** | `PerformanceNavigationTiming.duration` — full page load time (ms) |",
+    "| **Page load** | `PerformanceNavigationTiming.duration` — full page load time (ms) |",
   );
   lines.push(
     "| **Hydration avg** | Custom perf-mark delta for React hydration phase (ms); — = not instrumented |",
@@ -1230,7 +1266,7 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
     const hasSomeData = CATEGORY_ORDER.some((cat) => libData[cat] != null);
     if (hasSomeData) {
       lines.push(
-        "| Category | Status | Page JS avg (gz) | Locale leak % | Page leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load avg | Hydration avg |",
+        "| Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |",
       );
       lines.push(
         "| :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
@@ -1261,7 +1297,7 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
         const rd = catData.rendering;
 
         lines.push(
-          `| ${label} | ${overallIcon} | ${mdCell(pb.jsGzipAvg, pb.status, kb)} | ${mdCell(pb.localeLeakAvgPct, pb.status, pct)} | ${mdCell(pb.pageLeakAvgPct, pb.status, pct)} | ${mdCell(co.gzipAvg, co.status, kb)} | ${mdCell(re.e2eAvgMs, re.status, ms)} | ${mdCell(re.profilerAvgMs, re.status, ms)} | ${mdCell(rd.e2ePageLoadAvgMs, rd.status, ms)} | ${mdCell(rd.hydrationAvgMs, rd.status, ms)} |`,
+          `| ${label} | ${overallIcon} | ${mdCell(pb.jsGzipAvg, pb.status, kb)} | ${mdCell(pb.localeLeakAvgPct, pb.status, pct)} | ${mdCell(pb.otherPageContentLeakAvgPct, pb.status, pct)} | ${mdCell(co.gzipAvg, co.status, kb)} | ${mdCell(re.e2eAvgMs, re.status, ms)} | ${mdCell(re.profilerAvgMs, re.status, ms)} | ${mdCell(rd.e2ePageLoadAvgMs, rd.status, ms)} | ${mdCell(rd.hydrationAvgMs, rd.status, ms)} |`,
         );
       }
       lines.push("");
@@ -1291,11 +1327,13 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
           for (const p of locData.pages) {
             const jsGz = p.jsGzipSize > 0 ? kb(p.jsGzipSize) : "—";
             lines.push(
-              `| \`${p.path}\` | ${jsGz} | ${pct(p.localeLeakagePercent)} | ${pct(p.pageLeakagePercent)} |`,
+              `| \`${p.path}\` | ${jsGz} | ${pct(p.localeLeakagePercent)} | ${pct(p.otherPageContentLeakagePercent ?? p.pageLeakagePercent)} |`,
             );
           }
           lines.push("");
         }
+        lines.push(`**Bundle link:** [View on GitHub](${catData.bundleLink})`);
+        lines.push("");
         lines.push("</details>");
         lines.push("");
       }
@@ -1327,7 +1365,7 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
         );
         lines.push("");
         lines.push(
-          "| Locale | Page load avg | Hydration avg | React mount avg |",
+          "| Locale | Page load | Hydration | React mount |",
         );
         lines.push("| :---: | ---: | ---: | ---: |");
         for (const [locale, d] of Object.entries(catData.rendering.byLocale)) {
@@ -1380,6 +1418,17 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
   lines.push("");
 
   return lines.join("\n");
+}
+
+function getBundleLink(cat: string, appName: string): string {
+  let p = cat
+    .replace("scoped-", "")
+    .replace("dynamic", "dynamic/")
+    .replace("static", "static/");
+  if (appName.includes("-base-app")) {
+    p = "";
+  }
+  return `https://github.com/aymericzip/benchmark-bloom/tree/main/apps-benchmark/${p}${appName}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -1455,11 +1504,26 @@ function main() {
     frameworkSummaries.set(fw, buildFrameworkSummary(fw, apps, generatedAt));
   }
 
+  const splitSummaries = new Map<string, { fw: string, cat: TestCategory, summary: FrameworkSummary }>();
+  for (const [fw, apps] of frameworkMap) {
+    for (const cat of CATEGORY_ORDER) {
+      splitSummaries.set(`${fw}-${cat}`, {
+        fw,
+        cat,
+        summary: buildFrameworkSummary(fw, apps, generatedAt, cat),
+      });
+    }
+  }
+
   // Write JSON files
   if (outBasePath) {
-    for (const [fw, summary] of frameworkSummaries) {
-      const slug = fw.startsWith("tanstack") ? "tanstack" : "nextjs";
-      const outPath = `${outBasePath}-${slug}.json`;
+    for (const [key, { fw, cat, summary }] of splitSummaries) {
+      let slug = "unknown";
+      if (fw === "nextjs") slug = "nextjs";
+      else if (fw.startsWith("tanstack")) slug = "tanstack";
+      else if (fw === "vite") slug = "vite";
+
+      const outPath = `${outBasePath}-${slug}-${cat}.json`;
       mkdirSync(dirname(outPath), { recursive: true });
       writeFileSync(outPath, JSON.stringify(summary, null, 2), "utf-8");
       console.error(`Wrote ${outPath}`);
@@ -1468,9 +1532,13 @@ function main() {
 
   // Write Markdown files
   if (mdBasePath) {
-    for (const [fw, summary] of frameworkSummaries) {
-      const slug = fw.startsWith("tanstack") ? "tanstack" : "nextjs";
-      const mdPath = `${mdBasePath}-${slug}.md`;
+    for (const [key, { fw, cat, summary }] of splitSummaries) {
+      let slug = "unknown";
+      if (fw === "nextjs") slug = "nextjs";
+      else if (fw.startsWith("tanstack")) slug = "tanstack";
+      else if (fw === "vite") slug = "vite";
+
+      const mdPath = `${mdBasePath}-${slug}-${cat}.md`;
       const md = renderMarkdownByLib(summary);
       mkdirSync(dirname(mdPath), { recursive: true });
       writeFileSync(mdPath, md, "utf-8");
@@ -1480,8 +1548,8 @@ function main() {
 
   if (outputJson) {
     const out: Record<string, FrameworkSummary> = {};
-    for (const [fw, summary] of frameworkSummaries) {
-      out[fw] = summary;
+    for (const [key, { summary }] of splitSummaries) {
+      out[key] = summary;
     }
     console.log(JSON.stringify(out, null, 2));
     return;
@@ -1509,12 +1577,12 @@ function main() {
     "Status",
     "Page JS avg (gz)",
     "Locale leak %",
-    "Page leak %",
+    "Other page content leak %",
     "Comp avg (gz)",
     "E2E reactivity",
     "React Profiler",
-    "Page load avg",
-    "Hydration avg",
+    "Page load",
+    "Hydration",
   ];
 
   for (const [fw, summary] of frameworkSummaries) {
@@ -1557,7 +1625,7 @@ function main() {
           overallSym,
           fmtMetric(pb.jsGzipAvg, pb.status, kb),
           fmtMetric(pb.localeLeakAvgPct, pb.status, pct),
-          fmtMetric(pb.pageLeakAvgPct, pb.status, pct),
+          fmtMetric(pb.otherPageContentLeakAvgPct, pb.status, pct),
           fmtMetric(co.gzipAvg, co.status, kb),
           fmtMetric(re.e2eAvgMs, re.status, ms),
           fmtMetric(re.profilerAvgMs, re.status, ms),
@@ -1572,6 +1640,17 @@ function main() {
           .map((l) => `    ${l}`)
           .join("\n"),
       );
+
+      // Collect the app names to display bundle links
+      const appLinks = CATEGORY_ORDER.map((cat) => {
+        const catData = libData[cat];
+        if (!catData) return null;
+        return `    🔗 ${CATEGORY_LABELS[cat] ?? cat} bundle: ${catData.bundleLink}`;
+      }).filter(Boolean);
+
+      if (appLinks.length > 0) {
+        console.log(`\n${appLinks.join("\n")}`);
+      }
     }
 
     console.log();

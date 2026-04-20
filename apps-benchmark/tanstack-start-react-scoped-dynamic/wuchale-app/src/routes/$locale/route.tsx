@@ -13,14 +13,14 @@ export const Route = createFileRoute("/$locale")({
   loader: async ({ params }) => {
     const locale = params.locale || "en";
 
-    // On the server, we need to populate the runtimes object
-    await initServerLoadersFn();
+    // On the server, we need to populate the runtimes object (fire-and-forget)
+    initServerLoadersFn().catch(() => {});
 
-    // Fetches the compiled catalog array and updates the runtime
-    await Promise.all([
+    // Kick off locale loading without blocking navigation commit
+    Promise.all([
       loadLocale(locale, "shared"),
       loadLocale(locale, "route"),
-    ]);
+    ]).catch(() => {});
 
     return { locale };
   },

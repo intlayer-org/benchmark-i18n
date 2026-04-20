@@ -7,6 +7,7 @@ import {
   createRootRouteWithContext,
   useMatches,
   useRouter,
+  useRouterState,
 } from "@tanstack/react-router";
 import type { i18n } from "i18next";
 
@@ -83,7 +84,12 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     recordHydrationDuration();
   }, []);
 
-  const { locale = defaultLocale } = LocaleRoute.useParams();
+  const { locale: committedLocale = defaultLocale } = LocaleRoute.useParams();
+  const pendingLocale = useRouterState({
+    select: (s) =>
+      (s.pendingMatches as any)?.find((m: any) => m.params?.locale)?.params?.locale as string | undefined,
+  });
+  const locale = pendingLocale ?? committedLocale;
   const matches = useMatches();
   const router = useRouter();
   const i18n = router.options.context!.i18n;

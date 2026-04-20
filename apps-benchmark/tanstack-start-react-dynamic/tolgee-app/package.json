@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-tolgee-app",
+  "name": "tanstack-dynamic-tolgee-app",
   "private": true,
   "type": "module",
   "imports": {

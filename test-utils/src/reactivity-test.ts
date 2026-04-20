@@ -361,7 +361,6 @@ export const registerReactivityTest = (test: any, expect: any, config: Reactivit
     const resultsDirectory = path.join(
       benchmarkBloomRoot(process.cwd()),
       "results",
-      benchmarkCategory,
       appName,
     );
     saveReactivityResults(

@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-gt-react-app",
+  "name": "tanstack-dynamic-gt-react-app",
   "private": true,
   "type": "module",
   "imports": {

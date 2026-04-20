@@ -27,13 +27,13 @@ const config = defineConfig({
     viteReact(),
 
     visualizer({
-      filename: `../../../results/tanstack-start-react-dynamic/${packageJson.name}/stats.json`,
+      filename: `../../../results/${packageJson.name}/bundle/stats.json`,
       template: "raw-data",
       gzipSize: true,
       brotliSize: true,
     }),
     visualizer({
-      filename: `../../../results/tanstack-start-react-dynamic/${packageJson.name}/rollup-visualizer.html`,
+      filename: `../../../results/${packageJson.name}/bundle/rollup-visualizer.html`,
       open: false,
       gzipSize: true,
       brotliSize: true,

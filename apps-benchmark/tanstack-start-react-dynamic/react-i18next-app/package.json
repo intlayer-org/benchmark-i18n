@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-react-i18next-app",
+  "name": "tanstack-dynamic-react-i18next-app",
   "private": true,
   "type": "module",
   "imports": {

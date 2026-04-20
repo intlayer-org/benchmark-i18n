@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-lingui-app",
+  "name": "tanstack-dynamic-lingui-app",
   "private": true,
   "type": "module",
   "imports": {

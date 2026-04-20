@@ -1,5 +1,5 @@
 {
-  "name": "dynamic-wuchale-app",
+  "name": "tanstack-dynamic-wuchale-app",
   "private": true,
   "type": "module",
   "imports": {

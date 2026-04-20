@@ -13,7 +13,8 @@
     "test:consistency": "playwright test structure-consistency.test.ts",
     "test:pages": "playwright test pages.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
-    "test:rendering": "playwright test rendering.test.ts"
+    "test:rendering": "playwright test rendering.test.ts",
+    "test:bundle": "next experimental-analyze --output && mkdir -p ../../../results/${npm_package_name}/bundle && cp -r .next/diagnostics/analyze/* ../../../results/${npm_package_name}/bundle/ && mv ../../../results/${npm_package_name}/bundle/index.html ../../../results/${npm_package_name}/bundle/rollup-visualizer.html"
   },
   "dependencies": {
     "@generaltranslation/react-core": "^1.8.2",

@@ -1,5 +1,5 @@
 {
-  "name": "lingo.dev-app-nextjs",
+  "name": "nextjs-static-lingo.dev-app",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,10 +11,11 @@
     "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity && bun test:lib-size",
     "test:components": "bun scripts/measure-components.ts",
     "test:consistency": "playwright test structure-consistency.test.ts",
-    "test:lib-size": "playwright test lib-size.test.ts",
+    "test:lib-size": "bun scripts/measure-lib-size.ts",
     "test:pages": "playwright test pages.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
-    "test:rendering": "playwright test rendering.test.ts"
+    "test:rendering": "playwright test rendering.test.ts",
+    "test:bundle": "next experimental-analyze --output && mkdir -p ../../../results/${npm_package_name}/bundle && cp -r .next/diagnostics/analyze/* ../../../results/${npm_package_name}/bundle/ && mv ../../../results/${npm_package_name}/bundle/index.html ../../../results/${npm_package_name}/bundle/rollup-visualizer.html"
   },
   "dependencies": {
     "@lingo.dev/compiler": "^0.4.0",

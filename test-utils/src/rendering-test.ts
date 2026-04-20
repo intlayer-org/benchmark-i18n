@@ -367,7 +367,6 @@ export const registerRenderingTest = (test: any, expect: any, config: RenderingT
     const resultsDirectory = path.join(
       benchmarkBloomRoot(process.cwd()),
       "results",
-      benchmarkCategory,
       appName,
     );
 

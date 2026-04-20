@@ -1,5 +1,5 @@
 {
-  "name": "scoped-dynamic-react-intl-app",
+  "name": "tanstack-scoped-dynamic-react-intl-app",
   "private": true,
   "type": "module",
   "imports": {

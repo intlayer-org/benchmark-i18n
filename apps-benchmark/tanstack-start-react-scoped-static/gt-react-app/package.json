@@ -1,5 +1,5 @@
 {
-  "name": "scoped-static-gt-react-app",
+  "name": "tanstack-scoped-static-gt-react-app",
   "private": true,
   "type": "module",
   "imports": {

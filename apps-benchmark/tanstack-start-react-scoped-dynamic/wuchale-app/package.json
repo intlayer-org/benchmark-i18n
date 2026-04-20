@@ -1,5 +1,5 @@
 {
-  "name": "scoped-dynamic-wuchale-app",
+  "name": "tanstack-scoped-dynamic-wuchale-app",
   "private": true,
   "type": "module",
   "imports": {

@@ -2,7 +2,13 @@
   "$schema": "https://turbo.build/schema.json",
   "tasks": {
     "build": {
-      "outputs": ["dist/**", "build/**", ".next/**", "out/**", "!.next/cache/**"]
+      "outputs": [
+        "dist/**",
+        "build/**",
+        ".next/**",
+        "out/**",
+        "!.next/cache/**"
+      ]
     },
     "test:pages": {
       "dependsOn": ["build"],
@@ -28,7 +34,16 @@
       "outputs": ["../../results/**", "../../../results/**"]
     },
     "test": {
-      "dependsOn": ["test:pages", "test:rendering", "test:reactivity", "test:components", "test:lib-size"]
+      "dependsOn": [
+        "test:pages",
+        "test:rendering",
+        "test:reactivity",
+        "test:components",
+        "test:lib-size"
+      ]
+    },
+    "test:bundle": {
+      "dependsOn": []
     },
     "dev": {
       "cache": false,

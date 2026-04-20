@@ -1,5 +1,5 @@
 {
-  "name": "scoped-dynamic-intlayer-app",
+  "name": "tanstack-scoped-dynamic-intlayer-app",
   "private": true,
   "type": "module",
   "imports": {

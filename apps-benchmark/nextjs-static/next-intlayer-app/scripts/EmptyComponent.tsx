@@ -2,7 +2,7 @@ import React from "react";
 import { IntlayerClientProvider, useIntlayer } from "next-intlayer";
 
 const TestComponent = () => {
-  const content = useIntlayer("route" as never);
+  const content = useIntlayer("header" as never);
   void content;
   return null;
 };

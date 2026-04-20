@@ -84,8 +84,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
 
   const { locale = defaultLocale } = LocaleRoute.useParams();
 
-  // Set language on server-side or if it changed
-  if (typeof window === "undefined" || tolgee.getLanguage() !== locale) {
+  // Set language on server-side
+  if (typeof window === "undefined") {
     tolgee.changeLanguage(locale);
   }
 

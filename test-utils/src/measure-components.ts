@@ -341,6 +341,8 @@ const scanAndMeasureDirectory = async (
   bundlesOutputDir: string,
   wrapperTemplate?: (componentPath: string) => string,
   additionalPlugins: any[] = [],
+  configRoot?: string,
+  skipViteConfig?: boolean,
 ): Promise<ComponentSizeStats[]> => {
   const componentStats: ComponentSizeStats[] = [];
 
@@ -368,6 +370,8 @@ const scanAndMeasureDirectory = async (
         false,
         wrapperTemplate,
         additionalPlugins,
+        configRoot,
+        skipViteConfig,
       );
 
       // Build 2: Minified
@@ -377,6 +381,8 @@ const scanAndMeasureDirectory = async (
         true,
         wrapperTemplate,
         additionalPlugins,
+        configRoot,
+        skipViteConfig,
       );
 
       // Write both bundled code versions to disk for inspection
@@ -525,6 +531,8 @@ export const measureComponents = async ({
   additionalExternalPackages = [],
   wrapperTemplate,
   additionalPlugins = [],
+  appDir,
+  skipViteConfig,
 }: MeasureConfig): Promise<void> => {
   const resolvedComponentDirectories = componentDirectories.map(
     (directoryPath) => path.resolve(directoryPath),
@@ -533,14 +541,14 @@ export const measureComponents = async ({
     ...BASE_EXTERNAL_PACKAGES,
     ...additionalExternalPackages,
   ];
+  const effectiveDir = appDir ?? process.cwd();
   const resultsDirectory = path.join(
-    benchmarkBloomRoot(process.cwd()),
+    benchmarkBloomRoot(effectiveDir),
     "results",
-    benchmarkCategory,
     appName,
   );
 
-  const bundlesOutputDir = path.join(resultsDirectory, "bundles");
+  const bundlesOutputDir = path.join(resultsDirectory, "bundle");
 
   console.log(`\n--- COMPONENT SIZE MEASUREMENT CONFIG ---`);
   console.log(`App Name: ${appName}`);
@@ -563,6 +571,8 @@ export const measureComponents = async ({
       bundlesOutputDir,
       wrapperTemplate,
       additionalPlugins,
+      effectiveDir,
+      skipViteConfig,
     );
     allComponentStats.push(...directoryStats);
   }
@@ -623,7 +633,6 @@ export const measureLibSize = async ({
   const resultsDirectory = path.join(
     benchmarkBloomRoot(effectiveDir),
     "results",
-    benchmarkCategory,
     appName,
   );
 
@@ -662,6 +671,18 @@ export const measureLibSize = async ({
     console.log(
       `EmptyComponent.tsx: Unminified=${(unminified.bytes / 1024).toFixed(2)}KB | Minified=${(minified.bytes / 1024).toFixed(2)}KB | Gzip=${(minified.gzipBytes / 1024).toFixed(2)}KB`,
     );
+
+    // Save the bundled code to disk for inspection
+    const bundlesOutputDir = path.join(resultsDirectory, "bundle", "Lib");
+    if (!fs.existsSync(bundlesOutputDir)) {
+      fs.mkdirSync(bundlesOutputDir, { recursive: true });
+    }
+
+    const unminifiedPath = path.join(bundlesOutputDir, "index.js");
+    fs.writeFileSync(unminifiedPath, unminified.code, "utf-8");
+
+    const minifiedPath = path.join(bundlesOutputDir, "index_min.js");
+    fs.writeFileSync(minifiedPath, minified.code, "utf-8");
 
     const stats: ComponentSizeStats[] = [
       {

@@ -1,5 +1,5 @@
 {
-  "name": "scoped-dynamic-gt-react-app",
+  "name": "tanstack-scoped-dynamic-gt-react-app",
   "private": true,
   "type": "module",
   "imports": {
