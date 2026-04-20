@@ -10,6 +10,6 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
-    messages: await getAllMessages(locale),
+    messages: await getMessages(locale, ["shared", "route"]),
   };
 });

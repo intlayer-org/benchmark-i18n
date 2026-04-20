@@ -35,6 +35,18 @@ import { dirname, join, resolve } from "path";
 const REPO_ROOT = resolve(import.meta.dir, "../..");
 const RESULTS_DIR = join(REPO_ROOT, "results");
 const APPS_DIR = join(REPO_ROOT, "apps-benchmark");
+const APP_MAP_PATH = join(REPO_ROOT, "report/scripts/appMap.json");
+
+const appMap = existsSync(APP_MAP_PATH)
+  ? JSON.parse(readFileSync(APP_MAP_PATH, "utf-8"))
+  : null;
+
+const FALLBACKS: Record<string, string[]> = appMap?.fallbacks ?? {
+  "scoped-dynamic": ["scoped-dynamic", "dynamic", "static"],
+  "scoped-static": ["scoped-static", "static"],
+  dynamic: ["dynamic", "static"],
+  static: ["static"],
+};
 
 // ---------------------------------------------------------------------------
 // CLI args
@@ -1079,18 +1091,24 @@ function buildFrameworkSummary(
     const libSizeApp =
       libApps.find((a) => a.libSize.status === "ok") ?? libApps[0];
 
-    const getCategory = (cat: string): CategoryData | null => {
-      const app = libApps.find((a) => a.testCategory === cat);
-      if (!app) return null;
-      return {
-        appName: app.appName,
-        bundleLink: getBundleLink(cat, app.appName),
-        overallStatus: app.overallStatus,
-        pageBundle: app.pageBundle,
-        components: app.components,
-        reactivity: app.reactivity,
-        rendering: app.rendering,
-      };
+    const getCategory = (cat: TestCategory): CategoryData | null => {
+      const chain = FALLBACKS[cat] ?? [cat];
+
+      for (const fallbackCat of chain) {
+        const app = libApps.find((a) => a.testCategory === fallbackCat);
+        if (!app) continue;
+
+        return {
+          appName: app.appName,
+          bundleLink: getBundleLink(app.testCategory, app.appName),
+          overallStatus: app.overallStatus,
+          pageBundle: app.pageBundle,
+          components: app.components,
+          reactivity: app.reactivity,
+          rendering: app.rendering,
+        };
+      }
+      return null;
     };
 
     let staticCat = getCategory("static");
@@ -1424,6 +1442,24 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
 }
 
 function getBundleLink(cat: string, appName: string): string {
+  // Try to find the app in appMap first to get the correct path
+  if (appMap) {
+    for (const fw of ["nextjs", "tanstack", "vite"]) {
+      const fwData = appMap[fw];
+      if (!fwData?.apps) continue;
+      for (const lib of Object.values(fwData.apps) as any[]) {
+        const path = lib[cat];
+        if (
+          path &&
+          (path.includes(appName) || appName.includes(path.split("/").pop()!))
+        ) {
+          return `https://github.com/intlayer-org/benchmark-bloom/tree/main/${path.replace("./", "")}`;
+        }
+      }
+    }
+  }
+
+  // Fallback to heuristic
   let p = cat
     .replace("scoped-", "")
     .replace("dynamic", "dynamic/")

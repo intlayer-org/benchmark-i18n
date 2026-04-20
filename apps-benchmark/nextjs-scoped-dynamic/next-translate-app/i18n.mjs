@@ -23,32 +23,34 @@ export default {
   pages: {
     "*": ["common"],
   },
-  loadLocaleFrom: async (lang, namespace) => {
+  loadLocaleFrom: async (lang, ns) => {
     const locale = lang ?? "en";
     const safeLocale = locales.includes(locale) ? locale : "en";
+    const namespace = ns || "common";
 
-    const translations = {};
-    for (const ns of namespaces) {
+    try {
+      const module = await import(`./locales/${safeLocale}/${namespace}.json`, {
+        with: { type: "json" },
+      });
+      const translations = {};
+      for (const [key, value] of Object.entries(module.default)) {
+        translations[`${namespace}.${key}`] = value;
+      }
+      return translations;
+    } catch {
       try {
-        const module = await import(`./locales/${safeLocale}/${ns}.json`, {
+        const fallbackModule = await import(`./locales/en/${namespace}.json`, {
           with: { type: "json" },
         });
-        for (const [key, value] of Object.entries(module.default)) {
-          translations[`${ns}.${key}`] = value;
+        const translations = {};
+        for (const [key, value] of Object.entries(fallbackModule.default)) {
+          translations[`${namespace}.${key}`] = value;
         }
-      } catch {
-        try {
-          const fallbackModule = await import(`./locales/en/${ns}.json`, {
-            with: { type: "json" },
-          });
-          for (const [key, value] of Object.entries(fallbackModule.default)) {
-            translations[`${ns}.${key}`] = value;
-          }
-        } catch (e) {
-          console.error(`Failed to load namespace ${ns} for locale ${safeLocale}:`, e);
-        }
+        return translations;
+      } catch (e) {
+        console.error(`Failed to load namespace ${namespace} for locale ${safeLocale}:`, e);
+        return {};
       }
     }
-    return translations;
   },
 };

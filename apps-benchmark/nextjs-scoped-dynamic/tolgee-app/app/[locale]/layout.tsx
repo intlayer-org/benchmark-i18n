@@ -21,7 +21,14 @@ export default async function LocaleLayout({
     ? (rawLocale as Locale)
     : defaultLocale;
 
-    const messages = await getMessages(locale);
+    const messages = await getMessages(locale, [
+      "common",
+      "header",
+      "footer",
+      "themeToggle",
+      "route",
+      "mockBanner",
+    ]);
     const staticData = { [locale]: messages };
     
   return (

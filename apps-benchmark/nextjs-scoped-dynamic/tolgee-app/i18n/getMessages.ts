@@ -1,79 +1,32 @@
-const NAMESPACES = [
-  "route",
-  "header",
-  "footer",
-  "themeToggle",
-  "hero",
-  "whyItMatters",
-  "understandingImpact",
-  "resultsTable",
-  "aboutHeader",
-  "aboutGrid",
-  "whatWeMeasure",
-  "blogHeader",
-  "blogList",
-  "careersHeader",
-  "careersBenefits",
-  "openPositions",
-  "contactHeader",
-  "contactForm",
-  "faqHeader",
-  "faqList",
-  "pricingHeader",
-  "pricingTiers",
-  "productsHeader",
-  "productsGrid",
-  "settingsHeader",
-  "profileSection",
-  "preferencesSection",
-  "apiAccessSection",
-  "settingsFooter",
-  "teamHeader",
-  "teamGrid",
-  "common",
-  "home",
-  "about",
-  "blog",
-  "careers",
-  "contact",
-  "faq",
-  "pricing",
-  "products",
-  "settings",
-  "team",
-] as const;
-
-type Namespace = (typeof NAMESPACES)[number];
-
 const cache = new Map<string, Record<string, any>>();
 
-async function loadNamespace(locale: string, namespace: Namespace) {
+async function loadNamespace(locale: string, namespace: string) {
   const safeLocale = locale || "en";
   try {
     const module = await import(`./locales/${safeLocale}/${namespace}.json`);
     return module.default as Record<string, any>;
   } catch {
-    if (safeLocale === "en") {
+    try {
+      const fallback = await import(`./locales/en/${namespace}.json`);
+      return fallback.default as Record<string, any>;
+    } catch {
       return {};
     }
-    const fallback = await import(`./locales/en/${namespace}.json`);
-    return fallback.default as Record<string, any>;
   }
 }
 
-export async function getMessages(locale: string) {
+export async function getMessages(locale: string, namespaces: string[] = ["common"]) {
   const safeLocale = locale || "en";
-  const cached = cache.get(safeLocale);
-  if (cached) {
-    return cached;
-  }
-
+  
+  // We don't cache the whole result because namespaces can vary
   const entries = await Promise.all(
-    NAMESPACES.map(async (namespace) => [namespace, await loadNamespace(safeLocale, namespace)] as const)
+    namespaces.map(async (namespace) => [namespace, await loadNamespace(safeLocale, namespace)] as const)
   );
+  
   const result = Object.fromEntries(entries) as Record<string, any>;
-  const common = result.common ?? {};
-  const merged = { ...result, ...common };
-  cache.set(safeLocale, merged);
-  return merged;
+  
+  // If "common" is present, we might want to merge it or keep it namespaced
+  // Tolgee usually expects { namespace: { key: value } }
+  
+  return result;
 }

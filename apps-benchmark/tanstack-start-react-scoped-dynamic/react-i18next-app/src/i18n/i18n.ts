@@ -2,6 +2,7 @@ import i18next from "i18next";
 import type { i18n } from "i18next";
 import { initReactI18next } from "react-i18next";
 import { defaultLocale } from "./config";
+import resourcesToBackend from "i18next-resources-to-backend";
 
 export const defaultNS = "shared";
 export const namespaces = [
@@ -21,21 +22,29 @@ export const namespaces = [
 
 export function createI18n(locale: string = defaultLocale) {
   const instance = i18next.createInstance();
-  instance.use(initReactI18next).init({
-    resources: {},
-    lng: locale,
-    fallbackLng: defaultLocale,
+  instance
+    .use(initReactI18next)
+    .use(
+      resourcesToBackend(
+        (language: string, namespace: string) =>
+          import(`./locales/${language}/${namespace}.json`),
+      ),
+    )
+    .init({
+      resources: {},
+      lng: locale,
+      fallbackLng: defaultLocale,
 
-    ns: namespaces,
-    defaultNS,
+      ns: namespaces,
+      defaultNS,
 
-    interpolation: {
-      escapeValue: false,
-    },
-    react: {
-      useSuspense: false,
-    },
-  });
+      interpolation: {
+        escapeValue: false,
+      },
+      react: {
+        useSuspense: false,
+      },
+    });
 
   return instance;
 }

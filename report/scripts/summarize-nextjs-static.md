@@ -41,7 +41,7 @@ _Generated: 2026-04-20_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 151.8 KB | 0.0% | 14.1% | 0.7 KB | 14.0 ms | 3.6 ms | 14.7 ms | 9.3 ms |
+| Static | ✅ | 150.8 KB | 0.0% | 0.0% | 0.7 KB | 14.0 ms | 3.6 ms | 14.7 ms | 9.3 ms |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
@@ -53,31 +53,31 @@ _Generated: 2026-04-20_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 151.0 KB | 0.0% | 0.0% |
-| `/en/about` | 152.1 KB | 0.0% | 9.1% |
-| `/en/blog` | 151.8 KB | 0.0% | 7.1% |
-| `/en/careers` | 151.8 KB | 0.0% | 8.3% |
-| `/en/contact` | 152.3 KB | 0.0% | 50.0% |
-| `/en/faq` | 151.8 KB | 0.0% | 9.1% |
-| `/en/pricing` | 151.8 KB | 0.0% | 20.0% |
-| `/en/products` | 151.8 KB | 0.0% | 11.1% |
-| `/en/settings` | 151.8 KB | 0.0% | 16.7% |
-| `/en/team` | 151.8 KB | 0.0% | 10.0% |
+| `/en/` | 150.6 KB | 0.0% | 0.0% |
+| `/en/about` | 151.6 KB | 0.0% | 0.0% |
+| `/en/blog` | 150.6 KB | 0.0% | 0.0% |
+| `/en/careers` | 150.6 KB | 0.0% | 0.0% |
+| `/en/contact` | 151.9 KB | 0.0% | 0.0% |
+| `/en/faq` | 150.6 KB | 0.0% | 0.0% |
+| `/en/pricing` | 150.6 KB | 0.0% | 0.0% |
+| `/en/products` | 150.6 KB | 0.0% | 0.0% |
+| `/en/settings` | 150.6 KB | 0.0% | 0.0% |
+| `/en/team` | 150.6 KB | 0.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 151.0 KB | 0.0% | 0.0% |
-| `/fr/about` | 152.1 KB | 0.0% | 9.1% |
-| `/fr/blog` | 151.8 KB | 0.0% | 7.1% |
-| `/fr/careers` | 151.8 KB | 0.0% | 8.3% |
-| `/fr/contact` | 152.3 KB | 0.0% | 50.0% |
-| `/fr/faq` | 151.8 KB | 0.0% | 9.1% |
-| `/fr/pricing` | 151.8 KB | 0.0% | 20.0% |
-| `/fr/products` | 151.8 KB | 0.0% | 11.1% |
-| `/fr/settings` | 151.8 KB | 0.0% | 16.7% |
-| `/fr/team` | 151.8 KB | 0.0% | 10.0% |
+| `/fr/` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/about` | 151.6 KB | 0.0% | 0.0% |
+| `/fr/blog` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/careers` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/contact` | 151.9 KB | 0.0% | 0.0% |
+| `/fr/faq` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/products` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/settings` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/team` | 150.6 KB | 0.0% | 0.0% |
 
 **Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-base-app)
 

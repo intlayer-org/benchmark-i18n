@@ -16,7 +16,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const messages = await getMessages(locale, [...LINGUI_ALL_NAMESPACES]);
+  const messages = await getMessages(locale, ["shared", "route"]);
 
   return (
     <AppProviders locale={locale} messages={messages}>

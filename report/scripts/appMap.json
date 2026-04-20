@@ -1,0 +1,125 @@
+{
+  "fallbacks": {
+    "scoped-dynamic": ["scoped-dynamic", "dynamic", "static"],
+    "scoped-static": ["scoped-static", "static"],
+    "dynamic": ["dynamic", "static"],
+    "static": ["static"]
+  },
+  "nextjs": {
+    "base": "./apps-benchmark/nextjs-base-app",
+    "apps": {
+      "gt-next": {
+        "static": "./apps-benchmark/nextjs-static/gt-next-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/gt-next-app",
+        "scoped-static": "./apps-benchmark/nextjs-scoped-static/gt-next-app",
+        "scoped-dynamic": "./apps-benchmark/nextjs-scoped-dynamic/gt-next-app"
+      },
+      "lingo.dev": {
+        "static": "./apps-benchmark/nextjs-static/lingo.dev-app"
+      },
+      "lingui": {
+        "static": "./apps-benchmark/nextjs-static/lingui-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/lingui-app",
+        "scoped-static": "./apps-benchmark/nextjs-scoped-static/lingui-app",
+        "scoped-dynamic": "./apps-benchmark/nextjs-scoped-dynamic/lingui-app"
+      },
+      "next-i18next": {
+        "static": "./apps-benchmark/nextjs-static/next-i18next-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/next-i18next-app",
+        "scoped-static": "./apps-benchmark/nextjs-scoped-static/next-i18next-app",
+        "scoped-dynamic": "./apps-benchmark/nextjs-scoped-dynamic/next-i18next-app"
+      },
+      "next-international": {
+        "static": "./apps-benchmark/nextjs-static/next-international-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/next-international-app",
+        "scoped-static": "./apps-benchmark/nextjs-scoped-static/next-international-app",
+        "scoped-dynamic": "./apps-benchmark/nextjs-scoped-dynamic/next-international-app"
+      },
+      "next-intl": {
+        "static": "./apps-benchmark/nextjs-static/next-intl-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/next-intl-app",
+        "scoped-static": "./apps-benchmark/nextjs-scoped-static/next-intl-app",
+        "scoped-dynamic": "./apps-benchmark/nextjs-scoped-dynamic/next-intl-app"
+      },
+      "next-intlayer": {
+        "static": "./apps-benchmark/nextjs-static/next-intlayer-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/next-intlayer-app"
+      },
+      "next-translate": {
+        "static": "./apps-benchmark/nextjs-static/next-translate-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/next-translate-app",
+        "scoped-static": "./apps-benchmark/nextjs-scoped-static/next-translate-app",
+        "scoped-dynamic": "./apps-benchmark/nextjs-scoped-dynamic/next-translate-app"
+      },
+      "paraglide-next": {
+        "static": "./apps-benchmark/nextjs-static/paraglide-next-app"
+      },
+      "tolgee": {
+        "static": "./apps-benchmark/nextjs-static/tolgee-app",
+        "scoped-static": "./apps-benchmark/nextjs-scoped-static/tolgee-app",
+        "scoped-dynamic": "./apps-benchmark/nextjs-scoped-dynamic/tolgee-app"
+      }
+    }
+  },
+  "tanstack": {
+    "base": "./apps-benchmark/tanstack-start-react-base-app",
+    "apps": {
+      "gt-react": {
+        "static": "./apps-benchmark/tanstack-start-react-static/gt-react-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/gt-react-app",
+        "scoped-static": "./apps-benchmark/tanstack-start-react-scoped-static/gt-react-app",
+        "scoped-dynamic": "./apps-benchmark/tanstack-start-react-scoped-dynamic/gt-react-app"
+      },
+      "intlayer": {
+        "static": "./apps-benchmark/tanstack-start-react-static/intlayer-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/intlayer-app",
+        "scoped-dynamic": "./apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app"
+      },
+      "lingo.dev": {
+        "static": "./apps-benchmark/tanstack-start-react-static/lingo.dev-app"
+      },
+      "lingui": {
+        "static": "./apps-benchmark/tanstack-start-react-static/lingui-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/lingui-app",
+        "scoped-static": "./apps-benchmark/tanstack-start-react-scoped-static/lingui-app",
+        "scoped-dynamic": "./apps-benchmark/tanstack-start-react-scoped-dynamic/lingui-app"
+      },
+      "paraglide": {
+        "static": "./apps-benchmark/tanstack-start-react-static/paraglide-app"
+      },
+      "react-i18next": {
+        "static": "./apps-benchmark/tanstack-start-react-static/react-i18next-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/react-i18next-app",
+        "scoped-static": "./apps-benchmark/tanstack-start-react-scoped-static/react-i18next-app",
+        "scoped-dynamic": "./apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app"
+      },
+      "react-intl": {
+        "static": "./apps-benchmark/tanstack-start-react-static/react-intl-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/react-intl-app",
+        "scoped-static": "./apps-benchmark/tanstack-start-react-scoped-static/react-intl-app",
+        "scoped-dynamic": "./apps-benchmark/tanstack-start-react-scoped-dynamic/react-intl-app"
+      },
+      "tolgee": {
+        "static": "./apps-benchmark/tanstack-start-react-static/tolgee-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/tolgee-app",
+        "scoped-static": "./apps-benchmark/tanstack-start-react-scoped-static/tolgee-app"
+      },
+      "use-intl": {
+        "static": "./apps-benchmark/tanstack-start-react-static/use-intl-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/use-intl-app",
+        "scoped-static": "./apps-benchmark/tanstack-start-react-scoped-static/use-intl-app",
+        "scoped-dynamic": "./apps-benchmark/tanstack-start-react-scoped-dynamic/use-intl-app"
+      },
+      "wuchale": {
+        "static": "./apps-benchmark/tanstack-start-react-static/wuchale-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/wuchale-app",
+        "scoped-static": "./apps-benchmark/tanstack-start-react-scoped-static/wuchale-app",
+        "scoped-dynamic": "./apps-benchmark/tanstack-start-react-scoped-dynamic/wuchale-app"
+      }
+    }
+  },
+  "vite": {
+    "base": "./apps-benchmark/vite+react-base-app",
+    "apps": {}
+  }
+}

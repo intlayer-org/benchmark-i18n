@@ -1,18 +1,35 @@
 import dynamic from "next/dynamic";
 
-const FAQHeader = dynamic(() => import("../../../components/pages/faq/FAQHeader"), {
-  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
-});
-const FAQList = dynamic(() => import("../../../components/pages/faq/FAQList"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
-});
+import { type Namespace, type Locale } from "../../../i18n/config";
+import { initI18next } from "../../../i18n/server";
+import type { ResourceLanguage } from "i18next";
+import AppProviders from "../../../components/AppProviders";
 
-export default function FAQ() {
+const FAQHeader = dynamic(
+  () => import("../../../components/pages/faq/FAQHeader"),
+);
+const FAQList = dynamic(() => import("../../../components/pages/faq/FAQList"));
+
+export default async function FAQ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const pageNamespaces: Namespace[] = ["faq"];
+  const i18n = await initI18next(locale, pageNamespaces);
+
+  const resources = Object.fromEntries(
+    pageNamespaces.map((ns) => [ns, i18n.getResourceBundle(locale, ns)]),
+  ) as Record<string, ResourceLanguage>;
+
   return (
-    <div className="container py-16">
-      <FAQHeader />
+    <AppProviders initialResources={resources}>
+      <div className="container py-16">
+        <FAQHeader />
 
-      <FAQList />
-    </div>
+        <FAQList />
+      </div>
+    </AppProviders>
   );
 }

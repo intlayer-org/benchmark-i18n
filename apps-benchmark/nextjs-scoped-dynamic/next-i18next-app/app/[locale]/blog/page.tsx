@@ -1,18 +1,32 @@
 import dynamic from "next/dynamic";
+import { type Namespace, type Locale } from "../../../i18n/config";
+import { initI18next } from "../../../i18n/server";
+import type { ResourceLanguage } from "i18next";
+import AppProviders from "../../../components/AppProviders";
 
-const BlogHeader = dynamic(() => import("../../../components/pages/blog/BlogHeader"), {
-  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
-});
-const BlogList = dynamic(() => import("../../../components/pages/blog/BlogList"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
-});
+const BlogHeader = dynamic(() => import("../../../components/pages/blog/BlogHeader"));
+const BlogList = dynamic(() => import("../../../components/pages/blog/BlogList"));
 
-export default function Blog() {
+export default async function Blog({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const pageNamespaces: Namespace[] = ["blog"];
+  const i18n = await initI18next(locale, pageNamespaces);
+
+  const resources = Object.fromEntries(
+    pageNamespaces.map((ns) => [ns, i18n.getResourceBundle(locale, ns)]),
+  ) as Record<string, ResourceLanguage>;
+
   return (
-    <div className="container py-16">
-      <BlogHeader />
+    <AppProviders initialResources={resources}>
+      <div className="container py-16">
+        <BlogHeader />
 
-      <BlogList />
-    </div>
+        <BlogList />
+      </div>
+    </AppProviders>
   );
 }

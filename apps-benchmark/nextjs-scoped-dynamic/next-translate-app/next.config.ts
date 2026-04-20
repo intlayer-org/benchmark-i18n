@@ -6,7 +6,4 @@ const nextConfig: NextConfig = {
   /* config options here */
 };
 
-// Note: only available in Next.js +16 (for 15, you need to force a boolean, default false)
-const isTurbopack = !process.argv.includes("--webpack");
-
-export default nextTranslate(nextConfig, { turbopack: isTurbopack });
+export default nextTranslate(nextConfig, { turbopack: true });

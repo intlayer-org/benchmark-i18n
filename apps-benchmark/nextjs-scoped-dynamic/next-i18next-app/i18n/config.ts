@@ -24,3 +24,22 @@ export function getLocaleName(locale: string): string {
     return locale.toUpperCase();
   }
 }
+
+export const namespaces = [
+  "about",
+  "blog",
+  "careers",
+  "contact",
+  "faq",
+  "home",
+  "pricing",
+  "products",
+  "route",
+  "settings",
+  "shared",
+  "team",
+] as const;
+
+export type Namespace = (typeof namespaces)[number];
+
+export const defaultNS: Namespace = "shared";

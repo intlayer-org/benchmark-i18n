@@ -1,18 +1,32 @@
 import dynamic from "next/dynamic";
+import { type Namespace, type Locale } from "../../../i18n/config";
+import { initI18next } from "../../../i18n/server";
+import type { ResourceLanguage } from "i18next";
+import AppProviders from "../../../components/AppProviders";
 
-const TeamHeader = dynamic(() => import("../../../components/pages/team/TeamHeader"), {
-  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
-});
-const TeamGrid = dynamic(() => import("../../../components/pages/team/TeamGrid"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
-});
+const TeamHeader = dynamic(() => import("../../../components/pages/team/TeamHeader"));
+const TeamGrid = dynamic(() => import("../../../components/pages/team/TeamGrid"));
 
-export default function Team() {
+export default async function Team({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const pageNamespaces: Namespace[] = ["team"];
+  const i18n = await initI18next(locale, pageNamespaces);
+
+  const resources = Object.fromEntries(
+    pageNamespaces.map((ns) => [ns, i18n.getResourceBundle(locale, ns)]),
+  ) as Record<string, ResourceLanguage>;
+
   return (
-    <div className="container py-16">
-      <TeamHeader />
+    <AppProviders initialResources={resources}>
+      <div className="container py-16">
+        <TeamHeader />
 
-      <TeamGrid />
-    </div>
+        <TeamGrid />
+      </div>
+    </AppProviders>
   );
 }

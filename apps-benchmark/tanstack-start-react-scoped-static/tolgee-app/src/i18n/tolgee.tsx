@@ -1,6 +1,5 @@
 import { Tolgee, FormatSimple } from "@tolgee/web";
 import { getMessages } from "./getMessages";
-import { locales } from "./config";
 import {
   useTranslate as useTolgeeTranslate,
   T as TolgeeT,

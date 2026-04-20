@@ -44,7 +44,7 @@ _Generated: 2026-04-20_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | ✅ | 151.8 KB | 0.0% | 14.1% | 0.7 KB | 14.0 ms | 3.6 ms | 14.7 ms | 9.3 ms |
+| Scoped Dynamic | ✅ | 150.8 KB | 0.0% | 0.0% | 0.7 KB | 14.0 ms | 3.6 ms | 14.7 ms | 9.3 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
@@ -53,31 +53,31 @@ _Generated: 2026-04-20_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 151.0 KB | 0.0% | 0.0% |
-| `/en/about` | 152.1 KB | 0.0% | 9.1% |
-| `/en/blog` | 151.8 KB | 0.0% | 7.1% |
-| `/en/careers` | 151.8 KB | 0.0% | 8.3% |
-| `/en/contact` | 152.3 KB | 0.0% | 50.0% |
-| `/en/faq` | 151.8 KB | 0.0% | 9.1% |
-| `/en/pricing` | 151.8 KB | 0.0% | 20.0% |
-| `/en/products` | 151.8 KB | 0.0% | 11.1% |
-| `/en/settings` | 151.8 KB | 0.0% | 16.7% |
-| `/en/team` | 151.8 KB | 0.0% | 10.0% |
+| `/en/` | 150.6 KB | 0.0% | 0.0% |
+| `/en/about` | 151.6 KB | 0.0% | 0.0% |
+| `/en/blog` | 150.6 KB | 0.0% | 0.0% |
+| `/en/careers` | 150.6 KB | 0.0% | 0.0% |
+| `/en/contact` | 151.9 KB | 0.0% | 0.0% |
+| `/en/faq` | 150.6 KB | 0.0% | 0.0% |
+| `/en/pricing` | 150.6 KB | 0.0% | 0.0% |
+| `/en/products` | 150.6 KB | 0.0% | 0.0% |
+| `/en/settings` | 150.6 KB | 0.0% | 0.0% |
+| `/en/team` | 150.6 KB | 0.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 151.0 KB | 0.0% | 0.0% |
-| `/fr/about` | 152.1 KB | 0.0% | 9.1% |
-| `/fr/blog` | 151.8 KB | 0.0% | 7.1% |
-| `/fr/careers` | 151.8 KB | 0.0% | 8.3% |
-| `/fr/contact` | 152.3 KB | 0.0% | 50.0% |
-| `/fr/faq` | 151.8 KB | 0.0% | 9.1% |
-| `/fr/pricing` | 151.8 KB | 0.0% | 20.0% |
-| `/fr/products` | 151.8 KB | 0.0% | 11.1% |
-| `/fr/settings` | 151.8 KB | 0.0% | 16.7% |
-| `/fr/team` | 151.8 KB | 0.0% | 10.0% |
+| `/fr/` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/about` | 151.6 KB | 0.0% | 0.0% |
+| `/fr/blog` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/careers` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/contact` | 151.9 KB | 0.0% | 0.0% |
+| `/fr/faq` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/products` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/settings` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/team` | 150.6 KB | 0.0% | 0.0% |
 
 **Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-base-app)
 
@@ -332,7 +332,7 @@ _Generated: 2026-04-20_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | 🔶 | 187.2 KB | 40.9% | 89.8% | 26.0 KB | 14.5 ms | 4.8 ms | 15.8 ms | 26.2 ms |
+| Scoped Dynamic | 🔶 | 172.4 KB | 0.0% | 0.0% | 26.0 KB | 14.5 ms | 4.8 ms | 15.8 ms | 26.2 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
@@ -341,31 +341,31 @@ _Generated: 2026-04-20_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 182.6 KB | 44.0% | 84.7% |
-| `/en/about` | 181.9 KB | 44.0% | 83.1% |
-| `/en/blog` | 181.9 KB | 44.0% | 85.5% |
-| `/en/careers` | 181.9 KB | 44.0% | 90.3% |
-| `/en/contact` | 181.9 KB | 44.0% | 96.8% |
-| `/en/faq` | 181.7 KB | 44.0% | 94.4% |
-| `/en/pricing` | 182.0 KB | 44.0% | 97.6% |
-| `/en/products` | 181.8 KB | 44.0% | 93.5% |
-| `/en/settings` | 182.3 KB | 44.0% | 85.6% |
-| `/en/team` | 181.9 KB | 44.0% | 87.1% |
+| `/en/` | 173.0 KB | 0.0% | 0.0% |
+| `/en/about` | 172.3 KB | 0.0% | 0.0% |
+| `/en/blog` | 172.4 KB | 0.0% | 0.0% |
+| `/en/careers` | 172.3 KB | 0.0% | 0.0% |
+| `/en/contact` | 172.4 KB | 0.0% | 0.0% |
+| `/en/faq` | 172.2 KB | 0.0% | 0.0% |
+| `/en/pricing` | 172.5 KB | 0.0% | 0.0% |
+| `/en/products` | 172.2 KB | 0.0% | 0.0% |
+| `/en/settings` | 172.7 KB | 0.0% | 0.0% |
+| `/en/team` | 172.3 KB | 0.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 193.1 KB | 37.9% | 84.2% |
-| `/fr/about` | 192.4 KB | 37.9% | 88.1% |
-| `/fr/blog` | 192.5 KB | 37.9% | 87.1% |
-| `/fr/careers` | 192.4 KB | 37.9% | 96.0% |
-| `/fr/contact` | 192.4 KB | 37.9% | 98.0% |
-| `/fr/faq` | 192.3 KB | 37.9% | 93.1% |
-| `/fr/pricing` | 192.5 KB | 37.9% | 74.3% |
-| `/fr/products` | 192.3 KB | 37.9% | 92.1% |
-| `/fr/settings` | 192.8 KB | 37.9% | 95.1% |
-| `/fr/team` | 192.4 KB | 37.9% | 90.1% |
+| `/fr/` | 173.0 KB | 0.0% | 0.0% |
+| `/fr/about` | 172.3 KB | 0.0% | 0.0% |
+| `/fr/blog` | 172.4 KB | 0.0% | 0.0% |
+| `/fr/careers` | 172.3 KB | 0.0% | 0.0% |
+| `/fr/contact` | 172.4 KB | 0.0% | 0.0% |
+| `/fr/faq` | 172.2 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 172.5 KB | 0.0% | 0.0% |
+| `/fr/products` | 172.2 KB | 0.0% | 0.0% |
+| `/fr/settings` | 172.7 KB | 0.0% | 0.0% |
+| `/fr/team` | 172.3 KB | 0.0% | 0.0% |
 
 **Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-scoped-dynamic-next-i18next-app)
 
