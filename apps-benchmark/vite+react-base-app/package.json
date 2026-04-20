@@ -1,5 +1,5 @@
 {
-  "name": "vite-base-app",
+  "name": "vite-react-base-app",
   "private": true,
   "type": "module",
   "imports": {

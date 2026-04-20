@@ -405,8 +405,8 @@ function parseCategory(appName: string): {
     framework = "nextjs";
   } else if (appName.startsWith("tanstack-")) {
     framework = "tanstack-start-react";
-  } else if (appName.startsWith("vite-")) {
-    framework = "vite";
+  } else if (appName.startsWith("vite-react-")) {
+    framework = "vite-react";
   }
 
   let testCategory = "unknown";
@@ -437,7 +437,7 @@ function deriveLibraryName(appName: string): string {
     "tanstack-scoped-static-",
     "tanstack-dynamic-",
     "tanstack-static-",
-    "vite-",
+    "vite-react-",
     "nextjs-",
     "tanstack-",
   ];
