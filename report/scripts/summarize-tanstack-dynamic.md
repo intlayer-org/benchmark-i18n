@@ -151,7 +151,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 568.3 KB | 0.0% | 90.0% |
 | `/fr/team` | 568.1 KB | 0.0% | 83.3% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-dynamic-gt-react-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-dynamic/gt-react-app)
 
 </details>
 
@@ -223,7 +223,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 119.9 KB | 0.0% | 0.0% |
 | `/fr/team` | 117.8 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-dynamic-intlayer-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-dynamic/intlayer-app)
 
 </details>
 
@@ -285,7 +285,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 123.5 KB | 0.0% | 0.0% |
 | `/fr/team` | 122.2 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-lingo.dev-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app)
 
 </details>
 
@@ -357,7 +357,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 120.7 KB | 33.3% | 0.0% |
 | `/fr/team` | 119.4 KB | 41.7% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-dynamic-lingui-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/lingui-app)
 
 </details>
 
@@ -429,7 +429,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 193.4 KB | 45.9% | 93.2% |
 | `/fr/team` | 191.9 KB | 45.9% | 89.3% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-paraglide-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/paraglide-app)
 
 </details>
 
@@ -501,7 +501,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 141.4 KB | 46.2% | 93.2% |
 | `/fr/team` | 139.9 KB | 46.2% | 89.2% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-dynamic-react-i18next-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-dynamic/react-i18next-app)
 
 </details>
 
@@ -573,7 +573,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 125.7 KB | 0.0% | 93.1% |
 | `/fr/team` | 124.2 KB | 0.0% | 89.2% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-dynamic-react-intl-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-dynamic/react-intl-app)
 
 </details>
 
@@ -645,7 +645,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 122.8 KB | 6.9% | 93.3% |
 | `/fr/team` | 121.5 KB | 10.7% | 89.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-dynamic-tolgee-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-dynamic/tolgee-app)
 
 </details>
 
@@ -717,7 +717,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 123.2 KB | 0.0% | 93.2% |
 | `/fr/team` | 121.8 KB | 0.0% | 89.3% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-dynamic-use-intl-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-dynamic/use-intl-app)
 
 </details>
 
@@ -789,7 +789,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 116.1 KB | 0.0% | 85.1% |
 | `/fr/team` | 114.6 KB | 0.0% | 97.9% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-dynamic-wuchale-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-dynamic/wuchale-app)
 
 </details>
 

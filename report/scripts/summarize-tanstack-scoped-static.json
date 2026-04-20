@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-20T21:22:24.314Z",
+    "generatedAt": "2026-04-20T22:17:29.353Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 33
@@ -869,7 +869,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-gt-react-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-scoped-static-gt-react-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-static/gt-react-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -1715,7 +1715,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-static-intlayer-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-intlayer-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/intlayer-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -2561,7 +2561,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-static-lingo.dev-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-lingo.dev-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -3407,7 +3407,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-lingui-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-scoped-static-lingui-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/lingui-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -4200,7 +4200,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-static-paraglide-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-paraglide-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/paraglide-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -5046,7 +5046,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-react-i18next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-scoped-static-react-i18next-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-static/react-i18next-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -5892,7 +5892,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-react-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-scoped-static-react-intl-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-static/react-intl-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6685,7 +6685,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-tolgee-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-scoped-static-tolgee-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/tolgee-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -7531,7 +7531,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-use-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-scoped-static-use-intl-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-static/use-intl-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -8377,7 +8377,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-wuchale-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-scoped-static-wuchale-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",

@@ -151,7 +151,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 597.3 KB | 0.0% | 90.0% |
 | `/fr/team` | 597.2 KB | 0.0% | 83.3% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-gt-react-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/gt-react-app)
 
 </details>
 
@@ -223,7 +223,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 125.3 KB | 42.9% | 0.0% |
 | `/fr/team` | 125.8 KB | 47.8% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-intlayer-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/intlayer-app)
 
 </details>
 
@@ -295,7 +295,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 123.5 KB | 0.0% | 0.0% |
 | `/fr/team` | 122.2 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-lingo.dev-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app)
 
 </details>
 
@@ -367,7 +367,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 153.7 KB | 47.4% | 97.6% |
 | `/fr/team` | 154.4 KB | 47.4% | 88.2% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-lingui-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingui-app)
 
 </details>
 
@@ -439,7 +439,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 193.4 KB | 45.9% | 93.2% |
 | `/fr/team` | 191.9 KB | 45.9% | 89.3% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-paraglide-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/paraglide-app)
 
 </details>
 
@@ -511,7 +511,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 181.5 KB | 46.2% | 93.2% |
 | `/fr/team` | 180.0 KB | 46.2% | 89.2% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-react-i18next-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/react-i18next-app)
 
 </details>
 
@@ -582,7 +582,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 190.8 KB | 45.9% | 93.1% |
 | `/fr/team` | 189.3 KB | 45.9% | 89.2% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-react-intl-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/react-intl-app)
 
 </details>
 
@@ -654,7 +654,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 202.5 KB | 46.5% | 93.4% |
 | `/fr/team` | 201.2 KB | 46.5% | 89.6% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-tolgee-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/tolgee-app)
 
 </details>
 
@@ -716,7 +716,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 184.4 KB | 45.6% | 93.2% |
 | `/fr/team` | 182.9 KB | 45.6% | 89.3% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-use-intl-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/use-intl-app)
 
 </details>
 
@@ -788,7 +788,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 116.1 KB | 0.0% | 85.1% |
 | `/fr/team` | 114.6 KB | 0.0% | 97.9% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-wuchale-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/wuchale-app)
 
 </details>
 

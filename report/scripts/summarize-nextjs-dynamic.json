@@ -2,7 +2,7 @@
   "meta": {
     "framework": "nextjs",
     "frameworkLabel": "Next.js",
-    "generatedAt": "2026-04-20T21:22:24.314Z",
+    "generatedAt": "2026-04-20T22:17:29.353Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 32
@@ -884,7 +884,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-dynamic-gt-next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-dynamic-gt-next-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/gt-next-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -1746,7 +1746,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-static-lingo.dev-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-lingo.dev-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -2608,7 +2608,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-dynamic-lingui-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-dynamic-lingui-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/lingui-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -3470,7 +3470,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-dynamic-next-i18next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-dynamic-next-i18next-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-i18next-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -4332,7 +4332,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-dynamic-next-international-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-dynamic-next-international-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-international-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -5194,7 +5194,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-dynamic-next-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-dynamic-next-intl-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-intl-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6056,7 +6056,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-dynamic-next-intlayer-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-dynamic-next-intlayer-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-intlayer-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6918,7 +6918,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-dynamic-next-translate-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-dynamic-next-translate-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-translate-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -7780,7 +7780,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-static-paraglide-next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-paraglide-next-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/paraglide-next-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -8642,7 +8642,7 @@
       "static": null,
       "dynamic": {
         "appName": "nextjs-static-tolgee-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-tolgee-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/tolgee-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",

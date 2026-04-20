@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-20T21:22:24.314Z",
+    "generatedAt": "2026-04-20T22:17:29.353Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 33
@@ -867,7 +867,7 @@
       },
       "static": {
         "appName": "tanstack-static-gt-react-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-gt-react-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/gt-react-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -1713,7 +1713,7 @@
       },
       "static": {
         "appName": "tanstack-static-intlayer-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-intlayer-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/intlayer-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -2559,7 +2559,7 @@
       },
       "static": {
         "appName": "tanstack-static-lingo.dev-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-lingo.dev-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -3405,7 +3405,7 @@
       },
       "static": {
         "appName": "tanstack-static-lingui-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-lingui-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingui-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -4251,7 +4251,7 @@
       },
       "static": {
         "appName": "tanstack-static-paraglide-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-paraglide-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/paraglide-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -5097,7 +5097,7 @@
       },
       "static": {
         "appName": "tanstack-static-react-i18next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-react-i18next-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/react-i18next-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -5917,7 +5917,7 @@
       },
       "static": {
         "appName": "tanstack-static-react-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-react-intl-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/react-intl-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -6763,7 +6763,7 @@
       },
       "static": {
         "appName": "tanstack-static-tolgee-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-tolgee-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/tolgee-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6842,9 +6842,9 @@
                   "path": "/en/",
                   "page": "home",
                   "jsGzipSize": 208050,
-                  "totalGzipSize": 218159,
+                  "totalGzipSize": 218160,
                   "cssGzipSize": 4991,
-                  "htmlGzipSize": 5118,
+                  "htmlGzipSize": 5119,
                   "fileCount": 14,
                   "jsFileCount": 12,
                   "localeLeakagePercent": 53.46534653465347,
@@ -6868,9 +6868,9 @@
                   "path": "/en/blog",
                   "page": "blog",
                   "jsGzipSize": 206253,
-                  "totalGzipSize": 215345,
+                  "totalGzipSize": 215344,
                   "cssGzipSize": 4991,
-                  "htmlGzipSize": 4101,
+                  "htmlGzipSize": 4100,
                   "fileCount": 13,
                   "jsFileCount": 11,
                   "localeLeakagePercent": 53.46534653465347,
@@ -6881,9 +6881,9 @@
                   "path": "/en/careers",
                   "page": "careers",
                   "jsGzipSize": 206648,
-                  "totalGzipSize": 215793,
+                  "totalGzipSize": 215794,
                   "cssGzipSize": 4991,
-                  "htmlGzipSize": 4154,
+                  "htmlGzipSize": 4155,
                   "fileCount": 14,
                   "jsFileCount": 12,
                   "localeLeakagePercent": 53.46534653465347,
@@ -6894,9 +6894,9 @@
                   "path": "/en/contact",
                   "page": "contact",
                   "jsGzipSize": 205835,
-                  "totalGzipSize": 214610,
+                  "totalGzipSize": 214609,
                   "cssGzipSize": 4991,
-                  "htmlGzipSize": 3784,
+                  "htmlGzipSize": 3783,
                   "fileCount": 13,
                   "jsFileCount": 11,
                   "localeLeakagePercent": 53.46534653465347,
@@ -6933,9 +6933,9 @@
                   "path": "/en/products",
                   "page": "products",
                   "jsGzipSize": 205878,
-                  "totalGzipSize": 214690,
+                  "totalGzipSize": 214689,
                   "cssGzipSize": 4991,
-                  "htmlGzipSize": 3821,
+                  "htmlGzipSize": 3820,
                   "fileCount": 13,
                   "jsFileCount": 11,
                   "localeLeakagePercent": 53.46534653465347,
@@ -7070,9 +7070,9 @@
                   "path": "/fr/blog",
                   "page": "blog",
                   "jsGzipSize": 206253,
-                  "totalGzipSize": 215480,
+                  "totalGzipSize": 215479,
                   "cssGzipSize": 4991,
-                  "htmlGzipSize": 4236,
+                  "htmlGzipSize": 4235,
                   "fileCount": 13,
                   "jsFileCount": 11,
                   "localeLeakagePercent": 46.53465346534654,
@@ -7109,9 +7109,9 @@
                   "path": "/fr/faq",
                   "page": "faq",
                   "jsGzipSize": 206466,
-                  "totalGzipSize": 216064,
+                  "totalGzipSize": 216065,
                   "cssGzipSize": 4991,
-                  "htmlGzipSize": 4607,
+                  "htmlGzipSize": 4608,
                   "fileCount": 13,
                   "jsFileCount": 11,
                   "localeLeakagePercent": 46.53465346534654,
@@ -7161,9 +7161,9 @@
                   "path": "/fr/team",
                   "page": "team",
                   "jsGzipSize": 206021,
-                  "totalGzipSize": 215198,
+                  "totalGzipSize": 215199,
                   "cssGzipSize": 4991,
-                  "htmlGzipSize": 4186,
+                  "htmlGzipSize": 4187,
                   "fileCount": 13,
                   "jsFileCount": 11,
                   "localeLeakagePercent": 46.53465346534654,
@@ -7556,7 +7556,7 @@
       },
       "static": {
         "appName": "tanstack-static-use-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-use-intl-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/use-intl-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -8402,7 +8402,7 @@
       },
       "static": {
         "appName": "tanstack-static-wuchale-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-wuchale-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/wuchale-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",

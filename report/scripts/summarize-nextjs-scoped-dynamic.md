@@ -151,7 +151,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 434.2 KB | 0.0% | 89.8% |
 | `/fr/team` | 434.2 KB | 0.0% | 83.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-scoped-dynamic-gt-next-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/gt-next-app)
 
 </details>
 
@@ -223,7 +223,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 162.4 KB | 25.0% | 55.6% |
 | `/fr/team` | 162.4 KB | 25.0% | 38.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-lingo.dev-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app)
 
 </details>
 
@@ -295,7 +295,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 158.0 KB | 5.4% | 91.9% |
 | `/fr/team` | 157.8 KB | 9.4% | 88.4% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-scoped-dynamic-lingui-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/lingui-app)
 
 </details>
 
@@ -332,7 +332,7 @@ _Generated: 2026-04-20_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | 🔶 | 172.4 KB | 0.0% | 0.0% | 26.0 KB | 14.5 ms | 4.8 ms | 15.8 ms | 26.2 ms |
+| Scoped Dynamic | 🔶 | 173.1 KB | 0.0% | 0.0% | 25.8 KB | 12.4 ms | 5.9 ms | 14.9 ms | 13.4 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
@@ -341,33 +341,33 @@ _Generated: 2026-04-20_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 173.0 KB | 0.0% | 0.0% |
-| `/en/about` | 172.3 KB | 0.0% | 0.0% |
-| `/en/blog` | 172.4 KB | 0.0% | 0.0% |
-| `/en/careers` | 172.3 KB | 0.0% | 0.0% |
-| `/en/contact` | 172.4 KB | 0.0% | 0.0% |
-| `/en/faq` | 172.2 KB | 0.0% | 0.0% |
-| `/en/pricing` | 172.5 KB | 0.0% | 0.0% |
-| `/en/products` | 172.2 KB | 0.0% | 0.0% |
-| `/en/settings` | 172.7 KB | 0.0% | 0.0% |
-| `/en/team` | 172.3 KB | 0.0% | 0.0% |
+| `/en/` | 173.7 KB | 0.0% | 0.0% |
+| `/en/about` | 173.0 KB | 0.0% | 0.0% |
+| `/en/blog` | 173.0 KB | 0.0% | 0.0% |
+| `/en/careers` | 173.0 KB | 0.0% | 0.0% |
+| `/en/contact` | 173.0 KB | 0.0% | 0.0% |
+| `/en/faq` | 172.8 KB | 0.0% | 0.0% |
+| `/en/pricing` | 173.1 KB | 0.0% | 0.0% |
+| `/en/products` | 172.9 KB | 0.0% | 0.0% |
+| `/en/settings` | 173.3 KB | 0.0% | 0.0% |
+| `/en/team` | 173.0 KB | 0.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 173.0 KB | 0.0% | 0.0% |
-| `/fr/about` | 172.3 KB | 0.0% | 0.0% |
-| `/fr/blog` | 172.4 KB | 0.0% | 0.0% |
-| `/fr/careers` | 172.3 KB | 0.0% | 0.0% |
-| `/fr/contact` | 172.4 KB | 0.0% | 0.0% |
-| `/fr/faq` | 172.2 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 172.5 KB | 0.0% | 0.0% |
-| `/fr/products` | 172.2 KB | 0.0% | 0.0% |
-| `/fr/settings` | 172.7 KB | 0.0% | 0.0% |
-| `/fr/team` | 172.3 KB | 0.0% | 0.0% |
+| `/fr/` | 173.7 KB | 0.0% | 0.0% |
+| `/fr/about` | 173.0 KB | 0.0% | 0.0% |
+| `/fr/blog` | 173.0 KB | 0.0% | 0.0% |
+| `/fr/careers` | 173.0 KB | 0.0% | 0.0% |
+| `/fr/contact` | 173.0 KB | 0.0% | 0.0% |
+| `/fr/faq` | 172.8 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 173.1 KB | 0.0% | 0.0% |
+| `/fr/products` | 172.9 KB | 0.0% | 0.0% |
+| `/fr/settings` | 173.3 KB | 0.0% | 0.0% |
+| `/fr/team` | 173.0 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-scoped-dynamic-next-i18next-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app)
 
 </details>
 
@@ -376,8 +376,8 @@ _Generated: 2026-04-20_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 14.3 ms | 9.3 ms | 25.8 ms | 5.0 ms |
-| `fr` | 14.6 ms | 12.3 ms | 22.1 ms | 4.6 ms |
+| `en` | 13.1 ms | 9.5 ms | 24.2 ms | 6.0 ms |
+| `fr` | 11.6 ms | 10.8 ms | 14.5 ms | 5.9 ms |
 
 </details>
 
@@ -386,8 +386,8 @@ _Generated: 2026-04-20_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 16.4 ms | 33.2 ms | 8.4 ms |
-| `fr` | 15.2 ms | 19.2 ms | 4.7 ms |
+| `en` | 15.9 ms | 15.2 ms | 2.0 ms |
+| `fr` | 13.8 ms | 11.7 ms | 1.6 ms |
 
 </details>
 
@@ -439,7 +439,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 163.3 KB | 0.0% | 93.5% |
 | `/fr/team` | 162.9 KB | 0.0% | 89.7% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-scoped-dynamic-next-international-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/next-international-app)
 
 </details>
 
@@ -511,7 +511,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 163.7 KB | 0.0% | 0.0% |
 | `/fr/team` | 163.3 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-scoped-dynamic-next-intl-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/next-intl-app)
 
 </details>
 
@@ -548,7 +548,7 @@ _Generated: 2026-04-20_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | ✅ | 152.0 KB | 0.0% | 0.0% | 7.2 KB | 15.4 ms | 7.6 ms | 18.4 ms | 12.6 ms |
+| Scoped Dynamic | 🔶 | 152.0 KB | 0.0% | 0.0% | 12.7 KB | 13.0 ms | 4.9 ms | 15.0 ms | 9.9 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
@@ -583,7 +583,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 152.0 KB | 0.0% | 0.0% |
 | `/fr/team` | 152.0 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-next-intlayer-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-intlayer-app)
 
 </details>
 
@@ -592,8 +592,8 @@ _Generated: 2026-04-20_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 17.5 ms | 11.4 ms | 34.1 ms | 10.3 ms |
-| `fr` | 13.3 ms | 10.6 ms | 17.5 ms | 5.0 ms |
+| `en` | 13.8 ms | 10.1 ms | 25.7 ms | 4.9 ms |
+| `fr` | 12.2 ms | 9.8 ms | 16.1 ms | 4.9 ms |
 
 </details>
 
@@ -602,8 +602,8 @@ _Generated: 2026-04-20_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 20.0 ms | 14.1 ms | 7.8 ms |
-| `fr` | 16.9 ms | 11.1 ms | 5.0 ms |
+| `en` | 15.2 ms | 10.1 ms | 4.9 ms |
+| `fr` | 14.8 ms | 9.8 ms | 4.7 ms |
 
 </details>
 
@@ -655,7 +655,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 153.2 KB | 0.0% | 92.6% |
 | `/fr/team` | 152.9 KB | 0.0% | 89.2% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-scoped-dynamic-next-translate-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/next-translate-app)
 
 </details>
 
@@ -727,7 +727,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 229.1 KB | 0.0% | 93.1% |
 | `/fr/team` | 228.7 KB | 0.0% | 88.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-paraglide-next-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/paraglide-next-app)
 
 </details>
 
@@ -799,7 +799,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 150.7 KB | 7.2% | 94.0% |
 | `/fr/team` | 150.5 KB | 5.9% | 90.1% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/nextjs-scoped-dynamic-tolgee-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/tolgee-app)
 
 </details>
 

@@ -151,7 +151,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 434.2 KB | 0.0% | 94.2% |
 | `/fr/team` | 434.2 KB | 0.0% | 89.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-gt-next-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/gt-next-app)
 
 </details>
 
@@ -223,7 +223,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 162.4 KB | 25.0% | 55.6% |
 | `/fr/team` | 162.4 KB | 25.0% | 38.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-lingo.dev-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app)
 
 </details>
 
@@ -295,7 +295,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 216.9 KB | 45.6% | 93.8% |
 | `/fr/team` | 216.8 KB | 45.6% | 88.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-lingui-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingui-app)
 
 </details>
 
@@ -367,7 +367,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 227.8 KB | 0.0% | 93.7% |
 | `/fr/team` | 227.4 KB | 0.0% | 87.2% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-next-i18next-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/next-i18next-app)
 
 </details>
 
@@ -439,7 +439,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 249.1 KB | 45.3% | 93.3% |
 | `/fr/team` | 248.8 KB | 45.3% | 89.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-next-international-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/next-international-app)
 
 </details>
 
@@ -511,7 +511,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 163.7 KB | 8.3% | 92.9% |
 | `/fr/team` | 163.3 KB | 8.3% | 89.8% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-next-intl-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/next-intl-app)
 
 </details>
 
@@ -583,7 +583,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 152.0 KB | 0.0% | 0.0% |
 | `/fr/team` | 152.0 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-next-intlayer-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/next-intlayer-app)
 
 </details>
 
@@ -655,7 +655,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 153.2 KB | 0.0% | 92.6% |
 | `/fr/team` | 152.9 KB | 0.0% | 89.2% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-next-translate-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/next-translate-app)
 
 </details>
 
@@ -727,7 +727,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 229.1 KB | 0.0% | 93.1% |
 | `/fr/team` | 228.7 KB | 0.0% | 88.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-paraglide-next-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/paraglide-next-app)
 
 </details>
 
@@ -799,7 +799,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 291.1 KB | 100.0% | 0.0% |
 | `/fr/team` | 290.9 KB | 100.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-tolgee-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/tolgee-app)
 
 </details>
 

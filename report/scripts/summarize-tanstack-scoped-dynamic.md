@@ -151,7 +151,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 573.7 KB | 0.0% | 0.0% |
 | `/fr/team` | 573.6 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-scoped-dynamic-gt-react-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/gt-react-app)
 
 </details>
 
@@ -223,7 +223,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 119.9 KB | 0.0% | 0.0% |
 | `/fr/team` | 117.8 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-scoped-dynamic-intlayer-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app)
 
 </details>
 
@@ -285,7 +285,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 123.5 KB | 0.0% | 0.0% |
 | `/fr/team` | 122.2 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-lingo.dev-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app)
 
 </details>
 
@@ -357,7 +357,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 121.4 KB | 33.3% | 0.0% |
 | `/fr/team` | 120.1 KB | 41.7% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-scoped-dynamic-lingui-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/lingui-app)
 
 </details>
 
@@ -429,7 +429,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 193.4 KB | 45.9% | 93.2% |
 | `/fr/team` | 191.9 KB | 45.9% | 89.3% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-static-paraglide-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/paraglide-app)
 
 </details>
 
@@ -501,7 +501,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 129.0 KB | 0.0% | 0.0% |
 | `/fr/team` | 127.5 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-scoped-dynamic-react-i18next-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app)
 
 </details>
 
@@ -573,7 +573,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 132.2 KB | 0.0% | 0.0% |
 | `/fr/team` | 130.7 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-scoped-dynamic-react-intl-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/react-intl-app)
 
 </details>
 
@@ -600,7 +600,7 @@ _Generated: 2026-04-20_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | 🔶 | 237.3 KB | 50.0% | 90.0% | 27.2 KB | 45.0 ms | 5.4 ms | 20.9 ms | 27.9 ms |
+| Scoped Dynamic | 🔶 | 121.9 KB | 4.9% | 90.0% | 21.1 KB | 27.9 ms | 4.6 ms | 24.4 ms | 28.8 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
@@ -609,33 +609,33 @@ _Generated: 2026-04-20_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 238.8 KB | 55.1% | 82.6% |
-| `/en/about` | 237.5 KB | 55.1% | 89.1% |
-| `/en/blog` | 237.1 KB | 55.1% | 85.9% |
-| `/en/careers` | 237.5 KB | 55.1% | 88.0% |
-| `/en/contact` | 236.7 KB | 55.1% | 97.8% |
-| `/en/faq` | 237.3 KB | 55.1% | 89.1% |
-| `/en/pricing` | 236.8 KB | 55.1% | 89.1% |
-| `/en/products` | 236.7 KB | 55.1% | 94.6% |
-| `/en/settings` | 238.2 KB | 55.1% | 94.6% |
-| `/en/team` | 236.8 KB | 55.1% | 89.1% |
+| `/en/` | 123.4 KB | 0.0% | 82.6% |
+| `/en/about` | 122.1 KB | 0.0% | 89.1% |
+| `/en/blog` | 121.7 KB | 0.0% | 85.9% |
+| `/en/careers` | 122.1 KB | 0.0% | 88.0% |
+| `/en/contact` | 121.3 KB | 0.0% | 97.8% |
+| `/en/faq` | 121.9 KB | 0.0% | 89.1% |
+| `/en/pricing` | 121.4 KB | 0.0% | 89.1% |
+| `/en/products` | 121.3 KB | 0.0% | 94.6% |
+| `/en/settings` | 122.8 KB | 0.0% | 94.6% |
+| `/en/team` | 121.5 KB | 0.0% | 89.1% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 238.8 KB | 44.9% | 84.3% |
-| `/fr/about` | 237.5 KB | 44.9% | 87.3% |
-| `/fr/blog` | 237.1 KB | 44.9% | 87.3% |
-| `/fr/careers` | 237.5 KB | 44.9% | 89.2% |
-| `/fr/contact` | 236.7 KB | 44.9% | 98.0% |
-| `/fr/faq` | 237.3 KB | 44.9% | 90.2% |
-| `/fr/pricing` | 236.8 KB | 44.9% | 87.3% |
-| `/fr/products` | 236.7 KB | 44.9% | 92.2% |
-| `/fr/settings` | 238.2 KB | 44.9% | 94.1% |
-| `/fr/team` | 236.8 KB | 44.9% | 90.2% |
+| `/fr/` | 123.4 KB | 14.3% | 84.8% |
+| `/fr/about` | 122.1 KB | 10.0% | 86.7% |
+| `/fr/blog` | 121.7 KB | 12.2% | 87.7% |
+| `/fr/careers` | 122.1 KB | 11.5% | 88.6% |
+| `/fr/contact` | 121.3 KB | 3.6% | 97.1% |
+| `/fr/faq` | 121.9 KB | 10.7% | 91.4% |
+| `/fr/pricing` | 121.4 KB | 10.7% | 87.6% |
+| `/fr/products` | 121.3 KB | 6.9% | 92.4% |
+| `/fr/settings` | 122.8 KB | 6.9% | 93.3% |
+| `/fr/team` | 121.5 KB | 10.7% | 89.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/tanstack-scoped-static-tolgee-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-dynamic/tolgee-app)
 
 </details>
 
@@ -644,8 +644,8 @@ _Generated: 2026-04-20_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 60.1 ms | 21.4 ms | 135.7 ms | 5.7 ms |
-| `fr` | 30.0 ms | 20.8 ms | 39.7 ms | 5.2 ms |
+| `en` | 40.4 ms | 19.9 ms | 60.4 ms | 4.9 ms |
+| `fr` | 15.4 ms | 11.9 ms | 18.8 ms | 4.2 ms |
 
 </details>
 
@@ -654,8 +654,8 @@ _Generated: 2026-04-20_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 21.2 ms | 29.0 ms | 5.2 ms |
-| `fr` | 20.7 ms | 26.8 ms | 4.8 ms |
+| `en` | 30.5 ms | 35.4 ms | 10.2 ms |
+| `fr` | 18.4 ms | 22.1 ms | 5.8 ms |
 
 </details>
 
@@ -707,7 +707,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 129.9 KB | 0.0% | 0.0% |
 | `/fr/team` | 128.4 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-scoped-dynamic-use-intl-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/use-intl-app)
 
 </details>
 
@@ -778,7 +778,7 @@ _Generated: 2026-04-20_
 | `/fr/settings` | 121.9 KB | 0.0% | 0.0% |
 | `/fr/team` | 120.3 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/dynamic/tanstack-scoped-dynamic-wuchale-app)
+**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/wuchale-app)
 
 </details>
 

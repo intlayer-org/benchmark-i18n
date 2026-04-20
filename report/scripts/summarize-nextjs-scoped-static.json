@@ -2,7 +2,7 @@
   "meta": {
     "framework": "nextjs",
     "frameworkLabel": "Next.js",
-    "generatedAt": "2026-04-20T21:22:24.314Z",
+    "generatedAt": "2026-04-20T22:17:29.353Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 32
@@ -885,7 +885,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-gt-next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-scoped-static-gt-next-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/gt-next-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -1747,7 +1747,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-static-lingo.dev-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-lingo.dev-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -2609,7 +2609,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-lingui-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-scoped-static-lingui-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/lingui-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -3471,7 +3471,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-next-i18next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-scoped-static-next-i18next-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/next-i18next-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -4333,7 +4333,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-next-international-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-scoped-static-next-international-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/next-international-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -5195,7 +5195,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-next-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-scoped-static-next-intl-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/next-intl-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6057,7 +6057,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-static-next-intlayer-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-next-intlayer-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/next-intlayer-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -6919,7 +6919,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-next-translate-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-scoped-static-next-translate-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/next-translate-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -7781,7 +7781,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-static-paraglide-next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-static-paraglide-next-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/paraglide-next-app",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -8643,7 +8643,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-tolgee-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/static/nextjs-scoped-static-tolgee-app",
+        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/tolgee-app",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
