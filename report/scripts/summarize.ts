@@ -384,9 +384,10 @@ function ms(value: number): string {
 // App identity
 // ---------------------------------------------------------------------------
 
-function parseCategory(
-  appName: string,
-): { framework: string; testCategory: string } {
+function parseCategory(appName: string): {
+  framework: string;
+  testCategory: string;
+} {
   let framework = "unknown";
   if (appName.startsWith("nextjs-")) {
     framework = "nextjs";
@@ -946,9 +947,7 @@ function collectAppSummary(
   dirs: string[],
   canonicalCategoryDir: string,
 ): AppSummary {
-  const { framework, testCategory } = parseCategory(
-    appName,
-  );
+  const { framework, testCategory } = parseCategory(appName);
   const library = deriveLibraryName(appName);
 
   const libSize = mergeFromDirs(
@@ -1052,7 +1051,7 @@ function buildFrameworkSummary(
   framework: string,
   apps: AppSummary[],
   generatedAt: string,
-  targetCategory?: TestCategory
+  targetCategory?: TestCategory,
 ): FrameworkSummary {
   const libMap = new Map<string, AppSummary[]>();
   for (const app of apps) {
@@ -1066,8 +1065,14 @@ function buildFrameworkSummary(
     const isBase = lib === "base" || lib.includes("base");
 
     if (isBase) {
-      if (framework === "nextjs" && !lib.includes("nextjs") && lib !== "base") continue;
-      if (framework.includes("tanstack") && !lib.includes("tanstack") && lib !== "base") continue;
+      if (framework === "nextjs" && !lib.includes("nextjs") && lib !== "base")
+        continue;
+      if (
+        framework.includes("tanstack") &&
+        !lib.includes("tanstack") &&
+        lib !== "base"
+      )
+        continue;
     }
 
     const version = libApps.find((a) => a.version != null)?.version ?? null;
@@ -1364,9 +1369,7 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
           `<summary><strong>${label}</strong> — per-locale rendering</summary>`,
         );
         lines.push("");
-        lines.push(
-          "| Locale | Page load | Hydration | React mount |",
-        );
+        lines.push("| Locale | Page load | Hydration | React mount |");
         lines.push("| :---: | ---: | ---: | ---: |");
         for (const [locale, d] of Object.entries(catData.rendering.byLocale)) {
           const hydration =
@@ -1428,7 +1431,7 @@ function getBundleLink(cat: string, appName: string): string {
   if (appName.includes("-base-app")) {
     p = "";
   }
-  return `https://github.com/aymericzip/benchmark-bloom/tree/main/apps-benchmark/${p}${appName}`;
+  return `https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/${p}${appName}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -1504,7 +1507,10 @@ function main() {
     frameworkSummaries.set(fw, buildFrameworkSummary(fw, apps, generatedAt));
   }
 
-  const splitSummaries = new Map<string, { fw: string, cat: TestCategory, summary: FrameworkSummary }>();
+  const splitSummaries = new Map<
+    string,
+    { fw: string; cat: TestCategory; summary: FrameworkSummary }
+  >();
   for (const [fw, apps] of frameworkMap) {
     for (const cat of CATEGORY_ORDER) {
       splitSummaries.set(`${fw}-${cat}`, {

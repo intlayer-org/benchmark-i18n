@@ -23,7 +23,7 @@ export const Link: FC<
     href && !isExternalLink ? getLocalizedUrl(href.toString(), locale) : href;
 
   return (
-    <NextLink href={hrefI18n} {...props}>
+    <NextLink href={hrefI18n} prefetch={false} {...props}>
       {children}
     </NextLink>
   );

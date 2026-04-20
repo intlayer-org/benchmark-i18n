@@ -49,6 +49,7 @@ export default function Footer() {
                   {linkEl.isInternal ? (
                     <Link
                       href={linkEl.href}
+                      prefetch={false}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
                       {linkEl.label}

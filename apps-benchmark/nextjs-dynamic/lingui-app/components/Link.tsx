@@ -20,20 +20,20 @@ export const Link: FC<
   const locale = (params.locale as string) ?? "en";
   if (href == null || typeof href !== "string") {
     return (
-      <NextLink href={href} {...props}>
+      <NextLink href={href} prefetch={false} {...props}>
         {children}
       </NextLink>
     );
   }
   if (checkIsExternalLink(href)) {
     return (
-      <NextLink href={href} {...props}>
+      <NextLink href={href} prefetch={false} {...props}>
         {children}
       </NextLink>
     );
   }
   return (
-    <NextLink href={localizeHref(href, locale)} {...props}>
+    <NextLink href={localizeHref(href, locale)} prefetch={false} {...props}>
       {children}
     </NextLink>
   );

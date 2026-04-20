@@ -26,6 +26,9 @@ export default function Header() {
     { href: `/settings`, label: "Settings" },
   ];
 
+  // prefetch={false} prevents Next.js from loading other pages' JS chunks while
+  // this page is being measured, which would cause false-positive page leakage.
+
   const isExactActive = (href: string) => pathname === localizeHref(href, locale);
   const isActive = (href: string) => {
     const localized = localizeHref(href, locale);
@@ -49,12 +52,14 @@ export default function Header() {
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link
               href="/"
+              prefetch={false}
               className={`nav-link${isExactActive("/") ? " is-active" : ""}`}
             >
               Home
             </Link>
             <Link
               href="/about"
+              prefetch={false}
               className={`nav-link${isActive("/about") ? " is-active" : ""}`}
             >
               Methodology
@@ -87,6 +92,7 @@ export default function Header() {
                       <Link
                         key={page.href}
                         href={page.href}
+                        prefetch={false}
                         className="block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors"
                         onClick={() => setIsMockPagesOpen(false)}
                       >

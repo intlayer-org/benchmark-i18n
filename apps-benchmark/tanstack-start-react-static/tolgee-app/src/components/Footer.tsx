@@ -48,6 +48,7 @@ export default function Footer() {
                 <li key={linkEl.label}>
                   {linkEl.isInternal ? (
                     <Link
+                      preload={false}
                       to={linkEl.to as any}
                       params={{ locale: currentLocale } as any}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"

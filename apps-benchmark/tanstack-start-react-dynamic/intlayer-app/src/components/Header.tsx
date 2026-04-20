@@ -31,6 +31,7 @@ export default function Header() {
       <nav className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
           <Link
+            preload={false}
             to="/$locale"
             params={{ locale: currentLocale }}
             className="text-lg font-bold tracking-tight text-primary no-underline"
@@ -40,6 +41,7 @@ export default function Header() {
 
           <div className="hidden items-center gap-6 text-sm font-medium md:flex">
             <Link
+              preload={false}
               to="/$locale"
               params={{ locale: currentLocale }}
               activeOptions={{ exact: true }}
@@ -49,6 +51,7 @@ export default function Header() {
               {content.home}
             </Link>
             <Link
+              preload={false}
               to="/$locale/about"
               params={{ locale: currentLocale }}
               activeProps={{ className: "is-active" }}
@@ -82,6 +85,7 @@ export default function Header() {
                   <div className="bg-card border border-border rounded-md shadow-lg overflow-hidden py-1">
                     {mockPages.map((page) => (
                       <Link
+                        preload={false}
                         key={page.to}
                         to={page.to}
                         params={{ locale: currentLocale }}
