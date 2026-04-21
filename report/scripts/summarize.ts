@@ -48,6 +48,13 @@ const FALLBACKS: Record<string, string[]> = appMap?.fallbacks ?? {
   static: ["static"],
 };
 
+/** Library slugs (`deriveLibraryName`) whose page/locale leak probes are not meaningful — omit from reports. */
+const LIBS_WITHOUT_RELIABLE_LEAK_METRICS = new Set([
+  "lingo.dev",
+  "gt-next",
+  "gt-react",
+]);
+
 // ---------------------------------------------------------------------------
 // CLI args
 // ---------------------------------------------------------------------------
@@ -135,9 +142,10 @@ interface PageData {
   htmlGzipSize: number;
   fileCount: number;
   jsFileCount: number;
-  localeLeakagePercent: number;
-  pageLeakagePercent: number;
-  otherPageContentLeakagePercent: number;
+  /** Null when leak metrics are excluded for this library (see `PageBundleData.leakMetricsExcluded`). */
+  localeLeakagePercent: number | null;
+  pageLeakagePercent: number | null;
+  otherPageContentLeakagePercent: number | null;
 }
 
 interface PageBundleLocaleData {
@@ -150,6 +158,8 @@ interface PageBundleLocaleData {
 
 interface PageBundleData {
   status: DataStatus;
+  /** True when locale/page leak columns are intentionally omitted (integration not comparable). */
+  leakMetricsExcluded?: boolean;
   byLocale: Record<string, PageBundleLocaleData>;
   jsGzipMin: number | null;
   jsGzipAvg: number | null;
@@ -668,6 +678,40 @@ function collectPageBundle(
   };
 }
 
+/** Drop locale / page leak fields for libraries where the benchmark signal is not meaningful. */
+function excludeUnreliableLeakMetrics(
+  library: string,
+  pb: PageBundleData,
+): PageBundleData {
+  if (!LIBS_WITHOUT_RELIABLE_LEAK_METRICS.has(library)) return pb;
+  if (pb.status === "missing") return pb;
+
+  const byLocale: Record<string, PageBundleLocaleData> = {};
+  for (const [locale, locData] of Object.entries(pb.byLocale)) {
+    byLocale[locale] = {
+      ...locData,
+      localeLeakPct: null,
+      pageLeakPct: null,
+      otherPageContentLeakPct: null,
+      pages: locData.pages.map((p) => ({
+        ...p,
+        localeLeakagePercent: null,
+        pageLeakagePercent: null,
+        otherPageContentLeakagePercent: null,
+      })),
+    };
+  }
+
+  return {
+    ...pb,
+    leakMetricsExcluded: true,
+    byLocale,
+    localeLeakAvgPct: null,
+    pageLeakAvgPct: null,
+    otherPageContentLeakAvgPct: null,
+  };
+}
+
 function collectComponents(appResultDir: string): ComponentsData {
   const filePath = join(appResultDir, "components-size.json");
 
@@ -967,10 +1011,13 @@ function collectAppSummary(
     (d) => collectLibSize(d),
     (s) => s.status !== "missing",
   );
-  const pageBundle = mergeFromDirs(
-    dirs,
-    (d) => collectPageBundle(d),
-    (s) => s.status !== "missing",
+  const pageBundle = excludeUnreliableLeakMetrics(
+    library,
+    mergeFromDirs(
+      dirs,
+      (d) => collectPageBundle(d),
+      (s) => s.status !== "missing",
+    ),
   );
   const components = mergeFromDirs(
     dirs,
@@ -1349,8 +1396,16 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
           lines.push("| :--- | ---: | ---: | ---: |");
           for (const p of locData.pages) {
             const jsGz = p.jsGzipSize > 0 ? kb(p.jsGzipSize) : "—";
+            const localeLeakCell =
+              p.localeLeakagePercent != null
+                ? pct(p.localeLeakagePercent)
+                : "—";
+            const otherPageLeak =
+              p.otherPageContentLeakagePercent ?? p.pageLeakagePercent;
+            const pageLeakCell =
+              otherPageLeak != null ? pct(otherPageLeak) : "—";
             lines.push(
-              `| \`${p.path}\` | ${jsGz} | ${pct(p.localeLeakagePercent)} | ${pct(p.otherPageContentLeakagePercent ?? p.pageLeakagePercent)} |`,
+              `| \`${p.path}\` | ${jsGz} | ${localeLeakCell} | ${pageLeakCell} |`,
             );
           }
           lines.push("");

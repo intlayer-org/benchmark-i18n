@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "framework": "unknown",
+    "frameworkLabel": "unknown",
+    "generatedAt": "2026-04-21T01:18:35.155Z",
+    "counts": {
+      "totalLibs": 1,
+      "totalApps": 1
+    }
+  },
+  "libs": {
+    "vite-base": {
+      "global": {
+        "version": null,
+        "libSize": {
+          "status": "ok",
+          "gzip": 0,
+          "minified": 0,
+          "unminified": 0
+        }
+      },
+      "static": null,
+      "dynamic": null,
+      "scoped-static": null,
+      "scoped-dynamic": null
+    }
+  }
+}

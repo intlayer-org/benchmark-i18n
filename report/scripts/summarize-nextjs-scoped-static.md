@@ -1,6 +1,6 @@
 # Next.js — i18n Benchmark Results
 
-_Generated: 2026-04-20_
+_Generated: 2026-04-21_
 
 ## Metric Legend
 
@@ -109,59 +109,22 @@ _Generated: 2026-04-20_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 6.16.5 | 173.1 KB | 657.9 KB |
+| 6.16.5 | — | — |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Static | 🔶 | 434.3 KB | 0.0% | 41.0% | 174.1 KB | 22.8 ms | 5.9 ms | 24.0 ms | 17.5 ms |
+| Scoped Static | 🔶 | — | — | — | 174.1 KB | 20.7 ms | 5.7 ms | 25.5 ms | 21.5 ms |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
-
-<details>
-<summary><strong>Scoped Static</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 434.6 KB | 0.0% | 0.0% |
-| `/en/about` | 434.5 KB | 0.0% | 0.0% |
-| `/en/blog` | 434.2 KB | 0.0% | 0.0% |
-| `/en/careers` | 434.2 KB | 0.0% | 0.0% |
-| `/en/contact` | 434.2 KB | 0.0% | 0.0% |
-| `/en/faq` | 434.2 KB | 0.0% | 0.0% |
-| `/en/pricing` | 434.2 KB | 0.0% | 0.0% |
-| `/en/products` | 434.2 KB | 0.0% | 0.0% |
-| `/en/settings` | 434.2 KB | 0.0% | 0.0% |
-| `/en/team` | 434.2 KB | 0.0% | 0.0% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 434.6 KB | 0.0% | 65.9% |
-| `/fr/about` | 434.5 KB | 0.0% | 77.3% |
-| `/fr/blog` | 434.2 KB | 0.0% | 77.2% |
-| `/fr/careers` | 434.2 KB | 0.0% | 75.0% |
-| `/fr/contact` | 434.2 KB | 0.0% | 97.8% |
-| `/fr/faq` | 434.2 KB | 0.0% | 81.5% |
-| `/fr/pricing` | 434.2 KB | 0.0% | 91.7% |
-| `/fr/products` | 434.2 KB | 0.0% | 81.8% |
-| `/fr/settings` | 434.2 KB | 0.0% | 89.8% |
-| `/fr/team` | 434.2 KB | 0.0% | 83.0% |
-
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/gt-next-app)
-
-</details>
 
 <details>
 <summary><strong>Scoped Static</strong> — per-locale reactivity</summary>
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 24.0 ms | 18.8 ms | 35.3 ms | 6.5 ms |
-| `fr` | 21.6 ms | 19.0 ms | 27.1 ms | 5.3 ms |
+| `en` | 21.1 ms | 16.8 ms | 32.3 ms | 5.7 ms |
+| `fr` | 20.3 ms | 15.6 ms | 27.6 ms | 5.7 ms |
 
 </details>
 
@@ -170,8 +133,8 @@ _Generated: 2026-04-20_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 24.4 ms | 17.3 ms | 2.2 ms |
-| `fr` | 23.5 ms | 17.7 ms | 2.2 ms |
+| `en` | 25.0 ms | 21.8 ms | 3.4 ms |
+| `fr` | 26.0 ms | 21.2 ms | 3.0 ms |
 
 </details>
 
@@ -187,53 +150,16 @@ _Generated: 2026-04-20_
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Static | ✅ | 162.5 KB | 14.4% | 64.9% | 7.8 KB | 22.6 ms | 5.1 ms | 30.4 ms | 14.1 ms |
+| Scoped Static | 🔶 | — | — | — | 7.8 KB | 16.8 ms | 4.7 ms | 20.9 ms | 15.3 ms |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
-
-<details>
-<summary><strong>Scoped Static</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 162.9 KB | 0.0% | 78.3% |
-| `/en/about` | 162.7 KB | 0.0% | 86.7% |
-| `/en/blog` | 162.4 KB | 0.0% | 82.6% |
-| `/en/careers` | 162.4 KB | 0.0% | 86.1% |
-| `/en/contact` | 163.1 KB | 0.0% | 97.1% |
-| `/en/faq` | 162.4 KB | 0.0% | 88.4% |
-| `/en/pricing` | 162.4 KB | 0.0% | 97.1% |
-| `/en/products` | 162.4 KB | 0.0% | 89.9% |
-| `/en/settings` | 162.4 KB | 0.0% | 94.2% |
-| `/en/team` | 162.4 KB | 0.0% | 88.4% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 162.9 KB | 33.3% | 21.1% |
-| `/fr/about` | 162.7 KB | 40.0% | 23.1% |
-| `/fr/blog` | 162.4 KB | 25.0% | 27.8% |
-| `/fr/careers` | 162.4 KB | 22.2% | 31.3% |
-| `/fr/contact` | 163.1 KB | 33.3% | 60.0% |
-| `/fr/faq` | 162.4 KB | 25.0% | 38.5% |
-| `/fr/pricing` | 162.4 KB | 25.0% | 71.4% |
-| `/fr/products` | 162.4 KB | 33.3% | 41.7% |
-| `/fr/settings` | 162.4 KB | 25.0% | 55.6% |
-| `/fr/team` | 162.4 KB | 25.0% | 38.5% |
-
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app)
-
-</details>
 
 <details>
 <summary><strong>Scoped Static</strong> — per-locale reactivity</summary>
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 26.3 ms | 19.3 ms | 35.6 ms | 5.5 ms |
-| `fr` | 19.0 ms | 16.9 ms | 21.5 ms | 4.7 ms |
+| `en` | 18.4 ms | 15.0 ms | 23.6 ms | 4.9 ms |
+| `fr` | 15.1 ms | 12.8 ms | 19.0 ms | 4.4 ms |
 
 </details>
 
@@ -242,8 +168,8 @@ _Generated: 2026-04-20_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 29.2 ms | 16.6 ms | 7.0 ms |
-| `fr` | 31.6 ms | 11.6 ms | 3.4 ms |
+| `en` | 24.4 ms | 16.8 ms | 7.9 ms |
+| `fr` | 17.4 ms | 13.8 ms | 5.0 ms |
 
 </details>
 
@@ -830,9 +756,9 @@ _Generated: 2026-04-20_
 | Metric | Count |
 | :--- | :--- |
 | Total libraries | 11 |
-| Total app entries | 32 |
-| With lib size data | 11 |
-| With page bundle data | 11 |
+| Total app entries | 29 |
+| With lib size data | 10 |
+| With page bundle data | 9 |
 | With component data | 11 |
 | With reactivity data | 11 |
 | With rendering data | 11 |
