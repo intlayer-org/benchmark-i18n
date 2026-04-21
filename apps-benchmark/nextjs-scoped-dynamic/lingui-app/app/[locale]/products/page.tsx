@@ -1,18 +1,25 @@
 import dynamic from "next/dynamic";
+import LinguiPageCatalog from "../../../components/LinguiPageCatalog";
+import { loadNamespaces } from "../../../i18n/lingui";
 
-const ProductsHeader = dynamic(() => import("../../../components/pages/products/ProductsHeader"), {
-  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
-});
-const ProductsGrid = dynamic(() => import("../../../components/pages/products/ProductsGrid"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
-});
+const ProductsHeader = dynamic(() => import("../../../components/pages/products/ProductsHeader"));
+const ProductsGrid = dynamic(() => import("../../../components/pages/products/ProductsGrid"));
 
-export default function Products() {
+export default async function Products({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const pageMessages = await loadNamespaces(locale, ["products"]);
+
   return (
-    <div className="container py-16">
-      <ProductsHeader />
+    <LinguiPageCatalog locale={locale} messages={pageMessages}>
+      <div className="container py-16">
+        <ProductsHeader />
 
-      <ProductsGrid />
-    </div>
+        <ProductsGrid />
+      </div>
+    </LinguiPageCatalog>
   );
 }

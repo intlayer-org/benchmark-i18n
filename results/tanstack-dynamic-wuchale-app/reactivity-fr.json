@@ -1,0 +1,31 @@
+{
+  "locale": "fr",
+  "timestamp": "2026-04-18T20:43:58.846Z",
+  "iterations": 5,
+  "e2e": {
+    "description": "Perceived reactivity (ms)",
+    "raw": [
+      53.69999998807907,
+      10.100000023841858,
+      8.899999976158142,
+      7.399999976158142,
+      7.100000023841858
+    ],
+    "avg": 17.439999997615814,
+    "min": 7.100000023841858,
+    "max": 53.69999998807907
+  },
+  "reactProfiler": {
+    "description": "Internal React render (ms)",
+    "raw": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "avg": 0,
+    "min": 0,
+    "max": 0
+  }
+}

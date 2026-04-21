@@ -4,22 +4,22 @@ import { useId } from "react";
 import useTranslation from "next-translate/useTranslation";
 
 export default function PreferencesSection() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("settings");
   const languageId = useId();
 
   return (
     <section className="rounded-lg border border-border bg-card p-6">
       <h2 className="mb-4 text-lg font-semibold text-foreground">
-        {t("settings.preferencesSection.preferences")}
+        {t("preferencesSection.preferences")}
       </h2>
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-foreground">
-              {t("settings.preferencesSection.emailNotifications")}
+              {t("preferencesSection.emailNotifications")}
             </p>
             <p className="text-xs text-muted-foreground">
-              {t("settings.preferencesSection.receiveWeeklyBenchmarkReports")}
+              {t("preferencesSection.receiveWeeklyBenchmarkReports")}
             </p>
           </div>
           <button
@@ -33,10 +33,10 @@ export default function PreferencesSection() {
         <div className="flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-foreground">
-              {t("settings.preferencesSection.darkMode")}
+              {t("preferencesSection.darkMode")}
             </p>
             <p className="text-xs text-muted-foreground">
-              {t("settings.preferencesSection.useDarkColorScheme")}
+              {t("preferencesSection.useDarkColorScheme")}
             </p>
           </div>
           <button
@@ -52,7 +52,7 @@ export default function PreferencesSection() {
             htmlFor={languageId}
             className="mb-1 block text-sm font-medium text-foreground"
           >
-            {t("settings.preferencesSection.defaultLanguage")}
+            {t("preferencesSection.defaultLanguage")}
           </label>
           <select
             id={languageId}

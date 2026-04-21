@@ -1,5 +1,6 @@
 "use client";
 
+import type { Messages } from "@lingui/core";
 import { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { I18nProvider } from "@lingui/react";
 import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
@@ -12,7 +13,7 @@ export default function AppProviders({
 }: {
   children: React.ReactNode;
   locale: string;
-  messages: Record<string, unknown>;
+  messages: Messages;
 }) {
   const i18n = useMemo(
     () => initLingui(locale, messages),

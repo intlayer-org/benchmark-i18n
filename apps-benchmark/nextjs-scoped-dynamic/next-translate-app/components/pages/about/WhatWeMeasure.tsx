@@ -3,34 +3,34 @@
 import useTranslation from "next-translate/useTranslation";
 
 export default function WhatWeMeasure() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("about");
   const metrics = [
     {
-      metric: t("about.whatWeMeasure.bundleSizeImpact"),
-      desc: t("about.whatWeMeasure.theAdditionalJavascriptBytesSent"),
+      metric: t("whatWeMeasure.bundleSizeImpact"),
+      desc: t("whatWeMeasure.theAdditionalJavascriptBytesSent"),
     },
     {
-      metric: t("about.whatWeMeasure.renderingOverhead"),
-      desc: t("about.whatWeMeasure.howMuchExtraTimeThe"),
+      metric: t("whatWeMeasure.renderingOverhead"),
+      desc: t("whatWeMeasure.howMuchExtraTimeThe"),
     },
     {
-      metric: t("about.whatWeMeasure.hydrationCost"),
-      desc: t("about.whatWeMeasure.duringSsrTranslationDataIs"),
+      metric: t("whatWeMeasure.hydrationCost"),
+      desc: t("whatWeMeasure.duringSsrTranslationDataIs"),
     },
     {
-      metric: t("about.whatWeMeasure.lazyLoadingEffectiveness"),
-      desc: t("about.whatWeMeasure.whetherSplittingTranslationsByRoute"),
+      metric: t("whatWeMeasure.lazyLoadingEffectiveness"),
+      desc: t("whatWeMeasure.whetherSplittingTranslationsByRoute"),
     },
     {
-      metric: t("about.whatWeMeasure.localeSwitchSpeed"),
-      desc: t("about.whatWeMeasure.howFastTheAppCan"),
+      metric: t("whatWeMeasure.localeSwitchSpeed"),
+      desc: t("whatWeMeasure.howFastTheAppCan"),
     },
   ];
 
   return (
     <section className="mt-12 mx-auto max-w-3xl">
       <h2 className="mb-4 text-2xl font-bold text-foreground">
-        {t("about.whatWeMeasure.whatWeMeasure")}
+        {t("whatWeMeasure.whatWeMeasure")}
       </h2>
       <ul className="space-y-4">
         {metrics.map((m) => (

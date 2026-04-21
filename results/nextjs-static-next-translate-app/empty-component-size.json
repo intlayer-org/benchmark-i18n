@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-04-20T01:39:48.944Z",
+  "packageName": "nextjs-static-next-translate-app",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 10732,
+    "totalMinifiedBytes": 6956,
+    "totalGzipBytes": 2465
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.tsx",
+      "category": "Synthetic",
+      "unminifiedBytes": 10732,
+      "unminifiedGzipBytes": 3034,
+      "minifiedBytes": 6956,
+      "minifiedGzipBytes": 2465
+    }
+  ]
+}

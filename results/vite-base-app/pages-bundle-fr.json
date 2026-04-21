@@ -1,0 +1,1305 @@
+{
+  "app": "base-app-vite-react",
+  "locale": "fr",
+  "timestamp": "2026-04-17T08:52:13.221Z",
+  "fingerprintCounts": {
+    "locale": {
+      "en": 0,
+      "fr": 0
+    },
+    "page": {
+      "home": 0,
+      "about": 0,
+      "blog": 0,
+      "careers": 0,
+      "contact": 0,
+      "faq": 0,
+      "pricing": 0,
+      "products": 0,
+      "settings": 0,
+      "team": 0
+    }
+  },
+  "results": [
+    {
+      "path": "/fr/",
+      "page": "home",
+      "locale": "fr",
+      "totalSize": 301454,
+      "totalGzipSize": 93286,
+      "jsSize": 275980,
+      "jsGzipSize": 87614,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 10,
+      "jsFileCount": 8,
+      "bundleFiles": [
+        {
+          "url": "/fr/",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Hero-Bat-A-9y.js",
+          "size": 1021,
+          "gzipSize": 530,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-BatqBLOS.js",
+          "size": 2093,
+          "gzipSize": 876,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-D8dkmDMh.js",
+          "size": 3251,
+          "gzipSize": 1232,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ResultsTable-CHHZNwlJ.js",
+          "size": 1554,
+          "gzipSize": 522,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/about",
+      "page": "about",
+      "locale": "fr",
+      "totalSize": 297138,
+      "totalGzipSize": 92081,
+      "jsSize": 271664,
+      "jsGzipSize": 86409,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 9,
+      "jsFileCount": 7,
+      "bundleFiles": [
+        {
+          "url": "/fr/about",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutHeader-BRbBNI8G.js",
+          "size": 607,
+          "gzipSize": 414,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutGrid-kuFbl4qp.js",
+          "size": 1379,
+          "gzipSize": 686,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhatWeMeasure-OowyToDD.js",
+          "size": 1617,
+          "gzipSize": 855,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/blog",
+      "page": "blog",
+      "locale": "fr",
+      "totalSize": 296464,
+      "totalGzipSize": 91682,
+      "jsSize": 270990,
+      "jsGzipSize": 86010,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 9,
+      "jsFileCount": 7,
+      "bundleFiles": [
+        {
+          "url": "/fr/blog",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogHeader-BYcJWL6C.js",
+          "size": 401,
+          "gzipSize": 280,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-f6B_ryUE.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogList-S_HI26mN.js",
+          "size": 2192,
+          "gzipSize": 998,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/careers",
+      "page": "careers",
+      "locale": "fr",
+      "totalSize": 297168,
+      "totalGzipSize": 92024,
+      "jsSize": 271694,
+      "jsGzipSize": 86352,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 10,
+      "jsFileCount": 8,
+      "bundleFiles": [
+        {
+          "url": "/fr/careers",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-f6B_ryUE.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-Cw2RqVeP.js",
+          "size": 635,
+          "gzipSize": 383,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersHeader-B3c6uPSl.js",
+          "size": 493,
+          "gzipSize": 332,
+          "type": "js"
+        },
+        {
+          "url": "/assets/OpenPositions-D3L0K99-.js",
+          "size": 2169,
+          "gzipSize": 905,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/contact",
+      "page": "contact",
+      "locale": "fr",
+      "totalSize": 296677,
+      "totalGzipSize": 91416,
+      "jsSize": 271203,
+      "jsGzipSize": 85744,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 9,
+      "jsFileCount": 7,
+      "bundleFiles": [
+        {
+          "url": "/fr/contact",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactHeader-B1DUzOZ9.js",
+          "size": 564,
+          "gzipSize": 361,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-f6B_ryUE.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-ByxmzK82.js",
+          "size": 2242,
+          "gzipSize": 651,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/faq",
+      "page": "faq",
+      "locale": "fr",
+      "totalSize": 296605,
+      "totalGzipSize": 91910,
+      "jsSize": 271131,
+      "jsGzipSize": 86238,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 9,
+      "jsFileCount": 7,
+      "bundleFiles": [
+        {
+          "url": "/fr/faq",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQHeader-_mva3-E_.js",
+          "size": 414,
+          "gzipSize": 293,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-f6B_ryUE.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQList-FIgI0t6-.js",
+          "size": 2320,
+          "gzipSize": 1213,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/pricing",
+      "page": "pricing",
+      "locale": "fr",
+      "totalSize": 296021,
+      "totalGzipSize": 91492,
+      "jsSize": 270547,
+      "jsGzipSize": 85820,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 9,
+      "jsFileCount": 7,
+      "bundleFiles": [
+        {
+          "url": "/fr/pricing",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingHeader-Do3h_r_K.js",
+          "size": 473,
+          "gzipSize": 308,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-f6B_ryUE.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingTiers-D_G3k2CL.js",
+          "size": 1677,
+          "gzipSize": 780,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/products",
+      "page": "products",
+      "locale": "fr",
+      "totalSize": 295975,
+      "totalGzipSize": 91513,
+      "jsSize": 270501,
+      "jsGzipSize": 85841,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 9,
+      "jsFileCount": 7,
+      "bundleFiles": [
+        {
+          "url": "/fr/products",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsHeader-StxRzqrj.js",
+          "size": 415,
+          "gzipSize": 290,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-f6B_ryUE.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsGrid-CVzqUZhq.js",
+          "size": 1689,
+          "gzipSize": 819,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/settings",
+      "page": "settings",
+      "locale": "fr",
+      "totalSize": 299126,
+      "totalGzipSize": 92693,
+      "jsSize": 273652,
+      "jsGzipSize": 87021,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 12,
+      "jsFileCount": 10,
+      "bundleFiles": [
+        {
+          "url": "/fr/settings",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsHeader-SPhNTm0t.js",
+          "size": 396,
+          "gzipSize": 276,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-f6B_ryUE.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProfileSection-Bg471esM.js",
+          "size": 1110,
+          "gzipSize": 459,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-3rx93FkC.js",
+          "size": 2181,
+          "gzipSize": 729,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ApiAccessSection-Bdpvh-Fb.js",
+          "size": 1044,
+          "gzipSize": 516,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-ST09TBAx.js",
+          "size": 524,
+          "gzipSize": 309,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/team",
+      "page": "team",
+      "locale": "fr",
+      "totalSize": 295972,
+      "totalGzipSize": 91585,
+      "jsSize": 270498,
+      "jsGzipSize": 85913,
+      "cssSize": 23881,
+      "cssGzipSize": 4976,
+      "htmlSize": 1593,
+      "htmlGzipSize": 696,
+      "fileCount": 9,
+      "jsFileCount": 7,
+      "bundleFiles": [
+        {
+          "url": "/fr/team",
+          "size": 1593,
+          "gzipSize": 696,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-DAs1UGHr.js",
+          "size": 930,
+          "gzipSize": 544,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-C5b88IaZ.js",
+          "size": 398,
+          "gzipSize": 233,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-BnRWbv_O.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 4976,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-DEdSnMN6.js",
+          "size": 259206,
+          "gzipSize": 80796,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamHeader-CnmK24qg.js",
+          "size": 454,
+          "gzipSize": 314,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-f6B_ryUE.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamGrid-CXjOuAXW.js",
+          "size": 1647,
+          "gzipSize": 867,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    }
+  ]
+}

@@ -3,28 +3,28 @@
 import useTranslation from "next-translate/useTranslation";
 
 export default function FAQList() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("faq");
 
   const faqs = [
     {
-      q: t("faq.faqList.howAreTheBenchmarks"),
-      a: t("faq.faqList.allBenchmarksAreRun"),
+      q: t("faqList.howAreTheBenchmarks"),
+      a: t("faqList.allBenchmarksAreRun"),
     },
     {
-      q: t("faq.faqList.whatLibrariesAreCurrently"),
-      a: t("faq.faqList.weCurrentlyBenchmarkReactI18next"),
+      q: t("faqList.whatLibrariesAreCurrently"),
+      a: t("faqList.weCurrentlyBenchmarkReactI18next"),
     },
     {
-      q: t("faq.faqList.canIContributeA"),
-      a: t("faq.faqList.absolutelyWeWelcomeCommunity"),
+      q: t("faqList.canIContributeA"),
+      a: t("faqList.absolutelyWeWelcomeCommunity"),
     },
     {
-      q: t("faq.faqList.howOftenAreResults"),
-      a: t("faq.faqList.benchmarksRunAutomaticallyVia"),
+      q: t("faqList.howOftenAreResults"),
+      a: t("faqList.benchmarksRunAutomaticallyVia"),
     },
     {
-      q: t("faq.faqList.areTheResultsStatistically"),
-      a: t("faq.faqList.yesWeUseThe"),
+      q: t("faqList.areTheResultsStatistically"),
+      a: t("faqList.yesWeUseThe"),
     },
   ];
 

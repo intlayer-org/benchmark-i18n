@@ -95,10 +95,8 @@ Each framework is benchmarked with all four test categories above where applicab
 | **next-translate** | `next-translate` | Lightweight, file-based translations |
 | **Lingui** | `@lingui/react` | Compiler-based, extracts messages at build time |
 | **Intlayer** | `next-intlayer` | Declaration-first, auto-scoped by component |
-| **GT (General Translation)** | `gt-next` | AI-native i18n with automatic translation |
 | **Tolgee** | `@tolgee/react` | Translation management platform + runtime |
 | **Paraglide** | `@inlang/paraglide-next` | Compiler-based, zero-runtime strings |
-| **Lingo.dev** | `lingodotdev-i18next` | AI-powered, i18next-based |
 
 ### TanStack Start libraries
 
@@ -109,11 +107,9 @@ Each framework is benchmarked with all four test categories above where applicab
 | **react-intl** | `react-intl` | FormatJS-based, mature and widely used |
 | **Lingui** | `@lingui/react` | Compiler-based message extraction |
 | **Intlayer** | `intlayer` | Declaration-first, auto-scoped by component |
-| **GT (General Translation)** | `gt-react` | AI-native i18n |
 | **Tolgee** | `@tolgee/react` | Translation platform + runtime |
 | **Wuchale** | `wuchale` | Lightweight, file-based, compiler-based |
 | **Paraglide** | `@inlang/paraglide-js` | Zero-runtime compiled strings |
-| **Lingo.dev** | `lingodotdev-i18next` | AI-powered, i18next-based |
 
 ---
 
@@ -218,7 +214,7 @@ Bundle size and content leakage data, measured per page and per locale.
 
 ```jsonc
 {
-  "app": "nextjs-static-gt-next-app",
+  "app": "nextjs-static-next-intl-app",
   "locale": "en",
   "timestamp": "...",
   "fingerprintCounts": {
@@ -312,7 +308,7 @@ Library overhead measured via a synthetic empty component.
 ```jsonc
 {
   "timestamp": "...",
-  "packageName": "nextjs-static-gt-next-app",
+  "packageName": "nextjs-static-next-intl-app",
   "summary": {
     "totalComponents": 1,
     "totalUnminifiedBytes": 697274,

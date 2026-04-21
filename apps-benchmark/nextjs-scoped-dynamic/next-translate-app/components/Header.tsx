@@ -11,7 +11,7 @@ import LocaleSwitcher from "./LocaleSwitcher";
 import { usePerformanceMeasure } from "../hooks/usePerformanceMeasure";
 
 export default function Header() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("shared");
   usePerformanceMeasure("Header");
   const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
   const params = useParams();
@@ -19,14 +19,14 @@ export default function Header() {
   const locale = (params.lang as string) ?? "en";
 
   const mockPages = [
-    { href: "/products", label: t("shared.header.products") },
-    { href: "/pricing", label: t("shared.header.pricing") },
-    { href: "/team", label: t("shared.header.team") },
-    { href: "/blog", label: t("shared.header.blog") },
-    { href: "/careers", label: t("shared.header.careers") },
-    { href: "/faq", label: t("shared.header.faq") },
-    { href: "/contact", label: t("shared.header.contact") },
-    { href: "/settings", label: t("shared.header.settings") },
+    { href: "/products", label: t("header.products") },
+    { href: "/pricing", label: t("header.pricing") },
+    { href: "/team", label: t("header.team") },
+    { href: "/blog", label: t("header.blog") },
+    { href: "/careers", label: t("header.careers") },
+    { href: "/faq", label: t("header.faq") },
+    { href: "/contact", label: t("header.contact") },
+    { href: "/settings", label: t("header.settings") },
   ];
 
   const isExactActive = (href: string) => pathname === localizeHref(href, locale);
@@ -54,13 +54,13 @@ export default function Header() {
               href="/"
               className={`nav-link${isExactActive("/") ? " is-active" : ""}`}
             >
-              {t("shared.header.home")}
+              {t("header.home")}
             </Link>
             <Link
               href="/about"
               className={`nav-link${isActive("/about") ? " is-active" : ""}`}
             >
-              {t("shared.header.methodology")}
+              {t("header.methodology")}
             </Link>
 
             {/* Mock Pages Dropdown */}
@@ -72,7 +72,7 @@ export default function Header() {
                 onMouseLeave={() => setIsMockPagesOpen(false)}
                 onClick={() => setIsMockPagesOpen(!isMockPagesOpen)}
               >
-                {t("shared.header.mockPages")}
+                {t("header.mockPages")}
                 <ChevronDown
                   size={14}
                   className={`transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`}
@@ -110,7 +110,7 @@ export default function Header() {
             rel="noreferrer"
             className="text-muted-foreground transition hover:text-foreground"
           >
-            <span className="sr-only">{t("shared.header.goToGithub")}</span>
+            <span className="sr-only">{t("header.goToGithub")}</span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
               <path
                 fill="currentColor"

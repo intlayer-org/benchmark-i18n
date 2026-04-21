@@ -3,22 +3,22 @@
 import useTranslation from "next-translate/useTranslation";
 
 export default function OpenPositions() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("careers");
 
   const openings = [
     {
-      title: t("careers.careersPositions.seniorFrontendEngineer"),
-      location: t("careers.openPositions.remote"),
-      type: t("careers.openPositions.fullTime"),
+      title: t("careersPositions.seniorFrontendEngineer"),
+      location: t("openPositions.remote"),
+      type: t("openPositions.fullTime"),
       dept: "Engineering",
-      desc: t("careers.careersPositions.seniorFrontendEngineerDesc"),
+      desc: t("careersPositions.seniorFrontendEngineerDesc"),
     },
   ];
 
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        {t("careers.openPositions.openPositions")}
+        {t("openPositions.openPositions")}
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
@@ -47,7 +47,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              {t("careers.openPositions.applyNow")}
+              {t("openPositions.applyNow")}
             </button>
           </div>
         ))}

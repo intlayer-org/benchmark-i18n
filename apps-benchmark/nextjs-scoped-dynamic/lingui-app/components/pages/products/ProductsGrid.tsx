@@ -7,67 +7,64 @@ export default function ProductsGrid() {
 
   const products = [
     {
-      name: i18n._({ id: "products.benchmarkCli", message: "Benchmark CLI" }),
+      name: i18n._({ id: "products-grid.benchmarkCli", message: "Benchmark CLI" }),
       desc: i18n._({
-        id: "products.benchmarkCliDesc",
+        id: "products-grid.runBenchmarksLocallyFromYour",
         message:
           "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
       }),
-      price: i18n._({ id: "products.free", message: "Free" }),
+      price: "Free",
     },
     {
-      name: i18n._({ id: "products.benchmarkCloud", message: "Benchmark Cloud" }),
+      name: i18n._({ id: "products-grid.benchmarkCloud", message: "Benchmark Cloud" }),
       desc: i18n._({
-        id: "products.benchmarkCloudDesc",
+        id: "products-grid.automatedCloudBasedBenchmarkingWith",
         message:
           "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
       }),
-      price: i18n._({ id: "products.price.benchmarkCloud", message: "$29/mo" }),
+      price: "$29/mo",
     },
     {
       name: i18n._({
-        id: "products.benchmarkEnterprise",
+        id: "products-grid.benchmarkEnterprise",
         message: "Benchmark Enterprise",
       }),
       desc: i18n._({
-        id: "products.benchmarkEnterpriseDesc",
+        id: "products-grid.onPremiseDeploymentWithSso",
         message:
           "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
       }),
-      price: i18n._({ id: "products.contactUs", message: "Contact Us" }),
+      price: i18n._({ id: "products-grid.contactUs", message: "Contact Us" }),
     },
     {
       name: i18n._({
-        id: "products.migrationAssistant",
+        id: "products-grid.migrationAssistant",
         message: "Migration Assistant",
       }),
       desc: i18n._({
-        id: "products.migrationAssistantDesc",
+        id: "products-grid.aiPoweredToolThatHelps",
         message:
           "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
       }),
-      price: i18n._({
-        id: "products.price.migrationAssistant",
-        message: "$99 one-time",
-      }),
+      price: "$99 one-time",
     },
     {
-      name: i18n._({ id: "products.translationQa", message: "Translation QA" }),
+      name: i18n._({ id: "products-grid.translationQa", message: "Translation QA" }),
       desc: i18n._({
-        id: "products.translationQaDesc",
+        id: "products-grid.automatedQualityChecksForMissing",
         message:
           "Automated quality checks for missing translations, pluralization issues, and context errors.",
       }),
-      price: i18n._({ id: "products.price.translationQa", message: "$19/mo" }),
+      price: "$19/mo",
     },
     {
-      name: i18n._({ id: "products.bundleOptimizer", message: "Bundle Optimizer" }),
+      name: i18n._({ id: "products-grid.bundleOptimizer", message: "Bundle Optimizer" }),
       desc: i18n._({
-        id: "products.bundleOptimizerDesc",
+        id: "products-grid.analyzesAndOptimizesYourI18n",
         message:
           "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
       }),
-      price: i18n._({ id: "products.price.bundleOptimizer", message: "$49/mo" }),
+      price: "$49/mo",
     },
   ];
 
@@ -90,7 +87,7 @@ export default function ProductsGrid() {
               type="button"
               className="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              {i18n._({ id: "products.learnMore", message: "Learn More" })}
+              {i18n._({ id: "products-grid.learnMore", message: "Learn More" })}
             </button>
           </div>
         </div>

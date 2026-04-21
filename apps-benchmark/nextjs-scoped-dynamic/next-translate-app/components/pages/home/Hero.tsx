@@ -4,7 +4,7 @@ import useTranslation from "next-translate/useTranslation";
 import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
 
 export default function Hero() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("home");
   usePerformanceMeasure("Hero");
   return (
     <section className="mb-16 text-center">
@@ -12,20 +12,20 @@ export default function Hero() {
         i18n Benchmark
       </h1>
       <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-        {t("home.hero.aTestApplicationDesignedTo")}
+        {t("hero.aTestApplicationDesignedTo")}
       </p>
       <div className="mt-8 flex justify-center gap-4">
         <button
           type="button"
           className="rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
         >
-          {t("home.hero.viewResults")}
+          {t("hero.viewResults")}
         </button>
         <button
           type="button"
           className="rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors"
         >
-          {t("shared.header.methodology")}
+          {t("header.methodology", undefined, { ns: "shared" })}
         </button>
       </div>
     </section>

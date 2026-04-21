@@ -4,15 +4,15 @@ import useTranslation from "next-translate/useTranslation";
 import MockBanner from "../../MockBanner";
 
 export default function FAQHeader() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("faq");
   return (
     <>
       <MockBanner />
       <h1 className="mb-2 text-3xl font-bold text-foreground">
-        {t("faq.faq-header1.frequentlyAskedQuestions")}
+        {t("faq-header1.frequentlyAskedQuestions")}
       </h1>
       <p className="mb-10 text-muted-foreground">
-        {t("faq.faq-header1.everythingYouNeedToKnow")}
+        {t("faq-header1.everythingYouNeedToKnow")}
       </p>
     </>
   );

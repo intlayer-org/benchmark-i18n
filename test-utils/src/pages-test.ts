@@ -22,7 +22,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
-import { test, expect, type Browser } from "@playwright/test";
+import { type Browser } from "@playwright/test";
 import { benchmarkBloomRoot } from "./repo-root";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -526,7 +526,11 @@ const saveBundleResults = (
 
 // ─── Test registration ────────────────────────────────────────────────────────
 
-export const registerBundleTest = (test: any, expect: any, config: BundleTestConfig): void => {
+export const registerBundleTest = (
+  test: any,
+  expect: any,
+  config: BundleTestConfig,
+): void => {
   const {
     appName,
     benchmarkCategory,
@@ -606,7 +610,10 @@ export const registerBundleTest = (test: any, expect: any, config: BundleTestCon
         fs.mkdirSync(resultsDirectory, { recursive: true });
       }
     } catch (err) {
-      console.error(`Failed to create results directory ${resultsDirectory}:`, err);
+      console.error(
+        `Failed to create results directory ${resultsDirectory}:`,
+        err,
+      );
     }
     const outputFilePath = path.join(
       resultsDirectory,

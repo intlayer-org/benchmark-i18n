@@ -35,7 +35,7 @@ function applyThemeMode(mode: ThemeMode) {
 }
 
 export default function ThemeToggle() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("shared");
   const [mode, setMode] = useState<ThemeMode>("auto");
 
   useEffect(() => {
@@ -68,10 +68,10 @@ export default function ThemeToggle() {
 
   const label =
     mode === "auto"
-      ? t("shared.themeToggle.themeModeAutoSystemClick")
+      ? t("themeToggle.themeModeAutoSystemClick")
       : mode === "light"
-        ? t("shared.themeToggle.themeModeLightClick")
-        : t("shared.themeToggle.themeModeDarkClick");
+        ? t("themeToggle.themeModeLightClick")
+        : t("themeToggle.themeModeDarkClick");
 
   return (
     <button
@@ -82,10 +82,10 @@ export default function ThemeToggle() {
       className="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
     >
       {mode === "auto"
-        ? t("shared.themeToggle.themeAuto")
+        ? t("themeToggle.themeAuto")
         : mode === "dark"
-          ? t("shared.themeToggle.themeDark")
-          : t("shared.themeToggle.themeLight")}
+          ? t("themeToggle.themeDark")
+          : t("themeToggle.themeLight")}
     </button>
   );
 }

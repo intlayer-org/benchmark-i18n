@@ -4,21 +4,21 @@ import Link from "./Link";
 import useTranslation from "next-translate/useTranslation";
 
 export default function Footer() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("shared");
 
   const footerLinks = [
     {
-      label: t("shared.footer.github"),
+      label: t("footer.github"),
       href: "https://github.com/intlayer-org/benchmark-i18n",
       isInternal: false,
     },
     {
-      label: t("shared.footer.methodology"),
+      label: t("footer.methodology"),
       href: "/about",
       isInternal: true,
     },
     {
-      label: t("shared.footer.contributing"),
+      label: t("footer.contributing"),
       href: "/contact",
       isInternal: true,
     },
@@ -33,12 +33,12 @@ export default function Footer() {
               i18n Benchmark
             </h3>
             <p className="text-sm text-muted-foreground">
-              {t("shared.footer.anOpenSourceTestApplication")}
+              {t("footer.anOpenSourceTestApplication")}
             </p>
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              {t("shared.footer.resources")}
+              {t("footer.resources")}
             </h3>
             <ul className="space-y-1">
               {footerLinks.map((linkEl) => (
@@ -66,7 +66,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              {t("shared.footer.contact")}
+              {t("footer.contact")}
             </h3>
             <p className="text-sm text-muted-foreground">
               contact@intlayer.org
@@ -74,7 +74,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">
-          {t("shared.footer.builtWith")}
+          {t("footer.builtWith")}
         </div>
       </div>
     </footer>

@@ -65,8 +65,6 @@ Currently, the following implementations are benchmarked:
 - **react-i18next** (`static-react-i18next-app`)
 - **react-intl** (`static-react-intl-app`)
 - **use-intl** (`static-use-intl-app`)
-- **GT** (`static-gt-react-app`)
-- **Lingo.dev** (`static-lingo.dev-app`)
 
 ### Dynamic Benchmarks (`tanstack-start-react-dynamic`)
 
@@ -75,7 +73,6 @@ Currently, the following implementations are benchmarked:
 - **react-i18next** (`dynamic-react-i18next-app`)
 - **react-intl** (`dynamic-react-intl-app`)
 - **use-intl** (`dynamic-use-intl-app`)
-- **GT** (`dynamic-gt-react-app`)
 - **Tolgee** (`dynamic-tolgee-app`)
 - **wuchale** (`dynamic-wuchale-app`)
 

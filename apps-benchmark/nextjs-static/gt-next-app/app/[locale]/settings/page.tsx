@@ -1,20 +1,10 @@
 import dynamic from "next/dynamic";
 
-const SettingsHeader = dynamic(() => import("../../../components/pages/settings/SettingsHeader"), {
-  loading: () => <div className="h-24 animate-pulse bg-muted/20" />,
-});
-const ProfileSection = dynamic(() => import("../../../components/pages/settings/ProfileSection"), {
-  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
-});
-const PreferencesSection = dynamic(() => import("../../../components/pages/settings/PreferencesSection"), {
-  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
-});
-const ApiAccessSection = dynamic(() => import("../../../components/pages/settings/ApiAccessSection"), {
-  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
-});
-const SettingsFooter = dynamic(() => import("../../../components/pages/settings/SettingsFooter"), {
-  loading: () => <div className="h-64 animate-pulse bg-muted/20" />,
-});
+const SettingsHeader = dynamic(() => import("../../../components/pages/settings/SettingsHeader"));
+const ProfileSection = dynamic(() => import("../../../components/pages/settings/ProfileSection"));
+const PreferencesSection = dynamic(() => import("../../../components/pages/settings/PreferencesSection"));
+const ApiAccessSection = dynamic(() => import("../../../components/pages/settings/ApiAccessSection"));
+const SettingsFooter = dynamic(() => import("../../../components/pages/settings/SettingsFooter"));
 
 export default function Settings() {
   return (

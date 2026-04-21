@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-04-20T02:16:24.485Z",
+  "packageName": "nextjs-static-next-intl-app",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 69791,
+    "totalMinifiedBytes": 52240,
+    "totalGzipBytes": 13137
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.tsx",
+      "category": "Synthetic",
+      "unminifiedBytes": 69791,
+      "unminifiedGzipBytes": 16118,
+      "minifiedBytes": 52240,
+      "minifiedGzipBytes": 13137
+    }
+  ]
+}

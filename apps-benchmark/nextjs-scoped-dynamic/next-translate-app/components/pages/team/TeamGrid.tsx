@@ -3,38 +3,38 @@
 import useTranslation from "next-translate/useTranslation";
 
 export default function TeamGrid() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("team");
 
   const members = [
     {
-      name: t("team.teamGrid.sarahChen"),
-      role: t("team.teamGrid.founderLeadEngineer"),
-      bio: t("team.teamGrid.formerGoogleEngineerWith10"),
+      name: t("teamGrid.sarahChen"),
+      role: t("teamGrid.founderLeadEngineer"),
+      bio: t("teamGrid.formerGoogleEngineerWith10"),
     },
     {
-      name: t("team.teamGrid.marcusWeber"),
-      role: t("team.teamGrid.performanceEngineer"),
-      bio: t("team.teamGrid.specializesInJavascriptPerformanceOptimization"),
+      name: t("teamGrid.marcusWeber"),
+      role: t("teamGrid.performanceEngineer"),
+      bio: t("teamGrid.specializesInJavascriptPerformanceOptimization"),
     },
     {
-      name: t("team.teamGrid.aishaPatel"),
-      role: t("team.teamGrid.developerAdvocate"),
-      bio: t("team.teamGrid.passionateAboutDeveloperExperienceAnd"),
+      name: t("teamGrid.aishaPatel"),
+      role: t("teamGrid.developerAdvocate"),
+      bio: t("teamGrid.passionateAboutDeveloperExperienceAnd"),
     },
     {
-      name: t("team.teamGrid.tomasRodriguez"),
-      role: t("team.teamGrid.fullStackDeveloper"),
-      bio: t("team.teamGrid.maintainsTheBenchmarkingInfrastructureAnd"),
+      name: t("teamGrid.tomasRodriguez"),
+      role: t("teamGrid.fullStackDeveloper"),
+      bio: t("teamGrid.maintainsTheBenchmarkingInfrastructureAnd"),
     },
     {
-      name: t("team.teamGrid.yukiTanaka"),
-      role: t("team.teamGrid.dataAnalyst"),
-      bio: t("team.teamGrid.ensuresStatisticalRigorInAll"),
+      name: t("teamGrid.yukiTanaka"),
+      role: t("teamGrid.dataAnalyst"),
+      bio: t("teamGrid.ensuresStatisticalRigorInAll"),
     },
     {
-      name: t("team.teamGrid.elenaKowalski"),
-      role: t("team.teamGrid.communityManager"),
-      bio: t("team.teamGrid.managesCommunityContributionsPartnershipsAnd"),
+      name: t("teamGrid.elenaKowalski"),
+      role: t("teamGrid.communityManager"),
+      bio: t("teamGrid.managesCommunityContributionsPartnershipsAnd"),
     },
   ];
 

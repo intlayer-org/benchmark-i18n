@@ -1,11 +1,7 @@
 import dynamic from "next/dynamic";
 
-const BlogHeader = dynamic(() => import("../../../components/pages/blog/BlogHeader"), {
-  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
-});
-const BlogList = dynamic(() => import("../../../components/pages/blog/BlogList"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
-});
+const BlogHeader = dynamic(() => import("../../../components/pages/blog/BlogHeader"));
+const BlogList = dynamic(() => import("../../../components/pages/blog/BlogList"));
 
 export default function Blog() {
   return (

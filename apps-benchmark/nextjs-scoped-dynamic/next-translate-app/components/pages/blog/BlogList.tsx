@@ -3,43 +3,43 @@
 import useTranslation from "next-translate/useTranslation";
 
 export default function BlogList() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("blog");
 
   const posts = [
     {
-      title: t("blog.blogList.i18nBenchmark2026Results"),
-      date: t("blog.blogList.march152026"),
-      excerpt: t("blog.blogList.weTested12DifferentInternationalization"),
+      title: t("blogList.i18nBenchmark2026Results"),
+      date: t("blogList.march152026"),
+      excerpt: t("blogList.weTested12DifferentInternationalization"),
       category: "Benchmark",
     },
     {
-      title: t("blog.blogList.howToReduceYourI18n"),
-      date: t("blog.blogList.march82026"),
-      excerpt: t("blog.blogList.practicalStrategiesForOptimizingTranslation"),
+      title: t("blogList.howToReduceYourI18n"),
+      date: t("blogList.march82026"),
+      excerpt: t("blogList.practicalStrategiesForOptimizingTranslation"),
       category: "Tutorial",
     },
     {
-      title: t("blog.blogList.theStateOfInternationalizationIn"),
-      date: t("blog.blogList.february282026"),
-      excerpt: t("blog.blogList.anOverviewOfTheCurrent"),
+      title: t("blogList.theStateOfInternationalizationIn"),
+      date: t("blogList.february282026"),
+      excerpt: t("blogList.anOverviewOfTheCurrent"),
       category: "Analysis",
     },
     {
-      title: t("blog.blogList.migratingFromReactI18nextTo"),
-      date: t("blog.blogList.february152026"),
-      excerpt: t("blog.blogList.aStepByStepGuide"),
+      title: t("blogList.migratingFromReactI18nextTo"),
+      date: t("blogList.february152026"),
+      excerpt: t("blogList.aStepByStepGuide"),
       category: "Tutorial",
     },
     {
-      title: t("blog.blogList.serverComponentsAndI18nWhat"),
-      date: t("blog.blogList.february12026"),
-      excerpt: t("blog.blogList.reactServerComponentsIntroduceNew"),
+      title: t("blogList.serverComponentsAndI18nWhat"),
+      date: t("blogList.february12026"),
+      excerpt: t("blogList.reactServerComponentsIntroduceNew"),
       category: "Analysis",
     },
     {
-      title: t("blog.blogList.benchmarkMethodologyHowWeTest"),
-      date: t("blog.blogList.january202026"),
-      excerpt: t("blog.blogList.aTransparentLookAtOur"),
+      title: t("blogList.benchmarkMethodologyHowWeTest"),
+      date: t("blogList.january202026"),
+      excerpt: t("blogList.aTransparentLookAtOur"),
       category: "Meta",
     },
   ];
@@ -65,7 +65,7 @@ export default function BlogList() {
             type="button"
             className="text-sm font-medium text-primary hover:underline"
           >
-            {t("blog.blogList.readMore")}
+            {t("blogList.readMore")}
           </button>
         </article>
       ))}

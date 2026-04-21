@@ -4,15 +4,15 @@ import useTranslation from "next-translate/useTranslation";
 import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
 
 export default function AboutHeader() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("about");
   usePerformanceMeasure("AboutHeader");
   return (
     <>
       <h1 className="mb-4 text-3xl font-bold text-foreground">
-        {t("about.aboutHeader.methodology")}
+        {t("aboutHeader.methodology")}
       </h1>
       <p className="mb-8 max-w-3xl text-muted-foreground">
-        {t("about.aboutHeader.weDesignedThisBenchmarkTo")}
+        {t("aboutHeader.weDesignedThisBenchmarkTo")}
       </p>
     </>
   );

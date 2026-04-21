@@ -3,39 +3,39 @@
 import useTranslation from "next-translate/useTranslation";
 
 export default function AboutGrid() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("about");
   return (
     <div className="grid gap-8 md:grid-cols-2">
       <div className="rounded-lg border border-border bg-card p-6">
         <h2 className="mb-3 text-xl font-semibold text-foreground">
-          {t("about.aboutGrid.testEnvironment")}
+          {t("aboutGrid.testEnvironment")}
         </h2>
         <p className="text-sm text-muted-foreground">
-          {t("about.aboutGrid.allBenchmarksRunOn")}
+          {t("aboutGrid.allBenchmarksRunOn")}
         </p>
       </div>
       <div className="rounded-lg border border-border bg-card p-6">
         <h2 className="mb-3 text-xl font-semibold text-foreground">
-          {t("about.aboutGrid.applicationDesign")}
+          {t("aboutGrid.applicationDesign")}
         </h2>
         <p className="text-sm text-muted-foreground">
-          {t("about.aboutGrid.theBenchmarkAppHas10")}
+          {t("aboutGrid.theBenchmarkAppHas10")}
         </p>
       </div>
       <div className="rounded-lg border border-border bg-card p-6">
         <h2 className="mb-3 text-xl font-semibold text-foreground">
-          {t("about.aboutGrid.measurementMethodology")}
+          {t("aboutGrid.measurementMethodology")}
         </h2>
         <p className="text-sm text-muted-foreground">
-          {t("about.aboutGrid.weUseBrowserNativeApis")}
+          {t("aboutGrid.weUseBrowserNativeApis")}
         </p>
       </div>
       <div className="rounded-lg border border-border bg-card p-6">
         <h2 className="mb-3 text-xl font-semibold text-foreground">
-          {t("about.aboutGrid.fairComparison")}
+          {t("aboutGrid.fairComparison")}
         </h2>
         <p className="text-sm text-muted-foreground">
-          {t("about.aboutGrid.eachI18nLibraryIsIntegrated")}
+          {t("aboutGrid.eachI18nLibraryIsIntegrated")}
         </p>
       </div>
     </div>

@@ -1,18 +1,25 @@
 import dynamic from "next/dynamic";
+import LinguiPageCatalog from "../../../components/LinguiPageCatalog";
+import { loadNamespaces } from "../../../i18n/lingui";
 
-const TeamHeader = dynamic(() => import("../../../components/pages/team/TeamHeader"), {
-  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
-});
-const TeamGrid = dynamic(() => import("../../../components/pages/team/TeamGrid"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
-});
+const TeamHeader = dynamic(() => import("../../../components/pages/team/TeamHeader"));
+const TeamGrid = dynamic(() => import("../../../components/pages/team/TeamGrid"));
 
-export default function Team() {
+export default async function Team({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const pageMessages = await loadNamespaces(locale, ["team"]);
+
   return (
-    <div className="container py-16">
-      <TeamHeader />
+    <LinguiPageCatalog locale={locale} messages={pageMessages}>
+      <div className="container py-16">
+        <TeamHeader />
 
-      <TeamGrid />
-    </div>
+        <TeamGrid />
+      </div>
+    </LinguiPageCatalog>
   );
 }

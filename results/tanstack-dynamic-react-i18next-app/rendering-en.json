@@ -1,0 +1,44 @@
+{
+  "locale": "en",
+  "timestamp": "2026-04-20T03:57:28.454Z",
+  "iterations": 5,
+  "e2ePageLoad": {
+    "description": "PerformanceNavigationTiming.duration — full page load wall-clock time including sub-resources (ms)",
+    "raw": [
+      15.900000005960464,
+      16.099999994039536,
+      16.399999991059303,
+      15.799999997019768,
+      16.299999997019768
+    ],
+    "avg": 16.09999999701977,
+    "min": 15.799999997019768,
+    "max": 16.399999991059303
+  },
+  "hydration": {
+    "description": "performance.measure('hydration_duration') — time between hydration_start mark (inline script) and hydration_end mark (useEffect) (ms). 0 means app is not instrumented.",
+    "raw": [
+      94.09999999403954,
+      29.80000001192093,
+      23.200000002980232,
+      21.599999994039536,
+      22.200000002980232
+    ],
+    "avg": 38.18000000119209,
+    "min": 21.599999994039536,
+    "max": 94.09999999403954
+  },
+  "reactMount": {
+    "description": "React Profiler actualDuration for the mount phase of <AppRoot>. 0 means Profiler is not wired up (ms).",
+    "raw": [
+      23.899999991059303,
+      3.7000000029802322,
+      2.7000000029802322,
+      2.5999999940395355,
+      2.4000000059604645
+    ],
+    "avg": 7.059999999403954,
+    "min": 2.4000000059604645,
+    "max": 23.899999991059303
+  }
+}

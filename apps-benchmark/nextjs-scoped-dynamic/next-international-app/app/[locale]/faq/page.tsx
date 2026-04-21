@@ -1,11 +1,7 @@
 import dynamic from "next/dynamic";
 
-const FAQHeader = dynamic(() => import("../../../components/pages/faq/FAQHeader"), {
-  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
-});
-const FAQList = dynamic(() => import("../../../components/pages/faq/FAQList"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
-});
+const FAQHeader = dynamic(() => import("../../../components/pages/faq/FAQHeader"));
+const FAQList = dynamic(() => import("../../../components/pages/faq/FAQList"));
 
 export default function FAQ() {
   return (

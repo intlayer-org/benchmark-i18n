@@ -3,35 +3,35 @@
 import useTranslation from "next-translate/useTranslation";
 
 export default function WhyItMatters() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("home");
   return (
     <section className="mb-16">
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        {t("home.whyItMatters.whyTheseMetricsMatter")}
+        {t("whyItMatters.whyTheseMetricsMatter")}
       </h2>
       <div className="grid gap-6 md:grid-cols-3">
         <div className="rounded-lg border border-border bg-card p-6">
           <h3 className="mb-2 text-lg font-semibold text-foreground">
-            {t("home.whyItMatters.bundleSize")}
+            {t("whyItMatters.bundleSize")}
           </h3>
           <p className="text-sm text-muted-foreground">
-            {t("home.whyItMatters.theBundleIsTheData")}
+            {t("whyItMatters.theBundleIsTheData")}
           </p>
         </div>
         <div className="rounded-lg border border-border bg-card p-6">
           <h3 className="mb-2 text-lg font-semibold text-foreground">
-            {t("home.whyItMatters.renderingHydration")}
+            {t("whyItMatters.renderingHydration")}
           </h3>
           <p className="text-sm text-muted-foreground">
-            {t("home.whyItMatters.connectingALargeJson")}
+            {t("whyItMatters.connectingALargeJson")}
           </p>
         </div>
         <div className="rounded-lg border border-border bg-card p-6">
           <h3 className="mb-2 text-lg font-semibold text-foreground">
-            {t("home.whyItMatters.dynamicLoading")}
+            {t("whyItMatters.dynamicLoading")}
           </h3>
           <p className="text-sm text-muted-foreground">
-            {t("home.whyItMatters.loadingAllTranslationsUpfront")}
+            {t("whyItMatters.loadingAllTranslationsUpfront")}
           </p>
         </div>
       </div>

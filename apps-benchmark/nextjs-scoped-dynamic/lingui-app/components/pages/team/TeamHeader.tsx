@@ -8,10 +8,13 @@ export default function TeamHeader() {
     <>
       <MockBanner />
       <h1 className="mb-2 text-3xl font-bold text-foreground">
-        <Trans id="team-header.ourTeam" />
+        <Trans id="team-header.ourTeam" message="Our Team" />
       </h1>
       <p className="mb-10 text-muted-foreground">
-        <Trans id="team-header.meetThePeopleBehindI18n" />
+        <Trans
+          id="team-header.meetThePeopleBehindI18n"
+          message="Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+        />
       </p>
     </>
   );

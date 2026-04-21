@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-04-17T21:01:07.883Z",
+  "packageName": "static-paraglide-app",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 5445,
+    "totalMinifiedBytes": 3257,
+    "totalGzipBytes": 1389
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.tsx",
+      "category": "Synthetic",
+      "unminifiedBytes": 5445,
+      "unminifiedGzipBytes": 1821,
+      "minifiedBytes": 3257,
+      "minifiedGzipBytes": 1389
+    }
+  ]
+}

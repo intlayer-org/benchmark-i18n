@@ -3,15 +3,15 @@
 import useTranslation from "next-translate/useTranslation";
 
 export default function CareersBenefits() {
-  const { t } = useTranslation("common");
+  const { t } = useTranslation("careers");
   const benefits = [
     {
-      label: t("careers.careersBenefits.competitivePay"),
-      value: t("careers.careersBenefits.topOfMarket"),
+      label: t("careersBenefits.competitivePay"),
+      value: t("careersBenefits.topOfMarket"),
     },
     {
-      label: t("careers.careersBenefits.openSourceTime"),
-      value: t("careers.careersBenefits.twentyPercentTime"),
+      label: t("careersBenefits.openSourceTime"),
+      value: t("careersBenefits.twentyPercentTime"),
     },
   ];
 

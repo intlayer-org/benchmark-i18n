@@ -1,4 +1,4 @@
-import { setupI18n } from "@lingui/core";
+import { setupI18n, type Messages } from "@lingui/core";
 
 export const locales = [
   "en",
@@ -15,8 +15,14 @@ export const locales = [
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
 
-/** Compiled catalog chunks under `locales/{locale}/*.mjs` (see `lingui.config.ts`). */
-export const LINGUI_ALL_NAMESPACES = [
+/** Layout shell: header, footer, theme, mock banner, not-found copy. */
+export const LINGUI_LAYOUT_NAMESPACES = ["shared", "route"] as const;
+
+/**
+ * Per-route compiled catalogs under `locales/{locale}/<name>.mjs`.
+ * Used by pages via `loadNamespaces` and by measurement scripts that need a full merge.
+ */
+export const LINGUI_PAGE_NAMESPACES = [
   "about",
   "blog",
   "careers",
@@ -25,10 +31,14 @@ export const LINGUI_ALL_NAMESPACES = [
   "home",
   "pricing",
   "products",
-  "route",
   "settings",
-  "shared",
   "team",
+] as const;
+
+/** All split catalogs (layout + pages) — scripts only; do not load this set in the root layout. */
+export const LINGUI_ALL_NAMESPACES = [
+  ...LINGUI_LAYOUT_NAMESPACES,
+  ...LINGUI_PAGE_NAMESPACES,
 ] as const;
 
 export function getLocaleName(locale: string): string {
@@ -41,25 +51,25 @@ export function getLocaleName(locale: string): string {
   }
 }
 
-export async function getMessages(
+const allMessages = {} as Messages;
+export async function loadNamespaces(
   locale: string,
-  namespaces: string[] = [...LINGUI_ALL_NAMESPACES],
-) {
-  const allMessages: Record<string, any> = {};
-  
+  namespaces: readonly string[],
+): Promise<Messages> {
+
   for (const ns of namespaces) {
     try {
-      const module = await import(`../locales/${locale}/${ns}.mjs`);
-      Object.assign(allMessages, module.messages);
-    } catch (e) {
-      console.warn(`Could not load namespace ${ns} for locale ${locale}`);
+      const { messages } = await import(`../locales/${locale}/${ns}.mjs`);
+      Object.assign(allMessages, messages as Messages);
+    } catch (error) {
+      console.error(`Failed to load namespace: ${ns} for locale: ${locale}`, error);
     }
   }
-  
+
   return allMessages;
 }
 
-export function initLingui(locale: string, messages: any) {
+export function initLingui(locale: string, messages: Messages) {
   const lingui = setupI18n();
   lingui.load(locale, messages);
   lingui.activate(locale);

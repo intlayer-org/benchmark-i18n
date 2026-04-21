@@ -1,0 +1,41 @@
+"use client";
+import { useParams as e, usePathname as t, useRouter as n } from "next/navigation";
+import { jsx as r } from "react/jsx-runtime";
+var i = [
+	"en",
+	"fr",
+	"es",
+	"de",
+	"it",
+	"pt",
+	"zh",
+	"ja",
+	"ko",
+	"ru"
+], a = (e) => {
+	try {
+		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
+		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
+	} catch {
+		return e.toUpperCase();
+	}
+};
+function o() {
+	let o = e().locale ?? "en", s = t(), c = n(), l = (e) => {
+		let t = s.replace(`/${o}`, `/${e}`);
+		c.push(t);
+	};
+	return r("div", {
+		className: "flex items-center gap-2",
+		children: r("select", {
+			value: o,
+			onChange: (e) => l(e.target.value),
+			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
+			children: i.map((e) => r("option", {
+				value: e,
+				children: a(e)
+			}, e))
+		})
+	});
+}
+export { o as default };

@@ -8,11 +8,14 @@ export default function FAQHeader() {
     <>
       <MockBanner />
       <h1 className="mb-2 text-3xl font-bold text-foreground">
-        <Trans id="faq-header.title" message="Frequently Asked Questions" />
+        <Trans
+          id="faq-header1.frequentlyAskedQuestions"
+          message="Frequently Asked Questions"
+        />
       </h1>
       <p className="mb-10 text-muted-foreground">
         <Trans
-          id="faq-header.subtitle"
+          id="faq-header1.everythingYouNeedToKnow"
           message="Everything you need to know about i18n Benchmark."
         />
       </p>

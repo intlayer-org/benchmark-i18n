@@ -1,18 +1,25 @@
 import dynamic from "next/dynamic";
+import LinguiPageCatalog from "../../../components/LinguiPageCatalog";
+import { loadNamespaces } from "../../../i18n/lingui";
 
-const FAQHeader = dynamic(() => import("../../../components/pages/faq/FAQHeader"), {
-  loading: () => <div className="h-48 animate-pulse bg-muted/20" />,
-});
-const FAQList = dynamic(() => import("../../../components/pages/faq/FAQList"), {
-  loading: () => <div className="h-96 animate-pulse bg-muted/20" />,
-});
+const FAQHeader = dynamic(() => import("../../../components/pages/faq/FAQHeader"));
+const FAQList = dynamic(() => import("../../../components/pages/faq/FAQList"));
 
-export default function FAQ() {
+export default async function FAQ({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const pageMessages = await loadNamespaces(locale, ["faq"]);
+
   return (
-    <div className="container py-16">
-      <FAQHeader />
+    <LinguiPageCatalog locale={locale} messages={pageMessages}>
+      <div className="container py-16">
+        <FAQHeader />
 
-      <FAQList />
-    </div>
+        <FAQList />
+      </div>
+    </LinguiPageCatalog>
   );
 }
