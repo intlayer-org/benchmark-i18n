@@ -55,6 +55,12 @@ const LIBS_WITHOUT_RELIABLE_LEAK_METRICS = new Set([
   "gt-react",
 ]);
 
+/** Library slugs whose empty-component lib-size row is omitted (other metrics unchanged). */
+const LIBS_WITHOUT_RELIABLE_LIB_SIZE = new Set(["wuchale"]);
+
+/** Library slugs whose locale-leak % is omitted; page JS and other leak metrics stay. */
+const LIBS_WITHOUT_RELIABLE_LOCALE_LEAK = new Set(["wuchale"]);
+
 // ---------------------------------------------------------------------------
 // CLI args
 // ---------------------------------------------------------------------------
@@ -142,7 +148,7 @@ interface PageData {
   htmlGzipSize: number;
   fileCount: number;
   jsFileCount: number;
-  /** Null when `PageBundleData.leakMetricsExcluded` (locale leak probe not comparable). */
+  /** Null when locale leak is excluded (`leakMetricsExcluded` or `localeLeakMetricsExcluded`). */
   localeLeakagePercent: number | null;
   /** Null when `PageBundleData.leakMetricsExcluded` (page leak probe not comparable). */
   pageLeakagePercent: number | null;
@@ -161,6 +167,8 @@ interface PageBundleData {
   status: DataStatus;
   /** True when locale/page leak values are intentionally nulled (probe not comparable); other bundle metrics stay. */
   leakMetricsExcluded?: boolean;
+  /** True when only locale-leak fields are nulled (`LIBS_WITHOUT_RELIABLE_LOCALE_LEAK`). */
+  localeLeakMetricsExcluded?: boolean;
   byLocale: Record<string, PageBundleLocaleData>;
   jsGzipMin: number | null;
   jsGzipAvg: number | null;
@@ -607,8 +615,12 @@ function collectPageBundle(
     }));
 
     const jsSizes = pages.map((p) => p.jsGzipSize);
-    const localeLeak = pages.map((p) => p.localeLeakagePercent);
-    const pageLeak = pages.map((p) => p.pageLeakagePercent);
+    const localeLeak = pages
+      .map((p) => p.localeLeakagePercent)
+      .filter((v): v is number => v != null);
+    const pageLeak = pages
+      .map((p) => p.pageLeakagePercent)
+      .filter((v): v is number => v != null);
 
     const validJsSizes = jsSizes.filter((v) => v > 0);
 
@@ -662,8 +674,14 @@ function collectPageBundle(
         ...localeData.pages.map((p) => p.jsGzipSize).filter((v) => v > 0),
       );
     }
-    allLocaleLeak.push(...localeData.pages.map((p) => p.localeLeakagePercent));
-    allPageLeak.push(...localeData.pages.map((p) => p.pageLeakagePercent));
+    for (const p of localeData.pages) {
+      if (p.localeLeakagePercent != null) {
+        allLocaleLeak.push(p.localeLeakagePercent);
+      }
+      if (p.pageLeakagePercent != null) {
+        allPageLeak.push(p.pageLeakagePercent);
+      }
+    }
     allOtherPageLeak.push(
       ...localeData.pages.map((p) => p.otherPageContentLeakagePercent ?? 0),
     );
@@ -727,6 +745,59 @@ function excludeUnreliableComponentMetrics(
     gzipMin: null,
     gzipAvg: null,
     gzipMax: null,
+  };
+}
+
+/** Omit lib-size row only; does not affect page bundle or other sections. */
+function excludeUnreliableLibSize(
+  library: string,
+  ls: LibSizeData,
+): LibSizeData {
+  if (!LIBS_WITHOUT_RELIABLE_LIB_SIZE.has(library)) return ls;
+  if (ls.status === "missing") return ls;
+  return {
+    status: "missing",
+    gzip: null,
+    minified: null,
+    unminified: null,
+  };
+}
+
+/** Drop only locale-leak fields; keep page leak, other page content leak, and JS bundle stats. */
+function excludeUnreliableLocaleLeakMetrics(
+  library: string,
+  pb: PageBundleData,
+): PageBundleData {
+  if (!LIBS_WITHOUT_RELIABLE_LOCALE_LEAK.has(library)) return pb;
+  if (pb.status === "missing") return pb;
+
+  const byLocale: Record<string, PageBundleLocaleData> = {};
+  for (const [locale, locData] of Object.entries(pb.byLocale)) {
+    byLocale[locale] = {
+      ...locData,
+      localeLeakPct: null,
+      pages: locData.pages.map((p) => ({
+        ...p,
+        localeLeakagePercent: null,
+      })),
+    };
+  }
+
+  const allLocaleLeak: number[] = [];
+  for (const localeData of Object.values(byLocale)) {
+    for (const p of localeData.pages) {
+      if (p.localeLeakagePercent != null) {
+        allLocaleLeak.push(p.localeLeakagePercent);
+      }
+    }
+  }
+
+  return {
+    ...pb,
+    localeLeakMetricsExcluded: true,
+    byLocale,
+    localeLeakAvgPct:
+      allLocaleLeak.length > 0 ? avgOf(allLocaleLeak) : null,
   };
 }
 
@@ -1024,17 +1095,23 @@ function collectAppSummary(
   const { framework, testCategory } = parseCategory(appName);
   const library = deriveLibraryName(appName);
 
-  const libSize = mergeFromDirs(
-    dirs,
-    (d) => collectLibSize(d),
-    (s) => s.status !== "missing",
-  );
-  const pageBundle = excludeUnreliableLeakMetrics(
+  const libSize = excludeUnreliableLibSize(
     library,
     mergeFromDirs(
       dirs,
-      (d) => collectPageBundle(d),
+      (d) => collectLibSize(d),
       (s) => s.status !== "missing",
+    ),
+  );
+  const pageBundle = excludeUnreliableLocaleLeakMetrics(
+    library,
+    excludeUnreliableLeakMetrics(
+      library,
+      mergeFromDirs(
+        dirs,
+        (d) => collectPageBundle(d),
+        (s) => s.status !== "missing",
+      ),
     ),
   );
   const components = excludeUnreliableComponentMetrics(

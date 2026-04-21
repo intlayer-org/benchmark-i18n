@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-21T04:17:19.706Z",
+    "generatedAt": "2026-04-21T04:27:57.857Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 30
@@ -1527,39 +1527,39 @@
           "byLocale": {
             "en": {
               "e2ePageLoad": {
-                "avg": 16.259999996423723,
-                "min": 14.599999994039536,
-                "max": 20.400000005960464,
+                "avg": 20.83999999165535,
+                "min": 14.799999982118607,
+                "max": 28.599999994039536,
                 "raw": [
-                  20.400000005960464,
+                  19.30000001192093,
+                  22.099999994039536,
                   14.799999982118607,
-                  16.599999994039536,
-                  14.900000005960464,
-                  14.599999994039536
+                  19.399999976158142,
+                  28.599999994039536
                 ]
               },
               "hydration": {
-                "avg": 45.94000000357628,
-                "min": 22.900000005960464,
-                "max": 120.90000000596046,
+                "avg": 38.63999999761582,
+                "min": 21.799999982118607,
+                "max": 68,
                 "raw": [
-                  120.90000000596046,
-                  37.70000001788139,
-                  24.19999998807907,
-                  22.900000005960464,
-                  24
+                  68,
+                  42.69999998807907,
+                  21.799999982118607,
+                  24.400000005960464,
+                  36.30000001192093
                 ]
               },
               "reactMount": {
-                "avg": 3.3600000023841856,
-                "min": 1.0999999940395355,
-                "max": 12,
+                "avg": 5.779999995231629,
+                "min": 1,
+                "max": 24.099999994039536,
                 "raw": [
-                  12,
-                  1.4000000059604645,
+                  24.099999994039536,
+                  1.5,
+                  1,
                   1.0999999940395355,
-                  1.0999999940395355,
-                  1.2000000178813934
+                  1.199999988079071
                 ]
               },
               "hydrationInstrumented": true,
@@ -1567,48 +1567,48 @@
             },
             "fr": {
               "e2ePageLoad": {
-                "avg": 20.040000003576278,
-                "min": 15,
-                "max": 28.400000005960464,
+                "avg": 15.480000001192092,
+                "min": 13.400000005960464,
+                "max": 17.400000005960464,
                 "raw": [
-                  15,
-                  28.400000005960464,
-                  19.80000001192093,
-                  16,
-                  21
+                  15.800000011920929,
+                  14.099999994039536,
+                  16.69999998807907,
+                  13.400000005960464,
+                  17.400000005960464
                 ]
               },
               "hydration": {
-                "avg": 48.54000000953674,
-                "min": 25.30000001192093,
-                "max": 123,
+                "avg": 46.55999999642372,
+                "min": 22.799999982118607,
+                "max": 120.2999999821186,
                 "raw": [
-                  123,
-                  41.400000005960464,
-                  25.900000005960464,
-                  25.30000001192093,
-                  27.100000023841858
+                  120.2999999821186,
+                  37.20000001788139,
+                  25.5,
+                  22.799999982118607,
+                  27
                 ]
               },
               "reactMount": {
-                "avg": 4.1199999988079075,
-                "min": 1.199999988079071,
-                "max": 15.599999994039536,
+                "avg": 3.1799999952316282,
+                "min": 1,
+                "max": 11.599999994039536,
                 "raw": [
-                  15.599999994039536,
-                  1.199999988079071,
-                  1.199999988079071,
-                  1.2000000178813934,
-                  1.4000000059604645
+                  11.599999994039536,
+                  1,
+                  1.0999999940395355,
+                  1.0999999940395355,
+                  1.0999999940395355
                 ]
               },
               "hydrationInstrumented": true,
               "reactMountInstrumented": true
             }
           },
-          "e2ePageLoadAvgMs": 18.15,
-          "hydrationAvgMs": 47.240000006556514,
-          "reactMountAvgMs": 3.7400000005960465
+          "e2ePageLoadAvgMs": 18.15999999642372,
+          "hydrationAvgMs": 42.599999997019765,
+          "reactMountAvgMs": 4.479999995231628
         }
       }
     },
@@ -8127,10 +8127,10 @@
       "global": {
         "version": "0.22.11",
         "libSize": {
-          "status": "ok",
-          "gzip": 175,
-          "minified": 220,
-          "unminified": 252
+          "status": "missing",
+          "gzip": null,
+          "minified": null,
+          "unminified": null
         }
       },
       "static": null,
@@ -8161,23 +8161,7 @@
                   122605
                 ]
               },
-              "localeLeakPct": {
-                "avg": 0,
-                "min": 0,
-                "max": 0,
-                "raw": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ]
-              },
+              "localeLeakPct": null,
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
@@ -8222,7 +8206,7 @@
                   "htmlGzipSize": 3541,
                   "fileCount": 27,
                   "jsFileCount": 25,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8235,7 +8219,7 @@
                   "htmlGzipSize": 3292,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8248,7 +8232,7 @@
                   "htmlGzipSize": 3299,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8261,7 +8245,7 @@
                   "htmlGzipSize": 3376,
                   "fileCount": 27,
                   "jsFileCount": 25,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8274,7 +8258,7 @@
                   "htmlGzipSize": 3431,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8287,7 +8271,7 @@
                   "htmlGzipSize": 3390,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8300,7 +8284,7 @@
                   "htmlGzipSize": 3440,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8313,7 +8297,7 @@
                   "htmlGzipSize": 3322,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8326,7 +8310,7 @@
                   "htmlGzipSize": 3597,
                   "fileCount": 29,
                   "jsFileCount": 27,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8339,7 +8323,7 @@
                   "htmlGzipSize": 3280,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 }
@@ -8363,23 +8347,7 @@
                   123184
                 ]
               },
-              "localeLeakPct": {
-                "avg": 0,
-                "min": 0,
-                "max": 0,
-                "raw": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
-                ]
-              },
+              "localeLeakPct": null,
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
@@ -8424,7 +8392,7 @@
                   "htmlGzipSize": 3544,
                   "fileCount": 27,
                   "jsFileCount": 25,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8437,7 +8405,7 @@
                   "htmlGzipSize": 3295,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8450,7 +8418,7 @@
                   "htmlGzipSize": 3296,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8463,7 +8431,7 @@
                   "htmlGzipSize": 3378,
                   "fileCount": 27,
                   "jsFileCount": 25,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8476,7 +8444,7 @@
                   "htmlGzipSize": 3439,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8489,7 +8457,7 @@
                   "htmlGzipSize": 3388,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8502,7 +8470,7 @@
                   "htmlGzipSize": 3447,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8515,7 +8483,7 @@
                   "htmlGzipSize": 3319,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8528,7 +8496,7 @@
                   "htmlGzipSize": 3606,
                   "fileCount": 29,
                   "jsFileCount": 27,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 },
@@ -8541,7 +8509,7 @@
                   "htmlGzipSize": 3280,
                   "fileCount": 26,
                   "jsFileCount": 24,
-                  "localeLeakagePercent": 0,
+                  "localeLeakagePercent": null,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
                 }
@@ -8551,9 +8519,10 @@
           "jsGzipMin": 122605,
           "jsGzipAvg": 123257.6,
           "jsGzipMax": 124804,
-          "localeLeakAvgPct": 0,
+          "localeLeakAvgPct": null,
           "pageLeakAvgPct": 0,
-          "otherPageContentLeakAvgPct": 0
+          "otherPageContentLeakAvgPct": 0,
+          "localeLeakMetricsExcluded": true
         },
         "components": {
           "status": "ok",

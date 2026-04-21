@@ -114,7 +114,7 @@ _Generated: 2026-04-21_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Dynamic | ✅ | 597.2 KB | — | 82.2% | — | 3.9 ms | 0.3 ms | 18.1 ms | 47.2 ms |
+| Dynamic | ✅ | 597.2 KB | — | 82.2% | — | 3.9 ms | 0.3 ms | 18.2 ms | 42.6 ms |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 
@@ -169,8 +169,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 16.3 ms | 45.9 ms | 3.4 ms |
-| `fr` | 20.0 ms | 48.5 ms | 4.1 ms |
+| `en` | 20.8 ms | 38.6 ms | 5.8 ms |
+| `fr` | 15.5 ms | 46.6 ms | 3.2 ms |
 
 </details>
 
@@ -736,12 +736,12 @@ _Generated: 2026-04-21_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 0.22.11 | 0.2 KB | 0.2 KB |
+| 0.22.11 | — | — |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Dynamic | 🔶 | 114.7 KB | 0.0% | 89.6% | 26.1 KB | 12.3 ms | — | 14.3 ms | 23.2 ms |
+| Dynamic | 🔶 | 114.7 KB | — | 89.6% | 26.1 KB | 12.3 ms | — | 14.3 ms | 23.2 ms |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 
@@ -752,31 +752,31 @@ _Generated: 2026-04-21_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 114.9 KB | 0.0% | 61.9% |
-| `/en/about` | 114.1 KB | 0.0% | 76.2% |
-| `/en/blog` | 114.1 KB | 0.0% | 97.6% |
-| `/en/careers` | 114.6 KB | 0.0% | 90.7% |
-| `/en/contact` | 114.3 KB | 0.0% | 97.6% |
-| `/en/faq` | 114.1 KB | 0.0% | 95.2% |
-| `/en/pricing` | 114.3 KB | 0.0% | 93.0% |
-| `/en/products` | 114.1 KB | 0.0% | 97.6% |
-| `/en/settings` | 115.6 KB | 0.0% | 88.1% |
-| `/en/team` | 114.1 KB | 0.0% | 97.6% |
+| `/en/` | 114.9 KB | — | 61.9% |
+| `/en/about` | 114.1 KB | — | 76.2% |
+| `/en/blog` | 114.1 KB | — | 97.6% |
+| `/en/careers` | 114.6 KB | — | 90.7% |
+| `/en/contact` | 114.3 KB | — | 97.6% |
+| `/en/faq` | 114.1 KB | — | 95.2% |
+| `/en/pricing` | 114.3 KB | — | 93.0% |
+| `/en/products` | 114.1 KB | — | 97.6% |
+| `/en/settings` | 115.6 KB | — | 88.1% |
+| `/en/team` | 114.1 KB | — | 97.6% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 115.4 KB | 0.0% | 66.0% |
-| `/fr/about` | 114.6 KB | 0.0% | 72.3% |
-| `/fr/blog` | 114.6 KB | 0.0% | 97.9% |
-| `/fr/careers` | 115.1 KB | 0.0% | 91.7% |
-| `/fr/contact` | 114.8 KB | 0.0% | 97.9% |
-| `/fr/faq` | 114.6 KB | 0.0% | 97.9% |
-| `/fr/pricing` | 114.8 KB | 0.0% | 91.7% |
-| `/fr/products` | 114.6 KB | 0.0% | 97.9% |
-| `/fr/settings` | 116.1 KB | 0.0% | 85.1% |
-| `/fr/team` | 114.6 KB | 0.0% | 97.9% |
+| `/fr/` | 115.4 KB | — | 66.0% |
+| `/fr/about` | 114.6 KB | — | 72.3% |
+| `/fr/blog` | 114.6 KB | — | 97.9% |
+| `/fr/careers` | 115.1 KB | — | 91.7% |
+| `/fr/contact` | 114.8 KB | — | 97.9% |
+| `/fr/faq` | 114.6 KB | — | 97.9% |
+| `/fr/pricing` | 114.8 KB | — | 91.7% |
+| `/fr/products` | 114.6 KB | — | 97.9% |
+| `/fr/settings` | 116.1 KB | — | 85.1% |
+| `/fr/team` | 114.6 KB | — | 97.9% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-dynamic-wuchale-app/bundle/rollup-visualizer.html)
 
@@ -810,7 +810,7 @@ _Generated: 2026-04-21_
 | :--- | :--- |
 | Total libraries | 11 |
 | Total app entries | 30 |
-| With lib size data | 11 |
+| With lib size data | 10 |
 | With page bundle data | 11 |
 | With component data | 11 |
 | With reactivity data | 9 |
