@@ -440,6 +440,7 @@ msgid "Choose the plan that fits your team. No hidden fees."
 msgstr "Choose the plan that fits your team. No hidden fees."
 
 #: src/components/pages/pricing/PricingTiers.tsx
+#: src/components/pages/pricing/PricingTiers.tsx
 msgid "Enterprise"
 msgstr "Enterprise"
 
@@ -569,3 +570,161 @@ msgstr "Meet the people behind i18n Benchmark. A diverse team united by a shared
 
 #~ msgid "Hello \"__root\"!"
 #~ msgstr "Hello \"__root\"!"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Starter"
+msgstr "Starter"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Community support"
+msgstr "Community support"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Public results"
+msgstr "Public results"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Pro"
+msgstr "Pro"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Unlimited runs"
+msgstr "Unlimited runs"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "All libraries"
+msgstr "All libraries"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Priority support"
+msgstr "Priority support"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Private results"
+msgstr "Private results"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "CI integration"
+msgstr "CI integration"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Historical data"
+msgstr "Historical data"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Custom"
+msgstr "Custom"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Everything in Pro"
+msgstr "Everything in Pro"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "On-premise option"
+msgstr "On-premise option"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Dedicated account manager"
+msgstr "Dedicated account manager"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Custom SLAs"
+msgstr "Custom SLAs"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Audit logs"
+msgstr "Audit logs"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Training sessions"
+msgstr "Training sessions"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Comparing i18n Libraries in 2026: A Deep Dive"
+msgstr "Comparing i18n Libraries in 2026: A Deep Dive"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "March 15, 2026"
+msgstr "March 15, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+msgstr "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Benchmark"
+msgstr "Benchmark"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "How to Reduce Your i18n Bundle by 60%"
+msgstr "How to Reduce Your i18n Bundle by 60%"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "March 8, 2026"
+msgstr "March 8, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+msgstr "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+
+#: src/components/pages/blog/BlogList.tsx
+#: src/components/pages/blog/BlogList.tsx
+msgid "Tutorial"
+msgstr "Tutorial"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "The State of Internationalization in React"
+msgstr "The State of Internationalization in React"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "February 28, 2026"
+msgstr "February 28, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+msgstr "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+
+#: src/components/pages/blog/BlogList.tsx
+#: src/components/pages/blog/BlogList.tsx
+msgid "Analysis"
+msgstr "Analysis"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Migrating from react-i18next to Lingui"
+msgstr "Migrating from react-i18next to Lingui"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "February 15, 2026"
+msgstr "February 15, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+msgstr "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Server Components and i18n: What Changes?"
+msgstr "Server Components and i18n: What Changes?"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "February 1, 2026"
+msgstr "February 1, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+msgstr "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Benchmark Methodology: How We Test"
+msgstr "Benchmark Methodology: How We Test"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "January 20, 2026"
+msgstr "January 20, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+msgstr "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Meta"
+msgstr "Meta"

@@ -184,7 +184,7 @@ _Generated: 2026-04-21_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 127.9 KB | 50.0% | 0.8% | 7.1 KB | 6.4 ms | 5.9 ms | 21.7 ms | 28.3 ms |
+| Static | ✅ | 127.9 KB | 50.0% | 0.8% | 7.1 KB | 9.4 ms | 2.1 ms | 17.0 ms | 22.5 ms |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
@@ -231,8 +231,8 @@ _Generated: 2026-04-21_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 5.3 ms | 2.6 ms | 14.1 ms | 8.5 ms |
-| `fr` | 7.6 ms | 2.7 ms | 25.7 ms | 3.2 ms |
+| `en` | 11.2 ms | 4.6 ms | 34.1 ms | 3.7 ms |
+| `fr` | 7.5 ms | 4.1 ms | 19.5 ms | 0.6 ms |
 
 </details>
 
@@ -241,8 +241,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 26.3 ms | 35.7 ms | 7.9 ms |
-| `fr` | 17.1 ms | 20.8 ms | 4.6 ms |
+| `en` | 17.9 ms | 25.2 ms | 6.8 ms |
+| `fr` | 16.1 ms | 19.7 ms | 4.5 ms |
 
 </details>
 
@@ -735,7 +735,7 @@ _Generated: 2026-04-21_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 0.22.9 | 0.2 KB | 0.2 KB |
+| 0.22.11 | 0.2 KB | 0.2 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |

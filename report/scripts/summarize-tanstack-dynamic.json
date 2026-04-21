@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-21T02:58:02.221Z",
+    "generatedAt": "2026-04-21T03:09:58.557Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 30
@@ -8204,7 +8204,7 @@
     },
     "wuchale": {
       "global": {
-        "version": "0.22.9",
+        "version": "0.22.11",
         "libSize": {
           "status": "ok",
           "gzip": 175,

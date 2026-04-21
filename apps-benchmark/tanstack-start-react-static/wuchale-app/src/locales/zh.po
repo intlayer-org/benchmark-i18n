@@ -440,6 +440,7 @@ msgid "Choose the plan that fits your team. No hidden fees."
 msgstr "Choose the plan that fits your team. No hidden fees."
 
 #: src/components/pages/pricing/PricingTiers.tsx
+#: src/components/pages/pricing/PricingTiers.tsx
 msgid "Enterprise"
 msgstr "Enterprise"
 
@@ -569,3 +570,161 @@ msgstr "认识 i18n 基准测试背后的团队。一支多元化的团队，因
 
 #~ msgid "Hello \"__root\"!"
 #~ msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Starter"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Community support"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Public results"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Pro"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Unlimited runs"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "All libraries"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Priority support"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Private results"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "CI integration"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Historical data"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Custom"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Everything in Pro"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "On-premise option"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Dedicated account manager"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Custom SLAs"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Audit logs"
+msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Training sessions"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Comparing i18n Libraries in 2026: A Deep Dive"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "March 15, 2026"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Benchmark"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "How to Reduce Your i18n Bundle by 60%"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "March 8, 2026"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+#: src/components/pages/blog/BlogList.tsx
+msgid "Tutorial"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "The State of Internationalization in React"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "February 28, 2026"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+#: src/components/pages/blog/BlogList.tsx
+msgid "Analysis"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Migrating from react-i18next to Lingui"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "February 15, 2026"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Server Components and i18n: What Changes?"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "February 1, 2026"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Benchmark Methodology: How We Test"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "January 20, 2026"
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+msgstr ""
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Meta"
+msgstr ""
