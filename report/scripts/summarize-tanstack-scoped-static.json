@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-21T02:04:13.950Z",
+    "generatedAt": "2026-04-21T02:12:14.538Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 30
@@ -1225,9 +1225,9 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 699850,
-          "gzipAvg": 700187.5625,
-          "gzipMax": 701851,
+          "gzipMin": null,
+          "gzipAvg": null,
+          "gzipMax": null,
           "count": 32,
           "items": [
             {
@@ -2828,9 +2828,9 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 7852,
-          "gzipAvg": 19363,
-          "gzipMax": 21712,
+          "gzipMin": null,
+          "gzipAvg": null,
+          "gzipMax": null,
           "count": 32,
           "items": [
             {

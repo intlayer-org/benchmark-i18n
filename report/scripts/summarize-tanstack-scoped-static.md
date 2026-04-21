@@ -115,7 +115,7 @@ _Generated: 2026-04-21_
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Static | 🔶 | 597.2 KB | — | 82.2% | 683.8 KB | 3.9 ms | 0.3 ms | 14.8 ms | 18.2 ms |
+| Scoped Static | 🔶 | 597.2 KB | — | 82.2% | — | 3.9 ms | 0.3 ms | 14.8 ms | 18.2 ms |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 
 <details>
@@ -258,7 +258,7 @@ _Generated: 2026-04-21_
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Static | 🔶 | 597.2 KB | — | 82.2% | 18.9 KB | — | — | 23.4 ms | 25.9 ms |
+| Scoped Static | 🔶 | 597.2 KB | — | 82.2% | — | — | — | 23.4 ms | 25.9 ms |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 
 <details>

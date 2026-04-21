@@ -116,7 +116,7 @@ _Generated: 2026-04-21_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | 🔶 | — | — | — | 174.1 KB | 20.7 ms | 5.7 ms | 25.5 ms | 21.5 ms |
+| Scoped Dynamic | 🔶 | — | — | — | — | 20.7 ms | 5.7 ms | 25.5 ms | 21.5 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>
@@ -151,7 +151,7 @@ _Generated: 2026-04-21_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | 🔶 | — | — | — | 7.8 KB | 16.8 ms | 4.7 ms | 20.9 ms | 15.3 ms |
+| Scoped Dynamic | 🔶 | — | — | — | — | 16.8 ms | 4.7 ms | 20.9 ms | 15.3 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>

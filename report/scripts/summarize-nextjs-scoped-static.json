@@ -2,7 +2,7 @@
   "meta": {
     "framework": "nextjs",
     "frameworkLabel": "Next.js",
-    "generatedAt": "2026-04-21T02:04:13.950Z",
+    "generatedAt": "2026-04-21T02:12:14.538Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 29
@@ -899,9 +899,9 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 177820,
-          "gzipAvg": 178303.23529411765,
-          "gzipMax": 180190,
+          "gzipMin": null,
+          "gzipAvg": null,
+          "gzipMax": null,
           "count": 34,
           "items": [
             {
@@ -1356,9 +1356,9 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 7546,
-          "gzipAvg": 7948.264705882353,
-          "gzipMax": 9787,
+          "gzipMin": null,
+          "gzipAvg": null,
+          "gzipMax": null,
           "count": 34,
           "items": [
             {

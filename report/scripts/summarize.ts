@@ -710,6 +710,21 @@ function excludeUnreliableLeakMetrics(
   };
 }
 
+/** Null out component size metrics for libs whose component measurements are not meaningful. */
+function excludeUnreliableComponentMetrics(
+  library: string,
+  co: ComponentsData,
+): ComponentsData {
+  if (!LIBS_WITHOUT_RELIABLE_LEAK_METRICS.has(library)) return co;
+  if (co.status === "missing") return co;
+  return {
+    ...co,
+    gzipMin: null,
+    gzipAvg: null,
+    gzipMax: null,
+  };
+}
+
 function collectComponents(appResultDir: string): ComponentsData {
   const filePath = join(appResultDir, "components-size.json");
 
@@ -1017,10 +1032,13 @@ function collectAppSummary(
       (s) => s.status !== "missing",
     ),
   );
-  const components = mergeFromDirs(
-    dirs,
-    (d) => collectComponents(d),
-    (s) => s.status !== "missing",
+  const components = excludeUnreliableComponentMetrics(
+    library,
+    mergeFromDirs(
+      dirs,
+      (d) => collectComponents(d),
+      (s) => s.status !== "missing",
+    ),
   );
   const reactivity = mergeFromDirs(
     dirs,

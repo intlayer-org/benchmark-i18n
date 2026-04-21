@@ -122,7 +122,7 @@ _Generated: 2026-04-21_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Dynamic | 🔶 | — | — | — | 7.8 KB | 16.8 ms | 4.7 ms | 20.9 ms | 15.3 ms |
+| Dynamic | 🔶 | — | — | — | — | 16.8 ms | 4.7 ms | 20.9 ms | 15.3 ms |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 
