@@ -48,7 +48,7 @@ const FALLBACKS: Record<string, string[]> = appMap?.fallbacks ?? {
   static: ["static"],
 };
 
-/** Library slugs (`deriveLibraryName`) whose page/locale leak probes are not meaningful — omit from reports. */
+/** Library slugs (`deriveLibraryName`) whose locale/page leak probes are not meaningful — omit only those columns, not other bundle metrics. */
 const LIBS_WITHOUT_RELIABLE_LEAK_METRICS = new Set([
   "lingo.dev",
   "gt-next",
@@ -142,8 +142,9 @@ interface PageData {
   htmlGzipSize: number;
   fileCount: number;
   jsFileCount: number;
-  /** Null when leak metrics are excluded for this library (see `PageBundleData.leakMetricsExcluded`). */
+  /** Null when `PageBundleData.leakMetricsExcluded` (locale leak probe not comparable). */
   localeLeakagePercent: number | null;
+  /** Null when `PageBundleData.leakMetricsExcluded` (page leak probe not comparable). */
   pageLeakagePercent: number | null;
   otherPageContentLeakagePercent: number | null;
 }
@@ -158,7 +159,7 @@ interface PageBundleLocaleData {
 
 interface PageBundleData {
   status: DataStatus;
-  /** True when locale/page leak columns are intentionally omitted (integration not comparable). */
+  /** True when locale/page leak values are intentionally nulled (probe not comparable); other bundle metrics stay. */
   leakMetricsExcluded?: boolean;
   byLocale: Record<string, PageBundleLocaleData>;
   jsGzipMin: number | null;
@@ -678,7 +679,7 @@ function collectPageBundle(
   };
 }
 
-/** Drop locale / page leak fields for libraries where the benchmark signal is not meaningful. */
+/** Drop only locale/page leak fields where the probe is not meaningful; keep other page-content leak metrics. */
 function excludeUnreliableLeakMetrics(
   library: string,
   pb: PageBundleData,
@@ -692,12 +693,10 @@ function excludeUnreliableLeakMetrics(
       ...locData,
       localeLeakPct: null,
       pageLeakPct: null,
-      otherPageContentLeakPct: null,
       pages: locData.pages.map((p) => ({
         ...p,
         localeLeakagePercent: null,
         pageLeakagePercent: null,
-        otherPageContentLeakagePercent: null,
       })),
     };
   }
@@ -708,7 +707,6 @@ function excludeUnreliableLeakMetrics(
     byLocale,
     localeLeakAvgPct: null,
     pageLeakAvgPct: null,
-    otherPageContentLeakAvgPct: null,
   };
 }
 

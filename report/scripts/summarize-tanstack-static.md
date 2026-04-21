@@ -113,7 +113,7 @@ _Generated: 2026-04-21_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | 🔶 | 597.2 KB | — | — | 683.8 KB | 3.9 ms | 0.3 ms | 14.8 ms | 18.2 ms |
+| Static | 🔶 | 597.2 KB | — | 82.2% | 683.8 KB | 3.9 ms | 0.3 ms | 14.8 ms | 18.2 ms |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
@@ -125,31 +125,31 @@ _Generated: 2026-04-21_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 597.3 KB | — | — |
-| `/en/about` | 597.2 KB | — | — |
-| `/en/blog` | 597.2 KB | — | — |
-| `/en/careers` | 597.2 KB | — | — |
-| `/en/contact` | 597.2 KB | — | — |
-| `/en/faq` | 597.2 KB | — | — |
-| `/en/pricing` | 597.2 KB | — | — |
-| `/en/products` | 597.2 KB | — | — |
-| `/en/settings` | 597.3 KB | — | — |
-| `/en/team` | 597.2 KB | — | — |
+| `/en/` | 597.3 KB | — | 64.4% |
+| `/en/about` | 597.2 KB | — | 77.8% |
+| `/en/blog` | 597.2 KB | — | 77.6% |
+| `/en/careers` | 597.2 KB | — | 75.6% |
+| `/en/contact` | 597.2 KB | — | 97.8% |
+| `/en/faq` | 597.2 KB | — | 81.8% |
+| `/en/pricing` | 597.2 KB | — | 91.8% |
+| `/en/products` | 597.2 KB | — | 82.2% |
+| `/en/settings` | 597.3 KB | — | 90.0% |
+| `/en/team` | 597.2 KB | — | 83.3% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 597.3 KB | — | — |
-| `/fr/about` | 597.2 KB | — | — |
-| `/fr/blog` | 597.2 KB | — | — |
-| `/fr/careers` | 597.2 KB | — | — |
-| `/fr/contact` | 597.2 KB | — | — |
-| `/fr/faq` | 597.2 KB | — | — |
-| `/fr/pricing` | 597.2 KB | — | — |
-| `/fr/products` | 597.2 KB | — | — |
-| `/fr/settings` | 597.3 KB | — | — |
-| `/fr/team` | 597.2 KB | — | — |
+| `/fr/` | 597.3 KB | — | 64.4% |
+| `/fr/about` | 597.2 KB | — | 77.8% |
+| `/fr/blog` | 597.2 KB | — | 77.6% |
+| `/fr/careers` | 597.2 KB | — | 75.6% |
+| `/fr/contact` | 597.2 KB | — | 97.8% |
+| `/fr/faq` | 597.2 KB | — | 81.8% |
+| `/fr/pricing` | 597.2 KB | — | 91.8% |
+| `/fr/products` | 597.2 KB | — | 82.2% |
+| `/fr/settings` | 597.3 KB | — | 90.0% |
+| `/fr/team` | 597.2 KB | — | 83.3% |
 
 **Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/gt-react-app)
 
@@ -256,7 +256,7 @@ _Generated: 2026-04-21_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | 🔶 | 597.2 KB | — | — | 18.9 KB | — | — | 23.4 ms | 25.9 ms |
+| Static | 🔶 | 597.2 KB | — | 82.2% | 18.9 KB | — | — | 23.4 ms | 25.9 ms |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
@@ -268,31 +268,31 @@ _Generated: 2026-04-21_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 597.3 KB | — | — |
-| `/en/about` | 597.2 KB | — | — |
-| `/en/blog` | 597.2 KB | — | — |
-| `/en/careers` | 597.2 KB | — | — |
-| `/en/contact` | 597.2 KB | — | — |
-| `/en/faq` | 597.2 KB | — | — |
-| `/en/pricing` | 597.2 KB | — | — |
-| `/en/products` | 597.2 KB | — | — |
-| `/en/settings` | 597.3 KB | — | — |
-| `/en/team` | 597.2 KB | — | — |
+| `/en/` | 597.3 KB | — | 64.4% |
+| `/en/about` | 597.2 KB | — | 77.8% |
+| `/en/blog` | 597.2 KB | — | 77.6% |
+| `/en/careers` | 597.2 KB | — | 75.6% |
+| `/en/contact` | 597.2 KB | — | 97.8% |
+| `/en/faq` | 597.2 KB | — | 81.8% |
+| `/en/pricing` | 597.2 KB | — | 91.8% |
+| `/en/products` | 597.2 KB | — | 82.2% |
+| `/en/settings` | 597.3 KB | — | 90.0% |
+| `/en/team` | 597.2 KB | — | 83.3% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 597.3 KB | — | — |
-| `/fr/about` | 597.2 KB | — | — |
-| `/fr/blog` | 597.2 KB | — | — |
-| `/fr/careers` | 597.2 KB | — | — |
-| `/fr/contact` | 597.2 KB | — | — |
-| `/fr/faq` | 597.2 KB | — | — |
-| `/fr/pricing` | 597.2 KB | — | — |
-| `/fr/products` | 597.2 KB | — | — |
-| `/fr/settings` | 597.3 KB | — | — |
-| `/fr/team` | 597.2 KB | — | — |
+| `/fr/` | 597.3 KB | — | 64.4% |
+| `/fr/about` | 597.2 KB | — | 77.8% |
+| `/fr/blog` | 597.2 KB | — | 77.6% |
+| `/fr/careers` | 597.2 KB | — | 75.6% |
+| `/fr/contact` | 597.2 KB | — | 97.8% |
+| `/fr/faq` | 597.2 KB | — | 81.8% |
+| `/fr/pricing` | 597.2 KB | — | 91.8% |
+| `/fr/products` | 597.2 KB | — | 82.2% |
+| `/fr/settings` | 597.3 KB | — | 90.0% |
+| `/fr/team` | 597.2 KB | — | 83.3% |
 
 **Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app)
 
@@ -390,7 +390,7 @@ _Generated: 2026-04-21_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 192.2 KB | 50.0% | 89.8% | 5.1 KB | 9.3 ms | 4.4 ms | 15.7 ms | 24.0 ms |
+| Static | ✅ | 192.2 KB | 50.0% | 89.8% | 5.1 KB | 7.4 ms | 3.6 ms | 15.0 ms | 23.7 ms |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
@@ -437,8 +437,8 @@ _Generated: 2026-04-21_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 10.9 ms | 3.5 ms | 39.2 ms | 4.7 ms |
-| `fr` | 7.8 ms | 3.8 ms | 22.9 ms | 4.1 ms |
+| `en` | 7.5 ms | 3.4 ms | 22.0 ms | 3.5 ms |
+| `fr` | 7.4 ms | 3.5 ms | 21.7 ms | 3.6 ms |
 
 </details>
 
@@ -447,8 +447,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 16.2 ms | 26.4 ms | 7.8 ms |
-| `fr` | 15.1 ms | 21.7 ms | 5.2 ms |
+| `en` | 15.7 ms | 25.3 ms | 7.5 ms |
+| `fr` | 14.4 ms | 22.1 ms | 4.8 ms |
 
 </details>
 

@@ -330,7 +330,7 @@ _Generated: 2026-04-21_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | ✅ | 162.5 KB | 0.0% | 89.9% | 11.9 KB | 20.1 ms | 4.8 ms | 16.8 ms | 7.8 ms |
+| Scoped Dynamic | ✅ | 162.5 KB | 0.0% | 89.9% | 11.9 KB | 17.6 ms | 4.5 ms | 19.5 ms | 8.2 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
@@ -375,7 +375,7 @@ _Generated: 2026-04-21_
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
 | `en` | 19.8 ms | 12.2 ms | 32.5 ms | 4.1 ms |
-| `fr` | 20.4 ms | 13.3 ms | 30.3 ms | 5.5 ms |
+| `fr` | 15.4 ms | 13.1 ms | 20.2 ms | 5.0 ms |
 
 </details>
 
@@ -384,8 +384,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 17.2 ms | 8.7 ms | 1.2 ms |
-| `fr` | 16.3 ms | 6.9 ms | 1.0 ms |
+| `en` | 23.1 ms | 9.6 ms | 1.3 ms |
+| `fr` | 15.8 ms | 6.9 ms | 0.9 ms |
 
 </details>
 

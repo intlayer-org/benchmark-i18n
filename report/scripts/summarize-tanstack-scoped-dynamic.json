@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-21T01:18:35.155Z",
+    "generatedAt": "2026-04-21T02:04:13.950Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 30
@@ -895,7 +895,23 @@
               },
               "localeLeakPct": null,
               "pageLeakPct": null,
-              "otherPageContentLeakPct": null,
+              "otherPageContentLeakPct": {
+                "avg": 82.24005436984662,
+                "min": 64.44444444444444,
+                "max": 97.82608695652173,
+                "raw": [
+                  64.44444444444444,
+                  77.77777777777779,
+                  77.58620689655173,
+                  75.55555555555556,
+                  97.82608695652173,
+                  81.81818181818183,
+                  91.83673469387756,
+                  82.22222222222221,
+                  90,
+                  83.33333333333334
+                ]
+              },
               "pages": [
                 {
                   "path": "/en/",
@@ -908,7 +924,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 64.44444444444444
                 },
                 {
                   "path": "/en/about",
@@ -921,7 +937,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 77.77777777777779
                 },
                 {
                   "path": "/en/blog",
@@ -934,7 +950,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 77.58620689655173
                 },
                 {
                   "path": "/en/careers",
@@ -947,7 +963,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 75.55555555555556
                 },
                 {
                   "path": "/en/contact",
@@ -960,7 +976,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 97.82608695652173
                 },
                 {
                   "path": "/en/faq",
@@ -973,7 +989,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 81.81818181818183
                 },
                 {
                   "path": "/en/pricing",
@@ -986,7 +1002,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 91.83673469387756
                 },
                 {
                   "path": "/en/products",
@@ -999,7 +1015,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 82.22222222222221
                 },
                 {
                   "path": "/en/settings",
@@ -1012,7 +1028,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 90
                 },
                 {
                   "path": "/en/team",
@@ -1025,7 +1041,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 83.33333333333334
                 }
               ]
             },
@@ -1049,7 +1065,23 @@
               },
               "localeLeakPct": null,
               "pageLeakPct": null,
-              "otherPageContentLeakPct": null,
+              "otherPageContentLeakPct": {
+                "avg": 82.24005436984662,
+                "min": 64.44444444444444,
+                "max": 97.82608695652173,
+                "raw": [
+                  64.44444444444444,
+                  77.77777777777779,
+                  77.58620689655173,
+                  75.55555555555556,
+                  97.82608695652173,
+                  81.81818181818183,
+                  91.83673469387756,
+                  82.22222222222221,
+                  90,
+                  83.33333333333334
+                ]
+              },
               "pages": [
                 {
                   "path": "/fr/",
@@ -1062,7 +1094,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 64.44444444444444
                 },
                 {
                   "path": "/fr/about",
@@ -1075,7 +1107,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 77.77777777777779
                 },
                 {
                   "path": "/fr/blog",
@@ -1088,7 +1120,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 77.58620689655173
                 },
                 {
                   "path": "/fr/careers",
@@ -1101,7 +1133,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 75.55555555555556
                 },
                 {
                   "path": "/fr/contact",
@@ -1114,7 +1146,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 97.82608695652173
                 },
                 {
                   "path": "/fr/faq",
@@ -1127,7 +1159,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 81.81818181818183
                 },
                 {
                   "path": "/fr/pricing",
@@ -1140,7 +1172,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 91.83673469387756
                 },
                 {
                   "path": "/fr/products",
@@ -1153,7 +1185,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 82.22222222222221
                 },
                 {
                   "path": "/fr/settings",
@@ -1166,7 +1198,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 90
                 },
                 {
                   "path": "/fr/team",
@@ -1179,7 +1211,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 83.33333333333334
                 }
               ]
             }
@@ -1189,7 +1221,7 @@
           "jsGzipMax": 611676,
           "localeLeakAvgPct": null,
           "pageLeakAvgPct": null,
-          "otherPageContentLeakAvgPct": null,
+          "otherPageContentLeakAvgPct": 82.24005436984662,
           "leakMetricsExcluded": true
         },
         "components": {
@@ -2413,7 +2445,23 @@
               },
               "localeLeakPct": null,
               "pageLeakPct": null,
-              "otherPageContentLeakPct": null,
+              "otherPageContentLeakPct": {
+                "avg": 82.24005436984662,
+                "min": 64.44444444444444,
+                "max": 97.82608695652173,
+                "raw": [
+                  64.44444444444444,
+                  77.77777777777779,
+                  77.58620689655173,
+                  75.55555555555556,
+                  97.82608695652173,
+                  81.81818181818183,
+                  91.83673469387756,
+                  82.22222222222221,
+                  90,
+                  83.33333333333334
+                ]
+              },
               "pages": [
                 {
                   "path": "/en/",
@@ -2426,7 +2474,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 64.44444444444444
                 },
                 {
                   "path": "/en/about",
@@ -2439,7 +2487,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 77.77777777777779
                 },
                 {
                   "path": "/en/blog",
@@ -2452,7 +2500,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 77.58620689655173
                 },
                 {
                   "path": "/en/careers",
@@ -2465,7 +2513,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 75.55555555555556
                 },
                 {
                   "path": "/en/contact",
@@ -2478,7 +2526,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 97.82608695652173
                 },
                 {
                   "path": "/en/faq",
@@ -2491,7 +2539,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 81.81818181818183
                 },
                 {
                   "path": "/en/pricing",
@@ -2504,7 +2552,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 91.83673469387756
                 },
                 {
                   "path": "/en/products",
@@ -2517,7 +2565,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 82.22222222222221
                 },
                 {
                   "path": "/en/settings",
@@ -2530,7 +2578,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 90
                 },
                 {
                   "path": "/en/team",
@@ -2543,7 +2591,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 83.33333333333334
                 }
               ]
             },
@@ -2567,7 +2615,23 @@
               },
               "localeLeakPct": null,
               "pageLeakPct": null,
-              "otherPageContentLeakPct": null,
+              "otherPageContentLeakPct": {
+                "avg": 82.24005436984662,
+                "min": 64.44444444444444,
+                "max": 97.82608695652173,
+                "raw": [
+                  64.44444444444444,
+                  77.77777777777779,
+                  77.58620689655173,
+                  75.55555555555556,
+                  97.82608695652173,
+                  81.81818181818183,
+                  91.83673469387756,
+                  82.22222222222221,
+                  90,
+                  83.33333333333334
+                ]
+              },
               "pages": [
                 {
                   "path": "/fr/",
@@ -2580,7 +2644,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 64.44444444444444
                 },
                 {
                   "path": "/fr/about",
@@ -2593,7 +2657,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 77.77777777777779
                 },
                 {
                   "path": "/fr/blog",
@@ -2606,7 +2670,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 77.58620689655173
                 },
                 {
                   "path": "/fr/careers",
@@ -2619,7 +2683,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 75.55555555555556
                 },
                 {
                   "path": "/fr/contact",
@@ -2632,7 +2696,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 97.82608695652173
                 },
                 {
                   "path": "/fr/faq",
@@ -2645,7 +2709,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 81.81818181818183
                 },
                 {
                   "path": "/fr/pricing",
@@ -2658,7 +2722,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 91.83673469387756
                 },
                 {
                   "path": "/fr/products",
@@ -2671,7 +2735,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 82.22222222222221
                 },
                 {
                   "path": "/fr/settings",
@@ -2684,7 +2748,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 90
                 },
                 {
                   "path": "/fr/team",
@@ -2697,7 +2761,7 @@
                   "jsFileCount": 8,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": null
+                  "otherPageContentLeakagePercent": 83.33333333333334
                 }
               ]
             }
@@ -2707,7 +2771,7 @@
           "jsGzipMax": 611676,
           "localeLeakAvgPct": null,
           "pageLeakAvgPct": null,
-          "otherPageContentLeakAvgPct": null,
+          "otherPageContentLeakAvgPct": 82.24005436984662,
           "leakMetricsExcluded": true
         },
         "components": {
@@ -4011,9 +4075,9 @@
                   "path": "/en/",
                   "page": "home",
                   "jsGzipSize": 197546,
-                  "totalGzipSize": 207680,
+                  "totalGzipSize": 207681,
                   "cssGzipSize": 4996,
-                  "htmlGzipSize": 5138,
+                  "htmlGzipSize": 5139,
                   "fileCount": 15,
                   "jsFileCount": 13,
                   "localeLeakagePercent": 54.123711340206185,
@@ -4024,9 +4088,9 @@
                   "path": "/en/about",
                   "page": "about",
                   "jsGzipSize": 196491,
-                  "totalGzipSize": 205915,
+                  "totalGzipSize": 205916,
                   "cssGzipSize": 4996,
-                  "htmlGzipSize": 4428,
+                  "htmlGzipSize": 4429,
                   "fileCount": 14,
                   "jsFileCount": 12,
                   "localeLeakagePercent": 54.123711340206185,
@@ -4037,9 +4101,9 @@
                   "path": "/en/blog",
                   "page": "blog",
                   "jsGzipSize": 196504,
-                  "totalGzipSize": 205614,
+                  "totalGzipSize": 205613,
                   "cssGzipSize": 4996,
-                  "htmlGzipSize": 4114,
+                  "htmlGzipSize": 4113,
                   "fileCount": 14,
                   "jsFileCount": 12,
                   "localeLeakagePercent": 54.123711340206185,
@@ -4102,9 +4166,9 @@
                   "path": "/en/products",
                   "page": "products",
                   "jsGzipSize": 196524,
-                  "totalGzipSize": 205473,
+                  "totalGzipSize": 205472,
                   "cssGzipSize": 4996,
-                  "htmlGzipSize": 3953,
+                  "htmlGzipSize": 3952,
                   "fileCount": 14,
                   "jsFileCount": 12,
                   "localeLeakagePercent": 54.123711340206185,
@@ -4115,9 +4179,9 @@
                   "path": "/en/settings",
                   "page": "settings",
                   "jsGzipSize": 198043,
-                  "totalGzipSize": 207185,
+                  "totalGzipSize": 207186,
                   "cssGzipSize": 4996,
-                  "htmlGzipSize": 4146,
+                  "htmlGzipSize": 4147,
                   "fileCount": 17,
                   "jsFileCount": 15,
                   "localeLeakagePercent": 54.123711340206185,
@@ -4265,9 +4329,9 @@
                   "path": "/fr/contact",
                   "page": "contact",
                   "jsGzipSize": 196685,
-                  "totalGzipSize": 205626,
+                  "totalGzipSize": 205627,
                   "cssGzipSize": 4996,
-                  "htmlGzipSize": 3945,
+                  "htmlGzipSize": 3946,
                   "fileCount": 14,
                   "jsFileCount": 12,
                   "localeLeakagePercent": 45.876288659793815,
@@ -4291,9 +4355,9 @@
                   "path": "/fr/pricing",
                   "page": "pricing",
                   "jsGzipSize": 196685,
-                  "totalGzipSize": 205730,
+                  "totalGzipSize": 205729,
                   "cssGzipSize": 4996,
-                  "htmlGzipSize": 4049,
+                  "htmlGzipSize": 4048,
                   "fileCount": 14,
                   "jsFileCount": 12,
                   "localeLeakagePercent": 45.64102564102564,
@@ -4304,9 +4368,9 @@
                   "path": "/fr/products",
                   "page": "products",
                   "jsGzipSize": 196524,
-                  "totalGzipSize": 205661,
+                  "totalGzipSize": 205662,
                   "cssGzipSize": 4996,
-                  "htmlGzipSize": 4141,
+                  "htmlGzipSize": 4142,
                   "fileCount": 14,
                   "jsFileCount": 12,
                   "localeLeakagePercent": 45.876288659793815,
@@ -4317,9 +4381,9 @@
                   "path": "/fr/settings",
                   "page": "settings",
                   "jsGzipSize": 198043,
-                  "totalGzipSize": 207311,
+                  "totalGzipSize": 207310,
                   "cssGzipSize": 4996,
-                  "htmlGzipSize": 4272,
+                  "htmlGzipSize": 4271,
                   "fileCount": 17,
                   "jsFileCount": 15,
                   "localeLeakagePercent": 45.876288659793815,
@@ -4619,98 +4683,98 @@
           "byLocale": {
             "en": {
               "e2e": {
-                "avg": 10.859999999403954,
-                "min": 3.5,
-                "max": 39.20000000298023,
+                "avg": 7.459999996423721,
+                "min": 3.399999976158142,
+                "max": 22,
                 "raw": [
-                  39.20000000298023,
-                  3.5,
-                  4,
-                  4,
-                  3.5999999940395355
+                  22,
+                  4.200000017881393,
+                  3.7999999821186066,
+                  3.399999976158142,
+                  3.9000000059604645
                 ]
               },
               "profiler": {
-                "avg": 4.740000000596046,
+                "avg": 3.540000003576279,
                 "min": 0,
-                "max": 23.700000002980232,
+                "max": 10.800000011920929,
                 "raw": [
-                  23.700000002980232,
+                  10.800000011920929,
+                  2.300000011920929,
                   0,
-                  0,
-                  0,
-                  0
+                  2.2999999821186066,
+                  2.300000011920929
                 ]
               }
             },
             "fr": {
               "e2e": {
-                "avg": 7.820000004768372,
-                "min": 3.800000011920929,
-                "max": 22.900000005960464,
+                "avg": 7.420000010728836,
+                "min": 3.5,
+                "max": 21.700000017881393,
                 "raw": [
-                  22.900000005960464,
-                  4,
-                  4,
+                  21.700000017881393,
                   3.800000011920929,
-                  4.4000000059604645
+                  3.5,
+                  3.9000000059604645,
+                  4.200000017881393
                 ]
               },
               "profiler": {
-                "avg": 4.059999996423722,
+                "avg": 3.6000000059604647,
                 "min": 0,
-                "max": 12.099999994039536,
+                "max": 11.099999994039536,
                 "raw": [
-                  12.099999994039536,
-                  3,
+                  11.099999994039536,
+                  2.4000000059604645,
                   0,
-                  2.7999999970197678,
-                  2.3999999910593033
+                  2.300000011920929,
+                  2.2000000178813934
                 ]
               }
             }
           },
-          "e2eAvgMs": 9.340000002086162,
-          "profilerAvgMs": 4.399999998509884
+          "e2eAvgMs": 7.440000003576278,
+          "profilerAvgMs": 3.5700000047683718
         },
         "rendering": {
           "status": "ok",
           "byLocale": {
             "en": {
               "e2ePageLoad": {
-                "avg": 16.159999999403954,
-                "min": 15,
-                "max": 17.599999994039536,
+                "avg": 15.739999991655349,
+                "min": 13.5,
+                "max": 17.19999998807907,
                 "raw": [
-                  16.400000005960464,
-                  17.599999994039536,
-                  15,
-                  15.200000002980232,
-                  16.599999994039536
+                  14.599999994039536,
+                  16.599999994039536,
+                  17.19999998807907,
+                  16.799999982118607,
+                  13.5
                 ]
               },
               "hydration": {
-                "avg": 26.360000002384187,
-                "min": 14.900000005960464,
-                "max": 61,
+                "avg": 25.280000001192093,
+                "min": 14.400000005960464,
+                "max": 57,
                 "raw": [
-                  61,
-                  23.900000005960464,
+                  57,
+                  23.19999998807907,
                   16,
-                  16,
-                  14.900000005960464
+                  15.800000011920929,
+                  14.400000005960464
                 ]
               },
               "reactMount": {
-                "avg": 7.839999994635582,
-                "min": 2.2999999970197678,
-                "max": 26.599999994039536,
+                "avg": 7.539999997615814,
+                "min": 2.2999999821186066,
+                "max": 27.099999994039536,
                 "raw": [
-                  26.599999994039536,
-                  3.3999999910593033,
-                  3.5999999940395355,
-                  3.2999999970197678,
-                  2.2999999970197678
+                  27.099999994039536,
+                  3.2000000178813934,
+                  2.2999999821186066,
+                  2.5999999940395355,
+                  2.5
                 ]
               },
               "hydrationInstrumented": true,
@@ -4718,48 +4782,48 @@
             },
             "fr": {
               "e2ePageLoad": {
-                "avg": 15.140000000596046,
-                "min": 14,
-                "max": 15.700000002980232,
+                "avg": 14.35999999642372,
+                "min": 13.599999994039536,
+                "max": 15.5,
                 "raw": [
                   15.5,
-                  14,
-                  15.700000002980232,
-                  15.299999997019768,
-                  15.200000002980232
+                  13.599999994039536,
+                  14.099999994039536,
+                  14.699999988079071,
+                  13.900000005960464
                 ]
               },
               "hydration": {
-                "avg": 21.680000004172324,
-                "min": 15.400000005960464,
-                "max": 39.20000000298023,
+                "avg": 22.079999995231628,
+                "min": 14.099999994039536,
+                "max": 46,
                 "raw": [
-                  39.20000000298023,
-                  20.200000002980232,
-                  16.600000008940697,
-                  17,
-                  15.400000005960464
+                  46,
+                  19.899999976158142,
+                  15.099999994039536,
+                  15.300000011920929,
+                  14.099999994039536
                 ]
               },
               "reactMount": {
-                "avg": 5.240000000596046,
-                "min": 2.2999999970197678,
-                "max": 15.400000005960464,
+                "avg": 4.759999990463257,
+                "min": 2.199999988079071,
+                "max": 13.900000005960464,
                 "raw": [
-                  15.400000005960464,
-                  2.3999999910593033,
-                  2.2999999970197678,
-                  3.6000000089406967,
-                  2.5
+                  13.900000005960464,
+                  2.5,
+                  2.899999976158142,
+                  2.2999999821186066,
+                  2.199999988079071
                 ]
               },
               "hydrationInstrumented": true,
               "reactMountInstrumented": true
             }
           },
-          "e2ePageLoadAvgMs": 15.65,
-          "hydrationAvgMs": 24.020000003278255,
-          "reactMountAvgMs": 6.539999997615814
+          "e2ePageLoadAvgMs": 15.049999994039535,
+          "hydrationAvgMs": 23.679999998211862,
+          "reactMountAvgMs": 6.149999994039535
         }
       }
     },

@@ -1,20 +1,7 @@
 import { Link, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
-import {
-  header_products,
-  header_pricing,
-  header_team,
-  header_blog,
-  header_careers,
-  header_faq,
-  header_contact,
-  header_settings,
-  header_home,
-  header_methodology,
-  header_mockpages1,
-  header_gotogithub2,
-} from "../paraglide/messages";
+import * as m from "../paraglide/messages";
 import ThemeToggle from "./ThemeToggle";
 import LocaleSwitcher from "./LocaleSwitcher";
 
@@ -27,14 +14,14 @@ export default function Header() {
   const currentLocale = params.locale ?? "en";
 
   const mockPages = [
-    { to: "/$locale/products" as const, label: header_products() },
-    { to: "/$locale/pricing" as const, label: header_pricing() },
-    { to: "/$locale/team" as const, label: header_team() },
-    { to: "/$locale/blog" as const, label: header_blog() },
-    { to: "/$locale/careers" as const, label: header_careers() },
-    { to: "/$locale/faq" as const, label: header_faq() },
-    { to: "/$locale/contact" as const, label: header_contact() },
-    { to: "/$locale/settings" as const, label: header_settings() },
+    { to: "/$locale/products" as const, label: m["header.products"]() },
+    { to: "/$locale/pricing" as const, label: m["header.pricing"]() },
+    { to: "/$locale/team" as const, label: m["header.team"]() },
+    { to: "/$locale/blog" as const, label: m["header.blog"]() },
+    { to: "/$locale/careers" as const, label: m["header.careers"]() },
+    { to: "/$locale/faq" as const, label: m["header.faq"]() },
+    { to: "/$locale/contact" as const, label: m["header.contact"]() },
+    { to: "/$locale/settings" as const, label: m["header.settings"]() },
   ];
 
   return (
@@ -59,7 +46,7 @@ export default function Header() {
               activeProps={{ className: "is-active" }}
               className="nav-link"
             >
-              {header_home()}
+              {m["header.home"]()}
             </Link>
             <Link
               preload={false}
@@ -68,7 +55,7 @@ export default function Header() {
               activeProps={{ className: "is-active" }}
               className="nav-link"
             >
-              {header_methodology()}
+              {m["header.methodology"]()}
             </Link>
 
             {/* Mock Pages Dropdown */}
@@ -80,7 +67,7 @@ export default function Header() {
                 onMouseLeave={() => setIsMockPagesOpen(false)}
                 onClick={() => setIsMockPagesOpen(!isMockPagesOpen)}
               >
-                {header_mockpages1()}
+                {m["header.mockPages"]()}
                 <ChevronDown
                   size={14}
                   className={`transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`}
@@ -120,7 +107,7 @@ export default function Header() {
             rel="noreferrer"
             className="text-muted-foreground transition hover:text-foreground"
           >
-            <span className="sr-only">{header_gotogithub2()}</span>
+            <span className="sr-only">{m["header.goToGithub"]()}</span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
               <path
                 fill="currentColor"
