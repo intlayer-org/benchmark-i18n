@@ -67,8 +67,8 @@ I was not able to test gt-react / gt-next. The libraries are not functional and 
 
 **Paraglide**
 
-- Reasonable performance and impact. Great solution to keep the app as reactive as possible.
-- But for applications including multiple locales, Paraglide includes all messages in the bundle. There is no way to dynamically load the messages. Even if they promote `tree-shaking` optimization, the library is mainly moving the bundling problem somewhere else. A future improvement for dynamic loading seems impossible given the library architecture. Using dynamic loading would lead to thousands of requests to the server.
+- Theoretically for applications including multiple locales, Paraglide includes all messages in the bundle. There is no way to dynamically load the messages. Even if they promote `tree-shaking` optimization, the library is mainly moving the bundling problem somewhere else. A future improvement for dynamic loading seems impossible given the library architecture. Using dynamic loading would lead to thousands of requests to the server.
+- In practice, the result using Paraglide is even worse then expected. On nextjs (Turbopack) as for tanstack start (Rolldown), the bundler does not even tree shake the messages. As a result, the final bundle size includes content from all pages and all locales.
 - Complex flow using JSON declaration files as the source of truth, plus generation of the message files at build time, then manual imports in each component.
 - All constants are transformed into functions, leading to an anti-pattern. Syntax such as `import * as m from '@/messages'` + `<>{m.myContent()}</>` introduces unnecessary complexity and leads to JavaScript execution overhead.
 - In comparison of other solution that use a react context to retrieve in a efficient way the current locale to render the content, Paraglide will read for each content node imported the locale from the localeStorage / cookie etc. It leads to execution of unnecessary logic.

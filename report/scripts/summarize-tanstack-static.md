@@ -109,11 +109,11 @@ _Generated: 2026-04-21_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| latest | — | — |
+| latest | 439.8 KB | 1643.9 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | 🔶 | 597.2 KB | — | 82.2% | — | 3.9 ms | 0.3 ms | 14.8 ms | 18.2 ms |
+| Static | ✅ | 597.2 KB | — | 82.2% | — | 3.9 ms | 0.3 ms | 14.8 ms | 18.2 ms |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
@@ -184,7 +184,7 @@ _Generated: 2026-04-21_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 127.9 KB | 50.0% | 0.8% | 7.1 KB | 5.8 ms | 4.9 ms | 20.1 ms | 24.9 ms |
+| Static | ✅ | 127.9 KB | 50.0% | 0.8% | 7.1 KB | 6.4 ms | 5.9 ms | 21.7 ms | 28.3 ms |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
@@ -232,7 +232,7 @@ _Generated: 2026-04-21_
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
 | `en` | 5.3 ms | 2.6 ms | 14.1 ms | 8.5 ms |
-| `fr` | 6.3 ms | 2.6 ms | 19.1 ms | 1.2 ms |
+| `fr` | 7.6 ms | 2.7 ms | 25.7 ms | 3.2 ms |
 
 </details>
 
@@ -241,8 +241,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 19.6 ms | 26.3 ms | 7.5 ms |
-| `fr` | 20.7 ms | 23.5 ms | 4.5 ms |
+| `en` | 26.3 ms | 35.7 ms | 7.9 ms |
+| `fr` | 17.1 ms | 20.8 ms | 4.6 ms |
 
 </details>
 
@@ -252,7 +252,7 @@ _Generated: 2026-04-21_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 0.133.9 | — | — |
+| 0.133.9 | 7.6 KB | 19.8 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -809,7 +809,7 @@ _Generated: 2026-04-21_
 | :--- | :--- |
 | Total libraries | 11 |
 | Total app entries | 30 |
-| With lib size data | 9 |
+| With lib size data | 11 |
 | With page bundle data | 11 |
 | With component data | 11 |
 | With reactivity data | 9 |

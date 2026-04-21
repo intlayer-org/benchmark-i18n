@@ -2,7 +2,7 @@
   "meta": {
     "framework": "nextjs",
     "frameworkLabel": "Next.js",
-    "generatedAt": "2026-04-21T02:21:02.934Z",
+    "generatedAt": "2026-04-21T02:58:02.221Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 29
@@ -1330,7 +1330,7 @@
     },
     "lingo.dev": {
       "global": {
-        "version": null,
+        "version": "0.4.0",
         "libSize": {
           "status": "ok",
           "gzip": 7723,

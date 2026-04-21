@@ -484,7 +484,12 @@ const LIBRARY_PACKAGES: Record<string, string[]> = {
   "react-intl": ["react-intl"],
   wuchale: ["wuchale"],
   "next-international": ["next-international"],
-  "lingo.dev": ["@lingo.dev/i18next", "lingodotdev-i18next", "lingo.dev"],
+  "lingo.dev": [
+    "lingo.dev",
+    "@lingo.dev/i18next",
+    "lingodotdev-i18next",
+    "@lingo.dev/compiler",
+  ],
 };
 
 function findLibraryVersion(

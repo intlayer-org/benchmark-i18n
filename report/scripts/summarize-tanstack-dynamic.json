@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-21T02:21:02.934Z",
+    "generatedAt": "2026-04-21T02:58:02.221Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 30
@@ -859,17 +859,17 @@
       "global": {
         "version": "latest",
         "libSize": {
-          "status": "missing",
-          "gzip": null,
-          "minified": null,
-          "unminified": null
+          "status": "ok",
+          "gzip": 450371,
+          "minified": 1683387,
+          "unminified": 2164410
         }
       },
       "static": null,
       "dynamic": {
         "appName": "tanstack-static-gt-react-app",
         "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/gt-react-app",
-        "overallStatus": "partial",
+        "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
           "byLocale": {
@@ -2409,10 +2409,10 @@
       "global": {
         "version": "0.133.9",
         "libSize": {
-          "status": "missing",
-          "gzip": null,
-          "minified": null,
-          "unminified": null
+          "status": "ok",
+          "gzip": 7778,
+          "minified": 20325,
+          "unminified": 24904
         }
       },
       "static": null,

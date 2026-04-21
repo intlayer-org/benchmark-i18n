@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-04-21T02:26:30.602Z",
+  "packageName": "tanstack-static-lingo.dev-app",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 24904,
+    "totalMinifiedBytes": 20325,
+    "totalGzipBytes": 7778
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.tsx",
+      "category": "Synthetic",
+      "unminifiedBytes": 24904,
+      "unminifiedGzipBytes": 8189,
+      "minifiedBytes": 20325,
+      "minifiedGzipBytes": 7778
+    }
+  ]
+}

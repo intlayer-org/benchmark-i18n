@@ -1,9 +1,8 @@
 import React from "react";
-import { GTProvider, useTranslations } from "gt-tanstack-start";
+import { GTProvider,  } from "gt-tanstack-start";
 
 const TestComponent = () => {
-  const t = useTranslations();
-  void t;
+  
   return null;
 };
 

@@ -144,7 +144,7 @@ _Generated: 2026-04-21_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| — | 7.5 KB | 19.6 KB |
+| 0.4.0 | 7.5 KB | 19.6 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -473,7 +473,7 @@ _Generated: 2026-04-21_
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Static | ✅ | 152.0 KB | 0.0% | 0.0% | 7.2 KB | 15.4 ms | 7.6 ms | 18.4 ms | 12.6 ms |
+| Scoped Static | ✅ | 152.0 KB | 0.0% | 0.0% | 7.2 KB | 15.4 ms | 7.6 ms | 15.5 ms | 12.3 ms |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 
 <details>
@@ -528,8 +528,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 20.0 ms | 14.1 ms | 7.8 ms |
-| `fr` | 16.9 ms | 11.1 ms | 5.0 ms |
+| `en` | 15.9 ms | 14.6 ms | 7.1 ms |
+| `fr` | 15.1 ms | 10.0 ms | 4.6 ms |
 
 </details>
 
