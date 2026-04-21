@@ -42,9 +42,6 @@
         "test:lib-size"
       ]
     },
-    "test:bundle": {
-      "dependsOn": []
-    },
     "dev": {
       "cache": false,
       "persistent": true

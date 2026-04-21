@@ -92,7 +92,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <HeadContent />
       </head>
       <body className="antialiased [overflow-wrap:anywhere]">
-          <GTProvider key={locale} locale={locale} translations={translations}>
+          <GTProvider locale={locale} translations={translations}>
             <Header />
             {children}
             <Footer />

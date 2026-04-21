@@ -14,17 +14,16 @@
     "test:lib-size": "bun scripts/measure-lib-size.ts",
     "test:pages": "playwright test pages.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
-    "test:rendering": "playwright test rendering.test.ts",
-    "test:bundle": "next experimental-analyze --output && mkdir -p ../../../results/${npm_package_name}/bundle && cp -r .next/diagnostics/analyze/* ../../../results/${npm_package_name}/bundle/ && mv ../../../results/${npm_package_name}/bundle/index.html ../../../results/${npm_package_name}/bundle/rollup-visualizer.html"
+    "test:rendering": "playwright test rendering.test.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
     "i18next": "^26.0.4",
     "lucide-react": "^1.8.0",
-    "next": "16.2.3",
+    "next": "16.2.4",
     "next-i18next": "^16.0.5",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
     "react-i18next": "^17.0.2"
   },
   "devDependencies": {
@@ -40,6 +39,6 @@
     "tailwindcss": "^4",
     "test-utils": "workspace:*",
     "typescript": "^5",
-    "vite": "^8.0.8"
+    "vite": "^8.0.9"
   }
 }

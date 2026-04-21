@@ -1,6 +1,6 @@
-import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { jsx, jsxs } from "react/jsx-runtime";
-import { usePathname, useRouter } from "next/navigation.js";
 var internationalization = {
 	"locales": [
 		"en",
@@ -46,77 +46,6 @@ var configuration = {
 		"mode": "default",
 		"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
 	}
-};
-var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
-var getPathWithoutLocale = (inputUrl, locales = internationalization?.locales) => {
-	const isAbsoluteUrl = checkIsURLAbsolute(inputUrl);
-	let fixedInputUrl = inputUrl;
-	if (inputUrl?.endsWith("/")) fixedInputUrl = inputUrl.slice(0, -1);
-	const url = isAbsoluteUrl ? new URL(fixedInputUrl) : new URL(fixedInputUrl, "http://example.com");
-	const pathname = url.pathname;
-	if (!pathname.startsWith("/")) url.pathname = `/${pathname}`;
-	{
-		const pathSegments = pathname.split("/");
-		const firstSegment = pathSegments[1];
-		if (locales?.includes(firstSegment)) {
-			pathSegments.splice(1, 1);
-			url.pathname = pathSegments.join("/") ?? "/";
-		}
-	}
-	if (isAbsoluteUrl) return url.toString();
-	return url.toString().replace("http://example.com", "");
-};
-var LOCALES = ["en"];
-var resolveRoutingConfig = (options = {}) => ({
-	defaultLocale: internationalization?.defaultLocale ?? "en",
-	mode: routing?.mode ?? "prefix-no-default",
-	locales: internationalization?.locales ?? LOCALES,
-	rewrite: routing?.rewrite,
-	domains: routing?.domains,
-	...options
-});
-var getPrefix = (locale, options = {}) => {
-	const { defaultLocale, mode, locales, domains } = resolveRoutingConfig(options);
-	if (!locale || !locales.includes(locale)) return {
-		prefix: "",
-		localePrefix: void 0
-	};
-	if (mode === "prefix-all" || mode === "prefix-no-default" && defaultLocale !== locale) return {
-		prefix: `${locale}/`,
-		localePrefix: locale
-	};
-	return {
-		prefix: "",
-		localePrefix: void 0
-	};
-};
-var getRewriteRules = (rewrite, context = "url") => {};
-var getCanonicalPath = (localizedPath, locale, rewriteRules) => {
-	return localizedPath;
-};
-var getLocalizedPath = (canonicalPath, locale, rewriteRules) => {
-	return {
-		path: canonicalPath,
-		isRewritten: false
-	};
-};
-var getLocalizedUrl = (url, currentLocale = internationalization?.defaultLocale, options = {}) => {
-	const { defaultLocale, mode, locales, rewrite, domains, currentDomain } = resolveRoutingConfig(options);
-	const urlWithoutLocale = getPathWithoutLocale(url, locales);
-	const rewriteRules = getRewriteRules(rewrite, "url");
-	const isAbsoluteUrl = checkIsURLAbsolute(urlWithoutLocale);
-	const parsedUrl = isAbsoluteUrl ? new URL(urlWithoutLocale) : new URL(urlWithoutLocale, "http://example.com");
-	const translatedPathname = getLocalizedPath(getCanonicalPath(parsedUrl.pathname, void 0, rewriteRules), currentLocale, rewriteRules).path;
-	const baseUrl = isAbsoluteUrl ? `${parsedUrl.protocol}//${parsedUrl.host}` : "";
-	const { prefix } = getPrefix(currentLocale, {
-		defaultLocale,
-		mode,
-		locales,
-		domains
-	});
-	let localizedPath = `/${prefix}${translatedPathname}`.replace(/\/+/g, "/");
-	if (localizedPath.length > 1 && localizedPath.endsWith("/")) localizedPath = localizedPath.slice(0, -1);
-	return `${baseUrl}${localizedPath}${parsedUrl.search}${parsedUrl.hash}`;
 };
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
 	const requestedLocales = [selectedLocale].flat();
@@ -192,6 +121,35 @@ var locales = configuration.internationalization.locales;
 configuration.internationalization.requiredLocales;
 configuration.internationalization.defaultLocale;
 configuration.editor;
+function getLocaleName(locale) {
+	try {
+		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
+		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
+	} catch (e) {
+		return locale.toUpperCase();
+	}
+}
+function LocaleSwitcher() {
+	const locale = useParams().locale ?? "en";
+	const pathname = usePathname();
+	const router = useRouter();
+	const handleLocaleChange = (newLocale) => {
+		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+		router.push(newPath);
+	};
+	return jsx("div", {
+		className: "flex items-center gap-2",
+		children: jsx("select", {
+			value: locale,
+			onChange: (e) => handleLocaleChange(e.target.value),
+			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
+			children: locales.map((localeItem) => jsx("option", {
+				value: localeItem,
+				children: getLocaleName(localeItem)
+			}, localeItem))
+		})
+	});
+}
 var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
 var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
 	...localeStorageOptions,
@@ -251,87 +209,7 @@ var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent,
 	...props,
 	children: [jsx(EditorProvider, {}), children]
 });
-var useLocale$1 = ({ isCookieEnabled, onLocaleChange } = {}) => {
-	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
-	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
-	return {
-		locale,
-		defaultLocale,
-		availableLocales,
-		setLocale: useCallback((locale) => {
-			if (!availableLocales?.map(String).includes(locale)) {
-				console.error(`Locale ${locale} is not available`);
-				return;
-			}
-			setLocaleState(locale);
-			setLocaleInStorage(locale, isCookieEnabled ?? isCookieEnabledContext ?? true);
-			onLocaleChange?.(locale);
-		}, [
-			availableLocales,
-			onLocaleChange,
-			setLocaleState,
-			isCookieEnabled
-		])
-	};
-};
 var IntlayerClientProvider = (props) => jsx(IntlayerProvider, { ...props });
-var usePathWithoutLocale = () => {
-	const pathname = usePathname();
-	const [fullPath, setFullPath] = useState(pathname);
-	useEffect(() => {
-		const search = typeof window !== "undefined" ? window.location.search : "";
-		setFullPath(search ? `${pathname}${search}` : pathname);
-	}, [pathname]);
-	return useMemo(() => getPathWithoutLocale(fullPath), [fullPath]);
-};
-var useLocale = ({ onChange = "replace" } = {}) => {
-	const { replace, push } = useRouter();
-	const pathWithoutLocale = usePathWithoutLocale();
-	return {
-		...useLocale$1({ onLocaleChange: useCallback((locale) => {
-			if (!onChange) return;
-			const pathWithLocale = getLocalizedUrl(pathWithoutLocale, locale, { currentDomain: void 0 });
-			if (typeof onChange === "function") {
-				onChange({
-					locale,
-					path: pathWithLocale
-				});
-				return;
-			}
-			if (onChange === "replace") replace(pathWithLocale);
-			if (onChange === "push") push(pathWithLocale);
-		}, [
-			replace,
-			push,
-			pathWithoutLocale,
-			onChange
-		]) }),
-		pathWithoutLocale
-	};
-};
-function getLocaleName(locale) {
-	try {
-		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
-		return name ? name.charAt(0).toUpperCase() + name.slice(1) : locale;
-	} catch (e) {
-		return locale.toUpperCase();
-	}
-}
-function LocaleSwitcher() {
-	const { locale, setLocale } = useLocale({ onChange: "push" });
-	return jsx("div", {
-		className: "flex items-center gap-2",
-		children: jsx("select", {
-			value: locale,
-			onChange: (e) => setLocale(e.target.value),
-			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeItem) => jsx("option", {
-				value: localeItem,
-				children: getLocaleName(localeItem)
-			}, localeItem))
-		})
-	});
-}
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");

@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-04-20T02:08:37.387Z",
+  "timestamp": "2026-04-21T03:33:23.142Z",
   "packageName": "nextjs-static-next-intlayer-app",
   "summary": {
     "totalComponents": 34,
-    "totalUnminifiedBytes": 922635,
-    "totalMinifiedBytes": 665594,
-    "totalGzipBytes": 251504
+    "totalUnminifiedBytes": 918448,
+    "totalMinifiedBytes": 663172,
+    "totalGzipBytes": 250715
   },
   "components": [
     {
@@ -35,10 +35,10 @@
     {
       "name": "Header.tsx",
       "category": "Shared",
-      "unminifiedBytes": 39780,
-      "unminifiedGzipBytes": 11050,
-      "minifiedBytes": 29140,
-      "minifiedGzipBytes": 9605
+      "unminifiedBytes": 40076,
+      "unminifiedGzipBytes": 11140,
+      "minifiedBytes": 29286,
+      "minifiedGzipBytes": 9663
     },
     {
       "name": "WhyItMatters.tsx",
@@ -257,20 +257,20 @@
       "minifiedGzipBytes": 4698
     },
     {
-      "name": "LocaleSwitcher.tsx",
-      "category": "Shared",
-      "unminifiedBytes": 13711,
-      "unminifiedGzipBytes": 4141,
-      "minifiedBytes": 8900,
-      "minifiedGzipBytes": 3438
-    },
-    {
       "name": "Link.tsx",
       "category": "Shared",
       "unminifiedBytes": 12638,
       "unminifiedGzipBytes": 3740,
       "minifiedBytes": 7933,
       "minifiedGzipBytes": 3018
+    },
+    {
+      "name": "LocaleSwitcher.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 9228,
+      "unminifiedGzipBytes": 3015,
+      "minifiedBytes": 6332,
+      "minifiedGzipBytes": 2591
     },
     {
       "name": "AppProviders.tsx",

@@ -113,7 +113,7 @@ _Generated: 2026-04-21_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 597.2 KB | — | 82.2% | — | 3.9 ms | 0.3 ms | 14.8 ms | 18.2 ms |
+| Static | ✅ | 597.2 KB | — | 82.2% | — | 3.9 ms | 0.3 ms | 18.1 ms | 47.2 ms |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
@@ -169,8 +169,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 15.2 ms | 18.4 ms | 4.9 ms |
-| `fr` | 14.3 ms | 18.0 ms | 3.9 ms |
+| `en` | 16.3 ms | 45.9 ms | 3.4 ms |
+| `fr` | 20.0 ms | 48.5 ms | 4.1 ms |
 
 </details>
 
@@ -184,7 +184,7 @@ _Generated: 2026-04-21_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 127.9 KB | 50.0% | 0.8% | 7.1 KB | 9.4 ms | 2.1 ms | 17.0 ms | 22.5 ms |
+| Static | ✅ | 127.8 KB | 50.0% | 0.8% | 7.1 KB | 9.6 ms | 3.4 ms | 18.0 ms | 24.1 ms |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
@@ -196,31 +196,31 @@ _Generated: 2026-04-21_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 140.1 KB | 51.4% | 5.9% |
-| `/en/about` | 132.2 KB | 58.3% | 0.0% |
-| `/en/blog` | 126.5 KB | 50.0% | 0.0% |
-| `/en/careers` | 127.5 KB | 53.8% | 0.0% |
-| `/en/contact` | 122.3 KB | 60.0% | 0.0% |
-| `/en/faq` | 130.3 KB | 47.6% | 0.0% |
-| `/en/pricing` | 123.7 KB | 68.8% | 0.0% |
-| `/en/products` | 125.4 KB | 55.0% | 0.0% |
-| `/en/settings` | 125.3 KB | 57.1% | 0.0% |
-| `/en/team` | 125.8 KB | 52.2% | 0.0% |
+| `/en/` | 140.0 KB | 51.4% | 5.9% |
+| `/en/about` | 132.1 KB | 58.3% | 0.0% |
+| `/en/blog` | 126.4 KB | 50.0% | 0.0% |
+| `/en/careers` | 127.4 KB | 53.8% | 0.0% |
+| `/en/contact` | 122.2 KB | 60.0% | 0.0% |
+| `/en/faq` | 130.1 KB | 47.6% | 0.0% |
+| `/en/pricing` | 123.6 KB | 68.8% | 0.0% |
+| `/en/products` | 125.2 KB | 55.0% | 0.0% |
+| `/en/settings` | 125.2 KB | 57.1% | 0.0% |
+| `/en/team` | 125.7 KB | 52.2% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 140.1 KB | 48.6% | 11.1% |
-| `/fr/about` | 132.2 KB | 41.7% | 0.0% |
-| `/fr/blog` | 126.5 KB | 50.0% | 0.0% |
-| `/fr/careers` | 127.5 KB | 46.2% | 0.0% |
-| `/fr/contact` | 122.3 KB | 40.0% | 0.0% |
-| `/fr/faq` | 130.3 KB | 52.4% | 0.0% |
-| `/fr/pricing` | 123.7 KB | 31.3% | 0.0% |
-| `/fr/products` | 125.4 KB | 45.0% | 0.0% |
-| `/fr/settings` | 125.3 KB | 42.9% | 0.0% |
-| `/fr/team` | 125.8 KB | 47.8% | 0.0% |
+| `/fr/` | 140.0 KB | 48.6% | 11.1% |
+| `/fr/about` | 132.1 KB | 41.7% | 0.0% |
+| `/fr/blog` | 126.4 KB | 50.0% | 0.0% |
+| `/fr/careers` | 127.4 KB | 46.2% | 0.0% |
+| `/fr/contact` | 122.2 KB | 40.0% | 0.0% |
+| `/fr/faq` | 130.1 KB | 52.4% | 0.0% |
+| `/fr/pricing` | 123.6 KB | 31.3% | 0.0% |
+| `/fr/products` | 125.2 KB | 45.0% | 0.0% |
+| `/fr/settings` | 125.2 KB | 42.9% | 0.0% |
+| `/fr/team` | 125.7 KB | 47.8% | 0.0% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-app/bundle/rollup-visualizer.html)
 
@@ -231,8 +231,8 @@ _Generated: 2026-04-21_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 11.2 ms | 4.6 ms | 34.1 ms | 3.7 ms |
-| `fr` | 7.5 ms | 4.1 ms | 19.5 ms | 0.6 ms |
+| `en` | 11.0 ms | 4.4 ms | 31.9 ms | 2.8 ms |
+| `fr` | 8.1 ms | 4.2 ms | 15.1 ms | 4.0 ms |
 
 </details>
 
@@ -241,8 +241,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 17.9 ms | 25.2 ms | 6.8 ms |
-| `fr` | 16.1 ms | 19.7 ms | 4.5 ms |
+| `en` | 19.4 ms | 25.8 ms | 7.1 ms |
+| `fr` | 16.6 ms | 22.4 ms | 4.2 ms |
 
 </details>
 

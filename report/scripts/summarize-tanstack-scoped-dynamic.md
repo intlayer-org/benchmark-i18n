@@ -116,7 +116,7 @@ _Generated: 2026-04-21_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | ✅ | 597.2 KB | — | 82.2% | — | 3.9 ms | 0.3 ms | 14.8 ms | 18.2 ms |
+| Scoped Dynamic | ✅ | 597.2 KB | — | 82.2% | — | 3.9 ms | 0.3 ms | 18.1 ms | 47.2 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
@@ -169,8 +169,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 15.2 ms | 18.4 ms | 4.9 ms |
-| `fr` | 14.3 ms | 18.0 ms | 3.9 ms |
+| `en` | 16.3 ms | 45.9 ms | 3.4 ms |
+| `fr` | 20.0 ms | 48.5 ms | 4.1 ms |
 
 </details>
 

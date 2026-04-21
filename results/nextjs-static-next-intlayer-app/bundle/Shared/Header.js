@@ -3,6 +3,7 @@ import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 import { usePathname, useRouter } from "next/navigation.js";
 import NextLink from "next/link";
 import { ChevronDown } from "lucide-react";
+import { useParams, usePathname as usePathname$1, useRouter as useRouter$1 } from "next/navigation";
 var header_default = {
 	key: "header",
 	content: {
@@ -995,12 +996,18 @@ function getLocaleName(locale) {
 	}
 }
 function LocaleSwitcher() {
-	const { locale, setLocale } = useLocale({ onChange: "push" });
+	const locale = useParams().locale ?? "en";
+	const pathname = usePathname$1();
+	const router = useRouter$1();
+	const handleLocaleChange = (newLocale) => {
+		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
+		router.push(newPath);
+	};
 	return jsx("div", {
 		className: "flex items-center gap-2",
 		children: jsx("select", {
 			value: locale,
-			onChange: (e) => setLocale(e.target.value),
+			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
 			children: locales.map((localeItem) => jsx("option", {
 				value: localeItem,

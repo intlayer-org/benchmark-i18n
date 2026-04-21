@@ -1,11 +1,11 @@
 {
-  "timestamp": "2026-04-20T03:40:17.647Z",
+  "timestamp": "2026-04-21T03:35:46.767Z",
   "packageName": "tanstack-static-intlayer-app",
   "summary": {
     "totalComponents": 59,
-    "totalUnminifiedBytes": 1576992,
-    "totalMinifiedBytes": 1140264,
-    "totalGzipBytes": 436044
+    "totalUnminifiedBytes": 1582415,
+    "totalMinifiedBytes": 1145858,
+    "totalGzipBytes": 437236
   },
   "components": [
     {
@@ -41,6 +41,14 @@
       "minifiedGzipBytes": 14476
     },
     {
+      "name": "Header.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 38330,
+      "unminifiedGzipBytes": 10533,
+      "minifiedBytes": 29169,
+      "minifiedGzipBytes": 9290
+    },
+    {
       "name": "BlogList.tsx",
       "category": "pages",
       "unminifiedBytes": 35665,
@@ -71,14 +79,6 @@
       "unminifiedGzipBytes": 12529,
       "minifiedBytes": 26950,
       "minifiedGzipBytes": 11430
-    },
-    {
-      "name": "Header.tsx",
-      "category": "Shared",
-      "unminifiedBytes": 35624,
-      "unminifiedGzipBytes": 9954,
-      "minifiedBytes": 26379,
-      "minifiedGzipBytes": 8706
     },
     {
       "name": "WhatWeMeasure.tsx",
@@ -475,10 +475,10 @@
     {
       "name": "LocaleSwitcher.tsx",
       "category": "Shared",
-      "unminifiedBytes": 7841,
-      "unminifiedGzipBytes": 2478,
-      "minifiedBytes": 5147,
-      "minifiedGzipBytes": 2082
+      "unminifiedBytes": 10558,
+      "unminifiedGzipBytes": 3076,
+      "minifiedBytes": 7951,
+      "minifiedGzipBytes": 2690
     }
   ]
 }

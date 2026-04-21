@@ -13,18 +13,17 @@
     "test:consistency": "playwright test structure-consistency.test.ts",
     "test:pages": "playwright test pages.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
-    "test:rendering": "playwright test rendering.test.ts",
-    "test:bundle": "next experimental-analyze --output && mkdir -p ../../../results/${npm_package_name}/bundle && cp -r .next/diagnostics/analyze/* ../../../results/${npm_package_name}/bundle/ && mv ../../../results/${npm_package_name}/bundle/index.html ../../../results/${npm_package_name}/bundle/rollup-visualizer.html"
+    "test:rendering": "playwright test rendering.test.ts"
   },
   "dependencies": {
     "@intlayer/swc": "^8.7.5-canary.0",
     "@tailwindcss/typography": "^0.5.19",
     "intlayer": "8.7.5-canary.0",
     "lucide-react": "^1.8.0",
-    "next": "16.2.3",
+    "next": "16.2.4",
     "next-intlayer": "8.7.5-canary.0",
-    "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",
@@ -39,7 +38,7 @@
     "tailwindcss": "^4",
     "test-utils": "workspace:*",
     "typescript": "^5",
-    "vite": "^8.0.8",
+    "vite": "^8.0.9",
     "vite-intlayer": "^8.7.0"
   }
 }
