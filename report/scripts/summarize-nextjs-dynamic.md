@@ -79,7 +79,7 @@ _Generated: 2026-04-21_
 | `/fr/settings` | 150.6 KB | 0.0% | 0.0% |
 | `/fr/team` | 150.6 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-base-app)
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-base-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -194,7 +194,7 @@ _Generated: 2026-04-21_
 | `/fr/settings` | 155.1 KB | 4.0% | 93.7% |
 | `/fr/team` | 155.0 KB | 9.4% | 89.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/lingui-app)
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-lingui-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -266,7 +266,7 @@ _Generated: 2026-04-21_
 | `/fr/settings` | 182.8 KB | 38.5% | 95.4% |
 | `/fr/team` | 182.5 KB | 38.5% | 90.7% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-i18next-app)
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-next-i18next-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -338,7 +338,7 @@ _Generated: 2026-04-21_
 | `/fr/settings` | 166.2 KB | 35.8% | 93.3% |
 | `/fr/team` | 165.9 KB | 35.8% | 89.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-international-app)
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-next-international-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -410,7 +410,7 @@ _Generated: 2026-04-21_
 | `/fr/settings` | 163.7 KB | 19.4% | 92.7% |
 | `/fr/team` | 163.3 KB | 19.4% | 89.6% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-intl-app)
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-next-intl-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -482,7 +482,7 @@ _Generated: 2026-04-21_
 | `/fr/settings` | 152.0 KB | 0.0% | 0.0% |
 | `/fr/team` | 152.0 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-intlayer-app)
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-next-intlayer-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -554,7 +554,7 @@ _Generated: 2026-04-21_
 | `/fr/settings` | 153.2 KB | 0.0% | 92.6% |
 | `/fr/team` | 152.9 KB | 0.0% | 89.2% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-translate-app)
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-next-translate-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -626,7 +626,7 @@ _Generated: 2026-04-21_
 | `/fr/settings` | 229.1 KB | 0.0% | 93.1% |
 | `/fr/team` | 228.7 KB | 0.0% | 88.5% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/paraglide-next-app)
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-paraglide-next-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -698,7 +698,7 @@ _Generated: 2026-04-21_
 | `/fr/settings` | 291.1 KB | 87.9% | 100.0% |
 | `/fr/team` | 291.0 KB | 87.9% | 100.0% |
 
-**Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/tolgee-app)
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-tolgee-app/bundle/rollup-visualizer.html)
 
 </details>
 

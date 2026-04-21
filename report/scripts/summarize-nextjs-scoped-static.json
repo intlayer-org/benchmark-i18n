@@ -2,7 +2,7 @@
   "meta": {
     "framework": "nextjs",
     "frameworkLabel": "Next.js",
-    "generatedAt": "2026-04-21T03:09:58.557Z",
+    "generatedAt": "2026-04-21T03:31:54.635Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 29
@@ -23,7 +23,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-base-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-base-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-base-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -885,7 +885,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-gt-next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/gt-next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-static-gt-next-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "missing",
@@ -1342,7 +1342,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-static-lingo.dev-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-lingo.dev-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "missing",
@@ -1799,7 +1799,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-lingui-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/lingui-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-static-lingui-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -2661,7 +2661,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-next-i18next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/next-i18next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-static-next-i18next-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -3523,7 +3523,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-next-international-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/next-international-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-static-next-international-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -4385,7 +4385,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-next-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/next-intl-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-static-next-intl-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -5247,7 +5247,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-static-next-intlayer-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/next-intlayer-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-next-intlayer-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -6109,7 +6109,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-next-translate-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/next-translate-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-static-next-translate-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6971,7 +6971,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-static-paraglide-next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/paraglide-next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-paraglide-next-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -7833,7 +7833,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "nextjs-scoped-static-tolgee-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/tolgee-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-static-tolgee-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",

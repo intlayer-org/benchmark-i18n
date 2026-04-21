@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-21T03:09:58.557Z",
+    "generatedAt": "2026-04-21T03:31:54.635Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 30
@@ -21,7 +21,7 @@
       },
       "static": {
         "appName": "tanstack-base-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-base-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-base-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -867,7 +867,7 @@
       },
       "static": {
         "appName": "tanstack-static-gt-react-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/gt-react-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-gt-react-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -1624,7 +1624,7 @@
       },
       "static": {
         "appName": "tanstack-static-intlayer-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/intlayer-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -2470,7 +2470,7 @@
       },
       "static": {
         "appName": "tanstack-static-lingo.dev-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-lingo.dev-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -3191,7 +3191,7 @@
       },
       "static": {
         "appName": "tanstack-static-lingui-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingui-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-lingui-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -4037,7 +4037,7 @@
       },
       "static": {
         "appName": "tanstack-static-paraglide-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/paraglide-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-paraglide-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -4883,7 +4883,7 @@
       },
       "static": {
         "appName": "tanstack-static-react-i18next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/react-i18next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-react-i18next-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -5703,7 +5703,7 @@
       },
       "static": {
         "appName": "tanstack-static-react-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/react-intl-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-react-intl-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -6549,7 +6549,7 @@
       },
       "static": {
         "appName": "tanstack-static-tolgee-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/tolgee-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-tolgee-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -7342,7 +7342,7 @@
       },
       "static": {
         "appName": "tanstack-static-use-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/use-intl-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-use-intl-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -8188,7 +8188,7 @@
       },
       "static": {
         "appName": "tanstack-static-wuchale-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/wuchale-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-wuchale-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",

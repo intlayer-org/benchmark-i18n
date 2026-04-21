@@ -1431,7 +1431,7 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
           }
           lines.push("");
         }
-        lines.push(`**Bundle link:** [View on GitHub](${catData.bundleLink})`);
+        lines.push(`**Bundle link:** [View bundle visualizer](${catData.bundleLink})`);
         lines.push("");
         lines.push("</details>");
         lines.push("");
@@ -1518,32 +1518,7 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
 }
 
 function getBundleLink(cat: string, appName: string): string {
-  // Try to find the app in appMap first to get the correct path
-  if (appMap) {
-    for (const fw of ["nextjs", "tanstack", "vite"]) {
-      const fwData = appMap[fw];
-      if (!fwData?.apps) continue;
-      for (const lib of Object.values(fwData.apps) as any[]) {
-        const path = lib[cat];
-        if (
-          path &&
-          (path.includes(appName) || appName.includes(path.split("/").pop()!))
-        ) {
-          return `https://github.com/intlayer-org/benchmark-bloom/tree/main/${path.replace("./", "")}`;
-        }
-      }
-    }
-  }
-
-  // Fallback to heuristic
-  let p = cat
-    .replace("scoped-", "")
-    .replace("dynamic", "dynamic/")
-    .replace("static", "static/");
-  if (appName.includes("-base-app")) {
-    p = "";
-  }
-  return `https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/${p}${appName}`;
+  return `https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/${appName}/bundle/rollup-visualizer.html`;
 }
 
 // ---------------------------------------------------------------------------

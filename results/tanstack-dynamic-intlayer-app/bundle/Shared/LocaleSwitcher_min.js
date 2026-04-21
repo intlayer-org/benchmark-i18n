@@ -1,5 +1,5 @@
-import { createContext as e, useCallback as t, useContext as n, useEffect as r, useRef as i, useState as a } from "react";
-import { useNavigate as o } from "@tanstack/react-router";
+import { createContext as e, useContext as t, useEffect as n, useRef as r, useState as i } from "react";
+import { useNavigate as a, useParams as o } from "@tanstack/react-router";
 import { jsx as s, jsxs as c } from "react/jsx-runtime";
 var l = {
 	locales: [
@@ -38,7 +38,74 @@ var l = {
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, d = (e, t = l?.locales, n = l?.defaultLocale) => {
+}, d = {
+	internationalization: l,
+	routing: u,
+	editor: {
+		applicationURL: "http://localhost:3000",
+		editorURL: "http://localhost:8000",
+		cmsURL: "https://app.intlayer.org",
+		backendURL: "https://back.intlayer.org",
+		port: 8e3,
+		enabled: !1,
+		dictionaryPriorityStrategy: "local_first",
+		liveSync: !0,
+		liveSyncPort: 4e3,
+		liveSyncURL: "http://localhost:4000"
+	},
+	log: {
+		mode: "default",
+		prefix: "\x1B[38;5;239m[intlayer] \x1B[0m"
+	},
+	system: {
+		baseDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app",
+		moduleAugmentationDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/types",
+		unmergedDictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/unmerged_dictionary",
+		remoteDictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/remote_dictionary",
+		dictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/dictionary",
+		dynamicDictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/dynamic_dictionary",
+		fetchDictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/fetch_dictionary",
+		typesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/types",
+		mainDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/main",
+		configDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/config",
+		cacheDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/cache",
+		tempDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/tmp"
+	},
+	content: {
+		fileExtensions: [
+			".content.ts",
+			".content.js",
+			".content.cjs",
+			".content.mjs",
+			".content.json",
+			".content.json5",
+			".content.jsonc",
+			".content.tsx",
+			".content.jsx"
+		],
+		contentDir: ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app"],
+		codeDir: ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app"],
+		excludedPath: [
+			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,svte}",
+			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
+			"!***.spec.*",
+			"!***.d.ts",
+			"!***.map"
+		],
+		outputFormat: ["esm", "cjs"],
+		cache: !0,
+		checkTypes: !1
+	},
+	ai,
+	dictionary,
+	build,
+	compiler: {
+		enabled: !0,
+		dictionaryKeyPrefix: "",
+		noMetadata: !1,
+		saveComponents: !1
+	}
+}, f = (e, t = l?.locales, n = l?.defaultLocale) => {
 	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
 	try {
 		for (let e of r) {
@@ -49,21 +116,21 @@ var l = {
 		}
 	} catch {}
 	return n;
-}, f = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+}, p = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var p = (e, t, n) => {
+var m = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	return n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`), n.expires instanceof Date && r.push(`Expires=${n.expires.toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, m = (e) => {
+}, h = (e) => {
 	let { locales: t } = l;
 	if (e?.isCookieEnabled === !1) return;
 	let n = (e) => !!e && t.includes(e);
-	if (!f) for (let t = 0; t < (u.storage.cookies ?? []).length; t++) try {
+	if (!p) for (let t = 0; t < (u.storage.cookies ?? []).length; t++) try {
 		let r = e?.getCookie?.(u.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-}, h = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !f && u.storage.cookies) for (let n = 0; n < u.storage.cookies.length; n++) {
+}, g = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && !p && u.storage.cookies) for (let n = 0; n < u.storage.cookies.length; n++) {
 		let { name: r, attributes: i } = u.storage.cookies[n];
 		try {
 			t?.setCookieStore && t.setCookieStore(r, e, {
@@ -72,11 +139,11 @@ var p = (e, t, n) => {
 			});
 		} catch {
 			try {
-				t?.setCookieString && t.setCookieString(r, p(r, e, i));
+				t?.setCookieString && t.setCookieString(r, m(r, e, i));
 			} catch {}
 		}
 	}
-}, g = {
+}, _ = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -94,68 +161,10 @@ var p = (e, t, n) => {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, _ = m(g), v = (e, t) => h(e, {
-	...g,
-	isCookieEnabled: t
-}), y = () => {
-	let { locale: e } = n(S) ?? {}, t = i(null);
-	r(() => {}, []), r(() => {
-		!e || !t.current || t.current.currentLocale.set(e);
-	}, [e]);
-}, b = ({ children: e }) => (y(), e), x = () => {
-	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, S = e({
-	locale: _ ?? l?.defaultLocale,
-	setLocale: () => null,
-	isCookieEnabled: !0
-}), C = ({ locale: e, defaultLocale: t, children: n, setLocale: i, disableEditor: o, isCookieEnabled: c }) => {
-	let { locales: u, defaultLocale: f } = l ?? {}, [p, m] = a(e ?? _ ?? t ?? f);
-	r(() => {
-		e && e !== p && m(e);
-	}, [e]), r(() => {
-		x();
-	}, []);
-	let h = i ?? ((e) => {
-		if (p.toString() !== e.toString()) {
-			if (!u?.map(String).includes(e)) {
-				console.error(`Locale ${e} is not available`);
-				return;
-			}
-			m(e), v(e, c);
-		}
-	}), g = d(p);
-	return s(S.Provider, {
-		value: {
-			locale: g,
-			setLocale: h,
-			disableEditor: o
-		},
-		children: n
-	});
-}, w = ({ children: e, ...t }) => c(C, {
-	...t,
-	children: [s(b, {}), e]
-}), T = ({ isCookieEnabled: e, onLocaleChange: r } = {}) => {
-	let { defaultLocale: i, locales: a } = l ?? {}, { locale: o, setLocale: s, isCookieEnabled: c } = n(S) ?? {};
-	return {
-		locale: o,
-		defaultLocale: i,
-		availableLocales: a,
-		setLocale: t((t) => {
-			if (!a?.map(String).includes(t)) {
-				console.error(`Locale ${t} is not available`);
-				return;
-			}
-			s(t), v(t, e ?? c ?? !0), r?.(t);
-		}, [
-			a,
-			r,
-			s,
-			e
-		])
-	};
-};
-function E(e) {
+}, v = () => d;
+d.internationalization.locales, d.internationalization.requiredLocales, d.internationalization.defaultLocale, d.editor;
+var { locales: y } = v().internationalization;
+function b(e) {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
@@ -163,36 +172,78 @@ function E(e) {
 		return e.toUpperCase();
 	}
 }
-function D() {
-	let e = o(), { locale: t, availableLocales: n, setLocale: r } = T({ onLocaleChange: (t) => {
-		e({
+function x() {
+	let e = o({ strict: !1 }).locale ?? "en", t = a(), n = (e) => {
+		t({
 			to: ".",
-			params: (e) => ({
-				...e,
-				locale: t
+			params: (t) => ({
+				...t,
+				locale: e
 			})
 		});
-	} });
+	};
 	return s("div", {
 		className: "flex items-center gap-2",
 		children: s("select", {
-			value: t,
-			onChange: (e) => r(e.target.value),
+			value: e,
+			onChange: (e) => n(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: n.map((e) => s("option", {
+			children: y.map((e) => s("option", {
 				value: e,
-				children: E(e)
+				children: b(e)
 			}, e))
 		})
 	});
 }
-function O({ children: e }) {
-	return s(w, {
+var S = h(_), C = (e, t) => g(e, {
+	..._,
+	isCookieEnabled: t
+}), w = () => {
+	let { locale: e } = t(D) ?? {}, i = r(null);
+	n(() => {}, []), n(() => {
+		!e || !i.current || i.current.currentLocale.set(e);
+	}, [e]);
+}, T = ({ children: e }) => (w(), e), E = () => {
+	typeof window < "u" && (window.intlayer = { enabled: !0 });
+}, D = e({
+	locale: S ?? l?.defaultLocale,
+	setLocale: () => null,
+	isCookieEnabled: !0
+}), O = ({ locale: e, defaultLocale: t, children: r, setLocale: a, disableEditor: o, isCookieEnabled: c }) => {
+	let { locales: u, defaultLocale: d } = l ?? {}, [p, m] = i(e ?? S ?? t ?? d);
+	n(() => {
+		e && e !== p && m(e);
+	}, [e]), n(() => {
+		E();
+	}, []);
+	let h = a ?? ((e) => {
+		if (p.toString() !== e.toString()) {
+			if (!u?.map(String).includes(e)) {
+				console.error(`Locale ${e} is not available`);
+				return;
+			}
+			m(e), C(e, c);
+		}
+	}), g = f(p);
+	return s(D.Provider, {
+		value: {
+			locale: g,
+			setLocale: h,
+			disableEditor: o
+		},
+		children: r
+	});
+}, k = ({ children: e, ...t }) => c(O, {
+	...t,
+	children: [s(T, {}), e]
+});
+function A({ children: e }) {
+	return s(k, {
 		locale: "en",
 		children: e
 	});
 }
-function k() {
-	return s(O, { children: s(D, {}) });
+function j() {
+	return s(A, { children: s(x, {}) });
 }
-export { k as default };
+export { j as default };

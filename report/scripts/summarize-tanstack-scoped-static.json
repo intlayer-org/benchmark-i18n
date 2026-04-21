@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-21T03:09:58.557Z",
+    "generatedAt": "2026-04-21T03:31:54.635Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 30
@@ -23,7 +23,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-base-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-base-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-base-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -869,7 +869,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-static-gt-react-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/gt-react-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-gt-react-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -1626,7 +1626,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-static-intlayer-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/intlayer-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -2472,7 +2472,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-static-lingo.dev-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-lingo.dev-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -3193,7 +3193,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-lingui-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/lingui-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-static-lingui-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -3986,7 +3986,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-static-paraglide-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/paraglide-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-paraglide-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -4832,7 +4832,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-react-i18next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-static/react-i18next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-static-react-i18next-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -5678,7 +5678,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-react-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-static/react-intl-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-static-react-intl-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6471,7 +6471,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-tolgee-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/tolgee-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-static-tolgee-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -7317,7 +7317,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-use-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-static/use-intl-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-static-use-intl-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -8163,7 +8163,7 @@
       "dynamic": null,
       "scoped-static": {
         "appName": "tanstack-scoped-static-wuchale-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-static-wuchale-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",

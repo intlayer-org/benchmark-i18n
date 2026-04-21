@@ -2,7 +2,7 @@
   "meta": {
     "framework": "nextjs",
     "frameworkLabel": "Next.js",
-    "generatedAt": "2026-04-21T03:09:58.557Z",
+    "generatedAt": "2026-04-21T03:31:54.635Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 29
@@ -24,7 +24,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-base-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-base-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-base-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -886,7 +886,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-scoped-static-gt-next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-static/gt-next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-static-gt-next-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "missing",
@@ -1343,7 +1343,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-static-lingo.dev-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-lingo.dev-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "missing",
@@ -1800,7 +1800,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-scoped-dynamic-lingui-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/lingui-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-dynamic-lingui-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -2670,7 +2670,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-scoped-dynamic-next-i18next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-dynamic-next-i18next-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -3532,7 +3532,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-scoped-dynamic-next-international-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/next-international-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-dynamic-next-international-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -4394,7 +4394,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-scoped-dynamic-next-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/next-intl-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-dynamic-next-intl-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -5256,7 +5256,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-dynamic-next-intlayer-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-dynamic/next-intlayer-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-next-intlayer-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6118,7 +6118,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-scoped-dynamic-next-translate-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/next-translate-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-dynamic-next-translate-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6980,7 +6980,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-static-paraglide-next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/paraglide-next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-paraglide-next-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -7842,7 +7842,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "nextjs-scoped-dynamic-tolgee-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/tolgee-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-scoped-dynamic-tolgee-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",

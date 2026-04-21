@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-21T03:09:58.557Z",
+    "generatedAt": "2026-04-21T03:31:54.635Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 30
@@ -24,7 +24,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-base-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-base-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-base-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -870,7 +870,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-static-gt-react-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/gt-react-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-gt-react-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -1627,27 +1627,27 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-scoped-dynamic-intlayer-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-dynamic-intlayer-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
           "byLocale": {
             "en": {
               "jsGzip": {
-                "avg": 121018.8,
-                "min": 120225,
-                "max": 122678,
+                "avg": 120874.5,
+                "min": 120081,
+                "max": 122532,
                 "raw": [
-                  122678,
-                  120944,
-                  120539,
-                  121257,
-                  120225,
-                  120734,
-                  120414,
-                  120368,
-                  122626,
-                  120403
+                  122532,
+                  120795,
+                  120394,
+                  121118,
+                  120081,
+                  120586,
+                  120271,
+                  120222,
+                  122485,
+                  120261
                 ]
               },
               "localeLeakPct": {
@@ -1705,10 +1705,10 @@
                 {
                   "path": "/en/",
                   "page": "home",
-                  "jsGzipSize": 122678,
-                  "totalGzipSize": 132834,
+                  "jsGzipSize": 122532,
+                  "totalGzipSize": 132689,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 5094,
+                  "htmlGzipSize": 5095,
                   "fileCount": 21,
                   "jsFileCount": 19,
                   "localeLeakagePercent": 0,
@@ -1718,10 +1718,10 @@
                 {
                   "path": "/en/about",
                   "page": "about",
-                  "jsGzipSize": 120944,
-                  "totalGzipSize": 130420,
+                  "jsGzipSize": 120795,
+                  "totalGzipSize": 130269,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 4414,
+                  "htmlGzipSize": 4412,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -1731,8 +1731,8 @@
                 {
                   "path": "/en/blog",
                   "page": "blog",
-                  "jsGzipSize": 120539,
-                  "totalGzipSize": 129704,
+                  "jsGzipSize": 120394,
+                  "totalGzipSize": 129559,
                   "cssGzipSize": 5062,
                   "htmlGzipSize": 4103,
                   "fileCount": 19,
@@ -1744,10 +1744,10 @@
                 {
                   "path": "/en/careers",
                   "page": "careers",
-                  "jsGzipSize": 121257,
-                  "totalGzipSize": 130480,
+                  "jsGzipSize": 121118,
+                  "totalGzipSize": 130342,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 4161,
+                  "htmlGzipSize": 4162,
                   "fileCount": 21,
                   "jsFileCount": 19,
                   "localeLeakagePercent": 0,
@@ -1757,10 +1757,10 @@
                 {
                   "path": "/en/contact",
                   "page": "contact",
-                  "jsGzipSize": 120225,
-                  "totalGzipSize": 129115,
+                  "jsGzipSize": 120081,
+                  "totalGzipSize": 128972,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 3828,
+                  "htmlGzipSize": 3829,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -1770,8 +1770,8 @@
                 {
                   "path": "/en/faq",
                   "page": "faq",
-                  "jsGzipSize": 120734,
-                  "totalGzipSize": 130180,
+                  "jsGzipSize": 120586,
+                  "totalGzipSize": 130032,
                   "cssGzipSize": 5062,
                   "htmlGzipSize": 4384,
                   "fileCount": 19,
@@ -1783,10 +1783,10 @@
                 {
                   "path": "/en/pricing",
                   "page": "pricing",
-                  "jsGzipSize": 120414,
-                  "totalGzipSize": 129368,
+                  "jsGzipSize": 120271,
+                  "totalGzipSize": 129228,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 3892,
+                  "htmlGzipSize": 3895,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -1796,10 +1796,10 @@
                 {
                   "path": "/en/products",
                   "page": "products",
-                  "jsGzipSize": 120368,
-                  "totalGzipSize": 129367,
+                  "jsGzipSize": 120222,
+                  "totalGzipSize": 129224,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 3937,
+                  "htmlGzipSize": 3940,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -1809,8 +1809,8 @@
                 {
                   "path": "/en/settings",
                   "page": "settings",
-                  "jsGzipSize": 122626,
-                  "totalGzipSize": 131804,
+                  "jsGzipSize": 122485,
+                  "totalGzipSize": 131663,
                   "cssGzipSize": 5062,
                   "htmlGzipSize": 4116,
                   "fileCount": 25,
@@ -1822,10 +1822,10 @@
                 {
                   "path": "/en/team",
                   "page": "team",
-                  "jsGzipSize": 120403,
-                  "totalGzipSize": 129504,
+                  "jsGzipSize": 120261,
+                  "totalGzipSize": 129363,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 4039,
+                  "htmlGzipSize": 4040,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -1836,20 +1836,20 @@
             },
             "fr": {
               "jsGzip": {
-                "avg": 121235.9,
-                "min": 120334,
-                "max": 123133,
+                "avg": 121091.6,
+                "min": 120190,
+                "max": 122987,
                 "raw": [
-                  123133,
-                  121241,
-                  120702,
-                  121476,
-                  120334,
-                  121002,
-                  120558,
-                  120534,
-                  122791,
-                  120588
+                  122987,
+                  121092,
+                  120557,
+                  121337,
+                  120190,
+                  120854,
+                  120415,
+                  120388,
+                  122650,
+                  120446
                 ]
               },
               "localeLeakPct": {
@@ -1907,10 +1907,10 @@
                 {
                   "path": "/fr/",
                   "page": "home",
-                  "jsGzipSize": 123133,
-                  "totalGzipSize": 133689,
+                  "jsGzipSize": 122987,
+                  "totalGzipSize": 133546,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 5494,
+                  "htmlGzipSize": 5497,
                   "fileCount": 21,
                   "jsFileCount": 19,
                   "localeLeakagePercent": 0,
@@ -1920,10 +1920,10 @@
                 {
                   "path": "/fr/about",
                   "page": "about",
-                  "jsGzipSize": 121241,
-                  "totalGzipSize": 130978,
+                  "jsGzipSize": 121092,
+                  "totalGzipSize": 130828,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 4675,
+                  "htmlGzipSize": 4674,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -1933,8 +1933,8 @@
                 {
                   "path": "/fr/blog",
                   "page": "blog",
-                  "jsGzipSize": 120702,
-                  "totalGzipSize": 130018,
+                  "jsGzipSize": 120557,
+                  "totalGzipSize": 129873,
                   "cssGzipSize": 5062,
                   "htmlGzipSize": 4254,
                   "fileCount": 19,
@@ -1946,10 +1946,10 @@
                 {
                   "path": "/fr/careers",
                   "page": "careers",
-                  "jsGzipSize": 121476,
-                  "totalGzipSize": 130885,
+                  "jsGzipSize": 121337,
+                  "totalGzipSize": 130748,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 4347,
+                  "htmlGzipSize": 4349,
                   "fileCount": 21,
                   "jsFileCount": 19,
                   "localeLeakagePercent": 0,
@@ -1959,10 +1959,10 @@
                 {
                   "path": "/fr/contact",
                   "page": "contact",
-                  "jsGzipSize": 120334,
-                  "totalGzipSize": 129307,
+                  "jsGzipSize": 120190,
+                  "totalGzipSize": 129164,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 3911,
+                  "htmlGzipSize": 3912,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -1972,10 +1972,10 @@
                 {
                   "path": "/fr/faq",
                   "page": "faq",
-                  "jsGzipSize": 121002,
-                  "totalGzipSize": 130712,
+                  "jsGzipSize": 120854,
+                  "totalGzipSize": 130566,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 4648,
+                  "htmlGzipSize": 4650,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -1985,10 +1985,10 @@
                 {
                   "path": "/fr/pricing",
                   "page": "pricing",
-                  "jsGzipSize": 120558,
-                  "totalGzipSize": 129626,
+                  "jsGzipSize": 120415,
+                  "totalGzipSize": 129485,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 4006,
+                  "htmlGzipSize": 4008,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -1998,10 +1998,10 @@
                 {
                   "path": "/fr/products",
                   "page": "products",
-                  "jsGzipSize": 120534,
-                  "totalGzipSize": 129697,
+                  "jsGzipSize": 120388,
+                  "totalGzipSize": 129555,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 4101,
+                  "htmlGzipSize": 4105,
                   "fileCount": 19,
                   "jsFileCount": 17,
                   "localeLeakagePercent": 0,
@@ -2011,10 +2011,10 @@
                 {
                   "path": "/fr/settings",
                   "page": "settings",
-                  "jsGzipSize": 122791,
-                  "totalGzipSize": 132090,
+                  "jsGzipSize": 122650,
+                  "totalGzipSize": 131950,
                   "cssGzipSize": 5062,
-                  "htmlGzipSize": 4237,
+                  "htmlGzipSize": 4238,
                   "fileCount": 25,
                   "jsFileCount": 23,
                   "localeLeakagePercent": 0,
@@ -2024,8 +2024,8 @@
                 {
                   "path": "/fr/team",
                   "page": "team",
-                  "jsGzipSize": 120588,
-                  "totalGzipSize": 129851,
+                  "jsGzipSize": 120446,
+                  "totalGzipSize": 129709,
                   "cssGzipSize": 5062,
                   "htmlGzipSize": 4201,
                   "fileCount": 19,
@@ -2037,27 +2037,27 @@
               ]
             }
           },
-          "jsGzipMin": 120225,
-          "jsGzipAvg": 121127.35,
-          "jsGzipMax": 123133,
+          "jsGzipMin": 120081,
+          "jsGzipAvg": 120983.05,
+          "jsGzipMax": 122987,
           "localeLeakAvgPct": 0,
           "pageLeakAvgPct": 0.8496732026143791,
           "otherPageContentLeakAvgPct": 0.8496732026143791
         },
         "components": {
           "status": "ok",
-          "gzipMin": 2083,
-          "gzipAvg": 4651.96875,
-          "gzipMax": 6688,
+          "gzipMin": 2695,
+          "gzipAvg": 4688.375,
+          "gzipMax": 7241,
           "count": 32,
           "items": [
             {
               "name": "Header.tsx",
               "category": "Shared",
-              "minifiedGzip": 6688,
-              "minified": 21408,
-              "unminified": 30671,
-              "unminifiedGzip": 8012
+              "minifiedGzip": 7241,
+              "minified": 24310,
+              "unminified": 33489,
+              "unminifiedGzip": 8561
             },
             {
               "name": "UnderstandingImpact.tsx",
@@ -2302,10 +2302,10 @@
             {
               "name": "LocaleSwitcher.tsx",
               "category": "Shared",
-              "minifiedGzip": 2083,
-              "minified": 5154,
-              "unminified": 7848,
-              "unminifiedGzip": 2480
+              "minifiedGzip": 2695,
+              "minified": 8070,
+              "unminified": 10677,
+              "unminifiedGzip": 3083
             }
           ]
         },
@@ -2320,39 +2320,39 @@
           "byLocale": {
             "en": {
               "e2ePageLoad": {
-                "avg": 22.72000000178814,
-                "min": 19.900000005960464,
-                "max": 25.400000005960464,
+                "avg": 17.639999997615813,
+                "min": 16.69999998807907,
+                "max": 19,
                 "raw": [
-                  23.299999997019768,
-                  21.200000002980232,
-                  19.900000005960464,
-                  23.799999997019768,
-                  25.400000005960464
+                  19,
+                  17.200000017881393,
+                  16.799999982118607,
+                  16.69999998807907,
+                  18.5
                 ]
               },
               "hydration": {
-                "avg": 28.40000000298023,
-                "min": 21.099999994039536,
-                "max": 38.30000001192093,
+                "avg": 22.200000005960465,
+                "min": 17.099999994039536,
+                "max": 33.900000005960464,
                 "raw": [
-                  38.30000001192093,
-                  26.599999994039536,
-                  21.099999994039536,
-                  28.700000002980232,
-                  27.30000001192093
+                  33.900000005960464,
+                  22.900000005960464,
+                  17.099999994039536,
+                  17.700000017881393,
+                  19.400000005960464
                 ]
               },
               "reactMount": {
-                "avg": 1.880000001192093,
-                "min": 0.9000000059604645,
-                "max": 5.5,
+                "avg": 1.3400000035762787,
+                "min": 0.800000011920929,
+                "max": 3,
                 "raw": [
-                  5.5,
-                  1.0999999940395355,
-                  0.9000000059604645,
+                  3,
                   1,
-                  0.9000000059604645
+                  0.9000000059604645,
+                  0.800000011920929,
+                  1
                 ]
               },
               "hydrationInstrumented": true,
@@ -2360,48 +2360,48 @@
             },
             "fr": {
               "e2ePageLoad": {
-                "avg": 19.339999997615813,
-                "min": 17.5,
-                "max": 21,
+                "avg": 20.339999997615813,
+                "min": 17.69999998807907,
+                "max": 22.700000017881393,
                 "raw": [
-                  19,
-                  17.5,
-                  20.19999998807907,
+                  17.69999998807907,
                   21,
-                  19
+                  18.799999982118607,
+                  21.5,
+                  22.700000017881393
                 ]
               },
               "hydration": {
-                "avg": 24.179999998211862,
-                "min": 21.099999994039536,
-                "max": 31.5,
+                "avg": 25.139999997615813,
+                "min": 19,
+                "max": 43.69999998807907,
                 "raw": [
-                  31.5,
-                  23.200000002980232,
-                  21.099999994039536,
-                  23.399999991059303,
-                  21.700000002980232
+                  43.69999998807907,
+                  23.900000005960464,
+                  19,
+                  20.099999994039536,
+                  19
                 ]
               },
               "reactMount": {
-                "avg": 1.3400000035762787,
-                "min": 0.7000000029802322,
-                "max": 3.2000000029802322,
+                "avg": 1.3800000071525573,
+                "min": 0.9000000059604645,
+                "max": 3.300000011920929,
                 "raw": [
-                  3.2000000029802322,
-                  0.7000000029802322,
+                  3.300000011920929,
                   0.9000000059604645,
                   0.9000000059604645,
-                  1
+                  0.9000000059604645,
+                  0.9000000059604645
                 ]
               },
               "hydrationInstrumented": true,
               "reactMountInstrumented": true
             }
           },
-          "e2ePageLoadAvgMs": 21.029999999701978,
-          "hydrationAvgMs": 26.290000000596045,
-          "reactMountAvgMs": 1.6100000023841858
+          "e2ePageLoadAvgMs": 18.98999999761581,
+          "hydrationAvgMs": 23.67000000178814,
+          "reactMountAvgMs": 1.3600000053644181
         }
       }
     },
@@ -2420,7 +2420,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-static-lingo.dev-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-lingo.dev-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -3141,7 +3141,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-scoped-dynamic-lingui-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-scoped-dynamic/lingui-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-dynamic-lingui-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -3987,7 +3987,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-static-paraglide-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-static/paraglide-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-paraglide-app/bundle/rollup-visualizer.html",
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -4833,7 +4833,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-scoped-dynamic-react-i18next-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-dynamic-react-i18next-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -5679,7 +5679,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-scoped-dynamic-react-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/react-intl-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-dynamic-react-intl-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -6472,7 +6472,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-dynamic-tolgee-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-dynamic/tolgee-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-dynamic-tolgee-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -7318,7 +7318,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-scoped-dynamic-use-intl-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/use-intl-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-dynamic-use-intl-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -8138,7 +8138,7 @@
       "scoped-static": null,
       "scoped-dynamic": {
         "appName": "tanstack-scoped-dynamic-wuchale-app",
-        "bundleLink": "https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/tanstack-start-react-scoped-dynamic/wuchale-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-dynamic-wuchale-app/bundle/rollup-visualizer.html",
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",

@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-04-20T03:14:03.629Z",
+  "timestamp": "2026-04-21T03:30:19.792Z",
   "packageName": "tanstack-dynamic-intlayer-app",
   "summary": {
     "totalComponents": 59,
-    "totalUnminifiedBytes": 1329193,
-    "totalMinifiedBytes": 871722,
-    "totalGzipBytes": 275281
+    "totalUnminifiedBytes": 1334644,
+    "totalMinifiedBytes": 877344,
+    "totalGzipBytes": 276436
   },
   "components": [
     {
       "name": "Header.tsx",
       "category": "Shared",
-      "unminifiedBytes": 30671,
-      "unminifiedGzipBytes": 8012,
-      "minifiedBytes": 21408,
-      "minifiedGzipBytes": 6688
+      "unminifiedBytes": 33391,
+      "unminifiedGzipBytes": 8554,
+      "minifiedBytes": 24212,
+      "minifiedGzipBytes": 7236
     },
     {
       "name": "UnderstandingImpact.tsx",
@@ -475,10 +475,10 @@
     {
       "name": "LocaleSwitcher.tsx",
       "category": "Shared",
-      "unminifiedBytes": 7848,
-      "unminifiedGzipBytes": 2480,
-      "minifiedBytes": 5154,
-      "minifiedGzipBytes": 2083
+      "unminifiedBytes": 10579,
+      "unminifiedGzipBytes": 3075,
+      "minifiedBytes": 7972,
+      "minifiedGzipBytes": 2690
     }
   ]
 }

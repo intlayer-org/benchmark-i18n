@@ -1,8 +1,8 @@
-import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
-var content$1 = {
+var content$2 = {
 	"de": () => import("../../.intlayer/dynamic_dictionary/json/header/de.json").then((m) => m.default),
 	"en": () => import("./en-DmDROuKs.js").then((m) => m.default),
 	"es": () => import("../../.intlayer/dynamic_dictionary/json/header/es.json").then((m) => m.default),
@@ -52,6 +52,74 @@ var routing = {
 		"headers": [{ "name": "x-intlayer-locale" }]
 	},
 	"basePath": ""
+};
+var configuration = {
+	internationalization,
+	routing,
+	editor: {
+		"applicationURL": "http://localhost:3000",
+		"editorURL": "http://localhost:8000",
+		"cmsURL": "https://app.intlayer.org",
+		"backendURL": "https://back.intlayer.org",
+		"port": 8e3,
+		"enabled": false,
+		"dictionaryPriorityStrategy": "local_first",
+		"liveSync": true,
+		"liveSyncPort": 4e3,
+		"liveSyncURL": "http://localhost:4000"
+	},
+	log: {
+		"mode": "default",
+		"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
+	},
+	system: {
+		"baseDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app",
+		"moduleAugmentationDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/types",
+		"unmergedDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/unmerged_dictionary",
+		"remoteDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/remote_dictionary",
+		"dictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/dictionary",
+		"dynamicDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/dynamic_dictionary",
+		"fetchDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/fetch_dictionary",
+		"typesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/types",
+		"mainDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/main",
+		"configDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/config",
+		"cacheDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/cache",
+		"tempDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/.intlayer/tmp"
+	},
+	content: {
+		"fileExtensions": [
+			".content.ts",
+			".content.js",
+			".content.cjs",
+			".content.mjs",
+			".content.json",
+			".content.json5",
+			".content.jsonc",
+			".content.tsx",
+			".content.jsx"
+		],
+		"contentDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app"],
+		"codeDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app"],
+		"excludedPath": [
+			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,svte}",
+			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
+			"!***.spec.*",
+			"!***.d.ts",
+			"!***.map"
+		],
+		"outputFormat": ["esm", "cjs"],
+		"cache": true,
+		"checkTypes": false
+	},
+	ai,
+	dictionary,
+	build,
+	compiler: {
+		"enabled": true,
+		"dictionaryKeyPrefix": "",
+		"noMetadata": false,
+		"saveComponents": false
+	}
 };
 var renderIntlayerNode = ({ children, value, additionalProps }) => {
 	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
@@ -560,29 +628,6 @@ var useDictionaryDynamic = (dictionaryPromise, key, locale) => {
 	const localeTarget = useMemo(() => locale ?? currentLocale ?? internationalization.defaultLocale, [currentLocale, locale]);
 	return useDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, dictionaryPromise[localeTarget]?.()), localeTarget);
 };
-var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
-	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
-	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
-	return {
-		locale,
-		defaultLocale,
-		availableLocales,
-		setLocale: useCallback((locale) => {
-			if (!availableLocales?.map(String).includes(locale)) {
-				console.error(`Locale ${locale} is not available`);
-				return;
-			}
-			setLocaleState(locale);
-			setLocaleInStorage(locale, isCookieEnabled ?? isCookieEnabledContext ?? true);
-			onLocaleChange?.(locale);
-		}, [
-			availableLocales,
-			onLocaleChange,
-			setLocaleState,
-			isCookieEnabled
-		])
-	};
-};
 var content = {
 	"de": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((m) => m.default),
 	"en": () => import("./en-WtNEvxDr.js").then((m) => m.default),
@@ -611,7 +656,7 @@ function applyThemeMode(mode) {
 	document.documentElement.style.colorScheme = resolved;
 }
 function ThemeToggle() {
-	const content$2 = useDictionaryDynamic(content, "theme-toggle");
+	const content$3 = useDictionaryDynamic(content, "theme-toggle");
 	const [mode, setMode] = useState("auto");
 	useEffect(() => {
 		const initialMode = getInitialMode();
@@ -633,16 +678,22 @@ function ThemeToggle() {
 		applyThemeMode(nextMode);
 		window.localStorage.setItem("theme", nextMode);
 	}
-	const label = mode === "auto" ? content$2.d.value : content$2.g({ mode });
+	const label = mode === "auto" ? content$3.d.value : content$3.g({ mode });
 	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
-		children: mode === "auto" ? content$2.a.value : mode === "dark" ? content$2.b.value : content$2.c.value
+		children: mode === "auto" ? content$3.a.value : mode === "dark" ? content$3.b.value : content$3.c.value
 	});
 }
+var getConfiguration = () => configuration;
+configuration.internationalization.locales;
+configuration.internationalization.requiredLocales;
+configuration.internationalization.defaultLocale;
+configuration.editor;
+var { locales } = getConfiguration().internationalization;
 function getLocaleName(locale) {
 	try {
 		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
@@ -652,8 +703,9 @@ function getLocaleName(locale) {
 	}
 }
 function LocaleSwitcher() {
+	const locale = useParams({ strict: false }).locale ?? "en";
 	const navigate = useNavigate();
-	const { locale, availableLocales, setLocale } = useLocale({ onLocaleChange: (newLocale) => {
+	const handleLocaleChange = (newLocale) => {
 		navigate({
 			to: ".",
 			params: (prev) => ({
@@ -661,17 +713,17 @@ function LocaleSwitcher() {
 				locale: newLocale
 			})
 		});
-	} });
+	};
 	return jsx("div", {
 		className: "flex items-center gap-2",
 		children: jsx("select", {
 			value: locale,
-			onChange: (e) => setLocale(e.target.value),
+			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: availableLocales.map((locale) => jsx("option", {
-				value: locale,
-				children: getLocaleName(locale)
-			}, locale))
+			children: locales.map((l) => jsx("option", {
+				value: l,
+				children: getLocaleName(l)
+			}, l))
 		})
 	});
 }
@@ -687,7 +739,7 @@ function usePerformanceMeasure(name) {
 	}, [name]);
 }
 function Header() {
-	const content = useDictionaryDynamic(content$1, "header");
+	const content = useDictionaryDynamic(content$2, "header");
 	usePerformanceMeasure(content.f.value);
 	const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
 	const currentLocale = useParams({ strict: false }).locale ?? "en";
