@@ -249,7 +249,7 @@ _Generated: 2026-04-21_
 | Static | ⬜ missing | — | — | — | — | — | — | — | — |
 | Dynamic | ⬜ missing | — | — | — | — | — | — | — | — |
 | Scoped Static | ⬜ missing | — | — | — | — | — | — | — | — |
-| Scoped Dynamic | 🔶 | 597.2 KB | — | 82.2% | — | — | — | 23.4 ms | 25.9 ms |
+| Scoped Dynamic | 🔶 | 597.2 KB | — | 44.3% | — | — | — | 17.1 ms | 43.6 ms |
 
 <details>
 <summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
@@ -274,15 +274,15 @@ _Generated: 2026-04-21_
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
 | `/fr/` | 597.3 KB | — | 64.4% |
-| `/fr/about` | 597.2 KB | — | 77.8% |
-| `/fr/blog` | 597.2 KB | — | 77.6% |
-| `/fr/careers` | 597.2 KB | — | 75.6% |
-| `/fr/contact` | 597.2 KB | — | 97.8% |
-| `/fr/faq` | 597.2 KB | — | 81.8% |
-| `/fr/pricing` | 597.2 KB | — | 91.8% |
-| `/fr/products` | 597.2 KB | — | 82.2% |
-| `/fr/settings` | 597.3 KB | — | 90.0% |
-| `/fr/team` | 597.2 KB | — | 83.3% |
+| `/fr/about` | — | — | 0.0% |
+| `/fr/blog` | — | — | 0.0% |
+| `/fr/careers` | — | — | 0.0% |
+| `/fr/contact` | — | — | 0.0% |
+| `/fr/faq` | — | — | 0.0% |
+| `/fr/pricing` | — | — | 0.0% |
+| `/fr/products` | — | — | 0.0% |
+| `/fr/settings` | — | — | 0.0% |
+| `/fr/team` | — | — | 0.0% |
 
 **Bundle link:** [View on GitHub](https://github.com/intlayer-org/benchmark-bloom/tree/main/apps-benchmark/nextjs-static/lingo.dev-app)
 
@@ -293,8 +293,8 @@ _Generated: 2026-04-21_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 28.7 ms | 31.1 ms | 7.7 ms |
-| `fr` | 18.1 ms | 20.6 ms | 4.4 ms |
+| `en` | 15.0 ms | 64.3 ms | 5.2 ms |
+| `fr` | 19.2 ms | 22.8 ms | 4.5 ms |
 
 </details>
 
