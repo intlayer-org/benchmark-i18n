@@ -10,12 +10,12 @@
  *   bun report/scripts/summarize.ts [options]
  *
  * Options:
- *   --framework <name>   Filter by framework (nextjs, tanstack)
+ *   --framework <name>   Filter by framework (nextjs, tanstack, vite-react)
  *   --category  <name>   Filter by test category (static, dynamic, scoped-static, scoped-dynamic)
  *   --lib       <name>   Filter by library name (partial match)
  *   --json               Output aggregated lib data as JSON on stdout
- *   --out [path]         Base path for JSON output; produces <base>-nextjs.json and <base>-tanstack.json
- *   --md  [path]         Base path for Markdown output; produces <base>-nextjs.md and <base>-tanstack.md
+ *   --out [path]         Base path for JSON output; produces <base>-<fw>-<category>.json per framework×category
+ *   --md  [path]         Base path for Markdown; one <base>-<fw>.md per framework (all categories merged)
  *   --help               Show this help message
  */
 
@@ -75,12 +75,12 @@ Usage:
   bun report/scripts/summarize.ts [options]
 
 Options:
-  --framework <name>   Filter by framework: "nextjs" or "tanstack"
+  --framework <name>   Filter by framework: nextjs | tanstack | vite-react
   --category  <name>   Filter by test category: static | dynamic | scoped-static | scoped-dynamic
   --lib       <name>   Filter by library name (partial match, e.g. "intlayer")
   --json               Output aggregated lib data as JSON on stdout
-  --out [path]         Base path for JSON output (produces <base>-nextjs.json and <base>-tanstack.json)
-  --md  [path]         Base path for Markdown output (produces <base>-nextjs.md and <base>-tanstack.md)
+  --out [path]         Base path for JSON (<base>-<fw>-<category>.json per framework×category)
+  --md  [path]         Base path for Markdown (one <base>-<fw>.md per framework, all categories)
   --help               Show this help
   `);
   process.exit(0);
@@ -424,7 +424,11 @@ function parseCategory(appName: string): {
     framework = "nextjs";
   } else if (appName.startsWith("tanstack-")) {
     framework = "tanstack-start-react";
-  } else if (appName.startsWith("vite-react-")) {
+  } else if (
+    appName.startsWith("vite+react-") ||
+    appName.startsWith("vite-")
+  ) {
+    // `vite-base-app` / legacy folders use `vite-`; workspace packages use `vite+react-*`
     framework = "vite-react";
   }
 
@@ -456,7 +460,9 @@ function deriveLibraryName(appName: string): string {
     "tanstack-scoped-static-",
     "tanstack-dynamic-",
     "tanstack-static-",
+    "vite+react-",
     "vite-react-",
+    "vite-",
     "nextjs-",
     "tanstack-",
   ];
@@ -1193,7 +1199,16 @@ const FRAMEWORK_LABELS: Record<string, string> = {
   nextjs: "Next.js",
   "tanstack-start-react": "TanStack Start (React)",
   vite: "Vite",
+  "vite-react": "Vite + React",
 };
+
+/** Filename segment for --out / --md (matches result folder naming). */
+function frameworkFileSlug(fw: string): string {
+  if (fw === "nextjs") return "nextjs";
+  if (fw.startsWith("tanstack")) return "tanstack";
+  if (fw === "vite-react") return "vite_react";
+  return "unknown";
+}
 
 const CATEGORY_ORDER = [
   "static",
@@ -1687,12 +1702,8 @@ function main() {
 
   // Write JSON files
   if (outBasePath) {
-    for (const [key, { fw, cat, summary }] of splitSummaries) {
-      let slug = "unknown";
-      if (fw === "nextjs") slug = "nextjs";
-      else if (fw.startsWith("tanstack")) slug = "tanstack";
-      else if (fw === "vite") slug = "vite";
-
+    for (const { fw, cat, summary } of splitSummaries.values()) {
+      const slug = frameworkFileSlug(fw);
       const outPath = `${outBasePath}-${slug}-${cat}.json`;
       mkdirSync(dirname(outPath), { recursive: true });
       writeFileSync(outPath, JSON.stringify(summary, null, 2), "utf-8");
@@ -1700,15 +1711,11 @@ function main() {
     }
   }
 
-  // Write Markdown files
+  // Write Markdown: one file per framework (all categories in one doc)
   if (mdBasePath) {
-    for (const [key, { fw, cat, summary }] of splitSummaries) {
-      let slug = "unknown";
-      if (fw === "nextjs") slug = "nextjs";
-      else if (fw.startsWith("tanstack")) slug = "tanstack";
-      else if (fw === "vite") slug = "vite";
-
-      const mdPath = `${mdBasePath}-${slug}-${cat}.md`;
+    for (const [fw, summary] of frameworkSummaries) {
+      const slug = frameworkFileSlug(fw);
+      const mdPath = `${mdBasePath}-${slug}.md`;
       const md = renderMarkdownByLib(summary);
       mkdirSync(dirname(mdPath), { recursive: true });
       writeFileSync(mdPath, md, "utf-8");
@@ -1828,7 +1835,7 @@ function main() {
 
   console.log("─".repeat(100));
   console.log(
-    "Tip: --out <base> writes <base>-nextjs.json and <base>-tanstack.json. --md <base> writes <base>-nextjs.md etc.",
+    "Tip: --out <base> writes <base>-<fw>-<category>.json per slice. --md <base> writes one <base>-<fw>.md per framework.",
   );
 }
 
