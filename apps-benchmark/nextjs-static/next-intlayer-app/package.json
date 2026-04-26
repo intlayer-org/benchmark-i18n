@@ -17,12 +17,12 @@
     "test:rendering": "playwright test rendering.test.ts"
   },
   "dependencies": {
-    "@intlayer/swc": "^8.7.5-canary.0",
+    "@intlayer/swc": "^8.7.7",
     "@tailwindcss/typography": "^0.5.19",
-    "intlayer": "8.7.5-canary.0",
+    "intlayer": "8.7.7",
     "lucide-react": "^1.8.0",
     "next": "16.2.4",
-    "next-intlayer": "8.7.5-canary.0",
+    "next-intlayer": "8.7.7",
     "react": "19.2.5",
     "react-dom": "19.2.5"
   },
