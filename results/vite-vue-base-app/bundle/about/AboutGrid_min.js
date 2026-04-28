@@ -1,0 +1,11 @@
+import { createElementBlock as e, createStaticVNode as t, openBlock as n } from "vue";
+var r = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, i = {}, a = { class: "grid gap-8 md:grid-cols-2" };
+function o(r, i) {
+	return n(), e("div", a, [...i[0] ||= [t("<div class=\"rounded-lg border border-border bg-card p-6\"><h2 class=\"mb-3 text-xl font-semibold text-foreground\"> Why This Exists </h2><p class=\"text-sm text-muted-foreground\"> Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data. </p></div><div class=\"rounded-lg border border-border bg-card p-6\"><h2 class=\"mb-3 text-xl font-semibold text-foreground\"> Methodology </h2><p class=\"text-sm text-muted-foreground\"> The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results. </p></div>", 2)]]);
+}
+var s = r(i, [["render", o]]);
+export { s as default };

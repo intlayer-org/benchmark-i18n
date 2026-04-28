@@ -18,7 +18,10 @@
     "apps-benchmark/tanstack-start-react-dynamic/*",
     "apps-benchmark/tanstack-start-react-scoped-static/*",
     "apps-benchmark/tanstack-start-react-scoped-dynamic/*",
-    "apps-benchmark/vite+react-base-app"
+    "apps-benchmark/vite+react-base-app",
+    "apps-benchmark/vite+solid-base-app",
+    "apps-benchmark/vite+svelte-base-app",
+    "apps-benchmark/vite+vue-base-app"
   ],
   "scripts": {
     "report": "bun report/scripts/summarize.ts --out report/scripts/summarize --md report/scripts/summarize",

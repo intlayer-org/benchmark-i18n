@@ -1,23 +1,47 @@
- 
-import { test, expect, type Page } from '@playwright/test';
-import { DEFAULT_PAGES, DEFAULT_LOCALES } from './pages-test';
-import { getStructuralBlueprint } from './structure-consistency';
+import { test, expect, type Page } from "@playwright/test";
+import { DEFAULT_PAGES, DEFAULT_LOCALES } from "./pages-test";
+import { getStructuralBlueprint } from "./structure-consistency";
 
-// The URL of the base-app reference (e.g., http://localhost:3000)
+const NAV_WAIT_UNTIL = "load" as const;
+const GOTO_TIMEOUT_MS = 60_000;
 
-export function registerStructureConsistencyTest(test: any, expect: any, group: string): void {
+/** Wait until lazy routes (React Suspense, etc.) have rendered real content, not fallbacks. */
+async function waitForPageShell(page: Page): Promise<void> {
+  await page.getByRole("heading", { level: 1 }).first().waitFor({
+    state: "visible",
+    timeout: GOTO_TIMEOUT_MS,
+  });
+}
+
+export function registerStructureConsistencyTest(
+  test: any,
+  expect: any,
+  group: string,
+): void {
   test.describe(`Cross-App Structural Consistency - ${group}`, () => {
-    
     for (const pageConfig of DEFAULT_PAGES) {
       for (const locale of DEFAULT_LOCALES) {
-        
-        test(`Match Reference App structure for [${locale}] - ${pageConfig.name}`, async ({ page }: { page: Page }) => {
-          const path = `${locale}${pageConfig.path === '/' ? '' : pageConfig.path}`;
-          
+        test(`Match Reference App structure for [${locale}] - ${pageConfig.name}`, async ({
+          page,
+        }: {
+          page: Page;
+        }) => {
+          const path = `${locale}${pageConfig.path === "/" ? "" : pageConfig.path}`;
+
           let baseBlueprint = "";
           try {
-            // 1. Get blueprint from the Reference App (Base)
-            await page.goto(`${group}/${path}`, { waitUntil: 'networkidle' });
+            const refBase = process.env.STRUCTURE_REFERENCE_BASE_URL?.replace(
+              /\/$/,
+              "",
+            ).trim();
+            const referenceTarget = refBase
+              ? `${refBase}/${path}`
+              : `${group}/${path}`;
+            await page.goto(referenceTarget, {
+              waitUntil: NAV_WAIT_UNTIL,
+              timeout: GOTO_TIMEOUT_MS,
+            });
+            await waitForPageShell(page);
             const baseHtml = await page.content();
             baseBlueprint = getStructuralBlueprint(baseHtml);
           } catch (err) {
@@ -30,9 +54,11 @@ export function registerStructureConsistencyTest(test: any, expect: any, group: 
 
           let currentBlueprint = "";
           try {
-            // 2. Get blueprint from the Current App (Implementation)
-            // page.goto('/') uses the baseURL defined in the local playwright.config.ts
-            await page.goto(`/${path}`, { waitUntil: 'networkidle' });
+            await page.goto(`/${path}`, {
+              waitUntil: NAV_WAIT_UNTIL,
+              timeout: GOTO_TIMEOUT_MS,
+            });
+            await waitForPageShell(page);
             const currentHtml = await page.content();
             currentBlueprint = getStructuralBlueprint(currentHtml);
           } catch (err) {
@@ -43,7 +69,6 @@ export function registerStructureConsistencyTest(test: any, expect: any, group: 
             currentBlueprint = "__current_load_failed__";
           }
 
-          // 3. Compare English to English / French to French
           expect(currentBlueprint).toBe(baseBlueprint);
         });
       }

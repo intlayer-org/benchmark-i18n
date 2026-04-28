@@ -98,6 +98,14 @@ export interface MeasureConfig {
    * additionalPlugins instead.
    */
   skipViteConfig?: boolean;
+  /**
+   * Merged into Vite's `esbuild` option for the component library build.
+   * Use `{ jsx: "preserve" }` with `vite-plugin-solid` for Solid `.tsx` files.
+   */
+  esbuild?: {
+    jsx?: "automatic" | "preserve" | "transform";
+    jsxImportSource?: string;
+  };
 }
 
 /** Size measurements for a single compiled component. */
@@ -181,6 +189,7 @@ const buildComponentBundle = async (
   additionalPlugins: any[] = [],
   configRoot?: string,
   skipViteConfig?: boolean,
+  esbuildOptions?: MeasureConfig["esbuild"],
 ): Promise<{ bytes: number; gzipBytes: number; code: string }> => {
   // Load the host application's Vite config (unless caller opts out)
   const loaded = skipViteConfig
@@ -291,6 +300,7 @@ const buildComponentBundle = async (
       esbuild: {
         jsx: "automatic",
         legalComments: "none",
+        ...esbuildOptions,
       },
       build: {
         write: false,
@@ -343,6 +353,7 @@ const scanAndMeasureDirectory = async (
   additionalPlugins: any[] = [],
   configRoot?: string,
   skipViteConfig?: boolean,
+  esbuildOptions?: MeasureConfig["esbuild"],
 ): Promise<ComponentSizeStats[]> => {
   const componentStats: ComponentSizeStats[] = [];
 
@@ -351,7 +362,7 @@ const scanAndMeasureDirectory = async (
     return entries.flatMap((e) => {
       const rel = base ? `${base}/${e.name}` : e.name;
       if (e.isDirectory()) return collectTsx(path.join(dir, e.name), rel);
-      return e.name.endsWith(".tsx") ? [rel] : [];
+      return e.name.endsWith(".tsx") || e.name.endsWith(".vue") ? [rel] : [];
     });
   };
 
@@ -372,6 +383,7 @@ const scanAndMeasureDirectory = async (
         additionalPlugins,
         configRoot,
         skipViteConfig,
+        esbuildOptions,
       );
 
       // Build 2: Minified
@@ -383,6 +395,7 @@ const scanAndMeasureDirectory = async (
         additionalPlugins,
         configRoot,
         skipViteConfig,
+        esbuildOptions,
       );
 
       // Write both bundled code versions to disk for inspection
@@ -533,6 +546,7 @@ export const measureComponents = async ({
   additionalPlugins = [],
   appDir,
   skipViteConfig,
+  esbuild: esbuildOptions,
 }: MeasureConfig): Promise<void> => {
   const resolvedComponentDirectories = componentDirectories.map(
     (directoryPath) => path.resolve(directoryPath),
@@ -573,6 +587,7 @@ export const measureComponents = async ({
       additionalPlugins,
       effectiveDir,
       skipViteConfig,
+      esbuildOptions,
     );
     allComponentStats.push(...directoryStats);
   }
@@ -612,6 +627,7 @@ export const measureLibSize = async ({
   additionalPlugins = [],
   appDir,
   skipViteConfig,
+  esbuild: esbuildOptions,
 }: MeasureConfig): Promise<void> => {
   const effectiveDir = appDir ?? process.cwd();
   const emptyComponentPath = path.resolve(
@@ -656,6 +672,7 @@ export const measureLibSize = async ({
       additionalPlugins,
       effectiveDir,
       skipViteConfig,
+      esbuildOptions,
     );
 
     const minified = await buildComponentBundle(
@@ -666,6 +683,7 @@ export const measureLibSize = async ({
       additionalPlugins,
       effectiveDir,
       skipViteConfig,
+      esbuildOptions,
     );
 
     console.log(
