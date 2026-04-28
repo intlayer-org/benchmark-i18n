@@ -12,8 +12,6 @@
     "preview": "bunx --bun vite preview --port 4173",
     "test": "bun run build && playwright test pages.test.ts && bun run test:components && playwright test rendering.test.ts && playwright test reactivity.test.ts",
     "test:components": "bun scripts/measure-svelte-components.ts",
-    "test:consistency": "bun run build && bun run build:reference && PLAYWRIGHT_STRUCTURE=1 playwright test structure-consistency.test.ts",
-    "build:reference": "cd ../vite+react-base-app && bun run build",
     "test:pages": "playwright test pages.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:rendering": "playwright test rendering.test.ts",

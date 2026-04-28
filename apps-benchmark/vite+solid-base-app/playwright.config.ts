@@ -1,13 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const SOLID_PREVIEW_PORT = 5183;
-const REACT_REFERENCE_PORT = 5184;
-const solidOrigin = `http://localhost:${SOLID_PREVIEW_PORT}`;
-const reactReferenceOrigin = `http://localhost:${REACT_REFERENCE_PORT}`;
-
 /**
  * See https://playwright.dev/docs/test-configuration.
- * Ports 5183/5184 avoid clashing with other local previews on 4173 (reuseExistingServer).
  */
 export default defineConfig({
   testDir: ".",
@@ -19,24 +13,16 @@ export default defineConfig({
   workers: 1,
   reporter: "list",
   use: {
-    baseURL: process.env.BASE_URL || solidOrigin,
+    baseURL: process.env.BASE_URL || "http://localhost:4173",
     trace: "on-first-retry",
   },
 
-  webServer: [
-    {
-      command: `bun x --bun vite preview --port ${SOLID_PREVIEW_PORT}`,
-      url: solidOrigin,
-      reuseExistingServer: !process.env.CI,
-      timeout: 120 * 1000,
-    },
-    {
-      command: `cd ../vite+react-base-app && bun x --bun vite build && bun x --bun vite preview --port ${REACT_REFERENCE_PORT}`,
-      url: reactReferenceOrigin,
-      reuseExistingServer: !process.env.CI,
-      timeout: 300 * 1000,
-    },
-  ],
+  webServer: {
+    command: "bun x --bun vite preview --port 4173",
+    url: "http://localhost:4173",
+    reuseExistingServer: !process.env.CI,
+    timeout: 120 * 1000,
+  },
 
   projects: [
     {

@@ -1,3 +1,18 @@
+/** Canonical attribute order so React vs Solid (etc.) string compare matches. */
+function sortOpeningTagAttributes(html: string, tagName: string): string {
+  const re = new RegExp(`<${tagName}\\b([^>]*)>`, "gi");
+  return html.replace(re, (_full, attrBlob: string) => {
+    const pairs: [string, string][] = [];
+    const attrRe = /([\w:-]+)="([^"]*)"/g;
+    let m: RegExpExecArray | null;
+    while ((m = attrRe.exec(attrBlob)) !== null) {
+      pairs.push([m[1], m[2]]);
+    }
+    pairs.sort(([a], [b]) => a.localeCompare(b));
+    const inner = pairs.map(([k, v]) => `${k}="${v}"`).join(" ");
+    return `<${tagName}${inner ? ` ${inner}` : ""}>`;
+  });
+}
 
 export function getStructuralBlueprint(html: string): string {
   try {
@@ -7,6 +22,10 @@ export function getStructuralBlueprint(html: string): string {
       .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, "")
       // Bundler-specific preload/stylesheet links (React vs Svelte chunk names differ)
       .replace(/<link\b[^>]*>/gi, "")
+      // Head differs by framework / bundler; body DOM is what we compare
+      .replace(/<head\b[\s\S]*?<\/head>/gi, "<head></head>")
+      // Svelte (and others) may emit HTML comments in the template output
+      .replace(/<!--[\s\S]*?-->/g, "")
 
       // 2. Remove HTML comments (Fixed syntax - no more format errors)
       .replace(/\//g, "")
@@ -82,6 +101,25 @@ export function getStructuralBlueprint(html: string): string {
       // 8. Cleanup whitespace
       .replace(/>\s+</g, "><")
       .trim();
+
+    blueprint = blueprint
+      .replace(/\s(id|for)="[^"]*"/g, "")
+      .replace(/<input\b([^>]*)>/gi, (_, attrs: string) => {
+        const rest = attrs
+          .replace(/\s(value|defaultvalue)="[^"]*"/gi, "")
+          .trim();
+        return `<input ${rest}>`;
+      })
+      .replace(/<textarea\b([^>]*)>/gi, (_, attrs: string) => {
+        const rest = attrs
+          .replace(/\s(value|defaultvalue)="[^"]*"/gi, "")
+          .trim();
+        return `<textarea ${rest}>`;
+      });
+
+    for (const tag of ["button", "select", "label", "input", "textarea"]) {
+      blueprint = sortOpeningTagAttributes(blueprint, tag);
+    }
 
     return blueprint;
   } catch (err) {

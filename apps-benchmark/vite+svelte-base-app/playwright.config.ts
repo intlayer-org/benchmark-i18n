@@ -1,32 +1,4 @@
-import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
 import { defineConfig, devices } from "@playwright/test";
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const viteReactRefRoot = join(__dirname, "../vite+react-base-app");
-
-const structureMode = process.env.PLAYWRIGHT_STRUCTURE === "1";
-
-if (structureMode) {
-  if (!process.env.STRUCTURE_REFERENCE_BASE_URL) {
-    process.env.STRUCTURE_REFERENCE_BASE_URL = "http://127.0.0.1:4174";
-  }
-}
-
-const sveltePreview = {
-  command: "bunx --bun vite preview --port 4173 --strictPort",
-  url: "http://127.0.0.1:4173",
-  reuseExistingServer: !process.env.CI,
-  timeout: 120 * 1000,
-};
-
-const reactRefPreview = {
-  command: "bunx --bun vite preview --port 4174 --strictPort",
-  cwd: viteReactRefRoot,
-  url: "http://127.0.0.1:4174",
-  reuseExistingServer: !process.env.CI,
-  timeout: 120 * 1000,
-};
 
 export default defineConfig({
   testDir: ".",
@@ -38,11 +10,16 @@ export default defineConfig({
   workers: 1,
   reporter: "list",
   use: {
-    baseURL: process.env.BASE_URL || "http://127.0.0.1:4173",
+    baseURL: process.env.BASE_URL || "http://localhost:4173",
     trace: "on-first-retry",
   },
 
-  webServer: structureMode ? [sveltePreview, reactRefPreview] : sveltePreview,
+  webServer: {
+    command: "bunx --bun vite preview --port 4173",
+    url: "http://localhost:4173",
+    reuseExistingServer: !process.env.CI,
+    timeout: 120 * 1000,
+  },
 
   projects: [
     {
