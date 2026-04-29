@@ -1,0 +1,7 @@
+{
+  "$schema": "https://inlang.com/schema/inlang-message-format",
+  "hero_title": "Benchmark i18n",
+  "hero_description": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+  "hero_view_results": "Voir les résultats",
+  "hero_methodology": "Méthodologie"
+}

@@ -1,4 +1,4 @@
-import { test, expect, type Page } from "@playwright/test";
+import { type Page } from "@playwright/test";
 import { DEFAULT_PAGES, DEFAULT_LOCALES } from "./pages-test";
 import { getStructuralBlueprint } from "./structure-consistency";
 

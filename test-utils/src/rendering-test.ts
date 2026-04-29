@@ -67,7 +67,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { test, expect, type Page } from "@playwright/test";
+import { type Page } from "@playwright/test";
 import { benchmarkBloomRoot } from "./repo-root";
 import {
   type TimingStats,
@@ -310,7 +310,7 @@ const saveRenderingResults = (
 export const registerRenderingTest = (test: any, expect: any, config: RenderingTestConfig): void => {
   const {
     appName,
-    benchmarkCategory,
+    // benchmarkCategory,
     cpuThrottleRate = 1,
     locale = "fr",
   } = config;

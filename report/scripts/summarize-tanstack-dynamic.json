@@ -1438,7 +1438,7 @@
     },
     "intlayer": {
       "global": {
-        "version": "8.7.7",
+        "version": "8.7.11",
         "libSize": {
           "status": "ok",
           "gzip": 4810,

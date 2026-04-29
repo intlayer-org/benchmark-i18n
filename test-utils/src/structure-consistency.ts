@@ -26,6 +26,8 @@ export function getStructuralBlueprint(html: string): string {
       .replace(/<head\b[\s\S]*?<\/head>/gi, "<head></head>")
       // Svelte (and others) may emit HTML comments in the template output
       .replace(/<!--[\s\S]*?-->/g, "")
+      // Svelte 5 often emits empty comment placeholders between nodes
+      .replace(/<!---->/g, "")
 
       // 2. Remove HTML comments (Fixed syntax - no more format errors)
       .replace(/\//g, "")

@@ -1,0 +1,38 @@
+<script setup lang="ts">
+import { useIntlayer } from "vue-intlayer";
+
+const { title, apiKeyLabel, copy, description } = useIntlayer(
+  "api-access-section"
+);
+</script>
+
+<template>
+  <section class="rounded-lg border border-border bg-card p-6">
+    <h2 class="mb-4 text-lg font-semibold text-foreground">{{ title }}</h2>
+    <div>
+      <label
+        for="apiKey"
+        class="mb-1 block text-sm font-medium text-foreground"
+      >
+        {{ apiKeyLabel }}
+      </label>
+      <div class="flex gap-2">
+        <input
+          id="apiKey"
+          readonly
+          value="sk_bench_xxxxxxxxxxxxxxxxxxxx"
+          class="flex-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-muted-foreground"
+        />
+        <button
+          type="button"
+          class="rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors"
+        >
+          {{ copy }}
+        </button>
+      </div>
+      <p class="mt-1 text-xs text-muted-foreground">
+        {{ description }}
+      </p>
+    </div>
+  </section>
+</template>

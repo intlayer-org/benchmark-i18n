@@ -533,7 +533,7 @@ export const registerBundleTest = (
 ): void => {
   const {
     appName,
-    benchmarkCategory,
+    // benchmarkCategory,
     locales = DEFAULT_LOCALES,
     pages = DEFAULT_PAGES,
     minimumFingerprintLength = DEFAULT_MINIMUM_FINGERPRINT_LENGTH,

@@ -21,7 +21,18 @@
     "apps-benchmark/vite+react-base-app",
     "apps-benchmark/vite+solid-base-app",
     "apps-benchmark/vite+svelte-base-app",
-    "apps-benchmark/vite+vue-base-app"
+    "apps-benchmark/vite+vue-base-app",
+    "apps-benchmark/vite-react-intlayer-static",
+    "apps-benchmark/vite-vue-i18n-static",
+    "apps-benchmark/vite-vue-fluent-vue-static",
+    "apps-benchmark/vite-vue-intlayer-static",
+    "apps-benchmark/vite-svelte-paraglide-js-static",
+    "apps-benchmark/vite-svelte-i18n-static",
+    "apps-benchmark/vite-svelte-intlayer-static",
+    "apps-benchmark/vite-solid-primitives-i18n-static",
+    "apps-benchmark/vite-solid-paraglide-js-static",
+    "apps-benchmark/vite-solid-i18next-static",
+    "apps-benchmark/vite-solid-intlayer-static"
   ],
   "scripts": {
     "report": "bun report/scripts/summarize.ts --out report/scripts/summarize --md report/scripts/summarize",

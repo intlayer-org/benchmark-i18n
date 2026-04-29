@@ -56,14 +56,13 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import { test, expect, type Page } from "@playwright/test";
+import { type Page } from "@playwright/test";
+import { benchmarkBloomRoot } from "./repo-root";
 import {
   type TimingStats,
   aggregateTimingSamples,
   NAV_WAIT_UNTIL,
 } from "./timing-utils";
-
-import { benchmarkBloomRoot } from "./repo-root";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -308,7 +307,7 @@ const saveReactivityResults = (
 export const registerReactivityTest = (test: any, expect: any, config: ReactivityTestConfig): void => {
   const {
     appName,
-    benchmarkCategory,
+    // benchmarkCategory,
     cpuThrottleRate = 1,
     fromLocale = "en",
     toLocale = "fr",
