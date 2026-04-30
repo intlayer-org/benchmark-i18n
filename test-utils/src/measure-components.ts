@@ -45,7 +45,7 @@ import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
 import { benchmarkBloomRoot } from "./repo-root";
-import { build, loadConfigFromFile, type PluginOption } from "vite";
+import { build, loadConfigFromFile, resolveConfig, type PluginOption } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import type { RolldownOutput } from "rolldown";
 
@@ -192,32 +192,34 @@ const deriveComponentCategory = (relativeFilePath: string): string =>
  * Optimized to handle ESM projects and various config file names.
  */
 const loadAppConfig = async (configRoot: string) => {
-  const configFiles = [
-    "vite.config.ts",
-    "vite.config.js",
-    "vite.config.mjs",
-    "vite.config.mts",
-  ];
+  try {
+    const loaded = await loadConfigFromFile(
+      { command: "build", mode: "production" },
+      undefined,
+      configRoot,
+    );
 
-  for (const file of configFiles) {
-    const configPath = path.join(configRoot, file);
-    if (fs.existsSync(configPath)) {
-      const loaded = await loadConfigFromFile(
-        { command: "build", mode: "production" },
-        configPath,
-        configRoot,
-      );
-      if (loaded) return loaded.config;
-    }
+    // Also resolve the config to get the final 'define' values and other resolved properties
+    const resolved = await resolveConfig(
+      { root: configRoot },
+      "build",
+      "production",
+    );
+
+    return {
+      ...(loaded?.config || {}),
+      // Use the resolved define values which include those added by plugins
+      define: {
+        ...(loaded?.config.define || {}),
+        ...(resolved.define || {}),
+      },
+      // Ensure we have the user plugins from the config file
+      userPlugins: (loaded?.config.plugins || []).flat(Infinity),
+    };
+  } catch (error) {
+    console.error(`Failed to resolve Vite config at ${configRoot}:`, error);
+    return { userPlugins: [] };
   }
-
-  // Fallback to default search
-  const loaded = await loadConfigFromFile(
-    { command: "build", mode: "production" },
-    undefined,
-    configRoot,
-  );
-  return loaded?.config || {};
 };
 
 /**
@@ -241,8 +243,10 @@ const buildComponentBundle = async (
   esbuildOptions?: MeasureConfig["esbuild"],
   appConfig: any = {},
 ): Promise<{ bytes: number; gzipBytes: number; code: string }> => {
+  const appPlugins = (appConfig as any).userPlugins || appConfig.plugins || [];
+
   // Filter out plugins that interfere with isolated library mode.
-  const filteredPlugins: PluginOption[] = ((appConfig.plugins || []) as any[])
+  const filteredPlugins: PluginOption[] = (appPlugins as any[])
     .flat(Infinity)
     .filter((plugin: any) => {
       if (!plugin || !plugin.name) return true;
@@ -447,6 +451,7 @@ const scanAndMeasureDirectory = async (
         configRoot,
         skipViteConfig,
         esbuildOptions,
+        appConfig,
       );
 
       // Write both bundled code versions to disk for inspection
@@ -629,6 +634,10 @@ export const measureComponents = async ({
 
   const allComponentStats: ComponentSizeStats[] = [];
 
+  const resolvedComponentDirectories = componentDirectories.map((d) =>
+    path.resolve(effectiveDir, d),
+  );
+
   for (const directoryPath of resolvedComponentDirectories) {
     if (!fs.existsSync(directoryPath)) continue;
 
@@ -693,9 +702,6 @@ export const measureLibSize = async ({
   const emptyComponentPath = path.resolve(effectiveDir, emptyComponentFile);
   const emptyComponentName = path.basename(emptyComponentPath);
   if (!fs.existsSync(emptyComponentPath)) {
-    console.log(
-      `[measureLibSize] No ${emptyComponentName} found at ${emptyComponentPath} — skipping.`,
-    );
     return;
   }
 
@@ -713,7 +719,7 @@ export const measureLibSize = async ({
   // EmptyComponent.tsx already includes the provider context and the hook usage
   // (as refactored in previous steps), so we build it directly without any
   // additional wrapping.
-  const resolvedWrapperTemplate = undefined;
+  const resolvedWrapperTemplate = wrapperTemplate;
 
   console.log(`\n--- LIB SIZE MEASUREMENT ---`);
   console.log(`App Name: ${appName}`);

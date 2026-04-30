@@ -4,4 +4,5 @@ import pkg from "../package.json" with { type: "json" };
 await measureSvelteLibSize({
   appName: pkg.name,
   benchmarkCategory: "vite-svelte-static",
+  additionalExternalPackages: [/\.json$/],
 });

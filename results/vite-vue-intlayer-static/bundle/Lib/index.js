@@ -1,174 +1,6 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
+import _5YAR0pGEba36ehifjZtw from "../.intlayer/dictionary/header.json";
 import { Fragment, computed, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, ref, shallowRef, toValue, watch } from "vue";
-var header_default = {
-	key: "header",
-	content: {
-		"nodeType": "translation",
-		"translation": {
-			"en": {
-				"home": "Home",
-				"methodology": "Methodology",
-				"mockPages": "Mock Pages",
-				"products": "Products",
-				"pricing": "Pricing",
-				"team": "Team",
-				"blog": "Blog",
-				"careers": "Careers",
-				"faq": "FAQ",
-				"contact": "Contact",
-				"settings": "Settings",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Go to GitHub",
-				"header": "Header"
-			},
-			"fr": {
-				"home": "Accueil",
-				"methodology": "Méthodologie",
-				"mockPages": "Pages fictives",
-				"products": "Produits",
-				"pricing": "Tarification",
-				"team": "Équipe",
-				"blog": "Blog",
-				"careers": "Carrières",
-				"faq": "FAQ",
-				"contact": "Contact",
-				"settings": "Paramètres",
-				"appName": "Benchmark i18n",
-				"goToGithub": "Aller sur GitHub",
-				"header": "En-tête"
-			},
-			"es": {
-				"home": "Inicio",
-				"methodology": "Metodología",
-				"mockPages": "Páginas de prueba",
-				"products": "Productos",
-				"pricing": "Precios",
-				"team": "Equipo",
-				"blog": "Blog",
-				"careers": "Carreras",
-				"faq": "FAQ",
-				"contact": "Contacto",
-				"settings": "Ajustes",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Ir a GitHub",
-				"header": "Encabezado"
-			},
-			"de": {
-				"home": "Home",
-				"methodology": "Methodik",
-				"mockPages": "Testseiten",
-				"products": "Produkte",
-				"pricing": "Preise",
-				"team": "Team",
-				"blog": "Blog",
-				"careers": "Karriere",
-				"faq": "FAQ",
-				"contact": "Kontakt",
-				"settings": "Einstellungen",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Zu GitHub",
-				"header": "Header"
-			},
-			"it": {
-				"home": "Home",
-				"methodology": "Metodologia",
-				"mockPages": "Pagine di prova",
-				"products": "Prodotti",
-				"pricing": "Prezzi",
-				"team": "Team",
-				"blog": "Blog",
-				"careers": "Carriere",
-				"faq": "FAQ",
-				"contact": "Contatti",
-				"settings": "Impostazioni",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Vai su GitHub",
-				"header": "Intestazione"
-			},
-			"pt": {
-				"home": "Início",
-				"methodology": "Metodologia",
-				"mockPages": "Páginas de Teste",
-				"products": "Produtos",
-				"pricing": "Preços",
-				"team": "Equipe",
-				"blog": "Blog",
-				"careers": "Carreiras",
-				"faq": "FAQ",
-				"contact": "Contato",
-				"settings": "Configurações",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Ir para o GitHub",
-				"header": "Cabeçalho"
-			},
-			"zh": {
-				"home": "首页",
-				"methodology": "方法论",
-				"mockPages": "模拟页面",
-				"products": "产品",
-				"pricing": "定价",
-				"team": "团队",
-				"blog": "博客",
-				"careers": "职业",
-				"faq": "常见问题",
-				"contact": "联系我们",
-				"settings": "设置",
-				"appName": "i18n 基准测试",
-				"goToGithub": "前往 GitHub",
-				"header": "页眉"
-			},
-			"ja": {
-				"home": "ホーム",
-				"methodology": "方法論",
-				"mockPages": "モックページ",
-				"products": "製品",
-				"pricing": "価格設定",
-				"team": "チーム",
-				"blog": "ブログ",
-				"careers": "採用情報",
-				"faq": "よくある質問",
-				"contact": "お問い合わせ",
-				"settings": "設定",
-				"appName": "i18n ベンチマーク",
-				"goToGithub": "GitHub へ",
-				"header": "ヘッダー"
-			},
-			"ko": {
-				"home": "홈",
-				"methodology": "방법론",
-				"mockPages": "모ック 페이지",
-				"products": "제품",
-				"pricing": "가격",
-				"team": "팀",
-				"blog": "블로그",
-				"careers": "채용",
-				"faq": "자주 묻는 질문",
-				"contact": "문의",
-				"settings": "설정",
-				"appName": "i18n 벤치마크",
-				"goToGithub": "GitHub으로 이동",
-				"header": "헤더"
-			},
-			"ru": {
-				"home": "Главная",
-				"methodology": "Методология",
-				"mockPages": "Мок-страницы",
-				"products": "Продукты",
-				"pricing": "Цены",
-				"team": "Команда",
-				"blog": "Блог",
-				"careers": "Вакансии",
-				"faq": "FAQ",
-				"contact": "Контакт",
-				"settings": "Настройки",
-				"appName": "i18n Бенчмарк",
-				"goToGithub": "Перейти на GitHub",
-				"header": "Заголовок"
-			}
-		}
-	},
-	localIds: ["header::local::src/components/Header.content.ts"]
-};
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
 	return Object.setPrototypeOf(l, String.prototype), Object.assign(l, {
@@ -973,15 +805,27 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
-var EmptyComponent_default = defineComponent({
+var EmptyComponent_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "EmptyComponent",
-	setup(__props) {
-		b(header_default);
-		return (_ctx, _cache) => {
-			return null;
-		};
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const __returned__ = { content: b(_5YAR0pGEba36ehifjZtw) };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return null;
+}
+var EmptyComponent_default = _plugin_vue_export_helper_default(EmptyComponent_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/scripts/EmptyComponent.vue"]]);
 export { EmptyComponent_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

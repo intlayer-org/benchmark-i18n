@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-svelte",
     "frameworkLabel": "Vite + Svelte",
-    "generatedAt": "2026-04-30T00:41:39.960Z",
+    "generatedAt": "2026-04-30T01:07:05.451Z",
     "counts": {
       "totalLibs": 4,
       "totalApps": 4
@@ -868,9 +868,9 @@
         "version": "8.7.11",
         "libSize": {
           "status": "ok",
-          "gzip": 3747,
-          "minified": 10282,
-          "unminified": 14719
+          "gzip": 2377,
+          "minified": 6386,
+          "unminified": 10529
         }
       },
       "static": {

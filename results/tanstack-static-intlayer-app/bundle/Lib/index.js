@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var route_default = {
 	key: "route",
 	content: {
@@ -475,7 +476,7 @@ var buildCookieString = (name, value, attributes) => {
 	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
 	return parts.join("; ");
 };
-var getLocaleFromStorageClient = (options) => {
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const { locales } = internationalization;
 	if (options?.isCookieEnabled === false) return void 0;
 	const isValidLocale = (value) => !!value && locales.includes(value);
@@ -588,14 +589,46 @@ var useDictionary = (dictionary, locale) => {
 		locale
 	]);
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	useDictionary(route_default);
 	return null;
 };
 function EmptyComponent() {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
-		children: jsx(TestComponent, {})
-	});
+		children: jsxDEV(TestComponent, {}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-export { EmptyComponent as default };
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
+function Wrapper({ children }) {
+	return jsxDEV(IntlayerProvider, {
+		locale: "en",
+		children
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
+}
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/EmptyComponent.wrapper.tsx";
+function Wrapped() {
+	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
+}
+export { Wrapped as default };

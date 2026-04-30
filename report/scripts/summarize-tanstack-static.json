@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-04-30T00:41:39.960Z",
+    "generatedAt": "2026-04-30T01:07:05.451Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 30
@@ -1617,9 +1617,9 @@
         "version": "8.7.11",
         "libSize": {
           "status": "ok",
-          "gzip": 4810,
-          "minified": 13098,
-          "unminified": 20399
+          "gzip": 5087,
+          "minified": 14101,
+          "unminified": 21575
         }
       },
       "static": {

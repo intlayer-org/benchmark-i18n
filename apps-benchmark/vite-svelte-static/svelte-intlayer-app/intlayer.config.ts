@@ -16,7 +16,7 @@ const config: IntlayerConfig = {
     ],
     defaultLocale: Locales.ENGLISH,
   },
-  build: {
+  dictionary: {
     importMode: "static",
   },
   compiler: {

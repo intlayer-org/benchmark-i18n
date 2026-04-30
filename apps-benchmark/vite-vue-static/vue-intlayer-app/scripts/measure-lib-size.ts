@@ -5,5 +5,5 @@ measureLibSize({
   appName: pkg.name,
   benchmarkCategory: "vite-vue-static",
   emptyComponentFile: "scripts/EmptyComponent.vue",
-  additionalExternalPackages: ["vue", "vue-router", "lucide-vue-next"],
+  additionalExternalPackages: ["vue", "vue-router", "lucide-vue-next", /\.json$/],
 }).catch(console.error);

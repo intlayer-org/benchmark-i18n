@@ -1,174 +1,7 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, defineComponent as g, getCurrentInstance as _, h as v, inject as y, isRef as b, markRaw as x, ref as S, shallowRef as ee, toValue as C, watch as te } from "vue";
-var ne = {
-	key: "header",
-	content: {
-		nodeType: "translation",
-		translation: {
-			en: {
-				home: "Home",
-				methodology: "Methodology",
-				mockPages: "Mock Pages",
-				products: "Products",
-				pricing: "Pricing",
-				team: "Team",
-				blog: "Blog",
-				careers: "Careers",
-				faq: "FAQ",
-				contact: "Contact",
-				settings: "Settings",
-				appName: "i18n Benchmark",
-				goToGithub: "Go to GitHub",
-				header: "Header"
-			},
-			fr: {
-				home: "Accueil",
-				methodology: "Méthodologie",
-				mockPages: "Pages fictives",
-				products: "Produits",
-				pricing: "Tarification",
-				team: "Équipe",
-				blog: "Blog",
-				careers: "Carrières",
-				faq: "FAQ",
-				contact: "Contact",
-				settings: "Paramètres",
-				appName: "Benchmark i18n",
-				goToGithub: "Aller sur GitHub",
-				header: "En-tête"
-			},
-			es: {
-				home: "Inicio",
-				methodology: "Metodología",
-				mockPages: "Páginas de prueba",
-				products: "Productos",
-				pricing: "Precios",
-				team: "Equipo",
-				blog: "Blog",
-				careers: "Carreras",
-				faq: "FAQ",
-				contact: "Contacto",
-				settings: "Ajustes",
-				appName: "i18n Benchmark",
-				goToGithub: "Ir a GitHub",
-				header: "Encabezado"
-			},
-			de: {
-				home: "Home",
-				methodology: "Methodik",
-				mockPages: "Testseiten",
-				products: "Produkte",
-				pricing: "Preise",
-				team: "Team",
-				blog: "Blog",
-				careers: "Karriere",
-				faq: "FAQ",
-				contact: "Kontakt",
-				settings: "Einstellungen",
-				appName: "i18n Benchmark",
-				goToGithub: "Zu GitHub",
-				header: "Header"
-			},
-			it: {
-				home: "Home",
-				methodology: "Metodologia",
-				mockPages: "Pagine di prova",
-				products: "Prodotti",
-				pricing: "Prezzi",
-				team: "Team",
-				blog: "Blog",
-				careers: "Carriere",
-				faq: "FAQ",
-				contact: "Contatti",
-				settings: "Impostazioni",
-				appName: "i18n Benchmark",
-				goToGithub: "Vai su GitHub",
-				header: "Intestazione"
-			},
-			pt: {
-				home: "Início",
-				methodology: "Metodologia",
-				mockPages: "Páginas de Teste",
-				products: "Produtos",
-				pricing: "Preços",
-				team: "Equipe",
-				blog: "Blog",
-				careers: "Carreiras",
-				faq: "FAQ",
-				contact: "Contato",
-				settings: "Configurações",
-				appName: "i18n Benchmark",
-				goToGithub: "Ir para o GitHub",
-				header: "Cabeçalho"
-			},
-			zh: {
-				home: "首页",
-				methodology: "方法论",
-				mockPages: "模拟页面",
-				products: "产品",
-				pricing: "定价",
-				team: "团队",
-				blog: "博客",
-				careers: "职业",
-				faq: "常见问题",
-				contact: "联系我们",
-				settings: "设置",
-				appName: "i18n 基准测试",
-				goToGithub: "前往 GitHub",
-				header: "页眉"
-			},
-			ja: {
-				home: "ホーム",
-				methodology: "方法論",
-				mockPages: "モックページ",
-				products: "製品",
-				pricing: "価格設定",
-				team: "チーム",
-				blog: "ブログ",
-				careers: "採用情報",
-				faq: "よくある質問",
-				contact: "お問い合わせ",
-				settings: "設定",
-				appName: "i18n ベンチマーク",
-				goToGithub: "GitHub へ",
-				header: "ヘッダー"
-			},
-			ko: {
-				home: "홈",
-				methodology: "방법론",
-				mockPages: "모ック 페이지",
-				products: "제품",
-				pricing: "가격",
-				team: "팀",
-				blog: "블로그",
-				careers: "채용",
-				faq: "자주 묻는 질문",
-				contact: "문의",
-				settings: "설정",
-				appName: "i18n 벤치마크",
-				goToGithub: "GitHub으로 이동",
-				header: "헤더"
-			},
-			ru: {
-				home: "Главная",
-				methodology: "Методология",
-				mockPages: "Мок-страницы",
-				products: "Продукты",
-				pricing: "Цены",
-				team: "Команда",
-				blog: "Блог",
-				careers: "Вакансии",
-				faq: "FAQ",
-				contact: "Контакт",
-				settings: "Настройки",
-				appName: "i18n Бенчмарк",
-				goToGithub: "Перейти на GitHub",
-				header: "Заголовок"
-			}
-		}
-	},
-	localIds: ["header::local::src/components/Header.content.ts"]
-}, w = ({ value: e, children: t, additionalProps: n = {} }) => {
+import m from "../.intlayer/dictionary/header.json";
+import { Fragment as h, computed as g, defineComponent as _, getCurrentInstance as v, h as y, inject as b, isRef as ee, markRaw as x, ref as S, shallowRef as C, toValue as w, watch as te } from "vue";
+var T = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = S(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -186,7 +19,7 @@ var ne = {
 			return r.value;
 		},
 		use(e) {
-			return w({
+			return T({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -197,7 +30,7 @@ var ne = {
 		},
 		...n
 	}), x(o);
-}, T = g({
+}, E = _({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -212,7 +45,7 @@ var ne = {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), E = (e, t, n = f(t)) => {
+}), ne = (e, t, n = f(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -317,17 +150,17 @@ var ne = {
 		isSimple: !1,
 		parts: r
 	};
-}, j = Symbol("intlayerHTML"), M = () => y(j), N = (e, { components: t = {} } = {}) => {
-	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => v(t, e, e?.children)]));
+}, oe = Symbol("intlayerHTML"), se = () => b(oe), j = (e, { components: t = {} } = {}) => {
+	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => y(t, e, e?.children)]));
 	return ie(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
-		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => v(t, e, e?.children);
+		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => y(t, e, e?.children);
 	} }));
-}, P = ({ components: e } = {}) => {
-	let t = M();
-	return (n) => t ? t.renderHTML(n, { components: e }) : N(n, { components: e });
+}, M = ({ components: e } = {}) => {
+	let t = se();
+	return (n) => t ? t.renderHTML(n, { components: e }) : j(n, { components: e });
 };
-g({
+_({
 	name: "HTMLRenderer",
 	props: {
 		content: {
@@ -340,11 +173,11 @@ g({
 		}
 	},
 	setup(e) {
-		let t = P({ components: e.components });
+		let t = M({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var oe = new Set([
+var N = new Set([
 	"true",
 	"false",
 	"null",
@@ -356,7 +189,7 @@ var oe = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), se = (e) => {
+]), P = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -374,7 +207,7 @@ var oe = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => oe.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => N.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -510,7 +343,7 @@ var oe = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : se(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : P(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -548,17 +381,17 @@ var G = (e) => (t, n = {}) => {
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
 }, le = Symbol("intlayerMarkdown"), ue = () => {
-	let e = y(le, { renderMarkdown: (e) => e });
+	let e = b(le, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
 }, de = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, fe = !0, pe = !0, q = !0, me = de ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => w({
+		let r = (e) => T({
 			...n,
 			value: e,
-			children: !q && p.enabled ? () => v(T, {
+			children: !q && p.enabled ? () => y(E, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -588,7 +421,7 @@ var G = (e) => (t, n = {}) => {
 				let a = `__VNODE_${i}__`, o = t.indexOf(a);
 				o !== -1 && (o > r && e.push(t.substring(r, o)), e.push(n.get(i)), r = o + a.length);
 			}
-			return r < t.length && e.push(t.substring(r)), v(m, null, ...e);
+			return r < t.length && e.push(t.substring(r)), y(h, null, ...e);
 		} else return i.parts.forEach((t) => {
 			if (typeof t == "string") {
 				let r = t;
@@ -598,9 +431,9 @@ var G = (e) => (t, n = {}) => {
 				}
 				r.length > 0 && e.push(r);
 			} else e.push(t);
-		}), v(m, null, ...e);
+		}), y(h, null, ...e);
 	}
-	return i.isSimple ? i.parts : v(m, null, i.parts);
+	return i.isSimple ? i.parts : y(h, null, i.parts);
 }, ge = pe ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
@@ -639,7 +472,7 @@ var G = (e) => (t, n = {}) => {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => w({
+				transform: (t, n) => T({
 					...n,
 					value: t,
 					children: e
@@ -647,7 +480,7 @@ var G = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => w({
+		}), o = (n) => T({
 			...t,
 			value: e,
 			children: () => {
@@ -655,7 +488,7 @@ var G = (e) => (t, n = {}) => {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !q && p.enabled ? v(T, {
+				return !q && p.enabled ? y(E, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -679,18 +512,18 @@ var G = (e) => (t, n = {}) => {
 			plugins: [_e, ...t.plugins ?? []]
 		});
 	}
-}, J = fe ? t : {
+}, ye = fe ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
 		let n = e[s];
 		e.tags;
 		let r = (e = {}) => {
-			let i = N(n, { components: e });
-			return w({
+			let i = j(n, { components: e });
+			return T({
 				...t,
 				value: n,
-				children: !q && p.enabled ? () => v(T, {
+				children: !q && p.enabled ? () => y(E, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -700,9 +533,9 @@ var G = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, Y = /* @__PURE__ */ new Map(), ye = (t, r = !0) => {
+}, J = /* @__PURE__ */ new Map(), be = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
-	if (Y.has(i)) return Y.get(i);
+	if (J.has(i)) return J.get(i);
 	let s = [
 		o(t ?? e.defaultLocale, r ? e.defaultLocale : void 0),
 		a,
@@ -713,15 +546,15 @@ var G = (e) => (t, n = {}) => {
 		me,
 		ge,
 		ve,
-		J
+		ye
 	];
-	return Y.set(i, s), s;
-}, be = (e, t) => E(e, t, ye(t)), xe = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Se = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => x(g({
+	return J.set(i, s), s;
+}, xe = (e, t) => ne(e, t, be(t)), Se = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Q = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => x(_({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : Q(t) ? v(t) : Array.isArray(t) ? v("span", t) : t;
+			return t == null ? null : Z(t) ? y(t) : Array.isArray(t) ? y("span", t) : t;
 		};
 	}
 })), Ce = (e) => new Proxy({}, {
@@ -747,9 +580,9 @@ var G = (e) => (t, n = {}) => {
 		};
 	}
 }), we = (t, n) => {
-	let r = _() ? y(xe) : void 0, i = b(r?.locale) ? r.locale : S(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : C(n)) ?? i.value), o = ee({});
-	te([() => C(t), () => a.value], ([e, t]) => {
-		o.value = be(e, t);
+	let r = v() ? b(Se) : void 0, i = ee(r?.locale) ? r.locale : S(r?.locale ?? e.defaultLocale), a = g(() => (n === void 0 ? void 0 : w(n)) ?? i.value), o = C({});
+	te([() => w(t), () => a.value], ([e, t]) => {
+		o.value = xe(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -757,23 +590,23 @@ var G = (e) => (t, n = {}) => {
 	let s = (e) => new Proxy({}, {
 		get(t, n, r) {
 			if (n === "__v_isRef") return !0;
-			let i = h(() => X(o.value, e));
+			let i = g(() => Y(o.value, e));
 			if (n === "value") return i.value ?? "";
 			if (n === "then") return;
 			if (n === "c" || n === "asComponent") return $(() => i.value);
 			if (n === "$raw") return i;
 			if (n === Symbol.toPrimitive) return () => i.value;
-			let a = e.concat(n), c = X(o.value, a);
-			if (c === void 0 || Z(c) && !Q(c)) return s(a);
-			if (Se(c)) return Ce(h(() => X(o.value, a)));
-			let l = h(() => X(o.value, a));
+			let a = e.concat(n), c = Y(o.value, a);
+			if (c === void 0 || X(c) && !Z(c)) return s(a);
+			if (Q(c)) return Ce(g(() => Y(o.value, a)));
+			let l = g(() => Y(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = X(o.value, e);
-			return Z(t) ? Reflect.ownKeys(t) : [];
+			let t = Y(o.value, e);
+			return X(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -783,13 +616,26 @@ var G = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, Te = g({
+}, Te = _({
 	__name: "EmptyComponent",
-	setup(e) {
-		return we(ne), (e, t) => null;
+	setup(e, { expose: t }) {
+		t();
+		let n = { content: we(m) };
+		return Object.defineProperty(n, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), n;
 	}
-});
-export { Te as default };
+}), Ee = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+};
+function De(e, t, n, r, i, a) {
+	return null;
+}
+var Oe = Ee(Te, [["render", De], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/scripts/EmptyComponent.vue"]]);
+export { Oe as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

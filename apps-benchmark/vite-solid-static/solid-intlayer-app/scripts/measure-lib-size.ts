@@ -12,6 +12,7 @@ measureLibSize({
     "@solidjs/router",
     "test-utils",
     "test-utils/browser-metrics",
+    /\.json$/,
   ],
   esbuild: { jsx: "preserve" },
 }).catch(console.error);

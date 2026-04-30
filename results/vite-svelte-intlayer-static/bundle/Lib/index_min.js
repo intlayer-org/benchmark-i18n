@@ -1,177 +1,10 @@
+import e from "../.intlayer/dictionary/header.json";
 import "svelte/internal/disclose-version";
 import "svelte/internal/flags/legacy";
-import * as e from "svelte/internal/client";
-import { getContext as t, setContext as n } from "svelte";
-import { derived as r, writable as i } from "svelte/store";
-var a = {
-	key: "header",
-	content: {
-		nodeType: "translation",
-		translation: {
-			en: {
-				home: "Home",
-				methodology: "Methodology",
-				mockPages: "Mock Pages",
-				products: "Products",
-				pricing: "Pricing",
-				team: "Team",
-				blog: "Blog",
-				careers: "Careers",
-				faq: "FAQ",
-				contact: "Contact",
-				settings: "Settings",
-				appName: "i18n Bench",
-				goToGithub: "Go to GitHub",
-				header: "Header"
-			},
-			fr: {
-				home: "Accueil",
-				methodology: "Méthodologie",
-				mockPages: "Pages fictives",
-				products: "Produits",
-				pricing: "Tarification",
-				team: "Équipe",
-				blog: "Blog",
-				careers: "Carrières",
-				faq: "FAQ",
-				contact: "Contact",
-				settings: "Paramètres",
-				appName: "Benchmark i18n",
-				goToGithub: "Aller sur GitHub",
-				header: "En-tête"
-			},
-			es: {
-				home: "Inicio",
-				methodology: "Metodología",
-				mockPages: "Páginas de prueba",
-				products: "Productos",
-				pricing: "Precios",
-				team: "Equipo",
-				blog: "Blog",
-				careers: "Carreras",
-				faq: "FAQ",
-				contact: "Contacto",
-				settings: "Ajustes",
-				appName: "i18n Bench",
-				goToGithub: "Ir a GitHub",
-				header: "Encabezado"
-			},
-			de: {
-				home: "Startseite",
-				methodology: "Methodik",
-				mockPages: "Mock-Seiten",
-				products: "Produkte",
-				pricing: "Preise",
-				team: "Team",
-				blog: "Blog",
-				careers: "Karriere",
-				faq: "FAQ",
-				contact: "Kontakt",
-				settings: "Einstellungen",
-				appName: "i18n Bench",
-				goToGithub: "Zu GitHub gehen",
-				header: "Header"
-			},
-			it: {
-				home: "Home",
-				methodology: "Metodologia",
-				mockPages: "Pagine mock",
-				products: "Prodotti",
-				pricing: "Prezzi",
-				team: "Team",
-				blog: "Blog",
-				careers: "Carriere",
-				faq: "FAQ",
-				contact: "Contatti",
-				settings: "Impostazioni",
-				appName: "i18n Bench",
-				goToGithub: "Vai su GitHub",
-				header: "Intestazione"
-			},
-			pt: {
-				home: "Início",
-				methodology: "Metodologia",
-				mockPages: "Páginas fictícias",
-				products: "Produtos",
-				pricing: "Preços",
-				team: "Equipe",
-				blog: "Blog",
-				careers: "Carreiras",
-				faq: "FAQ",
-				contact: "Contato",
-				settings: "Configurações",
-				appName: "i18n Bench",
-				goToGithub: "Ir para o GitHub",
-				header: "Cabeçalho"
-			},
-			zh: {
-				home: "首页",
-				methodology: "方法论",
-				mockPages: "模拟页面",
-				products: "产品",
-				pricing: "价格",
-				team: "团队",
-				blog: "博客",
-				careers: "职业生涯",
-				faq: "常见问题",
-				contact: "联系我们",
-				settings: "设置",
-				appName: "i18n 基准",
-				goToGithub: "前往 GitHub",
-				header: "页眉"
-			},
-			ja: {
-				home: "ホーム",
-				methodology: "方法論",
-				mockPages: "モックページ",
-				products: "製品",
-				pricing: "価格",
-				team: "チーム",
-				blog: "ブログ",
-				careers: "採用情報",
-				faq: "よくある質問",
-				contact: "お問い合わせ",
-				settings: "設定",
-				appName: "i18n ベンチ",
-				goToGithub: "GitHub へ",
-				header: "ヘッダー"
-			},
-			ko: {
-				home: "홈",
-				methodology: "방법론",
-				mockPages: "모의 페이지",
-				products: "제품",
-				pricing: "가격",
-				team: "팀",
-				blog: "블로그",
-				careers: "채용",
-				faq: "FAQ",
-				contact: "연락처",
-				settings: "설정",
-				appName: "i18n 벤치",
-				goToGithub: "GitHub로 이동",
-				header: "헤더"
-			},
-			ru: {
-				home: "Главная",
-				methodology: "Методология",
-				mockPages: "Мок-страницы",
-				products: "Продукты",
-				pricing: "Цены",
-				team: "Команда",
-				blog: "Блог",
-				careers: "Вакансии",
-				faq: "FAQ",
-				contact: "Контакты",
-				settings: "Настройки",
-				appName: "i18n Бенч",
-				goToGithub: "Перейти на GitHub",
-				header: "Шапка"
-			}
-		}
-	},
-	localIds: ["header::local::src/components/Header.content.ts"]
-}, o = {
+import * as t from "svelte/internal/client";
+import { getContext as n, setContext as r } from "svelte";
+import { derived as i, writable as a } from "svelte/store";
+var o = {
 	locales: [
 		"en",
 		"fr",
@@ -302,59 +135,59 @@ var a = {
 	};
 	return w(e.content, r, n);
 }, E = Symbol("intlayer"), D = (e) => {
-	n(E, e);
-}, O = () => t(E), k = o?.defaultLocale, A = (() => {
-	let { subscribe: e, set: t, update: n } = i({ locale: k });
+	r(E, e);
+}, O = () => n(E), k = o?.defaultLocale, A = (() => {
+	let { subscribe: e, set: t, update: n } = a({ locale: k });
 	return {
 		subscribe: e,
 		setLocale: (e) => n((t) => ({
 			...t,
 			locale: e
 		})),
-		getLocale: () => r({ subscribe: e }, (e) => e.locale),
+		getLocale: () => i({ subscribe: e }, (e) => e.locale),
 		reset: () => t({ locale: k })
 	};
 })(), j = () => {
 	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, M = (t) => {
+}, M = (e) => {
 	j();
-	let n = e.state(e.proxy(t));
-	t && A.setLocale(t);
+	let n = t.state(t.proxy(e));
+	e && A.setLocale(e);
 	let r = {
 		get locale() {
-			return e.get(n) ?? o.defaultLocale;
+			return t.get(n) ?? o.defaultLocale;
 		},
-		setLocale: (t) => {
-			e.set(n, t, !0), A.setLocale(t);
+		setLocale: (e) => {
+			t.set(n, e, !0), A.setLocale(e);
 		}
 	};
 	return D(r), r;
 };
-function N(t, n) {
-	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
-	var o = e.comment(), s = e.first_child(o), c = (t) => {
-		var n = e.comment(), o = e.first_child(n);
-		e.element(o, r, !1, (t, n) => {
-			e.attribute_effect(t, () => ({ ...i() }));
-			var r = e.text();
-			e.template_effect(() => e.set_text(r, a())), e.append(n, r);
-		}), e.append(t, n);
-	}, l = (t) => {
-		r()(t, e.spread_props(i, {
-			children: (t, n) => {
-				e.next();
-				var r = e.text();
-				e.template_effect(() => e.set_text(r, a())), e.append(t, r);
+function N(e, n) {
+	let r = t.prop(n, "Renderer", 8, void 0), i = t.prop(n, "rendererProps", 24, () => ({})), a = t.prop(n, "value", 8, void 0);
+	var o = t.comment(), s = t.first_child(o), c = (e) => {
+		var n = t.comment(), o = t.first_child(n);
+		t.element(o, r, !1, (e, n) => {
+			t.attribute_effect(e, () => ({ ...i() }));
+			var r = t.text();
+			t.template_effect(() => t.set_text(r, a())), t.append(n, r);
+		}), t.append(e, n);
+	}, l = (e) => {
+		r()(e, t.spread_props(i, {
+			children: (e, n) => {
+				t.next();
+				var r = t.text();
+				t.template_effect(() => t.set_text(r, a())), t.append(e, r);
 			},
 			$$slots: { default: !0 }
 		}));
-	}, u = (t) => {
-		var n = e.text();
-		e.template_effect(() => e.set_text(n, a())), e.append(t, n);
+	}, u = (e) => {
+		var n = t.text();
+		t.template_effect(() => t.set_text(n, a())), t.append(e, n);
 	};
-	e.if(s, (e) => {
+	t.if(s, (e) => {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
-	}), e.append(t, o);
+	}), t.append(e, o);
 }
 var P = (e) => {
 	let t = !!N.prototype?.$destroy, n;
@@ -410,9 +243,9 @@ var P = (e) => {
 	return B.set(n, r), r;
 }, H = (e, t) => T(e, t, V(t)), U = (e, t) => {
 	let n = O();
-	return r([A], ([r]) => H(e, t ?? n?.locale ?? r.locale));
+	return i([A], ([r]) => H(e, t ?? n?.locale ?? r.locale));
 };
-function W(t, n) {
-	e.push(n, !1), M("en"), U(a), e.init(), e.pop();
+function W(n, r) {
+	t.push(r, !1), M("en"), U(e), t.init(), t.pop();
 }
 export { W as default };

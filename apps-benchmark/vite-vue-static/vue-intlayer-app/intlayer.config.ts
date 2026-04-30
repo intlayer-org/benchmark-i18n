@@ -16,8 +16,11 @@ const config: IntlayerConfig = {
     ],
     defaultLocale: Locales.ENGLISH,
   },
-  build: {
+  dictionary: {
     importMode: "static",
+  },
+  build: {
+    minify: true,
   },
   compiler: {
     output: ({ fileName }) => `./${fileName}.content.ts`,

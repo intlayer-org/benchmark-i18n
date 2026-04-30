@@ -18,4 +18,5 @@ measureLibSize({
       );
     }
   `,
+  additionalExternalPackages: [/\.json$/],
 }).catch(console.error);

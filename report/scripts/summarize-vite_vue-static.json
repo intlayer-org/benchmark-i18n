@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-vue",
     "frameworkLabel": "Vite + Vue",
-    "generatedAt": "2026-04-30T00:41:39.960Z",
+    "generatedAt": "2026-04-30T01:07:05.451Z",
     "counts": {
       "totalLibs": 4,
       "totalApps": 4
@@ -1722,9 +1722,9 @@
         "version": "8.7.11",
         "libSize": {
           "status": "ok",
-          "gzip": 16428,
-          "minified": 58413,
-          "unminified": 77694
+          "gzip": 15030,
+          "minified": 54880,
+          "unminified": 74162
         }
       },
       "static": {

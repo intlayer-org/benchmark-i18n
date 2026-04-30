@@ -2,12 +2,12 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
 import { visualizer } from "rollup-plugin-visualizer";
-import { intlayerPlugin } from "vite-intlayer";
+import { intlayer } from "vite-intlayer";
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
-    intlayerPlugin(),
+    intlayer(),
     vue(),
     tailwindcss(),
     visualizer({

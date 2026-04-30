@@ -99,6 +99,8 @@ async function buildOne(
   minify: boolean,
   configRoot: string,
   appConfig: any = {},
+  additionalExternalPackages: (string | RegExp)[] = [],
+  wrapperTemplate?: (componentPath: string) => string,
 ): Promise<{ bytes: number; gzipBytes: number; code: string }> {
   const filteredPlugins: PluginOption[] = ((appConfig.plugins || []) as any[])
     .flat(Infinity)
@@ -119,44 +121,61 @@ async function buildOne(
   filteredPlugins.push(tsconfigPaths());
   filteredPlugins.push(stripCommentsPlugin);
 
-  const output = (await build({
-    ...appConfig,
-    root: configRoot,
-    configFile: false,
-    logLevel: "silent",
-    plugins: filteredPlugins,
-    resolve: {
-      ...appConfig.resolve,
-    },
-    define: {
-      ...appConfig.define,
-    },
-    build: {
-      ...appConfig.build,
-      write: false,
-      minify,
-      lib: {
-        entry: entryFilePath,
-        formats: ["es"],
-        fileName: "component",
-      },
-      rollupOptions: {
-        ...appConfig.build?.rollupOptions,
-        external: SVELTE_EXTERNAL,
-      },
-    },
-  })) as RolldownOutput[];
+  // --- TEMPORARY FILE STRATEGY ---
+  let finalEntryPath = entryFilePath;
+  let isTempFile = false;
 
-  const chunks = output[0]?.output ?? [];
-  const code = chunks
-    .map((c) => ("code" in c ? c.code : ""))
-    .join("");
-  const buf = Buffer.from(code);
-  return {
-    bytes: buf.byteLength,
-    gzipBytes: zlib.gzipSync(buf).length,
-    code,
-  };
+  if (wrapperTemplate) {
+    finalEntryPath = entryFilePath.replace(/\.svelte$/, ".wrapper.svelte");
+    const normalizedPath = entryFilePath.replace(/\\/g, "/");
+    fs.writeFileSync(finalEntryPath, wrapperTemplate(normalizedPath), "utf-8");
+    isTempFile = true;
+  }
+
+  try {
+    const output = (await build({
+      ...appConfig,
+      root: configRoot,
+      configFile: false,
+      logLevel: "silent",
+      plugins: filteredPlugins,
+      resolve: {
+        ...appConfig.resolve,
+      },
+      define: {
+        ...appConfig.define,
+      },
+      build: {
+        ...appConfig.build,
+        write: false,
+        minify,
+        lib: {
+          entry: finalEntryPath,
+          formats: ["es"],
+          fileName: "component",
+        },
+        rollupOptions: {
+          ...appConfig.build?.rollupOptions,
+          external: [...SVELTE_EXTERNAL, ...additionalExternalPackages],
+        },
+      },
+    })) as RolldownOutput[];
+
+    const chunks = output[0]?.output ?? [];
+    const code = chunks
+      .map((c) => ("code" in c ? c.code : ""))
+      .join("");
+    const buf = Buffer.from(code);
+    return {
+      bytes: buf.byteLength,
+      gzipBytes: zlib.gzipSync(buf).length,
+      code,
+    };
+  } finally {
+    if (isTempFile && fs.existsSync(finalEntryPath)) {
+      fs.unlinkSync(finalEntryPath);
+    }
+  }
 }
 
 export interface MeasureSvelteConfig {
@@ -296,6 +315,8 @@ export interface MeasureSvelteLibSizeConfig {
   benchmarkCategory: string;
   appDir?: string;
   emptyComponentFile?: string;
+  additionalExternalPackages?: (string | RegExp)[];
+  wrapperTemplate?: (componentPath: string) => string;
 }
 
 export async function measureSvelteLibSize({
@@ -303,6 +324,8 @@ export async function measureSvelteLibSize({
   benchmarkCategory,
   appDir,
   emptyComponentFile = "scripts/EmptyComponent.svelte",
+  additionalExternalPackages = [],
+  wrapperTemplate,
 }: MeasureSvelteLibSizeConfig): Promise<void> {
   const effectiveDir = appDir ?? process.cwd();
   const appConfig = await loadAppConfig(effectiveDir);
@@ -334,12 +357,16 @@ export async function measureSvelteLibSize({
       false,
       effectiveDir,
       appConfig,
+      additionalExternalPackages,
+      wrapperTemplate,
     );
     const minified = await buildOne(
       emptyComponentPath,
       true,
       effectiveDir,
       appConfig,
+      additionalExternalPackages,
+      wrapperTemplate,
     );
 
     console.log(
