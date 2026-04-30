@@ -11,9 +11,9 @@ await measureSvelteLibSize({
       import Component from '${componentPath}';
       import Wrapper from '${path.resolve("./scripts/LibWrapper.svelte").replace(/\\/g, "/")}';
     </script>
-
     <Wrapper>
       <Component />
     </Wrapper>
   `,
+  additionalExternalPackages: [/\.json$/],
 });

@@ -1,173 +1,7 @@
-import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import _5YAR0pGEba36ehifjZtw from "../.intlayer/dictionary/header.json";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-var header_default = {
-	key: "header",
-	content: {
-		"nodeType": "translation",
-		"translation": {
-			"en": {
-				"f": "Home",
-				"h": "Methodology",
-				"i": "Mock Pages",
-				"k": "Products",
-				"j": "Pricing",
-				"m": "Team",
-				"a": "Blog",
-				"b": "Careers",
-				"d": "FAQ",
-				"c": "Contact",
-				"l": "Settings",
-				"e": "Go to GitHub",
-				"header": "Header",
-				"g": "i18n Bench"
-			},
-			"fr": {
-				"f": "Accueil",
-				"h": "Méthodologie",
-				"i": "Pages de Test",
-				"k": "Produits",
-				"j": "Tarification",
-				"m": "Équipe",
-				"a": "Blog",
-				"b": "Carrières",
-				"d": "FAQ",
-				"c": "Contact",
-				"l": "Paramètres",
-				"e": "Aller sur GitHub",
-				"header": "En-tête",
-				"g": "Bench i18n"
-			},
-			"es": {
-				"f": "Inicio",
-				"h": "Metodología",
-				"i": "Páginas de Prueba",
-				"k": "Productos",
-				"j": "Precios",
-				"m": "Equipo",
-				"a": "Blog",
-				"b": "Carreras",
-				"d": "FAQ",
-				"c": "Contacto",
-				"l": "Ajustes",
-				"e": "Ir a GitHub",
-				"header": "Cabecera",
-				"g": "Bench i18n"
-			},
-			"de": {
-				"f": "Startseite",
-				"h": "Methodik",
-				"i": "Testseiten",
-				"k": "Produkte",
-				"j": "Preise",
-				"m": "Team",
-				"a": "Blog",
-				"b": "Karriere",
-				"d": "FAQ",
-				"c": "Kontakt",
-				"l": "Einstellungen",
-				"e": "Zu GitHub gehen",
-				"header": "Header",
-				"g": "i18n Bench"
-			},
-			"it": {
-				"f": "Home",
-				"h": "Metodologia",
-				"i": "Pagine di test",
-				"k": "Prodotti",
-				"j": "Prezzi",
-				"m": "Team",
-				"a": "Blog",
-				"b": "Carriere",
-				"d": "FAQ",
-				"c": "Contatti",
-				"l": "Impostazioni",
-				"e": "Vai su GitHub",
-				"header": "Intestazione",
-				"g": "Bench i18n"
-			},
-			"pt": {
-				"f": "Início",
-				"h": "Metodologia",
-				"i": "Páginas de teste",
-				"k": "Produtos",
-				"j": "Preços",
-				"m": "Equipe",
-				"a": "Blog",
-				"b": "Carreiras",
-				"d": "FAQ",
-				"c": "Contato",
-				"l": "Configurações",
-				"e": "Ir para GitHub",
-				"header": "Cabeçalho",
-				"g": "Bench i18n"
-			},
-			"zh": {
-				"f": "首页",
-				"h": "方法学",
-				"i": "模拟页面",
-				"k": "产品",
-				"j": "价格",
-				"m": "团队",
-				"a": "博客",
-				"b": "职业",
-				"d": "常见问题",
-				"c": "联系我们",
-				"l": "设置",
-				"e": "前往 GitHub",
-				"header": "页眉",
-				"g": "i18n 基准"
-			},
-			"ja": {
-				"f": "ホーム",
-				"h": "方法論",
-				"i": "モックページ",
-				"k": "製品",
-				"j": "価格",
-				"m": "チーム",
-				"a": "ブログ",
-				"b": "採用情報",
-				"d": "よくある質問",
-				"c": "お問い合わせ",
-				"l": "設定",
-				"e": "GitHubへ移動",
-				"header": "ヘッダー",
-				"g": "i18n ベンチ"
-			},
-			"ko": {
-				"f": "홈",
-				"h": "방법론",
-				"i": "모의 페이지",
-				"k": "제품",
-				"j": "가격",
-				"m": "팀",
-				"a": "블로그",
-				"b": "채용",
-				"d": "자주 묻는 질문",
-				"c": "연락처",
-				"l": "설정",
-				"e": "GitHub으로 이동",
-				"header": "헤더",
-				"g": "i18n 벤치"
-			},
-			"ru": {
-				"f": "Главная",
-				"h": "Методология",
-				"i": "Тестовые страницы",
-				"k": "Продукты",
-				"j": "Цены",
-				"m": "Команда",
-				"a": "Блог",
-				"b": "Карьера",
-				"d": "FAQ",
-				"c": "Контакт",
-				"l": "Настройки",
-				"e": "Перейти на GitHub",
-				"header": "Шапка",
-				"g": "i18n Бенчмарк"
-			}
-		}
-	}
-};
+import { jsxDEV } from "react/jsx-dev-runtime";
 var internationalization = {
 	"locales": [
 		"en",
@@ -181,6 +15,19 @@ var internationalization = {
 		"ko",
 		"ru"
 	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
 	"defaultLocale": "en"
 };
 var routing = {
@@ -341,14 +188,12 @@ var getTranslation = (languageContent, locale, fallback) => {
 	if (Array.isArray(results[0])) return results[0];
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
-var TREE_SHAKE_TRANSLATION = process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false";
-var TREE_SHAKE_INSERTION$1 = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false";
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
@@ -370,7 +215,7 @@ var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackP
 };
 var enumerationPlugin = fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin$1 = TREE_SHAKE_INSERTION$1 ? fallbackPlugin : {
+var insertionPlugin$1 = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
@@ -448,10 +293,7 @@ var splitInsertionTemplate = (template, values = {}) => {
 		parts
 	};
 };
-var TREE_SHAKE_INTLAYER_NODE = process.env["INTLAYER_NODE_TYPE_INTLAYER_NODE"] === "false";
-var TREE_SHAKE_REACT_NODE = process.env["INTLAYER_NODE_TYPE_REACT_NODE"] === "false";
-var TREE_SHAKE_INSERTION = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false";
-var intlayerNodePlugins = TREE_SHAKE_INTLAYER_NODE ? fallbackPlugin : {
+var intlayerNodePlugins = {
 	id: "intlayer-node-plugin",
 	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
 	transform: (_node, { plugins, ...rest }) => renderIntlayerNode({
@@ -460,7 +302,7 @@ var intlayerNodePlugins = TREE_SHAKE_INTLAYER_NODE ? fallbackPlugin : {
 		children: rest.children
 	})
 };
-var reactNodePlugins = TREE_SHAKE_REACT_NODE ? fallbackPlugin : {
+var reactNodePlugins = process.env["INTLAYER_NODE_TYPE_REACT_NODE"] === "false" ? fallbackPlugin : {
 	id: "react-node-plugin",
 	canHandle: (node) => typeof node === "object" && typeof node?.props !== "undefined" && typeof node.key !== "undefined",
 	transform: (node, { plugins, ...rest }) => renderIntlayerNode({
@@ -474,7 +316,7 @@ var splitAndJoinInsertion = (template, values) => {
 	if (result.isSimple) return result.parts;
 	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
 };
-var insertionPlugin = TREE_SHAKE_INSERTION ? fallbackPlugin : {
+var insertionPlugin = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
@@ -562,7 +404,7 @@ var buildCookieString = (name, value, attributes) => {
 	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
 	return parts.join("; ");
 };
-var getLocaleFromStorageClient = (options) => {
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const { locales } = internationalization;
 	if (options?.isCookieEnabled === false) return void 0;
 	const isValidLocale = (value) => !!value && locales.includes(value);
@@ -676,14 +518,89 @@ var useDictionary = (dictionary, locale) => {
 	]);
 };
 var IntlayerClientProvider = (props) => jsx(IntlayerProvider, { ...props });
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
-	useDictionary(header_default);
+	useDictionary(_5YAR0pGEba36ehifjZtw);
 	return null;
 };
 function EmptyComponent() {
-	return jsx(IntlayerClientProvider, {
+	return jsxDEV(IntlayerClientProvider, {
 		locale: "en",
-		children: jsx(TestComponent, {})
-	});
+		children: jsxDEV(TestComponent, {}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-export { EmptyComponent as default };
+function recordHydrationDuration() {
+	if (typeof window === "undefined") return;
+	console.log("--- BROWSER: RootDocument mounted");
+	performance.mark("hydration_end");
+	try {
+		if (performance.getEntriesByName("hydration_start").length > 0) {
+			performance.measure("hydration_duration", "hydration_start", "hydration_end");
+			console.log("--- BROWSER: hydration_duration measured");
+			const duration = performance.getEntriesByName("hydration_duration")[0]?.duration;
+			if (duration) console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
+		} else console.warn("--- BROWSER: hydration_start NOT FOUND");
+	} catch (err) {
+		console.warn("Could not measure hydration duration:", err);
+	}
+}
+function recordRenderTime(id, startTime) {
+	if (typeof window === "undefined") return;
+	const renderTime = performance.now() - startTime;
+	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+	window.__RENDER_METRICS__[id].push(renderTime);
+}
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/src/components/AppProviders.tsx";
+function AppProviders({ children, locale }) {
+	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
+	useLayoutEffect(() => {
+		recordRenderTime("AppRoot", renderStart);
+	}, [renderStart]);
+	useEffect(() => {
+		if (locale) document.documentElement.lang = locale;
+	}, [locale]);
+	useEffect(() => {
+		recordHydrationDuration();
+	}, []);
+	return jsxDEV(IntlayerClientProvider, {
+		locale,
+		children
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 35,
+		columnNumber: 5
+	}, this);
+}
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/scripts/Wrapper.tsx";
+function Wrapper({ children }) {
+	return jsxDEV(AppProviders, {
+		locale: "en",
+		children
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
+}
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/scripts/EmptyComponent.wrapper.tsx";
+function Wrapped() {
+	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
+}
+export { Wrapped as default };

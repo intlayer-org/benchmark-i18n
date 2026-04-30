@@ -27,7 +27,6 @@ const SVELTE_EXTERNAL: (string | RegExp)[] = [
   /^lucide-svelte\//,
   "test-utils",
   /^test-utils\//,
-  /[\\/](?!(en)[\\/\.])[a-z]{2}(?:-[A-Z]{2})?([\\/].*)?\.json$/,
 ];
 
 interface ComponentSizeStats {
@@ -351,13 +350,19 @@ export async function measureSvelteLibSize({
   console.log(`EmptyComponent: ${emptyComponentPath}`);
   console.log(`-----------------------------------\n`);
 
+  const allExternalPackages = [
+    ...SVELTE_EXTERNAL,
+    ...additionalExternalPackages,
+    /\.json$/,
+  ];
+
   try {
     const unminified = await buildOne(
       emptyComponentPath,
       false,
       effectiveDir,
       appConfig,
-      additionalExternalPackages,
+      allExternalPackages,
       wrapperTemplate,
     );
     const minified = await buildOne(
@@ -365,7 +370,7 @@ export async function measureSvelteLibSize({
       true,
       effectiveDir,
       appConfig,
-      additionalExternalPackages,
+      allExternalPackages,
       wrapperTemplate,
     );
 

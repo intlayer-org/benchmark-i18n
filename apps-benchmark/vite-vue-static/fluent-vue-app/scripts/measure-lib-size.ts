@@ -19,5 +19,5 @@ measureLibSize({
       }
     }
   `,
-  additionalExternalPackages: ["vue", "vue-router", "lucide-vue-next"],
+  additionalExternalPackages: ["vue", "vue-router", "lucide-vue-next", /\.json$/],
 }).catch(console.error);

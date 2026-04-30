@@ -11,6 +11,7 @@ measureLibSize({
     "next/navigation",
     "next/image",
     "next/script",
+    /\.json$/,
   ],
   wrapperTemplate: (componentPath) => `
     import React from 'react';

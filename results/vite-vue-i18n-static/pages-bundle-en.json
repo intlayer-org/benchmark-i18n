@@ -1,20 +1,20 @@
 {
   "app": "vite-vue-i18n-static",
   "locale": "en",
-  "timestamp": "2026-04-30T07:37:35.511Z",
+  "timestamp": "2026-04-30T22:37:12.117Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 80,
-      "fr": 90
+      "en": 79,
+      "fr": 88
     },
     "page": {
       "home": 24,
       "about": 10,
       "blog": 13,
-      "careers": 11,
+      "careers": 10,
       "contact": 2,
       "faq": 10,
-      "pricing": 2,
+      "pricing": 4,
       "products": 8,
       "settings": 5,
       "team": 10
@@ -87,7 +87,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -131,7 +131,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -163,7 +162,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -236,8 +235,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -249,7 +246,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -306,9 +303,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -343,8 +339,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -388,7 +386,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 81.3953488372093
+      "pageLeakagePercent": 81.60919540229885
     },
     {
       "path": "/en/about",
@@ -450,7 +448,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -494,7 +492,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -526,7 +523,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -599,8 +596,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -612,7 +607,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -669,9 +664,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -706,8 +700,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -751,7 +747,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.37209302325581
+      "pageLeakagePercent": 88.50574712643679
     },
     {
       "path": "/en/blog",
@@ -813,7 +809,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -857,7 +853,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -889,7 +884,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -962,8 +957,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -975,7 +968,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1032,9 +1025,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -1069,8 +1061,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -1114,7 +1108,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 84.88372093023256
+      "pageLeakagePercent": 85.0574712643678
     },
     {
       "path": "/en/careers",
@@ -1182,7 +1176,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1226,7 +1220,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -1258,7 +1251,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1331,8 +1324,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -1344,7 +1335,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1401,9 +1392,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -1438,8 +1428,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -1483,7 +1475,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 87.20930232558139
+      "pageLeakagePercent": 88.50574712643679
     },
     {
       "path": "/en/contact",
@@ -1545,7 +1537,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1589,7 +1581,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -1621,7 +1612,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1694,8 +1685,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -1707,7 +1696,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1764,9 +1753,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -1801,8 +1789,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -1846,7 +1836,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 98.83720930232558
+      "pageLeakagePercent": 98.85057471264368
     },
     {
       "path": "/en/faq",
@@ -1908,7 +1898,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1952,7 +1942,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -1984,7 +1973,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2057,8 +2046,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -2070,7 +2057,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2127,9 +2114,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -2164,8 +2150,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -2209,7 +2197,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.37209302325581
+      "pageLeakagePercent": 88.50574712643679
     },
     {
       "path": "/en/pricing",
@@ -2271,7 +2259,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2315,7 +2303,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -2347,7 +2334,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2420,8 +2407,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -2433,7 +2418,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2490,9 +2475,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -2527,8 +2511,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -2572,7 +2558,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 97.67441860465115
+      "pageLeakagePercent": 95.40229885057471
     },
     {
       "path": "/en/products",
@@ -2634,7 +2620,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2678,7 +2664,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -2710,7 +2695,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2783,8 +2768,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -2796,7 +2779,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2853,9 +2836,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -2890,8 +2872,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -2935,7 +2919,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 90.69767441860465
+      "pageLeakagePercent": 90.80459770114942
     },
     {
       "path": "/en/settings",
@@ -2995,15 +2979,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-2Mjv_tAf.js",
-          "size": 660,
-          "gzipSize": 397,
-          "type": "js"
-        },
-        {
           "url": "/assets/PreferencesSection-DghYbius.js",
           "size": 2330,
           "gzipSize": 794,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-2Mjv_tAf.js",
+          "size": 660,
+          "gzipSize": 397,
           "type": "js"
         },
         {
@@ -3015,7 +2999,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3059,7 +3043,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -3091,7 +3074,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -3164,8 +3147,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -3177,7 +3158,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3234,9 +3215,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -3271,8 +3251,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -3316,7 +3298,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 94.18604651162791
+      "pageLeakagePercent": 94.25287356321839
     },
     {
       "path": "/en/team",
@@ -3358,15 +3340,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/TeamHeader-oHfa_D-R.js",
-          "size": 485,
-          "gzipSize": 328,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-CXr9lTIi.js",
           "size": 359,
           "gzipSize": 271,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamHeader-oHfa_D-R.js",
+          "size": 485,
+          "gzipSize": 328,
           "type": "js"
         },
         {
@@ -3378,7 +3360,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 71,
+          "count": 70,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3422,7 +3404,6 @@
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -3454,7 +3435,7 @@
           ]
         },
         "fr": {
-          "count": 81,
+          "count": 79,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -3527,8 +3508,6 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -3540,7 +3519,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.289473684210535,
+      "localeLeakagePercent": 53.02013422818792,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3597,9 +3576,8 @@
           ]
         },
         "careers": {
-          "count": 11,
+          "count": 10,
           "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
             "20% time for oss contributions",
@@ -3634,8 +3612,10 @@
           ]
         },
         "pricing": {
-          "count": 2,
+          "count": 4,
           "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -3679,7 +3659,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.37209302325581
+      "pageLeakagePercent": 88.50574712643679
     }
   ]
 }

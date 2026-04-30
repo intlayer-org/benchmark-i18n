@@ -151,11 +151,6 @@ const BASE_EXTERNAL_PACKAGES: (string | RegExp)[] = [
   new RegExp("^@tanstack/start"),
   "lucide-react",
   /^next(\/.*)?$/,
-
-  // Filter out non-English locale JSON imports
-  // Matches patterns like: /locales/zh.json or /locales/zh/home.json
-  // It excludes any locale that isn't 'en'
-  /[\\/](?!(en)[\\/\.])[a-z]{2}(?:-[A-Z]{2})?([\\/].*)?\.json$/,
 ];
 
 const BLOCKED_PLUGIN_SUBSTRINGS = [
@@ -715,6 +710,7 @@ export const measureLibSize = async ({
   const allExternalPackages = [
     ...BASE_EXTERNAL_PACKAGES,
     ...additionalExternalPackages,
+    /\.json$/,
   ];
 
   const resultsDirectory = path.join(
