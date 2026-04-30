@@ -1,11 +1,11 @@
 {
   "app": "vite-vue-i18n-static",
   "locale": "en",
-  "timestamp": "2026-04-29T23:35:30.283Z",
+  "timestamp": "2026-04-30T07:37:35.511Z",
   "fingerprintCounts": {
     "locale": {
       "en": 80,
-      "fr": 88
+      "fr": 90
     },
     "page": {
       "home": 24,
@@ -14,7 +14,7 @@
       "careers": 11,
       "contact": 2,
       "faq": 10,
-      "pricing": 4,
+      "pricing": 2,
       "products": 8,
       "settings": 5,
       "team": 10
@@ -163,7 +163,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -236,6 +236,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -247,7 +249,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -341,10 +343,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -388,7 +388,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 81.81818181818183
+      "pageLeakagePercent": 81.3953488372093
     },
     {
       "path": "/en/about",
@@ -526,7 +526,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -599,6 +599,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -610,7 +612,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -704,10 +706,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -751,7 +751,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.63636363636364
+      "pageLeakagePercent": 88.37209302325581
     },
     {
       "path": "/en/blog",
@@ -889,7 +889,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -962,6 +962,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -973,7 +975,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1067,10 +1069,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -1114,7 +1114,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 85.22727272727273
+      "pageLeakagePercent": 84.88372093023256
     },
     {
       "path": "/en/careers",
@@ -1258,7 +1258,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1331,6 +1331,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -1342,7 +1344,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1436,10 +1438,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -1483,7 +1483,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 87.5
+      "pageLeakagePercent": 87.20930232558139
     },
     {
       "path": "/en/contact",
@@ -1621,7 +1621,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1694,6 +1694,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -1705,7 +1707,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1799,10 +1801,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -1846,7 +1846,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 98.86363636363636
+      "pageLeakagePercent": 98.83720930232558
     },
     {
       "path": "/en/faq",
@@ -1984,7 +1984,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2057,6 +2057,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -2068,7 +2070,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2162,10 +2164,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -2209,7 +2209,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.63636363636364
+      "pageLeakagePercent": 88.37209302325581
     },
     {
       "path": "/en/pricing",
@@ -2251,15 +2251,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-CXr9lTIi.js",
-          "size": 359,
-          "gzipSize": 271,
-          "type": "js"
-        },
-        {
           "url": "/assets/PricingHeader-DPc2mtMs.js",
           "size": 472,
           "gzipSize": 346,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-CXr9lTIi.js",
+          "size": 359,
+          "gzipSize": 271,
           "type": "js"
         },
         {
@@ -2347,7 +2347,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2420,6 +2420,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -2431,7 +2433,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2525,10 +2527,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -2572,7 +2572,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 95.45454545454545
+      "pageLeakagePercent": 97.67441860465115
     },
     {
       "path": "/en/products",
@@ -2710,7 +2710,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2783,6 +2783,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -2794,7 +2796,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2888,10 +2890,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -2935,7 +2935,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 90.9090909090909
+      "pageLeakagePercent": 90.69767441860465
     },
     {
       "path": "/en/settings",
@@ -2995,15 +2995,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-DghYbius.js",
-          "size": 2330,
-          "gzipSize": 794,
-          "type": "js"
-        },
-        {
           "url": "/assets/SettingsFooter-2Mjv_tAf.js",
           "size": 660,
           "gzipSize": 397,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-DghYbius.js",
+          "size": 2330,
+          "gzipSize": 794,
           "type": "js"
         },
         {
@@ -3091,7 +3091,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -3164,6 +3164,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -3175,7 +3177,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3269,10 +3271,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -3316,7 +3316,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 94.31818181818183
+      "pageLeakagePercent": 94.18604651162791
     },
     {
       "path": "/en/team",
@@ -3454,7 +3454,7 @@
           ]
         },
         "fr": {
-          "count": 79,
+          "count": 81,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -3527,6 +3527,8 @@
             "les données sont-elles fiables ?",
             "proposez-vous du conseil ?",
             "comment contribuer ?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "outils et services pour fluidifier votre flux i18n.",
             "gérez les préférences et la configuration de votre compte.",
             "notifications e-mail",
@@ -3538,7 +3540,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.666666666666664,
+      "localeLeakagePercent": 53.289473684210535,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3632,10 +3634,8 @@
           ]
         },
         "pricing": {
-          "count": 4,
+          "count": 2,
           "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -3679,7 +3679,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.63636363636364
+      "pageLeakagePercent": 88.37209302325581
     }
   ]
 }

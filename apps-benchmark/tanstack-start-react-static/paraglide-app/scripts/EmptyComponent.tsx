@@ -1,5 +1,5 @@
 import React from "react";
-import { getLocale, experimentalStaticLocale } from "../paraglide/runtime";
+import { getLocale, experimentalStaticLocale } from "../src/paraglide/runtime";
 
 const en_example =
   /** @type {(inputs: About_Grid_Choosingani18nlibraryis4Inputs) => LocalizedString} */ () => {
@@ -7,7 +7,7 @@ const en_example =
   };
 
 const example =
-  /** @type {((inputs?: About_Grid_Whythisexists2Inputs, options?: { locale?: "en" | "fr" | "es" | "de" | "it" | "pt" | "zh" | "ja" | "ko" | "ru" }) => LocalizedString) & import('../runtime.js').MessageMetadata<About_Grid_Whythisexists2Inputs, { locale?: "en" | "fr" | "es" | "de" | "it" | "pt" | "zh" | "ja" | "ko" | "ru" }, {}>} */ (
+  /** @type {((inputs?: About_Grid_Whythisexists2Inputs, options?: { locale?: "en" | "fr" | "es" | "de" | "it" | "pt" | "zh" | "ja" | "ko" | "ru" }) => LocalizedString) & import('../src/paraglide/runtime.js').MessageMetadata<About_Grid_Whythisexists2Inputs, { locale?: "en" | "fr" | "es" | "de" | "it" | "pt" | "zh" | "ja" | "ko" | "ru" }, {}>} */ (
     inputs = {},
     options = {},
   ) => {

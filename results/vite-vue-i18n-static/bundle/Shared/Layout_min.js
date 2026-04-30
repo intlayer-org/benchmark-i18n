@@ -1,56 +1,65 @@
 import * as e from "vue";
-import { Fragment as t, Text as n, computed as r, createBlock as i, createCommentVNode as a, createElementBlock as o, createElementVNode as s, createTextVNode as c, createVNode as l, defineComponent as u, getCurrentScope as d, h as f, inject as p, normalizeClass as m, onBeforeMount as h, onMounted as g, onScopeDispose as _, onUnmounted as v, openBlock as y, ref as b, renderList as x, resolveComponent as S, shallowRef as C, toDisplayString as w, unref as T, watch as ee, withCtx as E } from "vue";
-import { useRoute as D, useRouter as te } from "vue-router";
-import { ChevronDown as ne } from "lucide-vue-next";
+import { Fragment as t, Text as n, computed as r, createBlock as i, createCommentVNode as a, createElementBlock as o, createElementVNode as s, createTextVNode as c, createVNode as l, defineComponent as u, effectScope as d, getCurrentInstance as f, getCurrentScope as p, h as m, inject as h, isRef as g, normalizeClass as _, onBeforeMount as v, onMounted as y, onScopeDispose as b, onUnmounted as x, openBlock as S, ref as C, renderList as w, renderSlot as T, resolveComponent as ee, shallowRef as te, toDisplayString as E, watch as ne, withCtx as re } from "vue";
+import { useRoute as ie, useRouter as ae } from "vue-router";
+import { ChevronDown as oe } from "lucide-vue-next";
+import se from "../../locales/fr.json";
+import ce from "../../locales/es.json";
+import le from "../../locales/de.json";
+import ue from "../../locales/it.json";
+import de from "../../locales/pt.json";
+import D from "../../locales/zh.json";
+import fe from "../../locales/ja.json";
+import pe from "../../locales/ko.json";
+import me from "../../locales/ru.json";
 function O(e, t) {
 	typeof console < "u" && (console.warn("[intlify] " + e), t && console.warn(t.stack));
 }
-var re = {};
-function ie(e) {
-	re[e] || (re[e] = !0, O(e));
+var he = {};
+function ge(e) {
+	he[e] || (he[e] = !0, O(e));
 }
-var k = typeof window < "u", A, ae;
+var k = typeof window < "u", A, _e;
 if (process.env.NODE_ENV !== "production") {
 	let e = k && window.performance;
 	e && e.mark && e.measure && e.clearMarks && e.clearMeasures && (A = (t) => {
 		e.mark(t);
-	}, ae = (t, n, r) => {
+	}, _e = (t, n, r) => {
 		e.measure(t, n, r), e.clearMarks(n), e.clearMarks(r);
 	});
 }
-var oe = /\{([0-9a-zA-Z]+)\}/g;
-function se(e, ...t) {
-	return t.length === 1 && B(t[0]) && (t = t[0]), (!t || !t.hasOwnProperty) && (t = {}), e.replace(oe, (e, n) => t.hasOwnProperty(n) ? t[n] : "");
+var ve = /\{([0-9a-zA-Z]+)\}/g;
+function ye(e, ...t) {
+	return t.length === 1 && B(t[0]) && (t = t[0]), (!t || !t.hasOwnProperty) && (t = {}), e.replace(ve, (e, n) => t.hasOwnProperty(n) ? t[n] : "");
 }
-var j = (e, t = !1) => t ? Symbol.for(e) : Symbol(e), ce = (e, t, n) => le({
+var j = (e, t = !1) => t ? Symbol.for(e) : Symbol(e), be = (e, t, n) => xe({
 	l: e,
 	k: t,
 	s: n
-}), le = (e) => JSON.stringify(e).replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029").replace(/\u0027/g, "\\u0027"), M = (e) => typeof e == "number" && isFinite(e), ue = (e) => Se(e) === "[object Date]", de = (e) => Se(e) === "[object RegExp]", fe = (e) => V(e) && Object.keys(e).length === 0, N = Object.assign, pe = Object.create, P = (e = null) => pe(e), me, he = () => me ||= typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : typeof window < "u" ? window : typeof global < "u" ? global : P();
-function ge(e) {
+}), xe = (e) => JSON.stringify(e).replace(/\u2028/g, "\\u2028").replace(/\u2029/g, "\\u2029").replace(/\u0027/g, "\\u0027"), M = (e) => typeof e == "number" && isFinite(e), Se = (e) => Ne(e) === "[object Date]", Ce = (e) => Ne(e) === "[object RegExp]", we = (e) => H(e) && Object.keys(e).length === 0, N = Object.assign, Te = Object.create, P = (e = null) => Te(e), Ee, De = () => Ee ||= typeof globalThis < "u" ? globalThis : typeof self < "u" ? self : typeof window < "u" ? window : typeof global < "u" ? global : P();
+function Oe(e) {
 	return e.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&apos;").replace(/\//g, "&#x2F;").replace(/=/g, "&#x3D;");
 }
-function _e(e) {
+function ke(e) {
 	return e.replace(/&(?![a-zA-Z0-9#]{2,6};)/g, "&amp;").replace(/"/g, "&quot;").replace(/'/g, "&apos;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
-function ve(e) {
-	return e = e.replace(/(\w+)\s*=\s*"([^"]*)"/g, (e, t, n) => `${t}="${_e(n)}"`), e = e.replace(/(\w+)\s*=\s*'([^']*)'/g, (e, t, n) => `${t}='${_e(n)}'`), /\s*on\w+\s*=\s*["']?[^"'>]+["']?/gi.test(e) && (process.env.NODE_ENV !== "production" && O("Potentially dangerous event handlers detected in translation. Consider removing onclick, onerror, etc. from your translation messages."), e = e.replace(/(\s+)(on)(\w+\s*=)/gi, "$1&#111;n$3")), [/(\s+(?:href|src|action|formaction)\s*=\s*["']?)\s*javascript:/gi, /(style\s*=\s*["'][^"']*url\s*\(\s*)javascript:/gi].forEach((t) => {
+function Ae(e) {
+	return e = e.replace(/(\w+)\s*=\s*"([^"]*)"/g, (e, t, n) => `${t}="${ke(n)}"`), e = e.replace(/(\w+)\s*=\s*'([^']*)'/g, (e, t, n) => `${t}='${ke(n)}'`), /\s*on\w+\s*=\s*["']?[^"'>]+["']?/gi.test(e) && (process.env.NODE_ENV !== "production" && O("Potentially dangerous event handlers detected in translation. Consider removing onclick, onerror, etc. from your translation messages."), e = e.replace(/(\s+)(on)(\w+\s*=)/gi, "$1&#111;n$3")), [/(\s+(?:href|src|action|formaction)\s*=\s*["']?)\s*javascript:/gi, /(style\s*=\s*["'][^"']*url\s*\(\s*)javascript:/gi].forEach((t) => {
 		e = e.replace(t, "$1javascript&#58;");
 	}), e;
 }
-var ye = Object.prototype.hasOwnProperty;
+var je = Object.prototype.hasOwnProperty;
 function F(e, t) {
-	return ye.call(e, t);
+	return je.call(e, t);
 }
-var I = Array.isArray, L = (e) => typeof e == "function", R = (e) => typeof e == "string", z = (e) => typeof e == "boolean", B = (e) => typeof e == "object" && !!e, be = (e) => B(e) && L(e.then) && L(e.catch), xe = Object.prototype.toString, Se = (e) => xe.call(e), V = (e) => Se(e) === "[object Object]", Ce = (e) => e == null ? "" : I(e) || V(e) && e.toString === xe ? JSON.stringify(e, null, 2) : String(e);
-function we(e, t = "") {
+var I = Array.isArray, L = (e) => typeof e == "function", R = (e) => typeof e == "string", z = (e) => typeof e == "boolean", B = (e) => typeof e == "object" && !!e, V = (e) => B(e) && L(e.then) && L(e.catch), Me = Object.prototype.toString, Ne = (e) => Me.call(e), H = (e) => Ne(e) === "[object Object]", Pe = (e) => e == null ? "" : I(e) || H(e) && e.toString === Me ? JSON.stringify(e, null, 2) : String(e);
+function Fe(e, t = "") {
 	return e.reduce((e, n, r) => r === 0 ? e + n : e + t + n, "");
 }
-var Te = 2;
-function Ee(e, t = 0, n = e.length) {
+var Ie = 2;
+function Le(e, t = 0, n = e.length) {
 	let r = e.split(/\r?\n/), i = 0, a = [];
 	for (let e = 0; e < r.length; e++) if (i += r[e].length + 1, i >= t) {
-		for (let o = e - Te; o <= e + Te || n > i; o++) {
+		for (let o = e - Ie; o <= e + Ie || n > i; o++) {
 			if (o < 0 || o >= r.length) continue;
 			let s = o + 1;
 			a.push(`${s}${" ".repeat(3 - String(s).length)}|  ${r[o]}`);
@@ -70,7 +79,7 @@ function Ee(e, t = 0, n = e.length) {
 	}
 	return a.join("\n");
 }
-function De() {
+function Re() {
 	let e = /* @__PURE__ */ new Map();
 	return {
 		events: e,
@@ -87,9 +96,9 @@ function De() {
 		}
 	};
 }
-var Oe = (e) => !B(e) || I(e);
-function ke(e, t) {
-	if (Oe(e) || Oe(t)) throw Error("Invalid value");
+var ze = (e) => !B(e) || I(e);
+function Be(e, t) {
+	if (ze(e) || ze(t)) throw Error("Invalid value");
 	let n = [{
 		src: e,
 		des: t
@@ -97,28 +106,28 @@ function ke(e, t) {
 	for (; n.length;) {
 		let { src: e, des: t } = n.pop();
 		Object.keys(e).forEach((r) => {
-			r !== "__proto__" && (B(e[r]) && !B(t[r]) && (t[r] = Array.isArray(e[r]) ? [] : P()), Oe(t[r]) || Oe(e[r]) ? t[r] = e[r] : n.push({
+			r !== "__proto__" && (B(e[r]) && !B(t[r]) && (t[r] = Array.isArray(e[r]) ? [] : P()), ze(t[r]) || ze(e[r]) ? t[r] = e[r] : n.push({
 				src: e[r],
 				des: t[r]
 			}));
 		});
 	}
 }
-function Ae(e, t, n) {
+function Ve(e, t, n) {
 	return {
 		line: e,
 		column: t,
 		offset: n
 	};
 }
-function je(e, t, n) {
+function He(e, t, n) {
 	let r = {
 		start: e,
 		end: t
 	};
 	return n != null && (r.source = n), r;
 }
-var H = {
+var U = {
 	EXPECTED_TOKEN: 1,
 	INVALID_TOKEN_IN_PLACEHOLDER: 2,
 	UNTERMINATED_SINGLE_QUOTE_IN_PLACEHOLDER: 3,
@@ -135,34 +144,34 @@ var H = {
 	UNEXPECTED_LEXICAL_ANALYSIS: 14,
 	UNHANDLED_CODEGEN_NODE_TYPE: 15,
 	UNHANDLED_MINIFIER_NODE_TYPE: 16
-}, U = {
-	[H.EXPECTED_TOKEN]: "Expected token: '{0}'",
-	[H.INVALID_TOKEN_IN_PLACEHOLDER]: "Invalid token in placeholder: '{0}'",
-	[H.UNTERMINATED_SINGLE_QUOTE_IN_PLACEHOLDER]: "Unterminated single quote in placeholder",
-	[H.UNKNOWN_ESCAPE_SEQUENCE]: "Unknown escape sequence: \\{0}",
-	[H.INVALID_UNICODE_ESCAPE_SEQUENCE]: "Invalid unicode escape sequence: {0}",
-	[H.UNBALANCED_CLOSING_BRACE]: "Unbalanced closing brace",
-	[H.UNTERMINATED_CLOSING_BRACE]: "Unterminated closing brace",
-	[H.EMPTY_PLACEHOLDER]: "Empty placeholder",
-	[H.NOT_ALLOW_NEST_PLACEHOLDER]: "Not allowed nest placeholder",
-	[H.INVALID_LINKED_FORMAT]: "Invalid linked format",
-	[H.MUST_HAVE_MESSAGES_IN_PLURAL]: "Plural must have messages",
-	[H.UNEXPECTED_EMPTY_LINKED_MODIFIER]: "Unexpected empty linked modifier",
-	[H.UNEXPECTED_EMPTY_LINKED_KEY]: "Unexpected empty linked key",
-	[H.UNEXPECTED_LEXICAL_ANALYSIS]: "Unexpected lexical analysis in token: '{0}'",
-	[H.UNHANDLED_CODEGEN_NODE_TYPE]: "unhandled codegen node type: '{0}'",
-	[H.UNHANDLED_MINIFIER_NODE_TYPE]: "unhandled mimifier node type: '{0}'"
+}, Ue = {
+	[U.EXPECTED_TOKEN]: "Expected token: '{0}'",
+	[U.INVALID_TOKEN_IN_PLACEHOLDER]: "Invalid token in placeholder: '{0}'",
+	[U.UNTERMINATED_SINGLE_QUOTE_IN_PLACEHOLDER]: "Unterminated single quote in placeholder",
+	[U.UNKNOWN_ESCAPE_SEQUENCE]: "Unknown escape sequence: \\{0}",
+	[U.INVALID_UNICODE_ESCAPE_SEQUENCE]: "Invalid unicode escape sequence: {0}",
+	[U.UNBALANCED_CLOSING_BRACE]: "Unbalanced closing brace",
+	[U.UNTERMINATED_CLOSING_BRACE]: "Unterminated closing brace",
+	[U.EMPTY_PLACEHOLDER]: "Empty placeholder",
+	[U.NOT_ALLOW_NEST_PLACEHOLDER]: "Not allowed nest placeholder",
+	[U.INVALID_LINKED_FORMAT]: "Invalid linked format",
+	[U.MUST_HAVE_MESSAGES_IN_PLURAL]: "Plural must have messages",
+	[U.UNEXPECTED_EMPTY_LINKED_MODIFIER]: "Unexpected empty linked modifier",
+	[U.UNEXPECTED_EMPTY_LINKED_KEY]: "Unexpected empty linked key",
+	[U.UNEXPECTED_LEXICAL_ANALYSIS]: "Unexpected lexical analysis in token: '{0}'",
+	[U.UNHANDLED_CODEGEN_NODE_TYPE]: "unhandled codegen node type: '{0}'",
+	[U.UNHANDLED_MINIFIER_NODE_TYPE]: "unhandled mimifier node type: '{0}'"
 };
-function Me(e, t, n = {}) {
-	let { domain: r, messages: i, args: a } = n, o = process.env.NODE_ENV === "production" ? e : se((i || U)[e] || "", ...a || []), s = SyntaxError(String(o));
+function We(e, t, n = {}) {
+	let { domain: r, messages: i, args: a } = n, o = process.env.NODE_ENV === "production" ? e : ye((i || Ue)[e] || "", ...a || []), s = SyntaxError(String(o));
 	return s.code = e, t && (s.location = t), s.domain = r, s;
 }
-function Ne(e) {
+function Ge(e) {
 	throw e;
 }
-var Pe = /<\/?[\w\s="/.':;#-\/]+>/, Fe = (e) => Pe.test(e), W = " ", Ie = "\r", G = "\n", Le = "\u2028", Re = "\u2029";
-function ze(e) {
-	let t = e, n = 0, r = 1, i = 1, a = 0, o = (e) => t[e] === Ie && t[e + 1] === G, s = (e) => t[e] === G, c = (e) => t[e] === Re, l = (e) => t[e] === Le, u = (e) => o(e) || s(e) || c(e) || l(e), d = () => n, f = () => r, p = () => i, m = () => a, h = (e) => o(e) || c(e) || l(e) ? G : t[e], g = () => h(n), _ = () => h(n + a);
+var Ke = /<\/?[\w\s="/.':;#-\/]+>/, qe = (e) => Ke.test(e), W = " ", Je = "\r", G = "\n", Ye = "\u2028", Xe = "\u2029";
+function Ze(e) {
+	let t = e, n = 0, r = 1, i = 1, a = 0, o = (e) => t[e] === Je && t[e + 1] === G, s = (e) => t[e] === G, c = (e) => t[e] === Xe, l = (e) => t[e] === Ye, u = (e) => o(e) || s(e) || c(e) || l(e), d = () => n, f = () => r, p = () => i, m = () => a, h = (e) => o(e) || c(e) || l(e) ? G : t[e], g = () => h(n), _ = () => h(n + a);
 	function v() {
 		return a = 0, u(n) && (r++, i = 0), o(n) && n++, n++, i++, t[n];
 	}
@@ -195,9 +204,9 @@ function ze(e) {
 		skipToPeek: S
 	};
 }
-var K = void 0, Be = "'", Ve = "tokenizer";
-function He(e, t = {}) {
-	let n = t.location !== !1, r = ze(e), i = () => r.index(), a = () => Ae(r.line(), r.column(), r.index()), o = a(), s = i(), c = {
+var Qe = void 0, $e = "'", et = "tokenizer";
+function tt(e, t = {}) {
+	let n = t.location !== !1, r = Ze(e), i = () => r.index(), a = () => Ve(r.line(), r.column(), r.index()), o = a(), s = i(), c = {
 		currentType: 13,
 		offset: s,
 		startLoc: o,
@@ -212,19 +221,19 @@ function He(e, t = {}) {
 	}, l = () => c, { onError: u } = t;
 	function d(e, t, r, ...i) {
 		let a = l();
-		t.column += r, t.offset += r, u && u(Me(e, n ? je(a.startLoc, t) : null, {
-			domain: Ve,
+		t.column += r, t.offset += r, u && u(We(e, n ? He(a.startLoc, t) : null, {
+			domain: et,
 			args: i
 		}));
 	}
 	function f(e, t, r) {
 		e.endLoc = a(), e.currentType = t;
 		let i = { type: t };
-		return n && (i.loc = je(e.startLoc, e.endLoc)), r != null && (i.value = r), i;
+		return n && (i.loc = He(e.startLoc, e.endLoc)), r != null && (i.value = r), i;
 	}
 	let p = (e) => f(e, 13);
 	function m(e, t) {
-		return e.currentChar() === t ? (e.next(), t) : (d(H.EXPECTED_TOKEN, a(), 0, t), "");
+		return e.currentChar() === t ? (e.next(), t) : (d(U.EXPECTED_TOKEN, a(), 0, t), "");
 	}
 	function h(e) {
 		let t = "";
@@ -236,12 +245,12 @@ function He(e, t = {}) {
 		return e.skipToPeek(), t;
 	}
 	function _(e) {
-		if (e === K) return !1;
+		if (e === Qe) return !1;
 		let t = e.charCodeAt(0);
 		return t >= 97 && t <= 122 || t >= 65 && t <= 90 || t === 95;
 	}
 	function v(e) {
-		if (e === K) return !1;
+		if (e === Qe) return !1;
 		let t = e.charCodeAt(0);
 		return t >= 48 && t <= 57;
 	}
@@ -263,7 +272,7 @@ function He(e, t = {}) {
 		let { currentType: n } = t;
 		if (n !== 2) return !1;
 		h(e);
-		let r = e.currentPeek() === Be;
+		let r = e.currentPeek() === $e;
 		return e.resetPeek(), r;
 	}
 	function S(e, t) {
@@ -292,7 +301,7 @@ function He(e, t = {}) {
 		if (n !== 9) return !1;
 		let r = () => {
 			let t = e.currentPeek();
-			return t === "{" ? _(e.peek()) : t === "@" || t === "|" || t === ":" || t === "." || t === W || !t ? !1 : t === G ? (e.peek(), r()) : E(e, !1);
+			return t === "{" ? _(e.peek()) : t === "@" || t === "|" || t === ":" || t === "." || t === W || !t ? !1 : t === G ? (e.peek(), r()) : te(e, !1);
 		}, i = r();
 		return e.resetPeek(), i;
 	}
@@ -301,51 +310,51 @@ function He(e, t = {}) {
 		let t = e.currentPeek() === "|";
 		return e.resetPeek(), t;
 	}
-	function E(e, t = !0) {
+	function te(e, t = !0) {
 		let n = (t = !1, r = "") => {
 			let i = e.currentPeek();
 			return i === "{" || i === "@" || !i ? t : i === "|" ? !(r === W || r === G) : i === W ? (e.peek(), n(!0, W)) : i === G ? (e.peek(), n(!0, G)) : !0;
 		}, r = n();
 		return t && e.resetPeek(), r;
 	}
-	function D(e, t) {
+	function E(e, t) {
 		let n = e.currentChar();
-		return n === K ? K : t(n) ? (e.next(), n) : null;
+		return n === Qe ? Qe : t(n) ? (e.next(), n) : null;
 	}
-	function te(e) {
+	function ne(e) {
 		let t = e.charCodeAt(0);
 		return t >= 97 && t <= 122 || t >= 65 && t <= 90 || t >= 48 && t <= 57 || t === 95 || t === 36;
 	}
-	function ne(e) {
-		return D(e, te);
-	}
-	function O(e) {
-		let t = e.charCodeAt(0);
-		return t >= 97 && t <= 122 || t >= 65 && t <= 90 || t >= 48 && t <= 57 || t === 95 || t === 36 || t === 45;
-	}
 	function re(e) {
-		return D(e, O);
+		return E(e, ne);
 	}
 	function ie(e) {
 		let t = e.charCodeAt(0);
+		return t >= 97 && t <= 122 || t >= 65 && t <= 90 || t >= 48 && t <= 57 || t === 95 || t === 36 || t === 45;
+	}
+	function ae(e) {
+		return E(e, ie);
+	}
+	function oe(e) {
+		let t = e.charCodeAt(0);
 		return t >= 48 && t <= 57;
 	}
-	function k(e) {
-		return D(e, ie);
+	function se(e) {
+		return E(e, oe);
 	}
-	function A(e) {
+	function ce(e) {
 		let t = e.charCodeAt(0);
 		return t >= 48 && t <= 57 || t >= 65 && t <= 70 || t >= 97 && t <= 102;
 	}
-	function ae(e) {
-		return D(e, A);
+	function le(e) {
+		return E(e, ce);
 	}
-	function oe(e) {
+	function ue(e) {
 		let t = "", n = "";
-		for (; t = k(e);) n += t;
+		for (; t = se(e);) n += t;
 		return n;
 	}
-	function se(e) {
+	function de(e) {
 		let t = "";
 		for (;;) {
 			let n = e.currentChar();
@@ -353,147 +362,147 @@ function He(e, t = {}) {
 				let r = e.peek();
 				r === "{" || r === "}" || r === "@" || r === "|" || r === "\\" ? (t += n + r, e.next(), e.next()) : (e.resetPeek(), t += n, e.next());
 			} else if (n === "{" || n === "}" || n === "@" || n === "|" || !n) break;
-			else if (n === W || n === G) if (E(e)) t += n, e.next();
+			else if (n === W || n === G) if (te(e)) t += n, e.next();
 			else if (ee(e)) break;
 			else t += n, e.next();
 			else t += n, e.next();
 		}
 		return t;
 	}
-	function j(e) {
+	function D(e) {
 		g(e);
 		let t = "", n = "";
-		for (; t = re(e);) n += t;
+		for (; t = ae(e);) n += t;
 		let r = e.currentChar();
-		if (r && r !== "}" && r !== K && r !== W && r !== G && r !== "　") {
-			let t = N(e);
-			return d(H.INVALID_TOKEN_IN_PLACEHOLDER, a(), 0, n + t), n + t;
+		if (r && r !== "}" && r !== Qe && r !== W && r !== G && r !== "　") {
+			let t = k(e);
+			return d(U.INVALID_TOKEN_IN_PLACEHOLDER, a(), 0, n + t), n + t;
 		}
-		return e.currentChar() === K && d(H.UNTERMINATED_CLOSING_BRACE, a(), 0), n;
+		return e.currentChar() === Qe && d(U.UNTERMINATED_CLOSING_BRACE, a(), 0), n;
 	}
-	function ce(e) {
+	function fe(e) {
 		g(e);
 		let t = "";
-		return e.currentChar() === "-" ? (e.next(), t += `-${oe(e)}`) : t += oe(e), e.currentChar() === K && d(H.UNTERMINATED_CLOSING_BRACE, a(), 0), t;
+		return e.currentChar() === "-" ? (e.next(), t += `-${ue(e)}`) : t += ue(e), e.currentChar() === Qe && d(U.UNTERMINATED_CLOSING_BRACE, a(), 0), t;
 	}
-	function le(e) {
-		return e !== Be && e !== G;
+	function pe(e) {
+		return e !== $e && e !== G;
 	}
-	function M(e) {
+	function me(e) {
 		g(e), m(e, "'");
 		let t = "", n = "";
-		for (; t = D(e, le);) t === "\\" ? n += ue(e) : n += t;
+		for (; t = E(e, pe);) t === "\\" ? n += O(e) : n += t;
 		let r = e.currentChar();
-		return r === G || r === K ? (d(H.UNTERMINATED_SINGLE_QUOTE_IN_PLACEHOLDER, a(), 0), r === G && (e.next(), m(e, "'")), n) : (m(e, "'"), n);
+		return r === G || r === Qe ? (d(U.UNTERMINATED_SINGLE_QUOTE_IN_PLACEHOLDER, a(), 0), r === G && (e.next(), m(e, "'")), n) : (m(e, "'"), n);
 	}
-	function ue(e) {
+	function O(e) {
 		let t = e.currentChar();
 		switch (t) {
 			case "\\":
 			case "'": return e.next(), `\\${t}`;
-			case "u": return de(e, t, 4);
-			case "U": return de(e, t, 6);
-			default: return d(H.UNKNOWN_ESCAPE_SEQUENCE, a(), 0, t), "";
+			case "u": return he(e, t, 4);
+			case "U": return he(e, t, 6);
+			default: return d(U.UNKNOWN_ESCAPE_SEQUENCE, a(), 0, t), "";
 		}
 	}
-	function de(e, t, n) {
+	function he(e, t, n) {
 		m(e, t);
 		let r = "";
 		for (let i = 0; i < n; i++) {
-			let n = ae(e);
+			let n = le(e);
 			if (!n) {
-				d(H.INVALID_UNICODE_ESCAPE_SEQUENCE, a(), 0, `\\${t}${r}${e.currentChar()}`);
+				d(U.INVALID_UNICODE_ESCAPE_SEQUENCE, a(), 0, `\\${t}${r}${e.currentChar()}`);
 				break;
 			}
 			r += n;
 		}
 		return `\\${t}${r}`;
 	}
-	function fe(e) {
+	function ge(e) {
 		return e !== "{" && e !== "}" && e !== W && e !== G;
 	}
-	function N(e) {
+	function k(e) {
 		g(e);
 		let t = "", n = "";
-		for (; t = D(e, fe);) n += t;
+		for (; t = E(e, ge);) n += t;
 		return n;
 	}
-	function pe(e) {
+	function A(e) {
 		let t = "", n = "";
-		for (; t = ne(e);) n += t;
+		for (; t = re(e);) n += t;
 		return n;
 	}
-	function P(e) {
+	function _e(e) {
 		let t = (n) => {
 			let r = e.currentChar();
 			return r === "{" || r === "@" || r === "|" || r === "(" || r === ")" || !r || r === W ? n : (n += r, e.next(), t(n));
 		};
 		return t("");
 	}
-	function me(e) {
+	function ve(e) {
 		g(e);
 		let t = m(e, "|");
 		return g(e), t;
 	}
-	function he(e, t) {
+	function ye(e, t) {
 		let n = null;
 		switch (e.currentChar()) {
-			case "{": return t.braceNest >= 1 && d(H.NOT_ALLOW_NEST_PLACEHOLDER, a(), 0), e.next(), n = f(t, 2, "{"), g(e), t.braceNest++, n;
-			case "}": return t.braceNest > 0 && t.currentType === 2 && d(H.EMPTY_PLACEHOLDER, a(), 0), e.next(), n = f(t, 3, "}"), t.braceNest--, t.braceNest > 0 && g(e), t.inLinked && t.braceNest === 0 && (t.inLinked = !1), n;
-			case "@": return t.braceNest > 0 && d(H.UNTERMINATED_CLOSING_BRACE, a(), 0), n = ge(e, t) || p(t), t.braceNest = 0, n;
+			case "{": return t.braceNest >= 1 && d(U.NOT_ALLOW_NEST_PLACEHOLDER, a(), 0), e.next(), n = f(t, 2, "{"), g(e), t.braceNest++, n;
+			case "}": return t.braceNest > 0 && t.currentType === 2 && d(U.EMPTY_PLACEHOLDER, a(), 0), e.next(), n = f(t, 3, "}"), t.braceNest--, t.braceNest > 0 && g(e), t.inLinked && t.braceNest === 0 && (t.inLinked = !1), n;
+			case "@": return t.braceNest > 0 && d(U.UNTERMINATED_CLOSING_BRACE, a(), 0), n = j(e, t) || p(t), t.braceNest = 0, n;
 			default: {
 				let r = !0, i = !0, o = !0;
-				if (ee(e)) return t.braceNest > 0 && d(H.UNTERMINATED_CLOSING_BRACE, a(), 0), n = f(t, 1, me(e)), t.braceNest = 0, t.inLinked = !1, n;
-				if (t.braceNest > 0 && (t.currentType === 4 || t.currentType === 5 || t.currentType === 6)) return d(H.UNTERMINATED_CLOSING_BRACE, a(), 0), t.braceNest = 0, _e(e, t);
-				if (r = y(e, t)) return n = f(t, 4, j(e)), g(e), n;
-				if (i = b(e, t)) return n = f(t, 5, ce(e)), g(e), n;
-				if (o = x(e, t)) return n = f(t, 6, M(e)), g(e), n;
-				if (!r && !i && !o) return n = f(t, 12, N(e)), d(H.INVALID_TOKEN_IN_PLACEHOLDER, a(), 0, n.value), g(e), n;
+				if (ee(e)) return t.braceNest > 0 && d(U.UNTERMINATED_CLOSING_BRACE, a(), 0), n = f(t, 1, ve(e)), t.braceNest = 0, t.inLinked = !1, n;
+				if (t.braceNest > 0 && (t.currentType === 4 || t.currentType === 5 || t.currentType === 6)) return d(U.UNTERMINATED_CLOSING_BRACE, a(), 0), t.braceNest = 0, be(e, t);
+				if (r = y(e, t)) return n = f(t, 4, D(e)), g(e), n;
+				if (i = b(e, t)) return n = f(t, 5, fe(e)), g(e), n;
+				if (o = x(e, t)) return n = f(t, 6, me(e)), g(e), n;
+				if (!r && !i && !o) return n = f(t, 12, k(e)), d(U.INVALID_TOKEN_IN_PLACEHOLDER, a(), 0, n.value), g(e), n;
 				break;
 			}
 		}
 		return n;
 	}
-	function ge(e, t) {
+	function j(e, t) {
 		let { currentType: n } = t, r = null, i = e.currentChar();
-		switch ((n === 7 || n === 8 || n === 11 || n === 9) && (i === G || i === W) && d(H.INVALID_LINKED_FORMAT, a(), 0), i) {
+		switch ((n === 7 || n === 8 || n === 11 || n === 9) && (i === G || i === W) && d(U.INVALID_LINKED_FORMAT, a(), 0), i) {
 			case "@": return e.next(), r = f(t, 7, "@"), t.inLinked = !0, r;
 			case ".": return g(e), e.next(), f(t, 8, ".");
 			case ":": return g(e), e.next(), f(t, 9, ":");
-			default: return ee(e) ? (r = f(t, 1, me(e)), t.braceNest = 0, t.inLinked = !1, r) : S(e, t) || w(e, t) ? (g(e), ge(e, t)) : C(e, t) ? (g(e), f(t, 11, pe(e))) : T(e, t) ? (g(e), i === "{" ? he(e, t) || r : f(t, 10, P(e))) : (n === 7 && d(H.INVALID_LINKED_FORMAT, a(), 0), t.braceNest = 0, t.inLinked = !1, _e(e, t));
+			default: return ee(e) ? (r = f(t, 1, ve(e)), t.braceNest = 0, t.inLinked = !1, r) : S(e, t) || w(e, t) ? (g(e), j(e, t)) : C(e, t) ? (g(e), f(t, 11, A(e))) : T(e, t) ? (g(e), i === "{" ? ye(e, t) || r : f(t, 10, _e(e))) : (n === 7 && d(U.INVALID_LINKED_FORMAT, a(), 0), t.braceNest = 0, t.inLinked = !1, be(e, t));
 		}
 	}
-	function _e(e, t) {
+	function be(e, t) {
 		let n = { type: 13 };
-		if (t.braceNest > 0) return he(e, t) || p(t);
-		if (t.inLinked) return ge(e, t) || p(t);
+		if (t.braceNest > 0) return ye(e, t) || p(t);
+		if (t.inLinked) return j(e, t) || p(t);
 		switch (e.currentChar()) {
-			case "{": return he(e, t) || p(t);
-			case "}": return d(H.UNBALANCED_CLOSING_BRACE, a(), 0), e.next(), f(t, 3, "}");
-			case "@": return ge(e, t) || p(t);
+			case "{": return ye(e, t) || p(t);
+			case "}": return d(U.UNBALANCED_CLOSING_BRACE, a(), 0), e.next(), f(t, 3, "}");
+			case "@": return j(e, t) || p(t);
 			default:
-				if (ee(e)) return n = f(t, 1, me(e)), t.braceNest = 0, t.inLinked = !1, n;
-				if (E(e)) return f(t, 0, se(e));
+				if (ee(e)) return n = f(t, 1, ve(e)), t.braceNest = 0, t.inLinked = !1, n;
+				if (te(e)) return f(t, 0, de(e));
 				break;
 		}
 		return n;
 	}
-	function ve() {
+	function xe() {
 		let { currentType: e, offset: t, startLoc: n, endLoc: o } = c;
-		return c.lastType = e, c.lastOffset = t, c.lastStartLoc = n, c.lastEndLoc = o, c.offset = i(), c.startLoc = a(), r.currentChar() === K ? f(c, 13) : _e(r, c);
+		return c.lastType = e, c.lastOffset = t, c.lastStartLoc = n, c.lastEndLoc = o, c.offset = i(), c.startLoc = a(), r.currentChar() === Qe ? f(c, 13) : be(r, c);
 	}
 	return {
-		nextToken: ve,
+		nextToken: xe,
 		currentOffset: i,
 		currentPosition: a,
 		context: l
 	};
 }
-var Ue = "parser", We = /(?:\\\\|\\'|\\u([0-9a-fA-F]{4})|\\U([0-9a-fA-F]{6}))/g, Ge = /\\([\\@{}|])/g;
-function Ke(e, t) {
+var nt = "parser", rt = /(?:\\\\|\\'|\\u([0-9a-fA-F]{4})|\\U([0-9a-fA-F]{6}))/g, it = /\\([\\@{}|])/g;
+function at(e, t) {
 	return t;
 }
-function qe(e, t, n) {
+function ot(e, t, n) {
 	switch (e) {
 		case "\\\\": return "\\";
 		case "\\'": return "'";
@@ -503,12 +512,12 @@ function qe(e, t, n) {
 		}
 	}
 }
-function Je(e = {}) {
+function st(e = {}) {
 	let t = e.location !== !1, { onError: n } = e;
 	function r(e, r, i, a, ...o) {
 		let s = e.currentPosition();
-		s.offset += a, s.column += a, n && n(Me(r, t ? je(i, s) : null, {
-			domain: Ue,
+		s.offset += a, s.column += a, n && n(We(r, t ? He(i, s) : null, {
+			domain: nt,
 			args: o
 		}));
 	}
@@ -524,7 +533,7 @@ function Je(e = {}) {
 	}
 	function o(e, t) {
 		let n = e.context(), r = i(3, n.offset, n.startLoc);
-		return r.value = t.replace(Ge, Ke), a(r, e.currentOffset(), e.currentPosition()), r;
+		return r.value = t.replace(it, at), a(r, e.currentOffset(), e.currentPosition()), r;
 	}
 	function s(e, t) {
 		let { lastOffset: n, lastStartLoc: r } = e.context(), o = i(5, n, r);
@@ -536,11 +545,11 @@ function Je(e = {}) {
 	}
 	function l(e, t) {
 		let { lastOffset: n, lastStartLoc: r } = e.context(), o = i(9, n, r);
-		return o.value = t.replace(We, qe), e.nextToken(), a(o, e.currentOffset(), e.currentPosition()), o;
+		return o.value = t.replace(rt, ot), e.nextToken(), a(o, e.currentOffset(), e.currentPosition()), o;
 	}
 	function u(e) {
 		let t = e.nextToken(), n = e.context(), { lastOffset: o, lastStartLoc: s } = n, c = i(8, o, s);
-		return t.type === 11 ? (t.value ?? r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, n.lastStartLoc, 0, q(t)), c.value = t.value || "", a(c, e.currentOffset(), e.currentPosition()), { node: c }) : (r(e, H.UNEXPECTED_EMPTY_LINKED_MODIFIER, n.lastStartLoc, 0), c.value = "", a(c, o, s), {
+		return t.type === 11 ? (t.value ?? r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, n.lastStartLoc, 0, K(t)), c.value = t.value || "", a(c, e.currentOffset(), e.currentPosition()), { node: c }) : (r(e, U.UNEXPECTED_EMPTY_LINKED_MODIFIER, n.lastStartLoc, 0), c.value = "", a(c, o, s), {
 			nextConsumeToken: t,
 			node: c
 		});
@@ -555,21 +564,21 @@ function Je(e = {}) {
 			let t = u(e);
 			n.modifier = t.node, o = t.nextConsumeToken || e.nextToken();
 		}
-		switch (o.type !== 9 && r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, q(o)), o = e.nextToken(), o.type === 2 && (o = e.nextToken()), o.type) {
+		switch (o.type !== 9 && r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, K(o)), o = e.nextToken(), o.type === 2 && (o = e.nextToken()), o.type) {
 			case 10:
-				o.value ?? r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, q(o)), n.key = d(e, o.value || "");
+				o.value ?? r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, K(o)), n.key = d(e, o.value || "");
 				break;
 			case 4:
-				o.value ?? r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, q(o)), n.key = c(e, o.value || "");
+				o.value ?? r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, K(o)), n.key = c(e, o.value || "");
 				break;
 			case 5:
-				o.value ?? r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, q(o)), n.key = s(e, o.value || "");
+				o.value ?? r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, K(o)), n.key = s(e, o.value || "");
 				break;
 			case 6:
-				o.value ?? r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, q(o)), n.key = l(e, o.value || "");
+				o.value ?? r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, K(o)), n.key = l(e, o.value || "");
 				break;
 			default: {
-				r(e, H.UNEXPECTED_EMPTY_LINKED_KEY, t.lastStartLoc, 0);
+				r(e, U.UNEXPECTED_EMPTY_LINKED_KEY, t.lastStartLoc, 0);
 				let s = e.context(), c = i(7, s.offset, s.startLoc);
 				return c.value = "", a(c, s.offset, s.startLoc), n.key = c, a(n, s.offset, s.startLoc), {
 					nextConsumeToken: o,
@@ -587,16 +596,16 @@ function Je(e = {}) {
 			let i = u || e.nextToken();
 			switch (u = null, i.type) {
 				case 0:
-					i.value ?? r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, q(i)), n.items.push(o(e, i.value || ""));
+					i.value ?? r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, K(i)), n.items.push(o(e, i.value || ""));
 					break;
 				case 5:
-					i.value ?? r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, q(i)), n.items.push(s(e, i.value || ""));
+					i.value ?? r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, K(i)), n.items.push(s(e, i.value || ""));
 					break;
 				case 4:
-					i.value ?? r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, q(i)), n.items.push(c(e, i.value || ""));
+					i.value ?? r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, K(i)), n.items.push(c(e, i.value || ""));
 					break;
 				case 6:
-					i.value ?? r(e, H.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, q(i)), n.items.push(l(e, i.value || ""));
+					i.value ?? r(e, U.UNEXPECTED_LEXICAL_ANALYSIS, t.lastStartLoc, 0, K(i)), n.items.push(l(e, i.value || ""));
 					break;
 				case 7: {
 					let t = f(e);
@@ -614,24 +623,24 @@ function Je(e = {}) {
 			let t = p(e);
 			c ||= t.items.length === 0, l.cases.push(t);
 		} while (s.currentType !== 13);
-		return c && r(e, H.MUST_HAVE_MESSAGES_IN_PLURAL, n, 0), a(l, e.currentOffset(), e.currentPosition()), l;
+		return c && r(e, U.MUST_HAVE_MESSAGES_IN_PLURAL, n, 0), a(l, e.currentOffset(), e.currentPosition()), l;
 	}
 	function h(e) {
 		let t = e.context(), { offset: n, startLoc: r } = t, i = p(e);
 		return t.currentType === 13 ? i : m(e, n, r, i);
 	}
 	function g(n) {
-		let o = He(n, N({}, e)), s = o.context(), c = i(0, s.offset, s.startLoc);
-		return t && c.loc && (c.loc.source = n), c.body = h(o), e.onCacheKey && (c.cacheKey = e.onCacheKey(n)), s.currentType !== 13 && r(o, H.UNEXPECTED_LEXICAL_ANALYSIS, s.lastStartLoc, 0, n[s.offset] || ""), a(c, o.currentOffset(), o.currentPosition()), c;
+		let o = tt(n, N({}, e)), s = o.context(), c = i(0, s.offset, s.startLoc);
+		return t && c.loc && (c.loc.source = n), c.body = h(o), e.onCacheKey && (c.cacheKey = e.onCacheKey(n)), s.currentType !== 13 && r(o, U.UNEXPECTED_LEXICAL_ANALYSIS, s.lastStartLoc, 0, n[s.offset] || ""), a(c, o.currentOffset(), o.currentPosition()), c;
 	}
 	return { parse: g };
 }
-function q(e) {
+function K(e) {
 	if (e.type === 13) return "EOF";
 	let t = (e.value || "").replace(/\r?\n/gu, "\\n");
 	return t.length > 10 ? t.slice(0, 9) + "…" : t;
 }
-function Ye(e, t = {}) {
+function ct(e, t = {}) {
 	let n = {
 		ast: e,
 		helpers: /* @__PURE__ */ new Set()
@@ -641,19 +650,19 @@ function Ye(e, t = {}) {
 		helper: (e) => (n.helpers.add(e), e)
 	};
 }
-function Xe(e, t) {
-	for (let n = 0; n < e.length; n++) Ze(e[n], t);
+function lt(e, t) {
+	for (let n = 0; n < e.length; n++) ut(e[n], t);
 }
-function Ze(e, t) {
+function ut(e, t) {
 	switch (e.type) {
 		case 1:
-			Xe(e.cases, t), t.helper("plural");
+			lt(e.cases, t), t.helper("plural");
 			break;
 		case 2:
-			Xe(e.items, t);
+			lt(e.items, t);
 			break;
 		case 6:
-			Ze(e.key, t), t.helper("linked"), t.helper("type");
+			ut(e.key, t), t.helper("linked"), t.helper("type");
 			break;
 		case 5:
 			t.helper("interpolate"), t.helper("list");
@@ -663,17 +672,17 @@ function Ze(e, t) {
 			break;
 	}
 }
-function Qe(e, t = {}) {
-	let n = Ye(e);
-	n.helper("normalize"), e.body && Ze(e.body, n);
+function dt(e, t = {}) {
+	let n = ct(e);
+	n.helper("normalize"), e.body && ut(e.body, n);
 	let r = n.context();
 	e.helpers = Array.from(r.helpers);
 }
-function $e(e) {
+function ft(e) {
 	let t = e.body;
-	return t.type === 2 ? et(t) : t.cases.forEach((e) => et(e)), e;
+	return t.type === 2 ? pt(t) : t.cases.forEach((e) => pt(e)), e;
 }
-function et(e) {
+function pt(e) {
 	if (e.items.length === 1) {
 		let t = e.items[0];
 		(t.type === 3 || t.type === 9) && (e.static = t.value, delete t.value);
@@ -685,7 +694,7 @@ function et(e) {
 			t.push(r.value);
 		}
 		if (t.length === e.items.length) {
-			e.static = we(t);
+			e.static = Fe(t);
 			for (let t = 0; t < e.items.length; t++) {
 				let n = e.items[t];
 				(n.type === 3 || n.type === 9) && delete n.value;
@@ -693,23 +702,23 @@ function et(e) {
 		}
 	}
 }
-var tt = "minifier";
-function nt(e) {
+var mt = "minifier";
+function ht(e) {
 	switch (e.t = e.type, e.type) {
 		case 0: {
 			let t = e;
-			nt(t.body), t.b = t.body, delete t.body;
+			ht(t.body), t.b = t.body, delete t.body;
 			break;
 		}
 		case 1: {
 			let t = e, n = t.cases;
-			for (let e = 0; e < n.length; e++) nt(n[e]);
+			for (let e = 0; e < n.length; e++) ht(n[e]);
 			t.c = n, delete t.cases;
 			break;
 		}
 		case 2: {
 			let t = e, n = t.items;
-			for (let e = 0; e < n.length; e++) nt(n[e]);
+			for (let e = 0; e < n.length; e++) ht(n[e]);
 			t.i = n, delete t.items, t.static && (t.s = t.static, delete t.static);
 			break;
 		}
@@ -723,7 +732,7 @@ function nt(e) {
 		}
 		case 6: {
 			let t = e;
-			nt(t.key), t.k = t.key, delete t.key, t.modifier && (nt(t.modifier), t.m = t.modifier, delete t.modifier);
+			ht(t.key), t.k = t.key, delete t.key, t.modifier && (ht(t.modifier), t.m = t.modifier, delete t.modifier);
 			break;
 		}
 		case 5: {
@@ -736,15 +745,15 @@ function nt(e) {
 			t.k = t.key, delete t.key;
 			break;
 		}
-		default: if (process.env.NODE_ENV !== "production") throw Me(H.UNHANDLED_MINIFIER_NODE_TYPE, null, {
-			domain: tt,
+		default: if (process.env.NODE_ENV !== "production") throw We(U.UNHANDLED_MINIFIER_NODE_TYPE, null, {
+			domain: mt,
 			args: [e.type]
 		});
 	}
 	delete e.type;
 }
-var rt = "parser";
-function it(e, t) {
+var gt = "parser";
+function _t(e, t) {
 	let { sourceMap: n, filename: r, breakLineCode: i, needIndent: a } = t, o = t.location !== !1, s = {
 		filename: r,
 		code: "",
@@ -786,43 +795,43 @@ function it(e, t) {
 		needIndent: () => s.needIndent
 	};
 }
-function at(e, t) {
+function vt(e, t) {
 	let { helper: n } = e;
-	e.push(`${n("linked")}(`), lt(e, t.key), t.modifier ? (e.push(", "), lt(e, t.modifier), e.push(", _type")) : e.push(", undefined, _type"), e.push(")");
+	e.push(`${n("linked")}(`), St(e, t.key), t.modifier ? (e.push(", "), St(e, t.modifier), e.push(", _type")) : e.push(", undefined, _type"), e.push(")");
 }
-function ot(e, t) {
+function yt(e, t) {
 	let { helper: n, needIndent: r } = e;
 	e.push(`${n("normalize")}([`), e.indent(r());
 	let i = t.items.length;
-	for (let n = 0; n < i && (lt(e, t.items[n]), n !== i - 1); n++) e.push(", ");
+	for (let n = 0; n < i && (St(e, t.items[n]), n !== i - 1); n++) e.push(", ");
 	e.deindent(r()), e.push("])");
 }
-function st(e, t) {
+function bt(e, t) {
 	let { helper: n, needIndent: r } = e;
 	if (t.cases.length > 1) {
 		e.push(`${n("plural")}([`), e.indent(r());
 		let i = t.cases.length;
-		for (let n = 0; n < i && (lt(e, t.cases[n]), n !== i - 1); n++) e.push(", ");
+		for (let n = 0; n < i && (St(e, t.cases[n]), n !== i - 1); n++) e.push(", ");
 		e.deindent(r()), e.push("])");
 	}
 }
-function ct(e, t) {
-	t.body ? lt(e, t.body) : e.push("null");
+function xt(e, t) {
+	t.body ? St(e, t.body) : e.push("null");
 }
-function lt(e, t) {
+function St(e, t) {
 	let { helper: n } = e;
 	switch (t.type) {
 		case 0:
-			ct(e, t);
+			xt(e, t);
 			break;
 		case 1:
-			st(e, t);
+			bt(e, t);
 			break;
 		case 2:
-			ot(e, t);
+			yt(e, t);
 			break;
 		case 6:
-			at(e, t);
+			vt(e, t);
 			break;
 		case 8:
 			e.push(JSON.stringify(t.value), t);
@@ -842,21 +851,21 @@ function lt(e, t) {
 		case 3:
 			e.push(JSON.stringify(t.value), t);
 			break;
-		default: if (process.env.NODE_ENV !== "production") throw Me(H.UNHANDLED_CODEGEN_NODE_TYPE, null, {
-			domain: rt,
+		default: if (process.env.NODE_ENV !== "production") throw We(U.UNHANDLED_CODEGEN_NODE_TYPE, null, {
+			domain: gt,
 			args: [t.type]
 		});
 	}
 }
-var ut = (e, t = {}) => {
-	let n = R(t.mode) ? t.mode : "normal", r = R(t.filename) ? t.filename : "message.intl", i = !!t.sourceMap, a = t.breakLineCode == null ? n === "arrow" ? ";" : "\n" : t.breakLineCode, o = t.needIndent ? t.needIndent : n !== "arrow", s = e.helpers || [], c = it(e, {
+var Ct = (e, t = {}) => {
+	let n = R(t.mode) ? t.mode : "normal", r = R(t.filename) ? t.filename : "message.intl", i = !!t.sourceMap, a = t.breakLineCode == null ? n === "arrow" ? ";" : "\n" : t.breakLineCode, o = t.needIndent ? t.needIndent : n !== "arrow", s = e.helpers || [], c = _t(e, {
 		mode: n,
 		filename: r,
 		sourceMap: i,
 		breakLineCode: a,
 		needIndent: o
 	});
-	c.push(n === "normal" ? "function __msg__ (ctx) {" : "(ctx) => {"), c.indent(o), s.length > 0 && (c.push(`const { ${we(s.map((e) => `${e}: _${e}`), ", ")} } = ctx`), c.newline()), c.push("return "), lt(c, e), c.deindent(o), c.push("}"), delete e.helpers;
+	c.push(n === "normal" ? "function __msg__ (ctx) {" : "(ctx) => {"), c.indent(o), s.length > 0 && (c.push(`const { ${Fe(s.map((e) => `${e}: _${e}`), ", ")} } = ctx`), c.newline()), c.push("return "), St(c, e), c.deindent(o), c.push("}"), delete e.helpers;
 	let { code: l, map: u } = c.context();
 	return {
 		ast: e,
@@ -864,166 +873,166 @@ var ut = (e, t = {}) => {
 		map: u ? u.toJSON() : void 0
 	};
 };
-function dt(e, t = {}) {
-	let n = N({}, t), r = !!n.jit, i = !!n.minify, a = n.optimize == null ? !0 : n.optimize, o = Je(n).parse(e);
-	return r ? (a && $e(o), i && nt(o), {
+function wt(e, t = {}) {
+	let n = N({}, t), r = !!n.jit, i = !!n.minify, a = n.optimize == null ? !0 : n.optimize, o = st(n).parse(e);
+	return r ? (a && ft(o), i && ht(o), {
 		ast: o,
 		code: ""
-	}) : (Qe(o, n), ut(o, n));
+	}) : (dt(o, n), Ct(o, n));
 }
-function J(e) {
-	return B(e) && xt(e) === 0 && (F(e, "b") || F(e, "body"));
+function q(e) {
+	return B(e) && Pt(e) === 0 && (F(e, "b") || F(e, "body"));
 }
-var ft = ["b", "body"];
-function pt(e) {
-	return Ot(e, ft);
+var Tt = ["b", "body"];
+function Et(e) {
+	return Vt(e, Tt);
 }
-var mt = ["c", "cases"];
-function ht(e) {
-	return Ot(e, mt, []);
+var Dt = ["c", "cases"];
+function Ot(e) {
+	return Vt(e, Dt, []);
 }
-var gt = ["s", "static"];
-function _t(e) {
-	return Ot(e, gt);
+var kt = ["s", "static"];
+function At(e) {
+	return Vt(e, kt);
 }
-var vt = ["i", "items"];
-function yt(e) {
-	return Ot(e, vt, []);
+var jt = ["i", "items"];
+function Mt(e) {
+	return Vt(e, jt, []);
 }
-var bt = ["t", "type"];
-function xt(e) {
-	return Ot(e, bt);
+var Nt = ["t", "type"];
+function Pt(e) {
+	return Vt(e, Nt);
 }
-var St = ["v", "value"];
-function Ct(e, t) {
-	let n = Ot(e, St);
+var Ft = ["v", "value"];
+function It(e, t) {
+	let n = Vt(e, Ft);
 	if (n != null) return n;
-	throw At(t);
+	throw Ut(t);
 }
-var wt = ["m", "modifier"];
-function Tt(e) {
-	return Ot(e, wt);
+var Lt = ["m", "modifier"];
+function Rt(e) {
+	return Vt(e, Lt);
 }
-var Et = ["k", "key"];
-function Dt(e) {
-	let t = Ot(e, Et);
+var zt = ["k", "key"];
+function Bt(e) {
+	let t = Vt(e, zt);
 	if (t) return t;
-	throw At(6);
+	throw Ut(6);
 }
-function Ot(e, t, n) {
+function Vt(e, t, n) {
 	for (let n = 0; n < t.length; n++) {
 		let r = t[n];
 		if (F(e, r) && e[r] != null) return e[r];
 	}
 	return n;
 }
-var kt = [
-	...ft,
-	...mt,
-	...gt,
-	...vt,
-	...Et,
-	...wt,
-	...St,
-	...bt
+var Ht = [
+	...Tt,
+	...Dt,
+	...kt,
+	...jt,
+	...zt,
+	...Lt,
+	...Ft,
+	...Nt
 ];
-function At(e) {
+function Ut(e) {
 	return /* @__PURE__ */ Error(`unhandled node type: ${e}`);
 }
-function jt(e) {
-	return (t) => Mt(t, e);
+function Wt(e) {
+	return (t) => Gt(t, e);
 }
-function Mt(e, t) {
-	let n = pt(t);
-	if (n == null) throw At(0);
-	if (xt(n) === 1) {
-		let t = ht(n);
-		return e.plural(t.reduce((t, n) => [...t, Nt(e, n)], []));
-	} else return Nt(e, n);
+function Gt(e, t) {
+	let n = Et(t);
+	if (n == null) throw Ut(0);
+	if (Pt(n) === 1) {
+		let t = Ot(n);
+		return e.plural(t.reduce((t, n) => [...t, Kt(e, n)], []));
+	} else return Kt(e, n);
 }
-function Nt(e, t) {
-	let n = _t(t);
+function Kt(e, t) {
+	let n = At(t);
 	if (n != null) return e.type === "text" ? n : e.normalize([n]);
 	{
-		let n = yt(t).reduce((t, n) => [...t, Pt(e, n)], []);
+		let n = Mt(t).reduce((t, n) => [...t, qt(e, n)], []);
 		return e.normalize(n);
 	}
 }
-function Pt(e, t) {
-	let n = xt(t);
+function qt(e, t) {
+	let n = Pt(t);
 	switch (n) {
-		case 3: return Ct(t, n);
-		case 9: return Ct(t, n);
+		case 3: return It(t, n);
+		case 9: return It(t, n);
 		case 4: {
 			let r = t;
 			if (F(r, "k") && r.k) return e.interpolate(e.named(r.k));
 			if (F(r, "key") && r.key) return e.interpolate(e.named(r.key));
-			throw At(n);
+			throw Ut(n);
 		}
 		case 5: {
 			let r = t;
 			if (F(r, "i") && M(r.i)) return e.interpolate(e.list(r.i));
 			if (F(r, "index") && M(r.index)) return e.interpolate(e.list(r.index));
-			throw At(n);
+			throw Ut(n);
 		}
 		case 6: {
-			let n = t, r = Tt(n), i = Dt(n);
-			return e.linked(Pt(e, i), r ? Pt(e, r) : void 0, e.type);
+			let n = t, r = Rt(n), i = Bt(n);
+			return e.linked(qt(e, i), r ? qt(e, r) : void 0, e.type);
 		}
-		case 7: return Ct(t, n);
-		case 8: return Ct(t, n);
+		case 7: return It(t, n);
+		case 8: return It(t, n);
 		default: throw Error(`unhandled node on format message part: ${n}`);
 	}
 }
-var Ft = "Detected HTML in '{source}' message. Recommend not using HTML messages to avoid XSS.";
-function It(e, t) {
-	t && Fe(e) && O(se(Ft, { source: e }));
+var Jt = "Detected HTML in '{source}' message. Recommend not using HTML messages to avoid XSS.";
+function Yt(e, t) {
+	t && qe(e) && O(ye(Jt, { source: e }));
 }
-var Lt = (e) => e, Rt = P();
-function zt(e, t = {}) {
-	let n = !1, r = t.onError || Ne;
+var Xt = (e) => e, Zt = P();
+function Qt(e, t = {}) {
+	let n = !1, r = t.onError || Ge;
 	return t.onError = (e) => {
 		n = !0, r(e);
 	}, {
-		...dt(e, t),
+		...wt(e, t),
 		detectError: n
 	};
 }
-function Bt(e, t) {
+function $t(e, t) {
 	if (R(e)) {
 		let n = z(t.warnHtmlMessage) ? t.warnHtmlMessage : !0;
-		process.env.NODE_ENV !== "production" && It(e, n);
-		let r = (t.onCacheKey || Lt)(e), i = Rt[r];
+		process.env.NODE_ENV !== "production" && Yt(e, n);
+		let r = (t.onCacheKey || Xt)(e), i = Zt[r];
 		if (i) return i;
-		let { ast: a, detectError: o } = zt(e, {
+		let { ast: a, detectError: o } = Qt(e, {
 			...t,
 			location: process.env.NODE_ENV !== "production",
 			jit: !0
-		}), s = jt(a);
-		return o ? s : Rt[r] = s;
+		}), s = Wt(a);
+		return o ? s : Zt[r] = s;
 	} else {
-		if (process.env.NODE_ENV !== "production" && !J(e)) return O(`the message that is resolve with key '${t.key}' is not supported for jit compilation`), (() => e);
+		if (process.env.NODE_ENV !== "production" && !q(e)) return O(`the message that is resolve with key '${t.key}' is not supported for jit compilation`), (() => e);
 		let n = e.cacheKey;
-		return n ? Rt[n] || (Rt[n] = jt(e)) : jt(e);
+		return n ? Zt[n] || (Zt[n] = Wt(e)) : Wt(e);
 	}
 }
-var Vt = null;
-function Ht(e) {
-	Vt = e;
+var en = null;
+function tn(e) {
+	en = e;
 }
-function Ut(e, t, n) {
-	Vt && Vt.emit("i18n:init", {
+function nn(e, t, n) {
+	en && en.emit("i18n:init", {
 		timestamp: Date.now(),
 		i18n: e,
 		version: t,
 		meta: n
 	});
 }
-var Wt = Gt("function:translate");
-function Gt(e) {
-	return (t) => Vt && Vt.emit(e, t);
+var rn = an("function:translate");
+function an(e) {
+	return (t) => en && en.emit(e, t);
 }
-var Y = {
+var J = {
 	INVALID_ARGUMENT: 17,
 	INVALID_DATE_ARGUMENT: 18,
 	INVALID_ISO_DATE_ARGUMENT: 19,
@@ -1032,120 +1041,120 @@ var Y = {
 	NOT_SUPPORT_LOCALE_ASYNC_FUNCTION: 22,
 	NOT_SUPPORT_LOCALE_TYPE: 23
 };
-function Kt(e) {
-	return Me(e, null, process.env.NODE_ENV === "production" ? void 0 : { messages: qt });
+function on(e) {
+	return We(e, null, process.env.NODE_ENV === "production" ? void 0 : { messages: sn });
 }
-var qt = {
-	[Y.INVALID_ARGUMENT]: "Invalid arguments",
-	[Y.INVALID_DATE_ARGUMENT]: "The date provided is an invalid Date object.Make sure your Date represents a valid date.",
-	[Y.INVALID_ISO_DATE_ARGUMENT]: "The argument provided is not a valid ISO date string",
-	[Y.NOT_SUPPORT_NON_STRING_MESSAGE]: "Not support non-string message",
-	[Y.NOT_SUPPORT_LOCALE_PROMISE_VALUE]: "cannot support promise value",
-	[Y.NOT_SUPPORT_LOCALE_ASYNC_FUNCTION]: "cannot support async function",
-	[Y.NOT_SUPPORT_LOCALE_TYPE]: "cannot support locale type"
+var sn = {
+	[J.INVALID_ARGUMENT]: "Invalid arguments",
+	[J.INVALID_DATE_ARGUMENT]: "The date provided is an invalid Date object.Make sure your Date represents a valid date.",
+	[J.INVALID_ISO_DATE_ARGUMENT]: "The argument provided is not a valid ISO date string",
+	[J.NOT_SUPPORT_NON_STRING_MESSAGE]: "Not support non-string message",
+	[J.NOT_SUPPORT_LOCALE_PROMISE_VALUE]: "cannot support promise value",
+	[J.NOT_SUPPORT_LOCALE_ASYNC_FUNCTION]: "cannot support async function",
+	[J.NOT_SUPPORT_LOCALE_TYPE]: "cannot support locale type"
 };
-function Jt(e, t) {
-	return t.locale == null ? Xt(e.locale) : Xt(t.locale);
+function cn(e, t) {
+	return t.locale == null ? un(e.locale) : un(t.locale);
 }
-var Yt;
-function Xt(e) {
+var ln;
+function un(e) {
 	if (R(e)) return e;
 	if (L(e)) {
-		if (e.resolvedOnce && Yt != null) return Yt;
+		if (e.resolvedOnce && ln != null) return ln;
 		if (e.constructor.name === "Function") {
 			let t = e();
-			if (be(t)) throw Kt(Y.NOT_SUPPORT_LOCALE_PROMISE_VALUE);
-			return Yt = t;
-		} else throw Kt(Y.NOT_SUPPORT_LOCALE_ASYNC_FUNCTION);
-	} else throw Kt(Y.NOT_SUPPORT_LOCALE_TYPE);
+			if (V(t)) throw on(J.NOT_SUPPORT_LOCALE_PROMISE_VALUE);
+			return ln = t;
+		} else throw on(J.NOT_SUPPORT_LOCALE_ASYNC_FUNCTION);
+	} else throw on(J.NOT_SUPPORT_LOCALE_TYPE);
 }
-function Zt(e, t, n) {
+function dn(e, t, n) {
 	return [...new Set([n, ...I(t) ? t : B(t) ? Object.keys(t) : R(t) ? [t] : [n]])];
 }
-function Qt(e, t, n) {
-	let r = R(n) ? n : gn, i = e;
+function fn(e, t, n) {
+	let r = R(n) ? n : kn, i = e;
 	i.__localeChainCache ||= /* @__PURE__ */ new Map();
 	let a = i.__localeChainCache.get(r);
 	if (!a) {
 		a = [];
 		let e = [n];
-		for (; I(e);) e = $t(a, e, t);
-		let o = I(t) || !V(t) ? t : t.default ? t.default : null;
-		e = R(o) ? [o] : o, I(e) && $t(a, e, !1), i.__localeChainCache.set(r, a);
+		for (; I(e);) e = pn(a, e, t);
+		let o = I(t) || !H(t) ? t : t.default ? t.default : null;
+		e = R(o) ? [o] : o, I(e) && pn(a, e, !1), i.__localeChainCache.set(r, a);
 	}
 	return a;
 }
-function $t(e, t, n) {
+function pn(e, t, n) {
 	let r = !0;
 	for (let i = 0; i < t.length && z(r); i++) {
 		let a = t[i];
-		R(a) && (r = en(e, t[i], n));
+		R(a) && (r = mn(e, t[i], n));
 	}
 	return r;
 }
-function en(e, t, n) {
+function mn(e, t, n) {
 	let r, i = t.split("-");
 	do
-		r = tn(e, i.join("-"), n), i.splice(-1, 1);
+		r = hn(e, i.join("-"), n), i.splice(-1, 1);
 	while (i.length && r === !0);
 	return r;
 }
-function tn(e, t, n) {
+function hn(e, t, n) {
 	let r = !1;
 	if (!e.includes(t) && (r = !0, t)) {
 		r = t[t.length - 1] !== "!";
 		let i = t.replace(/!/g, "");
-		e.push(i), (I(n) || V(n)) && n[i] && (r = n[i]);
+		e.push(i), (I(n) || H(n)) && n[i] && (r = n[i]);
 	}
 	return r;
 }
-var nn = [];
-nn[0] = {
+var gn = [];
+gn[0] = {
 	w: [0],
 	i: [3, 0],
 	"[": [4],
 	o: [7]
-}, nn[1] = {
+}, gn[1] = {
 	w: [1],
 	".": [2],
 	"[": [4],
 	o: [7]
-}, nn[2] = {
+}, gn[2] = {
 	w: [2],
 	i: [3, 0],
 	0: [3, 0]
-}, nn[3] = {
+}, gn[3] = {
 	i: [3, 0],
 	0: [3, 0],
 	w: [1, 1],
 	".": [2, 1],
 	"[": [4, 1],
 	o: [7, 1]
-}, nn[4] = {
+}, gn[4] = {
 	"'": [5, 0],
 	"\"": [6, 0],
 	"[": [4, 2],
 	"]": [1, 3],
 	o: 8,
 	l: [4, 0]
-}, nn[5] = {
+}, gn[5] = {
 	"'": [4, 0],
 	o: 8,
 	l: [5, 0]
-}, nn[6] = {
+}, gn[6] = {
 	"\"": [4, 0],
 	o: 8,
 	l: [6, 0]
 };
-var rn = /^\s?(?:true|false|-?[\d.]+|'[^']*'|"[^"]*")\s?$/;
-function an(e) {
-	return rn.test(e);
+var _n = /^\s?(?:true|false|-?[\d.]+|'[^']*'|"[^"]*")\s?$/;
+function vn(e) {
+	return _n.test(e);
 }
-function on(e) {
+function yn(e) {
 	let t = e.charCodeAt(0);
 	return t === e.charCodeAt(e.length - 1) && (t === 34 || t === 39) ? e.slice(1, -1) : e;
 }
-function sn(e) {
+function bn(e) {
 	if (e == null) return "o";
 	switch (e.charCodeAt(0)) {
 		case 91:
@@ -1166,11 +1175,11 @@ function sn(e) {
 	}
 	return "i";
 }
-function cn(e) {
+function xn(e) {
 	let t = e.trim();
-	return e.charAt(0) === "0" && isNaN(parseInt(e)) ? !1 : an(t) ? on(t) : "*" + t;
+	return e.charAt(0) === "0" && isNaN(parseInt(e)) ? !1 : vn(t) ? yn(t) : "*" + t;
 }
-function ln(e) {
+function Sn(e) {
 	let t = [], n = -1, r = 0, i = 0, a, o, s, c, l, u, d, f = [];
 	f[0] = () => {
 		o === void 0 ? o = s : o += s;
@@ -1181,7 +1190,7 @@ function ln(e) {
 	}, f[3] = () => {
 		if (i > 0) i--, r = 4, f[0]();
 		else {
-			if (i = 0, o === void 0 || (o = cn(o), o === !1)) return !1;
+			if (i = 0, o === void 0 || (o = xn(o), o === !1)) return !1;
 			f[1]();
 		}
 	};
@@ -1190,29 +1199,29 @@ function ln(e) {
 		if (r === 5 && t === "'" || r === 6 && t === "\"") return n++, s = "\\" + t, f[0](), !0;
 	}
 	for (; r !== null;) if (n++, a = e[n], !(a === "\\" && p())) {
-		if (c = sn(a), d = nn[r], l = d[c] || d.l || 8, l === 8 || (r = l[0], l[1] !== void 0 && (u = f[l[1]], u && (s = a, u() === !1)))) return;
+		if (c = bn(a), d = gn[r], l = d[c] || d.l || 8, l === 8 || (r = l[0], l[1] !== void 0 && (u = f[l[1]], u && (s = a, u() === !1)))) return;
 		if (r === 7) return t;
 	}
 }
-var un = /* @__PURE__ */ new Map();
-function dn(e, t) {
+var Cn = /* @__PURE__ */ new Map();
+function wn(e, t) {
 	return B(e) ? e[t] : null;
 }
-function fn(e, t) {
+function Tn(e, t) {
 	if (!B(e)) return null;
-	let n = un.get(t);
-	if (n || (n = ln(t), n && un.set(t, n)), !n) return null;
+	let n = Cn.get(t);
+	if (n || (n = Sn(t), n && Cn.set(t, n)), !n) return null;
 	let r = n.length, i = e, a = 0;
 	for (; a < r;) {
 		let e = n[a];
-		if (kt.includes(e) && J(i) || !B(i) || !F(i, e)) return null;
+		if (Ht.includes(e) && q(i) || !B(i) || !F(i, e)) return null;
 		let t = i[e];
 		if (t === void 0 || L(i)) return null;
 		i = t, a++;
 	}
 	return i;
 }
-var X = {
+var Y = {
 	NOT_FOUND_KEY: 1,
 	FALLBACK_TO_TRANSLATE: 2,
 	CANNOT_FORMAT_NUMBER: 3,
@@ -1222,53 +1231,53 @@ var X = {
 	EXPERIMENTAL_CUSTOM_MESSAGE_COMPILER: 7,
 	INVALID_NUMBER_ARGUMENT: 8,
 	INVALID_DATE_ARGUMENT: 9
-}, pn = {
-	[X.NOT_FOUND_KEY]: "Not found '{key}' key in '{locale}' locale messages.",
-	[X.FALLBACK_TO_TRANSLATE]: "Fall back to translate '{key}' key with '{target}' locale.",
-	[X.CANNOT_FORMAT_NUMBER]: "Cannot format a number value due to not supported Intl.NumberFormat.",
-	[X.FALLBACK_TO_NUMBER_FORMAT]: "Fall back to number format '{key}' key with '{target}' locale.",
-	[X.CANNOT_FORMAT_DATE]: "Cannot format a date value due to not supported Intl.DateTimeFormat.",
-	[X.FALLBACK_TO_DATE_FORMAT]: "Fall back to datetime format '{key}' key with '{target}' locale.",
-	[X.EXPERIMENTAL_CUSTOM_MESSAGE_COMPILER]: "This project is using Custom Message Compiler, which is an experimental feature. It may receive breaking changes or be removed in the future.",
-	[X.INVALID_NUMBER_ARGUMENT]: "Invalid argument for number formatting: expected a number but received '{value}'.",
-	[X.INVALID_DATE_ARGUMENT]: "Invalid argument for datetime formatting: expected a Date, number, or ISO string but received '{value}'."
+}, En = {
+	[Y.NOT_FOUND_KEY]: "Not found '{key}' key in '{locale}' locale messages.",
+	[Y.FALLBACK_TO_TRANSLATE]: "Fall back to translate '{key}' key with '{target}' locale.",
+	[Y.CANNOT_FORMAT_NUMBER]: "Cannot format a number value due to not supported Intl.NumberFormat.",
+	[Y.FALLBACK_TO_NUMBER_FORMAT]: "Fall back to number format '{key}' key with '{target}' locale.",
+	[Y.CANNOT_FORMAT_DATE]: "Cannot format a date value due to not supported Intl.DateTimeFormat.",
+	[Y.FALLBACK_TO_DATE_FORMAT]: "Fall back to datetime format '{key}' key with '{target}' locale.",
+	[Y.EXPERIMENTAL_CUSTOM_MESSAGE_COMPILER]: "This project is using Custom Message Compiler, which is an experimental feature. It may receive breaking changes or be removed in the future.",
+	[Y.INVALID_NUMBER_ARGUMENT]: "Invalid argument for number formatting: expected a number but received '{value}'.",
+	[Y.INVALID_DATE_ARGUMENT]: "Invalid argument for datetime formatting: expected a Date, number, or ISO string but received '{value}'."
 };
-function mn(e, ...t) {
-	return se(pn[e], ...t);
+function Dn(e, ...t) {
+	return ye(En[e], ...t);
 }
-var hn = "11.4.0", gn = "en-US", _n = (e) => `${e.charAt(0).toLocaleUpperCase()}${e.substr(1)}`;
-function vn() {
+var On = "11.4.0", kn = "en-US", An = (e) => `${e.charAt(0).toLocaleUpperCase()}${e.substr(1)}`;
+function jn() {
 	return {
 		upper: (e, t) => t === "text" && R(e) ? e.toUpperCase() : t === "vnode" && B(e) && "__v_isVNode" in e ? e.children.toUpperCase() : e,
 		lower: (e, t) => t === "text" && R(e) ? e.toLowerCase() : t === "vnode" && B(e) && "__v_isVNode" in e ? e.children.toLowerCase() : e,
-		capitalize: (e, t) => t === "text" && R(e) ? _n(e) : t === "vnode" && B(e) && "__v_isVNode" in e ? _n(e.children) : e
+		capitalize: (e, t) => t === "text" && R(e) ? An(e) : t === "vnode" && B(e) && "__v_isVNode" in e ? An(e.children) : e
 	};
 }
-var yn;
-function bn(e) {
-	yn = e;
+var Mn;
+function Nn(e) {
+	Mn = e;
 }
-var xn;
-function Sn(e) {
-	xn = e;
+var Pn;
+function Fn(e) {
+	Pn = e;
 }
-var Cn;
-function wn(e) {
-	Cn = e;
+var In;
+function Ln(e) {
+	In = e;
 }
-var Tn = null, En = (e) => {
-	Tn = e;
-}, Dn = () => Tn, On = null, kn = (e) => {
-	On = e;
-}, An = () => On, jn = 0;
-function Mn(e = {}) {
-	let t = L(e.onWarn) ? e.onWarn : O, n = R(e.version) ? e.version : hn, r = R(e.locale) || L(e.locale) ? e.locale : gn, i = L(r) ? gn : r, a = I(e.fallbackLocale) || V(e.fallbackLocale) || R(e.fallbackLocale) || e.fallbackLocale === !1 ? e.fallbackLocale : i, o = V(e.messages) ? e.messages : Nn(i), s = V(e.datetimeFormats) ? e.datetimeFormats : Nn(i), c = V(e.numberFormats) ? e.numberFormats : Nn(i), l = N(P(), e.modifiers, vn()), u = e.pluralRules || P(), d = L(e.missing) ? e.missing : null, f = z(e.missingWarn) || de(e.missingWarn) ? e.missingWarn : !0, p = z(e.fallbackWarn) || de(e.fallbackWarn) ? e.fallbackWarn : !0, m = !!e.fallbackFormat, h = !!e.unresolving, g = L(e.postTranslation) ? e.postTranslation : null, _ = V(e.processor) ? e.processor : null, v = z(e.warnHtmlMessage) ? e.warnHtmlMessage : !0, y = !!e.escapeParameter, b = L(e.messageCompiler) ? e.messageCompiler : yn;
-	process.env.NODE_ENV !== "production" && L(e.messageCompiler) && ie(mn(X.EXPERIMENTAL_CUSTOM_MESSAGE_COMPILER));
-	let x = L(e.messageResolver) ? e.messageResolver : xn || dn, S = L(e.localeFallbacker) ? e.localeFallbacker : Cn || Zt, C = B(e.fallbackContext) ? e.fallbackContext : void 0, w = e, T = B(w.__datetimeFormatters) ? w.__datetimeFormatters : /* @__PURE__ */ new Map(), ee = B(w.__numberFormatters) ? w.__numberFormatters : /* @__PURE__ */ new Map(), E = B(w.__meta) ? w.__meta : {};
-	jn++;
-	let D = {
+var Rn = null, zn = (e) => {
+	Rn = e;
+}, Bn = () => Rn, Vn = null, Hn = (e) => {
+	Vn = e;
+}, Un = () => Vn, Wn = 0;
+function Gn(e = {}) {
+	let t = L(e.onWarn) ? e.onWarn : O, n = R(e.version) ? e.version : On, r = R(e.locale) || L(e.locale) ? e.locale : kn, i = L(r) ? kn : r, a = I(e.fallbackLocale) || H(e.fallbackLocale) || R(e.fallbackLocale) || e.fallbackLocale === !1 ? e.fallbackLocale : i, o = H(e.messages) ? e.messages : Kn(i), s = H(e.datetimeFormats) ? e.datetimeFormats : Kn(i), c = H(e.numberFormats) ? e.numberFormats : Kn(i), l = N(P(), e.modifiers, jn()), u = e.pluralRules || P(), d = L(e.missing) ? e.missing : null, f = z(e.missingWarn) || Ce(e.missingWarn) ? e.missingWarn : !0, p = z(e.fallbackWarn) || Ce(e.fallbackWarn) ? e.fallbackWarn : !0, m = !!e.fallbackFormat, h = !!e.unresolving, g = L(e.postTranslation) ? e.postTranslation : null, _ = H(e.processor) ? e.processor : null, v = z(e.warnHtmlMessage) ? e.warnHtmlMessage : !0, y = !!e.escapeParameter, b = L(e.messageCompiler) ? e.messageCompiler : Mn;
+	process.env.NODE_ENV !== "production" && L(e.messageCompiler) && ge(Dn(Y.EXPERIMENTAL_CUSTOM_MESSAGE_COMPILER));
+	let x = L(e.messageResolver) ? e.messageResolver : Pn || wn, S = L(e.localeFallbacker) ? e.localeFallbacker : In || dn, C = B(e.fallbackContext) ? e.fallbackContext : void 0, w = e, T = B(w.__datetimeFormatters) ? w.__datetimeFormatters : /* @__PURE__ */ new Map(), ee = B(w.__numberFormatters) ? w.__numberFormatters : /* @__PURE__ */ new Map(), te = B(w.__meta) ? w.__meta : {};
+	Wn++;
+	let E = {
 		version: n,
-		cid: jn,
+		cid: Wn,
 		locale: r,
 		fallbackLocale: a,
 		messages: o,
@@ -1288,18 +1297,18 @@ function Mn(e = {}) {
 		localeFallbacker: S,
 		fallbackContext: C,
 		onWarn: t,
-		__meta: E
+		__meta: te
 	};
-	return D.datetimeFormats = s, D.numberFormats = c, D.__datetimeFormatters = T, D.__numberFormatters = ee, process.env.NODE_ENV !== "production" && (D.__v_emitter = w.__v_emitter == null ? void 0 : w.__v_emitter), process.env.NODE_ENV !== "production" && Ut(D, n, E), D;
+	return E.datetimeFormats = s, E.numberFormats = c, E.__datetimeFormatters = T, E.__numberFormatters = ee, process.env.NODE_ENV !== "production" && (E.__v_emitter = w.__v_emitter == null ? void 0 : w.__v_emitter), process.env.NODE_ENV !== "production" && nn(E, n, te), E;
 }
-var Nn = (e) => ({ [e]: P() });
-function Pn(e, t) {
+var Kn = (e) => ({ [e]: P() });
+function qn(e, t) {
 	return e instanceof RegExp ? e.test(t) : e;
 }
-function Fn(e, t) {
+function Jn(e, t) {
 	return e instanceof RegExp ? e.test(t) : e;
 }
-function In(e, t, n, r, i) {
+function Yn(e, t, n, r, i) {
 	let { missing: a, onWarn: o } = e;
 	if (process.env.NODE_ENV !== "production") {
 		let r = e.__v_emitter;
@@ -1313,37 +1322,37 @@ function In(e, t, n, r, i) {
 	if (a !== null) {
 		let r = a(e, n, t, i);
 		return R(r) ? r : t;
-	} else return process.env.NODE_ENV !== "production" && Fn(r, t) && o(mn(X.NOT_FOUND_KEY, {
+	} else return process.env.NODE_ENV !== "production" && Jn(r, t) && o(Dn(Y.NOT_FOUND_KEY, {
 		key: t,
 		locale: n
 	})), t;
 }
-function Ln(e, t, n) {
+function Xn(e, t, n) {
 	let r = e;
 	r.__localeChainCache = /* @__PURE__ */ new Map(), e.localeFallbacker(e, n, t);
 }
-function Rn(e, t) {
+function Zn(e, t) {
 	return e === t ? !1 : e.split("-")[0] === t.split("-")[0];
 }
-function zn(e, t) {
+function Qn(e, t) {
 	let n = t.indexOf(e);
 	if (n === -1) return !1;
-	for (let r = n + 1; r < t.length; r++) if (Rn(e, t[r])) return !0;
+	for (let r = n + 1; r < t.length; r++) if (Zn(e, t[r])) return !0;
 	return !1;
 }
-var Bn = typeof Intl < "u", Vn = {
-	dateTimeFormat: Bn && Intl.DateTimeFormat !== void 0,
-	numberFormat: Bn && Intl.NumberFormat !== void 0
+var $n = typeof Intl < "u", er = {
+	dateTimeFormat: $n && Intl.DateTimeFormat !== void 0,
+	numberFormat: $n && Intl.NumberFormat !== void 0
 };
-function Hn(e, ...t) {
+function tr(e, ...t) {
 	let { datetimeFormats: n, unresolving: r, fallbackLocale: i, onWarn: a, localeFallbacker: o } = e, { __datetimeFormatters: s } = e;
-	if (process.env.NODE_ENV !== "production" && !Vn.dateTimeFormat) return a(mn(X.CANNOT_FORMAT_DATE)), "";
-	if (!R(t[0]) && !ue(t[0]) && !M(t[0])) return process.env.NODE_ENV !== "production" && a(mn(X.INVALID_DATE_ARGUMENT, { value: String(t[0]) })), "";
-	let [c, l, u, d] = Wn(...t), f = z(u.missingWarn) ? u.missingWarn : e.missingWarn, p = z(u.fallbackWarn) ? u.fallbackWarn : e.fallbackWarn, m = !!u.part, h = Jt(e, u), g = o(e, i, h);
+	if (process.env.NODE_ENV !== "production" && !er.dateTimeFormat) return a(Dn(Y.CANNOT_FORMAT_DATE)), "";
+	if (!R(t[0]) && !Se(t[0]) && !M(t[0])) return process.env.NODE_ENV !== "production" && a(Dn(Y.INVALID_DATE_ARGUMENT, { value: String(t[0]) })), "";
+	let [c, l, u, d] = rr(...t), f = z(u.missingWarn) ? u.missingWarn : e.missingWarn, p = z(u.fallbackWarn) ? u.fallbackWarn : e.fallbackWarn, m = !!u.part, h = cn(e, u), g = o(e, i, h);
 	if (!R(c) || c === "") return new Intl.DateTimeFormat(h.replace(/!/g, ""), d).format(l);
 	let _ = {}, v, y = null, b = h, x = null, S = "datetime format";
 	for (let t = 0; t < g.length; t++) {
-		if (v = x = g[t], process.env.NODE_ENV !== "production" && h !== v && Pn(p, c) && a(mn(X.FALLBACK_TO_DATE_FORMAT, {
+		if (v = x = g[t], process.env.NODE_ENV !== "production" && h !== v && qn(p, c) && a(Dn(Y.FALLBACK_TO_DATE_FORMAT, {
 			key: c,
 			target: v
 		})), process.env.NODE_ENV !== "production" && h !== v) {
@@ -1356,16 +1365,16 @@ function Hn(e, ...t) {
 				groupId: `${S}:${c}`
 			});
 		}
-		if (_ = n[v] || {}, y = _[c], V(y)) break;
-		In(e, c, v, f, S), b = x;
+		if (_ = n[v] || {}, y = _[c], H(y)) break;
+		Yn(e, c, v, f, S), b = x;
 	}
-	if (!V(y) || !R(v)) return r ? -1 : c;
+	if (!H(y) || !R(v)) return r ? -1 : c;
 	let C = `${v}__${c}`;
-	fe(d) || (C = `${C}__${JSON.stringify(d)}`);
+	we(d) || (C = `${C}__${JSON.stringify(d)}`);
 	let w = s.get(C);
 	return w || (w = new Intl.DateTimeFormat(v, N({}, y, d)), s.set(C, w)), m ? w.formatToParts(l) : w.format(l);
 }
-var Un = [
+var nr = [
 	"localeMatcher",
 	"weekday",
 	"era",
@@ -1387,48 +1396,48 @@ var Un = [
 	"hourCycle",
 	"fractionalSecondDigits"
 ];
-function Wn(...e) {
+function rr(...e) {
 	let [t, n, r, i] = e, a = P(), o = P(), s;
 	if (R(t)) {
 		let e = t.match(/(\d{4}-\d{2}-\d{2})(T|\s)?(.*)/);
-		if (!e) throw Kt(Y.INVALID_ISO_DATE_ARGUMENT);
+		if (!e) throw on(J.INVALID_ISO_DATE_ARGUMENT);
 		let n = e[3] ? e[3].trim().startsWith("T") ? `${e[1].trim()}${e[3].trim()}` : `${e[1].trim()}T${e[3].trim()}` : e[1].trim();
 		s = new Date(n);
 		try {
 			s.toISOString();
 		} catch {
-			throw Kt(Y.INVALID_ISO_DATE_ARGUMENT);
+			throw on(J.INVALID_ISO_DATE_ARGUMENT);
 		}
-	} else if (ue(t)) {
-		if (isNaN(t.getTime())) throw Kt(Y.INVALID_DATE_ARGUMENT);
+	} else if (Se(t)) {
+		if (isNaN(t.getTime())) throw on(J.INVALID_DATE_ARGUMENT);
 		s = t;
 	} else if (M(t)) s = t;
-	else throw Kt(Y.INVALID_ARGUMENT);
-	return R(n) ? a.key = n : V(n) && Object.keys(n).forEach((e) => {
-		Un.includes(e) ? o[e] = n[e] : a[e] = n[e];
-	}), R(r) ? a.locale = r : V(r) && (o = r), V(i) && (o = i), [
+	else throw on(J.INVALID_ARGUMENT);
+	return R(n) ? a.key = n : H(n) && Object.keys(n).forEach((e) => {
+		nr.includes(e) ? o[e] = n[e] : a[e] = n[e];
+	}), R(r) ? a.locale = r : H(r) && (o = r), H(i) && (o = i), [
 		a.key || "",
 		s,
 		a,
 		o
 	];
 }
-function Gn(e, t, n) {
+function ir(e, t, n) {
 	let r = e;
 	for (let e in n) {
 		let n = `${t}__${e}`;
 		r.__datetimeFormatters.has(n) && r.__datetimeFormatters.delete(n);
 	}
 }
-function Kn(e, ...t) {
+function ar(e, ...t) {
 	let { numberFormats: n, unresolving: r, fallbackLocale: i, onWarn: a, localeFallbacker: o } = e, { __numberFormatters: s } = e;
-	if (process.env.NODE_ENV !== "production" && !Vn.numberFormat) return a(mn(X.CANNOT_FORMAT_NUMBER)), "";
-	if (!M(t[0])) return process.env.NODE_ENV !== "production" && a(mn(X.INVALID_NUMBER_ARGUMENT, { value: String(t[0]) })), "";
-	let [c, l, u, d] = Jn(...t), f = z(u.missingWarn) ? u.missingWarn : e.missingWarn, p = z(u.fallbackWarn) ? u.fallbackWarn : e.fallbackWarn, m = !!u.part, h = Jt(e, u), g = o(e, i, h);
+	if (process.env.NODE_ENV !== "production" && !er.numberFormat) return a(Dn(Y.CANNOT_FORMAT_NUMBER)), "";
+	if (!M(t[0])) return process.env.NODE_ENV !== "production" && a(Dn(Y.INVALID_NUMBER_ARGUMENT, { value: String(t[0]) })), "";
+	let [c, l, u, d] = sr(...t), f = z(u.missingWarn) ? u.missingWarn : e.missingWarn, p = z(u.fallbackWarn) ? u.fallbackWarn : e.fallbackWarn, m = !!u.part, h = cn(e, u), g = o(e, i, h);
 	if (!R(c) || c === "") return new Intl.NumberFormat(h.replace(/!/g, ""), d).format(l);
 	let _ = {}, v, y = null, b = h, x = null, S = "number format";
 	for (let t = 0; t < g.length; t++) {
-		if (v = x = g[t], process.env.NODE_ENV !== "production" && h !== v && Pn(p, c) && a(mn(X.FALLBACK_TO_NUMBER_FORMAT, {
+		if (v = x = g[t], process.env.NODE_ENV !== "production" && h !== v && qn(p, c) && a(Dn(Y.FALLBACK_TO_NUMBER_FORMAT, {
 			key: c,
 			target: v
 		})), process.env.NODE_ENV !== "production" && h !== v) {
@@ -1441,16 +1450,16 @@ function Kn(e, ...t) {
 				groupId: `${S}:${c}`
 			});
 		}
-		if (_ = n[v] || {}, y = _[c], V(y)) break;
-		In(e, c, v, f, S), b = x;
+		if (_ = n[v] || {}, y = _[c], H(y)) break;
+		Yn(e, c, v, f, S), b = x;
 	}
-	if (!V(y) || !R(v)) return r ? -1 : c;
+	if (!H(y) || !R(v)) return r ? -1 : c;
 	let C = `${v}__${c}`;
-	fe(d) || (C = `${C}__${JSON.stringify(d)}`);
+	we(d) || (C = `${C}__${JSON.stringify(d)}`);
 	let w = s.get(C);
 	return w || (w = new Intl.NumberFormat(v, N({}, y, d)), s.set(C, w)), m ? w.formatToParts(l) : w.format(l);
 }
-var qn = [
+var or = [
 	"localeMatcher",
 	"style",
 	"currency",
@@ -1472,42 +1481,42 @@ var qn = [
 	"roundingIncrement",
 	"trailingZeroDisplay"
 ];
-function Jn(...e) {
+function sr(...e) {
 	let [t, n, r, i] = e, a = P(), o = P();
-	if (!M(t)) throw Kt(Y.INVALID_ARGUMENT);
+	if (!M(t)) throw on(J.INVALID_ARGUMENT);
 	let s = t;
-	return R(n) ? a.key = n : V(n) && Object.keys(n).forEach((e) => {
-		qn.includes(e) ? o[e] = n[e] : a[e] = n[e];
-	}), R(r) ? a.locale = r : V(r) && (o = r), V(i) && (o = i), [
+	return R(n) ? a.key = n : H(n) && Object.keys(n).forEach((e) => {
+		or.includes(e) ? o[e] = n[e] : a[e] = n[e];
+	}), R(r) ? a.locale = r : H(r) && (o = r), H(i) && (o = i), [
 		a.key || "",
 		s,
 		a,
 		o
 	];
 }
-function Yn(e, t, n) {
+function cr(e, t, n) {
 	let r = e;
 	for (let e in n) {
 		let n = `${t}__${e}`;
 		r.__numberFormatters.has(n) && r.__numberFormatters.delete(n);
 	}
 }
-var Xn = (e) => e, Zn = (e) => "", Qn = "text", $n = (e) => e.length === 0 ? "" : we(e), er = Ce;
-function tr(e, t) {
+var lr = (e) => e, ur = (e) => "", dr = "text", fr = (e) => e.length === 0 ? "" : Fe(e), pr = Pe;
+function mr(e, t) {
 	return e = Math.abs(e), t === 2 ? e === 1 ? 0 : 1 : Math.min(e, 2);
 }
-function nr(e) {
+function hr(e) {
 	let t = M(e.pluralIndex) ? e.pluralIndex : -1;
 	return M(e.named?.count) ? e.named.count : M(e.named?.n) ? e.named.n : t;
 }
-function rr(e = {}) {
-	let t = e.locale, n = nr(e), r = R(t) && L(e.pluralRules?.[t]) ? e.pluralRules[t] : tr, i = r === tr ? void 0 : tr, a = (e) => e[r(n, e.length, i)], o = e.list || [], s = (e) => o[e], c = e.named || P();
+function gr(e = {}) {
+	let t = e.locale, n = hr(e), r = R(t) && L(e.pluralRules?.[t]) ? e.pluralRules[t] : mr, i = r === mr ? void 0 : mr, a = (e) => e[r(n, e.length, i)], o = e.list || [], s = (e) => o[e], c = e.named || P();
 	M(e.pluralIndex) && (c.count ||= e.pluralIndex, c.n ||= e.pluralIndex);
 	let l = (e) => c[e];
 	function u(t, n) {
-		return (L(e.messages) ? e.messages(t, !!n) : B(e.messages) ? e.messages[t] : !1) || (e.parent ? e.parent.message(t) : Zn);
+		return (L(e.messages) ? e.messages(t, !!n) : B(e.messages) ? e.messages[t] : !1) || (e.parent ? e.parent.message(t) : ur);
 	}
-	let d = (t) => e.modifiers ? e.modifiers[t] : Xn, f = L(e.processor?.normalize) ? e.processor.normalize : $n, p = L(e.processor?.interpolate) ? e.processor.interpolate : er, m = {
+	let d = (t) => e.modifiers ? e.modifiers[t] : lr, f = L(e.processor?.normalize) ? e.processor.normalize : fr, p = L(e.processor?.interpolate) ? e.processor.interpolate : pr, m = {
 		list: s,
 		named: l,
 		plural: a,
@@ -1518,50 +1527,50 @@ function rr(e = {}) {
 			return a ? d(a)(c, i) : c;
 		},
 		message: u,
-		type: R(e.processor?.type) ? e.processor.type : Qn,
+		type: R(e.processor?.type) ? e.processor.type : dr,
 		interpolate: p,
 		normalize: f,
 		values: N(P(), o, c)
 	};
 	return m;
 }
-var ir = () => "", Z = (e) => L(e);
-function ar(e, ...t) {
-	let { fallbackFormat: n, postTranslation: r, unresolving: i, messageCompiler: a, fallbackLocale: o, messages: s } = e, [c, l] = ur(...t), u = z(l.missingWarn) ? l.missingWarn : e.missingWarn, d = z(l.fallbackWarn) ? l.fallbackWarn : e.fallbackWarn, f = z(l.escapeParameter) ? l.escapeParameter : e.escapeParameter, p = !!l.resolvedMessage, m = R(l.default) || z(l.default) ? z(l.default) ? a ? c : () => c : l.default : n ? a ? c : () => c : null, h = n || m != null && (R(m) || L(m)), g = Jt(e, l);
-	f && or(l);
+var _r = () => "", X = (e) => L(e);
+function vr(e, ...t) {
+	let { fallbackFormat: n, postTranslation: r, unresolving: i, messageCompiler: a, fallbackLocale: o, messages: s } = e, [c, l] = Cr(...t), u = z(l.missingWarn) ? l.missingWarn : e.missingWarn, d = z(l.fallbackWarn) ? l.fallbackWarn : e.fallbackWarn, f = z(l.escapeParameter) ? l.escapeParameter : e.escapeParameter, p = !!l.resolvedMessage, m = R(l.default) || z(l.default) ? z(l.default) ? a ? c : () => c : l.default : n ? a ? c : () => c : null, h = n || m != null && (R(m) || L(m)), g = cn(e, l);
+	f && yr(l);
 	let [_, v, y] = p ? [
 		c,
 		g,
 		s[g] || P()
-	] : sr(e, c, g, o, d, u), b = _, x = c;
-	if (!p && !(R(b) || J(b) || Z(b)) && h && (b = m, x = b), !p && (!(R(b) || J(b) || Z(b)) || !R(v))) return i ? -1 : c;
+	] : br(e, c, g, o, d, u), b = _, x = c;
+	if (!p && !(R(b) || q(b) || X(b)) && h && (b = m, x = b), !p && (!(R(b) || q(b) || X(b)) || !R(v))) return i ? -1 : c;
 	if (process.env.NODE_ENV !== "production" && R(b) && e.messageCompiler == null) return O(`The message format compilation is not supported in this build. Because message compiler isn't included. You need to pre-compilation all message format. So translate function return '${c}'.`), c;
-	let S = !1, C = Z(b) ? b : cr(e, c, v, b, x, () => {
+	let S = !1, C = X(b) ? b : xr(e, c, v, b, x, () => {
 		S = !0;
 	});
 	if (S) return b;
-	let w = lr(e, C, rr(pr(e, v, y, l))), T = r ? r(w, c) : w;
-	if (f && R(T) && (T = ve(T)), process.env.NODE_ENV !== "production") {
+	let w = Sr(e, C, gr(Er(e, v, y, l))), T = r ? r(w, c) : w;
+	if (f && R(T) && (T = Ae(T)), process.env.NODE_ENV !== "production") {
 		let t = {
 			timestamp: Date.now(),
-			key: R(c) ? c : Z(b) ? b.key : "",
-			locale: v || (Z(b) ? b.locale : ""),
-			format: R(b) ? b : Z(b) ? b.source : "",
+			key: R(c) ? c : X(b) ? b.key : "",
+			locale: v || (X(b) ? b.locale : ""),
+			format: R(b) ? b : X(b) ? b.source : "",
 			message: T
 		};
-		t.meta = N({}, e.__meta, Dn() || {}), Wt(t);
+		t.meta = N({}, e.__meta, Bn() || {}), rn(t);
 	}
 	return T;
 }
-function or(e) {
-	I(e.list) ? e.list = e.list.map((e) => R(e) ? ge(e) : e) : B(e.named) && Object.keys(e.named).forEach((t) => {
-		R(e.named[t]) && (e.named[t] = ge(e.named[t]));
+function yr(e) {
+	I(e.list) ? e.list = e.list.map((e) => R(e) ? Oe(e) : e) : B(e.named) && Object.keys(e.named).forEach((t) => {
+		R(e.named[t]) && (e.named[t] = Oe(e.named[t]));
 	});
 }
-function sr(e, t, n, r, i, a) {
+function br(e, t, n, r, i, a) {
 	let { messages: o, onWarn: s, messageResolver: c, localeFallbacker: l } = e, u = l(e, r, n), d = P(), f, p = null, m = n, h = null, g = "translate";
 	for (let r = 0; r < u.length; r++) {
-		f = h = u[r], process.env.NODE_ENV !== "production" && n !== f && !Rn(n, f) && Pn(i, t) && s(mn(X.FALLBACK_TO_TRANSLATE, {
+		f = h = u[r], process.env.NODE_ENV !== "production" && n !== f && !Zn(n, f) && qn(i, t) && s(Dn(Y.FALLBACK_TO_TRANSLATE, {
 			key: t,
 			target: f
 		}));
@@ -1582,11 +1591,11 @@ function sr(e, t, n, r, i, a) {
 				message: p,
 				time: e - _,
 				groupId: `${g}:${t}`
-			}), v && y && A && ae && (A(y), ae("intlify message resolve", v, y));
+			}), v && y && A && _e && (A(y), _e("intlify message resolve", v, y));
 		}
-		if (R(p) || J(p) || Z(p)) break;
-		if (!zn(f, u)) {
-			let n = In(e, t, f, a, g);
+		if (R(p) || q(p) || X(p)) break;
+		if (!Qn(f, u)) {
+			let n = Yn(e, t, f, a, g);
 			n !== t && (p = n);
 		}
 		m = h;
@@ -1597,9 +1606,9 @@ function sr(e, t, n, r, i, a) {
 		d
 	];
 }
-function cr(e, t, n, r, i, a) {
+function xr(e, t, n, r, i, a) {
 	let { messageCompiler: o, warnHtmlMessage: s } = e;
-	if (Z(r)) {
+	if (X(r)) {
 		let e = r;
 		return e.locale = e.locale || n, e.key = e.key || t, e;
 	}
@@ -1609,7 +1618,7 @@ function cr(e, t, n, r, i, a) {
 	}
 	let c = process.env.NODE_ENV === "production" ? void 0 : e.__v_emitter, l = null, u, d;
 	process.env.NODE_ENV !== "production" && k && c && (l = window.performance.now(), u = "intlify-message-compilation-start", d = "intlify-message-compilation-end", A && A(u));
-	let f = o(r, dr(e, n, i, r, s, a));
+	let f = o(r, wr(e, n, i, r, s, a));
 	if (process.env.NODE_ENV !== "production" && k && c) {
 		let e = window.performance.now();
 		c && l && c.emit("message-compilation", {
@@ -1617,11 +1626,11 @@ function cr(e, t, n, r, i, a) {
 			message: r,
 			time: e - l,
 			groupId: `translate:${t}`
-		}), u && d && A && ae && (A(d), ae("intlify message compilation", u, d));
+		}), u && d && A && _e && (A(d), _e("intlify message compilation", u, d));
 	}
 	return f.locale = n, f.key = t, f.source = r, f;
 }
-function lr(e, t, n) {
+function Sr(e, t, n) {
 	let r = process.env.NODE_ENV === "production" ? void 0 : e.__v_emitter, i = null, a, o;
 	process.env.NODE_ENV !== "production" && k && r && (i = window.performance.now(), a = "intlify-message-evaluation-start", o = "intlify-message-evaluation-end", A && A(a));
 	let s = t(n);
@@ -1632,24 +1641,24 @@ function lr(e, t, n) {
 			value: s,
 			time: e - i,
 			groupId: `translate:${t.key}`
-		}), a && o && A && ae && (A(o), ae("intlify message evaluation", a, o));
+		}), a && o && A && _e && (A(o), _e("intlify message evaluation", a, o));
 	}
 	return s;
 }
-function ur(...e) {
+function Cr(...e) {
 	let [t, n, r] = e, i = P();
-	if (!R(t) && !M(t) && !Z(t) && !J(t)) throw Kt(Y.INVALID_ARGUMENT);
-	let a = M(t) ? String(t) : (Z(t), t);
-	return M(n) ? i.plural = n : R(n) ? i.default = n : V(n) && !fe(n) ? i.named = n : I(n) && (i.list = n), M(r) ? i.plural = r : R(r) ? i.default = r : V(r) && N(i, r), [a, i];
+	if (!R(t) && !M(t) && !X(t) && !q(t)) throw on(J.INVALID_ARGUMENT);
+	let a = M(t) ? String(t) : (X(t), t);
+	return M(n) ? i.plural = n : R(n) ? i.default = n : H(n) && !we(n) ? i.named = n : I(n) && (i.list = n), M(r) ? i.plural = r : R(r) ? i.default = r : H(r) && N(i, r), [a, i];
 }
-function dr(e, t, n, r, i, a) {
+function wr(e, t, n, r, i, a) {
 	return {
 		locale: t,
 		key: n,
 		warnHtmlMessage: i,
 		onError: (t) => {
 			if (a && a(t), process.env.NODE_ENV !== "production") {
-				let i = fr(r), a = t.location && i && Ee(i, t.location.start.offset, t.location.end.offset), o = e.__v_emitter;
+				let i = Tr(r), a = t.location && i && Le(i, t.location.start.offset, t.location.end.offset), o = e.__v_emitter;
 				o && i && o.emit("compile-error", {
 					message: i,
 					error: t.message,
@@ -1662,14 +1671,14 @@ function dr(e, t, n, r, i, a) {
 			}
 			throw t;
 		},
-		onCacheKey: (e) => ce(t, n, e)
+		onCacheKey: (e) => be(t, n, e)
 	};
 }
-function fr(e) {
+function Tr(e) {
 	if (R(e)) return e;
 	if (e.loc && e.loc.source) return e.loc.source;
 }
-function pr(e, t, n, r) {
+function Er(e, t, n, r) {
 	let { modifiers: i, pluralRules: a, messageResolver: o, fallbackLocale: s, fallbackWarn: c, missingWarn: l, fallbackContext: u } = e, d = {
 		locale: t,
 		modifiers: i,
@@ -1677,21 +1686,94 @@ function pr(e, t, n, r) {
 		messages: (r, i) => {
 			let a = o(n, r);
 			if (a == null && (u || i)) {
-				let [n, , i] = sr(u || e, r, t, s, c, l);
+				let [n, , i] = br(u || e, r, t, s, c, l);
 				a = n ?? o(i, r);
 			}
-			if (R(a) || J(a)) {
-				let n = !1, i = cr(e, r, t, a, r, () => {
+			if (R(a) || q(a)) {
+				let n = !1, i = xr(e, r, t, a, r, () => {
 					n = !0;
 				});
-				return n ? ir : i;
-			} else if (Z(a)) return a;
-			else return ir;
+				return n ? _r : i;
+			} else if (X(a)) return a;
+			else return _r;
 		}
 	};
 	return e.processor && (d.processor = e.processor), r.list && (d.list = r.list), r.named && (d.named = r.named), M(r.plural) && (d.pluralIndex = r.plural), d;
 }
-var mr = "11.4.0", Q = {
+function Dr() {
+	return Or().__VUE_DEVTOOLS_GLOBAL_HOOK__;
+}
+function Or() {
+	return typeof navigator < "u" && typeof window < "u" ? window : typeof globalThis < "u" ? globalThis : {};
+}
+var kr = typeof Proxy == "function", Ar = "devtools-plugin:setup", jr = "plugin:settings:set", Mr, Nr;
+function Pr() {
+	return Mr === void 0 && (typeof window < "u" && window.performance ? (Mr = !0, Nr = window.performance) : typeof globalThis < "u" && globalThis.perf_hooks?.performance ? (Mr = !0, Nr = globalThis.perf_hooks.performance) : Mr = !1), Mr;
+}
+function Fr() {
+	return Pr() ? Nr.now() : Date.now();
+}
+var Ir = class {
+	constructor(e, t) {
+		this.target = null, this.targetQueue = [], this.onQueue = [], this.plugin = e, this.hook = t;
+		let n = {};
+		if (e.settings) for (let t in e.settings) n[t] = e.settings[t].defaultValue;
+		let r = `__vue-devtools-plugin-settings__${e.id}`, i = Object.assign({}, n);
+		try {
+			let e = localStorage.getItem(r), t = JSON.parse(e);
+			Object.assign(i, t);
+		} catch {}
+		this.fallbacks = {
+			getSettings() {
+				return i;
+			},
+			setSettings(e) {
+				try {
+					localStorage.setItem(r, JSON.stringify(e));
+				} catch {}
+				i = e;
+			},
+			now() {
+				return Fr();
+			}
+		}, t && t.on(jr, (e, t) => {
+			e === this.plugin.id && this.fallbacks.setSettings(t);
+		}), this.proxiedOn = new Proxy({}, { get: (e, t) => this.target ? this.target.on[t] : (...e) => {
+			this.onQueue.push({
+				method: t,
+				args: e
+			});
+		} }), this.proxiedTarget = new Proxy({}, { get: (e, t) => this.target ? this.target[t] : t === "on" ? this.proxiedOn : Object.keys(this.fallbacks).includes(t) ? (...e) => (this.targetQueue.push({
+			method: t,
+			args: e,
+			resolve: () => {}
+		}), this.fallbacks[t](...e)) : (...e) => new Promise((n) => {
+			this.targetQueue.push({
+				method: t,
+				args: e,
+				resolve: n
+			});
+		}) });
+	}
+	async setRealTarget(e) {
+		this.target = e;
+		for (let e of this.onQueue) this.target.on[e.method](...e.args);
+		for (let e of this.targetQueue) e.resolve(await this.target[e.method](...e.args));
+	}
+};
+function Lr(e, t) {
+	let n = e, r = Or(), i = Dr(), a = kr && n.enableEarlyProxy;
+	if (i && (r.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !a)) i.emit(Ar, e, t);
+	else {
+		let e = a ? new Ir(n, i) : null;
+		(r.__VUE_DEVTOOLS_PLUGINS__ = r.__VUE_DEVTOOLS_PLUGINS__ || []).push({
+			pluginDescriptor: n,
+			setupFn: t,
+			proxy: e
+		}), e && t(e.proxiedTarget);
+	}
+}
+var Rr = "11.4.0", Z = {
 	UNEXPECTED_RETURN_TYPE: 24,
 	INVALID_ARGUMENT: 25,
 	MUST_BE_CALL_SETUP_TOP: 26,
@@ -1704,34 +1786,34 @@ var mr = "11.4.0", Q = {
 	NOT_COMPATIBLE_LEGACY_VUE_I18N: 33,
 	NOT_AVAILABLE_COMPOSITION_IN_LEGACY: 34
 };
-function hr(e, ...t) {
-	return Me(e, null, process.env.NODE_ENV === "production" ? void 0 : {
-		messages: gr,
+function Q(e, ...t) {
+	return We(e, null, process.env.NODE_ENV === "production" ? void 0 : {
+		messages: zr,
 		args: t
 	});
 }
-var gr = {
-	[Q.UNEXPECTED_RETURN_TYPE]: "Unexpected return type in composer",
-	[Q.INVALID_ARGUMENT]: "Invalid argument",
-	[Q.MUST_BE_CALL_SETUP_TOP]: "Must be called at the top of a `setup` function",
-	[Q.NOT_INSTALLED]: "Need to install with `app.use` function",
-	[Q.UNEXPECTED_ERROR]: "Unexpected error",
-	[Q.REQUIRED_VALUE]: "Required in value: {0}",
-	[Q.INVALID_VALUE]: "Invalid value",
-	[Q.CANNOT_SETUP_VUE_DEVTOOLS_PLUGIN]: "Cannot setup vue-devtools plugin",
-	[Q.NOT_INSTALLED_WITH_PROVIDE]: "Need to install with `provide` function",
-	[Q.NOT_COMPATIBLE_LEGACY_VUE_I18N]: "Not compatible legacy VueI18n.",
-	[Q.NOT_AVAILABLE_COMPOSITION_IN_LEGACY]: "Not available Compostion API in Legacy API mode. Please make sure that the legacy API mode is working properly"
-}, _r = j("__translateVNode"), vr = j("__datetimeParts"), yr = j("__numberParts"), br = j("__enableEmitter"), xr = j("__disableEmitter"), Sr = j("__setPluralRules");
+var zr = {
+	[Z.UNEXPECTED_RETURN_TYPE]: "Unexpected return type in composer",
+	[Z.INVALID_ARGUMENT]: "Invalid argument",
+	[Z.MUST_BE_CALL_SETUP_TOP]: "Must be called at the top of a `setup` function",
+	[Z.NOT_INSTALLED]: "Need to install with `app.use` function",
+	[Z.UNEXPECTED_ERROR]: "Unexpected error",
+	[Z.REQUIRED_VALUE]: "Required in value: {0}",
+	[Z.INVALID_VALUE]: "Invalid value",
+	[Z.CANNOT_SETUP_VUE_DEVTOOLS_PLUGIN]: "Cannot setup vue-devtools plugin",
+	[Z.NOT_INSTALLED_WITH_PROVIDE]: "Need to install with `provide` function",
+	[Z.NOT_COMPATIBLE_LEGACY_VUE_I18N]: "Not compatible legacy VueI18n.",
+	[Z.NOT_AVAILABLE_COMPOSITION_IN_LEGACY]: "Not available Compostion API in Legacy API mode. Please make sure that the legacy API mode is working properly"
+}, Br = j("__translateVNode"), Vr = j("__datetimeParts"), Hr = j("__numberParts"), Ur = j("__enableEmitter"), Wr = j("__disableEmitter"), Gr = j("__setPluralRules");
 j("__intlifyMeta");
-var Cr = j("__injectWithOption"), wr = j("__dispose"), $ = {
+var Kr = j("__injectWithOption"), qr = j("__dispose"), $ = {
 	FALLBACK_TO_ROOT: 10,
 	NOT_FOUND_PARENT_SCOPE: 11,
 	IGNORE_OBJ_FLATTEN: 12,
 	DEPRECATE_LEGACY_MODE: 13,
 	DEPRECATE_TRANSLATE_CUSTOME_DIRECTIVE: 14,
 	DUPLICATE_USE_I18N_CALLING: 15
-}, Tr = {
+}, Jr = {
 	[$.FALLBACK_TO_ROOT]: "Fall back to {type} '{key}' with root locale.",
 	[$.NOT_FOUND_PARENT_SCOPE]: "Not found parent scope. use the global scope.",
 	[$.IGNORE_OBJ_FLATTEN]: "Ignore object flatten: '{key}' key has an string value",
@@ -1739,45 +1821,45 @@ var Cr = j("__injectWithOption"), wr = j("__dispose"), $ = {
 	[$.DEPRECATE_TRANSLATE_CUSTOME_DIRECTIVE]: "'v-t' has been deprecated in v11. Use translate APIs ('t' or '$t') instead.",
 	[$.DUPLICATE_USE_I18N_CALLING]: "Duplicate `useI18n` calling by local scope. Please don't call it on local scope, due to it does not work properly in component."
 };
-function Er(e, ...t) {
-	return se(Tr[e], ...t);
+function Yr(e, ...t) {
+	return ye(Jr[e], ...t);
 }
-function Dr(e) {
-	if (!B(e) || J(e)) return e;
-	for (let t in e) if (F(e, t)) if (!t.includes(".")) B(e[t]) && Dr(e[t]);
+function Xr(e) {
+	if (!B(e) || q(e)) return e;
+	for (let t in e) if (F(e, t)) if (!t.includes(".")) B(e[t]) && Xr(e[t]);
 	else {
 		let n = t.split("."), r = n.length - 1, i = e, a = !1;
 		for (let e = 0; e < r; e++) {
 			if (n[e] === "__proto__") throw Error(`unsafe key: ${n[e]}`);
 			if (n[e] in i || (i[n[e]] = P()), !B(i[n[e]])) {
-				process.env.NODE_ENV !== "production" && O(Er($.IGNORE_OBJ_FLATTEN, { key: n[e] })), a = !0;
+				process.env.NODE_ENV !== "production" && O(Yr($.IGNORE_OBJ_FLATTEN, { key: n[e] })), a = !0;
 				break;
 			}
 			i = i[n[e]];
 		}
-		if (a || (J(i) ? kt.includes(n[r]) || delete e[t] : (i[n[r]] = e[t], delete e[t])), !J(i)) {
+		if (a || (q(i) ? Ht.includes(n[r]) || delete e[t] : (i[n[r]] = e[t], delete e[t])), !q(i)) {
 			let e = i[n[r]];
-			B(e) && Dr(e);
+			B(e) && Xr(e);
 		}
 	}
 	return e;
 }
-function Or(e, t) {
-	let { messages: n, __i18n: r, messageResolver: i, flatJson: a } = t, o = V(n) ? n : I(r) ? P() : { [e]: P() };
+function Zr(e, t) {
+	let { messages: n, __i18n: r, messageResolver: i, flatJson: a } = t, o = H(n) ? n : I(r) ? P() : { [e]: P() };
 	if (I(r) && r.forEach((e) => {
 		if ("locale" in e && "resource" in e) {
 			let { locale: t, resource: n } = e;
-			t ? (o[t] = o[t] || P(), ke(n, o[t])) : ke(n, o);
-		} else R(e) && ke(JSON.parse(e), o);
-	}), i == null && a) for (let e in o) F(o, e) && Dr(o[e]);
+			t ? (o[t] = o[t] || P(), Be(n, o[t])) : Be(n, o);
+		} else R(e) && Be(JSON.parse(e), o);
+	}), i == null && a) for (let e in o) F(o, e) && Xr(o[e]);
 	return o;
 }
-function kr(e) {
+function Qr(e) {
 	return e.type;
 }
-function Ar(e, t, n) {
+function $r(e, t, n) {
 	let r = B(t.messages) ? t.messages : P();
-	"__i18nGlobal" in n && (r = Or(e.locale.value, {
+	"__i18nGlobal" in n && (r = Zr(e.locale.value, {
 		messages: r,
 		__i18n: n.__i18nGlobal
 	}));
@@ -1797,49 +1879,49 @@ function Ar(e, t, n) {
 		});
 	}
 }
-function jr(e) {
+function ei(e) {
 	return l(n, null, e, 0);
 }
-function Mr() {
+function ti() {
 	let t = "currentInstance";
 	return t in e ? e[t] : e.getCurrentInstance();
 }
-var Nr = "__INTLIFY_META__", Pr = () => [], Fr = () => !1, Ir = 0;
-function Lr(e) {
-	return ((t, n, r, i) => e(n, r, Mr() || void 0, i));
+var ni = "__INTLIFY_META__", ri = () => [], ii = () => !1, ai = 0;
+function oi(e) {
+	return ((t, n, r, i) => e(n, r, ti() || void 0, i));
 }
-var Rr = () => {
-	let e = Mr(), t = null;
-	return e && (t = kr(e)[Nr]) ? { [Nr]: t } : null;
+var si = () => {
+	let e = ti(), t = null;
+	return e && (t = Qr(e)[ni]) ? { [ni]: t } : null;
 };
-function zr(e = {}) {
-	let { __root: t, __injectWithOption: n } = e, i = t === void 0, a = e.flatJson, o = k ? b : C, s = z(e.inheritLocale) ? e.inheritLocale : !0, c = o(t && s ? t.locale.value : R(e.locale) ? e.locale : gn), l = o(t && s ? t.fallbackLocale.value : R(e.fallbackLocale) || I(e.fallbackLocale) || V(e.fallbackLocale) || e.fallbackLocale === !1 ? e.fallbackLocale : c.value), u = o(Or(c.value, e)), d = o(V(e.datetimeFormats) ? e.datetimeFormats : { [c.value]: {} }), f = o(V(e.numberFormats) ? e.numberFormats : { [c.value]: {} }), p = t ? t.missingWarn : z(e.missingWarn) || de(e.missingWarn) ? e.missingWarn : !0, m = t ? t.fallbackWarn : z(e.fallbackWarn) || de(e.fallbackWarn) ? e.fallbackWarn : !0, h = t ? t.fallbackRoot : z(e.fallbackRoot) ? e.fallbackRoot : !0, g = !!e.fallbackFormat, _ = L(e.missing) ? e.missing : null, v = L(e.missing) ? Lr(e.missing) : null, y = L(e.postTranslation) ? e.postTranslation : null, x = t ? t.warnHtmlMessage : z(e.warnHtmlMessage) ? e.warnHtmlMessage : !0, S = !!e.escapeParameter, w = t ? t.modifiers : V(e.modifiers) ? e.modifiers : {}, T = e.pluralRules || t && t.pluralRules, E;
-	E = (() => {
-		i && kn(null);
+function ci(e = {}) {
+	let { __root: t, __injectWithOption: n } = e, i = t === void 0, a = e.flatJson, o = k ? C : te, s = z(e.inheritLocale) ? e.inheritLocale : !0, c = o(t && s ? t.locale.value : R(e.locale) ? e.locale : kn), l = o(t && s ? t.fallbackLocale.value : R(e.fallbackLocale) || I(e.fallbackLocale) || H(e.fallbackLocale) || e.fallbackLocale === !1 ? e.fallbackLocale : c.value), u = o(Zr(c.value, e)), d = o(H(e.datetimeFormats) ? e.datetimeFormats : { [c.value]: {} }), f = o(H(e.numberFormats) ? e.numberFormats : { [c.value]: {} }), p = t ? t.missingWarn : z(e.missingWarn) || Ce(e.missingWarn) ? e.missingWarn : !0, m = t ? t.fallbackWarn : z(e.fallbackWarn) || Ce(e.fallbackWarn) ? e.fallbackWarn : !0, h = t ? t.fallbackRoot : z(e.fallbackRoot) ? e.fallbackRoot : !0, g = !!e.fallbackFormat, _ = L(e.missing) ? e.missing : null, v = L(e.missing) ? oi(e.missing) : null, y = L(e.postTranslation) ? e.postTranslation : null, b = t ? t.warnHtmlMessage : z(e.warnHtmlMessage) ? e.warnHtmlMessage : !0, x = !!e.escapeParameter, S = t ? t.modifiers : H(e.modifiers) ? e.modifiers : {}, w = e.pluralRules || t && t.pluralRules, T;
+	T = (() => {
+		i && Hn(null);
 		let t = {
-			version: mr,
+			version: Rr,
 			locale: c.value,
 			fallbackLocale: l.value,
 			messages: u.value,
-			modifiers: w,
-			pluralRules: T,
+			modifiers: S,
+			pluralRules: w,
 			missing: v === null ? void 0 : v,
 			missingWarn: p,
 			fallbackWarn: m,
 			fallbackFormat: g,
 			unresolving: !0,
 			postTranslation: y === null ? void 0 : y,
-			warnHtmlMessage: x,
-			escapeParameter: S,
+			warnHtmlMessage: b,
+			escapeParameter: x,
 			messageResolver: e.messageResolver,
 			messageCompiler: e.messageCompiler,
 			__meta: { framework: "vue" }
 		};
-		t.datetimeFormats = d.value, t.numberFormats = f.value, t.__datetimeFormatters = V(E) ? E.__datetimeFormatters : void 0, t.__numberFormatters = V(E) ? E.__numberFormatters : void 0, process.env.NODE_ENV !== "production" && (t.__v_emitter = V(E) ? E.__v_emitter : void 0);
-		let n = Mn(t);
-		return i && kn(n), n;
-	})(), Ln(E, c.value, l.value);
-	function D() {
+		t.datetimeFormats = d.value, t.numberFormats = f.value, t.__datetimeFormatters = H(T) ? T.__datetimeFormatters : void 0, t.__numberFormatters = H(T) ? T.__numberFormatters : void 0, process.env.NODE_ENV !== "production" && (t.__v_emitter = H(T) ? T.__v_emitter : void 0);
+		let n = Gn(t);
+		return i && Hn(n), n;
+	})(), Xn(T, c.value, l.value);
+	function ee() {
 		return [
 			c.value,
 			l.value,
@@ -1848,47 +1930,47 @@ function zr(e = {}) {
 			f.value
 		];
 	}
-	let te = r({
+	let E = r({
 		get: () => c.value,
 		set: (e) => {
-			E.locale = e, c.value = e;
+			T.locale = e, c.value = e;
 		}
-	}), ne = r({
+	}), re = r({
 		get: () => l.value,
 		set: (e) => {
-			E.fallbackLocale = e, l.value = e, Ln(E, c.value, e);
+			T.fallbackLocale = e, l.value = e, Xn(T, c.value, e);
 		}
-	}), re = r(() => u.value), ie = r(() => d.value), A = r(() => f.value);
-	function ae() {
+	}), ie = r(() => u.value), ae = r(() => d.value), oe = r(() => f.value);
+	function se() {
 		return L(y) ? y : null;
 	}
-	function oe(e) {
-		y = e, E.postTranslation = e;
+	function ce(e) {
+		y = e, T.postTranslation = e;
 	}
-	function se() {
+	function le() {
 		return _;
 	}
-	function j(e) {
-		e !== null && (v = Lr(e)), _ = e, E.missing = v;
+	function ue(e) {
+		e !== null && (v = oi(e)), _ = e, T.missing = v;
 	}
-	function ce(e, t) {
+	function de(e, t) {
 		return e !== "translate" || !t.resolvedMessage;
 	}
-	let le = (e, n, r, a, o, s) => {
-		D();
+	let D = (e, n, r, a, o, s) => {
+		ee();
 		let c;
 		try {
-			process.env.NODE_ENV !== "production" && En(Rr()), i || (E.fallbackContext = t ? An() : void 0), c = e(E);
+			process.env.NODE_ENV !== "production" && zn(si()), i || (T.fallbackContext = t ? Un() : void 0), c = e(T);
 		} finally {
-			process.env.NODE_ENV !== "production" && En(null), i || (E.fallbackContext = void 0);
+			process.env.NODE_ENV !== "production" && zn(null), i || (T.fallbackContext = void 0);
 		}
 		if (r !== "translate exists" && M(c) && c === -1 || r === "translate exists" && !c) {
 			let [e, i] = n();
-			if (process.env.NODE_ENV !== "production" && t && R(e) && ce(r, i) && (h && (Pn(m, e) || Fn(p, e)) && O(Er($.FALLBACK_TO_ROOT, {
+			if (process.env.NODE_ENV !== "production" && t && R(e) && de(r, i) && (h && (qn(m, e) || Jn(p, e)) && O(Yr($.FALLBACK_TO_ROOT, {
 				key: e,
 				type: r
 			})), process.env.NODE_ENV !== "production")) {
-				let { __v_emitter: t } = E;
+				let { __v_emitter: t } = T;
 				t && h && t.emit("fallback", {
 					type: r,
 					key: e,
@@ -1898,65 +1980,65 @@ function zr(e = {}) {
 			}
 			return t && h ? a(t) : o(e);
 		} else if (s(c)) return c;
-		else throw hr(Q.UNEXPECTED_RETURN_TYPE);
+		else throw Q(Z.UNEXPECTED_RETURN_TYPE);
 	};
-	function ue(...e) {
-		return le((t) => Reflect.apply(ar, null, [t, ...e]), () => ur(...e), "translate", (t) => Reflect.apply(t.t, t, [...e]), (e) => e, (e) => R(e));
-	}
 	function fe(...e) {
-		let [t, n, r] = e;
-		if (r && !B(r)) throw hr(Q.INVALID_ARGUMENT);
-		return ue(t, n, N({ resolvedMessage: !0 }, r || {}));
+		return D((t) => Reflect.apply(vr, null, [t, ...e]), () => Cr(...e), "translate", (t) => Reflect.apply(t.t, t, [...e]), (e) => e, (e) => R(e));
 	}
 	function pe(...e) {
-		return le((t) => Reflect.apply(Hn, null, [t, ...e]), () => Wn(...e), "datetime format", (t) => Reflect.apply(t.d, t, [...e]), () => "", (e) => R(e) || I(e));
+		let [t, n, r] = e;
+		if (r && !B(r)) throw Q(Z.INVALID_ARGUMENT);
+		return fe(t, n, N({ resolvedMessage: !0 }, r || {}));
 	}
-	function P(...e) {
-		return le((t) => Reflect.apply(Kn, null, [t, ...e]), () => Jn(...e), "number format", (t) => Reflect.apply(t.n, t, [...e]), () => "", (e) => R(e) || I(e));
+	function me(...e) {
+		return D((t) => Reflect.apply(tr, null, [t, ...e]), () => rr(...e), "datetime format", (t) => Reflect.apply(t.d, t, [...e]), () => "", (e) => R(e) || I(e));
 	}
-	function me(e) {
-		return e.map((e) => R(e) || M(e) || z(e) ? jr(String(e)) : e);
+	function he(...e) {
+		return D((t) => Reflect.apply(ar, null, [t, ...e]), () => sr(...e), "number format", (t) => Reflect.apply(t.n, t, [...e]), () => "", (e) => R(e) || I(e));
 	}
-	let he = {
-		normalize: me,
+	function ge(e) {
+		return e.map((e) => R(e) || M(e) || z(e) ? ei(String(e)) : e);
+	}
+	let A = {
+		normalize: ge,
 		interpolate: (e) => e,
 		type: "vnode"
 	};
-	function ge(...e) {
-		return le((t) => {
+	function _e(...e) {
+		return D((t) => {
 			let n, r = t;
 			try {
-				r.processor = he, n = Reflect.apply(ar, null, [r, ...e]);
+				r.processor = A, n = Reflect.apply(vr, null, [r, ...e]);
 			} finally {
 				r.processor = null;
 			}
 			return n;
-		}, () => ur(...e), "translate", (t) => t[_r](...e), (e) => [jr(e)], (e) => I(e));
-	}
-	function _e(...e) {
-		return le((t) => Reflect.apply(Kn, null, [t, ...e]), () => Jn(...e), "number format", (t) => t[yr](...e), Pr, (e) => R(e) || I(e));
+		}, () => Cr(...e), "translate", (t) => t[Br](...e), (e) => [ei(e)], (e) => I(e));
 	}
 	function ve(...e) {
-		return le((t) => Reflect.apply(Hn, null, [t, ...e]), () => Wn(...e), "datetime format", (t) => t[vr](...e), Pr, (e) => R(e) || I(e));
+		return D((t) => Reflect.apply(ar, null, [t, ...e]), () => sr(...e), "number format", (t) => t[Hr](...e), ri, (e) => R(e) || I(e));
 	}
-	function ye(e) {
-		T = e, E.pluralRules = T;
+	function ye(...e) {
+		return D((t) => Reflect.apply(tr, null, [t, ...e]), () => rr(...e), "datetime format", (t) => t[Vr](...e), ri, (e) => R(e) || I(e));
+	}
+	function j(e) {
+		w = e, T.pluralRules = w;
 	}
 	function be(e, t) {
-		return le(() => {
+		return D(() => {
 			if (!e) return !1;
-			let n = R(t) ? t : c.value, r = R(t) ? [n] : Qt(E, l.value, n);
+			let n = R(t) ? t : c.value, r = R(t) ? [n] : fn(T, l.value, n);
 			for (let t = 0; t < r.length; t++) {
-				let n = Ce(r[t]), i = E.messageResolver(n, e);
-				if (i === null && (i = n[e]), J(i) || Z(i) || R(i)) return !0;
+				let n = we(r[t]), i = T.messageResolver(n, e);
+				if (i === null && (i = n[e]), q(i) || X(i) || R(i)) return !0;
 			}
 			return !1;
-		}, () => [e], "translate exists", (n) => Reflect.apply(n.te, n, [e, t]), Fr, (e) => z(e));
+		}, () => [e], "translate exists", (n) => Reflect.apply(n.te, n, [e, t]), ii, (e) => z(e));
 	}
 	function xe(e) {
-		let t = null, n = Qt(E, l.value, c.value);
+		let t = null, n = fn(T, l.value, c.value);
 		for (let r = 0; r < n.length; r++) {
-			let i = u.value[n[r]] || {}, a = E.messageResolver(i, e);
+			let i = u.value[n[r]] || {}, a = T.messageResolver(i, e);
 			if (a != null) {
 				t = a;
 				break;
@@ -1967,65 +2049,65 @@ function zr(e = {}) {
 	function Se(e) {
 		return xe(e) ?? (t && t.tm(e) || {});
 	}
-	function Ce(e) {
+	function we(e) {
 		return u.value[e] || {};
 	}
-	function we(e, t) {
+	function Te(e, t) {
 		if (a) {
 			let n = { [e]: t };
-			for (let e in n) F(n, e) && Dr(n[e]);
+			for (let e in n) F(n, e) && Xr(n[e]);
 			t = n[e];
 		}
-		u.value[e] = t, E.messages = u.value;
+		u.value[e] = t, T.messages = u.value;
 	}
-	function Te(e, t) {
+	function P(e, t) {
 		u.value[e] = u.value[e] || {};
 		let n = { [e]: t };
-		if (a) for (let e in n) F(n, e) && Dr(n[e]);
-		t = n[e], ke(t, u.value[e]), E.messages = u.value;
+		if (a) for (let e in n) F(n, e) && Xr(n[e]);
+		t = n[e], Be(t, u.value[e]), T.messages = u.value;
 	}
 	function Ee(e) {
 		return d.value[e] || {};
 	}
 	function De(e, t) {
-		d.value[e] = t, E.datetimeFormats = d.value, Gn(E, e, t);
+		d.value[e] = t, T.datetimeFormats = d.value, ir(T, e, t);
 	}
 	function Oe(e, t) {
-		d.value[e] = N(d.value[e] || {}, t), E.datetimeFormats = d.value, Gn(E, e, t);
+		d.value[e] = N(d.value[e] || {}, t), T.datetimeFormats = d.value, ir(T, e, t);
 	}
-	function Ae(e) {
+	function ke(e) {
 		return f.value[e] || {};
 	}
+	function Ae(e, t) {
+		f.value[e] = t, T.numberFormats = f.value, cr(T, e, t);
+	}
 	function je(e, t) {
-		f.value[e] = t, E.numberFormats = f.value, Yn(E, e, t);
+		f.value[e] = N(f.value[e] || {}, t), T.numberFormats = f.value, cr(T, e, t);
 	}
-	function H(e, t) {
-		f.value[e] = N(f.value[e] || {}, t), E.numberFormats = f.value, Yn(E, e, t);
-	}
-	Ir++, t && k && (ee(t.locale, (e) => {
-		s && (c.value = e, E.locale = e, Ln(E, c.value, l.value));
-	}), ee(t.fallbackLocale, (e) => {
-		s && (l.value = e, E.fallbackLocale = e, Ln(E, c.value, l.value));
+	ai++, t && k && (ne(t.locale, (e) => {
+		s && (c.value = e, T.locale = e, Xn(T, c.value, l.value));
+	}), ne(t.fallbackLocale, (e) => {
+		s && (l.value = e, T.fallbackLocale = e, Xn(T, c.value, l.value));
 	}));
-	let U = {
-		id: Ir,
-		locale: te,
-		fallbackLocale: ne,
+	let V = {
+		id: ai,
+		locale: E,
+		fallbackLocale: re,
 		get inheritLocale() {
 			return s;
 		},
 		set inheritLocale(e) {
-			s = e, e && t && (c.value = t.locale.value, l.value = t.fallbackLocale.value, Ln(E, c.value, l.value));
+			s = e, e && t && (c.value = t.locale.value, l.value = t.fallbackLocale.value, Xn(T, c.value, l.value));
 		},
 		get availableLocales() {
 			return Object.keys(u.value).sort();
 		},
-		messages: re,
+		messages: ie,
 		get modifiers() {
-			return w;
+			return S;
 		},
 		get pluralRules() {
-			return T || {};
+			return w || {};
 		},
 		get isGlobal() {
 			return i;
@@ -2034,13 +2116,13 @@ function zr(e = {}) {
 			return p;
 		},
 		set missingWarn(e) {
-			p = e, E.missingWarn = p;
+			p = e, T.missingWarn = p;
 		},
 		get fallbackWarn() {
 			return m;
 		},
 		set fallbackWarn(e) {
-			m = e, E.fallbackWarn = m;
+			m = e, T.fallbackWarn = m;
 		},
 		get fallbackRoot() {
 			return h;
@@ -2052,41 +2134,260 @@ function zr(e = {}) {
 			return g;
 		},
 		set fallbackFormat(e) {
-			g = e, E.fallbackFormat = g;
+			g = e, T.fallbackFormat = g;
 		},
 		get warnHtmlMessage() {
-			return x;
+			return b;
 		},
 		set warnHtmlMessage(e) {
-			x = e, E.warnHtmlMessage = e;
+			b = e, T.warnHtmlMessage = e;
 		},
 		get escapeParameter() {
-			return S;
+			return x;
 		},
 		set escapeParameter(e) {
-			S = e, E.escapeParameter = e;
+			x = e, T.escapeParameter = e;
 		},
-		t: ue,
-		getLocaleMessage: Ce,
-		setLocaleMessage: we,
-		mergeLocaleMessage: Te,
-		getPostTranslationHandler: ae,
-		setPostTranslationHandler: oe,
-		getMissingHandler: se,
-		setMissingHandler: j,
-		[Sr]: ye
+		t: fe,
+		getLocaleMessage: we,
+		setLocaleMessage: Te,
+		mergeLocaleMessage: P,
+		getPostTranslationHandler: se,
+		setPostTranslationHandler: ce,
+		getMissingHandler: le,
+		setMissingHandler: ue,
+		[Gr]: j
 	};
-	return U.datetimeFormats = ie, U.numberFormats = A, U.rt = fe, U.te = be, U.tm = Se, U.d = pe, U.n = P, U.getDateTimeFormat = Ee, U.setDateTimeFormat = De, U.mergeDateTimeFormat = Oe, U.getNumberFormat = Ae, U.setNumberFormat = je, U.mergeNumberFormat = H, U[Cr] = n, U[_r] = ge, U[vr] = ve, U[yr] = _e, process.env.NODE_ENV !== "production" && (U[br] = (e) => {
-		E.__v_emitter = e;
-	}, U[xr] = () => {
-		E.__v_emitter = void 0;
-	}), U;
+	return V.datetimeFormats = ae, V.numberFormats = oe, V.rt = pe, V.te = be, V.tm = Se, V.d = me, V.n = he, V.getDateTimeFormat = Ee, V.setDateTimeFormat = De, V.mergeDateTimeFormat = Oe, V.getNumberFormat = ke, V.setNumberFormat = Ae, V.mergeNumberFormat = je, V[Kr] = n, V[Br] = _e, V[Vr] = ye, V[Hr] = ve, process.env.NODE_ENV !== "production" && (V[Ur] = (e) => {
+		T.__v_emitter = e;
+	}, V[Wr] = () => {
+		T.__v_emitter = void 0;
+	}), V;
 }
-var Br;
-function Vr(e, t) {
-	if (Br) {
+var li = "vue-i18n: composer properties", ui = {
+	"vue-devtools-plugin-vue-i18n": "Vue I18n DevTools",
+	"vue-i18n-resource-inspector": "Vue I18n DevTools",
+	"vue-i18n-timeline": "Vue I18n"
+}, di = { "vue-i18n-resource-inspector": "Search for scopes ..." }, fi = { "vue-i18n-timeline": 16764185 }, pi;
+async function mi(e, t) {
+	return new Promise((n, r) => {
+		try {
+			Lr({
+				id: "vue-devtools-plugin-vue-i18n",
+				label: ui["vue-devtools-plugin-vue-i18n"],
+				packageName: "vue-i18n",
+				homepage: "https://vue-i18n.intlify.dev",
+				logo: "https://vue-i18n.intlify.dev/vue-i18n-devtools-logo.png",
+				componentStateTypes: [li],
+				app: e
+			}, (r) => {
+				pi = r, r.on.visitComponentTree(({ componentInstance: e, treeNode: n }) => {
+					gi(e, n, t);
+				}), r.on.inspectComponent(({ componentInstance: e, instanceData: n }) => {
+					e.__VUE_I18N__ && n && (t.mode === "legacy" ? e.__VUE_I18N__ !== t.global.__composer && _i(n, e.__VUE_I18N__) : _i(n, e.__VUE_I18N__));
+				}), r.addInspector({
+					id: "vue-i18n-resource-inspector",
+					label: ui["vue-i18n-resource-inspector"],
+					icon: "language",
+					treeFilterPlaceholder: di["vue-i18n-resource-inspector"]
+				}), r.on.getInspectorTree((n) => {
+					n.app === e && n.inspectorId === "vue-i18n-resource-inspector" && Ci(n, t);
+				});
+				let i = /* @__PURE__ */ new Map();
+				r.on.getInspectorState(async (n) => {
+					if (n.app === e && n.inspectorId === "vue-i18n-resource-inspector") if (r.unhighlightElement(), Ei(n, t), n.nodeId === "global") {
+						if (!i.has(n.app)) {
+							let [e] = await r.getComponentInstances(n.app);
+							i.set(n.app, e);
+						}
+						r.highlightElement(i.get(n.app));
+					} else {
+						let e = wi(n.nodeId, t);
+						e && r.highlightElement(e);
+					}
+				}), r.on.editInspectorState((n) => {
+					n.app === e && n.inspectorId === "vue-i18n-resource-inspector" && ki(n, t);
+				}), r.addTimelineLayer({
+					id: "vue-i18n-timeline",
+					label: ui["vue-i18n-timeline"],
+					color: fi["vue-i18n-timeline"]
+				}), n(!0);
+			});
+		} catch (e) {
+			console.error(e), r(!1);
+		}
+	});
+}
+function hi(e) {
+	return e.type.name || e.type.displayName || e.type.__file || "Anonymous";
+}
+function gi(e, t, n) {
+	let r = n.mode === "composition" ? n.global : n.global.__composer;
+	if (e && e.__VUE_I18N__ && e.__VUE_I18N__ !== r) {
+		let n = {
+			label: `i18n (${hi(e)} Scope)`,
+			textColor: 0,
+			backgroundColor: 16764185
+		};
+		t.tags.push(n);
+	}
+}
+function _i(e, t) {
+	let n = li;
+	e.state.push({
+		type: n,
+		key: "locale",
+		editable: !0,
+		value: t.locale.value
+	}), e.state.push({
+		type: n,
+		key: "availableLocales",
+		editable: !1,
+		value: t.availableLocales
+	}), e.state.push({
+		type: n,
+		key: "fallbackLocale",
+		editable: !0,
+		value: t.fallbackLocale.value
+	}), e.state.push({
+		type: n,
+		key: "inheritLocale",
+		editable: !0,
+		value: t.inheritLocale
+	}), e.state.push({
+		type: n,
+		key: "messages",
+		editable: !1,
+		value: vi(t.messages.value)
+	}), e.state.push({
+		type: n,
+		key: "datetimeFormats",
+		editable: !1,
+		value: t.datetimeFormats.value
+	}), e.state.push({
+		type: n,
+		key: "numberFormats",
+		editable: !1,
+		value: t.numberFormats.value
+	});
+}
+function vi(e) {
+	let t = {};
+	return Object.keys(e).forEach((n) => {
+		let r = e[n];
+		L(r) && "source" in r ? t[n] = Si(r) : q(r) && r.loc && r.loc.source ? t[n] = r.loc.source : B(r) ? t[n] = vi(r) : t[n] = r;
+	}), t;
+}
+var yi = {
+	"<": "&lt;",
+	">": "&gt;",
+	"\"": "&quot;",
+	"&": "&amp;"
+};
+function bi(e) {
+	return e.replace(/[<>"&]/g, xi);
+}
+function xi(e) {
+	return yi[e] || e;
+}
+function Si(e) {
+	return { _custom: {
+		type: "function",
+		display: `<span>ƒ</span> ${e.source ? `("${bi(e.source)}")` : "(?)"}`
+	} };
+}
+function Ci(e, t) {
+	e.rootNodes.push({
+		id: "global",
+		label: "Global Scope"
+	});
+	let n = t.mode === "composition" ? t.global : t.global.__composer;
+	for (let [r, i] of t.__instances) {
+		let a = t.mode === "composition" ? i : i.__composer;
+		n !== a && e.rootNodes.push({
+			id: a.id.toString(),
+			label: `${hi(r)} Scope`
+		});
+	}
+}
+function wi(e, t) {
+	let n = null;
+	if (e !== "global") {
+		for (let [r, i] of t.__instances.entries()) if (i.id.toString() === e) {
+			n = r;
+			break;
+		}
+	}
+	return n;
+}
+function Ti(e, t) {
+	if (e === "global") return t.mode === "composition" ? t.global : t.global.__composer;
+	{
+		let n = Array.from(t.__instances.values()).find((t) => t.id.toString() === e);
+		return n ? t.mode === "composition" ? n : n.__composer : null;
+	}
+}
+function Ei(e, t) {
+	let n = Ti(e.nodeId, t);
+	return n && (e.state = Di(n)), null;
+}
+function Di(e) {
+	let t = {}, n = "Locale related info";
+	t[n] = [
+		{
+			type: n,
+			key: "locale",
+			editable: !0,
+			value: e.locale.value
+		},
+		{
+			type: n,
+			key: "fallbackLocale",
+			editable: !0,
+			value: e.fallbackLocale.value
+		},
+		{
+			type: n,
+			key: "availableLocales",
+			editable: !1,
+			value: e.availableLocales
+		},
+		{
+			type: n,
+			key: "inheritLocale",
+			editable: !0,
+			value: e.inheritLocale
+		}
+	];
+	let r = "Locale messages info";
+	t[r] = [{
+		type: r,
+		key: "messages",
+		editable: !1,
+		value: vi(e.messages.value)
+	}];
+	{
+		let n = "Datetime formats info";
+		t[n] = [{
+			type: n,
+			key: "datetimeFormats",
+			editable: !1,
+			value: e.datetimeFormats.value
+		}];
+		let r = "Datetime formats info";
+		t[r] = [{
+			type: r,
+			key: "numberFormats",
+			editable: !1,
+			value: e.numberFormats.value
+		}];
+	}
+	return t;
+}
+function Oi(e, t) {
+	if (pi) {
 		let n;
-		t && "groupId" in t && (n = t.groupId, delete t.groupId), Br.addTimelineEvent({
+		t && "groupId" in t && (n = t.groupId, delete t.groupId), pi.addTimelineEvent({
 			layerId: "vue-i18n-timeline",
 			event: {
 				title: e,
@@ -2099,7 +2400,14 @@ function Vr(e, t) {
 		});
 	}
 }
-var Hr = {
+function ki(e, t) {
+	let n = Ti(e.nodeId, t);
+	if (n) {
+		let [t] = e.path;
+		t === "locale" && R(e.state.value) ? n.locale.value = e.state.value : t === "fallbackLocale" && (R(e.state.value) || I(e.state.value) || B(e.state.value)) ? n.fallbackLocale.value = e.state.value : t === "inheritLocale" && z(e.state.value) && (n.inheritLocale = e.state.value);
+	}
+}
+var Ai = {
 	tag: { type: [String, Object] },
 	locale: { type: String },
 	scope: {
@@ -2109,16 +2417,16 @@ var Hr = {
 	},
 	i18n: { type: Object }
 };
-function Ur({ slots: e }, n) {
+function ji({ slots: e }, n) {
 	return n.length === 1 && n[0] === "default" ? (e.default ? e.default() : []).reduce((e, n) => [...e, ...n.type === t ? n.children : [n]], []) : n.reduce((t, n) => {
 		let r = e[n];
 		return r && (t[n] = r()), t;
 	}, P());
 }
-function Wr() {
+function Mi() {
 	return t;
 }
-u({
+var Ni = u({
 	name: "i18n-t",
 	props: N({
 		keypath: {
@@ -2129,24 +2437,24 @@ u({
 			type: [Number, String],
 			validator: (e) => M(e) || !isNaN(e)
 		}
-	}, Hr),
+	}, Ai),
 	setup(e, t) {
-		let { slots: n, attrs: r } = t, i = e.i18n || Jr({
+		let { slots: n, attrs: r } = t, i = e.i18n || Wi({
 			useScope: e.scope,
 			__useComponent: !0
 		});
 		return () => {
 			let a = Object.keys(n).filter((e) => e[0] !== "_"), o = P();
 			e.locale && (o.locale = e.locale), e.plural !== void 0 && (o.plural = R(e.plural) ? +e.plural : e.plural);
-			let s = Ur(t, a), c = i[_r](e.keypath, s, o), l = N(P(), r);
-			return f(R(e.tag) || B(e.tag) ? e.tag : Wr(), l, c);
+			let s = ji(t, a), c = i[Br](e.keypath, s, o), l = N(P(), r);
+			return m(R(e.tag) || B(e.tag) ? e.tag : Mi(), l, c);
 		};
 	}
 });
-function Gr(e) {
+function Pi(e) {
 	return I(e) && !R(e[0]);
 }
-function Kr(e, t, n, r) {
+function Fi(e, t, n, r) {
 	let { slots: i, attrs: a } = t;
 	return () => {
 		let t = { part: !0 }, o = P();
@@ -2158,13 +2466,13 @@ function Kr(e, t, n, r) {
 				index: t,
 				parts: s
 			}) : [e.value];
-			return Gr(r) && (r[0].key = `${e.type}-${t}`), r;
+			return Pi(r) && (r[0].key = `${e.type}-${t}`), r;
 		}) : R(s) && (c = [s]);
 		let l = N(P(), a);
-		return f(R(e.tag) || B(e.tag) ? e.tag : Wr(), l, c);
+		return m(R(e.tag) || B(e.tag) ? e.tag : Mi(), l, c);
 	};
 }
-u({
+var Ii = u({
 	name: "i18n-n",
 	props: N({
 		value: {
@@ -2172,68 +2480,179 @@ u({
 			required: !0
 		},
 		format: { type: [String, Object] }
-	}, Hr),
+	}, Ai),
 	setup(e, t) {
-		let n = e.i18n || Jr({
+		let n = e.i18n || Wi({
 			useScope: e.scope,
 			__useComponent: !0
 		});
-		return Kr(e, t, qn, (...e) => n[yr](...e));
+		return Fi(e, t, or, (...e) => n[Hr](...e));
 	}
 });
-var qr = j("global-vue-i18n");
-function Jr(e = {}) {
-	let t = Mr();
-	if (t == null) throw hr(Q.MUST_BE_CALL_SETUP_TOP);
-	if (!t.isCE && t.appContext.app != null && !t.appContext.app.__VUE_I18N_SYMBOL__) throw hr(Q.NOT_INSTALLED);
-	let n = Yr(t), r = Zr(n), i = kr(t), a = Xr(e, i);
-	if (a === "global") return Ar(r, e, i), r;
+function Li(e, t) {
+	let n = e;
+	if (e.mode === "composition") return n.__getInstance(t) || e.global;
+	{
+		let r = n.__getInstance(t);
+		return r == null ? e.global.__composer : r.__composer;
+	}
+}
+function Ri(e) {
+	let t = (t) => {
+		process.env.NODE_ENV !== "production" && ge(Yr($.DEPRECATE_TRANSLATE_CUSTOME_DIRECTIVE));
+		let { instance: n, value: r } = t;
+		if (!n || !n.$) throw Q(Z.UNEXPECTED_ERROR);
+		let i = Li(e, n.$), a = zi(r);
+		return [Reflect.apply(i.t, i, [...Bi(a)]), i];
+	};
+	return {
+		created: (e, n) => {
+			let [r, i] = t(n);
+			k && (e.__i18nWatcher = ne(i.locale, () => {
+				n.instance && n.instance.$forceUpdate();
+			})), e.__composer = i, e.textContent = r;
+		},
+		unmounted: (e) => {
+			k && e.__i18nWatcher && (e.__i18nWatcher(), e.__i18nWatcher = void 0, delete e.__i18nWatcher), e.__composer && (e.__composer = void 0, delete e.__composer);
+		},
+		beforeUpdate: (e, { value: t }) => {
+			if (e.__composer) {
+				let n = e.__composer, r = zi(t);
+				e.textContent = Reflect.apply(n.t, n, [...Bi(r)]);
+			}
+		},
+		getSSRProps: (e) => {
+			let [n] = t(e);
+			return { textContent: n };
+		}
+	};
+}
+function zi(e) {
+	if (R(e)) return { path: e };
+	if (H(e)) {
+		if (!("path" in e)) throw Q(Z.REQUIRED_VALUE, "path");
+		return e;
+	} else throw Q(Z.INVALID_VALUE);
+}
+function Bi(e) {
+	let { path: t, locale: n, args: r, choice: i, plural: a } = e, o = {}, s = r || {};
+	return R(n) && (o.locale = n), M(i) && (o.plural = i), M(a) && (o.plural = a), [
+		t,
+		s,
+		o
+	];
+}
+function Vi(e, t, ...n) {
+	let r = H(n[0]) ? n[0] : {};
+	(!z(r.globalInstall) || r.globalInstall) && ([Ni.name, "I18nT"].forEach((t) => e.component(t, Ni)), [Ii.name, "I18nN"].forEach((t) => e.component(t, Ii)), [ta.name, "I18nD"].forEach((t) => e.component(t, ta))), e.directive("t", Ri(t));
+}
+var Hi = j("global-vue-i18n");
+function Ui(e = {}) {
+	process.env.NODE_ENV;
+	let t = z(e.globalInjection) ? e.globalInjection : !0, n = /* @__PURE__ */ new Map(), [r, i] = Gi(e, !1), a = j(process.env.NODE_ENV === "production" ? "" : "vue-i18n");
+	function o(e) {
+		return n.get(e) || null;
+	}
+	function s(e, t) {
+		n.set(e, t);
+	}
+	function c(e) {
+		n.delete(e);
+	}
+	let l = {
+		get mode() {
+			return "composition";
+		},
+		async install(e, ...n) {
+			if (process.env.NODE_ENV !== "production" && (e.__VUE_I18N__ = l), e.__VUE_I18N_SYMBOL__ = a, e.provide(e.__VUE_I18N_SYMBOL__, l), H(n[0])) {
+				let e = n[0];
+				l.__composerExtend = e.__composerExtend, l.__vueI18nExtend = e.__vueI18nExtend;
+			}
+			let r = null;
+			t && (r = ea(e, l.global)), Vi(e, l, ...n);
+			let o = e.unmount;
+			if (e.unmount = () => {
+				r && r(), l.dispose(), o();
+			}, process.env.NODE_ENV !== "production") {
+				if (!await mi(e, l)) throw Q(Z.CANNOT_SETUP_VUE_DEVTOOLS_PLUGIN);
+				let t = Re();
+				{
+					let e = i;
+					e[Ur] && e[Ur](t);
+				}
+				t.on("*", Oi);
+			}
+		},
+		get global() {
+			return i;
+		},
+		dispose() {
+			r.stop();
+		},
+		__instances: n,
+		__getInstance: o,
+		__setInstance: s,
+		__deleteInstance: c
+	};
+	return l;
+}
+function Wi(e = {}) {
+	let t = ti();
+	if (t == null) throw Q(Z.MUST_BE_CALL_SETUP_TOP);
+	if (!t.isCE && t.appContext.app != null && !t.appContext.app.__VUE_I18N_SYMBOL__) throw Q(Z.NOT_INSTALLED);
+	let n = Ki(t), r = Ji(n), i = Qr(t), a = qi(e, i);
+	if (a === "global") return $r(r, e, i), r;
 	if (a === "parent") {
-		let i = Qr(n, t, e.__useComponent);
-		return i ??= (process.env.NODE_ENV !== "production" && O(Er($.NOT_FOUND_PARENT_SCOPE)), r), i;
+		let i = Yi(n, t, e.__useComponent);
+		return i ??= (process.env.NODE_ENV !== "production" && O(Yr($.NOT_FOUND_PARENT_SCOPE)), r), i;
 	}
 	if (a === "isolated") {
-		if (n.mode !== "composition") throw hr(Q.NOT_AVAILABLE_COMPOSITION_IN_LEGACY);
+		if (n.mode !== "composition") throw Q(Z.NOT_AVAILABLE_COMPOSITION_IN_LEGACY);
 		let i = n, a = N({}, e);
-		a.__root = Qr(n, t) || r;
-		let o = zr(a);
-		i.__composerExtend && (o[wr] = i.__composerExtend(o));
+		a.__root = Yi(n, t) || r;
+		let o = ci(a);
+		i.__composerExtend && (o[qr] = i.__composerExtend(o));
 		let s = null;
 		if (process.env.NODE_ENV !== "production") {
-			s = De();
+			s = Re();
 			let e = o;
-			e[br] && e[br](s), s.on("*", Vr);
+			e[Ur] && e[Ur](s), s.on("*", Oi);
 		}
-		return d() && _(() => {
+		return p() && b(() => {
 			if (process.env.NODE_ENV !== "production") {
-				s && s.off("*", Vr);
+				s && s.off("*", Oi);
 				let e = o;
-				e[xr] && e[xr]();
+				e[Wr] && e[Wr]();
 			}
-			let e = o[wr];
-			e && (e(), delete o[wr]);
+			let e = o[qr];
+			e && (e(), delete o[qr]);
 		}), o;
 	}
 	let o = n, s = o.__getInstance(t);
 	if (s == null) {
 		let n = N({}, e);
-		"__i18n" in i && (n.__i18n = i.__i18n), r && (n.__root = r), s = zr(n), o.__composerExtend && (s[wr] = o.__composerExtend(s)), ei(o, t, s), o.__setInstance(t, s);
-	} else process.env.NODE_ENV !== "production" && a === "local" && O(Er($.DUPLICATE_USE_I18N_CALLING));
+		"__i18n" in i && (n.__i18n = i.__i18n), r && (n.__root = r), s = ci(n), o.__composerExtend && (s[qr] = o.__composerExtend(s)), Zi(o, t, s), o.__setInstance(t, s);
+	} else process.env.NODE_ENV !== "production" && a === "local" && O(Yr($.DUPLICATE_USE_I18N_CALLING));
 	return s;
 }
-function Yr(e) {
-	let t = p(e.isCE ? qr : e.appContext.app.__VUE_I18N_SYMBOL__);
-	if (!t) throw hr(e.isCE ? Q.NOT_INSTALLED_WITH_PROVIDE : Q.UNEXPECTED_ERROR);
+function Gi(e, t) {
+	let n = d(), r = n.run(() => ci(e));
+	if (r == null) throw Q(Z.UNEXPECTED_ERROR);
+	return [n, r];
+}
+function Ki(e) {
+	let t = h(e.isCE ? Hi : e.appContext.app.__VUE_I18N_SYMBOL__);
+	if (!t) throw Q(e.isCE ? Z.NOT_INSTALLED_WITH_PROVIDE : Z.UNEXPECTED_ERROR);
 	return t;
 }
-function Xr(e, t) {
-	return fe(e) ? "__i18n" in t ? "local" : "global" : e.useScope ? e.useScope : "local";
+function qi(e, t) {
+	return we(e) ? "__i18n" in t ? "local" : "global" : e.useScope ? e.useScope : "local";
 }
-function Zr(e) {
+function Ji(e) {
 	return e.mode === "composition" ? e.global : e.global.__composer;
 }
-function Qr(e, t, n = !1) {
-	let r = null, i = t.root, a = $r(t, n);
+function Yi(e, t, n = !1) {
+	let r = null, i = t.root, a = Xi(t, n);
 	for (; a != null;) {
 		let t = e;
 		if (e.mode === "composition" && (r = t.__getInstance(a)), r != null || i === a) break;
@@ -2241,25 +2660,63 @@ function Qr(e, t, n = !1) {
 	}
 	return r;
 }
-function $r(e, t = !1) {
+function Xi(e, t = !1) {
 	return e == null ? null : t && e.vnode.ctx || e.parent;
 }
-function ei(e, t, n) {
+function Zi(e, t, n) {
 	let r = null;
-	g(() => {
+	y(() => {
 		if (process.env.NODE_ENV !== "production") {
-			t.__VUE_I18N__ = n, r = De();
+			t.__VUE_I18N__ = n, r = Re();
 			let e = n;
-			e[br] && e[br](r), r.on("*", Vr);
+			e[Ur] && e[Ur](r), r.on("*", Oi);
 		}
-	}, t), v(() => {
+	}, t), x(() => {
 		let i = n;
-		process.env.NODE_ENV !== "production" && (r && r.off("*", Vr), i[xr] && i[xr](), delete t.__VUE_I18N__), e.__deleteInstance(t);
-		let a = i[wr];
-		a && (a(), delete i[wr]);
+		process.env.NODE_ENV !== "production" && (r && r.off("*", Oi), i[Wr] && i[Wr](), delete t.__VUE_I18N__), e.__deleteInstance(t);
+		let a = i[qr];
+		a && (a(), delete i[qr]);
 	}, t);
 }
-if (u({
+var Qi = [
+	"locale",
+	"fallbackLocale",
+	"availableLocales"
+], $i = [
+	"t",
+	"rt",
+	"d",
+	"n",
+	"tm",
+	"te"
+];
+function ea(e, t) {
+	let n = Object.create(null);
+	return Qi.forEach((e) => {
+		let r = Object.getOwnPropertyDescriptor(t, e);
+		if (!r) throw Q(Z.UNEXPECTED_ERROR);
+		let i = g(r.value) ? {
+			get() {
+				return r.value.value;
+			},
+			set(e) {
+				r.value.value = e;
+			}
+		} : { get() {
+			return r.get && r.get();
+		} };
+		Object.defineProperty(n, e, i);
+	}), e.config.globalProperties.$i18n = n, $i.forEach((n) => {
+		let r = Object.getOwnPropertyDescriptor(t, n);
+		if (!r || !r.value) throw Q(Z.UNEXPECTED_ERROR);
+		Object.defineProperty(e.config.globalProperties, `$${n}`, r);
+	}), () => {
+		delete e.config.globalProperties.$i18n, $i.forEach((t) => {
+			delete e.config.globalProperties[`$${t}`];
+		});
+	};
+}
+var ta = u({
 	name: "i18n-d",
 	props: N({
 		value: {
@@ -2267,20 +2724,21 @@ if (u({
 			required: !0
 		},
 		format: { type: [String, Object] }
-	}, Hr),
+	}, Ai),
 	setup(e, t) {
-		let n = e.i18n || Jr({
+		let n = e.i18n || Wi({
 			useScope: e.scope,
 			__useComponent: !0
 		});
-		return Kr(e, t, Un, (...e) => n[vr](...e));
+		return Fi(e, t, nr, (...e) => n[Vr](...e));
 	}
-}), bn(Bt), Sn(fn), wn(Qt), process.env.NODE_ENV !== "production") {
-	let e = he();
-	e.__INTLIFY__ = !0, Ht(e.__INTLIFY_DEVTOOLS_GLOBAL_HOOK__);
+});
+if (Nn($t), Fn(Tn), Ln(fn), process.env.NODE_ENV !== "production") {
+	let e = De();
+	e.__INTLIFY__ = !0, tn(e.__INTLIFY_DEVTOOLS_GLOBAL_HOOK__);
 }
 process.env.NODE_ENV;
-function ti() {
+function na() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -2294,58 +2752,73 @@ function ti() {
 		}
 	}
 }
-function ni(e, t) {
+function ra(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var ri = { class: "mt-20 border-t border-border bg-card" }, ii = { class: "container py-8" }, ai = { class: "grid gap-8 md:grid-cols-3" }, oi = { class: "mb-2 text-sm font-semibold text-foreground" }, si = { class: "text-sm text-muted-foreground" }, ci = { class: "mb-2 text-sm font-semibold text-foreground" }, li = { class: "space-y-1" }, ui = ["href"], di = { class: "mb-2 text-sm font-semibold text-foreground" }, fi = { class: "text-sm text-muted-foreground" }, pi = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" }, mi = u({
+var ia = u({
 	__name: "Footer",
-	setup(e) {
-		let { t: n } = Jr(), a = D(), l = r(() => a.params.locale || "en"), u = r(() => [
-			{
-				label: n("footer.github"),
-				href: "https://github.com/intlayer-org/benchmark-i18n",
-				isInternal: !1
-			},
-			{
-				label: n("footer.methodology"),
-				to: `/${l.value}/about`,
-				isInternal: !0
-			},
-			{
-				label: n("footer.contributing"),
-				to: `/${l.value}/contact`,
-				isInternal: !0
-			}
-		]);
-		return (e, r) => {
-			let a = S("router-link");
-			return y(), o("footer", ri, [s("div", ii, [s("div", ai, [
-				s("div", null, [s("h3", oi, w(T(n)("footer.title")), 1), s("p", si, w(T(n)("footer.description")), 1)]),
-				s("div", null, [s("h3", ci, w(T(n)("footer.resources")), 1), s("ul", li, [(y(!0), o(t, null, x(u.value, (e) => (y(), o("li", { key: e.label }, [e.isInternal ? (y(), i(a, {
-					key: 0,
-					to: e.to,
-					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-				}, {
-					default: E(() => [c(w(e.label), 1)]),
-					_: 2
-				}, 1032, ["to"])) : (y(), o("a", {
-					key: 1,
-					href: e.href,
-					target: "_blank",
-					rel: "noreferrer",
-					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-				}, w(e.label), 9, ui))]))), 128))])]),
-				s("div", null, [s("h3", di, w(T(n)("footer.contact")), 1), s("p", fi, w(T(n)("shared.contactEmail")), 1)])
-			]), s("div", pi, w(T(n)("footer.builtWith")), 1)])]);
+	setup(e, { expose: t }) {
+		t();
+		let { t: n } = Wi(), i = ie(), a = r(() => i.params.locale || "en"), o = {
+			t: n,
+			route: i,
+			currentLocale: a,
+			footerLinks: r(() => [
+				{
+					label: n("footer.github"),
+					href: "https://github.com/intlayer-org/benchmark-i18n",
+					isInternal: !1
+				},
+				{
+					label: n("footer.methodology"),
+					to: `/${a.value}/about`,
+					isInternal: !0
+				},
+				{
+					label: n("footer.contributing"),
+					to: `/${a.value}/contact`,
+					isInternal: !0
+				}
+			])
 		};
+		return Object.defineProperty(o, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), o;
 	}
-});
-function hi(e) {
-	h(() => {
+}), aa = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, oa = { class: "mt-20 border-t border-border bg-card" }, sa = { class: "container py-8" }, ca = { class: "grid gap-8 md:grid-cols-3" }, la = { class: "mb-2 text-sm font-semibold text-foreground" }, ua = { class: "text-sm text-muted-foreground" }, da = { class: "mb-2 text-sm font-semibold text-foreground" }, fa = { class: "space-y-1" }, pa = ["href"], ma = { class: "mb-2 text-sm font-semibold text-foreground" }, ha = { class: "text-sm text-muted-foreground" }, ga = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" };
+function _a(e, n, r, a, l, u) {
+	let d = ee("router-link");
+	return S(), o("footer", oa, [s("div", sa, [s("div", ca, [
+		s("div", null, [s("h3", la, E(a.t("footer.title")), 1), s("p", ua, E(a.t("footer.description")), 1)]),
+		s("div", null, [s("h3", da, E(a.t("footer.resources")), 1), s("ul", fa, [(S(!0), o(t, null, w(a.footerLinks, (e) => (S(), o("li", { key: e.label }, [e.isInternal ? (S(), i(d, {
+			key: 0,
+			to: e.to,
+			class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+		}, {
+			default: re(() => [c(E(e.label), 1)]),
+			_: 2
+		}, 1032, ["to"])) : (S(), o("a", {
+			key: 1,
+			href: e.href,
+			target: "_blank",
+			rel: "noreferrer",
+			class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+		}, E(e.label), 9, pa))]))), 128))])]),
+		s("div", null, [s("h3", ma, E(a.t("footer.contact")), 1), s("p", ha, E(a.t("shared.contactEmail")), 1)])
+	]), s("div", ga, E(a.t("footer.builtWith")), 1)])]);
+}
+var va = aa(ia, [["render", _a], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/src/components/Footer.vue"]]);
+function ya(e) {
+	v(() => {
 		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
-	}), g(() => {
+	}), y(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
 			try {
@@ -2354,7 +2827,7 @@ function hi(e) {
 		}
 	});
 }
-var gi = [
+var ba = [
 	"en",
 	"fr",
 	"es",
@@ -2365,202 +2838,14688 @@ var gi = [
 	"ja",
 	"ko",
 	"ru"
-], _i = (e) => {
+], xa = (e) => {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
 	} catch {
 		return e.toUpperCase();
 	}
-}, vi = { class: "flex items-center gap-2" }, yi = ["value"], bi = ["value"], xi = u({
+}, Sa = u({
 	__name: "LocaleSwitcher",
-	setup(e) {
-		let n = D(), i = te(), a = r(() => n.params.locale || "en"), c = (e) => {
-			let t = n.path.replace(/^\/[^/]+/, `/${e}`);
-			i.push({
-				path: t,
-				query: n.query,
-				hash: n.hash
-			});
+	setup(e, { expose: t }) {
+		t();
+		let n = ie(), i = ae(), a = {
+			route: n,
+			router: i,
+			currentLocale: r(() => n.params.locale || "en"),
+			handleLocaleChange: (e) => {
+				let t = n.path.replace(/^\/[^/]+/, `/${e}`);
+				i.push({
+					path: t,
+					query: n.query,
+					hash: n.hash
+				});
+			},
+			get getLocaleName() {
+				return xa;
+			},
+			get locales() {
+				return ba;
+			}
 		};
-		return (e, n) => (y(), o("div", vi, [s("select", {
-			value: a.value,
-			onChange: n[0] ||= (e) => c(e.target.value),
-			class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-		}, [(y(!0), o(t, null, x(T(gi), (e) => (y(), o("option", {
-			key: e,
-			value: e
-		}, w(T(_i)(e)), 9, bi))), 128))], 40, yi)]));
+		return Object.defineProperty(a, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), a;
 	}
-}), Si = ["aria-label", "title"], Ci = u({
+}), Ca = { class: "flex items-center gap-2" }, wa = ["value"], Ta = ["value"];
+function Ea(e, n, r, i, a, c) {
+	return S(), o("div", Ca, [s("select", {
+		value: i.currentLocale,
+		onChange: n[0] ||= (e) => i.handleLocaleChange(e.target.value),
+		class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+	}, [(S(!0), o(t, null, w(i.locales, (e) => (S(), o("option", {
+		key: e,
+		value: e
+	}, E(i.getLocaleName(e)), 9, Ta))), 128))], 40, wa)]);
+}
+var Da = aa(Sa, [["render", Ea], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/src/components/LocaleSwitcher.vue"]]), Oa = u({
 	__name: "ThemeToggle",
-	setup(e) {
-		let { t } = Jr(), n = b("auto");
-		function r() {
+	setup(e, { expose: t }) {
+		t();
+		let { t: n } = Wi(), r = C("auto");
+		function i() {
 			if (typeof window > "u") return "auto";
 			let e = window.localStorage.getItem("theme");
 			return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 		}
-		function i(e) {
+		function a(e) {
 			let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 			document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 		}
-		g(() => {
-			let e = r();
-			n.value = e, i(e);
+		y(() => {
+			let e = i();
+			r.value = e, a(e);
 		});
-		let a = null;
-		ee(n, (e) => {
+		let o = null;
+		ne(r, (e) => {
 			if (e === "auto") {
 				let e = window.matchMedia("(prefers-color-scheme: dark)");
-				a = () => i("auto"), e.addEventListener("change", a);
-			} else a &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", a), null);
-		}, { immediate: !0 }), v(() => {
-			a && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", a);
+				o = () => a("auto"), e.addEventListener("change", o);
+			} else o &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", o), null);
+		}, { immediate: !0 }), x(() => {
+			o && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", o);
 		});
 		function s() {
-			let e = n.value === "light" ? "dark" : n.value === "dark" ? "auto" : "light";
-			n.value = e, i(e), window.localStorage.setItem("theme", e);
+			let e = r.value === "light" ? "dark" : r.value === "dark" ? "auto" : "light";
+			r.value = e, a(e), window.localStorage.setItem("theme", e);
 		}
-		let c = () => n.value === "auto" ? t("themeToggle.labelAuto") : t("themeToggle.labelOther", { mode: n.value });
-		return (e, r) => (y(), o("button", {
-			type: "button",
-			onClick: s,
-			"aria-label": c(),
-			title: c(),
-			class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-		}, w(n.value === "auto" ? T(t)("themeToggle.auto") : n.value === "dark" ? T(t)("themeToggle.dark") : T(t)("themeToggle.light")), 9, Si));
+		let c = {
+			t: n,
+			mode: r,
+			getInitialMode: i,
+			applyThemeMode: a,
+			get mediaQueryListener() {
+				return o;
+			},
+			set mediaQueryListener(e) {
+				o = e;
+			},
+			toggleMode: s,
+			getLabel: () => r.value === "auto" ? n("themeToggle.labelAuto") : n("themeToggle.labelOther", { mode: r.value })
+		};
+		return Object.defineProperty(c, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), c;
 	}
-}), wi = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, Ti = { class: "container flex h-16 items-center justify-between" }, Ei = { class: "flex items-center gap-8" }, Di = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, Oi = ["href", "onClick"], ki = ["href", "onClick"], Ai = { class: "relative" }, ji = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, Mi = { class: "flex items-center gap-4" }, Ni = {
+}), ka = ["aria-label", "title"];
+function Aa(e, t, n, r, i, a) {
+	return S(), o("button", {
+		type: "button",
+		onClick: r.toggleMode,
+		"aria-label": r.getLabel(),
+		title: r.getLabel(),
+		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+	}, E(r.mode === "auto" ? r.t("themeToggle.auto") : r.mode === "dark" ? r.t("themeToggle.dark") : r.t("themeToggle.light")), 9, ka);
+}
+var ja = aa(Oa, [["render", Aa], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/src/components/ThemeToggle.vue"]]), Ma = u({
+	__name: "Header",
+	setup(e, { expose: t }) {
+		t(), ya("Header");
+		let { t: n } = Wi(), i = C(!1), a = ie(), o = r(() => a.params.locale || "en"), s = {
+			t: n,
+			isMockPagesOpen: i,
+			route: a,
+			currentLocale: o,
+			mockPages: r(() => [
+				{
+					to: `/${o.value}/products`,
+					label: n("header.products")
+				},
+				{
+					to: `/${o.value}/pricing`,
+					label: n("header.pricing")
+				},
+				{
+					to: `/${o.value}/team`,
+					label: n("header.team")
+				},
+				{
+					to: `/${o.value}/blog`,
+					label: n("header.blog")
+				},
+				{
+					to: `/${o.value}/careers`,
+					label: n("header.careers")
+				},
+				{
+					to: `/${o.value}/faq`,
+					label: n("header.faq")
+				},
+				{
+					to: `/${o.value}/contact`,
+					label: n("header.contact")
+				},
+				{
+					to: `/${o.value}/settings`,
+					label: n("header.settings")
+				}
+			]),
+			get ChevronDown() {
+				return oe;
+			},
+			LocaleSwitcher: Da,
+			ThemeToggle: ja
+		};
+		return Object.defineProperty(s, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), s;
+	}
+}), Na = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, Pa = { class: "container flex h-16 items-center justify-between" }, Fa = { class: "flex items-center gap-8" }, Ia = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, La = ["href", "onClick"], Ra = ["href", "onClick"], za = { class: "relative" }, Ba = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, Va = { class: "flex items-center gap-4" }, Ha = {
 	href: "https://github.com/intlayer-org/benchmark-i18n",
 	target: "_blank",
 	rel: "noreferrer",
 	class: "text-muted-foreground transition hover:text-foreground"
-}, Pi = { class: "sr-only" }, Fi = u({
-	__name: "Header",
-	setup(e) {
-		hi("Header");
-		let { t: n } = Jr(), u = b(!1), d = D(), f = r(() => d.params.locale || "en"), p = r(() => [
-			{
-				to: `/${f.value}/products`,
-				label: n("header.products")
-			},
-			{
-				to: `/${f.value}/pricing`,
-				label: n("header.pricing")
-			},
-			{
-				to: `/${f.value}/team`,
-				label: n("header.team")
-			},
-			{
-				to: `/${f.value}/blog`,
-				label: n("header.blog")
-			},
-			{
-				to: `/${f.value}/careers`,
-				label: n("header.careers")
-			},
-			{
-				to: `/${f.value}/faq`,
-				label: n("header.faq")
-			},
-			{
-				to: `/${f.value}/contact`,
-				label: n("header.contact")
-			},
-			{
-				to: `/${f.value}/settings`,
-				label: n("header.settings")
-			}
-		]);
-		return (e, r) => {
-			let d = S("router-link");
-			return y(), o("header", wi, [s("nav", Ti, [s("div", Ei, [l(d, {
-				to: `/${f.value}`,
-				class: "text-lg font-bold tracking-tight text-primary no-underline"
-			}, {
-				default: E(() => [c(w(T(n)("shared.appName")), 1)]),
-				_: 1
-			}, 8, ["to"]), s("div", Di, [
-				l(d, {
-					to: `/${f.value}`,
-					custom: ""
-				}, {
-					default: E(({ href: e, navigate: t, isExactActive: r }) => [s("a", {
-						href: e,
-						class: m(["nav-link", { "router-link-active": r }]),
-						onClick: t
-					}, w(T(n)("header.home")), 11, Oi)]),
-					_: 1
-				}, 8, ["to"]),
-				l(d, {
-					to: `/${f.value}/about`,
-					custom: ""
-				}, {
-					default: E(({ href: e, navigate: t, isActive: r }) => [s("a", {
-						href: e,
-						class: m(["nav-link", { "router-link-active": r }]),
-						onClick: t
-					}, w(T(n)("header.methodology")), 11, ki)]),
-					_: 1
-				}, 8, ["to"]),
-				s("div", Ai, [s("button", {
-					type: "button",
-					class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-					onMouseenter: r[0] ||= (e) => u.value = !0,
-					onMouseleave: r[1] ||= (e) => u.value = !1,
-					onClick: r[2] ||= (e) => u.value = !u.value
-				}, [c(w(T(n)("header.mockPages")) + " ", 1), l(T(ne), {
-					size: 14,
-					class: m(["transition-transform", u.value ? "rotate-180" : ""])
-				}, null, 8, ["class"])], 32), u.value ? (y(), o("div", {
-					key: 0,
-					class: "absolute left-0 top-full pt-2 w-48",
-					onMouseenter: r[4] ||= (e) => u.value = !0,
-					onMouseleave: r[5] ||= (e) => u.value = !1
-				}, [s("div", ji, [(y(!0), o(t, null, x(p.value, (e) => (y(), i(d, {
-					key: e.to,
-					to: e.to,
-					class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-					onClick: r[3] ||= (e) => u.value = !1
-				}, {
-					default: E(() => [c(w(e.label), 1)]),
-					_: 2
-				}, 1032, ["to"]))), 128))])], 32)) : a("v-if", !0)])
-			])]), s("div", Mi, [
-				s("a", Ni, [s("span", Pi, w(T(n)("shared.goToGithub")), 1), r[6] ||= s("svg", {
-					viewBox: "0 0 16 16",
-					"aria-hidden": "true",
-					width: "20",
-					height: "20"
-				}, [s("path", {
-					fill: "currentColor",
-					d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				})], -1)]),
-				l(xi),
-				l(Ci)
-			])])]);
-		};
-	}
-}), Ii = u({
+}, Ua = { class: "sr-only" };
+function Wa(e, n, r, u, d, f) {
+	let p = ee("router-link");
+	return S(), o("header", Na, [s("nav", Pa, [s("div", Fa, [l(p, {
+		to: `/${u.currentLocale}`,
+		class: "text-lg font-bold tracking-tight text-primary no-underline"
+	}, {
+		default: re(() => [c(E(u.t("shared.appName")), 1)]),
+		_: 1
+	}, 8, ["to"]), s("div", Ia, [
+		l(p, {
+			to: `/${u.currentLocale}`,
+			custom: ""
+		}, {
+			default: re(({ href: e, navigate: t, isExactActive: n }) => [s("a", {
+				href: e,
+				class: _(["nav-link", { "router-link-active": n }]),
+				onClick: t
+			}, E(u.t("header.home")), 11, La)]),
+			_: 1
+		}, 8, ["to"]),
+		l(p, {
+			to: `/${u.currentLocale}/about`,
+			custom: ""
+		}, {
+			default: re(({ href: e, navigate: t, isActive: n }) => [s("a", {
+				href: e,
+				class: _(["nav-link", { "router-link-active": n }]),
+				onClick: t
+			}, E(u.t("header.methodology")), 11, Ra)]),
+			_: 1
+		}, 8, ["to"]),
+		s("div", za, [s("button", {
+			type: "button",
+			class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+			onMouseenter: n[0] ||= (e) => u.isMockPagesOpen = !0,
+			onMouseleave: n[1] ||= (e) => u.isMockPagesOpen = !1,
+			onClick: n[2] ||= (e) => u.isMockPagesOpen = !u.isMockPagesOpen
+		}, [c(E(u.t("header.mockPages")) + " ", 1), l(u.ChevronDown, {
+			size: 14,
+			class: _(["transition-transform", u.isMockPagesOpen ? "rotate-180" : ""])
+		}, null, 8, ["class"])], 32), u.isMockPagesOpen ? (S(), o("div", {
+			key: 0,
+			class: "absolute left-0 top-full pt-2 w-48",
+			onMouseenter: n[4] ||= (e) => u.isMockPagesOpen = !0,
+			onMouseleave: n[5] ||= (e) => u.isMockPagesOpen = !1
+		}, [s("div", Ba, [(S(!0), o(t, null, w(u.mockPages, (e) => (S(), i(p, {
+			key: e.to,
+			to: e.to,
+			class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+			onClick: n[3] ||= (e) => u.isMockPagesOpen = !1
+		}, {
+			default: re(() => [c(E(e.label), 1)]),
+			_: 2
+		}, 1032, ["to"]))), 128))])], 32)) : a("v-if", !0)])
+	])]), s("div", Va, [
+		s("a", Ha, [s("span", Ua, E(u.t("shared.goToGithub")), 1), n[6] ||= s("svg", {
+			viewBox: "0 0 16 16",
+			"aria-hidden": "true",
+			width: "20",
+			height: "20"
+		}, [s("path", {
+			fill: "currentColor",
+			d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+		})], -1)]),
+		l(u.LocaleSwitcher),
+		l(u.ThemeToggle)
+	])])]);
+}
+var Ga = aa(Ma, [["render", Wa], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/src/components/Header.vue"]]), Ka = u({
 	__name: "Layout",
-	setup(e) {
-		let n = D(), { locale: r } = Jr(), i = b(0);
-		return h(() => {
+	setup(e, { expose: t }) {
+		t();
+		let n = ie(), { locale: r } = Wi(), i = C(0);
+		v(() => {
 			i.value = typeof performance < "u" ? performance.now() : 0;
-		}), g(() => {
-			ti(), ni("AppRoot", i.value);
-		}), ee(() => n.params.locale, (e) => {
+		}), y(() => {
+			na(), ra("AppRoot", i.value);
+		}), ne(() => n.params.locale, (e) => {
 			e && (document.documentElement.lang = e, r.value = e);
-		}, { immediate: !0 }), (e, n) => {
-			let r = S("router-view");
-			return y(), o(t, null, [
-				l(Fi),
-				l(r),
-				l(mi)
-			], 64);
+		}, { immediate: !0 });
+		let a = {
+			route: n,
+			locale: r,
+			renderStart: i,
+			Footer: va,
+			Header: Ga
 		};
+		return Object.defineProperty(a, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), a;
 	}
 });
-export { Ii as default };
+function qa(e, n, r, i, a, s) {
+	let c = ee("router-view");
+	return S(), o(t, null, [
+		l(i.Header),
+		l(c),
+		l(i.Footer)
+	], 64);
+}
+var Ja = aa(Ka, [["render", qa], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/src/components/Layout.vue"]]), Ya = Ui({
+	legacy: !1,
+	locale: "en",
+	fallbackLocale: "en",
+	messages: {
+		en: {
+			shared: {
+				appName: {
+					type: 0,
+					start: 0,
+					end: 10,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 11,
+							offset: 10
+						},
+						source: "i18n Bench"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							}
+						}],
+						static: "i18n Bench"
+					}
+				},
+				siteName: {
+					type: 0,
+					start: 0,
+					end: 14,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 15,
+							offset: 14
+						},
+						source: "i18n Benchmark"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							}
+						}],
+						static: "i18n Benchmark"
+					}
+				},
+				contactEmail: {
+					type: 0,
+					start: 0,
+					end: 24,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 25,
+							offset: 24
+						},
+						source: "contact{'@'}intlayer.org"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 24,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 25,
+								offset: 24
+							}
+						},
+						items: [
+							{
+								type: 3,
+								start: 0,
+								end: 7,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 8,
+										offset: 7
+									}
+								}
+							},
+							{
+								type: 9,
+								start: 7,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 8,
+										offset: 7
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							},
+							{
+								type: 3,
+								start: 12,
+								end: 24,
+								loc: {
+									start: {
+										line: 1,
+										column: 13,
+										offset: 12
+									},
+									end: {
+										line: 1,
+										column: 25,
+										offset: 24
+									}
+								}
+							}
+						],
+						static: "contact@intlayer.org"
+					}
+				},
+				goToGithub: {
+					type: 0,
+					start: 0,
+					end: 12,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 13,
+							offset: 12
+						},
+						source: "Go to GitHub"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							}
+						}],
+						static: "Go to GitHub"
+					}
+				}
+			},
+			header: {
+				home: {
+					type: 0,
+					start: 0,
+					end: 4,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 5,
+							offset: 4
+						},
+						source: "Home"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 4,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 5,
+								offset: 4
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 4,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 5,
+									offset: 4
+								}
+							}
+						}],
+						static: "Home"
+					}
+				},
+				methodology: {
+					type: 0,
+					start: 0,
+					end: 11,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 12,
+							offset: 11
+						},
+						source: "Methodology"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							}
+						}],
+						static: "Methodology"
+					}
+				},
+				mockPages: {
+					type: 0,
+					start: 0,
+					end: 10,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 11,
+							offset: 10
+						},
+						source: "Mock Pages"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							}
+						}],
+						static: "Mock Pages"
+					}
+				},
+				products: {
+					type: 0,
+					start: 0,
+					end: 8,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 9,
+							offset: 8
+						},
+						source: "Products"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							}
+						}],
+						static: "Products"
+					}
+				},
+				pricing: {
+					type: 0,
+					start: 0,
+					end: 7,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 8,
+							offset: 7
+						},
+						source: "Pricing"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							}
+						}],
+						static: "Pricing"
+					}
+				},
+				team: {
+					type: 0,
+					start: 0,
+					end: 4,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 5,
+							offset: 4
+						},
+						source: "Team"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 4,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 5,
+								offset: 4
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 4,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 5,
+									offset: 4
+								}
+							}
+						}],
+						static: "Team"
+					}
+				},
+				blog: {
+					type: 0,
+					start: 0,
+					end: 4,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 5,
+							offset: 4
+						},
+						source: "Blog"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 4,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 5,
+								offset: 4
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 4,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 5,
+									offset: 4
+								}
+							}
+						}],
+						static: "Blog"
+					}
+				},
+				careers: {
+					type: 0,
+					start: 0,
+					end: 7,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 8,
+							offset: 7
+						},
+						source: "Careers"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							}
+						}],
+						static: "Careers"
+					}
+				},
+				faq: {
+					type: 0,
+					start: 0,
+					end: 3,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 4,
+							offset: 3
+						},
+						source: "FAQ"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 3,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 4,
+								offset: 3
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 3,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 4,
+									offset: 3
+								}
+							}
+						}],
+						static: "FAQ"
+					}
+				},
+				contact: {
+					type: 0,
+					start: 0,
+					end: 7,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 8,
+							offset: 7
+						},
+						source: "Contact"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							}
+						}],
+						static: "Contact"
+					}
+				},
+				settings: {
+					type: 0,
+					start: 0,
+					end: 8,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 9,
+							offset: 8
+						},
+						source: "Settings"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							}
+						}],
+						static: "Settings"
+					}
+				}
+			},
+			footer: {
+				title: {
+					type: 0,
+					start: 0,
+					end: 14,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 15,
+							offset: 14
+						},
+						source: "i18n Benchmark"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							}
+						}],
+						static: "i18n Benchmark"
+					}
+				},
+				description: {
+					type: 0,
+					start: 0,
+					end: 151,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 152,
+							offset: 151
+						},
+						source: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 151,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 152,
+								offset: 151
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 151,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 152,
+									offset: 151
+								}
+							}
+						}],
+						static: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+					}
+				},
+				resources: {
+					type: 0,
+					start: 0,
+					end: 9,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 10,
+							offset: 9
+						},
+						source: "Resources"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 9,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 10,
+								offset: 9
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 9,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 10,
+									offset: 9
+								}
+							}
+						}],
+						static: "Resources"
+					}
+				},
+				github: {
+					type: 0,
+					start: 0,
+					end: 6,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 7,
+							offset: 6
+						},
+						source: "GitHub"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 6,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 7,
+								offset: 6
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 6,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 7,
+									offset: 6
+								}
+							}
+						}],
+						static: "GitHub"
+					}
+				},
+				methodology: {
+					type: 0,
+					start: 0,
+					end: 11,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 12,
+							offset: 11
+						},
+						source: "Methodology"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							}
+						}],
+						static: "Methodology"
+					}
+				},
+				contributing: {
+					type: 0,
+					start: 0,
+					end: 12,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 13,
+							offset: 12
+						},
+						source: "Contributing"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							}
+						}],
+						static: "Contributing"
+					}
+				},
+				contact: {
+					type: 0,
+					start: 0,
+					end: 7,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 8,
+							offset: 7
+						},
+						source: "Contact"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							}
+						}],
+						static: "Contact"
+					}
+				},
+				builtWith: {
+					type: 0,
+					start: 0,
+					end: 82,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 83,
+							offset: 82
+						},
+						source: "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router."
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 82,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 83,
+								offset: 82
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 82,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 83,
+									offset: 82
+								}
+							}
+						}],
+						static: "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router."
+					}
+				}
+			},
+			themeToggle: {
+				auto: {
+					type: 0,
+					start: 0,
+					end: 11,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 12,
+							offset: 11
+						},
+						source: "Theme: Auto"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							}
+						}],
+						static: "Theme: Auto"
+					}
+				},
+				dark: {
+					type: 0,
+					start: 0,
+					end: 11,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 12,
+							offset: 11
+						},
+						source: "Theme: Dark"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							}
+						}],
+						static: "Theme: Dark"
+					}
+				},
+				light: {
+					type: 0,
+					start: 0,
+					end: 12,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 13,
+							offset: 12
+						},
+						source: "Theme: Light"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							}
+						}],
+						static: "Theme: Light"
+					}
+				},
+				labelAuto: {
+					type: 0,
+					start: 0,
+					end: 57,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 58,
+							offset: 57
+						},
+						source: "Theme mode: auto (system). Click to switch to light mode."
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 57,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 58,
+								offset: 57
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 57,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 58,
+									offset: 57
+								}
+							}
+						}],
+						static: "Theme mode: auto (system). Click to switch to light mode."
+					}
+				},
+				labelOther: {
+					type: 0,
+					start: 0,
+					end: 41,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 42,
+							offset: 41
+						},
+						source: "Theme mode: {mode}. Click to switch mode."
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 41,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 42,
+								offset: 41
+							}
+						},
+						items: [
+							{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								},
+								value: "Theme mode: "
+							},
+							{
+								type: 4,
+								start: 12,
+								end: 18,
+								loc: {
+									start: {
+										line: 1,
+										column: 13,
+										offset: 12
+									},
+									end: {
+										line: 1,
+										column: 19,
+										offset: 18
+									}
+								},
+								key: "mode"
+							},
+							{
+								type: 3,
+								start: 18,
+								end: 41,
+								loc: {
+									start: {
+										line: 1,
+										column: 19,
+										offset: 18
+									},
+									end: {
+										line: 1,
+										column: 42,
+										offset: 41
+									}
+								},
+								value: ". Click to switch mode."
+							}
+						]
+					}
+				}
+			},
+			mockBanner: {
+				type: 0,
+				start: 0,
+				end: 114,
+				loc: {
+					start: {
+						line: 1,
+						column: 1,
+						offset: 0
+					},
+					end: {
+						line: 1,
+						column: 115,
+						offset: 114
+					},
+					source: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+				},
+				body: {
+					type: 2,
+					start: 0,
+					end: 114,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 115,
+							offset: 114
+						}
+					},
+					items: [{
+						type: 3,
+						start: 0,
+						end: 114,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 115,
+								offset: 114
+							}
+						}
+					}],
+					static: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+				}
+			},
+			home: {
+				hero: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "i18n Benchmark"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "i18n Benchmark"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 157,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 158,
+								offset: 157
+							},
+							source: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 157,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 158,
+									offset: 157
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 157,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 158,
+										offset: 157
+									}
+								}
+							}],
+							static: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+						}
+					},
+					viewResults: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "View Results"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "View Results"
+						}
+					},
+					methodology: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Methodology"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Methodology"
+						}
+					}
+				},
+				whyItMatters: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 24,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 25,
+								offset: 24
+							},
+							source: "Why These Metrics Matter"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 24,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 25,
+									offset: 24
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 24,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 25,
+										offset: 24
+									}
+								}
+							}],
+							static: "Why These Metrics Matter"
+						}
+					},
+					bundleSizeTitle: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Bundle Size"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Bundle Size"
+						}
+					},
+					bundleSizeDesc: {
+						type: 0,
+						start: 0,
+						end: 314,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 315,
+								offset: 314
+							},
+							source: "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 314,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 315,
+									offset: 314
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 314,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 315,
+										offset: 314
+									}
+								}
+							}],
+							static: "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
+						}
+					},
+					renderingTitle: {
+						type: 0,
+						start: 0,
+						end: 21,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 22,
+								offset: 21
+							},
+							source: "Rendering & Hydration"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 21,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 22,
+									offset: 21
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 21,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 22,
+										offset: 21
+									}
+								}
+							}],
+							static: "Rendering & Hydration"
+						}
+					},
+					renderingDesc: {
+						type: 0,
+						start: 0,
+						end: 336,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 337,
+								offset: 336
+							},
+							source: "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 336,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 337,
+									offset: 336
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 336,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 337,
+										offset: 336
+									}
+								}
+							}],
+							static: "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
+						}
+					},
+					dynamicLoadingTitle: {
+						type: 0,
+						start: 0,
+						end: 15,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 16,
+								offset: 15
+							},
+							source: "Dynamic Loading"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 15,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 16,
+									offset: 15
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 15,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 16,
+										offset: 15
+									}
+								}
+							}],
+							static: "Dynamic Loading"
+						}
+					},
+					dynamicLoadingDesc: {
+						type: 0,
+						start: 0,
+						end: 339,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 340,
+								offset: 339
+							},
+							source: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 339,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 340,
+									offset: 339
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 339,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 340,
+										offset: 339
+									}
+								}
+							}],
+							static: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+						}
+					}
+				},
+				understandingImpact: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 24,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 25,
+								offset: 24
+							},
+							source: "Understanding the Impact"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 24,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 25,
+									offset: 24
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 24,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 25,
+										offset: 24
+									}
+								}
+							}],
+							static: "Understanding the Impact"
+						}
+					},
+					singleJsonTitle: {
+						type: 0,
+						start: 0,
+						end: 44,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 45,
+								offset: 44
+							},
+							source: "Why a single large JSON can hurt performance"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 44,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 45,
+									offset: 44
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 44,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 45,
+										offset: 44
+									}
+								}
+							}],
+							static: "Why a single large JSON can hurt performance"
+						}
+					},
+					singleJsonIntro: {
+						type: 0,
+						start: 0,
+						end: 236,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 237,
+								offset: 236
+							},
+							source: "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 236,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 237,
+									offset: 236
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 236,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 237,
+										offset: 236
+									}
+								}
+							}],
+							static: "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
+						}
+					},
+					singleJsonBullet1: {
+						type: 0,
+						start: 0,
+						end: 70,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 71,
+								offset: 70
+							},
+							source: "The JSON must be parsed on every page load — blocking the main thread."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 70,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 71,
+									offset: 70
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 70,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 71,
+										offset: 70
+									}
+								}
+							}],
+							static: "The JSON must be parsed on every page load — blocking the main thread."
+						}
+					},
+					singleJsonBullet2: {
+						type: 0,
+						start: 0,
+						end: 161,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 162,
+								offset: 161
+							},
+							source: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 161,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 162,
+									offset: 161
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 161,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 162,
+										offset: 161
+									}
+								}
+							}],
+							static: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
+						}
+					},
+					singleJsonBullet3: {
+						type: 0,
+						start: 0,
+						end: 153,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 154,
+								offset: 153
+							},
+							source: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 153,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 154,
+									offset: 153
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 153,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 154,
+										offset: 153
+									}
+								}
+							}],
+							static: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
+						}
+					},
+					tradeOffsTitle: {
+						type: 0,
+						start: 0,
+						end: 33,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 34,
+								offset: 33
+							},
+							source: "The trade-offs of dynamic loading"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 33,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 34,
+									offset: 33
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 33,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 34,
+										offset: 33
+									}
+								}
+							}],
+							static: "The trade-offs of dynamic loading"
+						}
+					},
+					tradeOffsIntro: {
+						type: 0,
+						start: 0,
+						end: 140,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 141,
+								offset: 140
+							},
+							source: "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 140,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 141,
+									offset: 140
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 140,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 141,
+										offset: 140
+									}
+								}
+							}],
+							static: "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
+						}
+					},
+					waterfallLabel: {
+						type: 0,
+						start: 0,
+						end: 19,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 20,
+								offset: 19
+							},
+							source: "Waterfall requests:"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 19,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 20,
+									offset: 19
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 19,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 20,
+										offset: 19
+									}
+								}
+							}],
+							static: "Waterfall requests:"
+						}
+					},
+					waterfallDesc: {
+						type: 0,
+						start: 0,
+						end: 103,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 104,
+								offset: 103
+							},
+							source: "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 103,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 104,
+									offset: 103
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 103,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 104,
+										offset: 103
+									}
+								}
+							}],
+							static: "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+						}
+					},
+					foucLabel: {
+						type: 0,
+						start: 0,
+						end: 37,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 38,
+								offset: 37
+							},
+							source: "Flash of untranslated content (FOUC):"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 37,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 38,
+									offset: 37
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 37,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 38,
+										offset: 37
+									}
+								}
+							}],
+							static: "Flash of untranslated content (FOUC):"
+						}
+					},
+					foucDesc: {
+						type: 0,
+						start: 0,
+						end: 87,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 88,
+								offset: 87
+							},
+							source: "users may briefly see translation keys or a fallback language before the chunk arrives."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 87,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 88,
+									offset: 87
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 87,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 88,
+										offset: 87
+									}
+								}
+							}],
+							static: "users may briefly see translation keys or a fallback language before the chunk arrives."
+						}
+					},
+					cacheLabel: {
+						type: 0,
+						start: 0,
+						end: 19,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 20,
+								offset: 19
+							},
+							source: "Cache invalidation:"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 19,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 20,
+									offset: 19
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 19,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 20,
+										offset: 19
+									}
+								}
+							}],
+							static: "Cache invalidation:"
+						}
+					},
+					cacheDesc: {
+						type: 0,
+						start: 0,
+						end: 130,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 131,
+								offset: 130
+							},
+							source: "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 130,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 131,
+									offset: 130
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 130,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 131,
+										offset: 130
+									}
+								}
+							}],
+							static: "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+						}
+					},
+					measuresTitle: {
+						type: 0,
+						start: 0,
+						end: 28,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 29,
+								offset: 28
+							},
+							source: "What this benchmark measures"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 28,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 29,
+									offset: 28
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 28,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 29,
+										offset: 28
+									}
+								}
+							}],
+							static: "What this benchmark measures"
+						}
+					},
+					measuresDesc: {
+						type: 0,
+						start: 0,
+						end: 388,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 389,
+								offset: 388
+							},
+							source: "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 388,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 389,
+									offset: 388
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 388,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 389,
+										offset: 388
+									}
+								}
+							}],
+							static: "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+						}
+					}
+				},
+				resultsTable: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "Sample Results"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "Sample Results"
+						}
+					},
+					library: {
+						type: 0,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							},
+							source: "Library"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 7,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 8,
+										offset: 7
+									}
+								}
+							}],
+							static: "Library"
+						}
+					},
+					bundleSize: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Bundle Size"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Bundle Size"
+						}
+					},
+					lookupTime: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Lookup Time"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Lookup Time"
+						}
+					},
+					lazyLoading: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Lazy Loading"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Lazy Loading"
+						}
+					},
+					yes: {
+						type: 0,
+						start: 0,
+						end: 3,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 4,
+								offset: 3
+							},
+							source: "Yes"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 3,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 4,
+									offset: 3
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 3,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 4,
+										offset: 3
+									}
+								}
+							}],
+							static: "Yes"
+						}
+					},
+					manual: {
+						type: 0,
+						start: 0,
+						end: 6,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 7,
+								offset: 6
+							},
+							source: "Manual"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 6,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 7,
+									offset: 6
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 6,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 7,
+										offset: 6
+									}
+								}
+							}],
+							static: "Manual"
+						}
+					},
+					builtIn: {
+						type: 0,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							},
+							source: "Built-in"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 8,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 9,
+										offset: 8
+									}
+								}
+							}],
+							static: "Built-in"
+						}
+					}
+				}
+			},
+			about: {
+				header: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 20,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 21,
+								offset: 20
+							},
+							source: "About This Benchmark"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 20,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 21,
+									offset: 20
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 20,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 21,
+										offset: 20
+									}
+								}
+							}],
+							static: "About This Benchmark"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 224,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 225,
+								offset: 224
+							},
+							source: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 224,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 225,
+									offset: 224
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 224,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 225,
+										offset: 224
+									}
+								}
+							}],
+							static: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+						}
+					}
+				},
+				grid: {
+					whyExistsTitle: {
+						type: 0,
+						start: 0,
+						end: 15,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 16,
+								offset: 15
+							},
+							source: "Why This Exists"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 15,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 16,
+									offset: 15
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 15,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 16,
+										offset: 15
+									}
+								}
+							}],
+							static: "Why This Exists"
+						}
+					},
+					whyExistsDesc: {
+						type: 0,
+						start: 0,
+						end: 401,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 402,
+								offset: 401
+							},
+							source: "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 401,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 402,
+									offset: 401
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 401,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 402,
+										offset: 401
+									}
+								}
+							}],
+							static: "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+						}
+					},
+					methodologyTitle: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Methodology"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Methodology"
+						}
+					},
+					methodologyDesc: {
+						type: 0,
+						start: 0,
+						end: 301,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 302,
+								offset: 301
+							},
+							source: "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 301,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 302,
+									offset: 301
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 301,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 302,
+										offset: 301
+									}
+								}
+							}],
+							static: "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+						}
+					}
+				},
+				whatWeMeasure: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 15,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 16,
+								offset: 15
+							},
+							source: "What We Measure"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 15,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 16,
+									offset: 15
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 15,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 16,
+										offset: 15
+									}
+								}
+							}],
+							static: "What We Measure"
+						}
+					},
+					bundleSizeImpact: {
+						type: 0,
+						start: 0,
+						end: 18,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 19,
+								offset: 18
+							},
+							source: "Bundle size impact"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 18,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 19,
+									offset: 18
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 18,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 19,
+										offset: 18
+									}
+								}
+							}],
+							static: "Bundle size impact"
+						}
+					},
+					bundleSizeImpactDesc: {
+						type: 0,
+						start: 0,
+						end: 161,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 162,
+								offset: 161
+							},
+							source: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 161,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 162,
+									offset: 161
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 161,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 162,
+										offset: 161
+									}
+								}
+							}],
+							static: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+						}
+					},
+					renderingOverhead: {
+						type: 0,
+						start: 0,
+						end: 18,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 19,
+								offset: 18
+							},
+							source: "Rendering overhead"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 18,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 19,
+									offset: 18
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 18,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 19,
+										offset: 18
+									}
+								}
+							}],
+							static: "Rendering overhead"
+						}
+					},
+					renderingOverheadDesc: {
+						type: 0,
+						start: 0,
+						end: 186,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 187,
+								offset: 186
+							},
+							source: "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 186,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 187,
+									offset: 186
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 186,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 187,
+										offset: 186
+									}
+								}
+							}],
+							static: "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+						}
+					},
+					hydrationCost: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "Hydration cost"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "Hydration cost"
+						}
+					},
+					hydrationCostDesc: {
+						type: 0,
+						start: 0,
+						end: 165,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 166,
+								offset: 165
+							},
+							source: "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 165,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 166,
+									offset: 165
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 165,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 166,
+										offset: 165
+									}
+								}
+							}],
+							static: "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+						}
+					},
+					lazyLoading: {
+						type: 0,
+						start: 0,
+						end: 26,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 27,
+								offset: 26
+							},
+							source: "Lazy loading effectiveness"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 26,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 27,
+									offset: 26
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 26,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 27,
+										offset: 26
+									}
+								}
+							}],
+							static: "Lazy loading effectiveness"
+						}
+					},
+					lazyLoadingDesc: {
+						type: 0,
+						start: 0,
+						end: 167,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 168,
+								offset: 167
+							},
+							source: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 167,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 168,
+									offset: 167
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 167,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 168,
+										offset: 167
+									}
+								}
+							}],
+							static: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
+						}
+					},
+					localeSwitch: {
+						type: 0,
+						start: 0,
+						end: 19,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 20,
+								offset: 19
+							},
+							source: "Locale switch speed"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 19,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 20,
+									offset: 19
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 19,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 20,
+										offset: 19
+									}
+								}
+							}],
+							static: "Locale switch speed"
+						}
+					},
+					localeSwitchDesc: {
+						type: 0,
+						start: 0,
+						end: 153,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 154,
+								offset: 153
+							},
+							source: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 153,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 154,
+									offset: 153
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 153,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 154,
+										offset: 153
+									}
+								}
+							}],
+							static: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+						}
+					}
+				}
+			},
+			blog: {
+				header: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 4,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 5,
+								offset: 4
+							},
+							source: "Blog"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 4,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 5,
+									offset: 4
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 4,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 5,
+										offset: 4
+									}
+								}
+							}],
+							static: "Blog"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 58,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 59,
+								offset: 58
+							},
+							source: "Insights, tutorials, and analysis from the i18n community."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 58,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 59,
+									offset: 58
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 58,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 59,
+										offset: 58
+									}
+								}
+							}],
+							static: "Insights, tutorials, and analysis from the i18n community."
+						}
+					}
+				},
+				list: {
+					readMore: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Read More →"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Read More →"
+						}
+					},
+					post1Title: {
+						type: 0,
+						start: 0,
+						end: 45,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 46,
+								offset: 45
+							},
+							source: "Comparing i18n Libraries in 2026: A Deep Dive"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 45,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 46,
+									offset: 45
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 45,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 46,
+										offset: 45
+									}
+								}
+							}],
+							static: "Comparing i18n Libraries in 2026: A Deep Dive"
+						}
+					},
+					post1Date: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "March 15, 2026"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "March 15, 2026"
+						}
+					},
+					post1Excerpt: {
+						type: 0,
+						start: 0,
+						end: 127,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 128,
+								offset: 127
+							},
+							source: "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 127,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 128,
+									offset: 127
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 127,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 128,
+										offset: 127
+									}
+								}
+							}],
+							static: "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+						}
+					},
+					post1Category: {
+						type: 0,
+						start: 0,
+						end: 9,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 10,
+								offset: 9
+							},
+							source: "Benchmark"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 9,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 10,
+									offset: 9
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 9,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 10,
+										offset: 9
+									}
+								}
+							}],
+							static: "Benchmark"
+						}
+					},
+					post2Title: {
+						type: 0,
+						start: 0,
+						end: 37,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 38,
+								offset: 37
+							},
+							source: "How to Reduce Your i18n Bundle by 60%"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 37,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 38,
+									offset: 37
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 37,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 38,
+										offset: 37
+									}
+								}
+							}],
+							static: "How to Reduce Your i18n Bundle by 60%"
+						}
+					},
+					post2Date: {
+						type: 0,
+						start: 0,
+						end: 13,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 14,
+								offset: 13
+							},
+							source: "March 8, 2026"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 13,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 14,
+									offset: 13
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 13,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 14,
+										offset: 13
+									}
+								}
+							}],
+							static: "March 8, 2026"
+						}
+					},
+					post2Excerpt: {
+						type: 0,
+						start: 0,
+						end: 127,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 128,
+								offset: 127
+							},
+							source: "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 127,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 128,
+									offset: 127
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 127,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 128,
+										offset: 127
+									}
+								}
+							}],
+							static: "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+						}
+					},
+					post2Category: {
+						type: 0,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							},
+							source: "Tutorial"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 8,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 9,
+										offset: 8
+									}
+								}
+							}],
+							static: "Tutorial"
+						}
+					},
+					post3Title: {
+						type: 0,
+						start: 0,
+						end: 42,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 43,
+								offset: 42
+							},
+							source: "The State of Internationalization in React"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 42,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 43,
+									offset: 42
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 42,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 43,
+										offset: 42
+									}
+								}
+							}],
+							static: "The State of Internationalization in React"
+						}
+					},
+					post3Date: {
+						type: 0,
+						start: 0,
+						end: 17,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 18,
+								offset: 17
+							},
+							source: "February 28, 2026"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 17,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 18,
+									offset: 17
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 17,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 18,
+										offset: 17
+									}
+								}
+							}],
+							static: "February 28, 2026"
+						}
+					},
+					post3Excerpt: {
+						type: 0,
+						start: 0,
+						end: 114,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 115,
+								offset: 114
+							},
+							source: "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 114,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 115,
+									offset: 114
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 114,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 115,
+										offset: 114
+									}
+								}
+							}],
+							static: "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+						}
+					},
+					post3Category: {
+						type: 0,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							},
+							source: "Analysis"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 8,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 9,
+										offset: 8
+									}
+								}
+							}],
+							static: "Analysis"
+						}
+					},
+					post4Title: {
+						type: 0,
+						start: 0,
+						end: 38,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 39,
+								offset: 38
+							},
+							source: "Migrating from react-i18next to Lingui"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 38,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 39,
+									offset: 38
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 38,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 39,
+										offset: 38
+									}
+								}
+							}],
+							static: "Migrating from react-i18next to Lingui"
+						}
+					},
+					post4Date: {
+						type: 0,
+						start: 0,
+						end: 17,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 18,
+								offset: 17
+							},
+							source: "February 15, 2026"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 17,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 18,
+									offset: 17
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 17,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 18,
+										offset: 17
+									}
+								}
+							}],
+							static: "February 15, 2026"
+						}
+					},
+					post4Excerpt: {
+						type: 0,
+						start: 0,
+						end: 109,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 110,
+								offset: 109
+							},
+							source: "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 109,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 110,
+									offset: 109
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 109,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 110,
+										offset: 109
+									}
+								}
+							}],
+							static: "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+						}
+					},
+					post4Category: {
+						type: 0,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							},
+							source: "Tutorial"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 8,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 9,
+										offset: 8
+									}
+								}
+							}],
+							static: "Tutorial"
+						}
+					},
+					post5Title: {
+						type: 0,
+						start: 0,
+						end: 41,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 42,
+								offset: 41
+							},
+							source: "Server Components and i18n: What Changes?"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 41,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 42,
+									offset: 41
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 41,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 42,
+										offset: 41
+									}
+								}
+							}],
+							static: "Server Components and i18n: What Changes?"
+						}
+					},
+					post5Date: {
+						type: 0,
+						start: 0,
+						end: 16,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 17,
+								offset: 16
+							},
+							source: "February 1, 2026"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 16,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 17,
+									offset: 16
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 16,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 17,
+										offset: 16
+									}
+								}
+							}],
+							static: "February 1, 2026"
+						}
+					},
+					post5Excerpt: {
+						type: 0,
+						start: 0,
+						end: 120,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 121,
+								offset: 120
+							},
+							source: "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 120,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 121,
+									offset: 120
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 120,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 121,
+										offset: 120
+									}
+								}
+							}],
+							static: "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+						}
+					},
+					post5Category: {
+						type: 0,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							},
+							source: "Analysis"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 8,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 9,
+										offset: 8
+									}
+								}
+							}],
+							static: "Analysis"
+						}
+					},
+					post6Title: {
+						type: 0,
+						start: 0,
+						end: 34,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 35,
+								offset: 34
+							},
+							source: "Benchmark Methodology: How We Test"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 34,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 35,
+									offset: 34
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 34,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 35,
+										offset: 34
+									}
+								}
+							}],
+							static: "Benchmark Methodology: How We Test"
+						}
+					},
+					post6Date: {
+						type: 0,
+						start: 0,
+						end: 16,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 17,
+								offset: 16
+							},
+							source: "January 20, 2026"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 16,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 17,
+									offset: 16
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 16,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 17,
+										offset: 16
+									}
+								}
+							}],
+							static: "January 20, 2026"
+						}
+					},
+					post6Excerpt: {
+						type: 0,
+						start: 0,
+						end: 122,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 123,
+								offset: 122
+							},
+							source: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 122,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 123,
+									offset: 122
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 122,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 123,
+										offset: 122
+									}
+								}
+							}],
+							static: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+						}
+					},
+					post6Category: {
+						type: 0,
+						start: 0,
+						end: 4,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 5,
+								offset: 4
+							},
+							source: "Meta"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 4,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 5,
+									offset: 4
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 4,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 5,
+										offset: 4
+									}
+								}
+							}],
+							static: "Meta"
+						}
+					}
+				}
+			},
+			careers: {
+				header: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							},
+							source: "Careers"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 7,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 8,
+										offset: 7
+									}
+								}
+							}],
+							static: "Careers"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 148,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 149,
+								offset: 148
+							},
+							source: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 148,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 149,
+									offset: 148
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 148,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 149,
+										offset: 148
+									}
+								}
+							}],
+							static: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+						}
+					}
+				},
+				benefits: {
+					remoteLabel: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Remote-first"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Remote-first"
+						}
+					},
+					remoteValue: {
+						type: 0,
+						start: 0,
+						end: 31,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 32,
+								offset: 31
+							},
+							source: "Work from anywhere in the world"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 31,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 32,
+									offset: 31
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 31,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 32,
+										offset: 31
+									}
+								}
+							}],
+							static: "Work from anywhere in the world"
+						}
+					},
+					payLabel: {
+						type: 0,
+						start: 0,
+						end: 15,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 16,
+								offset: 15
+							},
+							source: "Competitive pay"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 15,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 16,
+									offset: 15
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 15,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 16,
+										offset: 15
+									}
+								}
+							}],
+							static: "Competitive pay"
+						}
+					},
+					payValue: {
+						type: 0,
+						start: 0,
+						end: 26,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 27,
+								offset: 26
+							},
+							source: "Top-of-market compensation"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 26,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 27,
+									offset: 26
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 26,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 27,
+										offset: 26
+									}
+								}
+							}],
+							static: "Top-of-market compensation"
+						}
+					},
+					ossLabel: {
+						type: 0,
+						start: 0,
+						end: 16,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 17,
+								offset: 16
+							},
+							source: "Open source time"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 16,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 17,
+									offset: 16
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 16,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 17,
+										offset: 16
+									}
+								}
+							}],
+							static: "Open source time"
+						}
+					},
+					ossValue: {
+						type: 0,
+						start: 0,
+						end: 30,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 31,
+								offset: 30
+							},
+							source: "20% time for OSS contributions"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 30,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 31,
+									offset: 30
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 30,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 31,
+										offset: 30
+									}
+								}
+							}],
+							static: "20% time for OSS contributions"
+						}
+					}
+				},
+				openPositions: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "Open Positions"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "Open Positions"
+						}
+					},
+					applyNow: {
+						type: 0,
+						start: 0,
+						end: 9,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 10,
+								offset: 9
+							},
+							source: "Apply Now"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 9,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 10,
+									offset: 9
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 9,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 10,
+										offset: 9
+									}
+								}
+							}],
+							static: "Apply Now"
+						}
+					},
+					remote: {
+						type: 0,
+						start: 0,
+						end: 6,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 7,
+								offset: 6
+							},
+							source: "Remote"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 6,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 7,
+									offset: 6
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 6,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 7,
+										offset: 6
+									}
+								}
+							}],
+							static: "Remote"
+						}
+					},
+					fullTime: {
+						type: 0,
+						start: 0,
+						end: 9,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 10,
+								offset: 9
+							},
+							source: "Full-time"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 9,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 10,
+									offset: 9
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 9,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 10,
+										offset: 9
+									}
+								}
+							}],
+							static: "Full-time"
+						}
+					},
+					partTime: {
+						type: 0,
+						start: 0,
+						end: 9,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 10,
+								offset: 9
+							},
+							source: "Part-time"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 9,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 10,
+									offset: 9
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 9,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 10,
+										offset: 9
+									}
+								}
+							}],
+							static: "Part-time"
+						}
+					},
+					engineering: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Engineering"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Engineering"
+						}
+					},
+					documentation: {
+						type: 0,
+						start: 0,
+						end: 13,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 14,
+								offset: 13
+							},
+							source: "Documentation"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 13,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 14,
+									offset: 13
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 13,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 14,
+										offset: 13
+									}
+								}
+							}],
+							static: "Documentation"
+						}
+					},
+					community: {
+						type: 0,
+						start: 0,
+						end: 9,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 10,
+								offset: 9
+							},
+							source: "Community"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 9,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 10,
+									offset: 9
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 9,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 10,
+										offset: 9
+									}
+								}
+							}],
+							static: "Community"
+						}
+					},
+					sfRemote: {
+						type: 0,
+						start: 0,
+						end: 22,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 23,
+								offset: 22
+							},
+							source: "San Francisco / Remote"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 22,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 23,
+									offset: 22
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 22,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 23,
+										offset: 22
+									}
+								}
+							}],
+							static: "San Francisco / Remote"
+						}
+					},
+					frontendTitle: {
+						type: 0,
+						start: 0,
+						end: 24,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 25,
+								offset: 24
+							},
+							source: "Senior Frontend Engineer"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 24,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 25,
+									offset: 24
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 24,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 25,
+										offset: 24
+									}
+								}
+							}],
+							static: "Senior Frontend Engineer"
+						}
+					},
+					frontendDesc: {
+						type: 0,
+						start: 0,
+						end: 100,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 101,
+								offset: 100
+							},
+							source: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 100,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 101,
+									offset: 100
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 100,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 101,
+										offset: 100
+									}
+								}
+							}],
+							static: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+						}
+					},
+					backendTitle: {
+						type: 0,
+						start: 0,
+						end: 16,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 17,
+								offset: 16
+							},
+							source: "Backend Engineer"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 16,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 17,
+									offset: 16
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 16,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 17,
+										offset: 16
+									}
+								}
+							}],
+							static: "Backend Engineer"
+						}
+					},
+					backendDesc: {
+						type: 0,
+						start: 0,
+						end: 98,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 99,
+								offset: 98
+							},
+							source: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 98,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 99,
+									offset: 98
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 98,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 99,
+										offset: 98
+									}
+								}
+							}],
+							static: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+						}
+					},
+					writerTitle: {
+						type: 0,
+						start: 0,
+						end: 16,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 17,
+								offset: 16
+							},
+							source: "Technical Writer"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 16,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 17,
+									offset: 16
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 16,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 17,
+										offset: 16
+									}
+								}
+							}],
+							static: "Technical Writer"
+						}
+					},
+					writerDesc: {
+						type: 0,
+						start: 0,
+						end: 89,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 90,
+								offset: 89
+							},
+							source: "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 89,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 90,
+									offset: 89
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 89,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 90,
+										offset: 89
+									}
+								}
+							}],
+							static: "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+						}
+					},
+					devrelTitle: {
+						type: 0,
+						start: 0,
+						end: 15,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 16,
+								offset: 15
+							},
+							source: "DevRel Engineer"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 15,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 16,
+									offset: 15
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 15,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 16,
+										offset: 15
+									}
+								}
+							}],
+							static: "DevRel Engineer"
+						}
+					},
+					devrelDesc: {
+						type: 0,
+						start: 0,
+						end: 99,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 100,
+								offset: 99
+							},
+							source: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 99,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 100,
+									offset: 99
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 99,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 100,
+										offset: 99
+									}
+								}
+							}],
+							static: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+						}
+					},
+					qaTitle: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "QA Engineer"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "QA Engineer"
+						}
+					},
+					qaDesc: {
+						type: 0,
+						start: 0,
+						end: 97,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 98,
+								offset: 97
+							},
+							source: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 97,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 98,
+									offset: 97
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 97,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 98,
+										offset: 97
+									}
+								}
+							}],
+							static: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+						}
+					}
+				}
+			},
+			contact: {
+				header: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Get in Touch"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Get in Touch"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 78,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 79,
+								offset: 78
+							},
+							source: "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 78,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 79,
+									offset: 78
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 78,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 79,
+										offset: 78
+									}
+								}
+							}],
+							static: "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+						}
+					}
+				},
+				form: {
+					name: {
+						type: 0,
+						start: 0,
+						end: 4,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 5,
+								offset: 4
+							},
+							source: "Name"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 4,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 5,
+									offset: 4
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 4,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 5,
+										offset: 4
+									}
+								}
+							}],
+							static: "Name"
+						}
+					},
+					yourName: {
+						type: 0,
+						start: 0,
+						end: 9,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 10,
+								offset: 9
+							},
+							source: "Your name"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 9,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 10,
+									offset: 9
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 9,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 10,
+										offset: 9
+									}
+								}
+							}],
+							static: "Your name"
+						}
+					},
+					email: {
+						type: 0,
+						start: 0,
+						end: 5,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 6,
+								offset: 5
+							},
+							source: "Email"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 5,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 6,
+									offset: 5
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 5,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 6,
+										offset: 5
+									}
+								}
+							}],
+							static: "Email"
+						}
+					},
+					emailPlaceholder: {
+						type: 0,
+						start: 0,
+						end: 19,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 20,
+								offset: 19
+							},
+							source: "you{'@'}example.com"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 19,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 20,
+									offset: 19
+								}
+							},
+							items: [
+								{
+									type: 3,
+									start: 0,
+									end: 3,
+									loc: {
+										start: {
+											line: 1,
+											column: 1,
+											offset: 0
+										},
+										end: {
+											line: 1,
+											column: 4,
+											offset: 3
+										}
+									}
+								},
+								{
+									type: 9,
+									start: 3,
+									end: 8,
+									loc: {
+										start: {
+											line: 1,
+											column: 4,
+											offset: 3
+										},
+										end: {
+											line: 1,
+											column: 9,
+											offset: 8
+										}
+									}
+								},
+								{
+									type: 3,
+									start: 8,
+									end: 19,
+									loc: {
+										start: {
+											line: 1,
+											column: 9,
+											offset: 8
+										},
+										end: {
+											line: 1,
+											column: 20,
+											offset: 19
+										}
+									}
+								}
+							],
+							static: "you@example.com"
+						}
+					},
+					topic: {
+						type: 0,
+						start: 0,
+						end: 5,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 6,
+								offset: 5
+							},
+							source: "Topic"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 5,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 6,
+									offset: 5
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 5,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 6,
+										offset: 5
+									}
+								}
+							}],
+							static: "Topic"
+						}
+					},
+					bugReport: {
+						type: 0,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							},
+							source: "Bug Report"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 10,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 11,
+										offset: 10
+									}
+								}
+							}],
+							static: "Bug Report"
+						}
+					},
+					newBenchmarkIdea: {
+						type: 0,
+						start: 0,
+						end: 18,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 19,
+								offset: 18
+							},
+							source: "New Benchmark Idea"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 18,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 19,
+									offset: 18
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 18,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 19,
+										offset: 18
+									}
+								}
+							}],
+							static: "New Benchmark Idea"
+						}
+					},
+					methodologyQuestion: {
+						type: 0,
+						start: 0,
+						end: 20,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 21,
+								offset: 20
+							},
+							source: "Methodology Question"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 20,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 21,
+									offset: 20
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 20,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 21,
+										offset: 20
+									}
+								}
+							}],
+							static: "Methodology Question"
+						}
+					},
+					contribution: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Contribution"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Contribution"
+						}
+					},
+					other: {
+						type: 0,
+						start: 0,
+						end: 5,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 6,
+								offset: 5
+							},
+							source: "Other"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 5,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 6,
+									offset: 5
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 5,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 6,
+										offset: 5
+									}
+								}
+							}],
+							static: "Other"
+						}
+					},
+					message: {
+						type: 0,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							},
+							source: "Message"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 7,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 8,
+										offset: 7
+									}
+								}
+							}],
+							static: "Message"
+						}
+					},
+					messagePlaceholder: {
+						type: 0,
+						start: 0,
+						end: 33,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 34,
+								offset: 33
+							},
+							source: "Describe your question or idea..."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 33,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 34,
+									offset: 33
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 33,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 34,
+										offset: 33
+									}
+								}
+							}],
+							static: "Describe your question or idea..."
+						}
+					},
+					sendMessage: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Send Message"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Send Message"
+						}
+					}
+				}
+			},
+			faq: {
+				header: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 26,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 27,
+								offset: 26
+							},
+							source: "Frequently Asked Questions"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 26,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 27,
+									offset: 26
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 26,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 27,
+										offset: 26
+									}
+								}
+							}],
+							static: "Frequently Asked Questions"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 49,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 50,
+								offset: 49
+							},
+							source: "Everything you need to know about i18n Benchmark."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 49,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 50,
+									offset: 49
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 49,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 50,
+										offset: 49
+									}
+								}
+							}],
+							static: "Everything you need to know about i18n Benchmark."
+						}
+					}
+				},
+				list: {
+					q1: {
+						type: 0,
+						start: 0,
+						end: 23,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 24,
+								offset: 23
+							},
+							source: "What is i18n Benchmark?"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 23,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 24,
+									offset: 23
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 23,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 24,
+										offset: 23
+									}
+								}
+							}],
+							static: "What is i18n Benchmark?"
+						}
+					},
+					a1: {
+						type: 0,
+						start: 0,
+						end: 206,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 207,
+								offset: 206
+							},
+							source: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 206,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 207,
+									offset: 206
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 206,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 207,
+										offset: 206
+									}
+								}
+							}],
+							static: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
+						}
+					},
+					q2: {
+						type: 0,
+						start: 0,
+						end: 29,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 30,
+								offset: 29
+							},
+							source: "How are benchmarks conducted?"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 29,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 30,
+									offset: 29
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 29,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 30,
+										offset: 29
+									}
+								}
+							}],
+							static: "How are benchmarks conducted?"
+						}
+					},
+					a2: {
+						type: 0,
+						start: 0,
+						end: 228,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 229,
+								offset: 228
+							},
+							source: "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 228,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 229,
+									offset: 228
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 228,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 229,
+										offset: 228
+									}
+								}
+							}],
+							static: "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
+						}
+					},
+					q3: {
+						type: 0,
+						start: 0,
+						end: 40,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 41,
+								offset: 40
+							},
+							source: "Which libraries are currently supported?"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 40,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 41,
+									offset: 40
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 40,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 41,
+										offset: 40
+									}
+								}
+							}],
+							static: "Which libraries are currently supported?"
+						}
+					},
+					a3: {
+						type: 0,
+						start: 0,
+						end: 165,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 166,
+								offset: 165
+							},
+							source: "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {'@'}fluent/react, and Tolgee."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 165,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 166,
+									offset: 165
+								}
+							},
+							items: [
+								{
+									type: 3,
+									start: 0,
+									end: 135,
+									loc: {
+										start: {
+											line: 1,
+											column: 1,
+											offset: 0
+										},
+										end: {
+											line: 1,
+											column: 136,
+											offset: 135
+										}
+									}
+								},
+								{
+									type: 9,
+									start: 135,
+									end: 140,
+									loc: {
+										start: {
+											line: 1,
+											column: 136,
+											offset: 135
+										},
+										end: {
+											line: 1,
+											column: 141,
+											offset: 140
+										}
+									}
+								},
+								{
+									type: 3,
+									start: 140,
+									end: 165,
+									loc: {
+										start: {
+											line: 1,
+											column: 141,
+											offset: 140
+										},
+										end: {
+											line: 1,
+											column: 166,
+											offset: 165
+										}
+									}
+								}
+							],
+							static: "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
+						}
+					},
+					q4: {
+						type: 0,
+						start: 0,
+						end: 31,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 32,
+								offset: 31
+							},
+							source: "Can I submit my own benchmarks?"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 31,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 32,
+									offset: 31
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 31,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 32,
+										offset: 31
+									}
+								}
+							}],
+							static: "Can I submit my own benchmarks?"
+						}
+					},
+					a4: {
+						type: 0,
+						start: 0,
+						end: 205,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 206,
+								offset: 205
+							},
+							source: "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 205,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 206,
+									offset: 205
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 205,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 206,
+										offset: 205
+									}
+								}
+							}],
+							static: "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
+						}
+					},
+					q5: {
+						type: 0,
+						start: 0,
+						end: 33,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 34,
+								offset: 33
+							},
+							source: "How often are benchmarks updated?"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 33,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 34,
+									offset: 33
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 33,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 34,
+										offset: 33
+									}
+								}
+							}],
+							static: "How often are benchmarks updated?"
+						}
+					},
+					a5: {
+						type: 0,
+						start: 0,
+						end: 147,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 148,
+								offset: 147
+							},
+							source: "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 147,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 148,
+									offset: 147
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 147,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 148,
+										offset: 147
+									}
+								}
+							}],
+							static: "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
+						}
+					},
+					q6: {
+						type: 0,
+						start: 0,
+						end: 21,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 22,
+								offset: 21
+							},
+							source: "Is the data reliable?"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 21,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 22,
+									offset: 21
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 21,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 22,
+										offset: 21
+									}
+								}
+							}],
+							static: "Is the data reliable?"
+						}
+					},
+					a6: {
+						type: 0,
+						start: 0,
+						end: 183,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 184,
+								offset: 183
+							},
+							source: "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 183,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 184,
+									offset: 183
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 183,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 184,
+										offset: 183
+									}
+								}
+							}],
+							static: "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
+						}
+					},
+					q7: {
+						type: 0,
+						start: 0,
+						end: 33,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 34,
+								offset: 33
+							},
+							source: "Do you offer consulting services?"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 33,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 34,
+									offset: 33
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 33,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 34,
+										offset: 33
+									}
+								}
+							}],
+							static: "Do you offer consulting services?"
+						}
+					},
+					a7: {
+						type: 0,
+						start: 0,
+						end: 184,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 185,
+								offset: 184
+							},
+							source: "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 184,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 185,
+									offset: 184
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 184,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 185,
+										offset: 184
+									}
+								}
+							}],
+							static: "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
+						}
+					},
+					q8: {
+						type: 0,
+						start: 0,
+						end: 21,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 22,
+								offset: 21
+							},
+							source: "How can I contribute?"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 21,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 22,
+									offset: 21
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 21,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 22,
+										offset: 21
+									}
+								}
+							}],
+							static: "How can I contribute?"
+						}
+					},
+					a8: {
+						type: 0,
+						start: 0,
+						end: 180,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 181,
+								offset: 180
+							},
+							source: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 180,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 181,
+									offset: 180
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 180,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 181,
+										offset: 180
+									}
+								}
+							}],
+							static: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+						}
+					}
+				}
+			},
+			pricing: {
+				header: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 27,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 28,
+								offset: 27
+							},
+							source: "Simple, Transparent Pricing"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 27,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 28,
+									offset: 27
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 27,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 28,
+										offset: 27
+									}
+								}
+							}],
+							static: "Simple, Transparent Pricing"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 52,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 53,
+								offset: 52
+							},
+							source: "Choose the plan that fits your team. No hidden fees."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 52,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 53,
+									offset: 52
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 52,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 53,
+										offset: 52
+									}
+								}
+							}],
+							static: "Choose the plan that fits your team. No hidden fees."
+						}
+					}
+				},
+				tiers: {
+					starterName: {
+						type: 0,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							},
+							source: "Starter"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 7,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 8,
+										offset: 7
+									}
+								}
+							}],
+							static: "Starter"
+						}
+					},
+					starterPrice: {
+						type: 0,
+						start: 0,
+						end: 2,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 3,
+								offset: 2
+							},
+							source: "$0"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 2,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 3,
+									offset: 2
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 2,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 3,
+										offset: 2
+									}
+								}
+							}],
+							static: "$0"
+						}
+					},
+					starterPeriod: {
+						type: 0,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							},
+							source: "forever"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 7,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 8,
+										offset: 7
+									}
+								}
+							}],
+							static: "forever"
+						}
+					},
+					starterFeature1: {
+						type: 0,
+						start: 0,
+						end: 20,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 21,
+								offset: 20
+							},
+							source: "5 benchmark runs/day"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 20,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 21,
+									offset: 20
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 20,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 21,
+										offset: 20
+									}
+								}
+							}],
+							static: "5 benchmark runs/day"
+						}
+					},
+					starterFeature2: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "3 libraries"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "3 libraries"
+						}
+					},
+					starterFeature3: {
+						type: 0,
+						start: 0,
+						end: 17,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 18,
+								offset: 17
+							},
+							source: "Community support"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 17,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 18,
+									offset: 17
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 17,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 18,
+										offset: 17
+									}
+								}
+							}],
+							static: "Community support"
+						}
+					},
+					starterFeature4: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "Public results"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "Public results"
+						}
+					},
+					proName: {
+						type: 0,
+						start: 0,
+						end: 3,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 4,
+								offset: 3
+							},
+							source: "Pro"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 3,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 4,
+									offset: 3
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 3,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 4,
+										offset: 3
+									}
+								}
+							}],
+							static: "Pro"
+						}
+					},
+					proPrice: {
+						type: 0,
+						start: 0,
+						end: 3,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 4,
+								offset: 3
+							},
+							source: "$29"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 3,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 4,
+									offset: 3
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 3,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 4,
+										offset: 3
+									}
+								}
+							}],
+							static: "$29"
+						}
+					},
+					proPeriod: {
+						type: 0,
+						start: 0,
+						end: 6,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 7,
+								offset: 6
+							},
+							source: "/month"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 6,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 7,
+									offset: 6
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 6,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 7,
+										offset: 6
+									}
+								}
+							}],
+							static: "/month"
+						}
+					},
+					proFeature1: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "Unlimited runs"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "Unlimited runs"
+						}
+					},
+					proFeature2: {
+						type: 0,
+						start: 0,
+						end: 13,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 14,
+								offset: 13
+							},
+							source: "All libraries"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 13,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 14,
+									offset: 13
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 13,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 14,
+										offset: 13
+									}
+								}
+							}],
+							static: "All libraries"
+						}
+					},
+					proFeature3: {
+						type: 0,
+						start: 0,
+						end: 16,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 17,
+								offset: 16
+							},
+							source: "Priority support"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 16,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 17,
+									offset: 16
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 16,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 17,
+										offset: 16
+									}
+								}
+							}],
+							static: "Priority support"
+						}
+					},
+					proFeature4: {
+						type: 0,
+						start: 0,
+						end: 15,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 16,
+								offset: 15
+							},
+							source: "Private results"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 15,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 16,
+									offset: 15
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 15,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 16,
+										offset: 15
+									}
+								}
+							}],
+							static: "Private results"
+						}
+					},
+					proFeature5: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "CI integration"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "CI integration"
+						}
+					},
+					proFeature6: {
+						type: 0,
+						start: 0,
+						end: 15,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 16,
+								offset: 15
+							},
+							source: "Historical data"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 15,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 16,
+									offset: 15
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 15,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 16,
+										offset: 15
+									}
+								}
+							}],
+							static: "Historical data"
+						}
+					},
+					enterpriseName: {
+						type: 0,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							},
+							source: "Enterprise"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 10,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 11,
+										offset: 10
+									}
+								}
+							}],
+							static: "Enterprise"
+						}
+					},
+					enterprisePrice: {
+						type: 0,
+						start: 0,
+						end: 6,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 7,
+								offset: 6
+							},
+							source: "Custom"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 6,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 7,
+									offset: 6
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 6,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 7,
+										offset: 6
+									}
+								}
+							}],
+							static: "Custom"
+						}
+					},
+					enterpriseFeature1: {
+						type: 0,
+						start: 0,
+						end: 17,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 18,
+								offset: 17
+							},
+							source: "Everything in Pro"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 17,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 18,
+									offset: 17
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 17,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 18,
+										offset: 17
+									}
+								}
+							}],
+							static: "Everything in Pro"
+						}
+					},
+					enterpriseFeature2: {
+						type: 0,
+						start: 0,
+						end: 17,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 18,
+								offset: 17
+							},
+							source: "On-premise option"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 17,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 18,
+									offset: 17
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 17,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 18,
+										offset: 17
+									}
+								}
+							}],
+							static: "On-premise option"
+						}
+					},
+					enterpriseFeature3: {
+						type: 0,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							},
+							source: "SSO & SAML"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 10,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 11,
+										offset: 10
+									}
+								}
+							}],
+							static: "SSO & SAML"
+						}
+					},
+					enterpriseFeature4: {
+						type: 0,
+						start: 0,
+						end: 25,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 26,
+								offset: 25
+							},
+							source: "Dedicated account manager"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 25,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 26,
+									offset: 25
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 25,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 26,
+										offset: 25
+									}
+								}
+							}],
+							static: "Dedicated account manager"
+						}
+					},
+					enterpriseFeature5: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Custom SLAs"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Custom SLAs"
+						}
+					},
+					enterpriseFeature6: {
+						type: 0,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							},
+							source: "Audit logs"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 10,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 11,
+										offset: 10
+									}
+								}
+							}],
+							static: "Audit logs"
+						}
+					},
+					enterpriseFeature7: {
+						type: 0,
+						start: 0,
+						end: 17,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 18,
+								offset: 17
+							},
+							source: "Training sessions"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 17,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 18,
+									offset: 17
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 17,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 18,
+										offset: 17
+									}
+								}
+							}],
+							static: "Training sessions"
+						}
+					},
+					contactSales: {
+						type: 0,
+						start: 0,
+						end: 13,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 14,
+								offset: 13
+							},
+							source: "Contact Sales"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 13,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 14,
+									offset: 13
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 13,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 14,
+										offset: 13
+									}
+								}
+							}],
+							static: "Contact Sales"
+						}
+					},
+					getStarted: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Get Started"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Get Started"
+						}
+					}
+				}
+			},
+			products: {
+				header: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							},
+							source: "Products"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 8,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 9,
+										offset: 8
+									}
+								}
+							}],
+							static: "Products"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 68,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 69,
+								offset: 68
+							},
+							source: "Tools and services to streamline your internationalization workflow."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 68,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 69,
+									offset: 68
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 68,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 69,
+										offset: 68
+									}
+								}
+							}],
+							static: "Tools and services to streamline your internationalization workflow."
+						}
+					}
+				},
+				grid: {
+					learnMore: {
+						type: 0,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							},
+							source: "Learn More"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 10,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 11,
+										offset: 10
+									}
+								}
+							}],
+							static: "Learn More"
+						}
+					},
+					cliName: {
+						type: 0,
+						start: 0,
+						end: 13,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 14,
+								offset: 13
+							},
+							source: "Benchmark CLI"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 13,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 14,
+									offset: 13
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 13,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 14,
+										offset: 13
+									}
+								}
+							}],
+							static: "Benchmark CLI"
+						}
+					},
+					cliDesc: {
+						type: 0,
+						start: 0,
+						end: 93,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 94,
+								offset: 93
+							},
+							source: "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 93,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 94,
+									offset: 93
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 93,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 94,
+										offset: 93
+									}
+								}
+							}],
+							static: "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+						}
+					},
+					cliPrice: {
+						type: 0,
+						start: 0,
+						end: 4,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 5,
+								offset: 4
+							},
+							source: "Free"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 4,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 5,
+									offset: 4
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 4,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 5,
+										offset: 4
+									}
+								}
+							}],
+							static: "Free"
+						}
+					},
+					cloudName: {
+						type: 0,
+						start: 0,
+						end: 15,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 16,
+								offset: 15
+							},
+							source: "Benchmark Cloud"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 15,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 16,
+									offset: 15
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 15,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 16,
+										offset: 15
+									}
+								}
+							}],
+							static: "Benchmark Cloud"
+						}
+					},
+					cloudDesc: {
+						type: 0,
+						start: 0,
+						end: 89,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 90,
+								offset: 89
+							},
+							source: "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 89,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 90,
+									offset: 89
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 89,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 90,
+										offset: 89
+									}
+								}
+							}],
+							static: "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+						}
+					},
+					cloudPrice: {
+						type: 0,
+						start: 0,
+						end: 6,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 7,
+								offset: 6
+							},
+							source: "$29/mo"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 6,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 7,
+									offset: 6
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 6,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 7,
+										offset: 6
+									}
+								}
+							}],
+							static: "$29/mo"
+						}
+					},
+					enterpriseName: {
+						type: 0,
+						start: 0,
+						end: 20,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 21,
+								offset: 20
+							},
+							source: "Benchmark Enterprise"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 20,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 21,
+									offset: 20
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 20,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 21,
+										offset: 20
+									}
+								}
+							}],
+							static: "Benchmark Enterprise"
+						}
+					},
+					enterpriseDesc: {
+						type: 0,
+						start: 0,
+						end: 79,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 80,
+								offset: 79
+							},
+							source: "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 79,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 80,
+									offset: 79
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 79,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 80,
+										offset: 79
+									}
+								}
+							}],
+							static: "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+						}
+					},
+					enterprisePrice: {
+						type: 0,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							},
+							source: "Contact Us"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 10,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 11,
+										offset: 10
+									}
+								}
+							}],
+							static: "Contact Us"
+						}
+					},
+					migrationName: {
+						type: 0,
+						start: 0,
+						end: 19,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 20,
+								offset: 19
+							},
+							source: "Migration Assistant"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 19,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 20,
+									offset: 19
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 19,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 20,
+										offset: 19
+									}
+								}
+							}],
+							static: "Migration Assistant"
+						}
+					},
+					migrationDesc: {
+						type: 0,
+						start: 0,
+						end: 91,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 92,
+								offset: 91
+							},
+							source: "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 91,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 92,
+									offset: 91
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 91,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 92,
+										offset: 91
+									}
+								}
+							}],
+							static: "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+						}
+					},
+					migrationPrice: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "$99 one-time"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "$99 one-time"
+						}
+					},
+					qaName: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "Translation QA"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "Translation QA"
+						}
+					},
+					qaDesc: {
+						type: 0,
+						start: 0,
+						end: 92,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 93,
+								offset: 92
+							},
+							source: "Automated quality checks for missing translations, pluralization issues, and context errors."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 92,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 93,
+									offset: 92
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 92,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 93,
+										offset: 92
+									}
+								}
+							}],
+							static: "Automated quality checks for missing translations, pluralization issues, and context errors."
+						}
+					},
+					qaPrice: {
+						type: 0,
+						start: 0,
+						end: 6,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 7,
+								offset: 6
+							},
+							source: "$19/mo"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 6,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 7,
+									offset: 6
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 6,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 7,
+										offset: 6
+									}
+								}
+							}],
+							static: "$19/mo"
+						}
+					},
+					optimizerName: {
+						type: 0,
+						start: 0,
+						end: 16,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 17,
+								offset: 16
+							},
+							source: "Bundle Optimizer"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 16,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 17,
+									offset: 16
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 16,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 17,
+										offset: 16
+									}
+								}
+							}],
+							static: "Bundle Optimizer"
+						}
+					},
+					optimizerDesc: {
+						type: 0,
+						start: 0,
+						end: 92,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 93,
+								offset: 92
+							},
+							source: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 92,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 93,
+									offset: 92
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 92,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 93,
+										offset: 92
+									}
+								}
+							}],
+							static: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+						}
+					},
+					optimizerPrice: {
+						type: 0,
+						start: 0,
+						end: 6,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 7,
+								offset: 6
+							},
+							source: "$49/mo"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 6,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 7,
+									offset: 6
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 6,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 7,
+										offset: 6
+									}
+								}
+							}],
+							static: "$49/mo"
+						}
+					}
+				}
+			},
+			settings: {
+				header: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							},
+							source: "Settings"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 8,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 9,
+										offset: 8
+									}
+								}
+							}],
+							static: "Settings"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 50,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 51,
+								offset: 50
+							},
+							source: "Manage your account preferences and configuration."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 50,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 51,
+									offset: 50
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 50,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 51,
+										offset: 50
+									}
+								}
+							}],
+							static: "Manage your account preferences and configuration."
+						}
+					}
+				},
+				profile: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							},
+							source: "Profile"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 7,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 8,
+										offset: 7
+									}
+								}
+							}],
+							static: "Profile"
+						}
+					},
+					displayName: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Display Name"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Display Name"
+						}
+					},
+					email: {
+						type: 0,
+						start: 0,
+						end: 5,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 6,
+								offset: 5
+							},
+							source: "Email"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 5,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 6,
+									offset: 5
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 5,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 6,
+										offset: 5
+									}
+								}
+							}],
+							static: "Email"
+						}
+					}
+				},
+				preferences: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Preferences"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Preferences"
+						}
+					},
+					emailNotifications: {
+						type: 0,
+						start: 0,
+						end: 19,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 20,
+								offset: 19
+							},
+							source: "Email Notifications"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 19,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 20,
+									offset: 19
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 19,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 20,
+										offset: 19
+									}
+								}
+							}],
+							static: "Email Notifications"
+						}
+					},
+					weeklyReports: {
+						type: 0,
+						start: 0,
+						end: 32,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 33,
+								offset: 32
+							},
+							source: "Receive weekly benchmark reports"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 32,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 33,
+									offset: 32
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 32,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 33,
+										offset: 32
+									}
+								}
+							}],
+							static: "Receive weekly benchmark reports"
+						}
+					},
+					toggleNotifications: {
+						type: 0,
+						start: 0,
+						end: 20,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 21,
+								offset: 20
+							},
+							source: "Toggle notifications"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 20,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 21,
+									offset: 20
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 20,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 21,
+										offset: 20
+									}
+								}
+							}],
+							static: "Toggle notifications"
+						}
+					},
+					darkMode: {
+						type: 0,
+						start: 0,
+						end: 9,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 10,
+								offset: 9
+							},
+							source: "Dark Mode"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 9,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 10,
+									offset: 9
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 9,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 10,
+										offset: 9
+									}
+								}
+							}],
+							static: "Dark Mode"
+						}
+					},
+					darkColorScheme: {
+						type: 0,
+						start: 0,
+						end: 21,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 22,
+								offset: 21
+							},
+							source: "Use dark color scheme"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 21,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 22,
+									offset: 21
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 21,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 22,
+										offset: 21
+									}
+								}
+							}],
+							static: "Use dark color scheme"
+						}
+					},
+					toggleDarkMode: {
+						type: 0,
+						start: 0,
+						end: 16,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 17,
+								offset: 16
+							},
+							source: "Toggle dark mode"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 16,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 17,
+									offset: 16
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 16,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 17,
+										offset: 16
+									}
+								}
+							}],
+							static: "Toggle dark mode"
+						}
+					},
+					defaultLanguage: {
+						type: 0,
+						start: 0,
+						end: 16,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 17,
+								offset: 16
+							},
+							source: "Default Language"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 16,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 17,
+									offset: 16
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 16,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 17,
+										offset: 16
+									}
+								}
+							}],
+							static: "Default Language"
+						}
+					},
+					english: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "English (en)"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "English (en)"
+						}
+					},
+					french: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "French (fr)"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "French (fr)"
+						}
+					},
+					german: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "German (de)"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "German (de)"
+						}
+					},
+					spanish: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Spanish (es)"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Spanish (es)"
+						}
+					},
+					japanese: {
+						type: 0,
+						start: 0,
+						end: 13,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 14,
+								offset: 13
+							},
+							source: "Japanese (ja)"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 13,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 14,
+									offset: 13
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 13,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 14,
+										offset: 13
+									}
+								}
+							}],
+							static: "Japanese (ja)"
+						}
+					},
+					chinese: {
+						type: 0,
+						start: 0,
+						end: 26,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 27,
+								offset: 26
+							},
+							source: "Chinese Simplified (zh-CN)"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 26,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 27,
+									offset: 26
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 26,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 27,
+										offset: 26
+									}
+								}
+							}],
+							static: "Chinese Simplified (zh-CN)"
+						}
+					},
+					arabic: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Arabic (ar)"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Arabic (ar)"
+						}
+					}
+				},
+				apiAccess: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							},
+							source: "API Access"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 10,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 11,
+										offset: 10
+									}
+								}
+							}],
+							static: "API Access"
+						}
+					},
+					apiKey: {
+						type: 0,
+						start: 0,
+						end: 7,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 8,
+								offset: 7
+							},
+							source: "API Key"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 7,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 8,
+									offset: 7
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 7,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 8,
+										offset: 7
+									}
+								}
+							}],
+							static: "API Key"
+						}
+					},
+					copy: {
+						type: 0,
+						start: 0,
+						end: 4,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 5,
+								offset: 4
+							},
+							source: "Copy"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 4,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 5,
+									offset: 4
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 4,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 5,
+										offset: 4
+									}
+								}
+							}],
+							static: "Copy"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 61,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 62,
+								offset: 61
+							},
+							source: "Use this key to access the benchmarking API programmatically."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 61,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 62,
+									offset: 61
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 61,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 62,
+										offset: 61
+									}
+								}
+							}],
+							static: "Use this key to access the benchmarking API programmatically."
+						}
+					}
+				},
+				footer: {
+					cancel: {
+						type: 0,
+						start: 0,
+						end: 6,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 7,
+								offset: 6
+							},
+							source: "Cancel"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 6,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 7,
+									offset: 6
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 6,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 7,
+										offset: 6
+									}
+								}
+							}],
+							static: "Cancel"
+						}
+					},
+					saveChanges: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Save Changes"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Save Changes"
+						}
+					}
+				}
+			},
+			team: {
+				header: {
+					title: {
+						type: 0,
+						start: 0,
+						end: 8,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 9,
+								offset: 8
+							},
+							source: "Our Team"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 8,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 9,
+									offset: 8
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 8,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 9,
+										offset: 8
+									}
+								}
+							}],
+							static: "Our Team"
+						}
+					},
+					description: {
+						type: 0,
+						start: 0,
+						end: 107,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 108,
+								offset: 107
+							},
+							source: "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 107,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 108,
+									offset: 107
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 107,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 108,
+										offset: 107
+									}
+								}
+							}],
+							static: "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+						}
+					}
+				},
+				grid: {
+					member1Name: {
+						type: 0,
+						start: 0,
+						end: 10,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 11,
+								offset: 10
+							},
+							source: "Sarah Chen"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 10,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 11,
+									offset: 10
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 10,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 11,
+										offset: 10
+									}
+								}
+							}],
+							static: "Sarah Chen"
+						}
+					},
+					member1Role: {
+						type: 0,
+						start: 0,
+						end: 23,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 24,
+								offset: 23
+							},
+							source: "Founder & Lead Engineer"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 23,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 24,
+									offset: 23
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 23,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 24,
+										offset: 23
+									}
+								}
+							}],
+							static: "Founder & Lead Engineer"
+						}
+					},
+					member1Bio: {
+						type: 0,
+						start: 0,
+						end: 98,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 99,
+								offset: 98
+							},
+							source: "Former Google engineer with 10 years of experience building internationalization systems at scale."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 98,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 99,
+									offset: 98
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 98,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 99,
+										offset: 98
+									}
+								}
+							}],
+							static: "Former Google engineer with 10 years of experience building internationalization systems at scale."
+						}
+					},
+					member2Name: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Marcus Weber"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Marcus Weber"
+						}
+					},
+					member2Role: {
+						type: 0,
+						start: 0,
+						end: 20,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 21,
+								offset: 20
+							},
+							source: "Performance Engineer"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 20,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 21,
+									offset: 20
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 20,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 21,
+										offset: 20
+									}
+								}
+							}],
+							static: "Performance Engineer"
+						}
+					},
+					member2Bio: {
+						type: 0,
+						start: 0,
+						end: 102,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 103,
+								offset: 102
+							},
+							source: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 102,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 103,
+									offset: 102
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 102,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 103,
+										offset: 102
+									}
+								}
+							}],
+							static: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+						}
+					},
+					member3Name: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Aisha Patel"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Aisha Patel"
+						}
+					},
+					member3Role: {
+						type: 0,
+						start: 0,
+						end: 18,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 19,
+								offset: 18
+							},
+							source: "Developer Advocate"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 18,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 19,
+									offset: 18
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 18,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 19,
+										offset: 18
+									}
+								}
+							}],
+							static: "Developer Advocate"
+						}
+					},
+					member3Bio: {
+						type: 0,
+						start: 0,
+						end: 97,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 98,
+								offset: 97
+							},
+							source: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 97,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 98,
+									offset: 97
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 97,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 98,
+										offset: 97
+									}
+								}
+							}],
+							static: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+						}
+					},
+					member4Name: {
+						type: 0,
+						start: 0,
+						end: 15,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 16,
+								offset: 15
+							},
+							source: "Tomás Rodríguez"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 15,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 16,
+									offset: 15
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 15,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 16,
+										offset: 15
+									}
+								}
+							}],
+							static: "Tomás Rodríguez"
+						}
+					},
+					member4Role: {
+						type: 0,
+						start: 0,
+						end: 20,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 21,
+								offset: 20
+							},
+							source: "Full-Stack Developer"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 20,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 21,
+									offset: 20
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 20,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 21,
+										offset: 20
+									}
+								}
+							}],
+							static: "Full-Stack Developer"
+						}
+					},
+					member4Bio: {
+						type: 0,
+						start: 0,
+						end: 96,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 97,
+								offset: 96
+							},
+							source: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 96,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 97,
+									offset: 96
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 96,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 97,
+										offset: 96
+									}
+								}
+							}],
+							static: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+						}
+					},
+					member5Name: {
+						type: 0,
+						start: 0,
+						end: 11,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 12,
+								offset: 11
+							},
+							source: "Yuki Tanaka"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 11,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 12,
+									offset: 11
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 11,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 12,
+										offset: 11
+									}
+								}
+							}],
+							static: "Yuki Tanaka"
+						}
+					},
+					member5Role: {
+						type: 0,
+						start: 0,
+						end: 12,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 13,
+								offset: 12
+							},
+							source: "Data Analyst"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 12,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 13,
+									offset: 12
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 12,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 13,
+										offset: 12
+									}
+								}
+							}],
+							static: "Data Analyst"
+						}
+					},
+					member5Bio: {
+						type: 0,
+						start: 0,
+						end: 87,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 88,
+								offset: 87
+							},
+							source: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 87,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 88,
+									offset: 87
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 87,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 88,
+										offset: 87
+									}
+								}
+							}],
+							static: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+						}
+					},
+					member6Name: {
+						type: 0,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							},
+							source: "Elena Kowalski"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 14,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 15,
+										offset: 14
+									}
+								}
+							}],
+							static: "Elena Kowalski"
+						}
+					},
+					member6Role: {
+						type: 0,
+						start: 0,
+						end: 17,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 18,
+								offset: 17
+							},
+							source: "Community Manager"
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 17,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 18,
+									offset: 17
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 17,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 18,
+										offset: 17
+									}
+								}
+							}],
+							static: "Community Manager"
+						}
+					},
+					member6Bio: {
+						type: 0,
+						start: 0,
+						end: 96,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 97,
+								offset: 96
+							},
+							source: "Manages community contributions, partnerships, and events. Background in open source governance."
+						},
+						body: {
+							type: 2,
+							start: 0,
+							end: 96,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 97,
+									offset: 96
+								}
+							},
+							items: [{
+								type: 3,
+								start: 0,
+								end: 96,
+								loc: {
+									start: {
+										line: 1,
+										column: 1,
+										offset: 0
+									},
+									end: {
+										line: 1,
+										column: 97,
+										offset: 96
+									}
+								}
+							}],
+							static: "Manages community contributions, partnerships, and events. Background in open source governance."
+						}
+					}
+				}
+			},
+			notFound: {
+				title: {
+					type: 0,
+					start: 0,
+					end: 3,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 4,
+							offset: 3
+						},
+						source: "404"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 3,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 4,
+								offset: 3
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 3,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 4,
+									offset: 3
+								}
+							}
+						}],
+						static: "404"
+					}
+				},
+				description: {
+					type: 0,
+					start: 0,
+					end: 20,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 21,
+							offset: 20
+						},
+						source: "Oops! Page not found"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 20,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 21,
+								offset: 20
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 20,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 21,
+									offset: 20
+								}
+							}
+						}],
+						static: "Oops! Page not found"
+					}
+				},
+				returnHome: {
+					type: 0,
+					start: 0,
+					end: 14,
+					loc: {
+						start: {
+							line: 1,
+							column: 1,
+							offset: 0
+						},
+						end: {
+							line: 1,
+							column: 15,
+							offset: 14
+						},
+						source: "Return to Home"
+					},
+					body: {
+						type: 2,
+						start: 0,
+						end: 14,
+						loc: {
+							start: {
+								line: 1,
+								column: 1,
+								offset: 0
+							},
+							end: {
+								line: 1,
+								column: 15,
+								offset: 14
+							}
+						},
+						items: [{
+							type: 3,
+							start: 0,
+							end: 14,
+							loc: {
+								start: {
+									line: 1,
+									column: 1,
+									offset: 0
+								},
+								end: {
+									line: 1,
+									column: 15,
+									offset: 14
+								}
+							}
+						}],
+						static: "Return to Home"
+					}
+				}
+			}
+		},
+		fr: se,
+		es: ce,
+		de: le,
+		it: ue,
+		pt: de,
+		zh: D,
+		ja: fe,
+		ko: pe,
+		ru: me
+	}
+}), Xa = u({
+	__name: "Wrapper",
+	setup(e, { expose: t }) {
+		t();
+		let n = f()?.appContext.app;
+		n && !n.config.globalProperties.$i18n && n.use(Ya);
+		let r = { app: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
+	}
+});
+function Za(e, t, n, r, i, a) {
+	return T(e.$slots, "default");
+}
+var Qa = aa(Xa, [["render", Za], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/scripts/Wrapper.vue"]]), $a = { render() {
+	return m(Qa, {}, { default: () => m(Ja) });
+} };
+export { $a as default };

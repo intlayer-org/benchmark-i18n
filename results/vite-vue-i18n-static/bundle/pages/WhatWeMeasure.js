@@ -1,5 +1,14 @@
 import * as Vue from "vue";
-import { Fragment, Text, computed, createElementBlock, createElementVNode, createVNode, defineComponent, getCurrentScope, h, inject, onBeforeMount, onMounted, onScopeDispose, onUnmounted, openBlock, ref, renderList, shallowRef, toDisplayString, unref, watch } from "vue";
+import { Fragment, Text, computed, createElementBlock, createElementVNode, createVNode, defineComponent, effectScope, getCurrentInstance, getCurrentScope, h, inject, isRef, onBeforeMount, onMounted, onScopeDispose, onUnmounted, openBlock, ref, renderList, renderSlot, shallowRef, toDisplayString, watch } from "vue";
+import fr from "../../../../locales/fr.json";
+import es from "../../../../locales/es.json";
+import de from "../../../../locales/de.json";
+import it from "../../../../locales/it.json";
+import pt from "../../../../locales/pt.json";
+import zh from "../../../../locales/zh.json";
+import ja from "../../../../locales/ja.json";
+import ko from "../../../../locales/ko.json";
+import ru from "../../../../locales/ru.json";
 function warn(msg, err) {
 	if (typeof console !== "undefined") {
 		console.warn(`[intlify] ` + msg);
@@ -2517,6 +2526,118 @@ function getMessageContextOptions(context, locale, message, options) {
 	return ctxOptions;
 }
 initFeatureFlags$1();
+function getDevtoolsGlobalHook() {
+	return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
+}
+function getTarget() {
+	return typeof navigator !== "undefined" && typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : {};
+}
+var isProxyAvailable = typeof Proxy === "function";
+var HOOK_SETUP = "devtools-plugin:setup";
+var HOOK_PLUGIN_SETTINGS_SET = "plugin:settings:set";
+var supported;
+var perf;
+function isPerformanceSupported() {
+	var _a;
+	if (supported !== void 0) return supported;
+	if (typeof window !== "undefined" && window.performance) {
+		supported = true;
+		perf = window.performance;
+	} else if (typeof globalThis !== "undefined" && ((_a = globalThis.perf_hooks) === null || _a === void 0 ? void 0 : _a.performance)) {
+		supported = true;
+		perf = globalThis.perf_hooks.performance;
+	} else supported = false;
+	return supported;
+}
+function now() {
+	return isPerformanceSupported() ? perf.now() : Date.now();
+}
+var ApiProxy = class {
+	constructor(plugin, hook) {
+		this.target = null;
+		this.targetQueue = [];
+		this.onQueue = [];
+		this.plugin = plugin;
+		this.hook = hook;
+		const defaultSettings = {};
+		if (plugin.settings) for (const id in plugin.settings) defaultSettings[id] = plugin.settings[id].defaultValue;
+		const localSettingsSaveId = `__vue-devtools-plugin-settings__${plugin.id}`;
+		let currentSettings = Object.assign({}, defaultSettings);
+		try {
+			const raw = localStorage.getItem(localSettingsSaveId);
+			const data = JSON.parse(raw);
+			Object.assign(currentSettings, data);
+		} catch (e) {}
+		this.fallbacks = {
+			getSettings() {
+				return currentSettings;
+			},
+			setSettings(value) {
+				try {
+					localStorage.setItem(localSettingsSaveId, JSON.stringify(value));
+				} catch (e) {}
+				currentSettings = value;
+			},
+			now() {
+				return now();
+			}
+		};
+		if (hook) hook.on(HOOK_PLUGIN_SETTINGS_SET, (pluginId, value) => {
+			if (pluginId === this.plugin.id) this.fallbacks.setSettings(value);
+		});
+		this.proxiedOn = new Proxy({}, { get: (_target, prop) => {
+			if (this.target) return this.target.on[prop];
+			else return (...args) => {
+				this.onQueue.push({
+					method: prop,
+					args
+				});
+			};
+		} });
+		this.proxiedTarget = new Proxy({}, { get: (_target, prop) => {
+			if (this.target) return this.target[prop];
+			else if (prop === "on") return this.proxiedOn;
+			else if (Object.keys(this.fallbacks).includes(prop)) return (...args) => {
+				this.targetQueue.push({
+					method: prop,
+					args,
+					resolve: () => {}
+				});
+				return this.fallbacks[prop](...args);
+			};
+			else return (...args) => {
+				return new Promise((resolve) => {
+					this.targetQueue.push({
+						method: prop,
+						args,
+						resolve
+					});
+				});
+			};
+		} });
+	}
+	async setRealTarget(target) {
+		this.target = target;
+		for (const item of this.onQueue) this.target.on[item.method](...item.args);
+		for (const item of this.targetQueue) item.resolve(await this.target[item.method](...item.args));
+	}
+};
+function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
+	const descriptor = pluginDescriptor;
+	const target = getTarget();
+	const hook = getDevtoolsGlobalHook();
+	const enableProxy = isProxyAvailable && descriptor.enableEarlyProxy;
+	if (hook && (target.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !enableProxy)) hook.emit(HOOK_SETUP, pluginDescriptor, setupFn);
+	else {
+		const proxy = enableProxy ? new ApiProxy(descriptor, hook) : null;
+		(target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || []).push({
+			pluginDescriptor: descriptor,
+			setupFn,
+			proxy
+		});
+		if (proxy) setupFn(proxy.proxiedTarget);
+	}
+}
 var VERSION = "11.4.0";
 function initFeatureFlags() {}
 var I18nErrorCodes = {
@@ -2661,7 +2782,7 @@ function adjustI18nResources(gl, options, componentOptions) {
 function createTextNode(key) {
 	return createVNode(Text, null, key, 0);
 }
-function getCurrentInstance() {
+function getCurrentInstance$1() {
 	const key = "currentInstance";
 	if (key in Vue) return Vue[key];
 	else return Vue.getCurrentInstance();
@@ -2672,11 +2793,11 @@ var NOOP_RETURN_FALSE = () => false;
 var composerID = 0;
 function defineCoreMissingHandler(missing) {
 	return ((ctx, locale, key, type) => {
-		return missing(locale, key, getCurrentInstance() || void 0, type);
+		return missing(locale, key, getCurrentInstance$1() || void 0, type);
 	});
 }
 var getMetaInfo = () => {
-	const instance = getCurrentInstance();
+	const instance = getCurrentInstance$1();
 	let meta = null;
 	return instance && (meta = getComponentOptions(instance)[DEVTOOLS_META]) ? { [DEVTOOLS_META]: meta } : null;
 };
@@ -3066,7 +3187,260 @@ function createComposer(options = {}) {
 	}
 	return composer;
 }
+var VUE_I18N_COMPONENT_TYPES = "vue-i18n: composer properties";
+var VueDevToolsLabels = {
+	"vue-devtools-plugin-vue-i18n": "Vue I18n DevTools",
+	"vue-i18n-resource-inspector": "Vue I18n DevTools",
+	"vue-i18n-timeline": "Vue I18n"
+};
+var VueDevToolsPlaceholders = { "vue-i18n-resource-inspector": "Search for scopes ..." };
+var VueDevToolsTimelineColors = { "vue-i18n-timeline": 16764185 };
 var devtoolsApi;
+async function enableDevTools(app, i18n) {
+	return new Promise((resolve, reject) => {
+		try {
+			setupDevtoolsPlugin({
+				id: "vue-devtools-plugin-vue-i18n",
+				label: VueDevToolsLabels["vue-devtools-plugin-vue-i18n"],
+				packageName: "vue-i18n",
+				homepage: "https://vue-i18n.intlify.dev",
+				logo: "https://vue-i18n.intlify.dev/vue-i18n-devtools-logo.png",
+				componentStateTypes: [VUE_I18N_COMPONENT_TYPES],
+				app
+			}, (api) => {
+				devtoolsApi = api;
+				api.on.visitComponentTree(({ componentInstance, treeNode }) => {
+					updateComponentTreeTags(componentInstance, treeNode, i18n);
+				});
+				api.on.inspectComponent(({ componentInstance, instanceData }) => {
+					if (componentInstance.__VUE_I18N__ && instanceData) if (i18n.mode === "legacy") {
+						if (componentInstance.__VUE_I18N__ !== i18n.global.__composer) inspectComposer(instanceData, componentInstance.__VUE_I18N__);
+					} else inspectComposer(instanceData, componentInstance.__VUE_I18N__);
+				});
+				api.addInspector({
+					id: "vue-i18n-resource-inspector",
+					label: VueDevToolsLabels["vue-i18n-resource-inspector"],
+					icon: "language",
+					treeFilterPlaceholder: VueDevToolsPlaceholders["vue-i18n-resource-inspector"]
+				});
+				api.on.getInspectorTree((payload) => {
+					if (payload.app === app && payload.inspectorId === "vue-i18n-resource-inspector") registerScope(payload, i18n);
+				});
+				const roots = /* @__PURE__ */ new Map();
+				api.on.getInspectorState(async (payload) => {
+					if (payload.app === app && payload.inspectorId === "vue-i18n-resource-inspector") {
+						api.unhighlightElement();
+						inspectScope(payload, i18n);
+						if (payload.nodeId === "global") {
+							if (!roots.has(payload.app)) {
+								const [root] = await api.getComponentInstances(payload.app);
+								roots.set(payload.app, root);
+							}
+							api.highlightElement(roots.get(payload.app));
+						} else {
+							const instance = getComponentInstance(payload.nodeId, i18n);
+							instance && api.highlightElement(instance);
+						}
+					}
+				});
+				api.on.editInspectorState((payload) => {
+					if (payload.app === app && payload.inspectorId === "vue-i18n-resource-inspector") editScope(payload, i18n);
+				});
+				api.addTimelineLayer({
+					id: "vue-i18n-timeline",
+					label: VueDevToolsLabels["vue-i18n-timeline"],
+					color: VueDevToolsTimelineColors["vue-i18n-timeline"]
+				});
+				resolve(true);
+			});
+		} catch (e) {
+			console.error(e);
+			reject(false);
+		}
+	});
+}
+function getI18nScopeLable(instance) {
+	return instance.type.name || instance.type.displayName || instance.type.__file || "Anonymous";
+}
+function updateComponentTreeTags(instance, treeNode, i18n) {
+	const global = i18n.mode === "composition" ? i18n.global : i18n.global.__composer;
+	if (instance && instance.__VUE_I18N__) {
+		if (instance.__VUE_I18N__ !== global) {
+			const tag = {
+				label: `i18n (${getI18nScopeLable(instance)} Scope)`,
+				textColor: 0,
+				backgroundColor: 16764185
+			};
+			treeNode.tags.push(tag);
+		}
+	}
+}
+function inspectComposer(instanceData, composer) {
+	const type = VUE_I18N_COMPONENT_TYPES;
+	instanceData.state.push({
+		type,
+		key: "locale",
+		editable: true,
+		value: composer.locale.value
+	});
+	instanceData.state.push({
+		type,
+		key: "availableLocales",
+		editable: false,
+		value: composer.availableLocales
+	});
+	instanceData.state.push({
+		type,
+		key: "fallbackLocale",
+		editable: true,
+		value: composer.fallbackLocale.value
+	});
+	instanceData.state.push({
+		type,
+		key: "inheritLocale",
+		editable: true,
+		value: composer.inheritLocale
+	});
+	instanceData.state.push({
+		type,
+		key: "messages",
+		editable: false,
+		value: getLocaleMessageValue(composer.messages.value)
+	});
+	instanceData.state.push({
+		type,
+		key: "datetimeFormats",
+		editable: false,
+		value: composer.datetimeFormats.value
+	});
+	instanceData.state.push({
+		type,
+		key: "numberFormats",
+		editable: false,
+		value: composer.numberFormats.value
+	});
+}
+function getLocaleMessageValue(messages) {
+	const value = {};
+	Object.keys(messages).forEach((key) => {
+		const v = messages[key];
+		if (isFunction(v) && "source" in v) value[key] = getMessageFunctionDetails(v);
+		else if (isMessageAST(v) && v.loc && v.loc.source) value[key] = v.loc.source;
+		else if (isObject(v)) value[key] = getLocaleMessageValue(v);
+		else value[key] = v;
+	});
+	return value;
+}
+var ESC = {
+	"<": "&lt;",
+	">": "&gt;",
+	"\"": "&quot;",
+	"&": "&amp;"
+};
+function escape(s) {
+	return s.replace(/[<>"&]/g, escapeChar);
+}
+function escapeChar(a) {
+	return ESC[a] || a;
+}
+function getMessageFunctionDetails(func) {
+	return { _custom: {
+		type: "function",
+		display: `<span>ƒ</span> ${func.source ? `("${escape(func.source)}")` : `(?)`}`
+	} };
+}
+function registerScope(payload, i18n) {
+	payload.rootNodes.push({
+		id: "global",
+		label: "Global Scope"
+	});
+	const global = i18n.mode === "composition" ? i18n.global : i18n.global.__composer;
+	for (const [keyInstance, instance] of i18n.__instances) {
+		const composer = i18n.mode === "composition" ? instance : instance.__composer;
+		if (global === composer) continue;
+		payload.rootNodes.push({
+			id: composer.id.toString(),
+			label: `${getI18nScopeLable(keyInstance)} Scope`
+		});
+	}
+}
+function getComponentInstance(nodeId, i18n) {
+	let instance = null;
+	if (nodeId !== "global") {
+		for (const [component, composer] of i18n.__instances.entries()) if (composer.id.toString() === nodeId) {
+			instance = component;
+			break;
+		}
+	}
+	return instance;
+}
+function getComposer$2(nodeId, i18n) {
+	if (nodeId === "global") return i18n.mode === "composition" ? i18n.global : i18n.global.__composer;
+	else {
+		const instance = Array.from(i18n.__instances.values()).find((item) => item.id.toString() === nodeId);
+		if (instance) return i18n.mode === "composition" ? instance : instance.__composer;
+		else return null;
+	}
+}
+function inspectScope(payload, i18n) {
+	const composer = getComposer$2(payload.nodeId, i18n);
+	if (composer) payload.state = makeScopeInspectState(composer);
+	return null;
+}
+function makeScopeInspectState(composer) {
+	const state = {};
+	const localeType = "Locale related info";
+	state[localeType] = [
+		{
+			type: localeType,
+			key: "locale",
+			editable: true,
+			value: composer.locale.value
+		},
+		{
+			type: localeType,
+			key: "fallbackLocale",
+			editable: true,
+			value: composer.fallbackLocale.value
+		},
+		{
+			type: localeType,
+			key: "availableLocales",
+			editable: false,
+			value: composer.availableLocales
+		},
+		{
+			type: localeType,
+			key: "inheritLocale",
+			editable: true,
+			value: composer.inheritLocale
+		}
+	];
+	const localeMessagesType = "Locale messages info";
+	state[localeMessagesType] = [{
+		type: localeMessagesType,
+		key: "messages",
+		editable: false,
+		value: getLocaleMessageValue(composer.messages.value)
+	}];
+	{
+		const datetimeFormatsType = "Datetime formats info";
+		state[datetimeFormatsType] = [{
+			type: datetimeFormatsType,
+			key: "datetimeFormats",
+			editable: false,
+			value: composer.datetimeFormats.value
+		}];
+		const numberFormatsType = "Datetime formats info";
+		state[numberFormatsType] = [{
+			type: numberFormatsType,
+			key: "numberFormats",
+			editable: false,
+			value: composer.numberFormats.value
+		}];
+	}
+	return state;
+}
 function addTimelineEvent(event, payload) {
 	if (devtoolsApi) {
 		let groupId;
@@ -3085,6 +3459,15 @@ function addTimelineEvent(event, payload) {
 				logType: event === "compile-error" ? "error" : event === "fallback" || event === "missing" ? "warning" : "default"
 			}
 		});
+	}
+}
+function editScope(payload, i18n) {
+	const composer = getComposer$2(payload.nodeId, i18n);
+	if (composer) {
+		const [field] = payload.path;
+		if (field === "locale" && isString(payload.state.value)) composer.locale.value = payload.state.value;
+		else if (field === "fallbackLocale" && (isString(payload.state.value) || isArray(payload.state.value) || isObject(payload.state.value))) composer.fallbackLocale.value = payload.state.value;
+		else if (field === "inheritLocale" && isBoolean(payload.state.value)) composer.inheritLocale = payload.state.value;
 	}
 }
 var baseFormatProps = {
@@ -3110,7 +3493,7 @@ function getInterpolateArg({ slots }, keys) {
 function getFragmentableTag() {
 	return Fragment;
 }
-defineComponent({
+var Translation = defineComponent({
 	name: "i18n-t",
 	props: assign({
 		keypath: {
@@ -3177,7 +3560,7 @@ function renderFormatter(props, context, slotKeys, partFormatter) {
 		return h(isString(props.tag) || isObject(props.tag) ? props.tag : getFragmentableTag(), assignedAttrs, children);
 	};
 }
-defineComponent({
+var NumberFormat = defineComponent({
 	name: "i18n-n",
 	props: assign({
 		value: {
@@ -3194,9 +3577,153 @@ defineComponent({
 		return renderFormatter(props, context, NUMBER_FORMAT_OPTIONS_KEYS, (...args) => i18n[NumberPartsSymbol](...args));
 	}
 });
+function getComposer$1(i18n, instance) {
+	const i18nInternal = i18n;
+	if (i18n.mode === "composition") return i18nInternal.__getInstance(instance) || i18n.global;
+	else {
+		const vueI18n = i18nInternal.__getInstance(instance);
+		return vueI18n != null ? vueI18n.__composer : i18n.global.__composer;
+	}
+}
+function vTDirective(i18n) {
+	const _process = (binding) => {
+		if (process.env.NODE_ENV !== "production") warnOnce(getWarnMessage(I18nWarnCodes.DEPRECATE_TRANSLATE_CUSTOME_DIRECTIVE));
+		const { instance, value } = binding;
+		if (!instance || !instance.$) throw createI18nError(I18nErrorCodes.UNEXPECTED_ERROR);
+		const composer = getComposer$1(i18n, instance.$);
+		const parsedValue = parseValue(value);
+		return [Reflect.apply(composer.t, composer, [...makeParams(parsedValue)]), composer];
+	};
+	const register = (el, binding) => {
+		const [textContent, composer] = _process(binding);
+		if (inBrowser) el.__i18nWatcher = watch(composer.locale, () => {
+			binding.instance && binding.instance.$forceUpdate();
+		});
+		el.__composer = composer;
+		el.textContent = textContent;
+	};
+	const unregister = (el) => {
+		if (inBrowser && el.__i18nWatcher) {
+			el.__i18nWatcher();
+			el.__i18nWatcher = void 0;
+			delete el.__i18nWatcher;
+		}
+		if (el.__composer) {
+			el.__composer = void 0;
+			delete el.__composer;
+		}
+	};
+	const update = (el, { value }) => {
+		if (el.__composer) {
+			const composer = el.__composer;
+			const parsedValue = parseValue(value);
+			el.textContent = Reflect.apply(composer.t, composer, [...makeParams(parsedValue)]);
+		}
+	};
+	const getSSRProps = (binding) => {
+		const [textContent] = _process(binding);
+		return { textContent };
+	};
+	return {
+		created: register,
+		unmounted: unregister,
+		beforeUpdate: update,
+		getSSRProps
+	};
+}
+function parseValue(value) {
+	if (isString(value)) return { path: value };
+	else if (isPlainObject(value)) {
+		if (!("path" in value)) throw createI18nError(I18nErrorCodes.REQUIRED_VALUE, "path");
+		return value;
+	} else throw createI18nError(I18nErrorCodes.INVALID_VALUE);
+}
+function makeParams(value) {
+	const { path, locale, args, choice, plural } = value;
+	const options = {};
+	const named = args || {};
+	if (isString(locale)) options.locale = locale;
+	if (isNumber(choice)) options.plural = choice;
+	if (isNumber(plural)) options.plural = plural;
+	return [
+		path,
+		named,
+		options
+	];
+}
+function apply(app, i18n, ...options) {
+	const pluginOptions = isPlainObject(options[0]) ? options[0] : {};
+	if (isBoolean(pluginOptions.globalInstall) ? pluginOptions.globalInstall : true) {
+		[Translation.name, "I18nT"].forEach((name) => app.component(name, Translation));
+		[NumberFormat.name, "I18nN"].forEach((name) => app.component(name, NumberFormat));
+		[DatetimeFormat.name, "I18nD"].forEach((name) => app.component(name, DatetimeFormat));
+	}
+	app.directive("t", vTDirective(i18n));
+}
 var I18nInjectionKey = makeSymbol("global-vue-i18n");
+function createI18n(options = {}) {
+	const __legacyMode = false;
+	if (process.env.NODE_ENV !== "production" && __legacyMode);
+	const __globalInjection = isBoolean(options.globalInjection) ? options.globalInjection : true;
+	const __instances = /* @__PURE__ */ new Map();
+	const [globalScope, __global] = createGlobal(options, __legacyMode);
+	const symbol = makeSymbol(process.env.NODE_ENV !== "production" ? "vue-i18n" : "");
+	function __getInstance(component) {
+		return __instances.get(component) || null;
+	}
+	function __setInstance(component, instance) {
+		__instances.set(component, instance);
+	}
+	function __deleteInstance(component) {
+		__instances.delete(component);
+	}
+	const i18n = {
+		get mode() {
+			return "composition";
+		},
+		async install(app, ...options) {
+			if ((process.env.NODE_ENV !== "production" || false) && true) app.__VUE_I18N__ = i18n;
+			app.__VUE_I18N_SYMBOL__ = symbol;
+			app.provide(app.__VUE_I18N_SYMBOL__, i18n);
+			if (isPlainObject(options[0])) {
+				const opts = options[0];
+				i18n.__composerExtend = opts.__composerExtend;
+				i18n.__vueI18nExtend = opts.__vueI18nExtend;
+			}
+			let globalReleaseHandler = null;
+			if (__globalInjection) globalReleaseHandler = injectGlobalFields(app, i18n.global);
+			apply(app, i18n, ...options);
+			const unmountApp = app.unmount;
+			app.unmount = () => {
+				globalReleaseHandler && globalReleaseHandler();
+				i18n.dispose();
+				unmountApp();
+			};
+			if ((process.env.NODE_ENV !== "production" || false) && true) {
+				if (!await enableDevTools(app, i18n)) throw createI18nError(I18nErrorCodes.CANNOT_SETUP_VUE_DEVTOOLS_PLUGIN);
+				const emitter = createEmitter();
+				{
+					const _composer = __global;
+					_composer[EnableEmitter] && _composer[EnableEmitter](emitter);
+				}
+				emitter.on("*", addTimelineEvent);
+			}
+		},
+		get global() {
+			return __global;
+		},
+		dispose() {
+			globalScope.stop();
+		},
+		__instances,
+		__getInstance,
+		__setInstance,
+		__deleteInstance
+	};
+	return i18n;
+}
 function useI18n(options = {}) {
-	const instance = getCurrentInstance();
+	const instance = getCurrentInstance$1();
 	if (instance == null) throw createI18nError(I18nErrorCodes.MUST_BE_CALL_SETUP_TOP);
 	if (!instance.isCE && instance.appContext.app != null && !instance.appContext.app.__VUE_I18N_SYMBOL__) throw createI18nError(I18nErrorCodes.NOT_INSTALLED);
 	const i18n = getI18nInstance(instance);
@@ -3256,6 +3783,12 @@ function useI18n(options = {}) {
 	} else if (process.env.NODE_ENV !== "production" && scope === "local") warn(getWarnMessage(I18nWarnCodes.DUPLICATE_USE_I18N_CALLING));
 	return composer;
 }
+function createGlobal(options, legacyMode) {
+	const scope = effectScope();
+	const obj = scope.run(() => createComposer(options));
+	if (obj == null) throw createI18nError(I18nErrorCodes.UNEXPECTED_ERROR);
+	return [scope, obj];
+}
 function getI18nInstance(instance) {
 	const i18n = inject(!instance.isCE ? instance.appContext.app.__VUE_I18N_SYMBOL__ : I18nInjectionKey);
 	if (!i18n) throw createI18nError(!instance.isCE ? I18nErrorCodes.UNEXPECTED_ERROR : I18nErrorCodes.NOT_INSTALLED_WITH_PROVIDE);
@@ -3310,7 +3843,51 @@ function setupLifeCycle(i18n, target, composer) {
 		}
 	}, target);
 }
-defineComponent({
+var globalExportProps = [
+	"locale",
+	"fallbackLocale",
+	"availableLocales"
+];
+var globalExportMethods = [
+	"t",
+	"rt",
+	"d",
+	"n",
+	"tm",
+	"te"
+];
+function injectGlobalFields(app, composer) {
+	const i18n = Object.create(null);
+	globalExportProps.forEach((prop) => {
+		const desc = Object.getOwnPropertyDescriptor(composer, prop);
+		if (!desc) throw createI18nError(I18nErrorCodes.UNEXPECTED_ERROR);
+		const wrap = isRef(desc.value) ? {
+			get() {
+				return desc.value.value;
+			},
+			set(val) {
+				desc.value.value = val;
+			}
+		} : { get() {
+			return desc.get && desc.get();
+		} };
+		Object.defineProperty(i18n, prop, wrap);
+	});
+	app.config.globalProperties.$i18n = i18n;
+	globalExportMethods.forEach((method) => {
+		const desc = Object.getOwnPropertyDescriptor(composer, method);
+		if (!desc || !desc.value) throw createI18nError(I18nErrorCodes.UNEXPECTED_ERROR);
+		Object.defineProperty(app.config.globalProperties, `$${method}`, desc);
+	});
+	const dispose = () => {
+		delete app.config.globalProperties.$i18n;
+		globalExportMethods.forEach((method) => {
+			delete app.config.globalProperties[`$${method}`];
+		});
+	};
+	return dispose;
+}
+var DatetimeFormat = defineComponent({
 	name: "i18n-d",
 	props: assign({
 		value: {
@@ -3350,46 +3927,14481 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
+var WhatWeMeasure_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "WhatWeMeasure",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		usePerformanceMeasure("WhatWeMeasure");
+		const { t } = useI18n();
+		const __returned__ = {
+			t,
+			metrics: computed(() => [
+				{
+					metric: t("about.whatWeMeasure.bundleSizeImpact"),
+					desc: t("about.whatWeMeasure.bundleSizeImpactDesc")
+				},
+				{
+					metric: t("about.whatWeMeasure.renderingOverhead"),
+					desc: t("about.whatWeMeasure.renderingOverheadDesc")
+				},
+				{
+					metric: t("about.whatWeMeasure.hydrationCost"),
+					desc: t("about.whatWeMeasure.hydrationCostDesc")
+				},
+				{
+					metric: t("about.whatWeMeasure.lazyLoading"),
+					desc: t("about.whatWeMeasure.lazyLoadingDesc")
+				},
+				{
+					metric: t("about.whatWeMeasure.localeSwitch"),
+					desc: t("about.whatWeMeasure.localeSwitchDesc")
+				}
+			])
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "mt-12 mx-auto max-w-3xl" };
 var _hoisted_2 = { class: "mb-4 text-2xl font-bold text-foreground" };
 var _hoisted_3 = { class: "space-y-4" };
 var _hoisted_4 = { class: "block text-sm font-bold text-primary" };
 var _hoisted_5 = { class: "block mt-1 text-sm text-muted-foreground" };
-var WhatWeMeasure_default = defineComponent({
-	__name: "WhatWeMeasure",
-	setup(__props) {
-		usePerformanceMeasure("WhatWeMeasure");
-		const { t } = useI18n();
-		const metrics = computed(() => [
-			{
-				metric: t("about.whatWeMeasure.bundleSizeImpact"),
-				desc: t("about.whatWeMeasure.bundleSizeImpactDesc")
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString($setup.t("about.whatWeMeasure.title")), 1), createElementVNode("ul", _hoisted_3, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.metrics, (m) => {
+		return openBlock(), createElementBlock("li", {
+			key: m.metric,
+			class: "rounded-md border border-border p-4"
+		}, [createElementVNode("span", _hoisted_4, toDisplayString(m.metric), 1), createElementVNode("span", _hoisted_5, toDisplayString(m.desc), 1)]);
+	}), 128))])]);
+}
+var WhatWeMeasure_default = _plugin_vue_export_helper_default(WhatWeMeasure_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/src/components/pages/about/WhatWeMeasure.vue"]]);
+var i18n = createI18n({
+	legacy: false,
+	locale: "en",
+	fallbackLocale: "en",
+	messages: {
+		en: {
+			"shared": {
+				"appName": {
+					"type": 0,
+					"start": 0,
+					"end": 10,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 11,
+							"offset": 10
+						},
+						"source": "i18n Bench"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							}
+						}],
+						"static": "i18n Bench"
+					}
+				},
+				"siteName": {
+					"type": 0,
+					"start": 0,
+					"end": 14,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 15,
+							"offset": 14
+						},
+						"source": "i18n Benchmark"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							}
+						}],
+						"static": "i18n Benchmark"
+					}
+				},
+				"contactEmail": {
+					"type": 0,
+					"start": 0,
+					"end": 24,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 25,
+							"offset": 24
+						},
+						"source": "contact{'@'}intlayer.org"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 24,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 25,
+								"offset": 24
+							}
+						},
+						"items": [
+							{
+								"type": 3,
+								"start": 0,
+								"end": 7,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 8,
+										"offset": 7
+									}
+								}
+							},
+							{
+								"type": 9,
+								"start": 7,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 8,
+										"offset": 7
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							},
+							{
+								"type": 3,
+								"start": 12,
+								"end": 24,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									},
+									"end": {
+										"line": 1,
+										"column": 25,
+										"offset": 24
+									}
+								}
+							}
+						],
+						"static": "contact@intlayer.org"
+					}
+				},
+				"goToGithub": {
+					"type": 0,
+					"start": 0,
+					"end": 12,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 13,
+							"offset": 12
+						},
+						"source": "Go to GitHub"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							}
+						}],
+						"static": "Go to GitHub"
+					}
+				}
 			},
-			{
-				metric: t("about.whatWeMeasure.renderingOverhead"),
-				desc: t("about.whatWeMeasure.renderingOverheadDesc")
+			"header": {
+				"home": {
+					"type": 0,
+					"start": 0,
+					"end": 4,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 5,
+							"offset": 4
+						},
+						"source": "Home"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 4,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 5,
+								"offset": 4
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 4,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 5,
+									"offset": 4
+								}
+							}
+						}],
+						"static": "Home"
+					}
+				},
+				"methodology": {
+					"type": 0,
+					"start": 0,
+					"end": 11,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 12,
+							"offset": 11
+						},
+						"source": "Methodology"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							}
+						}],
+						"static": "Methodology"
+					}
+				},
+				"mockPages": {
+					"type": 0,
+					"start": 0,
+					"end": 10,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 11,
+							"offset": 10
+						},
+						"source": "Mock Pages"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							}
+						}],
+						"static": "Mock Pages"
+					}
+				},
+				"products": {
+					"type": 0,
+					"start": 0,
+					"end": 8,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 9,
+							"offset": 8
+						},
+						"source": "Products"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							}
+						}],
+						"static": "Products"
+					}
+				},
+				"pricing": {
+					"type": 0,
+					"start": 0,
+					"end": 7,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 8,
+							"offset": 7
+						},
+						"source": "Pricing"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							}
+						}],
+						"static": "Pricing"
+					}
+				},
+				"team": {
+					"type": 0,
+					"start": 0,
+					"end": 4,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 5,
+							"offset": 4
+						},
+						"source": "Team"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 4,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 5,
+								"offset": 4
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 4,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 5,
+									"offset": 4
+								}
+							}
+						}],
+						"static": "Team"
+					}
+				},
+				"blog": {
+					"type": 0,
+					"start": 0,
+					"end": 4,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 5,
+							"offset": 4
+						},
+						"source": "Blog"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 4,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 5,
+								"offset": 4
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 4,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 5,
+									"offset": 4
+								}
+							}
+						}],
+						"static": "Blog"
+					}
+				},
+				"careers": {
+					"type": 0,
+					"start": 0,
+					"end": 7,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 8,
+							"offset": 7
+						},
+						"source": "Careers"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							}
+						}],
+						"static": "Careers"
+					}
+				},
+				"faq": {
+					"type": 0,
+					"start": 0,
+					"end": 3,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 4,
+							"offset": 3
+						},
+						"source": "FAQ"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 3,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 4,
+								"offset": 3
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 3,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 4,
+									"offset": 3
+								}
+							}
+						}],
+						"static": "FAQ"
+					}
+				},
+				"contact": {
+					"type": 0,
+					"start": 0,
+					"end": 7,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 8,
+							"offset": 7
+						},
+						"source": "Contact"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							}
+						}],
+						"static": "Contact"
+					}
+				},
+				"settings": {
+					"type": 0,
+					"start": 0,
+					"end": 8,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 9,
+							"offset": 8
+						},
+						"source": "Settings"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							}
+						}],
+						"static": "Settings"
+					}
+				}
 			},
-			{
-				metric: t("about.whatWeMeasure.hydrationCost"),
-				desc: t("about.whatWeMeasure.hydrationCostDesc")
+			"footer": {
+				"title": {
+					"type": 0,
+					"start": 0,
+					"end": 14,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 15,
+							"offset": 14
+						},
+						"source": "i18n Benchmark"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							}
+						}],
+						"static": "i18n Benchmark"
+					}
+				},
+				"description": {
+					"type": 0,
+					"start": 0,
+					"end": 151,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 152,
+							"offset": 151
+						},
+						"source": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 151,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 152,
+								"offset": 151
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 151,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 152,
+									"offset": 151
+								}
+							}
+						}],
+						"static": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+					}
+				},
+				"resources": {
+					"type": 0,
+					"start": 0,
+					"end": 9,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 10,
+							"offset": 9
+						},
+						"source": "Resources"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 9,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 10,
+								"offset": 9
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 9,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 10,
+									"offset": 9
+								}
+							}
+						}],
+						"static": "Resources"
+					}
+				},
+				"github": {
+					"type": 0,
+					"start": 0,
+					"end": 6,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 7,
+							"offset": 6
+						},
+						"source": "GitHub"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 6,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 7,
+								"offset": 6
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 6,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 7,
+									"offset": 6
+								}
+							}
+						}],
+						"static": "GitHub"
+					}
+				},
+				"methodology": {
+					"type": 0,
+					"start": 0,
+					"end": 11,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 12,
+							"offset": 11
+						},
+						"source": "Methodology"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							}
+						}],
+						"static": "Methodology"
+					}
+				},
+				"contributing": {
+					"type": 0,
+					"start": 0,
+					"end": 12,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 13,
+							"offset": 12
+						},
+						"source": "Contributing"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							}
+						}],
+						"static": "Contributing"
+					}
+				},
+				"contact": {
+					"type": 0,
+					"start": 0,
+					"end": 7,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 8,
+							"offset": 7
+						},
+						"source": "Contact"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							}
+						}],
+						"static": "Contact"
+					}
+				},
+				"builtWith": {
+					"type": 0,
+					"start": 0,
+					"end": 82,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 83,
+							"offset": 82
+						},
+						"source": "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router."
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 82,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 83,
+								"offset": 82
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 82,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 83,
+									"offset": 82
+								}
+							}
+						}],
+						"static": "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router."
+					}
+				}
 			},
-			{
-				metric: t("about.whatWeMeasure.lazyLoading"),
-				desc: t("about.whatWeMeasure.lazyLoadingDesc")
+			"themeToggle": {
+				"auto": {
+					"type": 0,
+					"start": 0,
+					"end": 11,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 12,
+							"offset": 11
+						},
+						"source": "Theme: Auto"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							}
+						}],
+						"static": "Theme: Auto"
+					}
+				},
+				"dark": {
+					"type": 0,
+					"start": 0,
+					"end": 11,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 12,
+							"offset": 11
+						},
+						"source": "Theme: Dark"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							}
+						}],
+						"static": "Theme: Dark"
+					}
+				},
+				"light": {
+					"type": 0,
+					"start": 0,
+					"end": 12,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 13,
+							"offset": 12
+						},
+						"source": "Theme: Light"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							}
+						}],
+						"static": "Theme: Light"
+					}
+				},
+				"labelAuto": {
+					"type": 0,
+					"start": 0,
+					"end": 57,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 58,
+							"offset": 57
+						},
+						"source": "Theme mode: auto (system). Click to switch to light mode."
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 57,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 58,
+								"offset": 57
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 57,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 58,
+									"offset": 57
+								}
+							}
+						}],
+						"static": "Theme mode: auto (system). Click to switch to light mode."
+					}
+				},
+				"labelOther": {
+					"type": 0,
+					"start": 0,
+					"end": 41,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 42,
+							"offset": 41
+						},
+						"source": "Theme mode: {mode}. Click to switch mode."
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 41,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 42,
+								"offset": 41
+							}
+						},
+						"items": [
+							{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								},
+								"value": "Theme mode: "
+							},
+							{
+								"type": 4,
+								"start": 12,
+								"end": 18,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									},
+									"end": {
+										"line": 1,
+										"column": 19,
+										"offset": 18
+									}
+								},
+								"key": "mode"
+							},
+							{
+								"type": 3,
+								"start": 18,
+								"end": 41,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 19,
+										"offset": 18
+									},
+									"end": {
+										"line": 1,
+										"column": 42,
+										"offset": 41
+									}
+								},
+								"value": ". Click to switch mode."
+							}
+						]
+					}
+				}
 			},
-			{
-				metric: t("about.whatWeMeasure.localeSwitch"),
-				desc: t("about.whatWeMeasure.localeSwitchDesc")
+			"mockBanner": {
+				"type": 0,
+				"start": 0,
+				"end": 114,
+				"loc": {
+					"start": {
+						"line": 1,
+						"column": 1,
+						"offset": 0
+					},
+					"end": {
+						"line": 1,
+						"column": 115,
+						"offset": 114
+					},
+					"source": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+				},
+				"body": {
+					"type": 2,
+					"start": 0,
+					"end": 114,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 115,
+							"offset": 114
+						}
+					},
+					"items": [{
+						"type": 3,
+						"start": 0,
+						"end": 114,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 115,
+								"offset": 114
+							}
+						}
+					}],
+					"static": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+				}
+			},
+			"home": {
+				"hero": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "i18n Benchmark"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "i18n Benchmark"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 157,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 158,
+								"offset": 157
+							},
+							"source": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 157,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 158,
+									"offset": 157
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 157,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 158,
+										"offset": 157
+									}
+								}
+							}],
+							"static": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+						}
+					},
+					"viewResults": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "View Results"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "View Results"
+						}
+					},
+					"methodology": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Methodology"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Methodology"
+						}
+					}
+				},
+				"whyItMatters": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 24,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 25,
+								"offset": 24
+							},
+							"source": "Why These Metrics Matter"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 24,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 25,
+									"offset": 24
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 24,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 25,
+										"offset": 24
+									}
+								}
+							}],
+							"static": "Why These Metrics Matter"
+						}
+					},
+					"bundleSizeTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Bundle Size"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Bundle Size"
+						}
+					},
+					"bundleSizeDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 314,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 315,
+								"offset": 314
+							},
+							"source": "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 314,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 315,
+									"offset": 314
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 314,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 315,
+										"offset": 314
+									}
+								}
+							}],
+							"static": "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
+						}
+					},
+					"renderingTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 21,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 22,
+								"offset": 21
+							},
+							"source": "Rendering & Hydration"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 21,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 22,
+									"offset": 21
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 21,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 22,
+										"offset": 21
+									}
+								}
+							}],
+							"static": "Rendering & Hydration"
+						}
+					},
+					"renderingDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 336,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 337,
+								"offset": 336
+							},
+							"source": "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 336,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 337,
+									"offset": 336
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 336,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 337,
+										"offset": 336
+									}
+								}
+							}],
+							"static": "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
+						}
+					},
+					"dynamicLoadingTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 15,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 16,
+								"offset": 15
+							},
+							"source": "Dynamic Loading"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 15,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 16,
+									"offset": 15
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 15,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 16,
+										"offset": 15
+									}
+								}
+							}],
+							"static": "Dynamic Loading"
+						}
+					},
+					"dynamicLoadingDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 339,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 340,
+								"offset": 339
+							},
+							"source": "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 339,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 340,
+									"offset": 339
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 339,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 340,
+										"offset": 339
+									}
+								}
+							}],
+							"static": "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+						}
+					}
+				},
+				"understandingImpact": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 24,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 25,
+								"offset": 24
+							},
+							"source": "Understanding the Impact"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 24,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 25,
+									"offset": 24
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 24,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 25,
+										"offset": 24
+									}
+								}
+							}],
+							"static": "Understanding the Impact"
+						}
+					},
+					"singleJsonTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 44,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 45,
+								"offset": 44
+							},
+							"source": "Why a single large JSON can hurt performance"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 44,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 45,
+									"offset": 44
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 44,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 45,
+										"offset": 44
+									}
+								}
+							}],
+							"static": "Why a single large JSON can hurt performance"
+						}
+					},
+					"singleJsonIntro": {
+						"type": 0,
+						"start": 0,
+						"end": 236,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 237,
+								"offset": 236
+							},
+							"source": "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 236,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 237,
+									"offset": 236
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 236,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 237,
+										"offset": 236
+									}
+								}
+							}],
+							"static": "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
+						}
+					},
+					"singleJsonBullet1": {
+						"type": 0,
+						"start": 0,
+						"end": 70,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 71,
+								"offset": 70
+							},
+							"source": "The JSON must be parsed on every page load — blocking the main thread."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 70,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 71,
+									"offset": 70
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 70,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 71,
+										"offset": 70
+									}
+								}
+							}],
+							"static": "The JSON must be parsed on every page load — blocking the main thread."
+						}
+					},
+					"singleJsonBullet2": {
+						"type": 0,
+						"start": 0,
+						"end": 161,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 162,
+								"offset": 161
+							},
+							"source": "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 161,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 162,
+									"offset": 161
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 161,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 162,
+										"offset": 161
+									}
+								}
+							}],
+							"static": "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
+						}
+					},
+					"singleJsonBullet3": {
+						"type": 0,
+						"start": 0,
+						"end": 153,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 154,
+								"offset": 153
+							},
+							"source": "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 153,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 154,
+									"offset": 153
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 153,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 154,
+										"offset": 153
+									}
+								}
+							}],
+							"static": "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
+						}
+					},
+					"tradeOffsTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 33,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 34,
+								"offset": 33
+							},
+							"source": "The trade-offs of dynamic loading"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 33,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 34,
+									"offset": 33
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 33,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 34,
+										"offset": 33
+									}
+								}
+							}],
+							"static": "The trade-offs of dynamic loading"
+						}
+					},
+					"tradeOffsIntro": {
+						"type": 0,
+						"start": 0,
+						"end": 140,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 141,
+								"offset": 140
+							},
+							"source": "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 140,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 141,
+									"offset": 140
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 140,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 141,
+										"offset": 140
+									}
+								}
+							}],
+							"static": "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
+						}
+					},
+					"waterfallLabel": {
+						"type": 0,
+						"start": 0,
+						"end": 19,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 20,
+								"offset": 19
+							},
+							"source": "Waterfall requests:"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 19,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 20,
+									"offset": 19
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 19,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 20,
+										"offset": 19
+									}
+								}
+							}],
+							"static": "Waterfall requests:"
+						}
+					},
+					"waterfallDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 103,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 104,
+								"offset": 103
+							},
+							"source": "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 103,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 104,
+									"offset": 103
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 103,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 104,
+										"offset": 103
+									}
+								}
+							}],
+							"static": "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+						}
+					},
+					"foucLabel": {
+						"type": 0,
+						"start": 0,
+						"end": 37,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 38,
+								"offset": 37
+							},
+							"source": "Flash of untranslated content (FOUC):"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 37,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 38,
+									"offset": 37
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 37,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 38,
+										"offset": 37
+									}
+								}
+							}],
+							"static": "Flash of untranslated content (FOUC):"
+						}
+					},
+					"foucDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 87,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 88,
+								"offset": 87
+							},
+							"source": "users may briefly see translation keys or a fallback language before the chunk arrives."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 87,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 88,
+									"offset": 87
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 87,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 88,
+										"offset": 87
+									}
+								}
+							}],
+							"static": "users may briefly see translation keys or a fallback language before the chunk arrives."
+						}
+					},
+					"cacheLabel": {
+						"type": 0,
+						"start": 0,
+						"end": 19,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 20,
+								"offset": 19
+							},
+							"source": "Cache invalidation:"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 19,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 20,
+									"offset": 19
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 19,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 20,
+										"offset": 19
+									}
+								}
+							}],
+							"static": "Cache invalidation:"
+						}
+					},
+					"cacheDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 130,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 131,
+								"offset": 130
+							},
+							"source": "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 130,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 131,
+									"offset": 130
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 130,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 131,
+										"offset": 130
+									}
+								}
+							}],
+							"static": "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+						}
+					},
+					"measuresTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 28,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 29,
+								"offset": 28
+							},
+							"source": "What this benchmark measures"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 28,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 29,
+									"offset": 28
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 28,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 29,
+										"offset": 28
+									}
+								}
+							}],
+							"static": "What this benchmark measures"
+						}
+					},
+					"measuresDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 388,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 389,
+								"offset": 388
+							},
+							"source": "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 388,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 389,
+									"offset": 388
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 388,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 389,
+										"offset": 388
+									}
+								}
+							}],
+							"static": "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+						}
+					}
+				},
+				"resultsTable": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "Sample Results"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "Sample Results"
+						}
+					},
+					"library": {
+						"type": 0,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							},
+							"source": "Library"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 7,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 8,
+										"offset": 7
+									}
+								}
+							}],
+							"static": "Library"
+						}
+					},
+					"bundleSize": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Bundle Size"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Bundle Size"
+						}
+					},
+					"lookupTime": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Lookup Time"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Lookup Time"
+						}
+					},
+					"lazyLoading": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Lazy Loading"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Lazy Loading"
+						}
+					},
+					"yes": {
+						"type": 0,
+						"start": 0,
+						"end": 3,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 4,
+								"offset": 3
+							},
+							"source": "Yes"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 3,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 4,
+									"offset": 3
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 3,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 4,
+										"offset": 3
+									}
+								}
+							}],
+							"static": "Yes"
+						}
+					},
+					"manual": {
+						"type": 0,
+						"start": 0,
+						"end": 6,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 7,
+								"offset": 6
+							},
+							"source": "Manual"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 6,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 7,
+									"offset": 6
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 6,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 7,
+										"offset": 6
+									}
+								}
+							}],
+							"static": "Manual"
+						}
+					},
+					"builtIn": {
+						"type": 0,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							},
+							"source": "Built-in"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 8,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 9,
+										"offset": 8
+									}
+								}
+							}],
+							"static": "Built-in"
+						}
+					}
+				}
+			},
+			"about": {
+				"header": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 20,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 21,
+								"offset": 20
+							},
+							"source": "About This Benchmark"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 20,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 21,
+									"offset": 20
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 20,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 21,
+										"offset": 20
+									}
+								}
+							}],
+							"static": "About This Benchmark"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 224,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 225,
+								"offset": 224
+							},
+							"source": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 224,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 225,
+									"offset": 224
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 224,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 225,
+										"offset": 224
+									}
+								}
+							}],
+							"static": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+						}
+					}
+				},
+				"grid": {
+					"whyExistsTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 15,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 16,
+								"offset": 15
+							},
+							"source": "Why This Exists"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 15,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 16,
+									"offset": 15
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 15,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 16,
+										"offset": 15
+									}
+								}
+							}],
+							"static": "Why This Exists"
+						}
+					},
+					"whyExistsDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 401,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 402,
+								"offset": 401
+							},
+							"source": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 401,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 402,
+									"offset": 401
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 401,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 402,
+										"offset": 401
+									}
+								}
+							}],
+							"static": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+						}
+					},
+					"methodologyTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Methodology"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Methodology"
+						}
+					},
+					"methodologyDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 301,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 302,
+								"offset": 301
+							},
+							"source": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 301,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 302,
+									"offset": 301
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 301,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 302,
+										"offset": 301
+									}
+								}
+							}],
+							"static": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+						}
+					}
+				},
+				"whatWeMeasure": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 15,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 16,
+								"offset": 15
+							},
+							"source": "What We Measure"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 15,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 16,
+									"offset": 15
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 15,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 16,
+										"offset": 15
+									}
+								}
+							}],
+							"static": "What We Measure"
+						}
+					},
+					"bundleSizeImpact": {
+						"type": 0,
+						"start": 0,
+						"end": 18,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 19,
+								"offset": 18
+							},
+							"source": "Bundle size impact"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 18,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 19,
+									"offset": 18
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 18,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 19,
+										"offset": 18
+									}
+								}
+							}],
+							"static": "Bundle size impact"
+						}
+					},
+					"bundleSizeImpactDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 161,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 162,
+								"offset": 161
+							},
+							"source": "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 161,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 162,
+									"offset": 161
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 161,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 162,
+										"offset": 161
+									}
+								}
+							}],
+							"static": "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+						}
+					},
+					"renderingOverhead": {
+						"type": 0,
+						"start": 0,
+						"end": 18,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 19,
+								"offset": 18
+							},
+							"source": "Rendering overhead"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 18,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 19,
+									"offset": 18
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 18,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 19,
+										"offset": 18
+									}
+								}
+							}],
+							"static": "Rendering overhead"
+						}
+					},
+					"renderingOverheadDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 186,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 187,
+								"offset": 186
+							},
+							"source": "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 186,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 187,
+									"offset": 186
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 186,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 187,
+										"offset": 186
+									}
+								}
+							}],
+							"static": "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+						}
+					},
+					"hydrationCost": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "Hydration cost"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "Hydration cost"
+						}
+					},
+					"hydrationCostDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 165,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 166,
+								"offset": 165
+							},
+							"source": "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 165,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 166,
+									"offset": 165
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 165,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 166,
+										"offset": 165
+									}
+								}
+							}],
+							"static": "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+						}
+					},
+					"lazyLoading": {
+						"type": 0,
+						"start": 0,
+						"end": 26,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 27,
+								"offset": 26
+							},
+							"source": "Lazy loading effectiveness"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 26,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 27,
+									"offset": 26
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 26,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 27,
+										"offset": 26
+									}
+								}
+							}],
+							"static": "Lazy loading effectiveness"
+						}
+					},
+					"lazyLoadingDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 167,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 168,
+								"offset": 167
+							},
+							"source": "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 167,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 168,
+									"offset": 167
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 167,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 168,
+										"offset": 167
+									}
+								}
+							}],
+							"static": "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
+						}
+					},
+					"localeSwitch": {
+						"type": 0,
+						"start": 0,
+						"end": 19,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 20,
+								"offset": 19
+							},
+							"source": "Locale switch speed"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 19,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 20,
+									"offset": 19
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 19,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 20,
+										"offset": 19
+									}
+								}
+							}],
+							"static": "Locale switch speed"
+						}
+					},
+					"localeSwitchDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 153,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 154,
+								"offset": 153
+							},
+							"source": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 153,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 154,
+									"offset": 153
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 153,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 154,
+										"offset": 153
+									}
+								}
+							}],
+							"static": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+						}
+					}
+				}
+			},
+			"blog": {
+				"header": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 4,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 5,
+								"offset": 4
+							},
+							"source": "Blog"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 4,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 5,
+									"offset": 4
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 4,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 5,
+										"offset": 4
+									}
+								}
+							}],
+							"static": "Blog"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 58,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 59,
+								"offset": 58
+							},
+							"source": "Insights, tutorials, and analysis from the i18n community."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 58,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 59,
+									"offset": 58
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 58,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 59,
+										"offset": 58
+									}
+								}
+							}],
+							"static": "Insights, tutorials, and analysis from the i18n community."
+						}
+					}
+				},
+				"list": {
+					"readMore": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Read More →"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Read More →"
+						}
+					},
+					"post1Title": {
+						"type": 0,
+						"start": 0,
+						"end": 45,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 46,
+								"offset": 45
+							},
+							"source": "Comparing i18n Libraries in 2026: A Deep Dive"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 45,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 46,
+									"offset": 45
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 45,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 46,
+										"offset": 45
+									}
+								}
+							}],
+							"static": "Comparing i18n Libraries in 2026: A Deep Dive"
+						}
+					},
+					"post1Date": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "March 15, 2026"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "March 15, 2026"
+						}
+					},
+					"post1Excerpt": {
+						"type": 0,
+						"start": 0,
+						"end": 127,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 128,
+								"offset": 127
+							},
+							"source": "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 127,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 128,
+									"offset": 127
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 127,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 128,
+										"offset": 127
+									}
+								}
+							}],
+							"static": "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+						}
+					},
+					"post1Category": {
+						"type": 0,
+						"start": 0,
+						"end": 9,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 10,
+								"offset": 9
+							},
+							"source": "Benchmark"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 9,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 10,
+									"offset": 9
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 9,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 10,
+										"offset": 9
+									}
+								}
+							}],
+							"static": "Benchmark"
+						}
+					},
+					"post2Title": {
+						"type": 0,
+						"start": 0,
+						"end": 37,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 38,
+								"offset": 37
+							},
+							"source": "How to Reduce Your i18n Bundle by 60%"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 37,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 38,
+									"offset": 37
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 37,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 38,
+										"offset": 37
+									}
+								}
+							}],
+							"static": "How to Reduce Your i18n Bundle by 60%"
+						}
+					},
+					"post2Date": {
+						"type": 0,
+						"start": 0,
+						"end": 13,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 14,
+								"offset": 13
+							},
+							"source": "March 8, 2026"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 13,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 14,
+									"offset": 13
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 13,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 14,
+										"offset": 13
+									}
+								}
+							}],
+							"static": "March 8, 2026"
+						}
+					},
+					"post2Excerpt": {
+						"type": 0,
+						"start": 0,
+						"end": 127,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 128,
+								"offset": 127
+							},
+							"source": "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 127,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 128,
+									"offset": 127
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 127,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 128,
+										"offset": 127
+									}
+								}
+							}],
+							"static": "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+						}
+					},
+					"post2Category": {
+						"type": 0,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							},
+							"source": "Tutorial"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 8,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 9,
+										"offset": 8
+									}
+								}
+							}],
+							"static": "Tutorial"
+						}
+					},
+					"post3Title": {
+						"type": 0,
+						"start": 0,
+						"end": 42,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 43,
+								"offset": 42
+							},
+							"source": "The State of Internationalization in React"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 42,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 43,
+									"offset": 42
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 42,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 43,
+										"offset": 42
+									}
+								}
+							}],
+							"static": "The State of Internationalization in React"
+						}
+					},
+					"post3Date": {
+						"type": 0,
+						"start": 0,
+						"end": 17,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 18,
+								"offset": 17
+							},
+							"source": "February 28, 2026"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 17,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 18,
+									"offset": 17
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 17,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 18,
+										"offset": 17
+									}
+								}
+							}],
+							"static": "February 28, 2026"
+						}
+					},
+					"post3Excerpt": {
+						"type": 0,
+						"start": 0,
+						"end": 114,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 115,
+								"offset": 114
+							},
+							"source": "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 114,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 115,
+									"offset": 114
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 114,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 115,
+										"offset": 114
+									}
+								}
+							}],
+							"static": "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+						}
+					},
+					"post3Category": {
+						"type": 0,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							},
+							"source": "Analysis"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 8,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 9,
+										"offset": 8
+									}
+								}
+							}],
+							"static": "Analysis"
+						}
+					},
+					"post4Title": {
+						"type": 0,
+						"start": 0,
+						"end": 38,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 39,
+								"offset": 38
+							},
+							"source": "Migrating from react-i18next to Lingui"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 38,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 39,
+									"offset": 38
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 38,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 39,
+										"offset": 38
+									}
+								}
+							}],
+							"static": "Migrating from react-i18next to Lingui"
+						}
+					},
+					"post4Date": {
+						"type": 0,
+						"start": 0,
+						"end": 17,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 18,
+								"offset": 17
+							},
+							"source": "February 15, 2026"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 17,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 18,
+									"offset": 17
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 17,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 18,
+										"offset": 17
+									}
+								}
+							}],
+							"static": "February 15, 2026"
+						}
+					},
+					"post4Excerpt": {
+						"type": 0,
+						"start": 0,
+						"end": 109,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 110,
+								"offset": 109
+							},
+							"source": "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 109,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 110,
+									"offset": 109
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 109,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 110,
+										"offset": 109
+									}
+								}
+							}],
+							"static": "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+						}
+					},
+					"post4Category": {
+						"type": 0,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							},
+							"source": "Tutorial"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 8,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 9,
+										"offset": 8
+									}
+								}
+							}],
+							"static": "Tutorial"
+						}
+					},
+					"post5Title": {
+						"type": 0,
+						"start": 0,
+						"end": 41,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 42,
+								"offset": 41
+							},
+							"source": "Server Components and i18n: What Changes?"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 41,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 42,
+									"offset": 41
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 41,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 42,
+										"offset": 41
+									}
+								}
+							}],
+							"static": "Server Components and i18n: What Changes?"
+						}
+					},
+					"post5Date": {
+						"type": 0,
+						"start": 0,
+						"end": 16,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 17,
+								"offset": 16
+							},
+							"source": "February 1, 2026"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 16,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 17,
+									"offset": 16
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 16,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 17,
+										"offset": 16
+									}
+								}
+							}],
+							"static": "February 1, 2026"
+						}
+					},
+					"post5Excerpt": {
+						"type": 0,
+						"start": 0,
+						"end": 120,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 121,
+								"offset": 120
+							},
+							"source": "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 120,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 121,
+									"offset": 120
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 120,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 121,
+										"offset": 120
+									}
+								}
+							}],
+							"static": "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+						}
+					},
+					"post5Category": {
+						"type": 0,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							},
+							"source": "Analysis"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 8,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 9,
+										"offset": 8
+									}
+								}
+							}],
+							"static": "Analysis"
+						}
+					},
+					"post6Title": {
+						"type": 0,
+						"start": 0,
+						"end": 34,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 35,
+								"offset": 34
+							},
+							"source": "Benchmark Methodology: How We Test"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 34,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 35,
+									"offset": 34
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 34,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 35,
+										"offset": 34
+									}
+								}
+							}],
+							"static": "Benchmark Methodology: How We Test"
+						}
+					},
+					"post6Date": {
+						"type": 0,
+						"start": 0,
+						"end": 16,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 17,
+								"offset": 16
+							},
+							"source": "January 20, 2026"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 16,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 17,
+									"offset": 16
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 16,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 17,
+										"offset": 16
+									}
+								}
+							}],
+							"static": "January 20, 2026"
+						}
+					},
+					"post6Excerpt": {
+						"type": 0,
+						"start": 0,
+						"end": 122,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 123,
+								"offset": 122
+							},
+							"source": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 122,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 123,
+									"offset": 122
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 122,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 123,
+										"offset": 122
+									}
+								}
+							}],
+							"static": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+						}
+					},
+					"post6Category": {
+						"type": 0,
+						"start": 0,
+						"end": 4,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 5,
+								"offset": 4
+							},
+							"source": "Meta"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 4,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 5,
+									"offset": 4
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 4,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 5,
+										"offset": 4
+									}
+								}
+							}],
+							"static": "Meta"
+						}
+					}
+				}
+			},
+			"careers": {
+				"header": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							},
+							"source": "Careers"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 7,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 8,
+										"offset": 7
+									}
+								}
+							}],
+							"static": "Careers"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 148,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 149,
+								"offset": 148
+							},
+							"source": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 148,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 149,
+									"offset": 148
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 148,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 149,
+										"offset": 148
+									}
+								}
+							}],
+							"static": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+						}
+					}
+				},
+				"benefits": {
+					"remoteLabel": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Remote-first"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Remote-first"
+						}
+					},
+					"remoteValue": {
+						"type": 0,
+						"start": 0,
+						"end": 31,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 32,
+								"offset": 31
+							},
+							"source": "Work from anywhere in the world"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 31,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 32,
+									"offset": 31
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 31,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 32,
+										"offset": 31
+									}
+								}
+							}],
+							"static": "Work from anywhere in the world"
+						}
+					},
+					"payLabel": {
+						"type": 0,
+						"start": 0,
+						"end": 15,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 16,
+								"offset": 15
+							},
+							"source": "Competitive pay"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 15,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 16,
+									"offset": 15
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 15,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 16,
+										"offset": 15
+									}
+								}
+							}],
+							"static": "Competitive pay"
+						}
+					},
+					"payValue": {
+						"type": 0,
+						"start": 0,
+						"end": 26,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 27,
+								"offset": 26
+							},
+							"source": "Top-of-market compensation"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 26,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 27,
+									"offset": 26
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 26,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 27,
+										"offset": 26
+									}
+								}
+							}],
+							"static": "Top-of-market compensation"
+						}
+					},
+					"ossLabel": {
+						"type": 0,
+						"start": 0,
+						"end": 16,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 17,
+								"offset": 16
+							},
+							"source": "Open source time"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 16,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 17,
+									"offset": 16
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 16,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 17,
+										"offset": 16
+									}
+								}
+							}],
+							"static": "Open source time"
+						}
+					},
+					"ossValue": {
+						"type": 0,
+						"start": 0,
+						"end": 30,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 31,
+								"offset": 30
+							},
+							"source": "20% time for OSS contributions"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 30,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 31,
+									"offset": 30
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 30,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 31,
+										"offset": 30
+									}
+								}
+							}],
+							"static": "20% time for OSS contributions"
+						}
+					}
+				},
+				"openPositions": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "Open Positions"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "Open Positions"
+						}
+					},
+					"applyNow": {
+						"type": 0,
+						"start": 0,
+						"end": 9,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 10,
+								"offset": 9
+							},
+							"source": "Apply Now"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 9,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 10,
+									"offset": 9
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 9,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 10,
+										"offset": 9
+									}
+								}
+							}],
+							"static": "Apply Now"
+						}
+					},
+					"remote": {
+						"type": 0,
+						"start": 0,
+						"end": 6,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 7,
+								"offset": 6
+							},
+							"source": "Remote"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 6,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 7,
+									"offset": 6
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 6,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 7,
+										"offset": 6
+									}
+								}
+							}],
+							"static": "Remote"
+						}
+					},
+					"fullTime": {
+						"type": 0,
+						"start": 0,
+						"end": 9,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 10,
+								"offset": 9
+							},
+							"source": "Full-time"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 9,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 10,
+									"offset": 9
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 9,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 10,
+										"offset": 9
+									}
+								}
+							}],
+							"static": "Full-time"
+						}
+					},
+					"partTime": {
+						"type": 0,
+						"start": 0,
+						"end": 9,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 10,
+								"offset": 9
+							},
+							"source": "Part-time"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 9,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 10,
+									"offset": 9
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 9,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 10,
+										"offset": 9
+									}
+								}
+							}],
+							"static": "Part-time"
+						}
+					},
+					"engineering": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Engineering"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Engineering"
+						}
+					},
+					"documentation": {
+						"type": 0,
+						"start": 0,
+						"end": 13,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 14,
+								"offset": 13
+							},
+							"source": "Documentation"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 13,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 14,
+									"offset": 13
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 13,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 14,
+										"offset": 13
+									}
+								}
+							}],
+							"static": "Documentation"
+						}
+					},
+					"community": {
+						"type": 0,
+						"start": 0,
+						"end": 9,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 10,
+								"offset": 9
+							},
+							"source": "Community"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 9,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 10,
+									"offset": 9
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 9,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 10,
+										"offset": 9
+									}
+								}
+							}],
+							"static": "Community"
+						}
+					},
+					"sfRemote": {
+						"type": 0,
+						"start": 0,
+						"end": 22,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 23,
+								"offset": 22
+							},
+							"source": "San Francisco / Remote"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 22,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 23,
+									"offset": 22
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 22,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 23,
+										"offset": 22
+									}
+								}
+							}],
+							"static": "San Francisco / Remote"
+						}
+					},
+					"frontendTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 24,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 25,
+								"offset": 24
+							},
+							"source": "Senior Frontend Engineer"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 24,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 25,
+									"offset": 24
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 24,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 25,
+										"offset": 24
+									}
+								}
+							}],
+							"static": "Senior Frontend Engineer"
+						}
+					},
+					"frontendDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 100,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 101,
+								"offset": 100
+							},
+							"source": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 100,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 101,
+									"offset": 100
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 100,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 101,
+										"offset": 100
+									}
+								}
+							}],
+							"static": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+						}
+					},
+					"backendTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 16,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 17,
+								"offset": 16
+							},
+							"source": "Backend Engineer"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 16,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 17,
+									"offset": 16
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 16,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 17,
+										"offset": 16
+									}
+								}
+							}],
+							"static": "Backend Engineer"
+						}
+					},
+					"backendDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 98,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 99,
+								"offset": 98
+							},
+							"source": "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 98,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 99,
+									"offset": 98
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 98,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 99,
+										"offset": 98
+									}
+								}
+							}],
+							"static": "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+						}
+					},
+					"writerTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 16,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 17,
+								"offset": 16
+							},
+							"source": "Technical Writer"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 16,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 17,
+									"offset": 16
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 16,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 17,
+										"offset": 16
+									}
+								}
+							}],
+							"static": "Technical Writer"
+						}
+					},
+					"writerDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 89,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 90,
+								"offset": 89
+							},
+							"source": "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 89,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 90,
+									"offset": 89
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 89,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 90,
+										"offset": 89
+									}
+								}
+							}],
+							"static": "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+						}
+					},
+					"devrelTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 15,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 16,
+								"offset": 15
+							},
+							"source": "DevRel Engineer"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 15,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 16,
+									"offset": 15
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 15,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 16,
+										"offset": 15
+									}
+								}
+							}],
+							"static": "DevRel Engineer"
+						}
+					},
+					"devrelDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 99,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 100,
+								"offset": 99
+							},
+							"source": "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 99,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 100,
+									"offset": 99
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 99,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 100,
+										"offset": 99
+									}
+								}
+							}],
+							"static": "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+						}
+					},
+					"qaTitle": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "QA Engineer"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "QA Engineer"
+						}
+					},
+					"qaDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 97,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 98,
+								"offset": 97
+							},
+							"source": "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 97,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 98,
+									"offset": 97
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 97,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 98,
+										"offset": 97
+									}
+								}
+							}],
+							"static": "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+						}
+					}
+				}
+			},
+			"contact": {
+				"header": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Get in Touch"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Get in Touch"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 78,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 79,
+								"offset": 78
+							},
+							"source": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 78,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 79,
+									"offset": 78
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 78,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 79,
+										"offset": 78
+									}
+								}
+							}],
+							"static": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+						}
+					}
+				},
+				"form": {
+					"name": {
+						"type": 0,
+						"start": 0,
+						"end": 4,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 5,
+								"offset": 4
+							},
+							"source": "Name"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 4,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 5,
+									"offset": 4
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 4,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 5,
+										"offset": 4
+									}
+								}
+							}],
+							"static": "Name"
+						}
+					},
+					"yourName": {
+						"type": 0,
+						"start": 0,
+						"end": 9,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 10,
+								"offset": 9
+							},
+							"source": "Your name"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 9,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 10,
+									"offset": 9
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 9,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 10,
+										"offset": 9
+									}
+								}
+							}],
+							"static": "Your name"
+						}
+					},
+					"email": {
+						"type": 0,
+						"start": 0,
+						"end": 5,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 6,
+								"offset": 5
+							},
+							"source": "Email"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 5,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 6,
+									"offset": 5
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 5,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 6,
+										"offset": 5
+									}
+								}
+							}],
+							"static": "Email"
+						}
+					},
+					"emailPlaceholder": {
+						"type": 0,
+						"start": 0,
+						"end": 19,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 20,
+								"offset": 19
+							},
+							"source": "you{'@'}example.com"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 19,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 20,
+									"offset": 19
+								}
+							},
+							"items": [
+								{
+									"type": 3,
+									"start": 0,
+									"end": 3,
+									"loc": {
+										"start": {
+											"line": 1,
+											"column": 1,
+											"offset": 0
+										},
+										"end": {
+											"line": 1,
+											"column": 4,
+											"offset": 3
+										}
+									}
+								},
+								{
+									"type": 9,
+									"start": 3,
+									"end": 8,
+									"loc": {
+										"start": {
+											"line": 1,
+											"column": 4,
+											"offset": 3
+										},
+										"end": {
+											"line": 1,
+											"column": 9,
+											"offset": 8
+										}
+									}
+								},
+								{
+									"type": 3,
+									"start": 8,
+									"end": 19,
+									"loc": {
+										"start": {
+											"line": 1,
+											"column": 9,
+											"offset": 8
+										},
+										"end": {
+											"line": 1,
+											"column": 20,
+											"offset": 19
+										}
+									}
+								}
+							],
+							"static": "you@example.com"
+						}
+					},
+					"topic": {
+						"type": 0,
+						"start": 0,
+						"end": 5,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 6,
+								"offset": 5
+							},
+							"source": "Topic"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 5,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 6,
+									"offset": 5
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 5,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 6,
+										"offset": 5
+									}
+								}
+							}],
+							"static": "Topic"
+						}
+					},
+					"bugReport": {
+						"type": 0,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							},
+							"source": "Bug Report"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 10,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 11,
+										"offset": 10
+									}
+								}
+							}],
+							"static": "Bug Report"
+						}
+					},
+					"newBenchmarkIdea": {
+						"type": 0,
+						"start": 0,
+						"end": 18,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 19,
+								"offset": 18
+							},
+							"source": "New Benchmark Idea"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 18,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 19,
+									"offset": 18
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 18,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 19,
+										"offset": 18
+									}
+								}
+							}],
+							"static": "New Benchmark Idea"
+						}
+					},
+					"methodologyQuestion": {
+						"type": 0,
+						"start": 0,
+						"end": 20,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 21,
+								"offset": 20
+							},
+							"source": "Methodology Question"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 20,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 21,
+									"offset": 20
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 20,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 21,
+										"offset": 20
+									}
+								}
+							}],
+							"static": "Methodology Question"
+						}
+					},
+					"contribution": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Contribution"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Contribution"
+						}
+					},
+					"other": {
+						"type": 0,
+						"start": 0,
+						"end": 5,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 6,
+								"offset": 5
+							},
+							"source": "Other"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 5,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 6,
+									"offset": 5
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 5,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 6,
+										"offset": 5
+									}
+								}
+							}],
+							"static": "Other"
+						}
+					},
+					"message": {
+						"type": 0,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							},
+							"source": "Message"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 7,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 8,
+										"offset": 7
+									}
+								}
+							}],
+							"static": "Message"
+						}
+					},
+					"messagePlaceholder": {
+						"type": 0,
+						"start": 0,
+						"end": 33,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 34,
+								"offset": 33
+							},
+							"source": "Describe your question or idea..."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 33,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 34,
+									"offset": 33
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 33,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 34,
+										"offset": 33
+									}
+								}
+							}],
+							"static": "Describe your question or idea..."
+						}
+					},
+					"sendMessage": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Send Message"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Send Message"
+						}
+					}
+				}
+			},
+			"faq": {
+				"header": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 26,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 27,
+								"offset": 26
+							},
+							"source": "Frequently Asked Questions"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 26,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 27,
+									"offset": 26
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 26,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 27,
+										"offset": 26
+									}
+								}
+							}],
+							"static": "Frequently Asked Questions"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 49,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 50,
+								"offset": 49
+							},
+							"source": "Everything you need to know about i18n Benchmark."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 49,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 50,
+									"offset": 49
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 49,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 50,
+										"offset": 49
+									}
+								}
+							}],
+							"static": "Everything you need to know about i18n Benchmark."
+						}
+					}
+				},
+				"list": {
+					"q1": {
+						"type": 0,
+						"start": 0,
+						"end": 23,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 24,
+								"offset": 23
+							},
+							"source": "What is i18n Benchmark?"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 23,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 24,
+									"offset": 23
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 23,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 24,
+										"offset": 23
+									}
+								}
+							}],
+							"static": "What is i18n Benchmark?"
+						}
+					},
+					"a1": {
+						"type": 0,
+						"start": 0,
+						"end": 206,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 207,
+								"offset": 206
+							},
+							"source": "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 206,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 207,
+									"offset": 206
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 206,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 207,
+										"offset": 206
+									}
+								}
+							}],
+							"static": "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
+						}
+					},
+					"q2": {
+						"type": 0,
+						"start": 0,
+						"end": 29,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 30,
+								"offset": 29
+							},
+							"source": "How are benchmarks conducted?"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 29,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 30,
+									"offset": 29
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 29,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 30,
+										"offset": 29
+									}
+								}
+							}],
+							"static": "How are benchmarks conducted?"
+						}
+					},
+					"a2": {
+						"type": 0,
+						"start": 0,
+						"end": 228,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 229,
+								"offset": 228
+							},
+							"source": "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 228,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 229,
+									"offset": 228
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 228,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 229,
+										"offset": 228
+									}
+								}
+							}],
+							"static": "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
+						}
+					},
+					"q3": {
+						"type": 0,
+						"start": 0,
+						"end": 40,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 41,
+								"offset": 40
+							},
+							"source": "Which libraries are currently supported?"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 40,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 41,
+									"offset": 40
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 40,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 41,
+										"offset": 40
+									}
+								}
+							}],
+							"static": "Which libraries are currently supported?"
+						}
+					},
+					"a3": {
+						"type": 0,
+						"start": 0,
+						"end": 165,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 166,
+								"offset": 165
+							},
+							"source": "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {'@'}fluent/react, and Tolgee."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 165,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 166,
+									"offset": 165
+								}
+							},
+							"items": [
+								{
+									"type": 3,
+									"start": 0,
+									"end": 135,
+									"loc": {
+										"start": {
+											"line": 1,
+											"column": 1,
+											"offset": 0
+										},
+										"end": {
+											"line": 1,
+											"column": 136,
+											"offset": 135
+										}
+									}
+								},
+								{
+									"type": 9,
+									"start": 135,
+									"end": 140,
+									"loc": {
+										"start": {
+											"line": 1,
+											"column": 136,
+											"offset": 135
+										},
+										"end": {
+											"line": 1,
+											"column": 141,
+											"offset": 140
+										}
+									}
+								},
+								{
+									"type": 3,
+									"start": 140,
+									"end": 165,
+									"loc": {
+										"start": {
+											"line": 1,
+											"column": 141,
+											"offset": 140
+										},
+										"end": {
+											"line": 1,
+											"column": 166,
+											"offset": 165
+										}
+									}
+								}
+							],
+							"static": "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
+						}
+					},
+					"q4": {
+						"type": 0,
+						"start": 0,
+						"end": 31,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 32,
+								"offset": 31
+							},
+							"source": "Can I submit my own benchmarks?"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 31,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 32,
+									"offset": 31
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 31,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 32,
+										"offset": 31
+									}
+								}
+							}],
+							"static": "Can I submit my own benchmarks?"
+						}
+					},
+					"a4": {
+						"type": 0,
+						"start": 0,
+						"end": 205,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 206,
+								"offset": 205
+							},
+							"source": "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 205,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 206,
+									"offset": 205
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 205,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 206,
+										"offset": 205
+									}
+								}
+							}],
+							"static": "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
+						}
+					},
+					"q5": {
+						"type": 0,
+						"start": 0,
+						"end": 33,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 34,
+								"offset": 33
+							},
+							"source": "How often are benchmarks updated?"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 33,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 34,
+									"offset": 33
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 33,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 34,
+										"offset": 33
+									}
+								}
+							}],
+							"static": "How often are benchmarks updated?"
+						}
+					},
+					"a5": {
+						"type": 0,
+						"start": 0,
+						"end": 147,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 148,
+								"offset": 147
+							},
+							"source": "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 147,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 148,
+									"offset": 147
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 147,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 148,
+										"offset": 147
+									}
+								}
+							}],
+							"static": "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
+						}
+					},
+					"q6": {
+						"type": 0,
+						"start": 0,
+						"end": 21,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 22,
+								"offset": 21
+							},
+							"source": "Is the data reliable?"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 21,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 22,
+									"offset": 21
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 21,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 22,
+										"offset": 21
+									}
+								}
+							}],
+							"static": "Is the data reliable?"
+						}
+					},
+					"a6": {
+						"type": 0,
+						"start": 0,
+						"end": 183,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 184,
+								"offset": 183
+							},
+							"source": "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 183,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 184,
+									"offset": 183
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 183,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 184,
+										"offset": 183
+									}
+								}
+							}],
+							"static": "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
+						}
+					},
+					"q7": {
+						"type": 0,
+						"start": 0,
+						"end": 33,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 34,
+								"offset": 33
+							},
+							"source": "Do you offer consulting services?"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 33,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 34,
+									"offset": 33
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 33,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 34,
+										"offset": 33
+									}
+								}
+							}],
+							"static": "Do you offer consulting services?"
+						}
+					},
+					"a7": {
+						"type": 0,
+						"start": 0,
+						"end": 184,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 185,
+								"offset": 184
+							},
+							"source": "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 184,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 185,
+									"offset": 184
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 184,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 185,
+										"offset": 184
+									}
+								}
+							}],
+							"static": "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
+						}
+					},
+					"q8": {
+						"type": 0,
+						"start": 0,
+						"end": 21,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 22,
+								"offset": 21
+							},
+							"source": "How can I contribute?"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 21,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 22,
+									"offset": 21
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 21,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 22,
+										"offset": 21
+									}
+								}
+							}],
+							"static": "How can I contribute?"
+						}
+					},
+					"a8": {
+						"type": 0,
+						"start": 0,
+						"end": 180,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 181,
+								"offset": 180
+							},
+							"source": "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 180,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 181,
+									"offset": 180
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 180,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 181,
+										"offset": 180
+									}
+								}
+							}],
+							"static": "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+						}
+					}
+				}
+			},
+			"pricing": {
+				"header": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 27,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 28,
+								"offset": 27
+							},
+							"source": "Simple, Transparent Pricing"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 27,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 28,
+									"offset": 27
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 27,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 28,
+										"offset": 27
+									}
+								}
+							}],
+							"static": "Simple, Transparent Pricing"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 52,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 53,
+								"offset": 52
+							},
+							"source": "Choose the plan that fits your team. No hidden fees."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 52,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 53,
+									"offset": 52
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 52,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 53,
+										"offset": 52
+									}
+								}
+							}],
+							"static": "Choose the plan that fits your team. No hidden fees."
+						}
+					}
+				},
+				"tiers": {
+					"starterName": {
+						"type": 0,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							},
+							"source": "Starter"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 7,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 8,
+										"offset": 7
+									}
+								}
+							}],
+							"static": "Starter"
+						}
+					},
+					"starterPrice": {
+						"type": 0,
+						"start": 0,
+						"end": 2,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 3,
+								"offset": 2
+							},
+							"source": "$0"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 2,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 3,
+									"offset": 2
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 2,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 3,
+										"offset": 2
+									}
+								}
+							}],
+							"static": "$0"
+						}
+					},
+					"starterPeriod": {
+						"type": 0,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							},
+							"source": "forever"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 7,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 8,
+										"offset": 7
+									}
+								}
+							}],
+							"static": "forever"
+						}
+					},
+					"starterFeature1": {
+						"type": 0,
+						"start": 0,
+						"end": 20,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 21,
+								"offset": 20
+							},
+							"source": "5 benchmark runs/day"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 20,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 21,
+									"offset": 20
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 20,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 21,
+										"offset": 20
+									}
+								}
+							}],
+							"static": "5 benchmark runs/day"
+						}
+					},
+					"starterFeature2": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "3 libraries"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "3 libraries"
+						}
+					},
+					"starterFeature3": {
+						"type": 0,
+						"start": 0,
+						"end": 17,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 18,
+								"offset": 17
+							},
+							"source": "Community support"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 17,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 18,
+									"offset": 17
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 17,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 18,
+										"offset": 17
+									}
+								}
+							}],
+							"static": "Community support"
+						}
+					},
+					"starterFeature4": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "Public results"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "Public results"
+						}
+					},
+					"proName": {
+						"type": 0,
+						"start": 0,
+						"end": 3,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 4,
+								"offset": 3
+							},
+							"source": "Pro"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 3,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 4,
+									"offset": 3
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 3,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 4,
+										"offset": 3
+									}
+								}
+							}],
+							"static": "Pro"
+						}
+					},
+					"proPrice": {
+						"type": 0,
+						"start": 0,
+						"end": 3,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 4,
+								"offset": 3
+							},
+							"source": "$29"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 3,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 4,
+									"offset": 3
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 3,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 4,
+										"offset": 3
+									}
+								}
+							}],
+							"static": "$29"
+						}
+					},
+					"proPeriod": {
+						"type": 0,
+						"start": 0,
+						"end": 6,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 7,
+								"offset": 6
+							},
+							"source": "/month"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 6,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 7,
+									"offset": 6
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 6,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 7,
+										"offset": 6
+									}
+								}
+							}],
+							"static": "/month"
+						}
+					},
+					"proFeature1": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "Unlimited runs"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "Unlimited runs"
+						}
+					},
+					"proFeature2": {
+						"type": 0,
+						"start": 0,
+						"end": 13,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 14,
+								"offset": 13
+							},
+							"source": "All libraries"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 13,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 14,
+									"offset": 13
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 13,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 14,
+										"offset": 13
+									}
+								}
+							}],
+							"static": "All libraries"
+						}
+					},
+					"proFeature3": {
+						"type": 0,
+						"start": 0,
+						"end": 16,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 17,
+								"offset": 16
+							},
+							"source": "Priority support"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 16,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 17,
+									"offset": 16
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 16,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 17,
+										"offset": 16
+									}
+								}
+							}],
+							"static": "Priority support"
+						}
+					},
+					"proFeature4": {
+						"type": 0,
+						"start": 0,
+						"end": 15,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 16,
+								"offset": 15
+							},
+							"source": "Private results"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 15,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 16,
+									"offset": 15
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 15,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 16,
+										"offset": 15
+									}
+								}
+							}],
+							"static": "Private results"
+						}
+					},
+					"proFeature5": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "CI integration"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "CI integration"
+						}
+					},
+					"proFeature6": {
+						"type": 0,
+						"start": 0,
+						"end": 15,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 16,
+								"offset": 15
+							},
+							"source": "Historical data"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 15,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 16,
+									"offset": 15
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 15,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 16,
+										"offset": 15
+									}
+								}
+							}],
+							"static": "Historical data"
+						}
+					},
+					"enterpriseName": {
+						"type": 0,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							},
+							"source": "Enterprise"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 10,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 11,
+										"offset": 10
+									}
+								}
+							}],
+							"static": "Enterprise"
+						}
+					},
+					"enterprisePrice": {
+						"type": 0,
+						"start": 0,
+						"end": 6,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 7,
+								"offset": 6
+							},
+							"source": "Custom"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 6,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 7,
+									"offset": 6
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 6,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 7,
+										"offset": 6
+									}
+								}
+							}],
+							"static": "Custom"
+						}
+					},
+					"enterpriseFeature1": {
+						"type": 0,
+						"start": 0,
+						"end": 17,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 18,
+								"offset": 17
+							},
+							"source": "Everything in Pro"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 17,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 18,
+									"offset": 17
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 17,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 18,
+										"offset": 17
+									}
+								}
+							}],
+							"static": "Everything in Pro"
+						}
+					},
+					"enterpriseFeature2": {
+						"type": 0,
+						"start": 0,
+						"end": 17,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 18,
+								"offset": 17
+							},
+							"source": "On-premise option"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 17,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 18,
+									"offset": 17
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 17,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 18,
+										"offset": 17
+									}
+								}
+							}],
+							"static": "On-premise option"
+						}
+					},
+					"enterpriseFeature3": {
+						"type": 0,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							},
+							"source": "SSO & SAML"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 10,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 11,
+										"offset": 10
+									}
+								}
+							}],
+							"static": "SSO & SAML"
+						}
+					},
+					"enterpriseFeature4": {
+						"type": 0,
+						"start": 0,
+						"end": 25,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 26,
+								"offset": 25
+							},
+							"source": "Dedicated account manager"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 25,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 26,
+									"offset": 25
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 25,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 26,
+										"offset": 25
+									}
+								}
+							}],
+							"static": "Dedicated account manager"
+						}
+					},
+					"enterpriseFeature5": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Custom SLAs"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Custom SLAs"
+						}
+					},
+					"enterpriseFeature6": {
+						"type": 0,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							},
+							"source": "Audit logs"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 10,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 11,
+										"offset": 10
+									}
+								}
+							}],
+							"static": "Audit logs"
+						}
+					},
+					"enterpriseFeature7": {
+						"type": 0,
+						"start": 0,
+						"end": 17,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 18,
+								"offset": 17
+							},
+							"source": "Training sessions"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 17,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 18,
+									"offset": 17
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 17,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 18,
+										"offset": 17
+									}
+								}
+							}],
+							"static": "Training sessions"
+						}
+					},
+					"contactSales": {
+						"type": 0,
+						"start": 0,
+						"end": 13,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 14,
+								"offset": 13
+							},
+							"source": "Contact Sales"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 13,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 14,
+									"offset": 13
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 13,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 14,
+										"offset": 13
+									}
+								}
+							}],
+							"static": "Contact Sales"
+						}
+					},
+					"getStarted": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Get Started"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Get Started"
+						}
+					}
+				}
+			},
+			"products": {
+				"header": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							},
+							"source": "Products"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 8,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 9,
+										"offset": 8
+									}
+								}
+							}],
+							"static": "Products"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 68,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 69,
+								"offset": 68
+							},
+							"source": "Tools and services to streamline your internationalization workflow."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 68,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 69,
+									"offset": 68
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 68,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 69,
+										"offset": 68
+									}
+								}
+							}],
+							"static": "Tools and services to streamline your internationalization workflow."
+						}
+					}
+				},
+				"grid": {
+					"learnMore": {
+						"type": 0,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							},
+							"source": "Learn More"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 10,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 11,
+										"offset": 10
+									}
+								}
+							}],
+							"static": "Learn More"
+						}
+					},
+					"cliName": {
+						"type": 0,
+						"start": 0,
+						"end": 13,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 14,
+								"offset": 13
+							},
+							"source": "Benchmark CLI"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 13,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 14,
+									"offset": 13
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 13,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 14,
+										"offset": 13
+									}
+								}
+							}],
+							"static": "Benchmark CLI"
+						}
+					},
+					"cliDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 93,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 94,
+								"offset": 93
+							},
+							"source": "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 93,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 94,
+									"offset": 93
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 93,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 94,
+										"offset": 93
+									}
+								}
+							}],
+							"static": "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+						}
+					},
+					"cliPrice": {
+						"type": 0,
+						"start": 0,
+						"end": 4,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 5,
+								"offset": 4
+							},
+							"source": "Free"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 4,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 5,
+									"offset": 4
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 4,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 5,
+										"offset": 4
+									}
+								}
+							}],
+							"static": "Free"
+						}
+					},
+					"cloudName": {
+						"type": 0,
+						"start": 0,
+						"end": 15,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 16,
+								"offset": 15
+							},
+							"source": "Benchmark Cloud"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 15,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 16,
+									"offset": 15
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 15,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 16,
+										"offset": 15
+									}
+								}
+							}],
+							"static": "Benchmark Cloud"
+						}
+					},
+					"cloudDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 89,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 90,
+								"offset": 89
+							},
+							"source": "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 89,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 90,
+									"offset": 89
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 89,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 90,
+										"offset": 89
+									}
+								}
+							}],
+							"static": "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+						}
+					},
+					"cloudPrice": {
+						"type": 0,
+						"start": 0,
+						"end": 6,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 7,
+								"offset": 6
+							},
+							"source": "$29/mo"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 6,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 7,
+									"offset": 6
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 6,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 7,
+										"offset": 6
+									}
+								}
+							}],
+							"static": "$29/mo"
+						}
+					},
+					"enterpriseName": {
+						"type": 0,
+						"start": 0,
+						"end": 20,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 21,
+								"offset": 20
+							},
+							"source": "Benchmark Enterprise"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 20,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 21,
+									"offset": 20
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 20,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 21,
+										"offset": 20
+									}
+								}
+							}],
+							"static": "Benchmark Enterprise"
+						}
+					},
+					"enterpriseDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 79,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 80,
+								"offset": 79
+							},
+							"source": "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 79,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 80,
+									"offset": 79
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 79,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 80,
+										"offset": 79
+									}
+								}
+							}],
+							"static": "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+						}
+					},
+					"enterprisePrice": {
+						"type": 0,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							},
+							"source": "Contact Us"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 10,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 11,
+										"offset": 10
+									}
+								}
+							}],
+							"static": "Contact Us"
+						}
+					},
+					"migrationName": {
+						"type": 0,
+						"start": 0,
+						"end": 19,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 20,
+								"offset": 19
+							},
+							"source": "Migration Assistant"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 19,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 20,
+									"offset": 19
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 19,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 20,
+										"offset": 19
+									}
+								}
+							}],
+							"static": "Migration Assistant"
+						}
+					},
+					"migrationDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 91,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 92,
+								"offset": 91
+							},
+							"source": "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 91,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 92,
+									"offset": 91
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 91,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 92,
+										"offset": 91
+									}
+								}
+							}],
+							"static": "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+						}
+					},
+					"migrationPrice": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "$99 one-time"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "$99 one-time"
+						}
+					},
+					"qaName": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "Translation QA"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "Translation QA"
+						}
+					},
+					"qaDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 92,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 93,
+								"offset": 92
+							},
+							"source": "Automated quality checks for missing translations, pluralization issues, and context errors."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 92,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 93,
+									"offset": 92
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 92,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 93,
+										"offset": 92
+									}
+								}
+							}],
+							"static": "Automated quality checks for missing translations, pluralization issues, and context errors."
+						}
+					},
+					"qaPrice": {
+						"type": 0,
+						"start": 0,
+						"end": 6,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 7,
+								"offset": 6
+							},
+							"source": "$19/mo"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 6,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 7,
+									"offset": 6
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 6,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 7,
+										"offset": 6
+									}
+								}
+							}],
+							"static": "$19/mo"
+						}
+					},
+					"optimizerName": {
+						"type": 0,
+						"start": 0,
+						"end": 16,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 17,
+								"offset": 16
+							},
+							"source": "Bundle Optimizer"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 16,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 17,
+									"offset": 16
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 16,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 17,
+										"offset": 16
+									}
+								}
+							}],
+							"static": "Bundle Optimizer"
+						}
+					},
+					"optimizerDesc": {
+						"type": 0,
+						"start": 0,
+						"end": 92,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 93,
+								"offset": 92
+							},
+							"source": "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 92,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 93,
+									"offset": 92
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 92,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 93,
+										"offset": 92
+									}
+								}
+							}],
+							"static": "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+						}
+					},
+					"optimizerPrice": {
+						"type": 0,
+						"start": 0,
+						"end": 6,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 7,
+								"offset": 6
+							},
+							"source": "$49/mo"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 6,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 7,
+									"offset": 6
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 6,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 7,
+										"offset": 6
+									}
+								}
+							}],
+							"static": "$49/mo"
+						}
+					}
+				}
+			},
+			"settings": {
+				"header": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							},
+							"source": "Settings"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 8,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 9,
+										"offset": 8
+									}
+								}
+							}],
+							"static": "Settings"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 50,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 51,
+								"offset": 50
+							},
+							"source": "Manage your account preferences and configuration."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 50,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 51,
+									"offset": 50
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 50,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 51,
+										"offset": 50
+									}
+								}
+							}],
+							"static": "Manage your account preferences and configuration."
+						}
+					}
+				},
+				"profile": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							},
+							"source": "Profile"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 7,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 8,
+										"offset": 7
+									}
+								}
+							}],
+							"static": "Profile"
+						}
+					},
+					"displayName": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Display Name"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Display Name"
+						}
+					},
+					"email": {
+						"type": 0,
+						"start": 0,
+						"end": 5,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 6,
+								"offset": 5
+							},
+							"source": "Email"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 5,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 6,
+									"offset": 5
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 5,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 6,
+										"offset": 5
+									}
+								}
+							}],
+							"static": "Email"
+						}
+					}
+				},
+				"preferences": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Preferences"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Preferences"
+						}
+					},
+					"emailNotifications": {
+						"type": 0,
+						"start": 0,
+						"end": 19,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 20,
+								"offset": 19
+							},
+							"source": "Email Notifications"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 19,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 20,
+									"offset": 19
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 19,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 20,
+										"offset": 19
+									}
+								}
+							}],
+							"static": "Email Notifications"
+						}
+					},
+					"weeklyReports": {
+						"type": 0,
+						"start": 0,
+						"end": 32,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 33,
+								"offset": 32
+							},
+							"source": "Receive weekly benchmark reports"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 32,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 33,
+									"offset": 32
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 32,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 33,
+										"offset": 32
+									}
+								}
+							}],
+							"static": "Receive weekly benchmark reports"
+						}
+					},
+					"toggleNotifications": {
+						"type": 0,
+						"start": 0,
+						"end": 20,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 21,
+								"offset": 20
+							},
+							"source": "Toggle notifications"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 20,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 21,
+									"offset": 20
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 20,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 21,
+										"offset": 20
+									}
+								}
+							}],
+							"static": "Toggle notifications"
+						}
+					},
+					"darkMode": {
+						"type": 0,
+						"start": 0,
+						"end": 9,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 10,
+								"offset": 9
+							},
+							"source": "Dark Mode"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 9,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 10,
+									"offset": 9
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 9,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 10,
+										"offset": 9
+									}
+								}
+							}],
+							"static": "Dark Mode"
+						}
+					},
+					"darkColorScheme": {
+						"type": 0,
+						"start": 0,
+						"end": 21,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 22,
+								"offset": 21
+							},
+							"source": "Use dark color scheme"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 21,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 22,
+									"offset": 21
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 21,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 22,
+										"offset": 21
+									}
+								}
+							}],
+							"static": "Use dark color scheme"
+						}
+					},
+					"toggleDarkMode": {
+						"type": 0,
+						"start": 0,
+						"end": 16,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 17,
+								"offset": 16
+							},
+							"source": "Toggle dark mode"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 16,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 17,
+									"offset": 16
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 16,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 17,
+										"offset": 16
+									}
+								}
+							}],
+							"static": "Toggle dark mode"
+						}
+					},
+					"defaultLanguage": {
+						"type": 0,
+						"start": 0,
+						"end": 16,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 17,
+								"offset": 16
+							},
+							"source": "Default Language"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 16,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 17,
+									"offset": 16
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 16,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 17,
+										"offset": 16
+									}
+								}
+							}],
+							"static": "Default Language"
+						}
+					},
+					"english": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "English (en)"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "English (en)"
+						}
+					},
+					"french": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "French (fr)"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "French (fr)"
+						}
+					},
+					"german": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "German (de)"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "German (de)"
+						}
+					},
+					"spanish": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Spanish (es)"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Spanish (es)"
+						}
+					},
+					"japanese": {
+						"type": 0,
+						"start": 0,
+						"end": 13,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 14,
+								"offset": 13
+							},
+							"source": "Japanese (ja)"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 13,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 14,
+									"offset": 13
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 13,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 14,
+										"offset": 13
+									}
+								}
+							}],
+							"static": "Japanese (ja)"
+						}
+					},
+					"chinese": {
+						"type": 0,
+						"start": 0,
+						"end": 26,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 27,
+								"offset": 26
+							},
+							"source": "Chinese Simplified (zh-CN)"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 26,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 27,
+									"offset": 26
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 26,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 27,
+										"offset": 26
+									}
+								}
+							}],
+							"static": "Chinese Simplified (zh-CN)"
+						}
+					},
+					"arabic": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Arabic (ar)"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Arabic (ar)"
+						}
+					}
+				},
+				"apiAccess": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							},
+							"source": "API Access"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 10,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 11,
+										"offset": 10
+									}
+								}
+							}],
+							"static": "API Access"
+						}
+					},
+					"apiKey": {
+						"type": 0,
+						"start": 0,
+						"end": 7,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 8,
+								"offset": 7
+							},
+							"source": "API Key"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 7,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 8,
+									"offset": 7
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 7,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 8,
+										"offset": 7
+									}
+								}
+							}],
+							"static": "API Key"
+						}
+					},
+					"copy": {
+						"type": 0,
+						"start": 0,
+						"end": 4,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 5,
+								"offset": 4
+							},
+							"source": "Copy"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 4,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 5,
+									"offset": 4
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 4,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 5,
+										"offset": 4
+									}
+								}
+							}],
+							"static": "Copy"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 61,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 62,
+								"offset": 61
+							},
+							"source": "Use this key to access the benchmarking API programmatically."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 61,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 62,
+									"offset": 61
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 61,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 62,
+										"offset": 61
+									}
+								}
+							}],
+							"static": "Use this key to access the benchmarking API programmatically."
+						}
+					}
+				},
+				"footer": {
+					"cancel": {
+						"type": 0,
+						"start": 0,
+						"end": 6,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 7,
+								"offset": 6
+							},
+							"source": "Cancel"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 6,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 7,
+									"offset": 6
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 6,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 7,
+										"offset": 6
+									}
+								}
+							}],
+							"static": "Cancel"
+						}
+					},
+					"saveChanges": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Save Changes"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Save Changes"
+						}
+					}
+				}
+			},
+			"team": {
+				"header": {
+					"title": {
+						"type": 0,
+						"start": 0,
+						"end": 8,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 9,
+								"offset": 8
+							},
+							"source": "Our Team"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 8,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 9,
+									"offset": 8
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 8,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 9,
+										"offset": 8
+									}
+								}
+							}],
+							"static": "Our Team"
+						}
+					},
+					"description": {
+						"type": 0,
+						"start": 0,
+						"end": 107,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 108,
+								"offset": 107
+							},
+							"source": "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 107,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 108,
+									"offset": 107
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 107,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 108,
+										"offset": 107
+									}
+								}
+							}],
+							"static": "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+						}
+					}
+				},
+				"grid": {
+					"member1Name": {
+						"type": 0,
+						"start": 0,
+						"end": 10,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 11,
+								"offset": 10
+							},
+							"source": "Sarah Chen"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 10,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 11,
+									"offset": 10
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 10,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 11,
+										"offset": 10
+									}
+								}
+							}],
+							"static": "Sarah Chen"
+						}
+					},
+					"member1Role": {
+						"type": 0,
+						"start": 0,
+						"end": 23,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 24,
+								"offset": 23
+							},
+							"source": "Founder & Lead Engineer"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 23,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 24,
+									"offset": 23
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 23,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 24,
+										"offset": 23
+									}
+								}
+							}],
+							"static": "Founder & Lead Engineer"
+						}
+					},
+					"member1Bio": {
+						"type": 0,
+						"start": 0,
+						"end": 98,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 99,
+								"offset": 98
+							},
+							"source": "Former Google engineer with 10 years of experience building internationalization systems at scale."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 98,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 99,
+									"offset": 98
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 98,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 99,
+										"offset": 98
+									}
+								}
+							}],
+							"static": "Former Google engineer with 10 years of experience building internationalization systems at scale."
+						}
+					},
+					"member2Name": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Marcus Weber"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Marcus Weber"
+						}
+					},
+					"member2Role": {
+						"type": 0,
+						"start": 0,
+						"end": 20,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 21,
+								"offset": 20
+							},
+							"source": "Performance Engineer"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 20,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 21,
+									"offset": 20
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 20,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 21,
+										"offset": 20
+									}
+								}
+							}],
+							"static": "Performance Engineer"
+						}
+					},
+					"member2Bio": {
+						"type": 0,
+						"start": 0,
+						"end": 102,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 103,
+								"offset": 102
+							},
+							"source": "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 102,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 103,
+									"offset": 102
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 102,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 103,
+										"offset": 102
+									}
+								}
+							}],
+							"static": "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+						}
+					},
+					"member3Name": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Aisha Patel"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Aisha Patel"
+						}
+					},
+					"member3Role": {
+						"type": 0,
+						"start": 0,
+						"end": 18,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 19,
+								"offset": 18
+							},
+							"source": "Developer Advocate"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 18,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 19,
+									"offset": 18
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 18,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 19,
+										"offset": 18
+									}
+								}
+							}],
+							"static": "Developer Advocate"
+						}
+					},
+					"member3Bio": {
+						"type": 0,
+						"start": 0,
+						"end": 97,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 98,
+								"offset": 97
+							},
+							"source": "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 97,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 98,
+									"offset": 97
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 97,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 98,
+										"offset": 97
+									}
+								}
+							}],
+							"static": "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+						}
+					},
+					"member4Name": {
+						"type": 0,
+						"start": 0,
+						"end": 15,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 16,
+								"offset": 15
+							},
+							"source": "Tomás Rodríguez"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 15,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 16,
+									"offset": 15
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 15,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 16,
+										"offset": 15
+									}
+								}
+							}],
+							"static": "Tomás Rodríguez"
+						}
+					},
+					"member4Role": {
+						"type": 0,
+						"start": 0,
+						"end": 20,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 21,
+								"offset": 20
+							},
+							"source": "Full-Stack Developer"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 20,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 21,
+									"offset": 20
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 20,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 21,
+										"offset": 20
+									}
+								}
+							}],
+							"static": "Full-Stack Developer"
+						}
+					},
+					"member4Bio": {
+						"type": 0,
+						"start": 0,
+						"end": 96,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 97,
+								"offset": 96
+							},
+							"source": "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 96,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 97,
+									"offset": 96
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 96,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 97,
+										"offset": 96
+									}
+								}
+							}],
+							"static": "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+						}
+					},
+					"member5Name": {
+						"type": 0,
+						"start": 0,
+						"end": 11,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 12,
+								"offset": 11
+							},
+							"source": "Yuki Tanaka"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 11,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 12,
+									"offset": 11
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 11,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 12,
+										"offset": 11
+									}
+								}
+							}],
+							"static": "Yuki Tanaka"
+						}
+					},
+					"member5Role": {
+						"type": 0,
+						"start": 0,
+						"end": 12,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 13,
+								"offset": 12
+							},
+							"source": "Data Analyst"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 12,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 13,
+									"offset": 12
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 12,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 13,
+										"offset": 12
+									}
+								}
+							}],
+							"static": "Data Analyst"
+						}
+					},
+					"member5Bio": {
+						"type": 0,
+						"start": 0,
+						"end": 87,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 88,
+								"offset": 87
+							},
+							"source": "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 87,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 88,
+									"offset": 87
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 87,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 88,
+										"offset": 87
+									}
+								}
+							}],
+							"static": "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+						}
+					},
+					"member6Name": {
+						"type": 0,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							},
+							"source": "Elena Kowalski"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 14,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 15,
+										"offset": 14
+									}
+								}
+							}],
+							"static": "Elena Kowalski"
+						}
+					},
+					"member6Role": {
+						"type": 0,
+						"start": 0,
+						"end": 17,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 18,
+								"offset": 17
+							},
+							"source": "Community Manager"
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 17,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 18,
+									"offset": 17
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 17,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 18,
+										"offset": 17
+									}
+								}
+							}],
+							"static": "Community Manager"
+						}
+					},
+					"member6Bio": {
+						"type": 0,
+						"start": 0,
+						"end": 96,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 97,
+								"offset": 96
+							},
+							"source": "Manages community contributions, partnerships, and events. Background in open source governance."
+						},
+						"body": {
+							"type": 2,
+							"start": 0,
+							"end": 96,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 97,
+									"offset": 96
+								}
+							},
+							"items": [{
+								"type": 3,
+								"start": 0,
+								"end": 96,
+								"loc": {
+									"start": {
+										"line": 1,
+										"column": 1,
+										"offset": 0
+									},
+									"end": {
+										"line": 1,
+										"column": 97,
+										"offset": 96
+									}
+								}
+							}],
+							"static": "Manages community contributions, partnerships, and events. Background in open source governance."
+						}
+					}
+				}
+			},
+			"notFound": {
+				"title": {
+					"type": 0,
+					"start": 0,
+					"end": 3,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 4,
+							"offset": 3
+						},
+						"source": "404"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 3,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 4,
+								"offset": 3
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 3,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 4,
+									"offset": 3
+								}
+							}
+						}],
+						"static": "404"
+					}
+				},
+				"description": {
+					"type": 0,
+					"start": 0,
+					"end": 20,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 21,
+							"offset": 20
+						},
+						"source": "Oops! Page not found"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 20,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 21,
+								"offset": 20
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 20,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 21,
+									"offset": 20
+								}
+							}
+						}],
+						"static": "Oops! Page not found"
+					}
+				},
+				"returnHome": {
+					"type": 0,
+					"start": 0,
+					"end": 14,
+					"loc": {
+						"start": {
+							"line": 1,
+							"column": 1,
+							"offset": 0
+						},
+						"end": {
+							"line": 1,
+							"column": 15,
+							"offset": 14
+						},
+						"source": "Return to Home"
+					},
+					"body": {
+						"type": 2,
+						"start": 0,
+						"end": 14,
+						"loc": {
+							"start": {
+								"line": 1,
+								"column": 1,
+								"offset": 0
+							},
+							"end": {
+								"line": 1,
+								"column": 15,
+								"offset": 14
+							}
+						},
+						"items": [{
+							"type": 3,
+							"start": 0,
+							"end": 14,
+							"loc": {
+								"start": {
+									"line": 1,
+									"column": 1,
+									"offset": 0
+								},
+								"end": {
+									"line": 1,
+									"column": 15,
+									"offset": 14
+								}
+							}
+						}],
+						"static": "Return to Home"
+					}
+				}
 			}
-		]);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString(unref(t)("about.whatWeMeasure.title")), 1), createElementVNode("ul", _hoisted_3, [(openBlock(true), createElementBlock(Fragment, null, renderList(metrics.value, (m) => {
-				return openBlock(), createElementBlock("li", {
-					key: m.metric,
-					class: "rounded-md border border-border p-4"
-				}, [createElementVNode("span", _hoisted_4, toDisplayString(m.metric), 1), createElementVNode("span", _hoisted_5, toDisplayString(m.desc), 1)]);
-			}), 128))])]);
-		};
+		},
+		fr,
+		es,
+		de,
+		it,
+		pt,
+		zh,
+		ja,
+		ko,
+		ru
 	}
 });
-export { WhatWeMeasure_default as default };
+var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "Wrapper",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const app = getCurrentInstance()?.appContext.app;
+		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
+		const __returned__ = { app };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return renderSlot(_ctx.$slots, "default");
+}
+var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/scripts/Wrapper.vue"]]);
+var WhatWeMeasure_wrapper_default = { render() {
+	return h(Wrapper_default, {}, { default: () => h(WhatWeMeasure_default) });
+} };
+export { WhatWeMeasure_wrapper_default as default };

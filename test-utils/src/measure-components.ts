@@ -332,8 +332,10 @@ const buildComponentBundle = async (
 
   if (wrapperTemplate) {
     // Create a temporary physical file next to the actual component
-    // The .tsx extension ensures esbuild processes the JSX inside the wrapper
-    entryFilePath = componentFilePath.replace(/\.tsx$/, ".wrapper.tsx");
+    // Use .wrapper.js for Vue components to avoid vite-plugin-vue trying to parse it as an SFC
+    // Use .wrapper.tsx for React components to ensure esbuild processes the JSX
+    const ext = componentFilePath.endsWith(".vue") ? ".wrapper.js" : ".wrapper.tsx";
+    entryFilePath = componentFilePath.replace(/\.(tsx|vue)$/, ext);
     const normalizedPath = componentFilePath.replace(/\\/g, "/");
     fs.writeFileSync(entryFilePath, wrapperTemplate(normalizedPath), "utf-8");
     isTempFile = true;

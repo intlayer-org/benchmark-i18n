@@ -3,6 +3,7 @@ import vue from "@vitejs/plugin-vue";
 import tailwindcss from "@tailwindcss/vite";
 import { visualizer } from "rollup-plugin-visualizer";
 import path from "node:path";
+import { locales } from "./src/i18n/config";
 import { ExternalFluentPlugin as FluentVuePlugin } from "unplugin-fluent-vue/vite";
 
 export default defineConfig({
@@ -10,9 +11,9 @@ export default defineConfig({
     vue(),
     tailwindcss(),
     FluentVuePlugin({
-      locales: ["en", "fr"],
+      locales: [...locales],
       getFtlPath: (locale, _vuePath) =>
-        path.resolve(__dirname, `./locales/${locale}.ftl`),
+        path.resolve(__dirname, `./src/locales/${locale}.ftl`),
     }),
     visualizer({
       filename: `../../results/vite-vue-fluent-vue-static/bundle/stats.json`,

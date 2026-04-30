@@ -8,7 +8,7 @@ measureLibSize({
   wrapperTemplate: (componentPath) => `
     import React from 'react';
     import Component from '${componentPath}';
-    import Wrapper from '${path.resolve("./scripts/Wrapper.tsx").replace(/\\/g, "/")}';
+    import Wrapper from '${path.resolve("./scripts/LibWrapper.tsx").replace(/\\/g, "/")}';
 
     export default function Wrapped() {
       return (

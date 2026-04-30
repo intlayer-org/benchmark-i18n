@@ -1,5 +1,5 @@
 import * as Vue from "vue";
-import { Fragment, Text, computed, createVNode, defineComponent, getCurrentScope, h, inject, onMounted, onScopeDispose, onUnmounted, ref, shallowRef, watch } from "vue";
+import { Fragment, Text, computed, createVNode, defineComponent, effectScope, getCurrentInstance, getCurrentScope, h, inject, isRef, onMounted, onScopeDispose, onUnmounted, ref, renderSlot, shallowRef, watch } from "vue";
 function warn(msg, err) {
 	if (typeof console !== "undefined") {
 		console.warn(`[intlify] ` + msg);
@@ -2517,6 +2517,118 @@ function getMessageContextOptions(context, locale, message, options) {
 	return ctxOptions;
 }
 initFeatureFlags$1();
+function getDevtoolsGlobalHook() {
+	return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
+}
+function getTarget() {
+	return typeof navigator !== "undefined" && typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : {};
+}
+var isProxyAvailable = typeof Proxy === "function";
+var HOOK_SETUP = "devtools-plugin:setup";
+var HOOK_PLUGIN_SETTINGS_SET = "plugin:settings:set";
+var supported;
+var perf;
+function isPerformanceSupported() {
+	var _a;
+	if (supported !== void 0) return supported;
+	if (typeof window !== "undefined" && window.performance) {
+		supported = true;
+		perf = window.performance;
+	} else if (typeof globalThis !== "undefined" && ((_a = globalThis.perf_hooks) === null || _a === void 0 ? void 0 : _a.performance)) {
+		supported = true;
+		perf = globalThis.perf_hooks.performance;
+	} else supported = false;
+	return supported;
+}
+function now() {
+	return isPerformanceSupported() ? perf.now() : Date.now();
+}
+var ApiProxy = class {
+	constructor(plugin, hook) {
+		this.target = null;
+		this.targetQueue = [];
+		this.onQueue = [];
+		this.plugin = plugin;
+		this.hook = hook;
+		const defaultSettings = {};
+		if (plugin.settings) for (const id in plugin.settings) defaultSettings[id] = plugin.settings[id].defaultValue;
+		const localSettingsSaveId = `__vue-devtools-plugin-settings__${plugin.id}`;
+		let currentSettings = Object.assign({}, defaultSettings);
+		try {
+			const raw = localStorage.getItem(localSettingsSaveId);
+			const data = JSON.parse(raw);
+			Object.assign(currentSettings, data);
+		} catch (e) {}
+		this.fallbacks = {
+			getSettings() {
+				return currentSettings;
+			},
+			setSettings(value) {
+				try {
+					localStorage.setItem(localSettingsSaveId, JSON.stringify(value));
+				} catch (e) {}
+				currentSettings = value;
+			},
+			now() {
+				return now();
+			}
+		};
+		if (hook) hook.on(HOOK_PLUGIN_SETTINGS_SET, (pluginId, value) => {
+			if (pluginId === this.plugin.id) this.fallbacks.setSettings(value);
+		});
+		this.proxiedOn = new Proxy({}, { get: (_target, prop) => {
+			if (this.target) return this.target.on[prop];
+			else return (...args) => {
+				this.onQueue.push({
+					method: prop,
+					args
+				});
+			};
+		} });
+		this.proxiedTarget = new Proxy({}, { get: (_target, prop) => {
+			if (this.target) return this.target[prop];
+			else if (prop === "on") return this.proxiedOn;
+			else if (Object.keys(this.fallbacks).includes(prop)) return (...args) => {
+				this.targetQueue.push({
+					method: prop,
+					args,
+					resolve: () => {}
+				});
+				return this.fallbacks[prop](...args);
+			};
+			else return (...args) => {
+				return new Promise((resolve) => {
+					this.targetQueue.push({
+						method: prop,
+						args,
+						resolve
+					});
+				});
+			};
+		} });
+	}
+	async setRealTarget(target) {
+		this.target = target;
+		for (const item of this.onQueue) this.target.on[item.method](...item.args);
+		for (const item of this.targetQueue) item.resolve(await this.target[item.method](...item.args));
+	}
+};
+function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
+	const descriptor = pluginDescriptor;
+	const target = getTarget();
+	const hook = getDevtoolsGlobalHook();
+	const enableProxy = isProxyAvailable && descriptor.enableEarlyProxy;
+	if (hook && (target.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !enableProxy)) hook.emit(HOOK_SETUP, pluginDescriptor, setupFn);
+	else {
+		const proxy = enableProxy ? new ApiProxy(descriptor, hook) : null;
+		(target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || []).push({
+			pluginDescriptor: descriptor,
+			setupFn,
+			proxy
+		});
+		if (proxy) setupFn(proxy.proxiedTarget);
+	}
+}
 var VERSION = "11.4.0";
 function initFeatureFlags() {}
 var I18nErrorCodes = {
@@ -2661,7 +2773,7 @@ function adjustI18nResources(gl, options, componentOptions) {
 function createTextNode(key) {
 	return createVNode(Text, null, key, 0);
 }
-function getCurrentInstance() {
+function getCurrentInstance$1() {
 	const key = "currentInstance";
 	if (key in Vue) return Vue[key];
 	else return Vue.getCurrentInstance();
@@ -2672,11 +2784,11 @@ var NOOP_RETURN_FALSE = () => false;
 var composerID = 0;
 function defineCoreMissingHandler(missing) {
 	return ((ctx, locale, key, type) => {
-		return missing(locale, key, getCurrentInstance() || void 0, type);
+		return missing(locale, key, getCurrentInstance$1() || void 0, type);
 	});
 }
 var getMetaInfo = () => {
-	const instance = getCurrentInstance();
+	const instance = getCurrentInstance$1();
 	let meta = null;
 	return instance && (meta = getComponentOptions(instance)[DEVTOOLS_META]) ? { [DEVTOOLS_META]: meta } : null;
 };
@@ -3066,7 +3178,260 @@ function createComposer(options = {}) {
 	}
 	return composer;
 }
+var VUE_I18N_COMPONENT_TYPES = "vue-i18n: composer properties";
+var VueDevToolsLabels = {
+	"vue-devtools-plugin-vue-i18n": "Vue I18n DevTools",
+	"vue-i18n-resource-inspector": "Vue I18n DevTools",
+	"vue-i18n-timeline": "Vue I18n"
+};
+var VueDevToolsPlaceholders = { "vue-i18n-resource-inspector": "Search for scopes ..." };
+var VueDevToolsTimelineColors = { "vue-i18n-timeline": 16764185 };
 var devtoolsApi;
+async function enableDevTools(app, i18n) {
+	return new Promise((resolve, reject) => {
+		try {
+			setupDevtoolsPlugin({
+				id: "vue-devtools-plugin-vue-i18n",
+				label: VueDevToolsLabels["vue-devtools-plugin-vue-i18n"],
+				packageName: "vue-i18n",
+				homepage: "https://vue-i18n.intlify.dev",
+				logo: "https://vue-i18n.intlify.dev/vue-i18n-devtools-logo.png",
+				componentStateTypes: [VUE_I18N_COMPONENT_TYPES],
+				app
+			}, (api) => {
+				devtoolsApi = api;
+				api.on.visitComponentTree(({ componentInstance, treeNode }) => {
+					updateComponentTreeTags(componentInstance, treeNode, i18n);
+				});
+				api.on.inspectComponent(({ componentInstance, instanceData }) => {
+					if (componentInstance.__VUE_I18N__ && instanceData) if (i18n.mode === "legacy") {
+						if (componentInstance.__VUE_I18N__ !== i18n.global.__composer) inspectComposer(instanceData, componentInstance.__VUE_I18N__);
+					} else inspectComposer(instanceData, componentInstance.__VUE_I18N__);
+				});
+				api.addInspector({
+					id: "vue-i18n-resource-inspector",
+					label: VueDevToolsLabels["vue-i18n-resource-inspector"],
+					icon: "language",
+					treeFilterPlaceholder: VueDevToolsPlaceholders["vue-i18n-resource-inspector"]
+				});
+				api.on.getInspectorTree((payload) => {
+					if (payload.app === app && payload.inspectorId === "vue-i18n-resource-inspector") registerScope(payload, i18n);
+				});
+				const roots = /* @__PURE__ */ new Map();
+				api.on.getInspectorState(async (payload) => {
+					if (payload.app === app && payload.inspectorId === "vue-i18n-resource-inspector") {
+						api.unhighlightElement();
+						inspectScope(payload, i18n);
+						if (payload.nodeId === "global") {
+							if (!roots.has(payload.app)) {
+								const [root] = await api.getComponentInstances(payload.app);
+								roots.set(payload.app, root);
+							}
+							api.highlightElement(roots.get(payload.app));
+						} else {
+							const instance = getComponentInstance(payload.nodeId, i18n);
+							instance && api.highlightElement(instance);
+						}
+					}
+				});
+				api.on.editInspectorState((payload) => {
+					if (payload.app === app && payload.inspectorId === "vue-i18n-resource-inspector") editScope(payload, i18n);
+				});
+				api.addTimelineLayer({
+					id: "vue-i18n-timeline",
+					label: VueDevToolsLabels["vue-i18n-timeline"],
+					color: VueDevToolsTimelineColors["vue-i18n-timeline"]
+				});
+				resolve(true);
+			});
+		} catch (e) {
+			console.error(e);
+			reject(false);
+		}
+	});
+}
+function getI18nScopeLable(instance) {
+	return instance.type.name || instance.type.displayName || instance.type.__file || "Anonymous";
+}
+function updateComponentTreeTags(instance, treeNode, i18n) {
+	const global = i18n.mode === "composition" ? i18n.global : i18n.global.__composer;
+	if (instance && instance.__VUE_I18N__) {
+		if (instance.__VUE_I18N__ !== global) {
+			const tag = {
+				label: `i18n (${getI18nScopeLable(instance)} Scope)`,
+				textColor: 0,
+				backgroundColor: 16764185
+			};
+			treeNode.tags.push(tag);
+		}
+	}
+}
+function inspectComposer(instanceData, composer) {
+	const type = VUE_I18N_COMPONENT_TYPES;
+	instanceData.state.push({
+		type,
+		key: "locale",
+		editable: true,
+		value: composer.locale.value
+	});
+	instanceData.state.push({
+		type,
+		key: "availableLocales",
+		editable: false,
+		value: composer.availableLocales
+	});
+	instanceData.state.push({
+		type,
+		key: "fallbackLocale",
+		editable: true,
+		value: composer.fallbackLocale.value
+	});
+	instanceData.state.push({
+		type,
+		key: "inheritLocale",
+		editable: true,
+		value: composer.inheritLocale
+	});
+	instanceData.state.push({
+		type,
+		key: "messages",
+		editable: false,
+		value: getLocaleMessageValue(composer.messages.value)
+	});
+	instanceData.state.push({
+		type,
+		key: "datetimeFormats",
+		editable: false,
+		value: composer.datetimeFormats.value
+	});
+	instanceData.state.push({
+		type,
+		key: "numberFormats",
+		editable: false,
+		value: composer.numberFormats.value
+	});
+}
+function getLocaleMessageValue(messages) {
+	const value = {};
+	Object.keys(messages).forEach((key) => {
+		const v = messages[key];
+		if (isFunction(v) && "source" in v) value[key] = getMessageFunctionDetails(v);
+		else if (isMessageAST(v) && v.loc && v.loc.source) value[key] = v.loc.source;
+		else if (isObject(v)) value[key] = getLocaleMessageValue(v);
+		else value[key] = v;
+	});
+	return value;
+}
+var ESC = {
+	"<": "&lt;",
+	">": "&gt;",
+	"\"": "&quot;",
+	"&": "&amp;"
+};
+function escape(s) {
+	return s.replace(/[<>"&]/g, escapeChar);
+}
+function escapeChar(a) {
+	return ESC[a] || a;
+}
+function getMessageFunctionDetails(func) {
+	return { _custom: {
+		type: "function",
+		display: `<span>ƒ</span> ${func.source ? `("${escape(func.source)}")` : `(?)`}`
+	} };
+}
+function registerScope(payload, i18n) {
+	payload.rootNodes.push({
+		id: "global",
+		label: "Global Scope"
+	});
+	const global = i18n.mode === "composition" ? i18n.global : i18n.global.__composer;
+	for (const [keyInstance, instance] of i18n.__instances) {
+		const composer = i18n.mode === "composition" ? instance : instance.__composer;
+		if (global === composer) continue;
+		payload.rootNodes.push({
+			id: composer.id.toString(),
+			label: `${getI18nScopeLable(keyInstance)} Scope`
+		});
+	}
+}
+function getComponentInstance(nodeId, i18n) {
+	let instance = null;
+	if (nodeId !== "global") {
+		for (const [component, composer] of i18n.__instances.entries()) if (composer.id.toString() === nodeId) {
+			instance = component;
+			break;
+		}
+	}
+	return instance;
+}
+function getComposer$2(nodeId, i18n) {
+	if (nodeId === "global") return i18n.mode === "composition" ? i18n.global : i18n.global.__composer;
+	else {
+		const instance = Array.from(i18n.__instances.values()).find((item) => item.id.toString() === nodeId);
+		if (instance) return i18n.mode === "composition" ? instance : instance.__composer;
+		else return null;
+	}
+}
+function inspectScope(payload, i18n) {
+	const composer = getComposer$2(payload.nodeId, i18n);
+	if (composer) payload.state = makeScopeInspectState(composer);
+	return null;
+}
+function makeScopeInspectState(composer) {
+	const state = {};
+	const localeType = "Locale related info";
+	state[localeType] = [
+		{
+			type: localeType,
+			key: "locale",
+			editable: true,
+			value: composer.locale.value
+		},
+		{
+			type: localeType,
+			key: "fallbackLocale",
+			editable: true,
+			value: composer.fallbackLocale.value
+		},
+		{
+			type: localeType,
+			key: "availableLocales",
+			editable: false,
+			value: composer.availableLocales
+		},
+		{
+			type: localeType,
+			key: "inheritLocale",
+			editable: true,
+			value: composer.inheritLocale
+		}
+	];
+	const localeMessagesType = "Locale messages info";
+	state[localeMessagesType] = [{
+		type: localeMessagesType,
+		key: "messages",
+		editable: false,
+		value: getLocaleMessageValue(composer.messages.value)
+	}];
+	{
+		const datetimeFormatsType = "Datetime formats info";
+		state[datetimeFormatsType] = [{
+			type: datetimeFormatsType,
+			key: "datetimeFormats",
+			editable: false,
+			value: composer.datetimeFormats.value
+		}];
+		const numberFormatsType = "Datetime formats info";
+		state[numberFormatsType] = [{
+			type: numberFormatsType,
+			key: "numberFormats",
+			editable: false,
+			value: composer.numberFormats.value
+		}];
+	}
+	return state;
+}
 function addTimelineEvent(event, payload) {
 	if (devtoolsApi) {
 		let groupId;
@@ -3085,6 +3450,15 @@ function addTimelineEvent(event, payload) {
 				logType: event === "compile-error" ? "error" : event === "fallback" || event === "missing" ? "warning" : "default"
 			}
 		});
+	}
+}
+function editScope(payload, i18n) {
+	const composer = getComposer$2(payload.nodeId, i18n);
+	if (composer) {
+		const [field] = payload.path;
+		if (field === "locale" && isString(payload.state.value)) composer.locale.value = payload.state.value;
+		else if (field === "fallbackLocale" && (isString(payload.state.value) || isArray(payload.state.value) || isObject(payload.state.value))) composer.fallbackLocale.value = payload.state.value;
+		else if (field === "inheritLocale" && isBoolean(payload.state.value)) composer.inheritLocale = payload.state.value;
 	}
 }
 var baseFormatProps = {
@@ -3110,7 +3484,7 @@ function getInterpolateArg({ slots }, keys) {
 function getFragmentableTag() {
 	return Fragment;
 }
-defineComponent({
+var Translation = defineComponent({
 	name: "i18n-t",
 	props: assign({
 		keypath: {
@@ -3177,7 +3551,7 @@ function renderFormatter(props, context, slotKeys, partFormatter) {
 		return h(isString(props.tag) || isObject(props.tag) ? props.tag : getFragmentableTag(), assignedAttrs, children);
 	};
 }
-defineComponent({
+var NumberFormat = defineComponent({
 	name: "i18n-n",
 	props: assign({
 		value: {
@@ -3194,9 +3568,153 @@ defineComponent({
 		return renderFormatter(props, context, NUMBER_FORMAT_OPTIONS_KEYS, (...args) => i18n[NumberPartsSymbol](...args));
 	}
 });
+function getComposer$1(i18n, instance) {
+	const i18nInternal = i18n;
+	if (i18n.mode === "composition") return i18nInternal.__getInstance(instance) || i18n.global;
+	else {
+		const vueI18n = i18nInternal.__getInstance(instance);
+		return vueI18n != null ? vueI18n.__composer : i18n.global.__composer;
+	}
+}
+function vTDirective(i18n) {
+	const _process = (binding) => {
+		if (process.env.NODE_ENV !== "production") warnOnce(getWarnMessage(I18nWarnCodes.DEPRECATE_TRANSLATE_CUSTOME_DIRECTIVE));
+		const { instance, value } = binding;
+		if (!instance || !instance.$) throw createI18nError(I18nErrorCodes.UNEXPECTED_ERROR);
+		const composer = getComposer$1(i18n, instance.$);
+		const parsedValue = parseValue(value);
+		return [Reflect.apply(composer.t, composer, [...makeParams(parsedValue)]), composer];
+	};
+	const register = (el, binding) => {
+		const [textContent, composer] = _process(binding);
+		if (inBrowser) el.__i18nWatcher = watch(composer.locale, () => {
+			binding.instance && binding.instance.$forceUpdate();
+		});
+		el.__composer = composer;
+		el.textContent = textContent;
+	};
+	const unregister = (el) => {
+		if (inBrowser && el.__i18nWatcher) {
+			el.__i18nWatcher();
+			el.__i18nWatcher = void 0;
+			delete el.__i18nWatcher;
+		}
+		if (el.__composer) {
+			el.__composer = void 0;
+			delete el.__composer;
+		}
+	};
+	const update = (el, { value }) => {
+		if (el.__composer) {
+			const composer = el.__composer;
+			const parsedValue = parseValue(value);
+			el.textContent = Reflect.apply(composer.t, composer, [...makeParams(parsedValue)]);
+		}
+	};
+	const getSSRProps = (binding) => {
+		const [textContent] = _process(binding);
+		return { textContent };
+	};
+	return {
+		created: register,
+		unmounted: unregister,
+		beforeUpdate: update,
+		getSSRProps
+	};
+}
+function parseValue(value) {
+	if (isString(value)) return { path: value };
+	else if (isPlainObject(value)) {
+		if (!("path" in value)) throw createI18nError(I18nErrorCodes.REQUIRED_VALUE, "path");
+		return value;
+	} else throw createI18nError(I18nErrorCodes.INVALID_VALUE);
+}
+function makeParams(value) {
+	const { path, locale, args, choice, plural } = value;
+	const options = {};
+	const named = args || {};
+	if (isString(locale)) options.locale = locale;
+	if (isNumber(choice)) options.plural = choice;
+	if (isNumber(plural)) options.plural = plural;
+	return [
+		path,
+		named,
+		options
+	];
+}
+function apply(app, i18n, ...options) {
+	const pluginOptions = isPlainObject(options[0]) ? options[0] : {};
+	if (isBoolean(pluginOptions.globalInstall) ? pluginOptions.globalInstall : true) {
+		[Translation.name, "I18nT"].forEach((name) => app.component(name, Translation));
+		[NumberFormat.name, "I18nN"].forEach((name) => app.component(name, NumberFormat));
+		[DatetimeFormat.name, "I18nD"].forEach((name) => app.component(name, DatetimeFormat));
+	}
+	app.directive("t", vTDirective(i18n));
+}
 var I18nInjectionKey = makeSymbol("global-vue-i18n");
+function createI18n(options = {}) {
+	const __legacyMode = false;
+	if (process.env.NODE_ENV !== "production" && __legacyMode);
+	const __globalInjection = isBoolean(options.globalInjection) ? options.globalInjection : true;
+	const __instances = /* @__PURE__ */ new Map();
+	const [globalScope, __global] = createGlobal(options, __legacyMode);
+	const symbol = makeSymbol(process.env.NODE_ENV !== "production" ? "vue-i18n" : "");
+	function __getInstance(component) {
+		return __instances.get(component) || null;
+	}
+	function __setInstance(component, instance) {
+		__instances.set(component, instance);
+	}
+	function __deleteInstance(component) {
+		__instances.delete(component);
+	}
+	const i18n = {
+		get mode() {
+			return "composition";
+		},
+		async install(app, ...options) {
+			if ((process.env.NODE_ENV !== "production" || false) && true) app.__VUE_I18N__ = i18n;
+			app.__VUE_I18N_SYMBOL__ = symbol;
+			app.provide(app.__VUE_I18N_SYMBOL__, i18n);
+			if (isPlainObject(options[0])) {
+				const opts = options[0];
+				i18n.__composerExtend = opts.__composerExtend;
+				i18n.__vueI18nExtend = opts.__vueI18nExtend;
+			}
+			let globalReleaseHandler = null;
+			if (__globalInjection) globalReleaseHandler = injectGlobalFields(app, i18n.global);
+			apply(app, i18n, ...options);
+			const unmountApp = app.unmount;
+			app.unmount = () => {
+				globalReleaseHandler && globalReleaseHandler();
+				i18n.dispose();
+				unmountApp();
+			};
+			if ((process.env.NODE_ENV !== "production" || false) && true) {
+				if (!await enableDevTools(app, i18n)) throw createI18nError(I18nErrorCodes.CANNOT_SETUP_VUE_DEVTOOLS_PLUGIN);
+				const emitter = createEmitter();
+				{
+					const _composer = __global;
+					_composer[EnableEmitter] && _composer[EnableEmitter](emitter);
+				}
+				emitter.on("*", addTimelineEvent);
+			}
+		},
+		get global() {
+			return __global;
+		},
+		dispose() {
+			globalScope.stop();
+		},
+		__instances,
+		__getInstance,
+		__setInstance,
+		__deleteInstance
+	};
+	return i18n;
+}
 function useI18n(options = {}) {
-	const instance = getCurrentInstance();
+	const instance = getCurrentInstance$1();
 	if (instance == null) throw createI18nError(I18nErrorCodes.MUST_BE_CALL_SETUP_TOP);
 	if (!instance.isCE && instance.appContext.app != null && !instance.appContext.app.__VUE_I18N_SYMBOL__) throw createI18nError(I18nErrorCodes.NOT_INSTALLED);
 	const i18n = getI18nInstance(instance);
@@ -3256,6 +3774,12 @@ function useI18n(options = {}) {
 	} else if (process.env.NODE_ENV !== "production" && scope === "local") warn(getWarnMessage(I18nWarnCodes.DUPLICATE_USE_I18N_CALLING));
 	return composer;
 }
+function createGlobal(options, legacyMode) {
+	const scope = effectScope();
+	const obj = scope.run(() => createComposer(options));
+	if (obj == null) throw createI18nError(I18nErrorCodes.UNEXPECTED_ERROR);
+	return [scope, obj];
+}
 function getI18nInstance(instance) {
 	const i18n = inject(!instance.isCE ? instance.appContext.app.__VUE_I18N_SYMBOL__ : I18nInjectionKey);
 	if (!i18n) throw createI18nError(!instance.isCE ? I18nErrorCodes.UNEXPECTED_ERROR : I18nErrorCodes.NOT_INSTALLED_WITH_PROVIDE);
@@ -3310,7 +3834,51 @@ function setupLifeCycle(i18n, target, composer) {
 		}
 	}, target);
 }
-defineComponent({
+var globalExportProps = [
+	"locale",
+	"fallbackLocale",
+	"availableLocales"
+];
+var globalExportMethods = [
+	"t",
+	"rt",
+	"d",
+	"n",
+	"tm",
+	"te"
+];
+function injectGlobalFields(app, composer) {
+	const i18n = Object.create(null);
+	globalExportProps.forEach((prop) => {
+		const desc = Object.getOwnPropertyDescriptor(composer, prop);
+		if (!desc) throw createI18nError(I18nErrorCodes.UNEXPECTED_ERROR);
+		const wrap = isRef(desc.value) ? {
+			get() {
+				return desc.value.value;
+			},
+			set(val) {
+				desc.value.value = val;
+			}
+		} : { get() {
+			return desc.get && desc.get();
+		} };
+		Object.defineProperty(i18n, prop, wrap);
+	});
+	app.config.globalProperties.$i18n = i18n;
+	globalExportMethods.forEach((method) => {
+		const desc = Object.getOwnPropertyDescriptor(composer, method);
+		if (!desc || !desc.value) throw createI18nError(I18nErrorCodes.UNEXPECTED_ERROR);
+		Object.defineProperty(app.config.globalProperties, `$${method}`, desc);
+	});
+	const dispose = () => {
+		delete app.config.globalProperties.$i18n;
+		globalExportMethods.forEach((method) => {
+			delete app.config.globalProperties[`$${method}`];
+		});
+	};
+	return dispose;
+}
+var DatetimeFormat = defineComponent({
 	name: "i18n-d",
 	props: assign({
 		value: {
@@ -3337,14 +3905,58 @@ if (process.env.NODE_ENV !== "production" || false) {
 	setDevToolsHook(target.__INTLIFY_DEVTOOLS_GLOBAL_HOOK__);
 }
 if (process.env.NODE_ENV !== "production");
-var EmptyComponent_default = defineComponent({
+var EmptyComponent_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "EmptyComponent",
-	setup(__props) {
+	setup(__props, { expose: __expose }) {
+		__expose();
 		const { t } = useI18n();
-		t("header.home");
-		return (_ctx, _cache) => {
-			return null;
+		const __returned__ = {
+			t,
+			value: t("header.home")
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
-export { EmptyComponent_default as default };
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+	return null;
+}
+var EmptyComponent_default = _plugin_vue_export_helper_default(EmptyComponent_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/scripts/EmptyComponent.vue"]]);
+var LibWrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "LibWrapper",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const i18n = createI18n({
+			legacy: false,
+			locale: "en",
+			messages: { en: { header: { home: "Home" } } }
+		});
+		const app = getCurrentInstance()?.appContext.app;
+		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
+		const __returned__ = {
+			i18n,
+			app
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return renderSlot(_ctx.$slots, "default");
+}
+var LibWrapper_default = _plugin_vue_export_helper_default(LibWrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/scripts/LibWrapper.vue"]]);
+var EmptyComponent_wrapper_default = { render() {
+	return h(LibWrapper_default, {}, { default: () => h(EmptyComponent_default) });
+} };
+export { EmptyComponent_wrapper_default as default };
