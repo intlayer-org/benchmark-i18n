@@ -16,10 +16,10 @@
     "test:rendering": "npx playwright test rendering.test.ts"
   },
   "dependencies": {
-    "intlayer": "^8.7.11",
+    "intlayer": "^8.7.12",
     "lucide-vue-next": "^0.479.0",
     "vue": "^3.5.32",
-    "vue-intlayer": "^8.7.11",
+    "vue-intlayer": "^8.7.12",
     "vue-router": "^4.5.0"
   },
   "devDependencies": {
@@ -35,7 +35,7 @@
     "test-utils": "workspace:*",
     "typescript": "~6.0.2",
     "vite": "^8.0.10",
-    "vite-intlayer": "^8.7.11",
+    "vite-intlayer": "^8.7.12",
     "vue-tsc": "^3.2.7"
   }
 }

@@ -22,11 +22,11 @@
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "1.167.1",
     "@tanstack/router-plugin": "^1.167.12",
-    "intlayer": "^8.7.11",
+    "intlayer": "^8.7.12",
     "lucide-react": "^1.8.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-intlayer": "^8.7.11",
+    "react-intlayer": "^8.7.12",
     "react-router-dom": "^7.14.0",
     "tailwindcss": "^4.2.2"
   },
@@ -44,8 +44,8 @@
     "rollup-plugin-visualizer": "^7.0.1",
     "test-utils": "workspace:*",
     "typescript": "^6.0.2",
-    "vite": "^8.0.9",
-    "vite-intlayer": "^8.7.11"
+    "vite": "^8.0.10",
+    "vite-intlayer": "^8.7.12"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

@@ -1,31 +1,9 @@
-import { a as fallbackPlugin, c as nestedPlugin, f as editor, h as routing, i as enumerationPlugin, l as translationPlugin, n as getContent, o as filePlugin, p as internationalization, r as conditionPlugin, s as genderPlugin, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
-import { a as HTML, o as INSERTION, s as MARKDOWN } from "./nodeType-7ZUTNKKR.js";
+import { r as internationalization } from "./configuration-xVLV3WNi.js";
+import { a as fallbackPlugin, c as nestedPlugin, i as enumerationPlugin, l as translationPlugin, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins } from "./getContent-gxxqv3yZ.js";
+import { n as b, t as C$1 } from "./IntlayerProvider-CcGBlRyY.js";
 import _5YAR0pGEba36ehifjZtw from "../.intlayer/dictionary/header.json";
-import { Dynamic, createComponent, memo, mergeProps } from "solid-js/web";
-import { Suspense, createContext, createEffect, createMemo, createSignal, lazy, on, onMount, untrack, useContext } from "solid-js";
-var RESET = "\x1B[0m";
-var BLUE = "\x1B[34m";
-var RED = "\x1B[31m";
-var GREEN = "\x1B[32m";
-var colorize = (string, color, reset) => color ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
-colorize("✗", RED);
-colorize("✓", GREEN);
-colorize("⏲", BLUE);
-var createSafeFallback = (path = "") => {
-	return new Proxy(() => path, {
-		get: (_target, prop) => {
-			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString") return () => path;
-			if (prop === "then") return;
-			if (prop === Symbol.iterator) return function* () {
-				yield path;
-			};
-			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
-		},
-		apply: () => {
-			return path;
-		}
-	});
-};
+import { Dynamic, createComponent } from "solid-js/web";
+import { createMemo, useContext } from "solid-js";
 var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	const props = {
 		dictionaryKey: dictionary.key,
@@ -35,26 +13,103 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	};
 	return getContent(dictionary.content, props, plugins);
 };
-var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
-var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
-var splitInsertionTemplate = (template, values = {}) => {
-	if (!Object.values(values).some(isComplexValue)) return {
-		isSimple: true,
-		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
-	};
-	const chunks = template.split(insertionRegex);
-	const parts = [];
-	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
-		if (chunks[i]) parts.push(chunks[i]);
-	} else {
-		const val = values[chunks[i].trim()];
-		if (val != null) parts.push(val);
-	}
-	return {
-		isSimple: false,
-		parts
-	};
+var e = ({ children: e, value: t, additionalProps: n }) => {
+	let r = [e];
+	if (r.value = t, n) for (let e in n) r[e] = n[e];
+	return new Proxy(r, { get(e, n, r) {
+		return n === "value" ? t : n === "toString" ? () => String(t) : n === Symbol.toPrimitive ? (e) => e === "string" ? String(t) : e === "number" ? Number(t) : t : Reflect.get(e, n, r);
+	} });
 };
+var t = (n) => {
+	if (typeof n == "string") return n;
+	let { type: r, props: i } = ((e) => {
+		if (e?.props && typeof e.props.children == "object") {
+			let n = [], { children: r } = e.props;
+			return Object.keys(r ?? {}).forEach((e) => {
+				n.push(t(r?.[e]));
+			}), {
+				...e,
+				props: {
+					...e.props,
+					children: n
+				}
+			};
+		}
+		return {
+			...e,
+			props: {
+				...e.props,
+				children: e.props?.children ?? []
+			}
+		};
+	})(n);
+	return Dynamic({
+		component: r ?? "span",
+		...i,
+		children: i.children
+	});
+}, S = {
+	id: "intlayer-node-plugin",
+	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
+	transform: (t, { plugins: a, ...o }) => e({
+		...o,
+		value: o.children,
+		children: o.children
+	})
+}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+	id: "solid-node-plugin",
+	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
+	transform: (a, { plugins: o, ...s }) => e({
+		...s,
+		value: "[[solid-element]]",
+		children: typeof Node < "u" && a instanceof Node ? a : t(a)
+	})
+}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
+	let n = `${e ?? internationalization.defaultLocale}_${t}`;
+	if (k.has(n)) return k.get(n);
+	let r = [
+		translationPlugin(e ?? internationalization.defaultLocale, t ? internationalization.defaultLocale : void 0),
+		enumerationPlugin,
+		conditionPlugin,
+		nestedPlugin(e ?? internationalization.defaultLocale),
+		filePlugin,
+		genderPlugin,
+		S,
+		C,
+		T,
+		D,
+		O
+	];
+	return k.set(n, r), r;
+};
+var n = (n, r) => getDictionary(n, r, A(r));
+var i = (i, a) => {
+	let o = useContext(b) ?? {};
+	return createMemo(() => n(i, a ?? o?.locale?.()));
+};
+var TestComponent = () => {
+	i(_5YAR0pGEba36ehifjZtw);
+	return null;
+};
+function EmptyComponent() {
+	return createComponent(C$1, {
+		get locale() {
+			return "en";
+		},
+		get children() {
+			return createComponent(TestComponent, {});
+		}
+	});
+}
+export { EmptyComponent as default };
+import "./IntlayerProvider-CcGBlRyY.js";
+import "solid-js";
+var s = () => {};
+var t = ({ children: t }) => (s(), t);
+export { t as EditorProvider };
+import { i as routing, r as internationalization } from "./configuration-xVLV3WNi.js";
+import { createComponent, memo, mergeProps } from "solid-js/web";
+import { Suspense, createContext, createEffect, createMemo, createSignal, lazy, on, onMount, untrack, useContext } from "solid-js";
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
 	const requestedLocales = [selectedLocale].flat();
 	const normalize = (locale) => locale.trim().toLowerCase();
@@ -105,8 +160,7 @@ var setLocaleInStorageClient = (locale, options) => {
 			} catch {}
 		}
 	}
-};
-var localeStorageOptions = {
+}, localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -124,461 +178,156 @@ var localeStorageOptions = {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var e$1 = ({ children: e, value: t, additionalProps: n }) => {
-	let r = [e];
-	if (r.value = t, n) for (let e in n) r[e] = n[e];
-	return new Proxy(r, { get(e, n, r) {
-		return n === "value" ? t : n === "toString" ? () => String(t) : n === Symbol.toPrimitive ? (e) => e === "string" ? String(t) : e === "number" ? Number(t) : t : Reflect.get(e, n, r);
-	} });
-};
-var t$1 = (n) => {
-	if (typeof n == "string") return n;
-	let { type: r, props: i } = ((e) => {
-		if (e?.props && typeof e.props.children == "object") {
-			let n = [], { children: r } = e.props;
-			return Object.keys(r ?? {}).forEach((e) => {
-				n.push(t$1(r?.[e]));
-			}), {
-				...e,
-				props: {
-					...e.props,
-					children: n
-				}
-			};
-		}
-		return {
-			...e,
-			props: {
-				...e.props,
-				children: e.props?.children ?? []
-			}
-		};
-	})(n);
-	return Dynamic({
-		component: r ?? "span",
-		...i,
-		children: i.children
-	});
-};
-var _ = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", v = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", y = true, b = true, x = true, S = true, C = null, w$1 = null, T$1 = null, E$1 = null, D$1 = null;
-S || (C = lazy(() => import("./ContentSelector-4OrUn2VA.js").then((e) => ({ default: e.ContentSelector })))), y || (w$1 = lazy(() => import("./MarkdownRenderer-DAB_6UHC.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), T$1 = lazy(() => import("./MarkdownRenderer-DAB_6UHC.js").then((e) => ({ default: e.MarkdownRenderer }))), import("./markdown-DuGa7K5q.js").then((e) => {
-	D$1 = e.getMarkdownMetadata;
-})), b || (E$1 = lazy(() => import("./HTMLRenderer-BzwfNhlM.js").then((e) => ({ default: e.HTMLRenderer }))));
-var O$1 = _ ? fallbackPlugin : {
-	id: "intlayer-node-plugin",
-	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (t, { plugins: a, ...o }) => e$1({
-		...o,
-		value: o.children,
-		children: !S && editor.enabled ? createComponent(Suspense, {
-			get fallback() {
-				return o.children;
-			},
-			get children() {
-				return createComponent(C, mergeProps(o, { get children() {
-					return o.children;
-				} }));
-			}
-		}) : o.children
-	})
-}, k$1 = v ? fallbackPlugin : {
-	id: "solid-node-plugin",
-	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
-	transform: (a, { plugins: o, ...s }) => e$1({
-		...s,
-		value: "[[solid-element]]",
-		children: !S && editor.enabled ? createComponent(Suspense, {
-			get fallback() {
-				return typeof Node < "u" && a instanceof Node ? a : t$1(a);
-			},
-			get children() {
-				return createComponent(C, mergeProps(s, { get children() {
-					return typeof Node < "u" && a instanceof Node ? a : t$1(a);
-				} }));
-			}
-		}) : typeof Node < "u" && a instanceof Node ? a : t$1(a)
-	})
-}, A$1 = (e, t) => {
-	let n = splitInsertionTemplate(e, t);
-	return n.isSimple, n.parts;
-}, j$1 = x ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
-	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: INSERTION }], i = e[INSERTION];
-		return (e) => {
-			let a = {
-				id: "insertion-string-plugin",
-				canHandle: (e) => typeof e == "string",
-				transform: (n, r, i) => {
-					let a = A$1(i(n, {
-						...r,
-						children: n,
-						plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
-					}), e);
-					return i(a, {
-						...r,
-						plugins: t.plugins,
-						children: a
-					});
-				}
-			};
-			return n(i, {
-				...t,
-				children: i,
-				keyPath: r,
-				plugins: [a, ...t.plugins ?? []]
-			});
-		};
-	}
-}, M$1 = y ? fallbackPlugin : {
-	id: "markdown-string-plugin",
-	canHandle: (e) => typeof e == "string",
-	transform: (t, a, o) => {
-		let { plugins: s, ...c } = a, l = o(D$1?.(t) ?? {}, {
-			plugins: [{
-				id: "markdown-metadata-plugin",
-				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (a, o) => e$1({
-					...o,
-					value: a,
-					children: !S && editor.enabled ? createComponent(ContentSelector, mergeProps(c, { get children() {
-						return createComponent(Suspense, {
-							fallback: t,
-							get children() {
-								return createComponent(w$1, mergeProps(c, {
-									get metadataKeyPath() {
-										return o.keyPath;
-									},
-									children: t
-								}));
-							}
-						});
-					} })) : createComponent(Suspense, {
-						fallback: t,
-						get children() {
-							return createComponent(w$1, mergeProps(c, {
-								get metadataKeyPath() {
-									return o.keyPath;
-								},
-								children: t
-							}));
-						}
-					})
-				})
-			}],
-			dictionaryKey: c.dictionaryKey,
-			keyPath: []
-		}), u = (o) => e$1({
-			...a,
-			value: t,
-			children: !S && editor.enabled ? createComponent(Suspense, {
-				fallback: t,
-				get children() {
-					return createComponent(C, mergeProps(c, { get children() {
-						return createComponent(T$1, mergeProps(c, {
-							components: o,
-							children: t
-						}));
-					} }));
-				}
-			}) : createComponent(Suspense, {
-				fallback: t,
-				get children() {
-					return createComponent(T$1, mergeProps(c, {
-						components: o,
-						children: t
-					}));
-				}
-			}),
-			additionalProps: { metadata: l }
-		}), d = u();
-		return new Proxy(d, { get(e, n, r) {
-			return n === "value" ? t : n === "metadata" ? l : n === "use" ? (e) => u(e) : Reflect.get(e, n, r);
-		} });
-	}
-}, N$1 = y ? fallbackPlugin : {
-	id: "markdown-plugin",
-	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
-	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: MARKDOWN }], i = e[MARKDOWN];
-		return n(i, {
-			...t,
-			children: i,
-			keyPath: r,
-			plugins: [M$1, ...t.plugins ?? []]
-		});
-	}
-}, P$1 = b ? fallbackPlugin : {
-	id: "html-plugin",
-	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
-	transform: (t, a) => {
-		let o = t[HTML], { plugins: s, ...c } = a, l = (t) => e$1({
-			...c,
-			value: o,
-			children: !S && editor.enabled ? createComponent(Suspense, {
-				fallback: o,
-				get children() {
-					return createComponent(C, mergeProps(c, { get children() {
-						return createComponent(E$1, mergeProps(c, {
-							html: o,
-							components: t
-						}));
-					} }));
-				}
-			}) : createComponent(Suspense, {
-				fallback: o,
-				get children() {
-					return createComponent(E$1, mergeProps(c, {
-						html: o,
-						components: t
-					}));
-				}
-			})
-		}), u = [l()];
-		return new Proxy(u, { get(e, t, n) {
-			return t === "value" ? o : t === "use" ? (e) => l(e) : Reflect.get(e, t, n);
-		} });
-	}
-}, F$1 = /* @__PURE__ */ new Map(), I$1 = (e, t = !0) => {
-	let n = `${e ?? internationalization.defaultLocale}_${t}`;
-	if (F$1.has(n)) return F$1.get(n);
-	let r = [
-		translationPlugin(e ?? internationalization.defaultLocale, t ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		conditionPlugin,
-		nestedPlugin(e ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		O$1,
-		k$1,
-		j$1,
-		N$1,
-		P$1
-	];
-	return F$1.set(n, r), r;
-}, n$1 = (n, r) => getDictionary(n, r, I$1(r)), a = getLocaleFromStorageClient(localeStorageOptions), s = (e, n) => setLocaleInStorageClient(e, {
+}, a = getLocaleFromStorageClient(localeStorageOptions), s = (e, n) => setLocaleInStorageClient(e, {
 	...localeStorageOptions,
 	isCookieEnabled: n
-}), setIntlayerIdentifier = () => {
+});
+var setIntlayerIdentifier = () => {
 	if (typeof window !== "undefined") window.intlayer = { enabled: true };
-}, T = () => {}, E = ({ children: e }) => (T(), e), D = createContext({
+};
+var v = true, y = v ? null : lazy(() => import("./EditorProvider-kbN_49EW.js").then((e) => ({ default: e.EditorProvider }))), b = createContext({
 	locale: () => a ?? internationalization?.defaultLocale,
 	setLocale: () => null
-}), k = (e) => {
-	let { defaultLocale: t, locales: i } = internationalization ?? {}, [o, s$1] = createSignal(e.locale ?? a ?? e.defaultLocale ?? t), l = e.setLocale ?? ((t) => {
-		if (o().toString() !== t.toString()) {
-			if (!i?.map(String).includes(t)) {
-				console.error(`Locale ${t} is not available`);
+}), x = () => useContext(b) ?? {}, S = (r) => {
+	let { defaultLocale: i, locales: o } = internationalization ?? {}, [s$1, d] = createSignal(r.locale ?? a ?? r.defaultLocale ?? i), h = r.setLocale ?? ((e) => {
+		if (s$1().toString() !== e.toString()) {
+			if (!o?.map(String).includes(e)) {
+				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			s$1(t), s(t, e.isCookieEnabled);
+			d(e), s(e, r.isCookieEnabled);
 		}
-	}), u = createMemo(() => localeResolver(o()));
-	return createEffect(on(() => e.locale, (e) => {
-		e && e !== untrack(o) && s$1(e);
+	}), v = createMemo(() => localeResolver(s$1()));
+	return createEffect(on(() => r.locale, (e) => {
+		e && e !== untrack(s$1) && d(e);
 	}, { defer: !0 })), onMount(() => {
 		setIntlayerIdentifier();
-	}), createComponent(D.Provider, {
+	}), createComponent(b.Provider, {
 		value: {
-			locale: u,
-			setLocale: l
+			locale: v,
+			setLocale: h
 		},
 		get children() {
-			return e.children;
+			return r.children;
 		}
 	});
-}, A = (e) => createComponent(k, mergeProps(e, { get children() {
-	return [createComponent(E, {}), memo(() => e.children)];
-} })), M = (e, n) => {
-	let r = useContext(D) ?? {};
-	return createMemo(() => n$1(e, n ?? r?.locale?.()));
-}, { defaultLocale: L, locales: R } = internationalization;
-var TestComponent = () => {
-	M(_5YAR0pGEba36ehifjZtw);
-	return null;
+}, C = (e) => createComponent(S, mergeProps(e, { get children() {
+	return [memo(() => !v && y && createComponent(Suspense, { get children() {
+		return createComponent(y, {});
+	} })), memo(() => e.children)];
+} }));
+export { b as n, x as r, C as t };
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
 };
-function EmptyComponent() {
-	return createComponent(A, {
-		get locale() {
-			return "en";
-		},
-		get children() {
-			return createComponent(TestComponent, {});
-		}
-	});
-}
-export { EmptyComponent as default };
-import "solid-js/web";
-var i = (i) => i.children;
-export { i as ContentSelector };
-import { Dynamic, createComponent, mergeProps } from "solid-js/web";
-import { createContext, useContext } from "solid-js";
-var parseAttributes = (attributes) => {
-	const props = {};
-	const attrRegex = /([a-zA-Z0-9-]+)="([^"]*)"/g;
-	let match = attrRegex.exec(attributes);
-	while (match !== null) {
-		props[match[1]] = match[2];
-		match = attrRegex.exec(attributes);
+var routing = {
+	"mode": "prefix-all",
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": {}
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var editor = {
+	"applicationURL": "http://localhost:3000",
+	"editorURL": "http://localhost:8000",
+	"cmsURL": "https://app.intlayer.org",
+	"backendURL": "https://back.intlayer.org",
+	"port": 8e3,
+	"enabled": false,
+	"dictionaryPriorityStrategy": "local_first",
+	"liveSync": true,
+	"liveSyncPort": 4e3,
+	"liveSyncURL": "http://localhost:4000"
+};
+var configuration = {
+	internationalization,
+	routing,
+	editor,
+	log: {
+		"mode": "default",
+		"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
+	},
+	system: {
+		"baseDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app",
+		"moduleAugmentationDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"unmergedDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/unmerged_dictionary",
+		"remoteDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/remote_dictionary",
+		"dictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dictionary",
+		"dynamicDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dynamic_dictionary",
+		"fetchDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/fetch_dictionary",
+		"typesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"mainDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/main",
+		"configDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/config",
+		"cacheDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/cache",
+		"tempDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/tmp"
+	},
+	content: {
+		"fileExtensions": [
+			".content.ts",
+			".content.js",
+			".content.cjs",
+			".content.mjs",
+			".content.json",
+			".content.json5",
+			".content.jsonc",
+			".content.tsx",
+			".content.jsx"
+		],
+		"contentDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"codeDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"excludedPath": [
+			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,astro}",
+			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
+			"!***.spec.*",
+			"!***.d.ts",
+			"!***.map"
+		],
+		"outputFormat": ["esm", "cjs"],
+		"cache": true,
+		"checkTypes": false
+	},
+	ai,
+	dictionary,
+	build,
+	compiler: {
+		"enabled": true,
+		"dictionaryKeyPrefix": "",
+		"noMetadata": false,
+		"saveComponents": false
 	}
-	return props;
 };
-var astCache = /* @__PURE__ */ new Map();
-var parseHTML = (content) => {
-	if (astCache.has(content)) return astCache.get(content);
-	if (typeof content !== "string") return [];
-	const tagRegex = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g;
-	const elements = [];
-	const stack = [];
-	let lastIndex = 0;
-	let match = tagRegex.exec(content);
-	const appendChild = (child) => {
-		(stack.length > 0 ? stack[stack.length - 1].children : elements).push(child);
-	};
-	while (match !== null) {
-		const [fullMatch, isClosingRaw, tagName, attributesRaw, isSelfClosingRaw] = match;
-		const matchIndex = match.index;
-		if (matchIndex > lastIndex) appendChild(content.slice(lastIndex, matchIndex));
-		const isClosing = isClosingRaw === "/";
-		const isSelfClosing = isSelfClosingRaw === "/" || attributesRaw.trim().endsWith("/") || fullMatch.endsWith("/>");
-		const cleanedAttributes = attributesRaw.trim().replace(/\/$/, "").trim();
-		if (isClosing) {
-			const last = stack[stack.length - 1];
-			if (last && last.tagName === tagName) {
-				const popped = stack.pop();
-				if (popped) appendChild({
-					tagName: popped.tagName,
-					props: popped.props,
-					children: popped.children
-				});
-			}
-		} else if (isSelfClosing) appendChild({
-			tagName,
-			props: parseAttributes(cleanedAttributes),
-			children: []
-		});
-		else {
-			const tagProps = parseAttributes(cleanedAttributes);
-			stack.push({
-				tagName,
-				children: [],
-				props: tagProps
-			});
-		}
-		lastIndex = matchIndex + fullMatch.length;
-		match = tagRegex.exec(content);
-	}
-	if (lastIndex < content.length) appendChild(content.slice(lastIndex));
-	while (stack.length > 0) {
-		const last = stack.pop();
-		if (last) appendChild({
-			tagName: last.tagName,
-			props: last.props,
-			children: last.children
-		});
-	}
-	astCache.set(content, elements);
-	return elements;
-};
-var getHTML = (content, values) => {
-	const ast = parseHTML(content);
-	let keyCounter = 0;
-	const renderASTNode = (node) => {
-		if (typeof node === "string") return node;
-		const { tagName, props, children } = node;
-		const renderedChildren = children.flatMap(renderASTNode);
-		const index = keyCounter++;
-		let override = values[tagName];
-		if (!override) {
-			const lowerTagName = tagName.toLowerCase();
-			const foundKey = Object.keys(values).find((key) => key.toLowerCase() === lowerTagName);
-			if (foundKey) override = values[foundKey];
-		}
-		const key = `html-tag-${tagName}-${index}`;
-		if (typeof override === "function") return override({
-			...props,
-			children: renderedChildren,
-			key
-		});
-		if (typeof override === "string") {
-			const component = values[override];
-			if (typeof component === "function") return component({
-				...props,
-				children: renderedChildren,
-				key
-			});
-			return renderedChildren;
-		}
-		if (typeof override === "object" && override !== null && "tag" in override) {
-			const { tag: targetTag, props: extraProps } = override;
-			const component = values[targetTag];
-			if (typeof component === "function") return component({
-				...props,
-				...extraProps,
-				children: renderedChildren,
-				key
-			});
-			return renderedChildren;
-		}
-		return renderedChildren;
-	};
-	const result = ast.flatMap(renderASTNode);
-	return result.length === 1 ? result[0] : result;
-}, r = createContext(), i = () => useContext(r);
-var a = (e, { components: a = {} } = {}) => {
-	let o = Object.fromEntries(Object.entries(a).filter(([, e]) => e).map(([e, i]) => [e, (e) => createComponent(Dynamic, mergeProps({ component: i }, e))]));
-	return getHTML(e, new Proxy(o, { get(e, i) {
-		if (typeof i == "string" && i in e) return e[i];
-		if (typeof i == "string" && /^[a-z][a-z0-9]*$/.test(i)) return (e) => createComponent(Dynamic, mergeProps({ component: i }, e));
-	} }));
-}, o = ({ components: t } = {}) => {
-	let n = i();
-	return (e) => a(e, { components: {
-		...n?.components,
-		...t
-	} });
-}, s = (e) => o({ components: e.components || e.userComponents })(e.children || e.html || "");
-export { s as HTMLRenderer };
-import { getMarkdownMetadata } from "./markdown-DuGa7K5q.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
-import { createComponent } from "solid-js/web";
-import { Suspense, createContext, createMemo, createResource, useContext } from "solid-js";
-var i = createContext(), o = () => {
-	let e = useContext(i);
-	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider. To fix this error, wrap your component with <MarkdownProvider>.");
-	return e;
-}, f = (e) => {
-	let a = useContext(i), { renderMarkdown: c } = o(), [l] = createResource(() => [
-		e.children,
-		e.forceBlock,
-		e.preserveFrontmatter,
-		e.tagfilter,
-		e.components,
-		e.wrapper
-	], ([e, t, n, r, i, o]) => c(e, {
-		forceBlock: t,
-		preserveFrontmatter: n,
-		tagfilter: r
-	}, {
-		...a?.components ?? {},
-		...i ?? {}
-	}, o));
-	return createComponent(Suspense, {
-		fallback: null,
-		get children() {
-			return l();
-		}
-	});
-}, p = (e) => {
-	let t = createMemo(() => getMarkdownMetadata(e.children));
-	return createMemo(() => getContentNodeByKeyPath(t(), e.metadataKeyPath))();
-};
-export { p as MarkdownMetadataRenderer, f as MarkdownRenderer };
-import { d as configuration, f as editor, n as getContent, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
-import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
+export { routing as i, editor as n, internationalization as r, configuration as t };
+import { n as editor, t as configuration } from "./configuration-xVLV3WNi.js";
+import { n as getContent, t as getBasePlugins, y as TRANSLATION } from "./getContent-gxxqv3yZ.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);
 var compareUrls = (url1, url2) => {
 	try {
@@ -1230,6 +979,16 @@ var editDictionaryByKeyPath = (dictionaryContent, keyPath, newValue) => {
 		return dictionaryContent;
 	}
 };
+var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
+	let currentValue = structuredClone(dictionaryContent);
+	for (const keyObj of keyPath) {
+		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
+		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
+		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
+		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
+	}
+	return currentValue;
+};
 var renameContentNodeByKeyPath = (dictionaryContent, newKey, keyPath) => {
 	let currentValue = dictionaryContent;
 	let parentValue = null;
@@ -1744,115 +1503,17 @@ var stopEditorClient = () => {
 	setGlobalEditorManager(null);
 };
 export { initEditorClient, stopEditorClient };
-import { c as OBJECT, t as ARRAY, u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
-var internationalization = {
-	"locales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"requiredLocales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"strictMode": "inclusive",
-	"defaultLocale": "en"
-};
-var routing = {
-	"mode": "prefix-no-default",
-	"storage": {
-		"cookies": [{
-			"name": "INTLAYER_LOCALE",
-			"attributes": {}
-		}],
-		"headers": [{ "name": "x-intlayer-locale" }]
-	},
-	"basePath": ""
-};
-var editor = {
-	"editorURL": "http://localhost:8000",
-	"cmsURL": "https://app.intlayer.org",
-	"backendURL": "https://back.intlayer.org",
-	"port": 8e3,
-	"enabled": false,
-	"dictionaryPriorityStrategy": "local_first",
-	"liveSync": true,
-	"liveSyncPort": 4e3,
-	"liveSyncURL": "http://localhost:4000"
-};
-var log = {
-	"mode": "default",
-	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
-};
-var configuration = {
-	internationalization,
-	routing,
-	editor,
-	log,
-	system: {
-		"baseDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app",
-		"moduleAugmentationDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
-		"unmergedDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/unmerged_dictionary",
-		"remoteDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/remote_dictionary",
-		"dictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dictionary",
-		"dynamicDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dynamic_dictionary",
-		"fetchDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/fetch_dictionary",
-		"typesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
-		"mainDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/main",
-		"configDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/config",
-		"cacheDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/cache",
-		"tempDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/tmp"
-	},
-	content: {
-		"fileExtensions": [
-			".content.ts",
-			".content.js",
-			".content.cjs",
-			".content.mjs",
-			".content.json",
-			".content.json5",
-			".content.jsonc",
-			".content.tsx",
-			".content.jsx"
-		],
-		"contentDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
-		"codeDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
-		"excludedPath": [
-			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,astro}",
-			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
-			"!***.spec.*",
-			"!***.d.ts",
-			"!***.map"
-		],
-		"outputFormat": ["esm", "cjs"],
-		"cache": true,
-		"checkTypes": false
-	},
-	ai,
-	dictionary,
-	build,
-	compiler: {
-		"enabled": true,
-		"dictionaryKeyPrefix": "",
-		"noMetadata": false,
-		"saveComponents": false
-	}
-};
+import { r as internationalization } from "./configuration-xVLV3WNi.js";
+var TRANSLATION = "translation";
+var ENUMERATION = "enumeration";
+var CONDITION = "condition";
+var INSERTION = "insertion";
+var FILE = "file";
+var OBJECT = "object";
+var ARRAY = "array";
+var REACT_NODE = "reactNode";
+var MARKDOWN = "markdown";
+var HTML = "html";
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
 	if (node === null || typeof node !== "object") return node;
@@ -1986,1600 +1647,7 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-export { fallbackPlugin as a, nestedPlugin as c, configuration as d, editor as f, routing as h, enumerationPlugin as i, translationPlugin as l, log as m, getContent as n, filePlugin as o, internationalization as p, conditionPlugin as r, genderPlugin as s, getBasePlugins as t, getTranslation as u };
-import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
-var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
-	let currentValue = structuredClone(dictionaryContent);
-	for (const keyObj of keyPath) {
-		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
-		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
-		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
-		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
-	}
-	return currentValue;
-};
-export { getContentNodeByKeyPath as t };
-var PRESERVED_LITERALS = new Set([
-	"true",
-	"false",
-	"null",
-	"undefined",
-	"yes",
-	"no",
-	"on",
-	"off",
-	"NaN",
-	"Infinity",
-	"-Infinity"
-]);
-var parseYaml = (input) => {
-	const text = input.trim();
-	if (!text) return null;
-	let index = 0;
-	const peek = () => text[index];
-	const next = () => text[index++];
-	const eof = () => index >= text.length;
-	const skipWhitespace = () => {
-		while (!eof() && " \n	\r".includes(peek())) index++;
-	};
-	const parseQuotedString = (quote) => {
-		next();
-		let result = "";
-		while (!eof()) {
-			const ch = next();
-			if (ch === quote) return result;
-			if (ch === "\\" && !eof()) result += next();
-			else result += ch;
-		}
-		throw new SyntaxError("Unterminated string");
-	};
-	const parseUnquotedToken = (stops) => {
-		const start = index;
-		while (!eof() && !stops.includes(peek())) index++;
-		return text.slice(start, index).trim();
-	};
-	const toTypedValue = (raw) => {
-		if (PRESERVED_LITERALS.has(raw) || /^0x[0-9a-fA-F]+$/.test(raw) || /^#/.test(raw)) return raw;
-		if (/^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(raw)) {
-			if (raw === "3.14159265359") return Math.PI;
-			return Number(raw);
-		}
-		return raw;
-	};
-	const parseValue = (stops) => {
-		skipWhitespace();
-		if (eof()) throw new SyntaxError("Unexpected end of input");
-		const ch = peek();
-		if (ch === "[") return parseArray();
-		if (ch === "{") return parseObject();
-		if (ch === "\"" || ch === "'") return parseQuotedString(ch);
-		const token = parseUnquotedToken(stops);
-		if (!token) throw new SyntaxError("Empty token");
-		return toTypedValue(token);
-	};
-	const parseArray = () => {
-		next();
-		const arr = [];
-		skipWhitespace();
-		if (peek() === "]") {
-			next();
-			return arr;
-		}
-		while (true) {
-			skipWhitespace();
-			arr.push(parseValue(",]"));
-			skipWhitespace();
-			const ch = next();
-			if (ch === "]") break;
-			if (ch !== ",") throw new SyntaxError("Expected ',' or ']' after array element");
-			skipWhitespace();
-			if (peek() === "]") throw new SyntaxError("Trailing comma in array");
-		}
-		return arr;
-	};
-	const parseYamlListItem = () => {
-		next();
-		skipWhitespace();
-		const ch = peek();
-		if (ch === "{") return parseObject();
-		if (ch === "\"" || ch === "'") return parseQuotedString(ch);
-		const lineEnd = text.indexOf("\n", index);
-		const line = text.slice(index, lineEnd === -1 ? text.length : lineEnd);
-		if (/: /.test(line)) return parseIndentedObject();
-		return toTypedValue(parseUnquotedToken("\n"));
-	};
-	const getCurrentIndent = () => {
-		const lineStart = text.lastIndexOf("\n", index - 1) + 1;
-		let indent = 0;
-		for (let i = lineStart; i < index && text[i] === " "; i++) indent++;
-		return indent;
-	};
-	const parseIndentedObject = () => {
-		const obj = {};
-		const baseIndent = getCurrentIndent();
-		while (!eof()) {
-			const lineStart = index;
-			const startedNewLine = lineStart === 0 || text[lineStart - 1] === "\n";
-			skipWhitespace();
-			if (startedNewLine && getCurrentIndent() <= baseIndent) {
-				index = lineStart;
-				break;
-			}
-			if (peek() === "-" || eof()) {
-				index = lineStart;
-				break;
-			}
-			const char = peek();
-			const key = char === "\"" || char === "'" ? parseQuotedString(char) : parseUnquotedToken(":");
-			if (eof() || next() !== ":") break;
-			skipWhitespace();
-			if (peek() === "\n") {
-				next();
-				skipWhitespace();
-				if (peek() === "-") {
-					obj[key] = parseYamlList();
-					continue;
-				}
-			}
-			obj[key] = toTypedValue(parseUnquotedToken("\n"));
-			if (peek() === "\n") next();
-		}
-		return obj;
-	};
-	const parseYamlList = () => {
-		const arr = [];
-		const baseIndent = getCurrentIndent();
-		while (!eof()) {
-			while (!eof() && " \n	\r".includes(peek()) && peek() !== "-") next();
-			if (eof() || getCurrentIndent() < baseIndent || peek() !== "-") break;
-			arr.push(parseYamlListItem());
-		}
-		return arr;
-	};
-	const parseObjectBody = (stops) => {
-		const obj = {};
-		skipWhitespace();
-		while (!eof() && !stops.includes(peek())) {
-			const char = peek();
-			const key = char === "\"" || char === "'" ? parseQuotedString(char) : parseUnquotedToken(`:\n${stops}`);
-			if (!key) return obj;
-			if (eof() || next() !== ":") throw new SyntaxError("Expected ':' after key");
-			if (peek() === " ") next();
-			while (!eof() && " 	".includes(peek())) next();
-			if (eof()) {
-				obj[key] = "";
-				return obj;
-			}
-			if (peek() === "\n") {
-				next();
-				const afterNewlinePos = index;
-				skipWhitespace();
-				if (peek() === "-") {
-					obj[key] = parseYamlList();
-					skipWhitespace();
-					continue;
-				} else {
-					index = afterNewlinePos;
-					skipWhitespace();
-					const nextChar = peek();
-					if (nextChar && !stops.includes(nextChar) && nextChar !== "-") {
-						obj[key] = "";
-						continue;
-					}
-					obj[key] = "";
-					return obj;
-				}
-			}
-			obj[key] = parseValue(stops.includes("}") ? `,\n${stops}` : `\n${stops}`);
-			if (eof()) return obj;
-			const sep = peek();
-			if (sep === "," || sep === "\n") {
-				next();
-				skipWhitespace();
-				continue;
-			}
-			if (" 	".includes(sep)) {
-				while (!eof() && " 	".includes(peek())) next();
-				if (peek() === "\n") {
-					next();
-					skipWhitespace();
-					continue;
-				}
-				if (eof() || stops.includes(peek())) return obj;
-				continue;
-			}
-			if (stops.includes(sep)) return obj;
-		}
-		return obj;
-	};
-	const parseObject = () => {
-		next();
-		skipWhitespace();
-		if (peek() === "}") {
-			next();
-			return {};
-		}
-		const obj = parseObjectBody("}");
-		if (peek() !== "}") throw new SyntaxError("Expected '}' at end of object");
-		next();
-		return obj;
-	};
-	const hasTopLevelKeyColonSpace = (s) => {
-		let depth = 0;
-		let inQuote = null;
-		for (let i = 0; i < s.length; i++) {
-			const char = s[i];
-			if (inQuote) {
-				if (char === "\\") i++;
-				else if (char === inQuote) inQuote = null;
-			} else if (char === "\"" || char === "'") inQuote = char;
-			else if (char === "[" || char === "{") depth++;
-			else if (char === "]" || char === "}") depth = Math.max(0, depth - 1);
-			else if (depth === 0 && char === ":") {
-				const nextCh = s[i + 1];
-				if (!nextCh || " \n".includes(nextCh)) return true;
-			}
-		}
-		return false;
-	};
-	if (text.startsWith("]") || text.startsWith("}")) throw new SyntaxError("Unexpected closing bracket");
-	let value;
-	if (text.startsWith("[")) value = parseArray();
-	else if (text.startsWith("{")) value = parseObject();
-	else if (hasTopLevelKeyColonSpace(text)) value = parseObjectBody("");
-	else value = parseValue("");
-	skipWhitespace();
-	if (!eof()) throw new SyntaxError("Unexpected trailing characters");
-	return value;
-};
-var getMarkdownMetadata = (markdown) => {
-	try {
-		const lines = markdown.split(/\r?\n/);
-		const firstNonEmptyLine = lines.find((line) => line.trim() !== "");
-		if (!firstNonEmptyLine || firstNonEmptyLine.trim() !== "---") return {};
-		let metadataEndIndex = -1;
-		for (let i = 1; i < lines.length; i++) if (lines[i].trim() === "---") {
-			metadataEndIndex = i;
-			break;
-		}
-		if (metadataEndIndex === -1) return {};
-		return parseYaml(lines.slice(1, metadataEndIndex).join("\n")) ?? {};
-	} catch {
-		return {};
-	}
-};
-var RuleType = {
-	blockQuote: "0",
-	breakLine: "1",
-	breakThematic: "2",
-	codeBlock: "3",
-	codeFenced: "4",
-	codeInline: "5",
-	footnote: "6",
-	footnoteReference: "7",
-	gfmTask: "8",
-	heading: "9",
-	headingSetext: "10",
-	htmlBlock: "11",
-	htmlComment: "12",
-	htmlSelfClosing: "13",
-	customComponent: "34",
-	image: "14",
-	link: "15",
-	linkAngleBraceStyleDetector: "16",
-	linkBareUrlDetector: "17",
-	newlineCoalescer: "19",
-	orderedList: "20",
-	paragraph: "21",
-	ref: "22",
-	refImage: "23",
-	refLink: "24",
-	table: "25",
-	tableSeparator: "26",
-	text: "27",
-	textBolded: "28",
-	textEmphasized: "29",
-	textEscaped: "30",
-	textMarked: "31",
-	textStrikethroughed: "32",
-	unorderedList: "33"
-};
-var Priority = {
-	MAX: 0,
-	HIGH: 1,
-	MED: 2,
-	LOW: 3,
-	MIN: 4
-};
-var ATTRIBUTE_TO_NODE_PROP_MAP = [
-	"allowFullScreen",
-	"allowTransparency",
-	"autoComplete",
-	"autoFocus",
-	"autoPlay",
-	"cellPadding",
-	"cellSpacing",
-	"charSet",
-	"classId",
-	"colSpan",
-	"contentEditable",
-	"contextMenu",
-	"crossOrigin",
-	"encType",
-	"formAction",
-	"formEncType",
-	"formMethod",
-	"formNoValidate",
-	"formTarget",
-	"frameBorder",
-	"hrefLang",
-	"inputMode",
-	"keyParams",
-	"keyType",
-	"marginHeight",
-	"marginWidth",
-	"maxLength",
-	"mediaGroup",
-	"minLength",
-	"noValidate",
-	"radioGroup",
-	"readOnly",
-	"rowSpan",
-	"spellCheck",
-	"srcDoc",
-	"srcLang",
-	"srcSet",
-	"tabIndex",
-	"useMap"
-].reduce((obj, x) => {
-	obj[x.toLowerCase()] = x;
-	return obj;
-}, {
-	class: "className",
-	for: "htmlFor"
-});
-var NAMED_CODES_TO_UNICODE = {
-	amp: "&",
-	apos: "'",
-	gt: ">",
-	lt: "<",
-	nbsp: "\xA0",
-	quot: "“"
-};
-var DO_NOT_PROCESS_HTML_ELEMENTS = [
-	"style",
-	"script",
-	"pre"
-];
-var ATTRIBUTES_TO_SANITIZE = [
-	"src",
-	"href",
-	"data",
-	"formAction",
-	"srcDoc",
-	"action"
-];
-var ATTR_EXTRACTOR_R = /([-A-Z0-9_:]+)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|(?:\{((?:\\.|{[^}]*?}|[^}])*)\})))?/gi;
-var BLOCK_END_R = /\n{2,}$/;
-var BLOCKQUOTE_R = /^(\s*>[\s\S]*?)(?=\n\n|$)/;
-var BLOCKQUOTE_TRIM_LEFT_MULTILINE_R = /^ *> ?/gm;
-var BLOCKQUOTE_ALERT_R = /^(?:\[!([^\]]*)\]\n)?([\s\S]*)/;
-var BREAK_LINE_R = /^ {2,}\n/;
-var BREAK_THEMATIC_R = /^(?:([-*_])( *\1){2,}) *(?:\n *)+\n/;
-var CODE_BLOCK_FENCED_R = /^(?: {1,3})?(`{3,}|~{3,}) *(\S+)? *([^\n]*?)?\n([\s\S]*?)(?:\1\n?|$)/;
-var CODE_BLOCK_R = /^(?: {4}[^\n]+\n*)+(?:\n *)+\n?/;
-var CODE_INLINE_R = /^(`+)((?:\\`|(?!\1)`|[^`])+)\1/;
-var CONSECUTIVE_NEWLINE_R = /^(?:\n *)*\n/;
-var CR_NEWLINE_R = /\r\n?/g;
-var FOOTNOTE_R = /^\[\^([^\]]+)](:(.*)((\n+ {4,}.*)|(\n(?!\[\^).+))*)/;
-var FOOTNOTE_REFERENCE_R = /^\[\^([^\]]+)]/;
-var FORMFEED_R = /\f/g;
-var FRONT_MATTER_R = /^---[ \t]*\n(.|\n)*?\n---[ \t]*\n/;
-var GFM_TASK_R = /^\s*?\[(x|\s)\]/;
-var HEADING_R = /^ *(#{1,6}) *([^\n]+?)(?: +#*)?(?:\n *)*(?:\n|$)/;
-var HEADING_ATX_COMPLIANT_R = /^ *(#{1,6}) +([^\n]+?)(?: +#*)?(?:\n *)*(?:\n|$)/;
-var HEADING_SETEXT_R = /^([^\n]+)\n *(=|-)\2{2,} *\n/;
-var HTML_BLOCK_ELEMENT_R = /^ *(?!<[a-zA-Z][^ >/]* ?\/>)<([a-zA-Z][^ >/]*) ?((?:[^>]*[^/])?)>\n?(\s*(?:<\1[^>]*?>[\s\S]*?<\/\1>|(?!<\1\b)[\s\S])*?)<\/\1>(?!<\/\1>)\n*/i;
-var HTML_CHAR_CODE_R = /&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-fA-F]{1,6});/gi;
-var HTML_COMMENT_R = /^<!--[\s\S]*?(?:-->)/;
-var HTML_CUSTOM_ATTR_R = /^(data|aria|x)-[a-z_][a-z\d_.-]*$/;
-var HTML_SELF_CLOSING_ELEMENT_R = /^ *<([a-zA-Z][a-zA-Z0-9:]*)(?:\s+((?:<.*?>|[^>])*))?\/?>(?!<\/\1>)(\s*\n)?/i;
-var CUSTOM_COMPONENT_R = /^ *<([A-Z][a-zA-Z0-9]*)(?:\s+((?:<.*?>|[^>])*))?>\n?(\s*(?:<\1[^>]*?>[\s\S]*?<\/\1>|(?!<\1\b)[\s\S])*?)<\/\1>(?!<\/\1>)\n*/;
-var INTERPOLATION_R = /^\{.*\}$/;
-var LINK_AUTOLINK_BARE_URL_R = /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/;
-var LINK_AUTOLINK_R = /^<([^ >]+[:@/][^ >]+)>/;
-var CAPTURE_LETTER_AFTER_HYPHEN = /-([a-z])?/gi;
-var NP_TABLE_R = /^(\|.*)\n(?: *(\|? *[-:]+ *\|[-| :]*)\n((?:.*\|.*\n)*))?\n?/;
-var TABLE_TRIM_PIPES = /(^ *\||\| *$)/g;
-var TABLE_CENTER_ALIGN = /^ *:-+: *$/;
-var TABLE_LEFT_ALIGN = /^ *:-+ *$/;
-var TABLE_RIGHT_ALIGN = /^ *-+: *$/;
-var PARAGRAPH_R = /^[^\n]+(?: {2}\n|\n{2,})/;
-var REFERENCE_IMAGE_OR_LINK = /^\[([^\]]*)\]:\s+<?([^\s>]+)>?\s*("([^"]*)")?/;
-var REFERENCE_IMAGE_R = /^!\[([^\]]*)\] ?\[([^\]]*)\]/;
-var REFERENCE_LINK_R = /^\[([^\]]*)\] ?\[([^\]]*)\]/;
-var SHOULD_RENDER_AS_BLOCK_R = /(\n|^[-*]\s|^#|^ {2,}|^-{2,}|^>\s)/;
-var TAB_R = /\t/g;
-var TRIM_STARTING_NEWLINES = /^\n+/;
-var HTML_LEFT_TRIM_AMOUNT_R = /^\n*([ \t]*)/;
-var LIST_LOOKBEHIND_R = /(?:^|\n)( *)$/;
-var ORDERED_LIST_BULLET = "(?:\\d+\\.)";
-var UNORDERED_LIST_BULLET = "(?:[*+-])";
-var TEXT_ESCAPED_R = /^\\([^0-9A-Za-z\s])/;
-var UNESCAPE_R = /\\([^0-9A-Za-z\s])/g;
-var TEXT_PLAIN_R = /^[\s\S](?:(?! {2}\n|[0-9]\.|http)[^=*_~\-\n:<`\\[!])*/;
-var SHORTCODE_R = /^(:[a-zA-Z0-9-_]+:)/;
-var LOOKAHEAD = (double) => `(?=[\\s\\S]+?\\1${double ? "\\1" : ""})`;
-var INLINE_SKIP_R = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
-var TEXT_BOLD_R = new RegExp(`^([*_])\\1${LOOKAHEAD(1)}${INLINE_SKIP_R}\\1\\1(?!\\1)`);
-var TEXT_EMPHASIZED_R = new RegExp(`^([*_])${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1(?!\\1)`);
-var TEXT_MARKED_R = new RegExp(`^(==)${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1`);
-var TEXT_STRIKETHROUGHED_R = new RegExp(`^(~~)${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1`);
-var generateListItemPrefix = (type) => {
-	return "( *)(" + (type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET) + ") +";
-};
-var ORDERED_LIST_ITEM_PREFIX = generateListItemPrefix(1);
-var UNORDERED_LIST_ITEM_PREFIX = generateListItemPrefix(2);
-var generateListItemPrefixRegex = (type) => {
-	return new RegExp("^" + (type === 1 ? ORDERED_LIST_ITEM_PREFIX : UNORDERED_LIST_ITEM_PREFIX));
-};
-var ORDERED_LIST_ITEM_PREFIX_R = generateListItemPrefixRegex(1);
-var UNORDERED_LIST_ITEM_PREFIX_R = generateListItemPrefixRegex(2);
-var generateListItemRegex = (type) => {
-	return new RegExp("^" + (type === 1 ? ORDERED_LIST_ITEM_PREFIX : UNORDERED_LIST_ITEM_PREFIX) + "[^\\n]*(?:\\n(?!\\1" + (type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET) + " )[^\\n]*)*(\\n|$)", "gm");
-};
-var ORDERED_LIST_ITEM_R = generateListItemRegex(1);
-var UNORDERED_LIST_ITEM_R = generateListItemRegex(2);
-var generateListRegex = (type) => {
-	const bullet = type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET;
-	return new RegExp("^( *)(" + bullet + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + bullet + " (?!" + bullet + " ))\\n*|\\s*\\n*$)");
-};
-var ORDERED_LIST_R = generateListRegex(1);
-var UNORDERED_LIST_R = generateListRegex(2);
-var trimEnd = (str) => {
-	let end = str.length;
-	while (end > 0 && str[end - 1] <= " ") end--;
-	return str.slice(0, end);
-};
-var startsWith = (str, prefix) => {
-	return str.startsWith(prefix);
-};
-var unquote = (str) => {
-	const first = str[0];
-	if ((first === "\"" || first === "'") && str.length >= 2 && str[str.length - 1] === first) return str.slice(1, -1);
-	return str;
-};
-var unescapeString = (rawString) => rawString ? rawString.replace(UNESCAPE_R, "$1") : rawString;
-var cx = (...args) => args.filter(Boolean).join(" ");
-var get = (src, path, fb) => {
-	let ptr = src;
-	const frags = path.split(".");
-	while (frags.length) {
-		ptr = ptr[frags[0]];
-		if (ptr === void 0) break;
-		else frags.shift();
-	}
-	return ptr ?? fb;
-};
-var slugify = (str) => str.replace(/[ÀÁÂÃÄÅàáâãäåæÆ]/g, "a").replace(/[çÇ]/g, "c").replace(/[ðÐ]/g, "d").replace(/[ÈÉÊËéèêë]/g, "e").replace(/[ÏïÎîÍíÌì]/g, "i").replace(/[Ññ]/g, "n").replace(/[øØœŒÕõÔôÓóÒò]/g, "o").replace(/[ÜüÛûÚúÙù]/g, "u").replace(/[ŸÿÝý]/g, "y").replace(/[^a-z0-9- ]/gi, "").replace(/ /gi, "-").toLowerCase();
-var SANITIZE_R = /(javascript|vbscript|data(?!:image)):/i;
-var sanitizer = (input) => {
-	try {
-		const decoded = decodeURIComponent(input).replace(/[^A-Za-z0-9/:]/g, "");
-		if (SANITIZE_R.test(decoded)) {
-			console.warn("Input contains an unsafe JavaScript/VBScript/data expression, it will not be rendered.", decoded);
-			return null;
-		}
-	} catch (_e) {
-		console.warn("Input could not be decoded due to malformed syntax or characters, it will not be rendered.", input);
-		return null;
-	}
-	return input;
-};
-var normalizeWhitespace = (source) => {
-	const start = performance.now();
-	const result = source.replace(CR_NEWLINE_R, "\n").replace(FORMFEED_R, "").replace(TAB_R, "    ");
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`normalizeWhitespace: ${duration.toFixed(3)}ms, source length: ${source.length}`);
-	return result;
-};
-var trimLeadingWhitespaceOutsideFences = (text, whitespace) => {
-	const start = performance.now();
-	if (!whitespace) return text;
-	const lines = text.split("\n");
-	let inFence = false;
-	let fenceToken = null;
-	const isFenceLine = (line) => line.match(/^\s*(`{3,}|~{3,})/);
-	const maybeToggleFence = (line) => {
-		const m = isFenceLine(line);
-		if (!m) return;
-		const token = m[1];
-		if (!inFence) {
-			inFence = true;
-			fenceToken = token;
-		} else if (fenceToken && line.includes(fenceToken)) {
-			inFence = false;
-			fenceToken = null;
-		}
-	};
-	const result = lines.map((line) => {
-		if (isFenceLine(line)) {
-			const trimmedFenceLine = line.startsWith(whitespace) ? line.slice(whitespace.length) : line;
-			maybeToggleFence(line);
-			return trimmedFenceLine;
-		}
-		if (inFence) return line;
-		return line.startsWith(whitespace) ? line.slice(whitespace.length) : line;
-	}).join("\n");
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`trimLeadingWhitespaceOutsideFences: ${duration.toFixed(3)}ms, text length: ${text.length}, lines count: ${lines.length}`);
-	return result;
-};
-var normalizeAttributeKey = (key) => {
-	if (key.indexOf("-") !== -1 && key.match(HTML_CUSTOM_ATTR_R) === null) key = key.replace(CAPTURE_LETTER_AFTER_HYPHEN, (_, letter) => {
-		return letter.toUpperCase();
-	});
-	return key;
-};
-var parseStyleAttribute = (styleString) => {
-	const start = performance.now();
-	const styles = [];
-	let buffer = "";
-	let inUrl = false;
-	let inQuotes = false;
-	let quoteChar = "";
-	if (!styleString) return styles;
-	for (let i = 0; i < styleString.length; i++) {
-		const char = styleString[i];
-		if ((char === "\"" || char === "'") && !inUrl) {
-			if (!inQuotes) {
-				inQuotes = true;
-				quoteChar = char;
-			} else if (char === quoteChar) {
-				inQuotes = false;
-				quoteChar = "";
-			}
-		}
-		if (char === "(" && buffer.endsWith("url")) inUrl = true;
-		else if (char === ")" && inUrl) inUrl = false;
-		if (char === ";" && !inQuotes && !inUrl) {
-			const declaration = buffer.trim();
-			if (declaration) {
-				const colonIndex = declaration.indexOf(":");
-				if (colonIndex > 0) {
-					const key = declaration.slice(0, colonIndex).trim();
-					const value = declaration.slice(colonIndex + 1).trim();
-					styles.push([key, value]);
-				}
-			}
-			buffer = "";
-		} else buffer += char;
-	}
-	const declaration = buffer.trim();
-	if (declaration) {
-		const colonIndex = declaration.indexOf(":");
-		if (colonIndex > 0) {
-			const key = declaration.slice(0, colonIndex).trim();
-			const value = declaration.slice(colonIndex + 1).trim();
-			styles.push([key, value]);
-		}
-	}
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`parseStyleAttribute: ${duration.toFixed(3)}ms, styleString length: ${styleString.length}, styles count: ${styles.length}`);
-	return styles;
-};
-var attributeValueToNodePropValue = (tag, key, value, sanitizeUrlFn) => {
-	if (key === "style") return parseStyleAttribute(value).reduce((styles, [styleKey, styleValue]) => {
-		const camelCasedKey = styleKey.replace(/(-[a-z])/g, (substr) => substr[1].toUpperCase());
-		styles[camelCasedKey] = sanitizeUrlFn(styleValue, tag, styleKey);
-		return styles;
-	}, {});
-	else if (ATTRIBUTES_TO_SANITIZE.indexOf(key) !== -1) return sanitizeUrlFn(unescapeString(value), tag, key);
-	else if (value.match(INTERPOLATION_R)) value = unescapeString(value.slice(1, value.length - 1));
-	if (value === "true") return true;
-	else if (value === "false") return false;
-	return value;
-};
-var parseTableAlignCapture = (alignCapture) => {
-	if (TABLE_RIGHT_ALIGN.test(alignCapture)) return "right";
-	else if (TABLE_CENTER_ALIGN.test(alignCapture)) return "center";
-	else if (TABLE_LEFT_ALIGN.test(alignCapture)) return "left";
-	return "left";
-};
-var parseTableAlign = (source) => {
-	return source.replace(TABLE_TRIM_PIPES, "").split("|").map(parseTableAlignCapture);
-};
-var parseTableRow = (source, parse, state, tableOutput) => {
-	const start = performance.now();
-	const prevInTable = state.inTable;
-	state.inTable = true;
-	const cells = [[]];
-	let acc = "";
-	const flush = () => {
-		if (!acc) return;
-		const cell = cells[cells.length - 1];
-		cell.push.apply(cell, parse(acc, state));
-		acc = "";
-	};
-	source.trim().split(/(`[^`]*`|\\\||\|)/).filter(Boolean).forEach((fragment, i, arr) => {
-		if (fragment.trim() === "|") {
-			flush();
-			if (tableOutput) {
-				if (i !== 0 && i !== arr.length - 1) cells.push([]);
-				return;
-			}
-		}
-		acc += fragment;
-	});
-	flush();
-	state.inTable = prevInTable;
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`parseTableRow: ${duration.toFixed(3)}ms, source length: ${source.length}, cells count: ${cells.length}`);
-	return cells;
-};
-var parseTableCells = (source, parse, state) => {
-	const start = performance.now();
-	const rowsText = source.trim().split("\n");
-	const result = rowsText.map((rowText) => parseTableRow(rowText, parse, state, true));
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`parseTableCells: ${duration.toFixed(3)}ms, source length: ${source.length}, rows count: ${rowsText.length}`);
-	return result;
-};
-var qualifies = (source, state, qualify) => {
-	if (Array.isArray(qualify)) {
-		for (let i = 0; i < qualify.length; i++) if (startsWith(source, qualify[i])) return true;
-		return false;
-	}
-	return qualify(source, state);
-};
-var allowInline = (fn) => {
-	fn.inline = 1;
-	return fn;
-};
-var inlineRegex = (regex) => allowInline((source, state) => {
-	if (state.inline) return regex.exec(source);
-	else return null;
-});
-var simpleInlineRegex = (regex) => allowInline((source, state) => {
-	if (state.inline || state.simple) return regex.exec(source);
-	else return null;
-});
-var blockRegex = (regex) => (source, state) => {
-	if (state.inline || state.simple) return null;
-	else return regex.exec(source);
-};
-var anyScopeRegex = (fn) => allowInline((source, state) => {
-	if (typeof fn === "function") return fn(source, state);
-	return fn.exec(source);
-});
-var parseInline = (parse, children, state) => {
-	const start = performance.now();
-	const isCurrentlyInline = state.inline ?? false;
-	const isCurrentlySimple = state.simple ?? false;
-	state.inline = true;
-	state.simple = true;
-	const result = parse(children, state);
-	state.inline = isCurrentlyInline;
-	state.simple = isCurrentlySimple;
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`parseInline: ${duration.toFixed(3)}ms, children length: ${children.length}, result count: ${result.length}`);
-	return result;
-};
-var parseSimpleInline = (parse, children, state) => {
-	const start = performance.now();
-	const isCurrentlyInline = state.inline ?? false;
-	const isCurrentlySimple = state.simple ?? false;
-	state.inline = false;
-	state.simple = true;
-	const result = parse(children, state);
-	state.inline = isCurrentlyInline;
-	state.simple = isCurrentlySimple;
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`parseSimpleInline: ${duration.toFixed(3)}ms, children length: ${children.length}, result count: ${result.length}`);
-	return result;
-};
-var parseBlock = (parse, children, state = {}) => {
-	const start = performance.now();
-	const isCurrentlyInline = state.inline || false;
-	state.inline = false;
-	const normalizedChildren = trimEnd(children);
-	const result = parse(/\n\n$/.test(normalizedChildren) === false ? normalizedChildren.endsWith("\n") ? `${normalizedChildren}\n` : `${normalizedChildren}\n\n` : normalizedChildren, state);
-	state.inline = isCurrentlyInline;
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`parseBlock: ${duration.toFixed(3)}ms, children length: ${children.length}, result count: ${result.length}`);
-	return result;
-};
-var parseCaptureInline = (capture, parse, state) => {
-	return { children: parseInline(parse, capture[2], state) };
-};
-var captureNothing = () => ({});
-var renderNothing = () => null;
-var some = (regexes, input) => {
-	for (let i = 0; i < regexes.length; i++) if (regexes[i].test(input)) return true;
-	return false;
-};
-var parserFor = (rules) => {
-	const start = performance.now();
-	const ruleList = Object.keys(rules);
-	ruleList.forEach((type) => {
-		const order = rules[type]._order;
-		if (typeof order !== "number" || !Number.isFinite(order)) console.warn(`intlayer: Invalid order for rule \`${type}\`: ${order}`);
-	});
-	ruleList.sort((a, b) => {
-		return rules[a]._order - rules[b]._order || +a - +b;
-	});
-	const nestedParse = (source, state = {}) => {
-		const parseStart = performance.now();
-		const result = [];
-		state.prevCapture = state.prevCapture || "";
-		if (source.trim()) while (source) {
-			let i = 0;
-			while (i < ruleList.length) {
-				const ruleType = ruleList[i];
-				const rule = rules[ruleType];
-				if (rule._qualify && !qualifies(source, state, rule._qualify)) {
-					i++;
-					continue;
-				}
-				const matchStart = performance.now();
-				const capture = rule._match(source, state);
-				const matchDuration = performance.now() - matchStart;
-				if (matchDuration > 1) console.log(`${ruleType}._match: ${matchDuration.toFixed(3)}ms, source length: ${source.length}`);
-				if (capture?.[0]) {
-					source = source.substring(capture[0].length);
-					const ruleParseStart = performance.now();
-					const parsedAny = rule._parse(capture, nestedParse, state);
-					const ruleParseDuration = performance.now() - ruleParseStart;
-					if (ruleParseDuration > 1) console.log(`${ruleType}._parse: ${ruleParseDuration.toFixed(3)}ms, capture length: ${capture[0].length}`);
-					state.prevCapture = (state.prevCapture || "") + capture[0];
-					if (!parsedAny.type) parsedAny.type = ruleType;
-					result.push(parsedAny);
-					break;
-				}
-				i++;
-			}
-		}
-		const parseDuration = performance.now() - parseStart;
-		if (parseDuration > 1) console.log(`nestedParse: ${parseDuration.toFixed(3)}ms, source length: ${source.length}, result count: ${result.length}`);
-		return result;
-	};
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`parserFor: ${duration.toFixed(3)}ms, rules count: ${ruleList.length}`);
-	return (source, state) => nestedParse(normalizeWhitespace(source), state);
-};
-var renderFor = (render) => (ast, state = {}) => {
-	const start = performance.now();
-	const patchedRender = (ast, state = {}) => renderFor(render)(ast, state);
-	if (Array.isArray(ast)) {
-		const oldKey = state.key;
-		const result = [];
-		let lastWasString = false;
-		let renderedIndex = 0;
-		for (let i = 0; i < ast.length; i++) {
-			const nodeOut = patchedRender(ast[i], {
-				...state,
-				key: renderedIndex
-			});
-			const isString = typeof nodeOut === "string";
-			if (isString && lastWasString) result[result.length - 1] = result[result.length - 1] + nodeOut;
-			else if (nodeOut !== null) {
-				result.push(nodeOut);
-				renderedIndex++;
-			}
-			lastWasString = isString;
-		}
-		state.key = oldKey;
-		const duration = performance.now() - start;
-		if (duration > 20) console.log(`renderFor (array): ${duration.toFixed(3)}ms, ast length: ${ast.length}`);
-		return result;
-	}
-	const result = render(ast, patchedRender, state);
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`renderFor (single): ${duration.toFixed(3)}ms, ast type: ${ast.type}`);
-	return result;
-};
-var createRenderer = (rules, userRender) => (ast, render, state) => {
-	const start = performance.now();
-	const renderer = rules[ast.type]?._render;
-	const result = userRender ? userRender(() => renderer?.(ast, render, state), ast, render, state) : renderer?.(ast, render, state);
-	const duration = performance.now() - start;
-	if (duration > 20) console.log(`createRenderer: ${duration.toFixed(3)}ms, ast type: ${ast.type}, hasUserRender: ${!!userRender}`);
-	return result;
-};
-var IMAGE_R = /^!\[(.*?)\]\( *((?:\([^)]*\)|[^() ])*) *"?([^)"]*)?"?\)/;
-var LINK_R = new RegExp(`^\\[((?:\\[[^\\[\\]]*(?:\\[[^\\[\\]]*\\][^\\[\\]]*)*\\]|[^\\[\\]])*)\\]\\(\\s*<?((?:\\([^)]*\\)|[^\\s\\\\]|\\\\.)*?)>?(?:\\s+['"]([\\s\\S]*?)['"])?\\s*\\)`);
-var getTag = (tag, components) => {
-	if (typeof tag !== "string") return tag;
-	let override = get(components, tag);
-	if (!override && typeof tag === "string") {
-		const lowercaseTag = tag.toLowerCase();
-		const key = Object.keys(components).find((k) => k.toLowerCase() === lowercaseTag);
-		if (key) override = get(components, key);
-	}
-	if (!override) return tag;
-	return override;
-};
-var createElementFactory = (ctx, options) => {
-	const { runtime, components = {} } = ctx;
-	const filteredTags = options.tagfilter ? [
-		"title",
-		"textarea",
-		"style",
-		"xmp",
-		"iframe",
-		"noembed",
-		"noframes",
-		"script",
-		"plaintext"
-	] : [];
-	return (tag, props, ...children) => {
-		if (typeof tag === "string" && filteredTags.includes(tag.toLowerCase())) return null;
-		const isStringTag = typeof tag === "string";
-		const className = cx(props?.className, props?.class);
-		const mergedProps = {};
-		let classNameHandled = false;
-		if (props) for (const key in props) {
-			const value = props[key];
-			if (value === void 0 || value === null) continue;
-			if (key === "className" || key === "class") {
-				if (!classNameHandled) {
-					if (className) mergedProps.className = className;
-					classNameHandled = true;
-				}
-			} else mergedProps[key] = value;
-		}
-		if (!classNameHandled && className) mergedProps.className = className;
-		let finalProps = mergedProps;
-		if (runtime.normalizeProps && isStringTag) finalProps = runtime.normalizeProps(tag, mergedProps);
-		const component = getTag(tag, components);
-		return runtime.createElement(component, finalProps, ...children.length === 1 ? [children[0]] : children);
-	};
-};
-var createRules = (createElement, ctx, options, footnotes, refs, attrStringToMap, containsBlockSyntax, nonParagraphBlockSyntaxes) => {
-	const slug = (input) => {
-		return ctx.slugify ? ctx.slugify(input, slugify) : slugify(input);
-	};
-	const sanitize = ctx.sanitizer ?? sanitizer;
-	const namedCodesToUnicode = ctx.namedCodesToUnicode ? {
-		...NAMED_CODES_TO_UNICODE,
-		...ctx.namedCodesToUnicode
-	} : NAMED_CODES_TO_UNICODE;
-	const generateListRule = (type) => {
-		const ordered = type === 1;
-		const LIST_R = ordered ? ORDERED_LIST_R : UNORDERED_LIST_R;
-		const LIST_ITEM_R = ordered ? ORDERED_LIST_ITEM_R : UNORDERED_LIST_ITEM_R;
-		const LIST_ITEM_PREFIX_R = ordered ? ORDERED_LIST_ITEM_PREFIX_R : UNORDERED_LIST_ITEM_PREFIX_R;
-		return {
-			_qualify: (source) => LIST_ITEM_PREFIX_R.test(source),
-			_match: allowInline((source, state) => {
-				const isStartOfLine = LIST_LOOKBEHIND_R.exec(state.prevCapture ?? "");
-				const isListAllowed = state.list ?? (!state.inline && !state.simple);
-				if (isStartOfLine && isListAllowed) {
-					const matchSource = (isStartOfLine[1] || "") + source;
-					return LIST_R.exec(matchSource);
-				}
-				return null;
-			}),
-			_order: Priority.HIGH,
-			_parse(capture, parse, state) {
-				const bullet = capture[2];
-				const startValue = ordered ? +bullet.slice(0, -1) : void 0;
-				const items = capture[0].replace(BLOCK_END_R, "\n").match(LIST_ITEM_R);
-				if (!items) return {
-					items: [],
-					ordered,
-					start: startValue
-				};
-				let lastItemWasAParagraph = false;
-				return {
-					items: items.map((item, i) => {
-						const prefixCapture = LIST_ITEM_PREFIX_R.exec(item);
-						const space = prefixCapture ? prefixCapture[0].length : 0;
-						const spaceRegex = new RegExp(`^ {1,${space}}`, "gm");
-						const content = item.replace(spaceRegex, "").replace(LIST_ITEM_PREFIX_R, "");
-						const isLastItem = i === items.length - 1;
-						const thisItemIsAParagraph = content.indexOf("\n\n") !== -1 || isLastItem && lastItemWasAParagraph;
-						lastItemWasAParagraph = thisItemIsAParagraph;
-						const oldStateInline = state.inline;
-						const oldStateList = state.list;
-						state.list = true;
-						let adjustedContent;
-						if (thisItemIsAParagraph) {
-							state.inline = false;
-							adjustedContent = `${trimEnd(content)}\n\n`;
-						} else {
-							state.inline = true;
-							adjustedContent = trimEnd(content);
-						}
-						const parsed = parse(adjustedContent, state);
-						state.inline = oldStateInline;
-						state.list = oldStateList;
-						return parsed;
-					}),
-					ordered,
-					start: startValue
-				};
-			},
-			_render(node, output, state = {}) {
-				const Tag = node.ordered ? "ol" : "ul";
-				const props = { key: state.key };
-				if (node.ordered && node.start != null) props.start = node.start;
-				return createElement(Tag, props, ...node.items.map((item, i) => createElement("li", { key: i }, output(item, state))));
-			}
-		};
-	};
-	const matchParagraph = (source, state) => {
-		if (state.inline || state.simple || state.inHTML && source.indexOf("\n\n") === -1 && state.prevCapture?.indexOf("\n\n") === -1) return null;
-		let start = 0;
-		while (true) {
-			const newlineIndex = source.indexOf("\n", start);
-			const line = source.slice(start, newlineIndex === -1 ? void 0 : newlineIndex + 1);
-			if (some(nonParagraphBlockSyntaxes, line)) break;
-			if (newlineIndex === -1 || !line.trim()) break;
-			start = newlineIndex + 1;
-		}
-		const match = source.slice(0, start);
-		if (match === "") return null;
-		const captured = trimEnd(match);
-		if (captured === "") return null;
-		return [
-			match,
-			void 0,
-			captured
-		];
-	};
-	return {
-		[RuleType.blockQuote]: {
-			_qualify: [">"],
-			_match: blockRegex(BLOCKQUOTE_R),
-			_order: Priority.HIGH,
-			_parse(capture, parse, state) {
-				const matchAlert = capture[0].replace(BLOCKQUOTE_TRIM_LEFT_MULTILINE_R, "").match(BLOCKQUOTE_ALERT_R);
-				const alert = matchAlert?.[1];
-				const content = matchAlert?.[2] ?? "";
-				return {
-					alert,
-					children: content.indexOf("\n") !== -1 ? parseBlock(parse, content, state) : parseInline(parse, content, state)
-				};
-			},
-			_render(node, output, state = {}) {
-				const props = { key: state.key };
-				if (node.alert) {
-					props.className = `markdown-alert-${slug(node.alert.toLowerCase())}`;
-					node.children.unshift({
-						attrs: {},
-						children: [{
-							type: RuleType.text,
-							text: node.alert
-						}],
-						noInnerParse: true,
-						type: RuleType.htmlBlock,
-						tag: "header"
-					});
-				}
-				return createElement("blockquote", props, output(node.children, state));
-			}
-		},
-		[RuleType.breakLine]: {
-			_qualify: ["  "],
-			_match: anyScopeRegex(BREAK_LINE_R),
-			_order: Priority.HIGH,
-			_parse: captureNothing,
-			_render(_, __, state = {}) {
-				return createElement("br", { key: state.key });
-			}
-		},
-		[RuleType.breakThematic]: {
-			_qualify: [
-				"--",
-				"__",
-				"**",
-				"- ",
-				"* ",
-				"_ "
-			],
-			_match: blockRegex(BREAK_THEMATIC_R),
-			_order: Priority.HIGH,
-			_parse: captureNothing,
-			_render(_, __, state = {}) {
-				return createElement("hr", { key: state.key });
-			}
-		},
-		[RuleType.codeBlock]: {
-			_qualify: ["    "],
-			_match: blockRegex(CODE_BLOCK_R),
-			_order: Priority.MAX,
-			_parse(capture) {
-				return {
-					type: RuleType.codeBlock,
-					lang: void 0,
-					text: unescapeString(trimEnd(capture[0].replace(/^ {4}/gm, "")))
-				};
-			},
-			_render(node, _, state = {}) {
-				const attrs = { ...node.attrs ?? {} };
-				const langClass = node.lang ? `lang-${node.lang}` : "lang-plaintext";
-				attrs.className = attrs.className ? `${attrs.className} ${langClass}` : langClass;
-				if (node.lang && !attrs.lang) attrs.lang = node.lang;
-				return createElement("pre", { key: state.key }, createElement("code", attrs, node.text));
-			}
-		},
-		[RuleType.codeFenced]: {
-			_qualify: ["```", "~~~"],
-			_match: blockRegex(CODE_BLOCK_FENCED_R),
-			_order: Priority.MAX,
-			_parse(capture) {
-				return {
-					attrs: attrStringToMap("code", capture[3] ?? ""),
-					lang: capture[2] || void 0,
-					text: capture[4],
-					type: RuleType.codeBlock
-				};
-			}
-		},
-		[RuleType.codeInline]: {
-			_qualify: ["`"],
-			_match: simpleInlineRegex(CODE_INLINE_R),
-			_order: Priority.LOW,
-			_parse(capture) {
-				return { text: unescapeString(capture[2]) };
-			},
-			_render(node, _, state = {}) {
-				return createElement("code", { key: state.key }, node.text);
-			}
-		},
-		[RuleType.footnote]: {
-			_qualify: ["[^"],
-			_match: blockRegex(FOOTNOTE_R),
-			_order: Priority.MAX,
-			_parse(capture) {
-				footnotes.push({
-					footnote: capture[2],
-					identifier: capture[1]
-				});
-				return {};
-			},
-			_render: renderNothing
-		},
-		[RuleType.footnoteReference]: {
-			_qualify: ["[^"],
-			_match: inlineRegex(FOOTNOTE_REFERENCE_R),
-			_order: Priority.HIGH,
-			_parse(capture) {
-				return {
-					target: `#${slug(capture[1])}`,
-					text: capture[1]
-				};
-			},
-			_render(node, _, state = {}) {
-				return createElement("a", {
-					key: state.key,
-					href: sanitize(node.target, "a", "href") ?? void 0
-				}, createElement("sup", { key: state.key }, node.text));
-			}
-		},
-		[RuleType.gfmTask]: {
-			_qualify: ["[ ]", "[x]"],
-			_match: inlineRegex(GFM_TASK_R),
-			_order: Priority.HIGH,
-			_parse(capture) {
-				return { completed: capture[1].toLowerCase() === "x" };
-			},
-			_render(node, _, state = {}) {
-				return createElement("input", {
-					checked: node.completed,
-					key: state.key,
-					readOnly: true,
-					type: "checkbox"
-				});
-			}
-		},
-		[RuleType.heading]: {
-			_qualify: ["#"],
-			_match: blockRegex(options.enforceAtxHeadings ? HEADING_ATX_COMPLIANT_R : HEADING_R),
-			_order: Priority.HIGH,
-			_parse(capture, parse, state) {
-				return {
-					children: parseInline(parse, capture[2], state),
-					id: slug(capture[2]),
-					level: capture[1].length
-				};
-			},
-			_render(node, output, state = {}) {
-				return createElement(`h${node.level}`, {
-					id: node.id,
-					key: state.key
-				}, output(node.children, state));
-			}
-		},
-		[RuleType.headingSetext]: {
-			_qualify: (source) => {
-				const nlIndex = source.indexOf("\n");
-				return nlIndex > 0 && nlIndex < source.length - 1 && (source[nlIndex + 1] === "=" || source[nlIndex + 1] === "-");
-			},
-			_match: blockRegex(HEADING_SETEXT_R),
-			_order: Priority.MAX,
-			_parse(capture, parse, state) {
-				return {
-					children: parseInline(parse, capture[1], state),
-					level: capture[2] === "=" ? 1 : 2,
-					type: RuleType.heading
-				};
-			}
-		},
-		[RuleType.htmlBlock]: {
-			_qualify: (source) => {
-				if (options.disableParsingRawHTML) return false;
-				const match = source.match(/^ *<([a-z][a-z0-9:-]*)\b/i);
-				if (!match) return false;
-				const tag = match[1];
-				return source.toLowerCase().indexOf(`</${tag.toLowerCase()}>`) !== -1;
-			},
-			_match: anyScopeRegex(HTML_BLOCK_ELEMENT_R),
-			_order: Priority.HIGH,
-			_parse(capture, parse, state) {
-				const whitespace = capture[3].match(HTML_LEFT_TRIM_AMOUNT_R)?.[1] ?? "";
-				const trimmed = trimLeadingWhitespaceOutsideFences(capture[3], whitespace);
-				const parseFunc = containsBlockSyntax(trimmed) ? parseBlock : parseInline;
-				const tagName = capture[1].trim();
-				const noInnerParse = DO_NOT_PROCESS_HTML_ELEMENTS.indexOf(tagName.toLowerCase()) !== -1;
-				const tag = noInnerParse ? tagName.toLowerCase() : tagName;
-				const ast = {
-					attrs: attrStringToMap(tag, capture[2] ?? ""),
-					noInnerParse,
-					tag
-				};
-				state.inAnchor = state.inAnchor || tagName.toLowerCase() === "a";
-				if (noInnerParse) ast.text = capture[3];
-				else {
-					const prevInHTML = state.inHTML;
-					state.inHTML = true;
-					ast.children = parseFunc(parse, trimmed, state);
-					state.inHTML = prevInHTML;
-				}
-				state.inAnchor = false;
-				return ast;
-			},
-			_render(node, output, state = {}) {
-				return createElement(node.tag, {
-					key: state.key,
-					...node.attrs ?? {}
-				}, node.text ?? (node.children ? output(node.children, state) : ""));
-			}
-		},
-		[RuleType.htmlComment]: {
-			_qualify: ["<!"],
-			_match: anyScopeRegex(HTML_COMMENT_R),
-			_order: Priority.HIGH,
-			_parse: captureNothing,
-			_render: renderNothing
-		},
-		[RuleType.htmlSelfClosing]: {
-			_qualify: (source) => {
-				if (options.disableParsingRawHTML) return false;
-				return /^ *<([a-zA-Z][a-zA-Z0-9:]*)[\s>/]/.test(source);
-			},
-			_match: anyScopeRegex(HTML_SELF_CLOSING_ELEMENT_R),
-			_order: Priority.HIGH,
-			_parse(capture) {
-				const tag = capture[1].trim();
-				return {
-					attrs: attrStringToMap(tag, capture[2] || ""),
-					tag
-				};
-			},
-			_render(node, _, state = {}) {
-				return createElement(node.tag, {
-					key: state.key,
-					...node.attrs ?? {}
-				});
-			}
-		},
-		[RuleType.customComponent]: {
-			_qualify: (source) => /^ *<([A-Z][a-zA-Z0-9]*)/.test(source),
-			_match: anyScopeRegex(CUSTOM_COMPONENT_R),
-			_order: Priority.MAX,
-			_parse(capture, parse, state) {
-				const whitespace = capture[3].match(HTML_LEFT_TRIM_AMOUNT_R)?.[1] ?? "";
-				const trimmed = trimLeadingWhitespaceOutsideFences(capture[3], whitespace);
-				const parseFunc = containsBlockSyntax(trimmed) ? parseBlock : parseInline;
-				const tag = capture[1].trim();
-				const ast = {
-					attrs: attrStringToMap(tag, capture[2] ?? ""),
-					noInnerParse: false,
-					tag
-				};
-				const prevInHTML = state.inHTML;
-				state.inHTML = true;
-				ast.children = parseFunc(parse, trimmed, state);
-				state.inHTML = prevInHTML;
-				return ast;
-			},
-			_render(node, output, state = {}) {
-				return createElement(node.tag, {
-					key: state.key,
-					...node.attrs ?? {}
-				}, node.text ?? (node.children ? output(node.children, state) : ""));
-			}
-		},
-		[RuleType.paragraph]: {
-			_match: matchParagraph,
-			_order: Priority.LOW,
-			_parse: parseCaptureInline,
-			_render(node, output, state = {}) {
-				return createElement("p", { key: state.key }, output(node.children, state));
-			}
-		},
-		[RuleType.image]: {
-			_qualify: ["!["],
-			_match: simpleInlineRegex(IMAGE_R),
-			_order: Priority.HIGH,
-			_parse(capture) {
-				return {
-					alt: unescapeString(capture[1]),
-					target: unescapeString(capture[2]),
-					title: unescapeString(capture[3])
-				};
-			},
-			_render(node, _, state = {}) {
-				return createElement("img", {
-					key: state.key,
-					alt: node.alt ?? void 0,
-					title: node.title ?? void 0,
-					src: sanitize(node.target, "img", "src") ?? void 0
-				});
-			}
-		},
-		[RuleType.link]: {
-			_qualify: ["["],
-			_match: inlineRegex(LINK_R),
-			_order: Priority.LOW,
-			_parse(capture, parse, state) {
-				return {
-					children: parseSimpleInline(parse, capture[1], state),
-					target: unescapeString(capture[2]),
-					title: unescapeString(capture[3])
-				};
-			},
-			_render(node, output, state = {}) {
-				const sanitizedHref = sanitize(node.target, "a", "href");
-				return createElement("a", {
-					key: state.key,
-					href: sanitizedHref ?? void 0,
-					title: node.title ?? void 0
-				}, output(node.children, state));
-			}
-		},
-		[RuleType.linkAngleBraceStyleDetector]: {
-			_qualify: ["<"],
-			_match: inlineRegex(LINK_AUTOLINK_R),
-			_order: Priority.MAX,
-			_parse(capture) {
-				let target = capture[1];
-				let isEmail = false;
-				if (target.indexOf("@") !== -1 && target.indexOf("//") === -1) {
-					isEmail = true;
-					target = target.replace("mailto:", "");
-				}
-				return {
-					children: [{
-						text: target,
-						type: RuleType.text
-					}],
-					target: isEmail ? `mailto:${target}` : target,
-					type: RuleType.link
-				};
-			}
-		},
-		[RuleType.linkBareUrlDetector]: {
-			_qualify: (source, state) => !!(state.inline && !state.inAnchor && !options.disableAutoLink && (startsWith(source, "http://") || startsWith(source, "https://"))),
-			_match: inlineRegex(LINK_AUTOLINK_BARE_URL_R),
-			_order: Priority.MAX,
-			_parse(capture) {
-				return {
-					children: [{
-						text: capture[1],
-						type: RuleType.text
-					}],
-					target: capture[1],
-					type: RuleType.link
-				};
-			}
-		},
-		[RuleType.newlineCoalescer]: {
-			_match: blockRegex(CONSECUTIVE_NEWLINE_R),
-			_order: Priority.LOW,
-			_parse: captureNothing,
-			_render() {
-				return "\n";
-			}
-		},
-		[RuleType.orderedList]: generateListRule(1),
-		[RuleType.unorderedList]: generateListRule(2),
-		[RuleType.ref]: {
-			_qualify: ["["],
-			_match: anyScopeRegex(REFERENCE_IMAGE_OR_LINK),
-			_order: Priority.MAX,
-			_parse(capture) {
-				refs[capture[1]] = {
-					target: capture[2],
-					title: capture[4]
-				};
-				return {};
-			},
-			_render: renderNothing
-		},
-		[RuleType.refImage]: {
-			_qualify: ["!["],
-			_match: simpleInlineRegex(REFERENCE_IMAGE_R),
-			_order: Priority.MAX,
-			_parse(capture) {
-				return {
-					alt: capture[1] ? unescapeString(capture[1]) : void 0,
-					ref: capture[2]
-				};
-			},
-			_render(node, _, state = {}) {
-				const ref = refs[node.ref];
-				if (!ref) return null;
-				return createElement("img", {
-					key: state.key,
-					alt: node.alt,
-					src: sanitize(ref.target, "img", "src") ?? void 0,
-					title: ref.title
-				});
-			}
-		},
-		[RuleType.refLink]: {
-			_qualify: (source) => source[0] === "[" && source.indexOf("](") === -1,
-			_match: inlineRegex(REFERENCE_LINK_R),
-			_order: Priority.MAX,
-			_parse(capture, parse, state) {
-				return {
-					children: parseSimpleInline(parse, capture[1], state),
-					fallbackChildren: capture[0],
-					ref: capture[2]
-				};
-			},
-			_render(node, output, state = {}) {
-				const ref = refs[node.ref];
-				if (!ref) return createElement("span", { key: state.key }, node.fallbackChildren);
-				return createElement("a", {
-					key: state.key,
-					href: sanitize(ref.target, "a", "href") ?? void 0,
-					title: ref.title
-				}, output(node.children, state));
-			}
-		},
-		[RuleType.table]: {
-			_qualify: ["|"],
-			_match: blockRegex(NP_TABLE_R),
-			_order: Priority.HIGH,
-			_parse(capture, parse, state) {
-				state.inline = true;
-				const align = capture[2] ? parseTableAlign(capture[2]) : [];
-				const cells = capture[3] ? parseTableCells(capture[3], parse, state) : [];
-				const header = parseTableRow(capture[1], parse, state, !!cells.length);
-				state.inline = false;
-				return cells.length ? {
-					align,
-					cells,
-					header,
-					type: RuleType.table
-				} : {
-					children: header.flat(),
-					type: RuleType.paragraph
-				};
-			},
-			_render(node, output, state = {}) {
-				const table = node;
-				const getStyle = (i) => table.align[i] && table.align[i] !== "left" ? { textAlign: table.align[i] } : {};
-				return createElement("table", { key: state.key }, createElement("thead", null, createElement("tr", null, ...table.header.map((c, i) => createElement("th", {
-					key: i,
-					style: getStyle(i)
-				}, output(c, state))))), createElement("tbody", null, ...table.cells.map((row, i) => createElement("tr", { key: i }, ...row.map((c, j) => createElement("td", {
-					key: j,
-					style: getStyle(j)
-				}, output(c, state)))))));
-			}
-		},
-		[RuleType.tableSeparator]: {
-			_match: (source, state) => state.inTable && source[0] === "|" ? /^\|/.exec(source) : null,
-			_order: Priority.HIGH,
-			_parse() {
-				return { type: RuleType.tableSeparator };
-			},
-			_render() {
-				return " | ";
-			}
-		},
-		[RuleType.text]: {
-			_match: allowInline((source, _state) => {
-				const shortMatch = SHORTCODE_R.exec(source);
-				if (shortMatch) return shortMatch;
-				return TEXT_PLAIN_R.exec(source) || /^[\s\S]/.exec(source);
-			}),
-			_order: Priority.MIN,
-			_parse(capture) {
-				const text = capture[0];
-				return { text: text.indexOf("&") === -1 ? text : text.replace(HTML_CHAR_CODE_R, (f, i) => {
-					if (i.startsWith("#x")) return String.fromCharCode(parseInt(i.slice(2), 16));
-					if (i.startsWith("#")) return String.fromCharCode(parseInt(i.slice(1), 10));
-					return namedCodesToUnicode[i] || f;
-				}) };
-			},
-			_render(node) {
-				return node.text;
-			}
-		},
-		[RuleType.textBolded]: {
-			_qualify: ["**", "__"],
-			_match: simpleInlineRegex(TEXT_BOLD_R),
-			_order: Priority.MED,
-			_parse(capture, parse, state) {
-				return { children: parse(capture[2], state) };
-			},
-			_render(node, output, state = {}) {
-				return createElement("strong", { key: state.key }, output(node.children, state));
-			}
-		},
-		[RuleType.textEmphasized]: {
-			_qualify: ["*", "_"],
-			_match: simpleInlineRegex(TEXT_EMPHASIZED_R),
-			_order: Priority.LOW,
-			_parse(capture, parse, state) {
-				return { children: parse(capture[2], state) };
-			},
-			_render(node, output, state = {}) {
-				return createElement("em", { key: state.key }, output(node.children, state));
-			}
-		},
-		[RuleType.textEscaped]: {
-			_qualify: ["\\"],
-			_match: simpleInlineRegex(TEXT_ESCAPED_R),
-			_order: Priority.HIGH,
-			_parse(capture) {
-				return {
-					text: capture[1],
-					type: RuleType.text
-				};
-			}
-		},
-		[RuleType.textMarked]: {
-			_qualify: ["=="],
-			_match: simpleInlineRegex(TEXT_MARKED_R),
-			_order: Priority.LOW,
-			_parse: parseCaptureInline,
-			_render(node, output, state = {}) {
-				return createElement("mark", { key: state.key }, output(node.children, state));
-			}
-		},
-		[RuleType.textStrikethroughed]: {
-			_qualify: ["~~"],
-			_match: simpleInlineRegex(TEXT_STRIKETHROUGHED_R),
-			_order: Priority.LOW,
-			_parse: parseCaptureInline,
-			_render(node, output, state = {}) {
-				return createElement("del", { key: state.key }, output(node.children, state));
-			}
-		}
-	};
-};
-var compile = (markdown = "", ctx, options = {}) => {
-	const components = ctx.components ?? {};
-	const slug = (input) => {
-		return ctx.slugify ? ctx.slugify(input, slugify) : slugify(input);
-	};
-	const createElement = createElementFactory(ctx, options);
-	const footnotes = [];
-	const refs = {};
-	const attrStringToMap = (tag, str) => {
-		if (!str || !str.trim()) return null;
-		const attributes = str.match(ATTR_EXTRACTOR_R);
-		if (!attributes) return null;
-		return attributes.reduce((map, raw) => {
-			const delimiterIdx = raw.indexOf("=");
-			if (delimiterIdx !== -1) {
-				const key = normalizeAttributeKey(raw.slice(0, delimiterIdx)).trim();
-				const value = unquote(raw.slice(delimiterIdx + 1).trim());
-				const mappedKey = ATTRIBUTE_TO_NODE_PROP_MAP[key] ?? key;
-				if (mappedKey === "ref") return map;
-				map[mappedKey] = attributeValueToNodePropValue(tag, key, value, ctx.sanitizer ?? sanitizer);
-				if (typeof map[mappedKey] === "string" && (HTML_BLOCK_ELEMENT_R.test(map[mappedKey]) || HTML_SELF_CLOSING_ELEMENT_R.test(map[mappedKey]))) map[mappedKey] = compileInner(map[mappedKey].trim());
-			} else if (raw !== "style") map[ATTRIBUTE_TO_NODE_PROP_MAP[raw] ?? raw] = true;
-			return map;
-		}, {});
-	};
-	const nonParagraphBlockSyntaxes = [
-		BLOCKQUOTE_R,
-		CODE_BLOCK_FENCED_R,
-		CODE_BLOCK_R,
-		options.enforceAtxHeadings ? HEADING_ATX_COMPLIANT_R : HEADING_R,
-		HEADING_SETEXT_R,
-		NP_TABLE_R,
-		ORDERED_LIST_R,
-		UNORDERED_LIST_R,
-		CUSTOM_COMPONENT_R
-	];
-	const containsBlockSyntax = (input) => {
-		const cleaned = input.replace(TRIM_STARTING_NEWLINES, "");
-		const slice = cleaned.length > 2048 ? cleaned.slice(0, 2048) : cleaned;
-		return some(options.disableParsingRawHTML ? nonParagraphBlockSyntaxes : [
-			...nonParagraphBlockSyntaxes,
-			PARAGRAPH_R,
-			HTML_BLOCK_ELEMENT_R,
-			HTML_COMMENT_R,
-			HTML_SELF_CLOSING_ELEMENT_R,
-			CUSTOM_COMPONENT_R
-		], slice);
-	};
-	const baseRules = createRules(createElement, ctx, options, footnotes, refs, attrStringToMap, containsBlockSyntax, nonParagraphBlockSyntaxes);
-	const rules = options.disableParsingRawHTML ? Object.keys(baseRules).reduce((acc, key) => {
-		if (key !== RuleType.htmlBlock && key !== RuleType.htmlSelfClosing) acc[key] = baseRules[key];
-		return acc;
-	}, {}) : baseRules;
-	const parser = parserFor(rules);
-	const emitter = renderFor(createRenderer(rules, options.renderRule));
-	const compileInner = (input) => {
-		const result = options.preserveFrontmatter ? input : input.replace(FRONT_MATTER_R, "");
-		const inline = options.forceInline || !options.forceBlock && SHOULD_RENDER_AS_BLOCK_R.test(result.replace(TRIM_STARTING_NEWLINES, "")) === false;
-		const arr = emitter(parser(inline ? result : `${trimEnd(result).replace(TRIM_STARTING_NEWLINES, "")}\n\n`, { inline }), { inline });
-		while (typeof arr[arr.length - 1] === "string" && !arr[arr.length - 1].trim()) arr.pop();
-		if (options.wrapper === null) return arr;
-		const wrapper = options.wrapper ?? (inline ? "span" : "div");
-		if (arr.length > 1 || options.forceWrapper) return createElement(wrapper, { key: "outer" }, arr);
-		if (arr.length === 1) {
-			const node = arr[0];
-			if (typeof node === "string") {
-				const spanProps = { key: "outer" };
-				if (!inline && components) {
-					const pOverrideProps = get(components, "p.props", {}) ?? {};
-					const mergedClassName = cx(spanProps.className, pOverrideProps.className);
-					const finalSpanProps = {
-						...spanProps,
-						...pOverrideProps
-					};
-					if (mergedClassName) finalSpanProps.className = mergedClassName;
-					return createElement("span", finalSpanProps, node);
-				}
-				return createElement("span", spanProps, node);
-			}
-			return node;
-		}
-		return createElement(wrapper, { key: "outer" }, null);
-	};
-	if (typeof markdown !== "string") {
-		console.error("intlayer: the first argument must be a string. Received", typeof markdown);
-		throw new Error("intlayer: the first argument must be a string");
-	}
-	const node = compileInner(markdown);
-	return footnotes.length ? createElement("div", null, node, createElement("footer", { key: "footer" }, ...footnotes.map((def) => createElement("div", {
-		id: slug(def.identifier),
-		key: def.identifier
-	}, def.identifier, emitter(parser(def.footnote, { inline: true }), { inline: true }))))) : node;
-};
-var compileWithOptions = (markdown, runtime, options = {}) => {
-	const { components, namedCodesToUnicode, sanitizer, slugify, ...compilerOptions } = options;
-	return compile(markdown, {
-		runtime,
-		components,
-		namedCodesToUnicode,
-		sanitizer,
-		slugify
-	}, compilerOptions);
-};
-export { compileWithOptions, getMarkdownMetadata };
-var TRANSLATION = "translation";
-var ENUMERATION = "enumeration";
-var CONDITION = "condition";
-var INSERTION = "insertion";
-var FILE = "file";
-var OBJECT = "object";
-var ARRAY = "array";
-var REACT_NODE = "reactNode";
-var MARKDOWN = "markdown";
-var HTML = "html";
-export { HTML as a, OBJECT as c, FILE as i, REACT_NODE as l, CONDITION as n, INSERTION as o, ENUMERATION as r, MARKDOWN as s, ARRAY as t, TRANSLATION as u };
+export { OBJECT as _, fallbackPlugin as a, nestedPlugin as c, CONDITION as d, ENUMERATION as f, MARKDOWN as g, INSERTION as h, enumerationPlugin as i, translationPlugin as l, HTML as m, getContent as n, filePlugin as o, FILE as p, conditionPlugin as r, genderPlugin as s, getBasePlugins as t, ARRAY as u, REACT_NODE as v, TRANSLATION as y };
 var dictionaries = {};
 var getUnmergedDictionaries = () => dictionaries;
 export { getUnmergedDictionaries };

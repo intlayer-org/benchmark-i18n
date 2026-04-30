@@ -1,8 +1,8 @@
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
-import { intlayerPlugin } from "vite-intlayer";
+import { intlayer } from "vite-intlayer";
 
 export default defineConfig({
-  plugins: [intlayerPlugin(), tailwindcss(), solid()],
+  plugins: [intlayer(), tailwindcss(), solid()],
 });

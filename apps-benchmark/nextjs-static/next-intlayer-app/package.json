@@ -17,12 +17,12 @@
     "test:rendering": "playwright test rendering.test.ts"
   },
   "dependencies": {
-    "@intlayer/swc": "^8.7.11",
+    "@intlayer/swc": "^8.7.12",
     "@tailwindcss/typography": "^0.5.19",
-    "intlayer": "8.7.11",
+    "intlayer": "8.7.12",
     "lucide-react": "^1.8.0",
     "next": "16.2.4",
-    "next-intlayer": "8.7.11",
+    "next-intlayer": "8.7.12",
     "react": "19.2.5",
     "react-dom": "19.2.5"
   },
@@ -38,7 +38,7 @@
     "tailwindcss": "^4",
     "test-utils": "workspace:*",
     "typescript": "^5",
-    "vite": "^8.0.9",
+    "vite": "^8.0.10",
     "vite-intlayer": "^8.7.0"
   }
 }

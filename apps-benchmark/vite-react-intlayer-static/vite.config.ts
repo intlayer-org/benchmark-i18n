@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import { intlayerPlugin } from "vite-intlayer";
+import { intlayer } from "vite-intlayer";
 import { visualizer } from "rollup-plugin-visualizer";
 import packageJson from "./package.json" with { type: "json" };
 
@@ -19,7 +19,7 @@ const config = defineConfig({
 
     tailwindcss(),
     viteReact(),
-    intlayerPlugin(),
+    intlayer(),
 
     visualizer({
       filename: `../../results/${packageJson.name}/bundle/stats.json`,

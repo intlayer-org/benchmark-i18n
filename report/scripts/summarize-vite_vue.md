@@ -516,14 +516,14 @@ _Generated: 2026-04-30_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 8.7.11 | 14.7 KB | 53.6 KB |
+| 8.7.12 | 2.7 KB | 7.6 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 49.5 KB | 57.9% | 0.0% | 18.5 KB | 1.1 ms | — | 28.5 ms | 10.6 ms |
-| Dynamic | ✅ | 49.5 KB | 57.9% | 0.0% | 18.5 KB | 1.1 ms | — | 28.5 ms | 10.6 ms |
-| Scoped Static | ✅ | 49.5 KB | 57.9% | 0.0% | 18.5 KB | 1.1 ms | — | 28.5 ms | 10.6 ms |
-| Scoped Dynamic | ✅ | 49.5 KB | 57.9% | 0.0% | 18.5 KB | 1.1 ms | — | 28.5 ms | 10.6 ms |
+| Static | ✅ | 49.5 KB | 57.9% | 0.0% | 6.5 KB | 1.1 ms | — | 28.5 ms | 10.6 ms |
+| Dynamic | ✅ | 49.5 KB | 57.9% | 0.0% | 6.5 KB | 1.1 ms | — | 28.5 ms | 10.6 ms |
+| Scoped Static | ✅ | 49.5 KB | 57.9% | 0.0% | 6.5 KB | 1.1 ms | — | 28.5 ms | 10.6 ms |
+| Scoped Dynamic | ✅ | 49.5 KB | 57.9% | 0.0% | 6.5 KB | 1.1 ms | — | 28.5 ms | 10.6 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>

@@ -41,6 +41,6 @@
     "tailwindcss": "^4",
     "test-utils": "workspace:*",
     "typescript": "^5",
-    "vite": "^8.0.9"
+    "vite": "^8.0.10"
   }
 }

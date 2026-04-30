@@ -1,74 +1,8 @@
 import { Fragment as e, createContext as t, createElement as n, isValidElement as r, useContext as i, useEffect as a, useMemo as o, useRef as s, useState as ee } from "react";
-import { Fragment as c, jsx as l, jsxs as u } from "react/jsx-runtime";
-import { jsxDEV as d } from "react/jsx-dev-runtime";
-var f = {
-	key: "route",
-	content: {
-		nodeType: "translation",
-		translation: {
-			en: {
-				c: "Oops! Page not found",
-				d: "Return to Home",
-				a: "Could not measure hydration duration:",
-				b: "i18n Benchmark"
-			},
-			fr: {
-				c: "Oups ! Page non trouvée",
-				d: "Retour à l'Accueil",
-				a: "Impossible de mesurer la durée d'hydratation :",
-				b: "Benchmark i18n"
-			},
-			es: {
-				c: "¡Vaya! Página no encontrada",
-				d: "Volver al Inicio",
-				a: "No se pudo medir la duración de la hidratación:",
-				b: "Benchmark i18n"
-			},
-			de: {
-				c: "Hoppla! Seite nicht gefunden",
-				d: "Zurück zur Startseite",
-				a: "Hydratisierungsdauer konnte nicht gemessen werden:",
-				b: "i18n Benchmark"
-			},
-			it: {
-				c: "Ops! Pagina non trovata",
-				d: "Torna alla Home",
-				a: "Impossibile misurare la durata dell'idratazione:",
-				b: "Benchmark i18n"
-			},
-			pt: {
-				c: "Ops! Página não encontrada",
-				d: "Voltar para o Início",
-				a: "Não foi possível medir a duración da hidratação:",
-				b: "Benchmark i18n"
-			},
-			zh: {
-				c: "糟糕！找不到页面",
-				d: "返回首页",
-				a: "无法测量注水时长：",
-				b: "i18n 基准测试"
-			},
-			ja: {
-				c: "おっと！ページが見つかりません",
-				d: "ホームに戻る",
-				a: "ハイドレーション時間を測定できませんでした：",
-				b: "i18n ベンチマーク"
-			},
-			ko: {
-				c: "웁스! 페이지를 찾을 수 없습니다",
-				d: "홈으로 돌아가기",
-				a: "하이드레이션 기간을 측정할 수 없습니다:",
-				b: "i18n 벤치마크"
-			},
-			ru: {
-				c: "Упс! Страница не найдена",
-				d: "Вернуться на главную",
-				a: "Не удалось измерить продолжительность гидратации:",
-				b: "i18n Бенчмарк"
-			}
-		}
-	}
-}, p = {
+import c from "../.intlayer/dictionary/route.json";
+import { Fragment as l, jsx as u, jsxs as d } from "react/jsx-runtime";
+import { jsxDEV as f } from "react/jsx-dev-runtime";
+var p = {
 	locales: [
 		"en",
 		"fr",
@@ -106,7 +40,7 @@ var f = {
 	},
 	basePath: ""
 }, h = ({ children: e, value: t, additionalProps: n }) => {
-	let i = r(e) ? e : l(c, { children: e });
+	let i = r(e) ? e : u(l, { children: e });
 	return new Proxy(i, { get(e, r, i) {
 		return r === "value" ? t : n && r in n ? n[r] : Reflect.get(e, r, i);
 	} });
@@ -440,22 +374,22 @@ var ue = (e, t, n) => {
 	setLocale: () => null,
 	isCookieEnabled: !0
 }), X = ({ locale: e, defaultLocale: t, children: n, setLocale: r, disableEditor: i, isCookieEnabled: o }) => {
-	let { locales: s, defaultLocale: c } = p ?? {}, [u, d] = ee(e ?? J ?? t ?? c);
+	let { locales: s, defaultLocale: c } = p ?? {}, [l, d] = ee(e ?? J ?? t ?? c);
 	a(() => {
-		e && e !== u && d(e);
+		e && e !== l && d(e);
 	}, [e]), a(() => {
 		ge();
 	}, []);
 	let f = r ?? ((e) => {
-		if (u.toString() !== e.toString()) {
+		if (l.toString() !== e.toString()) {
 			if (!s?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
 			d(e), pe(e, o);
 		}
-	}), m = le(u);
-	return l(Y.Provider, {
+	}), m = le(l);
+	return u(Y.Provider, {
 		value: {
 			locale: m,
 			setLocale: f,
@@ -463,9 +397,9 @@ var ue = (e, t, n) => {
 		},
 		children: n
 	});
-}, Z = ({ children: e, ...t }) => u(X, {
+}, Z = ({ children: e, ...t }) => d(X, {
 	...t,
-	children: [l(he, {}), e]
+	children: [u(he, {}), e]
 }), _e = (e, t) => {
 	let { locale: n } = i(Y) ?? {};
 	return o(() => ce(e, t ?? n), [
@@ -473,11 +407,11 @@ var ue = (e, t, n) => {
 		n,
 		t
 	]);
-}, Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/EmptyComponent.tsx", ve = () => (_e(f), null);
+}, Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/EmptyComponent.tsx", ve = () => (_e(c), null);
 function ye() {
-	return d(Z, {
+	return f(Z, {
 		locale: "en",
-		children: d(ve, {}, void 0, !1, {
+		children: f(ve, {}, void 0, !1, {
 			fileName: Q,
 			lineNumber: 13,
 			columnNumber: 7
@@ -490,7 +424,7 @@ function ye() {
 }
 var be = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
 function xe({ children: e }) {
-	return d(Z, {
+	return f(Z, {
 		locale: "en",
 		children: e
 	}, void 0, !1, {
@@ -501,7 +435,7 @@ function xe({ children: e }) {
 }
 var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/EmptyComponent.wrapper.tsx";
 function Se() {
-	return d(xe, { children: d(ye, {}, void 0, !1, {
+	return f(xe, { children: f(ye, {}, void 0, !1, {
 		fileName: $,
 		lineNumber: 9,
 		columnNumber: 11

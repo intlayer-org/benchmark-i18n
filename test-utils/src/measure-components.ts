@@ -45,7 +45,12 @@ import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
 import { benchmarkBloomRoot } from "./repo-root";
-import { build, loadConfigFromFile, resolveConfig, type PluginOption } from "vite";
+import {
+  build,
+  loadConfigFromFile,
+  resolveConfig,
+  type PluginOption,
+} from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import type { RolldownOutput } from "rolldown";
 
@@ -243,13 +248,13 @@ const buildComponentBundle = async (
   esbuildOptions?: MeasureConfig["esbuild"],
   appConfig: any = {},
 ): Promise<{ bytes: number; gzipBytes: number; code: string }> => {
-  const appPlugins = (appConfig as any).userPlugins || appConfig.plugins || [];
+  const appPlugins = appConfig.userPlugins || appConfig.plugins || [];
 
   // Filter out plugins that interfere with isolated library mode.
   const filteredPlugins: PluginOption[] = (appPlugins as any[])
     .flat(Infinity)
     .filter((plugin: any) => {
-      if (!plugin || !plugin.name) return true;
+      if (!plugin?.name) return true;
 
       // Keep the plugin ONLY if its name does NOT match any of the blocked substrings
       return !BLOCKED_PLUGIN_SUBSTRINGS.some((blockedSubstring) =>

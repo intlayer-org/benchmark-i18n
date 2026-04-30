@@ -19,8 +19,8 @@
   "dependencies": {
     "@solidjs/router": "^0.15.1",
     "@tailwindcss/vite": "^4.2.2",
-    "intlayer": "^8.7.11",
-    "solid-intlayer": "^8.7.11",
+    "intlayer": "^8.7.12",
+    "solid-intlayer": "^8.7.12",
     "solid-js": "^1.9.12",
     "tailwindcss": "^4.2.2"
   },
@@ -32,7 +32,7 @@
     "test-utils": "workspace:*",
     "typescript": "~6.0.2",
     "vite": "^8.0.10",
-    "vite-intlayer": "^8.7.11",
+    "vite-intlayer": "^8.7.12",
     "vite-plugin-solid": "^2.11.12"
   }
 }
