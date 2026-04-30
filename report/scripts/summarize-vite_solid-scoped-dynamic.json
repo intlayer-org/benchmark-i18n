@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-solid",
     "frameworkLabel": "Vite + Solid",
-    "generatedAt": "2026-04-30T05:03:04.733Z",
+    "generatedAt": "2026-04-30T05:05:21.364Z",
     "counts": {
       "totalLibs": 5,
       "totalApps": 5
@@ -1722,9 +1722,9 @@
         "version": "8.7.12",
         "libSize": {
           "status": "ok",
-          "gzip": 11083,
-          "minified": 42571,
-          "unminified": 57049
+          "gzip": 3189,
+          "minified": 8648,
+          "unminified": 12326
         }
       },
       "static": null,
