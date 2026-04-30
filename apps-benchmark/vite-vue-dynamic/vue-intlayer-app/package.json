@@ -1,0 +1,40 @@
+{
+  "name": "vite-vue-intlayer-dynamic",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview",
+    "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity",
+    "test:components": "bun scripts/measure-components.ts",
+    "test:consistency": "npx playwright test structure-consistency.test.ts",
+    "test:pages": "npx playwright test pages.test.ts",
+    "test:reactivity": "npx playwright test reactivity.test.ts",
+    "test:rendering": "npx playwright test rendering.test.ts"
+  },
+  "dependencies": {
+    "intlayer": "^8.7.12",
+    "lucide-vue-next": "^0.479.0",
+    "vue": "^3.5.32",
+    "vue-intlayer": "^8.7.12",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@intlayer/vue-compiler": "^8.7.12",
+    "@playwright/test": "^1.59.1",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^24.12.2",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/tsconfig": "^0.9.1",
+    "rollup-plugin-visualizer": "^7.0.1",
+    "tailwindcss": "^4.0.0",
+    "test-utils": "workspace:*",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.10",
+    "vite-intlayer": "^8.7.12",
+    "vue-tsc": "^3.2.7"
+  }
+}
