@@ -1,124 +1,123 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createBlock as g, createElementBlock as _, createElementVNode as v, createTextVNode as y, defineComponent as b, getCurrentInstance as ee, h as x, inject as S, isRef as te, markRaw as C, openBlock as w, ref as T, renderList as ne, resolveComponent as re, shallowRef as ie, toDisplayString as E, toValue as D, unref as O, watch as ae, withCtx as oe } from "vue";
-import { useRoute as se } from "vue-router";
-var ce = {
+import { Fragment as m, computed as h, createBlock as g, createElementBlock as _, createElementVNode as v, createTextVNode as y, defineComponent as b, getCurrentInstance as ee, h as x, inject as S, isRef as te, markRaw as C, openBlock as w, ref as T, renderList as ne, resolveComponent as E, shallowRef as re, toDisplayString as D, toValue as O, watch as ie, withCtx as ae } from "vue";
+import { useRoute as oe } from "vue-router";
+var se = {
 	key: "footer",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				description: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
-				resources: "Resources",
-				contact: "Contact",
-				github: "GitHub",
-				methodology: "Methodology",
-				contributing: "Contributing",
-				footerText: "i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+				i: "Resources",
+				b: "Contact",
+				g: "GitHub",
+				h: "Methodology",
+				d: "Contributing",
+				f: "i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			fr: {
-				description: "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-				resources: "Ressources",
-				contact: "Contact",
-				github: "GitHub",
-				methodology: "Méthodologie",
-				contributing: "Contribuer",
-				footerText: "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.",
-				appName: "Benchmark i18n",
-				contactEmail: "contact@intlayer.org"
+				e: "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+				i: "Ressources",
+				b: "Contact",
+				g: "GitHub",
+				h: "Méthodologie",
+				d: "Contribuer",
+				f: "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.",
+				a: "Benchmark i18n",
+				c: "contact@intlayer.org"
 			},
 			es: {
-				description: "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
-				resources: "Recursos",
-				contact: "Contacto",
-				github: "GitHub",
-				methodology: "Metodología",
-				contributing: "Contribuir",
-				footerText: "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
+				i: "Recursos",
+				b: "Contacto",
+				g: "GitHub",
+				h: "Metodología",
+				d: "Contribuir",
+				f: "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			de: {
-				description: "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
-				resources: "Ressourcen",
-				contact: "Kontakt",
-				github: "GitHub",
-				methodology: "Methodik",
-				contributing: "Mitwirken",
-				footerText: "i18n Benchmark – Open-Source-Projekt. Erstellt mit Vue, Vite & Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
+				i: "Ressourcen",
+				b: "Kontakt",
+				g: "GitHub",
+				h: "Methodik",
+				d: "Mitwirken",
+				f: "i18n Benchmark – Open-Source-Projekt. Erstellt mit Vue, Vite & Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			it: {
-				description: "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
-				resources: "Risorse",
-				contact: "Contatto",
-				github: "GitHub",
-				methodology: "Metodologia",
-				contributing: "Contribuire",
-				footerText: "i18n Benchmark — Progetto open-source. Costruito con Vue, Vite e Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
+				i: "Risorse",
+				b: "Contatto",
+				g: "GitHub",
+				h: "Metodologia",
+				d: "Contribuire",
+				f: "i18n Benchmark — Progetto open-source. Costruito con Vue, Vite e Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			pt: {
-				description: "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.",
-				resources: "Recursos",
-				contact: "Contato",
-				github: "GitHub",
-				methodology: "Metodologia",
-				contributing: "Contribuindo",
-				footerText: "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.",
+				i: "Recursos",
+				b: "Contato",
+				g: "GitHub",
+				h: "Metodologia",
+				d: "Contribuindo",
+				f: "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			zh: {
-				description: "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
-				resources: "资源",
-				contact: "联系我们",
-				github: "GitHub",
-				methodology: "方法论",
-				contributing: "贡献",
-				footerText: "i18n 基准测试——开源项目。使用 Vue、Vite 和 Vue Router 构建。",
-				appName: "i18n 基准测试",
-				contactEmail: "contact@intlayer.org"
+				e: "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
+				i: "资源",
+				b: "联系我们",
+				g: "GitHub",
+				h: "方法论",
+				d: "贡献",
+				f: "i18n 基准测试——开源项目。使用 Vue、Vite 和 Vue Router 构建。",
+				a: "i18n 基准测试",
+				c: "contact@intlayer.org"
 			},
 			ja: {
-				description: "バンドルサイズ、ロード時間、アプリの反応性に与える国際化ライブラリの実際の影響を測定するためのオープンソースのテストアプリケーション。",
-				resources: "リソース",
-				contact: "お問い合わせ",
-				github: "GitHub",
-				methodology: "方法論",
-				contributing: "貢献",
-				footerText: "i18n ベンチマーク — オープンソースプロジェクト。Vue、Vite、Vue Routerで構築されています。",
-				appName: "i18n ベンチマーク",
-				contactEmail: "contact@intlayer.org"
+				e: "バンドルサイズ、ロード時間、アプリの反応性に与える国際化ライブラリの実際の影響を測定するためのオープンソースのテストアプリケーション。",
+				i: "リソース",
+				b: "お問い合わせ",
+				g: "GitHub",
+				h: "方法論",
+				d: "貢献",
+				f: "i18n ベンチマーク — オープンソースプロジェクト。Vue、Vite、Vue Routerで構築されています。",
+				a: "i18n ベンチマーク",
+				c: "contact@intlayer.org"
 			},
 			ko: {
-				description: "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
-				resources: "리소스",
-				contact: "연락처",
-				github: "GitHub",
-				methodology: "방법론",
-				contributing: "기여하기",
-				footerText: "i18n 벤치마크 — 오픈 소스 프로젝트. Vue, Vite 및 Vue Router로 제작되었습니다.",
-				appName: "i18n 벤치마크",
-				contactEmail: "contact@intlayer.org"
+				e: "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
+				i: "리소스",
+				b: "연락처",
+				g: "GitHub",
+				h: "방법론",
+				d: "기여하기",
+				f: "i18n 벤치마크 — 오픈 소스 프로젝트. Vue, Vite 및 Vue Router로 제작되었습니다.",
+				a: "i18n 벤치마크",
+				c: "contact@intlayer.org"
 			},
 			ru: {
-				description: "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
-				resources: "Ресурсы",
-				contact: "Контакт",
-				github: "GitHub",
-				methodology: "Методология",
-				contributing: "Участие в проекте",
-				footerText: "i18n Benchmark — проект с открытым исходным кодом. Построен на Vue, Vite и Vue Router.",
-				appName: "i18n Бенчмарк",
-				contactEmail: "contact@intlayer.org"
+				e: "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
+				i: "Ресурсы",
+				b: "Контакт",
+				g: "GitHub",
+				h: "Методология",
+				d: "Участие в проекте",
+				f: "i18n Benchmark — проект с открытым исходным кодом. Построен на Vue, Vite и Vue Router.",
+				a: "i18n Бенчмарк",
+				c: "contact@intlayer.org"
 			}
 		}
-	},
-	localIds: ["footer::local::src/components/Footer.content.ts"]
+	}
 }, k = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = T(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
@@ -163,7 +162,7 @@ var ce = {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), le = (e, t, n = f(t)) => {
+}), ce = (e, t, n = f(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -175,7 +174,7 @@ var ce = {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, M = /* @__PURE__ */ new Map(), ue = (e) => {
+}, M = /* @__PURE__ */ new Map(), le = (e) => {
 	if (M.has(e)) return M.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
@@ -219,8 +218,8 @@ var ce = {
 		});
 	}
 	return M.set(e, n), n;
-}, de = (e, t) => {
-	let n = ue(e), r = 0, i = (e) => {
+}, ue = (e, t) => {
+	let n = le(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -253,8 +252,8 @@ var ce = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, fe = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", N = /\{\{\s*(.*?)\s*\}\}/g, pe = (e, t = {}) => {
-	if (!Object.values(t).some(fe)) return {
+}, de = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", N = /\{\{\s*(.*?)\s*\}\}/g, fe = (e, t = {}) => {
+	if (!Object.values(t).some(de)) return {
 		isSimple: !0,
 		parts: e.replace(N, (e, n) => (t[n.trim()] ?? "").toString())
 	};
@@ -268,14 +267,14 @@ var ce = {
 		isSimple: !1,
 		parts: r
 	};
-}, me = Symbol("intlayerHTML"), he = () => S(me), P = (e, { components: t = {} } = {}) => {
+}, pe = Symbol("intlayerHTML"), me = () => S(pe), P = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => x(t, e, e?.children)]));
-	return de(e, new Proxy(n, { get(e, t) {
+	return ue(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => x(t, e, e?.children);
 	} }));
-}, ge = ({ components: e } = {}) => {
-	let t = he();
+}, he = ({ components: e } = {}) => {
+	let t = me();
 	return (n) => t ? t.renderHTML(n, { components: e }) : P(n, { components: e });
 };
 b({
@@ -291,11 +290,11 @@ b({
 		}
 	},
 	setup(e) {
-		let t = ge({ components: e.components });
+		let t = he({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var _e = new Set([
+var ge = new Set([
 	"true",
 	"false",
 	"null",
@@ -307,7 +306,7 @@ var _e = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), ve = (e) => {
+]), _e = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -325,7 +324,7 @@ var _e = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => _e.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => ge.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -461,7 +460,7 @@ var _e = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : ve(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : _e(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -481,8 +480,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var ye = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => ye(e)(t, n);
+var ve = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => ve(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -498,11 +497,11 @@ var ye = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, be = Symbol("intlayerMarkdown"), xe = () => {
-	let e = S(be, { renderMarkdown: (e) => e });
+}, ye = Symbol("intlayerMarkdown"), be = () => {
+	let e = S(ye, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, Se = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, Ce = !0, we = !0, q = !0, Te = Se ? t : {
+}, xe = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, Se = !0, Ce = !0, q = !0, we = xe ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
@@ -527,10 +526,10 @@ var ye = (e) => (t, n = {}) => {
 		}
 		return C(a);
 	}
-}, Ee = (e, t) => {
+}, Te = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = pe(e, r);
+	let i = fe(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -552,7 +551,7 @@ var ye = (e) => (t, n = {}) => {
 		}), x(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : x(m, null, i.parts);
-}, De = we ? t : {
+}, Ee = Ce ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -566,7 +565,7 @@ var ye = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = Ee(i, e);
+					let a = Te(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -582,7 +581,7 @@ var ye = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, Oe = K ? t : {
+}, De = K ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
@@ -602,7 +601,7 @@ var ye = (e) => (t, n = {}) => {
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = xe(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = be(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
@@ -618,7 +617,7 @@ var ye = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, ke = K ? t : {
+}, Oe = K ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -627,10 +626,10 @@ var ye = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [Oe, ...t.plugins ?? []]
+			plugins: [De, ...t.plugins ?? []]
 		});
 	}
-}, Ae = Ce ? t : {
+}, ke = Se ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
@@ -651,7 +650,7 @@ var ye = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, J = /* @__PURE__ */ new Map(), je = (t, r = !0) => {
+}, J = /* @__PURE__ */ new Map(), Ae = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
 	if (J.has(i)) return J.get(i);
 	let s = [
@@ -661,13 +660,13 @@ var ye = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
-		Te,
-		De,
-		ke,
-		Ae
+		we,
+		Ee,
+		Oe,
+		ke
 	];
 	return J.set(i, s), s;
-}, Me = (e, t) => le(e, t, je(t)), Ne = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Pe = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Q = (e) => C(b({
+}, je = (e, t) => ce(e, t, Ae(t)), Me = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Ne = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Q = (e) => C(b({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -675,7 +674,7 @@ var ye = (e) => (t, n = {}) => {
 			return t == null ? null : Z(t) ? x(t) : Array.isArray(t) ? x("span", t) : t;
 		};
 	}
-})), Fe = (e) => new Proxy({}, {
+})), Pe = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -697,10 +696,10 @@ var ye = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), Ie = (t, n) => {
-	let r = ee() ? S(Ne) : void 0, i = te(r?.locale) ? r.locale : T(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : D(n)) ?? i.value), o = ie({});
-	ae([() => D(t), () => a.value], ([e, t]) => {
-		o.value = Me(e, t);
+}), Fe = (t, n) => {
+	let r = ee() ? S(Me) : void 0, i = te(r?.locale) ? r.locale : T(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : O(n)) ?? i.value), o = re({});
+	ie([() => O(t), () => a.value], ([e, t]) => {
+		o.value = je(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -716,7 +715,7 @@ var ye = (e) => (t, n = {}) => {
 			if (n === Symbol.toPrimitive) return () => i.value;
 			let a = e.concat(n), c = Y(o.value, a);
 			if (c === void 0 || X(c) && !Z(c)) return s(a);
-			if (Pe(c)) return Fe(h(() => Y(o.value, a)));
+			if (Ne(c)) return Pe(h(() => Y(o.value, a)));
 			let l = h(() => Y(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
@@ -734,50 +733,73 @@ var ye = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, Le = { class: "mt-20 border-t border-border bg-card" }, $ = { class: "container py-8" }, Re = { class: "grid gap-8 md:grid-cols-3" }, ze = { class: "mb-2 text-sm font-semibold text-foreground" }, Be = { class: "text-sm text-muted-foreground" }, Ve = { class: "mb-2 text-sm font-semibold text-foreground" }, He = { class: "space-y-1" }, Ue = ["href"], We = { class: "mb-2 text-sm font-semibold text-foreground" }, Ge = { class: "text-sm text-muted-foreground" }, Ke = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" }, qe = b({
+}, Ie = b({
 	__name: "Footer",
-	setup(e) {
-		let t = se(), n = h(() => t.params.locale || "en"), { description: r, resources: i, contact: a, github: o, methodology: s, contributing: c, footerText: l, appName: u, contactEmail: d } = Ie(ce), f = h(() => [
-			{
-				label: o,
-				href: "https://github.com/intlayer-org/benchmark-i18n",
-				isInternal: !1
-			},
-			{
-				label: s,
-				to: `/${n.value}/about`,
-				isInternal: !0
-			},
-			{
-				label: c,
-				to: `/${n.value}/contact`,
-				isInternal: !0
-			}
-		]);
-		return (e, t) => {
-			let n = re("router-link");
-			return w(), _("footer", Le, [v("div", $, [v("div", Re, [
-				v("div", null, [v("h3", ze, E(O(u)), 1), v("p", Be, E(O(r)), 1)]),
-				v("div", null, [v("h3", Ve, E(O(i)), 1), v("ul", He, [(w(!0), _(m, null, ne(f.value, (e) => (w(), _("li", { key: e.label }, [e.isInternal ? (w(), g(n, {
-					key: 0,
-					to: e.to,
-					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-				}, {
-					default: oe(() => [y(E(e.label), 1)]),
-					_: 2
-				}, 1032, ["to"])) : (w(), _("a", {
-					key: 1,
-					href: e.href,
-					target: "_blank",
-					rel: "noreferrer",
-					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-				}, E(e.label), 9, Ue))]))), 128))])]),
-				v("div", null, [v("h3", We, E(O(a)), 1), v("p", Ge, E(O(d)), 1)])
-			]), v("div", Ke, E(O(l)), 1)])]);
+	setup(e, { expose: t }) {
+		t();
+		let n = oe(), r = h(() => n.params.locale || "en"), { e: i, i: a, b: o, g: s, h: c, d: l, f: u, a: d, c: f } = Fe(se), p = {
+			route: n,
+			currentLocale: r,
+			description: i,
+			resources: a,
+			contactLabel: o,
+			github: s,
+			methodology: c,
+			contributing: l,
+			footerText: u,
+			appName: d,
+			contactEmail: f,
+			footerLinks: h(() => [
+				{
+					label: s,
+					href: "https://github.com/intlayer-org/benchmark-i18n",
+					isInternal: !1
+				},
+				{
+					label: c,
+					to: `/${r.value}/about`,
+					isInternal: !0
+				},
+				{
+					label: l,
+					to: `/${r.value}/contact`,
+					isInternal: !0
+				}
+			])
 		};
+		return Object.defineProperty(p, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), p;
 	}
-});
-export { qe as default };
+}), Le = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Re = { class: "mt-20 border-t border-border bg-card" }, ze = { class: "container py-8" }, Be = { class: "grid gap-8 md:grid-cols-3" }, Ve = { class: "mb-2 text-sm font-semibold text-foreground" }, He = { class: "text-sm text-muted-foreground" }, Ue = { class: "mb-2 text-sm font-semibold text-foreground" }, We = { class: "space-y-1" }, $ = ["href"], Ge = { class: "mb-2 text-sm font-semibold text-foreground" }, Ke = { class: "text-sm text-muted-foreground" }, qe = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" };
+function Je(e, t, n, r, i, a) {
+	let o = E("router-link");
+	return w(), _("footer", Re, [v("div", ze, [v("div", Be, [
+		v("div", null, [v("h3", Ve, D(r.appName), 1), v("p", He, D(r.description), 1)]),
+		v("div", null, [v("h3", Ue, D(r.resources), 1), v("ul", We, [(w(!0), _(m, null, ne(r.footerLinks, (e) => (w(), _("li", { key: e.label }, [e.isInternal ? (w(), g(o, {
+			key: 0,
+			to: e.to,
+			class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+		}, {
+			default: ae(() => [y(D(e.label), 1)]),
+			_: 2
+		}, 1032, ["to"])) : (w(), _("a", {
+			key: 1,
+			href: e.href,
+			target: "_blank",
+			rel: "noreferrer",
+			class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+		}, D(e.label), 9, $))]))), 128))])]),
+		v("div", null, [v("h3", Ge, D(r.contactLabel), 1), v("p", Ke, D(r.contactEmail), 1)])
+	]), v("div", qe, D(r.footerText), 1)])]);
+}
+var Ye = Le(Ie, [["render", Je], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Footer.vue"]]);
+export { Ye as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

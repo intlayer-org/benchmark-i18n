@@ -1,63 +1,62 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var profile_section_default = {
 	key: "profile-section",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"title": "Profile",
-				"displayNameLabel": "Display Name",
-				"emailLabel": "Email"
+				"c": "Profile",
+				"a": "Display Name",
+				"b": "Email"
 			},
 			"fr": {
-				"title": "Profil",
-				"displayNameLabel": "Nom affiché",
-				"emailLabel": "E-mail"
+				"c": "Profil",
+				"a": "Nom affiché",
+				"b": "E-mail"
 			},
 			"es": {
-				"title": "Perfil",
-				"displayNameLabel": "Nombre a mostrar",
-				"emailLabel": "Correo electrónico"
+				"c": "Perfil",
+				"a": "Nombre a mostrar",
+				"b": "Correo electrónico"
 			},
 			"de": {
-				"title": "Profil",
-				"displayNameLabel": "Anzeigename",
-				"emailLabel": "E-Mail"
+				"c": "Profil",
+				"a": "Anzeigename",
+				"b": "E-Mail"
 			},
 			"it": {
-				"title": "Profilo",
-				"displayNameLabel": "Nome visualizzato",
-				"emailLabel": "E-mail"
+				"c": "Profilo",
+				"a": "Nome visualizzato",
+				"b": "E-mail"
 			},
 			"pt": {
-				"title": "Perfil",
-				"displayNameLabel": "Nome de exibição",
-				"emailLabel": "E-mail"
+				"c": "Perfil",
+				"a": "Nome de exibição",
+				"b": "E-mail"
 			},
 			"zh": {
-				"title": "个人资料",
-				"displayNameLabel": "显示名称",
-				"emailLabel": "电子邮件"
+				"c": "个人资料",
+				"a": "显示名称",
+				"b": "电子邮件"
 			},
 			"ja": {
-				"title": "プロフィール",
-				"displayNameLabel": "表示名",
-				"emailLabel": "メールアドレス"
+				"c": "プロフィール",
+				"a": "表示名",
+				"b": "メールアドレス"
 			},
 			"ko": {
-				"title": "프로필",
-				"displayNameLabel": "표시 이름",
-				"emailLabel": "이메일"
+				"c": "프로필",
+				"a": "표시 이름",
+				"b": "이메일"
 			},
 			"ru": {
-				"title": "Профиль",
-				"displayNameLabel": "Отображаемое имя",
-				"emailLabel": "Электронная почта"
+				"c": "Профиль",
+				"a": "Отображаемое имя",
+				"b": "Электронная почта"
 			}
 		}
-	},
-	localIds: ["profile-section::local::src/components/pages/settings/ProfileSection.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -863,6 +862,28 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
+var ProfileSection_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "ProfileSection",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { c: title, a: displayNameLabel, b: emailLabel } = b(profile_section_default);
+		const __returned__ = {
+			title,
+			displayNameLabel,
+			emailLabel
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "rounded-lg border border-border bg-card p-6" };
 var _hoisted_2 = { class: "mb-4 text-lg font-semibold text-foreground" };
 var _hoisted_3 = { class: "space-y-4" };
@@ -874,23 +895,18 @@ var _hoisted_5 = {
 	for: "email",
 	class: "mb-1 block text-sm font-medium text-foreground"
 };
-var ProfileSection_default = defineComponent({
-	__name: "ProfileSection",
-	setup(__props) {
-		const { title, displayNameLabel, emailLabel } = b(profile_section_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString(unref(title)), 1), createElementVNode("div", _hoisted_3, [createElementVNode("div", null, [createElementVNode("label", _hoisted_4, toDisplayString(unref(displayNameLabel)), 1), _cache[0] || (_cache[0] = createElementVNode("input", {
-				id: "displayName",
-				value: "John Developer",
-				class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			}, null, -1))]), createElementVNode("div", null, [createElementVNode("label", _hoisted_5, toDisplayString(unref(emailLabel)), 1), _cache[1] || (_cache[1] = createElementVNode("input", {
-				id: "email",
-				value: "john@example.com",
-				class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			}, null, -1))])])]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString($setup.title), 1), createElementVNode("div", _hoisted_3, [createElementVNode("div", null, [createElementVNode("label", _hoisted_4, toDisplayString($setup.displayNameLabel), 1), _cache[0] || (_cache[0] = createElementVNode("input", {
+		id: "displayName",
+		value: "John Developer",
+		class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+	}, null, -1))]), createElementVNode("div", null, [createElementVNode("label", _hoisted_5, toDisplayString($setup.emailLabel), 1), _cache[1] || (_cache[1] = createElementVNode("input", {
+		id: "email",
+		value: "john@example.com",
+		class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+	}, null, -1))])])]);
+}
+var ProfileSection_default = _plugin_vue_export_helper_default(ProfileSection_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/settings/ProfileSection.vue"]]);
 export { ProfileSection_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

@@ -1,10 +1,9 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as C, ref as w, renderList as te, shallowRef as ne, toDisplayString as T, toValue as E, unref as D, watch as O } from "vue";
-var re = {
+import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as C, ref as w, renderList as te, shallowRef as ne, toDisplayString as T, toValue as E, watch as re } from "vue";
+var D = {
 	key: "products-grid",
-	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"learnMore\":\"Learn More\",\"products\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.\",\"price\":\"Free\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.\",\"price\":\"$29/mo\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.\",\"price\":\"Contact Us\"},{\"name\":\"Migration Assistant\",\"desc\":\"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.\",\"price\":\"$99 one-time\"},{\"name\":\"Translation QA\",\"desc\":\"Automated quality checks for missing translations, pluralization issues, and context errors.\",\"price\":\"$19/mo\"},{\"name\":\"Bundle Optimizer\",\"desc\":\"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.\",\"price\":\"$49/mo\"}]},\"fr\":{\"learnMore\":\"En savoir plus\",\"products\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Lancez des benchmarks en local. Configurations personnalisées et CI.\",\"price\":\"Gratuit\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.\",\"price\":\"29 €/mois\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"On-premise avec SSO, journaux d'audit, SLA et support dédié.\",\"price\":\"Nous contacter\"},{\"name\":\"Assistant de migration\",\"desc\":\"Outil assisté par IA pour migrer entre bibliothèques i18n sans interruption.\",\"price\":\"99 € (unique)\"},{\"name\":\"QA des traductions\",\"desc\":\"Contrôles automatiques : clés manquantes, pluriels, contexte.\",\"price\":\"19 €/mois\"},{\"name\":\"Optimiseur de bundle\",\"desc\":\"Analyse et optimise votre bundle i18n en production (tree-shaking, découpage).\",\"price\":\"49 €/mois\"}]},\"es\":{\"learnMore\":\"Más información\",\"products\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Ejecute benchmarks localmente desde su terminal. Soporta configuraciones personalizadas e integración CI.\",\"price\":\"Gratis\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Benchmarking automatizado en la nube con seguimiento histórico, alertas y paneles de equipo.\",\"price\":\"29 $/mes\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"Despliegue en las instalaciones con SSO, registros de auditoría, SLAs personalizados y soporte dedicado.\",\"price\":\"Contáctenos\"},{\"name\":\"Asistente de migración\",\"desc\":\"Herramienta impulsada por IA que ayuda a migrar su base de código entre bibliotecas i18n con cero tiempo de inactividad.\",\"price\":\"99 $ (pago único)\"},{\"name\":\"QA de traducción\",\"desc\":\"Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.\",\"price\":\"19 $/mes\"},{\"name\":\"Optimizador de paquetes\",\"desc\":\"Analiza y optimiza su paquete i18n para producción con tree-shaking y división de código.\",\"price\":\"49 $/mes\"}]},\"de\":{\"learnMore\":\"Mehr erfahren\",\"products\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Führen Sie Benchmarks lokal von Ihrem Terminal aus. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.\",\"price\":\"Kostenlos\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Automatisierte Cloud-basierte Benchmarks mit Verlaufsverfolgung, Warnungen und Team-Dashboards.\",\"price\":\"29 €/Monat\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"On-Premise-Bereitstellung mit SSO, Audit-Logs, benutzerdefinierten SLAs und engagiertem Support.\",\"price\":\"Kontaktieren Sie uns\"},{\"name\":\"Migrations-Assistent\",\"desc\":\"KI-gestütztes Tool, das bei der Migration Ihrer Codebasis zwischen i18n-Bibliotheken ohne Ausfallzeiten hilft.\",\"price\":\"99 € (einmalig)\"},{\"name\":\"Übersetzungs-QS\",\"desc\":\"Automatisierte Qualitätsprüfungen für fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.\",\"price\":\"19 €/Monat\"},{\"name\":\"Bundle-Optimierer\",\"desc\":\"Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.\",\"price\":\"49 €/Monat\"}]},\"it\":{\"learnMore\":\"Scopri di più\",\"products\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.\",\"price\":\"Gratis\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.\",\"price\":\"29 €/mese\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"Distribuzione on-premise con SSO, log di audit, SLA personalizzati e supporto dedicato.\",\"price\":\"Contattaci\"},{\"name\":\"Assistente alla migrazione\",\"desc\":\"Strumento basato su IA che aiuta a migrare il tuo codice tra le librerie i18n con zero tempi di inattività.\",\"price\":\"99 € (una tantum)\"},{\"name\":\"QA delle traduzioni\",\"desc\":\"Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.\",\"price\":\"19 €/mese\"},{\"name\":\"Ottimizzatore di bundle\",\"desc\":\"Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.\",\"price\":\"49 €/mese\"}]},\"pt\":{\"learnMore\":\"Saiba Mais\",\"products\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Execute benchmarks localmente em seu terminal. Suporta configurações personalizadas e integração CI.\",\"price\":\"Grátis\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.\",\"price\":\"29 $/mês\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.\",\"price\":\"Contate-nos\"},{\"name\":\"Assistente de Migração\",\"desc\":\"Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n com zero tempo de inatividade.\",\"price\":\"99 $ (pagamento único)\"},{\"name\":\"QA de Tradução\",\"desc\":\"Verificações de qualidade automatizadas para traduções ausentes, problemas de pluralização e erros de contexto.\",\"price\":\"19 $/mês\"},{\"name\":\"Otimizador de Bundle\",\"desc\":\"Analisa e otimiza seu bundle i18n para produção com tree-shaking e divisão de código.\",\"price\":\"49 $/mês\"}]},\"zh\":{\"learnMore\":\"了解更多\",\"products\":[{\"name\":\"基准测试 CLI\",\"desc\":\"从终端在本地运行基准测试。支持自定义配置和 CI 集成。\",\"price\":\"免费\"},{\"name\":\"基准测试云\",\"desc\":\"自动化的基于云的基准测试，具有历史跟踪、警报和团队仪表板。\",\"price\":\"29 美元/月\"},{\"name\":\"基准测试企业版\",\"desc\":\"具有 SSO、审计日志、自定义 SLA 和专用支持的本地部署。\",\"price\":\"联系我们\"},{\"name\":\"迁移助手\",\"desc\":\"由 AI 驱动的工具，可帮助您在 i18n 库之间迁移代码库，且实现零停机。\",\"price\":\"99 美元一次性付款\"},{\"name\":\"翻译质量保证\",\"desc\":\"针对缺失翻译、复数问题和上下文错误的自动质量检查。\",\"price\":\"19 美元/月\"},{\"name\":\"捆绑包优化器\",\"desc\":\"分析并优化生产环境的 i18n 捆绑包，支持 tree-shaking 和代码拆分。\",\"price\":\"49 美元/月\"}]},\"ja\":{\"learnMore\":\"詳細はこちら\",\"products\":[{\"name\":\"ベンチマーク CLI\",\"desc\":\"ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートします。\",\"price\":\"無料\"},{\"name\":\"ベンチマーク クラウド\",\"desc\":\"履歴トラッキング、アラート、チームダッシュボードを備えた自動クラウドベースベンチマーク。\",\"price\":\"29ドル/月\"},{\"name\":\"ベンチマーク エンタープライズ\",\"desc\":\"SSO、監査ログ、カスタムSLA、専用サポートを備えたオンプレミス展開。\",\"price\":\"お問い合わせ\"},{\"name\":\"移行アシスタント\",\"desc\":\"AIを搭載したツールで、ダウンタイムなしでi18nライブラリ間のコードベースの移行を支援します。\",\"price\":\"99ドル（1回払い）\"},{\"name\":\"翻訳品質保証\",\"desc\":\"不足している翻訳、複数形の不一致、コンテキストエラーの自動品質チェック。\",\"price\":\"19ドル/月\"},{\"name\":\"バンドルオプティマイザー\",\"desc\":\"ツリーシェイキングとコード分割を使用して、生産用にi18nバンドルを分析および最適化します。\",\"price\":\"49ドル/月\"}]},\"ko\":{\"learnMore\":\"자세히 보기\",\"products\":[{\"name\":\"벤치마크 CLI\",\"desc\":\"터미널에서 로컬로 벤치마크를 실행합니다. 사용자 정의 구성 및 CI 통합을 지원합니다.\",\"price\":\"무료\"},{\"name\":\"벤치마크 클라우드\",\"desc\":\"기록 추적, 알림 및 팀 대시보드를 갖춘 자동화된 클라우드 기반 벤치마킹.\",\"price\":\"월 $29\"},{\"name\":\"벤치마크 엔터프라이즈\",\"desc\":\"SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 포함한 온프레미스 배포.\",\"price\":\"문의하기\"},{\"name\":\"마이그레이션 어시스턴트\",\"desc\":\"다운타임 없이 i18n 라이브러리 간에 코드베이스를 마이그레이션할 수 있도록 지원하는 AI 기반 도구입니다.\",\"price\":\"99달러(1회성)\"},{\"name\":\"번역 QA\",\"desc\":\"누락된 번역, 복수형 문제 및 컨텍스트 오류에 대한 자동 품질 검사.\",\"price\":\"월 $19\"},{\"name\":\"번들 최적화 도구\",\"desc\":\"트리 쉐이킹 및 코드 분할을 통해 프로덕션용 i18n 번들을 분석하고 최적화합니다.\",\"price\":\"월 $49\"}]},\"ru\":{\"learnMore\":\"Узнать больше\",\"products\":[{\"name\":\"Бенчмарк CLI\",\"desc\":\"Запуск бенчмарков локально из вашего терминала. Поддержка пользовательских конфигураций и интеграция с CI.\",\"price\":\"Бесплатно\"},{\"name\":\"Бенчмарк Облако\",\"desc\":\"Автоматизированный облачный бенчмаркинг с отслеживанием истории, оповещениями и командными панелями.\",\"price\":\"29 $/мес\"},{\"name\":\"Бенчмарк Предприятие\",\"desc\":\"Локальное развертывание с SSO, журналами аудита, настраиваемыми SLA и выделенной поддержкой.\",\"price\":\"Связаться с нами\"},{\"name\":\"Помощник по миграции\",\"desc\":\"Инструмент на базе ИИ, который помогает перенести вашу кодовую базу между библиотеками i18n без простоев.\",\"price\":\"99 $ (единоразово)\"},{\"name\":\"QA переводов\",\"desc\":\"Автоматические проверки качества на отсутствие переводов, проблемы с множественным числом и ошибки контекста.\",\"price\":\"19 $/мес\"},{\"name\":\"Оптимизатор бандлов\",\"desc\":\"Анализирует и оптимизирует ваш i18n-бандл для продакшена с использованием tree-shaking и разделения кода.\",\"price\":\"49 $/мес\"}]}}}"),
-	localIds: ["products-grid::local::src/components/pages/products/ProductsGrid.content.ts"]
-}, k = ({ value: e, children: t, additionalProps: n = {} }) => {
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"a\":\"Learn More\",\"b\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.\",\"price\":\"Free\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.\",\"price\":\"$29/mo\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.\",\"price\":\"Contact Us\"},{\"name\":\"Migration Assistant\",\"desc\":\"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.\",\"price\":\"$99 one-time\"},{\"name\":\"Translation QA\",\"desc\":\"Automated quality checks for missing translations, pluralization issues, and context errors.\",\"price\":\"$19/mo\"},{\"name\":\"Bundle Optimizer\",\"desc\":\"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.\",\"price\":\"$49/mo\"}]},\"fr\":{\"a\":\"En savoir plus\",\"b\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Lancez des benchmarks en local. Configurations personnalisées et CI.\",\"price\":\"Gratuit\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.\",\"price\":\"29 €/mois\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"On-premise avec SSO, journaux d'audit, SLA et support dédié.\",\"price\":\"Nous contacter\"},{\"name\":\"Assistant de migration\",\"desc\":\"Outil assisté par IA pour migrer entre bibliothèques i18n sans interruption.\",\"price\":\"99 € (unique)\"},{\"name\":\"QA des traductions\",\"desc\":\"Contrôles automatiques : clés manquantes, pluriels, contexte.\",\"price\":\"19 €/mois\"},{\"name\":\"Optimiseur de bundle\",\"desc\":\"Analyse et optimise votre bundle i18n en production (tree-shaking, découpage).\",\"price\":\"49 €/mois\"}]},\"es\":{\"a\":\"Más información\",\"b\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Ejecute benchmarks localmente desde su terminal. Soporta configuraciones personalizadas e integración CI.\",\"price\":\"Gratis\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Benchmarking automatizado en la nube con seguimiento histórico, alertas y paneles de equipo.\",\"price\":\"29 $/mes\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"Despliegue en las instalaciones con SSO, registros de auditoría, SLAs personalizados y soporte dedicado.\",\"price\":\"Contáctenos\"},{\"name\":\"Asistente de migración\",\"desc\":\"Herramienta impulsada por IA que ayuda a migrar su base de código entre bibliotecas i18n con cero tiempo de inactividad.\",\"price\":\"99 $ (pago único)\"},{\"name\":\"QA de traducción\",\"desc\":\"Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.\",\"price\":\"19 $/mes\"},{\"name\":\"Optimizador de paquetes\",\"desc\":\"Analiza y optimiza su paquete i18n para producción con tree-shaking y división de código.\",\"price\":\"49 $/mes\"}]},\"de\":{\"a\":\"Mehr erfahren\",\"b\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Führen Sie Benchmarks lokal von Ihrem Terminal aus. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.\",\"price\":\"Kostenlos\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Automatisierte Cloud-basierte Benchmarks mit Verlaufsverfolgung, Warnungen und Team-Dashboards.\",\"price\":\"29 €/Monat\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"On-Premise-Bereitstellung mit SSO, Audit-Logs, benutzerdefinierten SLAs und engagiertem Support.\",\"price\":\"Kontaktieren Sie uns\"},{\"name\":\"Migrations-Assistent\",\"desc\":\"KI-gestütztes Tool, das bei der Migration Ihrer Codebasis zwischen i18n-Bibliotheken ohne Ausfallzeiten hilft.\",\"price\":\"99 € (einmalig)\"},{\"name\":\"Übersetzungs-QS\",\"desc\":\"Automatisierte Qualitätsprüfungen für fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.\",\"price\":\"19 €/Monat\"},{\"name\":\"Bundle-Optimierer\",\"desc\":\"Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.\",\"price\":\"49 €/Monat\"}]},\"it\":{\"a\":\"Scopri di più\",\"b\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.\",\"price\":\"Gratis\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.\",\"price\":\"29 €/mese\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"Distribuzione on-premise con SSO, log di audit, SLA personalizzati e supporto dedicato.\",\"price\":\"Contattaci\"},{\"name\":\"Assistente alla migrazione\",\"desc\":\"Strumento basato su IA che aiuta a migrare il tuo codice tra le librerie i18n con zero tempi di inattività.\",\"price\":\"99 € (una tantum)\"},{\"name\":\"QA delle traduzioni\",\"desc\":\"Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.\",\"price\":\"19 €/mese\"},{\"name\":\"Ottimizzatore di bundle\",\"desc\":\"Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.\",\"price\":\"49 €/mese\"}]},\"pt\":{\"a\":\"Saiba Mais\",\"b\":[{\"name\":\"Benchmark CLI\",\"desc\":\"Execute benchmarks localmente em seu terminal. Suporta configurações personalizadas e integração CI.\",\"price\":\"Grátis\"},{\"name\":\"Benchmark Cloud\",\"desc\":\"Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.\",\"price\":\"29 $/mês\"},{\"name\":\"Benchmark Enterprise\",\"desc\":\"Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.\",\"price\":\"Contate-nos\"},{\"name\":\"Assistente de Migração\",\"desc\":\"Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n com zero tempo de inatividade.\",\"price\":\"99 $ (pagamento único)\"},{\"name\":\"QA de Tradução\",\"desc\":\"Verificações de qualidade automatizadas para traduções ausentes, problemas de pluralização e erros de contexto.\",\"price\":\"19 $/mês\"},{\"name\":\"Otimizador de Bundle\",\"desc\":\"Analisa e otimiza seu bundle i18n para produção com tree-shaking e divisão de código.\",\"price\":\"49 $/mês\"}]},\"zh\":{\"a\":\"了解更多\",\"b\":[{\"name\":\"基准测试 CLI\",\"desc\":\"从终端在本地运行基准测试。支持自定义配置和 CI 集成。\",\"price\":\"免费\"},{\"name\":\"基准测试云\",\"desc\":\"自动化的基于云的基准测试，具有历史跟踪、警报和团队仪表板。\",\"price\":\"29 美元/月\"},{\"name\":\"基准测试企业版\",\"desc\":\"具有 SSO、审计日志、自定义 SLA 和专用支持的本地部署。\",\"price\":\"联系我们\"},{\"name\":\"迁移助手\",\"desc\":\"由 AI 驱动的工具，可帮助您在 i18n 库之间迁移代码库，且实现零停机。\",\"price\":\"99 美元一次性付款\"},{\"name\":\"翻译质量保证\",\"desc\":\"针对缺失翻译、复数问题和上下文错误的自动质量检查。\",\"price\":\"19 美元/月\"},{\"name\":\"捆绑包优化器\",\"desc\":\"分析并优化生产环境的 i18n 捆绑包，支持 tree-shaking 和代码拆分。\",\"price\":\"49 美元/月\"}]},\"ja\":{\"a\":\"詳細はこちら\",\"b\":[{\"name\":\"ベンチマーク CLI\",\"desc\":\"ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートします。\",\"price\":\"無料\"},{\"name\":\"ベンチマーク クラウド\",\"desc\":\"履歴トラッキング、アラート、チームダッシュボードを備えた自動クラウドベースベンチマーク。\",\"price\":\"29ドル/月\"},{\"name\":\"ベンチマーク エンタープライズ\",\"desc\":\"SSO、監査ログ、カスタムSLA、専用サポートを備えたオンプレミス展開。\",\"price\":\"お問い合わせ\"},{\"name\":\"移行アシスタント\",\"desc\":\"AIを搭載したツールで、ダウンタイムなしでi18nライブラリ間のコードベースの移行を支援します。\",\"price\":\"99ドル（1回払い）\"},{\"name\":\"翻訳品質保証\",\"desc\":\"不足している翻訳、複数形の不一致、コンテキストエラーの自動品質チェック。\",\"price\":\"19ドル/月\"},{\"name\":\"バンドルオプティマイザー\",\"desc\":\"ツリーシェイキングとコード分割を使用して、生産用にi18nバンドルを分析および最適化します。\",\"price\":\"49ドル/月\"}]},\"ko\":{\"a\":\"자세히 보기\",\"b\":[{\"name\":\"벤치마크 CLI\",\"desc\":\"터미널에서 로컬로 벤치마크를 실행합니다. 사용자 정의 구성 및 CI 통합을 지원합니다.\",\"price\":\"무료\"},{\"name\":\"벤치마크 클라우드\",\"desc\":\"기록 추적, 알림 및 팀 대시보드를 갖춘 자동화된 클라우드 기반 벤치마킹.\",\"price\":\"월 $29\"},{\"name\":\"벤치마크 엔터프라이즈\",\"desc\":\"SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 포함한 온프레미스 배포.\",\"price\":\"문의하기\"},{\"name\":\"마이그레이션 어시스턴트\",\"desc\":\"다운타임 없이 i18n 라이브러리 간에 코드베이스를 마이그레이션할 수 있도록 지원하는 AI 기반 도구입니다.\",\"price\":\"99달러(1회성)\"},{\"name\":\"번역 QA\",\"desc\":\"누락된 번역, 복수형 문제 및 컨텍스트 오류에 대한 자동 품질 검사.\",\"price\":\"월 $19\"},{\"name\":\"번들 최적화 도구\",\"desc\":\"트리 쉐이킹 및 코드 분할을 통해 프로덕션용 i18n 번들을 분석하고 최적화합니다.\",\"price\":\"월 $49\"}]},\"ru\":{\"a\":\"Узнать больше\",\"b\":[{\"name\":\"Бенчмарк CLI\",\"desc\":\"Запуск бенчмарков локально из вашего терминала. Поддержка пользовательских конфигураций и интеграция с CI.\",\"price\":\"Бесплатно\"},{\"name\":\"Бенчмарк Облако\",\"desc\":\"Автоматизированный облачный бенчмаркинг с отслеживанием истории, оповещениями и командными панелями.\",\"price\":\"29 $/мес\"},{\"name\":\"Бенчмарк Предприятие\",\"desc\":\"Локальное развертывание с SSO, журналами аудита, настраиваемыми SLA и выделенной поддержкой.\",\"price\":\"Связаться с нами\"},{\"name\":\"Помощник по миграции\",\"desc\":\"Инструмент на базе ИИ, который помогает перенести вашу кодовую базу между библиотеками i18n без простоев.\",\"price\":\"99 $ (единоразово)\"},{\"name\":\"QA переводов\",\"desc\":\"Автоматические проверки качества на отсутствие переводов, проблемы с множественным числом и ошибки контекста.\",\"price\":\"19 $/мес\"},{\"name\":\"Оптимизатор бандлов\",\"desc\":\"Анализирует и оптимизирует ваш i18n-бандл для продакшена с использованием tree-shaking и разделения кода.\",\"price\":\"49 $/мес\"}]}}}")
+}, O = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = w(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -22,7 +21,7 @@ var re = {
 			return r.value;
 		},
 		use(e) {
-			return k({
+			return O({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -33,7 +32,7 @@ var re = {
 		},
 		...n
 	}), S(o);
-}, A = v({
+}, k = v({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -56,12 +55,12 @@ var re = {
 		plugins: n
 	};
 	return c(e.content, r, n);
-}, j = (e) => {
+}, A = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, M = /* @__PURE__ */ new Map(), N = (e) => {
-	if (M.has(e)) return M.get(e);
+}, j = /* @__PURE__ */ new Map(), ae = (e) => {
+	if (j.has(e)) return j.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -82,11 +81,11 @@ var re = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: j(m),
+			props: A(m),
 			children: []
 		});
 		else {
-			let e = j(m);
+			let e = A(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -103,9 +102,9 @@ var re = {
 			children: e.children
 		});
 	}
-	return M.set(e, n), n;
-}, ae = (e, t) => {
-	let n = N(e), r = 0, i = (e) => {
+	return j.set(e, n), n;
+}, oe = (e, t) => {
+	let n = ae(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -138,12 +137,12 @@ var re = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, oe = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, se = (e, t = {}) => {
-	if (!Object.values(t).some(oe)) return {
+}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", M = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
+	if (!Object.values(t).some(se)) return {
 		isSimple: !0,
-		parts: e.replace(P, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(M, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(P), r = [];
+	let n = e.split(M), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -153,14 +152,14 @@ var re = {
 		isSimple: !1,
 		parts: r
 	};
-}, ce = Symbol("intlayerHTML"), le = () => x(ce), F = (e, { components: t = {} } = {}) => {
+}, N = Symbol("intlayerHTML"), P = () => x(N), F = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => b(t, e, e?.children)]));
-	return ae(e, new Proxy(n, { get(e, t) {
+	return oe(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => b(t, e, e?.children);
 	} }));
-}, ue = ({ components: e } = {}) => {
-	let t = le();
+}, le = ({ components: e } = {}) => {
+	let t = P();
 	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 v({
@@ -176,11 +175,11 @@ v({
 		}
 	},
 	setup(e) {
-		let t = ue({ components: e.components });
+		let t = le({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var de = new Set([
+var ue = new Set([
 	"true",
 	"false",
 	"null",
@@ -192,7 +191,7 @@ var de = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), fe = (e) => {
+]), de = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -210,7 +209,7 @@ var de = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => de.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => ue.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -337,7 +336,7 @@ var de = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, pe = (e) => {
+}, fe = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -346,7 +345,7 @@ var de = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : fe(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : de(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -366,8 +365,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var me = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => me(e)(t, n);
+var pe = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => pe(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -383,18 +382,18 @@ var me = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, he = Symbol("intlayerMarkdown"), ge = () => {
-	let e = x(he, { renderMarkdown: (e) => e });
+}, me = Symbol("intlayerMarkdown"), he = () => {
+	let e = x(me, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, _e = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ve = !0, ye = !0, q = !0, be = _e ? t : {
+}, ge = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, _e = !0, q = !0, J = !0, ve = ge ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => k({
+		let r = (e) => O({
 			...n,
 			value: e,
-			children: !q && p.enabled ? () => b(A, {
+			children: !J && p.enabled ? () => b(k, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -412,10 +411,10 @@ var me = (e) => (t, n = {}) => {
 		}
 		return S(a);
 	}
-}, xe = (e, t) => {
+}, ye = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = se(e, r);
+	let i = ce(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -437,7 +436,7 @@ var me = (e) => (t, n = {}) => {
 		}), b(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : b(m, null, i.parts);
-}, Se = ye ? t : {
+}, be = q ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -451,7 +450,7 @@ var me = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = xe(i, e);
+					let a = ye(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -467,15 +466,15 @@ var me = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, Ce = K ? t : {
+}, xe = K ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(pe(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(fe(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => k({
+				transform: (t, n) => O({
 					...n,
 					value: t,
 					children: e
@@ -483,15 +482,15 @@ var me = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => k({
+		}), o = (n) => O({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = ge(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = he(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !q && p.enabled ? b(A, {
+				return !J && p.enabled ? b(k, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -503,7 +502,7 @@ var me = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, we = K ? t : {
+}, Se = K ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -512,10 +511,10 @@ var me = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [Ce, ...t.plugins ?? []]
+			plugins: [xe, ...t.plugins ?? []]
 		});
 	}
-}, Te = ve ? t : {
+}, Ce = _e ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
@@ -523,10 +522,10 @@ var me = (e) => (t, n = {}) => {
 		e.tags;
 		let r = (e = {}) => {
 			let i = F(n, { components: e });
-			return k({
+			return O({
 				...t,
 				value: n,
-				children: !q && p.enabled ? () => b(A, {
+				children: !J && p.enabled ? () => b(k, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -536,9 +535,9 @@ var me = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, J = /* @__PURE__ */ new Map(), Ee = (t, r = !0) => {
+}, Y = /* @__PURE__ */ new Map(), we = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
-	if (J.has(i)) return J.get(i);
+	if (Y.has(i)) return Y.get(i);
 	let s = [
 		o(t ?? e.defaultLocale, r ? e.defaultLocale : void 0),
 		a,
@@ -546,21 +545,21 @@ var me = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
+		ve,
 		be,
 		Se,
-		we,
-		Te
+		Ce
 	];
-	return J.set(i, s), s;
-}, De = (e, t) => ie(e, t, Ee(t)), Oe = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Q = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(v({
+	return Y.set(i, s), s;
+}, Te = (e, t) => ie(e, t, we(t)), Ee = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), De = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(v({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : Z(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
+			return t == null ? null : Q(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
 		};
 	}
-})), ke = (e) => new Proxy({}, {
+})), Oe = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -582,10 +581,10 @@ var me = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), Ae = (t, n) => {
-	let r = y() ? x(Oe) : void 0, i = ee(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : E(n)) ?? i.value), o = ne({});
-	O([() => E(t), () => a.value], ([e, t]) => {
-		o.value = De(e, t);
+}), ke = (t, n) => {
+	let r = y() ? x(Ee) : void 0, i = ee(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : E(n)) ?? i.value), o = ne({});
+	re([() => E(t), () => a.value], ([e, t]) => {
+		o.value = Te(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -593,23 +592,23 @@ var me = (e) => (t, n = {}) => {
 	let s = (e) => new Proxy({}, {
 		get(t, n, r) {
 			if (n === "__v_isRef") return !0;
-			let i = h(() => Y(o.value, e));
+			let i = h(() => X(o.value, e));
 			if (n === "value") return i.value ?? "";
 			if (n === "then") return;
 			if (n === "c" || n === "asComponent") return $(() => i.value);
 			if (n === "$raw") return i;
 			if (n === Symbol.toPrimitive) return () => i.value;
-			let a = e.concat(n), c = Y(o.value, a);
-			if (c === void 0 || X(c) && !Z(c)) return s(a);
-			if (Q(c)) return ke(h(() => Y(o.value, a)));
-			let l = h(() => Y(o.value, a));
+			let a = e.concat(n), c = X(o.value, a);
+			if (c === void 0 || Z(c) && !Q(c)) return s(a);
+			if (De(c)) return Oe(h(() => X(o.value, a)));
+			let l = h(() => X(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = Y(o.value, e);
-			return X(t) ? Reflect.ownKeys(t) : [];
+			let t = X(o.value, e);
+			return Z(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -619,20 +618,35 @@ var me = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, je = { class: "grid gap-6 md:grid-cols-2 lg:grid-cols-3" }, Me = { class: "mb-2 text-lg font-semibold text-foreground" }, Ne = { class: "mb-4 text-sm text-muted-foreground" }, Pe = { class: "flex items-center justify-between" }, Fe = { class: "text-sm font-bold text-primary" }, Ie = {
+}, Ae = v({
+	__name: "ProductsGrid",
+	setup(e, { expose: t }) {
+		t();
+		let { a: n, b: r } = ke(D), i = {
+			learnMore: n,
+			products: r
+		};
+		return Object.defineProperty(i, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), i;
+	}
+}), je = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Me = { class: "grid gap-6 md:grid-cols-2 lg:grid-cols-3" }, Ne = { class: "mb-2 text-lg font-semibold text-foreground" }, Pe = { class: "mb-4 text-sm text-muted-foreground" }, Fe = { class: "flex items-center justify-between" }, Ie = { class: "text-sm font-bold text-primary" }, Le = {
 	type: "button",
 	class: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
-}, Le = v({
-	__name: "ProductsGrid",
-	setup(e) {
-		let { learnMore: t, products: n } = Ae(re);
-		return (e, r) => (C(), g("div", je, [(C(!0), g(m, null, te(D(n), (e) => (C(), g("div", {
-			key: e.name,
-			class: "flex flex-col justify-between rounded-lg border border-border bg-card p-6"
-		}, [_("div", null, [_("h3", Me, T(e.name), 1), _("p", Ne, T(e.desc), 1)]), _("div", Pe, [_("span", Fe, T(e.price), 1), _("button", Ie, T(D(t)), 1)])]))), 128))]));
-	}
-});
-export { Le as default };
+};
+function Re(e, t, n, r, i, a) {
+	return C(), g("div", Me, [(C(!0), g(m, null, te(r.products, (e) => (C(), g("div", {
+		key: e.name,
+		class: "flex flex-col justify-between rounded-lg border border-border bg-card p-6"
+	}, [_("div", null, [_("h3", Ne, T(e.name), 1), _("p", Pe, T(e.desc), 1)]), _("div", Fe, [_("span", Ie, T(e.price), 1), _("button", Le, T(r.learnMore), 1)])]))), 128))]);
+}
+var ze = je(Ae, [["render", Re], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/products/ProductsGrid.vue"]]);
+export { ze as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

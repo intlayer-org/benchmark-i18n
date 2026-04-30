@@ -1,93 +1,92 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onMounted, onUnmounted, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onMounted, onUnmounted, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var theme_toggle_default = {
 	key: "theme-toggle",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"auto": "Theme: Auto",
-				"dark": "Theme: Dark",
-				"light": "Theme: Light",
-				"ariaLabelAuto": "Theme mode: auto (system). Click to switch to light mode.",
-				"ariaLabelLight": "Theme mode: light. Click to switch to dark mode.",
-				"ariaLabelDark": "Theme mode: dark. Click to switch to auto mode."
+				"d": "Theme: Auto",
+				"e": "Theme: Dark",
+				"f": "Theme: Light",
+				"a": "Theme mode: auto (system). Click to switch to light mode.",
+				"c": "Theme mode: light. Click to switch to dark mode.",
+				"b": "Theme mode: dark. Click to switch to auto mode."
 			},
 			"fr": {
-				"auto": "Thème : Auto",
-				"dark": "Thème : Sombre",
-				"light": "Thème : Clair",
-				"ariaLabelAuto": "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
-				"ariaLabelLight": "Mode de thème : clair. Cliquez pour passer au mode sombre.",
-				"ariaLabelDark": "Mode de thème : sombre. Cliquez pour passer au mode auto."
+				"d": "Thème : Auto",
+				"e": "Thème : Sombre",
+				"f": "Thème : Clair",
+				"a": "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
+				"c": "Mode de thème : clair. Cliquez pour passer au mode sombre.",
+				"b": "Mode de thème : sombre. Cliquez pour passer au mode auto."
 			},
 			"es": {
-				"auto": "Tema: Automático",
-				"dark": "Tema: Oscuro",
-				"light": "Tema: Claro",
-				"ariaLabelAuto": "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-				"ariaLabelLight": "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
-				"ariaLabelDark": "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
+				"d": "Tema: Automático",
+				"e": "Tema: Oscuro",
+				"f": "Tema: Claro",
+				"a": "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
+				"c": "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
+				"b": "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
 			},
 			"de": {
-				"auto": "Design: Auto",
-				"dark": "Design: Dunkel",
-				"light": "Design: Hell",
-				"ariaLabelAuto": "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-				"ariaLabelLight": "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
-				"ariaLabelDark": "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
+				"d": "Design: Auto",
+				"e": "Design: Dunkel",
+				"f": "Design: Hell",
+				"a": "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
+				"c": "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
+				"b": "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
 			},
 			"it": {
-				"auto": "Tema: Auto",
-				"dark": "Tema: Scuro",
-				"light": "Tema: Chiaro",
-				"ariaLabelAuto": "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
-				"ariaLabelLight": "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
-				"ariaLabelDark": "Modalità tema: scura. Fai clic per passare alla modalità automatica."
+				"d": "Tema: Auto",
+				"e": "Tema: Scuro",
+				"f": "Tema: Chiaro",
+				"a": "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
+				"c": "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
+				"b": "Modalità tema: scura. Fai clic per passare alla modalità automatica."
 			},
 			"pt": {
-				"auto": "Tema: Automático",
-				"dark": "Tema: Escuro",
-				"light": "Tema: Claro",
-				"ariaLabelAuto": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-				"ariaLabelLight": "Modo de tema: claro. Clique para mudar para o modo escuro.",
-				"ariaLabelDark": "Modo de tema: escuro. Clique para mudar para o modo automático."
+				"d": "Tema: Automático",
+				"e": "Tema: Escuro",
+				"f": "Tema: Claro",
+				"a": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
+				"c": "Modo de tema: claro. Clique para mudar para o modo escuro.",
+				"b": "Modo de tema: escuro. Clique para mudar para o modo automático."
 			},
 			"zh": {
-				"auto": "主题：自动",
-				"dark": "主题：深色",
-				"light": "主题：亮色",
-				"ariaLabelAuto": "主题模式：自动（系统）。点击切换到亮色模式。",
-				"ariaLabelLight": "主题模式：浅色。点击切换到深色模式。",
-				"ariaLabelDark": "主题模式：深色。点击切换到自动模式。"
+				"d": "主题：自动",
+				"e": "主题：深色",
+				"f": "主题：亮色",
+				"a": "主题模式：自动（系统）。点击切换到亮色模式。",
+				"c": "主题模式：浅色。点击切换到深色模式。",
+				"b": "主题模式：深色。点击切换到自动模式。"
 			},
 			"ja": {
-				"auto": "テーマ：自動",
-				"dark": "テーマ：ダーク",
-				"light": "テーマ：ライト",
-				"ariaLabelAuto": "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-				"ariaLabelLight": "テーマモード：ライト。クリックしてダークモードに切り替えます。",
-				"ariaLabelDark": "テーマモード：ダーク。クリックして自動モードに切り替えます。"
+				"d": "テーマ：自動",
+				"e": "テーマ：ダーク",
+				"f": "テーマ：ライト",
+				"a": "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
+				"c": "テーマモード：ライト。クリックしてダークモードに切り替えます。",
+				"b": "テーマモード：ダーク。クリックして自動モードに切り替えます。"
 			},
 			"ko": {
-				"auto": "테마: 자동",
-				"dark": "테마: 다크",
-				"light": "테마: 라이트",
-				"ariaLabelAuto": "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
-				"ariaLabelLight": "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
-				"ariaLabelDark": "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
+				"d": "테마: 자동",
+				"e": "테마: 다크",
+				"f": "테마: 라이트",
+				"a": "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
+				"c": "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
+				"b": "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
 			},
 			"ru": {
-				"auto": "Тема: Авто",
-				"dark": "Тема: Темная",
-				"light": "Тема: Светлая",
-				"ariaLabelAuto": "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
-				"ariaLabelLight": "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
-				"ariaLabelDark": "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
+				"d": "Тема: Авто",
+				"e": "Тема: Темная",
+				"f": "Тема: Светлая",
+				"a": "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
+				"c": "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
+				"b": "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
 			}
 		}
-	},
-	localIds: ["theme-toggle::local::src/components/ThemeToggle.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -893,11 +892,11 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
-var _hoisted_1 = ["aria-label", "title"];
-var ThemeToggle_default = defineComponent({
+var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "ThemeToggle",
-	setup(__props) {
-		const { auto, dark, light, ariaLabelAuto, ariaLabelLight, ariaLabelDark } = b(theme_toggle_default);
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { d: auto, e: dark, f: light, a: ariaLabelAuto, c: ariaLabelLight, b: ariaLabelDark } = b(theme_toggle_default);
 		const mode = ref("auto");
 		function getInitialMode() {
 			if (typeof window === "undefined") return "auto";
@@ -940,17 +939,48 @@ var ThemeToggle_default = defineComponent({
 			window.localStorage.setItem("theme", nextMode);
 		}
 		const getLabel = () => mode.value === "auto" ? ariaLabelAuto.value : mode.value === "light" ? ariaLabelLight.value : ariaLabelDark.value;
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("button", {
-				type: "button",
-				onClick: toggleMode,
-				"aria-label": getLabel(),
-				title: getLabel(),
-				class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-			}, toDisplayString(mode.value === "auto" ? unref(auto) : mode.value === "dark" ? unref(dark) : unref(light)), 9, _hoisted_1);
+		const __returned__ = {
+			auto,
+			dark,
+			light,
+			ariaLabelAuto,
+			ariaLabelLight,
+			ariaLabelDark,
+			mode,
+			getInitialMode,
+			applyThemeMode,
+			get mediaQueryListener() {
+				return mediaQueryListener;
+			},
+			set mediaQueryListener(v) {
+				mediaQueryListener = v;
+			},
+			toggleMode,
+			getLabel
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+var _hoisted_1 = ["aria-label", "title"];
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("button", {
+		type: "button",
+		onClick: $setup.toggleMode,
+		"aria-label": $setup.getLabel(),
+		title: $setup.getLabel(),
+		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+	}, toDisplayString($setup.mode === "auto" ? $setup.auto : $setup.mode === "dark" ? $setup.dark : $setup.light), 9, _hoisted_1);
+}
+var ThemeToggle_default = _plugin_vue_export_helper_default(ThemeToggle_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/ThemeToggle.vue"]]);
 export { ThemeToggle_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

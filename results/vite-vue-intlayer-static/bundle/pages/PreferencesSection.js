@@ -1,20 +1,20 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, watch } from "vue";
 var preferences_section_default = {
 	key: "preferences-section",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"title": "Preferences",
-				"notificationsTitle": "Email Notifications",
-				"notificationsDescription": "Receive weekly benchmark reports",
-				"toggleNotifications": "Toggle notifications",
-				"darkModeTitle": "Dark Mode",
-				"darkModeDescription": "Use dark color scheme",
-				"toggleDarkMode": "Toggle dark mode",
-				"languageLabel": "Default Language",
-				"languages": [
+				"g": "Preferences",
+				"f": "Email Notifications",
+				"e": "Receive weekly benchmark reports",
+				"i": "Toggle notifications",
+				"b": "Dark Mode",
+				"a": "Use dark color scheme",
+				"h": "Toggle dark mode",
+				"c": "Default Language",
+				"d": [
 					"English (en)",
 					"French (fr)",
 					"Spanish (es)",
@@ -28,15 +28,15 @@ var preferences_section_default = {
 				]
 			},
 			"fr": {
-				"title": "Préférences",
-				"notificationsTitle": "Notifications e-mail",
-				"notificationsDescription": "Recevoir les rapports hebdomadaires",
-				"toggleNotifications": "Activer/désactiver les notifications",
-				"darkModeTitle": "Mode sombre",
-				"darkModeDescription": "Utiliser le thème sombre",
-				"toggleDarkMode": "Basculer le mode sombre",
-				"languageLabel": "Langue par défaut",
-				"languages": [
+				"g": "Préférences",
+				"f": "Notifications e-mail",
+				"e": "Recevoir les rapports hebdomadaires",
+				"i": "Activer/désactiver les notifications",
+				"b": "Mode sombre",
+				"a": "Utiliser le thème sombre",
+				"h": "Basculer le mode sombre",
+				"c": "Langue par défaut",
+				"d": [
 					"Anglais (en)",
 					"Français (fr)",
 					"Espagnol (es)",
@@ -50,15 +50,15 @@ var preferences_section_default = {
 				]
 			},
 			"es": {
-				"title": "Preferencias",
-				"notificationsTitle": "Notificaciones por correo electrónico",
-				"notificationsDescription": "Recibir informes semanales de benchmark",
-				"toggleNotifications": "Alternar notificaciones",
-				"darkModeTitle": "Modo oscuro",
-				"darkModeDescription": "Usar esquema de colores oscuros",
-				"toggleDarkMode": "Alternar modo oscuro",
-				"languageLabel": "Idioma predeterminado",
-				"languages": [
+				"g": "Preferencias",
+				"f": "Notificaciones por correo electrónico",
+				"e": "Recibir informes semanales de benchmark",
+				"i": "Alternar notificaciones",
+				"b": "Modo oscuro",
+				"a": "Usar esquema de colores oscuros",
+				"h": "Alternar modo oscuro",
+				"c": "Idioma predeterminado",
+				"d": [
 					"Inglés (en)",
 					"Francés (fr)",
 					"Español (es)",
@@ -72,15 +72,15 @@ var preferences_section_default = {
 				]
 			},
 			"de": {
-				"title": "Einstellungen",
-				"notificationsTitle": "E-Mail-Benachrichtigungen",
-				"notificationsDescription": "Erhalten Sie wöchentliche Benchmark-Berichte",
-				"toggleNotifications": "Benachrichtigungen umschalten",
-				"darkModeTitle": "Dunkelmodus",
-				"darkModeDescription": "Dunkles Farbschema verwenden",
-				"toggleDarkMode": "Dunkelmodus umschalten",
-				"languageLabel": "Standardsprache",
-				"languages": [
+				"g": "Einstellungen",
+				"f": "E-Mail-Benachrichtigungen",
+				"e": "Erhalten Sie wöchentliche Benchmark-Berichte",
+				"i": "Benachrichtigungen umschalten",
+				"b": "Dunkelmodus",
+				"a": "Dunkles Farbschema verwenden",
+				"h": "Dunkelmodus umschalten",
+				"c": "Standardsprache",
+				"d": [
 					"Englisch (en)",
 					"Französisch (fr)",
 					"Spanisch (es)",
@@ -94,15 +94,15 @@ var preferences_section_default = {
 				]
 			},
 			"it": {
-				"title": "Preferenze",
-				"notificationsTitle": "Notifiche e-mail",
-				"notificationsDescription": "Ricevi rapporti settimanali sui benchmark",
-				"toggleNotifications": "Attiva/disattiva notifiche",
-				"darkModeTitle": "Modalità scura",
-				"darkModeDescription": "Usa schema colori scuri",
-				"toggleDarkMode": "Attiva/disattiva modalità scura",
-				"languageLabel": "Lingua predefinita",
-				"languages": [
+				"g": "Preferenze",
+				"f": "Notifiche e-mail",
+				"e": "Ricevi rapporti settimanali sui benchmark",
+				"i": "Attiva/disattiva notifiche",
+				"b": "Modalità scura",
+				"a": "Usa schema colori scuri",
+				"h": "Attiva/disattiva modalità scura",
+				"c": "Lingua predefinita",
+				"d": [
 					"Inglese (en)",
 					"Francese (fr)",
 					"Spagnolo (es)",
@@ -116,15 +116,15 @@ var preferences_section_default = {
 				]
 			},
 			"pt": {
-				"title": "Preferências",
-				"notificationsTitle": "Notificações por e-mail",
-				"notificationsDescription": "Receber relatórios semanais de benchmark",
-				"toggleNotifications": "Alternar notificações",
-				"darkModeTitle": "Modo escuro",
-				"darkModeDescription": "Usar esquema de cores escuro",
-				"toggleDarkMode": "Alternar modo escuro",
-				"languageLabel": "Idioma padrão",
-				"languages": [
+				"g": "Preferências",
+				"f": "Notificações por e-mail",
+				"e": "Receber relatórios semanais de benchmark",
+				"i": "Alternar notificações",
+				"b": "Modo escuro",
+				"a": "Usar esquema de cores escuro",
+				"h": "Alternar modo escuro",
+				"c": "Idioma padrão",
+				"d": [
 					"Inglês (en)",
 					"Francês (fr)",
 					"Espanhol (es)",
@@ -138,15 +138,15 @@ var preferences_section_default = {
 				]
 			},
 			"zh": {
-				"title": "偏好设置",
-				"notificationsTitle": "邮件通知",
-				"notificationsDescription": "接收每周基准报告",
-				"toggleNotifications": "切换通知",
-				"darkModeTitle": "深色模式",
-				"darkModeDescription": "使用深色配色方案",
-				"toggleDarkMode": "切换深色模式",
-				"languageLabel": "默认语言",
-				"languages": [
+				"g": "偏好设置",
+				"f": "邮件通知",
+				"e": "接收每周基准报告",
+				"i": "切换通知",
+				"b": "深色模式",
+				"a": "使用深色配色方案",
+				"h": "切换深色模式",
+				"c": "默认语言",
+				"d": [
 					"英语 (en)",
 					"法语 (fr)",
 					"西班牙语 (es)",
@@ -160,15 +160,15 @@ var preferences_section_default = {
 				]
 			},
 			"ja": {
-				"title": "設定",
-				"notificationsTitle": "メール通知",
-				"notificationsDescription": "毎週のベンチマークレポートを受け取る",
-				"toggleNotifications": "通知を切り替える",
-				"darkModeTitle": "ダークモード",
-				"darkModeDescription": "ダークカラーの配色を使用する",
-				"toggleDarkMode": "ダークモードを切り替える",
-				"languageLabel": "デフォルトの言語",
-				"languages": [
+				"g": "設定",
+				"f": "メール通知",
+				"e": "毎週のベンチマークレポートを受け取る",
+				"i": "通知を切り替える",
+				"b": "ダークモード",
+				"a": "ダークカラーの配色を使用する",
+				"h": "ダークモードを切り替える",
+				"c": "デフォルトの言語",
+				"d": [
 					"英語 (en)",
 					"フランス語 (fr)",
 					"スペイン語 (es)",
@@ -182,15 +182,15 @@ var preferences_section_default = {
 				]
 			},
 			"ko": {
-				"title": "환경 설정",
-				"notificationsTitle": "이메일 알림",
-				"notificationsDescription": "주간 벤치마크 보고서 받기",
-				"toggleNotifications": "알림 전환",
-				"darkModeTitle": "다크 모드",
-				"darkModeDescription": "어두운 색상 테마 사용",
-				"toggleDarkMode": "다크 모드 전환",
-				"languageLabel": "기본 언어",
-				"languages": [
+				"g": "환경 설정",
+				"f": "이메일 알림",
+				"e": "주간 벤치마크 보고서 받기",
+				"i": "알림 전환",
+				"b": "다크 모드",
+				"a": "어두운 색상 테마 사용",
+				"h": "다크 모드 전환",
+				"c": "기본 언어",
+				"d": [
 					"영어 (en)",
 					"프랑스어 (fr)",
 					"스페인어 (es)",
@@ -204,15 +204,15 @@ var preferences_section_default = {
 				]
 			},
 			"ru": {
-				"title": "Настройки",
-				"notificationsTitle": "Электронные уведомления",
-				"notificationsDescription": "Получать еженедельные отчеты о бенчмарках",
-				"toggleNotifications": "Переключить уведомления",
-				"darkModeTitle": "Темная тема",
-				"darkModeDescription": "Использовать темную цветовую схему",
-				"toggleDarkMode": "Переключить темную тему",
-				"languageLabel": "Язык по умолчанию",
-				"languages": [
+				"g": "Настройки",
+				"f": "Электронные уведомления",
+				"e": "Получать еженедельные отчеты о бенчмарках",
+				"i": "Переключить уведомления",
+				"b": "Темная тема",
+				"a": "Использовать темную цветовую схему",
+				"h": "Переключить темную тему",
+				"c": "Язык по умолчанию",
+				"d": [
 					"Английский (en)",
 					"Французский (fr)",
 					"Испанский (es)",
@@ -226,8 +226,7 @@ var preferences_section_default = {
 				]
 			}
 		}
-	},
-	localIds: ["preferences-section::local::src/components/pages/settings/PreferencesSection.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -1033,6 +1032,34 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
+var PreferencesSection_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "PreferencesSection",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { g: title, f: notificationsTitle, e: notificationsDescription, i: toggleNotifications, b: darkModeTitle, a: darkModeDescription, h: toggleDarkMode, c: languageLabel, d: languages } = b(preferences_section_default);
+		const __returned__ = {
+			title,
+			notificationsTitle,
+			notificationsDescription,
+			toggleNotifications,
+			darkModeTitle,
+			darkModeDescription,
+			toggleDarkMode,
+			languageLabel,
+			languages
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "rounded-lg border border-border bg-card p-6" };
 var _hoisted_2 = { class: "mb-4 text-lg font-semibold text-foreground" };
 var _hoisted_3 = { class: "space-y-4" };
@@ -1052,29 +1079,24 @@ var _hoisted_13 = {
 	id: "language",
 	class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
 };
-var PreferencesSection_default = defineComponent({
-	__name: "PreferencesSection",
-	setup(__props) {
-		const { title, notificationsTitle, notificationsDescription, toggleNotifications, darkModeTitle, darkModeDescription, toggleDarkMode, languageLabel, languages } = b(preferences_section_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString(unref(title)), 1), createElementVNode("div", _hoisted_3, [
-				createElementVNode("div", _hoisted_4, [createElementVNode("div", null, [createElementVNode("p", _hoisted_5, toDisplayString(unref(notificationsTitle)), 1), createElementVNode("p", _hoisted_6, toDisplayString(unref(notificationsDescription)), 1)]), createElementVNode("button", {
-					type: "button",
-					class: "h-6 w-11 rounded-full bg-primary transition-colors",
-					"aria-label": unref(toggleNotifications)
-				}, [..._cache[0] || (_cache[0] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, null, -1)])], 8, _hoisted_7)]),
-				createElementVNode("div", _hoisted_8, [createElementVNode("div", null, [createElementVNode("p", _hoisted_9, toDisplayString(unref(darkModeTitle)), 1), createElementVNode("p", _hoisted_10, toDisplayString(unref(darkModeDescription)), 1)]), createElementVNode("button", {
-					type: "button",
-					class: "h-6 w-11 rounded-full bg-muted transition-colors",
-					"aria-label": unref(toggleDarkMode)
-				}, [..._cache[1] || (_cache[1] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, null, -1)])], 8, _hoisted_11)]),
-				createElementVNode("div", null, [createElementVNode("label", _hoisted_12, toDisplayString(unref(languageLabel)), 1), createElementVNode("select", _hoisted_13, [(openBlock(true), createElementBlock(Fragment, null, renderList(unref(languages), (l) => {
-					return openBlock(), createElementBlock("option", { key: l }, toDisplayString(l), 1);
-				}), 128))])])
-			])]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString($setup.title), 1), createElementVNode("div", _hoisted_3, [
+		createElementVNode("div", _hoisted_4, [createElementVNode("div", null, [createElementVNode("p", _hoisted_5, toDisplayString($setup.notificationsTitle), 1), createElementVNode("p", _hoisted_6, toDisplayString($setup.notificationsDescription), 1)]), createElementVNode("button", {
+			type: "button",
+			class: "h-6 w-11 rounded-full bg-primary transition-colors",
+			"aria-label": $setup.toggleNotifications
+		}, [..._cache[0] || (_cache[0] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, null, -1)])], 8, _hoisted_7)]),
+		createElementVNode("div", _hoisted_8, [createElementVNode("div", null, [createElementVNode("p", _hoisted_9, toDisplayString($setup.darkModeTitle), 1), createElementVNode("p", _hoisted_10, toDisplayString($setup.darkModeDescription), 1)]), createElementVNode("button", {
+			type: "button",
+			class: "h-6 w-11 rounded-full bg-muted transition-colors",
+			"aria-label": $setup.toggleDarkMode
+		}, [..._cache[1] || (_cache[1] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, null, -1)])], 8, _hoisted_11)]),
+		createElementVNode("div", null, [createElementVNode("label", _hoisted_12, toDisplayString($setup.languageLabel), 1), createElementVNode("select", _hoisted_13, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.languages, (l) => {
+			return openBlock(), createElementBlock("option", { key: l }, toDisplayString(l), 1);
+		}), 128))])])
+	])]);
+}
+var PreferencesSection_default = _plugin_vue_export_helper_default(PreferencesSection_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/settings/PreferencesSection.vue"]]);
 export { PreferencesSection_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

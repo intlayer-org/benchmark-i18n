@@ -1,24 +1,24 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, watch } from "vue";
 var pricing_tiers_default = {
 	key: "pricing-tiers",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"starterName": "Starter",
-				"starterPrice": "$0",
-				"starterPeriod": "forever",
-				"starterFeatures": [
+				"l": "Starter",
+				"n": "$0",
+				"m": "forever",
+				"k": [
 					"5 benchmark runs/day",
 					"3 libraries",
 					"Community support",
 					"Public results"
 				],
-				"proName": "Pro",
-				"proPrice": "$29",
-				"proPeriod": "/month",
-				"proFeatures": [
+				"h": "Pro",
+				"j": "$29",
+				"i": "/month",
+				"g": [
 					"Unlimited runs",
 					"All libraries",
 					"Priority support",
@@ -26,10 +26,10 @@ var pricing_tiers_default = {
 					"CI integration",
 					"Historical data"
 				],
-				"enterpriseName": "Enterprise",
-				"enterprisePrice": "Custom",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "Enterprise",
+				"e": "Custom",
+				"d": "",
+				"b": [
 					"Everything in Pro",
 					"On-premise option",
 					"SSO & SAML",
@@ -38,23 +38,23 @@ var pricing_tiers_default = {
 					"Audit logs",
 					"Training sessions"
 				],
-				"contactSales": "Contact Sales",
-				"getStarted": "Get Started"
+				"a": "Contact Sales",
+				"f": "Get Started"
 			},
 			"fr": {
-				"starterName": "Starter",
-				"starterPrice": "0 €",
-				"starterPeriod": "pour toujours",
-				"starterFeatures": [
+				"l": "Starter",
+				"n": "0 €",
+				"m": "pour toujours",
+				"k": [
 					"5 exécutions de benchmark / jour",
 					"3 bibliothèques",
 					"Support communautaire",
 					"Résultats publics"
 				],
-				"proName": "Pro",
-				"proPrice": "29 €",
-				"proPeriod": "/ mois",
-				"proFeatures": [
+				"h": "Pro",
+				"j": "29 €",
+				"i": "/ mois",
+				"g": [
 					"Exécutions illimitées",
 					"Toutes les bibliothèques",
 					"Support prioritaire",
@@ -62,10 +62,10 @@ var pricing_tiers_default = {
 					"Intégration CI",
 					"Historique"
 				],
-				"enterpriseName": "Enterprise",
-				"enterprisePrice": "Sur mesure",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "Enterprise",
+				"e": "Sur mesure",
+				"d": "",
+				"b": [
 					"Tout le Pro",
 					"Option on-premise",
 					"SSO et SAML",
@@ -74,23 +74,23 @@ var pricing_tiers_default = {
 					"Journaux d'audit",
 					"Sessions de formation"
 				],
-				"contactSales": "Contacter les ventes",
-				"getStarted": "Commencer"
+				"a": "Contacter les ventes",
+				"f": "Commencer"
 			},
 			"es": {
-				"starterName": "Starter",
-				"starterPrice": "0 $",
-				"starterPeriod": "para siempre",
-				"starterFeatures": [
+				"l": "Starter",
+				"n": "0 $",
+				"m": "para siempre",
+				"k": [
 					"5 ejecuciones de benchmark al día",
 					"3 bibliotecas",
 					"Soporte de la comunidad",
 					"Resultados públicos"
 				],
-				"proName": "Pro",
-				"proPrice": "29 $",
-				"proPeriod": "/mes",
-				"proFeatures": [
+				"h": "Pro",
+				"j": "29 $",
+				"i": "/mes",
+				"g": [
 					"Ejecuciones ilimitadas",
 					"Todas las bibliotecas",
 					"Soporte prioritario",
@@ -98,10 +98,10 @@ var pricing_tiers_default = {
 					"Integración CI",
 					"Datos históricos"
 				],
-				"enterpriseName": "Enterprise",
-				"enterprisePrice": "Personalizado",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "Enterprise",
+				"e": "Personalizado",
+				"d": "",
+				"b": [
 					"Todo lo de Pro",
 					"Opción local",
 					"SSO y SAML",
@@ -110,23 +110,23 @@ var pricing_tiers_default = {
 					"Registros de auditoría",
 					"Sesiones de formación"
 				],
-				"contactSales": "Contactar ventas",
-				"getStarted": "Comenzar"
+				"a": "Contactar ventas",
+				"f": "Comenzar"
 			},
 			"de": {
-				"starterName": "Starter",
-				"starterPrice": "0 €",
-				"starterPeriod": "für immer",
-				"starterFeatures": [
+				"l": "Starter",
+				"n": "0 €",
+				"m": "für immer",
+				"k": [
 					"5 Benchmark-Durchläufe/Tag",
 					"3 Bibliotheken",
 					"Community-Support",
 					"Öffentliche Ergebnisse"
 				],
-				"proName": "Pro",
-				"proPrice": "29 €",
-				"proPeriod": "/Monat",
-				"proFeatures": [
+				"h": "Pro",
+				"j": "29 €",
+				"i": "/Monat",
+				"g": [
 					"Unbegrenzte Durchläufe",
 					"Alle Bibliotheken",
 					"Prioritäts-Support",
@@ -134,10 +134,10 @@ var pricing_tiers_default = {
 					"CI-Integration",
 					"Historische Daten"
 				],
-				"enterpriseName": "Enterprise",
-				"enterprisePrice": "Individuell",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "Enterprise",
+				"e": "Individuell",
+				"d": "",
+				"b": [
 					"Alles in Pro",
 					"On-Premise-Option",
 					"SSO & SAML",
@@ -146,23 +146,23 @@ var pricing_tiers_default = {
 					"Audit-Protokolle",
 					"Schulungssitzungen"
 				],
-				"contactSales": "Vertrieb kontaktieren",
-				"getStarted": "Erste Schritte"
+				"a": "Vertrieb kontaktieren",
+				"f": "Erste Schritte"
 			},
 			"it": {
-				"starterName": "Starter",
-				"starterPrice": "0 €",
-				"starterPeriod": "per sempre",
-				"starterFeatures": [
+				"l": "Starter",
+				"n": "0 €",
+				"m": "per sempre",
+				"k": [
 					"5 esecuzioni benchmark/giorno",
 					"3 librerie",
 					"Supporto della comunità",
 					"Risultati pubblici"
 				],
-				"proName": "Pro",
-				"proPrice": "29 €",
-				"proPeriod": "/mese",
-				"proFeatures": [
+				"h": "Pro",
+				"j": "29 €",
+				"i": "/mese",
+				"g": [
 					"Esecuzioni illimitate",
 					"Tutte le librerie",
 					"Supporto prioritario",
@@ -170,10 +170,10 @@ var pricing_tiers_default = {
 					"Integrazione CI",
 					"Dati storici"
 				],
-				"enterpriseName": "Enterprise",
-				"enterprisePrice": "Personalizzato",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "Enterprise",
+				"e": "Personalizzato",
+				"d": "",
+				"b": [
 					"Tutto in Pro",
 					"Opzione on-premise",
 					"SSO e SAML",
@@ -182,23 +182,23 @@ var pricing_tiers_default = {
 					"Log di audit",
 					"Sessioni di formazione"
 				],
-				"contactSales": "Contatta l'ufficio vendite",
-				"getStarted": "Inizia"
+				"a": "Contatta l'ufficio vendite",
+				"f": "Inizia"
 			},
 			"pt": {
-				"starterName": "Starter",
-				"starterPrice": "0 $",
-				"starterPeriod": "para sempre",
-				"starterFeatures": [
+				"l": "Starter",
+				"n": "0 $",
+				"m": "para sempre",
+				"k": [
 					"5 execuções de benchmark/dia",
 					"3 bibliotecas",
 					"Suporte da comunidade",
 					"Resultados públicos"
 				],
-				"proName": "Pro",
-				"proPrice": "29 $",
-				"proPeriod": "/mês",
-				"proFeatures": [
+				"h": "Pro",
+				"j": "29 $",
+				"i": "/mês",
+				"g": [
 					"Execuções ilimitadas",
 					"Todas as bibliotecas",
 					"Suporte prioritário",
@@ -206,10 +206,10 @@ var pricing_tiers_default = {
 					"Integração CI",
 					"Dados históricos"
 				],
-				"enterpriseName": "Enterprise",
-				"enterprisePrice": "Personalizado",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "Enterprise",
+				"e": "Personalizado",
+				"d": "",
+				"b": [
 					"Tudo no Pro",
 					"Opção on-premise",
 					"SSO e SAML",
@@ -218,23 +218,23 @@ var pricing_tiers_default = {
 					"Logs de auditoria",
 					"Sessões de treinamento"
 				],
-				"contactSales": "Contatar Vendas",
-				"getStarted": "Começar"
+				"a": "Contatar Vendas",
+				"f": "Começar"
 			},
 			"zh": {
-				"starterName": "入门版",
-				"starterPrice": "0 美元",
-				"starterPeriod": "永久",
-				"starterFeatures": [
+				"l": "入门版",
+				"n": "0 美元",
+				"m": "永久",
+				"k": [
 					"每天 5 次基准测试",
 					"3 个库",
 					"社区支持",
 					"公开结果"
 				],
-				"proName": "专业版",
-				"proPrice": "29 美元",
-				"proPeriod": "/月",
-				"proFeatures": [
+				"h": "专业版",
+				"j": "29 美元",
+				"i": "/月",
+				"g": [
 					"无限次运行",
 					"所有库",
 					"优先支持",
@@ -242,10 +242,10 @@ var pricing_tiers_default = {
 					"CI 集成",
 					"历史数据"
 				],
-				"enterpriseName": "企业版",
-				"enterprisePrice": "自定义",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "企业版",
+				"e": "自定义",
+				"d": "",
+				"b": [
 					"包含专业版所有功能",
 					"本地部署选项",
 					"SSO 和 SAML",
@@ -254,23 +254,23 @@ var pricing_tiers_default = {
 					"审计日志",
 					"培训课程"
 				],
-				"contactSales": "联系销售",
-				"getStarted": "开始使用"
+				"a": "联系销售",
+				"f": "开始使用"
 			},
 			"ja": {
-				"starterName": "スターター",
-				"starterPrice": "0ドル",
-				"starterPeriod": "永久に",
-				"starterFeatures": [
+				"l": "スターター",
+				"n": "0ドル",
+				"m": "永久に",
+				"k": [
 					"1日5回のベンチマーク実行",
 					"3つのライブラリ",
 					"コミュニティサポート",
 					"公開結果"
 				],
-				"proName": "プロ",
-				"proPrice": "29ドル",
-				"proPeriod": "/月",
-				"proFeatures": [
+				"h": "プロ",
+				"j": "29ドル",
+				"i": "/月",
+				"g": [
 					"実行回数無制限",
 					"すべてのライブラリ",
 					"優先サポート",
@@ -278,10 +278,10 @@ var pricing_tiers_default = {
 					"CI統合",
 					"履歴データ"
 				],
-				"enterpriseName": "エンタープライズ",
-				"enterprisePrice": "カスタム",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "エンタープライズ",
+				"e": "カスタム",
+				"d": "",
+				"b": [
 					"Proのすべての機能",
 					"オンプレミスオプション",
 					"SSOおよびSAML",
@@ -290,23 +290,23 @@ var pricing_tiers_default = {
 					"監査ログ",
 					"トレーニングセッション"
 				],
-				"contactSales": "営業に連絡",
-				"getStarted": "開始する"
+				"a": "営業に連絡",
+				"f": "開始する"
 			},
 			"ko": {
-				"starterName": "스타터",
-				"starterPrice": "0달러",
-				"starterPeriod": "영구적으로",
-				"starterFeatures": [
+				"l": "스타터",
+				"n": "0달러",
+				"m": "영구적으로",
+				"k": [
 					"하루 5회 벤치마크 실행",
 					"3개 라이브러리",
 					"커뮤니티 지원",
 					"공개 결과"
 				],
-				"proName": "프로",
-				"proPrice": "29달러",
-				"proPeriod": "/월",
-				"proFeatures": [
+				"h": "프로",
+				"j": "29달러",
+				"i": "/월",
+				"g": [
 					"무제한 실행",
 					"모든 라이브러리",
 					"우선 지원",
@@ -314,10 +314,10 @@ var pricing_tiers_default = {
 					"CI 통합",
 					"기록 데이터"
 				],
-				"enterpriseName": "엔터프라이즈",
-				"enterprisePrice": "맞춤형",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "엔터프라이즈",
+				"e": "맞춤형",
+				"d": "",
+				"b": [
 					"프로의 모든 기능 포함",
 					"온프레미스 옵션",
 					"SSO 및 SAML",
@@ -326,23 +326,23 @@ var pricing_tiers_default = {
 					"감사 로그",
 					"교육 세션"
 				],
-				"contactSales": "영업팀 문의",
-				"getStarted": "시작하기"
+				"a": "영업팀 문의",
+				"f": "시작하기"
 			},
 			"ru": {
-				"starterName": "Начальный",
-				"starterPrice": "0 $",
-				"starterPeriod": "навсегда",
-				"starterFeatures": [
+				"l": "Начальный",
+				"n": "0 $",
+				"m": "навсегда",
+				"k": [
 					"5 запусков бенчмарков в день",
 					"3 библиотеки",
 					"Поддержка сообщества",
 					"Публичные результаты"
 				],
-				"proName": "Профессиональный",
-				"proPrice": "29 $",
-				"proPeriod": "/мес",
-				"proFeatures": [
+				"h": "Профессиональный",
+				"j": "29 $",
+				"i": "/мес",
+				"g": [
 					"Неограниченное количество запусков",
 					"Все библиотеки",
 					"Приоритетная поддержка",
@@ -350,10 +350,10 @@ var pricing_tiers_default = {
 					"Интеграция с CI",
 					"Исторические данные"
 				],
-				"enterpriseName": "Предприятие",
-				"enterprisePrice": "Индивидуально",
-				"enterprisePeriod": "",
-				"enterpriseFeatures": [
+				"c": "Предприятие",
+				"e": "Индивидуально",
+				"d": "",
+				"b": [
 					"Все функции Pro",
 					"Локальное развертывание",
 					"SSO и SAML",
@@ -362,12 +362,11 @@ var pricing_tiers_default = {
 					"Журналы аудита",
 					"Сессии по обучению"
 				],
-				"contactSales": "Связаться с отделом продаж",
-				"getStarted": "Начать"
+				"a": "Связаться с отделом продаж",
+				"f": "Начать"
 			}
 		}
-	},
-	localIds: ["pricing-tiers::local::src/components/pages/pricing/PricingTiers.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -1173,60 +1172,88 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
+var PricingTiers_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "PricingTiers",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { l: starterName, n: starterPrice, m: starterPeriod, k: starterFeatures, h: proName, j: proPrice, i: proPeriod, g: proFeatures, c: enterpriseName, e: enterprisePrice, d: enterprisePeriod, b: enterpriseFeatures, a: contactSales, f: getStarted } = b(pricing_tiers_default);
+		const __returned__ = {
+			starterName,
+			starterPrice,
+			starterPeriod,
+			starterFeatures,
+			proName,
+			proPrice,
+			proPeriod,
+			proFeatures,
+			enterpriseName,
+			enterprisePrice,
+			enterprisePeriod,
+			enterpriseFeatures,
+			contactSales,
+			getStarted,
+			tiers: computed(() => [
+				{
+					name: starterName.value,
+					price: starterPrice.value,
+					period: starterPeriod.value,
+					features: starterFeatures.value
+				},
+				{
+					name: proName.value,
+					price: proPrice.value,
+					period: proPeriod.value,
+					features: proFeatures.value,
+					highlighted: true
+				},
+				{
+					name: enterpriseName.value,
+					price: enterprisePrice.value,
+					period: enterprisePeriod.value,
+					features: enterpriseFeatures.value
+				}
+			])
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "grid gap-6 md:grid-cols-3" };
 var _hoisted_2 = { class: "text-lg font-semibold text-foreground" };
 var _hoisted_3 = { class: "my-4" };
 var _hoisted_4 = { class: "text-3xl font-bold text-foreground" };
 var _hoisted_5 = { class: "text-sm text-muted-foreground" };
 var _hoisted_6 = { class: "mb-6 flex-1 space-y-2" };
-var PricingTiers_default = defineComponent({
-	__name: "PricingTiers",
-	setup(__props) {
-		const { starterName, starterPrice, starterPeriod, starterFeatures, proName, proPrice, proPeriod, proFeatures, enterpriseName, enterprisePrice, enterprisePeriod, enterpriseFeatures, contactSales, getStarted } = b(pricing_tiers_default);
-		const tiers = computed(() => [
-			{
-				name: starterName.value,
-				price: starterPrice.value,
-				period: starterPeriod.value,
-				features: starterFeatures.value
-			},
-			{
-				name: proName.value,
-				price: proPrice.value,
-				period: proPeriod.value,
-				features: proFeatures.value,
-				highlighted: true
-			},
-			{
-				name: enterpriseName.value,
-				price: enterprisePrice.value,
-				period: enterprisePeriod.value,
-				features: enterpriseFeatures.value
-			}
-		]);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(true), createElementBlock(Fragment, null, renderList(tiers.value, (t) => {
-				return openBlock(), createElementBlock("div", {
-					key: t.name,
-					class: normalizeClass(["flex flex-col rounded-lg border p-6", t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
-				}, [
-					createElementVNode("h3", _hoisted_2, toDisplayString(t.name), 1),
-					createElementVNode("div", _hoisted_3, [createElementVNode("span", _hoisted_4, toDisplayString(t.price), 1), createElementVNode("span", _hoisted_5, toDisplayString(t.period), 1)]),
-					createElementVNode("ul", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList(t.features, (f) => {
-						return openBlock(), createElementBlock("li", {
-							key: f,
-							class: "flex items-center gap-2 text-sm text-muted-foreground"
-						}, [_cache[0] || (_cache[0] = createElementVNode("span", { class: "text-primary" }, "✓", -1)), createTextVNode(" " + toDisplayString(f), 1)]);
-					}), 128))]),
-					createElementVNode("button", {
-						type: "button",
-						class: normalizeClass(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
-					}, toDisplayString(t.name === unref(enterpriseName) ? unref(contactSales) : unref(getStarted)), 3)
-				], 2);
-			}), 128))]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.tiers, (t) => {
+		return openBlock(), createElementBlock("div", {
+			key: t.name,
+			class: normalizeClass(["flex flex-col rounded-lg border p-6", t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
+		}, [
+			createElementVNode("h3", _hoisted_2, toDisplayString(t.name), 1),
+			createElementVNode("div", _hoisted_3, [createElementVNode("span", _hoisted_4, toDisplayString(t.price), 1), createElementVNode("span", _hoisted_5, toDisplayString(t.period), 1)]),
+			createElementVNode("ul", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList(t.features, (f) => {
+				return openBlock(), createElementBlock("li", {
+					key: f,
+					class: "flex items-center gap-2 text-sm text-muted-foreground"
+				}, [_cache[0] || (_cache[0] = createElementVNode("span", { class: "text-primary" }, "✓", -1)), createTextVNode(" " + toDisplayString(f), 1)]);
+			}), 128))]),
+			createElementVNode("button", {
+				type: "button",
+				class: normalizeClass(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
+			}, toDisplayString(t.name === $setup.enterpriseName ? $setup.contactSales : $setup.getStarted), 3)
+		], 2);
+	}), 128))]);
+}
+var PricingTiers_default = _plugin_vue_export_helper_default(PricingTiers_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/pricing/PricingTiers.vue"]]);
 export { PricingTiers_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

@@ -1,10 +1,9 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as S, markRaw as C, onBeforeMount as ee, onMounted as te, openBlock as ne, ref as w, shallowRef as T, toDisplayString as E, toValue as D, unref as O, watch as re } from "vue";
+import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as S, markRaw as C, onBeforeMount as ee, onMounted as te, openBlock as ne, ref as w, shallowRef as T, toDisplayString as E, toValue as D, watch as re } from "vue";
 var ie = {
 	key: "about-grid",
-	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"why\":{\"title\":\"Why This Exists\",\"description\":\"Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.\"},\"methodology\":{\"title\":\"Methodology\",\"description\":\"The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use performance profiling to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results.\"}},\"fr\":{\"why\":{\"title\":\"Pourquoi cela existe\",\"description\":\"Le choix d'une bibliothèque i18n est une décision architecturale aux conséquences à long terme. La plupart des comparaisons se concentrent sur l'ergonomie de l'API, mais peu mesurent le coût en performances : quel poids la bibliothèque ajoute-t-elle au bundle ? Comment affecte-t-elle le rendu lorsque des milliers de clés de traduction sont chargées ? Le chargement différé aide-t-il réellement ou ne fait-il que déplacer le coût ? Ce benchmark répond à ces questions avec des données réelles.\"},\"methodology\":{\"title\":\"Méthodologie\",\"description\":\"La même application de 10 pages est construite une fois par bibliothèque. Nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits Lighthouse pour les mesures de chargement et utilisons le profilage des performances pour capturer les temps de rendu lors des changements de langue. Tous les tests sont exécutés en CI sur un matériel cohérent pour garantir des résultats reproductibles.\"}},\"es\":{\"why\":{\"title\":\"Por qué existe esto\",\"description\":\"Elegir una biblioteca i18n es una decisión arquitectónica con consecuencias a largo plazo. La mayoría de las comparaciones se centran en la ergonomía de la API, pero pocas miden el coste de rendimiento: ¿cuánto peso añade la biblioteca al bundle? ¿Cómo afecta al renderizado cuando se cargan miles de claves de traducción? ¿Ayuda realmente la carga diferida o solo traslada el coste? Este benchmark responde a esas preguntas con datos reales.\"},\"methodology\":{\"title\":\"Metodología\",\"description\":\"La misma aplicación de 10 páginas se crea una vez por biblioteca. Medimos el paquete de producción (a través de rollup-plugin-visualizer), realizamos auditorías de Lighthouse para las métricas de carga y utilizamos perfiles de rendimiento para capturar los tiempos de renderizado durante los cambios de configuración regional. Todas las pruebas se ejecutan en CI en hardware consistente para garantizar resultados reproducibles.\"}},\"de\":{\"why\":{\"title\":\"Warum dies existiert\",\"description\":\"Die Wahl einer i18n-Bibliothek ist eine architektonische Entscheidung mit langfristigen Folgen. Die meisten Vergleiche konzentrieren sich auf die Ergonomie der API, aber nur wenige messen die Leistungskosten: Wie viel Gewicht fügt die Bibliothek dem Bundle hinzu? Wie wirkt es sich auf das Rendering aus, wenn Tausende von Übersetzungsschlüsseln geladen werden? Hilft Lazy Loading tatsächlich oder verschiebt es nur die Kosten? Dieser Benchmark beantwortet diese Fragen mit echten Daten.\"},\"methodology\":{\"title\":\"Methodik\",\"description\":\"Die gleiche 10-seitige App wird einmal pro Bibliothek erstellt. Wir messen das Produktions-Bundle (über rollup-plugin-visualizer), führen Lighthouse-Audits für Lademetriken durch und verwenden Performance-Profiling, um die Renderzeiten bei Gebietsumschaltungen zu erfassen. Alle Tests laufen in der CI auf konsistenter Hardware, um reproduzierbare Ergebnisse zu gewährleisten.\"}},\"it\":{\"why\":{\"title\":\"Perché questo esiste\",\"description\":\"La scelta di una libreria i18n è una decisione architettonica con conseguenze a lungo termine. La maggior parte dei confronti si concentra sull'ergonomia delle API, ma pochi misurano il costo in termini di prestazioni: quanto peso aggiunge la libreria al bundle? In che modo influisce sul rendering quando vengono caricate migliaia di chiavi di traduzione? Il caricamento pigro aiuta davvero o sposta solo il costo? Questo benchmark risponde a queste domande con dati reali.\"},\"methodology\":{\"title\":\"Metodologia\",\"description\":\"La stessa app di 10 pagine viene creata una volta per libreria. Misuriamo il bundle di produzione (tramite rollup-plugin-visualizer), eseguiemy audit Lighthouse per le metriche di caricamento e utilizziamo il profiling delle prestazioni per acquisire i tempi di rendering durante i cambi di locale. Tutti i test vengono eseguiti in CI su hardware coerente per garantire risultati riproducibili.\"}},\"pt\":{\"why\":{\"title\":\"Por que Isso Existe\",\"description\":\"A escolha de uma biblioteca i18n é uma decisão arquitetônica com consequências de longo prazo. A maioria das comparações foca na ergonomia da API, mas poucas medem o custo de desempenho: quanto peso a biblioteca adiciona ao bundle? Como isso afeta a renderização quando milhares de chaves de tradução são carregadas? O carregamento lento realmente ajuda ou apenas desloca o custo? Este benchmark responde a essas perguntas com dados reais.\"},\"methodology\":{\"title\":\"Metodologia\",\"description\":\"O mesmo aplicativo de 10 páginas é construído uma vez por biblioteca. Medimos o bundle de produção (via rollup-plugin-visualizer), realizamos auditorias do Lighthouse para métricas de carregamento e usamos o perfil de desempenho para capturar tempos de renderização durante as trocas de localidade. Todos os testes são executados em CI em hardware consistente para garantir resultados reproduzíveis.\"}},\"zh\":{\"why\":{\"title\":\"为什么存在这个项目\",\"description\":\"选择 i18n 库是一个具有长期影响的架构决策。大多数比较都集中在 API 的易用性上，但很少有比较衡量性能成本：库为捆绑包增加了多少重量？当加载数千个翻译键时，它如何影响渲染？延迟加载真的有帮助还是只是转移了成本？本基准测试用真实数据回答了这些问题。\"},\"methodology\":{\"title\":\"方法论\",\"description\":\"同一个包含 10 个页面的应用程序针对每个库构建一次。我们测量生产捆绑包（通过 rollup-plugin-visualizer），运行 Lighthouse 审核以获取加载指标，并使用性能分析来捕获语言切换期间的渲染时间。所有测试都在具有一致硬件的 CI 中运行，以确保结果可复现。\"}},\"ja\":{\"why\":{\"title\":\"このプロジェクトの目的\",\"description\":\"i18nライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較はAPIの使いやすさに焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリがバンドルにどれだけの重量を追加するか？数千の翻訳キーがロードされたときにレンダリングにどのように影響するか？遅延読み込みは本当に役立つのか、それともコストをシフトさせるだけなのか？このベンチマークは、実際のデータでこれらの疑問に答えます。\"},\"methodology\":{\"title\":\"方法論\",\"description\":\"同じ10ページのアプリがライブラリごとに1回構築されます。プロダクションバンドルを測定し（rollup-plugin-visualizer経由）、ロード指標のLighthouse監査を実行し、パフォーマンスプロファイリングを使用してロケール切り替え中のレンダリング時間を取得します。すべてのテストは、再現可能な結果を保証するために、一貫したハードウェア上のCIで実行されます。\"}},\"ko\":{\"why\":{\"title\":\"이 프로젝트의 존재 이유\",\"description\":\"i18n 라이브러리를 선택하는 것은 장기적인 결과를 초래하는 아키텍처 결정입니다. 대부분의 비교는 API 인체공학에 중점을 두지만 성능 비용을 측정하는 경우는 거의 없습니다. 라이브러리가 번들에 얼마나 많은 무게를 추가합니까? 수천 개의 번역 키가 로드될 때 렌더링에 어떤 영향을 미칩니까? 지연 로딩이 실제로 도움이 됩니까, 아니면 단지 비용을 전가할 뿐입니까? 이 벤치마크는 실제 데이터로 이러한 질문에 답합니다.\"},\"methodology\":{\"title\":\"방법론\",\"description\":\"동일한 10페이지 분량의 앱이 라이브러리당 한 번씩 빌드됩니다. 프로덕션 번들을 측정하고(rollup-plugin-visualizer를 통해), 로딩 지표에 대한 Lighthouse 감사를 실행하고, 성능 프로파일링을 사용하여 로캘 전환 중 렌더링 시간을 캡처합니다. 모든 테스트는 재현 가능한 결과를 보장하기 위해 일관된 하드웨어의 CI에서 실행됩니다.\"}},\"ru\":{\"why\":{\"title\":\"Почему это существует\",\"description\":\"Выбор библиотеки i18n — это архитектурное решение с долгосрочными последствиями. Большинство сравнений сосредоточено на эргономике API, но немногие измеряют влияние на производительность: какой вес библиотека добавляет к бандлу? Как она влияет на рендеринг при загрузке тысяч ключей перевода? Действительно ли помогает ленивая загрузка или она просто переносит затраты? Этот бенчмарк отвечает на эти вопросы с помощью реальных данных.\"},\"methodology\":{\"title\":\"Методология\",\"description\":\"Одно и то же 10-страничное приложение создается по одному разу для каждой библиотеки. Мы измеряем продакшн-бандл (с помощью rollup-plugin-visualizer), проводим аудит Lighthouse для получения метрик загрузки и используем профилирование производительности для фиксации времени рендеринга при переключении языков. Все тесты запускаются в CI на идентичном оборудовании для обеспечения воспроизводимости результатов.\"}}}}"),
-	localIds: ["about-grid::local::src/components/pages/about/AboutGrid.content.ts"]
-}, k = ({ value: e, children: t, additionalProps: n = {} }) => {
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"b\":{\"b\":\"Why This Exists\",\"a\":\"Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.\"},\"a\":{\"b\":\"Methodology\",\"a\":\"The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use performance profiling to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results.\"}},\"fr\":{\"b\":{\"b\":\"Pourquoi cela existe\",\"a\":\"Le choix d'une bibliothèque i18n est une décision architecturale aux conséquences à long terme. La plupart des comparaisons se concentrent sur l'ergonomie de l'API, mais peu mesurent le coût en performances : quel poids la bibliothèque ajoute-t-elle au bundle ? Comment affecte-t-elle le rendu lorsque des milliers de clés de traduction sont chargées ? Le chargement différé aide-t-il réellement ou ne fait-il que déplacer le coût ? Ce benchmark répond à ces questions avec des données réelles.\"},\"a\":{\"b\":\"Méthodologie\",\"a\":\"La même application de 10 pages est construite une fois par bibliothèque. Nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits Lighthouse pour les mesures de chargement et utilisons le profilage des performances pour capturer les temps de rendu lors des changements de langue. Tous les tests sont exécutés en CI sur un matériel cohérent pour garantir des résultats reproductibles.\"}},\"es\":{\"b\":{\"b\":\"Por qué existe esto\",\"a\":\"Elegir una biblioteca i18n es una decisión arquitectónica con consecuencias a largo plazo. La mayoría de las comparaciones se centran en la ergonomía de la API, pero pocas miden el coste de rendimiento: ¿cuánto peso añade la biblioteca al bundle? ¿Cómo afecta al renderizado cuando se cargan miles de claves de traducción? ¿Ayuda realmente la carga diferida o solo traslada el coste? Este benchmark responde a esas preguntas con datos reales.\"},\"a\":{\"b\":\"Metodología\",\"a\":\"La misma aplicación de 10 páginas se crea una vez por biblioteca. Medimos el paquete de producción (a través de rollup-plugin-visualizer), realizamos auditorías de Lighthouse para las métricas de carga y utilizamos perfiles de rendimiento para capturar los tiempos de renderizado durante los cambios de configuración regional. Todas las pruebas se ejecutan en CI en hardware consistente para garantizar resultados reproducibles.\"}},\"de\":{\"b\":{\"b\":\"Warum dies existiert\",\"a\":\"Die Wahl einer i18n-Bibliothek ist eine architektonische Entscheidung mit langfristigen Folgen. Die meisten Vergleiche konzentrieren sich auf die Ergonomie der API, aber nur wenige messen die Leistungskosten: Wie viel Gewicht fügt die Bibliothek dem Bundle hinzu? Wie wirkt es sich auf das Rendering aus, wenn Tausende von Übersetzungsschlüsseln geladen werden? Hilft Lazy Loading tatsächlich oder verschiebt es nur die Kosten? Dieser Benchmark beantwortet diese Fragen mit echten Daten.\"},\"a\":{\"b\":\"Methodik\",\"a\":\"Die gleiche 10-seitige App wird einmal pro Bibliothek erstellt. Wir messen das Produktions-Bundle (über rollup-plugin-visualizer), führen Lighthouse-Audits für Lademetriken durch und verwenden Performance-Profiling, um die Renderzeiten bei Gebietsumschaltungen zu erfassen. Alle Tests laufen in der CI auf konsistenter Hardware, um reproduzierbare Ergebnisse zu gewährleisten.\"}},\"it\":{\"b\":{\"b\":\"Perché questo esiste\",\"a\":\"La scelta di una libreria i18n è una decisione architettonica con conseguenze a lungo termine. La maggior parte dei confronti si concentra sull'ergonomia delle API, ma pochi misurano il costo in termini di prestazioni: quanto peso aggiunge la libreria al bundle? In che modo influisce sul rendering quando vengono caricate migliaia di chiavi di traduzione? Il caricamento pigro aiuta davvero o sposta solo il costo? Questo benchmark risponde a queste domande con dati reali.\"},\"a\":{\"b\":\"Metodologia\",\"a\":\"La stessa app di 10 pagine viene creata una volta per libreria. Misuriamo il bundle di produzione (tramite rollup-plugin-visualizer), eseguiemy audit Lighthouse per le metriche di caricamento e utilizziamo il profiling delle prestazioni per acquisire i tempi di rendering durante i cambi di locale. Tutti i test vengono eseguiti in CI su hardware coerente per garantire risultati riproducibili.\"}},\"pt\":{\"b\":{\"b\":\"Por que Isso Existe\",\"a\":\"A escolha de uma biblioteca i18n é uma decisão arquitetônica com consequências de longo prazo. A maioria das comparações foca na ergonomia da API, mas poucas medem o custo de desempenho: quanto peso a biblioteca adiciona ao bundle? Como isso afeta a renderização quando milhares de chaves de tradução são carregadas? O carregamento lento realmente ajuda ou apenas desloca o custo? Este benchmark responde a essas perguntas com dados reais.\"},\"a\":{\"b\":\"Metodologia\",\"a\":\"O mesmo aplicativo de 10 páginas é construído uma vez por biblioteca. Medimos o bundle de produção (via rollup-plugin-visualizer), realizamos auditorias do Lighthouse para métricas de carregamento e usamos o perfil de desempenho para capturar tempos de renderização durante as trocas de localidade. Todos os testes são executados em CI em hardware consistente para garantir resultados reproduzíveis.\"}},\"zh\":{\"b\":{\"b\":\"为什么存在这个项目\",\"a\":\"选择 i18n 库是一个具有长期影响的架构决策。大多数比较都集中在 API 的易用性上，但很少有比较衡量性能成本：库为捆绑包增加了多少重量？当加载数千个翻译键时，它如何影响渲染？延迟加载真的有帮助还是只是转移了成本？本基准测试用真实数据回答了这些问题。\"},\"a\":{\"b\":\"方法论\",\"a\":\"同一个包含 10 个页面的应用程序针对每个库构建一次。我们测量生产捆绑包（通过 rollup-plugin-visualizer），运行 Lighthouse 审核以获取加载指标，并使用性能分析来捕获语言切换期间的渲染时间。所有测试都在具有一致硬件的 CI 中运行，以确保结果可复现。\"}},\"ja\":{\"b\":{\"b\":\"このプロジェクトの目的\",\"a\":\"i18nライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較はAPIの使いやすさに焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリがバンドルにどれだけの重量を追加するか？数千の翻訳キーがロードされたときにレンダリングにどのように影響するか？遅延読み込みは本当に役立つのか、それともコストをシフトさせるだけなのか？このベンチマークは、実際のデータでこれらの疑問に答えます。\"},\"a\":{\"b\":\"方法論\",\"a\":\"同じ10ページのアプリがライブラリごとに1回構築されます。プロダクションバンドルを測定し（rollup-plugin-visualizer経由）、ロード指標のLighthouse監査を実行し、パフォーマンスプロファイリングを使用してロケール切り替え中のレンダリング時間を取得します。すべてのテストは、再現可能な結果を保証するために、一貫したハードウェア上のCIで実行されます。\"}},\"ko\":{\"b\":{\"b\":\"이 프로젝트의 존재 이유\",\"a\":\"i18n 라이브러리를 선택하는 것은 장기적인 결과를 초래하는 아키텍처 결정입니다. 대부분의 비교는 API 인체공학에 중점을 두지만 성능 비용을 측정하는 경우는 거의 없습니다. 라이브러리가 번들에 얼마나 많은 무게를 추가합니까? 수천 개의 번역 키가 로드될 때 렌더링에 어떤 영향을 미칩니까? 지연 로딩이 실제로 도움이 됩니까, 아니면 단지 비용을 전가할 뿐입니까? 이 벤치마크는 실제 데이터로 이러한 질문에 답합니다.\"},\"a\":{\"b\":\"방법론\",\"a\":\"동일한 10페이지 분량의 앱이 라이브러리당 한 번씩 빌드됩니다. 프로덕션 번들을 측정하고(rollup-plugin-visualizer를 통해), 로딩 지표에 대한 Lighthouse 감사를 실행하고, 성능 프로파일링을 사용하여 로캘 전환 중 렌더링 시간을 캡처합니다. 모든 테스트는 재현 가능한 결과를 보장하기 위해 일관된 하드웨어의 CI에서 실행됩니다.\"}},\"ru\":{\"b\":{\"b\":\"Почему это существует\",\"a\":\"Выбор библиотеки i18n — это архитектурное решение с долгосрочными последствиями. Большинство сравнений сосредоточено на эргономике API, но немногие измеряют влияние на производительность: какой вес библиотека добавляет к бандлу? Как она влияет на рендеринг при загрузке тысяч ключей перевода? Действительно ли помогает ленивая загрузка или она просто переносит затраты? Этот бенчмарк отвечает на эти вопросы с помощью реальных данных.\"},\"a\":{\"b\":\"Методология\",\"a\":\"Одно и то же 10-страничное приложение создается по одному разу для каждой библиотеки. Мы измеряем продакшн-бандл (с помощью rollup-plugin-visualizer), проводим аудит Lighthouse для получения метрик загрузки и используем профилирование производительности для фиксации времени рендеринга при переключении языков. Все тесты запускаются в CI на идентичном оборудовании для обеспечения воспроизводимости результатов.\"}}}}")
+}, O = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = w(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -22,7 +21,7 @@ var ie = {
 			return r.value;
 		},
 		use(e) {
-			return k({
+			return O({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -33,7 +32,7 @@ var ie = {
 		},
 		...n
 	}), C(o);
-}, A = v({
+}, k = v({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -48,7 +47,7 @@ var ie = {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), j = (e, t, n = f(t)) => {
+}), ae = (e, t, n = f(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -56,12 +55,12 @@ var ie = {
 		plugins: n
 	};
 	return c(e.content, r, n);
-}, M = (e) => {
+}, A = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, N = /* @__PURE__ */ new Map(), ae = (e) => {
-	if (N.has(e)) return N.get(e);
+}, j = /* @__PURE__ */ new Map(), M = (e) => {
+	if (j.has(e)) return j.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -82,11 +81,11 @@ var ie = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: M(m),
+			props: A(m),
 			children: []
 		});
 		else {
-			let e = M(m);
+			let e = A(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -103,9 +102,9 @@ var ie = {
 			children: e.children
 		});
 	}
-	return N.set(e, n), n;
+	return j.set(e, n), n;
 }, oe = (e, t) => {
-	let n = ae(e), r = 0, i = (e) => {
+	let n = M(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -138,12 +137,12 @@ var ie = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
+}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", N = /\{\{\s*(.*?)\s*\}\}/g, P = (e, t = {}) => {
 	if (!Object.values(t).some(se)) return {
 		isSimple: !0,
-		parts: e.replace(P, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(N, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(P), r = [];
+	let n = e.split(N), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -153,14 +152,14 @@ var ie = {
 		isSimple: !1,
 		parts: r
 	};
-}, le = Symbol("intlayerHTML"), ue = () => x(le), F = (e, { components: t = {} } = {}) => {
+}, ce = Symbol("intlayerHTML"), le = () => x(ce), F = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => b(t, e, e?.children)]));
 	return oe(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => b(t, e, e?.children);
 	} }));
-}, de = ({ components: e } = {}) => {
-	let t = ue();
+}, ue = ({ components: e } = {}) => {
+	let t = le();
 	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 v({
@@ -176,11 +175,11 @@ v({
 		}
 	},
 	setup(e) {
-		let t = de({ components: e.components });
+		let t = ue({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var fe = new Set([
+var de = new Set([
 	"true",
 	"false",
 	"null",
@@ -192,7 +191,7 @@ var fe = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), pe = (e) => {
+]), fe = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -210,7 +209,7 @@ var fe = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => fe.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => de.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -337,7 +336,7 @@ var fe = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, me = (e) => {
+}, pe = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -346,7 +345,7 @@ var fe = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : pe(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : fe(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -366,8 +365,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var he = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => he(e)(t, n);
+var me = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => me(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -383,18 +382,18 @@ var he = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, ge = Symbol("intlayerMarkdown"), _e = () => {
-	let e = x(ge, { renderMarkdown: (e) => e });
+}, he = Symbol("intlayerMarkdown"), ge = () => {
+	let e = x(he, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, ve = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ye = !0, be = !0, q = !0, xe = ve ? t : {
+}, _e = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ve = !0, ye = !0, q = !0, be = _e ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => k({
+		let r = (e) => O({
 			...n,
 			value: e,
-			children: !q && p.enabled ? () => b(A, {
+			children: !q && p.enabled ? () => b(k, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -412,10 +411,10 @@ var he = (e) => (t, n = {}) => {
 		}
 		return C(a);
 	}
-}, Se = (e, t) => {
+}, xe = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = ce(e, r);
+	let i = P(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -437,7 +436,7 @@ var he = (e) => (t, n = {}) => {
 		}), b(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : b(m, null, i.parts);
-}, Ce = be ? t : {
+}, Se = ye ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -451,7 +450,7 @@ var he = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = Se(i, e);
+					let a = xe(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -467,15 +466,15 @@ var he = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, we = K ? t : {
+}, Ce = K ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(me(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(pe(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => k({
+				transform: (t, n) => O({
 					...n,
 					value: t,
 					children: e
@@ -483,15 +482,15 @@ var he = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => k({
+		}), o = (n) => O({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = _e(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = ge(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !q && p.enabled ? b(A, {
+				return !q && p.enabled ? b(k, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -503,7 +502,7 @@ var he = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, Te = K ? t : {
+}, we = K ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -512,10 +511,10 @@ var he = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [we, ...t.plugins ?? []]
+			plugins: [Ce, ...t.plugins ?? []]
 		});
 	}
-}, Ee = ye ? t : {
+}, J = ve ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
@@ -523,10 +522,10 @@ var he = (e) => (t, n = {}) => {
 		e.tags;
 		let r = (e = {}) => {
 			let i = F(n, { components: e });
-			return k({
+			return O({
 				...t,
 				value: n,
-				children: !q && p.enabled ? () => b(A, {
+				children: !q && p.enabled ? () => b(k, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -536,9 +535,9 @@ var he = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, J = /* @__PURE__ */ new Map(), De = (t, r = !0) => {
+}, Y = /* @__PURE__ */ new Map(), Te = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
-	if (J.has(i)) return J.get(i);
+	if (Y.has(i)) return Y.get(i);
 	let s = [
 		o(t ?? e.defaultLocale, r ? e.defaultLocale : void 0),
 		a,
@@ -546,28 +545,28 @@ var he = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
-		xe,
-		Ce,
-		Te,
-		Ee
+		be,
+		Se,
+		we,
+		J
 	];
-	return J.set(i, s), s;
-}, Oe = (e, t) => j(e, t, De(t)), ke = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Ae = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Q = (e) => C(v({
+	return Y.set(i, s), s;
+}, Ee = (e, t) => ae(e, t, Te(t)), De = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Oe = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => C(v({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : Z(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
+			return t == null ? null : Q(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
 		};
 	}
-})), $ = (e) => new Proxy({}, {
+})), ke = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
 		if (n === "value") return r ?? "";
 		if (n === "$raw") return e;
 		if (n === "__v_skip") return !0;
-		if (n === "c" || n === "asComponent") return Q(() => e.value);
+		if (n === "c" || n === "asComponent") return $(() => e.value);
 		if (r == null) return n === Symbol.toPrimitive || n === "toString" ? () => "" : void 0;
 		let i = r[n];
 		return typeof i == "function" ? i.bind(r) : i;
@@ -582,10 +581,10 @@ var he = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), je = (t, n) => {
-	let r = y() ? x(ke) : void 0, i = S(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : D(n)) ?? i.value), o = T({});
+}), Ae = (t, n) => {
+	let r = y() ? x(De) : void 0, i = S(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : D(n)) ?? i.value), o = T({});
 	re([() => D(t), () => a.value], ([e, t]) => {
-		o.value = Oe(e, t);
+		o.value = Ee(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -593,23 +592,23 @@ var he = (e) => (t, n = {}) => {
 	let s = (e) => new Proxy({}, {
 		get(t, n, r) {
 			if (n === "__v_isRef") return !0;
-			let i = h(() => Y(o.value, e));
+			let i = h(() => X(o.value, e));
 			if (n === "value") return i.value ?? "";
 			if (n === "then") return;
-			if (n === "c" || n === "asComponent") return Q(() => i.value);
+			if (n === "c" || n === "asComponent") return $(() => i.value);
 			if (n === "$raw") return i;
 			if (n === Symbol.toPrimitive) return () => i.value;
-			let a = e.concat(n), c = Y(o.value, a);
-			if (c === void 0 || X(c) && !Z(c)) return s(a);
-			if (Ae(c)) return $(h(() => Y(o.value, a)));
-			let l = h(() => Y(o.value, a));
+			let a = e.concat(n), c = X(o.value, a);
+			if (c === void 0 || Z(c) && !Q(c)) return s(a);
+			if (Oe(c)) return ke(h(() => X(o.value, a)));
+			let l = h(() => X(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = Y(o.value, e);
-			return X(t) ? Reflect.ownKeys(t) : [];
+			let t = X(o.value, e);
+			return Z(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -620,7 +619,7 @@ var he = (e) => (t, n = {}) => {
 	});
 	return s([]);
 };
-function Me(e) {
+function je(e) {
 	ee(() => {
 		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
 	}), te(() => {
@@ -632,15 +631,29 @@ function Me(e) {
 		}
 	});
 }
-var Ne = { class: "grid gap-8 md:grid-cols-2" }, Pe = { class: "rounded-lg border border-border bg-card p-6" }, Fe = { class: "mb-3 text-xl font-semibold text-foreground" }, Ie = { class: "text-sm text-muted-foreground" }, Le = { class: "rounded-lg border border-border bg-card p-6" }, Re = { class: "mb-3 text-xl font-semibold text-foreground" }, ze = { class: "text-sm text-muted-foreground" }, Be = v({
+var Me = v({
 	__name: "AboutGrid",
-	setup(e) {
-		Me("AboutGrid");
-		let { why: t, methodology: n } = je(ie);
-		return (e, r) => (ne(), g("div", Ne, [_("div", Pe, [_("h2", Fe, E(O(t).title), 1), _("p", Ie, E(O(t).description), 1)]), _("div", Le, [_("h2", Re, E(O(n).title), 1), _("p", ze, E(O(n).description), 1)])]));
+	setup(e, { expose: t }) {
+		t(), je("AboutGrid");
+		let { b: n, a: r } = Ae(ie), i = {
+			why: n,
+			methodology: r
+		};
+		return Object.defineProperty(i, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), i;
 	}
-});
-export { Be as default };
+}), Ne = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Pe = { class: "grid gap-8 md:grid-cols-2" }, Fe = { class: "rounded-lg border border-border bg-card p-6" }, Ie = { class: "mb-3 text-xl font-semibold text-foreground" }, Le = { class: "text-sm text-muted-foreground" }, Re = { class: "rounded-lg border border-border bg-card p-6" }, ze = { class: "mb-3 text-xl font-semibold text-foreground" }, Be = { class: "text-sm text-muted-foreground" };
+function Ve(e, t, n, r, i, a) {
+	return ne(), g("div", Pe, [_("div", Fe, [_("h2", Ie, E(r.why.title), 1), _("p", Le, E(r.why.description), 1)]), _("div", Re, [_("h2", ze, E(r.methodology.title), 1), _("p", Be, E(r.methodology.description), 1)])]);
+}
+var He = Ne(Me, [["render", Ve], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/about/AboutGrid.vue"]]);
+export { He as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

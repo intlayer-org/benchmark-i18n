@@ -1,53 +1,52 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var faq_header_default = {
 	key: "faq-header",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"title": "Frequently Asked Questions",
-				"description": "Everything you need to know about i18n Benchmark."
+				"b": "Frequently Asked Questions",
+				"a": "Everything you need to know about i18n Benchmark."
 			},
 			"fr": {
-				"title": "Questions fréquemment posées",
-				"description": "Tout ce que vous devez savoir sur i18n Benchmark."
+				"b": "Questions fréquemment posées",
+				"a": "Tout ce que vous devez savoir sur i18n Benchmark."
 			},
 			"es": {
-				"title": "Preguntas frecuentes",
-				"description": "Todo lo que necesita saber sobre i18n Benchmark."
+				"b": "Preguntas frecuentes",
+				"a": "Todo lo que necesita saber sobre i18n Benchmark."
 			},
 			"de": {
-				"title": "Häufig gestellte Fragen",
-				"description": "Alles, was Sie über i18n Benchmark wissen müssen."
+				"b": "Häufig gestellte Fragen",
+				"a": "Alles, was Sie über i18n Benchmark wissen müssen."
 			},
 			"it": {
-				"title": "Domande frequenti",
-				"description": "Tutto quello che c'è da sapere su i18n Benchmark."
+				"b": "Domande frequenti",
+				"a": "Tutto quello che c'è da sapere su i18n Benchmark."
 			},
 			"pt": {
-				"title": "Perguntas Frequentes",
-				"description": "Tudo o que você precisa saber sobre o i18n Benchmark."
+				"b": "Perguntas Frequentes",
+				"a": "Tudo o que você precisa saber sobre o i18n Benchmark."
 			},
 			"zh": {
-				"title": "常见问题解答",
-				"description": "关于 i18n 基准测试您需要了解的一切。"
+				"b": "常见问题解答",
+				"a": "关于 i18n 基准测试您需要了解的一切。"
 			},
 			"ja": {
-				"title": "よくある質問",
-				"description": "i18n ベンチマークについて知っておくべきことのすべて。"
+				"b": "よくある質問",
+				"a": "i18n ベンチマークについて知っておくべきことのすべて。"
 			},
 			"ko": {
-				"title": "자주 묻는 질문",
-				"description": "i18n 벤치마크에 대해 알아야 할 모든 것."
+				"b": "자주 묻는 질문",
+				"a": "i18n 벤치마크에 대해 알아야 할 모든 것."
 			},
 			"ru": {
-				"title": "Часто задаваемые вопросы",
-				"description": "Все, что вам нужно знать о i18n Benchmark."
+				"b": "Часто задаваемые вопросы",
+				"a": "Все, что вам нужно знать о i18n Benchmark."
 			}
 		}
-	},
-	localIds: ["faq-header::local::src/components/pages/faq/FAQHeader.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -858,45 +857,69 @@ var mock_banner_default = {
 	content: {
 		"nodeType": "translation",
 		"translation": {
-			"en": { "message": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." },
-			"fr": { "message": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." },
-			"es": { "message": "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." },
-			"de": { "message": "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." },
-			"it": { "message": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." },
-			"pt": { "message": "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." },
-			"zh": { "message": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务 or 服务无关。" },
-			"ja": { "message": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" },
-			"ko": { "message": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." },
-			"ru": { "message": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
+			"en": { "a": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." },
+			"fr": { "a": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." },
+			"es": { "a": "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." },
+			"de": { "a": "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." },
+			"it": { "a": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." },
+			"pt": { "a": "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." },
+			"zh": { "a": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务 or 服务无关。" },
+			"ja": { "a": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" },
+			"ko": { "a": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." },
+			"ru": { "a": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
 		}
-	},
-	localIds: ["mock-banner::local::src/components/MockBanner.content.ts"]
+	}
+};
+var MockBanner_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "MockBanner",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { a: message } = b(mock_banner_default);
+		const __returned__ = { message };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
 };
 var _hoisted_1$1 = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" };
-var MockBanner_default = defineComponent({
-	__name: "MockBanner",
-	setup(__props) {
-		const { message } = b(mock_banner_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString(unref(message)), 1);
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString($setup.message), 1);
+}
+var MockBanner_default = _plugin_vue_export_helper_default(MockBanner_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/MockBanner.vue"]]);
+var FAQHeader_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "FAQHeader",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { b: title, a: description } = b(faq_header_default);
+		const __returned__ = {
+			title,
+			description,
+			MockBanner: MockBanner_default
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
 var _hoisted_1 = { class: "mb-2 text-3xl font-bold text-foreground" };
 var _hoisted_2 = { class: "mb-10 text-muted-foreground" };
-var FAQHeader_default = defineComponent({
-	__name: "FAQHeader",
-	setup(__props) {
-		const { title, description } = b(faq_header_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [
-				createVNode(MockBanner_default),
-				createElementVNode("h1", _hoisted_1, toDisplayString(unref(title)), 1),
-				createElementVNode("p", _hoisted_2, toDisplayString(unref(description)), 1)
-			], 64);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock(Fragment, null, [
+		createVNode($setup["MockBanner"]),
+		createElementVNode("h1", _hoisted_1, toDisplayString($setup.title), 1),
+		createElementVNode("p", _hoisted_2, toDisplayString($setup.description), 1)
+	], 64);
+}
+var FAQHeader_default = _plugin_vue_export_helper_default(FAQHeader_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/faq/FAQHeader.vue"]]);
 export { FAQHeader_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

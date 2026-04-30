@@ -1,10 +1,9 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as C, ref as w, renderList as T, shallowRef as te, toDisplayString as E, toValue as D, unref as O, watch as ne } from "vue";
+import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as C, ref as w, renderList as te, shallowRef as ne, toDisplayString as T, toValue as E, watch as D } from "vue";
 var re = {
 	key: "faq-list",
-	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"faqs\":[{\"q\":\"What is i18n Benchmark?\",\"a\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\"},{\"q\":\"How are benchmarks conducted?\",\"a\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\"},{\"q\":\"Which libraries are currently supported?\",\"a\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\"},{\"q\":\"Can I submit my own benchmarks?\",\"a\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\"},{\"q\":\"How often are benchmarks updated?\",\"a\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\"},{\"q\":\"Is the data reliable?\",\"a\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\"},{\"q\":\"Do you offer consulting services?\",\"a\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\"},{\"q\":\"How can I contribute?\",\"a\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"}]},\"fr\":{\"faqs\":[{\"q\":\"Qu'est-ce qu'i18n Benchmark ?\",\"a\":\"Une suite open source qui mesure et compare performance, taille de bundle et expérience développeur des bibliothèques i18n pour JavaScript et React.\"},{\"q\":\"Comment sont menés les benchmarks ?\",\"a\":\"Tests standardisés sur matériel cohomogène, répétés pour la significativité statistique. Les configs sont publiques sur GitHub.\"},{\"q\":\"Quelles bibliothèques sont prises en charge ?\",\"a\":\"react-i18next, react-intl, Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, Tolgee, etc.\"},{\"q\":\"Puis-je proposer des benchmarks ?\",\"a\":\"Oui — forkez le dépôt, suivez le guide de contribution et ouvrez une pull request.\"},{\"q\":\"À quelle fréquence sont-ils mis à jour ?\",\"a\":\"Chaque semaine sur les dernières versions stables ; une release majeure relance immédiatement les mesures.\"},{\"q\":\"Les données sont-elles fiables ?\",\"a\":\"Méthodologie statistique stricte, échauffement, détection d'anomalies, intervalles de confiance — données brutes publiées.\"},{\"q\":\"Proposez-vous du conseil ?\",\"a\":\"Oui, le plan Enterprise inclut des heures pour aider les équipes à choisir une solution i18n.\"},{\"q\":\"Comment contribuer ?\",\"a\":\"Benchmarks, documentation, bugs, nouvelles métriques ou sponsorship — voir GitHub.\"}]},\"es\":{\"faqs\":[{\"q\":\"¿Qué es i18n Benchmark?\",\"a\":\"i18n Benchmark es una suite de benchmarking de código abierto que mide y compara el rendimiento, el tamaño del paquete y la experiencia del desarrollador de las bibliotecas de internacionalización para aplicaciones JavaScript y React.\"},{\"q\":\"¿Cómo se realizan los benchmarks?\",\"a\":\"Realizamos pruebas estandarizadas en entornos aislados utilizando hardware consistente. Cada benchmark se repite varias veces para asegurar la significación estadística. Todas las configuraciones de prueba están disponibles públicamente en nuestro repositorio de GitHub.\"},{\"q\":\"¿Qué bibliotecas son compatibles actualmente?\",\"a\":\"Soportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.\"},{\"q\":\"¿Puedo enviar mis propios benchmarks?\",\"a\":\"¡Sí! Los envíos de benchmarks de la comunidad son bienvenidos. Haga un fork de nuestro repositorio, añada su benchmark siguiendo nuestra guía de contribución y envíe un pull request. Nuestro equipo revisará y fusionará los envíos calificados.\"},{\"q\":\"¿Con qué frecuencia se actualizan los benchmarks?\",\"a\":\"Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmark inmediato.\"},{\"q\":\"¿Son confiables los datos?\",\"a\":\"Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos brutos se publican junto con nuestro análisis para una total transparencia.\"},{\"q\":\"¿Ofrecen servicios de consultoría?\",\"a\":\"Sí, nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso específico, escala y limitaciones.\"},{\"q\":\"¿Cómo puedo contribuir?\",\"a\":\"Hay muchas formas de contribuir: enviar benchmarks, mejorar la documentación, informar de errores, sugerir nuevas métricas o patrocinar el proyecto. Visite nuestro repositorio de GitHub para más detalles.\"}]},\"de\":{\"faqs\":[{\"q\":\"Was ist i18n Benchmark?\",\"a\":\"i18n Benchmark ist eine Open-Source-Benchmarking-Suite, die die Leistung, die Bundle-Größe und die Entwicklererfahrung von Internationalisierungsbibliotheken für JavaScript- und React-Anwendungen misst und vergleicht.\"},{\"q\":\"Wie werden Benchmarks durchgeführt?\",\"a\":\"Wir führen standardisierte Tests in isolierten Umgebungen mit einheitlicher Hardware durch. Jeder Benchmark wird mehrfach wiederholt, um die statistische Signifikanz sicherzustellen. Alle Testkonfigurationen sind in unserem GitHub-Repository öffentlich zugänglich.\"},{\"q\":\"Welche Bibliotheken werden derzeit unterstützt?\",\"a\":\"Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.\"},{\"q\":\"Kann ich meine eigenen Benchmarks einreichen?\",\"a\":\"Ja! Einreichungen von Community-Benchmarks sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Mitwirkende hinzu und reichen Sie einen Pull Request ein. Unser Team wird qualifizierte Einreichungen prüfen und zusammenführen.\"},{\"q\":\"Wie oft werden Benchmarks aktualisiert?\",\"a\":\"Wir führen alle Benchmarks wöchentlich mit den neuesten stabilen Versionen jeder Bibliothek erneut durch. Hauptversionsveröffentlichungen lösen sofort einen neuen Benchmarking-Zyklus aus.\"},{\"q\":\"Sind die Daten zuverlässig?\",\"a\":\"Wir folgen einer strengen statistischen Methodik, einschließlich Warm-up-Läufen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.\"},{\"q\":\"Bieten Sie Beratungsdienstleistungen an?\",\"a\":\"Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen evaluieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Ihren Einschränkungen geben.\"},{\"q\":\"Wie kann ich beitragen?\",\"a\":\"Es gibt viele Möglichkeiten, einen Beitrag zu leisten: Benchmarks einreichen, die Dokumentation verbessern, Fehler melden, neue Metriken vorschlagen oder das Projekt sponsern. Besuchen Sie unser GitHub-Repository für weitere Details.\"}]},\"it\":{\"faqs\":[{\"q\":\"Cos'è i18n Benchmark?\",\"a\":\"i18n Benchmark è una suite di benchmarking open source che misura e confronta le prestazioni, le dimensioni del bundle e l'esperienza dello sviluppatore delle librerie di internazionalizzazione per applicazioni JavaScript e React.\"},{\"q\":\"Come vengono condotti i benchmark?\",\"a\":\"Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni di test sono disponibili pubblicamente nel nostro repository GitHub.\"},{\"q\":\"Quali librerie sono attualmente supportate?\",\"a\":\"Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\"},{\"q\":\"Posso inviare i miei benchmark?\",\"a\":\"Sì! Le sottomissioni di benchmark da parte della comunità sono benvenute. Fai il fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà le sottomissioni idonee.\"},{\"q\":\"Quanto spesso vengono aggiornati i benchmark?\",\"a\":\"Eseguiamo nuovamente tutti i benchmark ogni settimana con le ultime versioni stabili di ogni libreria. I rilasci di versioni principali attivano un ciclo di ri-benchmark immediato.\"},{\"q\":\"I dati sono affidabili?\",\"a\":\"Seguiamo una rigorosa metodologia statistica che include corse di riscaldamento, rilevamento di outlier e intervalli di confidenza. Tutti i dati grezzi sono pubblicati insieme alla nostra analisi per la massima trasparenza.\"},{\"q\":\"Offrite servizi di consulenza?\",\"a\":\"Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano soluzioni i18n. Possiamo fornire raccomandazioni personalizzate basate sul tuo caso d'uso specifico, scala e vincoli.\"},{\"q\":\"Come posso contribuire?\",\"a\":\"Ci sono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per maggiori dettagli.\"}]},\"pt\":{\"faqs\":[{\"q\":\"O que é o i18n Benchmark?\",\"a\":\"O i18n Benchmark é um conjunto de benchmarking de código aberto que mede e compara o desempenho, o tamanho do bundle e a experiência do desenvolvedor de bibliotecas de internacionalização para aplicativos JavaScript e React.\"},{\"q\":\"Como os benchmarks são conduzidos?\",\"a\":\"Realizamos testes padronizados em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir a significância estatística. Todas as configurações de teste estão disponíveis publicamente em nosso repositório no GitHub.\"},{\"q\":\"Quais bibliotecas são suportadas atualmente?\",\"a\":\"Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\"},{\"q\":\"Posso enviar meus próprios benchmarks?\",\"a\":\"Sim! Envios de benchmarks da comunidade são bem-vindos. Faça um fork do nosso repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe revisará e mesclará os envios qualificados.\"},{\"q\":\"Com que frequência os benchmarks são atualizados?\",\"a\":\"Executamos novamente todos os benchmarks semanalmente em relação às versões estáveis mais recentes de cada biblioteca. Lançamentos de versões principais disparam um ciclo imediato de re-benchmarking.\"},{\"q\":\"Os dados são confiáveis?\",\"a\":\"Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de outliers e intervalos de confiança. Todos os dados brutos são publicados junto com nossa análise para total transparência.\"},{\"q\":\"Vocês oferecem serviços de consultoria?\",\"a\":\"Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Podemos fornecer recomendações personalizadas com base em seu caso de uso específico, escala e restrições.\"},{\"q\":\"Como posso contribuir?\",\"a\":\"Existem muitas maneiras de contribuir: enviar benchmarks, melhorar a documentação, relatar bugs, sugerir novas métricas ou patrocinar o proyecto. Visite nosso repositório no GitHub para mais detalhes.\"}]},\"zh\":{\"faqs\":[{\"q\":\"什么是 i18n 基准测试？\",\"a\":\"i18n Benchmark 是一个开源基准测试套件，用于测量和比较 JavaScript 和 React 应用程序的国际化库的性能、捆绑包大小和开发人员体验。\"},{\"q\":\"如何进行基准测试？\",\"a\":\"我们在使用一致硬件的隔离环境中运行标准化测试。每个基准测试都会重复多次，以确保统计显着性。所有测试配置都可以在我们的 GitHub 存储库中公开获得。\"},{\"q\":\"目前支持哪些库？\",\"a\":\"我们支持 react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 和 Tolgee。\"},{\"q\":\"我可以提交自己的基准测试吗？\",\"a\":\"是的！欢迎社区提交基准测试。分叉我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审查并合并合格的提交内容。\"},{\"q\":\"基准测试多久更新一次？\",\"a\":\"我们每周会针对每个库的最新稳定版本重新运行所有基准测试。主要版本的发布将立即触发重新基准测试周期。\"},{\"q\":\"数据可靠吗？\",\"a\":\"我们遵循严格的统计方法，包括预热运行、异常值检测和置信区间。所有原始数据都与我们的分析一起发布，以实现完全透明。\"},{\"q\":\"你们提供咨询服务吗？\",\"a\":\"是的，我们的企业计划包括为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的特定用例、规模和限制提供量身定制的建议。\"},{\"q\":\"我该如何贡献？\",\"a\":\"有多种贡献方式：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。\"}]},\"ja\":{\"faqs\":[{\"q\":\"i18n ベンチマークとは何ですか？\",\"a\":\"i18n ベンチマークは、JavaScript および React アプリケーション向けの国際化ライブラリのパフォーマンス、バンドルサイズ、開発者エクスペリエンスを測定および比較するオープンソースのベンチマークスイートです。\"},{\"q\":\"ベンチマークはどのように行われますか？\",\"a\":\"一貫したハードウェアを使用し、隔離された環境で標準化されたテストを実行します。統計的な有意性を確保するために、各ベンチマークは複数回繰り返されます。すべてのテスト構成は、GitHubリポジトリで公開されています。\"},{\"q\":\"現在どのライブラリがサポートされていますか？\",\"a\":\"react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, Tolgeeをサポートしています。\"},{\"q\":\"自分のベンチマークを送信できますか？\",\"a\":\"はい！コミュニティからのベンチマーク送信を歓迎します。リポジトリをフォークし、投稿ガイドに従ってベンチマークを追加して、プルリクエストを送信してください。私たちのチームが審査し、要件を満たす送信をマージします。\"},{\"q\":\"ベンチマークはどのくらいの頻度で更新されますか？\",\"a\":\"各ライブラリの最新の安定版に対して、毎週すべてのベンチマークを再実行します。メジャーバージョンのリリースにより、即座に再ベンチマークサイクルがトリガーされます。\"},{\"q\":\"データは信頼できますか？\",\"a\":\"ウォームアップ実行、異常値検出、信頼区間など、厳格な統計手法に従っています。完全な透明性を確保するため、すべての生データは分析結果とともに公開されます。\"},{\"q\":\"コンサルティングサービスは提供していますか？\",\"a\":\"はい、エンタープライズプランには、i18nソリューションを検討しているチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいて、カスタマイズされた推奨事項を提供できます。\"},{\"q\":\"どのように貢献できますか？\",\"a\":\"貢献する方法はたくさんあります。ベンチマークの送信、ドキュメントの改善、バグの報告、新しいメトリクスの提案、プロジェクトへのスポンサーなどです。詳細については、GitHubリポジトリをご覧ください。\"}]},\"ko\":{\"faqs\":[{\"q\":\"i18n 벤치마크란 무엇인가요?\",\"a\":\"i18n 벤치마크는 JavaScript 및 React 애플리케이션용 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 제품군입니다.\"},{\"q\":\"벤치마크는 어떻게 진행되나요?\",\"a\":\"일관된 하드웨어를 사용하여 격리된 환경에서 표준화된 테스트를 실행합니다. 통계적 유의성을 보장하기 위해 각 벤치마크는 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 리포지토리에서 공개적으로 사용할 수 있습니다.\"},{\"q\":\"현재 어떤 라이브러리가 지원되나요?\",\"a\":\"react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 및 Tolgee를 지원합니다.\"},{\"q\":\"직접 벤치마크를 제출할 수 있나요?\",\"a\":\"네! 커뮤니티 벤치마크 제출을 환영합니다. 리포지토리를 포크하고 기여 가이드에 따라 벤치마크를 추가한 후 풀 리퀘스트를 제출하세요. 저희 팀이 검토 후 적격한 제출물을 병합할 것입니다.\"},{\"q\":\"벤치마크는 얼마나 자주 업데이트되나요?\",\"a\":\"각 라이브러리의 최신 안정 버전에 대해 매주 모든 벤치마크를 다시 실행합니다. 메이저 버전이 출시되면 즉시 벤치마크 사이클이 다시 시작됩니다.\"},{\"q\":\"데이터가 신뢰할 수 있나요?\",\"a\":\"웜업 실행, 이상값 감지 및 신뢰 구간을 포함한 엄격한 통계 방법론을 따릅니다. 모든 원시 데이터는 투명성을 위해 분석과 함께 게시됩니다.\"},{\"q\":\"컨설팅 서비스를 제공하나요?\",\"a\":\"네, 엔터프라이즈 플랜에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 귀하의 특정 사용 사례, 규모 및 제약 조건에 따라 맞춤형 권장 사항을 제공할 수 있습니다.\"},{\"q\":\"어떻게 기여할 수 있나요?\",\"a\":\"기여할 수 있는 방법은 많습니다. 벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 또는 프로젝트 후원 등이 있습니다. 자세한 내용은 GitHub 리포지토리를 방문하세요.\"}]},\"ru\":{\"faqs\":[{\"q\":\"Что такое i18n Benchmark?\",\"a\":\"i18n Benchmark — это пакет бенчмарков с открытым исходным кодом, который измеряет и сравнивает производительность, размер бандла и опыт разработчиков библиотек интернационализации для приложений JavaScript и React.\"},{\"q\":\"Как проводятся бенчмарки?\",\"a\":\"Мы проводим стандартизированные тесты в изолированных средах с использованием одинакового оборудования. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов открыты и доступны в нашем репозитории GitHub.\"},{\"q\":\"Какие библиотеки поддерживаются в данный момент?\",\"a\":\"Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react и Tolgee.\"},{\"q\":\"Могу ли я отправить свои собственные бенчмарки?\",\"a\":\"Да! Мы приветствуем отправку бенчмарков от сообщества. Сделайте форк нашего репозитория, добавьте свой бенчмарк, следуя нашему руководству для участников, и отправьте pull request. Наша команда рассмотрит и примет подходящие заявки.\"},{\"q\":\"Как часто обновляются бенчмарки?\",\"a\":\"Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Выход основных версий вызывает немедленный цикл повторного тестирования.\"},{\"q\":\"Надежны ли данные?\",\"a\":\"Мы следуем строгой статистической методологии, включая прогревочные прогоны, обнаружение выбросов и доверительные интервалы. Все необработанные данные публикуются вместе с нашим анализом для полной прозрачности.\"},{\"q\":\"Предоставляете ли вы консультационные услуги?\",\"a\":\"Да, наш план Enterprise включает часы консультаций для команд, оценивающих решения i18n. Мы можем предоставить индивидуальные рекомендации, основанные на вашем конкретном сценарии использования, масштабе и ограничениях.\"},{\"q\":\"Как я могу помочь?\",\"a\":\"Есть много способов внести свой вклад: отправка бенчмарков, улучшение документации, сообщения об ошибках, предложения новых показателей или спонсорство проекта. Посетите наш репозиторий GitHub для получения более подробной информации.\"}]}}}"),
-	localIds: ["faq-list::local::src/components/pages/faq/FAQList.content.ts"]
-}, k = ({ value: e, children: t, additionalProps: n = {} }) => {
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"a\":[{\"q\":\"What is i18n Benchmark?\",\"a\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\"},{\"q\":\"How are benchmarks conducted?\",\"a\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\"},{\"q\":\"Which libraries are currently supported?\",\"a\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\"},{\"q\":\"Can I submit my own benchmarks?\",\"a\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\"},{\"q\":\"How often are benchmarks updated?\",\"a\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\"},{\"q\":\"Is the data reliable?\",\"a\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\"},{\"q\":\"Do you offer consulting services?\",\"a\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\"},{\"q\":\"How can I contribute?\",\"a\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"}]},\"fr\":{\"a\":[{\"q\":\"Qu'est-ce qu'i18n Benchmark ?\",\"a\":\"Une suite open source qui mesure et compare performance, taille de bundle et expérience développeur des bibliothèques i18n pour JavaScript et React.\"},{\"q\":\"Comment sont menés les benchmarks ?\",\"a\":\"Tests standardisés sur matériel cohomogène, répétés pour la significativité statistique. Les configs sont publiques sur GitHub.\"},{\"q\":\"Quelles bibliothèques sont prises en charge ?\",\"a\":\"react-i18next, react-intl, Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, Tolgee, etc.\"},{\"q\":\"Puis-je proposer des benchmarks ?\",\"a\":\"Oui — forkez le dépôt, suivez le guide de contribution et ouvrez une pull request.\"},{\"q\":\"À quelle fréquence sont-ils mis à jour ?\",\"a\":\"Chaque semaine sur les dernières versions stables ; une release majeure relance immédiatement les mesures.\"},{\"q\":\"Les données sont-elles fiables ?\",\"a\":\"Méthodologie statistique stricte, échauffement, détection d'anomalies, intervalles de confiance — données brutes publiées.\"},{\"q\":\"Proposez-vous du conseil ?\",\"a\":\"Oui, le plan Enterprise inclut des heures pour aider les équipes à choisir une solution i18n.\"},{\"q\":\"Comment contribuer ?\",\"a\":\"Benchmarks, documentation, bugs, nouvelles métriques ou sponsorship — voir GitHub.\"}]},\"es\":{\"a\":[{\"q\":\"¿Qué es i18n Benchmark?\",\"a\":\"i18n Benchmark es una suite de benchmarking de código abierto que mide y compara el rendimiento, el tamaño del paquete y la experiencia del desarrollador de las bibliotecas de internacionalización para aplicaciones JavaScript y React.\"},{\"q\":\"¿Cómo se realizan los benchmarks?\",\"a\":\"Realizamos pruebas estandarizadas en entornos aislados utilizando hardware consistente. Cada benchmark se repite varias veces para asegurar la significación estadística. Todas las configuraciones de prueba están disponibles públicamente en nuestro repositorio de GitHub.\"},{\"q\":\"¿Qué bibliotecas son compatibles actualmente?\",\"a\":\"Soportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.\"},{\"q\":\"¿Puedo enviar mis propios benchmarks?\",\"a\":\"¡Sí! Los envíos de benchmarks de la comunidad son bienvenidos. Haga un fork de nuestro repositorio, añada su benchmark siguiendo nuestra guía de contribución y envíe un pull request. Nuestro equipo revisará y fusionará los envíos calificados.\"},{\"q\":\"¿Con qué frecuencia se actualizan los benchmarks?\",\"a\":\"Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmark inmediato.\"},{\"q\":\"¿Son confiables los datos?\",\"a\":\"Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos brutos se publican junto con nuestro análisis para una total transparencia.\"},{\"q\":\"¿Ofrecen servicios de consultoría?\",\"a\":\"Sí, nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso específico, escala y limitaciones.\"},{\"q\":\"¿Cómo puedo contribuir?\",\"a\":\"Hay muchas formas de contribuir: enviar benchmarks, mejorar la documentación, informar de errores, sugerir nuevas métricas o patrocinar el proyecto. Visite nuestro repositorio de GitHub para más detalles.\"}]},\"de\":{\"a\":[{\"q\":\"Was ist i18n Benchmark?\",\"a\":\"i18n Benchmark ist eine Open-Source-Benchmarking-Suite, die die Leistung, die Bundle-Größe und die Entwicklererfahrung von Internationalisierungsbibliotheken für JavaScript- und React-Anwendungen misst und vergleicht.\"},{\"q\":\"Wie werden Benchmarks durchgeführt?\",\"a\":\"Wir führen standardisierte Tests in isolierten Umgebungen mit einheitlicher Hardware durch. Jeder Benchmark wird mehrfach wiederholt, um die statistische Signifikanz sicherzustellen. Alle Testkonfigurationen sind in unserem GitHub-Repository öffentlich zugänglich.\"},{\"q\":\"Welche Bibliotheken werden derzeit unterstützt?\",\"a\":\"Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.\"},{\"q\":\"Kann ich meine eigenen Benchmarks einreichen?\",\"a\":\"Ja! Einreichungen von Community-Benchmarks sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Mitwirkende hinzu und reichen Sie einen Pull Request ein. Unser Team wird qualifizierte Einreichungen prüfen und zusammenführen.\"},{\"q\":\"Wie oft werden Benchmarks aktualisiert?\",\"a\":\"Wir führen alle Benchmarks wöchentlich mit den neuesten stabilen Versionen jeder Bibliothek erneut durch. Hauptversionsveröffentlichungen lösen sofort einen neuen Benchmarking-Zyklus aus.\"},{\"q\":\"Sind die Daten zuverlässig?\",\"a\":\"Wir folgen einer strengen statistischen Methodik, einschließlich Warm-up-Läufen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.\"},{\"q\":\"Bieten Sie Beratungsdienstleistungen an?\",\"a\":\"Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen evaluieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Ihren Einschränkungen geben.\"},{\"q\":\"Wie kann ich beitragen?\",\"a\":\"Es gibt viele Möglichkeiten, einen Beitrag zu leisten: Benchmarks einreichen, die Dokumentation verbessern, Fehler melden, neue Metriken vorschlagen oder das Projekt sponsern. Besuchen Sie unser GitHub-Repository für weitere Details.\"}]},\"it\":{\"a\":[{\"q\":\"Cos'è i18n Benchmark?\",\"a\":\"i18n Benchmark è una suite di benchmarking open source che misura e confronta le prestazioni, le dimensioni del bundle e l'esperienza dello sviluppatore delle librerie di internazionalizzazione per applicazioni JavaScript e React.\"},{\"q\":\"Come vengono condotti i benchmark?\",\"a\":\"Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni di test sono disponibili pubblicamente nel nostro repository GitHub.\"},{\"q\":\"Quali librerie sono attualmente supportate?\",\"a\":\"Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\"},{\"q\":\"Posso inviare i miei benchmark?\",\"a\":\"Sì! Le sottomissioni di benchmark da parte della comunità sono benvenute. Fai il fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà le sottomissioni idonee.\"},{\"q\":\"Quanto spesso vengono aggiornati i benchmark?\",\"a\":\"Eseguiamo nuovamente tutti i benchmark ogni settimana con le ultime versioni stabili di ogni libreria. I rilasci di versioni principali attivano un ciclo di ri-benchmark immediato.\"},{\"q\":\"I dati sono affidabili?\",\"a\":\"Seguiamo una rigorosa metodologia statistica che include corse di riscaldamento, rilevamento di outlier e intervalli di confidenza. Tutti i dati grezzi sono pubblicati insieme alla nostra analisi per la massima trasparenza.\"},{\"q\":\"Offrite servizi di consulenza?\",\"a\":\"Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano soluzioni i18n. Possiamo fornire raccomandazioni personalizzate basate sul tuo caso d'uso specifico, scala e vincoli.\"},{\"q\":\"Come posso contribuire?\",\"a\":\"Ci sono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per maggiori dettagli.\"}]},\"pt\":{\"a\":[{\"q\":\"O que é o i18n Benchmark?\",\"a\":\"O i18n Benchmark é um conjunto de benchmarking de código aberto que mede e compara o desempenho, o tamanho do bundle e a experiência do desenvolvedor de bibliotecas de internacionalização para aplicativos JavaScript e React.\"},{\"q\":\"Como os benchmarks são conduzidos?\",\"a\":\"Realizamos testes padronizados em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir a significância estatística. Todas as configurações de teste estão disponíveis publicamente em nosso repositório no GitHub.\"},{\"q\":\"Quais bibliotecas são suportadas atualmente?\",\"a\":\"Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\"},{\"q\":\"Posso enviar meus próprios benchmarks?\",\"a\":\"Sim! Envios de benchmarks da comunidade são bem-vindos. Faça um fork do nosso repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe revisará e mesclará os envios qualificados.\"},{\"q\":\"Com que frequência os benchmarks são atualizados?\",\"a\":\"Executamos novamente todos os benchmarks semanalmente em relação às versões estáveis mais recentes de cada biblioteca. Lançamentos de versões principais disparam um ciclo imediato de re-benchmarking.\"},{\"q\":\"Os dados são confiáveis?\",\"a\":\"Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de outliers e intervalos de confiança. Todos os dados brutos são publicados junto com nossa análise para total transparência.\"},{\"q\":\"Vocês oferecem serviços de consultoria?\",\"a\":\"Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Podemos fornecer recomendações personalizadas com base em seu caso de uso específico, escala e restrições.\"},{\"q\":\"Como posso contribuir?\",\"a\":\"Existem muitas maneiras de contribuir: enviar benchmarks, melhorar a documentação, relatar bugs, sugerir novas métricas ou patrocinar o proyecto. Visite nosso repositório no GitHub para mais detalhes.\"}]},\"zh\":{\"a\":[{\"q\":\"什么是 i18n 基准测试？\",\"a\":\"i18n Benchmark 是一个开源基准测试套件，用于测量和比较 JavaScript 和 React 应用程序的国际化库的性能、捆绑包大小和开发人员体验。\"},{\"q\":\"如何进行基准测试？\",\"a\":\"我们在使用一致硬件的隔离环境中运行标准化测试。每个基准测试都会重复多次，以确保统计显着性。所有测试配置都可以在我们的 GitHub 存储库中公开获得。\"},{\"q\":\"目前支持哪些库？\",\"a\":\"我们支持 react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 和 Tolgee。\"},{\"q\":\"我可以提交自己的基准测试吗？\",\"a\":\"是的！欢迎社区提交基准测试。分叉我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审查并合并合格的提交内容。\"},{\"q\":\"基准测试多久更新一次？\",\"a\":\"我们每周会针对每个库的最新稳定版本重新运行所有基准测试。主要版本的发布将立即触发重新基准测试周期。\"},{\"q\":\"数据可靠吗？\",\"a\":\"我们遵循严格的统计方法，包括预热运行、异常值检测和置信区间。所有原始数据都与我们的分析一起发布，以实现完全透明。\"},{\"q\":\"你们提供咨询服务吗？\",\"a\":\"是的，我们的企业计划包括为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的特定用例、规模和限制提供量身定制的建议。\"},{\"q\":\"我该如何贡献？\",\"a\":\"有多种贡献方式：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。\"}]},\"ja\":{\"a\":[{\"q\":\"i18n ベンチマークとは何ですか？\",\"a\":\"i18n ベンチマークは、JavaScript および React アプリケーション向けの国際化ライブラリのパフォーマンス、バンドルサイズ、開発者エクスペリエンスを測定および比較するオープンソースのベンチマークスイートです。\"},{\"q\":\"ベンチマークはどのように行われますか？\",\"a\":\"一貫したハードウェアを使用し、隔離された環境で標準化されたテストを実行します。統計的な有意性を確保するために、各ベンチマークは複数回繰り返されます。すべてのテスト構成は、GitHubリポジトリで公開されています。\"},{\"q\":\"現在どのライブラリがサポートされていますか？\",\"a\":\"react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, Tolgeeをサポートしています。\"},{\"q\":\"自分のベンチマークを送信できますか？\",\"a\":\"はい！コミュニティからのベンチマーク送信を歓迎します。リポジトリをフォークし、投稿ガイドに従ってベンチマークを追加して、プルリクエストを送信してください。私たちのチームが審査し、要件を満たす送信をマージします。\"},{\"q\":\"ベンチマークはどのくらいの頻度で更新されますか？\",\"a\":\"各ライブラリの最新の安定版に対して、毎週すべてのベンチマークを再実行します。メジャーバージョンのリリースにより、即座に再ベンチマークサイクルがトリガーされます。\"},{\"q\":\"データは信頼できますか？\",\"a\":\"ウォームアップ実行、異常値検出、信頼区間など、厳格な統計手法に従っています。完全な透明性を確保するため、すべての生データは分析結果とともに公開されます。\"},{\"q\":\"コンサルティングサービスは提供していますか？\",\"a\":\"はい、エンタープライズプランには、i18nソリューションを検討しているチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいて、カスタマイズされた推奨事項を提供できます。\"},{\"q\":\"どのように貢献できますか？\",\"a\":\"貢献する方法はたくさんあります。ベンチマークの送信、ドキュメントの改善、バグの報告、新しいメトリクスの提案、プロジェクトへのスポンサーなどです。詳細については、GitHubリポジトリをご覧ください。\"}]},\"ko\":{\"a\":[{\"q\":\"i18n 벤치마크란 무엇인가요?\",\"a\":\"i18n 벤치마크는 JavaScript 및 React 애플리케이션용 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 제품군입니다.\"},{\"q\":\"벤치마크는 어떻게 진행되나요?\",\"a\":\"일관된 하드웨어를 사용하여 격리된 환경에서 표준화된 테스트를 실행합니다. 통계적 유의성을 보장하기 위해 각 벤치마크는 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 리포지토리에서 공개적으로 사용할 수 있습니다.\"},{\"q\":\"현재 어떤 라이브러리가 지원되나요?\",\"a\":\"react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 및 Tolgee를 지원합니다.\"},{\"q\":\"직접 벤치마크를 제출할 수 있나요?\",\"a\":\"네! 커뮤니티 벤치마크 제출을 환영합니다. 리포지토리를 포크하고 기여 가이드에 따라 벤치마크를 추가한 후 풀 리퀘스트를 제출하세요. 저희 팀이 검토 후 적격한 제출물을 병합할 것입니다.\"},{\"q\":\"벤치마크는 얼마나 자주 업데이트되나요?\",\"a\":\"각 라이브러리의 최신 안정 버전에 대해 매주 모든 벤치마크를 다시 실행합니다. 메이저 버전이 출시되면 즉시 벤치마크 사이클이 다시 시작됩니다.\"},{\"q\":\"데이터가 신뢰할 수 있나요?\",\"a\":\"웜업 실행, 이상값 감지 및 신뢰 구간을 포함한 엄격한 통계 방법론을 따릅니다. 모든 원시 데이터는 투명성을 위해 분석과 함께 게시됩니다.\"},{\"q\":\"컨설팅 서비스를 제공하나요?\",\"a\":\"네, 엔터프라이즈 플랜에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 귀하의 특정 사용 사례, 규모 및 제약 조건에 따라 맞춤형 권장 사항을 제공할 수 있습니다.\"},{\"q\":\"어떻게 기여할 수 있나요?\",\"a\":\"기여할 수 있는 방법은 많습니다. 벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 또는 프로젝트 후원 등이 있습니다. 자세한 내용은 GitHub 리포지토리를 방문하세요.\"}]},\"ru\":{\"a\":[{\"q\":\"Что такое i18n Benchmark?\",\"a\":\"i18n Benchmark — это пакет бенчмарков с открытым исходным кодом, который измеряет и сравнивает производительность, размер бандла и опыт разработчиков библиотек интернационализации для приложений JavaScript и React.\"},{\"q\":\"Как проводятся бенчмарки?\",\"a\":\"Мы проводим стандартизированные тесты в изолированных средах с использованием одинакового оборудования. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов открыты и доступны в нашем репозитории GitHub.\"},{\"q\":\"Какие библиотеки поддерживаются в данный момент?\",\"a\":\"Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react и Tolgee.\"},{\"q\":\"Могу ли я отправить свои собственные бенчмарки?\",\"a\":\"Да! Мы приветствуем отправку бенчмарков от сообщества. Сделайте форк нашего репозитория, добавьте свой бенчмарк, следуя нашему руководству для участников, и отправьте pull request. Наша команда рассмотрит и примет подходящие заявки.\"},{\"q\":\"Как часто обновляются бенчмарки?\",\"a\":\"Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Выход основных версий вызывает немедленный цикл повторного тестирования.\"},{\"q\":\"Надежны ли данные?\",\"a\":\"Мы следуем строгой статистической методологии, включая прогревочные прогоны, обнаружение выбросов и доверительные интервалы. Все необработанные данные публикуются вместе с нашим анализом для полной прозрачности.\"},{\"q\":\"Предоставляете ли вы консультационные услуги?\",\"a\":\"Да, наш план Enterprise включает часы консультаций для команд, оценивающих решения i18n. Мы можем предоставить индивидуальные рекомендации, основанные на вашем конкретном сценарии использования, масштабе и ограничениях.\"},{\"q\":\"Как я могу помочь?\",\"a\":\"Есть много способов внести свой вклад: отправка бенчмарков, улучшение документации, сообщения об ошибках, предложения новых показателей или спонсорство проекта. Посетите наш репозиторий GitHub для получения более подробной информации.\"}]}}}")
+}, O = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = w(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -22,7 +21,7 @@ var re = {
 			return r.value;
 		},
 		use(e) {
-			return k({
+			return O({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -33,7 +32,7 @@ var re = {
 		},
 		...n
 	}), S(o);
-}, A = v({
+}, k = v({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -48,7 +47,7 @@ var re = {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), j = (e, t, n = f(t)) => {
+}), ie = (e, t, n = f(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -56,12 +55,12 @@ var re = {
 		plugins: n
 	};
 	return c(e.content, r, n);
-}, M = (e) => {
+}, A = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, N = /* @__PURE__ */ new Map(), ie = (e) => {
-	if (N.has(e)) return N.get(e);
+}, j = /* @__PURE__ */ new Map(), ae = (e) => {
+	if (j.has(e)) return j.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -82,11 +81,11 @@ var re = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: M(m),
+			props: A(m),
 			children: []
 		});
 		else {
-			let e = M(m);
+			let e = A(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -103,9 +102,9 @@ var re = {
 			children: e.children
 		});
 	}
-	return N.set(e, n), n;
-}, ae = (e, t) => {
-	let n = ie(e), r = 0, i = (e) => {
+	return j.set(e, n), n;
+}, oe = (e, t) => {
+	let n = ae(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -138,12 +137,12 @@ var re = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, oe = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, se = (e, t = {}) => {
-	if (!Object.values(t).some(oe)) return {
+}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", M = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
+	if (!Object.values(t).some(se)) return {
 		isSimple: !0,
-		parts: e.replace(P, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(M, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(P), r = [];
+	let n = e.split(M), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -153,14 +152,14 @@ var re = {
 		isSimple: !1,
 		parts: r
 	};
-}, ce = Symbol("intlayerHTML"), le = () => x(ce), F = (e, { components: t = {} } = {}) => {
+}, N = Symbol("intlayerHTML"), P = () => x(N), F = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => b(t, e, e?.children)]));
-	return ae(e, new Proxy(n, { get(e, t) {
+	return oe(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => b(t, e, e?.children);
 	} }));
-}, ue = ({ components: e } = {}) => {
-	let t = le();
+}, le = ({ components: e } = {}) => {
+	let t = P();
 	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 v({
@@ -176,11 +175,11 @@ v({
 		}
 	},
 	setup(e) {
-		let t = ue({ components: e.components });
+		let t = le({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var de = new Set([
+var ue = new Set([
 	"true",
 	"false",
 	"null",
@@ -192,7 +191,7 @@ var de = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), fe = (e) => {
+]), de = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -210,7 +209,7 @@ var de = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => de.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => ue.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -337,7 +336,7 @@ var de = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, pe = (e) => {
+}, fe = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -346,7 +345,7 @@ var de = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : fe(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : de(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -366,8 +365,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var me = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => me(e)(t, n);
+var pe = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => pe(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -383,18 +382,18 @@ var me = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, he = Symbol("intlayerMarkdown"), ge = () => {
-	let e = x(he, { renderMarkdown: (e) => e });
+}, K = Symbol("intlayerMarkdown"), me = () => {
+	let e = x(K, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, _e = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ve = !0, ye = !0, q = !0, be = _e ? t : {
+}, he = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", q = !0, ge = !0, _e = !0, J = !0, ve = he ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => k({
+		let r = (e) => O({
 			...n,
 			value: e,
-			children: !q && p.enabled ? () => b(A, {
+			children: !J && p.enabled ? () => b(k, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -412,10 +411,10 @@ var me = (e) => (t, n = {}) => {
 		}
 		return S(a);
 	}
-}, xe = (e, t) => {
+}, ye = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = se(e, r);
+	let i = ce(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -437,7 +436,7 @@ var me = (e) => (t, n = {}) => {
 		}), b(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : b(m, null, i.parts);
-}, Se = ye ? t : {
+}, be = _e ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -451,7 +450,7 @@ var me = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = xe(i, e);
+					let a = ye(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -467,15 +466,15 @@ var me = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, Ce = K ? t : {
+}, xe = q ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(pe(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(fe(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => k({
+				transform: (t, n) => O({
 					...n,
 					value: t,
 					children: e
@@ -483,15 +482,15 @@ var me = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => k({
+		}), o = (n) => O({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = ge(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = me(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !q && p.enabled ? b(A, {
+				return !J && p.enabled ? b(k, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -503,7 +502,7 @@ var me = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, we = K ? t : {
+}, Se = q ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -512,10 +511,10 @@ var me = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [Ce, ...t.plugins ?? []]
+			plugins: [xe, ...t.plugins ?? []]
 		});
 	}
-}, Te = ve ? t : {
+}, Ce = ge ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
@@ -523,10 +522,10 @@ var me = (e) => (t, n = {}) => {
 		e.tags;
 		let r = (e = {}) => {
 			let i = F(n, { components: e });
-			return k({
+			return O({
 				...t,
 				value: n,
-				children: !q && p.enabled ? () => b(A, {
+				children: !J && p.enabled ? () => b(k, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -536,9 +535,9 @@ var me = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, J = /* @__PURE__ */ new Map(), Ee = (t, r = !0) => {
+}, Y = /* @__PURE__ */ new Map(), we = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
-	if (J.has(i)) return J.get(i);
+	if (Y.has(i)) return Y.get(i);
 	let s = [
 		o(t ?? e.defaultLocale, r ? e.defaultLocale : void 0),
 		a,
@@ -546,21 +545,21 @@ var me = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
+		ve,
 		be,
 		Se,
-		we,
-		Te
+		Ce
 	];
-	return J.set(i, s), s;
-}, De = (e, t) => j(e, t, Ee(t)), Oe = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Q = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(v({
+	return Y.set(i, s), s;
+}, Te = (e, t) => ie(e, t, we(t)), Ee = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), De = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(v({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : Z(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
+			return t == null ? null : Q(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
 		};
 	}
-})), ke = (e) => new Proxy({}, {
+})), Oe = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -582,10 +581,10 @@ var me = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), Ae = (t, n) => {
-	let r = y() ? x(Oe) : void 0, i = ee(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : D(n)) ?? i.value), o = te({});
-	ne([() => D(t), () => a.value], ([e, t]) => {
-		o.value = De(e, t);
+}), ke = (t, n) => {
+	let r = y() ? x(Ee) : void 0, i = ee(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : E(n)) ?? i.value), o = ne({});
+	D([() => E(t), () => a.value], ([e, t]) => {
+		o.value = Te(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -593,23 +592,23 @@ var me = (e) => (t, n = {}) => {
 	let s = (e) => new Proxy({}, {
 		get(t, n, r) {
 			if (n === "__v_isRef") return !0;
-			let i = h(() => Y(o.value, e));
+			let i = h(() => X(o.value, e));
 			if (n === "value") return i.value ?? "";
 			if (n === "then") return;
 			if (n === "c" || n === "asComponent") return $(() => i.value);
 			if (n === "$raw") return i;
 			if (n === Symbol.toPrimitive) return () => i.value;
-			let a = e.concat(n), c = Y(o.value, a);
-			if (c === void 0 || X(c) && !Z(c)) return s(a);
-			if (Q(c)) return ke(h(() => Y(o.value, a)));
-			let l = h(() => Y(o.value, a));
+			let a = e.concat(n), c = X(o.value, a);
+			if (c === void 0 || Z(c) && !Q(c)) return s(a);
+			if (De(c)) return Oe(h(() => X(o.value, a)));
+			let l = h(() => X(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = Y(o.value, e);
-			return X(t) ? Reflect.ownKeys(t) : [];
+			let t = X(o.value, e);
+			return Z(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -619,17 +618,29 @@ var me = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, je = { class: "mx-auto max-w-3xl space-y-4" }, Me = { class: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors" }, Ne = { class: "px-6 pb-4 text-sm text-muted-foreground" }, Pe = v({
+}, Ae = v({
 	__name: "FAQList",
-	setup(e) {
-		let { faqs: t } = Ae(re);
-		return (e, n) => (C(), g("div", je, [(C(!0), g(m, null, T(O(t), (e) => (C(), g("details", {
-			key: e.q,
-			class: "group rounded-lg border border-border bg-card"
-		}, [_("summary", Me, E(e.q), 1), _("p", Ne, E(e.a), 1)]))), 128))]));
+	setup(e, { expose: t }) {
+		t();
+		let { a: n } = ke(re), r = { faqs: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
 	}
-});
-export { Pe as default };
+}), je = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Me = { class: "mx-auto max-w-3xl space-y-4" }, Ne = { class: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors" }, Pe = { class: "px-6 pb-4 text-sm text-muted-foreground" };
+function Fe(e, t, n, r, i, a) {
+	return C(), g("div", Me, [(C(!0), g(m, null, te(r.faqs, (e) => (C(), g("details", {
+		key: e.q,
+		class: "group rounded-lg border border-border bg-card"
+	}, [_("summary", Ne, T(e.q), 1), _("p", Pe, T(e.a), 1)]))), 128))]);
+}
+var Ie = je(Ae, [["render", Fe], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/faq/FAQList.vue"]]);
+export { Ie as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

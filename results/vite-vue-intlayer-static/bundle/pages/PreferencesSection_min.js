@@ -1,20 +1,20 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as C, ref as w, renderList as te, shallowRef as ne, toDisplayString as T, toValue as E, unref as D, watch as re } from "vue";
-var O = {
+import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as C, ref as w, renderList as te, shallowRef as ne, toDisplayString as T, toValue as E, watch as re } from "vue";
+var D = {
 	key: "preferences-section",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				title: "Preferences",
-				notificationsTitle: "Email Notifications",
-				notificationsDescription: "Receive weekly benchmark reports",
-				toggleNotifications: "Toggle notifications",
-				darkModeTitle: "Dark Mode",
-				darkModeDescription: "Use dark color scheme",
-				toggleDarkMode: "Toggle dark mode",
-				languageLabel: "Default Language",
-				languages: [
+				g: "Preferences",
+				f: "Email Notifications",
+				e: "Receive weekly benchmark reports",
+				i: "Toggle notifications",
+				b: "Dark Mode",
+				a: "Use dark color scheme",
+				h: "Toggle dark mode",
+				c: "Default Language",
+				d: [
 					"English (en)",
 					"French (fr)",
 					"Spanish (es)",
@@ -28,15 +28,15 @@ var O = {
 				]
 			},
 			fr: {
-				title: "Préférences",
-				notificationsTitle: "Notifications e-mail",
-				notificationsDescription: "Recevoir les rapports hebdomadaires",
-				toggleNotifications: "Activer/désactiver les notifications",
-				darkModeTitle: "Mode sombre",
-				darkModeDescription: "Utiliser le thème sombre",
-				toggleDarkMode: "Basculer le mode sombre",
-				languageLabel: "Langue par défaut",
-				languages: [
+				g: "Préférences",
+				f: "Notifications e-mail",
+				e: "Recevoir les rapports hebdomadaires",
+				i: "Activer/désactiver les notifications",
+				b: "Mode sombre",
+				a: "Utiliser le thème sombre",
+				h: "Basculer le mode sombre",
+				c: "Langue par défaut",
+				d: [
 					"Anglais (en)",
 					"Français (fr)",
 					"Espagnol (es)",
@@ -50,15 +50,15 @@ var O = {
 				]
 			},
 			es: {
-				title: "Preferencias",
-				notificationsTitle: "Notificaciones por correo electrónico",
-				notificationsDescription: "Recibir informes semanales de benchmark",
-				toggleNotifications: "Alternar notificaciones",
-				darkModeTitle: "Modo oscuro",
-				darkModeDescription: "Usar esquema de colores oscuros",
-				toggleDarkMode: "Alternar modo oscuro",
-				languageLabel: "Idioma predeterminado",
-				languages: [
+				g: "Preferencias",
+				f: "Notificaciones por correo electrónico",
+				e: "Recibir informes semanales de benchmark",
+				i: "Alternar notificaciones",
+				b: "Modo oscuro",
+				a: "Usar esquema de colores oscuros",
+				h: "Alternar modo oscuro",
+				c: "Idioma predeterminado",
+				d: [
 					"Inglés (en)",
 					"Francés (fr)",
 					"Español (es)",
@@ -72,15 +72,15 @@ var O = {
 				]
 			},
 			de: {
-				title: "Einstellungen",
-				notificationsTitle: "E-Mail-Benachrichtigungen",
-				notificationsDescription: "Erhalten Sie wöchentliche Benchmark-Berichte",
-				toggleNotifications: "Benachrichtigungen umschalten",
-				darkModeTitle: "Dunkelmodus",
-				darkModeDescription: "Dunkles Farbschema verwenden",
-				toggleDarkMode: "Dunkelmodus umschalten",
-				languageLabel: "Standardsprache",
-				languages: [
+				g: "Einstellungen",
+				f: "E-Mail-Benachrichtigungen",
+				e: "Erhalten Sie wöchentliche Benchmark-Berichte",
+				i: "Benachrichtigungen umschalten",
+				b: "Dunkelmodus",
+				a: "Dunkles Farbschema verwenden",
+				h: "Dunkelmodus umschalten",
+				c: "Standardsprache",
+				d: [
 					"Englisch (en)",
 					"Französisch (fr)",
 					"Spanisch (es)",
@@ -94,15 +94,15 @@ var O = {
 				]
 			},
 			it: {
-				title: "Preferenze",
-				notificationsTitle: "Notifiche e-mail",
-				notificationsDescription: "Ricevi rapporti settimanali sui benchmark",
-				toggleNotifications: "Attiva/disattiva notifiche",
-				darkModeTitle: "Modalità scura",
-				darkModeDescription: "Usa schema colori scuri",
-				toggleDarkMode: "Attiva/disattiva modalità scura",
-				languageLabel: "Lingua predefinita",
-				languages: [
+				g: "Preferenze",
+				f: "Notifiche e-mail",
+				e: "Ricevi rapporti settimanali sui benchmark",
+				i: "Attiva/disattiva notifiche",
+				b: "Modalità scura",
+				a: "Usa schema colori scuri",
+				h: "Attiva/disattiva modalità scura",
+				c: "Lingua predefinita",
+				d: [
 					"Inglese (en)",
 					"Francese (fr)",
 					"Spagnolo (es)",
@@ -116,15 +116,15 @@ var O = {
 				]
 			},
 			pt: {
-				title: "Preferências",
-				notificationsTitle: "Notificações por e-mail",
-				notificationsDescription: "Receber relatórios semanais de benchmark",
-				toggleNotifications: "Alternar notificações",
-				darkModeTitle: "Modo escuro",
-				darkModeDescription: "Usar esquema de cores escuro",
-				toggleDarkMode: "Alternar modo escuro",
-				languageLabel: "Idioma padrão",
-				languages: [
+				g: "Preferências",
+				f: "Notificações por e-mail",
+				e: "Receber relatórios semanais de benchmark",
+				i: "Alternar notificações",
+				b: "Modo escuro",
+				a: "Usar esquema de cores escuro",
+				h: "Alternar modo escuro",
+				c: "Idioma padrão",
+				d: [
 					"Inglês (en)",
 					"Francês (fr)",
 					"Espanhol (es)",
@@ -138,15 +138,15 @@ var O = {
 				]
 			},
 			zh: {
-				title: "偏好设置",
-				notificationsTitle: "邮件通知",
-				notificationsDescription: "接收每周基准报告",
-				toggleNotifications: "切换通知",
-				darkModeTitle: "深色模式",
-				darkModeDescription: "使用深色配色方案",
-				toggleDarkMode: "切换深色模式",
-				languageLabel: "默认语言",
-				languages: [
+				g: "偏好设置",
+				f: "邮件通知",
+				e: "接收每周基准报告",
+				i: "切换通知",
+				b: "深色模式",
+				a: "使用深色配色方案",
+				h: "切换深色模式",
+				c: "默认语言",
+				d: [
 					"英语 (en)",
 					"法语 (fr)",
 					"西班牙语 (es)",
@@ -160,15 +160,15 @@ var O = {
 				]
 			},
 			ja: {
-				title: "設定",
-				notificationsTitle: "メール通知",
-				notificationsDescription: "毎週のベンチマークレポートを受け取る",
-				toggleNotifications: "通知を切り替える",
-				darkModeTitle: "ダークモード",
-				darkModeDescription: "ダークカラーの配色を使用する",
-				toggleDarkMode: "ダークモードを切り替える",
-				languageLabel: "デフォルトの言語",
-				languages: [
+				g: "設定",
+				f: "メール通知",
+				e: "毎週のベンチマークレポートを受け取る",
+				i: "通知を切り替える",
+				b: "ダークモード",
+				a: "ダークカラーの配色を使用する",
+				h: "ダークモードを切り替える",
+				c: "デフォルトの言語",
+				d: [
 					"英語 (en)",
 					"フランス語 (fr)",
 					"スペイン語 (es)",
@@ -182,15 +182,15 @@ var O = {
 				]
 			},
 			ko: {
-				title: "환경 설정",
-				notificationsTitle: "이메일 알림",
-				notificationsDescription: "주간 벤치마크 보고서 받기",
-				toggleNotifications: "알림 전환",
-				darkModeTitle: "다크 모드",
-				darkModeDescription: "어두운 색상 테마 사용",
-				toggleDarkMode: "다크 모드 전환",
-				languageLabel: "기본 언어",
-				languages: [
+				g: "환경 설정",
+				f: "이메일 알림",
+				e: "주간 벤치마크 보고서 받기",
+				i: "알림 전환",
+				b: "다크 모드",
+				a: "어두운 색상 테마 사용",
+				h: "다크 모드 전환",
+				c: "기본 언어",
+				d: [
 					"영어 (en)",
 					"프랑스어 (fr)",
 					"스페인어 (es)",
@@ -204,15 +204,15 @@ var O = {
 				]
 			},
 			ru: {
-				title: "Настройки",
-				notificationsTitle: "Электронные уведомления",
-				notificationsDescription: "Получать еженедельные отчеты о бенчмарках",
-				toggleNotifications: "Переключить уведомления",
-				darkModeTitle: "Темная тема",
-				darkModeDescription: "Использовать темную цветовую схему",
-				toggleDarkMode: "Переключить темную тему",
-				languageLabel: "Язык по умолчанию",
-				languages: [
+				g: "Настройки",
+				f: "Электронные уведомления",
+				e: "Получать еженедельные отчеты о бенчмарках",
+				i: "Переключить уведомления",
+				b: "Темная тема",
+				a: "Использовать темную цветовую схему",
+				h: "Переключить темную тему",
+				c: "Язык по умолчанию",
+				d: [
 					"Английский (en)",
 					"Французский (fr)",
 					"Испанский (es)",
@@ -226,9 +226,8 @@ var O = {
 				]
 			}
 		}
-	},
-	localIds: ["preferences-section::local::src/components/pages/settings/PreferencesSection.content.ts"]
-}, k = ({ value: e, children: t, additionalProps: n = {} }) => {
+	}
+}, O = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = w(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -246,7 +245,7 @@ var O = {
 			return r.value;
 		},
 		use(e) {
-			return k({
+			return O({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -257,7 +256,7 @@ var O = {
 		},
 		...n
 	}), S(o);
-}, A = v({
+}, k = v({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -272,7 +271,7 @@ var O = {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), ie = (e, t, n = f(t)) => {
+}), A = (e, t, n = f(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -284,7 +283,7 @@ var O = {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, M = /* @__PURE__ */ new Map(), ae = (e) => {
+}, M = /* @__PURE__ */ new Map(), ie = (e) => {
 	if (M.has(e)) return M.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
@@ -328,8 +327,8 @@ var O = {
 		});
 	}
 	return M.set(e, n), n;
-}, oe = (e, t) => {
-	let n = ae(e), r = 0, i = (e) => {
+}, ae = (e, t) => {
+	let n = ie(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -362,8 +361,8 @@ var O = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", N = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
-	if (!Object.values(t).some(se)) return {
+}, oe = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", N = /\{\{\s*(.*?)\s*\}\}/g, se = (e, t = {}) => {
+	if (!Object.values(t).some(oe)) return {
 		isSimple: !0,
 		parts: e.replace(N, (e, n) => (t[n.trim()] ?? "").toString())
 	};
@@ -377,15 +376,15 @@ var O = {
 		isSimple: !1,
 		parts: r
 	};
-}, le = Symbol("intlayerHTML"), P = () => x(le), F = (e, { components: t = {} } = {}) => {
+}, P = Symbol("intlayerHTML"), F = () => x(P), I = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => b(t, e, e?.children)]));
-	return oe(e, new Proxy(n, { get(e, t) {
+	return ae(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => b(t, e, e?.children);
 	} }));
-}, ue = ({ components: e } = {}) => {
-	let t = P();
-	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
+}, ce = ({ components: e } = {}) => {
+	let t = F();
+	return (n) => t ? t.renderHTML(n, { components: e }) : I(n, { components: e });
 };
 v({
 	name: "HTMLRenderer",
@@ -400,11 +399,11 @@ v({
 		}
 	},
 	setup(e) {
-		let t = ue({ components: e.components });
+		let t = ce({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var de = new Set([
+var le = new Set([
 	"true",
 	"false",
 	"null",
@@ -416,7 +415,7 @@ var de = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), fe = (e) => {
+]), ue = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -434,7 +433,7 @@ var de = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => de.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => le.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -561,7 +560,7 @@ var de = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, pe = (e) => {
+}, de = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -570,7 +569,7 @@ var de = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : fe(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : ue(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -579,19 +578,19 @@ var de = new Set([
 	class: "className",
 	for: "htmlFor"
 });
-var I = "(?:\\d+\\.)", L = "(?:[*+-])", R = (e) => `(?=[\\s\\S]+?\\1${e ? "\\1" : ""})`, z = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
-RegExp(`^([*_])\\1${R(1)}${z}\\1\\1(?!\\1)`), RegExp(`^([*_])${R(0)}${z}\\1(?!\\1)`), RegExp(`^(==)${R(0)}${z}\\1`), RegExp(`^(~~)${R(0)}${z}\\1`);
-var B = (e) => "( *)(" + (e === 1 ? I : L) + ") +", V = B(1), H = B(2), U = (e) => RegExp("^" + (e === 1 ? V : H));
-U(1), U(2);
-var W = (e) => RegExp("^" + (e === 1 ? V : H) + "[^\\n]*(?:\\n(?!\\1" + (e === 1 ? I : L) + " )[^\\n]*)*(\\n|$)", "gm");
+var L = "(?:\\d+\\.)", R = "(?:[*+-])", z = (e) => `(?=[\\s\\S]+?\\1${e ? "\\1" : ""})`, B = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
+RegExp(`^([*_])\\1${z(1)}${B}\\1\\1(?!\\1)`), RegExp(`^([*_])${z(0)}${B}\\1(?!\\1)`), RegExp(`^(==)${z(0)}${B}\\1`), RegExp(`^(~~)${z(0)}${B}\\1`);
+var V = (e) => "( *)(" + (e === 1 ? L : R) + ") +", H = V(1), U = V(2), W = (e) => RegExp("^" + (e === 1 ? H : U));
 W(1), W(2);
-var G = (e) => {
-	let t = e === 1 ? I : L;
+var G = (e) => RegExp("^" + (e === 1 ? H : U) + "[^\\n]*(?:\\n(?!\\1" + (e === 1 ? L : R) + " )[^\\n]*)*(\\n|$)", "gm");
+G(1), G(2);
+var K = (e) => {
+	let t = e === 1 ? L : R;
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
-G(1), G(2);
-var me = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => me(e)(t, n);
+K(1), K(2);
+var fe = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => fe(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -607,18 +606,18 @@ var me = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, he = Symbol("intlayerMarkdown"), ge = () => {
-	let e = x(he, { renderMarkdown: (e) => e });
+}, pe = Symbol("intlayerMarkdown"), me = () => {
+	let e = x(pe, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, _e = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ve = !0, q = !0, J = !0, ye = _e ? t : {
+}, he = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", q = !0, ge = !0, _e = !0, J = !0, ve = he ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => k({
+		let r = (e) => O({
 			...n,
 			value: e,
-			children: !J && p.enabled ? () => b(A, {
+			children: !J && p.enabled ? () => b(k, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -636,10 +635,10 @@ var me = (e) => (t, n = {}) => {
 		}
 		return S(a);
 	}
-}, be = (e, t) => {
+}, ye = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = ce(e, r);
+	let i = se(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -661,7 +660,7 @@ var me = (e) => (t, n = {}) => {
 		}), b(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : b(m, null, i.parts);
-}, xe = q ? t : {
+}, be = _e ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -675,7 +674,7 @@ var me = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = be(i, e);
+					let a = ye(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -691,15 +690,15 @@ var me = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, Se = K ? t : {
+}, xe = q ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(pe(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(de(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => k({
+				transform: (t, n) => O({
 					...n,
 					value: t,
 					children: e
@@ -707,15 +706,15 @@ var me = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => k({
+		}), o = (n) => O({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = ge(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = me(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !J && p.enabled ? b(A, {
+				return !J && p.enabled ? b(k, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -727,7 +726,7 @@ var me = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, Ce = K ? t : {
+}, Se = q ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -736,21 +735,21 @@ var me = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [Se, ...t.plugins ?? []]
+			plugins: [xe, ...t.plugins ?? []]
 		});
 	}
-}, we = ve ? t : {
+}, Ce = ge ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
 		let n = e[s];
 		e.tags;
 		let r = (e = {}) => {
-			let i = F(n, { components: e });
-			return k({
+			let i = I(n, { components: e });
+			return O({
 				...t,
 				value: n,
-				children: !J && p.enabled ? () => b(A, {
+				children: !J && p.enabled ? () => b(k, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -760,7 +759,7 @@ var me = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, Y = /* @__PURE__ */ new Map(), Te = (t, r = !0) => {
+}, Y = /* @__PURE__ */ new Map(), we = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
 	if (Y.has(i)) return Y.get(i);
 	let s = [
@@ -770,13 +769,13 @@ var me = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
-		ye,
-		xe,
-		Ce,
-		we
+		ve,
+		be,
+		Se,
+		Ce
 	];
 	return Y.set(i, s), s;
-}, Ee = (e, t) => ie(e, t, Te(t)), De = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Oe = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(v({
+}, Te = (e, t) => A(e, t, we(t)), Ee = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), De = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(v({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -784,7 +783,7 @@ var me = (e) => (t, n = {}) => {
 			return t == null ? null : Q(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
 		};
 	}
-})), ke = (e) => new Proxy({}, {
+})), Oe = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -806,10 +805,10 @@ var me = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), Ae = (t, n) => {
-	let r = y() ? x(De) : void 0, i = ee(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : E(n)) ?? i.value), o = ne({});
+}), ke = (t, n) => {
+	let r = y() ? x(Ee) : void 0, i = ee(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : E(n)) ?? i.value), o = ne({});
 	re([() => E(t), () => a.value], ([e, t]) => {
-		o.value = Ee(e, t);
+		o.value = Te(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -825,7 +824,7 @@ var me = (e) => (t, n = {}) => {
 			if (n === Symbol.toPrimitive) return () => i.value;
 			let a = e.concat(n), c = X(o.value, a);
 			if (c === void 0 || Z(c) && !Q(c)) return s(a);
-			if (Oe(c)) return ke(h(() => X(o.value, a)));
+			if (De(c)) return Oe(h(() => X(o.value, a)));
 			let l = h(() => X(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
@@ -843,32 +842,54 @@ var me = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, je = { class: "rounded-lg border border-border bg-card p-6" }, Me = { class: "mb-4 text-lg font-semibold text-foreground" }, Ne = { class: "space-y-4" }, Pe = { class: "flex items-center justify-between" }, Fe = { class: "text-sm font-medium text-foreground" }, Ie = { class: "text-xs text-muted-foreground" }, Le = ["aria-label"], Re = { class: "flex items-center justify-between" }, ze = { class: "text-sm font-medium text-foreground" }, Be = { class: "text-xs text-muted-foreground" }, Ve = ["aria-label"], He = {
+}, Ae = v({
+	__name: "PreferencesSection",
+	setup(e, { expose: t }) {
+		t();
+		let { g: n, f: r, e: i, i: a, b: o, a: s, h: c, c: l, d: u } = ke(D), d = {
+			title: n,
+			notificationsTitle: r,
+			notificationsDescription: i,
+			toggleNotifications: a,
+			darkModeTitle: o,
+			darkModeDescription: s,
+			toggleDarkMode: c,
+			languageLabel: l,
+			languages: u
+		};
+		return Object.defineProperty(d, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), d;
+	}
+}), je = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Me = { class: "rounded-lg border border-border bg-card p-6" }, Ne = { class: "mb-4 text-lg font-semibold text-foreground" }, Pe = { class: "space-y-4" }, Fe = { class: "flex items-center justify-between" }, Ie = { class: "text-sm font-medium text-foreground" }, Le = { class: "text-xs text-muted-foreground" }, Re = ["aria-label"], ze = { class: "flex items-center justify-between" }, Be = { class: "text-sm font-medium text-foreground" }, Ve = { class: "text-xs text-muted-foreground" }, He = ["aria-label"], Ue = {
 	for: "language",
 	class: "mb-1 block text-sm font-medium text-foreground"
-}, Ue = {
+}, We = {
 	id: "language",
 	class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-}, We = v({
-	__name: "PreferencesSection",
-	setup(e) {
-		let { title: t, notificationsTitle: n, notificationsDescription: r, toggleNotifications: i, darkModeTitle: a, darkModeDescription: o, toggleDarkMode: s, languageLabel: c, languages: l } = Ae(O);
-		return (e, u) => (C(), g("section", je, [_("h2", Me, T(D(t)), 1), _("div", Ne, [
-			_("div", Pe, [_("div", null, [_("p", Fe, T(D(n)), 1), _("p", Ie, T(D(r)), 1)]), _("button", {
-				type: "button",
-				class: "h-6 w-11 rounded-full bg-primary transition-colors",
-				"aria-label": D(i)
-			}, [...u[0] ||= [_("span", { class: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, null, -1)]], 8, Le)]),
-			_("div", Re, [_("div", null, [_("p", ze, T(D(a)), 1), _("p", Be, T(D(o)), 1)]), _("button", {
-				type: "button",
-				class: "h-6 w-11 rounded-full bg-muted transition-colors",
-				"aria-label": D(s)
-			}, [...u[1] ||= [_("span", { class: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, null, -1)]], 8, Ve)]),
-			_("div", null, [_("label", He, T(D(c)), 1), _("select", Ue, [(C(!0), g(m, null, te(D(l), (e) => (C(), g("option", { key: e }, T(e), 1))), 128))])])
-		])]));
-	}
-});
-export { We as default };
+};
+function Ge(e, t, n, r, i, a) {
+	return C(), g("section", Me, [_("h2", Ne, T(r.title), 1), _("div", Pe, [
+		_("div", Fe, [_("div", null, [_("p", Ie, T(r.notificationsTitle), 1), _("p", Le, T(r.notificationsDescription), 1)]), _("button", {
+			type: "button",
+			class: "h-6 w-11 rounded-full bg-primary transition-colors",
+			"aria-label": r.toggleNotifications
+		}, [...t[0] ||= [_("span", { class: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, null, -1)]], 8, Re)]),
+		_("div", ze, [_("div", null, [_("p", Be, T(r.darkModeTitle), 1), _("p", Ve, T(r.darkModeDescription), 1)]), _("button", {
+			type: "button",
+			class: "h-6 w-11 rounded-full bg-muted transition-colors",
+			"aria-label": r.toggleDarkMode
+		}, [...t[1] ||= [_("span", { class: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, null, -1)]], 8, He)]),
+		_("div", null, [_("label", Ue, T(r.languageLabel), 1), _("select", We, [(C(!0), g(m, null, te(r.languages, (e) => (C(), g("option", { key: e }, T(e), 1))), 128))])])
+	])]);
+}
+var Ke = je(Ae, [["render", Ge], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/settings/PreferencesSection.vue"]]);
+export { Ke as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

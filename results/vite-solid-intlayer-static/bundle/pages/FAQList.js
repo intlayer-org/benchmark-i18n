@@ -1,22 +1,12 @@
-import { i as internationalization, o as routing, r as editor } from "./__vite-browser-external-Cnj-CPCM.js";
-import { a as enumerationPlugin, c as genderPlugin, f as getIntlayer, i as conditionPlugin, l as nestedPlugin, o as fallbackPlugin, s as filePlugin, u as translationPlugin } from "./getDictionary-BDPI18gp.js";
-import { c as MARKDOWN, o as HTML, s as INSERTION } from "./nodeType-DivqwnYF.js";
-import { n as getMarkdownMetadata } from "./markdown-BmCAYw1d.js";
+import { a as fallbackPlugin, c as nestedPlugin, f as editor, h as routing, i as enumerationPlugin, l as translationPlugin, n as getContent, o as filePlugin, p as internationalization, r as conditionPlugin, s as genderPlugin, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { a as HTML, o as INSERTION, s as MARKDOWN } from "./nodeType-7ZUTNKKR.js";
 import { Dynamic, createComponent, insert, mergeProps, template } from "solid-js/web";
 import { For, Suspense, createContext, createMemo, lazy, useContext } from "solid-js";
-var isEnabled = !(process.env["INTLAYER_EDITOR_ENABLED"] === "false") && editor?.enabled && typeof window !== "undefined" && window.self !== window.top;
-var r = process.env.INTLAYER_EDITOR_ENABLED === "false", i = (i) => r || !isEnabled ? i.children : createComponent(Dynamic, {
-	component: "intlayer-content-selector-wrapper",
-	get "attr:key-path"() {
-		return JSON.stringify(i.keyPath);
-	},
-	get "attr:dictionary-key"() {
-		return i.dictionaryKey;
-	},
-	get children() {
-		return i.children;
-	}
-});
+var faq_list_default = {
+	key: "faq-list",
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18next\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"},\"fr\":{\"whatIsI18nBenchmark\":\"Qu'est-ce qu'i18n Benchmark ?\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmark est une suite de tests open source qui mesure et compare les performances, la taille du bundle et l'expérience développeur des bibliothèques d'internationalisation pour les applications JavaScript et React.\",\"howAreBenchmarksConducted\":\"Comment les benchmarks sont-ils menés ?\",\"weRunStandardizedTestsIn\":\"Nous effectuons des tests standardisés dans des environnements isolés en utilisant un matériel cohérent. Chaque benchmark est répété plusieurs fois pour garantir une signification statistique. Toutes les configurations de test sont disponibles publiquement dans notre dépôt GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quelles bibliothèques sont actuellement supportées ?\",\"weSupportReactI18next\":\"Nous supportons react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react et Tolgee.\",\"canISubmitMyOwn\":\"Puis-je soumettre mes propres benchmarks ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Oui ! Les soumissions de benchmarks par la communauté sont les bienvenues. Forkez notre dépôt, ajoutez votre benchmark en suivant notre guide de contribution et soumettez une pull request. Notre équipe examinera et fusionnera les soumissions qualifiées.\",\"howOftenAreBenchmarksUpdated\":\"À quelle fréquence les benchmarks sont-ils mis à jour ?\",\"weReRunAllBenchmarks\":\"Nous relançons tous les benchmarks chaque semaine avec les dernières versions stables de chaque bibliothèque. Les sorties de versions majeures déclenchent un cycle de re-benchmarking immédiat.\",\"isTheDataReliable\":\"Les données sont-elles fiables ?\",\"weFollowRigorousStatisticalMethodology\":\"Nous suivons une méthodologie statistique rigoureuse, incluant des phases de préchauffage, la détection des valeurs aberrantes et des intervalles de confiance. Toutes les données brutes sont publiées avec notre analyse pour une transparence totale.\",\"doYouOfferConsultingServices\":\"Offrez-vous des services de conseil ?\",\"yesOurEnterprisePlanIncludes\":\"Oui, notre offre Enterprise inclut des heures de conseil pour les équipes évaluant les solutions i18n. Nous pouvons fournir des recommandations personnalisées basées sur votre cas d'utilisation, votre échelle et vos contraintes spécifiques.\",\"howCanIContribute\":\"Comment puis-je contribuer ?\",\"thereAreManyWaysTo\":\"Il y a de nombreuses façons de contribuer : soumettre des benchmarks, améliorer la documentation, signaler des bugs, suggérer de nouvelles métriques ou parrainer le projet. Visitez notre dépôt GitHub pour plus de détails.\"},\"es\":{\"whatIsI18nBenchmark\":\"¿Qué es i18n Benchmark?\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmark es una suite de benchmarking de código abierto que mide и compara el rendimiento, el tamaño del bundle и la experiencia del desarrollador de las bibliotecas de internacionalización para aplicaciones JavaScript и React.\",\"howAreBenchmarksConducted\":\"¿Cómo se realizan los benchmarks?\",\"weRunStandardizedTestsIn\":\"Realizamos pruebas estandarizadas en entornos aislados utilizando hardware consistente. Cada benchmark se repite varias veces para garantizar la significación estadística. Todas las configuraciones de prueba están disponibles públicamente en nuestro repositorio de GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"¿Qué bibliotecas son compatibles actualmente?\",\"weSupportReactI18next\":\"Soportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.\",\"canISubmitMyOwn\":\"¿Puedo enviar mis propios benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"¡Sí! Las presentaciones de benchmarks de la comunidad son bienvenidas. Bifurque nuestro repositorio, agregue su benchmark siguiendo nuestra guía de contribución и envíe una solicitud de extracción. Nuestro equipo revisará и fusionará las presentaciones que califiquen.\",\"howOftenAreBenchmarksUpdated\":\"¿Con qué frecuencia se aktualizan los benchmarks?\",\"weReRunAllBenchmarks\":\"Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmarking inmediato.\",\"isTheDataReliable\":\"¿Son confiables los datos?\",\"weFollowRigorousStatisticalMethodology\":\"Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos brutos se publican junto con nuestro análisis para una total transparencia.\",\"doYouOfferConsultingServices\":\"¿Ofrecen servicios de consultoría?\",\"yesOurEnterprisePlanIncludes\":\"Sí, nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso, escala и limitaciones específicos.\",\"howCanIContribute\":\"¿Cómo puedo contribuir?\",\"thereAreManyWaysTo\":\"Hay muchas formas de contribuir: enviar benchmarks, mejorar la documentación, informar errores, sugerir nuevas métricas o patrocinar el proyecto. Visite nuestro repositorio de GitHub para obtener más detalles.\"},\"de\":{\"whatIsI18nBenchmark\":\"Was ist i18n Benchmark?\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmark ist eine Open-Source-Benchmarking-Suite, die die Leistung, die Bundle-Größe und die Entwicklererfahrung von Internationalisierungsbibliotheken für JavaScript- und React-Anwendungen misst und vergleicht.\",\"howAreBenchmarksConducted\":\"Wie werden Benchmarks durchgeführt?\",\"weRunStandardizedTestsIn\":\"Wir führen standardisierte Tests in isolierten Umgebungen mit konsistenter Hardware durch. Jeder Benchmark wird mehrmals wiederholt, um die statistische Signifikanz sicherzustellen. Alle Testkonfigurationen sind in unserem GitHub-Repository öffentlich verfügbar.\",\"whichLibrariesAreCurrentlySupported\":\"Welche Bibliotheken werden derzeit unterstützt?\",\"weSupportReactI18next\":\"Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.\",\"canISubmitMyOwn\":\"Kann ich meine eigenen Benchmarks einreichen?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Ja! Einreichungen von Community-Benchmarks sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Beiträge hinzu und senden Sie einen Pull-Request. Unser Team wird qualifizierte Einreichungen prüfen und zusammenführen.\",\"howOftenAreBenchmarksUpdated\":\"Wie oft werden Benchmarks aktualisiert?\",\"weReRunAllBenchmarks\":\"Wir führen alle Benchmarks wöchentlich mit den neuesten stabilen Versionen jeder Bibliothek erneut durch. Veröffentlichungen von Hauptversionen lösen einen sofortigen Re-Benchmark-Zyklus aus.\",\"isTheDataReliable\":\"Sind die Daten zuverlässig?\",\"weFollowRigorousStatisticalMethodology\":\"Wir folgen einer strengen statistischen Methodik, einschließlich Aufwärmläufen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.\",\"doYouOfferConsultingServices\":\"Bieten Sie Beratungsdienstleistungen an?\",\"yesOurEnterprisePlanIncludes\":\"Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen evaluieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Ihren Einschränkungen geben.\",\"howCanIContribute\":\"Wie kann ich beitragen?\",\"thereAreManyWaysTo\":\"Es gibt viele Möglichkeiten, beizutragen: Benchmarks einreichen, die Dokumentation verbessern, Fehler melden, neue Metriken vorschlagen oder das Projekt sponsern. Besuchen Sie unser GitHub-Repository für weitere Details.\"},\"it\":{\"whatIsI18nBenchmark\":\"Cos'è i18n Benchmark?\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmark è una suite di benchmarking open source che misura e confronta le prestazioni, le dimensioni del bundle e l'esperienza degli sviluppatori delle librerie di internazionalizzazione per applicazioni JavaScript e React.\",\"howAreBenchmarksConducted\":\"Come vengono condotti i benchmark?\",\"weRunStandardizedTestsIn\":\"Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni dei test sono disponibili pubblicamente nel nostro repository GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quali librerie sono attualmente supportate?\",\"weSupportReactI18next\":\"Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\",\"canISubmitMyOwn\":\"Posso inviare i miei benchmark?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Sì! Gli invii di benchmark da parte della comunità sono i benvenuti. Fai un fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà gli invii idonei.\",\"howOftenAreBenchmarksUpdated\":\"Con quale frequenza vengono aggiornati i benchmark?\",\"weReRunAllBenchmarks\":\"Rieseguiamo tutti i benchmark settimanalmente rispetto alle ultime versioni stabili di ogni libreria. I rilasci di versioni principali innescano un ciclo di re-benchmark immediato.\",\"isTheDataReliable\":\"I dati sono affidabili?\",\"weFollowRigorousStatisticalMethodology\":\"Seguiamo una rigorosa metodologia statistica che include esecuzioni di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi sono pubblicati insieme alla nostra analisi per la massima trasparenza.\",\"doYouOfferConsultingServices\":\"Offrite servizi di consulenza?\",\"yesOurEnterprisePlanIncludes\":\"Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano soluzioni i18n. Possiamo fornire raccomandazioni personalizzate in base al caso d'uso specifico, alla scala e ai vincoli.\",\"howCanIContribute\":\"Come posso contribuire?\",\"thereAreManyWaysTo\":\"Ci sono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per maggiori dettagli.\"},\"pt\":{\"whatIsI18nBenchmark\":\"O que é o i18n Benchmark?\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmark é uma suíte de benchmarking de código aberto que mede e compara o desempenho, o tamanho do bundle e a experiência do desenvolvedor de bibliotecas de internacionalização para aplicações JavaScript e React.\",\"howAreBenchmarksConducted\":\"Como os benchmarks são conduzidos?\",\"weRunStandardizedTestsIn\":\"Executamos testes padronizzati em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir significância estatística. Todas as configurações de teste estão disponíveis publicamente em nosso repositório GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quais bibliotecas são suportadas atualmente?\",\"weSupportReactI18next\":\"Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\",\"canISubmitMyOwn\":\"Posso enviar meus próprios benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Sim! As submissões de benchmarks da comunidade são bem-vindas. Faça um fork do nosso repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe revisará e mesclará as submissões qualificadas.\",\"howOftenAreBenchmarksUpdated\":\"Com que frequência os benchmarks são atualizados?\",\"weReRunAllBenchmarks\":\"Executamos novamente todos os benchmarks semanalmente com as versões estáveis mais recentes de cada biblioteca. Lançamentos de versões principais desencadeiam um ciclo imediato de re-benchmarking.\",\"isTheDataReliable\":\"Os dados são confiáveis?\",\"weFollowRigorousStatisticalMethodology\":\"Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de outliers e intervalos de confiança. Todos os dados brutos são publicados junto com nossa análise para total transparência.\",\"doYouOfferConsultingServices\":\"Vocês oferecem serviços de consultoria?\",\"yesOurEnterprisePlanIncludes\":\"Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Podemos fornecer recomendações personalizadas com base em seu caso de uso, escala e restrições específicos.\",\"howCanIContribute\":\"Como posso contribuir?\",\"thereAreManyWaysTo\":\"Existem muitas maneiras de contribuir: enviar benchmarks, melhorar a documentazione, relatar bugs, sugerir novas métricas ou patrocinar o projeto. Visite nosso repositório GitHub para mais detalhes.\"},\"zh\":{\"whatIsI18nBenchmark\":\"什么是 i18n Benchmark？\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmark 是一个开源基准测试套件，用于衡量和比较 JavaScript 和 React 应用程序国际化库的性能、捆绑包大小和开发人员体验。\",\"howAreBenchmarksConducted\":\"基准测试是如何进行的？\",\"weRunStandardizedTestsIn\":\"我们在隔离的环境中使用一致的硬件运行标准化测试。每个基准测试都会重复多次，以确保统计显着性。所有测试配置都可以在我们的 GitHub 存储库中公开获取。\",\"whichLibrariesAreCurrentlySupported\":\"目前支持哪些库？\",\"weSupportReactI18next\":\"我们支持 react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react 和 Tolgee。\",\"canISubmitMyOwn\":\"我可以提交自己的基准测试吗？\",\"yesCommunityBenchmarkSubmissionsAre\":\"是的！欢迎社区提交基准测试。Fork 我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审核并合并合格的提交。\",\"howOftenAreBenchmarksUpdated\":\"基准测试多久更新一次？\",\"weReRunAllBenchmarks\":\"我们每周会根据每个库的最新稳定版本重新运行所有基准测试。主要版本的发布会立即触发重新基准测试周期。\",\"isTheDataReliable\":\"数据可靠吗？\",\"weFollowRigorousStatisticalMethodology\":\"我们遵循严格的统计方法，包括热身运行、异常值检测和置信区间。所有原始数据都与我们的分析一起发布，以确保完全透明。\",\"doYouOfferConsultingServices\":\"你们提供咨询服务吗？\",\"yesOurEnterprisePlanIncludes\":\"是的，我们的企业计划为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的具体用例、规模和约束提供定制建议。\",\"howCanIContribute\":\"我该如何贡献？\",\"thereAreManyWaysTo\":\"有很多贡献方式：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。\"},\"ja\":{\"whatIsI18nBenchmark\":\"i18n Benchmarkとは何ですか？\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmarkは、JavaScriptおよびReactアプリケーション用の国際化ライブラリのパフォーマンス、バンドルサイズ、および開発者エクスペリエンスを測定および比較するオープンソースのベンチマークスイートです。\",\"howAreBenchmarksConducted\":\"ベンチマークはどのように行われますか？\",\"weRunStandardizedTestsIn\":\"一貫したハードウェアを使用して、分離された環境で標準化されたテストを実行します。各ベンチマークは、統計的な有意性を確保するために複数回繰り返されます。すべてのテスト構成は、GitHubリポジトリで公開されています。\",\"whichLibrariesAreCurrentlySupported\":\"現在サポートされているライブラリは何ですか？\",\"weSupportReactI18next\":\"react-i18next、react-intl（FormatJS）、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react、およびTolgeeをサポートしています。\",\"canISubmitMyOwn\":\"独自のベンチマークを送信できますか？\",\"yesCommunityBenchmarkSubmissionsAre\":\"はい！コミュニティからのベンチマーク送信は大歓迎です。リポジトリをフォークし、貢献ガイドに従ってベンチマークを追加し、プルリクエストを送信してください。私たちのチームが、資格のある送信内容をレビューしてマージします。\",\"howOftenAreBenchmarksUpdated\":\"ベンチマークはどのくらいの頻度で更新されますか？\",\"weReRunAllBenchmarks\":\"各ライブラリの最新の安定版に対して、すべてのベンチマークを毎週再実行します。メジャーバージョンのリリースにより、即座に再ベンチマークサイクルが実行されます。\",\"isTheDataReliable\":\"データは信頼できますか？\",\"weFollowRigorousStatisticalMethodology\":\"ウォームアップ実行、外れ値検出、信頼区間などの厳密な統計的手法に従います。すべての生データは、完全な透明性のために分析結果とともに公開されます。\",\"doYouOfferConsultingServices\":\"コンサルティングサービスは提供していますか？\",\"yesOurEnterprisePlanIncludes\":\"はい、エンタープライズプランには、i18nソリューションを検討しているチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいて、カスタマイズされた推奨事項を提供できます。\",\"howCanIContribute\":\"どのように貢献できますか？\",\"thereAreManyWaysTo\":\"貢献する方法はたくさんあります：ベンチマークの送信、ドキュメントの改善、バグの報告、新しい指標の提案、プロジェクトのスポンサーなどです。詳細はGitHubリポジトリをご覧ください。\"},\"ko\":{\"whatIsI18nBenchmark\":\"i18n Benchmark란 무엇인가요?\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmark는 JavaScript 및 React 애플리케이션용 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 제품군입니다.\",\"howAreBenchmarksConducted\":\"벤치마크는 어떻게 진행되나요?\",\"weRunStandardizedTestsIn\":\"일관된 하드웨어를 사용하여 격리된 환경에서 표준화된 테스트를 실행합니다. 각 벤치마크는 통계적 유의성을 보장하기 위해 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 저장소에 공개적으로 제공됩니다.\",\"whichLibrariesAreCurrentlySupported\":\"현재 어떤 라이브러리가 지원되나요?\",\"weSupportReactI18next\":\"react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 및 Tolgee를 지원합니다.\",\"canISubmitMyOwn\":\"나만의 벤치마크를 제출할 수 있나요?\",\"yesCommunityBenchmarkSubmissionsAre\":\"네! 커뮤니티 벤치마크 제출을 환영합니다. 리포지토리를 포크하고 기여 가이드에 따라 벤치마크를 추가한 다음 풀 리퀘스트를 제출하세요. 저희 팀이 자격이 있는 제출물을 검토하고 병합할 것입니다.\",\"howOftenAreBenchmarksUpdated\":\"벤치마크는 얼마나 자주 업데이트되나요?\",\"weReRunAllBenchmarks\":\"매주 각 라이브러리의 최신 안정 버전을 기준으로 모든 벤치마크를 다시 실행합니다. 주요 버전이 릴리스되면 즉시 재벤치마크 주기가 시작됩니다.\",\"isTheDataReliable\":\"데이터가 신뢰할 수 있나요?\",\"weFollowRigorousStatisticalMethodology\":\"웜업 실행, 이상치 탐지 및 신뢰 구간을 포함한 엄격한 통계 방법론을 따릅니다. 모든 원시 데이터는 완전한 투명성을 위해 분석 결과와 함께 게시됩니다.\",\"doYouOfferConsultingServices\":\"컨설팅 서비스를 제공하나요?\",\"yesOurEnterprisePlanIncludes\":\"네, 엔터프라이즈 플랜에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 특정 사용 사례, 규모 및 제약 조건에 따라 맞춤형 권장 사항을 제공할 수 있습니다.\",\"howCanIContribute\":\"어떻게 기여할 수 있나요?\",\"thereAreManyWaysTo\":\"기여할 수 있는 방법은 많습니다. 벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 또는 프로젝트 후원 등이 있습니다. 자세한 내용은 GitHub 저장소를 방문하세요.\"},\"ru\":{\"whatIsI18nBenchmark\":\"Что такое i18n Benchmark?\",\"i18nBenchmarkIsAnOpen\":\"i18n Benchmark — это открытый набор тестов производительности, который измеряет и сравнивает производительность, размер бандла и опыт разработки библиотек интернационализации для приложений на JavaScript и React.\",\"howAreBenchmarksConducted\":\"Как проводятся бенчмарки?\",\"weRunStandardizedTestsIn\":\"Мы проводим стандартизированные тесты в изолированных средах на одинаковом оборудовании. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов открыты в нашем репозитории на GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Какие библиотеки поддерживаются в данный момент?\",\"weSupportReactI18next\":\"Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react и Tolgee.\",\"canISubmitMyOwn\":\"Могу ли я отправить свои собственные бенчмарки?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Да! Мы приветствуем отправку бенчмарков от сообщества. Сделайте форк нашего репозитория, добавьте свой бенчмарк в соответствии с нашим руководством по внесению вклада и создайте pull request. Наша команда рассмотрит и примет подходящие заявки.\",\"howOftenAreBenchmarksUpdated\":\"Как часто обновляются бенчмарки?\",\"weReRunAllBenchmarks\":\"Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Релизы основных версий запускают немедленный цикл повторного тестирования.\",\"isTheDataReliable\":\"Надежны ли данные?\",\"weFollowRigorousStatisticalMethodology\":\"Мы придерживаемся строгой статистической методологии, включая прогревочные прогоны, обнаружение выбросов и доверительные интервалы. Все необработанные данные публикуются вместе с нашим анализом для полной прозрачности.\",\"doYouOfferConsultingServices\":\"Предоставляете ли вы консалтинговые услуги?\",\"yesOurEnterprisePlanIncludes\":\"Да, наш план Enterprise включает консультации для команд, оценивающих решения i18n. Мы можем предоставить индивидуальные рекомендации, основанные на вашем конкретном случае, масштабе и ограничениях.\",\"howCanIContribute\":\"Как я могу внести свой вклад?\",\"thereAreManyWaysTo\":\"Есть много способов внести свой вклад: отправить бенчмарки, улучшить документацию, сообщить об ошибках, предложить новые метрики или стать спонсором проекта. Посетите наш репозиторий на GitHub для получения более подробной информации.\"}}}"),
+	localIds: ["faq-list::local::src/components/pages/faq/fAQList.content.ts"]
+};
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -53,6 +43,38 @@ var t$1 = (n) => {
 		children: i.children
 	});
 };
+var RESET = "\x1B[0m";
+var BLUE = "\x1B[34m";
+var RED = "\x1B[31m";
+var GREEN = "\x1B[32m";
+var colorize = (string, color, reset) => color ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
+colorize("✗", RED);
+colorize("✓", GREEN);
+colorize("⏲", BLUE);
+var createSafeFallback = (path = "") => {
+	return new Proxy(() => path, {
+		get: (_target, prop) => {
+			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString") return () => path;
+			if (prop === "then") return;
+			if (prop === Symbol.iterator) return function* () {
+				yield path;
+			};
+			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
+		},
+		apply: () => {
+			return path;
+		}
+	});
+};
+var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+	const props = {
+		dictionaryKey: dictionary.key,
+		dictionaryPath: dictionary.filePath,
+		keyPath: [],
+		plugins
+	};
+	return getContent(dictionary.content, props, plugins);
+};
 var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
 var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
 var splitInsertionTemplate = (template, values = {}) => {
@@ -73,30 +95,48 @@ var splitInsertionTemplate = (template, values = {}) => {
 		parts
 	};
 };
-var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", x = process.env.INTLAYER_NODE_TYPE_MARKDOWN === "false", S = process.env.INTLAYER_NODE_TYPE_HTML === "false", C = process.env.INTLAYER_NODE_TYPE_INSERTION === "false", w$1 = process.env.INTLAYER_EDITOR_ENABLED === "false", T$1 = x ? null : lazy(() => import("./MarkdownRenderer-CZEl8PYG.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), E$1 = x ? null : lazy(() => import("./MarkdownRenderer-CZEl8PYG.js").then((e) => ({ default: e.MarkdownRenderer }))), D$1 = S ? null : lazy(() => import("./HTMLRenderer-BVHh_-9v.js").then((e) => ({ default: e.HTMLRenderer }))), O$1 = y ? fallbackPlugin : {
+var _ = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", v = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", y = true, b = true, x = true, S = true, C = null, w$1 = null, T$1 = null, E$1 = null, D$1 = null;
+S || (C = lazy(() => import("./ContentSelector-4OrUn2VA.js").then((e) => ({ default: e.ContentSelector })))), y || (w$1 = lazy(() => import("./MarkdownRenderer-DYYTWHGL.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), T$1 = lazy(() => import("./MarkdownRenderer-DYYTWHGL.js").then((e) => ({ default: e.MarkdownRenderer }))), import("./markdown-RUjI4Z1e.js").then((e) => {
+	D$1 = e.getMarkdownMetadata;
+})), b || (E$1 = lazy(() => import("./HTMLRenderer-BzwfNhlM.js").then((e) => ({ default: e.HTMLRenderer }))));
+var O$1 = _ ? fallbackPlugin : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { plugins: o, ...s }) => e$1({
-		...s,
-		value: s.children,
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(s, { get children() {
-			return s.children;
-		} })) : s.children
+	transform: (t, { plugins: a, ...o }) => e$1({
+		...o,
+		value: o.children,
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return o.children;
+			},
+			get children() {
+				return createComponent(C, mergeProps(o, { get children() {
+					return o.children;
+				} }));
+			}
+		}) : o.children
 	})
-}, k$1 = b ? fallbackPlugin : {
+}, k$1 = v ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
-	transform: (o, { plugins: s, ...c }) => e$1({
-		...c,
+	transform: (a, { plugins: o, ...s }) => e$1({
+		...s,
 		value: "[[solid-element]]",
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(c, { get children() {
-			return typeof Node < "u" && o instanceof Node ? o : t$1(o);
-		} })) : typeof Node < "u" && o instanceof Node ? o : t$1(o)
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+			},
+			get children() {
+				return createComponent(C, mergeProps(s, { get children() {
+					return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+				} }));
+			}
+		}) : typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
 }, A$1 = (e, t) => {
 	let n = splitInsertionTemplate(e, t);
 	return n.isSimple, n.parts;
-}, j$1 = C ? fallbackPlugin : {
+}, j$1 = x ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -126,73 +166,73 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 			});
 		};
 	}
-}, M$1 = x ? fallbackPlugin : {
+}, M$1 = y ? fallbackPlugin : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
-	transform: (n, o, s) => {
-		let { plugins: c, ...l } = o, u = s(getMarkdownMetadata(n) ?? {}, {
+	transform: (t, a, o) => {
+		let { plugins: s, ...c } = a, l = o(D$1?.(t) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (o, s) => e$1({
-					...s,
-					value: o,
-					children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
+				transform: (a, o) => e$1({
+					...o,
+					value: a,
+					children: !S && editor.enabled ? createComponent(ContentSelector, mergeProps(c, { get children() {
 						return createComponent(Suspense, {
-							fallback: n,
+							fallback: t,
 							get children() {
-								return createComponent(T$1, mergeProps(l, {
+								return createComponent(w$1, mergeProps(c, {
 									get metadataKeyPath() {
-										return s.keyPath;
+										return o.keyPath;
 									},
-									children: n
+									children: t
 								}));
 							}
 						});
 					} })) : createComponent(Suspense, {
-						fallback: n,
+						fallback: t,
 						get children() {
-							return createComponent(T$1, mergeProps(l, {
+							return createComponent(w$1, mergeProps(c, {
 								get metadataKeyPath() {
-									return s.keyPath;
+									return o.keyPath;
 								},
-								children: n
+								children: t
 							}));
 						}
 					})
 				})
 			}],
-			dictionaryKey: l.dictionaryKey,
+			dictionaryKey: c.dictionaryKey,
 			keyPath: []
-		}), d = (s) => e$1({
-			...o,
-			value: n,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: n,
-					get children() {
-						return createComponent(E$1, mergeProps(l, {
-							components: s,
-							children: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: n,
+		}), u = (o) => e$1({
+			...a,
+			value: t,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: t,
 				get children() {
-					return createComponent(E$1, mergeProps(l, {
-						components: s,
-						children: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(T$1, mergeProps(c, {
+							components: o,
+							children: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: t,
+				get children() {
+					return createComponent(T$1, mergeProps(c, {
+						components: o,
+						children: t
 					}));
 				}
 			}),
-			additionalProps: { metadata: u }
-		}), f = d();
-		return new Proxy(f, { get(e, t, r) {
-			return t === "value" ? n : t === "metadata" ? u : t === "use" ? (e) => d(e) : Reflect.get(e, t, r);
+			additionalProps: { metadata: l }
+		}), d = u();
+		return new Proxy(d, { get(e, n, r) {
+			return n === "value" ? t : n === "metadata" ? l : n === "use" ? (e) => u(e) : Reflect.get(e, n, r);
 		} });
 	}
-}, N$1 = x ? fallbackPlugin : {
+}, N$1 = y ? fallbackPlugin : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -204,35 +244,35 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 			plugins: [M$1, ...t.plugins ?? []]
 		});
 	}
-}, P$1 = S ? fallbackPlugin : {
+}, P$1 = b ? fallbackPlugin : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
-	transform: (n, o) => {
-		let s = n[HTML], { plugins: c, ...l } = o, u = (n) => e$1({
-			...l,
-			value: s,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: s,
-					get children() {
-						return createComponent(D$1, mergeProps(l, {
-							html: s,
-							components: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: s,
+	transform: (t, a) => {
+		let o = t[HTML], { plugins: s, ...c } = a, l = (t) => e$1({
+			...c,
+			value: o,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: o,
 				get children() {
-					return createComponent(D$1, mergeProps(l, {
-						html: s,
-						components: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(E$1, mergeProps(c, {
+							html: o,
+							components: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: o,
+				get children() {
+					return createComponent(E$1, mergeProps(c, {
+						html: o,
+						components: t
 					}));
 				}
 			})
-		}), d = [u()];
-		return new Proxy(d, { get(e, t, n) {
-			return t === "value" ? s : t === "use" ? (e) => u(e) : Reflect.get(e, t, n);
+		}), u = [l()];
+		return new Proxy(u, { get(e, t, n) {
+			return t === "value" ? o : t === "use" ? (e) => l(e) : Reflect.get(e, t, n);
 		} });
 	}
 }, F$1 = /* @__PURE__ */ new Map(), I$1 = (e, t = !0) => {
@@ -253,11 +293,8 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 	];
 	return F$1.set(n, r), r;
 };
-var n$2 = (n, r) => getIntlayer(n, r, I$1(r));
-process.env["INTLAYER_ROUTING_REWRITE_RULES"];
+var n$1 = (n, r) => getDictionary(n, r, I$1(r));
 var TREE_SHAKE_STORAGE_COOKIES = process.env["INTLAYER_ROUTING_STORAGE_COOKIES"] === "false";
-var TREE_SHAKE_STORAGE_LOCAL_STORAGE = process.env["INTLAYER_ROUTING_STORAGE_LOCALSTORAGE"] === "false";
-var TREE_SHAKE_STORAGE_SESSION_STORAGE = process.env["INTLAYER_ROUTING_STORAGE_SESSIONSTORAGE"] === "false";
 process.env["INTLAYER_ROUTING_STORAGE_HEADERS"];
 var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const { locales } = internationalization;
@@ -265,14 +302,6 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const isValidLocale = (value) => !!value && locales.includes(value);
 	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-	if (!TREE_SHAKE_STORAGE_LOCAL_STORAGE) for (let i = 0; i < (routing.storage.localStorage ?? []).length; i++) try {
-		const value = options?.getLocaleStorage?.(routing.storage.localStorage[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-	if (!TREE_SHAKE_STORAGE_SESSION_STORAGE && routing.storage.sessionStorage) for (let i = 0; i < routing.storage.sessionStorage.length; i++) try {
-		const value = options?.getSessionStorage?.(routing.storage.sessionStorage[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
 }, localeStorageOptions = {
@@ -293,21 +322,16 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a = getLocaleFromStorageClient(localeStorageOptions);
-process.env.INTLAYER_EDITOR_ENABLED;
-var D = createContext({
+}, a = getLocaleFromStorageClient(localeStorageOptions), D = createContext({
 	locale: () => a ?? internationalization?.defaultLocale,
 	setLocale: () => null
-}), F = (t, n) => {
+}), M = (e, n) => {
 	let r = useContext(D) ?? {};
-	return createMemo(() => {
-		let i = r?.locale();
-		return n$2(t, n ?? i);
-	});
+	return createMemo(() => n$1(e, n ?? r?.locale?.()));
 }, { defaultLocale: L, locales: R } = internationalization;
 var _tmpl$ = template(`<div class="mx-auto max-w-3xl space-y-4">`), _tmpl$2 = template(`<details class="group rounded-lg border border-border bg-card"><summary class="cursor-pointer px-6 py-4 text-sm font-medium text-foreground transition-colors hover:bg-accent/50"></summary><p class="px-6 pb-4 text-sm text-muted-foreground">`);
 function FAQList() {
-	const content = F("faq-list");
+	const content = M(faq_list_default);
 	const faqs = [
 		{
 			q: content().whatIsI18nBenchmark.value,
@@ -357,6 +381,9 @@ function FAQList() {
 	})();
 }
 export { FAQList as default };
+import "solid-js/web";
+var i = (i) => i.children;
+export { i as ContentSelector };
 import { Dynamic, createComponent, mergeProps } from "solid-js/web";
 import { createContext, useContext } from "solid-js";
 var parseAttributes = (attributes) => {
@@ -485,8 +512,8 @@ var a = (e, { components: a = {} } = {}) => {
 	} });
 }, s = (e) => o({ components: e.components || e.userComponents })(e.children || e.html || "");
 export { s as HTMLRenderer };
-import { n as getMarkdownMetadata } from "./markdown-BmCAYw1d.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-VZJ4GP6z.js";
+import { getMarkdownMetadata } from "./markdown-RUjI4Z1e.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 import { createComponent } from "solid-js/web";
 import { Suspense, createContext, createMemo, createResource, useContext } from "solid-js";
 var i = createContext(), o = () => {
@@ -494,21 +521,21 @@ var i = createContext(), o = () => {
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider. To fix this error, wrap your component with <MarkdownProvider>.");
 	return e;
 }, f = (e) => {
-	let i$1 = useContext(i), { renderMarkdown: o$1 } = o(), [l] = createResource(() => [
+	let a = useContext(i), { renderMarkdown: c } = o(), [l] = createResource(() => [
 		e.children,
 		e.forceBlock,
 		e.preserveFrontmatter,
 		e.tagfilter,
 		e.components,
 		e.wrapper
-	], ([e, t, n, r, a, s]) => o$1(e, {
+	], ([e, t, n, r, i, o]) => c(e, {
 		forceBlock: t,
 		preserveFrontmatter: n,
 		tagfilter: r
 	}, {
-		...i$1?.components ?? {},
-		...a ?? {}
-	}, s));
+		...a?.components ?? {},
+		...i ?? {}
+	}, o));
 	return createComponent(Suspense, {
 		fallback: null,
 		get children() {
@@ -520,53 +547,9 @@ var i = createContext(), o = () => {
 	return createMemo(() => getContentNodeByKeyPath(t(), e.metadataKeyPath))();
 };
 export { p as MarkdownMetadataRenderer, f as MarkdownRenderer };
-import { t as __commonJSMin } from "./rolldown-runtime-BG0GCgh6.js";
-var configuration = new Proxy({}, {
-	get(_target, prop) {
-		return (typeof window !== "undefined" ? window.INTLAYER_CONFIG : void 0)?.[prop];
-	},
-	has(_target, prop) {
-		const config = typeof window !== "undefined" ? window.INTLAYER_CONFIG : void 0;
-		return config != null && prop in config;
-	}
-});
-var internationalization = configuration.internationalization;
-configuration.dictionary;
-var routing = configuration.routing;
-configuration.content;
-configuration.system;
-var editor = configuration.editor;
-var log = configuration.log;
-configuration.ai;
-configuration.build;
-configuration.compiler;
-configuration.schemas;
-configuration.plugins;
-var require___vite_browser_external = __commonJSMin(((exports, module) => {
-	module.exports = {};
-}));
-export { log as a, internationalization as i, configuration as n, routing as o, editor as r, require___vite_browser_external as t };
-import { n as configuration, t as require___vite_browser_external } from "./__vite-browser-external-Cnj-CPCM.js";
-var import___vite_browser_external = require___vite_browser_external();
-var getUnmergedDictionaries = (configuration$1 = configuration) => {
-	const { system } = configuration$1;
-	const { unmergedDictionariesDir } = system;
-	const dictionaries = {};
-	if ((0, import___vite_browser_external.existsSync)(unmergedDictionariesDir)) {
-		const files = (0, import___vite_browser_external.readdirSync)(unmergedDictionariesDir).filter((file) => file.endsWith(".json"));
-		for (const file of files) {
-			const key = (0, import___vite_browser_external.basename)(file, (0, import___vite_browser_external.extname)(file));
-			const content = (0, import___vite_browser_external.readFileSync)((0, import___vite_browser_external.join)(unmergedDictionariesDir, file), "utf-8");
-			dictionaries[key] = JSON.parse(content);
-		}
-	}
-	return dictionaries;
-};
-export { getUnmergedDictionaries };
-import { n as configuration, r as editor } from "./__vite-browser-external-Cnj-CPCM.js";
-import { n as getBasePlugins, r as getContent } from "./getDictionary-BDPI18gp.js";
-import { f as TRANSLATION } from "./nodeType-DivqwnYF.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-VZJ4GP6z.js";
+import { d as configuration, f as editor, n as getContent, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);
 var compareUrls = (url1, url2) => {
 	try {
@@ -1478,7 +1461,7 @@ var EditorStateManager = class {
 	}
 	async _loadDictionaries() {
 		try {
-			const unmergedDictionaries = (await import("./esm-A20ZMhEv.js")).getUnmergedDictionaries();
+			const unmergedDictionaries = (await import("./unmerged_dictionaries-BqxArPI5.js")).getUnmergedDictionaries();
 			const dictionariesList = Object.fromEntries(Object.values(unmergedDictionaries).flat().map((dictionary) => [dictionary.localId, dictionary]));
 			this.localeDictionaries.set(dictionariesList);
 			if (this.editorEnabled.value) this._broadcastData();
@@ -1732,25 +1715,114 @@ var stopEditorClient = () => {
 	setGlobalEditorManager(null);
 };
 export { initEditorClient, stopEditorClient };
-import { f as TRANSLATION } from "./nodeType-DivqwnYF.js";
-var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
-	let currentValue = structuredClone(dictionaryContent);
-	for (const keyObj of keyPath) {
-		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
-		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
-		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
-		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
-	}
-	return currentValue;
+import { c as OBJECT, t as ARRAY, u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
 };
-export { getContentNodeByKeyPath as t };
-import { r as __require$1 } from "./rolldown-runtime-BG0GCgh6.js";
-import { a as log, i as internationalization, n as configuration, t as require___vite_browser_external } from "./__vite-browser-external-Cnj-CPCM.js";
-import { a as GENDER, f as TRANSLATION, l as NESTED, n as CONDITION, r as ENUMERATION, s as INSERTION, t as ARRAY, u as OBJECT } from "./nodeType-DivqwnYF.js";
-var getCondition = (conditionContent, state) => {
-	const stateList = Object.keys(conditionContent);
-	const fallbackState = stateList[stateList.length - 1];
-	return conditionContent[`${state}`] ?? conditionContent.fallback ?? conditionContent[fallbackState];
+var routing = {
+	"mode": "prefix-no-default",
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": {}
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var editor = {
+	"editorURL": "http://localhost:8000",
+	"cmsURL": "https://app.intlayer.org",
+	"backendURL": "https://back.intlayer.org",
+	"port": 8e3,
+	"enabled": false,
+	"dictionaryPriorityStrategy": "local_first",
+	"liveSync": true,
+	"liveSyncPort": 4e3,
+	"liveSyncURL": "http://localhost:4000"
+};
+var log = {
+	"mode": "default",
+	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
+};
+var configuration = {
+	internationalization,
+	routing,
+	editor,
+	log,
+	system: {
+		"baseDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app",
+		"moduleAugmentationDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"unmergedDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/unmerged_dictionary",
+		"remoteDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/remote_dictionary",
+		"dictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dictionary",
+		"dynamicDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dynamic_dictionary",
+		"fetchDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/fetch_dictionary",
+		"typesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"mainDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/main",
+		"configDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/config",
+		"cacheDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/cache",
+		"tempDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/tmp"
+	},
+	content: {
+		"fileExtensions": [
+			".content.ts",
+			".content.js",
+			".content.cjs",
+			".content.mjs",
+			".content.json",
+			".content.json5",
+			".content.jsonc",
+			".content.tsx",
+			".content.jsx"
+		],
+		"contentDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"codeDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"excludedPath": [
+			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,astro}",
+			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
+			"!***.spec.*",
+			"!***.d.ts",
+			"!***.map"
+		],
+		"outputFormat": ["esm", "cjs"],
+		"cache": true,
+		"checkTypes": false
+	},
+	ai,
+	dictionary,
+	build,
+	compiler: {
+		"enabled": true,
+		"dictionaryKeyPrefix": "",
+		"noMetadata": false,
+		"saveComponents": false
+	}
 };
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
@@ -1789,122 +1861,6 @@ var deepTransformNode = (node, props) => {
 		}
 	});
 	return result;
-};
-var findMatchingCondition = (enumerationContent, quantity) => {
-	const numericKeys = Object.keys(enumerationContent);
-	for (const key of numericKeys) {
-		const isEqual = !key.startsWith(">") && !key.startsWith("<") && !key.startsWith("=") && parseFloat(key) === quantity || key.startsWith("=") && parseFloat(key.slice(1)) === quantity;
-		const isSuperior = key.startsWith(">") && quantity > parseFloat(key.slice(1));
-		const isSuperiorOrEqual = key.startsWith(">=") && quantity >= parseFloat(key.slice(2));
-		const isInferior = key.startsWith("<") && quantity < parseFloat(key.slice(1));
-		const isInferiorOrEqual = key.startsWith("<=") && quantity <= parseFloat(key.slice(2));
-		if (isEqual || isSuperior || isSuperiorOrEqual || isInferior || isInferiorOrEqual) return key;
-	}
-};
-var getEnumeration = (enumerationContent, quantity) => {
-	return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
-};
-var getGenderEntry = (gender) => {
-	if (gender === "m" || gender === "male") return "male";
-	if (gender === "f" || gender === "female") return "female";
-	return "fallback";
-};
-var getGender = (genderContent, gender) => {
-	const stateList = Object.keys(genderContent);
-	const fallbackState = stateList[stateList.length - 1];
-	return genderContent[getGenderEntry(gender)] ?? genderContent.fallback ?? genderContent[fallbackState];
-};
-var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
-	return (values[key.trim()] ?? "").toString();
-});
-var RESET = "\x1B[0m";
-var BLUE = "\x1B[34m";
-var RED = "\x1B[31m";
-var GREEN = "\x1B[32m";
-var BEIGE = "\x1B[38;5;3m";
-var loggerPrefix;
-var getPrefix = (configPrefix) => {
-	if (typeof loggerPrefix !== "undefined") return loggerPrefix;
-	return configPrefix;
-};
-var logger = (content, details) => {
-	const config = details?.config ?? {};
-	const mode = config.mode ?? "default";
-	if (mode === "disabled" || details?.isVerbose && mode !== "verbose") return;
-	const prefix = getPrefix(config.prefix);
-	const flatContent = prefix ? [prefix, ...[content].flat()] : [content].flat();
-	const level = details?.level ?? "info";
-	(config[level] ?? console[level] ?? config.log ?? console.log)(...flatContent);
-};
-var getAppLogger = (configuration, globalDetails) => (content, details) => logger(content, {
-	...details ?? {},
-	config: {
-		...configuration?.log,
-		...globalDetails?.config,
-		...details?.config ?? {}
-	}
-});
-var colorize = (string, color, reset) => color ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
-var colorizeKey = (keyPath, color = BEIGE, reset = RESET) => [keyPath].flat().map((key) => colorize(key, color, reset)).join(`, `);
-colorize("✗", RED);
-colorize("✓", GREEN);
-colorize("⏲", BLUE);
-var __require = ((x) => typeof __require$1 !== "undefined" ? __require$1 : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof __require$1 !== "undefined" ? __require$1 : a)[b] }) : x)(function(x) {
-	if (typeof __require$1 !== "undefined") return __require$1.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
-var import___vite_browser_external = require___vite_browser_external();
-var configESMxCJSRequire = typeof import.meta.url === "string" ? (0, import___vite_browser_external.createRequire)(import.meta.url) : __require;
-var getDictionaries = (configuration$1 = configuration) => {
-	const { system, build } = configuration$1;
-	const dictionariesPath = (0, import___vite_browser_external.join)(system.mainDir, `dictionaries.cjs`);
-	let dictionaries = {};
-	if ((0, import___vite_browser_external.existsSync)(dictionariesPath)) dictionaries = (build.require ?? configESMxCJSRequire)(dictionariesPath);
-	return dictionaries ?? {};
-};
-var createSafeFallback = (path = "") => {
-	return new Proxy(() => path, {
-		get: (_target, prop) => {
-			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString") return () => path;
-			if (prop === "then") return;
-			if (prop === Symbol.iterator) return function* () {
-				yield path;
-			};
-			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
-		},
-		apply: () => {
-			return path;
-		}
-	});
-};
-var dictionaryCache = /* @__PURE__ */ new Map();
-var getIntlayer = (key, locale, plugins) => {
-	const dictionary = getDictionaries()[key];
-	if (!dictionary) {
-		getAppLogger({ log })(`Dictionary ${colorizeKey(key)} was not found. Using fallback proxy.`, {
-			level: "warn",
-			isVerbose: true
-		});
-		return createSafeFallback(key);
-	}
-	const cacheKey = `${key}_${locale ?? "default"}_${plugins ? "custom_plugins" : "default_plugins"}`;
-	if (dictionaryCache.has(cacheKey)) return dictionaryCache.get(cacheKey);
-	const result = getDictionary(dictionary, locale, plugins);
-	dictionaryCache.set(cacheKey, result);
-	return result;
-};
-var getNesting = (dictionaryKey, path, props) => {
-	const dictionary = getIntlayer(dictionaryKey, props?.locale, props?.plugins);
-	if (typeof path === "string") {
-		const pathArray = path.split(".");
-		let current = dictionary;
-		for (const key of pathArray) {
-			current = current?.[key];
-			if (current === void 0) return dictionary;
-		}
-		return current;
-	}
-	return dictionary;
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1957,12 +1913,6 @@ var getTranslation = (languageContent, locale, fallback) => {
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
 var TREE_SHAKE_TRANSLATION = process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false";
-var TREE_SHAKE_ENUMERATION = process.env["INTLAYER_NODE_TYPE_ENUMERATION"] === "false";
-var TREE_SHAKE_CONDITION = process.env["INTLAYER_NODE_TYPE_CONDITION"] === "false";
-var TREE_SHAKE_INSERTION = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false";
-var TREE_SHAKE_GENDER = process.env["INTLAYER_NODE_TYPE_GENDER"] === "false";
-var TREE_SHAKE_NESTED = process.env["INTLAYER_NODE_TYPE_NESTED"] === "false";
-var TREE_SHAKE_FILE = process.env["INTLAYER_NODE_TYPE_FILE"] === "false";
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
@@ -1988,123 +1938,12 @@ var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackP
 		return getTranslation(result, locale, fallback);
 	}
 };
-var enumerationPlugin = TREE_SHAKE_ENUMERATION ? fallbackPlugin : {
-	id: "enumeration-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "enumeration",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[ENUMERATION];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: ENUMERATION,
-					key
-				}]
-			});
-		}
-		return (arg) => {
-			const subResult = getEnumeration(result, typeof arg === "number" ? arg : arg.count);
-			if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-			return subResult;
-		};
-	}
-};
-var conditionPlugin = TREE_SHAKE_CONDITION ? fallbackPlugin : {
-	id: "condition-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "condition",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[CONDITION];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: CONDITION,
-					key
-				}]
-			});
-		}
-		return (arg) => {
-			const subResult = getCondition(result, typeof arg === "boolean" ? arg : arg.value);
-			if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-			return subResult;
-		};
-	}
-};
-var insertionPlugin = TREE_SHAKE_INSERTION ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string",
-			transform: (node, subProps, deepTransformNode) => {
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const children = getInsertion(transformedResult, values);
-					return deepTransformNode(children, {
-						...subProps,
-						plugins: props.plugins,
-						children
-					});
-				};
-			}
-		};
-		return deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-	}
-};
-var genderPlugin = TREE_SHAKE_GENDER ? fallbackPlugin : {
-	id: "gender-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "gender",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[GENDER];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: GENDER,
-					key
-				}]
-			});
-		}
-		return (value) => getGender(result, value);
-	}
-};
-var nestedPlugin = (locale) => TREE_SHAKE_NESTED ? fallbackPlugin : {
-	id: "nested-plugin",
-	canHandle: (node) => typeof node === "object" && (node?.nodeType === "nested" || node?.nodeType === "n"),
-	transform: (node, props) => getNesting(node[NESTED].dictionaryKey, node[NESTED].path, {
-		...props,
-		locale: locale ?? props.locale
-	})
-};
-var filePlugin = TREE_SHAKE_FILE ? fallbackPlugin : {
-	id: "file-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "file",
-	transform: (node, props, deepTransform) => deepTransform(node.content, {
-		...props,
-		children: node.content
-	})
-};
+var enumerationPlugin = fallbackPlugin;
+var conditionPlugin = fallbackPlugin;
+var insertionPlugin = fallbackPlugin;
+var genderPlugin = fallbackPlugin;
+var nestedPlugin = (locale) => fallbackPlugin;
+var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
@@ -2118,17 +1957,19 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
-	};
-	return getContent(dictionary.content, props, plugins);
+export { fallbackPlugin as a, nestedPlugin as c, configuration as d, editor as f, routing as h, enumerationPlugin as i, translationPlugin as l, log as m, getContent as n, filePlugin as o, internationalization as p, conditionPlugin as r, genderPlugin as s, getBasePlugins as t, getTranslation as u };
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
+	let currentValue = structuredClone(dictionaryContent);
+	for (const keyObj of keyPath) {
+		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
+		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
+		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
+		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
+	}
+	return currentValue;
 };
-export { enumerationPlugin as a, genderPlugin as c, getTranslation as d, getIntlayer as f, conditionPlugin as i, nestedPlugin as l, getBasePlugins as n, fallbackPlugin as o, getContent as r, filePlugin as s, getDictionary as t, translationPlugin as u };
-import { n as __exportAll } from "./rolldown-runtime-BG0GCgh6.js";
+export { getContentNodeByKeyPath as t };
 var PRESERVED_LITERALS = new Set([
 	"true",
 	"false",
@@ -3698,16 +3539,7 @@ var compileWithOptions = (markdown, runtime, options = {}) => {
 		slugify
 	}, compilerOptions);
 };
-var markdown_exports = __exportAll({
-	DURATION_DELAY_TRIGGER: () => 20,
-	INLINE_SKIP_R: () => INLINE_SKIP_R,
-	ORDERED: () => 1,
-	ORDERED_LIST_BULLET: () => ORDERED_LIST_BULLET,
-	UNORDERED: () => 2,
-	UNORDERED_LIST_BULLET: () => UNORDERED_LIST_BULLET,
-	compileWithOptions: () => compileWithOptions
-});
-export { getMarkdownMetadata as n, markdown_exports as t };
+export { compileWithOptions, getMarkdownMetadata };
 var TRANSLATION = "translation";
 var ENUMERATION = "enumeration";
 var CONDITION = "condition";
@@ -3715,25 +3547,10 @@ var INSERTION = "insertion";
 var FILE = "file";
 var OBJECT = "object";
 var ARRAY = "array";
-var NESTED = "nested";
 var REACT_NODE = "reactNode";
 var MARKDOWN = "markdown";
 var HTML = "html";
-var GENDER = "gender";
-export { GENDER as a, MARKDOWN as c, REACT_NODE as d, TRANSLATION as f, FILE as i, NESTED as l, CONDITION as n, HTML as o, ENUMERATION as r, INSERTION as s, ARRAY as t, OBJECT as u };
-var __defProp = Object.defineProperty;
-var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
-var __exportAll = (all, no_symbols) => {
-	let target = {};
-	for (var name in all) __defProp(target, name, {
-		get: all[name],
-		enumerable: true
-	});
-	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
-	return target;
-};
-var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
-	if (typeof require !== "undefined") return require.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
-export { __exportAll as n, __require as r, __commonJSMin as t };
+export { HTML as a, OBJECT as c, FILE as i, REACT_NODE as l, CONDITION as n, INSERTION as o, ENUMERATION as r, MARKDOWN as s, ARRAY as t, TRANSLATION as u };
+var dictionaries = {};
+var getUnmergedDictionaries = () => dictionaries;
+export { getUnmergedDictionaries };

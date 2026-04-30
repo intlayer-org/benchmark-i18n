@@ -1,22 +1,12 @@
-import { i as internationalization, o as routing, r as editor } from "./__vite-browser-external-Cnj-CPCM.js";
-import { a as enumerationPlugin, c as genderPlugin, f as getIntlayer, i as conditionPlugin, l as nestedPlugin, o as fallbackPlugin, s as filePlugin, u as translationPlugin } from "./getDictionary-BDPI18gp.js";
-import { c as MARKDOWN, o as HTML, s as INSERTION } from "./nodeType-DivqwnYF.js";
-import { n as getMarkdownMetadata } from "./markdown-BmCAYw1d.js";
+import { a as fallbackPlugin, c as nestedPlugin, f as editor, h as routing, i as enumerationPlugin, l as translationPlugin, n as getContent, o as filePlugin, p as internationalization, r as conditionPlugin, s as genderPlugin, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { a as HTML, o as INSERTION, s as MARKDOWN } from "./nodeType-7ZUTNKKR.js";
 import { Dynamic, createComponent, insert, mergeProps, template } from "solid-js/web";
 import { Suspense, createContext, createMemo, lazy, useContext } from "solid-js";
-var isEnabled = !(process.env["INTLAYER_EDITOR_ENABLED"] === "false") && editor?.enabled && typeof window !== "undefined" && window.self !== window.top;
-var r = process.env.INTLAYER_EDITOR_ENABLED === "false", i = (i) => r || !isEnabled ? i.children : createComponent(Dynamic, {
-	component: "intlayer-content-selector-wrapper",
-	get "attr:key-path"() {
-		return JSON.stringify(i.keyPath);
-	},
-	get "attr:dictionary-key"() {
-		return i.dictionaryKey;
-	},
-	get children() {
-		return i.children;
-	}
-});
+var understanding_impact_default = {
+	key: "understanding-impact",
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"theAppMustFirstLoad\":\"the app must first load, determine the locale, then fetch the right chunk — adding network round-trips.\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"usersMayBrieflySeeTranslation\":\"users may briefly see translation keys or a fallback language before the chunk arrives.\",\"cacheInvalidation\":\"Cache invalidation:\",\"updatingTranslationsRequiresCacheBusting\":\"updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks.\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"fr\":{\"understandingTheImpact\":\"Comprendre l'impact\",\"whyASingleLargeJson\":\"Pourquoi un seul JSON volumineux peut nuire aux performances\",\"manyI18nLibrariesStoreTranslations\":\"De nombreuses bibliothèques i18n stockent les traductions dans un seul objet JSON fourni via le contexte React. Lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. Cela signifie :\",\"theJsonMustBeParsed\":\"Le JSON doit être analysé à chaque chargement de page — bloquant le thread principal.\",\"contextBasedArchitecturesCanCause\":\"Les architectures basées sur le contexte peuvent provoquer des re-rendus en cascade lorsque la langue change, car chaque consommateur est notifié même si ses clés spécifiques n'ont pas changé.\",\"duringServerSideRenderingThe\":\"Lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload HTML, augmentant la taille du document qui doit être téléchargé et hydraté.\",\"theTradeOffsOfDynamic\":\"Les compromis du chargement dynamique\",\"splittingTranslationsIntoPerRoute\":\"La division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. Mais cela introduit de nouveaux défis :\",\"waterfallRequests\":\"Requêtes en cascade :\",\"theAppMustFirstLoad\":\"l'application doit d'abord se charger, déterminer la langue, puis récupérer le bon morceau — ce qui ajoute des allers-retours sur le réseau.\",\"flashOfUntranslatedContentFouc\":\"Flash de contenu non traduit (FOUC) :\",\"usersMayBrieflySeeTranslation\":\"les utilisateurs peuvent brièvement voir les clés de traduction ou une langue de secours avant que le morceau n'arrive.\",\"cacheInvalidation\":\"Invalidation du cache :\",\"updatingTranslationsRequiresCacheBusting\":\"la mise à jour des traductions nécessite des stratégies d'invalidation du cache (cache-busting) pour garantir que les utilisateurs reçoivent un contenu frais sans télécharger à nouveau les morceaux inchangés.\",\"whatThisBenchmarkMeasures\":\"Ce que ce benchmark mesure\",\"thisTestAppProvidesA\":\"Cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle JavaScript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. Chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.\"},\"es\":{\"understandingTheImpact\":\"Entendiendo el impacto\",\"whyASingleLargeJson\":\"Por qué un único JSON grande puede perjudicar el rendimiento\",\"manyI18nLibrariesStoreTranslations\":\"Muchas bibliotecas i18n almacenan traducciones en un único objeto JSON proporcionado a través del contexto de React. Cuando este objeto es grande (miles de claves), cada componente que consume traducciones mantiene una referencia a todo el diccionario. Esto significa:\",\"theJsonMustBeParsed\":\"El JSON debe analizarse en cada carga de página, bloqueando el hilo principal.\",\"contextBasedArchitecturesCanCause\":\"Las arquitecturas basadas en el contexto pueden causar re-renderizaciones en cascada cuando cambia la configuración regional, porque cada consumidor es notificado incluso si sus claves específicas no cambiaron.\",\"duringServerSideRenderingThe\":\"Durante el renderizado del lado del servidor, el diccionario completo se serializa en la carga útil de HTML, lo que aumenta el tamaño del documento que debe descargarse e hidratarse.\",\"theTradeOffsOfDynamic\":\"Los compromisos de la carga dinámica\",\"splittingTranslationsIntoPerRoute\":\"Dividir las traducciones en fragmentos por ruta o por espacio de nombres puede reducir drásticamente la carga útil inicial. Pero introduce nuevos desafíos:\",\"waterfallRequests\":\"Solicitudes en cascada:\",\"theAppMustFirstLoad\":\"la aplicación debe cargarse primero, determinar la configuración regional y luego buscar el fragmento correcto, lo que añade recorridos de red.\",\"flashOfUntranslatedContentFouc\":\"Destello de contenido no traducido (FOUC):\",\"usersMayBrieflySeeTranslation\":\"los usuarios pueden ver brevemente las claves de traducción o un idioma de respaldo antes de que llegue el fragmento.\",\"cacheInvalidation\":\"Invalidación de caché:\",\"updatingTranslationsRequiresCacheBusting\":\"actualizar las traducciones requiere estrategias de invalidación de caché para garantizar que los usuarios obtengan contenido nuevo sin volver a descargar fragmentos sin cambios.\",\"whatThisBenchmarkMeasures\":\"Qué mide este benchmark\",\"thisTestAppProvidesA\":\"Esta aplicación de prueba proporciona un entorno controlado (10 páginas con contenido realista) para comparar bibliotecas i18n en tres ejes: el peso que añaden a su paquete de JavaScript, el tiempo dedicado a analizar y representar contenido traducido y la efectividad de sus estrategias de división de código y carga diferida. Cada biblioteca se integra en la misma aplicación para que los resultados sean directamente comparables.\"},\"de\":{\"understandingTheImpact\":\"Die Auswirkungen verstehen\",\"whyASingleLargeJson\":\"Warum ein einzelnes großes JSON die Leistung beeinträchtigen kann\",\"manyI18nLibrariesStoreTranslations\":\"Viele i18n-Bibliotheken speichern Übersetzungen in einem einzigen JSON-Objekt, das über den React-Kontext bereitgestellt wird. Wenn dieses Objekt groß ist (Tausende von Schlüsseln), hält jede Komponente, die Übersetzungen verwendet, eine Referenz auf das gesamte Verzeichnis. Das bedeutet:\",\"theJsonMustBeParsed\":\"Das JSON muss bei jedem Laden der Seite geparst werden — was den Haupt-Thread blockiert.\",\"contextBasedArchitecturesCanCause\":\"Kontextbasierte Architekturen können kaskadierende Re-Renderings verursachen, wenn sich das Gebietsschema ändert, da jeder Consumer benachrichtigt wird, selbst wenn sich seine spezifischen Schlüssel nicht geändert haben.\",\"duringServerSideRenderingThe\":\"Beim serverseitigen Rendering wird das vollständige Verzeichnis in die HTML-Nutzlast serialisiert, was die Größe des Dokuments erhöht, das heruntergeladen und hydriert werden muss.\",\"theTradeOffsOfDynamic\":\"Die Kompromisse beim dynamischen Laden\",\"splittingTranslationsIntoPerRoute\":\"Das Aufteilen von Übersetzungen in Chunks pro Route oder pro Namespace kann die anfängliche Nutzlast drastisch reduzieren. Aber es bringt neue Herausforderungen mit sich:\",\"waterfallRequests\":\"Waterfall-Anfragen:\",\"theAppMustFirstLoad\":\"die App muss zuerst geladen werden, die Sprache bestimmen und dann den richtigen Chunk abrufen — was Netzwerk-Roundtrips hinzufügt.\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"usersMayBrieflySeeTranslation\":\"Benutzer sehen möglicherweise kurzzeitig Übersetzungsschlüssel oder eine Ersatzsprache, bevor der Chunk eintrifft.\",\"cacheInvalidation\":\"Cache-Invalidierung:\",\"updatingTranslationsRequiresCacheBusting\":\"Das Aktualisieren von Übersetzungen erfordert Cache-Busting-Strategien, um sicherzustellen, dass Benutzer neue Inhalte erhalten, ohne unveränderte Chunks erneut herunterzuladen.\",\"whatThisBenchmarkMeasures\":\"Was dieser Benchmark misst\",\"thisTestAppProvidesA\":\"Diese Test-App bietet eine kontrollierte Umgebung — 10 Seiten mit realistischem Inhalt — um i18n-Bibliotheken in drei Achsen zu vergleichen: das Gewicht, das sie Ihrem JavaScript-Bundle hinzufügen, die Zeit, die für das Parsen und Rendern übersetzter Inhalte aufgewendet wird, und die Effektivität ihrer Code-Splitting- und Lazy-Loading-Strategien. Jede Bibliothek ist in dieselbe App integriert, sodass die Ergebnisse direkt vergleichbar sind.\"},\"it\":{\"understandingTheImpact\":\"Comprendere l'impatto\",\"whyASingleLargeJson\":\"Perché un singolo JSON di grandi dimensioni può danneggiare le prestazioni\",\"manyI18nLibrariesStoreTranslations\":\"Molte librerie i18n memorizzano le traduzioni in un singolo oggetto JSON fornito tramite il contesto React. Quando questo oggetto è grande (migliaia di chiavi), ogni componente che consuma le traduzioni mantiene un riferimento all'intero dizionario. Ciò significa:\",\"theJsonMustBeParsed\":\"Il JSON deve essere analizzato a ogni caricamento della pagina, bloccando il thread principale.\",\"contextBasedArchitecturesCanCause\":\"Le architetture basate sul contesto possono causare rendering a cascata quando la lingua cambia, perché ogni consumatore viene informato anche se le sue chiavi specifiche non sono cambiate.\",\"duringServerSideRenderingThe\":\"Durante il rendering lato server, l'intero dizionario viene serializzato nel payload HTML, aumentando le dimensioni del documento che deve essere scaricato e idratato.\",\"theTradeOffsOfDynamic\":\"I compromessi del caricamento dinamico\",\"splittingTranslationsIntoPerRoute\":\"La suddivisione delle traduzioni in chunk per rotta o per namespace può ridurre drasticamente il payload iniziale. Ma introduce nuove sfide:\",\"waterfallRequests\":\"Richieste waterfall:\",\"theAppMustFirstLoad\":\"l'app deve prima caricarsi, determinare la lingua, quindi recuperare il chunk corretto, aggiungendo round-trip di rete.\",\"flashOfUntranslatedContentFouc\":\"Flash di contenuti non tradotti (FOUC):\",\"usersMayBrieflySeeTranslation\":\"gli utenti potrebbero vedere brevemente le chiavi di traduzione o una lingua di fallback prima che arrivi il chunk.\",\"cacheInvalidation\":\"Invalidazione della cache:\",\"updatingTranslationsRequiresCacheBusting\":\"l'aggiornamento delle traduzioni richiede strategie di cache-busting per garantire che gli utenti ricevano contenuti freschi senza scaricare nuovamente i chunk invariati.\",\"whatThisBenchmarkMeasures\":\"Cosa misura questo benchmark\",\"thisTestAppProvidesA\":\"Questa app di test fornisce un ambiente controllato (10 pagine con contenuti realistici) per confrontare le librerie i18n su tre assi: il peso che aggiungono al tuo bundle JavaScript, il tempo speso per l'analisi e il rendering dei contenuti tradotti e l'efficacia delle loro strategie di code-splitting e lazy-loading. Ogni libreria è integrata nella stessa app in modo che i risultati siano direttamente confrontabili.\"},\"pt\":{\"understandingTheImpact\":\"Entendendo o impacto\",\"whyASingleLargeJson\":\"Por que um único JSON grande pode perjudicar o desempenho\",\"manyI18nLibrariesStoreTranslations\":\"Muitas bibliotecas i18n armazenam traduções em um único objeto JSON fornecido via contexto React. Quando esse objeto é grande (milhares de chaves), cada componente que consome traduções mantém uma referência a todo o dicionário. Isso significa:\",\"theJsonMustBeParsed\":\"O JSON deve ser analisado a cada carregamento de página — bloqueando a thread principal.\",\"contextBasedArchitecturesCanCause\":\"Arquiteturas baseadas em contexto podem causar renderizações em cascata quando o idioma muda, porque cada consumidor é notificado mesmo que suas chaves específicas não tenham mudado.\",\"duringServerSideRenderingThe\":\"Durante a renderização no lado do servidor, o dicionário completo é serializado no payload HTML, aumentando o tamanho do documento que deve ser baixado e hidratado.\",\"theTradeOffsOfDynamic\":\"Os trade-offs do carregamento dinâmico\",\"splittingTranslationsIntoPerRoute\":\"Dividir traduções em blocos por rota ou por namespace pode reduzir drasticamente o payload inicial. Mas introduz novos desafios:\",\"waterfallRequests\":\"Requisições em cascata:\",\"theAppMustFirstLoad\":\"a aplicação deve carregar primeiro, determinar o idioma e depois buscar o bloco correto — adicionando viagens de ida e volta na rede.\",\"flashOfUntranslatedContentFouc\":\"Flash de conteúdo não traduzido (FOUC):\",\"usersMayBrieflySeeTranslation\":\"os usuários podem ver brevemente as chaves de tradução ou um idioma de fallback antes que o bloco chegue.\",\"cacheInvalidation\":\"Invalidação de cache:\",\"updatingTranslationsRequiresCacheBusting\":\"a atualização das traduções requer estratégias de invalidação de cache para garantir que os usuários recebam conteúdo atualizado sem baixar novamente blocos inalterados.\",\"whatThisBenchmarkMeasures\":\"O que este benchmark mede\",\"thisTestAppProvidesA\":\"Este aplicativo de teste fornece um ambiente controlado — 10 páginas com conteúdo realista — para comparar bibliotecas i18n em três eixos: o peso que elas adicionam ao seu pacote JavaScript, o tempo gasto analisando e renderizando conteúdo traduzido e a eficácia de suas estratégias de divisão de código e carregamento lento. Cada biblioteca é integrada ao mesmo aplicativo para que os resultados sejam diretamente comparáveis.\"},\"zh\":{\"understandingTheImpact\":\"了解影响\",\"whyASingleLargeJson\":\"为什么单个大型 JSON 会损害性能\",\"manyI18nLibrariesStoreTranslations\":\"许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当此对象很大（数千个键）时，每个消耗翻译的组件都会保留对整个字典的引用。这意味着：\",\"theJsonMustBeParsed\":\"JSON 必须在每次页面加载时解析——阻塞主线程。\",\"contextBasedArchitecturesCanCause\":\"当语言环境更改时，基于上下文的架构可能会导致级联重新渲染，因为即使其特定键未更改，每个消费者也会收到通知。\",\"duringServerSideRenderingThe\":\"在服务器端渲染期间，整个字典被序列化为 HTML 负载，增加了必须下载和水合的文档大小。\",\"theTradeOffsOfDynamic\":\"动态加载的权衡\",\"splittingTranslationsIntoPerRoute\":\"将翻译拆分为每个路由或每个命名空间的块可以显着减少初始负载。但它引入了新的挑战：\",\"waterfallRequests\":\"瀑布请求：\",\"theAppMustFirstLoad\":\"应用程序必须首先加载，确定语言环境，然后获取正确的块——这增加了网络往返。\",\"flashOfUntranslatedContentFouc\":\"未翻译内容的闪烁 (FOUC)：\",\"usersMayBrieflySeeTranslation\":\"在块到达之前，用户可能会短暂地看到翻译键或回退语言。\",\"cacheInvalidation\":\"缓存失效：\",\"updatingTranslationsRequiresCacheBusting\":\"更新翻译需要缓存失效策略，以确保用户在不重新下载未更改块的情况下获得新鲜内容。\",\"whatThisBenchmarkMeasures\":\"此基准测试衡量什么\",\"thisTestAppProvidesA\":\"此测试应用程序提供了一个受控环境——包含 10 个具有真实内容的页面——以便从三个维度比较 i18n 库：它们为 JavaScript 捆绑包增加的重量、解析和渲染翻译内容所花费的时间，以及它们代码拆分和延迟加载策略的有效性。每个库都集成到同一个应用程序中，因此结果具有直接可比性。\"},\"ja\":{\"understandingTheImpact\":\"影響を理解する\",\"whyASingleLargeJson\":\"なぜ単一の大きなJSONがパフォーマンスを低下させるのか\",\"manyI18nLibrariesStoreTranslations\":\"多くのi18nライブラリは、Reactコンテキストを介して提供される単一のJSONオブジェクトに翻訳を保存します。このオブジェクトが大きい（数千のキー）場合、翻訳を消費するすべてのコンポーネントが辞书全体への参照を保持します。これは以下のことを意味します：\",\"theJsonMustBeParsed\":\"JSONはページがロードされるたびに解析される必要があり、メインスレッドをブロックします。\",\"contextBasedArchitecturesCanCause\":\"コンテキストベースのアーキテクチャでは、ロケールが変更されると、特定のキーが変更されていなくてもすべてのコンシューマーに通知されるため、連鎖的なリレンダリングが発生する可能性があります。\",\"duringServerSideRenderingThe\":\"サーバーサイドレンダリング中、辞書全体がHTMLペイロードにシリアル化され、ダウンロードしてハイドレーションする必要があるドキュメントサイズが増加します。\",\"theTradeOffsOfDynamic\":\"動的ロードのトレードオフ\",\"splittingTranslationsIntoPerRoute\":\"翻訳をルートごとまたは名前空間ごとのチャンクに分割すると、初期ペイロードを大幅に削減できます。しかし、それは新たな課題をもたらします：\",\"waterfallRequests\":\"ウォーターフォールリクエスト：\",\"theAppMustFirstLoad\":\"アプリは最初にロードし、ロケールを決定してから、適切なチャンクを取得する必要があり、ネットワークのラウンドトリップが追加されます。\",\"flashOfUntranslatedContentFouc\":\"翻訳されていないコンテンツのちらつき（FOUC）：\",\"usersMayBrieflySeeTranslation\":\"チャンクが到着する前に、ユーザーは翻訳キーやフォールバック言語を一時的に目にすることがあります。\",\"cacheInvalidation\":\"キャッシュの無効化：\",\"updatingTranslationsRequiresCacheBusting\":\"翻訳を更新するには、変更されていないチャンクを再ダウンロードすることなく、ユーザーが最新のコンテンツを取得できるようにするためのキャッシュバースト戦略が必要です。\",\"whatThisBenchmarkMeasures\":\"このベンチマークが測定するもの\",\"thisTestAppProvidesA\":\"このテストアプリは、制御された環境（現実的なコンテンツを含む10ページ）を提供し、3つの軸でi18nライブラリを比較します：JavaScriptバンドルに追加される重み、翻訳されたコンテンツの解析とレンダリングに費やされる時間、およびコード分割と遅延ロード戦略の有効性です。各ライブラリは同じアプリに統合されているため、結果を直接比較できます。\"},\"ko\":{\"understandingTheImpact\":\"영향 이해\",\"whyASingleLargeJson\":\"단일 대용량 JSON이 성능을 저하시킬 수 있는 이유\",\"manyI18nLibrariesStoreTranslations\":\"많은 i18n 라이브러리는 React 컨텍스트를 통해 제공되는 단일 JSON 객체에 번역을 저장합니다. 이 객체가 클 때(수천 개의 키), 번역을 사용하는 모든 컴포넌트는 전체 사전에 대한 참조를 보유합니다. 이는 다음을 의미합니다.\",\"theJsonMustBeParsed\":\"JSON은 페이지를 로드할 때마다 파싱되어야 하므로 메인 스レッド을 차단합니다.\",\"contextBasedArchitecturesCanCause\":\"컨텍스트 기반 아키텍처는 로케일이 변경될 때 계단식 리렌더링을 유발할 수 있습니다. 특정 키가 변경되지 않았더라도 모든 소비자가 알림을 받기 때문입니다.\",\"duringServerSideRenderingThe\":\"서버 측 렌더링 중에 전체 사전이 HTML 페이로드로 직렬화되어 다운로드 및 수화해야 하는 문서 크기가 커집니다.\",\"theTradeOffsOfDynamic\":\"동적 로드의 트레이드오프\",\"splittingTranslationsIntoPerRoute\":\"번역을 경로별 또는 네임스페이스별 청크로 분할하면 초기 페이로드를 획기적으로 줄일 수 있습니다. 하지만 이는 새로운 과제를 안겨줍니다.\",\"waterfallRequests\":\"워터폴 요청:\",\"theAppMustFirstLoad\":\"앱은 먼저 로드되어 로케일을 결정한 다음 올바른 청크를 가져와야 하므로 네트워크 왕복이 추가됩니다.\",\"flashOfUntranslatedContentFouc\":\"번역되지 않은 콘텐츠의 플래시(FOUC):\",\"usersMayBrieflySeeTranslation\":\"청크가 도착하기 전에 사용자는 번역 키나 폴백 언어를 잠시 볼 수 있습니다.\",\"cacheInvalidation\":\"캐시 무효화:\",\"updatingTranslationsRequiresCacheBusting\":\"번역을 업데이트하려면 사용자가 변경되지 않은 청크를 다시 다운로드하지 않고 최신 콘텐츠를 받을 수 있도록 캐시 버스팅 전략이 필요합니다.\",\"whatThisBenchmarkMeasures\":\"이 벤치마크가 측정하는 것\",\"thisTestAppProvidesA\":\"이 테스트 앱은 10개의 실제 콘텐츠 페이지가 포함된 제어된 환경을 제공하여 세 가지 축에서 i18n 라이브러리를 비교합니다. JavaScript 번들에 추가되는 무게, 번역된 콘텐츠를 파싱하고 렌더링하는 데 소요되는 시간, 코드 분할 및 지연 로딩 전략의 효과입니다. 각 라이브러리는 동일한 앱에 통합되어 있으므로 결과를 직접 비교할 수 있습니다.\"},\"ru\":{\"understandingTheImpact\":\"Понимание влияния\",\"whyASingleLargeJson\":\"Почему один большой JSON может снизить производительность\",\"manyI18nLibrariesStoreTranslations\":\"Многие библиотеки i18n хранят переводы в одном объекте JSON, предоставляемом через контекст React. Когда этот объект большой (тысячи ключей), каждый компонент, использующий переводы, хранит ссылку на весь словарь. Это означает:\",\"theJsonMustBeParsed\":\"JSON должен парситься при каждой загрузке страницы — блокируя основной поток.\",\"contextBasedArchitecturesCanCause\":\"Архитектуры на основе контекста могут вызывать каскадные повторные рендеринги при изменении локали, потому что каждый потребитель уведомляется, даже если его конкретные ключи не изменились.\",\"duringServerSideRenderingThe\":\"Во время серверного рендеринга весь словарь сериализуется в HTML-пейлоад, увеличивая размер документа, который необходимо загрузить и гидратировать.\",\"theTradeOffsOfDynamic\":\"Компромиссы динамической загрузки\",\"splittingTranslationsIntoPerRoute\":\"Разделение переводов на чанки для каждого маршрута или пространства имен может значительно уменьшить начальный пейлоад. Но это создает новые проблемы:\",\"waterfallRequests\":\"Каскадные запросы (Waterfall requests):\",\"theAppMustFirstLoad\":\"приложение должно сначала загрузиться, определить локаль, а затем получить нужный чанк — это добавляет сетевые задержки.\",\"flashOfUntranslatedContentFouc\":\"Мерцание непереведенного контента (FOUC):\",\"usersMayBrieflySeeTranslation\":\"пользователи могут на мгновение увидеть ключи перевода или резервный язык до того, как придет чанк.\",\"cacheInvalidation\":\"Инвалидация кэша:\",\"updatingTranslationsRequiresCacheBusting\":\"обновление переводов требует стратегий аннулирования кэша, чтобы пользователи получали свежий контент без повторной загрузки неизмененных чанков.\",\"whatThisBenchmarkMeasures\":\"Что измеряет этот бенчмарк\",\"thisTestAppProvidesA\":\"Это тестовое приложение предоставляет контролируемую среду — 10 страниц с реалистичным контентом — для сравнения библиотек i18n по трем осям: вес, который они добавляют вашему JavaScript-бандлу, время, затраченное на парсинг и рендеринг переведенного контента, и эффективность их стратегий разделения кода и ленивой загрузки. Каждая библиотека измеряется в идентичных условиях.\"}}}"),
+	localIds: ["understanding-impact::local::src/components/pages/home/understandingImpact.content.ts"]
+};
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -53,6 +43,38 @@ var t$1 = (n) => {
 		children: i.children
 	});
 };
+var RESET = "\x1B[0m";
+var BLUE = "\x1B[34m";
+var RED = "\x1B[31m";
+var GREEN = "\x1B[32m";
+var colorize = (string, color, reset) => color ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
+colorize("✗", RED);
+colorize("✓", GREEN);
+colorize("⏲", BLUE);
+var createSafeFallback = (path = "") => {
+	return new Proxy(() => path, {
+		get: (_target, prop) => {
+			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString") return () => path;
+			if (prop === "then") return;
+			if (prop === Symbol.iterator) return function* () {
+				yield path;
+			};
+			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
+		},
+		apply: () => {
+			return path;
+		}
+	});
+};
+var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+	const props = {
+		dictionaryKey: dictionary.key,
+		dictionaryPath: dictionary.filePath,
+		keyPath: [],
+		plugins
+	};
+	return getContent(dictionary.content, props, plugins);
+};
 var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
 var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
 var splitInsertionTemplate = (template, values = {}) => {
@@ -73,30 +95,48 @@ var splitInsertionTemplate = (template, values = {}) => {
 		parts
 	};
 };
-var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", x = process.env.INTLAYER_NODE_TYPE_MARKDOWN === "false", S = process.env.INTLAYER_NODE_TYPE_HTML === "false", C = process.env.INTLAYER_NODE_TYPE_INSERTION === "false", w$1 = process.env.INTLAYER_EDITOR_ENABLED === "false", T$1 = x ? null : lazy(() => import("./MarkdownRenderer-CZEl8PYG.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), E$1 = x ? null : lazy(() => import("./MarkdownRenderer-CZEl8PYG.js").then((e) => ({ default: e.MarkdownRenderer }))), D$1 = S ? null : lazy(() => import("./HTMLRenderer-BVHh_-9v.js").then((e) => ({ default: e.HTMLRenderer }))), O$1 = y ? fallbackPlugin : {
+var _ = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", v = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", y = true, b = true, x = true, S = true, C = null, w$1 = null, T$1 = null, E$1 = null, D$1 = null;
+S || (C = lazy(() => import("./ContentSelector-4OrUn2VA.js").then((e) => ({ default: e.ContentSelector })))), y || (w$1 = lazy(() => import("./MarkdownRenderer-DYYTWHGL.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), T$1 = lazy(() => import("./MarkdownRenderer-DYYTWHGL.js").then((e) => ({ default: e.MarkdownRenderer }))), import("./markdown-RUjI4Z1e.js").then((e) => {
+	D$1 = e.getMarkdownMetadata;
+})), b || (E$1 = lazy(() => import("./HTMLRenderer-BzwfNhlM.js").then((e) => ({ default: e.HTMLRenderer }))));
+var O$1 = _ ? fallbackPlugin : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { plugins: o, ...s }) => e$1({
-		...s,
-		value: s.children,
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(s, { get children() {
-			return s.children;
-		} })) : s.children
+	transform: (t, { plugins: a, ...o }) => e$1({
+		...o,
+		value: o.children,
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return o.children;
+			},
+			get children() {
+				return createComponent(C, mergeProps(o, { get children() {
+					return o.children;
+				} }));
+			}
+		}) : o.children
 	})
-}, k$1 = b ? fallbackPlugin : {
+}, k$1 = v ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
-	transform: (o, { plugins: s, ...c }) => e$1({
-		...c,
+	transform: (a, { plugins: o, ...s }) => e$1({
+		...s,
 		value: "[[solid-element]]",
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(c, { get children() {
-			return typeof Node < "u" && o instanceof Node ? o : t$1(o);
-		} })) : typeof Node < "u" && o instanceof Node ? o : t$1(o)
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+			},
+			get children() {
+				return createComponent(C, mergeProps(s, { get children() {
+					return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+				} }));
+			}
+		}) : typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
 }, A$1 = (e, t) => {
 	let n = splitInsertionTemplate(e, t);
 	return n.isSimple, n.parts;
-}, j$1 = C ? fallbackPlugin : {
+}, j$1 = x ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -126,73 +166,73 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 			});
 		};
 	}
-}, M$1 = x ? fallbackPlugin : {
+}, M$1 = y ? fallbackPlugin : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
-	transform: (n, o, s) => {
-		let { plugins: c, ...l } = o, u = s(getMarkdownMetadata(n) ?? {}, {
+	transform: (t, a, o) => {
+		let { plugins: s, ...c } = a, l = o(D$1?.(t) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (o, s) => e$1({
-					...s,
-					value: o,
-					children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
+				transform: (a, o) => e$1({
+					...o,
+					value: a,
+					children: !S && editor.enabled ? createComponent(ContentSelector, mergeProps(c, { get children() {
 						return createComponent(Suspense, {
-							fallback: n,
+							fallback: t,
 							get children() {
-								return createComponent(T$1, mergeProps(l, {
+								return createComponent(w$1, mergeProps(c, {
 									get metadataKeyPath() {
-										return s.keyPath;
+										return o.keyPath;
 									},
-									children: n
+									children: t
 								}));
 							}
 						});
 					} })) : createComponent(Suspense, {
-						fallback: n,
+						fallback: t,
 						get children() {
-							return createComponent(T$1, mergeProps(l, {
+							return createComponent(w$1, mergeProps(c, {
 								get metadataKeyPath() {
-									return s.keyPath;
+									return o.keyPath;
 								},
-								children: n
+								children: t
 							}));
 						}
 					})
 				})
 			}],
-			dictionaryKey: l.dictionaryKey,
+			dictionaryKey: c.dictionaryKey,
 			keyPath: []
-		}), d = (s) => e$1({
-			...o,
-			value: n,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: n,
-					get children() {
-						return createComponent(E$1, mergeProps(l, {
-							components: s,
-							children: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: n,
+		}), u = (o) => e$1({
+			...a,
+			value: t,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: t,
 				get children() {
-					return createComponent(E$1, mergeProps(l, {
-						components: s,
-						children: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(T$1, mergeProps(c, {
+							components: o,
+							children: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: t,
+				get children() {
+					return createComponent(T$1, mergeProps(c, {
+						components: o,
+						children: t
 					}));
 				}
 			}),
-			additionalProps: { metadata: u }
-		}), f = d();
-		return new Proxy(f, { get(e, t, r) {
-			return t === "value" ? n : t === "metadata" ? u : t === "use" ? (e) => d(e) : Reflect.get(e, t, r);
+			additionalProps: { metadata: l }
+		}), d = u();
+		return new Proxy(d, { get(e, n, r) {
+			return n === "value" ? t : n === "metadata" ? l : n === "use" ? (e) => u(e) : Reflect.get(e, n, r);
 		} });
 	}
-}, N$1 = x ? fallbackPlugin : {
+}, N$1 = y ? fallbackPlugin : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -204,35 +244,35 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 			plugins: [M$1, ...t.plugins ?? []]
 		});
 	}
-}, P$1 = S ? fallbackPlugin : {
+}, P$1 = b ? fallbackPlugin : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
-	transform: (n, o) => {
-		let s = n[HTML], { plugins: c, ...l } = o, u = (n) => e$1({
-			...l,
-			value: s,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: s,
-					get children() {
-						return createComponent(D$1, mergeProps(l, {
-							html: s,
-							components: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: s,
+	transform: (t, a) => {
+		let o = t[HTML], { plugins: s, ...c } = a, l = (t) => e$1({
+			...c,
+			value: o,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: o,
 				get children() {
-					return createComponent(D$1, mergeProps(l, {
-						html: s,
-						components: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(E$1, mergeProps(c, {
+							html: o,
+							components: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: o,
+				get children() {
+					return createComponent(E$1, mergeProps(c, {
+						html: o,
+						components: t
 					}));
 				}
 			})
-		}), d = [u()];
-		return new Proxy(d, { get(e, t, n) {
-			return t === "value" ? s : t === "use" ? (e) => u(e) : Reflect.get(e, t, n);
+		}), u = [l()];
+		return new Proxy(u, { get(e, t, n) {
+			return t === "value" ? o : t === "use" ? (e) => l(e) : Reflect.get(e, t, n);
 		} });
 	}
 }, F$1 = /* @__PURE__ */ new Map(), I$1 = (e, t = !0) => {
@@ -253,11 +293,8 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 	];
 	return F$1.set(n, r), r;
 };
-var n$2 = (n, r) => getIntlayer(n, r, I$1(r));
-process.env["INTLAYER_ROUTING_REWRITE_RULES"];
+var n$1 = (n, r) => getDictionary(n, r, I$1(r));
 var TREE_SHAKE_STORAGE_COOKIES = process.env["INTLAYER_ROUTING_STORAGE_COOKIES"] === "false";
-var TREE_SHAKE_STORAGE_LOCAL_STORAGE = process.env["INTLAYER_ROUTING_STORAGE_LOCALSTORAGE"] === "false";
-var TREE_SHAKE_STORAGE_SESSION_STORAGE = process.env["INTLAYER_ROUTING_STORAGE_SESSIONSTORAGE"] === "false";
 process.env["INTLAYER_ROUTING_STORAGE_HEADERS"];
 var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const { locales } = internationalization;
@@ -265,14 +302,6 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const isValidLocale = (value) => !!value && locales.includes(value);
 	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-	if (!TREE_SHAKE_STORAGE_LOCAL_STORAGE) for (let i = 0; i < (routing.storage.localStorage ?? []).length; i++) try {
-		const value = options?.getLocaleStorage?.(routing.storage.localStorage[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-	if (!TREE_SHAKE_STORAGE_SESSION_STORAGE && routing.storage.sessionStorage) for (let i = 0; i < routing.storage.sessionStorage.length; i++) try {
-		const value = options?.getSessionStorage?.(routing.storage.sessionStorage[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
 }, localeStorageOptions = {
@@ -293,21 +322,16 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a = getLocaleFromStorageClient(localeStorageOptions);
-process.env.INTLAYER_EDITOR_ENABLED;
-var D = createContext({
+}, a = getLocaleFromStorageClient(localeStorageOptions), D = createContext({
 	locale: () => a ?? internationalization?.defaultLocale,
 	setLocale: () => null
-}), F = (t, n) => {
+}), M = (e, n) => {
 	let r = useContext(D) ?? {};
-	return createMemo(() => {
-		let i = r?.locale();
-		return n$2(t, n ?? i);
-	});
+	return createMemo(() => n$1(e, n ?? r?.locale?.()));
 }, { defaultLocale: L, locales: R } = internationalization;
 var _tmpl$ = template(`<section class="mb-16 mx-auto max-w-3xl space-y-6"><h2 class="text-2xl font-bold text-foreground"></h2><div class="rounded-lg border border-border bg-card p-6"><h3 class="mb-2 text-lg font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground"></p><ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground"><li></li><li></li><li></li></ul></div><div class="rounded-lg border border-border bg-card p-6"><h3 class="mb-2 text-lg font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground"></p><ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground"><li><strong class=text-foreground></strong></li><li><strong class=text-foreground></strong> </li><li><strong class=text-foreground></strong></li></ul></div><div class="rounded-lg border border-border bg-card p-6"><h3 class="mb-2 text-lg font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground">`);
 function UnderstandingImpact() {
-	const content = F("understanding-impact");
+	const content = M(understanding_impact_default);
 	return (() => {
 		var _el$ = _tmpl$(), _el$2 = _el$.firstChild, _el$3 = _el$2.nextSibling, _el$4 = _el$3.firstChild, _el$5 = _el$4.nextSibling, _el$7 = _el$5.nextSibling.firstChild, _el$8 = _el$7.nextSibling, _el$9 = _el$8.nextSibling, _el$0 = _el$3.nextSibling, _el$1 = _el$0.firstChild, _el$10 = _el$1.nextSibling, _el$12 = _el$10.nextSibling.firstChild, _el$13 = _el$12.firstChild, _el$14 = _el$12.nextSibling, _el$15 = _el$14.firstChild;
 		_el$15.nextSibling;
@@ -332,6 +356,9 @@ function UnderstandingImpact() {
 	})();
 }
 export { UnderstandingImpact as default };
+import "solid-js/web";
+var i = (i) => i.children;
+export { i as ContentSelector };
 import { Dynamic, createComponent, mergeProps } from "solid-js/web";
 import { createContext, useContext } from "solid-js";
 var parseAttributes = (attributes) => {
@@ -460,8 +487,8 @@ var a = (e, { components: a = {} } = {}) => {
 	} });
 }, s = (e) => o({ components: e.components || e.userComponents })(e.children || e.html || "");
 export { s as HTMLRenderer };
-import { n as getMarkdownMetadata } from "./markdown-BmCAYw1d.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-VZJ4GP6z.js";
+import { getMarkdownMetadata } from "./markdown-RUjI4Z1e.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 import { createComponent } from "solid-js/web";
 import { Suspense, createContext, createMemo, createResource, useContext } from "solid-js";
 var i = createContext(), o = () => {
@@ -469,21 +496,21 @@ var i = createContext(), o = () => {
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider. To fix this error, wrap your component with <MarkdownProvider>.");
 	return e;
 }, f = (e) => {
-	let i$1 = useContext(i), { renderMarkdown: o$1 } = o(), [l] = createResource(() => [
+	let a = useContext(i), { renderMarkdown: c } = o(), [l] = createResource(() => [
 		e.children,
 		e.forceBlock,
 		e.preserveFrontmatter,
 		e.tagfilter,
 		e.components,
 		e.wrapper
-	], ([e, t, n, r, a, s]) => o$1(e, {
+	], ([e, t, n, r, i, o]) => c(e, {
 		forceBlock: t,
 		preserveFrontmatter: n,
 		tagfilter: r
 	}, {
-		...i$1?.components ?? {},
-		...a ?? {}
-	}, s));
+		...a?.components ?? {},
+		...i ?? {}
+	}, o));
 	return createComponent(Suspense, {
 		fallback: null,
 		get children() {
@@ -495,53 +522,9 @@ var i = createContext(), o = () => {
 	return createMemo(() => getContentNodeByKeyPath(t(), e.metadataKeyPath))();
 };
 export { p as MarkdownMetadataRenderer, f as MarkdownRenderer };
-import { t as __commonJSMin } from "./rolldown-runtime-BG0GCgh6.js";
-var configuration = new Proxy({}, {
-	get(_target, prop) {
-		return (typeof window !== "undefined" ? window.INTLAYER_CONFIG : void 0)?.[prop];
-	},
-	has(_target, prop) {
-		const config = typeof window !== "undefined" ? window.INTLAYER_CONFIG : void 0;
-		return config != null && prop in config;
-	}
-});
-var internationalization = configuration.internationalization;
-configuration.dictionary;
-var routing = configuration.routing;
-configuration.content;
-configuration.system;
-var editor = configuration.editor;
-var log = configuration.log;
-configuration.ai;
-configuration.build;
-configuration.compiler;
-configuration.schemas;
-configuration.plugins;
-var require___vite_browser_external = __commonJSMin(((exports, module) => {
-	module.exports = {};
-}));
-export { log as a, internationalization as i, configuration as n, routing as o, editor as r, require___vite_browser_external as t };
-import { n as configuration, t as require___vite_browser_external } from "./__vite-browser-external-Cnj-CPCM.js";
-var import___vite_browser_external = require___vite_browser_external();
-var getUnmergedDictionaries = (configuration$1 = configuration) => {
-	const { system } = configuration$1;
-	const { unmergedDictionariesDir } = system;
-	const dictionaries = {};
-	if ((0, import___vite_browser_external.existsSync)(unmergedDictionariesDir)) {
-		const files = (0, import___vite_browser_external.readdirSync)(unmergedDictionariesDir).filter((file) => file.endsWith(".json"));
-		for (const file of files) {
-			const key = (0, import___vite_browser_external.basename)(file, (0, import___vite_browser_external.extname)(file));
-			const content = (0, import___vite_browser_external.readFileSync)((0, import___vite_browser_external.join)(unmergedDictionariesDir, file), "utf-8");
-			dictionaries[key] = JSON.parse(content);
-		}
-	}
-	return dictionaries;
-};
-export { getUnmergedDictionaries };
-import { n as configuration, r as editor } from "./__vite-browser-external-Cnj-CPCM.js";
-import { n as getBasePlugins, r as getContent } from "./getDictionary-BDPI18gp.js";
-import { f as TRANSLATION } from "./nodeType-DivqwnYF.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-VZJ4GP6z.js";
+import { d as configuration, f as editor, n as getContent, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);
 var compareUrls = (url1, url2) => {
 	try {
@@ -1453,7 +1436,7 @@ var EditorStateManager = class {
 	}
 	async _loadDictionaries() {
 		try {
-			const unmergedDictionaries = (await import("./esm-A20ZMhEv.js")).getUnmergedDictionaries();
+			const unmergedDictionaries = (await import("./unmerged_dictionaries-BqxArPI5.js")).getUnmergedDictionaries();
 			const dictionariesList = Object.fromEntries(Object.values(unmergedDictionaries).flat().map((dictionary) => [dictionary.localId, dictionary]));
 			this.localeDictionaries.set(dictionariesList);
 			if (this.editorEnabled.value) this._broadcastData();
@@ -1707,25 +1690,114 @@ var stopEditorClient = () => {
 	setGlobalEditorManager(null);
 };
 export { initEditorClient, stopEditorClient };
-import { f as TRANSLATION } from "./nodeType-DivqwnYF.js";
-var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
-	let currentValue = structuredClone(dictionaryContent);
-	for (const keyObj of keyPath) {
-		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
-		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
-		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
-		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
-	}
-	return currentValue;
+import { c as OBJECT, t as ARRAY, u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
 };
-export { getContentNodeByKeyPath as t };
-import { r as __require$1 } from "./rolldown-runtime-BG0GCgh6.js";
-import { a as log, i as internationalization, n as configuration, t as require___vite_browser_external } from "./__vite-browser-external-Cnj-CPCM.js";
-import { a as GENDER, f as TRANSLATION, l as NESTED, n as CONDITION, r as ENUMERATION, s as INSERTION, t as ARRAY, u as OBJECT } from "./nodeType-DivqwnYF.js";
-var getCondition = (conditionContent, state) => {
-	const stateList = Object.keys(conditionContent);
-	const fallbackState = stateList[stateList.length - 1];
-	return conditionContent[`${state}`] ?? conditionContent.fallback ?? conditionContent[fallbackState];
+var routing = {
+	"mode": "prefix-no-default",
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": {}
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var editor = {
+	"editorURL": "http://localhost:8000",
+	"cmsURL": "https://app.intlayer.org",
+	"backendURL": "https://back.intlayer.org",
+	"port": 8e3,
+	"enabled": false,
+	"dictionaryPriorityStrategy": "local_first",
+	"liveSync": true,
+	"liveSyncPort": 4e3,
+	"liveSyncURL": "http://localhost:4000"
+};
+var log = {
+	"mode": "default",
+	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
+};
+var configuration = {
+	internationalization,
+	routing,
+	editor,
+	log,
+	system: {
+		"baseDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app",
+		"moduleAugmentationDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"unmergedDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/unmerged_dictionary",
+		"remoteDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/remote_dictionary",
+		"dictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dictionary",
+		"dynamicDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dynamic_dictionary",
+		"fetchDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/fetch_dictionary",
+		"typesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"mainDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/main",
+		"configDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/config",
+		"cacheDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/cache",
+		"tempDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/tmp"
+	},
+	content: {
+		"fileExtensions": [
+			".content.ts",
+			".content.js",
+			".content.cjs",
+			".content.mjs",
+			".content.json",
+			".content.json5",
+			".content.jsonc",
+			".content.tsx",
+			".content.jsx"
+		],
+		"contentDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"codeDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"excludedPath": [
+			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,astro}",
+			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
+			"!***.spec.*",
+			"!***.d.ts",
+			"!***.map"
+		],
+		"outputFormat": ["esm", "cjs"],
+		"cache": true,
+		"checkTypes": false
+	},
+	ai,
+	dictionary,
+	build,
+	compiler: {
+		"enabled": true,
+		"dictionaryKeyPrefix": "",
+		"noMetadata": false,
+		"saveComponents": false
+	}
 };
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
@@ -1764,122 +1836,6 @@ var deepTransformNode = (node, props) => {
 		}
 	});
 	return result;
-};
-var findMatchingCondition = (enumerationContent, quantity) => {
-	const numericKeys = Object.keys(enumerationContent);
-	for (const key of numericKeys) {
-		const isEqual = !key.startsWith(">") && !key.startsWith("<") && !key.startsWith("=") && parseFloat(key) === quantity || key.startsWith("=") && parseFloat(key.slice(1)) === quantity;
-		const isSuperior = key.startsWith(">") && quantity > parseFloat(key.slice(1));
-		const isSuperiorOrEqual = key.startsWith(">=") && quantity >= parseFloat(key.slice(2));
-		const isInferior = key.startsWith("<") && quantity < parseFloat(key.slice(1));
-		const isInferiorOrEqual = key.startsWith("<=") && quantity <= parseFloat(key.slice(2));
-		if (isEqual || isSuperior || isSuperiorOrEqual || isInferior || isInferiorOrEqual) return key;
-	}
-};
-var getEnumeration = (enumerationContent, quantity) => {
-	return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
-};
-var getGenderEntry = (gender) => {
-	if (gender === "m" || gender === "male") return "male";
-	if (gender === "f" || gender === "female") return "female";
-	return "fallback";
-};
-var getGender = (genderContent, gender) => {
-	const stateList = Object.keys(genderContent);
-	const fallbackState = stateList[stateList.length - 1];
-	return genderContent[getGenderEntry(gender)] ?? genderContent.fallback ?? genderContent[fallbackState];
-};
-var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
-	return (values[key.trim()] ?? "").toString();
-});
-var RESET = "\x1B[0m";
-var BLUE = "\x1B[34m";
-var RED = "\x1B[31m";
-var GREEN = "\x1B[32m";
-var BEIGE = "\x1B[38;5;3m";
-var loggerPrefix;
-var getPrefix = (configPrefix) => {
-	if (typeof loggerPrefix !== "undefined") return loggerPrefix;
-	return configPrefix;
-};
-var logger = (content, details) => {
-	const config = details?.config ?? {};
-	const mode = config.mode ?? "default";
-	if (mode === "disabled" || details?.isVerbose && mode !== "verbose") return;
-	const prefix = getPrefix(config.prefix);
-	const flatContent = prefix ? [prefix, ...[content].flat()] : [content].flat();
-	const level = details?.level ?? "info";
-	(config[level] ?? console[level] ?? config.log ?? console.log)(...flatContent);
-};
-var getAppLogger = (configuration, globalDetails) => (content, details) => logger(content, {
-	...details ?? {},
-	config: {
-		...configuration?.log,
-		...globalDetails?.config,
-		...details?.config ?? {}
-	}
-});
-var colorize = (string, color, reset) => color ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
-var colorizeKey = (keyPath, color = BEIGE, reset = RESET) => [keyPath].flat().map((key) => colorize(key, color, reset)).join(`, `);
-colorize("✗", RED);
-colorize("✓", GREEN);
-colorize("⏲", BLUE);
-var __require = ((x) => typeof __require$1 !== "undefined" ? __require$1 : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof __require$1 !== "undefined" ? __require$1 : a)[b] }) : x)(function(x) {
-	if (typeof __require$1 !== "undefined") return __require$1.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
-var import___vite_browser_external = require___vite_browser_external();
-var configESMxCJSRequire = typeof import.meta.url === "string" ? (0, import___vite_browser_external.createRequire)(import.meta.url) : __require;
-var getDictionaries = (configuration$1 = configuration) => {
-	const { system, build } = configuration$1;
-	const dictionariesPath = (0, import___vite_browser_external.join)(system.mainDir, `dictionaries.cjs`);
-	let dictionaries = {};
-	if ((0, import___vite_browser_external.existsSync)(dictionariesPath)) dictionaries = (build.require ?? configESMxCJSRequire)(dictionariesPath);
-	return dictionaries ?? {};
-};
-var createSafeFallback = (path = "") => {
-	return new Proxy(() => path, {
-		get: (_target, prop) => {
-			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString") return () => path;
-			if (prop === "then") return;
-			if (prop === Symbol.iterator) return function* () {
-				yield path;
-			};
-			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
-		},
-		apply: () => {
-			return path;
-		}
-	});
-};
-var dictionaryCache = /* @__PURE__ */ new Map();
-var getIntlayer = (key, locale, plugins) => {
-	const dictionary = getDictionaries()[key];
-	if (!dictionary) {
-		getAppLogger({ log })(`Dictionary ${colorizeKey(key)} was not found. Using fallback proxy.`, {
-			level: "warn",
-			isVerbose: true
-		});
-		return createSafeFallback(key);
-	}
-	const cacheKey = `${key}_${locale ?? "default"}_${plugins ? "custom_plugins" : "default_plugins"}`;
-	if (dictionaryCache.has(cacheKey)) return dictionaryCache.get(cacheKey);
-	const result = getDictionary(dictionary, locale, plugins);
-	dictionaryCache.set(cacheKey, result);
-	return result;
-};
-var getNesting = (dictionaryKey, path, props) => {
-	const dictionary = getIntlayer(dictionaryKey, props?.locale, props?.plugins);
-	if (typeof path === "string") {
-		const pathArray = path.split(".");
-		let current = dictionary;
-		for (const key of pathArray) {
-			current = current?.[key];
-			if (current === void 0) return dictionary;
-		}
-		return current;
-	}
-	return dictionary;
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1932,12 +1888,6 @@ var getTranslation = (languageContent, locale, fallback) => {
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
 var TREE_SHAKE_TRANSLATION = process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false";
-var TREE_SHAKE_ENUMERATION = process.env["INTLAYER_NODE_TYPE_ENUMERATION"] === "false";
-var TREE_SHAKE_CONDITION = process.env["INTLAYER_NODE_TYPE_CONDITION"] === "false";
-var TREE_SHAKE_INSERTION = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false";
-var TREE_SHAKE_GENDER = process.env["INTLAYER_NODE_TYPE_GENDER"] === "false";
-var TREE_SHAKE_NESTED = process.env["INTLAYER_NODE_TYPE_NESTED"] === "false";
-var TREE_SHAKE_FILE = process.env["INTLAYER_NODE_TYPE_FILE"] === "false";
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
@@ -1963,123 +1913,12 @@ var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackP
 		return getTranslation(result, locale, fallback);
 	}
 };
-var enumerationPlugin = TREE_SHAKE_ENUMERATION ? fallbackPlugin : {
-	id: "enumeration-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "enumeration",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[ENUMERATION];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: ENUMERATION,
-					key
-				}]
-			});
-		}
-		return (arg) => {
-			const subResult = getEnumeration(result, typeof arg === "number" ? arg : arg.count);
-			if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-			return subResult;
-		};
-	}
-};
-var conditionPlugin = TREE_SHAKE_CONDITION ? fallbackPlugin : {
-	id: "condition-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "condition",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[CONDITION];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: CONDITION,
-					key
-				}]
-			});
-		}
-		return (arg) => {
-			const subResult = getCondition(result, typeof arg === "boolean" ? arg : arg.value);
-			if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-			return subResult;
-		};
-	}
-};
-var insertionPlugin = TREE_SHAKE_INSERTION ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string",
-			transform: (node, subProps, deepTransformNode) => {
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const children = getInsertion(transformedResult, values);
-					return deepTransformNode(children, {
-						...subProps,
-						plugins: props.plugins,
-						children
-					});
-				};
-			}
-		};
-		return deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-	}
-};
-var genderPlugin = TREE_SHAKE_GENDER ? fallbackPlugin : {
-	id: "gender-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "gender",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[GENDER];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: GENDER,
-					key
-				}]
-			});
-		}
-		return (value) => getGender(result, value);
-	}
-};
-var nestedPlugin = (locale) => TREE_SHAKE_NESTED ? fallbackPlugin : {
-	id: "nested-plugin",
-	canHandle: (node) => typeof node === "object" && (node?.nodeType === "nested" || node?.nodeType === "n"),
-	transform: (node, props) => getNesting(node[NESTED].dictionaryKey, node[NESTED].path, {
-		...props,
-		locale: locale ?? props.locale
-	})
-};
-var filePlugin = TREE_SHAKE_FILE ? fallbackPlugin : {
-	id: "file-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "file",
-	transform: (node, props, deepTransform) => deepTransform(node.content, {
-		...props,
-		children: node.content
-	})
-};
+var enumerationPlugin = fallbackPlugin;
+var conditionPlugin = fallbackPlugin;
+var insertionPlugin = fallbackPlugin;
+var genderPlugin = fallbackPlugin;
+var nestedPlugin = (locale) => fallbackPlugin;
+var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
@@ -2093,17 +1932,19 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
-	};
-	return getContent(dictionary.content, props, plugins);
+export { fallbackPlugin as a, nestedPlugin as c, configuration as d, editor as f, routing as h, enumerationPlugin as i, translationPlugin as l, log as m, getContent as n, filePlugin as o, internationalization as p, conditionPlugin as r, genderPlugin as s, getBasePlugins as t, getTranslation as u };
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
+	let currentValue = structuredClone(dictionaryContent);
+	for (const keyObj of keyPath) {
+		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
+		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
+		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
+		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
+	}
+	return currentValue;
 };
-export { enumerationPlugin as a, genderPlugin as c, getTranslation as d, getIntlayer as f, conditionPlugin as i, nestedPlugin as l, getBasePlugins as n, fallbackPlugin as o, getContent as r, filePlugin as s, getDictionary as t, translationPlugin as u };
-import { n as __exportAll } from "./rolldown-runtime-BG0GCgh6.js";
+export { getContentNodeByKeyPath as t };
 var PRESERVED_LITERALS = new Set([
 	"true",
 	"false",
@@ -3673,16 +3514,7 @@ var compileWithOptions = (markdown, runtime, options = {}) => {
 		slugify
 	}, compilerOptions);
 };
-var markdown_exports = __exportAll({
-	DURATION_DELAY_TRIGGER: () => 20,
-	INLINE_SKIP_R: () => INLINE_SKIP_R,
-	ORDERED: () => 1,
-	ORDERED_LIST_BULLET: () => ORDERED_LIST_BULLET,
-	UNORDERED: () => 2,
-	UNORDERED_LIST_BULLET: () => UNORDERED_LIST_BULLET,
-	compileWithOptions: () => compileWithOptions
-});
-export { getMarkdownMetadata as n, markdown_exports as t };
+export { compileWithOptions, getMarkdownMetadata };
 var TRANSLATION = "translation";
 var ENUMERATION = "enumeration";
 var CONDITION = "condition";
@@ -3690,25 +3522,10 @@ var INSERTION = "insertion";
 var FILE = "file";
 var OBJECT = "object";
 var ARRAY = "array";
-var NESTED = "nested";
 var REACT_NODE = "reactNode";
 var MARKDOWN = "markdown";
 var HTML = "html";
-var GENDER = "gender";
-export { GENDER as a, MARKDOWN as c, REACT_NODE as d, TRANSLATION as f, FILE as i, NESTED as l, CONDITION as n, HTML as o, ENUMERATION as r, INSERTION as s, ARRAY as t, OBJECT as u };
-var __defProp = Object.defineProperty;
-var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
-var __exportAll = (all, no_symbols) => {
-	let target = {};
-	for (var name in all) __defProp(target, name, {
-		get: all[name],
-		enumerable: true
-	});
-	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
-	return target;
-};
-var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
-	if (typeof require !== "undefined") return require.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
-export { __exportAll as n, __require as r, __commonJSMin as t };
+export { HTML as a, OBJECT as c, FILE as i, REACT_NODE as l, CONDITION as n, INSERTION as o, ENUMERATION as r, MARKDOWN as s, ARRAY as t, TRANSLATION as u };
+var dictionaries = {};
+var getUnmergedDictionaries = () => dictionaries;
+export { getUnmergedDictionaries };

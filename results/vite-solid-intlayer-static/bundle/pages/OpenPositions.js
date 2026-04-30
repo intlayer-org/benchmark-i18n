@@ -1,22 +1,12 @@
-import { i as internationalization, o as routing, r as editor } from "./__vite-browser-external-Cnj-CPCM.js";
-import { a as enumerationPlugin, c as genderPlugin, f as getIntlayer, i as conditionPlugin, l as nestedPlugin, o as fallbackPlugin, s as filePlugin, u as translationPlugin } from "./getDictionary-BDPI18gp.js";
-import { c as MARKDOWN, o as HTML, s as INSERTION } from "./nodeType-DivqwnYF.js";
-import { n as getMarkdownMetadata } from "./markdown-BmCAYw1d.js";
+import { a as fallbackPlugin, c as nestedPlugin, f as editor, h as routing, i as enumerationPlugin, l as translationPlugin, n as getContent, o as filePlugin, p as internationalization, r as conditionPlugin, s as genderPlugin, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { a as HTML, o as INSERTION, s as MARKDOWN } from "./nodeType-7ZUTNKKR.js";
 import { Dynamic, createComponent, insert, mergeProps, template } from "solid-js/web";
 import { For, Suspense, createContext, createMemo, lazy, useContext } from "solid-js";
-var isEnabled = !(process.env["INTLAYER_EDITOR_ENABLED"] === "false") && editor?.enabled && typeof window !== "undefined" && window.self !== window.top;
-var r = process.env.INTLAYER_EDITOR_ENABLED === "false", i = (i) => r || !isEnabled ? i.children : createComponent(Dynamic, {
-	component: "intlayer-content-selector-wrapper",
-	get "attr:key-path"() {
-		return JSON.stringify(i.keyPath);
-	},
-	get "attr:dictionary-key"() {
-		return i.dictionaryKey;
-	},
-	get children() {
-		return i.children;
-	}
-});
+var open_positions_default = {
+	key: "open-positions",
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"remote\":\"Remote\",\"engineering\":\"Engineering\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"documentation\":\"Documentation\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"community\":\"Community\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\"},\"fr\":{\"seniorFrontendEngineer\":\"Ingénieur Frontend Senior\",\"remote\":\"À distance\",\"engineering\":\"Ingénierie\",\"buildAndMaintainOurBenchmarking\":\"Construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant React, TypeScript et Vite.\",\"backendEngineer\":\"Ingénieur Backend\",\"designAndScaleOurCloud\":\"Concevoir et mettre à l’échelle notre infrastructure de benchmarking cloud gérant des milliers d’exécutions automatisées chaque jour.\",\"technicalWriter\":\"Rédacteur Technique\",\"documentation\":\"Documentation\",\"createComprehensiveGuidesApiReferences\":\"Créer des guides complets, des références API et des tutoriels pour notre plateforme de benchmarking.\",\"devrelEngineer\":\"Ingénieur DevRel\",\"sanFranciscoRemote\":\"San Francisco / À distance\",\"community\":\"Communauté\",\"engageWithTheI18nCommunity\":\"Interagir avec la communauté i18n par des conférences, des ateliers, des articles de blog et des contributions open source.\",\"qaEngineer\":\"Ingénieur QA\",\"ensureTheAccuracyAndReliability\":\"Assurer l'exactitude et la fiabilité des résultats de benchmark grâce à des tests et des validations rigoureux.\",\"openPositions\":\"Postes Ouverts\",\"applyNow\":\"Postuler Maintenant\"},\"es\":{\"seniorFrontendEngineer\":\"Ingeniero Frontend Senior\",\"remote\":\"Remoto\",\"engineering\":\"Ingeniería\",\"buildAndMaintainOurBenchmarking\":\"Cree y mantenga nuestro panel de benchmarking y herramientas de desarrollo utilizando React, TypeScript y Vite.\",\"backendEngineer\":\"Ingeniero Backend\",\"designAndScaleOurCloud\":\"Diseñe y escale nuestra infraestructura de benchmarking en la nube que maneja miles de ejecuciones automatizadas diariamente.\",\"technicalWriter\":\"Redactor Técnico\",\"documentation\":\"Documentación\",\"createComprehensiveGuidesApiReferences\":\"Cree guías completas, referencias de API y tutoriales para nuestra plataforma de benchmarking.\",\"devrelEngineer\":\"Ingeniero DevRel\",\"sanFranciscoRemote\":\"San Francisco / Remoto\",\"community\":\"Comunidad\",\"engageWithTheI18nCommunity\":\"Participe con la comunidad i18n a través de charlas, talleres, publicaciones de blog y contribuciones de código abierto.\",\"qaEngineer\":\"Ingeniero QA\",\"ensureTheAccuracyAndReliability\":\"Garantice la precisión y fiabilidad de los resultados del benchmark mediante pruebas y validaciones rigurosas.\",\"openPositions\":\"Posiciones abiertas\",\"applyNow\":\"Postular ahora\"},\"de\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"remote\":\"Remote\",\"engineering\":\"Engineering\",\"buildAndMaintainOurBenchmarking\":\"Erstellen und warten Sie unser Benchmarking-Dashboard und unsere Entwicklertools mit React, TypeScript und Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Entwerfen und skalieren Sie unsere Cloud-Benchmarking-Infrastruktur, die täglich Tausende von automatisierten Durchläufen verarbeitet.\",\"technicalWriter\":\"Technical Writer\",\"documentation\":\"Dokumentation\",\"createComprehensiveGuidesApiReferences\":\"Erstellen Sie umfassende Leitfäden, API-Referenzen und Tutorials für unsere Benchmarking-Plattform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"community\":\"Community\",\"engageWithTheI18nCommunity\":\"Engagieren Sie sich in der i18n-Community durch Vorträge, Workshops, Blog-Posts und Open-Source-Beiträge.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Stellen Sie die Genauigkeit und Zuverlässigkeit der Benchmark-Ergebnisse durch strenge Tests und Validierungen sicher.\",\"openPositions\":\"Offene Stellen\",\"applyNow\":\"Jetzt bewerben\"},\"it\":{\"seniorFrontendEngineer\":\"Ingegnere Frontend Senior\",\"remote\":\"Remoto\",\"engineering\":\"Ingegneria\",\"buildAndMaintainOurBenchmarking\":\"Costruisci e mantieni la nostra dashboard di benchmarking e gli strumenti per sviluppatori utilizzando React, TypeScript e Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Progetta e scala la nostra infrastruttura di benchmarking cloud che gestisce migliaia di esecuzioni automatizzate ogni giorno.\",\"technicalWriter\":\"Scrittore tecnico\",\"documentation\":\"Documentazione\",\"createComprehensiveGuidesApiReferences\":\"Crea guide complete, riferimenti API e tutorial per la nostra piattaforma di benchmarking.\",\"devrelEngineer\":\"Ingegnere DevRel\",\"sanFranciscoRemote\":\"San Francisco / Remoto\",\"community\":\"Comunità\",\"engageWithTheI18nCommunity\":\"Interagisci con la comunità i18n attraverso talk, workshop, post sul blog e contributi open source.\",\"qaEngineer\":\"Ingegnere QA\",\"ensureTheAccuracyAndReliability\":\"Garantisci l'accuratezza e l'affidabilità dei risultati dei benchmark attraverso test e validazioni rigorosi.\",\"openPositions\":\"Posizioni aperte\",\"applyNow\":\"Candidati ora\"},\"pt\":{\"seniorFrontendEngineer\":\"Engenheiro Frontend Sênior\",\"remote\":\"Remoto\",\"engineering\":\"Engenharia\",\"buildAndMaintainOurBenchmarking\":\"Crie e mantenha nosso painel de benchmarking e ferramentas de desenvolvedor usando React, TypeScript e Vite.\",\"backendEngineer\":\"Engenheiro Backend\",\"designAndScaleOurCloud\":\"Projete e dimensione nossa infraestrutura de benchmarking em nuvem que lida com milhares de execuções automatizadas diariamente.\",\"technicalWriter\":\"Escritor Técnico\",\"documentation\":\"Documentação\",\"createComprehensiveGuidesApiReferences\":\"Crie guias abrangentes, referências de API e tutoriais para nossa plataforma de benchmarking.\",\"devrelEngineer\":\"Engenheiro DevRel\",\"sanFranciscoRemote\":\"San Francisco / Remoto\",\"community\":\"Comunidade\",\"engageWithTheI18nCommunity\":\"Envolva-se com a comunidade i18n por meio de palestras, workshops, postagens em blogs e contribuições de código aberto.\",\"qaEngineer\":\"Engenheiro de QA\",\"ensureTheAccuracyAndReliability\":\"Garanta a precisão e a confiabilidade dos resultados do benchmark por meio de testes e validação rigorosos.\",\"openPositions\":\"Vagas abertas\",\"applyNow\":\"Candidatar-se agora\"},\"zh\":{\"seniorFrontendEngineer\":\"高级前端工程师\",\"remote\":\"远程\",\"engineering\":\"工程\",\"buildAndMaintainOurBenchmarking\":\"使用 React、TypeScript 和 Vite 构建和维护我们的基准测试仪表板和开发人员工具。\",\"backendEngineer\":\"后端工程师\",\"designAndScaleOurCloud\":\"设计并扩展我们的云基准测试基础设施，每天处理数千次自动化运行。\",\"technicalWriter\":\"技术文档工程师\",\"documentation\":\"文档\",\"createComprehensiveGuidesApiReferences\":\"为我们的基准测试平台创建全面的指南、API 参考和教程。\",\"devrelEngineer\":\"开发者关系工程师\",\"sanFranciscoRemote\":\"旧金山 / 远程\",\"community\":\"社区\",\"engageWithTheI18nCommunity\":\"通过演讲、工作坊、博客文章和开源贡献与 i18n 社区互动。\",\"qaEngineer\":\"质量保证工程师\",\"ensureTheAccuracyAndReliability\":\"通过严格的测试和验证，确保基准测试结果的准确性和可靠性。\",\"openPositions\":\"开放职位\",\"applyNow\":\"现在申请\"},\"ja\":{\"seniorFrontendEngineer\":\"シニアフロントエンドエンジニア\",\"remote\":\"リモート\",\"engineering\":\"エンジニアリング\",\"buildAndMaintainOurBenchmarking\":\"React、TypeScript、およびViteを使用して、ベンチマークダッシュボードと開発者ツールを構築および保守します。\",\"backendEngineer\":\"バックエンドエンジニア\",\"designAndScaleOurCloud\":\"毎日数千の自動実行を処理するクラウドベンチマークインフラストラクチャを設計およびスケールします。\",\"technicalWriter\":\"テクニカルライター\",\"documentation\":\"ドキュメント\",\"createComprehensiveGuidesApiReferences\":\"ベンチマークプラットフォームの包括的なガイド、APIリファレンス、およびチュートリアルを作成します。\",\"devrelEngineer\":\"DevRelエンジニア\",\"sanFranciscoRemote\":\"サンフランシスコ / リモート\",\"community\":\"コミュニティ\",\"engageWithTheI18nCommunity\":\"トーク、ワークショップ、ブログ投稿、およびオープンソースへの貢献を通じて、i18nコミュニティと交流します。\",\"qaEngineer\":\"QAエンジニア\",\"ensureTheAccuracyAndReliability\":\"厳格なテストと検証を通じて、ベンチマーク結果の正確性と信頼性を確保します。\",\"openPositions\":\"募集中の職種\",\"applyNow\":\"今すぐ応募\"},\"ko\":{\"seniorFrontendEngineer\":\"시니어 프론트엔드 엔지니어\",\"remote\":\"원격\",\"engineering\":\"엔지니어링\",\"buildAndMaintainOurBenchmarking\":\"React, TypeScript 및 Vite를 사용하여 벤치마킹 대시보드 및 개발자 도구를 구축하고 유지 관리합니다.\",\"backendEngineer\":\"백엔드 엔지니어\",\"designAndScaleOurCloud\":\"매일 수천 건의 자동화된 실행을 처리하는 클라우드 벤치마킹 인프라를 설계하고 확장합니다.\",\"technicalWriter\":\"테크니컬 라이터\",\"documentation\":\"문서\",\"createComprehensiveGuidesApiReferences\":\"벤치마킹 플랫폼을 위한 포괄적인 가이드, API 참조 및 튜토리얼을 만듭니다.\",\"devrelEngineer\":\"DevRel 엔지니어\",\"sanFranciscoRemote\":\"샌프란시스코 / 원격\",\"community\":\"커뮤니티\",\"engageWithTheI18nCommunity\":\"강연, 워크숍, 블로그 게시물 및 오픈 소스 기여를 통해 i18n 커뮤니티와 소통하십시오.\",\"qaEngineer\":\"QA 엔지니어\",\"ensureTheAccuracyAndReliability\":\"엄격한 테스트 및 검증을 통해 벤치마크 결과의 정확성과 신뢰성을 보장합니다.\",\"openPositions\":\"채용 중인 직무\",\"applyNow\":\"지금 지원하기\"},\"ru\":{\"seniorFrontendEngineer\":\"Старший фронтенд-инженер\",\"remote\":\"Удаленно\",\"engineering\":\"Разработка\",\"buildAndMaintainOurBenchmarking\":\"Создание и поддержка нашего дашборда для бенчмаркинга и инструментов разработки с использованием React, TypeScript и Vite.\",\"backendEngineer\":\"Бэкенд-инженер\",\"designAndScaleOurCloud\":\"Проектирование и масштабирование нашей облачной инфраструктуры для бенчмаркинга, обрабатывающей тысячи автоматических запусков ежедневно.\",\"technicalWriter\":\"Технический писатель\",\"documentation\":\"Документация\",\"createComprehensiveGuidesApiReferences\":\"Создание подробных руководств, справочников по API и учебных пособий для нашей платформы бенчмаркинга.\",\"devrelEngineer\":\"DevRel-инженер\",\"sanFranciscoRemote\":\"Сан-Франциско / Удаленно\",\"community\":\"Сообщество\",\"engageWithTheI18nCommunity\":\"Взаимодействие с сообществом i18n посредством выступлений, семинаров, постов в блогах и вклада в open source.\",\"qaEngineer\":\"QA-инженер\",\"ensureTheAccuracyAndReliability\":\"Обеспечение точности и надежности результатов бенчмарков путем тщательного тестирования и валидации.\",\"openPositions\":\"Открытые вакансии\",\"applyNow\":\"Подать заявку\"}}}"),
+	localIds: ["open-positions::local::src/components/pages/careers/openPositions.content.ts"]
+};
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -53,6 +43,38 @@ var t$1 = (n) => {
 		children: i.children
 	});
 };
+var RESET = "\x1B[0m";
+var BLUE = "\x1B[34m";
+var RED = "\x1B[31m";
+var GREEN = "\x1B[32m";
+var colorize = (string, color, reset) => color ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
+colorize("✗", RED);
+colorize("✓", GREEN);
+colorize("⏲", BLUE);
+var createSafeFallback = (path = "") => {
+	return new Proxy(() => path, {
+		get: (_target, prop) => {
+			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString") return () => path;
+			if (prop === "then") return;
+			if (prop === Symbol.iterator) return function* () {
+				yield path;
+			};
+			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
+		},
+		apply: () => {
+			return path;
+		}
+	});
+};
+var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+	const props = {
+		dictionaryKey: dictionary.key,
+		dictionaryPath: dictionary.filePath,
+		keyPath: [],
+		plugins
+	};
+	return getContent(dictionary.content, props, plugins);
+};
 var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
 var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
 var splitInsertionTemplate = (template, values = {}) => {
@@ -73,30 +95,48 @@ var splitInsertionTemplate = (template, values = {}) => {
 		parts
 	};
 };
-var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", x = process.env.INTLAYER_NODE_TYPE_MARKDOWN === "false", S = process.env.INTLAYER_NODE_TYPE_HTML === "false", C = process.env.INTLAYER_NODE_TYPE_INSERTION === "false", w$1 = process.env.INTLAYER_EDITOR_ENABLED === "false", T$1 = x ? null : lazy(() => import("./MarkdownRenderer-CZEl8PYG.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), E$1 = x ? null : lazy(() => import("./MarkdownRenderer-CZEl8PYG.js").then((e) => ({ default: e.MarkdownRenderer }))), D$1 = S ? null : lazy(() => import("./HTMLRenderer-BVHh_-9v.js").then((e) => ({ default: e.HTMLRenderer }))), O$1 = y ? fallbackPlugin : {
+var _ = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", v = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", y = true, b = true, x = true, S = true, C = null, w$1 = null, T$1 = null, E$1 = null, D$1 = null;
+S || (C = lazy(() => import("./ContentSelector-4OrUn2VA.js").then((e) => ({ default: e.ContentSelector })))), y || (w$1 = lazy(() => import("./MarkdownRenderer-DYYTWHGL.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), T$1 = lazy(() => import("./MarkdownRenderer-DYYTWHGL.js").then((e) => ({ default: e.MarkdownRenderer }))), import("./markdown-RUjI4Z1e.js").then((e) => {
+	D$1 = e.getMarkdownMetadata;
+})), b || (E$1 = lazy(() => import("./HTMLRenderer-BzwfNhlM.js").then((e) => ({ default: e.HTMLRenderer }))));
+var O$1 = _ ? fallbackPlugin : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { plugins: o, ...s }) => e$1({
-		...s,
-		value: s.children,
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(s, { get children() {
-			return s.children;
-		} })) : s.children
+	transform: (t, { plugins: a, ...o }) => e$1({
+		...o,
+		value: o.children,
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return o.children;
+			},
+			get children() {
+				return createComponent(C, mergeProps(o, { get children() {
+					return o.children;
+				} }));
+			}
+		}) : o.children
 	})
-}, k$1 = b ? fallbackPlugin : {
+}, k$1 = v ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
-	transform: (o, { plugins: s, ...c }) => e$1({
-		...c,
+	transform: (a, { plugins: o, ...s }) => e$1({
+		...s,
 		value: "[[solid-element]]",
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(c, { get children() {
-			return typeof Node < "u" && o instanceof Node ? o : t$1(o);
-		} })) : typeof Node < "u" && o instanceof Node ? o : t$1(o)
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+			},
+			get children() {
+				return createComponent(C, mergeProps(s, { get children() {
+					return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+				} }));
+			}
+		}) : typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
 }, A$1 = (e, t) => {
 	let n = splitInsertionTemplate(e, t);
 	return n.isSimple, n.parts;
-}, j$1 = C ? fallbackPlugin : {
+}, j$1 = x ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -126,73 +166,73 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 			});
 		};
 	}
-}, M$1 = x ? fallbackPlugin : {
+}, M$1 = y ? fallbackPlugin : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
-	transform: (n, o, s) => {
-		let { plugins: c, ...l } = o, u = s(getMarkdownMetadata(n) ?? {}, {
+	transform: (t, a, o) => {
+		let { plugins: s, ...c } = a, l = o(D$1?.(t) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (o, s) => e$1({
-					...s,
-					value: o,
-					children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
+				transform: (a, o) => e$1({
+					...o,
+					value: a,
+					children: !S && editor.enabled ? createComponent(ContentSelector, mergeProps(c, { get children() {
 						return createComponent(Suspense, {
-							fallback: n,
+							fallback: t,
 							get children() {
-								return createComponent(T$1, mergeProps(l, {
+								return createComponent(w$1, mergeProps(c, {
 									get metadataKeyPath() {
-										return s.keyPath;
+										return o.keyPath;
 									},
-									children: n
+									children: t
 								}));
 							}
 						});
 					} })) : createComponent(Suspense, {
-						fallback: n,
+						fallback: t,
 						get children() {
-							return createComponent(T$1, mergeProps(l, {
+							return createComponent(w$1, mergeProps(c, {
 								get metadataKeyPath() {
-									return s.keyPath;
+									return o.keyPath;
 								},
-								children: n
+								children: t
 							}));
 						}
 					})
 				})
 			}],
-			dictionaryKey: l.dictionaryKey,
+			dictionaryKey: c.dictionaryKey,
 			keyPath: []
-		}), d = (s) => e$1({
-			...o,
-			value: n,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: n,
-					get children() {
-						return createComponent(E$1, mergeProps(l, {
-							components: s,
-							children: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: n,
+		}), u = (o) => e$1({
+			...a,
+			value: t,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: t,
 				get children() {
-					return createComponent(E$1, mergeProps(l, {
-						components: s,
-						children: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(T$1, mergeProps(c, {
+							components: o,
+							children: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: t,
+				get children() {
+					return createComponent(T$1, mergeProps(c, {
+						components: o,
+						children: t
 					}));
 				}
 			}),
-			additionalProps: { metadata: u }
-		}), f = d();
-		return new Proxy(f, { get(e, t, r) {
-			return t === "value" ? n : t === "metadata" ? u : t === "use" ? (e) => d(e) : Reflect.get(e, t, r);
+			additionalProps: { metadata: l }
+		}), d = u();
+		return new Proxy(d, { get(e, n, r) {
+			return n === "value" ? t : n === "metadata" ? l : n === "use" ? (e) => u(e) : Reflect.get(e, n, r);
 		} });
 	}
-}, N$1 = x ? fallbackPlugin : {
+}, N$1 = y ? fallbackPlugin : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -204,35 +244,35 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 			plugins: [M$1, ...t.plugins ?? []]
 		});
 	}
-}, P$1 = S ? fallbackPlugin : {
+}, P$1 = b ? fallbackPlugin : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
-	transform: (n, o) => {
-		let s = n[HTML], { plugins: c, ...l } = o, u = (n) => e$1({
-			...l,
-			value: s,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: s,
-					get children() {
-						return createComponent(D$1, mergeProps(l, {
-							html: s,
-							components: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: s,
+	transform: (t, a) => {
+		let o = t[HTML], { plugins: s, ...c } = a, l = (t) => e$1({
+			...c,
+			value: o,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: o,
 				get children() {
-					return createComponent(D$1, mergeProps(l, {
-						html: s,
-						components: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(E$1, mergeProps(c, {
+							html: o,
+							components: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: o,
+				get children() {
+					return createComponent(E$1, mergeProps(c, {
+						html: o,
+						components: t
 					}));
 				}
 			})
-		}), d = [u()];
-		return new Proxy(d, { get(e, t, n) {
-			return t === "value" ? s : t === "use" ? (e) => u(e) : Reflect.get(e, t, n);
+		}), u = [l()];
+		return new Proxy(u, { get(e, t, n) {
+			return t === "value" ? o : t === "use" ? (e) => l(e) : Reflect.get(e, t, n);
 		} });
 	}
 }, F$1 = /* @__PURE__ */ new Map(), I$1 = (e, t = !0) => {
@@ -253,11 +293,8 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 	];
 	return F$1.set(n, r), r;
 };
-var n$2 = (n, r) => getIntlayer(n, r, I$1(r));
-process.env["INTLAYER_ROUTING_REWRITE_RULES"];
+var n$1 = (n, r) => getDictionary(n, r, I$1(r));
 var TREE_SHAKE_STORAGE_COOKIES = process.env["INTLAYER_ROUTING_STORAGE_COOKIES"] === "false";
-var TREE_SHAKE_STORAGE_LOCAL_STORAGE = process.env["INTLAYER_ROUTING_STORAGE_LOCALSTORAGE"] === "false";
-var TREE_SHAKE_STORAGE_SESSION_STORAGE = process.env["INTLAYER_ROUTING_STORAGE_SESSIONSTORAGE"] === "false";
 process.env["INTLAYER_ROUTING_STORAGE_HEADERS"];
 var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const { locales } = internationalization;
@@ -265,14 +302,6 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const isValidLocale = (value) => !!value && locales.includes(value);
 	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-	if (!TREE_SHAKE_STORAGE_LOCAL_STORAGE) for (let i = 0; i < (routing.storage.localStorage ?? []).length; i++) try {
-		const value = options?.getLocaleStorage?.(routing.storage.localStorage[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-	if (!TREE_SHAKE_STORAGE_SESSION_STORAGE && routing.storage.sessionStorage) for (let i = 0; i < routing.storage.sessionStorage.length; i++) try {
-		const value = options?.getSessionStorage?.(routing.storage.sessionStorage[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
 }, localeStorageOptions = {
@@ -293,21 +322,16 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a = getLocaleFromStorageClient(localeStorageOptions);
-process.env.INTLAYER_EDITOR_ENABLED;
-var D = createContext({
+}, a = getLocaleFromStorageClient(localeStorageOptions), D = createContext({
 	locale: () => a ?? internationalization?.defaultLocale,
 	setLocale: () => null
-}), F = (t, n) => {
+}), M = (e, n) => {
 	let r = useContext(D) ?? {};
-	return createMemo(() => {
-		let i = r?.locale();
-		return n$2(t, n ?? i);
-	});
+	return createMemo(() => n$1(e, n ?? r?.locale?.()));
 }, { defaultLocale: L, locales: R } = internationalization;
 var _tmpl$ = template(`<h2 class="mb-6 text-2xl font-bold text-foreground">`), _tmpl$2 = template(`<div class=space-y-4>`), _tmpl$3 = template(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground"></p><div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span></div></div><button type=button class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">`);
 function OpenPositions() {
-	const content = F("open-positions");
+	const content = M(open_positions_default);
 	const openings = [
 		{
 			title: content().seniorFrontendEngineer.value,
@@ -368,6 +392,9 @@ function OpenPositions() {
 	})()];
 }
 export { OpenPositions as default };
+import "solid-js/web";
+var i = (i) => i.children;
+export { i as ContentSelector };
 import { Dynamic, createComponent, mergeProps } from "solid-js/web";
 import { createContext, useContext } from "solid-js";
 var parseAttributes = (attributes) => {
@@ -496,8 +523,8 @@ var a = (e, { components: a = {} } = {}) => {
 	} });
 }, s = (e) => o({ components: e.components || e.userComponents })(e.children || e.html || "");
 export { s as HTMLRenderer };
-import { n as getMarkdownMetadata } from "./markdown-BmCAYw1d.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-VZJ4GP6z.js";
+import { getMarkdownMetadata } from "./markdown-RUjI4Z1e.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 import { createComponent } from "solid-js/web";
 import { Suspense, createContext, createMemo, createResource, useContext } from "solid-js";
 var i = createContext(), o = () => {
@@ -505,21 +532,21 @@ var i = createContext(), o = () => {
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider. To fix this error, wrap your component with <MarkdownProvider>.");
 	return e;
 }, f = (e) => {
-	let i$1 = useContext(i), { renderMarkdown: o$1 } = o(), [l] = createResource(() => [
+	let a = useContext(i), { renderMarkdown: c } = o(), [l] = createResource(() => [
 		e.children,
 		e.forceBlock,
 		e.preserveFrontmatter,
 		e.tagfilter,
 		e.components,
 		e.wrapper
-	], ([e, t, n, r, a, s]) => o$1(e, {
+	], ([e, t, n, r, i, o]) => c(e, {
 		forceBlock: t,
 		preserveFrontmatter: n,
 		tagfilter: r
 	}, {
-		...i$1?.components ?? {},
-		...a ?? {}
-	}, s));
+		...a?.components ?? {},
+		...i ?? {}
+	}, o));
 	return createComponent(Suspense, {
 		fallback: null,
 		get children() {
@@ -531,53 +558,9 @@ var i = createContext(), o = () => {
 	return createMemo(() => getContentNodeByKeyPath(t(), e.metadataKeyPath))();
 };
 export { p as MarkdownMetadataRenderer, f as MarkdownRenderer };
-import { t as __commonJSMin } from "./rolldown-runtime-BG0GCgh6.js";
-var configuration = new Proxy({}, {
-	get(_target, prop) {
-		return (typeof window !== "undefined" ? window.INTLAYER_CONFIG : void 0)?.[prop];
-	},
-	has(_target, prop) {
-		const config = typeof window !== "undefined" ? window.INTLAYER_CONFIG : void 0;
-		return config != null && prop in config;
-	}
-});
-var internationalization = configuration.internationalization;
-configuration.dictionary;
-var routing = configuration.routing;
-configuration.content;
-configuration.system;
-var editor = configuration.editor;
-var log = configuration.log;
-configuration.ai;
-configuration.build;
-configuration.compiler;
-configuration.schemas;
-configuration.plugins;
-var require___vite_browser_external = __commonJSMin(((exports, module) => {
-	module.exports = {};
-}));
-export { log as a, internationalization as i, configuration as n, routing as o, editor as r, require___vite_browser_external as t };
-import { n as configuration, t as require___vite_browser_external } from "./__vite-browser-external-Cnj-CPCM.js";
-var import___vite_browser_external = require___vite_browser_external();
-var getUnmergedDictionaries = (configuration$1 = configuration) => {
-	const { system } = configuration$1;
-	const { unmergedDictionariesDir } = system;
-	const dictionaries = {};
-	if ((0, import___vite_browser_external.existsSync)(unmergedDictionariesDir)) {
-		const files = (0, import___vite_browser_external.readdirSync)(unmergedDictionariesDir).filter((file) => file.endsWith(".json"));
-		for (const file of files) {
-			const key = (0, import___vite_browser_external.basename)(file, (0, import___vite_browser_external.extname)(file));
-			const content = (0, import___vite_browser_external.readFileSync)((0, import___vite_browser_external.join)(unmergedDictionariesDir, file), "utf-8");
-			dictionaries[key] = JSON.parse(content);
-		}
-	}
-	return dictionaries;
-};
-export { getUnmergedDictionaries };
-import { n as configuration, r as editor } from "./__vite-browser-external-Cnj-CPCM.js";
-import { n as getBasePlugins, r as getContent } from "./getDictionary-BDPI18gp.js";
-import { f as TRANSLATION } from "./nodeType-DivqwnYF.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-VZJ4GP6z.js";
+import { d as configuration, f as editor, n as getContent, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);
 var compareUrls = (url1, url2) => {
 	try {
@@ -1489,7 +1472,7 @@ var EditorStateManager = class {
 	}
 	async _loadDictionaries() {
 		try {
-			const unmergedDictionaries = (await import("./esm-A20ZMhEv.js")).getUnmergedDictionaries();
+			const unmergedDictionaries = (await import("./unmerged_dictionaries-BqxArPI5.js")).getUnmergedDictionaries();
 			const dictionariesList = Object.fromEntries(Object.values(unmergedDictionaries).flat().map((dictionary) => [dictionary.localId, dictionary]));
 			this.localeDictionaries.set(dictionariesList);
 			if (this.editorEnabled.value) this._broadcastData();
@@ -1743,25 +1726,114 @@ var stopEditorClient = () => {
 	setGlobalEditorManager(null);
 };
 export { initEditorClient, stopEditorClient };
-import { f as TRANSLATION } from "./nodeType-DivqwnYF.js";
-var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
-	let currentValue = structuredClone(dictionaryContent);
-	for (const keyObj of keyPath) {
-		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
-		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
-		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
-		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
-	}
-	return currentValue;
+import { c as OBJECT, t as ARRAY, u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
 };
-export { getContentNodeByKeyPath as t };
-import { r as __require$1 } from "./rolldown-runtime-BG0GCgh6.js";
-import { a as log, i as internationalization, n as configuration, t as require___vite_browser_external } from "./__vite-browser-external-Cnj-CPCM.js";
-import { a as GENDER, f as TRANSLATION, l as NESTED, n as CONDITION, r as ENUMERATION, s as INSERTION, t as ARRAY, u as OBJECT } from "./nodeType-DivqwnYF.js";
-var getCondition = (conditionContent, state) => {
-	const stateList = Object.keys(conditionContent);
-	const fallbackState = stateList[stateList.length - 1];
-	return conditionContent[`${state}`] ?? conditionContent.fallback ?? conditionContent[fallbackState];
+var routing = {
+	"mode": "prefix-no-default",
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": {}
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var editor = {
+	"editorURL": "http://localhost:8000",
+	"cmsURL": "https://app.intlayer.org",
+	"backendURL": "https://back.intlayer.org",
+	"port": 8e3,
+	"enabled": false,
+	"dictionaryPriorityStrategy": "local_first",
+	"liveSync": true,
+	"liveSyncPort": 4e3,
+	"liveSyncURL": "http://localhost:4000"
+};
+var log = {
+	"mode": "default",
+	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
+};
+var configuration = {
+	internationalization,
+	routing,
+	editor,
+	log,
+	system: {
+		"baseDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app",
+		"moduleAugmentationDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"unmergedDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/unmerged_dictionary",
+		"remoteDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/remote_dictionary",
+		"dictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dictionary",
+		"dynamicDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dynamic_dictionary",
+		"fetchDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/fetch_dictionary",
+		"typesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"mainDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/main",
+		"configDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/config",
+		"cacheDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/cache",
+		"tempDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/tmp"
+	},
+	content: {
+		"fileExtensions": [
+			".content.ts",
+			".content.js",
+			".content.cjs",
+			".content.mjs",
+			".content.json",
+			".content.json5",
+			".content.jsonc",
+			".content.tsx",
+			".content.jsx"
+		],
+		"contentDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"codeDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"excludedPath": [
+			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,astro}",
+			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
+			"!***.spec.*",
+			"!***.d.ts",
+			"!***.map"
+		],
+		"outputFormat": ["esm", "cjs"],
+		"cache": true,
+		"checkTypes": false
+	},
+	ai,
+	dictionary,
+	build,
+	compiler: {
+		"enabled": true,
+		"dictionaryKeyPrefix": "",
+		"noMetadata": false,
+		"saveComponents": false
+	}
 };
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
@@ -1800,122 +1872,6 @@ var deepTransformNode = (node, props) => {
 		}
 	});
 	return result;
-};
-var findMatchingCondition = (enumerationContent, quantity) => {
-	const numericKeys = Object.keys(enumerationContent);
-	for (const key of numericKeys) {
-		const isEqual = !key.startsWith(">") && !key.startsWith("<") && !key.startsWith("=") && parseFloat(key) === quantity || key.startsWith("=") && parseFloat(key.slice(1)) === quantity;
-		const isSuperior = key.startsWith(">") && quantity > parseFloat(key.slice(1));
-		const isSuperiorOrEqual = key.startsWith(">=") && quantity >= parseFloat(key.slice(2));
-		const isInferior = key.startsWith("<") && quantity < parseFloat(key.slice(1));
-		const isInferiorOrEqual = key.startsWith("<=") && quantity <= parseFloat(key.slice(2));
-		if (isEqual || isSuperior || isSuperiorOrEqual || isInferior || isInferiorOrEqual) return key;
-	}
-};
-var getEnumeration = (enumerationContent, quantity) => {
-	return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
-};
-var getGenderEntry = (gender) => {
-	if (gender === "m" || gender === "male") return "male";
-	if (gender === "f" || gender === "female") return "female";
-	return "fallback";
-};
-var getGender = (genderContent, gender) => {
-	const stateList = Object.keys(genderContent);
-	const fallbackState = stateList[stateList.length - 1];
-	return genderContent[getGenderEntry(gender)] ?? genderContent.fallback ?? genderContent[fallbackState];
-};
-var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
-	return (values[key.trim()] ?? "").toString();
-});
-var RESET = "\x1B[0m";
-var BLUE = "\x1B[34m";
-var RED = "\x1B[31m";
-var GREEN = "\x1B[32m";
-var BEIGE = "\x1B[38;5;3m";
-var loggerPrefix;
-var getPrefix = (configPrefix) => {
-	if (typeof loggerPrefix !== "undefined") return loggerPrefix;
-	return configPrefix;
-};
-var logger = (content, details) => {
-	const config = details?.config ?? {};
-	const mode = config.mode ?? "default";
-	if (mode === "disabled" || details?.isVerbose && mode !== "verbose") return;
-	const prefix = getPrefix(config.prefix);
-	const flatContent = prefix ? [prefix, ...[content].flat()] : [content].flat();
-	const level = details?.level ?? "info";
-	(config[level] ?? console[level] ?? config.log ?? console.log)(...flatContent);
-};
-var getAppLogger = (configuration, globalDetails) => (content, details) => logger(content, {
-	...details ?? {},
-	config: {
-		...configuration?.log,
-		...globalDetails?.config,
-		...details?.config ?? {}
-	}
-});
-var colorize = (string, color, reset) => color ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
-var colorizeKey = (keyPath, color = BEIGE, reset = RESET) => [keyPath].flat().map((key) => colorize(key, color, reset)).join(`, `);
-colorize("✗", RED);
-colorize("✓", GREEN);
-colorize("⏲", BLUE);
-var __require = ((x) => typeof __require$1 !== "undefined" ? __require$1 : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof __require$1 !== "undefined" ? __require$1 : a)[b] }) : x)(function(x) {
-	if (typeof __require$1 !== "undefined") return __require$1.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
-var import___vite_browser_external = require___vite_browser_external();
-var configESMxCJSRequire = typeof import.meta.url === "string" ? (0, import___vite_browser_external.createRequire)(import.meta.url) : __require;
-var getDictionaries = (configuration$1 = configuration) => {
-	const { system, build } = configuration$1;
-	const dictionariesPath = (0, import___vite_browser_external.join)(system.mainDir, `dictionaries.cjs`);
-	let dictionaries = {};
-	if ((0, import___vite_browser_external.existsSync)(dictionariesPath)) dictionaries = (build.require ?? configESMxCJSRequire)(dictionariesPath);
-	return dictionaries ?? {};
-};
-var createSafeFallback = (path = "") => {
-	return new Proxy(() => path, {
-		get: (_target, prop) => {
-			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString") return () => path;
-			if (prop === "then") return;
-			if (prop === Symbol.iterator) return function* () {
-				yield path;
-			};
-			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
-		},
-		apply: () => {
-			return path;
-		}
-	});
-};
-var dictionaryCache = /* @__PURE__ */ new Map();
-var getIntlayer = (key, locale, plugins) => {
-	const dictionary = getDictionaries()[key];
-	if (!dictionary) {
-		getAppLogger({ log })(`Dictionary ${colorizeKey(key)} was not found. Using fallback proxy.`, {
-			level: "warn",
-			isVerbose: true
-		});
-		return createSafeFallback(key);
-	}
-	const cacheKey = `${key}_${locale ?? "default"}_${plugins ? "custom_plugins" : "default_plugins"}`;
-	if (dictionaryCache.has(cacheKey)) return dictionaryCache.get(cacheKey);
-	const result = getDictionary(dictionary, locale, plugins);
-	dictionaryCache.set(cacheKey, result);
-	return result;
-};
-var getNesting = (dictionaryKey, path, props) => {
-	const dictionary = getIntlayer(dictionaryKey, props?.locale, props?.plugins);
-	if (typeof path === "string") {
-		const pathArray = path.split(".");
-		let current = dictionary;
-		for (const key of pathArray) {
-			current = current?.[key];
-			if (current === void 0) return dictionary;
-		}
-		return current;
-	}
-	return dictionary;
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1968,12 +1924,6 @@ var getTranslation = (languageContent, locale, fallback) => {
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
 var TREE_SHAKE_TRANSLATION = process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false";
-var TREE_SHAKE_ENUMERATION = process.env["INTLAYER_NODE_TYPE_ENUMERATION"] === "false";
-var TREE_SHAKE_CONDITION = process.env["INTLAYER_NODE_TYPE_CONDITION"] === "false";
-var TREE_SHAKE_INSERTION = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false";
-var TREE_SHAKE_GENDER = process.env["INTLAYER_NODE_TYPE_GENDER"] === "false";
-var TREE_SHAKE_NESTED = process.env["INTLAYER_NODE_TYPE_NESTED"] === "false";
-var TREE_SHAKE_FILE = process.env["INTLAYER_NODE_TYPE_FILE"] === "false";
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
@@ -1999,123 +1949,12 @@ var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackP
 		return getTranslation(result, locale, fallback);
 	}
 };
-var enumerationPlugin = TREE_SHAKE_ENUMERATION ? fallbackPlugin : {
-	id: "enumeration-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "enumeration",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[ENUMERATION];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: ENUMERATION,
-					key
-				}]
-			});
-		}
-		return (arg) => {
-			const subResult = getEnumeration(result, typeof arg === "number" ? arg : arg.count);
-			if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-			return subResult;
-		};
-	}
-};
-var conditionPlugin = TREE_SHAKE_CONDITION ? fallbackPlugin : {
-	id: "condition-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "condition",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[CONDITION];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: CONDITION,
-					key
-				}]
-			});
-		}
-		return (arg) => {
-			const subResult = getCondition(result, typeof arg === "boolean" ? arg : arg.value);
-			if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-			return subResult;
-		};
-	}
-};
-var insertionPlugin = TREE_SHAKE_INSERTION ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string",
-			transform: (node, subProps, deepTransformNode) => {
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const children = getInsertion(transformedResult, values);
-					return deepTransformNode(children, {
-						...subProps,
-						plugins: props.plugins,
-						children
-					});
-				};
-			}
-		};
-		return deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-	}
-};
-var genderPlugin = TREE_SHAKE_GENDER ? fallbackPlugin : {
-	id: "gender-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "gender",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[GENDER];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: GENDER,
-					key
-				}]
-			});
-		}
-		return (value) => getGender(result, value);
-	}
-};
-var nestedPlugin = (locale) => TREE_SHAKE_NESTED ? fallbackPlugin : {
-	id: "nested-plugin",
-	canHandle: (node) => typeof node === "object" && (node?.nodeType === "nested" || node?.nodeType === "n"),
-	transform: (node, props) => getNesting(node[NESTED].dictionaryKey, node[NESTED].path, {
-		...props,
-		locale: locale ?? props.locale
-	})
-};
-var filePlugin = TREE_SHAKE_FILE ? fallbackPlugin : {
-	id: "file-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "file",
-	transform: (node, props, deepTransform) => deepTransform(node.content, {
-		...props,
-		children: node.content
-	})
-};
+var enumerationPlugin = fallbackPlugin;
+var conditionPlugin = fallbackPlugin;
+var insertionPlugin = fallbackPlugin;
+var genderPlugin = fallbackPlugin;
+var nestedPlugin = (locale) => fallbackPlugin;
+var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
@@ -2129,17 +1968,19 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
-	};
-	return getContent(dictionary.content, props, plugins);
+export { fallbackPlugin as a, nestedPlugin as c, configuration as d, editor as f, routing as h, enumerationPlugin as i, translationPlugin as l, log as m, getContent as n, filePlugin as o, internationalization as p, conditionPlugin as r, genderPlugin as s, getBasePlugins as t, getTranslation as u };
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
+	let currentValue = structuredClone(dictionaryContent);
+	for (const keyObj of keyPath) {
+		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
+		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
+		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
+		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
+	}
+	return currentValue;
 };
-export { enumerationPlugin as a, genderPlugin as c, getTranslation as d, getIntlayer as f, conditionPlugin as i, nestedPlugin as l, getBasePlugins as n, fallbackPlugin as o, getContent as r, filePlugin as s, getDictionary as t, translationPlugin as u };
-import { n as __exportAll } from "./rolldown-runtime-BG0GCgh6.js";
+export { getContentNodeByKeyPath as t };
 var PRESERVED_LITERALS = new Set([
 	"true",
 	"false",
@@ -3709,16 +3550,7 @@ var compileWithOptions = (markdown, runtime, options = {}) => {
 		slugify
 	}, compilerOptions);
 };
-var markdown_exports = __exportAll({
-	DURATION_DELAY_TRIGGER: () => 20,
-	INLINE_SKIP_R: () => INLINE_SKIP_R,
-	ORDERED: () => 1,
-	ORDERED_LIST_BULLET: () => ORDERED_LIST_BULLET,
-	UNORDERED: () => 2,
-	UNORDERED_LIST_BULLET: () => UNORDERED_LIST_BULLET,
-	compileWithOptions: () => compileWithOptions
-});
-export { getMarkdownMetadata as n, markdown_exports as t };
+export { compileWithOptions, getMarkdownMetadata };
 var TRANSLATION = "translation";
 var ENUMERATION = "enumeration";
 var CONDITION = "condition";
@@ -3726,25 +3558,10 @@ var INSERTION = "insertion";
 var FILE = "file";
 var OBJECT = "object";
 var ARRAY = "array";
-var NESTED = "nested";
 var REACT_NODE = "reactNode";
 var MARKDOWN = "markdown";
 var HTML = "html";
-var GENDER = "gender";
-export { GENDER as a, MARKDOWN as c, REACT_NODE as d, TRANSLATION as f, FILE as i, NESTED as l, CONDITION as n, HTML as o, ENUMERATION as r, INSERTION as s, ARRAY as t, OBJECT as u };
-var __defProp = Object.defineProperty;
-var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
-var __exportAll = (all, no_symbols) => {
-	let target = {};
-	for (var name in all) __defProp(target, name, {
-		get: all[name],
-		enumerable: true
-	});
-	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
-	return target;
-};
-var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
-	if (typeof require !== "undefined") return require.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
-export { __exportAll as n, __require as r, __commonJSMin as t };
+export { HTML as a, OBJECT as c, FILE as i, REACT_NODE as l, CONDITION as n, INSERTION as o, ENUMERATION as r, MARKDOWN as s, ARRAY as t, TRANSLATION as u };
+var dictionaries = {};
+var getUnmergedDictionaries = () => dictionaries;
+export { getUnmergedDictionaries };

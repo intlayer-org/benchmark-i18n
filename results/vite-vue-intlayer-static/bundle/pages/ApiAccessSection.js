@@ -1,73 +1,72 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var api_access_section_default = {
 	key: "api-access-section",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"title": "API Access",
-				"apiKeyLabel": "API Key",
-				"copy": "Copy",
-				"description": "Use this key to access the benchmarking API programmatically."
+				"d": "API Access",
+				"a": "API Key",
+				"b": "Copy",
+				"c": "Use this key to access the benchmarking API programmatically."
 			},
 			"fr": {
-				"title": "Accès API",
-				"apiKeyLabel": "Clé API",
-				"copy": "Copier",
-				"description": "Utilisez cette clé pour appeler l'API de benchmark par programmation."
+				"d": "Accès API",
+				"a": "Clé API",
+				"b": "Copier",
+				"c": "Utilisez cette clé pour appeler l'API de benchmark par programmation."
 			},
 			"es": {
-				"title": "Acceso API",
-				"apiKeyLabel": "Clave API",
-				"copy": "Copiar",
-				"description": "Utilice esta clave para acceder a la API de benchmarking de forma programada."
+				"d": "Acceso API",
+				"a": "Clave API",
+				"b": "Copiar",
+				"c": "Utilice esta clave para acceder a la API de benchmarking de forma programada."
 			},
 			"de": {
-				"title": "API-Zugriff",
-				"apiKeyLabel": "API-Schlüssel",
-				"copy": "Kopieren",
-				"description": "Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen."
+				"d": "API-Zugriff",
+				"a": "API-Schlüssel",
+				"b": "Kopieren",
+				"c": "Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen."
 			},
 			"it": {
-				"title": "Accesso API",
-				"apiKeyLabel": "Chiave API",
-				"copy": "Copia",
-				"description": "Usa questa chiave per accedere all'API di benchmarking in modo programmatico."
+				"d": "Accesso API",
+				"a": "Chiave API",
+				"b": "Copia",
+				"c": "Usa questa chiave per accedere all'API di benchmarking in modo programmatico."
 			},
 			"pt": {
-				"title": "Acesso API",
-				"apiKeyLabel": "Chave API",
-				"copy": "Copiar",
-				"description": "Use esta chave para acessar a API de benchmarking programaticamente."
+				"d": "Acesso API",
+				"a": "Chave API",
+				"b": "Copiar",
+				"c": "Use esta chave para acessar a API de benchmarking programaticamente."
 			},
 			"zh": {
-				"title": "API 访问",
-				"apiKeyLabel": "API 密钥",
-				"copy": "复制",
-				"description": "使用此密钥以编程方式访问基准测试 API。"
+				"d": "API 访问",
+				"a": "API 密钥",
+				"b": "复制",
+				"c": "使用此密钥以编程方式访问基准测试 API。"
 			},
 			"ja": {
-				"title": "API アクセス",
-				"apiKeyLabel": "API キー",
-				"copy": "コピー",
-				"description": "このキーを使用して、プログラムでベンチマーク API にアクセスします。"
+				"d": "API アクセス",
+				"a": "API キー",
+				"b": "コピー",
+				"c": "このキーを使用して、プログラムでベンチマーク API にアクセスします。"
 			},
 			"ko": {
-				"title": "API 액세스",
-				"apiKeyLabel": "API 키",
-				"copy": "복사",
-				"description": "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오."
+				"d": "API 액세스",
+				"a": "API 키",
+				"b": "복사",
+				"c": "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오."
 			},
 			"ru": {
-				"title": "Доступ к API",
-				"apiKeyLabel": "Ключ API",
-				"copy": "Копировать",
-				"description": "Используйте этот ключ для программного доступа к API бенчмаркинга."
+				"d": "Доступ к API",
+				"a": "Ключ API",
+				"b": "Копировать",
+				"c": "Используйте этот ключ для программного доступа к API бенчмаркинга."
 			}
 		}
-	},
-	localIds: ["api-access-section::local::src/components/pages/settings/ApiAccessSection.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -873,6 +872,29 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
+var ApiAccessSection_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "ApiAccessSection",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { d: title, a: apiKeyLabel, b: copy, c: description } = b(api_access_section_default);
+		const __returned__ = {
+			title,
+			apiKeyLabel,
+			copy,
+			description
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "rounded-lg border border-border bg-card p-6" };
 var _hoisted_2 = { class: "mb-4 text-lg font-semibold text-foreground" };
 var _hoisted_3 = {
@@ -885,24 +907,19 @@ var _hoisted_5 = {
 	class: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors"
 };
 var _hoisted_6 = { class: "mt-1 text-xs text-muted-foreground" };
-var ApiAccessSection_default = defineComponent({
-	__name: "ApiAccessSection",
-	setup(__props) {
-		const { title, apiKeyLabel, copy, description } = b(api_access_section_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString(unref(title)), 1), createElementVNode("div", null, [
-				createElementVNode("label", _hoisted_3, toDisplayString(unref(apiKeyLabel)), 1),
-				createElementVNode("div", _hoisted_4, [_cache[0] || (_cache[0] = createElementVNode("input", {
-					id: "apiKey",
-					readonly: "",
-					value: "sk_bench_xxxxxxxxxxxxxxxxxxxx",
-					class: "flex-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-muted-foreground"
-				}, null, -1)), createElementVNode("button", _hoisted_5, toDisplayString(unref(copy)), 1)]),
-				createElementVNode("p", _hoisted_6, toDisplayString(unref(description)), 1)
-			])]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString($setup.title), 1), createElementVNode("div", null, [
+		createElementVNode("label", _hoisted_3, toDisplayString($setup.apiKeyLabel), 1),
+		createElementVNode("div", _hoisted_4, [_cache[0] || (_cache[0] = createElementVNode("input", {
+			id: "apiKey",
+			readonly: "",
+			value: "sk_bench_xxxxxxxxxxxxxxxxxxxx",
+			class: "flex-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-muted-foreground"
+		}, null, -1)), createElementVNode("button", _hoisted_5, toDisplayString($setup.copy), 1)]),
+		createElementVNode("p", _hoisted_6, toDisplayString($setup.description), 1)
+	])]);
+}
+var ApiAccessSection_default = _plugin_vue_export_helper_default(ApiAccessSection_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/settings/ApiAccessSection.vue"]]);
 export { ApiAccessSection_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

@@ -1,94 +1,93 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, defineComponent as _, getCurrentInstance as v, h as y, inject as b, isRef as x, markRaw as S, onMounted as ee, onUnmounted as te, openBlock as ne, ref as C, shallowRef as w, toDisplayString as T, toValue as E, unref as D, watch as O } from "vue";
+import { Fragment as m, computed as h, createElementBlock as g, defineComponent as _, getCurrentInstance as v, h as y, inject as b, isRef as x, markRaw as S, onMounted as ee, onUnmounted as te, openBlock as ne, ref as C, shallowRef as w, toDisplayString as T, toValue as E, watch as D } from "vue";
 var re = {
 	key: "theme-toggle",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				auto: "Theme: Auto",
-				dark: "Theme: Dark",
-				light: "Theme: Light",
-				ariaLabelAuto: "Theme mode: auto (system). Click to switch to light mode.",
-				ariaLabelLight: "Theme mode: light. Click to switch to dark mode.",
-				ariaLabelDark: "Theme mode: dark. Click to switch to auto mode."
+				d: "Theme: Auto",
+				e: "Theme: Dark",
+				f: "Theme: Light",
+				a: "Theme mode: auto (system). Click to switch to light mode.",
+				c: "Theme mode: light. Click to switch to dark mode.",
+				b: "Theme mode: dark. Click to switch to auto mode."
 			},
 			fr: {
-				auto: "Thème : Auto",
-				dark: "Thème : Sombre",
-				light: "Thème : Clair",
-				ariaLabelAuto: "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
-				ariaLabelLight: "Mode de thème : clair. Cliquez pour passer au mode sombre.",
-				ariaLabelDark: "Mode de thème : sombre. Cliquez pour passer au mode auto."
+				d: "Thème : Auto",
+				e: "Thème : Sombre",
+				f: "Thème : Clair",
+				a: "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
+				c: "Mode de thème : clair. Cliquez pour passer au mode sombre.",
+				b: "Mode de thème : sombre. Cliquez pour passer au mode auto."
 			},
 			es: {
-				auto: "Tema: Automático",
-				dark: "Tema: Oscuro",
-				light: "Tema: Claro",
-				ariaLabelAuto: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-				ariaLabelLight: "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
-				ariaLabelDark: "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
+				d: "Tema: Automático",
+				e: "Tema: Oscuro",
+				f: "Tema: Claro",
+				a: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
+				c: "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
+				b: "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
 			},
 			de: {
-				auto: "Design: Auto",
-				dark: "Design: Dunkel",
-				light: "Design: Hell",
-				ariaLabelAuto: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-				ariaLabelLight: "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
-				ariaLabelDark: "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
+				d: "Design: Auto",
+				e: "Design: Dunkel",
+				f: "Design: Hell",
+				a: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
+				c: "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
+				b: "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
 			},
 			it: {
-				auto: "Tema: Auto",
-				dark: "Tema: Scuro",
-				light: "Tema: Chiaro",
-				ariaLabelAuto: "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
-				ariaLabelLight: "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
-				ariaLabelDark: "Modalità tema: scura. Fai clic per passare alla modalità automatica."
+				d: "Tema: Auto",
+				e: "Tema: Scuro",
+				f: "Tema: Chiaro",
+				a: "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
+				c: "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
+				b: "Modalità tema: scura. Fai clic per passare alla modalità automatica."
 			},
 			pt: {
-				auto: "Tema: Automático",
-				dark: "Tema: Escuro",
-				light: "Tema: Claro",
-				ariaLabelAuto: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-				ariaLabelLight: "Modo de tema: claro. Clique para mudar para o modo escuro.",
-				ariaLabelDark: "Modo de tema: escuro. Clique para mudar para o modo automático."
+				d: "Tema: Automático",
+				e: "Tema: Escuro",
+				f: "Tema: Claro",
+				a: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
+				c: "Modo de tema: claro. Clique para mudar para o modo escuro.",
+				b: "Modo de tema: escuro. Clique para mudar para o modo automático."
 			},
 			zh: {
-				auto: "主题：自动",
-				dark: "主题：深色",
-				light: "主题：亮色",
-				ariaLabelAuto: "主题模式：自动（系统）。点击切换到亮色模式。",
-				ariaLabelLight: "主题模式：浅色。点击切换到深色模式。",
-				ariaLabelDark: "主题模式：深色。点击切换到自动模式。"
+				d: "主题：自动",
+				e: "主题：深色",
+				f: "主题：亮色",
+				a: "主题模式：自动（系统）。点击切换到亮色模式。",
+				c: "主题模式：浅色。点击切换到深色模式。",
+				b: "主题模式：深色。点击切换到自动模式。"
 			},
 			ja: {
-				auto: "テーマ：自動",
-				dark: "テーマ：ダーク",
-				light: "テーマ：ライト",
-				ariaLabelAuto: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-				ariaLabelLight: "テーマモード：ライト。クリックしてダークモードに切り替えます。",
-				ariaLabelDark: "テーマモード：ダーク。クリックして自動モードに切り替えます。"
+				d: "テーマ：自動",
+				e: "テーマ：ダーク",
+				f: "テーマ：ライト",
+				a: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
+				c: "テーマモード：ライト。クリックしてダークモードに切り替えます。",
+				b: "テーマモード：ダーク。クリックして自動モードに切り替えます。"
 			},
 			ko: {
-				auto: "테마: 자동",
-				dark: "테마: 다크",
-				light: "테마: 라이트",
-				ariaLabelAuto: "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
-				ariaLabelLight: "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
-				ariaLabelDark: "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
+				d: "테마: 자동",
+				e: "테마: 다크",
+				f: "테마: 라이트",
+				a: "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
+				c: "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
+				b: "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
 			},
 			ru: {
-				auto: "Тема: Авто",
-				dark: "Тема: Темная",
-				light: "Тема: Светлая",
-				ariaLabelAuto: "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
-				ariaLabelLight: "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
-				ariaLabelDark: "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
+				d: "Тема: Авто",
+				e: "Тема: Темная",
+				f: "Тема: Светлая",
+				a: "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
+				c: "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
+				b: "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
 			}
 		}
-	},
-	localIds: ["theme-toggle::local::src/components/ThemeToggle.content.ts"]
-}, k = ({ value: e, children: t, additionalProps: n = {} }) => {
+	}
+}, O = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = C(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -106,7 +105,7 @@ var re = {
 			return r.value;
 		},
 		use(e) {
-			return k({
+			return O({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -117,7 +116,7 @@ var re = {
 		},
 		...n
 	}), S(o);
-}, A = _({
+}, k = _({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -132,7 +131,7 @@ var re = {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), j = (e, t, n = f(t)) => {
+}), ie = (e, t, n = f(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -140,12 +139,12 @@ var re = {
 		plugins: n
 	};
 	return c(e.content, r, n);
-}, M = (e) => {
+}, A = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, N = /* @__PURE__ */ new Map(), ie = (e) => {
-	if (N.has(e)) return N.get(e);
+}, j = /* @__PURE__ */ new Map(), ae = (e) => {
+	if (j.has(e)) return j.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -166,11 +165,11 @@ var re = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: M(m),
+			props: A(m),
 			children: []
 		});
 		else {
-			let e = M(m);
+			let e = A(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -187,9 +186,9 @@ var re = {
 			children: e.children
 		});
 	}
-	return N.set(e, n), n;
-}, ae = (e, t) => {
-	let n = ie(e), r = 0, i = (e) => {
+	return j.set(e, n), n;
+}, M = (e, t) => {
+	let n = ae(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -222,8 +221,8 @@ var re = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, oe = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, se = (e, t = {}) => {
-	if (!Object.values(t).some(oe)) return {
+}, N = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, oe = (e, t = {}) => {
+	if (!Object.values(t).some(N)) return {
 		isSimple: !0,
 		parts: e.replace(P, (e, n) => (t[n.trim()] ?? "").toString())
 	};
@@ -237,14 +236,14 @@ var re = {
 		isSimple: !1,
 		parts: r
 	};
-}, ce = Symbol("intlayerHTML"), le = () => b(ce), F = (e, { components: t = {} } = {}) => {
+}, se = Symbol("intlayerHTML"), ce = () => b(se), F = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => y(t, e, e?.children)]));
-	return ae(e, new Proxy(n, { get(e, t) {
+	return M(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => y(t, e, e?.children);
 	} }));
-}, ue = ({ components: e } = {}) => {
-	let t = le();
+}, le = ({ components: e } = {}) => {
+	let t = ce();
 	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 _({
@@ -260,11 +259,11 @@ _({
 		}
 	},
 	setup(e) {
-		let t = ue({ components: e.components });
+		let t = le({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var de = new Set([
+var ue = new Set([
 	"true",
 	"false",
 	"null",
@@ -276,7 +275,7 @@ var de = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), fe = (e) => {
+]), de = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -294,7 +293,7 @@ var de = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => de.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => ue.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -421,7 +420,7 @@ var de = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, pe = (e) => {
+}, fe = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -430,7 +429,7 @@ var de = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : fe(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : de(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -450,8 +449,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var me = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => me(e)(t, n);
+var pe = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => pe(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -467,18 +466,18 @@ var me = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, he = Symbol("intlayerMarkdown"), ge = () => {
-	let e = b(he, { renderMarkdown: (e) => e });
+}, me = Symbol("intlayerMarkdown"), he = () => {
+	let e = b(me, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, _e = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ve = !0, ye = !0, q = !0, be = _e ? t : {
+}, ge = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, _e = !0, ve = !0, q = !0, ye = ge ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => k({
+		let r = (e) => O({
 			...n,
 			value: e,
-			children: !q && p.enabled ? () => y(A, {
+			children: !q && p.enabled ? () => y(k, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -496,10 +495,10 @@ var me = (e) => (t, n = {}) => {
 		}
 		return S(a);
 	}
-}, xe = (e, t) => {
+}, be = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = se(e, r);
+	let i = oe(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -521,7 +520,7 @@ var me = (e) => (t, n = {}) => {
 		}), y(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : y(m, null, i.parts);
-}, Se = ye ? t : {
+}, xe = ve ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -535,7 +534,7 @@ var me = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = xe(i, e);
+					let a = be(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -551,15 +550,15 @@ var me = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, Ce = K ? t : {
+}, Se = K ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(pe(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(fe(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => k({
+				transform: (t, n) => O({
 					...n,
 					value: t,
 					children: e
@@ -567,15 +566,15 @@ var me = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => k({
+		}), o = (n) => O({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = ge(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = he(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !q && p.enabled ? y(A, {
+				return !q && p.enabled ? y(k, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -587,7 +586,7 @@ var me = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, we = K ? t : {
+}, Ce = K ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -596,10 +595,10 @@ var me = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [Ce, ...t.plugins ?? []]
+			plugins: [Se, ...t.plugins ?? []]
 		});
 	}
-}, Te = ve ? t : {
+}, we = _e ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
@@ -607,10 +606,10 @@ var me = (e) => (t, n = {}) => {
 		e.tags;
 		let r = (e = {}) => {
 			let i = F(n, { components: e });
-			return k({
+			return O({
 				...t,
 				value: n,
-				children: !q && p.enabled ? () => y(A, {
+				children: !q && p.enabled ? () => y(k, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -620,7 +619,7 @@ var me = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, J = /* @__PURE__ */ new Map(), Ee = (t, r = !0) => {
+}, J = /* @__PURE__ */ new Map(), Te = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
 	if (J.has(i)) return J.get(i);
 	let s = [
@@ -630,13 +629,13 @@ var me = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
-		be,
-		Se,
-		we,
-		Te
+		ye,
+		xe,
+		Ce,
+		we
 	];
 	return J.set(i, s), s;
-}, De = (e, t) => j(e, t, Ee(t)), Y = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Oe = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(_({
+}, Ee = (e, t) => ie(e, t, Te(t)), Y = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), De = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(_({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -644,7 +643,7 @@ var me = (e) => (t, n = {}) => {
 			return t == null ? null : Q(t) ? y(t) : Array.isArray(t) ? y("span", t) : t;
 		};
 	}
-})), ke = (e) => new Proxy({}, {
+})), Oe = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -666,10 +665,10 @@ var me = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), Ae = (t, n) => {
+}), ke = (t, n) => {
 	let r = v() ? b(Y) : void 0, i = x(r?.locale) ? r.locale : C(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : E(n)) ?? i.value), o = w({});
-	O([() => E(t), () => a.value], ([e, t]) => {
-		o.value = De(e, t);
+	D([() => E(t), () => a.value], ([e, t]) => {
+		o.value = Ee(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -685,7 +684,7 @@ var me = (e) => (t, n = {}) => {
 			if (n === Symbol.toPrimitive) return () => i.value;
 			let a = e.concat(n), c = X(o.value, a);
 			if (c === void 0 || Z(c) && !Q(c)) return s(a);
-			if (Oe(c)) return ke(h(() => X(o.value, a)));
+			if (De(c)) return Oe(h(() => X(o.value, a)));
 			let l = h(() => X(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
@@ -703,47 +702,77 @@ var me = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, je = ["aria-label", "title"], Me = _({
+}, Ae = _({
 	__name: "ThemeToggle",
-	setup(e) {
-		let { auto: t, dark: n, light: r, ariaLabelAuto: i, ariaLabelLight: a, ariaLabelDark: o } = Ae(re), s = C("auto");
-		function c() {
+	setup(e, { expose: t }) {
+		t();
+		let { d: n, e: r, f: i, a, c: o, b: s } = ke(re), c = C("auto");
+		function l() {
 			if (typeof window > "u") return "auto";
 			let e = window.localStorage.getItem("theme");
 			return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 		}
-		function l(e) {
+		function u(e) {
 			let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 			document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 		}
 		ee(() => {
-			let e = c();
-			s.value = e, l(e);
+			let e = l();
+			c.value = e, u(e);
 		});
-		let u = null;
-		O(s, (e) => {
+		let d = null;
+		D(c, (e) => {
 			if (e === "auto") {
 				let e = window.matchMedia("(prefers-color-scheme: dark)");
-				u = () => l("auto"), e.addEventListener("change", u);
-			} else u &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", u), null);
+				d = () => u("auto"), e.addEventListener("change", d);
+			} else d &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", d), null);
 		}, { immediate: !0 }), te(() => {
-			u && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", u);
+			d && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", d);
 		});
-		function d() {
-			let e = s.value === "light" ? "dark" : s.value === "dark" ? "auto" : "light";
-			s.value = e, l(e), window.localStorage.setItem("theme", e);
+		function f() {
+			let e = c.value === "light" ? "dark" : c.value === "dark" ? "auto" : "light";
+			c.value = e, u(e), window.localStorage.setItem("theme", e);
 		}
-		let f = () => s.value === "auto" ? i.value : s.value === "light" ? a.value : o.value;
-		return (e, i) => (ne(), g("button", {
-			type: "button",
-			onClick: d,
-			"aria-label": f(),
-			title: f(),
-			class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-		}, T(s.value === "auto" ? D(t) : s.value === "dark" ? D(n) : D(r)), 9, je));
+		let p = {
+			auto: n,
+			dark: r,
+			light: i,
+			ariaLabelAuto: a,
+			ariaLabelLight: o,
+			ariaLabelDark: s,
+			mode: c,
+			getInitialMode: l,
+			applyThemeMode: u,
+			get mediaQueryListener() {
+				return d;
+			},
+			set mediaQueryListener(e) {
+				d = e;
+			},
+			toggleMode: f,
+			getLabel: () => c.value === "auto" ? a.value : c.value === "light" ? o.value : s.value
+		};
+		return Object.defineProperty(p, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), p;
 	}
-});
-export { Me as default };
+}), je = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Me = ["aria-label", "title"];
+function Ne(e, t, n, r, i, a) {
+	return ne(), g("button", {
+		type: "button",
+		onClick: r.toggleMode,
+		"aria-label": r.getLabel(),
+		title: r.getLabel(),
+		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+	}, T(r.mode === "auto" ? r.auto : r.mode === "dark" ? r.dark : r.light), 9, Me);
+}
+var Pe = je(Ae, [["render", Ne], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/ThemeToggle.vue"]]);
+export { Pe as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

@@ -1,5 +1,5 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createBlock, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, resolveComponent, shallowRef, toDisplayString, toValue, unref, watch, withCtx } from "vue";
+import { Fragment, computed, createBlock, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, resolveComponent, shallowRef, toDisplayString, toValue, watch, withCtx } from "vue";
 import { useRoute } from "vue-router";
 var footer_default = {
 	key: "footer",
@@ -7,118 +7,117 @@ var footer_default = {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"description": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
-				"resources": "Resources",
-				"contact": "Contact",
-				"github": "GitHub",
-				"methodology": "Methodology",
-				"contributing": "Contributing",
-				"footerText": "i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+				"i": "Resources",
+				"b": "Contact",
+				"g": "GitHub",
+				"h": "Methodology",
+				"d": "Contributing",
+				"f": "i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"fr": {
-				"description": "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-				"resources": "Ressources",
-				"contact": "Contact",
-				"github": "GitHub",
-				"methodology": "Méthodologie",
-				"contributing": "Contribuer",
-				"footerText": "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.",
-				"appName": "Benchmark i18n",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+				"i": "Ressources",
+				"b": "Contact",
+				"g": "GitHub",
+				"h": "Méthodologie",
+				"d": "Contribuer",
+				"f": "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.",
+				"a": "Benchmark i18n",
+				"c": "contact@intlayer.org"
 			},
 			"es": {
-				"description": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
-				"resources": "Recursos",
-				"contact": "Contacto",
-				"github": "GitHub",
-				"methodology": "Metodología",
-				"contributing": "Contribuir",
-				"footerText": "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
+				"i": "Recursos",
+				"b": "Contacto",
+				"g": "GitHub",
+				"h": "Metodología",
+				"d": "Contribuir",
+				"f": "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"de": {
-				"description": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
-				"resources": "Ressourcen",
-				"contact": "Kontakt",
-				"github": "GitHub",
-				"methodology": "Methodik",
-				"contributing": "Mitwirken",
-				"footerText": "i18n Benchmark – Open-Source-Projekt. Erstellt mit Vue, Vite & Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
+				"i": "Ressourcen",
+				"b": "Kontakt",
+				"g": "GitHub",
+				"h": "Methodik",
+				"d": "Mitwirken",
+				"f": "i18n Benchmark – Open-Source-Projekt. Erstellt mit Vue, Vite & Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"it": {
-				"description": "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
-				"resources": "Risorse",
-				"contact": "Contatto",
-				"github": "GitHub",
-				"methodology": "Metodologia",
-				"contributing": "Contribuire",
-				"footerText": "i18n Benchmark — Progetto open-source. Costruito con Vue, Vite e Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
+				"i": "Risorse",
+				"b": "Contatto",
+				"g": "GitHub",
+				"h": "Metodologia",
+				"d": "Contribuire",
+				"f": "i18n Benchmark — Progetto open-source. Costruito con Vue, Vite e Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"pt": {
-				"description": "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.",
-				"resources": "Recursos",
-				"contact": "Contato",
-				"github": "GitHub",
-				"methodology": "Metodologia",
-				"contributing": "Contribuindo",
-				"footerText": "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.",
+				"i": "Recursos",
+				"b": "Contato",
+				"g": "GitHub",
+				"h": "Metodologia",
+				"d": "Contribuindo",
+				"f": "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"zh": {
-				"description": "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
-				"resources": "资源",
-				"contact": "联系我们",
-				"github": "GitHub",
-				"methodology": "方法论",
-				"contributing": "贡献",
-				"footerText": "i18n 基准测试——开源项目。使用 Vue、Vite 和 Vue Router 构建。",
-				"appName": "i18n 基准测试",
-				"contactEmail": "contact@intlayer.org"
+				"e": "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
+				"i": "资源",
+				"b": "联系我们",
+				"g": "GitHub",
+				"h": "方法论",
+				"d": "贡献",
+				"f": "i18n 基准测试——开源项目。使用 Vue、Vite 和 Vue Router 构建。",
+				"a": "i18n 基准测试",
+				"c": "contact@intlayer.org"
 			},
 			"ja": {
-				"description": "バンドルサイズ、ロード時間、アプリの反応性に与える国際化ライブラリの実際の影響を測定するためのオープンソースのテストアプリケーション。",
-				"resources": "リソース",
-				"contact": "お問い合わせ",
-				"github": "GitHub",
-				"methodology": "方法論",
-				"contributing": "貢献",
-				"footerText": "i18n ベンチマーク — オープンソースプロジェクト。Vue、Vite、Vue Routerで構築されています。",
-				"appName": "i18n ベンチマーク",
-				"contactEmail": "contact@intlayer.org"
+				"e": "バンドルサイズ、ロード時間、アプリの反応性に与える国際化ライブラリの実際の影響を測定するためのオープンソースのテストアプリケーション。",
+				"i": "リソース",
+				"b": "お問い合わせ",
+				"g": "GitHub",
+				"h": "方法論",
+				"d": "貢献",
+				"f": "i18n ベンチマーク — オープンソースプロジェクト。Vue、Vite、Vue Routerで構築されています。",
+				"a": "i18n ベンチマーク",
+				"c": "contact@intlayer.org"
 			},
 			"ko": {
-				"description": "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
-				"resources": "리소스",
-				"contact": "연락처",
-				"github": "GitHub",
-				"methodology": "방법론",
-				"contributing": "기여하기",
-				"footerText": "i18n 벤치마크 — 오픈 소스 프로젝트. Vue, Vite 및 Vue Router로 제작되었습니다.",
-				"appName": "i18n 벤치마크",
-				"contactEmail": "contact@intlayer.org"
+				"e": "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
+				"i": "리소스",
+				"b": "연락처",
+				"g": "GitHub",
+				"h": "방법론",
+				"d": "기여하기",
+				"f": "i18n 벤치마크 — 오픈 소스 프로젝트. Vue, Vite 및 Vue Router로 제작되었습니다.",
+				"a": "i18n 벤치마크",
+				"c": "contact@intlayer.org"
 			},
 			"ru": {
-				"description": "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
-				"resources": "Ресурсы",
-				"contact": "Контакт",
-				"github": "GitHub",
-				"methodology": "Методология",
-				"contributing": "Участие в проекте",
-				"footerText": "i18n Benchmark — проект с открытым исходным кодом. Построен на Vue, Vite и Vue Router.",
-				"appName": "i18n Бенчмарк",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
+				"i": "Ресурсы",
+				"b": "Контакт",
+				"g": "GitHub",
+				"h": "Методология",
+				"d": "Участие в проекте",
+				"f": "i18n Benchmark — проект с открытым исходным кодом. Построен на Vue, Vite и Vue Router.",
+				"a": "i18n Бенчмарк",
+				"c": "contact@intlayer.org"
 			}
 		}
-	},
-	localIds: ["footer::local::src/components/Footer.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -924,6 +923,55 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
+var Footer_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "Footer",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const route = useRoute();
+		const currentLocale = computed(() => route.params.locale || "en");
+		const { e: description, i: resources, b: contactLabel, g: github, h: methodology, d: contributing, f: footerText, a: appName, c: contactEmail } = b(footer_default);
+		const __returned__ = {
+			route,
+			currentLocale,
+			description,
+			resources,
+			contactLabel,
+			github,
+			methodology,
+			contributing,
+			footerText,
+			appName,
+			contactEmail,
+			footerLinks: computed(() => [
+				{
+					label: github,
+					href: "https://github.com/intlayer-org/benchmark-i18n",
+					isInternal: false
+				},
+				{
+					label: methodology,
+					to: `/${currentLocale.value}/about`,
+					isInternal: true
+				},
+				{
+					label: contributing,
+					to: `/${currentLocale.value}/contact`,
+					isInternal: true
+				}
+			])
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "mt-20 border-t border-border bg-card" };
 var _hoisted_2 = { class: "container py-8" };
 var _hoisted_3 = { class: "grid gap-8 md:grid-cols-3" };
@@ -935,54 +983,30 @@ var _hoisted_8 = ["href"];
 var _hoisted_9 = { class: "mb-2 text-sm font-semibold text-foreground" };
 var _hoisted_10 = { class: "text-sm text-muted-foreground" };
 var _hoisted_11 = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" };
-var Footer_default = defineComponent({
-	__name: "Footer",
-	setup(__props) {
-		const route = useRoute();
-		const currentLocale = computed(() => route.params.locale || "en");
-		const { description, resources, contact: contactLabel, github, methodology, contributing, footerText, appName, contactEmail } = b(footer_default);
-		const footerLinks = computed(() => [
-			{
-				label: github,
-				href: "https://github.com/intlayer-org/benchmark-i18n",
-				isInternal: false
-			},
-			{
-				label: methodology,
-				to: `/${currentLocale.value}/about`,
-				isInternal: true
-			},
-			{
-				label: contributing,
-				to: `/${currentLocale.value}/contact`,
-				isInternal: true
-			}
-		]);
-		return (_ctx, _cache) => {
-			const _component_router_link = resolveComponent("router-link");
-			return openBlock(), createElementBlock("footer", _hoisted_1, [createElementVNode("div", _hoisted_2, [createElementVNode("div", _hoisted_3, [
-				createElementVNode("div", null, [createElementVNode("h3", _hoisted_4, toDisplayString(unref(appName)), 1), createElementVNode("p", _hoisted_5, toDisplayString(unref(description)), 1)]),
-				createElementVNode("div", null, [createElementVNode("h3", _hoisted_6, toDisplayString(unref(resources)), 1), createElementVNode("ul", _hoisted_7, [(openBlock(true), createElementBlock(Fragment, null, renderList(footerLinks.value, (linkEl) => {
-					return openBlock(), createElementBlock("li", { key: linkEl.label }, [linkEl.isInternal ? (openBlock(), createBlock(_component_router_link, {
-						key: 0,
-						to: linkEl.to,
-						class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-					}, {
-						default: withCtx(() => [createTextVNode(toDisplayString(linkEl.label), 1)]),
-						_: 2
-					}, 1032, ["to"])) : (openBlock(), createElementBlock("a", {
-						key: 1,
-						href: linkEl.href,
-						target: "_blank",
-						rel: "noreferrer",
-						class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-					}, toDisplayString(linkEl.label), 9, _hoisted_8))]);
-				}), 128))])]),
-				createElementVNode("div", null, [createElementVNode("h3", _hoisted_9, toDisplayString(unref(contactLabel)), 1), createElementVNode("p", _hoisted_10, toDisplayString(unref(contactEmail)), 1)])
-			]), createElementVNode("div", _hoisted_11, toDisplayString(unref(footerText)), 1)])]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_router_link = resolveComponent("router-link");
+	return openBlock(), createElementBlock("footer", _hoisted_1, [createElementVNode("div", _hoisted_2, [createElementVNode("div", _hoisted_3, [
+		createElementVNode("div", null, [createElementVNode("h3", _hoisted_4, toDisplayString($setup.appName), 1), createElementVNode("p", _hoisted_5, toDisplayString($setup.description), 1)]),
+		createElementVNode("div", null, [createElementVNode("h3", _hoisted_6, toDisplayString($setup.resources), 1), createElementVNode("ul", _hoisted_7, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.footerLinks, (linkEl) => {
+			return openBlock(), createElementBlock("li", { key: linkEl.label }, [linkEl.isInternal ? (openBlock(), createBlock(_component_router_link, {
+				key: 0,
+				to: linkEl.to,
+				class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+			}, {
+				default: withCtx(() => [createTextVNode(toDisplayString(linkEl.label), 1)]),
+				_: 2
+			}, 1032, ["to"])) : (openBlock(), createElementBlock("a", {
+				key: 1,
+				href: linkEl.href,
+				target: "_blank",
+				rel: "noreferrer",
+				class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+			}, toDisplayString(linkEl.label), 9, _hoisted_8))]);
+		}), 128))])]),
+		createElementVNode("div", null, [createElementVNode("h3", _hoisted_9, toDisplayString($setup.contactLabel), 1), createElementVNode("p", _hoisted_10, toDisplayString($setup.contactEmail), 1)])
+	]), createElementVNode("div", _hoisted_11, toDisplayString($setup.footerText), 1)])]);
+}
+var Footer_default = _plugin_vue_export_helper_default(Footer_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Footer.vue"]]);
 export { Footer_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

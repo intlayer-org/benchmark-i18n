@@ -1,55 +1,54 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as S, markRaw as C, onBeforeMount as ee, onMounted as te, openBlock as ne, ref as w, shallowRef as T, toDisplayString as E, toValue as D, unref as O, watch as re } from "vue";
-var ie = {
+import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as S, markRaw as C, onBeforeMount as ee, onMounted as te, openBlock as w, ref as T, shallowRef as E, toDisplayString as D, toValue as O, watch as ne } from "vue";
+var re = {
 	key: "about-header",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				title: "About This Benchmark",
-				description: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page application where different i18n libraries can be integrated and measured under identical conditions."
+				b: "About This Benchmark",
+				a: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page application where different i18n libraries can be integrated and measured under identical conditions."
 			},
 			fr: {
-				title: "À propos de ce benchmark",
-				description: "Il s'agit d'une application de test open-source — pas d'un produit ou d'une entreprise. Son seul but est de fournir une application multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
+				b: "À propos de ce benchmark",
+				a: "Il s'agit d'une application de test open-source — pas d'un produit ou d'une entreprise. Son seul but est de fournir une application multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
 			},
 			es: {
-				title: "Acerca de este benchmark",
-				description: "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación multipágina realista donde se puedan integrar y medir diferentes bibliotecas i18n bajo condiciones idénticas."
+				b: "Acerca de este benchmark",
+				a: "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación multipágina realista donde se puedan integrar y medir diferentes bibliotecas i18n bajo condiciones idénticas."
 			},
 			de: {
-				title: "Über diesen Benchmark",
-				description: "Dies ist eine Open-Source-Testanwendung – kein Produkt oder Unternehmen. Ihr einziger Zweck ist es, eine realistische, mehrseitige Anwendung bereitzustellen, in der verschiedene i18n-Bibliotheken unter identischen Bedingungen integriert und gemessen werden können."
+				b: "Über diesen Benchmark",
+				a: "Dies ist eine Open-Source-Testanwendung – kein Produkt oder Unternehmen. Ihr einziger Zweck ist es, eine realistische, mehrseitige Anwendung bereitzustellen, in der verschiedene i18n-Bibliotheken unter identischen Bedingungen integriert und gemessen werden können."
 			},
 			it: {
-				title: "Informazioni su questo benchmark",
-				description: "Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è fornire un'applicazione multi-pagina realistica in cui diverse librerie i18n possano essere integrate e misurate in condizioni identiche."
+				b: "Informazioni su questo benchmark",
+				a: "Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è fornire un'applicazione multi-pagina realistica in cui diverse librerie i18n possano essere integrate e misurate in condizioni identiche."
 			},
 			pt: {
-				title: "Sobre este Benchmark",
-				description: "Este é um aplicativo de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo de várias páginas realista, onde diferentes bibliotecas i18n possam ser integradas e medidas em condições idênticas."
+				b: "Sobre este Benchmark",
+				a: "Este é um aplicativo de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo de várias páginas realista, onde diferentes bibliotecas i18n possam ser integradas e medidas em condições idênticas."
 			},
 			zh: {
-				title: "关于此基准测试",
-				description: "这是一个开源测试应用程序——不是产品或公司。其唯一目的是提供一个逼真的多页面应用程序，可以在相同条件下集成和测量不同的 i18n 库。"
+				b: "关于此基准测试",
+				a: "这是一个开源测试应用程序——不是产品或公司。其唯一目的是提供一个逼真的多页面应用程序，可以在相同条件下集成和测量不同的 i18n 库。"
 			},
 			ja: {
-				title: "このベンチマークについて",
-				description: "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、同一の条件下でさまざまなi18nライブラリを統合および測定できる、現実的なマルチページアプリケーションを提供することです。"
+				b: "このベンチマークについて",
+				a: "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、同一の条件下でさまざまなi18nライブラリを統合および測定できる、現実的なマルチページアプリケーションを提供することです。"
 			},
 			ko: {
-				title: "이 벤치마크에 대하여",
-				description: "이것은 오픈 소스 테스트 애플리케이션이며 제품이나 회사가 아닙니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 애플리케이션을 제공하는 것입니다."
+				b: "이 벤치마크에 대하여",
+				a: "이것은 오픈 소스 테스트 애플리케이션이며 제품이나 회사가 아닙니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 애플리케이션을 제공하는 것입니다."
 			},
 			ru: {
-				title: "Об этом бенчмарке",
-				description: "Это тестовое приложение с открытым исходным кодом — не продукт и не компания. Его единственная цель — предоставить реалистичное многостраничное приложение, в которое можно интегрировать различные библиотеки i18n и измерять их в идентичных условиях."
+				b: "Об этом бенчмарке",
+				a: "Это тестовое приложение с открытым исходным кодом — не продукт и не компания. Его единственная цель — предоставить реалистичное многостраничное приложение, в которое можно интегрировать различные библиотеки i18n и измерять их в идентичных условиях."
 			}
 		}
-	},
-	localIds: ["about-header::local::src/components/pages/about/AboutHeader.content.ts"]
+	}
 }, k = ({ value: e, children: t, additionalProps: n = {} }) => {
-	let r = w(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
+	let r = T(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
 		toString: () => String(r.value ?? ""),
@@ -104,7 +103,7 @@ var ie = {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, N = /* @__PURE__ */ new Map(), ae = (e) => {
+}, N = /* @__PURE__ */ new Map(), ie = (e) => {
 	if (N.has(e)) return N.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
@@ -148,8 +147,8 @@ var ie = {
 		});
 	}
 	return N.set(e, n), n;
-}, oe = (e, t) => {
-	let n = ae(e), r = 0, i = (e) => {
+}, ae = (e, t) => {
+	let n = ie(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -182,8 +181,8 @@ var ie = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
-	if (!Object.values(t).some(se)) return {
+}, oe = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, se = (e, t = {}) => {
+	if (!Object.values(t).some(oe)) return {
 		isSimple: !0,
 		parts: e.replace(P, (e, n) => (t[n.trim()] ?? "").toString())
 	};
@@ -197,14 +196,14 @@ var ie = {
 		isSimple: !1,
 		parts: r
 	};
-}, le = Symbol("intlayerHTML"), ue = () => x(le), F = (e, { components: t = {} } = {}) => {
+}, ce = Symbol("intlayerHTML"), le = () => x(ce), F = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => b(t, e, e?.children)]));
-	return oe(e, new Proxy(n, { get(e, t) {
+	return ae(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => b(t, e, e?.children);
 	} }));
-}, de = ({ components: e } = {}) => {
-	let t = ue();
+}, ue = ({ components: e } = {}) => {
+	let t = le();
 	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 v({
@@ -220,11 +219,11 @@ v({
 		}
 	},
 	setup(e) {
-		let t = de({ components: e.components });
+		let t = ue({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var fe = new Set([
+var de = new Set([
 	"true",
 	"false",
 	"null",
@@ -236,7 +235,7 @@ var fe = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), pe = (e) => {
+]), fe = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -254,7 +253,7 @@ var fe = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => fe.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => de.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -381,7 +380,7 @@ var fe = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, me = (e) => {
+}, pe = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -390,7 +389,7 @@ var fe = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : pe(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : fe(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -410,8 +409,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var he = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => he(e)(t, n);
+var me = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => me(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -427,11 +426,11 @@ var he = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, ge = Symbol("intlayerMarkdown"), _e = () => {
-	let e = x(ge, { renderMarkdown: (e) => e });
+}, he = Symbol("intlayerMarkdown"), ge = () => {
+	let e = x(he, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, ve = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ye = !0, be = !0, q = !0, xe = ve ? t : {
+}, _e = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ve = !0, ye = !0, q = !0, be = _e ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
@@ -456,10 +455,10 @@ var he = (e) => (t, n = {}) => {
 		}
 		return C(a);
 	}
-}, Se = (e, t) => {
+}, xe = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = ce(e, r);
+	let i = se(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -481,7 +480,7 @@ var he = (e) => (t, n = {}) => {
 		}), b(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : b(m, null, i.parts);
-}, Ce = be ? t : {
+}, Se = ye ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -495,7 +494,7 @@ var he = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = Se(i, e);
+					let a = xe(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -511,11 +510,11 @@ var he = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, we = K ? t : {
+}, Ce = K ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(me(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(pe(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
@@ -531,7 +530,7 @@ var he = (e) => (t, n = {}) => {
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = _e(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = ge(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
@@ -547,7 +546,7 @@ var he = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, Te = K ? t : {
+}, we = K ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -556,10 +555,10 @@ var he = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [we, ...t.plugins ?? []]
+			plugins: [Ce, ...t.plugins ?? []]
 		});
 	}
-}, Ee = ye ? t : {
+}, Te = ve ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
@@ -580,7 +579,7 @@ var he = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, J = /* @__PURE__ */ new Map(), De = (t, r = !0) => {
+}, J = /* @__PURE__ */ new Map(), Ee = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
 	if (J.has(i)) return J.get(i);
 	let s = [
@@ -590,13 +589,13 @@ var he = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
-		xe,
-		Ce,
-		Te,
-		Ee
+		be,
+		Se,
+		we,
+		Te
 	];
 	return J.set(i, s), s;
-}, Oe = (e, t) => j(e, t, De(t)), ke = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Ae = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Q = (e) => C(v({
+}, De = (e, t) => j(e, t, Ee(t)), Oe = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Q = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => C(v({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -604,14 +603,14 @@ var he = (e) => (t, n = {}) => {
 			return t == null ? null : Z(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
 		};
 	}
-})), $ = (e) => new Proxy({}, {
+})), ke = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
 		if (n === "value") return r ?? "";
 		if (n === "$raw") return e;
 		if (n === "__v_skip") return !0;
-		if (n === "c" || n === "asComponent") return Q(() => e.value);
+		if (n === "c" || n === "asComponent") return $(() => e.value);
 		if (r == null) return n === Symbol.toPrimitive || n === "toString" ? () => "" : void 0;
 		let i = r[n];
 		return typeof i == "function" ? i.bind(r) : i;
@@ -626,10 +625,10 @@ var he = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), je = (t, n) => {
-	let r = y() ? x(ke) : void 0, i = S(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : D(n)) ?? i.value), o = T({});
-	re([() => D(t), () => a.value], ([e, t]) => {
-		o.value = Oe(e, t);
+}), Ae = (t, n) => {
+	let r = y() ? x(Oe) : void 0, i = S(r?.locale) ? r.locale : T(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : O(n)) ?? i.value), o = E({});
+	ne([() => O(t), () => a.value], ([e, t]) => {
+		o.value = De(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -640,12 +639,12 @@ var he = (e) => (t, n = {}) => {
 			let i = h(() => Y(o.value, e));
 			if (n === "value") return i.value ?? "";
 			if (n === "then") return;
-			if (n === "c" || n === "asComponent") return Q(() => i.value);
+			if (n === "c" || n === "asComponent") return $(() => i.value);
 			if (n === "$raw") return i;
 			if (n === Symbol.toPrimitive) return () => i.value;
 			let a = e.concat(n), c = Y(o.value, a);
 			if (c === void 0 || X(c) && !Z(c)) return s(a);
-			if (Ae(c)) return $(h(() => Y(o.value, a)));
+			if (Q(c)) return ke(h(() => Y(o.value, a)));
 			let l = h(() => Y(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
@@ -664,7 +663,7 @@ var he = (e) => (t, n = {}) => {
 	});
 	return s([]);
 };
-function Me(e) {
+function je(e) {
 	ee(() => {
 		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
 	}), te(() => {
@@ -676,15 +675,29 @@ function Me(e) {
 		}
 	});
 }
-var Ne = { class: "mb-4 text-3xl font-bold text-foreground" }, Pe = { class: "mb-8 max-w-3xl text-muted-foreground" }, Fe = v({
+var Me = v({
 	__name: "AboutHeader",
-	setup(e) {
-		Me("AboutHeader");
-		let { title: t, description: n } = je(ie);
-		return (e, r) => (ne(), g(m, null, [_("h1", Ne, E(O(t)), 1), _("p", Pe, E(O(n)), 1)], 64));
+	setup(e, { expose: t }) {
+		t(), je("AboutHeader");
+		let { b: n, a: r } = Ae(re), i = {
+			title: n,
+			description: r
+		};
+		return Object.defineProperty(i, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), i;
 	}
-});
-export { Fe as default };
+}), Ne = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Pe = { class: "mb-4 text-3xl font-bold text-foreground" }, Fe = { class: "mb-8 max-w-3xl text-muted-foreground" };
+function Ie(e, t, n, r, i, a) {
+	return w(), g(m, null, [_("h1", Pe, D(r.title), 1), _("p", Fe, D(r.description), 1)], 64);
+}
+var Le = Ne(Me, [["render", Ie], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/about/AboutHeader.vue"]]);
+export { Le as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

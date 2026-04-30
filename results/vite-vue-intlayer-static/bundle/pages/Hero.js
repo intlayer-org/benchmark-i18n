@@ -1,83 +1,82 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onBeforeMount, onMounted, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onBeforeMount, onMounted, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var hero_default = {
 	key: "hero",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"title": "i18n Benchmark",
-				"description": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-				"viewResults": "View Results",
-				"methodology": "Methodology",
-				"hero": "Hero"
+				"d": "i18n Benchmark",
+				"a": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+				"e": "View Results",
+				"c": "Methodology",
+				"b": "Hero"
 			},
 			"fr": {
-				"title": "Benchmark i18n",
-				"description": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-				"viewResults": "Voir les résultats",
-				"methodology": "Méthodologie",
-				"hero": "Héros"
+				"d": "Benchmark i18n",
+				"a": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+				"e": "Voir les résultats",
+				"c": "Méthodologie",
+				"b": "Héros"
 			},
 			"es": {
-				"title": "i18n Benchmark",
-				"description": "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga y la reactividad del renderizado.",
-				"viewResults": "Ver resultados",
-				"methodology": "Metodología",
-				"hero": "Hero"
+				"d": "i18n Benchmark",
+				"a": "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga y la reactividad del renderizado.",
+				"e": "Ver resultados",
+				"c": "Metodología",
+				"b": "Hero"
 			},
 			"de": {
-				"title": "i18n Benchmark",
-				"description": "Eine Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladeleistung und Rendering-Reaktivität.",
-				"viewResults": "Ergebnisse anzeigen",
-				"methodology": "Methodik",
-				"hero": "Hero"
+				"d": "i18n Benchmark",
+				"a": "Eine Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladeleistung und Rendering-Reaktivität.",
+				"e": "Ergebnisse anzeigen",
+				"c": "Methodik",
+				"b": "Hero"
 			},
 			"it": {
-				"title": "i18n Benchmark",
-				"description": "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
-				"viewResults": "Visualizza risultati",
-				"methodology": "Metodologia",
-				"hero": "Hero"
+				"d": "i18n Benchmark",
+				"a": "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
+				"e": "Visualizza risultati",
+				"c": "Metodologia",
+				"b": "Hero"
 			},
 			"pt": {
-				"title": "i18n Benchmark",
-				"description": "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade da renderização.",
-				"viewResults": "Ver Resultados",
-				"methodology": "Metodologia",
-				"hero": "Hero"
+				"d": "i18n Benchmark",
+				"a": "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade da renderização.",
+				"e": "Ver Resultados",
+				"c": "Metodologia",
+				"b": "Hero"
 			},
 			"zh": {
-				"title": "i18n 基准测试",
-				"description": "一个旨在衡量国际化库对捆绑包大小、加载性能和渲染反应性真实影响的测试应用程序。",
-				"viewResults": "查看结果",
-				"methodology": "方法论",
-				"hero": "英雄区"
+				"d": "i18n 基准测试",
+				"a": "一个旨在衡量国际化库对捆绑包大小、加载性能和渲染反应性真实影响的测试应用程序。",
+				"e": "查看结果",
+				"c": "方法论",
+				"b": "英雄区"
 			},
 			"ja": {
-				"title": "i18n ベンチマーク",
-				"description": "国際化ライブラリがバンドルサイズ、ロードパフォーマンス、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーション。",
-				"viewResults": "結果を表示",
-				"methodology": "方法論",
-				"hero": "ヒーロー"
+				"d": "i18n ベンチマーク",
+				"a": "国際化ライブラリがバンドルサイズ、ロードパフォーマンス、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーション。",
+				"e": "結果を表示",
+				"c": "方法論",
+				"b": "ヒーロー"
 			},
 			"ko": {
-				"title": "i18n 벤치마크",
-				"description": "번들 크기, 로딩 성능 및 렌더링 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하도록 설계된 테스트 애플리케이션입니다.",
-				"viewResults": "결과 보기",
-				"methodology": "방법론",
-				"hero": "히어로"
+				"d": "i18n 벤치마크",
+				"a": "번들 크기, 로딩 성능 및 렌더링 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하도록 설계된 테스트 애플리케이션입니다.",
+				"e": "결과 보기",
+				"c": "방법론",
+				"b": "히어로"
 			},
 			"ru": {
-				"title": "i18n Бенчмарк",
-				"description": "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
-				"viewResults": "Посмотреть результаты",
-				"methodology": "Методология",
-				"hero": "Главный баннер"
+				"d": "i18n Бенчмарк",
+				"a": "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
+				"e": "Посмотреть результаты",
+				"c": "Методология",
+				"b": "Главный баннер"
 			}
 		}
-	},
-	localIds: ["hero::local::src/components/pages/home/Hero.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -896,6 +895,30 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
+var Hero_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "Hero",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		usePerformanceMeasure("Hero");
+		const { d: title, a: description, e: viewResults, c: methodology } = b(hero_default);
+		const __returned__ = {
+			title,
+			description,
+			viewResults,
+			methodology
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "mb-16 text-center" };
 var _hoisted_2 = { class: "mb-4 text-4xl font-bold tracking-tight text-foreground" };
 var _hoisted_3 = { class: "mx-auto max-w-2xl text-lg text-muted-foreground" };
@@ -908,20 +931,14 @@ var _hoisted_6 = {
 	type: "button",
 	class: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors"
 };
-var Hero_default = defineComponent({
-	__name: "Hero",
-	setup(__props) {
-		usePerformanceMeasure("Hero");
-		const { title, description, viewResults, methodology } = b(hero_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("section", _hoisted_1, [
-				createElementVNode("h1", _hoisted_2, toDisplayString(unref(title)), 1),
-				createElementVNode("p", _hoisted_3, toDisplayString(unref(description)), 1),
-				createElementVNode("div", _hoisted_4, [createElementVNode("button", _hoisted_5, toDisplayString(unref(viewResults)), 1), createElementVNode("button", _hoisted_6, toDisplayString(unref(methodology)), 1)])
-			]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("section", _hoisted_1, [
+		createElementVNode("h1", _hoisted_2, toDisplayString($setup.title), 1),
+		createElementVNode("p", _hoisted_3, toDisplayString($setup.description), 1),
+		createElementVNode("div", _hoisted_4, [createElementVNode("button", _hoisted_5, toDisplayString($setup.viewResults), 1), createElementVNode("button", _hoisted_6, toDisplayString($setup.methodology), 1)])
+	]);
+}
+var Hero_default = _plugin_vue_export_helper_default(Hero_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/home/Hero.vue"]]);
 export { Hero_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

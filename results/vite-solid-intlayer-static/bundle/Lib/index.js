@@ -1,6 +1,5 @@
-import { n as getMarkdownMetadata } from "./markdown-zzxhaL6v.js";
-import { a as fallbackPlugin, c as nestedPlugin, f as editor, h as routing, i as enumerationPlugin, l as translationPlugin, n as getContent, o as filePlugin, p as internationalization, r as conditionPlugin, s as genderPlugin, t as getBasePlugins } from "./getContent-IoscHyup.js";
-import { a as HTML, o as INSERTION, s as MARKDOWN } from "./nodeType-Cp_mPowN.js";
+import { a as fallbackPlugin, c as nestedPlugin, f as editor, h as routing, i as enumerationPlugin, l as translationPlugin, n as getContent, o as filePlugin, p as internationalization, r as conditionPlugin, s as genderPlugin, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { a as HTML, o as INSERTION, s as MARKDOWN } from "./nodeType-7ZUTNKKR.js";
 import _5YAR0pGEba36ehifjZtw from "../.intlayer/dictionary/header.json";
 import { Dynamic, createComponent, memo, mergeProps } from "solid-js/web";
 import { Suspense, createContext, createEffect, createMemo, createSignal, lazy, on, onMount, untrack, useContext } from "solid-js";
@@ -125,7 +124,7 @@ var localeStorageOptions = {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, i = (i) => i.children;
+};
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -161,30 +160,49 @@ var t$1 = (n) => {
 		...i,
 		children: i.children
 	});
-}, y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", x = true, S = true, C = true, w$1 = true, T$1 = x ? null : lazy(() => import("./MarkdownRenderer-Ct85AZpu.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), E$1 = x ? null : lazy(() => import("./MarkdownRenderer-Ct85AZpu.js").then((e) => ({ default: e.MarkdownRenderer }))), D$1 = S ? null : lazy(() => import("./HTMLRenderer-BfxiRBSO.js").then((e) => ({ default: e.HTMLRenderer }))), O$1 = y ? fallbackPlugin : {
+};
+var _ = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", v = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", y = true, b = true, x = true, S = true, C = null, w$1 = null, T$1 = null, E$1 = null, D$1 = null;
+S || (C = lazy(() => import("./ContentSelector-4OrUn2VA.js").then((e) => ({ default: e.ContentSelector })))), y || (w$1 = lazy(() => import("./MarkdownRenderer-DAB_6UHC.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), T$1 = lazy(() => import("./MarkdownRenderer-DAB_6UHC.js").then((e) => ({ default: e.MarkdownRenderer }))), import("./markdown-DuGa7K5q.js").then((e) => {
+	D$1 = e.getMarkdownMetadata;
+})), b || (E$1 = lazy(() => import("./HTMLRenderer-BzwfNhlM.js").then((e) => ({ default: e.HTMLRenderer }))));
+var O$1 = _ ? fallbackPlugin : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { plugins: o, ...s }) => e$1({
-		...s,
-		value: s.children,
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(s, { get children() {
-			return s.children;
-		} })) : s.children
+	transform: (t, { plugins: a, ...o }) => e$1({
+		...o,
+		value: o.children,
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return o.children;
+			},
+			get children() {
+				return createComponent(C, mergeProps(o, { get children() {
+					return o.children;
+				} }));
+			}
+		}) : o.children
 	})
-}, k$1 = b ? fallbackPlugin : {
+}, k$1 = v ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
-	transform: (o, { plugins: s, ...c }) => e$1({
-		...c,
+	transform: (a, { plugins: o, ...s }) => e$1({
+		...s,
 		value: "[[solid-element]]",
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(c, { get children() {
-			return typeof Node < "u" && o instanceof Node ? o : t$1(o);
-		} })) : typeof Node < "u" && o instanceof Node ? o : t$1(o)
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+			},
+			get children() {
+				return createComponent(C, mergeProps(s, { get children() {
+					return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+				} }));
+			}
+		}) : typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
 }, A$1 = (e, t) => {
 	let n = splitInsertionTemplate(e, t);
 	return n.isSimple, n.parts;
-}, j$1 = C ? fallbackPlugin : {
+}, j$1 = x ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -214,73 +232,73 @@ var t$1 = (n) => {
 			});
 		};
 	}
-}, M$1 = x ? fallbackPlugin : {
+}, M$1 = y ? fallbackPlugin : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
-	transform: (n, o, s) => {
-		let { plugins: c, ...l } = o, u = s(getMarkdownMetadata(n) ?? {}, {
+	transform: (t, a, o) => {
+		let { plugins: s, ...c } = a, l = o(D$1?.(t) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (o, s) => e$1({
-					...s,
-					value: o,
-					children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
+				transform: (a, o) => e$1({
+					...o,
+					value: a,
+					children: !S && editor.enabled ? createComponent(ContentSelector, mergeProps(c, { get children() {
 						return createComponent(Suspense, {
-							fallback: n,
+							fallback: t,
 							get children() {
-								return createComponent(T$1, mergeProps(l, {
+								return createComponent(w$1, mergeProps(c, {
 									get metadataKeyPath() {
-										return s.keyPath;
+										return o.keyPath;
 									},
-									children: n
+									children: t
 								}));
 							}
 						});
 					} })) : createComponent(Suspense, {
-						fallback: n,
+						fallback: t,
 						get children() {
-							return createComponent(T$1, mergeProps(l, {
+							return createComponent(w$1, mergeProps(c, {
 								get metadataKeyPath() {
-									return s.keyPath;
+									return o.keyPath;
 								},
-								children: n
+								children: t
 							}));
 						}
 					})
 				})
 			}],
-			dictionaryKey: l.dictionaryKey,
+			dictionaryKey: c.dictionaryKey,
 			keyPath: []
-		}), d = (s) => e$1({
-			...o,
-			value: n,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: n,
-					get children() {
-						return createComponent(E$1, mergeProps(l, {
-							components: s,
-							children: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: n,
+		}), u = (o) => e$1({
+			...a,
+			value: t,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: t,
 				get children() {
-					return createComponent(E$1, mergeProps(l, {
-						components: s,
-						children: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(T$1, mergeProps(c, {
+							components: o,
+							children: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: t,
+				get children() {
+					return createComponent(T$1, mergeProps(c, {
+						components: o,
+						children: t
 					}));
 				}
 			}),
-			additionalProps: { metadata: u }
-		}), f = d();
-		return new Proxy(f, { get(e, t, r) {
-			return t === "value" ? n : t === "metadata" ? u : t === "use" ? (e) => d(e) : Reflect.get(e, t, r);
+			additionalProps: { metadata: l }
+		}), d = u();
+		return new Proxy(d, { get(e, n, r) {
+			return n === "value" ? t : n === "metadata" ? l : n === "use" ? (e) => u(e) : Reflect.get(e, n, r);
 		} });
 	}
-}, N$1 = x ? fallbackPlugin : {
+}, N$1 = y ? fallbackPlugin : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -292,35 +310,35 @@ var t$1 = (n) => {
 			plugins: [M$1, ...t.plugins ?? []]
 		});
 	}
-}, P$1 = S ? fallbackPlugin : {
+}, P$1 = b ? fallbackPlugin : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
-	transform: (n, o) => {
-		let s = n[HTML], { plugins: c, ...l } = o, u = (n) => e$1({
-			...l,
-			value: s,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: s,
-					get children() {
-						return createComponent(D$1, mergeProps(l, {
-							html: s,
-							components: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: s,
+	transform: (t, a) => {
+		let o = t[HTML], { plugins: s, ...c } = a, l = (t) => e$1({
+			...c,
+			value: o,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: o,
 				get children() {
-					return createComponent(D$1, mergeProps(l, {
-						html: s,
-						components: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(E$1, mergeProps(c, {
+							html: o,
+							components: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: o,
+				get children() {
+					return createComponent(E$1, mergeProps(c, {
+						html: o,
+						components: t
 					}));
 				}
 			})
-		}), d = [u()];
-		return new Proxy(d, { get(e, t, n) {
-			return t === "value" ? s : t === "use" ? (e) => u(e) : Reflect.get(e, t, n);
+		}), u = [l()];
+		return new Proxy(u, { get(e, t, n) {
+			return t === "value" ? o : t === "use" ? (e) => l(e) : Reflect.get(e, t, n);
 		} });
 	}
 }, F$1 = /* @__PURE__ */ new Map(), I$1 = (e, t = !0) => {
@@ -392,6 +410,9 @@ function EmptyComponent() {
 	});
 }
 export { EmptyComponent as default };
+import "solid-js/web";
+var i = (i) => i.children;
+export { i as ContentSelector };
 import { Dynamic, createComponent, mergeProps } from "solid-js/web";
 import { createContext, useContext } from "solid-js";
 var parseAttributes = (attributes) => {
@@ -520,8 +541,8 @@ var a = (e, { components: a = {} } = {}) => {
 	} });
 }, s = (e) => o({ components: e.components || e.userComponents })(e.children || e.html || "");
 export { s as HTMLRenderer };
-import { n as getMarkdownMetadata } from "./markdown-zzxhaL6v.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-B9jKI4qi.js";
+import { getMarkdownMetadata } from "./markdown-DuGa7K5q.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 import { createComponent } from "solid-js/web";
 import { Suspense, createContext, createMemo, createResource, useContext } from "solid-js";
 var i = createContext(), o = () => {
@@ -529,21 +550,21 @@ var i = createContext(), o = () => {
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider. To fix this error, wrap your component with <MarkdownProvider>.");
 	return e;
 }, f = (e) => {
-	let i$1 = useContext(i), { renderMarkdown: o$1 } = o(), [l] = createResource(() => [
+	let a = useContext(i), { renderMarkdown: c } = o(), [l] = createResource(() => [
 		e.children,
 		e.forceBlock,
 		e.preserveFrontmatter,
 		e.tagfilter,
 		e.components,
 		e.wrapper
-	], ([e, t, n, r, a, s]) => o$1(e, {
+	], ([e, t, n, r, i, o]) => c(e, {
 		forceBlock: t,
 		preserveFrontmatter: n,
 		tagfilter: r
 	}, {
-		...i$1?.components ?? {},
-		...a ?? {}
-	}, s));
+		...a?.components ?? {},
+		...i ?? {}
+	}, o));
 	return createComponent(Suspense, {
 		fallback: null,
 		get children() {
@@ -555,9 +576,9 @@ var i = createContext(), o = () => {
 	return createMemo(() => getContentNodeByKeyPath(t(), e.metadataKeyPath))();
 };
 export { p as MarkdownMetadataRenderer, f as MarkdownRenderer };
-import { d as configuration, f as editor, n as getContent, t as getBasePlugins } from "./getContent-IoscHyup.js";
-import { u as TRANSLATION } from "./nodeType-Cp_mPowN.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-B9jKI4qi.js";
+import { d as configuration, f as editor, n as getContent, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);
 var compareUrls = (url1, url2) => {
 	try {
@@ -1723,7 +1744,7 @@ var stopEditorClient = () => {
 	setGlobalEditorManager(null);
 };
 export { initEditorClient, stopEditorClient };
-import { c as OBJECT, t as ARRAY, u as TRANSLATION } from "./nodeType-Cp_mPowN.js";
+import { c as OBJECT, t as ARRAY, u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
 var internationalization = {
 	"locales": [
 		"en",
@@ -1966,7 +1987,7 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	plugins
 });
 export { fallbackPlugin as a, nestedPlugin as c, configuration as d, editor as f, routing as h, enumerationPlugin as i, translationPlugin as l, log as m, getContent as n, filePlugin as o, internationalization as p, conditionPlugin as r, genderPlugin as s, getBasePlugins as t, getTranslation as u };
-import { u as TRANSLATION } from "./nodeType-Cp_mPowN.js";
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
 var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
 	let currentValue = structuredClone(dictionaryContent);
 	for (const keyObj of keyPath) {
@@ -1978,16 +1999,6 @@ var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
 	return currentValue;
 };
 export { getContentNodeByKeyPath as t };
-var __defProp = Object.defineProperty;
-var __exportAll = (all, no_symbols) => {
-	let target = {};
-	for (var name in all) __defProp(target, name, {
-		get: all[name],
-		enumerable: true
-	});
-	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
-	return target;
-};
 var PRESERVED_LITERALS = new Set([
 	"true",
 	"false",
@@ -3557,16 +3568,7 @@ var compileWithOptions = (markdown, runtime, options = {}) => {
 		slugify
 	}, compilerOptions);
 };
-var markdown_exports = __exportAll({
-	DURATION_DELAY_TRIGGER: () => 20,
-	INLINE_SKIP_R: () => INLINE_SKIP_R,
-	ORDERED: () => 1,
-	ORDERED_LIST_BULLET: () => ORDERED_LIST_BULLET,
-	UNORDERED: () => 2,
-	UNORDERED_LIST_BULLET: () => UNORDERED_LIST_BULLET,
-	compileWithOptions: () => compileWithOptions
-});
-export { getMarkdownMetadata as n, markdown_exports as t };
+export { compileWithOptions, getMarkdownMetadata };
 var TRANSLATION = "translation";
 var ENUMERATION = "enumeration";
 var CONDITION = "condition";

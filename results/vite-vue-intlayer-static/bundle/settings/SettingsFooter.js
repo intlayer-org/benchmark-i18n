@@ -1,53 +1,52 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var settings_footer_default = {
 	key: "settings-footer",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"cancel": "Cancel",
-				"saveChanges": "Save Changes"
+				"a": "Cancel",
+				"b": "Save Changes"
 			},
 			"fr": {
-				"cancel": "Annuler",
-				"saveChanges": "Enregistrer"
+				"a": "Annuler",
+				"b": "Enregistrer"
 			},
 			"es": {
-				"cancel": "Cancelar",
-				"saveChanges": "Guardar cambios"
+				"a": "Cancelar",
+				"b": "Guardar cambios"
 			},
 			"de": {
-				"cancel": "Abbrechen",
-				"saveChanges": "Änderungen speichern"
+				"a": "Abbrechen",
+				"b": "Änderungen speichern"
 			},
 			"it": {
-				"cancel": "Annulla",
-				"saveChanges": "Salva modifiche"
+				"a": "Annulla",
+				"b": "Salva modifiche"
 			},
 			"pt": {
-				"cancel": "Cancelar",
-				"saveChanges": "Salvar alterações"
+				"a": "Cancelar",
+				"b": "Salvar alterações"
 			},
 			"zh": {
-				"cancel": "取消",
-				"saveChanges": "保存更改"
+				"a": "取消",
+				"b": "保存更改"
 			},
 			"ja": {
-				"cancel": "キャンセル",
-				"saveChanges": "変更を保存"
+				"a": "キャンセル",
+				"b": "変更を保存"
 			},
 			"ko": {
-				"cancel": "취소",
-				"saveChanges": "변경 사항 저장"
+				"a": "취소",
+				"b": "변경 사항 저장"
 			},
 			"ru": {
-				"cancel": "Отмена",
-				"saveChanges": "Сохранить изменения"
+				"a": "Отмена",
+				"b": "Сохранить изменения"
 			}
 		}
-	},
-	localIds: ["settings-footer::local::src/components/pages/settings/SettingsFooter.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -853,6 +852,27 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
+var SettingsFooter_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "SettingsFooter",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { a: cancel, b: saveChanges } = b(settings_footer_default);
+		const __returned__ = {
+			cancel,
+			saveChanges
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "flex justify-end gap-3" };
 var _hoisted_2 = {
 	type: "button",
@@ -862,15 +882,10 @@ var _hoisted_3 = {
 	type: "submit",
 	class: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
 };
-var SettingsFooter_default = defineComponent({
-	__name: "SettingsFooter",
-	setup(__props) {
-		const { cancel, saveChanges } = b(settings_footer_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("button", _hoisted_2, toDisplayString(unref(cancel)), 1), createElementVNode("button", _hoisted_3, toDisplayString(unref(saveChanges)), 1)]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("button", _hoisted_2, toDisplayString($setup.cancel), 1), createElementVNode("button", _hoisted_3, toDisplayString($setup.saveChanges), 1)]);
+}
+var SettingsFooter_default = _plugin_vue_export_helper_default(SettingsFooter_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/settings/SettingsFooter.vue"]]);
 export { SettingsFooter_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

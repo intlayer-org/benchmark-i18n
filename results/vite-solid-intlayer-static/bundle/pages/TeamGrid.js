@@ -1,22 +1,12 @@
-import { i as internationalization, o as routing, r as editor } from "./__vite-browser-external-Cnj-CPCM.js";
-import { a as enumerationPlugin, c as genderPlugin, f as getIntlayer, i as conditionPlugin, l as nestedPlugin, o as fallbackPlugin, s as filePlugin, u as translationPlugin } from "./getDictionary-BDPI18gp.js";
-import { c as MARKDOWN, o as HTML, s as INSERTION } from "./nodeType-DivqwnYF.js";
-import { n as getMarkdownMetadata } from "./markdown-BmCAYw1d.js";
+import { a as fallbackPlugin, c as nestedPlugin, f as editor, h as routing, i as enumerationPlugin, l as translationPlugin, n as getContent, o as filePlugin, p as internationalization, r as conditionPlugin, s as genderPlugin, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { a as HTML, o as INSERTION, s as MARKDOWN } from "./nodeType-7ZUTNKKR.js";
 import { Dynamic, createComponent, insert, mergeProps, template } from "solid-js/web";
 import { For, Suspense, createContext, createMemo, lazy, useContext } from "solid-js";
-var isEnabled = !(process.env["INTLAYER_EDITOR_ENABLED"] === "false") && editor?.enabled && typeof window !== "undefined" && window.self !== window.top;
-var r = process.env.INTLAYER_EDITOR_ENABLED === "false", i = (i) => r || !isEnabled ? i.children : createComponent(Dynamic, {
-	component: "intlayer-content-selector-wrapper",
-	get "attr:key-path"() {
-		return JSON.stringify(i.keyPath);
-	},
-	get "attr:dictionary-key"() {
-		return i.dictionaryKey;
-	},
-	get children() {
-		return i.children;
-	}
-});
+var team_grid_default = {
+	key: "team-grid",
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Founder & Lead Engineer\",\"formerGoogleEngineerWith10\":\"Former Google engineer with 10 years of experience building internationalization systems at scale.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Performance Engineer\",\"specializesInJavascriptPerformanceOptimi\":\"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Full-Stack Developer\",\"maintainsTheBenchmarkingInfrastructureAn\":\"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Data Analyst\",\"ensuresStatisticalRigorInAll\":\"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Community Manager\",\"managesCommunityContributionsPartnership\":\"Manages community contributions, partnerships, and events. Background in open source governance.\"},\"fr\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Fondatrice et ingénieure en chef\",\"formerGoogleEngineerWith10\":\"Ancienne ingénieure Google avec 10 ans d'expérience dans la création de systèmes d'internationalisation à grande échelle.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Ingénieur Performance\",\"specializesInJavascriptPerformanceOptimi\":\"Spécialisé dans l'optimisation des performances JavaScript et la méthodologie de benchmarking. Précédemment chez Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Passionnée par l'expérience et l'éducation des développeurs. Conférencière à React Conf, JSConf et i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Développeur Full-Stack\",\"maintainsTheBenchmarkingInfrastructureAn\":\"Maintient l'infrastructure de benchmarking et le pipeline CI/CD. Contributeur open source à Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Analyste de données\",\"ensuresStatisticalRigorInAll\":\"Assure la rigueur statistique de tous les résultats de benchmark. Doctorat en statistiques appliquées du MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Community Manager\",\"managesCommunityContributionsPartnership\":\"Gère les contributions de la communauté, les partenariats et les événements. Expérience en gouvernance open source.\"},\"es\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Fundadora e ingeniera principal\",\"formerGoogleEngineerWith10\":\"Exingeniera de Google con 10 años de experiencia en la creación de sistemas de internacionalización a escala.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Ingeniero de rendimiento\",\"specializesInJavascriptPerformanceOptimi\":\"Especializado en optimización del rendimiento de JavaScript y metodología de benchmarking. Anteriormente en Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Defensor del desarrollador\",\"passionateAboutDeveloperExperienceAnd\":\"Apasionada por la experiencia y educación del desarrollador. Ponente en React Conf, JSConf e i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Desarrollador Full-Stack\",\"maintainsTheBenchmarkingInfrastructureAn\":\"Mantiene la infraestructura de benchmarking y el pipeline de CI/CD. Colaborador de código abierto en Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Analista de datos\",\"ensuresStatisticalRigorInAll\":\"Garantiza el rigor estadístico en todos los resultados del benchmark. Doctorado en Estadística Aplicada por el MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Gerente de comunidad\",\"managesCommunityContributionsPartnership\":\"Gestiona las contribuciones, asociaciones y eventos de la comunidad. Antecedentes en gobernanza de código abierto.\"},\"de\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Gründerin & leitende Ingenieurin\",\"formerGoogleEngineerWith10\":\"Ehemalige Google-Ingenieurin mit 10 Jahren Erfahrung im Aufbau von Internationalisierungssystemen in großem Maßstab.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Performance Engineer\",\"specializesInJavascriptPerformanceOptimi\":\"Spezialisiert auf JavaScript-Leistungsoptimierung und Benchmarking-Methodik. Zuvor bei Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Leidenschaft für Entwicklererfahrung und Bildung. Sprecher bei React Conf, JSConf und i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Full-Stack Developer\",\"maintainsTheBenchmarkingInfrastructureAn\":\"Wartet die Benchmarking-Infrastruktur und die CI/CD-Pipeline. Open-Source-Mitwirkender bei Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Data Analyst\",\"ensuresStatisticalRigorInAll\":\"Gewährleistet statistische Strenge bei allen Benchmark-Ergebnissen. PhD in angewandter Statistik vom MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Community Manager\",\"managesCommunityContributionsPartnership\":\"Verwaltet Community-Beiträge, Partnerschaften und Veranstaltungen. Hintergrund in Open-Source-Governance.\"},\"it\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Fondatore e Ingegnere Capo\",\"formerGoogleEngineerWith10\":\"Ex ingegnere Google con 10 anni di esperienza nella creazione di sistemi di internazionalizzazione su scala.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Ingegnere delle prestazioni\",\"specializesInJavascriptPerformanceOptimi\":\"Specializzato nell'ottimizzazione delle prestazioni JavaScript e nella metodologia di benchmarking. Precedentemente in Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Appassionato di developer experience e formazione. Speaker a React Conf, JSConf e i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Sviluppatore Full-Stack\",\"maintainsTheBenchmarkingInfrastructureAn\":\"Mantiene l'infrastruttura di benchmarking e la pipeline CI/CD. Contributore open source di Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Analista di dati\",\"ensuresStatisticalRigorInAll\":\"Garantisce il rigore statistico in tutti i risultati dei benchmark. Dottorato in Statistica Applicata al MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Community Manager\",\"managesCommunityContributionsPartnership\":\"Gestisce i contributi della comunità, le partnership e gli eventi. Esperienza nella governance open source.\"},\"pt\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Fundador e Engenheiro Principal\",\"formerGoogleEngineerWith10\":\"Ex-engenheiro do Google com 10 anos de experiência na criação de sistemas de internacionalização em escala.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Engenheiro de Performance\",\"specializesInJavascriptPerformanceOptimi\":\"Especializado em otimização de desempenho de JavaScript e metodologia de benchmarking. Anteriormente na Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Apaixonado por experiência do desenvolvedor e educação. Palestrante na React Conf, JSConf e i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Desenvolvedore Full-Stack\",\"maintainsTheBenchmarkingInfrastructureAn\":\"Mantém a infraestrutura de benchmarking e o pipeline de CI/CD. Contribuidor de código aberto do Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Analista de Dados\",\"ensuresStatisticalRigorInAll\":\"Garante o rigor estatístico em todos os resultados do benchmark. PhD em Estatística Aplicada pelo MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Gerente de Comunidade\",\"managesCommunityContributionsPartnership\":\"Gerencia contribuições, parcerias e eventos da comunidade. Experiência em governança de código aberto.\"},\"zh\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"创始人兼首席工程师\",\"formerGoogleEngineerWith10\":\"前 Google 工程师，拥有 10 年大规模构建国际化系统的经验。\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"性能工程师\",\"specializesInJavascriptPerformanceOptimi\":\"专注于 JavaScript 性能优化和基准测试方法论。此前曾任职于 Vercel。\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"开发者关系\",\"passionateAboutDeveloperExperienceAnd\":\"热衷于开发人员体验和教育。曾任 React Conf、JSConf 和 i18nNext 的演讲者。\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"全栈开发人员\",\"maintainsTheBenchmarkingInfrastructureAn\":\"维护基准测试基础设施和 CI/CD 管道。Lingui 的开源贡献者。\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"数据分析师\",\"ensuresStatisticalRigorInAll\":\"确保所有基准测试结果的统计严谨性。麻省理工学院应用统计学博士。\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"社区经理\",\"managesCommunityContributionsPartnership\":\"管理社区贡献、合作伙伴关系和活动。具有开源治理背景。\"},\"ja\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"創設者兼リードエンジニア\",\"formerGoogleEngineerWith10\":\"大規模な国際化システムの構築において10年の経験を持つ元Googleエンジニア。\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"パフォーマンスエンジニア\",\"specializesInJavascriptPerformanceOptimi\":\"JavaScriptのパフォーマンス最適化とベンチマーク手法を専門としています。以前はVercelに在籍。\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"デベロッパーアドボケイト\",\"passionateAboutDeveloperExperienceAnd\":\"開発者エクスペリエンスと教育に情熱を注いでいます。React Conf、JSConf、およびi18nNextのスピーカー。\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"フルスタックデベロッパー\",\"maintainsTheBenchmarkingInfrastructureAn\":\"ベンチマークインフラストラクチャとCI / CDパイプラインを保守します。Linguiへのオープンソースコントリビューター。\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"データアナリスト\",\"ensuresStatisticalRigorInAll\":\"すべてのベンチマーク結果における統計的な厳密さを保証します。MITで応用統計学の博士号を取得。\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"コミュニティマネージャー\",\"managesCommunityContributionsPartnership\":\"コミュニティへの貢献、パートナーシップ、およびイベントを管理します。オープンソースガバナンスの経歴。\"},\"ko\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"설립자 및 수석 엔지니어\",\"formerGoogleEngineerWith10\":\"대규모 국제화 시스템 구축 분야에서 10년의 경력을 쌓은 전직 Google 엔지니어입니다.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"성능 엔지니어\",\"specializesInJavascriptPerformanceOptimi\":\"JavaScript 성능 최적화 및 벤치마킹 방법론을 전공했습니다. 이전에는 Vercel에서 근무했습니다.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"디벨로퍼 애드보킷\",\"passionateAboutDeveloperExperienceAnd\":\"개발자 경험과 교육에 열정적입니다. React Conf, JSConf 및 i18nNext의 발표자입니다.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"풀스택 개발자\",\"maintainsTheBenchmarkingInfrastructureAn\":\"벤치마킹 인프라 및 CI/CD 파이프라인을 유지 관리합니다. Lingui의 오픈 소스 기여자입니다.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"데이터 분석가\",\"ensuresStatisticalRigorInAll\":\"모든 벤치마크 결과에서 통계적 엄격함을 보장합니다. MIT 응용 통계학 박사.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"커뮤니티 매니저\",\"managesCommunityContributionsPartnership\":\"커뮤니티 기여, 파트너십 및 이벤트를 관리합니다. 오픈 소스 거버넌스 배경.\"},\"ru\":{\"sarahChen\":\"Сара Чен\",\"founderLeadEngineer\":\"Основатель и ведущий инженер\",\"formerGoogleEngineerWith10\":\"Бывший инженер Google с 10-летним опытом создания систем интернационализации в масштабе.\",\"marcusWeber\":\"Маркус Вебер\",\"performanceEngineer\":\"Инженер по производительности\",\"specializesInJavascriptPerformanceOptimi\":\"Специализируется на оптимизации производительности JavaScript и методологии бенчмаркинга. Ранее работал в Vercel.\",\"aishaPatel\":\"Аиша Патель\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Увлечен вопросами опыта разработчиков и обучения. Спикер на React Conf, JSConf и i18nNext.\",\"tomasRodriguez\":\"Томас Родригес\",\"fullStackDeveloper\":\"Full-stack разработчик\",\"maintainsTheBenchmarkingInfrastructureAn\":\"Поддерживает инфраструктуру бенчмаркинга и пайплайн CI/CD. Автор open source вкладов в Lingui.\",\"yukiTanaka\":\"Юки Танака\",\"dataAnalyst\":\"Аналитик данных\",\"ensuresStatisticalRigorInAll\":\"Обеспечивает статистическую точность всех результатов бенчмарков. Доктор прикладной статистики (MIT).\",\"elenaKowalski\":\"Елена Ковальски\",\"communityManager\":\"Комьюнити-менеджер\",\"managesCommunityContributionsPartnership\":\"Управляет вкладом сообщества, партнерствами и мероприятиями. Опыт в управлении open source проектами.\"}}}"),
+	localIds: ["team-grid::local::src/components/pages/team/teamGrid.content.ts"]
+};
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -53,6 +43,38 @@ var t$1 = (n) => {
 		children: i.children
 	});
 };
+var RESET = "\x1B[0m";
+var BLUE = "\x1B[34m";
+var RED = "\x1B[31m";
+var GREEN = "\x1B[32m";
+var colorize = (string, color, reset) => color ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
+colorize("✗", RED);
+colorize("✓", GREEN);
+colorize("⏲", BLUE);
+var createSafeFallback = (path = "") => {
+	return new Proxy(() => path, {
+		get: (_target, prop) => {
+			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString") return () => path;
+			if (prop === "then") return;
+			if (prop === Symbol.iterator) return function* () {
+				yield path;
+			};
+			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
+		},
+		apply: () => {
+			return path;
+		}
+	});
+};
+var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+	const props = {
+		dictionaryKey: dictionary.key,
+		dictionaryPath: dictionary.filePath,
+		keyPath: [],
+		plugins
+	};
+	return getContent(dictionary.content, props, plugins);
+};
 var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
 var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
 var splitInsertionTemplate = (template, values = {}) => {
@@ -73,30 +95,48 @@ var splitInsertionTemplate = (template, values = {}) => {
 		parts
 	};
 };
-var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", x = process.env.INTLAYER_NODE_TYPE_MARKDOWN === "false", S = process.env.INTLAYER_NODE_TYPE_HTML === "false", C = process.env.INTLAYER_NODE_TYPE_INSERTION === "false", w$1 = process.env.INTLAYER_EDITOR_ENABLED === "false", T$1 = x ? null : lazy(() => import("./MarkdownRenderer-CZEl8PYG.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), E$1 = x ? null : lazy(() => import("./MarkdownRenderer-CZEl8PYG.js").then((e) => ({ default: e.MarkdownRenderer }))), D$1 = S ? null : lazy(() => import("./HTMLRenderer-BVHh_-9v.js").then((e) => ({ default: e.HTMLRenderer }))), O$1 = y ? fallbackPlugin : {
+var _ = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", v = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false", y = true, b = true, x = true, S = true, C = null, w$1 = null, T$1 = null, E$1 = null, D$1 = null;
+S || (C = lazy(() => import("./ContentSelector-4OrUn2VA.js").then((e) => ({ default: e.ContentSelector })))), y || (w$1 = lazy(() => import("./MarkdownRenderer-DYYTWHGL.js").then((e) => ({ default: e.MarkdownMetadataRenderer }))), T$1 = lazy(() => import("./MarkdownRenderer-DYYTWHGL.js").then((e) => ({ default: e.MarkdownRenderer }))), import("./markdown-RUjI4Z1e.js").then((e) => {
+	D$1 = e.getMarkdownMetadata;
+})), b || (E$1 = lazy(() => import("./HTMLRenderer-BzwfNhlM.js").then((e) => ({ default: e.HTMLRenderer }))));
+var O$1 = _ ? fallbackPlugin : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { plugins: o, ...s }) => e$1({
-		...s,
-		value: s.children,
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(s, { get children() {
-			return s.children;
-		} })) : s.children
+	transform: (t, { plugins: a, ...o }) => e$1({
+		...o,
+		value: o.children,
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return o.children;
+			},
+			get children() {
+				return createComponent(C, mergeProps(o, { get children() {
+					return o.children;
+				} }));
+			}
+		}) : o.children
 	})
-}, k$1 = b ? fallbackPlugin : {
+}, k$1 = v ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
-	transform: (o, { plugins: s, ...c }) => e$1({
-		...c,
+	transform: (a, { plugins: o, ...s }) => e$1({
+		...s,
 		value: "[[solid-element]]",
-		children: !w$1 && editor.enabled ? createComponent(i, mergeProps(c, { get children() {
-			return typeof Node < "u" && o instanceof Node ? o : t$1(o);
-		} })) : typeof Node < "u" && o instanceof Node ? o : t$1(o)
+		children: !S && editor.enabled ? createComponent(Suspense, {
+			get fallback() {
+				return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+			},
+			get children() {
+				return createComponent(C, mergeProps(s, { get children() {
+					return typeof Node < "u" && a instanceof Node ? a : t$1(a);
+				} }));
+			}
+		}) : typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
 }, A$1 = (e, t) => {
 	let n = splitInsertionTemplate(e, t);
 	return n.isSimple, n.parts;
-}, j$1 = C ? fallbackPlugin : {
+}, j$1 = x ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -126,73 +166,73 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 			});
 		};
 	}
-}, M$1 = x ? fallbackPlugin : {
+}, M$1 = y ? fallbackPlugin : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
-	transform: (n, o, s) => {
-		let { plugins: c, ...l } = o, u = s(getMarkdownMetadata(n) ?? {}, {
+	transform: (t, a, o) => {
+		let { plugins: s, ...c } = a, l = o(D$1?.(t) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (o, s) => e$1({
-					...s,
-					value: o,
-					children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
+				transform: (a, o) => e$1({
+					...o,
+					value: a,
+					children: !S && editor.enabled ? createComponent(ContentSelector, mergeProps(c, { get children() {
 						return createComponent(Suspense, {
-							fallback: n,
+							fallback: t,
 							get children() {
-								return createComponent(T$1, mergeProps(l, {
+								return createComponent(w$1, mergeProps(c, {
 									get metadataKeyPath() {
-										return s.keyPath;
+										return o.keyPath;
 									},
-									children: n
+									children: t
 								}));
 							}
 						});
 					} })) : createComponent(Suspense, {
-						fallback: n,
+						fallback: t,
 						get children() {
-							return createComponent(T$1, mergeProps(l, {
+							return createComponent(w$1, mergeProps(c, {
 								get metadataKeyPath() {
-									return s.keyPath;
+									return o.keyPath;
 								},
-								children: n
+								children: t
 							}));
 						}
 					})
 				})
 			}],
-			dictionaryKey: l.dictionaryKey,
+			dictionaryKey: c.dictionaryKey,
 			keyPath: []
-		}), d = (s) => e$1({
-			...o,
-			value: n,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: n,
-					get children() {
-						return createComponent(E$1, mergeProps(l, {
-							components: s,
-							children: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: n,
+		}), u = (o) => e$1({
+			...a,
+			value: t,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: t,
 				get children() {
-					return createComponent(E$1, mergeProps(l, {
-						components: s,
-						children: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(T$1, mergeProps(c, {
+							components: o,
+							children: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: t,
+				get children() {
+					return createComponent(T$1, mergeProps(c, {
+						components: o,
+						children: t
 					}));
 				}
 			}),
-			additionalProps: { metadata: u }
-		}), f = d();
-		return new Proxy(f, { get(e, t, r) {
-			return t === "value" ? n : t === "metadata" ? u : t === "use" ? (e) => d(e) : Reflect.get(e, t, r);
+			additionalProps: { metadata: l }
+		}), d = u();
+		return new Proxy(d, { get(e, n, r) {
+			return n === "value" ? t : n === "metadata" ? l : n === "use" ? (e) => u(e) : Reflect.get(e, n, r);
 		} });
 	}
-}, N$1 = x ? fallbackPlugin : {
+}, N$1 = y ? fallbackPlugin : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -204,35 +244,35 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 			plugins: [M$1, ...t.plugins ?? []]
 		});
 	}
-}, P$1 = S ? fallbackPlugin : {
+}, P$1 = b ? fallbackPlugin : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
-	transform: (n, o) => {
-		let s = n[HTML], { plugins: c, ...l } = o, u = (n) => e$1({
-			...l,
-			value: s,
-			children: !w$1 && editor.enabled ? createComponent(i, mergeProps(l, { get children() {
-				return createComponent(Suspense, {
-					fallback: s,
-					get children() {
-						return createComponent(D$1, mergeProps(l, {
-							html: s,
-							components: n
-						}));
-					}
-				});
-			} })) : createComponent(Suspense, {
-				fallback: s,
+	transform: (t, a) => {
+		let o = t[HTML], { plugins: s, ...c } = a, l = (t) => e$1({
+			...c,
+			value: o,
+			children: !S && editor.enabled ? createComponent(Suspense, {
+				fallback: o,
 				get children() {
-					return createComponent(D$1, mergeProps(l, {
-						html: s,
-						components: n
+					return createComponent(C, mergeProps(c, { get children() {
+						return createComponent(E$1, mergeProps(c, {
+							html: o,
+							components: t
+						}));
+					} }));
+				}
+			}) : createComponent(Suspense, {
+				fallback: o,
+				get children() {
+					return createComponent(E$1, mergeProps(c, {
+						html: o,
+						components: t
 					}));
 				}
 			})
-		}), d = [u()];
-		return new Proxy(d, { get(e, t, n) {
-			return t === "value" ? s : t === "use" ? (e) => u(e) : Reflect.get(e, t, n);
+		}), u = [l()];
+		return new Proxy(u, { get(e, t, n) {
+			return t === "value" ? o : t === "use" ? (e) => l(e) : Reflect.get(e, t, n);
 		} });
 	}
 }, F$1 = /* @__PURE__ */ new Map(), I$1 = (e, t = !0) => {
@@ -253,11 +293,8 @@ var y = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", b = process.en
 	];
 	return F$1.set(n, r), r;
 };
-var n$2 = (n, r) => getIntlayer(n, r, I$1(r));
-process.env["INTLAYER_ROUTING_REWRITE_RULES"];
+var n$1 = (n, r) => getDictionary(n, r, I$1(r));
 var TREE_SHAKE_STORAGE_COOKIES = process.env["INTLAYER_ROUTING_STORAGE_COOKIES"] === "false";
-var TREE_SHAKE_STORAGE_LOCAL_STORAGE = process.env["INTLAYER_ROUTING_STORAGE_LOCALSTORAGE"] === "false";
-var TREE_SHAKE_STORAGE_SESSION_STORAGE = process.env["INTLAYER_ROUTING_STORAGE_SESSIONSTORAGE"] === "false";
 process.env["INTLAYER_ROUTING_STORAGE_HEADERS"];
 var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const { locales } = internationalization;
@@ -265,14 +302,6 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	const isValidLocale = (value) => !!value && locales.includes(value);
 	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-	if (!TREE_SHAKE_STORAGE_LOCAL_STORAGE) for (let i = 0; i < (routing.storage.localStorage ?? []).length; i++) try {
-		const value = options?.getLocaleStorage?.(routing.storage.localStorage[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-	if (!TREE_SHAKE_STORAGE_SESSION_STORAGE && routing.storage.sessionStorage) for (let i = 0; i < routing.storage.sessionStorage.length; i++) try {
-		const value = options?.getSessionStorage?.(routing.storage.sessionStorage[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
 }, localeStorageOptions = {
@@ -293,21 +322,16 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a = getLocaleFromStorageClient(localeStorageOptions);
-process.env.INTLAYER_EDITOR_ENABLED;
-var D = createContext({
+}, a = getLocaleFromStorageClient(localeStorageOptions), D = createContext({
 	locale: () => a ?? internationalization?.defaultLocale,
 	setLocale: () => null
-}), F = (t, n) => {
+}), M = (e, n) => {
 	let r = useContext(D) ?? {};
-	return createMemo(() => {
-		let i = r?.locale();
-		return n$2(t, n ?? i);
-	});
+	return createMemo(() => n$1(e, n ?? r?.locale?.()));
 }, { defaultLocale: L, locales: R } = internationalization;
 var _tmpl$ = template(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">`), _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-6 text-center"><div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground"></div><h3 class="text-base font-semibold text-foreground"></h3><p class="mb-2 text-xs font-medium text-primary"></p><p class="text-sm text-muted-foreground">`);
 function TeamGrid() {
-	const content = F("team-grid");
+	const content = M(team_grid_default);
 	const members = [
 		{
 			name: content().sarahChen.value,
@@ -357,6 +381,9 @@ function TeamGrid() {
 	})();
 }
 export { TeamGrid as default };
+import "solid-js/web";
+var i = (i) => i.children;
+export { i as ContentSelector };
 import { Dynamic, createComponent, mergeProps } from "solid-js/web";
 import { createContext, useContext } from "solid-js";
 var parseAttributes = (attributes) => {
@@ -485,8 +512,8 @@ var a = (e, { components: a = {} } = {}) => {
 	} });
 }, s = (e) => o({ components: e.components || e.userComponents })(e.children || e.html || "");
 export { s as HTMLRenderer };
-import { n as getMarkdownMetadata } from "./markdown-BmCAYw1d.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-VZJ4GP6z.js";
+import { getMarkdownMetadata } from "./markdown-RUjI4Z1e.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 import { createComponent } from "solid-js/web";
 import { Suspense, createContext, createMemo, createResource, useContext } from "solid-js";
 var i = createContext(), o = () => {
@@ -494,21 +521,21 @@ var i = createContext(), o = () => {
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider. To fix this error, wrap your component with <MarkdownProvider>.");
 	return e;
 }, f = (e) => {
-	let i$1 = useContext(i), { renderMarkdown: o$1 } = o(), [l] = createResource(() => [
+	let a = useContext(i), { renderMarkdown: c } = o(), [l] = createResource(() => [
 		e.children,
 		e.forceBlock,
 		e.preserveFrontmatter,
 		e.tagfilter,
 		e.components,
 		e.wrapper
-	], ([e, t, n, r, a, s]) => o$1(e, {
+	], ([e, t, n, r, i, o]) => c(e, {
 		forceBlock: t,
 		preserveFrontmatter: n,
 		tagfilter: r
 	}, {
-		...i$1?.components ?? {},
-		...a ?? {}
-	}, s));
+		...a?.components ?? {},
+		...i ?? {}
+	}, o));
 	return createComponent(Suspense, {
 		fallback: null,
 		get children() {
@@ -520,53 +547,9 @@ var i = createContext(), o = () => {
 	return createMemo(() => getContentNodeByKeyPath(t(), e.metadataKeyPath))();
 };
 export { p as MarkdownMetadataRenderer, f as MarkdownRenderer };
-import { t as __commonJSMin } from "./rolldown-runtime-BG0GCgh6.js";
-var configuration = new Proxy({}, {
-	get(_target, prop) {
-		return (typeof window !== "undefined" ? window.INTLAYER_CONFIG : void 0)?.[prop];
-	},
-	has(_target, prop) {
-		const config = typeof window !== "undefined" ? window.INTLAYER_CONFIG : void 0;
-		return config != null && prop in config;
-	}
-});
-var internationalization = configuration.internationalization;
-configuration.dictionary;
-var routing = configuration.routing;
-configuration.content;
-configuration.system;
-var editor = configuration.editor;
-var log = configuration.log;
-configuration.ai;
-configuration.build;
-configuration.compiler;
-configuration.schemas;
-configuration.plugins;
-var require___vite_browser_external = __commonJSMin(((exports, module) => {
-	module.exports = {};
-}));
-export { log as a, internationalization as i, configuration as n, routing as o, editor as r, require___vite_browser_external as t };
-import { n as configuration, t as require___vite_browser_external } from "./__vite-browser-external-Cnj-CPCM.js";
-var import___vite_browser_external = require___vite_browser_external();
-var getUnmergedDictionaries = (configuration$1 = configuration) => {
-	const { system } = configuration$1;
-	const { unmergedDictionariesDir } = system;
-	const dictionaries = {};
-	if ((0, import___vite_browser_external.existsSync)(unmergedDictionariesDir)) {
-		const files = (0, import___vite_browser_external.readdirSync)(unmergedDictionariesDir).filter((file) => file.endsWith(".json"));
-		for (const file of files) {
-			const key = (0, import___vite_browser_external.basename)(file, (0, import___vite_browser_external.extname)(file));
-			const content = (0, import___vite_browser_external.readFileSync)((0, import___vite_browser_external.join)(unmergedDictionariesDir, file), "utf-8");
-			dictionaries[key] = JSON.parse(content);
-		}
-	}
-	return dictionaries;
-};
-export { getUnmergedDictionaries };
-import { n as configuration, r as editor } from "./__vite-browser-external-Cnj-CPCM.js";
-import { n as getBasePlugins, r as getContent } from "./getDictionary-BDPI18gp.js";
-import { f as TRANSLATION } from "./nodeType-DivqwnYF.js";
-import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-VZJ4GP6z.js";
+import { d as configuration, f as editor, n as getContent, t as getBasePlugins } from "./getContent-CxNp4SqB.js";
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+import { t as getContentNodeByKeyPath } from "./getContentNodeByKeyPath-BJITrhrU.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);
 var compareUrls = (url1, url2) => {
 	try {
@@ -1478,7 +1461,7 @@ var EditorStateManager = class {
 	}
 	async _loadDictionaries() {
 		try {
-			const unmergedDictionaries = (await import("./esm-A20ZMhEv.js")).getUnmergedDictionaries();
+			const unmergedDictionaries = (await import("./unmerged_dictionaries-BqxArPI5.js")).getUnmergedDictionaries();
 			const dictionariesList = Object.fromEntries(Object.values(unmergedDictionaries).flat().map((dictionary) => [dictionary.localId, dictionary]));
 			this.localeDictionaries.set(dictionariesList);
 			if (this.editorEnabled.value) this._broadcastData();
@@ -1732,25 +1715,114 @@ var stopEditorClient = () => {
 	setGlobalEditorManager(null);
 };
 export { initEditorClient, stopEditorClient };
-import { f as TRANSLATION } from "./nodeType-DivqwnYF.js";
-var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
-	let currentValue = structuredClone(dictionaryContent);
-	for (const keyObj of keyPath) {
-		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
-		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
-		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
-		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
-	}
-	return currentValue;
+import { c as OBJECT, t as ARRAY, u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
 };
-export { getContentNodeByKeyPath as t };
-import { r as __require$1 } from "./rolldown-runtime-BG0GCgh6.js";
-import { a as log, i as internationalization, n as configuration, t as require___vite_browser_external } from "./__vite-browser-external-Cnj-CPCM.js";
-import { a as GENDER, f as TRANSLATION, l as NESTED, n as CONDITION, r as ENUMERATION, s as INSERTION, t as ARRAY, u as OBJECT } from "./nodeType-DivqwnYF.js";
-var getCondition = (conditionContent, state) => {
-	const stateList = Object.keys(conditionContent);
-	const fallbackState = stateList[stateList.length - 1];
-	return conditionContent[`${state}`] ?? conditionContent.fallback ?? conditionContent[fallbackState];
+var routing = {
+	"mode": "prefix-no-default",
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": {}
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var editor = {
+	"editorURL": "http://localhost:8000",
+	"cmsURL": "https://app.intlayer.org",
+	"backendURL": "https://back.intlayer.org",
+	"port": 8e3,
+	"enabled": false,
+	"dictionaryPriorityStrategy": "local_first",
+	"liveSync": true,
+	"liveSyncPort": 4e3,
+	"liveSyncURL": "http://localhost:4000"
+};
+var log = {
+	"mode": "default",
+	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
+};
+var configuration = {
+	internationalization,
+	routing,
+	editor,
+	log,
+	system: {
+		"baseDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app",
+		"moduleAugmentationDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"unmergedDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/unmerged_dictionary",
+		"remoteDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/remote_dictionary",
+		"dictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dictionary",
+		"dynamicDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/dynamic_dictionary",
+		"fetchDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/fetch_dictionary",
+		"typesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/types",
+		"mainDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/main",
+		"configDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/config",
+		"cacheDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/cache",
+		"tempDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app/.intlayer/tmp"
+	},
+	content: {
+		"fileExtensions": [
+			".content.ts",
+			".content.js",
+			".content.cjs",
+			".content.mjs",
+			".content.json",
+			".content.json5",
+			".content.jsonc",
+			".content.tsx",
+			".content.jsx"
+		],
+		"contentDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"codeDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-solid-static/solid-intlayer-app"],
+		"excludedPath": [
+			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,astro}",
+			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
+			"!***.spec.*",
+			"!***.d.ts",
+			"!***.map"
+		],
+		"outputFormat": ["esm", "cjs"],
+		"cache": true,
+		"checkTypes": false
+	},
+	ai,
+	dictionary,
+	build,
+	compiler: {
+		"enabled": true,
+		"dictionaryKeyPrefix": "",
+		"noMetadata": false,
+		"saveComponents": false
+	}
 };
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
@@ -1789,122 +1861,6 @@ var deepTransformNode = (node, props) => {
 		}
 	});
 	return result;
-};
-var findMatchingCondition = (enumerationContent, quantity) => {
-	const numericKeys = Object.keys(enumerationContent);
-	for (const key of numericKeys) {
-		const isEqual = !key.startsWith(">") && !key.startsWith("<") && !key.startsWith("=") && parseFloat(key) === quantity || key.startsWith("=") && parseFloat(key.slice(1)) === quantity;
-		const isSuperior = key.startsWith(">") && quantity > parseFloat(key.slice(1));
-		const isSuperiorOrEqual = key.startsWith(">=") && quantity >= parseFloat(key.slice(2));
-		const isInferior = key.startsWith("<") && quantity < parseFloat(key.slice(1));
-		const isInferiorOrEqual = key.startsWith("<=") && quantity <= parseFloat(key.slice(2));
-		if (isEqual || isSuperior || isSuperiorOrEqual || isInferior || isInferiorOrEqual) return key;
-	}
-};
-var getEnumeration = (enumerationContent, quantity) => {
-	return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
-};
-var getGenderEntry = (gender) => {
-	if (gender === "m" || gender === "male") return "male";
-	if (gender === "f" || gender === "female") return "female";
-	return "fallback";
-};
-var getGender = (genderContent, gender) => {
-	const stateList = Object.keys(genderContent);
-	const fallbackState = stateList[stateList.length - 1];
-	return genderContent[getGenderEntry(gender)] ?? genderContent.fallback ?? genderContent[fallbackState];
-};
-var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
-	return (values[key.trim()] ?? "").toString();
-});
-var RESET = "\x1B[0m";
-var BLUE = "\x1B[34m";
-var RED = "\x1B[31m";
-var GREEN = "\x1B[32m";
-var BEIGE = "\x1B[38;5;3m";
-var loggerPrefix;
-var getPrefix = (configPrefix) => {
-	if (typeof loggerPrefix !== "undefined") return loggerPrefix;
-	return configPrefix;
-};
-var logger = (content, details) => {
-	const config = details?.config ?? {};
-	const mode = config.mode ?? "default";
-	if (mode === "disabled" || details?.isVerbose && mode !== "verbose") return;
-	const prefix = getPrefix(config.prefix);
-	const flatContent = prefix ? [prefix, ...[content].flat()] : [content].flat();
-	const level = details?.level ?? "info";
-	(config[level] ?? console[level] ?? config.log ?? console.log)(...flatContent);
-};
-var getAppLogger = (configuration, globalDetails) => (content, details) => logger(content, {
-	...details ?? {},
-	config: {
-		...configuration?.log,
-		...globalDetails?.config,
-		...details?.config ?? {}
-	}
-});
-var colorize = (string, color, reset) => color ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
-var colorizeKey = (keyPath, color = BEIGE, reset = RESET) => [keyPath].flat().map((key) => colorize(key, color, reset)).join(`, `);
-colorize("✗", RED);
-colorize("✓", GREEN);
-colorize("⏲", BLUE);
-var __require = ((x) => typeof __require$1 !== "undefined" ? __require$1 : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof __require$1 !== "undefined" ? __require$1 : a)[b] }) : x)(function(x) {
-	if (typeof __require$1 !== "undefined") return __require$1.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
-var import___vite_browser_external = require___vite_browser_external();
-var configESMxCJSRequire = typeof import.meta.url === "string" ? (0, import___vite_browser_external.createRequire)(import.meta.url) : __require;
-var getDictionaries = (configuration$1 = configuration) => {
-	const { system, build } = configuration$1;
-	const dictionariesPath = (0, import___vite_browser_external.join)(system.mainDir, `dictionaries.cjs`);
-	let dictionaries = {};
-	if ((0, import___vite_browser_external.existsSync)(dictionariesPath)) dictionaries = (build.require ?? configESMxCJSRequire)(dictionariesPath);
-	return dictionaries ?? {};
-};
-var createSafeFallback = (path = "") => {
-	return new Proxy(() => path, {
-		get: (_target, prop) => {
-			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString") return () => path;
-			if (prop === "then") return;
-			if (prop === Symbol.iterator) return function* () {
-				yield path;
-			};
-			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
-		},
-		apply: () => {
-			return path;
-		}
-	});
-};
-var dictionaryCache = /* @__PURE__ */ new Map();
-var getIntlayer = (key, locale, plugins) => {
-	const dictionary = getDictionaries()[key];
-	if (!dictionary) {
-		getAppLogger({ log })(`Dictionary ${colorizeKey(key)} was not found. Using fallback proxy.`, {
-			level: "warn",
-			isVerbose: true
-		});
-		return createSafeFallback(key);
-	}
-	const cacheKey = `${key}_${locale ?? "default"}_${plugins ? "custom_plugins" : "default_plugins"}`;
-	if (dictionaryCache.has(cacheKey)) return dictionaryCache.get(cacheKey);
-	const result = getDictionary(dictionary, locale, plugins);
-	dictionaryCache.set(cacheKey, result);
-	return result;
-};
-var getNesting = (dictionaryKey, path, props) => {
-	const dictionary = getIntlayer(dictionaryKey, props?.locale, props?.plugins);
-	if (typeof path === "string") {
-		const pathArray = path.split(".");
-		let current = dictionary;
-		for (const key of pathArray) {
-			current = current?.[key];
-			if (current === void 0) return dictionary;
-		}
-		return current;
-	}
-	return dictionary;
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1957,12 +1913,6 @@ var getTranslation = (languageContent, locale, fallback) => {
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
 var TREE_SHAKE_TRANSLATION = process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false";
-var TREE_SHAKE_ENUMERATION = process.env["INTLAYER_NODE_TYPE_ENUMERATION"] === "false";
-var TREE_SHAKE_CONDITION = process.env["INTLAYER_NODE_TYPE_CONDITION"] === "false";
-var TREE_SHAKE_INSERTION = process.env["INTLAYER_NODE_TYPE_INSERTION"] === "false";
-var TREE_SHAKE_GENDER = process.env["INTLAYER_NODE_TYPE_GENDER"] === "false";
-var TREE_SHAKE_NESTED = process.env["INTLAYER_NODE_TYPE_NESTED"] === "false";
-var TREE_SHAKE_FILE = process.env["INTLAYER_NODE_TYPE_FILE"] === "false";
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
@@ -1988,123 +1938,12 @@ var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackP
 		return getTranslation(result, locale, fallback);
 	}
 };
-var enumerationPlugin = TREE_SHAKE_ENUMERATION ? fallbackPlugin : {
-	id: "enumeration-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "enumeration",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[ENUMERATION];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: ENUMERATION,
-					key
-				}]
-			});
-		}
-		return (arg) => {
-			const subResult = getEnumeration(result, typeof arg === "number" ? arg : arg.count);
-			if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-			return subResult;
-		};
-	}
-};
-var conditionPlugin = TREE_SHAKE_CONDITION ? fallbackPlugin : {
-	id: "condition-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "condition",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[CONDITION];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: CONDITION,
-					key
-				}]
-			});
-		}
-		return (arg) => {
-			const subResult = getCondition(result, typeof arg === "boolean" ? arg : arg.value);
-			if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-			return subResult;
-		};
-	}
-};
-var insertionPlugin = TREE_SHAKE_INSERTION ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string",
-			transform: (node, subProps, deepTransformNode) => {
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const children = getInsertion(transformedResult, values);
-					return deepTransformNode(children, {
-						...subProps,
-						plugins: props.plugins,
-						children
-					});
-				};
-			}
-		};
-		return deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-	}
-};
-var genderPlugin = TREE_SHAKE_GENDER ? fallbackPlugin : {
-	id: "gender-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "gender",
-	transform: (node, props, deepTransformNode) => {
-		const original = node[GENDER];
-		const result = {};
-		for (const key in original) {
-			const child = original[key];
-			result[key] = deepTransformNode(child, {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: GENDER,
-					key
-				}]
-			});
-		}
-		return (value) => getGender(result, value);
-	}
-};
-var nestedPlugin = (locale) => TREE_SHAKE_NESTED ? fallbackPlugin : {
-	id: "nested-plugin",
-	canHandle: (node) => typeof node === "object" && (node?.nodeType === "nested" || node?.nodeType === "n"),
-	transform: (node, props) => getNesting(node[NESTED].dictionaryKey, node[NESTED].path, {
-		...props,
-		locale: locale ?? props.locale
-	})
-};
-var filePlugin = TREE_SHAKE_FILE ? fallbackPlugin : {
-	id: "file-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "file",
-	transform: (node, props, deepTransform) => deepTransform(node.content, {
-		...props,
-		children: node.content
-	})
-};
+var enumerationPlugin = fallbackPlugin;
+var conditionPlugin = fallbackPlugin;
+var insertionPlugin = fallbackPlugin;
+var genderPlugin = fallbackPlugin;
+var nestedPlugin = (locale) => fallbackPlugin;
+var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
@@ -2118,17 +1957,19 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
-	};
-	return getContent(dictionary.content, props, plugins);
+export { fallbackPlugin as a, nestedPlugin as c, configuration as d, editor as f, routing as h, enumerationPlugin as i, translationPlugin as l, log as m, getContent as n, filePlugin as o, internationalization as p, conditionPlugin as r, genderPlugin as s, getBasePlugins as t, getTranslation as u };
+import { u as TRANSLATION } from "./nodeType-7ZUTNKKR.js";
+var getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
+	let currentValue = structuredClone(dictionaryContent);
+	for (const keyObj of keyPath) {
+		if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
+		if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
+		if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
+		if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
+	}
+	return currentValue;
 };
-export { enumerationPlugin as a, genderPlugin as c, getTranslation as d, getIntlayer as f, conditionPlugin as i, nestedPlugin as l, getBasePlugins as n, fallbackPlugin as o, getContent as r, filePlugin as s, getDictionary as t, translationPlugin as u };
-import { n as __exportAll } from "./rolldown-runtime-BG0GCgh6.js";
+export { getContentNodeByKeyPath as t };
 var PRESERVED_LITERALS = new Set([
 	"true",
 	"false",
@@ -3698,16 +3539,7 @@ var compileWithOptions = (markdown, runtime, options = {}) => {
 		slugify
 	}, compilerOptions);
 };
-var markdown_exports = __exportAll({
-	DURATION_DELAY_TRIGGER: () => 20,
-	INLINE_SKIP_R: () => INLINE_SKIP_R,
-	ORDERED: () => 1,
-	ORDERED_LIST_BULLET: () => ORDERED_LIST_BULLET,
-	UNORDERED: () => 2,
-	UNORDERED_LIST_BULLET: () => UNORDERED_LIST_BULLET,
-	compileWithOptions: () => compileWithOptions
-});
-export { getMarkdownMetadata as n, markdown_exports as t };
+export { compileWithOptions, getMarkdownMetadata };
 var TRANSLATION = "translation";
 var ENUMERATION = "enumeration";
 var CONDITION = "condition";
@@ -3715,25 +3547,10 @@ var INSERTION = "insertion";
 var FILE = "file";
 var OBJECT = "object";
 var ARRAY = "array";
-var NESTED = "nested";
 var REACT_NODE = "reactNode";
 var MARKDOWN = "markdown";
 var HTML = "html";
-var GENDER = "gender";
-export { GENDER as a, MARKDOWN as c, REACT_NODE as d, TRANSLATION as f, FILE as i, NESTED as l, CONDITION as n, HTML as o, ENUMERATION as r, INSERTION as s, ARRAY as t, OBJECT as u };
-var __defProp = Object.defineProperty;
-var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
-var __exportAll = (all, no_symbols) => {
-	let target = {};
-	for (var name in all) __defProp(target, name, {
-		get: all[name],
-		enumerable: true
-	});
-	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
-	return target;
-};
-var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
-	if (typeof require !== "undefined") return require.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
-export { __exportAll as n, __require as r, __commonJSMin as t };
+export { HTML as a, OBJECT as c, FILE as i, REACT_NODE as l, CONDITION as n, INSERTION as o, ENUMERATION as r, MARKDOWN as s, ARRAY as t, TRANSLATION as u };
+var dictionaries = {};
+var getUnmergedDictionaries = () => dictionaries;
+export { getUnmergedDictionaries };

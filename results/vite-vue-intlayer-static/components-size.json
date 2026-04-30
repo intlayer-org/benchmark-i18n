@@ -1,492 +1,492 @@
 {
-  "timestamp": "2026-04-29T23:31:16.300Z",
+  "timestamp": "2026-04-30T01:28:26.129Z",
   "packageName": "vite-vue-intlayer-static",
   "summary": {
     "totalComponents": 60,
-    "totalUnminifiedBytes": 4971104,
-    "totalMinifiedBytes": 3796343,
-    "totalGzipBytes": 1133208
+    "totalUnminifiedBytes": 5002208,
+    "totalMinifiedBytes": 3804593,
+    "totalGzipBytes": 1140589
   },
   "components": [
     {
       "name": "Layout.vue",
       "category": "Shared",
-      "unminifiedBytes": 106490,
-      "unminifiedGzipBytes": 27415,
-      "minifiedBytes": 81358,
-      "minifiedGzipBytes": 23937
+      "unminifiedBytes": 108145,
+      "unminifiedGzipBytes": 27959,
+      "minifiedBytes": 81868,
+      "minifiedGzipBytes": 24381
     },
     {
       "name": "UnderstandingImpact.vue",
       "category": "pages",
-      "unminifiedBytes": 101329,
-      "unminifiedGzipBytes": 29725,
-      "minifiedBytes": 81240,
-      "minifiedGzipBytes": 26754
+      "unminifiedBytes": 101083,
+      "unminifiedGzipBytes": 29970,
+      "minifiedBytes": 80737,
+      "minifiedGzipBytes": 26837
     },
     {
       "name": "UnderstandingImpact.vue",
       "category": "home",
-      "unminifiedBytes": 101329,
-      "unminifiedGzipBytes": 29725,
-      "minifiedBytes": 81240,
-      "minifiedGzipBytes": 26754
+      "unminifiedBytes": 101083,
+      "unminifiedGzipBytes": 29970,
+      "minifiedBytes": 80737,
+      "minifiedGzipBytes": 26837
     },
     {
       "name": "FAQList.vue",
       "category": "pages",
-      "unminifiedBytes": 97278,
-      "unminifiedGzipBytes": 28411,
-      "minifiedBytes": 78113,
-      "minifiedGzipBytes": 25506
+      "unminifiedBytes": 97874,
+      "unminifiedGzipBytes": 28639,
+      "minifiedBytes": 78417,
+      "minifiedGzipBytes": 25580
     },
     {
       "name": "FAQList.vue",
       "category": "faq",
-      "unminifiedBytes": 97278,
-      "unminifiedGzipBytes": 28411,
-      "minifiedBytes": 78113,
-      "minifiedGzipBytes": 25506
-    },
-    {
-      "name": "BlogList.vue",
-      "category": "pages",
-      "unminifiedBytes": 91807,
-      "unminifiedGzipBytes": 25070,
-      "minifiedBytes": 72429,
-      "minifiedGzipBytes": 22116
-    },
-    {
-      "name": "BlogList.vue",
-      "category": "blog",
-      "unminifiedBytes": 91807,
-      "unminifiedGzipBytes": 25070,
-      "minifiedBytes": 72429,
-      "minifiedGzipBytes": 22116
+      "unminifiedBytes": 97874,
+      "unminifiedGzipBytes": 28639,
+      "minifiedBytes": 78417,
+      "minifiedGzipBytes": 25580
     },
     {
       "name": "Header.vue",
       "category": "Shared",
-      "unminifiedBytes": 95664,
-      "unminifiedGzipBytes": 24613,
-      "minifiedBytes": 72374,
-      "minifiedGzipBytes": 21109
+      "unminifiedBytes": 96829,
+      "unminifiedGzipBytes": 25022,
+      "minifiedBytes": 72845,
+      "minifiedGzipBytes": 21463
+    },
+    {
+      "name": "BlogList.vue",
+      "category": "pages",
+      "unminifiedBytes": 92336,
+      "unminifiedGzipBytes": 25337,
+      "minifiedBytes": 72668,
+      "minifiedGzipBytes": 22204
+    },
+    {
+      "name": "BlogList.vue",
+      "category": "blog",
+      "unminifiedBytes": 92336,
+      "unminifiedGzipBytes": 25337,
+      "minifiedBytes": 72668,
+      "minifiedGzipBytes": 22204
     },
     {
       "name": "WhyItMatters.vue",
       "category": "pages",
-      "unminifiedBytes": 91450,
-      "unminifiedGzipBytes": 26335,
-      "minifiedBytes": 71755,
-      "minifiedGzipBytes": 23341
+      "unminifiedBytes": 91304,
+      "unminifiedGzipBytes": 26567,
+      "minifiedBytes": 71335,
+      "minifiedGzipBytes": 23424
     },
     {
       "name": "WhyItMatters.vue",
       "category": "home",
-      "unminifiedBytes": 91450,
-      "unminifiedGzipBytes": 26335,
-      "minifiedBytes": 71755,
-      "minifiedGzipBytes": 23341
+      "unminifiedBytes": 91304,
+      "unminifiedGzipBytes": 26567,
+      "minifiedBytes": 71335,
+      "minifiedGzipBytes": 23424
     },
     {
       "name": "WhatWeMeasure.vue",
       "category": "pages",
-      "unminifiedBytes": 89139,
-      "unminifiedGzipBytes": 25518,
-      "minifiedBytes": 69767,
-      "minifiedGzipBytes": 22540
+      "unminifiedBytes": 89691,
+      "unminifiedGzipBytes": 25765,
+      "minifiedBytes": 70012,
+      "minifiedGzipBytes": 22641
     },
     {
       "name": "WhatWeMeasure.vue",
       "category": "about",
-      "unminifiedBytes": 89139,
-      "unminifiedGzipBytes": 25518,
-      "minifiedBytes": 69767,
-      "minifiedGzipBytes": 22540
+      "unminifiedBytes": 89691,
+      "unminifiedGzipBytes": 25765,
+      "minifiedBytes": 70012,
+      "minifiedGzipBytes": 22641
     },
     {
       "name": "OpenPositions.vue",
       "category": "pages",
-      "unminifiedBytes": 89127,
-      "unminifiedGzipBytes": 23676,
-      "minifiedBytes": 69572,
-      "minifiedGzipBytes": 20749
+      "unminifiedBytes": 89601,
+      "unminifiedGzipBytes": 23944,
+      "minifiedBytes": 69748,
+      "minifiedGzipBytes": 20848
     },
     {
       "name": "OpenPositions.vue",
       "category": "careers",
-      "unminifiedBytes": 89127,
-      "unminifiedGzipBytes": 23676,
-      "minifiedBytes": 69572,
-      "minifiedGzipBytes": 20749
+      "unminifiedBytes": 89601,
+      "unminifiedGzipBytes": 23944,
+      "minifiedBytes": 69748,
+      "minifiedGzipBytes": 20848
     },
     {
       "name": "TeamGrid.vue",
       "category": "pages",
-      "unminifiedBytes": 86651,
-      "unminifiedGzipBytes": 23253,
-      "minifiedBytes": 67333,
-      "minifiedGzipBytes": 20314
+      "unminifiedBytes": 87239,
+      "unminifiedGzipBytes": 23500,
+      "minifiedBytes": 67633,
+      "minifiedGzipBytes": 20404
     },
     {
       "name": "TeamGrid.vue",
       "category": "team",
-      "unminifiedBytes": 86651,
-      "unminifiedGzipBytes": 23253,
-      "minifiedBytes": 67333,
-      "minifiedGzipBytes": 20314
+      "unminifiedBytes": 87239,
+      "unminifiedGzipBytes": 23500,
+      "minifiedBytes": 67633,
+      "minifiedGzipBytes": 20404
     },
     {
       "name": "ProductsGrid.vue",
       "category": "pages",
-      "unminifiedBytes": 86543,
-      "unminifiedGzipBytes": 23546,
-      "minifiedBytes": 67189,
-      "minifiedGzipBytes": 20613
+      "unminifiedBytes": 87050,
+      "unminifiedGzipBytes": 23800,
+      "minifiedBytes": 67393,
+      "minifiedGzipBytes": 20706
     },
     {
       "name": "ProductsGrid.vue",
       "category": "products",
-      "unminifiedBytes": 86543,
-      "unminifiedGzipBytes": 23546,
-      "minifiedBytes": 67189,
-      "minifiedGzipBytes": 20613
+      "unminifiedBytes": 87050,
+      "unminifiedGzipBytes": 23800,
+      "minifiedBytes": 67393,
+      "minifiedGzipBytes": 20706
     },
     {
       "name": "AboutGrid.vue",
       "category": "pages",
-      "unminifiedBytes": 86013,
-      "unminifiedGzipBytes": 24362,
-      "minifiedBytes": 66633,
-      "minifiedGzipBytes": 21379
+      "unminifiedBytes": 86274,
+      "unminifiedGzipBytes": 24619,
+      "minifiedBytes": 66598,
+      "minifiedGzipBytes": 21453
     },
     {
       "name": "AboutGrid.vue",
       "category": "about",
-      "unminifiedBytes": 86013,
-      "unminifiedGzipBytes": 24362,
-      "minifiedBytes": 66633,
-      "minifiedGzipBytes": 21379
+      "unminifiedBytes": 86274,
+      "unminifiedGzipBytes": 24619,
+      "minifiedBytes": 66598,
+      "minifiedGzipBytes": 21453
     },
     {
       "name": "PricingTiers.vue",
       "category": "pages",
-      "unminifiedBytes": 85743,
-      "unminifiedGzipBytes": 21940,
-      "minifiedBytes": 65748,
-      "minifiedGzipBytes": 18949
+      "unminifiedBytes": 85069,
+      "unminifiedGzipBytes": 22190,
+      "minifiedBytes": 64672,
+      "minifiedGzipBytes": 19089
     },
     {
       "name": "PricingTiers.vue",
       "category": "pricing",
-      "unminifiedBytes": 85743,
-      "unminifiedGzipBytes": 21940,
-      "minifiedBytes": 65748,
-      "minifiedGzipBytes": 18949
+      "unminifiedBytes": 85069,
+      "unminifiedGzipBytes": 22190,
+      "minifiedBytes": 64672,
+      "minifiedGzipBytes": 19089
     },
     {
       "name": "PreferencesSection.vue",
       "category": "pages",
-      "unminifiedBytes": 83430,
-      "unminifiedGzipBytes": 20998,
-      "minifiedBytes": 63310,
-      "minifiedGzipBytes": 18056
+      "unminifiedBytes": 82998,
+      "unminifiedGzipBytes": 21219,
+      "minifiedBytes": 62565,
+      "minifiedGzipBytes": 18166
     },
     {
       "name": "PreferencesSection.vue",
       "category": "settings",
-      "unminifiedBytes": 83430,
-      "unminifiedGzipBytes": 20998,
-      "minifiedBytes": 63310,
-      "minifiedGzipBytes": 18056
+      "unminifiedBytes": 82998,
+      "unminifiedGzipBytes": 21219,
+      "minifiedBytes": 62565,
+      "minifiedGzipBytes": 18166
     },
     {
       "name": "Footer.vue",
       "category": "Shared",
-      "unminifiedBytes": 82292,
-      "unminifiedGzipBytes": 20970,
-      "minifiedBytes": 62191,
-      "minifiedGzipBytes": 18023
+      "unminifiedBytes": 82313,
+      "unminifiedGzipBytes": 21230,
+      "minifiedBytes": 61916,
+      "minifiedGzipBytes": 18157
     },
     {
       "name": "ContactForm.vue",
       "category": "pages",
-      "unminifiedBytes": 81411,
-      "unminifiedGzipBytes": 20330,
-      "minifiedBytes": 61480,
-      "minifiedGzipBytes": 17424
+      "unminifiedBytes": 81195,
+      "unminifiedGzipBytes": 20552,
+      "minifiedBytes": 60972,
+      "minifiedGzipBytes": 17521
     },
     {
       "name": "ContactForm.vue",
       "category": "contact",
-      "unminifiedBytes": 81411,
-      "unminifiedGzipBytes": 20330,
-      "minifiedBytes": 61480,
-      "minifiedGzipBytes": 17424
+      "unminifiedBytes": 81195,
+      "unminifiedGzipBytes": 20552,
+      "minifiedBytes": 60972,
+      "minifiedGzipBytes": 17521
     },
     {
       "name": "ThemeToggle.vue",
       "category": "Shared",
-      "unminifiedBytes": 80136,
-      "unminifiedGzipBytes": 19758,
-      "minifiedBytes": 60389,
-      "minifiedGzipBytes": 16811
+      "unminifiedBytes": 80618,
+      "unminifiedGzipBytes": 20062,
+      "minifiedBytes": 60506,
+      "minifiedGzipBytes": 16992
     },
     {
       "name": "CareersHeader.vue",
       "category": "pages",
-      "unminifiedBytes": 79220,
-      "unminifiedGzipBytes": 20909,
-      "minifiedBytes": 59802,
-      "minifiedGzipBytes": 18046
+      "unminifiedBytes": 80304,
+      "unminifiedGzipBytes": 21208,
+      "minifiedBytes": 60369,
+      "minifiedGzipBytes": 18185
     },
     {
       "name": "CareersHeader.vue",
       "category": "careers",
-      "unminifiedBytes": 79220,
-      "unminifiedGzipBytes": 20909,
-      "minifiedBytes": 59802,
-      "minifiedGzipBytes": 18046
-    },
-    {
-      "name": "TeamHeader.vue",
-      "category": "pages",
-      "unminifiedBytes": 78707,
-      "unminifiedGzipBytes": 20654,
-      "minifiedBytes": 59311,
-      "minifiedGzipBytes": 17800
-    },
-    {
-      "name": "TeamHeader.vue",
-      "category": "team",
-      "unminifiedBytes": 78707,
-      "unminifiedGzipBytes": 20654,
-      "minifiedBytes": 59311,
-      "minifiedGzipBytes": 17800
-    },
-    {
-      "name": "Hero.vue",
-      "category": "pages",
-      "unminifiedBytes": 78760,
-      "unminifiedGzipBytes": 20236,
-      "minifiedBytes": 59307,
-      "minifiedGzipBytes": 17396
-    },
-    {
-      "name": "Hero.vue",
-      "category": "home",
-      "unminifiedBytes": 78760,
-      "unminifiedGzipBytes": 20236,
-      "minifiedBytes": 59307,
-      "minifiedGzipBytes": 17396
-    },
-    {
-      "name": "ResultsTable.vue",
-      "category": "pages",
-      "unminifiedBytes": 79281,
-      "unminifiedGzipBytes": 19590,
-      "minifiedBytes": 59273,
-      "minifiedGzipBytes": 16709
-    },
-    {
-      "name": "ResultsTable.vue",
-      "category": "home",
-      "unminifiedBytes": 79281,
-      "unminifiedGzipBytes": 19590,
-      "minifiedBytes": 59273,
-      "minifiedGzipBytes": 16709
+      "unminifiedBytes": 80304,
+      "unminifiedGzipBytes": 21208,
+      "minifiedBytes": 60369,
+      "minifiedGzipBytes": 18185
     },
     {
       "name": "ContactHeader.vue",
       "category": "pages",
-      "unminifiedBytes": 78708,
-      "unminifiedGzipBytes": 20455,
-      "minifiedBytes": 59209,
-      "minifiedGzipBytes": 17586
+      "unminifiedBytes": 79778,
+      "unminifiedGzipBytes": 20759,
+      "minifiedBytes": 59769,
+      "minifiedGzipBytes": 17732
     },
     {
       "name": "ContactHeader.vue",
       "category": "contact",
-      "unminifiedBytes": 78708,
-      "unminifiedGzipBytes": 20455,
-      "minifiedBytes": 59209,
-      "minifiedGzipBytes": 17586
+      "unminifiedBytes": 79778,
+      "unminifiedGzipBytes": 20759,
+      "minifiedBytes": 59769,
+      "minifiedGzipBytes": 17732
     },
     {
-      "name": "AboutHeader.vue",
+      "name": "TeamHeader.vue",
       "category": "pages",
-      "unminifiedBytes": 78067,
-      "unminifiedGzipBytes": 20326,
-      "minifiedBytes": 58822,
-      "minifiedGzipBytes": 17487
+      "unminifiedBytes": 79686,
+      "unminifiedGzipBytes": 20960,
+      "minifiedBytes": 59753,
+      "minifiedGzipBytes": 17939
     },
     {
-      "name": "AboutHeader.vue",
-      "category": "about",
-      "unminifiedBytes": 78067,
-      "unminifiedGzipBytes": 20326,
-      "minifiedBytes": 58822,
-      "minifiedGzipBytes": 17487
+      "name": "TeamHeader.vue",
+      "category": "team",
+      "unminifiedBytes": 79686,
+      "unminifiedGzipBytes": 20960,
+      "minifiedBytes": 59753,
+      "minifiedGzipBytes": 17939
+    },
+    {
+      "name": "Hero.vue",
+      "category": "pages",
+      "unminifiedBytes": 79079,
+      "unminifiedGzipBytes": 20485,
+      "minifiedBytes": 59332,
+      "minifiedGzipBytes": 17481
+    },
+    {
+      "name": "Hero.vue",
+      "category": "home",
+      "unminifiedBytes": 79079,
+      "unminifiedGzipBytes": 20485,
+      "minifiedBytes": 59332,
+      "minifiedGzipBytes": 17481
     },
     {
       "name": "ProductsHeader.vue",
       "category": "pages",
-      "unminifiedBytes": 78167,
-      "unminifiedGzipBytes": 20070,
-      "minifiedBytes": 58745,
-      "minifiedGzipBytes": 17224
+      "unminifiedBytes": 79252,
+      "unminifiedGzipBytes": 20371,
+      "minifiedBytes": 59311,
+      "minifiedGzipBytes": 17363
     },
     {
       "name": "ProductsHeader.vue",
       "category": "products",
-      "unminifiedBytes": 78167,
-      "unminifiedGzipBytes": 20070,
-      "minifiedBytes": 58745,
-      "minifiedGzipBytes": 17224
+      "unminifiedBytes": 79252,
+      "unminifiedGzipBytes": 20371,
+      "minifiedBytes": 59311,
+      "minifiedGzipBytes": 17363
+    },
+    {
+      "name": "ResultsTable.vue",
+      "category": "pages",
+      "unminifiedBytes": 79463,
+      "unminifiedGzipBytes": 19847,
+      "minifiedBytes": 59186,
+      "minifiedGzipBytes": 16815
+    },
+    {
+      "name": "ResultsTable.vue",
+      "category": "home",
+      "unminifiedBytes": 79463,
+      "unminifiedGzipBytes": 19847,
+      "minifiedBytes": 59186,
+      "minifiedGzipBytes": 16815
     },
     {
       "name": "PricingHeader.vue",
       "category": "pages",
-      "unminifiedBytes": 78162,
-      "unminifiedGzipBytes": 20310,
-      "minifiedBytes": 58721,
-      "minifiedGzipBytes": 17460
+      "unminifiedBytes": 79152,
+      "unminifiedGzipBytes": 20621,
+      "minifiedBytes": 59164,
+      "minifiedGzipBytes": 17605
     },
     {
       "name": "PricingHeader.vue",
       "category": "pricing",
-      "unminifiedBytes": 78162,
-      "unminifiedGzipBytes": 20310,
-      "minifiedBytes": 58721,
-      "minifiedGzipBytes": 17460
+      "unminifiedBytes": 79152,
+      "unminifiedGzipBytes": 20621,
+      "minifiedBytes": 59164,
+      "minifiedGzipBytes": 17605
     },
     {
       "name": "SettingsHeader.vue",
       "category": "pages",
-      "unminifiedBytes": 77965,
-      "unminifiedGzipBytes": 19958,
-      "minifiedBytes": 58543,
-      "minifiedGzipBytes": 17112
+      "unminifiedBytes": 79050,
+      "unminifiedGzipBytes": 20264,
+      "minifiedBytes": 59109,
+      "minifiedGzipBytes": 17254
     },
     {
       "name": "SettingsHeader.vue",
       "category": "settings",
-      "unminifiedBytes": 77965,
-      "unminifiedGzipBytes": 19958,
-      "minifiedBytes": 58543,
-      "minifiedGzipBytes": 17112
+      "unminifiedBytes": 79050,
+      "unminifiedGzipBytes": 20264,
+      "minifiedBytes": 59109,
+      "minifiedGzipBytes": 17254
     },
     {
       "name": "BlogHeader.vue",
       "category": "pages",
-      "unminifiedBytes": 77888,
-      "unminifiedGzipBytes": 19950,
-      "minifiedBytes": 58482,
-      "minifiedGzipBytes": 17104
+      "unminifiedBytes": 78969,
+      "unminifiedGzipBytes": 20255,
+      "minifiedBytes": 59052,
+      "minifiedGzipBytes": 17246
     },
     {
       "name": "BlogHeader.vue",
       "category": "blog",
-      "unminifiedBytes": 77888,
-      "unminifiedGzipBytes": 19950,
-      "minifiedBytes": 58482,
-      "minifiedGzipBytes": 17104
+      "unminifiedBytes": 78969,
+      "unminifiedGzipBytes": 20255,
+      "minifiedBytes": 59052,
+      "minifiedGzipBytes": 17246
+    },
+    {
+      "name": "AboutHeader.vue",
+      "category": "pages",
+      "unminifiedBytes": 78592,
+      "unminifiedGzipBytes": 20569,
+      "minifiedBytes": 59037,
+      "minifiedGzipBytes": 17579
+    },
+    {
+      "name": "AboutHeader.vue",
+      "category": "about",
+      "unminifiedBytes": 78592,
+      "unminifiedGzipBytes": 20569,
+      "minifiedBytes": 59037,
+      "minifiedGzipBytes": 17579
     },
     {
       "name": "CareersBenefits.vue",
       "category": "pages",
-      "unminifiedBytes": 77843,
-      "unminifiedGzipBytes": 19564,
-      "minifiedBytes": 58469,
-      "minifiedGzipBytes": 16712
+      "unminifiedBytes": 78503,
+      "unminifiedGzipBytes": 19829,
+      "minifiedBytes": 58849,
+      "minifiedGzipBytes": 16834
     },
     {
       "name": "CareersBenefits.vue",
       "category": "careers",
-      "unminifiedBytes": 77843,
-      "unminifiedGzipBytes": 19564,
-      "minifiedBytes": 58469,
-      "minifiedGzipBytes": 16712
+      "unminifiedBytes": 78503,
+      "unminifiedGzipBytes": 19829,
+      "minifiedBytes": 58849,
+      "minifiedGzipBytes": 16834
     },
     {
       "name": "FAQHeader.vue",
       "category": "pages",
-      "unminifiedBytes": 77770,
-      "unminifiedGzipBytes": 20016,
-      "minifiedBytes": 58378,
-      "minifiedGzipBytes": 17164
+      "unminifiedBytes": 78748,
+      "unminifiedGzipBytes": 20324,
+      "minifiedBytes": 58821,
+      "minifiedGzipBytes": 17305
     },
     {
       "name": "FAQHeader.vue",
       "category": "faq",
-      "unminifiedBytes": 77770,
-      "unminifiedGzipBytes": 20016,
-      "minifiedBytes": 58378,
-      "minifiedGzipBytes": 17164
+      "unminifiedBytes": 78748,
+      "unminifiedGzipBytes": 20324,
+      "minifiedBytes": 58821,
+      "minifiedGzipBytes": 17305
     },
     {
       "name": "ApiAccessSection.vue",
       "category": "pages",
-      "unminifiedBytes": 77012,
-      "unminifiedGzipBytes": 19229,
-      "minifiedBytes": 57562,
-      "minifiedGzipBytes": 16369
+      "unminifiedBytes": 77424,
+      "unminifiedGzipBytes": 19479,
+      "minifiedBytes": 57663,
+      "minifiedGzipBytes": 16478
     },
     {
       "name": "ApiAccessSection.vue",
       "category": "settings",
-      "unminifiedBytes": 77012,
-      "unminifiedGzipBytes": 19229,
-      "minifiedBytes": 57562,
-      "minifiedGzipBytes": 16369
+      "unminifiedBytes": 77424,
+      "unminifiedGzipBytes": 19479,
+      "minifiedBytes": 57663,
+      "minifiedGzipBytes": 16478
     },
     {
       "name": "ProfileSection.vue",
       "category": "pages",
-      "unminifiedBytes": 76236,
-      "unminifiedGzipBytes": 18680,
-      "minifiedBytes": 56816,
-      "minifiedGzipBytes": 15840
+      "unminifiedBytes": 76631,
+      "unminifiedGzipBytes": 18939,
+      "minifiedBytes": 56904,
+      "minifiedGzipBytes": 15949
     },
     {
       "name": "ProfileSection.vue",
       "category": "settings",
-      "unminifiedBytes": 76236,
-      "unminifiedGzipBytes": 18680,
-      "minifiedBytes": 56816,
-      "minifiedGzipBytes": 15840
+      "unminifiedBytes": 76631,
+      "unminifiedGzipBytes": 18939,
+      "minifiedBytes": 56904,
+      "minifiedGzipBytes": 15949
     },
     {
       "name": "MockBanner.vue",
       "category": "Shared",
-      "unminifiedBytes": 75621,
-      "unminifiedGzipBytes": 19210,
-      "minifiedBytes": 56562,
-      "minifiedGzipBytes": 16382
+      "unminifiedBytes": 76203,
+      "unminifiedGzipBytes": 19457,
+      "minifiedBytes": 56839,
+      "minifiedGzipBytes": 16481
     },
     {
       "name": "SettingsFooter.vue",
       "category": "pages",
-      "unminifiedBytes": 75112,
-      "unminifiedGzipBytes": 18415,
-      "minifiedBytes": 55926,
-      "minifiedGzipBytes": 15595
+      "unminifiedBytes": 75631,
+      "unminifiedGzipBytes": 18666,
+      "minifiedBytes": 56131,
+      "minifiedGzipBytes": 15692
     },
     {
       "name": "SettingsFooter.vue",
       "category": "settings",
-      "unminifiedBytes": 75112,
-      "unminifiedGzipBytes": 18415,
-      "minifiedBytes": 55926,
-      "minifiedGzipBytes": 15595
+      "unminifiedBytes": 75631,
+      "unminifiedGzipBytes": 18666,
+      "minifiedBytes": 56131,
+      "minifiedGzipBytes": 15692
     },
     {
       "name": "LocaleSwitcher.vue",
       "category": "Shared",
-      "unminifiedBytes": 53263,
-      "unminifiedGzipBytes": 11978,
-      "minifiedBytes": 39599,
-      "minifiedGzipBytes": 10256
+      "unminifiedBytes": 54148,
+      "unminifiedGzipBytes": 12253,
+      "minifiedBytes": 40219,
+      "minifiedGzipBytes": 10455
     }
   ]
 }

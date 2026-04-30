@@ -76,8 +76,7 @@ var careers_benefits_default = {
 				"workFromAnywhereInThe": "Работайте из любой точки мира"
 			}
 		}
-	},
-	localIds: ["careers-benefits::local::src/components/pages/careers/careersBenefits.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -883,37 +882,52 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
+var CareersBenefits_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "CareersBenefits",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const content = b(careers_benefits_default);
+		const __returned__ = {
+			content,
+			benefits: [
+				{
+					label: "Remote-first",
+					value: content.workFromAnywhereInThe
+				},
+				{
+					label: content.competitivePay,
+					value: content.topOfMarketCompensation
+				},
+				{
+					label: content.openSourceTime,
+					value: content.x20TimeForOssContributions
+				}
+			]
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "mb-12 grid gap-4 md:grid-cols-3" };
 var _hoisted_2 = { class: "text-sm font-semibold text-foreground" };
 var _hoisted_3 = { class: "text-xs text-muted-foreground" };
-var CareersBenefits_default = defineComponent({
-	__name: "CareersBenefits",
-	setup(__props) {
-		const content = b(careers_benefits_default);
-		const benefits = [
-			{
-				label: "Remote-first",
-				value: content.workFromAnywhereInThe
-			},
-			{
-				label: content.competitivePay,
-				value: content.topOfMarketCompensation
-			},
-			{
-				label: content.openSourceTime,
-				value: content.x20TimeForOssContributions
-			}
-		];
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList(benefits, (b) => {
-				return createElementVNode("div", {
-					key: b.label,
-					class: "rounded-lg border border-border bg-card p-4 text-center"
-				}, [createElementVNode("p", _hoisted_2, toDisplayString(b.label), 1), createElementVNode("p", _hoisted_3, toDisplayString(b.value), 1)]);
-			}), 64))]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList($setup.benefits, (b) => {
+		return createElementVNode("div", {
+			key: b.label,
+			class: "rounded-lg border border-border bg-card p-4 text-center"
+		}, [createElementVNode("p", _hoisted_2, toDisplayString(b.label), 1), createElementVNode("p", _hoisted_3, toDisplayString(b.value), 1)]);
+	}), 64))]);
+}
+var CareersBenefits_default = _plugin_vue_export_helper_default(CareersBenefits_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/careers/CareersBenefits.vue"]]);
 export { CareersBenefits_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

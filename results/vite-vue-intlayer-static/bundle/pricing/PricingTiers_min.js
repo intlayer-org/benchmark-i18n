@@ -1,24 +1,24 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, createTextVNode as v, defineComponent as y, getCurrentInstance as b, h as x, inject as S, isRef as ee, markRaw as C, normalizeClass as w, openBlock as T, ref as E, renderList as D, shallowRef as te, toDisplayString as O, toValue as k, unref as A, watch as ne } from "vue";
+import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, createTextVNode as v, defineComponent as y, getCurrentInstance as ee, h as b, inject as x, isRef as S, markRaw as C, normalizeClass as w, openBlock as T, ref as E, renderList as D, shallowRef as te, toDisplayString as O, toValue as k, watch as ne } from "vue";
 var re = {
 	key: "pricing-tiers",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				starterName: "Starter",
-				starterPrice: "$0",
-				starterPeriod: "forever",
-				starterFeatures: [
+				l: "Starter",
+				n: "$0",
+				m: "forever",
+				k: [
 					"5 benchmark runs/day",
 					"3 libraries",
 					"Community support",
 					"Public results"
 				],
-				proName: "Pro",
-				proPrice: "$29",
-				proPeriod: "/month",
-				proFeatures: [
+				h: "Pro",
+				j: "$29",
+				i: "/month",
+				g: [
 					"Unlimited runs",
 					"All libraries",
 					"Priority support",
@@ -26,10 +26,10 @@ var re = {
 					"CI integration",
 					"Historical data"
 				],
-				enterpriseName: "Enterprise",
-				enterprisePrice: "Custom",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "Enterprise",
+				e: "Custom",
+				d: "",
+				b: [
 					"Everything in Pro",
 					"On-premise option",
 					"SSO & SAML",
@@ -38,23 +38,23 @@ var re = {
 					"Audit logs",
 					"Training sessions"
 				],
-				contactSales: "Contact Sales",
-				getStarted: "Get Started"
+				a: "Contact Sales",
+				f: "Get Started"
 			},
 			fr: {
-				starterName: "Starter",
-				starterPrice: "0 €",
-				starterPeriod: "pour toujours",
-				starterFeatures: [
+				l: "Starter",
+				n: "0 €",
+				m: "pour toujours",
+				k: [
 					"5 exécutions de benchmark / jour",
 					"3 bibliothèques",
 					"Support communautaire",
 					"Résultats publics"
 				],
-				proName: "Pro",
-				proPrice: "29 €",
-				proPeriod: "/ mois",
-				proFeatures: [
+				h: "Pro",
+				j: "29 €",
+				i: "/ mois",
+				g: [
 					"Exécutions illimitées",
 					"Toutes les bibliothèques",
 					"Support prioritaire",
@@ -62,10 +62,10 @@ var re = {
 					"Intégration CI",
 					"Historique"
 				],
-				enterpriseName: "Enterprise",
-				enterprisePrice: "Sur mesure",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "Enterprise",
+				e: "Sur mesure",
+				d: "",
+				b: [
 					"Tout le Pro",
 					"Option on-premise",
 					"SSO et SAML",
@@ -74,23 +74,23 @@ var re = {
 					"Journaux d'audit",
 					"Sessions de formation"
 				],
-				contactSales: "Contacter les ventes",
-				getStarted: "Commencer"
+				a: "Contacter les ventes",
+				f: "Commencer"
 			},
 			es: {
-				starterName: "Starter",
-				starterPrice: "0 $",
-				starterPeriod: "para siempre",
-				starterFeatures: [
+				l: "Starter",
+				n: "0 $",
+				m: "para siempre",
+				k: [
 					"5 ejecuciones de benchmark al día",
 					"3 bibliotecas",
 					"Soporte de la comunidad",
 					"Resultados públicos"
 				],
-				proName: "Pro",
-				proPrice: "29 $",
-				proPeriod: "/mes",
-				proFeatures: [
+				h: "Pro",
+				j: "29 $",
+				i: "/mes",
+				g: [
 					"Ejecuciones ilimitadas",
 					"Todas las bibliotecas",
 					"Soporte prioritario",
@@ -98,10 +98,10 @@ var re = {
 					"Integración CI",
 					"Datos históricos"
 				],
-				enterpriseName: "Enterprise",
-				enterprisePrice: "Personalizado",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "Enterprise",
+				e: "Personalizado",
+				d: "",
+				b: [
 					"Todo lo de Pro",
 					"Opción local",
 					"SSO y SAML",
@@ -110,23 +110,23 @@ var re = {
 					"Registros de auditoría",
 					"Sesiones de formación"
 				],
-				contactSales: "Contactar ventas",
-				getStarted: "Comenzar"
+				a: "Contactar ventas",
+				f: "Comenzar"
 			},
 			de: {
-				starterName: "Starter",
-				starterPrice: "0 €",
-				starterPeriod: "für immer",
-				starterFeatures: [
+				l: "Starter",
+				n: "0 €",
+				m: "für immer",
+				k: [
 					"5 Benchmark-Durchläufe/Tag",
 					"3 Bibliotheken",
 					"Community-Support",
 					"Öffentliche Ergebnisse"
 				],
-				proName: "Pro",
-				proPrice: "29 €",
-				proPeriod: "/Monat",
-				proFeatures: [
+				h: "Pro",
+				j: "29 €",
+				i: "/Monat",
+				g: [
 					"Unbegrenzte Durchläufe",
 					"Alle Bibliotheken",
 					"Prioritäts-Support",
@@ -134,10 +134,10 @@ var re = {
 					"CI-Integration",
 					"Historische Daten"
 				],
-				enterpriseName: "Enterprise",
-				enterprisePrice: "Individuell",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "Enterprise",
+				e: "Individuell",
+				d: "",
+				b: [
 					"Alles in Pro",
 					"On-Premise-Option",
 					"SSO & SAML",
@@ -146,23 +146,23 @@ var re = {
 					"Audit-Protokolle",
 					"Schulungssitzungen"
 				],
-				contactSales: "Vertrieb kontaktieren",
-				getStarted: "Erste Schritte"
+				a: "Vertrieb kontaktieren",
+				f: "Erste Schritte"
 			},
 			it: {
-				starterName: "Starter",
-				starterPrice: "0 €",
-				starterPeriod: "per sempre",
-				starterFeatures: [
+				l: "Starter",
+				n: "0 €",
+				m: "per sempre",
+				k: [
 					"5 esecuzioni benchmark/giorno",
 					"3 librerie",
 					"Supporto della comunità",
 					"Risultati pubblici"
 				],
-				proName: "Pro",
-				proPrice: "29 €",
-				proPeriod: "/mese",
-				proFeatures: [
+				h: "Pro",
+				j: "29 €",
+				i: "/mese",
+				g: [
 					"Esecuzioni illimitate",
 					"Tutte le librerie",
 					"Supporto prioritario",
@@ -170,10 +170,10 @@ var re = {
 					"Integrazione CI",
 					"Dati storici"
 				],
-				enterpriseName: "Enterprise",
-				enterprisePrice: "Personalizzato",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "Enterprise",
+				e: "Personalizzato",
+				d: "",
+				b: [
 					"Tutto in Pro",
 					"Opzione on-premise",
 					"SSO e SAML",
@@ -182,23 +182,23 @@ var re = {
 					"Log di audit",
 					"Sessioni di formazione"
 				],
-				contactSales: "Contatta l'ufficio vendite",
-				getStarted: "Inizia"
+				a: "Contatta l'ufficio vendite",
+				f: "Inizia"
 			},
 			pt: {
-				starterName: "Starter",
-				starterPrice: "0 $",
-				starterPeriod: "para sempre",
-				starterFeatures: [
+				l: "Starter",
+				n: "0 $",
+				m: "para sempre",
+				k: [
 					"5 execuções de benchmark/dia",
 					"3 bibliotecas",
 					"Suporte da comunidade",
 					"Resultados públicos"
 				],
-				proName: "Pro",
-				proPrice: "29 $",
-				proPeriod: "/mês",
-				proFeatures: [
+				h: "Pro",
+				j: "29 $",
+				i: "/mês",
+				g: [
 					"Execuções ilimitadas",
 					"Todas as bibliotecas",
 					"Suporte prioritário",
@@ -206,10 +206,10 @@ var re = {
 					"Integração CI",
 					"Dados históricos"
 				],
-				enterpriseName: "Enterprise",
-				enterprisePrice: "Personalizado",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "Enterprise",
+				e: "Personalizado",
+				d: "",
+				b: [
 					"Tudo no Pro",
 					"Opção on-premise",
 					"SSO e SAML",
@@ -218,23 +218,23 @@ var re = {
 					"Logs de auditoria",
 					"Sessões de treinamento"
 				],
-				contactSales: "Contatar Vendas",
-				getStarted: "Começar"
+				a: "Contatar Vendas",
+				f: "Começar"
 			},
 			zh: {
-				starterName: "入门版",
-				starterPrice: "0 美元",
-				starterPeriod: "永久",
-				starterFeatures: [
+				l: "入门版",
+				n: "0 美元",
+				m: "永久",
+				k: [
 					"每天 5 次基准测试",
 					"3 个库",
 					"社区支持",
 					"公开结果"
 				],
-				proName: "专业版",
-				proPrice: "29 美元",
-				proPeriod: "/月",
-				proFeatures: [
+				h: "专业版",
+				j: "29 美元",
+				i: "/月",
+				g: [
 					"无限次运行",
 					"所有库",
 					"优先支持",
@@ -242,10 +242,10 @@ var re = {
 					"CI 集成",
 					"历史数据"
 				],
-				enterpriseName: "企业版",
-				enterprisePrice: "自定义",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "企业版",
+				e: "自定义",
+				d: "",
+				b: [
 					"包含专业版所有功能",
 					"本地部署选项",
 					"SSO 和 SAML",
@@ -254,23 +254,23 @@ var re = {
 					"审计日志",
 					"培训课程"
 				],
-				contactSales: "联系销售",
-				getStarted: "开始使用"
+				a: "联系销售",
+				f: "开始使用"
 			},
 			ja: {
-				starterName: "スターター",
-				starterPrice: "0ドル",
-				starterPeriod: "永久に",
-				starterFeatures: [
+				l: "スターター",
+				n: "0ドル",
+				m: "永久に",
+				k: [
 					"1日5回のベンチマーク実行",
 					"3つのライブラリ",
 					"コミュニティサポート",
 					"公開結果"
 				],
-				proName: "プロ",
-				proPrice: "29ドル",
-				proPeriod: "/月",
-				proFeatures: [
+				h: "プロ",
+				j: "29ドル",
+				i: "/月",
+				g: [
 					"実行回数無制限",
 					"すべてのライブラリ",
 					"優先サポート",
@@ -278,10 +278,10 @@ var re = {
 					"CI統合",
 					"履歴データ"
 				],
-				enterpriseName: "エンタープライズ",
-				enterprisePrice: "カスタム",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "エンタープライズ",
+				e: "カスタム",
+				d: "",
+				b: [
 					"Proのすべての機能",
 					"オンプレミスオプション",
 					"SSOおよびSAML",
@@ -290,23 +290,23 @@ var re = {
 					"監査ログ",
 					"トレーニングセッション"
 				],
-				contactSales: "営業に連絡",
-				getStarted: "開始する"
+				a: "営業に連絡",
+				f: "開始する"
 			},
 			ko: {
-				starterName: "스타터",
-				starterPrice: "0달러",
-				starterPeriod: "영구적으로",
-				starterFeatures: [
+				l: "스타터",
+				n: "0달러",
+				m: "영구적으로",
+				k: [
 					"하루 5회 벤치마크 실행",
 					"3개 라이브러리",
 					"커뮤니티 지원",
 					"공개 결과"
 				],
-				proName: "프로",
-				proPrice: "29달러",
-				proPeriod: "/월",
-				proFeatures: [
+				h: "프로",
+				j: "29달러",
+				i: "/월",
+				g: [
 					"무제한 실행",
 					"모든 라이브러리",
 					"우선 지원",
@@ -314,10 +314,10 @@ var re = {
 					"CI 통합",
 					"기록 데이터"
 				],
-				enterpriseName: "엔터프라이즈",
-				enterprisePrice: "맞춤형",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "엔터프라이즈",
+				e: "맞춤형",
+				d: "",
+				b: [
 					"프로의 모든 기능 포함",
 					"온프레미스 옵션",
 					"SSO 및 SAML",
@@ -326,23 +326,23 @@ var re = {
 					"감사 로그",
 					"교육 세션"
 				],
-				contactSales: "영업팀 문의",
-				getStarted: "시작하기"
+				a: "영업팀 문의",
+				f: "시작하기"
 			},
 			ru: {
-				starterName: "Начальный",
-				starterPrice: "0 $",
-				starterPeriod: "навсегда",
-				starterFeatures: [
+				l: "Начальный",
+				n: "0 $",
+				m: "навсегда",
+				k: [
 					"5 запусков бенчмарков в день",
 					"3 библиотеки",
 					"Поддержка сообщества",
 					"Публичные результаты"
 				],
-				proName: "Профессиональный",
-				proPrice: "29 $",
-				proPeriod: "/мес",
-				proFeatures: [
+				h: "Профессиональный",
+				j: "29 $",
+				i: "/мес",
+				g: [
 					"Неограниченное количество запусков",
 					"Все библиотеки",
 					"Приоритетная поддержка",
@@ -350,10 +350,10 @@ var re = {
 					"Интеграция с CI",
 					"Исторические данные"
 				],
-				enterpriseName: "Предприятие",
-				enterprisePrice: "Индивидуально",
-				enterprisePeriod: "",
-				enterpriseFeatures: [
+				c: "Предприятие",
+				e: "Индивидуально",
+				d: "",
+				b: [
 					"Все функции Pro",
 					"Локальное развертывание",
 					"SSO и SAML",
@@ -362,13 +362,12 @@ var re = {
 					"Журналы аудита",
 					"Сессии по обучению"
 				],
-				contactSales: "Связаться с отделом продаж",
-				getStarted: "Начать"
+				a: "Связаться с отделом продаж",
+				f: "Начать"
 			}
 		}
-	},
-	localIds: ["pricing-tiers::local::src/components/pages/pricing/PricingTiers.content.ts"]
-}, j = ({ value: e, children: t, additionalProps: n = {} }) => {
+	}
+}, A = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = E(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -386,7 +385,7 @@ var re = {
 			return r.value;
 		},
 		use(e) {
-			return j({
+			return A({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -397,7 +396,7 @@ var re = {
 		},
 		...n
 	}), C(o);
-}, M = y({
+}, j = y({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -420,12 +419,12 @@ var re = {
 		plugins: n
 	};
 	return c(e.content, r, n);
-}, N = (e) => {
+}, M = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, P = /* @__PURE__ */ new Map(), ae = (e) => {
-	if (P.has(e)) return P.get(e);
+}, N = /* @__PURE__ */ new Map(), ae = (e) => {
+	if (N.has(e)) return N.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -446,11 +445,11 @@ var re = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: N(m),
+			props: M(m),
 			children: []
 		});
 		else {
-			let e = N(m);
+			let e = M(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -467,7 +466,7 @@ var re = {
 			children: e.children
 		});
 	}
-	return P.set(e, n), n;
+	return N.set(e, n), n;
 }, oe = (e, t) => {
 	let n = ae(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
@@ -502,12 +501,12 @@ var re = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", F = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
+}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
 	if (!Object.values(t).some(se)) return {
 		isSimple: !0,
-		parts: e.replace(F, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(P, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(F), r = [];
+	let n = e.split(P), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -517,15 +516,15 @@ var re = {
 		isSimple: !1,
 		parts: r
 	};
-}, le = Symbol("intlayerHTML"), ue = () => S(le), I = (e, { components: t = {} } = {}) => {
-	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => x(t, e, e?.children)]));
+}, le = Symbol("intlayerHTML"), ue = () => x(le), F = (e, { components: t = {} } = {}) => {
+	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => b(t, e, e?.children)]));
 	return oe(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
-		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => x(t, e, e?.children);
+		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => b(t, e, e?.children);
 	} }));
 }, de = ({ components: e } = {}) => {
 	let t = ue();
-	return (n) => t ? t.renderHTML(n, { components: e }) : I(n, { components: e });
+	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 y({
 	name: "HTMLRenderer",
@@ -719,17 +718,17 @@ var fe = new Set([
 	class: "className",
 	for: "htmlFor"
 });
-var L = "(?:\\d+\\.)", R = "(?:[*+-])", z = (e) => `(?=[\\s\\S]+?\\1${e ? "\\1" : ""})`, B = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
-RegExp(`^([*_])\\1${z(1)}${B}\\1\\1(?!\\1)`), RegExp(`^([*_])${z(0)}${B}\\1(?!\\1)`), RegExp(`^(==)${z(0)}${B}\\1`), RegExp(`^(~~)${z(0)}${B}\\1`);
-var V = (e) => "( *)(" + (e === 1 ? L : R) + ") +", H = V(1), U = V(2), W = (e) => RegExp("^" + (e === 1 ? H : U));
+var I = "(?:\\d+\\.)", L = "(?:[*+-])", R = (e) => `(?=[\\s\\S]+?\\1${e ? "\\1" : ""})`, z = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
+RegExp(`^([*_])\\1${R(1)}${z}\\1\\1(?!\\1)`), RegExp(`^([*_])${R(0)}${z}\\1(?!\\1)`), RegExp(`^(==)${R(0)}${z}\\1`), RegExp(`^(~~)${R(0)}${z}\\1`);
+var B = (e) => "( *)(" + (e === 1 ? I : L) + ") +", V = B(1), H = B(2), U = (e) => RegExp("^" + (e === 1 ? V : H));
+U(1), U(2);
+var W = (e) => RegExp("^" + (e === 1 ? V : H) + "[^\\n]*(?:\\n(?!\\1" + (e === 1 ? I : L) + " )[^\\n]*)*(\\n|$)", "gm");
 W(1), W(2);
-var G = (e) => RegExp("^" + (e === 1 ? H : U) + "[^\\n]*(?:\\n(?!\\1" + (e === 1 ? L : R) + " )[^\\n]*)*(\\n|$)", "gm");
-G(1), G(2);
-var K = (e) => {
-	let t = e === 1 ? L : R;
+var G = (e) => {
+	let t = e === 1 ? I : L;
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
-K(1), K(2);
+G(1), G(2);
 var he = (e) => (t, n = {}) => {
 	let r = performance.now(), i = (t, n = {}) => he(e)(t, n);
 	if (Array.isArray(t)) {
@@ -748,17 +747,17 @@ var he = (e) => (t, n = {}) => {
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
 }, ge = Symbol("intlayerMarkdown"), _e = () => {
-	let e = S(ge, { renderMarkdown: (e) => e });
+	let e = x(ge, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, ve = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", q = !0, ye = !0, be = !0, J = !0, xe = ve ? t : {
+}, K = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", q = !0, ve = !0, ye = !0, J = !0, be = K ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => j({
+		let r = (e) => A({
 			...n,
 			value: e,
-			children: !J && p.enabled ? () => x(M, {
+			children: !J && p.enabled ? () => b(j, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -776,7 +775,7 @@ var he = (e) => (t, n = {}) => {
 		}
 		return C(a);
 	}
-}, Se = (e, t) => {
+}, xe = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
 	let i = ce(e, r);
@@ -788,7 +787,7 @@ var he = (e) => (t, n = {}) => {
 				let a = `__VNODE_${i}__`, o = t.indexOf(a);
 				o !== -1 && (o > r && e.push(t.substring(r, o)), e.push(n.get(i)), r = o + a.length);
 			}
-			return r < t.length && e.push(t.substring(r)), x(m, null, ...e);
+			return r < t.length && e.push(t.substring(r)), b(m, null, ...e);
 		} else return i.parts.forEach((t) => {
 			if (typeof t == "string") {
 				let r = t;
@@ -798,10 +797,10 @@ var he = (e) => (t, n = {}) => {
 				}
 				r.length > 0 && e.push(r);
 			} else e.push(t);
-		}), x(m, null, ...e);
+		}), b(m, null, ...e);
 	}
-	return i.isSimple ? i.parts : x(m, null, i.parts);
-}, Ce = be ? t : {
+	return i.isSimple ? i.parts : b(m, null, i.parts);
+}, Se = ye ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -815,7 +814,7 @@ var he = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = Se(i, e);
+					let a = xe(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -831,7 +830,7 @@ var he = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, we = q ? t : {
+}, Ce = q ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
@@ -839,7 +838,7 @@ var he = (e) => (t, n = {}) => {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => j({
+				transform: (t, n) => A({
 					...n,
 					value: t,
 					children: e
@@ -847,7 +846,7 @@ var he = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => j({
+		}), o = (n) => A({
 			...t,
 			value: e,
 			children: () => {
@@ -855,7 +854,7 @@ var he = (e) => (t, n = {}) => {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !J && p.enabled ? x(M, {
+				return !J && p.enabled ? b(j, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -867,7 +866,7 @@ var he = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, Te = q ? t : {
+}, we = q ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -876,21 +875,21 @@ var he = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [we, ...t.plugins ?? []]
+			plugins: [Ce, ...t.plugins ?? []]
 		});
 	}
-}, Ee = ye ? t : {
+}, Te = ve ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
 		let n = e[s];
 		e.tags;
 		let r = (e = {}) => {
-			let i = I(n, { components: e });
-			return j({
+			let i = F(n, { components: e });
+			return A({
 				...t,
 				value: n,
-				children: !J && p.enabled ? () => x(M, {
+				children: !J && p.enabled ? () => b(j, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -900,7 +899,7 @@ var he = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, Y = /* @__PURE__ */ new Map(), De = (t, r = !0) => {
+}, Y = /* @__PURE__ */ new Map(), Ee = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
 	if (Y.has(i)) return Y.get(i);
 	let s = [
@@ -910,21 +909,21 @@ var he = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
-		xe,
-		Ce,
-		Te,
-		Ee
+		be,
+		Se,
+		we,
+		Te
 	];
 	return Y.set(i, s), s;
-}, Oe = (e, t) => ie(e, t, De(t)), ke = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Ae = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => C(y({
+}, De = (e, t) => ie(e, t, Ee(t)), Oe = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), ke = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => C(y({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : Q(t) ? x(t) : Array.isArray(t) ? x("span", t) : t;
+			return t == null ? null : Q(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
 		};
 	}
-})), je = (e) => new Proxy({}, {
+})), Ae = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -946,10 +945,10 @@ var he = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), Me = (t, n) => {
-	let r = b() ? S(ke) : void 0, i = ee(r?.locale) ? r.locale : E(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : k(n)) ?? i.value), o = te({});
+}), je = (t, n) => {
+	let r = ee() ? x(Oe) : void 0, i = S(r?.locale) ? r.locale : E(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : k(n)) ?? i.value), o = te({});
 	ne([() => k(t), () => a.value], ([e, t]) => {
-		o.value = Oe(e, t);
+		o.value = De(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -965,7 +964,7 @@ var he = (e) => (t, n = {}) => {
 			if (n === Symbol.toPrimitive) return () => i.value;
 			let a = e.concat(n), c = X(o.value, a);
 			if (c === void 0 || Z(c) && !Q(c)) return s(a);
-			if (Ae(c)) return je(h(() => X(o.value, a)));
+			if (ke(c)) return Ae(h(() => X(o.value, a)));
 			let l = h(() => X(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
@@ -983,48 +982,76 @@ var he = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, Ne = { class: "grid gap-6 md:grid-cols-3" }, Pe = { class: "text-lg font-semibold text-foreground" }, Fe = { class: "my-4" }, Ie = { class: "text-3xl font-bold text-foreground" }, Le = { class: "text-sm text-muted-foreground" }, Re = { class: "mb-6 flex-1 space-y-2" }, ze = y({
+}, Me = y({
 	__name: "PricingTiers",
-	setup(e) {
-		let { starterName: t, starterPrice: n, starterPeriod: r, starterFeatures: i, proName: a, proPrice: o, proPeriod: s, proFeatures: c, enterpriseName: l, enterprisePrice: u, enterprisePeriod: d, enterpriseFeatures: f, contactSales: p, getStarted: y } = Me(re), b = h(() => [
-			{
-				name: t.value,
-				price: n.value,
-				period: r.value,
-				features: i.value
-			},
-			{
-				name: a.value,
-				price: o.value,
-				period: s.value,
-				features: c.value,
-				highlighted: !0
-			},
-			{
-				name: l.value,
-				price: u.value,
-				period: d.value,
-				features: f.value
-			}
-		]);
-		return (e, t) => (T(), g("div", Ne, [(T(!0), g(m, null, D(b.value, (e) => (T(), g("div", {
-			key: e.name,
-			class: w(["flex flex-col rounded-lg border p-6", e.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
-		}, [
-			_("h3", Pe, O(e.name), 1),
-			_("div", Fe, [_("span", Ie, O(e.price), 1), _("span", Le, O(e.period), 1)]),
-			_("ul", Re, [(T(!0), g(m, null, D(e.features, (e) => (T(), g("li", {
-				key: e,
-				class: "flex items-center gap-2 text-sm text-muted-foreground"
-			}, [t[0] ||= _("span", { class: "text-primary" }, "✓", -1), v(" " + O(e), 1)]))), 128))]),
-			_("button", {
-				type: "button",
-				class: w(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", e.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
-			}, O(e.name === A(l) ? A(p) : A(y)), 3)
-		], 2))), 128))]));
+	setup(e, { expose: t }) {
+		t();
+		let { l: n, n: r, m: i, k: a, h: o, j: s, i: c, g: l, c: u, e: d, d: f, b: p, a: m, f: g } = je(re), _ = {
+			starterName: n,
+			starterPrice: r,
+			starterPeriod: i,
+			starterFeatures: a,
+			proName: o,
+			proPrice: s,
+			proPeriod: c,
+			proFeatures: l,
+			enterpriseName: u,
+			enterprisePrice: d,
+			enterprisePeriod: f,
+			enterpriseFeatures: p,
+			contactSales: m,
+			getStarted: g,
+			tiers: h(() => [
+				{
+					name: n.value,
+					price: r.value,
+					period: i.value,
+					features: a.value
+				},
+				{
+					name: o.value,
+					price: s.value,
+					period: c.value,
+					features: l.value,
+					highlighted: !0
+				},
+				{
+					name: u.value,
+					price: d.value,
+					period: f.value,
+					features: p.value
+				}
+			])
+		};
+		return Object.defineProperty(_, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), _;
 	}
-});
-export { ze as default };
+}), Ne = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Pe = { class: "grid gap-6 md:grid-cols-3" }, Fe = { class: "text-lg font-semibold text-foreground" }, Ie = { class: "my-4" }, Le = { class: "text-3xl font-bold text-foreground" }, Re = { class: "text-sm text-muted-foreground" }, ze = { class: "mb-6 flex-1 space-y-2" };
+function Be(e, t, n, r, i, a) {
+	return T(), g("div", Pe, [(T(!0), g(m, null, D(r.tiers, (e) => (T(), g("div", {
+		key: e.name,
+		class: w(["flex flex-col rounded-lg border p-6", e.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
+	}, [
+		_("h3", Fe, O(e.name), 1),
+		_("div", Ie, [_("span", Le, O(e.price), 1), _("span", Re, O(e.period), 1)]),
+		_("ul", ze, [(T(!0), g(m, null, D(e.features, (e) => (T(), g("li", {
+			key: e,
+			class: "flex items-center gap-2 text-sm text-muted-foreground"
+		}, [t[0] ||= _("span", { class: "text-primary" }, "✓", -1), v(" " + O(e), 1)]))), 128))]),
+		_("button", {
+			type: "button",
+			class: w(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", e.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
+		}, O(e.name === r.enterpriseName ? r.contactSales : r.getStarted), 3)
+	], 2))), 128))]);
+}
+var Ve = Ne(Me, [["render", Be], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/pricing/PricingTiers.vue"]]);
+export { Ve as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

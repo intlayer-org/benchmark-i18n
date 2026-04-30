@@ -1,53 +1,52 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onBeforeMount, onMounted, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onBeforeMount, onMounted, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var about_header_default = {
 	key: "about-header",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"title": "About This Benchmark",
-				"description": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page application where different i18n libraries can be integrated and measured under identical conditions."
+				"b": "About This Benchmark",
+				"a": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page application where different i18n libraries can be integrated and measured under identical conditions."
 			},
 			"fr": {
-				"title": "À propos de ce benchmark",
-				"description": "Il s'agit d'une application de test open-source — pas d'un produit ou d'une entreprise. Son seul but est de fournir une application multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
+				"b": "À propos de ce benchmark",
+				"a": "Il s'agit d'une application de test open-source — pas d'un produit ou d'une entreprise. Son seul but est de fournir une application multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
 			},
 			"es": {
-				"title": "Acerca de este benchmark",
-				"description": "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación multipágina realista donde se puedan integrar y medir diferentes bibliotecas i18n bajo condiciones idénticas."
+				"b": "Acerca de este benchmark",
+				"a": "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación multipágina realista donde se puedan integrar y medir diferentes bibliotecas i18n bajo condiciones idénticas."
 			},
 			"de": {
-				"title": "Über diesen Benchmark",
-				"description": "Dies ist eine Open-Source-Testanwendung – kein Produkt oder Unternehmen. Ihr einziger Zweck ist es, eine realistische, mehrseitige Anwendung bereitzustellen, in der verschiedene i18n-Bibliotheken unter identischen Bedingungen integriert und gemessen werden können."
+				"b": "Über diesen Benchmark",
+				"a": "Dies ist eine Open-Source-Testanwendung – kein Produkt oder Unternehmen. Ihr einziger Zweck ist es, eine realistische, mehrseitige Anwendung bereitzustellen, in der verschiedene i18n-Bibliotheken unter identischen Bedingungen integriert und gemessen werden können."
 			},
 			"it": {
-				"title": "Informazioni su questo benchmark",
-				"description": "Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è fornire un'applicazione multi-pagina realistica in cui diverse librerie i18n possano essere integrate e misurate in condizioni identiche."
+				"b": "Informazioni su questo benchmark",
+				"a": "Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è fornire un'applicazione multi-pagina realistica in cui diverse librerie i18n possano essere integrate e misurate in condizioni identiche."
 			},
 			"pt": {
-				"title": "Sobre este Benchmark",
-				"description": "Este é um aplicativo de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo de várias páginas realista, onde diferentes bibliotecas i18n possam ser integradas e medidas em condições idênticas."
+				"b": "Sobre este Benchmark",
+				"a": "Este é um aplicativo de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo de várias páginas realista, onde diferentes bibliotecas i18n possam ser integradas e medidas em condições idênticas."
 			},
 			"zh": {
-				"title": "关于此基准测试",
-				"description": "这是一个开源测试应用程序——不是产品或公司。其唯一目的是提供一个逼真的多页面应用程序，可以在相同条件下集成和测量不同的 i18n 库。"
+				"b": "关于此基准测试",
+				"a": "这是一个开源测试应用程序——不是产品或公司。其唯一目的是提供一个逼真的多页面应用程序，可以在相同条件下集成和测量不同的 i18n 库。"
 			},
 			"ja": {
-				"title": "このベンチマークについて",
-				"description": "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、同一の条件下でさまざまなi18nライブラリを統合および測定できる、現実的なマルチページアプリケーションを提供することです。"
+				"b": "このベンチマークについて",
+				"a": "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、同一の条件下でさまざまなi18nライブラリを統合および測定できる、現実的なマルチページアプリケーションを提供することです。"
 			},
 			"ko": {
-				"title": "이 벤치마크에 대하여",
-				"description": "이것은 오픈 소스 테스트 애플리케이션이며 제품이나 회사가 아닙니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 애플리케이션을 제공하는 것입니다."
+				"b": "이 벤치마크에 대하여",
+				"a": "이것은 오픈 소스 테스트 애플리케이션이며 제품이나 회사가 아닙니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 애플리케이션을 제공하는 것입니다."
 			},
 			"ru": {
-				"title": "Об этом бенчмарке",
-				"description": "Это тестовое приложение с открытым исходным кодом — не продукт и не компания. Его единственная цель — предоставить реалистичное многостраничное приложение, в которое можно интегрировать различные библиотеки i18n и измерять их в идентичных условиях."
+				"b": "Об этом бенчмарке",
+				"a": "Это тестовое приложение с открытым исходным кодом — не продукт и не компания. Его единственная цель — предоставить реалистичное многостраничное приложение, в которое можно интегрировать различные библиотеки i18n и измерять их в идентичных условиях."
 			}
 		}
-	},
-	localIds: ["about-header::local::src/components/pages/about/AboutHeader.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -866,18 +865,34 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var _hoisted_1 = { class: "mb-4 text-3xl font-bold text-foreground" };
-var _hoisted_2 = { class: "mb-8 max-w-3xl text-muted-foreground" };
-var AboutHeader_default = defineComponent({
+var AboutHeader_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "AboutHeader",
-	setup(__props) {
+	setup(__props, { expose: __expose }) {
+		__expose();
 		usePerformanceMeasure("AboutHeader");
-		const { title, description } = b(about_header_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [createElementVNode("h1", _hoisted_1, toDisplayString(unref(title)), 1), createElementVNode("p", _hoisted_2, toDisplayString(unref(description)), 1)], 64);
+		const { b: title, a: description } = b(about_header_default);
+		const __returned__ = {
+			title,
+			description
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+var _hoisted_1 = { class: "mb-4 text-3xl font-bold text-foreground" };
+var _hoisted_2 = { class: "mb-8 max-w-3xl text-muted-foreground" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock(Fragment, null, [createElementVNode("h1", _hoisted_1, toDisplayString($setup.title), 1), createElementVNode("p", _hoisted_2, toDisplayString($setup.description), 1)], 64);
+}
+var AboutHeader_default = _plugin_vue_export_helper_default(AboutHeader_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/about/AboutHeader.vue"]]);
 export { AboutHeader_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

@@ -1,5 +1,5 @@
 import { C as routing, S as internationalization, a as fallbackPlugin, b as configuration, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor$1 } from "./getContent-bcNkhKcG.js";
-import { Fragment, computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, onBeforeMount, onMounted, onUnmounted, openBlock, ref, renderList, resolveComponent, shallowRef, toDisplayString, toValue, unref, watch, withCtx } from "vue";
+import { Fragment, computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, onBeforeMount, onMounted, onUnmounted, openBlock, ref, renderList, resolveComponent, shallowRef, toDisplayString, toValue, watch, withCtx } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { ChevronDown } from "lucide-vue-next";
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
@@ -909,118 +909,166 @@ var footer_default = {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"description": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
-				"resources": "Resources",
-				"contact": "Contact",
-				"github": "GitHub",
-				"methodology": "Methodology",
-				"contributing": "Contributing",
-				"footerText": "i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+				"i": "Resources",
+				"b": "Contact",
+				"g": "GitHub",
+				"h": "Methodology",
+				"d": "Contributing",
+				"f": "i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"fr": {
-				"description": "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-				"resources": "Ressources",
-				"contact": "Contact",
-				"github": "GitHub",
-				"methodology": "Méthodologie",
-				"contributing": "Contribuer",
-				"footerText": "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.",
-				"appName": "Benchmark i18n",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+				"i": "Ressources",
+				"b": "Contact",
+				"g": "GitHub",
+				"h": "Méthodologie",
+				"d": "Contribuer",
+				"f": "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.",
+				"a": "Benchmark i18n",
+				"c": "contact@intlayer.org"
 			},
 			"es": {
-				"description": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
-				"resources": "Recursos",
-				"contact": "Contacto",
-				"github": "GitHub",
-				"methodology": "Metodología",
-				"contributing": "Contribuir",
-				"footerText": "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
+				"i": "Recursos",
+				"b": "Contacto",
+				"g": "GitHub",
+				"h": "Metodología",
+				"d": "Contribuir",
+				"f": "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"de": {
-				"description": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
-				"resources": "Ressourcen",
-				"contact": "Kontakt",
-				"github": "GitHub",
-				"methodology": "Methodik",
-				"contributing": "Mitwirken",
-				"footerText": "i18n Benchmark – Open-Source-Projekt. Erstellt mit Vue, Vite & Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
+				"i": "Ressourcen",
+				"b": "Kontakt",
+				"g": "GitHub",
+				"h": "Methodik",
+				"d": "Mitwirken",
+				"f": "i18n Benchmark – Open-Source-Projekt. Erstellt mit Vue, Vite & Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"it": {
-				"description": "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
-				"resources": "Risorse",
-				"contact": "Contatto",
-				"github": "GitHub",
-				"methodology": "Metodologia",
-				"contributing": "Contribuire",
-				"footerText": "i18n Benchmark — Progetto open-source. Costruito con Vue, Vite e Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
+				"i": "Risorse",
+				"b": "Contatto",
+				"g": "GitHub",
+				"h": "Metodologia",
+				"d": "Contribuire",
+				"f": "i18n Benchmark — Progetto open-source. Costruito con Vue, Vite e Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"pt": {
-				"description": "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.",
-				"resources": "Recursos",
-				"contact": "Contato",
-				"github": "GitHub",
-				"methodology": "Metodologia",
-				"contributing": "Contribuindo",
-				"footerText": "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e Vue Router.",
-				"appName": "i18n Benchmark",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.",
+				"i": "Recursos",
+				"b": "Contato",
+				"g": "GitHub",
+				"h": "Metodologia",
+				"d": "Contribuindo",
+				"f": "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e Vue Router.",
+				"a": "i18n Benchmark",
+				"c": "contact@intlayer.org"
 			},
 			"zh": {
-				"description": "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
-				"resources": "资源",
-				"contact": "联系我们",
-				"github": "GitHub",
-				"methodology": "方法论",
-				"contributing": "贡献",
-				"footerText": "i18n 基准测试——开源项目。使用 Vue、Vite 和 Vue Router 构建。",
-				"appName": "i18n 基准测试",
-				"contactEmail": "contact@intlayer.org"
+				"e": "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
+				"i": "资源",
+				"b": "联系我们",
+				"g": "GitHub",
+				"h": "方法论",
+				"d": "贡献",
+				"f": "i18n 基准测试——开源项目。使用 Vue、Vite 和 Vue Router 构建。",
+				"a": "i18n 基准测试",
+				"c": "contact@intlayer.org"
 			},
 			"ja": {
-				"description": "バンドルサイズ、ロード時間、アプリの反応性に与える国際化ライブラリの実際の影響を測定するためのオープンソースのテストアプリケーション。",
-				"resources": "リソース",
-				"contact": "お問い合わせ",
-				"github": "GitHub",
-				"methodology": "方法論",
-				"contributing": "貢献",
-				"footerText": "i18n ベンチマーク — オープンソースプロジェクト。Vue、Vite、Vue Routerで構築されています。",
-				"appName": "i18n ベンチマーク",
-				"contactEmail": "contact@intlayer.org"
+				"e": "バンドルサイズ、ロード時間、アプリの反応性に与える国際化ライブラリの実際の影響を測定するためのオープンソースのテストアプリケーション。",
+				"i": "リソース",
+				"b": "お問い合わせ",
+				"g": "GitHub",
+				"h": "方法論",
+				"d": "貢献",
+				"f": "i18n ベンチマーク — オープンソースプロジェクト。Vue、Vite、Vue Routerで構築されています。",
+				"a": "i18n ベンチマーク",
+				"c": "contact@intlayer.org"
 			},
 			"ko": {
-				"description": "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
-				"resources": "리소스",
-				"contact": "연락처",
-				"github": "GitHub",
-				"methodology": "방법론",
-				"contributing": "기여하기",
-				"footerText": "i18n 벤치마크 — 오픈 소스 프로젝트. Vue, Vite 및 Vue Router로 제작되었습니다.",
-				"appName": "i18n 벤치마크",
-				"contactEmail": "contact@intlayer.org"
+				"e": "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
+				"i": "리소스",
+				"b": "연락처",
+				"g": "GitHub",
+				"h": "방법론",
+				"d": "기여하기",
+				"f": "i18n 벤치마크 — 오픈 소스 프로젝트. Vue, Vite 및 Vue Router로 제작되었습니다.",
+				"a": "i18n 벤치마크",
+				"c": "contact@intlayer.org"
 			},
 			"ru": {
-				"description": "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
-				"resources": "Ресурсы",
-				"contact": "Контакт",
-				"github": "GitHub",
-				"methodology": "Методология",
-				"contributing": "Участие в проекте",
-				"footerText": "i18n Benchmark — проект с открытым исходным кодом. Построен на Vue, Vite и Vue Router.",
-				"appName": "i18n Бенчмарк",
-				"contactEmail": "contact@intlayer.org"
+				"e": "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
+				"i": "Ресурсы",
+				"b": "Контакт",
+				"g": "GitHub",
+				"h": "Методология",
+				"d": "Участие в проекте",
+				"f": "i18n Benchmark — проект с открытым исходным кодом. Построен на Vue, Vite и Vue Router.",
+				"a": "i18n Бенчмарк",
+				"c": "contact@intlayer.org"
 			}
 		}
-	},
-	localIds: ["footer::local::src/components/Footer.content.ts"]
+	}
+};
+var Footer_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "Footer",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const route = useRoute();
+		const currentLocale = computed(() => route.params.locale || "en");
+		const { e: description, i: resources, b: contactLabel, g: github, h: methodology, d: contributing, f: footerText, a: appName, c: contactEmail } = b(footer_default);
+		const __returned__ = {
+			route,
+			currentLocale,
+			description,
+			resources,
+			contactLabel,
+			github,
+			methodology,
+			contributing,
+			footerText,
+			appName,
+			contactEmail,
+			footerLinks: computed(() => [
+				{
+					label: github,
+					href: "https://github.com/intlayer-org/benchmark-i18n",
+					isInternal: false
+				},
+				{
+					label: methodology,
+					to: `/${currentLocale.value}/about`,
+					isInternal: true
+				},
+				{
+					label: contributing,
+					to: `/${currentLocale.value}/contact`,
+					isInternal: true
+				}
+			])
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
 };
 var _hoisted_1$3 = { class: "mt-20 border-t border-border bg-card" };
 var _hoisted_2$2 = { class: "container py-8" };
@@ -1033,222 +1081,197 @@ var _hoisted_8$1 = ["href"];
 var _hoisted_9$1 = { class: "mb-2 text-sm font-semibold text-foreground" };
 var _hoisted_10 = { class: "text-sm text-muted-foreground" };
 var _hoisted_11 = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" };
-var Footer_default = defineComponent({
-	__name: "Footer",
-	setup(__props) {
-		const route = useRoute();
-		const currentLocale = computed(() => route.params.locale || "en");
-		const { description, resources, contact: contactLabel, github, methodology, contributing, footerText, appName, contactEmail } = b(footer_default);
-		const footerLinks = computed(() => [
-			{
-				label: github,
-				href: "https://github.com/intlayer-org/benchmark-i18n",
-				isInternal: false
-			},
-			{
-				label: methodology,
-				to: `/${currentLocale.value}/about`,
-				isInternal: true
-			},
-			{
-				label: contributing,
-				to: `/${currentLocale.value}/contact`,
-				isInternal: true
-			}
-		]);
-		return (_ctx, _cache) => {
-			const _component_router_link = resolveComponent("router-link");
-			return openBlock(), createElementBlock("footer", _hoisted_1$3, [createElementVNode("div", _hoisted_2$2, [createElementVNode("div", _hoisted_3$2, [
-				createElementVNode("div", null, [createElementVNode("h3", _hoisted_4$1, toDisplayString(unref(appName)), 1), createElementVNode("p", _hoisted_5$1, toDisplayString(unref(description)), 1)]),
-				createElementVNode("div", null, [createElementVNode("h3", _hoisted_6$1, toDisplayString(unref(resources)), 1), createElementVNode("ul", _hoisted_7$1, [(openBlock(true), createElementBlock(Fragment, null, renderList(footerLinks.value, (linkEl) => {
-					return openBlock(), createElementBlock("li", { key: linkEl.label }, [linkEl.isInternal ? (openBlock(), createBlock(_component_router_link, {
-						key: 0,
-						to: linkEl.to,
-						class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-					}, {
-						default: withCtx(() => [createTextVNode(toDisplayString(linkEl.label), 1)]),
-						_: 2
-					}, 1032, ["to"])) : (openBlock(), createElementBlock("a", {
-						key: 1,
-						href: linkEl.href,
-						target: "_blank",
-						rel: "noreferrer",
-						class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-					}, toDisplayString(linkEl.label), 9, _hoisted_8$1))]);
-				}), 128))])]),
-				createElementVNode("div", null, [createElementVNode("h3", _hoisted_9$1, toDisplayString(unref(contactLabel)), 1), createElementVNode("p", _hoisted_10, toDisplayString(unref(contactEmail)), 1)])
-			]), createElementVNode("div", _hoisted_11, toDisplayString(unref(footerText)), 1)])]);
-		};
-	}
-});
+function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_router_link = resolveComponent("router-link");
+	return openBlock(), createElementBlock("footer", _hoisted_1$3, [createElementVNode("div", _hoisted_2$2, [createElementVNode("div", _hoisted_3$2, [
+		createElementVNode("div", null, [createElementVNode("h3", _hoisted_4$1, toDisplayString($setup.appName), 1), createElementVNode("p", _hoisted_5$1, toDisplayString($setup.description), 1)]),
+		createElementVNode("div", null, [createElementVNode("h3", _hoisted_6$1, toDisplayString($setup.resources), 1), createElementVNode("ul", _hoisted_7$1, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.footerLinks, (linkEl) => {
+			return openBlock(), createElementBlock("li", { key: linkEl.label }, [linkEl.isInternal ? (openBlock(), createBlock(_component_router_link, {
+				key: 0,
+				to: linkEl.to,
+				class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+			}, {
+				default: withCtx(() => [createTextVNode(toDisplayString(linkEl.label), 1)]),
+				_: 2
+			}, 1032, ["to"])) : (openBlock(), createElementBlock("a", {
+				key: 1,
+				href: linkEl.href,
+				target: "_blank",
+				rel: "noreferrer",
+				class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+			}, toDisplayString(linkEl.label), 9, _hoisted_8$1))]);
+		}), 128))])]),
+		createElementVNode("div", null, [createElementVNode("h3", _hoisted_9$1, toDisplayString($setup.contactLabel), 1), createElementVNode("p", _hoisted_10, toDisplayString($setup.contactEmail), 1)])
+	]), createElementVNode("div", _hoisted_11, toDisplayString($setup.footerText), 1)])]);
+}
+var Footer_default = _plugin_vue_export_helper_default(Footer_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$4], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Footer.vue"]]);
 var header_default = {
 	key: "header",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"home": "Home",
-				"methodology": "Methodology",
-				"mockPages": "Mock Pages",
-				"products": "Products",
-				"pricing": "Pricing",
-				"team": "Team",
-				"blog": "Blog",
-				"careers": "Careers",
-				"faq": "FAQ",
-				"contact": "Contact",
-				"settings": "Settings",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Go to GitHub",
-				"header": "Header"
+				"h": "Home",
+				"i": "Methodology",
+				"j": "Mock Pages",
+				"l": "Products",
+				"k": "Pricing",
+				"n": "Team",
+				"b": "Blog",
+				"c": "Careers",
+				"e": "FAQ",
+				"d": "Contact",
+				"m": "Settings",
+				"a": "i18n Benchmark",
+				"f": "Go to GitHub",
+				"g": "Header"
 			},
 			"fr": {
-				"home": "Accueil",
-				"methodology": "Méthodologie",
-				"mockPages": "Pages fictives",
-				"products": "Produits",
-				"pricing": "Tarification",
-				"team": "Équipe",
-				"blog": "Blog",
-				"careers": "Carrières",
-				"faq": "FAQ",
-				"contact": "Contact",
-				"settings": "Paramètres",
-				"appName": "Benchmark i18n",
-				"goToGithub": "Aller sur GitHub",
-				"header": "En-tête"
+				"h": "Accueil",
+				"i": "Méthodologie",
+				"j": "Pages fictives",
+				"l": "Produits",
+				"k": "Tarification",
+				"n": "Équipe",
+				"b": "Blog",
+				"c": "Carrières",
+				"e": "FAQ",
+				"d": "Contact",
+				"m": "Paramètres",
+				"a": "Benchmark i18n",
+				"f": "Aller sur GitHub",
+				"g": "En-tête"
 			},
 			"es": {
-				"home": "Inicio",
-				"methodology": "Metodología",
-				"mockPages": "Páginas de prueba",
-				"products": "Productos",
-				"pricing": "Precios",
-				"team": "Equipo",
-				"blog": "Blog",
-				"careers": "Carreras",
-				"faq": "FAQ",
-				"contact": "Contacto",
-				"settings": "Ajustes",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Ir a GitHub",
-				"header": "Encabezado"
+				"h": "Inicio",
+				"i": "Metodología",
+				"j": "Páginas de prueba",
+				"l": "Productos",
+				"k": "Precios",
+				"n": "Equipo",
+				"b": "Blog",
+				"c": "Carreras",
+				"e": "FAQ",
+				"d": "Contacto",
+				"m": "Ajustes",
+				"a": "i18n Benchmark",
+				"f": "Ir a GitHub",
+				"g": "Encabezado"
 			},
 			"de": {
-				"home": "Home",
-				"methodology": "Methodik",
-				"mockPages": "Testseiten",
-				"products": "Produkte",
-				"pricing": "Preise",
-				"team": "Team",
-				"blog": "Blog",
-				"careers": "Karriere",
-				"faq": "FAQ",
-				"contact": "Kontakt",
-				"settings": "Einstellungen",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Zu GitHub",
-				"header": "Header"
+				"h": "Home",
+				"i": "Methodik",
+				"j": "Testseiten",
+				"l": "Produkte",
+				"k": "Preise",
+				"n": "Team",
+				"b": "Blog",
+				"c": "Karriere",
+				"e": "FAQ",
+				"d": "Kontakt",
+				"m": "Einstellungen",
+				"a": "i18n Benchmark",
+				"f": "Zu GitHub",
+				"g": "Header"
 			},
 			"it": {
-				"home": "Home",
-				"methodology": "Metodologia",
-				"mockPages": "Pagine di prova",
-				"products": "Prodotti",
-				"pricing": "Prezzi",
-				"team": "Team",
-				"blog": "Blog",
-				"careers": "Carriere",
-				"faq": "FAQ",
-				"contact": "Contatti",
-				"settings": "Impostazioni",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Vai su GitHub",
-				"header": "Intestazione"
+				"h": "Home",
+				"i": "Metodologia",
+				"j": "Pagine di prova",
+				"l": "Prodotti",
+				"k": "Prezzi",
+				"n": "Team",
+				"b": "Blog",
+				"c": "Carriere",
+				"e": "FAQ",
+				"d": "Contatti",
+				"m": "Impostazioni",
+				"a": "i18n Benchmark",
+				"f": "Vai su GitHub",
+				"g": "Intestazione"
 			},
 			"pt": {
-				"home": "Início",
-				"methodology": "Metodologia",
-				"mockPages": "Páginas de Teste",
-				"products": "Produtos",
-				"pricing": "Preços",
-				"team": "Equipe",
-				"blog": "Blog",
-				"careers": "Carreiras",
-				"faq": "FAQ",
-				"contact": "Contato",
-				"settings": "Configurações",
-				"appName": "i18n Benchmark",
-				"goToGithub": "Ir para o GitHub",
-				"header": "Cabeçalho"
+				"h": "Início",
+				"i": "Metodologia",
+				"j": "Páginas de Teste",
+				"l": "Produtos",
+				"k": "Preços",
+				"n": "Equipe",
+				"b": "Blog",
+				"c": "Carreiras",
+				"e": "FAQ",
+				"d": "Contato",
+				"m": "Configurações",
+				"a": "i18n Benchmark",
+				"f": "Ir para o GitHub",
+				"g": "Cabeçalho"
 			},
 			"zh": {
-				"home": "首页",
-				"methodology": "方法论",
-				"mockPages": "模拟页面",
-				"products": "产品",
-				"pricing": "定价",
-				"team": "团队",
-				"blog": "博客",
-				"careers": "职业",
-				"faq": "常见问题",
-				"contact": "联系我们",
-				"settings": "设置",
-				"appName": "i18n 基准测试",
-				"goToGithub": "前往 GitHub",
-				"header": "页眉"
+				"h": "首页",
+				"i": "方法论",
+				"j": "模拟页面",
+				"l": "产品",
+				"k": "定价",
+				"n": "团队",
+				"b": "博客",
+				"c": "职业",
+				"e": "常见问题",
+				"d": "联系我们",
+				"m": "设置",
+				"a": "i18n 基准测试",
+				"f": "前往 GitHub",
+				"g": "页眉"
 			},
 			"ja": {
-				"home": "ホーム",
-				"methodology": "方法論",
-				"mockPages": "モックページ",
-				"products": "製品",
-				"pricing": "価格設定",
-				"team": "チーム",
-				"blog": "ブログ",
-				"careers": "採用情報",
-				"faq": "よくある質問",
-				"contact": "お問い合わせ",
-				"settings": "設定",
-				"appName": "i18n ベンチマーク",
-				"goToGithub": "GitHub へ",
-				"header": "ヘッダー"
+				"h": "ホーム",
+				"i": "方法論",
+				"j": "モックページ",
+				"l": "製品",
+				"k": "価格設定",
+				"n": "チーム",
+				"b": "ブログ",
+				"c": "採用情報",
+				"e": "よくある質問",
+				"d": "お問い合わせ",
+				"m": "設定",
+				"a": "i18n ベンチマーク",
+				"f": "GitHub へ",
+				"g": "ヘッダー"
 			},
 			"ko": {
-				"home": "홈",
-				"methodology": "방법론",
-				"mockPages": "모ック 페이지",
-				"products": "제품",
-				"pricing": "가격",
-				"team": "팀",
-				"blog": "블로그",
-				"careers": "채용",
-				"faq": "자주 묻는 질문",
-				"contact": "문의",
-				"settings": "설정",
-				"appName": "i18n 벤치마크",
-				"goToGithub": "GitHub으로 이동",
-				"header": "헤더"
+				"h": "홈",
+				"i": "방법론",
+				"j": "모ック 페이지",
+				"l": "제품",
+				"k": "가격",
+				"n": "팀",
+				"b": "블로그",
+				"c": "채용",
+				"e": "자주 묻는 질문",
+				"d": "문의",
+				"m": "설정",
+				"a": "i18n 벤치마크",
+				"f": "GitHub으로 이동",
+				"g": "헤더"
 			},
 			"ru": {
-				"home": "Главная",
-				"methodology": "Методология",
-				"mockPages": "Мок-страницы",
-				"products": "Продукты",
-				"pricing": "Цены",
-				"team": "Команда",
-				"blog": "Блог",
-				"careers": "Вакансии",
-				"faq": "FAQ",
-				"contact": "Контакт",
-				"settings": "Настройки",
-				"appName": "i18n Бенчмарк",
-				"goToGithub": "Перейти на GitHub",
-				"header": "Заголовок"
+				"h": "Главная",
+				"i": "Методология",
+				"j": "Мок-страницы",
+				"l": "Продукты",
+				"k": "Цены",
+				"n": "Команда",
+				"b": "Блог",
+				"c": "Вакансии",
+				"e": "FAQ",
+				"d": "Контакт",
+				"m": "Настройки",
+				"a": "i18n Бенчмарк",
+				"f": "Перейти на GitHub",
+				"g": "Заголовок"
 			}
 		}
-	},
-	localIds: ["header::local::src/components/Header.content.ts"]
+	}
 };
 function usePerformanceMeasure(name) {
 	onBeforeMount(() => {
@@ -1275,12 +1298,10 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
-var _hoisted_1$2 = { class: "flex items-center gap-2" };
-var _hoisted_2$1 = ["value"];
-var _hoisted_3$1 = ["value"];
-var LocaleSwitcher_default = defineComponent({
+var LocaleSwitcher_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "LocaleSwitcher",
-	setup(__props) {
+	setup(__props, { expose: __expose }) {
+		__expose();
 		const route = useRoute();
 		const router = useRouter();
 		const { setLocale } = a();
@@ -1297,114 +1318,135 @@ var LocaleSwitcher_default = defineComponent({
 		watch(currentLocale, (newLocale) => {
 			setLocale(newLocale);
 		}, { immediate: true });
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$2, [createElementVNode("select", {
-				value: currentLocale.value,
-				onChange: _cache[0] || (_cache[0] = (e) => handleLocaleChange(e.target.value)),
-				class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-			}, [(openBlock(true), createElementBlock(Fragment, null, renderList(unref(locales), (localeItem) => {
-				return openBlock(), createElementBlock("option", {
-					key: localeItem,
-					value: localeItem
-				}, toDisplayString(unref(getLocaleName)(localeItem)), 9, _hoisted_3$1);
-			}), 128))], 40, _hoisted_2$1)]);
+		const __returned__ = {
+			route,
+			router,
+			setLocale,
+			currentLocale,
+			handleLocaleChange,
+			get locales() {
+				return locales;
+			},
+			get getLocaleName() {
+				return getLocaleName;
+			}
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+var _hoisted_1$2 = { class: "flex items-center gap-2" };
+var _hoisted_2$1 = ["value"];
+var _hoisted_3$1 = ["value"];
+function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1$2, [createElementVNode("select", {
+		value: $setup.currentLocale,
+		onChange: _cache[0] || (_cache[0] = (e) => $setup.handleLocaleChange(e.target.value)),
+		class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+	}, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.locales, (localeItem) => {
+		return openBlock(), createElementBlock("option", {
+			key: localeItem,
+			value: localeItem
+		}, toDisplayString($setup.getLocaleName(localeItem)), 9, _hoisted_3$1);
+	}), 128))], 40, _hoisted_2$1)]);
+}
+var LocaleSwitcher_default = _plugin_vue_export_helper_default(LocaleSwitcher_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$3], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/LocaleSwitcher.vue"]]);
 var theme_toggle_default = {
 	key: "theme-toggle",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"auto": "Theme: Auto",
-				"dark": "Theme: Dark",
-				"light": "Theme: Light",
-				"ariaLabelAuto": "Theme mode: auto (system). Click to switch to light mode.",
-				"ariaLabelLight": "Theme mode: light. Click to switch to dark mode.",
-				"ariaLabelDark": "Theme mode: dark. Click to switch to auto mode."
+				"d": "Theme: Auto",
+				"e": "Theme: Dark",
+				"f": "Theme: Light",
+				"a": "Theme mode: auto (system). Click to switch to light mode.",
+				"c": "Theme mode: light. Click to switch to dark mode.",
+				"b": "Theme mode: dark. Click to switch to auto mode."
 			},
 			"fr": {
-				"auto": "Thème : Auto",
-				"dark": "Thème : Sombre",
-				"light": "Thème : Clair",
-				"ariaLabelAuto": "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
-				"ariaLabelLight": "Mode de thème : clair. Cliquez pour passer au mode sombre.",
-				"ariaLabelDark": "Mode de thème : sombre. Cliquez pour passer au mode auto."
+				"d": "Thème : Auto",
+				"e": "Thème : Sombre",
+				"f": "Thème : Clair",
+				"a": "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
+				"c": "Mode de thème : clair. Cliquez pour passer au mode sombre.",
+				"b": "Mode de thème : sombre. Cliquez pour passer au mode auto."
 			},
 			"es": {
-				"auto": "Tema: Automático",
-				"dark": "Tema: Oscuro",
-				"light": "Tema: Claro",
-				"ariaLabelAuto": "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-				"ariaLabelLight": "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
-				"ariaLabelDark": "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
+				"d": "Tema: Automático",
+				"e": "Tema: Oscuro",
+				"f": "Tema: Claro",
+				"a": "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
+				"c": "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
+				"b": "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
 			},
 			"de": {
-				"auto": "Design: Auto",
-				"dark": "Design: Dunkel",
-				"light": "Design: Hell",
-				"ariaLabelAuto": "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-				"ariaLabelLight": "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
-				"ariaLabelDark": "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
+				"d": "Design: Auto",
+				"e": "Design: Dunkel",
+				"f": "Design: Hell",
+				"a": "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
+				"c": "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
+				"b": "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
 			},
 			"it": {
-				"auto": "Tema: Auto",
-				"dark": "Tema: Scuro",
-				"light": "Tema: Chiaro",
-				"ariaLabelAuto": "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
-				"ariaLabelLight": "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
-				"ariaLabelDark": "Modalità tema: scura. Fai clic per passare alla modalità automatica."
+				"d": "Tema: Auto",
+				"e": "Tema: Scuro",
+				"f": "Tema: Chiaro",
+				"a": "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
+				"c": "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
+				"b": "Modalità tema: scura. Fai clic per passare alla modalità automatica."
 			},
 			"pt": {
-				"auto": "Tema: Automático",
-				"dark": "Tema: Escuro",
-				"light": "Tema: Claro",
-				"ariaLabelAuto": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-				"ariaLabelLight": "Modo de tema: claro. Clique para mudar para o modo escuro.",
-				"ariaLabelDark": "Modo de tema: escuro. Clique para mudar para o modo automático."
+				"d": "Tema: Automático",
+				"e": "Tema: Escuro",
+				"f": "Tema: Claro",
+				"a": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
+				"c": "Modo de tema: claro. Clique para mudar para o modo escuro.",
+				"b": "Modo de tema: escuro. Clique para mudar para o modo automático."
 			},
 			"zh": {
-				"auto": "主题：自动",
-				"dark": "主题：深色",
-				"light": "主题：亮色",
-				"ariaLabelAuto": "主题模式：自动（系统）。点击切换到亮色模式。",
-				"ariaLabelLight": "主题模式：浅色。点击切换到深色模式。",
-				"ariaLabelDark": "主题模式：深色。点击切换到自动模式。"
+				"d": "主题：自动",
+				"e": "主题：深色",
+				"f": "主题：亮色",
+				"a": "主题模式：自动（系统）。点击切换到亮色模式。",
+				"c": "主题模式：浅色。点击切换到深色模式。",
+				"b": "主题模式：深色。点击切换到自动模式。"
 			},
 			"ja": {
-				"auto": "テーマ：自動",
-				"dark": "テーマ：ダーク",
-				"light": "テーマ：ライト",
-				"ariaLabelAuto": "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-				"ariaLabelLight": "テーマモード：ライト。クリックしてダークモードに切り替えます。",
-				"ariaLabelDark": "テーマモード：ダーク。クリックして自動モードに切り替えます。"
+				"d": "テーマ：自動",
+				"e": "テーマ：ダーク",
+				"f": "テーマ：ライト",
+				"a": "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
+				"c": "テーマモード：ライト。クリックしてダークモードに切り替えます。",
+				"b": "テーマモード：ダーク。クリックして自動モードに切り替えます。"
 			},
 			"ko": {
-				"auto": "테마: 자동",
-				"dark": "테마: 다크",
-				"light": "테마: 라이트",
-				"ariaLabelAuto": "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
-				"ariaLabelLight": "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
-				"ariaLabelDark": "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
+				"d": "테마: 자동",
+				"e": "테마: 다크",
+				"f": "테마: 라이트",
+				"a": "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
+				"c": "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
+				"b": "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
 			},
 			"ru": {
-				"auto": "Тема: Авто",
-				"dark": "Тема: Темная",
-				"light": "Тема: Светлая",
-				"ariaLabelAuto": "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
-				"ariaLabelLight": "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
-				"ariaLabelDark": "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
+				"d": "Тема: Авто",
+				"e": "Тема: Темная",
+				"f": "Тема: Светлая",
+				"a": "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
+				"c": "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
+				"b": "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
 			}
 		}
-	},
-	localIds: ["theme-toggle::local::src/components/ThemeToggle.content.ts"]
+	}
 };
-var _hoisted_1$1 = ["aria-label", "title"];
-var ThemeToggle_default = defineComponent({
+var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "ThemeToggle",
-	setup(__props) {
-		const { auto, dark, light, ariaLabelAuto, ariaLabelLight, ariaLabelDark } = b(theme_toggle_default);
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { d: auto, e: dark, f: light, a: ariaLabelAuto, c: ariaLabelLight, b: ariaLabelDark } = b(theme_toggle_default);
 		const mode = ref("auto");
 		function getInitialMode() {
 			if (typeof window === "undefined") return "auto";
@@ -1447,15 +1489,114 @@ var ThemeToggle_default = defineComponent({
 			window.localStorage.setItem("theme", nextMode);
 		}
 		const getLabel = () => mode.value === "auto" ? ariaLabelAuto.value : mode.value === "light" ? ariaLabelLight.value : ariaLabelDark.value;
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("button", {
-				type: "button",
-				onClick: toggleMode,
-				"aria-label": getLabel(),
-				title: getLabel(),
-				class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-			}, toDisplayString(mode.value === "auto" ? unref(auto) : mode.value === "dark" ? unref(dark) : unref(light)), 9, _hoisted_1$1);
+		const __returned__ = {
+			auto,
+			dark,
+			light,
+			ariaLabelAuto,
+			ariaLabelLight,
+			ariaLabelDark,
+			mode,
+			getInitialMode,
+			applyThemeMode,
+			get mediaQueryListener() {
+				return mediaQueryListener;
+			},
+			set mediaQueryListener(v) {
+				mediaQueryListener = v;
+			},
+			toggleMode,
+			getLabel
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _hoisted_1$1 = ["aria-label", "title"];
+function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("button", {
+		type: "button",
+		onClick: $setup.toggleMode,
+		"aria-label": $setup.getLabel(),
+		title: $setup.getLabel(),
+		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+	}, toDisplayString($setup.mode === "auto" ? $setup.auto : $setup.mode === "dark" ? $setup.dark : $setup.light), 9, _hoisted_1$1);
+}
+var ThemeToggle_default = _plugin_vue_export_helper_default(ThemeToggle_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$2], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/ThemeToggle.vue"]]);
+var Header_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "Header",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		usePerformanceMeasure("Header");
+		const { h: home, i: methodology, j: mockPagesLabel, l: products, k: pricing, n: team, b: blog, c: careers, e: faq, d: contact, m: settings, a: appName, f: goToGithub } = b(header_default);
+		const isMockPagesOpen = ref(false);
+		const route = useRoute();
+		const currentLocale = computed(() => route.params.locale || "en");
+		const __returned__ = {
+			home,
+			methodology,
+			mockPagesLabel,
+			products,
+			pricing,
+			team,
+			blog,
+			careers,
+			faq,
+			contact,
+			settings,
+			appName,
+			goToGithub,
+			isMockPagesOpen,
+			route,
+			currentLocale,
+			mockPagesList: computed(() => [
+				{
+					to: `/${currentLocale.value}/products`,
+					label: products
+				},
+				{
+					to: `/${currentLocale.value}/pricing`,
+					label: pricing
+				},
+				{
+					to: `/${currentLocale.value}/team`,
+					label: team
+				},
+				{
+					to: `/${currentLocale.value}/blog`,
+					label: blog
+				},
+				{
+					to: `/${currentLocale.value}/careers`,
+					label: careers
+				},
+				{
+					to: `/${currentLocale.value}/faq`,
+					label: faq
+				},
+				{
+					to: `/${currentLocale.value}/contact`,
+					label: contact
+				},
+				{
+					to: `/${currentLocale.value}/settings`,
+					label: settings
+				}
+			]),
+			get ChevronDown() {
+				return ChevronDown;
+			},
+			LocaleSwitcher: LocaleSwitcher_default,
+			ThemeToggle: ThemeToggle_default
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
 var _hoisted_1 = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" };
@@ -1472,118 +1613,76 @@ var _hoisted_8 = {
 	class: "text-muted-foreground transition hover:text-foreground"
 };
 var _hoisted_9 = { class: "sr-only" };
-var Header_default = defineComponent({
-	__name: "Header",
-	setup(__props) {
-		usePerformanceMeasure("Header");
-		const { home, methodology, mockPages: mockPagesLabel, products, pricing, team, blog, careers, faq, contact, settings, appName, goToGithub } = b(header_default);
-		const isMockPagesOpen = ref(false);
-		const route = useRoute();
-		const currentLocale = computed(() => route.params.locale || "en");
-		const mockPagesList = computed(() => [
-			{
-				to: `/${currentLocale.value}/products`,
-				label: products
-			},
-			{
-				to: `/${currentLocale.value}/pricing`,
-				label: pricing
-			},
-			{
-				to: `/${currentLocale.value}/team`,
-				label: team
-			},
-			{
-				to: `/${currentLocale.value}/blog`,
-				label: blog
-			},
-			{
-				to: `/${currentLocale.value}/careers`,
-				label: careers
-			},
-			{
-				to: `/${currentLocale.value}/faq`,
-				label: faq
-			},
-			{
-				to: `/${currentLocale.value}/contact`,
-				label: contact
-			},
-			{
-				to: `/${currentLocale.value}/settings`,
-				label: settings
-			}
-		]);
-		return (_ctx, _cache) => {
-			const _component_router_link = resolveComponent("router-link");
-			return openBlock(), createElementBlock("header", _hoisted_1, [createElementVNode("nav", _hoisted_2, [createElementVNode("div", _hoisted_3, [createVNode(_component_router_link, {
-				to: `/${currentLocale.value}`,
-				class: "text-lg font-bold tracking-tight text-primary no-underline"
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_router_link = resolveComponent("router-link");
+	return openBlock(), createElementBlock("header", _hoisted_1, [createElementVNode("nav", _hoisted_2, [createElementVNode("div", _hoisted_3, [createVNode(_component_router_link, {
+		to: `/${$setup.currentLocale}`,
+		class: "text-lg font-bold tracking-tight text-primary no-underline"
+	}, {
+		default: withCtx(() => [createTextVNode(toDisplayString($setup.appName), 1)]),
+		_: 1
+	}, 8, ["to"]), createElementVNode("div", _hoisted_4, [
+		createVNode(_component_router_link, {
+			to: `/${$setup.currentLocale}`,
+			class: "nav-link",
+			"exact-active-class": "is-active"
+		}, {
+			default: withCtx(() => [createTextVNode(toDisplayString($setup.home), 1)]),
+			_: 1
+		}, 8, ["to"]),
+		createVNode(_component_router_link, {
+			to: `/${$setup.currentLocale}/about`,
+			class: "nav-link",
+			"active-class": "is-active"
+		}, {
+			default: withCtx(() => [createTextVNode(toDisplayString($setup.methodology), 1)]),
+			_: 1
+		}, 8, ["to"]),
+		createCommentVNode(" Mock Pages Dropdown "),
+		createElementVNode("div", _hoisted_5, [createElementVNode("button", {
+			type: "button",
+			class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+			onMouseenter: _cache[0] || (_cache[0] = ($event) => $setup.isMockPagesOpen = true),
+			onMouseleave: _cache[1] || (_cache[1] = ($event) => $setup.isMockPagesOpen = false),
+			onClick: _cache[2] || (_cache[2] = ($event) => $setup.isMockPagesOpen = !$setup.isMockPagesOpen)
+		}, [createTextVNode(toDisplayString($setup.mockPagesLabel) + " ", 1), createVNode($setup["ChevronDown"], {
+			size: 14,
+			class: normalizeClass(["transition-transform", $setup.isMockPagesOpen ? "rotate-180" : ""])
+		}, null, 8, ["class"])], 32), $setup.isMockPagesOpen ? (openBlock(), createElementBlock("div", {
+			key: 0,
+			class: "absolute left-0 top-full pt-2 w-48",
+			onMouseenter: _cache[4] || (_cache[4] = ($event) => $setup.isMockPagesOpen = true),
+			onMouseleave: _cache[5] || (_cache[5] = ($event) => $setup.isMockPagesOpen = false)
+		}, [createElementVNode("div", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.mockPagesList, (page) => {
+			return openBlock(), createBlock(_component_router_link, {
+				key: page.to,
+				to: page.to,
+				class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+				onClick: _cache[3] || (_cache[3] = ($event) => $setup.isMockPagesOpen = false)
 			}, {
-				default: withCtx(() => [createTextVNode(toDisplayString(unref(appName)), 1)]),
-				_: 1
-			}, 8, ["to"]), createElementVNode("div", _hoisted_4, [
-				createVNode(_component_router_link, {
-					to: `/${currentLocale.value}`,
-					class: "nav-link",
-					"exact-active-class": "is-active"
-				}, {
-					default: withCtx(() => [createTextVNode(toDisplayString(unref(home)), 1)]),
-					_: 1
-				}, 8, ["to"]),
-				createVNode(_component_router_link, {
-					to: `/${currentLocale.value}/about`,
-					class: "nav-link",
-					"active-class": "is-active"
-				}, {
-					default: withCtx(() => [createTextVNode(toDisplayString(unref(methodology)), 1)]),
-					_: 1
-				}, 8, ["to"]),
-				createCommentVNode(" Mock Pages Dropdown "),
-				createElementVNode("div", _hoisted_5, [createElementVNode("button", {
-					type: "button",
-					class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-					onMouseenter: _cache[0] || (_cache[0] = ($event) => isMockPagesOpen.value = true),
-					onMouseleave: _cache[1] || (_cache[1] = ($event) => isMockPagesOpen.value = false),
-					onClick: _cache[2] || (_cache[2] = ($event) => isMockPagesOpen.value = !isMockPagesOpen.value)
-				}, [createTextVNode(toDisplayString(unref(mockPagesLabel)) + " ", 1), createVNode(unref(ChevronDown), {
-					size: 14,
-					class: normalizeClass(["transition-transform", isMockPagesOpen.value ? "rotate-180" : ""])
-				}, null, 8, ["class"])], 32), isMockPagesOpen.value ? (openBlock(), createElementBlock("div", {
-					key: 0,
-					class: "absolute left-0 top-full pt-2 w-48",
-					onMouseenter: _cache[4] || (_cache[4] = ($event) => isMockPagesOpen.value = true),
-					onMouseleave: _cache[5] || (_cache[5] = ($event) => isMockPagesOpen.value = false)
-				}, [createElementVNode("div", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList(mockPagesList.value, (page) => {
-					return openBlock(), createBlock(_component_router_link, {
-						key: page.to,
-						to: page.to,
-						class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-						onClick: _cache[3] || (_cache[3] = ($event) => isMockPagesOpen.value = false)
-					}, {
-						default: withCtx(() => [createTextVNode(toDisplayString(page.label), 1)]),
-						_: 2
-					}, 1032, ["to"]);
-				}), 128))])], 32)) : createCommentVNode("v-if", true)])
-			])]), createElementVNode("div", _hoisted_7, [
-				createElementVNode("a", _hoisted_8, [createElementVNode("span", _hoisted_9, toDisplayString(unref(goToGithub)), 1), _cache[6] || (_cache[6] = createElementVNode("svg", {
-					viewBox: "0 0 16 16",
-					"aria-hidden": "true",
-					width: "20",
-					height: "20"
-				}, [createElementVNode("path", {
-					fill: "currentColor",
-					d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				})], -1))]),
-				createVNode(LocaleSwitcher_default),
-				createVNode(ThemeToggle_default)
-			])])]);
-		};
-	}
-});
-var Layout_default = defineComponent({
+				default: withCtx(() => [createTextVNode(toDisplayString(page.label), 1)]),
+				_: 2
+			}, 1032, ["to"]);
+		}), 128))])], 32)) : createCommentVNode("v-if", true)])
+	])]), createElementVNode("div", _hoisted_7, [
+		createElementVNode("a", _hoisted_8, [createElementVNode("span", _hoisted_9, toDisplayString($setup.goToGithub), 1), _cache[6] || (_cache[6] = createElementVNode("svg", {
+			viewBox: "0 0 16 16",
+			"aria-hidden": "true",
+			width: "20",
+			height: "20"
+		}, [createElementVNode("path", {
+			fill: "currentColor",
+			d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+		})], -1))]),
+		createVNode($setup["LocaleSwitcher"]),
+		createVNode($setup["ThemeToggle"])
+	])])]);
+}
+var Header_default = _plugin_vue_export_helper_default(Header_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Header.vue"]]);
+var Layout_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "Layout",
-	setup(__props) {
+	setup(__props, { expose: __expose }) {
+		__expose();
 		const route = useRoute();
 		const { setLocale } = a();
 		const renderStart = ref(0);
@@ -1600,16 +1699,29 @@ var Layout_default = defineComponent({
 				setLocale(newLocale);
 			}
 		}, { immediate: true });
-		return (_ctx, _cache) => {
-			const _component_router_view = resolveComponent("router-view");
-			return openBlock(), createElementBlock(Fragment, null, [
-				createVNode(Header_default),
-				createVNode(_component_router_view),
-				createVNode(Footer_default)
-			], 64);
+		const __returned__ = {
+			route,
+			setLocale,
+			renderStart,
+			Footer: Footer_default,
+			Header: Header_default
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	const _component_router_view = resolveComponent("router-view");
+	return openBlock(), createElementBlock(Fragment, null, [
+		createVNode($setup["Header"]),
+		createVNode(_component_router_view),
+		createVNode($setup["Footer"])
+	], 64);
+}
+var Layout_default = _plugin_vue_export_helper_default(Layout_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Layout.vue"]]);
 export { Layout_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-bcNkhKcG.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

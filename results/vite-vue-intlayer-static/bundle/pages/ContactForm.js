@@ -1,183 +1,182 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, unref, watch, withModifiers } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, watch, withModifiers } from "vue";
 var contact_form_default = {
 	key: "contact-form",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"nameLabel": "Name",
-				"namePlaceholder": "Your name",
-				"emailLabel": "Email",
-				"emailPlaceholder": "you@example.com",
-				"topicLabel": "Topic",
-				"topics": [
+				"e": "Name",
+				"f": "Your name",
+				"a": "Email",
+				"b": "you@example.com",
+				"h": "Topic",
+				"i": [
 					"Bug Report",
 					"New Benchmark Idea",
 					"Methodology Question",
 					"Contribution",
 					"Other"
 				],
-				"messageLabel": "Message",
-				"messagePlaceholder": "Describe your question or idea...",
-				"sendMessage": "Send Message"
+				"c": "Message",
+				"d": "Describe your question or idea...",
+				"g": "Send Message"
 			},
 			"fr": {
-				"nameLabel": "Nom",
-				"namePlaceholder": "Votre nom",
-				"emailLabel": "E-mail",
-				"emailPlaceholder": "vous@exemple.com",
-				"topicLabel": "Sujet",
-				"topics": [
+				"e": "Nom",
+				"f": "Votre nom",
+				"a": "E-mail",
+				"b": "vous@exemple.com",
+				"h": "Sujet",
+				"i": [
 					"Rapport de bug",
 					"Idée de benchmark",
 					"Question de méthodologie",
 					"Contribution",
 					"Autre"
 				],
-				"messageLabel": "Message",
-				"messagePlaceholder": "Décrivez votre question ou idée…",
-				"sendMessage": "Envoyer"
+				"c": "Message",
+				"d": "Décrivez votre question ou idée…",
+				"g": "Envoyer"
 			},
 			"es": {
-				"nameLabel": "Nombre",
-				"namePlaceholder": "Su nombre",
-				"emailLabel": "Correo electrónico",
-				"emailPlaceholder": "tu@ejemplo.com",
-				"topicLabel": "Tema",
-				"topics": [
+				"e": "Nombre",
+				"f": "Su nombre",
+				"a": "Correo electrónico",
+				"b": "tu@ejemplo.com",
+				"h": "Tema",
+				"i": [
 					"Informe de error",
 					"Nueva idea de benchmark",
 					"Pregunta sobre metodología",
 					"Contribución",
 					"Otro"
 				],
-				"messageLabel": "Mensaje",
-				"messagePlaceholder": "Describa su pregunta o idea...",
-				"sendMessage": "Enviar mensaje"
+				"c": "Mensaje",
+				"d": "Describa su pregunta o idea...",
+				"g": "Enviar mensaje"
 			},
 			"de": {
-				"nameLabel": "Name",
-				"namePlaceholder": "Ihr Name",
-				"emailLabel": "E-Mail",
-				"emailPlaceholder": "sie@beispiel.de",
-				"topicLabel": "Thema",
-				"topics": [
+				"e": "Name",
+				"f": "Ihr Name",
+				"a": "E-Mail",
+				"b": "sie@beispiel.de",
+				"h": "Thema",
+				"i": [
 					"Fehlerbericht",
 					"Neue Benchmark-Idee",
 					"Frage zur Methodik",
 					"Beitrag",
 					"Sonstiges"
 				],
-				"messageLabel": "Nachricht",
-				"messagePlaceholder": "Beschreiben Sie Ihre Frage oder Idee...",
-				"sendMessage": "Nachricht senden"
+				"c": "Nachricht",
+				"d": "Beschreiben Sie Ihre Frage oder Idee...",
+				"g": "Nachricht senden"
 			},
 			"it": {
-				"nameLabel": "Nome",
-				"namePlaceholder": "Il tuo nome",
-				"emailLabel": "E-mail",
-				"emailPlaceholder": "tu@esempio.com",
-				"topicLabel": "Argomento",
-				"topics": [
+				"e": "Nome",
+				"f": "Il tuo nome",
+				"a": "E-mail",
+				"b": "tu@esempio.com",
+				"h": "Argomento",
+				"i": [
 					"Segnalazione bug",
 					"Nuova idea di benchmark",
 					"Domanda sulla metodologia",
 					"Contributo",
 					"Altro"
 				],
-				"messageLabel": "Messaggio",
-				"messagePlaceholder": "Descrivi la tua domanda o idea...",
-				"sendMessage": "Invia messaggio"
+				"c": "Messaggio",
+				"d": "Descrivi la tua domanda o idea...",
+				"g": "Invia messaggio"
 			},
 			"pt": {
-				"nameLabel": "Nome",
-				"namePlaceholder": "Seu nome",
-				"emailLabel": "E-mail",
-				"emailPlaceholder": "voce@exemplo.com",
-				"topicLabel": "Assunto",
-				"topics": [
+				"e": "Nome",
+				"f": "Seu nome",
+				"a": "E-mail",
+				"b": "voce@exemplo.com",
+				"h": "Assunto",
+				"i": [
 					"Relatório de erro",
 					"Nova ideia de benchmark",
 					"Pergunta sobre metodologia",
 					"Contribuição",
 					"Outro"
 				],
-				"messageLabel": "Mensagem",
-				"messagePlaceholder": "Descreva sua pergunta ou ideia...",
-				"sendMessage": "Enviar Mensagem"
+				"c": "Mensagem",
+				"d": "Descreva sua pergunta ou ideia...",
+				"g": "Enviar Mensagem"
 			},
 			"zh": {
-				"nameLabel": "姓名",
-				"namePlaceholder": "您的姓名",
-				"emailLabel": "电子邮件",
-				"emailPlaceholder": "you@example.com",
-				"topicLabel": "主题",
-				"topics": [
+				"e": "姓名",
+				"f": "您的姓名",
+				"a": "电子邮件",
+				"b": "you@example.com",
+				"h": "主题",
+				"i": [
 					"错误报告",
 					"新基准测试创意",
 					"方法论问题",
 					"贡献",
 					"其他"
 				],
-				"messageLabel": "消息",
-				"messagePlaceholder": "描述您的问题或想法...",
-				"sendMessage": "发送消息"
+				"c": "消息",
+				"d": "描述您的问题或想法...",
+				"g": "发送消息"
 			},
 			"ja": {
-				"nameLabel": "名前",
-				"namePlaceholder": "お名前",
-				"emailLabel": "メールアドレス",
-				"emailPlaceholder": "you@example.com",
-				"topicLabel": "トピック",
-				"topics": [
+				"e": "名前",
+				"f": "お名前",
+				"a": "メールアドレス",
+				"b": "you@example.com",
+				"h": "トピック",
+				"i": [
 					"バグ報告",
 					"新しいベンチマークのアイデア",
 					"方法論に関する質問",
 					"貢献",
 					"その他"
 				],
-				"messageLabel": "メッセージ",
-				"messagePlaceholder": "質問やアイデアを説明してください...",
-				"sendMessage": "メッセージを送信"
+				"c": "メッセージ",
+				"d": "質問やアイデアを説明してください...",
+				"g": "メッセージを送信"
 			},
 			"ko": {
-				"nameLabel": "이름",
-				"namePlaceholder": "이름을 입력하세요",
-				"emailLabel": "이메일",
-				"emailPlaceholder": "you@example.com",
-				"topicLabel": "주제",
-				"topics": [
+				"e": "이름",
+				"f": "이름을 입력하세요",
+				"a": "이메일",
+				"b": "you@example.com",
+				"h": "주제",
+				"i": [
 					"버그 보고",
 					"새로운 벤치마크 아이디어",
 					"방법론 관련 질문",
 					"기여",
 					"기타"
 				],
-				"messageLabel": "메시지",
-				"messagePlaceholder": "질문이나 아이디어를 설명해 주세요...",
-				"sendMessage": "메시지 보내기"
+				"c": "메시지",
+				"d": "질문이나 아이디어를 설명해 주세요...",
+				"g": "메시지 보내기"
 			},
 			"ru": {
-				"nameLabel": "Имя",
-				"namePlaceholder": "Ваше имя",
-				"emailLabel": "Электронная почта",
-				"emailPlaceholder": "you@example.com",
-				"topicLabel": "Тема",
-				"topics": [
+				"e": "Имя",
+				"f": "Ваше имя",
+				"a": "Электронная почта",
+				"b": "you@example.com",
+				"h": "Тема",
+				"i": [
 					"Отчет об ошибке",
 					"Новая идея для бенчмарка",
 					"Вопрос по методологии",
 					"Вклад",
 					"Другое"
 				],
-				"messageLabel": "Сообщение",
-				"messagePlaceholder": "Опишите ваш вопрос или идею...",
-				"sendMessage": "Отправить сообщение"
+				"c": "Сообщение",
+				"d": "Опишите ваш вопрос или идею...",
+				"g": "Отправить сообщение"
 			}
 		}
-	},
-	localIds: ["contact-form::local::src/components/pages/contact/ContactForm.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -983,6 +982,34 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
+var ContactForm_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "ContactForm",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { e: nameLabel, f: namePlaceholder, a: emailLabel, b: emailPlaceholder, h: topicLabel, i: topics, c: messageLabel, d: messagePlaceholder, g: sendMessage } = b(contact_form_default);
+		const __returned__ = {
+			nameLabel,
+			namePlaceholder,
+			emailLabel,
+			emailPlaceholder,
+			topicLabel,
+			topics,
+			messageLabel,
+			messagePlaceholder,
+			sendMessage
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "grid gap-4 md:grid-cols-2" };
 var _hoisted_2 = {
 	for: "name",
@@ -1011,39 +1038,34 @@ var _hoisted_10 = {
 	type: "submit",
 	class: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
 };
-var ContactForm_default = defineComponent({
-	__name: "ContactForm",
-	setup(__props) {
-		const { nameLabel, namePlaceholder, emailLabel, emailPlaceholder, topicLabel, topics, messageLabel, messagePlaceholder, sendMessage } = b(contact_form_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("form", {
-				class: "space-y-6",
-				onSubmit: _cache[0] || (_cache[0] = withModifiers(() => {}, ["prevent"]))
-			}, [
-				createElementVNode("div", _hoisted_1, [createElementVNode("div", null, [createElementVNode("label", _hoisted_2, toDisplayString(unref(nameLabel)), 1), createElementVNode("input", {
-					id: "name",
-					class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: unref(namePlaceholder)
-				}, null, 8, _hoisted_3)]), createElementVNode("div", null, [createElementVNode("label", _hoisted_4, toDisplayString(unref(emailLabel)), 1), createElementVNode("input", {
-					id: "email",
-					type: "email",
-					class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: unref(emailPlaceholder)
-				}, null, 8, _hoisted_5)])]),
-				createElementVNode("div", null, [createElementVNode("label", _hoisted_6, toDisplayString(unref(topicLabel)), 1), createElementVNode("select", _hoisted_7, [(openBlock(true), createElementBlock(Fragment, null, renderList(unref(topics), (t) => {
-					return openBlock(), createElementBlock("option", { key: t }, toDisplayString(t), 1);
-				}), 128))])]),
-				createElementVNode("div", null, [createElementVNode("label", _hoisted_8, toDisplayString(unref(messageLabel)), 1), createElementVNode("textarea", {
-					id: "message",
-					rows: "5",
-					class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: unref(messagePlaceholder)
-				}, null, 8, _hoisted_9)]),
-				createElementVNode("button", _hoisted_10, toDisplayString(unref(sendMessage)), 1)
-			], 32);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("form", {
+		class: "space-y-6",
+		onSubmit: _cache[0] || (_cache[0] = withModifiers(() => {}, ["prevent"]))
+	}, [
+		createElementVNode("div", _hoisted_1, [createElementVNode("div", null, [createElementVNode("label", _hoisted_2, toDisplayString($setup.nameLabel), 1), createElementVNode("input", {
+			id: "name",
+			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
+			placeholder: $setup.namePlaceholder
+		}, null, 8, _hoisted_3)]), createElementVNode("div", null, [createElementVNode("label", _hoisted_4, toDisplayString($setup.emailLabel), 1), createElementVNode("input", {
+			id: "email",
+			type: "email",
+			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
+			placeholder: $setup.emailPlaceholder
+		}, null, 8, _hoisted_5)])]),
+		createElementVNode("div", null, [createElementVNode("label", _hoisted_6, toDisplayString($setup.topicLabel), 1), createElementVNode("select", _hoisted_7, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.topics, (t) => {
+			return openBlock(), createElementBlock("option", { key: t }, toDisplayString(t), 1);
+		}), 128))])]),
+		createElementVNode("div", null, [createElementVNode("label", _hoisted_8, toDisplayString($setup.messageLabel), 1), createElementVNode("textarea", {
+			id: "message",
+			rows: "5",
+			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
+			placeholder: $setup.messagePlaceholder
+		}, null, 8, _hoisted_9)]),
+		createElementVNode("button", _hoisted_10, toDisplayString($setup.sendMessage), 1)
+	], 32);
+}
+var ContactForm_default = _plugin_vue_export_helper_default(ContactForm_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/contact/ContactForm.vue"]]);
 export { ContactForm_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

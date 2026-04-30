@@ -1,25 +1,24 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, defineComponent as _, getCurrentInstance as v, h as y, inject as b, isRef as x, markRaw as S, openBlock as C, ref as w, shallowRef as T, toDisplayString as E, toValue as D, unref as ee, watch as te } from "vue";
-var ne = {
+import { Fragment as m, computed as h, createElementBlock as g, defineComponent as _, getCurrentInstance as v, h as y, inject as b, isRef as ee, markRaw as x, openBlock as S, ref as C, shallowRef as te, toDisplayString as w, toValue as T, watch as ne } from "vue";
+var re = {
 	key: "mock-banner",
 	content: {
 		nodeType: "translation",
 		translation: {
-			en: { message: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." },
-			fr: { message: "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." },
-			es: { message: "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." },
-			de: { message: "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." },
-			it: { message: "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." },
-			pt: { message: "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." },
-			zh: { message: "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务 or 服务无关。" },
-			ja: { message: "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" },
-			ko: { message: "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." },
-			ru: { message: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
+			en: { a: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." },
+			fr: { a: "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." },
+			es: { a: "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." },
+			de: { a: "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." },
+			it: { a: "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." },
+			pt: { a: "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." },
+			zh: { a: "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务 or 服务无关。" },
+			ja: { a: "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" },
+			ko: { a: "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." },
+			ru: { a: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
 		}
-	},
-	localIds: ["mock-banner::local::src/components/MockBanner.content.ts"]
-}, O = ({ value: e, children: t, additionalProps: n = {} }) => {
-	let r = w(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
+	}
+}, E = ({ value: e, children: t, additionalProps: n = {} }) => {
+	let r = C(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
 		toString: () => String(r.value ?? ""),
@@ -36,7 +35,7 @@ var ne = {
 			return r.value;
 		},
 		use(e) {
-			return O({
+			return E({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -46,8 +45,8 @@ var ne = {
 			i = e.render, this.raw = e.raw;
 		},
 		...n
-	}), S(o);
-}, k = _({
+	}), x(o);
+}, D = _({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -62,7 +61,7 @@ var ne = {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), A = (e, t, n = f(t)) => {
+}), O = (e, t, n = f(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -70,12 +69,12 @@ var ne = {
 		plugins: n
 	};
 	return c(e.content, r, n);
-}, j = (e) => {
+}, k = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, M = /* @__PURE__ */ new Map(), N = (e) => {
-	if (M.has(e)) return M.get(e);
+}, A = /* @__PURE__ */ new Map(), j = (e) => {
+	if (A.has(e)) return A.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -96,11 +95,11 @@ var ne = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: j(m),
+			props: k(m),
 			children: []
 		});
 		else {
-			let e = j(m);
+			let e = k(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -117,9 +116,9 @@ var ne = {
 			children: e.children
 		});
 	}
-	return M.set(e, n), n;
-}, re = (e, t) => {
-	let n = N(e), r = 0, i = (e) => {
+	return A.set(e, n), n;
+}, M = (e, t) => {
+	let n = j(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -152,8 +151,8 @@ var ne = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, ie = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, ae = (e, t = {}) => {
-	if (!Object.values(t).some(ie)) return {
+}, N = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, ie = (e, t = {}) => {
+	if (!Object.values(t).some(N)) return {
 		isSimple: !0,
 		parts: e.replace(P, (e, n) => (t[n.trim()] ?? "").toString())
 	};
@@ -167,14 +166,14 @@ var ne = {
 		isSimple: !1,
 		parts: r
 	};
-}, oe = Symbol("intlayerHTML"), se = () => b(oe), F = (e, { components: t = {} } = {}) => {
+}, ae = Symbol("intlayerHTML"), oe = () => b(ae), F = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => y(t, e, e?.children)]));
-	return re(e, new Proxy(n, { get(e, t) {
+	return M(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => y(t, e, e?.children);
 	} }));
-}, ce = ({ components: e } = {}) => {
-	let t = se();
+}, se = ({ components: e } = {}) => {
+	let t = oe();
 	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 _({
@@ -190,11 +189,11 @@ _({
 		}
 	},
 	setup(e) {
-		let t = ce({ components: e.components });
+		let t = se({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var le = new Set([
+var ce = new Set([
 	"true",
 	"false",
 	"null",
@@ -206,7 +205,7 @@ var le = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), ue = (e) => {
+]), le = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -224,7 +223,7 @@ var le = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => le.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => ce.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -351,7 +350,7 @@ var le = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, de = (e) => {
+}, ue = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -360,7 +359,7 @@ var le = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : ue(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : le(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -380,8 +379,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var fe = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => fe(e)(t, n);
+var de = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => de(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -397,18 +396,18 @@ var fe = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, pe = Symbol("intlayerMarkdown"), me = () => {
-	let e = b(pe, { renderMarkdown: (e) => e });
+}, fe = Symbol("intlayerMarkdown"), pe = () => {
+	let e = b(fe, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, he = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ge = !0, _e = !0, q = !0, ve = he ? t : {
+}, me = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, he = !0, ge = !0, q = !0, _e = me ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => O({
+		let r = (e) => E({
 			...n,
 			value: e,
-			children: !q && p.enabled ? () => y(k, {
+			children: !q && p.enabled ? () => y(D, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -424,12 +423,12 @@ var fe = (e) => (t, n = {}) => {
 			let t = Object.getOwnPropertyDescriptor(i, e);
 			t && Object.defineProperty(a, e, t);
 		}
-		return S(a);
+		return x(a);
 	}
-}, ye = (e, t) => {
+}, ve = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = ae(e, r);
+	let i = ie(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -451,7 +450,7 @@ var fe = (e) => (t, n = {}) => {
 		}), y(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : y(m, null, i.parts);
-}, be = _e ? t : {
+}, ye = ge ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -465,7 +464,7 @@ var fe = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = ye(i, e);
+					let a = ve(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -481,15 +480,15 @@ var fe = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, xe = K ? t : {
+}, be = K ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(de(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(ue(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => O({
+				transform: (t, n) => E({
 					...n,
 					value: t,
 					children: e
@@ -497,15 +496,15 @@ var fe = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => O({
+		}), o = (n) => E({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = me(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = pe(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !q && p.enabled ? y(k, {
+				return !q && p.enabled ? y(D, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -517,7 +516,7 @@ var fe = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, Se = K ? t : {
+}, xe = K ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -526,10 +525,10 @@ var fe = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [xe, ...t.plugins ?? []]
+			plugins: [be, ...t.plugins ?? []]
 		});
 	}
-}, Ce = ge ? t : {
+}, Se = he ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
@@ -537,10 +536,10 @@ var fe = (e) => (t, n = {}) => {
 		e.tags;
 		let r = (e = {}) => {
 			let i = F(n, { components: e });
-			return O({
+			return E({
 				...t,
 				value: n,
-				children: !q && p.enabled ? () => y(k, {
+				children: !q && p.enabled ? () => y(D, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -550,7 +549,7 @@ var fe = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, J = /* @__PURE__ */ new Map(), we = (t, r = !0) => {
+}, J = /* @__PURE__ */ new Map(), Ce = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
 	if (J.has(i)) return J.get(i);
 	let s = [
@@ -560,13 +559,13 @@ var fe = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
-		ve,
-		be,
-		Se,
-		Ce
+		_e,
+		ye,
+		xe,
+		Se
 	];
 	return J.set(i, s), s;
-}, Y = (e, t) => A(e, t, we(t)), Te = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Ee = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(_({
+}, we = (e, t) => O(e, t, Ce(t)), Y = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Te = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => x(_({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -574,7 +573,7 @@ var fe = (e) => (t, n = {}) => {
 			return t == null ? null : Q(t) ? y(t) : Array.isArray(t) ? y("span", t) : t;
 		};
 	}
-})), De = (e) => new Proxy({}, {
+})), Ee = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -596,10 +595,10 @@ var fe = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), Oe = (t, n) => {
-	let r = v() ? b(Te) : void 0, i = x(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : D(n)) ?? i.value), o = T({});
-	te([() => D(t), () => a.value], ([e, t]) => {
-		o.value = Y(e, t);
+}), De = (t, n) => {
+	let r = v() ? b(Y) : void 0, i = ee(r?.locale) ? r.locale : C(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : T(n)) ?? i.value), o = te({});
+	ne([() => T(t), () => a.value], ([e, t]) => {
+		o.value = we(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -615,7 +614,7 @@ var fe = (e) => (t, n = {}) => {
 			if (n === Symbol.toPrimitive) return () => i.value;
 			let a = e.concat(n), c = X(o.value, a);
 			if (c === void 0 || Z(c) && !Q(c)) return s(a);
-			if (Ee(c)) return De(h(() => X(o.value, a)));
+			if (Te(c)) return Ee(h(() => X(o.value, a)));
 			let l = h(() => X(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
@@ -633,14 +632,26 @@ var fe = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, ke = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" }, Ae = _({
+}, Oe = _({
 	__name: "MockBanner",
-	setup(e) {
-		let { message: t } = Oe(ne);
-		return (e, n) => (C(), g("div", ke, E(ee(t)), 1));
+	setup(e, { expose: t }) {
+		t();
+		let { a: n } = De(re), r = { message: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
 	}
-});
-export { Ae as default };
+}), ke = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Ae = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" };
+function je(e, t, n, r, i, a) {
+	return S(), g("div", Ae, w(r.message), 1);
+}
+var Me = ke(Oe, [["render", je], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/MockBanner.vue"]]);
+export { Me as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

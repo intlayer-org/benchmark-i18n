@@ -1,184 +1,183 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as C, ref as w, renderList as te, shallowRef as ne, toDisplayString as T, toValue as E, unref as D, watch as O, withModifiers as k } from "vue";
+import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as C, ref as w, renderList as te, shallowRef as ne, toDisplayString as T, toValue as E, watch as D, withModifiers as O } from "vue";
 var re = {
 	key: "contact-form",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				nameLabel: "Name",
-				namePlaceholder: "Your name",
-				emailLabel: "Email",
-				emailPlaceholder: "you@example.com",
-				topicLabel: "Topic",
-				topics: [
+				e: "Name",
+				f: "Your name",
+				a: "Email",
+				b: "you@example.com",
+				h: "Topic",
+				i: [
 					"Bug Report",
 					"New Benchmark Idea",
 					"Methodology Question",
 					"Contribution",
 					"Other"
 				],
-				messageLabel: "Message",
-				messagePlaceholder: "Describe your question or idea...",
-				sendMessage: "Send Message"
+				c: "Message",
+				d: "Describe your question or idea...",
+				g: "Send Message"
 			},
 			fr: {
-				nameLabel: "Nom",
-				namePlaceholder: "Votre nom",
-				emailLabel: "E-mail",
-				emailPlaceholder: "vous@exemple.com",
-				topicLabel: "Sujet",
-				topics: [
+				e: "Nom",
+				f: "Votre nom",
+				a: "E-mail",
+				b: "vous@exemple.com",
+				h: "Sujet",
+				i: [
 					"Rapport de bug",
 					"Idée de benchmark",
 					"Question de méthodologie",
 					"Contribution",
 					"Autre"
 				],
-				messageLabel: "Message",
-				messagePlaceholder: "Décrivez votre question ou idée…",
-				sendMessage: "Envoyer"
+				c: "Message",
+				d: "Décrivez votre question ou idée…",
+				g: "Envoyer"
 			},
 			es: {
-				nameLabel: "Nombre",
-				namePlaceholder: "Su nombre",
-				emailLabel: "Correo electrónico",
-				emailPlaceholder: "tu@ejemplo.com",
-				topicLabel: "Tema",
-				topics: [
+				e: "Nombre",
+				f: "Su nombre",
+				a: "Correo electrónico",
+				b: "tu@ejemplo.com",
+				h: "Tema",
+				i: [
 					"Informe de error",
 					"Nueva idea de benchmark",
 					"Pregunta sobre metodología",
 					"Contribución",
 					"Otro"
 				],
-				messageLabel: "Mensaje",
-				messagePlaceholder: "Describa su pregunta o idea...",
-				sendMessage: "Enviar mensaje"
+				c: "Mensaje",
+				d: "Describa su pregunta o idea...",
+				g: "Enviar mensaje"
 			},
 			de: {
-				nameLabel: "Name",
-				namePlaceholder: "Ihr Name",
-				emailLabel: "E-Mail",
-				emailPlaceholder: "sie@beispiel.de",
-				topicLabel: "Thema",
-				topics: [
+				e: "Name",
+				f: "Ihr Name",
+				a: "E-Mail",
+				b: "sie@beispiel.de",
+				h: "Thema",
+				i: [
 					"Fehlerbericht",
 					"Neue Benchmark-Idee",
 					"Frage zur Methodik",
 					"Beitrag",
 					"Sonstiges"
 				],
-				messageLabel: "Nachricht",
-				messagePlaceholder: "Beschreiben Sie Ihre Frage oder Idee...",
-				sendMessage: "Nachricht senden"
+				c: "Nachricht",
+				d: "Beschreiben Sie Ihre Frage oder Idee...",
+				g: "Nachricht senden"
 			},
 			it: {
-				nameLabel: "Nome",
-				namePlaceholder: "Il tuo nome",
-				emailLabel: "E-mail",
-				emailPlaceholder: "tu@esempio.com",
-				topicLabel: "Argomento",
-				topics: [
+				e: "Nome",
+				f: "Il tuo nome",
+				a: "E-mail",
+				b: "tu@esempio.com",
+				h: "Argomento",
+				i: [
 					"Segnalazione bug",
 					"Nuova idea di benchmark",
 					"Domanda sulla metodologia",
 					"Contributo",
 					"Altro"
 				],
-				messageLabel: "Messaggio",
-				messagePlaceholder: "Descrivi la tua domanda o idea...",
-				sendMessage: "Invia messaggio"
+				c: "Messaggio",
+				d: "Descrivi la tua domanda o idea...",
+				g: "Invia messaggio"
 			},
 			pt: {
-				nameLabel: "Nome",
-				namePlaceholder: "Seu nome",
-				emailLabel: "E-mail",
-				emailPlaceholder: "voce@exemplo.com",
-				topicLabel: "Assunto",
-				topics: [
+				e: "Nome",
+				f: "Seu nome",
+				a: "E-mail",
+				b: "voce@exemplo.com",
+				h: "Assunto",
+				i: [
 					"Relatório de erro",
 					"Nova ideia de benchmark",
 					"Pergunta sobre metodologia",
 					"Contribuição",
 					"Outro"
 				],
-				messageLabel: "Mensagem",
-				messagePlaceholder: "Descreva sua pergunta ou ideia...",
-				sendMessage: "Enviar Mensagem"
+				c: "Mensagem",
+				d: "Descreva sua pergunta ou ideia...",
+				g: "Enviar Mensagem"
 			},
 			zh: {
-				nameLabel: "姓名",
-				namePlaceholder: "您的姓名",
-				emailLabel: "电子邮件",
-				emailPlaceholder: "you@example.com",
-				topicLabel: "主题",
-				topics: [
+				e: "姓名",
+				f: "您的姓名",
+				a: "电子邮件",
+				b: "you@example.com",
+				h: "主题",
+				i: [
 					"错误报告",
 					"新基准测试创意",
 					"方法论问题",
 					"贡献",
 					"其他"
 				],
-				messageLabel: "消息",
-				messagePlaceholder: "描述您的问题或想法...",
-				sendMessage: "发送消息"
+				c: "消息",
+				d: "描述您的问题或想法...",
+				g: "发送消息"
 			},
 			ja: {
-				nameLabel: "名前",
-				namePlaceholder: "お名前",
-				emailLabel: "メールアドレス",
-				emailPlaceholder: "you@example.com",
-				topicLabel: "トピック",
-				topics: [
+				e: "名前",
+				f: "お名前",
+				a: "メールアドレス",
+				b: "you@example.com",
+				h: "トピック",
+				i: [
 					"バグ報告",
 					"新しいベンチマークのアイデア",
 					"方法論に関する質問",
 					"貢献",
 					"その他"
 				],
-				messageLabel: "メッセージ",
-				messagePlaceholder: "質問やアイデアを説明してください...",
-				sendMessage: "メッセージを送信"
+				c: "メッセージ",
+				d: "質問やアイデアを説明してください...",
+				g: "メッセージを送信"
 			},
 			ko: {
-				nameLabel: "이름",
-				namePlaceholder: "이름을 입력하세요",
-				emailLabel: "이메일",
-				emailPlaceholder: "you@example.com",
-				topicLabel: "주제",
-				topics: [
+				e: "이름",
+				f: "이름을 입력하세요",
+				a: "이메일",
+				b: "you@example.com",
+				h: "주제",
+				i: [
 					"버그 보고",
 					"새로운 벤치마크 아이디어",
 					"방법론 관련 질문",
 					"기여",
 					"기타"
 				],
-				messageLabel: "메시지",
-				messagePlaceholder: "질문이나 아이디어를 설명해 주세요...",
-				sendMessage: "메시지 보내기"
+				c: "메시지",
+				d: "질문이나 아이디어를 설명해 주세요...",
+				g: "메시지 보내기"
 			},
 			ru: {
-				nameLabel: "Имя",
-				namePlaceholder: "Ваше имя",
-				emailLabel: "Электронная почта",
-				emailPlaceholder: "you@example.com",
-				topicLabel: "Тема",
-				topics: [
+				e: "Имя",
+				f: "Ваше имя",
+				a: "Электронная почта",
+				b: "you@example.com",
+				h: "Тема",
+				i: [
 					"Отчет об ошибке",
 					"Новая идея для бенчмарка",
 					"Вопрос по методологии",
 					"Вклад",
 					"Другое"
 				],
-				messageLabel: "Сообщение",
-				messagePlaceholder: "Опишите ваш вопрос или идею...",
-				sendMessage: "Отправить сообщение"
+				c: "Сообщение",
+				d: "Опишите ваш вопрос или идею...",
+				g: "Отправить сообщение"
 			}
 		}
-	},
-	localIds: ["contact-form::local::src/components/pages/contact/ContactForm.content.ts"]
-}, A = ({ value: e, children: t, additionalProps: n = {} }) => {
+	}
+}, k = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = w(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -196,7 +195,7 @@ var re = {
 			return r.value;
 		},
 		use(e) {
-			return A({
+			return k({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -207,7 +206,7 @@ var re = {
 		},
 		...n
 	}), S(o);
-}, j = v({
+}, A = v({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -230,12 +229,12 @@ var re = {
 		plugins: n
 	};
 	return c(e.content, r, n);
-}, M = (e) => {
+}, j = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, N = /* @__PURE__ */ new Map(), ae = (e) => {
-	if (N.has(e)) return N.get(e);
+}, M = /* @__PURE__ */ new Map(), ae = (e) => {
+	if (M.has(e)) return M.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -256,11 +255,11 @@ var re = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: M(m),
+			props: j(m),
 			children: []
 		});
 		else {
-			let e = M(m);
+			let e = j(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -277,7 +276,7 @@ var re = {
 			children: e.children
 		});
 	}
-	return N.set(e, n), n;
+	return M.set(e, n), n;
 }, oe = (e, t) => {
 	let n = ae(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
@@ -312,12 +311,12 @@ var re = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
+}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", N = /\{\{\s*(.*?)\s*\}\}/g, P = (e, t = {}) => {
 	if (!Object.values(t).some(se)) return {
 		isSimple: !0,
-		parts: e.replace(P, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(N, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(P), r = [];
+	let n = e.split(N), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -327,14 +326,14 @@ var re = {
 		isSimple: !1,
 		parts: r
 	};
-}, le = Symbol("intlayerHTML"), ue = () => x(le), F = (e, { components: t = {} } = {}) => {
+}, ce = Symbol("intlayerHTML"), le = () => x(ce), F = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => b(t, e, e?.children)]));
 	return oe(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => b(t, e, e?.children);
 	} }));
-}, de = ({ components: e } = {}) => {
-	let t = ue();
+}, ue = ({ components: e } = {}) => {
+	let t = le();
 	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 v({
@@ -350,11 +349,11 @@ v({
 		}
 	},
 	setup(e) {
-		let t = de({ components: e.components });
+		let t = ue({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var fe = new Set([
+var de = new Set([
 	"true",
 	"false",
 	"null",
@@ -366,7 +365,7 @@ var fe = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), pe = (e) => {
+]), fe = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -384,7 +383,7 @@ var fe = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => fe.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => de.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -511,7 +510,7 @@ var fe = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, me = (e) => {
+}, pe = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -520,7 +519,7 @@ var fe = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : pe(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : fe(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -540,8 +539,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var he = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => he(e)(t, n);
+var me = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => me(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -557,18 +556,18 @@ var he = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, ge = Symbol("intlayerMarkdown"), _e = () => {
-	let e = x(ge, { renderMarkdown: (e) => e });
+}, he = Symbol("intlayerMarkdown"), ge = () => {
+	let e = x(he, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, ve = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, q = !0, ye = !0, J = !0, be = ve ? t : {
+}, _e = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, q = !0, ve = !0, J = !0, ye = _e ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => A({
+		let r = (e) => k({
 			...n,
 			value: e,
-			children: !J && p.enabled ? () => b(j, {
+			children: !J && p.enabled ? () => b(A, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -586,10 +585,10 @@ var he = (e) => (t, n = {}) => {
 		}
 		return S(a);
 	}
-}, xe = (e, t) => {
+}, be = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = ce(e, r);
+	let i = P(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -611,7 +610,7 @@ var he = (e) => (t, n = {}) => {
 		}), b(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : b(m, null, i.parts);
-}, Se = ye ? t : {
+}, xe = ve ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -625,7 +624,7 @@ var he = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = xe(i, e);
+					let a = be(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -641,15 +640,15 @@ var he = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, Ce = K ? t : {
+}, Se = K ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(me(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(pe(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => A({
+				transform: (t, n) => k({
 					...n,
 					value: t,
 					children: e
@@ -657,15 +656,15 @@ var he = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => A({
+		}), o = (n) => k({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = _e(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = ge(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !J && p.enabled ? b(j, {
+				return !J && p.enabled ? b(A, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -677,7 +676,7 @@ var he = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, we = K ? t : {
+}, Ce = K ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -686,10 +685,10 @@ var he = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [Ce, ...t.plugins ?? []]
+			plugins: [Se, ...t.plugins ?? []]
 		});
 	}
-}, Te = q ? t : {
+}, we = q ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
@@ -697,10 +696,10 @@ var he = (e) => (t, n = {}) => {
 		e.tags;
 		let r = (e = {}) => {
 			let i = F(n, { components: e });
-			return A({
+			return k({
 				...t,
 				value: n,
-				children: !J && p.enabled ? () => b(j, {
+				children: !J && p.enabled ? () => b(A, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -710,7 +709,7 @@ var he = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, Y = /* @__PURE__ */ new Map(), Ee = (t, r = !0) => {
+}, Y = /* @__PURE__ */ new Map(), Te = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
 	if (Y.has(i)) return Y.get(i);
 	let s = [
@@ -720,13 +719,13 @@ var he = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
-		be,
-		Se,
-		we,
-		Te
+		ye,
+		xe,
+		Ce,
+		we
 	];
 	return Y.set(i, s), s;
-}, De = (e, t) => ie(e, t, Ee(t)), Oe = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), ke = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(v({
+}, Ee = (e, t) => ie(e, t, Te(t)), De = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Oe = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(v({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -734,7 +733,7 @@ var he = (e) => (t, n = {}) => {
 			return t == null ? null : Q(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
 		};
 	}
-})), Ae = (e) => new Proxy({}, {
+})), ke = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -756,10 +755,10 @@ var he = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), je = (t, n) => {
-	let r = y() ? x(Oe) : void 0, i = ee(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : E(n)) ?? i.value), o = ne({});
-	O([() => E(t), () => a.value], ([e, t]) => {
-		o.value = De(e, t);
+}), Ae = (t, n) => {
+	let r = y() ? x(De) : void 0, i = ee(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : E(n)) ?? i.value), o = ne({});
+	D([() => E(t), () => a.value], ([e, t]) => {
+		o.value = Ee(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -775,7 +774,7 @@ var he = (e) => (t, n = {}) => {
 			if (n === Symbol.toPrimitive) return () => i.value;
 			let a = e.concat(n), c = X(o.value, a);
 			if (c === void 0 || Z(c) && !Q(c)) return s(a);
-			if (ke(c)) return Ae(h(() => X(o.value, a)));
+			if (Oe(c)) return ke(h(() => X(o.value, a)));
 			let l = h(() => X(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
@@ -793,54 +792,76 @@ var he = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, Me = { class: "grid gap-4 md:grid-cols-2" }, Ne = {
+}, je = v({
+	__name: "ContactForm",
+	setup(e, { expose: t }) {
+		t();
+		let { e: n, f: r, a: i, b: a, h: o, i: s, c, d: l, g: u } = Ae(re), d = {
+			nameLabel: n,
+			namePlaceholder: r,
+			emailLabel: i,
+			emailPlaceholder: a,
+			topicLabel: o,
+			topics: s,
+			messageLabel: c,
+			messagePlaceholder: l,
+			sendMessage: u
+		};
+		return Object.defineProperty(d, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), d;
+	}
+}), Me = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Ne = { class: "grid gap-4 md:grid-cols-2" }, Pe = {
 	for: "name",
 	class: "mb-1 block text-sm font-medium text-foreground"
-}, Pe = ["placeholder"], Fe = {
+}, Fe = ["placeholder"], Ie = {
 	for: "email",
 	class: "mb-1 block text-sm font-medium text-foreground"
-}, Ie = ["placeholder"], Le = {
+}, Le = ["placeholder"], Re = {
 	for: "topic",
 	class: "mb-1 block text-sm font-medium text-foreground"
-}, Re = {
+}, ze = {
 	id: "topic",
 	class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-}, ze = {
+}, Be = {
 	for: "message",
 	class: "mb-1 block text-sm font-medium text-foreground"
-}, Be = ["placeholder"], Ve = {
+}, Ve = ["placeholder"], He = {
 	type: "submit",
 	class: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
-}, He = v({
-	__name: "ContactForm",
-	setup(e) {
-		let { nameLabel: t, namePlaceholder: n, emailLabel: r, emailPlaceholder: i, topicLabel: a, topics: o, messageLabel: s, messagePlaceholder: c, sendMessage: l } = je(re);
-		return (e, u) => (C(), g("form", {
-			class: "space-y-6",
-			onSubmit: u[0] ||= k(() => {}, ["prevent"])
-		}, [
-			_("div", Me, [_("div", null, [_("label", Ne, T(D(t)), 1), _("input", {
-				id: "name",
-				class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-				placeholder: D(n)
-			}, null, 8, Pe)]), _("div", null, [_("label", Fe, T(D(r)), 1), _("input", {
-				id: "email",
-				type: "email",
-				class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-				placeholder: D(i)
-			}, null, 8, Ie)])]),
-			_("div", null, [_("label", Le, T(D(a)), 1), _("select", Re, [(C(!0), g(m, null, te(D(o), (e) => (C(), g("option", { key: e }, T(e), 1))), 128))])]),
-			_("div", null, [_("label", ze, T(D(s)), 1), _("textarea", {
-				id: "message",
-				rows: "5",
-				class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-				placeholder: D(c)
-			}, null, 8, Be)]),
-			_("button", Ve, T(D(l)), 1)
-		], 32));
-	}
-});
-export { He as default };
+};
+function Ue(e, t, n, r, i, a) {
+	return C(), g("form", {
+		class: "space-y-6",
+		onSubmit: t[0] ||= O(() => {}, ["prevent"])
+	}, [
+		_("div", Ne, [_("div", null, [_("label", Pe, T(r.nameLabel), 1), _("input", {
+			id: "name",
+			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
+			placeholder: r.namePlaceholder
+		}, null, 8, Fe)]), _("div", null, [_("label", Ie, T(r.emailLabel), 1), _("input", {
+			id: "email",
+			type: "email",
+			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
+			placeholder: r.emailPlaceholder
+		}, null, 8, Le)])]),
+		_("div", null, [_("label", Re, T(r.topicLabel), 1), _("select", ze, [(C(!0), g(m, null, te(r.topics, (e) => (C(), g("option", { key: e }, T(e), 1))), 128))])]),
+		_("div", null, [_("label", Be, T(r.messageLabel), 1), _("textarea", {
+			id: "message",
+			rows: "5",
+			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
+			placeholder: r.messagePlaceholder
+		}, null, 8, Ve)]),
+		_("button", He, T(r.sendMessage), 1)
+	], 32);
+}
+var We = Me(je, [["render", Ue], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/contact/ContactForm.vue"]]);
+export { We as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

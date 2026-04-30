@@ -1,64 +1,63 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as te, ref as C, shallowRef as ne, toDisplayString as w, toValue as T, unref as E, watch as re } from "vue";
-var D = {
+import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as ee, markRaw as S, openBlock as te, ref as C, shallowRef as ne, toDisplayString as w, toValue as T, watch as re } from "vue";
+var ie = {
 	key: "profile-section",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				title: "Profile",
-				displayNameLabel: "Display Name",
-				emailLabel: "Email"
+				c: "Profile",
+				a: "Display Name",
+				b: "Email"
 			},
 			fr: {
-				title: "Profil",
-				displayNameLabel: "Nom affiché",
-				emailLabel: "E-mail"
+				c: "Profil",
+				a: "Nom affiché",
+				b: "E-mail"
 			},
 			es: {
-				title: "Perfil",
-				displayNameLabel: "Nombre a mostrar",
-				emailLabel: "Correo electrónico"
+				c: "Perfil",
+				a: "Nombre a mostrar",
+				b: "Correo electrónico"
 			},
 			de: {
-				title: "Profil",
-				displayNameLabel: "Anzeigename",
-				emailLabel: "E-Mail"
+				c: "Profil",
+				a: "Anzeigename",
+				b: "E-Mail"
 			},
 			it: {
-				title: "Profilo",
-				displayNameLabel: "Nome visualizzato",
-				emailLabel: "E-mail"
+				c: "Profilo",
+				a: "Nome visualizzato",
+				b: "E-mail"
 			},
 			pt: {
-				title: "Perfil",
-				displayNameLabel: "Nome de exibição",
-				emailLabel: "E-mail"
+				c: "Perfil",
+				a: "Nome de exibição",
+				b: "E-mail"
 			},
 			zh: {
-				title: "个人资料",
-				displayNameLabel: "显示名称",
-				emailLabel: "电子邮件"
+				c: "个人资料",
+				a: "显示名称",
+				b: "电子邮件"
 			},
 			ja: {
-				title: "プロフィール",
-				displayNameLabel: "表示名",
-				emailLabel: "メールアドレス"
+				c: "プロフィール",
+				a: "表示名",
+				b: "メールアドレス"
 			},
 			ko: {
-				title: "프로필",
-				displayNameLabel: "표시 이름",
-				emailLabel: "이메일"
+				c: "프로필",
+				a: "표시 이름",
+				b: "이메일"
 			},
 			ru: {
-				title: "Профиль",
-				displayNameLabel: "Отображаемое имя",
-				emailLabel: "Электронная почта"
+				c: "Профиль",
+				a: "Отображаемое имя",
+				b: "Электронная почта"
 			}
 		}
-	},
-	localIds: ["profile-section::local::src/components/pages/settings/ProfileSection.content.ts"]
-}, O = ({ value: e, children: t, additionalProps: n = {} }) => {
+	}
+}, E = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = C(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -76,7 +75,7 @@ var D = {
 			return r.value;
 		},
 		use(e) {
-			return O({
+			return E({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -87,7 +86,7 @@ var D = {
 		},
 		...n
 	}), S(o);
-}, k = v({
+}, D = v({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -102,7 +101,7 @@ var D = {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), ie = (e, t, n = f(t)) => {
+}), O = (e, t, n = f(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -110,12 +109,12 @@ var D = {
 		plugins: n
 	};
 	return c(e.content, r, n);
-}, A = (e) => {
+}, k = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, j = /* @__PURE__ */ new Map(), ae = (e) => {
-	if (j.has(e)) return j.get(e);
+}, A = /* @__PURE__ */ new Map(), ae = (e) => {
+	if (A.has(e)) return A.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -136,11 +135,11 @@ var D = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: A(m),
+			props: k(m),
 			children: []
 		});
 		else {
-			let e = A(m);
+			let e = k(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -157,8 +156,8 @@ var D = {
 			children: e.children
 		});
 	}
-	return j.set(e, n), n;
-}, oe = (e, t) => {
+	return A.set(e, n), n;
+}, j = (e, t) => {
 	let n = ae(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
@@ -192,12 +191,12 @@ var D = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", M = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
-	if (!Object.values(t).some(se)) return {
+}, M = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", N = /\{\{\s*(.*?)\s*\}\}/g, P = (e, t = {}) => {
+	if (!Object.values(t).some(M)) return {
 		isSimple: !0,
-		parts: e.replace(M, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(N, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(M), r = [];
+	let n = e.split(N), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -207,14 +206,14 @@ var D = {
 		isSimple: !1,
 		parts: r
 	};
-}, N = Symbol("intlayerHTML"), P = () => x(N), F = (e, { components: t = {} } = {}) => {
+}, oe = Symbol("intlayerHTML"), se = () => x(oe), F = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => b(t, e, e?.children)]));
-	return oe(e, new Proxy(n, { get(e, t) {
+	return j(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => b(t, e, e?.children);
 	} }));
-}, le = ({ components: e } = {}) => {
-	let t = P();
+}, ce = ({ components: e } = {}) => {
+	let t = se();
 	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 v({
@@ -230,11 +229,11 @@ v({
 		}
 	},
 	setup(e) {
-		let t = le({ components: e.components });
+		let t = ce({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var ue = new Set([
+var le = new Set([
 	"true",
 	"false",
 	"null",
@@ -246,7 +245,7 @@ var ue = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), de = (e) => {
+]), ue = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -264,7 +263,7 @@ var ue = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => ue.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => le.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -391,7 +390,7 @@ var ue = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, fe = (e) => {
+}, de = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -400,7 +399,7 @@ var ue = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : de(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : ue(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -420,8 +419,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var pe = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => pe(e)(t, n);
+var fe = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => fe(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -437,18 +436,18 @@ var pe = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, me = Symbol("intlayerMarkdown"), K = () => {
-	let e = x(me, { renderMarkdown: (e) => e });
+}, pe = Symbol("intlayerMarkdown"), me = () => {
+	let e = x(pe, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, he = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", q = !0, ge = !0, _e = !0, J = !0, ve = he ? t : {
+}, he = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ge = !0, _e = !0, q = !0, ve = he ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => O({
+		let r = (e) => E({
 			...n,
 			value: e,
-			children: !J && p.enabled ? () => b(k, {
+			children: !q && p.enabled ? () => b(D, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -469,7 +468,7 @@ var pe = (e) => (t, n = {}) => {
 }, ye = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = ce(e, r);
+	let i = P(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -521,15 +520,15 @@ var pe = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, xe = q ? t : {
+}, xe = K ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(fe(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(de(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => O({
+				transform: (t, n) => E({
 					...n,
 					value: t,
 					children: e
@@ -537,15 +536,15 @@ var pe = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => O({
+		}), o = (n) => E({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = K(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = me(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !J && p.enabled ? b(k, {
+				return !q && p.enabled ? b(D, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -557,7 +556,7 @@ var pe = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, Se = q ? t : {
+}, Se = K ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -577,10 +576,10 @@ var pe = (e) => (t, n = {}) => {
 		e.tags;
 		let r = (e = {}) => {
 			let i = F(n, { components: e });
-			return O({
+			return E({
 				...t,
 				value: n,
-				children: !J && p.enabled ? () => b(k, {
+				children: !q && p.enabled ? () => b(D, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -590,9 +589,9 @@ var pe = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, Y = /* @__PURE__ */ new Map(), we = (t, r = !0) => {
+}, J = /* @__PURE__ */ new Map(), we = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
-	if (Y.has(i)) return Y.get(i);
+	if (J.has(i)) return J.get(i);
 	let s = [
 		o(t ?? e.defaultLocale, r ? e.defaultLocale : void 0),
 		a,
@@ -605,13 +604,13 @@ var pe = (e) => (t, n = {}) => {
 		Se,
 		Ce
 	];
-	return Y.set(i, s), s;
-}, Te = (e, t) => ie(e, t, we(t)), Ee = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), De = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => S(v({
+	return J.set(i, s), s;
+}, Te = (e, t) => O(e, t, we(t)), Ee = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), De = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Q = (e) => S(v({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : Q(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
+			return t == null ? null : Z(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
 		};
 	}
 })), Oe = (e) => new Proxy({}, {
@@ -621,7 +620,7 @@ var pe = (e) => (t, n = {}) => {
 		if (n === "value") return r ?? "";
 		if (n === "$raw") return e;
 		if (n === "__v_skip") return !0;
-		if (n === "c" || n === "asComponent") return $(() => e.value);
+		if (n === "c" || n === "asComponent") return Q(() => e.value);
 		if (r == null) return n === Symbol.toPrimitive || n === "toString" ? () => "" : void 0;
 		let i = r[n];
 		return typeof i == "function" ? i.bind(r) : i;
@@ -647,23 +646,23 @@ var pe = (e) => (t, n = {}) => {
 	let s = (e) => new Proxy({}, {
 		get(t, n, r) {
 			if (n === "__v_isRef") return !0;
-			let i = h(() => X(o.value, e));
+			let i = h(() => Y(o.value, e));
 			if (n === "value") return i.value ?? "";
 			if (n === "then") return;
-			if (n === "c" || n === "asComponent") return $(() => i.value);
+			if (n === "c" || n === "asComponent") return Q(() => i.value);
 			if (n === "$raw") return i;
 			if (n === Symbol.toPrimitive) return () => i.value;
-			let a = e.concat(n), c = X(o.value, a);
-			if (c === void 0 || Z(c) && !Q(c)) return s(a);
-			if (De(c)) return Oe(h(() => X(o.value, a)));
-			let l = h(() => X(o.value, a));
+			let a = e.concat(n), c = Y(o.value, a);
+			if (c === void 0 || X(c) && !Z(c)) return s(a);
+			if (De(c)) return Oe(h(() => Y(o.value, a)));
+			let l = h(() => Y(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = X(o.value, e);
-			return Z(t) ? Reflect.ownKeys(t) : [];
+			let t = Y(o.value, e);
+			return X(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -673,28 +672,44 @@ var pe = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, Ae = { class: "rounded-lg border border-border bg-card p-6" }, je = { class: "mb-4 text-lg font-semibold text-foreground" }, Me = { class: "space-y-4" }, Ne = {
+}, Ae = v({
+	__name: "ProfileSection",
+	setup(e, { expose: t }) {
+		t();
+		let { c: n, a: r, b: i } = ke(ie), a = {
+			title: n,
+			displayNameLabel: r,
+			emailLabel: i
+		};
+		return Object.defineProperty(a, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), a;
+	}
+}), je = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, $ = { class: "rounded-lg border border-border bg-card p-6" }, Me = { class: "mb-4 text-lg font-semibold text-foreground" }, Ne = { class: "space-y-4" }, Pe = {
 	for: "displayName",
 	class: "mb-1 block text-sm font-medium text-foreground"
-}, Pe = {
+}, Fe = {
 	for: "email",
 	class: "mb-1 block text-sm font-medium text-foreground"
-}, Fe = v({
-	__name: "ProfileSection",
-	setup(e) {
-		let { title: t, displayNameLabel: n, emailLabel: r } = ke(D);
-		return (e, i) => (te(), g("section", Ae, [_("h2", je, w(E(t)), 1), _("div", Me, [_("div", null, [_("label", Ne, w(E(n)), 1), i[0] ||= _("input", {
-			id: "displayName",
-			value: "John Developer",
-			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-		}, null, -1)]), _("div", null, [_("label", Pe, w(E(r)), 1), i[1] ||= _("input", {
-			id: "email",
-			value: "john@example.com",
-			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-		}, null, -1)])])]));
-	}
-});
-export { Fe as default };
+};
+function Ie(e, t, n, r, i, a) {
+	return te(), g("section", $, [_("h2", Me, w(r.title), 1), _("div", Ne, [_("div", null, [_("label", Pe, w(r.displayNameLabel), 1), t[0] ||= _("input", {
+		id: "displayName",
+		value: "John Developer",
+		class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+	}, null, -1)]), _("div", null, [_("label", Fe, w(r.emailLabel), 1), t[1] ||= _("input", {
+		id: "email",
+		value: "john@example.com",
+		class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+	}, null, -1)])])]);
+}
+var Le = je(Ae, [["render", Ie], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/settings/ProfileSection.vue"]]);
+export { Le as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

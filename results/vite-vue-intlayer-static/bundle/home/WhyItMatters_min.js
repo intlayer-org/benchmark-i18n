@@ -1,11 +1,10 @@
 import { S as e, a as t, c as n, g as r, h as i, i as a, l as o, m as s, n as c, o as l, r as u, s as d, t as f, x as p } from "./getContent-okEgz1Xg.js";
-import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as S, markRaw as C, onBeforeMount as w, onMounted as ee, openBlock as te, ref as T, shallowRef as ne, toDisplayString as E, toValue as D, unref as O, watch as re } from "vue";
+import { Fragment as m, computed as h, createElementBlock as g, createElementVNode as _, defineComponent as v, getCurrentInstance as y, h as b, inject as x, isRef as S, markRaw as C, onBeforeMount as ee, onMounted as te, openBlock as ne, ref as w, shallowRef as T, toDisplayString as E, toValue as D, watch as re } from "vue";
 var ie = {
 	key: "why-it-matters",
-	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"title\":\"Why These Metrics Matter\",\"bundleSize\":{\"title\":\"Bundle Size\",\"description\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\"},\"renderingHydration\":{\"title\":\"Rendering & Hydration\",\"description\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\"},\"dynamicLoading\":{\"title\":\"Dynamic Loading\",\"description\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"}},\"fr\":{\"title\":\"Pourquoi ces mesures sont importantes\",\"bundleSize\":{\"title\":\"Taille du Bundle\",\"description\":\"Le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.\"},\"renderingHydration\":{\"title\":\"Rendu et Hydratation\",\"description\":\"La connexion d'un dictionnaire JSON volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arborescence. Lors de l'hydratation SSR, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le Time to Interactive (TTI).\"},\"dynamicLoading\":{\"title\":\"Chargement Dynamique\",\"description\":\"Le chargement de toutes les traductions à l'avance surcharge la charge utile initiale. Le chargement dynamique (lazy loading) répartit les traductions par itinéraire ou par espace de noms, n'envoyant que ce dont la page actuelle a besoin. Cependant, le chargement différé introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de la mise en cache. Il est essentiel de mesurer les deux stratégies.\"}},\"es\":{\"title\":\"Por qué estas métricas importan\",\"bundleSize\":{\"title\":\"Tamaño del paquete\",\"description\":\"El paquete son los datos que se envían a todos los usuarios en todo el mundo. Un paquete más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas que son comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código de tiempo de ejecución, además de los propios archivos de traducción.\"},\"renderingHydration\":{\"title\":\"Renderizado e hidratación\",\"description\":\"Conectar un dictionnaire JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede activar re-renderizaciones en todo el árbol. Durante la hidratación de SSR, el análisis y la vinculación de objetos de traducción masivos añaden latencia antes de que la página se vuelva interactiva, lo que afecta directamente al tiempo de interacción (TTI).\"},\"dynamicLoading\":{\"title\":\"Carga dinámica\",\"description\":\"Cargar todas las traducciones por adelantado sobrecarga el payload inicial. La carga dinámica (lazy) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, la carga diferida introduce sus propios inconvenientes: solicitudes en cascada, destellos de contenido no traducido y complejidad de la caché. Medir ambas estrategias es esencial.\"}},\"de\":{\"title\":\"Warum diese Metriken wichtig sind\",\"bundleSize\":{\"title\":\"Bundle-Größe\",\"description\":\"Das Bundle sind die Daten, die an jeden Benutzer auf der ganzen Welt gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten – insbesondere bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren drastisch in ihrem Gewicht: von wenigen Kilobyte bis zu Zehnern von Kilobyte an Laufzeitcode, plus die Übersetzungsdateien selbst.\"},\"renderingHydration\":{\"title\":\"Rendering & Hydrierung\",\"description\":\"Das Verbinden eines großen JSON-Wörterbuchs mit jeder Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings über den gesamten Baum auslösen. Während der SSR-Hydrierung fügt das Parsen und Anhängen massiver Übersetzungsobjekte Latenz hinzu, bevor die Seite interaktiv wird – was sich direkt auf die Time to Interactive (TTI) auswirkt.\"},\"dynamicLoading\":{\"title\":\"Dynamisches Laden\",\"description\":\"Das Laden aller Übersetzungen im Voraus überlastet die anfängliche Payload. Dynamisches (lazy) Laden teilt Übersetzungen nach Route oder Namespace auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Aufblitzen von nicht übersetztem Inhalt und Caching-Komplexität. Das Messen beider Strategien ist unerlässlich.\"}},\"it\":{\"title\":\"Perché queste metriche sono importanti\",\"bundleSize\":{\"title\":\"Dimensioni del bundle\",\"description\":\"Il bundle è l'insieme di dati spediti a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi — specialmente su connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.\"},\"renderingHydration\":{\"title\":\"Rendering e idratazione\",\"description\":\"Collegare un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può innescare re-render in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'allegatamento di enormi oggetti di traduzione aggiunge latenza prima che la pagina diventi interattiva — influenzando direttamente il Time to Interactive (TTI).\"},\"dynamicLoading\":{\"title\":\"Caricamento dinamico\",\"description\":\"Caricare tutte le traduzioni in anticipo sovraccarica il payload iniziale. Il caricamento dinamico (lazy) divide le traduzioni per rotta o namespace, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il caricamento lazy introduce i propri compromessi: richieste a cascata, flash di contenuti non tradotti e complessità del caching. Misurare entrambe le strategie è essenziale.\"}},\"pt\":{\"title\":\"Por que essas métricas são importantes\",\"bundleSize\":{\"title\":\"Tamanho do bundle\",\"description\":\"O bundle são os dados enviados a todos os usuários em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução.\"},\"renderingHydration\":{\"title\":\"Renderização e Hidratação\",\"description\":\"Conectar um dicionário JSON grande a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode disparar re-renderizações em toda a árvore. Durante a hidratação do SSR, a análise e a anexação de objetos de tradução massivos adicionam latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).\"},\"dynamicLoading\":{\"title\":\"Carregamento Dinâmico\",\"description\":\"Carregar todas as traduções antecipadamente sobrecarrega o payload inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento preguiçoso introduz suas próprias compensações: solicitações em cascata, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial.\"}},\"zh\":{\"title\":\"为什么这些指标很重要\",\"bundleSize\":{\"title\":\"捆绑包大小\",\"description\":\"捆绑包是发送给全球每个用户的数据。更大的捆绑包意味着更长的下载时间——尤其是在许多地区常见的慢速 3G 连接上。i18n 库的重量差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。\"},\"renderingHydration\":{\"title\":\"渲染与水合\",\"description\":\"将大型 JSON 字典连接到每个组件会创建一个隐藏的依赖关系：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 水合过程中，解析和附加海量的翻译对象会在页面变得可交互之前增加延迟——直接影响可交互时间 (TTI)。\"},\"dynamicLoading\":{\"title\":\"动态加载\",\"description\":\"预先加载所有翻译会使初始负载过重。动态（延迟）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，延迟加载引入了它自己的权衡：瀑布流请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。\"}},\"ja\":{\"title\":\"なぜこれらの指標が重要なのか\",\"bundleSize\":{\"title\":\"バンドルサイズ\",\"description\":\"バンドルは、世界中のすべてのユーザーに送られるデータです。バンドルが大きくなると、ダウンロード時間が長くなります。特に、多くの地域で一般的な低速な3G接続では顕著です。i18nライブラリはその重量が劇的に異なります。数キロバイトから数十キロバイトのランタイムコードに加えて、翻訳ファイル自体の重さも加わります。\"},\"renderingHydration\":{\"title\":\"レンダリングとハイドレーション\",\"description\":\"大きなJSON辞書をすべてのコンポーネントに接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更により、ツリー全体で再レンダリングがトリガーされる可能性があります。SSRハイドレーション中、大規模な翻訳オブジェクトの解析とアタッチにより、ページがインタラクティブになるまでのレイテンシが増加し、Time to Interactive (TTI) に直接影響します。\"},\"dynamicLoading\":{\"title\":\"ダイナミックローディング\",\"description\":\"すべての翻訳を事前にロードすると、初期ペイロードが過負荷になります。ダイナミック（遅延）ローディングは、ルートまたはネームスペースごとに翻訳を分割し、現在のページが必要なものだけを送信します。ただし、遅延ロードには独自のトレードオフがあります。ウォーターフォールリクエスト、翻訳されていないコンテンツのフラッシュ、キャッシュの複雑さなどです。両方の戦略を測定することが不可欠です。\"}},\"ko\":{\"title\":\"이러한 지표가 중요한 이유\",\"bundleSize\":{\"title\":\"번들 크기\",\"description\":\"번들은 전 세계 모든 사용자에게 배송되는 데이터입니다. 번들이 클수록 다운로드 시간이 길어집니다. 특히 많은 지역에서 흔히 볼 수 있는 느린 3G 연결에서는 더욱 그렇습니다. i18n 라이브러리는 수 킬로바이트에서 수십 킬로바이트의 런타임 코드와 번역 파일 자체에 이르기까지 그 무게가 매우 다양합니다.\"},\"renderingHydration\":{\"title\":\"렌더링 및 하이드레이션\",\"description\":\"대규모 JSON 사전을 모든 구성 요소에 연결하면 숨겨진 종속성이 생성됩니다. 번역 컨텍스트의 변경은 전체 트리에서 다시 렌더링을 트리거할 수 있습니다. SSR 하이드레이션 중에 거대한 번역 개체를 구문 분석하고 첨부하면 페이지가 상호 작용하기 전에 대기 시간이 추가되어 TTI(Time to Interactive)에 직접적인 영향을 미칩니다.\"},\"dynamicLoading\":{\"title\":\"동적 로딩\",\"description\":\"모든 번역을 미리 로드하면 초기 페이로드가 과부하됩니다. 동적(지연) 로딩은 경로 또는 네임스페이스별로 번역을 분할하여 현재 페이지에 필요한 내용만 보냅니다. 그러나 지연 로딩은 워터폴 요청, 번역되지 않은 콘텐츠의 플래시, 캐싱 복잡성 등 자체적인 트레이드오프를 수반합니다. 두 전략을 모두 측정하는 것이 필수적입니다.\"}},\"ru\":{\"title\":\"Почему эти показатели важны\",\"bundleSize\":{\"title\":\"Размер бандла\",\"description\":\"Бандл — это данные, которые отправляются каждому пользователю по всему миру. Чем больше бандл, тем дольше время загрузки, особенно при медленном 3G-соединении, распространенном во многих регионах. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт кода во время выполнения, плюс сами файлы переводов.\"},\"renderingHydration\":{\"title\":\"Рендеринг и гидратация\",\"description\":\"Подключение большого словаря JSON к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг всего дерева. Во время гидратации SSR парсинг и присоединение массивных объектов перевода увеличивают задержку до того, как страница станет интерактивной, что напрямую влияет на время до интерактивности (TTI).\"},\"dynamicLoading\":{\"title\":\"Динамическая загрузка\",\"description\":\"Предварительная загрузка всех переводов перегружает начальную полезную нагрузку. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно текущей странице. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы, мерцание непереведенного контента и сложность кэширования. Важно измерять обе стратегии.\"}}}}"),
-	localIds: ["why-it-matters::local::src/components/pages/home/WhyItMatters.content.ts"]
-}, k = ({ value: e, children: t, additionalProps: n = {} }) => {
-	let r = T(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"d\":\"Why These Metrics Matter\",\"a\":{\"b\":\"Bundle Size\",\"a\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\"},\"c\":{\"b\":\"Rendering & Hydration\",\"a\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\"},\"b\":{\"b\":\"Dynamic Loading\",\"a\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"}},\"fr\":{\"d\":\"Pourquoi ces mesures sont importantes\",\"a\":{\"b\":\"Taille du Bundle\",\"a\":\"Le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.\"},\"c\":{\"b\":\"Rendu et Hydratation\",\"a\":\"La connexion d'un dictionnaire JSON volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arborescence. Lors de l'hydratation SSR, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le Time to Interactive (TTI).\"},\"b\":{\"b\":\"Chargement Dynamique\",\"a\":\"Le chargement de toutes les traductions à l'avance surcharge la charge utile initiale. Le chargement dynamique (lazy loading) répartit les traductions par itinéraire ou par espace de noms, n'envoyant que ce dont la page actuelle a besoin. Cependant, le chargement différé introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de la mise en cache. Il est essentiel de mesurer les deux stratégies.\"}},\"es\":{\"d\":\"Por qué estas métricas importan\",\"a\":{\"b\":\"Tamaño del paquete\",\"a\":\"El paquete son los datos que se envían a todos los usuarios en todo el mundo. Un paquete más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas que son comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código de tiempo de ejecución, además de los propios archivos de traducción.\"},\"c\":{\"b\":\"Renderizado e hidratación\",\"a\":\"Conectar un dictionnaire JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede activar re-renderizaciones en todo el árbol. Durante la hidratación de SSR, el análisis y la vinculación de objetos de traducción masivos añaden latencia antes de que la página se vuelva interactiva, lo que afecta directamente al tiempo de interacción (TTI).\"},\"b\":{\"b\":\"Carga dinámica\",\"a\":\"Cargar todas las traducciones por adelantado sobrecarga el payload inicial. La carga dinámica (lazy) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, la carga diferida introduce sus propios inconvenientes: solicitudes en cascada, destellos de contenido no traducido y complejidad de la caché. Medir ambas estrategias es esencial.\"}},\"de\":{\"d\":\"Warum diese Metriken wichtig sind\",\"a\":{\"b\":\"Bundle-Größe\",\"a\":\"Das Bundle sind die Daten, die an jeden Benutzer auf der ganzen Welt gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten – insbesondere bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren drastisch in ihrem Gewicht: von wenigen Kilobyte bis zu Zehnern von Kilobyte an Laufzeitcode, plus die Übersetzungsdateien selbst.\"},\"c\":{\"b\":\"Rendering & Hydrierung\",\"a\":\"Das Verbinden eines großen JSON-Wörterbuchs mit jeder Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings über den gesamten Baum auslösen. Während der SSR-Hydrierung fügt das Parsen und Anhängen massiver Übersetzungsobjekte Latenz hinzu, bevor die Seite interaktiv wird – was sich direkt auf die Time to Interactive (TTI) auswirkt.\"},\"b\":{\"b\":\"Dynamisches Laden\",\"a\":\"Das Laden aller Übersetzungen im Voraus überlastet die anfängliche Payload. Dynamisches (lazy) Laden teilt Übersetzungen nach Route oder Namespace auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Aufblitzen von nicht übersetztem Inhalt und Caching-Komplexität. Das Messen beider Strategien ist unerlässlich.\"}},\"it\":{\"d\":\"Perché queste metriche sono importanti\",\"a\":{\"b\":\"Dimensioni del bundle\",\"a\":\"Il bundle è l'insieme di dati spediti a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi — specialmente su connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.\"},\"c\":{\"b\":\"Rendering e idratazione\",\"a\":\"Collegare un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può innescare re-render in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'allegatamento di enormi oggetti di traduzione aggiunge latenza prima che la pagina diventi interattiva — influenzando direttamente il Time to Interactive (TTI).\"},\"b\":{\"b\":\"Caricamento dinamico\",\"a\":\"Caricare tutte le traduzioni in anticipo sovraccarica il payload iniziale. Il caricamento dinamico (lazy) divide le traduzioni per rotta o namespace, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il caricamento lazy introduce i propri compromessi: richieste a cascata, flash di contenuti non tradotti e complessità del caching. Misurare entrambe le strategie è essenziale.\"}},\"pt\":{\"d\":\"Por que essas métricas são importantes\",\"a\":{\"b\":\"Tamanho do bundle\",\"a\":\"O bundle são os dados enviados a todos os usuários em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução.\"},\"c\":{\"b\":\"Renderização e Hidratação\",\"a\":\"Conectar um dicionário JSON grande a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode disparar re-renderizações em toda a árvore. Durante a hidratação do SSR, a análise e a anexação de objetos de tradução massivos adicionam latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).\"},\"b\":{\"b\":\"Carregamento Dinâmico\",\"a\":\"Carregar todas as traduções antecipadamente sobrecarrega o payload inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento preguiçoso introduz suas próprias compensações: solicitações em cascata, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial.\"}},\"zh\":{\"d\":\"为什么这些指标很重要\",\"a\":{\"b\":\"捆绑包大小\",\"a\":\"捆绑包是发送给全球每个用户的数据。更大的捆绑包意味着更长的下载时间——尤其是在许多地区常见的慢速 3G 连接上。i18n 库的重量差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。\"},\"c\":{\"b\":\"渲染与水合\",\"a\":\"将大型 JSON 字典连接到每个组件会创建一个隐藏的依赖关系：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 水合过程中，解析和附加海量的翻译对象会在页面变得可交互之前增加延迟——直接影响可交互时间 (TTI)。\"},\"b\":{\"b\":\"动态加载\",\"a\":\"预先加载所有翻译会使初始负载过重。动态（延迟）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，延迟加载引入了它自己的权衡：瀑布流请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。\"}},\"ja\":{\"d\":\"なぜこれらの指標が重要なのか\",\"a\":{\"b\":\"バンドルサイズ\",\"a\":\"バンドルは、世界中のすべてのユーザーに送られるデータです。バンドルが大きくなると、ダウンロード時間が長くなります。特に、多くの地域で一般的な低速な3G接続では顕著です。i18nライブラリはその重量が劇的に異なります。数キロバイトから数十キロバイトのランタイムコードに加えて、翻訳ファイル自体の重さも加わります。\"},\"c\":{\"b\":\"レンダリングとハイドレーション\",\"a\":\"大きなJSON辞書をすべてのコンポーネントに接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更により、ツリー全体で再レンダリングがトリガーされる可能性があります。SSRハイドレーション中、大規模な翻訳オブジェクトの解析とアタッチにより、ページがインタラクティブになるまでのレイテンシが増加し、Time to Interactive (TTI) に直接影響します。\"},\"b\":{\"b\":\"ダイナミックローディング\",\"a\":\"すべての翻訳を事前にロードすると、初期ペイロードが過負荷になります。ダイナミック（遅延）ローディングは、ルートまたはネームスペースごとに翻訳を分割し、現在のページが必要なものだけを送信します。ただし、遅延ロードには独自のトレードオフがあります。ウォーターフォールリクエスト、翻訳されていないコンテンツのフラッシュ、キャッシュの複雑さなどです。両方の戦略を測定することが不可欠です。\"}},\"ko\":{\"d\":\"이러한 지표가 중요한 이유\",\"a\":{\"b\":\"번들 크기\",\"a\":\"번들은 전 세계 모든 사용자에게 배송되는 데이터입니다. 번들이 클수록 다운로드 시간이 길어집니다. 특히 많은 지역에서 흔히 볼 수 있는 느린 3G 연결에서는 더욱 그렇습니다. i18n 라이브러리는 수 킬로바이트에서 수십 킬로바이트의 런타임 코드와 번역 파일 자체에 이르기까지 그 무게가 매우 다양합니다.\"},\"c\":{\"b\":\"렌더링 및 하이드레이션\",\"a\":\"대규모 JSON 사전을 모든 구성 요소에 연결하면 숨겨진 종속성이 생성됩니다. 번역 컨텍스트의 변경은 전체 트리에서 다시 렌더링을 트리거할 수 있습니다. SSR 하이드레이션 중에 거대한 번역 개체를 구문 분석하고 첨부하면 페이지가 상호 작용하기 전에 대기 시간이 추가되어 TTI(Time to Interactive)에 직접적인 영향을 미칩니다.\"},\"b\":{\"b\":\"동적 로딩\",\"a\":\"모든 번역을 미리 로드하면 초기 페이로드가 과부하됩니다. 동적(지연) 로딩은 경로 또는 네임스페이스별로 번역을 분할하여 현재 페이지에 필요한 내용만 보냅니다. 그러나 지연 로딩은 워터폴 요청, 번역되지 않은 콘텐츠의 플래시, 캐싱 복잡성 등 자체적인 트레이드오프를 수반합니다. 두 전략을 모두 측정하는 것이 필수적입니다.\"}},\"ru\":{\"d\":\"Почему эти показатели важны\",\"a\":{\"b\":\"Размер бандла\",\"a\":\"Бандл — это данные, которые отправляются каждому пользователю по всему миру. Чем больше бандл, тем дольше время загрузки, особенно при медленном 3G-соединении, распространенном во многих регионах. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт кода во время выполнения, плюс сами файлы переводов.\"},\"c\":{\"b\":\"Рендеринг и гидратация\",\"a\":\"Подключение большого словаря JSON к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг всего дерева. Во время гидратации SSR парсинг и присоединение массивных объектов перевода увеличивают задержку до того, как страница станет интерактивной, что напрямую влияет на время до интерактивности (TTI).\"},\"b\":{\"b\":\"Динамическая загрузка\",\"a\":\"Предварительная загрузка всех переводов перегружает начальную полезную нагрузку. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно текущей странице. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы, мерцание непереведенного контента и сложность кэширования. Важно измерять обе стратегии.\"}}}}")
+}, O = ({ value: e, children: t, additionalProps: n = {} }) => {
+	let r = w(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
 		toString: () => String(r.value ?? ""),
@@ -22,7 +21,7 @@ var ie = {
 			return r.value;
 		},
 		use(e) {
-			return k({
+			return O({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -33,7 +32,7 @@ var ie = {
 		},
 		...n
 	}), C(o);
-}, A = v({
+}, k = v({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -56,12 +55,12 @@ var ie = {
 		plugins: n
 	};
 	return c(e.content, r, n);
-}, j = (e) => {
+}, A = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, M = /* @__PURE__ */ new Map(), oe = (e) => {
-	if (M.has(e)) return M.get(e);
+}, j = /* @__PURE__ */ new Map(), M = (e) => {
+	if (j.has(e)) return j.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -82,11 +81,11 @@ var ie = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: j(m),
+			props: A(m),
 			children: []
 		});
 		else {
-			let e = j(m);
+			let e = A(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -103,9 +102,9 @@ var ie = {
 			children: e.children
 		});
 	}
-	return M.set(e, n), n;
-}, se = (e, t) => {
-	let n = oe(e), r = 0, i = (e) => {
+	return j.set(e, n), n;
+}, oe = (e, t) => {
+	let n = M(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -138,12 +137,12 @@ var ie = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, N = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", P = /\{\{\s*(.*?)\s*\}\}/g, ce = (e, t = {}) => {
-	if (!Object.values(t).some(N)) return {
+}, se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", N = /\{\{\s*(.*?)\s*\}\}/g, P = (e, t = {}) => {
+	if (!Object.values(t).some(se)) return {
 		isSimple: !0,
-		parts: e.replace(P, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(N, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(P), r = [];
+	let n = e.split(N), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -153,14 +152,14 @@ var ie = {
 		isSimple: !1,
 		parts: r
 	};
-}, le = Symbol("intlayerHTML"), ue = () => x(le), F = (e, { components: t = {} } = {}) => {
+}, ce = Symbol("intlayerHTML"), le = () => x(ce), F = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => b(t, e, e?.children)]));
-	return se(e, new Proxy(n, { get(e, t) {
+	return oe(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => b(t, e, e?.children);
 	} }));
-}, de = ({ components: e } = {}) => {
-	let t = ue();
+}, ue = ({ components: e } = {}) => {
+	let t = le();
 	return (n) => t ? t.renderHTML(n, { components: e }) : F(n, { components: e });
 };
 v({
@@ -176,11 +175,11 @@ v({
 		}
 	},
 	setup(e) {
-		let t = de({ components: e.components });
+		let t = ue({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var fe = new Set([
+var de = new Set([
 	"true",
 	"false",
 	"null",
@@ -192,7 +191,7 @@ var fe = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), pe = (e) => {
+]), fe = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -210,7 +209,7 @@ var fe = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => fe.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => de.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -337,7 +336,7 @@ var fe = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, me = (e) => {
+}, pe = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -346,7 +345,7 @@ var fe = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : pe(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : fe(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -366,8 +365,8 @@ var G = (e) => {
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 G(1), G(2);
-var he = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => he(e)(t, n);
+var me = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => me(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -383,18 +382,18 @@ var he = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, ge = Symbol("intlayerMarkdown"), _e = () => {
-	let e = x(ge, { renderMarkdown: (e) => e });
+}, he = Symbol("intlayerMarkdown"), ge = () => {
+	let e = x(he, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, ve = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ye = !0, be = !0, q = !0, xe = ve ? t : {
+}, _e = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, ve = !0, ye = !0, q = !0, be = _e ? t : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => k({
+		let r = (e) => O({
 			...n,
 			value: e,
-			children: !q && p.enabled ? () => b(A, {
+			children: !q && p.enabled ? () => b(k, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -412,10 +411,10 @@ var he = (e) => (t, n = {}) => {
 		}
 		return C(a);
 	}
-}, Se = (e, t) => {
+}, xe = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = ce(e, r);
+	let i = P(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -437,7 +436,7 @@ var he = (e) => (t, n = {}) => {
 		}), b(m, null, ...e);
 	}
 	return i.isSimple ? i.parts : b(m, null, i.parts);
-}, Ce = be ? t : {
+}, Se = ye ? t : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -451,7 +450,7 @@ var he = (e) => (t, n = {}) => {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = Se(i, e);
+					let a = xe(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -467,15 +466,15 @@ var he = (e) => (t, n = {}) => {
 			plugins: [o, ...t.plugins ?? []]
 		});
 	}
-}, we = K ? t : {
+}, Ce = K ? t : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(me(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(pe(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => k({
+				transform: (t, n) => O({
 					...n,
 					value: t,
 					children: e
@@ -483,15 +482,15 @@ var he = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => k({
+		}), o = (n) => O({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = _e(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = ge(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !q && p.enabled ? b(A, {
+				return !q && p.enabled ? b(k, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -503,7 +502,7 @@ var he = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, Te = K ? t : {
+}, J = K ? t : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -512,10 +511,10 @@ var he = (e) => (t, n = {}) => {
 			...t,
 			children: a,
 			keyPath: i,
-			plugins: [we, ...t.plugins ?? []]
+			plugins: [Ce, ...t.plugins ?? []]
 		});
 	}
-}, J = ye ? t : {
+}, we = ve ? t : {
 	id: "html-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "html",
 	transform: (e, t) => {
@@ -523,10 +522,10 @@ var he = (e) => (t, n = {}) => {
 		e.tags;
 		let r = (e = {}) => {
 			let i = F(n, { components: e });
-			return k({
+			return O({
 				...t,
 				value: n,
-				children: !q && p.enabled ? () => b(A, {
+				children: !q && p.enabled ? () => b(k, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -536,7 +535,7 @@ var he = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, Y = /* @__PURE__ */ new Map(), Ee = (t, r = !0) => {
+}, Y = /* @__PURE__ */ new Map(), Te = (t, r = !0) => {
 	let i = `${t ?? e.defaultLocale}_${r}`;
 	if (Y.has(i)) return Y.get(i);
 	let s = [
@@ -546,13 +545,13 @@ var he = (e) => (t, n = {}) => {
 		n(t ?? e.defaultLocale),
 		l,
 		d,
-		xe,
-		Ce,
-		Te,
-		J
+		be,
+		Se,
+		J,
+		we
 	];
 	return Y.set(i, s), s;
-}, De = (e, t) => ae(e, t, Ee(t)), Oe = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), ke = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => C(v({
+}, Ee = (e, t) => ae(e, t, Te(t)), De = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Oe = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => C(v({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -560,7 +559,7 @@ var he = (e) => (t, n = {}) => {
 			return t == null ? null : Q(t) ? b(t) : Array.isArray(t) ? b("span", t) : t;
 		};
 	}
-})), Ae = (e) => new Proxy({}, {
+})), ke = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -582,10 +581,10 @@ var he = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), je = (t, n) => {
-	let r = y() ? x(Oe) : void 0, i = S(r?.locale) ? r.locale : T(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : D(n)) ?? i.value), o = ne({});
+}), Ae = (t, n) => {
+	let r = y() ? x(De) : void 0, i = S(r?.locale) ? r.locale : w(r?.locale ?? e.defaultLocale), a = h(() => (n === void 0 ? void 0 : D(n)) ?? i.value), o = T({});
 	re([() => D(t), () => a.value], ([e, t]) => {
-		o.value = De(e, t);
+		o.value = Ee(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -601,7 +600,7 @@ var he = (e) => (t, n = {}) => {
 			if (n === Symbol.toPrimitive) return () => i.value;
 			let a = e.concat(n), c = X(o.value, a);
 			if (c === void 0 || Z(c) && !Q(c)) return s(a);
-			if (ke(c)) return Ae(h(() => X(o.value, a)));
+			if (Oe(c)) return ke(h(() => X(o.value, a)));
 			let l = h(() => X(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
@@ -620,10 +619,10 @@ var he = (e) => (t, n = {}) => {
 	});
 	return s([]);
 };
-function Me(e) {
-	w(() => {
+function je(e) {
+	ee(() => {
 		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
-	}), ee(() => {
+	}), te(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
 			try {
@@ -632,19 +631,35 @@ function Me(e) {
 		}
 	});
 }
-var Ne = { class: "mb-16" }, Pe = { class: "mb-6 text-2xl font-bold text-foreground" }, Fe = { class: "grid gap-6 md:grid-cols-3" }, Ie = { class: "rounded-lg border border-border bg-card p-6" }, Le = { class: "mb-2 text-lg font-semibold text-foreground" }, Re = { class: "text-sm text-muted-foreground" }, ze = { class: "rounded-lg border border-border bg-card p-6" }, Be = { class: "mb-2 text-lg font-semibold text-foreground" }, Ve = { class: "text-sm text-muted-foreground" }, He = { class: "rounded-lg border border-border bg-card p-6" }, Ue = { class: "mb-2 text-lg font-semibold text-foreground" }, We = { class: "text-sm text-muted-foreground" }, Ge = v({
+var Me = v({
 	__name: "WhyItMatters",
-	setup(e) {
-		Me("WhyItMatters");
-		let { title: t, bundleSize: n, renderingHydration: r, dynamicLoading: i } = je(ie);
-		return (e, a) => (te(), g("section", Ne, [_("h2", Pe, E(O(t)), 1), _("div", Fe, [
-			_("div", Ie, [_("h3", Le, E(O(n).title), 1), _("p", Re, E(O(n).description), 1)]),
-			_("div", ze, [_("h3", Be, E(O(r).title), 1), _("p", Ve, E(O(r).description), 1)]),
-			_("div", He, [_("h3", Ue, E(O(i).title), 1), _("p", We, E(O(i).description), 1)])
-		])]));
+	setup(e, { expose: t }) {
+		t(), je("WhyItMatters");
+		let { d: n, a: r, c: i, b: a } = Ae(ie), o = {
+			title: n,
+			bundleSize: r,
+			renderingHydration: i,
+			dynamicLoading: a
+		};
+		return Object.defineProperty(o, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), o;
 	}
-});
-export { Ge as default };
+}), Ne = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Pe = { class: "mb-16" }, Fe = { class: "mb-6 text-2xl font-bold text-foreground" }, Ie = { class: "grid gap-6 md:grid-cols-3" }, Le = { class: "rounded-lg border border-border bg-card p-6" }, Re = { class: "mb-2 text-lg font-semibold text-foreground" }, ze = { class: "text-sm text-muted-foreground" }, Be = { class: "rounded-lg border border-border bg-card p-6" }, Ve = { class: "mb-2 text-lg font-semibold text-foreground" }, He = { class: "text-sm text-muted-foreground" }, Ue = { class: "rounded-lg border border-border bg-card p-6" }, We = { class: "mb-2 text-lg font-semibold text-foreground" }, Ge = { class: "text-sm text-muted-foreground" };
+function Ke(e, t, n, r, i, a) {
+	return ne(), g("section", Pe, [_("h2", Fe, E(r.title), 1), _("div", Ie, [
+		_("div", Le, [_("h3", Re, E(r.bundleSize.title), 1), _("p", ze, E(r.bundleSize.description), 1)]),
+		_("div", Be, [_("h3", Ve, E(r.renderingHydration.title), 1), _("p", He, E(r.renderingHydration.description), 1)]),
+		_("div", Ue, [_("h3", We, E(r.dynamicLoading.title), 1), _("p", Ge, E(r.dynamicLoading.description), 1)])
+	])]);
+}
+var qe = Ne(Me, [["render", Ke], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/home/WhyItMatters.vue"]]);
+export { qe as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-okEgz1Xg.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

@@ -1,177 +1,176 @@
 import { C as e, S as t, a as n, b as r, c as i, g as a, h as o, i as s, l as c, m as l, n as u, o as d, r as f, s as p, t as m, x as h } from "./getContent-DrnKJV-E.js";
-import { Fragment as g, computed as _, createBlock as v, createCommentVNode as y, createElementBlock as b, createElementVNode as x, createTextVNode as S, createVNode as C, defineComponent as w, getCurrentInstance as T, h as E, inject as D, isRef as ee, markRaw as O, normalizeClass as te, onBeforeMount as ne, onMounted as re, onUnmounted as ie, openBlock as k, ref as A, renderList as j, resolveComponent as ae, shallowRef as oe, toDisplayString as M, toValue as N, unref as P, watch as F, withCtx as I } from "vue";
-import { useRoute as se, useRouter as ce } from "vue-router";
-import { ChevronDown as le } from "lucide-vue-next";
-var ue = {
+import { Fragment as g, computed as _, createBlock as v, createCommentVNode as y, createElementBlock as b, createElementVNode as x, createTextVNode as S, createVNode as C, defineComponent as w, getCurrentInstance as ee, h as T, inject as E, isRef as te, markRaw as D, normalizeClass as ne, onBeforeMount as re, onMounted as ie, onUnmounted as ae, openBlock as O, ref as k, renderList as A, resolveComponent as oe, shallowRef as se, toDisplayString as j, toValue as ce, watch as M, withCtx as N } from "vue";
+import { useRoute as le, useRouter as ue } from "vue-router";
+import { ChevronDown as de } from "lucide-vue-next";
+var fe = {
 	key: "header",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				home: "Home",
-				methodology: "Methodology",
-				mockPages: "Mock Pages",
-				products: "Products",
-				pricing: "Pricing",
-				team: "Team",
-				blog: "Blog",
-				careers: "Careers",
-				faq: "FAQ",
-				contact: "Contact",
-				settings: "Settings",
-				appName: "i18n Benchmark",
-				goToGithub: "Go to GitHub",
-				header: "Header"
+				h: "Home",
+				i: "Methodology",
+				j: "Mock Pages",
+				l: "Products",
+				k: "Pricing",
+				n: "Team",
+				b: "Blog",
+				c: "Careers",
+				e: "FAQ",
+				d: "Contact",
+				m: "Settings",
+				a: "i18n Benchmark",
+				f: "Go to GitHub",
+				g: "Header"
 			},
 			fr: {
-				home: "Accueil",
-				methodology: "Méthodologie",
-				mockPages: "Pages fictives",
-				products: "Produits",
-				pricing: "Tarification",
-				team: "Équipe",
-				blog: "Blog",
-				careers: "Carrières",
-				faq: "FAQ",
-				contact: "Contact",
-				settings: "Paramètres",
-				appName: "Benchmark i18n",
-				goToGithub: "Aller sur GitHub",
-				header: "En-tête"
+				h: "Accueil",
+				i: "Méthodologie",
+				j: "Pages fictives",
+				l: "Produits",
+				k: "Tarification",
+				n: "Équipe",
+				b: "Blog",
+				c: "Carrières",
+				e: "FAQ",
+				d: "Contact",
+				m: "Paramètres",
+				a: "Benchmark i18n",
+				f: "Aller sur GitHub",
+				g: "En-tête"
 			},
 			es: {
-				home: "Inicio",
-				methodology: "Metodología",
-				mockPages: "Páginas de prueba",
-				products: "Productos",
-				pricing: "Precios",
-				team: "Equipo",
-				blog: "Blog",
-				careers: "Carreras",
-				faq: "FAQ",
-				contact: "Contacto",
-				settings: "Ajustes",
-				appName: "i18n Benchmark",
-				goToGithub: "Ir a GitHub",
-				header: "Encabezado"
+				h: "Inicio",
+				i: "Metodología",
+				j: "Páginas de prueba",
+				l: "Productos",
+				k: "Precios",
+				n: "Equipo",
+				b: "Blog",
+				c: "Carreras",
+				e: "FAQ",
+				d: "Contacto",
+				m: "Ajustes",
+				a: "i18n Benchmark",
+				f: "Ir a GitHub",
+				g: "Encabezado"
 			},
 			de: {
-				home: "Home",
-				methodology: "Methodik",
-				mockPages: "Testseiten",
-				products: "Produkte",
-				pricing: "Preise",
-				team: "Team",
-				blog: "Blog",
-				careers: "Karriere",
-				faq: "FAQ",
-				contact: "Kontakt",
-				settings: "Einstellungen",
-				appName: "i18n Benchmark",
-				goToGithub: "Zu GitHub",
-				header: "Header"
+				h: "Home",
+				i: "Methodik",
+				j: "Testseiten",
+				l: "Produkte",
+				k: "Preise",
+				n: "Team",
+				b: "Blog",
+				c: "Karriere",
+				e: "FAQ",
+				d: "Kontakt",
+				m: "Einstellungen",
+				a: "i18n Benchmark",
+				f: "Zu GitHub",
+				g: "Header"
 			},
 			it: {
-				home: "Home",
-				methodology: "Metodologia",
-				mockPages: "Pagine di prova",
-				products: "Prodotti",
-				pricing: "Prezzi",
-				team: "Team",
-				blog: "Blog",
-				careers: "Carriere",
-				faq: "FAQ",
-				contact: "Contatti",
-				settings: "Impostazioni",
-				appName: "i18n Benchmark",
-				goToGithub: "Vai su GitHub",
-				header: "Intestazione"
+				h: "Home",
+				i: "Metodologia",
+				j: "Pagine di prova",
+				l: "Prodotti",
+				k: "Prezzi",
+				n: "Team",
+				b: "Blog",
+				c: "Carriere",
+				e: "FAQ",
+				d: "Contatti",
+				m: "Impostazioni",
+				a: "i18n Benchmark",
+				f: "Vai su GitHub",
+				g: "Intestazione"
 			},
 			pt: {
-				home: "Início",
-				methodology: "Metodologia",
-				mockPages: "Páginas de Teste",
-				products: "Produtos",
-				pricing: "Preços",
-				team: "Equipe",
-				blog: "Blog",
-				careers: "Carreiras",
-				faq: "FAQ",
-				contact: "Contato",
-				settings: "Configurações",
-				appName: "i18n Benchmark",
-				goToGithub: "Ir para o GitHub",
-				header: "Cabeçalho"
+				h: "Início",
+				i: "Metodologia",
+				j: "Páginas de Teste",
+				l: "Produtos",
+				k: "Preços",
+				n: "Equipe",
+				b: "Blog",
+				c: "Carreiras",
+				e: "FAQ",
+				d: "Contato",
+				m: "Configurações",
+				a: "i18n Benchmark",
+				f: "Ir para o GitHub",
+				g: "Cabeçalho"
 			},
 			zh: {
-				home: "首页",
-				methodology: "方法论",
-				mockPages: "模拟页面",
-				products: "产品",
-				pricing: "定价",
-				team: "团队",
-				blog: "博客",
-				careers: "职业",
-				faq: "常见问题",
-				contact: "联系我们",
-				settings: "设置",
-				appName: "i18n 基准测试",
-				goToGithub: "前往 GitHub",
-				header: "页眉"
+				h: "首页",
+				i: "方法论",
+				j: "模拟页面",
+				l: "产品",
+				k: "定价",
+				n: "团队",
+				b: "博客",
+				c: "职业",
+				e: "常见问题",
+				d: "联系我们",
+				m: "设置",
+				a: "i18n 基准测试",
+				f: "前往 GitHub",
+				g: "页眉"
 			},
 			ja: {
-				home: "ホーム",
-				methodology: "方法論",
-				mockPages: "モックページ",
-				products: "製品",
-				pricing: "価格設定",
-				team: "チーム",
-				blog: "ブログ",
-				careers: "採用情報",
-				faq: "よくある質問",
-				contact: "お問い合わせ",
-				settings: "設定",
-				appName: "i18n ベンチマーク",
-				goToGithub: "GitHub へ",
-				header: "ヘッダー"
+				h: "ホーム",
+				i: "方法論",
+				j: "モックページ",
+				l: "製品",
+				k: "価格設定",
+				n: "チーム",
+				b: "ブログ",
+				c: "採用情報",
+				e: "よくある質問",
+				d: "お問い合わせ",
+				m: "設定",
+				a: "i18n ベンチマーク",
+				f: "GitHub へ",
+				g: "ヘッダー"
 			},
 			ko: {
-				home: "홈",
-				methodology: "방법론",
-				mockPages: "모ック 페이지",
-				products: "제품",
-				pricing: "가격",
-				team: "팀",
-				blog: "블로그",
-				careers: "채용",
-				faq: "자주 묻는 질문",
-				contact: "문의",
-				settings: "설정",
-				appName: "i18n 벤치마크",
-				goToGithub: "GitHub으로 이동",
-				header: "헤더"
+				h: "홈",
+				i: "방법론",
+				j: "모ック 페이지",
+				l: "제품",
+				k: "가격",
+				n: "팀",
+				b: "블로그",
+				c: "채용",
+				e: "자주 묻는 질문",
+				d: "문의",
+				m: "설정",
+				a: "i18n 벤치마크",
+				f: "GitHub으로 이동",
+				g: "헤더"
 			},
 			ru: {
-				home: "Главная",
-				methodology: "Методология",
-				mockPages: "Мок-страницы",
-				products: "Продукты",
-				pricing: "Цены",
-				team: "Команда",
-				blog: "Блог",
-				careers: "Вакансии",
-				faq: "FAQ",
-				contact: "Контакт",
-				settings: "Настройки",
-				appName: "i18n Бенчмарк",
-				goToGithub: "Перейти на GitHub",
-				header: "Заголовок"
+				h: "Главная",
+				i: "Методология",
+				j: "Мок-страницы",
+				l: "Продукты",
+				k: "Цены",
+				n: "Команда",
+				b: "Блог",
+				c: "Вакансии",
+				e: "FAQ",
+				d: "Контакт",
+				m: "Настройки",
+				a: "i18n Бенчмарк",
+				f: "Перейти на GitHub",
+				g: "Заголовок"
 			}
 		}
-	},
-	localIds: ["header::local::src/components/Header.content.ts"]
-}, L = ({ value: e, children: t, additionalProps: n = {} }) => {
-	let r = A(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
+	}
+}, P = ({ value: e, children: t, additionalProps: n = {} }) => {
+	let r = k(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
 		toString: () => String(r.value ?? ""),
@@ -188,7 +187,7 @@ var ue = {
 			return r.value;
 		},
 		use(e) {
-			return L({
+			return P({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -198,8 +197,8 @@ var ue = {
 			i = e.render, this.raw = e.raw;
 		},
 		...n
-	}), O(o);
-}, R = w({
+	}), D(o);
+}, F = w({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -214,7 +213,7 @@ var ue = {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), de = (e, t, n = m(t)) => {
+}), pe = (e, t, n = m(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -222,12 +221,12 @@ var ue = {
 		plugins: n
 	};
 	return u(e.content, r, n);
-}, z = (e) => {
+}, I = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, B = /* @__PURE__ */ new Map(), fe = (e) => {
-	if (B.has(e)) return B.get(e);
+}, L = /* @__PURE__ */ new Map(), me = (e) => {
+	if (L.has(e)) return L.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -248,11 +247,11 @@ var ue = {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: z(m),
+			props: I(m),
 			children: []
 		});
 		else {
-			let e = z(m);
+			let e = I(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -269,9 +268,9 @@ var ue = {
 			children: e.children
 		});
 	}
-	return B.set(e, n), n;
-}, pe = (e, t) => {
-	let n = fe(e), r = 0, i = (e) => {
+	return L.set(e, n), n;
+}, he = (e, t) => {
+	let n = me(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -304,12 +303,12 @@ var ue = {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, me = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", V = /\{\{\s*(.*?)\s*\}\}/g, he = (e, t = {}) => {
-	if (!Object.values(t).some(me)) return {
+}, ge = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", R = /\{\{\s*(.*?)\s*\}\}/g, _e = (e, t = {}) => {
+	if (!Object.values(t).some(ge)) return {
 		isSimple: !0,
-		parts: e.replace(V, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(R, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(V), r = [];
+	let n = e.split(R), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -319,15 +318,15 @@ var ue = {
 		isSimple: !1,
 		parts: r
 	};
-}, ge = Symbol("intlayerHTML"), _e = () => D(ge), H = (e, { components: t = {} } = {}) => {
-	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => E(t, e, e?.children)]));
-	return pe(e, new Proxy(n, { get(e, t) {
+}, ve = Symbol("intlayerHTML"), ye = () => E(ve), z = (e, { components: t = {} } = {}) => {
+	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => T(t, e, e?.children)]));
+	return he(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
-		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => E(t, e, e?.children);
+		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => T(t, e, e?.children);
 	} }));
-}, ve = ({ components: e } = {}) => {
-	let t = _e();
-	return (n) => t ? t.renderHTML(n, { components: e }) : H(n, { components: e });
+}, be = ({ components: e } = {}) => {
+	let t = ye();
+	return (n) => t ? t.renderHTML(n, { components: e }) : z(n, { components: e });
 };
 w({
 	name: "HTMLRenderer",
@@ -342,11 +341,11 @@ w({
 		}
 	},
 	setup(e) {
-		let t = ve({ components: e.components });
+		let t = be({ components: e.components });
 		return () => t(e.content);
 	}
 });
-var ye = new Set([
+var xe = new Set([
 	"true",
 	"false",
 	"null",
@@ -358,7 +357,7 @@ var ye = new Set([
 	"NaN",
 	"Infinity",
 	"-Infinity"
-]), be = (e) => {
+]), Se = (e) => {
 	let t = e.trim();
 	if (!t) return null;
 	let n = 0, r = () => t[n], i = () => t[n++], a = () => n >= t.length, o = () => {
@@ -376,7 +375,7 @@ var ye = new Set([
 		let i = n;
 		for (; !a() && !e.includes(r());) n++;
 		return t.slice(i, n).trim();
-	}, l = (e) => ye.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
+	}, l = (e) => xe.has(e) || /^0x[0-9a-fA-F]+$/.test(e) || /^#/.test(e) ? e : /^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(e) ? e === "3.14159265359" ? Math.PI : Number(e) : e, u = (e) => {
 		if (o(), a()) throw SyntaxError("Unexpected end of input");
 		let t = r();
 		if (t === "[") return d();
@@ -503,7 +502,7 @@ var ye = new Set([
 	let y;
 	if (y = t.startsWith("[") ? d() : t.startsWith("{") ? _() : v(t) ? g("") : u(""), o(), !a()) throw SyntaxError("Unexpected trailing characters");
 	return y;
-}, xe = (e) => {
+}, Ce = (e) => {
 	try {
 		let t = e.split(/\r?\n/), n = t.find((e) => e.trim() !== "");
 		if (!n || n.trim() !== "---") return {};
@@ -512,7 +511,7 @@ var ye = new Set([
 			r = e;
 			break;
 		}
-		return r === -1 ? {} : be(t.slice(1, r).join("\n")) ?? {};
+		return r === -1 ? {} : Se(t.slice(1, r).join("\n")) ?? {};
 	} catch {
 		return {};
 	}
@@ -521,19 +520,19 @@ var ye = new Set([
 	class: "className",
 	for: "htmlFor"
 });
-var U = "(?:\\d+\\.)", W = "(?:[*+-])", G = (e) => `(?=[\\s\\S]+?\\1${e ? "\\1" : ""})`, K = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
-RegExp(`^([*_])\\1${G(1)}${K}\\1\\1(?!\\1)`), RegExp(`^([*_])${G(0)}${K}\\1(?!\\1)`), RegExp(`^(==)${G(0)}${K}\\1`), RegExp(`^(~~)${G(0)}${K}\\1`);
-var q = (e) => "( *)(" + (e === 1 ? U : W) + ") +", Se = q(1), Ce = q(2), we = (e) => RegExp("^" + (e === 1 ? Se : Ce));
-we(1), we(2);
-var Te = (e) => RegExp("^" + (e === 1 ? Se : Ce) + "[^\\n]*(?:\\n(?!\\1" + (e === 1 ? U : W) + " )[^\\n]*)*(\\n|$)", "gm");
+var B = "(?:\\d+\\.)", V = "(?:[*+-])", H = (e) => `(?=[\\s\\S]+?\\1${e ? "\\1" : ""})`, U = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
+RegExp(`^([*_])\\1${H(1)}${U}\\1\\1(?!\\1)`), RegExp(`^([*_])${H(0)}${U}\\1(?!\\1)`), RegExp(`^(==)${H(0)}${U}\\1`), RegExp(`^(~~)${H(0)}${U}\\1`);
+var W = (e) => "( *)(" + (e === 1 ? B : V) + ") +", G = W(1), we = W(2), Te = (e) => RegExp("^" + (e === 1 ? G : we));
 Te(1), Te(2);
-var Ee = (e) => {
-	let t = e === 1 ? U : W;
+var Ee = (e) => RegExp("^" + (e === 1 ? G : we) + "[^\\n]*(?:\\n(?!\\1" + (e === 1 ? B : V) + " )[^\\n]*)*(\\n|$)", "gm");
+Ee(1), Ee(2);
+var De = (e) => {
+	let t = e === 1 ? B : V;
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
-Ee(1), Ee(2);
-var De = (e) => (t, n = {}) => {
-	let r = performance.now(), i = (t, n = {}) => De(e)(t, n);
+De(1), De(2);
+var Oe = (e) => (t, n = {}) => {
+	let r = performance.now(), i = (t, n = {}) => Oe(e)(t, n);
 	if (Array.isArray(t)) {
 		let e = n.key, a = [], o = !1, s = 0;
 		for (let e = 0; e < t.length; e++) {
@@ -549,18 +548,18 @@ var De = (e) => (t, n = {}) => {
 	}
 	let a = e(t, i, n), o = performance.now() - r;
 	return o > 20 && console.log(`renderFor (single): ${o.toFixed(3)}ms, ast type: ${t.type}`), a;
-}, Oe = Symbol("intlayerMarkdown"), ke = () => {
-	let e = D(Oe, { renderMarkdown: (e) => e });
+}, ke = Symbol("intlayerMarkdown"), Ae = () => {
+	let e = E(ke, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, Ae = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", je = !0, Me = !0, Ne = !0, J = !0, Pe = Ae ? n : {
+}, je = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", K = !0, Me = !0, Ne = !0, q = !0, Pe = je ? n : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => L({
+		let r = (e) => P({
 			...n,
 			value: e,
-			children: !J && h.enabled ? () => E(R, {
+			children: !q && h.enabled ? () => T(F, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -576,12 +575,12 @@ var De = (e) => (t, n = {}) => {
 			let t = Object.getOwnPropertyDescriptor(i, e);
 			t && Object.defineProperty(a, e, t);
 		}
-		return O(a);
+		return D(a);
 	}
 }, Fe = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = he(e, r);
+	let i = _e(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -590,7 +589,7 @@ var De = (e) => (t, n = {}) => {
 				let a = `__VNODE_${i}__`, o = t.indexOf(a);
 				o !== -1 && (o > r && e.push(t.substring(r, o)), e.push(n.get(i)), r = o + a.length);
 			}
-			return r < t.length && e.push(t.substring(r)), E(g, null, ...e);
+			return r < t.length && e.push(t.substring(r)), T(g, null, ...e);
 		} else return i.parts.forEach((t) => {
 			if (typeof t == "string") {
 				let r = t;
@@ -600,9 +599,9 @@ var De = (e) => (t, n = {}) => {
 				}
 				r.length > 0 && e.push(r);
 			} else e.push(t);
-		}), E(g, null, ...e);
+		}), T(g, null, ...e);
 	}
-	return i.isSimple ? i.parts : E(g, null, i.parts);
+	return i.isSimple ? i.parts : T(g, null, i.parts);
 }, Ie = Ne ? n : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
@@ -633,15 +632,15 @@ var De = (e) => (t, n = {}) => {
 			plugins: [a, ...t.plugins ?? []]
 		});
 	}
-}, Le = je ? n : {
+}, Le = K ? n : {
 	id: "markdown-string-plugin",
 	canHandle: (e) => typeof e == "string",
 	transform: (e, t, n) => {
-		let { plugins: r, ...i } = t, a = n(xe(e) ?? {}, {
+		let { plugins: r, ...i } = t, a = n(Ce(e) ?? {}, {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => L({
+				transform: (t, n) => P({
 					...n,
 					value: t,
 					children: e
@@ -649,15 +648,15 @@ var De = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => L({
+		}), o = (n) => P({
 			...t,
 			value: e,
 			children: () => {
-				let { renderMarkdown: t, components: r } = ke(), a = t(e, void 0, {
+				let { renderMarkdown: t, components: r } = Ae(), a = t(e, void 0, {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !J && h.enabled ? E(R, {
+				return !q && h.enabled ? T(F, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -669,7 +668,7 @@ var De = (e) => (t, n = {}) => {
 		});
 		return o();
 	}
-}, Re = je ? n : {
+}, Re = K ? n : {
 	id: "markdown-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "markdown",
 	transform: (e, t, n) => {
@@ -688,11 +687,11 @@ var De = (e) => (t, n = {}) => {
 		let n = e[l];
 		e.tags;
 		let r = (e = {}) => {
-			let i = H(n, { components: e });
-			return L({
+			let i = z(n, { components: e });
+			return P({
 				...t,
 				value: n,
-				children: !J && h.enabled ? () => E(R, {
+				children: !q && h.enabled ? () => T(F, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -702,9 +701,9 @@ var De = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, Y = /* @__PURE__ */ new Map(), Be = (e, n = !0) => {
+}, J = /* @__PURE__ */ new Map(), Be = (e, n = !0) => {
 	let r = `${e ?? t.defaultLocale}_${n}`;
-	if (Y.has(r)) return Y.get(r);
+	if (J.has(r)) return J.get(r);
 	let a = [
 		c(e ?? t.defaultLocale, n ? t.defaultLocale : void 0),
 		s,
@@ -717,13 +716,13 @@ var De = (e) => (t, n = {}) => {
 		Re,
 		ze
 	];
-	return Y.set(r, a), a;
-}, Ve = (e, t) => de(e, t, Be(t)), He = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Ue = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), We = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Ge = (e) => O(w({
+	return J.set(r, a), a;
+}, Ve = (e, t) => pe(e, t, Be(t)), He = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Ue = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), We = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Ge = (e) => D(w({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : Ue(t) ? E(t) : Array.isArray(t) ? E("span", t) : t;
+			return t == null ? null : Ue(t) ? T(t) : Array.isArray(t) ? T("span", t) : t;
 		};
 	}
 })), Ke = (e) => new Proxy({}, {
@@ -749,8 +748,8 @@ var De = (e) => (t, n = {}) => {
 		};
 	}
 }), qe = (e, n) => {
-	let r = T() ? D(He) : void 0, i = ee(r?.locale) ? r.locale : A(r?.locale ?? t.defaultLocale), a = _(() => (n === void 0 ? void 0 : N(n)) ?? i.value), o = oe({});
-	F([() => N(e), () => a.value], ([e, t]) => {
+	let r = ee() ? E(He) : void 0, i = te(r?.locale) ? r.locale : k(r?.locale ?? t.defaultLocale), a = _(() => (n === void 0 ? void 0 : ce(n)) ?? i.value), o = se({});
+	M([() => ce(e), () => a.value], ([e, t]) => {
 		o.value = Ve(e, t);
 	}, {
 		immediate: !0,
@@ -759,23 +758,23 @@ var De = (e) => (t, n = {}) => {
 	let s = (e) => new Proxy({}, {
 		get(t, n, r) {
 			if (n === "__v_isRef") return !0;
-			let i = _(() => X(o.value, e));
+			let i = _(() => Y(o.value, e));
 			if (n === "value") return i.value ?? "";
 			if (n === "then") return;
 			if (n === "c" || n === "asComponent") return Ge(() => i.value);
 			if (n === "$raw") return i;
 			if (n === Symbol.toPrimitive) return () => i.value;
-			let a = e.concat(n), c = X(o.value, a);
-			if (c === void 0 || Z(c) && !Ue(c)) return s(a);
-			if (We(c)) return Ke(_(() => X(o.value, a)));
-			let l = _(() => X(o.value, a));
+			let a = e.concat(n), c = Y(o.value, a);
+			if (c === void 0 || X(c) && !Ue(c)) return s(a);
+			if (We(c)) return Ke(_(() => Y(o.value, a)));
+			let l = _(() => Y(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = X(o.value, e);
-			return Z(t) ? Reflect.ownKeys(t) : [];
+			let t = Y(o.value, e);
+			return X(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -785,21 +784,21 @@ var De = (e) => (t, n = {}) => {
 		}
 	});
 	return s([]);
-}, Q = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+}, Z = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
 var Je = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	return n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`), n.expires instanceof Date && r.push(`Expires=${n.expires.toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, Ye = (n = $) => {
+}, Ye = (n = Q) => {
 	let { locales: r } = t;
 	if (n?.isCookieEnabled === !1) return;
 	let i = (e) => !!e && r.includes(e);
-	if (!Q) for (let t = 0; t < (e.storage.cookies ?? []).length; t++) try {
+	if (!Z) for (let t = 0; t < (e.storage.cookies ?? []).length; t++) try {
 		let r = n?.getCookie?.(e.storage.cookies[t].name);
 		if (i(r)) return r;
 	} catch {}
 }, Xe = (t, n) => {
-	if (n?.isCookieEnabled !== !1 && !Q && e.storage.cookies) for (let r = 0; r < e.storage.cookies.length; r++) {
+	if (n?.isCookieEnabled !== !1 && !Z && e.storage.cookies) for (let r = 0; r < e.storage.cookies.length; r++) {
 		let { name: i, attributes: a } = e.storage.cookies[r];
 		try {
 			n?.setCookieStore && n.setCookieStore(i, t, {
@@ -812,7 +811,7 @@ var Je = (e, t, n) => {
 			} catch {}
 		}
 	}
-}, $ = {
+}, Q = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -831,12 +830,12 @@ var Je = (e, t, n) => {
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
 };
-Ye($);
+Ye(Q);
 var Ze = (e, t) => Xe(e, {
-	...$,
+	...Q,
 	isCookieEnabled: t
 }), Qe = ({ isCookieEnabled: e, onLocaleChange: n } = {}) => {
-	let { defaultLocale: r, locales: i } = t ?? {}, a = D(He);
+	let { defaultLocale: r, locales: i } = t ?? {}, a = E(He);
 	return {
 		locale: _(() => a?.locale?.value ?? r),
 		defaultLocale: r,
@@ -851,9 +850,9 @@ var Ze = (e, t) => Xe(e, {
 	};
 };
 function $e(e) {
-	ne(() => {
+	re(() => {
 		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
-	}), re(() => {
+	}), ie(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
 			try {
@@ -871,265 +870,344 @@ var tt = (e) => {
 	} catch {
 		return e.toUpperCase();
 	}
-}, nt = { class: "flex items-center gap-2" }, rt = ["value"], it = ["value"], at = w({
+}, nt = w({
 	__name: "LocaleSwitcher",
-	setup(e) {
-		let t = se(), n = ce(), { setLocale: r } = Qe(), i = _(() => t.params.locale || "en"), a = (e) => {
-			r(e);
-			let i = t.path.replace(/^\/[^/]+/, `/${e}`);
-			n.push({
-				path: i,
-				query: t.query,
-				hash: t.hash
+	setup(e, { expose: t }) {
+		t();
+		let n = le(), r = ue(), { setLocale: i } = Qe(), a = _(() => n.params.locale || "en"), o = (e) => {
+			i(e);
+			let t = n.path.replace(/^\/[^/]+/, `/${e}`);
+			r.push({
+				path: t,
+				query: n.query,
+				hash: n.hash
 			});
 		};
-		return F(i, (e) => {
-			r(e);
-		}, { immediate: !0 }), (e, t) => (k(), b("div", nt, [x("select", {
-			value: i.value,
-			onChange: t[0] ||= (e) => a(e.target.value),
-			class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-		}, [(k(!0), b(g, null, j(P(et), (e) => (k(), b("option", {
-			key: e,
-			value: e
-		}, M(P(tt)(e)), 9, it))), 128))], 40, rt)]));
+		M(a, (e) => {
+			i(e);
+		}, { immediate: !0 });
+		let s = {
+			route: n,
+			router: r,
+			setLocale: i,
+			currentLocale: a,
+			handleLocaleChange: o,
+			get locales() {
+				return et;
+			},
+			get getLocaleName() {
+				return tt;
+			}
+		};
+		return Object.defineProperty(s, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), s;
 	}
-}), ot = {
+}), $ = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, rt = { class: "flex items-center gap-2" }, it = ["value"], at = ["value"];
+function ot(e, t, n, r, i, a) {
+	return O(), b("div", rt, [x("select", {
+		value: r.currentLocale,
+		onChange: t[0] ||= (e) => r.handleLocaleChange(e.target.value),
+		class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+	}, [(O(!0), b(g, null, A(r.locales, (e) => (O(), b("option", {
+		key: e,
+		value: e
+	}, j(r.getLocaleName(e)), 9, at))), 128))], 40, it)]);
+}
+var st = $(nt, [["render", ot], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/LocaleSwitcher.vue"]]), ct = {
 	key: "theme-toggle",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				auto: "Theme: Auto",
-				dark: "Theme: Dark",
-				light: "Theme: Light",
-				ariaLabelAuto: "Theme mode: auto (system). Click to switch to light mode.",
-				ariaLabelLight: "Theme mode: light. Click to switch to dark mode.",
-				ariaLabelDark: "Theme mode: dark. Click to switch to auto mode."
+				d: "Theme: Auto",
+				e: "Theme: Dark",
+				f: "Theme: Light",
+				a: "Theme mode: auto (system). Click to switch to light mode.",
+				c: "Theme mode: light. Click to switch to dark mode.",
+				b: "Theme mode: dark. Click to switch to auto mode."
 			},
 			fr: {
-				auto: "Thème : Auto",
-				dark: "Thème : Sombre",
-				light: "Thème : Clair",
-				ariaLabelAuto: "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
-				ariaLabelLight: "Mode de thème : clair. Cliquez pour passer au mode sombre.",
-				ariaLabelDark: "Mode de thème : sombre. Cliquez pour passer au mode auto."
+				d: "Thème : Auto",
+				e: "Thème : Sombre",
+				f: "Thème : Clair",
+				a: "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
+				c: "Mode de thème : clair. Cliquez pour passer au mode sombre.",
+				b: "Mode de thème : sombre. Cliquez pour passer au mode auto."
 			},
 			es: {
-				auto: "Tema: Automático",
-				dark: "Tema: Oscuro",
-				light: "Tema: Claro",
-				ariaLabelAuto: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-				ariaLabelLight: "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
-				ariaLabelDark: "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
+				d: "Tema: Automático",
+				e: "Tema: Oscuro",
+				f: "Tema: Claro",
+				a: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
+				c: "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
+				b: "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
 			},
 			de: {
-				auto: "Design: Auto",
-				dark: "Design: Dunkel",
-				light: "Design: Hell",
-				ariaLabelAuto: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-				ariaLabelLight: "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
-				ariaLabelDark: "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
+				d: "Design: Auto",
+				e: "Design: Dunkel",
+				f: "Design: Hell",
+				a: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
+				c: "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
+				b: "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
 			},
 			it: {
-				auto: "Tema: Auto",
-				dark: "Tema: Scuro",
-				light: "Tema: Chiaro",
-				ariaLabelAuto: "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
-				ariaLabelLight: "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
-				ariaLabelDark: "Modalità tema: scura. Fai clic per passare alla modalità automatica."
+				d: "Tema: Auto",
+				e: "Tema: Scuro",
+				f: "Tema: Chiaro",
+				a: "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
+				c: "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
+				b: "Modalità tema: scura. Fai clic per passare alla modalità automatica."
 			},
 			pt: {
-				auto: "Tema: Automático",
-				dark: "Tema: Escuro",
-				light: "Tema: Claro",
-				ariaLabelAuto: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-				ariaLabelLight: "Modo de tema: claro. Clique para mudar para o modo escuro.",
-				ariaLabelDark: "Modo de tema: escuro. Clique para mudar para o modo automático."
+				d: "Tema: Automático",
+				e: "Tema: Escuro",
+				f: "Tema: Claro",
+				a: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
+				c: "Modo de tema: claro. Clique para mudar para o modo escuro.",
+				b: "Modo de tema: escuro. Clique para mudar para o modo automático."
 			},
 			zh: {
-				auto: "主题：自动",
-				dark: "主题：深色",
-				light: "主题：亮色",
-				ariaLabelAuto: "主题模式：自动（系统）。点击切换到亮色模式。",
-				ariaLabelLight: "主题模式：浅色。点击切换到深色模式。",
-				ariaLabelDark: "主题模式：深色。点击切换到自动模式。"
+				d: "主题：自动",
+				e: "主题：深色",
+				f: "主题：亮色",
+				a: "主题模式：自动（系统）。点击切换到亮色模式。",
+				c: "主题模式：浅色。点击切换到深色模式。",
+				b: "主题模式：深色。点击切换到自动模式。"
 			},
 			ja: {
-				auto: "テーマ：自動",
-				dark: "テーマ：ダーク",
-				light: "テーマ：ライト",
-				ariaLabelAuto: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-				ariaLabelLight: "テーマモード：ライト。クリックしてダークモードに切り替えます。",
-				ariaLabelDark: "テーマモード：ダーク。クリックして自動モードに切り替えます。"
+				d: "テーマ：自動",
+				e: "テーマ：ダーク",
+				f: "テーマ：ライト",
+				a: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
+				c: "テーマモード：ライト。クリックしてダークモードに切り替えます。",
+				b: "テーマモード：ダーク。クリックして自動モードに切り替えます。"
 			},
 			ko: {
-				auto: "테마: 자동",
-				dark: "테마: 다크",
-				light: "테마: 라이트",
-				ariaLabelAuto: "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
-				ariaLabelLight: "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
-				ariaLabelDark: "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
+				d: "테마: 자동",
+				e: "테마: 다크",
+				f: "테마: 라이트",
+				a: "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
+				c: "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
+				b: "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
 			},
 			ru: {
-				auto: "Тема: Авто",
-				dark: "Тема: Темная",
-				light: "Тема: Светлая",
-				ariaLabelAuto: "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
-				ariaLabelLight: "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
-				ariaLabelDark: "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
+				d: "Тема: Авто",
+				e: "Тема: Темная",
+				f: "Тема: Светлая",
+				a: "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
+				c: "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
+				b: "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
 			}
 		}
-	},
-	localIds: ["theme-toggle::local::src/components/ThemeToggle.content.ts"]
-}, st = ["aria-label", "title"], ct = w({
+	}
+}, lt = w({
 	__name: "ThemeToggle",
-	setup(e) {
-		let { auto: t, dark: n, light: r, ariaLabelAuto: i, ariaLabelLight: a, ariaLabelDark: o } = qe(ot), s = A("auto");
-		function c() {
+	setup(e, { expose: t }) {
+		t();
+		let { d: n, e: r, f: i, a, c: o, b: s } = qe(ct), c = k("auto");
+		function l() {
 			if (typeof window > "u") return "auto";
 			let e = window.localStorage.getItem("theme");
 			return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 		}
-		function l(e) {
+		function u(e) {
 			let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 			document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 		}
-		re(() => {
-			let e = c();
-			s.value = e, l(e);
+		ie(() => {
+			let e = l();
+			c.value = e, u(e);
 		});
-		let u = null;
-		F(s, (e) => {
+		let d = null;
+		M(c, (e) => {
 			if (e === "auto") {
 				let e = window.matchMedia("(prefers-color-scheme: dark)");
-				u = () => l("auto"), e.addEventListener("change", u);
-			} else u &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", u), null);
-		}, { immediate: !0 }), ie(() => {
-			u && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", u);
+				d = () => u("auto"), e.addEventListener("change", d);
+			} else d &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", d), null);
+		}, { immediate: !0 }), ae(() => {
+			d && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", d);
 		});
-		function d() {
-			let e = s.value === "light" ? "dark" : s.value === "dark" ? "auto" : "light";
-			s.value = e, l(e), window.localStorage.setItem("theme", e);
+		function f() {
+			let e = c.value === "light" ? "dark" : c.value === "dark" ? "auto" : "light";
+			c.value = e, u(e), window.localStorage.setItem("theme", e);
 		}
-		let f = () => s.value === "auto" ? i.value : s.value === "light" ? a.value : o.value;
-		return (e, i) => (k(), b("button", {
-			type: "button",
-			onClick: d,
-			"aria-label": f(),
-			title: f(),
-			class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-		}, M(s.value === "auto" ? P(t) : s.value === "dark" ? P(n) : P(r)), 9, st));
+		let p = {
+			auto: n,
+			dark: r,
+			light: i,
+			ariaLabelAuto: a,
+			ariaLabelLight: o,
+			ariaLabelDark: s,
+			mode: c,
+			getInitialMode: l,
+			applyThemeMode: u,
+			get mediaQueryListener() {
+				return d;
+			},
+			set mediaQueryListener(e) {
+				d = e;
+			},
+			toggleMode: f,
+			getLabel: () => c.value === "auto" ? a.value : c.value === "light" ? o.value : s.value
+		};
+		return Object.defineProperty(p, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), p;
 	}
-}), lt = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, ut = { class: "container flex h-16 items-center justify-between" }, dt = { class: "flex items-center gap-8" }, ft = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, pt = { class: "relative" }, mt = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, ht = { class: "flex items-center gap-4" }, gt = {
+}), ut = ["aria-label", "title"];
+function dt(e, t, n, r, i, a) {
+	return O(), b("button", {
+		type: "button",
+		onClick: r.toggleMode,
+		"aria-label": r.getLabel(),
+		title: r.getLabel(),
+		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+	}, j(r.mode === "auto" ? r.auto : r.mode === "dark" ? r.dark : r.light), 9, ut);
+}
+var ft = $(lt, [["render", dt], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/ThemeToggle.vue"]]), pt = w({
+	__name: "Header",
+	setup(e, { expose: t }) {
+		t(), $e("Header");
+		let { h: n, i: r, j: i, l: a, k: o, n: s, b: c, c: l, e: u, d, m: f, a: p, f: m } = qe(fe), h = k(!1), g = le(), v = _(() => g.params.locale || "en"), y = {
+			home: n,
+			methodology: r,
+			mockPagesLabel: i,
+			products: a,
+			pricing: o,
+			team: s,
+			blog: c,
+			careers: l,
+			faq: u,
+			contact: d,
+			settings: f,
+			appName: p,
+			goToGithub: m,
+			isMockPagesOpen: h,
+			route: g,
+			currentLocale: v,
+			mockPagesList: _(() => [
+				{
+					to: `/${v.value}/products`,
+					label: a
+				},
+				{
+					to: `/${v.value}/pricing`,
+					label: o
+				},
+				{
+					to: `/${v.value}/team`,
+					label: s
+				},
+				{
+					to: `/${v.value}/blog`,
+					label: c
+				},
+				{
+					to: `/${v.value}/careers`,
+					label: l
+				},
+				{
+					to: `/${v.value}/faq`,
+					label: u
+				},
+				{
+					to: `/${v.value}/contact`,
+					label: d
+				},
+				{
+					to: `/${v.value}/settings`,
+					label: f
+				}
+			]),
+			get ChevronDown() {
+				return de;
+			},
+			LocaleSwitcher: st,
+			ThemeToggle: ft
+		};
+		return Object.defineProperty(y, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), y;
+	}
+}), mt = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, ht = { class: "container flex h-16 items-center justify-between" }, gt = { class: "flex items-center gap-8" }, _t = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, vt = { class: "relative" }, yt = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, bt = { class: "flex items-center gap-4" }, xt = {
 	href: "https://github.com/intlayer-org/benchmark-i18n",
 	target: "_blank",
 	rel: "noreferrer",
 	class: "text-muted-foreground transition hover:text-foreground"
-}, _t = { class: "sr-only" }, vt = w({
-	__name: "Header",
-	setup(e) {
-		$e("Header");
-		let { home: t, methodology: n, mockPages: r, products: i, pricing: a, team: o, blog: s, careers: c, faq: l, contact: u, settings: d, appName: f, goToGithub: p } = qe(ue), m = A(!1), h = se(), w = _(() => h.params.locale || "en"), T = _(() => [
-			{
-				to: `/${w.value}/products`,
-				label: i
-			},
-			{
-				to: `/${w.value}/pricing`,
-				label: a
-			},
-			{
-				to: `/${w.value}/team`,
-				label: o
-			},
-			{
-				to: `/${w.value}/blog`,
-				label: s
-			},
-			{
-				to: `/${w.value}/careers`,
-				label: c
-			},
-			{
-				to: `/${w.value}/faq`,
-				label: l
-			},
-			{
-				to: `/${w.value}/contact`,
-				label: u
-			},
-			{
-				to: `/${w.value}/settings`,
-				label: d
-			}
-		]);
-		return (e, i) => {
-			let a = ae("router-link");
-			return k(), b("header", lt, [x("nav", ut, [x("div", dt, [C(a, {
-				to: `/${w.value}`,
-				class: "text-lg font-bold tracking-tight text-primary no-underline"
-			}, {
-				default: I(() => [S(M(P(f)), 1)]),
-				_: 1
-			}, 8, ["to"]), x("div", ft, [
-				C(a, {
-					to: `/${w.value}`,
-					class: "nav-link",
-					"exact-active-class": "is-active"
-				}, {
-					default: I(() => [S(M(P(t)), 1)]),
-					_: 1
-				}, 8, ["to"]),
-				C(a, {
-					to: `/${w.value}/about`,
-					class: "nav-link",
-					"active-class": "is-active"
-				}, {
-					default: I(() => [S(M(P(n)), 1)]),
-					_: 1
-				}, 8, ["to"]),
-				y(" Mock Pages Dropdown "),
-				x("div", pt, [x("button", {
-					type: "button",
-					class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-					onMouseenter: i[0] ||= (e) => m.value = !0,
-					onMouseleave: i[1] ||= (e) => m.value = !1,
-					onClick: i[2] ||= (e) => m.value = !m.value
-				}, [S(M(P(r)) + " ", 1), C(P(le), {
-					size: 14,
-					class: te(["transition-transform", m.value ? "rotate-180" : ""])
-				}, null, 8, ["class"])], 32), m.value ? (k(), b("div", {
-					key: 0,
-					class: "absolute left-0 top-full pt-2 w-48",
-					onMouseenter: i[4] ||= (e) => m.value = !0,
-					onMouseleave: i[5] ||= (e) => m.value = !1
-				}, [x("div", mt, [(k(!0), b(g, null, j(T.value, (e) => (k(), v(a, {
-					key: e.to,
-					to: e.to,
-					class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-					onClick: i[3] ||= (e) => m.value = !1
-				}, {
-					default: I(() => [S(M(e.label), 1)]),
-					_: 2
-				}, 1032, ["to"]))), 128))])], 32)) : y("v-if", !0)])
-			])]), x("div", ht, [
-				x("a", gt, [x("span", _t, M(P(p)), 1), i[6] ||= x("svg", {
-					viewBox: "0 0 16 16",
-					"aria-hidden": "true",
-					width: "20",
-					height: "20"
-				}, [x("path", {
-					fill: "currentColor",
-					d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				})], -1)]),
-				C(at),
-				C(ct)
-			])])]);
-		};
-	}
-});
-export { vt as default };
+}, St = { class: "sr-only" };
+function Ct(e, t, n, r, i, a) {
+	let o = oe("router-link");
+	return O(), b("header", mt, [x("nav", ht, [x("div", gt, [C(o, {
+		to: `/${r.currentLocale}`,
+		class: "text-lg font-bold tracking-tight text-primary no-underline"
+	}, {
+		default: N(() => [S(j(r.appName), 1)]),
+		_: 1
+	}, 8, ["to"]), x("div", _t, [
+		C(o, {
+			to: `/${r.currentLocale}`,
+			class: "nav-link",
+			"exact-active-class": "is-active"
+		}, {
+			default: N(() => [S(j(r.home), 1)]),
+			_: 1
+		}, 8, ["to"]),
+		C(o, {
+			to: `/${r.currentLocale}/about`,
+			class: "nav-link",
+			"active-class": "is-active"
+		}, {
+			default: N(() => [S(j(r.methodology), 1)]),
+			_: 1
+		}, 8, ["to"]),
+		y(" Mock Pages Dropdown "),
+		x("div", vt, [x("button", {
+			type: "button",
+			class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+			onMouseenter: t[0] ||= (e) => r.isMockPagesOpen = !0,
+			onMouseleave: t[1] ||= (e) => r.isMockPagesOpen = !1,
+			onClick: t[2] ||= (e) => r.isMockPagesOpen = !r.isMockPagesOpen
+		}, [S(j(r.mockPagesLabel) + " ", 1), C(r.ChevronDown, {
+			size: 14,
+			class: ne(["transition-transform", r.isMockPagesOpen ? "rotate-180" : ""])
+		}, null, 8, ["class"])], 32), r.isMockPagesOpen ? (O(), b("div", {
+			key: 0,
+			class: "absolute left-0 top-full pt-2 w-48",
+			onMouseenter: t[4] ||= (e) => r.isMockPagesOpen = !0,
+			onMouseleave: t[5] ||= (e) => r.isMockPagesOpen = !1
+		}, [x("div", yt, [(O(!0), b(g, null, A(r.mockPagesList, (e) => (O(), v(o, {
+			key: e.to,
+			to: e.to,
+			class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+			onClick: t[3] ||= (e) => r.isMockPagesOpen = !1
+		}, {
+			default: N(() => [S(j(e.label), 1)]),
+			_: 2
+		}, 1032, ["to"]))), 128))])], 32)) : y("v-if", !0)])
+	])]), x("div", bt, [
+		x("a", xt, [x("span", St, j(r.goToGithub), 1), t[6] ||= x("svg", {
+			viewBox: "0 0 16 16",
+			"aria-hidden": "true",
+			width: "20",
+			height: "20"
+		}, [x("path", {
+			fill: "currentColor",
+			d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+		})], -1)]),
+		C(r.LocaleSwitcher),
+		C(r.ThemeToggle)
+	])])]);
+}
+var wt = $(pt, [["render", Ct], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Header.vue"]]);
+export { wt as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-DrnKJV-E.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {

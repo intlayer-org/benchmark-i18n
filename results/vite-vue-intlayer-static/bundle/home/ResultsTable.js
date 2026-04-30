@@ -1,123 +1,122 @@
 import { S as internationalization, a as fallbackPlugin, c as nestedPlugin, g as MARKDOWN, h as INSERTION, i as enumerationPlugin, l as translationPlugin, m as HTML, n as getContent, o as filePlugin, r as conditionPlugin, s as genderPlugin, t as getBasePlugins, x as editor } from "./getContent-D9D_CRCc.js";
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onBeforeMount, onMounted, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onBeforeMount, onMounted, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, watch } from "vue";
 var results_table_default = {
 	key: "results-table",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"title": "Sample Results",
-				"columns": {
-					"library": "Library",
-					"bundleSize": "Bundle Size",
-					"lookupTime": "Lookup Time",
-					"lazyLoading": "Lazy Loading"
+				"c": "Sample Results",
+				"a": {
+					"c": "Library",
+					"a": "Bundle Size",
+					"d": "Lookup Time",
+					"b": "Lazy Loading"
 				},
-				"yes": "Yes",
-				"manual": "Manual"
+				"d": "Yes",
+				"b": "Manual"
 			},
 			"fr": {
-				"title": "Exemples de résultats",
-				"columns": {
-					"library": "Bibliothèque",
-					"bundleSize": "Taille du bundle",
-					"lookupTime": "Temps de recherche",
-					"lazyLoading": "Chargement différé"
+				"c": "Exemples de résultats",
+				"a": {
+					"c": "Bibliothèque",
+					"a": "Taille du bundle",
+					"d": "Temps de recherche",
+					"b": "Chargement différé"
 				},
-				"yes": "Oui",
-				"manual": "Manuel"
+				"d": "Oui",
+				"b": "Manuel"
 			},
 			"es": {
-				"title": "Resultados de muestra",
-				"columns": {
-					"library": "Biblioteca",
-					"bundleSize": "Tamaño del paquete",
-					"lookupTime": "Tiempo de búsqueda",
-					"lazyLoading": "Carga diferida"
+				"c": "Resultados de muestra",
+				"a": {
+					"c": "Biblioteca",
+					"a": "Tamaño del paquete",
+					"d": "Tiempo de búsqueda",
+					"b": "Carga diferida"
 				},
-				"yes": "Sí",
-				"manual": "Manual"
+				"d": "Sí",
+				"b": "Manual"
 			},
 			"de": {
-				"title": "Beispielergebnisse",
-				"columns": {
-					"library": "Bibliothek",
-					"bundleSize": "Bundle-Größe",
-					"lookupTime": "Lookup-Zeit",
-					"lazyLoading": "Lazy Loading"
+				"c": "Beispielergebnisse",
+				"a": {
+					"c": "Bibliothek",
+					"a": "Bundle-Größe",
+					"d": "Lookup-Zeit",
+					"b": "Lazy Loading"
 				},
-				"yes": "Ja",
-				"manual": "Manuell"
+				"d": "Ja",
+				"b": "Manuell"
 			},
 			"it": {
-				"title": "Risultati di esempio",
-				"columns": {
-					"library": "Libreria",
-					"bundleSize": "Dimensioni del bundle",
-					"lookupTime": "Tempo di ricerca",
-					"lazyLoading": "Caricamento lazy"
+				"c": "Risultati di esempio",
+				"a": {
+					"c": "Libreria",
+					"a": "Dimensioni del bundle",
+					"d": "Tempo di ricerca",
+					"b": "Caricamento lazy"
 				},
-				"yes": "Sì",
-				"manual": "Manuale"
+				"d": "Sì",
+				"b": "Manuale"
 			},
 			"pt": {
-				"title": "Resultados de Amostra",
-				"columns": {
-					"library": "Biblioteca",
-					"bundleSize": "Tamanho do bundle",
-					"lookupTime": "Tempo de busca",
-					"lazyLoading": "Carregamento preguiçoso"
+				"c": "Resultados de Amostra",
+				"a": {
+					"c": "Biblioteca",
+					"a": "Tamanho do bundle",
+					"d": "Tempo de busca",
+					"b": "Carregamento preguiçoso"
 				},
-				"yes": "Sim",
-				"manual": "Manual"
+				"d": "Sim",
+				"b": "Manual"
 			},
 			"zh": {
-				"title": "样本结果",
-				"columns": {
-					"library": "库",
-					"bundleSize": "捆绑包大小",
-					"lookupTime": "查找时间",
-					"lazyLoading": "延迟加载"
+				"c": "样本结果",
+				"a": {
+					"c": "库",
+					"a": "捆绑包大小",
+					"d": "查找时间",
+					"b": "延迟加载"
 				},
-				"yes": "是",
-				"manual": "手动"
+				"d": "是",
+				"b": "手动"
 			},
 			"ja": {
-				"title": "サンプル結果",
-				"columns": {
-					"library": "ライブラリ",
-					"bundleSize": "バンドルサイズ",
-					"lookupTime": "ルックアップ時間",
-					"lazyLoading": "遅延ロード"
+				"c": "サンプル結果",
+				"a": {
+					"c": "ライブラリ",
+					"a": "バンドルサイズ",
+					"d": "ルックアップ時間",
+					"b": "遅延ロード"
 				},
-				"yes": "はい",
-				"manual": "手動"
+				"d": "はい",
+				"b": "手動"
 			},
 			"ko": {
-				"title": "샘플 결과",
-				"columns": {
-					"library": "라이브러리",
-					"bundleSize": "번들 크기",
-					"lookupTime": "조회 시간",
-					"lazyLoading": "지연 로딩"
+				"c": "샘플 결과",
+				"a": {
+					"c": "라이브러리",
+					"a": "번들 크기",
+					"d": "조회 시간",
+					"b": "지연 로딩"
 				},
-				"yes": "예",
-				"manual": "수동"
+				"d": "예",
+				"b": "수동"
 			},
 			"ru": {
-				"title": "Примеры результатов",
-				"columns": {
-					"library": "Библиотека",
-					"bundleSize": "Размер бандла",
-					"lookupTime": "Время поиска",
-					"lazyLoading": "Ленивая загрузка"
+				"c": "Примеры результатов",
+				"a": {
+					"c": "Библиотека",
+					"a": "Размер бандла",
+					"d": "Время поиска",
+					"b": "Ленивая загрузка"
 				},
-				"yes": "Да",
-				"manual": "Вручную"
+				"d": "Да",
+				"b": "Вручную"
 			}
 		}
-	},
-	localIds: ["results-table::local::src/components/pages/home/ResultsTable.content.ts"]
+	}
 };
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
@@ -936,6 +935,57 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
+var ResultsTable_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "ResultsTable",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		usePerformanceMeasure("ResultsTable");
+		const { c: title, a: columns, yes1, b: manual, d: yes } = b(results_table_default);
+		const __returned__ = {
+			title,
+			columns,
+			yes1,
+			manual,
+			yes,
+			results: [
+				{
+					lib: "react-i18next",
+					size: "42.3 kB",
+					time: "0.12ms",
+					lazy: yes
+				},
+				{
+					lib: "react-intl",
+					size: "38.1 kB",
+					time: "0.15ms",
+					lazy: manual
+				},
+				{
+					lib: "lingui",
+					size: "12.8 kB",
+					time: "0.08ms",
+					lazy: yes1
+				},
+				{
+					lib: "typesafe-i18n",
+					size: "5.2 kB",
+					time: "0.05ms",
+					lazy: "Built-in"
+				}
+			]
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "mb-6 text-2xl font-bold text-foreground" };
 var _hoisted_2 = { class: "overflow-x-auto rounded-lg border border-border" };
 var _hoisted_3 = { class: "w-full text-sm" };
@@ -948,57 +998,25 @@ var _hoisted_9 = { class: "px-4 py-3 font-medium text-foreground" };
 var _hoisted_10 = { class: "px-4 py-3 text-muted-foreground" };
 var _hoisted_11 = { class: "px-4 py-3 text-muted-foreground" };
 var _hoisted_12 = { class: "px-4 py-3 text-muted-foreground" };
-var ResultsTable_default = defineComponent({
-	__name: "ResultsTable",
-	setup(__props) {
-		usePerformanceMeasure("ResultsTable");
-		const { title, columns, yes1, manual, yes } = b(results_table_default);
-		const results = [
-			{
-				lib: "react-i18next",
-				size: "42.3 kB",
-				time: "0.12ms",
-				lazy: yes
-			},
-			{
-				lib: "react-intl",
-				size: "38.1 kB",
-				time: "0.15ms",
-				lazy: manual
-			},
-			{
-				lib: "lingui",
-				size: "12.8 kB",
-				time: "0.08ms",
-				lazy: yes1
-			},
-			{
-				lib: "typesafe-i18n",
-				size: "5.2 kB",
-				time: "0.05ms",
-				lazy: "Built-in"
-			}
-		];
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("section", null, [createElementVNode("h2", _hoisted_1, toDisplayString(unref(title)), 1), createElementVNode("div", _hoisted_2, [createElementVNode("table", _hoisted_3, [createElementVNode("thead", _hoisted_4, [createElementVNode("tr", null, [
-				createElementVNode("th", _hoisted_5, toDisplayString(unref(columns).library), 1),
-				createElementVNode("th", _hoisted_6, toDisplayString(unref(columns).bundleSize), 1),
-				createElementVNode("th", _hoisted_7, toDisplayString(unref(columns).lookupTime), 1),
-				createElementVNode("th", _hoisted_8, toDisplayString(unref(columns).lazyLoading), 1)
-			])]), createElementVNode("tbody", null, [(openBlock(), createElementBlock(Fragment, null, renderList(results, (r) => {
-				return createElementVNode("tr", {
-					key: r.lib,
-					class: "border-t border-border"
-				}, [
-					createElementVNode("td", _hoisted_9, toDisplayString(r.lib), 1),
-					createElementVNode("td", _hoisted_10, toDisplayString(r.size), 1),
-					createElementVNode("td", _hoisted_11, toDisplayString(r.time), 1),
-					createElementVNode("td", _hoisted_12, toDisplayString(r.lazy), 1)
-				]);
-			}), 64))])])])]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("section", null, [createElementVNode("h2", _hoisted_1, toDisplayString($setup.title), 1), createElementVNode("div", _hoisted_2, [createElementVNode("table", _hoisted_3, [createElementVNode("thead", _hoisted_4, [createElementVNode("tr", null, [
+		createElementVNode("th", _hoisted_5, toDisplayString($setup.columns.library), 1),
+		createElementVNode("th", _hoisted_6, toDisplayString($setup.columns.bundleSize), 1),
+		createElementVNode("th", _hoisted_7, toDisplayString($setup.columns.lookupTime), 1),
+		createElementVNode("th", _hoisted_8, toDisplayString($setup.columns.lazyLoading), 1)
+	])]), createElementVNode("tbody", null, [(openBlock(), createElementBlock(Fragment, null, renderList($setup.results, (r) => {
+		return createElementVNode("tr", {
+			key: r.lib,
+			class: "border-t border-border"
+		}, [
+			createElementVNode("td", _hoisted_9, toDisplayString(r.lib), 1),
+			createElementVNode("td", _hoisted_10, toDisplayString(r.size), 1),
+			createElementVNode("td", _hoisted_11, toDisplayString(r.time), 1),
+			createElementVNode("td", _hoisted_12, toDisplayString(r.lazy), 1)
+		]);
+	}), 64))])])])]);
+}
+var ResultsTable_default = _plugin_vue_export_helper_default(ResultsTable_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/home/ResultsTable.vue"]]);
 export { ResultsTable_default as default };
 import { b as configuration, n as getContent, t as getBasePlugins, x as editor, y as TRANSLATION } from "./getContent-D9D_CRCc.js";
 var isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);

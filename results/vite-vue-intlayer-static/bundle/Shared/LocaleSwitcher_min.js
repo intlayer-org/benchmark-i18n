@@ -1,21 +1,21 @@
 import { i as e, r as t, t as n } from "./configuration-DcjpUdjr.js";
-import { Fragment as r, computed as i, createElementBlock as a, createElementVNode as o, defineComponent as s, inject as c, openBlock as l, renderList as u, toDisplayString as d, unref as f, watch as p } from "vue";
-import { useRoute as m, useRouter as h } from "vue-router";
-var g = Symbol("intlayer"), _ = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+import { Fragment as r, computed as i, createElementBlock as a, createElementVNode as o, defineComponent as s, inject as c, openBlock as l, renderList as u, toDisplayString as d, watch as f } from "vue";
+import { useRoute as p, useRouter as m } from "vue-router";
+var h = Symbol("intlayer"), g = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var v = (e, t, n) => {
+var _ = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	return n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`), n.expires instanceof Date && r.push(`Expires=${n.expires.toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, y = (n = x) => {
+}, v = (n = b) => {
 	let { locales: r } = t;
 	if (n?.isCookieEnabled === !1) return;
 	let i = (e) => !!e && r.includes(e);
-	if (!_) for (let t = 0; t < (e.storage.cookies ?? []).length; t++) try {
+	if (!g) for (let t = 0; t < (e.storage.cookies ?? []).length; t++) try {
 		let r = n?.getCookie?.(e.storage.cookies[t].name);
 		if (i(r)) return r;
 	} catch {}
-}, b = (t, n) => {
-	if (n?.isCookieEnabled !== !1 && !_ && e.storage.cookies) for (let r = 0; r < e.storage.cookies.length; r++) {
+}, y = (t, n) => {
+	if (n?.isCookieEnabled !== !1 && !g && e.storage.cookies) for (let r = 0; r < e.storage.cookies.length; r++) {
 		let { name: i, attributes: a } = e.storage.cookies[r];
 		try {
 			n?.setCookieStore && n.setCookieStore(i, t, {
@@ -24,11 +24,11 @@ var v = (e, t, n) => {
 			});
 		} catch {
 			try {
-				n?.setCookieString && n.setCookieString(i, v(i, t, a));
+				n?.setCookieString && n.setCookieString(i, _(i, t, a));
 			} catch {}
 		}
 	}
-}, x = {
+}, b = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -47,12 +47,12 @@ var v = (e, t, n) => {
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
 };
-y(x);
-var S = (e, t) => b(e, {
-	...x,
+v(b);
+var x = (e, t) => y(e, {
+	...b,
 	isCookieEnabled: t
-}), C = ({ isCookieEnabled: e, onLocaleChange: n } = {}) => {
-	let { defaultLocale: r, locales: a } = t ?? {}, o = c(g);
+}), S = ({ isCookieEnabled: e, onLocaleChange: n } = {}) => {
+	let { defaultLocale: r, locales: a } = t ?? {}, o = c(h);
 	return {
 		locale: i(() => o?.locale?.value ?? r),
 		defaultLocale: r,
@@ -62,43 +62,69 @@ var S = (e, t) => b(e, {
 				console.error(`Locale ${t} is not available`);
 				return;
 			}
-			o && o.setLocale(t), S(t, e ?? o?.isCookieEnabled ?? !0), n?.(t);
+			o && o.setLocale(t), x(t, e ?? o?.isCookieEnabled ?? !0), n?.(t);
 		}
 	};
-}, w = n.internationalization.locales;
+}, C = n.internationalization.locales;
 n.internationalization.requiredLocales, n.internationalization.defaultLocale, n.editor;
-var T = (e) => {
+var w = (e) => {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
 	} catch {
 		return e.toUpperCase();
 	}
-}, E = { class: "flex items-center gap-2" }, D = ["value"], O = ["value"], k = s({
+}, T = s({
 	__name: "LocaleSwitcher",
-	setup(e) {
-		let t = m(), n = h(), { setLocale: s } = C(), c = i(() => t.params.locale || "en"), g = (e) => {
-			s(e);
-			let r = t.path.replace(/^\/[^/]+/, `/${e}`);
-			n.push({
-				path: r,
-				query: t.query,
-				hash: t.hash
+	setup(e, { expose: t }) {
+		t();
+		let n = p(), r = m(), { setLocale: a } = S(), o = i(() => n.params.locale || "en"), s = (e) => {
+			a(e);
+			let t = n.path.replace(/^\/[^/]+/, `/${e}`);
+			r.push({
+				path: t,
+				query: n.query,
+				hash: n.hash
 			});
 		};
-		return p(c, (e) => {
-			s(e);
-		}, { immediate: !0 }), (e, t) => (l(), a("div", E, [o("select", {
-			value: c.value,
-			onChange: t[0] ||= (e) => g(e.target.value),
-			class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-		}, [(l(!0), a(r, null, u(f(w), (e) => (l(), a("option", {
-			key: e,
-			value: e
-		}, d(f(T)(e)), 9, O))), 128))], 40, D)]));
+		f(o, (e) => {
+			a(e);
+		}, { immediate: !0 });
+		let c = {
+			route: n,
+			router: r,
+			setLocale: a,
+			currentLocale: o,
+			handleLocaleChange: s,
+			get locales() {
+				return C;
+			},
+			get getLocaleName() {
+				return w;
+			}
+		};
+		return Object.defineProperty(c, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), c;
 	}
-});
-export { k as default };
+}), E = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, D = { class: "flex items-center gap-2" }, O = ["value"], k = ["value"];
+function A(e, t, n, i, s, c) {
+	return l(), a("div", D, [o("select", {
+		value: i.currentLocale,
+		onChange: t[0] ||= (e) => i.handleLocaleChange(e.target.value),
+		class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+	}, [(l(!0), a(r, null, u(i.locales, (e) => (l(), a("option", {
+		key: e,
+		value: e
+	}, d(i.getLocaleName(e)), 9, k))), 128))], 40, O)]);
+}
+var j = E(T, [["render", A], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/LocaleSwitcher.vue"]]);
+export { j as default };
 var e = {
 	locales: [
 		"en",

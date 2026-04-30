@@ -1,9 +1,9 @@
 import { C as e, S as t, a as n, b as r, c as i, g as a, h as o, i as s, l as c, m as l, n as u, o as d, r as f, s as p, t as m, x as h } from "./getContent-DrnKJV-E.js";
-import { Fragment as g, computed as _, createBlock as v, createCommentVNode as y, createElementBlock as b, createElementVNode as x, createTextVNode as S, createVNode as C, defineComponent as w, getCurrentInstance as ee, h as T, inject as E, isRef as te, markRaw as D, normalizeClass as ne, onBeforeMount as O, onMounted as k, onUnmounted as re, openBlock as A, ref as j, renderList as M, resolveComponent as N, shallowRef as ie, toDisplayString as P, toValue as ae, unref as F, watch as I, withCtx as L } from "vue";
-import { useRoute as R, useRouter as oe } from "vue-router";
-import { ChevronDown as se } from "lucide-vue-next";
-var z = ({ value: e, children: t, additionalProps: n = {} }) => {
-	let r = j(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
+import { Fragment as g, computed as _, createBlock as v, createCommentVNode as y, createElementBlock as b, createElementVNode as x, createTextVNode as S, createVNode as C, defineComponent as w, getCurrentInstance as ee, h as T, inject as E, isRef as te, markRaw as D, normalizeClass as ne, onBeforeMount as re, onMounted as O, onUnmounted as ie, openBlock as k, ref as A, renderList as j, resolveComponent as M, shallowRef as ae, toDisplayString as N, toValue as oe, watch as P, withCtx as F } from "vue";
+import { useRoute as I, useRouter as se } from "vue-router";
+import { ChevronDown as ce } from "lucide-vue-next";
+var L = ({ value: e, children: t, additionalProps: n = {} }) => {
+	let r = A(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
 		toString: () => String(r.value ?? ""),
@@ -20,7 +20,7 @@ var z = ({ value: e, children: t, additionalProps: n = {} }) => {
 			return r.value;
 		},
 		use(e) {
-			return z({
+			return L({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -31,7 +31,7 @@ var z = ({ value: e, children: t, additionalProps: n = {} }) => {
 		},
 		...n
 	}), D(o);
-}, B = w({
+}, R = w({
 	name: "ContentSelector",
 	props: {
 		dictionaryKey: {
@@ -46,7 +46,7 @@ var z = ({ value: e, children: t, additionalProps: n = {} }) => {
 	setup(e, { slots: t }) {
 		return () => t.default?.();
 	}
-}), ce = (e, t, n = m(t)) => {
+}), le = (e, t, n = m(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
@@ -54,12 +54,12 @@ var z = ({ value: e, children: t, additionalProps: n = {} }) => {
 		plugins: n
 	};
 	return u(e.content, r, n);
-}, V = (e) => {
+}, z = (e) => {
 	let t = {}, n = /([a-zA-Z0-9-]+)="([^"]*)"/g, r = n.exec(e);
 	for (; r !== null;) t[r[1]] = r[2], r = n.exec(e);
 	return t;
-}, H = /* @__PURE__ */ new Map(), le = (e) => {
-	if (H.has(e)) return H.get(e);
+}, B = /* @__PURE__ */ new Map(), ue = (e) => {
+	if (B.has(e)) return B.get(e);
 	if (typeof e != "string") return [];
 	let t = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g, n = [], r = [], i = 0, a = t.exec(e), o = (e) => {
 		(r.length > 0 ? r[r.length - 1].children : n).push(e);
@@ -80,11 +80,11 @@ var z = ({ value: e, children: t, additionalProps: n = {} }) => {
 			}
 		} else if (p) o({
 			tagName: c,
-			props: V(m),
+			props: z(m),
 			children: []
 		});
 		else {
-			let e = V(m);
+			let e = z(m);
 			r.push({
 				tagName: c,
 				children: [],
@@ -101,9 +101,9 @@ var z = ({ value: e, children: t, additionalProps: n = {} }) => {
 			children: e.children
 		});
 	}
-	return H.set(e, n), n;
-}, ue = (e, t) => {
-	let n = le(e), r = 0, i = (e) => {
+	return B.set(e, n), n;
+}, de = (e, t) => {
+	let n = ue(e), r = 0, i = (e) => {
 		if (typeof e == "string") return e;
 		let { tagName: n, props: a, children: o } = e, s = o.flatMap(i), c = r++, l = t[n];
 		if (!l) {
@@ -136,12 +136,12 @@ var z = ({ value: e, children: t, additionalProps: n = {} }) => {
 		return s;
 	}, a = n.flatMap(i);
 	return a.length === 1 ? a[0] : a;
-}, de = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", U = /\{\{\s*(.*?)\s*\}\}/g, fe = (e, t = {}) => {
-	if (!Object.values(t).some(de)) return {
+}, fe = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", V = /\{\{\s*(.*?)\s*\}\}/g, pe = (e, t = {}) => {
+	if (!Object.values(t).some(fe)) return {
 		isSimple: !0,
-		parts: e.replace(U, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(V, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(U), r = [];
+	let n = e.split(V), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -151,15 +151,15 @@ var z = ({ value: e, children: t, additionalProps: n = {} }) => {
 		isSimple: !1,
 		parts: r
 	};
-}, pe = Symbol("intlayerHTML"), me = () => E(pe), he = (e, { components: t = {} } = {}) => {
+}, me = Symbol("intlayerHTML"), he = () => E(me), H = (e, { components: t = {} } = {}) => {
 	let n = Object.fromEntries(Object.entries(t).filter(([, e]) => e).map(([e, t]) => [e, (e) => T(t, e, e?.children)]));
-	return ue(e, new Proxy(n, { get(e, t) {
+	return de(e, new Proxy(n, { get(e, t) {
 		if (typeof t == "string" && t in e) return e[t];
 		if (typeof t == "string" && /^[a-z][a-z0-9]*$/.test(t)) return (e) => T(t, e, e?.children);
 	} }));
 }, ge = ({ components: e } = {}) => {
-	let t = me();
-	return (n) => t ? t.renderHTML(n, { components: e }) : he(n, { components: e });
+	let t = he();
+	return (n) => t ? t.renderHTML(n, { components: e }) : H(n, { components: e });
 };
 w({
 	name: "HTMLRenderer",
@@ -353,14 +353,14 @@ var _e = new Set([
 	class: "className",
 	for: "htmlFor"
 });
-var W = "(?:\\d+\\.)", G = "(?:[*+-])", K = (e) => `(?=[\\s\\S]+?\\1${e ? "\\1" : ""})`, q = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
-RegExp(`^([*_])\\1${K(1)}${q}\\1\\1(?!\\1)`), RegExp(`^([*_])${K(0)}${q}\\1(?!\\1)`), RegExp(`^(==)${K(0)}${q}\\1`), RegExp(`^(~~)${K(0)}${q}\\1`);
-var be = (e) => "( *)(" + (e === 1 ? W : G) + ") +", xe = be(1), Se = be(2), Ce = (e) => RegExp("^" + (e === 1 ? xe : Se));
+var U = "(?:\\d+\\.)", W = "(?:[*+-])", G = (e) => `(?=[\\s\\S]+?\\1${e ? "\\1" : ""})`, K = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
+RegExp(`^([*_])\\1${G(1)}${K}\\1\\1(?!\\1)`), RegExp(`^([*_])${G(0)}${K}\\1(?!\\1)`), RegExp(`^(==)${G(0)}${K}\\1`), RegExp(`^(~~)${G(0)}${K}\\1`);
+var be = (e) => "( *)(" + (e === 1 ? U : W) + ") +", xe = be(1), Se = be(2), Ce = (e) => RegExp("^" + (e === 1 ? xe : Se));
 Ce(1), Ce(2);
-var we = (e) => RegExp("^" + (e === 1 ? xe : Se) + "[^\\n]*(?:\\n(?!\\1" + (e === 1 ? W : G) + " )[^\\n]*)*(\\n|$)", "gm");
+var we = (e) => RegExp("^" + (e === 1 ? xe : Se) + "[^\\n]*(?:\\n(?!\\1" + (e === 1 ? U : W) + " )[^\\n]*)*(\\n|$)", "gm");
 we(1), we(2);
 var Te = (e) => {
-	let t = e === 1 ? W : G;
+	let t = e === 1 ? U : W;
 	return RegExp("^( *)(" + t + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + t + " (?!" + t + " ))\\n*|\\s*\\n*$)");
 };
 Te(1), Te(2);
@@ -385,14 +385,14 @@ var Ee = (e) => (t, n = {}) => {
 	let e = E(De, { renderMarkdown: (e) => e });
 	if (!e) throw Error("useMarkdown must be used within a MarkdownProvider");
 	return e;
-}, ke = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", Ae = !0, je = !0, Me = !0, J = !0, Ne = ke ? n : {
+}, ke = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", Ae = !0, je = !0, Me = !0, q = !0, Ne = ke ? n : {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => z({
+		let r = (e) => L({
 			...n,
 			value: e,
-			children: !J && h.enabled ? () => T(B, {
+			children: !q && h.enabled ? () => T(R, {
 				dictionaryKey: n.dictionaryKey,
 				keyPath: n.keyPath
 			}, { default: () => typeof e == "function" ? e() : e }) : e
@@ -413,7 +413,7 @@ var Ee = (e) => (t, n = {}) => {
 }, Pe = (e, t) => {
 	let n = /* @__PURE__ */ new Map(), r = {};
 	for (let [e, i] of Object.entries(t)) typeof i == "string" || typeof i == "number" ? r[e] = i : (n.set(e, i), r[e] = `__VNODE_${e}__`);
-	let i = fe(e, r);
+	let i = pe(e, r);
 	if (n.size > 0) {
 		let e = [];
 		if (i.isSimple) {
@@ -473,7 +473,7 @@ var Ee = (e) => (t, n = {}) => {
 			plugins: [{
 				id: "markdown-metadata-plugin",
 				canHandle: (e) => typeof e == "string" || typeof e == "number" || typeof e == "boolean" || !e,
-				transform: (t, n) => z({
+				transform: (t, n) => L({
 					...n,
 					value: t,
 					children: e
@@ -481,7 +481,7 @@ var Ee = (e) => (t, n = {}) => {
 			}],
 			dictionaryKey: i.dictionaryKey,
 			keyPath: []
-		}), o = (n) => z({
+		}), o = (n) => L({
 			...t,
 			value: e,
 			children: () => {
@@ -489,7 +489,7 @@ var Ee = (e) => (t, n = {}) => {
 					...r ?? {},
 					...n ?? {}
 				});
-				return !J && h.enabled ? T(B, {
+				return !q && h.enabled ? T(R, {
 					dictionaryKey: i.dictionaryKey,
 					keyPath: i.keyPath
 				}, { default: () => a }) : a;
@@ -520,11 +520,11 @@ var Ee = (e) => (t, n = {}) => {
 		let n = e[l];
 		e.tags;
 		let r = (e = {}) => {
-			let i = he(n, { components: e });
-			return z({
+			let i = H(n, { components: e });
+			return L({
 				...t,
 				value: n,
-				children: !J && h.enabled ? () => T(B, {
+				children: !q && h.enabled ? () => T(R, {
 					dictionaryKey: t.dictionaryKey,
 					keyPath: t.keyPath,
 					...e
@@ -534,9 +534,9 @@ var Ee = (e) => (t, n = {}) => {
 		};
 		return r();
 	}
-}, Y = /* @__PURE__ */ new Map(), ze = (e, n = !0) => {
+}, J = /* @__PURE__ */ new Map(), ze = (e, n = !0) => {
 	let r = `${e ?? t.defaultLocale}_${n}`;
-	if (Y.has(r)) return Y.get(r);
+	if (J.has(r)) return J.get(r);
 	let a = [
 		c(e ?? t.defaultLocale, n ? t.defaultLocale : void 0),
 		s,
@@ -549,8 +549,8 @@ var Ee = (e) => (t, n = {}) => {
 		Le,
 		Re
 	];
-	return Y.set(r, a), a;
-}, Be = (e, t) => ce(e, t, ze(t)), Ve = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, He = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), Ue = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, We = (e) => D(w({
+	return J.set(r, a), a;
+}, Be = (e, t) => le(e, t, ze(t)), Ve = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, He = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Ue = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, We = (e) => D(w({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -580,9 +580,9 @@ var Ee = (e) => (t, n = {}) => {
 			configurable: !0
 		};
 	}
-}), Q = (e, n) => {
-	let r = ee() ? E(Ve) : void 0, i = te(r?.locale) ? r.locale : j(r?.locale ?? t.defaultLocale), a = _(() => (n === void 0 ? void 0 : ae(n)) ?? i.value), o = ie({});
-	I([() => ae(e), () => a.value], ([e, t]) => {
+}), Z = (e, n) => {
+	let r = ee() ? E(Ve) : void 0, i = te(r?.locale) ? r.locale : A(r?.locale ?? t.defaultLocale), a = _(() => (n === void 0 ? void 0 : oe(n)) ?? i.value), o = ae({});
+	P([() => oe(e), () => a.value], ([e, t]) => {
 		o.value = Be(e, t);
 	}, {
 		immediate: !0,
@@ -591,23 +591,23 @@ var Ee = (e) => (t, n = {}) => {
 	let s = (e) => new Proxy({}, {
 		get(t, n, r) {
 			if (n === "__v_isRef") return !0;
-			let i = _(() => X(o.value, e));
+			let i = _(() => Y(o.value, e));
 			if (n === "value") return i.value ?? "";
 			if (n === "then") return;
 			if (n === "c" || n === "asComponent") return We(() => i.value);
 			if (n === "$raw") return i;
 			if (n === Symbol.toPrimitive) return () => i.value;
-			let a = e.concat(n), c = X(o.value, a);
-			if (c === void 0 || Z(c) && !He(c)) return s(a);
-			if (Ue(c)) return Ge(_(() => X(o.value, a)));
-			let l = _(() => X(o.value, a));
+			let a = e.concat(n), c = Y(o.value, a);
+			if (c === void 0 || X(c) && !He(c)) return s(a);
+			if (Ue(c)) return Ge(_(() => Y(o.value, a)));
+			let l = _(() => Y(o.value, a));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = X(o.value, e);
-			return Z(t) ? Reflect.ownKeys(t) : [];
+			let t = Y(o.value, e);
+			return X(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -622,7 +622,7 @@ process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
 var qe = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	return n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`), n.expires instanceof Date && r.push(`Expires=${n.expires.toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, Je = (n = $) => {
+}, Je = (n = Q) => {
 	let { locales: r } = t;
 	if (n?.isCookieEnabled === !1) return;
 	let i = (e) => !!e && r.includes(e);
@@ -644,7 +644,7 @@ var qe = (e, t, n) => {
 			} catch {}
 		}
 	}
-}, $ = {
+}, Q = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -663,9 +663,9 @@ var qe = (e, t, n) => {
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
 };
-Je($);
+Je(Q);
 var Xe = (e, t) => Ye(e, {
-	...$,
+	...Q,
 	isCookieEnabled: t
 }), Ze = ({ isCookieEnabled: e, onLocaleChange: n } = {}) => {
 	let { defaultLocale: r, locales: i } = t ?? {}, a = E(Ve);
@@ -707,333 +707,354 @@ var et = {
 		nodeType: "translation",
 		translation: {
 			en: {
-				description: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
-				resources: "Resources",
-				contact: "Contact",
-				github: "GitHub",
-				methodology: "Methodology",
-				contributing: "Contributing",
-				footerText: "i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+				i: "Resources",
+				b: "Contact",
+				g: "GitHub",
+				h: "Methodology",
+				d: "Contributing",
+				f: "i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			fr: {
-				description: "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-				resources: "Ressources",
-				contact: "Contact",
-				github: "GitHub",
-				methodology: "Méthodologie",
-				contributing: "Contribuer",
-				footerText: "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.",
-				appName: "Benchmark i18n",
-				contactEmail: "contact@intlayer.org"
+				e: "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+				i: "Ressources",
+				b: "Contact",
+				g: "GitHub",
+				h: "Méthodologie",
+				d: "Contribuer",
+				f: "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.",
+				a: "Benchmark i18n",
+				c: "contact@intlayer.org"
 			},
 			es: {
-				description: "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
-				resources: "Recursos",
-				contact: "Contacto",
-				github: "GitHub",
-				methodology: "Metodología",
-				contributing: "Contribuir",
-				footerText: "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
+				i: "Recursos",
+				b: "Contacto",
+				g: "GitHub",
+				h: "Metodología",
+				d: "Contribuir",
+				f: "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			de: {
-				description: "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
-				resources: "Ressourcen",
-				contact: "Kontakt",
-				github: "GitHub",
-				methodology: "Methodik",
-				contributing: "Mitwirken",
-				footerText: "i18n Benchmark – Open-Source-Projekt. Erstellt mit Vue, Vite & Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
+				i: "Ressourcen",
+				b: "Kontakt",
+				g: "GitHub",
+				h: "Methodik",
+				d: "Mitwirken",
+				f: "i18n Benchmark – Open-Source-Projekt. Erstellt mit Vue, Vite & Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			it: {
-				description: "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
-				resources: "Risorse",
-				contact: "Contatto",
-				github: "GitHub",
-				methodology: "Metodologia",
-				contributing: "Contribuire",
-				footerText: "i18n Benchmark — Progetto open-source. Costruito con Vue, Vite e Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
+				i: "Risorse",
+				b: "Contatto",
+				g: "GitHub",
+				h: "Metodologia",
+				d: "Contribuire",
+				f: "i18n Benchmark — Progetto open-source. Costruito con Vue, Vite e Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			pt: {
-				description: "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.",
-				resources: "Recursos",
-				contact: "Contato",
-				github: "GitHub",
-				methodology: "Metodologia",
-				contributing: "Contribuindo",
-				footerText: "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e Vue Router.",
-				appName: "i18n Benchmark",
-				contactEmail: "contact@intlayer.org"
+				e: "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.",
+				i: "Recursos",
+				b: "Contato",
+				g: "GitHub",
+				h: "Metodologia",
+				d: "Contribuindo",
+				f: "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e Vue Router.",
+				a: "i18n Benchmark",
+				c: "contact@intlayer.org"
 			},
 			zh: {
-				description: "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
-				resources: "资源",
-				contact: "联系我们",
-				github: "GitHub",
-				methodology: "方法论",
-				contributing: "贡献",
-				footerText: "i18n 基准测试——开源项目。使用 Vue、Vite 和 Vue Router 构建。",
-				appName: "i18n 基准测试",
-				contactEmail: "contact@intlayer.org"
+				e: "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
+				i: "资源",
+				b: "联系我们",
+				g: "GitHub",
+				h: "方法论",
+				d: "贡献",
+				f: "i18n 基准测试——开源项目。使用 Vue、Vite 和 Vue Router 构建。",
+				a: "i18n 基准测试",
+				c: "contact@intlayer.org"
 			},
 			ja: {
-				description: "バンドルサイズ、ロード時間、アプリの反応性に与える国際化ライブラリの実際の影響を測定するためのオープンソースのテストアプリケーション。",
-				resources: "リソース",
-				contact: "お問い合わせ",
-				github: "GitHub",
-				methodology: "方法論",
-				contributing: "貢献",
-				footerText: "i18n ベンチマーク — オープンソースプロジェクト。Vue、Vite、Vue Routerで構築されています。",
-				appName: "i18n ベンチマーク",
-				contactEmail: "contact@intlayer.org"
+				e: "バンドルサイズ、ロード時間、アプリの反応性に与える国際化ライブラリの実際の影響を測定するためのオープンソースのテストアプリケーション。",
+				i: "リソース",
+				b: "お問い合わせ",
+				g: "GitHub",
+				h: "方法論",
+				d: "貢献",
+				f: "i18n ベンチマーク — オープンソースプロジェクト。Vue、Vite、Vue Routerで構築されています。",
+				a: "i18n ベンチマーク",
+				c: "contact@intlayer.org"
 			},
 			ko: {
-				description: "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
-				resources: "리소스",
-				contact: "연락처",
-				github: "GitHub",
-				methodology: "방법론",
-				contributing: "기여하기",
-				footerText: "i18n 벤치마크 — 오픈 소스 프로젝트. Vue, Vite 및 Vue Router로 제작되었습니다.",
-				appName: "i18n 벤치마크",
-				contactEmail: "contact@intlayer.org"
+				e: "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
+				i: "리소스",
+				b: "연락처",
+				g: "GitHub",
+				h: "방법론",
+				d: "기여하기",
+				f: "i18n 벤치마크 — 오픈 소스 프로젝트. Vue, Vite 및 Vue Router로 제작되었습니다.",
+				a: "i18n 벤치마크",
+				c: "contact@intlayer.org"
 			},
 			ru: {
-				description: "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
-				resources: "Ресурсы",
-				contact: "Контакт",
-				github: "GitHub",
-				methodology: "Методология",
-				contributing: "Участие в проекте",
-				footerText: "i18n Benchmark — проект с открытым исходным кодом. Построен на Vue, Vite и Vue Router.",
-				appName: "i18n Бенчмарк",
-				contactEmail: "contact@intlayer.org"
+				e: "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
+				i: "Ресурсы",
+				b: "Контакт",
+				g: "GitHub",
+				h: "Методология",
+				d: "Участие в проекте",
+				f: "i18n Benchmark — проект с открытым исходным кодом. Построен на Vue, Vite и Vue Router.",
+				a: "i18n Бенчмарк",
+				c: "contact@intlayer.org"
 			}
 		}
-	},
-	localIds: ["footer::local::src/components/Footer.content.ts"]
-}, tt = { class: "mt-20 border-t border-border bg-card" }, nt = { class: "container py-8" }, rt = { class: "grid gap-8 md:grid-cols-3" }, it = { class: "mb-2 text-sm font-semibold text-foreground" }, at = { class: "text-sm text-muted-foreground" }, ot = { class: "mb-2 text-sm font-semibold text-foreground" }, st = { class: "space-y-1" }, ct = ["href"], lt = { class: "mb-2 text-sm font-semibold text-foreground" }, ut = { class: "text-sm text-muted-foreground" }, dt = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" }, ft = w({
-	__name: "Footer",
-	setup(e) {
-		let t = R(), n = _(() => t.params.locale || "en"), { description: r, resources: i, contact: a, github: o, methodology: s, contributing: c, footerText: l, appName: u, contactEmail: d } = Q(et), f = _(() => [
-			{
-				label: o,
-				href: "https://github.com/intlayer-org/benchmark-i18n",
-				isInternal: !1
-			},
-			{
-				label: s,
-				to: `/${n.value}/about`,
-				isInternal: !0
-			},
-			{
-				label: c,
-				to: `/${n.value}/contact`,
-				isInternal: !0
-			}
-		]);
-		return (e, t) => {
-			let n = N("router-link");
-			return A(), b("footer", tt, [x("div", nt, [x("div", rt, [
-				x("div", null, [x("h3", it, P(F(u)), 1), x("p", at, P(F(r)), 1)]),
-				x("div", null, [x("h3", ot, P(F(i)), 1), x("ul", st, [(A(!0), b(g, null, M(f.value, (e) => (A(), b("li", { key: e.label }, [e.isInternal ? (A(), v(n, {
-					key: 0,
-					to: e.to,
-					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-				}, {
-					default: L(() => [S(P(e.label), 1)]),
-					_: 2
-				}, 1032, ["to"])) : (A(), b("a", {
-					key: 1,
-					href: e.href,
-					target: "_blank",
-					rel: "noreferrer",
-					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-				}, P(e.label), 9, ct))]))), 128))])]),
-				x("div", null, [x("h3", lt, P(F(a)), 1), x("p", ut, P(F(d)), 1)])
-			]), x("div", dt, P(F(l)), 1)])]);
-		};
 	}
-}), pt = {
+}, tt = w({
+	__name: "Footer",
+	setup(e, { expose: t }) {
+		t();
+		let n = I(), r = _(() => n.params.locale || "en"), { e: i, i: a, b: o, g: s, h: c, d: l, f: u, a: d, c: f } = Z(et), p = {
+			route: n,
+			currentLocale: r,
+			description: i,
+			resources: a,
+			contactLabel: o,
+			github: s,
+			methodology: c,
+			contributing: l,
+			footerText: u,
+			appName: d,
+			contactEmail: f,
+			footerLinks: _(() => [
+				{
+					label: s,
+					href: "https://github.com/intlayer-org/benchmark-i18n",
+					isInternal: !1
+				},
+				{
+					label: c,
+					to: `/${r.value}/about`,
+					isInternal: !0
+				},
+				{
+					label: l,
+					to: `/${r.value}/contact`,
+					isInternal: !0
+				}
+			])
+		};
+		return Object.defineProperty(p, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), p;
+	}
+}), $ = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, nt = { class: "mt-20 border-t border-border bg-card" }, rt = { class: "container py-8" }, it = { class: "grid gap-8 md:grid-cols-3" }, at = { class: "mb-2 text-sm font-semibold text-foreground" }, ot = { class: "text-sm text-muted-foreground" }, st = { class: "mb-2 text-sm font-semibold text-foreground" }, ct = { class: "space-y-1" }, lt = ["href"], ut = { class: "mb-2 text-sm font-semibold text-foreground" }, dt = { class: "text-sm text-muted-foreground" }, ft = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" };
+function pt(e, t, n, r, i, a) {
+	let o = M("router-link");
+	return k(), b("footer", nt, [x("div", rt, [x("div", it, [
+		x("div", null, [x("h3", at, N(r.appName), 1), x("p", ot, N(r.description), 1)]),
+		x("div", null, [x("h3", st, N(r.resources), 1), x("ul", ct, [(k(!0), b(g, null, j(r.footerLinks, (e) => (k(), b("li", { key: e.label }, [e.isInternal ? (k(), v(o, {
+			key: 0,
+			to: e.to,
+			class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+		}, {
+			default: F(() => [S(N(e.label), 1)]),
+			_: 2
+		}, 1032, ["to"])) : (k(), b("a", {
+			key: 1,
+			href: e.href,
+			target: "_blank",
+			rel: "noreferrer",
+			class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+		}, N(e.label), 9, lt))]))), 128))])]),
+		x("div", null, [x("h3", ut, N(r.contactLabel), 1), x("p", dt, N(r.contactEmail), 1)])
+	]), x("div", ft, N(r.footerText), 1)])]);
+}
+var mt = $(tt, [["render", pt], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Footer.vue"]]), ht = {
 	key: "header",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				home: "Home",
-				methodology: "Methodology",
-				mockPages: "Mock Pages",
-				products: "Products",
-				pricing: "Pricing",
-				team: "Team",
-				blog: "Blog",
-				careers: "Careers",
-				faq: "FAQ",
-				contact: "Contact",
-				settings: "Settings",
-				appName: "i18n Benchmark",
-				goToGithub: "Go to GitHub",
-				header: "Header"
+				h: "Home",
+				i: "Methodology",
+				j: "Mock Pages",
+				l: "Products",
+				k: "Pricing",
+				n: "Team",
+				b: "Blog",
+				c: "Careers",
+				e: "FAQ",
+				d: "Contact",
+				m: "Settings",
+				a: "i18n Benchmark",
+				f: "Go to GitHub",
+				g: "Header"
 			},
 			fr: {
-				home: "Accueil",
-				methodology: "Méthodologie",
-				mockPages: "Pages fictives",
-				products: "Produits",
-				pricing: "Tarification",
-				team: "Équipe",
-				blog: "Blog",
-				careers: "Carrières",
-				faq: "FAQ",
-				contact: "Contact",
-				settings: "Paramètres",
-				appName: "Benchmark i18n",
-				goToGithub: "Aller sur GitHub",
-				header: "En-tête"
+				h: "Accueil",
+				i: "Méthodologie",
+				j: "Pages fictives",
+				l: "Produits",
+				k: "Tarification",
+				n: "Équipe",
+				b: "Blog",
+				c: "Carrières",
+				e: "FAQ",
+				d: "Contact",
+				m: "Paramètres",
+				a: "Benchmark i18n",
+				f: "Aller sur GitHub",
+				g: "En-tête"
 			},
 			es: {
-				home: "Inicio",
-				methodology: "Metodología",
-				mockPages: "Páginas de prueba",
-				products: "Productos",
-				pricing: "Precios",
-				team: "Equipo",
-				blog: "Blog",
-				careers: "Carreras",
-				faq: "FAQ",
-				contact: "Contacto",
-				settings: "Ajustes",
-				appName: "i18n Benchmark",
-				goToGithub: "Ir a GitHub",
-				header: "Encabezado"
+				h: "Inicio",
+				i: "Metodología",
+				j: "Páginas de prueba",
+				l: "Productos",
+				k: "Precios",
+				n: "Equipo",
+				b: "Blog",
+				c: "Carreras",
+				e: "FAQ",
+				d: "Contacto",
+				m: "Ajustes",
+				a: "i18n Benchmark",
+				f: "Ir a GitHub",
+				g: "Encabezado"
 			},
 			de: {
-				home: "Home",
-				methodology: "Methodik",
-				mockPages: "Testseiten",
-				products: "Produkte",
-				pricing: "Preise",
-				team: "Team",
-				blog: "Blog",
-				careers: "Karriere",
-				faq: "FAQ",
-				contact: "Kontakt",
-				settings: "Einstellungen",
-				appName: "i18n Benchmark",
-				goToGithub: "Zu GitHub",
-				header: "Header"
+				h: "Home",
+				i: "Methodik",
+				j: "Testseiten",
+				l: "Produkte",
+				k: "Preise",
+				n: "Team",
+				b: "Blog",
+				c: "Karriere",
+				e: "FAQ",
+				d: "Kontakt",
+				m: "Einstellungen",
+				a: "i18n Benchmark",
+				f: "Zu GitHub",
+				g: "Header"
 			},
 			it: {
-				home: "Home",
-				methodology: "Metodologia",
-				mockPages: "Pagine di prova",
-				products: "Prodotti",
-				pricing: "Prezzi",
-				team: "Team",
-				blog: "Blog",
-				careers: "Carriere",
-				faq: "FAQ",
-				contact: "Contatti",
-				settings: "Impostazioni",
-				appName: "i18n Benchmark",
-				goToGithub: "Vai su GitHub",
-				header: "Intestazione"
+				h: "Home",
+				i: "Metodologia",
+				j: "Pagine di prova",
+				l: "Prodotti",
+				k: "Prezzi",
+				n: "Team",
+				b: "Blog",
+				c: "Carriere",
+				e: "FAQ",
+				d: "Contatti",
+				m: "Impostazioni",
+				a: "i18n Benchmark",
+				f: "Vai su GitHub",
+				g: "Intestazione"
 			},
 			pt: {
-				home: "Início",
-				methodology: "Metodologia",
-				mockPages: "Páginas de Teste",
-				products: "Produtos",
-				pricing: "Preços",
-				team: "Equipe",
-				blog: "Blog",
-				careers: "Carreiras",
-				faq: "FAQ",
-				contact: "Contato",
-				settings: "Configurações",
-				appName: "i18n Benchmark",
-				goToGithub: "Ir para o GitHub",
-				header: "Cabeçalho"
+				h: "Início",
+				i: "Metodologia",
+				j: "Páginas de Teste",
+				l: "Produtos",
+				k: "Preços",
+				n: "Equipe",
+				b: "Blog",
+				c: "Carreiras",
+				e: "FAQ",
+				d: "Contato",
+				m: "Configurações",
+				a: "i18n Benchmark",
+				f: "Ir para o GitHub",
+				g: "Cabeçalho"
 			},
 			zh: {
-				home: "首页",
-				methodology: "方法论",
-				mockPages: "模拟页面",
-				products: "产品",
-				pricing: "定价",
-				team: "团队",
-				blog: "博客",
-				careers: "职业",
-				faq: "常见问题",
-				contact: "联系我们",
-				settings: "设置",
-				appName: "i18n 基准测试",
-				goToGithub: "前往 GitHub",
-				header: "页眉"
+				h: "首页",
+				i: "方法论",
+				j: "模拟页面",
+				l: "产品",
+				k: "定价",
+				n: "团队",
+				b: "博客",
+				c: "职业",
+				e: "常见问题",
+				d: "联系我们",
+				m: "设置",
+				a: "i18n 基准测试",
+				f: "前往 GitHub",
+				g: "页眉"
 			},
 			ja: {
-				home: "ホーム",
-				methodology: "方法論",
-				mockPages: "モックページ",
-				products: "製品",
-				pricing: "価格設定",
-				team: "チーム",
-				blog: "ブログ",
-				careers: "採用情報",
-				faq: "よくある質問",
-				contact: "お問い合わせ",
-				settings: "設定",
-				appName: "i18n ベンチマーク",
-				goToGithub: "GitHub へ",
-				header: "ヘッダー"
+				h: "ホーム",
+				i: "方法論",
+				j: "モックページ",
+				l: "製品",
+				k: "価格設定",
+				n: "チーム",
+				b: "ブログ",
+				c: "採用情報",
+				e: "よくある質問",
+				d: "お問い合わせ",
+				m: "設定",
+				a: "i18n ベンチマーク",
+				f: "GitHub へ",
+				g: "ヘッダー"
 			},
 			ko: {
-				home: "홈",
-				methodology: "방법론",
-				mockPages: "모ック 페이지",
-				products: "제품",
-				pricing: "가격",
-				team: "팀",
-				blog: "블로그",
-				careers: "채용",
-				faq: "자주 묻는 질문",
-				contact: "문의",
-				settings: "설정",
-				appName: "i18n 벤치마크",
-				goToGithub: "GitHub으로 이동",
-				header: "헤더"
+				h: "홈",
+				i: "방법론",
+				j: "모ック 페이지",
+				l: "제품",
+				k: "가격",
+				n: "팀",
+				b: "블로그",
+				c: "채용",
+				e: "자주 묻는 질문",
+				d: "문의",
+				m: "설정",
+				a: "i18n 벤치마크",
+				f: "GitHub으로 이동",
+				g: "헤더"
 			},
 			ru: {
-				home: "Главная",
-				methodology: "Методология",
-				mockPages: "Мок-страницы",
-				products: "Продукты",
-				pricing: "Цены",
-				team: "Команда",
-				blog: "Блог",
-				careers: "Вакансии",
-				faq: "FAQ",
-				contact: "Контакт",
-				settings: "Настройки",
-				appName: "i18n Бенчмарк",
-				goToGithub: "Перейти на GitHub",
-				header: "Заголовок"
+				h: "Главная",
+				i: "Методология",
+				j: "Мок-страницы",
+				l: "Продукты",
+				k: "Цены",
+				n: "Команда",
+				b: "Блог",
+				c: "Вакансии",
+				e: "FAQ",
+				d: "Контакт",
+				m: "Настройки",
+				a: "i18n Бенчмарк",
+				f: "Перейти на GitHub",
+				g: "Заголовок"
 			}
 		}
-	},
-	localIds: ["header::local::src/components/Header.content.ts"]
+	}
 };
-function mt(e) {
-	O(() => {
+function gt(e) {
+	re(() => {
 		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
-	}), k(() => {
+	}), O(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
 			try {
@@ -1042,293 +1063,382 @@ function mt(e) {
 		}
 	});
 }
-var ht = r.internationalization.locales;
+var _t = r.internationalization.locales;
 r.internationalization.requiredLocales, r.internationalization.defaultLocale, r.editor;
-var gt = (e) => {
+var vt = (e) => {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
 	} catch {
 		return e.toUpperCase();
 	}
-}, _t = { class: "flex items-center gap-2" }, vt = ["value"], yt = ["value"], bt = w({
+}, yt = w({
 	__name: "LocaleSwitcher",
-	setup(e) {
-		let t = R(), n = oe(), { setLocale: r } = Ze(), i = _(() => t.params.locale || "en"), a = (e) => {
-			r(e);
-			let i = t.path.replace(/^\/[^/]+/, `/${e}`);
-			n.push({
-				path: i,
-				query: t.query,
-				hash: t.hash
+	setup(e, { expose: t }) {
+		t();
+		let n = I(), r = se(), { setLocale: i } = Ze(), a = _(() => n.params.locale || "en"), o = (e) => {
+			i(e);
+			let t = n.path.replace(/^\/[^/]+/, `/${e}`);
+			r.push({
+				path: t,
+				query: n.query,
+				hash: n.hash
 			});
 		};
-		return I(i, (e) => {
-			r(e);
-		}, { immediate: !0 }), (e, t) => (A(), b("div", _t, [x("select", {
-			value: i.value,
-			onChange: t[0] ||= (e) => a(e.target.value),
-			class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-		}, [(A(!0), b(g, null, M(F(ht), (e) => (A(), b("option", {
-			key: e,
-			value: e
-		}, P(F(gt)(e)), 9, yt))), 128))], 40, vt)]));
+		P(a, (e) => {
+			i(e);
+		}, { immediate: !0 });
+		let s = {
+			route: n,
+			router: r,
+			setLocale: i,
+			currentLocale: a,
+			handleLocaleChange: o,
+			get locales() {
+				return _t;
+			},
+			get getLocaleName() {
+				return vt;
+			}
+		};
+		return Object.defineProperty(s, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), s;
 	}
-}), xt = {
+}), bt = { class: "flex items-center gap-2" }, xt = ["value"], St = ["value"];
+function Ct(e, t, n, r, i, a) {
+	return k(), b("div", bt, [x("select", {
+		value: r.currentLocale,
+		onChange: t[0] ||= (e) => r.handleLocaleChange(e.target.value),
+		class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+	}, [(k(!0), b(g, null, j(r.locales, (e) => (k(), b("option", {
+		key: e,
+		value: e
+	}, N(r.getLocaleName(e)), 9, St))), 128))], 40, xt)]);
+}
+var wt = $(yt, [["render", Ct], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/LocaleSwitcher.vue"]]), Tt = {
 	key: "theme-toggle",
 	content: {
 		nodeType: "translation",
 		translation: {
 			en: {
-				auto: "Theme: Auto",
-				dark: "Theme: Dark",
-				light: "Theme: Light",
-				ariaLabelAuto: "Theme mode: auto (system). Click to switch to light mode.",
-				ariaLabelLight: "Theme mode: light. Click to switch to dark mode.",
-				ariaLabelDark: "Theme mode: dark. Click to switch to auto mode."
+				d: "Theme: Auto",
+				e: "Theme: Dark",
+				f: "Theme: Light",
+				a: "Theme mode: auto (system). Click to switch to light mode.",
+				c: "Theme mode: light. Click to switch to dark mode.",
+				b: "Theme mode: dark. Click to switch to auto mode."
 			},
 			fr: {
-				auto: "Thème : Auto",
-				dark: "Thème : Sombre",
-				light: "Thème : Clair",
-				ariaLabelAuto: "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
-				ariaLabelLight: "Mode de thème : clair. Cliquez pour passer au mode sombre.",
-				ariaLabelDark: "Mode de thème : sombre. Cliquez pour passer au mode auto."
+				d: "Thème : Auto",
+				e: "Thème : Sombre",
+				f: "Thème : Clair",
+				a: "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
+				c: "Mode de thème : clair. Cliquez pour passer au mode sombre.",
+				b: "Mode de thème : sombre. Cliquez pour passer au mode auto."
 			},
 			es: {
-				auto: "Tema: Automático",
-				dark: "Tema: Oscuro",
-				light: "Tema: Claro",
-				ariaLabelAuto: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-				ariaLabelLight: "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
-				ariaLabelDark: "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
+				d: "Tema: Automático",
+				e: "Tema: Oscuro",
+				f: "Tema: Claro",
+				a: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
+				c: "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
+				b: "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
 			},
 			de: {
-				auto: "Design: Auto",
-				dark: "Design: Dunkel",
-				light: "Design: Hell",
-				ariaLabelAuto: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-				ariaLabelLight: "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
-				ariaLabelDark: "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
+				d: "Design: Auto",
+				e: "Design: Dunkel",
+				f: "Design: Hell",
+				a: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
+				c: "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
+				b: "Design-Modus: Dunkel. Klicken Sie hier, um in den automatischen Modus zu wechseln."
 			},
 			it: {
-				auto: "Tema: Auto",
-				dark: "Tema: Scuro",
-				light: "Tema: Chiaro",
-				ariaLabelAuto: "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
-				ariaLabelLight: "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
-				ariaLabelDark: "Modalità tema: scura. Fai clic per passare alla modalità automatica."
+				d: "Tema: Auto",
+				e: "Tema: Scuro",
+				f: "Tema: Chiaro",
+				a: "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
+				c: "Modalità tema: chiara. Fai clic per passare alla modalità scura.",
+				b: "Modalità tema: scura. Fai clic per passare alla modalità automatica."
 			},
 			pt: {
-				auto: "Tema: Automático",
-				dark: "Tema: Escuro",
-				light: "Tema: Claro",
-				ariaLabelAuto: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-				ariaLabelLight: "Modo de tema: claro. Clique para mudar para o modo escuro.",
-				ariaLabelDark: "Modo de tema: escuro. Clique para mudar para o modo automático."
+				d: "Tema: Automático",
+				e: "Tema: Escuro",
+				f: "Tema: Claro",
+				a: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
+				c: "Modo de tema: claro. Clique para mudar para o modo escuro.",
+				b: "Modo de tema: escuro. Clique para mudar para o modo automático."
 			},
 			zh: {
-				auto: "主题：自动",
-				dark: "主题：深色",
-				light: "主题：亮色",
-				ariaLabelAuto: "主题模式：自动（系统）。点击切换到亮色模式。",
-				ariaLabelLight: "主题模式：浅色。点击切换到深色模式。",
-				ariaLabelDark: "主题模式：深色。点击切换到自动模式。"
+				d: "主题：自动",
+				e: "主题：深色",
+				f: "主题：亮色",
+				a: "主题模式：自动（系统）。点击切换到亮色模式。",
+				c: "主题模式：浅色。点击切换到深色模式。",
+				b: "主题模式：深色。点击切换到自动模式。"
 			},
 			ja: {
-				auto: "テーマ：自動",
-				dark: "テーマ：ダーク",
-				light: "テーマ：ライト",
-				ariaLabelAuto: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-				ariaLabelLight: "テーマモード：ライト。クリックしてダークモードに切り替えます。",
-				ariaLabelDark: "テーマモード：ダーク。クリックして自動モードに切り替えます。"
+				d: "テーマ：自動",
+				e: "テーマ：ダーク",
+				f: "テーマ：ライト",
+				a: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
+				c: "テーマモード：ライト。クリックしてダークモードに切り替えます。",
+				b: "テーマモード：ダーク。クリックして自動モードに切り替えます。"
 			},
 			ko: {
-				auto: "테마: 자동",
-				dark: "테마: 다크",
-				light: "테마: 라이트",
-				ariaLabelAuto: "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
-				ariaLabelLight: "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
-				ariaLabelDark: "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
+				d: "테마: 자동",
+				e: "테마: 다크",
+				f: "테마: 라이트",
+				a: "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
+				c: "테마 모드: 라이트. 다크 모드로 전환하려면 클릭하세요.",
+				b: "테마 모드: 다크. 자동 모드로 전환하려면 클릭하세요."
 			},
 			ru: {
-				auto: "Тема: Авто",
-				dark: "Тема: Темная",
-				light: "Тема: Светлая",
-				ariaLabelAuto: "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
-				ariaLabelLight: "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
-				ariaLabelDark: "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
+				d: "Тема: Авто",
+				e: "Тема: Темная",
+				f: "Тема: Светлая",
+				a: "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
+				c: "Режим темы: светлый. Нажмите, чтобы перейти в темную тему.",
+				b: "Режим темы: темный. Нажмите, чтобы перейти в автоматический режим."
 			}
 		}
-	},
-	localIds: ["theme-toggle::local::src/components/ThemeToggle.content.ts"]
-}, St = ["aria-label", "title"], Ct = w({
+	}
+}, Et = w({
 	__name: "ThemeToggle",
-	setup(e) {
-		let { auto: t, dark: n, light: r, ariaLabelAuto: i, ariaLabelLight: a, ariaLabelDark: o } = Q(xt), s = j("auto");
-		function c() {
+	setup(e, { expose: t }) {
+		t();
+		let { d: n, e: r, f: i, a, c: o, b: s } = Z(Tt), c = A("auto");
+		function l() {
 			if (typeof window > "u") return "auto";
 			let e = window.localStorage.getItem("theme");
 			return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 		}
-		function l(e) {
+		function u(e) {
 			let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 			document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 		}
-		k(() => {
-			let e = c();
-			s.value = e, l(e);
+		O(() => {
+			let e = l();
+			c.value = e, u(e);
 		});
-		let u = null;
-		I(s, (e) => {
+		let d = null;
+		P(c, (e) => {
 			if (e === "auto") {
 				let e = window.matchMedia("(prefers-color-scheme: dark)");
-				u = () => l("auto"), e.addEventListener("change", u);
-			} else u &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", u), null);
-		}, { immediate: !0 }), re(() => {
-			u && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", u);
+				d = () => u("auto"), e.addEventListener("change", d);
+			} else d &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", d), null);
+		}, { immediate: !0 }), ie(() => {
+			d && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", d);
 		});
-		function d() {
-			let e = s.value === "light" ? "dark" : s.value === "dark" ? "auto" : "light";
-			s.value = e, l(e), window.localStorage.setItem("theme", e);
+		function f() {
+			let e = c.value === "light" ? "dark" : c.value === "dark" ? "auto" : "light";
+			c.value = e, u(e), window.localStorage.setItem("theme", e);
 		}
-		let f = () => s.value === "auto" ? i.value : s.value === "light" ? a.value : o.value;
-		return (e, i) => (A(), b("button", {
-			type: "button",
-			onClick: d,
-			"aria-label": f(),
-			title: f(),
-			class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-		}, P(s.value === "auto" ? F(t) : s.value === "dark" ? F(n) : F(r)), 9, St));
+		let p = {
+			auto: n,
+			dark: r,
+			light: i,
+			ariaLabelAuto: a,
+			ariaLabelLight: o,
+			ariaLabelDark: s,
+			mode: c,
+			getInitialMode: l,
+			applyThemeMode: u,
+			get mediaQueryListener() {
+				return d;
+			},
+			set mediaQueryListener(e) {
+				d = e;
+			},
+			toggleMode: f,
+			getLabel: () => c.value === "auto" ? a.value : c.value === "light" ? o.value : s.value
+		};
+		return Object.defineProperty(p, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), p;
 	}
-}), wt = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, Tt = { class: "container flex h-16 items-center justify-between" }, Et = { class: "flex items-center gap-8" }, Dt = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, Ot = { class: "relative" }, kt = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, At = { class: "flex items-center gap-4" }, jt = {
+}), Dt = ["aria-label", "title"];
+function Ot(e, t, n, r, i, a) {
+	return k(), b("button", {
+		type: "button",
+		onClick: r.toggleMode,
+		"aria-label": r.getLabel(),
+		title: r.getLabel(),
+		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+	}, N(r.mode === "auto" ? r.auto : r.mode === "dark" ? r.dark : r.light), 9, Dt);
+}
+var kt = $(Et, [["render", Ot], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/ThemeToggle.vue"]]), At = w({
+	__name: "Header",
+	setup(e, { expose: t }) {
+		t(), gt("Header");
+		let { h: n, i: r, j: i, l: a, k: o, n: s, b: c, c: l, e: u, d, m: f, a: p, f: m } = Z(ht), h = A(!1), g = I(), v = _(() => g.params.locale || "en"), y = {
+			home: n,
+			methodology: r,
+			mockPagesLabel: i,
+			products: a,
+			pricing: o,
+			team: s,
+			blog: c,
+			careers: l,
+			faq: u,
+			contact: d,
+			settings: f,
+			appName: p,
+			goToGithub: m,
+			isMockPagesOpen: h,
+			route: g,
+			currentLocale: v,
+			mockPagesList: _(() => [
+				{
+					to: `/${v.value}/products`,
+					label: a
+				},
+				{
+					to: `/${v.value}/pricing`,
+					label: o
+				},
+				{
+					to: `/${v.value}/team`,
+					label: s
+				},
+				{
+					to: `/${v.value}/blog`,
+					label: c
+				},
+				{
+					to: `/${v.value}/careers`,
+					label: l
+				},
+				{
+					to: `/${v.value}/faq`,
+					label: u
+				},
+				{
+					to: `/${v.value}/contact`,
+					label: d
+				},
+				{
+					to: `/${v.value}/settings`,
+					label: f
+				}
+			]),
+			get ChevronDown() {
+				return ce;
+			},
+			LocaleSwitcher: wt,
+			ThemeToggle: kt
+		};
+		return Object.defineProperty(y, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), y;
+	}
+}), jt = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, Mt = { class: "container flex h-16 items-center justify-between" }, Nt = { class: "flex items-center gap-8" }, Pt = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, Ft = { class: "relative" }, It = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, Lt = { class: "flex items-center gap-4" }, Rt = {
 	href: "https://github.com/intlayer-org/benchmark-i18n",
 	target: "_blank",
 	rel: "noreferrer",
 	class: "text-muted-foreground transition hover:text-foreground"
-}, Mt = { class: "sr-only" }, Nt = w({
-	__name: "Header",
-	setup(e) {
-		mt("Header");
-		let { home: t, methodology: n, mockPages: r, products: i, pricing: a, team: o, blog: s, careers: c, faq: l, contact: u, settings: d, appName: f, goToGithub: p } = Q(pt), m = j(!1), h = R(), w = _(() => h.params.locale || "en"), ee = _(() => [
-			{
-				to: `/${w.value}/products`,
-				label: i
-			},
-			{
-				to: `/${w.value}/pricing`,
-				label: a
-			},
-			{
-				to: `/${w.value}/team`,
-				label: o
-			},
-			{
-				to: `/${w.value}/blog`,
-				label: s
-			},
-			{
-				to: `/${w.value}/careers`,
-				label: c
-			},
-			{
-				to: `/${w.value}/faq`,
-				label: l
-			},
-			{
-				to: `/${w.value}/contact`,
-				label: u
-			},
-			{
-				to: `/${w.value}/settings`,
-				label: d
-			}
-		]);
-		return (e, i) => {
-			let a = N("router-link");
-			return A(), b("header", wt, [x("nav", Tt, [x("div", Et, [C(a, {
-				to: `/${w.value}`,
-				class: "text-lg font-bold tracking-tight text-primary no-underline"
-			}, {
-				default: L(() => [S(P(F(f)), 1)]),
-				_: 1
-			}, 8, ["to"]), x("div", Dt, [
-				C(a, {
-					to: `/${w.value}`,
-					class: "nav-link",
-					"exact-active-class": "is-active"
-				}, {
-					default: L(() => [S(P(F(t)), 1)]),
-					_: 1
-				}, 8, ["to"]),
-				C(a, {
-					to: `/${w.value}/about`,
-					class: "nav-link",
-					"active-class": "is-active"
-				}, {
-					default: L(() => [S(P(F(n)), 1)]),
-					_: 1
-				}, 8, ["to"]),
-				y(" Mock Pages Dropdown "),
-				x("div", Ot, [x("button", {
-					type: "button",
-					class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-					onMouseenter: i[0] ||= (e) => m.value = !0,
-					onMouseleave: i[1] ||= (e) => m.value = !1,
-					onClick: i[2] ||= (e) => m.value = !m.value
-				}, [S(P(F(r)) + " ", 1), C(F(se), {
-					size: 14,
-					class: ne(["transition-transform", m.value ? "rotate-180" : ""])
-				}, null, 8, ["class"])], 32), m.value ? (A(), b("div", {
-					key: 0,
-					class: "absolute left-0 top-full pt-2 w-48",
-					onMouseenter: i[4] ||= (e) => m.value = !0,
-					onMouseleave: i[5] ||= (e) => m.value = !1
-				}, [x("div", kt, [(A(!0), b(g, null, M(ee.value, (e) => (A(), v(a, {
-					key: e.to,
-					to: e.to,
-					class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-					onClick: i[3] ||= (e) => m.value = !1
-				}, {
-					default: L(() => [S(P(e.label), 1)]),
-					_: 2
-				}, 1032, ["to"]))), 128))])], 32)) : y("v-if", !0)])
-			])]), x("div", At, [
-				x("a", jt, [x("span", Mt, P(F(p)), 1), i[6] ||= x("svg", {
-					viewBox: "0 0 16 16",
-					"aria-hidden": "true",
-					width: "20",
-					height: "20"
-				}, [x("path", {
-					fill: "currentColor",
-					d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				})], -1)]),
-				C(bt),
-				C(Ct)
-			])])]);
-		};
-	}
-}), Pt = w({
+}, zt = { class: "sr-only" };
+function Bt(e, t, n, r, i, a) {
+	let o = M("router-link");
+	return k(), b("header", jt, [x("nav", Mt, [x("div", Nt, [C(o, {
+		to: `/${r.currentLocale}`,
+		class: "text-lg font-bold tracking-tight text-primary no-underline"
+	}, {
+		default: F(() => [S(N(r.appName), 1)]),
+		_: 1
+	}, 8, ["to"]), x("div", Pt, [
+		C(o, {
+			to: `/${r.currentLocale}`,
+			class: "nav-link",
+			"exact-active-class": "is-active"
+		}, {
+			default: F(() => [S(N(r.home), 1)]),
+			_: 1
+		}, 8, ["to"]),
+		C(o, {
+			to: `/${r.currentLocale}/about`,
+			class: "nav-link",
+			"active-class": "is-active"
+		}, {
+			default: F(() => [S(N(r.methodology), 1)]),
+			_: 1
+		}, 8, ["to"]),
+		y(" Mock Pages Dropdown "),
+		x("div", Ft, [x("button", {
+			type: "button",
+			class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+			onMouseenter: t[0] ||= (e) => r.isMockPagesOpen = !0,
+			onMouseleave: t[1] ||= (e) => r.isMockPagesOpen = !1,
+			onClick: t[2] ||= (e) => r.isMockPagesOpen = !r.isMockPagesOpen
+		}, [S(N(r.mockPagesLabel) + " ", 1), C(r.ChevronDown, {
+			size: 14,
+			class: ne(["transition-transform", r.isMockPagesOpen ? "rotate-180" : ""])
+		}, null, 8, ["class"])], 32), r.isMockPagesOpen ? (k(), b("div", {
+			key: 0,
+			class: "absolute left-0 top-full pt-2 w-48",
+			onMouseenter: t[4] ||= (e) => r.isMockPagesOpen = !0,
+			onMouseleave: t[5] ||= (e) => r.isMockPagesOpen = !1
+		}, [x("div", It, [(k(!0), b(g, null, j(r.mockPagesList, (e) => (k(), v(o, {
+			key: e.to,
+			to: e.to,
+			class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+			onClick: t[3] ||= (e) => r.isMockPagesOpen = !1
+		}, {
+			default: F(() => [S(N(e.label), 1)]),
+			_: 2
+		}, 1032, ["to"]))), 128))])], 32)) : y("v-if", !0)])
+	])]), x("div", Lt, [
+		x("a", Rt, [x("span", zt, N(r.goToGithub), 1), t[6] ||= x("svg", {
+			viewBox: "0 0 16 16",
+			"aria-hidden": "true",
+			width: "20",
+			height: "20"
+		}, [x("path", {
+			fill: "currentColor",
+			d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+		})], -1)]),
+		C(r.LocaleSwitcher),
+		C(r.ThemeToggle)
+	])])]);
+}
+var Vt = $(At, [["render", Bt], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Header.vue"]]), Ht = w({
 	__name: "Layout",
-	setup(e) {
-		let t = R(), { setLocale: n } = Ze(), r = j(0);
-		return O(() => {
-			r.value = typeof performance < "u" ? performance.now() : 0;
-		}), k(() => {
-			Qe(), $e("AppRoot", r.value);
-		}), I(() => t.params.locale, (e) => {
-			e && (document.documentElement.lang = e, n(e));
-		}, { immediate: !0 }), (e, t) => {
-			let n = N("router-view");
-			return A(), b(g, null, [
-				C(Nt),
-				C(n),
-				C(ft)
-			], 64);
+	setup(e, { expose: t }) {
+		t();
+		let n = I(), { setLocale: r } = Ze(), i = A(0);
+		re(() => {
+			i.value = typeof performance < "u" ? performance.now() : 0;
+		}), O(() => {
+			Qe(), $e("AppRoot", i.value);
+		}), P(() => n.params.locale, (e) => {
+			e && (document.documentElement.lang = e, r(e));
+		}, { immediate: !0 });
+		let a = {
+			route: n,
+			setLocale: r,
+			renderStart: i,
+			Footer: mt,
+			Header: Vt
 		};
+		return Object.defineProperty(a, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), a;
 	}
 });
-export { Pt as default };
+function Ut(e, t, n, r, i, a) {
+	let o = M("router-view");
+	return k(), b(g, null, [
+		C(r.Header),
+		C(o),
+		C(r.Footer)
+	], 64);
+}
+var Wt = $(Ht, [["render", Ut], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Layout.vue"]]);
+export { Wt as default };
 import { b as e, n as t, t as n, x as r, y as i } from "./getContent-DrnKJV-E.js";
 var a = (e, t) => e.every((e, n) => t[n] && t[n].key === e.key && t[n].type === e.type), o = (e, t) => {
 	try {
