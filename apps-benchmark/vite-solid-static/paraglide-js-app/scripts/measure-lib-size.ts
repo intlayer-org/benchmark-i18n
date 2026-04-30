@@ -1,12 +1,8 @@
 import { measureLibSize } from "test-utils/measure-components";
-import solid from "vite-plugin-solid";
 import pkg from "../package.json" with { type: "json" };
-
 measureLibSize({
   appName: pkg.name,
   benchmarkCategory: "vite-solid-static",
-  skipViteConfig: true,
-  additionalPlugins: [solid()],
   additionalExternalPackages: [
     "solid-js",
     "solid-js/web",

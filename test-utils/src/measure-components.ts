@@ -187,6 +187,49 @@ const deriveComponentCategory = (relativeFilePath: string): string =>
  * @returns Minified code string, minified bytes, and gzipped bytes.
  * @throws If Vite fails to build the component (caller should catch and skip).
  */
+/**
+ * Loads the Vite configuration from the app root.
+ * Optimized to handle ESM projects and various config file names.
+ */
+const loadAppConfig = async (configRoot: string) => {
+  const configFiles = [
+    "vite.config.ts",
+    "vite.config.js",
+    "vite.config.mjs",
+    "vite.config.mts",
+  ];
+
+  for (const file of configFiles) {
+    const configPath = path.join(configRoot, file);
+    if (fs.existsSync(configPath)) {
+      const loaded = await loadConfigFromFile(
+        { command: "build", mode: "production" },
+        configPath,
+        configRoot,
+      );
+      if (loaded) return loaded.config;
+    }
+  }
+
+  // Fallback to default search
+  const loaded = await loadConfigFromFile(
+    { command: "build", mode: "production" },
+    undefined,
+    configRoot,
+  );
+  return loaded?.config || {};
+};
+
+/**
+ * Builds a single component with Vite in library mode (in-memory, no disk
+ * write) and returns its minified code, minified byte size, and gzipped byte size.
+ *
+ * @param componentFilePath - Absolute path to the .tsx component file.
+ * @param externalPackages - Package names to exclude from the build output.
+ * @param wrapperTemplate - Optional function to generate a wrapper component.
+ * @returns Minified code string, minified bytes, and gzipped bytes.
+ * @throws If Vite fails to build the component (caller should catch and skip).
+ */
 const buildComponentBundle = async (
   componentFilePath: string,
   externalPackages: (string | RegExp)[],
@@ -196,17 +239,8 @@ const buildComponentBundle = async (
   configRoot?: string,
   skipViteConfig?: boolean,
   esbuildOptions?: MeasureConfig["esbuild"],
+  appConfig: any = {},
 ): Promise<{ bytes: number; gzipBytes: number; code: string }> => {
-  // Load the host application's Vite config (unless caller opts out)
-  const loaded = skipViteConfig
-    ? null
-    : await loadConfigFromFile(
-        { command: "build", mode: "production" },
-        undefined,
-        configRoot,
-      );
-  const appConfig = loaded?.config || {};
-
   // Filter out plugins that interfere with isolated library mode.
   const filteredPlugins: PluginOption[] = ((appConfig.plugins || []) as any[])
     .flat(Infinity)
@@ -298,17 +332,25 @@ const buildComponentBundle = async (
 
   try {
     const buildOutput = (await build({
-      configFile: false, // We apply the extracted config manually
+      ...appConfig, // Inherit everything from vite.config (base, css, etc.)
+      root: configRoot, // Ensure Vite uses the app root
+      configFile: false, // We already loaded and filtered it
       logLevel: "silent",
       plugins: filteredPlugins,
-      resolve: appConfig.resolve, // Inherit path aliases (e.g., ~/*)
-      define: appConfig.define, // Inherit any app-level defines only
+      resolve: {
+        ...appConfig.resolve,
+      },
+      define: {
+        ...appConfig.define,
+      },
       esbuild: {
         jsx: "automatic",
         legalComments: "none",
-        ...esbuildOptions,
+        ...appConfig.esbuild, // Inherit from config
+        ...esbuildOptions, // Inherit from measure config
       },
       build: {
+        ...appConfig.build, // Inherit build options (target, etc.)
         write: false,
         minify,
         lib: {
@@ -317,7 +359,8 @@ const buildComponentBundle = async (
           fileName: "component",
         },
         rollupOptions: {
-          external: externalPackages,
+          ...appConfig.build?.rollupOptions,
+          external: externalPackages, // We strictly enforce our externals
         },
       },
     })) as RolldownOutput[];
@@ -360,6 +403,7 @@ const scanAndMeasureDirectory = async (
   configRoot?: string,
   skipViteConfig?: boolean,
   esbuildOptions?: MeasureConfig["esbuild"],
+  appConfig: any = {},
 ): Promise<ComponentSizeStats[]> => {
   const componentStats: ComponentSizeStats[] = [];
 
@@ -390,6 +434,7 @@ const scanAndMeasureDirectory = async (
         configRoot,
         skipViteConfig,
         esbuildOptions,
+        appConfig,
       );
 
       // Build 2: Minified
@@ -554,14 +599,16 @@ export const measureComponents = async ({
   skipViteConfig,
   esbuild: esbuildOptions,
 }: MeasureConfig): Promise<void> => {
-  const resolvedComponentDirectories = componentDirectories.map(
-    (directoryPath) => path.resolve(directoryPath),
-  );
+  const effectiveDir = appDir ?? process.cwd();
   const allExternalPackages = [
     ...BASE_EXTERNAL_PACKAGES,
     ...additionalExternalPackages,
   ];
-  const effectiveDir = appDir ?? process.cwd();
+
+  // Load the host application's Vite config once (unless caller opts out)
+  const appConfig =
+    skipViteConfig || !effectiveDir ? {} : await loadAppConfig(effectiveDir);
+
   const resultsDirectory = path.join(
     benchmarkBloomRoot(effectiveDir),
     "results",
@@ -594,6 +641,7 @@ export const measureComponents = async ({
       effectiveDir,
       skipViteConfig,
       esbuildOptions,
+      appConfig,
     );
     allComponentStats.push(...directoryStats);
   }
@@ -637,6 +685,11 @@ export const measureLibSize = async ({
   emptyComponentFile = "scripts/EmptyComponent.tsx",
 }: MeasureConfig): Promise<void> => {
   const effectiveDir = appDir ?? process.cwd();
+
+  // Load the host application's Vite config once (unless caller opts out)
+  const appConfig =
+    skipViteConfig || !effectiveDir ? {} : await loadAppConfig(effectiveDir);
+
   const emptyComponentPath = path.resolve(effectiveDir, emptyComponentFile);
   const emptyComponentName = path.basename(emptyComponentPath);
   if (!fs.existsSync(emptyComponentPath)) {
@@ -678,6 +731,7 @@ export const measureLibSize = async ({
       effectiveDir,
       skipViteConfig,
       esbuildOptions,
+      appConfig,
     );
 
     const minified = await buildComponentBundle(
@@ -689,6 +743,7 @@ export const measureLibSize = async ({
       effectiveDir,
       skipViteConfig,
       esbuildOptions,
+      appConfig,
     );
 
     console.log(

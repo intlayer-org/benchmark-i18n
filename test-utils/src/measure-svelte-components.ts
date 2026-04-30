@@ -65,21 +65,41 @@ const stripCommentsPlugin = {
   },
 };
 
+const loadAppConfig = async (configRoot: string) => {
+  const configFiles = [
+    "vite.config.ts",
+    "vite.config.js",
+    "vite.config.mjs",
+    "vite.config.mts",
+  ];
+
+  for (const file of configFiles) {
+    const configPath = path.join(configRoot, file);
+    if (fs.existsSync(configPath)) {
+      const loaded = await loadConfigFromFile(
+        { command: "build", mode: "production" },
+        configPath,
+        configRoot,
+      );
+      if (loaded) return loaded.config;
+    }
+  }
+
+  // Fallback to default search
+  const loaded = await loadConfigFromFile(
+    { command: "build", mode: "production" },
+    undefined,
+    configRoot,
+  );
+  return loaded?.config || {};
+};
+
 async function buildOne(
   entryFilePath: string,
   minify: boolean,
   configRoot: string,
+  appConfig: any = {},
 ): Promise<{ bytes: number; gzipBytes: number; code: string }> {
-  const configFile = path.join(configRoot, "vite.config.ts");
-  const loaded = fs.existsSync(configFile)
-    ? await loadConfigFromFile(
-        { command: "build", mode: "production" },
-        configFile,
-        configRoot,
-      )
-    : null;
-  const appConfig = loaded?.config ?? {};
-
   const filteredPlugins: PluginOption[] = ((appConfig.plugins || []) as any[])
     .flat(Infinity)
     .filter((plugin: any) => {
@@ -100,12 +120,19 @@ async function buildOne(
   filteredPlugins.push(stripCommentsPlugin);
 
   const output = (await build({
+    ...appConfig,
+    root: configRoot,
     configFile: false,
     logLevel: "silent",
     plugins: filteredPlugins,
-    resolve: appConfig.resolve,
-    define: appConfig.define,
+    resolve: {
+      ...appConfig.resolve,
+    },
+    define: {
+      ...appConfig.define,
+    },
     build: {
+      ...appConfig.build,
       write: false,
       minify,
       lib: {
@@ -114,6 +141,7 @@ async function buildOne(
         fileName: "component",
       },
       rollupOptions: {
+        ...appConfig.build?.rollupOptions,
         external: SVELTE_EXTERNAL,
       },
     },
@@ -145,6 +173,8 @@ export async function measureSvelteComponents({
   appDir,
 }: MeasureSvelteConfig): Promise<void> {
   const effectiveDir = appDir ?? process.cwd();
+  const appConfig = await loadAppConfig(effectiveDir);
+
   const dirs = componentDirectories.map((d) => path.resolve(effectiveDir, d));
   const resultsDirectory = path.join(
     benchmarkBloomRoot(effectiveDir),
@@ -170,8 +200,18 @@ export async function measureSvelteComponents({
       console.log(`  Processing ${relativeFilePath} ...`);
 
       try {
-        const unminified = await buildOne(absoluteFilePath, false, effectiveDir);
-        const minified = await buildOne(absoluteFilePath, true, effectiveDir);
+        const unminified = await buildOne(
+          absoluteFilePath,
+          false,
+          effectiveDir,
+          appConfig,
+        );
+        const minified = await buildOne(
+          absoluteFilePath,
+          true,
+          effectiveDir,
+          appConfig,
+        );
 
         const componentBundleDir = path.join(bundlesOutputDir, category);
         if (!fs.existsSync(componentBundleDir)) {
@@ -265,6 +305,7 @@ export async function measureSvelteLibSize({
   emptyComponentFile = "scripts/EmptyComponent.svelte",
 }: MeasureSvelteLibSizeConfig): Promise<void> {
   const effectiveDir = appDir ?? process.cwd();
+  const appConfig = await loadAppConfig(effectiveDir);
   const emptyComponentPath = path.resolve(effectiveDir, emptyComponentFile);
   const emptyComponentName = path.basename(emptyComponentPath);
 
@@ -288,8 +329,18 @@ export async function measureSvelteLibSize({
   console.log(`-----------------------------------\n`);
 
   try {
-    const unminified = await buildOne(emptyComponentPath, false, effectiveDir);
-    const minified = await buildOne(emptyComponentPath, true, effectiveDir);
+    const unminified = await buildOne(
+      emptyComponentPath,
+      false,
+      effectiveDir,
+      appConfig,
+    );
+    const minified = await buildOne(
+      emptyComponentPath,
+      true,
+      effectiveDir,
+      appConfig,
+    );
 
     console.log(
       `${emptyComponentName}: Unminified=${(unminified.bytes / 1024).toFixed(2)}KB | Minified=${(minified.bytes / 1024).toFixed(2)}KB | Gzip=${(minified.gzipBytes / 1024).toFixed(2)}KB`,

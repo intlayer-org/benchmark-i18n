@@ -511,6 +511,11 @@ function deriveLibraryName(appName: string): string {
     name = name.slice(0, -4);
   }
 
+  if (name === "i18n") {
+    if (appName.startsWith("vite-vue-")) return "vue-i18n";
+    if (appName.startsWith("vite-svelte-")) return "svelte-i18n";
+  }
+
   return name || appName;
 }
 
@@ -545,7 +550,8 @@ const LIBRARY_PACKAGES: Record<string, string[]> = {
     "@lingo.dev/compiler",
   ],
   // Vue / Svelte / Solid libraries
-  i18n: ["vue-i18n", "svelte-i18n"],
+  "vue-i18n": ["vue-i18n"],
+  "svelte-i18n": ["svelte-i18n"],
   i18next: ["i18next"],
   "fluent-vue": ["fluent-vue"],
   "primitives-i18n": ["@solid-primitives/i18n"],

@@ -1,19 +1,19 @@
 {
   "locale": "en",
-  "timestamp": "2026-04-30T00:02:36.392Z",
+  "timestamp": "2026-04-30T00:38:03.892Z",
   "iterations": 5,
   "e2ePageLoad": {
     "description": "PerformanceNavigationTiming.duration — full page load wall-clock time including sub-resources (ms)",
     "raw": [
+      9,
+      7.200000017881393,
       6.800000011920929,
-      8.900000005960464,
-      8.900000005960464,
-      8,
-      6.699999988079071
+      6.699999988079071,
+      15.899999976158142
     ],
-    "avg": 7.860000002384186,
+    "avg": 9.119999998807907,
     "min": 6.699999988079071,
-    "max": 8.900000005960464
+    "max": 15.899999976158142
   },
   "hydration": {
     "description": "performance.measure('hydration_duration') — time between hydration_start mark (inline script) and hydration_end mark (useEffect) (ms). 0 means app is not instrumented.",
