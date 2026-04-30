@@ -1,11 +1,11 @@
 {
   "app": "vite-svelte-intlayer-static",
   "locale": "en",
-  "timestamp": "2026-04-30T01:23:43.287Z",
+  "timestamp": "2026-04-29T02:41:06.067Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 55,
-      "fr": 63
+      "en": 32,
+      "fr": 37
     },
     "page": {
       "home": 24,
@@ -17,7 +17,7 @@
       "pricing": 4,
       "products": 8,
       "settings": 5,
-      "team": 0
+      "team": 10
     }
   },
   "results": [
@@ -25,39 +25,39 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -86,33 +86,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -146,36 +124,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -301,49 +254,60 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 79.48717948717949
+      "pageLeakagePercent": 81.81818181818183
     },
     {
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/about",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -372,33 +336,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -432,36 +374,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -587,49 +504,60 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 87.17948717948718
+      "pageLeakagePercent": 88.63636363636364
     },
     {
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/blog",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -658,33 +586,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -718,36 +624,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -873,49 +754,60 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 83.33333333333334
+      "pageLeakagePercent": 85.22727272727273
     },
     {
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/careers",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -944,33 +836,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -1004,36 +874,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1159,49 +1004,60 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 85.8974358974359
+      "pageLeakagePercent": 87.5
     },
     {
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/contact",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1230,33 +1086,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -1290,36 +1124,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1445,49 +1254,60 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 98.71794871794873
+      "pageLeakagePercent": 98.86363636363636
     },
     {
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/faq",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1516,33 +1336,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -1576,36 +1374,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1731,49 +1504,60 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 87.17948717948718
+      "pageLeakagePercent": 88.63636363636364
     },
     {
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/pricing",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1802,33 +1586,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -1862,36 +1624,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2017,49 +1754,60 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 94.87179487179486
+      "pageLeakagePercent": 95.45454545454545
     },
     {
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/products",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2088,33 +1836,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -2148,36 +1874,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2303,49 +2004,60 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 89.74358974358975
+      "pageLeakagePercent": 90.9090909090909
     },
     {
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/settings",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2374,33 +2086,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -2434,36 +2124,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2589,49 +2254,60 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 93.58974358974359
+      "pageLeakagePercent": 94.31818181818183
     },
     {
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 333307,
-      "totalGzipSize": 113590,
-      "jsSize": 307022,
-      "jsGzipSize": 107864,
+      "totalSize": 136973,
+      "totalGzipSize": 43333,
+      "jsSize": 110688,
+      "jsGzipSize": 37607,
       "cssSize": 24878,
-      "cssGzipSize": 5068,
+      "cssGzipSize": 5067,
       "htmlSize": 1407,
-      "htmlGzipSize": 658,
+      "htmlGzipSize": 659,
       "fileCount": 3,
       "jsFileCount": 1,
       "bundleFiles": [
         {
           "url": "/en/team",
           "size": 1407,
-          "gzipSize": 658,
+          "gzipSize": 659,
           "type": "html"
         },
         {
-          "url": "/assets/index-GqzLzXzm.css",
+          "url": "/assets/index-B-4Yf7e1.css",
           "size": 24878,
-          "gzipSize": 5068,
+          "gzipSize": 5067,
           "type": "css"
         },
         {
-          "url": "/assets/index-BjYchsqg.js",
-          "size": 307022,
-          "gzipSize": 107864,
+          "url": "/assets/index-Buze9UR_.js",
+          "size": 110688,
+          "gzipSize": 37607,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 50,
+          "count": 28,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2660,33 +2336,11 @@
             "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "tools and services to streamline your internationalization workflow.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
         },
         "fr": {
-          "count": 58,
+          "count": 33,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -2720,36 +2374,11 @@
             "efficacité du chargement différé",
             "si le fractionnement des traductions par itinéraire ou par espace de noms réduit réellement la charge initiale, et quels compromis il introduit (requêtes en cascade, fouc, complexité du cache).",
             "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "insights, tutoriels et analyses de la communauté i18n.",
-            "rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "questions fréquemment posées",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce qu'i18n benchmark ?",
-            "comment sont menés les benchmarks ?",
-            "quelles bibliothèques sont prises en charge ?",
-            "puis-je proposer des benchmarks ?",
-            "à quelle fréquence sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous du conseil ?",
-            "comment contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "des outils et services pour simplifier votre flux de travail d'internationalisation.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir les rapports hebdomadaires",
-            "utiliser le thème sombre",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications"
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le re-rendu des composants et la mise à jour du dom."
           ]
         }
       },
-      "localeLeakagePercent": 53.70370370370371,
+      "localeLeakagePercent": 54.09836065573771,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2875,11 +2504,22 @@
           ]
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
-      "pageLeakagePercent": 100
+      "pageLeakagePercent": 88.63636363636364
     }
   ]
 }

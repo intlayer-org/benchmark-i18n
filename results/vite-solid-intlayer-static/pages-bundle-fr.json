@@ -1,22 +1,22 @@
 {
   "app": "vite-solid-intlayer-static",
   "locale": "fr",
-  "timestamp": "2026-04-30T01:23:43.423Z",
+  "timestamp": "2026-04-29T23:47:49.529Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 86,
-      "fr": 106
+      "en": 97,
+      "fr": 101
     },
     "page": {
       "home": 23,
       "about": 14,
       "blog": 13,
-      "careers": 12,
+      "careers": 0,
       "contact": 3,
       "faq": 10,
       "pricing": 10,
       "products": 10,
-      "settings": 0,
+      "settings": 7,
       "team": 10
     }
   },
@@ -226,9 +226,9 @@
           "type": "css"
         },
         {
-          "url": "/assets/markdown-YXizF_E9.js",
-          "size": 25542,
-          "gzipSize": 9758,
+          "url": "/assets/index-B66kKkzA.js",
+          "size": 56176,
+          "gzipSize": 19829,
           "type": "js"
         },
         {
@@ -238,9 +238,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/index-B66kKkzA.js",
-          "size": 56176,
-          "gzipSize": 19829,
+          "url": "/assets/markdown-YXizF_E9.js",
+          "size": 25542,
+          "gzipSize": 9758,
           "type": "js"
         },
         {
@@ -384,10 +384,10 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-DLHU3tw8.css",
-          "size": 25579,
-          "gzipSize": 5201,
-          "type": "css"
+          "url": "/assets/index-B66kKkzA.js",
+          "size": 56176,
+          "gzipSize": 19829,
+          "type": "js"
         },
         {
           "url": "/assets/markdown-YXizF_E9.js",
@@ -402,10 +402,10 @@
           "type": "js"
         },
         {
-          "url": "/assets/index-B66kKkzA.js",
-          "size": 56176,
-          "gzipSize": 19829,
-          "type": "js"
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
         },
         {
           "url": "/assets/BlogHeader-DSsQPztm.js",
@@ -551,21 +551,15 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-B66kKkzA.js",
-          "size": 56176,
-          "gzipSize": 19829,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-DLHU3tw8.css",
           "size": 25579,
           "gzipSize": 5201,
           "type": "css"
         },
         {
-          "url": "/assets/markdown-YXizF_E9.js",
-          "size": 25542,
-          "gzipSize": 9758,
+          "url": "/assets/index-B66kKkzA.js",
+          "size": 56176,
+          "gzipSize": 19829,
           "type": "js"
         },
         {
@@ -575,21 +569,27 @@
           "type": "js"
         },
         {
+          "url": "/assets/markdown-YXizF_E9.js",
+          "size": 25542,
+          "gzipSize": 9758,
+          "type": "js"
+        },
+        {
           "url": "/assets/CareersHeader-D29xVmSq.js",
           "size": 3113,
           "gzipSize": 1804,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-IbRrS0ET.js",
-          "size": 2283,
-          "gzipSize": 1380,
-          "type": "js"
-        },
-        {
           "url": "/assets/CareersBenefits-Bf5-yNr9.js",
           "size": 3677,
           "gzipSize": 1724,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-IbRrS0ET.js",
+          "size": 2283,
+          "gzipSize": 1380,
           "type": "js"
         },
         {
@@ -601,35 +601,34 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 3,
+          "count": 14,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with solid, vite & solid router.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "20% time for oss contributions",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "fr": {
-          "count": 15,
+          "count": 3,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec solid, vite & solid router.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe en télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travailler de n'importe où dans le monde",
-            "rémunération au sommet du marché",
-            "temps pour l'open source",
-            "20 % du temps pour les contributions oss",
-            "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l’échelle notre infrastructure de benchmarking cloud gérant des milliers d’exécutions automatisées chaque jour.",
-            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
-            "interagir avec la communauté i18n par des conférences, des ateliers, des articles de blog et des contributions open source.",
-            "san francisco / à distance",
-            "assurer l'exactitude et la fiabilité des résultats de benchmark grâce à des tests et des validations rigoureux."
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel."
           ]
         }
       },
-      "localeLeakagePercent": 16.666666666666664,
+      "localeLeakagePercent": 82.35294117647058,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -644,21 +643,8 @@
           "found": []
         },
         "careers": {
-          "count": 12,
-          "found": [
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe en télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travailler de n'importe où dans le monde",
-            "rémunération au sommet du marché",
-            "temps pour l'open source",
-            "20 % du temps pour les contributions oss",
-            "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l’échelle notre infrastructure de benchmarking cloud gérant des milliers d’exécutions automatisées chaque jour.",
-            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
-            "interagir avec la communauté i18n par des conférences, des ateliers, des articles de blog et des contributions open source.",
-            "san francisco / à distance",
-            "assurer l'exactitude et la fiabilité des résultats de benchmark grâce à des tests et des validations rigoureux."
-          ]
+          "count": 0,
+          "found": []
         },
         "contact": {
           "count": 0,
@@ -709,6 +695,12 @@
           "type": "html"
         },
         {
+          "url": "/assets/index-B66kKkzA.js",
+          "size": 56176,
+          "gzipSize": 19829,
+          "type": "js"
+        },
+        {
           "url": "/assets/index-DLHU3tw8.css",
           "size": 25579,
           "gzipSize": 5201,
@@ -724,12 +716,6 @@
           "url": "/assets/web-CLclQu7O.js",
           "size": 26454,
           "gzipSize": 10228,
-          "type": "js"
-        },
-        {
-          "url": "/assets/index-B66kKkzA.js",
-          "size": 56176,
-          "gzipSize": 19829,
           "type": "js"
         },
         {
@@ -842,12 +828,6 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-B66kKkzA.js",
-          "size": 56176,
-          "gzipSize": 19829,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-DLHU3tw8.css",
           "size": 25579,
           "gzipSize": 5201,
@@ -863,6 +843,12 @@
           "url": "/assets/web-CLclQu7O.js",
           "size": 26454,
           "gzipSize": 10228,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-B66kKkzA.js",
+          "size": 56176,
+          "gzipSize": 19829,
           "type": "js"
         },
         {
@@ -1000,12 +986,6 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-B66kKkzA.js",
-          "size": 56176,
-          "gzipSize": 19829,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-DLHU3tw8.css",
           "size": 25579,
           "gzipSize": 5201,
@@ -1015,6 +995,12 @@
           "url": "/assets/markdown-YXizF_E9.js",
           "size": 25542,
           "gzipSize": 9758,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-B66kKkzA.js",
+          "size": 56176,
+          "gzipSize": 19829,
           "type": "js"
         },
         {
@@ -1152,16 +1138,16 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-DLHU3tw8.css",
-          "size": 25579,
-          "gzipSize": 5201,
-          "type": "css"
-        },
-        {
           "url": "/assets/index-B66kKkzA.js",
           "size": 56176,
           "gzipSize": 19829,
           "type": "js"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
         },
         {
           "url": "/assets/markdown-YXizF_E9.js",
@@ -1176,15 +1162,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProductsHeader-D2I27kiv.js",
-          "size": 2001,
-          "gzipSize": 1061,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-IbRrS0ET.js",
           "size": 2283,
           "gzipSize": 1380,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsHeader-D2I27kiv.js",
+          "size": 2001,
+          "gzipSize": 1061,
           "type": "js"
         },
         {
@@ -1306,6 +1292,12 @@
           "type": "html"
         },
         {
+          "url": "/assets/index-B66kKkzA.js",
+          "size": 56176,
+          "gzipSize": 19829,
+          "type": "js"
+        },
+        {
           "url": "/assets/index-DLHU3tw8.css",
           "size": 25579,
           "gzipSize": 5201,
@@ -1321,12 +1313,6 @@
           "url": "/assets/web-CLclQu7O.js",
           "size": 26454,
           "gzipSize": 10228,
-          "type": "js"
-        },
-        {
-          "url": "/assets/index-B66kKkzA.js",
-          "size": 56176,
-          "gzipSize": 19829,
           "type": "js"
         },
         {
@@ -1348,6 +1334,12 @@
           "type": "js"
         },
         {
+          "url": "/assets/SettingsFooter-DQIF25_h.js",
+          "size": 1318,
+          "gzipSize": 765,
+          "type": "js"
+        },
+        {
           "url": "/assets/ApiAccessSection-Ce6PBu2N.js",
           "size": 2848,
           "gzipSize": 1419,
@@ -1357,12 +1349,6 @@
           "url": "/assets/PreferencesSection-CqFnQyeP.js",
           "size": 9623,
           "gzipSize": 3385,
-          "type": "js"
-        },
-        {
-          "url": "/assets/SettingsFooter-DQIF25_h.js",
-          "size": 1318,
-          "gzipSize": 765,
           "type": "js"
         }
       ],
@@ -1381,15 +1367,22 @@
           ]
         },
         "fr": {
-          "count": 3,
+          "count": 10,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec solid, vite & solid router.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel."
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
+            "gérez vos préférences de compte et votre configuration.",
+            "notifications par email",
+            "recevoir des rapports hebdomadaires de benchmark",
+            "utiliser le schéma de couleurs sombres",
+            "chinois simplifié (zh-cn)",
+            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
+            "enregistrer les modifications"
           ]
         }
       },
-      "localeLeakagePercent": 72.72727272727273,
+      "localeLeakagePercent": 44.44444444444444,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -1424,8 +1417,16 @@
           "found": []
         },
         "settings": {
-          "count": 0,
-          "found": []
+          "count": 7,
+          "found": [
+            "gérez vos préférences de compte et votre configuration.",
+            "notifications par email",
+            "recevoir des rapports hebdomadaires de benchmark",
+            "utiliser le schéma de couleurs sombres",
+            "chinois simplifié (zh-cn)",
+            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
+            "enregistrer les modifications"
+          ]
         },
         "team": {
           "count": 0,
@@ -1456,12 +1457,6 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-B66kKkzA.js",
-          "size": 56176,
-          "gzipSize": 19829,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-DLHU3tw8.css",
           "size": 25579,
           "gzipSize": 5201,
@@ -1477,6 +1472,12 @@
           "url": "/assets/web-CLclQu7O.js",
           "size": 26454,
           "gzipSize": 10228,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-B66kKkzA.js",
+          "size": 56176,
+          "gzipSize": 19829,
           "type": "js"
         },
         {

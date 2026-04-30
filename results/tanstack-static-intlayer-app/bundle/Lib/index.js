@@ -1,7 +1,73 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
-import _QvDFBrI6rvuwpPbM816p from "../.intlayer/dictionary/route.json";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
+var route_default = {
+	key: "route",
+	content: {
+		"nodeType": "translation",
+		"translation": {
+			"en": {
+				"c": "Oops! Page not found",
+				"d": "Return to Home",
+				"a": "Could not measure hydration duration:",
+				"b": "i18n Benchmark"
+			},
+			"fr": {
+				"c": "Oups ! Page non trouvée",
+				"d": "Retour à l'Accueil",
+				"a": "Impossible de mesurer la durée d'hydratation :",
+				"b": "Benchmark i18n"
+			},
+			"es": {
+				"c": "¡Vaya! Página no encontrada",
+				"d": "Volver al Inicio",
+				"a": "No se pudo medir la duración de la hidratación:",
+				"b": "Benchmark i18n"
+			},
+			"de": {
+				"c": "Hoppla! Seite nicht gefunden",
+				"d": "Zurück zur Startseite",
+				"a": "Hydratisierungsdauer konnte nicht gemessen werden:",
+				"b": "i18n Benchmark"
+			},
+			"it": {
+				"c": "Ops! Pagina non trovata",
+				"d": "Torna alla Home",
+				"a": "Impossibile misurare la durata dell'idratazione:",
+				"b": "Benchmark i18n"
+			},
+			"pt": {
+				"c": "Ops! Página não encontrada",
+				"d": "Voltar para o Início",
+				"a": "Não foi possível medir a duración da hidratação:",
+				"b": "Benchmark i18n"
+			},
+			"zh": {
+				"c": "糟糕！找不到页面",
+				"d": "返回首页",
+				"a": "无法测量注水时长：",
+				"b": "i18n 基准测试"
+			},
+			"ja": {
+				"c": "おっと！ページが見つかりません",
+				"d": "ホームに戻る",
+				"a": "ハイドレーション時間を測定できませんでした：",
+				"b": "i18n ベンチマーク"
+			},
+			"ko": {
+				"c": "웁스! 페이지를 찾을 수 없습니다",
+				"d": "홈으로 돌아가기",
+				"a": "하이드레이션 기간을 측정할 수 없습니다:",
+				"b": "i18n 벤치마크"
+			},
+			"ru": {
+				"c": "Упс! Страница не найдена",
+				"d": "Вернуться на главную",
+				"a": "Не удалось измерить продолжительность гидратации:",
+				"b": "i18n Бенчмарк"
+			}
+		}
+	}
+};
 var internationalization = {
 	"locales": [
 		"en",
@@ -409,7 +475,7 @@ var buildCookieString = (name, value, attributes) => {
 	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
 	return parts.join("; ");
 };
-var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+var getLocaleFromStorageClient = (options) => {
 	const { locales } = internationalization;
 	if (options?.isCookieEnabled === false) return void 0;
 	const isValidLocale = (value) => !!value && locales.includes(value);
@@ -522,46 +588,14 @@ var useDictionary = (dictionary, locale) => {
 		locale
 	]);
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
-	useDictionary(_QvDFBrI6rvuwpPbM816p);
+	useDictionary(route_default);
 	return null;
 };
 function EmptyComponent() {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
-		children: jsxDEV(TestComponent, {}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 13,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+		children: jsx(TestComponent, {})
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
-function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
-		locale: "en",
-		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
-}
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/EmptyComponent.wrapper.tsx";
-function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
-}
-export { Wrapped as default };
+export { EmptyComponent as default };
