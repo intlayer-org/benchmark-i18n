@@ -556,14 +556,31 @@ function useFluent() {
 	assert(rootContext != null, "useFluent called without installing plugin");
 	return getContext(rootContext, instance.proxy, true);
 }
-var EmptyComponent_default = defineComponent({
+var EmptyComponent_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "EmptyComponent",
-	setup(__props) {
-		useFluent();
-		(getCurrentInstance()?.proxy)?.$t("header-home");
-		return (_ctx, _cache) => {
-			return null;
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const fluent = useFluent();
+		const proxy = getCurrentInstance()?.proxy;
+		const __returned__ = {
+			fluent,
+			proxy,
+			value: proxy?.$t("header-home")
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return null;
+}
+var EmptyComponent_default = _plugin_vue_export_helper_default(EmptyComponent_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/scripts/EmptyComponent.vue"]]);
 export { EmptyComponent_default as default };

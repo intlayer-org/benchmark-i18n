@@ -12,27 +12,42 @@ function d() {
 		return e.$t(u(t), n ?? {});
 	} };
 }
-var f = { class: "mb-12 grid gap-4 md:grid-cols-3" }, p = { class: "text-sm font-semibold text-foreground" }, m = { class: "text-xs text-muted-foreground" }, h = i({
+var f = i({
 	__name: "CareersBenefits",
-	setup(i) {
-		let { td: a } = d(), l = t(() => [
-			{
-				label: a("careers.benefits.remoteLabel"),
-				value: a("careers.benefits.remoteValue")
-			},
-			{
-				label: a("careers.benefits.payLabel"),
-				value: a("careers.benefits.payValue")
-			},
-			{
-				label: a("careers.benefits.ossLabel"),
-				value: a("careers.benefits.ossValue")
-			}
-		]);
-		return (t, i) => (o(), n("div", f, [(o(!0), n(e, null, s(l.value, (e) => (o(), n("div", {
-			key: e.label,
-			class: "rounded-lg border border-border bg-card p-4 text-center"
-		}, [r("p", p, c(e.label), 1), r("p", m, c(e.value), 1)]))), 128))]));
+	setup(e, { expose: n }) {
+		n();
+		let { td: r } = d(), i = {
+			td: r,
+			benefits: t(() => [
+				{
+					label: r("careers.benefits.remoteLabel"),
+					value: r("careers.benefits.remoteValue")
+				},
+				{
+					label: r("careers.benefits.payLabel"),
+					value: r("careers.benefits.payValue")
+				},
+				{
+					label: r("careers.benefits.ossLabel"),
+					value: r("careers.benefits.ossValue")
+				}
+			])
+		};
+		return Object.defineProperty(i, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), i;
 	}
-});
-export { h as default };
+}), p = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, m = { class: "mb-12 grid gap-4 md:grid-cols-3" }, h = { class: "text-sm font-semibold text-foreground" }, g = { class: "text-xs text-muted-foreground" };
+function _(t, i, a, l, u, d) {
+	return o(), n("div", m, [(o(!0), n(e, null, s(l.benefits, (e) => (o(), n("div", {
+		key: e.label,
+		class: "rounded-lg border border-border bg-card p-4 text-center"
+	}, [r("p", h, c(e.label), 1), r("p", g, c(e.value), 1)]))), 128))]);
+}
+var v = p(f, [["render", _], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/pages/careers/CareersBenefits.vue"]]);
+export { v as default };

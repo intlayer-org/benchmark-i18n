@@ -1,4 +1,4 @@
-import { Fragment, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, openBlock, toDisplayString, unref } from "vue";
+import { Fragment, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, openBlock, toDisplayString } from "vue";
 function segmentToKebab(segment) {
 	return segment.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();
 }
@@ -13,14 +13,43 @@ function useFluentDottedT() {
 	};
 	return { td };
 }
-var _hoisted_1$1 = { class: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground" };
-var MockBanner_default = defineComponent({
+var MockBanner_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "MockBanner",
-	setup(__props) {
+	setup(__props, { expose: __expose }) {
+		__expose();
 		const { td } = useFluentDottedT();
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString(unref(td)("mockBanner")), 1);
+		const __returned__ = { td };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+var _hoisted_1$1 = { class: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground" };
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString($setup.td("mockBanner")), 1);
+}
+var MockBanner_default = _plugin_vue_export_helper_default(MockBanner_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/MockBanner.vue"]]);
+var ContactHeader_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "ContactHeader",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { td } = useFluentDottedT();
+		const __returned__ = {
+			td,
+			MockBanner: MockBanner_default
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
 var _hoisted_1 = { class: "mb-2 text-3xl font-bold text-foreground" };
@@ -29,21 +58,16 @@ var _hoisted_3 = {
 	href: "mailto:contact@intlayer.org",
 	class: "text-primary hover:underline"
 };
-var ContactHeader_default = defineComponent({
-	__name: "ContactHeader",
-	setup(__props) {
-		const { td } = useFluentDottedT();
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [
-				createVNode(MockBanner_default),
-				createElementVNode("h1", _hoisted_1, toDisplayString(unref(td)("contact.header.title")), 1),
-				createElementVNode("p", _hoisted_2, [
-					createTextVNode(toDisplayString(unref(td)("contact.header.description")) + " ", 1),
-					createElementVNode("a", _hoisted_3, toDisplayString(unref(td)("shared.contactEmail")), 1),
-					_cache[0] || (_cache[0] = createTextVNode(" . ", -1))
-				])
-			], 64);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock(Fragment, null, [
+		createVNode($setup["MockBanner"]),
+		createElementVNode("h1", _hoisted_1, toDisplayString($setup.td("contact.header.title")), 1),
+		createElementVNode("p", _hoisted_2, [
+			createTextVNode(toDisplayString($setup.td("contact.header.description")) + " ", 1),
+			createElementVNode("a", _hoisted_3, toDisplayString($setup.td("shared.contactEmail")), 1),
+			_cache[0] || (_cache[0] = createTextVNode(" . ", -1))
+		])
+	], 64);
+}
+var ContactHeader_default = _plugin_vue_export_helper_default(ContactHeader_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/pages/contact/ContactHeader.vue"]]);
 export { ContactHeader_default as default };

@@ -1,36 +1,48 @@
-import { createElementBlock as e, createElementVNode as t, defineComponent as n, getCurrentInstance as r, openBlock as i, toDisplayString as a, unref as o } from "vue";
-function s(e) {
+import { createElementBlock as e, createElementVNode as t, defineComponent as n, getCurrentInstance as r, openBlock as i, toDisplayString as a } from "vue";
+function o(e) {
 	return e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();
 }
-function c(e) {
-	return e.split(".").map(s).join("-");
+function s(e) {
+	return e.split(".").map(o).join("-");
 }
-function l() {
+function c() {
 	let e = r()?.proxy;
 	return { td: (t, n) => {
 		if (!e) throw Error("useFluentDottedT must be used during setup()");
-		return e.$t(c(t), n ?? {});
+		return e.$t(s(t), n ?? {});
 	} };
 }
-var u = { class: "rounded-lg border border-border bg-card p-6" }, d = { class: "mb-4 text-lg font-semibold text-foreground" }, f = { class: "space-y-4" }, p = {
+var l = n({
+	__name: "ProfileSection",
+	setup(e, { expose: t }) {
+		t();
+		let { td: n } = c(), r = { td: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
+	}
+}), u = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, d = { class: "rounded-lg border border-border bg-card p-6" }, f = { class: "mb-4 text-lg font-semibold text-foreground" }, p = { class: "space-y-4" }, m = {
 	for: "display-name",
 	class: "mb-1 block text-sm font-medium text-foreground"
-}, m = {
+}, h = {
 	for: "email",
 	class: "mb-1 block text-sm font-medium text-foreground"
-}, h = n({
-	__name: "ProfileSection",
-	setup(n) {
-		let { td: r } = l();
-		return (n, s) => (i(), e("section", u, [t("h2", d, a(o(r)("settings.profile.title")), 1), t("div", f, [t("div", null, [t("label", p, a(o(r)("settings.profile.displayName")), 1), s[0] ||= t("input", {
-			id: "display-name",
-			value: "John Developer",
-			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-		}, null, -1)]), t("div", null, [t("label", m, a(o(r)("settings.profile.email")), 1), s[1] ||= t("input", {
-			id: "email",
-			value: "john@example.com",
-			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-		}, null, -1)])])]));
-	}
-});
-export { h as default };
+};
+function g(n, r, o, s, c, l) {
+	return i(), e("section", d, [t("h2", f, a(s.td("settings.profile.title")), 1), t("div", p, [t("div", null, [t("label", m, a(s.td("settings.profile.displayName")), 1), r[0] ||= t("input", {
+		id: "display-name",
+		value: "John Developer",
+		class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+	}, null, -1)]), t("div", null, [t("label", h, a(s.td("settings.profile.email")), 1), r[1] ||= t("input", {
+		id: "email",
+		value: "john@example.com",
+		class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+	}, null, -1)])])]);
+}
+var _ = u(l, [["render", g], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/pages/settings/ProfileSection.vue"]]);
+export { _ as default };

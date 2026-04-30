@@ -1,28 +1,51 @@
-import { Fragment as e, createElementBlock as t, createElementVNode as n, createVNode as r, defineComponent as i, getCurrentInstance as a, openBlock as o, toDisplayString as s, unref as c } from "vue";
-function l(e) {
+import { Fragment as e, createElementBlock as t, createElementVNode as n, createVNode as r, defineComponent as i, getCurrentInstance as a, openBlock as o, toDisplayString as s } from "vue";
+function c(e) {
 	return e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();
 }
-function u(e) {
-	return e.split(".").map(l).join("-");
+function l(e) {
+	return e.split(".").map(c).join("-");
 }
-function d() {
+function u() {
 	let e = a()?.proxy;
 	return { td: (t, n) => {
 		if (!e) throw Error("useFluentDottedT must be used during setup()");
-		return e.$t(u(t), n ?? {});
+		return e.$t(l(t), n ?? {});
 	} };
 }
-var f = { class: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground" }, p = i({
+var d = i({
 	__name: "MockBanner",
-	setup(e) {
-		let { td: n } = d();
-		return (e, r) => (o(), t("div", f, s(c(n)("mockBanner")), 1));
+	setup(e, { expose: t }) {
+		t();
+		let { td: n } = u(), r = { td: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
 	}
-}), m = { class: "mb-12 text-center" }, h = { class: "mb-3 text-3xl font-bold text-foreground" }, g = { class: "text-muted-foreground" }, _ = i({
+}), f = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, p = { class: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground" };
+function m(e, n, r, i, a, c) {
+	return o(), t("div", p, s(i.td("mockBanner")), 1);
+}
+var h = f(d, [["render", m], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/MockBanner.vue"]]), g = i({
 	__name: "PricingHeader",
-	setup(i) {
-		let { td: a } = d();
-		return (i, l) => (o(), t(e, null, [r(p), n("div", m, [n("h1", h, s(c(a)("pricing.header.title")), 1), n("p", g, s(c(a)("pricing.header.description")), 1)])], 64));
+	setup(e, { expose: t }) {
+		t();
+		let { td: n } = u(), r = {
+			td: n,
+			MockBanner: h
+		};
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
 	}
-});
-export { _ as default };
+}), _ = { class: "mb-12 text-center" }, v = { class: "mb-3 text-3xl font-bold text-foreground" }, y = { class: "text-muted-foreground" };
+function b(i, a, c, l, u, d) {
+	return o(), t(e, null, [r(l.MockBanner), n("div", _, [n("h1", v, s(l.td("pricing.header.title")), 1), n("p", y, s(l.td("pricing.header.description")), 1)])], 64);
+}
+var x = f(g, [["render", b], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/pages/pricing/PricingHeader.vue"]]);
+export { x as default };

@@ -35,10 +35,10 @@ _Generated: 2026-04-30_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 21.9 KB | 0.0% | 0.0% | 0.8 KB | 3.0 ms | — | 14.8 ms | 6.6 ms |
-| Dynamic | ✅ | 21.9 KB | 0.0% | 0.0% | 0.8 KB | 3.0 ms | — | 14.8 ms | 6.6 ms |
-| Scoped Static | ✅ | 21.9 KB | 0.0% | 0.0% | 0.8 KB | 3.0 ms | — | 14.8 ms | 6.6 ms |
-| Scoped Dynamic | ✅ | 21.9 KB | 0.0% | 0.0% | 0.8 KB | 3.0 ms | — | 14.8 ms | 6.6 ms |
+| Static | ✅ | 21.9 KB | 15.0% | 0.0% | 0.8 KB | 0.5 ms | — | 9.9 ms | 3.6 ms |
+| Dynamic | ✅ | 21.9 KB | 15.0% | 0.0% | 0.8 KB | 0.5 ms | — | 9.9 ms | 3.6 ms |
+| Scoped Static | ✅ | 21.9 KB | 15.0% | 0.0% | 0.8 KB | 0.5 ms | — | 9.9 ms | 3.6 ms |
+| Scoped Dynamic | ✅ | 21.9 KB | 15.0% | 0.0% | 0.8 KB | 0.5 ms | — | 9.9 ms | 3.6 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -48,10 +48,10 @@ _Generated: 2026-04-30_
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
 | `/en/` | 23.1 KB | 0.0% | 0.0% |
-| `/en/about` | 22.0 KB | 0.0% | 0.0% |
-| `/en/blog` | 21.7 KB | 0.0% | 0.0% |
+| `/en/about` | 22.0 KB | 100.0% | 0.0% |
+| `/en/blog` | 21.7 KB | 100.0% | 0.0% |
 | `/en/careers` | 22.0 KB | 0.0% | 0.0% |
-| `/en/contact` | 21.3 KB | 0.0% | 0.0% |
+| `/en/contact` | 21.3 KB | 100.0% | 0.0% |
 | `/en/faq` | 21.9 KB | 0.0% | 0.0% |
 | `/en/pricing` | 21.6 KB | 0.0% | 0.0% |
 | `/en/products` | 21.5 KB | 0.0% | 0.0% |
@@ -82,8 +82,8 @@ _Generated: 2026-04-30_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 3.0 ms | 1.6 ms | 5.3 ms | 0.0 ms |
-| `fr` | 2.9 ms | 1.9 ms | 3.5 ms | 0.0 ms |
+| `en` | 0.6 ms | 0.3 ms | 1.4 ms | 0.0 ms |
+| `fr` | 0.4 ms | 0.3 ms | 0.8 ms | 0.0 ms |
 
 </details>
 
@@ -92,8 +92,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 14.9 ms | 6.6 ms | 2.5 ms |
-| `fr` | 14.8 ms | 6.6 ms | 2.4 ms |
+| `en` | 10.3 ms | 3.6 ms | 2.1 ms |
+| `fr` | 9.6 ms | 3.5 ms | 2.0 ms |
 
 </details>
 
@@ -105,10 +105,10 @@ _Generated: 2026-04-30_
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
 | `/en/` | 23.1 KB | 0.0% | 0.0% |
-| `/en/about` | 22.0 KB | 0.0% | 0.0% |
-| `/en/blog` | 21.7 KB | 0.0% | 0.0% |
+| `/en/about` | 22.0 KB | 100.0% | 0.0% |
+| `/en/blog` | 21.7 KB | 100.0% | 0.0% |
 | `/en/careers` | 22.0 KB | 0.0% | 0.0% |
-| `/en/contact` | 21.3 KB | 0.0% | 0.0% |
+| `/en/contact` | 21.3 KB | 100.0% | 0.0% |
 | `/en/faq` | 21.9 KB | 0.0% | 0.0% |
 | `/en/pricing` | 21.6 KB | 0.0% | 0.0% |
 | `/en/products` | 21.5 KB | 0.0% | 0.0% |
@@ -139,8 +139,8 @@ _Generated: 2026-04-30_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 3.0 ms | 1.6 ms | 5.3 ms | 0.0 ms |
-| `fr` | 2.9 ms | 1.9 ms | 3.5 ms | 0.0 ms |
+| `en` | 0.6 ms | 0.3 ms | 1.4 ms | 0.0 ms |
+| `fr` | 0.4 ms | 0.3 ms | 0.8 ms | 0.0 ms |
 
 </details>
 
@@ -149,8 +149,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 14.9 ms | 6.6 ms | 2.5 ms |
-| `fr` | 14.8 ms | 6.6 ms | 2.4 ms |
+| `en` | 10.3 ms | 3.6 ms | 2.1 ms |
+| `fr` | 9.6 ms | 3.5 ms | 2.0 ms |
 
 </details>
 
@@ -162,10 +162,10 @@ _Generated: 2026-04-30_
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
 | `/en/` | 23.1 KB | 0.0% | 0.0% |
-| `/en/about` | 22.0 KB | 0.0% | 0.0% |
-| `/en/blog` | 21.7 KB | 0.0% | 0.0% |
+| `/en/about` | 22.0 KB | 100.0% | 0.0% |
+| `/en/blog` | 21.7 KB | 100.0% | 0.0% |
 | `/en/careers` | 22.0 KB | 0.0% | 0.0% |
-| `/en/contact` | 21.3 KB | 0.0% | 0.0% |
+| `/en/contact` | 21.3 KB | 100.0% | 0.0% |
 | `/en/faq` | 21.9 KB | 0.0% | 0.0% |
 | `/en/pricing` | 21.6 KB | 0.0% | 0.0% |
 | `/en/products` | 21.5 KB | 0.0% | 0.0% |
@@ -196,8 +196,8 @@ _Generated: 2026-04-30_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 3.0 ms | 1.6 ms | 5.3 ms | 0.0 ms |
-| `fr` | 2.9 ms | 1.9 ms | 3.5 ms | 0.0 ms |
+| `en` | 0.6 ms | 0.3 ms | 1.4 ms | 0.0 ms |
+| `fr` | 0.4 ms | 0.3 ms | 0.8 ms | 0.0 ms |
 
 </details>
 
@@ -206,8 +206,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 14.9 ms | 6.6 ms | 2.5 ms |
-| `fr` | 14.8 ms | 6.6 ms | 2.4 ms |
+| `en` | 10.3 ms | 3.6 ms | 2.1 ms |
+| `fr` | 9.6 ms | 3.5 ms | 2.0 ms |
 
 </details>
 
@@ -219,10 +219,10 @@ _Generated: 2026-04-30_
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
 | `/en/` | 23.1 KB | 0.0% | 0.0% |
-| `/en/about` | 22.0 KB | 0.0% | 0.0% |
-| `/en/blog` | 21.7 KB | 0.0% | 0.0% |
+| `/en/about` | 22.0 KB | 100.0% | 0.0% |
+| `/en/blog` | 21.7 KB | 100.0% | 0.0% |
 | `/en/careers` | 22.0 KB | 0.0% | 0.0% |
-| `/en/contact` | 21.3 KB | 0.0% | 0.0% |
+| `/en/contact` | 21.3 KB | 100.0% | 0.0% |
 | `/en/faq` | 21.9 KB | 0.0% | 0.0% |
 | `/en/pricing` | 21.6 KB | 0.0% | 0.0% |
 | `/en/products` | 21.5 KB | 0.0% | 0.0% |
@@ -253,8 +253,8 @@ _Generated: 2026-04-30_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 3.0 ms | 1.6 ms | 5.3 ms | 0.0 ms |
-| `fr` | 2.9 ms | 1.9 ms | 3.5 ms | 0.0 ms |
+| `en` | 0.6 ms | 0.3 ms | 1.4 ms | 0.0 ms |
+| `fr` | 0.4 ms | 0.3 ms | 0.8 ms | 0.0 ms |
 
 </details>
 
@@ -263,8 +263,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 14.9 ms | 6.6 ms | 2.5 ms |
-| `fr` | 14.8 ms | 6.6 ms | 2.4 ms |
+| `en` | 10.3 ms | 3.6 ms | 2.1 ms |
+| `fr` | 9.6 ms | 3.5 ms | 2.0 ms |
 
 </details>
 

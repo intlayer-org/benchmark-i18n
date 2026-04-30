@@ -1,22 +1,34 @@
-import { createElementBlock as e, defineComponent as t, getCurrentInstance as n, openBlock as r, toDisplayString as i, unref as a } from "vue";
-function o(e) {
+import { createElementBlock as e, defineComponent as t, getCurrentInstance as n, openBlock as r, toDisplayString as i } from "vue";
+function a(e) {
 	return e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();
 }
-function s(e) {
-	return e.split(".").map(o).join("-");
+function o(e) {
+	return e.split(".").map(a).join("-");
 }
-function c() {
+function s() {
 	let e = n()?.proxy;
 	return { td: (t, n) => {
 		if (!e) throw Error("useFluentDottedT must be used during setup()");
-		return e.$t(s(t), n ?? {});
+		return e.$t(o(t), n ?? {});
 	} };
 }
-var l = { class: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground" }, u = t({
+var c = t({
 	__name: "MockBanner",
-	setup(t) {
-		let { td: n } = c();
-		return (t, o) => (r(), e("div", l, i(a(n)("mockBanner")), 1));
+	setup(e, { expose: t }) {
+		t();
+		let { td: n } = s(), r = { td: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
 	}
-});
-export { u as default };
+}), l = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, u = { class: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground" };
+function d(t, n, a, o, s, c) {
+	return r(), e("div", u, i(o.td("mockBanner")), 1);
+}
+var f = l(c, [["render", d], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/MockBanner.vue"]]);
+export { f as default };

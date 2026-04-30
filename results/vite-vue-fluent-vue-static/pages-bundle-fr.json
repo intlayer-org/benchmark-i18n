@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-fluent-vue-static",
   "locale": "fr",
-  "timestamp": "2026-04-29T23:27:27.415Z",
+  "timestamp": "2026-04-30T06:37:08.185Z",
   "fingerprintCounts": {
     "locale": {
       "en": 99,
@@ -67,15 +67,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/UnderstandingImpact-Du0Qb6KT.js",
-          "size": 2169,
-          "gzipSize": 605,
-          "type": "js"
-        },
-        {
           "url": "/assets/WhyItMatters-BlGH-x6o.js",
           "size": 1273,
           "gzipSize": 467,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-Du0Qb6KT.js",
+          "size": 2169,
+          "gzipSize": 605,
           "type": "js"
         },
         {
@@ -1342,15 +1342,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/CareersBenefits-BnPAckQ1.js",
-          "size": 776,
-          "gzipSize": 416,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-D7DaDicl.js",
           "size": 320,
           "gzipSize": 248,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-BnPAckQ1.js",
+          "size": 776,
+          "gzipSize": 416,
           "type": "js"
         },
         {
@@ -3469,15 +3469,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-mpzx9eJN.js",
-          "size": 2291,
-          "gzipSize": 771,
-          "type": "js"
-        },
-        {
           "url": "/assets/ApiAccessSection-BO9I6RC0.js",
           "size": 1022,
           "gzipSize": 514,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-mpzx9eJN.js",
+          "size": 2291,
+          "gzipSize": 771,
           "type": "js"
         },
         {

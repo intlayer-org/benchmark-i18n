@@ -1,5 +1,5 @@
-import { createElementBlock as e, createElementVNode as t, defineComponent as n, getCurrentInstance as r, onBeforeMount as i, onMounted as a, openBlock as o, toDisplayString as s, unref as c } from "vue";
-function l(e) {
+import { createElementBlock as e, createElementVNode as t, defineComponent as n, getCurrentInstance as r, onBeforeMount as i, onMounted as a, openBlock as o, toDisplayString as s } from "vue";
+function c(e) {
 	i(() => {
 		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
 	}), a(() => {
@@ -11,29 +11,40 @@ function l(e) {
 		}
 	});
 }
-function u(e) {
+function l(e) {
 	return e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();
 }
-function d(e) {
-	return e.split(".").map(u).join("-");
+function u(e) {
+	return e.split(".").map(l).join("-");
 }
-function f() {
+function d() {
 	let e = r()?.proxy;
 	return { td: (t, n) => {
 		if (!e) throw Error("useFluentDottedT must be used during setup()");
-		return e.$t(d(t), n ?? {});
+		return e.$t(u(t), n ?? {});
 	} };
 }
-var p = { class: "mb-16" }, m = { class: "mb-6 text-2xl font-bold text-foreground" }, h = { class: "grid gap-6 md:grid-cols-3" }, g = { class: "rounded-lg border border-border bg-card p-6" }, _ = { class: "mb-2 text-lg font-semibold text-foreground" }, v = { class: "text-sm text-muted-foreground" }, y = { class: "rounded-lg border border-border bg-card p-6" }, b = { class: "mb-2 text-lg font-semibold text-foreground" }, x = { class: "text-sm text-muted-foreground" }, S = { class: "rounded-lg border border-border bg-card p-6" }, C = { class: "mb-2 text-lg font-semibold text-foreground" }, w = { class: "text-sm text-muted-foreground" }, T = n({
+var f = n({
 	__name: "WhyItMatters",
-	setup(n) {
-		l("WhyItMatters");
-		let { td: r } = f();
-		return (n, i) => (o(), e("section", p, [t("h2", m, s(c(r)("home.whyItMatters.title")), 1), t("div", h, [
-			t("div", g, [t("h3", _, s(c(r)("home.whyItMatters.bundleSizeTitle")), 1), t("p", v, s(c(r)("home.whyItMatters.bundleSizeDesc")), 1)]),
-			t("div", y, [t("h3", b, s(c(r)("home.whyItMatters.renderingTitle")), 1), t("p", x, s(c(r)("home.whyItMatters.renderingDesc")), 1)]),
-			t("div", S, [t("h3", C, s(c(r)("home.whyItMatters.dynamicLoadingTitle")), 1), t("p", w, s(c(r)("home.whyItMatters.dynamicLoadingDesc")), 1)])
-		])]));
+	setup(e, { expose: t }) {
+		t(), c("WhyItMatters");
+		let { td: n } = d(), r = { td: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
 	}
-});
-export { T as default };
+}), p = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, m = { class: "mb-16" }, h = { class: "mb-6 text-2xl font-bold text-foreground" }, g = { class: "grid gap-6 md:grid-cols-3" }, _ = { class: "rounded-lg border border-border bg-card p-6" }, v = { class: "mb-2 text-lg font-semibold text-foreground" }, y = { class: "text-sm text-muted-foreground" }, b = { class: "rounded-lg border border-border bg-card p-6" }, x = { class: "mb-2 text-lg font-semibold text-foreground" }, S = { class: "text-sm text-muted-foreground" }, C = { class: "rounded-lg border border-border bg-card p-6" }, w = { class: "mb-2 text-lg font-semibold text-foreground" }, T = { class: "text-sm text-muted-foreground" };
+function E(n, r, i, a, c, l) {
+	return o(), e("section", m, [t("h2", h, s(a.td("home.whyItMatters.title")), 1), t("div", g, [
+		t("div", _, [t("h3", v, s(a.td("home.whyItMatters.bundleSizeTitle")), 1), t("p", y, s(a.td("home.whyItMatters.bundleSizeDesc")), 1)]),
+		t("div", b, [t("h3", x, s(a.td("home.whyItMatters.renderingTitle")), 1), t("p", S, s(a.td("home.whyItMatters.renderingDesc")), 1)]),
+		t("div", C, [t("h3", w, s(a.td("home.whyItMatters.dynamicLoadingTitle")), 1), t("p", T, s(a.td("home.whyItMatters.dynamicLoadingDesc")), 1)])
+	])]);
+}
+var D = p(f, [["render", E], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/pages/home/WhyItMatters.vue"]]);
+export { D as default };

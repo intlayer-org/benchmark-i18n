@@ -12,30 +12,47 @@ function d() {
 		return e.$t(u(t), n ?? {});
 	} };
 }
-var f = { class: "grid gap-6 md:grid-cols-2 lg:grid-cols-3" }, p = { class: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground" }, m = { class: "text-base font-semibold text-foreground" }, h = { class: "mb-2 text-xs font-medium text-primary" }, g = { class: "text-sm text-muted-foreground" }, _ = i({
+var f = i({
 	__name: "TeamGrid",
-	setup(i) {
-		let { td: a } = d(), l = [
+	setup(e, { expose: n }) {
+		n();
+		let { td: r } = d(), i = [
 			1,
 			2,
 			3,
 			4,
 			5,
 			6
-		], u = t(() => l.map((e) => ({
-			name: a(`team.grid.member${e}Name`),
-			role: a(`team.grid.member${e}Role`),
-			bio: a(`team.grid.member${e}Bio`)
-		}))), _ = (e) => e.split(" ").map((e) => e[0]).join("");
-		return (t, i) => (o(), n("div", f, [(o(!0), n(e, null, s(u.value, (e) => (o(), n("div", {
-			key: e.name,
-			class: "rounded-lg border border-border bg-card p-6 text-center"
-		}, [
-			r("div", p, c(_(e.name)), 1),
-			r("h3", m, c(e.name), 1),
-			r("p", h, c(e.role), 1),
-			r("p", g, c(e.bio), 1)
-		]))), 128))]));
+		], a = {
+			td: r,
+			memberIndices: i,
+			members: t(() => i.map((e) => ({
+				name: r(`team.grid.member${e}Name`),
+				role: r(`team.grid.member${e}Role`),
+				bio: r(`team.grid.member${e}Bio`)
+			}))),
+			getInitials: (e) => e.split(" ").map((e) => e[0]).join("")
+		};
+		return Object.defineProperty(a, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), a;
 	}
-});
-export { _ as default };
+}), p = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, m = { class: "grid gap-6 md:grid-cols-2 lg:grid-cols-3" }, h = { class: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground" }, g = { class: "text-base font-semibold text-foreground" }, _ = { class: "mb-2 text-xs font-medium text-primary" }, v = { class: "text-sm text-muted-foreground" };
+function y(t, i, a, l, u, d) {
+	return o(), n("div", m, [(o(!0), n(e, null, s(l.members, (e) => (o(), n("div", {
+		key: e.name,
+		class: "rounded-lg border border-border bg-card p-6 text-center"
+	}, [
+		r("div", h, c(l.getInitials(e.name)), 1),
+		r("h3", g, c(e.name), 1),
+		r("p", _, c(e.role), 1),
+		r("p", v, c(e.bio), 1)
+	]))), 128))]);
+}
+var b = p(f, [["render", y], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/pages/team/TeamGrid.vue"]]);
+export { b as default };

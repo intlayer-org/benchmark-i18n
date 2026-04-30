@@ -427,8 +427,25 @@ function ee() {
 }
 var te = t({
 	__name: "EmptyComponent",
-	setup(e) {
-		return ee(), (n()?.proxy)?.$t("header-home"), (e, t) => null;
+	setup(e, { expose: t }) {
+		t();
+		let r = ee(), i = n()?.proxy, a = {
+			fluent: r,
+			proxy: i,
+			value: i?.$t("header-home")
+		};
+		return Object.defineProperty(a, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), a;
 	}
-});
-export { te as default };
+}), ne = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+};
+function re(e, t, n, r, i, a) {
+	return null;
+}
+var ie = ne(te, [["render", re], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/scripts/EmptyComponent.vue"]]);
+export { ie as default };

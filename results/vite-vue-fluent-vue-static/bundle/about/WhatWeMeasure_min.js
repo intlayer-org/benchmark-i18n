@@ -1,5 +1,5 @@
-import { Fragment as e, computed as t, createElementBlock as n, createElementVNode as r, defineComponent as i, getCurrentInstance as a, onBeforeMount as o, onMounted as s, openBlock as c, renderList as l, toDisplayString as u, unref as d } from "vue";
-function f(e) {
+import { Fragment as e, computed as t, createElementBlock as n, createElementVNode as r, defineComponent as i, getCurrentInstance as a, onBeforeMount as o, onMounted as s, openBlock as c, renderList as l, toDisplayString as u } from "vue";
+function d(e) {
 	o(() => {
 		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
 	}), s(() => {
@@ -11,49 +11,63 @@ function f(e) {
 		}
 	});
 }
-function p(e) {
+function f(e) {
 	return e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();
 }
-function m(e) {
-	return e.split(".").map(p).join("-");
+function p(e) {
+	return e.split(".").map(f).join("-");
 }
-function h() {
+function m() {
 	let e = a()?.proxy;
 	return { td: (t, n) => {
 		if (!e) throw Error("useFluentDottedT must be used during setup()");
-		return e.$t(m(t), n ?? {});
+		return e.$t(p(t), n ?? {});
 	} };
 }
-var g = { class: "mt-12 mx-auto max-w-3xl" }, _ = { class: "mb-4 text-2xl font-bold text-foreground" }, v = { class: "space-y-4" }, y = { class: "block text-sm font-bold text-primary" }, b = { class: "block mt-1 text-sm text-muted-foreground" }, x = i({
+var h = i({
 	__name: "WhatWeMeasure",
-	setup(i) {
-		f("WhatWeMeasure");
-		let { td: a } = h(), o = t(() => [
-			{
-				metric: a("about.whatWeMeasure.bundleSizeImpact"),
-				desc: a("about.whatWeMeasure.bundleSizeImpactDesc")
-			},
-			{
-				metric: a("about.whatWeMeasure.renderingOverhead"),
-				desc: a("about.whatWeMeasure.renderingOverheadDesc")
-			},
-			{
-				metric: a("about.whatWeMeasure.hydrationCost"),
-				desc: a("about.whatWeMeasure.hydrationCostDesc")
-			},
-			{
-				metric: a("about.whatWeMeasure.lazyLoading"),
-				desc: a("about.whatWeMeasure.lazyLoadingDesc")
-			},
-			{
-				metric: a("about.whatWeMeasure.localeSwitch"),
-				desc: a("about.whatWeMeasure.localeSwitchDesc")
-			}
-		]);
-		return (t, i) => (c(), n("section", g, [r("h2", _, u(d(a)("about.whatWeMeasure.title")), 1), r("ul", v, [(c(!0), n(e, null, l(o.value, (e) => (c(), n("li", {
-			key: e.metric,
-			class: "rounded-md border border-border p-4"
-		}, [r("span", y, u(e.metric), 1), r("span", b, u(e.desc), 1)]))), 128))])]));
+	setup(e, { expose: n }) {
+		n(), d("WhatWeMeasure");
+		let { td: r } = m(), i = {
+			td: r,
+			metrics: t(() => [
+				{
+					metric: r("about.whatWeMeasure.bundleSizeImpact"),
+					desc: r("about.whatWeMeasure.bundleSizeImpactDesc")
+				},
+				{
+					metric: r("about.whatWeMeasure.renderingOverhead"),
+					desc: r("about.whatWeMeasure.renderingOverheadDesc")
+				},
+				{
+					metric: r("about.whatWeMeasure.hydrationCost"),
+					desc: r("about.whatWeMeasure.hydrationCostDesc")
+				},
+				{
+					metric: r("about.whatWeMeasure.lazyLoading"),
+					desc: r("about.whatWeMeasure.lazyLoadingDesc")
+				},
+				{
+					metric: r("about.whatWeMeasure.localeSwitch"),
+					desc: r("about.whatWeMeasure.localeSwitchDesc")
+				}
+			])
+		};
+		return Object.defineProperty(i, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), i;
 	}
-});
-export { x as default };
+}), g = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, _ = { class: "mt-12 mx-auto max-w-3xl" }, v = { class: "mb-4 text-2xl font-bold text-foreground" }, y = { class: "space-y-4" }, b = { class: "block text-sm font-bold text-primary" }, x = { class: "block mt-1 text-sm text-muted-foreground" };
+function S(t, i, a, o, s, d) {
+	return c(), n("section", _, [r("h2", v, u(o.td("about.whatWeMeasure.title")), 1), r("ul", y, [(c(!0), n(e, null, l(o.metrics, (e) => (c(), n("li", {
+		key: e.metric,
+		class: "rounded-md border border-border p-4"
+	}, [r("span", b, u(e.metric), 1), r("span", x, u(e.desc), 1)]))), 128))])]);
+}
+var C = g(h, [["render", S], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/pages/about/WhatWeMeasure.vue"]]);
+export { C as default };

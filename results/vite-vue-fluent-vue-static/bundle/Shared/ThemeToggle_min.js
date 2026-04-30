@@ -1,55 +1,80 @@
-import { createElementBlock as e, defineComponent as t, getCurrentInstance as n, onMounted as r, onUnmounted as i, openBlock as a, ref as o, toDisplayString as s, unref as c, watch as l } from "vue";
-function u(e) {
+import { createElementBlock as e, defineComponent as t, getCurrentInstance as n, onMounted as r, onUnmounted as i, openBlock as a, ref as o, toDisplayString as s, watch as c } from "vue";
+function l(e) {
 	return e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/([A-Z])([A-Z][a-z])/g, "$1-$2").toLowerCase();
 }
-function d(e) {
-	return e.split(".").map(u).join("-");
+function u(e) {
+	return e.split(".").map(l).join("-");
 }
-function f() {
+function d() {
 	let e = n()?.proxy;
 	return { td: (t, n) => {
 		if (!e) throw Error("useFluentDottedT must be used during setup()");
-		return e.$t(d(t), n ?? {});
+		return e.$t(u(t), n ?? {});
 	} };
 }
-var p = ["aria-label", "title"], m = t({
+var f = t({
 	__name: "ThemeToggle",
-	setup(t) {
-		let { td: n } = f(), u = o("auto");
-		function d() {
+	setup(e, { expose: t }) {
+		t();
+		let { td: n } = d(), a = o("auto");
+		function s() {
 			if (typeof window > "u") return "auto";
 			let e = window.localStorage.getItem("theme");
 			return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 		}
-		function m(e) {
+		function l(e) {
 			let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 			document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 		}
 		r(() => {
-			let e = d();
-			u.value = e, m(e);
+			let e = s();
+			a.value = e, l(e);
 		});
-		let h = null;
-		l(u, (e) => {
+		let u = null;
+		c(a, (e) => {
 			if (e === "auto") {
 				let e = window.matchMedia("(prefers-color-scheme: dark)");
-				h = () => m("auto"), e.addEventListener("change", h);
-			} else h &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", h), null);
+				u = () => l("auto"), e.addEventListener("change", u);
+			} else u &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", u), null);
 		}, { immediate: !0 }), i(() => {
-			h && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", h);
+			u && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", u);
 		});
-		function g() {
-			let e = u.value === "light" ? "dark" : u.value === "dark" ? "auto" : "light";
-			u.value = e, m(e), window.localStorage.setItem("theme", e);
+		function f() {
+			let e = a.value === "light" ? "dark" : a.value === "dark" ? "auto" : "light";
+			a.value = e, l(e), window.localStorage.setItem("theme", e);
 		}
-		let _ = () => u.value === "auto" ? n("themeToggle.labelAuto") : n("themeToggle.labelOther", { mode: u.value });
-		return (t, r) => (a(), e("button", {
-			type: "button",
-			onClick: g,
-			"aria-label": _(),
-			title: _(),
-			class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-		}, s(u.value === "auto" ? c(n)("themeToggle.auto") : u.value === "dark" ? c(n)("themeToggle.dark") : c(n)("themeToggle.light")), 9, p));
+		let p = {
+			td: n,
+			mode: a,
+			getInitialMode: s,
+			applyThemeMode: l,
+			get mediaQueryListener() {
+				return u;
+			},
+			set mediaQueryListener(e) {
+				u = e;
+			},
+			toggleMode: f,
+			getLabel: () => a.value === "auto" ? n("themeToggle.labelAuto") : n("themeToggle.labelOther", { mode: a.value })
+		};
+		return Object.defineProperty(p, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), p;
 	}
-});
-export { m as default };
+}), p = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, m = ["aria-label", "title"];
+function h(t, n, r, i, o, c) {
+	return a(), e("button", {
+		type: "button",
+		onClick: i.toggleMode,
+		"aria-label": i.getLabel(),
+		title: i.getLabel(),
+		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+	}, s(i.mode === "auto" ? i.td("themeToggle.auto") : i.mode === "dark" ? i.td("themeToggle.dark") : i.td("themeToggle.light")), 9, m);
+}
+var g = p(f, [["render", h], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/src/components/ThemeToggle.vue"]]);
+export { g as default };
