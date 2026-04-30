@@ -1,12 +1,23 @@
 <script setup lang="ts">
-const benefits = [
-  { label: "Remote-first", value: "Work from anywhere in the world" },
-  { label: "Competitive pay", value: "Top-of-market compensation" },
+import { computed } from "vue";
+import { useFluentDottedT } from "../../../i18n/useFluentDottedT";
+
+const { td } = useFluentDottedT();
+
+const benefits = computed(() => [
   {
-    label: "Open source time",
-    value: "20% time for OSS contributions",
+    label: td("careers.benefits.remoteLabel"),
+    value: td("careers.benefits.remoteValue"),
   },
-];
+  {
+    label: td("careers.benefits.payLabel"),
+    value: td("careers.benefits.payValue"),
+  },
+  {
+    label: td("careers.benefits.ossLabel"),
+    value: td("careers.benefits.ossValue"),
+  },
+]);
 </script>
 
 <template>

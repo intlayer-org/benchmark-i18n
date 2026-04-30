@@ -1,3 +1,4 @@
+import * as m from "../../../paraglide/messages";
 import MockBanner from "../../MockBanner";
 
 export default function PricingHeader() {
@@ -6,12 +7,13 @@ export default function PricingHeader() {
       <MockBanner />
       <div class="mb-12 text-center">
         <h1 class="mb-3 text-3xl font-bold text-foreground">
-          Simple, Transparent Pricing
+          {m.pricing_header_title()}
         </h1>
         <p class="text-muted-foreground">
-          Choose the plan that fits your team. No hidden fees.
+          {m.pricing_header_description()}
         </p>
       </div>
     </>
   );
 }
+

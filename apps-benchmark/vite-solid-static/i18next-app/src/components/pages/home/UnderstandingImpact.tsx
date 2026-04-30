@@ -1,79 +1,63 @@
+import { trans } from "../../../i18n";
+import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
+
 export default function UnderstandingImpact() {
+  usePerformanceMeasure("UnderstandingImpact");
   return (
-    <section class="mb-16 mx-auto max-w-3xl space-y-6">
+    <section class="mx-auto mb-16 max-w-3xl space-y-6">
       <h2 class="text-2xl font-bold text-foreground">
-        Understanding the Impact
+        {trans("home.understandingImpact.title")}
       </h2>
 
       <div class="rounded-lg border border-border bg-card p-6">
         <h3 class="mb-2 text-lg font-semibold text-foreground">
-          Why a single large JSON can hurt performance
+          {trans("home.understandingImpact.singleJsonTitle")}
         </h3>
         <p class="text-sm text-muted-foreground">
-          Many i18n libraries store translations in a single JSON object
-          provided via React context. When this object is large (thousands of
-          keys), every component that consumes translations holds a reference to
-          the entire dictionary. This means:
+          {trans("home.understandingImpact.singleJsonIntro")}
         </p>
         <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
-          <li>
-            The JSON must be parsed on every page load — blocking the main
-            thread.
-          </li>
-          <li>
-            Context-based architectures can cause cascading re-renders when the
-            locale changes, because every consumer is notified even if their
-            specific keys didn't change.
-          </li>
-          <li>
-            During server-side rendering, the full dictionary is serialized into
-            the HTML payload, increasing the document size that must be downloaded
-            and hydrated.
-          </li>
+          <li>{trans("home.understandingImpact.singleJsonBullet1")}</li>
+          <li>{trans("home.understandingImpact.singleJsonBullet2")}</li>
+          <li>{trans("home.understandingImpact.singleJsonBullet3")}</li>
         </ul>
       </div>
 
       <div class="rounded-lg border border-border bg-card p-6">
         <h3 class="mb-2 text-lg font-semibold text-foreground">
-          The trade-offs of dynamic loading
+          {trans("home.understandingImpact.tradeOffsTitle")}
         </h3>
         <p class="text-sm text-muted-foreground">
-          Splitting translations into per-route or per-namespace chunks can
-          dramatically reduce the initial payload. But it introduces new
-          challenges:
+          {trans("home.understandingImpact.tradeOffsIntro")}
         </p>
         <ul class="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground">
           <li>
-            <strong class="text-foreground">Waterfall requests:</strong> the app
-            must first load, determine the locale, then fetch the right chunk —
-            adding network round-trips.
+            <strong class="text-foreground">
+              {trans("home.understandingImpact.waterfallLabel")}
+            </strong>{" "}
+            {trans("home.understandingImpact.waterfallDesc")}
           </li>
           <li>
             <strong class="text-foreground">
-              Flash of untranslated content (FOUC):
+              {trans("home.understandingImpact.foucLabel")}
             </strong>{" "}
-            users may briefly see translation keys or a fallback language before
-            the chunk arrives.
+            {trans("home.understandingImpact.foucDesc")}
           </li>
           <li>
-            <strong class="text-foreground">Cache invalidation:</strong> updating
-            translations requires cache-busting strategies to ensure users get
-            fresh content without re-downloading unchanged chunks.
+            <strong class="text-foreground">
+              {trans("home.understandingImpact.cacheLabel")}
+            </strong>{" "}
+            {trans("home.understandingImpact.cacheDesc")}
           </li>
         </ul>
       </div>
 
       <div class="rounded-lg border border-border bg-card p-6">
         <h3 class="mb-2 text-lg font-semibold text-foreground">
-          What this benchmark measures
+          {trans("home.understandingImpact.measuresTitle")}
         </h3>
         <p class="text-sm text-muted-foreground">
-          This test app provides a controlled environment — 10 pages with
-          realistic content — to compare i18n libraries across three axes: the
-          weight they add to your JavaScript bundle, the time spent parsing and
-          rendering translated content, and the effectiveness of their
-          code-splitting and lazy-loading strategies. Each library is integrated
-          into the same app so results are directly comparable.
+          {trans("home.understandingImpact.measuresDesc")}
         </p>
       </div>
     </section>

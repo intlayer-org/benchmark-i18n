@@ -26,7 +26,7 @@
     "methodology": "Méthodologie",
     "contributing": "Contribuer",
     "contact": "Contact",
-    "builtWith": "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et un routeur côté client."
+    "builtWith": "Benchmark i18n — Projet open source. Construit avec Svelte, Vite et un routeur côté client."
   },
   "themeToggle": {
     "auto": "Thème : automatique",

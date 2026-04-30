@@ -1,4 +1,5 @@
 import { createEffect, createSignal, onMount } from "solid-js";
+import * as m from "../paraglide/messages";
 
 type ThemeMode = "light" | "dark" | "auto";
 
@@ -65,15 +66,15 @@ export default function ThemeToggle() {
 
   const label = () =>
     mode() === "auto"
-      ? "Theme mode: auto (system). Click to switch to light mode."
-      : `Theme mode: ${mode()}. Click to switch mode.`;
+      ? m.themeToggle_labelAuto()
+      : m.themeToggle_labelOther({ mode: mode() });
 
   const buttonText = () =>
     mode() === "auto"
-      ? "Theme: Auto"
+      ? m.themeToggle_auto()
       : mode() === "dark"
-        ? "Theme: Dark"
-        : "Theme: Light";
+        ? m.themeToggle_dark()
+        : m.themeToggle_light();
 
   return (
     <button
@@ -87,3 +88,4 @@ export default function ThemeToggle() {
     </button>
   );
 }
+

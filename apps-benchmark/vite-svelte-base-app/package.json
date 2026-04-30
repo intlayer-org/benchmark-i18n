@@ -7,9 +7,9 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "dev": "bunx --bun vite dev --port 3000",
-    "build": "bunx --bun vite build",
-    "preview": "bunx --bun vite preview --port 4173",
+    "dev": "bun x --bun vite dev --port 3000",
+    "build": "bun x --bun vite build",
+    "preview": "bun x --bun vite preview --port 4173",
     "test": "bun run build && playwright test pages.test.ts && bun run test:components && playwright test rendering.test.ts && playwright test reactivity.test.ts",
     "test:components": "bun scripts/measure-svelte-components.ts",
     "test:pages": "playwright test pages.test.ts",

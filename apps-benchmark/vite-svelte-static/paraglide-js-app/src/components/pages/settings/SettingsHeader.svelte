@@ -1,9 +1,10 @@
 <script lang="ts">
+  import { m } from "../../../paraglide/messages";
   import MockBanner from "../../MockBanner.svelte";
 </script>
 
 <MockBanner />
-<h1 class="mb-2 text-3xl font-bold text-foreground">Settings</h1>
+<h1 class="mb-2 text-3xl font-bold text-foreground">{m.settings_header_title()}</h1>
 <p class="mb-8 text-muted-foreground">
-  Manage your account preferences and configuration.
+  {m.settings_header_description()}
 </p>

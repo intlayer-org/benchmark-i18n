@@ -1,12 +1,16 @@
+<script lang="ts">
+  import { m } from "../../../paraglide/messages";
+</script>
+
 <section class="rounded-lg border border-border bg-card p-6">
-  <h2 class="mb-4 text-lg font-semibold text-foreground">Profile</h2>
+  <h2 class="mb-4 text-lg font-semibold text-foreground">{m.settings_profile_title()}</h2>
   <div class="space-y-4">
     <div>
       <label
         for="settings-display-name"
         class="mb-1 block text-sm font-medium text-foreground"
       >
-        Display Name
+        {m.settings_profile_displayName()}
       </label>
       <input
         id="settings-display-name"
@@ -19,7 +23,7 @@
         for="settings-email"
         class="mb-1 block text-sm font-medium text-foreground"
       >
-        Email
+        {m.settings_profile_email()}
       </label>
       <input
         id="settings-email"

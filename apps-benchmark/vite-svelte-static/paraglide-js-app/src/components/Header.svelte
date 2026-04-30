@@ -1,6 +1,6 @@
 <script lang="ts">
   import ChevronDown from "lucide-svelte/icons/chevron-down";
-  import * as m from "../paraglide/messages";
+  import { m } from "../paraglide/messages";
   import { route } from "$lib/routerStore";
   import LocaleSwitcher from "./LocaleSwitcher.svelte";
   import ThemeToggle from "./ThemeToggle.svelte";

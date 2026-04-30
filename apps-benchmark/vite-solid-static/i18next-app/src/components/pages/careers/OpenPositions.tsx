@@ -1,63 +1,70 @@
 import { For } from "solid-js";
+import { trans } from "../../../i18n";
 
 export default function OpenPositions() {
   const openings = [
     {
-      title: "Senior Frontend Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+      titleKey: "frontendTitle",
+      descKey: "frontendDesc",
+      deptKey: "engineering",
+      locationKey: "remote",
+      typeKey: "fullTime",
     },
     {
-      title: "Backend Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+      titleKey: "backendTitle",
+      descKey: "backendDesc",
+      deptKey: "engineering",
+      locationKey: "remote",
+      typeKey: "fullTime",
     },
     {
-      title: "Technical Writer",
-      location: "Remote",
-      type: "Part-time",
-      dept: "Documentation",
-      desc: "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
+      titleKey: "writerTitle",
+      descKey: "writerDesc",
+      deptKey: "documentation",
+      locationKey: "remote",
+      typeKey: "partTime",
     },
     {
-      title: "DevRel Engineer",
-      location: "San Francisco / Remote",
-      type: "Full-time",
-      dept: "Community",
-      desc: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+      titleKey: "devrelTitle",
+      descKey: "devrelDesc",
+      deptKey: "community",
+      locationKey: "sfRemote",
+      typeKey: "fullTime",
     },
     {
-      title: "QA Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
+      titleKey: "qaTitle",
+      descKey: "qaDesc",
+      deptKey: "engineering",
+      locationKey: "remote",
+      typeKey: "fullTime",
     },
-  ];
+  ] as const;
 
   return (
     <>
-      <h2 class="mb-6 text-2xl font-bold text-foreground">Open Positions</h2>
+      <h2 class="mb-6 text-2xl font-bold text-foreground">
+        {trans("careers.openPositions.title")}
+      </h2>
       <div class="space-y-4">
         <For each={openings}>
           {(o) => (
             <div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between">
               <div>
-                <h3 class="text-base font-semibold text-foreground">{o.title}</h3>
-                <p class="text-sm text-muted-foreground">{o.desc}</p>
+                <h3 class="text-base font-semibold text-foreground">
+                  {trans(`careers.openPositions.${o.titleKey}`)}
+                </h3>
+                <p class="text-sm text-muted-foreground">
+                  {trans(`careers.openPositions.${o.descKey}`)}
+                </p>
                 <div class="mt-2 flex gap-2">
                   <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground">
-                    {o.dept}
+                    {trans(`careers.openPositions.${o.deptKey}`)}
                   </span>
                   <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground">
-                    {o.location}
+                    {trans(`careers.openPositions.${o.locationKey}`)}
                   </span>
                   <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground">
-                    {o.type}
+                    {trans(`careers.openPositions.${o.typeKey}`)}
                   </span>
                 </div>
               </div>
@@ -65,7 +72,7 @@ export default function OpenPositions() {
                 type="button"
                 class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
-                Apply Now
+                {trans("careers.openPositions.applyNow")}
               </button>
             </div>
           )}

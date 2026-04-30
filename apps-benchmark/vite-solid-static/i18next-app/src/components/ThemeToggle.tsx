@@ -1,4 +1,5 @@
 import { createEffect, createSignal, onMount } from "solid-js";
+import { trans } from "../i18n";
 
 type ThemeMode = "light" | "dark" | "auto";
 
@@ -65,15 +66,15 @@ export default function ThemeToggle() {
 
   const label = () =>
     mode() === "auto"
-      ? "Theme mode: auto (system). Click to switch to light mode."
-      : `Theme mode: ${mode()}. Click to switch mode.`;
+      ? trans("themeToggle.labelAuto")
+      : trans("themeToggle.labelOther", { mode: mode() });
 
   const buttonText = () =>
     mode() === "auto"
-      ? "Theme: Auto"
+      ? trans("themeToggle.auto")
       : mode() === "dark"
-        ? "Theme: Dark"
-        : "Theme: Light";
+        ? trans("themeToggle.dark")
+        : trans("themeToggle.light");
 
   return (
     <button

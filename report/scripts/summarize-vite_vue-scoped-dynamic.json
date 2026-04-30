@@ -1,0 +1,2706 @@
+{
+  "meta": {
+    "framework": "vite-vue",
+    "frameworkLabel": "Vite + Vue",
+    "generatedAt": "2026-04-29T23:33:38.005Z",
+    "counts": {
+      "totalLibs": 4,
+      "totalApps": 4
+    }
+  },
+  "libs": {
+    "base": {
+      "global": {
+        "version": null,
+        "libSize": {
+          "status": "ok",
+          "gzip": 0,
+          "minified": 0,
+          "unminified": 0
+        }
+      },
+      "static": null,
+      "dynamic": null,
+      "scoped-static": null,
+      "scoped-dynamic": {
+        "appName": "vite-vue-base-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-base-app/bundle/rollup-visualizer.html",
+        "overallStatus": "ok",
+        "pageBundle": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "jsGzip": {
+                "avg": 44084,
+                "min": 43484,
+                "max": 45484,
+                "raw": [
+                  45484,
+                  44179,
+                  43785,
+                  44193,
+                  43484,
+                  43993,
+                  43630,
+                  43612,
+                  44795,
+                  43685
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/en/",
+                  "page": "home",
+                  "jsGzipSize": 45484,
+                  "totalGzipSize": 51344,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/about",
+                  "page": "about",
+                  "jsGzipSize": 44179,
+                  "totalGzipSize": 50039,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/blog",
+                  "page": "blog",
+                  "jsGzipSize": 43785,
+                  "totalGzipSize": 49645,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/careers",
+                  "page": "careers",
+                  "jsGzipSize": 44193,
+                  "totalGzipSize": 50053,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/contact",
+                  "page": "contact",
+                  "jsGzipSize": 43484,
+                  "totalGzipSize": 49344,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/faq",
+                  "page": "faq",
+                  "jsGzipSize": 43993,
+                  "totalGzipSize": 49853,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 43630,
+                  "totalGzipSize": 49490,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/products",
+                  "page": "products",
+                  "jsGzipSize": 43612,
+                  "totalGzipSize": 49472,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/settings",
+                  "page": "settings",
+                  "jsGzipSize": 44795,
+                  "totalGzipSize": 50655,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/team",
+                  "page": "team",
+                  "jsGzipSize": 43685,
+                  "totalGzipSize": 49545,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                }
+              ]
+            },
+            "fr": {
+              "jsGzip": {
+                "avg": 44084,
+                "min": 43484,
+                "max": 45484,
+                "raw": [
+                  45484,
+                  44179,
+                  43785,
+                  44193,
+                  43484,
+                  43993,
+                  43630,
+                  43612,
+                  44795,
+                  43685
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 10,
+                "min": 0,
+                "max": 100,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  100,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/fr/",
+                  "page": "home",
+                  "jsGzipSize": 45484,
+                  "totalGzipSize": 51344,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/about",
+                  "page": "about",
+                  "jsGzipSize": 44179,
+                  "totalGzipSize": 50039,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/blog",
+                  "page": "blog",
+                  "jsGzipSize": 43785,
+                  "totalGzipSize": 49645,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/careers",
+                  "page": "careers",
+                  "jsGzipSize": 44193,
+                  "totalGzipSize": 50053,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/contact",
+                  "page": "contact",
+                  "jsGzipSize": 43484,
+                  "totalGzipSize": 49344,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/faq",
+                  "page": "faq",
+                  "jsGzipSize": 43993,
+                  "totalGzipSize": 49853,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 43630,
+                  "totalGzipSize": 49490,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 100,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/products",
+                  "page": "products",
+                  "jsGzipSize": 43612,
+                  "totalGzipSize": 49472,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/settings",
+                  "page": "settings",
+                  "jsGzipSize": 44795,
+                  "totalGzipSize": 50655,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/team",
+                  "page": "team",
+                  "jsGzipSize": 43685,
+                  "totalGzipSize": 49545,
+                  "cssGzipSize": 5197,
+                  "htmlGzipSize": 663,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 0,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                }
+              ]
+            }
+          },
+          "jsGzipMin": 43484,
+          "jsGzipAvg": 44084,
+          "jsGzipMax": 45484,
+          "localeLeakAvgPct": 5,
+          "pageLeakAvgPct": 0,
+          "otherPageContentLeakAvgPct": 0
+        },
+        "components": {
+          "status": "ok",
+          "gzipMin": 368,
+          "gzipAvg": 943.6969696969697,
+          "gzipMax": 3925,
+          "count": 33,
+          "items": [
+            {
+              "name": "Layout.vue",
+              "category": "Shared",
+              "minifiedGzip": 3925,
+              "minified": 10948,
+              "unminified": 15116,
+              "unminifiedGzip": 4322
+            },
+            {
+              "name": "Header.vue",
+              "category": "Shared",
+              "minifiedGzip": 2959,
+              "minified": 7569,
+              "unminified": 10393,
+              "unminifiedGzip": 3269
+            },
+            {
+              "name": "UnderstandingImpact.vue",
+              "category": "pages",
+              "minifiedGzip": 1360,
+              "minified": 3003,
+              "unminified": 3274,
+              "unminifiedGzip": 1439
+            },
+            {
+              "name": "FAQList.vue",
+              "category": "pages",
+              "minifiedGzip": 1370,
+              "minified": 2678,
+              "unminified": 2958,
+              "unminifiedGzip": 1421
+            },
+            {
+              "name": "BlogList.vue",
+              "category": "pages",
+              "minifiedGzip": 1187,
+              "minified": 2598,
+              "unminified": 3078,
+              "unminifiedGzip": 1254
+            },
+            {
+              "name": "OpenPositions.vue",
+              "category": "pages",
+              "minifiedGzip": 1089,
+              "minified": 2556,
+              "unminified": 3187,
+              "unminifiedGzip": 1164
+            },
+            {
+              "name": "Footer.vue",
+              "category": "Shared",
+              "minifiedGzip": 1056,
+              "minified": 2384,
+              "unminified": 3179,
+              "unminifiedGzip": 1154
+            },
+            {
+              "name": "PricingTiers.vue",
+              "category": "pages",
+              "minifiedGzip": 1037,
+              "minified": 2212,
+              "unminified": 2861,
+              "unminifiedGzip": 1105
+            },
+            {
+              "name": "ContactForm.vue",
+              "category": "pages",
+              "minifiedGzip": 772,
+              "minified": 2117,
+              "unminified": 2375,
+              "unminifiedGzip": 842
+            },
+            {
+              "name": "WhyItMatters.vue",
+              "category": "pages",
+              "minifiedGzip": 996,
+              "minified": 2056,
+              "unminified": 2313,
+              "unminifiedGzip": 1077
+            },
+            {
+              "name": "ThemeToggle.vue",
+              "category": "Shared",
+              "minifiedGzip": 850,
+              "minified": 2036,
+              "unminified": 2694,
+              "unminifiedGzip": 978
+            },
+            {
+              "name": "TeamGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 1036,
+              "minified": 2035,
+              "unminified": 2473,
+              "unminifiedGzip": 1109
+            },
+            {
+              "name": "ProductsGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 990,
+              "minified": 2033,
+              "unminified": 2481,
+              "unminifiedGzip": 1055
+            },
+            {
+              "name": "WhatWeMeasure.vue",
+              "category": "pages",
+              "minifiedGzip": 1010,
+              "minified": 1911,
+              "unminified": 2283,
+              "unminifiedGzip": 1075
+            },
+            {
+              "name": "PreferencesSection.vue",
+              "category": "pages",
+              "minifiedGzip": 805,
+              "minified": 1882,
+              "unminified": 2151,
+              "unminifiedGzip": 880
+            },
+            {
+              "name": "ResultsTable.vue",
+              "category": "pages",
+              "minifiedGzip": 701,
+              "minified": 1814,
+              "unminified": 2459,
+              "unminifiedGzip": 777
+            },
+            {
+              "name": "AboutGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 807,
+              "minified": 1446,
+              "unminified": 1697,
+              "unminifiedGzip": 888
+            },
+            {
+              "name": "Hero.vue",
+              "category": "pages",
+              "minifiedGzip": 716,
+              "minified": 1371,
+              "unminified": 1594,
+              "unminifiedGzip": 774
+            },
+            {
+              "name": "LocaleSwitcher.vue",
+              "category": "Shared",
+              "minifiedGzip": 743,
+              "minified": 1264,
+              "unminified": 1826,
+              "unminifiedGzip": 854
+            },
+            {
+              "name": "ContactHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 664,
+              "minified": 1124,
+              "unminified": 1578,
+              "unminifiedGzip": 766
+            },
+            {
+              "name": "ProfileSection.vue",
+              "category": "pages",
+              "minifiedGzip": 522,
+              "minified": 1091,
+              "unminified": 1352,
+              "unminifiedGzip": 602
+            },
+            {
+              "name": "AboutHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 577,
+              "minified": 1043,
+              "unminified": 1296,
+              "unminifiedGzip": 627
+            },
+            {
+              "name": "ApiAccessSection.vue",
+              "category": "pages",
+              "minifiedGzip": 579,
+              "minified": 1038,
+              "unminified": 1303,
+              "unminifiedGzip": 658
+            },
+            {
+              "name": "CareersHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 621,
+              "minified": 1007,
+              "unminified": 1414,
+              "unminifiedGzip": 721
+            },
+            {
+              "name": "TeamHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 598,
+              "minified": 965,
+              "unminified": 1366,
+              "unminifiedGzip": 691
+            },
+            {
+              "name": "PricingHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 581,
+              "minified": 946,
+              "unminified": 1348,
+              "unminifiedGzip": 673
+            },
+            {
+              "name": "ProductsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 574,
+              "minified": 930,
+              "unminified": 1339,
+              "unminifiedGzip": 670
+            },
+            {
+              "name": "FAQHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 578,
+              "minified": 926,
+              "unminified": 1325,
+              "unminifiedGzip": 677
+            },
+            {
+              "name": "BlogHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 568,
+              "minified": 912,
+              "unminified": 1313,
+              "unminifiedGzip": 666
+            },
+            {
+              "name": "SettingsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 564,
+              "minified": 911,
+              "unminified": 1320,
+              "unminifiedGzip": 661
+            },
+            {
+              "name": "CareersBenefits.vue",
+              "category": "pages",
+              "minifiedGzip": 521,
+              "minified": 901,
+              "unminified": 1205,
+              "unminifiedGzip": 572
+            },
+            {
+              "name": "SettingsFooter.vue",
+              "category": "pages",
+              "minifiedGzip": 418,
+              "minified": 708,
+              "unminified": 987,
+              "unminifiedGzip": 501
+            },
+            {
+              "name": "MockBanner.vue",
+              "category": "Shared",
+              "minifiedGzip": 368,
+              "minified": 508,
+              "unminified": 732,
+              "unminifiedGzip": 448
+            }
+          ]
+        },
+        "reactivity": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "e2e": {
+                "avg": 2.63999999165535,
+                "min": 1.5999999940395355,
+                "max": 3.5,
+                "raw": [
+                  2.7999999821186066,
+                  3.2999999821186066,
+                  1.5999999940395355,
+                  2,
+                  3.5
+                ]
+              },
+              "profiler": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            },
+            "fr": {
+              "e2e": {
+                "avg": 2.9599999845027924,
+                "min": 2.699999988079071,
+                "max": 3.2999999821186066,
+                "raw": [
+                  2.699999988079071,
+                  3.2999999821186066,
+                  2.699999988079071,
+                  3.2999999821186066,
+                  2.7999999821186066
+                ]
+              },
+              "profiler": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            }
+          },
+          "e2eAvgMs": 2.799999988079071,
+          "profilerAvgMs": null
+        },
+        "rendering": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "e2ePageLoad": {
+                "avg": 11.120000004768372,
+                "min": 10.400000005960464,
+                "max": 11.900000005960464,
+                "raw": [
+                  11.400000005960464,
+                  11.900000005960464,
+                  10.400000005960464,
+                  10.5,
+                  11.400000005960464
+                ]
+              },
+              "hydration": {
+                "avg": 4.700000005960464,
+                "min": 4,
+                "max": 5.4000000059604645,
+                "raw": [
+                  4.800000011920929,
+                  5,
+                  4.300000011920929,
+                  4,
+                  5.4000000059604645
+                ]
+              },
+              "reactMount": {
+                "avg": 2.060000002384186,
+                "min": 2,
+                "max": 2.100000023841858,
+                "raw": [
+                  2.0999999940395355,
+                  2.100000023841858,
+                  2,
+                  2.0999999940395355,
+                  2
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            },
+            "fr": {
+              "e2ePageLoad": {
+                "avg": 13.059999996423722,
+                "min": 11.599999994039536,
+                "max": 13.900000005960464,
+                "raw": [
+                  13.099999994039536,
+                  12.900000005960464,
+                  13.799999982118607,
+                  13.900000005960464,
+                  11.599999994039536
+                ]
+              },
+              "hydration": {
+                "avg": 5.940000003576278,
+                "min": 4.700000017881393,
+                "max": 7.399999976158142,
+                "raw": [
+                  5.5999999940395355,
+                  6.300000011920929,
+                  5.700000017881393,
+                  7.399999976158142,
+                  4.700000017881393
+                ]
+              },
+              "reactMount": {
+                "avg": 2.1000000059604647,
+                "min": 2,
+                "max": 2.2000000178813934,
+                "raw": [
+                  2.0999999940395355,
+                  2.2000000178813934,
+                  2.0999999940395355,
+                  2,
+                  2.100000023841858
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            }
+          },
+          "e2ePageLoadAvgMs": 12.090000000596046,
+          "hydrationAvgMs": 5.320000004768371,
+          "reactMountAvgMs": 2.0800000041723252
+        }
+      }
+    },
+    "fluent-vue": {
+      "global": {
+        "version": "3.8.2",
+        "libSize": {
+          "status": "ok",
+          "gzip": 4358,
+          "minified": 13432,
+          "unminified": 19259
+        }
+      },
+      "static": null,
+      "dynamic": null,
+      "scoped-static": null,
+      "scoped-dynamic": {
+        "appName": "vite-vue-fluent-vue-static",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-fluent-vue-static/bundle/rollup-visualizer.html",
+        "overallStatus": "ok",
+        "pageBundle": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "jsGzip": {
+                "avg": 113856.4,
+                "min": 113152,
+                "max": 115101,
+                "raw": [
+                  114636,
+                  113646,
+                  113525,
+                  114097,
+                  113828,
+                  113152,
+                  113773,
+                  113553,
+                  115101,
+                  113253
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 75.7142857142857,
+                "min": 75.71428571428571,
+                "max": 75.71428571428571,
+                "raw": [
+                  75.71428571428571,
+                  75.71428571428571,
+                  75.71428571428571,
+                  75.71428571428571,
+                  75.71428571428571,
+                  75.71428571428571,
+                  75.71428571428571,
+                  75.71428571428571,
+                  75.71428571428571,
+                  75.71428571428571
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 90,
+                "min": 50,
+                "max": 100,
+                "raw": [
+                  50,
+                  68.75,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  81.25,
+                  100
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 90,
+                "min": 50,
+                "max": 100,
+                "raw": [
+                  50,
+                  68.75,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  81.25,
+                  100
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/en/",
+                  "page": "home",
+                  "jsGzipSize": 114636,
+                  "totalGzipSize": 120497,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 50,
+                  "otherPageContentLeakagePercent": 50
+                },
+                {
+                  "path": "/en/about",
+                  "page": "about",
+                  "jsGzipSize": 113646,
+                  "totalGzipSize": 119507,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 68.75,
+                  "otherPageContentLeakagePercent": 68.75
+                },
+                {
+                  "path": "/en/blog",
+                  "page": "blog",
+                  "jsGzipSize": 113525,
+                  "totalGzipSize": 119386,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/careers",
+                  "page": "careers",
+                  "jsGzipSize": 114097,
+                  "totalGzipSize": 119958,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/contact",
+                  "page": "contact",
+                  "jsGzipSize": 113828,
+                  "totalGzipSize": 119689,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/faq",
+                  "page": "faq",
+                  "jsGzipSize": 113152,
+                  "totalGzipSize": 119013,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 113773,
+                  "totalGzipSize": 119634,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/products",
+                  "page": "products",
+                  "jsGzipSize": 113553,
+                  "totalGzipSize": 119414,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/settings",
+                  "page": "settings",
+                  "jsGzipSize": 115101,
+                  "totalGzipSize": 120962,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 81.25,
+                  "otherPageContentLeakagePercent": 81.25
+                },
+                {
+                  "path": "/en/team",
+                  "page": "team",
+                  "jsGzipSize": 113253,
+                  "totalGzipSize": 119114,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 75.71428571428571,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                }
+              ]
+            },
+            "fr": {
+              "jsGzip": {
+                "avg": 113856.4,
+                "min": 113152,
+                "max": 115101,
+                "raw": [
+                  114636,
+                  113646,
+                  113525,
+                  114097,
+                  113828,
+                  113152,
+                  113773,
+                  113553,
+                  115101,
+                  113253
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 46.153846153846146,
+                "min": 46.15384615384615,
+                "max": 46.15384615384615,
+                "raw": [
+                  46.15384615384615,
+                  46.15384615384615,
+                  46.15384615384615,
+                  46.15384615384615,
+                  46.15384615384615,
+                  46.15384615384615,
+                  46.15384615384615,
+                  46.15384615384615,
+                  46.15384615384615,
+                  46.15384615384615
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 90.00000000000001,
+                "min": 83.49514563106796,
+                "max": 99.02912621359224,
+                "raw": [
+                  83.49514563106796,
+                  86.40776699029125,
+                  87.37864077669903,
+                  87.37864077669903,
+                  99.02912621359224,
+                  90.29126213592234,
+                  91.2621359223301,
+                  90.29126213592234,
+                  94.1747572815534,
+                  90.29126213592234
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 90.00000000000001,
+                "min": 83.49514563106796,
+                "max": 99.02912621359224,
+                "raw": [
+                  83.49514563106796,
+                  86.40776699029125,
+                  87.37864077669903,
+                  87.37864077669903,
+                  99.02912621359224,
+                  90.29126213592234,
+                  91.2621359223301,
+                  90.29126213592234,
+                  94.1747572815534,
+                  90.29126213592234
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/fr/",
+                  "page": "home",
+                  "jsGzipSize": 114636,
+                  "totalGzipSize": 120497,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 83.49514563106796,
+                  "otherPageContentLeakagePercent": 83.49514563106796
+                },
+                {
+                  "path": "/fr/about",
+                  "page": "about",
+                  "jsGzipSize": 113646,
+                  "totalGzipSize": 119507,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 86.40776699029125,
+                  "otherPageContentLeakagePercent": 86.40776699029125
+                },
+                {
+                  "path": "/fr/blog",
+                  "page": "blog",
+                  "jsGzipSize": 113525,
+                  "totalGzipSize": 119386,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 87.37864077669903,
+                  "otherPageContentLeakagePercent": 87.37864077669903
+                },
+                {
+                  "path": "/fr/careers",
+                  "page": "careers",
+                  "jsGzipSize": 114097,
+                  "totalGzipSize": 119958,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 87.37864077669903,
+                  "otherPageContentLeakagePercent": 87.37864077669903
+                },
+                {
+                  "path": "/fr/contact",
+                  "page": "contact",
+                  "jsGzipSize": 113828,
+                  "totalGzipSize": 119689,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 99.02912621359224,
+                  "otherPageContentLeakagePercent": 99.02912621359224
+                },
+                {
+                  "path": "/fr/faq",
+                  "page": "faq",
+                  "jsGzipSize": 113152,
+                  "totalGzipSize": 119013,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 90.29126213592234,
+                  "otherPageContentLeakagePercent": 90.29126213592234
+                },
+                {
+                  "path": "/fr/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 113773,
+                  "totalGzipSize": 119634,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 91.2621359223301,
+                  "otherPageContentLeakagePercent": 91.2621359223301
+                },
+                {
+                  "path": "/fr/products",
+                  "page": "products",
+                  "jsGzipSize": 113553,
+                  "totalGzipSize": 119414,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 90.29126213592234,
+                  "otherPageContentLeakagePercent": 90.29126213592234
+                },
+                {
+                  "path": "/fr/settings",
+                  "page": "settings",
+                  "jsGzipSize": 115101,
+                  "totalGzipSize": 120962,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 94.1747572815534,
+                  "otherPageContentLeakagePercent": 94.1747572815534
+                },
+                {
+                  "path": "/fr/team",
+                  "page": "team",
+                  "jsGzipSize": 113253,
+                  "totalGzipSize": 119114,
+                  "cssGzipSize": 5206,
+                  "htmlGzipSize": 655,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 46.15384615384615,
+                  "pageLeakagePercent": 90.29126213592234,
+                  "otherPageContentLeakagePercent": 90.29126213592234
+                }
+              ]
+            }
+          },
+          "jsGzipMin": 113152,
+          "jsGzipAvg": 113856.4,
+          "jsGzipMax": 115101,
+          "localeLeakAvgPct": 60.93406593406594,
+          "pageLeakAvgPct": 90.00000000000001,
+          "otherPageContentLeakAvgPct": 90.00000000000001
+        },
+        "components": {
+          "status": "ok",
+          "gzipMin": 487,
+          "gzipAvg": 984.1515151515151,
+          "gzipMax": 4013,
+          "count": 33,
+          "items": [
+            {
+              "name": "Layout.vue",
+              "category": "Shared",
+              "minifiedGzip": 4013,
+              "minified": 11351,
+              "unminified": 16021,
+              "unminifiedGzip": 4414
+            },
+            {
+              "name": "Header.vue",
+              "category": "Shared",
+              "minifiedGzip": 3132,
+              "minified": 8039,
+              "unminified": 11164,
+              "unminifiedGzip": 3477
+            },
+            {
+              "name": "UnderstandingImpact.vue",
+              "category": "pages",
+              "minifiedGzip": 988,
+              "minified": 3247,
+              "unminified": 4718,
+              "unminifiedGzip": 1123
+            },
+            {
+              "name": "ContactForm.vue",
+              "category": "pages",
+              "minifiedGzip": 1093,
+              "minified": 3047,
+              "unminified": 4091,
+              "unminifiedGzip": 1233
+            },
+            {
+              "name": "PreferencesSection.vue",
+              "category": "pages",
+              "minifiedGzip": 1057,
+              "minified": 3015,
+              "unminified": 4319,
+              "unminifiedGzip": 1180
+            },
+            {
+              "name": "ResultsTable.vue",
+              "category": "pages",
+              "minifiedGzip": 1078,
+              "minified": 2877,
+              "unminified": 4030,
+              "unminifiedGzip": 1225
+            },
+            {
+              "name": "OpenPositions.vue",
+              "category": "pages",
+              "minifiedGzip": 1054,
+              "minified": 2804,
+              "unminified": 3702,
+              "unminifiedGzip": 1175
+            },
+            {
+              "name": "Footer.vue",
+              "category": "Shared",
+              "minifiedGzip": 1152,
+              "minified": 2689,
+              "unminified": 3867,
+              "unminifiedGzip": 1295
+            },
+            {
+              "name": "PricingTiers.vue",
+              "category": "pages",
+              "minifiedGzip": 1165,
+              "minified": 2653,
+              "unminified": 3600,
+              "unminifiedGzip": 1304
+            },
+            {
+              "name": "ThemeToggle.vue",
+              "category": "Shared",
+              "minifiedGzip": 1038,
+              "minified": 2440,
+              "unminified": 3317,
+              "unminifiedGzip": 1229
+            },
+            {
+              "name": "WhatWeMeasure.vue",
+              "category": "pages",
+              "minifiedGzip": 933,
+              "minified": 2219,
+              "unminified": 2931,
+              "unminifiedGzip": 1055
+            },
+            {
+              "name": "WhyItMatters.vue",
+              "category": "pages",
+              "minifiedGzip": 829,
+              "minified": 2189,
+              "unminified": 3155,
+              "unminifiedGzip": 957
+            },
+            {
+              "name": "Hero.vue",
+              "category": "pages",
+              "minifiedGzip": 860,
+              "minified": 1789,
+              "unminified": 2442,
+              "unminifiedGzip": 982
+            },
+            {
+              "name": "BlogList.vue",
+              "category": "pages",
+              "minifiedGzip": 890,
+              "minified": 1735,
+              "unminified": 2476,
+              "unminifiedGzip": 1011
+            },
+            {
+              "name": "ProductsGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 902,
+              "minified": 1716,
+              "unminified": 2426,
+              "unminifiedGzip": 1021
+            },
+            {
+              "name": "AboutGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 748,
+              "minified": 1678,
+              "unminified": 2376,
+              "unminifiedGzip": 868
+            },
+            {
+              "name": "ProfileSection.vue",
+              "category": "pages",
+              "minifiedGzip": 760,
+              "minified": 1669,
+              "unminified": 2297,
+              "unminifiedGzip": 870
+            },
+            {
+              "name": "ApiAccessSection.vue",
+              "category": "pages",
+              "minifiedGzip": 794,
+              "minified": 1595,
+              "unminified": 2234,
+              "unminifiedGzip": 901
+            },
+            {
+              "name": "TeamGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 828,
+              "minified": 1581,
+              "unminified": 2271,
+              "unminifiedGzip": 958
+            },
+            {
+              "name": "ContactHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 735,
+              "minified": 1384,
+              "unminified": 2058,
+              "unminifiedGzip": 829
+            },
+            {
+              "name": "CareersBenefits.vue",
+              "category": "pages",
+              "minifiedGzip": 695,
+              "minified": 1378,
+              "unminified": 1905,
+              "unminifiedGzip": 795
+            },
+            {
+              "name": "TeamHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 671,
+              "minified": 1302,
+              "unminified": 1808,
+              "unminifiedGzip": 785
+            },
+            {
+              "name": "FAQHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 672,
+              "minified": 1298,
+              "unminified": 1802,
+              "unminifiedGzip": 786
+            },
+            {
+              "name": "AboutHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 667,
+              "minified": 1282,
+              "unminified": 1770,
+              "unminifiedGzip": 776
+            },
+            {
+              "name": "LocaleSwitcher.vue",
+              "category": "Shared",
+              "minifiedGzip": 743,
+              "minified": 1264,
+              "unminified": 1826,
+              "unminifiedGzip": 854
+            },
+            {
+              "name": "FAQList.vue",
+              "category": "pages",
+              "minifiedGzip": 726,
+              "minified": 1237,
+              "unminified": 1737,
+              "unminifiedGzip": 834
+            },
+            {
+              "name": "PricingHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 636,
+              "minified": 1212,
+              "unminified": 1818,
+              "unminifiedGzip": 723
+            },
+            {
+              "name": "ProductsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 630,
+              "minified": 1183,
+              "unminified": 1756,
+              "unminifiedGzip": 714
+            },
+            {
+              "name": "SettingsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 628,
+              "minified": 1182,
+              "unminified": 1755,
+              "unminifiedGzip": 713
+            },
+            {
+              "name": "CareersHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 627,
+              "minified": 1179,
+              "unminified": 1750,
+              "unminifiedGzip": 712
+            },
+            {
+              "name": "BlogHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 626,
+              "minified": 1171,
+              "unminified": 1736,
+              "unminifiedGzip": 710
+            },
+            {
+              "name": "SettingsFooter.vue",
+              "category": "pages",
+              "minifiedGzip": 620,
+              "minified": 1117,
+              "unminified": 1536,
+              "unminifiedGzip": 715
+            },
+            {
+              "name": "MockBanner.vue",
+              "category": "Shared",
+              "minifiedGzip": 487,
+              "minified": 778,
+              "unminified": 1097,
+              "unminifiedGzip": 577
+            }
+          ]
+        },
+        "reactivity": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "e2e": {
+                "avg": 3.5800000011920927,
+                "min": 2.2999999821186066,
+                "max": 4.5,
+                "raw": [
+                  4.5,
+                  2.2999999821186066,
+                  3.600000023841858,
+                  3.699999988079071,
+                  3.800000011920929
+                ]
+              },
+              "profiler": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            },
+            "fr": {
+              "e2e": {
+                "avg": 3.8599999964237215,
+                "min": 3.5,
+                "max": 4.9000000059604645,
+                "raw": [
+                  4.9000000059604645,
+                  3.699999988079071,
+                  3.699999988079071,
+                  3.5,
+                  3.5
+                ]
+              },
+              "profiler": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            }
+          },
+          "e2eAvgMs": 3.719999998807907,
+          "profilerAvgMs": null
+        },
+        "rendering": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "e2ePageLoad": {
+                "avg": 15.180000007152557,
+                "min": 12.800000011920929,
+                "max": 19.5,
+                "raw": [
+                  19.5,
+                  14.800000011920929,
+                  13.5,
+                  15.300000011920929,
+                  12.800000011920929
+                ]
+              },
+              "hydration": {
+                "avg": 8.260000002384185,
+                "min": 6.9000000059604645,
+                "max": 11.699999988079071,
+                "raw": [
+                  11.699999988079071,
+                  8,
+                  6.9000000059604645,
+                  7.800000011920929,
+                  6.9000000059604645
+                ]
+              },
+              "reactMount": {
+                "avg": 2.319999998807907,
+                "min": 2.0999999940395355,
+                "max": 3,
+                "raw": [
+                  2.199999988079071,
+                  2.0999999940395355,
+                  2.2000000178813934,
+                  3,
+                  2.0999999940395355
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            },
+            "fr": {
+              "e2ePageLoad": {
+                "avg": 17.340000009536745,
+                "min": 16.5,
+                "max": 18.200000017881393,
+                "raw": [
+                  17.700000017881393,
+                  16.5,
+                  17.5,
+                  16.80000001192093,
+                  18.200000017881393
+                ]
+              },
+              "hydration": {
+                "avg": 9.82000000476837,
+                "min": 9.400000005960464,
+                "max": 10.5,
+                "raw": [
+                  9.400000005960464,
+                  9.600000023841858,
+                  10.5,
+                  10.099999994039536,
+                  9.5
+                ]
+              },
+              "reactMount": {
+                "avg": 2.660000002384186,
+                "min": 2.199999988079071,
+                "max": 3.800000011920929,
+                "raw": [
+                  2.5,
+                  2.4000000059604645,
+                  2.4000000059604645,
+                  3.800000011920929,
+                  2.199999988079071
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            }
+          },
+          "e2ePageLoadAvgMs": 16.26000000834465,
+          "hydrationAvgMs": 9.040000003576278,
+          "reactMountAvgMs": 2.4900000005960465
+        }
+      }
+    },
+    "i18n": {
+      "global": {
+        "version": "11.4.0",
+        "libSize": {
+          "status": "ok",
+          "gzip": 21107,
+          "minified": 71857,
+          "unminified": 117658
+        }
+      },
+      "static": null,
+      "dynamic": null,
+      "scoped-static": null,
+      "scoped-dynamic": {
+        "appName": "vite-vue-i18n-static",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-i18n-static/bundle/rollup-visualizer.html",
+        "overallStatus": "partial",
+        "pageBundle": {
+          "status": "missing",
+          "byLocale": {},
+          "jsGzipMin": null,
+          "jsGzipAvg": null,
+          "jsGzipMax": null,
+          "localeLeakAvgPct": null,
+          "pageLeakAvgPct": null,
+          "otherPageContentLeakAvgPct": null
+        },
+        "components": {
+          "status": "missing",
+          "gzipMin": null,
+          "gzipAvg": null,
+          "gzipMax": null,
+          "count": 0,
+          "items": []
+        },
+        "reactivity": {
+          "status": "missing",
+          "byLocale": {},
+          "e2eAvgMs": null,
+          "profilerAvgMs": null
+        },
+        "rendering": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "e2ePageLoad": {
+                "avg": 13.840000003576279,
+                "min": 12,
+                "max": 18.5,
+                "raw": [
+                  18.5,
+                  12.5,
+                  12.800000011920929,
+                  12,
+                  13.400000005960464
+                ]
+              },
+              "hydration": {
+                "avg": 6.519999992847443,
+                "min": 5.699999988079071,
+                "max": 7.699999988079071,
+                "raw": [
+                  7.699999988079071,
+                  6.0999999940395355,
+                  5.899999976158142,
+                  5.699999988079071,
+                  7.200000017881393
+                ]
+              },
+              "reactMount": {
+                "avg": 2.540000003576279,
+                "min": 2.4000000059604645,
+                "max": 2.7000000178813934,
+                "raw": [
+                  2.4000000059604645,
+                  2.5999999940395355,
+                  2.7000000178813934,
+                  2.5,
+                  2.5
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            },
+            "fr": {
+              "e2ePageLoad": {
+                "avg": 12.1,
+                "min": 11.099999994039536,
+                "max": 13.800000011920929,
+                "raw": [
+                  13.800000011920929,
+                  12.300000011920929,
+                  11.099999994039536,
+                  12.099999994039536,
+                  11.199999988079071
+                ]
+              },
+              "hydration": {
+                "avg": 6.159999996423721,
+                "min": 5.5,
+                "max": 6.699999988079071,
+                "raw": [
+                  6.699999988079071,
+                  6.0999999940395355,
+                  5.5,
+                  6.5999999940395355,
+                  5.9000000059604645
+                ]
+              },
+              "reactMount": {
+                "avg": 2.5,
+                "min": 2.2999999821186066,
+                "max": 2.600000023841858,
+                "raw": [
+                  2.5999999940395355,
+                  2.600000023841858,
+                  2.2999999821186066,
+                  2.5,
+                  2.5
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            }
+          },
+          "e2ePageLoadAvgMs": 12.97000000178814,
+          "hydrationAvgMs": 6.339999994635582,
+          "reactMountAvgMs": 2.5200000017881394
+        }
+      }
+    },
+    "intlayer": {
+      "global": {
+        "version": "8.7.11",
+        "libSize": {
+          "status": "ok",
+          "gzip": 16428,
+          "minified": 58413,
+          "unminified": 77694
+        }
+      },
+      "static": null,
+      "dynamic": null,
+      "scoped-static": null,
+      "scoped-dynamic": {
+        "appName": "vite-vue-intlayer-static",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-intlayer-static/bundle/rollup-visualizer.html",
+        "overallStatus": "ok",
+        "pageBundle": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "jsGzip": {
+                "avg": 63487.5,
+                "min": 58045,
+                "max": 75749,
+                "raw": [
+                  75749,
+                  68158,
+                  62006,
+                  63232,
+                  58045,
+                  65397,
+                  59289,
+                  60720,
+                  61303,
+                  60976
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 53.1255029040873,
+                "min": 50,
+                "max": 63.1578947368421,
+                "raw": [
+                  51.35135135135135,
+                  57.14285714285714,
+                  50,
+                  51.724137931034484,
+                  50,
+                  50,
+                  63.1578947368421,
+                  54.54545454545454,
+                  53.333333333333336,
+                  50
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/en/",
+                  "page": "home",
+                  "jsGzipSize": 75749,
+                  "totalGzipSize": 81740,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/about",
+                  "page": "about",
+                  "jsGzipSize": 68158,
+                  "totalGzipSize": 74149,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 57.14285714285714,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/blog",
+                  "page": "blog",
+                  "jsGzipSize": 62006,
+                  "totalGzipSize": 67997,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 50,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/careers",
+                  "page": "careers",
+                  "jsGzipSize": 63232,
+                  "totalGzipSize": 69223,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.724137931034484,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/contact",
+                  "page": "contact",
+                  "jsGzipSize": 58045,
+                  "totalGzipSize": 64036,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 50,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/faq",
+                  "page": "faq",
+                  "jsGzipSize": 65397,
+                  "totalGzipSize": 71388,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 50,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 59289,
+                  "totalGzipSize": 65280,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 63.1578947368421,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/products",
+                  "page": "products",
+                  "jsGzipSize": 60720,
+                  "totalGzipSize": 66711,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 54.54545454545454,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/settings",
+                  "page": "settings",
+                  "jsGzipSize": 61303,
+                  "totalGzipSize": 67294,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 9,
+                  "jsFileCount": 7,
+                  "localeLeakagePercent": 53.333333333333336,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/team",
+                  "page": "team",
+                  "jsGzipSize": 60976,
+                  "totalGzipSize": 66967,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 50,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                }
+              ]
+            },
+            "fr": {
+              "jsGzip": {
+                "avg": 63487.5,
+                "min": 58045,
+                "max": 75749,
+                "raw": [
+                  75749,
+                  68158,
+                  62006,
+                  63232,
+                  58045,
+                  65397,
+                  59289,
+                  60720,
+                  61303,
+                  60976
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 50.282205006663204,
+                "min": 36.84210526315789,
+                "max": 82.35294117647058,
+                "raw": [
+                  48.64864864864865,
+                  42.857142857142854,
+                  50,
+                  82.35294117647058,
+                  50,
+                  50,
+                  36.84210526315789,
+                  45.45454545454545,
+                  46.666666666666664,
+                  50
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/fr/",
+                  "page": "home",
+                  "jsGzipSize": 75749,
+                  "totalGzipSize": 81740,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/about",
+                  "page": "about",
+                  "jsGzipSize": 68158,
+                  "totalGzipSize": 74149,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 42.857142857142854,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/blog",
+                  "page": "blog",
+                  "jsGzipSize": 62006,
+                  "totalGzipSize": 67997,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 50,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/careers",
+                  "page": "careers",
+                  "jsGzipSize": 63232,
+                  "totalGzipSize": 69223,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 82.35294117647058,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/contact",
+                  "page": "contact",
+                  "jsGzipSize": 58045,
+                  "totalGzipSize": 64036,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 50,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/faq",
+                  "page": "faq",
+                  "jsGzipSize": 65397,
+                  "totalGzipSize": 71388,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 50,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 59289,
+                  "totalGzipSize": 65280,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 36.84210526315789,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/products",
+                  "page": "products",
+                  "jsGzipSize": 60720,
+                  "totalGzipSize": 66711,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 45.45454545454545,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/settings",
+                  "page": "settings",
+                  "jsGzipSize": 61303,
+                  "totalGzipSize": 67294,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 9,
+                  "jsFileCount": 7,
+                  "localeLeakagePercent": 46.666666666666664,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/team",
+                  "page": "team",
+                  "jsGzipSize": 60976,
+                  "totalGzipSize": 66967,
+                  "cssGzipSize": 5365,
+                  "htmlGzipSize": 626,
+                  "fileCount": 6,
+                  "jsFileCount": 4,
+                  "localeLeakagePercent": 50,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                }
+              ]
+            }
+          },
+          "jsGzipMin": 58045,
+          "jsGzipAvg": 63487.5,
+          "jsGzipMax": 75749,
+          "localeLeakAvgPct": 51.70385395537526,
+          "pageLeakAvgPct": 0,
+          "otherPageContentLeakAvgPct": 0
+        },
+        "components": {
+          "status": "ok",
+          "gzipMin": 10256,
+          "gzipAvg": 18783.727272727272,
+          "gzipMax": 26754,
+          "count": 33,
+          "items": [
+            {
+              "name": "Layout.vue",
+              "category": "Shared",
+              "minifiedGzip": 23937,
+              "minified": 81358,
+              "unminified": 106490,
+              "unminifiedGzip": 27415
+            },
+            {
+              "name": "UnderstandingImpact.vue",
+              "category": "pages",
+              "minifiedGzip": 26754,
+              "minified": 81240,
+              "unminified": 101329,
+              "unminifiedGzip": 29725
+            },
+            {
+              "name": "FAQList.vue",
+              "category": "pages",
+              "minifiedGzip": 25506,
+              "minified": 78113,
+              "unminified": 97278,
+              "unminifiedGzip": 28411
+            },
+            {
+              "name": "BlogList.vue",
+              "category": "pages",
+              "minifiedGzip": 22116,
+              "minified": 72429,
+              "unminified": 91807,
+              "unminifiedGzip": 25070
+            },
+            {
+              "name": "Header.vue",
+              "category": "Shared",
+              "minifiedGzip": 21109,
+              "minified": 72374,
+              "unminified": 95664,
+              "unminifiedGzip": 24613
+            },
+            {
+              "name": "WhyItMatters.vue",
+              "category": "pages",
+              "minifiedGzip": 23341,
+              "minified": 71755,
+              "unminified": 91450,
+              "unminifiedGzip": 26335
+            },
+            {
+              "name": "WhatWeMeasure.vue",
+              "category": "pages",
+              "minifiedGzip": 22540,
+              "minified": 69767,
+              "unminified": 89139,
+              "unminifiedGzip": 25518
+            },
+            {
+              "name": "OpenPositions.vue",
+              "category": "pages",
+              "minifiedGzip": 20749,
+              "minified": 69572,
+              "unminified": 89127,
+              "unminifiedGzip": 23676
+            },
+            {
+              "name": "TeamGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 20314,
+              "minified": 67333,
+              "unminified": 86651,
+              "unminifiedGzip": 23253
+            },
+            {
+              "name": "ProductsGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 20613,
+              "minified": 67189,
+              "unminified": 86543,
+              "unminifiedGzip": 23546
+            },
+            {
+              "name": "AboutGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 21379,
+              "minified": 66633,
+              "unminified": 86013,
+              "unminifiedGzip": 24362
+            },
+            {
+              "name": "PricingTiers.vue",
+              "category": "pages",
+              "minifiedGzip": 18949,
+              "minified": 65748,
+              "unminified": 85743,
+              "unminifiedGzip": 21940
+            },
+            {
+              "name": "PreferencesSection.vue",
+              "category": "pages",
+              "minifiedGzip": 18056,
+              "minified": 63310,
+              "unminified": 83430,
+              "unminifiedGzip": 20998
+            },
+            {
+              "name": "Footer.vue",
+              "category": "Shared",
+              "minifiedGzip": 18023,
+              "minified": 62191,
+              "unminified": 82292,
+              "unminifiedGzip": 20970
+            },
+            {
+              "name": "ContactForm.vue",
+              "category": "pages",
+              "minifiedGzip": 17424,
+              "minified": 61480,
+              "unminified": 81411,
+              "unminifiedGzip": 20330
+            },
+            {
+              "name": "ThemeToggle.vue",
+              "category": "Shared",
+              "minifiedGzip": 16811,
+              "minified": 60389,
+              "unminified": 80136,
+              "unminifiedGzip": 19758
+            },
+            {
+              "name": "CareersHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 18046,
+              "minified": 59802,
+              "unminified": 79220,
+              "unminifiedGzip": 20909
+            },
+            {
+              "name": "TeamHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 17800,
+              "minified": 59311,
+              "unminified": 78707,
+              "unminifiedGzip": 20654
+            },
+            {
+              "name": "Hero.vue",
+              "category": "pages",
+              "minifiedGzip": 17396,
+              "minified": 59307,
+              "unminified": 78760,
+              "unminifiedGzip": 20236
+            },
+            {
+              "name": "ResultsTable.vue",
+              "category": "pages",
+              "minifiedGzip": 16709,
+              "minified": 59273,
+              "unminified": 79281,
+              "unminifiedGzip": 19590
+            },
+            {
+              "name": "ContactHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 17586,
+              "minified": 59209,
+              "unminified": 78708,
+              "unminifiedGzip": 20455
+            },
+            {
+              "name": "AboutHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 17487,
+              "minified": 58822,
+              "unminified": 78067,
+              "unminifiedGzip": 20326
+            },
+            {
+              "name": "ProductsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 17224,
+              "minified": 58745,
+              "unminified": 78167,
+              "unminifiedGzip": 20070
+            },
+            {
+              "name": "PricingHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 17460,
+              "minified": 58721,
+              "unminified": 78162,
+              "unminifiedGzip": 20310
+            },
+            {
+              "name": "SettingsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 17112,
+              "minified": 58543,
+              "unminified": 77965,
+              "unminifiedGzip": 19958
+            },
+            {
+              "name": "BlogHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 17104,
+              "minified": 58482,
+              "unminified": 77888,
+              "unminifiedGzip": 19950
+            },
+            {
+              "name": "CareersBenefits.vue",
+              "category": "pages",
+              "minifiedGzip": 16712,
+              "minified": 58469,
+              "unminified": 77843,
+              "unminifiedGzip": 19564
+            },
+            {
+              "name": "FAQHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 17164,
+              "minified": 58378,
+              "unminified": 77770,
+              "unminifiedGzip": 20016
+            },
+            {
+              "name": "ApiAccessSection.vue",
+              "category": "pages",
+              "minifiedGzip": 16369,
+              "minified": 57562,
+              "unminified": 77012,
+              "unminifiedGzip": 19229
+            },
+            {
+              "name": "ProfileSection.vue",
+              "category": "pages",
+              "minifiedGzip": 15840,
+              "minified": 56816,
+              "unminified": 76236,
+              "unminifiedGzip": 18680
+            },
+            {
+              "name": "MockBanner.vue",
+              "category": "Shared",
+              "minifiedGzip": 16382,
+              "minified": 56562,
+              "unminified": 75621,
+              "unminifiedGzip": 19210
+            },
+            {
+              "name": "SettingsFooter.vue",
+              "category": "pages",
+              "minifiedGzip": 15595,
+              "minified": 55926,
+              "unminified": 75112,
+              "unminifiedGzip": 18415
+            },
+            {
+              "name": "LocaleSwitcher.vue",
+              "category": "Shared",
+              "minifiedGzip": 10256,
+              "minified": 39599,
+              "unminified": 53263,
+              "unminifiedGzip": 11978
+            }
+          ]
+        },
+        "reactivity": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "e2e": {
+                "avg": 6.059999996423722,
+                "min": 4.299999982118607,
+                "max": 11.5,
+                "raw": [
+                  11.5,
+                  5,
+                  5,
+                  4.5,
+                  4.299999982118607
+                ]
+              },
+              "profiler": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            },
+            "fr": {
+              "e2e": {
+                "avg": 4.420000004768371,
+                "min": 3.800000011920929,
+                "max": 5.699999988079071,
+                "raw": [
+                  5.699999988079071,
+                  3.800000011920929,
+                  3.9000000059604645,
+                  4.4000000059604645,
+                  4.300000011920929
+                ]
+              },
+              "profiler": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            }
+          },
+          "e2eAvgMs": 5.240000000596046,
+          "profilerAvgMs": null
+        },
+        "rendering": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "e2ePageLoad": {
+                "avg": 12.300000005960465,
+                "min": 10.099999994039536,
+                "max": 16.5,
+                "raw": [
+                  16.5,
+                  12.200000017881393,
+                  11.5,
+                  11.200000017881393,
+                  10.099999994039536
+                ]
+              },
+              "hydration": {
+                "avg": 5.139999997615814,
+                "min": 4.199999988079071,
+                "max": 6.300000011920929,
+                "raw": [
+                  6.300000011920929,
+                  5.5,
+                  5,
+                  4.699999988079071,
+                  4.199999988079071
+                ]
+              },
+              "reactMount": {
+                "avg": 2.5000000059604646,
+                "min": 1.800000011920929,
+                "max": 3.7000000178813934,
+                "raw": [
+                  3.7000000178813934,
+                  2.300000011920929,
+                  2.800000011920929,
+                  1.899999976158142,
+                  1.800000011920929
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            },
+            "fr": {
+              "e2ePageLoad": {
+                "avg": 11.319999998807907,
+                "min": 10.299999982118607,
+                "max": 13.099999994039536,
+                "raw": [
+                  13.099999994039536,
+                  11.199999988079071,
+                  11.700000017881393,
+                  10.299999982118607,
+                  10.300000011920929
+                ]
+              },
+              "hydration": {
+                "avg": 4.620000010728836,
+                "min": 4.200000017881393,
+                "max": 5.100000023841858,
+                "raw": [
+                  4.9000000059604645,
+                  4.5,
+                  5.100000023841858,
+                  4.200000017881393,
+                  4.4000000059604645
+                ]
+              },
+              "reactMount": {
+                "avg": 2.1800000071525574,
+                "min": 1.7999999821186066,
+                "max": 2.7000000178813934,
+                "raw": [
+                  2.600000023841858,
+                  1.9000000059604645,
+                  2.7000000178813934,
+                  1.9000000059604645,
+                  1.7999999821186066
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            }
+          },
+          "e2ePageLoadAvgMs": 11.810000002384186,
+          "hydrationAvgMs": 4.8800000041723255,
+          "reactMountAvgMs": 2.3400000065565107
+        }
+      }
+    }
+  }
+}

@@ -6,11 +6,11 @@
     "#/*": "./src/*"
   },
   "scripts": {
-    "build": "bunx --bun vite build",
+    "build": "bun x --bun vite build",
     "compile": "lingui compile",
-    "dev": "bunx --bun vite dev --port 3000",
+    "dev": "bun x --bun vite dev --port 3000",
     "extract": "lingui extract",
-    "preview": "bunx --bun vite preview",
+    "preview": "bun x --bun vite preview",
     "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity && bun test:lib-size",
     "test:components": "bun scripts/measure-components.ts",
     "test:consistency": "playwright test structure-consistency.test.ts",

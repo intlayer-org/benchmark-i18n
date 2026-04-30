@@ -2,7 +2,7 @@
   "shared": {
     "appName": "Bench i18n",
     "siteName": "Benchmark i18n",
-    "contactEmail": "contact@intlayer.org",
+    "contactEmail": "contact{'@'}intlayer.org",
     "goToGithub": "Aller sur GitHub"
   },
   "header": {
@@ -183,7 +183,7 @@
       "name": "Nom",
       "yourName": "Votre nom",
       "email": "E-mail",
-      "emailPlaceholder": "vous@exemple.com",
+      "emailPlaceholder": "vous{'@'}exemple.com",
       "topic": "Sujet",
       "bugReport": "Rapport de bug",
       "newBenchmarkIdea": "Idée de benchmark",
@@ -206,7 +206,7 @@
       "q2": "Comment sont menés les benchmarks ?",
       "a2": "Tests standardisés sur matériel cohomogène, répétés pour la significativité statistique. Les configs sont publiques sur GitHub.",
       "q3": "Quelles bibliothèques sont prises en charge ?",
-      "a3": "react-i18next, react-intl, Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, Tolgee, etc.",
+      "a3": "react-i18next, react-intl, Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {'@'}fluent/react, Tolgee, etc.",
       "q4": "Puis-je proposer des benchmarks ?",
       "a4": "Oui — forkez le dépôt, suivez le guide de contribution et ouvrez une pull request.",
       "q5": "À quelle fréquence sont-ils mis à jour ?",

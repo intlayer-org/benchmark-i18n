@@ -1,47 +1,60 @@
 <script setup lang="ts">
-const results = [
+import { computed } from "vue";
+import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
+import { useFluentDottedT } from "../../../i18n/useFluentDottedT";
+
+usePerformanceMeasure("ResultsTable");
+
+const { td } = useFluentDottedT();
+
+const results = computed(() => [
   {
     lib: "react-i18next",
     size: "42.3 kB",
     time: "0.12ms",
-    lazy: "Yes",
+    lazy: td("home.resultsTable.yes"),
   },
   {
     lib: "react-intl",
     size: "38.1 kB",
     time: "0.15ms",
-    lazy: "Manual",
+    lazy: td("home.resultsTable.manual"),
   },
-  { lib: "lingui", size: "12.8 kB", time: "0.08ms", lazy: "Yes" },
+  {
+    lib: "lingui",
+    size: "12.8 kB",
+    time: "0.08ms",
+    lazy: td("home.resultsTable.yes"),
+  },
   {
     lib: "typesafe-i18n",
     size: "5.2 kB",
     time: "0.05ms",
-    lazy: "Built-in",
+    lazy: td("home.resultsTable.builtIn"),
   },
-];
+]);
 </script>
 
 <template>
   <section>
     <h2 class="mb-6 text-2xl font-bold text-foreground">
-      Sample Results
+      {{ td("home.resultsTable.title") }}
     </h2>
     <div class="overflow-x-auto rounded-lg border border-border">
       <table class="w-full text-sm">
         <thead class="bg-muted">
           <tr>
             <th class="px-4 py-3 text-left font-medium text-muted-foreground">
-              Library
+              {{ td("home.resultsTable.library") }}
             </th>
             <th class="px-4 py-3 text-left font-medium text-muted-foreground">
-              Bundle Size
+              {{ td("home.resultsTable.bundleSize") }}
             </th>
             <th class="px-4 py-3 text-left font-medium text-muted-foreground">
-              Lookup Time
+              {{ td("home.resultsTable.lookupTime") }}
             </th>
             <th class="px-4 py-3 text-left font-medium text-muted-foreground">
-              Lazy Loading
+              {{ td("home.resultsTable.lazyLoading") }}
             </th>
           </tr>
         </thead>

@@ -1965,7 +1965,7 @@
         "vite": "^8.0.9",
       },
     },
-    "apps-benchmark/vite+react-base-app": {
+    "apps-benchmark/vite-react-base-app": {
       "name": "vite-react-base-app",
       "dependencies": {
         "@tailwindcss/vite": "^4.2.2",
@@ -1994,70 +1994,6 @@
         "test-utils": "workspace:*",
         "typescript": "^6.0.2",
         "vite": "^8.0.9",
-      },
-    },
-    "apps-benchmark/vite+solid-base-app": {
-      "name": "vite-solid-base-app",
-      "dependencies": {
-        "@solidjs/router": "^0.15.1",
-        "@tailwindcss/vite": "^4.2.2",
-        "solid-js": "^1.9.12",
-        "tailwindcss": "^4.2.2",
-      },
-      "devDependencies": {
-        "@playwright/test": "^1.59.1",
-        "@tailwindcss/typography": "^0.5.19",
-        "@types/node": "^25.6.0",
-        "bun": "^1.3.12",
-        "test-utils": "workspace:*",
-        "typescript": "~6.0.2",
-        "vite": "^8.0.10",
-        "vite-plugin-solid": "^2.11.12",
-      },
-    },
-    "apps-benchmark/vite+svelte-base-app": {
-      "name": "vite-svelte-base-app",
-      "version": "0.0.0",
-      "dependencies": {
-        "@tailwindcss/vite": "^4.2.2",
-        "lucide-svelte": "^0.544.0",
-        "tailwindcss": "^4.2.2",
-        "test-utils": "workspace:*",
-      },
-      "devDependencies": {
-        "@playwright/test": "^1.59.1",
-        "@sveltejs/vite-plugin-svelte": "^7.0.0",
-        "@tailwindcss/typography": "^0.5.19",
-        "@tsconfig/svelte": "^5.0.8",
-        "@types/node": "^24.12.2",
-        "bun": "^1.3.12",
-        "svelte": "^5.55.4",
-        "svelte-check": "^4.4.6",
-        "typescript": "~6.0.2",
-        "vite": "^8.0.10",
-      },
-    },
-    "apps-benchmark/vite+vue-base-app": {
-      "name": "vite-vue-base-app",
-      "version": "0.0.0",
-      "dependencies": {
-        "lucide-vue-next": "^0.479.0",
-        "vue": "^3.5.32",
-        "vue-router": "^4.5.0",
-      },
-      "devDependencies": {
-        "@playwright/test": "^1.59.1",
-        "@tailwindcss/typography": "^0.5.16",
-        "@tailwindcss/vite": "^4.0.0",
-        "@types/node": "^24.12.2",
-        "@vitejs/plugin-vue": "^6.0.6",
-        "@vue/tsconfig": "^0.9.1",
-        "rollup-plugin-visualizer": "^7.0.1",
-        "tailwindcss": "^4.0.0",
-        "test-utils": "workspace:*",
-        "typescript": "~6.0.2",
-        "vite": "^8.0.10",
-        "vue-tsc": "^3.2.7",
       },
     },
     "apps-benchmark/vite-react-intlayer-static": {
@@ -2094,7 +2030,26 @@
         "vite-intlayer": "^8.7.11",
       },
     },
-    "apps-benchmark/vite-solid-i18next-static": {
+    "apps-benchmark/vite-solid-base-app": {
+      "name": "vite-solid-base-app",
+      "dependencies": {
+        "@solidjs/router": "^0.15.1",
+        "@tailwindcss/vite": "^4.2.2",
+        "solid-js": "^1.9.12",
+        "tailwindcss": "^4.2.2",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.59.1",
+        "@tailwindcss/typography": "^0.5.19",
+        "@types/node": "^25.6.0",
+        "bun": "^1.3.12",
+        "test-utils": "workspace:*",
+        "typescript": "~6.0.2",
+        "vite": "^8.0.10",
+        "vite-plugin-solid": "^2.11.12",
+      },
+    },
+    "apps-benchmark/vite-solid-static/i18next-app": {
       "name": "vite-solid-i18next-static",
       "dependencies": {
         "@mbarzda/solid-i18next": "^1.4.1",
@@ -2116,29 +2071,7 @@
         "vite-plugin-solid": "^2.11.12",
       },
     },
-    "apps-benchmark/vite-solid-intlayer-static": {
-      "name": "vite-solid-intlayer-static",
-      "dependencies": {
-        "@solidjs/router": "^0.15.1",
-        "@tailwindcss/vite": "^4.2.2",
-        "intlayer": "^8.7.11",
-        "solid-intlayer": "^8.7.11",
-        "solid-js": "^1.9.12",
-        "tailwindcss": "^4.2.2",
-      },
-      "devDependencies": {
-        "@playwright/test": "^1.59.1",
-        "@tailwindcss/typography": "^0.5.19",
-        "@types/node": "^25.6.0",
-        "bun": "^1.3.12",
-        "test-utils": "workspace:*",
-        "typescript": "~6.0.2",
-        "vite": "^8.0.10",
-        "vite-intlayer": "^8.7.11",
-        "vite-plugin-solid": "^2.11.12",
-      },
-    },
-    "apps-benchmark/vite-solid-paraglide-js-static": {
+    "apps-benchmark/vite-solid-static/paraglide-js-app": {
       "name": "vite-solid-paraglide-js-static",
       "dependencies": {
         "@inlang/paraglide-js": "^2.17.0",
@@ -2160,7 +2093,29 @@
         "vite-plugin-solid": "^2.11.12",
       },
     },
-    "apps-benchmark/vite-solid-primitives-i18n-static": {
+    "apps-benchmark/vite-solid-static/solid-intlayer-app": {
+      "name": "vite-solid-intlayer-static",
+      "dependencies": {
+        "@solidjs/router": "^0.15.1",
+        "@tailwindcss/vite": "^4.2.2",
+        "intlayer": "^8.7.11",
+        "solid-intlayer": "^8.7.11",
+        "solid-js": "^1.9.12",
+        "tailwindcss": "^4.2.2",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.59.1",
+        "@tailwindcss/typography": "^0.5.19",
+        "@types/node": "^25.6.0",
+        "bun": "^1.3.12",
+        "test-utils": "workspace:*",
+        "typescript": "~6.0.2",
+        "vite": "^8.0.10",
+        "vite-intlayer": "^8.7.11",
+        "vite-plugin-solid": "^2.11.12",
+      },
+    },
+    "apps-benchmark/vite-solid-static/solid-primitives-i18n-app": {
       "name": "vite-solid-primitives-i18n-static",
       "dependencies": {
         "@solid-primitives/i18n": "^2.2.1",
@@ -2180,7 +2135,54 @@
         "vite-plugin-solid": "^2.11.12",
       },
     },
-    "apps-benchmark/vite-svelte-i18n-static": {
+    "apps-benchmark/vite-svelte-base-app": {
+      "name": "vite-svelte-base-app",
+      "version": "0.0.0",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.2.2",
+        "lucide-svelte": "^0.544.0",
+        "tailwindcss": "^4.2.2",
+        "test-utils": "workspace:*",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.59.1",
+        "@sveltejs/vite-plugin-svelte": "^7.0.0",
+        "@tailwindcss/typography": "^0.5.19",
+        "@tsconfig/svelte": "^5.0.8",
+        "@types/node": "^24.12.2",
+        "bun": "^1.3.12",
+        "svelte": "^5.55.4",
+        "svelte-check": "^4.4.6",
+        "typescript": "~6.0.2",
+        "vite": "^8.0.10",
+      },
+    },
+    "apps-benchmark/vite-svelte-static/paraglide-js-app": {
+      "name": "vite-svelte-paraglide-js-static",
+      "version": "0.0.0",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.2.2",
+        "lucide-svelte": "^0.544.0",
+        "tailwindcss": "^4.2.2",
+        "test-utils": "workspace:*",
+      },
+      "devDependencies": {
+        "@inlang/paraglide-js": "^2.17.0",
+        "@inlang/paraglide-vite": "^1.4.0",
+        "@inlang/plugin-message-format": "^4",
+        "@playwright/test": "^1.59.1",
+        "@sveltejs/vite-plugin-svelte": "^7.0.0",
+        "@tailwindcss/typography": "^0.5.19",
+        "@tsconfig/svelte": "^5.0.8",
+        "@types/node": "^24.12.2",
+        "bun": "^1.3.12",
+        "svelte": "^5.55.4",
+        "svelte-check": "^4.4.6",
+        "typescript": "~6.0.2",
+        "vite": "^8.0.10",
+      },
+    },
+    "apps-benchmark/vite-svelte-static/svelte-i18n-app": {
       "name": "vite-svelte-i18n-static",
       "version": "0.0.0",
       "dependencies": {
@@ -2203,7 +2205,7 @@
         "vite": "^8.0.10",
       },
     },
-    "apps-benchmark/vite-svelte-intlayer-static": {
+    "apps-benchmark/vite-svelte-static/svelte-intlayer-app": {
       "name": "vite-svelte-intlayer-static",
       "version": "0.0.0",
       "dependencies": {
@@ -2229,32 +2231,30 @@
         "vite-intlayer": "^8.7.11",
       },
     },
-    "apps-benchmark/vite-svelte-paraglide-js-static": {
-      "name": "vite-svelte-paraglide-js-static",
+    "apps-benchmark/vite-vue-base-app": {
+      "name": "vite-vue-base-app",
       "version": "0.0.0",
       "dependencies": {
-        "@tailwindcss/vite": "^4.2.2",
-        "lucide-svelte": "^0.544.0",
-        "tailwindcss": "^4.2.2",
-        "test-utils": "workspace:*",
+        "lucide-vue-next": "^0.479.0",
+        "vue": "^3.5.32",
+        "vue-router": "^4.5.0",
       },
       "devDependencies": {
-        "@inlang/paraglide-js": "^2.17.0",
-        "@inlang/paraglide-vite": "^1.4.0",
-        "@inlang/plugin-message-format": "^4",
         "@playwright/test": "^1.59.1",
-        "@sveltejs/vite-plugin-svelte": "^7.0.0",
-        "@tailwindcss/typography": "^0.5.19",
-        "@tsconfig/svelte": "^5.0.8",
+        "@tailwindcss/typography": "^0.5.16",
+        "@tailwindcss/vite": "^4.0.0",
         "@types/node": "^24.12.2",
-        "bun": "^1.3.12",
-        "svelte": "^5.55.4",
-        "svelte-check": "^4.4.6",
+        "@vitejs/plugin-vue": "^6.0.6",
+        "@vue/tsconfig": "^0.9.1",
+        "rollup-plugin-visualizer": "^7.0.1",
+        "tailwindcss": "^4.0.0",
+        "test-utils": "workspace:*",
         "typescript": "~6.0.2",
         "vite": "^8.0.10",
+        "vue-tsc": "^3.2.7",
       },
     },
-    "apps-benchmark/vite-vue-fluent-vue-static": {
+    "apps-benchmark/vite-vue-static/fluent-vue-app": {
       "name": "vite-vue-fluent-vue-static",
       "version": "0.0.0",
       "dependencies": {
@@ -2280,7 +2280,7 @@
         "vue-tsc": "^3.2.7",
       },
     },
-    "apps-benchmark/vite-vue-i18n-static": {
+    "apps-benchmark/vite-vue-static/vue-i18n-app": {
       "name": "vite-vue-i18n-static",
       "version": "0.0.0",
       "dependencies": {
@@ -2305,7 +2305,7 @@
         "vue-tsc": "^3.2.7",
       },
     },
-    "apps-benchmark/vite-vue-intlayer-static": {
+    "apps-benchmark/vite-vue-static/vue-intlayer-app": {
       "name": "vite-vue-intlayer-static",
       "version": "0.0.0",
       "dependencies": {
@@ -5485,37 +5485,37 @@
 
     "vite-plugin-solid": ["vite-plugin-solid@2.11.12", "", { "dependencies": { "@babel/core": "^7.23.3", "@types/babel__core": "^7.20.4", "babel-preset-solid": "^1.8.4", "merge-anything": "^5.1.7", "solid-refresh": "^0.6.3", "vitefu": "^1.0.4" }, "peerDependencies": { "@testing-library/jest-dom": "^5.16.6 || ^5.17.0 || ^6.*", "solid-js": "^1.7.2", "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0" }, "optionalPeers": ["@testing-library/jest-dom"] }, "sha512-FgjPcx2OwX9h6f28jli7A4bG7PP3te8uyakE5iqsmpq3Jqi1TWLgSroC9N6cMfGRU2zXsl4Q6ISvTr2VL0QHpA=="],
 
-    "vite-react-base-app": ["vite-react-base-app@workspace:apps-benchmark/vite+react-base-app"],
+    "vite-react-base-app": ["vite-react-base-app@workspace:apps-benchmark/vite-react-base-app"],
 
     "vite-react-intlayer-static": ["vite-react-intlayer-static@workspace:apps-benchmark/vite-react-intlayer-static"],
 
-    "vite-solid-base-app": ["vite-solid-base-app@workspace:apps-benchmark/vite+solid-base-app"],
+    "vite-solid-base-app": ["vite-solid-base-app@workspace:apps-benchmark/vite-solid-base-app"],
 
-    "vite-solid-i18next-static": ["vite-solid-i18next-static@workspace:apps-benchmark/vite-solid-i18next-static"],
+    "vite-solid-i18next-static": ["vite-solid-i18next-static@workspace:apps-benchmark/vite-solid-static/i18next-app"],
 
-    "vite-solid-intlayer-static": ["vite-solid-intlayer-static@workspace:apps-benchmark/vite-solid-intlayer-static"],
+    "vite-solid-intlayer-static": ["vite-solid-intlayer-static@workspace:apps-benchmark/vite-solid-static/solid-intlayer-app"],
 
-    "vite-solid-paraglide-js-static": ["vite-solid-paraglide-js-static@workspace:apps-benchmark/vite-solid-paraglide-js-static"],
+    "vite-solid-paraglide-js-static": ["vite-solid-paraglide-js-static@workspace:apps-benchmark/vite-solid-static/paraglide-js-app"],
 
-    "vite-solid-primitives-i18n-static": ["vite-solid-primitives-i18n-static@workspace:apps-benchmark/vite-solid-primitives-i18n-static"],
+    "vite-solid-primitives-i18n-static": ["vite-solid-primitives-i18n-static@workspace:apps-benchmark/vite-solid-static/solid-primitives-i18n-app"],
 
-    "vite-svelte-base-app": ["vite-svelte-base-app@workspace:apps-benchmark/vite+svelte-base-app"],
+    "vite-svelte-base-app": ["vite-svelte-base-app@workspace:apps-benchmark/vite-svelte-base-app"],
 
-    "vite-svelte-i18n-static": ["vite-svelte-i18n-static@workspace:apps-benchmark/vite-svelte-i18n-static"],
+    "vite-svelte-i18n-static": ["vite-svelte-i18n-static@workspace:apps-benchmark/vite-svelte-static/svelte-i18n-app"],
 
-    "vite-svelte-intlayer-static": ["vite-svelte-intlayer-static@workspace:apps-benchmark/vite-svelte-intlayer-static"],
+    "vite-svelte-intlayer-static": ["vite-svelte-intlayer-static@workspace:apps-benchmark/vite-svelte-static/svelte-intlayer-app"],
 
-    "vite-svelte-paraglide-js-static": ["vite-svelte-paraglide-js-static@workspace:apps-benchmark/vite-svelte-paraglide-js-static"],
+    "vite-svelte-paraglide-js-static": ["vite-svelte-paraglide-js-static@workspace:apps-benchmark/vite-svelte-static/paraglide-js-app"],
 
     "vite-tsconfig-paths": ["vite-tsconfig-paths@6.1.1", "", { "dependencies": { "debug": "^4.1.1", "globrex": "^0.1.2", "tsconfck": "^3.0.3" }, "peerDependencies": { "vite": "*" } }, "sha512-2cihq7zliibCCZ8P9cKJrQBkfgdvcFkOOc3Y02o3GWUDLgqjWsZudaoiuOwO/gzTzy17cS5F7ZPo4bsnS4DGkg=="],
 
-    "vite-vue-base-app": ["vite-vue-base-app@workspace:apps-benchmark/vite+vue-base-app"],
+    "vite-vue-base-app": ["vite-vue-base-app@workspace:apps-benchmark/vite-vue-base-app"],
 
-    "vite-vue-fluent-vue-static": ["vite-vue-fluent-vue-static@workspace:apps-benchmark/vite-vue-fluent-vue-static"],
+    "vite-vue-fluent-vue-static": ["vite-vue-fluent-vue-static@workspace:apps-benchmark/vite-vue-static/fluent-vue-app"],
 
-    "vite-vue-i18n-static": ["vite-vue-i18n-static@workspace:apps-benchmark/vite-vue-i18n-static"],
+    "vite-vue-i18n-static": ["vite-vue-i18n-static@workspace:apps-benchmark/vite-vue-static/vue-i18n-app"],
 
-    "vite-vue-intlayer-static": ["vite-vue-intlayer-static@workspace:apps-benchmark/vite-vue-intlayer-static"],
+    "vite-vue-intlayer-static": ["vite-vue-intlayer-static@workspace:apps-benchmark/vite-vue-static/vue-intlayer-app"],
 
     "vitefu": ["vitefu@1.1.3", "", { "peerDependencies": { "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0" }, "optionalPeers": ["vite"] }, "sha512-ub4okH7Z5KLjb6hDyjqrGXqWtWvoYdU3IGm/NorpgHncKoLTCfRIbvlhBm7r0YstIaQRYlp4yEbFqDcKSzXSSg=="],
 

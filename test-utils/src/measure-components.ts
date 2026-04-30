@@ -106,6 +106,12 @@ export interface MeasureConfig {
     jsx?: "automatic" | "preserve" | "transform";
     jsxImportSource?: string;
   };
+  /**
+   * Path (relative to the app root) to the empty component used by
+   * {@link measureLibSize}. Defaults to `"scripts/EmptyComponent.tsx"`.
+   * For Vue apps point this at `"scripts/EmptyComponent.vue"`.
+   */
+  emptyComponentFile?: string;
 }
 
 /** Size measurements for a single compiled component. */
@@ -628,15 +634,14 @@ export const measureLibSize = async ({
   appDir,
   skipViteConfig,
   esbuild: esbuildOptions,
+  emptyComponentFile = "scripts/EmptyComponent.tsx",
 }: MeasureConfig): Promise<void> => {
   const effectiveDir = appDir ?? process.cwd();
-  const emptyComponentPath = path.resolve(
-    effectiveDir,
-    "scripts/EmptyComponent.tsx",
-  );
+  const emptyComponentPath = path.resolve(effectiveDir, emptyComponentFile);
+  const emptyComponentName = path.basename(emptyComponentPath);
   if (!fs.existsSync(emptyComponentPath)) {
     console.log(
-      `[measureLibSize] No EmptyComponent.tsx found at ${emptyComponentPath} — skipping.`,
+      `[measureLibSize] No ${emptyComponentName} found at ${emptyComponentPath} — skipping.`,
     );
     return;
   }
@@ -687,7 +692,7 @@ export const measureLibSize = async ({
     );
 
     console.log(
-      `EmptyComponent.tsx: Unminified=${(unminified.bytes / 1024).toFixed(2)}KB | Minified=${(minified.bytes / 1024).toFixed(2)}KB | Gzip=${(minified.gzipBytes / 1024).toFixed(2)}KB`,
+      `${emptyComponentName}: Unminified=${(unminified.bytes / 1024).toFixed(2)}KB | Minified=${(minified.bytes / 1024).toFixed(2)}KB | Gzip=${(minified.gzipBytes / 1024).toFixed(2)}KB`,
     );
 
     // Save the bundled code to disk for inspection
@@ -704,7 +709,7 @@ export const measureLibSize = async ({
 
     const stats: ComponentSizeStats[] = [
       {
-        name: "EmptyComponent.tsx",
+        name: emptyComponentName,
         category: "Synthetic",
         unminifiedBytes: unminified.bytes,
         unminifiedGzipBytes: unminified.gzipBytes,

@@ -1,0 +1,37 @@
+import "svelte/internal/disclose-version";
+import "svelte/internal/flags/legacy";
+import * as $ from "svelte/internal/client";
+var root$1 = $.from_html(`<div class="mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground"> </div>`);
+function MockBanner($$anchor, $$props) {
+	$.push($$props, false);
+	$.init();
+	var div = root$1();
+	var text = $.child(div, true);
+	$.reset(div);
+	$.template_effect(($0) => $.set_text(text, $0), [() => (void 0)()]);
+	$.append($$anchor, div);
+	$.pop();
+}
+var root = $.from_html(`<!> <div class="mb-12 text-center"><h1 class="mb-3 text-3xl font-bold text-foreground"> </h1> <p class="text-muted-foreground"> </p></div>`, 1);
+function PricingHeader($$anchor, $$props) {
+	$.push($$props, false);
+	$.init();
+	var fragment = root();
+	var node = $.first_child(fragment);
+	MockBanner(node, {});
+	var div = $.sibling(node, 2);
+	var h1 = $.child(div);
+	var text = $.child(h1, true);
+	$.reset(h1);
+	var p = $.sibling(h1, 2);
+	var text_1 = $.child(p, true);
+	$.reset(p);
+	$.reset(div);
+	$.template_effect(($0, $1) => {
+		$.set_text(text, $0);
+		$.set_text(text_1, $1);
+	}, [() => (void 0)(), () => (void 0)()]);
+	$.append($$anchor, fragment);
+	$.pop();
+}
+export { PricingHeader as default };

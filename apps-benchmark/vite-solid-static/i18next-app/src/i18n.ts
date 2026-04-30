@@ -13,42 +13,35 @@ import ru from "../locales/ru.json";
 
 export const [t, setT] = createSignal(i18next.t.bind(i18next));
 
+const resources = {
+  en: { translation: en },
+  fr: { translation: fr },
+  es: { translation: es },
+  de: { translation: de },
+  it: { translation: it },
+  pt: { translation: pt },
+  zh: { translation: zh },
+  ja: { translation: ja },
+  ko: { translation: ko },
+  ru: { translation: ru },
+};
+
 i18next.init({
   fallbackLng: "en",
-  resources: {
-    en: {
-      translation: en,
-    },
-    fr: {
-      translation: fr,
-    },
-    es: {
-      translation: es,
-    },
-    de: {
-      translation: de,
-    },
-    it: {
-      translation: it,
-    },
-    pt: {
-      translation: pt,
-    },
-    zh: {
-      translation: zh,
-    },
-    ja: {
-      translation: ja,
-    },
-    ko: {
-      translation: ko,
-    },
-    ru: {
-      translation: ru,
-    },
-  },
+  resources,
 });
 
 setT(() => i18next.t.bind(i18next));
+
+/**
+ * Prefer this over `const tt = t()` in components. Solid runs the component body once;
+ * caching `t()` freezes the old bound `i18next.t`. Each `trans()` call reads the signal
+ * again so locale switches re-render.
+ */
+export function trans(
+  ...args: Parameters<typeof i18next.t>
+): ReturnType<typeof i18next.t> {
+  return t()(...args);
+}
 
 export { i18next };

@@ -7,9 +7,10 @@
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
-    "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity",
+    "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity && bun test:lib-size",
     "test:components": "bun scripts/measure-components.ts",
     "test:consistency": "npx playwright test structure-consistency.test.ts",
+    "test:lib-size": "bun scripts/measure-lib-size.ts",
     "test:pages": "npx playwright test pages.test.ts",
     "test:reactivity": "npx playwright test reactivity.test.ts",
     "test:rendering": "npx playwright test rendering.test.ts"

@@ -1,16 +1,27 @@
-import { A } from "@solidjs/router";
+import { A, useLocation } from "@solidjs/router";
+import { createMemo } from "solid-js";
+import { isLocale } from "../i18n/config";
+import { t } from "../i18n";
 
 export default function NotFound() {
+  const location = useLocation();
+
+  const homeHref = createMemo(() => {
+    const first = location.pathname.split("/").filter(Boolean)[0];
+    const loc = first && isLocale(first) ? first : "en";
+    return `/${loc}`;
+  });
+
   return (
     <div class="flex min-h-[60vh] items-center justify-center bg-muted/30">
       <div class="text-center">
-        <h1 class="mb-4 text-4xl font-bold">404</h1>
-        <p class="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
+        <h1 class="mb-4 text-4xl font-bold">{t("notFound.title")}</h1>
+        <p class="mb-4 text-xl text-muted-foreground">{t("notFound.description")}</p>
         <A
-          href="/en"
+          href={homeHref()}
           class="text-primary underline hover:text-primary/90"
         >
-          Return to Home
+          {t("notFound.returnHome")}
         </A>
       </div>
     </div>

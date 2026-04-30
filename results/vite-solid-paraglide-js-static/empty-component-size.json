@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-04-29T23:20:56.411Z",
+  "packageName": "vite-solid-paraglide-js-static",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 5492,
+    "totalMinifiedBytes": 3255,
+    "totalGzipBytes": 1412
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.tsx",
+      "category": "Synthetic",
+      "unminifiedBytes": 5492,
+      "unminifiedGzipBytes": 1847,
+      "minifiedBytes": 3255,
+      "minifiedGzipBytes": 1412
+    }
+  ]
+}

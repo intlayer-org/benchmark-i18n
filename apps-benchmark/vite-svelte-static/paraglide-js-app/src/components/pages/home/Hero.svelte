@@ -1,6 +1,6 @@
 <script lang="ts">
   import { usePerformanceMeasure } from "$lib/performanceMeasure";
-  import * as m from "../../../paraglide/messages";
+  import { m } from "../../../paraglide/messages";
 
   usePerformanceMeasure("Hero");
 </script>

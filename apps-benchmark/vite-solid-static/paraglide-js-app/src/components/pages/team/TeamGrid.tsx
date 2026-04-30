@@ -1,56 +1,58 @@
 import { For } from "solid-js";
+import * as m from "../../../paraglide/messages";
 
 export default function TeamGrid() {
-  const members = [
+  const members = () => [
     {
-      name: "Sarah Chen",
-      role: "Founder & Lead Engineer",
-      bio: "Former Google engineer with 10 years of experience building internationalization systems at scale.",
+      name: m.team_grid_member1Name(),
+      role: m.team_grid_member1Role(),
+      bio: m.team_grid_member1Bio(),
     },
     {
-      name: "Marcus Weber",
-      role: "Performance Engineer",
-      bio: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+      name: m.team_grid_member2Name(),
+      role: m.team_grid_member2Role(),
+      bio: m.team_grid_member2Bio(),
     },
     {
-      name: "Aisha Patel",
-      role: "Developer Advocate",
-      bio: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+      name: m.team_grid_member3Name(),
+      role: m.team_grid_member3Role(),
+      bio: m.team_grid_member3Bio(),
     },
     {
-      name: "Tomás Rodríguez",
-      role: "Full-Stack Developer",
-      bio: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+      name: m.team_grid_member4Name(),
+      role: m.team_grid_member4Role(),
+      bio: m.team_grid_member4Bio(),
     },
     {
-      name: "Yuki Tanaka",
-      role: "Data Analyst",
-      bio: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+      name: m.team_grid_member5Name(),
+      role: m.team_grid_member5Role(),
+      bio: m.team_grid_member5Bio(),
     },
     {
-      name: "Elena Kowalski",
-      role: "Community Manager",
-      bio: "Manages community contributions, partnerships, and events. Background in open source governance.",
+      name: m.team_grid_member6Name(),
+      role: m.team_grid_member6Role(),
+      bio: m.team_grid_member6Bio(),
     },
   ];
 
   return (
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <For each={members}>
-        {(m) => (
+      <For each={members()}>
+        {(item) => (
           <div class="rounded-lg border border-border bg-card p-6 text-center">
             <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground">
-              {m.name
+              {item.name
                 .split(" ")
                 .map((n) => n[0])
                 .join("")}
             </div>
-            <h3 class="text-base font-semibold text-foreground">{m.name}</h3>
-            <p class="mb-2 text-xs font-medium text-primary">{m.role}</p>
-            <p class="text-sm text-muted-foreground">{m.bio}</p>
+            <h3 class="text-base font-semibold text-foreground">{item.name}</h3>
+            <p class="mb-2 text-xs font-medium text-primary">{item.role}</p>
+            <p class="text-sm text-muted-foreground">{item.bio}</p>
           </div>
         )}
       </For>
     </div>
   );
 }
+

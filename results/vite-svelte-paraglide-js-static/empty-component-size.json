@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-04-29T23:22:49.003Z",
+  "packageName": "vite-svelte-paraglide-js-static",
+  "framework": "svelte",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 5676,
+    "totalMinifiedBytes": 3406,
+    "totalGzipBytes": 1487
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.svelte",
+      "category": "Synthetic",
+      "unminifiedBytes": 5676,
+      "unminifiedGzipBytes": 1936,
+      "minifiedBytes": 3406,
+      "minifiedGzipBytes": 1487
+    }
+  ]
+}

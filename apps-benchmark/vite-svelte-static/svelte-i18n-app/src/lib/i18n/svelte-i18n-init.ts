@@ -1,18 +1,28 @@
 import { init, register, waitLocale } from "svelte-i18n";
+import de from "../../locales/de.json";
+import en from "../../locales/en.json";
+import es from "../../locales/es.json";
+import fr from "../../locales/fr.json";
+import it from "../../locales/it.json";
+import ja from "../../locales/ja.json";
+import ko from "../../locales/ko.json";
+import pt from "../../locales/pt.json";
+import ru from "../../locales/ru.json";
+import zh from "../../locales/zh.json";
 import { parsePath } from "../path";
 import type { Locale } from "./config";
 
 const loaders: Record<Locale, () => Promise<{ default: unknown }>> = {
-  en: () => import("../../locales/en.json"),
-  fr: () => import("../../locales/fr.json"),
-  es: () => import("../../locales/es.json"),
-  de: () => import("../../locales/de.json"),
-  it: () => import("../../locales/it.json"),
-  pt: () => import("../../locales/pt.json"),
-  zh: () => import("../../locales/zh.json"),
-  ja: () => import("../../locales/ja.json"),
-  ko: () => import("../../locales/ko.json"),
-  ru: () => import("../../locales/ru.json"),
+  en: () => Promise.resolve({ default: en }),
+  fr: () => Promise.resolve({ default: fr }),
+  es: () => Promise.resolve({ default: es }),
+  de: () => Promise.resolve({ default: de }),
+  it: () => Promise.resolve({ default: it }),
+  pt: () => Promise.resolve({ default: pt }),
+  zh: () => Promise.resolve({ default: zh }),
+  ja: () => Promise.resolve({ default: ja }),
+  ko: () => Promise.resolve({ default: ko }),
+  ru: () => Promise.resolve({ default: ru }),
 };
 
 export async function setupSvelteI18n(

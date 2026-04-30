@@ -1,51 +1,53 @@
 import { For } from "solid-js";
+import * as m from "../../../paraglide/messages";
 
 export default function PricingTiers() {
-  const tiers = [
+  const tiers = () => [
     {
-      name: "Starter",
-      price: "$0",
-      period: "forever",
+      name: m.pricing_tiers_starterName(),
+      price: m.pricing_tiers_starterPrice(),
+      period: m.pricing_tiers_starterPeriod(),
       features: [
-        "5 benchmark runs/day",
-        "3 libraries",
-        "Community support",
-        "Public results",
+        m.pricing_tiers_starterFeature1(),
+        m.pricing_tiers_starterFeature2(),
+        m.pricing_tiers_starterFeature3(),
+        m.pricing_tiers_starterFeature4(),
       ],
     },
     {
-      name: "Pro",
-      price: "$29",
-      period: "/month",
+      name: m.pricing_tiers_proName(),
+      price: m.pricing_tiers_proPrice(),
+      period: m.pricing_tiers_proPeriod(),
       features: [
-        "Unlimited runs",
-        "All libraries",
-        "Priority support",
-        "Private results",
-        "CI integration",
-        "Historical data",
+        m.pricing_tiers_proFeature1(),
+        m.pricing_tiers_proFeature2(),
+        m.pricing_tiers_proFeature3(),
+        m.pricing_tiers_proFeature4(),
+        m.pricing_tiers_proFeature5(),
+        m.pricing_tiers_proFeature6(),
       ],
       highlighted: true,
     },
     {
-      name: "Enterprise",
-      price: "Custom",
+      name: m.pricing_tiers_enterpriseName(),
+      price: m.pricing_tiers_enterprisePrice(),
       period: "",
       features: [
-        "Everything in Pro",
-        "On-premise option",
-        "SSO & SAML",
-        "Dedicated account manager",
-        "Custom SLAs",
-        "Audit logs",
-        "Training sessions",
+        m.pricing_tiers_enterpriseFeature1(),
+        m.pricing_tiers_enterpriseFeature2(),
+        m.pricing_tiers_enterpriseFeature3(),
+        m.pricing_tiers_enterpriseFeature4(),
+        m.pricing_tiers_enterpriseFeature5(),
+        m.pricing_tiers_enterpriseFeature6(),
+        m.pricing_tiers_enterpriseFeature7(),
       ],
     },
   ];
 
+
   return (
     <div class="grid gap-6 md:grid-cols-3">
-      <For each={tiers}>
+      <For each={tiers()}>
         {(t) => (
           <div
             class={`flex flex-col rounded-lg border p-6 ${
@@ -76,7 +78,7 @@ export default function PricingTiers() {
                   : "border border-border text-foreground hover:bg-accent"
               }`}
             >
-              {t.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+              {t.name === m.pricing_tiers_enterpriseName() ? m.pricing_tiers_contactSales() : m.pricing_tiers_getStarted()}
             </button>
           </div>
         )}
@@ -84,3 +86,4 @@ export default function PricingTiers() {
     </div>
   );
 }
+

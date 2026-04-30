@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { m } from "../../../paraglide/messages";
+
   const nameId = "contact-name";
   const emailId = "contact-email";
   const topicId = "contact-topic";
@@ -12,12 +14,12 @@
         for={nameId}
         class="mb-1 block text-sm font-medium text-foreground"
       >
-        Name
+        {m.contact_form_name()}
       </label>
       <input
         id={nameId}
         class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-none"
-        placeholder="Your name"
+        placeholder={m.contact_form_yourName()}
       />
     </div>
     <div>
@@ -25,13 +27,13 @@
         for={emailId}
         class="mb-1 block text-sm font-medium text-foreground"
       >
-        Email
+        {m.contact_form_email()}
       </label>
       <input
         id={emailId}
         type="email"
         class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-none"
-        placeholder="you@example.com"
+        placeholder={m.contact_form_emailPlaceholder()}
       />
     </div>
   </div>
@@ -40,17 +42,17 @@
       for={topicId}
       class="mb-1 block text-sm font-medium text-foreground"
     >
-      Topic
+      {m.contact_form_topic()}
     </label>
     <select
       id={topicId}
       class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-1 focus:ring-ring focus:outline-none"
     >
-      <option>Bug Report</option>
-      <option>New Benchmark Idea</option>
-      <option>Methodology Question</option>
-      <option>Contribution</option>
-      <option>Other</option>
+      <option>{m.contact_form_bugReport()}</option>
+      <option>{m.contact_form_newBenchmarkIdea()}</option>
+      <option>{m.contact_form_methodologyQuestion()}</option>
+      <option>{m.contact_form_contribution()}</option>
+      <option>{m.contact_form_other()}</option>
     </select>
   </div>
   <div>
@@ -58,19 +60,19 @@
       for={messageId}
       class="mb-1 block text-sm font-medium text-foreground"
     >
-      Message
+      {m.contact_form_message()}
     </label>
     <textarea
       id={messageId}
       rows={5}
       class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-none"
-      placeholder="Describe your question or idea..."
+      placeholder={m.contact_form_messagePlaceholder()}
     ></textarea>
   </div>
   <button
     type="submit"
     class="rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
   >
-    Send Message
+    {m.contact_form_sendMessage()}
   </button>
 </form>

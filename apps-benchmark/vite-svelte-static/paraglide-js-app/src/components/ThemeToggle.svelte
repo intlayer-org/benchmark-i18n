@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { m } from "../paraglide/messages";
 
   type ThemeMode = "light" | "dark" | "auto";
 
@@ -57,16 +58,16 @@
 
   const label = $derived(
     mode === "auto"
-      ? "Theme mode: auto (system). Click to switch to light mode."
-      : `Theme mode: ${mode}. Click to switch mode.`,
+      ? m.themeToggle_labelAuto()
+      : m.themeToggle_labelOther({ mode }),
   );
 
   const buttonText = $derived(
     mode === "auto"
-      ? "Theme: Auto"
+      ? m.themeToggle_auto()
       : mode === "dark"
-        ? "Theme: Dark"
-        : "Theme: Light",
+        ? m.themeToggle_dark()
+        : m.themeToggle_light(),
   );
 </script>
 

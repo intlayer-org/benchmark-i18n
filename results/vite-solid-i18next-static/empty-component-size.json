@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-04-29T23:20:55.399Z",
+  "packageName": "vite-solid-i18next-static",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 73298,
+    "totalMinifiedBytes": 52253,
+    "totalGzipBytes": 14931
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.tsx",
+      "category": "Synthetic",
+      "unminifiedBytes": 73298,
+      "unminifiedGzipBytes": 18129,
+      "minifiedBytes": 52253,
+      "minifiedGzipBytes": 14931
+    }
+  ]
+}

@@ -1,9 +1,10 @@
 <script lang="ts">
+  import { m } from "../../../paraglide/messages";
   import MockBanner from "../../MockBanner.svelte";
 </script>
 
 <MockBanner />
-<h1 class="mb-2 text-3xl font-bold text-foreground">Blog</h1>
+<h1 class="mb-2 text-3xl font-bold text-foreground">{m.blog_header_title()}</h1>
 <p class="mb-10 text-muted-foreground">
-  Insights, tutorials, and analysis from the i18n community.
+  {m.blog_header_description()}
 </p>

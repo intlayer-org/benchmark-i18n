@@ -1,5 +1,5 @@
 /**
- * Builds fr.json from en.json by applying French string leaves.
+ * Builds French strings in fr.json from English (en.json) leaves.
  * Run: bun scripts/build-fr-json.ts
  */
 import * as fs from "node:fs";
@@ -392,4 +392,4 @@ for (const k of Object.keys(frLeaves)) {
 }
 const fr = applyFr(en, "");
 fs.writeFileSync(frPath, `${JSON.stringify(fr, null, 2)}\n`);
-console.log(`Wrote ${frPath} (${Object.keys(frLeaves).length} keys)`);
+console.log(`Wrote ${frPath} → fr (${Object.keys(frLeaves).length} keys)`);

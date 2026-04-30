@@ -1,18 +1,19 @@
 import { For } from "solid-js";
+import * as m from "../../../paraglide/messages";
 
 export default function CareersBenefits() {
-  const benefits = [
-    { label: "Remote-first", value: "Work from anywhere in the world" },
-    { label: "Competitive pay", value: "Top-of-market compensation" },
+  const benefits = () => [
+    { label: m.careers_benefits_remoteLabel(), value: m.careers_benefits_remoteValue() },
+    { label: m.careers_benefits_payLabel(), value: m.careers_benefits_payValue() },
     {
-      label: "Open source time",
-      value: "20% time for OSS contributions",
+      label: m.careers_benefits_ossLabel(),
+      value: m.careers_benefits_ossValue(),
     },
   ];
 
   return (
     <div class="mb-12 grid gap-4 md:grid-cols-3">
-      <For each={benefits}>
+      <For each={benefits()}>
         {(b) => (
           <div class="rounded-lg border border-border bg-card p-4 text-center">
             <p class="text-sm font-semibold text-foreground">{b.label}</p>
@@ -23,3 +24,4 @@ export default function CareersBenefits() {
     </div>
   );
 }
+

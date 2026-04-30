@@ -1,10 +1,20 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
 const benefits = [
-  { label: "Remote-first", value: "Work from anywhere in the world" },
-  { label: "Competitive pay", value: "Top-of-market compensation" },
   {
-    label: "Open source time",
-    value: "20% time for OSS contributions",
+    labelKey: "careers.benefits.remoteLabel",
+    valueKey: "careers.benefits.remoteValue",
+  },
+  {
+    labelKey: "careers.benefits.payLabel",
+    valueKey: "careers.benefits.payValue",
+  },
+  {
+    labelKey: "careers.benefits.ossLabel",
+    valueKey: "careers.benefits.ossValue",
   },
 ];
 </script>
@@ -13,11 +23,11 @@ const benefits = [
   <div class="mb-12 grid gap-4 md:grid-cols-3">
     <div
       v-for="b in benefits"
-      :key="b.label"
+      :key="b.labelKey"
       class="rounded-lg border border-border bg-card p-4 text-center"
     >
-      <p class="text-sm font-semibold text-foreground">{{ b.label }}</p>
-      <p class="text-xs text-muted-foreground">{{ b.value }}</p>
+      <p class="text-sm font-semibold text-foreground">{{ t(b.labelKey) }}</p>
+      <p class="text-xs text-muted-foreground">{{ t(b.valueKey) }}</p>
     </div>
   </div>
 </template>

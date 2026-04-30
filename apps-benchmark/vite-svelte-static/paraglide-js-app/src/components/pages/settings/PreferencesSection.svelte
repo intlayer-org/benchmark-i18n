@@ -1,17 +1,27 @@
+<script lang="ts">
+  import { m } from "../../../paraglide/messages";
+
+  const languageId = "settings-default-language";
+</script>
+
 <section class="rounded-lg border border-border bg-card p-6">
-  <h2 class="mb-4 text-lg font-semibold text-foreground">Preferences</h2>
+  <h2 class="mb-4 text-lg font-semibold text-foreground">
+    {m.settings_preferences_title()}
+  </h2>
   <div class="space-y-4">
     <div class="flex items-center justify-between">
       <div>
-        <p class="text-sm font-medium text-foreground">Email Notifications</p>
+        <p class="text-sm font-medium text-foreground">
+          {m.settings_preferences_emailNotifications()}
+        </p>
         <p class="text-xs text-muted-foreground">
-          Receive weekly benchmark reports
+          {m.settings_preferences_weeklyReports()}
         </p>
       </div>
       <button
         type="button"
         class="h-6 w-11 rounded-full bg-primary transition-colors"
-        aria-label="Toggle notifications"
+        aria-label={m.settings_preferences_toggleNotifications()}
       >
         <span
           class="block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform"
@@ -20,13 +30,17 @@
     </div>
     <div class="flex items-center justify-between">
       <div>
-        <p class="text-sm font-medium text-foreground">Dark Mode</p>
-        <p class="text-xs text-muted-foreground">Use dark color scheme</p>
+        <p class="text-sm font-medium text-foreground">
+          {m.settings_preferences_darkMode()}
+        </p>
+        <p class="text-xs text-muted-foreground">
+          {m.settings_preferences_darkColorScheme()}
+        </p>
       </div>
       <button
         type="button"
         class="h-6 w-11 rounded-full bg-muted transition-colors"
-        aria-label="Toggle dark mode"
+        aria-label={m.settings_preferences_toggleDarkMode()}
       >
         <span
           class="block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform"
@@ -35,22 +49,22 @@
     </div>
     <div>
       <label
-        for="settings-default-language"
+        for={languageId}
         class="mb-1 block text-sm font-medium text-foreground"
       >
-        Default Language
+        {m.settings_preferences_defaultLanguage()}
       </label>
       <select
-        id="settings-default-language"
+        id={languageId}
         class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-1 focus:ring-ring focus:outline-none"
       >
-        <option>English (en)</option>
-        <option>French (fr)</option>
-        <option>German (de)</option>
-        <option>Spanish (es)</option>
-        <option>Japanese (ja)</option>
-        <option>Chinese Simplified (zh-CN)</option>
-        <option>Arabic (ar)</option>
+        <option>{m.settings_preferences_english()}</option>
+        <option>{m.settings_preferences_french()}</option>
+        <option>{m.settings_preferences_german()}</option>
+        <option>{m.settings_preferences_spanish()}</option>
+        <option>{m.settings_preferences_japanese()}</option>
+        <option>{m.settings_preferences_chinese()}</option>
+        <option>{m.settings_preferences_arabic()}</option>
       </select>
     </div>
   </div>

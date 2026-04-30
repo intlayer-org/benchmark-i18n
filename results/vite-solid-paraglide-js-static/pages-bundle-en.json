@@ -1,0 +1,975 @@
+{
+  "app": "vite-solid-paraglide-js-static",
+  "locale": "en",
+  "timestamp": "2026-04-29T23:42:26.002Z",
+  "fingerprintCounts": {
+    "locale": {
+      "en": 0,
+      "fr": 0
+    },
+    "page": {
+      "home": 0,
+      "about": 0,
+      "blog": 0,
+      "careers": 0,
+      "contact": 0,
+      "faq": 0,
+      "pricing": 0,
+      "products": 0,
+      "settings": 0,
+      "team": 0
+    }
+  },
+  "results": [
+    {
+      "path": "/en/",
+      "page": "home",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/about",
+      "page": "about",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/about",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/blog",
+      "page": "blog",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/blog",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/careers",
+      "page": "careers",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/careers",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/contact",
+      "page": "contact",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/contact",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/faq",
+      "page": "faq",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/faq",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/pricing",
+      "page": "pricing",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/pricing",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/products",
+      "page": "products",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/products",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/settings",
+      "page": "settings",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/settings",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/team",
+      "page": "team",
+      "locale": "en",
+      "totalSize": 86798,
+      "totalGzipSize": 27261,
+      "jsSize": 59793,
+      "jsGzipSize": 21408,
+      "cssSize": 25583,
+      "cssGzipSize": 5203,
+      "htmlSize": 1422,
+      "htmlGzipSize": 650,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/en/team",
+          "size": 1422,
+          "gzipSize": 650,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BIgtXjkS.css",
+          "size": 25583,
+          "gzipSize": 5203,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-BtPG1cc2.js",
+          "size": 34505,
+          "gzipSize": 11719,
+          "type": "js"
+        },
+        {
+          "url": "/assets/messages-CUisQ9ZV.js",
+          "size": 25288,
+          "gzipSize": 9689,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    }
+  ]
+}

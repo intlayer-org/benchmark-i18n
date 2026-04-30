@@ -1,32 +1,40 @@
 <script setup lang="ts">
-const metrics = [
+import { computed } from "vue";
+import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
+import { useFluentDottedT } from "../../../i18n/useFluentDottedT";
+
+usePerformanceMeasure("WhatWeMeasure");
+
+const { td } = useFluentDottedT();
+
+const metrics = computed(() => [
   {
-    metric: "Bundle size impact",
-    desc: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.",
+    metric: td("about.whatWeMeasure.bundleSizeImpact"),
+    desc: td("about.whatWeMeasure.bundleSizeImpactDesc"),
   },
   {
-    metric: "Rendering overhead",
-    desc: "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+    metric: td("about.whatWeMeasure.renderingOverhead"),
+    desc: td("about.whatWeMeasure.renderingOverheadDesc"),
   },
   {
-    metric: "Hydration cost",
-    desc: "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
+    metric: td("about.whatWeMeasure.hydrationCost"),
+    desc: td("about.whatWeMeasure.hydrationCostDesc"),
   },
   {
-    metric: "Lazy loading effectiveness",
-    desc: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).",
+    metric: td("about.whatWeMeasure.lazyLoading"),
+    desc: td("about.whatWeMeasure.lazyLoadingDesc"),
   },
   {
-    metric: "Locale switch speed",
-    desc: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.",
+    metric: td("about.whatWeMeasure.localeSwitch"),
+    desc: td("about.whatWeMeasure.localeSwitchDesc"),
   },
-];
+]);
 </script>
 
 <template>
   <section class="mt-12 mx-auto max-w-3xl">
     <h2 class="mb-4 text-2xl font-bold text-foreground">
-      What We Measure
+      {{ td("about.whatWeMeasure.title") }}
     </h2>
     <ul class="space-y-4">
       <li v-for="m in metrics" :key="m.metric" class="rounded-md border border-border p-4">

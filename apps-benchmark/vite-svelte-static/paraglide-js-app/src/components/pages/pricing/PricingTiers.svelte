@@ -1,49 +1,65 @@
 <script lang="ts">
-  const tiers = [
-    {
-      name: "Starter",
-      price: "$0",
-      period: "forever",
-      features: [
-        "5 benchmark runs/day",
-        "3 libraries",
-        "Community support",
-        "Public results",
-      ],
-    },
-    {
-      name: "Pro",
-      price: "$29",
-      period: "/month",
-      features: [
-        "Unlimited runs",
-        "All libraries",
-        "Priority support",
-        "Private results",
-        "CI integration",
-        "Historical data",
-      ],
-      highlighted: true,
-    },
-    {
-      name: "Enterprise",
-      price: "Custom",
-      period: "",
-      features: [
-        "Everything in Pro",
-        "On-premise option",
-        "SSO & SAML",
-        "Dedicated account manager",
-        "Custom SLAs",
-        "Audit logs",
-        "Training sessions",
-      ],
-    },
-  ];
+  import { m } from "../../../paraglide/messages";
+  import { route } from "$lib/routerStore";
+
+  const currentLocale = $derived(
+    $route.kind === "ok" ? $route.locale : "en",
+  );
+
+  const tiers = $derived.by(() => {
+    void currentLocale;
+    return [
+      {
+        name: m.pricing_tiers_starterName(),
+        price: m.pricing_tiers_starterPrice(),
+        period: m.pricing_tiers_starterPeriod(),
+        features: [
+          m.pricing_tiers_starterFeature1(),
+          m.pricing_tiers_starterFeature2(),
+          m.pricing_tiers_starterFeature3(),
+          m.pricing_tiers_starterFeature4(),
+        ],
+      },
+      {
+        name: m.pricing_tiers_proName(),
+        price: m.pricing_tiers_proPrice(),
+        period: m.pricing_tiers_proPeriod(),
+        features: [
+          m.pricing_tiers_proFeature1(),
+          m.pricing_tiers_proFeature2(),
+          m.pricing_tiers_proFeature3(),
+          m.pricing_tiers_proFeature4(),
+          m.pricing_tiers_proFeature5(),
+          m.pricing_tiers_proFeature6(),
+        ],
+        highlighted: true,
+      },
+      {
+        name: m.pricing_tiers_enterpriseName(),
+        price: m.pricing_tiers_enterprisePrice(),
+        period: "",
+        features: [
+          m.pricing_tiers_enterpriseFeature1(),
+          m.pricing_tiers_enterpriseFeature2(),
+          m.pricing_tiers_enterpriseFeature3(),
+          m.pricing_tiers_enterpriseFeature4(),
+          m.pricing_tiers_enterpriseFeature5(),
+          m.pricing_tiers_enterpriseFeature6(),
+          m.pricing_tiers_enterpriseFeature7(),
+        ],
+      },
+    ];
+  });
+
+  function tierButtonLabel(tierName: string): string {
+    return tierName === m.pricing_tiers_enterpriseName()
+      ? m.pricing_tiers_contactSales()
+      : m.pricing_tiers_getStarted();
+  }
 </script>
 
 <div class="grid gap-6 md:grid-cols-3">
-  {#each tiers as t (t.name)}
+  {#each tiers as t, ti (ti)}
     <div
       class="flex flex-col rounded-lg border p-6 {t.highlighted
         ? 'border-primary bg-primary/5 ring-1 ring-primary'
@@ -68,7 +84,7 @@
           ? 'bg-primary text-primary-foreground'
           : 'border border-border text-foreground hover:bg-accent'}"
       >
-        {t.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+        {tierButtonLabel(t.name)}
       </button>
     </div>
   {/each}

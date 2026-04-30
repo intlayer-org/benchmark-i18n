@@ -1,49 +1,50 @@
 import { For } from "solid-js";
+import * as m from "../../../paraglide/messages";
 
 export default function OpenPositions() {
-  const openings = [
+  const openings = () => [
     {
-      title: "Senior Frontend Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+      title: m.careers_openPositions_frontendTitle(),
+      location: m.careers_openPositions_remote(),
+      type: m.careers_openPositions_fullTime(),
+      dept: m.careers_openPositions_engineering(),
+      desc: m.careers_openPositions_frontendDesc(),
     },
     {
-      title: "Backend Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+      title: m.careers_openPositions_backendTitle(),
+      location: m.careers_openPositions_remote(),
+      type: m.careers_openPositions_fullTime(),
+      dept: m.careers_openPositions_engineering(),
+      desc: m.careers_openPositions_backendDesc(),
     },
     {
-      title: "Technical Writer",
-      location: "Remote",
-      type: "Part-time",
-      dept: "Documentation",
-      desc: "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
+      title: m.careers_openPositions_writerTitle(),
+      location: m.careers_openPositions_remote(),
+      type: m.careers_openPositions_partTime(),
+      dept: m.careers_openPositions_documentation(),
+      desc: m.careers_openPositions_writerDesc(),
     },
     {
-      title: "DevRel Engineer",
-      location: "San Francisco / Remote",
-      type: "Full-time",
-      dept: "Community",
-      desc: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+      title: m.careers_openPositions_devrelTitle(),
+      location: m.careers_openPositions_sfRemote(),
+      type: m.careers_openPositions_fullTime(),
+      dept: m.careers_openPositions_community(),
+      desc: m.careers_openPositions_devrelDesc(),
     },
     {
-      title: "QA Engineer",
-      location: "Remote",
-      type: "Full-time",
-      dept: "Engineering",
-      desc: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
+      title: m.careers_openPositions_qaTitle(),
+      location: m.careers_openPositions_remote(),
+      type: m.careers_openPositions_fullTime(),
+      dept: m.careers_openPositions_engineering(),
+      desc: m.careers_openPositions_qaDesc(),
     },
   ];
 
   return (
     <>
-      <h2 class="mb-6 text-2xl font-bold text-foreground">Open Positions</h2>
+      <h2 class="mb-6 text-2xl font-bold text-foreground">{m.careers_openPositions_title()}</h2>
       <div class="space-y-4">
-        <For each={openings}>
+        <For each={openings()}>
           {(o) => (
             <div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between">
               <div>
@@ -65,7 +66,7 @@ export default function OpenPositions() {
                 type="button"
                 class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
-                Apply Now
+                {m.careers_openPositions_applyNow()}
               </button>
             </div>
           )}
@@ -74,3 +75,5 @@ export default function OpenPositions() {
     </>
   );
 }
+
+

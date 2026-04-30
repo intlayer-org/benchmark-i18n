@@ -1,48 +1,20 @@
 <script setup lang="ts">
-const posts = [
-  {
-    title: "Comparing i18n Libraries in 2026: A Deep Dive",
-    date: "March 15, 2026",
-    excerpt:
-      "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
-    category: "Benchmark",
-  },
-  {
-    title: "How to Reduce Your i18n Bundle by 60%",
-    date: "March 8, 2026",
-    excerpt:
-      "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-    category: "Tutorial",
-  },
-  {
-    title: "The State of Internationalization in React",
-    date: "February 28, 2026",
-    excerpt:
-      "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
-    category: "Analysis",
-  },
-  {
-    title: "Migrating from react-i18next to Lingui",
-    date: "February 15, 2026",
-    excerpt:
-      "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
-    category: "Tutorial",
-  },
-  {
-    title: "Server Components and i18n: What Changes?",
-    date: "February 1, 2026",
-    excerpt:
-      "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
-    category: "Analysis",
-  },
-  {
-    title: "Benchmark Methodology: How We Test",
-    date: "January 20, 2026",
-    excerpt:
-      "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-    category: "Meta",
-  },
-];
+import { computed } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
+const postIndices = [1, 2, 3, 4, 5, 6] as const;
+
+// biome-ignore lint/correctness/noUnusedVariables: used in <template> v-for
+const posts = computed(() =>
+  postIndices.map((n) => ({
+    title: t(`blog.list.post${n}Title`),
+    date: t(`blog.list.post${n}Date`),
+    excerpt: t(`blog.list.post${n}Excerpt`),
+    category: t(`blog.list.post${n}Category`),
+  })),
+);
 </script>
 
 <template>
@@ -66,7 +38,7 @@ const posts = [
         type="button"
         class="text-sm font-medium text-primary hover:underline"
       >
-        Read More →
+        {{ t("blog.list.readMore") }}
       </button>
     </article>
   </div>

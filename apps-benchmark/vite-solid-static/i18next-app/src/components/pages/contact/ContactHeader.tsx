@@ -1,18 +1,20 @@
 import MockBanner from "../../MockBanner";
+import { trans } from "../../../i18n";
 
 export default function ContactHeader() {
   return (
     <>
       <MockBanner />
-      <h1 class="mb-2 text-3xl font-bold text-foreground">Get in Touch</h1>
+      <h1 class="mb-2 text-3xl font-bold text-foreground">
+        {trans("contact.header.title")}
+      </h1>
       <p class="mb-8 text-muted-foreground">
-        Have ideas, found a bug, or want to contribute a benchmark? Reach out to
-        us at{" "}
+        {trans("contact.header.description")}{" "}
         <a
           href="mailto:contact@intlayer.org"
           class="text-primary hover:underline"
         >
-          contact@intlayer.org
+          {trans("shared.contactEmail")}
         </a>
         .
       </p>

@@ -17,6 +17,6 @@
     "node_modules/@inlang/plugin-message-format/dist/index.js"
   ],
   "plugin.inlang.messageFormat": {
-    "pathPattern": "./{locale}.json"
+    "pathPattern": "../locales/{locale}.json"
   }
 }

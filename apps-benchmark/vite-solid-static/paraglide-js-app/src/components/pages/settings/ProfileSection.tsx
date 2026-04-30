@@ -1,4 +1,5 @@
 import { createUniqueId } from "solid-js";
+import * as m from "../../../paraglide/messages";
 
 export default function ProfileSection() {
   const displayNameId = createUniqueId();
@@ -6,14 +7,14 @@ export default function ProfileSection() {
 
   return (
     <section class="rounded-lg border border-border bg-card p-6">
-      <h2 class="mb-4 text-lg font-semibold text-foreground">Profile</h2>
+      <h2 class="mb-4 text-lg font-semibold text-foreground">{m.settings_profile_title()}</h2>
       <div class="space-y-4">
         <div>
           <label
             for={displayNameId}
             class="mb-1 block text-sm font-medium text-foreground"
           >
-            Display Name
+            {m.settings_profile_displayName()}
           </label>
           <input
             id={displayNameId}
@@ -26,7 +27,7 @@ export default function ProfileSection() {
             for={emailId}
             class="mb-1 block text-sm font-medium text-foreground"
           >
-            Email
+            {m.settings_profile_email()}
           </label>
           <input
             id={emailId}
@@ -38,3 +39,4 @@ export default function ProfileSection() {
     </section>
   );
 }
+

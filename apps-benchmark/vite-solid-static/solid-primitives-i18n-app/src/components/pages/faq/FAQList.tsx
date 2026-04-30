@@ -4,8 +4,8 @@ import { t } from "../../../i18n";
 export default function FAQList() {
   const faqNums = [1, 2, 3, 4, 5, 6, 7, 8] as const;
   const faqs = faqNums.map((i) => ({
-    q: (m[`faq_list_q${i}` as keyof typeof m] as any)?.(),
-    a: (m[`faq_list_a${i}` as keyof typeof m] as any)?.(),
+    q: t(`faq.list.q${i}`),
+    a: t(`faq.list.a${i}`),
   }));
 
   return (

@@ -1,27 +1,18 @@
 import { createSignal } from "solid-js";
 import { flatten, translator, resolveTemplate } from "@solid-primitives/i18n";
-import en from "../locales/en.json";
-import fr from "../locales/fr.json";
-import es from "../locales/es.json";
-import de from "../locales/de.json";
-import it from "../locales/it.json";
-import pt from "../locales/pt.json";
-import zh from "../locales/zh.json";
-import ja from "../locales/ja.json";
-import ko from "../locales/ko.json";
-import ru from "../locales/ru.json";
+import translations from "../locales/translations.json";
 
 const dicts = {
-  en: flatten(en),
-  fr: flatten(fr),
-  es: flatten(es),
-  de: flatten(de),
-  it: flatten(it),
-  pt: flatten(pt),
-  zh: flatten(zh),
-  ja: flatten(ja),
-  ko: flatten(ko),
-  ru: flatten(ru),
+  en: flatten(translations.en),
+  fr: flatten(translations.fr),
+  es: flatten(translations.es),
+  de: flatten(translations.de),
+  it: flatten(translations.it),
+  pt: flatten(translations.pt),
+  zh: flatten(translations.zh),
+  ja: flatten(translations.ja),
+  ko: flatten(translations.ko),
+  ru: flatten(translations.ru),
 };
 
 export type PrimitiveLocale = "en" | "fr" | "es" | "de" | "it" | "pt" | "zh" | "ja" | "ko" | "ru";

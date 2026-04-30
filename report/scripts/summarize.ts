@@ -10,7 +10,7 @@
  *   bun report/scripts/summarize.ts [options]
  *
  * Options:
- *   --framework <name>   Filter by framework (nextjs, tanstack, vite-react)
+ *   --framework <name>   Filter by framework (nextjs, tanstack, vite-react, vite-vue, vite-svelte, vite-solid)
  *   --category  <name>   Filter by test category (static, dynamic, scoped-static, scoped-dynamic)
  *   --lib       <name>   Filter by library name (partial match)
  *   --json               Output aggregated lib data as JSON on stdout
@@ -75,7 +75,7 @@ Usage:
   bun report/scripts/summarize.ts [options]
 
 Options:
-  --framework <name>   Filter by framework: nextjs | tanstack | vite-react
+  --framework <name>   Filter by framework: nextjs | tanstack | vite-react | vite-vue | vite-svelte | vite-solid
   --category  <name>   Filter by test category: static | dynamic | scoped-static | scoped-dynamic
   --lib       <name>   Filter by library name (partial match, e.g. "intlayer")
   --json               Output aggregated lib data as JSON on stdout
@@ -424,6 +424,12 @@ function parseCategory(appName: string): {
     framework = "nextjs";
   } else if (appName.startsWith("tanstack-")) {
     framework = "tanstack-start-react";
+  } else if (appName.startsWith("vite-vue-")) {
+    framework = "vite-vue";
+  } else if (appName.startsWith("vite-svelte-")) {
+    framework = "vite-svelte";
+  } else if (appName.startsWith("vite-solid-")) {
+    framework = "vite-solid";
   } else if (
     appName.startsWith("vite+react-") ||
     appName.startsWith("vite-")
@@ -433,13 +439,22 @@ function parseCategory(appName: string): {
   }
 
   let testCategory = "unknown";
-  if (appName.includes("-scoped-dynamic-")) {
+  // Match both infix (`-static-`) and suffix (`-static`) styles. nextjs/tanstack
+  // use `<framework>-<category>-<lib>-app`; vite vue/svelte/solid/react use
+  // `vite-<framework>-<lib>-<category>` so the category lives at the end.
+  if (
+    appName.includes("-scoped-dynamic-") ||
+    appName.endsWith("-scoped-dynamic")
+  ) {
     testCategory = "scoped-dynamic";
-  } else if (appName.includes("-scoped-static-")) {
+  } else if (
+    appName.includes("-scoped-static-") ||
+    appName.endsWith("-scoped-static")
+  ) {
     testCategory = "scoped-static";
-  } else if (appName.includes("-dynamic-")) {
+  } else if (appName.includes("-dynamic-") || appName.endsWith("-dynamic")) {
     testCategory = "dynamic";
-  } else if (appName.includes("-static-")) {
+  } else if (appName.includes("-static-") || appName.endsWith("-static")) {
     testCategory = "static";
   } else if (appName.includes("-base-app")) {
     testCategory = "base";
@@ -462,6 +477,9 @@ function deriveLibraryName(appName: string): string {
     "tanstack-static-",
     "vite+react-",
     "vite-react-",
+    "vite-vue-",
+    "vite-svelte-",
+    "vite-solid-",
     "vite-",
     "nextjs-",
     "tanstack-",
@@ -470,6 +488,21 @@ function deriveLibraryName(appName: string): string {
   for (const prefix of prefixes) {
     if (name.startsWith(prefix)) {
       name = name.slice(prefix.length);
+      break;
+    }
+  }
+
+  // Vue/Svelte/Solid/Vite-React apps use the form `<lib>-<category>`, so the
+  // category suffix needs stripping after the framework prefix.
+  const suffixes = [
+    "-scoped-dynamic",
+    "-scoped-static",
+    "-dynamic",
+    "-static",
+  ];
+  for (const suffix of suffixes) {
+    if (name.endsWith(suffix)) {
+      name = name.slice(0, -suffix.length);
       break;
     }
   }
@@ -488,10 +521,17 @@ const LIBRARY_PACKAGES: Record<string, string[]> = {
   "next-i18next": ["next-i18next"],
   "next-translate": ["next-translate"],
   "next-intlayer": ["next-intlayer"],
-  intlayer: ["intlayer"],
+  intlayer: [
+    "intlayer",
+    "react-intlayer",
+    "vue-intlayer",
+    "svelte-intlayer",
+    "solid-intlayer",
+  ],
   lingui: ["@lingui/react"],
   "paraglide-next": ["@inlang/paraglide-next", "@inlang/paraglide-js"],
   paraglide: ["@inlang/paraglide-js"],
+  "paraglide-js": ["@inlang/paraglide-js"],
   tolgee: ["@tolgee/react"],
   "react-i18next": ["react-i18next"],
   "use-intl": ["use-intl"],
@@ -504,6 +544,11 @@ const LIBRARY_PACKAGES: Record<string, string[]> = {
     "lingodotdev-i18next",
     "@lingo.dev/compiler",
   ],
+  // Vue / Svelte / Solid libraries
+  i18n: ["vue-i18n", "svelte-i18n"],
+  i18next: ["i18next"],
+  "fluent-vue": ["fluent-vue"],
+  "primitives-i18n": ["@solid-primitives/i18n"],
 };
 
 function findLibraryVersion(
@@ -1200,6 +1245,9 @@ const FRAMEWORK_LABELS: Record<string, string> = {
   "tanstack-start-react": "TanStack Start (React)",
   vite: "Vite",
   "vite-react": "Vite + React",
+  "vite-vue": "Vite + Vue",
+  "vite-svelte": "Vite + Svelte",
+  "vite-solid": "Vite + Solid",
 };
 
 /** Filename segment for --out / --md (matches result folder naming). */
@@ -1207,6 +1255,9 @@ function frameworkFileSlug(fw: string): string {
   if (fw === "nextjs") return "nextjs";
   if (fw.startsWith("tanstack")) return "tanstack";
   if (fw === "vite-react") return "vite_react";
+  if (fw === "vite-vue") return "vite_vue";
+  if (fw === "vite-svelte") return "vite_svelte";
+  if (fw === "vite-solid") return "vite_solid";
   return "unknown";
 }
 

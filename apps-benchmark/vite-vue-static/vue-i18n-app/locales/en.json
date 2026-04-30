@@ -2,7 +2,7 @@
   "shared": {
     "appName": "i18n Bench",
     "siteName": "i18n Benchmark",
-    "contactEmail": "contact@intlayer.org",
+    "contactEmail": "contact{'@'}intlayer.org",
     "goToGithub": "Go to GitHub"
   },
   "header": {
@@ -183,7 +183,7 @@
       "name": "Name",
       "yourName": "Your name",
       "email": "Email",
-      "emailPlaceholder": "you@example.com",
+      "emailPlaceholder": "you{'@'}example.com",
       "topic": "Topic",
       "bugReport": "Bug Report",
       "newBenchmarkIdea": "New Benchmark Idea",
@@ -206,7 +206,7 @@
       "q2": "How are benchmarks conducted?",
       "a2": "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
       "q3": "Which libraries are currently supported?",
-      "a3": "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+      "a3": "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {'@'}fluent/react, and Tolgee.",
       "q4": "Can I submit my own benchmarks?",
       "a4": "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
       "q5": "How often are benchmarks updated?",

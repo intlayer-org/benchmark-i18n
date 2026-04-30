@@ -1,52 +1,56 @@
 <script lang="ts">
-  const posts = [
-    {
-      title: "Comparing i18n Libraries in 2026: A Deep Dive",
-      date: "March 15, 2026",
-      excerpt:
-        "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
-      category: "Benchmark",
-    },
-    {
-      title: "How to Reduce Your i18n Bundle by 60%",
-      date: "March 8, 2026",
-      excerpt:
-        "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-      category: "Tutorial",
-    },
-    {
-      title: "The State of Internationalization in React",
-      date: "February 28, 2026",
-      excerpt:
-        "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
-      category: "Analysis",
-    },
-    {
-      title: "Migrating from react-i18next to Lingui",
-      date: "February 15, 2026",
-      excerpt:
-        "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
-      category: "Tutorial",
-    },
-    {
-      title: "Server Components and i18n: What Changes?",
-      date: "February 1, 2026",
-      excerpt:
-        "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
-      category: "Analysis",
-    },
-    {
-      title: "Benchmark Methodology: How We Test",
-      date: "January 20, 2026",
-      excerpt:
-        "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-      category: "Meta",
-    },
-  ];
+  import { m } from "../../../paraglide/messages";
+  import { route } from "$lib/routerStore";
+
+  const currentLocale = $derived(
+    $route.kind === "ok" ? $route.locale : "en",
+  );
+
+  const posts = $derived.by(() => {
+    void currentLocale;
+    return [
+      {
+        title: m.blog_list_post1Title(),
+        date: m.blog_list_post1Date(),
+        excerpt: m.blog_list_post1Excerpt(),
+        category: m.blog_list_post1Category(),
+      },
+      {
+        title: m.blog_list_post2Title(),
+        date: m.blog_list_post2Date(),
+        excerpt: m.blog_list_post2Excerpt(),
+        category: m.blog_list_post2Category(),
+      },
+      {
+        title: m.blog_list_post3Title(),
+        date: m.blog_list_post3Date(),
+        excerpt: m.blog_list_post3Excerpt(),
+        category: m.blog_list_post3Category(),
+      },
+      {
+        title: m.blog_list_post4Title(),
+        date: m.blog_list_post4Date(),
+        excerpt: m.blog_list_post4Excerpt(),
+        category: m.blog_list_post4Category(),
+      },
+      {
+        title: m.blog_list_post5Title(),
+        date: m.blog_list_post5Date(),
+        excerpt: m.blog_list_post5Excerpt(),
+        category: m.blog_list_post5Category(),
+      },
+      {
+        title: m.blog_list_post6Title(),
+        date: m.blog_list_post6Date(),
+        excerpt: m.blog_list_post6Excerpt(),
+        category: m.blog_list_post6Category(),
+      },
+    ];
+  });
 </script>
 
 <div class="grid gap-6 md:grid-cols-2">
-  {#each posts as p (p.title)}
+  {#each posts as p, i (i)}
     <article class="rounded-lg border border-border bg-card p-6">
       <div class="mb-3 flex items-center gap-3">
         <span
@@ -62,7 +66,7 @@
         type="button"
         class="text-sm font-medium text-primary hover:underline"
       >
-        Read More →
+        {m.blog_list_readMore()}
       </button>
     </article>
   {/each}

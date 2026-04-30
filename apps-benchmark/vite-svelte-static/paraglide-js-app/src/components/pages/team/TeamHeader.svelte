@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as m from "../../../paraglide/messages";
+  import { m } from "../../../paraglide/messages";
   import MockBanner from "../../MockBanner.svelte";
 </script>
 

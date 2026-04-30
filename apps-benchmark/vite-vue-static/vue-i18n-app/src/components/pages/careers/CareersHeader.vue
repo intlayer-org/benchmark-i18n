@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import MockBanner from "../../MockBanner.vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 </script>
 
 <template>
   <MockBanner />
-  <h1 class="mb-2 text-3xl font-bold text-foreground">Careers</h1>
-  <p class="mb-4 text-muted-foreground">
-    Join our mission to improve the internationalization ecosystem. We're a
-    remote-first team that values impact, transparency, and continuous
-    learning.
-  </p>
+  <h1 class="mb-2 text-3xl font-bold text-foreground">
+    {{ t("careers.header.title") }}
+  </h1>
+  <p class="mb-4 text-muted-foreground">{{ t("careers.header.description") }}</p>
 </template>

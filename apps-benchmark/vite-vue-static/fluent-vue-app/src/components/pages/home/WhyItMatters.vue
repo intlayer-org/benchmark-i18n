@@ -1,37 +1,40 @@
 <script setup lang="ts">
 import { usePerformanceMeasure } from "../../../hooks/usePerformanceMeasure";
+import { useFluentDottedT } from "../../../i18n/useFluentDottedT";
 
 usePerformanceMeasure("WhyItMatters");
+
+const { td } = useFluentDottedT();
 </script>
 
 <template>
   <section class="mb-16">
     <h2 class="mb-6 text-2xl font-bold text-foreground">
-      {{ $t("home-whyItMatters-title") }}
+      {{ td("home.whyItMatters.title") }}
     </h2>
     <div class="grid gap-6 md:grid-cols-3">
       <div class="rounded-lg border border-border bg-card p-6">
         <h3 class="mb-2 text-lg font-semibold text-foreground">
-          {{ $t("home-whyItMatters-bundleSizeTitle") }}
+          {{ td("home.whyItMatters.bundleSizeTitle") }}
         </h3>
         <p class="text-sm text-muted-foreground">
-          {{ $t("home-whyItMatters-bundleSizeDesc") }}
+          {{ td("home.whyItMatters.bundleSizeDesc") }}
         </p>
       </div>
       <div class="rounded-lg border border-border bg-card p-6">
         <h3 class="mb-2 text-lg font-semibold text-foreground">
-          {{ $t("home-whyItMatters-renderingTitle") }}
+          {{ td("home.whyItMatters.renderingTitle") }}
         </h3>
         <p class="text-sm text-muted-foreground">
-          {{ $t("home-whyItMatters-renderingDesc") }}
+          {{ td("home.whyItMatters.renderingDesc") }}
         </p>
       </div>
       <div class="rounded-lg border border-border bg-card p-6">
         <h3 class="mb-2 text-lg font-semibold text-foreground">
-          {{ $t("home-whyItMatters-dynamicLoadingTitle") }}
+          {{ td("home.whyItMatters.dynamicLoadingTitle") }}
         </h3>
         <p class="text-sm text-muted-foreground">
-          {{ $t("home-whyItMatters-dynamicLoadingDesc") }}
+          {{ td("home.whyItMatters.dynamicLoadingDesc") }}
         </p>
       </div>
     </div>

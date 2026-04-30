@@ -1,7 +1,0 @@
-{
-  "$schema": "https://inlang.com/schema/inlang-message-format",
-  "hero_title": "i18n Benchmark",
-  "hero_description": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-  "hero_view_results": "View Results",
-  "hero_methodology": "Methodology"
-}

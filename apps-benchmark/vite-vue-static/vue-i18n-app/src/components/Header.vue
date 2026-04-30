@@ -40,17 +40,31 @@ const mockPages = computed(() => [
         <div class="hidden items-center gap-6 text-sm font-medium md:flex">
           <router-link
             :to="`/${currentLocale}`"
-            class="nav-link"
-            exact-active-class="is-active"
+            custom
+            v-slot="{ href, navigate, isExactActive }"
           >
-            {{ t("header.home") }}
+            <a
+              :href="href"
+              class="nav-link"
+              :class="{ 'router-link-active': isExactActive }"
+              @click="navigate"
+            >
+              {{ t("header.home") }}
+            </a>
           </router-link>
           <router-link
             :to="`/${currentLocale}/about`"
-            class="nav-link"
-            active-class="is-active"
+            custom
+            v-slot="{ href, navigate, isActive }"
           >
-            {{ t("header.methodology") }}
+            <a
+              :href="href"
+              class="nav-link"
+              :class="{ 'router-link-active': isActive }"
+              @click="navigate"
+            >
+              {{ t("header.methodology") }}
+            </a>
           </router-link>
 
           <div class="relative">

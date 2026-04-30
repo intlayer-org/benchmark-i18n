@@ -1,21 +1,24 @@
+import * as m from "../../../paraglide/messages";
 import MockBanner from "../../MockBanner";
 
 export default function ContactHeader() {
   return (
     <>
       <MockBanner />
-      <h1 class="mb-2 text-3xl font-bold text-foreground">Get in Touch</h1>
+      <h1 class="mb-2 text-3xl font-bold text-foreground">
+        {m.contact_header_title()}
+      </h1>
       <p class="mb-8 text-muted-foreground">
-        Have ideas, found a bug, or want to contribute a benchmark? Reach out to
-        us at{" "}
+        {m.contact_header_description()}{" "}
         <a
-          href="mailto:contact@intlayer.org"
+          href={`mailto:${m.shared_contactEmail()}`}
           class="text-primary hover:underline"
         >
-          contact@intlayer.org
+          {m.shared_contactEmail()}
         </a>
         .
       </p>
     </>
   );
 }
+

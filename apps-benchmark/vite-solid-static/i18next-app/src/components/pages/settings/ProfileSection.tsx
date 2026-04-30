@@ -1,4 +1,5 @@
 import { createUniqueId } from "solid-js";
+import { trans } from "../../../i18n";
 
 export default function ProfileSection() {
   const displayNameId = createUniqueId();
@@ -6,14 +7,16 @@ export default function ProfileSection() {
 
   return (
     <section class="rounded-lg border border-border bg-card p-6">
-      <h2 class="mb-4 text-lg font-semibold text-foreground">Profile</h2>
+      <h2 class="mb-4 text-lg font-semibold text-foreground">
+        {trans("settings.profile.title")}
+      </h2>
       <div class="space-y-4">
         <div>
           <label
             for={displayNameId}
             class="mb-1 block text-sm font-medium text-foreground"
           >
-            Display Name
+            {trans("settings.profile.displayName")}
           </label>
           <input
             id={displayNameId}
@@ -26,7 +29,7 @@ export default function ProfileSection() {
             for={emailId}
             class="mb-1 block text-sm font-medium text-foreground"
           >
-            Email
+            {trans("settings.profile.email")}
           </label>
           <input
             id={emailId}

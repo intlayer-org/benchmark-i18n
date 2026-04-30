@@ -241,3 +241,111 @@ export async function measureSvelteComponents({
   );
   console.log(`\nResults saved to ${path.join(resultsDirectory, "components-size.json")}\n`);
 }
+
+// ─── Library size measurement (Svelte) ────────────────────────────────────────
+
+/**
+ * Builds `scripts/EmptyComponent.svelte` in isolation to measure the pure i18n
+ * library overhead — bytes added by a component that uses the library's
+ * APIs but renders nothing and loads no translation JSON.
+ *
+ * Saves results to `<results-dir>/empty-component-size.json`.
+ */
+export interface MeasureSvelteLibSizeConfig {
+  appName: string;
+  benchmarkCategory: string;
+  appDir?: string;
+  emptyComponentFile?: string;
+}
+
+export async function measureSvelteLibSize({
+  appName,
+  benchmarkCategory,
+  appDir,
+  emptyComponentFile = "scripts/EmptyComponent.svelte",
+}: MeasureSvelteLibSizeConfig): Promise<void> {
+  const effectiveDir = appDir ?? process.cwd();
+  const emptyComponentPath = path.resolve(effectiveDir, emptyComponentFile);
+  const emptyComponentName = path.basename(emptyComponentPath);
+
+  if (!fs.existsSync(emptyComponentPath)) {
+    console.log(
+      `[measureSvelteLibSize] No ${emptyComponentName} found at ${emptyComponentPath} — skipping.`,
+    );
+    return;
+  }
+
+  const resultsDirectory = path.join(
+    benchmarkBloomRoot(effectiveDir),
+    "results",
+    appName,
+  );
+
+  console.log(`\n--- SVELTE LIB SIZE MEASUREMENT ---`);
+  console.log(`App: ${appName}`);
+  console.log(`Category: ${benchmarkCategory}`);
+  console.log(`EmptyComponent: ${emptyComponentPath}`);
+  console.log(`-----------------------------------\n`);
+
+  try {
+    const unminified = await buildOne(emptyComponentPath, false, effectiveDir);
+    const minified = await buildOne(emptyComponentPath, true, effectiveDir);
+
+    console.log(
+      `${emptyComponentName}: Unminified=${(unminified.bytes / 1024).toFixed(2)}KB | Minified=${(minified.bytes / 1024).toFixed(2)}KB | Gzip=${(minified.gzipBytes / 1024).toFixed(2)}KB`,
+    );
+
+    const bundlesOutputDir = path.join(resultsDirectory, "bundle", "Lib");
+    if (!fs.existsSync(bundlesOutputDir)) {
+      fs.mkdirSync(bundlesOutputDir, { recursive: true });
+    }
+    fs.writeFileSync(
+      path.join(bundlesOutputDir, "index.js"),
+      unminified.code,
+      "utf-8",
+    );
+    fs.writeFileSync(
+      path.join(bundlesOutputDir, "index_min.js"),
+      minified.code,
+      "utf-8",
+    );
+
+    if (!fs.existsSync(resultsDirectory)) {
+      fs.mkdirSync(resultsDirectory, { recursive: true });
+    }
+    const stats: ComponentSizeStats[] = [
+      {
+        name: emptyComponentName,
+        category: "Synthetic",
+        unminifiedBytes: unminified.bytes,
+        unminifiedGzipBytes: unminified.gzipBytes,
+        minifiedBytes: minified.bytes,
+        minifiedGzipBytes: minified.gzipBytes,
+      },
+    ];
+    fs.writeFileSync(
+      path.join(resultsDirectory, "empty-component-size.json"),
+      JSON.stringify(
+        {
+          timestamp: new Date().toISOString(),
+          packageName: appName,
+          framework: "svelte",
+          summary: {
+            totalComponents: stats.length,
+            totalUnminifiedBytes: unminified.bytes,
+            totalMinifiedBytes: minified.bytes,
+            totalGzipBytes: minified.gzipBytes,
+          },
+          components: stats,
+        },
+        null,
+        2,
+      ),
+    );
+    console.log(
+      `\nResults saved to ${path.join(resultsDirectory, "empty-component-size.json")}\n`,
+    );
+  } catch (err) {
+    console.error("[measureSvelteLibSize] Build or save failed:", err);
+  }
+}

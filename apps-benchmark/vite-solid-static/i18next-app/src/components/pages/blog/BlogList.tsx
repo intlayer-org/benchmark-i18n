@@ -1,71 +1,33 @@
 import { For } from "solid-js";
+import { trans } from "../../../i18n";
 
 export default function BlogList() {
-  const posts = [
-    {
-      title: "Comparing i18n Libraries in 2026: A Deep Dive",
-      date: "March 15, 2026",
-      excerpt:
-        "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
-      category: "Benchmark",
-    },
-    {
-      title: "How to Reduce Your i18n Bundle by 60%",
-      date: "March 8, 2026",
-      excerpt:
-        "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-      category: "Tutorial",
-    },
-    {
-      title: "The State of Internationalization in React",
-      date: "February 28, 2026",
-      excerpt:
-        "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
-      category: "Analysis",
-    },
-    {
-      title: "Migrating from react-i18next to Lingui",
-      date: "February 15, 2026",
-      excerpt:
-        "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
-      category: "Tutorial",
-    },
-    {
-      title: "Server Components and i18n: What Changes?",
-      date: "February 1, 2026",
-      excerpt:
-        "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
-      category: "Analysis",
-    },
-    {
-      title: "Benchmark Methodology: How We Test",
-      date: "January 20, 2026",
-      excerpt:
-        "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-      category: "Meta",
-    },
-  ];
+  const postIndices = [1, 2, 3, 4, 5, 6] as const;
 
   return (
     <div class="grid gap-6 md:grid-cols-2">
-      <For each={posts}>
-        {(p) => (
+      <For each={postIndices}>
+        {(i) => (
           <article class="rounded-lg border border-border bg-card p-6">
             <div class="mb-3 flex items-center gap-3">
               <span class="rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground">
-                {p.category}
+                {trans(`blog.list.post${i}Category`)}
               </span>
-              <span class="text-xs text-muted-foreground">{p.date}</span>
+              <span class="text-xs text-muted-foreground">
+                {trans(`blog.list.post${i}Date`)}
+              </span>
             </div>
             <h2 class="mb-2 text-lg font-semibold text-foreground">
-              {p.title}
+              {trans(`blog.list.post${i}Title`)}
             </h2>
-            <p class="mb-4 text-sm text-muted-foreground">{p.excerpt}</p>
+            <p class="mb-4 text-sm text-muted-foreground">
+              {trans(`blog.list.post${i}Excerpt`)}
+            </p>
             <button
               type="button"
               class="text-sm font-medium text-primary hover:underline"
             >
-              Read More →
+              {trans("blog.list.readMore")}
             </button>
           </article>
         )}

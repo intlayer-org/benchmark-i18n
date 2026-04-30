@@ -1,75 +1,87 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
+
 const openings = [
   {
-    title: "Senior Frontend Engineer",
-    location: "Remote",
-    type: "Full-time",
-    dept: "Engineering",
-    desc: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+    titleKey: "frontendTitle",
+    descKey: "frontendDesc",
+    deptKey: "engineering",
+    locationKey: "remote",
+    typeKey: "fullTime",
   },
   {
-    title: "Backend Engineer",
-    location: "Remote",
-    type: "Full-time",
-    dept: "Engineering",
-    desc: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+    titleKey: "backendTitle",
+    descKey: "backendDesc",
+    deptKey: "engineering",
+    locationKey: "remote",
+    typeKey: "fullTime",
   },
   {
-    title: "Technical Writer",
-    location: "Remote",
-    type: "Part-time",
-    dept: "Documentation",
-    desc: "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
+    titleKey: "writerTitle",
+    descKey: "writerDesc",
+    deptKey: "documentation",
+    locationKey: "remote",
+    typeKey: "partTime",
   },
   {
-    title: "DevRel Engineer",
-    location: "San Francisco / Remote",
-    type: "Full-time",
-    dept: "Community",
-    desc: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+    titleKey: "devrelTitle",
+    descKey: "devrelDesc",
+    deptKey: "community",
+    locationKey: "sfRemote",
+    typeKey: "fullTime",
   },
   {
-    title: "QA Engineer",
-    location: "Remote",
-    type: "Full-time",
-    dept: "Engineering",
-    desc: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
+    titleKey: "qaTitle",
+    descKey: "qaDesc",
+    deptKey: "engineering",
+    locationKey: "remote",
+    typeKey: "fullTime",
   },
-];
+] as const;
 </script>
 
 <template>
   <h2 class="mb-6 text-2xl font-bold text-foreground">
-    Open Positions
+    {{ t("careers.openPositions.title") }}
   </h2>
   <div class="space-y-4">
     <div
-      v-for="o in openings"
-      :key="o.title"
+      v-for="(o, i) in openings"
+      :key="`${o.titleKey}-${o.locationKey}-${i}`"
       class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"
     >
       <div>
         <h3 class="text-base font-semibold text-foreground">
-          {{ o.title }}
+          {{ t(`careers.openPositions.${o.titleKey}`) }}
         </h3>
-        <p class="text-sm text-muted-foreground">{{ o.desc }}</p>
+        <p class="text-sm text-muted-foreground">
+          {{ t(`careers.openPositions.${o.descKey}`) }}
+        </p>
         <div class="mt-2 flex gap-2">
-          <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground">
-            {{ o.dept }}
+          <span
+            class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"
+          >
+            {{ t(`careers.openPositions.${o.deptKey}`) }}
           </span>
-          <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground">
-            {{ o.location }}
+          <span
+            class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"
+          >
+            {{ t(`careers.openPositions.${o.locationKey}`) }}
           </span>
-          <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground">
-            {{ o.type }}
+          <span
+            class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"
+          >
+            {{ t(`careers.openPositions.${o.typeKey}`) }}
           </span>
         </div>
       </div>
       <button
         type="button"
-        class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+        class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
       >
-        Apply Now
+        {{ t("careers.openPositions.applyNow") }}
       </button>
     </div>
   </div>

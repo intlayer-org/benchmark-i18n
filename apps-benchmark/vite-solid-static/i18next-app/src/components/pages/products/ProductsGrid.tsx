@@ -1,38 +1,39 @@
 import { For } from "solid-js";
+import { trans } from "../../../i18n";
 
 export default function ProductsGrid() {
   const products = [
     {
-      name: "Benchmark CLI",
-      desc: "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
-      price: "Free",
+      nameKey: "cliName",
+      descKey: "cliDesc",
+      priceKey: "cliPrice",
     },
     {
-      name: "Benchmark Cloud",
-      desc: "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
-      price: "$29/mo",
+      nameKey: "cloudName",
+      descKey: "cloudDesc",
+      priceKey: "cloudPrice",
     },
     {
-      name: "Benchmark Enterprise",
-      desc: "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
-      price: "Contact Us",
+      nameKey: "enterpriseName",
+      descKey: "enterpriseDesc",
+      priceKey: "enterprisePrice",
     },
     {
-      name: "Migration Assistant",
-      desc: "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
-      price: "$99 one-time",
+      nameKey: "migrationName",
+      descKey: "migrationDesc",
+      priceKey: "migrationPrice",
     },
     {
-      name: "Translation QA",
-      desc: "Automated quality checks for missing translations, pluralization issues, and context errors.",
-      price: "$19/mo",
+      nameKey: "qaName",
+      descKey: "qaDesc",
+      priceKey: "qaPrice",
     },
     {
-      name: "Bundle Optimizer",
-      desc: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
-      price: "$49/mo",
+      nameKey: "optimizerName",
+      descKey: "optimizerDesc",
+      priceKey: "optimizerPrice",
     },
-  ];
+  ] as const;
 
   return (
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -40,16 +41,22 @@ export default function ProductsGrid() {
         {(p) => (
           <div class="flex flex-col justify-between rounded-lg border border-border bg-card p-6">
             <div>
-              <h3 class="mb-2 text-lg font-semibold text-foreground">{p.name}</h3>
-              <p class="mb-4 text-sm text-muted-foreground">{p.desc}</p>
+              <h3 class="mb-2 text-lg font-semibold text-foreground">
+                {trans(`products.grid.${p.nameKey}`)}
+              </h3>
+              <p class="mb-4 text-sm text-muted-foreground">
+                {trans(`products.grid.${p.descKey}`)}
+              </p>
             </div>
             <div class="flex items-center justify-between">
-              <span class="text-sm font-bold text-primary">{p.price}</span>
+              <span class="text-sm font-bold text-primary">
+                {trans(`products.grid.${p.priceKey}`)}
+              </span>
               <button
                 type="button"
                 class="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"
               >
-                Learn More
+                {trans("products.grid.learnMore")}
               </button>
             </div>
           </div>
