@@ -2,7 +2,7 @@
   "meta": {
     "framework": "nextjs",
     "frameworkLabel": "Next.js",
-    "generatedAt": "2026-04-30T07:45:29.644Z",
+    "generatedAt": "2026-04-30T22:45:10.232Z",
     "counts": {
       "totalLibs": 11,
       "totalApps": 29
@@ -5238,9 +5238,9 @@
         "version": "8.7.12",
         "libSize": {
           "status": "ok",
-          "gzip": 5053,
-          "minified": 14287,
-          "unminified": 21840
+          "gzip": 4423,
+          "minified": 13618,
+          "unminified": 21111
         }
       },
       "static": null,

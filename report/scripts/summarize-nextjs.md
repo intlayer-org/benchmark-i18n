@@ -1382,7 +1382,7 @@ _Generated: 2026-04-30_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 8.7.12 | 4.9 KB | 14.0 KB |
+| 8.7.12 | 4.3 KB | 13.3 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
