@@ -170,8 +170,7 @@ var s = {
 				header: "Шапка"
 			}
 		}
-	},
-	localIds: ["header::local::src/components/Header.content.ts"]
+	}
 }, c = Symbol("intlayer"), l = () => a(c), u = {
 	locales: [
 		"en",
@@ -202,7 +201,7 @@ var s = {
 }, d = {
 	internationalization: u,
 	routing: {
-		mode: "prefix-no-default",
+		mode: "prefix-all",
 		storage: {
 			cookies: [{
 				name: "INTLAYER_LOCALE",
@@ -213,6 +212,7 @@ var s = {
 		basePath: ""
 	},
 	editor: {
+		applicationURL: "http://localhost:3000",
 		editorURL: "http://localhost:8000",
 		cmsURL: "https://app.intlayer.org",
 		backendURL: "https://back.intlayer.org",
@@ -348,11 +348,11 @@ var s = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => y(e, t));
-}, x = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", S = {
+}, x = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, C = (e, t) => x ? S : {
+}, S = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? x : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -370,27 +370,27 @@ var s = {
 		}
 		return b(o, e, t);
 	}
-}, w = S, T = S, E = S, D = S, O = (e) => S, k = S, A = (e, t = !0) => [
-	C(e ?? u.defaultLocale, t ? u.defaultLocale : void 0),
+}, C = x, w = x, T = x, E = x, D = (e) => x, O = x, k = (e, t = !0) => [
+	S(e ?? u.defaultLocale, t ? u.defaultLocale : void 0),
+	C,
 	w,
 	T,
-	E,
-	O(e ?? u.defaultLocale),
-	k,
-	D
-], j = (e, t, n = []) => _(e, {
+	D(e ?? u.defaultLocale),
+	O,
+	E
+], A = (e, t, n = []) => _(e, {
 	...t,
 	plugins: n
-}), M = (e, t, n = A(t)) => {
+}), j = (e, t, n = k(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return j(e.content, r, n);
+	return A(e.content, r, n);
 };
-function N(t, n) {
+function M(t, n) {
 	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
 	var o = e.comment(), s = e.first_child(o), c = (t) => {
 		var n = e.comment(), o = e.first_child(n);
@@ -416,9 +416,9 @@ function N(t, n) {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
 	}), e.append(t, o);
 }
-var P = (e) => {
-	let t = !!N.prototype?.$destroy, n;
-	return n = t ? class extends N {
+var N = (e) => {
+	let t = !!M.prototype?.$destroy, n;
+	return n = t ? class extends M {
 		constructor(t) {
 			super({
 				...t,
@@ -430,7 +430,7 @@ var P = (e) => {
 				}
 			});
 		}
-	} : (t) => N(t, {
+	} : (t) => M(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -443,36 +443,36 @@ var P = (e) => {
 		writable: !0,
 		configurable: !0
 	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, F = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false" ? S : {
+}, P = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => P({
+	transform: (e, { children: t, ...n }) => N({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, I = F, L = S, R = S, z = S, B = /* @__PURE__ */ new Map(), V = (e, t = !0) => {
+}, F = P, I = x, L = x, R = x, z = /* @__PURE__ */ new Map(), B = (e, t = !0) => {
 	let n = `${e ?? u.defaultLocale}_${t}`;
-	if (B.has(n)) return B.get(n);
+	if (z.has(n)) return z.get(n);
 	let r = [
-		C(e ?? u.defaultLocale, t ? u.defaultLocale : void 0),
+		S(e ?? u.defaultLocale, t ? u.defaultLocale : void 0),
+		C,
 		w,
-		T,
-		O(e ?? u.defaultLocale),
-		k,
-		D,
+		D(e ?? u.defaultLocale),
+		O,
+		E,
+		P,
 		F,
 		I,
 		L,
-		R,
-		z
+		R
 	];
-	return B.set(n, r), r;
-}, H = (e, t) => M(e, t, V(t)), U = (e, n) => {
+	return z.set(n, r), r;
+}, V = (e, t) => j(e, t, B(t)), H = (e, n) => {
 	let r = l();
-	return t([p], ([t]) => H(e, n ?? r?.locale ?? t.locale));
+	return t([p], ([t]) => V(e, n ?? r?.locale ?? t.locale));
 };
-function W(e) {
+function U(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), o(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -482,7 +482,7 @@ function W(e) {
 		}
 	});
 }
-var G = [
+var W = [
 	"en",
 	"fr",
 	"es",
@@ -494,7 +494,7 @@ var G = [
 	"ko",
 	"ru"
 ];
-function K(e) {
+function G(e) {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
@@ -502,10 +502,10 @@ function K(e) {
 		return e.toUpperCase();
 	}
 }
-function q(e) {
-	return G.includes(e);
+function K(e) {
+	return W.includes(e);
 }
-var J = new Set([
+var q = new Set([
 	"",
 	"about",
 	"blog",
@@ -517,41 +517,41 @@ var J = new Set([
 	"settings",
 	"team"
 ]);
-function Y(e) {
+function J(e) {
 	let t = e.split("/").filter(Boolean);
 	if (t.length === 0) return { kind: "notfound" };
 	let [n, ...r] = t;
-	if (!q(n)) return { kind: "notfound" };
+	if (!K(n)) return { kind: "notfound" };
 	let i = r[0] ?? "";
-	return r.length > 1 || !J.has(i) ? { kind: "notfound" } : {
+	return r.length > 1 || !q.has(i) ? { kind: "notfound" } : {
 		kind: "ok",
 		locale: n,
 		page: i
 	};
 }
-var X = r(typeof window < "u" ? window.location.pathname : "/en"), Z = t(X, (e) => Y(e));
-function Q(e, t = !1) {
-	typeof window > "u" || (t ? history.replaceState(null, "", e) : history.pushState(null, "", e), X.set(window.location.pathname));
+var Y = r(typeof window < "u" ? window.location.pathname : "/en"), X = t(Y, (e) => J(e));
+function Z(e, t = !1) {
+	typeof window > "u" || (t ? history.replaceState(null, "", e) : history.pushState(null, "", e), Y.set(window.location.pathname));
 }
-var $ = d.internationalization.locales;
+var Q = d.internationalization.locales;
 d.internationalization.requiredLocales, d.internationalization.defaultLocale, d.editor;
-var ee = e.from_html("<option> </option>"), te = e.from_html("<div class=\"flex items-center gap-2\"><select class=\"h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none\"></select></div>");
-function ne(t, r) {
+var $ = e.from_html("<option> </option>"), ee = e.from_html("<div class=\"flex items-center gap-2\"><select class=\"h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none\"></select></div>");
+function te(t, r) {
 	e.push(r, !1);
-	let i = () => e.store_get(X, "$pathname", a), [a, o] = e.setup_stores();
+	let i = () => e.store_get(Y, "$pathname", a), [a, o] = e.setup_stores();
 	function s(e) {
 		let t = e.target.value;
-		Q(n(X).replace(/^\/[^/]+/, `/${t}`) + window.location.search + window.location.hash, !1);
+		Z(n(Y).replace(/^\/[^/]+/, `/${t}`) + window.location.search + window.location.hash, !1);
 	}
 	e.init();
-	var c = te(), l = e.child(c);
-	e.each(l, 5, () => $, (e) => e, (t, n) => {
-		var r = ee(), i = e.child(r, !0);
+	var c = ee(), l = e.child(c);
+	e.each(l, 5, () => Q, (e) => e, (t, n) => {
+		var r = $(), i = e.child(r, !0);
 		e.reset(r);
 		var a = {};
 		e.template_effect((t) => {
 			e.set_text(i, t), a !== (a = e.get(n)) && (r.value = (r.__value = e.get(n)) ?? "");
-		}, [() => K(e.get(n))]), e.append(t, r);
+		}, [() => G(e.get(n))]), e.append(t, r);
 	}), e.reset(l);
 	var u;
 	e.init_select(l), e.reset(c), e.template_effect((t) => {
@@ -559,7 +559,7 @@ function ne(t, r) {
 	}, [() => i().split("/").filter(Boolean)[0] ?? "en"]), e.delegated("change", l, s), e.append(t, c), e.pop(), o();
 }
 e.delegate(["change"]);
-var re = {
+var ne = {
 	key: "theme-toggle",
 	content: {
 		nodeType: "translation",
@@ -645,12 +645,11 @@ var re = {
 				ariaLabelDark: "Режим темы: темный. Нажмите, чтобы переключиться в автоматический режим."
 			}
 		}
-	},
-	localIds: ["theme-toggle::local::src/components/ThemeToggle.content.ts"]
-}, ie = e.from_html("<button type=\"button\" class=\"rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80\"> </button>");
-function ae(t, n) {
+	}
+}, re = e.from_html("<button type=\"button\" class=\"rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80\"> </button>");
+function ie(t, n) {
 	e.push(n, !0);
-	let r = () => e.store_get(s, "$tt", i), [i, a] = e.setup_stores(), s = U(re);
+	let r = () => e.store_get(s, "$tt", i), [i, a] = e.setup_stores(), s = H(ne);
 	function c() {
 		if (typeof window > "u") return "auto";
 		let e = window.localStorage.getItem("theme");
@@ -674,17 +673,17 @@ function ae(t, n) {
 		e.set(u, t, !0), l(t), window.localStorage.setItem("theme", t);
 	}
 	let f = e.derived(() => e.get(u) === "auto" ? r().ariaLabelAuto : e.get(u) === "light" ? r().ariaLabelLight : r().ariaLabelDark), p = e.derived(() => e.get(u) === "auto" ? r().auto : e.get(u) === "dark" ? r().dark : r().light);
-	var m = ie(), h = e.child(m, !0);
+	var m = re(), h = e.child(m, !0);
 	e.reset(m), e.template_effect(() => {
 		e.set_attribute(m, "aria-label", e.get(f)), e.set_attribute(m, "title", e.get(f)), e.set_text(h, e.get(p));
 	}), e.delegated("click", m, d), e.append(t, m), e.pop(), a();
 }
 e.delegate(["click"]);
-var oe = e.from_html("<a class=\"block px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent\"> </a>"), se = e.from_html("<div class=\"absolute top-full left-0 w-48 pt-2\" role=\"presentation\"><div class=\"overflow-hidden rounded-md border border-border bg-card py-1 shadow-lg\"></div></div>"), ce = e.from_html("<header class=\"sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg\"><nav class=\"container flex h-16 items-center justify-between\"><div class=\"flex items-center gap-8\"><a class=\"text-lg font-bold tracking-tight text-primary no-underline\"> </a> <div class=\"hidden items-center gap-6 text-sm font-medium md:flex\"><a> </a> <a> </a> <div class=\"relative\"><button type=\"button\" class=\"nav-link flex cursor-pointer items-center gap-1 border-none bg-transparent\"> <!></button> <!></div></div></div> <div class=\"flex items-center gap-4\"><a href=\"https://github.com/intlayer-org/benchmark-i18n\" target=\"_blank\" rel=\"noreferrer\" class=\"text-muted-foreground transition hover:text-foreground\"><span class=\"sr-only\"> </span> <svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" width=\"20\" height=\"20\"><path fill=\"currentColor\" d=\"M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z\"></path></svg></a> <!> <!></div></nav></header>");
-function le(t, r) {
+var ae = e.from_html("<a class=\"block px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent\"> </a>"), oe = e.from_html("<div class=\"absolute top-full left-0 w-48 pt-2\" role=\"presentation\"><div class=\"overflow-hidden rounded-md border border-border bg-card py-1 shadow-lg\"></div></div>"), se = e.from_html("<header class=\"sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg\"><nav class=\"container flex h-16 items-center justify-between\"><div class=\"flex items-center gap-8\"><a class=\"text-lg font-bold tracking-tight text-primary no-underline\"> </a> <div class=\"hidden items-center gap-6 text-sm font-medium md:flex\"><a> </a> <a> </a> <div class=\"relative\"><button type=\"button\" class=\"nav-link flex cursor-pointer items-center gap-1 border-none bg-transparent\"> <!></button> <!></div></div></div> <div class=\"flex items-center gap-4\"><a href=\"https://github.com/intlayer-org/benchmark-i18n\" target=\"_blank\" rel=\"noreferrer\" class=\"text-muted-foreground transition hover:text-foreground\"><span class=\"sr-only\"> </span> <svg viewBox=\"0 0 16 16\" aria-hidden=\"true\" width=\"20\" height=\"20\"><path fill=\"currentColor\" d=\"M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z\"></path></svg></a> <!> <!></div></nav></header>");
+function ce(t, r) {
 	e.push(r, !0);
-	let a = () => e.store_get(Z, "$route", c), o = () => e.store_get(u, "$header", c), [c, l] = e.setup_stores(), u = U(s);
-	W(n(u).header);
+	let a = () => e.store_get(X, "$route", c), o = () => e.store_get(u, "$header", c), [c, l] = e.setup_stores(), u = H(s);
+	U(n(u).header);
 	let d = e.state(!1), f = e.derived(() => a().kind === "ok" ? a().locale : "en"), p = e.derived(() => [
 		{
 			to: `/${e.get(f)}/products`,
@@ -719,7 +718,7 @@ function le(t, r) {
 			label: o().settings
 		}
 	]), m = e.derived(() => a().kind === "ok" && a().page === ""), h = e.derived(() => a().kind === "ok" && a().page === "about");
-	var g = ce(), _ = e.child(g), v = e.child(_), y = e.child(v), b = e.child(y, !0);
+	var g = se(), _ = e.child(g), v = e.child(_), y = e.child(v), b = e.child(y, !0);
 	e.reset(y);
 	var x = e.sibling(y, 2), S = e.child(x);
 	let C;
@@ -741,9 +740,9 @@ function le(t, r) {
 	}
 	e.reset(k);
 	var M = e.sibling(k, 2), N = (t) => {
-		var n = se(), r = e.child(n);
+		var n = oe(), r = e.child(n);
 		e.each(r, 21, () => e.get(p), (e) => e.to, (t, n) => {
-			var r = oe(), i = e.child(r, !0);
+			var r = ae(), i = e.child(r, !0);
 			e.reset(r), e.template_effect(() => {
 				e.set_attribute(r, "href", e.get(n).to), e.set_text(i, e.get(n).label);
 			}), e.delegated("click", r, () => e.set(d, !1)), e.append(t, r);
@@ -755,9 +754,9 @@ function le(t, r) {
 	var P = e.sibling(v, 2), F = e.child(P), I = e.child(F), L = e.child(I, !0);
 	e.reset(I), e.next(2), e.reset(F);
 	var R = e.sibling(F, 2);
-	ne(R, {}), ae(e.sibling(R, 2), {}), e.reset(P), e.reset(_), e.reset(g), e.template_effect(() => {
+	te(R, {}), ie(e.sibling(R, 2), {}), e.reset(P), e.reset(_), e.reset(g), e.template_effect(() => {
 		e.set_attribute(y, "href", `/${e.get(f)}`), e.set_text(b, o().appName), e.set_attribute(S, "href", `/${e.get(f)}`), C = e.set_class(S, 1, "nav-link", null, C, { "is-active": e.get(m) }), e.set_text(w, o().home), e.set_attribute(T, "href", `/${e.get(f)}/about`), E = e.set_class(T, 1, "nav-link", null, E, { "is-active": e.get(h) }), e.set_text(D, o().methodology), e.set_text(A, `${o().mockPages ?? ""} `), e.set_text(L, o().goToGithub);
 	}), e.event("mouseenter", k, () => e.set(d, !0)), e.event("mouseleave", k, () => e.set(d, !1)), e.delegated("click", k, () => e.set(d, !e.get(d))), e.append(t, g), e.pop(), l();
 }
 e.delegate(["click"]);
-export { le as default };
+export { ce as default };

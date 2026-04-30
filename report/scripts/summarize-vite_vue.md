@@ -516,14 +516,14 @@ _Generated: 2026-04-30_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 8.7.12 | 16.0 KB | 57.0 KB |
+| 8.7.12 | 2.7 KB | 7.6 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 62.0 KB | 51.7% | 0.0% | 18.3 KB | 5.2 ms | — | 11.8 ms | 4.9 ms |
-| Dynamic | ✅ | 62.0 KB | 51.7% | 0.0% | 18.3 KB | 5.2 ms | — | 11.8 ms | 4.9 ms |
-| Scoped Static | ✅ | 62.0 KB | 51.7% | 0.0% | 18.3 KB | 5.2 ms | — | 11.8 ms | 4.9 ms |
-| Scoped Dynamic | ✅ | 62.0 KB | 51.7% | 0.0% | 18.3 KB | 5.2 ms | — | 11.8 ms | 4.9 ms |
+| Static | ✅ | 59.3 KB | 51.1% | 0.0% | 6.5 KB | 4.3 ms | — | 15.2 ms | 6.9 ms |
+| Dynamic | ✅ | 59.3 KB | 51.1% | 0.0% | 6.5 KB | 4.3 ms | — | 15.2 ms | 6.9 ms |
+| Scoped Static | ✅ | 59.3 KB | 51.1% | 0.0% | 6.5 KB | 4.3 ms | — | 15.2 ms | 6.9 ms |
+| Scoped Dynamic | ✅ | 59.3 KB | 51.1% | 0.0% | 6.5 KB | 4.3 ms | — | 15.2 ms | 6.9 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -532,31 +532,31 @@ _Generated: 2026-04-30_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 74.0 KB | 51.4% | 0.0% |
-| `/en/about` | 66.6 KB | 57.1% | 0.0% |
-| `/en/blog` | 60.6 KB | 50.0% | 0.0% |
-| `/en/careers` | 61.8 KB | 51.7% | 0.0% |
-| `/en/contact` | 56.7 KB | 50.0% | 0.0% |
-| `/en/faq` | 63.9 KB | 50.0% | 0.0% |
-| `/en/pricing` | 57.9 KB | 63.2% | 0.0% |
-| `/en/products` | 59.3 KB | 54.5% | 0.0% |
-| `/en/settings` | 59.9 KB | 53.3% | 0.0% |
-| `/en/team` | 59.5 KB | 50.0% | 0.0% |
+| `/en/` | 71.2 KB | 44.4% | 0.0% |
+| `/en/about` | 64.0 KB | 56.5% | 0.0% |
+| `/en/blog` | 57.9 KB | 50.0% | 0.0% |
+| `/en/careers` | 59.1 KB | 51.7% | 0.0% |
+| `/en/contact` | 54.0 KB | 50.0% | 0.0% |
+| `/en/faq` | 61.2 KB | 54.2% | 0.0% |
+| `/en/pricing` | 55.2 KB | 78.6% | 0.0% |
+| `/en/products` | 56.7 KB | 54.5% | 0.0% |
+| `/en/settings` | 57.0 KB | 53.8% | 0.0% |
+| `/en/team` | 56.9 KB | 50.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 74.0 KB | 48.6% | 0.0% |
-| `/fr/about` | 66.6 KB | 42.9% | 0.0% |
-| `/fr/blog` | 60.6 KB | 50.0% | 0.0% |
-| `/fr/careers` | 61.8 KB | 82.4% | 0.0% |
-| `/fr/contact` | 56.7 KB | 50.0% | 0.0% |
-| `/fr/faq` | 63.9 KB | 50.0% | 0.0% |
-| `/fr/pricing` | 57.9 KB | 36.8% | 0.0% |
-| `/fr/products` | 59.3 KB | 45.5% | 0.0% |
-| `/fr/settings` | 59.9 KB | 46.7% | 0.0% |
-| `/fr/team` | 59.5 KB | 50.0% | 0.0% |
+| `/fr/` | 71.2 KB | 55.6% | 0.0% |
+| `/fr/about` | 64.0 KB | 43.5% | 0.0% |
+| `/fr/blog` | 57.9 KB | 50.0% | 0.0% |
+| `/fr/careers` | 59.1 KB | 48.3% | 0.0% |
+| `/fr/contact` | 54.0 KB | 50.0% | 0.0% |
+| `/fr/faq` | 61.2 KB | 50.0% | 0.0% |
+| `/fr/pricing` | 55.2 KB | 38.9% | 0.0% |
+| `/fr/products` | 56.7 KB | 45.5% | 0.0% |
+| `/fr/settings` | 57.0 KB | 46.2% | 0.0% |
+| `/fr/team` | 56.9 KB | 50.0% | 0.0% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-intlayer-static/bundle/rollup-visualizer.html)
 
@@ -567,8 +567,8 @@ _Generated: 2026-04-30_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 6.1 ms | 4.3 ms | 11.5 ms | 0.0 ms |
-| `fr` | 4.4 ms | 3.8 ms | 5.7 ms | 0.0 ms |
+| `en` | 4.7 ms | 3.6 ms | 7.7 ms | 0.0 ms |
+| `fr` | 4.0 ms | 3.1 ms | 5.1 ms | 0.0 ms |
 
 </details>
 
@@ -577,8 +577,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 12.3 ms | 5.1 ms | 2.5 ms |
-| `fr` | 11.3 ms | 4.6 ms | 2.2 ms |
+| `en` | 16.0 ms | 6.8 ms | 3.4 ms |
+| `fr` | 14.4 ms | 7.0 ms | 3.1 ms |
 
 </details>
 
@@ -589,31 +589,31 @@ _Generated: 2026-04-30_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 74.0 KB | 51.4% | 0.0% |
-| `/en/about` | 66.6 KB | 57.1% | 0.0% |
-| `/en/blog` | 60.6 KB | 50.0% | 0.0% |
-| `/en/careers` | 61.8 KB | 51.7% | 0.0% |
-| `/en/contact` | 56.7 KB | 50.0% | 0.0% |
-| `/en/faq` | 63.9 KB | 50.0% | 0.0% |
-| `/en/pricing` | 57.9 KB | 63.2% | 0.0% |
-| `/en/products` | 59.3 KB | 54.5% | 0.0% |
-| `/en/settings` | 59.9 KB | 53.3% | 0.0% |
-| `/en/team` | 59.5 KB | 50.0% | 0.0% |
+| `/en/` | 71.2 KB | 44.4% | 0.0% |
+| `/en/about` | 64.0 KB | 56.5% | 0.0% |
+| `/en/blog` | 57.9 KB | 50.0% | 0.0% |
+| `/en/careers` | 59.1 KB | 51.7% | 0.0% |
+| `/en/contact` | 54.0 KB | 50.0% | 0.0% |
+| `/en/faq` | 61.2 KB | 54.2% | 0.0% |
+| `/en/pricing` | 55.2 KB | 78.6% | 0.0% |
+| `/en/products` | 56.7 KB | 54.5% | 0.0% |
+| `/en/settings` | 57.0 KB | 53.8% | 0.0% |
+| `/en/team` | 56.9 KB | 50.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 74.0 KB | 48.6% | 0.0% |
-| `/fr/about` | 66.6 KB | 42.9% | 0.0% |
-| `/fr/blog` | 60.6 KB | 50.0% | 0.0% |
-| `/fr/careers` | 61.8 KB | 82.4% | 0.0% |
-| `/fr/contact` | 56.7 KB | 50.0% | 0.0% |
-| `/fr/faq` | 63.9 KB | 50.0% | 0.0% |
-| `/fr/pricing` | 57.9 KB | 36.8% | 0.0% |
-| `/fr/products` | 59.3 KB | 45.5% | 0.0% |
-| `/fr/settings` | 59.9 KB | 46.7% | 0.0% |
-| `/fr/team` | 59.5 KB | 50.0% | 0.0% |
+| `/fr/` | 71.2 KB | 55.6% | 0.0% |
+| `/fr/about` | 64.0 KB | 43.5% | 0.0% |
+| `/fr/blog` | 57.9 KB | 50.0% | 0.0% |
+| `/fr/careers` | 59.1 KB | 48.3% | 0.0% |
+| `/fr/contact` | 54.0 KB | 50.0% | 0.0% |
+| `/fr/faq` | 61.2 KB | 50.0% | 0.0% |
+| `/fr/pricing` | 55.2 KB | 38.9% | 0.0% |
+| `/fr/products` | 56.7 KB | 45.5% | 0.0% |
+| `/fr/settings` | 57.0 KB | 46.2% | 0.0% |
+| `/fr/team` | 56.9 KB | 50.0% | 0.0% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-intlayer-static/bundle/rollup-visualizer.html)
 
@@ -624,8 +624,8 @@ _Generated: 2026-04-30_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 6.1 ms | 4.3 ms | 11.5 ms | 0.0 ms |
-| `fr` | 4.4 ms | 3.8 ms | 5.7 ms | 0.0 ms |
+| `en` | 4.7 ms | 3.6 ms | 7.7 ms | 0.0 ms |
+| `fr` | 4.0 ms | 3.1 ms | 5.1 ms | 0.0 ms |
 
 </details>
 
@@ -634,8 +634,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 12.3 ms | 5.1 ms | 2.5 ms |
-| `fr` | 11.3 ms | 4.6 ms | 2.2 ms |
+| `en` | 16.0 ms | 6.8 ms | 3.4 ms |
+| `fr` | 14.4 ms | 7.0 ms | 3.1 ms |
 
 </details>
 
@@ -646,31 +646,31 @@ _Generated: 2026-04-30_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 74.0 KB | 51.4% | 0.0% |
-| `/en/about` | 66.6 KB | 57.1% | 0.0% |
-| `/en/blog` | 60.6 KB | 50.0% | 0.0% |
-| `/en/careers` | 61.8 KB | 51.7% | 0.0% |
-| `/en/contact` | 56.7 KB | 50.0% | 0.0% |
-| `/en/faq` | 63.9 KB | 50.0% | 0.0% |
-| `/en/pricing` | 57.9 KB | 63.2% | 0.0% |
-| `/en/products` | 59.3 KB | 54.5% | 0.0% |
-| `/en/settings` | 59.9 KB | 53.3% | 0.0% |
-| `/en/team` | 59.5 KB | 50.0% | 0.0% |
+| `/en/` | 71.2 KB | 44.4% | 0.0% |
+| `/en/about` | 64.0 KB | 56.5% | 0.0% |
+| `/en/blog` | 57.9 KB | 50.0% | 0.0% |
+| `/en/careers` | 59.1 KB | 51.7% | 0.0% |
+| `/en/contact` | 54.0 KB | 50.0% | 0.0% |
+| `/en/faq` | 61.2 KB | 54.2% | 0.0% |
+| `/en/pricing` | 55.2 KB | 78.6% | 0.0% |
+| `/en/products` | 56.7 KB | 54.5% | 0.0% |
+| `/en/settings` | 57.0 KB | 53.8% | 0.0% |
+| `/en/team` | 56.9 KB | 50.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 74.0 KB | 48.6% | 0.0% |
-| `/fr/about` | 66.6 KB | 42.9% | 0.0% |
-| `/fr/blog` | 60.6 KB | 50.0% | 0.0% |
-| `/fr/careers` | 61.8 KB | 82.4% | 0.0% |
-| `/fr/contact` | 56.7 KB | 50.0% | 0.0% |
-| `/fr/faq` | 63.9 KB | 50.0% | 0.0% |
-| `/fr/pricing` | 57.9 KB | 36.8% | 0.0% |
-| `/fr/products` | 59.3 KB | 45.5% | 0.0% |
-| `/fr/settings` | 59.9 KB | 46.7% | 0.0% |
-| `/fr/team` | 59.5 KB | 50.0% | 0.0% |
+| `/fr/` | 71.2 KB | 55.6% | 0.0% |
+| `/fr/about` | 64.0 KB | 43.5% | 0.0% |
+| `/fr/blog` | 57.9 KB | 50.0% | 0.0% |
+| `/fr/careers` | 59.1 KB | 48.3% | 0.0% |
+| `/fr/contact` | 54.0 KB | 50.0% | 0.0% |
+| `/fr/faq` | 61.2 KB | 50.0% | 0.0% |
+| `/fr/pricing` | 55.2 KB | 38.9% | 0.0% |
+| `/fr/products` | 56.7 KB | 45.5% | 0.0% |
+| `/fr/settings` | 57.0 KB | 46.2% | 0.0% |
+| `/fr/team` | 56.9 KB | 50.0% | 0.0% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-intlayer-static/bundle/rollup-visualizer.html)
 
@@ -681,8 +681,8 @@ _Generated: 2026-04-30_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 6.1 ms | 4.3 ms | 11.5 ms | 0.0 ms |
-| `fr` | 4.4 ms | 3.8 ms | 5.7 ms | 0.0 ms |
+| `en` | 4.7 ms | 3.6 ms | 7.7 ms | 0.0 ms |
+| `fr` | 4.0 ms | 3.1 ms | 5.1 ms | 0.0 ms |
 
 </details>
 
@@ -691,8 +691,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 12.3 ms | 5.1 ms | 2.5 ms |
-| `fr` | 11.3 ms | 4.6 ms | 2.2 ms |
+| `en` | 16.0 ms | 6.8 ms | 3.4 ms |
+| `fr` | 14.4 ms | 7.0 ms | 3.1 ms |
 
 </details>
 
@@ -703,31 +703,31 @@ _Generated: 2026-04-30_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 74.0 KB | 51.4% | 0.0% |
-| `/en/about` | 66.6 KB | 57.1% | 0.0% |
-| `/en/blog` | 60.6 KB | 50.0% | 0.0% |
-| `/en/careers` | 61.8 KB | 51.7% | 0.0% |
-| `/en/contact` | 56.7 KB | 50.0% | 0.0% |
-| `/en/faq` | 63.9 KB | 50.0% | 0.0% |
-| `/en/pricing` | 57.9 KB | 63.2% | 0.0% |
-| `/en/products` | 59.3 KB | 54.5% | 0.0% |
-| `/en/settings` | 59.9 KB | 53.3% | 0.0% |
-| `/en/team` | 59.5 KB | 50.0% | 0.0% |
+| `/en/` | 71.2 KB | 44.4% | 0.0% |
+| `/en/about` | 64.0 KB | 56.5% | 0.0% |
+| `/en/blog` | 57.9 KB | 50.0% | 0.0% |
+| `/en/careers` | 59.1 KB | 51.7% | 0.0% |
+| `/en/contact` | 54.0 KB | 50.0% | 0.0% |
+| `/en/faq` | 61.2 KB | 54.2% | 0.0% |
+| `/en/pricing` | 55.2 KB | 78.6% | 0.0% |
+| `/en/products` | 56.7 KB | 54.5% | 0.0% |
+| `/en/settings` | 57.0 KB | 53.8% | 0.0% |
+| `/en/team` | 56.9 KB | 50.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 74.0 KB | 48.6% | 0.0% |
-| `/fr/about` | 66.6 KB | 42.9% | 0.0% |
-| `/fr/blog` | 60.6 KB | 50.0% | 0.0% |
-| `/fr/careers` | 61.8 KB | 82.4% | 0.0% |
-| `/fr/contact` | 56.7 KB | 50.0% | 0.0% |
-| `/fr/faq` | 63.9 KB | 50.0% | 0.0% |
-| `/fr/pricing` | 57.9 KB | 36.8% | 0.0% |
-| `/fr/products` | 59.3 KB | 45.5% | 0.0% |
-| `/fr/settings` | 59.9 KB | 46.7% | 0.0% |
-| `/fr/team` | 59.5 KB | 50.0% | 0.0% |
+| `/fr/` | 71.2 KB | 55.6% | 0.0% |
+| `/fr/about` | 64.0 KB | 43.5% | 0.0% |
+| `/fr/blog` | 57.9 KB | 50.0% | 0.0% |
+| `/fr/careers` | 59.1 KB | 48.3% | 0.0% |
+| `/fr/contact` | 54.0 KB | 50.0% | 0.0% |
+| `/fr/faq` | 61.2 KB | 50.0% | 0.0% |
+| `/fr/pricing` | 55.2 KB | 38.9% | 0.0% |
+| `/fr/products` | 56.7 KB | 45.5% | 0.0% |
+| `/fr/settings` | 57.0 KB | 46.2% | 0.0% |
+| `/fr/team` | 56.9 KB | 50.0% | 0.0% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-intlayer-static/bundle/rollup-visualizer.html)
 
@@ -738,8 +738,8 @@ _Generated: 2026-04-30_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 6.1 ms | 4.3 ms | 11.5 ms | 0.0 ms |
-| `fr` | 4.4 ms | 3.8 ms | 5.7 ms | 0.0 ms |
+| `en` | 4.7 ms | 3.6 ms | 7.7 ms | 0.0 ms |
+| `fr` | 4.0 ms | 3.1 ms | 5.1 ms | 0.0 ms |
 
 </details>
 
@@ -748,8 +748,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 12.3 ms | 5.1 ms | 2.5 ms |
-| `fr` | 11.3 ms | 4.6 ms | 2.2 ms |
+| `en` | 16.0 ms | 6.8 ms | 3.4 ms |
+| `fr` | 14.4 ms | 7.0 ms | 3.1 ms |
 
 </details>
 

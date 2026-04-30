@@ -129,8 +129,7 @@ var o = {
 				yes: "Да"
 			}
 		}
-	},
-	localIds: ["results-table::local::src/components/pages/home/ResultsTable.content.ts"]
+	}
 }, s = Symbol("intlayer"), c = () => i(s), l = {
 	locales: [
 		"en",
@@ -231,11 +230,11 @@ var o = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => _(e, t));
-}, y = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", b = {
+}, y = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, x = (e, t) => y ? b : {
+}, b = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? y : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -253,27 +252,27 @@ var o = {
 		}
 		return v(o, e, t);
 	}
-}, S = b, C = b, w = b, T = b, E = (e) => b, D = b, O = (e, t = !0) => [
-	x(e ?? l.defaultLocale, t ? l.defaultLocale : void 0),
+}, x = y, S = y, C = y, w = y, T = (e) => y, E = y, D = (e, t = !0) => [
+	b(e ?? l.defaultLocale, t ? l.defaultLocale : void 0),
+	x,
 	S,
 	C,
-	w,
-	E(e ?? l.defaultLocale),
-	D,
-	T
-], k = (e, t, n = []) => h(e, {
+	T(e ?? l.defaultLocale),
+	E,
+	w
+], O = (e, t, n = []) => h(e, {
 	...t,
 	plugins: n
-}), A = (e, t, n = O(t)) => {
+}), k = (e, t, n = D(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return k(e.content, r, n);
+	return O(e.content, r, n);
 };
-function j(t, n) {
+function A(t, n) {
 	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
 	var o = e.comment(), s = e.first_child(o), c = (t) => {
 		var n = e.comment(), o = e.first_child(n);
@@ -299,9 +298,9 @@ function j(t, n) {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
 	}), e.append(t, o);
 }
-var M = (e) => {
-	let t = !!j.prototype?.$destroy, n;
-	return n = t ? class extends j {
+var j = (e) => {
+	let t = !!A.prototype?.$destroy, n;
+	return n = t ? class extends A {
 		constructor(t) {
 			super({
 				...t,
@@ -313,7 +312,7 @@ var M = (e) => {
 				}
 			});
 		}
-	} : (t) => j(t, {
+	} : (t) => A(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -326,36 +325,36 @@ var M = (e) => {
 		writable: !0,
 		configurable: !0
 	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, N = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false" ? b : {
+}, M = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => M({
+	transform: (e, { children: t, ...n }) => j({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, P = N, F = b, I = b, L = b, R = /* @__PURE__ */ new Map(), z = (e, t = !0) => {
+}, N = M, P = y, F = y, I = y, L = /* @__PURE__ */ new Map(), R = (e, t = !0) => {
 	let n = `${e ?? l.defaultLocale}_${t}`;
-	if (R.has(n)) return R.get(n);
+	if (L.has(n)) return L.get(n);
 	let r = [
-		x(e ?? l.defaultLocale, t ? l.defaultLocale : void 0),
+		b(e ?? l.defaultLocale, t ? l.defaultLocale : void 0),
+		x,
 		S,
-		C,
-		E(e ?? l.defaultLocale),
-		D,
-		T,
+		T(e ?? l.defaultLocale),
+		E,
+		w,
+		M,
 		N,
 		P,
 		F,
-		I,
-		L
+		I
 	];
-	return R.set(n, r), r;
-}, B = (e, t) => A(e, t, z(t)), V = (e, n) => {
+	return L.set(n, r), r;
+}, z = (e, t) => k(e, t, R(t)), B = (e, n) => {
 	let r = c();
-	return t([d], ([t]) => B(e, n ?? r?.locale ?? t.locale));
+	return t([d], ([t]) => z(e, n ?? r?.locale ?? t.locale));
 };
-function H(e) {
+function V(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), a(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -365,12 +364,12 @@ function H(e) {
 		}
 	});
 }
-var U = e.from_html("<tr class=\"border-t border-border\"><td class=\"px-4 py-3 font-medium text-foreground\"> </td><td class=\"px-4 py-3 text-muted-foreground\"> </td><td class=\"px-4 py-3 text-muted-foreground\"> </td><td class=\"px-4 py-3 text-muted-foreground\"> </td></tr>"), W = e.from_html("<section><h2 class=\"mb-6 text-2xl font-bold text-foreground\"> </h2> <div class=\"overflow-x-auto rounded-lg border border-border\"><table class=\"w-full text-sm\"><thead class=\"bg-muted\"><tr><th class=\"px-4 py-3 text-left font-medium text-muted-foreground\"> </th><th class=\"px-4 py-3 text-left font-medium text-muted-foreground\"> </th><th class=\"px-4 py-3 text-left font-medium text-muted-foreground\"> </th><th class=\"px-4 py-3 text-left font-medium text-muted-foreground\"> </th></tr></thead><tbody></tbody></table></div></section>");
-function G(t, r) {
+var H = e.from_html("<tr class=\"border-t border-border\"><td class=\"px-4 py-3 font-medium text-foreground\"> </td><td class=\"px-4 py-3 text-muted-foreground\"> </td><td class=\"px-4 py-3 text-muted-foreground\"> </td><td class=\"px-4 py-3 text-muted-foreground\"> </td></tr>"), U = e.from_html("<section><h2 class=\"mb-6 text-2xl font-bold text-foreground\"> </h2> <div class=\"overflow-x-auto rounded-lg border border-border\"><table class=\"w-full text-sm\"><thead class=\"bg-muted\"><tr><th class=\"px-4 py-3 text-left font-medium text-muted-foreground\"> </th><th class=\"px-4 py-3 text-left font-medium text-muted-foreground\"> </th><th class=\"px-4 py-3 text-left font-medium text-muted-foreground\"> </th><th class=\"px-4 py-3 text-left font-medium text-muted-foreground\"> </th></tr></thead><tbody></tbody></table></div></section>");
+function W(t, r) {
 	e.push(r, !1);
 	let i = () => e.store_get(c, "$content", a), [a, s] = e.setup_stores();
-	H("ResultsTable");
-	let c = V(o), l = [
+	V("ResultsTable");
+	let c = B(o), l = [
 		{
 			lib: "react-i18next",
 			size: "42.3 kB",
@@ -397,7 +396,7 @@ function G(t, r) {
 		}
 	];
 	e.init();
-	var u = W(), d = e.child(u), f = e.child(d, !0);
+	var u = U(), d = e.child(u), f = e.child(d, !0);
 	e.reset(d);
 	var p = e.sibling(d, 2), m = e.child(p), h = e.child(m), g = e.child(h), _ = e.child(g), v = e.child(_, !0);
 	e.reset(_);
@@ -409,7 +408,7 @@ function G(t, r) {
 	e.reset(C), e.reset(g), e.reset(h);
 	var T = e.sibling(h);
 	e.each(T, 5, () => l, (e) => e.lib, (t, n) => {
-		var r = U(), i = e.child(r), a = e.child(i, !0);
+		var r = H(), i = e.child(r), a = e.child(i, !0);
 		e.reset(i);
 		var o = e.sibling(i), s = e.child(o, !0);
 		e.reset(o);
@@ -423,4 +422,4 @@ function G(t, r) {
 		e.set_text(f, i().title), e.set_text(v, i().columns.library), e.set_text(b, i().columns.bundleSize), e.set_text(S, i().columns.lookupTime), e.set_text(w, i().columns.lazyLoading);
 	}), e.append(t, u), e.pop(), s();
 }
-export { G as default };
+export { W as default };

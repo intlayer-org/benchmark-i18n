@@ -119,8 +119,7 @@ var i = {
 				contactEmail: "contact@intlayer.org"
 			}
 		}
-	},
-	localIds: ["footer::local::src/components/Footer.content.ts"]
+	}
 }, a = Symbol("intlayer"), o = () => t(a), s = {
 	locales: [
 		"en",
@@ -221,11 +220,11 @@ var i = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => h(e, t));
-}, _ = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", v = {
+}, _ = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, y = (e, t) => _ ? v : {
+}, v = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? _ : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -243,27 +242,27 @@ var i = {
 		}
 		return g(o, e, t);
 	}
-}, b = v, x = v, S = v, C = v, w = (e) => v, T = v, E = (e, t = !0) => [
-	y(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+}, y = _, b = _, x = _, S = _, C = (e) => _, w = _, T = (e, t = !0) => [
+	v(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+	y,
 	b,
 	x,
-	S,
-	w(e ?? s.defaultLocale),
-	T,
-	C
-], D = (e, t, n = []) => p(e, {
+	C(e ?? s.defaultLocale),
+	w,
+	S
+], E = (e, t, n = []) => p(e, {
 	...t,
 	plugins: n
-}), O = (e, t, n = E(t)) => {
+}), D = (e, t, n = T(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return D(e.content, r, n);
+	return E(e.content, r, n);
 };
-function k(t, n) {
+function O(t, n) {
 	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
 	var o = e.comment(), s = e.first_child(o), c = (t) => {
 		var n = e.comment(), o = e.first_child(n);
@@ -289,9 +288,9 @@ function k(t, n) {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
 	}), e.append(t, o);
 }
-var A = (e) => {
-	let t = !!k.prototype?.$destroy, n;
-	return n = t ? class extends k {
+var k = (e) => {
+	let t = !!O.prototype?.$destroy, n;
+	return n = t ? class extends O {
 		constructor(t) {
 			super({
 				...t,
@@ -303,7 +302,7 @@ var A = (e) => {
 				}
 			});
 		}
-	} : (t) => k(t, {
+	} : (t) => O(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -316,35 +315,35 @@ var A = (e) => {
 		writable: !0,
 		configurable: !0
 	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, j = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false" ? v : {
+}, A = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => A({
+	transform: (e, { children: t, ...n }) => k({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, M = j, N = v, P = v, F = v, I = /* @__PURE__ */ new Map(), L = (e, t = !0) => {
+}, j = A, M = _, N = _, P = _, F = /* @__PURE__ */ new Map(), I = (e, t = !0) => {
 	let n = `${e ?? s.defaultLocale}_${t}`;
-	if (I.has(n)) return I.get(n);
+	if (F.has(n)) return F.get(n);
 	let r = [
-		y(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+		v(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+		y,
 		b,
-		x,
-		w(e ?? s.defaultLocale),
-		T,
-		C,
+		C(e ?? s.defaultLocale),
+		w,
+		S,
+		A,
 		j,
 		M,
 		N,
-		P,
-		F
+		P
 	];
-	return I.set(n, r), r;
-}, R = (e, t) => O(e, t, L(t)), z = (e, t) => {
+	return F.set(n, r), r;
+}, L = (e, t) => D(e, t, I(t)), R = (e, t) => {
 	let r = o();
-	return n([l], ([n]) => R(e, t ?? r?.locale ?? n.locale));
-}, B = [
+	return n([l], ([n]) => L(e, t ?? r?.locale ?? n.locale));
+}, z = [
 	"en",
 	"fr",
 	"es",
@@ -356,10 +355,10 @@ var A = (e) => {
 	"ko",
 	"ru"
 ];
-function V(e) {
-	return B.includes(e);
+function B(e) {
+	return z.includes(e);
 }
-var H = new Set([
+var V = new Set([
 	"",
 	"about",
 	"blog",
@@ -371,22 +370,22 @@ var H = new Set([
 	"settings",
 	"team"
 ]);
-function U(e) {
+function H(e) {
 	let t = e.split("/").filter(Boolean);
 	if (t.length === 0) return { kind: "notfound" };
 	let [n, ...r] = t;
-	if (!V(n)) return { kind: "notfound" };
+	if (!B(n)) return { kind: "notfound" };
 	let i = r[0] ?? "";
-	return r.length > 1 || !H.has(i) ? { kind: "notfound" } : {
+	return r.length > 1 || !V.has(i) ? { kind: "notfound" } : {
 		kind: "ok",
 		locale: n,
 		page: i
 	};
 }
-var W = n(r(typeof window < "u" ? window.location.pathname : "/en"), (e) => U(e)), G = e.from_html("<a class=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"> </a>"), K = e.from_html("<a target=\"_blank\" rel=\"noreferrer\" class=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"> </a>"), q = e.from_html("<li><!></li>"), J = e.from_html("<footer class=\"mt-20 border-t border-border bg-card\"><div class=\"container py-8\"><div class=\"grid gap-8 md:grid-cols-3\"><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"> </h3> <p class=\"text-sm text-muted-foreground\"> </p></div> <div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"> </h3> <ul class=\"space-y-1\"></ul></div> <div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"> </h3> <p class=\"text-sm text-muted-foreground\"> </p></div></div> <div class=\"mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground\"> </div></div></footer>");
-function Y(t, n) {
+var U = n(r(typeof window < "u" ? window.location.pathname : "/en"), (e) => H(e)), W = e.from_html("<a class=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"> </a>"), G = e.from_html("<a target=\"_blank\" rel=\"noreferrer\" class=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"> </a>"), K = e.from_html("<li><!></li>"), q = e.from_html("<footer class=\"mt-20 border-t border-border bg-card\"><div class=\"container py-8\"><div class=\"grid gap-8 md:grid-cols-3\"><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"> </h3> <p class=\"text-sm text-muted-foreground\"> </p></div> <div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"> </h3> <ul class=\"space-y-1\"></ul></div> <div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"> </h3> <p class=\"text-sm text-muted-foreground\"> </p></div></div> <div class=\"mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground\"> </div></div></footer>");
+function J(t, n) {
 	e.push(n, !0);
-	let r = () => e.store_get(W, "$route", o), a = () => e.store_get(c, "$footer", o), [o, s] = e.setup_stores(), c = z(i), l = e.derived(() => r().kind === "ok" ? r().locale : "en"), u = e.derived(() => [
+	let r = () => e.store_get(U, "$route", o), a = () => e.store_get(c, "$footer", o), [o, s] = e.setup_stores(), c = R(i), l = e.derived(() => r().kind === "ok" ? r().locale : "en"), u = e.derived(() => [
 		{
 			label: a().github,
 			href: "https://github.com/intlayer-org/benchmark-i18n",
@@ -403,7 +402,7 @@ function Y(t, n) {
 			isInternal: !0
 		}
 	]);
-	var d = J(), f = e.child(d), p = e.child(f), m = e.child(p), h = e.child(m), g = e.child(h, !0);
+	var d = q(), f = e.child(d), p = e.child(f), m = e.child(p), h = e.child(m), g = e.child(h, !0);
 	e.reset(h);
 	var _ = e.sibling(h, 2), v = e.child(_, !0);
 	e.reset(_), e.reset(m);
@@ -411,13 +410,13 @@ function Y(t, n) {
 	e.reset(b);
 	var S = e.sibling(b, 2);
 	e.each(S, 21, () => e.get(u), e.index, (t, n) => {
-		var r = q(), i = e.child(r), a = (t) => {
-			var r = G(), i = e.child(r, !0);
+		var r = K(), i = e.child(r), a = (t) => {
+			var r = W(), i = e.child(r, !0);
 			e.reset(r), e.template_effect(() => {
 				e.set_attribute(r, "href", e.get(n).to), e.set_text(i, e.get(n).label);
 			}), e.append(t, r);
 		}, o = (t) => {
-			var r = K(), i = e.child(r, !0);
+			var r = G(), i = e.child(r, !0);
 			e.reset(r), e.template_effect(() => {
 				e.set_attribute(r, "href", e.get(n).href), e.set_text(i, e.get(n).label);
 			}), e.append(t, r);
@@ -435,4 +434,4 @@ function Y(t, n) {
 		e.set_text(g, a().appName), e.set_text(v, a().description), e.set_text(x, a().resources), e.set_text(T, a().contact), e.set_text(D, a().contactEmail), e.set_text(k, a().footerText);
 	}), e.append(t, d), e.pop(), s();
 }
-export { Y as default };
+export { J as default };

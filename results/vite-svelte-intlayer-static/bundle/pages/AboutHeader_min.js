@@ -49,8 +49,7 @@ var a = {
 				description: "Это тестовое приложение с открытым исходным кодом, а не продукт или компания. Его единственная цель — предоставить реалистичное многостраничное приложение, в котором различные библиотеки i18n могут быть интегрированы и измерены в идентичных условиях."
 			}
 		}
-	},
-	localIds: ["about-header::local::src/components/pages/about/AboutHeader.content.ts"]
+	}
 }, o = Symbol("intlayer"), s = () => t(o), c = {
 	locales: [
 		"en",
@@ -151,11 +150,11 @@ var a = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => g(e, t));
-}, v = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", y = {
+}, v = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, b = (e, t) => v ? y : {
+}, y = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? v : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -173,27 +172,27 @@ var a = {
 		}
 		return _(o, e, t);
 	}
-}, x = y, S = y, C = y, w = y, T = (e) => y, E = y, D = (e, t = !0) => [
-	b(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+}, b = v, x = v, S = v, C = v, w = (e) => v, T = v, E = (e, t = !0) => [
+	y(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+	b,
 	x,
 	S,
-	C,
-	T(e ?? c.defaultLocale),
-	E,
-	w
-], O = (e, t, n = []) => m(e, {
+	w(e ?? c.defaultLocale),
+	T,
+	C
+], D = (e, t, n = []) => m(e, {
 	...t,
 	plugins: n
-}), k = (e, t, n = D(t)) => {
+}), O = (e, t, n = E(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return O(e.content, r, n);
+	return D(e.content, r, n);
 };
-function A(t, n) {
+function k(t, n) {
 	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
 	var o = e.comment(), s = e.first_child(o), c = (t) => {
 		var n = e.comment(), o = e.first_child(n);
@@ -219,9 +218,9 @@ function A(t, n) {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
 	}), e.append(t, o);
 }
-var j = (e) => {
-	let t = !!A.prototype?.$destroy, n;
-	return n = t ? class extends A {
+var A = (e) => {
+	let t = !!k.prototype?.$destroy, n;
+	return n = t ? class extends k {
 		constructor(t) {
 			super({
 				...t,
@@ -233,7 +232,7 @@ var j = (e) => {
 				}
 			});
 		}
-	} : (t) => A(t, {
+	} : (t) => k(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -246,36 +245,36 @@ var j = (e) => {
 		writable: !0,
 		configurable: !0
 	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, M = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false" ? y : {
+}, j = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => j({
+	transform: (e, { children: t, ...n }) => A({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, N = M, P = y, F = y, I = y, L = /* @__PURE__ */ new Map(), R = (e, t = !0) => {
+}, M = j, N = v, P = v, F = v, I = /* @__PURE__ */ new Map(), L = (e, t = !0) => {
 	let n = `${e ?? c.defaultLocale}_${t}`;
-	if (L.has(n)) return L.get(n);
+	if (I.has(n)) return I.get(n);
 	let r = [
-		b(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+		y(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+		b,
 		x,
-		S,
-		T(e ?? c.defaultLocale),
-		E,
-		w,
+		w(e ?? c.defaultLocale),
+		T,
+		C,
+		j,
 		M,
 		N,
 		P,
-		F,
-		I
+		F
 	];
-	return L.set(n, r), r;
-}, z = (e, t) => k(e, t, R(t)), B = (e, t) => {
+	return I.set(n, r), r;
+}, R = (e, t) => O(e, t, L(t)), z = (e, t) => {
 	let n = s();
-	return r([u], ([r]) => z(e, t ?? n?.locale ?? r.locale));
+	return r([u], ([r]) => R(e, t ?? n?.locale ?? r.locale));
 };
-function V(e) {
+function B(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), n(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -285,18 +284,18 @@ function V(e) {
 		}
 	});
 }
-var H = e.from_html("<h1 class=\"mb-4 text-3xl font-bold text-foreground\"> </h1> <p class=\"mb-8 max-w-3xl text-muted-foreground\"> </p>", 1);
-function U(t, n) {
+var V = e.from_html("<h1 class=\"mb-4 text-3xl font-bold text-foreground\"> </h1> <p class=\"mb-8 max-w-3xl text-muted-foreground\"> </p>", 1);
+function H(t, n) {
 	e.push(n, !1);
 	let r = () => e.store_get(s, "$content", i), [i, o] = e.setup_stores();
-	V("AboutHeader");
-	let s = B(a);
+	B("AboutHeader");
+	let s = z(a);
 	e.init();
-	var c = H(), l = e.first_child(c), u = e.child(l, !0);
+	var c = V(), l = e.first_child(c), u = e.child(l, !0);
 	e.reset(l);
 	var d = e.sibling(l, 2), f = e.child(d, !0);
 	e.reset(d), e.template_effect(() => {
 		e.set_text(u, r().title), e.set_text(f, r().description);
 	}), e.append(t, c), e.pop(), o();
 }
-export { U as default };
+export { H as default };

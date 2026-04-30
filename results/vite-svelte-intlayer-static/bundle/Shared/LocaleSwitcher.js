@@ -89,7 +89,7 @@ var configuration = {
 		"defaultLocale": "en"
 	},
 	routing: {
-		"mode": "prefix-no-default",
+		"mode": "prefix-all",
 		"storage": {
 			"cookies": [{
 				"name": "INTLAYER_LOCALE",
@@ -100,6 +100,7 @@ var configuration = {
 		"basePath": ""
 	},
 	editor: {
+		"applicationURL": "http://localhost:3000",
 		"editorURL": "http://localhost:8000",
 		"cmsURL": "https://app.intlayer.org",
 		"backendURL": "https://back.intlayer.org",

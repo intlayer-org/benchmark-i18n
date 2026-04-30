@@ -179,8 +179,7 @@ var i = {
 				preferences: "Предпочтения"
 			}
 		}
-	},
-	localIds: ["preferences-section::local::src/components/pages/settings/preferencesSection.content.ts"]
+	}
 }, a = Symbol("intlayer"), o = () => t(a), s = {
 	locales: [
 		"en",
@@ -281,11 +280,11 @@ var i = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => h(e, t));
-}, _ = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", v = {
+}, _ = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, y = (e, t) => _ ? v : {
+}, v = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? _ : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -303,27 +302,27 @@ var i = {
 		}
 		return g(o, e, t);
 	}
-}, b = v, x = v, S = v, C = v, w = (e) => v, T = v, E = (e, t = !0) => [
-	y(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+}, y = _, b = _, x = _, S = _, C = (e) => _, w = _, T = (e, t = !0) => [
+	v(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+	y,
 	b,
 	x,
-	S,
-	w(e ?? s.defaultLocale),
-	T,
-	C
-], D = (e, t, n = []) => p(e, {
+	C(e ?? s.defaultLocale),
+	w,
+	S
+], E = (e, t, n = []) => p(e, {
 	...t,
 	plugins: n
-}), O = (e, t, n = E(t)) => {
+}), D = (e, t, n = T(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return D(e.content, r, n);
+	return E(e.content, r, n);
 };
-function k(t, n) {
+function O(t, n) {
 	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
 	var o = e.comment(), s = e.first_child(o), c = (t) => {
 		var n = e.comment(), o = e.first_child(n);
@@ -349,9 +348,9 @@ function k(t, n) {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
 	}), e.append(t, o);
 }
-var A = (e) => {
-	let t = !!k.prototype?.$destroy, n;
-	return n = t ? class extends k {
+var k = (e) => {
+	let t = !!O.prototype?.$destroy, n;
+	return n = t ? class extends O {
 		constructor(t) {
 			super({
 				...t,
@@ -363,7 +362,7 @@ var A = (e) => {
 				}
 			});
 		}
-	} : (t) => k(t, {
+	} : (t) => O(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -376,40 +375,40 @@ var A = (e) => {
 		writable: !0,
 		configurable: !0
 	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, j = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false" ? v : {
+}, A = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => A({
+	transform: (e, { children: t, ...n }) => k({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, M = j, N = v, P = v, F = v, I = /* @__PURE__ */ new Map(), L = (e, t = !0) => {
+}, j = A, M = _, N = _, P = _, F = /* @__PURE__ */ new Map(), I = (e, t = !0) => {
 	let n = `${e ?? s.defaultLocale}_${t}`;
-	if (I.has(n)) return I.get(n);
+	if (F.has(n)) return F.get(n);
 	let r = [
-		y(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+		v(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+		y,
 		b,
-		x,
-		w(e ?? s.defaultLocale),
-		T,
-		C,
+		C(e ?? s.defaultLocale),
+		w,
+		S,
+		A,
 		j,
 		M,
 		N,
-		P,
-		F
+		P
 	];
-	return I.set(n, r), r;
-}, R = (e, t) => O(e, t, L(t)), z = (e, t) => {
+	return F.set(n, r), r;
+}, L = (e, t) => D(e, t, I(t)), R = (e, t) => {
 	let r = o();
-	return n([l], ([n]) => R(e, t ?? r?.locale ?? n.locale));
-}, B = e.from_html("<section class=\"rounded-lg border border-border bg-card p-6\"><h2 class=\"mb-4 text-lg font-semibold text-foreground\"> </h2> <div class=\"space-y-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div> <button type=\"button\" class=\"h-6 w-11 rounded-full bg-primary transition-colors\"><span class=\"block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform\"></span></button></div> <div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div> <button type=\"button\" class=\"h-6 w-11 rounded-full bg-muted transition-colors\"><span class=\"block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform\"></span></button></div> <div><label for=\"settings-default-language\" class=\"mb-1 block text-sm font-medium text-foreground\"> </label> <select id=\"settings-default-language\" class=\"w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-1 focus:ring-ring focus:outline-none\"><option> </option><option> </option><option> </option><option> </option><option> </option><option> </option><option> </option></select></div></div></section>");
-function V(t, n) {
+	return n([l], ([n]) => L(e, t ?? r?.locale ?? n.locale));
+}, z = e.from_html("<section class=\"rounded-lg border border-border bg-card p-6\"><h2 class=\"mb-4 text-lg font-semibold text-foreground\"> </h2> <div class=\"space-y-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div> <button type=\"button\" class=\"h-6 w-11 rounded-full bg-primary transition-colors\"><span class=\"block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform\"></span></button></div> <div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div> <button type=\"button\" class=\"h-6 w-11 rounded-full bg-muted transition-colors\"><span class=\"block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform\"></span></button></div> <div><label for=\"settings-default-language\" class=\"mb-1 block text-sm font-medium text-foreground\"> </label> <select id=\"settings-default-language\" class=\"w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-1 focus:ring-ring focus:outline-none\"><option> </option><option> </option><option> </option><option> </option><option> </option><option> </option><option> </option></select></div></div></section>");
+function B(t, n) {
 	e.push(n, !1);
-	let r = () => e.store_get(s, "$content", a), [a, o] = e.setup_stores(), s = z(i);
+	let r = () => e.store_get(s, "$content", a), [a, o] = e.setup_stores(), s = R(i);
 	e.init();
-	var c = B(), l = e.child(c), u = e.child(l, !0);
+	var c = z(), l = e.child(c), u = e.child(l, !0);
 	e.reset(l);
 	var d = e.sibling(l, 2), f = e.child(d), p = e.child(f), m = e.child(p), h = e.child(m, !0);
 	e.reset(m);
@@ -431,7 +430,7 @@ function V(t, n) {
 	e.reset(N);
 	var F = {}, I = e.sibling(N), L = e.child(I, !0);
 	e.reset(I);
-	var R = {}, V = e.sibling(I), H = e.child(V, !0);
+	var B = {}, V = e.sibling(I), H = e.child(V, !0);
 	e.reset(V);
 	var U = {}, W = e.sibling(V), G = e.child(W, !0);
 	e.reset(W);
@@ -441,7 +440,7 @@ function V(t, n) {
 	e.reset(X);
 	var Q = {};
 	e.reset(k), e.reset(E), e.reset(d), e.reset(c), e.template_effect(() => {
-		e.set_text(u, r().preferences), e.set_text(h, r().emailNotifications), e.set_text(_, r().receiveWeeklyBenchmarkReports), e.set_attribute(v, "aria-label", r().toggleNotifications), e.set_text(S, r().darkMode), e.set_text(w, r().useDarkColorScheme), e.set_attribute(T, "aria-label", r().toggleDarkMode), e.set_text(O, r().defaultLanguage), e.set_text(j, r().englishEn), M !== (M = r().englishEn) && (A.__value = r().englishEn), e.set_text(P, r().frenchFr), F !== (F = r().frenchFr) && (N.__value = r().frenchFr), e.set_text(L, r().germanDe), R !== (R = r().germanDe) && (I.__value = r().germanDe), e.set_text(H, r().spanishEs), U !== (U = r().spanishEs) && (V.__value = r().spanishEs), e.set_text(G, r().japaneseJa), K !== (K = r().japaneseJa) && (W.__value = r().japaneseJa), e.set_text(J, r().chineseSimplifiedZhCn), Y !== (Y = r().chineseSimplifiedZhCn) && (q.__value = r().chineseSimplifiedZhCn), e.set_text(Z, r().arabicAr), Q !== (Q = r().arabicAr) && (X.__value = r().arabicAr);
+		e.set_text(u, r().preferences), e.set_text(h, r().emailNotifications), e.set_text(_, r().receiveWeeklyBenchmarkReports), e.set_attribute(v, "aria-label", r().toggleNotifications), e.set_text(S, r().darkMode), e.set_text(w, r().useDarkColorScheme), e.set_attribute(T, "aria-label", r().toggleDarkMode), e.set_text(O, r().defaultLanguage), e.set_text(j, r().englishEn), M !== (M = r().englishEn) && (A.__value = r().englishEn), e.set_text(P, r().frenchFr), F !== (F = r().frenchFr) && (N.__value = r().frenchFr), e.set_text(L, r().germanDe), B !== (B = r().germanDe) && (I.__value = r().germanDe), e.set_text(H, r().spanishEs), U !== (U = r().spanishEs) && (V.__value = r().spanishEs), e.set_text(G, r().japaneseJa), K !== (K = r().japaneseJa) && (W.__value = r().japaneseJa), e.set_text(J, r().chineseSimplifiedZhCn), Y !== (Y = r().chineseSimplifiedZhCn) && (q.__value = r().chineseSimplifiedZhCn), e.set_text(Z, r().arabicAr), Q !== (Q = r().arabicAr) && (X.__value = r().arabicAr);
 	}), e.append(t, c), e.pop(), o();
 }
-export { V as default };
+export { B as default };

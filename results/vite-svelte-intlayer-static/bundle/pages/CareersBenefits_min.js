@@ -79,8 +79,7 @@ var a = {
 				workFromAnywhereInThe: "Работайте из любой точки мира"
 			}
 		}
-	},
-	localIds: ["careers-benefits::local::src/components/pages/careers/careersBenefits.content.ts"]
+	}
 }, o = Symbol("intlayer"), s = () => t(o), c = {
 	locales: [
 		"en",
@@ -181,11 +180,11 @@ var a = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => g(e, t));
-}, v = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", y = {
+}, v = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, b = (e, t) => v ? y : {
+}, y = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? v : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -203,27 +202,27 @@ var a = {
 		}
 		return _(o, e, t);
 	}
-}, x = y, S = y, C = y, w = y, T = (e) => y, E = y, D = (e, t = !0) => [
-	b(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+}, b = v, x = v, S = v, C = v, w = (e) => v, T = v, E = (e, t = !0) => [
+	y(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+	b,
 	x,
 	S,
-	C,
-	T(e ?? c.defaultLocale),
-	E,
-	w
-], O = (e, t, n = []) => m(e, {
+	w(e ?? c.defaultLocale),
+	T,
+	C
+], D = (e, t, n = []) => m(e, {
 	...t,
 	plugins: n
-}), k = (e, t, n = D(t)) => {
+}), O = (e, t, n = E(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return O(e.content, r, n);
+	return D(e.content, r, n);
 };
-function A(t, n) {
+function k(t, n) {
 	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
 	var o = e.comment(), s = e.first_child(o), c = (t) => {
 		var n = e.comment(), o = e.first_child(n);
@@ -249,9 +248,9 @@ function A(t, n) {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
 	}), e.append(t, o);
 }
-var j = (e) => {
-	let t = !!A.prototype?.$destroy, n;
-	return n = t ? class extends A {
+var A = (e) => {
+	let t = !!k.prototype?.$destroy, n;
+	return n = t ? class extends k {
 		constructor(t) {
 			super({
 				...t,
@@ -263,7 +262,7 @@ var j = (e) => {
 				}
 			});
 		}
-	} : (t) => A(t, {
+	} : (t) => k(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -276,38 +275,38 @@ var j = (e) => {
 		writable: !0,
 		configurable: !0
 	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, M = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false" ? y : {
+}, j = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => j({
+	transform: (e, { children: t, ...n }) => A({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, N = M, P = y, F = y, I = y, L = /* @__PURE__ */ new Map(), R = (e, t = !0) => {
+}, M = j, N = v, P = v, F = v, I = /* @__PURE__ */ new Map(), L = (e, t = !0) => {
 	let n = `${e ?? c.defaultLocale}_${t}`;
-	if (L.has(n)) return L.get(n);
+	if (I.has(n)) return I.get(n);
 	let r = [
-		b(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+		y(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+		b,
 		x,
-		S,
-		T(e ?? c.defaultLocale),
-		E,
-		w,
+		w(e ?? c.defaultLocale),
+		T,
+		C,
+		j,
 		M,
 		N,
 		P,
-		F,
-		I
+		F
 	];
-	return L.set(n, r), r;
-}, z = (e, t) => k(e, t, R(t)), B = (e, t) => {
+	return I.set(n, r), r;
+}, R = (e, t) => O(e, t, L(t)), z = (e, t) => {
 	let r = s();
-	return n([u], ([n]) => z(e, t ?? r?.locale ?? n.locale));
-}, V = e.from_html("<div class=\"rounded-lg border border-border bg-card p-4 text-center\"><p class=\"text-sm font-semibold text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div>"), H = e.from_html("<div class=\"mb-12 grid gap-4 md:grid-cols-3\"></div>");
-function U(t, n) {
+	return n([u], ([n]) => R(e, t ?? r?.locale ?? n.locale));
+}, B = e.from_html("<div class=\"rounded-lg border border-border bg-card p-4 text-center\"><p class=\"text-sm font-semibold text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div>"), V = e.from_html("<div class=\"mb-12 grid gap-4 md:grid-cols-3\"></div>");
+function H(t, n) {
 	e.push(n, !1);
-	let i = B(a), o = [
+	let i = z(a), o = [
 		{
 			label: "Remote-first",
 			value: r(i).workFromAnywhereInThe
@@ -322,9 +321,9 @@ function U(t, n) {
 		}
 	];
 	e.init();
-	var s = H();
+	var s = V();
 	e.each(s, 5, () => o, (e) => e.label, (t, n) => {
-		var r = V(), i = e.child(r), a = e.child(i, !0);
+		var r = B(), i = e.child(r), a = e.child(i, !0);
 		e.reset(i);
 		var o = e.sibling(i, 2), s = e.child(o, !0);
 		e.reset(o), e.reset(r), e.template_effect(() => {
@@ -332,4 +331,4 @@ function U(t, n) {
 		}), e.append(t, r);
 	}), e.reset(s), e.append(t, s), e.pop();
 }
-export { U as default };
+export { H as default };

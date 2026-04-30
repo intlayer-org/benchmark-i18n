@@ -149,8 +149,7 @@ var contact_form_default = {
 				"name": "Имя"
 			}
 		}
-	},
-	localIds: ["contact-form::local::src/components/pages/contact/contactForm.content.ts"]
+	}
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -289,13 +288,12 @@ var getTranslation = (languageContent, locale, fallback) => {
 	if (Array.isArray(results[0])) return results[0];
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
-var TREE_SHAKE_TRANSLATION = process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false";
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
@@ -419,7 +417,7 @@ var renderIntlayerNode = (args) => {
 	if (args.additionalProps) Object.assign(Node, args.additionalProps);
 	return Node;
 };
-var intlayerNodePlugins = process.env["INTLAYER_NODE_TYPE_INTLAYER_NODE"] === "false" ? fallbackPlugin : {
+var intlayerNodePlugins = {
 	id: "intlayer-node-plugin",
 	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
 	transform: (node, { children, ...rest }) => renderIntlayerNode({

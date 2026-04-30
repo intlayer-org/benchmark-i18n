@@ -89,8 +89,7 @@ var a = {
 				ariaLabelDark: "Режим темы: темный. Нажмите, чтобы переключиться в автоматический режим."
 			}
 		}
-	},
-	localIds: ["theme-toggle::local::src/components/ThemeToggle.content.ts"]
+	}
 }, o = Symbol("intlayer"), s = () => t(o), c = {
 	locales: [
 		"en",
@@ -191,11 +190,11 @@ var a = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => g(e, t));
-}, v = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", y = {
+}, v = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, b = (e, t) => v ? y : {
+}, y = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? v : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -213,27 +212,27 @@ var a = {
 		}
 		return _(o, e, t);
 	}
-}, x = y, S = y, C = y, w = y, T = (e) => y, E = y, D = (e, t = !0) => [
-	b(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+}, b = v, x = v, S = v, C = v, w = (e) => v, T = v, E = (e, t = !0) => [
+	y(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+	b,
 	x,
 	S,
-	C,
-	T(e ?? c.defaultLocale),
-	E,
-	w
-], O = (e, t, n = []) => m(e, {
+	w(e ?? c.defaultLocale),
+	T,
+	C
+], D = (e, t, n = []) => m(e, {
 	...t,
 	plugins: n
-}), k = (e, t, n = D(t)) => {
+}), O = (e, t, n = E(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return O(e.content, r, n);
+	return D(e.content, r, n);
 };
-function A(t, n) {
+function k(t, n) {
 	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
 	var o = e.comment(), s = e.first_child(o), c = (t) => {
 		var n = e.comment(), o = e.first_child(n);
@@ -259,9 +258,9 @@ function A(t, n) {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
 	}), e.append(t, o);
 }
-var j = (e) => {
-	let t = !!A.prototype?.$destroy, n;
-	return n = t ? class extends A {
+var A = (e) => {
+	let t = !!k.prototype?.$destroy, n;
+	return n = t ? class extends k {
 		constructor(t) {
 			super({
 				...t,
@@ -273,7 +272,7 @@ var j = (e) => {
 				}
 			});
 		}
-	} : (t) => A(t, {
+	} : (t) => k(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -286,38 +285,38 @@ var j = (e) => {
 		writable: !0,
 		configurable: !0
 	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, M = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false" ? y : {
+}, j = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => j({
+	transform: (e, { children: t, ...n }) => A({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, N = M, P = y, F = y, I = y, L = /* @__PURE__ */ new Map(), R = (e, t = !0) => {
+}, M = j, N = v, P = v, F = v, I = /* @__PURE__ */ new Map(), L = (e, t = !0) => {
 	let n = `${e ?? c.defaultLocale}_${t}`;
-	if (L.has(n)) return L.get(n);
+	if (I.has(n)) return I.get(n);
 	let r = [
-		b(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+		y(e ?? c.defaultLocale, t ? c.defaultLocale : void 0),
+		b,
 		x,
-		S,
-		T(e ?? c.defaultLocale),
-		E,
-		w,
+		w(e ?? c.defaultLocale),
+		T,
+		C,
+		j,
 		M,
 		N,
 		P,
-		F,
-		I
+		F
 	];
-	return L.set(n, r), r;
-}, z = (e, t) => k(e, t, R(t)), B = (e, t) => {
+	return I.set(n, r), r;
+}, R = (e, t) => O(e, t, L(t)), z = (e, t) => {
 	let n = s();
-	return r([u], ([r]) => z(e, t ?? n?.locale ?? r.locale));
-}, V = e.from_html("<button type=\"button\" class=\"rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80\"> </button>");
-function H(t, r) {
+	return r([u], ([r]) => R(e, t ?? n?.locale ?? r.locale));
+}, B = e.from_html("<button type=\"button\" class=\"rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80\"> </button>");
+function V(t, r) {
 	e.push(r, !0);
-	let i = () => e.store_get(c, "$tt", o), [o, s] = e.setup_stores(), c = B(a);
+	let i = () => e.store_get(c, "$tt", o), [o, s] = e.setup_stores(), c = z(a);
 	function l() {
 		if (typeof window > "u") return "auto";
 		let e = window.localStorage.getItem("theme");
@@ -341,10 +340,10 @@ function H(t, r) {
 		e.set(d, t, !0), u(t), window.localStorage.setItem("theme", t);
 	}
 	let p = e.derived(() => e.get(d) === "auto" ? i().ariaLabelAuto : e.get(d) === "light" ? i().ariaLabelLight : i().ariaLabelDark), m = e.derived(() => e.get(d) === "auto" ? i().auto : e.get(d) === "dark" ? i().dark : i().light);
-	var h = V(), g = e.child(h, !0);
+	var h = B(), g = e.child(h, !0);
 	e.reset(h), e.template_effect(() => {
 		e.set_attribute(h, "aria-label", e.get(p)), e.set_attribute(h, "title", e.get(p)), e.set_text(g, e.get(m));
 	}), e.delegated("click", h, f), e.append(t, h), e.pop(), s();
 }
 e.delegate(["click"]);
-export { H as default };
+export { V as default };

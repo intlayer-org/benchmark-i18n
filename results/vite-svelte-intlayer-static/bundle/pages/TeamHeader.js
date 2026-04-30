@@ -49,8 +49,7 @@ var team_header_default = {
 				"description": "Познакомьтесь с людьми, стоящими за i18n Benchmark. Разнообразная команда, объединенная общей страстью к созданию отличных инструментов для разработчиков."
 			}
 		}
-	},
-	localIds: ["team-header::local::src/components/pages/team/TeamHeader.content.ts"]
+	}
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -189,13 +188,12 @@ var getTranslation = (languageContent, locale, fallback) => {
 	if (Array.isArray(results[0])) return results[0];
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
-var TREE_SHAKE_TRANSLATION = process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false";
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
@@ -319,7 +317,7 @@ var renderIntlayerNode = (args) => {
 	if (args.additionalProps) Object.assign(Node, args.additionalProps);
 	return Node;
 };
-var intlayerNodePlugins = process.env["INTLAYER_NODE_TYPE_INTLAYER_NODE"] === "false" ? fallbackPlugin : {
+var intlayerNodePlugins = {
 	id: "intlayer-node-plugin",
 	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
 	transform: (node, { children, ...rest }) => renderIntlayerNode({
@@ -375,8 +373,7 @@ var mock_banner_default = {
 			"ko": { "message": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." },
 			"ru": { "message": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
 		}
-	},
-	localIds: ["mock-banner::local::src/components/MockBanner.content.ts"]
+	}
 };
 var root$1 = $.from_html(`<div class="mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground"> </div>`);
 function MockBanner($$anchor, $$props) {

@@ -19,8 +19,7 @@ var i = {
 			ko: { message: "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." },
 			ru: { message: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
 		}
-	},
-	localIds: ["mock-banner::local::src/components/MockBanner.content.ts"]
+	}
 }, a = Symbol("intlayer"), o = () => t(a), s = {
 	locales: [
 		"en",
@@ -121,11 +120,11 @@ var i = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => h(e, t));
-}, _ = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", v = {
+}, _ = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, y = (e, t) => _ ? v : {
+}, v = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? _ : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -143,27 +142,27 @@ var i = {
 		}
 		return g(o, e, t);
 	}
-}, b = v, x = v, S = v, C = v, w = (e) => v, T = v, E = (e, t = !0) => [
-	y(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+}, y = _, b = _, x = _, S = _, C = (e) => _, w = _, T = (e, t = !0) => [
+	v(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+	y,
 	b,
 	x,
-	S,
-	w(e ?? s.defaultLocale),
-	T,
-	C
-], D = (e, t, n = []) => p(e, {
+	C(e ?? s.defaultLocale),
+	w,
+	S
+], E = (e, t, n = []) => p(e, {
 	...t,
 	plugins: n
-}), O = (e, t, n = E(t)) => {
+}), D = (e, t, n = T(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return D(e.content, r, n);
+	return E(e.content, r, n);
 };
-function k(t, n) {
+function O(t, n) {
 	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
 	var o = e.comment(), s = e.first_child(o), c = (t) => {
 		var n = e.comment(), o = e.first_child(n);
@@ -189,9 +188,9 @@ function k(t, n) {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
 	}), e.append(t, o);
 }
-var A = (e) => {
-	let t = !!k.prototype?.$destroy, n;
-	return n = t ? class extends k {
+var k = (e) => {
+	let t = !!O.prototype?.$destroy, n;
+	return n = t ? class extends O {
 		constructor(t) {
 			super({
 				...t,
@@ -203,7 +202,7 @@ var A = (e) => {
 				}
 			});
 		}
-	} : (t) => k(t, {
+	} : (t) => O(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -216,40 +215,40 @@ var A = (e) => {
 		writable: !0,
 		configurable: !0
 	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, j = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false" ? v : {
+}, A = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => A({
+	transform: (e, { children: t, ...n }) => k({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, M = j, N = v, P = v, F = v, I = /* @__PURE__ */ new Map(), L = (e, t = !0) => {
+}, j = A, M = _, N = _, P = _, F = /* @__PURE__ */ new Map(), I = (e, t = !0) => {
 	let n = `${e ?? s.defaultLocale}_${t}`;
-	if (I.has(n)) return I.get(n);
+	if (F.has(n)) return F.get(n);
 	let r = [
-		y(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+		v(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
+		y,
 		b,
-		x,
-		w(e ?? s.defaultLocale),
-		T,
-		C,
+		C(e ?? s.defaultLocale),
+		w,
+		S,
+		A,
 		j,
 		M,
 		N,
-		P,
-		F
+		P
 	];
-	return I.set(n, r), r;
-}, R = (e, t) => O(e, t, L(t)), z = (e, t) => {
+	return F.set(n, r), r;
+}, L = (e, t) => D(e, t, I(t)), R = (e, t) => {
 	let r = o();
-	return n([l], ([n]) => R(e, t ?? r?.locale ?? n.locale));
-}, B = e.from_html("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\"> </div>");
-function V(t, n) {
+	return n([l], ([n]) => L(e, t ?? r?.locale ?? n.locale));
+}, z = e.from_html("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\"> </div>");
+function B(t, n) {
 	e.push(n, !1);
-	let r = () => e.store_get(s, "$banner", a), [a, o] = e.setup_stores(), s = z(i);
+	let r = () => e.store_get(s, "$banner", a), [a, o] = e.setup_stores(), s = R(i);
 	e.init();
-	var c = B(), l = e.child(c, !0);
+	var c = z(), l = e.child(c, !0);
 	e.reset(c), e.template_effect(() => e.set_text(l, r().message)), e.append(t, c), e.pop(), o();
 }
-export { V as default };
+export { B as default };

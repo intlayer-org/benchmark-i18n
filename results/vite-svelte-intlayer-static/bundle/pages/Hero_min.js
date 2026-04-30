@@ -79,8 +79,7 @@ var o = {
 				hero: "Главный баннер"
 			}
 		}
-	},
-	localIds: ["hero::local::src/components/pages/home/Hero.content.ts"]
+	}
 }, s = Symbol("intlayer"), c = () => i(s), l = {
 	locales: [
 		"en",
@@ -181,11 +180,11 @@ var o = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => _(e, t));
-}, y = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", b = {
+}, y = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, x = (e, t) => y ? b : {
+}, b = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? y : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -203,27 +202,27 @@ var o = {
 		}
 		return v(o, e, t);
 	}
-}, S = b, C = b, w = b, T = b, E = (e) => b, D = b, O = (e, t = !0) => [
-	x(e ?? l.defaultLocale, t ? l.defaultLocale : void 0),
+}, x = y, S = y, C = y, w = y, T = (e) => y, E = y, D = (e, t = !0) => [
+	b(e ?? l.defaultLocale, t ? l.defaultLocale : void 0),
+	x,
 	S,
 	C,
-	w,
-	E(e ?? l.defaultLocale),
-	D,
-	T
-], k = (e, t, n = []) => h(e, {
+	T(e ?? l.defaultLocale),
+	E,
+	w
+], O = (e, t, n = []) => h(e, {
 	...t,
 	plugins: n
-}), A = (e, t, n = O(t)) => {
+}), k = (e, t, n = D(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return k(e.content, r, n);
+	return O(e.content, r, n);
 };
-function j(t, n) {
+function A(t, n) {
 	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
 	var o = e.comment(), s = e.first_child(o), c = (t) => {
 		var n = e.comment(), o = e.first_child(n);
@@ -249,9 +248,9 @@ function j(t, n) {
 		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
 	}), e.append(t, o);
 }
-var M = (e) => {
-	let t = !!j.prototype?.$destroy, n;
-	return n = t ? class extends j {
+var j = (e) => {
+	let t = !!A.prototype?.$destroy, n;
+	return n = t ? class extends A {
 		constructor(t) {
 			super({
 				...t,
@@ -263,7 +262,7 @@ var M = (e) => {
 				}
 			});
 		}
-	} : (t) => j(t, {
+	} : (t) => A(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -276,36 +275,36 @@ var M = (e) => {
 		writable: !0,
 		configurable: !0
 	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, N = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false" ? b : {
+}, M = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => M({
+	transform: (e, { children: t, ...n }) => j({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, P = N, F = b, I = b, L = b, R = /* @__PURE__ */ new Map(), z = (e, t = !0) => {
+}, N = M, P = y, F = y, I = y, L = /* @__PURE__ */ new Map(), R = (e, t = !0) => {
 	let n = `${e ?? l.defaultLocale}_${t}`;
-	if (R.has(n)) return R.get(n);
+	if (L.has(n)) return L.get(n);
 	let r = [
-		x(e ?? l.defaultLocale, t ? l.defaultLocale : void 0),
+		b(e ?? l.defaultLocale, t ? l.defaultLocale : void 0),
+		x,
 		S,
-		C,
-		E(e ?? l.defaultLocale),
-		D,
-		T,
+		T(e ?? l.defaultLocale),
+		E,
+		w,
+		M,
 		N,
 		P,
 		F,
-		I,
-		L
+		I
 	];
-	return R.set(n, r), r;
-}, B = (e, t) => A(e, t, z(t)), V = (e, n) => {
+	return L.set(n, r), r;
+}, z = (e, t) => k(e, t, R(t)), B = (e, n) => {
 	let r = c();
-	return t([d], ([t]) => B(e, n ?? r?.locale ?? t.locale));
+	return t([d], ([t]) => z(e, n ?? r?.locale ?? t.locale));
 };
-function H(e) {
+function V(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), a(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -315,12 +314,12 @@ function H(e) {
 		}
 	});
 }
-var U = e.from_html("<section class=\"mb-16 text-center\"><h1 class=\"mb-4 text-4xl font-bold tracking-tight text-foreground\"> </h1> <p class=\"mx-auto max-w-2xl text-lg text-muted-foreground\"> </p> <div class=\"mt-8 flex justify-center gap-4\"><button type=\"button\" class=\"rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90\"> </button> <button type=\"button\" class=\"rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent\"> </button></div></section>");
-function W(t, r) {
+var H = e.from_html("<section class=\"mb-16 text-center\"><h1 class=\"mb-4 text-4xl font-bold tracking-tight text-foreground\"> </h1> <p class=\"mx-auto max-w-2xl text-lg text-muted-foreground\"> </p> <div class=\"mt-8 flex justify-center gap-4\"><button type=\"button\" class=\"rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90\"> </button> <button type=\"button\" class=\"rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent\"> </button></div></section>");
+function U(t, r) {
 	e.push(r, !1);
-	let i = () => e.store_get(c, "$content", a), [a, s] = e.setup_stores(), c = V(o);
-	H(n(c).hero), e.init();
-	var l = U(), u = e.child(l), d = e.child(u, !0);
+	let i = () => e.store_get(c, "$content", a), [a, s] = e.setup_stores(), c = B(o);
+	V(n(c).hero), e.init();
+	var l = H(), u = e.child(l), d = e.child(u, !0);
 	e.reset(u);
 	var f = e.sibling(u, 2), p = e.child(f, !0);
 	e.reset(f);
@@ -331,4 +330,4 @@ function W(t, r) {
 		e.set_text(d, i().title), e.set_text(p, i().description), e.set_text(g, i().viewResults), e.set_text(v, i().methodology);
 	}), e.append(t, l), e.pop(), s();
 }
-export { W as default };
+export { U as default };

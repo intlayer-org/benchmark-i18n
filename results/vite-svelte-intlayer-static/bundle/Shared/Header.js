@@ -170,8 +170,7 @@ var header_default = {
 				"header": "Шапка"
 			}
 		}
-	},
-	localIds: ["header::local::src/components/Header.content.ts"]
+	}
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -208,7 +207,7 @@ var internationalization = {
 var configuration = {
 	internationalization,
 	routing: {
-		"mode": "prefix-no-default",
+		"mode": "prefix-all",
 		"storage": {
 			"cookies": [{
 				"name": "INTLAYER_LOCALE",
@@ -219,6 +218,7 @@ var configuration = {
 		"basePath": ""
 	},
 	editor: {
+		"applicationURL": "http://localhost:3000",
 		"editorURL": "http://localhost:8000",
 		"cmsURL": "https://app.intlayer.org",
 		"backendURL": "https://back.intlayer.org",
@@ -387,13 +387,12 @@ var getTranslation = (languageContent, locale, fallback) => {
 	if (Array.isArray(results[0])) return results[0];
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
-var TREE_SHAKE_TRANSLATION = process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false";
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => TREE_SHAKE_TRANSLATION ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
@@ -517,7 +516,7 @@ var renderIntlayerNode = (args) => {
 	if (args.additionalProps) Object.assign(Node, args.additionalProps);
 	return Node;
 };
-var intlayerNodePlugins = process.env["INTLAYER_NODE_TYPE_INTLAYER_NODE"] === "false" ? fallbackPlugin : {
+var intlayerNodePlugins = {
 	id: "intlayer-node-plugin",
 	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
 	transform: (node, { children, ...rest }) => renderIntlayerNode({
@@ -752,8 +751,7 @@ var theme_toggle_default = {
 				"ariaLabelDark": "Режим темы: темный. Нажмите, чтобы переключиться в автоматический режим."
 			}
 		}
-	},
-	localIds: ["theme-toggle::local::src/components/ThemeToggle.content.ts"]
+	}
 };
 var root$1 = $.from_html(`<button type="button" class="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"> </button>`);
 function ThemeToggle($$anchor, $$props) {
