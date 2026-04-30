@@ -1,9 +1,284 @@
 import { createComponent, insert, template } from "solid-js/web";
+var URLPattern = {};
+var locales = [
+	"en",
+	"fr",
+	"es",
+	"de",
+	"it",
+	"pt",
+	"zh",
+	"ja",
+	"ko",
+	"ru"
+];
+var cookieName = "PARAGLIDE_LOCALE";
+var cookieMaxAge = 3456e4;
+var strategy = [
+	"cookie",
+	"globalVariable",
+	"baseLocale"
+];
+var routeStrategies = [];
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const urlObject = new URL(urlString, "http://dummy.com");
+	let match;
+	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
+		match = routeStrategy;
+		break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
+}
+var serverAsyncLocalStorage = void 0;
+var isServer = typeof window === "undefined";
+globalThis.__paraglide = globalThis.__paraglide ?? {};
+globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
+var _locale;
+var localeInitiallySet = false;
+var getLocale = () => {
+	if (serverAsyncLocalStorage) {
+		const locale = serverAsyncLocalStorage?.getStore()?.locale;
+		if (locale) return locale;
+	}
+	let strategyToUse = strategy;
+	if (!isServer && typeof window !== "undefined" && window.location?.href) strategyToUse = getStrategyForUrl(window.location.href);
+	const resolved = resolveLocaleWithStrategies(strategyToUse, typeof window !== "undefined" ? window.location?.href : void 0);
+	if (resolved) {
+		if (!localeInitiallySet) {
+			_locale = resolved;
+			localeInitiallySet = true;
+			setLocale(resolved, { reload: false });
+		}
+		return resolved;
+	}
+	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+};
+function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
+	let locale;
+	for (const strat of strategyToUse) {
+		if (strat === "cookie") locale = extractLocaleFromCookie();
+		else if (strat === "baseLocale") locale = "en";
+		else if (strat === "globalVariable" && _locale !== void 0) locale = _locale;
+		else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
+			const handler = customClientStrategies.get(strat);
+			if (handler) {
+				const result = handler.getLocale();
+				if (result instanceof Promise) continue;
+				if (result !== void 0) return assertIsLocale(result);
+			}
+		}
+		const matchedLocale = toLocale(locale);
+		if (matchedLocale) return matchedLocale;
+	}
+}
+var navigateOrReload = (newLocation) => {
+	if (newLocation) window.location.href = newLocation;
+	else window.location.reload();
+};
+var setLocale = (newLocale, options) => {
+	const optionsWithDefaults = {
+		reload: true,
+		...options
+	};
+	let currentLocale;
+	try {
+		currentLocale = getLocale();
+	} catch {}
+	const customSetLocalePromises = [];
+	let newLocation = void 0;
+	let strategyToUse = strategy;
+	if (!isServer && typeof window !== "undefined" && window.location?.href) strategyToUse = getStrategyForUrl(window.location.href);
+	for (const strat of strategyToUse) if (strat === "globalVariable") _locale = newLocale;
+	else if (strat === "cookie") {
+		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
+		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
+		document.cookie = cookieString;
+	} else if (strat === "baseLocale") continue;
+	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
+		const handler = customClientStrategies.get(strat);
+		if (handler) {
+			let result = handler.setLocale(newLocale);
+			if (result instanceof Promise) {
+				result = result.catch((error) => {
+					throw new Error(`Custom strategy "${strat}" setLocale failed.`, { cause: error });
+				});
+				customSetLocalePromises.push(result);
+			}
+		}
+	}
+	const runReload = () => {
+		if (!isServer && optionsWithDefaults.reload && window.location && newLocale !== currentLocale) navigateOrReload(newLocation);
+	};
+	if (customSetLocalePromises.length) return Promise.all(customSetLocalePromises).then(() => {
+		runReload();
+	});
+	runReload();
+};
+function toLocale(value) {
+	if (typeof value !== "string") return;
+	const lowerValue = value.toLowerCase();
+	for (const locale of locales) if (locale.toLowerCase() === lowerValue) return locale;
+}
+function assertIsLocale(input) {
+	const locale = toLocale(input);
+	if (locale) return locale;
+	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
+}
+function extractLocaleFromCookie() {
+	if (typeof document === "undefined" || !document.cookie) return;
+	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
+	return toLocale(locale);
+}
+var customClientStrategies = /* @__PURE__ */ new Map();
+function isCustomStrategy(strategy) {
+	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
+}
+var en_mockbanner1 = () => {
+	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
+};
+var fr_mockbanner1 = () => {
+	return `⚠️ Cette page contient des données fictives à des fins de benchmark uniquement. Elle n'est liée à aucune activité commerciale ou service réel.`;
+};
+var es_mockbanner1 = () => {
+	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
+};
+var de_mockbanner1 = () => {
+	return `⚠️ Diese Seite enthält fiktive Daten, die nur für Benchmarking-Zwecke bestimmt sind. Sie steht in keiner Verbindung zu einem realen Unternehmen oder Dienst.`;
+};
+var it_mockbanner1 = () => {
+	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
+};
+var pt_mockbanner1 = () => {
+	return `⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhuma empresa ou serviço real.`;
+};
+var zh_mockbanner1 = () => {
+	return `⚠️ 此页面包含虚构数据，仅用于基准测试目的。与任何实际业务或服务无关。`;
+};
+var ja_mockbanner1 = () => {
+	return `⚠️ このページにはベンチマーク目的のみの架空のデータが含まれています。実在の企業やサービスとは関係ありません。`;
+};
+var ko_mockbanner1 = () => {
+	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
+};
+var ru_mockbanner1 = () => {
+	return `⚠️ Эта страница содержит фиктивные данные только для целей бенчмаркинга. Она не связана ни с каким реальным бизнесом или сервисом.`;
+};
+var mockbanner1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "en") return en_mockbanner1(inputs);
+	if (locale === "fr") return fr_mockbanner1(inputs);
+	if (locale === "es") return es_mockbanner1(inputs);
+	if (locale === "de") return de_mockbanner1(inputs);
+	if (locale === "it") return it_mockbanner1(inputs);
+	if (locale === "pt") return pt_mockbanner1(inputs);
+	if (locale === "zh") return zh_mockbanner1(inputs);
+	if (locale === "ja") return ja_mockbanner1(inputs);
+	if (locale === "ko") return ko_mockbanner1(inputs);
+	return ru_mockbanner1(inputs);
+});
+var en_team_header_title = () => {
+	return `Our Team`;
+};
+var fr_team_header_title = () => {
+	return `Notre équipe`;
+};
+var es_team_header_title = () => {
+	return `Nuestro equipo`;
+};
+var de_team_header_title = () => {
+	return `Unser Team`;
+};
+var it_team_header_title = () => {
+	return `Il nostro team`;
+};
+var pt_team_header_title = () => {
+	return `Nossa equipe`;
+};
+var zh_team_header_title = () => {
+	return `我们的团队`;
+};
+var ja_team_header_title = () => {
+	return `私たちのチーム`;
+};
+var ko_team_header_title = () => {
+	return `Our Team`;
+};
+var ru_team_header_title = () => {
+	return `Наша команда`;
+};
+var team_header_title = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "en") return en_team_header_title(inputs);
+	if (locale === "fr") return fr_team_header_title(inputs);
+	if (locale === "es") return es_team_header_title(inputs);
+	if (locale === "de") return de_team_header_title(inputs);
+	if (locale === "it") return it_team_header_title(inputs);
+	if (locale === "pt") return pt_team_header_title(inputs);
+	if (locale === "zh") return zh_team_header_title(inputs);
+	if (locale === "ja") return ja_team_header_title(inputs);
+	if (locale === "ko") return ko_team_header_title(inputs);
+	return ru_team_header_title(inputs);
+});
+var en_team_header_description = () => {
+	return `Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools.`;
+};
+var fr_team_header_description = () => {
+	return `Les personnes derrière i18n Benchmark, unies par la passion des outils développeurs.`;
+};
+var es_team_header_description = () => {
+	return `Conoce a las personas que están detrás de i18n Benchmark. Un equipo diverso unido por una pasión compartida por las grandes herramientas para desarrolladores.`;
+};
+var de_team_header_description = () => {
+	return `Lernen Sie die Menschen hinter i18n Benchmark kennen. Ein vielfältiges Team, das durch die gemeinsame Leidenschaft für großartige Entwicklertools vereint ist.`;
+};
+var it_team_header_description = () => {
+	return `Incontra le persone che stanno dietro i18n Benchmark. Un team eterogeneo unito dalla passione comune per i grandi strumenti per gli sviluppatori.`;
+};
+var pt_team_header_description = () => {
+	return `Conheça as pessoas por trás do i18n Benchmark. Uma equipe diversificada unida por uma paixão compartilhada por ótimas ferramentas de desenvolvedor.`;
+};
+var zh_team_header_description = () => {
+	return `了解 i18n 基准测试背后的团队成员。一个因对优秀开发工具的共同热情而团结在一起的多元化团队。`;
+};
+var ja_team_header_description = () => {
+	return `i18n Benchmarkを支えるメンバーをご紹介します。優れた開発者ツールへの情熱で結ばれた多様なチームです。`;
+};
+var ko_team_header_description = () => {
+	return `Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools.`;
+};
+var ru_team_header_description = () => {
+	return `Познакомьтесь с людьми, создавшими i18n Benchmark. Команда единомышленников, влюбленных в отличные инструменты для разработчиков.`;
+};
+var team_header_description = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "en") return en_team_header_description(inputs);
+	if (locale === "fr") return fr_team_header_description(inputs);
+	if (locale === "es") return es_team_header_description(inputs);
+	if (locale === "de") return de_team_header_description(inputs);
+	if (locale === "it") return it_team_header_description(inputs);
+	if (locale === "pt") return pt_team_header_description(inputs);
+	if (locale === "zh") return zh_team_header_description(inputs);
+	if (locale === "ja") return ja_team_header_description(inputs);
+	if (locale === "ko") return ko_team_header_description(inputs);
+	return ru_team_header_description(inputs);
+});
 var _tmpl$$1 = template(`<div class="mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground">`);
 function MockBanner() {
 	return (() => {
 		var _el$ = _tmpl$$1();
-		insert(_el$, () => (void 0)());
+		insert(_el$, () => mockbanner1());
 		return _el$;
 	})();
 }
@@ -13,12 +288,12 @@ function TeamHeader() {
 		createComponent(MockBanner, {}),
 		(() => {
 			var _el$ = _tmpl$();
-			insert(_el$, () => (void 0)());
+			insert(_el$, () => team_header_title());
 			return _el$;
 		})(),
 		(() => {
 			var _el$2 = _tmpl$2();
-			insert(_el$2, () => (void 0)());
+			insert(_el$2, () => team_header_description());
 			return _el$2;
 		})()
 	];
