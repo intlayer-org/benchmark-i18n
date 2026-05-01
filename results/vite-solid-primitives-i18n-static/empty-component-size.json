@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-04-29T23:20:53.500Z",
+  "timestamp": "2026-05-01T00:19:23.584Z",
   "packageName": "vite-solid-primitives-i18n-static",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 1414,
-    "totalMinifiedBytes": 923,
-    "totalGzipBytes": 517
+    "totalUnminifiedBytes": 1820,
+    "totalMinifiedBytes": 1202,
+    "totalGzipBytes": 602
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 1414,
-      "unminifiedGzipBytes": 630,
-      "minifiedBytes": 923,
-      "minifiedGzipBytes": 517
+      "unminifiedBytes": 1820,
+      "unminifiedGzipBytes": 737,
+      "minifiedBytes": 1202,
+      "minifiedGzipBytes": 602
     }
   ]
 }

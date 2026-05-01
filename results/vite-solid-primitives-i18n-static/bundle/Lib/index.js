@@ -1,3 +1,4 @@
+import { createComponent, memo } from "solid-js/web";
 import { createSignal } from "solid-js";
 var isDict = (value) => value != null && (value = Object.getPrototypeOf(value), value === Array.prototype || value === Object.prototype);
 function visitDict(flat_dict, dict, path) {
@@ -29,10 +30,22 @@ function translator(dict, resolveTemplate = identityResolveTemplate) {
 	};
 }
 var dicts = { en: flatten({ header: { home: "Home" } }) };
-var [locale] = createSignal("en");
-var t = translator(() => dicts[locale()], resolveTemplate);
+var [locale$1] = createSignal("en");
+var t$1 = translator(() => dicts[locale$1()], resolveTemplate);
 function EmptyComponent() {
-	t("header.home");
+	t$1("header.home");
 	return null;
 }
-export { EmptyComponent as default };
+var dict = flatten({ header: { home: "Home" } });
+var [locale] = createSignal("en");
+var t = translator(() => dict, resolveTemplate);
+function LibWrapper(props) {
+	t("header.home");
+	return memo(() => props.children);
+}
+function Wrapped() {
+	return createComponent(LibWrapper, { get children() {
+		return createComponent(EmptyComponent, {});
+	} });
+}
+export { Wrapped as default };
