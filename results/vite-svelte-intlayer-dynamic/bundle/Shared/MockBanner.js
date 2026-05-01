@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content = {
-	"de": () => import("./de-CZloO0fb.js").then((m) => m.default),
-	"en": () => import("./en-D4ldyfsM.js").then((m) => m.default),
-	"es": () => import("./es-C9SlJ5sh.js").then((m) => m.default),
-	"fr": () => import("./fr-D5JxLk-0.js").then((m) => m.default),
-	"it": () => import("./it-yUi1Wzrh.js").then((m) => m.default),
-	"ja": () => import("./ja-Cet5H0BX.js").then((m) => m.default),
-	"ko": () => import("./ko-DQQG9eqC.js").then((m) => m.default),
-	"pt": () => import("./pt-BE_-JGzS.js").then((m) => m.default),
-	"ru": () => import("./ru-Bk-dFI6f.js").then((m) => m.default),
-	"zh": () => import("./zh-CuaDcH8L.js").then((m) => m.default)
+	"de": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((m) => m.default),
+	"en": () => import("./en-BaJOlMMx.js").then((m) => m.default),
+	"es": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((m) => m.default),
+	"fr": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((m) => m.default),
+	"it": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((m) => m.default),
+	"ja": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((m) => m.default),
+	"ko": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((m) => m.default),
+	"pt": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((m) => m.default),
+	"ru": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((m) => m.default),
+	"zh": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -385,53 +385,8 @@ function MockBanner($$anchor, $$props) {
 	$$cleanup();
 }
 export { MockBanner as default };
-var de_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
-};
-export { de_default as default };
 var en_default = {
 	key: "mock-banner",
 	content: { "message": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
 };
 export { en_default as default };
-var es_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { es_default as default };
-var fr_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { fr_default as default };
-var it_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { it_default as default };
-var ja_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { ja_default as default };
-var ko_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { ko_default as default };
-var pt_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contém données fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { pt_default as default };
-var ru_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { ru_default as default };
-var zh_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务或服务无关。" }
-};
-export { zh_default as default };

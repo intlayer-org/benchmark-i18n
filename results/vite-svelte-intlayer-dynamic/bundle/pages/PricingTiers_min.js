@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { getContext as t } from "svelte";
 import { derived as n, get as r, writable as i } from "svelte/store";
 var a = {
-	de: () => import("./de-rJLyvdQa.js").then((e) => e.default),
-	en: () => import("./en-C5x_ALrw.js").then((e) => e.default),
-	es: () => import("./es-DmOAwKAK.js").then((e) => e.default),
-	fr: () => import("./fr-DJBl8AIf.js").then((e) => e.default),
-	it: () => import("./it-C8ZpbB0D.js").then((e) => e.default),
-	ja: () => import("./ja-v0SzYc6s.js").then((e) => e.default),
-	ko: () => import("./ko-CbtZICZW.js").then((e) => e.default),
-	pt: () => import("./pt-BcA9V8cd.js").then((e) => e.default),
-	ru: () => import("./ru-6MYcdSyI.js").then((e) => e.default),
-	zh: () => import("./zh-CJSkil3b.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/de.json").then((e) => e.default),
+	en: () => import("./en-DBF0urla.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/zh.json").then((e) => e.default)
 }, o = Symbol("intlayer"), s = () => t(o), c = {
 	locales: [
 		"en",
@@ -344,32 +344,6 @@ export { W as default };
 var e = {
 	key: "pricing-tiers",
 	content: {
-		trainingSessions: "Schulungen",
-		auditLogs: "Audit-Protokolle",
-		customSlas: "Individuelle SLAs",
-		dedicatedAccountManager: "Dedizierter Account-Manager",
-		ssoSaml: "SSO und SAML",
-		onPremiseOption: "On-Premise-Option",
-		everythingInPro: "Alles in Pro",
-		custom: "Individuell",
-		enterprise: "Enterprise",
-		historicalData: "Historische Daten",
-		ciIntegration: "CI-Integration",
-		privateResults: "Private Ergebnisse",
-		prioritySupport: "Vorrangiger Support",
-		allLibraries: "Alle Bibliotheken",
-		unlimitedRuns: "Unbegrenzte Läufe",
-		pro: "Pro",
-		publicResults: "Öffentliche Ergebnisse",
-		communitySupport: "Community-Support",
-		x5BenchmarkRunsday: "5 Benchmark-Läufe/Tag",
-		starter: "Starter"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
 		trainingSessions: "Training sessions",
 		auditLogs: "Audit logs",
 		customSlas: "Custom SLAs",
@@ -389,214 +363,6 @@ var e = {
 		publicResults: "Public results",
 		communitySupport: "Community support",
 		x5BenchmarkRunsday: "5 benchmark runs/day",
-		starter: "Starter"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		trainingSessions: "Sesiones de formación",
-		auditLogs: "Registros de auditoría",
-		customSlas: "SLAs personalizados",
-		dedicatedAccountManager: "Gerente de cuenta dedicado",
-		ssoSaml: "SSO y SAML",
-		onPremiseOption: "Opción local",
-		everythingInPro: "Todo lo de Pro",
-		custom: "Personalizado",
-		enterprise: "Empresa",
-		historicalData: "Datos históricos",
-		ciIntegration: "Integración de CI",
-		privateResults: "Resultados privados",
-		prioritySupport: "Soporte prioritario",
-		allLibraries: "Todas las bibliotecas",
-		unlimitedRuns: "Ejecuciones ilimitadas",
-		pro: "Pro",
-		publicResults: "Resultados públicos",
-		communitySupport: "Soporte de la comunidad",
-		x5BenchmarkRunsday: "5 ejecuciones de benchmark al día",
-		starter: "Starter"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		trainingSessions: "Sessions de formation",
-		auditLogs: "Journaux d'audit",
-		customSlas: "SLA personnalisés",
-		dedicatedAccountManager: "Gestionnaire de compte dédié",
-		ssoSaml: "SSO et SAML",
-		onPremiseOption: "Option sur site",
-		everythingInPro: "Tout ce qui est dans Pro",
-		custom: "Personnalisé",
-		enterprise: "Entreprise",
-		historicalData: "Données historiques",
-		ciIntegration: "Intégration CI",
-		privateResults: "Résultats privés",
-		prioritySupport: "Support prioritaire",
-		allLibraries: "Toutes les bibliothèques",
-		unlimitedRuns: "Lancements illimités",
-		pro: "Pro",
-		publicResults: "Résultats publics",
-		communitySupport: "Support de la communauté",
-		x5BenchmarkRunsday: "5 lancements de benchmark par jour",
-		starter: "Starter"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		trainingSessions: "Sessioni di formazione",
-		auditLogs: "Registri di audit",
-		customSlas: "SLA personalizzati",
-		dedicatedAccountManager: "Account manager dedicato",
-		ssoSaml: "SSO e SAML",
-		onPremiseOption: "Opzione on-premise",
-		everythingInPro: "Tutto in Pro",
-		custom: "Personalizzato",
-		enterprise: "Enterprise",
-		historicalData: "Dati storici",
-		ciIntegration: "Integrazione CI",
-		privateResults: "Risultati privati",
-		prioritySupport: "Supporto prioritario",
-		allLibraries: "Tutte le librerie",
-		unlimitedRuns: "Esecuzioni illimitate",
-		pro: "Pro",
-		publicResults: "Risultati pubblici",
-		communitySupport: "Supporto della community",
-		x5BenchmarkRunsday: "5 esecuzioni di benchmark al giorno",
-		starter: "Starter"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		trainingSessions: "トレーニングセッション",
-		auditLogs: "監査ログ",
-		customSlas: "カスタム SLA",
-		dedicatedAccountManager: "専任のアカウントマネージャー",
-		ssoSaml: "SSO および SAML",
-		onPremiseOption: "オンプレミスオプション",
-		everythingInPro: "Pro プランの全機能",
-		custom: "カスタム",
-		enterprise: "エンタープライズ",
-		historicalData: "履歴データ",
-		ciIntegration: "CI 統合",
-		privateResults: "プライベートな結果",
-		prioritySupport: "優先サポート",
-		allLibraries: "すべてのライブラリ",
-		unlimitedRuns: "無制限の実行",
-		pro: "Pro",
-		publicResults: "公開された結果",
-		communitySupport: "コミュニティサポート",
-		x5BenchmarkRunsday: "1 日 5 回のベンチマーク実行",
-		starter: "スターター"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		trainingSessions: "교육 세션",
-		auditLogs: "감사 로그",
-		customSlas: "맞춤형 SLA",
-		dedicatedAccountManager: "전담 계정 관리자",
-		ssoSaml: "SSO 및 SAML",
-		onPremiseOption: "온프레미스 옵션",
-		everythingInPro: "Pro의 모든 기능",
-		custom: "맞춤형",
-		enterprise: "엔터프라이즈",
-		historicalData: "기록 데이터",
-		ciIntegration: "CI 통합",
-		privateResults: "비공개 결과",
-		prioritySupport: "우선 지원",
-		allLibraries: "모든 라이브러리",
-		unlimitedRuns: "무제한 실행",
-		pro: "Pro",
-		publicResults: "공개 결과",
-		communitySupport: "커뮤니티 지원",
-		x5BenchmarkRunsday: "일 5회 벤치마크 실행",
-		starter: "스타터"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		trainingSessions: "Sessões de treinamento",
-		auditLogs: "Logs de auditoria",
-		customSlas: "SLAs personalizados",
-		dedicatedAccountManager: "Gerente de conta dedicado",
-		ssoSaml: "SSO e SAML",
-		onPremiseOption: "Opção on-premise",
-		everythingInPro: "Tudo no Pro",
-		custom: "Personalizado",
-		enterprise: "Enterprise",
-		historicalData: "Dados históricos",
-		ciIntegration: "Integração de CI",
-		privateResults: "Resultados privados",
-		prioritySupport: "Suporte prioritário",
-		allLibraries: "Todas as bibliotecas",
-		unlimitedRuns: "Execuções ilimitadas",
-		pro: "Pro",
-		publicResults: "Resultados públicos",
-		communitySupport: "Suporte da comunidade",
-		x5BenchmarkRunsday: "5 execuções de benchmark por dia",
-		starter: "Starter"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		trainingSessions: "Тренинги",
-		auditLogs: "Журналы аудита",
-		customSlas: "Индивидуальные SLA",
-		dedicatedAccountManager: "Персональный менеджер",
-		ssoSaml: "SSO и SAML",
-		onPremiseOption: "Локальная установка",
-		everythingInPro: "Все функции Pro",
-		custom: "Индивидуальный",
-		enterprise: "Корпоративный",
-		historicalData: "Исторические данные",
-		ciIntegration: "Интеграция с CI",
-		privateResults: "Приватные результаты",
-		prioritySupport: "Приоритетная поддержка",
-		allLibraries: "Все библиотеки",
-		unlimitedRuns: "Безлимитные запуски",
-		pro: "Pro",
-		publicResults: "Публичные результаты",
-		communitySupport: "Поддержка сообщества",
-		x5BenchmarkRunsday: "5 запусков бенчмарков в день",
-		starter: "Стартовый"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		trainingSessions: "培训课程",
-		auditLogs: "审计日志",
-		customSlas: "自定义 SLA",
-		dedicatedAccountManager: "专属客户经理",
-		ssoSaml: "SSO 和 SAML",
-		onPremiseOption: "本地部署选项",
-		everythingInPro: "Pro 计划中的所有内容",
-		custom: "自定义",
-		enterprise: "企业级",
-		historicalData: "历史数据",
-		ciIntegration: "CI 集成",
-		privateResults: "私有结果",
-		prioritySupport: "优先支持",
-		allLibraries: "所有库",
-		unlimitedRuns: "无限次运行",
-		pro: "Pro",
-		publicResults: "公开结果",
-		communitySupport: "社区支持",
-		x5BenchmarkRunsday: "每天 5 次基准测试运行",
 		starter: "Starter"
 	}
 };

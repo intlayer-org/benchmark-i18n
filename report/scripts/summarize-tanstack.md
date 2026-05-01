@@ -1,6 +1,6 @@
 # TanStack Start (React) — i18n Benchmark Results
 
-_Generated: 2026-04-30_
+_Generated: 2026-05-01_
 
 ## Metric Legend
 
@@ -524,7 +524,7 @@ _Generated: 2026-04-30_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 127.8 KB | 50.0% | 0.8% | 7.1 KB | 9.6 ms | 3.4 ms | 18.0 ms | 24.1 ms |
-| Dynamic | 🔶 | 118.1 KB | 0.0% | 0.8% | 4.6 KB | — | — | 35.0 ms | 41.7 ms |
+| Dynamic | 🔶 | 118.1 KB | 0.0% | 0.8% | 4.6 KB | — | — | 18.3 ms | 23.2 ms |
 | Scoped Static | ✅ | 127.8 KB | 50.0% | 0.8% | 7.1 KB | 9.6 ms | 3.4 ms | 18.0 ms | 24.1 ms |
 | Scoped Dynamic | 🔶 | 118.1 KB | 0.0% | 0.8% | 4.6 KB | — | — | 19.0 ms | 23.7 ms |
 
@@ -627,8 +627,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 41.2 ms | 49.4 ms | 1.5 ms |
-| `fr` | 28.8 ms | 33.9 ms | 1.6 ms |
+| `en` | 20.1 ms | 26.0 ms | 1.5 ms |
+| `fr` | 16.4 ms | 20.5 ms | 1.3 ms |
 
 </details>
 

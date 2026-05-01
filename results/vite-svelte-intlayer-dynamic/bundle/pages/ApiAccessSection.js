@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content = {
-	"de": () => import("./de-YoCbxJ9s.js").then((m) => m.default),
-	"en": () => import("./en-uwkNEkt5.js").then((m) => m.default),
-	"es": () => import("./es-CLbW0sZd.js").then((m) => m.default),
-	"fr": () => import("./fr-CMDo-sos.js").then((m) => m.default),
-	"it": () => import("./it-Bv_q3-RT.js").then((m) => m.default),
-	"ja": () => import("./ja-8l9Dzdkc.js").then((m) => m.default),
-	"ko": () => import("./ko-nFIbEkV4.js").then((m) => m.default),
-	"pt": () => import("./pt-CWGXdXjn.js").then((m) => m.default),
-	"ru": () => import("./ru-DYUXB7mz.js").then((m) => m.default),
-	"zh": () => import("./zh-aAvwGDhG.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/de.json").then((m) => m.default),
+	"en": () => import("./en-D3KwG3Ck.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -406,16 +406,6 @@ function ApiAccessSection($$anchor, $$props) {
 	$$cleanup();
 }
 export { ApiAccessSection as default };
-var de_default = {
-	key: "api-access-section",
-	content: {
-		"useThisKeyToAccess": "Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen.",
-		"copy": "Kopieren",
-		"apiKey": "API-Schlüssel",
-		"apiAccess": "API-Zugriff"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "api-access-section",
 	content: {
@@ -426,83 +416,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "api-access-section",
-	content: {
-		"useThisKeyToAccess": "Use esta clave para acceder a la API de benchmarking mediante programación.",
-		"copy": "Copiar",
-		"apiKey": "Clave API",
-		"apiAccess": "Acceso API"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "api-access-section",
-	content: {
-		"useThisKeyToAccess": "Utilisez cette clé pour accéder à l'API de benchmarking par programmation.",
-		"copy": "Copier",
-		"apiKey": "Clé d'API",
-		"apiAccess": "Accès à l'API"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "api-access-section",
-	content: {
-		"useThisKeyToAccess": "Usa questa chiave per accedere programmaticamente all'API di benchmarking.",
-		"copy": "Copia",
-		"apiKey": "Chiave API",
-		"apiAccess": "Accesso API"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "api-access-section",
-	content: {
-		"useThisKeyToAccess": "このキーを使用して、プログラムでベンチマーク API にアクセスします。",
-		"copy": "コピー",
-		"apiKey": "API キー",
-		"apiAccess": "API アクセス"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "api-access-section",
-	content: {
-		"useThisKeyToAccess": "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오.",
-		"copy": "복사",
-		"apiKey": "API 키",
-		"apiAccess": "API 액세스"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "api-access-section",
-	content: {
-		"useThisKeyToAccess": "Use esta chave para acessar a API de benchmarking programaticamente.",
-		"copy": "Copiar",
-		"apiKey": "Chave API",
-		"apiAccess": "Acesso API"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "api-access-section",
-	content: {
-		"useThisKeyToAccess": "Используйте этот ключ для программного доступа к API бенчмаркинга.",
-		"copy": "Копировать",
-		"apiKey": "API ключ",
-		"apiAccess": "API доступ"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "api-access-section",
-	content: {
-		"useThisKeyToAccess": "使用此密钥以编程方式访问基准测试 API。",
-		"copy": "复制",
-		"apiKey": "API 密钥",
-		"apiAccess": "API 访问"
-	}
-};
-export { zh_default as default };

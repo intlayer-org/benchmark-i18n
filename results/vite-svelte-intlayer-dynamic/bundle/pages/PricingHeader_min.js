@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { getContext as t } from "svelte";
 import { derived as n, writable as r } from "svelte/store";
 var i = {
-	de: () => import("./de-B0cQ7OO1.js").then((e) => e.default),
-	en: () => import("./en-Bbv873WN.js").then((e) => e.default),
-	es: () => import("./es-BEqgfhBc.js").then((e) => e.default),
-	fr: () => import("./fr-BaqQiLgx.js").then((e) => e.default),
-	it: () => import("./it-BKaYzBGr.js").then((e) => e.default),
-	ja: () => import("./ja-BdY7_gmq.js").then((e) => e.default),
-	ko: () => import("./ko-BIdzzE0f.js").then((e) => e.default),
-	pt: () => import("./pt-Bjc_fyvL.js").then((e) => e.default),
-	ru: () => import("./ru-BGrxM8Te.js").then((e) => e.default),
-	zh: () => import("./zh-D74uvvQO.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/de.json").then((e) => e.default),
+	en: () => import("./en-BW0o-XbI.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/zh.json").then((e) => e.default)
 }, a = Symbol("intlayer"), o = () => t(a), s = {
 	locales: [
 		"en",
@@ -277,16 +277,16 @@ function z(e, t, r) {
 	}, { get: (e, t) => t === "isLoading" ? !0 : t === "error" ? null : R }));
 }
 var B = {
-	de: () => import("./de-pf2V_pZ9.js").then((e) => e.default),
-	en: () => import("./en-DiHrX_FU.js").then((e) => e.default),
-	es: () => import("./es-D6kQHtkK.js").then((e) => e.default),
-	fr: () => import("./fr-DKDlyBBJ.js").then((e) => e.default),
-	it: () => import("./it-DdmcIccO.js").then((e) => e.default),
-	ja: () => import("./ja-3kmoh25X.js").then((e) => e.default),
-	ko: () => import("./ko-BPW2ws6D.js").then((e) => e.default),
-	pt: () => import("./pt-B7FuRggF.js").then((e) => e.default),
-	ru: () => import("./ru-v8xvck-e.js").then((e) => e.default),
-	zh: () => import("./zh-D0kzZKf3.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((e) => e.default),
+	en: () => import("./en-C7ZHSe0y.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((e) => e.default)
 }, V = e.from_html("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\"> </div>");
 function H(t, n) {
 	e.push(n, !1);
@@ -313,19 +313,6 @@ export { W as default };
 var e = {
 	key: "pricing-header",
 	content: {
-		chooseThePlanThatFits: "Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren.",
-		simpleTransparentPricing: "Einfache, transparente Preisgestaltung"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
-};
-export { e as default };
-var e = {
-	key: "pricing-header",
-	content: {
 		chooseThePlanThatFits: "Choose the plan that fits your team. No hidden fees.",
 		simpleTransparentPricing: "Simple, Transparent Pricing"
 	}
@@ -334,109 +321,5 @@ export { e as default };
 var e = {
 	key: "mock-banner",
 	content: { message: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
-};
-export { e as default };
-var e = {
-	key: "pricing-header",
-	content: {
-		chooseThePlanThatFits: "Elija el plan que se adapte a su equipo. Sin cargos ocultos.",
-		simpleTransparentPricing: "Precios simples и transparentes"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { e as default };
-var e = {
-	key: "pricing-header",
-	content: {
-		chooseThePlanThatFits: "Choisissez le plan qui convient à votre équipe. Pas de frais cachés.",
-		simpleTransparentPricing: "Une tarification simple et transparente"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { e as default };
-var e = {
-	key: "pricing-header",
-	content: {
-		chooseThePlanThatFits: "Scegli il piano più adatto al tuo team. Nessun costo nascosto.",
-		simpleTransparentPricing: "Prezzi semplici e trasparenti"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { e as default };
-var e = {
-	key: "pricing-header",
-	content: {
-		chooseThePlanThatFits: "チームにぴったりのプランをお選びください。隠れた費用はありません。",
-		simpleTransparentPricing: "シンプルで透明性の高い価格設定"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-header",
-	content: {
-		chooseThePlanThatFits: "팀에 적합한 플랜을 선택하세요. 숨겨진 수수료가 없습니다.",
-		simpleTransparentPricing: "심플하고 투명한 가격 정책"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Esta página contém données fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { e as default };
-var e = {
-	key: "pricing-header",
-	content: {
-		chooseThePlanThatFits: "Escolha o plano adequado à sua equipe. Sem taxas ocultas.",
-		simpleTransparentPricing: "Preços simples e transparentes"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-header",
-	content: {
-		chooseThePlanThatFits: "Выберите план, который подходит вашей команде. Никаких скрытых комиссий.",
-		simpleTransparentPricing: "Простая и прозрачная цена"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务或服务无关。" }
-};
-export { e as default };
-var e = {
-	key: "pricing-header",
-	content: {
-		chooseThePlanThatFits: "选择适合您团队的计划。没有隐藏费用。",
-		simpleTransparentPricing: "简单透明的定价"
-	}
 };
 export { e as default };

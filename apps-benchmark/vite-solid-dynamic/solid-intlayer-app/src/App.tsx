@@ -14,7 +14,7 @@ import Team from "./pages/Team";
 
 export default function App() {
   return (
-    <Router>
+    <>
       <Route path="/" component={() => <Navigate href="/en" />} />
       <Route path="/:locale" component={Layout}>
         <Route path="/" component={Home} />
@@ -29,6 +29,6 @@ export default function App() {
         <Route path="/team" component={Team} />
       </Route>
       <Route path="*" component={NotFound} />
-    </Router>
+    </>
   );
 }

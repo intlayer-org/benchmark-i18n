@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content$1 = {
-	"de": () => import("./de-CiYr0MVn.js").then((m) => m.default),
-	"en": () => import("./en-CaR0v1P5.js").then((m) => m.default),
-	"es": () => import("./es-B2WBCS8c.js").then((m) => m.default),
-	"fr": () => import("./fr-CS3xHSwk.js").then((m) => m.default),
-	"it": () => import("./it-tx066NnR.js").then((m) => m.default),
-	"ja": () => import("./ja-CZOvWVl_.js").then((m) => m.default),
-	"ko": () => import("./ko-Gn4KYaQG.js").then((m) => m.default),
-	"pt": () => import("./pt-D_dOI7jv.js").then((m) => m.default),
-	"ru": () => import("./ru-CU-H9Qpn.js").then((m) => m.default),
-	"zh": () => import("./zh-ChYY6hdr.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/de.json").then((m) => m.default),
+	"en": () => import("./en-CoHL-De1.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -370,16 +370,16 @@ function useDictionaryDynamic(dictionaryPromise, _key, locale) {
 	} }));
 }
 var content = {
-	"de": () => import("./de-BuZRHMwm.js").then((m) => m.default),
-	"en": () => import("./en-z2aU9SFP.js").then((m) => m.default),
-	"es": () => import("./es-LAR4On7J.js").then((m) => m.default),
-	"fr": () => import("./fr-B8jmh6MQ.js").then((m) => m.default),
-	"it": () => import("./it-BlwxudJE.js").then((m) => m.default),
-	"ja": () => import("./ja-_bTSKcNL.js").then((m) => m.default),
-	"ko": () => import("./ko-s9rgKLTD.js").then((m) => m.default),
-	"pt": () => import("./pt-BuZw9KDi.js").then((m) => m.default),
-	"ru": () => import("./ru-B77EbYgZ.js").then((m) => m.default),
-	"zh": () => import("./zh-5bGHUpOU.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((m) => m.default),
+	"en": () => import("./en-D4ldyfsM.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((m) => m.default)
 };
 var root$1 = $.from_html(`<div class="mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground"> </div>`);
 function MockBanner($$anchor, $$props) {
@@ -421,19 +421,6 @@ function BlogHeader($$anchor, $$props) {
 	$$cleanup();
 }
 export { BlogHeader as default };
-var de_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
-};
-export { de_default as default };
-var de_default = {
-	key: "blog-header",
-	content: {
-		"insightsTutorialsAndAnalysisFrom": "Einblicke, Tutorials und Analysen aus der i18n-Community.",
-		"blog": "Blog"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "blog-header",
 	content: {
@@ -447,107 +434,3 @@ var en_default = {
 	content: { "message": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
 };
 export { en_default as default };
-var es_default = {
-	key: "blog-header",
-	content: {
-		"insightsTutorialsAndAnalysisFrom": "Información, tutoriales y análisis de la comunidad i18n.",
-		"blog": "Blog"
-	}
-};
-export { es_default as default };
-var es_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { es_default as default };
-var fr_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { fr_default as default };
-var fr_default = {
-	key: "blog-header",
-	content: {
-		"insightsTutorialsAndAnalysisFrom": "Insights, tutoriels et analyses de la communauté i18n.",
-		"blog": "Blog"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { it_default as default };
-var it_default = {
-	key: "blog-header",
-	content: {
-		"insightsTutorialsAndAnalysisFrom": "Approfondimenti, tutorial e analisi dalla community i18n.",
-		"blog": "Blog"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "blog-header",
-	content: {
-		"insightsTutorialsAndAnalysisFrom": "i18n コミュニティからのインサイト、チュートリアル、および分析。",
-		"blog": "ブログ"
-	}
-};
-export { ja_default as default };
-var ja_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { ja_default as default };
-var ko_default = {
-	key: "blog-header",
-	content: {
-		"insightsTutorialsAndAnalysisFrom": "i18n 커뮤니티의 인사이트, 튜토리얼 및 분석.",
-		"blog": "블로그"
-	}
-};
-export { ko_default as default };
-var ko_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { ko_default as default };
-var pt_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contém données fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { pt_default as default };
-var pt_default = {
-	key: "blog-header",
-	content: {
-		"insightsTutorialsAndAnalysisFrom": "Insights, tutoriais e análises da comunidade i18n.",
-		"blog": "Blog"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { ru_default as default };
-var ru_default = {
-	key: "blog-header",
-	content: {
-		"insightsTutorialsAndAnalysisFrom": "Инсайты, туториалы и аналитика от i18n-сообщества.",
-		"blog": "Блог"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务或服务无关。" }
-};
-export { zh_default as default };
-var zh_default = {
-	key: "blog-header",
-	content: {
-		"insightsTutorialsAndAnalysisFrom": "来自 i18n 社区的见解、教程和分析。",
-		"blog": "博客"
-	}
-};
-export { zh_default as default };

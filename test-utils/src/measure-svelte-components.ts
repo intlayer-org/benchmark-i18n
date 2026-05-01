@@ -20,7 +20,11 @@ const BLOCKED_PLUGIN_SUBSTRINGS = [
   "visualizer",
 ];
 
-const SVELTE_EXTERNAL: (string | RegExp)[] = [
+const SVELTE_EXTERNAL: (
+  | string
+  | RegExp
+  | ((id: string, importer?: string, isResolved?: boolean) => boolean)
+)[] = [
   /^svelte(\/.*)?$/,
   /^\$app\//,
   "lucide-svelte",
@@ -28,6 +32,19 @@ const SVELTE_EXTERNAL: (string | RegExp)[] = [
   "test-utils",
   /^test-utils\//,
 ];
+
+/**
+ * Filter that externalizes all JSON files except those belonging to the English locale.
+ * Used in dynamic/scoped-dynamic benchmarks to measure component + English baseline.
+ */
+const ENGLISH_ONLY_JSON_FILTER = (id: string) => {
+  if (id.endsWith(".json")) {
+    const segments = id.split("/");
+    const isEnglish = segments.some((s) => s === "en" || s === "en.json");
+    return !isEnglish;
+  }
+  return false;
+};
 
 interface ComponentSizeStats {
   name: string;
@@ -98,7 +115,11 @@ async function buildOne(
   minify: boolean,
   configRoot: string,
   appConfig: any = {},
-  additionalExternalPackages: (string | RegExp)[] = [],
+  additionalExternalPackages: (
+    | string
+    | RegExp
+    | ((id: string, importer?: string, isResolved?: boolean) => boolean)
+  )[] = [],
   wrapperTemplate?: (componentPath: string) => string,
 ): Promise<{ bytes: number; gzipBytes: number; code: string }> {
   const filteredPlugins: PluginOption[] = ((appConfig.plugins || []) as any[])
@@ -155,7 +176,28 @@ async function buildOne(
         },
         rollupOptions: {
           ...appConfig.build?.rollupOptions,
-          external: [...SVELTE_EXTERNAL, ...additionalExternalPackages],
+          external: (
+            id: string,
+            importer: string | undefined,
+            isResolved: boolean,
+          ) => {
+            const externalPackages = [
+              ...SVELTE_EXTERNAL,
+              ...additionalExternalPackages,
+            ];
+            return externalPackages.some((pkg) => {
+              if (typeof pkg === "string") {
+                return id === pkg || id.startsWith(pkg + "/");
+              }
+              if (pkg instanceof RegExp) {
+                return pkg.test(id);
+              }
+              if (typeof pkg === "function") {
+                return pkg(id, importer, isResolved);
+              }
+              return false;
+            });
+          },
         },
       },
     })) as RolldownOutput[];
@@ -193,6 +235,21 @@ export async function measureSvelteComponents({
   const effectiveDir = appDir ?? process.cwd();
   const appConfig = await loadAppConfig(effectiveDir);
 
+  const allExternalPackages: (
+    | string
+    | RegExp
+    | ((id: string, importer?: string, isResolved?: boolean) => boolean)
+  )[] = [];
+
+  // Only apply English-only JSON filtering for dynamic/scoped-dynamic benchmarks.
+  // Static benchmarks should bundle their JSON as per their normal build process.
+  if (
+    benchmarkCategory.includes("dynamic") ||
+    benchmarkCategory.includes("scoped-dynamic")
+  ) {
+    allExternalPackages.push(ENGLISH_ONLY_JSON_FILTER);
+  }
+
   const dirs = componentDirectories.map((d) => path.resolve(effectiveDir, d));
   const resultsDirectory = path.join(
     benchmarkBloomRoot(effectiveDir),
@@ -223,12 +280,14 @@ export async function measureSvelteComponents({
           false,
           effectiveDir,
           appConfig,
+          allExternalPackages,
         );
         const minified = await buildOne(
           absoluteFilePath,
           true,
           effectiveDir,
           appConfig,
+          allExternalPackages,
         );
 
         const componentBundleDir = path.join(bundlesOutputDir, category);
@@ -314,7 +373,11 @@ export interface MeasureSvelteLibSizeConfig {
   benchmarkCategory: string;
   appDir?: string;
   emptyComponentFile?: string;
-  additionalExternalPackages?: (string | RegExp)[];
+  additionalExternalPackages?: (
+    | string
+    | RegExp
+    | ((id: string, importer?: string, isResolved?: boolean) => boolean)
+  )[];
   wrapperTemplate?: (componentPath: string) => string;
 }
 

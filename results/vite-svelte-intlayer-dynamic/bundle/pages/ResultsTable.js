@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { derived, get, writable } from "svelte/store";
 import { getContext, onMount } from "svelte";
 var content = {
-	"de": () => import("./de-RI3jZFrZ.js").then((m) => m.default),
-	"en": () => import("./en-D-8nApJF.js").then((m) => m.default),
-	"es": () => import("./es-DrJK-Gzj.js").then((m) => m.default),
-	"fr": () => import("./fr-C6oYY9r3.js").then((m) => m.default),
-	"it": () => import("./it-CX5edCyd.js").then((m) => m.default),
-	"ja": () => import("./ja-5RYA8rsb.js").then((m) => m.default),
-	"ko": () => import("./ko-DECKhrsQ.js").then((m) => m.default),
-	"pt": () => import("./pt-CeVjh1M1.js").then((m) => m.default),
-	"ru": () => import("./ru-C2rMpnER.js").then((m) => m.default),
-	"zh": () => import("./zh-xkIIn9Cx.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/de.json").then((m) => m.default),
+	"en": () => import("./en-BLJI3J6y.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -477,22 +477,6 @@ function ResultsTable($$anchor, $$props) {
 	$$cleanup();
 }
 export { ResultsTable as default };
-var de_default = {
-	key: "results-table",
-	content: {
-		"title": "Beispielergebnisse",
-		"columns": {
-			"library": "Bibliothek",
-			"bundleSize": "Bundle-Größe",
-			"lookupTime": "Lookup-Zeit",
-			"lazyLoading": "Lazy Loading"
-		},
-		"yes1": "Ja",
-		"manual": "Manuell",
-		"yes": "Ja"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "results-table",
 	content: {
@@ -509,131 +493,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "results-table",
-	content: {
-		"title": "Resultados de muestra",
-		"columns": {
-			"library": "Biblioteca",
-			"bundleSize": "Tamaño del bundle",
-			"lookupTime": "Tiempo de búsqueda",
-			"lazyLoading": "Carga perezosa"
-		},
-		"yes1": "Sí",
-		"manual": "Manual",
-		"yes": "Sí"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "results-table",
-	content: {
-		"title": "Exemples de résultats",
-		"columns": {
-			"library": "Bibliothèque",
-			"bundleSize": "Taille du bundle",
-			"lookupTime": "Temps de recherche",
-			"lazyLoading": "Chargement différé"
-		},
-		"yes1": "Oui",
-		"manual": "Manuel",
-		"yes": "Oui"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "results-table",
-	content: {
-		"title": "Esempi di risultati",
-		"columns": {
-			"library": "Libreria",
-			"bundleSize": "Dimensioni del bundle",
-			"lookupTime": "Tempo di ricerca",
-			"lazyLoading": "Caricamento pigro"
-		},
-		"yes1": "Sì",
-		"manual": "Manuale",
-		"yes": "Sì"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "results-table",
-	content: {
-		"title": "サンプルの結果",
-		"columns": {
-			"library": "ライブラリ",
-			"bundleSize": "バンドルサイズ",
-			"lookupTime": "ルックアップ時間",
-			"lazyLoading": "遅延読み込み"
-		},
-		"yes1": "はい",
-		"manual": "手動",
-		"yes": "はい"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "results-table",
-	content: {
-		"title": "샘플 결과",
-		"columns": {
-			"library": "라이브러리",
-			"bundleSize": "번들 크기",
-			"lookupTime": "조회 시간",
-			"lazyLoading": "지연 로딩"
-		},
-		"yes1": "예",
-		"manual": "수동",
-		"yes": "예"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "results-table",
-	content: {
-		"title": "Exemplos de resultados",
-		"columns": {
-			"library": "Biblioteca",
-			"bundleSize": "Tamanho do bundle",
-			"lookupTime": "Tempo de busca",
-			"lazyLoading": "Carregamento lento"
-		},
-		"yes1": "Sim",
-		"manual": "Manual",
-		"yes": "Sim"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "results-table",
-	content: {
-		"title": "Примеры результатов",
-		"columns": {
-			"library": "Библиотека",
-			"bundleSize": "Размер бандла",
-			"lookupTime": "Время поиска",
-			"lazyLoading": "Ленивая загрузка"
-		},
-		"yes1": "Да",
-		"manual": "Вручную",
-		"yes": "Да"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "results-table",
-	content: {
-		"title": "示例结果",
-		"columns": {
-			"library": "库",
-			"bundleSize": "捆绑包大小",
-			"lookupTime": "查找时间",
-			"lazyLoading": "延迟加载"
-		},
-		"yes1": "是",
-		"manual": "手动",
-		"yes": "是"
-	}
-};
-export { zh_default as default };

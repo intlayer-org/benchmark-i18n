@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content$1 = {
-	"de": () => import("./de-CI6Hh0NK.js").then((m) => m.default),
-	"en": () => import("./en-BadW0BUi.js").then((m) => m.default),
-	"es": () => import("./es-CeJLKIkW.js").then((m) => m.default),
-	"fr": () => import("./fr-DZLaLAH-.js").then((m) => m.default),
-	"it": () => import("./it-Dtwt6uih.js").then((m) => m.default),
-	"ja": () => import("./ja-BJpzZ26o.js").then((m) => m.default),
-	"ko": () => import("./ko-CvCt88hk.js").then((m) => m.default),
-	"pt": () => import("./pt-DCHDmsjJ.js").then((m) => m.default),
-	"ru": () => import("./ru-Cx0itjd7.js").then((m) => m.default),
-	"zh": () => import("./zh-DiY81UXm.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/team-header/de.json").then((m) => m.default),
+	"en": () => import("./en-BuOod8N0.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/team-header/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/team-header/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/team-header/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/team-header/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/team-header/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/team-header/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/team-header/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/team-header/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -370,16 +370,16 @@ function useDictionaryDynamic(dictionaryPromise, _key, locale) {
 	} }));
 }
 var content = {
-	"de": () => import("./de-CZloO0fb.js").then((m) => m.default),
-	"en": () => import("./en-D4ldyfsM.js").then((m) => m.default),
-	"es": () => import("./es-C9SlJ5sh.js").then((m) => m.default),
-	"fr": () => import("./fr-D5JxLk-0.js").then((m) => m.default),
-	"it": () => import("./it-yUi1Wzrh.js").then((m) => m.default),
-	"ja": () => import("./ja-Cet5H0BX.js").then((m) => m.default),
-	"ko": () => import("./ko-DQQG9eqC.js").then((m) => m.default),
-	"pt": () => import("./pt-BE_-JGzS.js").then((m) => m.default),
-	"ru": () => import("./ru-Bk-dFI6f.js").then((m) => m.default),
-	"zh": () => import("./zh-CuaDcH8L.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((m) => m.default),
+	"en": () => import("./en-BaJOlMMx.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((m) => m.default)
 };
 var root$1 = $.from_html(`<div class="mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground"> </div>`);
 function MockBanner($$anchor, $$props) {
@@ -421,19 +421,11 @@ function TeamHeader($$anchor, $$props) {
 	$$cleanup();
 }
 export { TeamHeader as default };
-var de_default = {
-	key: "team-header",
-	content: {
-		"title": "Unser Team",
-		"description": "Lernen Sie die Menschen hinter i18n Benchmark kennen. Ein vielfältiges Team, das durch die gemeinsame Leidenschaft für großartige Entwickler-Tools vereint ist."
-	}
-};
-export { de_default as default };
-var de_default = {
+var en_default = {
 	key: "mock-banner",
-	content: { "message": "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
+	content: { "message": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
 };
-export { de_default as default };
+export { en_default as default };
 var en_default = {
 	key: "team-header",
 	content: {
@@ -442,112 +434,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var en_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
-};
-export { en_default as default };
-var es_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { es_default as default };
-var es_default = {
-	key: "team-header",
-	content: {
-		"title": "Nuestro Equipo",
-		"description": "Conozca a las personas detrás de i18n Benchmark. Un equipo diverso unido por una pasión compartida por las excelentes herramientas para desarrolladores."
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { fr_default as default };
-var fr_default = {
-	key: "team-header",
-	content: {
-		"title": "Notre Équipe",
-		"description": "Rencontrez les personnes derrière i18n Benchmark. Une équipe diversifiée unie par une passion commune pour les excellents outils de développement."
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "team-header",
-	content: {
-		"title": "Il nostro team",
-		"description": "Incontra le persone dietro i18n Benchmark. Un team diversificato unito da una passione condivisa per i grandi strumenti di sviluppo."
-	}
-};
-export { it_default as default };
-var it_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { it_default as default };
-var ja_default = {
-	key: "team-header",
-	content: {
-		"title": "私たちのチーム",
-		"description": "i18n Benchmark の背後にいる人々を紹介します。優れた開発者ツールへの情熱を共有する多様なチームです。"
-	}
-};
-export { ja_default as default };
-var ja_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { ja_default as default };
-var ko_default = {
-	key: "team-header",
-	content: {
-		"title": "우리 팀",
-		"description": "i18n Benchmark의 주역들을 만나보세요. 훌륭한 개발자 도구에 대한 공통된 열정으로 뭉친 다양한 팀입니다."
-	}
-};
-export { ko_default as default };
-var ko_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { ko_default as default };
-var pt_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contém données fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { pt_default as default };
-var pt_default = {
-	key: "team-header",
-	content: {
-		"title": "Nossa Equipe",
-		"description": "Conheça as pessoas por trás do i18n Benchmark. Uma equipe diversificada unida por uma paixão compartilhada por ótimas ferramentas de desenvolvedor."
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { ru_default as default };
-var ru_default = {
-	key: "team-header",
-	content: {
-		"title": "Наша команда",
-		"description": "Познакомьтесь с людьми, стоящими за i18n Benchmark. Разнообразная команда, объединенная общей страстью к созданию отличных инструментов для разработчиков."
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务或服务无关。" }
-};
-export { zh_default as default };
-var zh_default = {
-	key: "team-header",
-	content: {
-		"title": "我们的团队",
-		"description": "结识 i18n Benchmark 背后的团队。一支多元化的团队，因对出色开发工具的共同热情而团结在一起。"
-	}
-};
-export { zh_default as default };

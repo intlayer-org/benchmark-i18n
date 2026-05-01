@@ -1,0 +1,975 @@
+{
+  "app": "vite-solid-intlayer-dynamic",
+  "locale": "fr",
+  "timestamp": "2026-04-30T23:56:00.322Z",
+  "fingerprintCounts": {
+    "locale": {
+      "en": 0,
+      "fr": 0
+    },
+    "page": {
+      "home": 0,
+      "about": 0,
+      "blog": 0,
+      "careers": 0,
+      "contact": 0,
+      "faq": 0,
+      "pricing": 0,
+      "products": 0,
+      "settings": 0,
+      "team": 0
+    }
+  },
+  "results": [
+    {
+      "path": "/fr/",
+      "page": "home",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/about",
+      "page": "about",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/about",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/blog",
+      "page": "blog",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/blog",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/careers",
+      "page": "careers",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/careers",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/contact",
+      "page": "contact",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/contact",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/faq",
+      "page": "faq",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/faq",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/pricing",
+      "page": "pricing",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/pricing",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/products",
+      "page": "products",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/products",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/settings",
+      "page": "settings",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/settings",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/team",
+      "page": "team",
+      "locale": "fr",
+      "totalSize": 99895,
+      "totalGzipSize": 33697,
+      "jsSize": 72889,
+      "jsGzipSize": 27843,
+      "cssSize": 25579,
+      "cssGzipSize": 5201,
+      "htmlSize": 1427,
+      "htmlGzipSize": 653,
+      "fileCount": 4,
+      "jsFileCount": 2,
+      "bundleFiles": [
+        {
+          "url": "/fr/team",
+          "size": 1427,
+          "gzipSize": 653,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DLHU3tw8.css",
+          "size": 25579,
+          "gzipSize": 5201,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-DXjKoX9p.js",
+          "size": 38946,
+          "gzipSize": 14882,
+          "type": "js"
+        },
+        {
+          "url": "/assets/useDictionary-DLk_-RvT.js",
+          "size": 33943,
+          "gzipSize": 12961,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    }
+  ]
+}

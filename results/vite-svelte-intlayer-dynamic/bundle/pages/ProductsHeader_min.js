@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { getContext as t } from "svelte";
 import { derived as n, writable as r } from "svelte/store";
 var i = {
-	de: () => import("./de-DCM3GVJP.js").then((e) => e.default),
-	en: () => import("./en-B1gE57-S.js").then((e) => e.default),
-	es: () => import("./es-Bzq50Nx6.js").then((e) => e.default),
-	fr: () => import("./fr-snKtPPeB.js").then((e) => e.default),
-	it: () => import("./it-BJjwa5jv.js").then((e) => e.default),
-	ja: () => import("./ja-DPnou4GC.js").then((e) => e.default),
-	ko: () => import("./ko-CMBWxutF.js").then((e) => e.default),
-	pt: () => import("./pt-D6MwrthO.js").then((e) => e.default),
-	ru: () => import("./ru-fLZdCavk.js").then((e) => e.default),
-	zh: () => import("./zh-PBCtveH6.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/de.json").then((e) => e.default),
+	en: () => import("./en-DV_lwcQU.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/zh.json").then((e) => e.default)
 }, a = Symbol("intlayer"), o = () => t(a), s = {
 	locales: [
 		"en",
@@ -277,16 +277,16 @@ function z(e, t, r) {
 	}, { get: (e, t) => t === "isLoading" ? !0 : t === "error" ? null : R }));
 }
 var B = {
-	de: () => import("./de-pf2V_pZ9.js").then((e) => e.default),
-	en: () => import("./en-DiHrX_FU.js").then((e) => e.default),
-	es: () => import("./es-D6kQHtkK.js").then((e) => e.default),
-	fr: () => import("./fr-DKDlyBBJ.js").then((e) => e.default),
-	it: () => import("./it-DdmcIccO.js").then((e) => e.default),
-	ja: () => import("./ja-3kmoh25X.js").then((e) => e.default),
-	ko: () => import("./ko-BPW2ws6D.js").then((e) => e.default),
-	pt: () => import("./pt-B7FuRggF.js").then((e) => e.default),
-	ru: () => import("./ru-v8xvck-e.js").then((e) => e.default),
-	zh: () => import("./zh-D0kzZKf3.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((e) => e.default),
+	en: () => import("./en-C7ZHSe0y.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((e) => e.default)
 }, V = e.from_html("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\"> </div>");
 function H(t, n) {
 	e.push(n, !1);
@@ -311,27 +311,6 @@ function W(t, n) {
 }
 export { W as default };
 var e = {
-	key: "products-header",
-	content: {
-		toolsAndServicesToStreamline: "Tools und Dienste zur Optimierung Ihres Internationalisierungs-Workflows.",
-		products: "Produkte"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		toolsAndServicesToStreamline: "Tools and services to streamline your internationalization workflow.",
-		products: "Products"
-	}
-};
-export { e as default };
-var e = {
 	key: "mock-banner",
 	content: { message: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
 };
@@ -339,104 +318,8 @@ export { e as default };
 var e = {
 	key: "products-header",
 	content: {
-		toolsAndServicesToStreamline: "Herramientas y servicios para agilizar su flujo de trabajo de internacionalización.",
-		products: "Productos"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		toolsAndServicesToStreamline: "Des outils et services pour simplifier votre flux de travail d'internationalisation.",
-		products: "Produits"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		toolsAndServicesToStreamline: "Strumenti e servizi per semplificare il flusso di lavoro di internazionalizzazione.",
-		products: "Prodotti"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		toolsAndServicesToStreamline: "国際化ワークフローを合理化するためのツールとサービス。",
-		products: "製品"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		toolsAndServicesToStreamline: "국제화 워크플로우를 간소화하는 도구 및 서비스.",
-		products: "제품"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Esta página contém données fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		toolsAndServicesToStreamline: "Ferramentas e serviços para agilizar seu fluxo de trabalho de internacionalização.",
-		products: "Produtos"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		toolsAndServicesToStreamline: "Инструменты и услуги для оптимизации вашего рабочего процесса интернационализации.",
-		products: "Продукты"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务或服务无关。" }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		toolsAndServicesToStreamline: "简化国际化工作流程的工具和服务。",
-		products: "产品"
+		toolsAndServicesToStreamline: "Tools and services to streamline your internationalization workflow.",
+		products: "Products"
 	}
 };
 export { e as default };

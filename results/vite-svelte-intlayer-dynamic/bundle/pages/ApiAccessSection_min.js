@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { getContext as t } from "svelte";
 import { derived as n, writable as r } from "svelte/store";
 var i = {
-	de: () => import("./de-BECZ0d3s.js").then((e) => e.default),
-	en: () => import("./en-D4C6kZiV.js").then((e) => e.default),
-	es: () => import("./es-7NPQML3T.js").then((e) => e.default),
-	fr: () => import("./fr-gfjemxNa.js").then((e) => e.default),
-	it: () => import("./it-ChWcBR1r.js").then((e) => e.default),
-	ja: () => import("./ja-CCyrFjoq.js").then((e) => e.default),
-	ko: () => import("./ko-Bo0AVYc5.js").then((e) => e.default),
-	pt: () => import("./pt-CoKrT4jg.js").then((e) => e.default),
-	ru: () => import("./ru-DB_HUxVj.js").then((e) => e.default),
-	zh: () => import("./zh-BfOuWf56.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/de.json").then((e) => e.default),
+	en: () => import("./en-DROHvh9S.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/zh.json").then((e) => e.default)
 }, a = Symbol("intlayer"), o = () => t(a), s = {
 	locales: [
 		"en",
@@ -296,100 +296,10 @@ export { V as default };
 var e = {
 	key: "api-access-section",
 	content: {
-		useThisKeyToAccess: "Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen.",
-		copy: "Kopieren",
-		apiKey: "API-Schlüssel",
-		apiAccess: "API-Zugriff"
-	}
-};
-export { e as default };
-var e = {
-	key: "api-access-section",
-	content: {
 		useThisKeyToAccess: "Use this key to access the benchmarking API programmatically.",
 		copy: "Copy",
 		apiKey: "API Key",
 		apiAccess: "API Access"
-	}
-};
-export { e as default };
-var e = {
-	key: "api-access-section",
-	content: {
-		useThisKeyToAccess: "Use esta clave para acceder a la API de benchmarking mediante programación.",
-		copy: "Copiar",
-		apiKey: "Clave API",
-		apiAccess: "Acceso API"
-	}
-};
-export { e as default };
-var e = {
-	key: "api-access-section",
-	content: {
-		useThisKeyToAccess: "Utilisez cette clé pour accéder à l'API de benchmarking par programmation.",
-		copy: "Copier",
-		apiKey: "Clé d'API",
-		apiAccess: "Accès à l'API"
-	}
-};
-export { e as default };
-var e = {
-	key: "api-access-section",
-	content: {
-		useThisKeyToAccess: "Usa questa chiave per accedere programmaticamente all'API di benchmarking.",
-		copy: "Copia",
-		apiKey: "Chiave API",
-		apiAccess: "Accesso API"
-	}
-};
-export { e as default };
-var e = {
-	key: "api-access-section",
-	content: {
-		useThisKeyToAccess: "このキーを使用して、プログラムでベンチマーク API にアクセスします。",
-		copy: "コピー",
-		apiKey: "API キー",
-		apiAccess: "API アクセス"
-	}
-};
-export { e as default };
-var e = {
-	key: "api-access-section",
-	content: {
-		useThisKeyToAccess: "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오.",
-		copy: "복사",
-		apiKey: "API 키",
-		apiAccess: "API 액세스"
-	}
-};
-export { e as default };
-var e = {
-	key: "api-access-section",
-	content: {
-		useThisKeyToAccess: "Use esta chave para acessar a API de benchmarking programaticamente.",
-		copy: "Copiar",
-		apiKey: "Chave API",
-		apiAccess: "Acesso API"
-	}
-};
-export { e as default };
-var e = {
-	key: "api-access-section",
-	content: {
-		useThisKeyToAccess: "Используйте этот ключ для программного доступа к API бенчмаркинга.",
-		copy: "Копировать",
-		apiKey: "API ключ",
-		apiAccess: "API доступ"
-	}
-};
-export { e as default };
-var e = {
-	key: "api-access-section",
-	content: {
-		useThisKeyToAccess: "使用此密钥以编程方式访问基准测试 API。",
-		copy: "复制",
-		apiKey: "API 密钥",
-		apiAccess: "API 访问"
 	}
 };
 export { e as default };

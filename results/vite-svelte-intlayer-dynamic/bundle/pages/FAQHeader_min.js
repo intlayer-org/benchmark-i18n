@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { getContext as t } from "svelte";
 import { derived as n, writable as r } from "svelte/store";
 var i = {
-	de: () => import("./de-CE_5sTlx.js").then((e) => e.default),
-	en: () => import("./en-CZnH9fUW.js").then((e) => e.default),
-	es: () => import("./es-DepcB4R9.js").then((e) => e.default),
-	fr: () => import("./fr-CzByJFwJ.js").then((e) => e.default),
-	it: () => import("./it-BcYCrfg0.js").then((e) => e.default),
-	ja: () => import("./ja-CZ8Ljlvc.js").then((e) => e.default),
-	ko: () => import("./ko-Dxnz-i_n.js").then((e) => e.default),
-	pt: () => import("./pt-kNZSzBXd.js").then((e) => e.default),
-	ru: () => import("./ru-zxqGgUzF.js").then((e) => e.default),
-	zh: () => import("./zh-RQMzht44.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/faq-header/de.json").then((e) => e.default),
+	en: () => import("./en-DauzHwS1.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/faq-header/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/faq-header/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/faq-header/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/faq-header/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/faq-header/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/faq-header/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/faq-header/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/faq-header/zh.json").then((e) => e.default)
 }, a = Symbol("intlayer"), o = () => t(a), s = {
 	locales: [
 		"en",
@@ -277,16 +277,16 @@ function z(e, t, r) {
 	}, { get: (e, t) => t === "isLoading" ? !0 : t === "error" ? null : R }));
 }
 var B = {
-	de: () => import("./de-CvSq1qIk.js").then((e) => e.default),
-	en: () => import("./en-i6rxt9BG.js").then((e) => e.default),
-	es: () => import("./es-BcSaUfS3.js").then((e) => e.default),
-	fr: () => import("./fr-BKvYS6ef.js").then((e) => e.default),
-	it: () => import("./it-B1LQBZfB.js").then((e) => e.default),
-	ja: () => import("./ja-Bdi8Q_GD.js").then((e) => e.default),
-	ko: () => import("./ko-xJvukrZW.js").then((e) => e.default),
-	pt: () => import("./pt-fNzNYXtM.js").then((e) => e.default),
-	ru: () => import("./ru-VxASCnbB.js").then((e) => e.default),
-	zh: () => import("./zh-D_7m1C5b.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((e) => e.default),
+	en: () => import("./en-DiHrX_FU.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((e) => e.default)
 }, V = e.from_html("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\"> </div>");
 function H(t, n) {
 	e.push(n, !1);
@@ -313,19 +313,6 @@ export { W as default };
 var e = {
 	key: "faq-header",
 	content: {
-		title: "Häufig gestellte Fragen",
-		description: "Alles, was Sie über i18n Benchmark wissen müssen."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
-};
-export { e as default };
-var e = {
-	key: "faq-header",
-	content: {
 		title: "Frequently Asked Questions",
 		description: "Everything you need to know about i18n Benchmark."
 	}
@@ -334,109 +321,5 @@ export { e as default };
 var e = {
 	key: "mock-banner",
 	content: { message: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { e as default };
-var e = {
-	key: "faq-header",
-	content: {
-		title: "Preguntas frecuentes",
-		description: "Todo lo que necesitas saber sobre i18n Benchmark."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { e as default };
-var e = {
-	key: "faq-header",
-	content: {
-		title: "Questions fréquemment posées",
-		description: "Tout ce que vous devez savoir sur i18n Benchmark."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { e as default };
-var e = {
-	key: "faq-header",
-	content: {
-		title: "Domande frequenti",
-		description: "Tutto quello che c'è da sapere su i18n Benchmark."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { e as default };
-var e = {
-	key: "faq-header",
-	content: {
-		title: "よくある質問",
-		description: "i18n ベンチマークについて知っておくべきことすべて。"
-	}
-};
-export { e as default };
-var e = {
-	key: "faq-header",
-	content: {
-		title: "자주 묻는 질문",
-		description: "i18n 벤치마크에 대해 알아야 할 모든 것."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Esta página contém données fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { e as default };
-var e = {
-	key: "faq-header",
-	content: {
-		title: "Perguntas Frequentes",
-		description: "Tudo o que você precisa saber sobre o i18n Benchmark."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { e as default };
-var e = {
-	key: "faq-header",
-	content: {
-		title: "Часто задаваемые вопросы",
-		description: "Все, что вам нужно знать о i18n Benchmark."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { message: "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务或服务无关。" }
-};
-export { e as default };
-var e = {
-	key: "faq-header",
-	content: {
-		title: "常见问题",
-		description: "关于 i18n 基准测试您需要了解的一切。"
-	}
 };
 export { e as default };

@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content = {
-	"de": () => import("./de-B7rAfPzZ.js").then((m) => m.default),
-	"en": () => import("./en-Ae6RFNON.js").then((m) => m.default),
-	"es": () => import("./es-CK407p4l.js").then((m) => m.default),
-	"fr": () => import("./fr-Ds9-ty3v.js").then((m) => m.default),
-	"it": () => import("./it-mqIDKp0e.js").then((m) => m.default),
-	"ja": () => import("./ja-DIhm2OD4.js").then((m) => m.default),
-	"ko": () => import("./ko-PrqI__i7.js").then((m) => m.default),
-	"pt": () => import("./pt-14iKnlOx.js").then((m) => m.default),
-	"ru": () => import("./ru-DI1IyOcJ.js").then((m) => m.default),
-	"zh": () => import("./zh-CB0ghsrX.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/de.json").then((m) => m.default),
+	"en": () => import("./en-CXxk3_Zn.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -469,27 +469,6 @@ function PreferencesSection($$anchor, $$props) {
 	$$cleanup();
 }
 export { PreferencesSection as default };
-var de_default = {
-	key: "preferences-section",
-	content: {
-		"arabicAr": "Arabisch (ar)",
-		"chineseSimplifiedZhCn": "Chinesisch (vereinfacht) (zh-CN)",
-		"japaneseJa": "Japanisch (ja)",
-		"spanishEs": "Spanisch (es)",
-		"germanDe": "Deutsch (de)",
-		"frenchFr": "Französisch (fr)",
-		"englishEn": "Englisch (en)",
-		"defaultLanguage": "Standardsprache",
-		"toggleDarkMode": "Dunkelmodus umschalten",
-		"useDarkColorScheme": "Dunkles Farbschema verwenden",
-		"darkMode": "Dunkelmodus",
-		"toggleNotifications": "Benachrichtigungen umschalten",
-		"receiveWeeklyBenchmarkReports": "Wöchentliche Benchmark-Berichte erhalten",
-		"emailNotifications": "E-Mail-Benachrichtigungen",
-		"preferences": "Einstellungen"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "preferences-section",
 	content: {
@@ -511,171 +490,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "preferences-section",
-	content: {
-		"arabicAr": "Árabe (ar)",
-		"chineseSimplifiedZhCn": "Chino simplificado (zh-CN)",
-		"japaneseJa": "Japonés (ja)",
-		"spanishEs": "Español (es)",
-		"germanDe": "Alemán (de)",
-		"frenchFr": "Francés (fr)",
-		"englishEn": "Inglés (en)",
-		"defaultLanguage": "Idioma predeterminado",
-		"toggleDarkMode": "Alternar modo oscuro",
-		"useDarkColorScheme": "Usar combinación de colores oscuros",
-		"darkMode": "Modo oscuro",
-		"toggleNotifications": "Alternar notificaciones",
-		"receiveWeeklyBenchmarkReports": "Recibir informes semanales de benchmarks",
-		"emailNotifications": "Notificaciones por correo electrónico",
-		"preferences": "Preferencias"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "preferences-section",
-	content: {
-		"arabicAr": "Arabe (ar)",
-		"chineseSimplifiedZhCn": "Chinois simplifié (zh-CN)",
-		"japaneseJa": "Japonais (ja)",
-		"spanishEs": "Espagnol (es)",
-		"germanDe": "Allemand (de)",
-		"frenchFr": "Français (fr)",
-		"englishEn": "Anglais (en)",
-		"defaultLanguage": "Langue par défaut",
-		"toggleDarkMode": "Basculer en mode sombre",
-		"useDarkColorScheme": "Utiliser le thème sombre",
-		"darkMode": "Mode sombre",
-		"toggleNotifications": "Basculer les notifications",
-		"receiveWeeklyBenchmarkReports": "Recevoir les rapports hebdomadaires",
-		"emailNotifications": "Notifications par email",
-		"preferences": "Préférences"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "preferences-section",
-	content: {
-		"arabicAr": "Arabo (ar)",
-		"chineseSimplifiedZhCn": "Cinese semplificato (zh-CN)",
-		"japaneseJa": "Giapponese (ja)",
-		"spanishEs": "Spagnolo (es)",
-		"germanDe": "Tedesco (de)",
-		"frenchFr": "Francese (fr)",
-		"englishEn": "Inglese (en)",
-		"defaultLanguage": "Lingua predefinita",
-		"toggleDarkMode": "Attiva/disattiva modalità scura",
-		"useDarkColorScheme": "Usa combinazione di colori scuri",
-		"darkMode": "Modalità scura",
-		"toggleNotifications": "Attiva/disattiva notifiche",
-		"receiveWeeklyBenchmarkReports": "Ricevi rapporti settimanali sui benchmark",
-		"emailNotifications": "Notifiche email",
-		"preferences": "Preferenze"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "preferences-section",
-	content: {
-		"arabicAr": "アラビア語 (ar)",
-		"chineseSimplifiedZhCn": "中国語（簡体字）(zh-CN)",
-		"japaneseJa": "日本語 (ja)",
-		"spanishEs": "スペイン語 (es)",
-		"germanDe": "ドイツ語 (de)",
-		"frenchFr": "フランス語 (fr)",
-		"englishEn": "英語 (en)",
-		"defaultLanguage": "デフォルトの言語",
-		"toggleDarkMode": "ダークモードを切り替える",
-		"useDarkColorScheme": "ダークカラー構成を使用する",
-		"darkMode": "ダークモード",
-		"toggleNotifications": "通知を切り替える",
-		"receiveWeeklyBenchmarkReports": "毎週のベンチマークレポートを受け取る",
-		"emailNotifications": "メール通知",
-		"preferences": "設定"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "preferences-section",
-	content: {
-		"arabicAr": "아랍어 (ar)",
-		"chineseSimplifiedZhCn": "중국어 간체 (zh-CN)",
-		"japaneseJa": "일본어 (ja)",
-		"spanishEs": "스페인어 (es)",
-		"germanDe": "독일어 (de)",
-		"frenchFr": "프랑스어 (fr)",
-		"englishEn": "영어 (en)",
-		"defaultLanguage": "기본 언어",
-		"toggleDarkMode": "어두운 모드 전환",
-		"useDarkColorScheme": "어두운 색 구성표 사용",
-		"darkMode": "어두운 모드",
-		"toggleNotifications": "알림 전환",
-		"receiveWeeklyBenchmarkReports": "주간 벤치마크 보고서 받기",
-		"emailNotifications": "이메일 알림",
-		"preferences": "환경 설정"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "preferences-section",
-	content: {
-		"arabicAr": "Árabe (ar)",
-		"chineseSimplifiedZhCn": "Chinês Simplificado (zh-CN)",
-		"japaneseJa": "Japonês (ja)",
-		"spanishEs": "Espanhol (es)",
-		"germanDe": "Alemão (de)",
-		"frenchFr": "Francês (fr)",
-		"englishEn": "Inglês (en)",
-		"defaultLanguage": "Idioma padrão",
-		"toggleDarkMode": "Alternar modo escuro",
-		"useDarkColorScheme": "Usar esquema de cores escuras",
-		"darkMode": "Modo Escuro",
-		"toggleNotifications": "Alternar notificações",
-		"receiveWeeklyBenchmarkReports": "Receber relatórios semanais de benchmark",
-		"emailNotifications": "Notificações por e-mail",
-		"preferences": "Preferências"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "preferences-section",
-	content: {
-		"arabicAr": "Арабский (ar)",
-		"chineseSimplifiedZhCn": "Китайский упрощенный (zh-CN)",
-		"japaneseJa": "Японский (ja)",
-		"spanishEs": "Испанский (es)",
-		"germanDe": "Немецкий (de)",
-		"frenchFr": "Французский (fr)",
-		"englishEn": "Английский (en)",
-		"defaultLanguage": "Язык по умолчанию",
-		"toggleDarkMode": "Переключить темный режим",
-		"useDarkColorScheme": "Использовать темную цветовую схему",
-		"darkMode": "Темный режим",
-		"toggleNotifications": "Переключить уведомления",
-		"receiveWeeklyBenchmarkReports": "Получать еженедельные отчеты о бенчмарках",
-		"emailNotifications": "Email-уведомления",
-		"preferences": "Предпочтения"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "preferences-section",
-	content: {
-		"arabicAr": "阿拉伯语 (ar)",
-		"chineseSimplifiedZhCn": "简体中文 (zh-CN)",
-		"japaneseJa": "日语 (ja)",
-		"spanishEs": "西班牙语 (es)",
-		"germanDe": "德语 (de)",
-		"frenchFr": "法语 (fr)",
-		"englishEn": "英语 (en)",
-		"defaultLanguage": "默认语言",
-		"toggleDarkMode": "切换深色模式",
-		"useDarkColorScheme": "使用深色配色方案",
-		"darkMode": "深色模式",
-		"toggleNotifications": "切换通知",
-		"receiveWeeklyBenchmarkReports": "接收每周基准报告",
-		"emailNotifications": "电子邮件通知",
-		"preferences": "偏好设置"
-	}
-};
-export { zh_default as default };

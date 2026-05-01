@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext, onMount } from "svelte";
 import { derived, writable } from "svelte/store";
 var content = {
-	"de": () => import("./de-B9TRCpII.js").then((m) => m.default),
-	"en": () => import("./en-ClMWfWZk.js").then((m) => m.default),
-	"es": () => import("./es-nUCZFj-9.js").then((m) => m.default),
-	"fr": () => import("./fr-BB0mt5Lv.js").then((m) => m.default),
-	"it": () => import("./it-CtQmFUtt.js").then((m) => m.default),
-	"ja": () => import("./ja-BcoVfYAg.js").then((m) => m.default),
-	"ko": () => import("./ko-BPwhgztp.js").then((m) => m.default),
-	"pt": () => import("./pt-BZvMlIWQ.js").then((m) => m.default),
-	"ru": () => import("./ru-CzRoFE7p.js").then((m) => m.default),
-	"zh": () => import("./zh-BkV49qtg.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/de.json").then((m) => m.default),
+	"en": () => import("./en-Bjovfd69.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -404,14 +404,6 @@ function AboutHeader($$anchor, $$props) {
 	$$cleanup();
 }
 export { AboutHeader as default };
-var de_default = {
-	key: "about-header",
-	content: {
-		"title": "Über diesen Benchmark",
-		"description": "Dies ist eine Open-Source-Testanwendung – kein Produkt oder Unternehmen. Ihr einziger Zweck besteht darin, eine realistische, mehrseitige Anwendung bereitzustellen, in der verschiedene i18n-Bibliotheken unter identischen Bedingungen integriert und gemessen werden können."
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "about-header",
 	content: {
@@ -420,67 +412,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "about-header",
-	content: {
-		"title": "Acerca de este benchmark",
-		"description": "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación de varias páginas realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas."
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "about-header",
-	content: {
-		"title": "À propos de ce benchmark",
-		"description": "Il s'agit d'une application de test open-source — pas d'un produit ou d'une entreprise. Son seul but est de fournir une application multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "about-header",
-	content: {
-		"title": "Informazioni su questo benchmark",
-		"description": "Questa è un'applicazione di test open source, non un prodotto o un'azienda. Il suo unico scopo è fornire un'applicazione multipagina realistica in cui diverse librerie i18n possano essere integrate e misurate in condizioni identiche."
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "about-header",
-	content: {
-		"title": "このベンチマークについて",
-		"description": "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、さまざまな i18n ライブラリを統合し、同一条件で測定できる現実的なマルチページアプリケーションを提供することです。"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "about-header",
-	content: {
-		"title": "이 벤치마크에 대하여",
-		"description": "이것은 오픈 소스 테스트 애플리케이션이며 제품이나 회사가 아닙니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 애플리케이션을 제공하는 것입니다."
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "about-header",
-	content: {
-		"title": "Sobre este Benchmark",
-		"description": "Este é um aplicativo de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo de várias páginas realista, onde diferentes bibliotecas i18n podem ser integradas e medidas em condições idênticas."
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "about-header",
-	content: {
-		"title": "Об этом бенчмарке",
-		"description": "Это тестовое приложение с открытым исходным кодом, а не продукт или компания. Его единственная цель — предоставить реалистичное многостраничное приложение, в котором различные библиотеки i18n могут быть интегрированы и измерены в идентичных условиях."
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "about-header",
-	content: {
-		"title": "关于此基准测试",
-		"description": "这是一个开源测试应用程序，而不是产品或公司。其唯一目的是提供一个现实的多页面应用程序，可以在相同条件下集成和测量不同的 i18n 库。"
-	}
-};
-export { zh_default as default };

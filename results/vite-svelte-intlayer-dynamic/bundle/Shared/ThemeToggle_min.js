@@ -4,16 +4,16 @@ import { getContext as t, onMount as n } from "svelte";
 import { derived as r, writable as i } from "svelte/store";
 import "svelte/internal/flags/legacy";
 var a = {
-	de: () => import("./de-DVpQuKFR.js").then((e) => e.default),
-	en: () => import("./en-C5ePg7iX.js").then((e) => e.default),
-	es: () => import("./es-BMvs9ShG.js").then((e) => e.default),
-	fr: () => import("./fr-Bm7ozjYa.js").then((e) => e.default),
-	it: () => import("./it-W9nD46V9.js").then((e) => e.default),
-	ja: () => import("./ja-CGdveLSS.js").then((e) => e.default),
-	ko: () => import("./ko-yezGKLbP.js").then((e) => e.default),
-	pt: () => import("./pt-IaEU4goQ.js").then((e) => e.default),
-	ru: () => import("./ru-jnmHiF4f.js").then((e) => e.default),
-	zh: () => import("./zh-BN_KBH8F.js").then((e) => e.default)
+	de: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((e) => e.default),
+	en: () => import("./en-Bth7VdsD.js").then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json").then((e) => e.default)
 }, o = Symbol("intlayer"), s = () => t(o), c = {
 	locales: [
 		"en",
@@ -313,120 +313,12 @@ export { H as default };
 var e = {
 	key: "theme-toggle",
 	content: {
-		auto: "Design: Auto",
-		dark: "Design: Dunkel",
-		light: "Design: Hell",
-		ariaLabelAuto: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-		ariaLabelLight: "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
-		ariaLabelDark: "Design-Modus: Dunkel. Klicken Sie hier, um in den Auto-Modus zu wechseln."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
 		auto: "Theme: Auto",
 		dark: "Theme: Dark",
 		light: "Theme: Light",
 		ariaLabelAuto: "Theme mode: auto (system). Click to switch to light mode.",
 		ariaLabelLight: "Theme mode: light. Click to switch to dark mode.",
 		ariaLabelDark: "Theme mode: dark. Click to switch to auto mode."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Tema: Auto",
-		dark: "Tema: Oscuro",
-		light: "Tema: Claro",
-		ariaLabelAuto: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-		ariaLabelLight: "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
-		ariaLabelDark: "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Thème : Auto",
-		dark: "Thème : Sombre",
-		light: "Thème : Clair",
-		ariaLabelAuto: "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
-		ariaLabelLight: "Mode de thème : clair. Cliquez pour passer au mode sombre.",
-		ariaLabelDark: "Mode de thème : sombre. Cliquez pour passer au mode auto."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Tema: Auto",
-		dark: "Tema: Scuro",
-		light: "Tema: Chiaro",
-		ariaLabelAuto: "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.",
-		ariaLabelLight: "Modalità tema: chiaro. Clicca per passare alla modalità scura.",
-		ariaLabelDark: "Modalità tema: scuro. Clicca per passare alla modalità auto."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "テーマ：自動",
-		dark: "テーマ：ダーク",
-		light: "テーマ：ライト",
-		ariaLabelAuto: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-		ariaLabelLight: "テーマモード：ライト。クリックしてダークモードに切り替えます。",
-		ariaLabelDark: "テーマモード：ダーク。クリックして自動モードに切り替えます。"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "테마: 자동",
-		dark: "테마: 어둡게",
-		light: "테마: 밝게",
-		ariaLabelAuto: "테마 모드: 자동(시스템). 클릭하여 밝은 모드로 전환합니다.",
-		ariaLabelLight: "테마 모드: 밝게. 클릭하여 어두운 모드로 전환합니다.",
-		ariaLabelDark: "테마 모드: 어둡게. 클릭하여 자동 모드로 전환합니다."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Tema: Automático",
-		dark: "Tema: Escuro",
-		light: "Tema: Claro",
-		ariaLabelAuto: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-		ariaLabelLight: "Modo de tema: claro. Clique para mudar para o modo escuro.",
-		ariaLabelDark: "Modo de tema: escuro. Clique para mudar para o modo automático."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Тема: Авто",
-		dark: "Тема: Темная",
-		light: "Тема: Светлая",
-		ariaLabelAuto: "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.",
-		ariaLabelLight: "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.",
-		ariaLabelDark: "Режим темы: темный. Нажмите, чтобы переключиться в автоматический режим."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "主题：自动",
-		dark: "主题：深色",
-		light: "主题：浅色",
-		ariaLabelAuto: "主题模式：自动（系统）。点击切换到浅色模式。",
-		ariaLabelLight: "主题模式：浅色。点击切换到深色模式。",
-		ariaLabelDark: "主题模式：深色。点击切换到自动模式。"
 	}
 };
 export { e as default };

@@ -4,16 +4,16 @@ import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 import "svelte/internal/flags/legacy";
 var content = {
-	"de": () => import("./de-DCihmA1C.js").then((m) => m.default),
-	"en": () => import("./en-ETPIBufR.js").then((m) => m.default),
-	"es": () => import("./es-B-TDWm3U.js").then((m) => m.default),
-	"fr": () => import("./fr-CHAEBCjo.js").then((m) => m.default),
-	"it": () => import("./it-BZ49uE69.js").then((m) => m.default),
-	"ja": () => import("./ja-CWPKRFPx.js").then((m) => m.default),
-	"ko": () => import("./ko-C-ul01zt.js").then((m) => m.default),
-	"pt": () => import("./pt-Cohgj3Fd.js").then((m) => m.default),
-	"ru": () => import("./ru-CZMdAQJm.js").then((m) => m.default),
-	"zh": () => import("./zh-BzRqfBUA.js").then((m) => m.default)
+	"de": () => import("../../.intlayer/dynamic_dictionary/json/footer/de.json").then((m) => m.default),
+	"en": () => import("./en-oIxdyTkF.js").then((m) => m.default),
+	"es": () => import("../../.intlayer/dynamic_dictionary/json/footer/es.json").then((m) => m.default),
+	"fr": () => import("../../.intlayer/dynamic_dictionary/json/footer/fr.json").then((m) => m.default),
+	"it": () => import("../../.intlayer/dynamic_dictionary/json/footer/it.json").then((m) => m.default),
+	"ja": () => import("../../.intlayer/dynamic_dictionary/json/footer/ja.json").then((m) => m.default),
+	"ko": () => import("../../.intlayer/dynamic_dictionary/json/footer/ko.json").then((m) => m.default),
+	"pt": () => import("../../.intlayer/dynamic_dictionary/json/footer/pt.json").then((m) => m.default),
+	"ru": () => import("../../.intlayer/dynamic_dictionary/json/footer/ru.json").then((m) => m.default),
+	"zh": () => import("../../.intlayer/dynamic_dictionary/json/footer/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -514,21 +514,6 @@ function Footer($$anchor, $$props) {
 	$$cleanup();
 }
 export { Footer as default };
-var de_default = {
-	key: "footer",
-	content: {
-		"description": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladezeit und die App-Reaktivität.",
-		"resources": "Ressourcen",
-		"contact": "Kontakt",
-		"github": "GitHub",
-		"methodology": "Methodik",
-		"contributing": "Beitragen",
-		"footerText": "i18n Benchmark — Open-Source-Projekt. Erstellt mit Svelte, Vite und einem clientseitigen Router.",
-		"appName": "i18n Benchmark",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "footer",
 	content: {
@@ -544,123 +529,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "footer",
-	content: {
-		"description": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
-		"resources": "Recursos",
-		"contact": "Contacto",
-		"github": "GitHub",
-		"methodology": "Metodología",
-		"contributing": "Contribuir",
-		"footerText": "i18n Benchmark — Proyecto de código abierto. Construido con Svelte, Vite y un enrutador del lado del cliente.",
-		"appName": "i18n Benchmark",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "footer",
-	content: {
-		"description": "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-		"resources": "Ressources",
-		"contact": "Contact",
-		"github": "GitHub",
-		"methodology": "Méthodologie",
-		"contributing": "Contribuer",
-		"footerText": "Benchmark i18n — Projet open-source. Construit avec Svelte, Vite et un routeur côté client.",
-		"appName": "Benchmark i18n",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "footer",
-	content: {
-		"description": "Un'applicazione di test open source per misurare l'impatto nel mondo reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
-		"resources": "Risorse",
-		"contact": "Contatti",
-		"github": "GitHub",
-		"methodology": "Metodologia",
-		"contributing": "Contribuire",
-		"footerText": "i18n Benchmark — Progetto open source. Costruito con Svelte, Vite e un router lato client.",
-		"appName": "i18n Benchmark",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "footer",
-	content: {
-		"description": "バンドルサイズ、ロード時間、およびアプリの反応性に対する国際化ライブラリの実世界の影響を測定するためのオープンソーステストアプリケーション。",
-		"resources": "リソース",
-		"contact": "お問い合わせ",
-		"github": "GitHub",
-		"methodology": "方法論",
-		"contributing": "貢献",
-		"footerText": "i18n ベンチマーク — オープンソースプロジェクト。Svelte、Vite、およびクライアントサイドルーティングで構築されています。",
-		"appName": "i18n ベンチマーク",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "footer",
-	content: {
-		"description": "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
-		"resources": "리소스",
-		"contact": "연락처",
-		"github": "GitHub",
-		"methodology": "방법론",
-		"contributing": "기여하기",
-		"footerText": "i18n 벤치마크 — 오픈 소스 프로젝트입니다. Svelte, Vite 및 클라이언트 측 라우터로 구축되었습니다.",
-		"appName": "i18n 벤치마크",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "footer",
-	content: {
-		"description": "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no tempo de carregamento e na reatividade do aplicativo.",
-		"resources": "Recursos",
-		"contact": "Contato",
-		"github": "GitHub",
-		"methodology": "Metodologia",
-		"contributing": "Contribuir",
-		"footerText": "i18n Benchmark — Projeto de código aberto. Construído com Svelte, Vite e um roteador do lado do cliente.",
-		"appName": "i18n Benchmark",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "footer",
-	content: {
-		"description": "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
-		"resources": "Ресурсы",
-		"contact": "Контакты",
-		"github": "GitHub",
-		"methodology": "Методология",
-		"contributing": "Участие в разработке",
-		"footerText": "i18n Бенчмарк — проект с открытым исходным кодом. Построен на Svelte, Vite и клиентском роутере.",
-		"appName": "i18n Бенчмарк",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "footer",
-	content: {
-		"description": "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的实际影响。",
-		"resources": "资源",
-		"contact": "联系我们",
-		"github": "GitHub",
-		"methodology": "方法论",
-		"contributing": "贡献",
-		"footerText": "i18n 基准测试 — 开源项目。使用 Svelte、Vite 和客户端路由器构建。",
-		"appName": "i18n 基准测试",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { zh_default as default };

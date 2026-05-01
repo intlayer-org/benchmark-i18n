@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, get, writable } from "svelte/store";
 var content = {
-	"de": () => import("./de-Bt344aXD.js").then((m) => m.default),
-	"en": () => import("./en-I7AxeL2k.js").then((m) => m.default),
-	"es": () => import("./es-BtjPQZBr.js").then((m) => m.default),
-	"fr": () => import("./fr-DBOjP9tt.js").then((m) => m.default),
-	"it": () => import("./it-BS609cWf.js").then((m) => m.default),
-	"ja": () => import("./ja-C_5FFL2u.js").then((m) => m.default),
-	"ko": () => import("./ko-Bi7-szNj.js").then((m) => m.default),
-	"pt": () => import("./pt-Cox9vwUw.js").then((m) => m.default),
-	"ru": () => import("./ru-Dqf8tkNi.js").then((m) => m.default),
-	"zh": () => import("./zh-Dx5rOQVi.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/de.json").then((m) => m.default),
+	"en": () => import("./en-7HPUQlXg.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -410,17 +410,6 @@ function CareersBenefits($$anchor, $$props) {
 	$.pop();
 }
 export { CareersBenefits as default };
-var de_default = {
-	key: "careers-benefits",
-	content: {
-		"x20TimeForOssContributions": "20 % Zeit für OSS-Beiträge",
-		"openSourceTime": "Open-Source-Zeit",
-		"topOfMarketCompensation": "Marktgerechte Vergütung",
-		"competitivePay": "Wettbewerbsfähige Bezahlung",
-		"workFromAnywhereInThe": "Arbeiten Sie von überall auf der Welt"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "careers-benefits",
 	content: {
@@ -432,91 +421,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "careers-benefits",
-	content: {
-		"x20TimeForOssContributions": "20% de tiempo para contribuciones de OSS",
-		"openSourceTime": "Tiempo de código abierto",
-		"topOfMarketCompensation": "Compensación superior al mercado",
-		"competitivePay": "Salario competitivo",
-		"workFromAnywhereInThe": "Trabaje desde cualquier lugar del mundo"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "careers-benefits",
-	content: {
-		"x20TimeForOssContributions": "20 % du temps pour les contributions OSS",
-		"openSourceTime": "Temps open source",
-		"topOfMarketCompensation": "Rémunération au sommet du marché",
-		"competitivePay": "Salaire compétitif",
-		"workFromAnywhereInThe": "Travaillez de n'importe où dans le monde"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "careers-benefits",
-	content: {
-		"x20TimeForOssContributions": "20% del tempo per i contributi OSS",
-		"openSourceTime": "Tempo open source",
-		"topOfMarketCompensation": "Compenso ai vertici del mercato",
-		"competitivePay": "Retribuzione competitiva",
-		"workFromAnywhereInThe": "Lavora da qualsiasi parte del mondo"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "careers-benefits",
-	content: {
-		"x20TimeForOssContributions": "OSS への貢献のための 20% の時間",
-		"openSourceTime": "オープンソースの時間",
-		"topOfMarketCompensation": "市場トップレベルの報酬",
-		"competitivePay": "競争力のある給与",
-		"workFromAnywhereInThe": "世界中のどこからでも仕事ができます"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "careers-benefits",
-	content: {
-		"x20TimeForOssContributions": "OSS 기여를 위한 20%의 시간",
-		"openSourceTime": "오픈 소스 시간",
-		"topOfMarketCompensation": "업계 최고 수준의 보상",
-		"competitivePay": "경쟁력 있는 급여",
-		"workFromAnywhereInThe": "전 세계 어디서나 근무 가능"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "careers-benefits",
-	content: {
-		"x20TimeForOssContributions": "20% do tempo para contribuições OSS",
-		"openSourceTime": "Tempo de código aberto",
-		"topOfMarketCompensation": "Remuneração acima do mercado",
-		"competitivePay": "Salário competitivo",
-		"workFromAnywhereInThe": "Trabalhe de qualquer lugar do mundo"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "careers-benefits",
-	content: {
-		"x20TimeForOssContributions": "20% времени на вклад в OSS",
-		"openSourceTime": "Время на open source",
-		"topOfMarketCompensation": "Компенсация выше рыночной",
-		"competitivePay": "Конкурентоспособная зарплата",
-		"workFromAnywhereInThe": "Работайте из любой точки мира"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "careers-benefits",
-	content: {
-		"x20TimeForOssContributions": "20% 的时间用于 OSS 贡献",
-		"openSourceTime": "开源时间",
-		"topOfMarketCompensation": "市场顶尖的薪酬",
-		"competitivePay": "具有竞争力的薪酬",
-		"workFromAnywhereInThe": "在全球任何地方工作"
-	}
-};
-export { zh_default as default };

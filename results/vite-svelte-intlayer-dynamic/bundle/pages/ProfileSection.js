@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content = {
-	"de": () => import("./de-BxHMdXKH.js").then((m) => m.default),
-	"en": () => import("./en-IAJLwkds.js").then((m) => m.default),
-	"es": () => import("./es-C12HtqzQ.js").then((m) => m.default),
-	"fr": () => import("./fr-DPlDQZ9A.js").then((m) => m.default),
-	"it": () => import("./it-DxytsXKo.js").then((m) => m.default),
-	"ja": () => import("./ja-B-ElqhnR.js").then((m) => m.default),
-	"ko": () => import("./ko-B8BY7dUp.js").then((m) => m.default),
-	"pt": () => import("./pt-Wt7ruGu4.js").then((m) => m.default),
-	"ru": () => import("./ru-CXsivBvg.js").then((m) => m.default),
-	"zh": () => import("./zh-Dec_GBTR.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/de.json").then((m) => m.default),
+	"en": () => import("./en-BDVjCB-q.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -405,15 +405,6 @@ function ProfileSection($$anchor, $$props) {
 	$$cleanup();
 }
 export { ProfileSection as default };
-var de_default = {
-	key: "profile-section",
-	content: {
-		"email": "E-Mail",
-		"displayName": "Anzeigename",
-		"profile": "Profil"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "profile-section",
 	content: {
@@ -423,75 +414,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "profile-section",
-	content: {
-		"email": "Correo electrónico",
-		"displayName": "Nombre a mostrar",
-		"profile": "Perfil"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "profile-section",
-	content: {
-		"email": "Email",
-		"displayName": "Nom affiché",
-		"profile": "Profil"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "profile-section",
-	content: {
-		"email": "Email",
-		"displayName": "Nome visualizzato",
-		"profile": "Profilo"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "profile-section",
-	content: {
-		"email": "メールアドレス",
-		"displayName": "表示名",
-		"profile": "プロフィール"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "profile-section",
-	content: {
-		"email": "이메일",
-		"displayName": "표시 이름",
-		"profile": "프로필"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "profile-section",
-	content: {
-		"email": "E-mail",
-		"displayName": "Nome de exibição",
-		"profile": "Perfil"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "profile-section",
-	content: {
-		"email": "Email",
-		"displayName": "Отображаемое имя",
-		"profile": "Профиль"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "profile-section",
-	content: {
-		"email": "电子邮件",
-		"displayName": "显示名称",
-		"profile": "个人资料"
-	}
-};
-export { zh_default as default };

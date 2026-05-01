@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { getContext as t } from "svelte";
 import { derived as n, writable as r } from "svelte/store";
 var i = {
-	de: () => import("./de-ZOvDKq7G.js").then((e) => e.default),
-	en: () => import("./en-C7C63kpU.js").then((e) => e.default),
-	es: () => import("./es-C9EEQBV3.js").then((e) => e.default),
-	fr: () => import("./fr-CF4pXObH.js").then((e) => e.default),
-	it: () => import("./it-1hscxVxr.js").then((e) => e.default),
-	ja: () => import("./ja-Bj2iRBZs.js").then((e) => e.default),
-	ko: () => import("./ko-9R1Z7v4H.js").then((e) => e.default),
-	pt: () => import("./pt-C7nWXIve.js").then((e) => e.default),
-	ru: () => import("./ru-DJ7KSkH8.js").then((e) => e.default),
-	zh: () => import("./zh-BlAZF6AQ.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/de.json").then((e) => e.default),
+	en: () => import("./en-Shu59OxV.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/zh.json").then((e) => e.default)
 }, a = Symbol("intlayer"), o = () => t(a), s = {
 	locales: [
 		"en",
@@ -292,80 +292,8 @@ export { V as default };
 var e = {
 	key: "settings-footer",
 	content: {
-		saveChanges: "Änderungen speichern",
-		cancel: "Abbrechen"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
 		saveChanges: "Save Changes",
 		cancel: "Cancel"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		saveChanges: "Guardar cambios",
-		cancel: "Cancelar"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		saveChanges: "Enregistrer les modifications",
-		cancel: "Annuler"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		saveChanges: "Salva modifiche",
-		cancel: "Annulla"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		saveChanges: "変更を保存",
-		cancel: "キャンセル"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		saveChanges: "변경 사항 저장",
-		cancel: "취소"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		saveChanges: "Salvar alterações",
-		cancel: "Cancelar"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		saveChanges: "Сохранить изменения",
-		cancel: "Отмена"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		saveChanges: "保存更改",
-		cancel: "取消"
 	}
 };
 export { e as default };

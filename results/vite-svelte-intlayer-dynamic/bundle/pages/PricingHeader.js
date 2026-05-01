@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content$1 = {
-	"de": () => import("./de-7DiWKBun.js").then((m) => m.default),
-	"en": () => import("./en-BBAeU1vv.js").then((m) => m.default),
-	"es": () => import("./es-AHX7OA9G.js").then((m) => m.default),
-	"fr": () => import("./fr-B0Z-L5eY.js").then((m) => m.default),
-	"it": () => import("./it-ChL9i60E.js").then((m) => m.default),
-	"ja": () => import("./ja-C0x_KnqA.js").then((m) => m.default),
-	"ko": () => import("./ko-CQYyv8Fa.js").then((m) => m.default),
-	"pt": () => import("./pt-Bh7-53Fx.js").then((m) => m.default),
-	"ru": () => import("./ru-BS_tS8UI.js").then((m) => m.default),
-	"zh": () => import("./zh-1iekpH4W.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/de.json").then((m) => m.default),
+	"en": () => import("./en-BMu_rpEG.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -370,16 +370,16 @@ function useDictionaryDynamic(dictionaryPromise, _key, locale) {
 	} }));
 }
 var content = {
-	"de": () => import("./de-CZloO0fb.js").then((m) => m.default),
-	"en": () => import("./en-D4ldyfsM.js").then((m) => m.default),
-	"es": () => import("./es-C9SlJ5sh.js").then((m) => m.default),
-	"fr": () => import("./fr-D5JxLk-0.js").then((m) => m.default),
-	"it": () => import("./it-yUi1Wzrh.js").then((m) => m.default),
-	"ja": () => import("./ja-Cet5H0BX.js").then((m) => m.default),
-	"ko": () => import("./ko-DQQG9eqC.js").then((m) => m.default),
-	"pt": () => import("./pt-BE_-JGzS.js").then((m) => m.default),
-	"ru": () => import("./ru-Bk-dFI6f.js").then((m) => m.default),
-	"zh": () => import("./zh-CuaDcH8L.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((m) => m.default),
+	"en": () => import("./en-BaJOlMMx.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((m) => m.default)
 };
 var root$1 = $.from_html(`<div class="mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground"> </div>`);
 function MockBanner($$anchor, $$props) {
@@ -423,19 +423,6 @@ function PricingHeader($$anchor, $$props) {
 	$$cleanup();
 }
 export { PricingHeader as default };
-var de_default = {
-	key: "pricing-header",
-	content: {
-		"chooseThePlanThatFits": "Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren.",
-		"simpleTransparentPricing": "Einfache, transparente Preisgestaltung"
-	}
-};
-export { de_default as default };
-var de_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
-};
-export { de_default as default };
 var en_default = {
 	key: "pricing-header",
 	content: {
@@ -449,107 +436,3 @@ var en_default = {
 	content: { "message": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
 };
 export { en_default as default };
-var es_default = {
-	key: "pricing-header",
-	content: {
-		"chooseThePlanThatFits": "Elija el plan que se adapte a su equipo. Sin cargos ocultos.",
-		"simpleTransparentPricing": "Precios simples и transparentes"
-	}
-};
-export { es_default as default };
-var es_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { es_default as default };
-var fr_default = {
-	key: "pricing-header",
-	content: {
-		"chooseThePlanThatFits": "Choisissez le plan qui convient à votre équipe. Pas de frais cachés.",
-		"simpleTransparentPricing": "Une tarification simple et transparente"
-	}
-};
-export { fr_default as default };
-var fr_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { fr_default as default };
-var it_default = {
-	key: "pricing-header",
-	content: {
-		"chooseThePlanThatFits": "Scegli il piano più adatto al tuo team. Nessun costo nascosto.",
-		"simpleTransparentPricing": "Prezzi semplici e trasparenti"
-	}
-};
-export { it_default as default };
-var it_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { it_default as default };
-var ja_default = {
-	key: "pricing-header",
-	content: {
-		"chooseThePlanThatFits": "チームにぴったりのプランをお選びください。隠れた費用はありません。",
-		"simpleTransparentPricing": "シンプルで透明性の高い価格設定"
-	}
-};
-export { ja_default as default };
-var ja_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { ja_default as default };
-var ko_default = {
-	key: "pricing-header",
-	content: {
-		"chooseThePlanThatFits": "팀에 적합한 플랜을 선택하세요. 숨겨진 수수료가 없습니다.",
-		"simpleTransparentPricing": "심플하고 투명한 가격 정책"
-	}
-};
-export { ko_default as default };
-var ko_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { ko_default as default };
-var pt_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contém données fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { pt_default as default };
-var pt_default = {
-	key: "pricing-header",
-	content: {
-		"chooseThePlanThatFits": "Escolha o plano adequado à sua equipe. Sem taxas ocultas.",
-		"simpleTransparentPricing": "Preços simples e transparentes"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "pricing-header",
-	content: {
-		"chooseThePlanThatFits": "Выберите план, который подходит вашей команде. Никаких скрытых комиссий.",
-		"simpleTransparentPricing": "Простая и прозрачная цена"
-	}
-};
-export { ru_default as default };
-var ru_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { ru_default as default };
-var zh_default = {
-	key: "pricing-header",
-	content: {
-		"chooseThePlanThatFits": "选择适合您团队的计划。没有隐藏费用。",
-		"simpleTransparentPricing": "简单透明的定价"
-	}
-};
-export { zh_default as default };
-var zh_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务或服务无关。" }
-};
-export { zh_default as default };

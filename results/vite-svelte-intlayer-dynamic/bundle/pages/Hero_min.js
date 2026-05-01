@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { derived as t, get as n, writable as r } from "svelte/store";
 import { getContext as i, onMount as a } from "svelte";
 var o = {
-	de: () => import("./de-CcaGRO-1.js").then((e) => e.default),
-	en: () => import("./en-Dih5vZPE.js").then((e) => e.default),
-	es: () => import("./es-DXhGTIvE.js").then((e) => e.default),
-	fr: () => import("./fr-CtR2tLGn.js").then((e) => e.default),
-	it: () => import("./it-VJpEHLfS.js").then((e) => e.default),
-	ja: () => import("./ja-pyugV4cL.js").then((e) => e.default),
-	ko: () => import("./ko-NXzGp-5r.js").then((e) => e.default),
-	pt: () => import("./pt-B5USihFc.js").then((e) => e.default),
-	ru: () => import("./ru-BGNVp5vy.js").then((e) => e.default),
-	zh: () => import("./zh-BUvii2hQ.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/de.json").then((e) => e.default),
+	en: () => import("./en-CwosCx3K.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/zh.json").then((e) => e.default)
 }, s = Symbol("intlayer"), c = () => i(s), l = {
 	locales: [
 		"en",
@@ -307,109 +307,10 @@ var e = {
 	key: "hero",
 	content: {
 		title: "i18n Benchmark",
-		description: "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.",
-		viewResults: "Ergebnisse anzeigen",
-		methodology: "Methodik",
-		hero: "Hero"
-	}
-};
-export { e as default };
-var e = {
-	key: "hero",
-	content: {
-		title: "i18n Benchmark",
 		description: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
 		viewResults: "View Results",
 		methodology: "Methodology",
 		hero: "Hero"
-	}
-};
-export { e as default };
-var e = {
-	key: "hero",
-	content: {
-		title: "i18n Benchmark",
-		description: "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga y la reactividad de la representación.",
-		viewResults: "Ver resultados",
-		methodology: "Metodología",
-		hero: "Heroe"
-	}
-};
-export { e as default };
-var e = {
-	key: "hero",
-	content: {
-		title: "Benchmark i18n",
-		description: "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-		viewResults: "Voir les résultats",
-		methodology: "Méthodologie",
-		hero: "Héros"
-	}
-};
-export { e as default };
-var e = {
-	key: "hero",
-	content: {
-		title: "i18n Benchmark",
-		description: "Un'applicazione di test progettata per misurare l'impatto nel mondo reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
-		viewResults: "Visualizza i risultati",
-		methodology: "Metodologia",
-		hero: "Hero"
-	}
-};
-export { e as default };
-var e = {
-	key: "hero",
-	content: {
-		title: "i18n ベンチマーク",
-		description: "国際化ライブラリがバンドルサイズ、ロードパフォーマンス、およびレンダリングの反応性に与える実世界の影響を測定するために設計されたテストアプリケーション。",
-		viewResults: "結果を見る",
-		methodology: "方法論",
-		hero: "ヒーロー"
-	}
-};
-export { e as default };
-var e = {
-	key: "hero",
-	content: {
-		title: "i18n 벤치마크",
-		description: "국제화 라이브러리가 번들 크기, 로딩 성능 및 렌더링 반응성에 미치는 실제 영향을 측정하도록 설계된 테스트 애플리케이션입니다.",
-		viewResults: "결과 보기",
-		methodology: "방법론",
-		hero: "히어로"
-	}
-};
-export { e as default };
-var e = {
-	key: "hero",
-	content: {
-		title: "i18n Benchmark",
-		description: "Um aplicativo de teste projetado para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade da renderização.",
-		viewResults: "Ver Resultados",
-		methodology: "Metodologia",
-		hero: "Herói"
-	}
-};
-export { e as default };
-var e = {
-	key: "hero",
-	content: {
-		title: "i18n Бенчмарк",
-		description: "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
-		viewResults: "Посмотреть результаты",
-		methodology: "Методология",
-		hero: "Главный баннер"
-	}
-};
-export { e as default };
-var e = {
-	key: "hero",
-	content: {
-		title: "i18n 基准测试",
-		description: "一个旨在衡量国际化库对捆绑包大小、加载性能和渲染反应性的实际影响的测试应用程序。",
-		viewResults: "查看结果",
-		methodology: "方法论",
-		hero: "主视觉"
 	}
 };
 export { e as default };

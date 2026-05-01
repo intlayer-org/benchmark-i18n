@@ -1,6 +1,6 @@
 # Next.js — i18n Benchmark Results
 
-_Generated: 2026-04-30_
+_Generated: 2026-05-01_
 
 ## Metric Legend
 

@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { derived as t, get as n, writable as r } from "svelte/store";
 import { getContext as i, onMount as a } from "svelte";
 var o = {
-	de: () => import("./de-CCs_HSRR.js").then((e) => e.default),
-	en: () => import("./en-B8XP_e6g.js").then((e) => e.default),
-	es: () => import("./es-CoZV2rY7.js").then((e) => e.default),
-	fr: () => import("./fr-BUmMW3Ng.js").then((e) => e.default),
-	it: () => import("./it-FAqlB3dI.js").then((e) => e.default),
-	ja: () => import("./ja-DqXPlxMx.js").then((e) => e.default),
-	ko: () => import("./ko-DEJSlg44.js").then((e) => e.default),
-	pt: () => import("./pt-CgQ4F4Cn.js").then((e) => e.default),
-	ru: () => import("./ru-kCDgd3a4.js").then((e) => e.default),
-	zh: () => import("./zh-DNQ5upsB.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/de.json").then((e) => e.default),
+	en: () => import("./en-Bp1PSsmk.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/zh.json").then((e) => e.default)
 }, s = Symbol("intlayer"), c = () => i(s), l = {
 	locales: [
 		"en",
@@ -348,22 +348,6 @@ export { G as default };
 var e = {
 	key: "results-table",
 	content: {
-		title: "Beispielergebnisse",
-		columns: {
-			library: "Bibliothek",
-			bundleSize: "Bundle-Größe",
-			lookupTime: "Lookup-Zeit",
-			lazyLoading: "Lazy Loading"
-		},
-		yes1: "Ja",
-		manual: "Manuell",
-		yes: "Ja"
-	}
-};
-export { e as default };
-var e = {
-	key: "results-table",
-	content: {
 		title: "Sample Results",
 		columns: {
 			library: "Library",
@@ -374,134 +358,6 @@ var e = {
 		yes1: "Yes",
 		manual: "Manual",
 		yes: "Yes"
-	}
-};
-export { e as default };
-var e = {
-	key: "results-table",
-	content: {
-		title: "Resultados de muestra",
-		columns: {
-			library: "Biblioteca",
-			bundleSize: "Tamaño del bundle",
-			lookupTime: "Tiempo de búsqueda",
-			lazyLoading: "Carga perezosa"
-		},
-		yes1: "Sí",
-		manual: "Manual",
-		yes: "Sí"
-	}
-};
-export { e as default };
-var e = {
-	key: "results-table",
-	content: {
-		title: "Exemples de résultats",
-		columns: {
-			library: "Bibliothèque",
-			bundleSize: "Taille du bundle",
-			lookupTime: "Temps de recherche",
-			lazyLoading: "Chargement différé"
-		},
-		yes1: "Oui",
-		manual: "Manuel",
-		yes: "Oui"
-	}
-};
-export { e as default };
-var e = {
-	key: "results-table",
-	content: {
-		title: "Esempi di risultati",
-		columns: {
-			library: "Libreria",
-			bundleSize: "Dimensioni del bundle",
-			lookupTime: "Tempo di ricerca",
-			lazyLoading: "Caricamento pigro"
-		},
-		yes1: "Sì",
-		manual: "Manuale",
-		yes: "Sì"
-	}
-};
-export { e as default };
-var e = {
-	key: "results-table",
-	content: {
-		title: "サンプルの結果",
-		columns: {
-			library: "ライブラリ",
-			bundleSize: "バンドルサイズ",
-			lookupTime: "ルックアップ時間",
-			lazyLoading: "遅延読み込み"
-		},
-		yes1: "はい",
-		manual: "手動",
-		yes: "はい"
-	}
-};
-export { e as default };
-var e = {
-	key: "results-table",
-	content: {
-		title: "샘플 결과",
-		columns: {
-			library: "라이브러리",
-			bundleSize: "번들 크기",
-			lookupTime: "조회 시간",
-			lazyLoading: "지연 로딩"
-		},
-		yes1: "예",
-		manual: "수동",
-		yes: "예"
-	}
-};
-export { e as default };
-var e = {
-	key: "results-table",
-	content: {
-		title: "Exemplos de resultados",
-		columns: {
-			library: "Biblioteca",
-			bundleSize: "Tamanho do bundle",
-			lookupTime: "Tempo de busca",
-			lazyLoading: "Carregamento lento"
-		},
-		yes1: "Sim",
-		manual: "Manual",
-		yes: "Sim"
-	}
-};
-export { e as default };
-var e = {
-	key: "results-table",
-	content: {
-		title: "Примеры результатов",
-		columns: {
-			library: "Библиотека",
-			bundleSize: "Размер бандла",
-			lookupTime: "Время поиска",
-			lazyLoading: "Ленивая загрузка"
-		},
-		yes1: "Да",
-		manual: "Вручную",
-		yes: "Да"
-	}
-};
-export { e as default };
-var e = {
-	key: "results-table",
-	content: {
-		title: "示例结果",
-		columns: {
-			library: "库",
-			bundleSize: "捆绑包大小",
-			lookupTime: "查找时间",
-			lazyLoading: "延迟加载"
-		},
-		yes1: "是",
-		manual: "手动",
-		yes: "是"
 	}
 };
 export { e as default };

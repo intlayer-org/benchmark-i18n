@@ -466,16 +466,16 @@ function useDictionaryDynamic(dictionaryPromise, _key, locale) {
 	} }));
 }
 var content$2 = {
-	"de": () => import("./de-DCihmA1C.js").then((m) => m.default),
-	"en": () => import("./en-ETPIBufR.js").then((m) => m.default),
-	"es": () => import("./es-B-TDWm3U.js").then((m) => m.default),
-	"fr": () => import("./fr-CHAEBCjo.js").then((m) => m.default),
-	"it": () => import("./it-BZ49uE69.js").then((m) => m.default),
-	"ja": () => import("./ja-CWPKRFPx.js").then((m) => m.default),
-	"ko": () => import("./ko-C-ul01zt.js").then((m) => m.default),
-	"pt": () => import("./pt-Cohgj3Fd.js").then((m) => m.default),
-	"ru": () => import("./ru-CZMdAQJm.js").then((m) => m.default),
-	"zh": () => import("./zh-BzRqfBUA.js").then((m) => m.default)
+	"de": () => import("../../.intlayer/dynamic_dictionary/json/footer/de.json").then((m) => m.default),
+	"en": () => import("./en-oIxdyTkF.js").then((m) => m.default),
+	"es": () => import("../../.intlayer/dynamic_dictionary/json/footer/es.json").then((m) => m.default),
+	"fr": () => import("../../.intlayer/dynamic_dictionary/json/footer/fr.json").then((m) => m.default),
+	"it": () => import("../../.intlayer/dynamic_dictionary/json/footer/it.json").then((m) => m.default),
+	"ja": () => import("../../.intlayer/dynamic_dictionary/json/footer/ja.json").then((m) => m.default),
+	"ko": () => import("../../.intlayer/dynamic_dictionary/json/footer/ko.json").then((m) => m.default),
+	"pt": () => import("../../.intlayer/dynamic_dictionary/json/footer/pt.json").then((m) => m.default),
+	"ru": () => import("../../.intlayer/dynamic_dictionary/json/footer/ru.json").then((m) => m.default),
+	"zh": () => import("../../.intlayer/dynamic_dictionary/json/footer/zh.json").then((m) => m.default)
 };
 var locales = [
 	"en",
@@ -637,16 +637,16 @@ function Footer($$anchor, $$props) {
 	$$cleanup();
 }
 var content$1 = {
-	"de": () => import("./de-DZubhlOT.js").then((m) => m.default),
-	"en": () => import("./en-1fEBmwf3.js").then((m) => m.default),
-	"es": () => import("./es-Dbo8slUO.js").then((m) => m.default),
-	"fr": () => import("./fr-BKLHsu1C.js").then((m) => m.default),
-	"it": () => import("./it-beLclRhI.js").then((m) => m.default),
-	"ja": () => import("./ja-C4951aAc.js").then((m) => m.default),
-	"ko": () => import("./ko-BXmsPbmF.js").then((m) => m.default),
-	"pt": () => import("./pt-DCnLBSpD.js").then((m) => m.default),
-	"ru": () => import("./ru-BOsXL5sQ.js").then((m) => m.default),
-	"zh": () => import("./zh-eiOIW44D.js").then((m) => m.default)
+	"de": () => import("../../.intlayer/dynamic_dictionary/json/header/de.json").then((m) => m.default),
+	"en": () => import("./en-CSAeUCGC.js").then((m) => m.default),
+	"es": () => import("../../.intlayer/dynamic_dictionary/json/header/es.json").then((m) => m.default),
+	"fr": () => import("../../.intlayer/dynamic_dictionary/json/header/fr.json").then((m) => m.default),
+	"it": () => import("../../.intlayer/dynamic_dictionary/json/header/it.json").then((m) => m.default),
+	"ja": () => import("../../.intlayer/dynamic_dictionary/json/header/ja.json").then((m) => m.default),
+	"ko": () => import("../../.intlayer/dynamic_dictionary/json/header/ko.json").then((m) => m.default),
+	"pt": () => import("../../.intlayer/dynamic_dictionary/json/header/pt.json").then((m) => m.default),
+	"ru": () => import("../../.intlayer/dynamic_dictionary/json/header/ru.json").then((m) => m.default),
+	"zh": () => import("../../.intlayer/dynamic_dictionary/json/header/zh.json").then((m) => m.default)
 };
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -697,16 +697,16 @@ function LocaleSwitcher($$anchor, $$props) {
 }
 $.delegate(["change"]);
 var content = {
-	"de": () => import("./de-CtCgJ858.js").then((m) => m.default),
-	"en": () => import("./en-Dv7LqStn.js").then((m) => m.default),
-	"es": () => import("./es-Dn2bD99h.js").then((m) => m.default),
-	"fr": () => import("./fr-CNbEQqaE.js").then((m) => m.default),
-	"it": () => import("./it-C3dBaa3v.js").then((m) => m.default),
-	"ja": () => import("./ja-DI4RyMZe.js").then((m) => m.default),
-	"ko": () => import("./ko-Bmx2SDQR.js").then((m) => m.default),
-	"pt": () => import("./pt-BOi0r9-U.js").then((m) => m.default),
-	"ru": () => import("./ru-Uw_ubaX-.js").then((m) => m.default),
-	"zh": () => import("./zh-DlGh5-hD.js").then((m) => m.default)
+	"de": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((m) => m.default),
+	"en": () => import("./en-CNa7eaSM.js").then((m) => m.default),
+	"es": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((m) => m.default),
+	"fr": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((m) => m.default),
+	"it": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((m) => m.default),
+	"ja": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json").then((m) => m.default),
+	"ko": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json").then((m) => m.default),
+	"pt": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json").then((m) => m.default),
+	"ru": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json").then((m) => m.default),
+	"zh": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json").then((m) => m.default)
 };
 var root$2 = $.from_html(`<button type="button" class="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"> </button>`);
 function ThemeToggle($$anchor, $$props) {
@@ -924,53 +924,18 @@ function Layout($$anchor, $$props) {
 	$.pop();
 }
 export { Layout as default };
-var de_default = {
+var en_default = {
 	key: "theme-toggle",
 	content: {
-		"auto": "Design: Auto",
-		"dark": "Design: Dunkel",
-		"light": "Design: Hell",
-		"ariaLabelAuto": "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-		"ariaLabelLight": "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
-		"ariaLabelDark": "Design-Modus: Dunkel. Klicken Sie hier, um in den Auto-Modus zu wechseln."
+		"auto": "Theme: Auto",
+		"dark": "Theme: Dark",
+		"light": "Theme: Light",
+		"ariaLabelAuto": "Theme mode: auto (system). Click to switch to light mode.",
+		"ariaLabelLight": "Theme mode: light. Click to switch to dark mode.",
+		"ariaLabelDark": "Theme mode: dark. Click to switch to auto mode."
 	}
 };
-export { de_default as default };
-var de_default = {
-	key: "footer",
-	content: {
-		"description": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladezeit und die App-Reaktivität.",
-		"resources": "Ressourcen",
-		"contact": "Kontakt",
-		"github": "GitHub",
-		"methodology": "Methodik",
-		"contributing": "Beitragen",
-		"footerText": "i18n Benchmark — Open-Source-Projekt. Erstellt mit Svelte, Vite und einem clientseitigen Router.",
-		"appName": "i18n Benchmark",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { de_default as default };
-var de_default = {
-	key: "header",
-	content: {
-		"home": "Startseite",
-		"methodology": "Methodik",
-		"mockPages": "Mock-Seiten",
-		"products": "Produkte",
-		"pricing": "Preise",
-		"team": "Team",
-		"blog": "Blog",
-		"careers": "Karriere",
-		"faq": "FAQ",
-		"contact": "Kontakt",
-		"settings": "Einstellungen",
-		"appName": "i18n Bench",
-		"goToGithub": "Zu GitHub gehen",
-		"header": "Header"
-	}
-};
-export { de_default as default };
+export { en_default as default };
 var en_default = {
 	key: "header",
 	content: {
@@ -992,18 +957,6 @@ var en_default = {
 };
 export { en_default as default };
 var en_default = {
-	key: "theme-toggle",
-	content: {
-		"auto": "Theme: Auto",
-		"dark": "Theme: Dark",
-		"light": "Theme: Light",
-		"ariaLabelAuto": "Theme mode: auto (system). Click to switch to light mode.",
-		"ariaLabelLight": "Theme mode: light. Click to switch to dark mode.",
-		"ariaLabelDark": "Theme mode: dark. Click to switch to auto mode."
-	}
-};
-export { en_default as default };
-var en_default = {
 	key: "footer",
 	content: {
 		"description": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
@@ -1018,379 +971,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "footer",
-	content: {
-		"description": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
-		"resources": "Recursos",
-		"contact": "Contacto",
-		"github": "GitHub",
-		"methodology": "Metodología",
-		"contributing": "Contribuir",
-		"footerText": "i18n Benchmark — Proyecto de código abierto. Construido con Svelte, Vite y un enrutador del lado del cliente.",
-		"appName": "i18n Benchmark",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { es_default as default };
-var es_default = {
-	key: "header",
-	content: {
-		"home": "Inicio",
-		"methodology": "Metodología",
-		"mockPages": "Páginas de prueba",
-		"products": "Productos",
-		"pricing": "Precios",
-		"team": "Equipo",
-		"blog": "Blog",
-		"careers": "Carreras",
-		"faq": "FAQ",
-		"contact": "Contacto",
-		"settings": "Ajustes",
-		"appName": "i18n Bench",
-		"goToGithub": "Ir a GitHub",
-		"header": "Encabezado"
-	}
-};
-export { es_default as default };
-var es_default = {
-	key: "theme-toggle",
-	content: {
-		"auto": "Tema: Auto",
-		"dark": "Tema: Oscuro",
-		"light": "Tema: Claro",
-		"ariaLabelAuto": "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-		"ariaLabelLight": "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
-		"ariaLabelDark": "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "header",
-	content: {
-		"home": "Accueil",
-		"methodology": "Méthodologie",
-		"mockPages": "Pages fictives",
-		"products": "Produits",
-		"pricing": "Tarification",
-		"team": "Équipe",
-		"blog": "Blog",
-		"careers": "Carrières",
-		"faq": "FAQ",
-		"contact": "Contact",
-		"settings": "Paramètres",
-		"appName": "Benchmark i18n",
-		"goToGithub": "Aller sur GitHub",
-		"header": "En-tête"
-	}
-};
-export { fr_default as default };
-var fr_default = {
-	key: "footer",
-	content: {
-		"description": "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-		"resources": "Ressources",
-		"contact": "Contact",
-		"github": "GitHub",
-		"methodology": "Méthodologie",
-		"contributing": "Contribuer",
-		"footerText": "Benchmark i18n — Projet open-source. Construit avec Svelte, Vite et un routeur côté client.",
-		"appName": "Benchmark i18n",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { fr_default as default };
-var fr_default = {
-	key: "theme-toggle",
-	content: {
-		"auto": "Thème : Auto",
-		"dark": "Thème : Sombre",
-		"light": "Thème : Clair",
-		"ariaLabelAuto": "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
-		"ariaLabelLight": "Mode de thème : clair. Cliquez pour passer au mode sombre.",
-		"ariaLabelDark": "Mode de thème : sombre. Cliquez pour passer au mode auto."
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "footer",
-	content: {
-		"description": "Un'applicazione di test open source per misurare l'impatto nel mondo reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
-		"resources": "Risorse",
-		"contact": "Contatti",
-		"github": "GitHub",
-		"methodology": "Metodologia",
-		"contributing": "Contribuire",
-		"footerText": "i18n Benchmark — Progetto open source. Costruito con Svelte, Vite e un router lato client.",
-		"appName": "i18n Benchmark",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { it_default as default };
-var it_default = {
-	key: "theme-toggle",
-	content: {
-		"auto": "Tema: Auto",
-		"dark": "Tema: Scuro",
-		"light": "Tema: Chiaro",
-		"ariaLabelAuto": "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.",
-		"ariaLabelLight": "Modalità tema: chiaro. Clicca per passare alla modalità scura.",
-		"ariaLabelDark": "Modalità tema: scuro. Clicca per passare alla modalità auto."
-	}
-};
-export { it_default as default };
-var it_default = {
-	key: "header",
-	content: {
-		"home": "Home",
-		"methodology": "Metodologia",
-		"mockPages": "Pagine mock",
-		"products": "Prodotti",
-		"pricing": "Prezzi",
-		"team": "Team",
-		"blog": "Blog",
-		"careers": "Carriere",
-		"faq": "FAQ",
-		"contact": "Contatti",
-		"settings": "Impostazioni",
-		"appName": "i18n Bench",
-		"goToGithub": "Vai su GitHub",
-		"header": "Intestazione"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "header",
-	content: {
-		"home": "ホーム",
-		"methodology": "方法論",
-		"mockPages": "モックページ",
-		"products": "製品",
-		"pricing": "価格",
-		"team": "チーム",
-		"blog": "ブログ",
-		"careers": "採用情報",
-		"faq": "よくある質問",
-		"contact": "お問い合わせ",
-		"settings": "設定",
-		"appName": "i18n ベンチ",
-		"goToGithub": "GitHub へ",
-		"header": "ヘッダー"
-	}
-};
-export { ja_default as default };
-var ja_default = {
-	key: "footer",
-	content: {
-		"description": "バンドルサイズ、ロード時間、およびアプリの反応性に対する国際化ライブラリの実世界の影響を測定するためのオープンソーステストアプリケーション。",
-		"resources": "リソース",
-		"contact": "お問い合わせ",
-		"github": "GitHub",
-		"methodology": "方法論",
-		"contributing": "貢献",
-		"footerText": "i18n ベンチマーク — オープンソースプロジェクト。Svelte、Vite、およびクライアントサイドルーティングで構築されています。",
-		"appName": "i18n ベンチマーク",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { ja_default as default };
-var ja_default = {
-	key: "theme-toggle",
-	content: {
-		"auto": "テーマ：自動",
-		"dark": "テーマ：ダーク",
-		"light": "テーマ：ライト",
-		"ariaLabelAuto": "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-		"ariaLabelLight": "テーマモード：ライト。クリックしてダークモードに切り替えます。",
-		"ariaLabelDark": "テーマモード：ダーク。クリックして自動モードに切り替えます。"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "header",
-	content: {
-		"home": "홈",
-		"methodology": "방법론",
-		"mockPages": "모의 페이지",
-		"products": "제품",
-		"pricing": "가격",
-		"team": "팀",
-		"blog": "블로그",
-		"careers": "채용",
-		"faq": "FAQ",
-		"contact": "연락처",
-		"settings": "설정",
-		"appName": "i18n 벤치",
-		"goToGithub": "GitHub로 이동",
-		"header": "헤더"
-	}
-};
-export { ko_default as default };
-var ko_default = {
-	key: "theme-toggle",
-	content: {
-		"auto": "테마: 자동",
-		"dark": "테마: 어둡게",
-		"light": "테마: 밝게",
-		"ariaLabelAuto": "테마 모드: 자동(시스템). 클릭하여 밝은 모드로 전환합니다.",
-		"ariaLabelLight": "테마 모드: 밝게. 클릭하여 어두운 모드로 전환합니다.",
-		"ariaLabelDark": "테마 모드: 어둡게. 클릭하여 자동 모드로 전환합니다."
-	}
-};
-export { ko_default as default };
-var ko_default = {
-	key: "footer",
-	content: {
-		"description": "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.",
-		"resources": "리소스",
-		"contact": "연락처",
-		"github": "GitHub",
-		"methodology": "방법론",
-		"contributing": "기여하기",
-		"footerText": "i18n 벤치마크 — 오픈 소스 프로젝트입니다. Svelte, Vite 및 클라이언트 측 라우터로 구축되었습니다.",
-		"appName": "i18n 벤치마크",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "theme-toggle",
-	content: {
-		"auto": "Tema: Automático",
-		"dark": "Tema: Escuro",
-		"light": "Tema: Claro",
-		"ariaLabelAuto": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-		"ariaLabelLight": "Modo de tema: claro. Clique para mudar para o modo escuro.",
-		"ariaLabelDark": "Modo de tema: escuro. Clique para mudar para o modo automático."
-	}
-};
-export { pt_default as default };
-var pt_default = {
-	key: "footer",
-	content: {
-		"description": "Um aplicativo de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no tempo de carregamento e na reatividade do aplicativo.",
-		"resources": "Recursos",
-		"contact": "Contato",
-		"github": "GitHub",
-		"methodology": "Metodologia",
-		"contributing": "Contribuir",
-		"footerText": "i18n Benchmark — Projeto de código aberto. Construído com Svelte, Vite e um roteador do lado do cliente.",
-		"appName": "i18n Benchmark",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { pt_default as default };
-var pt_default = {
-	key: "header",
-	content: {
-		"home": "Início",
-		"methodology": "Metodologia",
-		"mockPages": "Páginas fictícias",
-		"products": "Produtos",
-		"pricing": "Preços",
-		"team": "Equipe",
-		"blog": "Blog",
-		"careers": "Carreiras",
-		"faq": "FAQ",
-		"contact": "Contato",
-		"settings": "Configurações",
-		"appName": "i18n Bench",
-		"goToGithub": "Ir para o GitHub",
-		"header": "Cabeçalho"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "header",
-	content: {
-		"home": "Главная",
-		"methodology": "Методология",
-		"mockPages": "Мок-страницы",
-		"products": "Продукты",
-		"pricing": "Цены",
-		"team": "Команда",
-		"blog": "Блог",
-		"careers": "Вакансии",
-		"faq": "FAQ",
-		"contact": "Контакты",
-		"settings": "Настройки",
-		"appName": "i18n Бенч",
-		"goToGithub": "Перейти на GitHub",
-		"header": "Шапка"
-	}
-};
-export { ru_default as default };
-var ru_default = {
-	key: "footer",
-	content: {
-		"description": "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
-		"resources": "Ресурсы",
-		"contact": "Контакты",
-		"github": "GitHub",
-		"methodology": "Методология",
-		"contributing": "Участие в разработке",
-		"footerText": "i18n Бенчмарк — проект с открытым исходным кодом. Построен на Svelte, Vite и клиентском роутере.",
-		"appName": "i18n Бенчмарк",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { ru_default as default };
-var ru_default = {
-	key: "theme-toggle",
-	content: {
-		"auto": "Тема: Авто",
-		"dark": "Тема: Темная",
-		"light": "Тема: Светлая",
-		"ariaLabelAuto": "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.",
-		"ariaLabelLight": "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.",
-		"ariaLabelDark": "Режим темы: темный. Нажмите, чтобы переключиться в автоматический режим."
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "footer",
-	content: {
-		"description": "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的实际影响。",
-		"resources": "资源",
-		"contact": "联系我们",
-		"github": "GitHub",
-		"methodology": "方法论",
-		"contributing": "贡献",
-		"footerText": "i18n 基准测试 — 开源项目。使用 Svelte、Vite 和客户端路由器构建。",
-		"appName": "i18n 基准测试",
-		"contactEmail": "contact@intlayer.org"
-	}
-};
-export { zh_default as default };
-var zh_default = {
-	key: "theme-toggle",
-	content: {
-		"auto": "主题：自动",
-		"dark": "主题：深色",
-		"light": "主题：浅色",
-		"ariaLabelAuto": "主题模式：自动（系统）。点击切换到浅色模式。",
-		"ariaLabelLight": "主题模式：浅色。点击切换到深色模式。",
-		"ariaLabelDark": "主题模式：深色。点击切换到自动模式。"
-	}
-};
-export { zh_default as default };
-var zh_default = {
-	key: "header",
-	content: {
-		"home": "首页",
-		"methodology": "方法论",
-		"mockPages": "模拟页面",
-		"products": "产品",
-		"pricing": "价格",
-		"team": "团队",
-		"blog": "博客",
-		"careers": "职业生涯",
-		"faq": "常见问题",
-		"contact": "联系我们",
-		"settings": "设置",
-		"appName": "i18n 基准",
-		"goToGithub": "前往 GitHub",
-		"header": "页眉"
-	}
-};
-export { zh_default as default };

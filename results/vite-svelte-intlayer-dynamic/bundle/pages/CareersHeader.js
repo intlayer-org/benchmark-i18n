@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content$1 = {
-	"de": () => import("./de-BhFizPQe.js").then((m) => m.default),
-	"en": () => import("./en-D-O5jmfJ.js").then((m) => m.default),
-	"es": () => import("./es-B0pP7NyN.js").then((m) => m.default),
-	"fr": () => import("./fr-Dt97VSEi.js").then((m) => m.default),
-	"it": () => import("./it-uaCtcVpx.js").then((m) => m.default),
-	"ja": () => import("./ja-CmjnzraM.js").then((m) => m.default),
-	"ko": () => import("./ko-BWyOXcJ9.js").then((m) => m.default),
-	"pt": () => import("./pt-DJmHDKLq.js").then((m) => m.default),
-	"ru": () => import("./ru-B0LahN96.js").then((m) => m.default),
-	"zh": () => import("./zh-De8K1-cl.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-header/de.json").then((m) => m.default),
+	"en": () => import("./en-BtqJbavz.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-header/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-header/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-header/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-header/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-header/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-header/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-header/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-header/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -370,16 +370,16 @@ function useDictionaryDynamic(dictionaryPromise, _key, locale) {
 	} }));
 }
 var content = {
-	"de": () => import("./de-BuZRHMwm.js").then((m) => m.default),
-	"en": () => import("./en-z2aU9SFP.js").then((m) => m.default),
-	"es": () => import("./es-LAR4On7J.js").then((m) => m.default),
-	"fr": () => import("./fr-B8jmh6MQ.js").then((m) => m.default),
-	"it": () => import("./it-BlwxudJE.js").then((m) => m.default),
-	"ja": () => import("./ja-_bTSKcNL.js").then((m) => m.default),
-	"ko": () => import("./ko-s9rgKLTD.js").then((m) => m.default),
-	"pt": () => import("./pt-BuZw9KDi.js").then((m) => m.default),
-	"ru": () => import("./ru-B77EbYgZ.js").then((m) => m.default),
-	"zh": () => import("./zh-5bGHUpOU.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((m) => m.default),
+	"en": () => import("./en-D4ldyfsM.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((m) => m.default)
 };
 var root$1 = $.from_html(`<div class="mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground"> </div>`);
 function MockBanner($$anchor, $$props) {
@@ -421,19 +421,6 @@ function CareersHeader($$anchor, $$props) {
 	$$cleanup();
 }
 export { CareersHeader as default };
-var de_default = {
-	key: "careers-header",
-	content: {
-		"joinOurMissionToImprove": "Schließen Sie sich unserer Mission an, das Internationalisierungs-Ökosystem zu verbessern. Wir sind ein Remote-First-Team, das Wert auf Wirkung, Transparenz und kontinuierliches Lernen legt.",
-		"careers": "Karriere"
-	}
-};
-export { de_default as default };
-var de_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
-};
-export { de_default as default };
 var en_default = {
 	key: "careers-header",
 	content: {
@@ -447,107 +434,3 @@ var en_default = {
 	content: { "message": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
 };
 export { en_default as default };
-var es_default = {
-	key: "careers-header",
-	content: {
-		"joinOurMissionToImprove": "Únase a nuestra misión de mejorar el ecosistema de internacionalización. Somos un equipo que prioriza el trabajo remoto que valora el impacto, la transparencia y el aprendizaje continuo.",
-		"careers": "Carreras"
-	}
-};
-export { es_default as default };
-var es_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { es_default as default };
-var fr_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { fr_default as default };
-var fr_default = {
-	key: "careers-header",
-	content: {
-		"joinOurMissionToImprove": "Rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. Nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-		"careers": "Carrières"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { it_default as default };
-var it_default = {
-	key: "careers-header",
-	content: {
-		"joinOurMissionToImprove": "Unisciti alla nostra missione per migliorare l'ecosistema dell'internazionalizzazione. Siamo un team remote-first che valorizza l'impatto, la trasparenza e l'apprendimento continuo.",
-		"careers": "Carriere"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "careers-header",
-	content: {
-		"joinOurMissionToImprove": "国際化エコシステムを改善するという私たちの使命に参加してください。私たちは、影響力、透明性、および継続的な学習を重視するリモートファーストのチームです。",
-		"careers": "採用情報"
-	}
-};
-export { ja_default as default };
-var ja_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { ja_default as default };
-var ko_default = {
-	key: "careers-header",
-	content: {
-		"joinOurMissionToImprove": "국제화 생태계를 개선하려는 우리의 사명에 동참하십시오. 우리는 영향력, 투명성 및 지속적인 학습을 중요하게 생각하는 원격 우선 팀입니다.",
-		"careers": "채용"
-	}
-};
-export { ko_default as default };
-var ko_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { ko_default as default };
-var pt_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Esta página contém données fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { pt_default as default };
-var pt_default = {
-	key: "careers-header",
-	content: {
-		"joinOurMissionToImprove": "Junte-se à nossa missão de melhorar o ecossistema de internacionalização. Somos uma equipe que prioriza o trabalho remoto que valoriza o impacto, a transparência e o aprendizado contínuo.",
-		"careers": "Carreiras"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "careers-header",
-	content: {
-		"joinOurMissionToImprove": "Присоединяйтесь к нашей миссии по улучшению экосистемы интернационализации. Мы — команда, работающая удаленно, которая ценит влияние, прозрачность и непрерывное обучение.",
-		"careers": "Вакансии"
-	}
-};
-export { ru_default as default };
-var ru_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { ru_default as default };
-var zh_default = {
-	key: "mock-banner",
-	content: { "message": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务或服务无关。" }
-};
-export { zh_default as default };
-var zh_default = {
-	key: "careers-header",
-	content: {
-		"joinOurMissionToImprove": "加入我们的使命，改善国际化生态系统。我们是一支远程优先的团队，重视影响力、透明度和持续学习。",
-		"careers": "职业"
-	}
-};
-export { zh_default as default };

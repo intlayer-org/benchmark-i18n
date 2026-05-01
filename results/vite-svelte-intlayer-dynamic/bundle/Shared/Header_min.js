@@ -5,16 +5,16 @@ import i from "lucide-svelte/icons/chevron-down";
 import { getContext as a, onMount as o } from "svelte";
 import "svelte/internal/flags/legacy";
 var s = {
-	de: () => import("./de-Dngqffwx.js").then((e) => e.default),
-	en: () => import("./en-BxYRYkur.js").then((e) => e.default),
-	es: () => import("./es-kg86FtFg.js").then((e) => e.default),
-	fr: () => import("./fr-CF6-RzpT.js").then((e) => e.default),
-	it: () => import("./it-0yMQDGjc.js").then((e) => e.default),
-	ja: () => import("./ja-BEcIOrrJ.js").then((e) => e.default),
-	ko: () => import("./ko-C-HIUeyA.js").then((e) => e.default),
-	pt: () => import("./pt-DC7V720K.js").then((e) => e.default),
-	ru: () => import("./ru-163aKwit.js").then((e) => e.default),
-	zh: () => import("./zh-B5GHG3Lo.js").then((e) => e.default)
+	de: () => import("../../.intlayer/dynamic_dictionary/json/header/de.json").then((e) => e.default),
+	en: () => import("./en-COOS_jJ3.js").then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/header/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/header/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/header/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/header/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/header/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/header/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/header/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/header/zh.json").then((e) => e.default)
 }, c = Symbol("intlayer"), l = () => a(c), u = {
 	locales: [
 		"en",
@@ -442,16 +442,16 @@ function re(t, r) {
 }
 e.delegate(["change"]);
 var ie = {
-	de: () => import("./de-P8iW0QtW.js").then((e) => e.default),
-	en: () => import("./en-DkRJ3pxZ.js").then((e) => e.default),
-	es: () => import("./es-CtCsyt9V.js").then((e) => e.default),
-	fr: () => import("./fr-tdyvuSWq.js").then((e) => e.default),
-	it: () => import("./it-DHkTycOF.js").then((e) => e.default),
-	ja: () => import("./ja-DLrDJZht.js").then((e) => e.default),
-	ko: () => import("./ko-De7FQhcv.js").then((e) => e.default),
-	pt: () => import("./pt-BM_YQGFc.js").then((e) => e.default),
-	ru: () => import("./ru-CYgIWz5H.js").then((e) => e.default),
-	zh: () => import("./zh-C4-CoguN.js").then((e) => e.default)
+	de: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((e) => e.default),
+	en: () => import("./en-C5ePg7iX.js").then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json").then((e) => e.default)
 }, ae = e.from_html("<button type=\"button\" class=\"rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80\"> </button>");
 function $(t, n) {
 	e.push(n, !0);
@@ -567,34 +567,14 @@ function le(t, r) {
 e.delegate(["click"]);
 export { le as default };
 var e = {
-	key: "header",
-	content: {
-		home: "Startseite",
-		methodology: "Methodik",
-		mockPages: "Mock-Seiten",
-		products: "Produkte",
-		pricing: "Preise",
-		team: "Team",
-		blog: "Blog",
-		careers: "Karriere",
-		faq: "FAQ",
-		contact: "Kontakt",
-		settings: "Einstellungen",
-		appName: "i18n Bench",
-		goToGithub: "Zu GitHub gehen",
-		header: "Header"
-	}
-};
-export { e as default };
-var e = {
 	key: "theme-toggle",
 	content: {
-		auto: "Design: Auto",
-		dark: "Design: Dunkel",
-		light: "Design: Hell",
-		ariaLabelAuto: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-		ariaLabelLight: "Design-Modus: Hell. Klicken Sie hier, um in den dunklen Modus zu wechseln.",
-		ariaLabelDark: "Design-Modus: Dunkel. Klicken Sie hier, um in den Auto-Modus zu wechseln."
+		auto: "Theme: Auto",
+		dark: "Theme: Dark",
+		light: "Theme: Light",
+		ariaLabelAuto: "Theme mode: auto (system). Click to switch to light mode.",
+		ariaLabelLight: "Theme mode: light. Click to switch to dark mode.",
+		ariaLabelDark: "Theme mode: dark. Click to switch to auto mode."
 	}
 };
 export { e as default };
@@ -615,274 +595,6 @@ var e = {
 		appName: "i18n Bench",
 		goToGithub: "Go to GitHub",
 		header: "Header"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Theme: Auto",
-		dark: "Theme: Dark",
-		light: "Theme: Light",
-		ariaLabelAuto: "Theme mode: auto (system). Click to switch to light mode.",
-		ariaLabelLight: "Theme mode: light. Click to switch to dark mode.",
-		ariaLabelDark: "Theme mode: dark. Click to switch to auto mode."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Tema: Auto",
-		dark: "Tema: Oscuro",
-		light: "Tema: Claro",
-		ariaLabelAuto: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-		ariaLabelLight: "Modo de tema: claro. Haga clic para cambiar al modo oscuro.",
-		ariaLabelDark: "Modo de tema: oscuro. Haga clic para cambiar al modo automático."
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		home: "Inicio",
-		methodology: "Metodología",
-		mockPages: "Páginas de prueba",
-		products: "Productos",
-		pricing: "Precios",
-		team: "Equipo",
-		blog: "Blog",
-		careers: "Carreras",
-		faq: "FAQ",
-		contact: "Contacto",
-		settings: "Ajustes",
-		appName: "i18n Bench",
-		goToGithub: "Ir a GitHub",
-		header: "Encabezado"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		home: "Accueil",
-		methodology: "Méthodologie",
-		mockPages: "Pages fictives",
-		products: "Produits",
-		pricing: "Tarification",
-		team: "Équipe",
-		blog: "Blog",
-		careers: "Carrières",
-		faq: "FAQ",
-		contact: "Contact",
-		settings: "Paramètres",
-		appName: "Benchmark i18n",
-		goToGithub: "Aller sur GitHub",
-		header: "En-tête"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Thème : Auto",
-		dark: "Thème : Sombre",
-		light: "Thème : Clair",
-		ariaLabelAuto: "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
-		ariaLabelLight: "Mode de thème : clair. Cliquez pour passer au mode sombre.",
-		ariaLabelDark: "Mode de thème : sombre. Cliquez pour passer au mode auto."
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		home: "Home",
-		methodology: "Metodologia",
-		mockPages: "Pagine mock",
-		products: "Prodotti",
-		pricing: "Prezzi",
-		team: "Team",
-		blog: "Blog",
-		careers: "Carriere",
-		faq: "FAQ",
-		contact: "Contatti",
-		settings: "Impostazioni",
-		appName: "i18n Bench",
-		goToGithub: "Vai su GitHub",
-		header: "Intestazione"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Tema: Auto",
-		dark: "Tema: Scuro",
-		light: "Tema: Chiaro",
-		ariaLabelAuto: "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.",
-		ariaLabelLight: "Modalità tema: chiaro. Clicca per passare alla modalità scura.",
-		ariaLabelDark: "Modalità tema: scuro. Clicca per passare alla modalità auto."
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		home: "ホーム",
-		methodology: "方法論",
-		mockPages: "モックページ",
-		products: "製品",
-		pricing: "価格",
-		team: "チーム",
-		blog: "ブログ",
-		careers: "採用情報",
-		faq: "よくある質問",
-		contact: "お問い合わせ",
-		settings: "設定",
-		appName: "i18n ベンチ",
-		goToGithub: "GitHub へ",
-		header: "ヘッダー"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "テーマ：自動",
-		dark: "テーマ：ダーク",
-		light: "テーマ：ライト",
-		ariaLabelAuto: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-		ariaLabelLight: "テーマモード：ライト。クリックしてダークモードに切り替えます。",
-		ariaLabelDark: "テーマモード：ダーク。クリックして自動モードに切り替えます。"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		home: "홈",
-		methodology: "방법론",
-		mockPages: "모의 페이지",
-		products: "제품",
-		pricing: "가격",
-		team: "팀",
-		blog: "블로그",
-		careers: "채용",
-		faq: "FAQ",
-		contact: "연락처",
-		settings: "설정",
-		appName: "i18n 벤치",
-		goToGithub: "GitHub로 이동",
-		header: "헤더"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "테마: 자동",
-		dark: "테마: 어둡게",
-		light: "테마: 밝게",
-		ariaLabelAuto: "테마 모드: 자동(시스템). 클릭하여 밝은 모드로 전환합니다.",
-		ariaLabelLight: "테마 모드: 밝게. 클릭하여 어두운 모드로 전환합니다.",
-		ariaLabelDark: "테마 모드: 어둡게. 클릭하여 자동 모드로 전환합니다."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Tema: Automático",
-		dark: "Tema: Escuro",
-		light: "Tema: Claro",
-		ariaLabelAuto: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-		ariaLabelLight: "Modo de tema: claro. Clique para mudar para o modo escuro.",
-		ariaLabelDark: "Modo de tema: escuro. Clique para mudar para o modo automático."
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		home: "Início",
-		methodology: "Metodologia",
-		mockPages: "Páginas fictícias",
-		products: "Produtos",
-		pricing: "Preços",
-		team: "Equipe",
-		blog: "Blog",
-		careers: "Carreiras",
-		faq: "FAQ",
-		contact: "Contato",
-		settings: "Configurações",
-		appName: "i18n Bench",
-		goToGithub: "Ir para o GitHub",
-		header: "Cabeçalho"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		home: "Главная",
-		methodology: "Методология",
-		mockPages: "Мок-страницы",
-		products: "Продукты",
-		pricing: "Цены",
-		team: "Команда",
-		blog: "Блог",
-		careers: "Вакансии",
-		faq: "FAQ",
-		contact: "Контакты",
-		settings: "Настройки",
-		appName: "i18n Бенч",
-		goToGithub: "Перейти на GitHub",
-		header: "Шапка"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "Тема: Авто",
-		dark: "Тема: Темная",
-		light: "Тема: Светлая",
-		ariaLabelAuto: "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.",
-		ariaLabelLight: "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.",
-		ariaLabelDark: "Режим темы: темный. Нажмите, чтобы переключиться в автоматический режим."
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		home: "首页",
-		methodology: "方法论",
-		mockPages: "模拟页面",
-		products: "产品",
-		pricing: "价格",
-		team: "团队",
-		blog: "博客",
-		careers: "职业生涯",
-		faq: "常见问题",
-		contact: "联系我们",
-		settings: "设置",
-		appName: "i18n 基准",
-		goToGithub: "前往 GitHub",
-		header: "页眉"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		auto: "主题：自动",
-		dark: "主题：深色",
-		light: "主题：浅色",
-		ariaLabelAuto: "主题模式：自动（系统）。点击切换到浅色模式。",
-		ariaLabelLight: "主题模式：浅色。点击切换到深色模式。",
-		ariaLabelDark: "主题模式：深色。点击切换到自动模式。"
 	}
 };
 export { e as default };

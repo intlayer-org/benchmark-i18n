@@ -1,6 +1,6 @@
 # Vite + Solid — i18n Benchmark Results
 
-_Generated: 2026-04-30_
+_Generated: 2026-05-01_
 
 ## Metric Legend
 
@@ -522,9 +522,9 @@ _Generated: 2026-04-30_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 27.2 KB | 0.0% | 0.0% | 6.0 KB | 1.2 ms | — | 8.6 ms | — |
-| Dynamic | ✅ | 27.2 KB | 0.0% | 0.0% | 6.0 KB | 1.2 ms | — | 8.6 ms | — |
+| Dynamic | 🔶 | 27.2 KB | 0.0% | 0.0% | 3.5 KB | — | — | 10.0 ms | — |
 | Scoped Static | ✅ | 27.2 KB | 0.0% | 0.0% | 6.0 KB | 1.2 ms | — | 8.6 ms | — |
-| Scoped Dynamic | ✅ | 27.2 KB | 0.0% | 0.0% | 6.0 KB | 1.2 ms | — | 8.6 ms | — |
+| Scoped Dynamic | 🔶 | 27.2 KB | 0.0% | 0.0% | 3.5 KB | — | — | 10.0 ms | — |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -616,17 +616,7 @@ _Generated: 2026-04-30_
 | `/fr/settings` | 27.2 KB | 0.0% | 0.0% |
 | `/fr/team` | 27.2 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-intlayer-static/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Dynamic</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 1.4 ms | 1.0 ms | 2.5 ms | 0.0 ms |
-| `fr` | 1.0 ms | 0.9 ms | 1.4 ms | 0.0 ms |
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-intlayer-dynamic/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -635,8 +625,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 7.4 ms | — | — |
-| `fr` | 9.7 ms | — | — |
+| `en` | 11.1 ms | — | — |
+| `fr` | 8.8 ms | — | — |
 
 </details>
 
@@ -730,17 +720,7 @@ _Generated: 2026-04-30_
 | `/fr/settings` | 27.2 KB | 0.0% | 0.0% |
 | `/fr/team` | 27.2 KB | 0.0% | 0.0% |
 
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-intlayer-static/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 1.4 ms | 1.0 ms | 2.5 ms | 0.0 ms |
-| `fr` | 1.0 ms | 0.9 ms | 1.4 ms | 0.0 ms |
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-intlayer-dynamic/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -749,8 +729,8 @@ _Generated: 2026-04-30_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 7.4 ms | — | — |
-| `fr` | 9.7 ms | — | — |
+| `en` | 11.1 ms | — | — |
+| `fr` | 8.8 ms | — | — |
 
 </details>
 
@@ -1247,9 +1227,9 @@ _Generated: 2026-04-30_
 | Metric | Count |
 | :--- | :--- |
 | Total libraries | 5 |
-| Total app entries | 5 |
+| Total app entries | 6 |
 | With lib size data | 5 |
 | With page bundle data | 20 |
 | With component data | 20 |
-| With reactivity data | 20 |
+| With reactivity data | 18 |
 | With rendering data | 20 |

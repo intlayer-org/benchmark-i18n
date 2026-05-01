@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content = {
-	"de": () => import("./de-BoUi8Gz5.js").then((m) => m.default),
-	"en": () => import("./en-CM-LLEck.js").then((m) => m.default),
-	"es": () => import("./es-BJPfRSty.js").then((m) => m.default),
-	"fr": () => import("./fr-4tz4Ut8f.js").then((m) => m.default),
-	"it": () => import("./it-puk-Pbld.js").then((m) => m.default),
-	"ja": () => import("./ja-BZZc2RLM.js").then((m) => m.default),
-	"ko": () => import("./ko-BfxVNzi5.js").then((m) => m.default),
-	"pt": () => import("./pt-BXTraNck.js").then((m) => m.default),
-	"ru": () => import("./ru-09Z6TSQJ.js").then((m) => m.default),
-	"zh": () => import("./zh-BUHK4c3L.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/de.json").then((m) => m.default),
+	"en": () => import("./en-CTUwGbCE.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -393,14 +393,6 @@ function SettingsFooter($$anchor, $$props) {
 	$$cleanup();
 }
 export { SettingsFooter as default };
-var de_default = {
-	key: "settings-footer",
-	content: {
-		"saveChanges": "Änderungen speichern",
-		"cancel": "Abbrechen"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "settings-footer",
 	content: {
@@ -409,67 +401,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "settings-footer",
-	content: {
-		"saveChanges": "Guardar cambios",
-		"cancel": "Cancelar"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "settings-footer",
-	content: {
-		"saveChanges": "Enregistrer les modifications",
-		"cancel": "Annuler"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "settings-footer",
-	content: {
-		"saveChanges": "Salva modifiche",
-		"cancel": "Annulla"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "settings-footer",
-	content: {
-		"saveChanges": "変更を保存",
-		"cancel": "キャンセル"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "settings-footer",
-	content: {
-		"saveChanges": "변경 사항 저장",
-		"cancel": "취소"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "settings-footer",
-	content: {
-		"saveChanges": "Salvar alterações",
-		"cancel": "Cancelar"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "settings-footer",
-	content: {
-		"saveChanges": "Сохранить изменения",
-		"cancel": "Отмена"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "settings-footer",
-	content: {
-		"saveChanges": "保存更改",
-		"cancel": "取消"
-	}
-};
-export { zh_default as default };

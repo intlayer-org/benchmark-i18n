@@ -4,16 +4,16 @@ import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
 import { derived, writable } from "svelte/store";
 var content = {
-	"de": () => import("./de-DfF1RylR.js").then((m) => m.default),
-	"en": () => import("./en-BWSkA9hD.js").then((m) => m.default),
-	"es": () => import("./es-96Wq4a2V.js").then((m) => m.default),
-	"fr": () => import("./fr-BOTJWb7D.js").then((m) => m.default),
-	"it": () => import("./it-CLSntQoG.js").then((m) => m.default),
-	"ja": () => import("./ja-CAj4uDKK.js").then((m) => m.default),
-	"ko": () => import("./ko-BfG7_ENQ.js").then((m) => m.default),
-	"pt": () => import("./pt-BIiT8_RG.js").then((m) => m.default),
-	"ru": () => import("./ru-DHceqR5p.js").then((m) => m.default),
-	"zh": () => import("./zh-Dl7nRtdK.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/de.json").then((m) => m.default),
+	"en": () => import("./en-ODRLqhlq.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/zh.json").then((m) => m.default)
 };
 var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
 var getIntlayerContext = () => {
@@ -465,24 +465,6 @@ function ContactForm($$anchor, $$props) {
 	$$cleanup();
 }
 export { ContactForm as default };
-var de_default = {
-	key: "contact-form",
-	content: {
-		"sendMessage": "Nachricht senden",
-		"describeYourQuestionOrIdea": "Beschreiben Sie Ihre Frage oder Idee...",
-		"message": "Nachricht",
-		"other": "Andere",
-		"contribution": "Beitrag",
-		"methodologyQuestion": "Frage zur Methodik",
-		"newBenchmarkIdea": "Neue Benchmark-Idee",
-		"bugReport": "Fehlerbericht",
-		"topic": "Thema",
-		"email": "E-Mail",
-		"yourName": "Ihr Name",
-		"name": "Name"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "contact-form",
 	content: {
@@ -501,147 +483,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "contact-form",
-	content: {
-		"sendMessage": "Enviar mensaje",
-		"describeYourQuestionOrIdea": "Describe tu pregunta o idea...",
-		"message": "Mensaje",
-		"other": "Otro",
-		"contribution": "Contribución",
-		"methodologyQuestion": "Pregunta sobre metodología",
-		"newBenchmarkIdea": "Nueva idea de benchmark",
-		"bugReport": "Informe de error",
-		"topic": "Tema",
-		"email": "Correo electrónico",
-		"yourName": "Tu nombre",
-		"name": "Nombre"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "contact-form",
-	content: {
-		"sendMessage": "Envoyer le message",
-		"describeYourQuestionOrIdea": "Décrivez votre question ou idée...",
-		"message": "Message",
-		"other": "Autre",
-		"contribution": "Contribution",
-		"methodologyQuestion": "Question sur la méthodologie",
-		"newBenchmarkIdea": "Nouvelle idée de benchmark",
-		"bugReport": "Rapport de bug",
-		"topic": "Sujet",
-		"email": "Email",
-		"yourName": "Votre nom",
-		"name": "Nom"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "contact-form",
-	content: {
-		"sendMessage": "Invia messaggio",
-		"describeYourQuestionOrIdea": "Descrivi la tua domanda o idea...",
-		"message": "Messaggio",
-		"other": "Altro",
-		"contribution": "Contributo",
-		"methodologyQuestion": "Domanda sulla metodologia",
-		"newBenchmarkIdea": "Nuova idea di benchmark",
-		"bugReport": "Segnalazione bug",
-		"topic": "Argomento",
-		"email": "Email",
-		"yourName": "Il tuo nome",
-		"name": "Nome"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "contact-form",
-	content: {
-		"sendMessage": "メッセージを送信",
-		"describeYourQuestionOrIdea": "質問やアイデアを説明してください...",
-		"message": "メッセージ",
-		"other": "その他",
-		"contribution": "貢献",
-		"methodologyQuestion": "方法論に関する質問",
-		"newBenchmarkIdea": "新しいベンチマークのアイデア",
-		"bugReport": "バグ報告",
-		"topic": "トピック",
-		"email": "メールアドレス",
-		"yourName": "お名前",
-		"name": "名前"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "contact-form",
-	content: {
-		"sendMessage": "메시지 보내기",
-		"describeYourQuestionOrIdea": "질문이나 아이디어를 설명해 주세요...",
-		"message": "메시지",
-		"other": "기타",
-		"contribution": "기여",
-		"methodologyQuestion": "방법론 질문",
-		"newBenchmarkIdea": "새로운 벤치마크 아이디어",
-		"bugReport": "버그 보고",
-		"topic": "주제",
-		"email": "이메일",
-		"yourName": "이름",
-		"name": "이름"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "contact-form",
-	content: {
-		"sendMessage": "Enviar mensagem",
-		"describeYourQuestionOrIdea": "Descreva sua pergunta ou ideia...",
-		"message": "Mensagem",
-		"other": "Outro",
-		"contribution": "Contribuição",
-		"methodologyQuestion": "Pergunta sobre metodologia",
-		"newBenchmarkIdea": "Nova ideia de benchmark",
-		"bugReport": "Relatório de bug",
-		"topic": "Tópico",
-		"email": "E-mail",
-		"yourName": "Seu nome",
-		"name": "Nome"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "contact-form",
-	content: {
-		"sendMessage": "Отправить сообщение",
-		"describeYourQuestionOrIdea": "Опишите ваш вопрос или идею...",
-		"message": "Сообщение",
-		"other": "Другое",
-		"contribution": "Вклад",
-		"methodologyQuestion": "Вопрос по методологии",
-		"newBenchmarkIdea": "Новая идея для бенчмарка",
-		"bugReport": "Отчет об ошибке",
-		"topic": "Тема",
-		"email": "Email",
-		"yourName": "Ваше имя",
-		"name": "Имя"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "contact-form",
-	content: {
-		"sendMessage": "发送消息",
-		"describeYourQuestionOrIdea": "描述您的问题或想法...",
-		"message": "消息",
-		"other": "其他",
-		"contribution": "贡献",
-		"methodologyQuestion": "方法论问题",
-		"newBenchmarkIdea": "新的基准测试想法",
-		"bugReport": "错误报告",
-		"topic": "主题",
-		"email": "电子邮件",
-		"yourName": "您的姓名",
-		"name": "姓名"
-	}
-};
-export { zh_default as default };

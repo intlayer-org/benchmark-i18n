@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { getContext as t } from "svelte";
 import { derived as n, writable as r } from "svelte/store";
 var i = {
-	de: () => import("./de-3XAnqNgF.js").then((e) => e.default),
-	en: () => import("./en-CjVc3L-l.js").then((e) => e.default),
-	es: () => import("./es-CRW8vWSR.js").then((e) => e.default),
-	fr: () => import("./fr--QfisgT1.js").then((e) => e.default),
-	it: () => import("./it-ULf2g1fi.js").then((e) => e.default),
-	ja: () => import("./ja-CeGAPq3n.js").then((e) => e.default),
-	ko: () => import("./ko-LptjCz9b.js").then((e) => e.default),
-	pt: () => import("./pt-BxziNRS6.js").then((e) => e.default),
-	ru: () => import("./ru-CqT_W4uY.js").then((e) => e.default),
-	zh: () => import("./zh-EA80GoVZ.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/de.json").then((e) => e.default),
+	en: () => import("./en-DXS20-1T.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/zh.json").then((e) => e.default)
 }, a = Symbol("intlayer"), o = () => t(a), s = {
 	locales: [
 		"en",
@@ -294,90 +294,9 @@ export { V as default };
 var e = {
 	key: "profile-section",
 	content: {
-		email: "E-Mail",
-		displayName: "Anzeigename",
-		profile: "Profil"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
 		email: "Email",
 		displayName: "Display Name",
 		profile: "Profile"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		email: "Correo electrónico",
-		displayName: "Nombre a mostrar",
-		profile: "Perfil"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		email: "Email",
-		displayName: "Nom affiché",
-		profile: "Profil"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		email: "Email",
-		displayName: "Nome visualizzato",
-		profile: "Profilo"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		email: "メールアドレス",
-		displayName: "表示名",
-		profile: "プロフィール"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		email: "이메일",
-		displayName: "표시 이름",
-		profile: "프로필"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		email: "E-mail",
-		displayName: "Nome de exibição",
-		profile: "Perfil"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		email: "Email",
-		displayName: "Отображаемое имя",
-		profile: "Профиль"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		email: "电子邮件",
-		displayName: "显示名称",
-		profile: "个人资料"
 	}
 };
 export { e as default };

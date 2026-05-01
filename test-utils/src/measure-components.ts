@@ -72,7 +72,11 @@ export interface MeasureConfig {
    * Use this when you want to exclude an i18n library from the measurement to
    * isolate pure component logic.
    */
-  additionalExternalPackages?: (string | RegExp)[];
+  additionalExternalPackages?: (
+    | string
+    | RegExp
+    | ((id: string, importer?: string, isResolved?: boolean) => boolean)
+  )[];
   /**
    * Subfolder name under `<repo-root>/results/` that groups results by
    * benchmark category, e.g. `"tanstack-start-react-static"`.
@@ -142,7 +146,11 @@ const DEFAULT_COMPONENT_DIRECTORIES = [
  * across i18n libraries. Externalising them ensures each component's measured
  * size reflects only its own logic plus any i18n runtime it pulls in.
  */
-const BASE_EXTERNAL_PACKAGES: (string | RegExp)[] = [
+const BASE_EXTERNAL_PACKAGES: (
+  | string
+  | RegExp
+  | ((id: string, importer?: string, isResolved?: boolean) => boolean)
+)[] = [
   "react",
   "react-dom",
   "react/jsx-runtime",
@@ -152,6 +160,19 @@ const BASE_EXTERNAL_PACKAGES: (string | RegExp)[] = [
   "lucide-react",
   /^next(\/.*)?$/,
 ];
+
+/**
+ * Filter that externalizes all JSON files except those belonging to the English locale.
+ * Used in dynamic/scoped-dynamic benchmarks to measure component + English baseline.
+ */
+const ENGLISH_ONLY_JSON_FILTER = (id: string) => {
+  if (id.endsWith(".json")) {
+    const segments = id.split("/");
+    const isEnglish = segments.some((s) => s === "en" || s === "en.json");
+    return !isEnglish;
+  }
+  return false;
+};
 
 const BLOCKED_PLUGIN_SUBSTRINGS = [
   "tanstack", // Strips tanstack-react-start:config and nested router plugins
@@ -214,7 +235,9 @@ const loadAppConfig = async (configRoot: string) => {
         ...(resolved.define || {}),
       },
       // Ensure we have the user plugins from the config file
-      userPlugins: (loaded?.config.plugins || []).flat(Infinity),
+      userPlugins: (loaded?.config.plugins || []).flat(
+        Infinity,
+      ) as PluginOption[],
     };
   } catch (error) {
     console.error(`Failed to resolve Vite config at ${configRoot}:`, error);
@@ -234,7 +257,11 @@ const loadAppConfig = async (configRoot: string) => {
  */
 const buildComponentBundle = async (
   componentFilePath: string,
-  externalPackages: (string | RegExp)[],
+  externalPackages: (
+    | string
+    | RegExp
+    | ((id: string, importer?: string, isResolved?: boolean) => boolean)
+  )[],
   minify: boolean,
   wrapperTemplate?: (componentPath: string) => string,
   additionalPlugins: any[] = [],
@@ -329,7 +356,9 @@ const buildComponentBundle = async (
     // Create a temporary physical file next to the actual component
     // Use .wrapper.js for Vue components to avoid vite-plugin-vue trying to parse it as an SFC
     // Use .wrapper.tsx for React components to ensure esbuild processes the JSX
-    const ext = componentFilePath.endsWith(".vue") ? ".wrapper.js" : ".wrapper.tsx";
+    const ext = componentFilePath.endsWith(".vue")
+      ? ".wrapper.js"
+      : ".wrapper.tsx";
     entryFilePath = componentFilePath.replace(/\.(tsx|vue)$/, ext);
     const normalizedPath = componentFilePath.replace(/\\/g, "/");
     fs.writeFileSync(entryFilePath, wrapperTemplate(normalizedPath), "utf-8");
@@ -366,7 +395,24 @@ const buildComponentBundle = async (
         },
         rollupOptions: {
           ...appConfig.build?.rollupOptions,
-          external: externalPackages, // We strictly enforce our externals
+          external: (
+            id: string,
+            importer: string | undefined,
+            isResolved: boolean,
+          ) => {
+            return externalPackages.some((pkg) => {
+              if (typeof pkg === "string") {
+                return id === pkg || id.startsWith(`${pkg}/`);
+              }
+              if (pkg instanceof RegExp) {
+                return pkg.test(id);
+              }
+              if (typeof pkg === "function") {
+                return pkg(id, importer, isResolved);
+              }
+              return false;
+            });
+          },
         },
       },
     })) as RolldownOutput[];
@@ -402,7 +448,11 @@ const buildComponentBundle = async (
  */
 const scanAndMeasureDirectory = async (
   directoryPath: string,
-  externalPackages: (string | RegExp)[],
+  externalPackages: (
+    | string
+    | RegExp
+    | ((id: string, importer?: string, isResolved?: boolean) => boolean)
+  )[],
   bundlesOutputDir: string,
   wrapperTemplate?: (componentPath: string) => string,
   additionalPlugins: any[] = [],
@@ -611,6 +661,15 @@ export const measureComponents = async ({
     ...BASE_EXTERNAL_PACKAGES,
     ...additionalExternalPackages,
   ];
+
+  // Only apply English-only JSON filtering for dynamic/scoped-dynamic benchmarks.
+  // Static benchmarks should bundle their JSON as per their normal build process.
+  if (
+    benchmarkCategory.includes("dynamic") ||
+    benchmarkCategory.includes("scoped-dynamic")
+  ) {
+    allExternalPackages.push(ENGLISH_ONLY_JSON_FILTER);
+  }
 
   // Load the host application's Vite config once (unless caller opts out)
   const appConfig =

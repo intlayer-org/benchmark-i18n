@@ -4,16 +4,16 @@ import * as e from "svelte/internal/client";
 import { getContext as t } from "svelte";
 import { derived as n, get as r, writable as i } from "svelte/store";
 var a = {
-	de: () => import("./de-BMmzCCqJ.js").then((e) => e.default),
-	en: () => import("./en-C7DovCpv.js").then((e) => e.default),
-	es: () => import("./es-ghLFEyZb.js").then((e) => e.default),
-	fr: () => import("./fr-B0MYP828.js").then((e) => e.default),
-	it: () => import("./it-CN6wXoZ2.js").then((e) => e.default),
-	ja: () => import("./ja-BlzNQse1.js").then((e) => e.default),
-	ko: () => import("./ko-Dv4OHd6M.js").then((e) => e.default),
-	pt: () => import("./pt-6TPKi7Gs.js").then((e) => e.default),
-	ru: () => import("./ru-BpgKcJtw.js").then((e) => e.default),
-	zh: () => import("./zh-CPi8XAmy.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/de.json").then((e) => e.default),
+	en: () => import("./en-BLNlziuD.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/zh.json").then((e) => e.default)
 }, o = Symbol("intlayer"), s = () => t(o), c = {
 	locales: [
 		"en",
@@ -330,27 +330,6 @@ export { U as default };
 var e = {
 	key: "products-grid",
 	content: {
-		learnMore: "Mehr erfahren",
-		analyzesAndOptimizesYourI18n: "Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.",
-		bundleOptimizer: "Bundle-Optimierer",
-		automatedQualityChecksForMissing: "Automatisierte Qualitätsprüfungen auf fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.",
-		translationQa: "Übersetzungs-QA",
-		aiPoweredToolThatHelps: "KI-gestütztes Tool, das bei der Migration Ihrer Codebasis zwischen i18n-Bibliotheken ohne Ausfallzeiten hilft.",
-		migrationAssistant: "Migrationsassistent",
-		contactUs: "Kontaktieren Sie uns",
-		onPremiseDeploymentWithSso: "On-Premise-Bereitstellung mit SSO, Audit-Logs, benutzerdefinierten SLAs und dediziertem Support.",
-		benchmarkEnterprise: "Benchmark Enterprise",
-		automatedCloudBasedBenchmarkingWith: "Automatisierte Cloud-basierte Benchmarking mit Verfolgung des Verlaufs, Warnungen und Team-Dashboards.",
-		benchmarkCloud: "Benchmark Cloud",
-		free: "Kostenlos",
-		runBenchmarksLocallyFromYour: "Führen Sie Benchmarks lokal von Ihrem Terminal aus durch. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.",
-		benchmarkCli: "Benchmark CLI"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-grid",
-	content: {
 		learnMore: "Learn More",
 		analyzesAndOptimizesYourI18n: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 		bundleOptimizer: "Bundle Optimizer",
@@ -366,174 +345,6 @@ var e = {
 		free: "Free",
 		runBenchmarksLocallyFromYour: "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
 		benchmarkCli: "Benchmark CLI"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-grid",
-	content: {
-		learnMore: "Saber más",
-		analyzesAndOptimizesYourI18n: "Analiza y optimiza su paquete i18n para producción con tree-shaking y división de código.",
-		bundleOptimizer: "Optimizador de paquetes",
-		automatedQualityChecksForMissing: "Controles de calidad automatizados para traducciones faltantes, problemas de pluralización и errores de contexto.",
-		translationQa: "QA de traducción",
-		aiPoweredToolThatHelps: "Herramienta impulsada por IA que ayuda a migrar su base de código entre bibliotecas i18n con cero tiempo de inactividad.",
-		migrationAssistant: "Asistente de migración",
-		contactUs: "Contáctenos",
-		onPremiseDeploymentWithSso: "Implementación local con SSO, registros de auditoría, SLA personalizados y soporte dedicado.",
-		benchmarkEnterprise: "Benchmark Enterprise",
-		automatedCloudBasedBenchmarkingWith: "Benchmarking automatizado basado en la nube con seguimiento histórico, alertas y paneles de equipo.",
-		benchmarkCloud: "Benchmark Cloud",
-		free: "Gratis",
-		runBenchmarksLocallyFromYour: "Ejecute benchmarks localmente desde su terminal. Admite configuraciones personalizadas e integración de CI.",
-		benchmarkCli: "Benchmark CLI"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-grid",
-	content: {
-		learnMore: "En savoir plus",
-		analyzesAndOptimizesYourI18n: "Analyse et optimise votre bundle i18n pour la production avec le tree-shaking et le code splitting.",
-		bundleOptimizer: "Optimiseur de bundle",
-		automatedQualityChecksForMissing: "Contrôles qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
-		translationQa: "QA de traduction",
-		aiPoweredToolThatHelps: "Outil alimenté par l'IA qui aide à migrer votre codebase entre bibliothèques i18n sans temps d'arrêt.",
-		migrationAssistant: "Assistant de migration",
-		contactUs: "Contactez-nous",
-		onPremiseDeploymentWithSso: "Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.",
-		benchmarkEnterprise: "Benchmark Entreprise",
-		automatedCloudBasedBenchmarkingWith: "Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
-		benchmarkCloud: "Benchmark Cloud",
-		free: "Gratuit",
-		runBenchmarksLocallyFromYour: "Exécutez des benchmarks localement depuis votre terminal. Prend en charge les configurations personnalisées et l'intégration CI.",
-		benchmarkCli: "Benchmark CLI"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-grid",
-	content: {
-		learnMore: "Scopri di più",
-		analyzesAndOptimizesYourI18n: "Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.",
-		bundleOptimizer: "Ottimizzatore di bundle",
-		automatedQualityChecksForMissing: "Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.",
-		translationQa: "QA di traduzione",
-		aiPoweredToolThatHelps: "Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n senza tempi di inattività.",
-		migrationAssistant: "Assistente alla migrazione",
-		contactUs: "Contattaci",
-		onPremiseDeploymentWithSso: "Distribuzione on-premise con SSO, log di controllo, SLA personalizzati e supporto dedicato.",
-		benchmarkEnterprise: "Benchmark Enterprise",
-		automatedCloudBasedBenchmarkingWith: "Benchmarking automatizzato basato su cloud con monitoraggio storico, avvisi e dashboard del team.",
-		benchmarkCloud: "Benchmark Cloud",
-		free: "Gratis",
-		runBenchmarksLocallyFromYour: "Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.",
-		benchmarkCli: "Benchmark CLI"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-grid",
-	content: {
-		learnMore: "詳細はこちら",
-		analyzesAndOptimizesYourI18n: "ツリーシェイキングとコード分割により、実稼働用の i18n バンドルを分析および最適化します。",
-		bundleOptimizer: "バンドルオプティマイザー",
-		automatedQualityChecksForMissing: "翻訳の欠落、複数形の問題、およびコンテキストエラーの自動品質チェック。",
-		translationQa: "翻訳 QA",
-		aiPoweredToolThatHelps: "ダウンタイムなしで i18n ライブラリ間でコードベースを移行するのを支援する AI 駆動ツール。",
-		migrationAssistant: "移行アシスタント",
-		contactUs: "お問い合わせ",
-		onPremiseDeploymentWithSso: "SSO、監査ログ、カスタム SLA、および専用サポートを備えたオンプレミス展開。",
-		benchmarkEnterprise: "ベンチマークエンタープライズ",
-		automatedCloudBasedBenchmarkingWith: "履歴追跡、アラート、およびチームダッシュボードを備えた自動クラウドベースのベンチマーク。",
-		benchmarkCloud: "ベンチマーククラウド",
-		free: "無料",
-		runBenchmarksLocallyFromYour: "ターミナルからローカルでベンチマークを実行します。カスタム構成と CI 統合をサポートします。",
-		benchmarkCli: "ベンチマーク CLI"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-grid",
-	content: {
-		learnMore: "자세히 알아보기",
-		analyzesAndOptimizesYourI18n: "트리 쉐이킹 및 코드 분할을 사용하여 프로덕션용 i18n 번들을 분석하고 최적화합니다.",
-		bundleOptimizer: "번들 최적화 도구",
-		automatedQualityChecksForMissing: "누락된 번역, 복수형 문제 및 컨텍스트 오류에 대한 자동 품질 검사.",
-		translationQa: "번역 QA",
-		aiPoweredToolThatHelps: "가동 중지 시간 없이 i18n 라이브러리 간에 코드베이스를 마이그레이션하는 데 도움이 되는 AI 지원 도구입니다.",
-		migrationAssistant: "마이그레이션 어시스턴트",
-		contactUs: "문의하기",
-		onPremiseDeploymentWithSso: "SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 통한 온프레미스 배포.",
-		benchmarkEnterprise: "벤치마크 엔터프라이즈",
-		automatedCloudBasedBenchmarkingWith: "기록 추적, 알림 및 팀 대시보드를 통한 자동화된 클라우드 기반 벤치마킹.",
-		benchmarkCloud: "벤치마크 클라우드",
-		free: "무료",
-		runBenchmarksLocallyFromYour: "터미널에서 로컬로 벤치마크를 실행하십시오. 맞춤형 구성 및 CI 통합을 지원합니다.",
-		benchmarkCli: "벤치마크 CLI"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-grid",
-	content: {
-		learnMore: "Saiba mais",
-		analyzesAndOptimizesYourI18n: "Analisa e otimiza seu bundle i18n para produção com tree-shaking e divisão de código.",
-		bundleOptimizer: "Otimizador de Bundle",
-		automatedQualityChecksForMissing: "Verificações de qualidade automatizadas para traduções ausentes, problemas de pluralização e erros de contexto.",
-		translationQa: "QA de Tradução",
-		aiPoweredToolThatHelps: "Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n com tempo de inatividade zero.",
-		migrationAssistant: "Assistente de Migração",
-		contactUs: "Contate-nos",
-		onPremiseDeploymentWithSso: "Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.",
-		benchmarkEnterprise: "Benchmark Enterprise",
-		automatedCloudBasedBenchmarkingWith: "Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e dashboards de equipe.",
-		benchmarkCloud: "Benchmark Cloud",
-		free: "Grátis",
-		runBenchmarksLocallyFromYour: "Execute benchmarks localmente em seu terminal. Suporta configurações personalizadas e integração de CI.",
-		benchmarkCli: "Benchmark CLI"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-grid",
-	content: {
-		learnMore: "Узнать больше",
-		analyzesAndOptimizesYourI18n: "Анализирует и оптимизирует ваш i18n бандл для продакшена с использованием tree-shaking и разделения кода.",
-		bundleOptimizer: "Оптимизатор бандлов",
-		automatedQualityChecksForMissing: "Автоматизированная проверка качества на предмет отсутствующих переводов, проблем с множественным числом и ошибок контекста.",
-		translationQa: "QA переводов",
-		aiPoweredToolThatHelps: "Инструмент на базе ИИ, который помогает мигрировать вашу кодовую базу между библиотеками i18n без простоев.",
-		migrationAssistant: "Ассистент миграции",
-		contactUs: "Связаться с нами",
-		onPremiseDeploymentWithSso: "Локальное развертывание с SSO, журналами аудита, индивидуальными SLA и выделенной поддержкой.",
-		benchmarkEnterprise: "Benchmark Enterprise",
-		automatedCloudBasedBenchmarkingWith: "Автоматизированный облачный бенчмаркинг с отслеживанием истории, оповещениями и командными дашбордами.",
-		benchmarkCloud: "Benchmark Cloud",
-		free: "Бесплатно",
-		runBenchmarksLocallyFromYour: "Запускайте бенчмарки локально из вашего терминала. Поддерживает пользовательские конфигурации и интеграцию с CI.",
-		benchmarkCli: "Benchmark CLI"
-	}
-};
-export { e as default };
-var e = {
-	key: "products-grid",
-	content: {
-		learnMore: "了解更多",
-		analyzesAndOptimizesYourI18n: "通过 tree-shaking 和代码分割分析并优化您的 i18n 生产包。",
-		bundleOptimizer: "包优化器",
-		automatedQualityChecksForMissing: "针对缺失翻译、复数问题和上下文错误的自动质量检查。",
-		translationQa: "翻译质量保证",
-		aiPoweredToolThatHelps: "人工智能驱动的工具，可帮助您在 i18n 库之间迁移代码库，实现零停机。",
-		migrationAssistant: "迁移助手",
-		contactUs: "联系我们",
-		onPremiseDeploymentWithSso: "支持 SSO、审计日志、自定义 SLA 和专属支持的本地部署。",
-		benchmarkEnterprise: "基准测试企业版",
-		automatedCloudBasedBenchmarkingWith: "自动化的基于云的基准测试，具有历史跟踪、警报和团队仪表板。",
-		benchmarkCloud: "基准测试云端版",
-		free: "免费",
-		runBenchmarksLocallyFromYour: "从您的终端在本地运行基准测试。支持自定义配置和 CI 集成。",
-		benchmarkCli: "基准测试 CLI"
 	}
 };
 export { e as default };
