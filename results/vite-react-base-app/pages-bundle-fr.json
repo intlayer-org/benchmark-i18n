@@ -1,0 +1,1245 @@
+{
+  "app": "vite-react-base-app",
+  "locale": "fr",
+  "timestamp": "2026-05-02T01:33:52.114Z",
+  "fingerprintCounts": {
+    "locale": {
+      "en": 0,
+      "fr": 0
+    },
+    "page": {
+      "home": 0,
+      "about": 0,
+      "blog": 0,
+      "careers": 0,
+      "contact": 0,
+      "faq": 0,
+      "pricing": 0,
+      "products": 0,
+      "settings": 0,
+      "team": 0
+    }
+  },
+  "results": [
+    {
+      "path": "/fr/",
+      "page": "home",
+      "locale": "fr",
+      "totalSize": 301137,
+      "totalGzipSize": 93935,
+      "jsSize": 275755,
+      "jsGzipSize": 88241,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 9,
+      "jsFileCount": 7,
+      "bundleFiles": [
+        {
+          "url": "/fr/",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Hero-wlUe9t2S.js",
+          "size": 1005,
+          "gzipSize": 522,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-DE2We-HT.js",
+          "size": 2093,
+          "gzipSize": 878,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-CWWzy6wM.js",
+          "size": 3251,
+          "gzipSize": 1238,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ResultsTable-CMKRKX8E.js",
+          "size": 1554,
+          "gzipSize": 519,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/about",
+      "page": "about",
+      "locale": "fr",
+      "totalSize": 296821,
+      "totalGzipSize": 92726,
+      "jsSize": 271439,
+      "jsGzipSize": 87032,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 8,
+      "jsFileCount": 6,
+      "bundleFiles": [
+        {
+          "url": "/fr/about",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutHeader-B2W65dKB.js",
+          "size": 591,
+          "gzipSize": 404,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutGrid-OYKMzH4L.js",
+          "size": 1379,
+          "gzipSize": 688,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhatWeMeasure-BZxWv4DT.js",
+          "size": 1617,
+          "gzipSize": 856,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/blog",
+      "page": "blog",
+      "locale": "fr",
+      "totalSize": 296163,
+      "totalGzipSize": 92336,
+      "jsSize": 270781,
+      "jsGzipSize": 86642,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 8,
+      "jsFileCount": 6,
+      "bundleFiles": [
+        {
+          "url": "/fr/blog",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Czkts9CM.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogHeader-CxRVnVv2.js",
+          "size": 401,
+          "gzipSize": 279,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogList-B2jTAayE.js",
+          "size": 2192,
+          "gzipSize": 1001,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/careers",
+      "page": "careers",
+      "locale": "fr",
+      "totalSize": 296867,
+      "totalGzipSize": 92677,
+      "jsSize": 271485,
+      "jsGzipSize": 86983,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 9,
+      "jsFileCount": 7,
+      "bundleFiles": [
+        {
+          "url": "/fr/careers",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersHeader-PPB_xoe7.js",
+          "size": 493,
+          "gzipSize": 331,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-DJiu5KZa.js",
+          "size": 635,
+          "gzipSize": 382,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Czkts9CM.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/OpenPositions-DALCl8Uq.js",
+          "size": 2169,
+          "gzipSize": 908,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/contact",
+      "page": "contact",
+      "locale": "fr",
+      "totalSize": 296376,
+      "totalGzipSize": 92068,
+      "jsSize": 270994,
+      "jsGzipSize": 86374,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 8,
+      "jsFileCount": 6,
+      "bundleFiles": [
+        {
+          "url": "/fr/contact",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactHeader-BU57k2sY.js",
+          "size": 564,
+          "gzipSize": 362,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Czkts9CM.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-C9kjldhr.js",
+          "size": 2242,
+          "gzipSize": 650,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/faq",
+      "page": "faq",
+      "locale": "fr",
+      "totalSize": 296304,
+      "totalGzipSize": 92561,
+      "jsSize": 270922,
+      "jsGzipSize": 86867,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 8,
+      "jsFileCount": 6,
+      "bundleFiles": [
+        {
+          "url": "/fr/faq",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQHeader-CKj4wghi.js",
+          "size": 414,
+          "gzipSize": 291,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Czkts9CM.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQList-CPScK7DK.js",
+          "size": 2320,
+          "gzipSize": 1214,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/pricing",
+      "page": "pricing",
+      "locale": "fr",
+      "totalSize": 295720,
+      "totalGzipSize": 92150,
+      "jsSize": 270338,
+      "jsGzipSize": 86456,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 8,
+      "jsFileCount": 6,
+      "bundleFiles": [
+        {
+          "url": "/fr/pricing",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingHeader-BreQwt_b.js",
+          "size": 473,
+          "gzipSize": 307,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Czkts9CM.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingTiers-CWe0SG_8.js",
+          "size": 1677,
+          "gzipSize": 787,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/products",
+      "page": "products",
+      "locale": "fr",
+      "totalSize": 295674,
+      "totalGzipSize": 92168,
+      "jsSize": 270292,
+      "jsGzipSize": 86474,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 8,
+      "jsFileCount": 6,
+      "bundleFiles": [
+        {
+          "url": "/fr/products",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Czkts9CM.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsHeader-hVJMLZXZ.js",
+          "size": 415,
+          "gzipSize": 287,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsGrid-Bcq3sndu.js",
+          "size": 1689,
+          "gzipSize": 825,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/settings",
+      "page": "settings",
+      "locale": "fr",
+      "totalSize": 298825,
+      "totalGzipSize": 93347,
+      "jsSize": 273443,
+      "jsGzipSize": 87653,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 11,
+      "jsFileCount": 9,
+      "bundleFiles": [
+        {
+          "url": "/fr/settings",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsHeader-B6qcLhtc.js",
+          "size": 396,
+          "gzipSize": 274,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Czkts9CM.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProfileSection-C9xczRfF.js",
+          "size": 1110,
+          "gzipSize": 460,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-Di5YSa2t.js",
+          "size": 2181,
+          "gzipSize": 731,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-SPlX8xXk.js",
+          "size": 524,
+          "gzipSize": 308,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ApiAccessSection-Dz7WT-Xz.js",
+          "size": 1044,
+          "gzipSize": 518,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/fr/team",
+      "page": "team",
+      "locale": "fr",
+      "totalSize": 295671,
+      "totalGzipSize": 92237,
+      "jsSize": 270289,
+      "jsGzipSize": 86543,
+      "cssSize": 23881,
+      "cssGzipSize": 5019,
+      "htmlSize": 1501,
+      "htmlGzipSize": 675,
+      "fileCount": 8,
+      "jsFileCount": 6,
+      "bundleFiles": [
+        {
+          "url": "/fr/team",
+          "size": 1501,
+          "gzipSize": 675,
+          "type": "html"
+        },
+        {
+          "url": "/assets/jsx-runtime-BOY_dY-B.js",
+          "size": 939,
+          "gzipSize": 550,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-NCCcRCHQ.css",
+          "size": 23881,
+          "gzipSize": 5019,
+          "type": "css"
+        },
+        {
+          "url": "/assets/react-3kzBxDUq.js",
+          "size": 7527,
+          "gzipSize": 2881,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-R0fcJzsp.js",
+          "size": 259386,
+          "gzipSize": 81653,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Czkts9CM.js",
+          "size": 336,
+          "gzipSize": 278,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamHeader-C4eZ9XVY.js",
+          "size": 454,
+          "gzipSize": 313,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamGrid-AHyGE6fV.js",
+          "size": 1647,
+          "gzipSize": 868,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    }
+  ]
+}
