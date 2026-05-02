@@ -1,16 +1,20 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Layout from "../components/Layout.vue";
+
+// Eager load Home (initial landing page)
 import Home from "../pages/Home.vue";
-import About from "../pages/About.vue";
-import Blog from "../pages/Blog.vue";
-import Careers from "../pages/Careers.vue";
-import Contact from "../pages/Contact.vue";
-import FAQ from "../pages/FAQ.vue";
-import Pricing from "../pages/Pricing.vue";
-import Products from "../pages/Products.vue";
-import Settings from "../pages/Settings.vue";
-import Team from "../pages/Team.vue";
-import NotFound from "../pages/NotFound.vue";
+
+// Lazy load other routes to create separate bundles per page
+const About = () => import("../pages/About.vue");
+const Blog = () => import("../pages/Blog.vue");
+const Careers = () => import("../pages/Careers.vue");
+const Contact = () => import("../pages/Contact.vue");
+const FAQ = () => import("../pages/FAQ.vue");
+const Pricing = () => import("../pages/Pricing.vue");
+const Products = () => import("../pages/Products.vue");
+const Settings = () => import("../pages/Settings.vue");
+const Team = () => import("../pages/Team.vue");
+const NotFound = () => import("../pages/NotFound.vue");
 
 const routes = [
   {

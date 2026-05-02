@@ -1,16 +1,21 @@
-import { Navigate, Route, Router } from "@solidjs/router";
+import { lazy } from "solid-js";
+import { Navigate, Route } from "@solidjs/router";
 import Layout from "./components/Layout";
-import About from "./pages/About";
-import Blog from "./pages/Blog";
-import Careers from "./pages/Careers";
-import Contact from "./pages/Contact";
-import FAQ from "./pages/FAQ";
+
+// Eager load Home (initial landing page)
 import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import Pricing from "./pages/Pricing";
-import Products from "./pages/Products";
-import Settings from "./pages/Settings";
-import Team from "./pages/Team";
+
+// Lazy load other routes to create separate bundles per page
+const About = lazy(() => import("./pages/About"));
+const Blog = lazy(() => import("./pages/Blog"));
+const Careers = lazy(() => import("./pages/Careers"));
+const Contact = lazy(() => import("./pages/Contact"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Products = lazy(() => import("./pages/Products"));
+const Settings = lazy(() => import("./pages/Settings"));
+const Team = lazy(() => import("./pages/Team"));
 
 export default function App() {
   return (
