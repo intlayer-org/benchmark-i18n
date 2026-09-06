@@ -18,20 +18,20 @@
   "dependencies": {
     "@solidjs/router": "^0.15.1",
     "@tailwindcss/vite": "^4.2.2",
-    "intlayer": "^8.7.12",
-    "solid-intlayer": "^8.7.12",
+    "intlayer": "^9.4.4",
+    "solid-intlayer": "^9.4.4",
     "solid-js": "^1.9.12",
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",
-    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/typography": "^0.5.20",
     "@types/node": "^25.6.0",
-    "bun": "^1.3.12",
+    "bun": "^1.4.2",
     "test-utils": "workspace:*",
     "typescript": "~6.0.2",
-    "vite": "^8.0.10",
-    "vite-intlayer": "^8.7.12",
+    "vite": "^8.2.2",
+    "vite-intlayer": "^9.4.4",
     "vite-plugin-solid": "^2.11.12"
   }
 }

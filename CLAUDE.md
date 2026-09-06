@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Package manager & tooling
 
-- **Bun** (`bun@1.3.12`) — package manager and script runner
+- **Bun** (`bun@1.4.2`) — package manager and script runner
 - **Turbo** — orchestrates builds and tests sequentially (`--concurrency=1`) to keep benchmark conditions reproducible
 - **Biome** — linting and formatting (`biome.json` at root)
 - **Playwright** — browser automation for all test categories
@@ -114,10 +114,14 @@ Page-specific content components should be **Server Components** (no `"use clien
 ```ts
 // pages.test.ts (in any app)
 import { registerBundleTest } from "test-utils/pages-test";
-registerBundleTest(test, expect, { appName: pkg.name, benchmarkCategory: "nextjs-static" });
+registerBundleTest(test, expect, {
+  appName: pkg.name,
+  benchmarkCategory: "nextjs-static",
+});
 ```
 
 **Pages test flow** (`pages-test.ts`):
+
 1. **Phase 1** — Visit every locale×page combination, extract rendered DOM text
 2. **Phase 2** — Compute fingerprints: strings unique to each locale or page (not shared across others)
 3. **Phase 3** — Reload each page, capture all JS/HTML responses, search for foreign fingerprints

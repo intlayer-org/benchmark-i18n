@@ -33,7 +33,7 @@
     "tailwindcss": "^4.0.0",
     "test-utils": "workspace:*",
     "typescript": "~6.0.2",
-    "vite": "^8.0.10",
+    "vite": "^8.2.2",
     "vue-tsc": "^3.2.7"
   }
 }

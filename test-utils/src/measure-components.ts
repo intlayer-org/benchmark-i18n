@@ -235,7 +235,9 @@ const loadAppConfig = async (configRoot: string) => {
         ...(resolved.define || {}),
       },
       // Ensure we have the user plugins from the config file
-      userPlugins: (loaded?.config.plugins || []).flat(
+      // Cast through unknown[]: Vite's PluginOption is recursively nested, and
+      // flattening it directly exceeds TypeScript's instantiation depth limit.
+      userPlugins: ((loaded?.config.plugins || []) as unknown[]).flat(
         Infinity,
       ) as PluginOption[],
     };
