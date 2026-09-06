@@ -1,0 +1,20 @@
+export default {
+  "faq-list": {
+    whatIsI18nBenchmark: "Was ist i18n Benchmark ?",
+    whatIsI18nBenchmarkAnswer: "i18n Benchmark ist eine Open-Source-Benchmarking-Suite, welche die Leistung, die Bundle-Größe und die Entwicklererfahrung von Internationalisierungs-Bibliotheken für JavaScript- und React-Anwendungen misst und vergleicht.",
+    howAreBenchmarksConducted: "Wie werden die Benchmarks durchgeführt ?",
+    weRunStandardizedTestsIn: "Wir führen standardisierte Tests in isolierten Umgebungen mit konsistenter Hardware durch. Jeder Benchmark wird mehrfach wiederholt, um statistische Signifikanz zu gewährleisten. Alle Testkonfigurationen sind in unserem GitHub-Repository öffentlich zugänglich.",
+    whichLibrariesAreCurrentlySupported: "Welche Bibliotheken werden derzeit unterstützt ?",
+    weSupportReactI18nextReact: "Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.",
+    canISubmitMyOwn: "Kann ich meine eigenen Benchmarks einreichen ?",
+    yesCommunityBenchmarkSubmissionsAre: "Ja! Einreichungen von Benchmarks durch die Community sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Beiträge hinzu und senden Sie einen Pull-Request. Unser Team wird qualifizierte Einreichungen prüfen und zusammenführen.",
+    howOftenAreBenchmarksUpdated: "Wie oft werden die Benchmarks aktualisiert ?",
+    weReRunAllBenchmarks: "Wir führen alle Benchmarks wöchentlich gegen die neuesten stabilen Versionen jeder Bibliothek neu aus. Major-Releases lösen einen sofortigen Re-Benchmark-Zyklus aus.",
+    isTheDataReliable: "Sind die Daten zuverlässig ?",
+    weFollowRigorousStatisticalMethodology: "Wir folgen einer strengen statistischen Methodik, einschließlich Warm-up-Phasen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.",
+    doYouOfferConsultingServices: "Bieten Sie Beratungsdienstleistungen an ?",
+    yesOurEnterprisePlanIncludes: "Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen evaluieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Ihren Einschränkungen geben.",
+    howCanIContribute: "Wie kann ich beitragen ?",
+    thereAreManyWaysTo: "Es gibt viele Möglichkeiten, beizutragen: Benchmarks einreichen, die Dokumentation verbessern, Fehler melden, neue Metriken vorschlagen oder das Projekt sponsern. Besuchen Sie unser GitHub-Repository für weitere Details.",
+  }
+};

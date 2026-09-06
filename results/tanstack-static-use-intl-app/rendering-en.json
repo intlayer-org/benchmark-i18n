@@ -1,44 +1,44 @@
 {
   "locale": "en",
-  "timestamp": "2026-04-20T02:35:17.035Z",
+  "timestamp": "2026-09-06T07:16:57.609Z",
   "iterations": 5,
   "e2ePageLoad": {
     "description": "PerformanceNavigationTiming.duration — full page load wall-clock time including sub-resources (ms)",
     "raw": [
-      22.700000002980232,
-      17.799999997019768,
-      25,
-      17.299999997019768,
-      22.099999994039536
+      13.200000047683716,
+      12.699999809265137,
+      12.200000047683716,
+      12.899999856948853,
+      13.300000190734863
     ],
-    "avg": 20.97999999821186,
-    "min": 17.299999997019768,
-    "max": 25
+    "avg": 12.859999990463256,
+    "min": 12.200000047683716,
+    "max": 13.300000190734863
   },
   "hydration": {
     "description": "performance.measure('hydration_duration') — time between hydration_start mark (inline script) and hydration_end mark (useEffect) (ms). 0 means app is not instrumented.",
     "raw": [
-      65.20000000298023,
-      22.099999994039536,
-      19.900000005960464,
-      16.299999997019768,
-      17.69999998807907
+      45.19999980926514,
+      10.5,
+      9.299999952316284,
+      9.5,
+      9.900000095367432
     ],
-    "avg": 28.239999997615815,
-    "min": 16.299999997019768,
-    "max": 65.20000000298023
+    "avg": 16.879999971389772,
+    "min": 9.299999952316284,
+    "max": 45.19999980926514
   },
   "reactMount": {
     "description": "React Profiler actualDuration for the mount phase of <AppRoot>. 0 means Profiler is not wired up (ms).",
     "raw": [
-      28.299999997019768,
-      2.0999999940395355,
-      1.5999999940395355,
-      1.7000000029802322,
-      2.1000000089406967
+      22.90000009536743,
+      2.200000047683716,
+      1.5999999046325684,
+      1.5,
+      1.7000000476837158
     ],
-    "avg": 7.159999999403953,
-    "min": 1.5999999940395355,
-    "max": 28.299999997019768
+    "avg": 5.980000019073486,
+    "min": 1.5,
+    "max": 22.90000009536743
   }
 }

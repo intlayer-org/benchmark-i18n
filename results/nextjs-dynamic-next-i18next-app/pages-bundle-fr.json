@@ -1,17 +1,17 @@
 {
   "app": "nextjs-dynamic-next-i18next-app",
   "locale": "fr",
-  "timestamp": "2026-04-20T02:09:46.325Z",
+  "timestamp": "2026-09-06T07:15:48.313Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 35,
-      "fr": 58
+      "en": 3,
+      "fr": 27
     },
     "page": {
       "home": 24,
-      "about": 12,
+      "about": 21,
       "blog": 13,
-      "careers": 12,
+      "careers": 4,
       "contact": 3,
       "faq": 7,
       "pricing": 27,
@@ -25,91 +25,85 @@
       "path": "/fr/",
       "page": "home",
       "locale": "fr",
-      "totalSize": 682794,
-      "totalGzipSize": 198424,
-      "jsSize": 637323,
-      "jsGzipSize": 187513,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 22178,
-      "htmlGzipSize": 6049,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 626377,
+      "totalGzipSize": 187983,
+      "jsSize": 582891,
+      "jsGzipSize": 177239,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 20749,
+      "htmlGzipSize": 5993,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr",
-          "size": 22178,
-          "gzipSize": 6049,
+          "size": 20749,
+          "gzipSize": 5993,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/3psr3ogzhpyi8.js",
+          "size": 9349,
+          "gzipSize": 2503,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/05rr4jmuc5vn5.js",
-          "size": 8161,
-          "gzipSize": 2216,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -117,79 +111,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -218,7 +149,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -242,20 +173,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -277,20 +217,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -302,13 +234,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -379,97 +311,91 @@
           ]
         }
       },
-      "pageLeakagePercent": 85.18518518518519
+      "pageLeakagePercent": 85.3211009174312
     },
     {
       "path": "/fr/about",
       "page": "about",
       "locale": "fr",
-      "totalSize": 676432,
-      "totalGzipSize": 197101,
-      "jsSize": 633871,
-      "jsGzipSize": 186822,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 19268,
-      "htmlGzipSize": 5417,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 618962,
+      "totalGzipSize": 185825,
+      "jsSize": 579440,
+      "jsGzipSize": 176535,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 16785,
+      "htmlGzipSize": 4539,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr/about",
-          "size": 19268,
-          "gzipSize": 5417,
+          "size": 16785,
+          "gzipSize": 4539,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/2xyos1kdrl9to.js",
+          "size": 5898,
+          "gzipSize": 1799,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0kxg1rk~cg9dx.js",
-          "size": 4709,
-          "gzipSize": 1525,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -477,79 +403,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -578,7 +441,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -602,20 +465,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -637,20 +509,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -662,13 +526,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -739,97 +603,91 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.88888888888889
+      "pageLeakagePercent": 80.73394495412845
     },
     {
       "path": "/fr/blog",
       "page": "blog",
       "locale": "fr",
-      "totalSize": 676065,
-      "totalGzipSize": 196739,
-      "jsSize": 633355,
-      "jsGzipSize": 186883,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 19417,
-      "htmlGzipSize": 4994,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 619990,
+      "totalGzipSize": 186289,
+      "jsSize": 578924,
+      "jsGzipSize": 176605,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 18329,
+      "htmlGzipSize": 4933,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr/blog",
-          "size": 19417,
-          "gzipSize": 4994,
+          "size": 18329,
+          "gzipSize": 4933,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/41t7ppz4zzxwm.js",
+          "size": 5382,
+          "gzipSize": 1869,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0skxur04_oqmf.js",
-          "size": 4193,
-          "gzipSize": 1586,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -837,79 +695,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -938,7 +733,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -962,20 +757,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -997,20 +801,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -1022,13 +818,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -1099,97 +895,91 @@
           ]
         }
       },
-      "pageLeakagePercent": 87.96296296296296
+      "pageLeakagePercent": 88.07339449541286
     },
     {
       "path": "/fr/careers",
       "page": "careers",
       "locale": "fr",
-      "totalSize": 674234,
-      "totalGzipSize": 196360,
-      "jsSize": 633682,
-      "jsGzipSize": 186840,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 17259,
-      "htmlGzipSize": 4658,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 618017,
+      "totalGzipSize": 185934,
+      "jsSize": 579251,
+      "jsGzipSize": 176565,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 16029,
+      "htmlGzipSize": 4618,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr/careers",
-          "size": 17259,
-          "gzipSize": 4658,
+          "size": 16029,
+          "gzipSize": 4618,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/3g-6q1c4s1gtn.js",
+          "size": 5709,
+          "gzipSize": 1829,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/03d-cg0_3ylo7.js",
-          "size": 4520,
-          "gzipSize": 1543,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -1197,79 +987,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -1298,7 +1025,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1322,20 +1049,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -1357,20 +1093,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -1382,13 +1110,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -1459,97 +1187,91 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.88888888888889
+      "pageLeakagePercent": 96.3302752293578
     },
     {
       "path": "/fr/contact",
       "page": "contact",
       "locale": "fr",
-      "totalSize": 674822,
-      "totalGzipSize": 196437,
-      "jsSize": 634072,
-      "jsGzipSize": 186859,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 17457,
-      "htmlGzipSize": 4716,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 618745,
+      "totalGzipSize": 185983,
+      "jsSize": 579641,
+      "jsGzipSize": 176578,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 16367,
+      "htmlGzipSize": 4654,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr/contact",
-          "size": 17457,
-          "gzipSize": 4716,
+          "size": 16367,
+          "gzipSize": 4654,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/1oc61jsb5au5i.js",
+          "size": 6099,
+          "gzipSize": 1842,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0e5v~lipbnln~.js",
-          "size": 4910,
-          "gzipSize": 1562,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -1557,79 +1279,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -1658,7 +1317,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1682,20 +1341,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -1717,20 +1385,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -1743,13 +1403,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -1820,97 +1480,91 @@
           ]
         }
       },
-      "pageLeakagePercent": 98.1651376146789
+      "pageLeakagePercent": 98.18181818181819
     },
     {
       "path": "/fr/faq",
       "page": "faq",
       "locale": "fr",
-      "totalSize": 673484,
-      "totalGzipSize": 196478,
-      "jsSize": 632441,
-      "jsGzipSize": 186672,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 17750,
-      "htmlGzipSize": 4944,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 616574,
+      "totalGzipSize": 185537,
+      "jsSize": 578010,
+      "jsGzipSize": 176403,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 15827,
+      "htmlGzipSize": 4383,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr/faq",
-          "size": 17750,
-          "gzipSize": 4944,
+          "size": 15827,
+          "gzipSize": 4383,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/2uqej0nghgzhv.js",
+          "size": 4468,
+          "gzipSize": 1667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0zw5ey8fstn8i.js",
-          "size": 3279,
-          "gzipSize": 1375,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -1918,79 +1572,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -2019,7 +1610,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2043,20 +1634,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -2078,20 +1678,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -2103,13 +1695,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -2180,97 +1772,91 @@
           ]
         }
       },
-      "pageLeakagePercent": 93.51851851851852
+      "pageLeakagePercent": 93.57798165137615
     },
     {
       "path": "/fr/pricing",
       "page": "pricing",
       "locale": "fr",
-      "totalSize": 677003,
-      "totalGzipSize": 196493,
-      "jsSize": 633945,
-      "jsGzipSize": 186969,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 19765,
-      "htmlGzipSize": 4662,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 620856,
+      "totalGzipSize": 186023,
+      "jsSize": 579514,
+      "jsGzipSize": 176696,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 18605,
+      "htmlGzipSize": 4576,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr/pricing",
-          "size": 19765,
-          "gzipSize": 4662,
+          "size": 18605,
+          "gzipSize": 4576,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/1_xs2ws5ej498.js",
+          "size": 5972,
+          "gzipSize": 1960,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0gpah6a6tcyb4.js",
-          "size": 4783,
-          "gzipSize": 1672,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -2278,79 +1864,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -2379,7 +1902,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2403,20 +1926,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -2438,20 +1970,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -2463,13 +1987,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -2540,97 +2064,91 @@
           ]
         }
       },
-      "pageLeakagePercent": 76.85185185185185
+      "pageLeakagePercent": 77.06422018348624
     },
     {
       "path": "/fr/products",
       "page": "products",
       "locale": "fr",
-      "totalSize": 674433,
-      "totalGzipSize": 196254,
-      "jsSize": 632840,
-      "jsGzipSize": 186637,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 18300,
-      "htmlGzipSize": 4755,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 618357,
+      "totalGzipSize": 185801,
+      "jsSize": 578409,
+      "jsGzipSize": 176360,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 17211,
+      "htmlGzipSize": 4690,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr/products",
-          "size": 18300,
-          "gzipSize": 4755,
+          "size": 17211,
+          "gzipSize": 4690,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/156t4dpr-btyf.js",
+          "size": 4867,
+          "gzipSize": 1624,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0pbmj8wwe4bqb.js",
-          "size": 3678,
-          "gzipSize": 1340,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -2638,79 +2156,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -2739,7 +2194,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2763,20 +2218,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -2798,20 +2262,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -2823,13 +2279,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -2900,97 +2356,91 @@
           ]
         }
       },
-      "pageLeakagePercent": 92.5925925925926
+      "pageLeakagePercent": 92.66055045871559
     },
     {
       "path": "/fr/settings",
       "page": "settings",
       "locale": "fr",
-      "totalSize": 680479,
-      "totalGzipSize": 197203,
-      "jsSize": 636735,
-      "jsGzipSize": 187199,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 20451,
-      "htmlGzipSize": 5142,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 623827,
+      "totalGzipSize": 186733,
+      "jsSize": 582304,
+      "jsGzipSize": 176932,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 18786,
+      "htmlGzipSize": 5050,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr/settings",
-          "size": 20451,
-          "gzipSize": 5142,
+          "size": 18786,
+          "gzipSize": 5050,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/3_9ya9xqzleye.js",
+          "size": 8762,
+          "gzipSize": 2196,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01agkj.mvs-3..js",
-          "size": 7573,
-          "gzipSize": 1902,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -2998,79 +2448,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -3099,7 +2486,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3123,20 +2510,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -3158,20 +2554,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -3183,13 +2571,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -3261,97 +2649,91 @@
           ]
         }
       },
-      "pageLeakagePercent": 95.41284403669725
+      "pageLeakagePercent": 95.45454545454545
     },
     {
       "path": "/fr/team",
       "page": "team",
       "locale": "fr",
-      "totalSize": 674872,
-      "totalGzipSize": 196616,
-      "jsSize": 633078,
-      "jsGzipSize": 186841,
-      "cssSize": 23293,
-      "cssGzipSize": 4862,
-      "htmlSize": 18501,
-      "htmlGzipSize": 4913,
-      "fileCount": 13,
-      "jsFileCount": 11,
+      "totalSize": 618799,
+      "totalGzipSize": 186171,
+      "jsSize": 578648,
+      "jsGzipSize": 176568,
+      "cssSize": 22737,
+      "cssGzipSize": 4751,
+      "htmlSize": 17414,
+      "htmlGzipSize": 4852,
+      "fileCount": 12,
+      "jsFileCount": 10,
       "bundleFiles": [
         {
           "url": "/fr/team",
-          "size": 18501,
-          "gzipSize": 4913,
+          "size": 17414,
+          "gzipSize": 4852,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/12px~-g-q52_~.css",
-          "size": 23293,
-          "gzipSize": 4862,
+          "url": "/_next/static/chunks/1xrxq3za84mhr.css",
+          "size": 22737,
+          "gzipSize": 4751,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/2xv3176gkz_7m.js",
+          "size": 30374,
+          "gzipSize": 9235,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/turbopack-0h79e63iu-_9d.js",
+          "size": 9688,
+          "gzipSize": 3838,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0p_j2-2d2mzu-.js",
-          "size": 18719,
-          "gzipSize": 6836,
+          "url": "/_next/static/chunks/459wuows1uj8o.js",
+          "size": 19465,
+          "gzipSize": 5147,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10.a6sr4d_igl.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/1u9esyvo3i-ru.js",
+          "size": 21765,
+          "gzipSize": 7917,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/17hn6ontl5aht.js",
+          "size": 5106,
+          "gzipSize": 1832,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0mmq61tzd1lq-.js",
-          "size": 51235,
-          "gzipSize": 16727,
+          "url": "/_next/static/chunks/0yg0cnl7wj78l.js",
+          "size": 52562,
+          "gzipSize": 17165,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/049116bqtnv.5.js",
-          "size": 3916,
-          "gzipSize": 1544,
+          "url": "/_next/static/chunks/10d4zewf4ioio.js",
+          "size": 170754,
+          "gzipSize": 45685,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/3hud3l1q6sza7.js",
+          "size": 227962,
+          "gzipSize": 71341,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/01xtfa8ornqag.js",
-          "size": 19276,
+          "url": "/_next/static/chunks/2f-4po_fk_0di.js",
+          "size": 19275,
           "gzipSize": 6732,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nryim_tpoeph.js",
+          "url": "/_next/static/chunks/0grneavozyf4l.js",
           "size": 21697,
           "gzipSize": 7676,
           "type": "js"
@@ -3359,79 +2741,16 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 35,
+          "count": 3,
           "found": [
-            "about.aboutheader.methodology",
-            "about.aboutheader.wedesignedthisbenchmarkto",
-            "about.aboutgrid.testenvironment",
-            "about.aboutgrid.allbenchmarksrunon",
-            "about.aboutgrid.applicationdesign",
-            "about.aboutgrid.thebenchmarkapphas10",
-            "about.aboutgrid.measurementmethodology",
-            "about.aboutgrid.weusebrowsernativeapis",
-            "about.aboutgrid.faircomparison",
-            "about.aboutgrid.eachi18nlibraryisintegrated",
-            "about.whatwemeasure.whatwemeasure",
-            "about.whatwemeasure.bundlesizeimpact",
-            "about.whatwemeasure.theadditionaljavascriptbytessent",
-            "about.whatwemeasure.renderingoverhead",
-            "about.whatwemeasure.howmuchextratimethe",
-            "about.whatwemeasure.hydrationcost",
-            "about.whatwemeasure.duringssrtranslationdatais",
-            "about.whatwemeasure.lazyloadingeffectiveness",
-            "about.whatwemeasure.whethersplittingtranslationsbyroute",
-            "about.whatwemeasure.localeswitchspeed",
-            "about.whatwemeasure.howfasttheappcan",
-            "from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "faq.faq-header1.frequentlyaskedquestions",
-            "faq.faq-header1.everythingyouneedtoknow",
-            "faq.faqlist.howarethebenchmarks",
-            "faq.faqlist.whatlibrariesarecurrently",
-            "faq.faqlist.canicontributea",
-            "faq.faqlist.howoftenareresults",
-            "faq.faqlist.aretheresultsstatistically",
             "transparent pricing for every stage of your i18n journey.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
         },
         "fr": {
-          "count": 56,
+          "count": 25,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?",
             "pricing.pricingheader.pricing",
             "pricing.pricingheader.transparentpricingforevery",
             "pricing.pricingtiers.startertier",
@@ -3460,7 +2779,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 38.46153846153847,
+      "localeLeakagePercent": 10.714285714285714,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3484,20 +2803,29 @@
           ]
         },
         "about": {
-          "count": 12,
+          "count": 21,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+            "about.aboutheader.methodology",
+            "about.aboutheader.wedesignedthisbenchmarkto",
+            "about.aboutgrid.testenvironment",
+            "about.aboutgrid.allbenchmarksrunon",
+            "about.aboutgrid.applicationdesign",
+            "about.aboutgrid.thebenchmarkapphas10",
+            "about.aboutgrid.measurementmethodology",
+            "about.aboutgrid.weusebrowsernativeapis",
+            "about.aboutgrid.faircomparison",
+            "about.aboutgrid.eachi18nlibraryisintegrated",
+            "about.whatwemeasure.whatwemeasure",
+            "about.whatwemeasure.bundlesizeimpact",
+            "about.whatwemeasure.theadditionaljavascriptbytessent",
+            "about.whatwemeasure.renderingoverhead",
+            "about.whatwemeasure.howmuchextratimethe",
+            "about.whatwemeasure.hydrationcost",
+            "about.whatwemeasure.duringssrtranslationdatais",
+            "about.whatwemeasure.lazyloadingeffectiveness",
+            "about.whatwemeasure.whethersplittingtranslationsbyroute",
+            "about.whatwemeasure.localeswitchspeed",
+            "about.whatwemeasure.howfasttheappcan"
           ]
         },
         "blog": {
@@ -3519,20 +2847,12 @@
           ]
         },
         "careers": {
-          "count": 12,
+          "count": 4,
           "found": [
-            "careers.careersheader.careers",
-            "careers.careershero.fromanywhere",
-            "careers.careersbenefits.competitivepay",
-            "careers.careersbenefits.topofmarket",
-            "careers.careersbenefits.opensourcetime",
-            "careers.careersbenefits.twentypercenttime",
-            "careers.openpositions.openpositions",
-            "careers.careerspositions.seniorfrontendengineer",
-            "careers.careerspositions.seniorfrontendengineerdesc",
-            "careers.openpositions.remote",
-            "careers.openpositions.fulltime",
-            "careers.openpositions.applynow"
+            "from anywhere in the world",
+            "top-of-market compensation",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
           ]
         },
         "contact": {
@@ -3544,13 +2864,13 @@
         "faq": {
           "count": 7,
           "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "faq.faq-header1.frequentlyaskedquestions",
+            "faq.faq-header1.everythingyouneedtoknow",
+            "faq.faqlist.howarethebenchmarks",
+            "faq.faqlist.whatlibrariesarecurrently",
+            "faq.faqlist.canicontributea",
+            "faq.faqlist.howoftenareresults",
+            "faq.faqlist.aretheresultsstatistically"
           ]
         },
         "pricing": {
@@ -3621,7 +2941,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 90.74074074074075
+      "pageLeakagePercent": 90.82568807339449
     }
   ]
 }

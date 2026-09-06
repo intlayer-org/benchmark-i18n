@@ -1,5 +1,6 @@
 import React, { createContext, use, useContext, useMemo } from "react";
 import { useNavigate, useParams } from "@tanstack/react-router";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { jsx } from "react/jsx-runtime";
 var locales = [
 	"en",
@@ -21,6 +22,7 @@ function getLocaleName(locale) {
 		return locale.toUpperCase();
 	}
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/use-intl-app/src/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams({ strict: false }).locale ?? "en";
 	const navigate = useNavigate();
@@ -33,18 +35,30 @@ function LocaleSwitcher() {
 			})
 		});
 	};
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "flex items-center gap-2",
-		children: jsx("select", {
+		children: jsxDEV("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((l) => jsx("option", {
+			children: locales.map((l) => jsxDEV("option", {
 				value: l,
 				children: getLocaleName(l)
-			}, l))
-		})
-	});
+			}, l, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 24,
+				columnNumber: 11
+			}, this))
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 18,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 17,
+		columnNumber: 5
+	}, this);
 }
 function memoize(fn, options) {
 	const cache = options && options.cache ? options.cache : cacheDefault;
@@ -93,7 +107,6 @@ var serializerDefault = function() {
 	return JSON.stringify(arguments);
 };
 var ObjectWithoutPrototypeCache = class {
-	cache;
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -111,10 +124,26 @@ var strategies = {
 	variadic: strategyVariadic,
 	monadic: strategyMonadic
 };
-var r = function(e) {
-	return e.MISSING_MESSAGE = "MISSING_MESSAGE", e.MISSING_FORMAT = "MISSING_FORMAT", e.ENVIRONMENT_FALLBACK = "ENVIRONMENT_FALLBACK", e.INSUFFICIENT_PATH = "INSUFFICIENT_PATH", e.INVALID_MESSAGE = "INVALID_MESSAGE", e.INVALID_KEY = "INVALID_KEY", e.FORMATTING_ERROR = "FORMATTING_ERROR", e;
-}(r || {});
-function s() {
+var IntlError = class extends Error {
+	constructor(code, originalMessage) {
+		let message = code;
+		if (originalMessage) message += ": " + originalMessage;
+		super(message);
+		this.code = code;
+		if (originalMessage) this.originalMessage = originalMessage;
+	}
+};
+var IntlErrorCode = function(IntlErrorCode) {
+	IntlErrorCode["MISSING_MESSAGE"] = "MISSING_MESSAGE";
+	IntlErrorCode["MISSING_FORMAT"] = "MISSING_FORMAT";
+	IntlErrorCode["ENVIRONMENT_FALLBACK"] = "ENVIRONMENT_FALLBACK";
+	IntlErrorCode["INSUFFICIENT_PATH"] = "INSUFFICIENT_PATH";
+	IntlErrorCode["INVALID_MESSAGE"] = "INVALID_MESSAGE";
+	IntlErrorCode["INVALID_KEY"] = "INVALID_KEY";
+	IntlErrorCode["FORMATTING_ERROR"] = "FORMATTING_ERROR";
+	return IntlErrorCode;
+}(IntlErrorCode || {});
+function createCache() {
 	return {
 		dateTime: {},
 		number: {},
@@ -125,81 +154,142 @@ function s() {
 		displayNames: {}
 	};
 }
-function i$1(a, r) {
-	return memoize(a, {
-		cache: (s = r, { create: () => ({
-			get: (e) => s[e],
-			set(e, t) {
-				s[e] = t;
+function createMemoCache(store) {
+	return { create() {
+		return {
+			get(key) {
+				return store[key];
+			},
+			set(key, value) {
+				store[key] = value;
 			}
-		}) }),
+		};
+	} };
+}
+function memoFn(fn, cache) {
+	return memoize(fn, {
+		cache: createMemoCache(cache),
 		strategy: strategies.variadic
 	});
-	var s;
 }
-function I(e, t) {
-	return i$1(((...t) => new e(...t)), t);
+function memoConstructor(ConstructorFn, cache) {
+	return memoFn((...args) => new ConstructorFn(...args), cache);
 }
-function l(e) {
+function createIntlFormatters(cache) {
 	return {
-		getDateTimeFormat: I(Intl.DateTimeFormat, e.dateTime),
-		getNumberFormat: I(Intl.NumberFormat, e.number),
-		getPluralRules: I(Intl.PluralRules, e.pluralRules),
-		getRelativeTimeFormat: I(Intl.RelativeTimeFormat, e.relativeTime),
-		getListFormat: I(Intl.ListFormat, e.list),
-		getDisplayNames: I(Intl.DisplayNames, e.displayNames)
+		getDateTimeFormat: memoConstructor(Intl.DateTimeFormat, cache.dateTime),
+		getNumberFormat: memoConstructor(Intl.NumberFormat, cache.number),
+		getPluralRules: memoConstructor(Intl.PluralRules, cache.pluralRules),
+		getRelativeTimeFormat: memoConstructor(Intl.RelativeTimeFormat, cache.relativeTime),
+		getListFormat: memoConstructor(Intl.ListFormat, cache.list),
+		getDisplayNames: memoConstructor(Intl.DisplayNames, cache.displayNames)
 	};
 }
-function c(...e) {
-	return e.filter(Boolean).join(".");
+function joinPath(...parts) {
+	return parts.filter(Boolean).join(".");
 }
-function i(e) {
-	return c(e.namespace, e.key);
+function defaultGetMessageFallback(props) {
+	return joinPath(props.namespace, props.key);
 }
-function u(e) {
-	console.error(e);
+function defaultOnError(error) {
+	console.error(error);
 }
-var y = 86400;
-7 * y;
-365 * y;
-function M({ formats: e, getMessageFallback: t, messages: r, onError: n, ...o }) {
+var DAY = 86400;
+DAY * 7;
+DAY * (365 / 12) * 3;
+DAY * 365;
+function validateMessagesSegment(messages, invalidKeyLabels, parentPath) {
+	Object.entries(messages).forEach(([key, messageOrMessages]) => {
+		if (key.includes(".")) {
+			let keyLabel = key;
+			if (parentPath) keyLabel += ` (at ${parentPath})`;
+			invalidKeyLabels.push(keyLabel);
+		}
+		if (messageOrMessages != null && typeof messageOrMessages === "object") validateMessagesSegment(messageOrMessages, invalidKeyLabels, joinPath(parentPath, key));
+	});
+}
+function validateMessages(messages, onError) {
+	const invalidKeyLabels = [];
+	validateMessagesSegment(messages, invalidKeyLabels);
+	if (invalidKeyLabels.length > 0) onError(new IntlError(IntlErrorCode.INVALID_KEY, `Namespace keys cannot contain the character "." as this is used to express nesting. Please remove it or replace it with another character.
+
+Invalid ${invalidKeyLabels.length === 1 ? "key" : "keys"}: ${invalidKeyLabels.join(", ")}
+
+If you're migrating from a flat structure, you can convert your messages as follows:
+
+import {set} from "lodash";
+
+const input = {
+  "one.one": "1.1",
+  "one.two": "1.2",
+  "two.one.one": "2.1.1"
+};
+
+const output = Object.entries(input).reduce(
+  (acc, [key, value]) => set(acc, key, value),
+  {}
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+`));
+}
+function initializeConfig({ formats, getMessageFallback, messages, onError, ...rest }) {
+	const finalOnError = onError || defaultOnError;
+	const finalGetMessageFallback = getMessageFallback || defaultGetMessageFallback;
+	if (messages) validateMessages(messages, finalOnError);
 	return {
-		...o,
-		formats: e || void 0,
-		messages: r || void 0,
-		onError: n || u,
-		getMessageFallback: t || i
+		...rest,
+		formats: formats || void 0,
+		messages: messages || void 0,
+		onError: finalOnError,
+		getMessageFallback: finalGetMessageFallback
 	};
 }
-var d = createContext(void 0);
-function v({ children: e, formats: o, getMessageFallback: n, locale: c, messages: i, now: f, onError: u, timeZone: l$1 }) {
-	const v = useContext(d), w = useMemo((() => v?.cache || s()), [c, v?.cache]), p = useMemo((() => v?.formatters || l(w)), [w, v?.formatters]), h = useMemo((() => ({
-		...M({
-			locale: c,
-			formats: void 0 === o ? v?.formats : o,
-			getMessageFallback: n || v?.getMessageFallback,
-			messages: void 0 === i ? v?.messages : i,
-			now: f || v?.now,
-			onError: u || v?.onError,
-			timeZone: l$1 || v?.timeZone
+var IntlContext = createContext(void 0);
+function IntlProvider({ children, formats, getMessageFallback, locale, messages, now, onError, timeZone }) {
+	const prevContext = useContext(IntlContext);
+	const cache = useMemo(() => {
+		return prevContext?.cache || createCache();
+	}, [locale, prevContext?.cache]);
+	const formatters = useMemo(() => prevContext?.formatters || createIntlFormatters(cache), [cache, prevContext?.formatters]);
+	const value = useMemo(() => ({
+		...initializeConfig({
+			locale,
+			formats: formats === void 0 ? prevContext?.formats : formats,
+			getMessageFallback: getMessageFallback || prevContext?.getMessageFallback,
+			messages: messages === void 0 ? prevContext?.messages : messages,
+			now: now || prevContext?.now,
+			onError: onError || prevContext?.onError,
+			timeZone: timeZone || prevContext?.timeZone
 		}),
-		formatters: p,
-		cache: w
-	})), [
-		w,
-		o,
-		p,
-		n,
-		c,
-		i,
-		f,
-		u,
-		v,
-		l$1
+		formatters,
+		cache
+	}), [
+		cache,
+		formats,
+		formatters,
+		getMessageFallback,
+		locale,
+		messages,
+		now,
+		onError,
+		prevContext,
+		timeZone
 	]);
-	return jsx(d.Provider, {
-		value: h,
-		children: e
+	return jsx(IntlContext.Provider, {
+		value,
+		children
 	});
 }
 var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
@@ -212,34 +302,52 @@ var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
 };
 async function getMessages(locale) {
 	return (await _rolldown_dynamic_import_helper_default(Object.assign({
-		"../messages/de.ts": () => import("./de-A07FHHQi.js"),
-		"../messages/en.ts": () => import("./en-TbgyO-Lg.js"),
-		"../messages/es.ts": () => import("./es-CRtsNq7Q.js"),
-		"../messages/fr.ts": () => import("./fr-CKL3HZhy.js"),
-		"../messages/it.ts": () => import("./it-BTzM4hKw.js"),
-		"../messages/ja.ts": () => import("./ja-DVTUp_qg.js"),
-		"../messages/ko.ts": () => import("./ko-BE0o1WAx.js"),
-		"../messages/pt.ts": () => import("./pt-xN1u0Bs_.js"),
-		"../messages/ru.ts": () => import("./ru-BeSD8cfq.js"),
-		"../messages/zh.ts": () => import("./zh-CoxNs_Yx.js")
+		"../messages/de.ts": () => import("./de-Dyl3C6qW.js"),
+		"../messages/en.ts": () => import("./en-CUdkp9b0.js"),
+		"../messages/es.ts": () => import("./es-DqKrru1k.js"),
+		"../messages/fr.ts": () => import("./fr-DTWMXhxs.js"),
+		"../messages/it.ts": () => import("./it-BVY2_KnG.js"),
+		"../messages/ja.ts": () => import("./ja-ji2x9gZ5.js"),
+		"../messages/ko.ts": () => import("./ko-BLsgtRqk.js"),
+		"../messages/pt.ts": () => import("./pt-DYHYG58d.js"),
+		"../messages/ru.ts": () => import("./ru-CQ50ULs0.js"),
+		"../messages/zh.ts": () => import("./zh-C3nsQS6U.js")
 	}), `../messages/${locale}.ts`, 3)).default;
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/use-intl-app/scripts/Wrapper.tsx";
 var messagesPromise = getMessages("en");
 function Wrapper({ children }) {
 	const messages = use(messagesPromise);
-	return jsx(React.Suspense, {
+	return jsxDEV(React.Suspense, {
 		fallback: null,
-		children: jsx(v, {
+		children: jsxDEV(IntlProvider, {
 			messages,
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/use-intl-app/src/components/LocaleSwitcher.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(LocaleSwitcher, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(LocaleSwitcher, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var de = {

@@ -1,7 +1,8 @@
 import e, { createContext as t, use as n, useContext as r, useMemo as i } from "react";
 import { useNavigate as a, useParams as o } from "@tanstack/react-router";
-import { jsx as s } from "react/jsx-runtime";
-var c = [
+import { jsxDEV as s } from "react/jsx-dev-runtime";
+import { jsx as c } from "react/jsx-runtime";
+var l = [
 	"en",
 	"fr",
 	"es",
@@ -13,7 +14,7 @@ var c = [
 	"ko",
 	"ru"
 ];
-function l(e) {
+function u(e) {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
@@ -21,7 +22,8 @@ function l(e) {
 		return e.toUpperCase();
 	}
 }
-function u() {
+var d = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/use-intl-app/src/components/LocaleSwitcher.tsx";
+function f() {
 	let e = o({ strict: !1 }).locale ?? "en", t = a(), n = (e) => {
 		t({
 			to: ".",
@@ -37,48 +39,59 @@ function u() {
 			value: e,
 			onChange: (e) => n(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: c.map((e) => s("option", {
+			children: l.map((e) => s("option", {
 				value: e,
-				children: l(e)
-			}, e))
-		})
-	});
+				children: u(e)
+			}, e, !1, {
+				fileName: d,
+				lineNumber: 24,
+				columnNumber: 11
+			}, this))
+		}, void 0, !1, {
+			fileName: d,
+			lineNumber: 18,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: d,
+		lineNumber: 17,
+		columnNumber: 5
+	}, this);
 }
-function d(e, t) {
-	let n = t && t.cache ? t.cache : x, r = t && t.serializer ? t.serializer : y;
-	return (t && t.strategy ? t.strategy : g)(e, {
+function p(e, t) {
+	let n = t && t.cache ? t.cache : C, r = t && t.serializer ? t.serializer : x;
+	return (t && t.strategy ? t.strategy : v)(e, {
 		cache: n,
 		serializer: r
 	});
 }
-function f(e) {
+function m(e) {
 	return e == null || typeof e == "number" || typeof e == "boolean";
 }
-function p(e, t, n, r) {
-	let i = f(r) ? r : n(r), a = t.get(i);
+function h(e, t, n, r) {
+	let i = m(r) ? r : n(r), a = t.get(i);
 	return a === void 0 && (a = e.call(this, r), t.set(i, a)), a;
 }
-function m(e, t, n) {
+function g(e, t, n) {
 	let r = Array.prototype.slice.call(arguments, 3), i = n(r), a = t.get(i);
 	return a === void 0 && (a = e.apply(this, r), t.set(i, a)), a;
 }
-function h(e, t, n, r, i) {
+function _(e, t, n, r, i) {
 	return n.bind(t, e, r, i);
 }
-function g(e, t) {
-	let n = e.length === 1 ? p : m;
-	return h(e, this, n, t.cache.create(), t.serializer);
-}
-function _(e, t) {
-	return h(e, this, m, t.cache.create(), t.serializer);
-}
 function v(e, t) {
-	return h(e, this, p, t.cache.create(), t.serializer);
+	let n = e.length === 1 ? h : g;
+	return _(e, this, n, t.cache.create(), t.serializer);
 }
-var y = function() {
+function y(e, t) {
+	return _(e, this, g, t.cache.create(), t.serializer);
+}
+function b(e, t) {
+	return _(e, this, h, t.cache.create(), t.serializer);
+}
+var x = function() {
 	return JSON.stringify(arguments);
-}, b = class {
-	cache;
+}, S = class {
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -88,15 +101,20 @@ var y = function() {
 	set(e, t) {
 		this.cache[e] = t;
 	}
-}, x = { create: function() {
-	return new b();
-} }, S = {
-	variadic: _,
-	monadic: v
-}, C = function(e) {
+}, C = { create: function() {
+	return new S();
+} }, w = {
+	variadic: y,
+	monadic: b
+}, T = class extends Error {
+	constructor(e, t) {
+		let n = e;
+		t && (n += ": " + t), super(n), this.code = e, t && (this.originalMessage = t);
+	}
+}, E = function(e) {
 	return e.MISSING_MESSAGE = "MISSING_MESSAGE", e.MISSING_FORMAT = "MISSING_FORMAT", e.ENVIRONMENT_FALLBACK = "ENVIRONMENT_FALLBACK", e.INSUFFICIENT_PATH = "INSUFFICIENT_PATH", e.INVALID_MESSAGE = "INVALID_MESSAGE", e.INVALID_KEY = "INVALID_KEY", e.FORMATTING_ERROR = "FORMATTING_ERROR", e;
-}(C || {});
-function w() {
+}(E || {});
+function D() {
 	return {
 		dateTime: {},
 		number: {},
@@ -107,83 +125,134 @@ function w() {
 		displayNames: {}
 	};
 }
-function T(e, t) {
-	return d(e, {
-		cache: (n = t, { create: () => ({
-			get: (e) => n[e],
-			set(e, t) {
-				n[e] = t;
+function O(e) {
+	return { create() {
+		return {
+			get(t) {
+				return e[t];
+			},
+			set(t, n) {
+				e[t] = n;
 			}
-		}) }),
-		strategy: S.variadic
+		};
+	} };
+}
+function k(e, t) {
+	return p(e, {
+		cache: O(t),
+		strategy: w.variadic
 	});
-	var n;
 }
-function E(e, t) {
-	return T(((...t) => new e(...t)), t);
+function A(e, t) {
+	return k((...t) => new e(...t), t);
 }
-function D(e) {
+function j(e) {
 	return {
-		getDateTimeFormat: E(Intl.DateTimeFormat, e.dateTime),
-		getNumberFormat: E(Intl.NumberFormat, e.number),
-		getPluralRules: E(Intl.PluralRules, e.pluralRules),
-		getRelativeTimeFormat: E(Intl.RelativeTimeFormat, e.relativeTime),
-		getListFormat: E(Intl.ListFormat, e.list),
-		getDisplayNames: E(Intl.DisplayNames, e.displayNames)
+		getDateTimeFormat: A(Intl.DateTimeFormat, e.dateTime),
+		getNumberFormat: A(Intl.NumberFormat, e.number),
+		getPluralRules: A(Intl.PluralRules, e.pluralRules),
+		getRelativeTimeFormat: A(Intl.RelativeTimeFormat, e.relativeTime),
+		getListFormat: A(Intl.ListFormat, e.list),
+		getDisplayNames: A(Intl.DisplayNames, e.displayNames)
 	};
 }
-function O(...e) {
+function M(...e) {
 	return e.filter(Boolean).join(".");
 }
-function k(e) {
-	return O(e.namespace, e.key);
+function N(e) {
+	return M(e.namespace, e.key);
 }
-function A(e) {
+function P(e) {
 	console.error(e);
 }
-var j = 86400;
-7 * j, 365 * j;
-function M({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
-	return {
+var F = 86400;
+F * 7, 365 / 12 * F * 3, F * 365;
+function I(e, t, n) {
+	Object.entries(e).forEach(([e, r]) => {
+		if (e.includes(".")) {
+			let r = e;
+			n && (r += ` (at ${n})`), t.push(r);
+		}
+		typeof r == "object" && r && I(r, t, M(n, e));
+	});
+}
+function L(e, t) {
+	let n = [];
+	I(e, n), n.length > 0 && t(new T(E.INVALID_KEY, `Namespace keys cannot contain the character "." as this is used to express nesting. Please remove it or replace it with another character.
+
+Invalid ${n.length === 1 ? "key" : "keys"}: ${n.join(", ")}
+
+If you're migrating from a flat structure, you can convert your messages as follows:
+
+import {set} from "lodash";
+
+const input = {
+  "one.one": "1.1",
+  "one.two": "1.2",
+  "two.one.one": "2.1.1"
+};
+
+const output = Object.entries(input).reduce(
+  (acc, [key, value]) => set(acc, key, value),
+  {}
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+`));
+}
+function R({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
+	let a = r || P, o = t || N;
+	return n && L(n, a), {
 		...i,
 		formats: e || void 0,
 		messages: n || void 0,
-		onError: r || A,
-		getMessageFallback: t || k
+		onError: a,
+		getMessageFallback: o
 	};
 }
-var N = t(void 0);
-function P({ children: e, formats: t, getMessageFallback: n, locale: a, messages: o, now: c, onError: l, timeZone: u }) {
-	let d = r(N), f = i((() => d?.cache || w()), [a, d?.cache]), p = i((() => d?.formatters || D(f)), [f, d?.formatters]), m = i((() => ({
-		...M({
+var z = t(void 0);
+function B({ children: e, formats: t, getMessageFallback: n, locale: a, messages: o, now: s, onError: l, timeZone: u }) {
+	let d = r(z), f = i(() => d?.cache || D(), [a, d?.cache]), p = i(() => d?.formatters || j(f), [f, d?.formatters]), m = i(() => ({
+		...R({
 			locale: a,
 			formats: t === void 0 ? d?.formats : t,
 			getMessageFallback: n || d?.getMessageFallback,
 			messages: o === void 0 ? d?.messages : o,
-			now: c || d?.now,
+			now: s || d?.now,
 			onError: l || d?.onError,
 			timeZone: u || d?.timeZone
 		}),
 		formatters: p,
 		cache: f
-	})), [
+	}), [
 		f,
 		t,
 		p,
 		n,
 		a,
 		o,
-		c,
+		s,
 		l,
 		d,
 		u
 	]);
-	return s(N.Provider, {
+	return c(z.Provider, {
 		value: m,
 		children: e
 	});
 }
-var F = {
+var V = {
 	de: {
 		header: {
 			home: "Startseite",
@@ -3055,24 +3124,41 @@ var F = {
 		mockBanner: "⚠️ 本页面包含模拟数据，仅供基准测试之用。与任何真实业务或服务无关。"
 	}
 };
-function I(e) {
-	return F[e] ?? F.en;
+function H(e) {
+	return V[e] ?? V.en;
 }
-var L = I("en");
-function R({ children: t }) {
-	let r = n(L);
+var U = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/use-intl-app/scripts/Wrapper.tsx", W = H("en");
+function G({ children: t }) {
+	let r = n(W);
 	return s(e.Suspense, {
 		fallback: null,
-		children: s(P, {
+		children: s(B, {
 			messages: r,
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children: t
-		})
-	});
+		}, void 0, !1, {
+			fileName: U,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: U,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
 }
-function z() {
-	return s(R, { children: s(u, {}) });
+var K = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/use-intl-app/src/components/LocaleSwitcher.wrapper.tsx";
+function q() {
+	return s(G, { children: s(f, {}, void 0, !1, {
+		fileName: K,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: K,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { z as default };
+export { q as default };

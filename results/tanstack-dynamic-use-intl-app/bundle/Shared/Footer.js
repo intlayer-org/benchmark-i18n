@@ -1,6 +1,7 @@
 import React, { cloneElement, createContext, isValidElement, use, useContext, useMemo } from "react";
 import { Link, useParams } from "@tanstack/react-router";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 function memoize(fn, options) {
 	const cache = options && options.cache ? options.cache : cacheDefault;
 	const serializer = options && options.serializer ? options.serializer : serializerDefault;
@@ -48,7 +49,6 @@ var serializerDefault = function() {
 	return JSON.stringify(arguments);
 };
 var ObjectWithoutPrototypeCache = class {
-	cache;
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -66,16 +66,26 @@ var strategies = {
 	variadic: strategyVariadic,
 	monadic: strategyMonadic
 };
-var a = class extends Error {
-	constructor(e, t) {
-		let a = e;
-		t && (a += ": " + t), super(a), this.code = e, t && (this.originalMessage = t);
+var IntlError = class extends Error {
+	constructor(code, originalMessage) {
+		let message = code;
+		if (originalMessage) message += ": " + originalMessage;
+		super(message);
+		this.code = code;
+		if (originalMessage) this.originalMessage = originalMessage;
 	}
 };
-var r = function(e) {
-	return e.MISSING_MESSAGE = "MISSING_MESSAGE", e.MISSING_FORMAT = "MISSING_FORMAT", e.ENVIRONMENT_FALLBACK = "ENVIRONMENT_FALLBACK", e.INSUFFICIENT_PATH = "INSUFFICIENT_PATH", e.INVALID_MESSAGE = "INVALID_MESSAGE", e.INVALID_KEY = "INVALID_KEY", e.FORMATTING_ERROR = "FORMATTING_ERROR", e;
-}(r || {});
-function s() {
+var IntlErrorCode = function(IntlErrorCode) {
+	IntlErrorCode["MISSING_MESSAGE"] = "MISSING_MESSAGE";
+	IntlErrorCode["MISSING_FORMAT"] = "MISSING_FORMAT";
+	IntlErrorCode["ENVIRONMENT_FALLBACK"] = "ENVIRONMENT_FALLBACK";
+	IntlErrorCode["INSUFFICIENT_PATH"] = "INSUFFICIENT_PATH";
+	IntlErrorCode["INVALID_MESSAGE"] = "INVALID_MESSAGE";
+	IntlErrorCode["INVALID_KEY"] = "INVALID_KEY";
+	IntlErrorCode["FORMATTING_ERROR"] = "FORMATTING_ERROR";
+	return IntlErrorCode;
+}(IntlErrorCode || {});
+function createCache() {
 	return {
 		dateTime: {},
 		number: {},
@@ -86,29 +96,35 @@ function s() {
 		displayNames: {}
 	};
 }
-function i$1(a, r) {
-	return memoize(a, {
-		cache: (s = r, { create: () => ({
-			get: (e) => s[e],
-			set(e, t) {
-				s[e] = t;
+function createMemoCache(store) {
+	return { create() {
+		return {
+			get(key) {
+				return store[key];
+			},
+			set(key, value) {
+				store[key] = value;
 			}
-		}) }),
+		};
+	} };
+}
+function memoFn(fn, cache) {
+	return memoize(fn, {
+		cache: createMemoCache(cache),
 		strategy: strategies.variadic
 	});
-	var s;
 }
-function I(e, t) {
-	return i$1(((...t) => new e(...t)), t);
+function memoConstructor(ConstructorFn, cache) {
+	return memoFn((...args) => new ConstructorFn(...args), cache);
 }
-function l$1(e) {
+function createIntlFormatters(cache) {
 	return {
-		getDateTimeFormat: I(Intl.DateTimeFormat, e.dateTime),
-		getNumberFormat: I(Intl.NumberFormat, e.number),
-		getPluralRules: I(Intl.PluralRules, e.pluralRules),
-		getRelativeTimeFormat: I(Intl.RelativeTimeFormat, e.relativeTime),
-		getListFormat: I(Intl.ListFormat, e.list),
-		getDisplayNames: I(Intl.DisplayNames, e.displayNames)
+		getDateTimeFormat: memoConstructor(Intl.DateTimeFormat, cache.dateTime),
+		getNumberFormat: memoConstructor(Intl.NumberFormat, cache.number),
+		getPluralRules: memoConstructor(Intl.PluralRules, cache.pluralRules),
+		getRelativeTimeFormat: memoConstructor(Intl.RelativeTimeFormat, cache.relativeTime),
+		getListFormat: memoConstructor(Intl.ListFormat, cache.list),
+		getDisplayNames: memoConstructor(Intl.DisplayNames, cache.displayNames)
 	};
 }
 var DATE_TIME_REGEX = /(?:[Eec]{1,6}|G{1,5}|[Qq]{1,5}|(?:[yYur]+|U{1,5})|[ML]{1,5}|d{1,2}|D{1,3}|F{1}|[abB]{1,5}|[hkHK]{1,2}|w{1,2}|W{1}|m{1,2}|s{1,2}|[zZOvVxX]{1,4})(?=([^']*'[^']*')*[^']*$)/g;
@@ -468,6 +484,35 @@ function parseNumberSkeleton(tokens) {
 	}
 	return result;
 }
+var ErrorKind = function(ErrorKind) {
+	ErrorKind[ErrorKind["EXPECT_ARGUMENT_CLOSING_BRACE"] = 1] = "EXPECT_ARGUMENT_CLOSING_BRACE";
+	ErrorKind[ErrorKind["EMPTY_ARGUMENT"] = 2] = "EMPTY_ARGUMENT";
+	ErrorKind[ErrorKind["MALFORMED_ARGUMENT"] = 3] = "MALFORMED_ARGUMENT";
+	ErrorKind[ErrorKind["EXPECT_ARGUMENT_TYPE"] = 4] = "EXPECT_ARGUMENT_TYPE";
+	ErrorKind[ErrorKind["INVALID_ARGUMENT_TYPE"] = 5] = "INVALID_ARGUMENT_TYPE";
+	ErrorKind[ErrorKind["EXPECT_ARGUMENT_STYLE"] = 6] = "EXPECT_ARGUMENT_STYLE";
+	ErrorKind[ErrorKind["INVALID_NUMBER_SKELETON"] = 7] = "INVALID_NUMBER_SKELETON";
+	ErrorKind[ErrorKind["INVALID_DATE_TIME_SKELETON"] = 8] = "INVALID_DATE_TIME_SKELETON";
+	ErrorKind[ErrorKind["EXPECT_NUMBER_SKELETON"] = 9] = "EXPECT_NUMBER_SKELETON";
+	ErrorKind[ErrorKind["EXPECT_DATE_TIME_SKELETON"] = 10] = "EXPECT_DATE_TIME_SKELETON";
+	ErrorKind[ErrorKind["UNCLOSED_QUOTE_IN_ARGUMENT_STYLE"] = 11] = "UNCLOSED_QUOTE_IN_ARGUMENT_STYLE";
+	ErrorKind[ErrorKind["EXPECT_SELECT_ARGUMENT_OPTIONS"] = 12] = "EXPECT_SELECT_ARGUMENT_OPTIONS";
+	ErrorKind[ErrorKind["EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE"] = 13] = "EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE";
+	ErrorKind[ErrorKind["INVALID_PLURAL_ARGUMENT_OFFSET_VALUE"] = 14] = "INVALID_PLURAL_ARGUMENT_OFFSET_VALUE";
+	ErrorKind[ErrorKind["EXPECT_SELECT_ARGUMENT_SELECTOR"] = 15] = "EXPECT_SELECT_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["EXPECT_PLURAL_ARGUMENT_SELECTOR"] = 16] = "EXPECT_PLURAL_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT"] = 17] = "EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT";
+	ErrorKind[ErrorKind["EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT"] = 18] = "EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT";
+	ErrorKind[ErrorKind["INVALID_PLURAL_ARGUMENT_SELECTOR"] = 19] = "INVALID_PLURAL_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["DUPLICATE_PLURAL_ARGUMENT_SELECTOR"] = 20] = "DUPLICATE_PLURAL_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["DUPLICATE_SELECT_ARGUMENT_SELECTOR"] = 21] = "DUPLICATE_SELECT_ARGUMENT_SELECTOR";
+	ErrorKind[ErrorKind["MISSING_OTHER_CLAUSE"] = 22] = "MISSING_OTHER_CLAUSE";
+	ErrorKind[ErrorKind["INVALID_TAG"] = 23] = "INVALID_TAG";
+	ErrorKind[ErrorKind["INVALID_TAG_NAME"] = 25] = "INVALID_TAG_NAME";
+	ErrorKind[ErrorKind["UNMATCHED_CLOSING_TAG"] = 26] = "UNMATCHED_CLOSING_TAG";
+	ErrorKind[ErrorKind["UNCLOSED_TAG"] = 27] = "UNCLOSED_TAG";
+	return ErrorKind;
+}({});
 var TYPE = function(TYPE) {
 	TYPE[TYPE["literal"] = 0] = "literal";
 	TYPE[TYPE["argument"] = 1] = "argument";
@@ -518,35 +563,6 @@ function isNumberSkeleton(el) {
 function isDateTimeSkeleton(el) {
 	return !!(el && typeof el === "object" && el.type === SKELETON_TYPE.dateTime);
 }
-var ErrorKind = function(ErrorKind) {
-	ErrorKind[ErrorKind["EXPECT_ARGUMENT_CLOSING_BRACE"] = 1] = "EXPECT_ARGUMENT_CLOSING_BRACE";
-	ErrorKind[ErrorKind["EMPTY_ARGUMENT"] = 2] = "EMPTY_ARGUMENT";
-	ErrorKind[ErrorKind["MALFORMED_ARGUMENT"] = 3] = "MALFORMED_ARGUMENT";
-	ErrorKind[ErrorKind["EXPECT_ARGUMENT_TYPE"] = 4] = "EXPECT_ARGUMENT_TYPE";
-	ErrorKind[ErrorKind["INVALID_ARGUMENT_TYPE"] = 5] = "INVALID_ARGUMENT_TYPE";
-	ErrorKind[ErrorKind["EXPECT_ARGUMENT_STYLE"] = 6] = "EXPECT_ARGUMENT_STYLE";
-	ErrorKind[ErrorKind["INVALID_NUMBER_SKELETON"] = 7] = "INVALID_NUMBER_SKELETON";
-	ErrorKind[ErrorKind["INVALID_DATE_TIME_SKELETON"] = 8] = "INVALID_DATE_TIME_SKELETON";
-	ErrorKind[ErrorKind["EXPECT_NUMBER_SKELETON"] = 9] = "EXPECT_NUMBER_SKELETON";
-	ErrorKind[ErrorKind["EXPECT_DATE_TIME_SKELETON"] = 10] = "EXPECT_DATE_TIME_SKELETON";
-	ErrorKind[ErrorKind["UNCLOSED_QUOTE_IN_ARGUMENT_STYLE"] = 11] = "UNCLOSED_QUOTE_IN_ARGUMENT_STYLE";
-	ErrorKind[ErrorKind["EXPECT_SELECT_ARGUMENT_OPTIONS"] = 12] = "EXPECT_SELECT_ARGUMENT_OPTIONS";
-	ErrorKind[ErrorKind["EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE"] = 13] = "EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE";
-	ErrorKind[ErrorKind["INVALID_PLURAL_ARGUMENT_OFFSET_VALUE"] = 14] = "INVALID_PLURAL_ARGUMENT_OFFSET_VALUE";
-	ErrorKind[ErrorKind["EXPECT_SELECT_ARGUMENT_SELECTOR"] = 15] = "EXPECT_SELECT_ARGUMENT_SELECTOR";
-	ErrorKind[ErrorKind["EXPECT_PLURAL_ARGUMENT_SELECTOR"] = 16] = "EXPECT_PLURAL_ARGUMENT_SELECTOR";
-	ErrorKind[ErrorKind["EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT"] = 17] = "EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT";
-	ErrorKind[ErrorKind["EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT"] = 18] = "EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT";
-	ErrorKind[ErrorKind["INVALID_PLURAL_ARGUMENT_SELECTOR"] = 19] = "INVALID_PLURAL_ARGUMENT_SELECTOR";
-	ErrorKind[ErrorKind["DUPLICATE_PLURAL_ARGUMENT_SELECTOR"] = 20] = "DUPLICATE_PLURAL_ARGUMENT_SELECTOR";
-	ErrorKind[ErrorKind["DUPLICATE_SELECT_ARGUMENT_SELECTOR"] = 21] = "DUPLICATE_SELECT_ARGUMENT_SELECTOR";
-	ErrorKind[ErrorKind["MISSING_OTHER_CLAUSE"] = 22] = "MISSING_OTHER_CLAUSE";
-	ErrorKind[ErrorKind["INVALID_TAG"] = 23] = "INVALID_TAG";
-	ErrorKind[ErrorKind["INVALID_TAG_NAME"] = 25] = "INVALID_TAG_NAME";
-	ErrorKind[ErrorKind["UNMATCHED_CLOSING_TAG"] = 26] = "UNMATCHED_CLOSING_TAG";
-	ErrorKind[ErrorKind["UNCLOSED_TAG"] = 27] = "UNCLOSED_TAG";
-	return ErrorKind;
-}({});
 var SPACE_SEPARATOR_REGEX = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/;
 var timeData = {
 	"001": ["H", "h"],
@@ -1774,18 +1790,12 @@ var trimEnd = hasTrimEnd ? function trimEnd(s) {
 } : function trimEnd(s) {
 	return s.replace(SPACE_SEPARATOR_END_REGEX, "");
 };
-var IDENTIFIER_PREFIX_RE = /* @__PURE__ */ new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+var IDENTIFIER_PREFIX_RE = new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
 function matchIdentifierAtIndex(s, index) {
 	IDENTIFIER_PREFIX_RE.lastIndex = index;
 	return IDENTIFIER_PREFIX_RE.exec(s)[1] ?? "";
 }
 var Parser = class {
-	message;
-	position;
-	locale;
-	ignoreTag;
-	requiresOtherClause;
-	shouldParseSkeletons;
 	constructor(message, options = {}) {
 		this.message = message;
 		this.position = {
@@ -2148,9 +2158,7 @@ var Parser = class {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -2364,8 +2372,6 @@ var ErrorCode = function(ErrorCode) {
 	return ErrorCode;
 }({});
 var FormatError = class extends Error {
-	code;
-	originalMessage;
 	constructor(msg, code, originalMessage) {
 		super(msg);
 		this.code = code;
@@ -2563,18 +2569,26 @@ function createDefaultFormatters(cache = {
 	};
 }
 var IntlMessageFormat = class IntlMessageFormat {
-	ast;
-	locales;
-	resolvedLocale;
-	formatters;
-	formats;
-	message;
-	formatterCache = {
-		number: {},
-		dateTime: {},
-		pluralRules: {}
-	};
 	constructor(message, locales = IntlMessageFormat.defaultLocale, overrideFormats, opts) {
+		this.formatterCache = {
+			number: {},
+			dateTime: {},
+			pluralRules: {}
+		};
+		this.format = (values) => {
+			const parts = this.formatToParts(values);
+			if (parts.length === 1) return parts[0].value;
+			const result = parts.reduce((all, part) => {
+				if (!all.length || part.type !== PART_TYPE.literal || typeof all[all.length - 1] !== "string") all.push(part.value);
+				else all[all.length - 1] += part.value;
+				return all;
+			}, []);
+			if (result.length <= 1) return result[0] || "";
+			return result;
+		};
+		this.formatToParts = (values) => formatToParts(this.ast, this.locales, this.formatters, this.formats, values, void 0, this.message);
+		this.resolvedOptions = () => ({ locale: this.resolvedLocale?.toString() || Intl.NumberFormat.supportedLocalesOf(this.locales)[0] });
+		this.getAst = () => this.ast;
 		this.locales = locales;
 		this.resolvedLocale = IntlMessageFormat.resolveLocale(locales);
 		if (typeof message === "string") {
@@ -2590,337 +2604,444 @@ var IntlMessageFormat = class IntlMessageFormat {
 		this.formats = mergeConfigs(IntlMessageFormat.formats, overrideFormats);
 		this.formatters = opts && opts.formatters || createDefaultFormatters(this.formatterCache);
 	}
-	format = (values) => {
-		const parts = this.formatToParts(values);
-		if (parts.length === 1) return parts[0].value;
-		const result = parts.reduce((all, part) => {
-			if (!all.length || part.type !== PART_TYPE.literal || typeof all[all.length - 1] !== "string") all.push(part.value);
-			else all[all.length - 1] += part.value;
-			return all;
-		}, []);
-		if (result.length <= 1) return result[0] || "";
-		return result;
-	};
-	formatToParts = (values) => formatToParts(this.ast, this.locales, this.formatters, this.formats, values, void 0, this.message);
-	resolvedOptions = () => ({ locale: this.resolvedLocale?.toString() || Intl.NumberFormat.supportedLocalesOf(this.locales)[0] });
-	getAst = () => this.ast;
-	static memoizedDefaultLocale = null;
+	static {
+		this.memoizedDefaultLocale = null;
+	}
 	static get defaultLocale() {
 		if (!IntlMessageFormat.memoizedDefaultLocale) IntlMessageFormat.memoizedDefaultLocale = new Intl.NumberFormat().resolvedOptions().locale;
 		return IntlMessageFormat.memoizedDefaultLocale;
 	}
-	static resolveLocale = (locales) => {
-		if (typeof Intl.Locale === "undefined") return;
-		const supportedLocales = Intl.NumberFormat.supportedLocalesOf(locales);
-		if (supportedLocales.length > 0) return new Intl.Locale(supportedLocales[0]);
-		return new Intl.Locale(typeof locales === "string" ? locales : locales[0]);
-	};
-	static __parse = parse;
-	static formats = {
-		number: {
-			integer: { maximumFractionDigits: 0 },
-			currency: { style: "currency" },
-			percent: { style: "percent" }
-		},
-		date: {
-			short: {
-				month: "numeric",
-				day: "numeric",
-				year: "2-digit"
+	static {
+		this.resolveLocale = (locales) => {
+			if (typeof Intl.Locale === "undefined") return;
+			const supportedLocales = Intl.NumberFormat.supportedLocalesOf(locales);
+			if (supportedLocales.length > 0) return new Intl.Locale(supportedLocales[0]);
+			return new Intl.Locale(typeof locales === "string" ? locales : locales[0]);
+		};
+	}
+	static {
+		this.__parse = parse;
+	}
+	static {
+		this.formats = {
+			number: {
+				integer: { maximumFractionDigits: 0 },
+				currency: { style: "currency" },
+				percent: { style: "percent" }
 			},
-			medium: {
-				month: "short",
-				day: "numeric",
-				year: "numeric"
+			date: {
+				short: {
+					month: "numeric",
+					day: "numeric",
+					year: "2-digit"
+				},
+				medium: {
+					month: "short",
+					day: "numeric",
+					year: "numeric"
+				},
+				long: {
+					month: "long",
+					day: "numeric",
+					year: "numeric"
+				},
+				full: {
+					weekday: "long",
+					month: "long",
+					day: "numeric",
+					year: "numeric"
+				}
 			},
-			long: {
-				month: "long",
-				day: "numeric",
-				year: "numeric"
-			},
-			full: {
-				weekday: "long",
-				month: "long",
-				day: "numeric",
-				year: "numeric"
+			time: {
+				short: {
+					hour: "numeric",
+					minute: "numeric"
+				},
+				medium: {
+					hour: "numeric",
+					minute: "numeric",
+					second: "numeric"
+				},
+				long: {
+					hour: "numeric",
+					minute: "numeric",
+					second: "numeric",
+					timeZoneName: "short"
+				},
+				full: {
+					hour: "numeric",
+					minute: "numeric",
+					second: "numeric",
+					timeZoneName: "short"
+				}
 			}
+		};
+	}
+};
+function convertFormatsToIntlMessageFormat(globalFormats, inlineFormats, timeZone) {
+	const mfDateDefaults = IntlMessageFormat.formats.date;
+	const mfTimeDefaults = IntlMessageFormat.formats.time;
+	const dateTimeFormats = {
+		...globalFormats?.dateTime,
+		...inlineFormats?.dateTime
+	};
+	const allFormats = {
+		date: {
+			...mfDateDefaults,
+			...dateTimeFormats
 		},
 		time: {
-			short: {
-				hour: "numeric",
-				minute: "numeric"
-			},
-			medium: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric"
-			},
-			long: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric",
-				timeZoneName: "short"
-			},
-			full: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric",
-				timeZoneName: "short"
-			}
+			...mfTimeDefaults,
+			...dateTimeFormats
+		},
+		number: {
+			...globalFormats?.number,
+			...inlineFormats?.number
 		}
 	};
-};
-function m$1(...[m, s, i, n]) {
-	if (Array.isArray(s)) throw new a(r.INVALID_MESSAGE, void 0);
-	if ("object" == typeof s) throw new a(r.INSUFFICIENT_PATH, void 0);
-	if ("string" == typeof s) {
-		const t = function(t, e) {
-			return e || /'[{}]/.test(t) ? void 0 : t;
-		}(s, i);
-		if (t) return t;
+	if (timeZone) ["date", "time"].forEach((property) => {
+		const formats = allFormats[property];
+		for (const [key, value] of Object.entries(formats)) formats[key] = {
+			timeZone,
+			...value
+		};
+	});
+	return allFormats;
+}
+function createMessageFormatter(cache, intlFormatters) {
+	return memoFn((...args) => new IntlMessageFormat(args[0], args[1], args[2], {
+		formatters: intlFormatters,
+		...args[3]
+	}), cache.message);
+}
+function getPlainMessage(candidate, values) {
+	return values || /'[{}]/.test(candidate) || /<|{/.test(candidate) ? void 0 : candidate;
+}
+function formatMessage(...[key, message, values, options]) {
+	if (Array.isArray(message)) throw new IntlError(IntlErrorCode.INVALID_MESSAGE, `Message at \`${key}\` resolved to an array, but only strings are supported. See https://next-intl.dev/docs/usage/translations#arrays-of-messages`);
+	if (typeof message === "object") throw new IntlError(IntlErrorCode.INSUFFICIENT_PATH, `Message at \`${key}\` resolved to \`${typeof message}\`, but only strings are supported. Use a \`.\` to retrieve nested messages. See https://next-intl.dev/docs/usage/translations#structuring-messages`);
+	if (typeof message === "string") {
+		const plainMessage = getPlainMessage(message, values);
+		if (plainMessage) return plainMessage;
 	}
-	const { cache: f, formats: c, formatters: g, globalFormats: u, locale: d, timeZone: A } = n;
-	let p;
-	g.getMessageFormat || (g.getMessageFormat = function(e, r) {
-		return i$1(((...e) => new IntlMessageFormat(e[0], e[1], e[2], {
-			formatters: r,
-			...e[3]
-		})), e.message);
-	}(f, g));
+	const { cache, formats, formatters, globalFormats, locale, timeZone } = options;
+	if (!formatters.getMessageFormat) formatters.getMessageFormat = createMessageFormatter(cache, formatters);
+	let messageFormat;
 	try {
-		p = g.getMessageFormat(s, d, function(e, r, o) {
-			const a = IntlMessageFormat.formats.date, m = IntlMessageFormat.formats.time, s = {
-				...e?.dateTime,
-				...r?.dateTime
-			}, i = {
-				date: {
-					...a,
-					...s
-				},
-				time: {
-					...m,
-					...s
-				},
-				number: {
-					...e?.number,
-					...r?.number
-				}
-			};
-			return o && ["date", "time"].forEach(((t) => {
-				const e = i[t];
-				for (const [t, r] of Object.entries(e)) e[t] = {
-					timeZone: o,
-					...r
-				};
-			})), i;
-		}(u, c, A), { formatters: {
-			...g,
-			getDateTimeFormat: (t, e) => g.getDateTimeFormat(t, {
-				...e,
-				timeZone: e?.timeZone ?? A
-			})
+		messageFormat = formatters.getMessageFormat(message, locale, convertFormatsToIntlMessageFormat(globalFormats, formats, timeZone), { formatters: {
+			...formatters,
+			getDateTimeFormat(locales, dateTimeOptions) {
+				return formatters.getDateTimeFormat(locales, {
+					...dateTimeOptions,
+					timeZone: dateTimeOptions?.timeZone ?? timeZone
+				});
+			}
 		} });
-	} catch (t) {
-		throw new a(r.INVALID_MESSAGE, void 0);
+	} catch (error) {
+		throw new IntlError(IntlErrorCode.INVALID_MESSAGE, `${error.message} (${error.originalMessage})`);
 	}
-	const w = p.format(i);
-	return isValidElement(w) || Array.isArray(w) || "string" == typeof w ? w : String(w);
+	const formattedMessage = messageFormat.format(values);
+	return isValidElement(formattedMessage) || Array.isArray(formattedMessage) || typeof formattedMessage === "string" ? formattedMessage : String(formattedMessage);
 }
-m$1.raw = !0;
-function c(...e) {
-	return e.filter(Boolean).join(".");
+formatMessage.raw = true;
+function joinPath(...parts) {
+	return parts.filter(Boolean).join(".");
 }
-function i(e) {
-	return c(e.namespace, e.key);
+function defaultGetMessageFallback(props) {
+	return joinPath(props.namespace, props.key);
 }
-function u(e) {
-	console.error(e);
+function defaultOnError(error) {
+	console.error(error);
 }
-function m(e, t, r, n) {
-	const o = c(n, r);
-	if (!t) throw new Error(o);
-	let a = t;
-	return r.split(".").forEach(((t) => {
-		const r = a[t];
-		if (null == t || null == r) throw new Error(o + ` (${e})`);
-		a = r;
-	})), a;
+function prepareTranslationValues(values) {
+	const transformedValues = {};
+	Object.keys(values).forEach((key) => {
+		let index = 0;
+		const value = values[key];
+		let transformed;
+		if (typeof value === "function") transformed = (chunks) => {
+			const result = value(chunks);
+			return isValidElement(result) ? cloneElement(result, { key: key + index++ }) : result;
+		};
+		else transformed = value;
+		transformedValues[key] = transformed;
+	});
+	return transformedValues;
 }
-function f(a$2) {
-	const s = function(e, t, r$2) {
-		try {
-			if (!t) throw new Error(void 0);
-			const n = r$2 ? m(e, t, r$2) : t;
-			if (!n) throw new Error(r$2);
-			return n;
-		} catch (e) {
-			return new a(r.MISSING_MESSAGE, e.message);
-		}
-	}(a$2.locale, a$2.messages, a$2.namespace);
-	return function({ cache: a$3, formats: s, formatters: u, getMessageFallback: f = i, locale: l, messagesOrError: g, namespace: y, onError: h, timeZone: w }) {
-		const E = g instanceof a;
-		function S(e, t, r, o) {
-			const a$4 = new a(t, r);
-			return h(a$4), o ?? f({
-				error: a$4,
-				key: e,
-				namespace: y
-			});
-		}
-		function d(i, d, p, M) {
-			const T = M;
-			let R;
-			if (E) {
-				if (!T) return h(g), f({
-					error: g,
-					key: i,
-					namespace: y
-				});
-				R = T;
-			} else {
-				const e = g;
-				try {
-					R = m(l, e, i, y);
-				} catch (e) {
-					if (!T) return S(i, r.MISSING_MESSAGE, e.message, T);
-					R = T;
-				}
-			}
-			try {
-				return m$1(c(y, i), R, d ? function(r) {
-					const n = {};
-					return Object.keys(r).forEach(((o) => {
-						let a = 0;
-						const s = r[o];
-						let c;
-						c = "function" == typeof s ? (r) => {
-							const n = s(r);
-							return isValidElement(n) ? cloneElement(n, { key: o + a++ }) : n;
-						} : s, n[o] = c;
-					})), n;
-				}(d) : d, {
-					cache: a$3,
-					formatters: u,
-					globalFormats: s,
-					formats: p,
-					locale: l,
-					timeZone: w
-				});
-			} catch (e) {
-				let t, r$3;
-				return e instanceof a ? (t = e.code, r$3 = e.originalMessage) : (t = r.FORMATTING_ERROR, r$3 = e.message), S(i, t, r$3, T);
-			}
-		}
-		function p(e, t, r$4, n) {
-			const a = d(e, t, r$4, n);
-			return "string" != typeof a ? S(e, r.INVALID_MESSAGE, void 0) : a;
-		}
-		return p.rich = d, p.markup = (e, t, r, n) => d(e, t, r, n), p.raw = (e) => {
-			if (E) return h(g), f({
-				error: g,
-				key: e,
-				namespace: y
-			});
-			const t = g;
-			try {
-				return m(l, t, e, y);
-			} catch (t) {
-				return S(e, r.MISSING_MESSAGE, t.message);
-			}
-		}, p.has = (e) => {
-			if (E) return !1;
-			try {
-				return m(l, g, e, y), !0;
-			} catch {
-				return !1;
-			}
-		}, p;
-	}({
-		...a$2,
-		messagesOrError: s
+function resolvePath(locale, messages, key, namespace) {
+	const fullKey = joinPath(namespace, key);
+	if (!messages) throw new Error(`No messages available at \`${namespace}\`.`);
+	let message = messages;
+	key.split(".").forEach((part) => {
+		const next = message[part];
+		if (part == null || next == null) throw new Error(`Could not resolve \`${fullKey}\` in messages for locale \`${locale}\`.`);
+		message = next;
+	});
+	return message;
+}
+function getMessagesOrError(locale, messages, namespace) {
+	try {
+		if (!messages) throw new Error(`No messages were configured.`);
+		const retrievedMessages = namespace ? resolvePath(locale, messages, namespace) : messages;
+		if (!retrievedMessages) throw new Error(`No messages for namespace \`${namespace}\` found.`);
+		return retrievedMessages;
+	} catch (error) {
+		return new IntlError(IntlErrorCode.MISSING_MESSAGE, error.message);
+	}
+}
+function createBaseTranslator(config) {
+	const messagesOrError = getMessagesOrError(config.locale, config.messages, config.namespace);
+	return createBaseTranslatorImpl({
+		...config,
+		messagesOrError
 	});
 }
-function l(e, t) {
-	return e === t ? void 0 : e.slice((t + ".").length);
+function createBaseTranslatorImpl({ cache, formats: globalFormats, formatters, getMessageFallback = defaultGetMessageFallback, locale, messagesOrError, namespace, onError, timeZone }) {
+	const hasMessagesError = messagesOrError instanceof IntlError;
+	function getFallbackFromErrorAndNotify(key, code, message, fallback) {
+		const error = new IntlError(code, message);
+		onError(error);
+		return fallback ?? getMessageFallback({
+			error,
+			key,
+			namespace
+		});
+	}
+	function translateBaseFn(key, values, formats, _fallback) {
+		const fallback = _fallback;
+		let message;
+		if (hasMessagesError) {
+			if (fallback) message = fallback;
+			else {
+				onError(messagesOrError);
+				return getMessageFallback({
+					error: messagesOrError,
+					key,
+					namespace
+				});
+			}
+		} else {
+			const messages = messagesOrError;
+			try {
+				message = resolvePath(locale, messages, key, namespace);
+			} catch (error) {
+				if (fallback) message = fallback;
+				else return getFallbackFromErrorAndNotify(key, IntlErrorCode.MISSING_MESSAGE, error.message, fallback);
+			}
+		}
+		try {
+			return formatMessage(joinPath(namespace, key), message, values ? prepareTranslationValues(values) : values, {
+				cache,
+				formatters,
+				globalFormats,
+				formats,
+				locale,
+				timeZone
+			});
+		} catch (error) {
+			let errorCode, errorMessage;
+			if (error instanceof IntlError) {
+				errorCode = error.code;
+				errorMessage = error.originalMessage;
+			} else {
+				errorCode = IntlErrorCode.FORMATTING_ERROR;
+				errorMessage = error.message;
+			}
+			return getFallbackFromErrorAndNotify(key, errorCode, errorMessage, fallback);
+		}
+	}
+	function translateFn(key, values, formats, _fallback) {
+		const result = translateBaseFn(key, values, formats, _fallback);
+		if (typeof result !== "string") return getFallbackFromErrorAndNotify(key, IntlErrorCode.INVALID_MESSAGE, `The message \`${key}\` in ${namespace ? `namespace \`${namespace}\`` : "messages"} didn't resolve to a string. If you want to format rich text, use \`t.rich\` instead.`);
+		return result;
+	}
+	translateFn.rich = translateBaseFn;
+	translateFn.markup = (key, values, formats, _fallback) => {
+		const result = translateBaseFn(key, values, formats, _fallback);
+		if (typeof result !== "string") {
+			const error = new IntlError(IntlErrorCode.FORMATTING_ERROR, "`t.markup` only accepts functions for formatting that receive and return strings.\n\nE.g. t.markup('markup', {b: (chunks) => `<b>${chunks}</b>`})");
+			onError(error);
+			return getMessageFallback({
+				error,
+				key,
+				namespace
+			});
+		}
+		return result;
+	};
+	translateFn.raw = (key) => {
+		if (!formatMessage.raw) throw new Error("`t.raw` is not supported when messages are precompiled.");
+		if (hasMessagesError) {
+			onError(messagesOrError);
+			return getMessageFallback({
+				error: messagesOrError,
+				key,
+				namespace
+			});
+		}
+		const messages = messagesOrError;
+		try {
+			return resolvePath(locale, messages, key, namespace);
+		} catch (error) {
+			return getFallbackFromErrorAndNotify(key, IntlErrorCode.MISSING_MESSAGE, error.message);
+		}
+	};
+	translateFn.has = (key) => {
+		if (hasMessagesError) return false;
+		try {
+			resolvePath(locale, messagesOrError, key, namespace);
+			return true;
+		} catch {
+			return false;
+		}
+	};
+	return translateFn;
 }
-var y = 86400;
-7 * y;
-365 * y;
-function M({ formats: e, getMessageFallback: t, messages: r, onError: n, ...o }) {
+function resolveNamespace(namespace, namespacePrefix) {
+	return namespace === namespacePrefix ? void 0 : namespace.slice((namespacePrefix + ".").length);
+}
+var DAY = 86400;
+DAY * 7;
+DAY * (365 / 12) * 3;
+DAY * 365;
+function validateMessagesSegment(messages, invalidKeyLabels, parentPath) {
+	Object.entries(messages).forEach(([key, messageOrMessages]) => {
+		if (key.includes(".")) {
+			let keyLabel = key;
+			if (parentPath) keyLabel += ` (at ${parentPath})`;
+			invalidKeyLabels.push(keyLabel);
+		}
+		if (messageOrMessages != null && typeof messageOrMessages === "object") validateMessagesSegment(messageOrMessages, invalidKeyLabels, joinPath(parentPath, key));
+	});
+}
+function validateMessages(messages, onError) {
+	const invalidKeyLabels = [];
+	validateMessagesSegment(messages, invalidKeyLabels);
+	if (invalidKeyLabels.length > 0) onError(new IntlError(IntlErrorCode.INVALID_KEY, `Namespace keys cannot contain the character "." as this is used to express nesting. Please remove it or replace it with another character.
+
+Invalid ${invalidKeyLabels.length === 1 ? "key" : "keys"}: ${invalidKeyLabels.join(", ")}
+
+If you're migrating from a flat structure, you can convert your messages as follows:
+
+import {set} from "lodash";
+
+const input = {
+  "one.one": "1.1",
+  "one.two": "1.2",
+  "two.one.one": "2.1.1"
+};
+
+const output = Object.entries(input).reduce(
+  (acc, [key, value]) => set(acc, key, value),
+  {}
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+`));
+}
+function initializeConfig({ formats, getMessageFallback, messages, onError, ...rest }) {
+	const finalOnError = onError || defaultOnError;
+	const finalGetMessageFallback = getMessageFallback || defaultGetMessageFallback;
+	if (messages) validateMessages(messages, finalOnError);
 	return {
-		...o,
-		formats: e || void 0,
-		messages: r || void 0,
-		onError: n || u,
-		getMessageFallback: t || i
+		...rest,
+		formats: formats || void 0,
+		messages: messages || void 0,
+		onError: finalOnError,
+		getMessageFallback: finalGetMessageFallback
 	};
 }
-var d = createContext(void 0);
-function v({ children: e, formats: o, getMessageFallback: n, locale: c, messages: i, now: f, onError: u, timeZone: l }) {
-	const v = useContext(d), w = useMemo((() => v?.cache || s()), [c, v?.cache]), p = useMemo((() => v?.formatters || l$1(w)), [w, v?.formatters]), h = useMemo((() => ({
-		...M({
-			locale: c,
-			formats: void 0 === o ? v?.formats : o,
-			getMessageFallback: n || v?.getMessageFallback,
-			messages: void 0 === i ? v?.messages : i,
-			now: f || v?.now,
-			onError: u || v?.onError,
-			timeZone: l || v?.timeZone
+var IntlContext = createContext(void 0);
+function IntlProvider({ children, formats, getMessageFallback, locale, messages, now, onError, timeZone }) {
+	const prevContext = useContext(IntlContext);
+	const cache = useMemo(() => {
+		return prevContext?.cache || createCache();
+	}, [locale, prevContext?.cache]);
+	const formatters = useMemo(() => prevContext?.formatters || createIntlFormatters(cache), [cache, prevContext?.formatters]);
+	const value = useMemo(() => ({
+		...initializeConfig({
+			locale,
+			formats: formats === void 0 ? prevContext?.formats : formats,
+			getMessageFallback: getMessageFallback || prevContext?.getMessageFallback,
+			messages: messages === void 0 ? prevContext?.messages : messages,
+			now: now || prevContext?.now,
+			onError: onError || prevContext?.onError,
+			timeZone: timeZone || prevContext?.timeZone
 		}),
-		formatters: p,
-		cache: w
-	})), [
-		w,
-		o,
-		p,
-		n,
-		c,
-		i,
-		f,
-		u,
-		v,
-		l
+		formatters,
+		cache
+	}), [
+		cache,
+		formats,
+		formatters,
+		getMessageFallback,
+		locale,
+		messages,
+		now,
+		onError,
+		prevContext,
+		timeZone
 	]);
-	return jsx(d.Provider, {
-		value: h,
-		children: e
+	return jsx(IntlContext.Provider, {
+		value,
+		children
 	});
 }
-function w() {
-	const e = useContext(d);
-	if (!e) throw new Error(void 0);
-	return e;
+function useIntlContext() {
+	const context = useContext(IntlContext);
+	if (!context) throw new Error("No intl context found. Have you configured the provider? See https://next-intl.dev/docs/usage/configuration#server-client-components");
+	return context;
 }
-var p = !1;
-var h = "undefined" == typeof window;
-function E(e) {
-	return function(e, r$1, o) {
-		const { cache: n, formats: a$1, formatters: s, getMessageFallback: m, locale: l$2, onError: g, timeZone: d } = w(), v = e[o], E = l(r$1, o);
-		return d || p || !h || (p = !0, g(new a(r.ENVIRONMENT_FALLBACK, void 0))), useMemo((() => f({
-			cache: n,
-			formatters: s,
-			getMessageFallback: m,
-			messages: v,
-			namespace: E,
-			onError: g,
-			formats: a$1,
-			locale: l$2,
-			timeZone: d
-		})), [
-			n,
-			s,
-			m,
-			v,
-			E,
-			g,
-			a$1,
-			l$2,
-			d
-		]);
-	}({ "!": w().messages }, e ? `!.${e}` : "!", "!");
+var hasWarnedForMissingTimezone = false;
+var isServer = typeof window === "undefined";
+function useTranslationsImpl(allMessagesPrefixed, namespacePrefixed, namespacePrefix) {
+	const { cache, formats: globalFormats, formatters, getMessageFallback, locale, onError, timeZone } = useIntlContext();
+	const allMessages = allMessagesPrefixed[namespacePrefix];
+	const namespace = resolveNamespace(namespacePrefixed, namespacePrefix);
+	if (!timeZone && !hasWarnedForMissingTimezone && isServer) {
+		hasWarnedForMissingTimezone = true;
+		onError(new IntlError(IntlErrorCode.ENVIRONMENT_FALLBACK, `There is no \`timeZone\` configured, this can lead to markup mismatches caused by environment differences. Consider adding a global default: https://next-intl.dev/docs/configuration#time-zone`));
+	}
+	return useMemo(() => createBaseTranslator({
+		cache,
+		formatters,
+		getMessageFallback,
+		messages: allMessages,
+		namespace,
+		onError,
+		formats: globalFormats,
+		locale,
+		timeZone
+	}), [
+		cache,
+		formatters,
+		getMessageFallback,
+		allMessages,
+		namespace,
+		onError,
+		globalFormats,
+		locale,
+		timeZone
+	]);
 }
+function useTranslations(namespace) {
+	const messages = useIntlContext().messages;
+	return useTranslationsImpl({ "!": messages }, namespace ? `!.${namespace}` : "!", "!");
+}
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/use-intl-app/src/components/Footer.tsx";
 function Footer() {
-	const t = E("footer");
+	const t = useTranslations("footer");
 	const currentLocale = useParams({ strict: false }).locale ?? "en";
 	const footerLinks = [
 		{
@@ -2939,53 +3060,117 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsx("footer", {
+	return jsxDEV("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxs("div", {
+		children: jsxDEV("div", {
 			className: "container py-8",
-			children: [jsxs("div", {
+			children: [jsxDEV("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxs("div", { children: [jsx("h3", {
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 32,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("anOpenSourceTestApplication")
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 35,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 31,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("resources")
-					}), jsx("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 40,
+						columnNumber: 13
+					}, this), jsxDEV("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
+						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
 							preload: false,
 							to: linkEl.to,
 							params: { locale: currentLocale },
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) : jsx("a", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 47,
+							columnNumber: 21
+						}, this) : jsxDEV("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) }, linkEl.label))
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 56,
+							columnNumber: 21
+						}, this) }, linkEl.label, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 45,
+							columnNumber: 17
+						}, this))
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 43,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 39,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("contact")
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 70,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 73,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 69,
+						columnNumber: 11
+					}, this)
 				]
-			}), jsx("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 30,
+				columnNumber: 9
+			}, this), jsxDEV("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: t("builtWith")
-			})]
-		})
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 78,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 29,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 28,
+		columnNumber: 5
+	}, this);
 }
 var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
 	const query = path.lastIndexOf("?");
@@ -2997,34 +3182,52 @@ var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
 };
 async function getMessages(locale) {
 	return (await _rolldown_dynamic_import_helper_default(Object.assign({
-		"../messages/de.ts": () => import("./de-A07FHHQi.js"),
-		"../messages/en.ts": () => import("./en-TbgyO-Lg.js"),
-		"../messages/es.ts": () => import("./es-CRtsNq7Q.js"),
-		"../messages/fr.ts": () => import("./fr-CKL3HZhy.js"),
-		"../messages/it.ts": () => import("./it-BTzM4hKw.js"),
-		"../messages/ja.ts": () => import("./ja-DVTUp_qg.js"),
-		"../messages/ko.ts": () => import("./ko-BE0o1WAx.js"),
-		"../messages/pt.ts": () => import("./pt-xN1u0Bs_.js"),
-		"../messages/ru.ts": () => import("./ru-BeSD8cfq.js"),
-		"../messages/zh.ts": () => import("./zh-CoxNs_Yx.js")
+		"../messages/de.ts": () => import("./de-Dyl3C6qW.js"),
+		"../messages/en.ts": () => import("./en-CUdkp9b0.js"),
+		"../messages/es.ts": () => import("./es-DqKrru1k.js"),
+		"../messages/fr.ts": () => import("./fr-DTWMXhxs.js"),
+		"../messages/it.ts": () => import("./it-BVY2_KnG.js"),
+		"../messages/ja.ts": () => import("./ja-ji2x9gZ5.js"),
+		"../messages/ko.ts": () => import("./ko-BLsgtRqk.js"),
+		"../messages/pt.ts": () => import("./pt-DYHYG58d.js"),
+		"../messages/ru.ts": () => import("./ru-CQ50ULs0.js"),
+		"../messages/zh.ts": () => import("./zh-C3nsQS6U.js")
 	}), `../messages/${locale}.ts`, 3)).default;
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/use-intl-app/scripts/Wrapper.tsx";
 var messagesPromise = getMessages("en");
 function Wrapper({ children }) {
 	const messages = use(messagesPromise);
-	return jsx(React.Suspense, {
+	return jsxDEV(React.Suspense, {
 		fallback: null,
-		children: jsx(v, {
+		children: jsxDEV(IntlProvider, {
 			messages,
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/use-intl-app/src/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Footer, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var de = {
