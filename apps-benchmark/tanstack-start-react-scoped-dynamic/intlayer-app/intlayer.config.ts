@@ -34,6 +34,7 @@ const config: IntlayerConfig = {
      * Default: "prefix-no-default"
      */
     mode: "prefix-no-default",
+    enableProxy: false,
   },
   editor: {
     /**
@@ -71,7 +72,10 @@ const config: IntlayerConfig = {
     applicationContext: [""].join("\n"),
   },
   build: {
+    optimize: true,
     minify: true,
+    purge: true,
+    checkTypes: false,
   },
   compiler: {
     enabled: true,
