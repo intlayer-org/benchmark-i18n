@@ -17,22 +17,22 @@
     "test:rendering": "playwright test rendering.test.ts"
   },
   "dependencies": {
-    "@solidjs/router": "^0.15.1",
-    "@tailwindcss/vite": "^4.2.2",
-    "intlayer": "^9.4.4",
-    "solid-intlayer": "^9.4.4",
-    "solid-js": "^1.9.12",
-    "tailwindcss": "^4.2.2"
+    "@solidjs/router": "^1.0.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "intlayer": "^9.5.0",
+    "solid-intlayer": "^9.5.0",
+    "solid-js": "^1.9.15",
+    "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@playwright/test": "^1.59.1",
+    "@playwright/test": "^1.63.0",
     "@tailwindcss/typography": "^0.5.20",
-    "@types/node": "^25.6.0",
+    "@types/node": "^26",
     "bun": "^1.4.2",
     "test-utils": "workspace:*",
-    "typescript": "~6.0.2",
+    "typescript": "~7.0.2",
     "vite": "^8.2.2",
-    "vite-intlayer": "^9.4.4",
-    "vite-plugin-solid": "^2.11.12"
+    "vite-intlayer": "^9.5.0",
+    "vite-plugin-solid": "^2.11.14"
   }
 }

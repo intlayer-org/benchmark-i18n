@@ -1,11 +1,12 @@
 msgid ""
 msgstr ""
-"Plural-Forms: nplurals=2; plural=n == 1 ? 0 : 1;\n"
 "Source-Language: en\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2\n"
+"X-Plurals-Order: one, other\n"
 
 #: src/components/Footer.tsx
 msgid "GitHub"
@@ -440,6 +441,7 @@ msgid "Choose the plan that fits your team. No hidden fees."
 msgstr "Choose the plan that fits your team. No hidden fees."
 
 #: src/components/pages/pricing/PricingTiers.tsx
+#: src/components/pages/pricing/PricingTiers.tsx
 msgid "Enterprise"
 msgstr "Enterprise"
 
@@ -569,3 +571,425 @@ msgstr "Meet the people behind i18n Benchmark. A diverse team united by a shared
 
 #~ msgid "Hello \"__root\"!"
 #~ msgstr "Hello \"__root\"!"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Starter"
+msgstr "Starter"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Community support"
+msgstr "Community support"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Public results"
+msgstr "Public results"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Pro"
+msgstr "Pro"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Unlimited runs"
+msgstr "Unlimited runs"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "All libraries"
+msgstr "All libraries"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Priority support"
+msgstr "Priority support"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Private results"
+msgstr "Private results"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "CI integration"
+msgstr "CI integration"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Historical data"
+msgstr "Historical data"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Custom"
+msgstr "Custom"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Everything in Pro"
+msgstr "Everything in Pro"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "On-premise option"
+msgstr "On-premise option"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Dedicated account manager"
+msgstr "Dedicated account manager"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Custom SLAs"
+msgstr "Custom SLAs"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Audit logs"
+msgstr "Audit logs"
+
+#: src/components/pages/pricing/PricingTiers.tsx
+msgid "Training sessions"
+msgstr "Training sessions"
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "What is i18n Benchmark?"
+msgstr "What is i18n Benchmark?"
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "How are benchmarks conducted?"
+msgstr "How are benchmarks conducted?"
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
+msgstr "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "Which libraries are currently supported?"
+msgstr "Which libraries are currently supported?"
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
+msgstr "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "Can I submit my own benchmarks?"
+msgstr "Can I submit my own benchmarks?"
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
+msgstr "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "How often are benchmarks updated?"
+msgstr "How often are benchmarks updated?"
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
+msgstr "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "Is the data reliable?"
+msgstr "Is the data reliable?"
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
+msgstr "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "Do you offer consulting services?"
+msgstr "Do you offer consulting services?"
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
+msgstr "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "How can I contribute?"
+msgstr "How can I contribute?"
+
+#: src/components/pages/faq/FAQList.tsx
+msgid "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+msgstr "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Sarah Chen"
+msgstr "Sarah Chen"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Founder & Lead Engineer"
+msgstr "Founder & Lead Engineer"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Former Google engineer with 10 years of experience building internationalization systems at scale."
+msgstr "Former Google engineer with 10 years of experience building internationalization systems at scale."
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Marcus Weber"
+msgstr "Marcus Weber"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Performance Engineer"
+msgstr "Performance Engineer"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+msgstr "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Aisha Patel"
+msgstr "Aisha Patel"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Developer Advocate"
+msgstr "Developer Advocate"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+msgstr "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Tomás Rodríguez"
+msgstr "Tomás Rodríguez"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Full-Stack Developer"
+msgstr "Full-Stack Developer"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+msgstr "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Yuki Tanaka"
+msgstr "Yuki Tanaka"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Data Analyst"
+msgstr "Data Analyst"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+msgstr "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Elena Kowalski"
+msgstr "Elena Kowalski"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Community Manager"
+msgstr "Community Manager"
+
+#: src/components/pages/team/TeamGrid.tsx
+msgid "Manages community contributions, partnerships, and events. Background in open source governance."
+msgstr "Manages community contributions, partnerships, and events. Background in open source governance."
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Comparing i18n Libraries in 2026: A Deep Dive"
+msgstr "Comparing i18n Libraries in 2026: A Deep Dive"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "March 15, 2026"
+msgstr "March 15, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+msgstr "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Benchmark"
+msgstr "Benchmark"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "How to Reduce Your i18n Bundle by 60%"
+msgstr "How to Reduce Your i18n Bundle by 60%"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "March 8, 2026"
+msgstr "March 8, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+msgstr "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+
+#: src/components/pages/blog/BlogList.tsx
+#: src/components/pages/blog/BlogList.tsx
+msgid "Tutorial"
+msgstr "Tutorial"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "The State of Internationalization in React"
+msgstr "The State of Internationalization in React"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "February 28, 2026"
+msgstr "February 28, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+msgstr "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+
+#: src/components/pages/blog/BlogList.tsx
+#: src/components/pages/blog/BlogList.tsx
+msgid "Analysis"
+msgstr "Analysis"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Migrating from react-i18next to Lingui"
+msgstr "Migrating from react-i18next to Lingui"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "February 15, 2026"
+msgstr "February 15, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+msgstr "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Server Components and i18n: What Changes?"
+msgstr "Server Components and i18n: What Changes?"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "February 1, 2026"
+msgstr "February 1, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+msgstr "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Benchmark Methodology: How We Test"
+msgstr "Benchmark Methodology: How We Test"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "January 20, 2026"
+msgstr "January 20, 2026"
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+msgstr "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+
+#: src/components/pages/blog/BlogList.tsx
+msgid "Meta"
+msgstr "Meta"
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Benchmark CLI"
+msgstr "Benchmark CLI"
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+msgstr "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Free"
+msgstr "Free"
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Benchmark Cloud"
+msgstr "Benchmark Cloud"
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+msgstr "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Benchmark Enterprise"
+msgstr "Benchmark Enterprise"
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+msgstr "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Migration Assistant"
+msgstr "Migration Assistant"
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+msgstr "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Translation QA"
+msgstr "Translation QA"
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Automated quality checks for missing translations, pluralization issues, and context errors."
+msgstr "Automated quality checks for missing translations, pluralization issues, and context errors."
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Bundle Optimizer"
+msgstr "Bundle Optimizer"
+
+#: src/components/pages/products/ProductsGrid.tsx
+msgid "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+msgstr "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Senior Frontend Engineer"
+msgstr "Senior Frontend Engineer"
+
+#: src/components/pages/careers/OpenPositions.tsx
+#: src/components/pages/careers/OpenPositions.tsx
+#: src/components/pages/careers/OpenPositions.tsx
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Remote"
+msgstr "Remote"
+
+#: src/components/pages/careers/OpenPositions.tsx
+#: src/components/pages/careers/OpenPositions.tsx
+#: src/components/pages/careers/OpenPositions.tsx
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Full-time"
+msgstr "Full-time"
+
+#: src/components/pages/careers/OpenPositions.tsx
+#: src/components/pages/careers/OpenPositions.tsx
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Engineering"
+msgstr "Engineering"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+msgstr "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Backend Engineer"
+msgstr "Backend Engineer"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+msgstr "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Technical Writer"
+msgstr "Technical Writer"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Part-time"
+msgstr "Part-time"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Documentation"
+msgstr "Documentation"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+msgstr "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "DevRel Engineer"
+msgstr "DevRel Engineer"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "San Francisco / Remote"
+msgstr "San Francisco / Remote"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Community"
+msgstr "Community"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+msgstr "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "QA Engineer"
+msgstr "QA Engineer"
+
+#: src/components/pages/careers/OpenPositions.tsx
+msgid "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+msgstr "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."

@@ -1,8 +1,8 @@
 import { registerLoaders } from 'wuchale/load-utils'
-import { loadCatalog, loadIDs } from './.wuchale/team.proxy.js'
+import { loadCatalog, loadCount } from './.wuchale/team.proxy.js'
 
 const key = 'team'
 
 // two exports. can be used anywhere
-export const getRuntime = registerLoaders(key, loadCatalog, loadIDs)
+export const getRuntime = registerLoaders(key, loadCatalog, loadCount)
 export const getRuntimeRx = getRuntime

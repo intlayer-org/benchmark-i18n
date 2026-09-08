@@ -1,6 +1,6 @@
 # Vite + Svelte — i18n Benchmark Results
 
-_Generated: 2026-05-01_
+_Generated: 2026-09-06_
 
 ## Metric Legend
 
@@ -34,10 +34,10 @@ _Generated: 2026-05-01_
 
 | Category       | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :------------- | :----: | ---------------: | ------------: | ------------------------: | ------------: | -------------: | -------------: | --------: | --------: |
-| Static         |   ✅   |          31.5 KB |          0.0% |                     90.0% |        0.9 KB |         0.8 ms |              — |   11.1 ms |    3.4 ms |
-| Dynamic        |   ✅   |          31.5 KB |          0.0% |                     90.0% |        0.9 KB |         0.8 ms |              — |   11.1 ms |    3.4 ms |
-| Scoped Static  |   ✅   |          31.5 KB |          0.0% |                     90.0% |        0.9 KB |         0.8 ms |              — |   11.1 ms |    3.4 ms |
-| Scoped Dynamic |   ✅   |          31.5 KB |          0.0% |                     90.0% |        0.9 KB |         0.8 ms |              — |   11.1 ms |    3.4 ms |
+| Static         |   ✅   |          47.5 KB |         20.0% |                     63.5% |        0.9 KB |         0.8 ms |              — |   11.1 ms |    3.4 ms |
+| Dynamic        |   ✅   |          47.5 KB |         20.0% |                     63.5% |        0.9 KB |         0.8 ms |              — |   11.1 ms |    3.4 ms |
+| Scoped Static  |   ✅   |          47.5 KB |         20.0% |                     63.5% |        0.9 KB |         0.8 ms |              — |   11.1 ms |    3.4 ms |
+| Scoped Dynamic |   ✅   |          47.5 KB |         20.0% |                     63.5% |        0.9 KB |         0.8 ms |              — |   11.1 ms |    3.4 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -46,16 +46,16 @@ _Generated: 2026-05-01_
 
 | Page           | JS (gz) | Locale leak % | Page leak % |
 | :------------- | ------: | ------------: | ----------: |
-| `/en/`         | 31.5 KB |          0.0% |       81.8% |
-| `/en/about`    | 31.5 KB |          0.0% |       88.6% |
-| `/en/blog`     | 31.5 KB |          0.0% |       85.2% |
-| `/en/careers`  | 31.5 KB |          0.0% |       87.5% |
-| `/en/contact`  | 31.5 KB |          0.0% |       98.9% |
-| `/en/faq`      | 31.5 KB |          0.0% |       88.6% |
-| `/en/pricing`  | 31.5 KB |          0.0% |       95.5% |
-| `/en/products` | 31.5 KB |          0.0% |       90.9% |
-| `/en/settings` | 31.5 KB |          0.0% |       94.3% |
-| `/en/team`     | 31.5 KB |          0.0% |       88.6% |
+| `/en/`         | 44.8 KB |          0.0% |        0.0% |
+| `/en/about`    | 43.6 KB |          0.0% |        0.0% |
+| `/en/blog`     | 43.2 KB |          0.0% |        0.0% |
+| `/en/careers`  | 43.6 KB |          0.0% |        0.0% |
+| `/en/contact`  | 42.9 KB |          0.0% |        0.0% |
+| `/en/faq`      | 43.4 KB |          0.0% |        0.0% |
+| `/en/pricing`  | 93.2 KB |        100.0% |       95.4% |
+| `/en/products` | 93.2 KB |        100.0% |       90.8% |
+| `/en/settings` | 94.3 KB |        100.0% |       94.3% |
+| `/en/team`     | 93.5 KB |        100.0% |       89.7% |
 
 **Locale: `fr`**
 
@@ -103,16 +103,16 @@ _Generated: 2026-05-01_
 
 | Page           | JS (gz) | Locale leak % | Page leak % |
 | :------------- | ------: | ------------: | ----------: |
-| `/en/`         | 31.5 KB |          0.0% |       81.8% |
-| `/en/about`    | 31.5 KB |          0.0% |       88.6% |
-| `/en/blog`     | 31.5 KB |          0.0% |       85.2% |
-| `/en/careers`  | 31.5 KB |          0.0% |       87.5% |
-| `/en/contact`  | 31.5 KB |          0.0% |       98.9% |
-| `/en/faq`      | 31.5 KB |          0.0% |       88.6% |
-| `/en/pricing`  | 31.5 KB |          0.0% |       95.5% |
-| `/en/products` | 31.5 KB |          0.0% |       90.9% |
-| `/en/settings` | 31.5 KB |          0.0% |       94.3% |
-| `/en/team`     | 31.5 KB |          0.0% |       88.6% |
+| `/en/`         | 44.8 KB |          0.0% |        0.0% |
+| `/en/about`    | 43.6 KB |          0.0% |        0.0% |
+| `/en/blog`     | 43.2 KB |          0.0% |        0.0% |
+| `/en/careers`  | 43.6 KB |          0.0% |        0.0% |
+| `/en/contact`  | 42.9 KB |          0.0% |        0.0% |
+| `/en/faq`      | 43.4 KB |          0.0% |        0.0% |
+| `/en/pricing`  | 93.2 KB |        100.0% |       95.4% |
+| `/en/products` | 93.2 KB |        100.0% |       90.8% |
+| `/en/settings` | 94.3 KB |        100.0% |       94.3% |
+| `/en/team`     | 93.5 KB |        100.0% |       89.7% |
 
 **Locale: `fr`**
 
@@ -160,16 +160,16 @@ _Generated: 2026-05-01_
 
 | Page           | JS (gz) | Locale leak % | Page leak % |
 | :------------- | ------: | ------------: | ----------: |
-| `/en/`         | 31.5 KB |          0.0% |       81.8% |
-| `/en/about`    | 31.5 KB |          0.0% |       88.6% |
-| `/en/blog`     | 31.5 KB |          0.0% |       85.2% |
-| `/en/careers`  | 31.5 KB |          0.0% |       87.5% |
-| `/en/contact`  | 31.5 KB |          0.0% |       98.9% |
-| `/en/faq`      | 31.5 KB |          0.0% |       88.6% |
-| `/en/pricing`  | 31.5 KB |          0.0% |       95.5% |
-| `/en/products` | 31.5 KB |          0.0% |       90.9% |
-| `/en/settings` | 31.5 KB |          0.0% |       94.3% |
-| `/en/team`     | 31.5 KB |          0.0% |       88.6% |
+| `/en/`         | 44.8 KB |          0.0% |        0.0% |
+| `/en/about`    | 43.6 KB |          0.0% |        0.0% |
+| `/en/blog`     | 43.2 KB |          0.0% |        0.0% |
+| `/en/careers`  | 43.6 KB |          0.0% |        0.0% |
+| `/en/contact`  | 42.9 KB |          0.0% |        0.0% |
+| `/en/faq`      | 43.4 KB |          0.0% |        0.0% |
+| `/en/pricing`  | 93.2 KB |        100.0% |       95.4% |
+| `/en/products` | 93.2 KB |        100.0% |       90.8% |
+| `/en/settings` | 94.3 KB |        100.0% |       94.3% |
+| `/en/team`     | 93.5 KB |        100.0% |       89.7% |
 
 **Locale: `fr`**
 
@@ -217,16 +217,16 @@ _Generated: 2026-05-01_
 
 | Page           | JS (gz) | Locale leak % | Page leak % |
 | :------------- | ------: | ------------: | ----------: |
-| `/en/`         | 31.5 KB |          0.0% |       81.8% |
-| `/en/about`    | 31.5 KB |          0.0% |       88.6% |
-| `/en/blog`     | 31.5 KB |          0.0% |       85.2% |
-| `/en/careers`  | 31.5 KB |          0.0% |       87.5% |
-| `/en/contact`  | 31.5 KB |          0.0% |       98.9% |
-| `/en/faq`      | 31.5 KB |          0.0% |       88.6% |
-| `/en/pricing`  | 31.5 KB |          0.0% |       95.5% |
-| `/en/products` | 31.5 KB |          0.0% |       90.9% |
-| `/en/settings` | 31.5 KB |          0.0% |       94.3% |
-| `/en/team`     | 31.5 KB |          0.0% |       88.6% |
+| `/en/`         | 44.8 KB |          0.0% |        0.0% |
+| `/en/about`    | 43.6 KB |          0.0% |        0.0% |
+| `/en/blog`     | 43.2 KB |          0.0% |        0.0% |
+| `/en/careers`  | 43.6 KB |          0.0% |        0.0% |
+| `/en/contact`  | 42.9 KB |          0.0% |        0.0% |
+| `/en/faq`      | 43.4 KB |          0.0% |        0.0% |
+| `/en/pricing`  | 93.2 KB |        100.0% |       95.4% |
+| `/en/products` | 93.2 KB |        100.0% |       90.8% |
+| `/en/settings` | 94.3 KB |        100.0% |       94.3% |
+| `/en/team`     | 93.5 KB |        100.0% |       89.7% |
 
 **Locale: `fr`**
 
@@ -273,7 +273,7 @@ _Generated: 2026-05-01_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :------ | ------------: | -------------: |
-| 9.4.4   |        2.3 KB |         6.2 KB |
+| 9.5.0   |        2.3 KB |         6.2 KB |
 
 | Category       | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :------------- | :----: | ---------------: | ------------: | ------------------------: | ------------: | -------------: | -------------: | --------: | --------: |

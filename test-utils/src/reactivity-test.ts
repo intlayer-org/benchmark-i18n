@@ -107,7 +107,41 @@ declare global {
 /** Per-iteration E2E timeout (locale switch must finish within this window on slow runners). */
 const E2E_LOCALE_SWITCH_TIMEOUT_MS = 15_000;
 
+/** How long to wait for React to hydrate before dispatching the locale switch. */
+const HYDRATION_TIMEOUT_MS = 5_000;
+
 // ─── Browser-side measurement helpers ────────────────────────────────────────
+
+/**
+ * Waits until the app has hydrated, i.e. until the root component's mount
+ * effect has set the `hydration_end` performance mark.
+ *
+ * `page.goto(..., { waitUntil: "load" })` resolves once sub-resources have
+ * downloaded, which is before React attaches its delegated event listeners. The
+ * locale switch is driven by a synthetic `change` event, and an event dispatched
+ * in that window is dropped with no retry — the measurement then times out even
+ * though the app switches locales correctly. Apps that hydrate quickly happen to
+ * win this race and apps that hydrate slowly lose it, so gating on the mark is
+ * what makes the number comparable across apps rather than a hydration-speed
+ * coin flip.
+ *
+ * The wait happens before the measurement starts, so it does not inflate the
+ * reported duration. Apps that never set the mark fall through after the
+ * timeout and are measured as before.
+ */
+const waitForHydration = async (page: Page): Promise<void> => {
+  try {
+    await page.waitForFunction(
+      () => performance.getEntriesByName("hydration_end").length > 0,
+      undefined,
+      { timeout: HYDRATION_TIMEOUT_MS },
+    );
+  } catch {
+    console.warn(
+      "  (no hydration_end mark within timeout — measuring without the gate)",
+    );
+  }
+};
 
 /**
  * Measures the E2E duration of a single locale switch.
@@ -211,6 +245,10 @@ const runSingleIteration = async (
 
   console.log("Status:", response?.status());
   console.log("URL:", response?.url());
+
+  // React must have attached its listeners before the synthetic `change` event
+  // is dispatched, otherwise the event is dropped and the switch never happens.
+  await waitForHydration(page);
 
   await page.evaluate(() => {
     window.__RENDER_METRICS__ = {};
