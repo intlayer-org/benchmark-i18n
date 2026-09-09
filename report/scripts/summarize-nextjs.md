@@ -21,10 +21,10 @@ _Generated: 2026-09-09_
 
 ## Libraries
 
+- [@intlayer/next-i18next](#intlayer-next-i18next)
+- [@intlayer/next-intl](#intlayer-next-intl)
 - [base](#base)
 - [gt-next](#gt-next)
-- [intlayer-compat-next-i18next](#intlayer-compat-next-i18next)
-- [intlayer-compat-next-intl](#intlayer-compat-next-intl)
 - [lingo.dev](#lingo-dev)
 - [lingui](#lingui)
 - [next-i18next](#next-i18next)
@@ -34,6 +34,492 @@ _Generated: 2026-09-09_
 - [next-translate](#next-translate)
 - [paraglide-next](#paraglide-next)
 - [tolgee](#tolgee)
+
+## @intlayer/next-i18next
+
+| Version | Lib size (gz) | Lib size (min) |
+| :--- | ---: | ---: |
+| 9.5.1 | 24.4 KB | 92.5 KB |
+
+| Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
+| :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Static | ✅ | 152.9 KB | 0.0% | 0.0% | 24.7 KB | 14.4 ms | 3.6 ms | 18.2 ms | 17.7 ms |
+| Dynamic | 🔶 | 152.9 KB | 0.0% | 0.0% | 24.7 KB | 14.8 ms | 3.6 ms | 15.6 ms | 13.4 ms |
+| Scoped Static | ✅ | 152.9 KB | 0.0% | 0.0% | 24.7 KB | 14.4 ms | 3.6 ms | 18.2 ms | 17.7 ms |
+| Scoped Dynamic | 🔶 | 152.9 KB | 0.0% | 0.0% | 24.7 KB | 14.8 ms | 3.6 ms | 15.6 ms | 13.4 ms |
+
+<details>
+<summary><strong>Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 153.5 KB | 0.0% | 0.0% |
+| `/en/about` | 152.8 KB | 0.0% | 0.0% |
+| `/en/blog` | 152.9 KB | 0.0% | 0.0% |
+| `/en/careers` | 152.8 KB | 0.0% | 0.0% |
+| `/en/contact` | 152.9 KB | 0.0% | 0.0% |
+| `/en/faq` | 152.7 KB | 0.0% | 0.0% |
+| `/en/pricing` | 153.0 KB | 0.0% | 0.0% |
+| `/en/products` | 152.7 KB | 0.0% | 0.0% |
+| `/en/settings` | 153.2 KB | 0.0% | 0.0% |
+| `/en/team` | 152.8 KB | 0.0% | 0.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 153.5 KB | 0.0% | 0.0% |
+| `/fr/about` | 152.8 KB | 0.0% | 0.0% |
+| `/fr/blog` | 152.9 KB | 0.0% | 0.0% |
+| `/fr/careers` | 152.8 KB | 0.0% | 0.0% |
+| `/fr/contact` | 152.9 KB | 0.0% | 0.0% |
+| `/fr/faq` | 152.7 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 153.0 KB | 0.0% | 0.0% |
+| `/fr/products` | 152.7 KB | 0.0% | 0.0% |
+| `/fr/settings` | 153.2 KB | 0.0% | 0.0% |
+| `/fr/team` | 152.8 KB | 0.0% | 0.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-next-i18next-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 16.1 ms | 12.2 ms | 29.8 ms | 3.7 ms |
+| `fr` | 12.7 ms | 10.4 ms | 17.1 ms | 3.5 ms |
+
+</details>
+
+<details>
+<summary><strong>Static</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 16.7 ms | 18.1 ms | 9.8 ms |
+| `fr` | 19.7 ms | 17.2 ms | 6.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 153.5 KB | 0.0% | 0.0% |
+| `/en/about` | 152.8 KB | 0.0% | 0.0% |
+| `/en/blog` | 152.9 KB | 0.0% | 0.0% |
+| `/en/careers` | 152.8 KB | 0.0% | 0.0% |
+| `/en/contact` | 152.9 KB | 0.0% | 0.0% |
+| `/en/faq` | 152.7 KB | 0.0% | 0.0% |
+| `/en/pricing` | 153.0 KB | 0.0% | 0.0% |
+| `/en/products` | 152.6 KB | 0.0% | 0.0% |
+| `/en/settings` | 153.2 KB | 0.0% | 0.0% |
+| `/en/team` | 152.8 KB | 0.0% | 0.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 153.5 KB | 0.0% | 0.0% |
+| `/fr/about` | 152.8 KB | 0.0% | 0.0% |
+| `/fr/blog` | 152.9 KB | 0.0% | 0.0% |
+| `/fr/careers` | 152.8 KB | 0.0% | 0.0% |
+| `/fr/contact` | 152.9 KB | 0.0% | 0.0% |
+| `/fr/faq` | 152.7 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 153.0 KB | 0.0% | 0.0% |
+| `/fr/products` | 152.6 KB | 0.0% | 0.0% |
+| `/fr/settings` | 153.2 KB | 0.0% | 0.0% |
+| `/fr/team` | 152.8 KB | 0.0% | 0.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-next-i18next-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 15.4 ms | 12.6 ms | 25.3 ms | 3.7 ms |
+| `fr` | 14.1 ms | 11.3 ms | 17.6 ms | 3.5 ms |
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 16.0 ms | 13.4 ms | 6.1 ms |
+| `fr` | 15.3 ms | 13.3 ms | 6.1 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 153.5 KB | 0.0% | 0.0% |
+| `/en/about` | 152.8 KB | 0.0% | 0.0% |
+| `/en/blog` | 152.9 KB | 0.0% | 0.0% |
+| `/en/careers` | 152.8 KB | 0.0% | 0.0% |
+| `/en/contact` | 152.9 KB | 0.0% | 0.0% |
+| `/en/faq` | 152.7 KB | 0.0% | 0.0% |
+| `/en/pricing` | 153.0 KB | 0.0% | 0.0% |
+| `/en/products` | 152.7 KB | 0.0% | 0.0% |
+| `/en/settings` | 153.2 KB | 0.0% | 0.0% |
+| `/en/team` | 152.8 KB | 0.0% | 0.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 153.5 KB | 0.0% | 0.0% |
+| `/fr/about` | 152.8 KB | 0.0% | 0.0% |
+| `/fr/blog` | 152.9 KB | 0.0% | 0.0% |
+| `/fr/careers` | 152.8 KB | 0.0% | 0.0% |
+| `/fr/contact` | 152.9 KB | 0.0% | 0.0% |
+| `/fr/faq` | 152.7 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 153.0 KB | 0.0% | 0.0% |
+| `/fr/products` | 152.7 KB | 0.0% | 0.0% |
+| `/fr/settings` | 153.2 KB | 0.0% | 0.0% |
+| `/fr/team` | 152.8 KB | 0.0% | 0.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-next-i18next-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 16.1 ms | 12.2 ms | 29.8 ms | 3.7 ms |
+| `fr` | 12.7 ms | 10.4 ms | 17.1 ms | 3.5 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 16.7 ms | 18.1 ms | 9.8 ms |
+| `fr` | 19.7 ms | 17.2 ms | 6.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 153.5 KB | 0.0% | 0.0% |
+| `/en/about` | 152.8 KB | 0.0% | 0.0% |
+| `/en/blog` | 152.9 KB | 0.0% | 0.0% |
+| `/en/careers` | 152.8 KB | 0.0% | 0.0% |
+| `/en/contact` | 152.9 KB | 0.0% | 0.0% |
+| `/en/faq` | 152.7 KB | 0.0% | 0.0% |
+| `/en/pricing` | 153.0 KB | 0.0% | 0.0% |
+| `/en/products` | 152.6 KB | 0.0% | 0.0% |
+| `/en/settings` | 153.2 KB | 0.0% | 0.0% |
+| `/en/team` | 152.8 KB | 0.0% | 0.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 153.5 KB | 0.0% | 0.0% |
+| `/fr/about` | 152.8 KB | 0.0% | 0.0% |
+| `/fr/blog` | 152.9 KB | 0.0% | 0.0% |
+| `/fr/careers` | 152.8 KB | 0.0% | 0.0% |
+| `/fr/contact` | 152.9 KB | 0.0% | 0.0% |
+| `/fr/faq` | 152.7 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 153.0 KB | 0.0% | 0.0% |
+| `/fr/products` | 152.6 KB | 0.0% | 0.0% |
+| `/fr/settings` | 153.2 KB | 0.0% | 0.0% |
+| `/fr/team` | 152.8 KB | 0.0% | 0.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-next-i18next-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 15.4 ms | 12.6 ms | 25.3 ms | 3.7 ms |
+| `fr` | 14.1 ms | 11.3 ms | 17.6 ms | 3.5 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 16.0 ms | 13.4 ms | 6.1 ms |
+| `fr` | 15.3 ms | 13.3 ms | 6.1 ms |
+
+</details>
+
+---
+
+## @intlayer/next-intl
+
+| Version | Lib size (gz) | Lib size (min) |
+| :--- | ---: | ---: |
+| 9.5.1 | 34.5 KB | 123.1 KB |
+
+| Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
+| :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Static | ✅ | 149.7 KB | 0.0% | 0.0% | 34.5 KB | 18.0 ms | 3.4 ms | 16.7 ms | 16.9 ms |
+| Dynamic | 🔶 | 150.8 KB | 0.0% | 0.0% | 34.5 KB | 13.8 ms | 3.6 ms | 15.1 ms | 13.5 ms |
+| Scoped Static | ✅ | 149.7 KB | 0.0% | 0.0% | 34.5 KB | 18.0 ms | 3.4 ms | 16.7 ms | 16.9 ms |
+| Scoped Dynamic | 🔶 | 150.8 KB | 0.0% | 0.0% | 34.5 KB | 13.8 ms | 3.6 ms | 15.1 ms | 13.5 ms |
+
+<details>
+<summary><strong>Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 149.9 KB | 0.0% | 0.0% |
+| `/en/about` | 149.7 KB | 0.0% | 0.0% |
+| `/en/blog` | 149.5 KB | 0.0% | 0.0% |
+| `/en/careers` | 149.5 KB | 0.0% | 0.0% |
+| `/en/contact` | 150.0 KB | 0.0% | 0.0% |
+| `/en/faq` | 149.5 KB | 0.0% | 0.0% |
+| `/en/pricing` | 149.5 KB | 0.0% | 0.0% |
+| `/en/products` | 149.5 KB | 0.0% | 0.0% |
+| `/en/settings` | 150.4 KB | 0.0% | 0.0% |
+| `/en/team` | 149.5 KB | 0.0% | 0.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 149.9 KB | 0.0% | 0.0% |
+| `/fr/about` | 149.7 KB | 0.0% | 0.0% |
+| `/fr/blog` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/careers` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/contact` | 150.0 KB | 0.0% | 0.0% |
+| `/fr/faq` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/products` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/settings` | 150.4 KB | 0.0% | 0.0% |
+| `/fr/team` | 149.5 KB | 0.0% | 0.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-next-intl-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 19.0 ms | 14.1 ms | 31.0 ms | 3.3 ms |
+| `fr` | 16.9 ms | 13.8 ms | 21.1 ms | 3.5 ms |
+
+</details>
+
+<details>
+<summary><strong>Static</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 17.3 ms | 17.9 ms | 6.2 ms |
+| `fr` | 16.0 ms | 16.0 ms | 6.3 ms |
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 151.4 KB | 0.0% | 0.0% |
+| `/en/about` | 150.6 KB | 0.0% | 0.0% |
+| `/en/blog` | 150.7 KB | 0.0% | 0.0% |
+| `/en/careers` | 150.8 KB | 0.0% | 0.0% |
+| `/en/contact` | 150.7 KB | 0.0% | 0.0% |
+| `/en/faq` | 150.6 KB | 0.0% | 0.0% |
+| `/en/pricing` | 150.8 KB | 0.0% | 0.0% |
+| `/en/products` | 150.7 KB | 0.0% | 0.0% |
+| `/en/settings` | 151.0 KB | 0.0% | 0.0% |
+| `/en/team` | 150.7 KB | 0.0% | 0.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 151.4 KB | 0.0% | 0.0% |
+| `/fr/about` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/blog` | 150.7 KB | 0.0% | 0.0% |
+| `/fr/careers` | 150.8 KB | 0.0% | 0.0% |
+| `/fr/contact` | 150.7 KB | 0.0% | 0.0% |
+| `/fr/faq` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 150.8 KB | 0.0% | 0.0% |
+| `/fr/products` | 150.7 KB | 0.0% | 0.0% |
+| `/fr/settings` | 151.0 KB | 0.0% | 0.0% |
+| `/fr/team` | 150.7 KB | 0.0% | 0.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-next-intl-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 14.8 ms | 10.6 ms | 26.1 ms | 3.6 ms |
+| `fr` | 12.7 ms | 10.7 ms | 16.5 ms | 3.6 ms |
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 15.3 ms | 13.5 ms | 6.9 ms |
+| `fr` | 14.9 ms | 13.6 ms | 7.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 149.9 KB | 0.0% | 0.0% |
+| `/en/about` | 149.7 KB | 0.0% | 0.0% |
+| `/en/blog` | 149.5 KB | 0.0% | 0.0% |
+| `/en/careers` | 149.5 KB | 0.0% | 0.0% |
+| `/en/contact` | 150.0 KB | 0.0% | 0.0% |
+| `/en/faq` | 149.5 KB | 0.0% | 0.0% |
+| `/en/pricing` | 149.5 KB | 0.0% | 0.0% |
+| `/en/products` | 149.5 KB | 0.0% | 0.0% |
+| `/en/settings` | 150.4 KB | 0.0% | 0.0% |
+| `/en/team` | 149.5 KB | 0.0% | 0.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 149.9 KB | 0.0% | 0.0% |
+| `/fr/about` | 149.7 KB | 0.0% | 0.0% |
+| `/fr/blog` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/careers` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/contact` | 150.0 KB | 0.0% | 0.0% |
+| `/fr/faq` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/products` | 149.5 KB | 0.0% | 0.0% |
+| `/fr/settings` | 150.4 KB | 0.0% | 0.0% |
+| `/fr/team` | 149.5 KB | 0.0% | 0.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-next-intl-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 19.0 ms | 14.1 ms | 31.0 ms | 3.3 ms |
+| `fr` | 16.9 ms | 13.8 ms | 21.1 ms | 3.5 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 17.3 ms | 17.9 ms | 6.2 ms |
+| `fr` | 16.0 ms | 16.0 ms | 6.3 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 151.4 KB | 0.0% | 0.0% |
+| `/en/about` | 150.6 KB | 0.0% | 0.0% |
+| `/en/blog` | 150.7 KB | 0.0% | 0.0% |
+| `/en/careers` | 150.8 KB | 0.0% | 0.0% |
+| `/en/contact` | 150.7 KB | 0.0% | 0.0% |
+| `/en/faq` | 150.6 KB | 0.0% | 0.0% |
+| `/en/pricing` | 150.8 KB | 0.0% | 0.0% |
+| `/en/products` | 150.7 KB | 0.0% | 0.0% |
+| `/en/settings` | 151.0 KB | 0.0% | 0.0% |
+| `/en/team` | 150.7 KB | 0.0% | 0.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 151.4 KB | 0.0% | 0.0% |
+| `/fr/about` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/blog` | 150.7 KB | 0.0% | 0.0% |
+| `/fr/careers` | 150.8 KB | 0.0% | 0.0% |
+| `/fr/contact` | 150.7 KB | 0.0% | 0.0% |
+| `/fr/faq` | 150.6 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 150.8 KB | 0.0% | 0.0% |
+| `/fr/products` | 150.7 KB | 0.0% | 0.0% |
+| `/fr/settings` | 151.0 KB | 0.0% | 0.0% |
+| `/fr/team` | 150.7 KB | 0.0% | 0.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-next-intl-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 14.8 ms | 10.6 ms | 26.1 ms | 3.6 ms |
+| `fr` | 12.7 ms | 10.7 ms | 16.5 ms | 3.6 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 15.3 ms | 13.5 ms | 6.9 ms |
+| `fr` | 14.9 ms | 13.6 ms | 7.0 ms |
+
+</details>
+
+---
 
 ## base
 
@@ -516,492 +1002,6 @@ _Generated: 2026-09-09_
 | :---: | ---: | ---: | ---: |
 | `en` | 22.6 ms | 26.1 ms | 10.7 ms |
 | `fr` | 19.3 ms | 25.8 ms | 10.3 ms |
-
-</details>
-
----
-
-## intlayer-compat-next-i18next
-
-| Version | Lib size (gz) | Lib size (min) |
-| :--- | ---: | ---: |
-| — | 24.4 KB | 92.5 KB |
-
-| Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
-| :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 152.9 KB | 0.0% | 0.0% | 24.7 KB | 14.4 ms | 3.6 ms | 18.2 ms | 17.7 ms |
-| Dynamic | 🔶 | 152.9 KB | 0.0% | 0.0% | 24.7 KB | 14.8 ms | 3.6 ms | 15.6 ms | 13.4 ms |
-| Scoped Static | ✅ | 152.9 KB | 0.0% | 0.0% | 24.7 KB | 14.4 ms | 3.6 ms | 18.2 ms | 17.7 ms |
-| Scoped Dynamic | 🔶 | 152.9 KB | 0.0% | 0.0% | 24.7 KB | 14.8 ms | 3.6 ms | 15.6 ms | 13.4 ms |
-
-<details>
-<summary><strong>Static</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 153.5 KB | 0.0% | 0.0% |
-| `/en/about` | 152.8 KB | 0.0% | 0.0% |
-| `/en/blog` | 152.9 KB | 0.0% | 0.0% |
-| `/en/careers` | 152.8 KB | 0.0% | 0.0% |
-| `/en/contact` | 152.9 KB | 0.0% | 0.0% |
-| `/en/faq` | 152.7 KB | 0.0% | 0.0% |
-| `/en/pricing` | 153.0 KB | 0.0% | 0.0% |
-| `/en/products` | 152.7 KB | 0.0% | 0.0% |
-| `/en/settings` | 153.2 KB | 0.0% | 0.0% |
-| `/en/team` | 152.8 KB | 0.0% | 0.0% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 153.5 KB | 0.0% | 0.0% |
-| `/fr/about` | 152.8 KB | 0.0% | 0.0% |
-| `/fr/blog` | 152.9 KB | 0.0% | 0.0% |
-| `/fr/careers` | 152.8 KB | 0.0% | 0.0% |
-| `/fr/contact` | 152.9 KB | 0.0% | 0.0% |
-| `/fr/faq` | 152.7 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 153.0 KB | 0.0% | 0.0% |
-| `/fr/products` | 152.7 KB | 0.0% | 0.0% |
-| `/fr/settings` | 153.2 KB | 0.0% | 0.0% |
-| `/fr/team` | 152.8 KB | 0.0% | 0.0% |
-
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-next-i18next-app/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Static</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 16.1 ms | 12.2 ms | 29.8 ms | 3.7 ms |
-| `fr` | 12.7 ms | 10.4 ms | 17.1 ms | 3.5 ms |
-
-</details>
-
-<details>
-<summary><strong>Static</strong> — per-locale rendering</summary>
-
-| Locale | Page load | Hydration | React mount |
-| :---: | ---: | ---: | ---: |
-| `en` | 16.7 ms | 18.1 ms | 9.8 ms |
-| `fr` | 19.7 ms | 17.2 ms | 6.0 ms |
-
-</details>
-
-<details>
-<summary><strong>Dynamic</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 153.5 KB | 0.0% | 0.0% |
-| `/en/about` | 152.8 KB | 0.0% | 0.0% |
-| `/en/blog` | 152.9 KB | 0.0% | 0.0% |
-| `/en/careers` | 152.8 KB | 0.0% | 0.0% |
-| `/en/contact` | 152.9 KB | 0.0% | 0.0% |
-| `/en/faq` | 152.7 KB | 0.0% | 0.0% |
-| `/en/pricing` | 153.0 KB | 0.0% | 0.0% |
-| `/en/products` | 152.6 KB | 0.0% | 0.0% |
-| `/en/settings` | 153.2 KB | 0.0% | 0.0% |
-| `/en/team` | 152.8 KB | 0.0% | 0.0% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 153.5 KB | 0.0% | 0.0% |
-| `/fr/about` | 152.8 KB | 0.0% | 0.0% |
-| `/fr/blog` | 152.9 KB | 0.0% | 0.0% |
-| `/fr/careers` | 152.8 KB | 0.0% | 0.0% |
-| `/fr/contact` | 152.9 KB | 0.0% | 0.0% |
-| `/fr/faq` | 152.7 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 153.0 KB | 0.0% | 0.0% |
-| `/fr/products` | 152.6 KB | 0.0% | 0.0% |
-| `/fr/settings` | 153.2 KB | 0.0% | 0.0% |
-| `/fr/team` | 152.8 KB | 0.0% | 0.0% |
-
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-next-i18next-app/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Dynamic</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 15.4 ms | 12.6 ms | 25.3 ms | 3.7 ms |
-| `fr` | 14.1 ms | 11.3 ms | 17.6 ms | 3.5 ms |
-
-</details>
-
-<details>
-<summary><strong>Dynamic</strong> — per-locale rendering</summary>
-
-| Locale | Page load | Hydration | React mount |
-| :---: | ---: | ---: | ---: |
-| `en` | 16.0 ms | 13.4 ms | 6.1 ms |
-| `fr` | 15.3 ms | 13.3 ms | 6.1 ms |
-
-</details>
-
-<details>
-<summary><strong>Scoped Static</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 153.5 KB | 0.0% | 0.0% |
-| `/en/about` | 152.8 KB | 0.0% | 0.0% |
-| `/en/blog` | 152.9 KB | 0.0% | 0.0% |
-| `/en/careers` | 152.8 KB | 0.0% | 0.0% |
-| `/en/contact` | 152.9 KB | 0.0% | 0.0% |
-| `/en/faq` | 152.7 KB | 0.0% | 0.0% |
-| `/en/pricing` | 153.0 KB | 0.0% | 0.0% |
-| `/en/products` | 152.7 KB | 0.0% | 0.0% |
-| `/en/settings` | 153.2 KB | 0.0% | 0.0% |
-| `/en/team` | 152.8 KB | 0.0% | 0.0% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 153.5 KB | 0.0% | 0.0% |
-| `/fr/about` | 152.8 KB | 0.0% | 0.0% |
-| `/fr/blog` | 152.9 KB | 0.0% | 0.0% |
-| `/fr/careers` | 152.8 KB | 0.0% | 0.0% |
-| `/fr/contact` | 152.9 KB | 0.0% | 0.0% |
-| `/fr/faq` | 152.7 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 153.0 KB | 0.0% | 0.0% |
-| `/fr/products` | 152.7 KB | 0.0% | 0.0% |
-| `/fr/settings` | 153.2 KB | 0.0% | 0.0% |
-| `/fr/team` | 152.8 KB | 0.0% | 0.0% |
-
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-next-i18next-app/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Scoped Static</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 16.1 ms | 12.2 ms | 29.8 ms | 3.7 ms |
-| `fr` | 12.7 ms | 10.4 ms | 17.1 ms | 3.5 ms |
-
-</details>
-
-<details>
-<summary><strong>Scoped Static</strong> — per-locale rendering</summary>
-
-| Locale | Page load | Hydration | React mount |
-| :---: | ---: | ---: | ---: |
-| `en` | 16.7 ms | 18.1 ms | 9.8 ms |
-| `fr` | 19.7 ms | 17.2 ms | 6.0 ms |
-
-</details>
-
-<details>
-<summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 153.5 KB | 0.0% | 0.0% |
-| `/en/about` | 152.8 KB | 0.0% | 0.0% |
-| `/en/blog` | 152.9 KB | 0.0% | 0.0% |
-| `/en/careers` | 152.8 KB | 0.0% | 0.0% |
-| `/en/contact` | 152.9 KB | 0.0% | 0.0% |
-| `/en/faq` | 152.7 KB | 0.0% | 0.0% |
-| `/en/pricing` | 153.0 KB | 0.0% | 0.0% |
-| `/en/products` | 152.6 KB | 0.0% | 0.0% |
-| `/en/settings` | 153.2 KB | 0.0% | 0.0% |
-| `/en/team` | 152.8 KB | 0.0% | 0.0% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 153.5 KB | 0.0% | 0.0% |
-| `/fr/about` | 152.8 KB | 0.0% | 0.0% |
-| `/fr/blog` | 152.9 KB | 0.0% | 0.0% |
-| `/fr/careers` | 152.8 KB | 0.0% | 0.0% |
-| `/fr/contact` | 152.9 KB | 0.0% | 0.0% |
-| `/fr/faq` | 152.7 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 153.0 KB | 0.0% | 0.0% |
-| `/fr/products` | 152.6 KB | 0.0% | 0.0% |
-| `/fr/settings` | 153.2 KB | 0.0% | 0.0% |
-| `/fr/team` | 152.8 KB | 0.0% | 0.0% |
-
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-next-i18next-app/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 15.4 ms | 12.6 ms | 25.3 ms | 3.7 ms |
-| `fr` | 14.1 ms | 11.3 ms | 17.6 ms | 3.5 ms |
-
-</details>
-
-<details>
-<summary><strong>Scoped Dynamic</strong> — per-locale rendering</summary>
-
-| Locale | Page load | Hydration | React mount |
-| :---: | ---: | ---: | ---: |
-| `en` | 16.0 ms | 13.4 ms | 6.1 ms |
-| `fr` | 15.3 ms | 13.3 ms | 6.1 ms |
-
-</details>
-
----
-
-## intlayer-compat-next-intl
-
-| Version | Lib size (gz) | Lib size (min) |
-| :--- | ---: | ---: |
-| — | 34.5 KB | 123.1 KB |
-
-| Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
-| :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 149.7 KB | 0.0% | 0.0% | 34.5 KB | 18.0 ms | 3.4 ms | 16.7 ms | 16.9 ms |
-| Dynamic | 🔶 | 150.8 KB | 0.0% | 0.0% | 34.5 KB | 13.8 ms | 3.6 ms | 15.1 ms | 13.5 ms |
-| Scoped Static | ✅ | 149.7 KB | 0.0% | 0.0% | 34.5 KB | 18.0 ms | 3.4 ms | 16.7 ms | 16.9 ms |
-| Scoped Dynamic | 🔶 | 150.8 KB | 0.0% | 0.0% | 34.5 KB | 13.8 ms | 3.6 ms | 15.1 ms | 13.5 ms |
-
-<details>
-<summary><strong>Static</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 149.9 KB | 0.0% | 0.0% |
-| `/en/about` | 149.7 KB | 0.0% | 0.0% |
-| `/en/blog` | 149.5 KB | 0.0% | 0.0% |
-| `/en/careers` | 149.5 KB | 0.0% | 0.0% |
-| `/en/contact` | 150.0 KB | 0.0% | 0.0% |
-| `/en/faq` | 149.5 KB | 0.0% | 0.0% |
-| `/en/pricing` | 149.5 KB | 0.0% | 0.0% |
-| `/en/products` | 149.5 KB | 0.0% | 0.0% |
-| `/en/settings` | 150.4 KB | 0.0% | 0.0% |
-| `/en/team` | 149.5 KB | 0.0% | 0.0% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 149.9 KB | 0.0% | 0.0% |
-| `/fr/about` | 149.7 KB | 0.0% | 0.0% |
-| `/fr/blog` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/careers` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/contact` | 150.0 KB | 0.0% | 0.0% |
-| `/fr/faq` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/products` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/settings` | 150.4 KB | 0.0% | 0.0% |
-| `/fr/team` | 149.5 KB | 0.0% | 0.0% |
-
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-next-intl-app/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Static</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 19.0 ms | 14.1 ms | 31.0 ms | 3.3 ms |
-| `fr` | 16.9 ms | 13.8 ms | 21.1 ms | 3.5 ms |
-
-</details>
-
-<details>
-<summary><strong>Static</strong> — per-locale rendering</summary>
-
-| Locale | Page load | Hydration | React mount |
-| :---: | ---: | ---: | ---: |
-| `en` | 17.3 ms | 17.9 ms | 6.2 ms |
-| `fr` | 16.0 ms | 16.0 ms | 6.3 ms |
-
-</details>
-
-<details>
-<summary><strong>Dynamic</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 151.4 KB | 0.0% | 0.0% |
-| `/en/about` | 150.6 KB | 0.0% | 0.0% |
-| `/en/blog` | 150.7 KB | 0.0% | 0.0% |
-| `/en/careers` | 150.8 KB | 0.0% | 0.0% |
-| `/en/contact` | 150.7 KB | 0.0% | 0.0% |
-| `/en/faq` | 150.6 KB | 0.0% | 0.0% |
-| `/en/pricing` | 150.8 KB | 0.0% | 0.0% |
-| `/en/products` | 150.7 KB | 0.0% | 0.0% |
-| `/en/settings` | 151.0 KB | 0.0% | 0.0% |
-| `/en/team` | 150.7 KB | 0.0% | 0.0% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 151.4 KB | 0.0% | 0.0% |
-| `/fr/about` | 150.6 KB | 0.0% | 0.0% |
-| `/fr/blog` | 150.7 KB | 0.0% | 0.0% |
-| `/fr/careers` | 150.8 KB | 0.0% | 0.0% |
-| `/fr/contact` | 150.7 KB | 0.0% | 0.0% |
-| `/fr/faq` | 150.6 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 150.8 KB | 0.0% | 0.0% |
-| `/fr/products` | 150.7 KB | 0.0% | 0.0% |
-| `/fr/settings` | 151.0 KB | 0.0% | 0.0% |
-| `/fr/team` | 150.7 KB | 0.0% | 0.0% |
-
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-next-intl-app/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Dynamic</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 14.8 ms | 10.6 ms | 26.1 ms | 3.6 ms |
-| `fr` | 12.7 ms | 10.7 ms | 16.5 ms | 3.6 ms |
-
-</details>
-
-<details>
-<summary><strong>Dynamic</strong> — per-locale rendering</summary>
-
-| Locale | Page load | Hydration | React mount |
-| :---: | ---: | ---: | ---: |
-| `en` | 15.3 ms | 13.5 ms | 6.9 ms |
-| `fr` | 14.9 ms | 13.6 ms | 7.0 ms |
-
-</details>
-
-<details>
-<summary><strong>Scoped Static</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 149.9 KB | 0.0% | 0.0% |
-| `/en/about` | 149.7 KB | 0.0% | 0.0% |
-| `/en/blog` | 149.5 KB | 0.0% | 0.0% |
-| `/en/careers` | 149.5 KB | 0.0% | 0.0% |
-| `/en/contact` | 150.0 KB | 0.0% | 0.0% |
-| `/en/faq` | 149.5 KB | 0.0% | 0.0% |
-| `/en/pricing` | 149.5 KB | 0.0% | 0.0% |
-| `/en/products` | 149.5 KB | 0.0% | 0.0% |
-| `/en/settings` | 150.4 KB | 0.0% | 0.0% |
-| `/en/team` | 149.5 KB | 0.0% | 0.0% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 149.9 KB | 0.0% | 0.0% |
-| `/fr/about` | 149.7 KB | 0.0% | 0.0% |
-| `/fr/blog` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/careers` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/contact` | 150.0 KB | 0.0% | 0.0% |
-| `/fr/faq` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/products` | 149.5 KB | 0.0% | 0.0% |
-| `/fr/settings` | 150.4 KB | 0.0% | 0.0% |
-| `/fr/team` | 149.5 KB | 0.0% | 0.0% |
-
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-next-intl-app/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Scoped Static</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 19.0 ms | 14.1 ms | 31.0 ms | 3.3 ms |
-| `fr` | 16.9 ms | 13.8 ms | 21.1 ms | 3.5 ms |
-
-</details>
-
-<details>
-<summary><strong>Scoped Static</strong> — per-locale rendering</summary>
-
-| Locale | Page load | Hydration | React mount |
-| :---: | ---: | ---: | ---: |
-| `en` | 17.3 ms | 17.9 ms | 6.2 ms |
-| `fr` | 16.0 ms | 16.0 ms | 6.3 ms |
-
-</details>
-
-<details>
-<summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
-
-**Locale: `en`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/en/` | 151.4 KB | 0.0% | 0.0% |
-| `/en/about` | 150.6 KB | 0.0% | 0.0% |
-| `/en/blog` | 150.7 KB | 0.0% | 0.0% |
-| `/en/careers` | 150.8 KB | 0.0% | 0.0% |
-| `/en/contact` | 150.7 KB | 0.0% | 0.0% |
-| `/en/faq` | 150.6 KB | 0.0% | 0.0% |
-| `/en/pricing` | 150.8 KB | 0.0% | 0.0% |
-| `/en/products` | 150.7 KB | 0.0% | 0.0% |
-| `/en/settings` | 151.0 KB | 0.0% | 0.0% |
-| `/en/team` | 150.7 KB | 0.0% | 0.0% |
-
-**Locale: `fr`**
-
-| Page | JS (gz) | Locale leak % | Page leak % |
-| :--- | ---: | ---: | ---: |
-| `/fr/` | 151.4 KB | 0.0% | 0.0% |
-| `/fr/about` | 150.6 KB | 0.0% | 0.0% |
-| `/fr/blog` | 150.7 KB | 0.0% | 0.0% |
-| `/fr/careers` | 150.8 KB | 0.0% | 0.0% |
-| `/fr/contact` | 150.7 KB | 0.0% | 0.0% |
-| `/fr/faq` | 150.6 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 150.8 KB | 0.0% | 0.0% |
-| `/fr/products` | 150.7 KB | 0.0% | 0.0% |
-| `/fr/settings` | 151.0 KB | 0.0% | 0.0% |
-| `/fr/team` | 150.7 KB | 0.0% | 0.0% |
-
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-next-intl-app/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 14.8 ms | 10.6 ms | 26.1 ms | 3.6 ms |
-| `fr` | 12.7 ms | 10.7 ms | 16.5 ms | 3.6 ms |
-
-</details>
-
-<details>
-<summary><strong>Scoped Dynamic</strong> — per-locale rendering</summary>
-
-| Locale | Page load | Hydration | React mount |
-| :---: | ---: | ---: | ---: |
-| `en` | 15.3 ms | 13.5 ms | 6.9 ms |
-| `fr` | 14.9 ms | 13.6 ms | 7.0 ms |
 
 </details>
 

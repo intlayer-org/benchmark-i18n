@@ -511,6 +511,10 @@ function deriveLibraryName(appName: string): string {
     name = name.slice(0, -4);
   }
 
+  if (name.startsWith("intlayer-compat-")) {
+    name = name.replace(/^intlayer-compat-/, "@intlayer/");
+  }
+
   if (name === "i18n") {
     if (appName.startsWith("vite-vue-")) return "vue-i18n";
     if (appName.startsWith("vite-svelte-")) return "svelte-i18n";
@@ -520,6 +524,16 @@ function deriveLibraryName(appName: string): string {
 }
 
 const LIBRARY_PACKAGES: Record<string, string[]> = {
+  "@intlayer/use-intl": ["@intlayer/use-intl"],
+  "@intlayer/lingui": ["@intlayer/lingui"],
+  "@intlayer/next-i18next": ["@intlayer/next-i18next"],
+  "@intlayer/next-intl": ["@intlayer/next-intl"],
+  "@intlayer/i18next": ["@intlayer/i18next"],
+  "intlayer-compat-use-intl": ["@intlayer/use-intl"],
+  "intlayer-compat-lingui": ["@intlayer/lingui"],
+  "intlayer-compat-next-i18next": ["@intlayer/next-i18next"],
+  "intlayer-compat-next-intl": ["@intlayer/next-intl"],
+  "intlayer-compat-i18next": ["@intlayer/i18next"],
   "gt-next": ["gt-next"],
   "gt-react": ["gt-react"],
   "next-intl": ["next-intl"],
