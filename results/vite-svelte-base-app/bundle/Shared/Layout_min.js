@@ -28,7 +28,7 @@ function l(e) {
 function u(e) {
 	return c.includes(e);
 }
-var d = new Set([
+var d = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -79,13 +79,13 @@ function b(t, n) {
 	var c = y(), l = e.child(c), u = e.child(l), d = e.sibling(e.child(u), 2), f = e.sibling(e.child(d), 2);
 	e.each(f, 21, () => e.get(s), (e) => e.label, (t, n) => {
 		var r = v(), i = e.child(r), a = (t) => {
-			var r = g(), i = e.child(r, !0);
-			e.reset(r), e.template_effect(() => {
+			var r = g(), i = e.only_child(r, !0);
+			e.template_effect(() => {
 				e.set_attribute(r, "href", e.get(n).to), e.set_text(i, e.get(n).label);
 			}), e.append(t, r);
 		}, o = (t) => {
-			var r = _(), i = e.child(r, !0);
-			e.reset(r), e.template_effect(() => {
+			var r = _(), i = e.only_child(r, !0);
+			e.template_effect(() => {
 				e.set_attribute(r, "href", e.get(n).href), e.set_text(i, e.get(n).label);
 			}), e.append(t, r);
 		};
@@ -105,16 +105,14 @@ function C(t, n) {
 	e.init();
 	var u = S(), d = e.child(u);
 	e.each(d, 5, () => c, (e) => e, (t, n) => {
-		var r = x(), i = e.child(r, !0);
-		e.reset(r);
-		var a = {};
+		var r = x(), i = e.only_child(r, !0), a = {};
 		e.template_effect((t) => {
-			e.set_text(i, t), a !== (a = e.get(n)) && (r.value = (r.__value = e.get(n)) ?? "");
+			e.set_text(i, t), a !== (a = e.get(n)) && (r.value = (r.__value = a) ?? "");
 		}, [() => l(e.get(n))]), e.append(t, r);
 	}), e.reset(d);
 	var f;
 	e.init_select(d), e.reset(u), e.template_effect((t) => {
-		f !== (f = t) && (d.value = (d.__value = t) ?? "", e.select_option(d, t));
+		f !== (f = t) && (d.value = (d.__value = f) ?? "", e.select_option(d, f));
 	}, [() => r().split("/").filter(Boolean)[0] ?? "en"]), e.delegated("change", d, s), e.append(t, u), e.pop(), o();
 }
 e.delegate(["change"]);
@@ -144,8 +142,8 @@ function T(n, r) {
 		e.set(o, t, !0), a(t), window.localStorage.setItem("theme", t);
 	}
 	let c = e.derived(() => e.get(o) === "auto" ? "Theme mode: auto (system). Click to switch to light mode." : `Theme mode: ${e.get(o)}. Click to switch mode.`), l = e.derived(() => e.get(o) === "auto" ? "Theme: Auto" : e.get(o) === "dark" ? "Theme: Dark" : "Theme: Light");
-	var u = w(), d = e.child(u, !0);
-	e.reset(u), e.template_effect(() => {
+	var u = w(), d = e.only_child(u, !0);
+	e.template_effect(() => {
 		e.set_attribute(u, "aria-label", e.get(c)), e.set_attribute(u, "title", e.get(c)), e.set_text(d, e.get(l));
 	}), e.delegated("click", u, s), e.append(n, u), e.pop();
 }
@@ -205,8 +203,8 @@ function k(t, n) {
 	var A = e.sibling(w, 2), j = (t) => {
 		var n = D(), r = e.child(n);
 		e.each(r, 21, () => e.get(l), (e) => e.to, (t, n) => {
-			var r = E(), i = e.child(r, !0);
-			e.reset(r), e.template_effect(() => {
+			var r = E(), i = e.only_child(r, !0);
+			e.template_effect(() => {
 				e.set_attribute(r, "href", e.get(n).to), e.set_text(i, e.get(n).label);
 			}), e.delegated("click", r, () => e.set(o, !1)), e.append(t, r);
 		}), e.reset(r), e.reset(n), e.event("mouseenter", n, () => e.set(o, !0)), e.event("mouseleave", n, () => e.set(o, !1)), e.append(t, n);

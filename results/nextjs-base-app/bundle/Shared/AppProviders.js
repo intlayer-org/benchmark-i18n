@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { Fragment, jsx } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
 	console.log("--- BROWSER: RootDocument mounted");
@@ -24,6 +24,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-base-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -36,6 +37,10 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 38,
+		columnNumber: 10
+	}, this);
 }
 export { AppProviders as default };

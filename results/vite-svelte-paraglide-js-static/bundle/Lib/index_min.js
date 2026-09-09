@@ -16,112 +16,132 @@ var t = {}, n = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], o = [], s, c;
-function l(e) {
-	if (o.length === 0) return;
-	let n = typeof e == "string" ? e : e.href;
-	if (s === n) return c;
-	let r = new URL(n, "http://dummy.com"), i;
-	for (let e of o) if (new t(e.match, r.href).exec(r.href)) {
-		i = e;
-		break;
-	}
-	return s = n, c = i, i;
-}
-function u(e) {
-	let t = l(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : a;
-}
-var d = void 0, f = typeof window > "u";
+], o = [], s = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var p, m = !1, h = () => {
-	if (d) {
-		let e = d?.getStore()?.locale;
-		if (e) return e;
-	}
+var c, l = !1, u = () => {
 	let e = a;
-	!f && typeof window < "u" && window.location?.href && (e = u(window.location.href));
-	let t = g(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return m || (p = t, m = !0, v(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	!s && typeof window < "u" && window.location?.href && (e = j(window.location.href));
+	let t = d(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return l || (c = t, l = !0, p(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function g(e, t) {
+function d(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = x();
+		if (t === "cookie") n = T();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && p !== void 0) n = p;
-		else if (C(t) && S.has(t)) {
-			let e = S.get(t);
+		else if (t === "globalVariable" && c !== void 0) n = c;
+		else if (N(t) && M.has(t)) {
+			let e = M.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return b(t);
+				if (t !== void 0) return g(t);
 			}
 		}
-		let e = y(n);
+		let e = h(n);
 		if (e) return e;
 	}
 }
-var _ = (e) => {
+var f = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, v = (e, t) => {
+}, p = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, o;
 	try {
-		o = h();
+		o = u();
 	} catch {}
-	let s = [], c = a;
-	!f && typeof window < "u" && window.location?.href && (c = u(window.location.href));
-	for (let t of c) if (t === "globalVariable") p = e;
+	let l = [], d = a;
+	!s && typeof window < "u" && window.location?.href && (d = j(window.location.href));
+	for (let t of d) if (t === "globalVariable") c = e;
 	else if (t === "cookie") {
-		if (f || typeof document > "u" || typeof window > "u") continue;
+		if (s || typeof document > "u" || typeof window > "u") continue;
 		let t = `${r}=${e}; path=/; max-age=${i}`;
-		document.cookie = t;
+		document.cookie = t, C();
 	} else if (t === "baseLocale") continue;
-	else if (C(t) && S.has(t)) {
-		let n = S.get(t);
+	else if (N(t) && M.has(t)) {
+		let n = M.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
 				throw Error(`Custom strategy "${t}" setLocale failed.`, { cause: e });
-			}), s.push(r));
+			}), l.push(r));
 		}
 	}
-	let l = () => {
-		!f && n.reload && window.location && e !== o && _(void 0);
+	let p = () => {
+		!s && n.reload && window.location && e !== o && f(void 0);
 	};
-	if (s.length) return Promise.all(s).then(() => {
-		l();
+	if (l.length) return Promise.all(l).then(() => {
+		p();
 	});
-	l();
-};
-function y(e) {
+	p();
+}, m = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function h(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of n) if (e.toLowerCase() === t) return e;
 }
-function b(e) {
-	let t = y(e);
+function g(e) {
+	let t = h(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${n.join(", ")}`);
 }
-function x() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${r}=([^;]+)`))?.[2];
-	return y(e);
+function _(e) {
+	return e;
 }
-var S = /* @__PURE__ */ new Map();
-function C(e) {
+function v(e, t) {
+	return e.exec(t.href);
+}
+var y = r.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), b = RegExp(`(?:^|;\\s*)${y}=([^;]*)`), x = Symbol(), S = x;
+function C() {
+	S = x;
+}
+function w() {
+	typeof queueMicrotask == "function" ? queueMicrotask(C) : Promise.resolve().then(C);
+}
+function T() {
+	if (typeof document > "u") return;
+	if (S !== x) return S;
+	let e = document.cookie.match(b)?.[1];
+	return S = h(e), w(), S;
+}
+function E(e) {
+	return D(e);
+}
+function D(e) {
+	let t = _(typeof e == "string" ? new URL(e, m()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && h(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), _(t);
+}
+var O, k;
+function A(e) {
+	if (o.length === 0) return;
+	let n = typeof e == "string" ? e : e.href;
+	if (O === n) return k;
+	let r = _(new URL(n, "http://example.com")), i = E(r), a = i.href === r.href ? [r] : [r, i], s;
+	for (let e of a) {
+		for (let n of o) if (v(new t(n.match, e.href), e)) {
+			s = n;
+			break;
+		}
+		if (s) break;
+	}
+	return O = n, k = s, s;
+}
+function j(e) {
+	let t = A(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : a;
+}
+var M = /* @__PURE__ */ new Map();
+function N(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-function w(t, n) {
+function P(t, n) {
 	e.push(n, !1);
 	let r = () => "Choosing an i18n library is an architectural decision with long-term consequences.";
 	((e = {}, t = {}) => {
-		if ((t.locale ?? h()) === "en") return r();
+		if ((t.locale ?? u()) === "en") return r();
 	})(), e.init(), e.pop();
 }
-export { w as default };
+export { P as default };

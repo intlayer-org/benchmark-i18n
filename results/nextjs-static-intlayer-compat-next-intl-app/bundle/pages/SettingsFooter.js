@@ -1,6 +1,6 @@
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
-import { r as getHTML, t as init_interpreter } from "./interpreter-HgtbAUp0.js";
-import { l as VOID_HTML_ELEMENTS, u as init_validateHTML } from "./select-DXGAONrk.js";
+import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
+import { i as getHTML, t as init_interpreter } from "./interpreter-D1QgSn8T.js";
+import { n as init_validateHTML, t as VOID_HTML_ELEMENTS } from "./validateHTML-DRnhY-yQ.js";
 import { Fragment, createContext, createElement, useContext } from "react";
 import { jsx } from "react/jsx-runtime";
 var HTMLContext, useHTMLContext;
@@ -17,13 +17,14 @@ var init_HTMLRenderer = __esmMin((() => {
 	init_transpiler();
 	renderHTML = (content, { components = {} } = {}) => {
 		const userComponents = Object.fromEntries(Object.entries(components).filter(([, Component]) => Component).map(([key, Component]) => [key, (props) => createElement(Component, props)]));
-		return jsx(Fragment, { children: getHTML(content, new Proxy(userComponents, { get(target, prop) {
+		const wrappedComponents = new Proxy(userComponents, { get(target, prop) {
 			if (typeof prop === "string" && prop in target) return target[prop];
 			if (typeof prop === "string" && /^[a-z][a-z0-9]*$/.test(prop)) {
 				if (VOID_HTML_ELEMENTS.has(prop)) return ({ children: _children, ...rest }) => createElement(prop, rest);
 				return (props) => createElement(prop, props);
 			}
-		} })) });
+		} });
+		return jsx(Fragment, { children: getHTML(content, wrappedComponents) });
 	};
 }));
 var HTMLRendererPlugin;
@@ -32,1415 +33,70 @@ __esmMin((() => {
 	init_HTMLRenderer();
 	HTMLRendererPlugin = (props) => {
 		const { html, userComponents } = props;
+		const context = useHTMLContext();
 		return renderHTML(html, { components: {
-			...useHTMLContext()?.components,
+			...context?.components,
 			...userComponents
 		} });
 	};
 }))();
 export { HTMLRendererPlugin };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
-import { n as init_getMarkdownMetadata } from "./getMarkdownMetadata-Dmb4q4sJ.js";
+import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
+import { i as renderMarkdownAst, n as compile, t as init_markdown } from "./markdown-CI89e464.js";
 import { Fragment, cloneElement, createContext, createElement, useContext } from "react";
 import "react/jsx-runtime";
-var RuleType, Priority, ATTRIBUTE_TO_NODE_PROP_MAP, NAMED_CODES_TO_UNICODE, DO_NOT_PROCESS_HTML_ELEMENTS, ATTRIBUTES_TO_SANITIZE, ATTR_EXTRACTOR_R, BLOCK_END_R, BLOCKQUOTE_R, BLOCKQUOTE_TRIM_LEFT_MULTILINE_R, BLOCKQUOTE_ALERT_R, BREAK_LINE_R, BREAK_THEMATIC_R, CODE_BLOCK_FENCED_R, CODE_BLOCK_R, FENCE_DELIMITER_R, CODE_INLINE_R, CONSECUTIVE_NEWLINE_R, FOOTNOTE_R, FOOTNOTE_REFERENCE_R, FRONT_MATTER_R, GFM_TASK_R, HEADING_R, HEADING_ATX_COMPLIANT_R, HEADING_SETEXT_R, TAG_PLAIN_RUN, TAG_ATTRIBUTES, NOT_SELF_CLOSING, NESTED_SAME_TAG_OPENING, HTML_BLOCK_ELEMENT_R, HTML_CHAR_CODE_R, HTML_COMMENT_R, HTML_CUSTOM_ATTR_R, HTML_SELF_CLOSING_ELEMENT_R, CUSTOM_COMPONENT_R, INTERPOLATION_R, LINK_AUTOLINK_BARE_URL_R, LINK_AUTOLINK_R, CAPTURE_LETTER_AFTER_HYPHEN, NP_TABLE_R, TABLE_TRIM_PIPES, TABLE_CENTER_ALIGN, TABLE_LEFT_ALIGN, TABLE_RIGHT_ALIGN, PARAGRAPH_R, REFERENCE_IMAGE_OR_LINK, REFERENCE_IMAGE_R, REFERENCE_LINK_R, HTML_BLOCK_OPENING_TAG_R, HTML_SELF_CLOSING_OPENING_TAG_R, CUSTOM_COMPONENT_OPENING_TAG_R, SHOULD_RENDER_AS_BLOCK_R, NORMALIZE_WHITESPACE_R, TRIM_STARTING_NEWLINES, HTML_LEFT_TRIM_AMOUNT_R, ORDERED_LIST_BULLET, UNORDERED_LIST_BULLET, TEXT_ESCAPED_R, UNESCAPE_R, TEXT_PLAIN_R, SHORTCODE_R, LOOKAHEAD, INLINE_SKIP_R, TEXT_BOLD_R, TEXT_EMPHASIZED_R, TEXT_MARKED_R, TEXT_STRIKETHROUGHED_R, generateListItemPrefix, ORDERED_LIST_ITEM_PREFIX, UNORDERED_LIST_ITEM_PREFIX, generateListItemPrefixRegex, ORDERED_LIST_ITEM_PREFIX_R, UNORDERED_LIST_ITEM_PREFIX_R, generateListItemRegex, ORDERED_LIST_ITEM_R, UNORDERED_LIST_ITEM_R, generateListRegex, ORDERED_LIST_R, UNORDERED_LIST_R;
-var init_constants = __esmMin((() => {
-	RuleType = {
-		blockQuote: "0",
-		breakLine: "1",
-		breakThematic: "2",
-		codeBlock: "3",
-		codeFenced: "4",
-		codeInline: "5",
-		footnote: "6",
-		footnoteReference: "7",
-		gfmTask: "8",
-		heading: "9",
-		headingSetext: "10",
-		htmlBlock: "11",
-		htmlComment: "12",
-		htmlSelfClosing: "13",
-		customComponent: "34",
-		image: "14",
-		link: "15",
-		linkAngleBraceStyleDetector: "16",
-		linkBareUrlDetector: "17",
-		newlineCoalescer: "19",
-		orderedList: "20",
-		paragraph: "21",
-		ref: "22",
-		refImage: "23",
-		refLink: "24",
-		table: "25",
-		tableSeparator: "26",
-		text: "27",
-		textBolded: "28",
-		textEmphasized: "29",
-		textEscaped: "30",
-		textMarked: "31",
-		textStrikethroughed: "32",
-		unorderedList: "33"
-	};
-	Priority = {
-		MAX: 0,
-		HIGH: 1,
-		MED: 2,
-		LOW: 3,
-		MIN: 4
-	};
-	ATTRIBUTE_TO_NODE_PROP_MAP = [
-		"allowFullScreen",
-		"allowTransparency",
-		"autoComplete",
-		"autoFocus",
-		"autoPlay",
-		"cellPadding",
-		"cellSpacing",
-		"charSet",
-		"classId",
-		"colSpan",
-		"contentEditable",
-		"contextMenu",
-		"crossOrigin",
-		"encType",
-		"formAction",
-		"formEncType",
-		"formMethod",
-		"formNoValidate",
-		"formTarget",
-		"frameBorder",
-		"hrefLang",
-		"inputMode",
-		"keyParams",
-		"keyType",
-		"marginHeight",
-		"marginWidth",
-		"maxLength",
-		"mediaGroup",
-		"minLength",
-		"noValidate",
-		"radioGroup",
-		"readOnly",
-		"rowSpan",
-		"spellCheck",
-		"srcDoc",
-		"srcLang",
-		"srcSet",
-		"tabIndex",
-		"useMap"
-	].reduce((obj, x) => {
-		obj[x.toLowerCase()] = x;
-		return obj;
-	}, {
-		class: "className",
-		for: "htmlFor"
-	});
-	NAMED_CODES_TO_UNICODE = {
-		amp: "&",
-		apos: "'",
-		gt: ">",
-		lt: "<",
-		nbsp: "\xA0",
-		quot: "“"
-	};
-	DO_NOT_PROCESS_HTML_ELEMENTS = [
-		"style",
-		"script",
-		"pre"
-	];
-	ATTRIBUTES_TO_SANITIZE = [
-		"src",
-		"href",
-		"data",
-		"formAction",
-		"srcDoc",
-		"action"
-	];
-	ATTR_EXTRACTOR_R = /([-A-Z0-9_:]+)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|(?:\{((?:\\.|{[^}]*?}|[^}])*)\})))?/gi;
-	BLOCK_END_R = /\n{2,}$/;
-	BLOCKQUOTE_R = /^(\s*>[\s\S]*?)(?=\n\n|$)/;
-	BLOCKQUOTE_TRIM_LEFT_MULTILINE_R = /^ *> ?/gm;
-	BLOCKQUOTE_ALERT_R = /^(?:\[!([^\]]*)\]\n)?([\s\S]*)/;
-	BREAK_LINE_R = /^ {2,}\n/;
-	BREAK_THEMATIC_R = /^(?:([-*_])( *\1){2,}) *(?:\n *)+\n/;
-	CODE_BLOCK_FENCED_R = /^(?: {1,3})?(`{3,}|~{3,}) *(\S+)? *([^\n]*?)?\n([\s\S]*?)(?:\1\n?|$)/;
-	CODE_BLOCK_R = /^(?: {4}[^\n]+\n*)+(?:\n *)+\n?/;
-	FENCE_DELIMITER_R = /^([ \t]*)(`{3,}|~{3,})/;
-	CODE_INLINE_R = /^(`+)((?:\\`|(?!\1)`|[^`])+)\1/;
-	CONSECUTIVE_NEWLINE_R = /^(?:\n *)*\n/;
-	FOOTNOTE_R = /^\[\^([^\]]+)](:(.*)((\n+ {4,}.*)|(\n(?!\[\^).+))*)/;
-	FOOTNOTE_REFERENCE_R = /^\[\^([^\]]+)]/;
-	FRONT_MATTER_R = /^---[ \t]*\n(.|\n)*?\n---[ \t]*\n/;
-	GFM_TASK_R = /^\s*?\[(x|\s)\]/;
-	HEADING_R = /^ *(#{1,6}) *([^\n]+?)(?: +#*)?(?:\n *)*(?:\n|$)/;
-	HEADING_ATX_COMPLIANT_R = /^ *(#{1,6}) +([^\n]+?)(?: +#*)?(?:\n *)*(?:\n|$)/;
-	HEADING_SETEXT_R = /^([^\n]+)\n *(=|-)\2{2,} *\n/;
-	TAG_PLAIN_RUN = `[^>"'<]*`;
-	TAG_ATTRIBUTES = `${TAG_PLAIN_RUN}(?:(?:"[^"\\n]*"|'[^'\\n]*'|<.*?>|["'])${TAG_PLAIN_RUN})*`;
-	NOT_SELF_CLOSING = `(?![^>]*/>)`;
-	NESTED_SAME_TAG_OPENING = `<\\1[^>]*?>`;
-	HTML_BLOCK_ELEMENT_R = new RegExp(`^ *(?!<[a-zA-Z][^ >/]* ?/>)<([a-zA-Z][^ >/]*) ?(${NOT_SELF_CLOSING}${TAG_ATTRIBUTES})>\\n?(\\s*(?:${NESTED_SAME_TAG_OPENING}[\\s\\S]*?</\\1>|(?!<\\1\\b)[\\s\\S])*?)</\\1>(?!</\\1>)\\n*`, "i");
-	HTML_CHAR_CODE_R = /&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-fA-F]{1,6});/gi;
-	HTML_COMMENT_R = /^<!--[\s\S]*?(?:-->)/;
-	HTML_CUSTOM_ATTR_R = /^(data|aria|x)-[a-z_][a-z\d_.-]*$/;
-	HTML_SELF_CLOSING_ELEMENT_R = new RegExp(`^ *<([a-zA-Z][a-zA-Z0-9:]*)(?:\\s+(${TAG_ATTRIBUTES}))?/?>(?!</\\1>)(\\s*\\n)?`, "i");
-	CUSTOM_COMPONENT_R = new RegExp(`^ *<([A-Z][a-zA-Z0-9]*)(?:\\s+(${TAG_ATTRIBUTES}))?>\\n?(\\s*(?:${NESTED_SAME_TAG_OPENING}[\\s\\S]*?</\\1>|(?!<\\1\\b)[\\s\\S])*?)</\\1>(?!</\\1>)\\n*`);
-	INTERPOLATION_R = /^\{.*\}$/;
-	LINK_AUTOLINK_BARE_URL_R = /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/;
-	LINK_AUTOLINK_R = /^<([^ >]+[:@/][^ >]+)>/;
-	CAPTURE_LETTER_AFTER_HYPHEN = /-([a-z])?/gi;
-	NP_TABLE_R = /^(\|.*)\n(?: *(\|? *[-:]+ *\|[-| :]*)\n((?:.*\|.*\n)*))?\n?/;
-	TABLE_TRIM_PIPES = /(^ *\||\| *$)/g;
-	TABLE_CENTER_ALIGN = /^ *:-+: *$/;
-	TABLE_LEFT_ALIGN = /^ *:-+ *$/;
-	TABLE_RIGHT_ALIGN = /^ *-+: *$/;
-	PARAGRAPH_R = /^[^\n]+(?: {2}\n|\n{2,})/;
-	REFERENCE_IMAGE_OR_LINK = /^\[([^\]]*)\]:\s+<?([^\s>]+)>?\s*("([^"]*)")?/;
-	REFERENCE_IMAGE_R = /^!\[([^\]]*)\] ?\[([^\]]*)\]/;
-	REFERENCE_LINK_R = /^\[([^\]]*)\] ?\[([^\]]*)\]/;
-	HTML_BLOCK_OPENING_TAG_R = /^ *<([a-z][a-z0-9:-]*)\b/i;
-	HTML_SELF_CLOSING_OPENING_TAG_R = /^ *<([a-zA-Z][a-zA-Z0-9:]*)[\s>/]/;
-	CUSTOM_COMPONENT_OPENING_TAG_R = /^ *<([A-Z][a-zA-Z0-9]*)/;
-	SHOULD_RENDER_AS_BLOCK_R = /(\n|^[-*]\s|^#|^ {2,}|^-{2,}|^>\s)/;
-	NORMALIZE_WHITESPACE_R = /\r\n?|\f|\t/g;
-	TRIM_STARTING_NEWLINES = /^\n+/;
-	HTML_LEFT_TRIM_AMOUNT_R = /^\n*([ \t]*)/;
-	ORDERED_LIST_BULLET = "(?:\\d+\\.)";
-	UNORDERED_LIST_BULLET = "(?:[*+-])";
-	TEXT_ESCAPED_R = /^\\([^0-9A-Za-z\s])/;
-	UNESCAPE_R = /\\([^0-9A-Za-z\s])/g;
-	TEXT_PLAIN_R = /^[\s\S](?:(?! {2}\n|[0-9]\.|http)[^=*_~\-\n:<`\\[!])*/;
-	SHORTCODE_R = /^(:[a-zA-Z0-9-_]+:)/;
-	LOOKAHEAD = (double) => `(?=[\\s\\S]+?\\1${double ? "\\1" : ""})`;
-	INLINE_SKIP_R = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
-	TEXT_BOLD_R = new RegExp(`^([*_])\\1${LOOKAHEAD(1)}${INLINE_SKIP_R}\\1\\1(?!\\1)`);
-	TEXT_EMPHASIZED_R = new RegExp(`^([*_])${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1(?!\\1)`);
-	TEXT_MARKED_R = new RegExp(`^(==)${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1`);
-	TEXT_STRIKETHROUGHED_R = new RegExp(`^(~~)${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1`);
-	generateListItemPrefix = (type) => {
-		return "( *)(" + (type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET) + ") +";
-	};
-	ORDERED_LIST_ITEM_PREFIX = generateListItemPrefix(1);
-	UNORDERED_LIST_ITEM_PREFIX = generateListItemPrefix(2);
-	generateListItemPrefixRegex = (type) => {
-		return new RegExp("^" + (type === 1 ? ORDERED_LIST_ITEM_PREFIX : UNORDERED_LIST_ITEM_PREFIX));
-	};
-	ORDERED_LIST_ITEM_PREFIX_R = generateListItemPrefixRegex(1);
-	UNORDERED_LIST_ITEM_PREFIX_R = generateListItemPrefixRegex(2);
-	generateListItemRegex = (type) => {
-		return new RegExp("^" + (type === 1 ? ORDERED_LIST_ITEM_PREFIX : UNORDERED_LIST_ITEM_PREFIX) + "[^\\n]*(?:\\n(?!\\1" + (type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET) + " )[^\\n]*)*(\\n|$)", "gm");
-	};
-	ORDERED_LIST_ITEM_R = generateListItemRegex(1);
-	UNORDERED_LIST_ITEM_R = generateListItemRegex(2);
-	generateListRegex = (type) => {
-		const bullet = type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET;
-		return new RegExp("^( *)(" + bullet + ") [\\s\\S]+?(?:\\n{2,}(?! )(?!\\1" + bullet + " (?!" + bullet + " ))\\n*|\\s*\\n*$)");
-	};
-	ORDERED_LIST_R = generateListRegex(1);
-	UNORDERED_LIST_R = generateListRegex(2);
-}));
-var trimEnd, startsWith, unquote, unescapeString, cx, get, SLUGIFY_REPLACEMENTS, slugify, SANITIZE_R, SANITIZE_STRIP_R, sanitizer, normalizeWhitespace, trimLeadingWhitespaceOutsideFences, normalizeAttributeKey, parseStyleAttribute, attributeValueToNodePropValue, parseTableAlignCapture, parseTableAlign, parseTableRow, parseTableCells, qualifies, allowInline, inlineRegex, simpleInlineRegex, blockRegex, anyScopeRegex, parseInline, parseSimpleInline, parseBlock, parseCaptureInline, captureNothing, renderNothing, some;
-var init_utils = __esmMin((() => {
-	init_constants();
-	trimEnd = (str) => {
-		let end = str.length;
-		while (end > 0 && str[end - 1] <= " ") end--;
-		return str.slice(0, end);
-	};
-	startsWith = (str, prefix) => {
-		return str.startsWith(prefix);
-	};
-	unquote = (str) => {
-		const first = str[0];
-		if ((first === "\"" || first === "'") && str.length >= 2 && str[str.length - 1] === first) return str.slice(1, -1);
-		return str;
-	};
-	unescapeString = (rawString) => rawString ? rawString.replace(UNESCAPE_R, "$1") : rawString;
-	cx = (...args) => args.filter(Boolean).join(" ");
-	get = (src, path, fb) => {
-		let ptr = src;
-		const frags = path.split(".");
-		while (frags.length) {
-			ptr = ptr[frags[0]];
-			if (ptr === void 0) break;
-			else frags.shift();
-		}
-		return ptr ?? fb;
-	};
-	SLUGIFY_REPLACEMENTS = [
-		[/[ÀÁÂÃÄÅàáâãäåæÆ]/g, "a"],
-		[/[çÇ]/g, "c"],
-		[/[ðÐ]/g, "d"],
-		[/[ÈÉÊËéèêë]/g, "e"],
-		[/[ÏïÎîÍíÌì]/g, "i"],
-		[/[Ññ]/g, "n"],
-		[/[øØœŒÕõÔôÓóÒò]/g, "o"],
-		[/[ÜüÛûÚúÙù]/g, "u"],
-		[/[ŸÿÝý]/g, "y"],
-		[/[^a-z0-9- ]/gi, ""],
-		[/ /gi, "-"]
-	];
-	slugify = (str) => {
-		let result = str;
-		for (let i = 0; i < SLUGIFY_REPLACEMENTS.length; i++) {
-			const [pattern, replacement] = SLUGIFY_REPLACEMENTS[i];
-			result = result.replace(pattern, replacement);
-		}
-		return result.toLowerCase();
-	};
-	SANITIZE_R = /(javascript|vbscript|data(?!:image)):/i;
-	SANITIZE_STRIP_R = /[^A-Za-z0-9/:]/g;
-	sanitizer = (input) => {
-		if (input.indexOf(":") === -1 && input.indexOf("%") === -1) return input;
-		try {
-			const decoded = decodeURIComponent(input).replace(SANITIZE_STRIP_R, "");
-			if (SANITIZE_R.test(decoded)) {
-				console.warn("Input contains an unsafe JavaScript/VBScript/data expression, it will not be rendered.", decoded);
-				return null;
+var REACT_ELEMENT_TYPE, reactRuntime;
+var init_runtime = __esmMin((() => {
+	try {
+		const sample = createElement("div");
+		REACT_ELEMENT_TYPE = sample && typeof sample === "object" && "$$typeof" in sample && typeof sample.$$typeof === "symbol" ? sample.$$typeof : Symbol.for("react.transitional.element");
+	} catch {
+		REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
+	}
+	reactRuntime = {
+		createElement: (type, props, ...children) => {
+			let key = null;
+			const finalProps = props || {};
+			if (props && props.key != null) {
+				key = String(props.key);
+				finalProps.key = void 0;
 			}
-		} catch (_e) {
-			console.warn("Input could not be decoded due to malformed syntax or characters, it will not be rendered.", input);
-			return null;
-		}
-		return input;
-	};
-	normalizeWhitespace = (source) => source.replace(NORMALIZE_WHITESPACE_R, (match) => {
-		if (match === "	") return "    ";
-		if (match === "\f") return "";
-		return "\n";
-	});
-	trimLeadingWhitespaceOutsideFences = (text, whitespace) => {
-		if (!whitespace) return text;
-		const lines = text.split("\n");
-		let openFence = null;
-		const removePrefix = (line, prefix) => prefix && line.startsWith(prefix) ? line.slice(prefix.length) : line;
-		return lines.map((line) => {
-			const fenceMatch = line.match(FENCE_DELIMITER_R);
-			if (!openFence) {
-				if (fenceMatch) openFence = {
-					indentation: fenceMatch[1],
-					marker: fenceMatch[2]
-				};
-				return removePrefix(line, whitespace);
-			}
-			const isClosingFence = fenceMatch?.[2]?.startsWith(openFence.marker);
-			const { indentation } = openFence;
-			if (isClosingFence) openFence = null;
-			return removePrefix(line, indentation);
-		}).join("\n");
-	};
-	normalizeAttributeKey = (key) => {
-		if (key.indexOf("-") !== -1 && key.match(HTML_CUSTOM_ATTR_R) === null) key = key.replace(CAPTURE_LETTER_AFTER_HYPHEN, (_, letter) => {
-			return letter.toUpperCase();
-		});
-		return key;
-	};
-	parseStyleAttribute = (styleString) => {
-		const styles = [];
-		let buffer = "";
-		let inUrl = false;
-		let inQuotes = false;
-		let quoteChar = "";
-		if (!styleString) return styles;
-		for (let i = 0; i < styleString.length; i++) {
-			const char = styleString[i];
-			if ((char === "\"" || char === "'") && !inUrl) {
-				if (!inQuotes) {
-					inQuotes = true;
-					quoteChar = char;
-				} else if (char === quoteChar) {
-					inQuotes = false;
-					quoteChar = "";
-				}
-			}
-			if (char === "(" && buffer.endsWith("url")) inUrl = true;
-			else if (char === ")" && inUrl) inUrl = false;
-			if (char === ";" && !inQuotes && !inUrl) {
-				const declaration = buffer.trim();
-				if (declaration) {
-					const colonIndex = declaration.indexOf(":");
-					if (colonIndex > 0) {
-						const key = declaration.slice(0, colonIndex).trim();
-						const value = declaration.slice(colonIndex + 1).trim();
-						styles.push([key, value]);
-					}
-				}
-				buffer = "";
-			} else buffer += char;
-		}
-		const declaration = buffer.trim();
-		if (declaration) {
-			const colonIndex = declaration.indexOf(":");
-			if (colonIndex > 0) {
-				const key = declaration.slice(0, colonIndex).trim();
-				const value = declaration.slice(colonIndex + 1).trim();
-				styles.push([key, value]);
-			}
-		}
-		return styles;
-	};
-	attributeValueToNodePropValue = (tag, key, value, sanitizeUrlFn) => {
-		if (key === "style") return parseStyleAttribute(value).reduce((styles, [styleKey, styleValue]) => {
-			const camelCasedKey = styleKey.replace(/(-[a-z])/g, (substr) => substr[1].toUpperCase());
-			styles[camelCasedKey] = sanitizeUrlFn(styleValue, tag, styleKey);
-			return styles;
-		}, {});
-		else if (ATTRIBUTES_TO_SANITIZE.indexOf(key) !== -1) return sanitizeUrlFn(unescapeString(value), tag, key);
-		else if (value.match(INTERPOLATION_R)) value = unescapeString(value.slice(1, value.length - 1));
-		if (value === "true") return true;
-		else if (value === "false") return false;
-		return value;
-	};
-	parseTableAlignCapture = (alignCapture) => {
-		if (TABLE_RIGHT_ALIGN.test(alignCapture)) return "right";
-		else if (TABLE_CENTER_ALIGN.test(alignCapture)) return "center";
-		else if (TABLE_LEFT_ALIGN.test(alignCapture)) return "left";
-		return "left";
-	};
-	parseTableAlign = (source) => {
-		return source.replace(TABLE_TRIM_PIPES, "").split("|").map(parseTableAlignCapture);
-	};
-	parseTableRow = (source, parse, state, tableOutput) => {
-		const prevInTable = state.inTable;
-		state.inTable = true;
-		const cells = [[]];
-		let acc = "";
-		const flush = () => {
-			if (!acc) return;
-			const cell = cells[cells.length - 1];
-			cell.push.apply(cell, parse(acc, state));
-			acc = "";
-		};
-		source.trim().split(/(`[^`]*`|\\\||\|)/).filter(Boolean).forEach((fragment, i, arr) => {
-			if (fragment.trim() === "|") {
-				flush();
-				if (tableOutput) {
-					if (i !== 0 && i !== arr.length - 1) cells.push([]);
-					return;
-				}
-			}
-			acc += fragment;
-		});
-		flush();
-		state.inTable = prevInTable;
-		return cells;
-	};
-	parseTableCells = (source, parse, state) => {
-		return source.trim().split("\n").map((rowText) => parseTableRow(rowText, parse, state, true));
-	};
-	qualifies = (source, state, qualify) => {
-		if (Array.isArray(qualify)) {
-			for (let i = 0; i < qualify.length; i++) if (startsWith(source, qualify[i])) return true;
-			return false;
-		}
-		return qualify(source, state);
-	};
-	allowInline = (fn) => {
-		fn.inline = 1;
-		return fn;
-	};
-	inlineRegex = (regex) => allowInline((source, state) => {
-		if (state.inline) return regex.exec(source);
-		else return null;
-	});
-	simpleInlineRegex = (regex) => allowInline((source, state) => {
-		if (state.inline || state.simple) return regex.exec(source);
-		else return null;
-	});
-	blockRegex = (regex) => (source, state) => {
-		if (state.inline || state.simple) return null;
-		else return regex.exec(source);
-	};
-	anyScopeRegex = (fn) => allowInline((source, state) => {
-		if (typeof fn === "function") return fn(source, state);
-		return fn.exec(source);
-	});
-	parseInline = (parse, children, state) => {
-		const isCurrentlyInline = state.inline ?? false;
-		const isCurrentlySimple = state.simple ?? false;
-		state.inline = true;
-		state.simple = true;
-		const result = parse(children, state);
-		state.inline = isCurrentlyInline;
-		state.simple = isCurrentlySimple;
-		return result;
-	};
-	parseSimpleInline = (parse, children, state) => {
-		const isCurrentlyInline = state.inline ?? false;
-		const isCurrentlySimple = state.simple ?? false;
-		state.inline = false;
-		state.simple = true;
-		const result = parse(children, state);
-		state.inline = isCurrentlyInline;
-		state.simple = isCurrentlySimple;
-		return result;
-	};
-	parseBlock = (parse, children, state = {}) => {
-		const isCurrentlyInline = state.inline || false;
-		state.inline = false;
-		const normalizedChildren = trimEnd(children);
-		const result = parse(/\n\n$/.test(normalizedChildren) === false ? normalizedChildren.endsWith("\n") ? `${normalizedChildren}\n` : `${normalizedChildren}\n\n` : normalizedChildren, state);
-		state.inline = isCurrentlyInline;
-		return result;
-	};
-	parseCaptureInline = (capture, parse, state) => {
-		return { children: parseInline(parse, capture[2] ?? "", state) };
-	};
-	captureNothing = () => ({});
-	renderNothing = () => null;
-	some = (regexes, input) => {
-		for (let i = 0; i < regexes.length; i++) if (regexes[i].test(input)) return true;
-		return false;
-	};
-}));
-var ruleOrderCache, sameNames, orderRules, advanceLookbehind, parserFor;
-var init_parser = __esmMin((() => {
-	init_utils();
-	ruleOrderCache = /* @__PURE__ */ new Map();
-	sameNames = (a, b) => {
-		for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false;
-		return true;
-	};
-	orderRules = (names, rules) => {
-		const candidates = ruleOrderCache.get(names.length);
-		if (candidates) {
-			for (let i = 0; i < candidates.length; i++) if (sameNames(names, candidates[i].names)) return candidates[i].order;
-		}
-		const order = names.slice().sort((a, b) => rules[a]._order - rules[b]._order || +a - +b);
-		const entry = {
-			names: names.slice(),
-			order
-		};
-		if (candidates) candidates.push(entry);
-		else ruleOrderCache.set(names.length, [entry]);
-		return order;
-	};
-	advanceLookbehind = (state, capture) => {
-		const newlineIndex = capture.lastIndexOf("\n");
-		const hasPrevCapture = state.prevCaptureHasBlankLine !== void 0;
-		if (state.prevCaptureHasBlankLine !== true) state.prevCaptureHasBlankLine = capture.indexOf("\n\n") !== -1 || hasPrevCapture && capture.charCodeAt(0) === 10 && state.prevCaptureIndent === "";
-		const tail = newlineIndex === -1 ? state.prevCaptureIndent === void 0 ? void 0 : state.prevCaptureIndent + capture : capture.slice(newlineIndex + 1);
-		if (tail === void 0 || tail === "") {
-			state.prevCaptureIndent = tail;
-			return;
-		}
-		for (let i = 0; i < tail.length; i++) if (tail.charCodeAt(i) !== 32) {
-			state.prevCaptureIndent = void 0;
-			return;
-		}
-		state.prevCaptureIndent = tail;
-	};
-	parserFor = (rules) => {
-		const ruleList = Object.keys(rules);
-		ruleList.forEach((type) => {
-			const order = rules[type]?._order;
-			if (typeof order !== "number" || !Number.isFinite(order)) console.warn(`intlayer: Invalid order for rule \`${type}\`: ${order}`);
-		});
-		const order = orderRules(ruleList, rules);
-		const ruleCount = order.length;
-		const qualifiers = new Array(ruleCount);
-		const matchers = new Array(ruleCount);
-		const parsers = new Array(ruleCount);
-		for (let i = 0; i < ruleCount; i++) {
-			const rule = rules[order[i]];
-			qualifiers[i] = rule._qualify;
-			matchers[i] = rule._match;
-			parsers[i] = rule._parse;
-		}
-		const nestedParse = (source, state = {}) => {
-			const result = [];
-			if (state.prevCaptureHasBlankLine === void 0) state.prevCaptureIndent = "";
-			if (source.trim()) while (source) for (let i = 0; i < ruleCount; i++) {
-				const qualify = qualifiers[i];
-				if (qualify && !qualifies(source, state, qualify)) continue;
-				const capture = matchers[i](source, state);
-				if (capture?.[0]) {
-					source = source.substring(capture[0].length);
-					const parsed = parsers[i](capture, nestedParse, state);
-					advanceLookbehind(state, capture[0]);
-					if (!parsed.type) parsed.type = order[i];
-					result.push(parsed);
-					break;
-				}
-			}
-			return result;
-		};
-		return (source, state) => nestedParse(normalizeWhitespace(source), state);
-	};
-}));
-var renderFor, createRenderer;
-var init_renderer = __esmMin((() => {
-	renderFor = (render) => {
-		const emit = (ast, state = {}) => {
-			if (!Array.isArray(ast)) return render(ast, emit, state);
-			const oldKey = state.key;
-			const result = [];
-			let lastWasString = false;
-			let renderedIndex = 0;
-			for (let i = 0; i < ast.length; i++) {
-				const nodeOut = emit(ast[i], {
-					...state,
-					key: renderedIndex
-				});
-				const isString = typeof nodeOut === "string";
-				if (isString && lastWasString) result[result.length - 1] = result[result.length - 1] + nodeOut;
-				else if (nodeOut !== null) {
-					result.push(nodeOut);
-					renderedIndex++;
-				}
-				lastWasString = isString;
-			}
-			state.key = oldKey;
-			return result;
-		};
-		return emit;
-	};
-	createRenderer = (rules, userRender) => (ast, render, state) => {
-		const renderer = rules[ast.type]?._render;
-		return userRender ? userRender(() => renderer?.(ast, render, state), ast, render, state) : renderer?.(ast, render, state);
-	};
-}));
-var IMAGE_R, LINK_R, closingTagRegexCache, getClosingTagRegex, createTagResolver, createSlugger, createElementFactory, createRules, noopCreateElement, createDocumentRules, parseWithRules, renderWithRules, parseMarkdown, renderMarkdownAst, compile;
-var init_compiler = __esmMin((() => {
-	init_constants();
-	init_utils();
-	init_parser();
-	init_renderer();
-	IMAGE_R = /^!\[(.*?)\]\( *((?:\([^)]*\)|[^() ])*) *"?([^)"]*)?"?\)/;
-	LINK_R = new RegExp(`^\\[((?:\\[[^\\[\\]]*(?:\\[[^\\[\\]]*\\][^\\[\\]]*)*\\]|[^\\[\\]])*)\\]\\(\\s*<?((?:\\([^)]*\\)|[^\\s\\\\]|\\\\.)*?)>?(?:\\s+['"]([\\s\\S]*?)['"])?\\s*\\)`);
-	closingTagRegexCache = /* @__PURE__ */ new Map();
-	getClosingTagRegex = (tag) => {
-		const cached = closingTagRegexCache.get(tag);
-		if (cached) return cached;
-		const regex = new RegExp(`</${tag}>`, "i");
-		closingTagRegexCache.set(tag, regex);
-		return regex;
-	};
-	createTagResolver = (components) => {
-		let lowercaseKeys = null;
-		return (tag) => {
-			if (typeof tag !== "string") return tag;
-			const override = get(components, tag);
-			if (override) return override;
-			if (!lowercaseKeys) {
-				lowercaseKeys = /* @__PURE__ */ new Map();
-				for (const key of Object.keys(components)) {
-					const lowercased = key.toLowerCase();
-					if (!lowercaseKeys.has(lowercased)) lowercaseKeys.set(lowercased, key);
-				}
-			}
-			const key = lowercaseKeys.get(tag.toLowerCase());
-			return (key ? get(components, key) : void 0) || tag;
-		};
-	};
-	createSlugger = (ctx) => (input) => ctx.slugify ? ctx.slugify(input, slugify) : slugify(input);
-	createElementFactory = (ctx, options) => {
-		const { runtime, components = {} } = ctx;
-		const resolveTag = createTagResolver(components);
-		const filteredTags = options.tagfilter ? [
-			"title",
-			"textarea",
-			"style",
-			"xmp",
-			"iframe",
-			"noembed",
-			"noframes",
-			"script",
-			"plaintext"
-		] : [];
-		return (tag, props, ...children) => {
-			if (typeof tag === "string" && filteredTags.includes(tag.toLowerCase())) return null;
-			const isStringTag = typeof tag === "string";
-			const className = cx(props?.className, props?.class);
-			const mergedProps = {};
-			let classNameHandled = false;
-			if (props) for (const key in props) {
-				const value = props[key];
-				if (value === void 0 || value === null) continue;
-				if (key === "className" || key === "class") {
-					if (!classNameHandled) {
-						if (className) mergedProps.className = className;
-						classNameHandled = true;
-					}
-				} else mergedProps[key] = value;
-			}
-			if (!classNameHandled && className) mergedProps.className = className;
-			let finalProps = mergedProps;
-			if (runtime.normalizeProps && isStringTag) finalProps = runtime.normalizeProps(tag, mergedProps);
-			const component = resolveTag(tag);
-			return runtime.createElement(component, finalProps, ...children.length === 1 ? [children[0]] : children);
-		};
-	};
-	createRules = (createElement, ctx, options, footnotes, refs, attrStringToMap, containsBlockSyntax, nonParagraphBlockSyntaxes) => {
-		const slug = createSlugger(ctx);
-		const sanitize = ctx.sanitizer ?? sanitizer;
-		const namedCodesToUnicode = ctx.namedCodesToUnicode ? {
-			...NAMED_CODES_TO_UNICODE,
-			...ctx.namedCodesToUnicode
-		} : NAMED_CODES_TO_UNICODE;
-		const generateListRule = (type) => {
-			const ordered = type === 1;
-			const LIST_R = ordered ? ORDERED_LIST_R : UNORDERED_LIST_R;
-			const LIST_ITEM_R = ordered ? ORDERED_LIST_ITEM_R : UNORDERED_LIST_ITEM_R;
-			const LIST_ITEM_PREFIX_R = ordered ? ORDERED_LIST_ITEM_PREFIX_R : UNORDERED_LIST_ITEM_PREFIX_R;
+			const childCount = children.length;
+			if (childCount === 1) finalProps.children = children[0];
+			else if (childCount > 1) finalProps.children = children;
 			return {
-				_qualify: (source) => LIST_ITEM_PREFIX_R.test(source),
-				_match: allowInline((source, state) => {
-					const lineIndent = state.prevCaptureIndent;
-					const isStartOfLine = lineIndent !== void 0;
-					const isListAllowed = state.list ?? (!state.inline && !state.simple);
-					if (isStartOfLine && isListAllowed) {
-						const matchSource = lineIndent ? lineIndent + source : source;
-						return LIST_R.exec(matchSource);
-					}
-					return null;
-				}),
-				_order: Priority.HIGH,
-				_parse(capture, parse, state) {
-					const bullet = capture[2];
-					const startValue = ordered ? +bullet.slice(0, -1) : void 0;
-					const items = capture[0].replace(BLOCK_END_R, "\n").match(LIST_ITEM_R);
-					if (!items) return {
-						items: [],
-						ordered,
-						start: startValue
-					};
-					let lastItemWasAParagraph = false;
-					return {
-						items: items.map((item, i) => {
-							const prefixCapture = LIST_ITEM_PREFIX_R.exec(item);
-							const space = prefixCapture ? prefixCapture[0].length : 0;
-							const spaceRegex = new RegExp(`^ {1,${space}}`, "gm");
-							const content = item.replace(spaceRegex, "").replace(LIST_ITEM_PREFIX_R, "");
-							const isLastItem = i === items.length - 1;
-							const thisItemIsAParagraph = content.indexOf("\n\n") !== -1 || isLastItem && lastItemWasAParagraph;
-							lastItemWasAParagraph = thisItemIsAParagraph;
-							const oldStateInline = state.inline;
-							const oldStateList = state.list;
-							state.list = true;
-							let adjustedContent;
-							if (thisItemIsAParagraph) {
-								state.inline = false;
-								adjustedContent = `${trimEnd(content)}\n\n`;
-							} else {
-								state.inline = true;
-								adjustedContent = trimEnd(content);
-							}
-							const parsed = parse(adjustedContent, state);
-							state.inline = oldStateInline;
-							state.list = oldStateList;
-							return parsed;
-						}),
-						ordered,
-						start: startValue
-					};
-				},
-				_render(node, output, state = {}) {
-					const Tag = node.ordered ? "ol" : "ul";
-					const props = { key: state.key };
-					if (node.ordered && node.start != null) props.start = node.start;
-					return createElement(Tag, props, ...node.items.map((item, i) => createElement("li", { key: i }, output(item, state))));
-				}
+				$$typeof: REACT_ELEMENT_TYPE,
+				type,
+				key,
+				ref: null,
+				props: finalProps,
+				_owner: null,
+				_store: {},
+				_debugStack: null,
+				_debugTask: null
 			};
-		};
-		const matchParagraph = (source, state) => {
-			if (state.inline || state.simple || state.inHTML && source.indexOf("\n\n") === -1 && !state.prevCaptureHasBlankLine) return null;
-			let start = 0;
-			while (true) {
-				const newlineIndex = source.indexOf("\n", start);
-				const line = source.slice(start, newlineIndex === -1 ? void 0 : newlineIndex + 1);
-				if (some(nonParagraphBlockSyntaxes, line)) break;
-				if (newlineIndex === -1 || !line.trim()) break;
-				start = newlineIndex + 1;
-			}
-			const match = source.slice(0, start);
-			if (match === "") return null;
-			const captured = trimEnd(match);
-			if (captured === "") return null;
-			return [
-				match,
-				void 0,
-				captured
-			];
-		};
-		return {
-			[RuleType.blockQuote]: {
-				_qualify: [">"],
-				_match: blockRegex(BLOCKQUOTE_R),
-				_order: Priority.HIGH,
-				_parse(capture, parse, state) {
-					const matchAlert = capture[0].replace(BLOCKQUOTE_TRIM_LEFT_MULTILINE_R, "").match(BLOCKQUOTE_ALERT_R);
-					const alert = matchAlert?.[1];
-					const content = matchAlert?.[2] ?? "";
-					return {
-						alert,
-						children: content.indexOf("\n") !== -1 ? parseBlock(parse, content, state) : parseInline(parse, content, state)
-					};
-				},
-				_render(node, output, state = {}) {
-					const props = { key: state.key };
-					if (node.alert) {
-						props.className = `markdown-alert-${slug(node.alert.toLowerCase())}`;
-						node.children.unshift({
-							attrs: {},
-							children: [{
-								type: RuleType.text,
-								text: node.alert
-							}],
-							noInnerParse: true,
-							type: RuleType.htmlBlock,
-							tag: "header"
-						});
-					}
-					return createElement("blockquote", props, output(node.children, state));
-				}
-			},
-			[RuleType.breakLine]: {
-				_qualify: ["  "],
-				_match: anyScopeRegex(BREAK_LINE_R),
-				_order: Priority.HIGH,
-				_parse: captureNothing,
-				_render(_, __, state = {}) {
-					return createElement("br", { key: state.key });
-				}
-			},
-			[RuleType.breakThematic]: {
-				_qualify: [
-					"--",
-					"__",
-					"**",
-					"- ",
-					"* ",
-					"_ "
-				],
-				_match: blockRegex(BREAK_THEMATIC_R),
-				_order: Priority.HIGH,
-				_parse: captureNothing,
-				_render(_, __, state = {}) {
-					return createElement("hr", { key: state.key });
-				}
-			},
-			[RuleType.codeBlock]: {
-				_qualify: ["    "],
-				_match: blockRegex(CODE_BLOCK_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					return {
-						type: RuleType.codeBlock,
-						lang: void 0,
-						text: unescapeString(trimEnd(capture[0].replace(/^ {4}/gm, "")))
-					};
-				},
-				_render(node, _, state = {}) {
-					const attrs = { ...node.attrs ?? {} };
-					const langClass = node.lang ? `lang-${node.lang}` : "lang-plaintext";
-					attrs.className = attrs.className ? `${attrs.className} ${langClass}` : langClass;
-					return createElement("pre", { key: state.key }, createElement("code", attrs, node.text));
-				}
-			},
-			[RuleType.codeFenced]: {
-				_qualify: ["```", "~~~"],
-				_match: blockRegex(CODE_BLOCK_FENCED_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					return {
-						attrs: attrStringToMap("code", capture[3] ?? ""),
-						lang: capture[2] || void 0,
-						text: capture[4],
-						type: RuleType.codeBlock
-					};
-				}
-			},
-			[RuleType.codeInline]: {
-				_qualify: ["`"],
-				_match: simpleInlineRegex(CODE_INLINE_R),
-				_order: Priority.LOW,
-				_parse(capture) {
-					return { text: unescapeString(capture[2]) };
-				},
-				_render(node, _, state = {}) {
-					return createElement("code", { key: state.key }, node.text);
-				}
-			},
-			[RuleType.footnote]: {
-				_qualify: ["[^"],
-				_match: blockRegex(FOOTNOTE_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					footnotes.push({
-						footnote: capture[2],
-						identifier: capture[1]
-					});
-					return {};
-				},
-				_render: renderNothing
-			},
-			[RuleType.footnoteReference]: {
-				_qualify: ["[^"],
-				_match: inlineRegex(FOOTNOTE_REFERENCE_R),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					return {
-						target: `#${slug(capture[1])}`,
-						text: capture[1]
-					};
-				},
-				_render(node, _, state = {}) {
-					return createElement("a", {
-						key: state.key,
-						href: sanitize(node.target, "a", "href") ?? void 0
-					}, createElement("sup", { key: state.key }, node.text));
-				}
-			},
-			[RuleType.gfmTask]: {
-				_qualify: ["[ ]", "[x]"],
-				_match: inlineRegex(GFM_TASK_R),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					return { completed: capture[1].toLowerCase() === "x" };
-				},
-				_render(node, _, state = {}) {
-					return createElement("input", {
-						checked: node.completed,
-						key: state.key,
-						readOnly: true,
-						type: "checkbox"
-					});
-				}
-			},
-			[RuleType.heading]: {
-				_qualify: ["#"],
-				_match: blockRegex(options.enforceAtxHeadings ? HEADING_ATX_COMPLIANT_R : HEADING_R),
-				_order: Priority.HIGH,
-				_parse(capture, parse, state) {
-					return {
-						children: parseInline(parse, capture[2], state),
-						id: slug(capture[2]),
-						level: capture[1].length
-					};
-				},
-				_render(node, output, state = {}) {
-					return createElement(`h${node.level}`, {
-						id: node.id,
-						key: state.key
-					}, output(node.children, state));
-				}
-			},
-			[RuleType.headingSetext]: {
-				_qualify: (source) => {
-					const nlIndex = source.indexOf("\n");
-					return nlIndex > 0 && nlIndex < source.length - 1 && (source[nlIndex + 1] === "=" || source[nlIndex + 1] === "-");
-				},
-				_match: blockRegex(HEADING_SETEXT_R),
-				_order: Priority.MAX,
-				_parse(capture, parse, state) {
-					return {
-						children: parseInline(parse, capture[1], state),
-						level: capture[2] === "=" ? 1 : 2,
-						type: RuleType.heading
-					};
-				}
-			},
-			[RuleType.htmlBlock]: {
-				_qualify: (source) => {
-					if (options.disableParsingRawHTML) return false;
-					const match = HTML_BLOCK_OPENING_TAG_R.exec(source);
-					if (!match) return false;
-					return getClosingTagRegex(match[1]).test(source);
-				},
-				_match: anyScopeRegex(HTML_BLOCK_ELEMENT_R),
-				_order: Priority.HIGH,
-				_parse(capture, parse, state) {
-					const whitespace = capture[3].match(HTML_LEFT_TRIM_AMOUNT_R)?.[1] ?? "";
-					const trimmed = trimLeadingWhitespaceOutsideFences(capture[3], whitespace);
-					const parseFunc = containsBlockSyntax(trimmed) ? parseBlock : parseInline;
-					const tagName = capture[1].trim();
-					const noInnerParse = DO_NOT_PROCESS_HTML_ELEMENTS.indexOf(tagName.toLowerCase()) !== -1;
-					const tag = noInnerParse ? tagName.toLowerCase() : tagName;
-					const ast = {
-						attrs: attrStringToMap(tag, capture[2] ?? ""),
-						noInnerParse,
-						tag
-					};
-					state.inAnchor = state.inAnchor || tagName.toLowerCase() === "a";
-					if (noInnerParse) ast.text = capture[3];
-					else {
-						const prevInHTML = state.inHTML;
-						state.inHTML = true;
-						ast.children = parseFunc(parse, trimmed, state);
-						state.inHTML = prevInHTML;
-					}
-					state.inAnchor = false;
-					return ast;
-				},
-				_render(node, output, state = {}) {
-					return createElement(node.tag, {
-						key: state.key,
-						...node.attrs ?? {}
-					}, node.text ?? (node.children ? output(node.children, state) : ""));
-				}
-			},
-			[RuleType.htmlComment]: {
-				_qualify: ["<!"],
-				_match: anyScopeRegex(HTML_COMMENT_R),
-				_order: Priority.HIGH,
-				_parse: captureNothing,
-				_render: renderNothing
-			},
-			[RuleType.htmlSelfClosing]: {
-				_qualify: (source) => {
-					if (options.disableParsingRawHTML) return false;
-					return HTML_SELF_CLOSING_OPENING_TAG_R.test(source);
-				},
-				_match: anyScopeRegex(HTML_SELF_CLOSING_ELEMENT_R),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					const tag = capture[1].trim();
-					return {
-						attrs: attrStringToMap(tag, capture[2] || ""),
-						tag
-					};
-				},
-				_render(node, _, state = {}) {
-					return createElement(node.tag, {
-						key: state.key,
-						...node.attrs ?? {}
-					});
-				}
-			},
-			[RuleType.customComponent]: {
-				_qualify: (source) => CUSTOM_COMPONENT_OPENING_TAG_R.test(source),
-				_match: anyScopeRegex(CUSTOM_COMPONENT_R),
-				_order: Priority.MAX,
-				_parse(capture, parse, state) {
-					const whitespace = capture[3].match(HTML_LEFT_TRIM_AMOUNT_R)?.[1] ?? "";
-					const trimmed = trimLeadingWhitespaceOutsideFences(capture[3], whitespace);
-					const parseFunc = containsBlockSyntax(trimmed) ? parseBlock : parseInline;
-					const tag = capture[1].trim();
-					const ast = {
-						attrs: attrStringToMap(tag, capture[2] ?? ""),
-						noInnerParse: false,
-						tag
-					};
-					const prevInHTML = state.inHTML;
-					state.inHTML = true;
-					ast.children = parseFunc(parse, trimmed, state);
-					state.inHTML = prevInHTML;
-					return ast;
-				},
-				_render(node, output, state = {}) {
-					return createElement(node.tag, {
-						key: state.key,
-						...node.attrs ?? {}
-					}, node.text ?? (node.children ? output(node.children, state) : ""));
-				}
-			},
-			[RuleType.paragraph]: {
-				_match: matchParagraph,
-				_order: Priority.LOW,
-				_parse: parseCaptureInline,
-				_render(node, output, state = {}) {
-					return createElement("p", { key: state.key }, output(node.children, state));
-				}
-			},
-			[RuleType.image]: {
-				_qualify: ["!["],
-				_match: simpleInlineRegex(IMAGE_R),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					return {
-						alt: unescapeString(capture[1]),
-						target: unescapeString(capture[2]),
-						title: unescapeString(capture[3])
-					};
-				},
-				_render(node, _, state = {}) {
-					return createElement("img", {
-						key: state.key,
-						alt: node.alt ?? void 0,
-						title: node.title ?? void 0,
-						src: sanitize(node.target, "img", "src") ?? void 0
-					});
-				}
-			},
-			[RuleType.link]: {
-				_qualify: ["["],
-				_match: inlineRegex(LINK_R),
-				_order: Priority.LOW,
-				_parse(capture, parse, state) {
-					return {
-						children: parseSimpleInline(parse, capture[1], state),
-						target: unescapeString(capture[2]),
-						title: unescapeString(capture[3])
-					};
-				},
-				_render(node, output, state = {}) {
-					const sanitizedHref = sanitize(node.target, "a", "href");
-					return createElement("a", {
-						key: state.key,
-						href: sanitizedHref ?? void 0,
-						title: node.title ?? void 0
-					}, output(node.children, state));
-				}
-			},
-			[RuleType.linkAngleBraceStyleDetector]: {
-				_qualify: ["<"],
-				_match: inlineRegex(LINK_AUTOLINK_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					let target = capture[1];
-					let isEmail = false;
-					if (target.indexOf("@") !== -1 && target.indexOf("//") === -1) {
-						isEmail = true;
-						target = target.replace("mailto:", "");
-					}
-					return {
-						children: [{
-							text: target,
-							type: RuleType.text
-						}],
-						target: isEmail ? `mailto:${target}` : target,
-						type: RuleType.link
-					};
-				}
-			},
-			[RuleType.linkBareUrlDetector]: {
-				_qualify: (source, state) => !!(state.inline && !state.inAnchor && !options.disableAutoLink && (startsWith(source, "http://") || startsWith(source, "https://"))),
-				_match: inlineRegex(LINK_AUTOLINK_BARE_URL_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					return {
-						children: [{
-							text: capture[1],
-							type: RuleType.text
-						}],
-						target: capture[1],
-						type: RuleType.link
-					};
-				}
-			},
-			[RuleType.newlineCoalescer]: {
-				_match: blockRegex(CONSECUTIVE_NEWLINE_R),
-				_order: Priority.LOW,
-				_parse: captureNothing,
-				_render() {
-					return "\n";
-				}
-			},
-			[RuleType.orderedList]: generateListRule(1),
-			[RuleType.unorderedList]: generateListRule(2),
-			[RuleType.ref]: {
-				_qualify: ["["],
-				_match: anyScopeRegex(REFERENCE_IMAGE_OR_LINK),
-				_order: Priority.MAX,
-				_parse(capture) {
-					refs[capture[1]] = {
-						target: capture[2],
-						title: capture[4]
-					};
-					return {};
-				},
-				_render: renderNothing
-			},
-			[RuleType.refImage]: {
-				_qualify: ["!["],
-				_match: simpleInlineRegex(REFERENCE_IMAGE_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					return {
-						alt: capture[1] ? unescapeString(capture[1]) : void 0,
-						ref: capture[2]
-					};
-				},
-				_render(node, _, state = {}) {
-					const ref = refs[node.ref];
-					if (!ref) return null;
-					return createElement("img", {
-						key: state.key,
-						alt: node.alt,
-						src: sanitize(ref.target, "img", "src") ?? void 0,
-						title: ref.title
-					});
-				}
-			},
-			[RuleType.refLink]: {
-				_qualify: (source) => source[0] === "[" && source.indexOf("](") === -1,
-				_match: inlineRegex(REFERENCE_LINK_R),
-				_order: Priority.MAX,
-				_parse(capture, parse, state) {
-					return {
-						children: parseSimpleInline(parse, capture[1], state),
-						fallbackChildren: capture[0],
-						ref: capture[2]
-					};
-				},
-				_render(node, output, state = {}) {
-					const ref = refs[node.ref];
-					if (!ref) return createElement("span", { key: state.key }, node.fallbackChildren);
-					return createElement("a", {
-						key: state.key,
-						href: sanitize(ref.target, "a", "href") ?? void 0,
-						title: ref.title
-					}, output(node.children, state));
-				}
-			},
-			[RuleType.table]: {
-				_qualify: ["|"],
-				_match: blockRegex(NP_TABLE_R),
-				_order: Priority.HIGH,
-				_parse(capture, parse, state) {
-					state.inline = true;
-					const align = capture[2] ? parseTableAlign(capture[2]) : [];
-					const cells = capture[3] ? parseTableCells(capture[3], parse, state) : [];
-					const header = parseTableRow(capture[1], parse, state, !!cells.length);
-					state.inline = false;
-					return cells.length ? {
-						align,
-						cells,
-						header,
-						type: RuleType.table
-					} : {
-						children: header.flat(),
-						type: RuleType.paragraph
-					};
-				},
-				_render(node, output, state = {}) {
-					const table = node;
-					const getStyle = (i) => table.align[i] && table.align[i] !== "left" ? { textAlign: table.align[i] } : {};
-					return createElement("table", { key: state.key }, createElement("thead", null, createElement("tr", null, ...table.header.map((c, i) => createElement("th", {
-						key: i,
-						style: getStyle(i)
-					}, output(c, state))))), createElement("tbody", null, ...table.cells.map((row, i) => createElement("tr", { key: i }, ...row.map((c, j) => createElement("td", {
-						key: j,
-						style: getStyle(j)
-					}, output(c, state)))))));
-				}
-			},
-			[RuleType.tableSeparator]: {
-				_match: (source, state) => state.inTable && source[0] === "|" ? /^\|/.exec(source) : null,
-				_order: Priority.HIGH,
-				_parse() {
-					return { type: RuleType.tableSeparator };
-				},
-				_render() {
-					return " | ";
-				}
-			},
-			[RuleType.text]: {
-				_match: allowInline((source, _state) => {
-					const shortMatch = SHORTCODE_R.exec(source);
-					if (shortMatch) return shortMatch;
-					return TEXT_PLAIN_R.exec(source) || /^[\s\S]/.exec(source);
-				}),
-				_order: Priority.MIN,
-				_parse(capture) {
-					const text = capture[0];
-					return { text: text.indexOf("&") === -1 ? text : text.replace(HTML_CHAR_CODE_R, (f, i) => {
-						if (i.startsWith("#x")) return String.fromCharCode(parseInt(i.slice(2), 16));
-						if (i.startsWith("#")) return String.fromCharCode(parseInt(i.slice(1), 10));
-						return namedCodesToUnicode[i] || f;
-					}) };
-				},
-				_render(node) {
-					return node.text;
-				}
-			},
-			[RuleType.textBolded]: {
-				_qualify: ["**", "__"],
-				_match: simpleInlineRegex(TEXT_BOLD_R),
-				_order: Priority.MED,
-				_parse(capture, parse, state) {
-					return { children: parse(capture[2], state) };
-				},
-				_render(node, output, state = {}) {
-					return createElement("strong", { key: state.key }, output(node.children, state));
-				}
-			},
-			[RuleType.textEmphasized]: {
-				_qualify: ["*", "_"],
-				_match: simpleInlineRegex(TEXT_EMPHASIZED_R),
-				_order: Priority.LOW,
-				_parse(capture, parse, state) {
-					return { children: parse(capture[2], state) };
-				},
-				_render(node, output, state = {}) {
-					return createElement("em", { key: state.key }, output(node.children, state));
-				}
-			},
-			[RuleType.textEscaped]: {
-				_qualify: ["\\"],
-				_match: simpleInlineRegex(TEXT_ESCAPED_R),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					return {
-						text: capture[1],
-						type: RuleType.text
-					};
-				}
-			},
-			[RuleType.textMarked]: {
-				_qualify: ["=="],
-				_match: simpleInlineRegex(TEXT_MARKED_R),
-				_order: Priority.LOW,
-				_parse: parseCaptureInline,
-				_render(node, output, state = {}) {
-					return createElement("mark", { key: state.key }, output(node.children, state));
-				}
-			},
-			[RuleType.textStrikethroughed]: {
-				_qualify: ["~~"],
-				_match: simpleInlineRegex(TEXT_STRIKETHROUGHED_R),
-				_order: Priority.LOW,
-				_parse: parseCaptureInline,
-				_render(node, output, state = {}) {
-					return createElement("del", { key: state.key }, output(node.children, state));
-				}
-			}
-		};
-	};
-	noopCreateElement = () => null;
-	createDocumentRules = (createElement, ctx, options, footnotes, refs) => {
-		const attrStringToMap = (tag, str) => {
-			if (!str?.trim()) return null;
-			const attributes = str.match(ATTR_EXTRACTOR_R);
-			if (!attributes) return null;
-			return attributes.reduce((map, raw) => {
-				const delimiterIdx = raw.indexOf("=");
-				if (delimiterIdx !== -1) {
-					const key = normalizeAttributeKey(raw.slice(0, delimiterIdx)).trim();
-					const value = unquote(raw.slice(delimiterIdx + 1).trim());
-					const mappedKey = ATTRIBUTE_TO_NODE_PROP_MAP[key] ?? key;
-					if (mappedKey === "ref") return map;
-					map[mappedKey] = attributeValueToNodePropValue(tag, key, value, ctx.sanitizer ?? sanitizer);
-					if (typeof map[mappedKey] === "string" && (HTML_BLOCK_ELEMENT_R.test(map[mappedKey]) || HTML_SELF_CLOSING_ELEMENT_R.test(map[mappedKey]))) map[mappedKey] = parseMarkdown(map[mappedKey].trim(), ctx, options).ast;
-				} else if (raw !== "style") map[ATTRIBUTE_TO_NODE_PROP_MAP[raw] ?? raw] = true;
-				return map;
-			}, {});
-		};
-		const nonParagraphBlockSyntaxes = [
-			BLOCKQUOTE_R,
-			CODE_BLOCK_FENCED_R,
-			CODE_BLOCK_R,
-			options.enforceAtxHeadings ? HEADING_ATX_COMPLIANT_R : HEADING_R,
-			HEADING_SETEXT_R,
-			NP_TABLE_R,
-			ORDERED_LIST_R,
-			UNORDERED_LIST_R,
-			CUSTOM_COMPONENT_R
-		];
-		const blockSyntaxes = options.disableParsingRawHTML ? nonParagraphBlockSyntaxes : [
-			...nonParagraphBlockSyntaxes,
-			PARAGRAPH_R,
-			HTML_BLOCK_ELEMENT_R,
-			HTML_COMMENT_R,
-			HTML_SELF_CLOSING_ELEMENT_R,
-			CUSTOM_COMPONENT_R
-		];
-		const containsBlockSyntax = (input) => {
-			const cleaned = input.replace(TRIM_STARTING_NEWLINES, "");
-			const slice = cleaned.length > 2048 ? cleaned.slice(0, 2048) : cleaned;
-			if (slice.indexOf("\n\n") !== -1) return true;
-			return some(blockSyntaxes, slice);
-		};
-		const baseRules = createRules(createElement, ctx, options, footnotes, refs, attrStringToMap, containsBlockSyntax, nonParagraphBlockSyntaxes);
-		return options.disableParsingRawHTML ? Object.keys(baseRules).reduce((acc, key) => {
-			if (key !== RuleType.htmlBlock && key !== RuleType.htmlSelfClosing) acc[key] = baseRules[key];
-			return acc;
-		}, {}) : baseRules;
-	};
-	parseWithRules = (markdown, options, rules, footnotes, refs) => {
-		const parser = parserFor(rules);
-		const result = options.preserveFrontmatter ? markdown : markdown.replace(FRONT_MATTER_R, "");
-		const trimmedStart = result.replace(TRIM_STARTING_NEWLINES, "");
-		const inline = options.forceInline || !options.forceBlock && SHOULD_RENDER_AS_BLOCK_R.test(trimmedStart) === false;
-		const ast = parser(inline ? result : `${trimEnd(trimmedStart)}\n\n`, { inline });
-		if (footnotes.length > 0) for (const def of footnotes) def.parsedAst = parser(def.footnote, { inline: true });
-		return {
-			ast,
-			footnotes,
-			references: refs,
-			inline
-		};
-	};
-	renderWithRules = (parsed, ctx, options, rules, createElement) => {
-		const components = ctx.components ?? {};
-		const slug = createSlugger(ctx);
-		const footnotes = parsed.footnotes || [];
-		const emitter = renderFor(createRenderer(rules, options.renderRule));
-		const inline = parsed.inline;
-		const arr = emitter(parsed.ast, { inline });
-		while (typeof arr[arr.length - 1] === "string" && !arr[arr.length - 1].trim()) arr.pop();
-		const getOuterNode = () => {
-			if (options.wrapper === null) return arr;
-			const wrapper = options.wrapper ?? (inline ? "span" : "div");
-			if (arr.length > 1 || options.forceWrapper) return createElement(wrapper, { key: "outer" }, arr);
-			if (arr.length === 1) {
-				const node = arr[0];
-				if (typeof node === "string") {
-					const spanProps = { key: "outer" };
-					if (!inline && components) {
-						const pOverrideProps = get(components, "p.props", {}) ?? {};
-						const mergedClassName = cx(spanProps.className, pOverrideProps.className);
-						const finalSpanProps = {
-							...spanProps,
-							...pOverrideProps
-						};
-						if (mergedClassName) finalSpanProps.className = mergedClassName;
-						return createElement("span", finalSpanProps, node);
-					}
-					return createElement("span", spanProps, node);
-				}
-				return node;
-			}
-			return createElement(wrapper, { key: "outer" }, null);
-		};
-		const node = getOuterNode();
-		return footnotes.length ? createElement("div", null, node, createElement("footer", { key: "footer" }, ...footnotes.map((def) => createElement("div", {
-			id: slug(def.identifier),
-			key: def.identifier
-		}, def.identifier, emitter(def.parsedAst || def.footnote, { inline: true }))))) : node;
-	};
-	parseMarkdown = (markdown = "", ctx, options = {}) => {
-		const footnotes = [];
-		const refs = {};
-		return parseWithRules(markdown, options, createDocumentRules(noopCreateElement, ctx, options, footnotes, refs), footnotes, refs);
-	};
-	renderMarkdownAst = (parsed, ctx, options = {}) => {
-		const createElement = createElementFactory(ctx, options);
-		return renderWithRules(parsed, ctx, options, createDocumentRules(createElement, ctx, options, parsed.footnotes ?? [], parsed.references ?? {}), createElement);
-	};
-	compile = (markdown = "", ctx, options = {}) => {
-		if (typeof markdown !== "string") {
-			console.error("intlayer: the first argument must be a string. Received", typeof markdown);
-			throw new Error("intlayer: the first argument must be a string");
-		}
-		const footnotes = [];
-		const refs = {};
-		const createElement = createElementFactory(ctx, options);
-		const rules = createDocumentRules(createElement, ctx, options, footnotes, refs);
-		return renderWithRules(parseWithRules(markdown, options, rules, footnotes, refs), ctx, options, rules, createElement);
-	};
-}));
-var init_markdown = __esmMin((() => {
-	init_getMarkdownMetadata();
-	init_compiler();
-}));
-var DEFAULT_RUNTIME, compileMarkdown;
-var init_processor = __esmMin((() => {
-	init_markdown();
-	DEFAULT_RUNTIME = {
-		createElement,
-		cloneElement,
+		},
+		cloneElement: (element, props, ...children) => {
+			if (children.length === 0) return cloneElement(element, props);
+			return cloneElement(element, props, ...children);
+		},
 		Fragment,
-		normalizeProps: (_tag, props) => props
+		normalizeProps: (_tag, props) => {
+			return props;
+		}
 	};
+}));
+var compileMarkdown;
+var init_processor = __esmMin((() => {
+	init_runtime();
+	init_markdown();
 	compileMarkdown = (input = "", options = {}) => {
 		const { createElement: customCreateElement, disableAutoLink, disableParsingRawHTML, enforceAtxHeadings, forceBlock, forceInline, forceWrapper, namedCodesToUnicode, components, renderRule, sanitizer, slugify, wrapper, preserveFrontmatter, tagfilter } = options;
 		const ctx = {
 			runtime: customCreateElement ? {
-				...DEFAULT_RUNTIME,
+				...reactRuntime,
 				createElement: customCreateElement
-			} : DEFAULT_RUNTIME,
+			} : reactRuntime,
 			components,
 			namedCodesToUnicode,
 			sanitizer,
@@ -1467,9 +123,6 @@ var init_MarkdownProvider = __esmMin((() => {
 	MarkdownContext = createContext(void 0);
 	useMarkdownContext = () => useContext(MarkdownContext);
 }));
-export { init_markdown as a, init_processor as i, useMarkdownContext as n, compileMarkdown as r, init_MarkdownProvider as t };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
-import { i as init_processor, n as useMarkdownContext, r as compileMarkdown, t as init_MarkdownProvider } from "./MarkdownProvider-DlZXlkpc.js";
 var MarkdownRendererPlugin;
 __esmMin((() => {
 	init_processor();
@@ -1488,46 +141,14 @@ __esmMin((() => {
 	};
 }))();
 export { MarkdownRendererPlugin };
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __esmMin = (fn, res) => () => (fn && (res = fn(fn = 0)), res);
-var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
-var __exportAll = (all, no_symbols) => {
-	let target = {};
-	for (var name in all) __defProp(target, name, {
-		get: all[name],
-		enumerable: true
-	});
-	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
-	return target;
-};
-var __copyProps = (to, from, except, desc) => {
-	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
-		key = keys[i];
-		if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
-			get: ((k) => from[k]).bind(null, key),
-			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
-		});
-	}
-	return to;
-};
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", {
-	value: mod,
-	enumerable: true
-}) : target, mod));
-var __toCommonJS = (mod) => __hasOwnProp.call(mod, "module.exports") ? mod["module.exports"] : __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
-	if (typeof require !== "undefined") return require.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-});
-export { __toCommonJS as a, __require as i, __esmMin as n, __toESM as o, __exportAll as r, __commonJSMin as t };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
-import { h as init_dictionary, i as internationalization, m as QUALIFIER_DYNAMIC_TYPES_KEY, o as routing, p as PRELOADED_DYNAMIC_KEY, r as init_built } from "./built-k6nPQRRu.js";
-import { A as serializeVariantChain, E as init_qualifiedDictionary, Y as init_nodeType, k as resolveEffectiveVariantId, q as TRANSLATION } from "./interpreter-HgtbAUp0.js";
+import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
+import { i as internationalization, o as routing, r as init_built } from "./built-BvRk9kiK.js";
+import { I as resolveEffectiveVariantId, L as serializeVariantChain, N as init_qualifiedDictionary, et as TRANSLATION, nt as init_nodeType } from "./interpreter-D1QgSn8T.js";
+var QUALIFIER_DYNAMIC_TYPES_KEY, PRELOADED_DYNAMIC_KEY;
+var init_dictionary = __esmMin((() => {
+	QUALIFIER_DYNAMIC_TYPES_KEY = "__intlayerQualifierTypes";
+	PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
+}));
 var init_defaultValues = __esmMin((() => {
 	init_dictionary();
 }));
@@ -1739,11 +360,12 @@ var init_editDictionaryByKeyPath = __esmMin((() => {
 					let target = parentValue;
 					for (const key of lastKeys.slice(0, -1)) target = target[key];
 					const finalKey = lastKeys[lastKeys.length - 1];
-					if (typeof newValue === "undefined") if (Array.isArray(target)) {
-						const index = Number(finalKey);
-						if (!Number.isNaN(index) && index >= 0 && index < target.length) target.splice(index, 1);
-					} else delete target[finalKey];
-					else target[finalKey] = newValue;
+					if (typeof newValue === "undefined") {
+						if (Array.isArray(target)) {
+							const index = Number(finalKey);
+							if (!Number.isNaN(index) && index >= 0 && index < target.length) target.splice(index, 1);
+						} else delete target[finalKey];
+					} else target[finalKey] = newValue;
 				}
 			}
 			return dictionaryContent;
@@ -1793,15 +415,17 @@ var init_renameContentNodeByKeyPath = __esmMin((() => {
 				currentValue = currentValue[keyObj.type];
 			}
 		}
-		if (parentValue && lastKey !== null) if (Array.isArray(parentValue)) parentValue[lastKey] = currentValue;
-		else {
-			const newParentValue = {};
-			for (const key of Object.keys(parentValue)) if (key === lastKey && typeof newKey !== "undefined") newParentValue[newKey] = currentValue;
-			else newParentValue[key] = parentValue[key];
-			Object.keys(parentValue).forEach((key) => {
-				delete parentValue[key];
-			});
-			Object.assign(parentValue, newParentValue);
+		if (parentValue && lastKey !== null) {
+			if (Array.isArray(parentValue)) parentValue[lastKey] = currentValue;
+			else {
+				const newParentValue = {};
+				for (const key of Object.keys(parentValue)) if (key === lastKey && typeof newKey !== "undefined") newParentValue[newKey] = currentValue;
+				else newParentValue[key] = parentValue[key];
+				Object.keys(parentValue).forEach((key) => {
+					delete parentValue[key];
+				});
+				Object.assign(parentValue, newParentValue);
+			}
 		}
 		return dictionaryContent;
 	};
@@ -1814,11 +438,472 @@ var init_dictionaryManipulator = __esmMin((() => {
 	init_getContentNodeByKeyPath();
 	init_renameContentNodeByKeyPath();
 }));
-export { init_utils as a, localeStorageOptions as c, isQualifiedDynamicLoaderMap as d, resolveQualifiedDynamicContent as f, editDictionaryByKeyPath as i, setLocaleInStorageClient as l, renameContentNodeByKeyPath as n, isSameKeyPath as o, getContentNodeByKeyPath as r, getLocaleFromStorageClient as s, init_dictionaryManipulator as t, getPreloadedDictionary as u };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
-import { n as editor, r as init_built } from "./built-k6nPQRRu.js";
-import { Y as init_nodeType, a as getBasePlugins, o as getContent, q as TRANSLATION, t as init_interpreter } from "./interpreter-HgtbAUp0.js";
-import { a as init_utils, i as editDictionaryByKeyPath, n as renameContentNodeByKeyPath, o as isSameKeyPath, r as getContentNodeByKeyPath, t as init_dictionaryManipulator } from "./dictionaryManipulator-jDZGL5e4.js";
+export { init_qualifiedDynamicLoader as _, init_getContentNodeByKeyPath as a, init_utils as c, getLocaleFromStorageClient as d, init_localeStorage as f, init_preloadedDynamicLoader as g, getPreloadedDictionary as h, getContentNodeByKeyPath as i, init_isSameKeyPath as l, setLocaleInStorageClient as m, init_renameContentNodeByKeyPath as n, editDictionaryByKeyPath as o, localeStorageOptions as p, renameContentNodeByKeyPath as r, init_editDictionaryByKeyPath as s, init_dictionaryManipulator as t, isSameKeyPath as u, isQualifiedDynamicLoaderMap as v, resolveQualifiedDynamicContent as y };
+import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
+import { n as editor, r as init_built, t as analytics } from "./built-BvRk9kiK.js";
+import { n as init_isBot, r as isBotEnvironment } from "./isBot-DKThsp1Z.js";
+var hashString;
+var init_hash = __esmMin((() => {
+	hashString = (input) => {
+		let hash = 2166136261;
+		for (let index = 0; index < input.length; index++) {
+			hash ^= input.charCodeAt(index);
+			hash = Math.imul(hash, 16777619);
+		}
+		return hash >>> 0;
+	};
+}));
+var assignVariant;
+var init_abTesting = __esmMin((() => {
+	init_hash();
+	assignVariant = (sessionId, experimentKey, variants, weights) => {
+		if (variants.length === 0) throw new Error("assignVariant requires at least one variant");
+		if (variants.length === 1) return variants[0];
+		const bucket = hashString(`${sessionId}:${experimentKey}`) / 4294967296;
+		if (!weights || weights.length !== variants.length) {
+			const index = Math.floor(bucket * variants.length);
+			return variants[Math.min(index, variants.length - 1)];
+		}
+		const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+		if (totalWeight <= 0) return variants[Math.floor(bucket * variants.length)];
+		let cumulative = 0;
+		const target = bucket * totalWeight;
+		for (let index = 0; index < variants.length; index++) {
+			cumulative += weights[index];
+			if (target < cumulative) return variants[index];
+		}
+		return variants[variants.length - 1];
+	};
+}));
+var KEY_SEPARATOR, exposureKey, createEventBuffer;
+var init_eventBuffer = __esmMin((() => {
+	KEY_SEPARATOR = "";
+	exposureKey = (event) => [
+		event.url,
+		event.dictionaryKey,
+		event.keyPath,
+		event.locale,
+		event.experimentKey ?? "",
+		event.variant ?? ""
+	].join(KEY_SEPARATOR);
+	createEventBuffer = ({ max }) => {
+		let discreteEvents = [];
+		const exposures = /* @__PURE__ */ new Map();
+		const size = () => discreteEvents.length + exposures.size;
+		const enforceCap = () => {
+			while (size() > max && exposures.size > 0) {
+				const oldestKey = exposures.keys().next().value;
+				exposures.delete(oldestKey);
+			}
+			if (size() > max) discreteEvents = discreteEvents.slice(size() - max);
+		};
+		const push = (event) => {
+			if (event.type === "content_exposure") {
+				const key = exposureKey(event);
+				const existing = exposures.get(key);
+				if (existing) {
+					existing.count = (existing.count ?? 1) + (event.count ?? 1);
+					existing.t = event.t;
+				} else exposures.set(key, {
+					...event,
+					count: event.count ?? 1
+				});
+			} else discreteEvents.push(event);
+			enforceCap();
+			return size();
+		};
+		const drain = () => {
+			const drained = [...discreteEvents, ...exposures.values()];
+			discreteEvents = [];
+			exposures.clear();
+			return drained;
+		};
+		return {
+			push,
+			drain,
+			size
+		};
+	};
+}));
+var isSampledIn;
+var init_sampling = __esmMin((() => {
+	init_hash();
+	isSampledIn = (sessionId, sampleRate) => {
+		if (sampleRate >= 1) return true;
+		if (sampleRate <= 0) return false;
+		return hashString(sessionId) / 4294967295 < sampleRate;
+	};
+}));
+var SESSION_STORAGE_KEY, generateSessionId, getSessionId;
+var init_session = __esmMin((() => {
+	SESSION_STORAGE_KEY = "__intlayer_analytics_sid__";
+	generateSessionId = () => {
+		const cryptoObj = typeof globalThis !== "undefined" ? globalThis.crypto : void 0;
+		if (cryptoObj?.randomUUID) return cryptoObj.randomUUID();
+		return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+	};
+	getSessionId = () => {
+		if (typeof window === "undefined" || !window.sessionStorage) return generateSessionId();
+		try {
+			const existing = window.sessionStorage.getItem(SESSION_STORAGE_KEY);
+			if (existing) return existing;
+			const created = generateSessionId();
+			window.sessionStorage.setItem(SESSION_STORAGE_KEY, created);
+			return created;
+		} catch {
+			return generateSessionId();
+		}
+	};
+}));
+var sendEvents;
+var init_transport = __esmMin((() => {
+	sendEvents = (endpoint, body, { useBeacon = false, token } = {}) => {
+		try {
+			const payload = JSON.stringify(body);
+			if (useBeacon && typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") return navigator.sendBeacon(endpoint, payload);
+			if (typeof fetch === "function") {
+				fetch(endpoint, {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						...token ? { Authorization: `Bearer ${token}` } : {}
+					},
+					body: payload,
+					keepalive: true,
+					credentials: "omit",
+					mode: "cors"
+				}).catch(() => {});
+				return true;
+			}
+			return false;
+		} catch {
+			return false;
+		}
+	};
+}));
+var onIdle;
+var init_idle = __esmMin((() => {
+	onIdle = (callback) => {
+		if (typeof window === "undefined") return;
+		const requestIdle = window.requestIdleCallback;
+		if (typeof requestIdle === "function") {
+			requestIdle(() => callback());
+			return;
+		}
+		setTimeout(callback, 1);
+	};
+}));
+var TOKEN_STORAGE_KEY, EXPIRY_MARGIN_MS, readStoredToken, writeStoredToken, createPublicTokenManager;
+var init_publicToken = __esmMin((() => {
+	TOKEN_STORAGE_KEY = "__intlayer_public_token__";
+	EXPIRY_MARGIN_MS = 6e4;
+	readStoredToken = () => {
+		try {
+			const raw = window.sessionStorage?.getItem(TOKEN_STORAGE_KEY);
+			if (!raw) return null;
+			const parsed = JSON.parse(raw);
+			if (typeof parsed?.token !== "string") return null;
+			if (typeof parsed?.expiresAt !== "number") return null;
+			return parsed;
+		} catch {
+			return null;
+		}
+	};
+	writeStoredToken = (cached) => {
+		try {
+			window.sessionStorage?.setItem(TOKEN_STORAGE_KEY, JSON.stringify(cached));
+		} catch {}
+	};
+	createPublicTokenManager = ({ backendURL, clientId }) => {
+		const endpoint = `${backendURL.replace(/\/$/, "")}/api/public/token`;
+		let cached = null;
+		let pendingExchange = null;
+		const isUsable = (candidate) => candidate !== null && candidate.expiresAt - EXPIRY_MARGIN_MS > Date.now();
+		const getToken = () => {
+			if (isUsable(cached)) return cached.token;
+			if (typeof window !== "undefined") {
+				const stored = readStoredToken();
+				if (isUsable(stored)) {
+					cached = stored;
+					return stored.token;
+				}
+			}
+		};
+		const exchange = async () => {
+			try {
+				const response = await fetch(endpoint, {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify({ clientId }),
+					credentials: "omit",
+					mode: "cors"
+				});
+				if (!response.ok) return;
+				const payload = await response.json();
+				const token = payload?.data?.token;
+				const expiresIn = payload?.data?.expiresIn ?? 0;
+				if (!token || expiresIn <= 0) return;
+				cached = {
+					token,
+					expiresAt: Date.now() + expiresIn * 1e3
+				};
+				if (typeof window !== "undefined") writeStoredToken(cached);
+			} catch {} finally {
+				pendingExchange = null;
+			}
+		};
+		const prime = () => {
+			if (!clientId || typeof fetch !== "function") return;
+			if (getToken()) return;
+			if (pendingExchange) return;
+			pendingExchange = exchange();
+		};
+		return {
+			getToken,
+			prime
+		};
+	};
+}));
+var SDK_VERSION, currentUrl, referrerHost, createAnalyticsClient;
+var init_AnalyticsClient = __esmMin((() => {
+	init_isBot();
+	init_idle();
+	init_abTesting();
+	init_eventBuffer();
+	init_publicToken();
+	init_sampling();
+	init_session();
+	init_transport();
+	SDK_VERSION = "intlayer-analytics/1";
+	currentUrl = () => {
+		if (typeof window === "undefined" || !window.location) return "";
+		return window.location.pathname;
+	};
+	referrerHost = () => {
+		if (typeof document === "undefined" || !document.referrer) return void 0;
+		try {
+			return new URL(document.referrer).host;
+		} catch {
+			return;
+		}
+	};
+	createAnalyticsClient = (config) => {
+		const sessionId = getSessionId();
+		const isBotSession = isBotEnvironment();
+		const sampledIn = !isBotSession && isSampledIn(sessionId, config.sampleRate);
+		const buffer = createEventBuffer({ max: config.maxBufferSize });
+		const endpoint = `${config.backendURL.replace(/\/$/, "")}/api/analytics/events`;
+		const publicToken = createPublicTokenManager({
+			backendURL: config.backendURL,
+			clientId: config.clientId
+		});
+		let ambientLocale = "";
+		let flushTimer = null;
+		let started = false;
+		let detachListeners = null;
+		let lastPageViewUrl = null;
+		let seenExposureKeys = /* @__PURE__ */ new Set();
+		const flush = (useBeacon = false) => {
+			const events = buffer.drain();
+			const token = publicToken.getToken();
+			for (let start = 0; start < events.length; start += 200) sendEvents(endpoint, {
+				token,
+				clientId: token ? void 0 : config.clientId,
+				sessionId,
+				sdkVersion: SDK_VERSION,
+				events: events.slice(start, start + 200)
+			}, {
+				useBeacon,
+				token
+			});
+		};
+		const enqueue = (event) => {
+			if (buffer.push(event) >= config.maxBufferSize) flush();
+		};
+		const setLocale = (locale) => {
+			ambientLocale = locale;
+		};
+		const trackPageView = (event = {}) => {
+			if (!sampledIn) return;
+			const url = event.url ?? currentUrl();
+			const reason = event.reason ?? "initial";
+			if (reason === "route_change" && url === lastPageViewUrl) return;
+			lastPageViewUrl = url;
+			seenExposureKeys = /* @__PURE__ */ new Set();
+			enqueue({
+				type: "page_view",
+				t: Date.now(),
+				url,
+				locale: event.locale ?? ambientLocale,
+				ref: event.ref ?? referrerHost(),
+				vw: event.vw ?? (typeof window !== "undefined" ? window.innerWidth : void 0),
+				vh: event.vh ?? (typeof window !== "undefined" ? window.innerHeight : void 0),
+				reason
+			});
+		};
+		const trackContentExposure = (event) => {
+			if (!sampledIn) return;
+			const locale = event.locale ?? ambientLocale;
+			const exposureKey = [
+				event.dictionaryKey,
+				event.keyPath,
+				locale,
+				event.experimentKey ?? "",
+				event.variant ?? ""
+			].join("");
+			if (seenExposureKeys.has(exposureKey)) return;
+			seenExposureKeys.add(exposureKey);
+			enqueue({
+				...event,
+				type: "content_exposure",
+				t: Date.now(),
+				url: currentUrl(),
+				locale
+			});
+		};
+		const trackConversion = (event) => {
+			if (isBotSession) return;
+			enqueue({
+				...event,
+				type: "conversion",
+				t: Date.now(),
+				url: currentUrl(),
+				locale: event.locale ?? ambientLocale
+			});
+			flush();
+		};
+		const getVariant = (experimentKey, variants, weights) => assignVariant(sessionId, experimentKey, variants, weights);
+		const attachListeners = () => {
+			if (typeof window === "undefined") return;
+			const onHidden = () => {
+				if (document.visibilityState === "hidden") flush(true);
+			};
+			const onPageHide = () => flush(true);
+			const onPopState = () => trackPageView({ reason: "route_change" });
+			document.addEventListener("visibilitychange", onHidden);
+			window.addEventListener("pagehide", onPageHide, { capture: true });
+			window.addEventListener("popstate", onPopState);
+			const history = window.history;
+			const originalPush = history.pushState;
+			const patchedPushState = function patchedPush(...args) {
+				const result = originalPush.apply(this, args);
+				trackPageView({ reason: "route_change" });
+				return result;
+			};
+			history.pushState = patchedPushState;
+			detachListeners = () => {
+				document.removeEventListener("visibilitychange", onHidden);
+				window.removeEventListener("pagehide", onPageHide, { capture: true });
+				window.removeEventListener("popstate", onPopState);
+				if (history.pushState === patchedPushState) history.pushState = originalPush;
+			};
+		};
+		const start = () => {
+			if (started || isBotSession) return;
+			started = true;
+			publicToken.prime();
+			flushTimer = setInterval(flush, config.flushInterval);
+			flushTimer?.unref?.();
+			onIdle(attachListeners);
+		};
+		const stop = () => {
+			if (!started) return;
+			started = false;
+			if (flushTimer) {
+				clearInterval(flushTimer);
+				flushTimer = null;
+			}
+			detachListeners?.();
+			detachListeners = null;
+			flush(true);
+		};
+		return {
+			setLocale,
+			trackPageView,
+			trackContentExposure,
+			trackConversion,
+			getVariant,
+			flush,
+			start,
+			stop
+		};
+	};
+}));
+var CLIENT_KEY, REF_COUNT_KEY, getGlobalAnalyticsClient, setGlobalAnalyticsClient, incrementAnalyticsClientRefCount, decrementAnalyticsClientRefCount;
+var init_globalManager = __esmMin((() => {
+	CLIENT_KEY = "__intlayer_analytics_client__";
+	REF_COUNT_KEY = "__intlayer_analytics_ref_count__";
+	getGlobalAnalyticsClient = () => {
+		if (typeof window === "undefined") return null;
+		return window[CLIENT_KEY] ?? null;
+	};
+	setGlobalAnalyticsClient = (client) => {
+		if (typeof window === "undefined") return;
+		window[CLIENT_KEY] = client;
+	};
+	incrementAnalyticsClientRefCount = () => {
+		if (typeof window === "undefined") return 0;
+		const globals = window;
+		globals[REF_COUNT_KEY] = (globals[REF_COUNT_KEY] ?? 0) + 1;
+		return globals[REF_COUNT_KEY];
+	};
+	decrementAnalyticsClientRefCount = () => {
+		if (typeof window === "undefined") return 0;
+		const globals = window;
+		globals[REF_COUNT_KEY] = Math.max(0, (globals[REF_COUNT_KEY] ?? 0) - 1);
+		return globals[REF_COUNT_KEY];
+	};
+}));
+var initAnalyticsClient, stopAnalyticsClient;
+var init_initAnalyticsClient = __esmMin((() => {
+	init_AnalyticsClient();
+	init_globalManager();
+	init_built();
+	initAnalyticsClient = () => {
+		incrementAnalyticsClientRefCount();
+		const existing = getGlobalAnalyticsClient();
+		if (existing) return existing;
+		const client = createAnalyticsClient({
+			backendURL: editor?.backendURL ?? "",
+			clientId: editor?.clientId,
+			flushInterval: analytics?.flushInterval ?? 2e4,
+			maxBufferSize: 500,
+			sampleRate: analytics?.sampleRate ?? 1
+		});
+		setGlobalAnalyticsClient(client);
+		client.start();
+		return client;
+	};
+	stopAnalyticsClient = () => {
+		if (decrementAnalyticsClientRefCount() > 0) return;
+		getGlobalAnalyticsClient()?.stop();
+		setGlobalAnalyticsClient(null);
+	};
+}));
+var serializeKeyPath, buildContentExposure;
+var init_contentExposure = __esmMin((() => {
+	serializeKeyPath = (keyPath) => keyPath.map((segment) => segment.key === void 0 ? "*" : String(segment.key)).join(".");
+	buildContentExposure = (params) => ({
+		dictionaryKey: params.dictionaryKey,
+		keyPath: serializeKeyPath(params.keyPath),
+		locale: params.locale,
+		nodeType: params.nodeType,
+		experimentKey: params.experimentKey,
+		variant: params.variant
+	});
+}));
+var init_esm = __esmMin((() => {
+	init_globalManager();
+	init_initAnalyticsClient();
+	init_contentExposure();
+}));
+init_isBot();
+init_esm();
+export { buildContentExposure, getGlobalAnalyticsClient, initAnalyticsClient, stopAnalyticsClient };
+import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
+import { n as editor, r as init_built } from "./built-BvRk9kiK.js";
+import { c as getBasePlugins, et as TRANSLATION, l as getContent, nt as init_nodeType, t as init_interpreter } from "./interpreter-D1QgSn8T.js";
+import { c as init_utils, i as getContentNodeByKeyPath, o as editDictionaryByKeyPath, r as renameContentNodeByKeyPath, t as init_dictionaryManipulator, u as isSameKeyPath } from "./dictionaryManipulator-BNItIFYK.js";
 var compareUrls;
 var init_compareUrls = __esmMin((() => {
 	compareUrls = (url1, url2) => {
@@ -2740,7 +1825,8 @@ var init_EditorStateManager = __esmMin((() => {
 		renameContent(localDictionaryId, newKey, keyPath = []) {
 			const current = this.editedContent.value ?? {};
 			const originalContent = (this.localeDictionaries.value ?? {})[localDictionaryId]?.content;
-			const updated = renameContentNodeByKeyPath(structuredClone(current[localDictionaryId]?.content ?? originalContent), newKey, keyPath);
+			const currentContent = structuredClone(current[localDictionaryId]?.content ?? originalContent);
+			const updated = renameContentNodeByKeyPath(currentContent, newKey, keyPath);
 			this.editedContent.set({
 				...current,
 				[localDictionaryId]: {
@@ -2752,7 +1838,9 @@ var init_EditorStateManager = __esmMin((() => {
 		removeContent(localDictionaryId, keyPath) {
 			const current = this.editedContent.value ?? {};
 			const originalContent = (this.localeDictionaries.value ?? {})[localDictionaryId]?.content;
-			const restored = editDictionaryByKeyPath(structuredClone(current[localDictionaryId]?.content ?? originalContent), keyPath, getContentNodeByKeyPath(originalContent, keyPath));
+			const currentContent = structuredClone(current[localDictionaryId]?.content ?? originalContent);
+			const initialContent = getContentNodeByKeyPath(originalContent, keyPath);
+			const restored = editDictionaryByKeyPath(currentContent, keyPath, initialContent);
 			this.editedContent.set({
 				...current,
 				[localDictionaryId]: {
@@ -2781,11 +1869,13 @@ var init_EditorStateManager = __esmMin((() => {
 			const localeDicts = this.localeDictionaries.value;
 			if (localDictionaryIdOrKey.includes(":local:") || localDictionaryIdOrKey.includes(":remote:")) {
 				if (localeDicts && !(localDictionaryIdOrKey in localeDicts)) return;
-				return getContentNodeByKeyPath(edited[localDictionaryIdOrKey]?.content ?? {}, filteredKeyPath, this.currentLocale.value);
+				const content = edited[localDictionaryIdOrKey]?.content ?? {};
+				return getContentNodeByKeyPath(content, filteredKeyPath, this.currentLocale.value);
 			}
 			const matchingIds = Object.keys(edited).filter((key) => key.startsWith(`${localDictionaryIdOrKey}:`) && (!localeDicts || key in localeDicts));
 			for (const localId of matchingIds) {
-				const node = getContentNodeByKeyPath(edited[localId]?.content ?? {}, filteredKeyPath, this.currentLocale.value);
+				const content = edited[localId]?.content ?? {};
+				const node = getContentNodeByKeyPath(content, filteredKeyPath, this.currentLocale.value);
 				if (node) return node;
 			}
 		}
@@ -2906,7 +1996,7 @@ var init_EditorStateManager = __esmMin((() => {
 		}
 		async _loadDictionaries() {
 			try {
-				const unmergedDictionaries = (await import("./index.browser-DdHiTTFJ.js")).getUnmergedDictionaries();
+				const unmergedDictionaries = (await import("./index.browser-C6qNcmdj.js")).getUnmergedDictionaries();
 				const dictionariesList = Object.fromEntries(Object.values(unmergedDictionaries).flat().map((dictionary) => [dictionary.localId, dictionary]));
 				this.localeDictionaries.set(dictionariesList);
 				if (this.editorEnabled.value) this._broadcastData();
@@ -3187,495 +2277,14 @@ __esmMin((() => {
 	init_initEditorClient();
 }))();
 export { initEditorClient, stopEditorClient };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
-import { n as editor, r as init_built, t as analytics } from "./built-k6nPQRRu.js";
-import { n as init_isBot, r as isBotEnvironment } from "./isBot-BvxmAi-M.js";
-var hashString;
-var init_hash = __esmMin((() => {
-	hashString = (input) => {
-		let hash = 2166136261;
-		for (let index = 0; index < input.length; index++) {
-			hash ^= input.charCodeAt(index);
-			hash = Math.imul(hash, 16777619);
-		}
-		return hash >>> 0;
-	};
-}));
-var assignVariant;
-var init_abTesting = __esmMin((() => {
-	init_hash();
-	assignVariant = (sessionId, experimentKey, variants, weights) => {
-		if (variants.length === 0) throw new Error("assignVariant requires at least one variant");
-		if (variants.length === 1) return variants[0];
-		const bucket = hashString(`${sessionId}:${experimentKey}`) / 4294967296;
-		if (!weights || weights.length !== variants.length) {
-			const index = Math.floor(bucket * variants.length);
-			return variants[Math.min(index, variants.length - 1)];
-		}
-		const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
-		if (totalWeight <= 0) return variants[Math.floor(bucket * variants.length)];
-		let cumulative = 0;
-		const target = bucket * totalWeight;
-		for (let index = 0; index < variants.length; index++) {
-			cumulative += weights[index];
-			if (target < cumulative) return variants[index];
-		}
-		return variants[variants.length - 1];
-	};
-}));
-var KEY_SEPARATOR, exposureKey, createEventBuffer;
-var init_eventBuffer = __esmMin((() => {
-	KEY_SEPARATOR = "";
-	exposureKey = (event) => [
-		event.url,
-		event.dictionaryKey,
-		event.keyPath,
-		event.locale,
-		event.experimentKey ?? "",
-		event.variant ?? ""
-	].join(KEY_SEPARATOR);
-	createEventBuffer = ({ max }) => {
-		let discreteEvents = [];
-		const exposures = /* @__PURE__ */ new Map();
-		const size = () => discreteEvents.length + exposures.size;
-		const enforceCap = () => {
-			while (size() > max && exposures.size > 0) {
-				const oldestKey = exposures.keys().next().value;
-				exposures.delete(oldestKey);
-			}
-			if (size() > max) discreteEvents = discreteEvents.slice(size() - max);
-		};
-		const push = (event) => {
-			if (event.type === "content_exposure") {
-				const key = exposureKey(event);
-				const existing = exposures.get(key);
-				if (existing) {
-					existing.count = (existing.count ?? 1) + (event.count ?? 1);
-					existing.t = event.t;
-				} else exposures.set(key, {
-					...event,
-					count: event.count ?? 1
-				});
-			} else discreteEvents.push(event);
-			enforceCap();
-			return size();
-		};
-		const drain = () => {
-			const drained = [...discreteEvents, ...exposures.values()];
-			discreteEvents = [];
-			exposures.clear();
-			return drained;
-		};
-		return {
-			push,
-			drain,
-			size
-		};
-	};
-}));
-var isSampledIn;
-var init_sampling = __esmMin((() => {
-	init_hash();
-	isSampledIn = (sessionId, sampleRate) => {
-		if (sampleRate >= 1) return true;
-		if (sampleRate <= 0) return false;
-		return hashString(sessionId) / 4294967295 < sampleRate;
-	};
-}));
-var SESSION_STORAGE_KEY, generateSessionId, getSessionId;
-var init_session = __esmMin((() => {
-	SESSION_STORAGE_KEY = "__intlayer_analytics_sid__";
-	generateSessionId = () => {
-		const cryptoObj = typeof globalThis !== "undefined" ? globalThis.crypto : void 0;
-		if (cryptoObj?.randomUUID) return cryptoObj.randomUUID();
-		return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
-	};
-	getSessionId = () => {
-		if (typeof window === "undefined" || !window.sessionStorage) return generateSessionId();
-		try {
-			const existing = window.sessionStorage.getItem(SESSION_STORAGE_KEY);
-			if (existing) return existing;
-			const created = generateSessionId();
-			window.sessionStorage.setItem(SESSION_STORAGE_KEY, created);
-			return created;
-		} catch {
-			return generateSessionId();
-		}
-	};
-}));
-var sendEvents;
-var init_transport = __esmMin((() => {
-	sendEvents = (endpoint, body, { useBeacon = false, token } = {}) => {
-		try {
-			const payload = JSON.stringify(body);
-			if (useBeacon && typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") return navigator.sendBeacon(endpoint, payload);
-			if (typeof fetch === "function") {
-				fetch(endpoint, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						...token ? { Authorization: `Bearer ${token}` } : {}
-					},
-					body: payload,
-					keepalive: true,
-					credentials: "omit",
-					mode: "cors"
-				}).catch(() => {});
-				return true;
-			}
-			return false;
-		} catch {
-			return false;
-		}
-	};
-}));
-var onIdle;
-var init_idle = __esmMin((() => {
-	onIdle = (callback) => {
-		if (typeof window === "undefined") return;
-		const requestIdle = window.requestIdleCallback;
-		if (typeof requestIdle === "function") {
-			requestIdle(() => callback());
-			return;
-		}
-		setTimeout(callback, 1);
-	};
-}));
-var TOKEN_STORAGE_KEY, EXPIRY_MARGIN_MS, readStoredToken, writeStoredToken, createPublicTokenManager;
-var init_publicToken = __esmMin((() => {
-	TOKEN_STORAGE_KEY = "__intlayer_public_token__";
-	EXPIRY_MARGIN_MS = 6e4;
-	readStoredToken = () => {
-		try {
-			const raw = window.sessionStorage?.getItem(TOKEN_STORAGE_KEY);
-			if (!raw) return null;
-			const parsed = JSON.parse(raw);
-			if (typeof parsed?.token !== "string") return null;
-			if (typeof parsed?.expiresAt !== "number") return null;
-			return parsed;
-		} catch {
-			return null;
-		}
-	};
-	writeStoredToken = (cached) => {
-		try {
-			window.sessionStorage?.setItem(TOKEN_STORAGE_KEY, JSON.stringify(cached));
-		} catch {}
-	};
-	createPublicTokenManager = ({ backendURL, clientId }) => {
-		const endpoint = `${backendURL.replace(/\/$/, "")}/api/public/token`;
-		let cached = null;
-		let pendingExchange = null;
-		const isUsable = (candidate) => candidate !== null && candidate.expiresAt - EXPIRY_MARGIN_MS > Date.now();
-		const getToken = () => {
-			if (isUsable(cached)) return cached.token;
-			if (typeof window !== "undefined") {
-				const stored = readStoredToken();
-				if (isUsable(stored)) {
-					cached = stored;
-					return stored.token;
-				}
-			}
-		};
-		const exchange = async () => {
-			try {
-				const response = await fetch(endpoint, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ clientId }),
-					credentials: "omit",
-					mode: "cors"
-				});
-				if (!response.ok) return;
-				const payload = await response.json();
-				const token = payload?.data?.token;
-				const expiresIn = payload?.data?.expiresIn ?? 0;
-				if (!token || expiresIn <= 0) return;
-				cached = {
-					token,
-					expiresAt: Date.now() + expiresIn * 1e3
-				};
-				if (typeof window !== "undefined") writeStoredToken(cached);
-			} catch {} finally {
-				pendingExchange = null;
-			}
-		};
-		const prime = () => {
-			if (!clientId || typeof fetch !== "function") return;
-			if (getToken()) return;
-			if (pendingExchange) return;
-			pendingExchange = exchange();
-		};
-		return {
-			getToken,
-			prime
-		};
-	};
-}));
-var SDK_VERSION, currentUrl, referrerHost, createAnalyticsClient;
-var init_AnalyticsClient = __esmMin((() => {
-	init_isBot();
-	init_idle();
-	init_abTesting();
-	init_eventBuffer();
-	init_publicToken();
-	init_sampling();
-	init_session();
-	init_transport();
-	SDK_VERSION = "intlayer-analytics/1";
-	currentUrl = () => {
-		if (typeof window === "undefined" || !window.location) return "";
-		return window.location.pathname;
-	};
-	referrerHost = () => {
-		if (typeof document === "undefined" || !document.referrer) return void 0;
-		try {
-			return new URL(document.referrer).host;
-		} catch {
-			return;
-		}
-	};
-	createAnalyticsClient = (config) => {
-		const sessionId = getSessionId();
-		const isBotSession = isBotEnvironment();
-		const sampledIn = !isBotSession && isSampledIn(sessionId, config.sampleRate);
-		const buffer = createEventBuffer({ max: config.maxBufferSize });
-		const endpoint = `${config.backendURL.replace(/\/$/, "")}/api/analytics/events`;
-		const publicToken = createPublicTokenManager({
-			backendURL: config.backendURL,
-			clientId: config.clientId
-		});
-		let ambientLocale = "";
-		let flushTimer = null;
-		let started = false;
-		let detachListeners = null;
-		let lastPageViewUrl = null;
-		let seenExposureKeys = /* @__PURE__ */ new Set();
-		const flush = (useBeacon = false) => {
-			const events = buffer.drain();
-			const token = publicToken.getToken();
-			for (let start = 0; start < events.length; start += 200) sendEvents(endpoint, {
-				token,
-				clientId: token ? void 0 : config.clientId,
-				sessionId,
-				sdkVersion: SDK_VERSION,
-				events: events.slice(start, start + 200)
-			}, {
-				useBeacon,
-				token
-			});
-		};
-		const enqueue = (event) => {
-			if (buffer.push(event) >= config.maxBufferSize) flush();
-		};
-		const setLocale = (locale) => {
-			ambientLocale = locale;
-		};
-		const trackPageView = (event = {}) => {
-			if (!sampledIn) return;
-			const url = event.url ?? currentUrl();
-			const reason = event.reason ?? "initial";
-			if (reason === "route_change" && url === lastPageViewUrl) return;
-			lastPageViewUrl = url;
-			seenExposureKeys = /* @__PURE__ */ new Set();
-			enqueue({
-				type: "page_view",
-				t: Date.now(),
-				url,
-				locale: event.locale ?? ambientLocale,
-				ref: event.ref ?? referrerHost(),
-				vw: event.vw ?? (typeof window !== "undefined" ? window.innerWidth : void 0),
-				vh: event.vh ?? (typeof window !== "undefined" ? window.innerHeight : void 0),
-				reason
-			});
-		};
-		const trackContentExposure = (event) => {
-			if (!sampledIn) return;
-			const locale = event.locale ?? ambientLocale;
-			const exposureKey = [
-				event.dictionaryKey,
-				event.keyPath,
-				locale,
-				event.experimentKey ?? "",
-				event.variant ?? ""
-			].join("");
-			if (seenExposureKeys.has(exposureKey)) return;
-			seenExposureKeys.add(exposureKey);
-			enqueue({
-				...event,
-				type: "content_exposure",
-				t: Date.now(),
-				url: currentUrl(),
-				locale
-			});
-		};
-		const trackConversion = (event) => {
-			if (isBotSession) return;
-			enqueue({
-				...event,
-				type: "conversion",
-				t: Date.now(),
-				url: currentUrl(),
-				locale: event.locale ?? ambientLocale
-			});
-			flush();
-		};
-		const getVariant = (experimentKey, variants, weights) => assignVariant(sessionId, experimentKey, variants, weights);
-		const attachListeners = () => {
-			if (typeof window === "undefined") return;
-			const onHidden = () => {
-				if (document.visibilityState === "hidden") flush(true);
-			};
-			const onPageHide = () => flush(true);
-			const onPopState = () => trackPageView({ reason: "route_change" });
-			document.addEventListener("visibilitychange", onHidden);
-			window.addEventListener("pagehide", onPageHide, { capture: true });
-			window.addEventListener("popstate", onPopState);
-			const history = window.history;
-			const originalPush = history.pushState;
-			const patchedPushState = function patchedPush(...args) {
-				const result = originalPush.apply(this, args);
-				trackPageView({ reason: "route_change" });
-				return result;
-			};
-			history.pushState = patchedPushState;
-			detachListeners = () => {
-				document.removeEventListener("visibilitychange", onHidden);
-				window.removeEventListener("pagehide", onPageHide, { capture: true });
-				window.removeEventListener("popstate", onPopState);
-				if (history.pushState === patchedPushState) history.pushState = originalPush;
-			};
-		};
-		const start = () => {
-			if (started || isBotSession) return;
-			started = true;
-			publicToken.prime();
-			flushTimer = setInterval(flush, config.flushInterval);
-			flushTimer?.unref?.();
-			onIdle(attachListeners);
-		};
-		const stop = () => {
-			if (!started) return;
-			started = false;
-			if (flushTimer) {
-				clearInterval(flushTimer);
-				flushTimer = null;
-			}
-			detachListeners?.();
-			detachListeners = null;
-			flush(true);
-		};
-		return {
-			setLocale,
-			trackPageView,
-			trackContentExposure,
-			trackConversion,
-			getVariant,
-			flush,
-			start,
-			stop
-		};
-	};
-}));
-var CLIENT_KEY, REF_COUNT_KEY, getGlobalAnalyticsClient, setGlobalAnalyticsClient, incrementAnalyticsClientRefCount, decrementAnalyticsClientRefCount;
-var init_globalManager = __esmMin((() => {
-	CLIENT_KEY = "__intlayer_analytics_client__";
-	REF_COUNT_KEY = "__intlayer_analytics_ref_count__";
-	getGlobalAnalyticsClient = () => {
-		if (typeof window === "undefined") return null;
-		return window[CLIENT_KEY] ?? null;
-	};
-	setGlobalAnalyticsClient = (client) => {
-		if (typeof window === "undefined") return;
-		window[CLIENT_KEY] = client;
-	};
-	incrementAnalyticsClientRefCount = () => {
-		if (typeof window === "undefined") return 0;
-		const globals = window;
-		globals[REF_COUNT_KEY] = (globals[REF_COUNT_KEY] ?? 0) + 1;
-		return globals[REF_COUNT_KEY];
-	};
-	decrementAnalyticsClientRefCount = () => {
-		if (typeof window === "undefined") return 0;
-		const globals = window;
-		globals[REF_COUNT_KEY] = Math.max(0, (globals[REF_COUNT_KEY] ?? 0) - 1);
-		return globals[REF_COUNT_KEY];
-	};
-}));
-var initAnalyticsClient, stopAnalyticsClient;
-var init_initAnalyticsClient = __esmMin((() => {
-	init_AnalyticsClient();
-	init_globalManager();
-	init_built();
-	initAnalyticsClient = () => {
-		incrementAnalyticsClientRefCount();
-		const existing = getGlobalAnalyticsClient();
-		if (existing) return existing;
-		const client = createAnalyticsClient({
-			backendURL: editor?.backendURL ?? "",
-			clientId: editor?.clientId,
-			flushInterval: analytics?.flushInterval ?? 2e4,
-			maxBufferSize: 500,
-			sampleRate: analytics?.sampleRate ?? 1
-		});
-		setGlobalAnalyticsClient(client);
-		client.start();
-		return client;
-	};
-	stopAnalyticsClient = () => {
-		if (decrementAnalyticsClientRefCount() > 0) return;
-		getGlobalAnalyticsClient()?.stop();
-		setGlobalAnalyticsClient(null);
-	};
-}));
-var serializeKeyPath, buildContentExposure;
-var init_contentExposure = __esmMin((() => {
-	serializeKeyPath = (keyPath) => keyPath.map((segment) => segment.key === void 0 ? "*" : String(segment.key)).join(".");
-	buildContentExposure = (params) => ({
-		dictionaryKey: params.dictionaryKey,
-		keyPath: serializeKeyPath(params.keyPath),
-		locale: params.locale,
-		nodeType: params.nodeType,
-		experimentKey: params.experimentKey,
-		variant: params.variant
-	});
-}));
-__esmMin((() => {
-	init_globalManager();
-	init_initAnalyticsClient();
-	init_contentExposure();
-}))();
-export { buildContentExposure, getGlobalAnalyticsClient, initAnalyticsClient, stopAnalyticsClient };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
-import { n as parseYaml, t as init_parseYaml } from "./parseYaml-DrUXqNtv.js";
-var getMarkdownMetadata;
-var init_getMarkdownMetadata = __esmMin((() => {
-	init_parseYaml();
-	getMarkdownMetadata = (markdown) => {
-		try {
-			const lines = markdown.split(/\r?\n/);
-			if (lines.find((line) => line.trim() !== "")?.trim() !== "---") return {};
-			let metadataEndIndex = -1;
-			for (let i = 1; i < lines.length; i++) if (lines[i]?.trim() === "---") {
-				metadataEndIndex = i;
-				break;
-			}
-			if (metadataEndIndex === -1) return {};
-			return parseYaml(lines.slice(1, metadataEndIndex).join("\n")) ?? {};
-		} catch {
-			return {};
-		}
-	};
-}));
-export { init_getMarkdownMetadata as n, getMarkdownMetadata as t };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
+import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
 var getUnmergedDictionaries;
 __esmMin((() => {
 	getUnmergedDictionaries = () => ({});
 }))();
 export { getUnmergedDictionaries };
-import { n as __esmMin, r as __exportAll } from "./chunk-iyGXEJRz.js";
-import { a as log, c as colorizeKey, i as internationalization, l as getAppLogger, r as init_built, u as init_logger } from "./built-k6nPQRRu.js";
+import { n as __esmMin, r as __exportAll } from "./rolldown-runtime-BW-jZnKV.js";
+import { a as log, c as colorizeKey, i as internationalization, l as getAppLogger, r as init_built, u as init_logger } from "./built-BvRk9kiK.js";
 var index_browser_exports = __exportAll({ getDictionaries: () => getDictionaries });
 var getDictionaries;
 var init_index_browser = __esmMin((() => {
@@ -3757,14 +2366,15 @@ var init_deepTransform = __esmMin((() => {
 		if (node === null || typeof node !== "object") return node;
 		if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
 		if (Array.isArray(node)) return node.map((child, index) => {
-			return deepTransformNode(child, {
+			const childProps = {
 				...props,
 				children: child,
 				keyPath: [...props.keyPath, {
 					type: ARRAY,
 					key: index
 				}]
-			});
+			};
+			return deepTransformNode(child, childProps);
 		});
 		const result = {};
 		for (const key in node) {
@@ -3932,7 +2542,7 @@ var init_getIntlayer = __esmMin((() => {
 	init_built();
 	init_logger();
 	init_index_browser();
-	PROTOTYPE_METHOD_NAMES = new Set([
+	PROTOTYPE_METHOD_NAMES = /* @__PURE__ */ new Set([
 		"hasOwnProperty",
 		"isPrototypeOf",
 		"propertyIsEnumerable",
@@ -3946,7 +2556,8 @@ var init_getIntlayer = __esmMin((() => {
 			if (prop === Symbol.iterator) return function* () {
 				yield path;
 			};
-			return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
+			const nextPath = path ? `${path}.${String(prop)}` : String(prop);
+			return createSafeFallback(nextPath);
 		} });
 	};
 	warnedMissingDictionaries = /* @__PURE__ */ new Set();
@@ -4172,7 +2783,8 @@ var init_interpolableNode = __esmMin((() => {
 		return node;
 	};
 	transformInterpolableNode = (node, values, subProps, parentPlugins, deepTransformNode) => {
-		const children = rebuildInterpolableContent(node, getInsertion(getInterpolableContent(node), values));
+		const interpolated = getInsertion(getInterpolableContent(node), values);
+		const children = rebuildInterpolableContent(node, interpolated);
 		return deepTransformNode(children, {
 			...subProps,
 			plugins: parentPlugins,
@@ -4236,7 +2848,8 @@ var init_plugins = __esmMin((() => {
 				});
 			}
 			return (arg) => {
-				const subResult = getEnumeration(result, typeof arg === "number" ? arg : arg.count);
+				const quantity = typeof arg === "number" ? arg : arg.count;
+				const subResult = getEnumeration(result, quantity);
 				if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
 				return subResult;
 			};
@@ -4308,7 +2921,8 @@ var init_plugins = __esmMin((() => {
 				});
 			}
 			return (arg) => {
-				const subResult = getCondition(result, typeof arg === "boolean" ? arg : arg.value);
+				const value = typeof arg === "boolean" ? arg : arg.value;
+				const subResult = getCondition(result, value);
 				if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
 				return subResult;
 			};
@@ -4386,7 +3000,8 @@ var init_plugins = __esmMin((() => {
 				});
 			}
 			return (arg) => {
-				const subResult = getSelect(result, typeof arg === "string" ? arg : arg?.value);
+				const value = typeof arg === "string" ? arg : arg?.value;
+				const subResult = getSelect(result, value);
 				if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
 				return subResult;
 			};
@@ -4605,8 +3220,8 @@ var init_interpreter = __esmMin((() => {
 	init_getHTML();
 	init_splitAndJoinInsertion();
 }));
-export { serializeVariantChain as A, HTML as B, init_intl as C, parseDictionarySelector as D, init_qualifiedDictionary as E, ARRAY as F, REACT_NODE as G, MARKDOWN as H, CONDITION as I, formatNodeType as J, SELECT as K, ENUMERATION as L, init_getEnumeration as M, deepTransformNode as N, resolveDictionaryArgument as O, init_deepTransform as P, init_index_browser as Q, FILE as R, getCachedIntl as S, getDictionarySelectorCacheKey as T, OBJECT as U, INSERTION as V, PLURAL as W, getDictionaries as X, init_nodeType as Y, index_browser_exports as Z, transformInterpolableNode as _, getBasePlugins as a, getPlural as b, enumerationPlugin as c, genderPlugin as d, nestedPlugin as f, isInterpolableWrapperNode as g, translationPlugin as h, getDictionary as i, getEnumeration as j, resolveEffectiveVariantId as k, fallbackPlugin as l, selectPlugin as m, splitInsertionTemplate as n, getContent as o, pluralPlugin as p, TRANSLATION as q, getHTML as r, conditionPlugin as s, init_interpreter as t, filePlugin as u, getSelect as v, getIntlayer as w, init_getPlural as x, init_getSelect as y, GENDER as z };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
+export { SELECT as $, getIntlayer as A, deepTransformNode as B, transformInterpolableNode as C, init_getPlural as D, getPlural as E, resolveDictionaryArgument as F, FILE as G, ARRAY as H, resolveEffectiveVariantId as I, INSERTION as J, GENDER as K, serializeVariantChain as L, getDictionarySelectorCacheKey as M, init_qualifiedDictionary as N, getCachedIntl as O, parseDictionarySelector as P, REACT_NODE as Q, getEnumeration as R, isInterpolableWrapperNode as S, init_getSelect as T, CONDITION as U, init_deepTransform as V, ENUMERATION as W, OBJECT as X, MARKDOWN as Y, PLURAL as Z, nestedPlugin as _, init_getHTML as a, init_index_browser as at, translationPlugin as b, getBasePlugins as c, conditionPlugin as d, TRANSLATION as et, enumerationPlugin as f, init_plugins as g, genderPlugin as h, getHTML as i, index_browser_exports as it, init_getIntlayer as j, init_intl as k, getContent as l, filePlugin as m, init_splitAndJoinInsertion as n, init_nodeType as nt, getDictionary as o, fallbackPlugin as p, HTML as q, splitInsertionTemplate as r, getDictionaries as rt, init_getDictionary as s, init_interpreter as t, formatNodeType as tt, init_getContent as u, pluralPlugin as v, getSelect as w, init_interpolableNode as x, selectPlugin as y, init_getEnumeration as z };
+import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
 var HUMAN_USER_AGENT_EXCEPTION_PATTERN, BOT_USER_AGENT_PATTERN, isBotUserAgent, AUTOMATION_GLOBAL_KEYS, isBotEnvironment;
 var init_isBot = __esmMin((() => {
 	HUMAN_USER_AGENT_EXCEPTION_PATTERN = /cubot/i;
@@ -4636,10 +3251,10 @@ var init_isBot = __esmMin((() => {
 	};
 }));
 export { isBotUserAgent as i, init_isBot as n, isBotEnvironment as r, BOT_USER_AGENT_PATTERN as t };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
+import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
 var PRESERVED_LITERALS, parseYaml;
 var init_parseYaml = __esmMin((() => {
-	PRESERVED_LITERALS = new Set([
+	PRESERVED_LITERALS = /* @__PURE__ */ new Set([
 		"true",
 		"false",
 		"null",
@@ -4887,57 +3502,1938 @@ var init_parseYaml = __esmMin((() => {
 		return value;
 	};
 }));
-export { parseYaml as n, init_parseYaml as t };
-import { n as __esmMin } from "./chunk-iyGXEJRz.js";
-import { B as HTML, J as formatNodeType, K as SELECT, L as ENUMERATION, V as INSERTION, W as PLURAL, Y as init_nodeType, z as GENDER } from "./interpreter-HgtbAUp0.js";
-var enumeration;
-var init_enumeration = __esmMin((() => {
-	init_nodeType();
-	enumeration = (content) => formatNodeType(ENUMERATION, content);
-}));
-var gender;
-var init_gender = __esmMin((() => {
-	init_nodeType();
-	gender = (content) => formatNodeType(GENDER, content);
-}));
-var parseAttributes, getHTMLCustomComponents;
-var init_getHTMLCustomComponents = __esmMin((() => {
-	parseAttributes = (attributesString) => {
-		const attributes = {};
-		if (!attributesString?.trim()) return attributes;
-		[...attributesString.matchAll(/([a-zA-Z0-9-:_@]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^>\s]+))?/g)].forEach((match) => {
-			const attrName = match[1];
-			attributes[attrName] = "string";
-		});
-		return attributes;
-	};
-	getHTMLCustomComponents = (content) => {
-		if (typeof content !== "string") throw new Error("content must be a string");
-		const matches = [...content.matchAll(/<(\/)?([a-zA-Z0-9.-]+)\s*([\s\S]*?)(\/?)>/g)];
-		const components = {};
-		matches.forEach((match) => {
-			const isClosing = !!match[1];
-			const tagName = match[2];
-			const attributesString = match[3];
-			const isSelfClosing = !!match[4];
-			if (/^[a-z][a-z0-9]*$/.test(tagName)) {
-				components[tagName] = true;
-				return;
+var getMarkdownMetadata;
+var init_getMarkdownMetadata = __esmMin((() => {
+	init_parseYaml();
+	getMarkdownMetadata = (markdown) => {
+		try {
+			const lines = markdown.split(/\r?\n/);
+			if (lines.find((line) => line.trim() !== "")?.trim() !== "---") return {};
+			let metadataEndIndex = -1;
+			for (let i = 1; i < lines.length; i++) if (lines[i]?.trim() === "---") {
+				metadataEndIndex = i;
+				break;
 			}
-			if (!components[tagName]) components[tagName] = {};
-			if (components[tagName] === true) return;
-			if (isClosing) return;
-			const attributes = parseAttributes(attributesString);
-			const componentDef = components[tagName];
-			Object.assign(componentDef, attributes);
-			if (!isSelfClosing) componentDef.children = "string";
-		});
-		return components;
+			if (metadataEndIndex === -1) return {};
+			const metadataContent = lines.slice(1, metadataEndIndex).join("\n");
+			return parseYaml(metadataContent) ?? {};
+		} catch {
+			return {};
+		}
 	};
 }));
+var RuleType, Priority, RuleScope, SCOPE_BLOCK, SCOPE_INLINE, SCOPE_BOTH, ATTRIBUTE_TO_NODE_PROP_MAP, NAMED_CODES_TO_UNICODE, DO_NOT_PROCESS_HTML_ELEMENTS, ATTRIBUTES_TO_SANITIZE, ATTR_EXTRACTOR_R, BLOCK_END_R, BLOCKQUOTE_R, BLOCKQUOTE_TRIM_LEFT_MULTILINE_R, BLOCKQUOTE_ALERT_R, BREAK_LINE_R, BREAK_THEMATIC_R, CODE_BLOCK_FENCED_R, CODE_BLOCK_R, FENCE_DELIMITER_R, CODE_INLINE_R, CONSECUTIVE_NEWLINE_R, CR_NEWLINE_R, FOOTNOTE_R, FOOTNOTE_REFERENCE_R, FORMFEED_R, FRONT_MATTER_R, GFM_TASK_R, HEADING_R, HEADING_ATX_COMPLIANT_R, HEADING_SETEXT_R, HTML_CHAR_CODE_R, HTML_COMMENT_R, HTML_CUSTOM_ATTR_R, INTERPOLATION_R, LINK_AUTOLINK_BARE_URL_R, LINK_AUTOLINK_R, CAPTURE_LETTER_AFTER_HYPHEN, NP_TABLE_R, TABLE_TRIM_PIPES, TABLE_CENTER_ALIGN, TABLE_LEFT_ALIGN, TABLE_RIGHT_ALIGN, PARAGRAPH_R, REFERENCE_IMAGE_OR_LINK, REFERENCE_IMAGE_R, REFERENCE_LINK_R, SHOULD_RENDER_AS_BLOCK_R, TAB_R, TRIM_STARTING_NEWLINES, HTML_LEFT_TRIM_AMOUNT_R, ORDERED_LIST_BULLET, UNORDERED_LIST_BULLET, TEXT_ESCAPED_R, UNESCAPE_R, SHORTCODE_R, LOOKAHEAD, INLINE_SKIP_R, TEXT_BOLD_R, TEXT_EMPHASIZED_R, TEXT_MARKED_R, TEXT_STRIKETHROUGHED_R, generateListItemPrefix, ORDERED_LIST_ITEM_PREFIX, UNORDERED_LIST_ITEM_PREFIX, generateListItemPrefixRegex, ORDERED_LIST_ITEM_PREFIX_R, UNORDERED_LIST_ITEM_PREFIX_R, generateListItemRegex, ORDERED_LIST_ITEM_R, UNORDERED_LIST_ITEM_R, generateListRegex, ORDERED_LIST_R, UNORDERED_LIST_R;
+var init_constants = __esmMin((() => {
+	RuleType = {
+		blockQuote: "0",
+		breakLine: "1",
+		breakThematic: "2",
+		codeBlock: "3",
+		codeFenced: "4",
+		codeInline: "5",
+		footnote: "6",
+		footnoteReference: "7",
+		gfmTask: "8",
+		heading: "9",
+		headingSetext: "10",
+		htmlBlock: "11",
+		htmlComment: "12",
+		htmlSelfClosing: "13",
+		customComponent: "34",
+		image: "14",
+		link: "15",
+		linkAngleBraceStyleDetector: "16",
+		linkBareUrlDetector: "17",
+		newlineCoalescer: "19",
+		orderedList: "20",
+		paragraph: "21",
+		ref: "22",
+		refImage: "23",
+		refLink: "24",
+		table: "25",
+		tableSeparator: "26",
+		text: "27",
+		textBolded: "28",
+		textEmphasized: "29",
+		textEscaped: "30",
+		textMarked: "31",
+		textStrikethroughed: "32",
+		unorderedList: "33"
+	};
+	Priority = {
+		MAX: 0,
+		HIGH: 1,
+		MED: 2,
+		LOW: 3,
+		MIN: 4
+	};
+	RuleScope = {
+		BLOCK: 1,
+		INLINE: 2,
+		BOTH: 3
+	};
+	SCOPE_BLOCK = RuleScope.BLOCK;
+	SCOPE_INLINE = RuleScope.INLINE;
+	SCOPE_BOTH = RuleScope.BOTH;
+	ATTRIBUTE_TO_NODE_PROP_MAP = [
+		"allowFullScreen",
+		"allowTransparency",
+		"autoComplete",
+		"autoFocus",
+		"autoPlay",
+		"cellPadding",
+		"cellSpacing",
+		"charSet",
+		"classId",
+		"colSpan",
+		"contentEditable",
+		"contextMenu",
+		"crossOrigin",
+		"encType",
+		"formAction",
+		"formEncType",
+		"formMethod",
+		"formNoValidate",
+		"formTarget",
+		"frameBorder",
+		"hrefLang",
+		"inputMode",
+		"keyParams",
+		"keyType",
+		"marginHeight",
+		"marginWidth",
+		"maxLength",
+		"mediaGroup",
+		"minLength",
+		"noValidate",
+		"radioGroup",
+		"readOnly",
+		"rowSpan",
+		"spellCheck",
+		"srcDoc",
+		"srcLang",
+		"srcSet",
+		"tabIndex",
+		"useMap"
+	].reduce((obj, x) => {
+		obj[x.toLowerCase()] = x;
+		return obj;
+	}, {
+		class: "className",
+		for: "htmlFor"
+	});
+	NAMED_CODES_TO_UNICODE = {
+		amp: "&",
+		apos: "'",
+		gt: ">",
+		lt: "<",
+		nbsp: "\xA0",
+		quot: "“"
+	};
+	DO_NOT_PROCESS_HTML_ELEMENTS = [
+		"style",
+		"script",
+		"pre"
+	];
+	ATTRIBUTES_TO_SANITIZE = [
+		"src",
+		"href",
+		"data",
+		"formAction",
+		"srcDoc",
+		"action"
+	];
+	ATTR_EXTRACTOR_R = /([-A-Z0-9_:]+)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|(?:\{((?:\\.|{[^}]*?}|[^}])*)\})))?/gi;
+	BLOCK_END_R = /\n{2,}$/;
+	BLOCKQUOTE_R = /^(\s*>[\s\S]*?)(?=\n\n|$)/;
+	BLOCKQUOTE_TRIM_LEFT_MULTILINE_R = /^ *> ?/gm;
+	BLOCKQUOTE_ALERT_R = /^(?:\[!([^\]]*)\]\n)?([\s\S]*)/;
+	BREAK_LINE_R = /^(?=( {2,}))\1\n/;
+	BREAK_THEMATIC_R = /^(?:([-*_])( *\1){2,}) *(?:\n *)+\n/;
+	CODE_BLOCK_FENCED_R = /^(?: {1,3})?(`{3,}|~{3,}) *(\S+)? *([^\n]*?)?\n((?:[^\n]*(?:\n|$))*?)(?:\1\n?|$)/;
+	CODE_BLOCK_R = /^(?: {4}[^\n]+\n*)+(?:\n *)+\n?/;
+	FENCE_DELIMITER_R = /^([ \t]*)(`{3,}|~{3,})/;
+	CODE_INLINE_R = /^(`+)((?:\\`|(?!\1)`|[^`])+)\1/;
+	CONSECUTIVE_NEWLINE_R = /^(?:\n *)*\n/;
+	CR_NEWLINE_R = /\r\n?/g;
+	FOOTNOTE_R = /^\[\^([^\]]+)](:(.*)((\n+ {4,}.*)|(\n(?!\[\^).+))*)/;
+	FOOTNOTE_REFERENCE_R = /^\[\^([^\]]+)]/;
+	FORMFEED_R = /\f/g;
+	FRONT_MATTER_R = /^---[ \t]*\n(.|\n)*?\n---[ \t]*\n/;
+	GFM_TASK_R = /^\s*?\[(x|\s)\]/;
+	HEADING_R = /^ *(#{1,6}) *([^\n]+?)(?: +#*)?(?:\n *)*(?:\n|$)/;
+	HEADING_ATX_COMPLIANT_R = /^ *(#{1,6}) +([^\n]+?)(?: +#*)?(?:\n *)*(?:\n|$)/;
+	HEADING_SETEXT_R = /^([^\n]+)\n *(=|-)\2{2,} *\n/;
+	HTML_CHAR_CODE_R = /&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-fA-F]{1,6});/gi;
+	HTML_COMMENT_R = /^<!--[\s\S]*?(?:-->)/;
+	HTML_CUSTOM_ATTR_R = /^(data|aria|x)-[a-z_][a-z\d_.-]*$/;
+	INTERPOLATION_R = /^\{.*\}$/;
+	LINK_AUTOLINK_BARE_URL_R = /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/;
+	LINK_AUTOLINK_R = /^<([^ >]+[:@/][^ >]+)>/;
+	CAPTURE_LETTER_AFTER_HYPHEN = /-([a-z])?/gi;
+	NP_TABLE_R = /^(\|[^\n]*)\n(?: *(\|? *[-:]+ *\|[-| :]*)\n((?:[^\n]*\|[^\n]*\n)*))?\n?/;
+	TABLE_TRIM_PIPES = /(^ *\||\| *$)/g;
+	TABLE_CENTER_ALIGN = /^ *:-+: *$/;
+	TABLE_LEFT_ALIGN = /^ *:-+ *$/;
+	TABLE_RIGHT_ALIGN = /^ *-+: *$/;
+	PARAGRAPH_R = /^[^\n]+(?: {2}\n|\n{2,})/;
+	REFERENCE_IMAGE_OR_LINK = /^\[([^\]]*)\]:\s+<?([^\s>]+)>?\s*("([^"]*)")?/;
+	REFERENCE_IMAGE_R = /^!\[([^\]]*)\] ?\[([^\]]*)\]/;
+	REFERENCE_LINK_R = /^\[([^\]]*)\] ?\[([^\]]*)\]/;
+	SHOULD_RENDER_AS_BLOCK_R = /(\n|^[-*]\s|^#|^ {2,}|^-{2,}|^>\s)/;
+	TAB_R = /\t/g;
+	TRIM_STARTING_NEWLINES = /^\n+/;
+	HTML_LEFT_TRIM_AMOUNT_R = /^\n*([ \t]*)/;
+	ORDERED_LIST_BULLET = "(?:\\d+\\.)";
+	UNORDERED_LIST_BULLET = "(?:[*+-])";
+	TEXT_ESCAPED_R = /^\\([^0-9A-Za-z\s])/;
+	UNESCAPE_R = /\\([^0-9A-Za-z\s])/g;
+	SHORTCODE_R = /^(:[a-zA-Z0-9-_]+:)/;
+	LOOKAHEAD = (double) => `(?=[\\s\\S]+?\\1${double ? "\\1" : ""})`;
+	INLINE_SKIP_R = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
+	TEXT_BOLD_R = new RegExp(`^([*_])\\1${LOOKAHEAD(1)}${INLINE_SKIP_R}\\1\\1(?!\\1)`);
+	TEXT_EMPHASIZED_R = new RegExp(`^([*_])${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1(?!\\1)`);
+	TEXT_MARKED_R = new RegExp(`^(==)${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1`);
+	TEXT_STRIKETHROUGHED_R = new RegExp(`^(~~)${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1`);
+	generateListItemPrefix = (type) => {
+		return "( *)(" + (type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET) + ") +";
+	};
+	ORDERED_LIST_ITEM_PREFIX = generateListItemPrefix(1);
+	UNORDERED_LIST_ITEM_PREFIX = generateListItemPrefix(2);
+	generateListItemPrefixRegex = (type) => {
+		return new RegExp("^" + (type === 1 ? ORDERED_LIST_ITEM_PREFIX : UNORDERED_LIST_ITEM_PREFIX));
+	};
+	ORDERED_LIST_ITEM_PREFIX_R = generateListItemPrefixRegex(1);
+	UNORDERED_LIST_ITEM_PREFIX_R = generateListItemPrefixRegex(2);
+	generateListItemRegex = (type) => {
+		return new RegExp("^" + (type === 1 ? ORDERED_LIST_ITEM_PREFIX : UNORDERED_LIST_ITEM_PREFIX) + "[^\\n]*(?:\\n(?!\\1" + (type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET) + " )[^\\n]*)*(\\n|$)", "gm");
+	};
+	ORDERED_LIST_ITEM_R = generateListItemRegex(1);
+	UNORDERED_LIST_ITEM_R = generateListItemRegex(2);
+	generateListRegex = (type) => {
+		const bullet = type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET;
+		return new RegExp("^( *)(" + bullet + ") (?=[\\s\\S])(?:[^\\n]*(?:\\n|$))+?(?:\\n+(?! )(?!\\1" + bullet + " (?!" + bullet + " ))\\n*|\\s*$)");
+	};
+	ORDERED_LIST_R = generateListRegex(1);
+	UNORDERED_LIST_R = generateListRegex(2);
+}));
+var trimEnd, startsWith, unquote, unescapeString, cx, get, SLUGIFY_REPLACEMENTS, NON_ASCII_R, SLUGIFY_STRIP_R, SLUGIFY_SPACE_R, slugify, SANITIZE_R, SANITIZE_STRIP_R, sanitizer, normalizeWhitespace, trimLeadingWhitespaceOutsideFences, normalizeAttributeKey, parseStyleAttribute, attributeValueToNodePropValue, parseTableAlignCapture, parseTableAlign, parseTableRow, parseTableCells, qualifies, allowInline, inlineRegex, simpleInlineRegex, blockRegex, anyScopeRegex, parseInline, parseSimpleInline, parseBlock, parseCaptureInline, captureNothing, renderNothing, some;
+var init_utils = __esmMin((() => {
+	init_constants();
+	trimEnd = (str) => {
+		let end = str.length;
+		while (end > 0 && str.charCodeAt(end - 1) <= 32) end--;
+		return end === str.length ? str : str.slice(0, end);
+	};
+	startsWith = (str, prefix) => {
+		return str.startsWith(prefix);
+	};
+	unquote = (str) => {
+		const first = str[0];
+		if ((first === "\"" || first === "'") && str.length >= 2 && str[str.length - 1] === first) return str.slice(1, -1);
+		return str;
+	};
+	unescapeString = (rawString) => rawString && rawString.indexOf("\\") !== -1 ? rawString.replace(UNESCAPE_R, "$1") : rawString;
+	cx = (...args) => args.filter(Boolean).join(" ");
+	get = (src, path, fb) => {
+		if (path.indexOf(".") === -1) return src?.[path] ?? fb;
+		let ptr = src;
+		const frags = path.split(".");
+		while (frags.length) {
+			ptr = ptr[frags[0]];
+			if (ptr === void 0) break;
+			else frags.shift();
+		}
+		return ptr ?? fb;
+	};
+	SLUGIFY_REPLACEMENTS = [
+		[/[ÀÁÂÃÄÅàáâãäåæÆ]/g, "a"],
+		[/[çÇ]/g, "c"],
+		[/[ðÐ]/g, "d"],
+		[/[ÈÉÊËéèêë]/g, "e"],
+		[/[ÏïÎîÍíÌì]/g, "i"],
+		[/[Ññ]/g, "n"],
+		[/[øØœŒÕõÔôÓóÒò]/g, "o"],
+		[/[ÜüÛûÚúÙù]/g, "u"],
+		[/[ŸÿÝý]/g, "y"]
+	];
+	NON_ASCII_R = /[\u0080-\uffff]/;
+	SLUGIFY_STRIP_R = /[^a-z0-9- ]/gi;
+	SLUGIFY_SPACE_R = / /g;
+	slugify = (str) => {
+		let result = str;
+		if (NON_ASCII_R.test(result)) for (let i = 0; i < SLUGIFY_REPLACEMENTS.length; i++) {
+			const [pattern, replacement] = SLUGIFY_REPLACEMENTS[i];
+			result = result.replace(pattern, replacement);
+		}
+		result = result.replace(SLUGIFY_STRIP_R, "").replace(SLUGIFY_SPACE_R, "-");
+		return result.toLowerCase();
+	};
+	SANITIZE_R = /(javascript|vbscript|data(?!:image)):/i;
+	SANITIZE_STRIP_R = /[^A-Za-z0-9/:]/g;
+	sanitizer = (input) => {
+		if (input.indexOf(":") === -1 && input.indexOf("%") === -1) return input;
+		try {
+			const decoded = decodeURIComponent(input).replace(SANITIZE_STRIP_R, "");
+			if (SANITIZE_R.test(decoded)) {
+				console.warn("Input contains an unsafe JavaScript/VBScript/data expression, it will not be rendered.", decoded);
+				return null;
+			}
+		} catch (_e) {
+			console.warn("Input could not be decoded due to malformed syntax or characters, it will not be rendered.", input);
+			return null;
+		}
+		return input;
+	};
+	normalizeWhitespace = (source) => {
+		let normalized = source;
+		if (normalized.indexOf("	") !== -1) normalized = normalized.replace(TAB_R, "    ");
+		if (normalized.indexOf("\r") !== -1) normalized = normalized.replace(CR_NEWLINE_R, "\n");
+		if (normalized.indexOf("\f") !== -1) normalized = normalized.replace(FORMFEED_R, "");
+		return normalized;
+	};
+	trimLeadingWhitespaceOutsideFences = (text, whitespace) => {
+		if (!whitespace) return text;
+		const lines = text.split("\n");
+		let openFence = null;
+		const removePrefix = (line, prefix) => prefix && line.startsWith(prefix) ? line.slice(prefix.length) : line;
+		return lines.map((line) => {
+			const fenceMatch = line.match(FENCE_DELIMITER_R);
+			if (!openFence) {
+				if (fenceMatch) openFence = {
+					indentation: fenceMatch[1],
+					marker: fenceMatch[2]
+				};
+				return removePrefix(line, whitespace);
+			}
+			const isClosingFence = fenceMatch?.[2]?.startsWith(openFence.marker);
+			const { indentation } = openFence;
+			if (isClosingFence) openFence = null;
+			return removePrefix(line, indentation);
+		}).join("\n");
+	};
+	normalizeAttributeKey = (key) => {
+		if (key.indexOf("-") !== -1 && key.match(HTML_CUSTOM_ATTR_R) === null) key = key.replace(CAPTURE_LETTER_AFTER_HYPHEN, (_, letter) => {
+			return letter.toUpperCase();
+		});
+		return key;
+	};
+	parseStyleAttribute = (styleString) => {
+		const styles = [];
+		let buffer = "";
+		let inUrl = false;
+		let inQuotes = false;
+		let quoteChar = "";
+		if (!styleString) return styles;
+		for (let i = 0; i < styleString.length; i++) {
+			const char = styleString[i];
+			if ((char === "\"" || char === "'") && !inUrl) {
+				if (!inQuotes) {
+					inQuotes = true;
+					quoteChar = char;
+				} else if (char === quoteChar) {
+					inQuotes = false;
+					quoteChar = "";
+				}
+			}
+			if (char === "(" && buffer.endsWith("url")) inUrl = true;
+			else if (char === ")" && inUrl) inUrl = false;
+			if (char === ";" && !inQuotes && !inUrl) {
+				const declaration = buffer.trim();
+				if (declaration) {
+					const colonIndex = declaration.indexOf(":");
+					if (colonIndex > 0) {
+						const key = declaration.slice(0, colonIndex).trim();
+						const value = declaration.slice(colonIndex + 1).trim();
+						styles.push([key, value]);
+					}
+				}
+				buffer = "";
+			} else buffer += char;
+		}
+		const declaration = buffer.trim();
+		if (declaration) {
+			const colonIndex = declaration.indexOf(":");
+			if (colonIndex > 0) {
+				const key = declaration.slice(0, colonIndex).trim();
+				const value = declaration.slice(colonIndex + 1).trim();
+				styles.push([key, value]);
+			}
+		}
+		return styles;
+	};
+	attributeValueToNodePropValue = (tag, key, value, sanitizeUrlFn) => {
+		if (key === "style") return parseStyleAttribute(value).reduce((styles, [styleKey, styleValue]) => {
+			const camelCasedKey = styleKey.replace(/(-[a-z])/g, (substr) => substr[1].toUpperCase());
+			styles[camelCasedKey] = sanitizeUrlFn(styleValue, tag, styleKey);
+			return styles;
+		}, {});
+		else if (ATTRIBUTES_TO_SANITIZE.indexOf(key) !== -1) return sanitizeUrlFn(unescapeString(value), tag, key);
+		else if (value.match(INTERPOLATION_R)) value = unescapeString(value.slice(1, value.length - 1));
+		if (value === "true") return true;
+		else if (value === "false") return false;
+		return value;
+	};
+	parseTableAlignCapture = (alignCapture) => {
+		if (alignCapture.indexOf(":") === -1) return "left";
+		if (TABLE_RIGHT_ALIGN.test(alignCapture)) return "right";
+		else if (TABLE_CENTER_ALIGN.test(alignCapture)) return "center";
+		else if (TABLE_LEFT_ALIGN.test(alignCapture)) return "left";
+		return "left";
+	};
+	parseTableAlign = (source) => {
+		return source.replace(TABLE_TRIM_PIPES, "").split("|").map(parseTableAlignCapture);
+	};
+	parseTableRow = (source, parse, state, tableOutput) => {
+		const prevInTable = state.inTable;
+		state.inTable = true;
+		let rStart = 0;
+		let rEnd = source.length;
+		while (rStart < rEnd) {
+			const c = source.charCodeAt(rStart);
+			if (c === 32 || c === 9) rStart++;
+			else break;
+		}
+		while (rEnd > rStart) {
+			const c = source.charCodeAt(rEnd - 1);
+			if (c === 32 || c === 9) rEnd--;
+			else break;
+		}
+		if (rStart < rEnd && source.charCodeAt(rStart) === 124) rStart++;
+		if (rEnd > rStart && source.charCodeAt(rEnd - 1) === 124 && (rEnd - 2 < rStart || source.charCodeAt(rEnd - 2) !== 92)) rEnd--;
+		if (!tableOutput) {
+			const cell = parse(source.slice(rStart, rEnd), state);
+			state.inTable = prevInTable;
+			return [cell];
+		}
+		const cells = [];
+		const len = source.length;
+		let cellStart = rStart;
+		let i = rStart;
+		const parseCell = (from, to) => {
+			const cell = source.slice(from, to).trim();
+			return cell === "" ? [] : parse(cell, state);
+		};
+		let pipeAt = -1;
+		let escapeAt = -1;
+		let backtickAt = -1;
+		while (i < rEnd) {
+			if (pipeAt < i) {
+				const at = source.indexOf("|", i);
+				pipeAt = at === -1 ? len : at;
+			}
+			if (escapeAt < i) {
+				const at = source.indexOf("\\", i);
+				escapeAt = at === -1 ? len : at;
+			}
+			if (backtickAt < i) {
+				const at = source.indexOf("`", i);
+				backtickAt = at === -1 ? len : at;
+			}
+			i = Math.min(pipeAt, escapeAt, backtickAt);
+			if (i >= rEnd) break;
+			if (i === escapeAt) {
+				i += i + 1 < rEnd ? 2 : 1;
+				continue;
+			}
+			if (i === backtickAt) {
+				let backticks = 0;
+				while (i < rEnd && source.charCodeAt(i) === 96) {
+					backticks++;
+					i++;
+				}
+				let found = false;
+				while (i < rEnd && !found) {
+					let closeBackticks = 0;
+					while (i < rEnd && source.charCodeAt(i) === 96) {
+						closeBackticks++;
+						i++;
+					}
+					if (closeBackticks === backticks) found = true;
+					else if (closeBackticks === 0) i++;
+				}
+				continue;
+			}
+			cells.push(parseCell(cellStart, i));
+			i++;
+			cellStart = i;
+		}
+		cells.push(parseCell(cellStart, rEnd));
+		state.inTable = prevInTable;
+		return cells;
+	};
+	parseTableCells = (source, parse, state) => {
+		if (!source) return [];
+		const result = [];
+		let start = 0;
+		const len = source.length;
+		while (start < len) {
+			let nextNewline = source.indexOf("\n", start);
+			if (nextNewline === -1) nextNewline = len;
+			const rowText = source.slice(start, nextNewline);
+			start = nextNewline + 1;
+			let hasContent = false;
+			for (let j = 0; j < rowText.length; j++) {
+				const c = rowText.charCodeAt(j);
+				if (c !== 32 && c !== 9 && c !== 13) {
+					hasContent = true;
+					break;
+				}
+			}
+			if (!hasContent) continue;
+			result.push(parseTableRow(rowText, parse, state, true));
+		}
+		return result;
+	};
+	qualifies = (source, state, qualify) => {
+		if (Array.isArray(qualify)) {
+			for (let i = 0; i < qualify.length; i++) if (startsWith(source, qualify[i])) return true;
+			return false;
+		}
+		return qualify(source, state);
+	};
+	allowInline = (fn) => {
+		fn.inline = 1;
+		return fn;
+	};
+	inlineRegex = (regex) => allowInline((source, state) => {
+		if (state.inline) return regex.exec(source);
+		else return null;
+	});
+	simpleInlineRegex = (regex) => allowInline((source, state) => {
+		if (state.inline || state.simple) return regex.exec(source);
+		else return null;
+	});
+	blockRegex = (regex) => (source, state) => {
+		if (state.inline || state.simple) return null;
+		else return regex.exec(source);
+	};
+	anyScopeRegex = (fn) => allowInline((source, state) => {
+		if (typeof fn === "function") return fn(source, state);
+		return fn.exec(source);
+	});
+	parseInline = (parse, children, state) => {
+		const isCurrentlyInline = state.inline ?? false;
+		const isCurrentlySimple = state.simple ?? false;
+		state.inline = true;
+		state.simple = true;
+		const result = parse(children, state);
+		state.inline = isCurrentlyInline;
+		state.simple = isCurrentlySimple;
+		return result;
+	};
+	parseSimpleInline = (parse, children, state) => {
+		const isCurrentlyInline = state.inline ?? false;
+		const isCurrentlySimple = state.simple ?? false;
+		state.inline = false;
+		state.simple = true;
+		const result = parse(children, state);
+		state.inline = isCurrentlyInline;
+		state.simple = isCurrentlySimple;
+		return result;
+	};
+	parseBlock = (parse, children, state = {}) => {
+		const isCurrentlyInline = state.inline || false;
+		state.inline = false;
+		const normalizedChildren = trimEnd(children);
+		const result = parse(/\n\n$/.test(normalizedChildren) === false ? normalizedChildren.endsWith("\n") ? `${normalizedChildren}\n` : `${normalizedChildren}\n\n` : normalizedChildren, state);
+		state.inline = isCurrentlyInline;
+		return result;
+	};
+	parseCaptureInline = (capture, parse, state) => {
+		return { children: parseInline(parse, capture[2] ?? "", state) };
+	};
+	captureNothing = () => ({});
+	renderNothing = () => null;
+	some = (probes, input) => {
+		for (let i = 0; i < probes.length; i++) {
+			const probe = probes[i];
+			if (typeof probe === "function" ? probe(input) : probe.test(input)) return true;
+		}
+		return false;
+	};
+}));
+var advanceLookbehind, parserFor;
+var init_parser = __esmMin((() => {
+	init_constants();
+	init_utils();
+	advanceLookbehind = (state, capture) => {
+		const lastCode = capture.charCodeAt(capture.length - 1);
+		if (state.prevCaptureHasBlankLine !== true) state.prevCaptureHasBlankLine = capture.indexOf("\n\n") !== -1 || state.prevCaptureHasBlankLine !== void 0 && capture.charCodeAt(0) === 10 && state.prevCaptureIndent === "";
+		if (lastCode !== 32 && lastCode !== 10) {
+			state.prevCaptureIndent = void 0;
+			return;
+		}
+		const newlineIndex = capture.lastIndexOf("\n");
+		const tail = newlineIndex === -1 ? state.prevCaptureIndent === void 0 ? void 0 : state.prevCaptureIndent === "" ? capture : state.prevCaptureIndent + capture : capture.slice(newlineIndex + 1);
+		if (tail === void 0 || tail === "") {
+			state.prevCaptureIndent = tail;
+			return;
+		}
+		for (let i = 0; i < tail.length; i++) if (tail.charCodeAt(i) !== 32) {
+			state.prevCaptureIndent = void 0;
+			return;
+		}
+		state.prevCaptureIndent = tail;
+	};
+	parserFor = (rules) => {
+		const order = Object.keys(rules).sort((a, b) => rules[a]._order - rules[b]._order || +a - +b);
+		const ruleCount = order.length;
+		const qualifiers = new Array(ruleCount);
+		const matchers = new Array(ruleCount);
+		const parsers = new Array(ruleCount);
+		const ruleFirstChars = new Array(ruleCount);
+		const ruleIsBlock = new Array(ruleCount);
+		const ruleIsInline = new Array(ruleCount);
+		const blockDefaultCandidates = [];
+		const inlineDefaultCandidates = [];
+		for (let i = 0; i < ruleCount; i++) {
+			const rule = rules[order[i]];
+			let q = rule._qualify;
+			matchers[i] = rule._match;
+			parsers[i] = rule._parse;
+			const rawScope = rule._scope;
+			const isBlock = rawScope !== SCOPE_INLINE;
+			const isInline = rawScope !== SCOPE_BLOCK;
+			ruleIsBlock[i] = isBlock;
+			ruleIsInline[i] = isInline;
+			if (rule._firstChars && rule._firstChars.length > 0) ruleFirstChars[i] = rule._firstChars;
+			else if (Array.isArray(q) && q.length > 0 && q.every((p) => p.length > 0)) {
+				ruleFirstChars[i] = q.map((p) => p.charCodeAt(0));
+				if (q.every((p) => p.length === 1)) q = void 0;
+			} else {
+				ruleFirstChars[i] = null;
+				if (isBlock) blockDefaultCandidates.push(i);
+				if (isInline) inlineDefaultCandidates.push(i);
+			}
+			qualifiers[i] = q;
+		}
+		const blockAsciiCandidates = new Array(128);
+		const inlineAsciiCandidates = new Array(128);
+		for (let code = 0; code < 128; code++) {
+			const bList = [];
+			const iList = [];
+			for (let i = 0; i < ruleCount; i++) {
+				const isBlock = ruleIsBlock[i];
+				const isInline = ruleIsInline[i];
+				const chars = ruleFirstChars[i];
+				if (isBlock && (!chars || chars.includes(code))) bList.push(i);
+				if (isInline && (!chars || chars.includes(code))) iList.push(i);
+			}
+			blockAsciiCandidates[code] = bList;
+			inlineAsciiCandidates[code] = iList;
+		}
+		const nestedParse = (source, state = {}) => {
+			const result = [];
+			const isInline = Boolean(state.inline || state.simple);
+			if (state.prevCaptureHasBlankLine === void 0) state.prevCaptureIndent = "";
+			let hasContent = false;
+			for (let j = 0; j < source.length; j++) {
+				const c = source.charCodeAt(j);
+				if (c !== 32 && c !== 9 && c !== 10 && c !== 13) {
+					hasContent = true;
+					break;
+				}
+			}
+			if (hasContent) {
+				const asciiCandidates = isInline ? inlineAsciiCandidates : blockAsciiCandidates;
+				const defaultCandidates = isInline ? inlineDefaultCandidates : blockDefaultCandidates;
+				while (source) {
+					const code = source.charCodeAt(0);
+					const candidates = code < 128 ? asciiCandidates[code] : defaultCandidates;
+					const candidateCount = candidates.length;
+					let matched = false;
+					for (let c = 0; c < candidateCount; c++) {
+						const i = candidates[c];
+						const qualify = qualifiers[i];
+						if (qualify && !qualifies(source, state, qualify)) continue;
+						const capture = matchers[i](source, state);
+						if (capture?.[0]) {
+							source = source.slice(capture[0].length);
+							const parsed = parsers[i](capture, nestedParse, state);
+							advanceLookbehind(state, capture[0]);
+							const nodeType = parsed.type || order[i];
+							parsed.type = nodeType;
+							const len = result.length;
+							if (nodeType === RuleType.text) {
+								if (!parsed.text) {
+									matched = true;
+									break;
+								}
+								if (len > 0 && result[len - 1].type === RuleType.text) {
+									result[len - 1].text += parsed.text;
+									matched = true;
+									break;
+								}
+							}
+							result.push(parsed);
+							matched = true;
+							break;
+						}
+					}
+					if (!matched) break;
+				}
+			}
+			return result;
+		};
+		return (source, state) => nestedParse(normalizeWhitespace(source), state);
+	};
+}));
+var renderFor, createRenderer;
+var init_renderer = __esmMin((() => {
+	renderFor = (render) => {
+		const emit = (ast, state = {}) => {
+			if (!Array.isArray(ast)) return render(ast, emit, state);
+			const oldKey = state.key;
+			const result = [];
+			let lastWasString = false;
+			let renderedIndex = 0;
+			for (let i = 0; i < ast.length; i++) {
+				state.key = renderedIndex;
+				const node = ast[i];
+				const nodeOut = Array.isArray(node) ? emit(node, state) : render(node, emit, state);
+				const isString = typeof nodeOut === "string";
+				if (isString && lastWasString) result[result.length - 1] = result[result.length - 1] + nodeOut;
+				else if (nodeOut !== null) {
+					result.push(nodeOut);
+					renderedIndex++;
+				}
+				lastWasString = isString;
+			}
+			state.key = oldKey;
+			return result;
+		};
+		return emit;
+	};
+	createRenderer = (rules, userRender) => {
+		const renderers = {};
+		for (const type in rules) renderers[type] = rules[type]?._render;
+		if (!userRender) return (ast, render, state) => {
+			const r = renderers[ast.type];
+			return r ? r(ast, render, state) : void 0;
+		};
+		return (ast, render, state) => {
+			const renderer = renderers[ast.type];
+			return userRender(() => renderer?.(ast, render, state), ast, render, state);
+		};
+	};
+}));
+var findTagEnd, foldAscii, matchesFolded, findTag, makeMatch, isNameChar, skipLeadingSpaces, matchElement, matchSelfClosingElement, matchHtmlBlockElement, matchCustomComponent, startsWithHtmlBlockElement, startsWithSelfClosingElement, startsWithCustomComponent, startsWithElement;
+var init_elementScanner = __esmMin((() => {
+	findTagEnd = (source, from) => {
+		const len = source.length;
+		let pos = from;
+		while (pos < len) {
+			const code = source.charCodeAt(pos);
+			if (code === 62) return pos;
+			if (code === 34 || code === 39) {
+				let cur = pos + 1;
+				while (cur < len && source.charCodeAt(cur) !== code && source.charCodeAt(cur) !== 10) cur++;
+				pos = source.charCodeAt(cur) === code ? cur + 1 : pos + 1;
+				continue;
+			}
+			pos++;
+		}
+		return -1;
+	};
+	foldAscii = (code) => code >= 65 && code <= 90 ? code + 32 : code;
+	matchesFolded = (source, needle, at) => {
+		for (let index = 0; index < needle.length; index++) if (foldAscii(source.charCodeAt(at + index)) !== foldAscii(needle.charCodeAt(index))) return false;
+		return true;
+	};
+	findTag = (source, needle, from, caseInsensitive, limit) => {
+		if (!caseInsensitive) {
+			const idx = source.indexOf(needle, from);
+			return idx === -1 || idx >= limit ? -1 : idx;
+		}
+		const max = Math.min(limit, source.length - needle.length + 1);
+		let pos = from;
+		while (pos < max) {
+			const idx = source.indexOf("<", pos);
+			if (idx === -1 || idx >= max) return -1;
+			if (matchesFolded(source, needle, idx)) return idx;
+			pos = idx + 1;
+		}
+		return -1;
+	};
+	makeMatch = (source, end, tagName, attrs, content) => {
+		const result = [
+			source.slice(0, end),
+			tagName,
+			attrs,
+			content
+		];
+		result.index = 0;
+		result.input = source;
+		return result;
+	};
+	isNameChar = (code) => code >= 97 && code <= 122 || code >= 65 && code <= 90 || code >= 48 && code <= 57;
+	skipLeadingSpaces = (source) => {
+		let i = 0;
+		while (source.charCodeAt(i) === 32) i++;
+		return source.charCodeAt(i) === 60 ? i : -1;
+	};
+	matchElement = (source, customComponent) => {
+		const bracket = skipLeadingSpaces(source);
+		if (bracket === -1) return null;
+		const nameStart = bracket + 1;
+		let nameEnd = nameStart;
+		const first = source.charCodeAt(nameStart);
+		if (customComponent) {
+			if (first < 65 || first > 90) return null;
+			while (nameEnd < source.length && isNameChar(source.charCodeAt(nameEnd))) nameEnd++;
+		} else {
+			if (!(first >= 65 && first <= 90 || first >= 97 && first <= 122)) return null;
+			while (nameEnd < source.length) {
+				const c = source.charCodeAt(nameEnd);
+				if (c === 32 || c === 9 || c === 10 || c === 13 || c === 62 || c === 47) break;
+				nameEnd++;
+			}
+		}
+		const tagName = source.slice(nameStart, nameEnd);
+		const openTagEnd = findTagEnd(source, nameEnd);
+		if (openTagEnd === -1) return null;
+		if (!customComponent && source.charCodeAt(openTagEnd - 1) === 47) return null;
+		let contentStart = openTagEnd + 1;
+		if (source.charCodeAt(contentStart) === 10) contentStart++;
+		const openTag = `<${tagName}`;
+		const closeTag = `</${tagName}`;
+		let depth = 1;
+		let cursor = contentStart;
+		const len = source.length;
+		let contentEnd = -1;
+		let end = -1;
+		while (cursor < len) {
+			const closeIdx = findTag(source, closeTag, cursor, !customComponent, len);
+			if (closeIdx === -1) return null;
+			const openIdx = findTag(source, openTag, cursor, !customComponent, closeIdx);
+			if (openIdx !== -1) {
+				const next = source.charCodeAt(openIdx + openTag.length);
+				if (next === 32 || next === 9 || next === 10 || next === 13 || next === 62 || next === 47) {
+					const nestedEnd = findTagEnd(source, openIdx + openTag.length);
+					if (nestedEnd === -1) return null;
+					depth++;
+					cursor = nestedEnd + 1;
+				} else cursor = openIdx + 1;
+				continue;
+			}
+			if (source.charCodeAt(closeIdx + closeTag.length) !== 62) {
+				cursor = closeIdx + 1;
+				continue;
+			}
+			const closeTagEnd = closeIdx + closeTag.length + 1;
+			depth--;
+			if (depth > 0) {
+				cursor = closeTagEnd;
+				continue;
+			}
+			if (findTag(source, closeTag, closeTagEnd, !customComponent, len) === closeTagEnd && source.charCodeAt(closeTagEnd + closeTag.length) === 62) {
+				depth = 1;
+				cursor = closeTagEnd;
+				continue;
+			}
+			contentEnd = closeIdx;
+			end = closeTagEnd;
+			break;
+		}
+		if (end === -1) return null;
+		while (source.charCodeAt(end) === 10) end++;
+		return makeMatch(source, end, tagName, source.slice(nameEnd, openTagEnd), source.slice(contentStart, contentEnd));
+	};
+	matchSelfClosingElement = (source) => {
+		const bracket = skipLeadingSpaces(source);
+		if (bracket === -1) return null;
+		const nameStart = bracket + 1;
+		const first = source.charCodeAt(nameStart);
+		if (!(first >= 65 && first <= 90 || first >= 97 && first <= 122)) return null;
+		let nameEnd = nameStart + 1;
+		while (nameEnd < source.length && (isNameChar(source.charCodeAt(nameEnd)) || source.charCodeAt(nameEnd) === 58)) nameEnd++;
+		const c = source.charCodeAt(nameEnd);
+		const hasAttrs = c === 32 || c === 9 || c === 10 || c === 13;
+		let tagEnd;
+		if (hasAttrs) {
+			tagEnd = findTagEnd(source, nameEnd);
+			if (tagEnd === -1) return null;
+		} else {
+			tagEnd = source.charCodeAt(nameEnd) === 47 ? nameEnd + 1 : nameEnd;
+			if (source.charCodeAt(tagEnd) !== 62) return null;
+		}
+		const tagName = source.slice(nameStart, nameEnd);
+		const tailStart = tagEnd + 1;
+		if (source.charCodeAt(tailStart) === 60 && source.charCodeAt(tailStart + 1) === 47 && matchesFolded(source, tagName, tailStart + 2) && source.charCodeAt(tailStart + 2 + tagName.length) === 62) return null;
+		let end = tailStart;
+		let scan = tailStart;
+		while (scan < source.length) {
+			const sc = source.charCodeAt(scan);
+			if (sc !== 32 && sc !== 9 && sc !== 10 && sc !== 13) break;
+			scan++;
+			if (source.charCodeAt(scan - 1) === 10) end = scan;
+		}
+		return makeMatch(source, end, tagName, hasAttrs ? source.slice(nameEnd + 1, tagEnd) : void 0, end > tailStart ? source.slice(tailStart, end) : void 0);
+	};
+	matchHtmlBlockElement = (source) => matchElement(source, false);
+	matchCustomComponent = (source) => matchElement(source, true);
+	startsWithHtmlBlockElement = (source) => matchHtmlBlockElement(source) !== null;
+	startsWithSelfClosingElement = (source) => matchSelfClosingElement(source) !== null;
+	startsWithCustomComponent = (source) => matchCustomComponent(source) !== null;
+	startsWithElement = (source) => startsWithHtmlBlockElement(source) || startsWithSelfClosingElement(source);
+}));
+var IMAGE_R, LINK_R, createTagResolver, createSlugger, createElementFactory, createDocumentScope, RULE_SET_CACHE_LIMIT, ruleSetCache, builtFromSame, getRuleSet, withDocumentScope, createRules, STRIP_INDENT_REGEXES, TEXT_CAPTURE, TEXT_RUN_R, trimHardBreak, noopCreateElement, createDocumentRules, parseWithRules, renderWithRules, parseMarkdown, renderMarkdownAst, compile;
+var init_compiler = __esmMin((() => {
+	init_constants();
+	init_elementScanner();
+	init_utils();
+	init_parser();
+	init_renderer();
+	IMAGE_R = /^!\[(.*?)\]\( *((?:\([^)]*\)|[^() ])*) *"?([^)"]*)?"?\)/;
+	LINK_R = new RegExp(`^\\[((?:\\[[^\\[\\]]*(?:\\[[^\\[\\]]*\\][^\\[\\]]*)*\\]|[^\\[\\]])*)\\]\\(\\s*<?((?:\\([^)]*\\)|[^\\s\\\\]|\\\\.)*?)>?(?:\\s+['"]([\\s\\S]*?)['"])?\\s*\\)`);
+	createTagResolver = (components) => {
+		let lowercaseKeys = null;
+		if (Object.keys(components).length === 0) return (tag) => tag;
+		const resolved = /* @__PURE__ */ new Map();
+		return (tag) => {
+			if (typeof tag !== "string") return tag;
+			const memoized = resolved.get(tag);
+			if (memoized !== void 0) return memoized;
+			const override = get(components, tag);
+			if (override) {
+				resolved.set(tag, override);
+				return override;
+			}
+			if (!lowercaseKeys) {
+				lowercaseKeys = /* @__PURE__ */ new Map();
+				for (const key of Object.keys(components)) {
+					const lowercased = key.toLowerCase();
+					if (!lowercaseKeys.has(lowercased)) lowercaseKeys.set(lowercased, key);
+				}
+			}
+			const key = lowercaseKeys.get(tag.toLowerCase());
+			const result = (key ? get(components, key) : void 0) || tag;
+			resolved.set(tag, result);
+			return result;
+		};
+	};
+	createSlugger = (ctx) => (input) => ctx.slugify ? ctx.slugify(input, slugify) : slugify(input);
+	createElementFactory = (ctx, options) => {
+		const { runtime, components = {} } = ctx;
+		const resolveTag = createTagResolver(components);
+		const filteredTags = options.tagfilter ? /* @__PURE__ */ new Set([
+			"title",
+			"textarea",
+			"style",
+			"xmp",
+			"iframe",
+			"noembed",
+			"noframes",
+			"script",
+			"plaintext"
+		]) : null;
+		const needsPropsRewrite = (props) => {
+			if ("class" in props) return true;
+			for (const key in props) {
+				const value = props[key];
+				if (value === void 0 || value === null) return true;
+			}
+			return false;
+		};
+		return (tag, props, ...children) => {
+			const isStringTag = typeof tag === "string";
+			if (filteredTags && isStringTag && (filteredTags.has(tag) || filteredTags.has(tag.toLowerCase()))) return null;
+			let finalProps;
+			if (!props) finalProps = {};
+			else if (!needsPropsRewrite(props)) finalProps = props;
+			else {
+				const className = cx(props.className, props.class);
+				const mergedProps = {};
+				let classNameHandled = false;
+				for (const key in props) {
+					const value = props[key];
+					if (value === void 0 || value === null) continue;
+					if (key === "className" || key === "class") {
+						if (!classNameHandled) {
+							if (className) mergedProps.className = className;
+							classNameHandled = true;
+						}
+					} else mergedProps[key] = value;
+				}
+				if (!classNameHandled && className) mergedProps.className = className;
+				finalProps = mergedProps;
+			}
+			if (runtime.normalizeProps && isStringTag) finalProps = runtime.normalizeProps(tag, finalProps);
+			const component = resolveTag(tag);
+			return runtime.createElement(component, finalProps, ...children);
+		};
+	};
+	createDocumentScope = () => ({
+		footnotes: [],
+		references: {}
+	});
+	RULE_SET_CACHE_LIMIT = 8;
+	ruleSetCache = [];
+	builtFromSame = (entry, ctx, options, parseOnly) => entry.parseOnly === parseOnly && entry.ctx.runtime === ctx.runtime && entry.ctx.components === ctx.components && entry.ctx.namedCodesToUnicode === ctx.namedCodesToUnicode && entry.ctx.sanitizer === ctx.sanitizer && entry.ctx.slugify === ctx.slugify && entry.options.disableAutoLink === options.disableAutoLink && entry.options.disableParsingRawHTML === options.disableParsingRawHTML && entry.options.enforceAtxHeadings === options.enforceAtxHeadings && entry.options.tagfilter === options.tagfilter && entry.options.renderRule === options.renderRule;
+	getRuleSet = (ctx, options, parseOnly) => {
+		for (let index = 0; index < ruleSetCache.length; index++) {
+			const entry = ruleSetCache[index];
+			if (!builtFromSame(entry, ctx, options, parseOnly)) continue;
+			if (index > 0) {
+				ruleSetCache.splice(index, 1);
+				ruleSetCache.unshift(entry);
+			}
+			return entry;
+		}
+		const scope = { current: createDocumentScope() };
+		const createElement = parseOnly ? noopCreateElement : createElementFactory(ctx, options);
+		const rules = createDocumentRules(createElement, ctx, options, scope);
+		const entry = {
+			ctx,
+			options,
+			parseOnly,
+			createElement,
+			scope,
+			parse: parserFor(rules),
+			emit: renderFor(createRenderer(rules, options.renderRule))
+		};
+		ruleSetCache.unshift(entry);
+		if (ruleSetCache.length > RULE_SET_CACHE_LIMIT) ruleSetCache.pop();
+		return entry;
+	};
+	withDocumentScope = (ref, scope, operation) => {
+		const previous = ref.current;
+		ref.current = scope;
+		try {
+			return operation();
+		} finally {
+			ref.current = previous;
+		}
+	};
+	createRules = (createElement, ctx, options, scope, attrStringToMap, containsBlockSyntax, nonParagraphBlockSyntaxes) => {
+		const slug = createSlugger(ctx);
+		const sanitize = ctx.sanitizer ?? sanitizer;
+		const namedCodesToUnicode = ctx.namedCodesToUnicode ? {
+			...NAMED_CODES_TO_UNICODE,
+			...ctx.namedCodesToUnicode
+		} : NAMED_CODES_TO_UNICODE;
+		const pairedElementRule = (match, order, rawHtml, scope = SCOPE_BOTH) => ({
+			_scope: scope,
+			_qualify: ["<"],
+			_match: anyScopeRegex(match),
+			_order: order,
+			_parse(capture, parse, state) {
+				const content = capture[3] ?? "";
+				const whitespace = content.match(HTML_LEFT_TRIM_AMOUNT_R)?.[1] ?? "";
+				const trimmed = trimLeadingWhitespaceOutsideFences(content, whitespace);
+				const parseFunc = containsBlockSyntax(trimmed) ? parseBlock : parseInline;
+				const tagName = (capture[1] ?? "").trim();
+				const lowercased = tagName.toLowerCase();
+				const noInnerParse = rawHtml && DO_NOT_PROCESS_HTML_ELEMENTS.indexOf(lowercased) !== -1;
+				const tag = noInnerParse ? lowercased : tagName;
+				const ast = {
+					attrs: attrStringToMap(tag, capture[2] ?? ""),
+					noInnerParse,
+					tag
+				};
+				if (rawHtml) state.inAnchor = state.inAnchor || lowercased === "a";
+				if (noInnerParse) ast.text = content;
+				else {
+					const prevInHTML = state.inHTML;
+					state.inHTML = true;
+					ast.children = parseFunc(parse, trimmed, state);
+					state.inHTML = prevInHTML;
+				}
+				if (rawHtml) state.inAnchor = false;
+				return ast;
+			},
+			_render(node, output, state = {}) {
+				return createElement(node.tag, {
+					key: state.key,
+					...node.attrs ?? {}
+				}, node.text ?? (node.children ? output(node.children, state) : ""));
+			}
+		});
+		const generateListRule = (type) => {
+			const ordered = type === 1;
+			const LIST_R = ordered ? ORDERED_LIST_R : UNORDERED_LIST_R;
+			const LIST_ITEM_R = ordered ? ORDERED_LIST_ITEM_R : UNORDERED_LIST_ITEM_R;
+			const LIST_ITEM_PREFIX_R = ordered ? ORDERED_LIST_ITEM_PREFIX_R : UNORDERED_LIST_ITEM_PREFIX_R;
+			return {
+				_scope: SCOPE_BOTH,
+				_firstChars: ordered ? [
+					32,
+					9,
+					48,
+					49,
+					50,
+					51,
+					52,
+					53,
+					54,
+					55,
+					56,
+					57
+				] : [
+					32,
+					9,
+					42,
+					43,
+					45
+				],
+				_qualify: (source, state) => state.prevCaptureIndent !== void 0 && Boolean(state.list ?? (!state.inline && !state.simple)) && LIST_ITEM_PREFIX_R.test(source),
+				_match: allowInline((source, state) => {
+					const lineIndent = state.prevCaptureIndent;
+					const isStartOfLine = lineIndent !== void 0;
+					const isListAllowed = state.list ?? (!state.inline && !state.simple);
+					if (isStartOfLine && isListAllowed) {
+						const matchSource = lineIndent ? lineIndent + source : source;
+						const match = LIST_R.exec(matchSource);
+						if (!match) return null;
+						if (lineIndent && match[0].startsWith(lineIndent)) {
+							const adjusted = [...match];
+							adjusted[0] = match[0].slice(lineIndent.length);
+							adjusted.fullMatch = match[0];
+							return adjusted;
+						}
+						return match;
+					}
+					return null;
+				}),
+				_order: Priority.HIGH,
+				_parse(capture, parse, state) {
+					const bullet = capture[2] ?? "";
+					const startValue = ordered ? +bullet.slice(0, -1) : void 0;
+					const items = (capture.fullMatch ?? capture[0] ?? "").replace(BLOCK_END_R, "\n").match(LIST_ITEM_R);
+					if (!items) return {
+						items: [],
+						ordered,
+						start: startValue
+					};
+					let lastItemWasAParagraph = false;
+					return {
+						items: items.map((item, i) => {
+							const prefixCapture = LIST_ITEM_PREFIX_R.exec(item);
+							const space = prefixCapture ? prefixCapture[0].length : 0;
+							const spaceRegex = space <= 8 ? STRIP_INDENT_REGEXES[space] : new RegExp(`^ {1,${space}}`, "gm");
+							const content = item.slice(space).replace(spaceRegex, "");
+							const isLastItem = i === items.length - 1;
+							const thisItemIsAParagraph = content.indexOf("\n\n") !== -1 || isLastItem && lastItemWasAParagraph;
+							lastItemWasAParagraph = thisItemIsAParagraph;
+							const oldStateInline = state.inline;
+							const oldStateList = state.list;
+							state.list = true;
+							let adjustedContent;
+							if (thisItemIsAParagraph) {
+								state.inline = false;
+								adjustedContent = `${trimEnd(content)}\n\n`;
+							} else {
+								state.inline = true;
+								adjustedContent = trimEnd(content);
+							}
+							const parsed = parse(adjustedContent, state);
+							state.inline = oldStateInline;
+							state.list = oldStateList;
+							return parsed;
+						}),
+						ordered,
+						start: startValue
+					};
+				},
+				_render(node, output, state = {}) {
+					return createElement(ordered ? "ol" : "ul", {
+						key: state.key,
+						start: node.start
+					}, ...node.items.map((item, i) => createElement("li", { key: i }, output(item, state))));
+				}
+			};
+		};
+		const matchParagraph = (source, state) => {
+			if (state.inline || state.simple || state.inHTML && source.indexOf("\n\n") === -1 && !state.prevCaptureHasBlankLine) return null;
+			let start = 0;
+			const srcLen = source.length;
+			while (start < srcLen) {
+				const newlineIndex = source.indexOf("\n", start);
+				const lineEnd = newlineIndex === -1 ? srcLen : newlineIndex;
+				let p = start;
+				while (p < lineEnd && (source.charCodeAt(p) === 32 || source.charCodeAt(p) === 9)) p++;
+				if (p >= lineEnd) break;
+				if (p - start >= 4 || source.charCodeAt(start) === 9) break;
+				const ch = source.charCodeAt(p);
+				if (ch === 62 || ch === 96 || ch === 126 || ch === 35 || ch === 124 || ch === 42 || ch === 43 || ch === 45 || ch === 61 || ch === 60 || ch >= 48 && ch <= 57) {
+					const line = source.slice(start, newlineIndex === -1 ? void 0 : newlineIndex + 1);
+					if (some(nonParagraphBlockSyntaxes, line)) break;
+				}
+				if (newlineIndex === -1) {
+					start = srcLen;
+					break;
+				}
+				start = newlineIndex + 1;
+			}
+			const match = source.slice(0, start);
+			if (match === "") return null;
+			const captured = trimEnd(match);
+			if (captured === "") return null;
+			return [
+				match,
+				void 0,
+				captured
+			];
+		};
+		return {
+			[RuleType.blockQuote]: {
+				_scope: SCOPE_BLOCK,
+				_qualify: [">"],
+				_match: blockRegex(BLOCKQUOTE_R),
+				_order: Priority.HIGH,
+				_parse(capture, parse, state) {
+					const matchAlert = (capture[0] ?? "").replace(BLOCKQUOTE_TRIM_LEFT_MULTILINE_R, "").match(BLOCKQUOTE_ALERT_R);
+					const alert = matchAlert?.[1];
+					const content = matchAlert?.[2] ?? "";
+					return {
+						alert,
+						children: content.indexOf("\n") !== -1 ? parseBlock(parse, content, state) : parseInline(parse, content, state)
+					};
+				},
+				_render(node, output, state = {}) {
+					const props = { key: state.key };
+					if (node.alert) {
+						props.className = `markdown-alert-${slug(node.alert.toLowerCase())}`;
+						node.children.unshift({
+							attrs: {},
+							children: [{
+								type: RuleType.text,
+								text: node.alert
+							}],
+							noInnerParse: true,
+							type: RuleType.htmlBlock,
+							tag: "header"
+						});
+					}
+					return createElement("blockquote", props, output(node.children, state));
+				}
+			},
+			[RuleType.breakLine]: {
+				_scope: SCOPE_BOTH,
+				_qualify: ["  "],
+				_match: anyScopeRegex(BREAK_LINE_R),
+				_order: Priority.HIGH,
+				_parse: captureNothing,
+				_render(_, __, state = {}) {
+					return createElement("br", { key: state.key });
+				}
+			},
+			[RuleType.breakThematic]: {
+				_scope: SCOPE_BLOCK,
+				_qualify: [
+					"--",
+					"__",
+					"**",
+					"- ",
+					"* ",
+					"_ "
+				],
+				_match: blockRegex(BREAK_THEMATIC_R),
+				_order: Priority.HIGH,
+				_parse: captureNothing,
+				_render(_, __, state = {}) {
+					return createElement("hr", { key: state.key });
+				}
+			},
+			[RuleType.codeBlock]: {
+				_scope: SCOPE_BLOCK,
+				_qualify: ["    "],
+				_match: blockRegex(CODE_BLOCK_R),
+				_order: Priority.MAX,
+				_parse(capture) {
+					return {
+						type: RuleType.codeBlock,
+						lang: void 0,
+						text: unescapeString(trimEnd((capture[0] ?? "").replace(/^ {4}/gm, "")))
+					};
+				},
+				_render(node, _, state = {}) {
+					const attrs = { ...node.attrs ?? {} };
+					const langClass = node.lang ? `lang-${node.lang}` : "lang-plaintext";
+					attrs.className = attrs.className ? `${attrs.className} ${langClass}` : langClass;
+					return createElement("pre", { key: state.key }, createElement("code", attrs, node.text));
+				}
+			},
+			[RuleType.codeFenced]: {
+				_scope: SCOPE_BLOCK,
+				_qualify: ["```", "~~~"],
+				_match: blockRegex(CODE_BLOCK_FENCED_R),
+				_order: Priority.MAX,
+				_parse(capture) {
+					return {
+						attrs: attrStringToMap("code", capture[3] ?? ""),
+						lang: capture[2] || void 0,
+						text: capture[4] ?? "",
+						type: RuleType.codeBlock
+					};
+				}
+			},
+			[RuleType.codeInline]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [96],
+				_qualify: (source) => source.charCodeAt(0) === 96 && source.indexOf("`", 1) !== -1,
+				_match: simpleInlineRegex(CODE_INLINE_R),
+				_order: Priority.LOW,
+				_parse(capture) {
+					return { text: unescapeString(capture[2] ?? "") };
+				},
+				_render(node, _, state = {}) {
+					return createElement("code", { key: state.key }, node.text);
+				}
+			},
+			[RuleType.footnote]: {
+				_scope: SCOPE_INLINE,
+				_qualify: ["[^"],
+				_match: blockRegex(FOOTNOTE_R),
+				_order: Priority.MAX,
+				_parse(capture) {
+					scope.current.footnotes.push({
+						footnote: capture[2] ?? "",
+						identifier: capture[1] ?? ""
+					});
+					return {};
+				},
+				_render: renderNothing
+			},
+			[RuleType.footnoteReference]: {
+				_scope: SCOPE_INLINE,
+				_qualify: ["[^"],
+				_match: inlineRegex(FOOTNOTE_REFERENCE_R),
+				_order: Priority.HIGH,
+				_parse(capture) {
+					const text = capture[1] ?? "";
+					return {
+						target: `#${slug(text)}`,
+						text
+					};
+				},
+				_render(node, _, state = {}) {
+					return createElement("a", {
+						key: state.key,
+						href: sanitize(node.target, "a", "href") ?? void 0
+					}, createElement("sup", { key: state.key }, node.text));
+				}
+			},
+			[RuleType.gfmTask]: {
+				_scope: SCOPE_INLINE,
+				_qualify: ["[ ]", "[x]"],
+				_match: inlineRegex(GFM_TASK_R),
+				_order: Priority.HIGH,
+				_parse(capture) {
+					return { completed: (capture[1] ?? "").toLowerCase() === "x" };
+				},
+				_render(node, _, state = {}) {
+					return createElement("input", {
+						checked: node.completed,
+						key: state.key,
+						readOnly: true,
+						type: "checkbox"
+					});
+				}
+			},
+			[RuleType.heading]: {
+				_scope: SCOPE_BLOCK,
+				_qualify: ["#"],
+				_match: blockRegex(options.enforceAtxHeadings ? HEADING_ATX_COMPLIANT_R : HEADING_R),
+				_order: Priority.HIGH,
+				_parse(capture, parse, state) {
+					const text = capture[2] ?? "";
+					return {
+						children: parseInline(parse, text, state),
+						id: slug(text),
+						level: capture[1]?.length ?? 1
+					};
+				},
+				_render(node, output, state = {}) {
+					return createElement(`h${node.level}`, {
+						id: node.id,
+						key: state.key
+					}, output(node.children, state));
+				}
+			},
+			[RuleType.headingSetext]: {
+				_scope: SCOPE_BLOCK,
+				_qualify: (source, state) => {
+					if (state.prevCaptureIndent === void 0 || state.inline || state.simple) return false;
+					const nlIndex = source.indexOf("\n");
+					return nlIndex > 0 && nlIndex < source.length - 1 && (source[nlIndex + 1] === "=" || source[nlIndex + 1] === "-");
+				},
+				_match: blockRegex(HEADING_SETEXT_R),
+				_order: Priority.MAX,
+				_parse(capture, parse, state) {
+					return {
+						children: parseInline(parse, capture[1] ?? "", state),
+						level: capture[2] === "=" ? 1 : 2,
+						type: RuleType.heading
+					};
+				}
+			},
+			[RuleType.htmlBlock]: pairedElementRule(matchHtmlBlockElement, Priority.HIGH, true, SCOPE_BOTH),
+			[RuleType.htmlComment]: {
+				_scope: SCOPE_BOTH,
+				_qualify: ["<!"],
+				_match: anyScopeRegex(HTML_COMMENT_R),
+				_order: Priority.HIGH,
+				_parse: captureNothing,
+				_render: renderNothing
+			},
+			[RuleType.htmlSelfClosing]: {
+				_scope: SCOPE_BOTH,
+				_qualify: ["<"],
+				_match: anyScopeRegex(matchSelfClosingElement),
+				_order: Priority.HIGH,
+				_parse(capture) {
+					const tag = (capture[1] ?? "").trim();
+					return {
+						attrs: attrStringToMap(tag, capture[2] || ""),
+						tag
+					};
+				},
+				_render(node, _, state = {}) {
+					return createElement(node.tag, {
+						key: state.key,
+						...node.attrs ?? {}
+					});
+				}
+			},
+			[RuleType.customComponent]: pairedElementRule(matchCustomComponent, Priority.MAX, false, SCOPE_BOTH),
+			[RuleType.paragraph]: {
+				_scope: SCOPE_BLOCK,
+				_qualify: (_source, state) => !state.inline && !state.simple,
+				_match: matchParagraph,
+				_order: Priority.LOW,
+				_parse: parseCaptureInline,
+				_render(node, output, state = {}) {
+					return createElement("p", { key: state.key }, output(node.children, state));
+				}
+			},
+			[RuleType.image]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [33],
+				_qualify: (source) => source.startsWith("![") && source.indexOf("](") !== -1,
+				_match: simpleInlineRegex(IMAGE_R),
+				_order: Priority.HIGH,
+				_parse(capture) {
+					return {
+						alt: unescapeString(capture[1] ?? ""),
+						target: unescapeString(capture[2] ?? ""),
+						title: capture[3] ? unescapeString(capture[3]) : void 0
+					};
+				},
+				_render(node, _, state = {}) {
+					return createElement("img", {
+						key: state.key,
+						alt: node.alt ?? void 0,
+						title: node.title ?? void 0,
+						src: sanitize(node.target, "img", "src") ?? void 0
+					});
+				}
+			},
+			[RuleType.link]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [91],
+				_qualify: (source) => source.charCodeAt(0) === 91 && source.indexOf("](") !== -1,
+				_match: inlineRegex(LINK_R),
+				_order: Priority.LOW,
+				_parse(capture, parse, state) {
+					return {
+						children: parseSimpleInline(parse, capture[1] ?? "", state),
+						target: unescapeString(capture[2] ?? ""),
+						title: capture[3] ? unescapeString(capture[3]) : void 0
+					};
+				},
+				_render(node, output, state = {}) {
+					const sanitizedHref = sanitize(node.target, "a", "href");
+					return createElement("a", {
+						key: state.key,
+						href: sanitizedHref ?? void 0,
+						title: node.title ?? void 0
+					}, output(node.children, state));
+				}
+			},
+			[RuleType.linkAngleBraceStyleDetector]: {
+				_scope: SCOPE_INLINE,
+				_qualify: ["<"],
+				_match: inlineRegex(LINK_AUTOLINK_R),
+				_order: Priority.MAX,
+				_parse(capture) {
+					let target = capture[1] ?? "";
+					let isEmail = false;
+					if (target.indexOf("@") !== -1 && target.indexOf("//") === -1) {
+						isEmail = true;
+						target = target.replace("mailto:", "");
+					}
+					return {
+						children: [{
+							text: target,
+							type: RuleType.text
+						}],
+						target: isEmail ? `mailto:${target}` : target,
+						type: RuleType.link
+					};
+				}
+			},
+			[RuleType.linkBareUrlDetector]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [104],
+				_qualify: (source, state) => Boolean(state.inline && !state.inAnchor && !options.disableAutoLink && (startsWith(source, "http://") || startsWith(source, "https://"))),
+				_match: inlineRegex(LINK_AUTOLINK_BARE_URL_R),
+				_order: Priority.MAX,
+				_parse(capture) {
+					const url = capture[1] ?? "";
+					return {
+						children: [{
+							text: url,
+							type: RuleType.text
+						}],
+						target: url,
+						type: RuleType.link
+					};
+				}
+			},
+			[RuleType.newlineCoalescer]: {
+				_scope: SCOPE_BOTH,
+				_qualify: ["\n"],
+				_match: blockRegex(CONSECUTIVE_NEWLINE_R),
+				_order: Priority.LOW,
+				_parse: captureNothing,
+				_render() {
+					return "\n";
+				}
+			},
+			[RuleType.orderedList]: generateListRule(1),
+			[RuleType.unorderedList]: generateListRule(2),
+			[RuleType.ref]: {
+				_scope: SCOPE_BOTH,
+				_qualify: ["["],
+				_match: anyScopeRegex(REFERENCE_IMAGE_OR_LINK),
+				_order: Priority.MAX,
+				_parse(capture) {
+					const identifier = capture[1];
+					if (identifier !== void 0) scope.current.references[identifier] = {
+						target: capture[2] ?? "",
+						title: capture[4]
+					};
+					return {};
+				},
+				_render: renderNothing
+			},
+			[RuleType.refImage]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [33],
+				_qualify: (source) => source.startsWith("![") && source.indexOf("](") === -1,
+				_match: simpleInlineRegex(REFERENCE_IMAGE_R),
+				_order: Priority.MAX,
+				_parse(capture) {
+					return {
+						alt: capture[1] ? unescapeString(capture[1]) : void 0,
+						ref: capture[2] ?? ""
+					};
+				},
+				_render(node, _, state = {}) {
+					const ref = scope.current.references[node.ref];
+					if (!ref) return null;
+					return createElement("img", {
+						key: state.key,
+						alt: node.alt,
+						src: sanitize(ref.target, "img", "src") ?? void 0,
+						title: ref.title
+					});
+				}
+			},
+			[RuleType.refLink]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [91],
+				_qualify: (source) => source.indexOf("](") === -1,
+				_match: inlineRegex(REFERENCE_LINK_R),
+				_order: Priority.MAX,
+				_parse(capture, parse, state) {
+					return {
+						children: parseSimpleInline(parse, capture[1] ?? "", state),
+						fallbackChildren: capture[0] ?? "",
+						ref: capture[2] ?? ""
+					};
+				},
+				_render(node, output, state = {}) {
+					const ref = scope.current.references[node.ref];
+					if (!ref) return createElement("span", { key: state.key }, node.fallbackChildren);
+					return createElement("a", {
+						key: state.key,
+						href: sanitize(ref.target, "a", "href") ?? void 0,
+						title: ref.title
+					}, output(node.children, state));
+				}
+			},
+			[RuleType.table]: {
+				_scope: SCOPE_BLOCK,
+				_qualify: ["|"],
+				_match: blockRegex(NP_TABLE_R),
+				_order: Priority.HIGH,
+				_parse(capture, parse, state) {
+					state.inline = true;
+					const align = capture[2] ? parseTableAlign(capture[2]) : [];
+					const cells = capture[3] ? parseTableCells(capture[3], parse, state) : [];
+					const header = parseTableRow(capture[1] ?? "", parse, state, !!cells.length);
+					state.inline = false;
+					return cells.length ? {
+						align,
+						cells,
+						header,
+						type: RuleType.table
+					} : {
+						children: header.flat(),
+						type: RuleType.paragraph
+					};
+				},
+				_render(node, output, state = {}) {
+					const table = node;
+					const getStyle = (i) => table.align[i] && table.align[i] !== "left" ? { textAlign: table.align[i] } : {};
+					return createElement("table", { key: state.key }, createElement("thead", { key: "thead" }, createElement("tr", null, ...table.header.map((c, i) => createElement("th", {
+						key: i,
+						style: getStyle(i)
+					}, output(c, state))))), createElement("tbody", { key: "tbody" }, ...table.cells.map((row, i) => createElement("tr", { key: i }, ...row.map((c, j) => createElement("td", {
+						key: j,
+						style: getStyle(j)
+					}, output(c, state)))))));
+				}
+			},
+			[RuleType.tableSeparator]: {
+				_scope: SCOPE_INLINE,
+				_qualify: ["|"],
+				_match: (source, state) => state.inTable ? /^\|/.exec(source) : null,
+				_order: Priority.HIGH,
+				_parse() {
+					return { type: RuleType.tableSeparator };
+				},
+				_render() {
+					return " | ";
+				}
+			},
+			[RuleType.text]: {
+				_scope: SCOPE_INLINE,
+				_match: allowInline((source, _state) => {
+					const len = source.length;
+					if (source.charCodeAt(0) === 10) {
+						let j = 1;
+						while (j < len && source.charCodeAt(j) === 32) j++;
+						if (j < len && (source.charCodeAt(j) === 42 || source.charCodeAt(j) === 43 || source.charCodeAt(j) === 45 || source.charCodeAt(j) >= 48 && source.charCodeAt(j) <= 57)) return [source.slice(0, j)];
+						return ["\n"];
+					}
+					if (source.charCodeAt(0) === 58) {
+						const shortMatch = SHORTCODE_R.exec(source);
+						if (shortMatch) return shortMatch;
+					}
+					TEXT_RUN_R.lastIndex = 1;
+					TEXT_RUN_R.test(source);
+					TEXT_CAPTURE[0] = source.slice(0, trimHardBreak(source, TEXT_RUN_R.lastIndex));
+					return TEXT_CAPTURE;
+				}),
+				_order: Priority.MIN,
+				_parse(capture) {
+					const text = capture[0] ?? "";
+					return {
+						type: RuleType.text,
+						text: text.charCodeAt(0) !== 38 ? text : text.replace(HTML_CHAR_CODE_R, (f, i) => {
+							if (i.startsWith("#x")) return String.fromCharCode(parseInt(i.slice(2), 16));
+							if (i.startsWith("#")) return String.fromCharCode(parseInt(i.slice(1), 10));
+							return namedCodesToUnicode[i] || f;
+						})
+					};
+				},
+				_render(node) {
+					return node.text;
+				}
+			},
+			[RuleType.textBolded]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [42, 95],
+				_qualify: (source) => {
+					const c = source.charCodeAt(0);
+					if (c === 42) {
+						const next = source.charCodeAt(2);
+						if (next === 32 || next === 10 || next === 9) return false;
+						return source.charCodeAt(1) === 42 && source.indexOf("**", 2) !== -1;
+					}
+					if (c === 95) {
+						const next = source.charCodeAt(2);
+						if (next === 32 || next === 10 || next === 9) return false;
+						return source.charCodeAt(1) === 95 && source.indexOf("__", 2) !== -1;
+					}
+					return false;
+				},
+				_match: simpleInlineRegex(TEXT_BOLD_R),
+				_order: Priority.MED,
+				_parse(capture, parse, state) {
+					return { children: parse(capture[2] ?? "", state) };
+				},
+				_render(node, output, state = {}) {
+					return createElement("strong", { key: state.key }, output(node.children, state));
+				}
+			},
+			[RuleType.textEmphasized]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [42, 95],
+				_qualify: (source) => {
+					const c = source.charCodeAt(0);
+					const next = source.charCodeAt(1);
+					if (next === 32 || next === 10 || next === 9) return false;
+					return c === 42 && source.indexOf("*", 1) !== -1 || c === 95 && source.indexOf("_", 1) !== -1;
+				},
+				_match: simpleInlineRegex(TEXT_EMPHASIZED_R),
+				_order: Priority.LOW,
+				_parse(capture, parse, state) {
+					return { children: parse(capture[2] ?? "", state) };
+				},
+				_render(node, output, state = {}) {
+					return createElement("em", { key: state.key }, output(node.children, state));
+				}
+			},
+			[RuleType.textEscaped]: {
+				_scope: SCOPE_INLINE,
+				_qualify: ["\\"],
+				_match: simpleInlineRegex(TEXT_ESCAPED_R),
+				_order: Priority.HIGH,
+				_parse(capture) {
+					return {
+						text: capture[1] ?? "",
+						type: RuleType.text
+					};
+				}
+			},
+			[RuleType.textMarked]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [61],
+				_qualify: (source) => {
+					const next = source.charCodeAt(2);
+					if (next === 32 || next === 10 || next === 9) return false;
+					return source.charCodeAt(1) === 61 && source.indexOf("==", 2) !== -1;
+				},
+				_match: simpleInlineRegex(TEXT_MARKED_R),
+				_order: Priority.LOW,
+				_parse(capture, parse, state) {
+					return { children: parseCaptureInline(capture, parse, state).children };
+				},
+				_render(node, output, state = {}) {
+					return createElement("mark", { key: state.key }, output(node.children, state));
+				}
+			},
+			[RuleType.textStrikethroughed]: {
+				_scope: SCOPE_INLINE,
+				_firstChars: [126],
+				_qualify: (source) => {
+					const next = source.charCodeAt(2);
+					if (next === 32 || next === 10 || next === 9) return false;
+					return source.charCodeAt(1) === 126 && source.indexOf("~~", 2) !== -1;
+				},
+				_match: simpleInlineRegex(TEXT_STRIKETHROUGHED_R),
+				_order: Priority.LOW,
+				_parse(capture, parse, state) {
+					return { children: parseCaptureInline(capture, parse, state).children };
+				},
+				_render(node, output, state = {}) {
+					return createElement("del", { key: state.key }, output(node.children, state));
+				}
+			}
+		};
+	};
+	STRIP_INDENT_REGEXES = [
+		null,
+		/^ {1,1}/gm,
+		/^ {1,2}/gm,
+		/^ {1,3}/gm,
+		/^ {1,4}/gm,
+		/^ {1,5}/gm,
+		/^ {1,6}/gm,
+		/^ {1,7}/gm,
+		/^ {1,8}/gm
+	];
+	TEXT_CAPTURE = [""];
+	TEXT_RUN_R = /(?:[^\n&h!*:<=[\\_`~]+|h(?!ttp))*/y;
+	trimHardBreak = (source, end) => end >= 3 && source.charCodeAt(end) === 10 && source.charCodeAt(end - 1) === 32 && source.charCodeAt(end - 2) === 32 ? end - 2 : end;
+	noopCreateElement = (type, props, ...children) => ({
+		children,
+		props,
+		type
+	});
+	createDocumentRules = (createElement, ctx, options, scope) => {
+		const attrStringToMap = (tag, str) => {
+			if (!str?.trim()) return null;
+			const attributes = str.match(ATTR_EXTRACTOR_R);
+			if (!attributes) return null;
+			return attributes.reduce((map, raw) => {
+				const delimiterIdx = raw.indexOf("=");
+				if (delimiterIdx !== -1) {
+					const key = normalizeAttributeKey(raw.slice(0, delimiterIdx)).trim();
+					const value = unquote(raw.slice(delimiterIdx + 1).trim());
+					const mappedKey = ATTRIBUTE_TO_NODE_PROP_MAP[key] ?? key;
+					if (mappedKey === "ref") return map;
+					map[mappedKey] = attributeValueToNodePropValue(tag, key, value, ctx.sanitizer ?? sanitizer);
+					if (typeof map[mappedKey] === "string" && startsWithElement(map[mappedKey])) map[mappedKey] = parseMarkdown(map[mappedKey].trim(), ctx, options).ast;
+				} else if (raw !== "style") map[ATTRIBUTE_TO_NODE_PROP_MAP[raw] ?? raw] = true;
+				return map;
+			}, {});
+		};
+		const nonParagraphBlockSyntaxes = [
+			BLOCKQUOTE_R,
+			CODE_BLOCK_FENCED_R,
+			CODE_BLOCK_R,
+			options.enforceAtxHeadings ? HEADING_ATX_COMPLIANT_R : HEADING_R,
+			NP_TABLE_R,
+			ORDERED_LIST_R,
+			UNORDERED_LIST_R,
+			startsWithCustomComponent
+		];
+		const blockSyntaxes = options.disableParsingRawHTML ? nonParagraphBlockSyntaxes : [
+			...nonParagraphBlockSyntaxes,
+			PARAGRAPH_R,
+			startsWithHtmlBlockElement,
+			HTML_COMMENT_R,
+			startsWithSelfClosingElement,
+			startsWithCustomComponent
+		];
+		const containsBlockSyntax = (input) => {
+			const cleaned = input.replace(TRIM_STARTING_NEWLINES, "");
+			const slice = cleaned.length > 2048 ? cleaned.slice(0, 2048) : cleaned;
+			if (slice.indexOf("\n\n") !== -1) return true;
+			return some(blockSyntaxes, slice);
+		};
+		const baseRules = createRules(createElement, ctx, options, scope, attrStringToMap, containsBlockSyntax, nonParagraphBlockSyntaxes);
+		return options.disableParsingRawHTML ? Object.keys(baseRules).reduce((acc, key) => {
+			if (key !== RuleType.htmlBlock && key !== RuleType.htmlSelfClosing) acc[key] = baseRules[key];
+			return acc;
+		}, {}) : baseRules;
+	};
+	parseWithRules = (markdown, options, parser, footnotes, refs) => {
+		const result = !options.preserveFrontmatter && markdown.charCodeAt(0) === 45 ? markdown.replace(FRONT_MATTER_R, "") : markdown;
+		const trimmedStart = result.charCodeAt(0) === 10 ? result.replace(TRIM_STARTING_NEWLINES, "") : result;
+		const inline = options.forceInline || !options.forceBlock && SHOULD_RENDER_AS_BLOCK_R.test(trimmedStart) === false;
+		const ast = parser(inline ? result : `${trimEnd(trimmedStart)}\n\n`, { inline });
+		if (footnotes.length > 0) for (const def of footnotes) def.parsedAst = parser(def.footnote, { inline: true });
+		return {
+			ast,
+			footnotes,
+			references: refs,
+			inline
+		};
+	};
+	renderWithRules = (parsed, ctx, options, emitter, createElement) => {
+		const components = ctx.components ?? {};
+		const slug = createSlugger(ctx);
+		const footnotes = parsed.footnotes || [];
+		const inline = parsed.inline;
+		const arr = emitter(parsed.ast, { inline });
+		while (typeof arr[arr.length - 1] === "string" && !arr[arr.length - 1].trim()) arr.pop();
+		const getOuterNode = () => {
+			if (options.wrapper === null) return arr;
+			const wrapper = options.wrapper ?? (inline ? "span" : "div");
+			if (arr.length > 1 || options.forceWrapper) return createElement(wrapper, { key: "outer" }, arr);
+			if (arr.length === 1) {
+				const node = arr[0];
+				if (Array.isArray(node)) return createElement(wrapper, { key: "outer" }, node);
+				if (typeof node === "string") {
+					const spanProps = { key: "outer" };
+					if (!inline && components) {
+						const pOverrideProps = get(components, "p.props", {}) ?? {};
+						const mergedClassName = cx(spanProps.className, pOverrideProps.className);
+						const finalSpanProps = {
+							...spanProps,
+							...pOverrideProps
+						};
+						if (mergedClassName) finalSpanProps.className = mergedClassName;
+						return createElement("span", finalSpanProps, node);
+					}
+					return createElement("span", spanProps, node);
+				}
+				return node;
+			}
+			return createElement(wrapper, { key: "outer" }, null);
+		};
+		const node = getOuterNode();
+		return footnotes.length ? createElement("div", null, node, createElement("footer", { key: "footer" }, ...footnotes.map((def) => createElement("div", {
+			id: slug(def.identifier),
+			key: def.identifier
+		}, def.identifier, emitter(def.parsedAst || def.footnote, { inline: true }))))) : node;
+	};
+	parseMarkdown = (markdown = "", ctx, options = {}) => {
+		const { parse, scope } = getRuleSet(ctx, options, true);
+		const documentScope = createDocumentScope();
+		return withDocumentScope(scope, documentScope, () => parseWithRules(markdown, options, parse, documentScope.footnotes, documentScope.references));
+	};
+	renderMarkdownAst = (parsed, ctx, options = {}) => {
+		const { emit, createElement, scope } = getRuleSet(ctx, options, false);
+		const documentScope = {
+			footnotes: parsed.footnotes ?? [],
+			references: parsed.references ?? {}
+		};
+		return withDocumentScope(scope, documentScope, () => renderWithRules(parsed, ctx, options, emit, createElement));
+	};
+	compile = (markdown = "", ctx, options = {}) => {
+		if (typeof markdown !== "string") {
+			console.error("intlayer: the first argument must be a string. Received", typeof markdown);
+			throw new Error("intlayer: the first argument must be a string");
+		}
+		const { parse, emit, createElement, scope } = getRuleSet(ctx, options, false);
+		const documentScope = createDocumentScope();
+		return withDocumentScope(scope, documentScope, () => {
+			const parsed = parseWithRules(markdown, options, parse, documentScope.footnotes, documentScope.references);
+			return renderWithRules(parsed, ctx, options, emit, createElement);
+		});
+	};
+}));
+var init_markdown = __esmMin((() => {
+	init_getMarkdownMetadata();
+	init_compiler();
+}));
+export { getMarkdownMetadata as a, renderMarkdownAst as i, compile as n, init_getMarkdownMetadata as o, init_compiler as r, init_markdown as t };
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __esmMin = (fn, res, err) => () => {
+	if (err) throw err[0];
+	try {
+		return fn && (res = fn(fn = 0)), res;
+	} catch (e) {
+		throw err = [e], e;
+	}
+};
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
+var __exportAll = (all, no_symbols) => {
+	let target = {};
+	for (var name in all) __defProp(target, name, {
+		get: all[name],
+		enumerable: true
+	});
+	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
+	return target;
+};
+var __copyProps = (to, from, except, desc) => {
+	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
+		key = keys[i];
+		if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
+			get: ((k) => from[k]).bind(null, key),
+			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+		});
+	}
+	return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp(target, "default", {
+	value: mod,
+	enumerable: true
+}) : target, mod));
+var __toCommonJS = (mod) => __hasOwnProp.call(mod, "module.exports") ? mod["module.exports"] : __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
+	if (typeof require !== "undefined") return require.apply(this, arguments);
+	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
+});
+export { __toCommonJS as a, __require as i, __esmMin as n, __toESM as o, __exportAll as r, __commonJSMin as t };
+import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
 var VOID_HTML_ELEMENTS, TAG_REGEX, validateHTML;
 var init_validateHTML = __esmMin((() => {
-	VOID_HTML_ELEMENTS = new Set([
+	VOID_HTML_ELEMENTS = /* @__PURE__ */ new Set([
 		"area",
 		"base",
 		"br",
@@ -4962,19 +5458,20 @@ var init_validateHTML = __esmMin((() => {
 			const attrs = match[3];
 			const isSelfClosing = !!match[4];
 			if (attrs.trimStart().startsWith("://") || attrs.trimStart().startsWith(":")) continue;
-			if (isClosing) if (stack.length === 0) issues.push({
-				type: "error",
-				message: `Closing tag </${tagName}> has no matching opening tag`
-			});
-			else {
-				const last = stack[stack.length - 1];
-				if (last.tag.toLowerCase() !== tagName.toLowerCase()) issues.push({
+			if (isClosing) {
+				if (stack.length === 0) issues.push({
 					type: "error",
-					message: `Mismatched closing tag: expected </${last.tag}> but found </${tagName}>`
+					message: `Closing tag </${tagName}> has no matching opening tag`
 				});
-				stack.pop();
-			}
-			else {
+				else {
+					const last = stack[stack.length - 1];
+					if (last.tag.toLowerCase() !== tagName.toLowerCase()) issues.push({
+						type: "error",
+						message: `Mismatched closing tag: expected </${last.tag}> but found </${tagName}>`
+					});
+					stack.pop();
+				}
+			} else {
 				const isVoidElement = VOID_HTML_ELEMENTS.has(tagName.toLowerCase());
 				if (!isSelfClosing && !isVoidElement) stack.push({ tag: tagName });
 			}
@@ -4989,69 +5486,4 @@ var init_validateHTML = __esmMin((() => {
 		};
 	};
 }));
-var html;
-var init_html = __esmMin((() => {
-	init_getHTMLCustomComponents();
-	init_validateHTML();
-	init_nodeType();
-	html = (content, components) => {
-		const getComponents = () => {
-			if (components) return components;
-			if (typeof content === "string") {
-				const { issues } = validateHTML(content);
-				for (const issue of issues) if (issue.type === "error") console.error(`[intlayer/html] ${issue.message}`);
-				else console.warn(`[intlayer/html] ${issue.message}`);
-				return getHTMLCustomComponents(content);
-			}
-			let stringContent;
-			if (typeof content === "function") stringContent = content();
-			else if (typeof content.then === "function") stringContent = async () => getHTMLCustomComponents(await content);
-			if (typeof stringContent === "string") return getHTMLCustomComponents(stringContent);
-			try {
-				return getHTMLCustomComponents(JSON.stringify(content));
-			} catch (_e) {
-				return [];
-			}
-		};
-		return formatNodeType(HTML, content, { tags: getComponents() });
-	};
-}));
-var getInsertionValues;
-var init_getInsertionValues = __esmMin((() => {
-	getInsertionValues = (content) => {
-		const matches = [...content.matchAll(/{{\s*(.*?)\s*}}/g)];
-		if (matches.length === 0) return [];
-		return [...new Set(matches.map((match) => match[1].trim()))].filter(Boolean);
-	};
-}));
-var insertion;
-var init_insertion = __esmMin((() => {
-	init_getInsertionValues();
-	init_nodeType();
-	insertion = (content) => {
-		const getInsertions = () => {
-			if (typeof content === "string") return getInsertionValues(content);
-			let stringContent;
-			if (typeof content === "function") stringContent = content();
-			else if (typeof content.then === "function") stringContent = async () => getInsertionValues(await content);
-			if (typeof stringContent === "string") return getInsertionValues(stringContent);
-			try {
-				return getInsertionValues(JSON.stringify(content));
-			} catch (_e) {
-				return [];
-			}
-		};
-		return formatNodeType(INSERTION, content, { fields: getInsertions() });
-	};
-}));
-var plural;
-var init_plural = __esmMin((() => {
-	init_nodeType();
-	plural = (content) => formatNodeType(PLURAL, content);
-}));
-var select;
-var init_select = __esmMin((() => {
-	init_nodeType();
-	select = (content, variable) => formatNodeType(SELECT, content, { variable });
-}));
-export { init_insertion as a, init_html as c, gender as d, init_gender as f, plural as i, VOID_HTML_ELEMENTS as l, init_enumeration as m, select as n, insertion as o, enumeration as p, init_plural as r, html as s, init_select as t, init_validateHTML as u };
+export { init_validateHTML as n, validateHTML as r, VOID_HTML_ELEMENTS as t };

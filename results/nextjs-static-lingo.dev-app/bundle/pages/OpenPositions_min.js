@@ -1,188 +1,382 @@
-import { t as e } from "./logger-D1nsn_SU.js";
+import { t as e } from "./logger-LUfhf5qs.js";
 import { createContext as t, useCallback as n, useEffect as r, useRef as i, useState as a } from "react";
-import { Fragment as o, jsx as s, jsxs as c } from "react/jsx-runtime";
-function l() {
-	return c(o, { children: [s("h2", {
+import { Fragment as o, jsxDEV as s } from "react/jsx-dev-runtime";
+import { jsx as c } from "react/jsx-runtime";
+var l = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/careers/OpenPositions.tsx";
+function u() {
+	return s(o, { children: [s("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: "Open Positions"
-	}), c("div", {
+	}, void 0, !1, {
+		fileName: l,
+		lineNumber: 4,
+		columnNumber: 7
+	}, this), s("div", {
 		className: "space-y-4",
 		children: [
-			c("div", {
+			s("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [c("div", { children: [
+				children: [s("div", { children: [
 					s("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "Senior Frontend Engineer"
-					}),
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 10,
+						columnNumber: 13
+					}, this),
 					s("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
-					}),
-					c("div", {
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 13,
+						columnNumber: 13
+					}, this),
+					s("div", {
 						className: "mt-2 flex gap-2",
 						children: [
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Engineering"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 18,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Remote"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 21,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Full-time"
-							})
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 24,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), s("button", {
+					}, void 0, !0, {
+						fileName: l,
+						lineNumber: 17,
+						columnNumber: 13
+					}, this)
+				] }, void 0, !0, {
+					fileName: l,
+					lineNumber: 9,
+					columnNumber: 11
+				}, this), s("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: "Apply Now"
-				})]
-			}),
-			c("div", {
+				}, void 0, !1, {
+					fileName: l,
+					lineNumber: 29,
+					columnNumber: 11
+				}, this)]
+			}, void 0, !0, {
+				fileName: l,
+				lineNumber: 8,
+				columnNumber: 9
+			}, this),
+			s("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [c("div", { children: [
+				children: [s("div", { children: [
 					s("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "Backend Engineer"
-					}),
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 39,
+						columnNumber: 13
+					}, this),
 					s("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
-					}),
-					c("div", {
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 42,
+						columnNumber: 13
+					}, this),
+					s("div", {
 						className: "mt-2 flex gap-2",
 						children: [
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Engineering"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 47,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Remote"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 50,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Full-time"
-							})
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 53,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), s("button", {
+					}, void 0, !0, {
+						fileName: l,
+						lineNumber: 46,
+						columnNumber: 13
+					}, this)
+				] }, void 0, !0, {
+					fileName: l,
+					lineNumber: 38,
+					columnNumber: 11
+				}, this), s("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: "Apply Now"
-				})]
-			}),
-			c("div", {
+				}, void 0, !1, {
+					fileName: l,
+					lineNumber: 58,
+					columnNumber: 11
+				}, this)]
+			}, void 0, !0, {
+				fileName: l,
+				lineNumber: 37,
+				columnNumber: 9
+			}, this),
+			s("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [c("div", { children: [
+				children: [s("div", { children: [
 					s("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "Technical Writer"
-					}),
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 68,
+						columnNumber: 13
+					}, this),
 					s("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
-					}),
-					c("div", {
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 71,
+						columnNumber: 13
+					}, this),
+					s("div", {
 						className: "mt-2 flex gap-2",
 						children: [
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Documentation"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 76,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Remote"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 79,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Part-time"
-							})
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 82,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), s("button", {
+					}, void 0, !0, {
+						fileName: l,
+						lineNumber: 75,
+						columnNumber: 13
+					}, this)
+				] }, void 0, !0, {
+					fileName: l,
+					lineNumber: 67,
+					columnNumber: 11
+				}, this), s("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: "Apply Now"
-				})]
-			}),
-			c("div", {
+				}, void 0, !1, {
+					fileName: l,
+					lineNumber: 87,
+					columnNumber: 11
+				}, this)]
+			}, void 0, !0, {
+				fileName: l,
+				lineNumber: 66,
+				columnNumber: 9
+			}, this),
+			s("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [c("div", { children: [
+				children: [s("div", { children: [
 					s("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "DevRel Engineer"
-					}),
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 97,
+						columnNumber: 13
+					}, this),
 					s("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
-					}),
-					c("div", {
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 100,
+						columnNumber: 13
+					}, this),
+					s("div", {
 						className: "mt-2 flex gap-2",
 						children: [
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Community"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 105,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "San Francisco / Remote"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 108,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Full-time"
-							})
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 111,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), s("button", {
+					}, void 0, !0, {
+						fileName: l,
+						lineNumber: 104,
+						columnNumber: 13
+					}, this)
+				] }, void 0, !0, {
+					fileName: l,
+					lineNumber: 96,
+					columnNumber: 11
+				}, this), s("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: "Apply Now"
-				})]
-			}),
-			c("div", {
+				}, void 0, !1, {
+					fileName: l,
+					lineNumber: 116,
+					columnNumber: 11
+				}, this)]
+			}, void 0, !0, {
+				fileName: l,
+				lineNumber: 95,
+				columnNumber: 9
+			}, this),
+			s("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [c("div", { children: [
+				children: [s("div", { children: [
 					s("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "QA Engineer"
-					}),
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 126,
+						columnNumber: 13
+					}, this),
 					s("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
-					}),
-					c("div", {
+					}, void 0, !1, {
+						fileName: l,
+						lineNumber: 129,
+						columnNumber: 13
+					}, this),
+					s("div", {
 						className: "mt-2 flex gap-2",
 						children: [
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Engineering"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 134,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Remote"
-							}),
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 137,
+								columnNumber: 15
+							}, this),
 							s("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: "Full-time"
-							})
+							}, void 0, !1, {
+								fileName: l,
+								lineNumber: 140,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), s("button", {
+					}, void 0, !0, {
+						fileName: l,
+						lineNumber: 133,
+						columnNumber: 13
+					}, this)
+				] }, void 0, !0, {
+					fileName: l,
+					lineNumber: 125,
+					columnNumber: 11
+				}, this), s("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: "Apply Now"
-				})]
-			})
+				}, void 0, !1, {
+					fileName: l,
+					lineNumber: 145,
+					columnNumber: 11
+				}, this)]
+			}, void 0, !0, {
+				fileName: l,
+				lineNumber: 124,
+				columnNumber: 9
+			}, this)
 		]
-	})] });
+	}, void 0, !0, {
+		fileName: l,
+		lineNumber: 7,
+		columnNumber: 7
+	}, this)] }, void 0, !0, {
+		fileName: l,
+		lineNumber: 3,
+		columnNumber: 5
+	}, this);
 }
-var u = t(null);
-async function d(t, n, r) {
+var d = t(null);
+async function f(t, n, r) {
 	if (!r || !n || n.length === 0) return {};
 	let i = `${r}/translations/${t}`, a = new AbortController(), o = setTimeout(() => a.abort(), 3e4);
 	try {
@@ -201,13 +395,13 @@ async function d(t, n, r) {
 		clearTimeout(o);
 	}
 }
-var f = "__SERVER_URL__", p = "__SOURCE_LOCALE__";
-function m() {
+var p = "__SERVER_URL__", m = "__SOURCE_LOCALE__";
+function h() {
 	return "en";
 }
-var h = () => {}, g = process.env.NODE_ENV === "development", _ = 200, v = g ? b : y;
-function y({ initialLocale: t, initialTranslations: i = {}, router: o, children: c }) {
-	let [l, d] = a(() => t || (typeof window < "u" ? m() : p)), [f, g] = a(i), [_, v] = a(!1);
+var g = () => {}, _ = process.env.NODE_ENV === "development", v = 200, y = _ ? x : b;
+function b({ initialLocale: t, initialTranslations: i = {}, router: o, children: s }) {
+	let [l, u] = a(() => t || (typeof window < "u" ? h() : m)), [f, p] = a(i), [_, v] = a(!1);
 	e.debug(`LingoProvider initialized with locale: ${l}`, i), r(() => {
 		typeof document < "u" && (document.documentElement.lang = l);
 	}, [l]);
@@ -218,9 +412,9 @@ function y({ initialLocale: t, initialTranslations: i = {}, router: o, children:
 				let n = await fetch(`/translations/${t}.json`);
 				if (!n.ok) throw Error(`Failed to load translations for ${t}: ${n.statusText}`);
 				let r = await n.json();
-				g(r.entries || r), e.debug(`Loaded translations for ${t}:`, Object.keys(r.entries || r).length);
+				p(r.entries || r), e.debug(`Loaded translations for ${t}:`, Object.keys(r.entries || r).length);
 			} catch (n) {
-				e.error(`Failed to load translations for ${t}:`, n), g({});
+				e.error(`Failed to load translations for ${t}:`, n), p({});
 			} finally {
 				v(!1);
 			}
@@ -229,25 +423,25 @@ function y({ initialLocale: t, initialTranslations: i = {}, router: o, children:
 	r(() => {
 		Object.keys(i).length === 0 && y(l);
 	}, []), r(() => {
-		o && g(i);
+		o && p(i);
 	}, [i, o]);
 	let b = n(async (e) => {
-		d(e), o ? o.refresh() : await y(e);
+		u(e), o ? o.refresh() : await y(e);
 	}, [o, y]);
-	return s(u.Provider, {
+	return c(d.Provider, {
 		value: {
 			locale: l,
 			setLocale: b,
 			translations: f,
-			registerHashes: h,
+			registerHashes: g,
 			isLoading: _,
-			sourceLocale: p
+			sourceLocale: m
 		},
-		children: c
+		children: s
 	});
 }
-function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget: l, children: h }) {
-	let [g, v] = a(() => t || m()), [y, b] = a(o), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(g);
+function x({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget: l, children: u }) {
+	let [g, _] = a(() => t || h()), [y, b] = a(o), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(g);
 	r(() => {
 		k.current = y;
 	}, [y]), r(() => {
@@ -269,12 +463,12 @@ function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget
 		let t = [];
 		e.debug("allSeenHashes: ", [...C.values()], [...E.current.values()]);
 		for (let e of C) !y[e] && !E.current.has(e) && !D.current.has(e) && (t.push(e), E.current.add(e));
-		e.debug("Missing hashes: ", t.join(",")), !(t.length === 0 && A.current == g) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${g}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
+		e.debug("Missing hashes: ", t.join(",")), (t.length !== 0 || A.current != g) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${g}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
 			let t = Array.from(E.current);
 			if (E.current.clear(), e.debug(`Fetching translations for ${t.length} hashes`), t.length !== 0) {
 				S(!0);
 				try {
-					let n = await d(A.current, t, f);
+					let n = await f(A.current, t, p);
 					e.debug(`Fetched translations for ${t.length} hashes:`, n);
 					let r = new Set(Object.keys(n)), i = t.filter((e) => !r.has(e));
 					if (i.length > 0) {
@@ -293,7 +487,7 @@ function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget
 					S(!1);
 				}
 			}
-		}, _));
+		}, v));
 	}, [
 		C,
 		g,
@@ -302,11 +496,11 @@ function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget
 		O.current && clearTimeout(O.current);
 	}, []);
 	let M = n(async (t) => {
-		v(t), c && c.refresh(), S(!0);
+		_(t), s && s.refresh(), S(!0);
 		let n = performance.now();
 		try {
-			e.info(`Fetching translations for locale: ${t}. Server url: ${f}`);
-			let r = await d(t, [], f), i = performance.now();
+			e.info(`Fetching translations for locale: ${t}. Server url: ${p}`);
+			let r = await f(t, [], p), i = performance.now();
 			e.info(`Translation fetch complete for ${t} in ${(i - n).toFixed(2)}ms`);
 			let a = r.entries || {};
 			e.debug(`Translations loaded for ${t}:`, a), b(a);
@@ -315,51 +509,65 @@ function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget
 		} finally {
 			S(!1);
 		}
-	}, [c]);
+	}, [s]);
 	return r(() => {
-		l?.enabled !== !1 && import("./lingo-dev-widget-Cc3Gggpb.js").catch((t) => {
+		l?.enabled !== !1 && import("./lingo-dev-widget-C3EvpmD3.js").catch((t) => {
 			e.error("Failed to load dev widget:", t, t.message);
 		});
 	}, [l?.enabled]), r(() => {
 		typeof window < "u" && l?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
 			isLoading: x,
 			locale: g,
-			sourceLocale: p,
+			sourceLocale: m,
 			pendingCount: E.current.size,
 			position: l?.position || "bottom-left"
-		}, window.__LINGO_DEV_WS_URL__ = f, window.__LINGO_DEV_UPDATE__?.());
+		}, window.__LINGO_DEV_WS_URL__ = p, window.__LINGO_DEV_UPDATE__?.());
 	}, [
 		x,
 		g,
-		p,
+		m,
 		l
-	]), s(u.Provider, {
+	]), c(d.Provider, {
 		value: {
 			locale: g,
 			setLocale: M,
 			translations: y,
 			registerHashes: j,
 			isLoading: x,
-			sourceLocale: p,
+			sourceLocale: m,
 			_devStats: {
 				pendingCount: E.current.size,
 				totalRegisteredCount: T.current.size
 			}
 		},
-		children: h
+		children: u
 	});
 }
-function x({ children: e }) {
-	return s(v, {
+var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
+function C({ children: e }) {
+	return s(y, {
 		initialLocale: "en",
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: S,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
-function S() {
-	return s(x, { children: s(l, {}) });
+var w = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/careers/OpenPositions.wrapper.tsx";
+function T() {
+	return s(C, { children: s(u, {}, void 0, !1, {
+		fileName: w,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: w,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { S as default };
-import { t as e } from "./logger-D1nsn_SU.js";
+export { T as default };
+import { t as e } from "./logger-LUfhf5qs.js";
 var t = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -427,9 +635,7 @@ var t = class extends HTMLElement {
 					this.state && (this.state.serverProgress = void 0, this.render());
 				}, 2e3));
 				break;
-			case "batch:error":
-				this.state && this.state.serverProgress && (this.state.serverProgress.status = "error", this.render());
-				break;
+			case "batch:error": this.state && this.state.serverProgress && (this.state.serverProgress.status = "error", this.render());
 		}
 	}
 	render() {

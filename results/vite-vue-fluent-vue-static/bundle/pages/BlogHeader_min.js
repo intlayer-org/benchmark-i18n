@@ -130,9 +130,10 @@ function ae(e, t) {
 }
 function oe(e, { name: t }) {
 	let n;
-	if (e.params) if (Object.prototype.hasOwnProperty.call(e.params, t)) n = e.params[t];
-	else return new y(`$${t}`);
-	else if (e.args && Object.prototype.hasOwnProperty.call(e.args, t)) n = e.args[t];
+	if (e.params) {
+		if (Object.prototype.hasOwnProperty.call(e.params, t)) n = e.params[t];
+		else return new y(`$${t}`);
+	} else if (e.args && Object.prototype.hasOwnProperty.call(e.args, t)) n = e.args[t];
 	else return e.reportError(/* @__PURE__ */ ReferenceError(`Unknown variable: $${t}`)), new y(`$${t}`);
 	if (n instanceof v) return n;
 	switch (typeof n) {
@@ -537,7 +538,7 @@ var be = class {
 				case void 0: return !1;
 				case "{": return y(e.slice(n, t));
 			}
-			return e[t - 1] === " " ? y(e.slice(n, t)) : !1;
+			return e[t - 1] === " " && y(e.slice(n, t));
 		}
 		function v(e, t) {
 			return e.replace(t, "");
@@ -779,7 +780,7 @@ var At = Ot(Et(((e, t) => {
 			let a = Object.keys(e), o = Array(a.length);
 			for (let s = 0; s < a.length; s++) {
 				let c = a[s], l = e[c];
-				typeof l != "object" || !l ? o[c] = l : l.constructor !== Object && (r = t.get(l.constructor)) ? o[c] = r(l, i) : ArrayBuffer.isView(l) ? o[c] = n(l) : o[c] = i(l);
+				o[c] = typeof l != "object" || !l ? l : l.constructor !== Object && (r = t.get(l.constructor)) ? r(l, i) : ArrayBuffer.isView(l) ? n(l) : i(l);
 			}
 			return o;
 		}
@@ -791,7 +792,7 @@ var At = Ot(Et(((e, t) => {
 			for (let a in e) {
 				if (Object.hasOwnProperty.call(e, a) === !1) continue;
 				let s = e[a];
-				typeof s != "object" || !s ? i[a] = s : s.constructor !== Object && (r = t.get(s.constructor)) ? i[a] = r(s, o) : ArrayBuffer.isView(s) ? i[a] = n(s) : i[a] = o(s);
+				i[a] = typeof s != "object" || !s ? s : s.constructor !== Object && (r = t.get(s.constructor)) ? r(s, o) : ArrayBuffer.isView(s) ? n(s) : o(s);
 			}
 			return i;
 		}
@@ -802,7 +803,7 @@ var At = Ot(Et(((e, t) => {
 			let i = {};
 			for (let a in e) {
 				let o = e[a];
-				typeof o != "object" || !o ? i[a] = o : o.constructor !== Object && (r = t.get(o.constructor)) ? i[a] = r(o, s) : ArrayBuffer.isView(o) ? i[a] = n(o) : i[a] = s(o);
+				i[a] = typeof o != "object" || !o ? o : o.constructor !== Object && (r = t.get(o.constructor)) ? r(o, s) : ArrayBuffer.isView(o) ? n(o) : s(o);
 			}
 			return i;
 		}
@@ -821,7 +822,7 @@ var At = Ot(Et(((e, t) => {
 				else if (ArrayBuffer.isView(d)) c[u] = n(d);
 				else {
 					let e = t.indexOf(d);
-					e === -1 ? c[u] = o(d) : c[u] = r[e];
+					c[u] = e === -1 ? o(d) : r[e];
 				}
 			}
 			return c;
@@ -840,7 +841,7 @@ var At = Ot(Et(((e, t) => {
 				else if (ArrayBuffer.isView(l)) c[o] = n(l);
 				else {
 					let e = t.indexOf(l);
-					e === -1 ? c[o] = s(l) : c[o] = r[e];
+					c[o] = e === -1 ? s(l) : r[e];
 				}
 			}
 			return t.pop(), r.pop(), c;
@@ -858,7 +859,7 @@ var At = Ot(Et(((e, t) => {
 				else if (ArrayBuffer.isView(l)) s[o] = n(l);
 				else {
 					let e = t.indexOf(l);
-					e === -1 ? s[o] = c(l) : s[o] = r[e];
+					s[o] = e === -1 ? c(l) : r[e];
 				}
 			}
 			return t.pop(), r.pop(), s;
@@ -1455,7 +1456,7 @@ function rr() {
 	});
 }
 function ir(e, t) {
-	return er.find((n) => n.options.id === e && (t ? n.descriptor.app === t : !0));
+	return er.find((n) => n.options.id === e && (!t || n.descriptor.app === t));
 }
 var V = function(e) {
 	return e.VISIT_COMPONENT_TREE = "visitComponentTree", e.INSPECT_COMPONENT = "inspectComponent", e.EDIT_COMPONENT_STATE = "editComponentState", e.GET_INSPECTOR_TREE = "getInspectorTree", e.GET_INSPECTOR_STATE = "getInspectorState", e.EDIT_INSPECTOR_STATE = "editInspectorState", e.INSPECT_TIMELINE_EVENT = "inspectTimelineEvent", e.TIMELINE_CLEARED = "timelineCleared", e.SET_PLUGIN_SETTINGS = "setPluginSettings", e;
@@ -1832,7 +1833,7 @@ function Or(e, t) {
 	}), r(i);
 }
 function kr(e, t) {
-	L.__VUE_DEVTOOLS_KIT__REGISTERED_PLUGIN_APPS__.has(e) || G.highPerfModeEnabled && !t?.inspectingComponent || (L.__VUE_DEVTOOLS_KIT__REGISTERED_PLUGIN_APPS__.add(e), mr.forEach((t) => {
+	L.__VUE_DEVTOOLS_KIT__REGISTERED_PLUGIN_APPS__.has(e) || (!G.highPerfModeEnabled || t?.inspectingComponent) && (L.__VUE_DEVTOOLS_KIT__REGISTERED_PLUGIN_APPS__.add(e), mr.forEach((t) => {
 		Or(t, e);
 	}));
 }
@@ -3262,7 +3263,7 @@ var Rr = L.__VUE_DEVTOOLS_KIT_CONTEXT__, zr = Qt(((e, t) => {
 		].join(""), u = function(e, t) {
 			var u = "-", d = "", p = "", te = !0, m = {}, ne, h, g, re, _, v, y, b, x, S, C, ie, w, T, E = "";
 			if (typeof e != "string") return "";
-			if (typeof t == "string" && (u = t), y = o.en, b = a.en, typeof t == "object") for (C in ne = t.maintainCase || !1, m = t.custom && typeof t.custom == "object" ? t.custom : m, g = +t.truncate > 1 && t.truncate || !1, re = t.uric || !1, _ = t.uricNoSlash || !1, v = t.mark || !1, te = !(t.symbols === !1 || t.lang === !1), u = t.separator || u, re && (E += s), _ && (E += c), v && (E += l), y = t.lang && o[t.lang] && te ? o[t.lang] : te ? o.en : {}, b = t.lang && a[t.lang] ? a[t.lang] : t.lang === !1 || t.lang === !0 ? {} : a.en, t.titleCase && typeof t.titleCase.length == "number" && Array.prototype.toString.call(t.titleCase) ? (t.titleCase.forEach(function(e) {
+			if (typeof t == "string" && (u = t), y = o.en, b = a.en, typeof t == "object") for (C in ne = t.maintainCase || !1, m = t.custom && typeof t.custom == "object" ? t.custom : m, g = +t.truncate > 1 && t.truncate || !1, re = t.uric || !1, _ = t.uricNoSlash || !1, v = t.mark || !1, te = t.symbols !== !1 && t.lang !== !1, u = t.separator || u, re && (E += s), _ && (E += c), v && (E += l), y = t.lang && o[t.lang] && te ? o[t.lang] : te ? o.en : {}, b = t.lang && a[t.lang] ? a[t.lang] : t.lang === !1 || t.lang === !0 ? {} : a.en, t.titleCase && typeof t.titleCase.length == "number" && Array.prototype.toString.call(t.titleCase) ? (t.titleCase.forEach(function(e) {
 				m[e + ""] = e + "";
 			}), h = !0) : h = !!t.titleCase, t.custom && typeof t.custom.length == "number" && Array.prototype.toString.call(t.custom) && t.custom.forEach(function(e) {
 				m[e + ""] = e + "";
@@ -3393,7 +3394,7 @@ var Yr = class {
 	findByName(e) {
 		return this.transfomers[e];
 	}
-}, Xr = (e) => Object.prototype.toString.call(e).slice(8, -1), Zr = (e) => e === void 0, Qr = (e) => e === null, $r = (e) => typeof e != "object" || !e || e === Object.prototype ? !1 : Object.getPrototypeOf(e) === null ? !0 : Object.getPrototypeOf(e) === Object.prototype, ei = (e) => $r(e) && Object.keys(e).length === 0, Y = (e) => Array.isArray(e), ti = (e) => typeof e == "string", ni = (e) => typeof e == "number" && !isNaN(e), ri = (e) => typeof e == "boolean", ii = (e) => e instanceof RegExp, ai = (e) => e instanceof Map, oi = (e) => e instanceof Set, si = (e) => Xr(e) === "Symbol", ci = (e) => e instanceof Date && !isNaN(e.valueOf()), li = (e) => e instanceof Error, ui = (e) => typeof e == "number" && isNaN(e), di = (e) => ri(e) || Qr(e) || Zr(e) || ni(e) || ti(e) || si(e), fi = (e) => typeof e == "bigint", pi = (e) => e === Infinity || e === -Infinity, mi = (e) => ArrayBuffer.isView(e) && !(e instanceof DataView), hi = (e) => e instanceof URL, gi = (e) => e.replace(/\./g, "\\."), _i = (e) => e.map(String).map(gi).join("."), vi = (e) => {
+}, Xr = (e) => Object.prototype.toString.call(e).slice(8, -1), Zr = (e) => e === void 0, Qr = (e) => e === null, $r = (e) => typeof e != "object" || !e || e === Object.prototype ? !1 : Object.getPrototypeOf(e) === null || Object.getPrototypeOf(e) === Object.prototype, ei = (e) => $r(e) && Object.keys(e).length === 0, Y = (e) => Array.isArray(e), ti = (e) => typeof e == "string", ni = (e) => typeof e == "number" && !isNaN(e), ri = (e) => typeof e == "boolean", ii = (e) => e instanceof RegExp, ai = (e) => e instanceof Map, oi = (e) => e instanceof Set, si = (e) => Xr(e) === "Symbol", ci = (e) => e instanceof Date && !isNaN(e.valueOf()), li = (e) => e instanceof Error, ui = (e) => typeof e == "number" && isNaN(e), di = (e) => ri(e) || Qr(e) || Zr(e) || ni(e) || ti(e) || si(e), fi = (e) => typeof e == "bigint", pi = (e) => e === Infinity || e === -Infinity, mi = (e) => ArrayBuffer.isView(e) && !(e instanceof DataView), hi = (e) => e instanceof URL, gi = (e) => e.replace(/\./g, "\\."), _i = (e) => e.map(String).map(gi).join("."), vi = (e) => {
 	let t = [], n = "";
 	for (let r = 0; r < e.length; r++) {
 		let i = e.charAt(r);
@@ -3546,9 +3547,7 @@ var Ni = (e, t) => {
 				case "key":
 					e = o;
 					break;
-				case "value":
-					e = e.get(o);
-					break;
+				case "value": e = e.get(o);
 			}
 		} else e = e[r];
 	}
@@ -3572,9 +3571,7 @@ var Ni = (e, t) => {
 				case "key":
 					r = o;
 					break;
-				case "value":
-					r = r.get(o);
-					break;
+				case "value": r = r.get(o);
 			}
 		}
 	}
@@ -3591,9 +3588,7 @@ var Ni = (e, t) => {
 				r.set(e, r.get(a)), e !== a && r.delete(a);
 				break;
 			}
-			case "value":
-				r.set(a, n(r.get(a)));
-				break;
+			case "value": r.set(a, n(r.get(a)));
 		}
 	}
 	return e;

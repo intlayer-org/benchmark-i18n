@@ -1,6 +1,7 @@
 import { createComponent, insert, template } from "solid-js/web";
 import { For } from "solid-js";
-var _tmpl$ = template(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">`), _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-6 text-center"><div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground"></div><h3 class="text-base font-semibold text-foreground"></h3><p class="mb-2 text-xs font-medium text-primary"></p><p class="text-sm text-muted-foreground">`);
+var _tmpl$ = template(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">`);
+var _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-6 text-center"><div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground"></div><h3 class="text-base font-semibold text-foreground"></h3><p class="mb-2 text-xs font-medium text-primary"></p><p class="text-sm text-muted-foreground">`);
 function TeamGrid() {
 	const members = [
 		{

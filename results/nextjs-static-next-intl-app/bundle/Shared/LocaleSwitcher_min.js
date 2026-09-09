@@ -160,7 +160,7 @@ function F(e) {
 function I(e) {
 	console.error(e);
 }
-var L = 3600 * 24;
+var L = 86400;
 L * 7, 365 / 12 * L * 3, L * 365;
 function R(e, t, n) {
 	Object.entries(e).forEach(([e, r]) => {

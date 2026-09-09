@@ -21,27 +21,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -64,7 +43,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -106,6 +85,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -127,6 +107,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -137,58 +122,70 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_careers_openpositions_title1 = () => {
-	return `Open Positions`;
-};
-var fr_careers_openpositions_title1 = () => {
-	return `Postes ouverts`;
-};
-var es_careers_openpositions_title1 = () => {
-	return `Puestos vacantes`;
-};
-var de_careers_openpositions_title1 = () => {
-	return `Offene Stellen`;
-};
-var it_careers_openpositions_title1 = () => {
-	return `Posizioni aperte`;
-};
-var pt_careers_openpositions_title1 = () => {
-	return `Vagas abertas`;
-};
-var zh_careers_openpositions_title1 = () => {
-	return `开放职位`;
-};
-var ja_careers_openpositions_title1 = () => {
-	return `募集中の職種`;
-};
-var ko_careers_openpositions_title1 = () => {
-	return `Open Positions`;
-};
-var ru_careers_openpositions_title1 = () => {
-	return `Открытые вакансии`;
-};
-var careers_openpositions_title1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_title1(inputs);
-	if (locale === "fr") return fr_careers_openpositions_title1(inputs);
-	if (locale === "es") return es_careers_openpositions_title1(inputs);
-	if (locale === "de") return de_careers_openpositions_title1(inputs);
-	if (locale === "it") return it_careers_openpositions_title1(inputs);
-	if (locale === "pt") return pt_careers_openpositions_title1(inputs);
-	if (locale === "zh") return zh_careers_openpositions_title1(inputs);
-	if (locale === "ja") return ja_careers_openpositions_title1(inputs);
-	if (locale === "ko") return ko_careers_openpositions_title1(inputs);
-	return ru_careers_openpositions_title1(inputs);
-});
 var en_careers_openpositions_applynow2 = () => {
 	return `Apply Now`;
 };
@@ -221,7 +218,6 @@ var ru_careers_openpositions_applynow2 = () => {
 };
 var careers_openpositions_applynow2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_applynow2(inputs);
 	if (locale === "fr") return fr_careers_openpositions_applynow2(inputs);
 	if (locale === "es") return es_careers_openpositions_applynow2(inputs);
 	if (locale === "de") return de_careers_openpositions_applynow2(inputs);
@@ -230,437 +226,8 @@ var careers_openpositions_applynow2 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_careers_openpositions_applynow2(inputs);
 	if (locale === "ja") return ja_careers_openpositions_applynow2(inputs);
 	if (locale === "ko") return ko_careers_openpositions_applynow2(inputs);
-	return ru_careers_openpositions_applynow2(inputs);
-});
-var en_careers_openpositions_remote1 = () => {
-	return `Remote`;
-};
-var fr_careers_openpositions_remote1 = () => {
-	return `À distance`;
-};
-var es_careers_openpositions_remote1 = () => {
-	return `Remoto`;
-};
-var de_careers_openpositions_remote1 = () => {
-	return `Remote`;
-};
-var it_careers_openpositions_remote1 = () => {
-	return `Remoto`;
-};
-var pt_careers_openpositions_remote1 = () => {
-	return `Remoto`;
-};
-var zh_careers_openpositions_remote1 = () => {
-	return `远程`;
-};
-var ja_careers_openpositions_remote1 = () => {
-	return `リモート`;
-};
-var ko_careers_openpositions_remote1 = () => {
-	return `Remote`;
-};
-var ru_careers_openpositions_remote1 = () => {
-	return `Удаленно`;
-};
-var careers_openpositions_remote1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_remote1(inputs);
-	if (locale === "fr") return fr_careers_openpositions_remote1(inputs);
-	if (locale === "es") return es_careers_openpositions_remote1(inputs);
-	if (locale === "de") return de_careers_openpositions_remote1(inputs);
-	if (locale === "it") return it_careers_openpositions_remote1(inputs);
-	if (locale === "pt") return pt_careers_openpositions_remote1(inputs);
-	if (locale === "zh") return zh_careers_openpositions_remote1(inputs);
-	if (locale === "ja") return ja_careers_openpositions_remote1(inputs);
-	if (locale === "ko") return ko_careers_openpositions_remote1(inputs);
-	return ru_careers_openpositions_remote1(inputs);
-});
-var en_careers_openpositions_fulltime2 = () => {
-	return `Full-time`;
-};
-var fr_careers_openpositions_fulltime2 = () => {
-	return `Temps plein`;
-};
-var es_careers_openpositions_fulltime2 = () => {
-	return `Tiempo completo`;
-};
-var de_careers_openpositions_fulltime2 = () => {
-	return `Vollzeit`;
-};
-var it_careers_openpositions_fulltime2 = () => {
-	return `Tempo pieno`;
-};
-var pt_careers_openpositions_fulltime2 = () => {
-	return `Tempo integral`;
-};
-var zh_careers_openpositions_fulltime2 = () => {
-	return `全职`;
-};
-var ja_careers_openpositions_fulltime2 = () => {
-	return `フルタイム`;
-};
-var ko_careers_openpositions_fulltime2 = () => {
-	return `Full-time`;
-};
-var ru_careers_openpositions_fulltime2 = () => {
-	return `Полная занятость`;
-};
-var careers_openpositions_fulltime2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_fulltime2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_fulltime2(inputs);
-	if (locale === "es") return es_careers_openpositions_fulltime2(inputs);
-	if (locale === "de") return de_careers_openpositions_fulltime2(inputs);
-	if (locale === "it") return it_careers_openpositions_fulltime2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_fulltime2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_fulltime2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_fulltime2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_fulltime2(inputs);
-	return ru_careers_openpositions_fulltime2(inputs);
-});
-var en_careers_openpositions_parttime2 = () => {
-	return `Part-time`;
-};
-var fr_careers_openpositions_parttime2 = () => {
-	return `Temps partiel`;
-};
-var es_careers_openpositions_parttime2 = () => {
-	return `Tiempo parcial`;
-};
-var de_careers_openpositions_parttime2 = () => {
-	return `Teilzeit`;
-};
-var it_careers_openpositions_parttime2 = () => {
-	return `Part-time`;
-};
-var pt_careers_openpositions_parttime2 = () => {
-	return `Tempo parcial`;
-};
-var zh_careers_openpositions_parttime2 = () => {
-	return `兼职`;
-};
-var ja_careers_openpositions_parttime2 = () => {
-	return `パートタイム`;
-};
-var ko_careers_openpositions_parttime2 = () => {
-	return `Part-time`;
-};
-var ru_careers_openpositions_parttime2 = () => {
-	return `Частичная занятость`;
-};
-var careers_openpositions_parttime2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_parttime2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_parttime2(inputs);
-	if (locale === "es") return es_careers_openpositions_parttime2(inputs);
-	if (locale === "de") return de_careers_openpositions_parttime2(inputs);
-	if (locale === "it") return it_careers_openpositions_parttime2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_parttime2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_parttime2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_parttime2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_parttime2(inputs);
-	return ru_careers_openpositions_parttime2(inputs);
-});
-var en_careers_openpositions_engineering1 = () => {
-	return `Engineering`;
-};
-var fr_careers_openpositions_engineering1 = () => {
-	return `Ingénierie`;
-};
-var es_careers_openpositions_engineering1 = () => {
-	return `Ingeniería`;
-};
-var de_careers_openpositions_engineering1 = () => {
-	return `Engineering`;
-};
-var it_careers_openpositions_engineering1 = () => {
-	return `Engineering`;
-};
-var pt_careers_openpositions_engineering1 = () => {
-	return `Engenharia`;
-};
-var zh_careers_openpositions_engineering1 = () => {
-	return `工程`;
-};
-var ja_careers_openpositions_engineering1 = () => {
-	return `エンジニアリング`;
-};
-var ko_careers_openpositions_engineering1 = () => {
-	return `Engineering`;
-};
-var ru_careers_openpositions_engineering1 = () => {
-	return `Разработка`;
-};
-var careers_openpositions_engineering1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_engineering1(inputs);
-	if (locale === "fr") return fr_careers_openpositions_engineering1(inputs);
-	if (locale === "es") return es_careers_openpositions_engineering1(inputs);
-	if (locale === "de") return de_careers_openpositions_engineering1(inputs);
-	if (locale === "it") return it_careers_openpositions_engineering1(inputs);
-	if (locale === "pt") return pt_careers_openpositions_engineering1(inputs);
-	if (locale === "zh") return zh_careers_openpositions_engineering1(inputs);
-	if (locale === "ja") return ja_careers_openpositions_engineering1(inputs);
-	if (locale === "ko") return ko_careers_openpositions_engineering1(inputs);
-	return ru_careers_openpositions_engineering1(inputs);
-});
-var en_careers_openpositions_documentation1 = () => {
-	return `Documentation`;
-};
-var fr_careers_openpositions_documentation1 = () => {
-	return `Documentation`;
-};
-var es_careers_openpositions_documentation1 = () => {
-	return `Documentación`;
-};
-var de_careers_openpositions_documentation1 = () => {
-	return `Dokumentation`;
-};
-var it_careers_openpositions_documentation1 = () => {
-	return `Documentazione`;
-};
-var pt_careers_openpositions_documentation1 = () => {
-	return `Documentação`;
-};
-var zh_careers_openpositions_documentation1 = () => {
-	return `文档`;
-};
-var ja_careers_openpositions_documentation1 = () => {
-	return `ドキュメンテーション`;
-};
-var ko_careers_openpositions_documentation1 = () => {
-	return `Documentation`;
-};
-var ru_careers_openpositions_documentation1 = () => {
-	return `Документация`;
-};
-var careers_openpositions_documentation1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_documentation1(inputs);
-	if (locale === "fr") return fr_careers_openpositions_documentation1(inputs);
-	if (locale === "es") return es_careers_openpositions_documentation1(inputs);
-	if (locale === "de") return de_careers_openpositions_documentation1(inputs);
-	if (locale === "it") return it_careers_openpositions_documentation1(inputs);
-	if (locale === "pt") return pt_careers_openpositions_documentation1(inputs);
-	if (locale === "zh") return zh_careers_openpositions_documentation1(inputs);
-	if (locale === "ja") return ja_careers_openpositions_documentation1(inputs);
-	if (locale === "ko") return ko_careers_openpositions_documentation1(inputs);
-	return ru_careers_openpositions_documentation1(inputs);
-});
-var en_careers_openpositions_community1 = () => {
-	return `Community`;
-};
-var fr_careers_openpositions_community1 = () => {
-	return `Communauté`;
-};
-var es_careers_openpositions_community1 = () => {
-	return `Comunidad`;
-};
-var de_careers_openpositions_community1 = () => {
-	return `Community`;
-};
-var it_careers_openpositions_community1 = () => {
-	return `Comunità`;
-};
-var pt_careers_openpositions_community1 = () => {
-	return `Comunidade`;
-};
-var zh_careers_openpositions_community1 = () => {
-	return `社区`;
-};
-var ja_careers_openpositions_community1 = () => {
-	return `コミュニティ`;
-};
-var ko_careers_openpositions_community1 = () => {
-	return `Community`;
-};
-var ru_careers_openpositions_community1 = () => {
-	return `Сообщество`;
-};
-var careers_openpositions_community1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_community1(inputs);
-	if (locale === "fr") return fr_careers_openpositions_community1(inputs);
-	if (locale === "es") return es_careers_openpositions_community1(inputs);
-	if (locale === "de") return de_careers_openpositions_community1(inputs);
-	if (locale === "it") return it_careers_openpositions_community1(inputs);
-	if (locale === "pt") return pt_careers_openpositions_community1(inputs);
-	if (locale === "zh") return zh_careers_openpositions_community1(inputs);
-	if (locale === "ja") return ja_careers_openpositions_community1(inputs);
-	if (locale === "ko") return ko_careers_openpositions_community1(inputs);
-	return ru_careers_openpositions_community1(inputs);
-});
-var en_careers_openpositions_sfremote2 = () => {
-	return `San Francisco / Remote`;
-};
-var fr_careers_openpositions_sfremote2 = () => {
-	return `San Francisco / télétravail`;
-};
-var es_careers_openpositions_sfremote2 = () => {
-	return `San Francisco / Remoto`;
-};
-var de_careers_openpositions_sfremote2 = () => {
-	return `San Francisco / Remote`;
-};
-var it_careers_openpositions_sfremote2 = () => {
-	return `San Francisco / Remoto`;
-};
-var pt_careers_openpositions_sfremote2 = () => {
-	return `San Francisco / Remoto`;
-};
-var zh_careers_openpositions_sfremote2 = () => {
-	return `旧金山 / 远程`;
-};
-var ja_careers_openpositions_sfremote2 = () => {
-	return `サンフランシスコ / リモート`;
-};
-var ko_careers_openpositions_sfremote2 = () => {
-	return `San Francisco / Remote`;
-};
-var ru_careers_openpositions_sfremote2 = () => {
-	return `Сан-Франциско / Удаленно`;
-};
-var careers_openpositions_sfremote2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_sfremote2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_sfremote2(inputs);
-	if (locale === "es") return es_careers_openpositions_sfremote2(inputs);
-	if (locale === "de") return de_careers_openpositions_sfremote2(inputs);
-	if (locale === "it") return it_careers_openpositions_sfremote2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_sfremote2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_sfremote2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_sfremote2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_sfremote2(inputs);
-	return ru_careers_openpositions_sfremote2(inputs);
-});
-var en_careers_openpositions_frontendtitle2 = () => {
-	return `Senior Frontend Engineer`;
-};
-var fr_careers_openpositions_frontendtitle2 = () => {
-	return `Ingénieur front-end senior`;
-};
-var es_careers_openpositions_frontendtitle2 = () => {
-	return `Ingeniero Frontend Senior`;
-};
-var de_careers_openpositions_frontendtitle2 = () => {
-	return `Senior Frontend Engineer`;
-};
-var it_careers_openpositions_frontendtitle2 = () => {
-	return `Ingegnere Frontend Senior`;
-};
-var pt_careers_openpositions_frontendtitle2 = () => {
-	return `Engenheiro Frontend Sênior`;
-};
-var zh_careers_openpositions_frontendtitle2 = () => {
-	return `高级前端工程师`;
-};
-var ja_careers_openpositions_frontendtitle2 = () => {
-	return `シニアフロントエンドエンジニア`;
-};
-var ko_careers_openpositions_frontendtitle2 = () => {
-	return `Senior Frontend Engineer`;
-};
-var ru_careers_openpositions_frontendtitle2 = () => {
-	return `Старший фронтенд-инженер`;
-};
-var careers_openpositions_frontendtitle2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_frontendtitle2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_frontendtitle2(inputs);
-	if (locale === "es") return es_careers_openpositions_frontendtitle2(inputs);
-	if (locale === "de") return de_careers_openpositions_frontendtitle2(inputs);
-	if (locale === "it") return it_careers_openpositions_frontendtitle2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_frontendtitle2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_frontendtitle2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_frontendtitle2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_frontendtitle2(inputs);
-	return ru_careers_openpositions_frontendtitle2(inputs);
-});
-var en_careers_openpositions_frontenddesc2 = () => {
-	return `Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.`;
-};
-var fr_careers_openpositions_frontenddesc2 = () => {
-	return `Construire et maintenir le tableau de bord de benchmark et les outils dev avec React, TypeScript et Vite.`;
-};
-var es_careers_openpositions_frontenddesc2 = () => {
-	return `Construir y mantener nuestro panel de benchmarking y herramientas para desarrolladores utilizando React, TypeScript y Vite.`;
-};
-var de_careers_openpositions_frontenddesc2 = () => {
-	return `Erstellen und warten Sie unser Benchmarking-Dashboard und unsere Entwicklertools mit React, TypeScript und Vite.`;
-};
-var it_careers_openpositions_frontenddesc2 = () => {
-	return `Costruisci e mantieni la nostra dashboard di benchmarking e gli strumenti per sviluppatori utilizzando React, TypeScript e Vite.`;
-};
-var pt_careers_openpositions_frontenddesc2 = () => {
-	return `Construa e mantenha nosso painel de benchmarking e ferramentas de desenvolvedor usando React, TypeScript e Vite.`;
-};
-var zh_careers_openpositions_frontenddesc2 = () => {
-	return `使用 React、TypeScript 和 Vite 构建和维护我们的基准测试仪表板和开发人员工具。`;
-};
-var ja_careers_openpositions_frontenddesc2 = () => {
-	return `React、TypeScript、Viteを使用して、ベンチマークダッシュボードと開発者ツールの構築と保守を行います。`;
-};
-var ko_careers_openpositions_frontenddesc2 = () => {
-	return `Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.`;
-};
-var ru_careers_openpositions_frontenddesc2 = () => {
-	return `Разработка и поддержка нашей панели управления бенчмарками и инструментов разработчика с использованием React, TypeScript и Vite.`;
-};
-var careers_openpositions_frontenddesc2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_frontenddesc2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_frontenddesc2(inputs);
-	if (locale === "es") return es_careers_openpositions_frontenddesc2(inputs);
-	if (locale === "de") return de_careers_openpositions_frontenddesc2(inputs);
-	if (locale === "it") return it_careers_openpositions_frontenddesc2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_frontenddesc2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_frontenddesc2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_frontenddesc2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_frontenddesc2(inputs);
-	return ru_careers_openpositions_frontenddesc2(inputs);
-});
-var en_careers_openpositions_backendtitle2 = () => {
-	return `Backend Engineer`;
-};
-var fr_careers_openpositions_backendtitle2 = () => {
-	return `Ingénieur back-end`;
-};
-var es_careers_openpositions_backendtitle2 = () => {
-	return `Ingeniero Backend`;
-};
-var de_careers_openpositions_backendtitle2 = () => {
-	return `Backend-Ingenieur`;
-};
-var it_careers_openpositions_backendtitle2 = () => {
-	return `Backend Engineer`;
-};
-var pt_careers_openpositions_backendtitle2 = () => {
-	return `Engenheiro Backend`;
-};
-var zh_careers_openpositions_backendtitle2 = () => {
-	return `后端工程师`;
-};
-var ja_careers_openpositions_backendtitle2 = () => {
-	return `バックエンドエンジニア`;
-};
-var ko_careers_openpositions_backendtitle2 = () => {
-	return `Backend Engineer`;
-};
-var ru_careers_openpositions_backendtitle2 = () => {
-	return `Бэкенд-инженер`;
-};
-var careers_openpositions_backendtitle2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_backendtitle2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_backendtitle2(inputs);
-	if (locale === "es") return es_careers_openpositions_backendtitle2(inputs);
-	if (locale === "de") return de_careers_openpositions_backendtitle2(inputs);
-	if (locale === "it") return it_careers_openpositions_backendtitle2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_backendtitle2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_backendtitle2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_backendtitle2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_backendtitle2(inputs);
-	return ru_careers_openpositions_backendtitle2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_applynow2(inputs);
+	return en_careers_openpositions_applynow2(inputs);
 });
 var en_careers_openpositions_backenddesc2 = () => {
 	return `Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.`;
@@ -694,7 +261,6 @@ var ru_careers_openpositions_backenddesc2 = () => {
 };
 var careers_openpositions_backenddesc2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_backenddesc2(inputs);
 	if (locale === "fr") return fr_careers_openpositions_backenddesc2(inputs);
 	if (locale === "es") return es_careers_openpositions_backenddesc2(inputs);
 	if (locale === "de") return de_careers_openpositions_backenddesc2(inputs);
@@ -703,136 +269,94 @@ var careers_openpositions_backenddesc2 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_careers_openpositions_backenddesc2(inputs);
 	if (locale === "ja") return ja_careers_openpositions_backenddesc2(inputs);
 	if (locale === "ko") return ko_careers_openpositions_backenddesc2(inputs);
-	return ru_careers_openpositions_backenddesc2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_backenddesc2(inputs);
+	return en_careers_openpositions_backenddesc2(inputs);
 });
-var en_careers_openpositions_writertitle2 = () => {
-	return `Technical Writer`;
+var en_careers_openpositions_backendtitle2 = () => {
+	return `Backend Engineer`;
 };
-var fr_careers_openpositions_writertitle2 = () => {
-	return `Rédacteur·rice technique`;
+var fr_careers_openpositions_backendtitle2 = () => {
+	return `Ingénieur back-end`;
 };
-var es_careers_openpositions_writertitle2 = () => {
-	return `Redactor técnico`;
+var es_careers_openpositions_backendtitle2 = () => {
+	return `Ingeniero Backend`;
 };
-var de_careers_openpositions_writertitle2 = () => {
-	return `Technischer Redakteur`;
+var de_careers_openpositions_backendtitle2 = () => {
+	return `Backend-Ingenieur`;
 };
-var it_careers_openpositions_writertitle2 = () => {
-	return `Scrittore tecnico`;
+var it_careers_openpositions_backendtitle2 = () => {
+	return `Backend Engineer`;
 };
-var pt_careers_openpositions_writertitle2 = () => {
-	return `Redator técnico`;
+var pt_careers_openpositions_backendtitle2 = () => {
+	return `Engenheiro Backend`;
 };
-var zh_careers_openpositions_writertitle2 = () => {
-	return `技术作家`;
+var zh_careers_openpositions_backendtitle2 = () => {
+	return `后端工程师`;
 };
-var ja_careers_openpositions_writertitle2 = () => {
-	return `テクニカルライター`;
+var ja_careers_openpositions_backendtitle2 = () => {
+	return `バックエンドエンジニア`;
 };
-var ko_careers_openpositions_writertitle2 = () => {
-	return `Technical Writer`;
+var ko_careers_openpositions_backendtitle2 = () => {
+	return `Backend Engineer`;
 };
-var ru_careers_openpositions_writertitle2 = () => {
-	return `Технический писатель`;
+var ru_careers_openpositions_backendtitle2 = () => {
+	return `Бэкенд-инженер`;
 };
-var careers_openpositions_writertitle2 = ((inputs = {}, options = {}) => {
+var careers_openpositions_backendtitle2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_writertitle2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_writertitle2(inputs);
-	if (locale === "es") return es_careers_openpositions_writertitle2(inputs);
-	if (locale === "de") return de_careers_openpositions_writertitle2(inputs);
-	if (locale === "it") return it_careers_openpositions_writertitle2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_writertitle2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_writertitle2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_writertitle2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_writertitle2(inputs);
-	return ru_careers_openpositions_writertitle2(inputs);
+	if (locale === "fr") return fr_careers_openpositions_backendtitle2(inputs);
+	if (locale === "es") return es_careers_openpositions_backendtitle2(inputs);
+	if (locale === "de") return de_careers_openpositions_backendtitle2(inputs);
+	if (locale === "it") return it_careers_openpositions_backendtitle2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_backendtitle2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_backendtitle2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_backendtitle2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_backendtitle2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_backendtitle2(inputs);
+	return en_careers_openpositions_backendtitle2(inputs);
 });
-var en_careers_openpositions_writerdesc2 = () => {
-	return `Create comprehensive guides, API references, and tutorials for our benchmarking platform.`;
+var en_careers_openpositions_community1 = () => {
+	return `Community`;
 };
-var fr_careers_openpositions_writerdesc2 = () => {
-	return `Guides, références d'API et tutoriels pour la plateforme de benchmark.`;
+var fr_careers_openpositions_community1 = () => {
+	return `Communauté`;
 };
-var es_careers_openpositions_writerdesc2 = () => {
-	return `Crear guías completas, referencias de API y tutoriales para nuestra plataforma de benchmarking.`;
+var es_careers_openpositions_community1 = () => {
+	return `Comunidad`;
 };
-var de_careers_openpositions_writerdesc2 = () => {
-	return `Erstellen Sie umfassende Leitfäden, API-Referenzen und Tutorials für unsere Benchmarking-Plattform.`;
+var de_careers_openpositions_community1 = () => {
+	return `Community`;
 };
-var it_careers_openpositions_writerdesc2 = () => {
-	return `Crea guide complete, riferimenti API e tutorial per la nostra piattaforma di benchmarking.`;
+var it_careers_openpositions_community1 = () => {
+	return `Comunità`;
 };
-var pt_careers_openpositions_writerdesc2 = () => {
-	return `Crie guias abrangentes, referências de API e tutoriais para nossa plataforma de benchmarking.`;
+var pt_careers_openpositions_community1 = () => {
+	return `Comunidade`;
 };
-var zh_careers_openpositions_writerdesc2 = () => {
-	return `为我们的基准测试平台编写全面的指南、API 参考和教程。`;
+var zh_careers_openpositions_community1 = () => {
+	return `社区`;
 };
-var ja_careers_openpositions_writerdesc2 = () => {
-	return `ベンチマークプラットフォームのための包括的なガイド、APIリファレンス、およびチュートリアルを作成します。`;
+var ja_careers_openpositions_community1 = () => {
+	return `コミュニティ`;
 };
-var ko_careers_openpositions_writerdesc2 = () => {
-	return `Create comprehensive guides, API references, and tutorials for our benchmarking platform.`;
+var ko_careers_openpositions_community1 = () => {
+	return `Community`;
 };
-var ru_careers_openpositions_writerdesc2 = () => {
-	return `Создание подробных руководств, API-справок и туториалов для нашей платформы бенчмаркинга.`;
+var ru_careers_openpositions_community1 = () => {
+	return `Сообщество`;
 };
-var careers_openpositions_writerdesc2 = ((inputs = {}, options = {}) => {
+var careers_openpositions_community1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_writerdesc2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_writerdesc2(inputs);
-	if (locale === "es") return es_careers_openpositions_writerdesc2(inputs);
-	if (locale === "de") return de_careers_openpositions_writerdesc2(inputs);
-	if (locale === "it") return it_careers_openpositions_writerdesc2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_writerdesc2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_writerdesc2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_writerdesc2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_writerdesc2(inputs);
-	return ru_careers_openpositions_writerdesc2(inputs);
-});
-var en_careers_openpositions_devreltitle2 = () => {
-	return `DevRel Engineer`;
-};
-var fr_careers_openpositions_devreltitle2 = () => {
-	return `Ingénieur DevRel`;
-};
-var es_careers_openpositions_devreltitle2 = () => {
-	return `Ingeniero de DevRel`;
-};
-var de_careers_openpositions_devreltitle2 = () => {
-	return `DevRel-Ingenieur`;
-};
-var it_careers_openpositions_devreltitle2 = () => {
-	return `Ingegnere DevRel`;
-};
-var pt_careers_openpositions_devreltitle2 = () => {
-	return `Engenheiro de DevRel`;
-};
-var zh_careers_openpositions_devreltitle2 = () => {
-	return `DevRel 工程师`;
-};
-var ja_careers_openpositions_devreltitle2 = () => {
-	return `DevRelエンジニア`;
-};
-var ko_careers_openpositions_devreltitle2 = () => {
-	return `DevRel Engineer`;
-};
-var ru_careers_openpositions_devreltitle2 = () => {
-	return `DevRel-инженер`;
-};
-var careers_openpositions_devreltitle2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_devreltitle2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_devreltitle2(inputs);
-	if (locale === "es") return es_careers_openpositions_devreltitle2(inputs);
-	if (locale === "de") return de_careers_openpositions_devreltitle2(inputs);
-	if (locale === "it") return it_careers_openpositions_devreltitle2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_devreltitle2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_devreltitle2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_devreltitle2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_devreltitle2(inputs);
-	return ru_careers_openpositions_devreltitle2(inputs);
+	if (locale === "fr") return fr_careers_openpositions_community1(inputs);
+	if (locale === "es") return es_careers_openpositions_community1(inputs);
+	if (locale === "de") return de_careers_openpositions_community1(inputs);
+	if (locale === "it") return it_careers_openpositions_community1(inputs);
+	if (locale === "pt") return pt_careers_openpositions_community1(inputs);
+	if (locale === "zh") return zh_careers_openpositions_community1(inputs);
+	if (locale === "ja") return ja_careers_openpositions_community1(inputs);
+	if (locale === "ko") return ko_careers_openpositions_community1(inputs);
+	if (locale === "ru") return ru_careers_openpositions_community1(inputs);
+	return en_careers_openpositions_community1(inputs);
 });
 var en_careers_openpositions_devreldesc2 = () => {
 	return `Engage with the i18n community through talks, workshops, blog posts, and open source contributions.`;
@@ -866,7 +390,6 @@ var ru_careers_openpositions_devreldesc2 = () => {
 };
 var careers_openpositions_devreldesc2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_devreldesc2(inputs);
 	if (locale === "fr") return fr_careers_openpositions_devreldesc2(inputs);
 	if (locale === "es") return es_careers_openpositions_devreldesc2(inputs);
 	if (locale === "de") return de_careers_openpositions_devreldesc2(inputs);
@@ -875,50 +398,309 @@ var careers_openpositions_devreldesc2 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_careers_openpositions_devreldesc2(inputs);
 	if (locale === "ja") return ja_careers_openpositions_devreldesc2(inputs);
 	if (locale === "ko") return ko_careers_openpositions_devreldesc2(inputs);
-	return ru_careers_openpositions_devreldesc2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_devreldesc2(inputs);
+	return en_careers_openpositions_devreldesc2(inputs);
 });
-var en_careers_openpositions_qatitle2 = () => {
-	return `QA Engineer`;
+var en_careers_openpositions_devreltitle2 = () => {
+	return `DevRel Engineer`;
 };
-var fr_careers_openpositions_qatitle2 = () => {
-	return `Ingénieur QA`;
+var fr_careers_openpositions_devreltitle2 = () => {
+	return `Ingénieur DevRel`;
 };
-var es_careers_openpositions_qatitle2 = () => {
-	return `Ingeniero de QA`;
+var es_careers_openpositions_devreltitle2 = () => {
+	return `Ingeniero de DevRel`;
 };
-var de_careers_openpositions_qatitle2 = () => {
-	return `QA-Ingenieur`;
+var de_careers_openpositions_devreltitle2 = () => {
+	return `DevRel-Ingenieur`;
 };
-var it_careers_openpositions_qatitle2 = () => {
-	return `Ingegnere QA`;
+var it_careers_openpositions_devreltitle2 = () => {
+	return `Ingegnere DevRel`;
 };
-var pt_careers_openpositions_qatitle2 = () => {
-	return `Engenheiro de QA`;
+var pt_careers_openpositions_devreltitle2 = () => {
+	return `Engenheiro de DevRel`;
 };
-var zh_careers_openpositions_qatitle2 = () => {
-	return `QA 工程师`;
+var zh_careers_openpositions_devreltitle2 = () => {
+	return `DevRel 工程师`;
 };
-var ja_careers_openpositions_qatitle2 = () => {
-	return `QAエンジニア`;
+var ja_careers_openpositions_devreltitle2 = () => {
+	return `DevRelエンジニア`;
 };
-var ko_careers_openpositions_qatitle2 = () => {
-	return `QA Engineer`;
+var ko_careers_openpositions_devreltitle2 = () => {
+	return `DevRel Engineer`;
 };
-var ru_careers_openpositions_qatitle2 = () => {
-	return `QA-инженер`;
+var ru_careers_openpositions_devreltitle2 = () => {
+	return `DevRel-инженер`;
 };
-var careers_openpositions_qatitle2 = ((inputs = {}, options = {}) => {
+var careers_openpositions_devreltitle2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_qatitle2(inputs);
-	if (locale === "fr") return fr_careers_openpositions_qatitle2(inputs);
-	if (locale === "es") return es_careers_openpositions_qatitle2(inputs);
-	if (locale === "de") return de_careers_openpositions_qatitle2(inputs);
-	if (locale === "it") return it_careers_openpositions_qatitle2(inputs);
-	if (locale === "pt") return pt_careers_openpositions_qatitle2(inputs);
-	if (locale === "zh") return zh_careers_openpositions_qatitle2(inputs);
-	if (locale === "ja") return ja_careers_openpositions_qatitle2(inputs);
-	if (locale === "ko") return ko_careers_openpositions_qatitle2(inputs);
-	return ru_careers_openpositions_qatitle2(inputs);
+	if (locale === "fr") return fr_careers_openpositions_devreltitle2(inputs);
+	if (locale === "es") return es_careers_openpositions_devreltitle2(inputs);
+	if (locale === "de") return de_careers_openpositions_devreltitle2(inputs);
+	if (locale === "it") return it_careers_openpositions_devreltitle2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_devreltitle2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_devreltitle2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_devreltitle2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_devreltitle2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_devreltitle2(inputs);
+	return en_careers_openpositions_devreltitle2(inputs);
+});
+var en_careers_openpositions_documentation1 = () => {
+	return `Documentation`;
+};
+var fr_careers_openpositions_documentation1 = () => {
+	return `Documentation`;
+};
+var es_careers_openpositions_documentation1 = () => {
+	return `Documentación`;
+};
+var de_careers_openpositions_documentation1 = () => {
+	return `Dokumentation`;
+};
+var it_careers_openpositions_documentation1 = () => {
+	return `Documentazione`;
+};
+var pt_careers_openpositions_documentation1 = () => {
+	return `Documentação`;
+};
+var zh_careers_openpositions_documentation1 = () => {
+	return `文档`;
+};
+var ja_careers_openpositions_documentation1 = () => {
+	return `ドキュメンテーション`;
+};
+var ko_careers_openpositions_documentation1 = () => {
+	return `Documentation`;
+};
+var ru_careers_openpositions_documentation1 = () => {
+	return `Документация`;
+};
+var careers_openpositions_documentation1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_documentation1(inputs);
+	if (locale === "es") return es_careers_openpositions_documentation1(inputs);
+	if (locale === "de") return de_careers_openpositions_documentation1(inputs);
+	if (locale === "it") return it_careers_openpositions_documentation1(inputs);
+	if (locale === "pt") return pt_careers_openpositions_documentation1(inputs);
+	if (locale === "zh") return zh_careers_openpositions_documentation1(inputs);
+	if (locale === "ja") return ja_careers_openpositions_documentation1(inputs);
+	if (locale === "ko") return ko_careers_openpositions_documentation1(inputs);
+	if (locale === "ru") return ru_careers_openpositions_documentation1(inputs);
+	return en_careers_openpositions_documentation1(inputs);
+});
+var en_careers_openpositions_engineering1 = () => {
+	return `Engineering`;
+};
+var fr_careers_openpositions_engineering1 = () => {
+	return `Ingénierie`;
+};
+var es_careers_openpositions_engineering1 = () => {
+	return `Ingeniería`;
+};
+var de_careers_openpositions_engineering1 = () => {
+	return `Engineering`;
+};
+var it_careers_openpositions_engineering1 = () => {
+	return `Engineering`;
+};
+var pt_careers_openpositions_engineering1 = () => {
+	return `Engenharia`;
+};
+var zh_careers_openpositions_engineering1 = () => {
+	return `工程`;
+};
+var ja_careers_openpositions_engineering1 = () => {
+	return `エンジニアリング`;
+};
+var ko_careers_openpositions_engineering1 = () => {
+	return `Engineering`;
+};
+var ru_careers_openpositions_engineering1 = () => {
+	return `Разработка`;
+};
+var careers_openpositions_engineering1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_engineering1(inputs);
+	if (locale === "es") return es_careers_openpositions_engineering1(inputs);
+	if (locale === "de") return de_careers_openpositions_engineering1(inputs);
+	if (locale === "it") return it_careers_openpositions_engineering1(inputs);
+	if (locale === "pt") return pt_careers_openpositions_engineering1(inputs);
+	if (locale === "zh") return zh_careers_openpositions_engineering1(inputs);
+	if (locale === "ja") return ja_careers_openpositions_engineering1(inputs);
+	if (locale === "ko") return ko_careers_openpositions_engineering1(inputs);
+	if (locale === "ru") return ru_careers_openpositions_engineering1(inputs);
+	return en_careers_openpositions_engineering1(inputs);
+});
+var en_careers_openpositions_frontenddesc2 = () => {
+	return `Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.`;
+};
+var fr_careers_openpositions_frontenddesc2 = () => {
+	return `Construire et maintenir le tableau de bord de benchmark et les outils dev avec React, TypeScript et Vite.`;
+};
+var es_careers_openpositions_frontenddesc2 = () => {
+	return `Construir y mantener nuestro panel de benchmarking y herramientas para desarrolladores utilizando React, TypeScript y Vite.`;
+};
+var de_careers_openpositions_frontenddesc2 = () => {
+	return `Erstellen und warten Sie unser Benchmarking-Dashboard und unsere Entwicklertools mit React, TypeScript und Vite.`;
+};
+var it_careers_openpositions_frontenddesc2 = () => {
+	return `Costruisci e mantieni la nostra dashboard di benchmarking e gli strumenti per sviluppatori utilizzando React, TypeScript e Vite.`;
+};
+var pt_careers_openpositions_frontenddesc2 = () => {
+	return `Construa e mantenha nosso painel de benchmarking e ferramentas de desenvolvedor usando React, TypeScript e Vite.`;
+};
+var zh_careers_openpositions_frontenddesc2 = () => {
+	return `使用 React、TypeScript 和 Vite 构建和维护我们的基准测试仪表板和开发人员工具。`;
+};
+var ja_careers_openpositions_frontenddesc2 = () => {
+	return `React、TypeScript、Viteを使用して、ベンチマークダッシュボードと開発者ツールの構築と保守を行います。`;
+};
+var ko_careers_openpositions_frontenddesc2 = () => {
+	return `Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.`;
+};
+var ru_careers_openpositions_frontenddesc2 = () => {
+	return `Разработка и поддержка нашей панели управления бенчмарками и инструментов разработчика с использованием React, TypeScript и Vite.`;
+};
+var careers_openpositions_frontenddesc2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_frontenddesc2(inputs);
+	if (locale === "es") return es_careers_openpositions_frontenddesc2(inputs);
+	if (locale === "de") return de_careers_openpositions_frontenddesc2(inputs);
+	if (locale === "it") return it_careers_openpositions_frontenddesc2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_frontenddesc2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_frontenddesc2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_frontenddesc2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_frontenddesc2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_frontenddesc2(inputs);
+	return en_careers_openpositions_frontenddesc2(inputs);
+});
+var en_careers_openpositions_frontendtitle2 = () => {
+	return `Senior Frontend Engineer`;
+};
+var fr_careers_openpositions_frontendtitle2 = () => {
+	return `Ingénieur front-end senior`;
+};
+var es_careers_openpositions_frontendtitle2 = () => {
+	return `Ingeniero Frontend Senior`;
+};
+var de_careers_openpositions_frontendtitle2 = () => {
+	return `Senior Frontend Engineer`;
+};
+var it_careers_openpositions_frontendtitle2 = () => {
+	return `Ingegnere Frontend Senior`;
+};
+var pt_careers_openpositions_frontendtitle2 = () => {
+	return `Engenheiro Frontend Sênior`;
+};
+var zh_careers_openpositions_frontendtitle2 = () => {
+	return `高级前端工程师`;
+};
+var ja_careers_openpositions_frontendtitle2 = () => {
+	return `シニアフロントエンドエンジニア`;
+};
+var ko_careers_openpositions_frontendtitle2 = () => {
+	return `Senior Frontend Engineer`;
+};
+var ru_careers_openpositions_frontendtitle2 = () => {
+	return `Старший фронтенд-инженер`;
+};
+var careers_openpositions_frontendtitle2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_frontendtitle2(inputs);
+	if (locale === "es") return es_careers_openpositions_frontendtitle2(inputs);
+	if (locale === "de") return de_careers_openpositions_frontendtitle2(inputs);
+	if (locale === "it") return it_careers_openpositions_frontendtitle2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_frontendtitle2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_frontendtitle2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_frontendtitle2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_frontendtitle2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_frontendtitle2(inputs);
+	return en_careers_openpositions_frontendtitle2(inputs);
+});
+var en_careers_openpositions_fulltime2 = () => {
+	return `Full-time`;
+};
+var fr_careers_openpositions_fulltime2 = () => {
+	return `Temps plein`;
+};
+var es_careers_openpositions_fulltime2 = () => {
+	return `Tiempo completo`;
+};
+var de_careers_openpositions_fulltime2 = () => {
+	return `Vollzeit`;
+};
+var it_careers_openpositions_fulltime2 = () => {
+	return `Tempo pieno`;
+};
+var pt_careers_openpositions_fulltime2 = () => {
+	return `Tempo integral`;
+};
+var zh_careers_openpositions_fulltime2 = () => {
+	return `全职`;
+};
+var ja_careers_openpositions_fulltime2 = () => {
+	return `フルタイム`;
+};
+var ko_careers_openpositions_fulltime2 = () => {
+	return `Full-time`;
+};
+var ru_careers_openpositions_fulltime2 = () => {
+	return `Полная занятость`;
+};
+var careers_openpositions_fulltime2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_fulltime2(inputs);
+	if (locale === "es") return es_careers_openpositions_fulltime2(inputs);
+	if (locale === "de") return de_careers_openpositions_fulltime2(inputs);
+	if (locale === "it") return it_careers_openpositions_fulltime2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_fulltime2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_fulltime2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_fulltime2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_fulltime2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_fulltime2(inputs);
+	return en_careers_openpositions_fulltime2(inputs);
+});
+var en_careers_openpositions_parttime2 = () => {
+	return `Part-time`;
+};
+var fr_careers_openpositions_parttime2 = () => {
+	return `Temps partiel`;
+};
+var es_careers_openpositions_parttime2 = () => {
+	return `Tiempo parcial`;
+};
+var de_careers_openpositions_parttime2 = () => {
+	return `Teilzeit`;
+};
+var it_careers_openpositions_parttime2 = () => {
+	return `Part-time`;
+};
+var pt_careers_openpositions_parttime2 = () => {
+	return `Tempo parcial`;
+};
+var zh_careers_openpositions_parttime2 = () => {
+	return `兼职`;
+};
+var ja_careers_openpositions_parttime2 = () => {
+	return `パートタイム`;
+};
+var ko_careers_openpositions_parttime2 = () => {
+	return `Part-time`;
+};
+var ru_careers_openpositions_parttime2 = () => {
+	return `Частичная занятость`;
+};
+var careers_openpositions_parttime2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_parttime2(inputs);
+	if (locale === "es") return es_careers_openpositions_parttime2(inputs);
+	if (locale === "de") return de_careers_openpositions_parttime2(inputs);
+	if (locale === "it") return it_careers_openpositions_parttime2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_parttime2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_parttime2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_parttime2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_parttime2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_parttime2(inputs);
+	return en_careers_openpositions_parttime2(inputs);
 });
 var en_careers_openpositions_qadesc2 = () => {
 	return `Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.`;
@@ -952,7 +734,6 @@ var ru_careers_openpositions_qadesc2 = () => {
 };
 var careers_openpositions_qadesc2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_openpositions_qadesc2(inputs);
 	if (locale === "fr") return fr_careers_openpositions_qadesc2(inputs);
 	if (locale === "es") return es_careers_openpositions_qadesc2(inputs);
 	if (locale === "de") return de_careers_openpositions_qadesc2(inputs);
@@ -961,9 +742,270 @@ var careers_openpositions_qadesc2 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_careers_openpositions_qadesc2(inputs);
 	if (locale === "ja") return ja_careers_openpositions_qadesc2(inputs);
 	if (locale === "ko") return ko_careers_openpositions_qadesc2(inputs);
-	return ru_careers_openpositions_qadesc2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_qadesc2(inputs);
+	return en_careers_openpositions_qadesc2(inputs);
 });
-var _tmpl$ = template(`<h2 class="mb-6 text-2xl font-bold text-foreground">`), _tmpl$2 = template(`<div class=space-y-4>`), _tmpl$3 = template(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground"></p><div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span></div></div><button type=button class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">`);
+var en_careers_openpositions_qatitle2 = () => {
+	return `QA Engineer`;
+};
+var fr_careers_openpositions_qatitle2 = () => {
+	return `Ingénieur QA`;
+};
+var es_careers_openpositions_qatitle2 = () => {
+	return `Ingeniero de QA`;
+};
+var de_careers_openpositions_qatitle2 = () => {
+	return `QA-Ingenieur`;
+};
+var it_careers_openpositions_qatitle2 = () => {
+	return `Ingegnere QA`;
+};
+var pt_careers_openpositions_qatitle2 = () => {
+	return `Engenheiro de QA`;
+};
+var zh_careers_openpositions_qatitle2 = () => {
+	return `QA 工程师`;
+};
+var ja_careers_openpositions_qatitle2 = () => {
+	return `QAエンジニア`;
+};
+var ko_careers_openpositions_qatitle2 = () => {
+	return `QA Engineer`;
+};
+var ru_careers_openpositions_qatitle2 = () => {
+	return `QA-инженер`;
+};
+var careers_openpositions_qatitle2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_qatitle2(inputs);
+	if (locale === "es") return es_careers_openpositions_qatitle2(inputs);
+	if (locale === "de") return de_careers_openpositions_qatitle2(inputs);
+	if (locale === "it") return it_careers_openpositions_qatitle2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_qatitle2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_qatitle2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_qatitle2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_qatitle2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_qatitle2(inputs);
+	return en_careers_openpositions_qatitle2(inputs);
+});
+var en_careers_openpositions_remote1 = () => {
+	return `Remote`;
+};
+var fr_careers_openpositions_remote1 = () => {
+	return `À distance`;
+};
+var es_careers_openpositions_remote1 = () => {
+	return `Remoto`;
+};
+var de_careers_openpositions_remote1 = () => {
+	return `Remote`;
+};
+var it_careers_openpositions_remote1 = () => {
+	return `Remoto`;
+};
+var pt_careers_openpositions_remote1 = () => {
+	return `Remoto`;
+};
+var zh_careers_openpositions_remote1 = () => {
+	return `远程`;
+};
+var ja_careers_openpositions_remote1 = () => {
+	return `リモート`;
+};
+var ko_careers_openpositions_remote1 = () => {
+	return `Remote`;
+};
+var ru_careers_openpositions_remote1 = () => {
+	return `Удаленно`;
+};
+var careers_openpositions_remote1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_remote1(inputs);
+	if (locale === "es") return es_careers_openpositions_remote1(inputs);
+	if (locale === "de") return de_careers_openpositions_remote1(inputs);
+	if (locale === "it") return it_careers_openpositions_remote1(inputs);
+	if (locale === "pt") return pt_careers_openpositions_remote1(inputs);
+	if (locale === "zh") return zh_careers_openpositions_remote1(inputs);
+	if (locale === "ja") return ja_careers_openpositions_remote1(inputs);
+	if (locale === "ko") return ko_careers_openpositions_remote1(inputs);
+	if (locale === "ru") return ru_careers_openpositions_remote1(inputs);
+	return en_careers_openpositions_remote1(inputs);
+});
+var en_careers_openpositions_sfremote2 = () => {
+	return `San Francisco / Remote`;
+};
+var fr_careers_openpositions_sfremote2 = () => {
+	return `San Francisco / télétravail`;
+};
+var es_careers_openpositions_sfremote2 = () => {
+	return `San Francisco / Remoto`;
+};
+var de_careers_openpositions_sfremote2 = () => {
+	return `San Francisco / Remote`;
+};
+var it_careers_openpositions_sfremote2 = () => {
+	return `San Francisco / Remoto`;
+};
+var pt_careers_openpositions_sfremote2 = () => {
+	return `San Francisco / Remoto`;
+};
+var zh_careers_openpositions_sfremote2 = () => {
+	return `旧金山 / 远程`;
+};
+var ja_careers_openpositions_sfremote2 = () => {
+	return `サンフランシスコ / リモート`;
+};
+var ko_careers_openpositions_sfremote2 = () => {
+	return `San Francisco / Remote`;
+};
+var ru_careers_openpositions_sfremote2 = () => {
+	return `Сан-Франциско / Удаленно`;
+};
+var careers_openpositions_sfremote2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_sfremote2(inputs);
+	if (locale === "es") return es_careers_openpositions_sfremote2(inputs);
+	if (locale === "de") return de_careers_openpositions_sfremote2(inputs);
+	if (locale === "it") return it_careers_openpositions_sfremote2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_sfremote2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_sfremote2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_sfremote2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_sfremote2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_sfremote2(inputs);
+	return en_careers_openpositions_sfremote2(inputs);
+});
+var en_careers_openpositions_title1 = () => {
+	return `Open Positions`;
+};
+var fr_careers_openpositions_title1 = () => {
+	return `Postes ouverts`;
+};
+var es_careers_openpositions_title1 = () => {
+	return `Puestos vacantes`;
+};
+var de_careers_openpositions_title1 = () => {
+	return `Offene Stellen`;
+};
+var it_careers_openpositions_title1 = () => {
+	return `Posizioni aperte`;
+};
+var pt_careers_openpositions_title1 = () => {
+	return `Vagas abertas`;
+};
+var zh_careers_openpositions_title1 = () => {
+	return `开放职位`;
+};
+var ja_careers_openpositions_title1 = () => {
+	return `募集中の職種`;
+};
+var ko_careers_openpositions_title1 = () => {
+	return `Open Positions`;
+};
+var ru_careers_openpositions_title1 = () => {
+	return `Открытые вакансии`;
+};
+var careers_openpositions_title1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_title1(inputs);
+	if (locale === "es") return es_careers_openpositions_title1(inputs);
+	if (locale === "de") return de_careers_openpositions_title1(inputs);
+	if (locale === "it") return it_careers_openpositions_title1(inputs);
+	if (locale === "pt") return pt_careers_openpositions_title1(inputs);
+	if (locale === "zh") return zh_careers_openpositions_title1(inputs);
+	if (locale === "ja") return ja_careers_openpositions_title1(inputs);
+	if (locale === "ko") return ko_careers_openpositions_title1(inputs);
+	if (locale === "ru") return ru_careers_openpositions_title1(inputs);
+	return en_careers_openpositions_title1(inputs);
+});
+var en_careers_openpositions_writerdesc2 = () => {
+	return `Create comprehensive guides, API references, and tutorials for our benchmarking platform.`;
+};
+var fr_careers_openpositions_writerdesc2 = () => {
+	return `Guides, références d'API et tutoriels pour la plateforme de benchmark.`;
+};
+var es_careers_openpositions_writerdesc2 = () => {
+	return `Crear guías completas, referencias de API y tutoriales para nuestra plataforma de benchmarking.`;
+};
+var de_careers_openpositions_writerdesc2 = () => {
+	return `Erstellen Sie umfassende Leitfäden, API-Referenzen und Tutorials für unsere Benchmarking-Plattform.`;
+};
+var it_careers_openpositions_writerdesc2 = () => {
+	return `Crea guide complete, riferimenti API e tutorial per la nostra piattaforma di benchmarking.`;
+};
+var pt_careers_openpositions_writerdesc2 = () => {
+	return `Crie guias abrangentes, referências de API e tutoriais para nossa plataforma de benchmarking.`;
+};
+var zh_careers_openpositions_writerdesc2 = () => {
+	return `为我们的基准测试平台编写全面的指南、API 参考和教程。`;
+};
+var ja_careers_openpositions_writerdesc2 = () => {
+	return `ベンチマークプラットフォームのための包括的なガイド、APIリファレンス、およびチュートリアルを作成します。`;
+};
+var ko_careers_openpositions_writerdesc2 = () => {
+	return `Create comprehensive guides, API references, and tutorials for our benchmarking platform.`;
+};
+var ru_careers_openpositions_writerdesc2 = () => {
+	return `Создание подробных руководств, API-справок и туториалов для нашей платформы бенчмаркинга.`;
+};
+var careers_openpositions_writerdesc2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_writerdesc2(inputs);
+	if (locale === "es") return es_careers_openpositions_writerdesc2(inputs);
+	if (locale === "de") return de_careers_openpositions_writerdesc2(inputs);
+	if (locale === "it") return it_careers_openpositions_writerdesc2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_writerdesc2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_writerdesc2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_writerdesc2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_writerdesc2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_writerdesc2(inputs);
+	return en_careers_openpositions_writerdesc2(inputs);
+});
+var en_careers_openpositions_writertitle2 = () => {
+	return `Technical Writer`;
+};
+var fr_careers_openpositions_writertitle2 = () => {
+	return `Rédacteur·rice technique`;
+};
+var es_careers_openpositions_writertitle2 = () => {
+	return `Redactor técnico`;
+};
+var de_careers_openpositions_writertitle2 = () => {
+	return `Technischer Redakteur`;
+};
+var it_careers_openpositions_writertitle2 = () => {
+	return `Scrittore tecnico`;
+};
+var pt_careers_openpositions_writertitle2 = () => {
+	return `Redator técnico`;
+};
+var zh_careers_openpositions_writertitle2 = () => {
+	return `技术作家`;
+};
+var ja_careers_openpositions_writertitle2 = () => {
+	return `テクニカルライター`;
+};
+var ko_careers_openpositions_writertitle2 = () => {
+	return `Technical Writer`;
+};
+var ru_careers_openpositions_writertitle2 = () => {
+	return `Технический писатель`;
+};
+var careers_openpositions_writertitle2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_openpositions_writertitle2(inputs);
+	if (locale === "es") return es_careers_openpositions_writertitle2(inputs);
+	if (locale === "de") return de_careers_openpositions_writertitle2(inputs);
+	if (locale === "it") return it_careers_openpositions_writertitle2(inputs);
+	if (locale === "pt") return pt_careers_openpositions_writertitle2(inputs);
+	if (locale === "zh") return zh_careers_openpositions_writertitle2(inputs);
+	if (locale === "ja") return ja_careers_openpositions_writertitle2(inputs);
+	if (locale === "ko") return ko_careers_openpositions_writertitle2(inputs);
+	if (locale === "ru") return ru_careers_openpositions_writertitle2(inputs);
+	return en_careers_openpositions_writertitle2(inputs);
+});
+var _tmpl$ = template(`<h2 class="mb-6 text-2xl font-bold text-foreground">`);
+var _tmpl$2 = template(`<div class=space-y-4>`);
+var _tmpl$3 = template(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground"></p><div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span></div></div><button type=button class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">`);
 function OpenPositions() {
 	const openings = () => [
 		{

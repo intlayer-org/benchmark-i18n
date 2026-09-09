@@ -1,41 +1,54 @@
-"use client";
-import { useLayoutEffect as e } from "react";
-import { jsx as t, jsxs as n } from "react/jsx-runtime";
-function r(t) {
-	typeof performance < "u" && performance.mark && performance.mark(`${t}-start`), e(() => {
-		if (typeof performance < "u" && performance.mark && performance.measure) {
-			performance.mark(`${t}-end`);
-			try {
-				performance.measure(`${t}-render`, `${t}-start`, `${t}-end`);
-			} catch {}
-		}
-	}, [t]);
-}
-function i() {
-	return r("Hero"), n("section", {
+import { jsxDEV as e } from "react/jsx-dev-runtime";
+var t = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-base-app/components/pages/home/Hero.tsx";
+function n() {
+	return e("section", {
 		className: "mb-16 text-center",
 		children: [
-			t("h1", {
+			e("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
 				children: "i18n Benchmark"
-			}),
-			t("p", {
+			}, void 0, !1, {
+				fileName: t,
+				lineNumber: 4,
+				columnNumber: 7
+			}, this),
+			e("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
 				children: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
-			}),
-			n("div", {
+			}, void 0, !1, {
+				fileName: t,
+				lineNumber: 7,
+				columnNumber: 7
+			}, this),
+			e("div", {
 				className: "mt-8 flex justify-center gap-4",
-				children: [t("button", {
+				children: [e("button", {
 					type: "button",
 					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: "View Results"
-				}), t("button", {
+				}, void 0, !1, {
+					fileName: t,
+					lineNumber: 13,
+					columnNumber: 9
+				}, this), e("button", {
 					type: "button",
 					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: "Methodology"
-				})]
-			})
+				}, void 0, !1, {
+					fileName: t,
+					lineNumber: 19,
+					columnNumber: 9
+				}, this)]
+			}, void 0, !0, {
+				fileName: t,
+				lineNumber: 12,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, !0, {
+		fileName: t,
+		lineNumber: 3,
+		columnNumber: 5
+	}, this);
 }
-export { i as default };
+export { n as default };

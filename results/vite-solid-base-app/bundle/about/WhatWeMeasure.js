@@ -1,6 +1,7 @@
 import { createComponent, insert, template } from "solid-js/web";
 import { For } from "solid-js";
-var _tmpl$ = template(`<section class="mx-auto mt-12 max-w-3xl"><h2 class="mb-4 text-2xl font-bold text-foreground">What We Measure</h2><ul class=space-y-4>`), _tmpl$2 = template(`<li class="rounded-md border border-border p-4"><span class="block text-sm font-bold text-primary"></span><span class="mt-1 block text-sm text-muted-foreground">`);
+var _tmpl$ = template(`<section class="mx-auto mt-12 max-w-3xl"><h2 class="mb-4 text-2xl font-bold text-foreground">What We Measure</h2><ul class=space-y-4>`);
+var _tmpl$2 = template(`<li class="rounded-md border border-border p-4"><span class="block text-sm font-bold text-primary"></span><span class="mt-1 block text-sm text-muted-foreground">`);
 function WhatWeMeasure() {
 	const metrics = [
 		{

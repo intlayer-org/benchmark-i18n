@@ -43,14 +43,10 @@ function r(r) {
 	];
 	var a = n();
 	e.each(a, 5, () => i, (e) => e.title, (n, r) => {
-		var i = t(), a = e.child(i), o = e.child(a), s = e.child(o, !0);
-		e.reset(o);
-		var c = e.sibling(o, 2), l = e.child(c, !0);
-		e.reset(c), e.reset(a);
-		var u = e.sibling(a, 2), d = e.child(u, !0);
-		e.reset(u);
-		var f = e.sibling(u, 2), p = e.child(f, !0);
-		e.reset(f), e.next(2), e.reset(i), e.template_effect(() => {
+		var i = t(), a = e.child(i), o = e.child(a), s = e.only_child(o, !0), c = e.sibling(o, 2), l = e.only_child(c, !0);
+		e.reset(a);
+		var u = e.sibling(a, 2), d = e.only_child(u, !0), f = e.sibling(u, 2), p = e.only_child(f, !0);
+		e.next(2), e.reset(i), e.template_effect(() => {
 			e.set_text(s, e.get(r).category), e.set_text(l, e.get(r).date), e.set_text(d, e.get(r).title), e.set_text(p, e.get(r).excerpt);
 		}), e.append(n, i);
 	}), e.reset(a), e.append(r, a);

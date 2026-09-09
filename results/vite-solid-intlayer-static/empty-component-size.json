@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-04-30T06:00:25.005Z",
+  "timestamp": "2026-09-09T19:14:03.933Z",
   "packageName": "vite-solid-intlayer-static",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 12326,
-    "totalMinifiedBytes": 8648,
-    "totalGzipBytes": 3189
+    "totalUnminifiedBytes": 19568,
+    "totalMinifiedBytes": 12037,
+    "totalGzipBytes": 4416
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 12326,
-      "unminifiedGzipBytes": 3873,
-      "minifiedBytes": 8648,
-      "minifiedGzipBytes": 3189
+      "unminifiedBytes": 19568,
+      "unminifiedGzipBytes": 5731,
+      "minifiedBytes": 12037,
+      "minifiedGzipBytes": 4416
     }
   ]
 }

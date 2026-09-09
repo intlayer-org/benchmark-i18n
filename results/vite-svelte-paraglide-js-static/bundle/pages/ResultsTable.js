@@ -23,27 +23,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -66,7 +45,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -108,6 +87,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -129,6 +109,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -139,100 +124,112 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_home_resultstable_title1 = () => {
-	return `Sample Results`;
+var en_home_resultstable_builtin2 = () => {
+	return `Built-in`;
 };
-var fr_home_resultstable_title1 = () => {
-	return `Exemple de résultats`;
+var fr_home_resultstable_builtin2 = () => {
+	return `Intégré`;
 };
-var es_home_resultstable_title1 = () => {
-	return `Resultados de muestra`;
+var es_home_resultstable_builtin2 = () => {
+	return `Integrado`;
 };
-var de_home_resultstable_title1 = () => {
-	return `Beispielergebnisse`;
+var de_home_resultstable_builtin2 = () => {
+	return `Integriert`;
 };
-var it_home_resultstable_title1 = () => {
-	return `Risultati di esempio`;
+var it_home_resultstable_builtin2 = () => {
+	return `Integrato`;
 };
-var pt_home_resultstable_title1 = () => {
-	return `Resultados de exemplo`;
+var pt_home_resultstable_builtin2 = () => {
+	return `Integrado`;
 };
-var zh_home_resultstable_title1 = () => {
-	return `示例结果`;
+var zh_home_resultstable_builtin2 = () => {
+	return `内置`;
 };
-var ja_home_resultstable_title1 = () => {
-	return `サンプル結果`;
+var ja_home_resultstable_builtin2 = () => {
+	return `内蔵`;
 };
-var ko_home_resultstable_title1 = () => {
-	return `Sample Results`;
+var ko_home_resultstable_builtin2 = () => {
+	return `Built-in`;
 };
-var ru_home_resultstable_title1 = () => {
-	return `Примеры результатов`;
+var ru_home_resultstable_builtin2 = () => {
+	return `Встроено`;
 };
-var home_resultstable_title1 = ((inputs = {}, options = {}) => {
+var home_resultstable_builtin2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_resultstable_title1(inputs);
-	if (locale === "fr") return fr_home_resultstable_title1(inputs);
-	if (locale === "es") return es_home_resultstable_title1(inputs);
-	if (locale === "de") return de_home_resultstable_title1(inputs);
-	if (locale === "it") return it_home_resultstable_title1(inputs);
-	if (locale === "pt") return pt_home_resultstable_title1(inputs);
-	if (locale === "zh") return zh_home_resultstable_title1(inputs);
-	if (locale === "ja") return ja_home_resultstable_title1(inputs);
-	if (locale === "ko") return ko_home_resultstable_title1(inputs);
-	return ru_home_resultstable_title1(inputs);
-});
-var en_home_resultstable_library1 = () => {
-	return `Library`;
-};
-var fr_home_resultstable_library1 = () => {
-	return `Bibliothèque`;
-};
-var es_home_resultstable_library1 = () => {
-	return `Biblioteca`;
-};
-var de_home_resultstable_library1 = () => {
-	return `Bibliothek`;
-};
-var it_home_resultstable_library1 = () => {
-	return `Libreria`;
-};
-var pt_home_resultstable_library1 = () => {
-	return `Biblioteca`;
-};
-var zh_home_resultstable_library1 = () => {
-	return `库`;
-};
-var ja_home_resultstable_library1 = () => {
-	return `ライブラリ`;
-};
-var ko_home_resultstable_library1 = () => {
-	return `Library`;
-};
-var ru_home_resultstable_library1 = () => {
-	return `Библиотека`;
-};
-var home_resultstable_library1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_resultstable_library1(inputs);
-	if (locale === "fr") return fr_home_resultstable_library1(inputs);
-	if (locale === "es") return es_home_resultstable_library1(inputs);
-	if (locale === "de") return de_home_resultstable_library1(inputs);
-	if (locale === "it") return it_home_resultstable_library1(inputs);
-	if (locale === "pt") return pt_home_resultstable_library1(inputs);
-	if (locale === "zh") return zh_home_resultstable_library1(inputs);
-	if (locale === "ja") return ja_home_resultstable_library1(inputs);
-	if (locale === "ko") return ko_home_resultstable_library1(inputs);
-	return ru_home_resultstable_library1(inputs);
+	if (locale === "fr") return fr_home_resultstable_builtin2(inputs);
+	if (locale === "es") return es_home_resultstable_builtin2(inputs);
+	if (locale === "de") return de_home_resultstable_builtin2(inputs);
+	if (locale === "it") return it_home_resultstable_builtin2(inputs);
+	if (locale === "pt") return pt_home_resultstable_builtin2(inputs);
+	if (locale === "zh") return zh_home_resultstable_builtin2(inputs);
+	if (locale === "ja") return ja_home_resultstable_builtin2(inputs);
+	if (locale === "ko") return ko_home_resultstable_builtin2(inputs);
+	if (locale === "ru") return ru_home_resultstable_builtin2(inputs);
+	return en_home_resultstable_builtin2(inputs);
 });
 var en_home_resultstable_bundlesize2 = () => {
 	return `Bundle Size`;
@@ -266,7 +263,6 @@ var ru_home_resultstable_bundlesize2 = () => {
 };
 var home_resultstable_bundlesize2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_resultstable_bundlesize2(inputs);
 	if (locale === "fr") return fr_home_resultstable_bundlesize2(inputs);
 	if (locale === "es") return es_home_resultstable_bundlesize2(inputs);
 	if (locale === "de") return de_home_resultstable_bundlesize2(inputs);
@@ -275,50 +271,8 @@ var home_resultstable_bundlesize2 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_home_resultstable_bundlesize2(inputs);
 	if (locale === "ja") return ja_home_resultstable_bundlesize2(inputs);
 	if (locale === "ko") return ko_home_resultstable_bundlesize2(inputs);
-	return ru_home_resultstable_bundlesize2(inputs);
-});
-var en_home_resultstable_lookuptime2 = () => {
-	return `Lookup Time`;
-};
-var fr_home_resultstable_lookuptime2 = () => {
-	return `Temps de recherche`;
-};
-var es_home_resultstable_lookuptime2 = () => {
-	return `Tiempo de búsqueda`;
-};
-var de_home_resultstable_lookuptime2 = () => {
-	return `Lookup-Zeit`;
-};
-var it_home_resultstable_lookuptime2 = () => {
-	return `Tempo di ricerca`;
-};
-var pt_home_resultstable_lookuptime2 = () => {
-	return `Tempo de Busca`;
-};
-var zh_home_resultstable_lookuptime2 = () => {
-	return `查找时间`;
-};
-var ja_home_resultstable_lookuptime2 = () => {
-	return `ルックアップ時間`;
-};
-var ko_home_resultstable_lookuptime2 = () => {
-	return `Lookup Time`;
-};
-var ru_home_resultstable_lookuptime2 = () => {
-	return `Время поиска`;
-};
-var home_resultstable_lookuptime2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_resultstable_lookuptime2(inputs);
-	if (locale === "fr") return fr_home_resultstable_lookuptime2(inputs);
-	if (locale === "es") return es_home_resultstable_lookuptime2(inputs);
-	if (locale === "de") return de_home_resultstable_lookuptime2(inputs);
-	if (locale === "it") return it_home_resultstable_lookuptime2(inputs);
-	if (locale === "pt") return pt_home_resultstable_lookuptime2(inputs);
-	if (locale === "zh") return zh_home_resultstable_lookuptime2(inputs);
-	if (locale === "ja") return ja_home_resultstable_lookuptime2(inputs);
-	if (locale === "ko") return ko_home_resultstable_lookuptime2(inputs);
-	return ru_home_resultstable_lookuptime2(inputs);
+	if (locale === "ru") return ru_home_resultstable_bundlesize2(inputs);
+	return en_home_resultstable_bundlesize2(inputs);
 });
 var en_home_resultstable_lazyloading2 = () => {
 	return `Lazy Loading`;
@@ -352,7 +306,6 @@ var ru_home_resultstable_lazyloading2 = () => {
 };
 var home_resultstable_lazyloading2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_resultstable_lazyloading2(inputs);
 	if (locale === "fr") return fr_home_resultstable_lazyloading2(inputs);
 	if (locale === "es") return es_home_resultstable_lazyloading2(inputs);
 	if (locale === "de") return de_home_resultstable_lazyloading2(inputs);
@@ -361,50 +314,94 @@ var home_resultstable_lazyloading2 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_home_resultstable_lazyloading2(inputs);
 	if (locale === "ja") return ja_home_resultstable_lazyloading2(inputs);
 	if (locale === "ko") return ko_home_resultstable_lazyloading2(inputs);
-	return ru_home_resultstable_lazyloading2(inputs);
+	if (locale === "ru") return ru_home_resultstable_lazyloading2(inputs);
+	return en_home_resultstable_lazyloading2(inputs);
 });
-var en_home_resultstable_yes1 = () => {
-	return `Yes`;
+var en_home_resultstable_library1 = () => {
+	return `Library`;
 };
-var fr_home_resultstable_yes1 = () => {
-	return `Oui`;
+var fr_home_resultstable_library1 = () => {
+	return `Bibliothèque`;
 };
-var es_home_resultstable_yes1 = () => {
-	return `Sí`;
+var es_home_resultstable_library1 = () => {
+	return `Biblioteca`;
 };
-var de_home_resultstable_yes1 = () => {
-	return `Ja`;
+var de_home_resultstable_library1 = () => {
+	return `Bibliothek`;
 };
-var it_home_resultstable_yes1 = () => {
-	return `Sì`;
+var it_home_resultstable_library1 = () => {
+	return `Libreria`;
 };
-var pt_home_resultstable_yes1 = () => {
-	return `Sim`;
+var pt_home_resultstable_library1 = () => {
+	return `Biblioteca`;
 };
-var zh_home_resultstable_yes1 = () => {
-	return `是`;
+var zh_home_resultstable_library1 = () => {
+	return `库`;
 };
-var ja_home_resultstable_yes1 = () => {
-	return `はい`;
+var ja_home_resultstable_library1 = () => {
+	return `ライブラリ`;
 };
-var ko_home_resultstable_yes1 = () => {
-	return `Yes`;
+var ko_home_resultstable_library1 = () => {
+	return `Library`;
 };
-var ru_home_resultstable_yes1 = () => {
-	return `Да`;
+var ru_home_resultstable_library1 = () => {
+	return `Библиотека`;
 };
-var home_resultstable_yes1 = ((inputs = {}, options = {}) => {
+var home_resultstable_library1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_resultstable_yes1(inputs);
-	if (locale === "fr") return fr_home_resultstable_yes1(inputs);
-	if (locale === "es") return es_home_resultstable_yes1(inputs);
-	if (locale === "de") return de_home_resultstable_yes1(inputs);
-	if (locale === "it") return it_home_resultstable_yes1(inputs);
-	if (locale === "pt") return pt_home_resultstable_yes1(inputs);
-	if (locale === "zh") return zh_home_resultstable_yes1(inputs);
-	if (locale === "ja") return ja_home_resultstable_yes1(inputs);
-	if (locale === "ko") return ko_home_resultstable_yes1(inputs);
-	return ru_home_resultstable_yes1(inputs);
+	if (locale === "fr") return fr_home_resultstable_library1(inputs);
+	if (locale === "es") return es_home_resultstable_library1(inputs);
+	if (locale === "de") return de_home_resultstable_library1(inputs);
+	if (locale === "it") return it_home_resultstable_library1(inputs);
+	if (locale === "pt") return pt_home_resultstable_library1(inputs);
+	if (locale === "zh") return zh_home_resultstable_library1(inputs);
+	if (locale === "ja") return ja_home_resultstable_library1(inputs);
+	if (locale === "ko") return ko_home_resultstable_library1(inputs);
+	if (locale === "ru") return ru_home_resultstable_library1(inputs);
+	return en_home_resultstable_library1(inputs);
+});
+var en_home_resultstable_lookuptime2 = () => {
+	return `Lookup Time`;
+};
+var fr_home_resultstable_lookuptime2 = () => {
+	return `Temps de recherche`;
+};
+var es_home_resultstable_lookuptime2 = () => {
+	return `Tiempo de búsqueda`;
+};
+var de_home_resultstable_lookuptime2 = () => {
+	return `Lookup-Zeit`;
+};
+var it_home_resultstable_lookuptime2 = () => {
+	return `Tempo di ricerca`;
+};
+var pt_home_resultstable_lookuptime2 = () => {
+	return `Tempo de Busca`;
+};
+var zh_home_resultstable_lookuptime2 = () => {
+	return `查找时间`;
+};
+var ja_home_resultstable_lookuptime2 = () => {
+	return `ルックアップ時間`;
+};
+var ko_home_resultstable_lookuptime2 = () => {
+	return `Lookup Time`;
+};
+var ru_home_resultstable_lookuptime2 = () => {
+	return `Время поиска`;
+};
+var home_resultstable_lookuptime2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_home_resultstable_lookuptime2(inputs);
+	if (locale === "es") return es_home_resultstable_lookuptime2(inputs);
+	if (locale === "de") return de_home_resultstable_lookuptime2(inputs);
+	if (locale === "it") return it_home_resultstable_lookuptime2(inputs);
+	if (locale === "pt") return pt_home_resultstable_lookuptime2(inputs);
+	if (locale === "zh") return zh_home_resultstable_lookuptime2(inputs);
+	if (locale === "ja") return ja_home_resultstable_lookuptime2(inputs);
+	if (locale === "ko") return ko_home_resultstable_lookuptime2(inputs);
+	if (locale === "ru") return ru_home_resultstable_lookuptime2(inputs);
+	return en_home_resultstable_lookuptime2(inputs);
 });
 var en_home_resultstable_manual1 = () => {
 	return `Manual`;
@@ -438,7 +435,6 @@ var ru_home_resultstable_manual1 = () => {
 };
 var home_resultstable_manual1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_resultstable_manual1(inputs);
 	if (locale === "fr") return fr_home_resultstable_manual1(inputs);
 	if (locale === "es") return es_home_resultstable_manual1(inputs);
 	if (locale === "de") return de_home_resultstable_manual1(inputs);
@@ -447,50 +443,94 @@ var home_resultstable_manual1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_home_resultstable_manual1(inputs);
 	if (locale === "ja") return ja_home_resultstable_manual1(inputs);
 	if (locale === "ko") return ko_home_resultstable_manual1(inputs);
-	return ru_home_resultstable_manual1(inputs);
+	if (locale === "ru") return ru_home_resultstable_manual1(inputs);
+	return en_home_resultstable_manual1(inputs);
 });
-var en_home_resultstable_builtin2 = () => {
-	return `Built-in`;
+var en_home_resultstable_title1 = () => {
+	return `Sample Results`;
 };
-var fr_home_resultstable_builtin2 = () => {
-	return `Intégré`;
+var fr_home_resultstable_title1 = () => {
+	return `Exemple de résultats`;
 };
-var es_home_resultstable_builtin2 = () => {
-	return `Integrado`;
+var es_home_resultstable_title1 = () => {
+	return `Resultados de muestra`;
 };
-var de_home_resultstable_builtin2 = () => {
-	return `Integriert`;
+var de_home_resultstable_title1 = () => {
+	return `Beispielergebnisse`;
 };
-var it_home_resultstable_builtin2 = () => {
-	return `Integrato`;
+var it_home_resultstable_title1 = () => {
+	return `Risultati di esempio`;
 };
-var pt_home_resultstable_builtin2 = () => {
-	return `Integrado`;
+var pt_home_resultstable_title1 = () => {
+	return `Resultados de exemplo`;
 };
-var zh_home_resultstable_builtin2 = () => {
-	return `内置`;
+var zh_home_resultstable_title1 = () => {
+	return `示例结果`;
 };
-var ja_home_resultstable_builtin2 = () => {
-	return `内蔵`;
+var ja_home_resultstable_title1 = () => {
+	return `サンプル結果`;
 };
-var ko_home_resultstable_builtin2 = () => {
-	return `Built-in`;
+var ko_home_resultstable_title1 = () => {
+	return `Sample Results`;
 };
-var ru_home_resultstable_builtin2 = () => {
-	return `Встроено`;
+var ru_home_resultstable_title1 = () => {
+	return `Примеры результатов`;
 };
-var home_resultstable_builtin2 = ((inputs = {}, options = {}) => {
+var home_resultstable_title1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_resultstable_builtin2(inputs);
-	if (locale === "fr") return fr_home_resultstable_builtin2(inputs);
-	if (locale === "es") return es_home_resultstable_builtin2(inputs);
-	if (locale === "de") return de_home_resultstable_builtin2(inputs);
-	if (locale === "it") return it_home_resultstable_builtin2(inputs);
-	if (locale === "pt") return pt_home_resultstable_builtin2(inputs);
-	if (locale === "zh") return zh_home_resultstable_builtin2(inputs);
-	if (locale === "ja") return ja_home_resultstable_builtin2(inputs);
-	if (locale === "ko") return ko_home_resultstable_builtin2(inputs);
-	return ru_home_resultstable_builtin2(inputs);
+	if (locale === "fr") return fr_home_resultstable_title1(inputs);
+	if (locale === "es") return es_home_resultstable_title1(inputs);
+	if (locale === "de") return de_home_resultstable_title1(inputs);
+	if (locale === "it") return it_home_resultstable_title1(inputs);
+	if (locale === "pt") return pt_home_resultstable_title1(inputs);
+	if (locale === "zh") return zh_home_resultstable_title1(inputs);
+	if (locale === "ja") return ja_home_resultstable_title1(inputs);
+	if (locale === "ko") return ko_home_resultstable_title1(inputs);
+	if (locale === "ru") return ru_home_resultstable_title1(inputs);
+	return en_home_resultstable_title1(inputs);
+});
+var en_home_resultstable_yes1 = () => {
+	return `Yes`;
+};
+var fr_home_resultstable_yes1 = () => {
+	return `Oui`;
+};
+var es_home_resultstable_yes1 = () => {
+	return `Sí`;
+};
+var de_home_resultstable_yes1 = () => {
+	return `Ja`;
+};
+var it_home_resultstable_yes1 = () => {
+	return `Sì`;
+};
+var pt_home_resultstable_yes1 = () => {
+	return `Sim`;
+};
+var zh_home_resultstable_yes1 = () => {
+	return `是`;
+};
+var ja_home_resultstable_yes1 = () => {
+	return `はい`;
+};
+var ko_home_resultstable_yes1 = () => {
+	return `Yes`;
+};
+var ru_home_resultstable_yes1 = () => {
+	return `Да`;
+};
+var home_resultstable_yes1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_home_resultstable_yes1(inputs);
+	if (locale === "es") return es_home_resultstable_yes1(inputs);
+	if (locale === "de") return de_home_resultstable_yes1(inputs);
+	if (locale === "it") return it_home_resultstable_yes1(inputs);
+	if (locale === "pt") return pt_home_resultstable_yes1(inputs);
+	if (locale === "zh") return zh_home_resultstable_yes1(inputs);
+	if (locale === "ja") return ja_home_resultstable_yes1(inputs);
+	if (locale === "ko") return ko_home_resultstable_yes1(inputs);
+	if (locale === "ru") return ru_home_resultstable_yes1(inputs);
+	return en_home_resultstable_yes1(inputs);
 });
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -503,8 +543,8 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var root_1 = $.from_html(`<tr class="border-t border-border"><td class="px-4 py-3 font-medium text-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td></tr>`);
-var root = $.from_html(`<section><h2 class="mb-6 text-2xl font-bold text-foreground"> </h2> <div class="overflow-x-auto rounded-lg border border-border"><table class="w-full text-sm"><thead class="bg-muted"><tr><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th></tr></thead><tbody></tbody></table></div></section>`);
+var root = $.from_html(`<tr class="border-t border-border"><td class="px-4 py-3 font-medium text-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td></tr>`);
+var root_1 = $.from_html(`<section><h2 class="mb-6 text-2xl font-bold text-foreground"> </h2> <div class="overflow-x-auto rounded-lg border border-border"><table class="w-full text-sm"><thead class="bg-muted"><tr><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th></tr></thead><tbody></tbody></table></div></section>`);
 function ResultsTable($$anchor, $$props) {
 	$.push($$props, false);
 	usePerformanceMeasure("ResultsTable");
@@ -535,43 +575,34 @@ function ResultsTable($$anchor, $$props) {
 		}
 	];
 	$.init();
-	var section = root();
+	var section = root_1();
 	var h2 = $.child(section);
-	var text = $.child(h2, true);
-	$.reset(h2);
+	var text = $.only_child(h2, true);
 	var div = $.sibling(h2, 2);
 	var table = $.child(div);
 	var thead = $.child(table);
 	var tr = $.child(thead);
 	var th = $.child(tr);
-	var text_1 = $.child(th, true);
-	$.reset(th);
+	var text_1 = $.only_child(th, true);
 	var th_1 = $.sibling(th);
-	var text_2 = $.child(th_1, true);
-	$.reset(th_1);
+	var text_2 = $.only_child(th_1, true);
 	var th_2 = $.sibling(th_1);
-	var text_3 = $.child(th_2, true);
-	$.reset(th_2);
+	var text_3 = $.only_child(th_2, true);
 	var th_3 = $.sibling(th_2);
-	var text_4 = $.child(th_3, true);
-	$.reset(th_3);
+	var text_4 = $.only_child(th_3, true);
 	$.reset(tr);
 	$.reset(thead);
 	var tbody = $.sibling(thead);
 	$.each(tbody, 5, () => results, $.index, ($$anchor, r) => {
-		var tr_1 = root_1();
+		var tr_1 = root();
 		var td = $.child(tr_1);
-		var text_5 = $.child(td, true);
-		$.reset(td);
+		var text_5 = $.only_child(td, true);
 		var td_1 = $.sibling(td);
-		var text_6 = $.child(td_1, true);
-		$.reset(td_1);
+		var text_6 = $.only_child(td_1, true);
 		var td_2 = $.sibling(td_1);
-		var text_7 = $.child(td_2, true);
-		$.reset(td_2);
+		var text_7 = $.only_child(td_2, true);
 		var td_3 = $.sibling(td_2);
-		var text_8 = $.child(td_3, true);
-		$.reset(td_3);
+		var text_8 = $.only_child(td_3, true);
 		$.reset(tr_1);
 		$.template_effect(() => {
 			$.set_text(text_5, $.get(r).lib);

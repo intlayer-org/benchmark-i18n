@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import NextLink from "next/link";
 import { useParams } from "next/navigation";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useRouter } from "next/router";
+var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Link.tsx";
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
 function localizeHref(href, locale) {
 	if (!href.startsWith("/")) return href;
@@ -11,24 +12,36 @@ function localizeHref(href, locale) {
 }
 var Link = ({ href, children, ...props }) => {
 	const locale = useParams().lang ?? "en";
-	if (href == null || typeof href !== "string") return jsx(NextLink, {
+	if (href == null || typeof href !== "string") return jsxDEV(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	});
-	if (checkIsExternalLink(href)) return jsx(NextLink, {
+	}, void 0, false, {
+		fileName: _jsxFileName$4,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0);
+	if (checkIsExternalLink(href)) return jsxDEV(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	});
-	return jsx(NextLink, {
+	}, void 0, false, {
+		fileName: _jsxFileName$4,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0);
+	return jsxDEV(NextLink, {
 		href: localizeHref(href, locale),
 		prefetch: false,
 		...props,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$4,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
 };
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -211,8 +224,13 @@ function createTranslation(defaultNS) {
 			lang
 		}), defaultNS);
 	};
+	var nsKey = namespaces ? Object.keys(namespaces).sort().join("|") : "";
 	return {
-		t: isServer() ? getT() : useMemo(getT, [defaultNS, lang]),
+		t: isServer() ? getT() : useMemo(getT, [
+			defaultNS,
+			lang,
+			nsKey
+		]),
 		lang
 	};
 }
@@ -236,6 +254,7 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Footer.tsx";
 function Footer() {
 	const { t } = useTranslation("shared");
 	const footerLinks = [
@@ -255,51 +274,115 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsx("footer", {
+	return jsxDEV("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxs("div", {
+		children: jsxDEV("div", {
 			className: "container py-8",
-			children: [jsxs("div", {
+			children: [jsxDEV("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxs("div", { children: [jsx("h3", {
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 32,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("footer.anOpenSourceTestApplication")
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 35,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 31,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("footer.resources")
-					}), jsx("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 40,
+						columnNumber: 13
+					}, this), jsxDEV("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
+						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
 							href: linkEl.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) : jsx("a", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 47,
+							columnNumber: 21
+						}, this) : jsxDEV("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) }, linkEl.label))
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 54,
+							columnNumber: 21
+						}, this) }, linkEl.label, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 45,
+							columnNumber: 17
+						}, this))
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 43,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 39,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("footer.contact")
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 68,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 71,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 67,
+						columnNumber: 11
+					}, this)
 				]
-			}), jsx("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 30,
+				columnNumber: 9
+			}, this), jsxDEV("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: t("footer.builtWith")
-			})]
-		})
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 76,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 29,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 28,
+		columnNumber: 5
+	}, this);
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -404,18 +487,18 @@ var i18n_default = {
 		"./locales/de/settings.json": () => import("../locales/de/settings.json"),
 		"./locales/de/shared.json": () => import("../locales/de/shared.json"),
 		"./locales/de/team.json": () => import("../locales/de/team.json"),
-		"./locales/en/about.json": () => import("./about-DrPeV7Zp.js"),
-		"./locales/en/blog.json": () => import("./blog-uUHBPsDN.js"),
-		"./locales/en/careers.json": () => import("./careers-CT6E1l5K.js"),
-		"./locales/en/contact.json": () => import("./contact-CZtCE9BE.js"),
-		"./locales/en/faq.json": () => import("./faq-BPrPn6m_.js"),
-		"./locales/en/home.json": () => import("./home-CSEOOcM2.js"),
-		"./locales/en/pricing.json": () => import("./pricing-BjZqjpMz.js"),
-		"./locales/en/products.json": () => import("./products-D8gD60Ao.js"),
-		"./locales/en/route.json": () => import("./route-UQnagTfi.js"),
-		"./locales/en/settings.json": () => import("./settings-BEbFGJAX.js"),
-		"./locales/en/shared.json": () => import("./shared-DxRtm_ck.js"),
-		"./locales/en/team.json": () => import("./team-tSYxAuqK.js"),
+		"./locales/en/about.json": () => import("./about-BjiQTpAt.js"),
+		"./locales/en/blog.json": () => import("./blog-BwncXaOP.js"),
+		"./locales/en/careers.json": () => import("./careers-CvGX3fKY.js"),
+		"./locales/en/contact.json": () => import("./contact-BAuKu6kU.js"),
+		"./locales/en/faq.json": () => import("./faq-741pCL7k.js"),
+		"./locales/en/home.json": () => import("./home-DQacKLe5.js"),
+		"./locales/en/pricing.json": () => import("./pricing-AooD5teS.js"),
+		"./locales/en/products.json": () => import("./products-5xHH59P6.js"),
+		"./locales/en/route.json": () => import("./route-D4J5jMKf.js"),
+		"./locales/en/settings.json": () => import("./settings-DcVMUGUO.js"),
+		"./locales/en/shared.json": () => import("./shared-B7H0Al_Q.js"),
+		"./locales/en/team.json": () => import("./team-BTWsMT4N.js"),
 		"./locales/es/about.json": () => import("../locales/es/about.json"),
 		"./locales/es/blog.json": () => import("../locales/es/blog.json"),
 		"./locales/es/careers.json": () => import("../locales/es/careers.json"),
@@ -536,6 +619,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -547,8 +631,13 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx";
 var MEASURE_NAMESPACES = [
 	"about",
 	"blog",
@@ -583,17 +672,34 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		lang: locale,
 		namespaces,
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 58,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 57,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Footer, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var about_default = {

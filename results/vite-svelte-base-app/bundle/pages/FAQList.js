@@ -1,8 +1,8 @@
 import "svelte/internal/disclose-version";
 import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
-var root_1 = $.from_html(`<details class="group rounded-lg border border-border bg-card"><summary class="cursor-pointer px-6 py-4 text-sm font-medium text-foreground transition-colors hover:bg-accent/50"> </summary> <p class="px-6 pb-4 text-sm text-muted-foreground"> </p></details>`);
-var root = $.from_html(`<div class="mx-auto max-w-3xl space-y-4"></div>`);
+var root = $.from_html(`<details class="group rounded-lg border border-border bg-card"><summary class="cursor-pointer px-6 py-4 text-sm font-medium text-foreground transition-colors hover:bg-accent/50"> </summary> <p class="px-6 pb-4 text-sm text-muted-foreground"> </p></details>`);
+var root_1 = $.from_html(`<div class="mx-auto max-w-3xl space-y-4"></div>`);
 function FAQList($$anchor) {
 	const faqs = [
 		{
@@ -38,15 +38,13 @@ function FAQList($$anchor) {
 			a: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
 		}
 	];
-	var div = root();
+	var div = root_1();
 	$.each(div, 5, () => faqs, (f) => f.q, ($$anchor, f) => {
-		var details = root_1();
+		var details = root();
 		var summary = $.child(details);
-		var text = $.child(summary, true);
-		$.reset(summary);
+		var text = $.only_child(summary, true);
 		var p = $.sibling(summary, 2);
-		var text_1 = $.child(p, true);
-		$.reset(p);
+		var text_1 = $.only_child(p, true);
 		$.reset(details);
 		$.template_effect(() => {
 			$.set_text(text, $.get(f).q);

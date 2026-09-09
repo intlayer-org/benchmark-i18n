@@ -8,7 +8,7 @@ var i = Object.create, a = Object.defineProperty, o = Object.getOwnPropertyDescr
 		enumerable: !(r = o(t, d)) || r.enumerable
 	});
 	return e;
-}, f = (e, t, n) => (n = e == null ? {} : i(c(e)), d(t || !e || !e.__esModule ? a(n, "default", {
+}, f = (e, t, n) => (n = e == null ? {} : i(c(e)), d(t || !e || !e.__esModule || !l.call(e, "default") ? a(n, "default", {
 	value: e,
 	enumerable: !0
 }) : n, e)), p = u(((e, t) => {
@@ -65,7 +65,7 @@ var i = Object.create, a = Object.defineProperty, o = Object.getOwnPropertyDescr
 		return n.isMergeableObject(e) && f(e).forEach(function(t) {
 			r[t] = c(e[t], n);
 		}), f(t).forEach(function(i) {
-			m(e, i) || (p(e, i) && n.isMergeableObject(t[i]) ? r[i] = u(i, n)(e[i], t[i], n) : r[i] = c(t[i], n));
+			m(e, i) || (r[i] = p(e, i) && n.isMergeableObject(t[i]) ? u(i, n)(e[i], t[i], n) : c(t[i], n));
 		}), r;
 	}
 	function g(e, t, r) {
@@ -1642,7 +1642,7 @@ function Ne(e, t) {
 			var o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = "a", l = Pe(t);
 			for ((l == "H" || l == "k") && (s = 0); s-- > 0;) n += c;
 			for (; o-- > 0;) n = l + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
@@ -1793,8 +1793,10 @@ var Qe = function() {
 					},
 					err: null
 				} : this.error(C.INVALID_TAG, O(o, this.clonePosition()))) : this.error(C.UNMATCHED_CLOSING_TAG, O(s, this.clonePosition()));
-			} else return this.error(C.UNCLOSED_TAG, O(n, this.clonePosition()));
-		} else return this.error(C.INVALID_TAG, O(n, this.clonePosition()));
+			}
+			return this.error(C.UNCLOSED_TAG, O(n, this.clonePosition()));
+		}
+		return this.error(C.INVALID_TAG, O(n, this.clonePosition()));
 	}, e.prototype.parseTagName = function() {
 		var e = this.offset();
 		for (this.bump(); !this.isEOF() && et(this.char());) this.bump();
@@ -1846,12 +1848,13 @@ var Qe = function() {
 		var t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			var n = this.char();
-			if (n === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(n);
+			if (n === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(n);
 			this.bump();
 		}
 		return k.apply(void 0, t);
@@ -1920,26 +1923,25 @@ var Qe = function() {
 							},
 							err: null
 						};
-					} else {
-						if (p.length === 0) return this.error(C.EXPECT_DATE_TIME_SKELETON, f);
-						var m = p;
-						this.locale && (m = Ne(p, this.locale));
-						var u = {
-							type: T.dateTime,
-							pattern: m,
-							location: s.styleLocation,
-							parsedOptions: this.shouldParseSkeletons ? be(m) : {}
-						};
-						return {
-							val: {
-								type: a === "date" ? w.date : w.time,
-								value: n,
-								location: f,
-								style: u
-							},
-							err: null
-						};
 					}
+					if (p.length === 0) return this.error(C.EXPECT_DATE_TIME_SKELETON, f);
+					var m = p;
+					this.locale && (m = Ne(p, this.locale));
+					var u = {
+						type: T.dateTime,
+						pattern: m,
+						location: s.styleLocation,
+						parsedOptions: this.shouldParseSkeletons ? be(m) : {}
+					};
+					return {
+						val: {
+							type: a === "date" ? w.date : w.time,
+							value: n,
+							location: f,
+							style: u
+						},
+						err: null
+					};
 				}
 				return {
 					val: {
@@ -2013,9 +2015,7 @@ var Qe = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -2504,7 +2504,7 @@ function wt(e) {
 	}).filter(([, e]) => e.length > 0);
 }
 function H(e) {
-	return e == null ? !1 : q(e).some((e) => Ct(e)?.size);
+	return e != null && q(e).some((e) => Ct(e)?.size);
 }
 function Tt(e, t) {
 	return Promise.all(t.map((t) => (St(e, t), t().then((e) => e.default || e)))).then((t) => xt(e, ...t));
@@ -2603,7 +2603,7 @@ function Rt(e) {
 }
 function q(e, t = W().fallbackLocale) {
 	let n = Rt(e);
-	return t ? [...new Set([...n, ...Rt(t)])] : n;
+	return t ? [.../* @__PURE__ */ new Set([...n, ...Rt(t)])] : n;
 }
 function J() {
 	return Lt ?? void 0;
@@ -2716,8 +2716,8 @@ function an(t, n) {
 		e.set(l, t, !0), c(t), window.localStorage.setItem("theme", t);
 	}
 	let d = e.derived(() => e.get(l) === "auto" ? i()("themeToggle.labelAuto") : i()("themeToggle.labelOther", { values: { mode: e.get(l) } })), f = e.derived(() => e.get(l) === "auto" ? i()("themeToggle.auto") : e.get(l) === "dark" ? i()("themeToggle.dark") : i()("themeToggle.light"));
-	var p = rn(), m = e.child(p, !0);
-	e.reset(p), e.template_effect(() => {
+	var p = rn(), m = e.only_child(p, !0);
+	e.template_effect(() => {
 		e.set_attribute(p, "aria-label", e.get(d)), e.set_attribute(p, "title", e.get(d)), e.set_text(m, e.get(f));
 	}), e.delegated("click", p, u), e.append(t, p), e.pop(), o();
 }

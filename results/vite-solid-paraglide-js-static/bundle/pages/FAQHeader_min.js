@@ -14,73 +14,53 @@ var r = {}, i = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], c = [], l, u;
-function d(e) {
-	if (c.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (l === t) return u;
-	let n = new URL(t, "http://dummy.com"), i;
-	for (let e of c) if (new r(e.match, n.href).exec(n.href)) {
-		i = e;
-		break;
-	}
-	return l = t, u = i, i;
-}
-function f(e) {
-	let t = d(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
-}
-var p = void 0, m = typeof window > "u";
+], c = [], l = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var h, g = !1, _ = () => {
-	if (p) {
-		let e = p?.getStore()?.locale;
-		if (e) return e;
-	}
+var u, d = !1, f = () => {
 	let e = s;
-	!m && typeof window < "u" && window.location?.href && (e = f(window.location.href));
-	let t = v(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return g || (h = t, g = !0, y(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	!l && typeof window < "u" && window.location?.href && (e = M(window.location.href));
+	let t = p(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return d || (u = t, d = !0, ee(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function v(e, t) {
+function p(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = S();
+		if (t === "cookie") n = E();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && h !== void 0) n = h;
-		else if (w(t) && C.has(t)) {
-			let e = C.get(t);
+		else if (t === "globalVariable" && u !== void 0) n = u;
+		else if (P(t) && N.has(t)) {
+			let e = N.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return x(t);
+				if (t !== void 0) return _(t);
 			}
 		}
-		let e = b(n);
+		let e = g(n);
 		if (e) return e;
 	}
 }
-var ee = (e) => {
+var m = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, y = (e, t) => {
+}, ee = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = _();
+		r = f();
 	} catch {}
 	let i = [], c = s;
-	!m && typeof window < "u" && window.location?.href && (c = f(window.location.href));
-	for (let t of c) if (t === "globalVariable") h = e;
+	!l && typeof window < "u" && window.location?.href && (c = M(window.location.href));
+	for (let t of c) if (t === "globalVariable") u = e;
 	else if (t === "cookie") {
-		if (m || typeof document > "u" || typeof window > "u") continue;
+		if (l || typeof document > "u" || typeof window > "u") continue;
 		let t = `${a}=${e}; path=/; max-age=${o}`;
-		document.cookie = t;
+		document.cookie = t, w();
 	} else if (t === "baseLocale") continue;
-	else if (w(t) && C.has(t)) {
-		let n = C.get(t);
+	else if (P(t) && N.has(t)) {
+		let n = N.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -88,61 +68,101 @@ var ee = (e) => {
 			}), i.push(r));
 		}
 	}
-	let l = () => {
-		!m && n.reload && window.location && e !== r && ee(void 0);
+	let d = () => {
+		!l && n.reload && window.location && e !== r && m(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
-		l();
+		d();
 	});
-	l();
-};
-function b(e) {
+	d();
+}, h = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function g(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of i) if (e.toLowerCase() === t) return e;
 }
-function x(e) {
-	let t = b(e);
+function _(e) {
+	let t = g(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${i.join(", ")}`);
 }
-function S() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${a}=([^;]+)`))?.[2];
-	return b(e);
+function v(e) {
+	return e;
 }
-var C = /* @__PURE__ */ new Map();
-function w(e) {
+function y(e, t) {
+	return e.exec(t.href);
+}
+var b = a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), x = RegExp(`(?:^|;\\s*)${b}=([^;]*)`), S = Symbol(), C = S;
+function w() {
+	C = S;
+}
+function T() {
+	typeof queueMicrotask == "function" ? queueMicrotask(w) : Promise.resolve().then(w);
+}
+function E() {
+	if (typeof document > "u") return;
+	if (C !== S) return C;
+	let e = document.cookie.match(x)?.[1];
+	return C = g(e), T(), C;
+}
+function D(e) {
+	return O(e);
+}
+function O(e) {
+	let t = v(typeof e == "string" ? new URL(e, h()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && g(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), v(t);
+}
+var k, A;
+function j(e) {
+	if (c.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (k === t) return A;
+	let n = v(new URL(t, "http://example.com")), i = D(n), a = i.href === n.href ? [n] : [n, i], o;
+	for (let e of a) {
+		for (let t of c) if (y(new r(t.match, e.href), e)) {
+			o = t;
+			break;
+		}
+		if (o) break;
+	}
+	return k = t, A = o, o;
+}
+function M(e) {
+	let t = j(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
+}
+var N = /* @__PURE__ */ new Map();
+function P(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var T = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", E = () => "⚠️ Cette page contient des données fictives à des fins de benchmark uniquement. Elle n'est liée à aucune activité commerciale ou service réel.", D = () => "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.", O = () => "⚠️ Diese Seite enthält fiktive Daten, die nur für Benchmarking-Zwecke bestimmt sind. Sie steht in keiner Verbindung zu einem realen Unternehmen oder Dienst.", k = () => "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.", A = () => "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhuma empresa ou serviço real.", j = () => "⚠️ 此页面包含虚构数据，仅用于基准测试目的。与任何实际业务或服务无关。", M = () => "⚠️ このページにはベンチマーク目的のみの架空のデータが含まれています。実在の企業やサービスとは関係ありません。", N = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", P = () => "⚠️ Эта страница содержит фиктивные данные только для целей бенчмаркинга. Она не связана ни с каким реальным бизнесом или сервисом.", F = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "en" ? T(e) : n === "fr" ? E(e) : n === "es" ? D(e) : n === "de" ? O(e) : n === "it" ? k(e) : n === "pt" ? A(e) : n === "zh" ? j(e) : n === "ja" ? M(e) : n === "ko" ? N(e) : P(e);
-}), I = () => "Frequently Asked Questions", L = () => "Questions fréquentes", R = () => "Preguntas frecuentes", te = () => "Häufig gestellte Fragen", z = () => "Domande frequenti", B = () => "Perguntas frequentes", V = () => "常见问题", H = () => "よくある質問", U = () => "Frequently Asked Questions", W = () => "Часто задаваемые вопросы", G = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "en" ? I(e) : n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? te(e) : n === "it" ? z(e) : n === "pt" ? B(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : W(e);
-}), K = () => "Everything you need to know about i18n Benchmark.", q = () => "Tout savoir sur i18n Benchmark.", J = () => "Todo lo que necesitas saber sobre i18n Benchmark.", Y = () => "Alles, was Sie über i18n Benchmark wissen müssen.", X = () => "Tutto quello che c'è da sapere su i18n Benchmark.", Z = () => "Tudo o que você precisa saber sobre o i18n Benchmark.", Q = () => "关于 i18n 基准测试您需要了解的一切。", ne = () => "i18n Benchmarkについて知っておくべきすべてのこと。", re = () => "Everything you need to know about i18n Benchmark.", ie = () => "Все, что вам нужно знать об i18n Benchmark.", ae = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "en" ? K(e) : n === "fr" ? q(e) : n === "es" ? J(e) : n === "de" ? Y(e) : n === "it" ? X(e) : n === "pt" ? Z(e) : n === "zh" ? Q(e) : n === "ja" ? ne(e) : n === "ko" ? re(e) : ie(e);
-}), oe = n("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\">");
-function $() {
+var F = () => "Everything you need to know about i18n Benchmark.", I = () => "Tout savoir sur i18n Benchmark.", L = () => "Todo lo que necesitas saber sobre i18n Benchmark.", R = () => "Alles, was Sie über i18n Benchmark wissen müssen.", z = () => "Tutto quello che c'è da sapere su i18n Benchmark.", B = () => "Tudo o que você precisa saber sobre o i18n Benchmark.", V = () => "关于 i18n 基准测试您需要了解的一切。", H = () => "i18n Benchmarkについて知っておくべきすべてのこと。", U = () => "Everything you need to know about i18n Benchmark.", W = () => "Все, что вам нужно знать об i18n Benchmark.", G = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? I(e) : n === "es" ? L(e) : n === "de" ? R(e) : n === "it" ? z(e) : n === "pt" ? B(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : n === "ru" ? W(e) : F(e);
+}), K = () => "Frequently Asked Questions", te = () => "Questions fréquentes", q = () => "Preguntas frecuentes", J = () => "Häufig gestellte Fragen", Y = () => "Domande frequenti", X = () => "Perguntas frequentes", Z = () => "常见问题", Q = () => "よくある質問", ne = () => "Frequently Asked Questions", re = () => "Часто задаваемые вопросы", ie = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? te(e) : n === "es" ? q(e) : n === "de" ? J(e) : n === "it" ? Y(e) : n === "pt" ? X(e) : n === "zh" ? Z(e) : n === "ja" ? Q(e) : n === "ko" ? ne(e) : n === "ru" ? re(e) : K(e);
+}), ae = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", oe = () => "⚠️ Cette page contient des données fictives à des fins de benchmark uniquement. Elle n'est liée à aucune activité commerciale ou service réel.", se = () => "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.", ce = () => "⚠️ Diese Seite enthält fiktive Daten, die nur für Benchmarking-Zwecke bestimmt sind. Sie steht in keiner Verbindung zu einem realen Unternehmen oder Dienst.", le = () => "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.", ue = () => "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhuma empresa ou serviço real.", de = () => "⚠️ 此页面包含虚构数据，仅用于基准测试目的。与任何实际业务或服务无关。", fe = () => "⚠️ このページにはベンチマーク目的のみの架空のデータが含まれています。実在の企業やサービスとは関係ありません。", pe = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", $ = () => "⚠️ Эта страница содержит фиктивные данные только для целей бенчмаркинга. Она не связана ни с каким реальным бизнесом или сервисом.", me = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? oe(e) : n === "es" ? se(e) : n === "de" ? ce(e) : n === "it" ? le(e) : n === "pt" ? ue(e) : n === "zh" ? de(e) : n === "ja" ? fe(e) : n === "ko" ? pe(e) : n === "ru" ? $(e) : ae(e);
+}), he = n("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\">");
+function ge() {
 	return (() => {
-		var e = oe();
-		return t(e, () => F()), e;
+		var e = he();
+		return t(e, () => me()), e;
 	})();
 }
-var se = n("<h1 class=\"mb-2 text-3xl font-bold text-foreground\">"), ce = n("<p class=\"mb-10 text-muted-foreground\">");
-function le() {
+var _e = n("<h1 class=\"mb-2 text-3xl font-bold text-foreground\">"), ve = n("<p class=\"mb-10 text-muted-foreground\">");
+function ye() {
 	return [
-		e($, {}),
+		e(ge, {}),
 		(() => {
-			var e = se();
-			return t(e, () => G()), e;
+			var e = _e();
+			return t(e, () => ie()), e;
 		})(),
 		(() => {
-			var e = ce();
-			return t(e, () => ae()), e;
+			var e = ve();
+			return t(e, () => G()), e;
 		})()
 	];
 }
-export { le as default };
+export { ye as default };

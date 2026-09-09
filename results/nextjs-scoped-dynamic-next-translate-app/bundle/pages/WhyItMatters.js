@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -182,8 +182,13 @@ function createTranslation(defaultNS) {
 			lang
 		}), defaultNS);
 	};
+	var nsKey = namespaces ? Object.keys(namespaces).sort().join("|") : "";
 	return {
-		t: isServer() ? getT() : useMemo(getT, [defaultNS, lang]),
+		t: isServer() ? getT() : useMemo(getT, [
+			defaultNS,
+			lang,
+			nsKey
+		]),
 		lang
 	};
 }
@@ -207,49 +212,98 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/pages/home/WhyItMatters.tsx";
 function WhyItMatters() {
 	const { t } = useTranslation("home");
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mb-16",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-6 text-2xl font-bold text-foreground",
 			children: t("whyItMatters.whyTheseMetricsMatter")
-		}), jsxs("div", {
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "grid gap-6 md:grid-cols-3",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsx("h3", {
+					children: [jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("whyItMatters.bundleSize")
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 14,
+						columnNumber: 11
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("whyItMatters.theBundleIsTheData")
-					})]
-				}),
-				jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 17,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 13,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsx("h3", {
+					children: [jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("whyItMatters.renderingHydration")
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 22,
+						columnNumber: 11
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("whyItMatters.connectingALargeJson")
-					})]
-				}),
-				jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 25,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 21,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsx("h3", {
+					children: [jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("whyItMatters.dynamicLoading")
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 30,
+						columnNumber: 11
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("whyItMatters.loadingAllTranslationsUpfront")
-					})]
-				})
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 33,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 29,
+					columnNumber: 9
+				}, this)
 			]
-		})]
-	});
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -354,18 +408,18 @@ var i18n_default = {
 		"./locales/de/settings.json": () => import("../../../locales/de/settings.json"),
 		"./locales/de/shared.json": () => import("../../../locales/de/shared.json"),
 		"./locales/de/team.json": () => import("../../../locales/de/team.json"),
-		"./locales/en/about.json": () => import("./about-DrPeV7Zp.js"),
-		"./locales/en/blog.json": () => import("./blog-uUHBPsDN.js"),
-		"./locales/en/careers.json": () => import("./careers-CT6E1l5K.js"),
-		"./locales/en/contact.json": () => import("./contact-CZtCE9BE.js"),
-		"./locales/en/faq.json": () => import("./faq-BPrPn6m_.js"),
-		"./locales/en/home.json": () => import("./home-CSEOOcM2.js"),
-		"./locales/en/pricing.json": () => import("./pricing-BjZqjpMz.js"),
-		"./locales/en/products.json": () => import("./products-D8gD60Ao.js"),
-		"./locales/en/route.json": () => import("./route-UQnagTfi.js"),
-		"./locales/en/settings.json": () => import("./settings-BEbFGJAX.js"),
-		"./locales/en/shared.json": () => import("./shared-DxRtm_ck.js"),
-		"./locales/en/team.json": () => import("./team-tSYxAuqK.js"),
+		"./locales/en/about.json": () => import("./about-BjiQTpAt.js"),
+		"./locales/en/blog.json": () => import("./blog-BwncXaOP.js"),
+		"./locales/en/careers.json": () => import("./careers-CvGX3fKY.js"),
+		"./locales/en/contact.json": () => import("./contact-BAuKu6kU.js"),
+		"./locales/en/faq.json": () => import("./faq-741pCL7k.js"),
+		"./locales/en/home.json": () => import("./home-DQacKLe5.js"),
+		"./locales/en/pricing.json": () => import("./pricing-AooD5teS.js"),
+		"./locales/en/products.json": () => import("./products-5xHH59P6.js"),
+		"./locales/en/route.json": () => import("./route-D4J5jMKf.js"),
+		"./locales/en/settings.json": () => import("./settings-DcVMUGUO.js"),
+		"./locales/en/shared.json": () => import("./shared-B7H0Al_Q.js"),
+		"./locales/en/team.json": () => import("./team-BTWsMT4N.js"),
 		"./locales/es/about.json": () => import("../../../locales/es/about.json"),
 		"./locales/es/blog.json": () => import("../../../locales/es/blog.json"),
 		"./locales/es/careers.json": () => import("../../../locales/es/careers.json"),
@@ -486,6 +540,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -497,8 +552,13 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx";
 var MEASURE_NAMESPACES = [
 	"about",
 	"blog",
@@ -533,17 +593,34 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		lang: locale,
 		namespaces,
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 58,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 57,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/pages/home/WhyItMatters.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(WhyItMatters, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(WhyItMatters, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var about_default = {

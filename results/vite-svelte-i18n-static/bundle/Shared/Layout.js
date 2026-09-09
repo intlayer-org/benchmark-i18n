@@ -22,7 +22,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$2.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1946,9 +1946,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2064,14 +2065,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2274,9 +2276,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -3018,7 +3018,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3184,7 +3184,7 @@ function getLocaleName(locale) {
 function isLocale(value) {
 	return locales.includes(value);
 }
-var PAGE_SEGMENTS = new Set([
+var PAGE_SEGMENTS = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -3218,10 +3218,10 @@ function navigate(url, replace = false) {
 	else history.pushState(null, "", url);
 	pathname.set(window.location.pathname);
 }
-var root_2$1 = $.from_html(`<a class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
-var root_3 = $.from_html(`<a target="_blank" rel="noreferrer" class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
-var root_1$2 = $.from_html(`<li><!></li>`);
-var root$4 = $.from_html(`<footer class="mt-20 border-t border-border bg-card"><div class="container py-8"><div class="grid gap-8 md:grid-cols-3"><div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <ul class="space-y-1"></ul></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p></div></div> <div class="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground"> </div></div></footer>`);
+var root$4 = $.from_html(`<a class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
+var root_1$2 = $.from_html(`<a target="_blank" rel="noreferrer" class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
+var root_2$1 = $.from_html(`<li><!></li>`);
+var root_3 = $.from_html(`<footer class="mt-20 border-t border-border bg-card"><div class="container py-8"><div class="grid gap-8 md:grid-cols-3"><div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <ul class="space-y-1"></ul></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p></div></div> <div class="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground"> </div></div></footer>`);
 function Footer($$anchor, $$props) {
 	$.push($$props, true);
 	const $route = () => $.store_get(route, "$route", $$stores);
@@ -3245,29 +3245,25 @@ function Footer($$anchor, $$props) {
 			isInternal: true
 		}
 	]);
-	var footer = root$4();
+	var footer = root_3();
 	var div = $.child(footer);
 	var div_1 = $.child(div);
 	var div_2 = $.child(div_1);
 	var h3 = $.child(div_2);
-	var text = $.child(h3, true);
-	$.reset(h3);
+	var text = $.only_child(h3, true);
 	var p = $.sibling(h3, 2);
-	var text_1 = $.child(p, true);
-	$.reset(p);
+	var text_1 = $.only_child(p, true);
 	$.reset(div_2);
 	var div_3 = $.sibling(div_2, 2);
 	var h3_1 = $.child(div_3);
-	var text_2 = $.child(h3_1, true);
-	$.reset(h3_1);
+	var text_2 = $.only_child(h3_1, true);
 	var ul = $.sibling(h3_1, 2);
 	$.each(ul, 21, () => $.get(footerLinks), (linkEl) => linkEl.msg, ($$anchor, linkEl) => {
-		var li = root_1$2();
+		var li = root_2$1();
 		var node = $.child(li);
 		var consequent = ($$anchor) => {
-			var a = root_2$1();
-			var text_3 = $.child(a, true);
-			$.reset(a);
+			var a = root$4();
+			var text_3 = $.only_child(a, true);
 			$.template_effect(($0) => {
 				$.set_attribute(a, "href", $.get(linkEl).to);
 				$.set_text(text_3, $0);
@@ -3275,9 +3271,8 @@ function Footer($$anchor, $$props) {
 			$.append($$anchor, a);
 		};
 		var alternate = ($$anchor) => {
-			var a_1 = root_3();
-			var text_4 = $.child(a_1, true);
-			$.reset(a_1);
+			var a_1 = root_1$2();
+			var text_4 = $.only_child(a_1, true);
 			$.template_effect(($0) => {
 				$.set_attribute(a_1, "href", $.get(linkEl).href);
 				$.set_text(text_4, $0);
@@ -3295,16 +3290,13 @@ function Footer($$anchor, $$props) {
 	$.reset(div_3);
 	var div_4 = $.sibling(div_3, 2);
 	var h3_2 = $.child(div_4);
-	var text_5 = $.child(h3_2, true);
-	$.reset(h3_2);
+	var text_5 = $.only_child(h3_2, true);
 	var p_1 = $.sibling(h3_2, 2);
-	var text_6 = $.child(p_1, true);
-	$.reset(p_1);
+	var text_6 = $.only_child(p_1, true);
 	$.reset(div_4);
 	$.reset(div_1);
 	var div_5 = $.sibling(div_1, 2);
-	var text_7 = $.child(div_5, true);
-	$.reset(div_5);
+	var text_7 = $.only_child(div_5, true);
 	$.reset(div);
 	$.reset(footer);
 	$.template_effect(($0, $1, $2, $3, $4, $5) => {
@@ -3337,8 +3329,8 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var root_1$1 = $.from_html(`<option> </option>`);
-var root$3 = $.from_html(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none"></select></div>`);
+var root$3 = $.from_html(`<option> </option>`);
+var root_1$1 = $.from_html(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none"></select></div>`);
 function LocaleSwitcher($$anchor, $$props) {
 	$.push($$props, false);
 	const $pathname = () => $.store_get(pathname, "$pathname", $$stores);
@@ -3348,16 +3340,15 @@ function LocaleSwitcher($$anchor, $$props) {
 		navigate(get(pathname).replace(/^\/[^/]+/, `/${newLocale}`) + window.location.search + window.location.hash, false);
 	}
 	$.init();
-	var div = root$3();
+	var div = root_1$1();
 	var select = $.child(div);
 	$.each(select, 5, () => locales, (localeItem) => localeItem, ($$anchor, localeItem) => {
-		var option = root_1$1();
-		var text = $.child(option, true);
-		$.reset(option);
+		var option = root$3();
+		var text = $.only_child(option, true);
 		var option_value = {};
 		$.template_effect(($0) => {
 			$.set_text(text, $0);
-			if (option_value !== (option_value = $.get(localeItem))) option.value = (option.__value = $.get(localeItem)) ?? "";
+			if (option_value !== (option_value = $.get(localeItem))) option.value = (option.__value = option_value) ?? "";
 		}, [() => getLocaleName($.get(localeItem))]);
 		$.append($$anchor, option);
 	});
@@ -3366,7 +3357,7 @@ function LocaleSwitcher($$anchor, $$props) {
 	$.init_select(select);
 	$.reset(div);
 	$.template_effect(($0) => {
-		if (select_value !== (select_value = $0)) select.value = (select.__value = $0) ?? "", $.select_option(select, $0);
+		if (select_value !== (select_value = $0)) select.value = (select.__value = select_value) ?? "", $.select_option(select, select_value);
 	}, [() => $pathname().split("/").filter(Boolean)[0] ?? "en"]);
 	$.delegated("change", select, handleLocaleChange);
 	$.append($$anchor, div);
@@ -3416,8 +3407,7 @@ function ThemeToggle($$anchor, $$props) {
 	const label = $.derived(() => $.get(mode) === "auto" ? $_()("themeToggle.labelAuto") : $_()("themeToggle.labelOther", { values: { mode: $.get(mode) } }));
 	const buttonText = $.derived(() => $.get(mode) === "auto" ? $_()("themeToggle.auto") : $.get(mode) === "dark" ? $_()("themeToggle.dark") : $_()("themeToggle.light"));
 	var button = root$2();
-	var text = $.child(button, true);
-	$.reset(button);
+	var text = $.only_child(button, true);
 	$.template_effect(() => {
 		$.set_attribute(button, "aria-label", $.get(label));
 		$.set_attribute(button, "title", $.get(label));
@@ -3429,9 +3419,9 @@ function ThemeToggle($$anchor, $$props) {
 	$$cleanup();
 }
 $.delegate(["click"]);
-var root_2 = $.from_html(`<a class="block px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent"> </a>`);
+var root$1 = $.from_html(`<a class="block px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent"> </a>`);
 var root_1 = $.from_html(`<div class="absolute top-full left-0 w-48 pt-2" role="presentation"><div class="overflow-hidden rounded-md border border-border bg-card py-1 shadow-lg"></div></div>`);
-var root$1 = $.from_html(`<header class="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg"><nav class="container flex h-16 items-center justify-between"><div class="flex items-center gap-8"><a class="text-lg font-bold tracking-tight text-primary no-underline"> </a> <div class="hidden items-center gap-6 text-sm font-medium md:flex"><a> </a> <a> </a> <div class="relative"><button type="button" class="nav-link flex cursor-pointer items-center gap-1 border-none bg-transparent"> <!></button> <!></div></div></div> <div class="flex items-center gap-4"><a href="https://github.com/intlayer-org/benchmark-i18n" target="_blank" rel="noreferrer" class="text-muted-foreground transition hover:text-foreground"><span class="sr-only"> </span> <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a> <!> <!></div></nav></header>`);
+var root_2 = $.from_html(`<header class="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg"><nav class="container flex h-16 items-center justify-between"><div class="flex items-center gap-8"><a class="text-lg font-bold tracking-tight text-primary no-underline"> </a> <div class="hidden items-center gap-6 text-sm font-medium md:flex"><a> </a> <a> </a> <div class="relative"><button type="button" class="nav-link flex cursor-pointer items-center gap-1 border-none bg-transparent"> <!></button> <!></div></div></div> <div class="flex items-center gap-4"><a href="https://github.com/intlayer-org/benchmark-i18n" target="_blank" rel="noreferrer" class="text-muted-foreground transition hover:text-foreground"><span class="sr-only"> </span> <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a> <!> <!></div></nav></header>`);
 function Header($$anchor, $$props) {
 	$.push($$props, true);
 	const $route = () => $.store_get(route, "$route", $$stores);
@@ -3476,21 +3466,18 @@ function Header($$anchor, $$props) {
 	]);
 	const homeActive = $.derived(() => $route().kind === "ok" && $route().page === "");
 	const methodologyActive = $.derived(() => $route().kind === "ok" && $route().page === "about");
-	var header = root$1();
+	var header = root_2();
 	var nav = $.child(header);
 	var div = $.child(nav);
 	var a = $.child(div);
-	var text = $.child(a, true);
-	$.reset(a);
+	var text = $.only_child(a, true);
 	var div_1 = $.sibling(a, 2);
 	var a_1 = $.child(div_1);
 	let classes;
-	var text_1 = $.child(a_1, true);
-	$.reset(a_1);
+	var text_1 = $.only_child(a_1, true);
 	var a_2 = $.sibling(a_1, 2);
 	let classes_1;
-	var text_2 = $.child(a_2, true);
-	$.reset(a_2);
+	var text_2 = $.only_child(a_2, true);
 	var div_2 = $.sibling(a_2, 2);
 	var button = $.child(div_2);
 	var text_3 = $.child(button);
@@ -3510,9 +3497,8 @@ function Header($$anchor, $$props) {
 		var div_3 = root_1();
 		var div_4 = $.child(div_3);
 		$.each(div_4, 21, () => $.get(mockPages), (page) => page.to, ($$anchor, page) => {
-			var a_3 = root_2();
-			var text_4 = $.child(a_3, true);
-			$.reset(a_3);
+			var a_3 = root$1();
+			var text_4 = $.only_child(a_3, true);
 			$.template_effect(($0) => {
 				$.set_attribute(a_3, "href", $.get(page).to);
 				$.set_text(text_4, $0);
@@ -3535,8 +3521,7 @@ function Header($$anchor, $$props) {
 	var div_5 = $.sibling(div, 2);
 	var a_4 = $.child(div_5);
 	var span = $.child(a_4);
-	var text_5 = $.child(span, true);
-	$.reset(span);
+	var text_5 = $.only_child(span, true);
 	$.next(2);
 	$.reset(a_4);
 	var node_2 = $.sibling(a_4, 2);

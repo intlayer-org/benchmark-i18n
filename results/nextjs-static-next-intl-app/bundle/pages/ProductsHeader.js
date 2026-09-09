@@ -1789,7 +1789,7 @@ var trimEnd = hasTrimEnd ? function trimEnd(s) {
 } : function trimEnd(s) {
 	return s.replace(SPACE_SEPARATOR_END_REGEX, "");
 };
-var IDENTIFIER_PREFIX_RE = /* @__PURE__ */ new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+var IDENTIFIER_PREFIX_RE = new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
 function matchIdentifierAtIndex(s, index) {
 	IDENTIFIER_PREFIX_RE.lastIndex = index;
 	return IDENTIFIER_PREFIX_RE.exec(s)[1] ?? "";
@@ -2157,9 +2157,7 @@ var Parser = class {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -2716,7 +2714,7 @@ function createMessageFormatter(cache, intlFormatters) {
 	}), cache.message);
 }
 function getPlainMessage(candidate, values) {
-	return values || /'[{}]/.test(candidate) || /<|{/.test(candidate) ? void 0 : candidate;
+	return values || /'[{}<#|']/.test(candidate) || /<|{/.test(candidate) ? void 0 : candidate;
 }
 function formatMessage(...[key, message, values, options]) {
 	if (Array.isArray(message)) throw new IntlError(IntlErrorCode.INVALID_MESSAGE, `Message at \`${key}\` resolved to an array, but only strings are supported. See https://next-intl.dev/docs/usage/translations#arrays-of-messages`);
@@ -2811,16 +2809,17 @@ function createBaseTranslatorImpl({ cache, formats: globalFormats, formatters, g
 	function translateBaseFn(key, values, formats, _fallback) {
 		const fallback = _fallback;
 		let message;
-		if (hasMessagesError) if (fallback) message = fallback;
-		else {
-			onError(messagesOrError);
-			return getMessageFallback({
-				error: messagesOrError,
-				key,
-				namespace
-			});
-		}
-		else {
+		if (hasMessagesError) {
+			if (fallback) message = fallback;
+			else {
+				onError(messagesOrError);
+				return getMessageFallback({
+					error: messagesOrError,
+					key,
+					namespace
+				});
+			}
+		} else {
 			const messages = messagesOrError;
 			try {
 				message = resolvePath(locale, messages, key, namespace);
@@ -2900,162 +2899,10 @@ function createBaseTranslatorImpl({ cache, formats: globalFormats, formatters, g
 function resolveNamespace(namespace, namespacePrefix) {
 	return namespace === namespacePrefix ? void 0 : namespace.slice((namespacePrefix + ".").length);
 }
-var SECOND = 1;
-var MINUTE = SECOND * 60;
-var HOUR = MINUTE * 60;
-var DAY = HOUR * 24;
-var WEEK = DAY * 7;
-var MONTH = DAY * (365 / 12);
-var QUARTER = MONTH * 3;
-var YEAR = DAY * 365;
-var UNIT_SECONDS = {
-	second: SECOND,
-	seconds: SECOND,
-	minute: MINUTE,
-	minutes: MINUTE,
-	hour: HOUR,
-	hours: HOUR,
-	day: DAY,
-	days: DAY,
-	week: WEEK,
-	weeks: WEEK,
-	month: MONTH,
-	months: MONTH,
-	quarter: QUARTER,
-	quarters: QUARTER,
-	year: YEAR,
-	years: YEAR
-};
-function resolveRelativeTimeUnit(seconds) {
-	const absValue = Math.abs(seconds);
-	if (absValue < MINUTE) return "second";
-	else if (absValue < HOUR) return "minute";
-	else if (absValue < DAY) return "hour";
-	else if (absValue < WEEK) return "day";
-	else if (absValue < MONTH) return "week";
-	else if (absValue < YEAR) return "month";
-	return "year";
-}
-function calculateRelativeTimeValue(seconds, unit) {
-	return Math.round(seconds / UNIT_SECONDS[unit]);
-}
-function createFormatter(props) {
-	const { _cache: cache = createCache(), _formatters: formatters = createIntlFormatters(cache), formats, locale, onError = defaultOnError, timeZone: globalTimeZone } = props;
-	function applyTimeZone(options) {
-		if (!options?.timeZone) if (globalTimeZone) options = {
-			...options,
-			timeZone: globalTimeZone
-		};
-		else onError(new IntlError(IntlErrorCode.ENVIRONMENT_FALLBACK, `The \`timeZone\` parameter wasn't provided and there is no global default configured. Consider adding a global default to avoid markup mismatches caused by environment differences. Learn more: https://next-intl.dev/docs/configuration#time-zone`));
-		return options;
-	}
-	function resolveFormatOrOptions(typeFormats, formatOrOptions, overrides) {
-		let options;
-		if (typeof formatOrOptions === "string") {
-			const formatName = formatOrOptions;
-			options = typeFormats?.[formatName];
-			if (!options) {
-				const error = new IntlError(IntlErrorCode.MISSING_FORMAT, `Format \`${formatName}\` is not available.`);
-				onError(error);
-				throw error;
-			}
-		} else options = formatOrOptions;
-		if (overrides) options = {
-			...options,
-			...overrides
-		};
-		return options;
-	}
-	function getFormattedValue(formatOrOptions, overrides, typeFormats, formatter, getFallback) {
-		let options;
-		try {
-			options = resolveFormatOrOptions(typeFormats, formatOrOptions, overrides);
-		} catch {
-			return getFallback();
-		}
-		try {
-			return formatter(options);
-		} catch (error) {
-			onError(new IntlError(IntlErrorCode.FORMATTING_ERROR, error.message));
-			return getFallback();
-		}
-	}
-	function dateTime(value, formatOrOptions, overrides) {
-		return getFormattedValue(formatOrOptions, overrides, formats?.dateTime, (options) => {
-			options = applyTimeZone(options);
-			return formatters.getDateTimeFormat(locale, options).format(value);
-		}, () => String(value));
-	}
-	function dateTimeRange(start, end, formatOrOptions, overrides) {
-		return getFormattedValue(formatOrOptions, overrides, formats?.dateTime, (options) => {
-			options = applyTimeZone(options);
-			return formatters.getDateTimeFormat(locale, options).formatRange(start, end);
-		}, () => [dateTime(start), dateTime(end)].join(" – "));
-	}
-	function number(value, formatOrOptions, overrides) {
-		return getFormattedValue(formatOrOptions, overrides, formats?.number, (options) => formatters.getNumberFormat(locale, options).format(value), () => String(value));
-	}
-	function getGlobalNow() {
-		if (props.now) return props.now;
-		else {
-			onError(new IntlError(IntlErrorCode.ENVIRONMENT_FALLBACK, `The \`now\` parameter wasn't provided to \`relativeTime\` and there is no global default configured, therefore the current time will be used as a fallback. See https://next-intl.dev/docs/usage/dates-times#relative-times-usenow`));
-			return /* @__PURE__ */ new Date();
-		}
-	}
-	function relativeTime(date, nowOrOptions) {
-		try {
-			let nowDate, unit;
-			const opts = {};
-			if (nowOrOptions instanceof Date || typeof nowOrOptions === "number") nowDate = new Date(nowOrOptions);
-			else if (nowOrOptions) {
-				if (nowOrOptions.now != null) nowDate = new Date(nowOrOptions.now);
-				else nowDate = getGlobalNow();
-				unit = nowOrOptions.unit;
-				opts.style = nowOrOptions.style;
-				opts.numberingSystem = nowOrOptions.numberingSystem;
-			}
-			if (!nowDate) nowDate = getGlobalNow();
-			const seconds = (new Date(date).getTime() - nowDate.getTime()) / 1e3;
-			if (!unit) unit = resolveRelativeTimeUnit(seconds);
-			opts.numeric = unit === "second" ? "auto" : "always";
-			const value = calculateRelativeTimeValue(seconds, unit);
-			return formatters.getRelativeTimeFormat(locale, opts).format(value, unit);
-		} catch (error) {
-			onError(new IntlError(IntlErrorCode.FORMATTING_ERROR, error.message));
-			return String(date);
-		}
-	}
-	function list(value, formatOrOptions, overrides) {
-		const serializedValue = [];
-		const richValues = /* @__PURE__ */ new Map();
-		let index = 0;
-		for (const item of value) {
-			let serializedItem;
-			if (typeof item === "object") {
-				serializedItem = String(index);
-				richValues.set(serializedItem, item);
-			} else serializedItem = String(item);
-			serializedValue.push(serializedItem);
-			index++;
-		}
-		return getFormattedValue(formatOrOptions, overrides, formats?.list, (options) => {
-			const result = formatters.getListFormat(locale, options).formatToParts(serializedValue).map((part) => part.type === "literal" ? part.value : richValues.get(part.value) || part.value);
-			if (richValues.size > 0) return result;
-			else return result.join("");
-		}, () => String(value));
-	}
-	function displayName(value, formatOrOptions, overrides) {
-		return getFormattedValue(formatOrOptions, overrides, formats?.displayName, (options) => formatters.getDisplayNames(locale, options).of(value), () => value);
-	}
-	return {
-		dateTime,
-		number,
-		relativeTime,
-		list,
-		dateTimeRange,
-		displayName
-	};
-}
+var DAY = 86400;
+DAY * 7;
+DAY * (365 / 12) * 3;
+DAY * 365;
 function validateMessagesSegment(messages, invalidKeyLabels, parentPath) {
 	Object.entries(messages).forEach(([key, messageOrMessages]) => {
 		if (key.includes(".")) {
@@ -3191,24 +3038,6 @@ function useTranslations$1(namespace) {
 	const messages = useIntlContext().messages;
 	return useTranslationsImpl({ "!": messages }, namespace ? `!.${namespace}` : "!", "!");
 }
-function useFormatter$1() {
-	const { formats, formatters, locale, now: globalNow, onError, timeZone } = useIntlContext();
-	return useMemo(() => createFormatter({
-		formats,
-		locale,
-		now: globalNow,
-		onError,
-		timeZone,
-		_formatters: formatters
-	}), [
-		formats,
-		formatters,
-		globalNow,
-		locale,
-		onError,
-		timeZone
-	]);
-}
 function callHook(name, hook) {
 	return (...args) => {
 		try {
@@ -3226,7 +3055,6 @@ This can happen because:
 	};
 }
 var useTranslations = callHook("useTranslations", useTranslations$1);
-callHook("useFormatter", useFormatter$1);
 function NextIntlClientProvider({ locale, ...rest }) {
 	if (!locale) throw new Error("Couldn't infer the `locale` prop in `NextIntlClientProvider`, please provide it explicitly.\n\nSee https://next-intl.dev/docs/configuration#locale");
 	return jsx(IntlProvider, {
@@ -3236,9 +3064,10 @@ function NextIntlClientProvider({ locale, ...rest }) {
 }
 var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intl-app/components/MockBanner.tsx";
 var MockBanner = () => {
+	const t = useTranslations();
 	return jsxDEV("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-		children: useTranslations()("mockBanner")
+		children: t("mockBanner")
 	}, void 0, false, {
 		fileName: _jsxFileName$4,
 		lineNumber: 8,
@@ -3271,7 +3100,11 @@ function ProductsHeader() {
 			lineNumber: 15,
 			columnNumber: 7
 		}, this)
-	] }, void 0, true);
+	] }, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;

@@ -1,6 +1,7 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { Fragment, createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var LingoContext = createContext(null);
 function useLingoContext() {
 	const context = useContext(LingoContext);
@@ -41,62 +42,8 @@ function getClientLocale() {
 function persistLocale(locale) {
 	if (typeof document !== "undefined") document.cookie = `locale=${locale}; path=/; max-age=31536000`;
 }
-var noop = () => {};
-var IS_DEV = process.env.NODE_ENV === "development";
 var BATCH_DELAY = 200;
-var LingoProvider = IS_DEV ? LingoProvider__Dev : LingoProvider__Prod;
-function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, children }) {
-	const [locale, setLocaleState] = useState(() => {
-		if (initialLocale) return initialLocale;
-		if (typeof window !== "undefined") return getClientLocale();
-		return "en";
-	});
-	const [translations, setTranslations] = useState(initialTranslations);
-	const [isLoading, setIsLoading] = useState(false);
-	logger.debug(`LingoProvider initialized with locale: ${locale}`, initialTranslations);
-	useEffect(() => {
-		if (typeof document !== "undefined") document.documentElement.lang = locale;
-	}, [locale]);
-	const loadTranslations = useCallback(async (targetLocale) => {
-		if (Object.keys(initialTranslations).length > 0) return;
-		setIsLoading(true);
-		try {
-			const response = await fetch(`/translations/${targetLocale}.json`);
-			if (!response.ok) throw new Error(`Failed to load translations for ${targetLocale}: ${response.statusText}`);
-			const data = await response.json();
-			setTranslations(data.entries || data);
-			logger.debug(`Loaded translations for ${targetLocale}:`, Object.keys(data.entries || data).length);
-		} catch (error) {
-			logger.error(`Failed to load translations for ${targetLocale}:`, error);
-			setTranslations({});
-		} finally {
-			setIsLoading(false);
-		}
-	}, [initialTranslations]);
-	useEffect(() => {
-		if (Object.keys(initialTranslations).length === 0) loadTranslations(locale);
-	}, []);
-	useEffect(() => {
-		if (router) setTranslations(initialTranslations);
-	}, [initialTranslations, router]);
-	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
-		setLocaleState(newLocale);
-		if (router) router.refresh();
-		else await loadTranslations(newLocale);
-	}, [router, loadTranslations]);
-	return jsx(LingoContext.Provider, {
-		value: {
-			locale,
-			setLocale,
-			translations,
-			registerHashes: noop,
-			isLoading,
-			sourceLocale: "en"
-		},
-		children
-	});
-}
+var LingoProvider = LingoProvider__Dev;
 function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, devWidget, children }) {
 	const [locale, setLocaleState] = useState(() => {
 		if (initialLocale) return initialLocale;
@@ -207,7 +154,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -1990,7 +1937,7 @@ var trimEnd = hasTrimEnd ? function trimEnd(s) {
 } : function trimEnd(s) {
 	return s.replace(SPACE_SEPARATOR_END_REGEX, "");
 };
-var IDENTIFIER_PREFIX_RE = /* @__PURE__ */ new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+var IDENTIFIER_PREFIX_RE = new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
 function matchIdentifierAtIndex(s, index) {
 	var _a;
 	IDENTIFIER_PREFIX_RE.lastIndex = index;
@@ -2030,9 +1977,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2148,14 +2096,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return String.fromCodePoint.apply(String, codePoints);
@@ -2358,9 +2307,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -2945,6 +2892,7 @@ var useTranslation = (hashes) => {
 		locale
 	};
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/pages/team/TeamGrid.tsx";
 function TeamGrid() {
 	const { t } = useTranslation([
 		"0d5ead3cfbd1",
@@ -2972,149 +2920,287 @@ function TeamGrid() {
 		"57665295b26e",
 		"5dfd573d37b2"
 	]);
-	return jsxs("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: t("0d5ead3cfbd1", "SC")
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 8,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("0a36d3cf09cc", "Sarah Chen")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 9,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: t("4e28477ee5d2", "Founder & Lead Engineer")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 10,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("cc23bd717c60", "Former Google engineer with 10 years of experience building internationalization systems at scale.")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 11,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 7,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: t("9e39a80c224d", "MW")
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 14,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("01ba85b9290a", "Marcus Weber")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 15,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: t("961573fec173", "Performance Engineer")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 16,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("185ca8709747", "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 17,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 13,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: t("fd0117cbb6d0", "AP")
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 20,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("a17b0c01f5aa", "Aisha Patel")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 21,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: t("388f3af70d50", "Developer Advocate")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 22,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("afc15f93ec2e", "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 23,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 19,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: t("7095e84c705e", "TR")
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 26,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("9a8a9de3b9e7", "Tomás Rodríguez")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 27,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: t("4cfa582556d4", "Full-Stack Developer")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 28,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("416afb18ce71", "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 29,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 25,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: t("8f6a1fb0b827", "YT")
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 32,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("ed9071bb2411", "Yuki Tanaka")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 33,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: t("f5a2d303cab4", "Data Analyst")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 34,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("3af1547c298b", "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 35,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 31,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: t("0e69379ab747", "EK")
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 38,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("83f20f6d0de0", "Elena Kowalski")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 39,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: t("57665295b26e", "Community Manager")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 40,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("5dfd573d37b2", "Manages community contributions, partnerships, and events. Background in open source governance.")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 41,
+						columnNumber: 9
+					}, this)
 				]
-			})
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 37,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 6,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/pages/team/TeamGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(TeamGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(TeamGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -3216,12 +3302,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

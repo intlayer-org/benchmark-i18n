@@ -1,42 +1,42 @@
 import e, { createContext as t, useContext as n, useEffect as r, useId as i, useLayoutEffect as a, useMemo as o, useState as s } from "react";
-import { Fragment as c, jsx as l, jsxs as u } from "react/jsx-runtime";
-import { useRouter as d } from "next/router";
-var f = function() {
-	return f = Object.assign || function(e) {
+import { Fragment as c, jsxDEV as l } from "react/jsx-dev-runtime";
+import { useRouter as u } from "next/router";
+var d = function() {
+	return d = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, f.apply(this, arguments);
+	}, d.apply(this, arguments);
 };
-function p(e, t) {
+function f(e, t) {
 	return typeof t == "string" ? function(n, r, i) {
-		return e(n, r, f({ ns: t }, i));
+		return e(n, r, d({ ns: t }, i));
 	} : e;
 }
-var m;
-typeof e.createContext == "function" && (m = e.createContext({
+var p;
+typeof e.createContext == "function" && (p = e.createContext({
 	t: function(e) {
 		return Array.isArray(e) ? e[0] : e;
 	},
 	lang: ""
 }));
-var h = m;
-function g() {
+var m = p;
+function h() {
 	return typeof window > "u";
 }
-function _(e) {
+function g(e) {
 	try {
 		return new Intl.PluralRules(e);
 	} catch {
 		return new Intl.PluralRules();
 	}
 }
-var v = function() {
-	return v = Object.assign || function(e) {
+var _ = function() {
+	return _ = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, v.apply(this, arguments);
+	}, _.apply(this, arguments);
 };
-function y(e, t) {
+function v(e, t) {
 	if (!t) return { i18nKey: e };
 	var n = e.indexOf(t);
 	return n < 0 ? { i18nKey: e } : {
@@ -44,16 +44,16 @@ function y(e, t) {
 		i18nKey: e.slice(n + t.length)
 	};
 }
-function b(e) {
-	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? T : a, s = t.allowEmptyStrings, c = s === void 0 ? !0 : s, l = function(e, n) {
+function y(e) {
+	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? w : a, s = t.allowEmptyStrings, c = s === void 0 || s, l = function(e, n) {
 		return Array.isArray(e) ? e.map(function(e) {
 			return l(e, n);
-		}) : e instanceof Object ? w({
+		}) : e instanceof Object ? C({
 			obj: e,
 			query: n,
 			config: t,
 			lang: i
-		}) : C({
+		}) : S({
 			text: e,
 			query: n,
 			config: t,
@@ -61,19 +61,19 @@ function b(e) {
 		});
 	}, u = function(e, i, a) {
 		e === void 0 && (e = "");
-		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = y(s, f), g = h.i18nKey, _ = h.namespace, b = _ === void 0 ? a?.ns ?? t.defaultNS : _, C = b && n[b] || {}, w = x(C, S(r, C, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
+		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = v(s, f), g = h.i18nKey, y = h.namespace, S = y === void 0 ? a?.ns ?? t.defaultNS : y, C = S && n[S] || {}, w = b(C, x(r, C, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
 		if (E && (m === "both" || m === (typeof window > "u" ? "node" : "browser")) && o({
-			namespace: b,
+			namespace: S,
 			i18nKey: g
 		}), E && Array.isArray(D) && D.length) {
 			var O = D[0], k = D.slice(1);
-			if (typeof O == "string") return u(O, i, v(v({}, a), { fallback: k }));
+			if (typeof O == "string") return u(O, i, _(_({}, a), { fallback: k }));
 		}
 		return E && a && a.hasOwnProperty("default") && !D?.length ? a.default ? l(a.default, i) : a.default : E ? s : l(T, i);
 	};
 	return u;
 }
-function x(e, t, n, r) {
+function b(e, t, n, r) {
 	t === void 0 && (t = ""), r === void 0 && (r = { returnObjects: !1 });
 	var i = (n || {}).keySeparator, a = i === void 0 ? "." : i, o = a ? t.split(a) : [t];
 	if (t === a && r.returnObjects) return e;
@@ -84,18 +84,18 @@ function x(e, t, n, r) {
 	}, e);
 	if (typeof s == "string" || s instanceof Object && r.returnObjects && Object.keys(s).length > 0 || Array.isArray(s) && r.returnObjects) return s;
 }
-function S(e, t, n, r, i, a) {
+function x(e, t, n, r, i, a) {
 	if (!i || typeof i.count != "number") return n;
 	var o = `${n}_${i.count}`;
-	if (x(t, o, r, a) !== void 0) return o;
+	if (b(t, o, r, a) !== void 0) return o;
 	var s = `${n}_${e.select(i.count)}`;
-	if (x(t, s, r, a) !== void 0) return s;
+	if (b(t, s, r, a) !== void 0) return s;
 	var c = `${n}.${i.count}`;
-	if (x(t, c, r, a) !== void 0) return c;
+	if (b(t, c, r, a) !== void 0) return c;
 	var l = `${n}.${e.select(i.count)}`;
-	return x(t, l, r, a) === void 0 ? n : l;
+	return b(t, l, r, a) === void 0 ? n : l;
 }
-function C(e) {
+function S(e) {
 	var t = e.text, n = e.query, r = e.config, i = e.lang;
 	if (!t || !n) return t || "";
 	var a = function(e) {
@@ -108,15 +108,15 @@ function C(e) {
 		});
 	}, t);
 }
-function w(e) {
+function C(e) {
 	var t = e.obj, n = e.query, r = e.config, i = e.lang;
 	return !n || Object.keys(n).length === 0 || Object.keys(t).forEach(function(e) {
-		t[e] instanceof Object && w({
+		t[e] instanceof Object && C({
 			obj: t[e],
 			query: n,
 			config: r,
 			lang: i
-		}), typeof t[e] == "string" && (t[e] = C({
+		}), typeof t[e] == "string" && (t[e] = S({
 			text: t[e],
 			query: n,
 			config: r,
@@ -124,7 +124,7 @@ function w(e) {
 		}));
 	}), t;
 }
-function T(e) {
+function w(e) {
 	var t = e.namespace, n = e.i18nKey;
 	if (process.env.NODE_ENV !== "production") {
 		if (!t) {
@@ -134,95 +134,200 @@ function T(e) {
 		console.warn(`[next-translate] "${t}:${n}" is missing in current namespace configuration. Try adding "${n}" to the namespace "${t}".`);
 	}
 }
-function E(e) {
+function T(e) {
 	var t = globalThis.__NEXT_TRANSLATE__ ?? {}, n = t.lang, r = t.namespaces, i = t.config, a = i.localesToIgnore || ["default"], s = !n || a.includes(n), c = function() {
-		return p(b({
+		return f(y({
 			config: i,
 			allNamespaces: r,
-			pluralRules: _(s ? void 0 : n),
+			pluralRules: g(s ? void 0 : n),
 			lang: n
 		}), e);
-	};
+	}, l = r ? Object.keys(r).sort().join("|") : "";
 	return {
-		t: g() ? c() : o(c, [e, n]),
+		t: h() ? c() : o(c, [
+			e,
+			n,
+			l
+		]),
 		lang: n
 	};
 }
-var D = function() {
-	return D = Object.assign || function(e) {
+var E = function() {
+	return E = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, D.apply(this, arguments);
+	}, E.apply(this, arguments);
 };
-function O(e) {
-	var t = n(h);
+function D(e) {
+	var t = n(m);
 	return o(function() {
-		return D(D({}, t), { t: p(t.t, e) });
+		return E(E({}, t), { t: f(t.t, e) });
 	}, [t, e]);
 }
-function k(e) {
-	return (globalThis.__NEXT_TRANSLATE__?.config ? E : O)(e);
+function O(e) {
+	return (globalThis.__NEXT_TRANSLATE__?.config ? T : D)(e);
 }
+var k = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/settings/PreferencesSection.tsx";
 function A() {
-	let { t: e } = k("common"), t = i();
-	return u("section", {
+	let { t: e } = O("common"), t = i();
+	return l("section", {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [l("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: e("settings.preferencesSection.preferences")
-		}), u("div", {
+		}, void 0, !1, {
+			fileName: k,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this), l("div", {
 			className: "space-y-4",
 			children: [
-				u("div", {
+				l("div", {
 					className: "flex items-center justify-between",
-					children: [u("div", { children: [l("p", {
+					children: [l("div", { children: [l("p", {
 						className: "text-sm font-medium text-foreground",
 						children: e("settings.preferencesSection.emailNotifications")
-					}), l("p", {
+					}, void 0, !1, {
+						fileName: k,
+						lineNumber: 18,
+						columnNumber: 13
+					}, this), l("p", {
 						className: "text-xs text-muted-foreground",
 						children: e("settings.preferencesSection.receiveWeeklyBenchmarkReports")
-					})] }), l("button", {
+					}, void 0, !1, {
+						fileName: k,
+						lineNumber: 21,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: k,
+						lineNumber: 17,
+						columnNumber: 11
+					}, this), l("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
 						"aria-label": "Toggle notifications",
-						children: l("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
-					})]
-				}),
-				u("div", {
+						children: l("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, void 0, !1, {
+							fileName: k,
+							lineNumber: 30,
+							columnNumber: 13
+						}, this)
+					}, void 0, !1, {
+						fileName: k,
+						lineNumber: 25,
+						columnNumber: 11
+					}, this)]
+				}, void 0, !0, {
+					fileName: k,
+					lineNumber: 16,
+					columnNumber: 9
+				}, this),
+				l("div", {
 					className: "flex items-center justify-between",
-					children: [u("div", { children: [l("p", {
+					children: [l("div", { children: [l("p", {
 						className: "text-sm font-medium text-foreground",
 						children: e("settings.preferencesSection.darkMode")
-					}), l("p", {
+					}, void 0, !1, {
+						fileName: k,
+						lineNumber: 35,
+						columnNumber: 13
+					}, this), l("p", {
 						className: "text-xs text-muted-foreground",
 						children: e("settings.preferencesSection.useDarkColorScheme")
-					})] }), l("button", {
+					}, void 0, !1, {
+						fileName: k,
+						lineNumber: 38,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: k,
+						lineNumber: 34,
+						columnNumber: 11
+					}, this), l("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
 						"aria-label": "Toggle dark mode",
-						children: l("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
-					})]
-				}),
-				u("div", { children: [l("label", {
+						children: l("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, void 0, !1, {
+							fileName: k,
+							lineNumber: 47,
+							columnNumber: 13
+						}, this)
+					}, void 0, !1, {
+						fileName: k,
+						lineNumber: 42,
+						columnNumber: 11
+					}, this)]
+				}, void 0, !0, {
+					fileName: k,
+					lineNumber: 33,
+					columnNumber: 9
+				}, this),
+				l("div", { children: [l("label", {
 					htmlFor: t,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: e("settings.preferencesSection.defaultLanguage")
-				}), u("select", {
+				}, void 0, !1, {
+					fileName: k,
+					lineNumber: 51,
+					columnNumber: 11
+				}, this), l("select", {
 					id: t,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					children: [
-						l("option", { children: "English (en)" }),
-						l("option", { children: "French (fr)" }),
-						l("option", { children: "German (de)" }),
-						l("option", { children: "Spanish (es)" }),
-						l("option", { children: "Japanese (ja)" }),
-						l("option", { children: "Chinese Simplified (zh-CN)" }),
-						l("option", { children: "Arabic (ar)" })
+						l("option", { children: "English (en)" }, void 0, !1, {
+							fileName: k,
+							lineNumber: 61,
+							columnNumber: 13
+						}, this),
+						l("option", { children: "French (fr)" }, void 0, !1, {
+							fileName: k,
+							lineNumber: 62,
+							columnNumber: 13
+						}, this),
+						l("option", { children: "German (de)" }, void 0, !1, {
+							fileName: k,
+							lineNumber: 63,
+							columnNumber: 13
+						}, this),
+						l("option", { children: "Spanish (es)" }, void 0, !1, {
+							fileName: k,
+							lineNumber: 64,
+							columnNumber: 13
+						}, this),
+						l("option", { children: "Japanese (ja)" }, void 0, !1, {
+							fileName: k,
+							lineNumber: 65,
+							columnNumber: 13
+						}, this),
+						l("option", { children: "Chinese Simplified (zh-CN)" }, void 0, !1, {
+							fileName: k,
+							lineNumber: 66,
+							columnNumber: 13
+						}, this),
+						l("option", { children: "Arabic (ar)" }, void 0, !1, {
+							fileName: k,
+							lineNumber: 67,
+							columnNumber: 13
+						}, this)
 					]
-				})] })
+				}, void 0, !0, {
+					fileName: k,
+					lineNumber: 57,
+					columnNumber: 11
+				}, this)] }, void 0, !0, {
+					fileName: k,
+					lineNumber: 50,
+					columnNumber: 9
+				}, this)
 			]
-		})]
-	});
+		}, void 0, !0, {
+			fileName: k,
+			lineNumber: 15,
+			columnNumber: 7
+		}, this)]
+	}, void 0, !0, {
+		fileName: k,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
 }
 var j = function() {
 	return j = Object.assign || function(e) {
@@ -234,23 +339,23 @@ var j = function() {
 	config: {}
 });
 function N(t) {
-	var r = t.lang, i = t.namespaces, a = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, u = k().lang, f = d() || {}, p = f.locale, m = f.defaultLocale, g = n(M), v = j(j(j({}, P()), g.ns), a), y = r || u || p || m || "", x = j(j({}, g.config), l), S = x.localesToIgnore || ["default"], C = !y || S.includes(y), w = o(function() {
-		return _(C ? void 0 : y);
-	}, [C, y]), T = o(function() {
-		return b({
+	var r = t.lang, i = t.namespaces, a = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, d = O().lang, f = u() || {}, p = f.locale, h = f.defaultLocale, _ = n(M), v = j(j(j({}, P()), _.ns), a), b = r || d || p || h || "", x = j(j({}, _.config), l), S = x.localesToIgnore || ["default"], C = !b || S.includes(b), w = o(function() {
+		return g(C ? void 0 : b);
+	}, [C, b]), T = o(function() {
+		return y({
 			config: x,
 			allNamespaces: v,
 			pluralRules: w,
-			lang: y
+			lang: b
 		});
 	}, [
 		x,
 		v,
 		w,
-		y
+		b
 	]);
-	return e.createElement(h.Provider, { value: {
-		lang: y,
+	return e.createElement(m.Provider, { value: {
+		lang: b,
 		t: T
 	} }, e.createElement(M.Provider, { value: {
 		ns: v,
@@ -287,7 +392,7 @@ var F = (e, t, n) => {
 		try {
 			return (await F(Object.assign({
 				"./locales/de.json": () => import("../../../locales/de.json"),
-				"./locales/en.json": () => import("./en-C1X3AyET.js"),
+				"./locales/en.json": () => import("./en-BaXPNSAv.js"),
 				"./locales/es.json": () => import("../../../locales/es.json"),
 				"./locales/fr.json": () => import("../../../locales/fr.json"),
 				"./locales/it.json": () => import("../../../locales/it.json"),
@@ -298,7 +403,7 @@ var F = (e, t, n) => {
 				"./locales/zh.json": () => import("../../../locales/zh.json")
 			}), `./locales/${n}.json`, 3)).default;
 		} catch {
-			return (await import("./en-C1X3AyET.js")).default;
+			return (await import("./en-BaXPNSAv.js")).default;
 		}
 	}
 };
@@ -321,7 +426,8 @@ function R(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function z({ children: e, locale: t }) {
+var z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/AppProviders.tsx";
+function B({ children: e, locale: t }) {
 	let [n] = s(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
 		R("AppRoot", n);
@@ -329,14 +435,20 @@ function z({ children: e, locale: t }) {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
 		L();
-	}, []), l(c, { children: e });
+	}, []), l(c, { children: e }, void 0, !1, {
+		fileName: z,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
-function B({ children: e }) {
+var V = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/scripts/Wrapper.tsx";
+function H({ children: e }) {
 	let [t, n] = s({}), [i, a] = s(!1);
 	return r(() => {
 		(async () => {
 			try {
-				n(await I.loadLocaleFrom?.("en", "common") ?? {}), a(!0);
+				let e = await I.loadLocaleFrom?.("en", "common");
+				n(e ?? {}), a(!0);
 			} catch (e) {
 				console.error("Failed to load translations:", e), a(!0);
 			}
@@ -344,16 +456,33 @@ function B({ children: e }) {
 	}, ["en"]), i ? l(N, {
 		lang: "en",
 		namespaces: { common: t },
-		children: l(z, {
+		children: l(B, {
 			locale: "en",
 			children: e
-		})
-	}) : null;
+		}, void 0, !1, {
+			fileName: V,
+			lineNumber: 37,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: V,
+		lineNumber: 36,
+		columnNumber: 5
+	}, this) : null;
 }
-function V() {
-	return l(B, { children: l(A, {}) });
+var U = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/settings/PreferencesSection.wrapper.tsx";
+function W() {
+	return l(H, { children: l(A, {}, void 0, !1, {
+		fileName: U,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: U,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { V as default };
+export { W as default };
 var e = {
 	"faq.faqList.howAreTheBenchmarks": "How are the benchmarks run?",
 	"faq.faqList.allBenchmarksAreRun": "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",

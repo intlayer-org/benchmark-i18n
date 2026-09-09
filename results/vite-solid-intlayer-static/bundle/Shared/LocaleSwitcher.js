@@ -21,13 +21,15 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
-var _tmpl$ = template(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary">`), _tmpl$2 = template(`<option>`);
+var _tmpl$ = template(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary">`);
+var _tmpl$2 = template(`<option>`);
 function LocaleSwitcher() {
 	const params = useParams();
 	const navigate = useNavigate();
 	const location = useLocation();
 	const handleLocaleChange = (newLocale) => {
-		navigate(`${location.pathname.replace(/^\/[^/]+/, `/${newLocale}`)}${location.search}${location.hash}`);
+		const newPath = location.pathname.replace(/^\/[^/]+/, `/${newLocale}`);
+		navigate(`${newPath}${location.search}${location.hash}`);
 	};
 	return (() => {
 		var _el$ = _tmpl$(), _el$2 = _el$.firstChild;

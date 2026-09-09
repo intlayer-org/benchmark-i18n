@@ -1,8 +1,8 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { jsx, jsxs } from "react/jsx-runtime";
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+import { jsxDEV } from "react/jsx-dev-runtime";
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -111,8 +111,10 @@ var client = (0, __commonJSMin(((exports, module) => {
 				}
 			}
 			let value = scope ? content[`${scope}.${key}`] : content[key];
-			if (!value && isPlural) value = (_a = content[`${key.split("#", 1)[0]}#other`] || key) == null ? void 0 : _a.toString();
-			else value = (_b = value || key) == null ? void 0 : _b.toString();
+			if (!value && isPlural) {
+				const baseKey = key.split("#", 1)[0];
+				value = (_a = content[`${baseKey}#other`] || key) == null ? void 0 : _a.toString();
+			} else value = (_b = value || key) == null ? void 0 : _b.toString();
 			if (!paramObject) return value;
 			let isString = true;
 			const result = value == null ? void 0 : value.split(/({[^}]*})/).map((part, index) => {
@@ -208,22 +210,24 @@ var client = (0, __commonJSMin(((exports, module) => {
 			useCurrentLocale
 		};
 	}
+	0 && (module.exports = { createI18nClient });
 }))().createI18nClient)({
-	en: () => import("./en-BnbWsMCO.js"),
-	fr: () => import("./fr-Cym9jboO.js"),
-	es: () => import("./es-CdScmn54.js"),
-	de: () => import("./de-DrWoZQyS.js"),
-	it: () => import("./it-mY6HWKgv.js"),
-	pt: () => import("./pt-9UoCT2cN.js"),
-	zh: () => import("./zh-hBz_Hee8.js"),
-	ja: () => import("./ja-BmYSdszq.js"),
-	ko: () => import("./ko-BMyw-vxn.js"),
-	ru: () => import("./ru-CK2zd2-w.js")
+	en: () => import("./en-B-39FaIp.js"),
+	fr: () => import("./fr-BH690cXy.js"),
+	es: () => import("./es-CEkpLbnV.js"),
+	de: () => import("./de-CzaYaEfU.js"),
+	it: () => import("./it-zwHlYiDM.js"),
+	pt: () => import("./pt-DwF7iRTi.js"),
+	zh: () => import("./zh-CDC8y4Nn.js"),
+	ja: () => import("./ja-C27OBTzI.js"),
+	ko: () => import("./ko-CY7_P8I0.js"),
+	ru: () => import("./ru-BhWOgESx.js")
 });
 function useI18n() {
 	return client.useI18n();
 }
 var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/Footer.tsx";
 function Footer() {
 	const t = useI18n();
 	const currentLocale = useParams().locale ?? "en";
@@ -244,52 +248,116 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsx("footer", {
+	return jsxDEV("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxs("div", {
+		children: jsxDEV("div", {
 			className: "container py-8",
-			children: [jsxs("div", {
+			children: [jsxDEV("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxs("div", { children: [jsx("h3", {
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 35,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("footer.anOpenSourceTestApplication")
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 38,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 34,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("footer.resources")
-					}), jsx("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 43,
+						columnNumber: 13
+					}, this), jsxDEV("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
+						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
 							href: linkEl.href,
 							prefetch: false,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) : jsx("a", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 50,
+							columnNumber: 21
+						}, this) : jsxDEV("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) }, linkEl.href))
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 58,
+							columnNumber: 21
+						}, this) }, linkEl.href, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 48,
+							columnNumber: 17
+						}, this))
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 46,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 42,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("footer.contact")
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 72,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 75,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 71,
+						columnNumber: 11
+					}, this)
 				]
-			}), jsx("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 33,
+				columnNumber: 9
+			}, this), jsxDEV("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: t("footer.builtWith")
-			})]
-		})
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 80,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 32,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 31,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -313,6 +381,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -324,27 +393,45 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Footer, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/de.json";
 var de_default = flattenMessages(messages);
 export { de_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 var en_default = flattenMessages({
 	"careers-header": {
 		"title": "Careers",
@@ -816,7 +903,7 @@ var en_default = flattenMessages({
 	}
 });
 export { en_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/es.json";
 var es_default = flattenMessages(messages);
 export { es_default as default };
@@ -830,31 +917,31 @@ function flattenMessages(obj, prefix = "") {
 	return result;
 }
 export { flattenMessages as t };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/fr.json";
 var fr_default = flattenMessages(messages);
 export { fr_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/it.json";
 var it_default = flattenMessages(messages);
 export { it_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/ja.json";
 var ja_default = flattenMessages(messages);
 export { ja_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/ko.json";
 var ko_default = flattenMessages(messages);
 export { ko_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/pt.json";
 var pt_default = flattenMessages(messages);
 export { pt_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/ru.json";
 var ru_default = flattenMessages(messages);
 export { ru_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/zh.json";
 var zh_default = flattenMessages(messages);
 export { zh_default as default };

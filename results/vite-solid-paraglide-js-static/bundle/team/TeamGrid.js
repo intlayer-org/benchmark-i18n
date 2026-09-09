@@ -21,27 +21,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -64,7 +43,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -106,6 +85,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -127,6 +107,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -137,15 +122,113 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
+var en_team_grid_member1bio1 = () => {
+	return `Former Google engineer with 10 years of experience building internationalization systems at scale.`;
+};
+var fr_team_grid_member1bio1 = () => {
+	return `Ex-ingénieure Google, 10 ans sur l'internationalisation à grande échelle.`;
+};
+var es_team_grid_member1bio1 = () => {
+	return `Exingeniera de Google con 10 años de experiencia en la creación de sistemas de internacionalización a escala.`;
+};
+var de_team_grid_member1bio1 = () => {
+	return `Ehemalige Google-Ingenieurin mit 10 Jahren Erfahrung im Aufbau von Internationalisierungssystemen in großem Maßstab.`;
+};
+var it_team_grid_member1bio1 = () => {
+	return `Ex ingegnere Google con 10 anni di esperienza nella costruzione di sistemi di internazionalizzazione su scala.`;
+};
+var pt_team_grid_member1bio1 = () => {
+	return `Ex-engenheira do Google com 10 anos de experiência na construção de sistemas de internacionalização em escala.`;
+};
+var zh_team_grid_member1bio1 = () => {
+	return `前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。`;
+};
+var ja_team_grid_member1bio1 = () => {
+	return `大規模な国際化システムの構築において10年の経験を持つ元Googleエンジニア。`;
+};
+var ko_team_grid_member1bio1 = () => {
+	return `Former Google engineer with 10 years of experience building internationalization systems at scale.`;
+};
+var ru_team_grid_member1bio1 = () => {
+	return `Бывший инженер Google с 10-летним опытом создания систем интернационализации в больших масштабах.`;
+};
+var team_grid_member1bio1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_team_grid_member1bio1(inputs);
+	if (locale === "es") return es_team_grid_member1bio1(inputs);
+	if (locale === "de") return de_team_grid_member1bio1(inputs);
+	if (locale === "it") return it_team_grid_member1bio1(inputs);
+	if (locale === "pt") return pt_team_grid_member1bio1(inputs);
+	if (locale === "zh") return zh_team_grid_member1bio1(inputs);
+	if (locale === "ja") return ja_team_grid_member1bio1(inputs);
+	if (locale === "ko") return ko_team_grid_member1bio1(inputs);
+	if (locale === "ru") return ru_team_grid_member1bio1(inputs);
+	return en_team_grid_member1bio1(inputs);
+});
 var en_team_grid_member1name1 = () => {
 	return `Sarah Chen`;
 };
@@ -178,7 +261,6 @@ var ru_team_grid_member1name1 = () => {
 };
 var team_grid_member1name1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member1name1(inputs);
 	if (locale === "fr") return fr_team_grid_member1name1(inputs);
 	if (locale === "es") return es_team_grid_member1name1(inputs);
 	if (locale === "de") return de_team_grid_member1name1(inputs);
@@ -187,7 +269,8 @@ var team_grid_member1name1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_team_grid_member1name1(inputs);
 	if (locale === "ja") return ja_team_grid_member1name1(inputs);
 	if (locale === "ko") return ko_team_grid_member1name1(inputs);
-	return ru_team_grid_member1name1(inputs);
+	if (locale === "ru") return ru_team_grid_member1name1(inputs);
+	return en_team_grid_member1name1(inputs);
 });
 var en_team_grid_member1role1 = () => {
 	return `Founder & Lead Engineer`;
@@ -221,7 +304,6 @@ var ru_team_grid_member1role1 = () => {
 };
 var team_grid_member1role1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member1role1(inputs);
 	if (locale === "fr") return fr_team_grid_member1role1(inputs);
 	if (locale === "es") return es_team_grid_member1role1(inputs);
 	if (locale === "de") return de_team_grid_member1role1(inputs);
@@ -230,136 +312,8 @@ var team_grid_member1role1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_team_grid_member1role1(inputs);
 	if (locale === "ja") return ja_team_grid_member1role1(inputs);
 	if (locale === "ko") return ko_team_grid_member1role1(inputs);
-	return ru_team_grid_member1role1(inputs);
-});
-var en_team_grid_member1bio1 = () => {
-	return `Former Google engineer with 10 years of experience building internationalization systems at scale.`;
-};
-var fr_team_grid_member1bio1 = () => {
-	return `Ex-ingénieure Google, 10 ans sur l'internationalisation à grande échelle.`;
-};
-var es_team_grid_member1bio1 = () => {
-	return `Exingeniera de Google con 10 años de experiencia en la creación de sistemas de internacionalización a escala.`;
-};
-var de_team_grid_member1bio1 = () => {
-	return `Ehemalige Google-Ingenieurin mit 10 Jahren Erfahrung im Aufbau von Internationalisierungssystemen in großem Maßstab.`;
-};
-var it_team_grid_member1bio1 = () => {
-	return `Ex ingegnere Google con 10 anni di esperienza nella costruzione di sistemi di internazionalizzazione su scala.`;
-};
-var pt_team_grid_member1bio1 = () => {
-	return `Ex-engenheira do Google com 10 anos de experiência na construção de sistemas de internacionalização em escala.`;
-};
-var zh_team_grid_member1bio1 = () => {
-	return `前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。`;
-};
-var ja_team_grid_member1bio1 = () => {
-	return `大規模な国際化システムの構築において10年の経験を持つ元Googleエンジニア。`;
-};
-var ko_team_grid_member1bio1 = () => {
-	return `Former Google engineer with 10 years of experience building internationalization systems at scale.`;
-};
-var ru_team_grid_member1bio1 = () => {
-	return `Бывший инженер Google с 10-летним опытом создания систем интернационализации в больших масштабах.`;
-};
-var team_grid_member1bio1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member1bio1(inputs);
-	if (locale === "fr") return fr_team_grid_member1bio1(inputs);
-	if (locale === "es") return es_team_grid_member1bio1(inputs);
-	if (locale === "de") return de_team_grid_member1bio1(inputs);
-	if (locale === "it") return it_team_grid_member1bio1(inputs);
-	if (locale === "pt") return pt_team_grid_member1bio1(inputs);
-	if (locale === "zh") return zh_team_grid_member1bio1(inputs);
-	if (locale === "ja") return ja_team_grid_member1bio1(inputs);
-	if (locale === "ko") return ko_team_grid_member1bio1(inputs);
-	return ru_team_grid_member1bio1(inputs);
-});
-var en_team_grid_member2name1 = () => {
-	return `Marcus Weber`;
-};
-var fr_team_grid_member2name1 = () => {
-	return `Marcus Weber`;
-};
-var es_team_grid_member2name1 = () => {
-	return `Marcus Weber`;
-};
-var de_team_grid_member2name1 = () => {
-	return `Marcus Weber`;
-};
-var it_team_grid_member2name1 = () => {
-	return `Marcus Weber`;
-};
-var pt_team_grid_member2name1 = () => {
-	return `Marcus Weber`;
-};
-var zh_team_grid_member2name1 = () => {
-	return `Marcus Weber`;
-};
-var ja_team_grid_member2name1 = () => {
-	return `Marcus Weber`;
-};
-var ko_team_grid_member2name1 = () => {
-	return `Marcus Weber`;
-};
-var ru_team_grid_member2name1 = () => {
-	return `Маркус Вебер`;
-};
-var team_grid_member2name1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member2name1(inputs);
-	if (locale === "fr") return fr_team_grid_member2name1(inputs);
-	if (locale === "es") return es_team_grid_member2name1(inputs);
-	if (locale === "de") return de_team_grid_member2name1(inputs);
-	if (locale === "it") return it_team_grid_member2name1(inputs);
-	if (locale === "pt") return pt_team_grid_member2name1(inputs);
-	if (locale === "zh") return zh_team_grid_member2name1(inputs);
-	if (locale === "ja") return ja_team_grid_member2name1(inputs);
-	if (locale === "ko") return ko_team_grid_member2name1(inputs);
-	return ru_team_grid_member2name1(inputs);
-});
-var en_team_grid_member2role1 = () => {
-	return `Performance Engineer`;
-};
-var fr_team_grid_member2role1 = () => {
-	return `Ingénieur performance`;
-};
-var es_team_grid_member2role1 = () => {
-	return `Ingeniero de rendimiento`;
-};
-var de_team_grid_member2role1 = () => {
-	return `Performance-Ingenieur`;
-};
-var it_team_grid_member2role1 = () => {
-	return `Ingegnere delle prestazioni`;
-};
-var pt_team_grid_member2role1 = () => {
-	return `Engenheiro de performance`;
-};
-var zh_team_grid_member2role1 = () => {
-	return `性能工程师`;
-};
-var ja_team_grid_member2role1 = () => {
-	return `パフォーマンスエンジニア`;
-};
-var ko_team_grid_member2role1 = () => {
-	return `Performance Engineer`;
-};
-var ru_team_grid_member2role1 = () => {
-	return `Инженер по производительности`;
-};
-var team_grid_member2role1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member2role1(inputs);
-	if (locale === "fr") return fr_team_grid_member2role1(inputs);
-	if (locale === "es") return es_team_grid_member2role1(inputs);
-	if (locale === "de") return de_team_grid_member2role1(inputs);
-	if (locale === "it") return it_team_grid_member2role1(inputs);
-	if (locale === "pt") return pt_team_grid_member2role1(inputs);
-	if (locale === "zh") return zh_team_grid_member2role1(inputs);
-	if (locale === "ja") return ja_team_grid_member2role1(inputs);
-	if (locale === "ko") return ko_team_grid_member2role1(inputs);
-	return ru_team_grid_member2role1(inputs);
+	if (locale === "ru") return ru_team_grid_member1role1(inputs);
+	return en_team_grid_member1role1(inputs);
 });
 var en_team_grid_member2bio1 = () => {
 	return `Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.`;
@@ -393,7 +347,6 @@ var ru_team_grid_member2bio1 = () => {
 };
 var team_grid_member2bio1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member2bio1(inputs);
 	if (locale === "fr") return fr_team_grid_member2bio1(inputs);
 	if (locale === "es") return es_team_grid_member2bio1(inputs);
 	if (locale === "de") return de_team_grid_member2bio1(inputs);
@@ -402,93 +355,94 @@ var team_grid_member2bio1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_team_grid_member2bio1(inputs);
 	if (locale === "ja") return ja_team_grid_member2bio1(inputs);
 	if (locale === "ko") return ko_team_grid_member2bio1(inputs);
-	return ru_team_grid_member2bio1(inputs);
+	if (locale === "ru") return ru_team_grid_member2bio1(inputs);
+	return en_team_grid_member2bio1(inputs);
 });
-var en_team_grid_member3name1 = () => {
-	return `Aisha Patel`;
+var en_team_grid_member2name1 = () => {
+	return `Marcus Weber`;
 };
-var fr_team_grid_member3name1 = () => {
-	return `Aisha Patel`;
+var fr_team_grid_member2name1 = () => {
+	return `Marcus Weber`;
 };
-var es_team_grid_member3name1 = () => {
-	return `Aisha Patel`;
+var es_team_grid_member2name1 = () => {
+	return `Marcus Weber`;
 };
-var de_team_grid_member3name1 = () => {
-	return `Aisha Patel`;
+var de_team_grid_member2name1 = () => {
+	return `Marcus Weber`;
 };
-var it_team_grid_member3name1 = () => {
-	return `Aisha Patel`;
+var it_team_grid_member2name1 = () => {
+	return `Marcus Weber`;
 };
-var pt_team_grid_member3name1 = () => {
-	return `Aisha Patel`;
+var pt_team_grid_member2name1 = () => {
+	return `Marcus Weber`;
 };
-var zh_team_grid_member3name1 = () => {
-	return `Aisha Patel`;
+var zh_team_grid_member2name1 = () => {
+	return `Marcus Weber`;
 };
-var ja_team_grid_member3name1 = () => {
-	return `Aisha Patel`;
+var ja_team_grid_member2name1 = () => {
+	return `Marcus Weber`;
 };
-var ko_team_grid_member3name1 = () => {
-	return `Aisha Patel`;
+var ko_team_grid_member2name1 = () => {
+	return `Marcus Weber`;
 };
-var ru_team_grid_member3name1 = () => {
-	return `Айша Патель`;
+var ru_team_grid_member2name1 = () => {
+	return `Маркус Вебер`;
 };
-var team_grid_member3name1 = ((inputs = {}, options = {}) => {
+var team_grid_member2name1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member3name1(inputs);
-	if (locale === "fr") return fr_team_grid_member3name1(inputs);
-	if (locale === "es") return es_team_grid_member3name1(inputs);
-	if (locale === "de") return de_team_grid_member3name1(inputs);
-	if (locale === "it") return it_team_grid_member3name1(inputs);
-	if (locale === "pt") return pt_team_grid_member3name1(inputs);
-	if (locale === "zh") return zh_team_grid_member3name1(inputs);
-	if (locale === "ja") return ja_team_grid_member3name1(inputs);
-	if (locale === "ko") return ko_team_grid_member3name1(inputs);
-	return ru_team_grid_member3name1(inputs);
+	if (locale === "fr") return fr_team_grid_member2name1(inputs);
+	if (locale === "es") return es_team_grid_member2name1(inputs);
+	if (locale === "de") return de_team_grid_member2name1(inputs);
+	if (locale === "it") return it_team_grid_member2name1(inputs);
+	if (locale === "pt") return pt_team_grid_member2name1(inputs);
+	if (locale === "zh") return zh_team_grid_member2name1(inputs);
+	if (locale === "ja") return ja_team_grid_member2name1(inputs);
+	if (locale === "ko") return ko_team_grid_member2name1(inputs);
+	if (locale === "ru") return ru_team_grid_member2name1(inputs);
+	return en_team_grid_member2name1(inputs);
 });
-var en_team_grid_member3role1 = () => {
-	return `Developer Advocate`;
+var en_team_grid_member2role1 = () => {
+	return `Performance Engineer`;
 };
-var fr_team_grid_member3role1 = () => {
-	return `Developer advocate`;
+var fr_team_grid_member2role1 = () => {
+	return `Ingénieur performance`;
 };
-var es_team_grid_member3role1 = () => {
-	return `Developer Advocate`;
+var es_team_grid_member2role1 = () => {
+	return `Ingeniero de rendimiento`;
 };
-var de_team_grid_member3role1 = () => {
-	return `Developer Advocate`;
+var de_team_grid_member2role1 = () => {
+	return `Performance-Ingenieur`;
 };
-var it_team_grid_member3role1 = () => {
-	return `Developer Advocate`;
+var it_team_grid_member2role1 = () => {
+	return `Ingegnere delle prestazioni`;
 };
-var pt_team_grid_member3role1 = () => {
-	return `Developer Advocate`;
+var pt_team_grid_member2role1 = () => {
+	return `Engenheiro de performance`;
 };
-var zh_team_grid_member3role1 = () => {
-	return `开发者倡导者`;
+var zh_team_grid_member2role1 = () => {
+	return `性能工程师`;
 };
-var ja_team_grid_member3role1 = () => {
-	return `Developer Advocate`;
+var ja_team_grid_member2role1 = () => {
+	return `パフォーマンスエンジニア`;
 };
-var ko_team_grid_member3role1 = () => {
-	return `Developer Advocate`;
+var ko_team_grid_member2role1 = () => {
+	return `Performance Engineer`;
 };
-var ru_team_grid_member3role1 = () => {
-	return `Developer Advocate`;
+var ru_team_grid_member2role1 = () => {
+	return `Инженер по производительности`;
 };
-var team_grid_member3role1 = ((inputs = {}, options = {}) => {
+var team_grid_member2role1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member3role1(inputs);
-	if (locale === "fr") return fr_team_grid_member3role1(inputs);
-	if (locale === "es") return es_team_grid_member3role1(inputs);
-	if (locale === "de") return de_team_grid_member3role1(inputs);
-	if (locale === "it") return it_team_grid_member3role1(inputs);
-	if (locale === "pt") return pt_team_grid_member3role1(inputs);
-	if (locale === "zh") return zh_team_grid_member3role1(inputs);
-	if (locale === "ja") return ja_team_grid_member3role1(inputs);
-	if (locale === "ko") return ko_team_grid_member3role1(inputs);
-	return ru_team_grid_member3role1(inputs);
+	if (locale === "fr") return fr_team_grid_member2role1(inputs);
+	if (locale === "es") return es_team_grid_member2role1(inputs);
+	if (locale === "de") return de_team_grid_member2role1(inputs);
+	if (locale === "it") return it_team_grid_member2role1(inputs);
+	if (locale === "pt") return pt_team_grid_member2role1(inputs);
+	if (locale === "zh") return zh_team_grid_member2role1(inputs);
+	if (locale === "ja") return ja_team_grid_member2role1(inputs);
+	if (locale === "ko") return ko_team_grid_member2role1(inputs);
+	if (locale === "ru") return ru_team_grid_member2role1(inputs);
+	return en_team_grid_member2role1(inputs);
 });
 var en_team_grid_member3bio1 = () => {
 	return `Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.`;
@@ -522,7 +476,6 @@ var ru_team_grid_member3bio1 = () => {
 };
 var team_grid_member3bio1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member3bio1(inputs);
 	if (locale === "fr") return fr_team_grid_member3bio1(inputs);
 	if (locale === "es") return es_team_grid_member3bio1(inputs);
 	if (locale === "de") return de_team_grid_member3bio1(inputs);
@@ -531,93 +484,94 @@ var team_grid_member3bio1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_team_grid_member3bio1(inputs);
 	if (locale === "ja") return ja_team_grid_member3bio1(inputs);
 	if (locale === "ko") return ko_team_grid_member3bio1(inputs);
-	return ru_team_grid_member3bio1(inputs);
+	if (locale === "ru") return ru_team_grid_member3bio1(inputs);
+	return en_team_grid_member3bio1(inputs);
 });
-var en_team_grid_member4name1 = () => {
-	return `Tomás Rodríguez`;
+var en_team_grid_member3name1 = () => {
+	return `Aisha Patel`;
 };
-var fr_team_grid_member4name1 = () => {
-	return `Tomás Rodríguez`;
+var fr_team_grid_member3name1 = () => {
+	return `Aisha Patel`;
 };
-var es_team_grid_member4name1 = () => {
-	return `Tomás Rodríguez`;
+var es_team_grid_member3name1 = () => {
+	return `Aisha Patel`;
 };
-var de_team_grid_member4name1 = () => {
-	return `Tomás Rodríguez`;
+var de_team_grid_member3name1 = () => {
+	return `Aisha Patel`;
 };
-var it_team_grid_member4name1 = () => {
-	return `Tomás Rodríguez`;
+var it_team_grid_member3name1 = () => {
+	return `Aisha Patel`;
 };
-var pt_team_grid_member4name1 = () => {
-	return `Tomás Rodríguez`;
+var pt_team_grid_member3name1 = () => {
+	return `Aisha Patel`;
 };
-var zh_team_grid_member4name1 = () => {
-	return `Tomás Rodríguez`;
+var zh_team_grid_member3name1 = () => {
+	return `Aisha Patel`;
 };
-var ja_team_grid_member4name1 = () => {
-	return `Tomás Rodríguez`;
+var ja_team_grid_member3name1 = () => {
+	return `Aisha Patel`;
 };
-var ko_team_grid_member4name1 = () => {
-	return `Tomás Rodríguez`;
+var ko_team_grid_member3name1 = () => {
+	return `Aisha Patel`;
 };
-var ru_team_grid_member4name1 = () => {
-	return `Томас Родригес`;
+var ru_team_grid_member3name1 = () => {
+	return `Айша Патель`;
 };
-var team_grid_member4name1 = ((inputs = {}, options = {}) => {
+var team_grid_member3name1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member4name1(inputs);
-	if (locale === "fr") return fr_team_grid_member4name1(inputs);
-	if (locale === "es") return es_team_grid_member4name1(inputs);
-	if (locale === "de") return de_team_grid_member4name1(inputs);
-	if (locale === "it") return it_team_grid_member4name1(inputs);
-	if (locale === "pt") return pt_team_grid_member4name1(inputs);
-	if (locale === "zh") return zh_team_grid_member4name1(inputs);
-	if (locale === "ja") return ja_team_grid_member4name1(inputs);
-	if (locale === "ko") return ko_team_grid_member4name1(inputs);
-	return ru_team_grid_member4name1(inputs);
+	if (locale === "fr") return fr_team_grid_member3name1(inputs);
+	if (locale === "es") return es_team_grid_member3name1(inputs);
+	if (locale === "de") return de_team_grid_member3name1(inputs);
+	if (locale === "it") return it_team_grid_member3name1(inputs);
+	if (locale === "pt") return pt_team_grid_member3name1(inputs);
+	if (locale === "zh") return zh_team_grid_member3name1(inputs);
+	if (locale === "ja") return ja_team_grid_member3name1(inputs);
+	if (locale === "ko") return ko_team_grid_member3name1(inputs);
+	if (locale === "ru") return ru_team_grid_member3name1(inputs);
+	return en_team_grid_member3name1(inputs);
 });
-var en_team_grid_member4role1 = () => {
-	return `Full-Stack Developer`;
+var en_team_grid_member3role1 = () => {
+	return `Developer Advocate`;
 };
-var fr_team_grid_member4role1 = () => {
-	return `Développeur full-stack`;
+var fr_team_grid_member3role1 = () => {
+	return `Developer advocate`;
 };
-var es_team_grid_member4role1 = () => {
-	return `Desarrollador Full-Stack`;
+var es_team_grid_member3role1 = () => {
+	return `Developer Advocate`;
 };
-var de_team_grid_member4role1 = () => {
-	return `Full-Stack-Entwickler`;
+var de_team_grid_member3role1 = () => {
+	return `Developer Advocate`;
 };
-var it_team_grid_member4role1 = () => {
-	return `Sviluppatore Full-Stack`;
+var it_team_grid_member3role1 = () => {
+	return `Developer Advocate`;
 };
-var pt_team_grid_member4role1 = () => {
-	return `Desenvolvedor Full-Stack`;
+var pt_team_grid_member3role1 = () => {
+	return `Developer Advocate`;
 };
-var zh_team_grid_member4role1 = () => {
-	return `全栈开发人员`;
+var zh_team_grid_member3role1 = () => {
+	return `开发者倡导者`;
 };
-var ja_team_grid_member4role1 = () => {
-	return `フルスタックデベロッパー`;
+var ja_team_grid_member3role1 = () => {
+	return `Developer Advocate`;
 };
-var ko_team_grid_member4role1 = () => {
-	return `Full-Stack Developer`;
+var ko_team_grid_member3role1 = () => {
+	return `Developer Advocate`;
 };
-var ru_team_grid_member4role1 = () => {
-	return `Full-Stack разработчик`;
+var ru_team_grid_member3role1 = () => {
+	return `Developer Advocate`;
 };
-var team_grid_member4role1 = ((inputs = {}, options = {}) => {
+var team_grid_member3role1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member4role1(inputs);
-	if (locale === "fr") return fr_team_grid_member4role1(inputs);
-	if (locale === "es") return es_team_grid_member4role1(inputs);
-	if (locale === "de") return de_team_grid_member4role1(inputs);
-	if (locale === "it") return it_team_grid_member4role1(inputs);
-	if (locale === "pt") return pt_team_grid_member4role1(inputs);
-	if (locale === "zh") return zh_team_grid_member4role1(inputs);
-	if (locale === "ja") return ja_team_grid_member4role1(inputs);
-	if (locale === "ko") return ko_team_grid_member4role1(inputs);
-	return ru_team_grid_member4role1(inputs);
+	if (locale === "fr") return fr_team_grid_member3role1(inputs);
+	if (locale === "es") return es_team_grid_member3role1(inputs);
+	if (locale === "de") return de_team_grid_member3role1(inputs);
+	if (locale === "it") return it_team_grid_member3role1(inputs);
+	if (locale === "pt") return pt_team_grid_member3role1(inputs);
+	if (locale === "zh") return zh_team_grid_member3role1(inputs);
+	if (locale === "ja") return ja_team_grid_member3role1(inputs);
+	if (locale === "ko") return ko_team_grid_member3role1(inputs);
+	if (locale === "ru") return ru_team_grid_member3role1(inputs);
+	return en_team_grid_member3role1(inputs);
 });
 var en_team_grid_member4bio1 = () => {
 	return `Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.`;
@@ -651,7 +605,6 @@ var ru_team_grid_member4bio1 = () => {
 };
 var team_grid_member4bio1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member4bio1(inputs);
 	if (locale === "fr") return fr_team_grid_member4bio1(inputs);
 	if (locale === "es") return es_team_grid_member4bio1(inputs);
 	if (locale === "de") return de_team_grid_member4bio1(inputs);
@@ -660,93 +613,94 @@ var team_grid_member4bio1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_team_grid_member4bio1(inputs);
 	if (locale === "ja") return ja_team_grid_member4bio1(inputs);
 	if (locale === "ko") return ko_team_grid_member4bio1(inputs);
-	return ru_team_grid_member4bio1(inputs);
+	if (locale === "ru") return ru_team_grid_member4bio1(inputs);
+	return en_team_grid_member4bio1(inputs);
 });
-var en_team_grid_member5name1 = () => {
-	return `Yuki Tanaka`;
+var en_team_grid_member4name1 = () => {
+	return `Tomás Rodríguez`;
 };
-var fr_team_grid_member5name1 = () => {
-	return `Yuki Tanaka`;
+var fr_team_grid_member4name1 = () => {
+	return `Tomás Rodríguez`;
 };
-var es_team_grid_member5name1 = () => {
-	return `Yuki Tanaka`;
+var es_team_grid_member4name1 = () => {
+	return `Tomás Rodríguez`;
 };
-var de_team_grid_member5name1 = () => {
-	return `Yuki Tanaka`;
+var de_team_grid_member4name1 = () => {
+	return `Tomás Rodríguez`;
 };
-var it_team_grid_member5name1 = () => {
-	return `Yuki Tanaka`;
+var it_team_grid_member4name1 = () => {
+	return `Tomás Rodríguez`;
 };
-var pt_team_grid_member5name1 = () => {
-	return `Yuki Tanaka`;
+var pt_team_grid_member4name1 = () => {
+	return `Tomás Rodríguez`;
 };
-var zh_team_grid_member5name1 = () => {
-	return `Yuki Tanaka`;
+var zh_team_grid_member4name1 = () => {
+	return `Tomás Rodríguez`;
 };
-var ja_team_grid_member5name1 = () => {
-	return `Yuki Tanaka`;
+var ja_team_grid_member4name1 = () => {
+	return `Tomás Rodríguez`;
 };
-var ko_team_grid_member5name1 = () => {
-	return `Yuki Tanaka`;
+var ko_team_grid_member4name1 = () => {
+	return `Tomás Rodríguez`;
 };
-var ru_team_grid_member5name1 = () => {
-	return `Юки Танака`;
+var ru_team_grid_member4name1 = () => {
+	return `Томас Родригес`;
 };
-var team_grid_member5name1 = ((inputs = {}, options = {}) => {
+var team_grid_member4name1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member5name1(inputs);
-	if (locale === "fr") return fr_team_grid_member5name1(inputs);
-	if (locale === "es") return es_team_grid_member5name1(inputs);
-	if (locale === "de") return de_team_grid_member5name1(inputs);
-	if (locale === "it") return it_team_grid_member5name1(inputs);
-	if (locale === "pt") return pt_team_grid_member5name1(inputs);
-	if (locale === "zh") return zh_team_grid_member5name1(inputs);
-	if (locale === "ja") return ja_team_grid_member5name1(inputs);
-	if (locale === "ko") return ko_team_grid_member5name1(inputs);
-	return ru_team_grid_member5name1(inputs);
+	if (locale === "fr") return fr_team_grid_member4name1(inputs);
+	if (locale === "es") return es_team_grid_member4name1(inputs);
+	if (locale === "de") return de_team_grid_member4name1(inputs);
+	if (locale === "it") return it_team_grid_member4name1(inputs);
+	if (locale === "pt") return pt_team_grid_member4name1(inputs);
+	if (locale === "zh") return zh_team_grid_member4name1(inputs);
+	if (locale === "ja") return ja_team_grid_member4name1(inputs);
+	if (locale === "ko") return ko_team_grid_member4name1(inputs);
+	if (locale === "ru") return ru_team_grid_member4name1(inputs);
+	return en_team_grid_member4name1(inputs);
 });
-var en_team_grid_member5role1 = () => {
-	return `Data Analyst`;
+var en_team_grid_member4role1 = () => {
+	return `Full-Stack Developer`;
 };
-var fr_team_grid_member5role1 = () => {
-	return `Analyste de données`;
+var fr_team_grid_member4role1 = () => {
+	return `Développeur full-stack`;
 };
-var es_team_grid_member5role1 = () => {
-	return `Analista de datos`;
+var es_team_grid_member4role1 = () => {
+	return `Desarrollador Full-Stack`;
 };
-var de_team_grid_member5role1 = () => {
-	return `Datenanalyst`;
+var de_team_grid_member4role1 = () => {
+	return `Full-Stack-Entwickler`;
 };
-var it_team_grid_member5role1 = () => {
-	return `Analista dati`;
+var it_team_grid_member4role1 = () => {
+	return `Sviluppatore Full-Stack`;
 };
-var pt_team_grid_member5role1 = () => {
-	return `Analista de dados`;
+var pt_team_grid_member4role1 = () => {
+	return `Desenvolvedor Full-Stack`;
 };
-var zh_team_grid_member5role1 = () => {
-	return `数据分析师`;
+var zh_team_grid_member4role1 = () => {
+	return `全栈开发人员`;
 };
-var ja_team_grid_member5role1 = () => {
-	return `データアナリスト`;
+var ja_team_grid_member4role1 = () => {
+	return `フルスタックデベロッパー`;
 };
-var ko_team_grid_member5role1 = () => {
-	return `Data Analyst`;
+var ko_team_grid_member4role1 = () => {
+	return `Full-Stack Developer`;
 };
-var ru_team_grid_member5role1 = () => {
-	return `Аналитик данных`;
+var ru_team_grid_member4role1 = () => {
+	return `Full-Stack разработчик`;
 };
-var team_grid_member5role1 = ((inputs = {}, options = {}) => {
+var team_grid_member4role1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member5role1(inputs);
-	if (locale === "fr") return fr_team_grid_member5role1(inputs);
-	if (locale === "es") return es_team_grid_member5role1(inputs);
-	if (locale === "de") return de_team_grid_member5role1(inputs);
-	if (locale === "it") return it_team_grid_member5role1(inputs);
-	if (locale === "pt") return pt_team_grid_member5role1(inputs);
-	if (locale === "zh") return zh_team_grid_member5role1(inputs);
-	if (locale === "ja") return ja_team_grid_member5role1(inputs);
-	if (locale === "ko") return ko_team_grid_member5role1(inputs);
-	return ru_team_grid_member5role1(inputs);
+	if (locale === "fr") return fr_team_grid_member4role1(inputs);
+	if (locale === "es") return es_team_grid_member4role1(inputs);
+	if (locale === "de") return de_team_grid_member4role1(inputs);
+	if (locale === "it") return it_team_grid_member4role1(inputs);
+	if (locale === "pt") return pt_team_grid_member4role1(inputs);
+	if (locale === "zh") return zh_team_grid_member4role1(inputs);
+	if (locale === "ja") return ja_team_grid_member4role1(inputs);
+	if (locale === "ko") return ko_team_grid_member4role1(inputs);
+	if (locale === "ru") return ru_team_grid_member4role1(inputs);
+	return en_team_grid_member4role1(inputs);
 });
 var en_team_grid_member5bio1 = () => {
 	return `Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.`;
@@ -780,7 +734,6 @@ var ru_team_grid_member5bio1 = () => {
 };
 var team_grid_member5bio1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member5bio1(inputs);
 	if (locale === "fr") return fr_team_grid_member5bio1(inputs);
 	if (locale === "es") return es_team_grid_member5bio1(inputs);
 	if (locale === "de") return de_team_grid_member5bio1(inputs);
@@ -789,93 +742,94 @@ var team_grid_member5bio1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_team_grid_member5bio1(inputs);
 	if (locale === "ja") return ja_team_grid_member5bio1(inputs);
 	if (locale === "ko") return ko_team_grid_member5bio1(inputs);
-	return ru_team_grid_member5bio1(inputs);
+	if (locale === "ru") return ru_team_grid_member5bio1(inputs);
+	return en_team_grid_member5bio1(inputs);
 });
-var en_team_grid_member6name1 = () => {
-	return `Elena Kowalski`;
+var en_team_grid_member5name1 = () => {
+	return `Yuki Tanaka`;
 };
-var fr_team_grid_member6name1 = () => {
-	return `Elena Kowalski`;
+var fr_team_grid_member5name1 = () => {
+	return `Yuki Tanaka`;
 };
-var es_team_grid_member6name1 = () => {
-	return `Elena Kowalski`;
+var es_team_grid_member5name1 = () => {
+	return `Yuki Tanaka`;
 };
-var de_team_grid_member6name1 = () => {
-	return `Elena Kowalski`;
+var de_team_grid_member5name1 = () => {
+	return `Yuki Tanaka`;
 };
-var it_team_grid_member6name1 = () => {
-	return `Elena Kowalski`;
+var it_team_grid_member5name1 = () => {
+	return `Yuki Tanaka`;
 };
-var pt_team_grid_member6name1 = () => {
-	return `Elena Kowalski`;
+var pt_team_grid_member5name1 = () => {
+	return `Yuki Tanaka`;
 };
-var zh_team_grid_member6name1 = () => {
-	return `Elena Kowalski`;
+var zh_team_grid_member5name1 = () => {
+	return `Yuki Tanaka`;
 };
-var ja_team_grid_member6name1 = () => {
-	return `Elena Kowalski`;
+var ja_team_grid_member5name1 = () => {
+	return `Yuki Tanaka`;
 };
-var ko_team_grid_member6name1 = () => {
-	return `Elena Kowalski`;
+var ko_team_grid_member5name1 = () => {
+	return `Yuki Tanaka`;
 };
-var ru_team_grid_member6name1 = () => {
-	return `Елена Ковальски`;
+var ru_team_grid_member5name1 = () => {
+	return `Юки Танака`;
 };
-var team_grid_member6name1 = ((inputs = {}, options = {}) => {
+var team_grid_member5name1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member6name1(inputs);
-	if (locale === "fr") return fr_team_grid_member6name1(inputs);
-	if (locale === "es") return es_team_grid_member6name1(inputs);
-	if (locale === "de") return de_team_grid_member6name1(inputs);
-	if (locale === "it") return it_team_grid_member6name1(inputs);
-	if (locale === "pt") return pt_team_grid_member6name1(inputs);
-	if (locale === "zh") return zh_team_grid_member6name1(inputs);
-	if (locale === "ja") return ja_team_grid_member6name1(inputs);
-	if (locale === "ko") return ko_team_grid_member6name1(inputs);
-	return ru_team_grid_member6name1(inputs);
+	if (locale === "fr") return fr_team_grid_member5name1(inputs);
+	if (locale === "es") return es_team_grid_member5name1(inputs);
+	if (locale === "de") return de_team_grid_member5name1(inputs);
+	if (locale === "it") return it_team_grid_member5name1(inputs);
+	if (locale === "pt") return pt_team_grid_member5name1(inputs);
+	if (locale === "zh") return zh_team_grid_member5name1(inputs);
+	if (locale === "ja") return ja_team_grid_member5name1(inputs);
+	if (locale === "ko") return ko_team_grid_member5name1(inputs);
+	if (locale === "ru") return ru_team_grid_member5name1(inputs);
+	return en_team_grid_member5name1(inputs);
 });
-var en_team_grid_member6role1 = () => {
-	return `Community Manager`;
+var en_team_grid_member5role1 = () => {
+	return `Data Analyst`;
 };
-var fr_team_grid_member6role1 = () => {
-	return `Community manager`;
+var fr_team_grid_member5role1 = () => {
+	return `Analyste de données`;
 };
-var es_team_grid_member6role1 = () => {
-	return `Responsable de la comunidad`;
+var es_team_grid_member5role1 = () => {
+	return `Analista de datos`;
 };
-var de_team_grid_member6role1 = () => {
-	return `Community Manager`;
+var de_team_grid_member5role1 = () => {
+	return `Datenanalyst`;
 };
-var it_team_grid_member6role1 = () => {
-	return `Responsable della comunità`;
+var it_team_grid_member5role1 = () => {
+	return `Analista dati`;
 };
-var pt_team_grid_member6role1 = () => {
-	return `Gerente de comunidade`;
+var pt_team_grid_member5role1 = () => {
+	return `Analista de dados`;
 };
-var zh_team_grid_member6role1 = () => {
-	return `社区经理`;
+var zh_team_grid_member5role1 = () => {
+	return `数据分析师`;
 };
-var ja_team_grid_member6role1 = () => {
-	return `コミュニティマネージャー`;
+var ja_team_grid_member5role1 = () => {
+	return `データアナリスト`;
 };
-var ko_team_grid_member6role1 = () => {
-	return `Community Manager`;
+var ko_team_grid_member5role1 = () => {
+	return `Data Analyst`;
 };
-var ru_team_grid_member6role1 = () => {
-	return `Комьюнити-менеджер`;
+var ru_team_grid_member5role1 = () => {
+	return `Аналитик данных`;
 };
-var team_grid_member6role1 = ((inputs = {}, options = {}) => {
+var team_grid_member5role1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member6role1(inputs);
-	if (locale === "fr") return fr_team_grid_member6role1(inputs);
-	if (locale === "es") return es_team_grid_member6role1(inputs);
-	if (locale === "de") return de_team_grid_member6role1(inputs);
-	if (locale === "it") return it_team_grid_member6role1(inputs);
-	if (locale === "pt") return pt_team_grid_member6role1(inputs);
-	if (locale === "zh") return zh_team_grid_member6role1(inputs);
-	if (locale === "ja") return ja_team_grid_member6role1(inputs);
-	if (locale === "ko") return ko_team_grid_member6role1(inputs);
-	return ru_team_grid_member6role1(inputs);
+	if (locale === "fr") return fr_team_grid_member5role1(inputs);
+	if (locale === "es") return es_team_grid_member5role1(inputs);
+	if (locale === "de") return de_team_grid_member5role1(inputs);
+	if (locale === "it") return it_team_grid_member5role1(inputs);
+	if (locale === "pt") return pt_team_grid_member5role1(inputs);
+	if (locale === "zh") return zh_team_grid_member5role1(inputs);
+	if (locale === "ja") return ja_team_grid_member5role1(inputs);
+	if (locale === "ko") return ko_team_grid_member5role1(inputs);
+	if (locale === "ru") return ru_team_grid_member5role1(inputs);
+	return en_team_grid_member5role1(inputs);
 });
 var en_team_grid_member6bio1 = () => {
 	return `Manages community contributions, partnerships, and events. Background in open source governance.`;
@@ -909,7 +863,6 @@ var ru_team_grid_member6bio1 = () => {
 };
 var team_grid_member6bio1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_team_grid_member6bio1(inputs);
 	if (locale === "fr") return fr_team_grid_member6bio1(inputs);
 	if (locale === "es") return es_team_grid_member6bio1(inputs);
 	if (locale === "de") return de_team_grid_member6bio1(inputs);
@@ -918,9 +871,97 @@ var team_grid_member6bio1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_team_grid_member6bio1(inputs);
 	if (locale === "ja") return ja_team_grid_member6bio1(inputs);
 	if (locale === "ko") return ko_team_grid_member6bio1(inputs);
-	return ru_team_grid_member6bio1(inputs);
+	if (locale === "ru") return ru_team_grid_member6bio1(inputs);
+	return en_team_grid_member6bio1(inputs);
 });
-var _tmpl$ = template(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">`), _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-6 text-center"><div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground"></div><h3 class="text-base font-semibold text-foreground"></h3><p class="mb-2 text-xs font-medium text-primary"></p><p class="text-sm text-muted-foreground">`);
+var en_team_grid_member6name1 = () => {
+	return `Elena Kowalski`;
+};
+var fr_team_grid_member6name1 = () => {
+	return `Elena Kowalski`;
+};
+var es_team_grid_member6name1 = () => {
+	return `Elena Kowalski`;
+};
+var de_team_grid_member6name1 = () => {
+	return `Elena Kowalski`;
+};
+var it_team_grid_member6name1 = () => {
+	return `Elena Kowalski`;
+};
+var pt_team_grid_member6name1 = () => {
+	return `Elena Kowalski`;
+};
+var zh_team_grid_member6name1 = () => {
+	return `Elena Kowalski`;
+};
+var ja_team_grid_member6name1 = () => {
+	return `Elena Kowalski`;
+};
+var ko_team_grid_member6name1 = () => {
+	return `Elena Kowalski`;
+};
+var ru_team_grid_member6name1 = () => {
+	return `Елена Ковальски`;
+};
+var team_grid_member6name1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_team_grid_member6name1(inputs);
+	if (locale === "es") return es_team_grid_member6name1(inputs);
+	if (locale === "de") return de_team_grid_member6name1(inputs);
+	if (locale === "it") return it_team_grid_member6name1(inputs);
+	if (locale === "pt") return pt_team_grid_member6name1(inputs);
+	if (locale === "zh") return zh_team_grid_member6name1(inputs);
+	if (locale === "ja") return ja_team_grid_member6name1(inputs);
+	if (locale === "ko") return ko_team_grid_member6name1(inputs);
+	if (locale === "ru") return ru_team_grid_member6name1(inputs);
+	return en_team_grid_member6name1(inputs);
+});
+var en_team_grid_member6role1 = () => {
+	return `Community Manager`;
+};
+var fr_team_grid_member6role1 = () => {
+	return `Community manager`;
+};
+var es_team_grid_member6role1 = () => {
+	return `Responsable de la comunidad`;
+};
+var de_team_grid_member6role1 = () => {
+	return `Community Manager`;
+};
+var it_team_grid_member6role1 = () => {
+	return `Responsable della comunità`;
+};
+var pt_team_grid_member6role1 = () => {
+	return `Gerente de comunidade`;
+};
+var zh_team_grid_member6role1 = () => {
+	return `社区经理`;
+};
+var ja_team_grid_member6role1 = () => {
+	return `コミュニティマネージャー`;
+};
+var ko_team_grid_member6role1 = () => {
+	return `Community Manager`;
+};
+var ru_team_grid_member6role1 = () => {
+	return `Комьюнити-менеджер`;
+};
+var team_grid_member6role1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_team_grid_member6role1(inputs);
+	if (locale === "es") return es_team_grid_member6role1(inputs);
+	if (locale === "de") return de_team_grid_member6role1(inputs);
+	if (locale === "it") return it_team_grid_member6role1(inputs);
+	if (locale === "pt") return pt_team_grid_member6role1(inputs);
+	if (locale === "zh") return zh_team_grid_member6role1(inputs);
+	if (locale === "ja") return ja_team_grid_member6role1(inputs);
+	if (locale === "ko") return ko_team_grid_member6role1(inputs);
+	if (locale === "ru") return ru_team_grid_member6role1(inputs);
+	return en_team_grid_member6role1(inputs);
+});
+var _tmpl$ = template(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">`);
+var _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-6 text-center"><div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground"></div><h3 class="text-base font-semibold text-foreground"></h3><p class="mb-2 text-xs font-medium text-primary"></p><p class="text-sm text-muted-foreground">`);
 function TeamGrid() {
 	const members = () => [
 		{

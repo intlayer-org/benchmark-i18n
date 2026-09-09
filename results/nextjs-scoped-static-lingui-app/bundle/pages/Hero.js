@@ -1,6 +1,118 @@
-import { cloneElement, createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+import { cloneElement, createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
+import { Fragment, jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
+var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
+	if (typeof require !== "undefined") return require.apply(this, arguments);
+	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
+});
+var require_use_sync_external_store_shim_production = __commonJSMin(((exports) => {
+	var React = __require("react");
+	function is(x, y) {
+		return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
+	}
+	var objectIs = "function" === typeof Object.is ? Object.is : is;
+	var useState = React.useState;
+	var useEffect = React.useEffect;
+	var useLayoutEffect = React.useLayoutEffect;
+	var useDebugValue = React.useDebugValue;
+	function useSyncExternalStore$2(subscribe, getSnapshot) {
+		var value = getSnapshot(), _useState = useState({ inst: {
+			value,
+			getSnapshot
+		} }), inst = _useState[0].inst, forceUpdate = _useState[1];
+		useLayoutEffect(function() {
+			inst.value = value;
+			inst.getSnapshot = getSnapshot;
+			checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+		}, [
+			subscribe,
+			value,
+			getSnapshot
+		]);
+		useEffect(function() {
+			checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+			return subscribe(function() {
+				checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+			});
+		}, [subscribe]);
+		useDebugValue(value);
+		return value;
+	}
+	function checkIfSnapshotChanged(inst) {
+		var latestGetSnapshot = inst.getSnapshot;
+		inst = inst.value;
+		try {
+			var nextValue = latestGetSnapshot();
+			return !objectIs(inst, nextValue);
+		} catch (error) {
+			return !0;
+		}
+	}
+	function useSyncExternalStore$1(subscribe, getSnapshot) {
+		return getSnapshot();
+	}
+	var shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
+	exports.useSyncExternalStore = void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;
+}));
+var require_use_sync_external_store_shim_development = __commonJSMin(((exports) => {
+	"production" !== process.env.NODE_ENV && (function() {
+		function is(x, y) {
+			return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
+		}
+		function useSyncExternalStore$2(subscribe, getSnapshot) {
+			didWarnOld18Alpha || void 0 === React.startTransition || (didWarnOld18Alpha = !0, console.error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release."));
+			var value = getSnapshot();
+			if (!didWarnUncachedGetSnapshot) {
+				var cachedValue = getSnapshot();
+				objectIs(value, cachedValue) || (console.error("The result of getSnapshot should be cached to avoid an infinite loop"), didWarnUncachedGetSnapshot = !0);
+			}
+			cachedValue = useState({ inst: {
+				value,
+				getSnapshot
+			} });
+			var inst = cachedValue[0].inst, forceUpdate = cachedValue[1];
+			useLayoutEffect(function() {
+				inst.value = value;
+				inst.getSnapshot = getSnapshot;
+				checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+			}, [
+				subscribe,
+				value,
+				getSnapshot
+			]);
+			useEffect(function() {
+				checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+				return subscribe(function() {
+					checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+				});
+			}, [subscribe]);
+			useDebugValue(value);
+			return value;
+		}
+		function checkIfSnapshotChanged(inst) {
+			var latestGetSnapshot = inst.getSnapshot;
+			inst = inst.value;
+			try {
+				var nextValue = latestGetSnapshot();
+				return !objectIs(inst, nextValue);
+			} catch (error) {
+				return !0;
+			}
+		}
+		function useSyncExternalStore$1(subscribe, getSnapshot) {
+			return getSnapshot();
+		}
+		"undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
+		var React = __require("react"), objectIs = "function" === typeof Object.is ? Object.is : is, useState = React.useState, useEffect = React.useEffect, useLayoutEffect = React.useLayoutEffect, useDebugValue = React.useDebugValue, didWarnOld18Alpha = !1, didWarnUncachedGetSnapshot = !1, shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
+		exports.useSyncExternalStore = void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;
+		"undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+	})();
+}));
+var import_shim = __commonJSMin(((exports, module) => {
+	if (process.env.NODE_ENV === "production") module.exports = require_use_sync_external_store_shim_production();
+	else module.exports = require_use_sync_external_store_shim_development();
+}))();
 var tagRe = /<([a-zA-Z0-9]+)>([\s\S]*?)<\/\1>|<([a-zA-Z0-9]+)\/>/;
 var voidElementTags = {
 	area: true,
@@ -106,31 +218,42 @@ var LinguiContext = createContext(null);
 var useLinguiInternal = (devErrorMessage) => {
 	const context = useContext(LinguiContext);
 	if (process.env.NODE_ENV !== "production") {
-		if (context == null) throw new Error(devErrorMessage ?? "useLingui hook was used without I18nProvider.");
+		if (context == null) throw new Error(devErrorMessage ?? "useLingui hook was used without I18nProvider.\n\nThis often happens when multiple instances of @lingui/react are installed (e.g. due to a version mismatch or misconfiguration in a monorepo). Verify you have only one version installed by running: npm ls @lingui/react (or pnpm why @lingui/react / yarn why @lingui/react).");
 	}
 	return context;
 };
 function useLingui() {
 	return useLinguiInternal();
 }
+var getI18nContext = (i18n, defaultComponent) => ({
+	i18n: new Proxy(i18n, {}),
+	defaultComponent,
+	_: i18n.t.bind(i18n)
+});
+var createI18nStore = (i18n, defaultComponent) => {
+	let latestLocale = i18n.locale;
+	let context = getI18nContext(i18n, defaultComponent);
+	const updateContext = () => {
+		latestLocale = i18n.locale;
+		context = getI18nContext(i18n, defaultComponent);
+	};
+	const getSnapshot = () => {
+		if (latestLocale !== i18n.locale) updateContext();
+		return context;
+	};
+	const subscribe = (onStoreChange) => i18n.on("change", () => {
+		updateContext();
+		onStoreChange();
+	});
+	return {
+		getSnapshot,
+		subscribe
+	};
+};
 var I18nProvider = ({ i18n, defaultComponent, children }) => {
-	const latestKnownLocale = useRef(i18n.locale);
-	const makeContext = useCallback(() => ({
-		i18n,
-		defaultComponent,
-		_: i18n.t.bind(i18n)
-	}), [i18n, defaultComponent]);
-	const [context, setContext] = useState(makeContext());
-	useEffect(() => {
-		const updateContext = () => {
-			latestKnownLocale.current = i18n.locale;
-			setContext(makeContext());
-		};
-		const unsubscribe = i18n.on("change", updateContext);
-		if (latestKnownLocale.current !== i18n.locale) updateContext();
-		return unsubscribe;
-	}, [i18n, makeContext]);
-	if (!latestKnownLocale.current) {
+	const store = useMemo(() => createI18nStore(i18n, defaultComponent), [i18n, defaultComponent]);
+	const context = (0, import_shim.useSyncExternalStore)(store.subscribe, store.getSnapshot, store.getSnapshot);
+	if (!context.i18n.locale) {
 		process.env.NODE_ENV === "development" && console.log("I18nProvider rendered `null`. A call to `i18n.activate` needs to happen in order for translations to be activated and for the I18nProvider to render.This is not an error but an informational message logged only in development.");
 		return null;
 	}
@@ -141,8 +264,9 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 };
 function Trans(props) {
 	let errMessage = void 0;
-	if (process.env.NODE_ENV !== "production") errMessage = `Trans component was rendered without I18nProvider.
-Attempted to render message: ${props.message} id: ${props.id}. Make sure this component is rendered inside a I18nProvider.`;
+	if (process.env.NODE_ENV !== "production") errMessage = `Trans component was rendered without I18nProvider. Attempted to render message: ${props.message} id: ${props.id}. Make sure this component is rendered inside a I18nProvider.
+
+This often happens when multiple instances of @lingui/react are installed (e.g. due to a version mismatch or misconfiguration in a monorepo). Verify you have only one version installed by running: npm ls @lingui/react (or pnpm why @lingui/react / yarn why @lingui/react).`;
 	const lingui = useLinguiInternal(errMessage);
 	return jsx(TransNoContext, {
 		...props,
@@ -160,40 +284,73 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/lingui-app/components/pages/home/Hero.tsx";
 function Hero() {
 	const { i18n } = useLingui();
 	usePerformanceMeasure("Hero");
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mb-16 text-center",
 		children: [
-			jsx("h1", {
+			jsxDEV("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
-				children: jsx(Trans, {
+				children: jsxDEV(Trans, {
 					id: "hero.title",
 					message: "i18n Benchmark"
-				})
-			}),
-			jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 14,
+					columnNumber: 9
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 13,
+				columnNumber: 7
+			}, this),
+			jsxDEV("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
-				children: jsx(Trans, {
+				children: jsxDEV(Trans, {
 					id: "hero.aTestApplicationDesignedTo",
 					message: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
-				})
-			}),
-			jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 17,
+					columnNumber: 9
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 16,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "mt-8 flex justify-center gap-4",
-				children: [jsx("button", {
+				children: [jsxDEV("button", {
 					type: "button",
 					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: i18n._("hero.viewResults")
-				}), jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 23,
+					columnNumber: 9
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: i18n._("header.methodology")
-				})]
-			})
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 29,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 22,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -359,8 +516,10 @@ var require_moo = __commonJSMin(((exports, module) => {
 				var options = rules[i];
 				if (options.include) throw new Error("Inheritance is not allowed in stateless lexers");
 				if (options.error || options.fallback) {
-					if (errorRule) if (!options.fallback === !errorRule.fallback) throw new Error("Multiple " + (options.fallback ? "fallback" : "error") + " rules not allowed (for token '" + options.defaultType + "')");
-					else throw new Error("fallback and error are mutually exclusive (for token '" + options.defaultType + "')");
+					if (errorRule) {
+						if (!options.fallback === !errorRule.fallback) throw new Error("Multiple " + (options.fallback ? "fallback" : "error") + " rules not allowed (for token '" + options.defaultType + "')");
+						else throw new Error("fallback and error are mutually exclusive (for token '" + options.defaultType + "')");
+					}
 					errorRule = options;
 				}
 				var match = options.match.slice();
@@ -978,9 +1137,7 @@ function hourOptions(token) {
 		case "k":
 			hourCycle = "h24";
 			break;
-		case "K":
-			hourCycle = "h11";
-			break;
+		case "K": hourCycle = "h11";
 	}
 	return hourCycle ? {
 		hour,
@@ -1033,8 +1190,10 @@ function getDateFormatOptions(tokens, timeZone, onError = (error) => {
 			onError(dte);
 		}
 		if (str) onError(new DateFormatError(`Ignoring string part: ${str}`, token, DateFormatError.WARNING));
-		if (field) if (fields.indexOf(field) === -1) fields.push(field);
-		else onError(new DateFormatError(`Duplicate ${field} token`, token));
+		if (field) {
+			if (fields.indexOf(field) === -1) fields.push(field);
+			else onError(new DateFormatError(`Duplicate ${field} token`, token));
+		}
 		const opt = compileOptions(token, (msg, isWarning) => onError(new DateFormatError(msg, token, isWarning)));
 		if (opt) Object.assign(options, opt);
 	}
@@ -1242,12 +1401,14 @@ function readQuotedToken(src, pos) {
 				str,
 				width
 			};
-		} else if (next === "'") if (src[++pos] !== "'") return {
-			char: "'",
-			str,
-			width
-		};
-		else ++width;
+		} else if (next === "'") {
+			if (src[++pos] !== "'") return {
+				char: "'",
+				str,
+				width
+			};
+			else ++width;
+		}
 		str += next;
 	}
 }
@@ -1359,9 +1520,7 @@ function date(locales, value, format) {
 			case "long":
 				o.month = "long";
 				break;
-			case "short":
-				o.month = "numeric";
-				break;
+			case "short": o.month = "numeric";
 		}
 	} else o = format;
 	return getMemoized(() => cacheKey("date", _locales, format), () => new Intl.DateTimeFormat(_locales, o)).format(isString(value) ? new Date(value) : value);
@@ -1426,7 +1585,8 @@ var getDefaultFormats = (locale, passedLocales, formats = {}) => {
 		return formats[format];
 	};
 	const replaceOctothorpe = (value, message) => {
-		const valueStr = number(locales, value, Object.keys(formats).length ? style("number") : void 0);
+		const numberFormat = Object.keys(formats).length ? style("number") : void 0;
+		const valueStr = number(locales, value, numberFormat);
 		return message.replace(new RegExp(OCTOTHORPE_PH, "g"), valueStr);
 	};
 	return {
@@ -1476,68 +1636,35 @@ function interpolate(translation, locale, locales) {
 		return result ? String(result) : "";
 	};
 }
-var __defProp$1 = Object.defineProperty;
-var __defNormalProp$1 = (obj, key, value) => key in obj ? __defProp$1(obj, key, {
-	enumerable: true,
-	configurable: true,
-	writable: true,
-	value
-}) : obj[key] = value;
-var __publicField$1 = (obj, key, value) => {
-	__defNormalProp$1(obj, typeof key !== "symbol" ? key + "" : key, value);
-	return value;
-};
 var EventEmitter = class {
-	constructor() {
-		__publicField$1(this, "_events", {});
-	}
+	_events = {};
 	on(event, listener) {
-		var _a;
-		(_a = this._events)[event] ?? (_a[event] = []);
-		this._events[event].push(listener);
+		this._events[event] ??= /* @__PURE__ */ new Set();
+		this._events[event].add(listener);
 		return () => this.removeListener(event, listener);
 	}
 	removeListener(event, listener) {
-		const maybeListeners = this._getListeners(event);
-		if (!maybeListeners) return;
-		const index = maybeListeners.indexOf(listener);
-		if (~index) maybeListeners.splice(index, 1);
+		const listeners = this._events[event];
+		listeners?.delete(listener);
+		if (listeners?.size === 0) delete this._events[event];
 	}
 	emit(event, ...args) {
-		const maybeListeners = this._getListeners(event);
-		if (!maybeListeners) return;
-		maybeListeners.map((listener) => listener.apply(this, args));
+		const listeners = this._events[event];
+		if (!listeners) return;
+		for (const listener of [...listeners]) listener.apply(this, args);
 	}
-	_getListeners(event) {
-		const maybeListeners = this._events[event];
-		return Array.isArray(maybeListeners) ? maybeListeners : false;
-	}
-};
-var __defProp = Object.defineProperty;
-var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, {
-	enumerable: true,
-	configurable: true,
-	writable: true,
-	value
-}) : obj[key] = value;
-var __publicField = (obj, key, value) => {
-	__defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-	return value;
 };
 var I18n = class extends EventEmitter {
+	_locale = "";
+	_locales;
+	_messages = {};
+	_missing;
+	_messageCompiler;
 	constructor(params) {
 		super();
-		__publicField(this, "_locale", "");
-		__publicField(this, "_locales");
-		__publicField(this, "_localeData", {});
-		__publicField(this, "_messages", {});
-		__publicField(this, "_missing");
-		__publicField(this, "_messageCompiler");
-		__publicField(this, "t", this._.bind(this));
 		if (process.env.NODE_ENV !== "production") this.setMessagesCompiler(compileMessage);
 		if (params.missing != null) this._missing = params.missing;
 		if (params.messages != null) this.load(params.messages);
-		if (params.localeData != null) this.loadLocaleData(params.localeData);
 		if (typeof params.locale === "string" || params.locales) this.activate(params.locale ?? defaultLocale, params.locales);
 	}
 	get locale() {
@@ -1549,22 +1676,9 @@ var I18n = class extends EventEmitter {
 	get messages() {
 		return this._messages[this._locale] ?? {};
 	}
-	get localeData() {
-		return this._localeData[this._locale] ?? {};
-	}
-	_loadLocaleData(locale, localeData) {
-		const maybeLocaleData = this._localeData[locale];
-		if (!maybeLocaleData) this._localeData[locale] = localeData;
-		else Object.assign(maybeLocaleData, localeData);
-	}
 	setMessagesCompiler(compiler) {
 		this._messageCompiler = compiler;
 		return this;
-	}
-	loadLocaleData(localeOrAllData, localeData) {
-		if (typeof localeOrAllData === "string") this._loadLocaleData(localeOrAllData, localeData);
-		else Object.keys(localeOrAllData).forEach((locale) => this._loadLocaleData(locale, localeOrAllData[locale]));
-		this.emit("change");
 	}
 	_load(locale, messages) {
 		const maybeMessages = this._messages[locale];
@@ -1608,20 +1722,23 @@ var I18n = class extends EventEmitter {
 			locale: this._locale
 		});
 		let translation = messageForId || message || id;
-		if (isString(translation)) if (this._messageCompiler) translation = this._messageCompiler(translation);
-		else console.warn(`Uncompiled message detected! Message:
+		if (isString(translation)) {
+			if (this._messageCompiler) translation = this._messageCompiler(translation);
+			else console.warn(`Uncompiled message detected! Message:
 
 > ${translation}
 
 That means you use raw catalog or your catalog doesn't have a translation for the message and fallback was used.
-ICU features such as interpolation and plurals will not work properly for that message. 
+ICU features such as interpolation and plurals will not work properly for that message.
 
-Please compile your catalog first. 
+Please compile your catalog first.
 `);
+		}
 		if (isString(translation) && ESCAPE_SEQUENCE_REGEX.test(translation)) return decodeEscapeSequences(translation);
 		if (isString(translation)) return translation;
 		return interpolate(translation, this._locale, this._locales)(values, options?.formats);
 	}
+	t = this._.bind(this);
 	date(value, format) {
 		return date(this._locales || this._locale, value, format);
 	}
@@ -1639,6 +1756,7 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children, locale, messages }) {
 	const i18n = useMemo(() => initLingui(locale, messages), [locale, messages]);
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -1651,10 +1769,14 @@ function AppProviders({ children, locale, messages }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		i18n,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 39,
+		columnNumber: 7
+	}, this);
 }
 var messages$11 = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.\"],\"about-grid.methodology\":[\"Methodology\"],\"about-grid.theSame10PageApp\":[\"The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results.\"],\"about-grid.whyThisExists\":[\"Why This Exists\"],\"about-header.aboutThisBenchmark\":[\"About This Benchmark\"],\"about-header.thisIsAnOpenSource\":[\"This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.\"],\"what-we-measure.bundleSizeImpact\":[\"Bundle size impact\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\"],\"what-we-measure.howFastTheAppCan\":[\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\"],\"what-we-measure.howMuchExtraTimeThe\":[\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\"],\"what-we-measure.hydrationCost\":[\"Hydration cost\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"Lazy loading effectiveness\"],\"what-we-measure.localeSwitchSpeed\":[\"Locale switch speed\"],\"what-we-measure.renderingOverhead\":[\"Rendering overhead\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\"],\"what-we-measure.whatWeMeasure\":[\"What We Measure\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\"]}");
 var messages$10 = JSON.parse("{\"blog-header.insightsTutorialsAndAnalysisFrom\":[\"Insights, tutorials, and analysis from the i18n community.\"],\"blog-list.aStepByStepGuide\":[\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\"],\"blog-list.aTransparentLookAtOur\":[\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\"],\"blog-list.anOverviewOfTheCurrent\":[\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\"],\"blog-list.benchmarkMethodologyHowWeTest\":[\"Benchmark Methodology: How We Test\"],\"blog-list.comparingI18nLibrariesIn2026\":[\"Comparing i18n Libraries in 2026: A Deep Dive\"],\"blog-list.february12026\":[\"February 1, 2026\"],\"blog-list.february152026\":[\"February 15, 2026\"],\"blog-list.february282026\":[\"February 28, 2026\"],\"blog-list.howToReduceYourI18n\":[\"How to Reduce Your i18n Bundle by 60%\"],\"blog-list.january202026\":[\"January 20, 2026\"],\"blog-list.march82026\":[\"March 8, 2026\"],\"blog-list.migratingFromReactI18nextTo\":[\"Migrating from react-i18next to Lingui\"],\"blog-list.practicalStrategiesForOptimizingTranslation\":[\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\"],\"blog-list.reactServerComponentsIntroduceNew\":[\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\"],\"blog-list.readMore\":[\"Read More →\"],\"blog-list.serverComponentsAndI18nWhat\":[\"Server Components and i18n: What Changes?\"],\"blog-list.theStateOfInternationalizationIn\":[\"The State of Internationalization in React\"],\"blog-list.weTested12DifferentInternationalization\":[\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\"]}");
@@ -1668,6 +1790,7 @@ var messages$3 = JSON.parse("{\"route.couldNotMeasureHydrationDuration\":[\"Coul
 var messages$2 = JSON.parse("{\"api-access-section.apiAccess\":[\"API Access\"],\"api-access-section.apiKey\":[\"API Key\"],\"api-access-section.useThisKeyToAccess\":[\"Use this key to access the benchmarking API programmatically.\"],\"preferences-section.arabicAr\":[\"Arabic (ar)\"],\"preferences-section.chineseSimplifiedZhCn\":[\"Chinese Simplified (zh-CN)\"],\"preferences-section.darkMode\":[\"Dark Mode\"],\"preferences-section.defaultLanguage\":[\"Default Language\"],\"preferences-section.emailNotifications\":[\"Email Notifications\"],\"preferences-section.englishEn\":[\"English (en)\"],\"preferences-section.frenchFr\":[\"French (fr)\"],\"preferences-section.germanDe\":[\"German (de)\"],\"preferences-section.japaneseJa\":[\"Japanese (ja)\"],\"preferences-section.receiveWeeklyBenchmarkReports\":[\"Receive weekly benchmark reports\"],\"preferences-section.spanishEs\":[\"Spanish (es)\"],\"preferences-section.toggleDarkMode\":[\"Toggle dark mode\"],\"preferences-section.toggleNotifications\":[\"Toggle notifications\"],\"preferences-section.useDarkColorScheme\":[\"Use dark color scheme\"],\"profile-section.displayName\":[\"Display Name\"],\"settings-footer.saveChanges\":[\"Save Changes\"],\"settings-header.manageYourAccountPreferencesAnd\":[\"Manage your account preferences and configuration.\"]}");
 var messages$1 = JSON.parse("{\"footer.anOpenSourceTestApplication\":[\"An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.\"],\"footer.builtWith\":[\"i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.\"],\"footer.contact\":[\"Contact\"],\"footer.contributing\":[\"Contributing\"],\"footer.github\":[\"GitHub\"],\"footer.methodology\":[\"Methodology\"],\"footer.resources\":[\"Resources\"],\"header.blog\":[\"Blog\"],\"header.careers\":[\"Careers\"],\"header.contact\":[\"Contact\"],\"header.faq\":[\"FAQ\"],\"header.goToGithub\":[\"Go to GitHub\"],\"header.home\":[\"Home\"],\"header.methodology\":[\"Methodology\"],\"header.mockPages\":[\"Mock Pages\"],\"header.pricing\":[\"Pricing\"],\"header.products\":[\"Products\"],\"header.settings\":[\"Settings\"],\"header.team\":[\"Team\"],\"mockBanner\":[\"⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.\"],\"theme-toggle.themeAuto\":[\"Theme: Auto\"],\"theme-toggle.themeDark\":[\"Theme: Dark\"],\"theme-toggle.themeLight\":[\"Theme: Light\"],\"theme-toggle.themeModeAutoSystemClick\":[\"Theme mode: auto (system). Click to switch to light mode.\"],\"theme-toggle.themeModeDarkClick\":[\"Theme mode: dark. Click to switch to auto (system) mode.\"],\"theme-toggle.themeModeLightClick\":[\"Theme mode: light. Click to switch to dark mode.\"]}");
 var messages = JSON.parse("{\"team-grid.aishaPatel\":[\"Aisha Patel\"],\"team-grid.communityManager\":[\"Community Manager\"],\"team-grid.dataAnalyst\":[\"Data Analyst\"],\"team-grid.developerAdvocate\":[\"Developer Advocate\"],\"team-grid.elenaKowalski\":[\"Elena Kowalski\"],\"team-grid.ensuresStatisticalRigorInAll\":[\"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.\"],\"team-grid.formerGoogleEngineerWith10\":[\"Former Google engineer with 10 years of experience building internationalization systems at scale.\"],\"team-grid.founderLeadEngineer\":[\"Founder & Lead Engineer\"],\"team-grid.fullStackDeveloper\":[\"Full-Stack Developer\"],\"team-grid.maintainsTheBenchmarkingInfrastructureAnd\":[\"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.\"],\"team-grid.managesCommunityContributionsPartnershipsAnd\":[\"Manages community contributions, partnerships, and events. Background in open source governance.\"],\"team-grid.marcusWeber\":[\"Marcus Weber\"],\"team-grid.passionateAboutDeveloperExperienceAnd\":[\"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.\"],\"team-grid.performanceEngineer\":[\"Performance Engineer\"],\"team-grid.sarahChen\":[\"Sarah Chen\"],\"team-grid.specializesInJavascriptPerformanceOptimization\":[\"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.\"],\"team-grid.tomasRodriguez\":[\"Tomás Rodríguez\"],\"team-grid.yukiTanaka\":[\"Yuki Tanaka\"],\"team-header.meetThePeopleBehindI18n\":[\"Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools.\"],\"team-header.ourTeam\":[\"Our Team\"]}");
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/lingui-app/scripts/Wrapper.tsx";
 var enMessages = {
 	...messages$11,
 	...messages$10,
@@ -1683,13 +1806,26 @@ var enMessages = {
 	...messages
 };
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale: "en",
 		messages: enMessages,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 24,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/lingui-app/components/pages/home/Hero.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Hero, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Hero, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

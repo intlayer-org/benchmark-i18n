@@ -1,5 +1,5 @@
 import e, { createContext as t, useContext as n, useEffect as r, useLayoutEffect as i, useMemo as a, useState as o } from "react";
-import { Fragment as s, jsx as c } from "react/jsx-runtime";
+import { Fragment as s, jsxDEV as c } from "react/jsx-dev-runtime";
 import { useRouter as l } from "next/router";
 function u() {
 	if (!(typeof window > "u")) {
@@ -20,7 +20,8 @@ function d(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function f({ children: e, locale: t }) {
+var f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
+function p({ children: e, locale: t }) {
 	let [n] = o(() => typeof performance < "u" ? performance.now() : 0);
 	return i(() => {
 		d("AppRoot", n);
@@ -28,30 +29,34 @@ function f({ children: e, locale: t }) {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
 		u();
-	}, []), c(s, { children: e });
+	}, []), c(s, { children: e }, void 0, !1, {
+		fileName: f,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
-var p;
-typeof e.createContext == "function" && (p = e.createContext({
+var m;
+typeof e.createContext == "function" && (m = e.createContext({
 	t: function(e) {
 		return Array.isArray(e) ? e[0] : e;
 	},
 	lang: ""
 }));
-var m = p;
-function h(e) {
+var h = m;
+function g(e) {
 	try {
 		return new Intl.PluralRules(e);
 	} catch {
 		return new Intl.PluralRules();
 	}
 }
-var g = function() {
-	return g = Object.assign || function(e) {
+var _ = function() {
+	return _ = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, g.apply(this, arguments);
+	}, _.apply(this, arguments);
 };
-function _(e, t) {
+function v(e, t) {
 	if (!t) return { i18nKey: e };
 	var n = e.indexOf(t);
 	return n < 0 ? { i18nKey: e } : {
@@ -59,16 +64,16 @@ function _(e, t) {
 		i18nKey: e.slice(n + t.length)
 	};
 }
-function v(e) {
-	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? C : a, s = t.allowEmptyStrings, c = s === void 0 ? !0 : s, l = function(e, n) {
+function y(e) {
+	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? w : a, s = t.allowEmptyStrings, c = s === void 0 || s, l = function(e, n) {
 		return Array.isArray(e) ? e.map(function(e) {
 			return l(e, n);
-		}) : e instanceof Object ? S({
+		}) : e instanceof Object ? C({
 			obj: e,
 			query: n,
 			config: t,
 			lang: i
-		}) : x({
+		}) : S({
 			text: e,
 			query: n,
 			config: t,
@@ -76,19 +81,19 @@ function v(e) {
 		});
 	}, u = function(e, i, a) {
 		e === void 0 && (e = "");
-		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = _(s, f), v = h.i18nKey, x = h.namespace, S = x === void 0 ? a?.ns ?? t.defaultNS : x, C = S && n[S] || {}, w = y(C, b(r, C, v, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
+		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = v(s, f), g = h.i18nKey, y = h.namespace, S = y === void 0 ? a?.ns ?? t.defaultNS : y, C = S && n[S] || {}, w = b(C, x(r, C, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
 		if (E && (m === "both" || m === (typeof window > "u" ? "node" : "browser")) && o({
 			namespace: S,
-			i18nKey: v
+			i18nKey: g
 		}), E && Array.isArray(D) && D.length) {
 			var O = D[0], k = D.slice(1);
-			if (typeof O == "string") return u(O, i, g(g({}, a), { fallback: k }));
+			if (typeof O == "string") return u(O, i, _(_({}, a), { fallback: k }));
 		}
 		return E && a && a.hasOwnProperty("default") && !D?.length ? a.default ? l(a.default, i) : a.default : E ? s : l(T, i);
 	};
 	return u;
 }
-function y(e, t, n, r) {
+function b(e, t, n, r) {
 	t === void 0 && (t = ""), r === void 0 && (r = { returnObjects: !1 });
 	var i = (n || {}).keySeparator, a = i === void 0 ? "." : i, o = a ? t.split(a) : [t];
 	if (t === a && r.returnObjects) return e;
@@ -99,18 +104,18 @@ function y(e, t, n, r) {
 	}, e);
 	if (typeof s == "string" || s instanceof Object && r.returnObjects && Object.keys(s).length > 0 || Array.isArray(s) && r.returnObjects) return s;
 }
-function b(e, t, n, r, i, a) {
+function x(e, t, n, r, i, a) {
 	if (!i || typeof i.count != "number") return n;
 	var o = `${n}_${i.count}`;
-	if (y(t, o, r, a) !== void 0) return o;
+	if (b(t, o, r, a) !== void 0) return o;
 	var s = `${n}_${e.select(i.count)}`;
-	if (y(t, s, r, a) !== void 0) return s;
+	if (b(t, s, r, a) !== void 0) return s;
 	var c = `${n}.${i.count}`;
-	if (y(t, c, r, a) !== void 0) return c;
+	if (b(t, c, r, a) !== void 0) return c;
 	var l = `${n}.${e.select(i.count)}`;
-	return y(t, l, r, a) === void 0 ? n : l;
+	return b(t, l, r, a) === void 0 ? n : l;
 }
-function x(e) {
+function S(e) {
 	var t = e.text, n = e.query, r = e.config, i = e.lang;
 	if (!t || !n) return t || "";
 	var a = function(e) {
@@ -123,15 +128,15 @@ function x(e) {
 		});
 	}, t);
 }
-function S(e) {
+function C(e) {
 	var t = e.obj, n = e.query, r = e.config, i = e.lang;
 	return !n || Object.keys(n).length === 0 || Object.keys(t).forEach(function(e) {
-		t[e] instanceof Object && S({
+		t[e] instanceof Object && C({
 			obj: t[e],
 			query: n,
 			config: r,
 			lang: i
-		}), typeof t[e] == "string" && (t[e] = x({
+		}), typeof t[e] == "string" && (t[e] = S({
 			text: t[e],
 			query: n,
 			config: r,
@@ -139,7 +144,7 @@ function S(e) {
 		}));
 	}), t;
 }
-function C(e) {
+function w(e) {
 	var t = e.namespace, n = e.i18nKey;
 	if (process.env.NODE_ENV !== "production") {
 		if (!t) {
@@ -149,91 +154,95 @@ function C(e) {
 		console.warn(`[next-translate] "${t}:${n}" is missing in current namespace configuration. Try adding "${n}" to the namespace "${t}".`);
 	}
 }
-var w = function() {
-	return w = Object.assign || function(e) {
+var T = function() {
+	return T = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, w.apply(this, arguments);
+	}, T.apply(this, arguments);
 };
-function T(e, t) {
+function E(e, t) {
 	return typeof t == "string" ? function(n, r, i) {
-		return e(n, r, w({ ns: t }, i));
+		return e(n, r, T({ ns: t }, i));
 	} : e;
 }
-function E() {
+function D() {
 	return typeof window > "u";
 }
-function D(e) {
+function O(e) {
 	var t = globalThis.__NEXT_TRANSLATE__ ?? {}, n = t.lang, r = t.namespaces, i = t.config, o = i.localesToIgnore || ["default"], s = !n || o.includes(n), c = function() {
-		return T(v({
+		return E(y({
 			config: i,
 			allNamespaces: r,
-			pluralRules: h(s ? void 0 : n),
+			pluralRules: g(s ? void 0 : n),
 			lang: n
 		}), e);
-	};
+	}, l = r ? Object.keys(r).sort().join("|") : "";
 	return {
-		t: E() ? c() : a(c, [e, n]),
+		t: D() ? c() : a(c, [
+			e,
+			n,
+			l
+		]),
 		lang: n
 	};
 }
-var O = function() {
-	return O = Object.assign || function(e) {
+var k = function() {
+	return k = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, O.apply(this, arguments);
+	}, k.apply(this, arguments);
 };
-function k(e) {
-	var t = n(m);
+function A(e) {
+	var t = n(h);
 	return a(function() {
-		return O(O({}, t), { t: T(t.t, e) });
+		return k(k({}, t), { t: E(t.t, e) });
 	}, [t, e]);
 }
-function A(e) {
-	return (globalThis.__NEXT_TRANSLATE__?.config ? D : k)(e);
+function j(e) {
+	return (globalThis.__NEXT_TRANSLATE__?.config ? O : A)(e);
 }
-var j = function() {
-	return j = Object.assign || function(e) {
+var M = function() {
+	return M = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, j.apply(this, arguments);
-}, M = t({
+	}, M.apply(this, arguments);
+}, N = t({
 	ns: {},
 	config: {}
 });
-function N(t) {
-	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, u = c === void 0 ? {} : c, d = A().lang, f = l() || {}, p = f.locale, g = f.defaultLocale, _ = n(M), y = j(j(j({}, P()), _.ns), o), b = r || d || p || g || "", x = j(j({}, _.config), u), S = x.localesToIgnore || ["default"], C = !b || S.includes(b), w = a(function() {
-		return h(C ? void 0 : b);
+function P(t) {
+	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, u = c === void 0 ? {} : c, d = j().lang, f = l() || {}, p = f.locale, m = f.defaultLocale, _ = n(N), v = M(M(M({}, F()), _.ns), o), b = r || d || p || m || "", x = M(M({}, _.config), u), S = x.localesToIgnore || ["default"], C = !b || S.includes(b), w = a(function() {
+		return g(C ? void 0 : b);
 	}, [C, b]), T = a(function() {
-		return v({
+		return y({
 			config: x,
-			allNamespaces: y,
+			allNamespaces: v,
 			pluralRules: w,
 			lang: b
 		});
 	}, [
 		x,
-		y,
+		v,
 		w,
 		b
 	]);
-	return e.createElement(m.Provider, { value: {
+	return e.createElement(h.Provider, { value: {
 		lang: b,
 		t: T
-	} }, e.createElement(M.Provider, { value: {
-		ns: y,
+	} }, e.createElement(N.Provider, { value: {
+		ns: v,
 		config: x
 	} }, s));
 }
-function P() {
+function F() {
 	return typeof window > "u" ? {} : window.__NEXT_DATA__?.props?.__namespaces || {};
 }
-var F = (e, t, n) => {
+var I = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, I = {
+}, L = {
 	locales: [
 		"en",
 		"fr",
@@ -262,7 +271,7 @@ var F = (e, t, n) => {
 		"/[lang]/settings": ["settings"],
 		"/[lang]/team": ["team"]
 	},
-	loadLocaleFrom: (e, t) => F(Object.assign({
+	loadLocaleFrom: (e, t) => I(Object.assign({
 		"./locales/de/about.json": () => import("../locales/de/about.json"),
 		"./locales/de/blog.json": () => import("../locales/de/blog.json"),
 		"./locales/de/careers.json": () => import("../locales/de/careers.json"),
@@ -275,18 +284,18 @@ var F = (e, t, n) => {
 		"./locales/de/settings.json": () => import("../locales/de/settings.json"),
 		"./locales/de/shared.json": () => import("../locales/de/shared.json"),
 		"./locales/de/team.json": () => import("../locales/de/team.json"),
-		"./locales/en/about.json": () => import("./about-BaAYAvkE.js"),
-		"./locales/en/blog.json": () => import("./blog-CzOpmp0n.js"),
-		"./locales/en/careers.json": () => import("./careers-1TOv7qq6.js"),
-		"./locales/en/contact.json": () => import("./contact-DjqHx5tM.js"),
-		"./locales/en/faq.json": () => import("./faq-XJpq1JTj.js"),
-		"./locales/en/home.json": () => import("./home-CdZlgL3b.js"),
-		"./locales/en/pricing.json": () => import("./pricing-BPjt5t_O.js"),
-		"./locales/en/products.json": () => import("./products-Df41mIQC.js"),
-		"./locales/en/route.json": () => import("./route-5-5GFmRv.js"),
-		"./locales/en/settings.json": () => import("./settings-CmZ84y7S.js"),
-		"./locales/en/shared.json": () => import("./shared-CBRuvueV.js"),
-		"./locales/en/team.json": () => import("./team-CuN0wXZd.js"),
+		"./locales/en/about.json": () => import("./about-M1sMWj1s.js"),
+		"./locales/en/blog.json": () => import("./blog-Cn2HM2Ne.js"),
+		"./locales/en/careers.json": () => import("./careers-AcqDO_Rk.js"),
+		"./locales/en/contact.json": () => import("./contact-DMI0nGM8.js"),
+		"./locales/en/faq.json": () => import("./faq-D8Z24sSG.js"),
+		"./locales/en/home.json": () => import("./home-4xN7_Zum.js"),
+		"./locales/en/pricing.json": () => import("./pricing-CIELH6yi.js"),
+		"./locales/en/products.json": () => import("./products-Dtvi99Bo.js"),
+		"./locales/en/route.json": () => import("./route-CS6jLh6_.js"),
+		"./locales/en/settings.json": () => import("./settings-BTax84eA.js"),
+		"./locales/en/shared.json": () => import("./shared-CBduF48T.js"),
+		"./locales/en/team.json": () => import("./team-BILWd-Jf.js"),
 		"./locales/es/about.json": () => import("../locales/es/about.json"),
 		"./locales/es/blog.json": () => import("../locales/es/blog.json"),
 		"./locales/es/careers.json": () => import("../locales/es/careers.json"),
@@ -384,7 +393,7 @@ var F = (e, t, n) => {
 		"./locales/zh/shared.json": () => import("../locales/zh/shared.json"),
 		"./locales/zh/team.json": () => import("../locales/zh/team.json")
 	}), `./locales/${e}/${t}.json`, 4).then((e) => e.default)
-}, L = [
+}, R = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx", z = [
 	"about",
 	"blog",
 	"careers",
@@ -398,30 +407,47 @@ var F = (e, t, n) => {
 	"shared",
 	"team"
 ];
-function R({ children: e }) {
+function B({ children: e }) {
 	let [t, n] = o({}), [i, a] = o(!1);
 	return r(() => {
 		(async () => {
 			try {
-				let e = await Promise.all(L.map(async (e) => [e, await I.loadLocaleFrom?.("en", e) ?? {}]));
+				let e = await Promise.all(z.map(async (e) => [e, await L.loadLocaleFrom?.("en", e) ?? {}]));
 				n(Object.fromEntries(e)), a(!0);
 			} catch (e) {
 				console.error("Failed to load translations:", e), a(!0);
 			}
 		})();
-	}, ["en"]), i ? c(N, {
+	}, ["en"]), i ? c(P, {
 		lang: "en",
 		namespaces: t,
-		children: c(f, {
+		children: c(p, {
 			locale: "en",
 			children: e
-		})
-	}) : null;
+		}, void 0, !1, {
+			fileName: R,
+			lineNumber: 58,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: R,
+		lineNumber: 57,
+		columnNumber: 5
+	}, this) : null;
 }
-function z() {
-	return c(R, { children: c(f, {}) });
+var V = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.wrapper.tsx";
+function H() {
+	return c(B, { children: c(p, {}, void 0, !1, {
+		fileName: V,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: V,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { z as default };
+export { H as default };
 var e = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",

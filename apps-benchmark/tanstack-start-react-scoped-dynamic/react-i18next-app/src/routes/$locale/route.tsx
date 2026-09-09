@@ -7,7 +7,9 @@ export const Route = createFileRoute("/$locale")({
     const { i18n } = context;
     const locale = params.locale ?? defaultLocale;
     const resources = await loadNamespaces(locale, ["shared", "route"], i18n);
-    await i18n.changeLanguage(locale);
+    if (i18n.language !== locale) {
+      await i18n.changeLanguage(locale);
+    }
     return { locale, resources };
   },
   component: Outlet,

@@ -19,7 +19,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$2.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1943,9 +1943,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2061,14 +2062,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2271,9 +2273,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -3015,7 +3015,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3158,8 +3158,8 @@ derived([$locale], () => formatTime);
 derived([$locale], () => formatDate);
 derived([$locale], () => formatNumber);
 derived([$locale, $dictionary], () => getJSON);
-var root_1 = $.from_html(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p> <div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span></div></div> <button type="button" class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"> </button></div>`);
-var root = $.from_html(`<h2 class="mb-6 text-2xl font-bold text-foreground"> </h2> <div class="space-y-4"></div>`, 1);
+var root = $.from_html(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p> <div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span></div></div> <button type="button" class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"> </button></div>`);
+var root_1 = $.from_html(`<h2 class="mb-6 text-2xl font-bold text-foreground"> </h2> <div class="space-y-4"></div>`, 1);
 function OpenPositions($$anchor, $$props) {
 	$.push($$props, false);
 	const $_ = () => $.store_get($format, "$_", $$stores);
@@ -3202,35 +3202,28 @@ function OpenPositions($$anchor, $$props) {
 		}
 	];
 	$.init();
-	var fragment = root();
+	var fragment = root_1();
 	var h2 = $.first_child(fragment);
-	var text = $.child(h2, true);
-	$.reset(h2);
+	var text = $.only_child(h2, true);
 	var div = $.sibling(h2, 2);
 	$.each(div, 5, () => openings, (o) => `${o.titleKey}-${o.locationKey}`, ($$anchor, o) => {
-		var div_1 = root_1();
+		var div_1 = root();
 		var div_2 = $.child(div_1);
 		var h3 = $.child(div_2);
-		var text_1 = $.child(h3, true);
-		$.reset(h3);
+		var text_1 = $.only_child(h3, true);
 		var p = $.sibling(h3, 2);
-		var text_2 = $.child(p, true);
-		$.reset(p);
+		var text_2 = $.only_child(p, true);
 		var div_3 = $.sibling(p, 2);
 		var span = $.child(div_3);
-		var text_3 = $.child(span, true);
-		$.reset(span);
+		var text_3 = $.only_child(span, true);
 		var span_1 = $.sibling(span, 2);
-		var text_4 = $.child(span_1, true);
-		$.reset(span_1);
+		var text_4 = $.only_child(span_1, true);
 		var span_2 = $.sibling(span_1, 2);
-		var text_5 = $.child(span_2, true);
-		$.reset(span_2);
+		var text_5 = $.only_child(span_2, true);
 		$.reset(div_3);
 		$.reset(div_2);
 		var button = $.sibling(div_2, 2);
-		var text_6 = $.child(button, true);
-		$.reset(button);
+		var text_6 = $.only_child(button, true);
 		$.reset(div_1);
 		$.template_effect(($0, $1, $2, $3, $4, $5) => {
 			$.set_text(text_1, $0);

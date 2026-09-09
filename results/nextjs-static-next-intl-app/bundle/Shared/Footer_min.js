@@ -1650,7 +1650,7 @@ function ke(e, t) {
 			let o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = Ae(t);
 			for ((c == "H" || c == "k") && (s = 0); s-- > 0;) n += "a";
 			for (; o-- > 0;) n = c + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
@@ -1762,8 +1762,10 @@ var ze = class {
 					},
 					err: null
 				} : this.error(E.INVALID_TAG, I(o, this.clonePosition()))) : this.error(E.UNMATCHED_CLOSING_TAG, I(e, this.clonePosition()));
-			} else return this.error(E.UNCLOSED_TAG, I(n, this.clonePosition()));
-		} else return this.error(E.INVALID_TAG, I(n, this.clonePosition()));
+			}
+			return this.error(E.UNCLOSED_TAG, I(n, this.clonePosition()));
+		}
+		return this.error(E.INVALID_TAG, I(n, this.clonePosition()));
 	}
 	parseTagName() {
 		let e = this.offset();
@@ -1820,12 +1822,13 @@ var ze = class {
 		let t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			let e = this.char();
-			if (e === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(e);
+			if (e === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(e);
 			this.bump();
 		}
 		return String.fromCodePoint(...t);
@@ -1898,7 +1901,8 @@ var ze = class {
 							},
 							err: null
 						};
-					} else {
+					}
+					{
 						if (t.length === 0) return this.error(E.EXPECT_DATE_TIME_SKELETON, i);
 						let r = t;
 						this.locale && (r = ke(t, this.locale));
@@ -1997,9 +2001,7 @@ var ze = class {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -2459,7 +2461,7 @@ function Qe(e, t) {
 	}), e.message);
 }
 function $e(e, t) {
-	return t || /'[{}]/.test(e) || /<|{/.test(e) ? void 0 : e;
+	return t || /'[{}<#|']/.test(e) || /<|{/.test(e) ? void 0 : e;
 }
 function J(...[e, t, r, i]) {
 	if (Array.isArray(t)) throw new y(b.INVALID_MESSAGE, `Message at \`${e}\` resolved to an array, but only strings are supported. See https://next-intl.dev/docs/usage/translations#arrays-of-messages`);
@@ -2546,13 +2548,14 @@ function at({ cache: e, formats: t, formatters: n, getMessageFallback: r = et, l
 	}
 	function d(d, f, p, m) {
 		let h = m, g;
-		if (l) if (h) g = h;
-		else return s(a), r({
-			error: a,
-			key: d,
-			namespace: o
-		});
-		else {
+		if (l) {
+			if (h) g = h;
+			else return s(a), r({
+				error: a,
+				key: d,
+				namespace: o
+			});
+		} else {
 			let e = a;
 			try {
 				g = X(i, e, d, o);
@@ -2615,7 +2618,7 @@ function at({ cache: e, formats: t, formatters: n, getMessageFallback: r = et, l
 function ot(e, t) {
 	return e === t ? void 0 : e.slice((t + ".").length);
 }
-var Z = 3600 * 24;
+var Z = 86400;
 Z * 7, 365 / 12 * Z * 3, Z * 365;
 function st(e, t, n) {
 	Object.entries(e).forEach(([e, r]) => {

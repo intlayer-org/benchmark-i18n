@@ -14,73 +14,53 @@ var n = {}, r = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], s = [], c, l;
-function u(e) {
-	if (s.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (c === t) return l;
-	let r = new URL(t, "http://dummy.com"), i;
-	for (let e of s) if (new n(e.match, r.href).exec(r.href)) {
-		i = e;
-		break;
-	}
-	return c = t, l = i, i;
-}
-function d(e) {
-	let t = u(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : o;
-}
-var f = void 0, p = typeof window > "u";
+], s = [], c = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var m, h = !1, g = () => {
-	if (f) {
-		let e = f?.getStore()?.locale;
-		if (e) return e;
-	}
+var l, u = !1, d = () => {
 	let e = o;
-	!p && typeof window < "u" && window.location?.href && (e = d(window.location.href));
-	let t = _(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return h || (m = t, h = !0, y(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	!c && typeof window < "u" && window.location?.href && (e = M(window.location.href));
+	let t = f(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return u || (l = t, u = !0, m(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function _(e, t) {
+function f(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = S();
+		if (t === "cookie") n = E();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && m !== void 0) n = m;
-		else if (w(t) && C.has(t)) {
-			let e = C.get(t);
+		else if (t === "globalVariable" && l !== void 0) n = l;
+		else if (P(t) && N.has(t)) {
+			let e = N.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return x(t);
+				if (t !== void 0) return _(t);
 			}
 		}
-		let e = b(n);
+		let e = g(n);
 		if (e) return e;
 	}
 }
-var v = (e) => {
+var p = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, y = (e, t) => {
+}, m = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = g();
+		r = d();
 	} catch {}
-	let s = [], c = o;
-	!p && typeof window < "u" && window.location?.href && (c = d(window.location.href));
-	for (let t of c) if (t === "globalVariable") m = e;
+	let s = [], u = o;
+	!c && typeof window < "u" && window.location?.href && (u = M(window.location.href));
+	for (let t of u) if (t === "globalVariable") l = e;
 	else if (t === "cookie") {
-		if (p || typeof document > "u" || typeof window > "u") continue;
+		if (c || typeof document > "u" || typeof window > "u") continue;
 		let t = `${i}=${e}; path=/; max-age=${a}`;
-		document.cookie = t;
+		document.cookie = t, w();
 	} else if (t === "baseLocale") continue;
-	else if (w(t) && C.has(t)) {
-		let n = C.get(t);
+	else if (P(t) && N.has(t)) {
+		let n = N.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -88,44 +68,84 @@ var v = (e) => {
 			}), s.push(r));
 		}
 	}
-	let l = () => {
-		!p && n.reload && window.location && e !== r && v(void 0);
+	let f = () => {
+		!c && n.reload && window.location && e !== r && p(void 0);
 	};
 	if (s.length) return Promise.all(s).then(() => {
-		l();
+		f();
 	});
-	l();
-};
-function b(e) {
+	f();
+}, h = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function g(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of r) if (e.toLowerCase() === t) return e;
 }
-function x(e) {
-	let t = b(e);
+function _(e) {
+	let t = g(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${r.join(", ")}`);
 }
-function S() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${i}=([^;]+)`))?.[2];
-	return b(e);
+function v(e) {
+	return e;
 }
-var C = /* @__PURE__ */ new Map();
-function w(e) {
+function y(e, t) {
+	return e.exec(t.href);
+}
+var b = i.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), x = RegExp(`(?:^|;\\s*)${b}=([^;]*)`), S = Symbol(), C = S;
+function w() {
+	C = S;
+}
+function T() {
+	typeof queueMicrotask == "function" ? queueMicrotask(w) : Promise.resolve().then(w);
+}
+function E() {
+	if (typeof document > "u") return;
+	if (C !== S) return C;
+	let e = document.cookie.match(x)?.[1];
+	return C = g(e), T(), C;
+}
+function D(e) {
+	return O(e);
+}
+function O(e) {
+	let t = v(typeof e == "string" ? new URL(e, h()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && g(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), v(t);
+}
+var k, A;
+function j(e) {
+	if (s.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (k === t) return A;
+	let r = v(new URL(t, "http://example.com")), i = D(r), a = i.href === r.href ? [r] : [r, i], o;
+	for (let e of a) {
+		for (let t of s) if (y(new n(t.match, e.href), e)) {
+			o = t;
+			break;
+		}
+		if (o) break;
+	}
+	return k = t, A = o, o;
+}
+function M(e) {
+	let t = j(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : o;
+}
+var N = /* @__PURE__ */ new Map();
+function P(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var T = () => "Cancel", E = () => "Annuler", D = () => "Cancelar", O = () => "Abbrechen", k = () => "Annulla", A = () => "Cancelar", j = () => "取消", M = () => "キャンセル", N = () => "Cancel", P = () => "Отмена", F = ((e = {}, t = {}) => {
-	let n = t.locale ?? g();
-	return n === "en" ? T(e) : n === "fr" ? E(e) : n === "es" ? D(e) : n === "de" ? O(e) : n === "it" ? k(e) : n === "pt" ? A(e) : n === "zh" ? j(e) : n === "ja" ? M(e) : n === "ko" ? N(e) : P(e);
-}), I = () => "Save Changes", L = () => "Enregistrer", R = () => "Guardar cambios", z = () => "Änderungen speichern", B = () => "Salva modifiche", V = () => "Salvar alterações", H = () => "保存更改", U = () => "変更を保存", W = () => "Save Changes", G = () => "Сохранить изменения", K = ((e = {}, t = {}) => {
-	let n = t.locale ?? g();
-	return n === "en" ? I(e) : n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? B(e) : n === "pt" ? V(e) : n === "zh" ? H(e) : n === "ja" ? U(e) : n === "ko" ? W(e) : G(e);
-}), q = t("<div class=\"flex justify-end gap-3\"><button type=button class=\"rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent\"></button><button type=submit class=\"rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90\">");
-function J() {
+var F = () => "Cancel", I = () => "Annuler", L = () => "Cancelar", R = () => "Abbrechen", z = () => "Annulla", ee = () => "Cancelar", B = () => "取消", V = () => "キャンセル", H = () => "Cancel", U = () => "Отмена", W = ((e = {}, t = {}) => {
+	let n = t.locale ?? d();
+	return n === "fr" ? I(e) : n === "es" ? L(e) : n === "de" ? R(e) : n === "it" ? z(e) : n === "pt" ? ee(e) : n === "zh" ? B(e) : n === "ja" ? V(e) : n === "ko" ? H(e) : n === "ru" ? U(e) : F(e);
+}), G = () => "Save Changes", K = () => "Enregistrer", q = () => "Guardar cambios", J = () => "Änderungen speichern", Y = () => "Salva modifiche", X = () => "Salvar alterações", Z = () => "保存更改", Q = () => "変更を保存", $ = () => "Save Changes", te = () => "Сохранить изменения", ne = ((e = {}, t = {}) => {
+	let n = t.locale ?? d();
+	return n === "fr" ? K(e) : n === "es" ? q(e) : n === "de" ? J(e) : n === "it" ? Y(e) : n === "pt" ? X(e) : n === "zh" ? Z(e) : n === "ja" ? Q(e) : n === "ko" ? $(e) : n === "ru" ? te(e) : G(e);
+}), re = t("<div class=\"flex justify-end gap-3\"><button type=button class=\"rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent\"></button><button type=submit class=\"rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90\">");
+function ie() {
 	return (() => {
-		var t = q(), n = t.firstChild, r = n.nextSibling;
-		return e(n, () => F()), e(r, () => K()), t;
+		var t = re(), n = t.firstChild, r = n.nextSibling;
+		return e(n, () => W()), e(r, () => ne()), t;
 	})();
 }
-export { J as default };
+export { ie as default };

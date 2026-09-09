@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import NextLink from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { ChevronDown } from "lucide-react";
 import { useRouter as useRouter$1 } from "next/router";
+var _jsxFileName$6 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Link.tsx";
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
 function localizeHref(href, locale) {
 	if (!href.startsWith("/")) return href;
@@ -12,24 +13,36 @@ function localizeHref(href, locale) {
 }
 var Link = ({ href, children, ...props }) => {
 	const locale = useParams().lang ?? "en";
-	if (href == null || typeof href !== "string") return jsx(NextLink, {
+	if (href == null || typeof href !== "string") return jsxDEV(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	});
-	if (checkIsExternalLink(href)) return jsx(NextLink, {
+	}, void 0, false, {
+		fileName: _jsxFileName$6,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0);
+	if (checkIsExternalLink(href)) return jsxDEV(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	});
-	return jsx(NextLink, {
+	}, void 0, false, {
+		fileName: _jsxFileName$6,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0);
+	return jsxDEV(NextLink, {
 		href: localizeHref(href, locale),
 		prefetch: false,
 		...props,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$6,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
 };
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -212,8 +225,13 @@ function createTranslation(defaultNS) {
 			lang
 		}), defaultNS);
 	};
+	var nsKey = namespaces ? Object.keys(namespaces).sort().join("|") : "";
 	return {
-		t: isServer() ? getT() : useMemo(getT, [defaultNS, lang]),
+		t: isServer() ? getT() : useMemo(getT, [
+			defaultNS,
+			lang,
+			nsKey
+		]),
 		lang
 	};
 }
@@ -237,6 +255,7 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
+var _jsxFileName$5 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/ThemeToggle.tsx";
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -276,14 +295,18 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? t("themeToggle.themeModeAutoSystemClick") : mode === "light" ? t("themeToggle.themeModeLightClick") : t("themeToggle.themeModeDarkClick");
-	return jsx("button", {
+	return jsxDEV("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? t("themeToggle.themeAuto") : mode === "dark" ? t("themeToggle.themeDark") : t("themeToggle.themeLight")
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$5,
+		lineNumber: 77,
+		columnNumber: 5
+	}, this);
 }
 var locales$1 = [
 	"en",
@@ -305,6 +328,7 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
+var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams().lang ?? "en";
 	const pathname = usePathname();
@@ -313,18 +337,30 @@ function LocaleSwitcher() {
 		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
 		router.push(newPath);
 	};
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "flex items-center gap-2",
-		children: jsx("select", {
+		children: jsxDEV("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales$1.map((localeEl) => jsx("option", {
+			children: locales$1.map((localeEl) => jsxDEV("option", {
 				value: localeEl,
 				children: getLocaleName(localeEl)
-			}, localeEl))
-		})
-	});
+			}, localeEl, false, {
+				fileName: _jsxFileName$4,
+				lineNumber: 25,
+				columnNumber: 11
+			}, this))
+		}, void 0, false, {
+			fileName: _jsxFileName$4,
+			lineNumber: 19,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$4,
+		lineNumber: 18,
+		columnNumber: 5
+	}, this);
 }
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -337,6 +373,7 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Header.tsx";
 function Header() {
 	const { t } = useTranslation("shared");
 	usePerformanceMeasure("Header");
@@ -383,86 +420,166 @@ function Header() {
 		const localized = localizeHref(href, locale);
 		return pathname.startsWith(localized) && (href !== "/" || pathname === localized);
 	};
-	return jsx("header", {
+	return jsxDEV("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxs("nav", {
+		children: jsxDEV("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [jsxs("div", {
+			children: [jsxDEV("div", {
 				className: "flex items-center gap-8",
-				children: [jsx(Link, {
+				children: [jsxDEV(Link, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}), jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 45,
+					columnNumber: 11
+				}, this), jsxDEV("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						jsx(Link, {
+						jsxDEV(Link, {
 							href: "/",
 							className: `nav-link${isExactActive("/") ? " is-active" : ""}`,
 							children: t("header.home")
-						}),
-						jsx(Link, {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 53,
+							columnNumber: 13
+						}, this),
+						jsxDEV(Link, {
 							href: "/about",
 							className: `nav-link${isActive("/about") ? " is-active" : ""}`,
 							children: t("header.methodology")
-						}),
-						jsxs("div", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 59,
+							columnNumber: 13
+						}, this),
+						jsxDEV("div", {
 							className: "relative",
-							children: [jsxs("button", {
+							children: [jsxDEV("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [t("header.mockPages"), jsx(ChevronDown, {
+								children: [t("header.mockPages"), jsxDEV(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
-								})]
-							}), isMockPagesOpen && jsx("div", {
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 76,
+									columnNumber: 17
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 68,
+								columnNumber: 15
+							}, this), isMockPagesOpen && jsxDEV("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: jsx("div", {
+								children: jsxDEV("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => jsx(Link, {
+									children: mockPages.map((page) => jsxDEV(Link, {
 										href: page.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
 										children: page.label
-									}, page.href))
-								})
-							})]
-						})
+									}, page.href, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 90,
+										columnNumber: 23
+									}, this))
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 88,
+									columnNumber: 19
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 83,
+								columnNumber: 17
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 67,
+							columnNumber: 13
+						}, this)
 					]
-				})]
-			}), jsxs("div", {
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 52,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 44,
+				columnNumber: 9
+			}, this), jsxDEV("div", {
 				className: "flex items-center gap-4",
 				children: [
-					jsxs("a", {
+					jsxDEV("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "sr-only",
 							children: t("header.goToGithub")
-						}), jsx("svg", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 113,
+							columnNumber: 13
+						}, this), jsxDEV("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: jsx("path", {
+							children: jsxDEV("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							})
-						})]
-					}),
-					jsx(LocaleSwitcher, {}),
-					jsx(ThemeToggle, {})
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 115,
+								columnNumber: 15
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 114,
+							columnNumber: 13
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 107,
+						columnNumber: 11
+					}, this),
+					jsxDEV(LocaleSwitcher, {}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 121,
+						columnNumber: 11
+					}, this),
+					jsxDEV(ThemeToggle, {}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 122,
+						columnNumber: 11
+					}, this)
 				]
-			})]
-		})
-	});
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 106,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 43,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 42,
+		columnNumber: 5
+	}, this);
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -567,18 +684,18 @@ var i18n_default = {
 		"./locales/de/settings.json": () => import("../locales/de/settings.json"),
 		"./locales/de/shared.json": () => import("../locales/de/shared.json"),
 		"./locales/de/team.json": () => import("../locales/de/team.json"),
-		"./locales/en/about.json": () => import("./about-DrPeV7Zp.js"),
-		"./locales/en/blog.json": () => import("./blog-uUHBPsDN.js"),
-		"./locales/en/careers.json": () => import("./careers-CT6E1l5K.js"),
-		"./locales/en/contact.json": () => import("./contact-CZtCE9BE.js"),
-		"./locales/en/faq.json": () => import("./faq-BPrPn6m_.js"),
-		"./locales/en/home.json": () => import("./home-CSEOOcM2.js"),
-		"./locales/en/pricing.json": () => import("./pricing-BjZqjpMz.js"),
-		"./locales/en/products.json": () => import("./products-D8gD60Ao.js"),
-		"./locales/en/route.json": () => import("./route-UQnagTfi.js"),
-		"./locales/en/settings.json": () => import("./settings-BEbFGJAX.js"),
-		"./locales/en/shared.json": () => import("./shared-DxRtm_ck.js"),
-		"./locales/en/team.json": () => import("./team-tSYxAuqK.js"),
+		"./locales/en/about.json": () => import("./about-BjiQTpAt.js"),
+		"./locales/en/blog.json": () => import("./blog-BwncXaOP.js"),
+		"./locales/en/careers.json": () => import("./careers-CvGX3fKY.js"),
+		"./locales/en/contact.json": () => import("./contact-BAuKu6kU.js"),
+		"./locales/en/faq.json": () => import("./faq-741pCL7k.js"),
+		"./locales/en/home.json": () => import("./home-DQacKLe5.js"),
+		"./locales/en/pricing.json": () => import("./pricing-AooD5teS.js"),
+		"./locales/en/products.json": () => import("./products-5xHH59P6.js"),
+		"./locales/en/route.json": () => import("./route-D4J5jMKf.js"),
+		"./locales/en/settings.json": () => import("./settings-DcVMUGUO.js"),
+		"./locales/en/shared.json": () => import("./shared-B7H0Al_Q.js"),
+		"./locales/en/team.json": () => import("./team-BTWsMT4N.js"),
 		"./locales/es/about.json": () => import("../locales/es/about.json"),
 		"./locales/es/blog.json": () => import("../locales/es/blog.json"),
 		"./locales/es/careers.json": () => import("../locales/es/careers.json"),
@@ -699,6 +816,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -710,8 +828,13 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx";
 var MEASURE_NAMESPACES = [
 	"about",
 	"blog",
@@ -746,17 +869,34 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		lang: locale,
 		namespaces,
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 58,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 57,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Header.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Header, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Header, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var about_default = {

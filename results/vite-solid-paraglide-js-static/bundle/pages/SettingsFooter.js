@@ -20,27 +20,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -63,7 +42,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -105,6 +84,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -126,6 +106,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -136,10 +121,65 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
@@ -177,7 +217,6 @@ var ru_settings_footer_cancel = () => {
 };
 var settings_footer_cancel = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_settings_footer_cancel(inputs);
 	if (locale === "fr") return fr_settings_footer_cancel(inputs);
 	if (locale === "es") return es_settings_footer_cancel(inputs);
 	if (locale === "de") return de_settings_footer_cancel(inputs);
@@ -186,7 +225,8 @@ var settings_footer_cancel = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_settings_footer_cancel(inputs);
 	if (locale === "ja") return ja_settings_footer_cancel(inputs);
 	if (locale === "ko") return ko_settings_footer_cancel(inputs);
-	return ru_settings_footer_cancel(inputs);
+	if (locale === "ru") return ru_settings_footer_cancel(inputs);
+	return en_settings_footer_cancel(inputs);
 });
 var en_settings_footer_savechanges1 = () => {
 	return `Save Changes`;
@@ -220,7 +260,6 @@ var ru_settings_footer_savechanges1 = () => {
 };
 var settings_footer_savechanges1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_settings_footer_savechanges1(inputs);
 	if (locale === "fr") return fr_settings_footer_savechanges1(inputs);
 	if (locale === "es") return es_settings_footer_savechanges1(inputs);
 	if (locale === "de") return de_settings_footer_savechanges1(inputs);
@@ -229,7 +268,8 @@ var settings_footer_savechanges1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_settings_footer_savechanges1(inputs);
 	if (locale === "ja") return ja_settings_footer_savechanges1(inputs);
 	if (locale === "ko") return ko_settings_footer_savechanges1(inputs);
-	return ru_settings_footer_savechanges1(inputs);
+	if (locale === "ru") return ru_settings_footer_savechanges1(inputs);
+	return en_settings_footer_savechanges1(inputs);
 });
 var _tmpl$ = template(`<div class="flex justify-end gap-3"><button type=button class="rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"></button><button type=submit class="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">`);
 function SettingsFooter() {

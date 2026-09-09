@@ -1,7 +1,6 @@
 import path from "node:path";
 import { measureComponents } from "test-utils/measure-components";
 import pkg from "../package.json" with { type: "json" };
-import { intlayer } from "vite-intlayer";
 
 measureComponents({
   appName: pkg.name,
@@ -29,5 +28,4 @@ measureComponents({
       );
     }
   `,
-  additionalPlugins: [intlayer()],
 }).catch(console.error);

@@ -1,37 +1,37 @@
 {
-  "timestamp": "2026-04-28T04:51:32.351Z",
+  "timestamp": "2026-09-09T19:19:18.030Z",
   "packageName": "vite-svelte-base-app",
   "framework": "svelte",
   "summary": {
     "totalComponents": 33,
-    "totalUnminifiedBytes": 82335,
-    "totalMinifiedBytes": 71315,
-    "totalGzipBytes": 31569
+    "totalUnminifiedBytes": 81972,
+    "totalMinifiedBytes": 70903,
+    "totalGzipBytes": 31602
   },
   "components": [
     {
       "name": "Layout.svelte",
       "category": "Shared",
-      "unminifiedBytes": 14475,
-      "unminifiedGzipBytes": 4605,
-      "minifiedBytes": 11497,
-      "minifiedGzipBytes": 4041
+      "unminifiedBytes": 14445,
+      "unminifiedGzipBytes": 4608,
+      "minifiedBytes": 11463,
+      "minifiedGzipBytes": 4054
     },
     {
       "name": "Header.svelte",
       "category": "Shared",
-      "unminifiedBytes": 10780,
-      "unminifiedGzipBytes": 3732,
-      "minifiedBytes": 8511,
-      "minifiedGzipBytes": 3290
+      "unminifiedBytes": 10772,
+      "unminifiedGzipBytes": 3745,
+      "minifiedBytes": 8491,
+      "minifiedGzipBytes": 3308
     },
     {
       "name": "Footer.svelte",
       "category": "Shared",
-      "unminifiedBytes": 3984,
-      "unminifiedGzipBytes": 1572,
-      "minifiedBytes": 3277,
-      "minifiedGzipBytes": 1365
+      "unminifiedBytes": 4003,
+      "unminifiedGzipBytes": 1589,
+      "minifiedBytes": 3286,
+      "minifiedGzipBytes": 1387
     },
     {
       "name": "UnderstandingImpact.svelte",
@@ -44,34 +44,26 @@
     {
       "name": "OpenPositions.svelte",
       "category": "pages",
-      "unminifiedBytes": 3207,
-      "unminifiedGzipBytes": 1234,
-      "minifiedBytes": 2888,
-      "minifiedGzipBytes": 1173
+      "unminifiedBytes": 3148,
+      "unminifiedGzipBytes": 1226,
+      "minifiedBytes": 2821,
+      "minifiedGzipBytes": 1162
     },
     {
       "name": "BlogList.svelte",
       "category": "pages",
-      "unminifiedBytes": 3099,
-      "unminifiedGzipBytes": 1300,
-      "minifiedBytes": 2859,
-      "minifiedGzipBytes": 1260
+      "unminifiedBytes": 3052,
+      "unminifiedGzipBytes": 1293,
+      "minifiedBytes": 2815,
+      "minifiedGzipBytes": 1256
     },
     {
       "name": "FAQList.svelte",
       "category": "pages",
-      "unminifiedBytes": 2992,
-      "unminifiedGzipBytes": 1458,
-      "minifiedBytes": 2827,
-      "minifiedGzipBytes": 1414
-    },
-    {
-      "name": "PricingTiers.svelte",
-      "category": "pages",
-      "unminifiedBytes": 2928,
-      "unminifiedGzipBytes": 1188,
-      "minifiedBytes": 2603,
-      "minifiedGzipBytes": 1124
+      "unminifiedBytes": 2968,
+      "unminifiedGzipBytes": 1457,
+      "minifiedBytes": 2805,
+      "minifiedGzipBytes": 1415
     },
     {
       "name": "ContactForm.svelte",
@@ -82,36 +74,36 @@
       "minifiedGzipBytes": 832
     },
     {
-      "name": "TeamGrid.svelte",
+      "name": "PricingTiers.svelte",
       "category": "pages",
-      "unminifiedBytes": 2553,
-      "unminifiedGzipBytes": 1183,
-      "minifiedBytes": 2330,
-      "minifiedGzipBytes": 1128
+      "unminifiedBytes": 2878,
+      "unminifiedGzipBytes": 1178,
+      "minifiedBytes": 2559,
+      "minifiedGzipBytes": 1122
     },
     {
       "name": "LocaleSwitcher.svelte",
       "category": "Shared",
-      "unminifiedBytes": 3098,
-      "unminifiedGzipBytes": 1340,
-      "minifiedBytes": 2321,
-      "minifiedGzipBytes": 1145
+      "unminifiedBytes": 3115,
+      "unminifiedGzipBytes": 1358,
+      "minifiedBytes": 2315,
+      "minifiedGzipBytes": 1160
+    },
+    {
+      "name": "TeamGrid.svelte",
+      "category": "pages",
+      "unminifiedBytes": 2510,
+      "unminifiedGzipBytes": 1175,
+      "minifiedBytes": 2278,
+      "minifiedGzipBytes": 1122
     },
     {
       "name": "ProductsGrid.svelte",
       "category": "pages",
-      "unminifiedBytes": 2491,
-      "unminifiedGzipBytes": 1100,
-      "minifiedBytes": 2262,
-      "minifiedGzipBytes": 1058
-    },
-    {
-      "name": "WhatWeMeasure.svelte",
-      "category": "pages",
-      "unminifiedBytes": 2259,
-      "unminifiedGzipBytes": 1100,
-      "minifiedBytes": 2072,
-      "minifiedGzipBytes": 1054
+      "unminifiedBytes": 2458,
+      "unminifiedGzipBytes": 1097,
+      "minifiedBytes": 2233,
+      "minifiedGzipBytes": 1055
     },
     {
       "name": "WhyItMatters.svelte",
@@ -122,20 +114,28 @@
       "minifiedGzipBytes": 943
     },
     {
+      "name": "WhatWeMeasure.svelte",
+      "category": "pages",
+      "unminifiedBytes": 2233,
+      "unminifiedGzipBytes": 1098,
+      "minifiedBytes": 2050,
+      "minifiedGzipBytes": 1052
+    },
+    {
       "name": "ResultsTable.svelte",
       "category": "pages",
-      "unminifiedBytes": 2316,
-      "unminifiedGzipBytes": 822,
-      "minifiedBytes": 2054,
-      "minifiedGzipBytes": 768
+      "unminifiedBytes": 2270,
+      "unminifiedGzipBytes": 811,
+      "minifiedBytes": 2002,
+      "minifiedGzipBytes": 762
     },
     {
       "name": "ThemeToggle.svelte",
       "category": "Shared",
-      "unminifiedBytes": 2511,
-      "unminifiedGzipBytes": 973,
-      "minifiedBytes": 1992,
-      "minifiedGzipBytes": 844
+      "unminifiedBytes": 2498,
+      "unminifiedGzipBytes": 971,
+      "minifiedBytes": 1985,
+      "minifiedGzipBytes": 842
     },
     {
       "name": "PreferencesSection.svelte",
@@ -162,20 +162,20 @@
       "minifiedGzipBytes": 688
     },
     {
-      "name": "CareersBenefits.svelte",
-      "category": "pages",
-      "unminifiedBytes": 1215,
-      "unminifiedGzipBytes": 604,
-      "minifiedBytes": 1052,
-      "minifiedGzipBytes": 564
-    },
-    {
       "name": "ProfileSection.svelte",
       "category": "pages",
       "unminifiedBytes": 1078,
       "unminifiedGzipBytes": 467,
       "minifiedBytes": 1046,
       "minifiedGzipBytes": 453
+    },
+    {
+      "name": "CareersBenefits.svelte",
+      "category": "pages",
+      "unminifiedBytes": 1195,
+      "unminifiedGzipBytes": 600,
+      "minifiedBytes": 1030,
+      "minifiedGzipBytes": 564
     },
     {
       "name": "AboutHeader.svelte",

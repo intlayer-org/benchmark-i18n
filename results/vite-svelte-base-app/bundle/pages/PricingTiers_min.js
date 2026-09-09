@@ -46,19 +46,15 @@ function i(i) {
 	];
 	var o = r();
 	e.each(o, 5, () => a, (e) => e.name, (r, i) => {
-		var a = n(), o = e.child(a), s = e.child(o, !0);
-		e.reset(o);
-		var c = e.sibling(o, 2), l = e.child(c), u = e.child(l, !0);
-		e.reset(l);
-		var d = e.sibling(l, 2), f = e.child(d, !0);
-		e.reset(d), e.reset(c);
+		var a = n(), o = e.child(a), s = e.only_child(o, !0), c = e.sibling(o, 2), l = e.child(c), u = e.only_child(l, !0), d = e.sibling(l, 2), f = e.only_child(d, !0);
+		e.reset(c);
 		var p = e.sibling(c, 2);
 		e.each(p, 5, () => e.get(i).features, (e) => e, (n, r) => {
 			var i = t(), a = e.sibling(e.child(i));
 			e.reset(i), e.template_effect(() => e.set_text(a, ` ${e.get(r) ?? ""}`)), e.append(n, i);
 		}), e.reset(p);
-		var m = e.sibling(p, 2), h = e.child(m, !0);
-		e.reset(m), e.reset(a), e.template_effect(() => {
+		var m = e.sibling(p, 2), h = e.only_child(m, !0);
+		e.reset(a), e.template_effect(() => {
 			e.set_class(a, 1, `flex flex-col rounded-lg border p-6 ${e.get(i).highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`), e.set_text(s, e.get(i).name), e.set_text(u, e.get(i).price), e.set_text(f, e.get(i).period), e.set_class(m, 1, `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${e.get(i).highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`), e.set_text(h, e.get(i).name === "Enterprise" ? "Contact Sales" : "Get Started");
 		}), e.append(r, a);
 	}), e.reset(o), e.append(i, o);

@@ -42,16 +42,8 @@ function r(r) {
 	];
 	var a = n(), o = e.sibling(e.first_child(a), 2);
 	e.each(o, 5, () => i, (e) => e.title, (n, r) => {
-		var i = t(), a = e.child(i), o = e.child(a), s = e.child(o, !0);
-		e.reset(o);
-		var c = e.sibling(o, 2), l = e.child(c, !0);
-		e.reset(c);
-		var u = e.sibling(c, 2), d = e.child(u), f = e.child(d, !0);
-		e.reset(d);
-		var p = e.sibling(d, 2), m = e.child(p, !0);
-		e.reset(p);
-		var h = e.sibling(p, 2), g = e.child(h, !0);
-		e.reset(h), e.reset(u), e.reset(a), e.next(2), e.reset(i), e.template_effect(() => {
+		var i = t(), a = e.child(i), o = e.child(a), s = e.only_child(o, !0), c = e.sibling(o, 2), l = e.only_child(c, !0), u = e.sibling(c, 2), d = e.child(u), f = e.only_child(d, !0), p = e.sibling(d, 2), m = e.only_child(p, !0), h = e.sibling(p, 2), g = e.only_child(h, !0);
+		e.reset(u), e.reset(a), e.next(2), e.reset(i), e.template_effect(() => {
 			e.set_text(s, e.get(r).title), e.set_text(l, e.get(r).desc), e.set_text(f, e.get(r).dept), e.set_text(m, e.get(r).location), e.set_text(g, e.get(r).type);
 		}), e.append(n, i);
 	}), e.reset(o), e.append(r, a);

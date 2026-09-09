@@ -19,7 +19,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$2.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1943,9 +1943,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2061,14 +2062,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2271,9 +2273,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -3015,7 +3015,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3158,8 +3158,8 @@ derived([$locale], () => formatTime);
 derived([$locale], () => formatDate);
 derived([$locale], () => formatNumber);
 derived([$locale, $dictionary], () => getJSON);
-var root_1 = $.from_html(`<li class="rounded-md border border-border p-4"><span class="block text-sm font-bold text-primary"> </span> <span class="mt-1 block text-sm text-muted-foreground"> </span></li>`);
-var root = $.from_html(`<section class="mx-auto mt-12 max-w-3xl"><h2 class="mb-4 text-2xl font-bold text-foreground"> </h2> <ul class="space-y-4"></ul></section>`);
+var root = $.from_html(`<li class="rounded-md border border-border p-4"><span class="block text-sm font-bold text-primary"> </span> <span class="mt-1 block text-sm text-muted-foreground"> </span></li>`);
+var root_1 = $.from_html(`<section class="mx-auto mt-12 max-w-3xl"><h2 class="mb-4 text-2xl font-bold text-foreground"> </h2> <ul class="space-y-4"></ul></section>`);
 function WhatWeMeasure($$anchor, $$props) {
 	$.push($$props, false);
 	const $_ = () => $.store_get($format, "$_", $$stores);
@@ -3187,19 +3187,16 @@ function WhatWeMeasure($$anchor, $$props) {
 		}
 	];
 	$.init();
-	var section = root();
+	var section = root_1();
 	var h2 = $.child(section);
-	var text = $.child(h2, true);
-	$.reset(h2);
+	var text = $.only_child(h2, true);
 	var ul = $.sibling(h2, 2);
 	$.each(ul, 5, () => metricKeys, (k) => k.m, ($$anchor, k) => {
-		var li = root_1();
+		var li = root();
 		var span = $.child(li);
-		var text_1 = $.child(span, true);
-		$.reset(span);
+		var text_1 = $.only_child(span, true);
 		var span_1 = $.sibling(span, 2);
-		var text_2 = $.child(span_1, true);
-		$.reset(span_1);
+		var text_2 = $.only_child(span_1, true);
 		$.reset(li);
 		$.template_effect(($0, $1) => {
 			$.set_text(text_1, $0);

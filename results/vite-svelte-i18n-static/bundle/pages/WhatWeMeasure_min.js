@@ -8,7 +8,7 @@ var r = Object.create, i = Object.defineProperty, a = Object.getOwnPropertyDescr
 		enumerable: !(r = a(t, d)) || r.enumerable
 	});
 	return e;
-}, d = (e, t, n) => (n = e == null ? {} : r(s(e)), u(t || !e || !e.__esModule ? i(n, "default", {
+}, d = (e, t, n) => (n = e == null ? {} : r(s(e)), u(t || !e || !e.__esModule || !c.call(e, "default") ? i(n, "default", {
 	value: e,
 	enumerable: !0
 }) : n, e)), f = l(((e, t) => {
@@ -65,7 +65,7 @@ var r = Object.create, i = Object.defineProperty, a = Object.getOwnPropertyDescr
 		return n.isMergeableObject(e) && f(e).forEach(function(t) {
 			r[t] = c(e[t], n);
 		}), f(t).forEach(function(i) {
-			m(e, i) || (p(e, i) && n.isMergeableObject(t[i]) ? r[i] = u(i, n)(e[i], t[i], n) : r[i] = c(t[i], n));
+			m(e, i) || (r[i] = p(e, i) && n.isMergeableObject(t[i]) ? u(i, n)(e[i], t[i], n) : c(t[i], n));
 		}), r;
 	}
 	function g(e, t, r) {
@@ -1642,7 +1642,7 @@ function Me(e, t) {
 			var o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = "a", l = Ne(t);
 			for ((l == "H" || l == "k") && (s = 0); s-- > 0;) n += c;
 			for (; o-- > 0;) n = l + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
@@ -1793,8 +1793,10 @@ var Xe = function() {
 					},
 					err: null
 				} : this.error(C.INVALID_TAG, O(o, this.clonePosition()))) : this.error(C.UNMATCHED_CLOSING_TAG, O(s, this.clonePosition()));
-			} else return this.error(C.UNCLOSED_TAG, O(n, this.clonePosition()));
-		} else return this.error(C.INVALID_TAG, O(n, this.clonePosition()));
+			}
+			return this.error(C.UNCLOSED_TAG, O(n, this.clonePosition()));
+		}
+		return this.error(C.INVALID_TAG, O(n, this.clonePosition()));
 	}, e.prototype.parseTagName = function() {
 		var e = this.offset();
 		for (this.bump(); !this.isEOF() && Qe(this.char());) this.bump();
@@ -1846,12 +1848,13 @@ var Xe = function() {
 		var t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			var n = this.char();
-			if (n === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(n);
+			if (n === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(n);
 			this.bump();
 		}
 		return A.apply(void 0, t);
@@ -1920,26 +1923,25 @@ var Xe = function() {
 							},
 							err: null
 						};
-					} else {
-						if (p.length === 0) return this.error(C.EXPECT_DATE_TIME_SKELETON, f);
-						var m = p;
-						this.locale && (m = Me(p, this.locale));
-						var u = {
-							type: T.dateTime,
-							pattern: m,
-							location: s.styleLocation,
-							parsedOptions: this.shouldParseSkeletons ? ye(m) : {}
-						};
-						return {
-							val: {
-								type: a === "date" ? w.date : w.time,
-								value: n,
-								location: f,
-								style: u
-							},
-							err: null
-						};
 					}
+					if (p.length === 0) return this.error(C.EXPECT_DATE_TIME_SKELETON, f);
+					var m = p;
+					this.locale && (m = Me(p, this.locale));
+					var u = {
+						type: T.dateTime,
+						pattern: m,
+						location: s.styleLocation,
+						parsedOptions: this.shouldParseSkeletons ? ye(m) : {}
+					};
+					return {
+						val: {
+							type: a === "date" ? w.date : w.time,
+							value: n,
+							location: f,
+							style: u
+						},
+						err: null
+					};
 				}
 				return {
 					val: {
@@ -2013,9 +2015,7 @@ var Xe = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -2504,7 +2504,7 @@ function St(e) {
 	}).filter(([, e]) => e.length > 0);
 }
 function Ct(e) {
-	return e == null ? !1 : K(e).some((e) => xt(e)?.size);
+	return e != null && K(e).some((e) => xt(e)?.size);
 }
 function wt(e, t) {
 	return Promise.all(t.map((t) => (bt(e, t), t().then((e) => e.default || e)))).then((t) => yt(e, ...t));
@@ -2603,7 +2603,7 @@ function Rt(e) {
 }
 function K(e, t = W().fallbackLocale) {
 	let n = Rt(e);
-	return t ? [...new Set([...n, ...Rt(t)])] : n;
+	return t ? [.../* @__PURE__ */ new Set([...n, ...Rt(t)])] : n;
 }
 function q() {
 	return Lt ?? void 0;
@@ -2715,14 +2715,10 @@ function an(t, n) {
 		}
 	];
 	e.init();
-	var s = rn(), c = e.child(s), l = e.child(c, !0);
-	e.reset(c);
-	var u = e.sibling(c, 2);
+	var s = rn(), c = e.child(s), l = e.only_child(c, !0), u = e.sibling(c, 2);
 	e.each(u, 5, () => o, (e) => e.m, (t, n) => {
-		var i = nn(), a = e.child(i), o = e.child(a, !0);
-		e.reset(a);
-		var s = e.sibling(a, 2), c = e.child(s, !0);
-		e.reset(s), e.reset(i), e.template_effect((t, n) => {
+		var i = nn(), a = e.child(i), o = e.only_child(a, !0), s = e.sibling(a, 2), c = e.only_child(s, !0);
+		e.reset(i), e.template_effect((t, n) => {
 			e.set_text(o, t), e.set_text(c, n);
 		}, [() => r()(`about.whatWeMeasure.${e.get(n).m}`), () => r()(`about.whatWeMeasure.${e.get(n).d}`)]), e.append(t, i);
 	}), e.reset(u), e.reset(s), e.template_effect((t) => e.set_text(l, t), [() => r()("about.whatWeMeasure.title")]), e.append(t, s), e.pop(), a();

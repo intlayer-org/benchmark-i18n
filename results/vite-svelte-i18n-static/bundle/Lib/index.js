@@ -2,24 +2,25 @@ import "svelte/internal/disclose-version";
 import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
 import { derived, writable } from "svelte/store";
+import { onMount } from "svelte";
 var __create = Object.create;
 var __defProp$2 = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp$2 = Object.prototype.hasOwnProperty;
+var __hasOwnProp$3 = Object.prototype.hasOwnProperty;
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __copyProps = (to, from, except, desc) => {
 	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
 		key = keys[i];
-		if (!__hasOwnProp$2.call(to, key) && key !== except) __defProp$2(to, key, {
+		if (!__hasOwnProp$3.call(to, key) && key !== except) __defProp$2(to, key, {
 			get: ((k) => from[k]).bind(null, key),
 			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
 		});
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$3.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1943,9 +1944,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2061,14 +2063,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2271,9 +2274,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -2878,6 +2879,9 @@ function addMessages(locale, ...partials) {
 derived([$dictionary], ([dictionary2]) => Object.keys(dictionary2));
 $dictionary.subscribe((newDictionary) => dictionary = newDictionary);
 var queue = {};
+function createLocaleQueue(locale) {
+	queue[locale] = /* @__PURE__ */ new Set();
+}
 function removeLoaderFromQueue(locale, loader) {
 	queue[locale].delete(loader);
 	if (queue[locale].size === 0) delete queue[locale];
@@ -2917,75 +2921,123 @@ function flush(locale) {
 	});
 	return activeFlushes[locale];
 }
+function registerLocaleLoader(locale, loader) {
+	if (!getLocaleQueue(locale)) createLocaleQueue(locale);
+	const localeQueue = getLocaleQueue(locale);
+	if (getLocaleQueue(locale).has(loader)) return;
+	if (!hasLocaleDictionary(locale)) $dictionary.update((d) => {
+		d[locale] = {};
+		return d;
+	});
+	localeQueue.add(loader);
+}
+var __getOwnPropSymbols$2 = Object.getOwnPropertySymbols;
+var __hasOwnProp$2 = Object.prototype.hasOwnProperty;
+var __propIsEnum$2 = Object.prototype.propertyIsEnumerable;
+var __objRest$1 = (source, exclude) => {
+	var target = {};
+	for (var prop in source) if (__hasOwnProp$2.call(source, prop) && exclude.indexOf(prop) < 0) target[prop] = source[prop];
+	if (source != null && __getOwnPropSymbols$2) {
+		for (var prop of __getOwnPropSymbols$2(source)) if (exclude.indexOf(prop) < 0 && __propIsEnum$2.call(source, prop)) target[prop] = source[prop];
+	}
+	return target;
+};
+var defaultFormats = {
+	number: {
+		scientific: { notation: "scientific" },
+		engineering: { notation: "engineering" },
+		compactLong: {
+			notation: "compact",
+			compactDisplay: "long"
+		},
+		compactShort: {
+			notation: "compact",
+			compactDisplay: "short"
+		}
+	},
+	date: {
+		short: {
+			month: "numeric",
+			day: "numeric",
+			year: "2-digit"
+		},
+		medium: {
+			month: "short",
+			day: "numeric",
+			year: "numeric"
+		},
+		long: {
+			month: "long",
+			day: "numeric",
+			year: "numeric"
+		},
+		full: {
+			weekday: "long",
+			month: "long",
+			day: "numeric",
+			year: "numeric"
+		}
+	},
+	time: {
+		short: {
+			hour: "numeric",
+			minute: "numeric"
+		},
+		medium: {
+			hour: "numeric",
+			minute: "numeric",
+			second: "numeric"
+		},
+		long: {
+			hour: "numeric",
+			minute: "numeric",
+			second: "numeric",
+			timeZoneName: "short"
+		},
+		full: {
+			hour: "numeric",
+			minute: "numeric",
+			second: "numeric",
+			timeZoneName: "short"
+		}
+	}
+};
+function defaultMissingKeyHandler({ locale, id }) {
+	console.warn(`[svelte-i18n] The message "${id}" was not found in "${getPossibleLocales(locale).join("\", \"")}".${hasLocaleQueue(getCurrentLocale()) ? `
+
+Note: there are at least one loader still registered to this locale that wasn't executed.` : ""}`);
+}
 var options = {
 	fallbackLocale: null,
 	loadingDelay: 200,
-	formats: {
-		number: {
-			scientific: { notation: "scientific" },
-			engineering: { notation: "engineering" },
-			compactLong: {
-				notation: "compact",
-				compactDisplay: "long"
-			},
-			compactShort: {
-				notation: "compact",
-				compactDisplay: "short"
-			}
-		},
-		date: {
-			short: {
-				month: "numeric",
-				day: "numeric",
-				year: "2-digit"
-			},
-			medium: {
-				month: "short",
-				day: "numeric",
-				year: "numeric"
-			},
-			long: {
-				month: "long",
-				day: "numeric",
-				year: "numeric"
-			},
-			full: {
-				weekday: "long",
-				month: "long",
-				day: "numeric",
-				year: "numeric"
-			}
-		},
-		time: {
-			short: {
-				hour: "numeric",
-				minute: "numeric"
-			},
-			medium: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric"
-			},
-			long: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric",
-				timeZoneName: "short"
-			},
-			full: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric",
-				timeZoneName: "short"
-			}
-		}
-	},
+	formats: defaultFormats,
 	warnOnMissingMessages: true,
 	handleMissingMessage: void 0,
 	ignoreTag: true
 };
 function getOptions() {
 	return options;
+}
+function init(opts) {
+	const _a = opts, { formats } = _a, rest = __objRest$1(_a, ["formats"]);
+	let initialLocale = opts.fallbackLocale;
+	if (opts.initialLocale) try {
+		if (IntlMessageFormat.resolveLocale(opts.initialLocale)) initialLocale = opts.initialLocale;
+	} catch (e) {
+		console.warn(`[svelte-i18n] The initial locale "${opts.initialLocale}" is not a valid locale.`);
+	}
+	if (rest.warnOnMissingMessages) {
+		delete rest.warnOnMissingMessages;
+		if (rest.handleMissingMessage == null) rest.handleMissingMessage = defaultMissingKeyHandler;
+		else console.warn("[svelte-i18n] The \"warnOnMissingMessages\" option is deprecated. Please use the \"handleMissingMessage\" option instead.");
+	}
+	Object.assign(options, rest, { initialLocale });
+	if (formats) {
+		if ("number" in formats) Object.assign(options.formats.number, formats.number);
+		if ("date" in formats) Object.assign(options.formats.date, formats.date);
+		if ("time" in formats) Object.assign(options.formats.time, formats.time);
+	}
+	return $locale.set(initialLocale);
 }
 var $isLoading = writable(false);
 var __defProp$1 = Object.defineProperty;
@@ -3015,7 +3067,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3158,6 +3210,9 @@ derived([$locale], () => formatTime);
 derived([$locale], () => formatDate);
 derived([$locale], () => formatNumber);
 derived([$locale, $dictionary], () => getJSON);
+function waitLocale(locale) {
+	return flush(locale || getCurrentLocale() || getOptions().initialLocale);
+}
 function EmptyComponent($$anchor, $$props) {
 	$.push($$props, false);
 	const $_ = () => $.store_get($format, "$_", $$stores);
@@ -3167,4 +3222,29 @@ function EmptyComponent($$anchor, $$props) {
 	$.pop();
 	$$cleanup();
 }
-export { EmptyComponent as default };
+function LibWrapper($$anchor, $$props) {
+	$.push($$props, false);
+	onMount(async () => {
+		registerLocaleLoader("en", () => Promise.resolve({ default: { header: { home: "Home" } } }));
+		await init({
+			fallbackLocale: "en",
+			initialLocale: "en"
+		});
+		await waitLocale("en");
+	});
+	$.init();
+	var fragment = $.comment();
+	var node = $.first_child(fragment);
+	$.slot(node, $$props, "default", {}, null);
+	$.append($$anchor, fragment);
+	$.pop();
+}
+function EmptyComponent_wrapper($$anchor) {
+	LibWrapper($$anchor, {
+		children: ($$anchor, $$slotProps) => {
+			EmptyComponent($$anchor, {});
+		},
+		$$slots: { default: true }
+	});
+}
+export { EmptyComponent_wrapper as default };

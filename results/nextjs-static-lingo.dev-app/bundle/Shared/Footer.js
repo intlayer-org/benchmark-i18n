@@ -1,8 +1,10 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/Footer.tsx";
 function Footer() {
 	const currentLocale = useParams().locale ?? "en";
 	const footerLinks = [
@@ -22,52 +24,116 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsx("footer", {
+	return jsxDEV("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxs("div", {
+		children: jsxDEV("div", {
 			className: "container py-8",
-			children: [jsxs("div", {
+			children: [jsxDEV("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxs("div", { children: [jsx("h3", {
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 33,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 36,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 32,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "Resources"
-					}), jsx("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 43,
+						columnNumber: 13
+					}, this), jsxDEV("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
+						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
 							href: linkEl.href,
 							prefetch: false,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) : jsx("a", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 50,
+							columnNumber: 21
+						}, this) : jsxDEV("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) }, linkEl.label))
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 58,
+							columnNumber: 21
+						}, this) }, linkEl.label, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 48,
+							columnNumber: 17
+						}, this))
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 46,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 42,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "Contact"
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 72,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 75,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 71,
+						columnNumber: 11
+					}, this)
 				]
-			}), jsx("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 31,
+				columnNumber: 9
+			}, this), jsxDEV("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: "i18n Benchmark — Open-source project. Built with React & Next.js."
-			})]
-		})
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 80,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 30,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 29,
+		columnNumber: 5
+	}, this);
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -98,10 +164,6 @@ var serverUrl = "__SERVER_URL__";
 var sourceLocale = "__SOURCE_LOCALE__";
 function getClientLocale() {
 	return "en";
-}
-var __NOOP_PERSIST_LOCALE__ = () => {};
-function persistLocale(locale) {
-	return __NOOP_PERSIST_LOCALE__();
 }
 var noop = () => {};
 var IS_DEV = process.env.NODE_ENV === "development";
@@ -142,7 +204,6 @@ function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, 
 		if (router) setTranslations(initialTranslations);
 	}, [initialTranslations, router]);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		else await loadTranslations(newLocale);
@@ -248,7 +309,6 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		};
 	}, []);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		setIsLoading(true);
@@ -269,7 +329,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -307,17 +367,31 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Footer, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -419,12 +493,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

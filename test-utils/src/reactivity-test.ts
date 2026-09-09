@@ -110,6 +110,51 @@ const E2E_LOCALE_SWITCH_TIMEOUT_MS = 15_000;
 /** How long to wait for React to hydrate before dispatching the locale switch. */
 const HYDRATION_TIMEOUT_MS = 5_000;
 
+/**
+ * Grace period added on top of an in-page deadline before the driver gives up.
+ *
+ * Every in-page deadline here is a `setTimeout`, which only fires once the main
+ * thread yields. An app stuck in a render loop (an i18n side effect that
+ * re-enters render, say) never yields: the in-page guard never runs, the
+ * `page.evaluate()` promise never settles, and the run hangs until Playwright's
+ * test timeout — by which point the renderer has grown to several GB and every
+ * later app in the series is blocked behind it. Racing the evaluate from Node
+ * turns that into a fast, local failure.
+ */
+const DRIVER_TIMEOUT_GRACE_MS = 5_000;
+
+/**
+ * Rejects if `pending` has not settled within `timeoutMs`, measured in Node
+ * rather than inside the page.
+ */
+const withDriverTimeout = async <T>(
+  pending: Promise<T>,
+  timeoutMs: number,
+  label: string,
+): Promise<T> => {
+  // The page promise may still reject long after we have stopped waiting on it.
+  pending.catch(() => {});
+
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const guard = new Promise<never>((_, reject) => {
+    timer = setTimeout(
+      () =>
+        reject(
+          new Error(
+            `${label}: no response within ${timeoutMs}ms — the renderer main thread is blocked (likely an infinite render/invalidate loop).`,
+          ),
+        ),
+      timeoutMs,
+    );
+  });
+
+  try {
+    return await Promise.race([pending, guard]);
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+};
+
 // ─── Browser-side measurement helpers ────────────────────────────────────────
 
 /**
@@ -150,72 +195,78 @@ const measureE2ELocaleSwitchDuration = async (
   page: Page,
   targetLocale: string,
 ): Promise<number> =>
-  page.evaluate(
-    ({
-      targetLocaleCode,
-      e2eTimeoutMs,
-    }: {
-      targetLocaleCode: string;
-      e2eTimeoutMs: number;
-    }): Promise<number> =>
-      new Promise((resolve, reject) => {
-        const startTime = performance.now();
-        const htmlElement = document.documentElement;
+  withDriverTimeout(
+    page.evaluate(
+      ({
+        targetLocaleCode,
+        e2eTimeoutMs,
+      }: {
+        targetLocaleCode: string;
+        e2eTimeoutMs: number;
+      }): Promise<number> =>
+        new Promise((resolve, reject) => {
+          const startTime = performance.now();
+          const htmlElement = document.documentElement;
 
-        const mutationObserver = new MutationObserver(() => {
-          if (htmlElement.lang === targetLocaleCode) {
-            mutationObserver.disconnect();
-            resolve(performance.now() - startTime);
+          const mutationObserver = new MutationObserver(() => {
+            if (htmlElement.lang === targetLocaleCode) {
+              mutationObserver.disconnect();
+              resolve(performance.now() - startTime);
+            }
+          });
+
+          mutationObserver.observe(htmlElement, {
+            attributes: true,
+            attributeFilter: ["lang"],
+          });
+
+          const localeSelectElement =
+            document.querySelector<HTMLSelectElement>("header select") ??
+            document.querySelector<HTMLSelectElement>("select");
+          if (!localeSelectElement) {
+            reject(
+              new Error(
+                "LocaleSwitcher <select> not found (expected header select)",
+              ),
+            );
+            return;
           }
-        });
 
-        mutationObserver.observe(htmlElement, {
-          attributes: true,
-          attributeFilter: ["lang"],
-        });
+          const nativeValueSetter = Object.getOwnPropertyDescriptor(
+            window.HTMLSelectElement.prototype,
+            "value",
+          )?.set;
+          nativeValueSetter?.call(localeSelectElement, targetLocaleCode);
 
-        const localeSelectElement =
-          document.querySelector<HTMLSelectElement>("header select") ??
-          document.querySelector<HTMLSelectElement>("select");
-        if (!localeSelectElement) {
-          reject(
-            new Error(
-              "LocaleSwitcher <select> not found (expected header select)",
-            ),
+          localeSelectElement.dispatchEvent(
+            new Event("change", { bubbles: true }),
           );
-          return;
-        }
 
-        const nativeValueSetter = Object.getOwnPropertyDescriptor(
-          window.HTMLSelectElement.prototype,
-          "value",
-        )?.set;
-        nativeValueSetter?.call(localeSelectElement, targetLocaleCode);
-
-        localeSelectElement.dispatchEvent(
-          new Event("change", { bubbles: true }),
-        );
-
-        setTimeout(() => {
-          mutationObserver.disconnect();
-          reject(
-            new Error(
-              `E2E timeout: html[lang] did not change to '${targetLocaleCode}'`,
-            ),
-          );
-        }, e2eTimeoutMs);
-      }),
-    {
-      targetLocaleCode: targetLocale,
-      e2eTimeoutMs: E2E_LOCALE_SWITCH_TIMEOUT_MS,
-    },
+          setTimeout(() => {
+            mutationObserver.disconnect();
+            reject(
+              new Error(
+                `E2E timeout: html[lang] did not change to '${targetLocaleCode}'`,
+              ),
+            );
+          }, e2eTimeoutMs);
+        }),
+      {
+        targetLocaleCode: targetLocale,
+        e2eTimeoutMs: E2E_LOCALE_SWITCH_TIMEOUT_MS,
+      },
+    ),
+    E2E_LOCALE_SWITCH_TIMEOUT_MS + DRIVER_TIMEOUT_GRACE_MS,
+    "Locale switch measurement",
   );
 
 const readReactProfilerRenderTime = async (
   page: Page,
 ): Promise<{ totalRenderTime: number; updatePhaseCount: number }> => {
-  const renderMetrics = await page.evaluate(
-    () => window.__RENDER_METRICS__ ?? {},
+  const renderMetrics = await withDriverTimeout(
+    page.evaluate(() => window.__RENDER_METRICS__ ?? {}),
+    DRIVER_TIMEOUT_GRACE_MS,
+    "React Profiler read-back",
   );
   const appRootRenderDurations: number[] = renderMetrics["AppRoot"] ?? [];
   const totalRenderTime = appRootRenderDurations.reduce(

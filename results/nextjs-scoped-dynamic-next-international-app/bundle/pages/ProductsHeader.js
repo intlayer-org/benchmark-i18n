@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -109,8 +109,10 @@ var client = (0, __commonJSMin(((exports, module) => {
 				}
 			}
 			let value = scope ? content[`${scope}.${key}`] : content[key];
-			if (!value && isPlural) value = (_a = content[`${key.split("#", 1)[0]}#other`] || key) == null ? void 0 : _a.toString();
-			else value = (_b = value || key) == null ? void 0 : _b.toString();
+			if (!value && isPlural) {
+				const baseKey = key.split("#", 1)[0];
+				value = (_a = content[`${baseKey}#other`] || key) == null ? void 0 : _a.toString();
+			} else value = (_b = value || key) == null ? void 0 : _b.toString();
 			if (!paramObject) return value;
 			let isString = true;
 			const result = value == null ? void 0 : value.split(/({[^}]*})/).map((part, index) => {
@@ -206,40 +208,64 @@ var client = (0, __commonJSMin(((exports, module) => {
 			useCurrentLocale
 		};
 	}
+	0 && (module.exports = { createI18nClient });
 }))().createI18nClient)({
-	en: () => import("./en-DB_fVkJf.js"),
-	fr: () => import("./fr-DyMCDiR-.js"),
-	es: () => import("./es-BEo7qFtc.js"),
-	de: () => import("./de-BFiK3ybU.js"),
-	it: () => import("./it-CmuzBJtV.js"),
-	pt: () => import("./pt-e2c8hpXv.js"),
-	zh: () => import("./zh-CgkgK6XQ.js"),
-	ja: () => import("./ja-S-N3GXZr.js"),
-	ko: () => import("./ko-BMPfZIkB.js"),
-	ru: () => import("./ru-BhZfjn2S.js")
+	en: () => import("./en-NOnPcLne.js"),
+	fr: () => import("./fr-BKAvRjul.js"),
+	es: () => import("./es-BdPpihZH.js"),
+	de: () => import("./de-Cxe69eGe.js"),
+	it: () => import("./it-BRkmiT2S.js"),
+	pt: () => import("./pt-CmYfa9SP.js"),
+	zh: () => import("./zh-CKqevLUd.js"),
+	ja: () => import("./ja-BQKqz7wk.js"),
+	ko: () => import("./ko-BrqRoPJP.js"),
+	ru: () => import("./ru-bQ8Cfj_W.js")
 });
 var useScopedI18n = client.useScopedI18n;
 var { I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/MockBanner.tsx";
 var MockBanner = () => {
-	return jsx("div", {
+	const scopedT = useScopedI18n("mock-banner");
+	return jsxDEV("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-		children: useScopedI18n("mock-banner")("mockBanner")
-	});
+		children: scopedT("mockBanner")
+	}, void 0, false, {
+		fileName: _jsxFileName$4,
+		lineNumber: 8,
+		columnNumber: 5
+	}, void 0);
 };
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/products/ProductsHeader.tsx";
 function ProductsHeader() {
 	const scopedNavT = useScopedI18n("header");
 	const scopedT = useScopedI18n("products-header");
-	return jsxs(Fragment, { children: [
-		jsx(MockBanner, {}),
-		jsx("h1", {
+	return jsxDEV(Fragment, { children: [
+		jsxDEV(MockBanner, {}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this),
+		jsxDEV("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: scopedNavT("products")
-		}),
-		jsx("p", {
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this),
+		jsxDEV("p", {
 			className: "mb-10 text-muted-foreground",
 			children: scopedT("toolsAndServicesToStreamline")
-		})
-	] });
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 16,
+			columnNumber: 7
+		}, this)
+	] }, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -263,6 +289,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -274,23 +301,41 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/products/ProductsHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ProductsHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ProductsHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import deAbout from "../../../messages/de/about.json";
 import deBlog from "../../../messages/de/blog.json";
 import deCareers from "../../../messages/de/careers.json";
@@ -318,7 +363,7 @@ var de_default = mergeAll([
 	nestify(deTeam)
 ]);
 export { de_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 var en_default = mergeAll([
 	nestify({
 		"about-grid.whyThisExists": "Why This Exists",
@@ -594,7 +639,7 @@ var en_default = mergeAll([
 	})
 ]);
 export { en_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import esAbout from "../../../messages/es/about.json";
 import esBlog from "../../../messages/es/blog.json";
 import esCareers from "../../../messages/es/careers.json";
@@ -622,7 +667,7 @@ var es_default = mergeAll([
 	nestify(esTeam)
 ]);
 export { es_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import frAbout from "../../../messages/fr/about.json";
 import frBlog from "../../../messages/fr/blog.json";
 import frCareers from "../../../messages/fr/careers.json";
@@ -650,7 +695,7 @@ var fr_default = mergeAll([
 	nestify(frTeam)
 ]);
 export { fr_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import itAbout from "../../../messages/it/about.json";
 import itBlog from "../../../messages/it/blog.json";
 import itCareers from "../../../messages/it/careers.json";
@@ -678,7 +723,7 @@ var it_default = mergeAll([
 	nestify(itTeam)
 ]);
 export { it_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import jaAbout from "../../../messages/ja/about.json";
 import jaBlog from "../../../messages/ja/blog.json";
 import jaCareers from "../../../messages/ja/careers.json";
@@ -706,7 +751,7 @@ var ja_default = mergeAll([
 	nestify(jaTeam)
 ]);
 export { ja_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import koAbout from "../../../messages/ko/about.json";
 import koBlog from "../../../messages/ko/blog.json";
 import koCareers from "../../../messages/ko/careers.json";
@@ -734,7 +779,7 @@ var ko_default = mergeAll([
 	nestify(koTeam)
 ]);
 export { ko_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import ptAbout from "../../../messages/pt/about.json";
 import ptBlog from "../../../messages/pt/blog.json";
 import ptCareers from "../../../messages/pt/careers.json";
@@ -762,7 +807,7 @@ var pt_default = mergeAll([
 	nestify(ptTeam)
 ]);
 export { pt_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import ruAbout from "../../../messages/ru/about.json";
 import ruBlog from "../../../messages/ru/blog.json";
 import ruCareers from "../../../messages/ru/careers.json";
@@ -818,7 +863,7 @@ function mergeAll(parts) {
 	return parts.reduce((acc, p) => deepMerge(acc, p), {});
 }
 export { nestify as n, mergeAll as t };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import zhAbout from "../../../messages/zh/about.json";
 import zhBlog from "../../../messages/zh/blog.json";
 import zhCareers from "../../../messages/zh/careers.json";

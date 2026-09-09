@@ -1,6 +1,7 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { Fragment, createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
 var LingoContext = createContext(null);
 function useLingoContext() {
 	const context = useContext(LingoContext);
@@ -41,62 +42,8 @@ function getClientLocale() {
 function persistLocale(locale) {
 	if (typeof document !== "undefined") document.cookie = `locale=${locale}; path=/; max-age=31536000`;
 }
-var noop = () => {};
-var IS_DEV = process.env.NODE_ENV === "development";
 var BATCH_DELAY = 200;
-var LingoProvider = IS_DEV ? LingoProvider__Dev : LingoProvider__Prod;
-function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, children }) {
-	const [locale, setLocaleState] = useState(() => {
-		if (initialLocale) return initialLocale;
-		if (typeof window !== "undefined") return getClientLocale();
-		return "en";
-	});
-	const [translations, setTranslations] = useState(initialTranslations);
-	const [isLoading, setIsLoading] = useState(false);
-	logger.debug(`LingoProvider initialized with locale: ${locale}`, initialTranslations);
-	useEffect(() => {
-		if (typeof document !== "undefined") document.documentElement.lang = locale;
-	}, [locale]);
-	const loadTranslations = useCallback(async (targetLocale) => {
-		if (Object.keys(initialTranslations).length > 0) return;
-		setIsLoading(true);
-		try {
-			const response = await fetch(`/translations/${targetLocale}.json`);
-			if (!response.ok) throw new Error(`Failed to load translations for ${targetLocale}: ${response.statusText}`);
-			const data = await response.json();
-			setTranslations(data.entries || data);
-			logger.debug(`Loaded translations for ${targetLocale}:`, Object.keys(data.entries || data).length);
-		} catch (error) {
-			logger.error(`Failed to load translations for ${targetLocale}:`, error);
-			setTranslations({});
-		} finally {
-			setIsLoading(false);
-		}
-	}, [initialTranslations]);
-	useEffect(() => {
-		if (Object.keys(initialTranslations).length === 0) loadTranslations(locale);
-	}, []);
-	useEffect(() => {
-		if (router) setTranslations(initialTranslations);
-	}, [initialTranslations, router]);
-	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
-		setLocaleState(newLocale);
-		if (router) router.refresh();
-		else await loadTranslations(newLocale);
-	}, [router, loadTranslations]);
-	return jsx(LingoContext.Provider, {
-		value: {
-			locale,
-			setLocale,
-			translations,
-			registerHashes: noop,
-			isLoading,
-			sourceLocale: "en"
-		},
-		children
-	});
-}
+var LingoProvider = LingoProvider__Dev;
 function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, devWidget, children }) {
 	const [locale, setLocaleState] = useState(() => {
 		if (initialLocale) return initialLocale;
@@ -207,7 +154,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -1990,7 +1937,7 @@ var trimEnd = hasTrimEnd ? function trimEnd(s) {
 } : function trimEnd(s) {
 	return s.replace(SPACE_SEPARATOR_END_REGEX, "");
 };
-var IDENTIFIER_PREFIX_RE = /* @__PURE__ */ new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+var IDENTIFIER_PREFIX_RE = new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
 function matchIdentifierAtIndex(s, index) {
 	var _a;
 	IDENTIFIER_PREFIX_RE.lastIndex = index;
@@ -2030,9 +1977,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2148,14 +2096,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return String.fromCodePoint.apply(String, codePoints);
@@ -2358,9 +2307,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -2945,6 +2892,7 @@ var useTranslation = (hashes) => {
 		locale
 	};
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/pages/careers/OpenPositions.tsx";
 function OpenPositions() {
 	const { t } = useTranslation([
 		"4968e699f3f9",
@@ -2979,196 +2927,402 @@ function OpenPositions() {
 		"a410ab0a0a27",
 		"ed2a54f2cbcf"
 	]);
-	return jsxs(Fragment$1, { children: [jsx("h2", {
+	return jsxDEV(Fragment$1, { children: [jsxDEV("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: t("4968e699f3f9", "Open Positions")
-	}), jsxs("div", {
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 7,
+		columnNumber: 7
+	}, this), jsxDEV("div", {
 		className: "space-y-4",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [jsxs("div", { children: [
-					jsx("h3", {
+				children: [jsxDEV("div", { children: [
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("25d8f80edb34", "Senior Frontend Engineer")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 11,
+						columnNumber: 13
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("ee0c540b3fc4", "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.")
-					}),
-					jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 12,
+						columnNumber: 13
+					}, this),
+					jsxDEV("div", {
 						className: "mt-2 flex gap-2",
 						children: [
-							jsx("span", {
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("c4daffce8ca7", "Engineering")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 14,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("7209ed14fa8d", "Remote")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 15,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("a410ab0a0a27", "Full-time")
-							})
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 16,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), jsx("button", {
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 13,
+						columnNumber: 13
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 10,
+					columnNumber: 11
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: t("ed2a54f2cbcf", "Apply Now")
-				})]
-			}),
-			jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 19,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 9,
+				columnNumber: 9
+			}, this),
+			jsxDEV("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [jsxs("div", { children: [
-					jsx("h3", {
+				children: [jsxDEV("div", { children: [
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("041629644a99", "Backend Engineer")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 24,
+						columnNumber: 13
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("91ca01953ccc", "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.")
-					}),
-					jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 25,
+						columnNumber: 13
+					}, this),
+					jsxDEV("div", {
 						className: "mt-2 flex gap-2",
 						children: [
-							jsx("span", {
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("c4daffce8ca7", "Engineering")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 27,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("7209ed14fa8d", "Remote")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 28,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("a410ab0a0a27", "Full-time")
-							})
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 29,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), jsx("button", {
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 26,
+						columnNumber: 13
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 23,
+					columnNumber: 11
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: t("ed2a54f2cbcf", "Apply Now")
-				})]
-			}),
-			jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 32,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 22,
+				columnNumber: 9
+			}, this),
+			jsxDEV("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [jsxs("div", { children: [
-					jsx("h3", {
+				children: [jsxDEV("div", { children: [
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("82e5ee71be8d", "Technical Writer")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 37,
+						columnNumber: 13
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("298bd537beea", "Create comprehensive guides, API references, and tutorials for our benchmarking platform.")
-					}),
-					jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 38,
+						columnNumber: 13
+					}, this),
+					jsxDEV("div", {
 						className: "mt-2 flex gap-2",
 						children: [
-							jsx("span", {
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("997799ba5a98", "Documentation")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 40,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("7209ed14fa8d", "Remote")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 41,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("c34d0967194b", "Part-time")
-							})
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 42,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), jsx("button", {
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 39,
+						columnNumber: 13
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 36,
+					columnNumber: 11
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: t("ed2a54f2cbcf", "Apply Now")
-				})]
-			}),
-			jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 45,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 35,
+				columnNumber: 9
+			}, this),
+			jsxDEV("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [jsxs("div", { children: [
-					jsx("h3", {
+				children: [jsxDEV("div", { children: [
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("6c7b41bfd954", "DevRel Engineer")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 50,
+						columnNumber: 13
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("01b87a260806", "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.")
-					}),
-					jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 51,
+						columnNumber: 13
+					}, this),
+					jsxDEV("div", {
 						className: "mt-2 flex gap-2",
 						children: [
-							jsx("span", {
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("ddf794a01bb8", "Community")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 53,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("f6a35cc653ae", "San Francisco / Remote")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 54,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("a410ab0a0a27", "Full-time")
-							})
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 55,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), jsx("button", {
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 52,
+						columnNumber: 13
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 49,
+					columnNumber: 11
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: t("ed2a54f2cbcf", "Apply Now")
-				})]
-			}),
-			jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 58,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 48,
+				columnNumber: 9
+			}, this),
+			jsxDEV("div", {
 				className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-				children: [jsxs("div", { children: [
-					jsx("h3", {
+				children: [jsxDEV("div", { children: [
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: t("e7e7c736f565", "QA Engineer")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 63,
+						columnNumber: 13
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("6ab32fecb8df", "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.")
-					}),
-					jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 64,
+						columnNumber: 13
+					}, this),
+					jsxDEV("div", {
 						className: "mt-2 flex gap-2",
 						children: [
-							jsx("span", {
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("c4daffce8ca7", "Engineering")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 66,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("7209ed14fa8d", "Remote")
-							}),
-							jsx("span", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 67,
+								columnNumber: 15
+							}, this),
+							jsxDEV("span", {
 								className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 								children: t("a410ab0a0a27", "Full-time")
-							})
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 68,
+								columnNumber: 15
+							}, this)
 						]
-					})
-				] }), jsx("button", {
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 65,
+						columnNumber: 13
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 62,
+					columnNumber: 11
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: t("ed2a54f2cbcf", "Apply Now")
-				})]
-			})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 71,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 61,
+				columnNumber: 9
+			}, this)
 		]
-	})] });
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 8,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 6,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/pages/careers/OpenPositions.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(OpenPositions, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(OpenPositions, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -3270,12 +3424,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

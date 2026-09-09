@@ -19,7 +19,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$2.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1943,9 +1943,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2061,14 +2062,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2271,9 +2273,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -3015,7 +3015,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3158,8 +3158,8 @@ derived([$locale], () => formatTime);
 derived([$locale], () => formatDate);
 derived([$locale], () => formatNumber);
 derived([$locale, $dictionary], () => getJSON);
-var root_1 = $.from_html(`<div class="rounded-lg border border-border bg-card p-6 text-center"><div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground"> </div> <h3 class="text-base font-semibold text-foreground"> </h3> <p class="mb-2 text-xs font-medium text-primary"> </p> <p class="text-sm text-muted-foreground"> </p></div>`);
-var root = $.from_html(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>`);
+var root = $.from_html(`<div class="rounded-lg border border-border bg-card p-6 text-center"><div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground"> </div> <h3 class="text-base font-semibold text-foreground"> </h3> <p class="mb-2 text-xs font-medium text-primary"> </p> <p class="text-sm text-muted-foreground"> </p></div>`);
+var root_1 = $.from_html(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>`);
 function TeamGrid($$anchor, $$props) {
 	$.push($$props, false);
 	const $_ = () => $.store_get($format, "$_", $$stores);
@@ -3176,22 +3176,18 @@ function TeamGrid($$anchor, $$props) {
 		return name.split(" ").map((part) => part[0] ?? "").join("");
 	}
 	$.init();
-	var div = root();
+	var div = root_1();
 	$.each(div, 5, () => memberNums, (n) => n, ($$anchor, n) => {
 		const name = $.derived_safe_equal(() => $_()(`team.grid.member${$.get(n)}Name`));
-		var div_1 = root_1();
+		var div_1 = root();
 		var div_2 = $.child(div_1);
-		var text = $.child(div_2, true);
-		$.reset(div_2);
+		var text = $.only_child(div_2, true);
 		var h3 = $.sibling(div_2, 2);
-		var text_1 = $.child(h3, true);
-		$.reset(h3);
+		var text_1 = $.only_child(h3, true);
 		var p = $.sibling(h3, 2);
-		var text_2 = $.child(p, true);
-		$.reset(p);
+		var text_2 = $.only_child(p, true);
 		var p_1 = $.sibling(p, 2);
-		var text_3 = $.child(p_1, true);
-		$.reset(p_1);
+		var text_3 = $.only_child(p_1, true);
 		$.reset(div_1);
 		$.template_effect(($0, $1, $2) => {
 			$.set_text(text, $0);

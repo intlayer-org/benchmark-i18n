@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-04-30T07:35:16.325Z",
+  "timestamp": "2026-09-09T19:25:32.228Z",
   "packageName": "vite-vue-fluent-vue-static",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 386780,
-    "totalMinifiedBytes": 336283,
-    "totalGzipBytes": 94970
+    "totalUnminifiedBytes": 386432,
+    "totalMinifiedBytes": 336145,
+    "totalGzipBytes": 94958
   },
   "components": [
     {
       "name": "EmptyComponent.vue",
       "category": "Synthetic",
-      "unminifiedBytes": 386780,
-      "unminifiedGzipBytes": 101659,
-      "minifiedBytes": 336283,
-      "minifiedGzipBytes": 94970
+      "unminifiedBytes": 386432,
+      "unminifiedGzipBytes": 101594,
+      "minifiedBytes": 336145,
+      "minifiedGzipBytes": 94958
     }
   ]
 }

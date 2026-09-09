@@ -3,7 +3,7 @@ import { useRoute, useRouter } from "vue-router";
 import { ChevronDown } from "lucide-vue-next";
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
-	return Object.setPrototypeOf(l, String.prototype), Object.assign(l, {
+	if (Object.assign(l, {
 		render: c,
 		toString: () => String(o.value ?? ""),
 		valueOf: () => o.value,
@@ -29,7 +29,54 @@ var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
 			s = e.render, this.raw = e.raw;
 		},
 		...a
-	}), markRaw(l);
+	}), r != null) {
+		let e = Object(r), t = Object.getPrototypeOf(e);
+		for (let n of Object.getOwnPropertyNames(t)) {
+			if (n === "constructor" || n in l) continue;
+			let t = e[n];
+			typeof t == "function" && Object.defineProperty(l, n, {
+				value: t.bind(r),
+				writable: !0,
+				configurable: !0
+			});
+		}
+	}
+	return markRaw(l);
+};
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
+	return {
+		hit: true,
+		content: entries.get(cacheKey)
+	};
+};
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
+	}
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
 };
 var TRANSLATION = "translation";
 var OBJECT = "object";
@@ -49,28 +96,103 @@ var deepTransformNode = (node, props) => {
 		});
 	});
 	const result = {};
-	for (const key in node) Object.defineProperty(result, key, {
-		enumerable: true,
-		configurable: true,
-		get: function() {
-			const childProps = {
-				...props,
-				children: node[key],
-				keyPath: [...props.keyPath, {
-					type: OBJECT,
-					key
-				}]
-			};
-			const transformed = deepTransformNode(node[key], childProps);
-			Object.defineProperty(this, key, {
-				value: transformed,
-				enumerable: true,
-				configurable: true
-			});
-			return transformed;
+	for (const key in node) {
+		const childProps = {
+			...props,
+			children: node[key],
+			keyPath: [...props.keyPath, {
+				type: OBJECT,
+				key
+			}]
+		};
+		if (props.eager) {
+			result[key] = deepTransformNode(node[key], childProps);
+			continue;
 		}
-	});
+		Object.defineProperty(result, key, {
+			enumerable: true,
+			configurable: true,
+			get: function() {
+				const transformed = deepTransformNode(node[key], childProps);
+				Object.defineProperty(this, key, {
+					value: transformed,
+					enumerable: true,
+					configurable: true
+				});
+				return transformed;
+			}
+		});
+	}
 	return result;
+};
+var DEFAULT_VARIANT_ID = "default";
+var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
+var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
+var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+var encodeSegmentText = (raw, unsafeChars) => {
+	if (raw === "") return "%";
+	const encoded = raw.replace(unsafeChars, percentEncodeChar);
+	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
+	return encoded;
+};
+var serializeVariant = (variant) => {
+	if (variant === void 0) return DEFAULT_VARIANT_ID;
+	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
+	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
+};
+var serializeVariantChain = (variant) => {
+	if (!Array.isArray(variant)) return [serializeVariant(variant)];
+	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
+	return variant.map(serializeVariant);
+};
+var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
+	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
+	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
+};
+var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
+	const segments = compositeId.split("/");
+	return qualifierTypes.every((qualifierType, index) => {
+		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
+		return selector?.item === void 0 || segments[index] === String(selector.item);
+	});
+};
+var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
+var reconstructQualifiedEntry = (group, compositeId) => {
+	const segments = compositeId.split("/");
+	const entry = {
+		key: group.key,
+		content: group.content[compositeId]
+	};
+	group.qualifierTypes.forEach((qualifierType, index) => {
+		if (qualifierType === "variant") entry.variant = segments[index];
+		else if (qualifierType === "item") entry.item = Number(segments[index]);
+	});
+	return entry;
+};
+var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
+	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
+	const { qualifierTypes, content } = dictionaryOrGroup;
+	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
+	const compositeIds = Object.keys(content);
+	const variantIndex = qualifierTypes.indexOf("variant");
+	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
+	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
+	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
+	return matchedEntries[0] ?? null;
+};
+var parseDictionarySelector = (localeOrSelector) => {
+	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
+		locale: localeOrSelector.locale,
+		selector: localeOrSelector
+	};
+	return { locale: localeOrSelector };
+};
+var getDictionarySelectorCacheKey = (selector) => {
+	if (!selector) return "";
+	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
+		const value = selector[selectorKey];
+		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
+	}).join("|");
 };
 var internationalization = {
 	"locales": [
@@ -102,82 +224,15 @@ var internationalization = {
 };
 var routing = {
 	"mode": "prefix-all",
+	"enableProxy": false,
 	"storage": {
 		"cookies": [{
 			"name": "INTLAYER_LOCALE",
-			"attributes": {}
+			"attributes": { "path": "/" }
 		}],
 		"headers": [{ "name": "x-intlayer-locale" }]
 	},
 	"basePath": ""
-};
-var configuration = {
-	internationalization,
-	routing,
-	editor: {
-		"applicationURL": "http://localhost:3000",
-		"editorURL": "http://localhost:8000",
-		"cmsURL": "https://app.intlayer.org",
-		"backendURL": "https://back.intlayer.org",
-		"port": 8e3,
-		"enabled": false,
-		"dictionaryPriorityStrategy": "local_first",
-		"liveSync": true,
-		"liveSyncPort": 4e3,
-		"liveSyncURL": "http://localhost:4000"
-	},
-	log: {
-		"mode": "default",
-		"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
-	},
-	system: {
-		"baseDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app",
-		"moduleAugmentationDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/types",
-		"unmergedDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/unmerged_dictionary",
-		"remoteDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/remote_dictionary",
-		"dictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/dictionary",
-		"dynamicDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/dynamic_dictionary",
-		"fetchDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/fetch_dictionary",
-		"typesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/types",
-		"mainDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/main",
-		"configDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/config",
-		"cacheDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/cache",
-		"tempDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/tmp"
-	},
-	content: {
-		"fileExtensions": [
-			".content.ts",
-			".content.js",
-			".content.cjs",
-			".content.mjs",
-			".content.json",
-			".content.json5",
-			".content.jsonc",
-			".content.tsx",
-			".content.jsx"
-		],
-		"contentDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app"],
-		"codeDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app"],
-		"excludedPath": [
-			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,astro}",
-			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
-			"!***.spec.*",
-			"!***.d.ts",
-			"!***.map"
-		],
-		"outputFormat": ["esm", "cjs"],
-		"cache": true,
-		"checkTypes": false
-	},
-	ai,
-	dictionary,
-	build,
-	compiler: {
-		"enabled": true,
-		"dictionaryKeyPrefix": "",
-		"noMetadata": false,
-		"saveComponents": false
-	}
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -234,7 +289,7 @@ var fallbackPlugin = {
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
@@ -255,9 +310,11 @@ var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TR
 	}
 };
 var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
 var insertionPlugin = fallbackPlugin;
 var genderPlugin = fallbackPlugin;
+var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
 var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
@@ -267,74 +324,108 @@ var getBasePlugins = (locale, fallback = true) => [
 	insertionPlugin,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
-	genderPlugin
+	genderPlugin,
+	selectPlugin
 ];
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
-}), getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
+});
+var getDictionary = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = parseDictionarySelector(localeOrSelector);
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries
+		};
+		return getContent(resolvedDictionary.content, props, appliedPlugins);
 	};
-	return getContent(dictionary.content, props, plugins);
-}, b$1 = {
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
+};
+var T = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (t, { children: n, ...r }) => {
-		let i = (t) => n$1({
-			...r,
+	transform: (n, { children: r, ...i }) => {
+		let a = (t) => n$1({
+			...i,
 			value: t,
 			children: t
-		}), s = i(n);
-		if (typeof n != "function") return s;
-		let c = (...e) => i(n(...e));
-		Object.setPrototypeOf(c, Object.getPrototypeOf(s));
-		for (let e of Object.getOwnPropertyNames(s)) {
-			let t = Object.getOwnPropertyDescriptor(s, e);
-			t && Object.defineProperty(c, e, t);
+		}), c = a(r);
+		if (typeof r != "function") return c;
+		let l = (...e) => {
+			let t = r(...e);
+			return a(t);
+		};
+		Object.setPrototypeOf(l, Object.getPrototypeOf(c));
+		for (let e of Object.getOwnPropertyNames(c)) {
+			let t = Object.getOwnPropertyDescriptor(c, e);
+			t && Object.defineProperty(l, e, t);
 		}
-		for (let e of Object.getOwnPropertySymbols(s)) {
-			let t = Object.getOwnPropertyDescriptor(s, e);
-			t && Object.defineProperty(c, e, t);
+		for (let e of Object.getOwnPropertySymbols(c)) {
+			let t = Object.getOwnPropertyDescriptor(c, e);
+			t && Object.defineProperty(l, e, t);
 		}
-		return markRaw(c);
+		return markRaw(l);
 	}
-}, S = fallbackPlugin, w = fallbackPlugin, T = fallbackPlugin, E = /* @__PURE__ */ new Map(), D = (e, t = !0) => {
+};
+var D = fallbackPlugin;
+var k = fallbackPlugin;
+var A = fallbackPlugin;
+var j = /* @__PURE__ */ new Map();
+var M = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
-	if (E.has(n)) return E.get(n);
+	if (j.has(n)) return j.get(n);
 	let r = [
 		translationPlugin(e ?? internationalization.defaultLocale, t ? internationalization.defaultLocale : void 0),
 		enumerationPlugin,
+		pluralPlugin(e ?? internationalization.defaultLocale),
 		conditionPlugin,
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		b$1,
-		S,
-		w,
-		T
+		selectPlugin,
+		T,
+		D,
+		k,
+		A
 	];
-	return E.set(n, r), r;
-}, n = (n, r) => getDictionary(n, r, D(r)), i = Symbol("intlayer");
-var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "object" && !!e, g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e), _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, v = (e) => markRaw(defineComponent({
+	return j.set(n, r), r;
+};
+var n = (n, r) => {
+	return getDictionary(n, r, M(typeof r == "object" && r ? r.locale : r));
+};
+var i = Symbol("intlayer");
+var g = (e, t) => t.reduce((e, t) => e?.[t], e);
+var _ = (e) => typeof e == "object" && !!e;
+var v = (e) => typeof e == "function" || _(e) && ("render" in e || "setup" in e);
+var y = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e;
+var b = (e) => markRaw(defineComponent({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : g(t) ? h(t) : Array.isArray(t) ? h("span", t) : t;
+			return t == null ? null : v(t) ? h(t) : Array.isArray(t) ? h("span", t) : t;
 		};
 	}
-})), y = (e) => new Proxy({}, {
+}));
+var x = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
 		if (n === "value") return r ?? "";
 		if (n === "$raw") return e;
 		if (n === "__v_skip") return !0;
-		if (n === "c" || n === "asComponent") return v(() => e.value);
+		if (n === "c" || n === "asComponent") return b(() => e.value);
 		if (r == null) return n === Symbol.toPrimitive || n === "toString" ? () => "" : void 0;
 		let i = r[n];
 		return typeof i == "function" ? i.bind(r) : i;
@@ -349,34 +440,49 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 			configurable: !0
 		};
 	}
-}), b = (r, a) => {
-	let c = getCurrentInstance() ? inject(i) : void 0, b = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), x = computed(() => (a === void 0 ? void 0 : toValue(a)) ?? b.value), S = shallowRef({});
-	watch([() => toValue(r), () => x.value], ([t, n$2]) => {
-		S.value = n(t, n$2);
+});
+var S = (r, a) => {
+	let c = getCurrentInstance() ? inject(i) : void 0, S = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), C = computed(() => {
+		return {
+			selector: void 0,
+			locale: a === void 0 ? void 0 : toValue(a)
+		};
+	}), w = computed(() => C.value.locale ?? S.value), T = shallowRef({});
+	watch([
+		() => toValue(r),
+		() => w.value,
+		() => C.value.selector
+	], ([t, n$2, r]) => {
+		T.value = r ? n(t, {
+			...r,
+			locale: n$2
+		}) : n(t, n$2);
 	}, {
 		immediate: !0,
 		flush: "sync"
 	});
-	let C = (e) => new Proxy({}, {
+	let E = (e) => new Proxy({}, {
 		get(t, r, i) {
-			if (r === "__v_isRef") return !0;
-			let a = computed(() => m(S.value, e));
+			let a = computed(() => g(T.value, e));
+			if (typeof r == "symbol" || typeof r == "string" && (r.startsWith("__") || r.startsWith("$"))) return r === "__v_isRef" ? !0 : r === "$raw" ? a : r === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(t, r, i);
 			if (r === "value") return a.value ?? "";
 			if (r === "then") return;
-			if (r === "c" || r === "asComponent") return v(() => a.value);
-			if (r === "$raw") return a;
-			if (r === Symbol.toPrimitive) return () => a.value;
-			let o = e.concat(r), s = m(S.value, o);
-			if (s === void 0 || h$1(s) && !g(s)) return C(o);
-			if (_(s)) return y(computed(() => m(S.value, o)));
-			let c = computed(() => m(S.value, o));
+			if (r === "c" || r === "asComponent") return b(() => a.value);
+			let o = e.concat(r), s = g(T.value, o);
+			if (s === void 0 || _(s) && !v(s)) return E(o);
+			if (y(s)) return x(computed(() => g(T.value, o)));
+			if (typeof s == "function") {
+				let t = g(T.value, e);
+				return t != null && !Object.hasOwn(t, r) ? s.bind(t) : (...e) => g(T.value, o)?.(...e);
+			}
+			let c = computed(() => g(T.value, o));
 			return new Proxy(c, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = m(S.value, e);
-			return h$1(t) ? Reflect.ownKeys(t) : [];
+			let t = g(T.value, e);
+			return _(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -385,44 +491,27 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 			};
 		}
 	});
-	return C([]);
+	return E([]);
 };
-var TREE_SHAKE_STORAGE_COOKIES = process.env["INTLAYER_ROUTING_STORAGE_COOKIES"] === "false";
-process.env["INTLAYER_ROUTING_STORAGE_HEADERS"];
+var resolveExpiresToTimestamp = (expires) => {
+	if (typeof expires === "number") return Date.now() + expires * 1e3;
+	if (typeof expires === "string") {
+		const time = Date.parse(expires);
+		return Number.isNaN(time) ? void 0 : time;
+	}
+};
 var buildCookieString = (name, value, attributes) => {
 	const parts = [`${name}=${encodeURIComponent(value)}`];
 	if (attributes.path) parts.push(`Path=${attributes.path}`);
 	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
-	if (attributes.expires instanceof Date) parts.push(`Expires=${attributes.expires.toUTCString()}`);
+	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
+	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
 	if (attributes.secure) parts.push("Secure");
 	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
 	return parts.join("; ");
 };
-var getLocaleFromStorageClient = (options = localeStorageOptions) => {
-	const { locales } = internationalization;
-	if (options?.isCookieEnabled === false) return void 0;
-	const isValidLocale = (value) => !!value && locales.includes(value);
-	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
-		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-};
-var setLocaleInStorageClient = (locale, options) => {
-	if (options?.isCookieEnabled === false) return;
-	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
-		const { name, attributes } = routing.storage.cookies[i];
-		try {
-			if (options?.setCookieStore) options.setCookieStore(name, locale, {
-				...attributes,
-				expires: attributes.expires instanceof Date ? attributes.expires.getTime() : attributes.expires
-			});
-		} catch {
-			try {
-				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
-			} catch {}
-		}
-	}
-};
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
 var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
@@ -442,16 +531,41 @@ var localeStorageOptions = {
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
 };
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
+};
+var setLocaleInStorageClient = (locale, options) => {
+	if (options?.isCookieEnabled === false) return;
+	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
+		const { name, attributes } = routing.storage.cookies[i];
+		try {
+			if (options?.setCookieStore) options.setCookieStore(name, locale, {
+				...attributes,
+				expires: resolveExpiresToTimestamp(attributes.expires)
+			});
+		} catch {
+			try {
+				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
+			} catch {}
+		}
+	}
+};
 getLocaleFromStorageClient(localeStorageOptions);
-var s = (e, n) => setLocaleInStorageClient(e, {
+var s = (e, t) => setLocaleInStorageClient(e, {
 	...localeStorageOptions,
-	isCookieEnabled: n
+	isCookieEnabled: t
 });
 var a = ({ isCookieEnabled: a, onLocaleChange: o } = {}) => {
-	let { defaultLocale: s$2, locales: c } = internationalization ?? {}, l = inject(i);
+	let { defaultLocale: s$1, locales: c } = internationalization ?? {}, l = inject(i);
 	return {
-		locale: computed(() => l?.locale?.value ?? s$2),
-		defaultLocale: s$2,
+		locale: computed(() => l?.locale?.value ?? s$1),
+		defaultLocale: s$1,
 		availableLocales: c,
 		setLocale: (e) => {
 			if (!c?.map(String).includes(e)) {
@@ -608,7 +722,7 @@ var Footer_vue_vue_type_script_setup_true_lang_default = defineComponent({
 		__expose();
 		const route = useRoute();
 		const currentLocale = computed(() => route.params.locale || "en");
-		const { e: description, i: resources, b: contactLabel, g: github, h: methodology, d: contributing, f: footerText, a: appName, c: contactEmail } = b(footer_default);
+		const { e: description, i: resources, b: contactLabel, g: github, h: methodology, d: contributing, f: footerText, a: appName, c: contactEmail } = S(footer_default);
 		const __returned__ = {
 			route,
 			currentLocale,
@@ -704,8 +818,7 @@ var header_default = {
 				"d": "Contact",
 				"m": "Settings",
 				"a": "i18n Benchmark",
-				"f": "Go to GitHub",
-				"g": "Header"
+				"f": "Go to GitHub"
 			},
 			"fr": {
 				"h": "Accueil",
@@ -720,8 +833,7 @@ var header_default = {
 				"d": "Contact",
 				"m": "Paramètres",
 				"a": "Benchmark i18n",
-				"f": "Aller sur GitHub",
-				"g": "En-tête"
+				"f": "Aller sur GitHub"
 			},
 			"es": {
 				"h": "Inicio",
@@ -736,8 +848,7 @@ var header_default = {
 				"d": "Contacto",
 				"m": "Ajustes",
 				"a": "i18n Benchmark",
-				"f": "Ir a GitHub",
-				"g": "Encabezado"
+				"f": "Ir a GitHub"
 			},
 			"de": {
 				"h": "Home",
@@ -752,8 +863,7 @@ var header_default = {
 				"d": "Kontakt",
 				"m": "Einstellungen",
 				"a": "i18n Benchmark",
-				"f": "Zu GitHub",
-				"g": "Header"
+				"f": "Zu GitHub"
 			},
 			"it": {
 				"h": "Home",
@@ -768,8 +878,7 @@ var header_default = {
 				"d": "Contatti",
 				"m": "Impostazioni",
 				"a": "i18n Benchmark",
-				"f": "Vai su GitHub",
-				"g": "Intestazione"
+				"f": "Vai su GitHub"
 			},
 			"pt": {
 				"h": "Início",
@@ -784,8 +893,7 @@ var header_default = {
 				"d": "Contato",
 				"m": "Configurações",
 				"a": "i18n Benchmark",
-				"f": "Ir para o GitHub",
-				"g": "Cabeçalho"
+				"f": "Ir para o GitHub"
 			},
 			"zh": {
 				"h": "首页",
@@ -800,8 +908,7 @@ var header_default = {
 				"d": "联系我们",
 				"m": "设置",
 				"a": "i18n 基准测试",
-				"f": "前往 GitHub",
-				"g": "页眉"
+				"f": "前往 GitHub"
 			},
 			"ja": {
 				"h": "ホーム",
@@ -816,8 +923,7 @@ var header_default = {
 				"d": "お問い合わせ",
 				"m": "設定",
 				"a": "i18n ベンチマーク",
-				"f": "GitHub へ",
-				"g": "ヘッダー"
+				"f": "GitHub へ"
 			},
 			"ko": {
 				"h": "홈",
@@ -832,8 +938,7 @@ var header_default = {
 				"d": "문의",
 				"m": "설정",
 				"a": "i18n 벤치마크",
-				"f": "GitHub으로 이동",
-				"g": "헤더"
+				"f": "GitHub으로 이동"
 			},
 			"ru": {
 				"h": "Главная",
@@ -848,8 +953,7 @@ var header_default = {
 				"d": "Контакт",
 				"m": "Настройки",
 				"a": "i18n Бенчмарк",
-				"f": "Перейти на GitHub",
-				"g": "Заголовок"
+				"f": "Перейти на GitHub"
 			}
 		}
 	}
@@ -867,10 +971,9 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var locales = configuration.internationalization.locales;
-configuration.internationalization.requiredLocales;
-configuration.internationalization.defaultLocale;
-configuration.editor;
+var locales = internationalization.locales;
+internationalization.requiredLocales;
+internationalization.defaultLocale;
 var getLocaleName = (locale) => {
 	try {
 		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
@@ -1027,7 +1130,7 @@ var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "ThemeToggle",
 	setup(__props, { expose: __expose }) {
 		__expose();
-		const { d: auto, e: dark, f: light, a: ariaLabelAuto, c: ariaLabelLight, b: ariaLabelDark } = b(theme_toggle_default);
+		const { d: auto, e: dark, f: light, a: ariaLabelAuto, c: ariaLabelLight, b: ariaLabelDark } = S(theme_toggle_default);
 		const mode = ref("auto");
 		function getInitialMode() {
 			if (typeof window === "undefined") return "auto";
@@ -1112,7 +1215,7 @@ var Header_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	setup(__props, { expose: __expose }) {
 		__expose();
 		usePerformanceMeasure("Header");
-		const { h: home, i: methodology, j: mockPagesLabel, l: products, k: pricing, n: team, b: blog, c: careers, e: faq, d: contact, m: settings, a: appName, f: goToGithub } = b(header_default);
+		const { h: home, i: methodology, j: mockPagesLabel, l: products, k: pricing, n: team, b: blog, c: careers, e: faq, d: contact, m: settings, a: appName, f: goToGithub } = S(header_default);
 		const isMockPagesOpen = ref(false);
 		const route = useRoute();
 		const currentLocale = computed(() => route.params.locale || "en");

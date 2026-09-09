@@ -1,6 +1,6 @@
 "use client";
 import { useLayoutEffect } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -12,14 +12,27 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-base-app/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	usePerformanceMeasure("AboutHeader");
-	return jsxs(Fragment, { children: [jsx("h1", {
+	return jsxDEV(Fragment, { children: [jsxDEV("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: "About This Benchmark"
-	}), jsx("p", {
+	}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 7
+	}, this), jsxDEV("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
-	})] });
+	}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 12,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
 export { AboutHeader as default };

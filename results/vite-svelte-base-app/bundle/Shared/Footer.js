@@ -16,7 +16,7 @@ var locales = [
 function isLocale(value) {
 	return locales.includes(value);
 }
-var PAGE_SEGMENTS = new Set([
+var PAGE_SEGMENTS = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -42,11 +42,12 @@ function parsePath(pathname) {
 		page: seg
 	};
 }
-var route = derived(writable(typeof window !== "undefined" ? window.location.pathname : "/en"), (p) => parsePath(p));
-var root_2 = $.from_html(`<a class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
-var root_3 = $.from_html(`<a target="_blank" rel="noreferrer" class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
-var root_1 = $.from_html(`<li><!></li>`);
-var root = $.from_html(`<footer class="mt-20 border-t border-border bg-card"><div class="container py-8"><div class="grid gap-8 md:grid-cols-3"><div><h3 class="mb-2 text-sm font-semibold text-foreground">i18n Benchmark</h3> <p class="text-sm text-muted-foreground">An open-source test application for measuring the real-world impact of
+var pathname = writable(typeof window !== "undefined" ? window.location.pathname : "/en");
+var route = derived(pathname, (p) => parsePath(p));
+var root = $.from_html(`<a class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
+var root_1 = $.from_html(`<a target="_blank" rel="noreferrer" class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
+var root_2 = $.from_html(`<li><!></li>`);
+var root_3 = $.from_html(`<footer class="mt-20 border-t border-border bg-card"><div class="container py-8"><div class="grid gap-8 md:grid-cols-3"><div><h3 class="mb-2 text-sm font-semibold text-foreground">i18n Benchmark</h3> <p class="text-sm text-muted-foreground">An open-source test application for measuring the real-world impact of
           internationalization libraries on bundle size, loading time, and app
           reactivity.</p></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground">Resources</h3> <ul class="space-y-1"></ul></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground">Contact</h3> <p class="text-sm text-muted-foreground">contact@intlayer.org</p></div></div> <div class="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">i18n Benchmark — Open-source project. Built with Svelte, Vite, and a
       client-side router.</div></div></footer>`);
@@ -72,18 +73,17 @@ function Footer($$anchor, $$props) {
 			isInternal: true
 		}
 	]);
-	var footer = root();
+	var footer = root_3();
 	var div = $.child(footer);
 	var div_1 = $.child(div);
 	var div_2 = $.sibling($.child(div_1), 2);
 	var ul = $.sibling($.child(div_2), 2);
 	$.each(ul, 21, () => $.get(footerLinks), (linkEl) => linkEl.label, ($$anchor, linkEl) => {
-		var li = root_1();
+		var li = root_2();
 		var node = $.child(li);
 		var consequent = ($$anchor) => {
-			var a = root_2();
-			var text = $.child(a, true);
-			$.reset(a);
+			var a = root();
+			var text = $.only_child(a, true);
 			$.template_effect(() => {
 				$.set_attribute(a, "href", $.get(linkEl).to);
 				$.set_text(text, $.get(linkEl).label);
@@ -91,9 +91,8 @@ function Footer($$anchor, $$props) {
 			$.append($$anchor, a);
 		};
 		var alternate = ($$anchor) => {
-			var a_1 = root_3();
-			var text_1 = $.child(a_1, true);
-			$.reset(a_1);
+			var a_1 = root_1();
+			var text_1 = $.only_child(a_1, true);
 			$.template_effect(() => {
 				$.set_attribute(a_1, "href", $.get(linkEl).href);
 				$.set_text(text_1, $.get(linkEl).label);

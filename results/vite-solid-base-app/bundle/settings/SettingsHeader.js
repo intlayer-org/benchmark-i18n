@@ -3,7 +3,8 @@ var _tmpl$$1 = template(`<div class="mb-6 rounded-md border border-border bg-mut
 function MockBanner() {
 	return _tmpl$$1();
 }
-var _tmpl$ = template(`<h1 class="mb-2 text-3xl font-bold text-foreground">Settings`), _tmpl$2 = template(`<p class="mb-8 text-muted-foreground">Manage your account preferences and configuration.`);
+var _tmpl$ = template(`<h1 class="mb-2 text-3xl font-bold text-foreground">Settings`);
+var _tmpl$2 = template(`<p class="mb-8 text-muted-foreground">Manage your account preferences and configuration.`);
 function SettingsHeader() {
 	return [
 		createComponent(MockBanner, {}),

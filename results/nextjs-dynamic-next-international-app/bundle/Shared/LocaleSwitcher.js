@@ -1,7 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { jsx } from "react/jsx-runtime";
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+import { jsxDEV } from "react/jsx-dev-runtime";
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -26,6 +26,7 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams().locale ?? "en";
 	const pathname = usePathname();
@@ -34,18 +35,30 @@ function LocaleSwitcher() {
 		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
 		router.push(newPath);
 	};
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "flex items-center gap-2",
-		children: jsx("select", {
+		children: jsxDEV("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeItem) => jsx("option", {
+			children: locales.map((localeItem) => jsxDEV("option", {
 				value: localeItem,
 				children: getLocaleName(localeItem)
-			}, localeItem))
-		})
-	});
+			}, localeItem, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 25,
+				columnNumber: 11
+			}, this))
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 19,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 18,
+		columnNumber: 5
+	}, this);
 }
 var require_client_only = __commonJSMin((() => {}));
 var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = (0, __commonJSMin(((exports, module) => {
@@ -151,8 +164,10 @@ var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = (
 				}
 			}
 			let value = scope ? content[`${scope}.${key}`] : content[key];
-			if (!value && isPlural) value = (_a = content[`${key.split("#", 1)[0]}#other`] || key) == null ? void 0 : _a.toString();
-			else value = (_b = value || key) == null ? void 0 : _b.toString();
+			if (!value && isPlural) {
+				const baseKey = key.split("#", 1)[0];
+				value = (_a = content[`${baseKey}#other`] || key) == null ? void 0 : _a.toString();
+			} else value = (_b = value || key) == null ? void 0 : _b.toString();
 			if (!paramObject) return value;
 			let isString = true;
 			const result = value == null ? void 0 : value.split(/({[^}]*})/).map((part, index) => {
@@ -248,17 +263,18 @@ var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = (
 			useCurrentLocale
 		};
 	}
+	0 && (module.exports = { createI18nClient });
 }))().createI18nClient)({
-	en: () => import("./en-BnbWsMCO.js"),
-	fr: () => import("./fr-Cym9jboO.js"),
-	es: () => import("./es-CdScmn54.js"),
-	de: () => import("./de-DrWoZQyS.js"),
-	it: () => import("./it-mY6HWKgv.js"),
-	pt: () => import("./pt-9UoCT2cN.js"),
-	zh: () => import("./zh-hBz_Hee8.js"),
-	ja: () => import("./ja-BmYSdszq.js"),
-	ko: () => import("./ko-BMyw-vxn.js"),
-	ru: () => import("./ru-CK2zd2-w.js")
+	en: () => import("./en-B-39FaIp.js"),
+	fr: () => import("./fr-BH690cXy.js"),
+	es: () => import("./es-CEkpLbnV.js"),
+	de: () => import("./de-CzaYaEfU.js"),
+	it: () => import("./it-zwHlYiDM.js"),
+	pt: () => import("./pt-DwF7iRTi.js"),
+	zh: () => import("./zh-CDC8y4Nn.js"),
+	ja: () => import("./ja-C27OBTzI.js"),
+	ko: () => import("./ko-CY7_P8I0.js"),
+	ru: () => import("./ru-BhWOgESx.js")
 });
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -282,6 +298,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -293,27 +310,45 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/LocaleSwitcher.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(LocaleSwitcher, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(LocaleSwitcher, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/de.json";
 var de_default = flattenMessages(messages);
 export { de_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 var en_default = flattenMessages({
 	"careers-header": {
 		"title": "Careers",
@@ -785,7 +820,7 @@ var en_default = flattenMessages({
 	}
 });
 export { en_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/es.json";
 var es_default = flattenMessages(messages);
 export { es_default as default };
@@ -799,31 +834,31 @@ function flattenMessages(obj, prefix = "") {
 	return result;
 }
 export { flattenMessages as t };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/fr.json";
 var fr_default = flattenMessages(messages);
 export { fr_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/it.json";
 var it_default = flattenMessages(messages);
 export { it_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/ja.json";
 var ja_default = flattenMessages(messages);
 export { ja_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/ko.json";
 var ko_default = flattenMessages(messages);
 export { ko_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/pt.json";
 var pt_default = flattenMessages(messages);
 export { pt_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/ru.json";
 var ru_default = flattenMessages(messages);
 export { ru_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../messages/zh.json";
 var zh_default = flattenMessages(messages);
 export { zh_default as default };

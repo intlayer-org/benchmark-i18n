@@ -34,27 +34,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -77,7 +56,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -119,6 +98,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -140,6 +120,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -150,58 +135,70 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_home_hero_title = () => {
-	return `i18n Benchmark`;
-};
-var fr_home_hero_title = () => {
-	return `Benchmark i18n`;
-};
-var es_home_hero_title = () => {
-	return `i18n Benchmark`;
-};
-var de_home_hero_title = () => {
-	return `i18n Benchmark`;
-};
-var it_home_hero_title = () => {
-	return `i18n Benchmark`;
-};
-var pt_home_hero_title = () => {
-	return `i18n Benchmark`;
-};
-var zh_home_hero_title = () => {
-	return `i18n Benchmark`;
-};
-var ja_home_hero_title = () => {
-	return `i18n Benchmark`;
-};
-var ko_home_hero_title = () => {
-	return `i18n Benchmark`;
-};
-var ru_home_hero_title = () => {
-	return `i18n Benchmark`;
-};
-var home_hero_title = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_hero_title(inputs);
-	if (locale === "fr") return fr_home_hero_title(inputs);
-	if (locale === "es") return es_home_hero_title(inputs);
-	if (locale === "de") return de_home_hero_title(inputs);
-	if (locale === "it") return it_home_hero_title(inputs);
-	if (locale === "pt") return pt_home_hero_title(inputs);
-	if (locale === "zh") return zh_home_hero_title(inputs);
-	if (locale === "ja") return ja_home_hero_title(inputs);
-	if (locale === "ko") return ko_home_hero_title(inputs);
-	return ru_home_hero_title(inputs);
-});
 var en_home_hero_description = () => {
 	return `A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.`;
 };
@@ -234,7 +231,6 @@ var ru_home_hero_description = () => {
 };
 var home_hero_description = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_hero_description(inputs);
 	if (locale === "fr") return fr_home_hero_description(inputs);
 	if (locale === "es") return es_home_hero_description(inputs);
 	if (locale === "de") return de_home_hero_description(inputs);
@@ -243,50 +239,8 @@ var home_hero_description = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_home_hero_description(inputs);
 	if (locale === "ja") return ja_home_hero_description(inputs);
 	if (locale === "ko") return ko_home_hero_description(inputs);
-	return ru_home_hero_description(inputs);
-});
-var en_home_hero_viewresults1 = () => {
-	return `View Results`;
-};
-var fr_home_hero_viewresults1 = () => {
-	return `Voir les résultats`;
-};
-var es_home_hero_viewresults1 = () => {
-	return `Ver resultados`;
-};
-var de_home_hero_viewresults1 = () => {
-	return `Ergebnisse anzeigen`;
-};
-var it_home_hero_viewresults1 = () => {
-	return `Visualizza i risultati`;
-};
-var pt_home_hero_viewresults1 = () => {
-	return `Ver Resultados`;
-};
-var zh_home_hero_viewresults1 = () => {
-	return `查看结果`;
-};
-var ja_home_hero_viewresults1 = () => {
-	return `結果を見る`;
-};
-var ko_home_hero_viewresults1 = () => {
-	return `View Results`;
-};
-var ru_home_hero_viewresults1 = () => {
-	return `Посмотреть результаты`;
-};
-var home_hero_viewresults1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_hero_viewresults1(inputs);
-	if (locale === "fr") return fr_home_hero_viewresults1(inputs);
-	if (locale === "es") return es_home_hero_viewresults1(inputs);
-	if (locale === "de") return de_home_hero_viewresults1(inputs);
-	if (locale === "it") return it_home_hero_viewresults1(inputs);
-	if (locale === "pt") return pt_home_hero_viewresults1(inputs);
-	if (locale === "zh") return zh_home_hero_viewresults1(inputs);
-	if (locale === "ja") return ja_home_hero_viewresults1(inputs);
-	if (locale === "ko") return ko_home_hero_viewresults1(inputs);
-	return ru_home_hero_viewresults1(inputs);
+	if (locale === "ru") return ru_home_hero_description(inputs);
+	return en_home_hero_description(inputs);
 });
 var en_home_hero_methodology = () => {
 	return `Methodology`;
@@ -320,7 +274,6 @@ var ru_home_hero_methodology = () => {
 };
 var home_hero_methodology = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_hero_methodology(inputs);
 	if (locale === "fr") return fr_home_hero_methodology(inputs);
 	if (locale === "es") return es_home_hero_methodology(inputs);
 	if (locale === "de") return de_home_hero_methodology(inputs);
@@ -329,7 +282,94 @@ var home_hero_methodology = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_home_hero_methodology(inputs);
 	if (locale === "ja") return ja_home_hero_methodology(inputs);
 	if (locale === "ko") return ko_home_hero_methodology(inputs);
-	return ru_home_hero_methodology(inputs);
+	if (locale === "ru") return ru_home_hero_methodology(inputs);
+	return en_home_hero_methodology(inputs);
+});
+var en_home_hero_title = () => {
+	return `i18n Benchmark`;
+};
+var fr_home_hero_title = () => {
+	return `Benchmark i18n`;
+};
+var es_home_hero_title = () => {
+	return `i18n Benchmark`;
+};
+var de_home_hero_title = () => {
+	return `i18n Benchmark`;
+};
+var it_home_hero_title = () => {
+	return `i18n Benchmark`;
+};
+var pt_home_hero_title = () => {
+	return `i18n Benchmark`;
+};
+var zh_home_hero_title = () => {
+	return `i18n Benchmark`;
+};
+var ja_home_hero_title = () => {
+	return `i18n Benchmark`;
+};
+var ko_home_hero_title = () => {
+	return `i18n Benchmark`;
+};
+var ru_home_hero_title = () => {
+	return `i18n Benchmark`;
+};
+var home_hero_title = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_home_hero_title(inputs);
+	if (locale === "es") return es_home_hero_title(inputs);
+	if (locale === "de") return de_home_hero_title(inputs);
+	if (locale === "it") return it_home_hero_title(inputs);
+	if (locale === "pt") return pt_home_hero_title(inputs);
+	if (locale === "zh") return zh_home_hero_title(inputs);
+	if (locale === "ja") return ja_home_hero_title(inputs);
+	if (locale === "ko") return ko_home_hero_title(inputs);
+	if (locale === "ru") return ru_home_hero_title(inputs);
+	return en_home_hero_title(inputs);
+});
+var en_home_hero_viewresults1 = () => {
+	return `View Results`;
+};
+var fr_home_hero_viewresults1 = () => {
+	return `Voir les résultats`;
+};
+var es_home_hero_viewresults1 = () => {
+	return `Ver resultados`;
+};
+var de_home_hero_viewresults1 = () => {
+	return `Ergebnisse anzeigen`;
+};
+var it_home_hero_viewresults1 = () => {
+	return `Visualizza i risultati`;
+};
+var pt_home_hero_viewresults1 = () => {
+	return `Ver Resultados`;
+};
+var zh_home_hero_viewresults1 = () => {
+	return `查看结果`;
+};
+var ja_home_hero_viewresults1 = () => {
+	return `結果を見る`;
+};
+var ko_home_hero_viewresults1 = () => {
+	return `View Results`;
+};
+var ru_home_hero_viewresults1 = () => {
+	return `Посмотреть результаты`;
+};
+var home_hero_viewresults1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_home_hero_viewresults1(inputs);
+	if (locale === "es") return es_home_hero_viewresults1(inputs);
+	if (locale === "de") return de_home_hero_viewresults1(inputs);
+	if (locale === "it") return it_home_hero_viewresults1(inputs);
+	if (locale === "pt") return pt_home_hero_viewresults1(inputs);
+	if (locale === "zh") return zh_home_hero_viewresults1(inputs);
+	if (locale === "ja") return ja_home_hero_viewresults1(inputs);
+	if (locale === "ko") return ko_home_hero_viewresults1(inputs);
+	if (locale === "ru") return ru_home_hero_viewresults1(inputs);
+	return en_home_hero_viewresults1(inputs);
 });
 var root = $.from_html(`<section class="mb-16 text-center"><h1 class="mb-4 text-4xl font-bold tracking-tight text-foreground"> </h1> <p class="mx-auto max-w-2xl text-lg text-muted-foreground"> </p> <div class="mt-8 flex justify-center gap-4"><button type="button" class="rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"> </button> <button type="button" class="rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent"> </button></div></section>`);
 function Hero($$anchor, $$props) {
@@ -338,18 +378,14 @@ function Hero($$anchor, $$props) {
 	$.init();
 	var section = root();
 	var h1 = $.child(section);
-	var text = $.child(h1, true);
-	$.reset(h1);
+	var text = $.only_child(h1, true);
 	var p = $.sibling(h1, 2);
-	var text_1 = $.child(p, true);
-	$.reset(p);
+	var text_1 = $.only_child(p, true);
 	var div = $.sibling(p, 2);
 	var button = $.child(div);
-	var text_2 = $.child(button, true);
-	$.reset(button);
+	var text_2 = $.only_child(button, true);
 	var button_1 = $.sibling(button, 2);
-	var text_3 = $.child(button_1, true);
-	$.reset(button_1);
+	var text_3 = $.only_child(button_1, true);
 	$.reset(div);
 	$.reset(section);
 	$.template_effect(($0, $1, $2, $3) => {

@@ -29,109 +29,29 @@ var f = {
 	defaultLocale: "en"
 }, p = {
 	mode: "prefix-all",
+	enableProxy: !1,
 	storage: {
 		cookies: [{
 			name: "INTLAYER_LOCALE",
-			attributes: {}
+			attributes: { path: "/" }
 		}],
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, m = {
-	internationalization: f,
-	routing: p,
-	editor: {
-		applicationURL: "http://localhost:3000",
-		editorURL: "http://localhost:8000",
-		cmsURL: "https://app.intlayer.org",
-		backendURL: "https://back.intlayer.org",
-		port: 8e3,
-		enabled: !1,
-		dictionaryPriorityStrategy: "local_first",
-		liveSync: !0,
-		liveSyncPort: 4e3,
-		liveSyncURL: "http://localhost:4000"
-	},
-	log: {
-		mode: "default",
-		prefix: "\x1B[38;5;239m[intlayer] \x1B[0m"
-	},
-	system: {
-		baseDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app",
-		moduleAugmentationDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/types",
-		unmergedDictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/unmerged_dictionary",
-		remoteDictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/remote_dictionary",
-		dictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/dictionary",
-		dynamicDictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/dynamic_dictionary",
-		fetchDictionariesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/fetch_dictionary",
-		typesDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/types",
-		mainDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/main",
-		configDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/config",
-		cacheDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/cache",
-		tempDir: "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/.intlayer/tmp"
-	},
-	content: {
-		fileExtensions: [
-			".content.ts",
-			".content.js",
-			".content.cjs",
-			".content.mjs",
-			".content.json",
-			".content.json5",
-			".content.jsonc",
-			".content.tsx",
-			".content.jsx"
-		],
-		contentDir: ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app"],
-		codeDir: ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app"],
-		excludedPath: [
-			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,astro}",
-			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
-			"!***.spec.*",
-			"!***.d.ts",
-			"!***.map"
-		],
-		outputFormat: ["esm", "cjs"],
-		cache: !0,
-		checkTypes: !1
-	},
-	ai,
-	dictionary,
-	build,
-	compiler: {
-		enabled: !0,
-		dictionaryKeyPrefix: "",
-		noMetadata: !1,
-		saveComponents: !1
+}, m = Symbol("intlayer"), h = (e) => {
+	if (typeof e == "number") return Date.now() + e * 1e3;
+	if (typeof e == "string") {
+		let t = Date.parse(e);
+		return Number.isNaN(t) ? void 0 : t;
 	}
-}, h = Symbol("intlayer"), g = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
-process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var _ = (e, t, n) => {
+}, g = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
-	return n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`), n.expires instanceof Date && r.push(`Expires=${n.expires.toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, v = (e = b) => {
-	let { locales: t } = f;
-	if (e?.isCookieEnabled === !1) return;
-	let n = (e) => !!e && t.includes(e);
-	if (!g) for (let t = 0; t < (p.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(p.storage.cookies[t].name);
-		if (n(r)) return r;
-	} catch {}
-}, y = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !g && p.storage.cookies) for (let n = 0; n < p.storage.cookies.length; n++) {
-		let { name: r, attributes: i } = p.storage.cookies[n];
-		try {
-			t?.setCookieStore && t.setCookieStore(r, e, {
-				...i,
-				expires: i.expires instanceof Date ? i.expires.getTime() : i.expires
-			});
-		} catch {
-			try {
-				t?.setCookieString && t.setCookieString(r, _(r, e, i));
-			} catch {}
-		}
-	}
-}, b = {
+	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
+	let i = h(n.expires);
+	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
+}, _ = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var v = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -149,13 +69,35 @@ var _ = (e, t, n) => {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
+}, y = (e = v) => {
+	let { locales: t } = f;
+	if (e?.isCookieEnabled === !1) return;
+	let n = (e) => !!e && t.includes(e);
+	if (!_) for (let t = 0; t < (p.storage.cookies ?? []).length; t++) try {
+		let r = e?.getCookie?.(p.storage.cookies[t].name);
+		if (n(r)) return r;
+	} catch {}
+}, b = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && !_ && p.storage.cookies) for (let n = 0; n < p.storage.cookies.length; n++) {
+		let { name: r, attributes: i } = p.storage.cookies[n];
+		try {
+			t?.setCookieStore && t.setCookieStore(r, e, {
+				...i,
+				expires: h(i.expires)
+			});
+		} catch {
+			try {
+				t?.setCookieString && t.setCookieString(r, g(r, e, i));
+			} catch {}
+		}
+	}
 };
-v(b);
-var x = (e, t) => y(e, {
-	...b,
+y(v);
+var x = (e, t) => b(e, {
+	...v,
 	isCookieEnabled: t
 }), S = ({ isCookieEnabled: e, onLocaleChange: n } = {}) => {
-	let { defaultLocale: r, locales: i } = f ?? {}, o = a(h);
+	let { defaultLocale: r, locales: i } = f ?? {}, o = a(m);
 	return {
 		locale: t(() => o?.locale?.value ?? r),
 		defaultLocale: r,
@@ -168,8 +110,8 @@ var x = (e, t) => y(e, {
 			o && o.setLocale(t), x(t, e ?? o?.isCookieEnabled ?? !0), n?.(t);
 		}
 	};
-}, C = m.internationalization.locales;
-m.internationalization.requiredLocales, m.internationalization.defaultLocale, m.editor;
+}, C = f.locales;
+f.requiredLocales, f.defaultLocale;
 var w = (e) => {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);

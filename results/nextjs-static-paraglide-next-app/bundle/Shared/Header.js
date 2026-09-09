@@ -1,8 +1,9 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import NextLink from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { ChevronDown } from "lucide-react";
+var _jsxFileName$6 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/Link.tsx";
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
 function localizeHref(href, locale) {
 	if (!href.startsWith("/")) return href;
@@ -11,24 +12,36 @@ function localizeHref(href, locale) {
 }
 var Link = ({ href, children, ...props }) => {
 	const locale = useParams().locale ?? "en";
-	if (href == null || typeof href !== "string") return jsx(NextLink, {
+	if (href == null || typeof href !== "string") return jsxDEV(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	});
-	if (checkIsExternalLink(href)) return jsx(NextLink, {
+	}, void 0, false, {
+		fileName: _jsxFileName$6,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0);
+	if (checkIsExternalLink(href)) return jsxDEV(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	});
-	return jsx(NextLink, {
+	}, void 0, false, {
+		fileName: _jsxFileName$6,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0);
+	return jsxDEV(NextLink, {
 		href: localizeHref(href, locale),
 		prefetch: false,
 		...props,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$6,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
 };
 var URLPattern = {};
 var locales = [
@@ -51,27 +64,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -94,7 +86,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -136,6 +128,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -157,6 +150,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -167,273 +165,70 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_header_home = () => {
-	return `Home`;
-};
-var fr_header_home = () => {
-	return `Accueil`;
-};
-var es_header_home = () => {
-	return `Inicio`;
-};
-var de_header_home = () => {
-	return `Startseite`;
-};
-var it_header_home = () => {
-	return `Home`;
-};
-var pt_header_home = () => {
-	return `Início`;
-};
-var zh_header_home = () => {
-	return `首页`;
-};
-var ja_header_home = () => {
-	return `ホーム`;
-};
-var ko_header_home = () => {
-	return `홈`;
-};
-var ru_header_home = () => {
-	return `Главная`;
-};
-var header_home = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_home(inputs);
-	if (locale === "fr") return fr_header_home(inputs);
-	if (locale === "es") return es_header_home(inputs);
-	if (locale === "de") return de_header_home(inputs);
-	if (locale === "it") return it_header_home(inputs);
-	if (locale === "pt") return pt_header_home(inputs);
-	if (locale === "zh") return zh_header_home(inputs);
-	if (locale === "ja") return ja_header_home(inputs);
-	if (locale === "ko") return ko_header_home(inputs);
-	return ru_header_home(inputs);
-});
-var en_header_methodology = () => {
-	return `Methodology`;
-};
-var fr_header_methodology = () => {
-	return `Méthodologie`;
-};
-var es_header_methodology = () => {
-	return `Metodología`;
-};
-var de_header_methodology = () => {
-	return `Methodik`;
-};
-var it_header_methodology = () => {
-	return `Metodologia`;
-};
-var pt_header_methodology = () => {
-	return `Metodologia`;
-};
-var zh_header_methodology = () => {
-	return `方法论`;
-};
-var ja_header_methodology = () => {
-	return `方法論`;
-};
-var ko_header_methodology = () => {
-	return `방법론`;
-};
-var ru_header_methodology = () => {
-	return `Методология`;
-};
-var header_methodology = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_methodology(inputs);
-	if (locale === "fr") return fr_header_methodology(inputs);
-	if (locale === "es") return es_header_methodology(inputs);
-	if (locale === "de") return de_header_methodology(inputs);
-	if (locale === "it") return it_header_methodology(inputs);
-	if (locale === "pt") return pt_header_methodology(inputs);
-	if (locale === "zh") return zh_header_methodology(inputs);
-	if (locale === "ja") return ja_header_methodology(inputs);
-	if (locale === "ko") return ko_header_methodology(inputs);
-	return ru_header_methodology(inputs);
-});
-var en_header_mockpages1 = () => {
-	return `Mock Pages`;
-};
-var fr_header_mockpages1 = () => {
-	return `Pages de test`;
-};
-var es_header_mockpages1 = () => {
-	return `Páginas de prueba`;
-};
-var de_header_mockpages1 = () => {
-	return `Testseiten`;
-};
-var it_header_mockpages1 = () => {
-	return `Pagine di test`;
-};
-var pt_header_mockpages1 = () => {
-	return `Páginas de teste`;
-};
-var zh_header_mockpages1 = () => {
-	return `模拟页面`;
-};
-var ja_header_mockpages1 = () => {
-	return `モックページ`;
-};
-var ko_header_mockpages1 = () => {
-	return `모의 페이지`;
-};
-var ru_header_mockpages1 = () => {
-	return `Тестовые страницы`;
-};
-var header_mockpages1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_mockpages1(inputs);
-	if (locale === "fr") return fr_header_mockpages1(inputs);
-	if (locale === "es") return es_header_mockpages1(inputs);
-	if (locale === "de") return de_header_mockpages1(inputs);
-	if (locale === "it") return it_header_mockpages1(inputs);
-	if (locale === "pt") return pt_header_mockpages1(inputs);
-	if (locale === "zh") return zh_header_mockpages1(inputs);
-	if (locale === "ja") return ja_header_mockpages1(inputs);
-	if (locale === "ko") return ko_header_mockpages1(inputs);
-	return ru_header_mockpages1(inputs);
-});
-var en_header_products = () => {
-	return `Products`;
-};
-var fr_header_products = () => {
-	return `Produits`;
-};
-var es_header_products = () => {
-	return `Productos`;
-};
-var de_header_products = () => {
-	return `Produkte`;
-};
-var it_header_products = () => {
-	return `Prodotti`;
-};
-var pt_header_products = () => {
-	return `Produtos`;
-};
-var zh_header_products = () => {
-	return `产品`;
-};
-var ja_header_products = () => {
-	return `製品`;
-};
-var ko_header_products = () => {
-	return `제품`;
-};
-var ru_header_products = () => {
-	return `Продукты`;
-};
-var header_products = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_products(inputs);
-	if (locale === "fr") return fr_header_products(inputs);
-	if (locale === "es") return es_header_products(inputs);
-	if (locale === "de") return de_header_products(inputs);
-	if (locale === "it") return it_header_products(inputs);
-	if (locale === "pt") return pt_header_products(inputs);
-	if (locale === "zh") return zh_header_products(inputs);
-	if (locale === "ja") return ja_header_products(inputs);
-	if (locale === "ko") return ko_header_products(inputs);
-	return ru_header_products(inputs);
-});
-var en_header_pricing = () => {
-	return `Pricing`;
-};
-var fr_header_pricing = () => {
-	return `Tarifs`;
-};
-var es_header_pricing = () => {
-	return `Precios`;
-};
-var de_header_pricing = () => {
-	return `Preise`;
-};
-var it_header_pricing = () => {
-	return `Prezzi`;
-};
-var pt_header_pricing = () => {
-	return `Preços`;
-};
-var zh_header_pricing = () => {
-	return `价格`;
-};
-var ja_header_pricing = () => {
-	return `料金`;
-};
-var ko_header_pricing = () => {
-	return `요금`;
-};
-var ru_header_pricing = () => {
-	return `Цены`;
-};
-var header_pricing = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_pricing(inputs);
-	if (locale === "fr") return fr_header_pricing(inputs);
-	if (locale === "es") return es_header_pricing(inputs);
-	if (locale === "de") return de_header_pricing(inputs);
-	if (locale === "it") return it_header_pricing(inputs);
-	if (locale === "pt") return pt_header_pricing(inputs);
-	if (locale === "zh") return zh_header_pricing(inputs);
-	if (locale === "ja") return ja_header_pricing(inputs);
-	if (locale === "ko") return ko_header_pricing(inputs);
-	return ru_header_pricing(inputs);
-});
-var en_header_team = () => {
-	return `Team`;
-};
-var fr_header_team = () => {
-	return `Équipe`;
-};
-var es_header_team = () => {
-	return `Equipo`;
-};
-var de_header_team = () => {
-	return `Team`;
-};
-var it_header_team = () => {
-	return `Team`;
-};
-var pt_header_team = () => {
-	return `Equipe`;
-};
-var zh_header_team = () => {
-	return `团队`;
-};
-var ja_header_team = () => {
-	return `チーム`;
-};
-var ko_header_team = () => {
-	return `팀`;
-};
-var ru_header_team = () => {
-	return `Команда`;
-};
-var header_team = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_team(inputs);
-	if (locale === "fr") return fr_header_team(inputs);
-	if (locale === "es") return es_header_team(inputs);
-	if (locale === "de") return de_header_team(inputs);
-	if (locale === "it") return it_header_team(inputs);
-	if (locale === "pt") return pt_header_team(inputs);
-	if (locale === "zh") return zh_header_team(inputs);
-	if (locale === "ja") return ja_header_team(inputs);
-	if (locale === "ko") return ko_header_team(inputs);
-	return ru_header_team(inputs);
-});
 var en_header_blog = () => {
 	return `Blog`;
 };
@@ -466,7 +261,6 @@ var ru_header_blog = () => {
 };
 var header_blog = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_blog(inputs);
 	if (locale === "fr") return fr_header_blog(inputs);
 	if (locale === "es") return es_header_blog(inputs);
 	if (locale === "de") return de_header_blog(inputs);
@@ -475,7 +269,8 @@ var header_blog = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_header_blog(inputs);
 	if (locale === "ja") return ja_header_blog(inputs);
 	if (locale === "ko") return ko_header_blog(inputs);
-	return ru_header_blog(inputs);
+	if (locale === "ru") return ru_header_blog(inputs);
+	return en_header_blog(inputs);
 });
 var en_header_careers = () => {
 	return `Careers`;
@@ -509,7 +304,6 @@ var ru_header_careers = () => {
 };
 var header_careers = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_careers(inputs);
 	if (locale === "fr") return fr_header_careers(inputs);
 	if (locale === "es") return es_header_careers(inputs);
 	if (locale === "de") return de_header_careers(inputs);
@@ -518,50 +312,8 @@ var header_careers = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_header_careers(inputs);
 	if (locale === "ja") return ja_header_careers(inputs);
 	if (locale === "ko") return ko_header_careers(inputs);
-	return ru_header_careers(inputs);
-});
-var en_header_faq = () => {
-	return `FAQ`;
-};
-var fr_header_faq = () => {
-	return `FAQ`;
-};
-var es_header_faq = () => {
-	return `FAQ`;
-};
-var de_header_faq = () => {
-	return `FAQ`;
-};
-var it_header_faq = () => {
-	return `FAQ`;
-};
-var pt_header_faq = () => {
-	return `FAQ`;
-};
-var zh_header_faq = () => {
-	return `常见问题`;
-};
-var ja_header_faq = () => {
-	return `FAQ`;
-};
-var ko_header_faq = () => {
-	return `FAQ`;
-};
-var ru_header_faq = () => {
-	return `FAQ`;
-};
-var header_faq = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_faq(inputs);
-	if (locale === "fr") return fr_header_faq(inputs);
-	if (locale === "es") return es_header_faq(inputs);
-	if (locale === "de") return de_header_faq(inputs);
-	if (locale === "it") return it_header_faq(inputs);
-	if (locale === "pt") return pt_header_faq(inputs);
-	if (locale === "zh") return zh_header_faq(inputs);
-	if (locale === "ja") return ja_header_faq(inputs);
-	if (locale === "ko") return ko_header_faq(inputs);
-	return ru_header_faq(inputs);
+	if (locale === "ru") return ru_header_careers(inputs);
+	return en_header_careers(inputs);
 });
 var en_header_contact = () => {
 	return `Contact`;
@@ -595,7 +347,6 @@ var ru_header_contact = () => {
 };
 var header_contact = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_contact(inputs);
 	if (locale === "fr") return fr_header_contact(inputs);
 	if (locale === "es") return es_header_contact(inputs);
 	if (locale === "de") return de_header_contact(inputs);
@@ -604,50 +355,51 @@ var header_contact = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_header_contact(inputs);
 	if (locale === "ja") return ja_header_contact(inputs);
 	if (locale === "ko") return ko_header_contact(inputs);
-	return ru_header_contact(inputs);
+	if (locale === "ru") return ru_header_contact(inputs);
+	return en_header_contact(inputs);
 });
-var en_header_settings = () => {
-	return `Settings`;
+var en_header_faq = () => {
+	return `FAQ`;
 };
-var fr_header_settings = () => {
-	return `Paramètres`;
+var fr_header_faq = () => {
+	return `FAQ`;
 };
-var es_header_settings = () => {
-	return `Ajustes`;
+var es_header_faq = () => {
+	return `FAQ`;
 };
-var de_header_settings = () => {
-	return `Einstellungen`;
+var de_header_faq = () => {
+	return `FAQ`;
 };
-var it_header_settings = () => {
-	return `Impostazioni`;
+var it_header_faq = () => {
+	return `FAQ`;
 };
-var pt_header_settings = () => {
-	return `Configurações`;
+var pt_header_faq = () => {
+	return `FAQ`;
 };
-var zh_header_settings = () => {
-	return `设置`;
+var zh_header_faq = () => {
+	return `常见问题`;
 };
-var ja_header_settings = () => {
-	return `設定`;
+var ja_header_faq = () => {
+	return `FAQ`;
 };
-var ko_header_settings = () => {
-	return `설정`;
+var ko_header_faq = () => {
+	return `FAQ`;
 };
-var ru_header_settings = () => {
-	return `Настройки`;
+var ru_header_faq = () => {
+	return `FAQ`;
 };
-var header_settings = ((inputs = {}, options = {}) => {
+var header_faq = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_settings(inputs);
-	if (locale === "fr") return fr_header_settings(inputs);
-	if (locale === "es") return es_header_settings(inputs);
-	if (locale === "de") return de_header_settings(inputs);
-	if (locale === "it") return it_header_settings(inputs);
-	if (locale === "pt") return pt_header_settings(inputs);
-	if (locale === "zh") return zh_header_settings(inputs);
-	if (locale === "ja") return ja_header_settings(inputs);
-	if (locale === "ko") return ko_header_settings(inputs);
-	return ru_header_settings(inputs);
+	if (locale === "fr") return fr_header_faq(inputs);
+	if (locale === "es") return es_header_faq(inputs);
+	if (locale === "de") return de_header_faq(inputs);
+	if (locale === "it") return it_header_faq(inputs);
+	if (locale === "pt") return pt_header_faq(inputs);
+	if (locale === "zh") return zh_header_faq(inputs);
+	if (locale === "ja") return ja_header_faq(inputs);
+	if (locale === "ko") return ko_header_faq(inputs);
+	if (locale === "ru") return ru_header_faq(inputs);
+	return en_header_faq(inputs);
 });
 var en_header_gotogithub2 = () => {
 	return `Go to GitHub`;
@@ -681,7 +433,6 @@ var ru_header_gotogithub2 = () => {
 };
 var header_gotogithub2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_gotogithub2(inputs);
 	if (locale === "fr") return fr_header_gotogithub2(inputs);
 	if (locale === "es") return es_header_gotogithub2(inputs);
 	if (locale === "de") return de_header_gotogithub2(inputs);
@@ -690,136 +441,309 @@ var header_gotogithub2 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_header_gotogithub2(inputs);
 	if (locale === "ja") return ja_header_gotogithub2(inputs);
 	if (locale === "ko") return ko_header_gotogithub2(inputs);
-	return ru_header_gotogithub2(inputs);
+	if (locale === "ru") return ru_header_gotogithub2(inputs);
+	return en_header_gotogithub2(inputs);
 });
-var en_theme_toggle_thememodeautosystemclick4 = () => {
-	return `Theme mode: auto (system). Click to switch to light mode.`;
+var en_header_home = () => {
+	return `Home`;
 };
-var fr_theme_toggle_thememodeautosystemclick4 = () => {
-	return `Mode thématique : auto (système). Cliquez pour passer en mode clair.`;
+var fr_header_home = () => {
+	return `Accueil`;
 };
-var es_theme_toggle_thememodeautosystemclick4 = () => {
-	return `Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.`;
+var es_header_home = () => {
+	return `Inicio`;
 };
-var de_theme_toggle_thememodeautosystemclick4 = () => {
-	return `Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.`;
+var de_header_home = () => {
+	return `Startseite`;
 };
-var it_theme_toggle_thememodeautosystemclick4 = () => {
-	return `Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.`;
+var it_header_home = () => {
+	return `Home`;
 };
-var pt_theme_toggle_thememodeautosystemclick4 = () => {
-	return `Modo de tema: automático (sistema). Clique para mudar para o modo claro.`;
+var pt_header_home = () => {
+	return `Início`;
 };
-var zh_theme_toggle_thememodeautosystemclick4 = () => {
-	return `主题模式：自动（系统）。点击切换到明亮模式。`;
+var zh_header_home = () => {
+	return `首页`;
 };
-var ja_theme_toggle_thememodeautosystemclick4 = () => {
-	return `テーマモード：自動（システム）。クリックしてライトモードに切り替えます。`;
+var ja_header_home = () => {
+	return `ホーム`;
 };
-var ko_theme_toggle_thememodeautosystemclick4 = () => {
-	return `테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.`;
+var ko_header_home = () => {
+	return `홈`;
 };
-var ru_theme_toggle_thememodeautosystemclick4 = () => {
-	return `Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.`;
+var ru_header_home = () => {
+	return `Главная`;
 };
-var theme_toggle_thememodeautosystemclick4 = ((inputs = {}, options = {}) => {
+var header_home = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_theme_toggle_thememodeautosystemclick4(inputs);
-	if (locale === "fr") return fr_theme_toggle_thememodeautosystemclick4(inputs);
-	if (locale === "es") return es_theme_toggle_thememodeautosystemclick4(inputs);
-	if (locale === "de") return de_theme_toggle_thememodeautosystemclick4(inputs);
-	if (locale === "it") return it_theme_toggle_thememodeautosystemclick4(inputs);
-	if (locale === "pt") return pt_theme_toggle_thememodeautosystemclick4(inputs);
-	if (locale === "zh") return zh_theme_toggle_thememodeautosystemclick4(inputs);
-	if (locale === "ja") return ja_theme_toggle_thememodeautosystemclick4(inputs);
-	if (locale === "ko") return ko_theme_toggle_thememodeautosystemclick4(inputs);
-	return ru_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "fr") return fr_header_home(inputs);
+	if (locale === "es") return es_header_home(inputs);
+	if (locale === "de") return de_header_home(inputs);
+	if (locale === "it") return it_header_home(inputs);
+	if (locale === "pt") return pt_header_home(inputs);
+	if (locale === "zh") return zh_header_home(inputs);
+	if (locale === "ja") return ja_header_home(inputs);
+	if (locale === "ko") return ko_header_home(inputs);
+	if (locale === "ru") return ru_header_home(inputs);
+	return en_header_home(inputs);
 });
-var en_theme_toggle_thememodelightclick3 = () => {
-	return `Theme mode: light. Click to switch to dark mode.`;
+var en_header_methodology = () => {
+	return `Methodology`;
 };
-var fr_theme_toggle_thememodelightclick3 = () => {
-	return `Mode thématique : clair. Cliquez pour passer en mode sombre.`;
+var fr_header_methodology = () => {
+	return `Méthodologie`;
 };
-var es_theme_toggle_thememodelightclick3 = () => {
-	return `Modo de tema: claro. Haz clic para cambiar al modo oscuro.`;
+var es_header_methodology = () => {
+	return `Metodología`;
 };
-var de_theme_toggle_thememodelightclick3 = () => {
-	return `Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.`;
+var de_header_methodology = () => {
+	return `Methodik`;
 };
-var it_theme_toggle_thememodelightclick3 = () => {
-	return `Modalità tema: chiara. Clicca per passare alla modalità scura.`;
+var it_header_methodology = () => {
+	return `Metodologia`;
 };
-var pt_theme_toggle_thememodelightclick3 = () => {
-	return `Modo de tema: claro. Clique para mudar para o modo escuro.`;
+var pt_header_methodology = () => {
+	return `Metodologia`;
 };
-var zh_theme_toggle_thememodelightclick3 = () => {
-	return `主题模式：明亮。点击切换到暗黑模式。`;
+var zh_header_methodology = () => {
+	return `方法论`;
 };
-var ja_theme_toggle_thememodelightclick3 = () => {
-	return `テーマモード：ライト。クリックしてダークモードに切り替えます。`;
+var ja_header_methodology = () => {
+	return `方法論`;
 };
-var ko_theme_toggle_thememodelightclick3 = () => {
-	return `테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.`;
+var ko_header_methodology = () => {
+	return `방법론`;
 };
-var ru_theme_toggle_thememodelightclick3 = () => {
-	return `Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.`;
+var ru_header_methodology = () => {
+	return `Методология`;
 };
-var theme_toggle_thememodelightclick3 = ((inputs = {}, options = {}) => {
+var header_methodology = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_theme_toggle_thememodelightclick3(inputs);
-	if (locale === "fr") return fr_theme_toggle_thememodelightclick3(inputs);
-	if (locale === "es") return es_theme_toggle_thememodelightclick3(inputs);
-	if (locale === "de") return de_theme_toggle_thememodelightclick3(inputs);
-	if (locale === "it") return it_theme_toggle_thememodelightclick3(inputs);
-	if (locale === "pt") return pt_theme_toggle_thememodelightclick3(inputs);
-	if (locale === "zh") return zh_theme_toggle_thememodelightclick3(inputs);
-	if (locale === "ja") return ja_theme_toggle_thememodelightclick3(inputs);
-	if (locale === "ko") return ko_theme_toggle_thememodelightclick3(inputs);
-	return ru_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "fr") return fr_header_methodology(inputs);
+	if (locale === "es") return es_header_methodology(inputs);
+	if (locale === "de") return de_header_methodology(inputs);
+	if (locale === "it") return it_header_methodology(inputs);
+	if (locale === "pt") return pt_header_methodology(inputs);
+	if (locale === "zh") return zh_header_methodology(inputs);
+	if (locale === "ja") return ja_header_methodology(inputs);
+	if (locale === "ko") return ko_header_methodology(inputs);
+	if (locale === "ru") return ru_header_methodology(inputs);
+	return en_header_methodology(inputs);
 });
-var en_theme_toggle_thememodedarkclick3 = () => {
-	return `Theme mode: dark. Click to switch to auto (system) mode.`;
+var en_header_mockpages1 = () => {
+	return `Mock Pages`;
 };
-var fr_theme_toggle_thememodedarkclick3 = () => {
-	return `Mode thématique : sombre. Cliquez pour passer en mode auto (système).`;
+var fr_header_mockpages1 = () => {
+	return `Pages de test`;
 };
-var es_theme_toggle_thememodedarkclick3 = () => {
-	return `Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).`;
+var es_header_mockpages1 = () => {
+	return `Páginas de prueba`;
 };
-var de_theme_toggle_thememodedarkclick3 = () => {
-	return `Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.`;
+var de_header_mockpages1 = () => {
+	return `Testseiten`;
 };
-var it_theme_toggle_thememodedarkclick3 = () => {
-	return `Modalità tema: scura. Clicca per passare alla modalità auto (sistema).`;
+var it_header_mockpages1 = () => {
+	return `Pagine di test`;
 };
-var pt_theme_toggle_thememodedarkclick3 = () => {
-	return `Modo de tema: escuro. Clique para mudar para o modo automático (sistema).`;
+var pt_header_mockpages1 = () => {
+	return `Páginas de teste`;
 };
-var zh_theme_toggle_thememodedarkclick3 = () => {
-	return `主题模式：暗黑。点击切换到自动（系统）模式。`;
+var zh_header_mockpages1 = () => {
+	return `模拟页面`;
 };
-var ja_theme_toggle_thememodedarkclick3 = () => {
-	return `テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。`;
+var ja_header_mockpages1 = () => {
+	return `モックページ`;
 };
-var ko_theme_toggle_thememodedarkclick3 = () => {
-	return `테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.`;
+var ko_header_mockpages1 = () => {
+	return `모의 페이지`;
 };
-var ru_theme_toggle_thememodedarkclick3 = () => {
-	return `Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.`;
+var ru_header_mockpages1 = () => {
+	return `Тестовые страницы`;
 };
-var theme_toggle_thememodedarkclick3 = ((inputs = {}, options = {}) => {
+var header_mockpages1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_theme_toggle_thememodedarkclick3(inputs);
-	if (locale === "fr") return fr_theme_toggle_thememodedarkclick3(inputs);
-	if (locale === "es") return es_theme_toggle_thememodedarkclick3(inputs);
-	if (locale === "de") return de_theme_toggle_thememodedarkclick3(inputs);
-	if (locale === "it") return it_theme_toggle_thememodedarkclick3(inputs);
-	if (locale === "pt") return pt_theme_toggle_thememodedarkclick3(inputs);
-	if (locale === "zh") return zh_theme_toggle_thememodedarkclick3(inputs);
-	if (locale === "ja") return ja_theme_toggle_thememodedarkclick3(inputs);
-	if (locale === "ko") return ko_theme_toggle_thememodedarkclick3(inputs);
-	return ru_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "fr") return fr_header_mockpages1(inputs);
+	if (locale === "es") return es_header_mockpages1(inputs);
+	if (locale === "de") return de_header_mockpages1(inputs);
+	if (locale === "it") return it_header_mockpages1(inputs);
+	if (locale === "pt") return pt_header_mockpages1(inputs);
+	if (locale === "zh") return zh_header_mockpages1(inputs);
+	if (locale === "ja") return ja_header_mockpages1(inputs);
+	if (locale === "ko") return ko_header_mockpages1(inputs);
+	if (locale === "ru") return ru_header_mockpages1(inputs);
+	return en_header_mockpages1(inputs);
+});
+var en_header_pricing = () => {
+	return `Pricing`;
+};
+var fr_header_pricing = () => {
+	return `Tarifs`;
+};
+var es_header_pricing = () => {
+	return `Precios`;
+};
+var de_header_pricing = () => {
+	return `Preise`;
+};
+var it_header_pricing = () => {
+	return `Prezzi`;
+};
+var pt_header_pricing = () => {
+	return `Preços`;
+};
+var zh_header_pricing = () => {
+	return `价格`;
+};
+var ja_header_pricing = () => {
+	return `料金`;
+};
+var ko_header_pricing = () => {
+	return `요금`;
+};
+var ru_header_pricing = () => {
+	return `Цены`;
+};
+var header_pricing = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_pricing(inputs);
+	if (locale === "es") return es_header_pricing(inputs);
+	if (locale === "de") return de_header_pricing(inputs);
+	if (locale === "it") return it_header_pricing(inputs);
+	if (locale === "pt") return pt_header_pricing(inputs);
+	if (locale === "zh") return zh_header_pricing(inputs);
+	if (locale === "ja") return ja_header_pricing(inputs);
+	if (locale === "ko") return ko_header_pricing(inputs);
+	if (locale === "ru") return ru_header_pricing(inputs);
+	return en_header_pricing(inputs);
+});
+var en_header_products = () => {
+	return `Products`;
+};
+var fr_header_products = () => {
+	return `Produits`;
+};
+var es_header_products = () => {
+	return `Productos`;
+};
+var de_header_products = () => {
+	return `Produkte`;
+};
+var it_header_products = () => {
+	return `Prodotti`;
+};
+var pt_header_products = () => {
+	return `Produtos`;
+};
+var zh_header_products = () => {
+	return `产品`;
+};
+var ja_header_products = () => {
+	return `製品`;
+};
+var ko_header_products = () => {
+	return `제품`;
+};
+var ru_header_products = () => {
+	return `Продукты`;
+};
+var header_products = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_products(inputs);
+	if (locale === "es") return es_header_products(inputs);
+	if (locale === "de") return de_header_products(inputs);
+	if (locale === "it") return it_header_products(inputs);
+	if (locale === "pt") return pt_header_products(inputs);
+	if (locale === "zh") return zh_header_products(inputs);
+	if (locale === "ja") return ja_header_products(inputs);
+	if (locale === "ko") return ko_header_products(inputs);
+	if (locale === "ru") return ru_header_products(inputs);
+	return en_header_products(inputs);
+});
+var en_header_settings = () => {
+	return `Settings`;
+};
+var fr_header_settings = () => {
+	return `Paramètres`;
+};
+var es_header_settings = () => {
+	return `Ajustes`;
+};
+var de_header_settings = () => {
+	return `Einstellungen`;
+};
+var it_header_settings = () => {
+	return `Impostazioni`;
+};
+var pt_header_settings = () => {
+	return `Configurações`;
+};
+var zh_header_settings = () => {
+	return `设置`;
+};
+var ja_header_settings = () => {
+	return `設定`;
+};
+var ko_header_settings = () => {
+	return `설정`;
+};
+var ru_header_settings = () => {
+	return `Настройки`;
+};
+var header_settings = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_settings(inputs);
+	if (locale === "es") return es_header_settings(inputs);
+	if (locale === "de") return de_header_settings(inputs);
+	if (locale === "it") return it_header_settings(inputs);
+	if (locale === "pt") return pt_header_settings(inputs);
+	if (locale === "zh") return zh_header_settings(inputs);
+	if (locale === "ja") return ja_header_settings(inputs);
+	if (locale === "ko") return ko_header_settings(inputs);
+	if (locale === "ru") return ru_header_settings(inputs);
+	return en_header_settings(inputs);
+});
+var en_header_team = () => {
+	return `Team`;
+};
+var fr_header_team = () => {
+	return `Équipe`;
+};
+var es_header_team = () => {
+	return `Equipo`;
+};
+var de_header_team = () => {
+	return `Team`;
+};
+var it_header_team = () => {
+	return `Team`;
+};
+var pt_header_team = () => {
+	return `Equipe`;
+};
+var zh_header_team = () => {
+	return `团队`;
+};
+var ja_header_team = () => {
+	return `チーム`;
+};
+var ko_header_team = () => {
+	return `팀`;
+};
+var ru_header_team = () => {
+	return `Команда`;
+};
+var header_team = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_team(inputs);
+	if (locale === "es") return es_header_team(inputs);
+	if (locale === "de") return de_header_team(inputs);
+	if (locale === "it") return it_header_team(inputs);
+	if (locale === "pt") return pt_header_team(inputs);
+	if (locale === "zh") return zh_header_team(inputs);
+	if (locale === "ja") return ja_header_team(inputs);
+	if (locale === "ko") return ko_header_team(inputs);
+	if (locale === "ru") return ru_header_team(inputs);
+	return en_header_team(inputs);
 });
 var en_theme_toggle_themeauto1 = () => {
 	return `Theme: Auto`;
@@ -853,7 +777,6 @@ var ru_theme_toggle_themeauto1 = () => {
 };
 var theme_toggle_themeauto1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_theme_toggle_themeauto1(inputs);
 	if (locale === "fr") return fr_theme_toggle_themeauto1(inputs);
 	if (locale === "es") return es_theme_toggle_themeauto1(inputs);
 	if (locale === "de") return de_theme_toggle_themeauto1(inputs);
@@ -862,7 +785,8 @@ var theme_toggle_themeauto1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_theme_toggle_themeauto1(inputs);
 	if (locale === "ja") return ja_theme_toggle_themeauto1(inputs);
 	if (locale === "ko") return ko_theme_toggle_themeauto1(inputs);
-	return ru_theme_toggle_themeauto1(inputs);
+	if (locale === "ru") return ru_theme_toggle_themeauto1(inputs);
+	return en_theme_toggle_themeauto1(inputs);
 });
 var en_theme_toggle_themedark1 = () => {
 	return `Theme: Dark`;
@@ -896,7 +820,6 @@ var ru_theme_toggle_themedark1 = () => {
 };
 var theme_toggle_themedark1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_theme_toggle_themedark1(inputs);
 	if (locale === "fr") return fr_theme_toggle_themedark1(inputs);
 	if (locale === "es") return es_theme_toggle_themedark1(inputs);
 	if (locale === "de") return de_theme_toggle_themedark1(inputs);
@@ -905,7 +828,8 @@ var theme_toggle_themedark1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_theme_toggle_themedark1(inputs);
 	if (locale === "ja") return ja_theme_toggle_themedark1(inputs);
 	if (locale === "ko") return ko_theme_toggle_themedark1(inputs);
-	return ru_theme_toggle_themedark1(inputs);
+	if (locale === "ru") return ru_theme_toggle_themedark1(inputs);
+	return en_theme_toggle_themedark1(inputs);
 });
 var en_theme_toggle_themelight1 = () => {
 	return `Theme: Light`;
@@ -939,7 +863,6 @@ var ru_theme_toggle_themelight1 = () => {
 };
 var theme_toggle_themelight1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_theme_toggle_themelight1(inputs);
 	if (locale === "fr") return fr_theme_toggle_themelight1(inputs);
 	if (locale === "es") return es_theme_toggle_themelight1(inputs);
 	if (locale === "de") return de_theme_toggle_themelight1(inputs);
@@ -948,8 +871,139 @@ var theme_toggle_themelight1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_theme_toggle_themelight1(inputs);
 	if (locale === "ja") return ja_theme_toggle_themelight1(inputs);
 	if (locale === "ko") return ko_theme_toggle_themelight1(inputs);
-	return ru_theme_toggle_themelight1(inputs);
+	if (locale === "ru") return ru_theme_toggle_themelight1(inputs);
+	return en_theme_toggle_themelight1(inputs);
 });
+var en_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Theme mode: auto (system). Click to switch to light mode.`;
+};
+var fr_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Mode thématique : auto (système). Cliquez pour passer en mode clair.`;
+};
+var es_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.`;
+};
+var de_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.`;
+};
+var it_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.`;
+};
+var pt_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Modo de tema: automático (sistema). Clique para mudar para o modo claro.`;
+};
+var zh_theme_toggle_thememodeautosystemclick4 = () => {
+	return `主题模式：自动（系统）。点击切换到明亮模式。`;
+};
+var ja_theme_toggle_thememodeautosystemclick4 = () => {
+	return `テーマモード：自動（システム）。クリックしてライトモードに切り替えます。`;
+};
+var ko_theme_toggle_thememodeautosystemclick4 = () => {
+	return `테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.`;
+};
+var ru_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.`;
+};
+var theme_toggle_thememodeautosystemclick4 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "es") return es_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "de") return de_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "it") return it_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "pt") return pt_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "zh") return zh_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "ja") return ja_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "ko") return ko_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "ru") return ru_theme_toggle_thememodeautosystemclick4(inputs);
+	return en_theme_toggle_thememodeautosystemclick4(inputs);
+});
+var en_theme_toggle_thememodedarkclick3 = () => {
+	return `Theme mode: dark. Click to switch to auto (system) mode.`;
+};
+var fr_theme_toggle_thememodedarkclick3 = () => {
+	return `Mode thématique : sombre. Cliquez pour passer en mode auto (système).`;
+};
+var es_theme_toggle_thememodedarkclick3 = () => {
+	return `Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).`;
+};
+var de_theme_toggle_thememodedarkclick3 = () => {
+	return `Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.`;
+};
+var it_theme_toggle_thememodedarkclick3 = () => {
+	return `Modalità tema: scura. Clicca per passare alla modalità auto (sistema).`;
+};
+var pt_theme_toggle_thememodedarkclick3 = () => {
+	return `Modo de tema: escuro. Clique para mudar para o modo automático (sistema).`;
+};
+var zh_theme_toggle_thememodedarkclick3 = () => {
+	return `主题模式：暗黑。点击切换到自动（系统）模式。`;
+};
+var ja_theme_toggle_thememodedarkclick3 = () => {
+	return `テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。`;
+};
+var ko_theme_toggle_thememodedarkclick3 = () => {
+	return `테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.`;
+};
+var ru_theme_toggle_thememodedarkclick3 = () => {
+	return `Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.`;
+};
+var theme_toggle_thememodedarkclick3 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "es") return es_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "de") return de_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "it") return it_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "pt") return pt_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "zh") return zh_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "ja") return ja_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "ko") return ko_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "ru") return ru_theme_toggle_thememodedarkclick3(inputs);
+	return en_theme_toggle_thememodedarkclick3(inputs);
+});
+var en_theme_toggle_thememodelightclick3 = () => {
+	return `Theme mode: light. Click to switch to dark mode.`;
+};
+var fr_theme_toggle_thememodelightclick3 = () => {
+	return `Mode thématique : clair. Cliquez pour passer en mode sombre.`;
+};
+var es_theme_toggle_thememodelightclick3 = () => {
+	return `Modo de tema: claro. Haz clic para cambiar al modo oscuro.`;
+};
+var de_theme_toggle_thememodelightclick3 = () => {
+	return `Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.`;
+};
+var it_theme_toggle_thememodelightclick3 = () => {
+	return `Modalità tema: chiara. Clicca per passare alla modalità scura.`;
+};
+var pt_theme_toggle_thememodelightclick3 = () => {
+	return `Modo de tema: claro. Clique para mudar para o modo escuro.`;
+};
+var zh_theme_toggle_thememodelightclick3 = () => {
+	return `主题模式：明亮。点击切换到暗黑模式。`;
+};
+var ja_theme_toggle_thememodelightclick3 = () => {
+	return `テーマモード：ライト。クリックしてダークモードに切り替えます。`;
+};
+var ko_theme_toggle_thememodelightclick3 = () => {
+	return `테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.`;
+};
+var ru_theme_toggle_thememodelightclick3 = () => {
+	return `Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.`;
+};
+var theme_toggle_thememodelightclick3 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "es") return es_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "de") return de_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "it") return it_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "pt") return pt_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "zh") return zh_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "ja") return ja_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "ko") return ko_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "ru") return ru_theme_toggle_thememodelightclick3(inputs);
+	return en_theme_toggle_thememodelightclick3(inputs);
+});
+var _jsxFileName$5 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/ThemeToggle.tsx";
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -988,15 +1042,20 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? theme_toggle_thememodeautosystemclick4() : mode === "light" ? theme_toggle_thememodelightclick3() : theme_toggle_thememodedarkclick3();
-	return jsx("button", {
+	return jsxDEV("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? theme_toggle_themeauto1() : mode === "dark" ? theme_toggle_themedark1() : theme_toggle_themelight1()
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$5,
+		lineNumber: 76,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams().locale ?? "en";
 	const pathname = usePathname();
@@ -1013,18 +1072,30 @@ function LocaleSwitcher() {
 		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
 		router.push(newPath);
 	};
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "flex items-center gap-2",
-		children: jsx("select", {
+		children: jsxDEV("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((l) => jsx("option", {
+			children: locales.map((l) => jsxDEV("option", {
 				value: l,
 				children: getLocaleName(l)
-			}, l))
-		})
-	});
+			}, l, false, {
+				fileName: _jsxFileName$4,
+				lineNumber: 35,
+				columnNumber: 11
+			}, this))
+		}, void 0, false, {
+			fileName: _jsxFileName$4,
+			lineNumber: 29,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$4,
+		lineNumber: 28,
+		columnNumber: 5
+	}, this);
 }
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -1037,6 +1108,7 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/Header.tsx";
 function Header() {
 	usePerformanceMeasure("Header");
 	const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
@@ -1082,86 +1154,166 @@ function Header() {
 		const localized = localizeHref(href, locale);
 		return pathname.startsWith(localized) && (href !== "/" || pathname === localized);
 	};
-	return jsx("header", {
+	return jsxDEV("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxs("nav", {
+		children: jsxDEV("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [jsxs("div", {
+			children: [jsxDEV("div", {
 				className: "flex items-center gap-8",
-				children: [jsx(Link, {
+				children: [jsxDEV(Link, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}), jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 44,
+					columnNumber: 11
+				}, this), jsxDEV("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						jsx(Link, {
+						jsxDEV(Link, {
 							href: "/",
 							className: `nav-link${isExactActive("/") ? " is-active" : ""}`,
 							children: header_home()
-						}),
-						jsx(Link, {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 52,
+							columnNumber: 13
+						}, this),
+						jsxDEV(Link, {
 							href: "/about",
 							className: `nav-link${isActive("/about") ? " is-active" : ""}`,
 							children: header_methodology()
-						}),
-						jsxs("div", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 58,
+							columnNumber: 13
+						}, this),
+						jsxDEV("div", {
 							className: "relative",
-							children: [jsxs("button", {
+							children: [jsxDEV("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [header_mockpages1(), jsx(ChevronDown, {
+								children: [header_mockpages1(), jsxDEV(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
-								})]
-							}), isMockPagesOpen && jsx("div", {
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 75,
+									columnNumber: 17
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 67,
+								columnNumber: 15
+							}, this), isMockPagesOpen && jsxDEV("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: jsx("div", {
+								children: jsxDEV("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => jsx(Link, {
+									children: mockPages.map((page) => jsxDEV(Link, {
 										href: page.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
 										children: page.label
-									}, page.href))
-								})
-							})]
-						})
+									}, page.href, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 89,
+										columnNumber: 23
+									}, this))
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 87,
+									columnNumber: 19
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 82,
+								columnNumber: 17
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 66,
+							columnNumber: 13
+						}, this)
 					]
-				})]
-			}), jsxs("div", {
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 51,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 43,
+				columnNumber: 9
+			}, this), jsxDEV("div", {
 				className: "flex items-center gap-4",
 				children: [
-					jsxs("a", {
+					jsxDEV("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "sr-only",
 							children: header_gotogithub2()
-						}), jsx("svg", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 112,
+							columnNumber: 13
+						}, this), jsxDEV("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: jsx("path", {
+							children: jsxDEV("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							})
-						})]
-					}),
-					jsx(LocaleSwitcher, {}),
-					jsx(ThemeToggle, {})
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 114,
+								columnNumber: 15
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 113,
+							columnNumber: 13
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 106,
+						columnNumber: 11
+					}, this),
+					jsxDEV(LocaleSwitcher, {}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 120,
+						columnNumber: 11
+					}, this),
+					jsxDEV(ThemeToggle, {}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 121,
+						columnNumber: 11
+					}, this)
 				]
-			})]
-		})
-	});
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 105,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 42,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 41,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1185,6 +1337,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -1198,12 +1351,30 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/Header.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Header, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Header, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

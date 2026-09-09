@@ -8,7 +8,7 @@ var r = Object.create, i = Object.defineProperty, a = Object.getOwnPropertyDescr
 		enumerable: !(r = a(t, d)) || r.enumerable
 	});
 	return e;
-}, d = (e, t, n) => (n = e == null ? {} : r(s(e)), u(t || !e || !e.__esModule ? i(n, "default", {
+}, d = (e, t, n) => (n = e == null ? {} : r(s(e)), u(t || !e || !e.__esModule || !c.call(e, "default") ? i(n, "default", {
 	value: e,
 	enumerable: !0
 }) : n, e)), f = l(((e, t) => {
@@ -65,7 +65,7 @@ var r = Object.create, i = Object.defineProperty, a = Object.getOwnPropertyDescr
 		return n.isMergeableObject(e) && f(e).forEach(function(t) {
 			r[t] = c(e[t], n);
 		}), f(t).forEach(function(i) {
-			m(e, i) || (p(e, i) && n.isMergeableObject(t[i]) ? r[i] = u(i, n)(e[i], t[i], n) : r[i] = c(t[i], n));
+			m(e, i) || (r[i] = p(e, i) && n.isMergeableObject(t[i]) ? u(i, n)(e[i], t[i], n) : c(t[i], n));
 		}), r;
 	}
 	function g(e, t, r) {
@@ -1642,7 +1642,7 @@ function De(e, t) {
 			var o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = "a", l = Oe(t);
 			for ((l == "H" || l == "k") && (s = 0); s-- > 0;) n += c;
 			for (; o-- > 0;) n = l + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
@@ -1793,8 +1793,10 @@ var Ke = function() {
 					},
 					err: null
 				} : this.error(O.INVALID_TAG, N(o, this.clonePosition()))) : this.error(O.UNMATCHED_CLOSING_TAG, N(s, this.clonePosition()));
-			} else return this.error(O.UNCLOSED_TAG, N(n, this.clonePosition()));
-		} else return this.error(O.INVALID_TAG, N(n, this.clonePosition()));
+			}
+			return this.error(O.UNCLOSED_TAG, N(n, this.clonePosition()));
+		}
+		return this.error(O.INVALID_TAG, N(n, this.clonePosition()));
 	}, e.prototype.parseTagName = function() {
 		var e = this.offset();
 		for (this.bump(); !this.isEOF() && Ye(this.char());) this.bump();
@@ -1846,12 +1848,13 @@ var Ke = function() {
 		var t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			var n = this.char();
-			if (n === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(n);
+			if (n === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(n);
 			this.bump();
 		}
 		return F.apply(void 0, t);
@@ -1920,26 +1923,25 @@ var Ke = function() {
 							},
 							err: null
 						};
-					} else {
-						if (p.length === 0) return this.error(O.EXPECT_DATE_TIME_SKELETON, f);
-						var m = p;
-						this.locale && (m = De(p, this.locale));
-						var u = {
-							type: A.dateTime,
-							pattern: m,
-							location: s.styleLocation,
-							parsedOptions: this.shouldParseSkeletons ? me(m) : {}
-						};
-						return {
-							val: {
-								type: a === "date" ? k.date : k.time,
-								value: n,
-								location: f,
-								style: u
-							},
-							err: null
-						};
 					}
+					if (p.length === 0) return this.error(O.EXPECT_DATE_TIME_SKELETON, f);
+					var m = p;
+					this.locale && (m = De(p, this.locale));
+					var u = {
+						type: A.dateTime,
+						pattern: m,
+						location: s.styleLocation,
+						parsedOptions: this.shouldParseSkeletons ? me(m) : {}
+					};
+					return {
+						val: {
+							type: a === "date" ? k.date : k.time,
+							value: n,
+							location: f,
+							style: u
+						},
+						err: null
+					};
 				}
 				return {
 					val: {
@@ -2013,9 +2015,7 @@ var Ke = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -2504,7 +2504,7 @@ function St(e) {
 	}).filter(([, e]) => e.length > 0);
 }
 function Ct(e) {
-	return e == null ? !1 : K(e).some((e) => xt(e)?.size);
+	return e != null && K(e).some((e) => xt(e)?.size);
 }
 function wt(e, t) {
 	return Promise.all(t.map((t) => (bt(e, t), t().then((e) => e.default || e)))).then((t) => yt(e, ...t));
@@ -2603,7 +2603,7 @@ function Rt(e) {
 }
 function K(e, t = W().fallbackLocale) {
 	let n = Rt(e);
-	return t ? [...new Set([...n, ...Rt(t)])] : n;
+	return t ? [.../* @__PURE__ */ new Set([...n, ...Rt(t)])] : n;
 }
 function q() {
 	return Lt ?? void 0;
@@ -2702,37 +2702,27 @@ function an(t, n) {
 	e.init();
 	var d = rn(), f = e.child(d), p = e.child(f), m = e.child(p);
 	e.set_attribute(m, "for", o);
-	var h = e.child(m, !0);
-	e.reset(m);
-	var g = e.sibling(m, 2);
+	var h = e.only_child(m, !0), g = e.sibling(m, 2);
 	e.set_attribute(g, "id", o), e.reset(p);
 	var _ = e.sibling(p, 2), v = e.child(_);
 	e.set_attribute(v, "for", s);
-	var y = e.child(v, !0);
-	e.reset(v);
-	var b = e.sibling(v, 2);
+	var y = e.only_child(v, !0), b = e.sibling(v, 2);
 	e.set_attribute(b, "id", s), e.reset(_), e.reset(f);
 	var x = e.sibling(f, 2), S = e.child(x);
 	e.set_attribute(S, "for", c);
-	var ee = e.child(S, !0);
-	e.reset(S);
-	var C = e.sibling(S, 2);
+	var ee = e.only_child(S, !0), C = e.sibling(S, 2);
 	e.set_attribute(C, "id", c), e.each(C, 5, () => u, (e) => e, (t, n) => {
-		var i = nn(), a = e.child(i, !0);
-		e.reset(i);
-		var o = {};
+		var i = nn(), a = e.only_child(i, !0), o = {};
 		e.template_effect((t) => {
-			e.set_text(a, t), o !== (o = e.get(n)) && (i.value = (i.__value = e.get(n)) ?? "");
+			e.set_text(a, t), o !== (o = e.get(n)) && (i.value = (i.__value = o) ?? "");
 		}, [() => r()(`contact.form.${e.get(n)}`)]), e.append(t, i);
 	}), e.reset(C), e.reset(x);
 	var w = e.sibling(x, 2), T = e.child(w);
 	e.set_attribute(T, "for", l);
-	var te = e.child(T, !0);
-	e.reset(T);
-	var E = e.sibling(T, 2);
+	var te = e.only_child(T, !0), E = e.sibling(T, 2);
 	e.set_attribute(E, "id", l), e.set_attribute(E, "rows", 5), e.reset(w);
-	var D = e.sibling(w, 2), O = e.child(D, !0);
-	e.reset(D), e.reset(d), e.template_effect((t, n, r, i, a, o, s, c) => {
+	var D = e.sibling(w, 2), O = e.only_child(D, !0);
+	e.reset(d), e.template_effect((t, n, r, i, a, o, s, c) => {
 		e.set_text(h, t), e.set_attribute(g, "placeholder", n), e.set_text(y, r), e.set_attribute(b, "placeholder", i), e.set_text(ee, a), e.set_text(te, o), e.set_attribute(E, "placeholder", s), e.set_text(O, c);
 	}, [
 		() => r()("contact.form.name"),

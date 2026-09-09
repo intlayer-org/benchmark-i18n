@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var URLPattern = {};
 var locales = [
@@ -22,27 +22,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -65,7 +44,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -107,6 +86,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -128,6 +108,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -138,58 +123,70 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_why_it_matters_whythesemetricsmatter3 = () => {
-	return `Why These Metrics Matter`;
-};
-var fr_why_it_matters_whythesemetricsmatter3 = () => {
-	return `Pourquoi ces mesures sont importantes`;
-};
-var es_why_it_matters_whythesemetricsmatter3 = () => {
-	return `Por qué son importantes estas métricas`;
-};
-var de_why_it_matters_whythesemetricsmatter3 = () => {
-	return `Warum diese Metriken wichtig sind`;
-};
-var it_why_it_matters_whythesemetricsmatter3 = () => {
-	return `Perché queste metriche sono importanti`;
-};
-var pt_why_it_matters_whythesemetricsmatter3 = () => {
-	return `Por que essas métricas são importantes`;
-};
-var zh_why_it_matters_whythesemetricsmatter3 = () => {
-	return `为什么这些指标很重要`;
-};
-var ja_why_it_matters_whythesemetricsmatter3 = () => {
-	return `これらの指標が重要な理由`;
-};
-var ko_why_it_matters_whythesemetricsmatter3 = () => {
-	return `이 지표가 중요한 이유`;
-};
-var ru_why_it_matters_whythesemetricsmatter3 = () => {
-	return `Почему эти показатели важны`;
-};
-var why_it_matters_whythesemetricsmatter3 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_why_it_matters_whythesemetricsmatter3(inputs);
-	if (locale === "fr") return fr_why_it_matters_whythesemetricsmatter3(inputs);
-	if (locale === "es") return es_why_it_matters_whythesemetricsmatter3(inputs);
-	if (locale === "de") return de_why_it_matters_whythesemetricsmatter3(inputs);
-	if (locale === "it") return it_why_it_matters_whythesemetricsmatter3(inputs);
-	if (locale === "pt") return pt_why_it_matters_whythesemetricsmatter3(inputs);
-	if (locale === "zh") return zh_why_it_matters_whythesemetricsmatter3(inputs);
-	if (locale === "ja") return ja_why_it_matters_whythesemetricsmatter3(inputs);
-	if (locale === "ko") return ko_why_it_matters_whythesemetricsmatter3(inputs);
-	return ru_why_it_matters_whythesemetricsmatter3(inputs);
-});
 var en_why_it_matters_bundlesize1 = () => {
 	return `Bundle Size`;
 };
@@ -222,7 +219,6 @@ var ru_why_it_matters_bundlesize1 = () => {
 };
 var why_it_matters_bundlesize1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_why_it_matters_bundlesize1(inputs);
 	if (locale === "fr") return fr_why_it_matters_bundlesize1(inputs);
 	if (locale === "es") return es_why_it_matters_bundlesize1(inputs);
 	if (locale === "de") return de_why_it_matters_bundlesize1(inputs);
@@ -231,93 +227,8 @@ var why_it_matters_bundlesize1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_why_it_matters_bundlesize1(inputs);
 	if (locale === "ja") return ja_why_it_matters_bundlesize1(inputs);
 	if (locale === "ko") return ko_why_it_matters_bundlesize1(inputs);
-	return ru_why_it_matters_bundlesize1(inputs);
-});
-var en_why_it_matters_thebundleisthedata4 = () => {
-	return `The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.`;
-};
-var fr_why_it_matters_thebundleisthedata4 = () => {
-	return `Le bundle représente les données envoyées à chaque utilisateur dans le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.`;
-};
-var es_why_it_matters_thebundleisthedata4 = () => {
-	return `El bundle representa los datos enviados a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código runtime, además de los propios archivos de traducción.`;
-};
-var de_why_it_matters_thebundleisthedata4 = () => {
-	return `Das Bundle sind die Daten, die an jeden Benutzer weltweit gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren drastisch in ihrem Gewicht: von einigen Kilobytes bis zu zig Kilobytes an Laufzeitcode, plus die Übersetzungsdateien selbst.`;
-};
-var it_why_it_matters_thebundleisthedata4 = () => {
-	return `Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.`;
-};
-var pt_why_it_matters_thebundleisthedata4 = () => {
-	return `O bundle representa os dados enviados a cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução.`;
-};
-var zh_why_it_matters_thebundleisthedata4 = () => {
-	return `包是发送给全球每个用户的数据。更大的包意味着更长的下载时间——特别是在许多地区常见的慢速 3G 连接上。i18n 库的权重差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。`;
-};
-var ja_why_it_matters_thebundleisthedata4 = () => {
-	return `バンドルは、世界中のすべてのユーザーに送られるデータです。バンドルが大きいほどダウンロード時間が長くなります。特に多くの地域で一般的な低速な3G接続では顕著です。i18nライブラリはその重量が劇的に異なります。ランタイムコードだけで数キロバイトから数十キロバイト、さらに翻訳ファイル自体が加わります。`;
-};
-var ko_why_it_matters_thebundleisthedata4 = () => {
-	return `번들은 전 세계 모든 사용자에게 전송되는 데이터를 나타냅니다. 번들이 클수록 다운로드 시간이 길어집니다. 특히 많은 지역에서 흔히 발생하는 느린 3G 연결에서 더욱 그렇습니다. i18n 라이브러리는 런타임 코드만으로도 수 킬로바이트에서 수십 킬로바이트까지 무게가 크게 다르며, 여기에 번역 파일 자체가 추가됩니다.`;
-};
-var ru_why_it_matters_thebundleisthedata4 = () => {
-	return `Бандл — это данные, которые отправляются каждому пользователю по всему миру. Большой размер бандла означает более долгое время загрузки, особенно при медленном 3G-соединении, характерном для многих регионов. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт рантайм-кода, плюс сами файлы переводов.`;
-};
-var why_it_matters_thebundleisthedata4 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_why_it_matters_thebundleisthedata4(inputs);
-	if (locale === "fr") return fr_why_it_matters_thebundleisthedata4(inputs);
-	if (locale === "es") return es_why_it_matters_thebundleisthedata4(inputs);
-	if (locale === "de") return de_why_it_matters_thebundleisthedata4(inputs);
-	if (locale === "it") return it_why_it_matters_thebundleisthedata4(inputs);
-	if (locale === "pt") return pt_why_it_matters_thebundleisthedata4(inputs);
-	if (locale === "zh") return zh_why_it_matters_thebundleisthedata4(inputs);
-	if (locale === "ja") return ja_why_it_matters_thebundleisthedata4(inputs);
-	if (locale === "ko") return ko_why_it_matters_thebundleisthedata4(inputs);
-	return ru_why_it_matters_thebundleisthedata4(inputs);
-});
-var en_why_it_matters_renderinghydration1 = () => {
-	return `Rendering & Hydration`;
-};
-var fr_why_it_matters_renderinghydration1 = () => {
-	return `Rendu & Hydratation`;
-};
-var es_why_it_matters_renderinghydration1 = () => {
-	return `Renderizado e hidratación`;
-};
-var de_why_it_matters_renderinghydration1 = () => {
-	return `Rendering & Hydratisierung`;
-};
-var it_why_it_matters_renderinghydration1 = () => {
-	return `Rendering e idratazione`;
-};
-var pt_why_it_matters_renderinghydration1 = () => {
-	return `Renderização e Hidratação`;
-};
-var zh_why_it_matters_renderinghydration1 = () => {
-	return `渲染与注水`;
-};
-var ja_why_it_matters_renderinghydration1 = () => {
-	return `レンダリングとハイドレーション`;
-};
-var ko_why_it_matters_renderinghydration1 = () => {
-	return `렌더링 및 수화(Hydration)`;
-};
-var ru_why_it_matters_renderinghydration1 = () => {
-	return `Рендеринг и гидратация`;
-};
-var why_it_matters_renderinghydration1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_why_it_matters_renderinghydration1(inputs);
-	if (locale === "fr") return fr_why_it_matters_renderinghydration1(inputs);
-	if (locale === "es") return es_why_it_matters_renderinghydration1(inputs);
-	if (locale === "de") return de_why_it_matters_renderinghydration1(inputs);
-	if (locale === "it") return it_why_it_matters_renderinghydration1(inputs);
-	if (locale === "pt") return pt_why_it_matters_renderinghydration1(inputs);
-	if (locale === "zh") return zh_why_it_matters_renderinghydration1(inputs);
-	if (locale === "ja") return ja_why_it_matters_renderinghydration1(inputs);
-	if (locale === "ko") return ko_why_it_matters_renderinghydration1(inputs);
-	return ru_why_it_matters_renderinghydration1(inputs);
+	if (locale === "ru") return ru_why_it_matters_bundlesize1(inputs);
+	return en_why_it_matters_bundlesize1(inputs);
 });
 var en_why_it_matters_connectingalargejsondictionary4 = () => {
 	return `Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).`;
@@ -351,7 +262,6 @@ var ru_why_it_matters_connectingalargejsondictionary4 = () => {
 };
 var why_it_matters_connectingalargejsondictionary4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_why_it_matters_connectingalargejsondictionary4(inputs);
 	if (locale === "fr") return fr_why_it_matters_connectingalargejsondictionary4(inputs);
 	if (locale === "es") return es_why_it_matters_connectingalargejsondictionary4(inputs);
 	if (locale === "de") return de_why_it_matters_connectingalargejsondictionary4(inputs);
@@ -360,7 +270,8 @@ var why_it_matters_connectingalargejsondictionary4 = ((inputs = {}, options = {}
 	if (locale === "zh") return zh_why_it_matters_connectingalargejsondictionary4(inputs);
 	if (locale === "ja") return ja_why_it_matters_connectingalargejsondictionary4(inputs);
 	if (locale === "ko") return ko_why_it_matters_connectingalargejsondictionary4(inputs);
-	return ru_why_it_matters_connectingalargejsondictionary4(inputs);
+	if (locale === "ru") return ru_why_it_matters_connectingalargejsondictionary4(inputs);
+	return en_why_it_matters_connectingalargejsondictionary4(inputs);
 });
 var en_why_it_matters_dynamicloading1 = () => {
 	return `Dynamic Loading`;
@@ -394,7 +305,6 @@ var ru_why_it_matters_dynamicloading1 = () => {
 };
 var why_it_matters_dynamicloading1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_why_it_matters_dynamicloading1(inputs);
 	if (locale === "fr") return fr_why_it_matters_dynamicloading1(inputs);
 	if (locale === "es") return es_why_it_matters_dynamicloading1(inputs);
 	if (locale === "de") return de_why_it_matters_dynamicloading1(inputs);
@@ -403,7 +313,8 @@ var why_it_matters_dynamicloading1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_why_it_matters_dynamicloading1(inputs);
 	if (locale === "ja") return ja_why_it_matters_dynamicloading1(inputs);
 	if (locale === "ko") return ko_why_it_matters_dynamicloading1(inputs);
-	return ru_why_it_matters_dynamicloading1(inputs);
+	if (locale === "ru") return ru_why_it_matters_dynamicloading1(inputs);
+	return en_why_it_matters_dynamicloading1(inputs);
 });
 var en_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
 	return `Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.`;
@@ -437,7 +348,6 @@ var ru_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
 };
 var why_it_matters_loadingalltranslationsupfrontoverloads4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
 	if (locale === "fr") return fr_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
 	if (locale === "es") return es_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
 	if (locale === "de") return de_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
@@ -446,50 +356,229 @@ var why_it_matters_loadingalltranslationsupfrontoverloads4 = ((inputs = {}, opti
 	if (locale === "zh") return zh_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
 	if (locale === "ja") return ja_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
 	if (locale === "ko") return ko_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
-	return ru_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	if (locale === "ru") return ru_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	return en_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
 });
+var en_why_it_matters_renderinghydration1 = () => {
+	return `Rendering & Hydration`;
+};
+var fr_why_it_matters_renderinghydration1 = () => {
+	return `Rendu & Hydratation`;
+};
+var es_why_it_matters_renderinghydration1 = () => {
+	return `Renderizado e hidratación`;
+};
+var de_why_it_matters_renderinghydration1 = () => {
+	return `Rendering & Hydratisierung`;
+};
+var it_why_it_matters_renderinghydration1 = () => {
+	return `Rendering e idratazione`;
+};
+var pt_why_it_matters_renderinghydration1 = () => {
+	return `Renderização e Hidratação`;
+};
+var zh_why_it_matters_renderinghydration1 = () => {
+	return `渲染与注水`;
+};
+var ja_why_it_matters_renderinghydration1 = () => {
+	return `レンダリングとハイドレーション`;
+};
+var ko_why_it_matters_renderinghydration1 = () => {
+	return `렌더링 및 수화(Hydration)`;
+};
+var ru_why_it_matters_renderinghydration1 = () => {
+	return `Рендеринг и гидратация`;
+};
+var why_it_matters_renderinghydration1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_why_it_matters_renderinghydration1(inputs);
+	if (locale === "es") return es_why_it_matters_renderinghydration1(inputs);
+	if (locale === "de") return de_why_it_matters_renderinghydration1(inputs);
+	if (locale === "it") return it_why_it_matters_renderinghydration1(inputs);
+	if (locale === "pt") return pt_why_it_matters_renderinghydration1(inputs);
+	if (locale === "zh") return zh_why_it_matters_renderinghydration1(inputs);
+	if (locale === "ja") return ja_why_it_matters_renderinghydration1(inputs);
+	if (locale === "ko") return ko_why_it_matters_renderinghydration1(inputs);
+	if (locale === "ru") return ru_why_it_matters_renderinghydration1(inputs);
+	return en_why_it_matters_renderinghydration1(inputs);
+});
+var en_why_it_matters_thebundleisthedata4 = () => {
+	return `The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.`;
+};
+var fr_why_it_matters_thebundleisthedata4 = () => {
+	return `Le bundle représente les données envoyées à chaque utilisateur dans le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.`;
+};
+var es_why_it_matters_thebundleisthedata4 = () => {
+	return `El bundle representa los datos enviados a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código runtime, además de los propios archivos de traducción.`;
+};
+var de_why_it_matters_thebundleisthedata4 = () => {
+	return `Das Bundle sind die Daten, die an jeden Benutzer weltweit gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren drastisch in ihrem Gewicht: von einigen Kilobytes bis zu zig Kilobytes an Laufzeitcode, plus die Übersetzungsdateien selbst.`;
+};
+var it_why_it_matters_thebundleisthedata4 = () => {
+	return `Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.`;
+};
+var pt_why_it_matters_thebundleisthedata4 = () => {
+	return `O bundle representa os dados enviados a cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução.`;
+};
+var zh_why_it_matters_thebundleisthedata4 = () => {
+	return `包是发送给全球每个用户的数据。更大的包意味着更长的下载时间——特别是在许多地区常见的慢速 3G 连接上。i18n 库的权重差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。`;
+};
+var ja_why_it_matters_thebundleisthedata4 = () => {
+	return `バンドルは、世界中のすべてのユーザーに送られるデータです。バンドルが大きいほどダウンロード時間が長くなります。特に多くの地域で一般的な低速な3G接続では顕著です。i18nライブラリはその重量が劇的に異なります。ランタイムコードだけで数キロバイトから数十キロバイト、さらに翻訳ファイル自体が加わります。`;
+};
+var ko_why_it_matters_thebundleisthedata4 = () => {
+	return `번들은 전 세계 모든 사용자에게 전송되는 데이터를 나타냅니다. 번들이 클수록 다운로드 시간이 길어집니다. 특히 많은 지역에서 흔히 발생하는 느린 3G 연결에서 더욱 그렇습니다. i18n 라이브러리는 런타임 코드만으로도 수 킬로바이트에서 수십 킬로바이트까지 무게가 크게 다르며, 여기에 번역 파일 자체가 추가됩니다.`;
+};
+var ru_why_it_matters_thebundleisthedata4 = () => {
+	return `Бандл — это данные, которые отправляются каждому пользователю по всему миру. Большой размер бандла означает более долгое время загрузки, особенно при медленном 3G-соединении, характерном для многих регионов. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт рантайм-кода, плюс сами файлы переводов.`;
+};
+var why_it_matters_thebundleisthedata4 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "es") return es_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "de") return de_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "it") return it_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "pt") return pt_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "zh") return zh_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "ja") return ja_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "ko") return ko_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "ru") return ru_why_it_matters_thebundleisthedata4(inputs);
+	return en_why_it_matters_thebundleisthedata4(inputs);
+});
+var en_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Why These Metrics Matter`;
+};
+var fr_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Pourquoi ces mesures sont importantes`;
+};
+var es_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Por qué son importantes estas métricas`;
+};
+var de_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Warum diese Metriken wichtig sind`;
+};
+var it_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Perché queste metriche sono importanti`;
+};
+var pt_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Por que essas métricas são importantes`;
+};
+var zh_why_it_matters_whythesemetricsmatter3 = () => {
+	return `为什么这些指标很重要`;
+};
+var ja_why_it_matters_whythesemetricsmatter3 = () => {
+	return `これらの指標が重要な理由`;
+};
+var ko_why_it_matters_whythesemetricsmatter3 = () => {
+	return `이 지표가 중요한 이유`;
+};
+var ru_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Почему эти показатели важны`;
+};
+var why_it_matters_whythesemetricsmatter3 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "es") return es_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "de") return de_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "it") return it_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "pt") return pt_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "zh") return zh_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "ja") return ja_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "ko") return ko_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "ru") return ru_why_it_matters_whythesemetricsmatter3(inputs);
+	return en_why_it_matters_whythesemetricsmatter3(inputs);
+});
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/home/WhyItMatters.tsx";
 function WhyItMatters() {
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mb-16",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-6 text-2xl font-bold text-foreground",
 			children: why_it_matters_whythesemetricsmatter3()
-		}), jsxs("div", {
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 8,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "grid gap-6 md:grid-cols-3",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsx("h3", {
+					children: [jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: why_it_matters_bundlesize1()
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 13,
+						columnNumber: 11
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: why_it_matters_thebundleisthedata4()
-					})]
-				}),
-				jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 16,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 12,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsx("h3", {
+					children: [jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: why_it_matters_renderinghydration1()
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 21,
+						columnNumber: 11
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: why_it_matters_connectingalargejsondictionary4()
-					})]
-				}),
-				jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 24,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 20,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsx("h3", {
+					children: [jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: why_it_matters_dynamicloading1()
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 29,
+						columnNumber: 11
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: why_it_matters_loadingalltranslationsupfrontoverloads4()
-					})]
-				})
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 32,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 28,
+					columnNumber: 9
+				}, this)
 			]
-		})]
-	});
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 11,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 7,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -513,6 +602,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -526,12 +616,30 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/home/WhyItMatters.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(WhyItMatters, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(WhyItMatters, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

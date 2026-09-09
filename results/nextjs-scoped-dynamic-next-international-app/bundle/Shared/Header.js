@@ -1,13 +1,14 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import NextLink from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { ChevronDown } from "lucide-react";
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 });
+var _jsxFileName$6 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/Link.tsx";
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
 function localizeHref(href, locale) {
 	if (!href.startsWith("/")) return href;
@@ -16,24 +17,36 @@ function localizeHref(href, locale) {
 }
 var Link = ({ href, children, ...props }) => {
 	const locale = useParams().locale ?? "en";
-	if (href == null || typeof href !== "string") return jsx(NextLink, {
+	if (href == null || typeof href !== "string") return jsxDEV(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	});
-	if (checkIsExternalLink(href)) return jsx(NextLink, {
+	}, void 0, false, {
+		fileName: _jsxFileName$6,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0);
+	if (checkIsExternalLink(href)) return jsxDEV(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	});
-	return jsx(NextLink, {
+	}, void 0, false, {
+		fileName: _jsxFileName$6,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0);
+	return jsxDEV(NextLink, {
 		href: localizeHref(href, locale),
 		prefetch: false,
 		...props,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$6,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
 };
 var require_client_only = __commonJSMin((() => {}));
 var client = (0, __commonJSMin(((exports, module) => {
@@ -139,8 +152,10 @@ var client = (0, __commonJSMin(((exports, module) => {
 				}
 			}
 			let value = scope ? content[`${scope}.${key}`] : content[key];
-			if (!value && isPlural) value = (_a = content[`${key.split("#", 1)[0]}#other`] || key) == null ? void 0 : _a.toString();
-			else value = (_b = value || key) == null ? void 0 : _b.toString();
+			if (!value && isPlural) {
+				const baseKey = key.split("#", 1)[0];
+				value = (_a = content[`${baseKey}#other`] || key) == null ? void 0 : _a.toString();
+			} else value = (_b = value || key) == null ? void 0 : _b.toString();
 			if (!paramObject) return value;
 			let isString = true;
 			const result = value == null ? void 0 : value.split(/({[^}]*})/).map((part, index) => {
@@ -236,20 +251,22 @@ var client = (0, __commonJSMin(((exports, module) => {
 			useCurrentLocale
 		};
 	}
+	0 && (module.exports = { createI18nClient });
 }))().createI18nClient)({
-	en: () => import("./en-DB_fVkJf.js"),
-	fr: () => import("./fr-CeO9IC-S.js"),
-	es: () => import("./es-BNIdMlow.js"),
-	de: () => import("./de-Ci3pe7bU.js"),
-	it: () => import("./it-Dx4nlmMD.js"),
-	pt: () => import("./pt-CkNgdlxv.js"),
-	zh: () => import("./zh-CeIIP0dB.js"),
-	ja: () => import("./ja-DGargEZ1.js"),
-	ko: () => import("./ko-Cl0JOFpY.js"),
-	ru: () => import("./ru-CD_wnONy.js")
+	en: () => import("./en-NOnPcLne.js"),
+	fr: () => import("./fr-Bq6Vg87A.js"),
+	es: () => import("./es-DWfMqWMv.js"),
+	de: () => import("./de-CPZ8XliA.js"),
+	it: () => import("./it-fhyjUQSR.js"),
+	pt: () => import("./pt-DQHErvYe.js"),
+	zh: () => import("./zh-C9Vs1ypo.js"),
+	ja: () => import("./ja-Ccz1w8YZ.js"),
+	ko: () => import("./ko-CQGGNPkI.js"),
+	ru: () => import("./ru-Cp_Zq82O.js")
 });
 var useScopedI18n = client.useScopedI18n;
 var { I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+var _jsxFileName$5 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/ThemeToggle.tsx";
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -289,14 +306,18 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? scopedT("themeModeAutoSystemClick") : mode === "light" ? scopedT("themeModeLightClick") : scopedT("themeModeDarkClick");
-	return jsx("button", {
+	return jsxDEV("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? scopedT("themeAuto") : mode === "dark" ? scopedT("themeDark") : scopedT("themeLight")
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$5,
+		lineNumber: 77,
+		columnNumber: 5
+	}, this);
 }
 var locales = [
 	"en",
@@ -318,6 +339,7 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
+var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams().locale ?? "en";
 	const pathname = usePathname();
@@ -326,18 +348,30 @@ function LocaleSwitcher() {
 		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
 		router.push(newPath);
 	};
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "flex items-center gap-2",
-		children: jsx("select", {
+		children: jsxDEV("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeItem) => jsx("option", {
+			children: locales.map((localeItem) => jsxDEV("option", {
 				value: localeItem,
 				children: getLocaleName(localeItem)
-			}, localeItem))
-		})
-	});
+			}, localeItem, false, {
+				fileName: _jsxFileName$4,
+				lineNumber: 25,
+				columnNumber: 11
+			}, this))
+		}, void 0, false, {
+			fileName: _jsxFileName$4,
+			lineNumber: 19,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$4,
+		lineNumber: 18,
+		columnNumber: 5
+	}, this);
 }
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -350,6 +384,7 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/Header.tsx";
 function Header() {
 	const scopedT = useScopedI18n("header");
 	const scopedFooterT = useScopedI18n("footer");
@@ -397,86 +432,166 @@ function Header() {
 		const localized = localizeHref(href, locale);
 		return pathname.startsWith(localized) && (href !== "/" || pathname === localized);
 	};
-	return jsx("header", {
+	return jsxDEV("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxs("nav", {
+		children: jsxDEV("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [jsxs("div", {
+			children: [jsxDEV("div", {
 				className: "flex items-center gap-8",
-				children: [jsx(Link, {
+				children: [jsxDEV(Link, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}), jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 46,
+					columnNumber: 11
+				}, this), jsxDEV("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						jsx(Link, {
+						jsxDEV(Link, {
 							href: "/",
 							className: `nav-link${isExactActive("/") ? " is-active" : ""}`,
 							children: scopedT("home")
-						}),
-						jsx(Link, {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 54,
+							columnNumber: 13
+						}, this),
+						jsxDEV(Link, {
 							href: "/about",
 							className: `nav-link${isActive("/about") ? " is-active" : ""}`,
 							children: scopedFooterT("methodology")
-						}),
-						jsxs("div", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 60,
+							columnNumber: 13
+						}, this),
+						jsxDEV("div", {
 							className: "relative",
-							children: [jsxs("button", {
+							children: [jsxDEV("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [scopedT("mockPages"), jsx(ChevronDown, {
+								children: [scopedT("mockPages"), jsxDEV(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
-								})]
-							}), isMockPagesOpen && jsx("div", {
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 77,
+									columnNumber: 17
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 69,
+								columnNumber: 15
+							}, this), isMockPagesOpen && jsxDEV("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: jsx("div", {
+								children: jsxDEV("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => jsx(Link, {
+									children: mockPages.map((page) => jsxDEV(Link, {
 										href: page.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
 										children: page.label
-									}, page.href))
-								})
-							})]
-						})
+									}, page.href, false, {
+										fileName: _jsxFileName$3,
+										lineNumber: 91,
+										columnNumber: 23
+									}, this))
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 89,
+									columnNumber: 19
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 84,
+								columnNumber: 17
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$3,
+							lineNumber: 68,
+							columnNumber: 13
+						}, this)
 					]
-				})]
-			}), jsxs("div", {
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 53,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 45,
+				columnNumber: 9
+			}, this), jsxDEV("div", {
 				className: "flex items-center gap-4",
 				children: [
-					jsxs("a", {
+					jsxDEV("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "sr-only",
 							children: scopedT("goToGithub")
-						}), jsx("svg", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 114,
+							columnNumber: 13
+						}, this), jsxDEV("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: jsx("path", {
+							children: jsxDEV("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							})
-						})]
-					}),
-					jsx(LocaleSwitcher, {}),
-					jsx(ThemeToggle, {})
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 116,
+								columnNumber: 15
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 115,
+							columnNumber: 13
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 108,
+						columnNumber: 11
+					}, this),
+					jsxDEV(LocaleSwitcher, {}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 122,
+						columnNumber: 11
+					}, this),
+					jsxDEV(ThemeToggle, {}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 123,
+						columnNumber: 11
+					}, this)
 				]
-			})]
-		})
-	});
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 107,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 44,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 43,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -500,6 +615,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -511,23 +627,41 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/Header.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Header, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Header, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import deAbout from "../messages/de/about.json";
 import deBlog from "../messages/de/blog.json";
 import deCareers from "../messages/de/careers.json";
@@ -555,7 +689,7 @@ var de_default = mergeAll([
 	nestify(deTeam)
 ]);
 export { de_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 var en_default = mergeAll([
 	nestify({
 		"about-grid.whyThisExists": "Why This Exists",
@@ -831,7 +965,7 @@ var en_default = mergeAll([
 	})
 ]);
 export { en_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import esAbout from "../messages/es/about.json";
 import esBlog from "../messages/es/blog.json";
 import esCareers from "../messages/es/careers.json";
@@ -859,7 +993,7 @@ var es_default = mergeAll([
 	nestify(esTeam)
 ]);
 export { es_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import frAbout from "../messages/fr/about.json";
 import frBlog from "../messages/fr/blog.json";
 import frCareers from "../messages/fr/careers.json";
@@ -887,7 +1021,7 @@ var fr_default = mergeAll([
 	nestify(frTeam)
 ]);
 export { fr_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import itAbout from "../messages/it/about.json";
 import itBlog from "../messages/it/blog.json";
 import itCareers from "../messages/it/careers.json";
@@ -915,7 +1049,7 @@ var it_default = mergeAll([
 	nestify(itTeam)
 ]);
 export { it_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import jaAbout from "../messages/ja/about.json";
 import jaBlog from "../messages/ja/blog.json";
 import jaCareers from "../messages/ja/careers.json";
@@ -943,7 +1077,7 @@ var ja_default = mergeAll([
 	nestify(jaTeam)
 ]);
 export { ja_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import koAbout from "../messages/ko/about.json";
 import koBlog from "../messages/ko/blog.json";
 import koCareers from "../messages/ko/careers.json";
@@ -971,7 +1105,7 @@ var ko_default = mergeAll([
 	nestify(koTeam)
 ]);
 export { ko_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import ptAbout from "../messages/pt/about.json";
 import ptBlog from "../messages/pt/blog.json";
 import ptCareers from "../messages/pt/careers.json";
@@ -999,7 +1133,7 @@ var pt_default = mergeAll([
 	nestify(ptTeam)
 ]);
 export { pt_default as default };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import ruAbout from "../messages/ru/about.json";
 import ruBlog from "../messages/ru/blog.json";
 import ruCareers from "../messages/ru/careers.json";
@@ -1055,7 +1189,7 @@ function mergeAll(parts) {
 	return parts.reduce((acc, p) => deepMerge(acc, p), {});
 }
 export { nestify as n, mergeAll as t };
-import { n as nestify, t as mergeAll } from "./scopedMessages-DnoIy3TQ.js";
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
 import zhAbout from "../messages/zh/about.json";
 import zhBlog from "../messages/zh/blog.json";
 import zhCareers from "../messages/zh/careers.json";

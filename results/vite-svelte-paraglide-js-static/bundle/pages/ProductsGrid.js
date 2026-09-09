@@ -22,27 +22,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -65,7 +44,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -107,6 +86,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -128,6 +108,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -138,57 +123,112 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales$1.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_products_grid_learnmore1 = () => {
-	return `Learn More`;
+var en_products_grid_clidesc1 = () => {
+	return `Run benchmarks locally from your terminal. Supports custom configurations and CI integration.`;
 };
-var fr_products_grid_learnmore1 = () => {
-	return `En savoir plus`;
+var fr_products_grid_clidesc1 = () => {
+	return `Lancez des benchmarks en local. Configurations personnalisées et CI.`;
 };
-var es_products_grid_learnmore1 = () => {
-	return `Más información`;
+var es_products_grid_clidesc1 = () => {
+	return `Ejecuta benchmarks localmente desde tu terminal. Soporta configuraciones personalizadas e integración CI.`;
 };
-var de_products_grid_learnmore1 = () => {
-	return `Mehr erfahren`;
+var de_products_grid_clidesc1 = () => {
+	return `Führen Sie Benchmarks lokal von Ihrem Terminal aus. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.`;
 };
-var it_products_grid_learnmore1 = () => {
-	return `Scopri di più`;
+var it_products_grid_clidesc1 = () => {
+	return `Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.`;
 };
-var pt_products_grid_learnmore1 = () => {
-	return `Saiba Mais`;
+var pt_products_grid_clidesc1 = () => {
+	return `Execute benchmarks localmente pelo terminal. Suporta configurações personalizadas e integração CI.`;
 };
-var zh_products_grid_learnmore1 = () => {
-	return `了解更多`;
+var zh_products_grid_clidesc1 = () => {
+	return `从您的终端本地运行基准测试。支持自定义配置和 CI 集成。`;
 };
-var ja_products_grid_learnmore1 = () => {
-	return `詳細はこちら`;
+var ja_products_grid_clidesc1 = () => {
+	return `ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートしています。`;
 };
-var ko_products_grid_learnmore1 = () => {
-	return `Learn More`;
+var ko_products_grid_clidesc1 = () => {
+	return `Run benchmarks locally from your terminal. Supports custom configurations and CI integration.`;
 };
-var ru_products_grid_learnmore1 = () => {
-	return `Узнать больше`;
+var ru_products_grid_clidesc1 = () => {
+	return `Запускайте бенчмарки локально из терминала. Поддерживает пользовательские конфигурации и интеграцию с CI.`;
 };
-var products_grid_learnmore1 = ((inputs = {}, options = {}) => {
+var products_grid_clidesc1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_learnmore1(inputs);
-	if (locale === "fr") return fr_products_grid_learnmore1(inputs);
-	if (locale === "es") return es_products_grid_learnmore1(inputs);
-	if (locale === "de") return de_products_grid_learnmore1(inputs);
-	if (locale === "it") return it_products_grid_learnmore1(inputs);
-	if (locale === "pt") return pt_products_grid_learnmore1(inputs);
-	if (locale === "zh") return zh_products_grid_learnmore1(inputs);
-	if (locale === "ja") return ja_products_grid_learnmore1(inputs);
-	if (locale === "ko") return ko_products_grid_learnmore1(inputs);
-	return ru_products_grid_learnmore1(inputs);
+	if (locale === "fr") return fr_products_grid_clidesc1(inputs);
+	if (locale === "es") return es_products_grid_clidesc1(inputs);
+	if (locale === "de") return de_products_grid_clidesc1(inputs);
+	if (locale === "it") return it_products_grid_clidesc1(inputs);
+	if (locale === "pt") return pt_products_grid_clidesc1(inputs);
+	if (locale === "zh") return zh_products_grid_clidesc1(inputs);
+	if (locale === "ja") return ja_products_grid_clidesc1(inputs);
+	if (locale === "ko") return ko_products_grid_clidesc1(inputs);
+	if (locale === "ru") return ru_products_grid_clidesc1(inputs);
+	return en_products_grid_clidesc1(inputs);
 });
 var en_products_grid_cliname1 = () => {
 	return `Benchmark CLI`;
@@ -222,7 +262,6 @@ var ru_products_grid_cliname1 = () => {
 };
 var products_grid_cliname1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_cliname1(inputs);
 	if (locale === "fr") return fr_products_grid_cliname1(inputs);
 	if (locale === "es") return es_products_grid_cliname1(inputs);
 	if (locale === "de") return de_products_grid_cliname1(inputs);
@@ -231,50 +270,8 @@ var products_grid_cliname1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_cliname1(inputs);
 	if (locale === "ja") return ja_products_grid_cliname1(inputs);
 	if (locale === "ko") return ko_products_grid_cliname1(inputs);
-	return ru_products_grid_cliname1(inputs);
-});
-var en_products_grid_clidesc1 = () => {
-	return `Run benchmarks locally from your terminal. Supports custom configurations and CI integration.`;
-};
-var fr_products_grid_clidesc1 = () => {
-	return `Lancez des benchmarks en local. Configurations personnalisées et CI.`;
-};
-var es_products_grid_clidesc1 = () => {
-	return `Ejecuta benchmarks localmente desde tu terminal. Soporta configuraciones personalizadas e integración CI.`;
-};
-var de_products_grid_clidesc1 = () => {
-	return `Führen Sie Benchmarks lokal von Ihrem Terminal aus. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.`;
-};
-var it_products_grid_clidesc1 = () => {
-	return `Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.`;
-};
-var pt_products_grid_clidesc1 = () => {
-	return `Execute benchmarks localmente pelo terminal. Suporta configurações personalizadas e integração CI.`;
-};
-var zh_products_grid_clidesc1 = () => {
-	return `从您的终端本地运行基准测试。支持自定义配置和 CI 集成。`;
-};
-var ja_products_grid_clidesc1 = () => {
-	return `ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートしています。`;
-};
-var ko_products_grid_clidesc1 = () => {
-	return `Run benchmarks locally from your terminal. Supports custom configurations and CI integration.`;
-};
-var ru_products_grid_clidesc1 = () => {
-	return `Запускайте бенчмарки локально из терминала. Поддерживает пользовательские конфигурации и интеграцию с CI.`;
-};
-var products_grid_clidesc1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_clidesc1(inputs);
-	if (locale === "fr") return fr_products_grid_clidesc1(inputs);
-	if (locale === "es") return es_products_grid_clidesc1(inputs);
-	if (locale === "de") return de_products_grid_clidesc1(inputs);
-	if (locale === "it") return it_products_grid_clidesc1(inputs);
-	if (locale === "pt") return pt_products_grid_clidesc1(inputs);
-	if (locale === "zh") return zh_products_grid_clidesc1(inputs);
-	if (locale === "ja") return ja_products_grid_clidesc1(inputs);
-	if (locale === "ko") return ko_products_grid_clidesc1(inputs);
-	return ru_products_grid_clidesc1(inputs);
+	if (locale === "ru") return ru_products_grid_cliname1(inputs);
+	return en_products_grid_cliname1(inputs);
 });
 var en_products_grid_cliprice1 = () => {
 	return `Free`;
@@ -308,7 +305,6 @@ var ru_products_grid_cliprice1 = () => {
 };
 var products_grid_cliprice1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_cliprice1(inputs);
 	if (locale === "fr") return fr_products_grid_cliprice1(inputs);
 	if (locale === "es") return es_products_grid_cliprice1(inputs);
 	if (locale === "de") return de_products_grid_cliprice1(inputs);
@@ -317,50 +313,8 @@ var products_grid_cliprice1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_cliprice1(inputs);
 	if (locale === "ja") return ja_products_grid_cliprice1(inputs);
 	if (locale === "ko") return ko_products_grid_cliprice1(inputs);
-	return ru_products_grid_cliprice1(inputs);
-});
-var en_products_grid_cloudname1 = () => {
-	return `Benchmark Cloud`;
-};
-var fr_products_grid_cloudname1 = () => {
-	return `Benchmark Cloud`;
-};
-var es_products_grid_cloudname1 = () => {
-	return `Benchmark Cloud`;
-};
-var de_products_grid_cloudname1 = () => {
-	return `Benchmark Cloud`;
-};
-var it_products_grid_cloudname1 = () => {
-	return `Benchmark Cloud`;
-};
-var pt_products_grid_cloudname1 = () => {
-	return `Benchmark Cloud`;
-};
-var zh_products_grid_cloudname1 = () => {
-	return `基准测试云`;
-};
-var ja_products_grid_cloudname1 = () => {
-	return `Benchmark Cloud`;
-};
-var ko_products_grid_cloudname1 = () => {
-	return `Benchmark Cloud`;
-};
-var ru_products_grid_cloudname1 = () => {
-	return `Benchmark Cloud`;
-};
-var products_grid_cloudname1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_cloudname1(inputs);
-	if (locale === "fr") return fr_products_grid_cloudname1(inputs);
-	if (locale === "es") return es_products_grid_cloudname1(inputs);
-	if (locale === "de") return de_products_grid_cloudname1(inputs);
-	if (locale === "it") return it_products_grid_cloudname1(inputs);
-	if (locale === "pt") return pt_products_grid_cloudname1(inputs);
-	if (locale === "zh") return zh_products_grid_cloudname1(inputs);
-	if (locale === "ja") return ja_products_grid_cloudname1(inputs);
-	if (locale === "ko") return ko_products_grid_cloudname1(inputs);
-	return ru_products_grid_cloudname1(inputs);
+	if (locale === "ru") return ru_products_grid_cliprice1(inputs);
+	return en_products_grid_cliprice1(inputs);
 });
 var en_products_grid_clouddesc1 = () => {
 	return `Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.`;
@@ -394,7 +348,6 @@ var ru_products_grid_clouddesc1 = () => {
 };
 var products_grid_clouddesc1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_clouddesc1(inputs);
 	if (locale === "fr") return fr_products_grid_clouddesc1(inputs);
 	if (locale === "es") return es_products_grid_clouddesc1(inputs);
 	if (locale === "de") return de_products_grid_clouddesc1(inputs);
@@ -403,7 +356,51 @@ var products_grid_clouddesc1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_clouddesc1(inputs);
 	if (locale === "ja") return ja_products_grid_clouddesc1(inputs);
 	if (locale === "ko") return ko_products_grid_clouddesc1(inputs);
-	return ru_products_grid_clouddesc1(inputs);
+	if (locale === "ru") return ru_products_grid_clouddesc1(inputs);
+	return en_products_grid_clouddesc1(inputs);
+});
+var en_products_grid_cloudname1 = () => {
+	return `Benchmark Cloud`;
+};
+var fr_products_grid_cloudname1 = () => {
+	return `Benchmark Cloud`;
+};
+var es_products_grid_cloudname1 = () => {
+	return `Benchmark Cloud`;
+};
+var de_products_grid_cloudname1 = () => {
+	return `Benchmark Cloud`;
+};
+var it_products_grid_cloudname1 = () => {
+	return `Benchmark Cloud`;
+};
+var pt_products_grid_cloudname1 = () => {
+	return `Benchmark Cloud`;
+};
+var zh_products_grid_cloudname1 = () => {
+	return `基准测试云`;
+};
+var ja_products_grid_cloudname1 = () => {
+	return `Benchmark Cloud`;
+};
+var ko_products_grid_cloudname1 = () => {
+	return `Benchmark Cloud`;
+};
+var ru_products_grid_cloudname1 = () => {
+	return `Benchmark Cloud`;
+};
+var products_grid_cloudname1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_products_grid_cloudname1(inputs);
+	if (locale === "es") return es_products_grid_cloudname1(inputs);
+	if (locale === "de") return de_products_grid_cloudname1(inputs);
+	if (locale === "it") return it_products_grid_cloudname1(inputs);
+	if (locale === "pt") return pt_products_grid_cloudname1(inputs);
+	if (locale === "zh") return zh_products_grid_cloudname1(inputs);
+	if (locale === "ja") return ja_products_grid_cloudname1(inputs);
+	if (locale === "ko") return ko_products_grid_cloudname1(inputs);
+	if (locale === "ru") return ru_products_grid_cloudname1(inputs);
+	return en_products_grid_cloudname1(inputs);
 });
 var en_products_grid_cloudprice1 = () => {
 	return `$29/mo`;
@@ -437,7 +434,6 @@ var ru_products_grid_cloudprice1 = () => {
 };
 var products_grid_cloudprice1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_cloudprice1(inputs);
 	if (locale === "fr") return fr_products_grid_cloudprice1(inputs);
 	if (locale === "es") return es_products_grid_cloudprice1(inputs);
 	if (locale === "de") return de_products_grid_cloudprice1(inputs);
@@ -446,50 +442,8 @@ var products_grid_cloudprice1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_cloudprice1(inputs);
 	if (locale === "ja") return ja_products_grid_cloudprice1(inputs);
 	if (locale === "ko") return ko_products_grid_cloudprice1(inputs);
-	return ru_products_grid_cloudprice1(inputs);
-});
-var en_products_grid_enterprisename1 = () => {
-	return `Benchmark Enterprise`;
-};
-var fr_products_grid_enterprisename1 = () => {
-	return `Benchmark Enterprise`;
-};
-var es_products_grid_enterprisename1 = () => {
-	return `Benchmark Enterprise`;
-};
-var de_products_grid_enterprisename1 = () => {
-	return `Benchmark Enterprise`;
-};
-var it_products_grid_enterprisename1 = () => {
-	return `Benchmark Enterprise`;
-};
-var pt_products_grid_enterprisename1 = () => {
-	return `Benchmark Enterprise`;
-};
-var zh_products_grid_enterprisename1 = () => {
-	return `基准测试企业版`;
-};
-var ja_products_grid_enterprisename1 = () => {
-	return `Benchmark Enterprise`;
-};
-var ko_products_grid_enterprisename1 = () => {
-	return `Benchmark Enterprise`;
-};
-var ru_products_grid_enterprisename1 = () => {
-	return `Benchmark Enterprise`;
-};
-var products_grid_enterprisename1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_enterprisename1(inputs);
-	if (locale === "fr") return fr_products_grid_enterprisename1(inputs);
-	if (locale === "es") return es_products_grid_enterprisename1(inputs);
-	if (locale === "de") return de_products_grid_enterprisename1(inputs);
-	if (locale === "it") return it_products_grid_enterprisename1(inputs);
-	if (locale === "pt") return pt_products_grid_enterprisename1(inputs);
-	if (locale === "zh") return zh_products_grid_enterprisename1(inputs);
-	if (locale === "ja") return ja_products_grid_enterprisename1(inputs);
-	if (locale === "ko") return ko_products_grid_enterprisename1(inputs);
-	return ru_products_grid_enterprisename1(inputs);
+	if (locale === "ru") return ru_products_grid_cloudprice1(inputs);
+	return en_products_grid_cloudprice1(inputs);
 });
 var en_products_grid_enterprisedesc1 = () => {
 	return `On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.`;
@@ -523,7 +477,6 @@ var ru_products_grid_enterprisedesc1 = () => {
 };
 var products_grid_enterprisedesc1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_enterprisedesc1(inputs);
 	if (locale === "fr") return fr_products_grid_enterprisedesc1(inputs);
 	if (locale === "es") return es_products_grid_enterprisedesc1(inputs);
 	if (locale === "de") return de_products_grid_enterprisedesc1(inputs);
@@ -532,7 +485,51 @@ var products_grid_enterprisedesc1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_enterprisedesc1(inputs);
 	if (locale === "ja") return ja_products_grid_enterprisedesc1(inputs);
 	if (locale === "ko") return ko_products_grid_enterprisedesc1(inputs);
-	return ru_products_grid_enterprisedesc1(inputs);
+	if (locale === "ru") return ru_products_grid_enterprisedesc1(inputs);
+	return en_products_grid_enterprisedesc1(inputs);
+});
+var en_products_grid_enterprisename1 = () => {
+	return `Benchmark Enterprise`;
+};
+var fr_products_grid_enterprisename1 = () => {
+	return `Benchmark Enterprise`;
+};
+var es_products_grid_enterprisename1 = () => {
+	return `Benchmark Enterprise`;
+};
+var de_products_grid_enterprisename1 = () => {
+	return `Benchmark Enterprise`;
+};
+var it_products_grid_enterprisename1 = () => {
+	return `Benchmark Enterprise`;
+};
+var pt_products_grid_enterprisename1 = () => {
+	return `Benchmark Enterprise`;
+};
+var zh_products_grid_enterprisename1 = () => {
+	return `基准测试企业版`;
+};
+var ja_products_grid_enterprisename1 = () => {
+	return `Benchmark Enterprise`;
+};
+var ko_products_grid_enterprisename1 = () => {
+	return `Benchmark Enterprise`;
+};
+var ru_products_grid_enterprisename1 = () => {
+	return `Benchmark Enterprise`;
+};
+var products_grid_enterprisename1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_products_grid_enterprisename1(inputs);
+	if (locale === "es") return es_products_grid_enterprisename1(inputs);
+	if (locale === "de") return de_products_grid_enterprisename1(inputs);
+	if (locale === "it") return it_products_grid_enterprisename1(inputs);
+	if (locale === "pt") return pt_products_grid_enterprisename1(inputs);
+	if (locale === "zh") return zh_products_grid_enterprisename1(inputs);
+	if (locale === "ja") return ja_products_grid_enterprisename1(inputs);
+	if (locale === "ko") return ko_products_grid_enterprisename1(inputs);
+	if (locale === "ru") return ru_products_grid_enterprisename1(inputs);
+	return en_products_grid_enterprisename1(inputs);
 });
 var en_products_grid_enterpriseprice1 = () => {
 	return `Contact Us`;
@@ -566,7 +563,6 @@ var ru_products_grid_enterpriseprice1 = () => {
 };
 var products_grid_enterpriseprice1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_enterpriseprice1(inputs);
 	if (locale === "fr") return fr_products_grid_enterpriseprice1(inputs);
 	if (locale === "es") return es_products_grid_enterpriseprice1(inputs);
 	if (locale === "de") return de_products_grid_enterpriseprice1(inputs);
@@ -575,50 +571,51 @@ var products_grid_enterpriseprice1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_enterpriseprice1(inputs);
 	if (locale === "ja") return ja_products_grid_enterpriseprice1(inputs);
 	if (locale === "ko") return ko_products_grid_enterpriseprice1(inputs);
-	return ru_products_grid_enterpriseprice1(inputs);
+	if (locale === "ru") return ru_products_grid_enterpriseprice1(inputs);
+	return en_products_grid_enterpriseprice1(inputs);
 });
-var en_products_grid_migrationname1 = () => {
-	return `Migration Assistant`;
+var en_products_grid_learnmore1 = () => {
+	return `Learn More`;
 };
-var fr_products_grid_migrationname1 = () => {
-	return `Assistant de migration`;
+var fr_products_grid_learnmore1 = () => {
+	return `En savoir plus`;
 };
-var es_products_grid_migrationname1 = () => {
-	return `Asistente de migración`;
+var es_products_grid_learnmore1 = () => {
+	return `Más información`;
 };
-var de_products_grid_migrationname1 = () => {
-	return `Migrationsassistent`;
+var de_products_grid_learnmore1 = () => {
+	return `Mehr erfahren`;
 };
-var it_products_grid_migrationname1 = () => {
-	return `Assistente alla migrazione`;
+var it_products_grid_learnmore1 = () => {
+	return `Scopri di più`;
 };
-var pt_products_grid_migrationname1 = () => {
-	return `Assistente de migração`;
+var pt_products_grid_learnmore1 = () => {
+	return `Saiba Mais`;
 };
-var zh_products_grid_migrationname1 = () => {
-	return `迁移助手`;
+var zh_products_grid_learnmore1 = () => {
+	return `了解更多`;
 };
-var ja_products_grid_migrationname1 = () => {
-	return `移行アシスタント`;
+var ja_products_grid_learnmore1 = () => {
+	return `詳細はこちら`;
 };
-var ko_products_grid_migrationname1 = () => {
-	return `Migration Assistant`;
+var ko_products_grid_learnmore1 = () => {
+	return `Learn More`;
 };
-var ru_products_grid_migrationname1 = () => {
-	return `Помощник по миграции`;
+var ru_products_grid_learnmore1 = () => {
+	return `Узнать больше`;
 };
-var products_grid_migrationname1 = ((inputs = {}, options = {}) => {
+var products_grid_learnmore1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_migrationname1(inputs);
-	if (locale === "fr") return fr_products_grid_migrationname1(inputs);
-	if (locale === "es") return es_products_grid_migrationname1(inputs);
-	if (locale === "de") return de_products_grid_migrationname1(inputs);
-	if (locale === "it") return it_products_grid_migrationname1(inputs);
-	if (locale === "pt") return pt_products_grid_migrationname1(inputs);
-	if (locale === "zh") return zh_products_grid_migrationname1(inputs);
-	if (locale === "ja") return ja_products_grid_migrationname1(inputs);
-	if (locale === "ko") return ko_products_grid_migrationname1(inputs);
-	return ru_products_grid_migrationname1(inputs);
+	if (locale === "fr") return fr_products_grid_learnmore1(inputs);
+	if (locale === "es") return es_products_grid_learnmore1(inputs);
+	if (locale === "de") return de_products_grid_learnmore1(inputs);
+	if (locale === "it") return it_products_grid_learnmore1(inputs);
+	if (locale === "pt") return pt_products_grid_learnmore1(inputs);
+	if (locale === "zh") return zh_products_grid_learnmore1(inputs);
+	if (locale === "ja") return ja_products_grid_learnmore1(inputs);
+	if (locale === "ko") return ko_products_grid_learnmore1(inputs);
+	if (locale === "ru") return ru_products_grid_learnmore1(inputs);
+	return en_products_grid_learnmore1(inputs);
 });
 var en_products_grid_migrationdesc1 = () => {
 	return `AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.`;
@@ -652,7 +649,6 @@ var ru_products_grid_migrationdesc1 = () => {
 };
 var products_grid_migrationdesc1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_migrationdesc1(inputs);
 	if (locale === "fr") return fr_products_grid_migrationdesc1(inputs);
 	if (locale === "es") return es_products_grid_migrationdesc1(inputs);
 	if (locale === "de") return de_products_grid_migrationdesc1(inputs);
@@ -661,7 +657,51 @@ var products_grid_migrationdesc1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_migrationdesc1(inputs);
 	if (locale === "ja") return ja_products_grid_migrationdesc1(inputs);
 	if (locale === "ko") return ko_products_grid_migrationdesc1(inputs);
-	return ru_products_grid_migrationdesc1(inputs);
+	if (locale === "ru") return ru_products_grid_migrationdesc1(inputs);
+	return en_products_grid_migrationdesc1(inputs);
+});
+var en_products_grid_migrationname1 = () => {
+	return `Migration Assistant`;
+};
+var fr_products_grid_migrationname1 = () => {
+	return `Assistant de migration`;
+};
+var es_products_grid_migrationname1 = () => {
+	return `Asistente de migración`;
+};
+var de_products_grid_migrationname1 = () => {
+	return `Migrationsassistent`;
+};
+var it_products_grid_migrationname1 = () => {
+	return `Assistente alla migrazione`;
+};
+var pt_products_grid_migrationname1 = () => {
+	return `Assistente de migração`;
+};
+var zh_products_grid_migrationname1 = () => {
+	return `迁移助手`;
+};
+var ja_products_grid_migrationname1 = () => {
+	return `移行アシスタント`;
+};
+var ko_products_grid_migrationname1 = () => {
+	return `Migration Assistant`;
+};
+var ru_products_grid_migrationname1 = () => {
+	return `Помощник по миграции`;
+};
+var products_grid_migrationname1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_products_grid_migrationname1(inputs);
+	if (locale === "es") return es_products_grid_migrationname1(inputs);
+	if (locale === "de") return de_products_grid_migrationname1(inputs);
+	if (locale === "it") return it_products_grid_migrationname1(inputs);
+	if (locale === "pt") return pt_products_grid_migrationname1(inputs);
+	if (locale === "zh") return zh_products_grid_migrationname1(inputs);
+	if (locale === "ja") return ja_products_grid_migrationname1(inputs);
+	if (locale === "ko") return ko_products_grid_migrationname1(inputs);
+	if (locale === "ru") return ru_products_grid_migrationname1(inputs);
+	return en_products_grid_migrationname1(inputs);
 });
 var en_products_grid_migrationprice1 = () => {
 	return `$99 one-time`;
@@ -695,7 +735,6 @@ var ru_products_grid_migrationprice1 = () => {
 };
 var products_grid_migrationprice1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_migrationprice1(inputs);
 	if (locale === "fr") return fr_products_grid_migrationprice1(inputs);
 	if (locale === "es") return es_products_grid_migrationprice1(inputs);
 	if (locale === "de") return de_products_grid_migrationprice1(inputs);
@@ -704,179 +743,8 @@ var products_grid_migrationprice1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_migrationprice1(inputs);
 	if (locale === "ja") return ja_products_grid_migrationprice1(inputs);
 	if (locale === "ko") return ko_products_grid_migrationprice1(inputs);
-	return ru_products_grid_migrationprice1(inputs);
-});
-var en_products_grid_qaname1 = () => {
-	return `Translation QA`;
-};
-var fr_products_grid_qaname1 = () => {
-	return `QA des traductions`;
-};
-var es_products_grid_qaname1 = () => {
-	return `QA de traducción`;
-};
-var de_products_grid_qaname1 = () => {
-	return `Übersetzungs-QA`;
-};
-var it_products_grid_qaname1 = () => {
-	return `QA delle traduzioni`;
-};
-var pt_products_grid_qaname1 = () => {
-	return `QA de tradução`;
-};
-var zh_products_grid_qaname1 = () => {
-	return `翻译 QA`;
-};
-var ja_products_grid_qaname1 = () => {
-	return `翻訳QA`;
-};
-var ko_products_grid_qaname1 = () => {
-	return `Translation QA`;
-};
-var ru_products_grid_qaname1 = () => {
-	return `QA переводов`;
-};
-var products_grid_qaname1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_qaname1(inputs);
-	if (locale === "fr") return fr_products_grid_qaname1(inputs);
-	if (locale === "es") return es_products_grid_qaname1(inputs);
-	if (locale === "de") return de_products_grid_qaname1(inputs);
-	if (locale === "it") return it_products_grid_qaname1(inputs);
-	if (locale === "pt") return pt_products_grid_qaname1(inputs);
-	if (locale === "zh") return zh_products_grid_qaname1(inputs);
-	if (locale === "ja") return ja_products_grid_qaname1(inputs);
-	if (locale === "ko") return ko_products_grid_qaname1(inputs);
-	return ru_products_grid_qaname1(inputs);
-});
-var en_products_grid_qadesc1 = () => {
-	return `Automated quality checks for missing translations, pluralization issues, and context errors.`;
-};
-var fr_products_grid_qadesc1 = () => {
-	return `Contrôles automatiques : clés manquantes, pluriels, contexte.`;
-};
-var es_products_grid_qadesc1 = () => {
-	return `Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.`;
-};
-var de_products_grid_qadesc1 = () => {
-	return `Automatisierte Qualitätsprüfungen für fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.`;
-};
-var it_products_grid_qadesc1 = () => {
-	return `Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.`;
-};
-var pt_products_grid_qadesc1 = () => {
-	return `Verificações de qualidade automatizadas para traduções ausentes, problemas de pluralização e erros de contexto.`;
-};
-var zh_products_grid_qadesc1 = () => {
-	return `自动检查翻译缺失、复数问题和上下文错误。`;
-};
-var ja_products_grid_qadesc1 = () => {
-	return `翻訳の欠落、複数形化の問題、コンテキストエラーの自動品質チェック。`;
-};
-var ko_products_grid_qadesc1 = () => {
-	return `Automated quality checks for missing translations, pluralization issues, and context errors.`;
-};
-var ru_products_grid_qadesc1 = () => {
-	return `Автоматическая проверка качества на наличие пропущенных переводов, проблем с плюрализацией и контекстных ошибок.`;
-};
-var products_grid_qadesc1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_qadesc1(inputs);
-	if (locale === "fr") return fr_products_grid_qadesc1(inputs);
-	if (locale === "es") return es_products_grid_qadesc1(inputs);
-	if (locale === "de") return de_products_grid_qadesc1(inputs);
-	if (locale === "it") return it_products_grid_qadesc1(inputs);
-	if (locale === "pt") return pt_products_grid_qadesc1(inputs);
-	if (locale === "zh") return zh_products_grid_qadesc1(inputs);
-	if (locale === "ja") return ja_products_grid_qadesc1(inputs);
-	if (locale === "ko") return ko_products_grid_qadesc1(inputs);
-	return ru_products_grid_qadesc1(inputs);
-});
-var en_products_grid_qaprice1 = () => {
-	return `$19/mo`;
-};
-var fr_products_grid_qaprice1 = () => {
-	return `19 €/mois`;
-};
-var es_products_grid_qaprice1 = () => {
-	return `19 $/mes`;
-};
-var de_products_grid_qaprice1 = () => {
-	return `19 $/Monat`;
-};
-var it_products_grid_qaprice1 = () => {
-	return `19 $/mese`;
-};
-var pt_products_grid_qaprice1 = () => {
-	return `19 $/mês`;
-};
-var zh_products_grid_qaprice1 = () => {
-	return `19 $/月`;
-};
-var ja_products_grid_qaprice1 = () => {
-	return `19ドル/月`;
-};
-var ko_products_grid_qaprice1 = () => {
-	return `$19/mo`;
-};
-var ru_products_grid_qaprice1 = () => {
-	return `19 $/мес`;
-};
-var products_grid_qaprice1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_qaprice1(inputs);
-	if (locale === "fr") return fr_products_grid_qaprice1(inputs);
-	if (locale === "es") return es_products_grid_qaprice1(inputs);
-	if (locale === "de") return de_products_grid_qaprice1(inputs);
-	if (locale === "it") return it_products_grid_qaprice1(inputs);
-	if (locale === "pt") return pt_products_grid_qaprice1(inputs);
-	if (locale === "zh") return zh_products_grid_qaprice1(inputs);
-	if (locale === "ja") return ja_products_grid_qaprice1(inputs);
-	if (locale === "ko") return ko_products_grid_qaprice1(inputs);
-	return ru_products_grid_qaprice1(inputs);
-});
-var en_products_grid_optimizername1 = () => {
-	return `Bundle Optimizer`;
-};
-var fr_products_grid_optimizername1 = () => {
-	return `Optimiseur de bundle`;
-};
-var es_products_grid_optimizername1 = () => {
-	return `Optimizador de bundle`;
-};
-var de_products_grid_optimizername1 = () => {
-	return `Bundle-Optimierer`;
-};
-var it_products_grid_optimizername1 = () => {
-	return `Ottimizzatore del bundle`;
-};
-var pt_products_grid_optimizername1 = () => {
-	return `Otimizador de bundle`;
-};
-var zh_products_grid_optimizername1 = () => {
-	return `包优化器`;
-};
-var ja_products_grid_optimizername1 = () => {
-	return `バンドルオプティマイザー`;
-};
-var ko_products_grid_optimizername1 = () => {
-	return `Bundle Optimizer`;
-};
-var ru_products_grid_optimizername1 = () => {
-	return `Оптимизатор бандла`;
-};
-var products_grid_optimizername1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_optimizername1(inputs);
-	if (locale === "fr") return fr_products_grid_optimizername1(inputs);
-	if (locale === "es") return es_products_grid_optimizername1(inputs);
-	if (locale === "de") return de_products_grid_optimizername1(inputs);
-	if (locale === "it") return it_products_grid_optimizername1(inputs);
-	if (locale === "pt") return pt_products_grid_optimizername1(inputs);
-	if (locale === "zh") return zh_products_grid_optimizername1(inputs);
-	if (locale === "ja") return ja_products_grid_optimizername1(inputs);
-	if (locale === "ko") return ko_products_grid_optimizername1(inputs);
-	return ru_products_grid_optimizername1(inputs);
+	if (locale === "ru") return ru_products_grid_migrationprice1(inputs);
+	return en_products_grid_migrationprice1(inputs);
 });
 var en_products_grid_optimizerdesc1 = () => {
 	return `Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.`;
@@ -910,7 +778,6 @@ var ru_products_grid_optimizerdesc1 = () => {
 };
 var products_grid_optimizerdesc1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_optimizerdesc1(inputs);
 	if (locale === "fr") return fr_products_grid_optimizerdesc1(inputs);
 	if (locale === "es") return es_products_grid_optimizerdesc1(inputs);
 	if (locale === "de") return de_products_grid_optimizerdesc1(inputs);
@@ -919,7 +786,51 @@ var products_grid_optimizerdesc1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_optimizerdesc1(inputs);
 	if (locale === "ja") return ja_products_grid_optimizerdesc1(inputs);
 	if (locale === "ko") return ko_products_grid_optimizerdesc1(inputs);
-	return ru_products_grid_optimizerdesc1(inputs);
+	if (locale === "ru") return ru_products_grid_optimizerdesc1(inputs);
+	return en_products_grid_optimizerdesc1(inputs);
+});
+var en_products_grid_optimizername1 = () => {
+	return `Bundle Optimizer`;
+};
+var fr_products_grid_optimizername1 = () => {
+	return `Optimiseur de bundle`;
+};
+var es_products_grid_optimizername1 = () => {
+	return `Optimizador de bundle`;
+};
+var de_products_grid_optimizername1 = () => {
+	return `Bundle-Optimierer`;
+};
+var it_products_grid_optimizername1 = () => {
+	return `Ottimizzatore del bundle`;
+};
+var pt_products_grid_optimizername1 = () => {
+	return `Otimizador de bundle`;
+};
+var zh_products_grid_optimizername1 = () => {
+	return `包优化器`;
+};
+var ja_products_grid_optimizername1 = () => {
+	return `バンドルオプティマイザー`;
+};
+var ko_products_grid_optimizername1 = () => {
+	return `Bundle Optimizer`;
+};
+var ru_products_grid_optimizername1 = () => {
+	return `Оптимизатор бандла`;
+};
+var products_grid_optimizername1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_products_grid_optimizername1(inputs);
+	if (locale === "es") return es_products_grid_optimizername1(inputs);
+	if (locale === "de") return de_products_grid_optimizername1(inputs);
+	if (locale === "it") return it_products_grid_optimizername1(inputs);
+	if (locale === "pt") return pt_products_grid_optimizername1(inputs);
+	if (locale === "zh") return zh_products_grid_optimizername1(inputs);
+	if (locale === "ja") return ja_products_grid_optimizername1(inputs);
+	if (locale === "ko") return ko_products_grid_optimizername1(inputs);
+	if (locale === "ru") return ru_products_grid_optimizername1(inputs);
+	return en_products_grid_optimizername1(inputs);
 });
 var en_products_grid_optimizerprice1 = () => {
 	return `$49/mo`;
@@ -953,7 +864,6 @@ var ru_products_grid_optimizerprice1 = () => {
 };
 var products_grid_optimizerprice1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_products_grid_optimizerprice1(inputs);
 	if (locale === "fr") return fr_products_grid_optimizerprice1(inputs);
 	if (locale === "es") return es_products_grid_optimizerprice1(inputs);
 	if (locale === "de") return de_products_grid_optimizerprice1(inputs);
@@ -962,7 +872,137 @@ var products_grid_optimizerprice1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_products_grid_optimizerprice1(inputs);
 	if (locale === "ja") return ja_products_grid_optimizerprice1(inputs);
 	if (locale === "ko") return ko_products_grid_optimizerprice1(inputs);
-	return ru_products_grid_optimizerprice1(inputs);
+	if (locale === "ru") return ru_products_grid_optimizerprice1(inputs);
+	return en_products_grid_optimizerprice1(inputs);
+});
+var en_products_grid_qadesc1 = () => {
+	return `Automated quality checks for missing translations, pluralization issues, and context errors.`;
+};
+var fr_products_grid_qadesc1 = () => {
+	return `Contrôles automatiques : clés manquantes, pluriels, contexte.`;
+};
+var es_products_grid_qadesc1 = () => {
+	return `Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.`;
+};
+var de_products_grid_qadesc1 = () => {
+	return `Automatisierte Qualitätsprüfungen für fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.`;
+};
+var it_products_grid_qadesc1 = () => {
+	return `Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.`;
+};
+var pt_products_grid_qadesc1 = () => {
+	return `Verificações de qualidade automatizadas para traduções ausentes, problemas de pluralização e erros de contexto.`;
+};
+var zh_products_grid_qadesc1 = () => {
+	return `自动检查翻译缺失、复数问题和上下文错误。`;
+};
+var ja_products_grid_qadesc1 = () => {
+	return `翻訳の欠落、複数形化の問題、コンテキストエラーの自動品質チェック。`;
+};
+var ko_products_grid_qadesc1 = () => {
+	return `Automated quality checks for missing translations, pluralization issues, and context errors.`;
+};
+var ru_products_grid_qadesc1 = () => {
+	return `Автоматическая проверка качества на наличие пропущенных переводов, проблем с плюрализацией и контекстных ошибок.`;
+};
+var products_grid_qadesc1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_products_grid_qadesc1(inputs);
+	if (locale === "es") return es_products_grid_qadesc1(inputs);
+	if (locale === "de") return de_products_grid_qadesc1(inputs);
+	if (locale === "it") return it_products_grid_qadesc1(inputs);
+	if (locale === "pt") return pt_products_grid_qadesc1(inputs);
+	if (locale === "zh") return zh_products_grid_qadesc1(inputs);
+	if (locale === "ja") return ja_products_grid_qadesc1(inputs);
+	if (locale === "ko") return ko_products_grid_qadesc1(inputs);
+	if (locale === "ru") return ru_products_grid_qadesc1(inputs);
+	return en_products_grid_qadesc1(inputs);
+});
+var en_products_grid_qaname1 = () => {
+	return `Translation QA`;
+};
+var fr_products_grid_qaname1 = () => {
+	return `QA des traductions`;
+};
+var es_products_grid_qaname1 = () => {
+	return `QA de traducción`;
+};
+var de_products_grid_qaname1 = () => {
+	return `Übersetzungs-QA`;
+};
+var it_products_grid_qaname1 = () => {
+	return `QA delle traduzioni`;
+};
+var pt_products_grid_qaname1 = () => {
+	return `QA de tradução`;
+};
+var zh_products_grid_qaname1 = () => {
+	return `翻译 QA`;
+};
+var ja_products_grid_qaname1 = () => {
+	return `翻訳QA`;
+};
+var ko_products_grid_qaname1 = () => {
+	return `Translation QA`;
+};
+var ru_products_grid_qaname1 = () => {
+	return `QA переводов`;
+};
+var products_grid_qaname1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_products_grid_qaname1(inputs);
+	if (locale === "es") return es_products_grid_qaname1(inputs);
+	if (locale === "de") return de_products_grid_qaname1(inputs);
+	if (locale === "it") return it_products_grid_qaname1(inputs);
+	if (locale === "pt") return pt_products_grid_qaname1(inputs);
+	if (locale === "zh") return zh_products_grid_qaname1(inputs);
+	if (locale === "ja") return ja_products_grid_qaname1(inputs);
+	if (locale === "ko") return ko_products_grid_qaname1(inputs);
+	if (locale === "ru") return ru_products_grid_qaname1(inputs);
+	return en_products_grid_qaname1(inputs);
+});
+var en_products_grid_qaprice1 = () => {
+	return `$19/mo`;
+};
+var fr_products_grid_qaprice1 = () => {
+	return `19 €/mois`;
+};
+var es_products_grid_qaprice1 = () => {
+	return `19 $/mes`;
+};
+var de_products_grid_qaprice1 = () => {
+	return `19 $/Monat`;
+};
+var it_products_grid_qaprice1 = () => {
+	return `19 $/mese`;
+};
+var pt_products_grid_qaprice1 = () => {
+	return `19 $/mês`;
+};
+var zh_products_grid_qaprice1 = () => {
+	return `19 $/月`;
+};
+var ja_products_grid_qaprice1 = () => {
+	return `19ドル/月`;
+};
+var ko_products_grid_qaprice1 = () => {
+	return `$19/mo`;
+};
+var ru_products_grid_qaprice1 = () => {
+	return `19 $/мес`;
+};
+var products_grid_qaprice1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_products_grid_qaprice1(inputs);
+	if (locale === "es") return es_products_grid_qaprice1(inputs);
+	if (locale === "de") return de_products_grid_qaprice1(inputs);
+	if (locale === "it") return it_products_grid_qaprice1(inputs);
+	if (locale === "pt") return pt_products_grid_qaprice1(inputs);
+	if (locale === "zh") return zh_products_grid_qaprice1(inputs);
+	if (locale === "ja") return ja_products_grid_qaprice1(inputs);
+	if (locale === "ko") return ko_products_grid_qaprice1(inputs);
+	if (locale === "ru") return ru_products_grid_qaprice1(inputs);
+	return en_products_grid_qaprice1(inputs);
 });
 var locales = [
 	"en",
@@ -979,7 +1019,7 @@ var locales = [
 function isLocale(value) {
 	return locales.includes(value);
 }
-var PAGE_SEGMENTS = new Set([
+var PAGE_SEGMENTS = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -1005,9 +1045,10 @@ function parsePath(pathname) {
 		page: seg
 	};
 }
-var route = derived(writable(typeof window !== "undefined" ? window.location.pathname : "/en"), (p) => parsePath(p));
-var root_1 = $.from_html(`<div class="flex flex-col justify-between rounded-lg border border-border bg-card p-6"><div><h3 class="mb-2 text-lg font-semibold text-foreground"> </h3> <p class="mb-4 text-sm text-muted-foreground"> </p></div> <div class="flex items-center justify-between"><span class="text-sm font-bold text-primary"> </span> <button type="button" class="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"> </button></div></div>`);
-var root = $.from_html(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>`);
+var pathname = writable(typeof window !== "undefined" ? window.location.pathname : "/en");
+var route = derived(pathname, (p) => parsePath(p));
+var root = $.from_html(`<div class="flex flex-col justify-between rounded-lg border border-border bg-card p-6"><div><h3 class="mb-2 text-lg font-semibold text-foreground"> </h3> <p class="mb-4 text-sm text-muted-foreground"> </p></div> <div class="flex items-center justify-between"><span class="text-sm font-bold text-primary"> </span> <button type="button" class="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90"> </button></div></div>`);
+var root_1 = $.from_html(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>`);
 function ProductsGrid($$anchor, $$props) {
 	$.push($$props, true);
 	const $route = () => $.store_get(route, "$route", $$stores);
@@ -1048,24 +1089,20 @@ function ProductsGrid($$anchor, $$props) {
 			}
 		];
 	});
-	var div = root();
+	var div = root_1();
 	$.each(div, 21, () => $.get(products), $.index, ($$anchor, p) => {
-		var div_1 = root_1();
+		var div_1 = root();
 		var div_2 = $.child(div_1);
 		var h3 = $.child(div_2);
-		var text = $.child(h3, true);
-		$.reset(h3);
+		var text = $.only_child(h3, true);
 		var p_1 = $.sibling(h3, 2);
-		var text_1 = $.child(p_1, true);
-		$.reset(p_1);
+		var text_1 = $.only_child(p_1, true);
 		$.reset(div_2);
 		var div_3 = $.sibling(div_2, 2);
 		var span = $.child(div_3);
-		var text_2 = $.child(span, true);
-		$.reset(span);
+		var text_2 = $.only_child(span, true);
 		var button = $.sibling(span, 2);
-		var text_3 = $.child(button, true);
-		$.reset(button);
+		var text_3 = $.only_child(button, true);
 		$.reset(div_3);
 		$.reset(div_1);
 		$.template_effect(($0) => {

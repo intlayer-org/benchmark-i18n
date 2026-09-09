@@ -25,7 +25,7 @@ function a(e) {
 function o(e) {
 	return i.includes(e);
 }
-var s = new Set([
+var s = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -65,16 +65,14 @@ function p(t, r) {
 	e.init();
 	var m = f(), h = e.child(m);
 	e.each(h, 5, () => i, (e) => e, (t, n) => {
-		var r = d(), i = e.child(r, !0);
-		e.reset(r);
-		var o = {};
+		var r = d(), i = e.only_child(r, !0), o = {};
 		e.template_effect((t) => {
-			e.set_text(i, t), o !== (o = e.get(n)) && (r.value = (r.__value = e.get(n)) ?? "");
+			e.set_text(i, t), o !== (o = e.get(n)) && (r.value = (r.__value = o) ?? "");
 		}, [() => a(e.get(n))]), e.append(t, r);
 	}), e.reset(h);
 	var g;
 	e.init_select(h), e.reset(m), e.template_effect((t) => {
-		g !== (g = t) && (h.value = (h.__value = t) ?? "", e.select_option(h, t));
+		g !== (g = t) && (h.value = (h.__value = g) ?? "", e.select_option(h, g));
 	}, [() => o().split("/").filter(Boolean)[0] ?? "en"]), e.delegated("change", h, p), e.append(t, m), e.pop(), c();
 }
 e.delegate(["change"]);

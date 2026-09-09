@@ -21,27 +21,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -64,7 +43,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -106,6 +85,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -127,6 +107,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -137,187 +122,70 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_careers_benefits_remotelabel1 = () => {
-	return `Remote-first`;
-};
-var fr_careers_benefits_remotelabel1 = () => {
-	return `Remote-first`;
-};
-var es_careers_benefits_remotelabel1 = () => {
-	return `Remoto primero`;
-};
-var de_careers_benefits_remotelabel1 = () => {
-	return `Remote-First`;
-};
-var it_careers_benefits_remotelabel1 = () => {
-	return `Remote-first`;
-};
-var pt_careers_benefits_remotelabel1 = () => {
-	return `Remoto primeiro`;
-};
-var zh_careers_benefits_remotelabel1 = () => {
-	return `远程优先`;
-};
-var ja_careers_benefits_remotelabel1 = () => {
-	return `リモートファースト`;
-};
-var ko_careers_benefits_remotelabel1 = () => {
-	return `Remote-first`;
-};
-var ru_careers_benefits_remotelabel1 = () => {
-	return `Удаленная работа`;
-};
-var careers_benefits_remotelabel1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_benefits_remotelabel1(inputs);
-	if (locale === "fr") return fr_careers_benefits_remotelabel1(inputs);
-	if (locale === "es") return es_careers_benefits_remotelabel1(inputs);
-	if (locale === "de") return de_careers_benefits_remotelabel1(inputs);
-	if (locale === "it") return it_careers_benefits_remotelabel1(inputs);
-	if (locale === "pt") return pt_careers_benefits_remotelabel1(inputs);
-	if (locale === "zh") return zh_careers_benefits_remotelabel1(inputs);
-	if (locale === "ja") return ja_careers_benefits_remotelabel1(inputs);
-	if (locale === "ko") return ko_careers_benefits_remotelabel1(inputs);
-	return ru_careers_benefits_remotelabel1(inputs);
-});
-var en_careers_benefits_remotevalue1 = () => {
-	return `Work from anywhere in the world`;
-};
-var fr_careers_benefits_remotevalue1 = () => {
-	return `Travaillez depuis n'importe où`;
-};
-var es_careers_benefits_remotevalue1 = () => {
-	return `Trabaja desde cualquier lugar del mundo`;
-};
-var de_careers_benefits_remotevalue1 = () => {
-	return `Arbeiten Sie von überall auf der Welt`;
-};
-var it_careers_benefits_remotevalue1 = () => {
-	return `Lavora da qualsiasi parte del mondo`;
-};
-var pt_careers_benefits_remotevalue1 = () => {
-	return `Trabalhe de qualquer lugar do mundo`;
-};
-var zh_careers_benefits_remotevalue1 = () => {
-	return `在世界任何地方工作`;
-};
-var ja_careers_benefits_remotevalue1 = () => {
-	return `世界中のどこからでも仕事ができます`;
-};
-var ko_careers_benefits_remotevalue1 = () => {
-	return `Work from anywhere in the world`;
-};
-var ru_careers_benefits_remotevalue1 = () => {
-	return `Работайте из любой точки мира`;
-};
-var careers_benefits_remotevalue1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_benefits_remotevalue1(inputs);
-	if (locale === "fr") return fr_careers_benefits_remotevalue1(inputs);
-	if (locale === "es") return es_careers_benefits_remotevalue1(inputs);
-	if (locale === "de") return de_careers_benefits_remotevalue1(inputs);
-	if (locale === "it") return it_careers_benefits_remotevalue1(inputs);
-	if (locale === "pt") return pt_careers_benefits_remotevalue1(inputs);
-	if (locale === "zh") return zh_careers_benefits_remotevalue1(inputs);
-	if (locale === "ja") return ja_careers_benefits_remotevalue1(inputs);
-	if (locale === "ko") return ko_careers_benefits_remotevalue1(inputs);
-	return ru_careers_benefits_remotevalue1(inputs);
-});
-var en_careers_benefits_paylabel1 = () => {
-	return `Competitive pay`;
-};
-var fr_careers_benefits_paylabel1 = () => {
-	return `Rémunération compétitive`;
-};
-var es_careers_benefits_paylabel1 = () => {
-	return `Salario competitivo`;
-};
-var de_careers_benefits_paylabel1 = () => {
-	return `Wettbewerbsfähige Bezahlung`;
-};
-var it_careers_benefits_paylabel1 = () => {
-	return `Retribuzione competitiva`;
-};
-var pt_careers_benefits_paylabel1 = () => {
-	return `Salário competitivo`;
-};
-var zh_careers_benefits_paylabel1 = () => {
-	return `具有竞争力的薪酬`;
-};
-var ja_careers_benefits_paylabel1 = () => {
-	return `競争力のある給与`;
-};
-var ko_careers_benefits_paylabel1 = () => {
-	return `Competitive pay`;
-};
-var ru_careers_benefits_paylabel1 = () => {
-	return `Конкурентная зарплата`;
-};
-var careers_benefits_paylabel1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_benefits_paylabel1(inputs);
-	if (locale === "fr") return fr_careers_benefits_paylabel1(inputs);
-	if (locale === "es") return es_careers_benefits_paylabel1(inputs);
-	if (locale === "de") return de_careers_benefits_paylabel1(inputs);
-	if (locale === "it") return it_careers_benefits_paylabel1(inputs);
-	if (locale === "pt") return pt_careers_benefits_paylabel1(inputs);
-	if (locale === "zh") return zh_careers_benefits_paylabel1(inputs);
-	if (locale === "ja") return ja_careers_benefits_paylabel1(inputs);
-	if (locale === "ko") return ko_careers_benefits_paylabel1(inputs);
-	return ru_careers_benefits_paylabel1(inputs);
-});
-var en_careers_benefits_payvalue1 = () => {
-	return `Top-of-market compensation`;
-};
-var fr_careers_benefits_payvalue1 = () => {
-	return `Fourchettes haut de marché`;
-};
-var es_careers_benefits_payvalue1 = () => {
-	return `Compensación superior a la del mercado`;
-};
-var de_careers_benefits_payvalue1 = () => {
-	return `Überdurchschnittliche Vergütung`;
-};
-var it_careers_benefits_payvalue1 = () => {
-	return `Compensazione ai vertici del mercato`;
-};
-var pt_careers_benefits_payvalue1 = () => {
-	return `Remuneração acima do mercado`;
-};
-var zh_careers_benefits_payvalue1 = () => {
-	return `市场顶尖的薪资水平`;
-};
-var ja_careers_benefits_payvalue1 = () => {
-	return `市場トップクラスの報酬`;
-};
-var ko_careers_benefits_payvalue1 = () => {
-	return `Top-of-market compensation`;
-};
-var ru_careers_benefits_payvalue1 = () => {
-	return `Вознаграждение выше рыночного`;
-};
-var careers_benefits_payvalue1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_benefits_payvalue1(inputs);
-	if (locale === "fr") return fr_careers_benefits_payvalue1(inputs);
-	if (locale === "es") return es_careers_benefits_payvalue1(inputs);
-	if (locale === "de") return de_careers_benefits_payvalue1(inputs);
-	if (locale === "it") return it_careers_benefits_payvalue1(inputs);
-	if (locale === "pt") return pt_careers_benefits_payvalue1(inputs);
-	if (locale === "zh") return zh_careers_benefits_payvalue1(inputs);
-	if (locale === "ja") return ja_careers_benefits_payvalue1(inputs);
-	if (locale === "ko") return ko_careers_benefits_payvalue1(inputs);
-	return ru_careers_benefits_payvalue1(inputs);
-});
 var en_careers_benefits_osslabel1 = () => {
 	return `Open source time`;
 };
@@ -350,7 +218,6 @@ var ru_careers_benefits_osslabel1 = () => {
 };
 var careers_benefits_osslabel1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_benefits_osslabel1(inputs);
 	if (locale === "fr") return fr_careers_benefits_osslabel1(inputs);
 	if (locale === "es") return es_careers_benefits_osslabel1(inputs);
 	if (locale === "de") return de_careers_benefits_osslabel1(inputs);
@@ -359,7 +226,8 @@ var careers_benefits_osslabel1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_careers_benefits_osslabel1(inputs);
 	if (locale === "ja") return ja_careers_benefits_osslabel1(inputs);
 	if (locale === "ko") return ko_careers_benefits_osslabel1(inputs);
-	return ru_careers_benefits_osslabel1(inputs);
+	if (locale === "ru") return ru_careers_benefits_osslabel1(inputs);
+	return en_careers_benefits_osslabel1(inputs);
 });
 var en_careers_benefits_ossvalue1 = () => {
 	return `20% time for OSS contributions`;
@@ -393,7 +261,6 @@ var ru_careers_benefits_ossvalue1 = () => {
 };
 var careers_benefits_ossvalue1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_careers_benefits_ossvalue1(inputs);
 	if (locale === "fr") return fr_careers_benefits_ossvalue1(inputs);
 	if (locale === "es") return es_careers_benefits_ossvalue1(inputs);
 	if (locale === "de") return de_careers_benefits_ossvalue1(inputs);
@@ -402,9 +269,183 @@ var careers_benefits_ossvalue1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_careers_benefits_ossvalue1(inputs);
 	if (locale === "ja") return ja_careers_benefits_ossvalue1(inputs);
 	if (locale === "ko") return ko_careers_benefits_ossvalue1(inputs);
-	return ru_careers_benefits_ossvalue1(inputs);
+	if (locale === "ru") return ru_careers_benefits_ossvalue1(inputs);
+	return en_careers_benefits_ossvalue1(inputs);
 });
-var _tmpl$ = template(`<div class="mb-12 grid gap-4 md:grid-cols-3">`), _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-4 text-center"><p class="text-sm font-semibold text-foreground"></p><p class="text-xs text-muted-foreground">`);
+var en_careers_benefits_paylabel1 = () => {
+	return `Competitive pay`;
+};
+var fr_careers_benefits_paylabel1 = () => {
+	return `Rémunération compétitive`;
+};
+var es_careers_benefits_paylabel1 = () => {
+	return `Salario competitivo`;
+};
+var de_careers_benefits_paylabel1 = () => {
+	return `Wettbewerbsfähige Bezahlung`;
+};
+var it_careers_benefits_paylabel1 = () => {
+	return `Retribuzione competitiva`;
+};
+var pt_careers_benefits_paylabel1 = () => {
+	return `Salário competitivo`;
+};
+var zh_careers_benefits_paylabel1 = () => {
+	return `具有竞争力的薪酬`;
+};
+var ja_careers_benefits_paylabel1 = () => {
+	return `競争力のある給与`;
+};
+var ko_careers_benefits_paylabel1 = () => {
+	return `Competitive pay`;
+};
+var ru_careers_benefits_paylabel1 = () => {
+	return `Конкурентная зарплата`;
+};
+var careers_benefits_paylabel1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_benefits_paylabel1(inputs);
+	if (locale === "es") return es_careers_benefits_paylabel1(inputs);
+	if (locale === "de") return de_careers_benefits_paylabel1(inputs);
+	if (locale === "it") return it_careers_benefits_paylabel1(inputs);
+	if (locale === "pt") return pt_careers_benefits_paylabel1(inputs);
+	if (locale === "zh") return zh_careers_benefits_paylabel1(inputs);
+	if (locale === "ja") return ja_careers_benefits_paylabel1(inputs);
+	if (locale === "ko") return ko_careers_benefits_paylabel1(inputs);
+	if (locale === "ru") return ru_careers_benefits_paylabel1(inputs);
+	return en_careers_benefits_paylabel1(inputs);
+});
+var en_careers_benefits_payvalue1 = () => {
+	return `Top-of-market compensation`;
+};
+var fr_careers_benefits_payvalue1 = () => {
+	return `Fourchettes haut de marché`;
+};
+var es_careers_benefits_payvalue1 = () => {
+	return `Compensación superior a la del mercado`;
+};
+var de_careers_benefits_payvalue1 = () => {
+	return `Überdurchschnittliche Vergütung`;
+};
+var it_careers_benefits_payvalue1 = () => {
+	return `Compensazione ai vertici del mercato`;
+};
+var pt_careers_benefits_payvalue1 = () => {
+	return `Remuneração acima do mercado`;
+};
+var zh_careers_benefits_payvalue1 = () => {
+	return `市场顶尖的薪资水平`;
+};
+var ja_careers_benefits_payvalue1 = () => {
+	return `市場トップクラスの報酬`;
+};
+var ko_careers_benefits_payvalue1 = () => {
+	return `Top-of-market compensation`;
+};
+var ru_careers_benefits_payvalue1 = () => {
+	return `Вознаграждение выше рыночного`;
+};
+var careers_benefits_payvalue1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_benefits_payvalue1(inputs);
+	if (locale === "es") return es_careers_benefits_payvalue1(inputs);
+	if (locale === "de") return de_careers_benefits_payvalue1(inputs);
+	if (locale === "it") return it_careers_benefits_payvalue1(inputs);
+	if (locale === "pt") return pt_careers_benefits_payvalue1(inputs);
+	if (locale === "zh") return zh_careers_benefits_payvalue1(inputs);
+	if (locale === "ja") return ja_careers_benefits_payvalue1(inputs);
+	if (locale === "ko") return ko_careers_benefits_payvalue1(inputs);
+	if (locale === "ru") return ru_careers_benefits_payvalue1(inputs);
+	return en_careers_benefits_payvalue1(inputs);
+});
+var en_careers_benefits_remotelabel1 = () => {
+	return `Remote-first`;
+};
+var fr_careers_benefits_remotelabel1 = () => {
+	return `Remote-first`;
+};
+var es_careers_benefits_remotelabel1 = () => {
+	return `Remoto primero`;
+};
+var de_careers_benefits_remotelabel1 = () => {
+	return `Remote-First`;
+};
+var it_careers_benefits_remotelabel1 = () => {
+	return `Remote-first`;
+};
+var pt_careers_benefits_remotelabel1 = () => {
+	return `Remoto primeiro`;
+};
+var zh_careers_benefits_remotelabel1 = () => {
+	return `远程优先`;
+};
+var ja_careers_benefits_remotelabel1 = () => {
+	return `リモートファースト`;
+};
+var ko_careers_benefits_remotelabel1 = () => {
+	return `Remote-first`;
+};
+var ru_careers_benefits_remotelabel1 = () => {
+	return `Удаленная работа`;
+};
+var careers_benefits_remotelabel1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_benefits_remotelabel1(inputs);
+	if (locale === "es") return es_careers_benefits_remotelabel1(inputs);
+	if (locale === "de") return de_careers_benefits_remotelabel1(inputs);
+	if (locale === "it") return it_careers_benefits_remotelabel1(inputs);
+	if (locale === "pt") return pt_careers_benefits_remotelabel1(inputs);
+	if (locale === "zh") return zh_careers_benefits_remotelabel1(inputs);
+	if (locale === "ja") return ja_careers_benefits_remotelabel1(inputs);
+	if (locale === "ko") return ko_careers_benefits_remotelabel1(inputs);
+	if (locale === "ru") return ru_careers_benefits_remotelabel1(inputs);
+	return en_careers_benefits_remotelabel1(inputs);
+});
+var en_careers_benefits_remotevalue1 = () => {
+	return `Work from anywhere in the world`;
+};
+var fr_careers_benefits_remotevalue1 = () => {
+	return `Travaillez depuis n'importe où`;
+};
+var es_careers_benefits_remotevalue1 = () => {
+	return `Trabaja desde cualquier lugar del mundo`;
+};
+var de_careers_benefits_remotevalue1 = () => {
+	return `Arbeiten Sie von überall auf der Welt`;
+};
+var it_careers_benefits_remotevalue1 = () => {
+	return `Lavora da qualsiasi parte del mondo`;
+};
+var pt_careers_benefits_remotevalue1 = () => {
+	return `Trabalhe de qualquer lugar do mundo`;
+};
+var zh_careers_benefits_remotevalue1 = () => {
+	return `在世界任何地方工作`;
+};
+var ja_careers_benefits_remotevalue1 = () => {
+	return `世界中のどこからでも仕事ができます`;
+};
+var ko_careers_benefits_remotevalue1 = () => {
+	return `Work from anywhere in the world`;
+};
+var ru_careers_benefits_remotevalue1 = () => {
+	return `Работайте из любой точки мира`;
+};
+var careers_benefits_remotevalue1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_careers_benefits_remotevalue1(inputs);
+	if (locale === "es") return es_careers_benefits_remotevalue1(inputs);
+	if (locale === "de") return de_careers_benefits_remotevalue1(inputs);
+	if (locale === "it") return it_careers_benefits_remotevalue1(inputs);
+	if (locale === "pt") return pt_careers_benefits_remotevalue1(inputs);
+	if (locale === "zh") return zh_careers_benefits_remotevalue1(inputs);
+	if (locale === "ja") return ja_careers_benefits_remotevalue1(inputs);
+	if (locale === "ko") return ko_careers_benefits_remotevalue1(inputs);
+	if (locale === "ru") return ru_careers_benefits_remotevalue1(inputs);
+	return en_careers_benefits_remotevalue1(inputs);
+});
+var _tmpl$ = template(`<div class="mb-12 grid gap-4 md:grid-cols-3">`);
+var _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-4 text-center"><p class="text-sm font-semibold text-foreground"></p><p class="text-xs text-muted-foreground">`);
 function CareersBenefits() {
 	const benefits = () => [
 		{

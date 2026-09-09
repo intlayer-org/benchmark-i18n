@@ -6,7 +6,6 @@ import {
   Scripts,
   createRootRoute,
   useRouterState,
-  useRouter,
 } from "@tanstack/react-router";
 import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
@@ -83,24 +82,17 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       (s.pendingMatches as any)?.find((m: any) => m.params?.locale)?.params?.locale as string | undefined,
   });
   const locale = pendingLocale ?? committedLocale;
-  const router = useRouter();
 
   const { i18n } = useTranslation();
 
-  if (i18n.language !== locale) {
-    i18n.changeLanguage(locale);
-  }
-
+  // Must stay an effect keyed on the *committed* locale. Calling changeLanguage
+  // in the render body (or on the pending locale) re-enters render through
+  // react-i18next's own languageChanged subscription and never settles.
   useEffect(() => {
-    const handler = () => {
-      router.invalidate();
-    };
-
-    i18n.on("languageChanged", handler);
-    return () => {
-      i18n.off("languageChanged", handler);
-    };
-  }, []);
+    if (i18n.language !== committedLocale) {
+      i18n.changeLanguage(committedLocale);
+    }
+  }, [committedLocale]);
 
   return (
     <html lang={locale} suppressHydrationWarning>

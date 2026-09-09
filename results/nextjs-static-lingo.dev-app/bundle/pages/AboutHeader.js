@@ -1,6 +1,7 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -12,15 +13,28 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	usePerformanceMeasure("AboutHeader");
-	return jsxs(Fragment, { children: [jsx("h1", {
+	return jsxDEV(Fragment, { children: [jsxDEV("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: "About This Benchmark"
-	}), jsx("p", {
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 9,
+		columnNumber: 7
+	}, this), jsxDEV("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
-	})] });
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 12,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -51,10 +65,6 @@ var serverUrl = "__SERVER_URL__";
 var sourceLocale = "__SOURCE_LOCALE__";
 function getClientLocale() {
 	return "en";
-}
-var __NOOP_PERSIST_LOCALE__ = () => {};
-function persistLocale(locale) {
-	return __NOOP_PERSIST_LOCALE__();
 }
 var noop = () => {};
 var IS_DEV = process.env.NODE_ENV === "development";
@@ -95,7 +105,6 @@ function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, 
 		if (router) setTranslations(initialTranslations);
 	}, [initialTranslations, router]);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		else await loadTranslations(newLocale);
@@ -201,7 +210,6 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		};
 	}, []);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		setIsLoading(true);
@@ -222,7 +230,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -260,17 +268,31 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/about/AboutHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(AboutHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -372,12 +394,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

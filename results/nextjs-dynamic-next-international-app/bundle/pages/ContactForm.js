@@ -1,6 +1,6 @@
 import { useEffect, useId, useLayoutEffect, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+import { jsxDEV } from "react/jsx-dev-runtime";
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -109,8 +109,10 @@ var client = (0, __commonJSMin(((exports, module) => {
 				}
 			}
 			let value = scope ? content[`${scope}.${key}`] : content[key];
-			if (!value && isPlural) value = (_a = content[`${key.split("#", 1)[0]}#other`] || key) == null ? void 0 : _a.toString();
-			else value = (_b = value || key) == null ? void 0 : _b.toString();
+			if (!value && isPlural) {
+				const baseKey = key.split("#", 1)[0];
+				value = (_a = content[`${baseKey}#other`] || key) == null ? void 0 : _a.toString();
+			} else value = (_b = value || key) == null ? void 0 : _b.toString();
 			if (!paramObject) return value;
 			let isString = true;
 			const result = value == null ? void 0 : value.split(/({[^}]*})/).map((part, index) => {
@@ -206,84 +208,166 @@ var client = (0, __commonJSMin(((exports, module) => {
 			useCurrentLocale
 		};
 	}
+	0 && (module.exports = { createI18nClient });
 }))().createI18nClient)({
-	en: () => import("./en-BnbWsMCO.js"),
-	fr: () => import("./fr-CsBIckdq.js"),
-	es: () => import("./es-5nykIrN1.js"),
-	de: () => import("./de-5z_67fCj.js"),
-	it: () => import("./it-VYvgBvYH.js"),
-	pt: () => import("./pt-C3eBS-eu.js"),
-	zh: () => import("./zh-A5qwMN2w.js"),
-	ja: () => import("./ja-DyBsgnra.js"),
-	ko: () => import("./ko-DAyAkE0Z.js"),
-	ru: () => import("./ru-BpjOQgTw.js")
+	en: () => import("./en-B-39FaIp.js"),
+	fr: () => import("./fr-BE3TGc0B.js"),
+	es: () => import("./es-Br7KsWSj.js"),
+	de: () => import("./de-D5hjpD4Z.js"),
+	it: () => import("./it-Dkz5rfiJ.js"),
+	pt: () => import("./pt-Ch306vqQ.js"),
+	zh: () => import("./zh-DaH8-_Jh.js"),
+	ja: () => import("./ja-anHYRLbz.js"),
+	ko: () => import("./ko-CSnlqawM.js"),
+	ru: () => import("./ru-D4xtW0ZK.js")
 });
 function useI18n() {
 	return client.useI18n();
 }
 var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/contact/ContactForm.tsx";
 function ContactForm() {
 	const t = useI18n();
 	const nameId = useId();
 	const emailId = useId();
 	const topicId = useId();
 	const messageId = useId();
-	return jsxs("form", {
+	return jsxDEV("form", {
 		className: "space-y-6",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [jsxs("div", { children: [jsx("label", {
+				children: [jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("contact.contact-form.nameLabel")
-				}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 17,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: t("contact.contact-form.yourName")
-				})] }), jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 23,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 16,
+					columnNumber: 9
+				}, this), jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("contact.contact-form.emailLabel")
-				}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 30,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: t("contact.contact-form.emailPlaceholder")
-				})] })]
-			}),
-			jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 36,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 29,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 15,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: t("contact.contact-form.topicLabel")
-			}), jsxs("select", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 45,
+				columnNumber: 9
+			}, this), jsxDEV("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					jsx("option", { children: t("contact.contact-form.bugReport") }),
-					jsx("option", { children: t("contact.contact-form.newBenchmarkIdea") }),
-					jsx("option", { children: t("contact.contact-form.methodologyQuestion") }),
-					jsx("option", { children: t("header.contact") }),
-					jsx("option", { children: t("contact.contact-form.topicOther") })
+					jsxDEV("option", { children: t("contact.contact-form.bugReport") }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 55,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: t("contact.contact-form.newBenchmarkIdea") }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 56,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: t("contact.contact-form.methodologyQuestion") }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 57,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: t("header.contact") }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 58,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: t("contact.contact-form.topicOther") }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 59,
+						columnNumber: 11
+					}, this)
 				]
-			})] }),
-			jsxs("div", { children: [jsx("label", {
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 51,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 44,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: t("contact.contact-form.messageLabel")
-			}), jsx("textarea", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 63,
+				columnNumber: 9
+			}, this), jsxDEV("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: t("contact.contact-form.describeYourQuestionOrIdea")
-			})] }),
-			jsx("button", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 69,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 62,
+				columnNumber: 7
+			}, this),
+			jsxDEV("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: t("contact.contact-form.sendMessage")
-			})
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 76,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 14,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -307,6 +391,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -318,27 +403,45 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/contact/ContactForm.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ContactForm, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/de.json";
 var de_default = flattenMessages(messages);
 export { de_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 var en_default = flattenMessages({
 	"careers-header": {
 		"title": "Careers",
@@ -810,7 +913,7 @@ var en_default = flattenMessages({
 	}
 });
 export { en_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/es.json";
 var es_default = flattenMessages(messages);
 export { es_default as default };
@@ -824,31 +927,31 @@ function flattenMessages(obj, prefix = "") {
 	return result;
 }
 export { flattenMessages as t };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/fr.json";
 var fr_default = flattenMessages(messages);
 export { fr_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/it.json";
 var it_default = flattenMessages(messages);
 export { it_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/ja.json";
 var ja_default = flattenMessages(messages);
 export { ja_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/ko.json";
 var ko_default = flattenMessages(messages);
 export { ko_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/pt.json";
 var pt_default = flattenMessages(messages);
 export { pt_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/ru.json";
 var ru_default = flattenMessages(messages);
 export { ru_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/zh.json";
 var zh_default = flattenMessages(messages);
 export { zh_default as default };

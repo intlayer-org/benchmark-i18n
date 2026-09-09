@@ -1,6 +1,7 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { Fragment, createContext, useCallback, useContext, useEffect, useId, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var LingoContext = createContext(null);
 function useLingoContext() {
 	const context = useContext(LingoContext);
@@ -41,62 +42,8 @@ function getClientLocale() {
 function persistLocale(locale) {
 	if (typeof document !== "undefined") document.cookie = `locale=${locale}; path=/; max-age=31536000`;
 }
-var noop = () => {};
-var IS_DEV = process.env.NODE_ENV === "development";
 var BATCH_DELAY = 200;
-var LingoProvider = IS_DEV ? LingoProvider__Dev : LingoProvider__Prod;
-function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, children }) {
-	const [locale, setLocaleState] = useState(() => {
-		if (initialLocale) return initialLocale;
-		if (typeof window !== "undefined") return getClientLocale();
-		return "en";
-	});
-	const [translations, setTranslations] = useState(initialTranslations);
-	const [isLoading, setIsLoading] = useState(false);
-	logger.debug(`LingoProvider initialized with locale: ${locale}`, initialTranslations);
-	useEffect(() => {
-		if (typeof document !== "undefined") document.documentElement.lang = locale;
-	}, [locale]);
-	const loadTranslations = useCallback(async (targetLocale) => {
-		if (Object.keys(initialTranslations).length > 0) return;
-		setIsLoading(true);
-		try {
-			const response = await fetch(`/translations/${targetLocale}.json`);
-			if (!response.ok) throw new Error(`Failed to load translations for ${targetLocale}: ${response.statusText}`);
-			const data = await response.json();
-			setTranslations(data.entries || data);
-			logger.debug(`Loaded translations for ${targetLocale}:`, Object.keys(data.entries || data).length);
-		} catch (error) {
-			logger.error(`Failed to load translations for ${targetLocale}:`, error);
-			setTranslations({});
-		} finally {
-			setIsLoading(false);
-		}
-	}, [initialTranslations]);
-	useEffect(() => {
-		if (Object.keys(initialTranslations).length === 0) loadTranslations(locale);
-	}, []);
-	useEffect(() => {
-		if (router) setTranslations(initialTranslations);
-	}, [initialTranslations, router]);
-	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
-		setLocaleState(newLocale);
-		if (router) router.refresh();
-		else await loadTranslations(newLocale);
-	}, [router, loadTranslations]);
-	return jsx(LingoContext.Provider, {
-		value: {
-			locale,
-			setLocale,
-			translations,
-			registerHashes: noop,
-			isLoading,
-			sourceLocale: "en"
-		},
-		children
-	});
-}
+var LingoProvider = LingoProvider__Dev;
 function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, devWidget, children }) {
 	const [locale, setLocaleState] = useState(() => {
 		if (initialLocale) return initialLocale;
@@ -207,7 +154,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -1990,7 +1937,7 @@ var trimEnd = hasTrimEnd ? function trimEnd(s) {
 } : function trimEnd(s) {
 	return s.replace(SPACE_SEPARATOR_END_REGEX, "");
 };
-var IDENTIFIER_PREFIX_RE = /* @__PURE__ */ new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+var IDENTIFIER_PREFIX_RE = new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
 function matchIdentifierAtIndex(s, index) {
 	var _a;
 	IDENTIFIER_PREFIX_RE.lastIndex = index;
@@ -2030,9 +1977,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2148,14 +2096,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return String.fromCodePoint.apply(String, codePoints);
@@ -2358,9 +2307,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -2945,6 +2892,7 @@ var useTranslation = (hashes) => {
 		locale
 	};
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/pages/contact/ContactForm.tsx";
 function ContactForm() {
 	const { t } = useTranslation([
 		"44f585c0c6cf",
@@ -2965,74 +2913,168 @@ function ContactForm() {
 	const emailId = useId();
 	const topicId = useId();
 	const messageId = useId();
-	return jsxs("form", {
+	return jsxDEV("form", {
 		className: "space-y-6",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [jsxs("div", { children: [jsx("label", {
+				children: [jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("44f585c0c6cf", "Name")
-				}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 14,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: t("2d0d156bbf27", "Your name")
-				})] }), jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 15,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 13,
+					columnNumber: 9
+				}, this), jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("565efe771e7a", "Email")
-				}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 18,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: t("f77a4afa2d91", "you@example.com")
-				})] })]
-			}),
-			jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 19,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 17,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 12,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: t("28a2d0342569", "Topic")
-			}), jsxs("select", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 23,
+				columnNumber: 9
+			}, this), jsxDEV("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					jsx("option", { children: t("e48e458d70d4", "Bug Report") }),
-					jsx("option", { children: t("b4c85f3298e8", "New Benchmark Idea") }),
-					jsx("option", { children: t("f35354bd3497", "Methodology Question") }),
-					jsx("option", { children: t("d18fb2f8a25a", "Contribution") }),
-					jsx("option", { children: t("3da9c8b7465d", "Other") })
+					jsxDEV("option", { children: t("e48e458d70d4", "Bug Report") }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 25,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: t("b4c85f3298e8", "New Benchmark Idea") }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 26,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: t("f35354bd3497", "Methodology Question") }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 27,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: t("d18fb2f8a25a", "Contribution") }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 28,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: t("3da9c8b7465d", "Other") }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 29,
+						columnNumber: 11
+					}, this)
 				]
-			})] }),
-			jsxs("div", { children: [jsx("label", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 24,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 22,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: t("11359ede6cfd", "Message")
-			}), jsx("textarea", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 33,
+				columnNumber: 9
+			}, this), jsxDEV("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: t("e86ade1d4a78", "Describe your question or idea...")
-			})] }),
-			jsx("button", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 34,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 32,
+				columnNumber: 7
+			}, this),
+			jsxDEV("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: t("42484c60e902", "Send Message")
-			})
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 36,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 11,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/pages/contact/ContactForm.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ContactForm, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -3134,12 +3176,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

@@ -168,9 +168,10 @@ function resolveExpression(scope, expr) {
 }
 function resolveVariableReference(scope, { name }) {
 	let arg;
-	if (scope.params) if (Object.prototype.hasOwnProperty.call(scope.params, name)) arg = scope.params[name];
-	else return new FluentNone(`$${name}`);
-	else if (scope.args && Object.prototype.hasOwnProperty.call(scope.args, name)) arg = scope.args[name];
+	if (scope.params) {
+		if (Object.prototype.hasOwnProperty.call(scope.params, name)) arg = scope.params[name];
+		else return new FluentNone(`$${name}`);
+	} else if (scope.args && Object.prototype.hasOwnProperty.call(scope.args, name)) arg = scope.args[name];
 	else {
 		scope.reportError(/* @__PURE__ */ new ReferenceError(`Unknown variable: $${name}`));
 		return new FluentNone(`$${name}`);
@@ -4376,9 +4377,7 @@ var getDeep = (object, path) => {
 				case "key":
 					object = keyOfRow;
 					break;
-				case "value":
-					object = object.get(keyOfRow);
-					break;
+				case "value": object = object.get(keyOfRow);
 			}
 		} else object = object[key];
 	}
@@ -4406,9 +4405,7 @@ var setDeep = (object, path, mapper) => {
 				case "key":
 					parent = keyOfRow;
 					break;
-				case "value":
-					parent = parent.get(keyOfRow);
-					break;
+				case "value": parent = parent.get(keyOfRow);
 			}
 		}
 	}
@@ -4433,9 +4430,7 @@ var setDeep = (object, path, mapper) => {
 				if (newKey !== keyToRow) parent.delete(keyToRow);
 				break;
 			}
-			case "value":
-				parent.set(keyToRow, mapper(parent.get(keyToRow)));
-				break;
+			case "value": parent.set(keyToRow, mapper(parent.get(keyToRow)));
 		}
 	}
 	return object;
@@ -4545,16 +4540,6 @@ function isPlainObject$1(payload) {
 	const prototype = Object.getPrototypeOf(payload);
 	return !!prototype && prototype.constructor === Object && prototype === Object.prototype;
 }
-function isNull(payload) {
-	return getType(payload) === "Null";
-}
-function isOneOf(a, b, c, d, e) {
-	return (value) => a(value) || b(value) || !!c && c(value) || !!d && d(value) || !!e && e(value);
-}
-function isUndefined(payload) {
-	return getType(payload) === "Undefined";
-}
-isOneOf(isNull, isUndefined);
 function assignProp(carry, key, newVal, originalObject, includeNonenumerable) {
 	const propType = {}.propertyIsEnumerable.call(originalObject, key) ? "enumerable" : "nonenumerable";
 	if (propType === "enumerable") carry[key] = newVal;

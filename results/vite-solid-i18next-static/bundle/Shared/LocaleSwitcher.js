@@ -1,6 +1,6 @@
-import { createComponent, effect, insert, template } from "solid-js/web";
+import { createComponent, effect, insert, memo, template } from "solid-js/web";
 import { useLocation, useNavigate, useParams } from "@solidjs/router";
-import { For } from "solid-js";
+import { For, createSignal } from "solid-js";
 var locales = [
 	"en",
 	"fr",
@@ -21,13 +21,15 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
-var _tmpl$ = template(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary">`), _tmpl$2 = template(`<option>`);
+var _tmpl$ = template(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary">`);
+var _tmpl$2 = template(`<option>`);
 function LocaleSwitcher() {
 	const params = useParams();
 	const navigate = useNavigate();
 	const location = useLocation();
 	const handleLocaleChange = (newLocale) => {
-		navigate(`${location.pathname.replace(/^\/[^/]+/, `/${newLocale}`)}${location.search}${location.hash}`);
+		const newPath = location.pathname.replace(/^\/[^/]+/, `/${newLocale}`);
+		navigate(`${newPath}${location.search}${location.hash}`);
 	};
 	return (() => {
 		var _el$ = _tmpl$(), _el$2 = _el$.firstChild;
@@ -45,4 +47,5580 @@ function LocaleSwitcher() {
 		return _el$;
 	})();
 }
-export { LocaleSwitcher as default };
+var isString = (obj) => typeof obj === "string";
+var defer = () => {
+	let res;
+	let rej;
+	const promise = new Promise((resolve, reject) => {
+		res = resolve;
+		rej = reject;
+	});
+	promise.resolve = res;
+	promise.reject = rej;
+	return promise;
+};
+var makeString = (object) => {
+	if (object == null) return "";
+	return String(object);
+};
+var copy = (a, s, t) => {
+	a.forEach((m) => {
+		if (s[m]) t[m] = s[m];
+	});
+};
+var lastOfPathSeparatorRegExp = /###/g;
+var cleanKey = (key) => key && key.includes("###") ? key.replace(lastOfPathSeparatorRegExp, ".") : key;
+var canNotTraverseDeeper = (object) => !object || isString(object);
+var getLastOfPath = (object, path, Empty) => {
+	const stack = !isString(path) ? path : path.split(".");
+	let stackIndex = 0;
+	while (stackIndex < stack.length - 1) {
+		if (canNotTraverseDeeper(object)) return {};
+		const key = cleanKey(stack[stackIndex]);
+		if (!object[key] && Empty) object[key] = new Empty();
+		if (Object.prototype.hasOwnProperty.call(object, key)) object = object[key];
+		else object = {};
+		++stackIndex;
+	}
+	if (canNotTraverseDeeper(object)) return {};
+	return {
+		obj: object,
+		k: cleanKey(stack[stackIndex])
+	};
+};
+var setPath = (object, path, newValue) => {
+	const { obj, k } = getLastOfPath(object, path, Object);
+	if (obj !== void 0 || path.length === 1) {
+		obj[k] = newValue;
+		return;
+	}
+	let e = path[path.length - 1];
+	let p = path.slice(0, path.length - 1);
+	let last = getLastOfPath(object, p, Object);
+	while (last.obj === void 0 && p.length) {
+		e = `${p[p.length - 1]}.${e}`;
+		p = p.slice(0, p.length - 1);
+		last = getLastOfPath(object, p, Object);
+		if (last?.obj && typeof last.obj[`${last.k}.${e}`] !== "undefined") last.obj = void 0;
+	}
+	last.obj[`${last.k}.${e}`] = newValue;
+};
+var pushPath = (object, path, newValue, concat) => {
+	const { obj, k } = getLastOfPath(object, path, Object);
+	obj[k] = obj[k] || [];
+	obj[k].push(newValue);
+};
+var getPath = (object, path) => {
+	const { obj, k } = getLastOfPath(object, path);
+	if (!obj) return void 0;
+	if (!Object.prototype.hasOwnProperty.call(obj, k)) return void 0;
+	return obj[k];
+};
+var getPathWithDefaults = (data, defaultData, key) => {
+	const value = getPath(data, key);
+	if (value !== void 0) return value;
+	return getPath(defaultData, key);
+};
+var deepExtend = (target, source, overwrite) => {
+	for (const prop in source) if (prop !== "__proto__" && prop !== "constructor") {
+		if (Object.prototype.hasOwnProperty.call(target, prop)) {
+			if (isString(target[prop]) || target[prop] instanceof String || isString(source[prop]) || source[prop] instanceof String) {
+				if (overwrite) target[prop] = source[prop];
+			} else deepExtend(target[prop], source[prop], overwrite);
+		} else target[prop] = source[prop];
+	}
+	return target;
+};
+var regexEscape = (str) => str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+var _entityMap = {
+	"&": "&amp;",
+	"<": "&lt;",
+	">": "&gt;",
+	"\"": "&quot;",
+	"'": "&#39;",
+	"/": "&#x2F;"
+};
+var escape = (data) => {
+	if (isString(data)) return data.replace(/[&<>"'\/]/g, (s) => _entityMap[s]);
+	return data;
+};
+var RegExpCache = class {
+	constructor(capacity) {
+		this.capacity = capacity;
+		this.regExpMap = /* @__PURE__ */ new Map();
+		this.regExpQueue = [];
+	}
+	getRegExp(pattern) {
+		const regExpFromCache = this.regExpMap.get(pattern);
+		if (regExpFromCache !== void 0) return regExpFromCache;
+		const regExpNew = new RegExp(pattern);
+		if (this.regExpQueue.length === this.capacity) this.regExpMap.delete(this.regExpQueue.shift());
+		this.regExpMap.set(pattern, regExpNew);
+		this.regExpQueue.push(pattern);
+		return regExpNew;
+	}
+};
+var chars = [
+	" ",
+	",",
+	"?",
+	"!",
+	";"
+];
+var looksLikeObjectPathRegExpCache = new RegExpCache(20);
+var looksLikeObjectPath = (key, nsSeparator, keySeparator) => {
+	nsSeparator = nsSeparator || "";
+	keySeparator = keySeparator || "";
+	const possibleChars = chars.filter((c) => !nsSeparator.includes(c) && !keySeparator.includes(c));
+	if (possibleChars.length === 0) return true;
+	const r = looksLikeObjectPathRegExpCache.getRegExp(`(${possibleChars.map((c) => c === "?" ? "\\?" : c).join("|")})`);
+	let matched = !r.test(key);
+	if (!matched) {
+		const ki = key.indexOf(keySeparator);
+		if (ki > 0 && !r.test(key.substring(0, ki))) matched = true;
+	}
+	return matched;
+};
+var deepFind = (obj, path, keySeparator = ".") => {
+	if (!obj) return void 0;
+	if (obj[path]) {
+		if (!Object.prototype.hasOwnProperty.call(obj, path)) return void 0;
+		return obj[path];
+	}
+	const tokens = path.split(keySeparator);
+	let current = obj;
+	for (let i = 0; i < tokens.length;) {
+		if (!current || typeof current !== "object") return;
+		let next;
+		let nextPath = "";
+		for (let j = i; j < tokens.length; ++j) {
+			if (j !== i) nextPath += keySeparator;
+			nextPath += tokens[j];
+			next = current[nextPath];
+			if (next !== void 0) {
+				if ([
+					"string",
+					"number",
+					"boolean"
+				].includes(typeof next) && j < tokens.length - 1) continue;
+				i += j - i + 1;
+				break;
+			}
+		}
+		current = next;
+	}
+	return current;
+};
+var getCleanedCode = (code) => code?.replace(/_/g, "-");
+var consoleLogger = {
+	type: "logger",
+	log(args) {
+		this.output("log", args);
+	},
+	warn(args) {
+		this.output("warn", args);
+	},
+	error(args) {
+		this.output("error", args);
+	},
+	output(type, args) {
+		console?.[type]?.apply?.(console, args);
+	}
+};
+var baseLogger = new class Logger {
+	constructor(concreteLogger, options = {}) {
+		this.init(concreteLogger, options);
+	}
+	init(concreteLogger, options = {}) {
+		this.prefix = options.prefix || "i18next:";
+		this.logger = concreteLogger || consoleLogger;
+		this.options = options;
+		this.debug = options.debug;
+	}
+	log(...args) {
+		return this.forward(args, "log", "", true);
+	}
+	warn(...args) {
+		return this.forward(args, "warn", "", true);
+	}
+	error(...args) {
+		return this.forward(args, "error", "");
+	}
+	deprecate(...args) {
+		return this.forward(args, "warn", "WARNING DEPRECATED: ", true);
+	}
+	forward(args, lvl, prefix, debugOnly) {
+		if (debugOnly && !this.debug) return null;
+		args = args.map((a) => isString(a) ? a.replace(/[\r\n\x00-\x1F\x7F]/g, " ") : a);
+		if (isString(args[0])) args[0] = `${prefix}${this.prefix} ${args[0]}`;
+		return this.logger[lvl](args);
+	}
+	create(moduleName) {
+		return new Logger(this.logger, {
+			prefix: `${this.prefix}:${moduleName}:`,
+			...this.options
+		});
+	}
+	clone(options) {
+		options = options || this.options;
+		options.prefix = options.prefix || this.prefix;
+		return new Logger(this.logger, options);
+	}
+}();
+var EventEmitter = class {
+	constructor() {
+		this.observers = {};
+	}
+	on(events, listener) {
+		events.split(" ").forEach((event) => {
+			if (!this.observers[event]) this.observers[event] = /* @__PURE__ */ new Map();
+			const numListeners = this.observers[event].get(listener) || 0;
+			this.observers[event].set(listener, numListeners + 1);
+		});
+		return this;
+	}
+	off(event, listener) {
+		if (!this.observers[event]) return;
+		if (!listener) {
+			delete this.observers[event];
+			return;
+		}
+		this.observers[event].delete(listener);
+	}
+	once(event, listener) {
+		const wrapper = (...args) => {
+			listener(...args);
+			this.off(event, wrapper);
+		};
+		this.on(event, wrapper);
+		return this;
+	}
+	emit(event, ...args) {
+		if (this.observers[event]) Array.from(this.observers[event].entries()).forEach(([observer, numTimesAdded]) => {
+			for (let i = 0; i < numTimesAdded; i++) observer(...args);
+		});
+		if (this.observers["*"]) Array.from(this.observers["*"].entries()).forEach(([observer, numTimesAdded]) => {
+			for (let i = 0; i < numTimesAdded; i++) observer(event, ...args);
+		});
+	}
+};
+var ResourceStore = class extends EventEmitter {
+	constructor(data, options = {
+		ns: ["translation"],
+		defaultNS: "translation"
+	}) {
+		super();
+		this.data = data || {};
+		this.options = options;
+		if (this.options.keySeparator === void 0) this.options.keySeparator = ".";
+		if (this.options.ignoreJSONStructure === void 0) this.options.ignoreJSONStructure = true;
+	}
+	addNamespaces(ns) {
+		if (!this.options.ns.includes(ns)) this.options.ns.push(ns);
+	}
+	removeNamespaces(ns) {
+		const index = this.options.ns.indexOf(ns);
+		if (index > -1) this.options.ns.splice(index, 1);
+	}
+	getResource(lng, ns, key, options = {}) {
+		const keySeparator = options.keySeparator !== void 0 ? options.keySeparator : this.options.keySeparator;
+		const ignoreJSONStructure = options.ignoreJSONStructure !== void 0 ? options.ignoreJSONStructure : this.options.ignoreJSONStructure;
+		let path;
+		if (lng.includes(".")) path = lng.split(".");
+		else {
+			path = [lng, ns];
+			if (key) {
+				if (Array.isArray(key)) path.push(...key);
+				else if (isString(key) && keySeparator) path.push(...key.split(keySeparator));
+				else path.push(key);
+			}
+		}
+		const result = getPath(this.data, path);
+		if (!result && !ns && !key && lng.includes(".")) {
+			lng = path[0];
+			ns = path[1];
+			key = path.slice(2).join(".");
+		}
+		if (result || !ignoreJSONStructure || !isString(key)) return result;
+		return deepFind(this.data?.[lng]?.[ns], key, keySeparator);
+	}
+	addResource(lng, ns, key, value, options = { silent: false }) {
+		const keySeparator = options.keySeparator !== void 0 ? options.keySeparator : this.options.keySeparator;
+		let path = [lng, ns];
+		if (key) path = path.concat(keySeparator ? key.split(keySeparator) : key);
+		if (lng.includes(".")) {
+			path = lng.split(".");
+			value = ns;
+			ns = path[1];
+		}
+		this.addNamespaces(ns);
+		setPath(this.data, path, value);
+		if (!options.silent) this.emit("added", lng, ns, key, value);
+	}
+	addResources(lng, ns, resources, options = { silent: false }) {
+		for (const m in resources) if (isString(resources[m]) || Array.isArray(resources[m])) this.addResource(lng, ns, m, resources[m], { silent: true });
+		if (!options.silent) this.emit("added", lng, ns, resources);
+	}
+	addResourceBundle(lng, ns, resources, deep, overwrite, options = {
+		silent: false,
+		skipCopy: false
+	}) {
+		let path = [lng, ns];
+		if (lng.includes(".")) {
+			path = lng.split(".");
+			deep = resources;
+			resources = ns;
+			ns = path[1];
+		}
+		this.addNamespaces(ns);
+		let pack = getPath(this.data, path) || {};
+		if (!options.skipCopy) resources = JSON.parse(JSON.stringify(resources));
+		if (deep) deepExtend(pack, resources, overwrite);
+		else pack = {
+			...pack,
+			...resources
+		};
+		setPath(this.data, path, pack);
+		if (!options.silent) this.emit("added", lng, ns, resources);
+	}
+	removeResourceBundle(lng, ns) {
+		if (this.hasResourceBundle(lng, ns)) delete this.data[lng][ns];
+		this.removeNamespaces(ns);
+		this.emit("removed", lng, ns);
+	}
+	hasResourceBundle(lng, ns) {
+		return this.getResource(lng, ns) !== void 0;
+	}
+	getResourceBundle(lng, ns) {
+		if (!ns) ns = this.options.defaultNS;
+		return this.getResource(lng, ns);
+	}
+	getDataByLanguage(lng) {
+		return this.data[lng];
+	}
+	hasLanguageSomeTranslations(lng) {
+		const data = this.getDataByLanguage(lng);
+		return !!(data && Object.keys(data) || []).find((v) => data[v] && Object.keys(data[v]).length > 0);
+	}
+	toJSON() {
+		return this.data;
+	}
+};
+var postProcessor = {
+	processors: {},
+	addPostProcessor(module) {
+		this.processors[module.name] = module;
+	},
+	handle(processors, value, key, options, translator) {
+		processors.forEach((processor) => {
+			value = this.processors[processor]?.process(value, key, options, translator) ?? value;
+		});
+		return value;
+	}
+};
+var PATH_KEY = Symbol("i18next/PATH_KEY");
+function createProxy() {
+	const state = [];
+	const handler = Object.create(null);
+	let proxy;
+	handler.get = (target, key) => {
+		proxy?.revoke?.();
+		if (key === PATH_KEY) return state;
+		state.push(key);
+		proxy = Proxy.revocable(target, handler);
+		return proxy.proxy;
+	};
+	return Proxy.revocable(Object.create(null), handler).proxy;
+}
+function keysFromSelector(selector, opts) {
+	const { [PATH_KEY]: path } = selector(createProxy());
+	const keySeparator = opts?.keySeparator ?? ".";
+	const nsSeparator = opts?.nsSeparator ?? ":";
+	const strict = opts?.enableSelector === "strict";
+	if (path.length > 1 && nsSeparator) {
+		const ns = opts?.ns;
+		const nsList = strict ? Array.isArray(ns) ? ns : ns ? [ns] : null : Array.isArray(ns) ? ns : null;
+		if (nsList) {
+			if ((strict ? nsList : nsList.length > 1 ? nsList.slice(1) : []).includes(path[0])) return `${path[0]}${nsSeparator}${path.slice(1).join(keySeparator)}`;
+		}
+	}
+	return path.join(keySeparator);
+}
+var shouldHandleAsObject = (res) => !isString(res) && typeof res !== "boolean" && typeof res !== "number";
+var Translator = class Translator extends EventEmitter {
+	constructor(services, options = {}) {
+		super();
+		copy([
+			"resourceStore",
+			"languageUtils",
+			"pluralResolver",
+			"interpolator",
+			"backendConnector",
+			"i18nFormat",
+			"utils"
+		], services, this);
+		this.options = options;
+		if (this.options.keySeparator === void 0) this.options.keySeparator = ".";
+		this.logger = baseLogger.create("translator");
+		this.checkedLoadedFor = {};
+	}
+	changeLanguage(lng) {
+		if (lng) this.language = lng;
+	}
+	exists(key, o = { interpolation: {} }) {
+		const opt = { ...o };
+		if (key == null) return false;
+		const resolved = this.resolve(key, opt);
+		if (resolved?.res === void 0) return false;
+		const isObject = shouldHandleAsObject(resolved.res);
+		if (opt.returnObjects === false && isObject) return false;
+		return true;
+	}
+	extractFromKey(key, opt) {
+		let nsSeparator = opt.nsSeparator !== void 0 ? opt.nsSeparator : this.options.nsSeparator;
+		if (nsSeparator === void 0) nsSeparator = ":";
+		const keySeparator = opt.keySeparator !== void 0 ? opt.keySeparator : this.options.keySeparator;
+		let namespaces = opt.ns || this.options.defaultNS || [];
+		const wouldCheckForNsInKey = nsSeparator && key.includes(nsSeparator);
+		const seemsNaturalLanguage = !this.options.userDefinedKeySeparator && !opt.keySeparator && !this.options.userDefinedNsSeparator && !opt.nsSeparator && !looksLikeObjectPath(key, nsSeparator, keySeparator);
+		if (wouldCheckForNsInKey && !seemsNaturalLanguage) {
+			const m = key.match(this.interpolator.nestingRegexp);
+			if (m && m.length > 0) return {
+				key,
+				namespaces: isString(namespaces) ? [namespaces] : namespaces
+			};
+			const parts = key.split(nsSeparator);
+			if (nsSeparator !== keySeparator || nsSeparator === keySeparator && this.options.ns.includes(parts[0])) namespaces = parts.shift();
+			key = parts.join(keySeparator);
+		}
+		return {
+			key,
+			namespaces: isString(namespaces) ? [namespaces] : namespaces
+		};
+	}
+	translate(keys, o, lastKey) {
+		let opt = typeof o === "object" ? { ...o } : o;
+		if (typeof opt !== "object" && this.options.overloadTranslationOptionHandler) opt = this.options.overloadTranslationOptionHandler(arguments);
+		if (typeof opt === "object") opt = { ...opt };
+		if (!opt) opt = {};
+		if (keys == null) return "";
+		if (typeof keys === "function") keys = keysFromSelector(keys, {
+			...this.options,
+			...opt
+		});
+		if (!Array.isArray(keys)) keys = [String(keys)];
+		keys = keys.map((k) => typeof k === "function" ? keysFromSelector(k, {
+			...this.options,
+			...opt
+		}) : String(k));
+		const returnDetails = opt.returnDetails !== void 0 ? opt.returnDetails : this.options.returnDetails;
+		const keySeparator = opt.keySeparator !== void 0 ? opt.keySeparator : this.options.keySeparator;
+		const { key, namespaces } = this.extractFromKey(keys[keys.length - 1], opt);
+		const namespace = namespaces[namespaces.length - 1];
+		let nsSeparator = opt.nsSeparator !== void 0 ? opt.nsSeparator : this.options.nsSeparator;
+		if (nsSeparator === void 0) nsSeparator = ":";
+		const lng = opt.lng || this.language;
+		const appendNamespaceToCIMode = opt.appendNamespaceToCIMode || this.options.appendNamespaceToCIMode;
+		if (lng?.toLowerCase() === "cimode") {
+			if (appendNamespaceToCIMode) {
+				if (returnDetails) return {
+					res: `${namespace}${nsSeparator}${key}`,
+					usedKey: key,
+					exactUsedKey: key,
+					usedLng: lng,
+					usedNS: namespace,
+					usedParams: this.getUsedParamsDetails(opt)
+				};
+				return `${namespace}${nsSeparator}${key}`;
+			}
+			if (returnDetails) return {
+				res: key,
+				usedKey: key,
+				exactUsedKey: key,
+				usedLng: lng,
+				usedNS: namespace,
+				usedParams: this.getUsedParamsDetails(opt)
+			};
+			return key;
+		}
+		const resolved = this.resolve(keys, opt);
+		let res = resolved?.res;
+		const resUsedKey = resolved?.usedKey || key;
+		const resExactUsedKey = resolved?.exactUsedKey || key;
+		const noObject = [
+			"[object Number]",
+			"[object Function]",
+			"[object RegExp]"
+		];
+		const joinArrays = opt.joinArrays !== void 0 ? opt.joinArrays : this.options.joinArrays;
+		const handleAsObjectInI18nFormat = !this.i18nFormat || this.i18nFormat.handleAsObject;
+		const needsPluralHandling = opt.count !== void 0 && !isString(opt.count);
+		const hasDefaultValue = Translator.hasDefaultValue(opt);
+		const defaultValueSuffix = needsPluralHandling ? this.pluralResolver.getSuffix(lng, opt.count, opt) : "";
+		const defaultValueSuffixOrdinalFallback = opt.ordinal && needsPluralHandling ? this.pluralResolver.getSuffix(lng, opt.count, { ordinal: false }) : "";
+		const needsZeroSuffixLookup = needsPluralHandling && !opt.ordinal && opt.count === 0;
+		const defaultValue = needsZeroSuffixLookup && opt[`defaultValue${this.options.pluralSeparator}zero`] || opt[`defaultValue${defaultValueSuffix}`] || opt[`defaultValue${defaultValueSuffixOrdinalFallback}`] || opt.defaultValue;
+		let resForObjHndl = res;
+		if (handleAsObjectInI18nFormat && !res && hasDefaultValue) resForObjHndl = defaultValue;
+		const handleAsObject = shouldHandleAsObject(resForObjHndl);
+		const resType = Object.prototype.toString.apply(resForObjHndl);
+		if (handleAsObjectInI18nFormat && resForObjHndl && handleAsObject && !noObject.includes(resType) && !(isString(joinArrays) && Array.isArray(resForObjHndl))) {
+			if (!opt.returnObjects && !this.options.returnObjects) {
+				if (!this.options.returnedObjectHandler) this.logger.warn("accessing an object - but returnObjects options is not enabled!");
+				const r = this.options.returnedObjectHandler ? this.options.returnedObjectHandler(resUsedKey, resForObjHndl, {
+					...opt,
+					ns: namespaces
+				}) : `key '${key} (${this.language})' returned an object instead of string.`;
+				if (returnDetails) {
+					resolved.res = r;
+					resolved.usedParams = this.getUsedParamsDetails(opt);
+					return resolved;
+				}
+				return r;
+			}
+			if (keySeparator) {
+				const resTypeIsArray = Array.isArray(resForObjHndl);
+				const copy = resTypeIsArray ? [] : {};
+				const newKeyToUse = resTypeIsArray ? resExactUsedKey : resUsedKey;
+				for (const m in resForObjHndl) if (Object.prototype.hasOwnProperty.call(resForObjHndl, m)) {
+					const deepKey = `${newKeyToUse}${keySeparator}${m}`;
+					if (hasDefaultValue && !res) copy[m] = this.translate(deepKey, {
+						...opt,
+						defaultValue: shouldHandleAsObject(defaultValue) ? defaultValue[m] : void 0,
+						joinArrays: false,
+						ns: namespaces
+					});
+					else copy[m] = this.translate(deepKey, {
+						...opt,
+						joinArrays: false,
+						ns: namespaces
+					});
+					if (copy[m] === deepKey) copy[m] = resForObjHndl[m];
+				}
+				res = copy;
+			}
+		} else if (handleAsObjectInI18nFormat && isString(joinArrays) && Array.isArray(res)) {
+			res = res.join(joinArrays);
+			if (res) res = this.extendTranslation(res, keys, opt, lastKey);
+		} else {
+			let usedDefault = false;
+			let usedKey = false;
+			if (!this.isValidLookup(res) && hasDefaultValue) {
+				usedDefault = true;
+				res = defaultValue;
+			}
+			if (!this.isValidLookup(res)) {
+				usedKey = true;
+				res = key;
+			}
+			const resForMissing = (opt.missingKeyNoValueFallbackToKey || this.options.missingKeyNoValueFallbackToKey) && usedKey ? void 0 : res;
+			const updateMissing = hasDefaultValue && defaultValue !== res && this.options.updateMissing;
+			if (usedKey || usedDefault || updateMissing) {
+				this.logger.log(updateMissing ? "updateKey" : "missingKey", lng, namespace, needsPluralHandling && !updateMissing ? `${key}${this.pluralResolver.getSuffix(lng, opt.count, opt)}` : key, updateMissing ? defaultValue : res);
+				if (keySeparator) {
+					const fk = this.resolve(key, {
+						...opt,
+						keySeparator: false
+					});
+					if (fk && fk.res) this.logger.warn("Seems the loaded translations were in flat JSON format instead of nested. Either set keySeparator: false on init or make sure your translations are published in nested format.");
+				}
+				let lngs = [];
+				const fallbackLngs = this.languageUtils.getFallbackCodes(this.options.fallbackLng, opt.lng || this.language);
+				if (this.options.saveMissingTo === "fallback" && fallbackLngs && fallbackLngs[0]) for (let i = 0; i < fallbackLngs.length; i++) lngs.push(fallbackLngs[i]);
+				else if (this.options.saveMissingTo === "all") lngs = this.languageUtils.toResolveHierarchy(opt.lng || this.language);
+				else lngs.push(opt.lng || this.language);
+				const send = (l, k, specificDefaultValue) => {
+					const defaultForMissing = hasDefaultValue && specificDefaultValue !== res ? specificDefaultValue : resForMissing;
+					if (this.options.missingKeyHandler) this.options.missingKeyHandler(l, namespace, k, defaultForMissing, updateMissing, opt);
+					else if (this.backendConnector?.saveMissing) this.backendConnector.saveMissing(l, namespace, k, defaultForMissing, updateMissing, opt);
+					this.emit("missingKey", l, namespace, k, res);
+				};
+				if (this.options.saveMissing) {
+					if (this.options.saveMissingPlurals && needsPluralHandling) lngs.forEach((language) => {
+						const suffixes = this.pluralResolver.getSuffixes(language, opt);
+						if (needsZeroSuffixLookup && opt[`defaultValue${this.options.pluralSeparator}zero`] && !suffixes.includes(`${this.options.pluralSeparator}zero`)) suffixes.push(`${this.options.pluralSeparator}zero`);
+						suffixes.forEach((suffix) => {
+							send([language], key + suffix, opt[`defaultValue${suffix}`] || defaultValue);
+						});
+					});
+					else send(lngs, key, defaultValue);
+				}
+			}
+			res = this.extendTranslation(res, keys, opt, resolved, lastKey);
+			if (usedKey && res === key && this.options.appendNamespaceToMissingKey) res = `${namespace}${nsSeparator}${key}`;
+			if ((usedKey || usedDefault) && this.options.parseMissingKeyHandler) res = this.options.parseMissingKeyHandler(this.options.appendNamespaceToMissingKey ? `${namespace}${nsSeparator}${key}` : key, usedDefault ? res : void 0, opt);
+		}
+		if (returnDetails) {
+			resolved.res = res;
+			resolved.usedParams = this.getUsedParamsDetails(opt);
+			return resolved;
+		}
+		return res;
+	}
+	extendTranslation(res, key, opt, resolved, lastKey) {
+		if (this.i18nFormat?.parse) res = this.i18nFormat.parse(res, {
+			...this.options.interpolation.defaultVariables,
+			...opt
+		}, opt.lng || this.language || resolved.usedLng, resolved.usedNS, resolved.usedKey, { resolved });
+		else if (!opt.skipInterpolation) {
+			if (opt.interpolation) this.interpolator.init({
+				...opt,
+				interpolation: {
+					...this.options.interpolation,
+					...opt.interpolation
+				}
+			});
+			const skipOnVariables = isString(res) && (opt?.interpolation?.skipOnVariables !== void 0 ? opt.interpolation.skipOnVariables : this.options.interpolation.skipOnVariables);
+			let nestBef;
+			if (skipOnVariables) {
+				const nb = res.match(this.interpolator.nestingRegexp);
+				nestBef = nb && nb.length;
+			}
+			let data = opt.replace && !isString(opt.replace) ? opt.replace : opt;
+			if (this.options.interpolation.defaultVariables) data = {
+				...this.options.interpolation.defaultVariables,
+				...data
+			};
+			res = this.interpolator.interpolate(res, data, opt.lng || this.language || resolved.usedLng, opt);
+			if (skipOnVariables) {
+				const na = res.match(this.interpolator.nestingRegexp);
+				const nestAft = na && na.length;
+				if (nestBef < nestAft) opt.nest = false;
+			}
+			if (!opt.lng && resolved && resolved.res) opt.lng = this.language || resolved.usedLng;
+			if (opt.nest !== false) res = this.interpolator.nest(res, (...args) => {
+				if (lastKey?.[0] === args[0] && !opt.context) {
+					this.logger.warn(`It seems you are nesting recursively key: ${args[0]} in key: ${key[0]}`);
+					return null;
+				}
+				return this.translate(...args, key);
+			}, opt);
+			if (opt.interpolation) this.interpolator.reset();
+		}
+		const postProcess = opt.postProcess || this.options.postProcess;
+		const postProcessorNames = isString(postProcess) ? [postProcess] : postProcess;
+		if (res != null && postProcessorNames?.length && opt.applyPostProcessor !== false) res = postProcessor.handle(postProcessorNames, res, key, this.options && this.options.postProcessPassResolved ? {
+			i18nResolved: {
+				...resolved,
+				usedParams: this.getUsedParamsDetails(opt)
+			},
+			...opt
+		} : opt, this);
+		return res;
+	}
+	resolve(keys, opt = {}) {
+		let found;
+		let usedKey;
+		let exactUsedKey;
+		let usedLng;
+		let usedNS;
+		if (isString(keys)) keys = [keys];
+		if (Array.isArray(keys)) keys = keys.map((k) => typeof k === "function" ? keysFromSelector(k, {
+			...this.options,
+			...opt
+		}) : k);
+		keys.forEach((k) => {
+			if (this.isValidLookup(found)) return;
+			const extracted = this.extractFromKey(k, opt);
+			const key = extracted.key;
+			usedKey = key;
+			let namespaces = extracted.namespaces;
+			if (this.options.fallbackNS) namespaces = namespaces.concat(this.options.fallbackNS);
+			const needsPluralHandling = opt.count !== void 0 && !isString(opt.count);
+			const needsZeroSuffixLookup = needsPluralHandling && !opt.ordinal && opt.count === 0;
+			const needsContextHandling = opt.context !== void 0 && (isString(opt.context) || typeof opt.context === "number") && opt.context !== "";
+			const codes = opt.lngs ? opt.lngs : this.languageUtils.toResolveHierarchy(opt.lng || this.language, opt.fallbackLng);
+			namespaces.forEach((ns) => {
+				if (this.isValidLookup(found)) return;
+				usedNS = ns;
+				if (!this.checkedLoadedFor[`${codes[0]}-${ns}`] && this.utils?.hasLoadedNamespace && !this.utils?.hasLoadedNamespace(usedNS)) {
+					this.checkedLoadedFor[`${codes[0]}-${ns}`] = true;
+					this.logger.warn(`key "${usedKey}" for languages "${codes.join(", ")}" won't get resolved as namespace "${usedNS}" was not yet loaded`, "This means something IS WRONG in your setup. You access the t function before i18next.init / i18next.loadNamespace / i18next.changeLanguage was done. Wait for the callback or Promise to resolve before accessing it!!!");
+				}
+				codes.forEach((code) => {
+					if (this.isValidLookup(found)) return;
+					usedLng = code;
+					const finalKeys = [key];
+					if (this.i18nFormat?.addLookupKeys) this.i18nFormat.addLookupKeys(finalKeys, key, code, ns, opt);
+					else {
+						let pluralSuffix;
+						if (needsPluralHandling) pluralSuffix = this.pluralResolver.getSuffix(code, opt.count, opt);
+						const zeroSuffix = `${this.options.pluralSeparator}zero`;
+						const ordinalPrefix = `${this.options.pluralSeparator}ordinal${this.options.pluralSeparator}`;
+						if (needsPluralHandling) {
+							if (opt.ordinal && pluralSuffix.startsWith(ordinalPrefix)) finalKeys.push(key + pluralSuffix.replace(ordinalPrefix, this.options.pluralSeparator));
+							finalKeys.push(key + pluralSuffix);
+							if (needsZeroSuffixLookup) finalKeys.push(key + zeroSuffix);
+						}
+						if (needsContextHandling) {
+							const contextKey = `${key}${this.options.contextSeparator || "_"}${opt.context}`;
+							finalKeys.push(contextKey);
+							if (needsPluralHandling) {
+								if (opt.ordinal && pluralSuffix.startsWith(ordinalPrefix)) finalKeys.push(contextKey + pluralSuffix.replace(ordinalPrefix, this.options.pluralSeparator));
+								finalKeys.push(contextKey + pluralSuffix);
+								if (needsZeroSuffixLookup) finalKeys.push(contextKey + zeroSuffix);
+							}
+						}
+					}
+					let possibleKey;
+					while (possibleKey = finalKeys.pop()) if (!this.isValidLookup(found)) {
+						exactUsedKey = possibleKey;
+						found = this.getResource(code, ns, possibleKey, opt);
+					}
+				});
+			});
+		});
+		return {
+			res: found,
+			usedKey,
+			exactUsedKey,
+			usedLng,
+			usedNS
+		};
+	}
+	isValidLookup(res) {
+		return res !== void 0 && !(!this.options.returnNull && res === null) && !(!this.options.returnEmptyString && res === "");
+	}
+	getResource(code, ns, key, options = {}) {
+		if (this.i18nFormat?.getResource) return this.i18nFormat.getResource(code, ns, key, options);
+		return this.resourceStore.getResource(code, ns, key, options);
+	}
+	getUsedParamsDetails(options = {}) {
+		const optionsKeys = [
+			"defaultValue",
+			"ordinal",
+			"context",
+			"replace",
+			"lng",
+			"lngs",
+			"fallbackLng",
+			"ns",
+			"keySeparator",
+			"nsSeparator",
+			"returnObjects",
+			"returnDetails",
+			"joinArrays",
+			"postProcess",
+			"interpolation"
+		];
+		const useOptionsReplaceForData = options.replace && !isString(options.replace);
+		let data = useOptionsReplaceForData ? options.replace : options;
+		if (useOptionsReplaceForData && typeof options.count !== "undefined") data = {
+			...data,
+			count: options.count
+		};
+		if (this.options.interpolation.defaultVariables) data = {
+			...this.options.interpolation.defaultVariables,
+			...data
+		};
+		if (!useOptionsReplaceForData) {
+			data = { ...data };
+			for (const key of optionsKeys) delete data[key];
+		}
+		return data;
+	}
+	static hasDefaultValue(options) {
+		const prefix = "defaultValue";
+		for (const option in options) if (Object.prototype.hasOwnProperty.call(options, option) && option.startsWith(prefix) && void 0 !== options[option]) return true;
+		return false;
+	}
+};
+var LanguageUtil = class {
+	constructor(options) {
+		this.options = options;
+		this.supportedLngs = this.options.supportedLngs || false;
+		this.logger = baseLogger.create("languageUtils");
+		this.resolveHierarchyCache = {};
+	}
+	clearCache() {
+		this.resolveHierarchyCache = {};
+	}
+	getScriptPartFromCode(code) {
+		code = getCleanedCode(code);
+		if (!code || !code.includes("-")) return null;
+		const p = code.split("-");
+		if (p.length === 2) return null;
+		p.pop();
+		if (p[p.length - 1].toLowerCase() === "x") return null;
+		return this.formatLanguageCode(p.join("-"));
+	}
+	getLanguagePartFromCode(code) {
+		code = getCleanedCode(code);
+		if (!code || !code.includes("-")) return code;
+		const p = code.split("-");
+		return this.formatLanguageCode(p[0]);
+	}
+	formatLanguageCode(code) {
+		if (isString(code) && code.includes("-")) {
+			let formattedCode;
+			try {
+				formattedCode = Intl.getCanonicalLocales(code)[0];
+			} catch (e) {}
+			if (formattedCode && this.options.lowerCaseLng) formattedCode = formattedCode.toLowerCase();
+			if (formattedCode) return formattedCode;
+			if (this.options.lowerCaseLng) return code.toLowerCase();
+			return code;
+		}
+		return this.options.cleanCode || this.options.lowerCaseLng ? code.toLowerCase() : code;
+	}
+	isSupportedCode(code) {
+		if (this.options.load === "languageOnly" || this.options.nonExplicitSupportedLngs) code = this.getLanguagePartFromCode(code);
+		return !this.supportedLngs || !this.supportedLngs.length || this.supportedLngs.includes(code);
+	}
+	getBestMatchFromCodes(codes) {
+		if (!codes) return null;
+		let found;
+		codes.forEach((code) => {
+			if (found) return;
+			const cleanedLng = this.formatLanguageCode(code);
+			if (!this.options.supportedLngs || this.isSupportedCode(cleanedLng)) found = cleanedLng;
+		});
+		if (!found && this.options.supportedLngs) codes.forEach((code) => {
+			if (found) return;
+			const lngScOnly = this.getScriptPartFromCode(code);
+			if (this.isSupportedCode(lngScOnly)) return found = lngScOnly;
+			const lngOnly = this.getLanguagePartFromCode(code);
+			if (this.isSupportedCode(lngOnly)) return found = lngOnly;
+			found = this.options.supportedLngs.find((supportedLng) => {
+				if (supportedLng === lngOnly) return true;
+				if (!supportedLng.includes("-") && !lngOnly.includes("-")) return false;
+				if (supportedLng.includes("-") && !lngOnly.includes("-") && supportedLng.slice(0, supportedLng.indexOf("-")) === lngOnly) return true;
+				if (supportedLng.startsWith(lngOnly) && lngOnly.length > 1) return true;
+				return false;
+			});
+		});
+		if (!found) found = this.getFallbackCodes(this.options.fallbackLng)[0];
+		return found;
+	}
+	getFallbackCodes(fallbacks, code) {
+		if (!fallbacks) return [];
+		if (typeof fallbacks === "function") fallbacks = fallbacks(code);
+		if (isString(fallbacks)) fallbacks = [fallbacks];
+		if (Array.isArray(fallbacks)) return fallbacks;
+		if (!code) return fallbacks.default || [];
+		let found = fallbacks[code];
+		if (!found) found = fallbacks[this.getScriptPartFromCode(code)];
+		if (!found) found = fallbacks[this.formatLanguageCode(code)];
+		if (!found) found = fallbacks[this.getLanguagePartFromCode(code)];
+		if (!found) found = fallbacks.default;
+		return found || [];
+	}
+	toResolveHierarchy(code, fallbackCode) {
+		const fallbackLng = this.options.fallbackLng;
+		const fallbackLngKey = Array.isArray(fallbackLng) ? fallbackLng.join("|") : fallbackLng;
+		if (fallbackLngKey !== this._cachedFallbackLng) {
+			this.resolveHierarchyCache = {};
+			this._cachedFallbackLng = fallbackLngKey;
+		}
+		const hasCacheableFallback = fallbackCode === void 0 || fallbackCode === false || isString(fallbackCode);
+		const usesUncacheableOptionsFallback = fallbackCode === void 0 && typeof this.options.fallbackLng === "function";
+		const cacheable = isString(code) && hasCacheableFallback && !usesUncacheableOptionsFallback;
+		let cacheKey = null;
+		if (cacheable) {
+			let fallbackCacheKey;
+			if (fallbackCode === void 0) fallbackCacheKey = "undefined";
+			else if (fallbackCode === false) fallbackCacheKey = "boolean:false";
+			else fallbackCacheKey = `string:${fallbackCode}`;
+			cacheKey = `${code.length}:${code}|${fallbackCacheKey}`;
+		}
+		if (cacheKey !== null) {
+			const cached = this.resolveHierarchyCache[cacheKey];
+			if (cached !== void 0) return cached.slice();
+		}
+		const fallbackCodes = this.getFallbackCodes((fallbackCode === false ? [] : fallbackCode) || this.options.fallbackLng || [], code);
+		const codes = [];
+		const addCode = (c) => {
+			if (!c) return;
+			if (this.isSupportedCode(c)) codes.push(c);
+			else this.logger.warn(`rejecting language code not found in supportedLngs: ${c}`);
+		};
+		if (isString(code) && (code.includes("-") || code.includes("_"))) {
+			if (this.options.load !== "languageOnly") addCode(this.formatLanguageCode(code));
+			if (this.options.load !== "languageOnly" && this.options.load !== "currentOnly") addCode(this.getScriptPartFromCode(code));
+			if (this.options.load !== "currentOnly") addCode(this.getLanguagePartFromCode(code));
+		} else if (isString(code)) addCode(this.formatLanguageCode(code));
+		fallbackCodes.forEach((fc) => {
+			if (!codes.includes(fc)) addCode(this.formatLanguageCode(fc));
+		});
+		if (cacheKey !== null) {
+			this.resolveHierarchyCache[cacheKey] = codes;
+			return codes.slice();
+		}
+		return codes;
+	}
+};
+var suffixesOrder = {
+	zero: 0,
+	one: 1,
+	two: 2,
+	few: 3,
+	many: 4,
+	other: 5
+};
+var dummyRule = {
+	select: (count) => count === 1 ? "one" : "other",
+	resolvedOptions: () => ({ pluralCategories: ["one", "other"] })
+};
+var PluralResolver = class {
+	constructor(languageUtils, options = {}) {
+		this.languageUtils = languageUtils;
+		this.options = options;
+		this.logger = baseLogger.create("pluralResolver");
+		this.pluralRulesCache = {};
+	}
+	clearCache() {
+		this.pluralRulesCache = {};
+	}
+	getRule(code, options = {}) {
+		const cleanedCode = getCleanedCode(code === "dev" ? "en" : code);
+		const type = options.ordinal ? "ordinal" : "cardinal";
+		const cacheKey = JSON.stringify({
+			cleanedCode,
+			type
+		});
+		if (cacheKey in this.pluralRulesCache) return this.pluralRulesCache[cacheKey];
+		let rule;
+		try {
+			rule = new Intl.PluralRules(cleanedCode, { type });
+		} catch (err) {
+			if (typeof Intl === "undefined") {
+				this.logger.error("No Intl support, please use an Intl polyfill!");
+				return dummyRule;
+			}
+			if (!code.match(/-|_/)) return dummyRule;
+			const lngPart = this.languageUtils.getLanguagePartFromCode(code);
+			rule = this.getRule(lngPart, options);
+		}
+		this.pluralRulesCache[cacheKey] = rule;
+		return rule;
+	}
+	needsPlural(code, options = {}) {
+		let rule = this.getRule(code, options);
+		if (!rule) rule = this.getRule("dev", options);
+		return rule?.resolvedOptions().pluralCategories.length > 1;
+	}
+	getPluralFormsOfKey(code, key, options = {}) {
+		return this.getSuffixes(code, options).map((suffix) => `${key}${suffix}`);
+	}
+	getSuffixes(code, options = {}) {
+		let rule = this.getRule(code, options);
+		if (!rule) rule = this.getRule("dev", options);
+		if (!rule) return [];
+		return rule.resolvedOptions().pluralCategories.sort((pluralCategory1, pluralCategory2) => suffixesOrder[pluralCategory1] - suffixesOrder[pluralCategory2]).map((pluralCategory) => `${this.options.prepend}${options.ordinal ? `ordinal${this.options.prepend}` : ""}${pluralCategory}`);
+	}
+	getSuffix(code, count, options = {}) {
+		const rule = this.getRule(code, options);
+		if (rule) return `${this.options.prepend}${options.ordinal ? `ordinal${this.options.prepend}` : ""}${rule.select(count)}`;
+		this.logger.warn(`no plural rule found for: ${code}`);
+		return this.getSuffix("dev", count, options);
+	}
+};
+var deepFindWithDefaults = (data, defaultData, key, keySeparator = ".", ignoreJSONStructure = true) => {
+	let path = getPathWithDefaults(data, defaultData, key);
+	if (!path && ignoreJSONStructure && isString(key)) {
+		path = deepFind(data, key, keySeparator);
+		if (path === void 0) path = deepFind(defaultData, key, keySeparator);
+	}
+	return path;
+};
+var regexSafe = (val) => val.replace(/\$/g, "$$$$");
+var Interpolator = class {
+	constructor(options = {}) {
+		this.logger = baseLogger.create("interpolator");
+		this.options = options;
+		this.format = options?.interpolation?.format || ((value) => value);
+		this.init(options);
+	}
+	init(options = {}) {
+		if (!options.interpolation) options.interpolation = { escapeValue: true };
+		const { escape: escape$1, escapeValue, useRawValueToEscape, prefix, prefixEscaped, suffix, suffixEscaped, formatSeparator, unescapeSuffix, unescapePrefix, nestingPrefix, nestingPrefixEscaped, nestingSuffix, nestingSuffixEscaped, nestingOptionsSeparator, maxReplaces, alwaysFormat } = options.interpolation;
+		this.escape = escape$1 !== void 0 ? escape$1 : escape;
+		this.escapeValue = escapeValue !== void 0 ? escapeValue : true;
+		this.useRawValueToEscape = useRawValueToEscape !== void 0 ? useRawValueToEscape : false;
+		this.prefix = prefix ? regexEscape(prefix) : prefixEscaped || "{{";
+		this.suffix = suffix ? regexEscape(suffix) : suffixEscaped || "}}";
+		this.formatSeparator = formatSeparator || ",";
+		this.unescapePrefix = unescapeSuffix ? "" : unescapePrefix ? regexEscape(unescapePrefix) : "-";
+		this.unescapeSuffix = this.unescapePrefix ? "" : unescapeSuffix ? regexEscape(unescapeSuffix) : "";
+		this.nestingPrefix = nestingPrefix ? regexEscape(nestingPrefix) : nestingPrefixEscaped || regexEscape("$t(");
+		this.nestingSuffix = nestingSuffix ? regexEscape(nestingSuffix) : nestingSuffixEscaped || regexEscape(")");
+		this.nestingOptionsSeparator = nestingOptionsSeparator || ",";
+		this.maxReplaces = maxReplaces || 1e3;
+		this.alwaysFormat = alwaysFormat !== void 0 ? alwaysFormat : false;
+		this.resetRegExp();
+	}
+	reset() {
+		if (this.options) this.init(this.options);
+	}
+	resetRegExp() {
+		const getOrResetRegExp = (existingRegExp, pattern) => {
+			if (existingRegExp?.source === pattern) {
+				existingRegExp.lastIndex = 0;
+				return existingRegExp;
+			}
+			return new RegExp(pattern, "g");
+		};
+		this.regexp = getOrResetRegExp(this.regexp, `${this.prefix}(.+?)${this.suffix}`);
+		this.regexpUnescape = getOrResetRegExp(this.regexpUnescape, `${this.prefix}${this.unescapePrefix}(.+?)${this.unescapeSuffix}${this.suffix}`);
+		this.nestingRegexp = getOrResetRegExp(this.nestingRegexp, `${this.nestingPrefix}((?:[^()"']+|"[^"]*"|'[^']*'|\\((?:[^()]|"[^"]*"|'[^']*')*\\))*?)${this.nestingSuffix}`);
+	}
+	interpolate(str, data, lng, options) {
+		let match;
+		let value;
+		let replaces;
+		const defaultData = this.options && this.options.interpolation && this.options.interpolation.defaultVariables || {};
+		const handleFormat = (key) => {
+			if (!key.includes(this.formatSeparator)) {
+				const path = deepFindWithDefaults(data, defaultData, key, this.options.keySeparator, this.options.ignoreJSONStructure);
+				return this.alwaysFormat ? this.format(path, void 0, lng, {
+					...options,
+					...data,
+					interpolationkey: key
+				}) : path;
+			}
+			const p = key.split(this.formatSeparator);
+			const k = p.shift().trim();
+			const f = p.join(this.formatSeparator).trim();
+			return this.format(deepFindWithDefaults(data, defaultData, k, this.options.keySeparator, this.options.ignoreJSONStructure), f, lng, {
+				...options,
+				...data,
+				interpolationkey: k
+			});
+		};
+		this.resetRegExp();
+		if (!this.escapeValue && typeof str === "string" && /\$t\([^)]*\{[^}]*\{\{/.test(str)) this.logger.warn("nesting options string contains interpolated variables with escapeValue: false — if any of those values are attacker-controlled they can inject additional nesting options (e.g. redirect lng/ns). Sanitise untrusted input before passing it to t(), or keep escapeValue: true.");
+		const missingInterpolationHandler = options?.missingInterpolationHandler || this.options.missingInterpolationHandler;
+		const skipOnVariables = options?.interpolation?.skipOnVariables !== void 0 ? options.interpolation.skipOnVariables : this.options.interpolation.skipOnVariables;
+		[{
+			regex: this.regexpUnescape,
+			safeValue: (val) => val
+		}, {
+			regex: this.regexp,
+			safeValue: (val) => this.escapeValue ? this.escape(val) : val
+		}].forEach((todo) => {
+			replaces = 0;
+			while (match = todo.regex.exec(str)) {
+				const matchedVar = match[1].trim();
+				value = handleFormat(matchedVar);
+				if (value === void 0) {
+					if (typeof missingInterpolationHandler === "function") {
+						const temp = missingInterpolationHandler(str, match, options);
+						value = isString(temp) ? temp : "";
+					} else if (options && Object.prototype.hasOwnProperty.call(options, matchedVar)) value = "";
+					else if (skipOnVariables) {
+						value = match[0];
+						continue;
+					} else {
+						this.logger.warn(`missed to pass in variable ${matchedVar} for interpolating ${str}`);
+						value = "";
+					}
+				} else if (!isString(value) && !this.useRawValueToEscape) value = makeString(value);
+				const safeValue = todo.safeValue(value);
+				str = str.replace(match[0], regexSafe(safeValue));
+				if (skipOnVariables) {
+					todo.regex.lastIndex += safeValue.length;
+					todo.regex.lastIndex -= match[0].length;
+				} else todo.regex.lastIndex = 0;
+				replaces++;
+				if (replaces >= this.maxReplaces) break;
+			}
+		});
+		return str;
+	}
+	nest(str, fc, options = {}) {
+		let match;
+		let value;
+		let clonedOptions;
+		const handleHasOptions = (key, inheritedOptions) => {
+			const sep = this.nestingOptionsSeparator;
+			if (!key.includes(sep)) return key;
+			const c = key.split(new RegExp(`${regexEscape(sep)}[ ]*{`));
+			let optionsString = `{${c[1]}`;
+			key = c[0];
+			optionsString = this.interpolate(optionsString, clonedOptions);
+			const matchedSingleQuotes = optionsString.match(/'/g);
+			const matchedDoubleQuotes = optionsString.match(/"/g);
+			if ((matchedSingleQuotes?.length ?? 0) % 2 === 0 && !matchedDoubleQuotes || (matchedDoubleQuotes?.length ?? 0) % 2 !== 0) optionsString = optionsString.replace(/'/g, "\"");
+			try {
+				clonedOptions = JSON.parse(optionsString);
+				if (inheritedOptions) clonedOptions = {
+					...inheritedOptions,
+					...clonedOptions
+				};
+			} catch (e) {
+				this.logger.warn(`failed parsing options string in nesting for key ${key}`, e);
+				return `${key}${sep}${optionsString}`;
+			}
+			if (clonedOptions.defaultValue && clonedOptions.defaultValue.includes(this.prefix)) delete clonedOptions.defaultValue;
+			return key;
+		};
+		while (match = this.nestingRegexp.exec(str)) {
+			let formatters = [];
+			clonedOptions = { ...options };
+			clonedOptions = clonedOptions.replace && !isString(clonedOptions.replace) ? clonedOptions.replace : clonedOptions;
+			clonedOptions.applyPostProcessor = false;
+			delete clonedOptions.defaultValue;
+			const keyEndIndex = /{.*}/s.test(match[1]) ? match[1].lastIndexOf("}") + 1 : match[1].indexOf(this.formatSeparator);
+			if (keyEndIndex !== -1) {
+				formatters = match[1].slice(keyEndIndex).split(this.formatSeparator).map((elem) => elem.trim()).filter(Boolean);
+				match[1] = match[1].slice(0, keyEndIndex);
+			}
+			value = fc(handleHasOptions.call(this, match[1].trim(), clonedOptions), clonedOptions);
+			if (value && match[0] === str && !isString(value)) return value;
+			if (!isString(value)) value = makeString(value);
+			if (!value) {
+				this.logger.warn(`missed to resolve ${match[1]} for nesting ${str}`);
+				value = "";
+			}
+			if (formatters.length) value = formatters.reduce((v, f) => this.format(v, f, options.lng, {
+				...options,
+				interpolationkey: match[1].trim()
+			}), value.trim());
+			str = str.replace(match[0], regexSafe(makeString(value)));
+			this.regexp.lastIndex = 0;
+		}
+		return str;
+	}
+};
+var parseFormatStr = (formatStr) => {
+	let formatName = formatStr.toLowerCase().trim();
+	const formatOptions = {};
+	if (formatStr.includes("(")) {
+		const p = formatStr.split("(");
+		formatName = p[0].toLowerCase().trim();
+		const optStr = p[1].slice(0, -1);
+		if (formatName === "currency" && !optStr.includes(":")) {
+			if (!formatOptions.currency) formatOptions.currency = optStr.trim();
+		} else if (formatName === "relativetime" && !optStr.includes(":")) {
+			if (!formatOptions.range) formatOptions.range = optStr.trim();
+		} else optStr.split(";").forEach((opt) => {
+			if (opt) {
+				const [key, ...rest] = opt.split(":");
+				const val = rest.join(":").trim().replace(/^'+|'+$/g, "");
+				const trimmedKey = key.trim();
+				if (!formatOptions[trimmedKey]) formatOptions[trimmedKey] = val;
+				if (val === "false") formatOptions[trimmedKey] = false;
+				if (val === "true") formatOptions[trimmedKey] = true;
+				if (!isNaN(val)) formatOptions[trimmedKey] = parseInt(val, 10);
+			}
+		});
+	}
+	return {
+		formatName,
+		formatOptions
+	};
+};
+var createCachedFormatter = (fn) => {
+	const cache = {};
+	return (v, l, o) => {
+		let optForCache = o;
+		if (o && o.interpolationkey && o.formatParams && o.formatParams[o.interpolationkey] && o[o.interpolationkey]) optForCache = {
+			...optForCache,
+			[o.interpolationkey]: void 0
+		};
+		const key = l + JSON.stringify(optForCache);
+		let frm = cache[key];
+		if (!frm) {
+			frm = fn(getCleanedCode(l), o);
+			cache[key] = frm;
+		}
+		return frm(v);
+	};
+};
+var createNonCachedFormatter = (fn) => (v, l, o) => fn(getCleanedCode(l), o)(v);
+var Formatter = class {
+	constructor(options = {}) {
+		this.logger = baseLogger.create("formatter");
+		this.options = options;
+		this.init(options);
+	}
+	init(services, options = { interpolation: {} }) {
+		this.formatSeparator = options.interpolation.formatSeparator || ",";
+		const cf = options.cacheInBuiltFormats ? createCachedFormatter : createNonCachedFormatter;
+		this.formats = {
+			number: cf((lng, opt) => {
+				const formatter = new Intl.NumberFormat(lng, { ...opt });
+				return (val) => formatter.format(val);
+			}),
+			currency: cf((lng, opt) => {
+				const formatter = new Intl.NumberFormat(lng, {
+					...opt,
+					style: "currency"
+				});
+				return (val) => formatter.format(val);
+			}),
+			datetime: cf((lng, opt) => {
+				const formatter = new Intl.DateTimeFormat(lng, { ...opt });
+				return (val) => formatter.format(val);
+			}),
+			relativetime: cf((lng, opt) => {
+				const formatter = new Intl.RelativeTimeFormat(lng, { ...opt });
+				return (val) => formatter.format(val, opt.range || "day");
+			}),
+			list: cf((lng, opt) => {
+				const formatter = new Intl.ListFormat(lng, { ...opt });
+				return (val) => formatter.format(val);
+			})
+		};
+	}
+	add(name, fc) {
+		this.formats[name.toLowerCase().trim()] = fc;
+	}
+	addCached(name, fc) {
+		this.formats[name.toLowerCase().trim()] = createCachedFormatter(fc);
+	}
+	format(value, format, lng, options = {}) {
+		if (!format) return value;
+		if (value == null) return value;
+		const rawFormats = format.split(this.formatSeparator);
+		const formats = [];
+		for (let i = 0; i < rawFormats.length; i++) {
+			let f = rawFormats[i];
+			while (f.indexOf("(") > -1 && !f.includes(")") && i + 1 < rawFormats.length) f = `${f}${this.formatSeparator}${rawFormats[++i]}`;
+			formats.push(f);
+		}
+		return formats.reduce((mem, f) => {
+			const { formatName, formatOptions } = parseFormatStr(f);
+			if (this.formats[formatName]) {
+				let formatted = mem;
+				try {
+					const valOptions = options?.formatParams?.[options.interpolationkey] || {};
+					const l = valOptions.locale || valOptions.lng || options.locale || options.lng || lng;
+					formatted = this.formats[formatName](mem, l, {
+						...formatOptions,
+						...options,
+						...valOptions
+					});
+				} catch (error) {
+					this.logger.warn(error);
+				}
+				return formatted;
+			} else this.logger.warn(`there was no format function for ${formatName}`);
+			return mem;
+		}, value);
+	}
+};
+var removePending = (q, name) => {
+	if (q.pending[name] !== void 0) {
+		delete q.pending[name];
+		q.pendingCount--;
+	}
+};
+var Connector = class extends EventEmitter {
+	constructor(backend, store, services, options = {}) {
+		super();
+		this.backend = backend;
+		this.store = store;
+		this.services = services;
+		this.languageUtils = services.languageUtils;
+		this.options = options;
+		this.logger = baseLogger.create("backendConnector");
+		this.waitingReads = [];
+		this.maxParallelReads = options.maxParallelReads || 10;
+		this.readingCalls = 0;
+		this.maxRetries = options.maxRetries >= 0 ? options.maxRetries : 5;
+		this.retryTimeout = options.retryTimeout >= 1 ? options.retryTimeout : 350;
+		this.state = {};
+		this.queue = [];
+		this.backend?.init?.(services, options.backend, options);
+	}
+	queueLoad(languages, namespaces, options, callback) {
+		const toLoad = {};
+		const pending = {};
+		const toLoadLanguages = {};
+		const toLoadNamespaces = {};
+		languages.forEach((lng) => {
+			let hasAllNamespaces = true;
+			namespaces.forEach((ns) => {
+				const name = `${lng}|${ns}`;
+				if (!options.reload && this.store.hasResourceBundle(lng, ns)) this.state[name] = 2;
+				else if (this.state[name] < 0);
+				else if (this.state[name] === 1) {
+					if (pending[name] === void 0) pending[name] = true;
+				} else {
+					this.state[name] = 1;
+					hasAllNamespaces = false;
+					if (pending[name] === void 0) pending[name] = true;
+					if (toLoad[name] === void 0) toLoad[name] = true;
+					if (toLoadNamespaces[ns] === void 0) toLoadNamespaces[ns] = true;
+				}
+			});
+			if (!hasAllNamespaces) toLoadLanguages[lng] = true;
+		});
+		if (Object.keys(toLoad).length || Object.keys(pending).length) this.queue.push({
+			pending,
+			pendingCount: Object.keys(pending).length,
+			loaded: {},
+			errors: [],
+			callback
+		});
+		return {
+			toLoad: Object.keys(toLoad),
+			pending: Object.keys(pending),
+			toLoadLanguages: Object.keys(toLoadLanguages),
+			toLoadNamespaces: Object.keys(toLoadNamespaces)
+		};
+	}
+	loaded(name, err, data) {
+		const s = name.split("|");
+		const lng = s[0];
+		const ns = s[1];
+		if (err) this.emit("failedLoading", lng, ns, err);
+		if (!err && data) this.store.addResourceBundle(lng, ns, data, void 0, void 0, { skipCopy: true });
+		this.state[name] = err ? -1 : 2;
+		if (err && data) this.state[name] = 0;
+		const loaded = {};
+		this.queue.forEach((q) => {
+			pushPath(q.loaded, [lng], ns);
+			removePending(q, name);
+			if (err) q.errors.push(err);
+			if (q.pendingCount === 0 && !q.done) {
+				Object.keys(q.loaded).forEach((l) => {
+					if (!loaded[l]) loaded[l] = {};
+					const loadedKeys = q.loaded[l];
+					if (loadedKeys.length) loadedKeys.forEach((n) => {
+						if (loaded[l][n] === void 0) loaded[l][n] = true;
+					});
+				});
+				q.done = true;
+				if (q.errors.length) q.callback(q.errors);
+				else q.callback();
+			}
+		});
+		this.emit("loaded", loaded);
+		this.queue = this.queue.filter((q) => !q.done);
+	}
+	read(lng, ns, fcName, tried = 0, wait = this.retryTimeout, callback) {
+		if (!lng.length) return callback(null, {});
+		if (this.readingCalls >= this.maxParallelReads) {
+			this.waitingReads.push({
+				lng,
+				ns,
+				fcName,
+				tried,
+				wait,
+				callback
+			});
+			return;
+		}
+		this.readingCalls++;
+		const resolver = (err, data) => {
+			this.readingCalls--;
+			if (this.waitingReads.length > 0) {
+				const next = this.waitingReads.shift();
+				this.read(next.lng, next.ns, next.fcName, next.tried, next.wait, next.callback);
+			}
+			if (err && data && tried < this.maxRetries) {
+				setTimeout(() => {
+					this.read(lng, ns, fcName, tried + 1, wait * 2, callback);
+				}, wait);
+				return;
+			}
+			callback(err, data);
+		};
+		const fc = this.backend[fcName].bind(this.backend);
+		if (fc.length === 2) {
+			try {
+				const r = fc(lng, ns);
+				if (r && typeof r.then === "function") r.then((data) => resolver(null, data)).catch(resolver);
+				else resolver(null, r);
+			} catch (err) {
+				resolver(err);
+			}
+			return;
+		}
+		return fc(lng, ns, resolver);
+	}
+	prepareLoading(languages, namespaces, options = {}, callback) {
+		if (!this.backend) {
+			this.logger.warn("No backend was added via i18next.use. Will not load resources.");
+			return callback && callback();
+		}
+		if (isString(languages)) languages = this.languageUtils.toResolveHierarchy(languages);
+		if (isString(namespaces)) namespaces = [namespaces];
+		const toLoad = this.queueLoad(languages, namespaces, options, callback);
+		if (!toLoad.toLoad.length) {
+			if (!toLoad.pending.length) callback();
+			return null;
+		}
+		toLoad.toLoad.forEach((name) => {
+			this.loadOne(name);
+		});
+	}
+	load(languages, namespaces, callback) {
+		this.prepareLoading(languages, namespaces, {}, callback);
+	}
+	reload(languages, namespaces, callback) {
+		this.prepareLoading(languages, namespaces, { reload: true }, callback);
+	}
+	loadOne(name, prefix = "") {
+		const s = name.split("|");
+		const lng = s[0];
+		const ns = s[1];
+		this.read(lng, ns, "read", void 0, void 0, (err, data) => {
+			if (err) this.logger.warn(`${prefix}loading namespace ${ns} for language ${lng} failed`, err);
+			if (!err && data) this.logger.log(`${prefix}loaded namespace ${ns} for language ${lng}`, data);
+			this.loaded(name, err, data);
+		});
+	}
+	saveMissing(languages, namespace, key, fallbackValue, isUpdate, options = {}, clb = () => {}) {
+		if (this.services?.utils?.hasLoadedNamespace && !this.services?.utils?.hasLoadedNamespace(namespace)) {
+			this.logger.warn(`did not save key "${key}" as the namespace "${namespace}" was not yet loaded`, "This means something IS WRONG in your setup. You access the t function before i18next.init / i18next.loadNamespace / i18next.changeLanguage was done. Wait for the callback or Promise to resolve before accessing it!!!");
+			return;
+		}
+		if (key === void 0 || key === null || key === "") return;
+		if (this.backend?.create) {
+			const opts = {
+				...options,
+				isUpdate
+			};
+			const fc = this.backend.create.bind(this.backend);
+			if (fc.length < 6) try {
+				let r;
+				if (fc.length === 5) r = fc(languages, namespace, key, fallbackValue, opts);
+				else r = fc(languages, namespace, key, fallbackValue);
+				if (r && typeof r.then === "function") r.then((data) => clb(null, data)).catch(clb);
+				else clb(null, r);
+			} catch (err) {
+				clb(err);
+			}
+			else fc(languages, namespace, key, fallbackValue, clb, opts);
+		}
+		if (!languages || !languages[0]) return;
+		this.store.addResource(languages[0], namespace, key, fallbackValue);
+	}
+};
+var get = () => ({
+	debug: false,
+	initAsync: true,
+	ns: ["translation"],
+	defaultNS: ["translation"],
+	fallbackLng: ["dev"],
+	fallbackNS: false,
+	supportedLngs: false,
+	nonExplicitSupportedLngs: false,
+	load: "all",
+	preload: false,
+	keySeparator: ".",
+	nsSeparator: ":",
+	pluralSeparator: "_",
+	contextSeparator: "_",
+	enableSelector: false,
+	partialBundledLanguages: false,
+	saveMissing: false,
+	updateMissing: false,
+	saveMissingTo: "fallback",
+	saveMissingPlurals: true,
+	missingKeyHandler: false,
+	missingInterpolationHandler: false,
+	postProcess: false,
+	postProcessPassResolved: false,
+	returnNull: false,
+	returnEmptyString: true,
+	returnObjects: false,
+	joinArrays: false,
+	returnedObjectHandler: false,
+	parseMissingKeyHandler: false,
+	appendNamespaceToMissingKey: false,
+	appendNamespaceToCIMode: false,
+	overloadTranslationOptionHandler: (args) => {
+		let ret = {};
+		if (typeof args[1] === "object") ret = args[1];
+		if (isString(args[1])) ret.defaultValue = args[1];
+		if (isString(args[2])) ret.tDescription = args[2];
+		if (typeof args[2] === "object" || typeof args[3] === "object") {
+			const options = args[3] || args[2];
+			Object.keys(options).forEach((key) => {
+				ret[key] = options[key];
+			});
+		}
+		return ret;
+	},
+	interpolation: {
+		escapeValue: true,
+		prefix: "{{",
+		suffix: "}}",
+		formatSeparator: ",",
+		unescapePrefix: "-",
+		nestingPrefix: "$t(",
+		nestingSuffix: ")",
+		nestingOptionsSeparator: ",",
+		maxReplaces: 1e3,
+		skipOnVariables: true
+	},
+	cacheInBuiltFormats: true
+});
+var transformOptions = (options) => {
+	if (isString(options.ns)) options.ns = [options.ns];
+	if (isString(options.fallbackLng)) options.fallbackLng = [options.fallbackLng];
+	if (isString(options.fallbackNS)) options.fallbackNS = [options.fallbackNS];
+	if (options.supportedLngs && !options.supportedLngs.includes("cimode")) options.supportedLngs = options.supportedLngs.concat(["cimode"]);
+	return options;
+};
+var noop = () => {};
+var bindMemberFunctions = (inst) => {
+	Object.getOwnPropertyNames(Object.getPrototypeOf(inst)).forEach((mem) => {
+		if (typeof inst[mem] === "function") inst[mem] = inst[mem].bind(inst);
+	});
+};
+var instance = class I18n extends EventEmitter {
+	constructor(options = {}, callback) {
+		super();
+		this.options = transformOptions(options);
+		this.services = {};
+		this.logger = baseLogger;
+		this.modules = { external: [] };
+		bindMemberFunctions(this);
+		if (callback && !this.isInitialized && !options.isClone) {
+			if (!this.options.initAsync) {
+				this.init(options, callback);
+				return this;
+			}
+			setTimeout(() => {
+				this.init(options, callback);
+			}, 0);
+		}
+	}
+	init(options = {}, callback) {
+		this.isInitializing = true;
+		if (typeof options === "function") {
+			callback = options;
+			options = {};
+		}
+		if (options.defaultNS == null && options.ns) {
+			if (isString(options.ns)) options.defaultNS = options.ns;
+			else if (!options.ns.includes("translation")) options.defaultNS = options.ns[0];
+		}
+		const defOpts = get();
+		this.options = {
+			...defOpts,
+			...this.options,
+			...transformOptions(options)
+		};
+		this.options.interpolation = {
+			...defOpts.interpolation,
+			...this.options.interpolation
+		};
+		if (options.keySeparator !== void 0) this.options.userDefinedKeySeparator = options.keySeparator;
+		if (options.nsSeparator !== void 0) this.options.userDefinedNsSeparator = options.nsSeparator;
+		if (typeof this.options.overloadTranslationOptionHandler !== "function") this.options.overloadTranslationOptionHandler = defOpts.overloadTranslationOptionHandler;
+		const createClassOnDemand = (ClassOrObject) => {
+			if (!ClassOrObject) return null;
+			if (typeof ClassOrObject === "function") return new ClassOrObject();
+			return ClassOrObject;
+		};
+		if (!this.options.isClone) {
+			if (this.modules.logger) baseLogger.init(createClassOnDemand(this.modules.logger), this.options);
+			else baseLogger.init(null, this.options);
+			let formatter;
+			if (this.modules.formatter) formatter = this.modules.formatter;
+			else formatter = Formatter;
+			const lu = new LanguageUtil(this.options);
+			this.store = new ResourceStore(this.options.resources, this.options);
+			const s = this.services;
+			s.logger = baseLogger;
+			s.resourceStore = this.store;
+			s.languageUtils = lu;
+			s.pluralResolver = new PluralResolver(lu, { prepend: this.options.pluralSeparator });
+			if (formatter) {
+				s.formatter = createClassOnDemand(formatter);
+				if (s.formatter.init) s.formatter.init(s, this.options);
+				this.options.interpolation.format = s.formatter.format.bind(s.formatter);
+			}
+			s.interpolator = new Interpolator(this.options);
+			s.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) };
+			s.backendConnector = new Connector(createClassOnDemand(this.modules.backend), s.resourceStore, s, this.options);
+			s.backendConnector.on("*", (event, ...args) => {
+				this.emit(event, ...args);
+			});
+			if (this.modules.languageDetector) {
+				s.languageDetector = createClassOnDemand(this.modules.languageDetector);
+				if (s.languageDetector.init) s.languageDetector.init(s, this.options.detection, this.options);
+			}
+			if (this.modules.i18nFormat) {
+				s.i18nFormat = createClassOnDemand(this.modules.i18nFormat);
+				if (s.i18nFormat.init) s.i18nFormat.init(this);
+			}
+			this.translator = new Translator(this.services, this.options);
+			this.translator.on("*", (event, ...args) => {
+				this.emit(event, ...args);
+			});
+			this.modules.external.forEach((m) => {
+				if (m.init) m.init(this);
+			});
+		}
+		this.format = this.options.interpolation.format;
+		if (!callback) callback = noop;
+		if (this.options.fallbackLng && !this.services.languageDetector && !this.options.lng) {
+			const codes = this.services.languageUtils.getFallbackCodes(this.options.fallbackLng);
+			if (codes.length > 0 && codes[0] !== "dev") this.options.lng = codes[0];
+		}
+		if (!this.services.languageDetector && !this.options.lng) this.logger.warn("init: no languageDetector is used and no lng is defined");
+		[
+			"getResource",
+			"hasResourceBundle",
+			"getResourceBundle",
+			"getDataByLanguage"
+		].forEach((fcName) => {
+			this[fcName] = (...args) => this.store[fcName](...args);
+		});
+		[
+			"addResource",
+			"addResources",
+			"addResourceBundle",
+			"removeResourceBundle"
+		].forEach((fcName) => {
+			this[fcName] = (...args) => {
+				this.store[fcName](...args);
+				return this;
+			};
+		});
+		const deferred = defer();
+		const load = () => {
+			const finish = (err, t) => {
+				this.isInitializing = false;
+				if (this.isInitialized && !this.initializedStoreOnce) this.logger.warn("init: i18next is already initialized. You should call init just once!");
+				this.isInitialized = true;
+				if (!this.options.isClone) this.logger.log("initialized", this.options);
+				this.emit("initialized", this.options);
+				deferred.resolve(t);
+				callback(err, t);
+			};
+			if ((this.languages || this.isLanguageChangingTo) && !this.isInitialized) return finish(null, this.t.bind(this));
+			this.changeLanguage(this.options.lng, finish);
+		};
+		if (this.options.resources || !this.options.initAsync) load();
+		else setTimeout(load, 0);
+		return deferred;
+	}
+	loadResources(language, callback = noop) {
+		let usedCallback = callback;
+		const usedLng = isString(language) ? language : this.language;
+		if (typeof language === "function") usedCallback = language;
+		if (!this.options.resources || this.options.partialBundledLanguages) {
+			if (usedLng?.toLowerCase() === "cimode" && (!this.options.preload || this.options.preload.length === 0)) return usedCallback();
+			const toLoad = [];
+			const append = (lng) => {
+				if (!lng) return;
+				if (lng === "cimode") return;
+				this.services.languageUtils.toResolveHierarchy(lng).forEach((l) => {
+					if (l === "cimode") return;
+					if (!toLoad.includes(l)) toLoad.push(l);
+				});
+			};
+			if (!usedLng) this.services.languageUtils.getFallbackCodes(this.options.fallbackLng).forEach((l) => append(l));
+			else append(usedLng);
+			this.options.preload?.forEach?.((l) => append(l));
+			this.services.backendConnector.load(toLoad, this.options.ns, (e) => {
+				if (!e && !this.resolvedLanguage && this.language) this.setResolvedLanguage(this.language);
+				usedCallback(e);
+			});
+		} else usedCallback(null);
+	}
+	reloadResources(lngs, ns, callback) {
+		const deferred = defer();
+		if (typeof lngs === "function") {
+			callback = lngs;
+			lngs = void 0;
+		}
+		if (typeof ns === "function") {
+			callback = ns;
+			ns = void 0;
+		}
+		if (!lngs) lngs = this.languages;
+		if (!ns) ns = this.options.ns;
+		if (!callback) callback = noop;
+		this.services.backendConnector.reload(lngs, ns, (err) => {
+			deferred.resolve();
+			callback(err);
+		});
+		return deferred;
+	}
+	use(module) {
+		if (!module) throw new Error("You are passing an undefined module! Please check the object you are passing to i18next.use()");
+		if (!module.type) throw new Error("You are passing a wrong module! Please check the object you are passing to i18next.use()");
+		if (module.type === "backend") this.modules.backend = module;
+		if (module.type === "logger" || module.log && module.warn && module.error) this.modules.logger = module;
+		if (module.type === "languageDetector") this.modules.languageDetector = module;
+		if (module.type === "i18nFormat") this.modules.i18nFormat = module;
+		if (module.type === "postProcessor") postProcessor.addPostProcessor(module);
+		if (module.type === "formatter") this.modules.formatter = module;
+		if (module.type === "3rdParty") this.modules.external.push(module);
+		return this;
+	}
+	setResolvedLanguage(l) {
+		if (!l || !this.languages) return;
+		if (["cimode", "dev"].includes(l)) return;
+		for (let li = 0; li < this.languages.length; li++) {
+			const lngInLngs = this.languages[li];
+			if (["cimode", "dev"].includes(lngInLngs)) continue;
+			if (this.store.hasLanguageSomeTranslations(lngInLngs)) {
+				this.resolvedLanguage = lngInLngs;
+				break;
+			}
+		}
+		if (!this.resolvedLanguage && !this.languages.includes(l) && this.store.hasLanguageSomeTranslations(l)) {
+			this.resolvedLanguage = l;
+			this.languages.unshift(l);
+		}
+	}
+	changeLanguage(lng, callback) {
+		this.isLanguageChangingTo = lng;
+		const deferred = defer();
+		this.emit("languageChanging", lng);
+		const setLngProps = (l) => {
+			this.language = l;
+			this.languages = this.services.languageUtils.toResolveHierarchy(l);
+			this.resolvedLanguage = void 0;
+			this.setResolvedLanguage(l);
+		};
+		const done = (err, l) => {
+			if (l) {
+				if (this.isLanguageChangingTo === lng) {
+					setLngProps(l);
+					this.translator.changeLanguage(l);
+					this.isLanguageChangingTo = void 0;
+					this.emit("languageChanged", l);
+					this.logger.log("languageChanged", l);
+				}
+			} else this.isLanguageChangingTo = void 0;
+			deferred.resolve((...args) => this.t(...args));
+			if (callback) callback(err, (...args) => this.t(...args));
+		};
+		const setLng = (lngs) => {
+			if (!lng && !lngs && this.services.languageDetector) lngs = [];
+			const fl = isString(lngs) ? lngs : lngs && lngs[0];
+			const l = this.store.hasLanguageSomeTranslations(fl) ? fl : this.services.languageUtils.getBestMatchFromCodes(isString(lngs) ? [lngs] : lngs);
+			if (l) {
+				if (!this.language) setLngProps(l);
+				if (!this.translator.language) this.translator.changeLanguage(l);
+				this.services.languageDetector?.cacheUserLanguage?.(l);
+			}
+			this.loadResources(l, (err) => {
+				done(err, l);
+			});
+		};
+		if (!lng && this.services.languageDetector && !this.services.languageDetector.async) setLng(this.services.languageDetector.detect());
+		else if (!lng && this.services.languageDetector && this.services.languageDetector.async) {
+			if (this.services.languageDetector.detect.length === 0) this.services.languageDetector.detect().then(setLng);
+			else this.services.languageDetector.detect(setLng);
+		} else setLng(lng);
+		return deferred;
+	}
+	getFixedT(lng, ns, keyPrefix, fixedOpts) {
+		const scopeNs = fixedOpts?.scopeNs;
+		const fixedT = (key, opts, ...rest) => {
+			let o;
+			if (typeof opts !== "object") o = this.options.overloadTranslationOptionHandler([key, opts].concat(rest));
+			else o = { ...opts };
+			o.lng = o.lng || fixedT.lng;
+			o.lngs = o.lngs || fixedT.lngs;
+			const explicitCallNs = o.ns !== void 0 && o.ns !== null;
+			o.ns = o.ns || fixedT.ns;
+			if (o.keyPrefix !== "") o.keyPrefix = o.keyPrefix || keyPrefix || fixedT.keyPrefix;
+			const selectorOpts = {
+				...this.options,
+				...o
+			};
+			if (Array.isArray(scopeNs) && !explicitCallNs) selectorOpts.ns = scopeNs;
+			if (typeof o.keyPrefix === "function") o.keyPrefix = keysFromSelector(o.keyPrefix, selectorOpts);
+			const keySeparator = this.options.keySeparator || ".";
+			let resultKey;
+			if (o.keyPrefix && Array.isArray(key)) resultKey = key.map((k) => {
+				if (typeof k === "function") k = keysFromSelector(k, selectorOpts);
+				return `${o.keyPrefix}${keySeparator}${k}`;
+			});
+			else {
+				if (typeof key === "function") key = keysFromSelector(key, selectorOpts);
+				resultKey = o.keyPrefix ? `${o.keyPrefix}${keySeparator}${key}` : key;
+			}
+			return this.t(resultKey, o);
+		};
+		if (isString(lng)) fixedT.lng = lng;
+		else fixedT.lngs = lng;
+		fixedT.ns = ns;
+		fixedT.keyPrefix = keyPrefix;
+		return fixedT;
+	}
+	t(...args) {
+		return this.translator?.translate(...args);
+	}
+	exists(...args) {
+		return this.translator?.exists(...args);
+	}
+	setDefaultNamespace(ns) {
+		this.options.defaultNS = ns;
+	}
+	hasLoadedNamespace(ns, options = {}) {
+		if (!this.isInitialized) {
+			this.logger.warn("hasLoadedNamespace: i18next was not initialized", this.languages);
+			return false;
+		}
+		if (!this.languages || !this.languages.length) {
+			this.logger.warn("hasLoadedNamespace: i18n.languages were undefined or empty", this.languages);
+			return false;
+		}
+		const lng = options.lng || this.resolvedLanguage || this.languages[0];
+		const fallbackLng = this.options ? this.options.fallbackLng : false;
+		const lastLng = this.languages[this.languages.length - 1];
+		if (lng.toLowerCase() === "cimode") return true;
+		const loadNotPending = (l, n) => {
+			const loadState = this.services.backendConnector.state[`${l}|${n}`];
+			return loadState === -1 || loadState === 0 || loadState === 2;
+		};
+		if (options.precheck) {
+			const preResult = options.precheck(this, loadNotPending);
+			if (preResult !== void 0) return preResult;
+		}
+		if (this.hasResourceBundle(lng, ns)) return true;
+		if (!this.services.backendConnector.backend || this.options.resources && !this.options.partialBundledLanguages) return true;
+		if (loadNotPending(lng, ns) && (!fallbackLng || loadNotPending(lastLng, ns))) return true;
+		return false;
+	}
+	loadNamespaces(ns, callback) {
+		const deferred = defer();
+		if (!this.options.ns) {
+			if (callback) callback();
+			return Promise.resolve();
+		}
+		if (isString(ns)) ns = [ns];
+		ns.forEach((n) => {
+			if (!this.options.ns.includes(n)) this.options.ns.push(n);
+		});
+		this.loadResources((err) => {
+			deferred.resolve();
+			if (callback) callback(err);
+		});
+		return deferred;
+	}
+	loadLanguages(lngs, callback) {
+		const deferred = defer();
+		if (isString(lngs)) lngs = [lngs];
+		const preloaded = this.options.preload || [];
+		const newLngs = lngs.filter((lng) => !preloaded.includes(lng) && this.services.languageUtils.isSupportedCode(lng));
+		if (!newLngs.length) {
+			if (callback) callback();
+			return Promise.resolve();
+		}
+		this.options.preload = preloaded.concat(newLngs);
+		this.loadResources((err) => {
+			deferred.resolve();
+			if (callback) callback(err);
+		});
+		return deferred;
+	}
+	dir(lng) {
+		if (!lng) lng = this.resolvedLanguage || (this.languages?.length > 0 ? this.languages[0] : this.language);
+		if (!lng) return "rtl";
+		try {
+			const l = new Intl.Locale(lng);
+			if (l && l.getTextInfo) {
+				const ti = l.getTextInfo();
+				if (ti && ti.direction) return ti.direction;
+			}
+		} catch (e) {}
+		const rtlLngs = [
+			"ar",
+			"shu",
+			"sqr",
+			"ssh",
+			"xaa",
+			"yhd",
+			"yud",
+			"aao",
+			"abh",
+			"abv",
+			"acm",
+			"acq",
+			"acw",
+			"acx",
+			"acy",
+			"adf",
+			"ads",
+			"aeb",
+			"aec",
+			"afb",
+			"ajp",
+			"apc",
+			"apd",
+			"arb",
+			"arq",
+			"ars",
+			"ary",
+			"arz",
+			"auz",
+			"avl",
+			"ayh",
+			"ayl",
+			"ayn",
+			"ayp",
+			"bbz",
+			"pga",
+			"he",
+			"iw",
+			"ps",
+			"pbt",
+			"pbu",
+			"pst",
+			"prp",
+			"prd",
+			"ug",
+			"ur",
+			"ydd",
+			"yds",
+			"yih",
+			"ji",
+			"yi",
+			"hbo",
+			"men",
+			"xmn",
+			"fa",
+			"jpr",
+			"peo",
+			"pes",
+			"prs",
+			"dv",
+			"sam",
+			"ckb"
+		];
+		const languageUtils = this.services?.languageUtils || new LanguageUtil(get());
+		if (lng.toLowerCase().indexOf("-latn") > 1) return "ltr";
+		return rtlLngs.includes(languageUtils.getLanguagePartFromCode(lng)) || lng.toLowerCase().indexOf("-arab") > 1 ? "rtl" : "ltr";
+	}
+	static createInstance(options = {}, callback) {
+		const instance = new I18n(options, callback);
+		instance.createInstance = I18n.createInstance;
+		return instance;
+	}
+	cloneInstance(options = {}, callback = noop) {
+		const forkResourceStore = options.forkResourceStore;
+		if (forkResourceStore) delete options.forkResourceStore;
+		const mergedOptions = {
+			...this.options,
+			...options,
+			isClone: true
+		};
+		const clone = new I18n(mergedOptions);
+		if (options.debug !== void 0 || options.prefix !== void 0) clone.logger = clone.logger.clone(options);
+		[
+			"store",
+			"services",
+			"language"
+		].forEach((m) => {
+			clone[m] = this[m];
+		});
+		clone.services = { ...this.services };
+		clone.services.utils = { hasLoadedNamespace: clone.hasLoadedNamespace.bind(clone) };
+		if (forkResourceStore) {
+			clone.store = new ResourceStore(Object.keys(this.store.data).reduce((prev, l) => {
+				prev[l] = { ...this.store.data[l] };
+				prev[l] = Object.keys(prev[l]).reduce((acc, n) => {
+					acc[n] = { ...prev[l][n] };
+					return acc;
+				}, prev[l]);
+				return prev;
+			}, {}), mergedOptions);
+			clone.services.resourceStore = clone.store;
+		}
+		if (options.interpolation) {
+			const mergedInterpolation = {
+				...get().interpolation,
+				...this.options.interpolation,
+				...options.interpolation
+			};
+			const mergedForInterpolator = {
+				...mergedOptions,
+				interpolation: mergedInterpolation
+			};
+			clone.services.interpolator = new Interpolator(mergedForInterpolator);
+		}
+		clone.translator = new Translator(clone.services, mergedOptions);
+		clone.translator.on("*", (event, ...args) => {
+			clone.emit(event, ...args);
+		});
+		clone.init(mergedOptions, callback);
+		clone.translator.options = mergedOptions;
+		clone.translator.backendConnector.services.utils = { hasLoadedNamespace: clone.hasLoadedNamespace.bind(clone) };
+		return clone;
+	}
+	toJSON() {
+		return {
+			options: this.options,
+			store: this.store,
+			language: this.language,
+			languages: this.languages,
+			resolvedLanguage: this.resolvedLanguage
+		};
+	}
+}.createInstance();
+instance.createInstance;
+instance.dir;
+instance.init;
+instance.loadResources;
+instance.reloadResources;
+instance.use;
+instance.changeLanguage;
+instance.getFixedT;
+instance.t;
+instance.exists;
+instance.setDefaultNamespace;
+instance.hasLoadedNamespace;
+instance.loadNamespaces;
+instance.loadLanguages;
+var en_default = {
+	shared: {
+		"appName": "i18n Bench",
+		"siteName": "i18n Benchmark",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "Go to GitHub"
+	},
+	header: {
+		"home": "Home",
+		"methodology": "Methodology",
+		"mockPages": "Mock Pages",
+		"products": "Products",
+		"pricing": "Pricing",
+		"team": "Team",
+		"blog": "Blog",
+		"careers": "Careers",
+		"faq": "FAQ",
+		"contact": "Contact",
+		"settings": "Settings"
+	},
+	footer: {
+		"title": "i18n Benchmark",
+		"description": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+		"resources": "Resources",
+		"github": "GitHub",
+		"methodology": "Methodology",
+		"contributing": "Contributing",
+		"contact": "Contact",
+		"builtWith": "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router."
+	},
+	themeToggle: {
+		"auto": "Theme: Auto",
+		"dark": "Theme: Dark",
+		"light": "Theme: Light",
+		"labelAuto": "Theme mode: auto (system). Click to switch to light mode.",
+		"labelOther": "Theme mode: {mode}. Click to switch mode."
+	},
+	mockBanner: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.",
+	home: {
+		"hero": {
+			"title": "i18n Benchmark",
+			"description": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+			"viewResults": "View Results",
+			"methodology": "Methodology"
+		},
+		"whyItMatters": {
+			"title": "Why These Metrics Matter",
+			"bundleSizeTitle": "Bundle Size",
+			"bundleSizeDesc": "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+			"renderingTitle": "Rendering & Hydration",
+			"renderingDesc": "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).",
+			"dynamicLoadingTitle": "Dynamic Loading",
+			"dynamicLoadingDesc": "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+		},
+		"understandingImpact": {
+			"title": "Understanding the Impact",
+			"singleJsonTitle": "Why a single large JSON can hurt performance",
+			"singleJsonIntro": "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:",
+			"singleJsonBullet1": "The JSON must be parsed on every page load — blocking the main thread.",
+			"singleJsonBullet2": "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+			"singleJsonBullet3": "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.",
+			"tradeOffsTitle": "The trade-offs of dynamic loading",
+			"tradeOffsIntro": "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:",
+			"waterfallLabel": "Waterfall requests:",
+			"waterfallDesc": "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips.",
+			"foucLabel": "Flash of untranslated content (FOUC):",
+			"foucDesc": "users may briefly see translation keys or a fallback language before the chunk arrives.",
+			"cacheLabel": "Cache invalidation:",
+			"cacheDesc": "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks.",
+			"measuresTitle": "What this benchmark measures",
+			"measuresDesc": "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+		},
+		"resultsTable": {
+			"title": "Sample Results",
+			"library": "Library",
+			"bundleSize": "Bundle Size",
+			"lookupTime": "Lookup Time",
+			"lazyLoading": "Lazy Loading",
+			"yes": "Yes",
+			"manual": "Manual",
+			"builtIn": "Built-in"
+		}
+	},
+	about: {
+		"header": {
+			"title": "About This Benchmark",
+			"description": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+		},
+		"grid": {
+			"whyExistsTitle": "Why This Exists",
+			"whyExistsDesc": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+			"methodologyTitle": "Methodology",
+			"methodologyDesc": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+		},
+		"whatWeMeasure": {
+			"title": "What We Measure",
+			"bundleSizeImpact": "Bundle size impact",
+			"bundleSizeImpactDesc": "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.",
+			"renderingOverhead": "Rendering overhead",
+			"renderingOverheadDesc": "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+			"hydrationCost": "Hydration cost",
+			"hydrationCostDesc": "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
+			"lazyLoading": "Lazy loading effectiveness",
+			"lazyLoadingDesc": "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).",
+			"localeSwitch": "Locale switch speed",
+			"localeSwitchDesc": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+		}
+	},
+	blog: {
+		"header": {
+			"title": "Blog",
+			"description": "Insights, tutorials, and analysis from the i18n community."
+		},
+		"list": {
+			"readMore": "Read More →",
+			"post1Title": "Comparing i18n Libraries in 2026: A Deep Dive",
+			"post1Date": "March 15, 2026",
+			"post1Excerpt": "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+			"post1Category": "Benchmark",
+			"post2Title": "How to Reduce Your i18n Bundle by 60%",
+			"post2Date": "March 8, 2026",
+			"post2Excerpt": "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+			"post2Category": "Tutorial",
+			"post3Title": "The State of Internationalization in React",
+			"post3Date": "February 28, 2026",
+			"post3Excerpt": "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+			"post3Category": "Analysis",
+			"post4Title": "Migrating from react-i18next to Lingui",
+			"post4Date": "February 15, 2026",
+			"post4Excerpt": "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+			"post4Category": "Tutorial",
+			"post5Title": "Server Components and i18n: What Changes?",
+			"post5Date": "February 1, 2026",
+			"post5Excerpt": "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+			"post5Category": "Analysis",
+			"post6Title": "Benchmark Methodology: How We Test",
+			"post6Date": "January 20, 2026",
+			"post6Excerpt": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+			"post6Category": "Meta"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "Careers",
+			"description": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+		},
+		"benefits": {
+			"remoteLabel": "Remote-first",
+			"remoteValue": "Work from anywhere in the world",
+			"payLabel": "Competitive pay",
+			"payValue": "Top-of-market compensation",
+			"ossLabel": "Open source time",
+			"ossValue": "20% time for OSS contributions"
+		},
+		"openPositions": {
+			"title": "Open Positions",
+			"applyNow": "Apply Now",
+			"remote": "Remote",
+			"fullTime": "Full-time",
+			"partTime": "Part-time",
+			"engineering": "Engineering",
+			"documentation": "Documentation",
+			"community": "Community",
+			"sfRemote": "San Francisco / Remote",
+			"frontendTitle": "Senior Frontend Engineer",
+			"frontendDesc": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+			"backendTitle": "Backend Engineer",
+			"backendDesc": "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+			"writerTitle": "Technical Writer",
+			"writerDesc": "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
+			"devrelTitle": "DevRel Engineer",
+			"devrelDesc": "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+			"qaTitle": "QA Engineer",
+			"qaDesc": "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+		}
+	},
+	contact: {
+		"header": {
+			"title": "Get in Touch",
+			"description": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+		},
+		"form": {
+			"name": "Name",
+			"yourName": "Your name",
+			"email": "Email",
+			"emailPlaceholder": "you@example.com",
+			"topic": "Topic",
+			"bugReport": "Bug Report",
+			"newBenchmarkIdea": "New Benchmark Idea",
+			"methodologyQuestion": "Methodology Question",
+			"contribution": "Contribution",
+			"other": "Other",
+			"message": "Message",
+			"messagePlaceholder": "Describe your question or idea...",
+			"sendMessage": "Send Message"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "Frequently Asked Questions",
+			"description": "Everything you need to know about i18n Benchmark."
+		},
+		"list": {
+			"q1": "What is i18n Benchmark?",
+			"a1": "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.",
+			"q2": "How are benchmarks conducted?",
+			"a2": "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+			"q3": "Which libraries are currently supported?",
+			"a3": "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+			"q4": "Can I submit my own benchmarks?",
+			"a4": "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+			"q5": "How often are benchmarks updated?",
+			"a5": "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+			"q6": "Is the data reliable?",
+			"a6": "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+			"q7": "Do you offer consulting services?",
+			"a7": "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+			"q8": "How can I contribute?",
+			"a8": "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "Simple, Transparent Pricing",
+			"description": "Choose the plan that fits your team. No hidden fees."
+		},
+		"tiers": {
+			"starterName": "Starter",
+			"starterPrice": "$0",
+			"starterPeriod": "forever",
+			"starterFeature1": "5 benchmark runs/day",
+			"starterFeature2": "3 libraries",
+			"starterFeature3": "Community support",
+			"starterFeature4": "Public results",
+			"proName": "Pro",
+			"proPrice": "$29",
+			"proPeriod": "/month",
+			"proFeature1": "Unlimited runs",
+			"proFeature2": "All libraries",
+			"proFeature3": "Priority support",
+			"proFeature4": "Private results",
+			"proFeature5": "CI integration",
+			"proFeature6": "Historical data",
+			"enterpriseName": "Enterprise",
+			"enterprisePrice": "Custom",
+			"enterpriseFeature1": "Everything in Pro",
+			"enterpriseFeature2": "On-premise option",
+			"enterpriseFeature3": "SSO & SAML",
+			"enterpriseFeature4": "Dedicated account manager",
+			"enterpriseFeature5": "Custom SLAs",
+			"enterpriseFeature6": "Audit logs",
+			"enterpriseFeature7": "Training sessions",
+			"contactSales": "Contact Sales",
+			"getStarted": "Get Started"
+		}
+	},
+	products: {
+		"header": {
+			"title": "Products",
+			"description": "Tools and services to streamline your internationalization workflow."
+		},
+		"grid": {
+			"learnMore": "Learn More",
+			"cliName": "Benchmark CLI",
+			"cliDesc": "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+			"cliPrice": "Free",
+			"cloudName": "Benchmark Cloud",
+			"cloudDesc": "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+			"cloudPrice": "$29/mo",
+			"enterpriseName": "Benchmark Enterprise",
+			"enterpriseDesc": "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+			"enterprisePrice": "Contact Us",
+			"migrationName": "Migration Assistant",
+			"migrationDesc": "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+			"migrationPrice": "$99 one-time",
+			"qaName": "Translation QA",
+			"qaDesc": "Automated quality checks for missing translations, pluralization issues, and context errors.",
+			"qaPrice": "$19/mo",
+			"optimizerName": "Bundle Optimizer",
+			"optimizerDesc": "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
+			"optimizerPrice": "$49/mo"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "Settings",
+			"description": "Manage your account preferences and configuration."
+		},
+		"profile": {
+			"title": "Profile",
+			"displayName": "Display Name",
+			"email": "Email"
+		},
+		"preferences": {
+			"title": "Preferences",
+			"emailNotifications": "Email Notifications",
+			"weeklyReports": "Receive weekly benchmark reports",
+			"toggleNotifications": "Toggle notifications",
+			"darkMode": "Dark Mode",
+			"darkColorScheme": "Use dark color scheme",
+			"toggleDarkMode": "Toggle dark mode",
+			"defaultLanguage": "Default Language",
+			"english": "English (en)",
+			"french": "French (fr)",
+			"german": "German (de)",
+			"spanish": "Spanish (es)",
+			"japanese": "Japanese (ja)",
+			"chinese": "Chinese Simplified (zh-CN)",
+			"arabic": "Arabic (ar)"
+		},
+		"apiAccess": {
+			"title": "API Access",
+			"apiKey": "API Key",
+			"copy": "Copy",
+			"description": "Use this key to access the benchmarking API programmatically."
+		},
+		"footer": {
+			"cancel": "Cancel",
+			"saveChanges": "Save Changes"
+		}
+	},
+	team: {
+		"header": {
+			"title": "Our Team",
+			"description": "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+		},
+		"grid": {
+			"member1Name": "Sarah Chen",
+			"member1Role": "Founder & Lead Engineer",
+			"member1Bio": "Former Google engineer with 10 years of experience building internationalization systems at scale.",
+			"member2Name": "Marcus Weber",
+			"member2Role": "Performance Engineer",
+			"member2Bio": "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+			"member3Name": "Aisha Patel",
+			"member3Role": "Developer Advocate",
+			"member3Bio": "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+			"member4Name": "Tomás Rodríguez",
+			"member4Role": "Full-Stack Developer",
+			"member4Bio": "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+			"member5Name": "Yuki Tanaka",
+			"member5Role": "Data Analyst",
+			"member5Bio": "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+			"member6Name": "Elena Kowalski",
+			"member6Role": "Community Manager",
+			"member6Bio": "Manages community contributions, partnerships, and events. Background in open source governance."
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "Oops! Page not found",
+		"returnHome": "Return to Home"
+	}
+};
+var fr_default = {
+	shared: {
+		"appName": "Bench i18n",
+		"siteName": "Benchmark i18n",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "Aller sur GitHub"
+	},
+	header: {
+		"home": "Accueil",
+		"methodology": "Méthodologie",
+		"mockPages": "Pages fictives",
+		"products": "Produits",
+		"pricing": "Tarifs",
+		"team": "Équipe",
+		"blog": "Blog",
+		"careers": "Carrières",
+		"faq": "FAQ",
+		"contact": "Contact",
+		"settings": "Paramètres"
+	},
+	footer: {
+		"title": "Benchmark i18n",
+		"description": "Une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+		"resources": "Ressources",
+		"github": "GitHub",
+		"methodology": "Méthodologie",
+		"contributing": "Contribuer",
+		"contact": "Contact",
+		"builtWith": "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et un routeur côté client."
+	},
+	themeToggle: {
+		"auto": "Thème : automatique",
+		"dark": "Thème : sombre",
+		"light": "Thème : clair",
+		"labelAuto": "Mode thème : automatique (système). Cliquez pour passer en mode clair.",
+		"labelOther": "Mode thème : {mode}. Cliquez pour changer de mode."
+	},
+	mockBanner: "⚠️ Cette page contient des données fictives à des fins de benchmark uniquement. Elle n'est liée à aucune activité commerciale ou service réel.",
+	home: {
+		"hero": {
+			"title": "Benchmark i18n",
+			"description": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+			"viewResults": "Voir les résultats",
+			"methodology": "Méthodologie"
+		},
+		"whyItMatters": {
+			"title": "Pourquoi ces métriques comptent",
+			"bundleSizeTitle": "Taille du bundle",
+			"bundleSizeDesc": "Le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. Un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3G lentes encore très répandues. Les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+			"renderingTitle": "Rendu et hydratation",
+			"renderingDesc": "Brancher un gros dictionnaire JSON sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. Lors de l'hydratation SSR, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le Time to Interactive (TTI).",
+			"dynamicLoadingTitle": "Chargement dynamique",
+			"dynamicLoadingDesc": "Charger toutes les traductions d'un coup surdimensionne la charge initiale. Le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. Il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. Il faut mesurer les deux approches."
+		},
+		"understandingImpact": {
+			"title": "Comprendre l'impact",
+			"singleJsonTitle": "Pourquoi un unique gros JSON peut nuire aux performances",
+			"singleJsonIntro": "Beaucoup de bibliothèques i18n stockent les traductions dans un seul objet JSON fourni via le contexte React. Lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. Cela signifie :",
+			"singleJsonBullet1": "Le JSON doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+			"singleJsonBullet2": "Les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+			"singleJsonBullet3": "Lors du rendu serveur, tout le dictionnaire est sérialisé dans le HTML, alourdissant le document à télécharger et à hydrater.",
+			"tradeOffsTitle": "Les compromis du chargement dynamique",
+			"tradeOffsIntro": "Découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+			"waterfallLabel": "Requêtes en cascade :",
+			"waterfallDesc": "l'application doit d'abord charger, déterminer la langue, puis récupérer le bon fragment — avec des allers-retours réseau supplémentaires.",
+			"foucLabel": "Flash de contenu non traduit (FOUC) :",
+			"foucDesc": "l'utilisateur peut voir brièvement des clés ou une langue de secours avant l'arrivée du fragment.",
+			"cacheLabel": "Invalidation du cache :",
+			"cacheDesc": "mettre à jour les traductions exige des stratégies de cache busting pour livrer du contenu à jour sans re-télécharger l'inutile.",
+			"measuresTitle": "Ce que mesure ce benchmark",
+			"measuresDesc": "Cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle JavaScript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. Chaque bibliothèque est intégrée dans la même base pour des résultats comparables."
+		},
+		"resultsTable": {
+			"title": "Exemple de résultats",
+			"library": "Bibliothèque",
+			"bundleSize": "Taille du bundle",
+			"lookupTime": "Temps de recherche",
+			"lazyLoading": "Chargement paresseux",
+			"yes": "Oui",
+			"manual": "Manuel",
+			"builtIn": "Intégré"
+		}
+	},
+	about: {
+		"header": {
+			"title": "À propos de ce benchmark",
+			"description": "Il s'agit d'une application de test open source — pas d'un produit ni d'une entreprise. Elle sert uniquement de base multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans les mêmes conditions."
+		},
+		"grid": {
+			"whyExistsTitle": "Pourquoi ce projet existe",
+			"whyExistsDesc": "Choisir une bibliothèque i18n est une décision d'architecture à long terme. Beaucoup de comparatifs insistent sur l'ergonomie d'API, mais peu mesurent le coût performance : poids ajouté au bundle ? impact sur le rendu avec des milliers de clés ? le chargement paresseux aide-t-il vraiment ou déplace-t-il seulement le coût ? Ce benchmark répond avec des données réelles.",
+			"methodologyTitle": "Méthodologie",
+			"methodologyDesc": "La même application 10 pages est construite pour chaque bibliothèque. Nous mesurons le bundle de production (rollup-plugin-visualizer), lançons des audits Lighthouse et utilisons le profilage pour capturer le rendu lors des changements de langue. Tout s'exécute en CI sur du matériel homogène pour des résultats reproductibles."
+		},
+		"whatWeMeasure": {
+			"title": "Ce que nous mesurons",
+			"bundleSizeImpact": "Impact sur la taille du bundle",
+			"bundleSizeImpactDesc": "Les octets JavaScript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers sont inclus — impact direct sur les réseaux lents.",
+			"renderingOverhead": "Surcharge de rendu",
+			"renderingOverheadDesc": "Temps supplémentaire ajouté au cycle de rendu. Les bibliothèques qui injectent les traductions via un seul provider de contexte peuvent provoquer des re-rendus inutiles.",
+			"hydrationCost": "Coût d'hydratation",
+			"hydrationCostDesc": "En SSR, les données de traduction sont sérialisées dans le HTML. De gros dictionnaires alourdissent la page et ralentissent l'hydratation.",
+			"lazyLoading": "Efficacité du chargement paresseux",
+			"lazyLoadingDesc": "Le découpage par route ou espace de noms réduit-il vraiment la charge initiale, et quels compromis cela introduit (cascade, FOUC, cache) ?",
+			"localeSwitch": "Vitesse de changement de langue",
+			"localeSwitchDesc": "À quelle vitesse l'application peut basculer de langue à l'exécution — récupération des traductions, re-rendu, mise à jour du DOM."
+		}
+	},
+	blog: {
+		"header": {
+			"title": "Blog",
+			"description": "Articles, tutoriels et analyses de la communauté i18n."
+		},
+		"list": {
+			"readMore": "Lire la suite →",
+			"post1Title": "Comparer les bibliothèques i18n en 2026 : plongée détaillée",
+			"post1Date": "15 mars 2026",
+			"post1Excerpt": "Nous avons testé 12 bibliothèques sur la perf, la taille du bundle et l'expérience développeur. Voici les résultats surprenants.",
+			"post1Category": "Benchmark",
+			"post2Title": "Réduire votre bundle i18n de 60 %",
+			"post2Date": "8 mars 2026",
+			"post2Excerpt": "Stratégies concrètes : chargement paresseux, découpage et optimisations à la compilation.",
+			"post2Category": "Tutoriel",
+			"post3Title": "État de l'internationalisation dans l'écosystème React",
+			"post3Date": "28 février 2026",
+			"post3Excerpt": "Panorama des tendances, patterns émergents et préférences de la communauté.",
+			"post3Category": "Analyse",
+			"post4Title": "Migrer de react-i18next vers Lingui",
+			"post4Date": "15 février 2026",
+			"post4Excerpt": "Guide pas à pas pour migrer une app en production avec 50 000 clés de traduction.",
+			"post4Category": "Tutoriel",
+			"post5Title": "Server Components et i18n : qu'est-ce qui change ?",
+			"post5Date": "1er février 2026",
+			"post5Excerpt": "Les React Server Components introduisent de nouveaux motifs pour l'i18n.",
+			"post5Category": "Analyse",
+			"post6Title": "Méthodologie de benchmark : comment nous testons",
+			"post6Date": "20 janvier 2026",
+			"post6Excerpt": "Transparence sur l'environnement de test, les méthodes statistiques et la reproductibilité.",
+			"post6Category": "Méta"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "Carrières",
+			"description": "Rejoignez notre mission pour améliorer l'écosystème i18n. Équipe remote-first, impact, transparence et apprentissage continu."
+		},
+		"benefits": {
+			"remoteLabel": "Remote-first",
+			"remoteValue": "Travaillez depuis n'importe où",
+			"payLabel": "Rémunération compétitive",
+			"payValue": "Fourchettes haut de marché",
+			"ossLabel": "Temps open source",
+			"ossValue": "20 % du temps pour contribuer à l'OSS"
+		},
+		"openPositions": {
+			"title": "Postes ouverts",
+			"applyNow": "Postuler",
+			"remote": "À distance",
+			"fullTime": "Temps plein",
+			"partTime": "Temps partiel",
+			"engineering": "Ingénierie",
+			"documentation": "Documentation",
+			"community": "Communauté",
+			"sfRemote": "San Francisco / télétravail",
+			"frontendTitle": "Ingénieur front-end senior",
+			"frontendDesc": "Construire et maintenir le tableau de bord de benchmark et les outils dev avec React, TypeScript et Vite.",
+			"backendTitle": "Ingénieur back-end",
+			"backendDesc": "Concevoir et faire évoluer l'infrastructure cloud qui exécute des milliers de benchmarks automatisés.",
+			"writerTitle": "Rédacteur·rice technique",
+			"writerDesc": "Guides, références d'API et tutoriels pour la plateforme de benchmark.",
+			"devrelTitle": "Ingénieur DevRel",
+			"devrelDesc": "Animer la communauté i18n : conférences, ateliers, articles et contributions OSS.",
+			"qaTitle": "Ingénieur QA",
+			"qaDesc": "Garantir la fiabilité des résultats par des tests et validations rigoureux."
+		}
+	},
+	contact: {
+		"header": {
+			"title": "Contact",
+			"description": "Une idée, un bug ou envie de contribuer un benchmark ? Écrivez-nous à"
+		},
+		"form": {
+			"name": "Nom",
+			"yourName": "Votre nom",
+			"email": "E-mail",
+			"emailPlaceholder": "vous@exemple.com",
+			"topic": "Sujet",
+			"bugReport": "Rapport de bug",
+			"newBenchmarkIdea": "Idée de benchmark",
+			"methodologyQuestion": "Question de méthodologie",
+			"contribution": "Contribution",
+			"other": "Autre",
+			"message": "Message",
+			"messagePlaceholder": "Décrivez votre question ou idée…",
+			"sendMessage": "Envoyer"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "Questions fréquentes",
+			"description": "Tout savoir sur i18n Benchmark."
+		},
+		"list": {
+			"q1": "Qu'est-ce qu'i18n Benchmark ?",
+			"a1": "Une suite open source qui mesure et compare performance, taille de bundle et expérience développeur des bibliothèques i18n pour JavaScript et React.",
+			"q2": "Comment sont menés les benchmarks ?",
+			"a2": "Tests standardisés sur matériel cohomogène, répétés pour la significativité statistique. Les configs sont publiques sur GitHub.",
+			"q3": "Quelles bibliothèques sont prises en charge ?",
+			"a3": "react-i18next, react-intl, Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, Tolgee, etc.",
+			"q4": "Puis-je proposer des benchmarks ?",
+			"a4": "Oui — forkez le dépôt, suivez le guide de contribution et ouvrez une pull request.",
+			"q5": "À quelle fréquence sont-ils mis à jour ?",
+			"a5": "Chaque semaine sur les dernières versions stables ; une release majeure relance immédiatement les mesures.",
+			"q6": "Les données sont-elles fiables ?",
+			"a6": "Méthodologie statistique stricte, échauffement, détection d'anomalies, intervalles de confiance — données brutes publiées.",
+			"q7": "Proposez-vous du conseil ?",
+			"a7": "Oui, le plan Enterprise inclut des heures pour aider les équipes à choisir une solution i18n.",
+			"q8": "Comment contribuer ?",
+			"a8": "Benchmarks, documentation, bugs, nouvelles métriques ou sponsorship — voir GitHub."
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "Tarification simple et transparente",
+			"description": "Choisissez l'offre adaptée à votre équipe. Sans frais cachés."
+		},
+		"tiers": {
+			"starterName": "Starter",
+			"starterPrice": "0 €",
+			"starterPeriod": "pour toujours",
+			"starterFeature1": "5 exécutions de benchmark / jour",
+			"starterFeature2": "3 bibliothèques",
+			"starterFeature3": "Support communautaire",
+			"starterFeature4": "Résultats publics",
+			"proName": "Pro",
+			"proPrice": "29 €",
+			"proPeriod": "/ mois",
+			"proFeature1": "Exécutions illimitées",
+			"proFeature2": "Toutes les bibliothèques",
+			"proFeature3": "Support prioritaire",
+			"proFeature4": "Résultats privés",
+			"proFeature5": "Intégration CI",
+			"proFeature6": "Historique",
+			"enterpriseName": "Enterprise",
+			"enterprisePrice": "Sur mesure",
+			"enterpriseFeature1": "Tout le Pro",
+			"enterpriseFeature2": "Option on-premise",
+			"enterpriseFeature3": "SSO et SAML",
+			"enterpriseFeature4": "Account manager dédié",
+			"enterpriseFeature5": "SLA sur mesure",
+			"enterpriseFeature6": "Journaux d'audit",
+			"enterpriseFeature7": "Sessions de formation",
+			"contactSales": "Contacter les ventes",
+			"getStarted": "Commencer"
+		}
+	},
+	products: {
+		"header": {
+			"title": "Produits",
+			"description": "Outils et services pour fluidifier votre flux i18n."
+		},
+		"grid": {
+			"learnMore": "En savoir plus",
+			"cliName": "Benchmark CLI",
+			"cliDesc": "Lancez des benchmarks en local. Configurations personnalisées et CI.",
+			"cliPrice": "Gratuit",
+			"cloudName": "Benchmark Cloud",
+			"cloudDesc": "Benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+			"cloudPrice": "29 €/mois",
+			"enterpriseName": "Benchmark Enterprise",
+			"enterpriseDesc": "On-premise avec SSO, journaux d'audit, SLA et support dédié.",
+			"enterprisePrice": "Nous contacter",
+			"migrationName": "Assistant de migration",
+			"migrationDesc": "Outil assisté par IA pour migrer entre bibliothèques i18n sans interruption.",
+			"migrationPrice": "99 € (unique)",
+			"qaName": "QA des traductions",
+			"qaDesc": "Contrôles automatiques : clés manquantes, pluriels, contexte.",
+			"qaPrice": "19 €/mois",
+			"optimizerName": "Optimiseur de bundle",
+			"optimizerDesc": "Analyse et optimise votre bundle i18n en production (tree-shaking, découpage).",
+			"optimizerPrice": "49 €/mois"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "Paramètres",
+			"description": "Gérez les préférences et la configuration de votre compte."
+		},
+		"profile": {
+			"title": "Profil",
+			"displayName": "Nom affiché",
+			"email": "E-mail"
+		},
+		"preferences": {
+			"title": "Préférences",
+			"emailNotifications": "Notifications e-mail",
+			"weeklyReports": "Recevoir les rapports hebdomadaires",
+			"toggleNotifications": "Activer/désactiver les notifications",
+			"darkMode": "Mode sombre",
+			"darkColorScheme": "Utiliser le thème sombre",
+			"toggleDarkMode": "Basculer le mode sombre",
+			"defaultLanguage": "Langue par défaut",
+			"english": "Anglais (en)",
+			"french": "Français (fr)",
+			"german": "Allemand (de)",
+			"spanish": "Espagnol (es)",
+			"japanese": "Japonais (ja)",
+			"chinese": "Chinois simplifié (zh-CN)",
+			"arabic": "Arabe (ar)"
+		},
+		"apiAccess": {
+			"title": "Accès API",
+			"apiKey": "Clé API",
+			"copy": "Copier",
+			"description": "Utilisez cette clé pour appeler l'API de benchmark par programmation."
+		},
+		"footer": {
+			"cancel": "Annuler",
+			"saveChanges": "Enregistrer"
+		}
+	},
+	team: {
+		"header": {
+			"title": "Notre équipe",
+			"description": "Les personnes derrière i18n Benchmark, unies par la passion des outils développeurs."
+		},
+		"grid": {
+			"member1Name": "Sarah Chen",
+			"member1Role": "Fondatrice & lead ingénieur",
+			"member1Bio": "Ex-ingénieure Google, 10 ans sur l'internationalisation à grande échelle.",
+			"member2Name": "Marcus Weber",
+			"member2Role": "Ingénieur performance",
+			"member2Bio": "Optimisation JavaScript et méthodologie de benchmark — précédemment chez Vercel.",
+			"member3Name": "Aisha Patel",
+			"member3Role": "Developer advocate",
+			"member3Bio": "Expérience développeur et pédagogie — conférencière React Conf, JSConf, i18nNext.",
+			"member4Name": "Tomás Rodríguez",
+			"member4Role": "Développeur full-stack",
+			"member4Bio": "Infrastructure de benchmark et CI/CD — contributeur open source à Lingui.",
+			"member5Name": "Yuki Tanaka",
+			"member5Role": "Analyste de données",
+			"member5Bio": "Rigueur statistique des résultats — doctorat en statistiques appliquées (MIT).",
+			"member6Name": "Elena Kowalski",
+			"member6Role": "Community manager",
+			"member6Bio": "Contributions communautaires, partenariats et événements — gouvernance open source."
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "Oups ! Page introuvable",
+		"returnHome": "Retour à l'accueil"
+	}
+};
+var es_default = {
+	shared: {
+		"appName": "i18n Bench",
+		"siteName": "i18n Benchmark",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "Ir a GitHub"
+	},
+	header: {
+		"home": "Inicio",
+		"methodology": "Metodología",
+		"mockPages": "Páginas de prueba",
+		"products": "Productos",
+		"pricing": "Precios",
+		"team": "Equipo",
+		"blog": "Blog",
+		"careers": "Carreras",
+		"faq": "FAQ",
+		"contact": "Contacto",
+		"settings": "Ajustes"
+	},
+	footer: {
+		"title": "i18n Benchmark",
+		"description": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el tiempo de carga y la reactividad de la aplicación.",
+		"resources": "Recursos",
+		"github": "GitHub",
+		"methodology": "Metodología",
+		"contributing": "Contribuir",
+		"contact": "Contacto",
+		"builtWith": "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y un enrutador en el lado del cliente."
+	},
+	themeToggle: {
+		"auto": "Tema: Auto",
+		"dark": "Tema: Oscuro",
+		"light": "Tema: Claro",
+		"labelAuto": "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.",
+		"labelOther": "Modo de tema: {mode}. Haz clic para cambiar de modo."
+	},
+	mockBanner: "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.",
+	home: {
+		"hero": {
+			"title": "i18n Benchmark",
+			"description": "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el rendimiento de carga y la reactividad del renderizado.",
+			"viewResults": "Ver resultados",
+			"methodology": "Metodología"
+		},
+		"whyItMatters": {
+			"title": "Por qué son importantes estas métricas",
+			"bundleSizeTitle": "Tamaño del bundle",
+			"bundleSizeDesc": "El bundle representa los datos enviados a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código runtime, además de los propios archivos de traducción.",
+			"renderingTitle": "Renderizado e hidratación",
+			"renderingDesc": "Conectar un diccionario JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede desencadenar nuevos renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la anexión de objetos de traducción masivos añaden latencia antes de que la página sea interactiva, lo que afecta directamente al Time to Interactive (TTI).",
+			"dynamicLoadingTitle": "Carga dinámica",
+			"dynamicLoadingDesc": "Cargar todas las traducciones por adelantado sobrecarga el payload inicial. La carga dinámica (lazy) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, la carga diferida introduce sus propias compensaciones: solicitudes en cascada, parpadeo de contenido no traducido y complejidad de la caché. Medir ambas estrategias es esencial."
+		},
+		"understandingImpact": {
+			"title": "Entendiendo el impacto",
+			"singleJsonTitle": "Por qué un solo JSON grande puede perjudicar el rendimiento",
+			"singleJsonIntro": "Muchas bibliotecas i18n almacenan las traducciones en un único objeto JSON proporcionado a través del contexto de React. Cuando este objeto es grande (miles de claves), cada componente que consume traducciones mantiene una referencia a todo el diccionario. Esto significa:",
+			"singleJsonBullet1": "El JSON debe analizarse en cada carga de página, bloqueando el hilo principal.",
+			"singleJsonBullet2": "Las arquitecturas basadas en el contexto pueden causar renderizados en cascada cuando cambia el idioma, porque cada consumidor es notificado aunque sus claves específicas no hayan cambiado.",
+			"singleJsonBullet3": "Durante el renderizado del lado del servidor, el diccionario completo se serializa en el payload HTML, aumentando el tamaño del documento que debe descargarse e hidratarse.",
+			"tradeOffsTitle": "Las compensaciones de la carga dinámica",
+			"tradeOffsIntro": "Dividir las traducciones en fragmentos por ruta o por espacio de nombres puede reducir drásticamente el payload inicial. Pero introduce nuevos desafíos:",
+			"waterfallLabel": "Solicitudes en cascada:",
+			"waterfallDesc": "la aplicación debe primero cargarse, determinar el idioma, luego obtener el fragmento correcto, lo que añade viajes de red de ida y vuelta.",
+			"foucLabel": "Parpadeo de contenido no traducido (FOUC):",
+			"foucDesc": "los usuarios pueden ver brevemente las claves de traducción o un idioma de respaldo antes de que llegue el fragmento.",
+			"cacheLabel": "Invalidación de la caché:",
+			"cacheDesc": "actualizar las traducciones requiere estrategias de invalidación de la caché para asegurar que los usuarios obtengan contenido fresco sin volver a descargar fragmentos no modificados.",
+			"measuresTitle": "Qué mide este benchmark",
+			"measuresDesc": "Esta aplicación de prueba proporciona un entorno controlado —10 páginas con contenido realista— para comparar bibliotecas i18n en tres ejes: el peso que añaden a tu bundle de JavaScript, el tiempo dedicado a analizar y renderizar el contenido traducido y la eficacia de sus estrategias de división de código y carga diferida. Cada biblioteca se integra en la misma aplicación para que los resultados sean directamente comparables."
+		},
+		"resultsTable": {
+			"title": "Resultados de muestra",
+			"library": "Biblioteca",
+			"bundleSize": "Tamaño del bundle",
+			"lookupTime": "Tiempo de búsqueda",
+			"lazyLoading": "Carga diferida",
+			"yes": "Sí",
+			"manual": "Manual",
+			"builtIn": "Integrado"
+		}
+	},
+	about: {
+		"header": {
+			"title": "Acerca de este benchmark",
+			"description": "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React de varias páginas realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas."
+		},
+		"grid": {
+			"whyExistsTitle": "Por qué existe esto",
+			"whyExistsDesc": "Elegir una biblioteca i18n es una decisión arquitectónica con consecuencias a largo plazo. La mayoría de las comparaciones se centran en la ergonomía de la API, pero pocas miden el coste de rendimiento: ¿cuánto peso añade la biblioteca al bundle? ¿Cómo afecta al renderizado cuando se cargan miles de claves de traducción? ¿Realmente ayuda la carga diferida o solo desplaza el coste? Este benchmark responde a esas preguntas con datos reales.",
+			"methodologyTitle": "Metodología",
+			"methodologyDesc": "La misma aplicación de 10 páginas se construye una vez por biblioteca. Medimos el bundle de producción (a través de rollup-plugin-visualizer), realizamos auditorías de Lighthouse para las métricas de carga y utilizamos React Profiler para capturar los tiempos de renderizado durante los cambios de idioma. Todas las pruebas se ejecutan en CI en hardware consistente para asegurar resultados reproducibles."
+		},
+		"whatWeMeasure": {
+			"title": "Qué medimos",
+			"bundleSizeImpact": "Impacto en el tamaño del bundle",
+			"bundleSizeImpactDesc": "Los bytes adicionales de JavaScript enviados a los usuarios cuando se incluyen la biblioteca i18n y sus archivos de traducción. Esto afecta directamente al tiempo de descarga en redes lentas.",
+			"renderingOverhead": "Sobrecarga de renderizado",
+			"renderingOverheadDesc": "Cuánto tiempo extra añade la biblioteca al ciclo de renderizado de React. Las bibliotecas que inyectan traducciones a través de un único proveedor de contexto pueden causar re-renderizados innecesarios en todo el árbol de componentes.",
+			"hydrationCost": "Coste de hidratación",
+			"hydrationCostDesc": "Durante el SSR, los datos de traducción se serializan en el HTML. Los diccionarios grandes aumentan el payload HTML y ralentizan la hidratación, el momento en que la página se vuelve interactiva.",
+			"lazyLoading": "Eficacia de la carga diferida",
+			"lazyLoadingDesc": "Si dividir las traducciones por ruta o espacio de nombres realmente reduce la carga inicial y qué compensaciones introduce (solicitudes en cascada, FOUC, complejidad de la caché).",
+			"localeSwitch": "Velocidad de cambio de idioma",
+			"localeSwitchDesc": "Qué tan rápido puede la aplicación cambiar de un idioma a otro en tiempo de ejecución, incluyendo la obtención de nuevas traducciones, el renderizado de componentes y la actualización del DOM."
+		}
+	},
+	blog: {
+		"header": {
+			"title": "Blog",
+			"description": "Información, tutoriales y análisis de la comunidad i18n."
+		},
+		"list": {
+			"readMore": "Leer más →",
+			"post1Title": "Comparativa de bibliotecas i18n en 2026: Un análisis profundo",
+			"post1Date": "15 de marzo de 2026",
+			"post1Excerpt": "Probamos 12 bibliotecas de internacionalización diferentes en cuanto a rendimiento, tamaño del bundle y DX. Aquí están los sorprendentes resultados.",
+			"post1Category": "Benchmark",
+			"post2Title": "Cómo reducir tu bundle i18n en un 60%",
+			"post2Date": "8 de marzo de 2026",
+			"post2Excerpt": "Estrategias prácticas para optimizar los bundles de traducción, incluyendo carga diferida, división de código y optimizaciones en tiempo de compilación.",
+			"post2Category": "Tutorial",
+			"post3Title": "El estado de la internacionalización en React",
+			"post3Date": "28 de febrero de 2026",
+			"post3Excerpt": "Una visión general del ecosistema i18n actual en React, cubriendo tendencias, patrones emergentes y preferencias de la comunidad.",
+			"post3Category": "Análisis",
+			"post4Title": "Migración de react-i18next a Lingui",
+			"post4Date": "15 de febrero de 2026",
+			"post4Excerpt": "Una guía paso a paso sobre la migración de una aplicación de producción con 50.000 claves de traducción de react-i18next a Lingui.",
+			"post4Category": "Tutorial",
+			"post5Title": "Server Components e i18n: ¿Qué cambia?",
+			"post5Date": "1 de febrero de 2026",
+			"post5Excerpt": "Los React Server Components introducen nuevos patrones para la internacionalización. Exploramos las implicaciones y las mejores prácticas.",
+			"post5Category": "Análisis",
+			"post6Title": "Metodología de benchmark: Cómo probamos",
+			"post6Date": "20 de enero de 2026",
+			"post6Excerpt": "Una mirada transparente a nuestra metodología de benchmarking, incluyendo entornos de prueba, métodos estadísticos y reproducibilidad.",
+			"post6Category": "Meta"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "Carreras",
+			"description": "Únete a nuestra misión de mejorar el ecosistema de la internacionalización. Somos un equipo que trabaja primero en remoto y que valora el impacto, la transparencia y el aprendizaje continuo."
+		},
+		"benefits": {
+			"remoteLabel": "Remoto primero",
+			"remoteValue": "Trabaja desde cualquier lugar del mundo",
+			"payLabel": "Salario competitivo",
+			"payValue": "Compensación superior a la del mercado",
+			"ossLabel": "Tiempo para el código abierto",
+			"ossValue": "20% del tiempo para contribuciones a OSS"
+		},
+		"openPositions": {
+			"title": "Puestos vacantes",
+			"applyNow": "Postular ahora",
+			"remote": "Remoto",
+			"fullTime": "Tiempo completo",
+			"partTime": "Tiempo parcial",
+			"engineering": "Ingeniería",
+			"documentation": "Documentación",
+			"community": "Comunidad",
+			"sfRemote": "San Francisco / Remoto",
+			"frontendTitle": "Ingeniero Frontend Senior",
+			"frontendDesc": "Construir y mantener nuestro panel de benchmarking y herramientas para desarrolladores utilizando React, TypeScript y Vite.",
+			"backendTitle": "Ingeniero Backend",
+			"backendDesc": "Diseñar y escalar nuestra infraestructura de benchmarking en la nube que maneja miles de ejecuciones automatizadas diariamente.",
+			"writerTitle": "Redactor técnico",
+			"writerDesc": "Crear guías completas, referencias de API y tutoriales para nuestra plataforma de benchmarking.",
+			"devrelTitle": "Ingeniero de DevRel",
+			"devrelDesc": "Interactuar con la comunidad i18n a través de charlas, talleres, publicaciones en blogs y contribuciones de código abierto.",
+			"qaTitle": "Ingeniero de QA",
+			"qaDesc": "Asegurar la precisión y fiabilidad de los resultados del benchmark mediante pruebas y validaciones rigurosas."
+		}
+	},
+	contact: {
+		"header": {
+			"title": "Ponte en contacto",
+			"description": "¿Tienes ideas, has encontrado un error o quieres contribuir con un benchmark? Ponte en contacto con nosotros en"
+		},
+		"form": {
+			"name": "Nombre",
+			"yourName": "Tu nombre",
+			"email": "Correo electrónico",
+			"emailPlaceholder": "tu@ejemplo.com",
+			"topic": "Tema",
+			"bugReport": "Informe de error",
+			"newBenchmarkIdea": "Nueva idea de benchmark",
+			"methodologyQuestion": "Pregunta sobre la metodología",
+			"contribution": "Contribución",
+			"other": "Otro",
+			"message": "Mensaje",
+			"messagePlaceholder": "Describe tu pregunta o idea...",
+			"sendMessage": "Enviar mensaje"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "Preguntas frecuentes",
+			"description": "Todo lo que necesitas saber sobre i18n Benchmark."
+		},
+		"list": {
+			"q1": "¿Qué es i18n Benchmark?",
+			"a1": "i18n Benchmark es una suite de benchmarking de código abierto que mide y compara el rendimiento, el tamaño del bundle y la experiencia del desarrollador de las bibliotecas de internacionalización para aplicaciones JavaScript y React.",
+			"q2": "¿Cómo se realizan los benchmarks?",
+			"a2": "Realizamos pruebas estandarizadas en entornos aislados utilizando hardware consistente. Cada benchmark se repite varias veces para asegurar la significación estadística. Todas las configuraciones de las pruebas están disponibles públicamente en nuestro repositorio de GitHub.",
+			"q3": "¿Qué bibliotecas se admiten actualmente?",
+			"a3": "Admitimos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.",
+			"q4": "¿Puedo enviar mis propios benchmarks?",
+			"a4": "¡Sí! Los envíos de benchmarks de la comunidad son bienvenidos. Haz un fork de nuestro repositorio, añade tu benchmark siguiendo nuestra guía de contribución y envía una pull request. Nuestro equipo revisará y fusionará los envíos que califiquen.",
+			"q5": "¿Con qué frecuencia se actualizan los benchmarks?",
+			"a5": "Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmarking inmediato.",
+			"q6": "¿Son fiables los datos?",
+			"a6": "Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos brutos se publican junto con nuestro análisis para una total transparencia.",
+			"q7": "¿Ofrecen servicios de consultoría?",
+			"a7": "Sí, nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso específico, escala y limitaciones.",
+			"q8": "¿Cómo puedo contribuir?",
+			"a8": "Hay muchas formas de contribuir: enviar benchmarks, mejorar la documentación, informar de errores, sugerir nuevas métricas o patrocinar el proyecto. Visite nuestro repositorio de GitHub para obtener más detalles."
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "Precios sencillos y transparentes",
+			"description": "Elige el plan que mejor se adapte a tu equipo. Sin cuotas ocultas."
+		},
+		"tiers": {
+			"starterName": "Starter",
+			"starterPrice": "0 $",
+			"starterPeriod": "para siempre",
+			"starterFeature1": "5 ejecuciones de benchmark al día",
+			"starterFeature2": "3 bibliotecas",
+			"starterFeature3": "Soporte de la comunidad",
+			"starterFeature4": "Resultados públicos",
+			"proName": "Pro",
+			"proPrice": "29 $",
+			"proPeriod": "/mes",
+			"proFeature1": "Ejecuciones ilimitadas",
+			"proFeature2": "Todas las bibliotecas",
+			"proFeature3": "Soporte prioritario",
+			"proFeature4": "Resultados privados",
+			"proFeature5": "Integración CI",
+			"proFeature6": "Datos históricos",
+			"enterpriseName": "Enterprise",
+			"enterprisePrice": "Personalizado",
+			"enterpriseFeature1": "Todo lo que hay en Pro",
+			"enterpriseFeature2": "Opción on-premise",
+			"enterpriseFeature3": "SSO y SAML",
+			"enterpriseFeature4": "Gestor de cuentas dedicado",
+			"enterpriseFeature5": "SLAs personalizados",
+			"enterpriseFeature6": "Registros de auditoría",
+			"enterpriseFeature7": "Sesiones de formación",
+			"contactSales": "Contactar con ventas",
+			"getStarted": "Empezar"
+		}
+	},
+	products: {
+		"header": {
+			"title": "Productos",
+			"description": "Herramientas y servicios para agilizar su flujo de trabajo de internacionalización."
+		},
+		"grid": {
+			"learnMore": "Más información",
+			"cliName": "CLI de Benchmark",
+			"cliDesc": "Ejecuta benchmarks localmente desde tu terminal. Soporta configuraciones personalizadas e integración CI.",
+			"cliPrice": "Gratis",
+			"cloudName": "Benchmark Cloud",
+			"cloudDesc": "Benchmarking automatizado basado en la nube con seguimiento histórico, alertas y paneles de equipo.",
+			"cloudPrice": "29 $/mes",
+			"enterpriseName": "Benchmark Enterprise",
+			"enterpriseDesc": "Despliegue on-premise con SSO, registros de auditoría, SLAs personalizados y soporte dedicado.",
+			"enterprisePrice": "Contáctanos",
+			"migrationName": "Asistente de migración",
+			"migrationDesc": "Herramienta basada en IA que ayuda a migrar tu código base entre bibliotecas i18n sin tiempo de inactividad.",
+			"migrationPrice": "99 $ pago único",
+			"qaName": "QA de traducción",
+			"qaDesc": "Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.",
+			"qaPrice": "19 $/mes",
+			"optimizerName": "Optimizador de bundle",
+			"optimizerDesc": "Analiza y optimiza tu bundle i18n para producción con tree-shaking y división de código.",
+			"optimizerPrice": "49 $/mes"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "Ajustes",
+			"description": "Gestiona las preferencias y la configuración de tu cuenta."
+		},
+		"profile": {
+			"title": "Perfil",
+			"displayName": "Nombre visible",
+			"email": "Correo electrónico"
+		},
+		"preferences": {
+			"title": "Preferencias",
+			"emailNotifications": "Notificaciones por correo electrónico",
+			"weeklyReports": "Recibir informes semanales de benchmarks",
+			"toggleNotifications": "Cambiar notificaciones",
+			"darkMode": "Modo oscuro",
+			"darkColorScheme": "Usar esquema de colores oscuro",
+			"toggleDarkMode": "Cambiar modo oscuro",
+			"defaultLanguage": "Idioma predeterminado",
+			"english": "Inglés (en)",
+			"french": "Francés (fr)",
+			"german": "Alemán (de)",
+			"spanish": "Español (es)",
+			"japanese": "Japonés (ja)",
+			"chinese": "Chino simplificado (zh-CN)",
+			"arabic": "Árabe (ar)"
+		},
+		"apiAccess": {
+			"title": "Acceso API",
+			"apiKey": "Llave API",
+			"copy": "Copiar",
+			"description": "Usa esta llave para acceder a la API de benchmarking de forma programática."
+		},
+		"footer": {
+			"cancel": "Cancelar",
+			"saveChanges": "Guardar cambios"
+		}
+	},
+	team: {
+		"header": {
+			"title": "Nuestro equipo",
+			"description": "Conoce a las personas que están detrás de i18n Benchmark. Un equipo diverso unido por una pasión compartida por las grandes herramientas para desarrolladores."
+		},
+		"grid": {
+			"member1Name": "Sarah Chen",
+			"member1Role": "Fundadora e ingeniera principal",
+			"member1Bio": "Exingeniera de Google con 10 años de experiencia en la creación de sistemas de internacionalización a escala.",
+			"member2Name": "Marcus Weber",
+			"member2Role": "Ingeniero de rendimiento",
+			"member2Bio": "Especializado en la optimización del rendimiento de JavaScript y la metodología de benchmarking. Anteriormente en Vercel.",
+			"member3Name": "Aisha Patel",
+			"member3Role": "Developer Advocate",
+			"member3Bio": "Apasionada por la experiencia del desarrollador y la educación. Ponente en React Conf, JSConf e i18nNext.",
+			"member4Name": "Tomás Rodríguez",
+			"member4Role": "Desarrollador Full-Stack",
+			"member4Bio": "Mantiene la infraestructura de benchmarking y el pipeline de CI/CD. Colaborador de código abierto de Lingui.",
+			"member5Name": "Yuki Tanaka",
+			"member5Role": "Analista de datos",
+			"member5Bio": "Garantiza el rigor estadístico en todos los resultados del benchmark. Doctorado en Estadística Aplicada por el MIT.",
+			"member6Name": "Elena Kowalski",
+			"member6Role": "Responsable de la comunidad",
+			"member6Bio": "Gestiona las contribuciones de la comunidad, las asociaciones y los eventos. Antecedentes en gobernanza de código abierto."
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "¡Ups! Página no encontrada",
+		"returnHome": "Volver al inicio"
+	}
+};
+var de_default = {
+	shared: {
+		"appName": "i18n Bench",
+		"siteName": "i18n Benchmark",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "Zu GitHub"
+	},
+	header: {
+		"home": "Home",
+		"methodology": "Methodik",
+		"mockPages": "Testseiten",
+		"products": "Produkte",
+		"pricing": "Preise",
+		"team": "Team",
+		"blog": "Blog",
+		"careers": "Karriere",
+		"faq": "FAQ",
+		"contact": "Kontakt",
+		"settings": "Einstellungen"
+	},
+	footer: {
+		"title": "i18n Benchmark",
+		"description": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
+		"resources": "Ressourcen",
+		"github": "GitHub",
+		"methodology": "Methodik",
+		"contributing": "Beitragen",
+		"contact": "Kontakt",
+		"builtWith": "i18n Benchmark — Open-Source-Projekt. Erstellt mit Vue, Vite & einem clientseitigen Router."
+	},
+	themeToggle: {
+		"auto": "Thema: Auto",
+		"dark": "Thema: Dunkel",
+		"light": "Thema: Hell",
+		"labelAuto": "Themenmodus: Auto (System). Klicken Sie hier, um zum hellen Modus zu wechseln.",
+		"labelOther": "Themenmodus: {mode}. Klicken Sie hier, um den Modus zu wechseln."
+	},
+	mockBanner: "⚠️ Diese Seite enthält fiktive Daten, die nur für Benchmarking-Zwecke bestimmt sind. Sie steht in keiner Verbindung zu einem realen Unternehmen oder Dienst.",
+	home: {
+		"hero": {
+			"title": "i18n Benchmark",
+			"description": "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.",
+			"viewResults": "Ergebnisse anzeigen",
+			"methodology": "Methodik"
+		},
+		"whyItMatters": {
+			"title": "Warum diese Metriken wichtig sind",
+			"bundleSizeTitle": "Bundle-Größe",
+			"bundleSizeDesc": "Das Bundle sind die Daten, die an jeden Benutzer auf der ganzen Welt gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren stark in ihrem Gewicht: von einigen Kilobyte bis zu Dutzenden von Kilobyte an Laufzeitcode, plus die Übersetzungsdateien selbst.",
+			"renderingTitle": "Rendering & Hydrierung",
+			"renderingDesc": "Die Anbindung eines großen JSON-Verzeichnisses an jede Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings im gesamten Baum auslösen. Während der SSR-Hydrierung verursacht das Parsen und Anhängen massiver Übersetzungsobjekte Latenzzeit, bevor die Seite interaktiv wird — was sich direkt auf die Time to Interactive (TTI) auswirkt.",
+			"dynamicLoadingTitle": "Dynamisches Laden",
+			"dynamicLoadingDesc": "Das Laden aller Übersetzungen im Voraus überlastet die anfängliche Nutzlast. Dynamisches (Lazy) Laden teilt Übersetzungen nach Route oder Namespace auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Flash of Untranslated Content und Caching-Komplexität. Die Messung beider Strategien ist unerlässlich."
+		},
+		"understandingImpact": {
+			"title": "Die Auswirkungen verstehen",
+			"singleJsonTitle": "Warum ein einzelnes großes JSON die Leistung beeinträchtigen kann",
+			"singleJsonIntro": "Viele i18n-Bibliotheken speichern Übersetzungen in einem einzigen JSON-Objekt, das über den React-Kontext bereitgestellt wird. Wenn dieses Objekt groß ist (Tausende von Schlüsseln), hält jede Komponente, die Übersetzungen verbraucht, eine Referenz auf das gesamte Verzeichnis. Das bedeutet:",
+			"singleJsonBullet1": "Das JSON muss bei jedem Seitenladen analysiert werden — was den Haupt-Thread blockiert.",
+			"singleJsonBullet2": "Kontextbasierte Architekturen können kaskadierende Re-Renderings verursachen, wenn sich die Sprache ändert, da jeder Konsument benachrichtigt wird, auch wenn sich seine spezifischen Schlüssel nicht geändert haben.",
+			"singleJsonBullet3": "Beim serverseitigen Rendering wird das vollständige Verzeichnis in die HTML-Nutzlast serialisiert, was die Dokumentgröße erhöht, die heruntergeladen und hydriert werden muss.",
+			"tradeOffsTitle": "Die Kompromisse beim dynamischen Laden",
+			"tradeOffsIntro": "Das Aufteilen von Übersetzungen in Chunks pro Route oder pro Namespace kann die anfängliche Nutzlast drastisch reduzieren. Es bringt jedoch neue Herausforderungen mit sich:",
+			"waterfallLabel": "Waterfall-Anfragen:",
+			"waterfallDesc": "Die App muss zuerst laden, die Sprache bestimmen und dann den richtigen Chunk abrufen — was zusätzliche Netzwerk-Roundtrips verursacht.",
+			"foucLabel": "Flash of Untranslated Content (FOUC):",
+			"foucDesc": "Benutzer sehen möglicherweise kurzzeitig Übersetzungsschlüssel oder eine Fallback-Sprache, bevor der Chunk eintrifft.",
+			"cacheLabel": "Cache-Invalidierung:",
+			"cacheDesc": "Die Aktualisierung von Übersetzungen erfordert Strategien zur Cache-Invalidierung, um sicherzustellen, dass Benutzer frische Inhalte erhalten, ohne unveränderte Chunks erneut herunterzuladen.",
+			"measuresTitle": "Was dieser Benchmark misst",
+			"measuresDesc": "Diese Testanwendung bietet eine kontrollierte Umgebung — 10 Seiten mit realistischen Inhalten —, um i18n-Bibliotheken auf drei Achsen zu vergleichen: das Gewicht, das sie Ihrem JavaScript-Bundle hinzufügen, die Zeit, die für das Parsen und Rendern übersetzter Inhalte aufgewendet wird, und die Effektivität ihrer Code-Splitting- und Lazy-Loading-Strategien. Jede Bibliothek ist in dieselbe Anwendung integriert, sodass die Ergebnisse direkt vergleichbar sind."
+		},
+		"resultsTable": {
+			"title": "Beispielergebnisse",
+			"library": "Bibliothek",
+			"bundleSize": "Bundle-Größe",
+			"lookupTime": "Lookup-Zeit",
+			"lazyLoading": "Lazy Loading",
+			"yes": "Ja",
+			"manual": "Manuell",
+			"builtIn": "Integriert"
+		}
+	},
+	about: {
+		"header": {
+			"title": "Über diesen Benchmark",
+			"description": "Dies ist eine Open-Source-Testanwendung — kein Produkt und kein Unternehmen. Ihr einziger Zweck ist es, eine realistische React-App mit mehreren Seiten bereitzustellen, in die verschiedene i18n-Bibliotheken integriert und unter identischen Bedingungen gemessen werden können."
+		},
+		"grid": {
+			"whyExistsTitle": "Warum dies existiert",
+			"whyExistsDesc": "Die Wahl einer i18n-Bibliothek ist eine architektonische Entscheidung mit langfristigen Konsequenzen. Die meisten Vergleiche konzentrieren sich auf die Ergonomie der API, aber nur wenige messen die Leistungskosten: Wie viel Gewicht fügt die Bibliothek dem Bundle hinzu? Wie wirkt es sich auf das Rendering aus, wenn Tausende von Übersetzungsschlüsseln geladen werden? Hilft Lazy Loading tatsächlich oder verlagert es nur die Kosten? Dieser Benchmark beantwortet diese Fragen mit realen Daten.",
+			"methodologyTitle": "Methodik",
+			"methodologyDesc": "Die gleiche 10-seitige App wird einmal pro Bibliothek gebaut. Wir messen das Produktions-Bundle (über rollup-plugin-visualizer), führen Lighthouse-Audits für Lademetriken durch und verwenden den React Profiler, um die Renderzeiten während der Sprachwechsel zu erfassen. Alle Tests laufen in der CI auf konsistenter Hardware, um reproduzierbare Ergebnisse zu gewährleisten."
+		},
+		"whatWeMeasure": {
+			"title": "Was wir messen",
+			"bundleSizeImpact": "Auswirkungen auf die Bundle-Größe",
+			"bundleSizeImpactDesc": "Die zusätzlichen JavaScript-Bytes, die an Benutzer gesendet werden, wenn die i18n-Bibliothek und ihre Übersetzungsdateien enthalten sind. Dies wirkt sich direkt auf die Downloadzeit in langsamen Netzwerken aus.",
+			"renderingOverhead": "Rendering-Overhead",
+			"renderingOverheadDesc": "Wie viel zusätzliche Zeit die Bibliothek zum Renderzyklus von React hinzufügt. Bibliotheken, die Übersetzungen über einen einzigen Kontextanbieter injizieren, können unnötige Re-Renderings im gesamten Komponentenbaum verursachen.",
+			"hydrationCost": "Hydrierungskosten",
+			"hydrationCostDesc": "Während des SSR werden Übersetzungsdaten in HTML serialisiert. Große Verzeichnisse erhöhen die HTML-Nutzlast und verlangsamen die Hydrierung — den Moment, in dem die Seite interaktiv wird.",
+			"lazyLoading": "Effektivität von Lazy Loading",
+			"lazyLoadingDesc": "Ob das Aufteilen von Übersetzungen nach Route oder Namespace die anfängliche Last tatsächlich reduziert und welche Kompromisse es mit sich bringt (Waterfall-Anfragen, FOUC, Cache-Komplexität).",
+			"localeSwitch": "Geschwindigkeit des Sprachwechsels",
+			"localeSwitchDesc": "Wie schnell die App zur Laufzeit von einer Sprache in eine andere wechseln kann — einschließlich des Abrufens neuer Übersetzungen, des erneuten Renderns von Komponenten und der Aktualisierung des DOM."
+		}
+	},
+	blog: {
+		"header": {
+			"title": "Blog",
+			"description": "Einblicke, Tutorials und Analysen aus der i18n-Community."
+		},
+		"list": {
+			"readMore": "Mehr lesen →",
+			"post1Title": "Vergleich von i18n-Bibliotheken im Jahr 2026: Ein tiefer Einblick",
+			"post1Date": "15. März 2026",
+			"post1Excerpt": "Wir haben 12 verschiedene Internationalisierungsbibliotheken in Bezug auf Leistung, Bundle-Größe und DX getestet. Hier sind die überraschenden Ergebnisse.",
+			"post1Category": "Benchmark",
+			"post2Title": "Wie Sie Ihr i18n-Bundle um 60 % reduzieren",
+			"post2Date": "8. März 2026",
+			"post2Excerpt": "Praktische Strategien zur Optimierung von Übersetzungs-Bundles, einschließlich Lazy Loading, Code Splitting und Optimierungen zur Build-Zeit.",
+			"post2Category": "Tutorial",
+			"post3Title": "Der Stand der Internationalisierung in React",
+			"post3Date": "28. Februar 2026",
+			"post3Excerpt": "Ein Überblick über das aktuelle i18n-Ökosystem in React, der Trends, aufkommende Muster und Community-Präferenzen abdeckt.",
+			"post3Category": "Analyse",
+			"post4Title": "Migration von react-i18next zu Lingui",
+			"post4Date": "15. Februar 2026",
+			"post4Excerpt": "Eine Schritt-für-Schritt-Anleitung zur Migration einer Produktions-App mit 50.000 Übersetzungsschlüsseln von react-i18next zu Lingui.",
+			"post4Category": "Tutorial",
+			"post5Title": "Server Components und i18n: Was ändert sich?",
+			"post5Date": "1. Februar 2026",
+			"post5Excerpt": "React Server Components führen neue Muster für die Internationalisierung ein. Wir untersuchen die Auswirkungen und Best Practices.",
+			"post5Category": "Analyse",
+			"post6Title": "Benchmark-Methodik: Wie wir testen",
+			"post6Date": "20. Januar 2026",
+			"post6Excerpt": "Ein transparenter Blick auf unsere Benchmarking-Methodik, einschließlich Testumgebungen, statistischer Methoden und Reproduzierbarkeit.",
+			"post6Category": "Meta"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "Karriere",
+			"description": "Schließen Sie sich unserer Mission an, das Internationalisierungs-Ökosystem zu verbessern. Wir sind ein Remote-First-Team, das Wert auf Wirkung, Transparenz und kontinuierliches Lernen legt."
+		},
+		"benefits": {
+			"remoteLabel": "Remote-First",
+			"remoteValue": "Arbeiten Sie von überall auf der Welt",
+			"payLabel": "Wettbewerbsfähige Bezahlung",
+			"payValue": "Überdurchschnittliche Vergütung",
+			"ossLabel": "Open-Source-Zeit",
+			"ossValue": "20 % der Zeit für OSS-Beiträge"
+		},
+		"openPositions": {
+			"title": "Offene Stellen",
+			"applyNow": "Jetzt bewerben",
+			"remote": "Remote",
+			"fullTime": "Vollzeit",
+			"partTime": "Teilzeit",
+			"engineering": "Engineering",
+			"documentation": "Dokumentation",
+			"community": "Community",
+			"sfRemote": "San Francisco / Remote",
+			"frontendTitle": "Senior Frontend Engineer",
+			"frontendDesc": "Erstellen und warten Sie unser Benchmarking-Dashboard und unsere Entwicklertools mit React, TypeScript und Vite.",
+			"backendTitle": "Backend-Ingenieur",
+			"backendDesc": "Entwerfen und skalieren Sie unsere Cloud-Benchmarking-Infrastruktur, die täglich Tausende von automatisierten Durchläufen verarbeitet.",
+			"writerTitle": "Technischer Redakteur",
+			"writerDesc": "Erstellen Sie umfassende Leitfäden, API-Referenzen und Tutorials für unsere Benchmarking-Plattform.",
+			"devrelTitle": "DevRel-Ingenieur",
+			"devrelDesc": "Engagieren Sie sich in der i18n-Community durch Vorträge, Workshops, Blog-Posts und Open-Source-Beiträge.",
+			"qaTitle": "QA-Ingenieur",
+			"qaDesc": "Gewährleisten Sie die Genauigkeit und Zuverlässigkeit der Benchmark-Ergebnisse durch strenge Tests und Validierung."
+		}
+	},
+	contact: {
+		"header": {
+			"title": "Kontakt aufnehmen",
+			"description": "Haben Sie Ideen, einen Fehler gefunden oder möchten Sie einen Benchmark beisteuern? Kontaktieren Sie uns unter"
+		},
+		"form": {
+			"name": "Name",
+			"yourName": "Ihr Name",
+			"email": "E-Mail",
+			"emailPlaceholder": "ihre@beispiel.de",
+			"topic": "Thema",
+			"bugReport": "Fehlerbericht",
+			"newBenchmarkIdea": "Neue Benchmark-Idee",
+			"methodologyQuestion": "Frage zur Methodik",
+			"contribution": "Beitrag",
+			"other": "Sonstiges",
+			"message": "Nachricht",
+			"messagePlaceholder": "Beschreiben Sie Ihre Frage oder Idee...",
+			"sendMessage": "Nachricht senden"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "Häufig gestellte Fragen",
+			"description": "Alles, was Sie über i18n Benchmark wissen müssen."
+		},
+		"list": {
+			"q1": "Was ist i18n Benchmark?",
+			"a1": "i18n Benchmark ist eine Open-Source-Benchmarking-Suite, die die Leistung, die Bundle-Größe und die Entwicklererfahrung von Internationalisierungsbibliotheken für JavaScript- und React-Anwendungen misst und vergleicht.",
+			"q2": "Wie werden Benchmarks durchgeführt?",
+			"a2": "Wir führen standardisierte Tests in isolierten Umgebungen mit konsistenter Hardware durch. Jeder Benchmark wird mehrmals wiederholt, um die statistische Signifikanz sicherzustellen. Alle Testkonfigurationen sind öffentlich in unserem GitHub-Repository verfügbar.",
+			"q3": "Welche Bibliotheken werden derzeit unterstützt?",
+			"a3": "Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.",
+			"q4": "Kann ich meine eigenen Benchmarks einreichen?",
+			"a4": "Ja! Community-Beiträge für Benchmarks sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Beiträge hinzu und senden Sie einen Pull-Request. Unser Team wird die qualifizierten Einsendungen prüfen und zusammenführen.",
+			"q5": "Wie oft werden Benchmarks aktualisiert?",
+			"a5": "Wir führen alle Benchmarks wöchentlich mit den neuesten stabilen Versionen jeder Bibliothek erneut aus. Major-Version-Releases lösen sofort einen Re-Benchmark-Zyklus aus.",
+			"q6": "Sind die Daten zuverlässig?",
+			"a6": "Wir folgen einer strengen statistischen Methodik, einschließlich Warm-up-Läufen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.",
+			"q7": "Bieten Sie Beratungsdienstleistungen an?",
+			"a7": "Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen evaluieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Ihrer Skalierung und Ihren Einschränkungen geben.",
+			"q8": "Wie kann ich beitragen?",
+			"a8": "Es gibt viele Möglichkeiten beizutragen: Benchmarks einreichen, Dokumentation verbessern, Fehler melden, neue Metriken vorschlagen oder das Projekt sponsern. Besuchen Sie unser GitHub-Repository für weitere Details."
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "Einfache, transparente Preisgestaltung",
+			"description": "Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren."
+		},
+		"tiers": {
+			"starterName": "Starter",
+			"starterPrice": "0 $",
+			"starterPeriod": "für immer",
+			"starterFeature1": "5 Benchmark-Durchläufe/Tag",
+			"starterFeature2": "3 Bibliotheken",
+			"starterFeature3": "Community-Support",
+			"starterFeature4": "Öffentliche Ergebnisse",
+			"proName": "Pro",
+			"proPrice": "29 $",
+			"proPeriod": "/Monat",
+			"proFeature1": "Unbegrenzte Durchläufe",
+			"proFeature2": "Alle Bibliotheken",
+			"proFeature3": "Priorisierter Support",
+			"proFeature4": "Private Ergebnisse",
+			"proFeature5": "CI-Integration",
+			"proFeature6": "Historische Daten",
+			"enterpriseName": "Enterprise",
+			"enterprisePrice": "Individuell",
+			"enterpriseFeature1": "Alles in Pro enthalten",
+			"enterpriseFeature2": "On-Premise-Option",
+			"enterpriseFeature3": "SSO & SAML",
+			"enterpriseFeature4": "Dedizierter Account Manager",
+			"enterpriseFeature5": "Individuelle SLAs",
+			"enterpriseFeature6": "Audit-Protokolle",
+			"enterpriseFeature7": "Schulungssitzungen",
+			"contactSales": "Vertrieb kontaktieren",
+			"getStarted": "Erste Schritte"
+		}
+	},
+	products: {
+		"header": {
+			"title": "Produkte",
+			"description": "Tools und Dienstleistungen zur Optimierung Ihres Internationalisierungs-Workflows."
+		},
+		"grid": {
+			"learnMore": "Mehr erfahren",
+			"cliName": "Benchmark CLI",
+			"cliDesc": "Führen Sie Benchmarks lokal von Ihrem Terminal aus. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.",
+			"cliPrice": "Kostenlos",
+			"cloudName": "Benchmark Cloud",
+			"cloudDesc": "Automatisiertes cloudbasiertes Benchmarking mit historischem Tracking, Warnungen und Team-Dashboards.",
+			"cloudPrice": "29 $/Monat",
+			"enterpriseName": "Benchmark Enterprise",
+			"enterpriseDesc": "On-Premise-Bereitstellung mit SSO, Audit-Protokollen, individuellen SLAs und dediziertem Support.",
+			"enterprisePrice": "Kontaktieren Sie uns",
+			"migrationName": "Migrationsassistent",
+			"migrationDesc": "KI-gestütztes Tool, das hilft, Ihre Codebasis ohne Ausfallzeiten zwischen i18n-Bibliotheken zu migrieren.",
+			"migrationPrice": "Einmalig 99 $",
+			"qaName": "Übersetzungs-QA",
+			"qaDesc": "Automatisierte Qualitätsprüfungen für fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.",
+			"qaPrice": "19 $/Monat",
+			"optimizerName": "Bundle-Optimierer",
+			"optimizerDesc": "Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.",
+			"optimizerPrice": "49 $/Monat"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "Einstellungen",
+			"description": "Verwalten Sie Ihre Kontoeinstellungen und Konfiguration."
+		},
+		"profile": {
+			"title": "Profil",
+			"displayName": "Anzeigename",
+			"email": "E-Mail"
+		},
+		"preferences": {
+			"title": "Einstellungen",
+			"emailNotifications": "E-Mail-Benachrichtigungen",
+			"weeklyReports": "Wöchentliche Benchmark-Berichte erhalten",
+			"toggleNotifications": "Benachrichtigungen umschalten",
+			"darkMode": "Dunkelmodus",
+			"darkColorScheme": "Dunkles Farbschema verwenden",
+			"toggleDarkMode": "Dunkelmodus umschalten",
+			"defaultLanguage": "Standardsprache",
+			"english": "Englisch (en)",
+			"french": "Französisch (fr)",
+			"german": "Deutsch (de)",
+			"spanish": "Spanisch (es)",
+			"japanese": "Japanisch (ja)",
+			"chinese": "Chinesisch vereinfacht (zh-CN)",
+			"arabic": "Arabisch (ar)"
+		},
+		"apiAccess": {
+			"title": "API-Zugriff",
+			"apiKey": "API-Schlüssel",
+			"copy": "Kopieren",
+			"description": "Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen."
+		},
+		"footer": {
+			"cancel": "Abbrechen",
+			"saveChanges": "Änderungen speichern"
+		}
+	},
+	team: {
+		"header": {
+			"title": "Unser Team",
+			"description": "Lernen Sie die Menschen hinter i18n Benchmark kennen. Ein vielfältiges Team, das durch die gemeinsame Leidenschaft für großartige Entwicklertools vereint ist."
+		},
+		"grid": {
+			"member1Name": "Sarah Chen",
+			"member1Role": "Gründerin & Leitende Ingenieurin",
+			"member1Bio": "Ehemalige Google-Ingenieurin mit 10 Jahren Erfahrung im Aufbau von Internationalisierungssystemen in großem Maßstab.",
+			"member2Name": "Marcus Weber",
+			"member2Role": "Performance-Ingenieur",
+			"member2Bio": "Spezialisiert auf JavaScript-Performance-Optimierung und Benchmarking-Methodik. Zuvor bei Vercel.",
+			"member3Name": "Aisha Patel",
+			"member3Role": "Developer Advocate",
+			"member3Bio": "Begeistert von Developer Experience und Bildung. Sprecherin auf der React Conf, JSConf und i18nNext.",
+			"member4Name": "Tomás Rodríguez",
+			"member4Role": "Full-Stack-Entwickler",
+			"member4Bio": "Wartet die Benchmarking-Infrastruktur und die CI/CD-Pipeline. Open-Source-Contributor bei Lingui.",
+			"member5Name": "Yuki Tanaka",
+			"member5Role": "Datenanalyst",
+			"member5Bio": "Gewährleistet statistische Strenge in allen Benchmark-Ergebnissen. Promotion in angewandter Statistik am MIT.",
+			"member6Name": "Elena Kowalski",
+			"member6Role": "Community Manager",
+			"member6Bio": "Verwaltet Community-Beiträge, Partnerschaften und Veranstaltungen. Hintergrund in Open-Source-Governance."
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "Hoppla! Seite nicht gefunden",
+		"returnHome": "Zurück zur Startseite"
+	}
+};
+var it_default = {
+	shared: {
+		"appName": "i18n Bench",
+		"siteName": "i18n Benchmark",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "Vai su GitHub"
+	},
+	header: {
+		"home": "Home",
+		"methodology": "Metodologia",
+		"mockPages": "Pagine di test",
+		"products": "Prodotti",
+		"pricing": "Prezzi",
+		"team": "Team",
+		"blog": "Blog",
+		"careers": "Carriere",
+		"faq": "FAQ",
+		"contact": "Contatti",
+		"settings": "Impostazioni"
+	},
+	footer: {
+		"title": "i18n Benchmark",
+		"description": "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app.",
+		"resources": "Risorse",
+		"github": "GitHub",
+		"methodology": "Metodologia",
+		"contributing": "Contribuire",
+		"contact": "Contatti",
+		"builtWith": "i18n Benchmark — Progetto open source. Costruito con Vue, Vite e un router lato client."
+	},
+	themeToggle: {
+		"auto": "Tema: Auto",
+		"dark": "Tema: Scuro",
+		"light": "Tema: Chiaro",
+		"labelAuto": "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.",
+		"labelOther": "Modalità tema: {mode}. Clicca per cambiare modalità."
+	},
+	mockBanner: "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.",
+	home: {
+		"hero": {
+			"title": "i18n Benchmark",
+			"description": "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
+			"viewResults": "Visualizza i risultati",
+			"methodology": "Metodologia"
+		},
+		"whyItMatters": {
+			"title": "Perché queste metriche sono importanti",
+			"bundleSizeTitle": "Dimensione del bundle",
+			"bundleSizeDesc": "Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.",
+			"renderingTitle": "Rendering e idratazione",
+			"renderingDesc": "Il collegamento di un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può scatenare nuovi rendering in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'aggiunta di enormi oggetti di traduzione aggiungono latenza prima che la pagina diventi interattiva, influenzando direttamente il Time to Interactive (TTI).",
+			"dynamicLoadingTitle": "Caricamento dinamico",
+			"dynamicLoadingDesc": "Il caricamento di tutte le traduzioni in anticipo sovraccarica il payload iniziale. Il caricamento dinamico (lazy) divide le traduzioni per rotta o namespace, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il lazy loading introduce i propri compromessi: richieste a cascata, flash di contenuti non tradotti e complessità della cache. Misurare entrambe le strategie è essenziale."
+		},
+		"understandingImpact": {
+			"title": "Capire l'impatto",
+			"singleJsonTitle": "Perché un singolo JSON di grandi dimensioni può danneggiare le prestazioni",
+			"singleJsonIntro": "Molte librerie i18n memorizzano le traduzioni in un unico oggetto JSON fornito tramite il contesto React. Quando questo oggetto è grande (migliaia di chiavi), ogni componente che consuma le traduzioni mantiene un riferimento all'intero dizionario. Questo significa:",
+			"singleJsonBullet1": "Il JSON deve essere analizzato a ogni caricamento della pagina — bloccando il thread principale.",
+			"singleJsonBullet2": "Le architetture basate sul contesto possono causare rendering a cascata quando la localizzazione cambia, perché ogni consumatore viene notificato anche se le sue chiavi specifiche non sono cambiate.",
+			"singleJsonBullet3": "Durante il rendering lato server, l'intero dizionario viene serializzato nel payload HTML, aumentando la dimensione del documento che deve essere scaricato e idratato.",
+			"tradeOffsTitle": "I compromessi del caricamento dinamico",
+			"tradeOffsIntro": "La scomposizione delle traduzioni in chunk per rotta o per namespace può ridurre drasticamente il payload iniziale. Ma introduce nuove sfide:",
+			"waterfallLabel": "Richieste a cascata:",
+			"waterfallDesc": "l'app deve prima caricarsi, determinare la locale, quindi recuperare il chunk corretto — aggiungendo round-trip di rete.",
+			"foucLabel": "Flash di contenuti non tradotti (FOUC):",
+			"foucDesc": "gli utenti possono vedere brevemente le chiavi di traduzione o una lingua di fallback prima che arrivi il chunk.",
+			"cacheLabel": "Invalidazione della cache:",
+			"cacheDesc": "l'aggiornamento delle traduzioni richiede strategie di cache-busting per garantire che gli utenti ricevano contenuti freschi senza riscaricare chunk non modificati.",
+			"measuresTitle": "Cosa misura questo benchmark",
+			"measuresDesc": "Questa applicazione di test fornisce un ambiente controllato — 10 pagine con contenuti realistici — per confrontare le librerie i18n su tre assi: il peso che aggiungono al tuo bundle JavaScript, il tempo dedicato all'analisi e al rendering dei contenuti tradotti e l'efficacia delle loro strategie di code-splitting e lazy-loading. Ogni libreria è integrata nella stessa app in modo che i risultati siano direttamente confrontabili."
+		},
+		"resultsTable": {
+			"title": "Risultati di esempio",
+			"library": "Libreria",
+			"bundleSize": "Dimensione del bundle",
+			"lookupTime": "Tempo di ricerca",
+			"lazyLoading": "Caricamento lazy",
+			"yes": "Sì",
+			"manual": "Manuale",
+			"builtIn": "Integrato"
+		}
+	},
+	about: {
+		"header": {
+			"title": "Informazioni su questo benchmark",
+			"description": "Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è quello di fornire un'app React multipagina realistica in cui diverse librerie i18n possono essere integrate e misurate in condizioni identiche."
+		},
+		"grid": {
+			"whyExistsTitle": "Perché esiste",
+			"whyExistsDesc": "Scegliere una libreria i18n è una decisione architettonica con conseguenze a lungo termine. La maggior parte dei confronti si concentra sull'ergonomia delle API, ma pochi misurano il costo delle prestazioni: quanto peso aggiunge la libreria al bundle? In che modo influisce sul rendering quando vengono caricate migliaia di chiavi di traduzione? Il caricamento pigro aiuta davvero o sposta solo il costo? Questo benchmark risponde a queste domande con dati reali.",
+			"methodologyTitle": "Metodologia",
+			"methodologyDesc": "La stessa app di 10 pagine viene costruita una volta per libreria. Misuriamo il bundle di produzione (tramite rollup-plugin-visualizer), eseguiamo audit Lighthouse per le metriche di caricamento e utilizziamo React Profiler per catturare i tempi di rendering durante i cambi di lingua. Tutti i test vengono eseguiti in CI su hardware coerente per garantire risultati riproducibili."
+		},
+		"whatWeMeasure": {
+			"title": "Cosa misuriamo",
+			"bundleSizeImpact": "Impatto sulla dimensione del bundle",
+			"bundleSizeImpactDesc": "I byte JavaScript aggiuntivi inviati agli utenti quando vengono incluse la libreria i18n e i suoi file di traduzione. Ciò influisce direttamente sul tempo di download su reti lente.",
+			"renderingOverhead": "Sovrapprezzo di rendering",
+			"renderingOverheadDesc": "Quanto tempo extra la libreria aggiunge al ciclo di rendering di React. Le librerie che iniettano traduzioni tramite un unico provider di contesto possono causare rendering non necessari in tutto l'albero dei componenti.",
+			"hydrationCost": "Costo di idratazione",
+			"hydrationCostDesc": "Durante l'SSR, i dati di traduzione vengono serializzati nell'HTML. Dizionari di grandi dimensioni aumentano il payload HTML e rallentano l'idratazione — il momento in cui la pagina diventa interattiva.",
+			"lazyLoading": "Efficacia del caricamento pigro",
+			"lazyLoadingDesc": "Se la scomposizione delle traduzioni per rotta o namespace riduca effettivamente il carico iniziale e quali compromessi introduca (richieste a cascata, FOUC, complessità della cache).",
+			"localeSwitch": "Velocità di cambio lingua",
+			"localeSwitchDesc": "Quanto velocemente l'app può passare da una lingua all'altra in fase di esecuzione — inclusi il recupero delle nuove traduzioni, il rendering dei componenti e l'aggiornamento del DOM."
+		}
+	},
+	blog: {
+		"header": {
+			"title": "Blog",
+			"description": "Approfondimenti, tutorial e analisi dalla comunità i18n."
+		},
+		"list": {
+			"readMore": "Leggi di più →",
+			"post1Title": "Confronto delle librerie i18n nel 2026: un'analisi approfondita",
+			"post1Date": "15 marzo 2026",
+			"post1Excerpt": "Abbiamo testato 12 diverse librerie di internazionalizzazione in termini di prestazioni, dimensioni del bundle e DX. Ecco i risultati sorprendenti.",
+			"post1Category": "Benchmark",
+			"post2Title": "Come ridurre il bundle i18n del 60%",
+			"post2Date": "8 marzo 2026",
+			"post2Excerpt": "Strategie pratiche per ottimizzare i bundle di traduzione, inclusi caricamento pigro, code splitting e ottimizzazioni al momento della compilazione.",
+			"post2Category": "Tutorial",
+			"post3Title": "Lo stato dell'internazionalizzazione in React",
+			"post3Date": "28 febbraio 2026",
+			"post3Excerpt": "Una panoramica dell'attuale ecosistema i18n in React, che copre tendenze, modelli emergenti e preferenze della comunità.",
+			"post3Category": "Analisi",
+			"post4Title": "Migrazione da react-i18next a Lingui",
+			"post4Date": "15 febbraio 2026",
+			"post4Excerpt": "Una guida passo passo sulla migrazione di un'app di produzione con 50.000 chiavi di traduzione da react-i18next a Lingui.",
+			"post4Category": "Tutorial",
+			"post5Title": "Server Components e i18n: cosa cambia?",
+			"post5Date": "1 febbraio 2026",
+			"post5Excerpt": "I React Server Components introducono nuovi modelli per l'internazionalizzazione. Esploriamo le implicazioni e le migliori pratiche.",
+			"post5Category": "Analisi",
+			"post6Title": "Metodologia del benchmark: come testiamo",
+			"post6Date": "20 gennaio 2026",
+			"post6Excerpt": "Uno sguardo trasparente alla nostra metodologia di benchmarking, compresi gli ambienti di test, i metodi statistici e la riproducibilità.",
+			"post6Category": "Meta"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "Carriere",
+			"description": "Unisciti alla nostra missione per migliorare l'ecosistema dell'internazionalizzazione. Siamo un team remote-first che apprezza l'impatto, la trasparenza e l'apprendimento continuo."
+		},
+		"benefits": {
+			"remoteLabel": "Remote-first",
+			"remoteValue": "Lavora da qualsiasi parte del mondo",
+			"payLabel": "Retribuzione competitiva",
+			"payValue": "Compensazione ai vertici del mercato",
+			"ossLabel": "Tempo per l'open source",
+			"ossValue": "20% del tempo per contributi open source"
+		},
+		"openPositions": {
+			"title": "Posizioni aperte",
+			"applyNow": "Candidati ora",
+			"remote": "Remoto",
+			"fullTime": "Tempo pieno",
+			"partTime": "Part-time",
+			"engineering": "Engineering",
+			"documentation": "Documentazione",
+			"community": "Comunità",
+			"sfRemote": "San Francisco / Remoto",
+			"frontendTitle": "Ingegnere Frontend Senior",
+			"frontendDesc": "Costruisci e mantieni la nostra dashboard di benchmarking e gli strumenti per sviluppatori utilizzando React, TypeScript e Vite.",
+			"backendTitle": "Backend Engineer",
+			"backendDesc": "Progetta e scala la nostra infrastruttura di benchmarking cloud che gestisce migliaia di esecuzioni automatizzate ogni giorno.",
+			"writerTitle": "Scrittore tecnico",
+			"writerDesc": "Crea guide complete, riferimenti API e tutorial per la nostra piattaforma di benchmarking.",
+			"devrelTitle": "Ingegnere DevRel",
+			"devrelDesc": "Interagisci con la comunità i18n tramite talk, workshop, post sul blog e contributi open source.",
+			"qaTitle": "Ingegnere QA",
+			"qaDesc": "Garantisci l'accuratezza e l'affidabilità dei risultati dei benchmark attraverso test e validazioni rigorosi."
+		}
+	},
+	contact: {
+		"header": {
+			"title": "Contattaci",
+			"description": "Hai idee, hai trovato un bug o vuoi contribuire con un benchmark? Contattaci all'indirizzo"
+		},
+		"form": {
+			"name": "Nome",
+			"yourName": "Il tuo nome",
+			"email": "Email",
+			"emailPlaceholder": "tu@esempio.com",
+			"topic": "Argomento",
+			"bugReport": "Segnalazione bug",
+			"newBenchmarkIdea": "Nuova idea di benchmark",
+			"methodologyQuestion": "Domanda sulla metodologia",
+			"contribution": "Contributo",
+			"other": "Altro",
+			"message": "Messaggio",
+			"messagePlaceholder": "Descrivi la tua domanda o idea...",
+			"sendMessage": "Invia messaggio"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "Domande frequenti",
+			"description": "Tutto quello che c'è da sapere su i18n Benchmark."
+		},
+		"list": {
+			"q1": "Cos'è i18n Benchmark?",
+			"a1": "i18n Benchmark è una suite di benchmarking open source che misura e confronta le prestazioni, le dimensioni del bundle e l'esperienza degli sviluppatori delle librerie di internazionalizzazione per applicazioni JavaScript e React.",
+			"q2": "Come vengono condotti i benchmark?",
+			"a2": "Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni dei test sono disponibili pubblicamente nel nostro repository GitHub.",
+			"q3": "Quali librerie sono attualmente supportate?",
+			"a3": "Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.",
+			"q4": "Posso inviare i miei benchmark?",
+			"a4": "Sì! Gli invii di benchmark da parte della comunità sono i benvenuti. Fai un fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà gli invii idonei.",
+			"q5": "Con quale frequenza vengono aggiornati i benchmark?",
+			"a5": "Rieseguiamo tutti i benchmark settimanalmente rispetto alle ultime versioni stabili di ogni libreria. I rilasci di versioni principali innescano un ciclo di re-benchmark immediato.",
+			"q6": "I dati sono affidabili?",
+			"a6": "Seguiamo una rigorosa metodologia statistica che include esecuzioni di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi sono pubblicati insieme alla nostra analisi per la massima trasparenza.",
+			"q7": "Offrite servizi di consulenza?",
+			"a7": "Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano soluzioni i18n. Possiamo fornire raccomandazioni personalizzate in base al caso d'uso specifico, alla scala e ai vincoli.",
+			"q8": "Come posso contribuire?",
+			"a8": "Ci sono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per maggiori dettagli."
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "Prezzi semplici e trasparenti",
+			"description": "Scegli il piano più adatto al tuo team. Nessun costo nascosto."
+		},
+		"tiers": {
+			"starterName": "Starter",
+			"starterPrice": "0 $",
+			"starterPeriod": "per sempre",
+			"starterFeature1": "5 esecuzioni benchmark al giorno",
+			"starterFeature2": "3 librerie",
+			"starterFeature3": "Supporto della comunità",
+			"starterFeature4": "Risultati pubblici",
+			"proName": "Pro",
+			"proPrice": "29 $",
+			"proPeriod": "/mese",
+			"proFeature1": "Esecuzioni illimitate",
+			"proFeature2": "Tutte le librerie",
+			"proFeature3": "Supporto prioritario",
+			"proFeature4": "Risultati privati",
+			"proFeature5": "Integrazione CI",
+			"proFeature6": "Dati storici",
+			"enterpriseName": "Enterprise",
+			"enterprisePrice": "Personalizzato",
+			"enterpriseFeature1": "Tutto quello che c'è in Pro",
+			"enterpriseFeature2": "Opzione on-premise",
+			"enterpriseFeature3": "SSO e SAML",
+			"enterpriseFeature4": "Account manager dedicato",
+			"enterpriseFeature5": "SLA personalizzati",
+			"enterpriseFeature6": "Log di controllo",
+			"enterpriseFeature7": "Sessioni di formazione",
+			"contactSales": "Contatta l'ufficio vendite",
+			"getStarted": "Inizia ora"
+		}
+	},
+	products: {
+		"header": {
+			"title": "Prodotti",
+			"description": "Strumenti e servizi per semplificare il flusso di lavoro di internazionalizzazione."
+		},
+		"grid": {
+			"learnMore": "Scopri di più",
+			"cliName": "CLI del Benchmark",
+			"cliDesc": "Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.",
+			"cliPrice": "Gratis",
+			"cloudName": "Benchmark Cloud",
+			"cloudDesc": "Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.",
+			"cloudPrice": "29 $/mese",
+			"enterpriseName": "Benchmark Enterprise",
+			"enterpriseDesc": "Distribuzione on-premise con SSO, log di controllo, SLA personalizzati e supporto dedicato.",
+			"enterprisePrice": "Contattaci",
+			"migrationName": "Assistente alla migrazione",
+			"migrationDesc": "Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n senza tempi di inattività.",
+			"migrationPrice": "99 $ una tantum",
+			"qaName": "QA delle traduzioni",
+			"qaDesc": "Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.",
+			"qaPrice": "19 $/mese",
+			"optimizerName": "Ottimizzatore del bundle",
+			"optimizerDesc": "Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.",
+			"optimizerPrice": "49 $/mese"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "Impostazioni",
+			"description": "Gestisci le preferenze del tuo account e la configurazione."
+		},
+		"profile": {
+			"title": "Profilo",
+			"displayName": "Nome visualizzato",
+			"email": "Email"
+		},
+		"preferences": {
+			"title": "Preferenze",
+			"emailNotifications": "Notifiche via email",
+			"weeklyReports": "Ricevi rapporti settimanali sui benchmark",
+			"toggleNotifications": "Attiva/disattiva notifiche",
+			"darkMode": "Modalità scura",
+			"darkColorScheme": "Usa lo schema colori scuro",
+			"toggleDarkMode": "Attiva/disattiva modalità scura",
+			"defaultLanguage": "Lingua predefinita",
+			"english": "Inglese (en)",
+			"french": "Francese (fr)",
+			"german": "Tedesco (de)",
+			"spanish": "Spagnolo (es)",
+			"japanese": "Giapponese (ja)",
+			"chinese": "Cinese semplificato (zh-CN)",
+			"arabic": "Arabo (ar)"
+		},
+		"apiAccess": {
+			"title": "Accesso API",
+			"apiKey": "Chiave API",
+			"copy": "Copia",
+			"description": "Usa questa chiave per accedere programmaticamente alle API di benchmarking."
+		},
+		"footer": {
+			"cancel": "Annulla",
+			"saveChanges": "Salva modifiche"
+		}
+	},
+	team: {
+		"header": {
+			"title": "Il nostro team",
+			"description": "Incontra le persone che stanno dietro i18n Benchmark. Un team eterogeneo unito dalla passione comune per i grandi strumenti per gli sviluppatori."
+		},
+		"grid": {
+			"member1Name": "Sarah Chen",
+			"member1Role": "Fondatrice e Responsabile tecnico",
+			"member1Bio": "Ex ingegnere Google con 10 anni di esperienza nella costruzione di sistemi di internazionalizzazione su scala.",
+			"member2Name": "Marcus Weber",
+			"member2Role": "Ingegnere delle prestazioni",
+			"member2Bio": "Specializzato nell'ottimizzazione delle prestazioni JavaScript e nella metodologia di benchmarking. Precedentemente presso Vercel.",
+			"member3Name": "Aisha Patel",
+			"member3Role": "Developer Advocate",
+			"member3Bio": "Appassionata di esperienza degli sviluppatori e formazione. Relatrice a React Conf, JSConf e i18nNext.",
+			"member4Name": "Tomás Rodríguez",
+			"member4Role": "Sviluppatore Full-Stack",
+			"member4Bio": "Mantiene l'infrastruttura di benchmarking e la pipeline CI/CD. Collaboratore open source di Lingui.",
+			"member5Name": "Yuki Tanaka",
+			"member5Role": "Analista dati",
+			"member5Bio": "Garantisce il rigore statistico in tutti i risultati dei benchmark. Dottorato in statistica applicata al MIT.",
+			"member6Name": "Elena Kowalski",
+			"member6Role": "Responsable della comunità",
+			"member6Bio": "Gestisce i contributi della comunità, le partnership e gli eventi. Background nella governance open source."
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "Ops! Pagina non trovata",
+		"returnHome": "Torna alla Home"
+	}
+};
+var pt_default = {
+	shared: {
+		"appName": "i18n Bench",
+		"siteName": "i18n Benchmark",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "Ir para o GitHub"
+	},
+	header: {
+		"home": "Início",
+		"methodology": "Metodologia",
+		"mockPages": "Páginas de Teste",
+		"products": "Produtos",
+		"pricing": "Preços",
+		"team": "Equipe",
+		"blog": "Blog",
+		"careers": "Carreiras",
+		"faq": "FAQ",
+		"contact": "Contato",
+		"settings": "Configurações"
+	},
+	footer: {
+		"title": "i18n Benchmark",
+		"description": "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no tempo de carregamento e na reatividade da aplicação.",
+		"resources": "Recursos",
+		"github": "GitHub",
+		"methodology": "Metodologia",
+		"contributing": "Contribuindo",
+		"contact": "Contato",
+		"builtWith": "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e um roteador no lado do cliente."
+	},
+	themeToggle: {
+		"auto": "Tema: Automático",
+		"dark": "Tema: Escuro",
+		"light": "Tema: Claro",
+		"labelAuto": "Modo de tema: auto (sistema). Clique para mudar para o modo claro.",
+		"labelOther": "Modo de tema: {mode}. Clique para mudar de modo."
+	},
+	mockBanner: "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhuma empresa ou serviço real.",
+	home: {
+		"hero": {
+			"title": "i18n Benchmark",
+			"description": "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade de renderização.",
+			"viewResults": "Ver Resultados",
+			"methodology": "Metodologia"
+		},
+		"whyItMatters": {
+			"title": "Por que estas métricas importam",
+			"bundleSizeTitle": "Tamanho do bundle",
+			"bundleSizeDesc": "O bundle representa os dados enviados para cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas, comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código runtime, além dos próprios arquivos de tradução.",
+			"renderingTitle": "Renderização e hidratação",
+			"renderingDesc": "Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode disparar renderizações em toda a árvore. Durante a hidratação SSR, analisar e anexar objetos de tradução massivos adiciona latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).",
+			"dynamicLoadingTitle": "Carregamento dinâmico",
+			"dynamicLoadingDesc": "Carregar todas as traduções antecipadamente sobrecarrega o payload inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento lento introduz seus próprios trade-offs: requisições em cascata, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial."
+		},
+		"understandingImpact": {
+			"title": "Entendendo o impacto",
+			"singleJsonTitle": "Por que um único JSON grande pode prejudicar o desempenho",
+			"singleJsonIntro": "Muitas bibliotecas i18n armazenam traduções em um único objeto JSON fornecido via contexto React. Quando este objeto é grande (milhares de chaves), cada componente que consome traduções mantém uma referência a todo o dicionário. Isso significa:",
+			"singleJsonBullet1": "O JSON deve ser analisado a cada carregamento de página — bloqueando a thread principal.",
+			"singleJsonBullet2": "Arquiteturas baseadas em contexto podem causar renderizações em cascata quando a localidade muda, porque cada consumidor é notificado mesmo que suas chaves específicas não tenham mudado.",
+			"singleJsonBullet3": "Durante a renderização no lado do servidor, o dicionário completo é serializado no payload HTML, aumentando o tamanho do documento que deve ser baixado e hidratado.",
+			"tradeOffsTitle": "Os trade-offs do carregamento dinâmico",
+			"tradeOffsIntro": "Dividir as traduções em pedaços por rota ou por namespace pode reduzir drasticamente o payload inicial. Mas introduz novos desafios:",
+			"waterfallLabel": "Requisições em cascata:",
+			"waterfallDesc": "o app deve primeiro carregar, determinar a localidade, então buscar o chunk certo — adicionando network round-trips.",
+			"foucLabel": "Flash de conteúdo não traduzido (FOUC):",
+			"foucDesc": "usuários podem ver brevemente as chaves de tradução ou um idioma de fallback antes de o chunk chegar.",
+			"cacheLabel": "Invalidação de cache:",
+			"cacheDesc": "atualizar as traduções requer estratégias de invalidação de cache para garantir que os usuários obtenham conteúdo fresco sem baixar novamente os chunks inalterados.",
+			"measuresTitle": "O que este benchmark mede",
+			"measuresDesc": "Este app de teste fornece um ambiente controlado — 10 páginas com conteúdo realista — para comparar bibliotecas i18n em três eixos: o peso que elas adicionam ao seu bundle JavaScript, o tempo gasto analisando e renderizando conteúdo traduzido e a eficácia de suas estratégias de divisão de código e carregamento lento. Cada biblioteca é integrada no mesmo app para que os resultados sejam diretamente comparáveis."
+		},
+		"resultsTable": {
+			"title": "Resultados de exemplo",
+			"library": "Biblioteca",
+			"bundleSize": "Tamanho do Bundle",
+			"lookupTime": "Tempo de Busca",
+			"lazyLoading": "Carregamento Lento",
+			"yes": "Sim",
+			"manual": "Manual",
+			"builtIn": "Integrado"
+		}
+	},
+	about: {
+		"header": {
+			"title": "Sobre este benchmark",
+			"description": "Esta é uma aplicação de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer uma aplicação React de várias páginas realista onde diferentes bibliotecas i18n podem ser integradas e medidas sob condições idênticas."
+		},
+		"grid": {
+			"whyExistsTitle": "Por que isto existe",
+			"whyExistsDesc": "Escolher uma biblioteca i18n é uma decisão arquitetônica com consequências a longo prazo. A maioria das comparações foca na ergonomia da API, mas poucas medem o custo de desempenho: quanto peso a biblioteca adiciona ao bundle? Como isso afeta a renderização quando milhares de chaves de tradução são carregadas? O carregamento lento realmente ajuda ou apenas desloca o custo? Este benchmark responde a essas perguntas com dados reais.",
+			"methodologyTitle": "Metodologia",
+			"methodologyDesc": "O mesmo app de 10 páginas é construído uma vez por biblioteca. Medimos o bundle de produção (via rollup-plugin-visualizer), executamos auditorias Lighthouse para as métricas de carregamento e usamos o React Profiler para capturar tempos de renderização durante as trocas de localidade. Todos os testes rodam em CI em hardware consistente para garantir resultados reprodutíveis."
+		},
+		"whatWeMeasure": {
+			"title": "O que medimos",
+			"bundleSizeImpact": "Impacto no tamanho do bundle",
+			"bundleSizeImpactDesc": "Os bytes JavaScript adicionais enviados aos usuários quando a biblioteca i18n e seus arquivos de tradução são incluídos. Isso afeta diretamente o tempo de download em redes lentas.",
+			"renderingOverhead": "Sobrecarga de renderização",
+			"renderingOverheadDesc": "Quanto tempo extra a biblioteca adiciona ao ciclo de renderização do React. Bibliotecas que injetam traduções através de um único provedor de contexto podem causar re-renderizações desnecessárias em toda a árvore de componentes.",
+			"hydrationCost": "Custo de hidratação",
+			"hydrationCostDesc": "Durante o SSR, os dados de tradução são serializados no HTML. Dicionários grandes aumentam o payload HTML e retardam a hidratação — o momento em que a página se torna interativa.",
+			"lazyLoading": "Eficácia do carregamento lento",
+			"lazyLoadingDesc": "Se dividir as traduções por rota ou namespace realmente reduz a carga inicial e quais trade-offs isso introduz (requisições em cascata, FOUC, complexidade de cache).",
+			"localeSwitch": "Velocidade de troca de localidade",
+			"localeSwitchDesc": "Quão rápido o app pode alternar de um idioma para outro em tempo de execução — incluindo a busca de novas traduções, a renderização de componentes e a atualização do DOM."
+		}
+	},
+	blog: {
+		"header": {
+			"title": "Blog",
+			"description": "Insights, tutoriais e análises da comunidade i18n."
+		},
+		"list": {
+			"readMore": "Ler Mais →",
+			"post1Title": "Comparando bibliotecas i18n em 2026: um mergulho profundo",
+			"post1Date": "15 de março de 2026",
+			"post1Excerpt": "Testamos 12 bibliotecas de internacionalização diferentes em termos de desempenho, tamanho de bundle e DX. Aqui estão os resultados surpreendentes.",
+			"post1Category": "Benchmark",
+			"post2Title": "Como reduzir seu bundle i18n em 60%",
+			"post2Date": "8 de março de 2026",
+			"post2Excerpt": "Estratégias práticas para otimizar bundles de tradução, incluindo carregamento lento, divisão de código e otimizações em tempo de build.",
+			"post2Category": "Tutorial",
+			"post3Title": "O estado da internacionalização no React",
+			"post3Date": "28 de fevereiro de 2026",
+			"post3Excerpt": "Uma visão geral do ecossistema i18n atual no React, cobrindo tendências, padrões emergentes e preferências da comunidade.",
+			"post3Category": "Análise",
+			"post4Title": "Migrando de react-i18next para o Lingui",
+			"post4Date": "15 de fevereiro de 2026",
+			"post4Excerpt": "Um guia passo a passo sobre a migração de um app de produção com 50.000 chaves de tradução do react-i18next para o Lingui.",
+			"post4Category": "Tutorial",
+			"post5Title": "Server Components e i18n: o que muda?",
+			"post5Date": "1 de fevereiro de 2026",
+			"post5Excerpt": "React Server Components introduzem novos padrões para internacionalização. Exploramos as implicações e melhores práticas.",
+			"post5Category": "Análise",
+			"post6Title": "Metodologia de benchmark: como testamos",
+			"post6Date": "20 de janeiro de 2026",
+			"post6Excerpt": "Uma visão transparente da nossa metodologia de benchmarking, incluindo ambientes de teste, métodos estatísticos e reprodutibilidade.",
+			"post6Category": "Meta"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "Carreiras",
+			"description": "Junte-se à nossa missão de melhorar o ecossistema de internacionalização. Somos uma equipe remota que valoriza o impacto, a transparência e o aprendizado contínuo."
+		},
+		"benefits": {
+			"remoteLabel": "Remoto primeiro",
+			"remoteValue": "Trabalhe de qualquer lugar do mundo",
+			"payLabel": "Salário competitivo",
+			"payValue": "Remuneração acima do mercado",
+			"ossLabel": "Tempo para o código aberto",
+			"ossValue": "20% do tempo para contribuições OSS"
+		},
+		"openPositions": {
+			"title": "Vagas abertas",
+			"applyNow": "Candidatar-se agora",
+			"remote": "Remoto",
+			"fullTime": "Tempo integral",
+			"partTime": "Tempo parcial",
+			"engineering": "Engenharia",
+			"documentation": "Documentação",
+			"community": "Comunidade",
+			"sfRemote": "San Francisco / Remoto",
+			"frontendTitle": "Engenheiro Frontend Sênior",
+			"frontendDesc": "Construa e mantenha nosso painel de benchmarking e ferramentas de desenvolvedor usando React, TypeScript e Vite.",
+			"backendTitle": "Engenheiro Backend",
+			"backendDesc": "Projete e dimensione nossa infraestrutura de benchmarking na nuvem que lida com milhares de execuções automatizadas diariamente.",
+			"writerTitle": "Redator técnico",
+			"writerDesc": "Crie guias abrangentes, referências de API e tutoriais para nossa plataforma de benchmarking.",
+			"devrelTitle": "Engenheiro de DevRel",
+			"devrelDesc": "Envolva-se com a comunidade i18n através de palestras, workshops, postagens em blogs e contribuições de código aberto.",
+			"qaTitle": "Engenheiro de QA",
+			"qaDesc": "Garanta a precisão e a confiabilidade dos resultados do benchmark através de testes e validações rigorosos."
+		}
+	},
+	contact: {
+		"header": {
+			"title": "Entre em contato",
+			"description": "Tem ideias, encontrou um bug ou quer contribuir com um benchmark? Entre em contato conosco em"
+		},
+		"form": {
+			"name": "Nome",
+			"yourName": "Seu nome",
+			"email": "E-mail",
+			"emailPlaceholder": "voce@exemplo.com",
+			"topic": "Assunto",
+			"bugReport": "Relatório de bug",
+			"newBenchmarkIdea": "Nova ideia de benchmark",
+			"methodologyQuestion": "Pergunta sobre metodologia",
+			"contribution": "Contribuição",
+			"other": "Outro",
+			"message": "Mensagem",
+			"messagePlaceholder": "Descreva sua pergunta ou ideia...",
+			"sendMessage": "Enviar mensagem"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "Perguntas frequentes",
+			"description": "Tudo o que você precisa saber sobre o i18n Benchmark."
+		},
+		"list": {
+			"q1": "O que é o i18n Benchmark?",
+			"a1": "O i18n Benchmark é uma suíte de benchmarking de código aberto que mede e compara o desempenho, o tamanho do bundle e a experiência do desenvolvedor das bibliotecas de internacionalização para aplicações JavaScript e React.",
+			"q2": "Como os benchmarks são conduzidos?",
+			"a2": "Realizamos testes padronizados em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir a significância estatística. Todas as configurações de teste estão disponíveis publicamente no nosso repositório GitHub.",
+			"q3": "Quais bibliotecas são suportadas atualmente?",
+			"a3": "Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.",
+			"q4": "Posso enviar meus próprios benchmarks?",
+			"a4": "Sim! Contribuições de benchmarks da comunidade são bem-vindas. Faça um fork do nosso repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe revisará e mesclará as submissões qualificadas.",
+			"q5": "Com que frequência os benchmarks são atualizados?",
+			"a5": "Rexecutamos todos os benchmarks semanalmente contra as versões estáveis mais recentes de cada biblioteca. Lançamentos de versões principais disparam um ciclo de re-benchmarking imediato.",
+			"q6": "Os dados são confiáveis?",
+			"a6": "Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de valores atípicos e intervalos de confiança. Todos os dados brutos são publicados junto com nossa análise para total transparência.",
+			"q7": "Vocês oferecem serviços de consultoria?",
+			"a7": "Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Podemos fornecer recomendações personalizadas com base no seu caso de uso específico, escala e restrições.",
+			"q8": "Como posso contribuir?",
+			"a8": "Existem muitas maneiras de contribuir: enviar benchmarks, melhorar a documentação, relatar bugs, sugerir novas métricas ou patrocinar o projeto. Visite nosso repositório GitHub para mais detalhes."
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "Preços simples e transparentes",
+			"description": "Escolha o plano que se adapta à sua equipe. Sem taxas ocultas."
+		},
+		"tiers": {
+			"starterName": "Starter",
+			"starterPrice": "0 $",
+			"starterPeriod": "para sempre",
+			"starterFeature1": "5 execuções de benchmark/dia",
+			"starterFeature2": "3 bibliotecas",
+			"starterFeature3": "Suporte da comunidade",
+			"starterFeature4": "Resultados públicos",
+			"proName": "Pro",
+			"proPrice": "29 $",
+			"proPeriod": "/mês",
+			"proFeature1": "Execuções ilimitadas",
+			"proFeature2": "Todas as bibliotecas",
+			"proFeature3": "Suporte prioritário",
+			"proFeature4": "Resultados privados",
+			"proFeature5": "Integração CI",
+			"proFeature6": "Dados históricos",
+			"enterpriseName": "Enterprise",
+			"enterprisePrice": "Personalizado",
+			"enterpriseFeature1": "Tudo o que está no Pro",
+			"enterpriseFeature2": "Opção on-premise",
+			"enterpriseFeature3": "SSO e SAML",
+			"enterpriseFeature4": "Gerente de conta dedicado",
+			"enterpriseFeature5": "SLAs personalizados",
+			"enterpriseFeature6": "Logs de auditoria",
+			"enterpriseFeature7": "Sessões de treinamento",
+			"contactSales": "Contatar vendas",
+			"getStarted": "Começar"
+		}
+	},
+	products: {
+		"header": {
+			"title": "Produtos",
+			"description": "Ferramentas e serviços para agilizar seu fluxo de trabalho de internacionalização."
+		},
+		"grid": {
+			"learnMore": "Saiba Mais",
+			"cliName": "Benchmark CLI",
+			"cliDesc": "Execute benchmarks localmente pelo terminal. Suporta configurações personalizadas e integração CI.",
+			"cliPrice": "Grátis",
+			"cloudName": "Benchmark Cloud",
+			"cloudDesc": "Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.",
+			"cloudPrice": "29 $/mês",
+			"enterpriseName": "Benchmark Enterprise",
+			"enterpriseDesc": "Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.",
+			"enterprisePrice": "Contate-nos",
+			"migrationName": "Assistente de migração",
+			"migrationDesc": "Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n sem tempo de inatividade.",
+			"migrationPrice": "99 $ taxa única",
+			"qaName": "QA de tradução",
+			"qaDesc": "Verificações de qualidade automatizadas para traduções ausentes, problemas de pluralização e erros de contexto.",
+			"qaPrice": "19 $/mês",
+			"optimizerName": "Otimizador de bundle",
+			"optimizerDesc": "Analisa e otimiza seu bundle i18n para produção com tree-shaking e divisão de código.",
+			"optimizerPrice": "49 $/mês"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "Configurações",
+			"description": "Gerencie suas preferências de conta e configuração."
+		},
+		"profile": {
+			"title": "Perfil",
+			"displayName": "Nome de exibição",
+			"email": "E-mail"
+		},
+		"preferences": {
+			"title": "Preferências",
+			"emailNotifications": "Notificações por e-mail",
+			"weeklyReports": "Receber relatórios semanais de benchmarks",
+			"toggleNotifications": "Alternar notificações",
+			"darkMode": "Modo Escuro",
+			"darkColorScheme": "Usar esquema de cores escuro",
+			"toggleDarkMode": "Alternar modo escuro",
+			"defaultLanguage": "Idioma padrão",
+			"english": "Inglês (en)",
+			"french": "Francés (fr)",
+			"german": "Alemão (de)",
+			"spanish": "Espanhol (es)",
+			"japanese": "Japonês (ja)",
+			"chinese": "Chinês Simplificado (zh-CN)",
+			"arabic": "Árabe (ar)"
+		},
+		"apiAccess": {
+			"title": "Acesso API",
+			"apiKey": "Chave API",
+			"copy": "Copiar",
+			"description": "Use esta chave para acessar a API de benchmarking programaticamente."
+		},
+		"footer": {
+			"cancel": "Cancelar",
+			"saveChanges": "Salvar alterações"
+		}
+	},
+	team: {
+		"header": {
+			"title": "Nossa equipe",
+			"description": "Conheça as pessoas por trás do i18n Benchmark. Uma equipe diversificada unida por uma paixão compartilhada por ótimas ferramentas de desenvolvedor."
+		},
+		"grid": {
+			"member1Name": "Sarah Chen",
+			"member1Role": "Fundadora e Engenheira Líder",
+			"member1Bio": "Ex-engenheira do Google com 10 anos de experiência na construção de sistemas de internacionalização em escala.",
+			"member2Name": "Marcus Weber",
+			"member2Role": "Engenheiro de performance",
+			"member2Bio": "Especialista em otimização de performance JavaScript e metodologia de benchmarking. Anteriormente na Vercel.",
+			"member3Name": "Aisha Patel",
+			"member3Role": "Developer Advocate",
+			"member3Bio": "Apaixonada por experiência do desenvolvedor e educação. Palestrante na React Conf, JSConf e i18nNext.",
+			"member4Name": "Tomás Rodríguez",
+			"member4Role": "Desenvolvedor Full-Stack",
+			"member4Bio": "Mantém a infraestrutura de benchmarking e o pipeline de CI/CD. Contribuidor de código aberto do Lingui.",
+			"member5Name": "Yuki Tanaka",
+			"member5Role": "Analista de dados",
+			"member5Bio": "Garante o rigor estatístico em todos os resultados de benchmark. PhD em Estatística Aplicada pelo MIT.",
+			"member6Name": "Elena Kowalski",
+			"member6Role": "Gerente de comunidade",
+			"member6Bio": "Gere as contribuições da comunidade, parcerias e eventos. Experiência em governança de código aberto."
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "Ops! Página não encontrada",
+		"returnHome": "Voltar para o início"
+	}
+};
+var zh_default = {
+	shared: {
+		"appName": "i18n Bench",
+		"siteName": "i18n Benchmark",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "前往 GitHub"
+	},
+	header: {
+		"home": "首页",
+		"methodology": "方法论",
+		"mockPages": "模拟页面",
+		"products": "产品",
+		"pricing": "价格",
+		"team": "团队",
+		"blog": "博客",
+		"careers": "招聘",
+		"faq": "常见问题",
+		"contact": "联系我们",
+		"settings": "设置"
+	},
+	footer: {
+		"title": "i18n Benchmark",
+		"description": "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。",
+		"resources": "资源",
+		"github": "GitHub",
+		"methodology": "方法论",
+		"contributing": "贡献",
+		"contact": "联系我们",
+		"builtWith": "i18n 基准测试 — 开源项目。使用 Vue, Vite 和客户端路由构建。"
+	},
+	themeToggle: {
+		"auto": "主题：自动",
+		"dark": "主题：深色",
+		"light": "主题：浅色",
+		"labelAuto": "主题模式：自动（系统）。点击切换到浅色模式。",
+		"labelOther": "主题模式：{mode}。点击切换模式。"
+	},
+	mockBanner: "⚠️ 此页面包含虚构数据，仅用于基准测试目的。与任何实际业务或服务无关。",
+	home: {
+		"hero": {
+			"title": "i18n Benchmark",
+			"description": "一个旨在衡量国际化库对包大小、加载性能和渲染反应性实际影响的测试应用程序。",
+			"viewResults": "查看结果",
+			"methodology": "方法论"
+		},
+		"whyItMatters": {
+			"title": "为什么这些指标很重要",
+			"bundleSizeTitle": "包大小",
+			"bundleSizeDesc": "包是发送给全球每个用户的数据。较大的包意味着较长的下载时间 — 特别是在许多地区常见的慢速 3G 连接下。i18n 库的重量差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。",
+			"renderingTitle": "渲染与注水",
+			"renderingDesc": "将大型 JSON 字典连接到每个组件会创建隐藏的依赖关系：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 注水期间，解析和附加海量的翻译对象会增加页面变为可交互之前的延迟 — 直接影响可交互时间 (TTI)。",
+			"dynamicLoadingTitle": "动态加载",
+			"dynamicLoadingDesc": "预先加载所有翻译会使初始负载过重。动态（延迟）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，延迟加载引入了它自己的权衡：瀑布流请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。"
+		},
+		"understandingImpact": {
+			"title": "理解影响",
+			"singleJsonTitle": "为什么单个大型 JSON 会损害性能",
+			"singleJsonIntro": "许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当此对象很大（数千个键）时，每个消耗翻译的组件都会保留对整个字典的引用。这意味着：",
+			"singleJsonBullet1": "每次页面加载时都必须解析 JSON — 阻塞主线程。",
+			"singleJsonBullet2": "当语言环境更改时，基于上下文的架构可能会导致级联重新渲染，因为即使特定键未更改，每个使用者也会收到通知。",
+			"singleJsonBullet3": "在服务器端渲染期间，整个字典被序列化到 HTML 负载中，增加了必须下载和注水的文档大小。",
+			"tradeOffsTitle": "动态加载的权衡",
+			"tradeOffsIntro": "将翻译拆分为每个路由或每个命名空间的块可以大幅减少初始负载。但它引入了新的挑战：",
+			"waterfallLabel": "瀑布流请求：",
+			"waterfallDesc": "应用必须首先加载，确定语言环境，然后获取正确的块 — 增加了网络往返时间。",
+			"foucLabel": "未翻译内容闪烁 (FOUC)：",
+			"foucDesc": "在块到达之前，用户可能会短暂看到翻译键或回退语言。",
+			"cacheLabel": "缓存失效：",
+			"cacheDesc": "更新翻译需要缓存刷新策略，以确保用户获得最新内容，而无需重新下载未更改的块。",
+			"measuresTitle": "此基准测试衡量的内容",
+			"measuresDesc": "此测试应用提供了一个受控环境 — 10 个具有真实内容的页面 — 以在三个轴上比较 i18n 库：它们为您的 JavaScript 包增加的重量、解析和渲染翻译内容所花费的时间，以及它们代码拆分和延迟加载策略的有效性。每个库都集成在同一个应用中，因此结果具有直接可比性。"
+		},
+		"resultsTable": {
+			"title": "示例结果",
+			"library": "库",
+			"bundleSize": "包大小",
+			"lookupTime": "查找时间",
+			"lazyLoading": "延迟加载",
+			"yes": "是",
+			"manual": "手动",
+			"builtIn": "内置"
+		}
+	},
+	about: {
+		"header": {
+			"title": "关于此基准测试",
+			"description": "这是一个开源测试应用程序 — 不是产品或公司。其唯一目的是提供一个现实的、多页面的 React 应用，以便在相同条件下集成和衡量不同的 i18n 库。"
+		},
+		"grid": {
+			"whyExistsTitle": "为什么存在这个测试",
+			"whyExistsDesc": "选择 i18n 库是一个具有长期影响的架构决策。大多数比较关注 API 的易用性，但很少有衡量性能成本的：库为包增加了多少重量？当加载数千个翻译键时，它如何影响渲染？延迟加载是否真的有帮助，还是只是转移了成本？本基准测试通过真实数据回答了这些问题。",
+			"methodologyTitle": "方法论",
+			"methodologyDesc": "相同的 10 页应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行加载指标的 Lighthouse 审核，并使用 React Profiler 捕获语言环境切换期间的渲染时间。所有测试都在一致硬件上的 CI 中运行，以确保结果可复现。"
+		},
+		"whatWeMeasure": {
+			"title": "衡量指标",
+			"bundleSizeImpact": "包大小影响",
+			"bundleSizeImpactDesc": "包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络下的下载时间。",
+			"renderingOverhead": "渲染开销",
+			"renderingOverheadDesc": "库为 React 的渲染周期增加了多少额外时间。通过单个上下文提供程序注入翻译的库可能会导致整个组件树的不必要重新渲染。",
+			"hydrationCost": "注水成本",
+			"hydrationCostDesc": "在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢注水速度 — 即页面变得可交互的时刻。",
+			"lazyLoading": "延迟加载有效性",
+			"lazyLoadingDesc": "按路由或命名空间拆分翻译是否确实减少了初始加载，以及它引入了哪些权衡（瀑布流请求、FOUC、缓存复杂性）。",
+			"localeSwitch": "语言环境切换速度",
+			"localeSwitchDesc": "应用程序在运行时从一种语言切换到另一种语言的速度 — 包括获取新翻译、重新渲染组件和更新 DOM。"
+		}
+	},
+	blog: {
+		"header": {
+			"title": "博客",
+			"description": "来自 i18n 社区的见解、教程和分析。"
+		},
+		"list": {
+			"readMore": "阅读更多 →",
+			"post1Title": "2026 年 i18n 库对比：深度分析",
+			"post1Date": "2026年3月15日",
+			"post1Excerpt": "我们在性能、包大小和 DX 方面测试了 12 种不同的国际化库。以下是令人惊讶的结果。",
+			"post1Category": "基准测试",
+			"post2Title": "如何将 i18n 包大小减少 60%",
+			"post2Date": "2026年3月8日",
+			"post2Excerpt": "优化翻译包的实用策略，包括延迟加载、代码拆分和编译时优化。",
+			"post2Category": "教程",
+			"post3Title": "React 国际化现状",
+			"post3Date": "2026年2月28日",
+			"post3Excerpt": "React 中当前 i18n 生态系统的概述，涵盖趋势、新兴模式和社区偏好。",
+			"post3Category": "分析",
+			"post4Title": "从 react-i18next 迁移到 Lingui",
+			"post4Date": "2026年2月15日",
+			"post4Excerpt": "关于将具有 50,000 个翻译键的生产应用从 react-i18next 迁移到 Lingui 的分步指南。",
+			"post4Category": "教程",
+			"post5Title": "Server Components 与 i18n：发生了什么变化？",
+			"post5Date": "2026年2月1日",
+			"post5Excerpt": "React Server Components 为国际化引入了新模式。我们探讨了其影响和最佳实践。",
+			"post5Category": "分析",
+			"post6Title": "基准测试方法论：我们如何测试",
+			"post6Date": "2026年1月20日",
+			"post6Excerpt": "透明地展示我们的基准测试方法，包括测试环境、统计方法和可复现性。",
+			"post6Category": "Meta"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "招聘",
+			"description": "加入我们，共同改善国际化生态系统。我们是一个远程优先的团队，重视影响力、透明度和持续学习。"
+		},
+		"benefits": {
+			"remoteLabel": "远程优先",
+			"remoteValue": "在世界任何地方工作",
+			"payLabel": "具有竞争力的薪酬",
+			"payValue": "市场顶尖的薪资水平",
+			"ossLabel": "开源时间",
+			"ossValue": "20% 的时间用于 OSS 贡献"
+		},
+		"openPositions": {
+			"title": "开放职位",
+			"applyNow": "立即申请",
+			"remote": "远程",
+			"fullTime": "全职",
+			"partTime": "兼职",
+			"engineering": "工程",
+			"documentation": "文档",
+			"community": "社区",
+			"sfRemote": "旧金山 / 远程",
+			"frontendTitle": "高级前端工程师",
+			"frontendDesc": "使用 React、TypeScript 和 Vite 构建和维护我们的基准测试仪表板和开发人员工具。",
+			"backendTitle": "后端工程师",
+			"backendDesc": "设计和扩展我们的云基准测试基础设施，每天处理数千次自动化运行。",
+			"writerTitle": "技术作家",
+			"writerDesc": "为我们的基准测试平台编写全面的指南、API 参考和教程。",
+			"devrelTitle": "DevRel 工程师",
+			"devrelDesc": "通过演讲、研讨会、博客文章和开源贡献与 i18n 社区互动。",
+			"qaTitle": "QA 工程师",
+			"qaDesc": "通过严格的测试和验证确保基准测试结果 agrarian 准确性和可靠性。"
+		}
+	},
+	contact: {
+		"header": {
+			"title": "取得联系",
+			"description": "有想法、发现了错误或想贡献基准测试？请联系我们："
+		},
+		"form": {
+			"name": "姓名",
+			"yourName": "您的姓名",
+			"email": "电子邮件",
+			"emailPlaceholder": "you@example.com",
+			"topic": "主题",
+			"bugReport": "错误报告",
+			"newBenchmarkIdea": "新基准测试想法",
+			"methodologyQuestion": "方法论问题",
+			"contribution": "贡献",
+			"other": "其他",
+			"message": "消息",
+			"messagePlaceholder": "描述您的问题或想法...",
+			"sendMessage": "发送消息"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "常见问题",
+			"description": "关于 i18n 基准测试您需要了解的一切。"
+		},
+		"list": {
+			"q1": "什么是 i18n 基准测试？",
+			"a1": "i18n 基准测试是一个开源基准测试套件，旨在衡量和比较 JavaScript 和 React 应用程序国际化库的性能、包大小和开发人员体验。",
+			"q2": "基准测试是如何进行的？",
+			"a2": "我们在使用一致硬件的隔离环境中运行标准化测试。每个基准测试都重复多次以确保统计显著性。所有测试配置都在我们的 GitHub 存储库中公开可用。",
+			"q3": "目前支持哪些库？",
+			"a3": "我们支持 react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 和 Tolgee。",
+			"q4": "我可以提交我自己的基准测试吗？",
+			"a4": "是的！欢迎社区提交基准测试。Fork 我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审核并合并符合条件的提交。",
+			"q5": "基准测试多久更新一次？",
+			"a5": "我们每周针对每个库的最新稳定版本重新运行所有基准测试。主要版本发布会立即触发重新基准测试周期。",
+			"q6": "数据可靠吗？",
+			"a6": "我们遵循严格的统计方法，包括预热运行、异常值检测和置信区间。所有原始数据都与我们的分析一起发布，以实现完全透明。",
+			"q7": "你们提供咨询服务吗？",
+			"a7": "是的，我们的企业计划包括为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的具体用例、规模和限制提供量身定制的建议。",
+			"q8": "我该如何贡献？",
+			"a8": "有很多贡献方式：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。"
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "简单透明的定价",
+			"description": "选择适合您团队的计划。无隐藏费用。"
+		},
+		"tiers": {
+			"starterName": "入门版",
+			"starterPrice": "0 $",
+			"starterPeriod": "永久",
+			"starterFeature1": "每天 5 次基准测试运行",
+			"starterFeature2": "3 个库",
+			"starterFeature3": "社区支持",
+			"starterFeature4": "公开结果",
+			"proName": "专业版",
+			"proPrice": "29 $",
+			"proPeriod": "/月",
+			"proFeature1": "无限次运行",
+			"proFeature2": "所有库",
+			"proFeature3": "优先支持",
+			"proFeature4": "私有结果",
+			"proFeature5": "CI 集成",
+			"proFeature6": "历史数据",
+			"enterpriseName": "企业版",
+			"enterprisePrice": "定制",
+			"enterpriseFeature1": "包含专业版中的所有功能",
+			"enterpriseFeature2": "本地部署选项",
+			"enterpriseFeature3": "SSO 和 SAML",
+			"enterpriseFeature4": "专属客户经理",
+			"enterpriseFeature5": "定制 SLA",
+			"enterpriseFeature6": "审计日志",
+			"enterpriseFeature7": "培训课程",
+			"contactSales": "联系销售",
+			"getStarted": "开始使用"
+		}
+	},
+	products: {
+		"header": {
+			"title": "产品",
+			"description": "用于简化国际化工作流程的工具和服务。"
+		},
+		"grid": {
+			"learnMore": "了解更多",
+			"cliName": "基准测试 CLI",
+			"cliDesc": "从您的终端本地运行基准测试。支持自定义配置和 CI 集成。",
+			"cliPrice": "免费",
+			"cloudName": "基准测试云",
+			"cloudDesc": "具有历史追踪、警报和团队仪表板的自动化云基准测试。",
+			"cloudPrice": "29 $/月",
+			"enterpriseName": "基准测试企业版",
+			"enterpriseDesc": "支持 SSO、审计日志、定制 SLA 和专属支持的本地部署。",
+			"enterprisePrice": "联系我们",
+			"migrationName": "迁移助手",
+			"migrationDesc": "AI 驱动的工具，可帮助您在 i18n 库之间迁移代码库，零停机时间。",
+			"migrationPrice": "99 $ 一次性费用",
+			"qaName": "翻译 QA",
+			"qaDesc": "自动检查翻译缺失、复数问题和上下文错误。",
+			"qaPrice": "19 $/月",
+			"optimizerName": "包优化器",
+			"optimizerDesc": "通过 tree-shaking 和代码拆分分析并优化您的生产 i18n 包。",
+			"optimizerPrice": "49 $/月"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "设置",
+			"description": "管理您的账户偏好和配置。"
+		},
+		"profile": {
+			"title": "个人资料",
+			"displayName": "显示名称",
+			"email": "电子邮件"
+		},
+		"preferences": {
+			"title": "偏好",
+			"emailNotifications": "电子邮件通知",
+			"weeklyReports": "接收每周基准测试报告",
+			"toggleNotifications": "切换通知",
+			"darkMode": "深色模式",
+			"darkColorScheme": "使用深色配色方案",
+			"toggleDarkMode": "切换深色模式",
+			"defaultLanguage": "默认语言",
+			"english": "英语 (en)",
+			"french": "法语 (fr)",
+			"german": "德语 (de)",
+			"spanish": "西班牙语 (es)",
+			"japanese": "日语 (ja)",
+			"chinese": "简体中文 (zh-CN)",
+			"arabic": "阿拉伯语 (ar)"
+		},
+		"apiAccess": {
+			"title": "API 访问",
+			"apiKey": "API 密钥",
+			"copy": "复制",
+			"description": "使用此密钥以编程方式访问基准测试 API。"
+		},
+		"footer": {
+			"cancel": "取消",
+			"saveChanges": "保存更改"
+		}
+	},
+	team: {
+		"header": {
+			"title": "我们的团队",
+			"description": "了解 i18n 基准测试背后的团队成员。一个因对优秀开发工具的共同热情而团结在一起的多元化团队。"
+		},
+		"grid": {
+			"member1Name": "Sarah Chen",
+			"member1Role": "创始人兼首席工程师",
+			"member1Bio": "前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。",
+			"member2Name": "Marcus Weber",
+			"member2Role": "性能工程师",
+			"member2Bio": "专注于 JavaScript 性能优化和基准测试方法论。此前就职于 Vercel。",
+			"member3Name": "Aisha Patel",
+			"member3Role": "开发者倡导者",
+			"member3Bio": "对开发者体验和教育充满热情。曾在 React Conf, JSConf 和 i18nNext 发表演讲。",
+			"member4Name": "Tomás Rodríguez",
+			"member4Role": "全栈开发人员",
+			"member4Bio": "维护基准测试基础设施和 CI/CD 流水线。Lingui 的开源贡献者。",
+			"member5Name": "Yuki Tanaka",
+			"member5Role": "数据分析师",
+			"member5Bio": "确保所有基准测试结果 agrarian 统计严谨性。获得 MIT 应用统计学博士学位。",
+			"member6Name": "Elena Kowalski",
+			"member6Role": "社区经理",
+			"member6Bio": "管理社区贡献、合作伙伴关系和活动。具有开源治理背景。"
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "哎呀！页面未找到",
+		"returnHome": "返回首页"
+	}
+};
+var ja_default = {
+	shared: {
+		"appName": "i18n Bench",
+		"siteName": "i18n Benchmark",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "GitHubへ"
+	},
+	header: {
+		"home": "ホーム",
+		"methodology": "手法",
+		"mockPages": "テストページ",
+		"products": "製品",
+		"pricing": "価格",
+		"team": "チーム",
+		"blog": "ブログ",
+		"careers": "採用情報",
+		"faq": "FAQ",
+		"contact": "お問い合わせ",
+		"settings": "設定"
+	},
+	footer: {
+		"title": "i18n Benchmark",
+		"description": "国際化ライブラリがバンドルサイズ、読み込み時間、アプリの反応性に与える実世界の影響を測定するためのオープンソーステストアプリケーション。",
+		"resources": "リソース",
+		"github": "GitHub",
+		"methodology": "手法",
+		"contributing": "貢献する",
+		"contact": "お問い合わせ",
+		"builtWith": "i18n Benchmark — オープンソースプロジェクト。Vue、Vite、およびクライアントサイドローターで構築されています。"
+	},
+	themeToggle: {
+		"auto": "テーマ：自動",
+		"dark": "テーマ：ダーク",
+		"light": "テーマ：ライト",
+		"labelAuto": "テーマモード：自動（システム）。クリックするとライトモードに切り替わります。",
+		"labelOther": "テーマモード：{mode}。クリックしてモードを切り替えます。"
+	},
+	mockBanner: "⚠️ このページにはベンチマーク目的のみの架空のデータが含まれています。実在の企業やサービスとは関係ありません。",
+	home: {
+		"hero": {
+			"title": "i18n Benchmark",
+			"description": "国際化ライブラリがバンドルサイズ、読み込みパフォーマンス、レンダリングの反応性に与える実世界の影響を測定するために設計されたテストアプリケーション。",
+			"viewResults": "結果を見る",
+			"methodology": "手法"
+		},
+		"whyItMatters": {
+			"title": "なぜこれらの指標が重要なのか",
+			"bundleSizeTitle": "バンドルサイズ",
+			"bundleSizeDesc": "バンドルは世界中のすべてのユーザーに送られるデータです。バンドルが大きいほどダウンロード時間が長くなります。これは多くの地域で一般的な低速な3G接続において特に顕著です。i18nライブラリの重量は、数キロバイトから数十キロバイトのランタイムコード、さらに翻訳ファイル自体に至るまで、劇的に異なります。",
+			"renderingTitle": "レンダリングとハイドレーション",
+			"renderingDesc": "巨大なJSON辞書をすべてのコンポーネントに接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更は、ツリー全体の再レンダリングを引き起こす可能性があります。SSRハイドレーション中、大規模な翻訳オブジェクトの解析とアタッチは、ページがインタラクティブになるまでのレイテンシを増加させ、Time to Interactive (TTI) に直接影響します。",
+			"dynamicLoadingTitle": "動的読み込み",
+			"dynamicLoadingDesc": "すべての翻訳を事前読み込みすると、初期ペイロードに過負荷がかかります。動的（遅延）読み込みは翻訳をルートや名前空間ごとに分割し、現在のページに必要なものだけを送信します。ただし、遅延読み込みには、ウォーターフォールリクエスト、翻訳されていないコンテンツのフラッシュ、キャッシュの複雑さなどのトレードオフがあります。両方の戦略を測定することが不可欠です。"
+		},
+		"understandingImpact": {
+			"title": "影響を理解する",
+			"singleJsonTitle": "なぜ1つの大きなJSONがパフォーマンスを低下させるのか",
+			"singleJsonIntro": "多くのi18nライブラリは、Reactコンテキストを介して提供される単一のJSONオブジェクトに翻訳を保存します。このオブジェクトが大きい場合（数千のキー）、翻訳を使用するすべてのコンポーネントが辞書全体への参照を保持することになります。これは以下を意味します：",
+			"singleJsonBullet1": "ページを読み込むたびにJSONを解析する必要があり、メインスレッドをブロックします。",
+			"singleJsonBullet2": "コンテキストベースのアーキテクチャでは、特定のキーが変更されていなくてもすべての消費者に通知されるため、ロケール変更時にカスケードレンダリングが発生する可能性があります。",
+			"singleJsonBullet3": "サーバーサイドレンダリング中、辞書全体がHTMLペイロードにシリアル化され、ダウンロードとハイドレーションが必要なドキュメントサイズが増加します。",
+			"tradeOffsTitle": "動的読み込みのトレードオフ",
+			"tradeOffsIntro": "翻訳をルートごとまたは名前空間ごとのチャンクに分割すると、初期ペイロードを劇的に削減できます。しかし、新しい課題も生じます：",
+			"waterfallLabel": "ウォーターフォールリクエスト：",
+			"waterfallDesc": "アプリは最初に読み込み、ロケールを決定し、次に正しいチャンクを取得する必要があり、ネットワークのラウンドトリップが追加されます。",
+			"foucLabel": "翻訳されていないコンテンツのフラッシュ (FOUC)：",
+			"foucDesc": "チャンクが到着する前に、ユーザーに翻訳キーまたはフォールバック言語が一時的に表示されることがあります。",
+			"cacheLabel": "キャッシュの無効化：",
+			"cacheDesc": "翻訳を更新するには、ユーザーが変更されていないチャンクを再ダウンロードすることなく最新のコンテンツを取得できるようにするためのキャッシュバースト戦略が必要です。",
+			"measuresTitle": "このベンチマークが測定するもの",
+			"measuresDesc": "このテストアプリは、現実的なコンテンツを含む10ページという制御された環境を提供し、JavaScriptバンドルに追加される重量、翻訳コンテンツの解析とレンダリングに費される時間、およびコード分割と遅延読み込み戦略の効果という3つの軸でi18nライブラリを比較します。各ライブラリは同じアプリに統合されているため、結果を直接比較できます。"
+		},
+		"resultsTable": {
+			"title": "サンプル結果",
+			"library": "ライブラリ",
+			"bundleSize": "バンドルサイズ",
+			"lookupTime": "ルックアップ時間",
+			"lazyLoading": "遅延読み込み",
+			"yes": "はい",
+			"manual": "手動",
+			"builtIn": "内蔵"
+		}
+	},
+	about: {
+		"header": {
+			"title": "このベンチマークについて",
+			"description": "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、現実的なマルチページReactアプリを提供し、異なるi18nライブラリを同一条件下で統合して測定できるようにすることです。"
+		},
+		"grid": {
+			"whyExistsTitle": "なぜこれが存在するのか",
+			"whyExistsDesc": "i18nライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較はAPIの使いやすさに焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリはバンドルにどれだけの重量を追加しますか？数千の翻訳キーが読み込まれたとき、レンダリングにどのように影響しますか？遅延読み込みは実際に役立ちますか、それともコストをシフトするだけですか？このベンチマークは、実際のデータでこれらの質問に答えます。",
+			"methodologyTitle": "手法",
+			"methodologyDesc": "同じ10ページのアプリをライブラリごとに1回構築します。本番バンドルを測定し（rollup-plugin-visualizer経由）、読み込み指標のLighthouse監査を実行し、React Profilerを使用してロケール切り替え中のレンダー時間をキャプチャします。再現可能な結果を確保するために、すべてのテストは一貫したハードウェア上のCIで実行されます。"
+		},
+		"whatWeMeasure": {
+			"title": "測定項目",
+			"bundleSizeImpact": "バンドルサイズへの影響",
+			"bundleSizeImpactDesc": "i18nライブラリとその翻訳ファイルが含まれるときにユーザーに送信される追加のJavaScriptバイト。これは、低速なネットワークでのダウンロード時間に直接影響します。",
+			"renderingOverhead": "レンダリングのオーバーヘッド",
+			"renderingOverheadDesc": "ライブラリがReactのレンダーサイクルに追加する余分な時間。単一のコンテキストプロバイダーを介して翻訳を注入するライブラリは、コンポーネントツリー全体で不要な再レンダリングを引き起こす可能性があります。",
+			"hydrationCost": "ハイドレーションコスト",
+			"hydrationCostDesc": "SSR中、翻訳データはHTMLにシリアル化されます。巨大な辞書はHTMLペイロードを増加させ、ページがインタラクティブになるまでのハイドレーションを遅らせます。",
+			"lazyLoading": "遅延読み込みの有効性",
+			"lazyLoadingDesc": "ルートごとまたは名前空間ごとに翻訳を分割することが実際に初期負荷を軽減するかどうか、またどのようなトレードオフ（ウォーターフォールリクエスト、FOUC、キャッシュの複雑さ）が導入されるか。",
+			"localeSwitch": "ロケール切り替え速度",
+			"localeSwitchDesc": "実行時にある言語から別の言語にどれだけ速く切り替えられるか。新しい翻訳の取得、コンポーネントの再レンダリング、DOMの更新が含まれます。"
+		}
+	},
+	blog: {
+		"header": {
+			"title": "ブログ",
+			"description": "i18nコミュニティからのインサイト、チュートリアル、分析。"
+		},
+		"list": {
+			"readMore": "続きを読む →",
+			"post1Title": "2026年のi18nライブラリ比較：ディープダイブ",
+			"post1Date": "2026年3月15日",
+			"post1Excerpt": "パフォーマンス、バンドルサイズ、DXにわたって12の異なる国際化ライブラリをテストしました。驚くべき結果がここにあります。",
+			"post1Category": "ベンチマーク",
+			"post2Title": "i18nバンドルを60%削減する方法",
+			"post2Date": "2026年3月8日",
+			"post2Excerpt": "遅延読み込み、コード分割、ビルド時の最適化を含む、翻訳バンドルを最適化するための実践的な戦略。",
+			"post2Category": "チュートリアル",
+			"post3Title": "Reactにおける国際化の現状",
+			"post3Date": "2026年2月28日",
+			"post3Excerpt": "トレンド、新興パターン、コミュニティの好みをカバーする、Reactにおける現在のi18nエコシステムの概要。",
+			"post3Category": "分析",
+			"post4Title": "react-i18nextからLinguiへの移行",
+			"post4Date": "2026年2月15日",
+			"post4Excerpt": "50,000の翻訳キーを持つ本番アプリをreact-i18nextからLinguiに移行するためのステップバイステップガイド。",
+			"post4Category": "チュートリアル",
+			"post5Title": "Server Componentsとi18n：何が変わるのか？",
+			"post5Date": "2026年2月1日",
+			"post5Excerpt": "React Server Componentsは、国際化のための新しいパターンを導入します。その影響とベストプラクティスを探ります。",
+			"post5Category": "分析",
+			"post6Title": "ベンチマーク手法：テスト方法について",
+			"post6Date": "2026年1月20日",
+			"post6Excerpt": "テスト環境、統計手法、再現性など、私たちのベンチマーク手法を透明性を持って公開します。",
+			"post6Category": "メタ"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "採用情報",
+			"description": "国際化エコシステムを改善するという私たちの使命に参加してください。私たちは、影響力、透明性、そして継続的な学習を重視するリモートファーストのチームです。"
+		},
+		"benefits": {
+			"remoteLabel": "リモートファースト",
+			"remoteValue": "世界中のどこからでも仕事ができます",
+			"payLabel": "競争力のある給与",
+			"payValue": "市場トップクラスの報酬",
+			"ossLabel": "オープンソースの時間",
+			"ossValue": "時間の20%をOSSへの貢献に"
+		},
+		"openPositions": {
+			"title": "募集中の職種",
+			"applyNow": "今すぐ応募",
+			"remote": "リモート",
+			"fullTime": "フルタイム",
+			"partTime": "パートタイム",
+			"engineering": "エンジニアリング",
+			"documentation": "ドキュメンテーション",
+			"community": "コミュニティ",
+			"sfRemote": "サンフランシスコ / リモート",
+			"frontendTitle": "シニアフロントエンドエンジニア",
+			"frontendDesc": "React、TypeScript、Viteを使用して、ベンチマークダッシュボードと開発者ツールの構築と保守を行います。",
+			"backendTitle": "バックエンドエンジニア",
+			"backendDesc": "毎日数千の自動実行を処理するクラウドベンチマークインフラストラクチャの設計とスケーリングを行います。",
+			"writerTitle": "テクニカルライター",
+			"writerDesc": "ベンチマークプラットフォームのための包括的なガイド、APIリファレンス、およびチュートリアルを作成します。",
+			"devrelTitle": "DevRelエンジニア",
+			"devrelDesc": "トーク、ワークショップ、ブログ投稿、オープンソースへの貢献を通じて、i18nコミュニティと関わります。",
+			"qaTitle": "QAエンジニア",
+			"qaDesc": "厳格なテストと検証を通じて、ベンチマーク結果の正確性と信頼性を確保します。"
+		}
+	},
+	contact: {
+		"header": {
+			"title": "お問い合わせ",
+			"description": "アイデアがある、バグを見つけた、またはベンチマークを投稿したいですか？こちらまでご連絡ください："
+		},
+		"form": {
+			"name": "名前",
+			"yourName": "お名前",
+			"email": "メールアドレス",
+			"emailPlaceholder": "you@example.com",
+			"topic": "トピック",
+			"bugReport": "バグ報告",
+			"newBenchmarkIdea": "新しいベンチマークのアイデア",
+			"methodologyQuestion": "手法に関する質問",
+			"contribution": "貢献",
+			"other": "その他",
+			"message": "メッセージ",
+			"messagePlaceholder": "ご質問やアイデアを記入してください...",
+			"sendMessage": "メッセージを送信"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "よくある質問",
+			"description": "i18n Benchmarkについて知っておくべきすべてのこと。"
+		},
+		"list": {
+			"q1": "i18n Benchmarkとは何ですか？",
+			"a1": "i18n Benchmarkは、JavaScriptおよびReactアプリケーション用の国際化ライブラリのパフォーマンス、バンドルサイズ、および開発者体験を測定および比較するオープンソースのベンチマークスイートです。",
+			"q2": "ベンチマークはどのように実施されますか？",
+			"a2": "一貫したハードウェアを使用し、分離された環境で標準化されたテストを実行します。統計的な有意性を確保するために、各ベンチマークは複数回繰り返されます。すべてのテスト構成は、GitHubリポジトリで公開されています。",
+			"q3": "現在サポートされているライブラリは何ですか？",
+			"a3": "react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react、およびTolgeeをサポートしています。",
+			"q4": "自分のベンチマークを投稿できますか？",
+			"a4": "はい！コミュニティからのベンチマーク投稿を歓迎します。リポジトリをフォークし、貢献ガイドに従ってベンチマークを追加し、プルリクエストを送信してください。チームが審査し、要件を満たす投稿をマージします。",
+			"q5": "ベンチマークはどのくらいの頻度で更新されますか？",
+			"a5": "各ライブラリの最新の安定版に対して、毎週すべてのベンチマークを再実行します。メジャーバージョンのリリース時は、即座に再ベンチマークサイクルが実行されます。",
+			"q6": "データは信頼できますか？",
+			"a6": "ウォームアップ実行、外れ値検出、信頼区間を含む厳格な統計手法に従っています。完全な透明性を確保するため、すべての生データは分析結果とともに公開されます。",
+			"q7": "コンサルティングサービスは提供していますか？",
+			"a7": "はい。Enterpriseプランには、i18nソリューションを評価しているチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいて、カスタマイズされた推奨事項を提供できます。",
+			"q8": "どのように貢献できますか？",
+			"a8": "貢献する方法はたくさんあります。ベンチマークの投稿、ドキュメントの改善、バグ報告、新しい指標の提案、プロジェクトへのスポンサーなどです。詳細はGitHubリポジトリをご覧ください。"
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "シンプルで透明性の高い価格設定",
+			"description": "チームに合ったプランをお選びください。隠れた費用はありません。"
+		},
+		"tiers": {
+			"starterName": "スターター",
+			"starterPrice": "0円",
+			"starterPeriod": "ずっと無料",
+			"starterFeature1": "1日あたり5回のベンチマーク実行",
+			"starterFeature2": "3ライブラリ",
+			"starterFeature3": "コミュニティサポート",
+			"starterFeature4": "公開結果",
+			"proName": "プロ",
+			"proPrice": "29ドル",
+			"proPeriod": "/月",
+			"proFeature1": "無制限の実行",
+			"proFeature2": "すべてのライブラリ",
+			"proFeature3": "優先サポート",
+			"proFeature4": "非公開の結果",
+			"proFeature5": "CI統合",
+			"proFeature6": "履歴データ",
+			"enterpriseName": "エンタープライズ",
+			"enterprisePrice": "カスタム",
+			"enterpriseFeature1": "Proプランのすべてを含む",
+			"enterpriseFeature2": "オンプレミスオプション",
+			"enterpriseFeature3": "SSO & SAML",
+			"enterpriseFeature4": "専任のアカウントマネージャー",
+			"enterpriseFeature5": "カスタムSLA",
+			"enterpriseFeature6": "監査ログ",
+			"enterpriseFeature7": "トレーニングセッション",
+			"contactSales": "営業に問い合わせる",
+			"getStarted": "始める"
+		}
+	},
+	products: {
+		"header": {
+			"title": "製品",
+			"description": "国際化ワークフローを効率化するためのツールとサービス。"
+		},
+		"grid": {
+			"learnMore": "詳細はこちら",
+			"cliName": "Benchmark CLI",
+			"cliDesc": "ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートしています。",
+			"cliPrice": "無料",
+			"cloudName": "Benchmark Cloud",
+			"cloudDesc": "履歴追跡、アラート、チームダッシュボードを備えた、自動化されたクラウドベースのベンチマーク。",
+			"cloudPrice": "29ドル/月",
+			"enterpriseName": "Benchmark Enterprise",
+			"enterpriseDesc": "SSO、監査ログ、カスタムSLA、および専任サポートを備えたオンプレミス展開。",
+			"enterprisePrice": "お問い合わせ",
+			"migrationName": "移行アシスタント",
+			"migrationDesc": "ダウンタイムなしでi18nライブラリ間でコードベースを移行するのを支援するAI駆動ツール。",
+			"migrationPrice": "99ドル（一回限り）",
+			"qaName": "翻訳QA",
+			"qaDesc": "翻訳の欠落、複数形化の問題、コンテキストエラーの自動品質チェック。",
+			"qaPrice": "19ドル/月",
+			"optimizerName": "バンドルオプティマイザー",
+			"optimizerDesc": "ツリーシェイキングとコード分割を使用して、本番用にi18nバンドルを分析および最適化します。",
+			"optimizerPrice": "49ドル/月"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "設定",
+			"description": "アカウント設定と構成を管理します。"
+		},
+		"profile": {
+			"title": "プロフィール",
+			"displayName": "表示名",
+			"email": "メールアドレス"
+		},
+		"preferences": {
+			"title": "設定",
+			"emailNotifications": "メール通知",
+			"weeklyReports": "毎週のベンチマークレポートを受け取る",
+			"toggleNotifications": "通知の切り替え",
+			"darkMode": "ダークモード",
+			"darkColorScheme": "ダークカラー（暗い配色）を使用する",
+			"toggleDarkMode": "ダークモードの切り替え",
+			"defaultLanguage": "デフォルトの言語",
+			"english": "英語 (en)",
+			"french": "フランス語 (fr)",
+			"german": "ドイツ語 (de)",
+			"spanish": "スペイン語 (es)",
+			"japanese": "日本語 (ja)",
+			"chinese": "中国語（簡体字） (zh-CN)",
+			"arabic": "アラビア語 (ar)"
+		},
+		"apiAccess": {
+			"title": "APIアクセス",
+			"apiKey": "APIキー",
+			"copy": "コピー",
+			"description": "このキーを使用して、プログラムでベンチマークAPIにアクセスします。"
+		},
+		"footer": {
+			"cancel": "キャンセル",
+			"saveChanges": "変更を保存"
+		}
+	},
+	team: {
+		"header": {
+			"title": "私たちのチーム",
+			"description": "i18n Benchmarkを支えるメンバーをご紹介します。優れた開発者ツールへの情熱で結ばれた多様なチームです。"
+		},
+		"grid": {
+			"member1Name": "Sarah Chen",
+			"member1Role": "創設者 & リードエンジニア",
+			"member1Bio": "大規模な国際化システムの構築において10年の経験を持つ元Googleエンジニア。",
+			"member2Name": "Marcus Weber",
+			"member2Role": "パフォーマンスエンジニア",
+			"member2Bio": "JavaScriptのパフォーマンス最適化とベンチマーク手法を専門としています。前職はVercel。",
+			"member3Name": "Aisha Patel",
+			"member3Role": "Developer Advocate",
+			"member3Bio": "開発者体験と教育に情熱を注いています。React Conf、JSConf、i18nNextのスピーカー。",
+			"member4Name": "Tomás Rodríguez",
+			"member4Role": "フルスタックデベロッパー",
+			"member4Bio": "ベンチマークインフラストラクチャとCI/CDパイプラインを維持しています。Linguiのオープンソースコントリビューター。",
+			"member5Name": "Yuki Tanaka",
+			"member5Role": "データアナリスト",
+			"member5Bio": "すべてのベンチマーク結果における統計的厳密さを確保します。MITの応用統計学博士。",
+			"member6Name": "Elena Kowalski",
+			"member6Role": "コミュニティマネージャー",
+			"member6Bio": "コミュニティの貢献、パートナーシップ、イベントを管理しています。オープンソースガバナンスの経歴。"
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "おっと！ページが見つかりません",
+		"returnHome": "ホームに戻る"
+	}
+};
+var ko_default = {
+	shared: {
+		"appName": "i18n Bench",
+		"siteName": "i18n Benchmark",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "Go to GitHub"
+	},
+	header: {
+		"home": "Home",
+		"methodology": "Methodology",
+		"mockPages": "Mock Pages",
+		"products": "Products",
+		"pricing": "Pricing",
+		"team": "Team",
+		"blog": "Blog",
+		"careers": "Careers",
+		"faq": "FAQ",
+		"contact": "Contact",
+		"settings": "Settings"
+	},
+	footer: {
+		"title": "i18n Benchmark",
+		"description": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+		"resources": "Resources",
+		"github": "GitHub",
+		"methodology": "Methodology",
+		"contributing": "Contributing",
+		"contact": "Contact",
+		"builtWith": "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router."
+	},
+	themeToggle: {
+		"auto": "Theme: Auto",
+		"dark": "Theme: Dark",
+		"light": "Theme: Light",
+		"labelAuto": "Theme mode: auto (system). Click to switch to light mode.",
+		"labelOther": "Theme mode: {mode}. Click to switch mode."
+	},
+	mockBanner: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.",
+	home: {
+		"hero": {
+			"title": "i18n Benchmark",
+			"description": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+			"viewResults": "View Results",
+			"methodology": "Methodology"
+		},
+		"whyItMatters": {
+			"title": "Why These Metrics Matter",
+			"bundleSizeTitle": "Bundle Size",
+			"bundleSizeDesc": "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+			"renderingTitle": "Rendering & Hydration",
+			"renderingDesc": "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).",
+			"dynamicLoadingTitle": "Dynamic Loading",
+			"dynamicLoadingDesc": "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+		},
+		"understandingImpact": {
+			"title": "Understanding the Impact",
+			"singleJsonTitle": "Why a single large JSON can hurt performance",
+			"singleJsonIntro": "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:",
+			"singleJsonBullet1": "The JSON must be parsed on every page load — blocking the main thread.",
+			"singleJsonBullet2": "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+			"singleJsonBullet3": "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.",
+			"tradeOffsTitle": "The trade-offs of dynamic loading",
+			"tradeOffsIntro": "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:",
+			"waterfallLabel": "Waterfall requests:",
+			"waterfallDesc": "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips.",
+			"foucLabel": "Flash of untranslated content (FOUC):",
+			"foucDesc": "users may briefly see translation keys or a fallback language before the chunk arrives.",
+			"cacheLabel": "Cache invalidation:",
+			"cacheDesc": "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks.",
+			"measuresTitle": "What this benchmark measures",
+			"measuresDesc": "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+		},
+		"resultsTable": {
+			"title": "Sample Results",
+			"library": "Library",
+			"bundleSize": "Bundle Size",
+			"lookupTime": "Lookup Time",
+			"lazyLoading": "Lazy Loading",
+			"yes": "Yes",
+			"manual": "Manual",
+			"builtIn": "Built-in"
+		}
+	},
+	about: {
+		"header": {
+			"title": "About This Benchmark",
+			"description": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+		},
+		"grid": {
+			"whyExistsTitle": "Why This Exists",
+			"whyExistsDesc": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+			"methodologyTitle": "Methodology",
+			"methodologyDesc": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+		},
+		"whatWeMeasure": {
+			"title": "What We Measure",
+			"bundleSizeImpact": "Bundle size impact",
+			"bundleSizeImpactDesc": "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.",
+			"renderingOverhead": "Rendering overhead",
+			"renderingOverheadDesc": "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+			"hydrationCost": "Hydration cost",
+			"hydrationCostDesc": "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
+			"lazyLoading": "Lazy loading effectiveness",
+			"lazyLoadingDesc": "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).",
+			"localeSwitch": "Locale switch speed",
+			"localeSwitchDesc": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+		}
+	},
+	blog: {
+		"header": {
+			"title": "Blog",
+			"description": "Insights, tutorials, and analysis from the i18n community."
+		},
+		"list": {
+			"readMore": "Read More →",
+			"post1Title": "Comparing i18n Libraries in 2026: A Deep Dive",
+			"post1Date": "March 15, 2026",
+			"post1Excerpt": "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+			"post1Category": "Benchmark",
+			"post2Title": "How to Reduce Your i18n Bundle by 60%",
+			"post2Date": "March 8, 2026",
+			"post2Excerpt": "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+			"post2Category": "Tutorial",
+			"post3Title": "The State of Internationalization in React",
+			"post3Date": "February 28, 2026",
+			"post3Excerpt": "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+			"post3Category": "Analysis",
+			"post4Title": "Migrating from react-i18next to Lingui",
+			"post4Date": "February 15, 2026",
+			"post4Excerpt": "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+			"post4Category": "Tutorial",
+			"post5Title": "Server Components and i18n: What Changes?",
+			"post5Date": "February 1, 2026",
+			"post5Excerpt": "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+			"post5Category": "Analysis",
+			"post6Title": "Benchmark Methodology: How We Test",
+			"post6Date": "January 20, 2026",
+			"post6Excerpt": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+			"post6Category": "Meta"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "Careers",
+			"description": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+		},
+		"benefits": {
+			"remoteLabel": "Remote-first",
+			"remoteValue": "Work from anywhere in the world",
+			"payLabel": "Competitive pay",
+			"payValue": "Top-of-market compensation",
+			"ossLabel": "Open source time",
+			"ossValue": "20% time for OSS contributions"
+		},
+		"openPositions": {
+			"title": "Open Positions",
+			"applyNow": "Apply Now",
+			"remote": "Remote",
+			"fullTime": "Full-time",
+			"partTime": "Part-time",
+			"engineering": "Engineering",
+			"documentation": "Documentation",
+			"community": "Community",
+			"sfRemote": "San Francisco / Remote",
+			"frontendTitle": "Senior Frontend Engineer",
+			"frontendDesc": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+			"backendTitle": "Backend Engineer",
+			"backendDesc": "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+			"writerTitle": "Technical Writer",
+			"writerDesc": "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
+			"devrelTitle": "DevRel Engineer",
+			"devrelDesc": "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+			"qaTitle": "QA Engineer",
+			"qaDesc": "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+		}
+	},
+	contact: {
+		"header": {
+			"title": "Get in Touch",
+			"description": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+		},
+		"form": {
+			"name": "Name",
+			"yourName": "Your name",
+			"email": "Email",
+			"emailPlaceholder": "you@example.com",
+			"topic": "Topic",
+			"bugReport": "Bug Report",
+			"newBenchmarkIdea": "New Benchmark Idea",
+			"methodologyQuestion": "Methodology Question",
+			"contribution": "Contribution",
+			"other": "Other",
+			"message": "Message",
+			"messagePlaceholder": "Describe your question or idea...",
+			"sendMessage": "Send Message"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "Frequently Asked Questions",
+			"description": "Everything you need to know about i18n Benchmark."
+		},
+		"list": {
+			"q1": "What is i18n Benchmark?",
+			"a1": "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.",
+			"q2": "How are benchmarks conducted?",
+			"a2": "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+			"q3": "Which libraries are currently supported?",
+			"a3": "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+			"q4": "Can I submit my own benchmarks?",
+			"a4": "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+			"q5": "How often are benchmarks updated?",
+			"a5": "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+			"q6": "Is the data reliable?",
+			"a6": "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+			"q7": "Do you offer consulting services?",
+			"a7": "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+			"q8": "How can I contribute?",
+			"a8": "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "Simple, Transparent Pricing",
+			"description": "Choose the plan that fits your team. No hidden fees."
+		},
+		"tiers": {
+			"starterName": "Starter",
+			"starterPrice": "$0",
+			"starterPeriod": "forever",
+			"starterFeature1": "5 benchmark runs/day",
+			"starterFeature2": "3 libraries",
+			"starterFeature3": "Community support",
+			"starterFeature4": "Public results",
+			"proName": "Pro",
+			"proPrice": "$29",
+			"proPeriod": "/month",
+			"proFeature1": "Unlimited runs",
+			"proFeature2": "All libraries",
+			"proFeature3": "Priority support",
+			"proFeature4": "Private results",
+			"proFeature5": "CI integration",
+			"proFeature6": "Historical data",
+			"enterpriseName": "Enterprise",
+			"enterprisePrice": "Custom",
+			"enterpriseFeature1": "Everything in Pro",
+			"enterpriseFeature2": "On-premise option",
+			"enterpriseFeature3": "SSO & SAML",
+			"enterpriseFeature4": "Dedicated account manager",
+			"enterpriseFeature5": "Custom SLAs",
+			"enterpriseFeature6": "Audit logs",
+			"enterpriseFeature7": "Training sessions",
+			"contactSales": "Contact Sales",
+			"getStarted": "Get Started"
+		}
+	},
+	products: {
+		"header": {
+			"title": "Products",
+			"description": "Tools and services to streamline your internationalization workflow."
+		},
+		"grid": {
+			"learnMore": "Learn More",
+			"cliName": "Benchmark CLI",
+			"cliDesc": "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+			"cliPrice": "Free",
+			"cloudName": "Benchmark Cloud",
+			"cloudDesc": "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+			"cloudPrice": "$29/mo",
+			"enterpriseName": "Benchmark Enterprise",
+			"enterpriseDesc": "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+			"enterprisePrice": "Contact Us",
+			"migrationName": "Migration Assistant",
+			"migrationDesc": "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+			"migrationPrice": "$99 one-time",
+			"qaName": "Translation QA",
+			"qaDesc": "Automated quality checks for missing translations, pluralization issues, and context errors.",
+			"qaPrice": "$19/mo",
+			"optimizerName": "Bundle Optimizer",
+			"optimizerDesc": "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
+			"optimizerPrice": "$49/mo"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "Settings",
+			"description": "Manage your account preferences and configuration."
+		},
+		"profile": {
+			"title": "Profile",
+			"displayName": "Display Name",
+			"email": "Email"
+		},
+		"preferences": {
+			"title": "Preferences",
+			"emailNotifications": "Email Notifications",
+			"weeklyReports": "Receive weekly benchmark reports",
+			"toggleNotifications": "Toggle notifications",
+			"darkMode": "Dark Mode",
+			"darkColorScheme": "Use dark color scheme",
+			"toggleDarkMode": "Toggle dark mode",
+			"defaultLanguage": "Default Language",
+			"english": "English (en)",
+			"french": "French (fr)",
+			"german": "German (de)",
+			"spanish": "Spanish (es)",
+			"japanese": "Japanese (ja)",
+			"chinese": "Chinese Simplified (zh-CN)",
+			"arabic": "Arabic (ar)"
+		},
+		"apiAccess": {
+			"title": "API Access",
+			"apiKey": "API Key",
+			"copy": "Copy",
+			"description": "Use this key to access the benchmarking API programmatically."
+		},
+		"footer": {
+			"cancel": "Cancel",
+			"saveChanges": "Save Changes"
+		}
+	},
+	team: {
+		"header": {
+			"title": "Our Team",
+			"description": "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+		},
+		"grid": {
+			"member1Name": "Sarah Chen",
+			"member1Role": "Founder & Lead Engineer",
+			"member1Bio": "Former Google engineer with 10 years of experience building internationalization systems at scale.",
+			"member2Name": "Marcus Weber",
+			"member2Role": "Performance Engineer",
+			"member2Bio": "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+			"member3Name": "Aisha Patel",
+			"member3Role": "Developer Advocate",
+			"member3Bio": "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+			"member4Name": "Tomás Rodríguez",
+			"member4Role": "Full-Stack Developer",
+			"member4Bio": "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+			"member5Name": "Yuki Tanaka",
+			"member5Role": "Data Analyst",
+			"member5Bio": "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+			"member6Name": "Elena Kowalski",
+			"member6Role": "Community Manager",
+			"member6Bio": "Manages community contributions, partnerships, and events. Background in open source governance."
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "Oops! Page not found",
+		"returnHome": "Return to Home"
+	}
+};
+var ru_default = {
+	shared: {
+		"appName": "i18n Bench",
+		"siteName": "i18n Benchmark",
+		"contactEmail": "contact@intlayer.org",
+		"goToGithub": "Перейти на GitHub"
+	},
+	header: {
+		"home": "Главная",
+		"methodology": "Методология",
+		"mockPages": "Тестовые страницы",
+		"products": "Продукты",
+		"pricing": "Цены",
+		"team": "Команда",
+		"blog": "Блог",
+		"careers": "Вакансии",
+		"faq": "FAQ",
+		"contact": "Контакт",
+		"settings": "Настройки"
+	},
+	footer: {
+		"title": "i18n Benchmark",
+		"description": "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
+		"resources": "Ресурсы",
+		"github": "GitHub",
+		"methodology": "Методология",
+		"contributing": "Участие в проекте",
+		"contact": "Контакт",
+		"builtWith": "i18n Benchmark — проект с открытым исходным кодом. Создано с использованием Vue, Vite и клиентского роутера."
+	},
+	themeToggle: {
+		"auto": "Тема: Авто",
+		"dark": "Тема: Темная",
+		"light": "Тема: Светлая",
+		"labelAuto": "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.",
+		"labelOther": "Режим темы: {mode}. Нажмите, чтобы сменить режим."
+	},
+	mockBanner: "⚠️ Эта страница содержит фиктивные данные только для целей бенчмаркинга. Она не связана ни с каким реальным бизнесом или сервисом.",
+	home: {
+		"hero": {
+			"title": "i18n Benchmark",
+			"description": "Тестовое приложение, разработанное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
+			"viewResults": "Посмотреть результаты",
+			"methodology": "Методология"
+		},
+		"whyItMatters": {
+			"title": "Почему эти метрики важны",
+			"bundleSizeTitle": "Размер бандла",
+			"bundleSizeDesc": "Бандл — это данные, отправляемые каждому пользователю по всему миру. Больший бандл означает более длительное время загрузки — особенно при медленном 3G-соединении, распространенном во многих регионах. Вес библиотек i18n сильно варьируется: от нескольких килобайт до десятков килобайт кода среды выполнения, плюс сами файлы переводов.",
+			"renderingTitle": "Рендеринг и гидратация",
+			"renderingDesc": "Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг по всему дереву. Во время SSR-гидратации парсинг и присоединение массивных объектов перевода добавляет задержку до того, как страница станет интерактивной, что напрямую влияет на время до интерактивности (TTI).",
+			"dynamicLoadingTitle": "Динамическая загрузка",
+			"dynamicLoadingDesc": "Загрузка всех переводов заранее перегружает начальный объем данных. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно текущей странице. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы, мерцание непереведенного контента и сложность кэширования. Важно измерять обе стратегии."
+		},
+		"understandingImpact": {
+			"title": "Понимание влияния",
+			"singleJsonTitle": "Почему один большой JSON может снизить производительность",
+			"singleJsonIntro": "Многие библиотеки i18n хранят переводы в одном объекте JSON, предоставляемом через контекст React. Когда этот объект большой (тысячи ключей), каждый компонент, использующий переводы, хранит ссылку на весь словарь. Это означает:",
+			"singleJsonBullet1": "JSON должен парситься при каждой загрузке страницы, что блокирует основной поток.",
+			"singleJsonBullet2": "Архитектуры на основе контекста могут вызывать каскадные повторные рендеринги при смене языка, так как каждый потребитель получает уведомление, даже если его конкретные ключи не изменились.",
+			"singleJsonBullet3": "При серверном рендеринге весь словарь сериализуется в HTML, что увеличивает размер документа, который необходимо загрузить и гидратировать.",
+			"tradeOffsTitle": "Компромиссы динамической загрузки",
+			"tradeOffsIntro": "Разделение переводов на части для каждого маршрута или пространства имен может значительно уменьшить начальный объем данных. Но это создает новые проблемы:",
+			"waterfallLabel": "Каскадные запросы:",
+			"waterfallDesc": "приложение должно сначала загрузиться, определить язык, а затем получить нужную часть, что добавляет сетевые задержки.",
+			"foucLabel": "Мерцание непереведенного контента (FOUC):",
+			"foucDesc": "пользователи могут кратковременно видеть ключи перевода или резервный язык до загрузки нужной части.",
+			"cacheLabel": "Инвалидация кэша:",
+			"cacheDesc": "обновление переводов требует стратегий сброса кэша, чтобы пользователи получали свежий контент без повторной загрузки неизмененных частей.",
+			"measuresTitle": "Что измеряет этот бенчмарк",
+			"measuresDesc": "Это тестовое приложение предоставляет контролируемую среду — 10 страниц с реалистичным контентом — для сравнения библиотек i18n по трем осям: вес, который они добавляют к вашему JavaScript-бандлу, время, затрачиваемое на парсинг и рендеринг переведенного контента, и эффективность их стратегий разделения кода и ленивой загрузки. Каждая библиотека интегрирована в одно и то же приложение, поэтому результаты напрямую сопоставимы."
+		},
+		"resultsTable": {
+			"title": "Примеры результатов",
+			"library": "Библиотека",
+			"bundleSize": "Размер бандла",
+			"lookupTime": "Время поиска",
+			"lazyLoading": "Ленивая загрузка",
+			"yes": "Да",
+			"manual": "Вручную",
+			"builtIn": "Встроено"
+		}
+	},
+	about: {
+		"header": {
+			"title": "Об этом бенчмарке",
+			"description": "Это тестовое приложение с открытым исходным кодом, а не продукт или компания. Его единственная цель — предоставить реалистичное многостраничное React-приложение, в которое можно интегрировать и измерять различные библиотеки i18n в идентичных условиях."
+		},
+		"grid": {
+			"whyExistsTitle": "Зачем это нужно",
+			"whyExistsDesc": "Выбор библиотеки i18n — это архитектурное решение с долгосрочными последствиями. Большинство сравнений фокусируются на удобстве API, но лишь немногие измеряют влияние на производительность: какой вес библиотека добавляет к бандлу? Как она влияет на рендеринг при загрузке тысяч ключей перевода? Действительно ли помогает ленивая загрузка или она просто переносит затраты? Этот бенчмарк отвечает на эти вопросы с помощью реальных данных.",
+			"methodologyTitle": "Методология",
+			"methodologyDesc": "Одно и то же 10-страничное приложение собирается один раз для каждой библиотеки. Мы измеряем продакшн-бандл (через rollup-plugin-visualizer), проводим аудит Lighthouse для метрик загрузки и используем React Profiler для фиксации времени рендеринга при смене языка. Все тесты запускаются в CI на идентичном оборудовании для обеспечения воспроизводимости результатов."
+		},
+		"whatWeMeasure": {
+			"title": "Что мы измеряем",
+			"bundleSizeImpact": "Влияние на размер бандла",
+			"bundleSizeImpactDesc": "Дополнительные байты JavaScript, отправляемые пользователям при включении библиотеки i18n и ее файлов перевода. Это напрямую влияет на время загрузки в медленных сетях.",
+			"renderingOverhead": "Накладные расходы на рендеринг",
+			"renderingOverheadDesc": "Сколько дополнительного времени библиотека добавляет к циклу рендеринга React. Библиотеки, которые внедряют переводы через единый провайдер контекста, могут вызывать ненужные повторные рендеринги по всему дереву компонентов.",
+			"hydrationCost": "Стоимость гидратации",
+			"hydrationCostDesc": "Во время SSR данные перевода сериализуются в HTML. Большие словари увеличивают объем полезной нагрузки HTML и замедляют гидратацию — момент, когда страница становится интерактивной.",
+			"lazyLoading": "Эффективность ленивой загрузки",
+			"lazyLoadingDesc": "Снижает ли разделение переводов по маршрутам или пространствам имен фактическую начальную нагрузку, и какие компромиссы это вносит (каскадные запросы, FOUC, сложность кэширования).",
+			"localeSwitch": "Скорость переключения языка",
+			"localeSwitchDesc": "Как быстро приложение может переключиться с одного языка на другой во время выполнения — включая получение новых переводов, повторный рендеринг компонентов и обновление DOM."
+		}
+	},
+	blog: {
+		"header": {
+			"title": "Блог",
+			"description": "Инсайты, туториалы и аналитика от сообщества i18n."
+		},
+		"list": {
+			"readMore": "Читать далее →",
+			"post1Title": "Сравнение библиотек i18n в 2026 году: глубокое погружение",
+			"post1Date": "15 марта 2026 г.",
+			"post1Excerpt": "Мы протестировали 12 различных библиотек интернационализации по производительности, размеру бандла и DX. Вот удивительные результаты.",
+			"post1Category": "Бенчмарк",
+			"post2Title": "Как уменьшить бандл i18n на 60%",
+			"post2Date": "8 марта 2026 г.",
+			"post2Excerpt": "Практические стратегии оптимизации бандлов переводов, включая ленивую загрузку, разделение кода и оптимизацию во время сборки.",
+			"post2Category": "Туториал",
+			"post3Title": "Состояние интернационализации в React",
+			"post3Date": "28 февраля 2026 г.",
+			"post3Excerpt": "Обзор текущей экосистемы i18n в React, охватывающий тенденции, новые паттерны и предпочтения сообщества.",
+			"post3Category": "Анализ",
+			"post4Title": "Миграция с react-i18next на Lingui",
+			"post4Date": "15 февраля 2026 г.",
+			"post4Excerpt": "Пошаговое руководство по миграции продакшн-приложения с 50 000 ключей перевода с react-i18next на Lingui.",
+			"post4Category": "Туториал",
+			"post5Title": "Server Components и i18n: что меняется?",
+			"post5Date": "1 февраля 2026 г.",
+			"post5Excerpt": "React Server Components представляют новые паттерны для интернационализации. Мы исследуем последствия и лучшие практики.",
+			"post5Category": "Анализ",
+			"post6Title": "Методология бенчмарка: как мы тестируем",
+			"post6Date": "20 января 2026 г.",
+			"post6Excerpt": "Прозрачный взгляд на нашу методологию бенчмаркинга, включая тестовые среды, статистические методы и воспроизводимость.",
+			"post6Category": "Мета"
+		}
+	},
+	careers: {
+		"header": {
+			"title": "Вакансии",
+			"description": "Присоединяйтесь к нашей миссии по улучшению экосистемы интернационализации. Мы — распределенная команда, которая ценит результат, прозрачность и непрерывное обучение."
+		},
+		"benefits": {
+			"remoteLabel": "Удаленная работа",
+			"remoteValue": "Работайте из любой точки мира",
+			"payLabel": "Конкурентная зарплата",
+			"payValue": "Вознаграждение выше рыночного",
+			"ossLabel": "Время на open source",
+			"ossValue": "20% времени на вклад в OSS"
+		},
+		"openPositions": {
+			"title": "Открытые вакансии",
+			"applyNow": "Подать заявку",
+			"remote": "Удаленно",
+			"fullTime": "Полная занятость",
+			"partTime": "Частичная занятость",
+			"engineering": "Разработка",
+			"documentation": "Документация",
+			"community": "Сообщество",
+			"sfRemote": "Сан-Франциско / Удаленно",
+			"frontendTitle": "Старший фронтенд-инженер",
+			"frontendDesc": "Разработка и поддержка нашей панели управления бенчмарками и инструментов разработчика с использованием React, TypeScript и Vite.",
+			"backendTitle": "Бэкенд-инженер",
+			"backendDesc": "Проектирование и масштабирование нашей облачной инфраструктуры бенчмаркинга, обрабатывающей тысячи автоматических запусков ежедневно.",
+			"writerTitle": "Технический писатель",
+			"writerDesc": "Создание подробных руководств, API-справок и туториалов для нашей платформы бенчмаркинга.",
+			"devrelTitle": "DevRel-инженер",
+			"devrelDesc": "Взаимодействие с сообществом i18n через доклады, воркшопы, посты в блоге и вклад в open source.",
+			"qaTitle": "QA-инженер",
+			"qaDesc": "Обеспечение точности и надежности результатов бенчмарков путем строгого тестирования и валидации."
+		}
+	},
+	contact: {
+		"header": {
+			"title": "Связаться с нами",
+			"description": "Есть идеи, нашли баг или хотите предложить бенчмарк? Напишите нам по адресу"
+		},
+		"form": {
+			"name": "Имя",
+			"yourName": "Ваше имя",
+			"email": "Электронная почта",
+			"emailPlaceholder": "you@example.com",
+			"topic": "Тема",
+			"bugReport": "Отчет об ошибке",
+			"newBenchmarkIdea": "Идея нового бенчмарка",
+			"methodologyQuestion": "Вопрос по методологии",
+			"contribution": "Вклад в проект",
+			"other": "Другое",
+			"message": "Сообщение",
+			"messagePlaceholder": "Опишите ваш вопрос или идею...",
+			"sendMessage": "Отправить сообщение"
+		}
+	},
+	faq: {
+		"header": {
+			"title": "Часто задаваемые вопросы",
+			"description": "Все, что вам нужно знать об i18n Benchmark."
+		},
+		"list": {
+			"q1": "Что такое i18n Benchmark?",
+			"a1": "i18n Benchmark — это набор инструментов для бенчмаркинга с открытым исходным кодом, который измеряет и сравнивает производительность, размер бандла и опыт разработчиков библиотек интернационализации для приложений на JavaScript и React.",
+			"q2": "Как проводятся бенчмарки?",
+			"a2": "Мы запускаем стандартизированные тесты в изолированных средах на идентичном оборудовании. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов общедоступны в нашем репозитории на GitHub.",
+			"q3": "Какие библиотеки поддерживаются в данный момент?",
+			"a3": "Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react и Tolgee.",
+			"q4": "Могу ли я прислать свои собственные бенчмарки?",
+			"a4": "Да! Мы приветствуем бенчмарки от сообщества. Сделайте форк нашего репозитория, добавьте свой бенчмарк, следуя руководству для участников, и создайте pull request. Наша команда рассмотрит и примет подходящие заявки.",
+			"q5": "Как часто обновляются бенчмарки?",
+			"a5": "Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Выход мажорных версий инициирует немедленный цикл повторного тестирования.",
+			"q6": "Можно ли доверять данным?",
+			"a6": "Мы следуем строгой статистической методологии, включая прогревочные запуски, обнаружение выбросов и расчет доверительных интервалов. Все исходные данные публикуются вместе с нашим анализом для полной прозрачности.",
+			"q7": "Предоставляете ли вы консалтинговые услуги?",
+			"a7": "Да, наш план Enterprise включает консультации для команд, выбирающих i18n-решения. Мы можем дать индивидуальные рекомендации на основе вашего конкретного случая, масштаба и ограничений.",
+			"q8": "Как я могу помочь проекту?",
+			"a8": "Есть много способов: присылайте бенчмарки, улучшайте документацию, сообщайте о багах, предлагайте новые метрики или станьте спонсором проекта. Посетите наш репозиторий на GitHub для подробностей."
+		}
+	},
+	pricing: {
+		"header": {
+			"title": "Простые и прозрачные цены",
+			"description": "Выберите подходящий план для вашей команды. Никаких скрытых комиссий."
+		},
+		"tiers": {
+			"starterName": "Starter",
+			"starterPrice": "0 $",
+			"starterPeriod": "навсегда",
+			"starterFeature1": "5 запусков бенчмарка в день",
+			"starterFeature2": "3 библиотеки",
+			"starterFeature3": "Поддержка сообщества",
+			"starterFeature4": "Публичные результаты",
+			"proName": "Pro",
+			"proPrice": "29 $",
+			"proPeriod": "/мес",
+			"proFeature1": "Неограниченное число запусков",
+			"proFeature2": "Все библиотеки",
+			"proFeature3": "Приоритетная поддержка",
+			"proFeature4": "Приватные результаты",
+			"proFeature5": "Интеграция с CI",
+			"proFeature6": "Исторические данные",
+			"enterpriseName": "Enterprise",
+			"enterprisePrice": "Индивидуально",
+			"enterpriseFeature1": "Все, что есть в Pro",
+			"enterpriseFeature2": "Локальная установка",
+			"enterpriseFeature3": "SSO и SAML",
+			"enterpriseFeature4": "Персональный менеджер",
+			"enterpriseFeature5": "Индивидуальные SLA",
+			"enterpriseFeature6": "Журналы аудита",
+			"enterpriseFeature7": "Обучающие сессии",
+			"contactSales": "Связаться с отделом продаж",
+			"getStarted": "Начать работу"
+		}
+	},
+	products: {
+		"header": {
+			"title": "Продукты",
+			"description": "Инструменты и сервисы для оптимизации вашего рабочего процесса с интернационализацией."
+		},
+		"grid": {
+			"learnMore": "Узнать больше",
+			"cliName": "Benchmark CLI",
+			"cliDesc": "Запускайте бенчмарки локально из терминала. Поддерживает пользовательские конфигурации и интеграцию с CI.",
+			"cliPrice": "Бесплатно",
+			"cloudName": "Benchmark Cloud",
+			"cloudDesc": "Автоматизированный облачный бенчмаркинг с отслеживанием истории, уведомлениями и командными дашбордами.",
+			"cloudPrice": "29 $/мес",
+			"enterpriseName": "Benchmark Enterprise",
+			"enterpriseDesc": "Локальное развертывание с SSO, журналами аудита, индивидуальными SLA и выделенной поддержкой.",
+			"enterprisePrice": "Связаться с нами",
+			"migrationName": "Помощник по миграции",
+			"migrationDesc": "Инструмент на базе ИИ, помогающий переносить кодовую базу между библиотеками i18n без простоев.",
+			"migrationPrice": "99 $ (разово)",
+			"qaName": "QA переводов",
+			"qaDesc": "Автоматическая проверка качества на наличие пропущенных переводов, проблем с плюрализацией и контекстных ошибок.",
+			"qaPrice": "19 $/мес",
+			"optimizerName": "Оптимизатор бандла",
+			"optimizerDesc": "Анализирует и оптимизирует ваш бандл i18n для продакшена с помощью tree-shaking и разделения кода.",
+			"optimizerPrice": "49 $/мес"
+		}
+	},
+	settings: {
+		"header": {
+			"title": "Настройки",
+			"description": "Управляйте предпочтениями и конфигурацией вашей учетной записи."
+		},
+		"profile": {
+			"title": "Профиль",
+			"displayName": "Отображаемое имя",
+			"email": "Электронная почта"
+		},
+		"preferences": {
+			"title": "Предпочтения",
+			"emailNotifications": "Уведомления по почте",
+			"weeklyReports": "Получать еженедельные отчеты о бенчмарках",
+			"toggleNotifications": "Переключить уведомления",
+			"darkMode": "Темная тема",
+			"darkColorScheme": "Использовать темную цветовую схему",
+			"toggleDarkMode": "Переключить темную тему",
+			"defaultLanguage": "Язык по умолчанию",
+			"english": "Английский (en)",
+			"french": "Французский (fr)",
+			"german": "Немецкий (de)",
+			"spanish": "Испанский (es)",
+			"japanese": "Японский (ja)",
+			"chinese": "Китайский упрощенный (zh-CN)",
+			"arabic": "Арабский (ar)"
+		},
+		"apiAccess": {
+			"title": "Доступ к API",
+			"apiKey": "Ключ API",
+			"copy": "Копировать",
+			"description": "Используйте этот ключ для программного доступа к API бенчмаркинга."
+		},
+		"footer": {
+			"cancel": "Отмена",
+			"saveChanges": "Сохранить изменения"
+		}
+	},
+	team: {
+		"header": {
+			"title": "Наша команда",
+			"description": "Познакомьтесь с людьми, создавшими i18n Benchmark. Команда единомышленников, влюбленных в отличные инструменты для разработчиков."
+		},
+		"grid": {
+			"member1Name": "Сара Чен",
+			"member1Role": "Основатель и ведущий инженер",
+			"member1Bio": "Бывший инженер Google с 10-летним опытом создания систем интернационализации в больших масштабах.",
+			"member2Name": "Маркус Вебер",
+			"member2Role": "Инженер по производительности",
+			"member2Bio": "Специализируется на оптимизации производительности JavaScript и методологии бенчмаркинга. Ранее работал в Vercel.",
+			"member3Name": "Айша Патель",
+			"member3Role": "Developer Advocate",
+			"member3Bio": "Увлечена опытом разработчиков и образованием. Спикер на React Conf, JSConf и i18nNext.",
+			"member4Name": "Томас Родригес",
+			"member4Role": "Full-Stack разработчик",
+			"member4Bio": "Поддерживает инфраструктуру бенчмаркинга и CI/CD конвейер. Участник open source проекта Lingui.",
+			"member5Name": "Юки Танака",
+			"member5Role": "Аналитик данных",
+			"member5Bio": "Обеспечивает статистическую строгость во всех результатах бенчмарков. Доктор прикладной статистики (MIT).",
+			"member6Name": "Елена Ковальски",
+			"member6Role": "Комьюнити-менеджер",
+			"member6Bio": "Управляет вкладом сообщества, партнерствами и мероприятиями. Опыт в управлении open source проектами."
+		}
+	},
+	notFound: {
+		"title": "404",
+		"description": "Упс! Страница не найдена",
+		"returnHome": "Вернуться на главную"
+	}
+};
+var [t, setT] = createSignal(instance.t.bind(instance));
+var resources = {
+	en: { translation: en_default },
+	fr: { translation: fr_default },
+	es: { translation: es_default },
+	de: { translation: de_default },
+	it: { translation: it_default },
+	pt: { translation: pt_default },
+	zh: { translation: zh_default },
+	ja: { translation: ja_default },
+	ko: { translation: ko_default },
+	ru: { translation: ru_default }
+};
+instance.init({
+	fallbackLng: "en",
+	resources
+});
+setT(() => instance.t.bind(instance));
+function Wrapper(props) {
+	return memo(() => props.children);
+}
+function Wrapped() {
+	return createComponent(Wrapper, { get children() {
+		return createComponent(LocaleSwitcher, {});
+	} });
+}
+export { Wrapped as default };

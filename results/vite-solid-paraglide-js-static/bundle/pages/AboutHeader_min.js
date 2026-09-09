@@ -15,73 +15,53 @@ var r = {}, i = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], c = [], l, u;
-function d(e) {
-	if (c.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (l === t) return u;
-	let n = new URL(t, "http://dummy.com"), i;
-	for (let e of c) if (new r(e.match, n.href).exec(n.href)) {
-		i = e;
-		break;
-	}
-	return l = t, u = i, i;
-}
-function f(e) {
-	let t = d(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
-}
-var p = void 0, m = typeof window > "u";
+], c = [], l = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var h, g = !1, _ = () => {
-	if (p) {
-		let e = p?.getStore()?.locale;
-		if (e) return e;
-	}
+var u, d = !1, f = () => {
 	let e = s;
-	!m && typeof window < "u" && window.location?.href && (e = f(window.location.href));
-	let t = v(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return g || (h = t, g = !0, b(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	!l && typeof window < "u" && window.location?.href && (e = N(window.location.href));
+	let t = p(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return d || (u = t, d = !0, h(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function v(e, t) {
+function p(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = C();
+		if (t === "cookie") n = D();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && h !== void 0) n = h;
-		else if (T(t) && w.has(t)) {
-			let e = w.get(t);
+		else if (t === "globalVariable" && u !== void 0) n = u;
+		else if (F(t) && P.has(t)) {
+			let e = P.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return S(t);
+				if (t !== void 0) return v(t);
 			}
 		}
-		let e = x(n);
+		let e = _(n);
 		if (e) return e;
 	}
 }
-var y = (e) => {
+var m = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, b = (e, t) => {
+}, h = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = _();
+		r = f();
 	} catch {}
 	let i = [], c = s;
-	!m && typeof window < "u" && window.location?.href && (c = f(window.location.href));
-	for (let t of c) if (t === "globalVariable") h = e;
+	!l && typeof window < "u" && window.location?.href && (c = N(window.location.href));
+	for (let t of c) if (t === "globalVariable") u = e;
 	else if (t === "cookie") {
-		if (m || typeof document > "u" || typeof window > "u") continue;
+		if (l || typeof document > "u" || typeof window > "u") continue;
 		let t = `${a}=${e}; path=/; max-age=${o}`;
-		document.cookie = t;
+		document.cookie = t, T();
 	} else if (t === "baseLocale") continue;
-	else if (T(t) && w.has(t)) {
-		let n = w.get(t);
+	else if (F(t) && P.has(t)) {
+		let n = P.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -89,41 +69,81 @@ var y = (e) => {
 			}), i.push(r));
 		}
 	}
-	let l = () => {
-		!m && n.reload && window.location && e !== r && y(void 0);
+	let d = () => {
+		!l && n.reload && window.location && e !== r && m(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
-		l();
+		d();
 	});
-	l();
-};
-function x(e) {
+	d();
+}, g = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function _(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of i) if (e.toLowerCase() === t) return e;
 }
-function S(e) {
-	let t = x(e);
+function v(e) {
+	let t = _(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${i.join(", ")}`);
 }
-function C() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${a}=([^;]+)`))?.[2];
-	return x(e);
+function y(e) {
+	return e;
 }
-var w = /* @__PURE__ */ new Map();
-function T(e) {
+function b(e, t) {
+	return e.exec(t.href);
+}
+var x = a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), S = RegExp(`(?:^|;\\s*)${x}=([^;]*)`), C = Symbol(), w = C;
+function T() {
+	w = C;
+}
+function E() {
+	typeof queueMicrotask == "function" ? queueMicrotask(T) : Promise.resolve().then(T);
+}
+function D() {
+	if (typeof document > "u") return;
+	if (w !== C) return w;
+	let e = document.cookie.match(S)?.[1];
+	return w = _(e), E(), w;
+}
+function O(e) {
+	return k(e);
+}
+function k(e) {
+	let t = y(typeof e == "string" ? new URL(e, g()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && _(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), y(t);
+}
+var A, j;
+function M(e) {
+	if (c.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (A === t) return j;
+	let n = y(new URL(t, "http://example.com")), i = O(n), a = i.href === n.href ? [n] : [n, i], o;
+	for (let e of a) {
+		for (let t of c) if (b(new r(t.match, e.href), e)) {
+			o = t;
+			break;
+		}
+		if (o) break;
+	}
+	return A = t, j = o, o;
+}
+function N(e) {
+	let t = M(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
+}
+var P = /* @__PURE__ */ new Map();
+function F(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var E = () => "About This Benchmark", D = () => "À propos de ce benchmark", O = () => "Acerca de este benchmark", k = () => "Über diesen Benchmark", A = () => "Informazioni su questo benchmark", j = () => "Sobre este benchmark", M = () => "关于此基准测试", N = () => "このベンチマークについて", P = () => "About This Benchmark", F = () => "Об этом бенчмарке", I = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "en" ? E(e) : n === "fr" ? D(e) : n === "es" ? O(e) : n === "de" ? k(e) : n === "it" ? A(e) : n === "pt" ? j(e) : n === "zh" ? M(e) : n === "ja" ? N(e) : n === "ko" ? P(e) : F(e);
-}), L = () => "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.", R = () => "Il s'agit d'une application de test open source — pas d'un produit ni d'une entreprise. Elle sert uniquement de base multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans les mêmes conditions.", z = () => "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React de varias páginas realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas.", B = () => "Dies ist eine Open-Source-Testanwendung — kein Produkt und kein Unternehmen. Ihr einziger Zweck ist es, eine realistische React-App mit mehreren Seiten bereitzustellen, in die verschiedene i18n-Bibliotheken integriert und unter identischen Bedingungen gemessen werden können.", V = () => "Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è quello di fornire un'app React multipagina realistica in cui diverse librerie i18n possono essere integrate e misurate in condizioni identiche.", H = () => "Esta é uma aplicação de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer uma aplicação React de várias páginas realista onde diferentes bibliotecas i18n podem ser integradas e medidas sob condições idênticas.", U = () => "这是一个开源测试应用程序 — 不是产品或公司。其唯一目的是提供一个现实的、多页面的 React 应用，以便在相同条件下集成和衡量不同的 i18n 库。", W = () => "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、現実的なマルチページReactアプリを提供し、異なるi18nライブラリを同一条件下で統合して測定できるようにすることです。", G = () => "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.", K = () => "Это тестовое приложение с открытым исходным кодом, а не продукт или компания. Его единственная цель — предоставить реалистичное многостраничное React-приложение, в которое можно интегрировать и измерять различные библиотеки i18n в идентичных условиях.", q = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "en" ? L(e) : n === "fr" ? R(e) : n === "es" ? z(e) : n === "de" ? B(e) : n === "it" ? V(e) : n === "pt" ? H(e) : n === "zh" ? U(e) : n === "ja" ? W(e) : n === "ko" ? G(e) : K(e);
+var I = () => "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.", L = () => "Il s'agit d'une application de test open source — pas d'un produit ni d'une entreprise. Elle sert uniquement de base multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans les mêmes conditions.", R = () => "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React de varias páginas realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas.", z = () => "Dies ist eine Open-Source-Testanwendung — kein Produkt und kein Unternehmen. Ihr einziger Zweck ist es, eine realistische React-App mit mehreren Seiten bereitzustellen, in die verschiedene i18n-Bibliotheken integriert und unter identischen Bedingungen gemessen werden können.", ee = () => "Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è quello di fornire un'app React multipagina realistica in cui diverse librerie i18n possono essere integrate e misurate in condizioni identiche.", B = () => "Esta é uma aplicação de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer uma aplicação React de várias páginas realista onde diferentes bibliotecas i18n podem ser integradas e medidas sob condições idênticas.", V = () => "这是一个开源测试应用程序 — 不是产品或公司。其唯一目的是提供一个现实的、多页面的 React 应用，以便在相同条件下集成和衡量不同的 i18n 库。", H = () => "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、現実的なマルチページReactアプリを提供し、異なるi18nライブラリを同一条件下で統合して測定できるようにすることです。", U = () => "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.", W = () => "Это тестовое приложение с открытым исходным кодом, а не продукт или компания. Его единственная цель — предоставить реалистичное многостраничное React-приложение, в которое можно интегрировать и измерять различные библиотеки i18n в идентичных условиях.", G = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? ee(e) : n === "pt" ? B(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : n === "ru" ? W(e) : I(e);
+}), K = () => "About This Benchmark", q = () => "À propos de ce benchmark", J = () => "Acerca de este benchmark", Y = () => "Über diesen Benchmark", X = () => "Informazioni su questo benchmark", Z = () => "Sobre este benchmark", Q = () => "关于此基准测试", $ = () => "このベンチマークについて", te = () => "About This Benchmark", ne = () => "Об этом бенчмарке", re = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? q(e) : n === "es" ? J(e) : n === "de" ? Y(e) : n === "it" ? X(e) : n === "pt" ? Z(e) : n === "zh" ? Q(e) : n === "ja" ? $(e) : n === "ko" ? te(e) : n === "ru" ? ne(e) : K(e);
 });
-function J(e) {
+function ie(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), n(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -133,14 +153,14 @@ function J(e) {
 		}
 	});
 }
-var Y = t("<h1 class=\"mb-4 text-3xl font-bold text-foreground\">"), X = t("<p class=\"mb-8 max-w-3xl text-muted-foreground\">");
-function Z() {
-	return J("AboutHeader"), [(() => {
-		var t = Y();
-		return e(t, () => I()), t;
+var ae = t("<h1 class=\"mb-4 text-3xl font-bold text-foreground\">"), oe = t("<p class=\"mb-8 max-w-3xl text-muted-foreground\">");
+function se() {
+	return ie("AboutHeader"), [(() => {
+		var t = ae();
+		return e(t, () => re()), t;
 	})(), (() => {
-		var t = X();
-		return e(t, () => q()), t;
+		var t = oe();
+		return e(t, () => G()), t;
 	})()];
 }
-export { Z as default };
+export { se as default };

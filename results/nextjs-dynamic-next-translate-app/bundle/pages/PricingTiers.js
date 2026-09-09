@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -182,8 +182,13 @@ function createTranslation(defaultNS) {
 			lang
 		}), defaultNS);
 	};
+	var nsKey = namespaces ? Object.keys(namespaces).sort().join("|") : "";
 	return {
-		t: isServer() ? getT() : useMemo(getT, [defaultNS, lang]),
+		t: isServer() ? getT() : useMemo(getT, [
+			defaultNS,
+			lang,
+			nsKey
+		]),
 		lang
 	};
 }
@@ -207,92 +212,134 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
 	const { t } = useTranslation("common");
-	return jsx("div", {
+	const tiers = [
+		{
+			name: t("pricing.pricingTiers.starterTier"),
+			price: t("pricing.pricingTiers.starterPrice"),
+			period: t("pricing.pricingTiers.forever"),
+			features: [
+				t("pricing.pricingTiers.runsPerDay"),
+				t("pricing.pricingTiers.libraries3"),
+				t("pricing.pricingTiers.communitySupport"),
+				t("pricing.pricingTiers.publicResults")
+			],
+			buttonText: t("pricing.pricingTiers.getStarted")
+		},
+		{
+			name: t("pricing.pricingTiers.proTier"),
+			price: t("pricing.pricingTiers.proPrice"),
+			period: t("pricing.pricingTiers.perMonth"),
+			features: [
+				t("pricing.pricingTiers.unlimitedRuns"),
+				t("pricing.pricingTiers.allLibraries"),
+				t("pricing.pricingTiers.prioritySupport"),
+				t("pricing.pricingTiers.privateResults"),
+				t("pricing.pricingTiers.ciIntegration"),
+				t("pricing.pricingTiers.historicalData")
+			],
+			buttonText: t("pricing.pricingTiers.getStarted"),
+			highlighted: true
+		},
+		{
+			name: t("pricing.pricingTiers.enterpriseTier"),
+			price: t("pricing.pricingTiers.custom"),
+			period: "",
+			features: [
+				t("pricing.pricingTiers.everythingInPro"),
+				t("pricing.pricingTiers.onPremiseOption"),
+				t("pricing.pricingTiers.ssoSaml"),
+				t("pricing.pricingTiers.dedicatedAccountManager"),
+				t("pricing.pricingTiers.customSLAs"),
+				t("pricing.pricingTiers.auditLogs"),
+				t("pricing.pricingTiers.trainingSessions")
+			],
+			buttonText: t("pricing.pricingTiers.contactSales")
+		}
+	];
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: [
-			{
-				name: t("pricing.pricingTiers.starterTier"),
-				price: t("pricing.pricingTiers.starterPrice"),
-				period: t("pricing.pricingTiers.forever"),
-				features: [
-					t("pricing.pricingTiers.runsPerDay"),
-					t("pricing.pricingTiers.libraries3"),
-					t("pricing.pricingTiers.communitySupport"),
-					t("pricing.pricingTiers.publicResults")
-				],
-				buttonText: t("pricing.pricingTiers.getStarted")
-			},
-			{
-				name: t("pricing.pricingTiers.proTier"),
-				price: t("pricing.pricingTiers.proPrice"),
-				period: t("pricing.pricingTiers.perMonth"),
-				features: [
-					t("pricing.pricingTiers.unlimitedRuns"),
-					t("pricing.pricingTiers.allLibraries"),
-					t("pricing.pricingTiers.prioritySupport"),
-					t("pricing.pricingTiers.privateResults"),
-					t("pricing.pricingTiers.ciIntegration"),
-					t("pricing.pricingTiers.historicalData")
-				],
-				buttonText: t("pricing.pricingTiers.getStarted"),
-				highlighted: true
-			},
-			{
-				name: t("pricing.pricingTiers.enterpriseTier"),
-				price: t("pricing.pricingTiers.custom"),
-				period: "",
-				features: [
-					t("pricing.pricingTiers.everythingInPro"),
-					t("pricing.pricingTiers.onPremiseOption"),
-					t("pricing.pricingTiers.ssoSaml"),
-					t("pricing.pricingTiers.dedicatedAccountManager"),
-					t("pricing.pricingTiers.customSLAs"),
-					t("pricing.pricingTiers.auditLogs"),
-					t("pricing.pricingTiers.trainingSessions")
-				],
-				buttonText: t("pricing.pricingTiers.contactSales")
-			}
-		].map((tItem) => jsxs("div", {
+		children: tiers.map((tItem) => jsxDEV("div", {
 			className: `flex flex-col rounded-lg border p-6 ${tItem.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsx("h3", {
+				jsxDEV("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: tItem.name
-				}),
-				jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 64,
+					columnNumber: 11
+				}, this),
+				jsxDEV("div", {
 					className: "my-4",
-					children: [jsx("span", {
+					children: [jsxDEV("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: tItem.price
-					}), jsx("span", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 68,
+						columnNumber: 13
+					}, this), jsxDEV("span", {
 						className: "text-sm text-muted-foreground",
 						children: tItem.period
-					})]
-				}),
-				jsx("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 71,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 67,
+					columnNumber: 11
+				}, this),
+				jsxDEV("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: tItem.features.map((f) => jsxs("li", {
+					children: tItem.features.map((f) => jsxDEV("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsx("span", {
+							jsxDEV("span", {
 								className: "text-primary",
 								children: "✓"
-							}),
+							}, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 81,
+								columnNumber: 17
+							}, this),
 							" ",
 							f
 						]
-					}, f))
-				}),
-				jsx("button", {
+					}, f, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 77,
+						columnNumber: 15
+					}, this))
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 75,
+					columnNumber: 11
+				}, this),
+				jsxDEV("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tItem.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: tItem.buttonText
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 85,
+					columnNumber: 11
+				}, this)
 			]
-		}, tItem.name))
-	});
+		}, tItem.name, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 56,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 54,
+		columnNumber: 5
+	}, this);
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -377,7 +424,7 @@ var i18n_default = {
 		try {
 			return (await _rolldown_dynamic_import_helper_default(Object.assign({
 				"./locales/de.json": () => import("../../../locales/de.json"),
-				"./locales/en.json": () => import("./en-YACnRwSE.js"),
+				"./locales/en.json": () => import("./en-CrUFMkIg.js"),
 				"./locales/es.json": () => import("../../../locales/es.json"),
 				"./locales/fr.json": () => import("../../../locales/fr.json"),
 				"./locales/it.json": () => import("../../../locales/it.json"),
@@ -388,7 +435,7 @@ var i18n_default = {
 				"./locales/zh.json": () => import("../../../locales/zh.json")
 			}), `./locales/${locale}.json`, 3)).default;
 		} catch {
-			return (await import("./en-YACnRwSE.js")).default;
+			return (await import("./en-CrUFMkIg.js")).default;
 		}
 	}
 };
@@ -414,6 +461,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -425,8 +473,13 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const locale = "en";
 	const [translations, setTranslations] = useState({});
@@ -434,7 +487,8 @@ function Wrapper({ children }) {
 	useEffect(() => {
 		const loadTranslations = async () => {
 			try {
-				setTranslations(await i18n_default.loadLocaleFrom?.(locale, "common") ?? {});
+				const trans = await i18n_default.loadLocaleFrom?.(locale, "common");
+				setTranslations(trans ?? {});
 				setIsLoaded(true);
 			} catch (error) {
 				console.error("Failed to load translations:", error);
@@ -444,17 +498,34 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		lang: locale,
 		namespaces: { common: translations },
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 37,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 36,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var en_default = {

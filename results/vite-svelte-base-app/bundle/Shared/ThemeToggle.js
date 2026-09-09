@@ -41,8 +41,7 @@ function ThemeToggle($$anchor, $$props) {
 	const label = $.derived(() => $.get(mode) === "auto" ? "Theme mode: auto (system). Click to switch to light mode." : `Theme mode: ${$.get(mode)}. Click to switch mode.`);
 	const buttonText = $.derived(() => $.get(mode) === "auto" ? "Theme: Auto" : $.get(mode) === "dark" ? "Theme: Dark" : "Theme: Light");
 	var button = root();
-	var text = $.child(button, true);
-	$.reset(button);
+	var text = $.only_child(button, true);
 	$.template_effect(() => {
 		$.set_attribute(button, "aria-label", $.get(label));
 		$.set_attribute(button, "title", $.get(label));

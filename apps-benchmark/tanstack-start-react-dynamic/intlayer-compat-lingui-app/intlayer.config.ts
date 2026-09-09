@@ -33,7 +33,7 @@ const config: IntlayerConfig = {
     format: "icu",
   },
   build: {
-    optimize: true,
+    optimize: false,
     minify: true,
     purge: true,
     checkTypes: false,

@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -109,8 +109,10 @@ var client = (0, __commonJSMin(((exports, module) => {
 				}
 			}
 			let value = scope ? content[`${scope}.${key}`] : content[key];
-			if (!value && isPlural) value = (_a = content[`${key.split("#", 1)[0]}#other`] || key) == null ? void 0 : _a.toString();
-			else value = (_b = value || key) == null ? void 0 : _b.toString();
+			if (!value && isPlural) {
+				const baseKey = key.split("#", 1)[0];
+				value = (_a = content[`${baseKey}#other`] || key) == null ? void 0 : _a.toString();
+			} else value = (_b = value || key) == null ? void 0 : _b.toString();
 			if (!paramObject) return value;
 			let isString = true;
 			const result = value == null ? void 0 : value.split(/({[^}]*})/).map((part, index) => {
@@ -206,17 +208,18 @@ var client = (0, __commonJSMin(((exports, module) => {
 			useCurrentLocale
 		};
 	}
+	0 && (module.exports = { createI18nClient });
 }))().createI18nClient)({
-	en: () => import("./en-BnbWsMCO.js"),
-	fr: () => import("./fr-CsBIckdq.js"),
-	es: () => import("./es-5nykIrN1.js"),
-	de: () => import("./de-5z_67fCj.js"),
-	it: () => import("./it-VYvgBvYH.js"),
-	pt: () => import("./pt-C3eBS-eu.js"),
-	zh: () => import("./zh-A5qwMN2w.js"),
-	ja: () => import("./ja-DyBsgnra.js"),
-	ko: () => import("./ko-DAyAkE0Z.js"),
-	ru: () => import("./ru-BpjOQgTw.js")
+	en: () => import("./en-B-39FaIp.js"),
+	fr: () => import("./fr-BE3TGc0B.js"),
+	es: () => import("./es-Br7KsWSj.js"),
+	de: () => import("./de-D5hjpD4Z.js"),
+	it: () => import("./it-Dkz5rfiJ.js"),
+	pt: () => import("./pt-Ch306vqQ.js"),
+	zh: () => import("./zh-DaH8-_Jh.js"),
+	ja: () => import("./ja-anHYRLbz.js"),
+	ko: () => import("./ko-CSnlqawM.js"),
+	ru: () => import("./ru-D4xtW0ZK.js")
 });
 function useI18n() {
 	return client.useI18n();
@@ -233,16 +236,29 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	const t = useI18n();
 	usePerformanceMeasure("AboutHeader");
-	return jsxs(Fragment, { children: [jsx("h1", {
+	return jsxDEV(Fragment, { children: [jsxDEV("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: t("about.about-header.aboutThisBenchmark")
-	}), jsx("p", {
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 11,
+		columnNumber: 7
+	}, this), jsxDEV("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: t("about.about-header.thisIsAnOpenSource")
-	})] });
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 14,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -266,6 +282,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -277,27 +294,45 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/about/AboutHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(AboutHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/de.json";
 var de_default = flattenMessages(messages);
 export { de_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 var en_default = flattenMessages({
 	"careers-header": {
 		"title": "Careers",
@@ -769,7 +804,7 @@ var en_default = flattenMessages({
 	}
 });
 export { en_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/es.json";
 var es_default = flattenMessages(messages);
 export { es_default as default };
@@ -783,31 +818,31 @@ function flattenMessages(obj, prefix = "") {
 	return result;
 }
 export { flattenMessages as t };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/fr.json";
 var fr_default = flattenMessages(messages);
 export { fr_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/it.json";
 var it_default = flattenMessages(messages);
 export { it_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/ja.json";
 var ja_default = flattenMessages(messages);
 export { ja_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/ko.json";
 var ko_default = flattenMessages(messages);
 export { ko_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/pt.json";
 var pt_default = flattenMessages(messages);
 export { pt_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/ru.json";
 var ru_default = flattenMessages(messages);
 export { ru_default as default };
-import { t as flattenMessages } from "./flatten-DL19txry.js";
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
 import messages from "../../../messages/zh.json";
 var zh_default = flattenMessages(messages);
 export { zh_default as default };

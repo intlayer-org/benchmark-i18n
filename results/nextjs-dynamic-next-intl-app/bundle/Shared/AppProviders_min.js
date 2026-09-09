@@ -1,40 +1,40 @@
 import { createContext as e, useContext as t, useEffect as n, useLayoutEffect as r, useMemo as i, useState as a } from "react";
 import { jsx as o } from "react/jsx-runtime";
-function s(e, t) {
-	let n = t && t.cache ? t.cache : _, r = t && t.serializer ? t.serializer : h;
-	return (t && t.strategy ? t.strategy : f)(e, {
+import { jsxDEV as s } from "react/jsx-dev-runtime";
+function c(e, t) {
+	let n = t && t.cache ? t.cache : v, r = t && t.serializer ? t.serializer : g;
+	return (t && t.strategy ? t.strategy : p)(e, {
 		cache: n,
 		serializer: r
 	});
 }
-function c(e) {
+function l(e) {
 	return e == null || typeof e == "number" || typeof e == "boolean";
 }
-function l(e, t, n, r) {
-	let i = c(r) ? r : n(r), a = t.get(i);
+function u(e, t, n, r) {
+	let i = l(r) ? r : n(r), a = t.get(i);
 	return a === void 0 && (a = e.call(this, r), t.set(i, a)), a;
 }
-function u(e, t, n) {
+function d(e, t, n) {
 	let r = Array.prototype.slice.call(arguments, 3), i = n(r), a = t.get(i);
 	return a === void 0 && (a = e.apply(this, r), t.set(i, a)), a;
 }
-function d(e, t, n, r, i) {
+function f(e, t, n, r, i) {
 	return n.bind(t, e, r, i);
 }
-function f(e, t) {
-	let n = e.length === 1 ? l : u;
-	return d(e, this, n, t.cache.create(), t.serializer);
-}
 function p(e, t) {
-	return d(e, this, u, t.cache.create(), t.serializer);
+	let n = e.length === 1 ? u : d;
+	return f(e, this, n, t.cache.create(), t.serializer);
 }
 function m(e, t) {
-	return d(e, this, l, t.cache.create(), t.serializer);
+	return f(e, this, d, t.cache.create(), t.serializer);
 }
-var h = function() {
+function h(e, t) {
+	return f(e, this, u, t.cache.create(), t.serializer);
+}
+var g = function() {
 	return JSON.stringify(arguments);
-}, g = class {
-	cache;
+}, _ = class {
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -44,15 +44,20 @@ var h = function() {
 	set(e, t) {
 		this.cache[e] = t;
 	}
-}, _ = { create: function() {
-	return new g();
-} }, v = {
-	variadic: p,
-	monadic: m
-}, y = function(e) {
+}, v = { create: function() {
+	return new _();
+} }, y = {
+	variadic: m,
+	monadic: h
+}, b = class extends Error {
+	constructor(e, t) {
+		let n = e;
+		t && (n += ": " + t), super(n), this.code = e, t && (this.originalMessage = t);
+	}
+}, x = function(e) {
 	return e.MISSING_MESSAGE = "MISSING_MESSAGE", e.MISSING_FORMAT = "MISSING_FORMAT", e.ENVIRONMENT_FALLBACK = "ENVIRONMENT_FALLBACK", e.INSUFFICIENT_PATH = "INSUFFICIENT_PATH", e.INVALID_MESSAGE = "INVALID_MESSAGE", e.INVALID_KEY = "INVALID_KEY", e.FORMATTING_ERROR = "FORMATTING_ERROR", e;
-}(y || {});
-function b() {
+}(x || {});
+function S() {
 	return {
 		dateTime: {},
 		number: {},
@@ -63,55 +68,106 @@ function b() {
 		displayNames: {}
 	};
 }
-function x(e, t) {
-	return s(e, {
-		cache: (n = t, { create: () => ({
-			get: (e) => n[e],
-			set(e, t) {
-				n[e] = t;
-			}
-		}) }),
-		strategy: v.variadic
-	});
-	var n;
-}
-function S(e, t) {
-	return x(((...t) => new e(...t)), t);
-}
 function C(e) {
-	return {
-		getDateTimeFormat: S(Intl.DateTimeFormat, e.dateTime),
-		getNumberFormat: S(Intl.NumberFormat, e.number),
-		getPluralRules: S(Intl.PluralRules, e.pluralRules),
-		getRelativeTimeFormat: S(Intl.RelativeTimeFormat, e.relativeTime),
-		getListFormat: S(Intl.ListFormat, e.list),
-		getDisplayNames: S(Intl.DisplayNames, e.displayNames)
-	};
+	return { create() {
+		return {
+			get(t) {
+				return e[t];
+			},
+			set(t, n) {
+				e[t] = n;
+			}
+		};
+	} };
 }
-function w(...e) {
-	return e.filter(Boolean).join(".");
+function w(e, t) {
+	return c(e, {
+		cache: C(t),
+		strategy: y.variadic
+	});
 }
-function T(e) {
-	return w(e.namespace, e.key);
+function T(e, t) {
+	return w((...t) => new e(...t), t);
 }
 function E(e) {
+	return {
+		getDateTimeFormat: T(Intl.DateTimeFormat, e.dateTime),
+		getNumberFormat: T(Intl.NumberFormat, e.number),
+		getPluralRules: T(Intl.PluralRules, e.pluralRules),
+		getRelativeTimeFormat: T(Intl.RelativeTimeFormat, e.relativeTime),
+		getListFormat: T(Intl.ListFormat, e.list),
+		getDisplayNames: T(Intl.DisplayNames, e.displayNames)
+	};
+}
+function D(...e) {
+	return e.filter(Boolean).join(".");
+}
+function O(e) {
+	return D(e.namespace, e.key);
+}
+function k(e) {
 	console.error(e);
 }
-var D = 86400;
-7 * D, 365 * D;
-function O({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
-	return {
+var A = 86400;
+A * 7, 365 / 12 * A * 3, A * 365;
+function j(e, t, n) {
+	Object.entries(e).forEach(([e, r]) => {
+		if (e.includes(".")) {
+			let r = e;
+			n && (r += ` (at ${n})`), t.push(r);
+		}
+		typeof r == "object" && r && j(r, t, D(n, e));
+	});
+}
+function M(e, t) {
+	let n = [];
+	j(e, n), n.length > 0 && t(new b(x.INVALID_KEY, `Namespace keys cannot contain the character "." as this is used to express nesting. Please remove it or replace it with another character.
+
+Invalid ${n.length === 1 ? "key" : "keys"}: ${n.join(", ")}
+
+If you're migrating from a flat structure, you can convert your messages as follows:
+
+import {set} from "lodash";
+
+const input = {
+  "one.one": "1.1",
+  "one.two": "1.2",
+  "two.one.one": "2.1.1"
+};
+
+const output = Object.entries(input).reduce(
+  (acc, [key, value]) => set(acc, key, value),
+  {}
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+`));
+}
+function N({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
+	let a = r || k, o = t || O;
+	return n && M(n, a), {
 		...i,
 		formats: e || void 0,
 		messages: n || void 0,
-		onError: r || E,
-		getMessageFallback: t || T
+		onError: a,
+		getMessageFallback: o
 	};
 }
-var k = e(void 0);
-function A({ children: e, formats: n, getMessageFallback: r, locale: a, messages: s, now: c, onError: l, timeZone: u }) {
-	let d = t(k), f = i((() => d?.cache || b()), [a, d?.cache]), p = i((() => d?.formatters || C(f)), [f, d?.formatters]), m = i((() => ({
-		...O({
+var P = e(void 0);
+function F({ children: e, formats: n, getMessageFallback: r, locale: a, messages: s, now: c, onError: l, timeZone: u }) {
+	let d = t(P), f = i(() => d?.cache || S(), [a, d?.cache]), p = i(() => d?.formatters || E(f), [f, d?.formatters]), m = i(() => ({
+		...N({
 			locale: a,
 			formats: n === void 0 ? d?.formats : n,
 			getMessageFallback: r || d?.getMessageFallback,
@@ -122,7 +178,7 @@ function A({ children: e, formats: n, getMessageFallback: r, locale: a, messages
 		}),
 		formatters: p,
 		cache: f
-	})), [
+	}), [
 		f,
 		n,
 		p,
@@ -134,19 +190,19 @@ function A({ children: e, formats: n, getMessageFallback: r, locale: a, messages
 		d,
 		u
 	]);
-	return o(k.Provider, {
+	return o(P.Provider, {
 		value: m,
 		children: e
 	});
 }
-function j({ locale: e, ...t }) {
-	if (!e) throw Error(void 0);
-	return o(A, {
+function I({ locale: e, ...t }) {
+	if (!e) throw Error("Couldn't infer the `locale` prop in `NextIntlClientProvider`, please provide it explicitly.\n\nSee https://next-intl.dev/docs/configuration#locale");
+	return o(F, {
 		locale: e,
 		...t
 	});
 }
-function M() {
+function L() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -160,27 +216,32 @@ function M() {
 		}
 	}
 }
-function N(e, t) {
+function R(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function P({ children: e, locale: t, messages: i }) {
-	let [s] = a(() => typeof performance < "u" ? performance.now() : 0);
+var z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/components/AppProviders.tsx";
+function B({ children: e, locale: t, messages: i }) {
+	let [o] = a(() => typeof performance < "u" ? performance.now() : 0);
 	return r(() => {
-		N("AppRoot", s);
-	}, [s]), n(() => {
+		R("AppRoot", o);
+	}, [o]), n(() => {
 		document.documentElement.lang = t;
 	}, [t]), n(() => {
-		M();
-	}, []), o(j, {
+		L();
+	}, []), s(I, {
 		locale: t,
 		messages: i,
 		timeZone: "UTC",
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: z,
+		lineNumber: 33,
+		columnNumber: 7
+	}, this);
 }
-var F = {
+var V = {
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -628,15 +689,28 @@ var F = {
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}, I = "en";
-function L({ children: e }) {
-	return o(P, {
-		locale: I,
-		messages: F,
+}, H = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/scripts/Wrapper.tsx", U = "en";
+function W({ children: e }) {
+	return s(B, {
+		locale: U,
+		messages: V,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: H,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
-function R() {
-	return o(L, { children: o(P, {}) });
+var G = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/components/AppProviders.wrapper.tsx";
+function K() {
+	return s(W, { children: s(B, {}, void 0, !1, {
+		fileName: G,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: G,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { R as default };
+export { K as default };

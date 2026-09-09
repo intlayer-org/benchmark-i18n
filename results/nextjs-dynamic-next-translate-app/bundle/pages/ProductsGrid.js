@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -182,8 +182,13 @@ function createTranslation(defaultNS) {
 			lang
 		}), defaultNS);
 	};
+	var nsKey = namespaces ? Object.keys(namespaces).sort().join("|") : "";
 	return {
-		t: isServer() ? getT() : useMemo(getT, [defaultNS, lang]),
+		t: isServer() ? getT() : useMemo(getT, [
+			defaultNS,
+			lang,
+			nsKey
+		]),
 		lang
 	};
 }
@@ -207,62 +212,96 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/products/ProductsGrid.tsx";
 function ProductsGrid() {
 	const { t } = useTranslation("common");
-	return jsx("div", {
+	const products = [
+		{
+			name: t("products.products.benchmarkCLI"),
+			desc: t("products.products.benchmarkCLIDesc"),
+			price: t("products.products.benchmarkCLIPrice")
+		},
+		{
+			name: t("products.products.benchmarkCloud"),
+			desc: t("products.products.benchmarkCloudDesc"),
+			price: t("products.products.benchmarkCloudPrice")
+		},
+		{
+			name: t("products.products.benchmarkEnterprise"),
+			desc: t("products.products.benchmarkEnterpriseDesc"),
+			price: t("products.products.benchmarkEnterprisePrice")
+		},
+		{
+			name: t("products.products.migrationAssistant"),
+			desc: t("products.products.migrationAssistantDesc"),
+			price: t("products.products.migrationAssistantPrice")
+		},
+		{
+			name: t("products.products.translationQA"),
+			desc: t("products.products.translationQADesc"),
+			price: t("products.products.translationQAPrice")
+		},
+		{
+			name: t("products.products.bundleOptimizer"),
+			desc: t("products.products.bundleOptimizerDesc"),
+			price: t("products.products.bundleOptimizerPrice")
+		}
+	];
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: [
-			{
-				name: t("products.products.benchmarkCLI"),
-				desc: t("products.products.benchmarkCLIDesc"),
-				price: t("products.products.benchmarkCLIPrice")
-			},
-			{
-				name: t("products.products.benchmarkCloud"),
-				desc: t("products.products.benchmarkCloudDesc"),
-				price: t("products.products.benchmarkCloudPrice")
-			},
-			{
-				name: t("products.products.benchmarkEnterprise"),
-				desc: t("products.products.benchmarkEnterpriseDesc"),
-				price: t("products.products.benchmarkEnterprisePrice")
-			},
-			{
-				name: t("products.products.migrationAssistant"),
-				desc: t("products.products.migrationAssistantDesc"),
-				price: t("products.products.migrationAssistantPrice")
-			},
-			{
-				name: t("products.products.translationQA"),
-				desc: t("products.products.translationQADesc"),
-				price: t("products.products.translationQAPrice")
-			},
-			{
-				name: t("products.products.bundleOptimizer"),
-				desc: t("products.products.bundleOptimizerDesc"),
-				price: t("products.products.bundleOptimizerPrice")
-			}
-		].map((p) => jsxs("div", {
+		children: products.map((p) => jsxDEV("div", {
 			className: "flex flex-col justify-between rounded-lg border border-border bg-card p-6",
-			children: [jsxs("div", { children: [jsx("h3", {
+			children: [jsxDEV("div", { children: [jsxDEV("h3", {
 				className: "mb-2 text-lg font-semibold text-foreground",
 				children: p.name
-			}), jsx("p", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 49,
+				columnNumber: 13
+			}, this), jsxDEV("p", {
 				className: "mb-4 text-sm text-muted-foreground",
 				children: p.desc
-			})] }), jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 52,
+				columnNumber: 13
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 48,
+				columnNumber: 11
+			}, this), jsxDEV("div", {
 				className: "flex items-center justify-between",
-				children: [jsx("span", {
+				children: [jsxDEV("span", {
 					className: "text-sm font-bold text-primary",
 					children: p.price
-				}), jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 55,
+					columnNumber: 13
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: t("products.products.learnMore")
-				})]
-			})]
-		}, p.name))
-	});
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 56,
+					columnNumber: 13
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 54,
+				columnNumber: 11
+			}, this)]
+		}, p.name, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 44,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 42,
+		columnNumber: 5
+	}, this);
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -347,7 +386,7 @@ var i18n_default = {
 		try {
 			return (await _rolldown_dynamic_import_helper_default(Object.assign({
 				"./locales/de.json": () => import("../../../locales/de.json"),
-				"./locales/en.json": () => import("./en-YACnRwSE.js"),
+				"./locales/en.json": () => import("./en-CrUFMkIg.js"),
 				"./locales/es.json": () => import("../../../locales/es.json"),
 				"./locales/fr.json": () => import("../../../locales/fr.json"),
 				"./locales/it.json": () => import("../../../locales/it.json"),
@@ -358,7 +397,7 @@ var i18n_default = {
 				"./locales/zh.json": () => import("../../../locales/zh.json")
 			}), `./locales/${locale}.json`, 3)).default;
 		} catch {
-			return (await import("./en-YACnRwSE.js")).default;
+			return (await import("./en-CrUFMkIg.js")).default;
 		}
 	}
 };
@@ -384,6 +423,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -395,8 +435,13 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const locale = "en";
 	const [translations, setTranslations] = useState({});
@@ -404,7 +449,8 @@ function Wrapper({ children }) {
 	useEffect(() => {
 		const loadTranslations = async () => {
 			try {
-				setTranslations(await i18n_default.loadLocaleFrom?.(locale, "common") ?? {});
+				const trans = await i18n_default.loadLocaleFrom?.(locale, "common");
+				setTranslations(trans ?? {});
 				setIsLoaded(true);
 			} catch (error) {
 				console.error("Failed to load translations:", error);
@@ -414,17 +460,34 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		lang: locale,
 		namespaces: { common: translations },
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 37,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 36,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/products/ProductsGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ProductsGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ProductsGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var en_default = {

@@ -9,7 +9,7 @@ var i = Object.create, a = Object.defineProperty, o = Object.getOwnPropertyDescr
 		enumerable: !(r = o(t, d)) || r.enumerable
 	});
 	return e;
-}, f = (e, t, n) => (n = e == null ? {} : i(c(e)), d(t || !e || !e.__esModule ? a(n, "default", {
+}, f = (e, t, n) => (n = e == null ? {} : i(c(e)), d(t || !e || !e.__esModule || !l.call(e, "default") ? a(n, "default", {
 	value: e,
 	enumerable: !0
 }) : n, e)), p = u(((e, t) => {
@@ -66,7 +66,7 @@ var i = Object.create, a = Object.defineProperty, o = Object.getOwnPropertyDescr
 		return n.isMergeableObject(e) && f(e).forEach(function(t) {
 			r[t] = c(e[t], n);
 		}), f(t).forEach(function(i) {
-			m(e, i) || (p(e, i) && n.isMergeableObject(t[i]) ? r[i] = u(i, n)(e[i], t[i], n) : r[i] = c(t[i], n));
+			m(e, i) || (r[i] = p(e, i) && n.isMergeableObject(t[i]) ? u(i, n)(e[i], t[i], n) : c(t[i], n));
 		}), r;
 	}
 	function g(e, t, r) {
@@ -1643,7 +1643,7 @@ function Pe(e, t) {
 			var o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = "a", l = Fe(t);
 			for ((l == "H" || l == "k") && (s = 0); s-- > 0;) n += c;
 			for (; o-- > 0;) n = l + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
@@ -1794,8 +1794,10 @@ var Qe = function() {
 					},
 					err: null
 				} : this.error(C.INVALID_TAG, D(o, this.clonePosition()))) : this.error(C.UNMATCHED_CLOSING_TAG, D(s, this.clonePosition()));
-			} else return this.error(C.UNCLOSED_TAG, D(n, this.clonePosition()));
-		} else return this.error(C.INVALID_TAG, D(n, this.clonePosition()));
+			}
+			return this.error(C.UNCLOSED_TAG, D(n, this.clonePosition()));
+		}
+		return this.error(C.INVALID_TAG, D(n, this.clonePosition()));
 	}, e.prototype.parseTagName = function() {
 		var e = this.offset();
 		for (this.bump(); !this.isEOF() && et(this.char());) this.bump();
@@ -1847,12 +1849,13 @@ var Qe = function() {
 		var t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			var n = this.char();
-			if (n === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(n);
+			if (n === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(n);
 			this.bump();
 		}
 		return k.apply(void 0, t);
@@ -1921,26 +1924,25 @@ var Qe = function() {
 							},
 							err: null
 						};
-					} else {
-						if (p.length === 0) return this.error(C.EXPECT_DATE_TIME_SKELETON, f);
-						var m = p;
-						this.locale && (m = Pe(p, this.locale));
-						var u = {
-							type: T.dateTime,
-							pattern: m,
-							location: s.styleLocation,
-							parsedOptions: this.shouldParseSkeletons ? xe(m) : {}
-						};
-						return {
-							val: {
-								type: a === "date" ? w.date : w.time,
-								value: n,
-								location: f,
-								style: u
-							},
-							err: null
-						};
 					}
+					if (p.length === 0) return this.error(C.EXPECT_DATE_TIME_SKELETON, f);
+					var m = p;
+					this.locale && (m = Pe(p, this.locale));
+					var u = {
+						type: T.dateTime,
+						pattern: m,
+						location: s.styleLocation,
+						parsedOptions: this.shouldParseSkeletons ? xe(m) : {}
+					};
+					return {
+						val: {
+							type: a === "date" ? w.date : w.time,
+							value: n,
+							location: f,
+							style: u
+						},
+						err: null
+					};
 				}
 				return {
 					val: {
@@ -2014,9 +2016,7 @@ var Qe = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -2505,7 +2505,7 @@ function wt(e) {
 	}).filter(([, e]) => e.length > 0);
 }
 function H(e) {
-	return e == null ? !1 : K(e).some((e) => Ct(e)?.size);
+	return e != null && K(e).some((e) => Ct(e)?.size);
 }
 function Tt(e, t) {
 	return Promise.all(t.map((t) => (St(e, t), t().then((e) => e.default || e)))).then((t) => xt(e, ...t));
@@ -2604,7 +2604,7 @@ function zt(e) {
 }
 function K(e, t = W().fallbackLocale) {
 	let n = zt(e);
-	return t ? [...new Set([...n, ...zt(t)])] : n;
+	return t ? [.../* @__PURE__ */ new Set([...n, ...zt(t)])] : n;
 }
 function q() {
 	return Rt ?? void 0;
@@ -2705,14 +2705,8 @@ function on(t, n) {
 	e.push(n, !1);
 	let r = () => e.store_get(nn, "$_", i), [i, a] = e.setup_stores();
 	rn("Hero"), e.init();
-	var o = an(), s = e.child(o), c = e.child(s, !0);
-	e.reset(s);
-	var l = e.sibling(s, 2), u = e.child(l, !0);
-	e.reset(l);
-	var d = e.sibling(l, 2), f = e.child(d), p = e.child(f, !0);
-	e.reset(f);
-	var m = e.sibling(f, 2), h = e.child(m, !0);
-	e.reset(m), e.reset(d), e.reset(o), e.template_effect((t, n, r, i) => {
+	var o = an(), s = e.child(o), c = e.only_child(s, !0), l = e.sibling(s, 2), u = e.only_child(l, !0), d = e.sibling(l, 2), f = e.child(d), p = e.only_child(f, !0), m = e.sibling(f, 2), h = e.only_child(m, !0);
+	e.reset(d), e.reset(o), e.template_effect((t, n, r, i) => {
 		e.set_text(c, t), e.set_text(u, n), e.set_text(p, r), e.set_text(h, i);
 	}, [
 		() => r()("home.hero.title"),

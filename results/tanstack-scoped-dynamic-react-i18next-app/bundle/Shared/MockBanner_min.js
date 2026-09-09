@@ -1,6 +1,6 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useMemo as a, useRef as o, useState as s } from "react";
-import { jsx as c } from "react/jsx-runtime";
-var l = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), u = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as c } from "react/jsx-dev-runtime";
+var l = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), u = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 }), d = (e) => typeof e == "string", f = () => {
@@ -42,7 +42,7 @@ var l = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), u
 	let r = x(e, n);
 	return r === void 0 ? x(t, n) : r;
 }, C = (e, t, n) => {
-	for (let r in t) r !== "__proto__" && r !== "constructor" && (r in e ? d(e[r]) || e[r] instanceof String || d(t[r]) || t[r] instanceof String ? n && (e[r] = t[r]) : C(e[r], t[r], n) : e[r] = t[r]);
+	for (let r in t) r !== "__proto__" && r !== "constructor" && (Object.prototype.hasOwnProperty.call(e, r) ? d(e[r]) || e[r] instanceof String || d(t[r]) || t[r] instanceof String ? n && (e[r] = t[r]) : C(e[r], t[r], n) : e[r] = t[r]);
 	return e;
 }, w = (e) => e.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"), T = {
 	"&": "&amp;",
@@ -130,7 +130,7 @@ var l = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), u
 		return this.forward(e, "warn", "WARNING DEPRECATED: ", !0);
 	}
 	forward(e, t, n, r) {
-		return r && !this.debug ? null : (d(e[0]) && (e[0] = `${n}${this.prefix} ${e[0]}`), this.logger[t](e));
+		return r && !this.debug ? null : (e = e.map((e) => d(e) ? e.replace(/[\r\n\x00-\x1F\x7F]/g, " ") : e), d(e[0]) && (e[0] = `${n}${this.prefix} ${e[0]}`), this.logger[t](e));
 	}
 	create(t) {
 		return new e(this.logger, {
@@ -249,10 +249,10 @@ function ne() {
 	return t.get = (r, i) => (n?.revoke?.(), i === I ? e : (e.push(i), n = Proxy.revocable(r, t), n.proxy)), Proxy.revocable(Object.create(null), t).proxy;
 }
 function L(e, t) {
-	let { [I]: n } = e(ne()), r = t?.keySeparator ?? ".", i = t?.nsSeparator ?? ":";
+	let { [I]: n } = e(ne()), r = t?.keySeparator ?? ".", i = t?.nsSeparator ?? ":", a = t?.enableSelector === "strict";
 	if (n.length > 1 && i) {
-		let e = t?.ns, a = Array.isArray(e) ? e : null;
-		if (a && a.length > 1 && a.slice(1).includes(n[0])) return `${n[0]}${i}${n.slice(1).join(r)}`;
+		let e = t?.ns, o = a ? Array.isArray(e) ? e : e ? [e] : null : Array.isArray(e) ? e : null;
+		if (o && (a ? o : o.length > 1 ? o.slice(1) : []).includes(n[0])) return `${n[0]}${i}${n.slice(1).join(r)}`;
 	}
 	return n.join(r);
 }
@@ -345,12 +345,12 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 				let e = Array.isArray(D), t = e ? [] : {}, n = e ? _ : g;
 				for (let e in D) if (Object.prototype.hasOwnProperty.call(D, e)) {
 					let r = `${n}${o}${e}`;
-					S && !h ? t[e] = this.translate(r, {
+					t[e] = S && !h ? this.translate(r, {
 						...i,
 						defaultValue: R(E) ? E[e] : void 0,
 						joinArrays: !1,
 						ns: c
-					}) : t[e] = this.translate(r, {
+					}) : this.translate(r, {
 						...i,
 						joinArrays: !1,
 						ns: c
@@ -364,7 +364,7 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 			!this.isValidLookup(h) && S && (e = !0, h = E), this.isValidLookup(h) || (n = !0, h = s);
 			let a = (i.missingKeyNoValueFallbackToKey || this.options.missingKeyNoValueFallbackToKey) && n ? void 0 : h, c = S && E !== h && this.options.updateMissing;
 			if (n || e || c) {
-				if (this.logger.log(c ? "updateKey" : "missingKey", f, l, s, c ? E : h), o) {
+				if (this.logger.log(c ? "updateKey" : "missingKey", f, l, x && !c ? `${s}${this.pluralResolver.getSuffix(f, i.count, i)}` : s, c ? E : h), o) {
 					let e = this.resolve(s, {
 						...i,
 						keySeparator: !1
@@ -489,7 +489,10 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 			"postProcess",
 			"interpolation"
 		], n = e.replace && !d(e.replace), r = n ? e.replace : e;
-		if (n && e.count !== void 0 && (r.count = e.count), this.options.interpolation.defaultVariables && (r = {
+		if (n && e.count !== void 0 && (r = {
+			...r,
+			count: e.count
+		}), this.options.interpolation.defaultVariables && (r = {
 			...this.options.interpolation.defaultVariables,
 			...r
 		}), !n) {
@@ -504,7 +507,10 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 	}
 }, B = class {
 	constructor(e) {
-		this.options = e, this.supportedLngs = this.options.supportedLngs || !1, this.logger = M.create("languageUtils");
+		this.options = e, this.supportedLngs = this.options.supportedLngs || !1, this.logger = M.create("languageUtils"), this.resolveHierarchyCache = {};
+	}
+	clearCache() {
+		this.resolveHierarchyCache = {};
 	}
 	getScriptPartFromCode(e) {
 		if (e = j(e), !e || !e.includes("-")) return null;
@@ -553,12 +559,23 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 		return n ||= e[this.getScriptPartFromCode(t)], n ||= e[this.formatLanguageCode(t)], n ||= e[this.getLanguagePartFromCode(t)], n ||= e.default, n || [];
 	}
 	toResolveHierarchy(e, t) {
-		let n = this.getFallbackCodes((t === !1 ? [] : t) || this.options.fallbackLng || [], e), r = [], i = (e) => {
-			e && (this.isSupportedCode(e) ? r.push(e) : this.logger.warn(`rejecting language code not found in supportedLngs: ${e}`));
+		let n = this.options.fallbackLng, r = Array.isArray(n) ? n.join("|") : n;
+		r !== this._cachedFallbackLng && (this.resolveHierarchyCache = {}, this._cachedFallbackLng = r);
+		let i = t === void 0 || t === !1 || d(t), a = t === void 0 && typeof this.options.fallbackLng == "function", o = d(e) && i && !a, s = null;
+		if (o) {
+			let n;
+			n = t === void 0 ? "undefined" : t === !1 ? "boolean:false" : `string:${t}`, s = `${e.length}:${e}|${n}`;
+		}
+		if (s !== null) {
+			let e = this.resolveHierarchyCache[s];
+			if (e !== void 0) return e.slice();
+		}
+		let c = this.getFallbackCodes((t === !1 ? [] : t) || this.options.fallbackLng || [], e), l = [], u = (e) => {
+			e && (this.isSupportedCode(e) ? l.push(e) : this.logger.warn(`rejecting language code not found in supportedLngs: ${e}`));
 		};
-		return d(e) && (e.includes("-") || e.includes("_")) ? (this.options.load !== "languageOnly" && i(this.formatLanguageCode(e)), this.options.load !== "languageOnly" && this.options.load !== "currentOnly" && i(this.getScriptPartFromCode(e)), this.options.load !== "currentOnly" && i(this.getLanguagePartFromCode(e))) : d(e) && i(this.formatLanguageCode(e)), n.forEach((e) => {
-			r.includes(e) || i(this.formatLanguageCode(e));
-		}), r;
+		return d(e) && (e.includes("-") || e.includes("_")) ? (this.options.load !== "languageOnly" && u(this.formatLanguageCode(e)), this.options.load !== "languageOnly" && this.options.load !== "currentOnly" && u(this.getScriptPartFromCode(e)), this.options.load !== "currentOnly" && u(this.getLanguagePartFromCode(e))) : d(e) && u(this.formatLanguageCode(e)), c.forEach((e) => {
+			l.includes(e) || u(this.formatLanguageCode(e));
+		}), s === null ? l : (this.resolveHierarchyCache[s] = l, l.slice());
 	}
 }, V = {
 	zero: 0,
@@ -619,7 +636,7 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 	init(e = {}) {
 		e.interpolation ||= { escapeValue: !0 };
 		let { escape: t, escapeValue: n, useRawValueToEscape: r, prefix: i, prefixEscaped: a, suffix: o, suffixEscaped: s, formatSeparator: c, unescapeSuffix: l, unescapePrefix: u, nestingPrefix: d, nestingPrefixEscaped: f, nestingSuffix: p, nestingSuffixEscaped: m, nestingOptionsSeparator: h, maxReplaces: g, alwaysFormat: _ } = e.interpolation;
-		this.escape = t === void 0 ? E : t, this.escapeValue = n === void 0 ? !0 : n, this.useRawValueToEscape = r === void 0 ? !1 : r, this.prefix = i ? w(i) : a || "{{", this.suffix = o ? w(o) : s || "}}", this.formatSeparator = c || ",", this.unescapePrefix = l ? "" : u || "-", this.unescapeSuffix = this.unescapePrefix ? "" : l || "", this.nestingPrefix = d ? w(d) : f || w("$t("), this.nestingSuffix = p ? w(p) : m || w(")"), this.nestingOptionsSeparator = h || ",", this.maxReplaces = g || 1e3, this.alwaysFormat = _ === void 0 ? !1 : _, this.resetRegExp();
+		this.escape = t === void 0 ? E : t, this.escapeValue = n === void 0 || n, this.useRawValueToEscape = r !== void 0 && r, this.prefix = i ? w(i) : a || "{{", this.suffix = o ? w(o) : s || "}}", this.formatSeparator = c || ",", this.unescapePrefix = l ? "" : u ? w(u) : "-", this.unescapeSuffix = this.unescapePrefix ? "" : l ? w(l) : "", this.nestingPrefix = d ? w(d) : f || w("$t("), this.nestingSuffix = p ? w(p) : m || w(")"), this.nestingOptionsSeparator = h || ",", this.maxReplaces = g || 1e3, this.alwaysFormat = _ !== void 0 && _, this.resetRegExp();
 	}
 	reset() {
 		this.options && this.init(this.options);
@@ -645,28 +662,29 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 				interpolationkey: a
 			});
 		};
-		this.resetRegExp();
+		this.resetRegExp(), !this.escapeValue && typeof e == "string" && /\$t\([^)]*\{[^}]*\{\{/.test(e) && this.logger.warn("nesting options string contains interpolated variables with escapeValue: false — if any of those values are attacker-controlled they can inject additional nesting options (e.g. redirect lng/ns). Sanitise untrusted input before passing it to t(), or keep escapeValue: true.");
 		let l = r?.missingInterpolationHandler || this.options.missingInterpolationHandler, u = r?.interpolation?.skipOnVariables === void 0 ? this.options.interpolation.skipOnVariables : r.interpolation.skipOnVariables;
 		return [{
 			regex: this.regexpUnescape,
-			safeValue: (e) => W(e)
+			safeValue: (e) => e
 		}, {
 			regex: this.regexp,
-			safeValue: (e) => this.escapeValue ? W(this.escape(e)) : W(e)
+			safeValue: (e) => this.escapeValue ? this.escape(e) : e
 		}].forEach((t) => {
 			for (o = 0; i = t.regex.exec(e);) {
 				let n = i[1].trim();
-				if (a = c(n), a === void 0) if (typeof l == "function") {
-					let t = l(e, i, r);
-					a = d(t) ? t : "";
-				} else if (r && Object.prototype.hasOwnProperty.call(r, n)) a = "";
-				else if (u) {
-					a = i[0];
-					continue;
-				} else this.logger.warn(`missed to pass in variable ${n} for interpolating ${e}`), a = "";
-				else !d(a) && !this.useRawValueToEscape && (a = p(a));
+				if (a = c(n), a === void 0) {
+					if (typeof l == "function") {
+						let t = l(e, i, r);
+						a = d(t) ? t : "";
+					} else if (r && Object.prototype.hasOwnProperty.call(r, n)) a = "";
+					else if (u) {
+						a = i[0];
+						continue;
+					} else this.logger.warn(`missed to pass in variable ${n} for interpolating ${e}`), a = "";
+				} else !d(a) && !this.useRawValueToEscape && (a = p(a));
 				let s = t.safeValue(a);
-				if (e = e.replace(i[0], s), u ? (t.regex.lastIndex += a.length, t.regex.lastIndex -= i[0].length) : t.regex.lastIndex = 0, o++, o >= this.maxReplaces) break;
+				if (e = e.replace(i[0], W(s)), u ? (t.regex.lastIndex += s.length, t.regex.lastIndex -= i[0].length) : t.regex.lastIndex = 0, o++, o >= this.maxReplaces) break;
 			}
 		}), e;
 	}
@@ -691,12 +709,12 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 		for (; r = this.nestingRegexp.exec(e);) {
 			let s = [];
 			a = { ...n }, a = a.replace && !d(a.replace) ? a.replace : a, a.applyPostProcessor = !1, delete a.defaultValue;
-			let c = /{.*}/.test(r[1]) ? r[1].lastIndexOf("}") + 1 : r[1].indexOf(this.formatSeparator);
+			let c = /{.*}/s.test(r[1]) ? r[1].lastIndexOf("}") + 1 : r[1].indexOf(this.formatSeparator);
 			if (c !== -1 && (s = r[1].slice(c).split(this.formatSeparator).map((e) => e.trim()).filter(Boolean), r[1] = r[1].slice(0, c)), i = t(o.call(this, r[1].trim(), a), a), i && r[0] === e && !d(i)) return i;
 			d(i) || (i = p(i)), i ||= (this.logger.warn(`missed to resolve ${r[1]} for nesting ${e}`), ""), s.length && (i = s.reduce((e, t) => this.format(e, t, n.lng, {
 				...n,
 				interpolationkey: r[1].trim()
-			}), i.trim())), e = e.replace(r[0], i), this.regexp.lastIndex = 0;
+			}), i.trim())), e = e.replace(r[0], W(p(i))), this.regexp.lastIndex = 0;
 		}
 		return e;
 	}
@@ -769,12 +787,13 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 	}
 	format(e, t, n, r = {}) {
 		if (!t || e == null) return e;
-		let i = t.split(this.formatSeparator);
-		if (i.length > 1 && i[0].indexOf("(") > 1 && !i[0].includes(")") && i.find((e) => e.includes(")"))) {
-			let e = i.findIndex((e) => e.includes(")"));
-			i[0] = [i[0], ...i.splice(1, e)].join(this.formatSeparator);
+		let i = t.split(this.formatSeparator), a = [];
+		for (let e = 0; e < i.length; e++) {
+			let t = i[e];
+			for (; t.indexOf("(") > -1 && !t.includes(")") && e + 1 < i.length;) t = `${t}${this.formatSeparator}${i[++e]}`;
+			a.push(t);
 		}
-		return i.reduce((e, t) => {
+		return a.reduce((e, t) => {
 			let { formatName: i, formatOptions: a } = ie(t);
 			if (this.formats[i]) {
 				let t = e;
@@ -789,8 +808,8 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 					this.logger.warn(e);
 				}
 				return t;
-			} else this.logger.warn(`there was no format function for ${i}`);
-			return e;
+			}
+			return this.logger.warn(`there was no format function for ${i}`), e;
 		}, e);
 	}
 }, se = (e, t) => {
@@ -898,7 +917,7 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 			this.logger.warn(`did not save key "${n}" as the namespace "${t}" was not yet loaded`, "This means something IS WRONG in your setup. You access the t function before i18next.init / i18next.loadNamespace / i18next.changeLanguage was done. Wait for the callback or Promise to resolve before accessing it!!!");
 			return;
 		}
-		if (!(n == null || n === "")) {
+		if (n != null && n !== "") {
 			if (this.backend?.create) {
 				let s = {
 					...a,
@@ -912,7 +931,7 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 				}
 				else c(e, t, n, r, o, s);
 			}
-			!e || !e[0] || this.store.addResource(e[0], t, n, r);
+			e && e[0] && this.store.addResource(e[0], t, n, r);
 		}
 	}
 }, q = () => ({
@@ -930,6 +949,7 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 	nsSeparator: ":",
 	pluralSeparator: "_",
 	contextSeparator: "_",
+	enableSelector: !1,
 	partialBundledLanguages: !1,
 	saveMissing: !1,
 	updateMissing: !1,
@@ -1033,7 +1053,7 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 			let e = (e, n) => {
 				this.isInitializing = !1, this.isInitialized && !this.initializedStoreOnce && this.logger.warn("init: i18next is already initialized. You should call init just once!"), this.isInitialized = !0, this.options.isClone || this.logger.log("initialized", this.options), this.emit("initialized", this.options), i.resolve(n), t(e, n);
 			};
-			if (this.languages && !this.isInitialized) return e(null, this.t.bind(this));
+			if ((this.languages || this.isLanguageChangingTo) && !this.isInitialized) return e(null, this.t.bind(this));
 			this.changeLanguage(this.options.lng, e);
 		};
 		return this.options.resources || !this.options.initAsync ? a() : setTimeout(a, 0), i;
@@ -1064,7 +1084,7 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 		return e.type === "backend" && (this.modules.backend = e), (e.type === "logger" || e.log && e.warn && e.error) && (this.modules.logger = e), e.type === "languageDetector" && (this.modules.languageDetector = e), e.type === "i18nFormat" && (this.modules.i18nFormat = e), e.type === "postProcessor" && F.addPostProcessor(e), e.type === "formatter" && (this.modules.formatter = e), e.type === "3rdParty" && this.modules.external.push(e), this;
 	}
 	setResolvedLanguage(e) {
-		if (!(!e || !this.languages) && !["cimode", "dev"].includes(e)) {
+		if (e && this.languages && !["cimode", "dev"].includes(e)) {
 			for (let e = 0; e < this.languages.length; e++) {
 				let t = this.languages[e];
 				if (!["cimode", "dev"].includes(t) && this.store.hasLanguageSomeTranslations(t)) {
@@ -1092,19 +1112,21 @@ var R = (e) => !d(e) && typeof e != "boolean" && typeof e != "number", z = class
 		};
 		return !e && this.services.languageDetector && !this.services.languageDetector.async ? a(this.services.languageDetector.detect()) : !e && this.services.languageDetector && this.services.languageDetector.async ? this.services.languageDetector.detect.length === 0 ? this.services.languageDetector.detect().then(a) : this.services.languageDetector.detect(a) : a(e), n;
 	}
-	getFixedT(e, t, n) {
-		let r = (e, t, ...i) => {
-			let a;
-			a = typeof t == "object" ? { ...t } : this.options.overloadTranslationOptionHandler([e, t].concat(i)), a.lng = a.lng || r.lng, a.lngs = a.lngs || r.lngs, a.ns = a.ns || r.ns, a.keyPrefix !== "" && (a.keyPrefix = a.keyPrefix || n || r.keyPrefix);
-			let o = {
+	getFixedT(e, t, n, r) {
+		let i = r?.scopeNs, a = (e, t, ...r) => {
+			let o;
+			o = typeof t == "object" ? { ...t } : this.options.overloadTranslationOptionHandler([e, t].concat(r)), o.lng = o.lng || a.lng, o.lngs = o.lngs || a.lngs;
+			let s = o.ns !== void 0 && o.ns !== null;
+			o.ns = o.ns || a.ns, o.keyPrefix !== "" && (o.keyPrefix = o.keyPrefix || n || a.keyPrefix);
+			let c = {
 				...this.options,
-				...a
+				...o
 			};
-			typeof a.keyPrefix == "function" && (a.keyPrefix = L(a.keyPrefix, o));
-			let s = this.options.keySeparator || ".", c;
-			return a.keyPrefix && Array.isArray(e) ? c = e.map((e) => (typeof e == "function" && (e = L(e, o)), `${a.keyPrefix}${s}${e}`)) : (typeof e == "function" && (e = L(e, o)), c = a.keyPrefix ? `${a.keyPrefix}${s}${e}` : e), this.t(c, a);
+			Array.isArray(i) && !s && (c.ns = i), typeof o.keyPrefix == "function" && (o.keyPrefix = L(o.keyPrefix, c));
+			let l = this.options.keySeparator || ".", u;
+			return o.keyPrefix && Array.isArray(e) ? u = e.map((e) => (typeof e == "function" && (e = L(e, c)), `${o.keyPrefix}${l}${e}`)) : (typeof e == "function" && (e = L(e, c)), u = o.keyPrefix ? `${o.keyPrefix}${l}${e}` : e), this.t(u, o);
 		};
-		return d(e) ? r.lng = e : r.lngs = e, r.ns = t, r.keyPrefix = n, r;
+		return d(e) ? a.lng = e : a.lngs = e, a.ns = t, a.keyPrefix = n, a;
 	}
 	t(...e) {
 		return this.translator?.translate(...e);
@@ -1294,45 +1316,7 @@ var de = (e, t, n, r) => {
 		return Object.keys(this.usedNamespaces);
 	}
 }, Oe = l(((e) => {
-	var t = u("react");
-	function n(e, t) {
-		return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
-	}
-	var r = typeof Object.is == "function" ? Object.is : n, i = t.useState, a = t.useEffect, o = t.useLayoutEffect, s = t.useDebugValue;
-	function c(e, t) {
-		var n = t(), r = i({ inst: {
-			value: n,
-			getSnapshot: t
-		} }), c = r[0].inst, u = r[1];
-		return o(function() {
-			c.value = n, c.getSnapshot = t, l(c) && u({ inst: c });
-		}, [
-			e,
-			n,
-			t
-		]), a(function() {
-			return l(c) && u({ inst: c }), e(function() {
-				l(c) && u({ inst: c });
-			});
-		}, [e]), s(n), n;
-	}
-	function l(e) {
-		var t = e.getSnapshot;
-		e = e.value;
-		try {
-			var n = t();
-			return !r(e, n);
-		} catch {
-			return !0;
-		}
-	}
-	function d(e, t) {
-		return t();
-	}
-	var f = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? d : c;
-	e.useSyncExternalStore = t.useSyncExternalStore === void 0 ? f : t.useSyncExternalStore;
-})), ke = l(((e) => {
-	process.env.NODE_ENV !== "production" && (function() {
+	(function() {
 		function t(e, t) {
 			return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
 		}
@@ -1377,9 +1361,9 @@ var de = (e, t, n, r) => {
 		var a = u("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, d = a.useDebugValue, f = !1, p = !1, m = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
 		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? m : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 	})();
-})), Ae = l(((e, t) => {
-	process.env.NODE_ENV === "production" ? t.exports = Oe() : t.exports = ke();
-}))(), je = {
+})), ke = l(((e, t) => {
+	t.exports = Oe();
+}))(), Ae = {
 	t: (e, t) => {
 		if (Q(t)) return t;
 		if (ge(t) && Q(t.defaultValue)) return t.defaultValue;
@@ -1391,9 +1375,9 @@ var de = (e, t, n, r) => {
 		return e;
 	},
 	ready: !1
-}, Me = () => () => {}, Ne = (e, t = {}) => {
+}, je = () => () => {}, Me = (e, t = {}) => {
 	let { i18n: c } = t, { i18n: l, defaultNS: u } = r(Ee) || {}, d = c || l || we();
-	d && !d.reportNamespaces && (d.reportNamespaces = new De()), d || X(d, "NO_I18NEXT_INSTANCE", "useTranslation: You will need to pass in an i18next instance by using initReactI18next");
+	d && !d.reportNamespaces && (d.reportNamespaces = new De()), d || X(d, "NO_I18NEXT_INSTANCE", "useTranslation: You will need to pass in an i18next instance by using initReactI18next or by passing it via props or context. In monorepo setups, make sure there is only one instance of react-i18next.");
 	let f = a(() => ({
 		...xe(),
 		...d?.options?.react,
@@ -1401,7 +1385,7 @@ var de = (e, t, n, r) => {
 	}), [d, t]), { useSuspense: p, keyPrefix: m } = f, h = e || u || d?.options?.defaultNS, g = Q(h) ? [h] : h || ["translation"], _ = a(() => g, g);
 	d?.reportNamespaces?.addUsedNamespaces?.(_);
 	let v = o(0), y = n((e) => {
-		if (!d) return Me;
+		if (!d) return je;
 		let { bindI18n: t, bindI18nStore: n } = f, r = () => {
 			v.current += 1, e();
 		};
@@ -1409,11 +1393,11 @@ var de = (e, t, n, r) => {
 			t && t.split(" ").forEach((e) => d.off(e, r)), n && n.split(" ").forEach((e) => d.store.off(e, r));
 		};
 	}, [d, f]), b = o(), x = n(() => {
-		if (!d) return je;
+		if (!d) return Ae;
 		let e = !!(d.isInitialized || d.initializedStoreOnce) && _.every((e) => he(e, d, f)), n = t.lng || d.language, r = v.current, i = b.current;
 		if (i && i.ready === e && i.lng === n && i.keyPrefix === m && i.revision === r) return i;
 		let a = {
-			t: d.getFixedT(n, f.nsMode === "fallback" ? _ : _[0], m),
+			t: d.getFixedT(n, f.nsMode === "fallback" ? _ : _[0], m, { scopeNs: _ }),
 			ready: e,
 			lng: n,
 			keyPrefix: m,
@@ -1426,7 +1410,7 @@ var de = (e, t, n, r) => {
 		m,
 		f,
 		t.lng
-	]), [S, C] = s(0), { t: w, ready: T } = (0, Ae.useSyncExternalStore)(y, x, x);
+	]), [S, C] = s(0), { t: w, ready: T } = (0, ke.useSyncExternalStore)(y, x, x);
 	i(() => {
 		if (d && !T && !p) {
 			let e = () => C((e) => e + 1);
@@ -1470,26 +1454,71 @@ var de = (e, t, n, r) => {
 		E.language,
 		E.languages
 	]);
-	if (d && p && !T) throw new Promise((e) => {
-		let n = () => e();
-		t.lng ? me(d, t.lng, _, n) : Z(d, _, n);
-	});
+	if (d && p && !T) {
+		let e = !1;
+		try {
+			e = !0;
+		} catch {}
+		throw e && X(d, "SUSPENDED_WHILE_LOADING", "useTranslation: suspended while translations are loading (useSuspense is true by default). Add a <Suspense> boundary above this component, or set react.useSuspense: false in the i18next init options. https://react.i18next.com/latest/usetranslation-hook"), new Promise((e) => {
+			let n = () => e();
+			t.lng ? me(d, t.lng, _, n) : Z(d, _, n);
+		});
+	}
 	return ee;
 };
-function Pe({ i18n: e, defaultNS: n, children: r }) {
+function Ne({ i18n: e, defaultNS: n, children: r }) {
 	let i = a(() => ({
 		i18n: e,
 		defaultNS: n
 	}), [e, n]);
 	return t(Ee.Provider, { value: i }, r);
 }
-var Fe = () => {
-	let { t: e } = Ne("shared");
+var Pe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/src/components/MockBanner.tsx", Fe = () => {
+	let { t: e } = Me("shared");
 	return c("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e("mockBanner.text")
+	}, void 0, !1, {
+		fileName: Pe,
+		lineNumber: 6,
+		columnNumber: 5
+	}, void 0);
+}, Ie = (e, t, n) => {
+	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
+	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
+		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, Ie = "shared", Le = [
+}, Le = [
+	"__proto__",
+	"constructor",
+	"prototype"
+], Re = function(e, t) {
+	return !(typeof e != "string" || e.length > 128 || Le.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
+}, ze = function(e) {
+	return {
+		type: "backend",
+		init: function(e, t, n) {},
+		read: function(t, n, r) {
+			if (!Re(t, !1) || !Re(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
+			if (typeof e == "function") {
+				if (e.length < 3) {
+					try {
+						var i = e(t, n);
+						i && typeof i.then == "function" ? i.then(function(e) {
+							return r(null, e && e.default || e);
+						}).catch(r) : r(null, i);
+					} catch (e) {
+						r(e);
+					}
+					return;
+				}
+				e(t, n, r);
+				return;
+			}
+			r(null, e && e[t] && e[t][n]);
+		}
+	};
+}, Be = "shared", Ve = [
 	"about",
 	"blog",
 	"careers",
@@ -1503,26 +1532,412 @@ var Fe = () => {
 	"shared",
 	"team"
 ];
-function Re(e = "en") {
+function He(e = "en") {
 	let t = Y.createInstance();
-	return t.use(Te).init({
+	return t.use(Te).use(ze((e, t) => Ie(Object.assign({
+		"./locales/de/about.json": () => import("../i18n/locales/de/about.json"),
+		"./locales/de/blog.json": () => import("../i18n/locales/de/blog.json"),
+		"./locales/de/careers.json": () => import("../i18n/locales/de/careers.json"),
+		"./locales/de/contact.json": () => import("../i18n/locales/de/contact.json"),
+		"./locales/de/faq.json": () => import("../i18n/locales/de/faq.json"),
+		"./locales/de/home.json": () => import("../i18n/locales/de/home.json"),
+		"./locales/de/pricing.json": () => import("../i18n/locales/de/pricing.json"),
+		"./locales/de/products.json": () => import("../i18n/locales/de/products.json"),
+		"./locales/de/route.json": () => import("../i18n/locales/de/route.json"),
+		"./locales/de/settings.json": () => import("../i18n/locales/de/settings.json"),
+		"./locales/de/shared.json": () => import("../i18n/locales/de/shared.json"),
+		"./locales/de/team.json": () => import("../i18n/locales/de/team.json"),
+		"./locales/en/about.json": () => import("./about-M1sMWj1s.js"),
+		"./locales/en/blog.json": () => import("./blog-Cn2HM2Ne.js"),
+		"./locales/en/careers.json": () => import("./careers-AcqDO_Rk.js"),
+		"./locales/en/contact.json": () => import("./contact-DMI0nGM8.js"),
+		"./locales/en/faq.json": () => import("./faq-D8Z24sSG.js"),
+		"./locales/en/home.json": () => import("./home-4xN7_Zum.js"),
+		"./locales/en/pricing.json": () => import("./pricing-CIELH6yi.js"),
+		"./locales/en/products.json": () => import("./products-Dtvi99Bo.js"),
+		"./locales/en/route.json": () => import("./route-CS6jLh6_.js"),
+		"./locales/en/settings.json": () => import("./settings-BTax84eA.js"),
+		"./locales/en/shared.json": () => import("./shared-CBduF48T.js"),
+		"./locales/en/team.json": () => import("./team-BILWd-Jf.js"),
+		"./locales/es/about.json": () => import("../i18n/locales/es/about.json"),
+		"./locales/es/blog.json": () => import("../i18n/locales/es/blog.json"),
+		"./locales/es/careers.json": () => import("../i18n/locales/es/careers.json"),
+		"./locales/es/contact.json": () => import("../i18n/locales/es/contact.json"),
+		"./locales/es/faq.json": () => import("../i18n/locales/es/faq.json"),
+		"./locales/es/home.json": () => import("../i18n/locales/es/home.json"),
+		"./locales/es/pricing.json": () => import("../i18n/locales/es/pricing.json"),
+		"./locales/es/products.json": () => import("../i18n/locales/es/products.json"),
+		"./locales/es/route.json": () => import("../i18n/locales/es/route.json"),
+		"./locales/es/settings.json": () => import("../i18n/locales/es/settings.json"),
+		"./locales/es/shared.json": () => import("../i18n/locales/es/shared.json"),
+		"./locales/es/team.json": () => import("../i18n/locales/es/team.json"),
+		"./locales/fr/about.json": () => import("../i18n/locales/fr/about.json"),
+		"./locales/fr/blog.json": () => import("../i18n/locales/fr/blog.json"),
+		"./locales/fr/careers.json": () => import("../i18n/locales/fr/careers.json"),
+		"./locales/fr/contact.json": () => import("../i18n/locales/fr/contact.json"),
+		"./locales/fr/faq.json": () => import("../i18n/locales/fr/faq.json"),
+		"./locales/fr/home.json": () => import("../i18n/locales/fr/home.json"),
+		"./locales/fr/pricing.json": () => import("../i18n/locales/fr/pricing.json"),
+		"./locales/fr/products.json": () => import("../i18n/locales/fr/products.json"),
+		"./locales/fr/route.json": () => import("../i18n/locales/fr/route.json"),
+		"./locales/fr/settings.json": () => import("../i18n/locales/fr/settings.json"),
+		"./locales/fr/shared.json": () => import("../i18n/locales/fr/shared.json"),
+		"./locales/fr/team.json": () => import("../i18n/locales/fr/team.json"),
+		"./locales/it/about.json": () => import("../i18n/locales/it/about.json"),
+		"./locales/it/blog.json": () => import("../i18n/locales/it/blog.json"),
+		"./locales/it/careers.json": () => import("../i18n/locales/it/careers.json"),
+		"./locales/it/contact.json": () => import("../i18n/locales/it/contact.json"),
+		"./locales/it/faq.json": () => import("../i18n/locales/it/faq.json"),
+		"./locales/it/home.json": () => import("../i18n/locales/it/home.json"),
+		"./locales/it/pricing.json": () => import("../i18n/locales/it/pricing.json"),
+		"./locales/it/products.json": () => import("../i18n/locales/it/products.json"),
+		"./locales/it/route.json": () => import("../i18n/locales/it/route.json"),
+		"./locales/it/settings.json": () => import("../i18n/locales/it/settings.json"),
+		"./locales/it/shared.json": () => import("../i18n/locales/it/shared.json"),
+		"./locales/it/team.json": () => import("../i18n/locales/it/team.json"),
+		"./locales/ja/about.json": () => import("../i18n/locales/ja/about.json"),
+		"./locales/ja/blog.json": () => import("../i18n/locales/ja/blog.json"),
+		"./locales/ja/careers.json": () => import("../i18n/locales/ja/careers.json"),
+		"./locales/ja/contact.json": () => import("../i18n/locales/ja/contact.json"),
+		"./locales/ja/faq.json": () => import("../i18n/locales/ja/faq.json"),
+		"./locales/ja/home.json": () => import("../i18n/locales/ja/home.json"),
+		"./locales/ja/pricing.json": () => import("../i18n/locales/ja/pricing.json"),
+		"./locales/ja/products.json": () => import("../i18n/locales/ja/products.json"),
+		"./locales/ja/route.json": () => import("../i18n/locales/ja/route.json"),
+		"./locales/ja/settings.json": () => import("../i18n/locales/ja/settings.json"),
+		"./locales/ja/shared.json": () => import("../i18n/locales/ja/shared.json"),
+		"./locales/ja/team.json": () => import("../i18n/locales/ja/team.json"),
+		"./locales/ko/about.json": () => import("../i18n/locales/ko/about.json"),
+		"./locales/ko/blog.json": () => import("../i18n/locales/ko/blog.json"),
+		"./locales/ko/careers.json": () => import("../i18n/locales/ko/careers.json"),
+		"./locales/ko/contact.json": () => import("../i18n/locales/ko/contact.json"),
+		"./locales/ko/faq.json": () => import("../i18n/locales/ko/faq.json"),
+		"./locales/ko/home.json": () => import("../i18n/locales/ko/home.json"),
+		"./locales/ko/pricing.json": () => import("../i18n/locales/ko/pricing.json"),
+		"./locales/ko/products.json": () => import("../i18n/locales/ko/products.json"),
+		"./locales/ko/route.json": () => import("../i18n/locales/ko/route.json"),
+		"./locales/ko/settings.json": () => import("../i18n/locales/ko/settings.json"),
+		"./locales/ko/shared.json": () => import("../i18n/locales/ko/shared.json"),
+		"./locales/ko/team.json": () => import("../i18n/locales/ko/team.json"),
+		"./locales/pt/about.json": () => import("../i18n/locales/pt/about.json"),
+		"./locales/pt/blog.json": () => import("../i18n/locales/pt/blog.json"),
+		"./locales/pt/careers.json": () => import("../i18n/locales/pt/careers.json"),
+		"./locales/pt/contact.json": () => import("../i18n/locales/pt/contact.json"),
+		"./locales/pt/faq.json": () => import("../i18n/locales/pt/faq.json"),
+		"./locales/pt/home.json": () => import("../i18n/locales/pt/home.json"),
+		"./locales/pt/pricing.json": () => import("../i18n/locales/pt/pricing.json"),
+		"./locales/pt/products.json": () => import("../i18n/locales/pt/products.json"),
+		"./locales/pt/route.json": () => import("../i18n/locales/pt/route.json"),
+		"./locales/pt/settings.json": () => import("../i18n/locales/pt/settings.json"),
+		"./locales/pt/shared.json": () => import("../i18n/locales/pt/shared.json"),
+		"./locales/pt/team.json": () => import("../i18n/locales/pt/team.json"),
+		"./locales/ru/about.json": () => import("../i18n/locales/ru/about.json"),
+		"./locales/ru/blog.json": () => import("../i18n/locales/ru/blog.json"),
+		"./locales/ru/careers.json": () => import("../i18n/locales/ru/careers.json"),
+		"./locales/ru/contact.json": () => import("../i18n/locales/ru/contact.json"),
+		"./locales/ru/faq.json": () => import("../i18n/locales/ru/faq.json"),
+		"./locales/ru/home.json": () => import("../i18n/locales/ru/home.json"),
+		"./locales/ru/pricing.json": () => import("../i18n/locales/ru/pricing.json"),
+		"./locales/ru/products.json": () => import("../i18n/locales/ru/products.json"),
+		"./locales/ru/route.json": () => import("../i18n/locales/ru/route.json"),
+		"./locales/ru/settings.json": () => import("../i18n/locales/ru/settings.json"),
+		"./locales/ru/shared.json": () => import("../i18n/locales/ru/shared.json"),
+		"./locales/ru/team.json": () => import("../i18n/locales/ru/team.json"),
+		"./locales/zh/about.json": () => import("../i18n/locales/zh/about.json"),
+		"./locales/zh/blog.json": () => import("../i18n/locales/zh/blog.json"),
+		"./locales/zh/careers.json": () => import("../i18n/locales/zh/careers.json"),
+		"./locales/zh/contact.json": () => import("../i18n/locales/zh/contact.json"),
+		"./locales/zh/faq.json": () => import("../i18n/locales/zh/faq.json"),
+		"./locales/zh/home.json": () => import("../i18n/locales/zh/home.json"),
+		"./locales/zh/pricing.json": () => import("../i18n/locales/zh/pricing.json"),
+		"./locales/zh/products.json": () => import("../i18n/locales/zh/products.json"),
+		"./locales/zh/route.json": () => import("../i18n/locales/zh/route.json"),
+		"./locales/zh/settings.json": () => import("../i18n/locales/zh/settings.json"),
+		"./locales/zh/shared.json": () => import("../i18n/locales/zh/shared.json"),
+		"./locales/zh/team.json": () => import("../i18n/locales/zh/team.json")
+	}), `./locales/${e}/${t}.json`, 4))).init({
 		resources: {},
 		lng: e,
 		fallbackLng: "en",
-		ns: Le,
-		defaultNS: Ie,
+		ns: Ve,
+		defaultNS: Be,
 		interpolation: { escapeValue: !1 },
 		react: { useSuspense: !1 }
 	}), t;
 }
-var ze = Re();
-function Be({ children: e }) {
-	return c(Pe, {
-		i18n: ze,
+var Ue = He(), We = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/scripts/Wrapper.tsx";
+function Ge({ children: e }) {
+	return c(Ne, {
+		i18n: Ue,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: We,
+		lineNumber: 7,
+		columnNumber: 5
+	}, this);
 }
-function Ve() {
-	return c(Be, { children: c(Fe, {}) });
+var Ke = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/src/components/MockBanner.wrapper.tsx";
+function qe() {
+	return c(Ge, { children: c(Fe, {}, void 0, !1, {
+		fileName: Ke,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: Ke,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { Ve as default };
+export { qe as default };
+var e = {
+	"aboutHeader.methodology": "Methodology",
+	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",
+	"whatWeMeasure.bundleSizeImpact": "Bundle size impact",
+	"whatWeMeasure.theAdditionalJavascriptBytesSent": "The additional JavaScript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
+	"whatWeMeasure.renderingOverhead": "Rendering overhead",
+	"whatWeMeasure.howMuchExtraTimeThe": "How much extra time the i18n layer adds to each component render — measured using React Profiler's actualDuration.",
+	"whatWeMeasure.hydrationCost": "Hydration cost",
+	"whatWeMeasure.duringSsrTranslationDataIs": "During SSR, translation data is serialized into the HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
+	"whatWeMeasure.lazyLoadingEffectiveness": "Lazy loading effectiveness",
+	"whatWeMeasure.whetherSplittingTranslationsByRoute": "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).",
+	"whatWeMeasure.localeSwitchSpeed": "Locale switch speed",
+	"whatWeMeasure.howFastTheAppCan": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.",
+	"whatWeMeasure.whatWeMeasure": "What We Measure",
+	"aboutGrid.testEnvironment": "Test Environment",
+	"aboutGrid.allBenchmarksRunOn": "All benchmarks run on the same hardware (M2 MacBook Pro, 16 GB RAM), same browser (Chromium 120 via Playwright), and same network conditions (simulated 4G). Each test is repeated 50 times and we report the median with P95/P99 percentiles.",
+	"aboutGrid.applicationDesign": "Application Design",
+	"aboutGrid.theBenchmarkAppHas10": "The benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. Each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
+	"aboutGrid.measurementMethodology": "Measurement Methodology",
+	"aboutGrid.weUseBrowserNativeApis": "We use browser-native APIs (Performance Timeline, Resource Timing, Layout Instability) combined with React Profiler data. Bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
+	"aboutGrid.fairComparison": "Fair Comparison",
+	"aboutGrid.eachI18nLibraryIsIntegrated": "Each i18n library is integrated following its official documentation and best practices. We consult maintainers when possible to ensure optimal configuration. The same React app, same Vite config, same deployment."
+};
+export { e as default };
+var e = {
+	"blogList.i18nBenchmark2026Results": "i18n Benchmark 2026 Results",
+	"blogList.march152026": "March 15, 2026",
+	"blogList.weTested12DifferentInternationalization": "We tested 12 different internationalization libraries across 10 pages. Here are the detailed results with interactive charts.",
+	"blogList.howToReduceYourI18n": "How to Reduce Your i18n Bundle by 60%",
+	"blogList.march82026": "March 8, 2026",
+	"blogList.practicalStrategiesForOptimizingTranslation": "Practical strategies for optimizing translation file loading, tree-shaking unused locales, and leveraging build-time compilation.",
+	"blogList.theStateOfInternationalizationIn": "The State of Internationalization in 2026",
+	"blogList.february282026": "February 28, 2026",
+	"blogList.anOverviewOfTheCurrent": "An overview of the current i18n ecosystem, comparing approaches from message catalogs to compiler-based solutions.",
+	"blogList.migratingFromReactI18nextTo": "Migrating from react-i18next to Lingui",
+	"blogList.february152026": "February 15, 2026",
+	"blogList.aStepByStepGuide": "A step-by-step guide for migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"blogList.serverComponentsAndI18nWhat": "Server Components and i18n: What Changes?",
+	"blogList.february12026": "February 1, 2026",
+	"blogList.reactServerComponentsIntroduceNew": "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"blogList.benchmarkMethodologyHowWeTest": "Benchmark Methodology: How We Test",
+	"blogList.january202026": "January 20, 2026",
+	"blogList.aTransparentLookAtOur": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"blogList.readMore": "Read More →",
+	"blogHeader.blog": "Blog",
+	"blogHeader.insightsDeepDivesAnd": "Insights, deep dives, and updates from the i18n benchmarking community."
+};
+export { e as default };
+var e = {
+	"careersHeader.careers": "Careers",
+	"careersHero.fromAnywhere": "from anywhere in the world",
+	"careersBenefits.competitivePay": "Competitive pay",
+	"careersBenefits.topOfMarket": "Top-of-market compensation",
+	"careersBenefits.openSourceTime": "Open source time",
+	"careersBenefits.twentyPercentTime": "20% time for OSS",
+	"careersPositions.seniorFrontendEngineer": "Senior Frontend Engineer",
+	"careersPositions.seniorFrontendEngineerDesc": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"openPositions.openPositions": "Open Positions",
+	"openPositions.remote": "Remote",
+	"openPositions.fullTime": "Full-time",
+	"openPositions.applyNow": "Apply Now"
+};
+export { e as default };
+var e = {
+	"contactForm.name": "Name",
+	"contactForm.email": "Email",
+	"contactForm.subject": "Subject",
+	"contactForm.message": "Message",
+	"contactForm.sendMessage": "Send Message",
+	"contactForm.wellGetBackTo": "We'll get back to you within 48 hours.",
+	"contactHeader.contactUs": "Contact Us",
+	"contactHeader.haveQuestionsOrWantTo": "Have questions or want to contribute? We'd love to hear from you."
+};
+export { e as default };
+var e = {
+	"faqList.howAreTheBenchmarks": "How are the benchmarks run?",
+	"faqList.allBenchmarksAreRun": "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",
+	"faqList.whatLibrariesAreCurrently": "What libraries are currently tested?",
+	"faqList.weCurrentlyBenchmarkReactI18next": "We currently benchmark react-i18next, react-intl (FormatJS), LinguiJS, typesafe-i18n, next-intl, and Paraglide. We plan to add more based on community requests.",
+	"faqList.canIContributeA": "Can I contribute a new library integration?",
+	"faqList.absolutelyWeWelcomeCommunity": "Absolutely! We welcome community contributions. Fork the repository, add your library integration following our template, and submit a pull request. See the Contributing guide for details.",
+	"faqList.howOftenAreResults": "How often are results updated?",
+	"faqList.benchmarksRunAutomaticallyVia": "Benchmarks run automatically via CI on every dependency update and weekly on the main branch. Results are published to the dashboard within 24 hours.",
+	"faqList.areTheResultsStatistically": "Are the results statistically significant?",
+	"faqList.yesWeUseThe": "Yes. We use the Mann-Whitney U test with a significance level of 0.05 to compare distributions. We also report confidence intervals and effect sizes.",
+	"faq-header1.frequentlyAskedQuestions": "Frequently Asked Questions",
+	"faq-header1.everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+};
+export { e as default };
+var e = {
+	"understandingImpact.understandingTheImpact": "Understanding the Impact",
+	"understandingImpact.whyASingleLargeJson": "Why a single large JSON can hurt performance",
+	"understandingImpact.manyI18nLibrariesStoreTranslations": "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:",
+	"understandingImpact.theJsonMustBeParsed": "The JSON must be parsed on every page load — blocking the main thread.",
+	"understandingImpact.contextBasedArchitecturesCanCause": "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+	"understandingImpact.duringServerSideRenderingThe": "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.",
+	"understandingImpact.theTradeOffsOfDynamic": "The trade-offs of dynamic loading",
+	"understandingImpact.splittingTranslationsIntoPerRoute": "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:",
+	"understandingImpact.waterfallRequests": "Waterfall requests:",
+	"understandingImpact.flashOfUntranslatedContentFouc": "Flash of untranslated content (FOUC):",
+	"understandingImpact.cacheInvalidation": "Cache invalidation:",
+	"understandingImpact.whatThisBenchmarkMeasures": "What this benchmark measures",
+	"understandingImpact.thisTestAppProvidesA": "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.",
+	"whyItMatters.whyTheseMetricsMatter": "Why These Metrics Matter",
+	"whyItMatters.bundleSize": "Bundle Size",
+	"whyItMatters.theBundleIsTheData": "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+	"whyItMatters.renderingHydration": "Rendering & Hydration",
+	"whyItMatters.connectingALargeJson": "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).",
+	"whyItMatters.dynamicLoading": "Dynamic Loading",
+	"whyItMatters.loadingAllTranslationsUpfront": "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.",
+	"resultsTable.sampleResults": "Sample Results",
+	"resultsTable.bundleSize": "Bundle Size",
+	"resultsTable.lookupTime": "Lookup Time",
+	"resultsTable.lazyLoading": "Lazy Loading",
+	"hero.aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+	"hero.viewResults": "View Results"
+};
+export { e as default };
+var e = {
+	"pricingTiers.starterTier": "Starter",
+	"pricingTiers.starterPrice": "$0",
+	"pricingTiers.forever": "forever",
+	"pricingTiers.runsPerDay": "5 benchmark runs/day",
+	"pricingTiers.libraries3": "3 libraries",
+	"pricingTiers.communitySupport": "Community support",
+	"pricingTiers.publicResults": "Public results",
+	"pricingTiers.getStarted": "Get Started",
+	"pricingTiers.proTier": "Pro",
+	"pricingTiers.proPrice": "$29",
+	"pricingTiers.perMonth": "/month",
+	"pricingTiers.unlimitedRuns": "Unlimited runs",
+	"pricingTiers.allLibraries": "All libraries",
+	"pricingTiers.prioritySupport": "Priority support",
+	"pricingTiers.privateResults": "Private results",
+	"pricingTiers.ciIntegration": "CI integration",
+	"pricingTiers.historicalData": "Historical data",
+	"pricingTiers.enterpriseTier": "Enterprise",
+	"pricingTiers.custom": "Custom",
+	"pricingTiers.everythingInPro": "Everything in Pro",
+	"pricingTiers.onPremiseOption": "On-premise option",
+	"pricingTiers.ssoSaml": "SSO & SAML",
+	"pricingTiers.dedicatedAccountManager": "Dedicated account manager",
+	"pricingTiers.customSLAs": "Custom SLAs",
+	"pricingTiers.auditLogs": "Audit logs",
+	"pricingTiers.trainingSessions": "Training sessions",
+	"pricingTiers.contactSales": "Contact Sales",
+	"pricingHeader.pricing": "Pricing",
+	"pricingHeader.transparentPricingForEvery": "Transparent pricing for every stage of your i18n journey."
+};
+export { e as default };
+var e = {
+	"products.benchmarkCLI": "Benchmark CLI",
+	"products.benchmarkCLIDesc": "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"products.benchmarkCLIPrice": "Free",
+	"products.benchmarkCloud": "Benchmark Cloud",
+	"products.benchmarkCloudDesc": "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"products.benchmarkCloudPrice": "$29/mo",
+	"products.benchmarkEnterprise": "Benchmark Enterprise",
+	"products.benchmarkEnterpriseDesc": "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"products.benchmarkEnterprisePrice": "Contact Us",
+	"products.migrationAssistant": "Migration Assistant",
+	"products.migrationAssistantDesc": "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"products.migrationAssistantPrice": "$99 one-time",
+	"products.translationQA": "Translation QA",
+	"products.translationQADesc": "Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"products.translationQAPrice": "$19/mo",
+	"products.bundleOptimizer": "Bundle Optimizer",
+	"products.bundleOptimizerDesc": "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
+	"products.bundleOptimizerPrice": "$49/mo",
+	"products.learnMore": "Learn More",
+	"productsHeader.ourProducts": "Our Products",
+	"productsHeader.exploreOurSuiteOfTools": "Explore our suite of tools designed to help you build better i18n apps."
+};
+export { e as default };
+var e = {
+	"route.oopsPageNotFound": "Oops! Page not found",
+	"route.returnToHome": "Return to Home",
+	"route.couldNotMeasureHydrationDuration": "Could not measure hydration duration:"
+};
+export { e as default };
+var e = {
+	"preferencesSection.preferences": "Preferences",
+	"preferencesSection.emailNotifications": "Email Notifications",
+	"preferencesSection.receiveWeeklyBenchmarkReports": "Receive weekly benchmark reports",
+	"preferencesSection.darkMode": "Dark Mode",
+	"preferencesSection.useDarkColorScheme": "Use dark color scheme",
+	"preferencesSection.defaultLanguage": "Default Language",
+	"settingsHeader.settings": "Settings",
+	"settingsHeader.manageYourAccountPreferences": "Manage your account preferences and configuration.",
+	"settingsFooter.cancel": "Cancel",
+	"settingsFooter.saveChanges": "Save Changes",
+	"apiAccessSection.apiAccess": "API Access",
+	"apiAccessSection.apiKey": "API Key",
+	"apiAccessSection.useThisKeyTo": "Use this key to access the benchmarking API programmatically.",
+	"apiAccessSection.copy": "Copy",
+	"profileSection.profile": "Profile",
+	"profileSection.displayName": "Display Name",
+	"profileSection.email": "Email"
+};
+export { e as default };
+var e = {
+	"header.home": "Home",
+	"header.methodology": "Methodology",
+	"header.mockPages": "Mock Pages",
+	"header.products": "Products",
+	"header.pricing": "Pricing",
+	"header.team": "Team",
+	"header.blog": "Blog",
+	"header.careers": "Careers",
+	"header.faq": "FAQ",
+	"header.contact": "Contact",
+	"header.settings": "Settings",
+	"header.goToGithub": "Go to GitHub",
+	"footer.resources": "Resources",
+	"footer.contact": "Contact",
+	"footer.github": "GitHub",
+	"footer.methodology": "Methodology",
+	"footer.contributing": "Contributing",
+	"footer.builtWith": "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.",
+	"footer.anOpenSourceTestApplication": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+	"mockBanner.text": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.",
+	"themeToggle.themeModeAutoSystemClick": "Theme mode: auto (system). Click to switch to light mode.",
+	"themeToggle.themeModeLightClick": "Theme mode: light. Click to switch to dark mode.",
+	"themeToggle.themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
+	"themeToggle.themeAuto": "Theme: Auto",
+	"themeToggle.themeDark": "Theme: Dark",
+	"themeToggle.themeLight": "Theme: Light"
+};
+export { e as default };
+var e = {
+	"teamGrid.sarahChen": "Sarah Chen",
+	"teamGrid.founderLeadEngineer": "Founder & Lead Engineer",
+	"teamGrid.formerGoogleEngineerWith10": "Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"teamGrid.marcusWeber": "Marcus Weber",
+	"teamGrid.performanceEngineer": "Performance Engineer",
+	"teamGrid.specializesInJavascriptPerformanceOptimization": "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"teamGrid.aishaPatel": "Aisha Patel",
+	"teamGrid.developerAdvocate": "Developer Advocate",
+	"teamGrid.passionateAboutDeveloperExperienceAnd": "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"teamGrid.tomasRodriguez": "Tomás Rodríguez",
+	"teamGrid.fullStackDeveloper": "Full-Stack Developer",
+	"teamGrid.maintainsTheBenchmarkingInfrastructureAnd": "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"teamGrid.yukiTanaka": "Yuki Tanaka",
+	"teamGrid.dataAnalyst": "Data Analyst",
+	"teamGrid.ensuresStatisticalRigorInAll": "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"teamGrid.elenaKowalski": "Elena Kowalski",
+	"teamGrid.communityManager": "Community Manager",
+	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Manages community contributions, partnerships, and events. Background in open source governance.",
+	"teamHeader.ourTeam": "Our Team",
+	"teamHeader.meetThePeopleBehindI18n": "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+};
+export { e as default };

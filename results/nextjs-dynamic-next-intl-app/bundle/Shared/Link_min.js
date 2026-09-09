@@ -1,60 +1,77 @@
 import { createContext as e, useContext as t, useEffect as n, useLayoutEffect as r, useMemo as i, useState as a } from "react";
 import o from "next/link";
 import { useParams as s } from "next/navigation";
-import { jsx as c } from "react/jsx-runtime";
-var l = (e) => /^https?:\/\//.test(e ?? "");
-function u(e, t) {
+import { jsxDEV as c } from "react/jsx-dev-runtime";
+import { jsx as l } from "react/jsx-runtime";
+var u = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/components/Link.tsx", d = (e) => /^https?:\/\//.test(e ?? "");
+function f(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
-var d = ({ href: e, children: t, ...n }) => {
+var p = ({ href: e, children: t, ...n }) => {
 	let r = s().locale ?? "en";
-	return e == null || typeof e != "string" || l(e) ? c(o, {
+	return e == null || typeof e != "string" ? c(o, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}) : c(o, {
-		href: u(e, r),
+	}, void 0, !1, {
+		fileName: u,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0) : d(e) ? c(o, {
+		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	});
+	}, void 0, !1, {
+		fileName: u,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0) : c(o, {
+		href: f(e, r),
+		prefetch: !1,
+		...n,
+		children: t
+	}, void 0, !1, {
+		fileName: u,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
 };
-function f(e, t) {
-	let n = t && t.cache ? t.cache : S, r = t && t.serializer ? t.serializer : b;
-	return (t && t.strategy ? t.strategy : _)(e, {
+function m(e, t) {
+	let n = t && t.cache ? t.cache : w, r = t && t.serializer ? t.serializer : S;
+	return (t && t.strategy ? t.strategy : y)(e, {
 		cache: n,
 		serializer: r
 	});
 }
-function p(e) {
+function h(e) {
 	return e == null || typeof e == "number" || typeof e == "boolean";
 }
-function m(e, t, n, r) {
-	let i = p(r) ? r : n(r), a = t.get(i);
+function g(e, t, n, r) {
+	let i = h(r) ? r : n(r), a = t.get(i);
 	return a === void 0 && (a = e.call(this, r), t.set(i, a)), a;
 }
-function h(e, t, n) {
+function _(e, t, n) {
 	let r = Array.prototype.slice.call(arguments, 3), i = n(r), a = t.get(i);
 	return a === void 0 && (a = e.apply(this, r), t.set(i, a)), a;
 }
-function g(e, t, n, r, i) {
+function v(e, t, n, r, i) {
 	return n.bind(t, e, r, i);
 }
-function _(e, t) {
-	let n = e.length === 1 ? m : h;
-	return g(e, this, n, t.cache.create(), t.serializer);
-}
-function v(e, t) {
-	return g(e, this, h, t.cache.create(), t.serializer);
-}
 function y(e, t) {
-	return g(e, this, m, t.cache.create(), t.serializer);
+	let n = e.length === 1 ? g : _;
+	return v(e, this, n, t.cache.create(), t.serializer);
 }
-var b = function() {
+function b(e, t) {
+	return v(e, this, _, t.cache.create(), t.serializer);
+}
+function x(e, t) {
+	return v(e, this, g, t.cache.create(), t.serializer);
+}
+var S = function() {
 	return JSON.stringify(arguments);
-}, x = class {
-	cache;
+}, C = class {
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -64,15 +81,20 @@ var b = function() {
 	set(e, t) {
 		this.cache[e] = t;
 	}
-}, S = { create: function() {
-	return new x();
-} }, C = {
-	variadic: v,
-	monadic: y
-}, w = function(e) {
+}, w = { create: function() {
+	return new C();
+} }, T = {
+	variadic: b,
+	monadic: x
+}, E = class extends Error {
+	constructor(e, t) {
+		let n = e;
+		t && (n += ": " + t), super(n), this.code = e, t && (this.originalMessage = t);
+	}
+}, D = function(e) {
 	return e.MISSING_MESSAGE = "MISSING_MESSAGE", e.MISSING_FORMAT = "MISSING_FORMAT", e.ENVIRONMENT_FALLBACK = "ENVIRONMENT_FALLBACK", e.INSUFFICIENT_PATH = "INSUFFICIENT_PATH", e.INVALID_MESSAGE = "INVALID_MESSAGE", e.INVALID_KEY = "INVALID_KEY", e.FORMATTING_ERROR = "FORMATTING_ERROR", e;
-}(w || {});
-function T() {
+}(D || {});
+function O() {
 	return {
 		dateTime: {},
 		number: {},
@@ -83,66 +105,117 @@ function T() {
 		displayNames: {}
 	};
 }
-function E(e, t) {
-	return f(e, {
-		cache: (n = t, { create: () => ({
-			get: (e) => n[e],
-			set(e, t) {
-				n[e] = t;
+function k(e) {
+	return { create() {
+		return {
+			get(t) {
+				return e[t];
+			},
+			set(t, n) {
+				e[t] = n;
 			}
-		}) }),
-		strategy: C.variadic
+		};
+	} };
+}
+function A(e, t) {
+	return m(e, {
+		cache: k(t),
+		strategy: T.variadic
 	});
-	var n;
 }
-function D(e, t) {
-	return E(((...t) => new e(...t)), t);
+function j(e, t) {
+	return A((...t) => new e(...t), t);
 }
-function O(e) {
+function M(e) {
 	return {
-		getDateTimeFormat: D(Intl.DateTimeFormat, e.dateTime),
-		getNumberFormat: D(Intl.NumberFormat, e.number),
-		getPluralRules: D(Intl.PluralRules, e.pluralRules),
-		getRelativeTimeFormat: D(Intl.RelativeTimeFormat, e.relativeTime),
-		getListFormat: D(Intl.ListFormat, e.list),
-		getDisplayNames: D(Intl.DisplayNames, e.displayNames)
+		getDateTimeFormat: j(Intl.DateTimeFormat, e.dateTime),
+		getNumberFormat: j(Intl.NumberFormat, e.number),
+		getPluralRules: j(Intl.PluralRules, e.pluralRules),
+		getRelativeTimeFormat: j(Intl.RelativeTimeFormat, e.relativeTime),
+		getListFormat: j(Intl.ListFormat, e.list),
+		getDisplayNames: j(Intl.DisplayNames, e.displayNames)
 	};
 }
-function k(...e) {
+function N(...e) {
 	return e.filter(Boolean).join(".");
 }
-function A(e) {
-	return k(e.namespace, e.key);
+function P(e) {
+	return N(e.namespace, e.key);
 }
-function j(e) {
+function F(e) {
 	console.error(e);
 }
-var M = 86400;
-7 * M, 365 * M;
-function N({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
-	return {
+var I = 86400;
+I * 7, 365 / 12 * I * 3, I * 365;
+function L(e, t, n) {
+	Object.entries(e).forEach(([e, r]) => {
+		if (e.includes(".")) {
+			let r = e;
+			n && (r += ` (at ${n})`), t.push(r);
+		}
+		typeof r == "object" && r && L(r, t, N(n, e));
+	});
+}
+function R(e, t) {
+	let n = [];
+	L(e, n), n.length > 0 && t(new E(D.INVALID_KEY, `Namespace keys cannot contain the character "." as this is used to express nesting. Please remove it or replace it with another character.
+
+Invalid ${n.length === 1 ? "key" : "keys"}: ${n.join(", ")}
+
+If you're migrating from a flat structure, you can convert your messages as follows:
+
+import {set} from "lodash";
+
+const input = {
+  "one.one": "1.1",
+  "one.two": "1.2",
+  "two.one.one": "2.1.1"
+};
+
+const output = Object.entries(input).reduce(
+  (acc, [key, value]) => set(acc, key, value),
+  {}
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+`));
+}
+function z({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
+	let a = r || F, o = t || P;
+	return n && R(n, a), {
 		...i,
 		formats: e || void 0,
 		messages: n || void 0,
-		onError: r || j,
-		getMessageFallback: t || A
+		onError: a,
+		getMessageFallback: o
 	};
 }
-var P = e(void 0);
-function F({ children: e, formats: n, getMessageFallback: r, locale: a, messages: o, now: s, onError: l, timeZone: u }) {
-	let d = t(P), f = i((() => d?.cache || T()), [a, d?.cache]), p = i((() => d?.formatters || O(f)), [f, d?.formatters]), m = i((() => ({
-		...N({
+var B = e(void 0);
+function V({ children: e, formats: n, getMessageFallback: r, locale: a, messages: o, now: s, onError: c, timeZone: u }) {
+	let d = t(B), f = i(() => d?.cache || O(), [a, d?.cache]), p = i(() => d?.formatters || M(f), [f, d?.formatters]), m = i(() => ({
+		...z({
 			locale: a,
 			formats: n === void 0 ? d?.formats : n,
 			getMessageFallback: r || d?.getMessageFallback,
 			messages: o === void 0 ? d?.messages : o,
 			now: s || d?.now,
-			onError: l || d?.onError,
+			onError: c || d?.onError,
 			timeZone: u || d?.timeZone
 		}),
 		formatters: p,
 		cache: f
-	})), [
+	}), [
 		f,
 		n,
 		p,
@@ -150,23 +223,23 @@ function F({ children: e, formats: n, getMessageFallback: r, locale: a, messages
 		a,
 		o,
 		s,
-		l,
+		c,
 		d,
 		u
 	]);
-	return c(P.Provider, {
+	return l(B.Provider, {
 		value: m,
 		children: e
 	});
 }
-function I({ locale: e, ...t }) {
-	if (!e) throw Error(void 0);
-	return c(F, {
+function H({ locale: e, ...t }) {
+	if (!e) throw Error("Couldn't infer the `locale` prop in `NextIntlClientProvider`, please provide it explicitly.\n\nSee https://next-intl.dev/docs/configuration#locale");
+	return l(V, {
 		locale: e,
 		...t
 	});
 }
-function L() {
+function U() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -180,27 +253,32 @@ function L() {
 		}
 	}
 }
-function R(e, t) {
+function W(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function z({ children: e, locale: t, messages: i }) {
+var G = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/components/AppProviders.tsx";
+function K({ children: e, locale: t, messages: i }) {
 	let [o] = a(() => typeof performance < "u" ? performance.now() : 0);
 	return r(() => {
-		R("AppRoot", o);
+		W("AppRoot", o);
 	}, [o]), n(() => {
 		document.documentElement.lang = t;
 	}, [t]), n(() => {
-		L();
-	}, []), c(I, {
+		U();
+	}, []), c(H, {
 		locale: t,
 		messages: i,
 		timeZone: "UTC",
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: G,
+		lineNumber: 33,
+		columnNumber: 7
+	}, this);
 }
-var B = {
+var q = {
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -648,15 +726,28 @@ var B = {
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}, V = "en";
-function H({ children: e }) {
-	return c(z, {
-		locale: V,
-		messages: B,
+}, J = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/scripts/Wrapper.tsx", Y = "en";
+function X({ children: e }) {
+	return c(K, {
+		locale: Y,
+		messages: q,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: J,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
-function U() {
-	return c(H, { children: c(d, {}) });
+var Z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/components/Link.wrapper.tsx";
+function Q() {
+	return c(X, { children: c(p, {}, void 0, !1, {
+		fileName: Z,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: Z,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { U as default };
+export { Q as default };

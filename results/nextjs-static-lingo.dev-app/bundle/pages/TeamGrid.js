@@ -1,138 +1,264 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/team/TeamGrid.tsx";
 function TeamGrid() {
-	return jsxs("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: "SC"
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 5,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "Sarah Chen"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 8,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: "Founder & Lead Engineer"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 9,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Former Google engineer with 10 years of experience building internationalization systems at scale."
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 12,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 4,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: "MW"
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 18,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "Marcus Weber"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 21,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: "Performance Engineer"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 24,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 27,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 17,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: "AP"
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 33,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "Aisha Patel"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 36,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: "Developer Advocate"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 37,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 40,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 32,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: "TR"
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 46,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "Tomás Rodríguez"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 49,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: "Full-Stack Developer"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 52,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 55,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 45,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: "YT"
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 61,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "Yuki Tanaka"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 64,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: "Data Analyst"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 65,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 66,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 60,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6 text-center",
 				children: [
-					jsx("div", {
+					jsxDEV("div", {
 						className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 						children: "EK"
-					}),
-					jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 72,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h3", {
 						className: "text-base font-semibold text-foreground",
 						children: "Elena Kowalski"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 75,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-2 text-xs font-medium text-primary",
 						children: "Community Manager"
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 78,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Manages community contributions, partnerships, and events. Background in open source governance."
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 81,
+						columnNumber: 9
+					}, this)
 				]
-			})
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 71,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 3,
+		columnNumber: 5
+	}, this);
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -163,10 +289,6 @@ var serverUrl = "__SERVER_URL__";
 var sourceLocale = "__SOURCE_LOCALE__";
 function getClientLocale() {
 	return "en";
-}
-var __NOOP_PERSIST_LOCALE__ = () => {};
-function persistLocale(locale) {
-	return __NOOP_PERSIST_LOCALE__();
 }
 var noop = () => {};
 var IS_DEV = process.env.NODE_ENV === "development";
@@ -207,7 +329,6 @@ function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, 
 		if (router) setTranslations(initialTranslations);
 	}, [initialTranslations, router]);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		else await loadTranslations(newLocale);
@@ -313,7 +434,6 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		};
 	}, []);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		setIsLoading(true);
@@ -334,7 +454,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -372,17 +492,31 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/team/TeamGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(TeamGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(TeamGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -484,12 +618,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

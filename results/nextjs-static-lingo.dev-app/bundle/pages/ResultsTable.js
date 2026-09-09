@@ -1,122 +1,248 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/home/ResultsTable.tsx";
 function ResultsTable() {
-	return jsxs("section", { children: [jsx("h2", {
+	return jsxDEV("section", { children: [jsxDEV("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: "Sample Results"
-	}), jsx("div", {
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 4,
+		columnNumber: 7
+	}, this), jsxDEV("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
-		children: jsxs("table", {
+		children: jsxDEV("table", {
 			className: "w-full text-sm",
-			children: [jsx("thead", {
+			children: [jsxDEV("thead", {
 				className: "bg-muted",
-				children: jsxs("tr", { children: [
-					jsx("th", {
+				children: jsxDEV("tr", { children: [
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: "Library"
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 11,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: "Bundle Size"
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 14,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: "Lookup Time"
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 17,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: "Lazy Loading"
-					})
-				] })
-			}), jsxs("tbody", { children: [
-				jsxs("tr", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 20,
+						columnNumber: 15
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 10,
+					columnNumber: 13
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 9,
+				columnNumber: 11
+			}, this), jsxDEV("tbody", { children: [
+				jsxDEV("tr", {
 					className: "border-t border-border",
 					children: [
-						jsx("td", {
+						jsxDEV("td", {
 							className: "px-4 py-3 font-medium text-foreground",
 							children: "react-i18next"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 27,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "42.3 kB"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 30,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "0.12ms"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 31,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "Yes"
-						})
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 32,
+							columnNumber: 15
+						}, this)
 					]
-				}),
-				jsxs("tr", {
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 26,
+					columnNumber: 13
+				}, this),
+				jsxDEV("tr", {
 					className: "border-t border-border",
 					children: [
-						jsx("td", {
+						jsxDEV("td", {
 							className: "px-4 py-3 font-medium text-foreground",
 							children: "react-intl"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 35,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "38.1 kB"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 38,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "0.15ms"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 39,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "Manual"
-						})
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 40,
+							columnNumber: 15
+						}, this)
 					]
-				}),
-				jsxs("tr", {
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 34,
+					columnNumber: 13
+				}, this),
+				jsxDEV("tr", {
 					className: "border-t border-border",
 					children: [
-						jsx("td", {
+						jsxDEV("td", {
 							className: "px-4 py-3 font-medium text-foreground",
 							children: "lingui"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 43,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "12.8 kB"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 44,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "0.08ms"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 45,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "Yes"
-						})
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 46,
+							columnNumber: 15
+						}, this)
 					]
-				}),
-				jsxs("tr", {
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 42,
+					columnNumber: 13
+				}, this),
+				jsxDEV("tr", {
 					className: "border-t border-border",
 					children: [
-						jsx("td", {
+						jsxDEV("td", {
 							className: "px-4 py-3 font-medium text-foreground",
 							children: "typesafe-i18n"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 49,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "5.2 kB"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 52,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "0.05ms"
-						}),
-						jsx("td", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 53,
+							columnNumber: 15
+						}, this),
+						jsxDEV("td", {
 							className: "px-4 py-3 text-muted-foreground",
 							children: "Built-in"
-						})
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 54,
+							columnNumber: 15
+						}, this)
 					]
-				})
-			] })]
-		})
-	})] });
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 48,
+					columnNumber: 13
+				}, this)
+			] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 25,
+				columnNumber: 11
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 8,
+			columnNumber: 9
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 7,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 3,
+		columnNumber: 5
+	}, this);
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -147,10 +273,6 @@ var serverUrl = "__SERVER_URL__";
 var sourceLocale = "__SOURCE_LOCALE__";
 function getClientLocale() {
 	return "en";
-}
-var __NOOP_PERSIST_LOCALE__ = () => {};
-function persistLocale(locale) {
-	return __NOOP_PERSIST_LOCALE__();
 }
 var noop = () => {};
 var IS_DEV = process.env.NODE_ENV === "development";
@@ -191,7 +313,6 @@ function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, 
 		if (router) setTranslations(initialTranslations);
 	}, [initialTranslations, router]);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		else await loadTranslations(newLocale);
@@ -297,7 +418,6 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		};
 	}, []);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		setIsLoading(true);
@@ -318,7 +438,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -356,17 +476,31 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/home/ResultsTable.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ResultsTable, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ResultsTable, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -468,12 +602,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

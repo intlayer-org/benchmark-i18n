@@ -10,84 +10,84 @@
             "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun",
             "children": [
               {
-                "name": "@tanstack+react-start-server@1.167.38+005eabf3d8b6ef06/node_modules/@tanstack/react-start-server/dist/esm",
+                "name": "@tanstack+react-start-server@1.167.38+6f4b9a1cfb20c0ae/node_modules/@tanstack/react-start-server/dist/esm",
                 "children": [
                   {
-                    "uid": "94fe81c3-1",
+                    "uid": "52bd0667-1",
                     "name": "StartServer.js"
                   },
                   {
-                    "uid": "94fe81c3-3",
+                    "uid": "52bd0667-3",
                     "name": "defaultStreamHandler.js"
                   }
                 ]
               },
               {
                 "name": "rou3@0.8.1/node_modules/rou3/dist/index.mjs",
-                "uid": "94fe81c3-5"
+                "uid": "52bd0667-5"
               },
               {
                 "name": "srvx@0.11.15/node_modules/srvx/dist",
                 "children": [
                   {
                     "name": "_chunks/_url.mjs",
-                    "uid": "94fe81c3-7"
+                    "uid": "52bd0667-7"
                   },
                   {
                     "name": "adapters/node.mjs",
-                    "uid": "94fe81c3-9"
+                    "uid": "52bd0667-9"
                   }
                 ]
               },
               {
                 "name": "h3@2.0.1-rc.20/node_modules/h3/dist/h3-Bz4OPZv_.mjs",
-                "uid": "94fe81c3-11"
+                "uid": "52bd0667-11"
               },
               {
                 "name": "@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm",
                 "children": [
                   {
-                    "uid": "94fe81c3-13",
+                    "uid": "52bd0667-13",
                     "name": "request-response.js"
                   },
                   {
-                    "uid": "94fe81c3-15",
+                    "uid": "52bd0667-15",
                     "name": "constants.js"
                   },
                   {
-                    "uid": "94fe81c3-55",
+                    "uid": "52bd0667-55",
                     "name": "router-manifest.js"
                   },
                   {
-                    "uid": "94fe81c3-79",
+                    "uid": "52bd0667-79",
                     "name": "frame-protocol.js"
                   },
                   {
-                    "uid": "94fe81c3-81",
+                    "uid": "52bd0667-81",
                     "name": "server-functions-handler.js"
                   },
                   {
-                    "uid": "94fe81c3-83",
+                    "uid": "52bd0667-83",
                     "name": "early-hints.js"
                   },
                   {
-                    "uid": "94fe81c3-85",
+                    "uid": "52bd0667-85",
                     "name": "transformAssetUrls.js"
                   },
                   {
-                    "uid": "94fe81c3-87",
+                    "uid": "52bd0667-87",
                     "name": "inlineCss.js"
                   },
                   {
-                    "uid": "94fe81c3-89",
+                    "uid": "52bd0667-89",
                     "name": "finalManifest.js"
                   },
                   {
                     "name": "serializer/ServerFunctionSerializationAdapter.js",
-                    "uid": "94fe81c3-91"
+                    "uid": "52bd0667-91"
                   },
                   {
-                    "uid": "94fe81c3-101",
+                    "uid": "52bd0667-101",
                     "name": "createStartHandler.js"
                   }
                 ]
@@ -96,114 +96,114 @@
                 "name": "@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm",
                 "children": [
                   {
-                    "uid": "94fe81c3-17",
+                    "uid": "52bd0667-17",
                     "name": "not-found.js"
                   },
                   {
-                    "uid": "94fe81c3-19",
+                    "uid": "52bd0667-19",
                     "name": "root.js"
                   },
                   {
-                    "uid": "94fe81c3-21",
+                    "uid": "52bd0667-21",
                     "name": "redirect.js"
                   },
                   {
                     "name": "ssr",
                     "children": [
                       {
-                        "uid": "94fe81c3-23",
+                        "uid": "52bd0667-23",
                         "name": "ssr-match-id.js"
                       },
                       {
-                        "uid": "94fe81c3-39",
+                        "uid": "52bd0667-39",
                         "name": "constants.js"
                       },
                       {
                         "name": "serializer",
                         "children": [
                           {
-                            "uid": "94fe81c3-43",
+                            "uid": "52bd0667-43",
                             "name": "transformer.js"
                           },
                           {
-                            "uid": "94fe81c3-45",
+                            "uid": "52bd0667-45",
                             "name": "RawStream.js"
                           },
                           {
-                            "uid": "94fe81c3-47",
+                            "uid": "52bd0667-47",
                             "name": "ShallowErrorPlugin.js"
                           },
                           {
-                            "uid": "94fe81c3-53",
+                            "uid": "52bd0667-53",
                             "name": "seroval-plugins.js"
                           }
                         ]
                       },
                       {
-                        "uid": "94fe81c3-69",
+                        "uid": "52bd0667-69",
                         "name": "headers.js"
                       },
                       {
-                        "uid": "94fe81c3-93",
+                        "uid": "52bd0667-93",
                         "name": "tsrScript.js"
                       },
                       {
-                        "uid": "94fe81c3-95",
+                        "uid": "52bd0667-95",
                         "name": "ssr-server.js"
                       },
                       {
-                        "uid": "94fe81c3-97",
+                        "uid": "52bd0667-97",
                         "name": "handlerCallback.js"
                       },
                       {
-                        "uid": "94fe81c3-99",
+                        "uid": "52bd0667-99",
                         "name": "createRequestHandler.js"
                       }
                     ]
                   },
                   {
-                    "uid": "94fe81c3-25",
+                    "uid": "52bd0667-25",
                     "name": "sieve-cache.js"
                   },
                   {
-                    "uid": "94fe81c3-27",
+                    "uid": "52bd0667-27",
                     "name": "invariant.js"
                   },
                   {
-                    "uid": "94fe81c3-29",
+                    "uid": "52bd0667-29",
                     "name": "rewrite.js"
                   },
                   {
-                    "uid": "94fe81c3-33",
+                    "uid": "52bd0667-33",
                     "name": "load-client.js"
                   },
                   {
-                    "uid": "94fe81c3-35",
+                    "uid": "52bd0667-35",
                     "name": "utils.js"
                   },
                   {
-                    "uid": "94fe81c3-37",
+                    "uid": "52bd0667-37",
                     "name": "manifest.js"
                   }
                 ]
               },
               {
                 "name": "@tanstack+history@1.162.2/node_modules/@tanstack/history/dist/esm/index.js",
-                "uid": "94fe81c3-31"
+                "uid": "52bd0667-31"
               },
               {
                 "name": "seroval@1.6.7/node_modules/seroval/dist/index.js",
-                "uid": "94fe81c3-41"
+                "uid": "52bd0667-41"
               },
               {
                 "name": "seroval-plugins@1.6.7+8ebe760786b55aa9/node_modules/seroval-plugins/dist",
                 "children": [
                   {
-                    "uid": "94fe81c3-49",
+                    "uid": "52bd0667-49",
                     "name": "web-CWqRG00W.js"
                   },
                   {
-                    "uid": "94fe81c3-51",
+                    "uid": "52bd0667-51",
                     "name": "web.js"
                   }
                 ]
@@ -212,51 +212,51 @@
                 "name": "@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm",
                 "children": [
                   {
-                    "uid": "94fe81c3-59",
+                    "uid": "52bd0667-59",
                     "name": "constants.js"
                   },
                   {
-                    "uid": "94fe81c3-61",
+                    "uid": "52bd0667-61",
                     "name": "safeObjectMerge.js"
                   },
                   {
-                    "uid": "94fe81c3-65",
+                    "uid": "52bd0667-65",
                     "name": "getStartOptions.js"
                   },
                   {
-                    "uid": "94fe81c3-71",
+                    "uid": "52bd0667-71",
                     "name": "createServerFn.js"
                   },
                   {
-                    "uid": "94fe81c3-73",
+                    "uid": "52bd0667-73",
                     "name": "createMiddleware.js"
                   },
                   {
-                    "uid": "94fe81c3-75",
+                    "uid": "52bd0667-75",
                     "name": "createCsrfMiddleware.js"
                   },
                   {
-                    "uid": "94fe81c3-77",
+                    "uid": "52bd0667-77",
                     "name": "getDefaultSerovalPlugins.js"
                   }
                 ]
               },
               {
                 "name": "@tanstack+start-storage-context@1.167.30/node_modules/@tanstack/start-storage-context/dist/esm/async-local-storage.js",
-                "uid": "94fe81c3-63"
+                "uid": "52bd0667-63"
               },
               {
                 "name": "cookie-es@3.1.1/node_modules/cookie-es/dist/index.mjs",
-                "uid": "94fe81c3-67"
+                "uid": "52bd0667-67"
               },
               {
-                "name": "@tanstack+react-start@1.168.50+117aecb3f305d63e/node_modules/@tanstack/react-start/dist/plugin/default-entry/server.ts",
-                "uid": "94fe81c3-103"
+                "name": "@tanstack+react-start@1.168.50+48770be4ba4996d0/node_modules/@tanstack/react-start/dist/plugin/default-entry/server.ts",
+                "uid": "52bd0667-103"
               }
             ]
           },
           {
-            "uid": "94fe81c3-57",
+            "uid": "52bd0667-57",
             "name": "\u0000%23tanstack-start-server-fn-resolver"
           }
         ]
@@ -266,7 +266,7 @@
         "children": [
           {
             "name": "src/components/pages/about/AboutGrid.tsx",
-            "uid": "94fe81c3-105"
+            "uid": "52bd0667-105"
           }
         ]
       },
@@ -275,7 +275,7 @@
         "children": [
           {
             "name": "src/components/pages/about/AboutHeader.tsx",
-            "uid": "94fe81c3-107"
+            "uid": "52bd0667-107"
           }
         ]
       },
@@ -284,7 +284,7 @@
         "children": [
           {
             "name": "src/components/pages/settings/ApiAccessSection.tsx",
-            "uid": "94fe81c3-109"
+            "uid": "52bd0667-109"
           }
         ]
       },
@@ -293,7 +293,7 @@
         "children": [
           {
             "name": "src/components/pages/blog/BlogHeader.tsx",
-            "uid": "94fe81c3-111"
+            "uid": "52bd0667-111"
           }
         ]
       },
@@ -302,7 +302,7 @@
         "children": [
           {
             "name": "src/components/pages/blog/BlogList.tsx",
-            "uid": "94fe81c3-113"
+            "uid": "52bd0667-113"
           }
         ]
       },
@@ -311,7 +311,7 @@
         "children": [
           {
             "name": "src/components/pages/careers/CareersBenefits.tsx",
-            "uid": "94fe81c3-115"
+            "uid": "52bd0667-115"
           }
         ]
       },
@@ -320,7 +320,7 @@
         "children": [
           {
             "name": "src/components/pages/careers/CareersHeader.tsx",
-            "uid": "94fe81c3-117"
+            "uid": "52bd0667-117"
           }
         ]
       },
@@ -329,7 +329,7 @@
         "children": [
           {
             "name": "src/components/pages/contact/ContactForm.tsx",
-            "uid": "94fe81c3-119"
+            "uid": "52bd0667-119"
           }
         ]
       },
@@ -338,7 +338,7 @@
         "children": [
           {
             "name": "src/components/pages/contact/ContactHeader.tsx",
-            "uid": "94fe81c3-121"
+            "uid": "52bd0667-121"
           }
         ]
       },
@@ -347,7 +347,7 @@
         "children": [
           {
             "name": "src/components/pages/faq/FAQHeader.tsx",
-            "uid": "94fe81c3-123"
+            "uid": "52bd0667-123"
           }
         ]
       },
@@ -356,7 +356,7 @@
         "children": [
           {
             "name": "src/components/pages/faq/FAQList.tsx",
-            "uid": "94fe81c3-125"
+            "uid": "52bd0667-125"
           }
         ]
       },
@@ -365,7 +365,7 @@
         "children": [
           {
             "name": "src/components/pages/home/Hero.tsx",
-            "uid": "94fe81c3-127"
+            "uid": "52bd0667-127"
           }
         ]
       },
@@ -374,7 +374,7 @@
         "children": [
           {
             "name": "src/components/MockBanner.tsx",
-            "uid": "94fe81c3-129"
+            "uid": "52bd0667-129"
           }
         ]
       },
@@ -383,7 +383,7 @@
         "children": [
           {
             "name": "src/components/pages/careers/OpenPositions.tsx",
-            "uid": "94fe81c3-131"
+            "uid": "52bd0667-131"
           }
         ]
       },
@@ -392,7 +392,7 @@
         "children": [
           {
             "name": "src/components/pages/settings/PreferencesSection.tsx",
-            "uid": "94fe81c3-133"
+            "uid": "52bd0667-133"
           }
         ]
       },
@@ -401,7 +401,7 @@
         "children": [
           {
             "name": "src/components/pages/pricing/PricingHeader.tsx",
-            "uid": "94fe81c3-135"
+            "uid": "52bd0667-135"
           }
         ]
       },
@@ -410,7 +410,7 @@
         "children": [
           {
             "name": "src/components/pages/pricing/PricingTiers.tsx",
-            "uid": "94fe81c3-137"
+            "uid": "52bd0667-137"
           }
         ]
       },
@@ -419,7 +419,7 @@
         "children": [
           {
             "name": "src/components/pages/products/ProductsGrid.tsx",
-            "uid": "94fe81c3-139"
+            "uid": "52bd0667-139"
           }
         ]
       },
@@ -428,7 +428,7 @@
         "children": [
           {
             "name": "src/components/pages/products/ProductsHeader.tsx",
-            "uid": "94fe81c3-141"
+            "uid": "52bd0667-141"
           }
         ]
       },
@@ -437,7 +437,7 @@
         "children": [
           {
             "name": "src/components/pages/settings/ProfileSection.tsx",
-            "uid": "94fe81c3-143"
+            "uid": "52bd0667-143"
           }
         ]
       },
@@ -446,7 +446,7 @@
         "children": [
           {
             "name": "src/components/pages/home/ResultsTable.tsx",
-            "uid": "94fe81c3-145"
+            "uid": "52bd0667-145"
           }
         ]
       },
@@ -455,7 +455,7 @@
         "children": [
           {
             "name": "src/components/pages/settings/SettingsFooter.tsx",
-            "uid": "94fe81c3-147"
+            "uid": "52bd0667-147"
           }
         ]
       },
@@ -464,7 +464,7 @@
         "children": [
           {
             "name": "src/components/pages/settings/SettingsHeader.tsx",
-            "uid": "94fe81c3-149"
+            "uid": "52bd0667-149"
           }
         ]
       },
@@ -473,7 +473,7 @@
         "children": [
           {
             "name": "src/components/pages/team/TeamGrid.tsx",
-            "uid": "94fe81c3-151"
+            "uid": "52bd0667-151"
           }
         ]
       },
@@ -482,7 +482,7 @@
         "children": [
           {
             "name": "src/components/pages/team/TeamHeader.tsx",
-            "uid": "94fe81c3-153"
+            "uid": "52bd0667-153"
           }
         ]
       },
@@ -491,7 +491,7 @@
         "children": [
           {
             "name": "src/components/pages/home/UnderstandingImpact.tsx",
-            "uid": "94fe81c3-155"
+            "uid": "52bd0667-155"
           }
         ]
       },
@@ -500,7 +500,7 @@
         "children": [
           {
             "name": "src/components/pages/about/WhatWeMeasure.tsx",
-            "uid": "94fe81c3-157"
+            "uid": "52bd0667-157"
           }
         ]
       },
@@ -509,7 +509,7 @@
         "children": [
           {
             "name": "src/components/pages/home/WhyItMatters.tsx",
-            "uid": "94fe81c3-159"
+            "uid": "52bd0667-159"
           }
         ]
       },
@@ -518,15 +518,15 @@
         "children": [
           {
             "name": "src/routes/$locale/index.tsx?tsr-split=component",
-            "uid": "94fe81c3-161"
+            "uid": "52bd0667-161"
           }
         ]
       },
       {
-        "name": "assets/_tanstack-start-manifest_v-Df8jAZAz.js",
+        "name": "assets/_tanstack-start-manifest_v-CB6Ulw2F.js",
         "children": [
           {
-            "uid": "94fe81c3-163",
+            "uid": "52bd0667-163",
             "name": "\u0000tanstack-start-manifest:v"
           }
         ]
@@ -536,7 +536,7 @@
         "children": [
           {
             "name": "src/routes/$locale/about.tsx?tsr-split=component",
-            "uid": "94fe81c3-165"
+            "uid": "52bd0667-165"
           }
         ]
       },
@@ -545,7 +545,7 @@
         "children": [
           {
             "name": "src/routes/$locale/blog.tsx?tsr-split=component",
-            "uid": "94fe81c3-167"
+            "uid": "52bd0667-167"
           }
         ]
       },
@@ -554,7 +554,7 @@
         "children": [
           {
             "name": "src/routes/$locale/careers.tsx?tsr-split=component",
-            "uid": "94fe81c3-169"
+            "uid": "52bd0667-169"
           }
         ]
       },
@@ -563,7 +563,7 @@
         "children": [
           {
             "name": "src/routes/$locale/contact.tsx?tsr-split=component",
-            "uid": "94fe81c3-171"
+            "uid": "52bd0667-171"
           }
         ]
       },
@@ -572,7 +572,7 @@
         "children": [
           {
             "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/empty-plugin-adapters.js",
-            "uid": "94fe81c3-173"
+            "uid": "52bd0667-173"
           }
         ]
       },
@@ -581,7 +581,7 @@
         "children": [
           {
             "name": "src/routes/$locale/faq.tsx?tsr-split=component",
-            "uid": "94fe81c3-175"
+            "uid": "52bd0667-175"
           }
         ]
       },
@@ -590,7 +590,7 @@
         "children": [
           {
             "name": "src/routes/$locale/pricing.tsx?tsr-split=component",
-            "uid": "94fe81c3-177"
+            "uid": "52bd0667-177"
           }
         ]
       },
@@ -599,7 +599,7 @@
         "children": [
           {
             "name": "src/routes/$locale/products.tsx?tsr-split=component",
-            "uid": "94fe81c3-179"
+            "uid": "52bd0667-179"
           }
         ]
       },
@@ -608,7 +608,7 @@
         "children": [
           {
             "name": "src/routes/$locale/route.tsx?tsr-split=component",
-            "uid": "94fe81c3-181"
+            "uid": "52bd0667-181"
           }
         ]
       },
@@ -617,69 +617,69 @@
         "children": [
           {
             "name": "\u0000rolldown/runtime.js",
-            "uid": "94fe81c3-183"
+            "uid": "52bd0667-183"
           },
           {
             "name": "src",
             "children": [
               {
                 "name": "hooks/usePerformanceMeasure.ts",
-                "uid": "94fe81c3-185"
+                "uid": "52bd0667-185"
               },
               {
                 "name": "i18n",
                 "children": [
                   {
-                    "uid": "94fe81c3-187",
+                    "uid": "52bd0667-187",
                     "name": "config.ts"
                   },
                   {
                     "name": "locales",
                     "children": [
                       {
-                        "uid": "94fe81c3-189",
+                        "uid": "52bd0667-189",
                         "name": "en.json"
                       },
                       {
-                        "uid": "94fe81c3-191",
+                        "uid": "52bd0667-191",
                         "name": "fr.json"
                       },
                       {
-                        "uid": "94fe81c3-193",
+                        "uid": "52bd0667-193",
                         "name": "es.json"
                       },
                       {
-                        "uid": "94fe81c3-195",
+                        "uid": "52bd0667-195",
                         "name": "de.json"
                       },
                       {
-                        "uid": "94fe81c3-197",
+                        "uid": "52bd0667-197",
                         "name": "it.json"
                       },
                       {
-                        "uid": "94fe81c3-199",
+                        "uid": "52bd0667-199",
                         "name": "pt.json"
                       },
                       {
-                        "uid": "94fe81c3-201",
+                        "uid": "52bd0667-201",
                         "name": "zh.json"
                       },
                       {
-                        "uid": "94fe81c3-203",
+                        "uid": "52bd0667-203",
                         "name": "ja.json"
                       },
                       {
-                        "uid": "94fe81c3-205",
+                        "uid": "52bd0667-205",
                         "name": "ko.json"
                       },
                       {
-                        "uid": "94fe81c3-207",
+                        "uid": "52bd0667-207",
                         "name": "ru.json"
                       }
                     ]
                   },
                   {
-                    "uid": "94fe81c3-209",
+                    "uid": "52bd0667-209",
                     "name": "i18n.ts"
                   }
                 ]
@@ -691,57 +691,57 @@
                     "name": "$locale",
                     "children": [
                       {
-                        "uid": "94fe81c3-211",
+                        "uid": "52bd0667-211",
                         "name": "route.tsx"
                       },
                       {
-                        "uid": "94fe81c3-231",
+                        "uid": "52bd0667-231",
                         "name": "index.tsx"
                       },
                       {
-                        "uid": "94fe81c3-233",
+                        "uid": "52bd0667-233",
                         "name": "about.tsx"
                       },
                       {
-                        "uid": "94fe81c3-235",
+                        "uid": "52bd0667-235",
                         "name": "blog.tsx"
                       },
                       {
-                        "uid": "94fe81c3-237",
+                        "uid": "52bd0667-237",
                         "name": "careers.tsx"
                       },
                       {
-                        "uid": "94fe81c3-239",
+                        "uid": "52bd0667-239",
                         "name": "contact.tsx"
                       },
                       {
-                        "uid": "94fe81c3-241",
+                        "uid": "52bd0667-241",
                         "name": "faq.tsx"
                       },
                       {
-                        "uid": "94fe81c3-243",
+                        "uid": "52bd0667-243",
                         "name": "pricing.tsx"
                       },
                       {
-                        "uid": "94fe81c3-245",
+                        "uid": "52bd0667-245",
                         "name": "products.tsx"
                       },
                       {
-                        "uid": "94fe81c3-247",
+                        "uid": "52bd0667-247",
                         "name": "settings.tsx"
                       },
                       {
-                        "uid": "94fe81c3-249",
+                        "uid": "52bd0667-249",
                         "name": "team.tsx"
                       }
                     ]
                   },
                   {
-                    "uid": "94fe81c3-227",
+                    "uid": "52bd0667-227",
                     "name": "__root.tsx"
                   },
                   {
-                    "uid": "94fe81c3-229",
+                    "uid": "52bd0667-229",
                     "name": "index.tsx"
                   }
                 ]
@@ -750,44 +750,44 @@
                 "name": "components",
                 "children": [
                   {
-                    "uid": "94fe81c3-213",
+                    "uid": "52bd0667-213",
                     "name": "Footer.tsx"
                   },
                   {
-                    "uid": "94fe81c3-215",
+                    "uid": "52bd0667-215",
                     "name": "ThemeToggle.tsx"
                   },
                   {
-                    "uid": "94fe81c3-217",
+                    "uid": "52bd0667-217",
                     "name": "LocaleSwitcher.tsx"
                   },
                   {
-                    "uid": "94fe81c3-219",
+                    "uid": "52bd0667-219",
                     "name": "Header.tsx"
                   }
                 ]
               },
               {
-                "uid": "94fe81c3-221",
+                "uid": "52bd0667-221",
                 "name": "styles.css?transform-only"
               },
               {
-                "uid": "94fe81c3-223",
+                "uid": "52bd0667-223",
                 "name": "styles.css?url"
               },
               {
-                "uid": "94fe81c3-251",
+                "uid": "52bd0667-251",
                 "name": "routeTree.gen.ts"
               },
               {
-                "uid": "94fe81c3-253",
+                "uid": "52bd0667-253",
                 "name": "router.tsx"
               }
             ]
           },
           {
             "name": "Users/aymericpineau/Documents/benchmark-bloom/test-utils/src/browser-metrics.ts",
-            "uid": "94fe81c3-225"
+            "uid": "52bd0667-225"
           }
         ]
       },
@@ -796,16 +796,16 @@
         "children": [
           {
             "name": "src/routes/$locale/settings.tsx?tsr-split=component",
-            "uid": "94fe81c3-255"
+            "uid": "52bd0667-255"
           }
         ]
       },
       {
-        "name": "assets/start-gPvYHxOA.js",
+        "name": "assets/start-BZWh_a9r.js",
         "children": [
           {
-            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.168.50+117aecb3f305d63e/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
-            "uid": "94fe81c3-257"
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.168.50+48770be4ba4996d0/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+            "uid": "52bd0667-257"
           }
         ]
       },
@@ -814,7 +814,7 @@
         "children": [
           {
             "name": "src/routes/$locale/team.tsx?tsr-split=component",
-            "uid": "94fe81c3-259"
+            "uid": "52bd0667-259"
           }
         ]
       }
@@ -822,4992 +822,4992 @@
     "isRoot": true
   },
   "nodeParts": {
-    "94fe81c3-1": {
+    "52bd0667-1": {
       "renderedLength": 274,
-      "gzipLength": 206,
+      "gzipLength": 211,
       "brotliLength": 172,
-      "metaUid": "94fe81c3-0"
+      "metaUid": "52bd0667-0"
     },
-    "94fe81c3-3": {
+    "52bd0667-3": {
       "renderedLength": 392,
       "gzipLength": 269,
-      "brotliLength": 220,
-      "metaUid": "94fe81c3-2"
+      "brotliLength": 218,
+      "metaUid": "52bd0667-2"
     },
-    "94fe81c3-5": {
+    "52bd0667-5": {
       "renderedLength": 244,
       "gzipLength": 200,
       "brotliLength": 163,
-      "metaUid": "94fe81c3-4"
+      "metaUid": "52bd0667-4"
     },
-    "94fe81c3-7": {
+    "52bd0667-7": {
       "renderedLength": 4540,
       "gzipLength": 1487,
       "brotliLength": 1274,
-      "metaUid": "94fe81c3-6"
+      "metaUid": "52bd0667-6"
     },
-    "94fe81c3-9": {
+    "52bd0667-9": {
       "renderedLength": 4189,
       "gzipLength": 1272,
       "brotliLength": 1105,
-      "metaUid": "94fe81c3-8"
+      "metaUid": "52bd0667-8"
     },
-    "94fe81c3-11": {
+    "52bd0667-11": {
       "renderedLength": 9532,
       "gzipLength": 2892,
       "brotliLength": 2612,
-      "metaUid": "94fe81c3-10"
+      "metaUid": "52bd0667-10"
     },
-    "94fe81c3-13": {
+    "52bd0667-13": {
       "renderedLength": 2237,
       "gzipLength": 841,
       "brotliLength": 714,
-      "metaUid": "94fe81c3-12"
+      "metaUid": "52bd0667-12"
     },
-    "94fe81c3-15": {
+    "52bd0667-15": {
       "renderedLength": 194,
       "gzipLength": 161,
       "brotliLength": 135,
-      "metaUid": "94fe81c3-14"
+      "metaUid": "52bd0667-14"
     },
-    "94fe81c3-17": {
+    "52bd0667-17": {
       "renderedLength": 267,
       "gzipLength": 205,
       "brotliLength": 182,
-      "metaUid": "94fe81c3-16"
+      "metaUid": "52bd0667-16"
     },
-    "94fe81c3-19": {
+    "52bd0667-19": {
       "renderedLength": 229,
       "gzipLength": 175,
       "brotliLength": 161,
-      "metaUid": "94fe81c3-18"
+      "metaUid": "52bd0667-18"
     },
-    "94fe81c3-21": {
+    "52bd0667-21": {
       "renderedLength": 574,
       "gzipLength": 268,
       "brotliLength": 219,
-      "metaUid": "94fe81c3-20"
+      "metaUid": "52bd0667-20"
     },
-    "94fe81c3-23": {
+    "52bd0667-23": {
       "renderedLength": 285,
       "gzipLength": 204,
       "brotliLength": 174,
-      "metaUid": "94fe81c3-22"
+      "metaUid": "52bd0667-22"
     },
-    "94fe81c3-25": {
+    "52bd0667-25": {
       "renderedLength": 1552,
       "gzipLength": 774,
       "brotliLength": 652,
-      "metaUid": "94fe81c3-24"
+      "metaUid": "52bd0667-24"
     },
-    "94fe81c3-27": {
+    "52bd0667-27": {
       "renderedLength": 201,
       "gzipLength": 161,
       "brotliLength": 125,
-      "metaUid": "94fe81c3-26"
+      "metaUid": "52bd0667-26"
     },
-    "94fe81c3-29": {
+    "52bd0667-29": {
       "renderedLength": 399,
       "gzipLength": 270,
       "brotliLength": 218,
-      "metaUid": "94fe81c3-28"
+      "metaUid": "52bd0667-28"
     },
-    "94fe81c3-31": {
+    "52bd0667-31": {
       "renderedLength": 5927,
       "gzipLength": 1881,
       "brotliLength": 1650,
-      "metaUid": "94fe81c3-30"
+      "metaUid": "52bd0667-30"
     },
-    "94fe81c3-33": {
+    "52bd0667-33": {
       "renderedLength": 425,
       "gzipLength": 293,
       "brotliLength": 228,
-      "metaUid": "94fe81c3-32"
+      "metaUid": "52bd0667-32"
     },
-    "94fe81c3-35": {
+    "52bd0667-35": {
       "renderedLength": 1994,
       "gzipLength": 996,
       "brotliLength": 850,
-      "metaUid": "94fe81c3-34"
+      "metaUid": "52bd0667-34"
     },
-    "94fe81c3-37": {
+    "52bd0667-37": {
       "renderedLength": 1414,
       "gzipLength": 529,
       "brotliLength": 460,
-      "metaUid": "94fe81c3-36"
+      "metaUid": "52bd0667-36"
     },
-    "94fe81c3-39": {
+    "52bd0667-39": {
       "renderedLength": 219,
       "gzipLength": 179,
       "brotliLength": 148,
-      "metaUid": "94fe81c3-38"
+      "metaUid": "52bd0667-38"
     },
-    "94fe81c3-41": {
+    "52bd0667-41": {
       "renderedLength": 91963,
       "gzipLength": 18008,
       "brotliLength": 14726,
-      "metaUid": "94fe81c3-40"
+      "metaUid": "52bd0667-40"
     },
-    "94fe81c3-43": {
+    "52bd0667-43": {
       "renderedLength": 1705,
       "gzipLength": 596,
       "brotliLength": 526,
-      "metaUid": "94fe81c3-42"
+      "metaUid": "52bd0667-42"
     },
-    "94fe81c3-45": {
+    "52bd0667-45": {
       "renderedLength": 8270,
       "gzipLength": 2411,
       "brotliLength": 2094,
-      "metaUid": "94fe81c3-44"
+      "metaUid": "52bd0667-44"
     },
-    "94fe81c3-47": {
+    "52bd0667-47": {
       "renderedLength": 883,
       "gzipLength": 421,
       "brotliLength": 363,
-      "metaUid": "94fe81c3-46"
+      "metaUid": "52bd0667-46"
     },
-    "94fe81c3-49": {
+    "52bd0667-49": {
       "renderedLength": 2752,
       "gzipLength": 921,
       "brotliLength": 800,
-      "metaUid": "94fe81c3-48"
+      "metaUid": "52bd0667-48"
     },
-    "94fe81c3-51": {
+    "52bd0667-51": {
       "renderedLength": 0,
       "gzipLength": 0,
       "brotliLength": 0,
-      "metaUid": "94fe81c3-50"
+      "metaUid": "52bd0667-50"
     },
-    "94fe81c3-53": {
+    "52bd0667-53": {
       "renderedLength": 256,
       "gzipLength": 187,
       "brotliLength": 161,
-      "metaUid": "94fe81c3-52"
+      "metaUid": "52bd0667-52"
     },
-    "94fe81c3-55": {
+    "52bd0667-55": {
       "renderedLength": 1420,
       "gzipLength": 648,
       "brotliLength": 532,
-      "metaUid": "94fe81c3-54"
+      "metaUid": "52bd0667-54"
     },
-    "94fe81c3-57": {
+    "52bd0667-57": {
       "renderedLength": 568,
       "gzipLength": 289,
       "brotliLength": 240,
-      "metaUid": "94fe81c3-56"
+      "metaUid": "52bd0667-56"
     },
-    "94fe81c3-59": {
+    "52bd0667-59": {
       "renderedLength": 844,
       "gzipLength": 496,
       "brotliLength": 399,
-      "metaUid": "94fe81c3-58"
+      "metaUid": "52bd0667-58"
     },
-    "94fe81c3-61": {
+    "52bd0667-61": {
       "renderedLength": 979,
       "gzipLength": 429,
       "brotliLength": 359,
-      "metaUid": "94fe81c3-60"
+      "metaUid": "52bd0667-60"
     },
-    "94fe81c3-63": {
+    "52bd0667-63": {
       "renderedLength": 780,
       "gzipLength": 411,
       "brotliLength": 338,
-      "metaUid": "94fe81c3-62"
+      "metaUid": "52bd0667-62"
     },
-    "94fe81c3-65": {
+    "52bd0667-65": {
       "renderedLength": 216,
       "gzipLength": 158,
       "brotliLength": 130,
-      "metaUid": "94fe81c3-64"
+      "metaUid": "52bd0667-64"
     },
-    "94fe81c3-67": {
+    "52bd0667-67": {
       "renderedLength": 1429,
       "gzipLength": 518,
       "brotliLength": 450,
-      "metaUid": "94fe81c3-66"
+      "metaUid": "52bd0667-66"
     },
-    "94fe81c3-69": {
+    "52bd0667-69": {
       "renderedLength": 754,
       "gzipLength": 381,
       "brotliLength": 340,
-      "metaUid": "94fe81c3-68"
+      "metaUid": "52bd0667-68"
     },
-    "94fe81c3-71": {
+    "52bd0667-71": {
       "renderedLength": 679,
       "gzipLength": 391,
       "brotliLength": 344,
-      "metaUid": "94fe81c3-70"
+      "metaUid": "52bd0667-70"
     },
-    "94fe81c3-73": {
+    "52bd0667-73": {
       "renderedLength": 862,
       "gzipLength": 337,
       "brotliLength": 290,
-      "metaUid": "94fe81c3-72"
+      "metaUid": "52bd0667-72"
     },
-    "94fe81c3-75": {
+    "52bd0667-75": {
       "renderedLength": 2404,
       "gzipLength": 834,
       "brotliLength": 763,
-      "metaUid": "94fe81c3-74"
+      "metaUid": "52bd0667-74"
     },
-    "94fe81c3-77": {
+    "52bd0667-77": {
       "renderedLength": 318,
       "gzipLength": 217,
       "brotliLength": 180,
-      "metaUid": "94fe81c3-76"
+      "metaUid": "52bd0667-76"
     },
-    "94fe81c3-79": {
+    "52bd0667-79": {
       "renderedLength": 4845,
       "gzipLength": 1612,
       "brotliLength": 1405,
-      "metaUid": "94fe81c3-78"
+      "metaUid": "52bd0667-78"
     },
-    "94fe81c3-81": {
+    "52bd0667-81": {
       "renderedLength": 6927,
       "gzipLength": 2099,
       "brotliLength": 1825,
-      "metaUid": "94fe81c3-80"
+      "metaUid": "52bd0667-80"
     },
-    "94fe81c3-83": {
+    "52bd0667-83": {
       "renderedLength": 7994,
       "gzipLength": 2159,
       "brotliLength": 1929,
-      "metaUid": "94fe81c3-82"
+      "metaUid": "52bd0667-82"
     },
-    "94fe81c3-85": {
+    "52bd0667-85": {
       "renderedLength": 5546,
       "gzipLength": 1705,
       "brotliLength": 1534,
-      "metaUid": "94fe81c3-84"
+      "metaUid": "52bd0667-84"
     },
-    "94fe81c3-87": {
+    "52bd0667-87": {
       "renderedLength": 574,
       "gzipLength": 282,
       "brotliLength": 248,
-      "metaUid": "94fe81c3-86"
+      "metaUid": "52bd0667-86"
     },
-    "94fe81c3-89": {
+    "52bd0667-89": {
       "renderedLength": 5143,
       "gzipLength": 1296,
       "brotliLength": 1167,
-      "metaUid": "94fe81c3-88"
+      "metaUid": "52bd0667-88"
     },
-    "94fe81c3-91": {
+    "52bd0667-91": {
       "renderedLength": 711,
       "gzipLength": 398,
       "brotliLength": 360,
-      "metaUid": "94fe81c3-90"
+      "metaUid": "52bd0667-90"
     },
-    "94fe81c3-93": {
+    "52bd0667-93": {
       "renderedLength": 381,
       "gzipLength": 249,
       "brotliLength": 210,
-      "metaUid": "94fe81c3-92"
+      "metaUid": "52bd0667-92"
     },
-    "94fe81c3-95": {
+    "52bd0667-95": {
       "renderedLength": 16407,
       "gzipLength": 4520,
       "brotliLength": 3977,
-      "metaUid": "94fe81c3-94"
+      "metaUid": "52bd0667-94"
     },
-    "94fe81c3-97": {
+    "52bd0667-97": {
       "renderedLength": 2151,
       "gzipLength": 689,
       "brotliLength": 592,
-      "metaUid": "94fe81c3-96"
+      "metaUid": "52bd0667-96"
     },
-    "94fe81c3-99": {
+    "52bd0667-99": {
       "renderedLength": 1385,
       "gzipLength": 591,
       "brotliLength": 510,
-      "metaUid": "94fe81c3-98"
+      "metaUid": "52bd0667-98"
     },
-    "94fe81c3-101": {
+    "52bd0667-101": {
       "renderedLength": 18560,
       "gzipLength": 5131,
       "brotliLength": 4509,
-      "metaUid": "94fe81c3-100"
+      "metaUid": "52bd0667-100"
     },
-    "94fe81c3-103": {
+    "52bd0667-103": {
       "renderedLength": 399,
-      "gzipLength": 259,
-      "brotliLength": 206,
-      "metaUid": "94fe81c3-102"
+      "gzipLength": 261,
+      "brotliLength": 228,
+      "metaUid": "52bd0667-102"
     },
-    "94fe81c3-105": {
+    "52bd0667-105": {
       "renderedLength": 1823,
       "gzipLength": 448,
       "brotliLength": 376,
-      "metaUid": "94fe81c3-104"
+      "metaUid": "52bd0667-104"
     },
-    "94fe81c3-107": {
+    "52bd0667-107": {
       "renderedLength": 491,
       "gzipLength": 309,
       "brotliLength": 255,
-      "metaUid": "94fe81c3-106"
+      "metaUid": "52bd0667-106"
     },
-    "94fe81c3-109": {
+    "52bd0667-109": {
       "renderedLength": 1339,
       "gzipLength": 539,
       "brotliLength": 488,
-      "metaUid": "94fe81c3-108"
+      "metaUid": "52bd0667-108"
     },
-    "94fe81c3-111": {
+    "52bd0667-111": {
       "renderedLength": 478,
       "gzipLength": 288,
       "brotliLength": 250,
-      "metaUid": "94fe81c3-110"
+      "metaUid": "52bd0667-110"
     },
-    "94fe81c3-113": {
+    "52bd0667-113": {
       "renderedLength": 2253,
       "gzipLength": 812,
       "brotliLength": 707,
-      "metaUid": "94fe81c3-112"
+      "metaUid": "52bd0667-112"
     },
-    "94fe81c3-115": {
+    "52bd0667-115": {
       "renderedLength": 935,
       "gzipLength": 441,
       "brotliLength": 371,
-      "metaUid": "94fe81c3-114"
+      "metaUid": "52bd0667-114"
     },
-    "94fe81c3-117": {
+    "52bd0667-117": {
       "renderedLength": 495,
       "gzipLength": 291,
       "brotliLength": 241,
-      "metaUid": "94fe81c3-116"
+      "metaUid": "52bd0667-116"
     },
-    "94fe81c3-119": {
+    "52bd0667-119": {
       "renderedLength": 3081,
       "gzipLength": 745,
       "brotliLength": 638,
-      "metaUid": "94fe81c3-118"
+      "metaUid": "52bd0667-118"
     },
-    "94fe81c3-121": {
+    "52bd0667-121": {
       "renderedLength": 695,
       "gzipLength": 370,
       "brotliLength": 307,
-      "metaUid": "94fe81c3-120"
+      "metaUid": "52bd0667-120"
     },
-    "94fe81c3-123": {
+    "52bd0667-123": {
       "renderedLength": 500,
       "gzipLength": 310,
       "brotliLength": 257,
-      "metaUid": "94fe81c3-122"
+      "metaUid": "52bd0667-122"
     },
-    "94fe81c3-125": {
+    "52bd0667-125": {
       "renderedLength": 1127,
       "gzipLength": 559,
       "brotliLength": 504,
-      "metaUid": "94fe81c3-124"
+      "metaUid": "52bd0667-124"
     },
-    "94fe81c3-127": {
+    "52bd0667-127": {
       "renderedLength": 1101,
       "gzipLength": 506,
       "brotliLength": 430,
-      "metaUid": "94fe81c3-126"
+      "metaUid": "52bd0667-126"
     },
-    "94fe81c3-129": {
+    "52bd0667-129": {
       "renderedLength": 298,
       "gzipLength": 240,
       "brotliLength": 199,
-      "metaUid": "94fe81c3-128"
+      "metaUid": "52bd0667-128"
     },
-    "94fe81c3-131": {
+    "52bd0667-131": {
       "renderedLength": 2554,
       "gzipLength": 773,
       "brotliLength": 658,
-      "metaUid": "94fe81c3-130"
+      "metaUid": "52bd0667-130"
     },
-    "94fe81c3-133": {
+    "52bd0667-133": {
       "renderedLength": 3015,
       "gzipLength": 803,
       "brotliLength": 681,
-      "metaUid": "94fe81c3-132"
+      "metaUid": "52bd0667-132"
     },
-    "94fe81c3-135": {
+    "52bd0667-135": {
       "renderedLength": 569,
       "gzipLength": 308,
       "brotliLength": 259,
-      "metaUid": "94fe81c3-134"
+      "metaUid": "52bd0667-134"
     },
-    "94fe81c3-137": {
+    "52bd0667-137": {
       "renderedLength": 2783,
       "gzipLength": 946,
       "brotliLength": 787,
-      "metaUid": "94fe81c3-136"
+      "metaUid": "52bd0667-136"
     },
-    "94fe81c3-139": {
+    "52bd0667-139": {
       "renderedLength": 1675,
       "gzipLength": 682,
       "brotliLength": 571,
-      "metaUid": "94fe81c3-138"
+      "metaUid": "52bd0667-138"
     },
-    "94fe81c3-141": {
+    "52bd0667-141": {
       "renderedLength": 500,
       "gzipLength": 291,
       "brotliLength": 237,
-      "metaUid": "94fe81c3-140"
+      "metaUid": "52bd0667-140"
     },
-    "94fe81c3-143": {
+    "52bd0667-143": {
       "renderedLength": 1449,
       "gzipLength": 494,
       "brotliLength": 393,
-      "metaUid": "94fe81c3-142"
+      "metaUid": "52bd0667-142"
     },
-    "94fe81c3-145": {
+    "52bd0667-145": {
       "renderedLength": 2301,
       "gzipLength": 620,
       "brotliLength": 542,
-      "metaUid": "94fe81c3-144"
+      "metaUid": "52bd0667-144"
     },
-    "94fe81c3-147": {
+    "52bd0667-147": {
       "renderedLength": 687,
       "gzipLength": 360,
       "brotliLength": 288,
-      "metaUid": "94fe81c3-146"
+      "metaUid": "52bd0667-146"
     },
-    "94fe81c3-149": {
+    "52bd0667-149": {
       "renderedLength": 509,
       "gzipLength": 295,
       "brotliLength": 240,
-      "metaUid": "94fe81c3-148"
+      "metaUid": "52bd0667-148"
     },
-    "94fe81c3-151": {
+    "52bd0667-151": {
       "renderedLength": 1875,
       "gzipLength": 756,
       "brotliLength": 640,
-      "metaUid": "94fe81c3-150"
+      "metaUid": "52bd0667-150"
     },
-    "94fe81c3-153": {
+    "52bd0667-153": {
       "renderedLength": 484,
       "gzipLength": 293,
       "brotliLength": 252,
-      "metaUid": "94fe81c3-152"
+      "metaUid": "52bd0667-152"
     },
-    "94fe81c3-155": {
+    "52bd0667-155": {
       "renderedLength": 3397,
       "gzipLength": 898,
       "brotliLength": 716,
-      "metaUid": "94fe81c3-154"
+      "metaUid": "52bd0667-154"
     },
-    "94fe81c3-157": {
+    "52bd0667-157": {
       "renderedLength": 1400,
       "gzipLength": 578,
       "brotliLength": 493,
-      "metaUid": "94fe81c3-156"
+      "metaUid": "52bd0667-156"
     },
-    "94fe81c3-159": {
+    "52bd0667-159": {
       "renderedLength": 1691,
       "gzipLength": 461,
       "brotliLength": 386,
-      "metaUid": "94fe81c3-158"
+      "metaUid": "52bd0667-158"
     },
-    "94fe81c3-161": {
+    "52bd0667-161": {
       "renderedLength": 1197,
       "gzipLength": 389,
       "brotliLength": 310,
-      "metaUid": "94fe81c3-160"
+      "metaUid": "52bd0667-160"
     },
-    "94fe81c3-163": {
+    "52bd0667-163": {
       "renderedLength": 3323,
-      "gzipLength": 645,
+      "gzipLength": 646,
       "brotliLength": 572,
-      "metaUid": "94fe81c3-162"
+      "metaUid": "52bd0667-162"
     },
-    "94fe81c3-165": {
+    "52bd0667-165": {
       "renderedLength": 938,
       "gzipLength": 360,
       "brotliLength": 289,
-      "metaUid": "94fe81c3-164"
+      "metaUid": "52bd0667-164"
     },
-    "94fe81c3-167": {
+    "52bd0667-167": {
       "renderedLength": 657,
       "gzipLength": 321,
       "brotliLength": 254,
-      "metaUid": "94fe81c3-166"
+      "metaUid": "52bd0667-166"
     },
-    "94fe81c3-169": {
+    "52bd0667-169": {
       "renderedLength": 971,
       "gzipLength": 367,
       "brotliLength": 292,
-      "metaUid": "94fe81c3-168"
+      "metaUid": "52bd0667-168"
     },
-    "94fe81c3-171": {
+    "52bd0667-171": {
       "renderedLength": 769,
       "gzipLength": 345,
       "brotliLength": 279,
-      "metaUid": "94fe81c3-170"
+      "metaUid": "52bd0667-170"
     },
-    "94fe81c3-173": {
+    "52bd0667-173": {
       "renderedLength": 231,
       "gzipLength": 172,
       "brotliLength": 137,
-      "metaUid": "94fe81c3-172"
+      "metaUid": "52bd0667-172"
     },
-    "94fe81c3-175": {
+    "52bd0667-175": {
       "renderedLength": 649,
       "gzipLength": 321,
       "brotliLength": 257,
-      "metaUid": "94fe81c3-174"
+      "metaUid": "52bd0667-174"
     },
-    "94fe81c3-177": {
+    "52bd0667-177": {
       "renderedLength": 684,
       "gzipLength": 325,
       "brotliLength": 274,
-      "metaUid": "94fe81c3-176"
+      "metaUid": "52bd0667-176"
     },
-    "94fe81c3-179": {
+    "52bd0667-179": {
       "renderedLength": 689,
       "gzipLength": 325,
       "brotliLength": 264,
-      "metaUid": "94fe81c3-178"
+      "metaUid": "52bd0667-178"
     },
-    "94fe81c3-181": {
+    "52bd0667-181": {
       "renderedLength": 101,
       "gzipLength": 104,
       "brotliLength": 86,
-      "metaUid": "94fe81c3-180"
+      "metaUid": "52bd0667-180"
     },
-    "94fe81c3-183": {
+    "52bd0667-183": {
       "renderedLength": 348,
       "gzipLength": 249,
       "brotliLength": 220,
-      "metaUid": "94fe81c3-182"
+      "metaUid": "52bd0667-182"
     },
-    "94fe81c3-185": {
+    "52bd0667-185": {
       "renderedLength": 674,
       "gzipLength": 350,
       "brotliLength": 272,
-      "metaUid": "94fe81c3-184"
+      "metaUid": "52bd0667-184"
     },
-    "94fe81c3-187": {
+    "52bd0667-187": {
       "renderedLength": 373,
       "gzipLength": 256,
       "brotliLength": 236,
-      "metaUid": "94fe81c3-186"
+      "metaUid": "52bd0667-186"
     },
-    "94fe81c3-189": {
+    "52bd0667-189": {
       "renderedLength": 18106,
       "gzipLength": 6976,
       "brotliLength": 5748,
-      "metaUid": "94fe81c3-188"
+      "metaUid": "52bd0667-188"
     },
-    "94fe81c3-191": {
+    "52bd0667-191": {
       "renderedLength": 20688,
       "gzipLength": 7946,
       "brotliLength": 7038,
-      "metaUid": "94fe81c3-190"
+      "metaUid": "52bd0667-190"
     },
-    "94fe81c3-193": {
+    "52bd0667-193": {
       "renderedLength": 20410,
       "gzipLength": 7748,
       "brotliLength": 6653,
-      "metaUid": "94fe81c3-192"
+      "metaUid": "52bd0667-192"
     },
-    "94fe81c3-195": {
+    "52bd0667-195": {
       "renderedLength": 20107,
       "gzipLength": 8103,
       "brotliLength": 7277,
-      "metaUid": "94fe81c3-194"
+      "metaUid": "52bd0667-194"
     },
-    "94fe81c3-197": {
+    "52bd0667-197": {
       "renderedLength": 19788,
       "gzipLength": 7658,
       "brotliLength": 6805,
-      "metaUid": "94fe81c3-196"
+      "metaUid": "52bd0667-196"
     },
-    "94fe81c3-199": {
+    "52bd0667-199": {
       "renderedLength": 19989,
       "gzipLength": 7816,
       "brotliLength": 6856,
-      "metaUid": "94fe81c3-198"
+      "metaUid": "52bd0667-198"
     },
-    "94fe81c3-201": {
+    "52bd0667-201": {
       "renderedLength": 17296,
       "gzipLength": 8022,
       "brotliLength": 6495,
-      "metaUid": "94fe81c3-200"
+      "metaUid": "52bd0667-200"
     },
-    "94fe81c3-203": {
+    "52bd0667-203": {
       "renderedLength": 22886,
       "gzipLength": 8639,
       "brotliLength": 7439,
-      "metaUid": "94fe81c3-202"
+      "metaUid": "52bd0667-202"
     },
-    "94fe81c3-205": {
+    "52bd0667-205": {
       "renderedLength": 20730,
       "gzipLength": 8312,
       "brotliLength": 7160,
-      "metaUid": "94fe81c3-204"
+      "metaUid": "52bd0667-204"
     },
-    "94fe81c3-207": {
+    "52bd0667-207": {
       "renderedLength": 28529,
       "gzipLength": 9339,
       "brotliLength": 7834,
-      "metaUid": "94fe81c3-206"
+      "metaUid": "52bd0667-206"
     },
-    "94fe81c3-209": {
+    "52bd0667-209": {
       "renderedLength": 541,
       "gzipLength": 244,
       "brotliLength": 202,
-      "metaUid": "94fe81c3-208"
+      "metaUid": "52bd0667-208"
     },
-    "94fe81c3-211": {
+    "52bd0667-211": {
       "renderedLength": 388,
       "gzipLength": 256,
       "brotliLength": 202,
-      "metaUid": "94fe81c3-210"
+      "metaUid": "52bd0667-210"
     },
-    "94fe81c3-213": {
+    "52bd0667-213": {
       "renderedLength": 2448,
       "gzipLength": 760,
       "brotliLength": 648,
-      "metaUid": "94fe81c3-212"
+      "metaUid": "52bd0667-212"
     },
-    "94fe81c3-215": {
+    "52bd0667-215": {
       "renderedLength": 2094,
       "gzipLength": 805,
       "brotliLength": 672,
-      "metaUid": "94fe81c3-214"
+      "metaUid": "52bd0667-214"
     },
-    "94fe81c3-217": {
+    "52bd0667-217": {
       "renderedLength": 833,
       "gzipLength": 456,
       "brotliLength": 387,
-      "metaUid": "94fe81c3-216"
+      "metaUid": "52bd0667-216"
     },
-    "94fe81c3-219": {
+    "52bd0667-219": {
       "renderedLength": 4772,
       "gzipLength": 1631,
       "brotliLength": 1386,
-      "metaUid": "94fe81c3-218"
+      "metaUid": "52bd0667-218"
     },
-    "94fe81c3-221": {
+    "52bd0667-221": {
       "renderedLength": 0,
       "gzipLength": 0,
       "brotliLength": 0,
-      "metaUid": "94fe81c3-220"
+      "metaUid": "52bd0667-220"
     },
-    "94fe81c3-223": {
+    "52bd0667-223": {
       "renderedLength": 359,
       "gzipLength": 242,
       "brotliLength": 222,
-      "metaUid": "94fe81c3-222"
+      "metaUid": "52bd0667-222"
     },
-    "94fe81c3-225": {
+    "52bd0667-225": {
       "renderedLength": 2083,
       "gzipLength": 924,
       "brotliLength": 725,
-      "metaUid": "94fe81c3-224"
+      "metaUid": "52bd0667-224"
     },
-    "94fe81c3-227": {
+    "52bd0667-227": {
       "renderedLength": 2855,
       "gzipLength": 1282,
       "brotliLength": 1081,
-      "metaUid": "94fe81c3-226"
+      "metaUid": "52bd0667-226"
     },
-    "94fe81c3-229": {
+    "52bd0667-229": {
       "renderedLength": 176,
       "gzipLength": 162,
       "brotliLength": 128,
-      "metaUid": "94fe81c3-228"
+      "metaUid": "52bd0667-228"
     },
-    "94fe81c3-231": {
+    "52bd0667-231": {
       "renderedLength": 244,
       "gzipLength": 180,
       "brotliLength": 150,
-      "metaUid": "94fe81c3-230"
+      "metaUid": "52bd0667-230"
     },
-    "94fe81c3-233": {
+    "52bd0667-233": {
       "renderedLength": 247,
       "gzipLength": 179,
       "brotliLength": 146,
-      "metaUid": "94fe81c3-232"
+      "metaUid": "52bd0667-232"
     },
-    "94fe81c3-235": {
+    "52bd0667-235": {
       "renderedLength": 244,
       "gzipLength": 178,
       "brotliLength": 150,
-      "metaUid": "94fe81c3-234"
+      "metaUid": "52bd0667-234"
     },
-    "94fe81c3-237": {
+    "52bd0667-237": {
       "renderedLength": 253,
       "gzipLength": 180,
       "brotliLength": 151,
-      "metaUid": "94fe81c3-236"
+      "metaUid": "52bd0667-236"
     },
-    "94fe81c3-239": {
+    "52bd0667-239": {
       "renderedLength": 253,
       "gzipLength": 180,
       "brotliLength": 150,
-      "metaUid": "94fe81c3-238"
+      "metaUid": "52bd0667-238"
     },
-    "94fe81c3-241": {
+    "52bd0667-241": {
       "renderedLength": 241,
       "gzipLength": 178,
       "brotliLength": 153,
-      "metaUid": "94fe81c3-240"
+      "metaUid": "52bd0667-240"
     },
-    "94fe81c3-243": {
+    "52bd0667-243": {
       "renderedLength": 253,
       "gzipLength": 180,
       "brotliLength": 151,
-      "metaUid": "94fe81c3-242"
+      "metaUid": "52bd0667-242"
     },
-    "94fe81c3-245": {
+    "52bd0667-245": {
       "renderedLength": 256,
       "gzipLength": 181,
       "brotliLength": 153,
-      "metaUid": "94fe81c3-244"
+      "metaUid": "52bd0667-244"
     },
-    "94fe81c3-247": {
+    "52bd0667-247": {
       "renderedLength": 256,
       "gzipLength": 180,
       "brotliLength": 150,
-      "metaUid": "94fe81c3-246"
+      "metaUid": "52bd0667-246"
     },
-    "94fe81c3-249": {
+    "52bd0667-249": {
       "renderedLength": 238,
       "gzipLength": 176,
       "brotliLength": 141,
-      "metaUid": "94fe81c3-248"
+      "metaUid": "52bd0667-248"
     },
-    "94fe81c3-251": {
+    "52bd0667-251": {
       "renderedLength": 1675,
       "gzipLength": 399,
       "brotliLength": 346,
-      "metaUid": "94fe81c3-250"
+      "metaUid": "52bd0667-250"
     },
-    "94fe81c3-253": {
+    "52bd0667-253": {
       "renderedLength": 270,
       "gzipLength": 200,
       "brotliLength": 159,
-      "metaUid": "94fe81c3-252"
+      "metaUid": "52bd0667-252"
     },
-    "94fe81c3-255": {
+    "52bd0667-255": {
       "renderedLength": 1710,
       "gzipLength": 470,
       "brotliLength": 388,
-      "metaUid": "94fe81c3-254"
+      "metaUid": "52bd0667-254"
     },
-    "94fe81c3-257": {
+    "52bd0667-257": {
       "renderedLength": 196,
-      "gzipLength": 160,
+      "gzipLength": 161,
       "brotliLength": 130,
-      "metaUid": "94fe81c3-256"
+      "metaUid": "52bd0667-256"
     },
-    "94fe81c3-259": {
+    "52bd0667-259": {
       "renderedLength": 657,
       "gzipLength": 319,
       "brotliLength": 257,
-      "metaUid": "94fe81c3-258"
+      "metaUid": "52bd0667-258"
     }
   },
   "nodeMetas": {
-    "94fe81c3-0": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.167.38+005eabf3d8b6ef06/node_modules/@tanstack/react-start-server/dist/esm/StartServer.js",
+    "52bd0667-0": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.167.38+6f4b9a1cfb20c0ae/node_modules/@tanstack/react-start-server/dist/esm/StartServer.js",
       "moduleParts": {
-        "server.js": "94fe81c3-1"
+        "server.js": "52bd0667-1"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-261"
+          "uid": "52bd0667-261"
         },
         {
-          "uid": "94fe81c3-2"
+          "uid": "52bd0667-2"
         },
         {
-          "uid": "94fe81c3-262"
+          "uid": "52bd0667-262"
         }
       ]
     },
-    "94fe81c3-2": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.167.38+005eabf3d8b6ef06/node_modules/@tanstack/react-start-server/dist/esm/defaultStreamHandler.js",
+    "52bd0667-2": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.167.38+6f4b9a1cfb20c0ae/node_modules/@tanstack/react-start-server/dist/esm/defaultStreamHandler.js",
       "moduleParts": {
-        "server.js": "94fe81c3-3"
+        "server.js": "52bd0667-3"
       },
       "imported": [
         {
-          "uid": "94fe81c3-0"
+          "uid": "52bd0667-0"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-267"
+          "uid": "52bd0667-267"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-261"
+          "uid": "52bd0667-261"
         }
       ]
     },
-    "94fe81c3-4": {
+    "52bd0667-4": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/rou3@0.8.1/node_modules/rou3/dist/index.mjs",
       "moduleParts": {
-        "server.js": "94fe81c3-5"
+        "server.js": "52bd0667-5"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-10"
+          "uid": "52bd0667-10"
         }
       ]
     },
-    "94fe81c3-6": {
+    "52bd0667-6": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_url.mjs",
       "moduleParts": {
-        "server.js": "94fe81c3-7"
+        "server.js": "52bd0667-7"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ]
     },
-    "94fe81c3-8": {
+    "52bd0667-8": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/adapters/node.mjs",
       "moduleParts": {
-        "server.js": "94fe81c3-9"
+        "server.js": "52bd0667-9"
       },
       "imported": [
         {
-          "uid": "94fe81c3-6"
+          "uid": "52bd0667-6"
         },
         {
-          "uid": "94fe81c3-298"
+          "uid": "52bd0667-298"
         },
         {
-          "uid": "94fe81c3-299"
+          "uid": "52bd0667-299"
         },
         {
-          "uid": "94fe81c3-300"
+          "uid": "52bd0667-300"
         },
         {
-          "uid": "94fe81c3-297"
+          "uid": "52bd0667-297"
         },
         {
-          "uid": "94fe81c3-301"
+          "uid": "52bd0667-301"
         },
         {
-          "uid": "94fe81c3-302"
+          "uid": "52bd0667-302"
         },
         {
-          "uid": "94fe81c3-303"
+          "uid": "52bd0667-303"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-271"
+          "uid": "52bd0667-271"
         },
         {
-          "uid": "94fe81c3-10"
+          "uid": "52bd0667-10"
         }
       ]
     },
-    "94fe81c3-10": {
+    "52bd0667-10": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/h3@2.0.1-rc.20/node_modules/h3/dist/h3-Bz4OPZv_.mjs",
       "moduleParts": {
-        "server.js": "94fe81c3-11"
+        "server.js": "52bd0667-11"
       },
       "imported": [
         {
-          "uid": "94fe81c3-276"
+          "uid": "52bd0667-276"
         },
         {
-          "uid": "94fe81c3-4"
+          "uid": "52bd0667-4"
         },
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-271"
+          "uid": "52bd0667-271"
         }
       ]
     },
-    "94fe81c3-12": {
+    "52bd0667-12": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/request-response.js",
       "moduleParts": {
-        "server.js": "94fe81c3-13"
+        "server.js": "52bd0667-13"
       },
       "imported": [
         {
-          "uid": "94fe81c3-270"
+          "uid": "52bd0667-270"
         },
         {
-          "uid": "94fe81c3-271"
+          "uid": "52bd0667-271"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-263"
+          "uid": "52bd0667-263"
         },
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         },
         {
-          "uid": "94fe81c3-80"
+          "uid": "52bd0667-80"
         }
       ]
     },
-    "94fe81c3-14": {
+    "52bd0667-14": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/constants.js",
       "moduleParts": {
-        "server.js": "94fe81c3-15"
+        "server.js": "52bd0667-15"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-263"
+          "uid": "52bd0667-263"
         },
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-16": {
+    "52bd0667-16": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/not-found.js",
       "moduleParts": {
-        "server.js": "94fe81c3-17"
+        "server.js": "52bd0667-17"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         },
         {
-          "uid": "94fe81c3-293"
+          "uid": "52bd0667-293"
         },
         {
-          "uid": "94fe81c3-314"
+          "uid": "52bd0667-314"
         }
       ]
     },
-    "94fe81c3-18": {
+    "52bd0667-18": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/root.js",
       "moduleParts": {
-        "server.js": "94fe81c3-19"
+        "server.js": "52bd0667-19"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         },
         {
-          "uid": "94fe81c3-293"
+          "uid": "52bd0667-293"
         },
         {
-          "uid": "94fe81c3-314"
+          "uid": "52bd0667-314"
         }
       ]
     },
-    "94fe81c3-20": {
+    "52bd0667-20": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/redirect.js",
       "moduleParts": {
-        "server.js": "94fe81c3-21"
+        "server.js": "52bd0667-21"
       },
       "imported": [
         {
-          "uid": "94fe81c3-34"
+          "uid": "52bd0667-34"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         },
         {
-          "uid": "94fe81c3-293"
+          "uid": "52bd0667-293"
         },
         {
-          "uid": "94fe81c3-314"
+          "uid": "52bd0667-314"
         }
       ]
     },
-    "94fe81c3-22": {
+    "52bd0667-22": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-match-id.js",
       "moduleParts": {
-        "server.js": "94fe81c3-23"
+        "server.js": "52bd0667-23"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         }
       ]
     },
-    "94fe81c3-24": {
+    "52bd0667-24": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/sieve-cache.js",
       "moduleParts": {
-        "server.js": "94fe81c3-25"
+        "server.js": "52bd0667-25"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         },
         {
-          "uid": "94fe81c3-310"
+          "uid": "52bd0667-310"
         }
       ]
     },
-    "94fe81c3-26": {
+    "52bd0667-26": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/invariant.js",
       "moduleParts": {
-        "server.js": "94fe81c3-27"
+        "server.js": "52bd0667-27"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-293"
+          "uid": "52bd0667-293"
         },
         {
-          "uid": "94fe81c3-310"
+          "uid": "52bd0667-310"
         }
       ]
     },
-    "94fe81c3-28": {
+    "52bd0667-28": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/rewrite.js",
       "moduleParts": {
-        "server.js": "94fe81c3-29"
+        "server.js": "52bd0667-29"
       },
       "imported": [
         {
-          "uid": "94fe81c3-284"
+          "uid": "52bd0667-284"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         }
       ]
     },
-    "94fe81c3-30": {
+    "52bd0667-30": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+history@1.162.2/node_modules/@tanstack/history/dist/esm/index.js",
       "moduleParts": {
-        "server.js": "94fe81c3-31"
+        "server.js": "52bd0667-31"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         },
         {
-          "uid": "94fe81c3-98"
+          "uid": "52bd0667-98"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         }
       ]
     },
-    "94fe81c3-32": {
+    "52bd0667-32": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/load-client.js",
       "moduleParts": {
-        "server.js": "94fe81c3-33"
+        "server.js": "52bd0667-33"
       },
       "imported": [
         {
-          "uid": "94fe81c3-16"
+          "uid": "52bd0667-16"
         },
         {
-          "uid": "94fe81c3-20"
+          "uid": "52bd0667-20"
         },
         {
-          "uid": "94fe81c3-22"
+          "uid": "52bd0667-22"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-98"
+          "uid": "52bd0667-98"
         },
         {
-          "uid": "94fe81c3-282"
+          "uid": "52bd0667-282"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         },
         {
-          "uid": "94fe81c3-314"
+          "uid": "52bd0667-314"
         }
       ]
     },
-    "94fe81c3-34": {
+    "52bd0667-34": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/utils.js",
       "moduleParts": {
-        "server.js": "94fe81c3-35"
+        "server.js": "52bd0667-35"
       },
       "imported": [
         {
-          "uid": "94fe81c3-309"
+          "uid": "52bd0667-309"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-284"
+          "uid": "52bd0667-284"
         },
         {
-          "uid": "94fe81c3-20"
+          "uid": "52bd0667-20"
         },
         {
-          "uid": "94fe81c3-288"
+          "uid": "52bd0667-288"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         },
         {
-          "uid": "94fe81c3-295"
+          "uid": "52bd0667-295"
         },
         {
-          "uid": "94fe81c3-310"
+          "uid": "52bd0667-310"
         }
       ]
     },
-    "94fe81c3-36": {
+    "52bd0667-36": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/manifest.js",
       "moduleParts": {
-        "server.js": "94fe81c3-37"
+        "server.js": "52bd0667-37"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         }
       ]
     },
-    "94fe81c3-38": {
+    "52bd0667-38": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/constants.js",
       "moduleParts": {
-        "server.js": "94fe81c3-39"
+        "server.js": "52bd0667-39"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-275"
+          "uid": "52bd0667-275"
         },
         {
-          "uid": "94fe81c3-42"
+          "uid": "52bd0667-42"
         }
       ]
     },
-    "94fe81c3-40": {
+    "52bd0667-40": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval@1.6.7/node_modules/seroval/dist/index.js",
       "moduleParts": {
-        "server.js": "94fe81c3-41"
+        "server.js": "52bd0667-41"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-80"
+          "uid": "52bd0667-80"
         },
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-281"
+          "uid": "52bd0667-281"
         },
         {
-          "uid": "94fe81c3-42"
+          "uid": "52bd0667-42"
         },
         {
-          "uid": "94fe81c3-44"
+          "uid": "52bd0667-44"
         },
         {
-          "uid": "94fe81c3-46"
+          "uid": "52bd0667-46"
         },
         {
-          "uid": "94fe81c3-48"
+          "uid": "52bd0667-48"
         }
       ]
     },
-    "94fe81c3-42": {
+    "52bd0667-42": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/transformer.js",
       "moduleParts": {
-        "server.js": "94fe81c3-43"
+        "server.js": "52bd0667-43"
       },
       "imported": [
         {
-          "uid": "94fe81c3-38"
+          "uid": "52bd0667-38"
         },
         {
-          "uid": "94fe81c3-40"
+          "uid": "52bd0667-40"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         }
       ]
     },
-    "94fe81c3-44": {
+    "52bd0667-44": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/RawStream.js",
       "moduleParts": {
-        "server.js": "94fe81c3-45"
+        "server.js": "52bd0667-45"
       },
       "imported": [
         {
-          "uid": "94fe81c3-40"
+          "uid": "52bd0667-40"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-52"
+          "uid": "52bd0667-52"
         }
       ]
     },
-    "94fe81c3-46": {
+    "52bd0667-46": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/ShallowErrorPlugin.js",
       "moduleParts": {
-        "server.js": "94fe81c3-47"
+        "server.js": "52bd0667-47"
       },
       "imported": [
         {
-          "uid": "94fe81c3-40"
+          "uid": "52bd0667-40"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-52"
+          "uid": "52bd0667-52"
         }
       ]
     },
-    "94fe81c3-48": {
+    "52bd0667-48": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval-plugins@1.6.7+8ebe760786b55aa9/node_modules/seroval-plugins/dist/web-CWqRG00W.js",
       "moduleParts": {
-        "server.js": "94fe81c3-49"
+        "server.js": "52bd0667-49"
       },
       "imported": [
         {
-          "uid": "94fe81c3-316"
+          "uid": "52bd0667-316"
         },
         {
-          "uid": "94fe81c3-40"
+          "uid": "52bd0667-40"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-50"
+          "uid": "52bd0667-50"
         }
       ]
     },
-    "94fe81c3-50": {
+    "52bd0667-50": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval-plugins@1.6.7+8ebe760786b55aa9/node_modules/seroval-plugins/dist/web.js",
       "moduleParts": {
-        "server.js": "94fe81c3-51"
+        "server.js": "52bd0667-51"
       },
       "imported": [
         {
-          "uid": "94fe81c3-48"
+          "uid": "52bd0667-48"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-52"
+          "uid": "52bd0667-52"
         }
       ]
     },
-    "94fe81c3-52": {
+    "52bd0667-52": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/serializer/seroval-plugins.js",
       "moduleParts": {
-        "server.js": "94fe81c3-53"
+        "server.js": "52bd0667-53"
       },
       "imported": [
         {
-          "uid": "94fe81c3-46"
+          "uid": "52bd0667-46"
         },
         {
-          "uid": "94fe81c3-44"
+          "uid": "52bd0667-44"
         },
         {
-          "uid": "94fe81c3-50"
+          "uid": "52bd0667-50"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         }
       ]
     },
-    "94fe81c3-54": {
+    "52bd0667-54": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/router-manifest.js",
       "moduleParts": {
-        "server.js": "94fe81c3-55"
+        "server.js": "52bd0667-55"
       },
       "imported": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-162",
+          "uid": "52bd0667-162",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-56": {
+    "52bd0667-56": {
       "id": "\u0000%23tanstack-start-server-fn-resolver",
       "moduleParts": {
-        "server.js": "94fe81c3-57"
+        "server.js": "52bd0667-57"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-277"
+          "uid": "52bd0667-277"
         }
       ]
     },
-    "94fe81c3-58": {
+    "52bd0667-58": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/constants.js",
       "moduleParts": {
-        "server.js": "94fe81c3-59"
+        "server.js": "52bd0667-59"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         },
         {
-          "uid": "94fe81c3-70"
+          "uid": "52bd0667-70"
         },
         {
-          "uid": "94fe81c3-281"
+          "uid": "52bd0667-281"
         },
         {
-          "uid": "94fe81c3-305"
+          "uid": "52bd0667-305"
         }
       ]
     },
-    "94fe81c3-60": {
+    "52bd0667-60": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/safeObjectMerge.js",
       "moduleParts": {
-        "server.js": "94fe81c3-61"
+        "server.js": "52bd0667-61"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         },
         {
-          "uid": "94fe81c3-70"
+          "uid": "52bd0667-70"
         }
       ]
     },
-    "94fe81c3-62": {
+    "52bd0667-62": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-storage-context@1.167.30/node_modules/@tanstack/start-storage-context/dist/esm/async-local-storage.js",
       "moduleParts": {
-        "server.js": "94fe81c3-63"
+        "server.js": "52bd0667-63"
       },
       "imported": [
         {
-          "uid": "94fe81c3-270"
+          "uid": "52bd0667-270"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-274"
+          "uid": "52bd0667-274"
         }
       ]
     },
-    "94fe81c3-64": {
+    "52bd0667-64": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/getStartOptions.js",
       "moduleParts": {
-        "server.js": "94fe81c3-65"
+        "server.js": "52bd0667-65"
       },
       "imported": [
         {
-          "uid": "94fe81c3-274"
+          "uid": "52bd0667-274"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-70"
+          "uid": "52bd0667-70"
         },
         {
-          "uid": "94fe81c3-76"
+          "uid": "52bd0667-76"
         }
       ]
     },
-    "94fe81c3-66": {
+    "52bd0667-66": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/cookie-es@3.1.1/node_modules/cookie-es/dist/index.mjs",
       "moduleParts": {
-        "server.js": "94fe81c3-67"
+        "server.js": "52bd0667-67"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-68"
+          "uid": "52bd0667-68"
         }
       ]
     },
-    "94fe81c3-68": {
+    "52bd0667-68": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/headers.js",
       "moduleParts": {
-        "server.js": "94fe81c3-69"
+        "server.js": "52bd0667-69"
       },
       "imported": [
         {
-          "uid": "94fe81c3-66"
+          "uid": "52bd0667-66"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-98"
+          "uid": "52bd0667-98"
         },
         {
-          "uid": "94fe81c3-282"
+          "uid": "52bd0667-282"
         }
       ]
     },
-    "94fe81c3-70": {
+    "52bd0667-70": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/createServerFn.js",
       "moduleParts": {
-        "server.js": "94fe81c3-71"
+        "server.js": "52bd0667-71"
       },
       "imported": [
         {
-          "uid": "94fe81c3-58"
+          "uid": "52bd0667-58"
         },
         {
-          "uid": "94fe81c3-64"
+          "uid": "52bd0667-64"
         },
         {
-          "uid": "94fe81c3-304"
+          "uid": "52bd0667-304"
         },
         {
-          "uid": "94fe81c3-60"
+          "uid": "52bd0667-60"
         },
         {
-          "uid": "94fe81c3-282"
+          "uid": "52bd0667-282"
         },
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         }
       ]
     },
-    "94fe81c3-72": {
+    "52bd0667-72": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/createMiddleware.js",
       "moduleParts": {
-        "server.js": "94fe81c3-73"
+        "server.js": "52bd0667-73"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         },
         {
-          "uid": "94fe81c3-74"
+          "uid": "52bd0667-74"
         },
         {
-          "uid": "94fe81c3-278"
+          "uid": "52bd0667-278"
         }
       ]
     },
-    "94fe81c3-74": {
+    "52bd0667-74": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/createCsrfMiddleware.js",
       "moduleParts": {
-        "server.js": "94fe81c3-75"
+        "server.js": "52bd0667-75"
       },
       "imported": [
         {
-          "uid": "94fe81c3-72"
+          "uid": "52bd0667-72"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         }
       ]
     },
-    "94fe81c3-76": {
+    "52bd0667-76": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/getDefaultSerovalPlugins.js",
       "moduleParts": {
-        "server.js": "94fe81c3-77"
+        "server.js": "52bd0667-77"
       },
       "imported": [
         {
-          "uid": "94fe81c3-64"
+          "uid": "52bd0667-64"
         },
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         },
         {
-          "uid": "94fe81c3-281"
+          "uid": "52bd0667-281"
         }
       ]
     },
-    "94fe81c3-78": {
+    "52bd0667-78": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/frame-protocol.js",
       "moduleParts": {
-        "server.js": "94fe81c3-79"
+        "server.js": "52bd0667-79"
       },
       "imported": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-80"
+          "uid": "52bd0667-80"
         }
       ]
     },
-    "94fe81c3-80": {
+    "52bd0667-80": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/server-functions-handler.js",
       "moduleParts": {
-        "server.js": "94fe81c3-81"
+        "server.js": "52bd0667-81"
       },
       "imported": [
         {
-          "uid": "94fe81c3-12"
+          "uid": "52bd0667-12"
         },
         {
-          "uid": "94fe81c3-277"
+          "uid": "52bd0667-277"
         },
         {
-          "uid": "94fe81c3-78"
+          "uid": "52bd0667-78"
         },
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         },
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-40"
+          "uid": "52bd0667-40"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-82": {
+    "52bd0667-82": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/early-hints.js",
       "moduleParts": {
-        "server.js": "94fe81c3-83"
+        "server.js": "52bd0667-83"
       },
       "imported": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-84": {
+    "52bd0667-84": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/transformAssetUrls.js",
       "moduleParts": {
-        "server.js": "94fe81c3-85"
+        "server.js": "52bd0667-85"
       },
       "imported": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-88"
+          "uid": "52bd0667-88"
         }
       ]
     },
-    "94fe81c3-86": {
+    "52bd0667-86": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/inlineCss.js",
       "moduleParts": {
-        "server.js": "94fe81c3-87"
+        "server.js": "52bd0667-87"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-88"
+          "uid": "52bd0667-88"
         }
       ]
     },
-    "94fe81c3-88": {
+    "52bd0667-88": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/finalManifest.js",
       "moduleParts": {
-        "server.js": "94fe81c3-89"
+        "server.js": "52bd0667-89"
       },
       "imported": [
         {
-          "uid": "94fe81c3-84"
+          "uid": "52bd0667-84"
         },
         {
-          "uid": "94fe81c3-86"
+          "uid": "52bd0667-86"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-90": {
+    "52bd0667-90": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/serializer/ServerFunctionSerializationAdapter.js",
       "moduleParts": {
-        "server.js": "94fe81c3-91"
+        "server.js": "52bd0667-91"
       },
       "imported": [
         {
-          "uid": "94fe81c3-277"
+          "uid": "52bd0667-277"
         },
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         },
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-92": {
+    "52bd0667-92": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/tsrScript.js",
       "moduleParts": {
-        "server.js": "94fe81c3-93"
+        "server.js": "52bd0667-93"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         }
       ]
     },
-    "94fe81c3-94": {
+    "52bd0667-94": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/ssr-server.js",
       "moduleParts": {
-        "server.js": "94fe81c3-95"
+        "server.js": "52bd0667-95"
       },
       "imported": [
         {
-          "uid": "94fe81c3-34"
+          "uid": "52bd0667-34"
         },
         {
-          "uid": "94fe81c3-26"
+          "uid": "52bd0667-26"
         },
         {
-          "uid": "94fe81c3-24"
+          "uid": "52bd0667-24"
         },
         {
-          "uid": "94fe81c3-18"
+          "uid": "52bd0667-18"
         },
         {
-          "uid": "94fe81c3-22"
+          "uid": "52bd0667-22"
         },
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         },
         {
-          "uid": "94fe81c3-36"
+          "uid": "52bd0667-36"
         },
         {
-          "uid": "94fe81c3-38"
+          "uid": "52bd0667-38"
         },
         {
-          "uid": "94fe81c3-42"
+          "uid": "52bd0667-42"
         },
         {
-          "uid": "94fe81c3-52"
+          "uid": "52bd0667-52"
         },
         {
-          "uid": "94fe81c3-92"
+          "uid": "52bd0667-92"
         },
         {
-          "uid": "94fe81c3-40"
+          "uid": "52bd0667-40"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-269"
+          "uid": "52bd0667-269"
         },
         {
-          "uid": "94fe81c3-98"
+          "uid": "52bd0667-98"
         }
       ]
     },
-    "94fe81c3-96": {
+    "52bd0667-96": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/handlerCallback.js",
       "moduleParts": {
-        "server.js": "94fe81c3-97"
+        "server.js": "52bd0667-97"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-269"
+          "uid": "52bd0667-269"
         },
         {
-          "uid": "94fe81c3-98"
+          "uid": "52bd0667-98"
         }
       ]
     },
-    "94fe81c3-98": {
+    "52bd0667-98": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/createRequestHandler.js",
       "moduleParts": {
-        "server.js": "94fe81c3-99"
+        "server.js": "52bd0667-99"
       },
       "imported": [
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         },
         {
-          "uid": "94fe81c3-68"
+          "uid": "52bd0667-68"
         },
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-96"
+          "uid": "52bd0667-96"
         },
         {
-          "uid": "94fe81c3-30"
+          "uid": "52bd0667-30"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-269"
+          "uid": "52bd0667-269"
         }
       ]
     },
-    "94fe81c3-100": {
+    "52bd0667-100": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/createStartHandler.js",
       "moduleParts": {
-        "server.js": "94fe81c3-101"
+        "server.js": "52bd0667-101"
       },
       "imported": [
         {
-          "uid": "94fe81c3-12"
+          "uid": "52bd0667-12"
         },
         {
-          "uid": "94fe81c3-54"
+          "uid": "52bd0667-54"
         },
         {
-          "uid": "94fe81c3-80"
+          "uid": "52bd0667-80"
         },
         {
-          "uid": "94fe81c3-82"
+          "uid": "52bd0667-82"
         },
         {
-          "uid": "94fe81c3-88"
+          "uid": "52bd0667-88"
         },
         {
-          "uid": "94fe81c3-14"
+          "uid": "52bd0667-14"
         },
         {
-          "uid": "94fe81c3-90"
+          "uid": "52bd0667-90"
         },
         {
-          "uid": "94fe81c3-30"
+          "uid": "52bd0667-30"
         },
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         },
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-269"
+          "uid": "52bd0667-269"
         },
         {
-          "uid": "94fe81c3-274"
+          "uid": "52bd0667-274"
         },
         {
-          "uid": "94fe81c3-252",
+          "uid": "52bd0667-252",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-256",
+          "uid": "52bd0667-256",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-172",
+          "uid": "52bd0667-172",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-263"
+          "uid": "52bd0667-263"
         }
       ]
     },
-    "94fe81c3-102": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.168.50+117aecb3f305d63e/node_modules/@tanstack/react-start/dist/plugin/default-entry/server.ts",
+    "52bd0667-102": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.168.50+48770be4ba4996d0/node_modules/@tanstack/react-start/dist/plugin/default-entry/server.ts",
       "moduleParts": {
-        "server.js": "94fe81c3-103"
+        "server.js": "52bd0667-103"
       },
       "imported": [
         {
-          "uid": "94fe81c3-260"
+          "uid": "52bd0667-260"
         }
       ],
       "importedBy": [],
       "isEntry": true
     },
-    "94fe81c3-104": {
+    "52bd0667-104": {
       "id": "/src/components/pages/about/AboutGrid.tsx",
       "moduleParts": {
-        "assets/AboutGrid-D-ZflgPB.js": "94fe81c3-105"
+        "assets/AboutGrid-D-ZflgPB.js": "52bd0667-105"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-164"
+          "uid": "52bd0667-164"
         }
       ]
     },
-    "94fe81c3-106": {
+    "52bd0667-106": {
       "id": "/src/components/pages/about/AboutHeader.tsx",
       "moduleParts": {
-        "assets/AboutHeader-ztK71eLZ.js": "94fe81c3-107"
+        "assets/AboutHeader-ztK71eLZ.js": "52bd0667-107"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-184"
+          "uid": "52bd0667-184"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-164"
+          "uid": "52bd0667-164"
         }
       ]
     },
-    "94fe81c3-108": {
+    "52bd0667-108": {
       "id": "/src/components/pages/settings/ApiAccessSection.tsx",
       "moduleParts": {
-        "assets/ApiAccessSection-DjNgPBqn.js": "94fe81c3-109"
+        "assets/ApiAccessSection-DjNgPBqn.js": "52bd0667-109"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-254"
+          "uid": "52bd0667-254"
         }
       ]
     },
-    "94fe81c3-110": {
+    "52bd0667-110": {
       "id": "/src/components/pages/blog/BlogHeader.tsx",
       "moduleParts": {
-        "assets/BlogHeader-BRZs8ct9.js": "94fe81c3-111"
+        "assets/BlogHeader-BRZs8ct9.js": "52bd0667-111"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-166"
+          "uid": "52bd0667-166"
         }
       ]
     },
-    "94fe81c3-112": {
+    "52bd0667-112": {
       "id": "/src/components/pages/blog/BlogList.tsx",
       "moduleParts": {
-        "assets/BlogList-KvbtoOTO.js": "94fe81c3-113"
+        "assets/BlogList-KvbtoOTO.js": "52bd0667-113"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-166"
+          "uid": "52bd0667-166"
         }
       ]
     },
-    "94fe81c3-114": {
+    "52bd0667-114": {
       "id": "/src/components/pages/careers/CareersBenefits.tsx",
       "moduleParts": {
-        "assets/CareersBenefits-DPGObY4w.js": "94fe81c3-115"
+        "assets/CareersBenefits-DPGObY4w.js": "52bd0667-115"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-168"
+          "uid": "52bd0667-168"
         }
       ]
     },
-    "94fe81c3-116": {
+    "52bd0667-116": {
       "id": "/src/components/pages/careers/CareersHeader.tsx",
       "moduleParts": {
-        "assets/CareersHeader-CocQzBoB.js": "94fe81c3-117"
+        "assets/CareersHeader-CocQzBoB.js": "52bd0667-117"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-168"
+          "uid": "52bd0667-168"
         }
       ]
     },
-    "94fe81c3-118": {
+    "52bd0667-118": {
       "id": "/src/components/pages/contact/ContactForm.tsx",
       "moduleParts": {
-        "assets/ContactForm-By0eLZJd.js": "94fe81c3-119"
+        "assets/ContactForm-By0eLZJd.js": "52bd0667-119"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-170"
+          "uid": "52bd0667-170"
         }
       ]
     },
-    "94fe81c3-120": {
+    "52bd0667-120": {
       "id": "/src/components/pages/contact/ContactHeader.tsx",
       "moduleParts": {
-        "assets/ContactHeader-CM_avOqs.js": "94fe81c3-121"
+        "assets/ContactHeader-CM_avOqs.js": "52bd0667-121"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-170"
+          "uid": "52bd0667-170"
         }
       ]
     },
-    "94fe81c3-122": {
+    "52bd0667-122": {
       "id": "/src/components/pages/faq/FAQHeader.tsx",
       "moduleParts": {
-        "assets/FAQHeader-Dl50Cj_d.js": "94fe81c3-123"
+        "assets/FAQHeader-Dl50Cj_d.js": "52bd0667-123"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-174"
+          "uid": "52bd0667-174"
         }
       ]
     },
-    "94fe81c3-124": {
+    "52bd0667-124": {
       "id": "/src/components/pages/faq/FAQList.tsx",
       "moduleParts": {
-        "assets/FAQList-CHbP4eOR.js": "94fe81c3-125"
+        "assets/FAQList-CHbP4eOR.js": "52bd0667-125"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-174"
+          "uid": "52bd0667-174"
         }
       ]
     },
-    "94fe81c3-126": {
+    "52bd0667-126": {
       "id": "/src/components/pages/home/Hero.tsx",
       "moduleParts": {
-        "assets/Hero-gAZJvn86.js": "94fe81c3-127"
+        "assets/Hero-gAZJvn86.js": "52bd0667-127"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-184"
+          "uid": "52bd0667-184"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-160"
+          "uid": "52bd0667-160"
         }
       ]
     },
-    "94fe81c3-128": {
+    "52bd0667-128": {
       "id": "/src/components/MockBanner.tsx",
       "moduleParts": {
-        "assets/MockBanner-sJqGPmSR.js": "94fe81c3-129"
+        "assets/MockBanner-sJqGPmSR.js": "52bd0667-129"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-110"
+          "uid": "52bd0667-110"
         },
         {
-          "uid": "94fe81c3-116"
+          "uid": "52bd0667-116"
         },
         {
-          "uid": "94fe81c3-120"
+          "uid": "52bd0667-120"
         },
         {
-          "uid": "94fe81c3-122"
+          "uid": "52bd0667-122"
         },
         {
-          "uid": "94fe81c3-134"
+          "uid": "52bd0667-134"
         },
         {
-          "uid": "94fe81c3-140"
+          "uid": "52bd0667-140"
         },
         {
-          "uid": "94fe81c3-148"
+          "uid": "52bd0667-148"
         },
         {
-          "uid": "94fe81c3-152"
+          "uid": "52bd0667-152"
         }
       ]
     },
-    "94fe81c3-130": {
+    "52bd0667-130": {
       "id": "/src/components/pages/careers/OpenPositions.tsx",
       "moduleParts": {
-        "assets/OpenPositions-DiPz1zvL.js": "94fe81c3-131"
+        "assets/OpenPositions-DiPz1zvL.js": "52bd0667-131"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-168"
+          "uid": "52bd0667-168"
         }
       ]
     },
-    "94fe81c3-132": {
+    "52bd0667-132": {
       "id": "/src/components/pages/settings/PreferencesSection.tsx",
       "moduleParts": {
-        "assets/PreferencesSection-DcRfdoO8.js": "94fe81c3-133"
+        "assets/PreferencesSection-DcRfdoO8.js": "52bd0667-133"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-254"
+          "uid": "52bd0667-254"
         }
       ]
     },
-    "94fe81c3-134": {
+    "52bd0667-134": {
       "id": "/src/components/pages/pricing/PricingHeader.tsx",
       "moduleParts": {
-        "assets/PricingHeader-DszzQoW3.js": "94fe81c3-135"
+        "assets/PricingHeader-DszzQoW3.js": "52bd0667-135"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-176"
+          "uid": "52bd0667-176"
         }
       ]
     },
-    "94fe81c3-136": {
+    "52bd0667-136": {
       "id": "/src/components/pages/pricing/PricingTiers.tsx",
       "moduleParts": {
-        "assets/PricingTiers-_ufRUC7g.js": "94fe81c3-137"
+        "assets/PricingTiers-_ufRUC7g.js": "52bd0667-137"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-176"
+          "uid": "52bd0667-176"
         }
       ]
     },
-    "94fe81c3-138": {
+    "52bd0667-138": {
       "id": "/src/components/pages/products/ProductsGrid.tsx",
       "moduleParts": {
-        "assets/ProductsGrid-BYh5K2JI.js": "94fe81c3-139"
+        "assets/ProductsGrid-BYh5K2JI.js": "52bd0667-139"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-178"
+          "uid": "52bd0667-178"
         }
       ]
     },
-    "94fe81c3-140": {
+    "52bd0667-140": {
       "id": "/src/components/pages/products/ProductsHeader.tsx",
       "moduleParts": {
-        "assets/ProductsHeader-Bf4pJ7QI.js": "94fe81c3-141"
+        "assets/ProductsHeader-Bf4pJ7QI.js": "52bd0667-141"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-178"
+          "uid": "52bd0667-178"
         }
       ]
     },
-    "94fe81c3-142": {
+    "52bd0667-142": {
       "id": "/src/components/pages/settings/ProfileSection.tsx",
       "moduleParts": {
-        "assets/ProfileSection-ChDl1ez4.js": "94fe81c3-143"
+        "assets/ProfileSection-ChDl1ez4.js": "52bd0667-143"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-254"
+          "uid": "52bd0667-254"
         }
       ]
     },
-    "94fe81c3-144": {
+    "52bd0667-144": {
       "id": "/src/components/pages/home/ResultsTable.tsx",
       "moduleParts": {
-        "assets/ResultsTable-C3GSwVbj.js": "94fe81c3-145"
+        "assets/ResultsTable-C3GSwVbj.js": "52bd0667-145"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-160"
+          "uid": "52bd0667-160"
         }
       ]
     },
-    "94fe81c3-146": {
+    "52bd0667-146": {
       "id": "/src/components/pages/settings/SettingsFooter.tsx",
       "moduleParts": {
-        "assets/SettingsFooter-CUiiWsHa.js": "94fe81c3-147"
+        "assets/SettingsFooter-CUiiWsHa.js": "52bd0667-147"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-254"
+          "uid": "52bd0667-254"
         }
       ]
     },
-    "94fe81c3-148": {
+    "52bd0667-148": {
       "id": "/src/components/pages/settings/SettingsHeader.tsx",
       "moduleParts": {
-        "assets/SettingsHeader-D9lkCB6a.js": "94fe81c3-149"
+        "assets/SettingsHeader-D9lkCB6a.js": "52bd0667-149"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-254"
+          "uid": "52bd0667-254"
         }
       ]
     },
-    "94fe81c3-150": {
+    "52bd0667-150": {
       "id": "/src/components/pages/team/TeamGrid.tsx",
       "moduleParts": {
-        "assets/TeamGrid-DBax_cqt.js": "94fe81c3-151"
+        "assets/TeamGrid-DBax_cqt.js": "52bd0667-151"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-258"
+          "uid": "52bd0667-258"
         }
       ]
     },
-    "94fe81c3-152": {
+    "52bd0667-152": {
       "id": "/src/components/pages/team/TeamHeader.tsx",
       "moduleParts": {
-        "assets/TeamHeader-CmuT8dCm.js": "94fe81c3-153"
+        "assets/TeamHeader-CmuT8dCm.js": "52bd0667-153"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-258"
+          "uid": "52bd0667-258"
         }
       ]
     },
-    "94fe81c3-154": {
+    "52bd0667-154": {
       "id": "/src/components/pages/home/UnderstandingImpact.tsx",
       "moduleParts": {
-        "assets/UnderstandingImpact-DllYcW94.js": "94fe81c3-155"
+        "assets/UnderstandingImpact-DllYcW94.js": "52bd0667-155"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-160"
+          "uid": "52bd0667-160"
         }
       ]
     },
-    "94fe81c3-156": {
+    "52bd0667-156": {
       "id": "/src/components/pages/about/WhatWeMeasure.tsx",
       "moduleParts": {
-        "assets/WhatWeMeasure-C1G5wMly.js": "94fe81c3-157"
+        "assets/WhatWeMeasure-C1G5wMly.js": "52bd0667-157"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-164"
+          "uid": "52bd0667-164"
         }
       ]
     },
-    "94fe81c3-158": {
+    "52bd0667-158": {
       "id": "/src/components/pages/home/WhyItMatters.tsx",
       "moduleParts": {
-        "assets/WhyItMatters-Cit2ZJ-U.js": "94fe81c3-159"
+        "assets/WhyItMatters-Cit2ZJ-U.js": "52bd0667-159"
       },
       "imported": [
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-160"
+          "uid": "52bd0667-160"
         }
       ]
     },
-    "94fe81c3-160": {
+    "52bd0667-160": {
       "id": "/src/routes/$locale/index.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/_locale-hUeVDQ6R.js": "94fe81c3-161"
+        "assets/_locale-hUeVDQ6R.js": "52bd0667-161"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-126",
+          "uid": "52bd0667-126",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-158",
+          "uid": "52bd0667-158",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-154",
+          "uid": "52bd0667-154",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-144",
+          "uid": "52bd0667-144",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-230"
+          "uid": "52bd0667-230"
         }
       ]
     },
-    "94fe81c3-162": {
+    "52bd0667-162": {
       "id": "\u0000tanstack-start-manifest:v",
       "moduleParts": {
-        "assets/_tanstack-start-manifest_v-Df8jAZAz.js": "94fe81c3-163"
+        "assets/_tanstack-start-manifest_v-CB6Ulw2F.js": "52bd0667-163"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-54"
+          "uid": "52bd0667-54"
         }
       ]
     },
-    "94fe81c3-164": {
+    "52bd0667-164": {
       "id": "/src/routes/$locale/about.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/about-DGopjHP7.js": "94fe81c3-165"
+        "assets/about-DGopjHP7.js": "52bd0667-165"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-106",
+          "uid": "52bd0667-106",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-104",
+          "uid": "52bd0667-104",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-156",
+          "uid": "52bd0667-156",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-232"
+          "uid": "52bd0667-232"
         }
       ]
     },
-    "94fe81c3-166": {
+    "52bd0667-166": {
       "id": "/src/routes/$locale/blog.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/blog-CV9TZyTo.js": "94fe81c3-167"
+        "assets/blog-CV9TZyTo.js": "52bd0667-167"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-110",
+          "uid": "52bd0667-110",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-112",
+          "uid": "52bd0667-112",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-234"
+          "uid": "52bd0667-234"
         }
       ]
     },
-    "94fe81c3-168": {
+    "52bd0667-168": {
       "id": "/src/routes/$locale/careers.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/careers-dAQJaUw8.js": "94fe81c3-169"
+        "assets/careers-dAQJaUw8.js": "52bd0667-169"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-116",
+          "uid": "52bd0667-116",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-114",
+          "uid": "52bd0667-114",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-130",
+          "uid": "52bd0667-130",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-236"
+          "uid": "52bd0667-236"
         }
       ]
     },
-    "94fe81c3-170": {
+    "52bd0667-170": {
       "id": "/src/routes/$locale/contact.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/contact-QQjsduYd.js": "94fe81c3-171"
+        "assets/contact-QQjsduYd.js": "52bd0667-171"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-120",
+          "uid": "52bd0667-120",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-118",
+          "uid": "52bd0667-118",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-238"
+          "uid": "52bd0667-238"
         }
       ]
     },
-    "94fe81c3-172": {
+    "52bd0667-172": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/empty-plugin-adapters.js",
       "moduleParts": {
-        "assets/empty-plugin-adapters-CKgtmaig.js": "94fe81c3-173"
+        "assets/empty-plugin-adapters-CKgtmaig.js": "52bd0667-173"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-174": {
+    "52bd0667-174": {
       "id": "/src/routes/$locale/faq.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/faq-DgAJ_BSV.js": "94fe81c3-175"
+        "assets/faq-DgAJ_BSV.js": "52bd0667-175"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-122",
+          "uid": "52bd0667-122",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-124",
+          "uid": "52bd0667-124",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-240"
+          "uid": "52bd0667-240"
         }
       ]
     },
-    "94fe81c3-176": {
+    "52bd0667-176": {
       "id": "/src/routes/$locale/pricing.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/pricing-BvPG_pfy.js": "94fe81c3-177"
+        "assets/pricing-BvPG_pfy.js": "52bd0667-177"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-134",
+          "uid": "52bd0667-134",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-136",
+          "uid": "52bd0667-136",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-242"
+          "uid": "52bd0667-242"
         }
       ]
     },
-    "94fe81c3-178": {
+    "52bd0667-178": {
       "id": "/src/routes/$locale/products.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/products-DSSmS4JP.js": "94fe81c3-179"
+        "assets/products-DSSmS4JP.js": "52bd0667-179"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-140",
+          "uid": "52bd0667-140",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-138",
+          "uid": "52bd0667-138",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-244"
+          "uid": "52bd0667-244"
         }
       ]
     },
-    "94fe81c3-180": {
+    "52bd0667-180": {
       "id": "/src/routes/$locale/route.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/route-wThgEDEk.js": "94fe81c3-181"
+        "assets/route-wThgEDEk.js": "52bd0667-181"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-210"
+          "uid": "52bd0667-210"
         }
       ]
     },
-    "94fe81c3-182": {
+    "52bd0667-182": {
       "id": "\u0000rolldown/runtime.js",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-183"
+        "assets/router-DtZ8jQYR.js": "52bd0667-183"
       },
       "imported": [],
       "importedBy": []
     },
-    "94fe81c3-184": {
+    "52bd0667-184": {
       "id": "/src/hooks/usePerformanceMeasure.ts",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-185"
+        "assets/router-DtZ8jQYR.js": "52bd0667-185"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-218"
+          "uid": "52bd0667-218"
         },
         {
-          "uid": "94fe81c3-126"
+          "uid": "52bd0667-126"
         },
         {
-          "uid": "94fe81c3-106"
+          "uid": "52bd0667-106"
         }
       ]
     },
-    "94fe81c3-186": {
+    "52bd0667-186": {
       "id": "/src/i18n/config.ts",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-187"
+        "assets/router-DtZ8jQYR.js": "52bd0667-187"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         },
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         },
         {
-          "uid": "94fe81c3-216"
+          "uid": "52bd0667-216"
         }
       ]
     },
-    "94fe81c3-188": {
+    "52bd0667-188": {
       "id": "/src/i18n/locales/en.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-189"
+        "assets/router-DtZ8jQYR.js": "52bd0667-189"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-190": {
+    "52bd0667-190": {
       "id": "/src/i18n/locales/fr.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-191"
+        "assets/router-DtZ8jQYR.js": "52bd0667-191"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-192": {
+    "52bd0667-192": {
       "id": "/src/i18n/locales/es.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-193"
+        "assets/router-DtZ8jQYR.js": "52bd0667-193"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-194": {
+    "52bd0667-194": {
       "id": "/src/i18n/locales/de.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-195"
+        "assets/router-DtZ8jQYR.js": "52bd0667-195"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-196": {
+    "52bd0667-196": {
       "id": "/src/i18n/locales/it.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-197"
+        "assets/router-DtZ8jQYR.js": "52bd0667-197"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-198": {
+    "52bd0667-198": {
       "id": "/src/i18n/locales/pt.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-199"
+        "assets/router-DtZ8jQYR.js": "52bd0667-199"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-200": {
+    "52bd0667-200": {
       "id": "/src/i18n/locales/zh.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-201"
+        "assets/router-DtZ8jQYR.js": "52bd0667-201"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-202": {
+    "52bd0667-202": {
       "id": "/src/i18n/locales/ja.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-203"
+        "assets/router-DtZ8jQYR.js": "52bd0667-203"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-204": {
+    "52bd0667-204": {
       "id": "/src/i18n/locales/ko.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-205"
+        "assets/router-DtZ8jQYR.js": "52bd0667-205"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-206": {
+    "52bd0667-206": {
       "id": "/src/i18n/locales/ru.json",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-207"
+        "assets/router-DtZ8jQYR.js": "52bd0667-207"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-208": {
+    "52bd0667-208": {
       "id": "/src/i18n/i18n.ts",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-209"
+        "assets/router-DtZ8jQYR.js": "52bd0667-209"
       },
       "imported": [
         {
-          "uid": "94fe81c3-311"
+          "uid": "52bd0667-311"
         },
         {
-          "uid": "94fe81c3-186"
+          "uid": "52bd0667-186"
         },
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-188"
+          "uid": "52bd0667-188"
         },
         {
-          "uid": "94fe81c3-190"
+          "uid": "52bd0667-190"
         },
         {
-          "uid": "94fe81c3-192"
+          "uid": "52bd0667-192"
         },
         {
-          "uid": "94fe81c3-194"
+          "uid": "52bd0667-194"
         },
         {
-          "uid": "94fe81c3-196"
+          "uid": "52bd0667-196"
         },
         {
-          "uid": "94fe81c3-198"
+          "uid": "52bd0667-198"
         },
         {
-          "uid": "94fe81c3-200"
+          "uid": "52bd0667-200"
         },
         {
-          "uid": "94fe81c3-202"
+          "uid": "52bd0667-202"
         },
         {
-          "uid": "94fe81c3-204"
+          "uid": "52bd0667-204"
         },
         {
-          "uid": "94fe81c3-206"
+          "uid": "52bd0667-206"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-252"
+          "uid": "52bd0667-252"
         },
         {
-          "uid": "94fe81c3-210"
+          "uid": "52bd0667-210"
         }
       ]
     },
-    "94fe81c3-210": {
+    "52bd0667-210": {
       "id": "/src/routes/$locale/route.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-211"
+        "assets/router-DtZ8jQYR.js": "52bd0667-211"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         },
         {
-          "uid": "94fe81c3-180",
+          "uid": "52bd0667-180",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         },
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         }
       ]
     },
-    "94fe81c3-212": {
+    "52bd0667-212": {
       "id": "/src/components/Footer.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-213"
+        "assets/router-DtZ8jQYR.js": "52bd0667-213"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         }
       ]
     },
-    "94fe81c3-214": {
+    "52bd0667-214": {
       "id": "/src/components/ThemeToggle.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-215"
+        "assets/router-DtZ8jQYR.js": "52bd0667-215"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-218"
+          "uid": "52bd0667-218"
         }
       ]
     },
-    "94fe81c3-216": {
+    "52bd0667-216": {
       "id": "/src/components/LocaleSwitcher.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-217"
+        "assets/router-DtZ8jQYR.js": "52bd0667-217"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-186"
+          "uid": "52bd0667-186"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-218"
+          "uid": "52bd0667-218"
         }
       ]
     },
-    "94fe81c3-218": {
+    "52bd0667-218": {
       "id": "/src/components/Header.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-219"
+        "assets/router-DtZ8jQYR.js": "52bd0667-219"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-317"
+          "uid": "52bd0667-317"
         },
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-214"
+          "uid": "52bd0667-214"
         },
         {
-          "uid": "94fe81c3-216"
+          "uid": "52bd0667-216"
         },
         {
-          "uid": "94fe81c3-184"
+          "uid": "52bd0667-184"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         }
       ]
     },
-    "94fe81c3-220": {
+    "52bd0667-220": {
       "id": "/src/styles.css?transform-only",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-221"
+        "assets/router-DtZ8jQYR.js": "52bd0667-221"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-222"
+          "uid": "52bd0667-222"
         }
       ]
     },
-    "94fe81c3-222": {
+    "52bd0667-222": {
       "id": "/src/styles.css?url",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-223"
+        "assets/router-DtZ8jQYR.js": "52bd0667-223"
       },
       "imported": [
         {
-          "uid": "94fe81c3-220"
+          "uid": "52bd0667-220"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         }
       ]
     },
-    "94fe81c3-224": {
+    "52bd0667-224": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/test-utils/src/browser-metrics.ts",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-225"
+        "assets/router-DtZ8jQYR.js": "52bd0667-225"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         }
       ]
     },
-    "94fe81c3-226": {
+    "52bd0667-226": {
       "id": "/src/routes/__root.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-227"
+        "assets/router-DtZ8jQYR.js": "52bd0667-227"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-312"
+          "uid": "52bd0667-312"
         },
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-210"
+          "uid": "52bd0667-210"
         },
         {
-          "uid": "94fe81c3-212"
+          "uid": "52bd0667-212"
         },
         {
-          "uid": "94fe81c3-218"
+          "uid": "52bd0667-218"
         },
         {
-          "uid": "94fe81c3-186"
+          "uid": "52bd0667-186"
         },
         {
-          "uid": "94fe81c3-222"
+          "uid": "52bd0667-222"
         },
         {
-          "uid": "94fe81c3-224"
+          "uid": "52bd0667-224"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-228": {
+    "52bd0667-228": {
       "id": "/src/routes/index.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-229"
+        "assets/router-DtZ8jQYR.js": "52bd0667-229"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-230": {
+    "52bd0667-230": {
       "id": "/src/routes/$locale/index.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-231"
+        "assets/router-DtZ8jQYR.js": "52bd0667-231"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-160",
+          "uid": "52bd0667-160",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-232": {
+    "52bd0667-232": {
       "id": "/src/routes/$locale/about.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-233"
+        "assets/router-DtZ8jQYR.js": "52bd0667-233"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-164",
+          "uid": "52bd0667-164",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-234": {
+    "52bd0667-234": {
       "id": "/src/routes/$locale/blog.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-235"
+        "assets/router-DtZ8jQYR.js": "52bd0667-235"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-166",
+          "uid": "52bd0667-166",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-236": {
+    "52bd0667-236": {
       "id": "/src/routes/$locale/careers.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-237"
+        "assets/router-DtZ8jQYR.js": "52bd0667-237"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-168",
+          "uid": "52bd0667-168",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-238": {
+    "52bd0667-238": {
       "id": "/src/routes/$locale/contact.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-239"
+        "assets/router-DtZ8jQYR.js": "52bd0667-239"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-170",
+          "uid": "52bd0667-170",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-240": {
+    "52bd0667-240": {
       "id": "/src/routes/$locale/faq.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-241"
+        "assets/router-DtZ8jQYR.js": "52bd0667-241"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-174",
+          "uid": "52bd0667-174",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-242": {
+    "52bd0667-242": {
       "id": "/src/routes/$locale/pricing.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-243"
+        "assets/router-DtZ8jQYR.js": "52bd0667-243"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-176",
+          "uid": "52bd0667-176",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-244": {
+    "52bd0667-244": {
       "id": "/src/routes/$locale/products.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-245"
+        "assets/router-DtZ8jQYR.js": "52bd0667-245"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-178",
+          "uid": "52bd0667-178",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-246": {
+    "52bd0667-246": {
       "id": "/src/routes/$locale/settings.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-247"
+        "assets/router-DtZ8jQYR.js": "52bd0667-247"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-254",
+          "uid": "52bd0667-254",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-248": {
+    "52bd0667-248": {
       "id": "/src/routes/$locale/team.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-249"
+        "assets/router-DtZ8jQYR.js": "52bd0667-249"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-258",
+          "uid": "52bd0667-258",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         }
       ]
     },
-    "94fe81c3-250": {
+    "52bd0667-250": {
       "id": "/src/routeTree.gen.ts",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-251"
+        "assets/router-DtZ8jQYR.js": "52bd0667-251"
       },
       "imported": [
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         },
         {
-          "uid": "94fe81c3-228"
+          "uid": "52bd0667-228"
         },
         {
-          "uid": "94fe81c3-210"
+          "uid": "52bd0667-210"
         },
         {
-          "uid": "94fe81c3-230"
+          "uid": "52bd0667-230"
         },
         {
-          "uid": "94fe81c3-232"
+          "uid": "52bd0667-232"
         },
         {
-          "uid": "94fe81c3-234"
+          "uid": "52bd0667-234"
         },
         {
-          "uid": "94fe81c3-236"
+          "uid": "52bd0667-236"
         },
         {
-          "uid": "94fe81c3-238"
+          "uid": "52bd0667-238"
         },
         {
-          "uid": "94fe81c3-240"
+          "uid": "52bd0667-240"
         },
         {
-          "uid": "94fe81c3-242"
+          "uid": "52bd0667-242"
         },
         {
-          "uid": "94fe81c3-244"
+          "uid": "52bd0667-244"
         },
         {
-          "uid": "94fe81c3-246"
+          "uid": "52bd0667-246"
         },
         {
-          "uid": "94fe81c3-248"
+          "uid": "52bd0667-248"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-252"
+          "uid": "52bd0667-252"
         }
       ]
     },
-    "94fe81c3-252": {
+    "52bd0667-252": {
       "id": "/src/router.tsx",
       "moduleParts": {
-        "assets/router-DtZ8jQYR.js": "94fe81c3-253"
+        "assets/router-DtZ8jQYR.js": "52bd0667-253"
       },
       "imported": [
         {
-          "uid": "94fe81c3-265"
+          "uid": "52bd0667-265"
         },
         {
-          "uid": "94fe81c3-250"
+          "uid": "52bd0667-250"
         },
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-254": {
+    "52bd0667-254": {
       "id": "/src/routes/$locale/settings.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/settings-247rcEmn.js": "94fe81c3-255"
+        "assets/settings-247rcEmn.js": "52bd0667-255"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-148",
+          "uid": "52bd0667-148",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-142",
+          "uid": "52bd0667-142",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-132",
+          "uid": "52bd0667-132",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-108",
+          "uid": "52bd0667-108",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-146",
+          "uid": "52bd0667-146",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-246"
+          "uid": "52bd0667-246"
         }
       ]
     },
-    "94fe81c3-256": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.168.50+117aecb3f305d63e/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
+    "52bd0667-256": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.168.50+48770be4ba4996d0/node_modules/@tanstack/react-start/dist/plugin/default-entry/start.ts",
       "moduleParts": {
-        "assets/start-gPvYHxOA.js": "94fe81c3-257"
+        "assets/start-BZWh_a9r.js": "52bd0667-257"
       },
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-258": {
+    "52bd0667-258": {
       "id": "/src/routes/$locale/team.tsx?tsr-split=component",
       "moduleParts": {
-        "assets/team-CkbpV4py.js": "94fe81c3-259"
+        "assets/team-CkbpV4py.js": "52bd0667-259"
       },
       "imported": [
         {
-          "uid": "94fe81c3-264"
+          "uid": "52bd0667-264"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-152",
+          "uid": "52bd0667-152",
           "dynamic": true
         },
         {
-          "uid": "94fe81c3-150",
+          "uid": "52bd0667-150",
           "dynamic": true
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-248"
+          "uid": "52bd0667-248"
         }
       ]
     },
-    "94fe81c3-260": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.168.50+117aecb3f305d63e/node_modules/@tanstack/react-start/dist/esm/server.js",
+    "52bd0667-260": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start@1.168.50+48770be4ba4996d0/node_modules/@tanstack/react-start/dist/esm/server.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-261"
+          "uid": "52bd0667-261"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-102"
+          "uid": "52bd0667-102"
         }
       ]
     },
-    "94fe81c3-261": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.167.38+005eabf3d8b6ef06/node_modules/@tanstack/react-start-server/dist/esm/index.js",
+    "52bd0667-261": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.167.38+6f4b9a1cfb20c0ae/node_modules/@tanstack/react-start-server/dist/esm/index.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-0"
+          "uid": "52bd0667-0"
         },
         {
-          "uid": "94fe81c3-2"
+          "uid": "52bd0667-2"
         },
         {
-          "uid": "94fe81c3-262"
+          "uid": "52bd0667-262"
         },
         {
-          "uid": "94fe81c3-263"
+          "uid": "52bd0667-263"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-260"
+          "uid": "52bd0667-260"
         }
       ]
     },
-    "94fe81c3-262": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.167.38+005eabf3d8b6ef06/node_modules/@tanstack/react-start-server/dist/esm/defaultRenderHandler.js",
+    "52bd0667-262": {
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+react-start-server@1.167.38+6f4b9a1cfb20c0ae/node_modules/@tanstack/react-start-server/dist/esm/defaultRenderHandler.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-0"
+          "uid": "52bd0667-0"
         },
         {
-          "uid": "94fe81c3-266"
+          "uid": "52bd0667-266"
         },
         {
-          "uid": "94fe81c3-267"
+          "uid": "52bd0667-267"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-261"
+          "uid": "52bd0667-261"
         }
       ]
     },
-    "94fe81c3-263": {
+    "52bd0667-263": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/index.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-12"
+          "uid": "52bd0667-12"
         },
         {
-          "uid": "94fe81c3-14"
+          "uid": "52bd0667-14"
         },
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         },
         {
-          "uid": "94fe81c3-268"
+          "uid": "52bd0667-268"
         },
         {
-          "uid": "94fe81c3-269"
+          "uid": "52bd0667-269"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-261"
+          "uid": "52bd0667-261"
         }
       ]
     },
-    "94fe81c3-264": {
+    "52bd0667-264": {
       "id": "react",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-0"
+          "uid": "52bd0667-0"
         },
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         },
         {
-          "uid": "94fe81c3-218"
+          "uid": "52bd0667-218"
         },
         {
-          "uid": "94fe81c3-160"
+          "uid": "52bd0667-160"
         },
         {
-          "uid": "94fe81c3-164"
+          "uid": "52bd0667-164"
         },
         {
-          "uid": "94fe81c3-166"
+          "uid": "52bd0667-166"
         },
         {
-          "uid": "94fe81c3-168"
+          "uid": "52bd0667-168"
         },
         {
-          "uid": "94fe81c3-170"
+          "uid": "52bd0667-170"
         },
         {
-          "uid": "94fe81c3-174"
+          "uid": "52bd0667-174"
         },
         {
-          "uid": "94fe81c3-176"
+          "uid": "52bd0667-176"
         },
         {
-          "uid": "94fe81c3-178"
+          "uid": "52bd0667-178"
         },
         {
-          "uid": "94fe81c3-254"
+          "uid": "52bd0667-254"
         },
         {
-          "uid": "94fe81c3-258"
+          "uid": "52bd0667-258"
         },
         {
-          "uid": "94fe81c3-214"
+          "uid": "52bd0667-214"
         },
         {
-          "uid": "94fe81c3-184"
+          "uid": "52bd0667-184"
         },
         {
-          "uid": "94fe81c3-118"
+          "uid": "52bd0667-118"
         },
         {
-          "uid": "94fe81c3-142"
+          "uid": "52bd0667-142"
         },
         {
-          "uid": "94fe81c3-132"
+          "uid": "52bd0667-132"
         },
         {
-          "uid": "94fe81c3-108"
+          "uid": "52bd0667-108"
         }
       ]
     },
-    "94fe81c3-265": {
+    "52bd0667-265": {
       "id": "@tanstack/react-router",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-0"
+          "uid": "52bd0667-0"
         },
         {
-          "uid": "94fe81c3-252"
+          "uid": "52bd0667-252"
         },
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         },
         {
-          "uid": "94fe81c3-228"
+          "uid": "52bd0667-228"
         },
         {
-          "uid": "94fe81c3-210"
+          "uid": "52bd0667-210"
         },
         {
-          "uid": "94fe81c3-230"
+          "uid": "52bd0667-230"
         },
         {
-          "uid": "94fe81c3-232"
+          "uid": "52bd0667-232"
         },
         {
-          "uid": "94fe81c3-234"
+          "uid": "52bd0667-234"
         },
         {
-          "uid": "94fe81c3-236"
+          "uid": "52bd0667-236"
         },
         {
-          "uid": "94fe81c3-238"
+          "uid": "52bd0667-238"
         },
         {
-          "uid": "94fe81c3-240"
+          "uid": "52bd0667-240"
         },
         {
-          "uid": "94fe81c3-242"
+          "uid": "52bd0667-242"
         },
         {
-          "uid": "94fe81c3-244"
+          "uid": "52bd0667-244"
         },
         {
-          "uid": "94fe81c3-246"
+          "uid": "52bd0667-246"
         },
         {
-          "uid": "94fe81c3-248"
+          "uid": "52bd0667-248"
         },
         {
-          "uid": "94fe81c3-212"
+          "uid": "52bd0667-212"
         },
         {
-          "uid": "94fe81c3-218"
+          "uid": "52bd0667-218"
         },
         {
-          "uid": "94fe81c3-180"
+          "uid": "52bd0667-180"
         },
         {
-          "uid": "94fe81c3-216"
+          "uid": "52bd0667-216"
         }
       ]
     },
-    "94fe81c3-266": {
+    "52bd0667-266": {
       "id": "react/jsx-runtime",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-0"
+          "uid": "52bd0667-0"
         },
         {
-          "uid": "94fe81c3-2"
+          "uid": "52bd0667-2"
         },
         {
-          "uid": "94fe81c3-262"
+          "uid": "52bd0667-262"
         },
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         },
         {
-          "uid": "94fe81c3-212"
+          "uid": "52bd0667-212"
         },
         {
-          "uid": "94fe81c3-218"
+          "uid": "52bd0667-218"
         },
         {
-          "uid": "94fe81c3-160"
+          "uid": "52bd0667-160"
         },
         {
-          "uid": "94fe81c3-164"
+          "uid": "52bd0667-164"
         },
         {
-          "uid": "94fe81c3-166"
+          "uid": "52bd0667-166"
         },
         {
-          "uid": "94fe81c3-168"
+          "uid": "52bd0667-168"
         },
         {
-          "uid": "94fe81c3-170"
+          "uid": "52bd0667-170"
         },
         {
-          "uid": "94fe81c3-174"
+          "uid": "52bd0667-174"
         },
         {
-          "uid": "94fe81c3-176"
+          "uid": "52bd0667-176"
         },
         {
-          "uid": "94fe81c3-178"
+          "uid": "52bd0667-178"
         },
         {
-          "uid": "94fe81c3-254"
+          "uid": "52bd0667-254"
         },
         {
-          "uid": "94fe81c3-258"
+          "uid": "52bd0667-258"
         },
         {
-          "uid": "94fe81c3-214"
+          "uid": "52bd0667-214"
         },
         {
-          "uid": "94fe81c3-216"
+          "uid": "52bd0667-216"
         },
         {
-          "uid": "94fe81c3-126"
+          "uid": "52bd0667-126"
         },
         {
-          "uid": "94fe81c3-158"
+          "uid": "52bd0667-158"
         },
         {
-          "uid": "94fe81c3-154"
+          "uid": "52bd0667-154"
         },
         {
-          "uid": "94fe81c3-144"
+          "uid": "52bd0667-144"
         },
         {
-          "uid": "94fe81c3-106"
+          "uid": "52bd0667-106"
         },
         {
-          "uid": "94fe81c3-104"
+          "uid": "52bd0667-104"
         },
         {
-          "uid": "94fe81c3-156"
+          "uid": "52bd0667-156"
         },
         {
-          "uid": "94fe81c3-110"
+          "uid": "52bd0667-110"
         },
         {
-          "uid": "94fe81c3-112"
+          "uid": "52bd0667-112"
         },
         {
-          "uid": "94fe81c3-116"
+          "uid": "52bd0667-116"
         },
         {
-          "uid": "94fe81c3-114"
+          "uid": "52bd0667-114"
         },
         {
-          "uid": "94fe81c3-130"
+          "uid": "52bd0667-130"
         },
         {
-          "uid": "94fe81c3-120"
+          "uid": "52bd0667-120"
         },
         {
-          "uid": "94fe81c3-118"
+          "uid": "52bd0667-118"
         },
         {
-          "uid": "94fe81c3-122"
+          "uid": "52bd0667-122"
         },
         {
-          "uid": "94fe81c3-124"
+          "uid": "52bd0667-124"
         },
         {
-          "uid": "94fe81c3-134"
+          "uid": "52bd0667-134"
         },
         {
-          "uid": "94fe81c3-136"
+          "uid": "52bd0667-136"
         },
         {
-          "uid": "94fe81c3-140"
+          "uid": "52bd0667-140"
         },
         {
-          "uid": "94fe81c3-138"
+          "uid": "52bd0667-138"
         },
         {
-          "uid": "94fe81c3-148"
+          "uid": "52bd0667-148"
         },
         {
-          "uid": "94fe81c3-142"
+          "uid": "52bd0667-142"
         },
         {
-          "uid": "94fe81c3-132"
+          "uid": "52bd0667-132"
         },
         {
-          "uid": "94fe81c3-108"
+          "uid": "52bd0667-108"
         },
         {
-          "uid": "94fe81c3-146"
+          "uid": "52bd0667-146"
         },
         {
-          "uid": "94fe81c3-152"
+          "uid": "52bd0667-152"
         },
         {
-          "uid": "94fe81c3-150"
+          "uid": "52bd0667-150"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         }
       ]
     },
-    "94fe81c3-267": {
+    "52bd0667-267": {
       "id": "@tanstack/react-router/ssr/server",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-2"
+          "uid": "52bd0667-2"
         },
         {
-          "uid": "94fe81c3-262"
+          "uid": "52bd0667-262"
         }
       ]
     },
-    "94fe81c3-268": {
+    "52bd0667-268": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/virtual-modules.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-263"
+          "uid": "52bd0667-263"
         }
       ]
     },
-    "94fe81c3-269": {
+    "52bd0667-269": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/server.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-94"
+          "uid": "52bd0667-94"
         },
         {
-          "uid": "94fe81c3-96"
+          "uid": "52bd0667-96"
         },
         {
-          "uid": "94fe81c3-98"
+          "uid": "52bd0667-98"
         },
         {
-          "uid": "94fe81c3-275"
+          "uid": "52bd0667-275"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-263"
+          "uid": "52bd0667-263"
         },
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         }
       ]
     },
-    "94fe81c3-270": {
+    "52bd0667-270": {
       "id": "node:async_hooks",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-12"
+          "uid": "52bd0667-12"
         },
         {
-          "uid": "94fe81c3-62"
+          "uid": "52bd0667-62"
         }
       ]
     },
-    "94fe81c3-271": {
+    "52bd0667-271": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/h3@2.0.1-rc.20/node_modules/h3/dist/_entries/node.mjs",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-10"
+          "uid": "52bd0667-10"
         },
         {
-          "uid": "94fe81c3-276"
+          "uid": "52bd0667-276"
         },
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-12"
+          "uid": "52bd0667-12"
         }
       ]
     },
-    "94fe81c3-272": {
+    "52bd0667-272": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/index.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-58"
+          "uid": "52bd0667-58"
         },
         {
-          "uid": "94fe81c3-60"
+          "uid": "52bd0667-60"
         },
         {
-          "uid": "94fe81c3-70"
+          "uid": "52bd0667-70"
         },
         {
-          "uid": "94fe81c3-72"
+          "uid": "52bd0667-72"
         },
         {
-          "uid": "94fe81c3-74"
+          "uid": "52bd0667-74"
         },
         {
-          "uid": "94fe81c3-278"
+          "uid": "52bd0667-278"
         },
         {
-          "uid": "94fe81c3-279"
+          "uid": "52bd0667-279"
         },
         {
-          "uid": "94fe81c3-76"
+          "uid": "52bd0667-76"
         },
         {
-          "uid": "94fe81c3-280"
+          "uid": "52bd0667-280"
         },
         {
-          "uid": "94fe81c3-281"
+          "uid": "52bd0667-281"
         },
         {
-          "uid": "94fe81c3-282"
+          "uid": "52bd0667-282"
         },
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-283"
+          "uid": "52bd0667-283"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         },
         {
-          "uid": "94fe81c3-80"
+          "uid": "52bd0667-80"
         },
         {
-          "uid": "94fe81c3-90"
+          "uid": "52bd0667-90"
         },
         {
-          "uid": "94fe81c3-78"
+          "uid": "52bd0667-78"
         }
       ]
     },
-    "94fe81c3-273": {
+    "52bd0667-273": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/index.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-34"
+          "uid": "52bd0667-34"
         },
         {
-          "uid": "94fe81c3-26"
+          "uid": "52bd0667-26"
         },
         {
-          "uid": "94fe81c3-284"
+          "uid": "52bd0667-284"
         },
         {
-          "uid": "94fe81c3-16"
+          "uid": "52bd0667-16"
         },
         {
-          "uid": "94fe81c3-285"
+          "uid": "52bd0667-285"
         },
         {
-          "uid": "94fe81c3-286"
+          "uid": "52bd0667-286"
         },
         {
-          "uid": "94fe81c3-287"
+          "uid": "52bd0667-287"
         },
         {
-          "uid": "94fe81c3-18"
+          "uid": "52bd0667-18"
         },
         {
-          "uid": "94fe81c3-20"
+          "uid": "52bd0667-20"
         },
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         },
         {
-          "uid": "94fe81c3-28"
+          "uid": "52bd0667-28"
         },
         {
-          "uid": "94fe81c3-288"
+          "uid": "52bd0667-288"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         },
         {
-          "uid": "94fe81c3-290"
+          "uid": "52bd0667-290"
         },
         {
-          "uid": "94fe81c3-291"
+          "uid": "52bd0667-291"
         },
         {
-          "uid": "94fe81c3-36"
+          "uid": "52bd0667-36"
         },
         {
-          "uid": "94fe81c3-292"
+          "uid": "52bd0667-292"
         },
         {
-          "uid": "94fe81c3-293"
+          "uid": "52bd0667-293"
         },
         {
-          "uid": "94fe81c3-294"
+          "uid": "52bd0667-294"
         },
         {
-          "uid": "94fe81c3-295"
+          "uid": "52bd0667-295"
         },
         {
-          "uid": "94fe81c3-42"
+          "uid": "52bd0667-42"
         },
         {
-          "uid": "94fe81c3-44"
+          "uid": "52bd0667-44"
         },
         {
-          "uid": "94fe81c3-52"
+          "uid": "52bd0667-52"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         },
         {
-          "uid": "94fe81c3-54"
+          "uid": "52bd0667-54"
         },
         {
-          "uid": "94fe81c3-80"
+          "uid": "52bd0667-80"
         },
         {
-          "uid": "94fe81c3-82"
+          "uid": "52bd0667-82"
         },
         {
-          "uid": "94fe81c3-90"
+          "uid": "52bd0667-90"
         },
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         },
         {
-          "uid": "94fe81c3-84"
+          "uid": "52bd0667-84"
         },
         {
-          "uid": "94fe81c3-70"
+          "uid": "52bd0667-70"
         },
         {
-          "uid": "94fe81c3-76"
+          "uid": "52bd0667-76"
         },
         {
-          "uid": "94fe81c3-281"
+          "uid": "52bd0667-281"
         }
       ]
     },
-    "94fe81c3-274": {
+    "52bd0667-274": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-storage-context@1.167.30/node_modules/@tanstack/start-storage-context/dist/esm/index.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-62"
+          "uid": "52bd0667-62"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-100"
+          "uid": "52bd0667-100"
         },
         {
-          "uid": "94fe81c3-279"
+          "uid": "52bd0667-279"
         },
         {
-          "uid": "94fe81c3-280"
+          "uid": "52bd0667-280"
         },
         {
-          "uid": "94fe81c3-64"
+          "uid": "52bd0667-64"
         },
         {
-          "uid": "94fe81c3-304"
+          "uid": "52bd0667-304"
         }
       ]
     },
-    "94fe81c3-275": {
+    "52bd0667-275": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/transformStreamWithRouter.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-38"
+          "uid": "52bd0667-38"
         },
         {
-          "uid": "94fe81c3-296"
+          "uid": "52bd0667-296"
         },
         {
-          "uid": "94fe81c3-297"
+          "uid": "52bd0667-297"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-269"
+          "uid": "52bd0667-269"
         }
       ]
     },
-    "94fe81c3-276": {
+    "52bd0667-276": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/h3@2.0.1-rc.20/node_modules/h3/dist/h3-DagAgogP.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-271"
+          "uid": "52bd0667-271"
         },
         {
-          "uid": "94fe81c3-10"
+          "uid": "52bd0667-10"
         }
       ]
     },
-    "94fe81c3-277": {
+    "52bd0667-277": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-server-core@1.169.32/node_modules/@tanstack/start-server-core/dist/esm/getServerFnById.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-56"
+          "uid": "52bd0667-56"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-80"
+          "uid": "52bd0667-80"
         },
         {
-          "uid": "94fe81c3-90"
+          "uid": "52bd0667-90"
         }
       ]
     },
-    "94fe81c3-278": {
+    "52bd0667-278": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/createStart.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-72"
+          "uid": "52bd0667-72"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         }
       ]
     },
-    "94fe81c3-279": {
+    "52bd0667-279": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/getRouterInstance.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-274"
+          "uid": "52bd0667-274"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         }
       ]
     },
-    "94fe81c3-280": {
+    "52bd0667-280": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/getGlobalStartContext.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-274"
+          "uid": "52bd0667-274"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         }
       ]
     },
-    "94fe81c3-281": {
+    "52bd0667-281": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/client-rpc/serverFnFetcher.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-58"
+          "uid": "52bd0667-58"
         },
         {
-          "uid": "94fe81c3-76"
+          "uid": "52bd0667-76"
         },
         {
-          "uid": "94fe81c3-305"
+          "uid": "52bd0667-305"
         },
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-40"
+          "uid": "52bd0667-40"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         }
       ]
     },
-    "94fe81c3-282": {
+    "52bd0667-282": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/client.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         },
         {
-          "uid": "94fe81c3-68"
+          "uid": "52bd0667-68"
         },
         {
-          "uid": "94fe81c3-306"
+          "uid": "52bd0667-306"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         },
         {
-          "uid": "94fe81c3-70"
+          "uid": "52bd0667-70"
         }
       ]
     },
-    "94fe81c3-283": {
+    "52bd0667-283": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-fn-stubs@1.162.0/node_modules/@tanstack/start-fn-stubs/dist/esm/index.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-307"
+          "uid": "52bd0667-307"
         },
         {
-          "uid": "94fe81c3-308"
+          "uid": "52bd0667-308"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-272"
+          "uid": "52bd0667-272"
         }
       ]
     },
-    "94fe81c3-284": {
+    "52bd0667-284": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/path.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-34"
+          "uid": "52bd0667-34"
         },
         {
-          "uid": "94fe81c3-310"
+          "uid": "52bd0667-310"
         },
         {
-          "uid": "94fe81c3-309"
+          "uid": "52bd0667-309"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-28"
+          "uid": "52bd0667-28"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         },
         {
-          "uid": "94fe81c3-293"
+          "uid": "52bd0667-293"
         }
       ]
     },
-    "94fe81c3-285": {
+    "52bd0667-285": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/scroll-restoration.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-309"
+          "uid": "52bd0667-309"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         }
       ]
     },
-    "94fe81c3-286": {
+    "52bd0667-286": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/qss.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-287"
+          "uid": "52bd0667-287"
         }
       ]
     },
-    "94fe81c3-287": {
+    "52bd0667-287": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/searchParams.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-286"
+          "uid": "52bd0667-286"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         }
       ]
     },
-    "94fe81c3-288": {
+    "52bd0667-288": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/stores.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-34"
+          "uid": "52bd0667-34"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         }
       ]
     },
-    "94fe81c3-289": {
+    "52bd0667-289": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/router.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-34"
+          "uid": "52bd0667-34"
         },
         {
-          "uid": "94fe81c3-24"
+          "uid": "52bd0667-24"
         },
         {
-          "uid": "94fe81c3-310"
+          "uid": "52bd0667-310"
         },
         {
-          "uid": "94fe81c3-284"
+          "uid": "52bd0667-284"
         },
         {
-          "uid": "94fe81c3-16"
+          "uid": "52bd0667-16"
         },
         {
-          "uid": "94fe81c3-285"
+          "uid": "52bd0667-285"
         },
         {
-          "uid": "94fe81c3-287"
+          "uid": "52bd0667-287"
         },
         {
-          "uid": "94fe81c3-18"
+          "uid": "52bd0667-18"
         },
         {
-          "uid": "94fe81c3-20"
+          "uid": "52bd0667-20"
         },
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         },
         {
-          "uid": "94fe81c3-28"
+          "uid": "52bd0667-28"
         },
         {
-          "uid": "94fe81c3-288"
+          "uid": "52bd0667-288"
         },
         {
-          "uid": "94fe81c3-30"
+          "uid": "52bd0667-30"
         },
         {
-          "uid": "94fe81c3-309"
+          "uid": "52bd0667-309"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         },
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         },
         {
-          "uid": "94fe81c3-290"
+          "uid": "52bd0667-290"
         },
         {
-          "uid": "94fe81c3-314"
+          "uid": "52bd0667-314"
         }
       ]
     },
-    "94fe81c3-290": {
+    "52bd0667-290": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/defer.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ]
     },
-    "94fe81c3-291": {
+    "52bd0667-291": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/link.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ]
     },
-    "94fe81c3-292": {
+    "52bd0667-292": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/Matches.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ]
     },
-    "94fe81c3-293": {
+    "52bd0667-293": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/route.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-26"
+          "uid": "52bd0667-26"
         },
         {
-          "uid": "94fe81c3-284"
+          "uid": "52bd0667-284"
         },
         {
-          "uid": "94fe81c3-16"
+          "uid": "52bd0667-16"
         },
         {
-          "uid": "94fe81c3-18"
+          "uid": "52bd0667-18"
         },
         {
-          "uid": "94fe81c3-20"
+          "uid": "52bd0667-20"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ]
     },
-    "94fe81c3-294": {
+    "52bd0667-294": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/config.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ]
     },
-    "94fe81c3-295": {
+    "52bd0667-295": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/searchMiddleware.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-34"
+          "uid": "52bd0667-34"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-273"
+          "uid": "52bd0667-273"
         }
       ]
     },
-    "94fe81c3-296": {
+    "52bd0667-296": {
       "id": "node:stream/web",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-275"
+          "uid": "52bd0667-275"
         }
       ]
     },
-    "94fe81c3-297": {
+    "52bd0667-297": {
       "id": "node:stream",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-275"
+          "uid": "52bd0667-275"
         },
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ]
     },
-    "94fe81c3-298": {
+    "52bd0667-298": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_utils2.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ]
     },
-    "94fe81c3-299": {
+    "52bd0667-299": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_plugins.mjs",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-313"
+          "uid": "52bd0667-313"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ]
     },
-    "94fe81c3-300": {
+    "52bd0667-300": {
       "id": "node:http",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ]
     },
-    "94fe81c3-301": {
+    "52bd0667-301": {
       "id": "node:stream/promises",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ]
     },
-    "94fe81c3-302": {
+    "52bd0667-302": {
       "id": "node:https",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ]
     },
-    "94fe81c3-303": {
+    "52bd0667-303": {
       "id": "node:http2",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-8"
+          "uid": "52bd0667-8"
         }
       ]
     },
-    "94fe81c3-304": {
+    "52bd0667-304": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/getStartContextServerOnly.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-274"
+          "uid": "52bd0667-274"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-70"
+          "uid": "52bd0667-70"
         }
       ]
     },
-    "94fe81c3-305": {
+    "52bd0667-305": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-client-core@1.170.28/node_modules/@tanstack/start-client-core/dist/esm/client-rpc/frame-decoder.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-58"
+          "uid": "52bd0667-58"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-281"
+          "uid": "52bd0667-281"
         }
       ]
     },
-    "94fe81c3-306": {
+    "52bd0667-306": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/ssr/json.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-282"
+          "uid": "52bd0667-282"
         }
       ]
     },
-    "94fe81c3-307": {
+    "52bd0667-307": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-fn-stubs@1.162.0/node_modules/@tanstack/start-fn-stubs/dist/esm/createIsomorphicFn.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-283"
+          "uid": "52bd0667-283"
         }
       ]
     },
-    "94fe81c3-308": {
+    "52bd0667-308": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+start-fn-stubs@1.162.0/node_modules/@tanstack/start-fn-stubs/dist/esm/envOnly.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-283"
+          "uid": "52bd0667-283"
         }
       ]
     },
-    "94fe81c3-309": {
+    "52bd0667-309": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/isServer/server.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-314"
+          "uid": "52bd0667-314"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-34"
+          "uid": "52bd0667-34"
         },
         {
-          "uid": "94fe81c3-284"
+          "uid": "52bd0667-284"
         },
         {
-          "uid": "94fe81c3-285"
+          "uid": "52bd0667-285"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         }
       ]
     },
-    "94fe81c3-310": {
+    "52bd0667-310": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/new-process-route-tree.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-34"
+          "uid": "52bd0667-34"
         },
         {
-          "uid": "94fe81c3-26"
+          "uid": "52bd0667-26"
         },
         {
-          "uid": "94fe81c3-24"
+          "uid": "52bd0667-24"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-284"
+          "uid": "52bd0667-284"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         }
       ]
     },
-    "94fe81c3-311": {
+    "52bd0667-311": {
       "id": "i18next",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         }
       ]
     },
-    "94fe81c3-312": {
+    "52bd0667-312": {
       "id": "react-i18next",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-208"
+          "uid": "52bd0667-208"
         },
         {
-          "uid": "94fe81c3-226"
+          "uid": "52bd0667-226"
         },
         {
-          "uid": "94fe81c3-212"
+          "uid": "52bd0667-212"
         },
         {
-          "uid": "94fe81c3-218"
+          "uid": "52bd0667-218"
         },
         {
-          "uid": "94fe81c3-214"
+          "uid": "52bd0667-214"
         },
         {
-          "uid": "94fe81c3-126"
+          "uid": "52bd0667-126"
         },
         {
-          "uid": "94fe81c3-158"
+          "uid": "52bd0667-158"
         },
         {
-          "uid": "94fe81c3-154"
+          "uid": "52bd0667-154"
         },
         {
-          "uid": "94fe81c3-144"
+          "uid": "52bd0667-144"
         },
         {
-          "uid": "94fe81c3-106"
+          "uid": "52bd0667-106"
         },
         {
-          "uid": "94fe81c3-104"
+          "uid": "52bd0667-104"
         },
         {
-          "uid": "94fe81c3-156"
+          "uid": "52bd0667-156"
         },
         {
-          "uid": "94fe81c3-110"
+          "uid": "52bd0667-110"
         },
         {
-          "uid": "94fe81c3-112"
+          "uid": "52bd0667-112"
         },
         {
-          "uid": "94fe81c3-116"
+          "uid": "52bd0667-116"
         },
         {
-          "uid": "94fe81c3-114"
+          "uid": "52bd0667-114"
         },
         {
-          "uid": "94fe81c3-130"
+          "uid": "52bd0667-130"
         },
         {
-          "uid": "94fe81c3-120"
+          "uid": "52bd0667-120"
         },
         {
-          "uid": "94fe81c3-118"
+          "uid": "52bd0667-118"
         },
         {
-          "uid": "94fe81c3-122"
+          "uid": "52bd0667-122"
         },
         {
-          "uid": "94fe81c3-124"
+          "uid": "52bd0667-124"
         },
         {
-          "uid": "94fe81c3-134"
+          "uid": "52bd0667-134"
         },
         {
-          "uid": "94fe81c3-136"
+          "uid": "52bd0667-136"
         },
         {
-          "uid": "94fe81c3-140"
+          "uid": "52bd0667-140"
         },
         {
-          "uid": "94fe81c3-138"
+          "uid": "52bd0667-138"
         },
         {
-          "uid": "94fe81c3-148"
+          "uid": "52bd0667-148"
         },
         {
-          "uid": "94fe81c3-142"
+          "uid": "52bd0667-142"
         },
         {
-          "uid": "94fe81c3-132"
+          "uid": "52bd0667-132"
         },
         {
-          "uid": "94fe81c3-108"
+          "uid": "52bd0667-108"
         },
         {
-          "uid": "94fe81c3-146"
+          "uid": "52bd0667-146"
         },
         {
-          "uid": "94fe81c3-152"
+          "uid": "52bd0667-152"
         },
         {
-          "uid": "94fe81c3-150"
+          "uid": "52bd0667-150"
         },
         {
-          "uid": "94fe81c3-128"
+          "uid": "52bd0667-128"
         }
       ]
     },
-    "94fe81c3-313": {
+    "52bd0667-313": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/srvx@0.11.15/node_modules/srvx/dist/_chunks/_utils.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-299"
+          "uid": "52bd0667-299"
         }
       ]
     },
-    "94fe81c3-314": {
+    "52bd0667-314": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/load-server.js",
       "moduleParts": {},
       "imported": [
         {
-          "uid": "94fe81c3-16"
+          "uid": "52bd0667-16"
         },
         {
-          "uid": "94fe81c3-18"
+          "uid": "52bd0667-18"
         },
         {
-          "uid": "94fe81c3-20"
+          "uid": "52bd0667-20"
         },
         {
-          "uid": "94fe81c3-32"
+          "uid": "52bd0667-32"
         },
         {
-          "uid": "94fe81c3-289"
+          "uid": "52bd0667-289"
         },
         {
-          "uid": "94fe81c3-315"
+          "uid": "52bd0667-315"
         }
       ],
       "importedBy": [
         {
-          "uid": "94fe81c3-309"
+          "uid": "52bd0667-309"
         }
       ]
     },
-    "94fe81c3-315": {
+    "52bd0667-315": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@tanstack+router-core@1.171.28/node_modules/@tanstack/router-core/dist/esm/await-signal.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-314"
+          "uid": "52bd0667-314"
         }
       ]
     },
-    "94fe81c3-316": {
+    "52bd0667-316": {
       "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/seroval-plugins@1.6.7+8ebe760786b55aa9/node_modules/seroval-plugins/dist/rolldown-runtime-D7D4PA-g.js",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-48"
+          "uid": "52bd0667-48"
         }
       ]
     },
-    "94fe81c3-317": {
+    "52bd0667-317": {
       "id": "lucide-react",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
         {
-          "uid": "94fe81c3-218"
+          "uid": "52bd0667-218"
         }
       ]
     }

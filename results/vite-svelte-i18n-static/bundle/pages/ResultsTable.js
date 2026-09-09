@@ -20,7 +20,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$2.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1944,9 +1944,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2062,14 +2063,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2272,9 +2274,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -3016,7 +3016,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3170,8 +3170,8 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var root_1 = $.from_html(`<tr class="border-t border-border"><td class="px-4 py-3 font-medium text-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td></tr>`);
-var root = $.from_html(`<section><h2 class="mb-6 text-2xl font-bold text-foreground"> </h2> <div class="overflow-x-auto rounded-lg border border-border"><table class="w-full text-sm"><thead class="bg-muted"><tr><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th></tr></thead><tbody></tbody></table></div></section>`);
+var root = $.from_html(`<tr class="border-t border-border"><td class="px-4 py-3 font-medium text-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td><td class="px-4 py-3 text-muted-foreground"> </td></tr>`);
+var root_1 = $.from_html(`<section><h2 class="mb-6 text-2xl font-bold text-foreground"> </h2> <div class="overflow-x-auto rounded-lg border border-border"><table class="w-full text-sm"><thead class="bg-muted"><tr><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th><th class="px-4 py-3 text-left font-medium text-muted-foreground"> </th></tr></thead><tbody></tbody></table></div></section>`);
 function ResultsTable($$anchor, $$props) {
 	$.push($$props, false);
 	const $_ = () => $.store_get($format, "$_", $$stores);
@@ -3204,43 +3204,34 @@ function ResultsTable($$anchor, $$props) {
 		}
 	];
 	$.init();
-	var section = root();
+	var section = root_1();
 	var h2 = $.child(section);
-	var text = $.child(h2, true);
-	$.reset(h2);
+	var text = $.only_child(h2, true);
 	var div = $.sibling(h2, 2);
 	var table = $.child(div);
 	var thead = $.child(table);
 	var tr = $.child(thead);
 	var th = $.child(tr);
-	var text_1 = $.child(th, true);
-	$.reset(th);
+	var text_1 = $.only_child(th, true);
 	var th_1 = $.sibling(th);
-	var text_2 = $.child(th_1, true);
-	$.reset(th_1);
+	var text_2 = $.only_child(th_1, true);
 	var th_2 = $.sibling(th_1);
-	var text_3 = $.child(th_2, true);
-	$.reset(th_2);
+	var text_3 = $.only_child(th_2, true);
 	var th_3 = $.sibling(th_2);
-	var text_4 = $.child(th_3, true);
-	$.reset(th_3);
+	var text_4 = $.only_child(th_3, true);
 	$.reset(tr);
 	$.reset(thead);
 	var tbody = $.sibling(thead);
 	$.each(tbody, 5, () => results, (r) => r.lib, ($$anchor, r) => {
-		var tr_1 = root_1();
+		var tr_1 = root();
 		var td = $.child(tr_1);
-		var text_5 = $.child(td, true);
-		$.reset(td);
+		var text_5 = $.only_child(td, true);
 		var td_1 = $.sibling(td);
-		var text_6 = $.child(td_1, true);
-		$.reset(td_1);
+		var text_6 = $.only_child(td_1, true);
 		var td_2 = $.sibling(td_1);
-		var text_7 = $.child(td_2, true);
-		$.reset(td_2);
+		var text_7 = $.only_child(td_2, true);
 		var td_3 = $.sibling(td_2);
-		var text_8 = $.child(td_3, true);
-		$.reset(td_3);
+		var text_8 = $.only_child(td_3, true);
 		$.reset(tr_1);
 		$.template_effect(($0) => {
 			$.set_text(text_5, $.get(r).lib);

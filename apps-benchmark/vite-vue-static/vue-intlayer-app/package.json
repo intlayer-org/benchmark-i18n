@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity && bun test:lib-size",
     "test:components": "bun scripts/measure-components.ts",
@@ -35,7 +35,6 @@
     "test-utils": "workspace:*",
     "typescript": "~7.0.2",
     "vite": "^8.2.2",
-    "vite-intlayer": "^9.5.0",
-    "vue-tsc": "^3.3.11"
+    "vite-intlayer": "^9.5.0"
   }
 }

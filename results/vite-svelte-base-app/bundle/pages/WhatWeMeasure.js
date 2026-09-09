@@ -1,8 +1,8 @@
 import "svelte/internal/disclose-version";
 import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
-var root_1 = $.from_html(`<li class="rounded-md border border-border p-4"><span class="block text-sm font-bold text-primary"> </span> <span class="mt-1 block text-sm text-muted-foreground"> </span></li>`);
-var root = $.from_html(`<section class="mx-auto mt-12 max-w-3xl"><h2 class="mb-4 text-2xl font-bold text-foreground">What We Measure</h2> <ul class="space-y-4"></ul></section>`);
+var root = $.from_html(`<li class="rounded-md border border-border p-4"><span class="block text-sm font-bold text-primary"> </span> <span class="mt-1 block text-sm text-muted-foreground"> </span></li>`);
+var root_1 = $.from_html(`<section class="mx-auto mt-12 max-w-3xl"><h2 class="mb-4 text-2xl font-bold text-foreground">What We Measure</h2> <ul class="space-y-4"></ul></section>`);
 function WhatWeMeasure($$anchor) {
 	const metrics = [
 		{
@@ -26,16 +26,14 @@ function WhatWeMeasure($$anchor) {
 			desc: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
 		}
 	];
-	var section = root();
+	var section = root_1();
 	var ul = $.sibling($.child(section), 2);
 	$.each(ul, 5, () => metrics, (m) => m.metric, ($$anchor, m) => {
-		var li = root_1();
+		var li = root();
 		var span = $.child(li);
-		var text = $.child(span, true);
-		$.reset(span);
+		var text = $.only_child(span, true);
 		var span_1 = $.sibling(span, 2);
-		var text_1 = $.child(span_1, true);
-		$.reset(span_1);
+		var text_1 = $.only_child(span_1, true);
 		$.reset(li);
 		$.template_effect(() => {
 			$.set_text(text, $.get(m).metric);

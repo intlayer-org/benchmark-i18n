@@ -25,27 +25,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -68,7 +47,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -110,6 +89,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -131,6 +111,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -141,359 +126,70 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales$1.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_shared_appname1 = () => {
-	return `i18n Bench`;
-};
-var fr_shared_appname1 = () => {
-	return `Bench i18n`;
-};
-var es_shared_appname1 = () => {
-	return `i18n Bench`;
-};
-var de_shared_appname1 = () => {
-	return `i18n Bench`;
-};
-var it_shared_appname1 = () => {
-	return `i18n Bench`;
-};
-var pt_shared_appname1 = () => {
-	return `i18n Bench`;
-};
-var zh_shared_appname1 = () => {
-	return `i18n Bench`;
-};
-var ja_shared_appname1 = () => {
-	return `i18n Bench`;
-};
-var ko_shared_appname1 = () => {
-	return `i18n Bench`;
-};
-var ru_shared_appname1 = () => {
-	return `i18n Bench`;
-};
-var shared_appname1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_shared_appname1(inputs);
-	if (locale === "fr") return fr_shared_appname1(inputs);
-	if (locale === "es") return es_shared_appname1(inputs);
-	if (locale === "de") return de_shared_appname1(inputs);
-	if (locale === "it") return it_shared_appname1(inputs);
-	if (locale === "pt") return pt_shared_appname1(inputs);
-	if (locale === "zh") return zh_shared_appname1(inputs);
-	if (locale === "ja") return ja_shared_appname1(inputs);
-	if (locale === "ko") return ko_shared_appname1(inputs);
-	return ru_shared_appname1(inputs);
-});
-var en_shared_gotogithub2 = () => {
-	return `Go to GitHub`;
-};
-var fr_shared_gotogithub2 = () => {
-	return `Aller sur GitHub`;
-};
-var es_shared_gotogithub2 = () => {
-	return `Ir a GitHub`;
-};
-var de_shared_gotogithub2 = () => {
-	return `Zu GitHub`;
-};
-var it_shared_gotogithub2 = () => {
-	return `Vai su GitHub`;
-};
-var pt_shared_gotogithub2 = () => {
-	return `Ir para o GitHub`;
-};
-var zh_shared_gotogithub2 = () => {
-	return `前往 GitHub`;
-};
-var ja_shared_gotogithub2 = () => {
-	return `GitHubへ`;
-};
-var ko_shared_gotogithub2 = () => {
-	return `Go to GitHub`;
-};
-var ru_shared_gotogithub2 = () => {
-	return `Перейти на GitHub`;
-};
-var shared_gotogithub2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_shared_gotogithub2(inputs);
-	if (locale === "fr") return fr_shared_gotogithub2(inputs);
-	if (locale === "es") return es_shared_gotogithub2(inputs);
-	if (locale === "de") return de_shared_gotogithub2(inputs);
-	if (locale === "it") return it_shared_gotogithub2(inputs);
-	if (locale === "pt") return pt_shared_gotogithub2(inputs);
-	if (locale === "zh") return zh_shared_gotogithub2(inputs);
-	if (locale === "ja") return ja_shared_gotogithub2(inputs);
-	if (locale === "ko") return ko_shared_gotogithub2(inputs);
-	return ru_shared_gotogithub2(inputs);
-});
-var en_header_home = () => {
-	return `Home`;
-};
-var fr_header_home = () => {
-	return `Accueil`;
-};
-var es_header_home = () => {
-	return `Inicio`;
-};
-var de_header_home = () => {
-	return `Home`;
-};
-var it_header_home = () => {
-	return `Home`;
-};
-var pt_header_home = () => {
-	return `Início`;
-};
-var zh_header_home = () => {
-	return `首页`;
-};
-var ja_header_home = () => {
-	return `ホーム`;
-};
-var ko_header_home = () => {
-	return `Home`;
-};
-var ru_header_home = () => {
-	return `Главная`;
-};
-var header_home = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_home(inputs);
-	if (locale === "fr") return fr_header_home(inputs);
-	if (locale === "es") return es_header_home(inputs);
-	if (locale === "de") return de_header_home(inputs);
-	if (locale === "it") return it_header_home(inputs);
-	if (locale === "pt") return pt_header_home(inputs);
-	if (locale === "zh") return zh_header_home(inputs);
-	if (locale === "ja") return ja_header_home(inputs);
-	if (locale === "ko") return ko_header_home(inputs);
-	return ru_header_home(inputs);
-});
-var en_header_methodology = () => {
-	return `Methodology`;
-};
-var fr_header_methodology = () => {
-	return `Méthodologie`;
-};
-var es_header_methodology = () => {
-	return `Metodología`;
-};
-var de_header_methodology = () => {
-	return `Methodik`;
-};
-var it_header_methodology = () => {
-	return `Metodologia`;
-};
-var pt_header_methodology = () => {
-	return `Metodologia`;
-};
-var zh_header_methodology = () => {
-	return `方法论`;
-};
-var ja_header_methodology = () => {
-	return `手法`;
-};
-var ko_header_methodology = () => {
-	return `Methodology`;
-};
-var ru_header_methodology = () => {
-	return `Методология`;
-};
-var header_methodology = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_methodology(inputs);
-	if (locale === "fr") return fr_header_methodology(inputs);
-	if (locale === "es") return es_header_methodology(inputs);
-	if (locale === "de") return de_header_methodology(inputs);
-	if (locale === "it") return it_header_methodology(inputs);
-	if (locale === "pt") return pt_header_methodology(inputs);
-	if (locale === "zh") return zh_header_methodology(inputs);
-	if (locale === "ja") return ja_header_methodology(inputs);
-	if (locale === "ko") return ko_header_methodology(inputs);
-	return ru_header_methodology(inputs);
-});
-var en_header_mockpages1 = () => {
-	return `Mock Pages`;
-};
-var fr_header_mockpages1 = () => {
-	return `Pages fictives`;
-};
-var es_header_mockpages1 = () => {
-	return `Páginas de prueba`;
-};
-var de_header_mockpages1 = () => {
-	return `Testseiten`;
-};
-var it_header_mockpages1 = () => {
-	return `Pagine di test`;
-};
-var pt_header_mockpages1 = () => {
-	return `Páginas de Teste`;
-};
-var zh_header_mockpages1 = () => {
-	return `模拟页面`;
-};
-var ja_header_mockpages1 = () => {
-	return `テストページ`;
-};
-var ko_header_mockpages1 = () => {
-	return `Mock Pages`;
-};
-var ru_header_mockpages1 = () => {
-	return `Тестовые страницы`;
-};
-var header_mockpages1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_mockpages1(inputs);
-	if (locale === "fr") return fr_header_mockpages1(inputs);
-	if (locale === "es") return es_header_mockpages1(inputs);
-	if (locale === "de") return de_header_mockpages1(inputs);
-	if (locale === "it") return it_header_mockpages1(inputs);
-	if (locale === "pt") return pt_header_mockpages1(inputs);
-	if (locale === "zh") return zh_header_mockpages1(inputs);
-	if (locale === "ja") return ja_header_mockpages1(inputs);
-	if (locale === "ko") return ko_header_mockpages1(inputs);
-	return ru_header_mockpages1(inputs);
-});
-var en_header_products = () => {
-	return `Products`;
-};
-var fr_header_products = () => {
-	return `Produits`;
-};
-var es_header_products = () => {
-	return `Productos`;
-};
-var de_header_products = () => {
-	return `Produkte`;
-};
-var it_header_products = () => {
-	return `Prodotti`;
-};
-var pt_header_products = () => {
-	return `Produtos`;
-};
-var zh_header_products = () => {
-	return `产品`;
-};
-var ja_header_products = () => {
-	return `製品`;
-};
-var ko_header_products = () => {
-	return `Products`;
-};
-var ru_header_products = () => {
-	return `Продукты`;
-};
-var header_products = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_products(inputs);
-	if (locale === "fr") return fr_header_products(inputs);
-	if (locale === "es") return es_header_products(inputs);
-	if (locale === "de") return de_header_products(inputs);
-	if (locale === "it") return it_header_products(inputs);
-	if (locale === "pt") return pt_header_products(inputs);
-	if (locale === "zh") return zh_header_products(inputs);
-	if (locale === "ja") return ja_header_products(inputs);
-	if (locale === "ko") return ko_header_products(inputs);
-	return ru_header_products(inputs);
-});
-var en_header_pricing = () => {
-	return `Pricing`;
-};
-var fr_header_pricing = () => {
-	return `Tarifs`;
-};
-var es_header_pricing = () => {
-	return `Precios`;
-};
-var de_header_pricing = () => {
-	return `Preise`;
-};
-var it_header_pricing = () => {
-	return `Prezzi`;
-};
-var pt_header_pricing = () => {
-	return `Preços`;
-};
-var zh_header_pricing = () => {
-	return `价格`;
-};
-var ja_header_pricing = () => {
-	return `価格`;
-};
-var ko_header_pricing = () => {
-	return `Pricing`;
-};
-var ru_header_pricing = () => {
-	return `Цены`;
-};
-var header_pricing = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_pricing(inputs);
-	if (locale === "fr") return fr_header_pricing(inputs);
-	if (locale === "es") return es_header_pricing(inputs);
-	if (locale === "de") return de_header_pricing(inputs);
-	if (locale === "it") return it_header_pricing(inputs);
-	if (locale === "pt") return pt_header_pricing(inputs);
-	if (locale === "zh") return zh_header_pricing(inputs);
-	if (locale === "ja") return ja_header_pricing(inputs);
-	if (locale === "ko") return ko_header_pricing(inputs);
-	return ru_header_pricing(inputs);
-});
-var en_header_team = () => {
-	return `Team`;
-};
-var fr_header_team = () => {
-	return `Équipe`;
-};
-var es_header_team = () => {
-	return `Equipo`;
-};
-var de_header_team = () => {
-	return `Team`;
-};
-var it_header_team = () => {
-	return `Team`;
-};
-var pt_header_team = () => {
-	return `Equipe`;
-};
-var zh_header_team = () => {
-	return `团队`;
-};
-var ja_header_team = () => {
-	return `チーム`;
-};
-var ko_header_team = () => {
-	return `Team`;
-};
-var ru_header_team = () => {
-	return `Команда`;
-};
-var header_team = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_team(inputs);
-	if (locale === "fr") return fr_header_team(inputs);
-	if (locale === "es") return es_header_team(inputs);
-	if (locale === "de") return de_header_team(inputs);
-	if (locale === "it") return it_header_team(inputs);
-	if (locale === "pt") return pt_header_team(inputs);
-	if (locale === "zh") return zh_header_team(inputs);
-	if (locale === "ja") return ja_header_team(inputs);
-	if (locale === "ko") return ko_header_team(inputs);
-	return ru_header_team(inputs);
-});
 var en_header_blog = () => {
 	return `Blog`;
 };
@@ -526,7 +222,6 @@ var ru_header_blog = () => {
 };
 var header_blog = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_blog(inputs);
 	if (locale === "fr") return fr_header_blog(inputs);
 	if (locale === "es") return es_header_blog(inputs);
 	if (locale === "de") return de_header_blog(inputs);
@@ -535,7 +230,8 @@ var header_blog = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_header_blog(inputs);
 	if (locale === "ja") return ja_header_blog(inputs);
 	if (locale === "ko") return ko_header_blog(inputs);
-	return ru_header_blog(inputs);
+	if (locale === "ru") return ru_header_blog(inputs);
+	return en_header_blog(inputs);
 });
 var en_header_careers = () => {
 	return `Careers`;
@@ -569,7 +265,6 @@ var ru_header_careers = () => {
 };
 var header_careers = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_careers(inputs);
 	if (locale === "fr") return fr_header_careers(inputs);
 	if (locale === "es") return es_header_careers(inputs);
 	if (locale === "de") return de_header_careers(inputs);
@@ -578,50 +273,8 @@ var header_careers = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_header_careers(inputs);
 	if (locale === "ja") return ja_header_careers(inputs);
 	if (locale === "ko") return ko_header_careers(inputs);
-	return ru_header_careers(inputs);
-});
-var en_header_faq = () => {
-	return `FAQ`;
-};
-var fr_header_faq = () => {
-	return `FAQ`;
-};
-var es_header_faq = () => {
-	return `FAQ`;
-};
-var de_header_faq = () => {
-	return `FAQ`;
-};
-var it_header_faq = () => {
-	return `FAQ`;
-};
-var pt_header_faq = () => {
-	return `FAQ`;
-};
-var zh_header_faq = () => {
-	return `常见问题`;
-};
-var ja_header_faq = () => {
-	return `FAQ`;
-};
-var ko_header_faq = () => {
-	return `FAQ`;
-};
-var ru_header_faq = () => {
-	return `FAQ`;
-};
-var header_faq = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_faq(inputs);
-	if (locale === "fr") return fr_header_faq(inputs);
-	if (locale === "es") return es_header_faq(inputs);
-	if (locale === "de") return de_header_faq(inputs);
-	if (locale === "it") return it_header_faq(inputs);
-	if (locale === "pt") return pt_header_faq(inputs);
-	if (locale === "zh") return zh_header_faq(inputs);
-	if (locale === "ja") return ja_header_faq(inputs);
-	if (locale === "ko") return ko_header_faq(inputs);
-	return ru_header_faq(inputs);
+	if (locale === "ru") return ru_header_careers(inputs);
+	return en_header_careers(inputs);
 });
 var en_header_contact = () => {
 	return `Contact`;
@@ -655,7 +308,6 @@ var ru_header_contact = () => {
 };
 var header_contact = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_contact(inputs);
 	if (locale === "fr") return fr_header_contact(inputs);
 	if (locale === "es") return es_header_contact(inputs);
 	if (locale === "de") return de_header_contact(inputs);
@@ -664,7 +316,266 @@ var header_contact = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_header_contact(inputs);
 	if (locale === "ja") return ja_header_contact(inputs);
 	if (locale === "ko") return ko_header_contact(inputs);
-	return ru_header_contact(inputs);
+	if (locale === "ru") return ru_header_contact(inputs);
+	return en_header_contact(inputs);
+});
+var en_header_faq = () => {
+	return `FAQ`;
+};
+var fr_header_faq = () => {
+	return `FAQ`;
+};
+var es_header_faq = () => {
+	return `FAQ`;
+};
+var de_header_faq = () => {
+	return `FAQ`;
+};
+var it_header_faq = () => {
+	return `FAQ`;
+};
+var pt_header_faq = () => {
+	return `FAQ`;
+};
+var zh_header_faq = () => {
+	return `常见问题`;
+};
+var ja_header_faq = () => {
+	return `FAQ`;
+};
+var ko_header_faq = () => {
+	return `FAQ`;
+};
+var ru_header_faq = () => {
+	return `FAQ`;
+};
+var header_faq = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_faq(inputs);
+	if (locale === "es") return es_header_faq(inputs);
+	if (locale === "de") return de_header_faq(inputs);
+	if (locale === "it") return it_header_faq(inputs);
+	if (locale === "pt") return pt_header_faq(inputs);
+	if (locale === "zh") return zh_header_faq(inputs);
+	if (locale === "ja") return ja_header_faq(inputs);
+	if (locale === "ko") return ko_header_faq(inputs);
+	if (locale === "ru") return ru_header_faq(inputs);
+	return en_header_faq(inputs);
+});
+var en_header_home = () => {
+	return `Home`;
+};
+var fr_header_home = () => {
+	return `Accueil`;
+};
+var es_header_home = () => {
+	return `Inicio`;
+};
+var de_header_home = () => {
+	return `Home`;
+};
+var it_header_home = () => {
+	return `Home`;
+};
+var pt_header_home = () => {
+	return `Início`;
+};
+var zh_header_home = () => {
+	return `首页`;
+};
+var ja_header_home = () => {
+	return `ホーム`;
+};
+var ko_header_home = () => {
+	return `Home`;
+};
+var ru_header_home = () => {
+	return `Главная`;
+};
+var header_home = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_home(inputs);
+	if (locale === "es") return es_header_home(inputs);
+	if (locale === "de") return de_header_home(inputs);
+	if (locale === "it") return it_header_home(inputs);
+	if (locale === "pt") return pt_header_home(inputs);
+	if (locale === "zh") return zh_header_home(inputs);
+	if (locale === "ja") return ja_header_home(inputs);
+	if (locale === "ko") return ko_header_home(inputs);
+	if (locale === "ru") return ru_header_home(inputs);
+	return en_header_home(inputs);
+});
+var en_header_methodology = () => {
+	return `Methodology`;
+};
+var fr_header_methodology = () => {
+	return `Méthodologie`;
+};
+var es_header_methodology = () => {
+	return `Metodología`;
+};
+var de_header_methodology = () => {
+	return `Methodik`;
+};
+var it_header_methodology = () => {
+	return `Metodologia`;
+};
+var pt_header_methodology = () => {
+	return `Metodologia`;
+};
+var zh_header_methodology = () => {
+	return `方法论`;
+};
+var ja_header_methodology = () => {
+	return `手法`;
+};
+var ko_header_methodology = () => {
+	return `Methodology`;
+};
+var ru_header_methodology = () => {
+	return `Методология`;
+};
+var header_methodology = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_methodology(inputs);
+	if (locale === "es") return es_header_methodology(inputs);
+	if (locale === "de") return de_header_methodology(inputs);
+	if (locale === "it") return it_header_methodology(inputs);
+	if (locale === "pt") return pt_header_methodology(inputs);
+	if (locale === "zh") return zh_header_methodology(inputs);
+	if (locale === "ja") return ja_header_methodology(inputs);
+	if (locale === "ko") return ko_header_methodology(inputs);
+	if (locale === "ru") return ru_header_methodology(inputs);
+	return en_header_methodology(inputs);
+});
+var en_header_mockpages1 = () => {
+	return `Mock Pages`;
+};
+var fr_header_mockpages1 = () => {
+	return `Pages fictives`;
+};
+var es_header_mockpages1 = () => {
+	return `Páginas de prueba`;
+};
+var de_header_mockpages1 = () => {
+	return `Testseiten`;
+};
+var it_header_mockpages1 = () => {
+	return `Pagine di test`;
+};
+var pt_header_mockpages1 = () => {
+	return `Páginas de Teste`;
+};
+var zh_header_mockpages1 = () => {
+	return `模拟页面`;
+};
+var ja_header_mockpages1 = () => {
+	return `テストページ`;
+};
+var ko_header_mockpages1 = () => {
+	return `Mock Pages`;
+};
+var ru_header_mockpages1 = () => {
+	return `Тестовые страницы`;
+};
+var header_mockpages1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_mockpages1(inputs);
+	if (locale === "es") return es_header_mockpages1(inputs);
+	if (locale === "de") return de_header_mockpages1(inputs);
+	if (locale === "it") return it_header_mockpages1(inputs);
+	if (locale === "pt") return pt_header_mockpages1(inputs);
+	if (locale === "zh") return zh_header_mockpages1(inputs);
+	if (locale === "ja") return ja_header_mockpages1(inputs);
+	if (locale === "ko") return ko_header_mockpages1(inputs);
+	if (locale === "ru") return ru_header_mockpages1(inputs);
+	return en_header_mockpages1(inputs);
+});
+var en_header_pricing = () => {
+	return `Pricing`;
+};
+var fr_header_pricing = () => {
+	return `Tarifs`;
+};
+var es_header_pricing = () => {
+	return `Precios`;
+};
+var de_header_pricing = () => {
+	return `Preise`;
+};
+var it_header_pricing = () => {
+	return `Prezzi`;
+};
+var pt_header_pricing = () => {
+	return `Preços`;
+};
+var zh_header_pricing = () => {
+	return `价格`;
+};
+var ja_header_pricing = () => {
+	return `価格`;
+};
+var ko_header_pricing = () => {
+	return `Pricing`;
+};
+var ru_header_pricing = () => {
+	return `Цены`;
+};
+var header_pricing = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_pricing(inputs);
+	if (locale === "es") return es_header_pricing(inputs);
+	if (locale === "de") return de_header_pricing(inputs);
+	if (locale === "it") return it_header_pricing(inputs);
+	if (locale === "pt") return pt_header_pricing(inputs);
+	if (locale === "zh") return zh_header_pricing(inputs);
+	if (locale === "ja") return ja_header_pricing(inputs);
+	if (locale === "ko") return ko_header_pricing(inputs);
+	if (locale === "ru") return ru_header_pricing(inputs);
+	return en_header_pricing(inputs);
+});
+var en_header_products = () => {
+	return `Products`;
+};
+var fr_header_products = () => {
+	return `Produits`;
+};
+var es_header_products = () => {
+	return `Productos`;
+};
+var de_header_products = () => {
+	return `Produkte`;
+};
+var it_header_products = () => {
+	return `Prodotti`;
+};
+var pt_header_products = () => {
+	return `Produtos`;
+};
+var zh_header_products = () => {
+	return `产品`;
+};
+var ja_header_products = () => {
+	return `製品`;
+};
+var ko_header_products = () => {
+	return `Products`;
+};
+var ru_header_products = () => {
+	return `Продукты`;
+};
+var header_products = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_products(inputs);
+	if (locale === "es") return es_header_products(inputs);
+	if (locale === "de") return de_header_products(inputs);
+	if (locale === "it") return it_header_products(inputs);
+	if (locale === "pt") return pt_header_products(inputs);
+	if (locale === "zh") return zh_header_products(inputs);
+	if (locale === "ja") return ja_header_products(inputs);
+	if (locale === "ko") return ko_header_products(inputs);
+	if (locale === "ru") return ru_header_products(inputs);
+	return en_header_products(inputs);
 });
 var en_header_settings = () => {
 	return `Settings`;
@@ -698,7 +609,6 @@ var ru_header_settings = () => {
 };
 var header_settings = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_header_settings(inputs);
 	if (locale === "fr") return fr_header_settings(inputs);
 	if (locale === "es") return es_header_settings(inputs);
 	if (locale === "de") return de_header_settings(inputs);
@@ -707,7 +617,137 @@ var header_settings = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_header_settings(inputs);
 	if (locale === "ja") return ja_header_settings(inputs);
 	if (locale === "ko") return ko_header_settings(inputs);
-	return ru_header_settings(inputs);
+	if (locale === "ru") return ru_header_settings(inputs);
+	return en_header_settings(inputs);
+});
+var en_header_team = () => {
+	return `Team`;
+};
+var fr_header_team = () => {
+	return `Équipe`;
+};
+var es_header_team = () => {
+	return `Equipo`;
+};
+var de_header_team = () => {
+	return `Team`;
+};
+var it_header_team = () => {
+	return `Team`;
+};
+var pt_header_team = () => {
+	return `Equipe`;
+};
+var zh_header_team = () => {
+	return `团队`;
+};
+var ja_header_team = () => {
+	return `チーム`;
+};
+var ko_header_team = () => {
+	return `Team`;
+};
+var ru_header_team = () => {
+	return `Команда`;
+};
+var header_team = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_header_team(inputs);
+	if (locale === "es") return es_header_team(inputs);
+	if (locale === "de") return de_header_team(inputs);
+	if (locale === "it") return it_header_team(inputs);
+	if (locale === "pt") return pt_header_team(inputs);
+	if (locale === "zh") return zh_header_team(inputs);
+	if (locale === "ja") return ja_header_team(inputs);
+	if (locale === "ko") return ko_header_team(inputs);
+	if (locale === "ru") return ru_header_team(inputs);
+	return en_header_team(inputs);
+});
+var en_shared_appname1 = () => {
+	return `i18n Bench`;
+};
+var fr_shared_appname1 = () => {
+	return `Bench i18n`;
+};
+var es_shared_appname1 = () => {
+	return `i18n Bench`;
+};
+var de_shared_appname1 = () => {
+	return `i18n Bench`;
+};
+var it_shared_appname1 = () => {
+	return `i18n Bench`;
+};
+var pt_shared_appname1 = () => {
+	return `i18n Bench`;
+};
+var zh_shared_appname1 = () => {
+	return `i18n Bench`;
+};
+var ja_shared_appname1 = () => {
+	return `i18n Bench`;
+};
+var ko_shared_appname1 = () => {
+	return `i18n Bench`;
+};
+var ru_shared_appname1 = () => {
+	return `i18n Bench`;
+};
+var shared_appname1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_shared_appname1(inputs);
+	if (locale === "es") return es_shared_appname1(inputs);
+	if (locale === "de") return de_shared_appname1(inputs);
+	if (locale === "it") return it_shared_appname1(inputs);
+	if (locale === "pt") return pt_shared_appname1(inputs);
+	if (locale === "zh") return zh_shared_appname1(inputs);
+	if (locale === "ja") return ja_shared_appname1(inputs);
+	if (locale === "ko") return ko_shared_appname1(inputs);
+	if (locale === "ru") return ru_shared_appname1(inputs);
+	return en_shared_appname1(inputs);
+});
+var en_shared_gotogithub2 = () => {
+	return `Go to GitHub`;
+};
+var fr_shared_gotogithub2 = () => {
+	return `Aller sur GitHub`;
+};
+var es_shared_gotogithub2 = () => {
+	return `Ir a GitHub`;
+};
+var de_shared_gotogithub2 = () => {
+	return `Zu GitHub`;
+};
+var it_shared_gotogithub2 = () => {
+	return `Vai su GitHub`;
+};
+var pt_shared_gotogithub2 = () => {
+	return `Ir para o GitHub`;
+};
+var zh_shared_gotogithub2 = () => {
+	return `前往 GitHub`;
+};
+var ja_shared_gotogithub2 = () => {
+	return `GitHubへ`;
+};
+var ko_shared_gotogithub2 = () => {
+	return `Go to GitHub`;
+};
+var ru_shared_gotogithub2 = () => {
+	return `Перейти на GitHub`;
+};
+var shared_gotogithub2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_shared_gotogithub2(inputs);
+	if (locale === "es") return es_shared_gotogithub2(inputs);
+	if (locale === "de") return de_shared_gotogithub2(inputs);
+	if (locale === "it") return it_shared_gotogithub2(inputs);
+	if (locale === "pt") return pt_shared_gotogithub2(inputs);
+	if (locale === "zh") return zh_shared_gotogithub2(inputs);
+	if (locale === "ja") return ja_shared_gotogithub2(inputs);
+	if (locale === "ko") return ko_shared_gotogithub2(inputs);
+	if (locale === "ru") return ru_shared_gotogithub2(inputs);
+	return en_shared_gotogithub2(inputs);
 });
 var en_themetoggle_auto1 = () => {
 	return `Theme: Auto`;
@@ -741,7 +781,6 @@ var ru_themetoggle_auto1 = () => {
 };
 var themetoggle_auto1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_themetoggle_auto1(inputs);
 	if (locale === "fr") return fr_themetoggle_auto1(inputs);
 	if (locale === "es") return es_themetoggle_auto1(inputs);
 	if (locale === "de") return de_themetoggle_auto1(inputs);
@@ -750,7 +789,8 @@ var themetoggle_auto1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_themetoggle_auto1(inputs);
 	if (locale === "ja") return ja_themetoggle_auto1(inputs);
 	if (locale === "ko") return ko_themetoggle_auto1(inputs);
-	return ru_themetoggle_auto1(inputs);
+	if (locale === "ru") return ru_themetoggle_auto1(inputs);
+	return en_themetoggle_auto1(inputs);
 });
 var en_themetoggle_dark1 = () => {
 	return `Theme: Dark`;
@@ -784,7 +824,6 @@ var ru_themetoggle_dark1 = () => {
 };
 var themetoggle_dark1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_themetoggle_dark1(inputs);
 	if (locale === "fr") return fr_themetoggle_dark1(inputs);
 	if (locale === "es") return es_themetoggle_dark1(inputs);
 	if (locale === "de") return de_themetoggle_dark1(inputs);
@@ -793,50 +832,8 @@ var themetoggle_dark1 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_themetoggle_dark1(inputs);
 	if (locale === "ja") return ja_themetoggle_dark1(inputs);
 	if (locale === "ko") return ko_themetoggle_dark1(inputs);
-	return ru_themetoggle_dark1(inputs);
-});
-var en_themetoggle_light1 = () => {
-	return `Theme: Light`;
-};
-var fr_themetoggle_light1 = () => {
-	return `Thème : clair`;
-};
-var es_themetoggle_light1 = () => {
-	return `Tema: Claro`;
-};
-var de_themetoggle_light1 = () => {
-	return `Thema: Hell`;
-};
-var it_themetoggle_light1 = () => {
-	return `Tema: Chiaro`;
-};
-var pt_themetoggle_light1 = () => {
-	return `Tema: Claro`;
-};
-var zh_themetoggle_light1 = () => {
-	return `主题：浅色`;
-};
-var ja_themetoggle_light1 = () => {
-	return `テーマ：ライト`;
-};
-var ko_themetoggle_light1 = () => {
-	return `Theme: Light`;
-};
-var ru_themetoggle_light1 = () => {
-	return `Тема: Светлая`;
-};
-var themetoggle_light1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_themetoggle_light1(inputs);
-	if (locale === "fr") return fr_themetoggle_light1(inputs);
-	if (locale === "es") return es_themetoggle_light1(inputs);
-	if (locale === "de") return de_themetoggle_light1(inputs);
-	if (locale === "it") return it_themetoggle_light1(inputs);
-	if (locale === "pt") return pt_themetoggle_light1(inputs);
-	if (locale === "zh") return zh_themetoggle_light1(inputs);
-	if (locale === "ja") return ja_themetoggle_light1(inputs);
-	if (locale === "ko") return ko_themetoggle_light1(inputs);
-	return ru_themetoggle_light1(inputs);
+	if (locale === "ru") return ru_themetoggle_dark1(inputs);
+	return en_themetoggle_dark1(inputs);
 });
 var en_themetoggle_labelauto2 = () => {
 	return `Theme mode: auto (system). Click to switch to light mode.`;
@@ -870,7 +867,6 @@ var ru_themetoggle_labelauto2 = () => {
 };
 var themetoggle_labelauto2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_themetoggle_labelauto2(inputs);
 	if (locale === "fr") return fr_themetoggle_labelauto2(inputs);
 	if (locale === "es") return es_themetoggle_labelauto2(inputs);
 	if (locale === "de") return de_themetoggle_labelauto2(inputs);
@@ -879,7 +875,8 @@ var themetoggle_labelauto2 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_themetoggle_labelauto2(inputs);
 	if (locale === "ja") return ja_themetoggle_labelauto2(inputs);
 	if (locale === "ko") return ko_themetoggle_labelauto2(inputs);
-	return ru_themetoggle_labelauto2(inputs);
+	if (locale === "ru") return ru_themetoggle_labelauto2(inputs);
+	return en_themetoggle_labelauto2(inputs);
 });
 var en_themetoggle_labelother2 = (i) => {
 	return `Theme mode: ${i?.mode}. Click to switch mode.`;
@@ -913,7 +910,6 @@ var ru_themetoggle_labelother2 = (i) => {
 };
 var themetoggle_labelother2 = ((inputs, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_themetoggle_labelother2(inputs);
 	if (locale === "fr") return fr_themetoggle_labelother2(inputs);
 	if (locale === "es") return es_themetoggle_labelother2(inputs);
 	if (locale === "de") return de_themetoggle_labelother2(inputs);
@@ -922,7 +918,51 @@ var themetoggle_labelother2 = ((inputs, options = {}) => {
 	if (locale === "zh") return zh_themetoggle_labelother2(inputs);
 	if (locale === "ja") return ja_themetoggle_labelother2(inputs);
 	if (locale === "ko") return ko_themetoggle_labelother2(inputs);
-	return ru_themetoggle_labelother2(inputs);
+	if (locale === "ru") return ru_themetoggle_labelother2(inputs);
+	return en_themetoggle_labelother2(inputs);
+});
+var en_themetoggle_light1 = () => {
+	return `Theme: Light`;
+};
+var fr_themetoggle_light1 = () => {
+	return `Thème : clair`;
+};
+var es_themetoggle_light1 = () => {
+	return `Tema: Claro`;
+};
+var de_themetoggle_light1 = () => {
+	return `Thema: Hell`;
+};
+var it_themetoggle_light1 = () => {
+	return `Tema: Chiaro`;
+};
+var pt_themetoggle_light1 = () => {
+	return `Tema: Claro`;
+};
+var zh_themetoggle_light1 = () => {
+	return `主题：浅色`;
+};
+var ja_themetoggle_light1 = () => {
+	return `テーマ：ライト`;
+};
+var ko_themetoggle_light1 = () => {
+	return `Theme: Light`;
+};
+var ru_themetoggle_light1 = () => {
+	return `Тема: Светлая`;
+};
+var themetoggle_light1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_themetoggle_light1(inputs);
+	if (locale === "es") return es_themetoggle_light1(inputs);
+	if (locale === "de") return de_themetoggle_light1(inputs);
+	if (locale === "it") return it_themetoggle_light1(inputs);
+	if (locale === "pt") return pt_themetoggle_light1(inputs);
+	if (locale === "zh") return zh_themetoggle_light1(inputs);
+	if (locale === "ja") return ja_themetoggle_light1(inputs);
+	if (locale === "ko") return ko_themetoggle_light1(inputs);
+	if (locale === "ru") return ru_themetoggle_light1(inputs);
+	return en_themetoggle_light1(inputs);
 });
 var locales = [
 	"en",
@@ -947,7 +987,7 @@ function getLocaleName(locale) {
 function isLocale(value) {
 	return locales.includes(value);
 }
-var PAGE_SEGMENTS = new Set([
+var PAGE_SEGMENTS = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -981,8 +1021,8 @@ function navigate(url, replace = false) {
 	else history.pushState(null, "", url);
 	pathname.set(window.location.pathname);
 }
-var root_1$1 = $.from_html(`<option> </option>`);
-var root$2 = $.from_html(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none"></select></div>`);
+var root$2 = $.from_html(`<option> </option>`);
+var root_1$1 = $.from_html(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none"></select></div>`);
 function LocaleSwitcher($$anchor, $$props) {
 	$.push($$props, false);
 	const $pathname = () => $.store_get(pathname, "$pathname", $$stores);
@@ -992,16 +1032,15 @@ function LocaleSwitcher($$anchor, $$props) {
 		navigate(get(pathname).replace(/^\/[^/]+/, `/${newLocale}`) + window.location.search + window.location.hash, false);
 	}
 	$.init();
-	var div = root$2();
+	var div = root_1$1();
 	var select = $.child(div);
 	$.each(select, 5, () => locales, (localeItem) => localeItem, ($$anchor, localeItem) => {
-		var option = root_1$1();
-		var text = $.child(option, true);
-		$.reset(option);
+		var option = root$2();
+		var text = $.only_child(option, true);
 		var option_value = {};
 		$.template_effect(($0) => {
 			$.set_text(text, $0);
-			if (option_value !== (option_value = $.get(localeItem))) option.value = (option.__value = $.get(localeItem)) ?? "";
+			if (option_value !== (option_value = $.get(localeItem))) option.value = (option.__value = option_value) ?? "";
 		}, [() => getLocaleName($.get(localeItem))]);
 		$.append($$anchor, option);
 	});
@@ -1010,7 +1049,7 @@ function LocaleSwitcher($$anchor, $$props) {
 	$.init_select(select);
 	$.reset(div);
 	$.template_effect(($0) => {
-		if (select_value !== (select_value = $0)) select.value = (select.__value = $0) ?? "", $.select_option(select, $0);
+		if (select_value !== (select_value = $0)) select.value = (select.__value = select_value) ?? "", $.select_option(select, select_value);
 	}, [() => $pathname().split("/").filter(Boolean)[0] ?? "en"]);
 	$.delegated("change", select, handleLocaleChange);
 	$.append($$anchor, div);
@@ -1058,8 +1097,7 @@ function ThemeToggle($$anchor, $$props) {
 	const label = $.derived(() => $.get(mode) === "auto" ? themetoggle_labelauto2() : themetoggle_labelother2({ mode: $.get(mode) }));
 	const buttonText = $.derived(() => $.get(mode) === "auto" ? themetoggle_auto1() : $.get(mode) === "dark" ? themetoggle_dark1() : themetoggle_light1());
 	var button = root$1();
-	var text = $.child(button, true);
-	$.reset(button);
+	var text = $.only_child(button, true);
 	$.template_effect(() => {
 		$.set_attribute(button, "aria-label", $.get(label));
 		$.set_attribute(button, "title", $.get(label));
@@ -1070,9 +1108,9 @@ function ThemeToggle($$anchor, $$props) {
 	$.pop();
 }
 $.delegate(["click"]);
-var root_2 = $.from_html(`<a class="block px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent"> </a>`);
+var root = $.from_html(`<a class="block px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent"> </a>`);
 var root_1 = $.from_html(`<div class="absolute top-full left-0 w-48 pt-2" role="presentation"><div class="overflow-hidden rounded-md border border-border bg-card py-1 shadow-lg"></div></div>`);
-var root = $.from_html(`<header class="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg"><nav class="container flex h-16 items-center justify-between"><div class="flex items-center gap-8"><a class="text-lg font-bold tracking-tight text-primary no-underline"> </a> <div class="hidden items-center gap-6 text-sm font-medium md:flex"><a> </a> <a> </a> <div class="relative"><button type="button" class="nav-link flex cursor-pointer items-center gap-1 border-none bg-transparent"> <!></button> <!></div></div></div> <div class="flex items-center gap-4"><a href="https://github.com/intlayer-org/benchmark-i18n" target="_blank" rel="noreferrer" class="text-muted-foreground transition hover:text-foreground"><span class="sr-only"> </span> <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a> <!> <!></div></nav></header>`);
+var root_2 = $.from_html(`<header class="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg"><nav class="container flex h-16 items-center justify-between"><div class="flex items-center gap-8"><a class="text-lg font-bold tracking-tight text-primary no-underline"> </a> <div class="hidden items-center gap-6 text-sm font-medium md:flex"><a> </a> <a> </a> <div class="relative"><button type="button" class="nav-link flex cursor-pointer items-center gap-1 border-none bg-transparent"> <!></button> <!></div></div></div> <div class="flex items-center gap-4"><a href="https://github.com/intlayer-org/benchmark-i18n" target="_blank" rel="noreferrer" class="text-muted-foreground transition hover:text-foreground"><span class="sr-only"> </span> <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a> <!> <!></div></nav></header>`);
 function Header($$anchor, $$props) {
 	$.push($$props, true);
 	const $route = () => $.store_get(route, "$route", $$stores);
@@ -1115,21 +1153,18 @@ function Header($$anchor, $$props) {
 	]);
 	const homeActive = $.derived(() => $route().kind === "ok" && $route().page === "");
 	const methodologyActive = $.derived(() => $route().kind === "ok" && $route().page === "about");
-	var header = root();
+	var header = root_2();
 	var nav = $.child(header);
 	var div = $.child(nav);
 	var a = $.child(div);
-	var text = $.child(a, true);
-	$.reset(a);
+	var text = $.only_child(a, true);
 	var div_1 = $.sibling(a, 2);
 	var a_1 = $.child(div_1);
 	let classes;
-	var text_1 = $.child(a_1, true);
-	$.reset(a_1);
+	var text_1 = $.only_child(a_1, true);
 	var a_2 = $.sibling(a_1, 2);
 	let classes_1;
-	var text_2 = $.child(a_2, true);
-	$.reset(a_2);
+	var text_2 = $.only_child(a_2, true);
 	var div_2 = $.sibling(a_2, 2);
 	var button = $.child(div_2);
 	var text_3 = $.child(button);
@@ -1149,9 +1184,8 @@ function Header($$anchor, $$props) {
 		var div_3 = root_1();
 		var div_4 = $.child(div_3);
 		$.each(div_4, 21, () => $.get(mockPages), (page) => page.to, ($$anchor, page) => {
-			var a_3 = root_2();
-			var text_4 = $.child(a_3, true);
-			$.reset(a_3);
+			var a_3 = root();
+			var text_4 = $.only_child(a_3, true);
 			$.template_effect(() => {
 				$.set_attribute(a_3, "href", $.get(page).to);
 				$.set_text(text_4, $.get(page).label);
@@ -1174,8 +1208,7 @@ function Header($$anchor, $$props) {
 	var div_5 = $.sibling(div, 2);
 	var a_4 = $.child(div_5);
 	var span = $.child(a_4);
-	var text_5 = $.child(span, true);
-	$.reset(span);
+	var text_5 = $.only_child(span, true);
 	$.next(2);
 	$.reset(a_4);
 	var node_2 = $.sibling(a_4, 2);

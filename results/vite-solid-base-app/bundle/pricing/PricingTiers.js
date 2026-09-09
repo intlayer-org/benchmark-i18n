@@ -1,6 +1,8 @@
 import { className, createComponent, effect, insert, template } from "solid-js/web";
 import { For } from "solid-js";
-var _tmpl$ = template(`<div class="grid gap-6 md:grid-cols-3">`), _tmpl$2 = template(`<div><h3 class="text-lg font-semibold text-foreground"></h3><div class=my-4><span class="text-3xl font-bold text-foreground"></span><span class="text-sm text-muted-foreground"></span></div><ul class="mb-6 flex-1 space-y-2"></ul><button type=button>`), _tmpl$3 = template(`<li class="flex items-center gap-2 text-sm text-muted-foreground"><span class=text-primary>✓</span> `);
+var _tmpl$ = template(`<div class="grid gap-6 md:grid-cols-3">`);
+var _tmpl$2 = template(`<div><h3 class="text-lg font-semibold text-foreground"></h3><div class=my-4><span class="text-3xl font-bold text-foreground"></span><span class="text-sm text-muted-foreground"></span></div><ul class="mb-6 flex-1 space-y-2"></ul><button type=button>`);
+var _tmpl$3 = template(`<li class="flex items-center gap-2 text-sm text-muted-foreground"><span class=text-primary>✓</span> `);
 function PricingTiers() {
 	const tiers = [
 		{

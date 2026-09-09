@@ -1,7 +1,7 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
-var __commonJSMin = (cb, mod) => () => (mod || cb((mod = { exports: {} }).exports, mod), mod.exports);
+var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -81,10 +81,13 @@ var getPathWithDefaults = (data, defaultData, key) => {
 	return getPath(defaultData, key);
 };
 var deepExtend = (target, source, overwrite) => {
-	for (const prop in source) if (prop !== "__proto__" && prop !== "constructor") if (prop in target) if (isString$1(target[prop]) || target[prop] instanceof String || isString$1(source[prop]) || source[prop] instanceof String) {
-		if (overwrite) target[prop] = source[prop];
-	} else deepExtend(target[prop], source[prop], overwrite);
-	else target[prop] = source[prop];
+	for (const prop in source) if (prop !== "__proto__" && prop !== "constructor") {
+		if (Object.prototype.hasOwnProperty.call(target, prop)) {
+			if (isString$1(target[prop]) || target[prop] instanceof String || isString$1(source[prop]) || source[prop] instanceof String) {
+				if (overwrite) target[prop] = source[prop];
+			} else deepExtend(target[prop], source[prop], overwrite);
+		} else target[prop] = source[prop];
+	}
 	return target;
 };
 var regexEscape = (str) => str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -207,6 +210,7 @@ var baseLogger = new class Logger {
 	}
 	forward(args, lvl, prefix, debugOnly) {
 		if (debugOnly && !this.debug) return null;
+		args = args.map((a) => isString$1(a) ? a.replace(/[\r\n\x00-\x1F\x7F]/g, " ") : a);
 		if (isString$1(args[0])) args[0] = `${prefix}${this.prefix} ${args[0]}`;
 		return this.logger[lvl](args);
 	}
@@ -284,9 +288,11 @@ var ResourceStore = class extends EventEmitter {
 		if (lng.includes(".")) path = lng.split(".");
 		else {
 			path = [lng, ns];
-			if (key) if (Array.isArray(key)) path.push(...key);
-			else if (isString$1(key) && keySeparator) path.push(...key.split(keySeparator));
-			else path.push(key);
+			if (key) {
+				if (Array.isArray(key)) path.push(...key);
+				else if (isString$1(key) && keySeparator) path.push(...key.split(keySeparator));
+				else path.push(key);
+			}
 		}
 		const result = getPath(this.data, path);
 		if (!result && !ns && !key && lng.includes(".")) {
@@ -389,10 +395,13 @@ function keysFromSelector(selector, opts) {
 	const { [PATH_KEY]: path } = selector(createProxy());
 	const keySeparator = opts?.keySeparator ?? ".";
 	const nsSeparator = opts?.nsSeparator ?? ":";
+	const strict = opts?.enableSelector === "strict";
 	if (path.length > 1 && nsSeparator) {
 		const ns = opts?.ns;
-		const nsArray = Array.isArray(ns) ? ns : null;
-		if (nsArray && nsArray.length > 1 && nsArray.slice(1).includes(path[0])) return `${path[0]}${nsSeparator}${path.slice(1).join(keySeparator)}`;
+		const nsList = strict ? Array.isArray(ns) ? ns : ns ? [ns] : null : Array.isArray(ns) ? ns : null;
+		if (nsList) {
+			if ((strict ? nsList : nsList.length > 1 ? nsList.slice(1) : []).includes(path[0])) return `${path[0]}${nsSeparator}${path.slice(1).join(keySeparator)}`;
+		}
 	}
 	return path.join(keySeparator);
 }
@@ -566,7 +575,7 @@ var Translator = class Translator extends EventEmitter {
 			const resForMissing = (opt.missingKeyNoValueFallbackToKey || this.options.missingKeyNoValueFallbackToKey) && usedKey ? void 0 : res;
 			const updateMissing = hasDefaultValue && defaultValue !== res && this.options.updateMissing;
 			if (usedKey || usedDefault || updateMissing) {
-				this.logger.log(updateMissing ? "updateKey" : "missingKey", lng, namespace, key, updateMissing ? defaultValue : res);
+				this.logger.log(updateMissing ? "updateKey" : "missingKey", lng, namespace, needsPluralHandling && !updateMissing ? `${key}${this.pluralResolver.getSuffix(lng, opt.count, opt)}` : key, updateMissing ? defaultValue : res);
 				if (keySeparator) {
 					const fk = this.resolve(key, {
 						...opt,
@@ -585,14 +594,16 @@ var Translator = class Translator extends EventEmitter {
 					else if (this.backendConnector?.saveMissing) this.backendConnector.saveMissing(l, namespace, k, defaultForMissing, updateMissing, opt);
 					this.emit("missingKey", l, namespace, k, res);
 				};
-				if (this.options.saveMissing) if (this.options.saveMissingPlurals && needsPluralHandling) lngs.forEach((language) => {
-					const suffixes = this.pluralResolver.getSuffixes(language, opt);
-					if (needsZeroSuffixLookup && opt[`defaultValue${this.options.pluralSeparator}zero`] && !suffixes.includes(`${this.options.pluralSeparator}zero`)) suffixes.push(`${this.options.pluralSeparator}zero`);
-					suffixes.forEach((suffix) => {
-						send([language], key + suffix, opt[`defaultValue${suffix}`] || defaultValue);
+				if (this.options.saveMissing) {
+					if (this.options.saveMissingPlurals && needsPluralHandling) lngs.forEach((language) => {
+						const suffixes = this.pluralResolver.getSuffixes(language, opt);
+						if (needsZeroSuffixLookup && opt[`defaultValue${this.options.pluralSeparator}zero`] && !suffixes.includes(`${this.options.pluralSeparator}zero`)) suffixes.push(`${this.options.pluralSeparator}zero`);
+						suffixes.forEach((suffix) => {
+							send([language], key + suffix, opt[`defaultValue${suffix}`] || defaultValue);
+						});
 					});
-				});
-				else send(lngs, key, defaultValue);
+					else send(lngs, key, defaultValue);
+				}
 			}
 			res = this.extendTranslation(res, keys, opt, resolved, lastKey);
 			if (usedKey && res === key && this.options.appendNamespaceToMissingKey) res = `${namespace}${nsSeparator}${key}`;
@@ -753,7 +764,10 @@ var Translator = class Translator extends EventEmitter {
 		];
 		const useOptionsReplaceForData = options.replace && !isString$1(options.replace);
 		let data = useOptionsReplaceForData ? options.replace : options;
-		if (useOptionsReplaceForData && typeof options.count !== "undefined") data.count = options.count;
+		if (useOptionsReplaceForData && typeof options.count !== "undefined") data = {
+			...data,
+			count: options.count
+		};
 		if (this.options.interpolation.defaultVariables) data = {
 			...this.options.interpolation.defaultVariables,
 			...data
@@ -775,6 +789,10 @@ var LanguageUtil = class {
 		this.options = options;
 		this.supportedLngs = this.options.supportedLngs || false;
 		this.logger = baseLogger.create("languageUtils");
+		this.resolveHierarchyCache = {};
+	}
+	clearCache() {
+		this.resolveHierarchyCache = {};
 	}
 	getScriptPartFromCode(code) {
 		code = getCleanedCode(code);
@@ -847,6 +865,27 @@ var LanguageUtil = class {
 		return found || [];
 	}
 	toResolveHierarchy(code, fallbackCode) {
+		const fallbackLng = this.options.fallbackLng;
+		const fallbackLngKey = Array.isArray(fallbackLng) ? fallbackLng.join("|") : fallbackLng;
+		if (fallbackLngKey !== this._cachedFallbackLng) {
+			this.resolveHierarchyCache = {};
+			this._cachedFallbackLng = fallbackLngKey;
+		}
+		const hasCacheableFallback = fallbackCode === void 0 || fallbackCode === false || isString$1(fallbackCode);
+		const usesUncacheableOptionsFallback = fallbackCode === void 0 && typeof this.options.fallbackLng === "function";
+		const cacheable = isString$1(code) && hasCacheableFallback && !usesUncacheableOptionsFallback;
+		let cacheKey = null;
+		if (cacheable) {
+			let fallbackCacheKey;
+			if (fallbackCode === void 0) fallbackCacheKey = "undefined";
+			else if (fallbackCode === false) fallbackCacheKey = "boolean:false";
+			else fallbackCacheKey = `string:${fallbackCode}`;
+			cacheKey = `${code.length}:${code}|${fallbackCacheKey}`;
+		}
+		if (cacheKey !== null) {
+			const cached = this.resolveHierarchyCache[cacheKey];
+			if (cached !== void 0) return cached.slice();
+		}
 		const fallbackCodes = this.getFallbackCodes((fallbackCode === false ? [] : fallbackCode) || this.options.fallbackLng || [], code);
 		const codes = [];
 		const addCode = (c) => {
@@ -862,6 +901,10 @@ var LanguageUtil = class {
 		fallbackCodes.forEach((fc) => {
 			if (!codes.includes(fc)) addCode(this.formatLanguageCode(fc));
 		});
+		if (cacheKey !== null) {
+			this.resolveHierarchyCache[cacheKey] = codes;
+			return codes.slice();
+		}
 		return codes;
 	}
 };
@@ -956,8 +999,8 @@ var Interpolator = class {
 		this.prefix = prefix ? regexEscape(prefix) : prefixEscaped || "{{";
 		this.suffix = suffix ? regexEscape(suffix) : suffixEscaped || "}}";
 		this.formatSeparator = formatSeparator || ",";
-		this.unescapePrefix = unescapeSuffix ? "" : unescapePrefix || "-";
-		this.unescapeSuffix = this.unescapePrefix ? "" : unescapeSuffix || "";
+		this.unescapePrefix = unescapeSuffix ? "" : unescapePrefix ? regexEscape(unescapePrefix) : "-";
+		this.unescapeSuffix = this.unescapePrefix ? "" : unescapeSuffix ? regexEscape(unescapeSuffix) : "";
 		this.nestingPrefix = nestingPrefix ? regexEscape(nestingPrefix) : nestingPrefixEscaped || regexEscape("$t(");
 		this.nestingSuffix = nestingSuffix ? regexEscape(nestingSuffix) : nestingSuffixEscaped || regexEscape(")");
 		this.nestingOptionsSeparator = nestingOptionsSeparator || ",";
@@ -1004,35 +1047,37 @@ var Interpolator = class {
 			});
 		};
 		this.resetRegExp();
+		if (!this.escapeValue && typeof str === "string" && /\$t\([^)]*\{[^}]*\{\{/.test(str)) this.logger.warn("nesting options string contains interpolated variables with escapeValue: false — if any of those values are attacker-controlled they can inject additional nesting options (e.g. redirect lng/ns). Sanitise untrusted input before passing it to t(), or keep escapeValue: true.");
 		const missingInterpolationHandler = options?.missingInterpolationHandler || this.options.missingInterpolationHandler;
 		const skipOnVariables = options?.interpolation?.skipOnVariables !== void 0 ? options.interpolation.skipOnVariables : this.options.interpolation.skipOnVariables;
 		[{
 			regex: this.regexpUnescape,
-			safeValue: (val) => regexSafe(val)
+			safeValue: (val) => val
 		}, {
 			regex: this.regexp,
-			safeValue: (val) => this.escapeValue ? regexSafe(this.escape(val)) : regexSafe(val)
+			safeValue: (val) => this.escapeValue ? this.escape(val) : val
 		}].forEach((todo) => {
 			replaces = 0;
 			while (match = todo.regex.exec(str)) {
 				const matchedVar = match[1].trim();
 				value = handleFormat(matchedVar);
-				if (value === void 0) if (typeof missingInterpolationHandler === "function") {
-					const temp = missingInterpolationHandler(str, match, options);
-					value = isString$1(temp) ? temp : "";
-				} else if (options && Object.prototype.hasOwnProperty.call(options, matchedVar)) value = "";
-				else if (skipOnVariables) {
-					value = match[0];
-					continue;
-				} else {
-					this.logger.warn(`missed to pass in variable ${matchedVar} for interpolating ${str}`);
-					value = "";
-				}
-				else if (!isString$1(value) && !this.useRawValueToEscape) value = makeString(value);
+				if (value === void 0) {
+					if (typeof missingInterpolationHandler === "function") {
+						const temp = missingInterpolationHandler(str, match, options);
+						value = isString$1(temp) ? temp : "";
+					} else if (options && Object.prototype.hasOwnProperty.call(options, matchedVar)) value = "";
+					else if (skipOnVariables) {
+						value = match[0];
+						continue;
+					} else {
+						this.logger.warn(`missed to pass in variable ${matchedVar} for interpolating ${str}`);
+						value = "";
+					}
+				} else if (!isString$1(value) && !this.useRawValueToEscape) value = makeString(value);
 				const safeValue = todo.safeValue(value);
-				str = str.replace(match[0], safeValue);
+				str = str.replace(match[0], regexSafe(safeValue));
 				if (skipOnVariables) {
-					todo.regex.lastIndex += value.length;
+					todo.regex.lastIndex += safeValue.length;
 					todo.regex.lastIndex -= match[0].length;
 				} else todo.regex.lastIndex = 0;
 				replaces++;
@@ -1074,7 +1119,7 @@ var Interpolator = class {
 			clonedOptions = clonedOptions.replace && !isString$1(clonedOptions.replace) ? clonedOptions.replace : clonedOptions;
 			clonedOptions.applyPostProcessor = false;
 			delete clonedOptions.defaultValue;
-			const keyEndIndex = /{.*}/.test(match[1]) ? match[1].lastIndexOf("}") + 1 : match[1].indexOf(this.formatSeparator);
+			const keyEndIndex = /{.*}/s.test(match[1]) ? match[1].lastIndexOf("}") + 1 : match[1].indexOf(this.formatSeparator);
 			if (keyEndIndex !== -1) {
 				formatters = match[1].slice(keyEndIndex).split(this.formatSeparator).map((elem) => elem.trim()).filter(Boolean);
 				match[1] = match[1].slice(0, keyEndIndex);
@@ -1090,7 +1135,7 @@ var Interpolator = class {
 				...options,
 				interpolationkey: match[1].trim()
 			}), value.trim());
-			str = str.replace(match[0], value);
+			str = str.replace(match[0], regexSafe(makeString(value)));
 			this.regexp.lastIndex = 0;
 		}
 		return str;
@@ -1186,10 +1231,12 @@ var Formatter = class {
 	format(value, format, lng, options = {}) {
 		if (!format) return value;
 		if (value == null) return value;
-		const formats = format.split(this.formatSeparator);
-		if (formats.length > 1 && formats[0].indexOf("(") > 1 && !formats[0].includes(")") && formats.find((f) => f.includes(")"))) {
-			const lastIndex = formats.findIndex((f) => f.includes(")"));
-			formats[0] = [formats[0], ...formats.splice(1, lastIndex)].join(this.formatSeparator);
+		const rawFormats = format.split(this.formatSeparator);
+		const formats = [];
+		for (let i = 0; i < rawFormats.length; i++) {
+			let f = rawFormats[i];
+			while (f.indexOf("(") > -1 && !f.includes(")") && i + 1 < rawFormats.length) f = `${f}${this.formatSeparator}${rawFormats[++i]}`;
+			formats.push(f);
 		}
 		return formats.reduce((mem, f) => {
 			const { formatName, formatOptions } = parseFormatStr(f);
@@ -1417,6 +1464,7 @@ var get = () => ({
 	nsSeparator: ":",
 	pluralSeparator: "_",
 	contextSeparator: "_",
+	enableSelector: false,
 	partialBundledLanguages: false,
 	saveMissing: false,
 	updateMissing: false,
@@ -1597,7 +1645,7 @@ var instance = class I18n extends EventEmitter {
 				deferred.resolve(t);
 				callback(err, t);
 			};
-			if (this.languages && !this.isInitialized) return finish(null, this.t.bind(this));
+			if ((this.languages || this.isLanguageChangingTo) && !this.isInitialized) return finish(null, this.t.bind(this));
 			this.changeLanguage(this.options.lng, finish);
 		};
 		if (this.options.resources || !this.options.initAsync) load();
@@ -1712,24 +1760,28 @@ var instance = class I18n extends EventEmitter {
 			});
 		};
 		if (!lng && this.services.languageDetector && !this.services.languageDetector.async) setLng(this.services.languageDetector.detect());
-		else if (!lng && this.services.languageDetector && this.services.languageDetector.async) if (this.services.languageDetector.detect.length === 0) this.services.languageDetector.detect().then(setLng);
-		else this.services.languageDetector.detect(setLng);
-		else setLng(lng);
+		else if (!lng && this.services.languageDetector && this.services.languageDetector.async) {
+			if (this.services.languageDetector.detect.length === 0) this.services.languageDetector.detect().then(setLng);
+			else this.services.languageDetector.detect(setLng);
+		} else setLng(lng);
 		return deferred;
 	}
-	getFixedT(lng, ns, keyPrefix) {
+	getFixedT(lng, ns, keyPrefix, fixedOpts) {
+		const scopeNs = fixedOpts?.scopeNs;
 		const fixedT = (key, opts, ...rest) => {
 			let o;
 			if (typeof opts !== "object") o = this.options.overloadTranslationOptionHandler([key, opts].concat(rest));
 			else o = { ...opts };
 			o.lng = o.lng || fixedT.lng;
 			o.lngs = o.lngs || fixedT.lngs;
+			const explicitCallNs = o.ns !== void 0 && o.ns !== null;
 			o.ns = o.ns || fixedT.ns;
 			if (o.keyPrefix !== "") o.keyPrefix = o.keyPrefix || keyPrefix || fixedT.keyPrefix;
 			const selectorOpts = {
 				...this.options,
 				...o
 			};
+			if (Array.isArray(scopeNs) && !explicitCallNs) selectorOpts.ns = scopeNs;
 			if (typeof o.keyPrefix === "function") o.keyPrefix = keysFromSelector(o.keyPrefix, selectorOpts);
 			const keySeparator = this.options.keySeparator || ".";
 			let resultKey;
@@ -2106,7 +2158,11 @@ var require_use_sync_external_store_shim_production = __commonJSMin(((exports) =
 	function is(x, y) {
 		return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
 	}
-	var objectIs = "function" === typeof Object.is ? Object.is : is, useState = React.useState, useEffect = React.useEffect, useLayoutEffect = React.useLayoutEffect, useDebugValue = React.useDebugValue;
+	var objectIs = "function" === typeof Object.is ? Object.is : is;
+	var useState = React.useState;
+	var useEffect = React.useEffect;
+	var useLayoutEffect = React.useLayoutEffect;
+	var useDebugValue = React.useDebugValue;
 	function useSyncExternalStore$2(subscribe, getSnapshot) {
 		var value = getSnapshot(), _useState = useState({ inst: {
 			value,
@@ -2224,7 +2280,7 @@ var useTranslation = (ns, props = {}) => {
 	const { i18n: i18nFromContext, defaultNS: defaultNSFromContext } = useContext(I18nContext) || {};
 	const i18n = i18nFromProps || i18nFromContext || getI18n();
 	if (i18n && !i18n.reportNamespaces) i18n.reportNamespaces = new ReportNamespaces();
-	if (!i18n) warnOnce(i18n, "NO_I18NEXT_INSTANCE", "useTranslation: You will need to pass in an i18next instance by using initReactI18next");
+	if (!i18n) warnOnce(i18n, "NO_I18NEXT_INSTANCE", "useTranslation: You will need to pass in an i18next instance by using initReactI18next or by passing it via props or context. In monorepo setups, make sure there is only one instance of react-i18next.");
 	const i18nOptions = useMemo(() => ({
 		...getDefaults(),
 		...i18n?.options?.react,
@@ -2259,7 +2315,7 @@ var useTranslation = (ns, props = {}) => {
 		const lastSnapshot = snapshotRef.current;
 		if (lastSnapshot && lastSnapshot.ready === calculatedReady && lastSnapshot.lng === currentLng && lastSnapshot.keyPrefix === keyPrefix && lastSnapshot.revision === currentRevision) return lastSnapshot;
 		const newSnapshot = {
-			t: i18n.getFixedT(currentLng, i18nOptions.nsMode === "fallback" ? namespaces : namespaces[0], keyPrefix),
+			t: i18n.getFixedT(currentLng, i18nOptions.nsMode === "fallback" ? namespaces : namespaces[0], keyPrefix, { scopeNs: namespaces }),
 			ready: calculatedReady,
 			lng: currentLng,
 			keyPrefix,
@@ -2311,15 +2367,18 @@ var useTranslation = (ns, props = {}) => {
 		const original = finalI18n;
 		const lang = original?.language;
 		let i18nWrapper = original;
-		if (original) if (wrapperRef.current && wrapperRef.current.__original === original) if (wrapperLangRef.current !== lang) {
-			i18nWrapper = createI18nWrapper(original);
-			wrapperRef.current = i18nWrapper;
-			wrapperLangRef.current = lang;
-		} else i18nWrapper = wrapperRef.current;
-		else {
-			i18nWrapper = createI18nWrapper(original);
-			wrapperRef.current = i18nWrapper;
-			wrapperLangRef.current = lang;
+		if (original) {
+			if (wrapperRef.current && wrapperRef.current.__original === original) {
+				if (wrapperLangRef.current !== lang) {
+					i18nWrapper = createI18nWrapper(original);
+					wrapperRef.current = i18nWrapper;
+					wrapperLangRef.current = lang;
+				} else i18nWrapper = wrapperRef.current;
+			} else {
+				i18nWrapper = createI18nWrapper(original);
+				wrapperRef.current = i18nWrapper;
+				wrapperLangRef.current = lang;
+			}
 		}
 		const effectiveT = !ready && !useSuspense ? (...args) => {
 			warnOnce(i18n, "USE_T_BEFORE_READY", "useTranslation: t was called before ready. When using useSuspense: false, make sure to check the ready flag before using t.");
@@ -2342,11 +2401,18 @@ var useTranslation = (ns, props = {}) => {
 		finalI18n.language,
 		finalI18n.languages
 	]);
-	if (i18n && useSuspense && !ready) throw new Promise((resolve) => {
-		const onLoaded = () => resolve();
-		if (props.lng) loadLanguages(i18n, props.lng, namespaces, onLoaded);
-		else loadNamespaces(i18n, namespaces, onLoaded);
-	});
+	if (i18n && useSuspense && !ready) {
+		let inDevelopment = false;
+		try {
+			inDevelopment = process.env.NODE_ENV !== "production";
+		} catch (e) {}
+		if (inDevelopment) warnOnce(i18n, "SUSPENDED_WHILE_LOADING", "useTranslation: suspended while translations are loading (useSuspense is true by default). Add a <Suspense> boundary above this component, or set react.useSuspense: false in the i18next init options. https://react.i18next.com/latest/usetranslation-hook");
+		throw new Promise((resolve) => {
+			const onLoaded = () => resolve();
+			if (props.lng) loadLanguages(i18n, props.lng, namespaces, onLoaded);
+			else loadNamespaces(i18n, namespaces, onLoaded);
+		});
+	}
 	return ret;
 };
 function I18nextProvider({ i18n, defaultNS, children }) {
@@ -2356,20 +2422,33 @@ function I18nextProvider({ i18n, defaultNS, children }) {
 	}), [i18n, defaultNS]);
 	return createElement(I18nContext.Provider, { value }, children);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/pages/settings/SettingsFooter.tsx";
 function SettingsFooter() {
 	const { t } = useTranslation("settings");
-	return jsxs("div", {
+	return jsxDEV("div", {
 		className: "flex justify-end gap-3",
-		children: [jsx("button", {
+		children: [jsxDEV("button", {
 			type: "button",
 			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 			children: t("settingsFooter.cancel")
-		}), jsx("button", {
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this), jsxDEV("button", {
 			type: "submit",
 			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 			children: t("settingsFooter.saveChanges")
-		})]
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 15,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -2401,11 +2480,42 @@ var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
 		(typeof queueMicrotask === "function" ? queueMicrotask : setTimeout)(reject.bind(null, /* @__PURE__ */ new Error("Unknown variable dynamic import: " + path + (path.split("/").length !== segments ? ". Note that variables only represent file names one level deep." : ""))));
 	});
 };
+var namespaces = [
+	"about",
+	"blog",
+	"careers",
+	"contact",
+	"faq",
+	"home",
+	"pricing",
+	"products",
+	"route",
+	"settings",
+	"shared",
+	"team"
+];
+var defaultNS = "shared";
+var UNSAFE_KEYS = [
+	"__proto__",
+	"constructor",
+	"prototype"
+];
+var isSafeIdentifier = function isSafeIdentifier(v, allowSlash) {
+	if (typeof v !== "string") return false;
+	if (v.length > 128) return false;
+	if (UNSAFE_KEYS.indexOf(v) > -1) return false;
+	if (v.indexOf("..") > -1) return false;
+	if (v.indexOf("\\") > -1) return false;
+	if (!allowSlash && v.indexOf("/") > -1) return false;
+	if (/[\x00-\x1F\x7F]/.test(v)) return false;
+	return true;
+};
 instance.use(initReactI18next).use(function resourcesToBackend(res) {
 	return {
 		type: "backend",
 		init: function init(services, backendOptions, i18nextOptions) {},
 		read: function read(language, namespace, callback) {
+			if (!isSafeIdentifier(language, false) || !isSafeIdentifier(namespace, true)) return callback(/* @__PURE__ */ new Error("i18next-resources-to-backend: unsafe language/namespace value"), false);
 			if (typeof res === "function") {
 				if (res.length < 3) {
 					try {
@@ -2438,18 +2548,18 @@ instance.use(initReactI18next).use(function resourcesToBackend(res) {
 	"./locales/de/settings.json": () => import("../../../i18n/locales/de/settings.json"),
 	"./locales/de/shared.json": () => import("../../../i18n/locales/de/shared.json"),
 	"./locales/de/team.json": () => import("../../../i18n/locales/de/team.json"),
-	"./locales/en/about.json": () => import("./about-DrPeV7Zp.js"),
-	"./locales/en/blog.json": () => import("./blog-uUHBPsDN.js"),
-	"./locales/en/careers.json": () => import("./careers-CT6E1l5K.js"),
-	"./locales/en/contact.json": () => import("./contact-CZtCE9BE.js"),
-	"./locales/en/faq.json": () => import("./faq-BPrPn6m_.js"),
-	"./locales/en/home.json": () => import("./home-CSEOOcM2.js"),
-	"./locales/en/pricing.json": () => import("./pricing-BjZqjpMz.js"),
-	"./locales/en/products.json": () => import("./products-D8gD60Ao.js"),
-	"./locales/en/route.json": () => import("./route-UQnagTfi.js"),
-	"./locales/en/settings.json": () => import("./settings-BEbFGJAX.js"),
-	"./locales/en/shared.json": () => import("./shared-DxRtm_ck.js"),
-	"./locales/en/team.json": () => import("./team-tSYxAuqK.js"),
+	"./locales/en/about.json": () => import("./about-BjiQTpAt.js"),
+	"./locales/en/blog.json": () => import("./blog-BwncXaOP.js"),
+	"./locales/en/careers.json": () => import("./careers-CvGX3fKY.js"),
+	"./locales/en/contact.json": () => import("./contact-BAuKu6kU.js"),
+	"./locales/en/faq.json": () => import("./faq-741pCL7k.js"),
+	"./locales/en/home.json": () => import("./home-DQacKLe5.js"),
+	"./locales/en/pricing.json": () => import("./pricing-AooD5teS.js"),
+	"./locales/en/products.json": () => import("./products-5xHH59P6.js"),
+	"./locales/en/route.json": () => import("./route-D4J5jMKf.js"),
+	"./locales/en/settings.json": () => import("./settings-DcVMUGUO.js"),
+	"./locales/en/shared.json": () => import("./shared-B7H0Al_Q.js"),
+	"./locales/en/team.json": () => import("./team-BTWsMT4N.js"),
 	"./locales/es/about.json": () => import("../../../i18n/locales/es/about.json"),
 	"./locales/es/blog.json": () => import("../../../i18n/locales/es/blog.json"),
 	"./locales/es/careers.json": () => import("../../../i18n/locales/es/careers.json"),
@@ -2550,25 +2660,13 @@ instance.use(initReactI18next).use(function resourcesToBackend(res) {
 	resources: {},
 	lng: "en",
 	fallbackLng: "en",
-	ns: [
-		"about",
-		"blog",
-		"careers",
-		"contact",
-		"faq",
-		"home",
-		"pricing",
-		"products",
-		"route",
-		"settings",
-		"shared",
-		"team"
-	],
-	defaultNS: "shared",
+	ns: namespaces,
+	defaultNS,
 	interpolation: { escapeValue: false },
 	react: { useSuspense: false }
 });
 var i18n_default = instance;
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/AppProviders.tsx";
 function AppProviders({ children, initialResources }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -2587,16 +2685,34 @@ function AppProviders({ children, initialResources }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nextProvider, {
+	return jsxDEV(I18nextProvider, {
 		i18n: i18n_default,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 56,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/pages/settings/SettingsFooter.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(SettingsFooter, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(SettingsFooter, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var about_default = {

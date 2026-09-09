@@ -27,8 +27,8 @@ function r(r, i) {
 		e.set(s, t, !0), o(t), window.localStorage.setItem("theme", t);
 	}
 	let l = e.derived(() => e.get(s) === "auto" ? "Theme mode: auto (system). Click to switch to light mode." : `Theme mode: ${e.get(s)}. Click to switch mode.`), u = e.derived(() => e.get(s) === "auto" ? "Theme: Auto" : e.get(s) === "dark" ? "Theme: Dark" : "Theme: Light");
-	var d = n(), f = e.child(d, !0);
-	e.reset(d), e.template_effect(() => {
+	var d = n(), f = e.only_child(d, !0);
+	e.template_effect(() => {
 		e.set_attribute(d, "aria-label", e.get(l)), e.set_attribute(d, "title", e.get(l)), e.set_text(f, e.get(u));
 	}), e.delegated("click", d, c), e.append(r, d), e.pop();
 }

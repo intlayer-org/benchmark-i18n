@@ -1,8 +1,8 @@
 import "svelte/internal/disclose-version";
 import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
-var root_1 = $.from_html(`<div class="flex flex-col justify-between rounded-lg border border-border bg-card p-6"><div><h3 class="mb-2 text-lg font-semibold text-foreground"> </h3> <p class="mb-4 text-sm text-muted-foreground"> </p></div> <div class="flex items-center justify-between"><span class="text-sm font-bold text-primary"> </span> <button type="button" class="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90">Learn More</button></div></div>`);
-var root = $.from_html(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>`);
+var root = $.from_html(`<div class="flex flex-col justify-between rounded-lg border border-border bg-card p-6"><div><h3 class="mb-2 text-lg font-semibold text-foreground"> </h3> <p class="mb-4 text-sm text-muted-foreground"> </p></div> <div class="flex items-center justify-between"><span class="text-sm font-bold text-primary"> </span> <button type="button" class="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90">Learn More</button></div></div>`);
+var root_1 = $.from_html(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>`);
 function ProductsGrid($$anchor) {
 	const products = [
 		{
@@ -36,21 +36,18 @@ function ProductsGrid($$anchor) {
 			price: "$49/mo"
 		}
 	];
-	var div = root();
+	var div = root_1();
 	$.each(div, 5, () => products, (p) => p.name, ($$anchor, p) => {
-		var div_1 = root_1();
+		var div_1 = root();
 		var div_2 = $.child(div_1);
 		var h3 = $.child(div_2);
-		var text = $.child(h3, true);
-		$.reset(h3);
+		var text = $.only_child(h3, true);
 		var p_1 = $.sibling(h3, 2);
-		var text_1 = $.child(p_1, true);
-		$.reset(p_1);
+		var text_1 = $.only_child(p_1, true);
 		$.reset(div_2);
 		var div_3 = $.sibling(div_2, 2);
 		var span = $.child(div_3);
-		var text_2 = $.child(span, true);
-		$.reset(span);
+		var text_2 = $.only_child(span, true);
 		$.next(2);
 		$.reset(div_3);
 		$.reset(div_1);

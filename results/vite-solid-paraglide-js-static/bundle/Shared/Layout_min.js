@@ -17,73 +17,53 @@ var _ = {}, v = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], x = [], S, C;
-function te(e) {
-	if (x.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (S === t) return C;
-	let n = new URL(t, "http://dummy.com"), r;
-	for (let e of x) if (new _(e.match, n.href).exec(n.href)) {
-		r = e;
-		break;
-	}
-	return S = t, C = r, r;
-}
-function w(e) {
-	let t = te(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : b;
-}
-var T = void 0, E = typeof window > "u";
+], x = [], S = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var D, O = !1, k = () => {
-	if (T) {
-		let e = T?.getStore()?.locale;
-		if (e) return e;
-	}
+var C, w = !1, T = () => {
 	let e = b;
-	!E && typeof window < "u" && window.location?.href && (e = w(window.location.href));
-	let t = A(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return O || (D = t, O = !0, M(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	!S && typeof window < "u" && window.location?.href && (e = W(window.location.href));
+	let t = te(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return w || (C = t, w = !0, D(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function A(e, t) {
+function te(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = P();
+		if (t === "cookie") n = R();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && D !== void 0) n = D;
-		else if (I(t) && F.has(t)) {
-			let e = F.get(t);
+		else if (t === "globalVariable" && C !== void 0) n = C;
+		else if (K(t) && G.has(t)) {
+			let e = G.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return ne(t);
+				if (t !== void 0) return k(t);
 			}
 		}
-		let e = N(n);
+		let e = O(n);
 		if (e) return e;
 	}
 }
-var j = (e) => {
+var E = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, M = (e, t) => {
+}, D = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = k();
+		r = T();
 	} catch {}
 	let i = [], a = b;
-	!E && typeof window < "u" && window.location?.href && (a = w(window.location.href));
-	for (let t of a) if (t === "globalVariable") D = e;
+	!S && typeof window < "u" && window.location?.href && (a = W(window.location.href));
+	for (let t of a) if (t === "globalVariable") C = e;
 	else if (t === "cookie") {
-		if (E || typeof document > "u" || typeof window > "u") continue;
+		if (S || typeof document > "u" || typeof window > "u") continue;
 		let t = `${y}=${e}; path=/; max-age=${ee}`;
-		document.cookie = t;
+		document.cookie = t, I();
 	} else if (t === "baseLocale") continue;
-	else if (I(t) && F.has(t)) {
-		let n = F.get(t);
+	else if (K(t) && G.has(t)) {
+		let n = G.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -92,125 +72,165 @@ var j = (e) => {
 		}
 	}
 	let o = () => {
-		!E && n.reload && window.location && e !== r && j(void 0);
+		!S && n.reload && window.location && e !== r && E(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
-};
-function N(e) {
+}, ne = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function O(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of v) if (e.toLowerCase() === t) return e;
 }
-function ne(e) {
-	let t = N(e);
+function k(e) {
+	let t = O(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${v.join(", ")}`);
 }
-function P() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${y}=([^;]+)`))?.[2];
-	return N(e);
+function A(e) {
+	return e;
 }
-var F = /* @__PURE__ */ new Map();
-function I(e) {
+function j(e, t) {
+	return e.exec(t.href);
+}
+var M = y.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), N = RegExp(`(?:^|;\\s*)${M}=([^;]*)`), P = Symbol(), F = P;
+function I() {
+	F = P;
+}
+function L() {
+	typeof queueMicrotask == "function" ? queueMicrotask(I) : Promise.resolve().then(I);
+}
+function R() {
+	if (typeof document > "u") return;
+	if (F !== P) return F;
+	let e = document.cookie.match(N)?.[1];
+	return F = O(e), L(), F;
+}
+function z(e) {
+	return B(e);
+}
+function B(e) {
+	let t = A(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && O(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), A(t);
+}
+var V, H;
+function U(e) {
+	if (x.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (V === t) return H;
+	let n = A(new URL(t, "http://example.com")), r = z(n), i = r.href === n.href ? [n] : [n, r], a;
+	for (let e of i) {
+		for (let t of x) if (j(new _(t.match, e.href), e)) {
+			a = t;
+			break;
+		}
+		if (a) break;
+	}
+	return V = t, H = a, a;
+}
+function W(e) {
+	let t = U(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : b;
+}
+var G = /* @__PURE__ */ new Map();
+function K(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var L = () => "i18n Bench", R = () => "Bench i18n", z = () => "i18n Bench", B = () => "i18n Bench", V = () => "i18n Bench", H = () => "i18n Bench", U = () => "i18n Bench", W = () => "i18n Bench", G = () => "i18n Bench", K = () => "i18n Bench", q = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? L(e) : n === "fr" ? R(e) : n === "es" ? z(e) : n === "de" ? B(e) : n === "it" ? V(e) : n === "pt" ? H(e) : n === "zh" ? U(e) : n === "ja" ? W(e) : n === "ko" ? G(e) : K(e);
-}), J = () => "contact@intlayer.org", Y = () => "contact@intlayer.org", X = () => "contact@intlayer.org", Z = () => "contact@intlayer.org", re = () => "contact@intlayer.org", ie = () => "contact@intlayer.org", ae = () => "contact@intlayer.org", oe = () => "contact@intlayer.org", se = () => "contact@intlayer.org", ce = () => "contact@intlayer.org", le = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? J(e) : n === "fr" ? Y(e) : n === "es" ? X(e) : n === "de" ? Z(e) : n === "it" ? re(e) : n === "pt" ? ie(e) : n === "zh" ? ae(e) : n === "ja" ? oe(e) : n === "ko" ? se(e) : ce(e);
-}), ue = () => "Go to GitHub", de = () => "Aller sur GitHub", fe = () => "Ir a GitHub", pe = () => "Zu GitHub", me = () => "Vai su GitHub", he = () => "Ir para o GitHub", ge = () => "前往 GitHub", _e = () => "GitHubへ", ve = () => "Go to GitHub", ye = () => "Перейти на GitHub", be = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? ue(e) : n === "fr" ? de(e) : n === "es" ? fe(e) : n === "de" ? pe(e) : n === "it" ? me(e) : n === "pt" ? he(e) : n === "zh" ? ge(e) : n === "ja" ? _e(e) : n === "ko" ? ve(e) : ye(e);
-}), xe = () => "Home", Se = () => "Accueil", Ce = () => "Inicio", we = () => "Home", Te = () => "Home", Ee = () => "Início", De = () => "首页", Oe = () => "ホーム", ke = () => "Home", Ae = () => "Главная", je = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? xe(e) : n === "fr" ? Se(e) : n === "es" ? Ce(e) : n === "de" ? we(e) : n === "it" ? Te(e) : n === "pt" ? Ee(e) : n === "zh" ? De(e) : n === "ja" ? Oe(e) : n === "ko" ? ke(e) : Ae(e);
-}), Me = () => "Methodology", Ne = () => "Méthodologie", Pe = () => "Metodología", Fe = () => "Methodik", Ie = () => "Metodologia", Le = () => "Metodologia", Re = () => "方法论", ze = () => "手法", Be = () => "Methodology", Ve = () => "Методология", He = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Me(e) : n === "fr" ? Ne(e) : n === "es" ? Pe(e) : n === "de" ? Fe(e) : n === "it" ? Ie(e) : n === "pt" ? Le(e) : n === "zh" ? Re(e) : n === "ja" ? ze(e) : n === "ko" ? Be(e) : Ve(e);
-}), Ue = () => "Mock Pages", We = () => "Pages fictives", Ge = () => "Páginas de prueba", Ke = () => "Testseiten", qe = () => "Pagine di test", Je = () => "Páginas de Teste", Ye = () => "模拟页面", Xe = () => "テストページ", Ze = () => "Mock Pages", Qe = () => "Тестовые страницы", $e = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Ue(e) : n === "fr" ? We(e) : n === "es" ? Ge(e) : n === "de" ? Ke(e) : n === "it" ? qe(e) : n === "pt" ? Je(e) : n === "zh" ? Ye(e) : n === "ja" ? Xe(e) : n === "ko" ? Ze(e) : Qe(e);
-}), et = () => "Products", tt = () => "Produits", nt = () => "Productos", rt = () => "Produkte", it = () => "Prodotti", at = () => "Produtos", ot = () => "产品", st = () => "製品", ct = () => "Products", lt = () => "Продукты", ut = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? et(e) : n === "fr" ? tt(e) : n === "es" ? nt(e) : n === "de" ? rt(e) : n === "it" ? it(e) : n === "pt" ? at(e) : n === "zh" ? ot(e) : n === "ja" ? st(e) : n === "ko" ? ct(e) : lt(e);
-}), dt = () => "Pricing", ft = () => "Tarifs", pt = () => "Precios", mt = () => "Preise", ht = () => "Prezzi", gt = () => "Preços", _t = () => "价格", vt = () => "価格", yt = () => "Pricing", bt = () => "Цены", xt = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? dt(e) : n === "fr" ? ft(e) : n === "es" ? pt(e) : n === "de" ? mt(e) : n === "it" ? ht(e) : n === "pt" ? gt(e) : n === "zh" ? _t(e) : n === "ja" ? vt(e) : n === "ko" ? yt(e) : bt(e);
-}), St = () => "Team", Ct = () => "Équipe", wt = () => "Equipo", Tt = () => "Team", Et = () => "Team", Dt = () => "Equipe", Ot = () => "团队", kt = () => "チーム", At = () => "Team", jt = () => "Команда", Mt = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? St(e) : n === "fr" ? Ct(e) : n === "es" ? wt(e) : n === "de" ? Tt(e) : n === "it" ? Et(e) : n === "pt" ? Dt(e) : n === "zh" ? Ot(e) : n === "ja" ? kt(e) : n === "ko" ? At(e) : jt(e);
-}), Nt = () => "Blog", Pt = () => "Blog", Ft = () => "Blog", It = () => "Blog", Lt = () => "Blog", Rt = () => "Blog", zt = () => "博客", Bt = () => "ブログ", Vt = () => "Blog", Ht = () => "Блог", Ut = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Nt(e) : n === "fr" ? Pt(e) : n === "es" ? Ft(e) : n === "de" ? It(e) : n === "it" ? Lt(e) : n === "pt" ? Rt(e) : n === "zh" ? zt(e) : n === "ja" ? Bt(e) : n === "ko" ? Vt(e) : Ht(e);
-}), Wt = () => "Careers", Gt = () => "Carrières", Kt = () => "Carreras", qt = () => "Karriere", Jt = () => "Carriere", Yt = () => "Carreiras", Xt = () => "招聘", Zt = () => "採用情報", Qt = () => "Careers", $t = () => "Вакансии", en = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Wt(e) : n === "fr" ? Gt(e) : n === "es" ? Kt(e) : n === "de" ? qt(e) : n === "it" ? Jt(e) : n === "pt" ? Yt(e) : n === "zh" ? Xt(e) : n === "ja" ? Zt(e) : n === "ko" ? Qt(e) : $t(e);
-}), tn = () => "FAQ", nn = () => "FAQ", rn = () => "FAQ", an = () => "FAQ", on = () => "FAQ", sn = () => "FAQ", cn = () => "常见问题", ln = () => "FAQ", un = () => "FAQ", dn = () => "FAQ", fn = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? tn(e) : n === "fr" ? nn(e) : n === "es" ? rn(e) : n === "de" ? an(e) : n === "it" ? on(e) : n === "pt" ? sn(e) : n === "zh" ? cn(e) : n === "ja" ? ln(e) : n === "ko" ? un(e) : dn(e);
-}), pn = () => "Contact", mn = () => "Contact", hn = () => "Contacto", gn = () => "Kontakt", _n = () => "Contatti", vn = () => "Contato", yn = () => "联系我们", bn = () => "お問い合わせ", xn = () => "Contact", Sn = () => "Контакт", Cn = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? pn(e) : n === "fr" ? mn(e) : n === "es" ? hn(e) : n === "de" ? gn(e) : n === "it" ? _n(e) : n === "pt" ? vn(e) : n === "zh" ? yn(e) : n === "ja" ? bn(e) : n === "ko" ? xn(e) : Sn(e);
-}), wn = () => "Settings", Tn = () => "Paramètres", En = () => "Ajustes", Dn = () => "Einstellungen", On = () => "Impostazioni", kn = () => "Configurações", An = () => "设置", jn = () => "設定", Mn = () => "Settings", Nn = () => "Настройки", Pn = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? wn(e) : n === "fr" ? Tn(e) : n === "es" ? En(e) : n === "de" ? Dn(e) : n === "it" ? On(e) : n === "pt" ? kn(e) : n === "zh" ? An(e) : n === "ja" ? jn(e) : n === "ko" ? Mn(e) : Nn(e);
-}), Fn = () => "i18n Benchmark", In = () => "Benchmark i18n", Ln = () => "i18n Benchmark", Rn = () => "i18n Benchmark", zn = () => "i18n Benchmark", Bn = () => "i18n Benchmark", Vn = () => "i18n Benchmark", Hn = () => "i18n Benchmark", Un = () => "i18n Benchmark", Wn = () => "i18n Benchmark", Gn = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Fn(e) : n === "fr" ? In(e) : n === "es" ? Ln(e) : n === "de" ? Rn(e) : n === "it" ? zn(e) : n === "pt" ? Bn(e) : n === "zh" ? Vn(e) : n === "ja" ? Hn(e) : n === "ko" ? Un(e) : Wn(e);
-}), Kn = () => "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.", qn = () => "Une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.", Jn = () => "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el tiempo de carga y la reactividad de la aplicación.", Yn = () => "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.", Xn = () => "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app.", Zn = () => "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no tempo de carregamento e na reatividade da aplicação.", Qn = () => "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。", $n = () => "国際化ライブラリがバンドルサイズ、読み込み時間、アプリの反応性に与える実世界の影響を測定するためのオープンソーステストアプリケーション。", er = () => "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.", tr = () => "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.", nr = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Kn(e) : n === "fr" ? qn(e) : n === "es" ? Jn(e) : n === "de" ? Yn(e) : n === "it" ? Xn(e) : n === "pt" ? Zn(e) : n === "zh" ? Qn(e) : n === "ja" ? $n(e) : n === "ko" ? er(e) : tr(e);
-}), rr = () => "Resources", ir = () => "Ressources", ar = () => "Recursos", or = () => "Ressourcen", sr = () => "Risorse", cr = () => "Recursos", lr = () => "资源", ur = () => "リソース", dr = () => "Resources", fr = () => "Ресурсы", pr = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? rr(e) : n === "fr" ? ir(e) : n === "es" ? ar(e) : n === "de" ? or(e) : n === "it" ? sr(e) : n === "pt" ? cr(e) : n === "zh" ? lr(e) : n === "ja" ? ur(e) : n === "ko" ? dr(e) : fr(e);
-}), mr = () => "GitHub", hr = () => "GitHub", gr = () => "GitHub", _r = () => "GitHub", vr = () => "GitHub", yr = () => "GitHub", br = () => "GitHub", xr = () => "GitHub", Sr = () => "GitHub", Cr = () => "GitHub", wr = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? mr(e) : n === "fr" ? hr(e) : n === "es" ? gr(e) : n === "de" ? _r(e) : n === "it" ? vr(e) : n === "pt" ? yr(e) : n === "zh" ? br(e) : n === "ja" ? xr(e) : n === "ko" ? Sr(e) : Cr(e);
-}), Tr = () => "Methodology", Er = () => "Méthodologie", Dr = () => "Metodología", Or = () => "Methodik", kr = () => "Metodologia", Ar = () => "Metodologia", jr = () => "方法论", Mr = () => "手法", Nr = () => "Methodology", Pr = () => "Методология", Fr = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Tr(e) : n === "fr" ? Er(e) : n === "es" ? Dr(e) : n === "de" ? Or(e) : n === "it" ? kr(e) : n === "pt" ? Ar(e) : n === "zh" ? jr(e) : n === "ja" ? Mr(e) : n === "ko" ? Nr(e) : Pr(e);
-}), Ir = () => "Contributing", Lr = () => "Contribuer", Rr = () => "Contribuir", zr = () => "Beitragen", Br = () => "Contribuire", Vr = () => "Contribuindo", Hr = () => "贡献", Ur = () => "貢献する", Wr = () => "Contributing", Gr = () => "Участие в проекте", Kr = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Ir(e) : n === "fr" ? Lr(e) : n === "es" ? Rr(e) : n === "de" ? zr(e) : n === "it" ? Br(e) : n === "pt" ? Vr(e) : n === "zh" ? Hr(e) : n === "ja" ? Ur(e) : n === "ko" ? Wr(e) : Gr(e);
-}), qr = () => "Contact", Jr = () => "Contact", Yr = () => "Contacto", Xr = () => "Kontakt", Zr = () => "Contatti", Qr = () => "Contato", $r = () => "联系我们", ei = () => "お問い合わせ", ti = () => "Contact", ni = () => "Контакт", ri = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? qr(e) : n === "fr" ? Jr(e) : n === "es" ? Yr(e) : n === "de" ? Xr(e) : n === "it" ? Zr(e) : n === "pt" ? Qr(e) : n === "zh" ? $r(e) : n === "ja" ? ei(e) : n === "ko" ? ti(e) : ni(e);
-}), ii = () => "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router.", ai = () => "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et un routeur côté client.", oi = () => "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y un enrutador en el lado del cliente.", si = () => "i18n Benchmark — Open-Source-Projekt. Erstellt mit Vue, Vite & einem clientseitigen Router.", ci = () => "i18n Benchmark — Progetto open source. Costruito con Vue, Vite e un router lato client.", li = () => "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e um roteador no lado do cliente.", ui = () => "i18n 基准测试 — 开源项目。使用 Vue, Vite 和客户端路由构建。", di = () => "i18n Benchmark — オープンソースプロジェクト。Vue、Vite、およびクライアントサイドローターで構築されています。", fi = () => "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router.", pi = () => "i18n Benchmark — проект с открытым исходным кодом. Создано с использованием Vue, Vite и клиентского роутера.", mi = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? ii(e) : n === "fr" ? ai(e) : n === "es" ? oi(e) : n === "de" ? si(e) : n === "it" ? ci(e) : n === "pt" ? li(e) : n === "zh" ? ui(e) : n === "ja" ? di(e) : n === "ko" ? fi(e) : pi(e);
-}), hi = () => "Theme: Auto", gi = () => "Thème : automatique", _i = () => "Tema: Auto", vi = () => "Thema: Auto", yi = () => "Tema: Auto", bi = () => "Tema: Automático", xi = () => "主题：自动", Si = () => "テーマ：自動", Ci = () => "Theme: Auto", wi = () => "Тема: Авто", Ti = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? hi(e) : n === "fr" ? gi(e) : n === "es" ? _i(e) : n === "de" ? vi(e) : n === "it" ? yi(e) : n === "pt" ? bi(e) : n === "zh" ? xi(e) : n === "ja" ? Si(e) : n === "ko" ? Ci(e) : wi(e);
-}), Ei = () => "Theme: Dark", Di = () => "Thème : sombre", Oi = () => "Tema: Oscuro", ki = () => "Thema: Dunkel", Ai = () => "Tema: Scuro", ji = () => "Tema: Escuro", Mi = () => "主题：深色", Ni = () => "テーマ：ダーク", Pi = () => "Theme: Dark", Fi = () => "Тема: Темная", Ii = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Ei(e) : n === "fr" ? Di(e) : n === "es" ? Oi(e) : n === "de" ? ki(e) : n === "it" ? Ai(e) : n === "pt" ? ji(e) : n === "zh" ? Mi(e) : n === "ja" ? Ni(e) : n === "ko" ? Pi(e) : Fi(e);
-}), Li = () => "Theme: Light", Ri = () => "Thème : clair", zi = () => "Tema: Claro", Bi = () => "Thema: Hell", Vi = () => "Tema: Chiaro", Hi = () => "Tema: Claro", Ui = () => "主题：浅色", Wi = () => "テーマ：ライト", Gi = () => "Theme: Light", Ki = () => "Тема: Светлая", qi = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Li(e) : n === "fr" ? Ri(e) : n === "es" ? zi(e) : n === "de" ? Bi(e) : n === "it" ? Vi(e) : n === "pt" ? Hi(e) : n === "zh" ? Ui(e) : n === "ja" ? Wi(e) : n === "ko" ? Gi(e) : Ki(e);
-}), Ji = () => "Theme mode: auto (system). Click to switch to light mode.", Yi = () => "Mode thème : automatique (système). Cliquez pour passer en mode clair.", Xi = () => "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.", Zi = () => "Themenmodus: Auto (System). Klicken Sie hier, um zum hellen Modus zu wechseln.", Qi = () => "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.", $i = () => "Modo de tema: auto (sistema). Clique para mudar para o modo claro.", ea = () => "主题模式：自动（系统）。点击切换到浅色模式。", ta = () => "テーマモード：自動（システム）。クリックするとライトモードに切り替わります。", na = () => "Theme mode: auto (system). Click to switch to light mode.", ra = () => "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.", ia = ((e = {}, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? Ji(e) : n === "fr" ? Yi(e) : n === "es" ? Xi(e) : n === "de" ? Zi(e) : n === "it" ? Qi(e) : n === "pt" ? $i(e) : n === "zh" ? ea(e) : n === "ja" ? ta(e) : n === "ko" ? na(e) : ra(e);
-}), aa = (e) => `Theme mode: ${e?.mode}. Click to switch mode.`, oa = (e) => `Mode thème : ${e?.mode}. Cliquez pour changer de mode.`, Q = (e) => `Modo de tema: ${e?.mode}. Haz clic para cambiar de modo.`, sa = (e) => `Themenmodus: ${e?.mode}. Klicken Sie hier, um den Modus zu wechseln.`, ca = (e) => `Modalità tema: ${e?.mode}. Clicca per cambiare modalità.`, la = (e) => `Modo de tema: ${e?.mode}. Clique para mudar de modo.`, ua = (e) => `主题模式：${e?.mode}。点击切换模式。`, da = (e) => `テーマモード：${e?.mode}。クリックしてモードを切り替えます。`, fa = (e) => `Theme mode: ${e?.mode}. Click to switch mode.`, pa = (e) => `Режим темы: ${e?.mode}. Нажмите, чтобы сменить режим.`, ma = ((e, t = {}) => {
-	let n = t.locale ?? k();
-	return n === "en" ? aa(e) : n === "fr" ? oa(e) : n === "es" ? Q(e) : n === "de" ? sa(e) : n === "it" ? ca(e) : n === "pt" ? la(e) : n === "zh" ? ua(e) : n === "ja" ? da(e) : n === "ko" ? fa(e) : pa(e);
-}), ha = o("<footer class=\"mt-20 border-t border-border bg-card\"><div class=\"container py-8\"><div class=\"grid gap-8 md:grid-cols-3\"><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"></h3><p class=\"text-sm text-muted-foreground\"></p></div><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"></h3><ul class=space-y-1><li><a href=https://github.com/intlayer-org/benchmark-i18n target=_blank rel=noreferrer class=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"></a></li><li></li><li></li></ul></div><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"></h3><p class=\"text-sm text-muted-foreground\"></p></div></div><div class=\"mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground\">");
-function ga() {
+var q = () => "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router.", J = () => "Benchmark i18n — Projet open-source. Construit avec Vue, Vite et un routeur côté client.", Y = () => "i18n Benchmark — Proyecto de código abierto. Construido con Vue, Vite y un enrutador en el lado del cliente.", X = () => "i18n Benchmark — Open-Source-Projekt. Erstellt mit Vue, Vite & einem clientseitigen Router.", Z = () => "i18n Benchmark — Progetto open source. Costruito con Vue, Vite e un router lato client.", re = () => "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e um roteador no lado do cliente.", ie = () => "i18n 基准测试 — 开源项目。使用 Vue, Vite 和客户端路由构建。", ae = () => "i18n Benchmark — オープンソースプロジェクト。Vue、Vite、およびクライアントサイドローターで構築されています。", oe = () => "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router.", se = () => "i18n Benchmark — проект с открытым исходным кодом. Создано с использованием Vue, Vite и клиентского роутера.", ce = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? J(e) : n === "es" ? Y(e) : n === "de" ? X(e) : n === "it" ? Z(e) : n === "pt" ? re(e) : n === "zh" ? ie(e) : n === "ja" ? ae(e) : n === "ko" ? oe(e) : n === "ru" ? se(e) : q(e);
+}), le = () => "Contact", ue = () => "Contact", de = () => "Contacto", fe = () => "Kontakt", pe = () => "Contatti", me = () => "Contato", he = () => "联系我们", ge = () => "お問い合わせ", _e = () => "Contact", ve = () => "Контакт", ye = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? ue(e) : n === "es" ? de(e) : n === "de" ? fe(e) : n === "it" ? pe(e) : n === "pt" ? me(e) : n === "zh" ? he(e) : n === "ja" ? ge(e) : n === "ko" ? _e(e) : n === "ru" ? ve(e) : le(e);
+}), be = () => "Contributing", xe = () => "Contribuer", Se = () => "Contribuir", Ce = () => "Beitragen", we = () => "Contribuire", Te = () => "Contribuindo", Ee = () => "贡献", De = () => "貢献する", Oe = () => "Contributing", ke = () => "Участие в проекте", Ae = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? xe(e) : n === "es" ? Se(e) : n === "de" ? Ce(e) : n === "it" ? we(e) : n === "pt" ? Te(e) : n === "zh" ? Ee(e) : n === "ja" ? De(e) : n === "ko" ? Oe(e) : n === "ru" ? ke(e) : be(e);
+}), je = () => "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.", Me = () => "Une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.", Ne = () => "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el tiempo de carga y la reactividad de la aplicación.", Pe = () => "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.", Fe = () => "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app.", Ie = () => "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no tempo de carregamento e na reatividade da aplicação.", Le = () => "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。", Re = () => "国際化ライブラリがバンドルサイズ、読み込み時間、アプリの反応性に与える実世界の影響を測定するためのオープンソーステストアプリケーション。", ze = () => "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.", Be = () => "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.", Ve = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Me(e) : n === "es" ? Ne(e) : n === "de" ? Pe(e) : n === "it" ? Fe(e) : n === "pt" ? Ie(e) : n === "zh" ? Le(e) : n === "ja" ? Re(e) : n === "ko" ? ze(e) : n === "ru" ? Be(e) : je(e);
+}), He = () => "GitHub", Ue = () => "GitHub", We = () => "GitHub", Ge = () => "GitHub", Ke = () => "GitHub", qe = () => "GitHub", Je = () => "GitHub", Ye = () => "GitHub", Xe = () => "GitHub", Ze = () => "GitHub", Qe = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Ue(e) : n === "es" ? We(e) : n === "de" ? Ge(e) : n === "it" ? Ke(e) : n === "pt" ? qe(e) : n === "zh" ? Je(e) : n === "ja" ? Ye(e) : n === "ko" ? Xe(e) : n === "ru" ? Ze(e) : He(e);
+}), $e = () => "Methodology", et = () => "Méthodologie", tt = () => "Metodología", nt = () => "Methodik", rt = () => "Metodologia", it = () => "Metodologia", at = () => "方法论", ot = () => "手法", st = () => "Methodology", ct = () => "Методология", lt = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? et(e) : n === "es" ? tt(e) : n === "de" ? nt(e) : n === "it" ? rt(e) : n === "pt" ? it(e) : n === "zh" ? at(e) : n === "ja" ? ot(e) : n === "ko" ? st(e) : n === "ru" ? ct(e) : $e(e);
+}), ut = () => "Resources", dt = () => "Ressources", ft = () => "Recursos", pt = () => "Ressourcen", mt = () => "Risorse", ht = () => "Recursos", gt = () => "资源", _t = () => "リソース", vt = () => "Resources", yt = () => "Ресурсы", bt = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? dt(e) : n === "es" ? ft(e) : n === "de" ? pt(e) : n === "it" ? mt(e) : n === "pt" ? ht(e) : n === "zh" ? gt(e) : n === "ja" ? _t(e) : n === "ko" ? vt(e) : n === "ru" ? yt(e) : ut(e);
+}), xt = () => "i18n Benchmark", St = () => "Benchmark i18n", Ct = () => "i18n Benchmark", wt = () => "i18n Benchmark", Tt = () => "i18n Benchmark", Et = () => "i18n Benchmark", Dt = () => "i18n Benchmark", Ot = () => "i18n Benchmark", kt = () => "i18n Benchmark", At = () => "i18n Benchmark", jt = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? St(e) : n === "es" ? Ct(e) : n === "de" ? wt(e) : n === "it" ? Tt(e) : n === "pt" ? Et(e) : n === "zh" ? Dt(e) : n === "ja" ? Ot(e) : n === "ko" ? kt(e) : n === "ru" ? At(e) : xt(e);
+}), Mt = () => "Blog", Nt = () => "Blog", Pt = () => "Blog", Ft = () => "Blog", It = () => "Blog", Lt = () => "Blog", Rt = () => "博客", zt = () => "ブログ", Bt = () => "Blog", Vt = () => "Блог", Ht = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Nt(e) : n === "es" ? Pt(e) : n === "de" ? Ft(e) : n === "it" ? It(e) : n === "pt" ? Lt(e) : n === "zh" ? Rt(e) : n === "ja" ? zt(e) : n === "ko" ? Bt(e) : n === "ru" ? Vt(e) : Mt(e);
+}), Ut = () => "Careers", Wt = () => "Carrières", Gt = () => "Carreras", Kt = () => "Karriere", qt = () => "Carriere", Jt = () => "Carreiras", Yt = () => "招聘", Xt = () => "採用情報", Zt = () => "Careers", Qt = () => "Вакансии", $t = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Wt(e) : n === "es" ? Gt(e) : n === "de" ? Kt(e) : n === "it" ? qt(e) : n === "pt" ? Jt(e) : n === "zh" ? Yt(e) : n === "ja" ? Xt(e) : n === "ko" ? Zt(e) : n === "ru" ? Qt(e) : Ut(e);
+}), en = () => "Contact", tn = () => "Contact", nn = () => "Contacto", rn = () => "Kontakt", an = () => "Contatti", on = () => "Contato", sn = () => "联系我们", cn = () => "お問い合わせ", ln = () => "Contact", un = () => "Контакт", dn = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? tn(e) : n === "es" ? nn(e) : n === "de" ? rn(e) : n === "it" ? an(e) : n === "pt" ? on(e) : n === "zh" ? sn(e) : n === "ja" ? cn(e) : n === "ko" ? ln(e) : n === "ru" ? un(e) : en(e);
+}), fn = () => "FAQ", pn = () => "FAQ", mn = () => "FAQ", hn = () => "FAQ", gn = () => "FAQ", _n = () => "FAQ", vn = () => "常见问题", yn = () => "FAQ", bn = () => "FAQ", xn = () => "FAQ", Sn = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? pn(e) : n === "es" ? mn(e) : n === "de" ? hn(e) : n === "it" ? gn(e) : n === "pt" ? _n(e) : n === "zh" ? vn(e) : n === "ja" ? yn(e) : n === "ko" ? bn(e) : n === "ru" ? xn(e) : fn(e);
+}), Cn = () => "Home", wn = () => "Accueil", Tn = () => "Inicio", En = () => "Home", Dn = () => "Home", On = () => "Início", kn = () => "首页", An = () => "ホーム", jn = () => "Home", Mn = () => "Главная", Nn = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? wn(e) : n === "es" ? Tn(e) : n === "de" ? En(e) : n === "it" ? Dn(e) : n === "pt" ? On(e) : n === "zh" ? kn(e) : n === "ja" ? An(e) : n === "ko" ? jn(e) : n === "ru" ? Mn(e) : Cn(e);
+}), Pn = () => "Methodology", Fn = () => "Méthodologie", In = () => "Metodología", Ln = () => "Methodik", Rn = () => "Metodologia", zn = () => "Metodologia", Bn = () => "方法论", Q = () => "手法", Vn = () => "Methodology", Hn = () => "Методология", Un = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Fn(e) : n === "es" ? In(e) : n === "de" ? Ln(e) : n === "it" ? Rn(e) : n === "pt" ? zn(e) : n === "zh" ? Bn(e) : n === "ja" ? Q(e) : n === "ko" ? Vn(e) : n === "ru" ? Hn(e) : Pn(e);
+}), Wn = () => "Mock Pages", Gn = () => "Pages fictives", Kn = () => "Páginas de prueba", qn = () => "Testseiten", Jn = () => "Pagine di test", Yn = () => "Páginas de Teste", Xn = () => "模拟页面", Zn = () => "テストページ", Qn = () => "Mock Pages", $n = () => "Тестовые страницы", er = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Gn(e) : n === "es" ? Kn(e) : n === "de" ? qn(e) : n === "it" ? Jn(e) : n === "pt" ? Yn(e) : n === "zh" ? Xn(e) : n === "ja" ? Zn(e) : n === "ko" ? Qn(e) : n === "ru" ? $n(e) : Wn(e);
+}), tr = () => "Pricing", nr = () => "Tarifs", rr = () => "Precios", ir = () => "Preise", ar = () => "Prezzi", or = () => "Preços", sr = () => "价格", cr = () => "価格", lr = () => "Pricing", ur = () => "Цены", dr = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? nr(e) : n === "es" ? rr(e) : n === "de" ? ir(e) : n === "it" ? ar(e) : n === "pt" ? or(e) : n === "zh" ? sr(e) : n === "ja" ? cr(e) : n === "ko" ? lr(e) : n === "ru" ? ur(e) : tr(e);
+}), fr = () => "Products", pr = () => "Produits", mr = () => "Productos", hr = () => "Produkte", gr = () => "Prodotti", _r = () => "Produtos", vr = () => "产品", yr = () => "製品", br = () => "Products", xr = () => "Продукты", Sr = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? pr(e) : n === "es" ? mr(e) : n === "de" ? hr(e) : n === "it" ? gr(e) : n === "pt" ? _r(e) : n === "zh" ? vr(e) : n === "ja" ? yr(e) : n === "ko" ? br(e) : n === "ru" ? xr(e) : fr(e);
+}), Cr = () => "Settings", wr = () => "Paramètres", Tr = () => "Ajustes", Er = () => "Einstellungen", Dr = () => "Impostazioni", Or = () => "Configurações", kr = () => "设置", Ar = () => "設定", jr = () => "Settings", Mr = () => "Настройки", Nr = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? wr(e) : n === "es" ? Tr(e) : n === "de" ? Er(e) : n === "it" ? Dr(e) : n === "pt" ? Or(e) : n === "zh" ? kr(e) : n === "ja" ? Ar(e) : n === "ko" ? jr(e) : n === "ru" ? Mr(e) : Cr(e);
+}), Pr = () => "Team", Fr = () => "Équipe", Ir = () => "Equipo", Lr = () => "Team", Rr = () => "Team", zr = () => "Equipe", Br = () => "团队", Vr = () => "チーム", Hr = () => "Team", Ur = () => "Команда", Wr = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Fr(e) : n === "es" ? Ir(e) : n === "de" ? Lr(e) : n === "it" ? Rr(e) : n === "pt" ? zr(e) : n === "zh" ? Br(e) : n === "ja" ? Vr(e) : n === "ko" ? Hr(e) : n === "ru" ? Ur(e) : Pr(e);
+}), Gr = () => "i18n Bench", Kr = () => "Bench i18n", qr = () => "i18n Bench", Jr = () => "i18n Bench", Yr = () => "i18n Bench", Xr = () => "i18n Bench", Zr = () => "i18n Bench", Qr = () => "i18n Bench", $r = () => "i18n Bench", ei = () => "i18n Bench", ti = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Kr(e) : n === "es" ? qr(e) : n === "de" ? Jr(e) : n === "it" ? Yr(e) : n === "pt" ? Xr(e) : n === "zh" ? Zr(e) : n === "ja" ? Qr(e) : n === "ko" ? $r(e) : n === "ru" ? ei(e) : Gr(e);
+}), ni = () => "contact@intlayer.org", ri = () => "contact@intlayer.org", ii = () => "contact@intlayer.org", ai = () => "contact@intlayer.org", oi = () => "contact@intlayer.org", si = () => "contact@intlayer.org", ci = () => "contact@intlayer.org", li = () => "contact@intlayer.org", ui = () => "contact@intlayer.org", di = () => "contact@intlayer.org", fi = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? ri(e) : n === "es" ? ii(e) : n === "de" ? ai(e) : n === "it" ? oi(e) : n === "pt" ? si(e) : n === "zh" ? ci(e) : n === "ja" ? li(e) : n === "ko" ? ui(e) : n === "ru" ? di(e) : ni(e);
+}), pi = () => "Go to GitHub", mi = () => "Aller sur GitHub", hi = () => "Ir a GitHub", gi = () => "Zu GitHub", _i = () => "Vai su GitHub", vi = () => "Ir para o GitHub", yi = () => "前往 GitHub", bi = () => "GitHubへ", xi = () => "Go to GitHub", Si = () => "Перейти на GitHub", Ci = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? mi(e) : n === "es" ? hi(e) : n === "de" ? gi(e) : n === "it" ? _i(e) : n === "pt" ? vi(e) : n === "zh" ? yi(e) : n === "ja" ? bi(e) : n === "ko" ? xi(e) : n === "ru" ? Si(e) : pi(e);
+}), wi = () => "Theme: Auto", Ti = () => "Thème : automatique", Ei = () => "Tema: Auto", Di = () => "Thema: Auto", Oi = () => "Tema: Auto", ki = () => "Tema: Automático", Ai = () => "主题：自动", ji = () => "テーマ：自動", Mi = () => "Theme: Auto", Ni = () => "Тема: Авто", Pi = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Ti(e) : n === "es" ? Ei(e) : n === "de" ? Di(e) : n === "it" ? Oi(e) : n === "pt" ? ki(e) : n === "zh" ? Ai(e) : n === "ja" ? ji(e) : n === "ko" ? Mi(e) : n === "ru" ? Ni(e) : wi(e);
+}), Fi = () => "Theme: Dark", Ii = () => "Thème : sombre", Li = () => "Tema: Oscuro", Ri = () => "Thema: Dunkel", zi = () => "Tema: Scuro", Bi = () => "Tema: Escuro", Vi = () => "主题：深色", Hi = () => "テーマ：ダーク", Ui = () => "Theme: Dark", Wi = () => "Тема: Темная", Gi = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? Ii(e) : n === "es" ? Li(e) : n === "de" ? Ri(e) : n === "it" ? zi(e) : n === "pt" ? Bi(e) : n === "zh" ? Vi(e) : n === "ja" ? Hi(e) : n === "ko" ? Ui(e) : n === "ru" ? Wi(e) : Fi(e);
+}), Ki = () => "Theme mode: auto (system). Click to switch to light mode.", qi = () => "Mode thème : automatique (système). Cliquez pour passer en mode clair.", Ji = () => "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.", Yi = () => "Themenmodus: Auto (System). Klicken Sie hier, um zum hellen Modus zu wechseln.", Xi = () => "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.", Zi = () => "Modo de tema: auto (sistema). Clique para mudar para o modo claro.", Qi = () => "主题模式：自动（系统）。点击切换到浅色模式。", $i = () => "テーマモード：自動（システム）。クリックするとライトモードに切り替わります。", ea = () => "Theme mode: auto (system). Click to switch to light mode.", ta = () => "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.", na = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? qi(e) : n === "es" ? Ji(e) : n === "de" ? Yi(e) : n === "it" ? Xi(e) : n === "pt" ? Zi(e) : n === "zh" ? Qi(e) : n === "ja" ? $i(e) : n === "ko" ? ea(e) : n === "ru" ? ta(e) : Ki(e);
+}), ra = (e) => `Theme mode: ${e?.mode}. Click to switch mode.`, ia = (e) => `Mode thème : ${e?.mode}. Cliquez pour changer de mode.`, aa = (e) => `Modo de tema: ${e?.mode}. Haz clic para cambiar de modo.`, oa = (e) => `Themenmodus: ${e?.mode}. Klicken Sie hier, um den Modus zu wechseln.`, sa = (e) => `Modalità tema: ${e?.mode}. Clicca per cambiare modalità.`, ca = (e) => `Modo de tema: ${e?.mode}. Clique para mudar de modo.`, la = (e) => `主题模式：${e?.mode}。点击切换模式。`, ua = (e) => `テーマモード：${e?.mode}。クリックしてモードを切り替えます。`, da = (e) => `Theme mode: ${e?.mode}. Click to switch mode.`, fa = (e) => `Режим темы: ${e?.mode}. Нажмите, чтобы сменить режим.`, pa = ((e, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? ia(e) : n === "es" ? aa(e) : n === "de" ? oa(e) : n === "it" ? sa(e) : n === "pt" ? ca(e) : n === "zh" ? la(e) : n === "ja" ? ua(e) : n === "ko" ? da(e) : n === "ru" ? fa(e) : ra(e);
+}), ma = () => "Theme: Light", ha = () => "Thème : clair", ga = () => "Tema: Claro", _a = () => "Thema: Hell", va = () => "Tema: Chiaro", ya = () => "Tema: Claro", ba = () => "主题：浅色", xa = () => "テーマ：ライト", Sa = () => "Theme: Light", Ca = () => "Тема: Светлая", wa = ((e = {}, t = {}) => {
+	let n = t.locale ?? T();
+	return n === "fr" ? ha(e) : n === "es" ? ga(e) : n === "de" ? _a(e) : n === "it" ? va(e) : n === "pt" ? ya(e) : n === "zh" ? ba(e) : n === "ja" ? xa(e) : n === "ko" ? Sa(e) : n === "ru" ? Ca(e) : ma(e);
+}), Ta = o("<footer class=\"mt-20 border-t border-border bg-card\"><div class=\"container py-8\"><div class=\"grid gap-8 md:grid-cols-3\"><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"></h3><p class=\"text-sm text-muted-foreground\"></p></div><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"></h3><ul class=space-y-1><li><a href=https://github.com/intlayer-org/benchmark-i18n target=_blank rel=noreferrer class=\"text-sm text-muted-foreground transition-colors hover:text-foreground\"></a></li><li></li><li></li></ul></div><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"></h3><p class=\"text-sm text-muted-foreground\"></p></div></div><div class=\"mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground\">");
+function Ea() {
 	let t = u(), n = () => t.locale ?? "en";
 	return (() => {
-		var t = ha(), i = t.firstChild.firstChild, a = i.firstChild, o = a.firstChild, c = o.nextSibling, l = a.nextSibling, u = l.firstChild, d = u.nextSibling.firstChild, f = d.firstChild, p = d.nextSibling, m = p.nextSibling, h = l.nextSibling.firstChild, g = h.nextSibling, _ = i.nextSibling;
-		return r(o, () => Gn()), r(c, () => nr()), r(u, () => pr()), r(f, () => wr()), r(p, e(s, {
+		var t = Ta(), i = t.firstChild.firstChild, a = i.firstChild, o = a.firstChild, c = o.nextSibling, l = a.nextSibling, u = l.firstChild, d = u.nextSibling.firstChild, f = d.firstChild, p = d.nextSibling, m = p.nextSibling, h = l.nextSibling.firstChild, g = h.nextSibling, _ = i.nextSibling;
+		return r(o, () => jt()), r(c, () => Ve()), r(u, () => bt()), r(f, () => Qe()), r(p, e(s, {
 			get href() {
 				return `/${n()}/about`;
 			},
 			class: "text-sm text-muted-foreground transition-colors hover:text-foreground",
 			get children() {
-				return Fr();
+				return lt();
 			}
 		})), r(m, e(s, {
 			get href() {
@@ -218,12 +238,12 @@ function ga() {
 			},
 			class: "text-sm text-muted-foreground transition-colors hover:text-foreground",
 			get children() {
-				return Kr();
+				return Ae();
 			}
-		})), r(h, () => ri()), r(g, () => le()), r(_, () => mi()), t;
+		})), r(h, () => ye()), r(g, () => fi()), r(_, () => ce()), t;
 	})();
 }
-function _a(e) {
+function Da(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), m(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -233,7 +253,7 @@ function _a(e) {
 		}
 	});
 }
-var va = [
+var Oa = [
 	"en",
 	"fr",
 	"es",
@@ -244,31 +264,32 @@ var va = [
 	"ja",
 	"ko",
 	"ru"
-], ya = (e) => {
+], ka = (e) => {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
 	} catch {
 		return e.toUpperCase();
 	}
-}, ba = o("<div class=\"flex items-center gap-2\"><select class=\"h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary\">"), xa = o("<option>");
-function Sa() {
+}, Aa = o("<div class=\"flex items-center gap-2\"><select class=\"h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary\">"), ja = o("<option>");
+function Ma() {
 	let t = u(), i = l(), a = c(), o = (e) => {
-		i(`${a.pathname.replace(/^\/[^/]+/, `/${e}`)}${a.search}${a.hash}`);
+		let t = a.pathname.replace(/^\/[^/]+/, `/${e}`);
+		i(`${t}${a.search}${a.hash}`);
 	};
 	return (() => {
-		var i = ba(), a = i.firstChild;
+		var i = Aa(), a = i.firstChild;
 		return a.addEventListener("change", (e) => o(e.currentTarget.value)), r(a, e(d, {
-			each: va,
+			each: Oa,
 			children: (e) => (() => {
-				var t = xa();
-				return t.value = e, r(t, () => ya(e)), t;
+				var t = ja();
+				return t.value = e, r(t, () => ka(e)), t;
 			})()
 		})), n(() => a.value = t.locale ?? "en"), i;
 	})();
 }
-var Ca = o("<button type=button class=\"rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80\">");
-function wa() {
+var Na = o("<button type=button class=\"rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80\">");
+function Pa() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
@@ -277,10 +298,10 @@ function $(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function Ta() {
+function Fa() {
 	let [e, t] = p("auto");
 	m(() => {
-		let e = wa();
+		let e = Pa();
 		t(e), $(e);
 	}), f(() => {
 		if (e() !== "auto") return;
@@ -293,9 +314,9 @@ function Ta() {
 		let n = e(), r = n === "light" ? "dark" : n === "dark" ? "auto" : "light";
 		t(r), $(r), window.localStorage.setItem("theme", r);
 	}
-	let o = () => e() === "auto" ? ia() : ma({ mode: e() }), s = () => e() === "auto" ? Ti() : e() === "dark" ? Ii() : qi();
+	let o = () => e() === "auto" ? na() : pa({ mode: e() }), s = () => e() === "auto" ? Pi() : e() === "dark" ? Gi() : wa();
 	return (() => {
-		var e = Ca();
+		var e = Na();
 		return e.$$click = i, r(e, s), n((t) => {
 			var n = o(), r = o();
 			return n !== t.e && a(e, "aria-label", t.e = n), r !== t.t && a(e, "title", t.t = r), t;
@@ -306,58 +327,58 @@ function Ta() {
 	})();
 }
 t(["click"]);
-var Ea = o("<svg width=14 height=14 viewBox=\"0 0 24 24\"fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round aria-hidden=true><path d=\"m6 9 6 6 6-6\">"), Da = o("<header class=\"sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg\"><nav class=\"container flex h-16 items-center justify-between\"><div class=\"flex items-center gap-8\"><div class=\"hidden items-center gap-6 text-sm font-medium md:flex\"><div class=relative><button type=button class=\"flex cursor-pointer items-center gap-1 border-none bg-transparent nav-link\"></button></div></div></div><div class=\"flex items-center gap-4\"><a href=https://github.com/intlayer-org/benchmark-i18n target=_blank rel=noreferrer class=\"text-muted-foreground transition hover:text-foreground\"><span class=sr-only></span><svg viewBox=\"0 0 16 16\"aria-hidden=true width=20 height=20><path fill=currentColor d=\"M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z\">"), Oa = o("<div class=\"absolute left-0 top-full w-48 pt-2\"><div class=\"overflow-hidden rounded-md border border-border bg-card py-1 shadow-lg\">");
-function ka(e) {
+var Ia = o("<svg width=14 height=14 viewBox=\"0 0 24 24\"fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round aria-hidden=true><path d=\"m6 9 6 6 6-6\">"), La = o("<header class=\"sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg\"><nav class=\"container flex h-16 items-center justify-between\"><div class=\"flex items-center gap-8\"><div class=\"hidden items-center gap-6 text-sm font-medium md:flex\"><div class=relative><button type=button class=\"flex cursor-pointer items-center gap-1 border-none bg-transparent nav-link\"></button></div></div></div><div class=\"flex items-center gap-4\"><a href=https://github.com/intlayer-org/benchmark-i18n target=_blank rel=noreferrer class=\"text-muted-foreground transition hover:text-foreground\"><span class=sr-only></span><svg viewBox=\"0 0 16 16\"aria-hidden=true width=20 height=20><path fill=currentColor d=\"M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z\">"), Ra = o("<div class=\"absolute left-0 top-full w-48 pt-2\"><div class=\"overflow-hidden rounded-md border border-border bg-card py-1 shadow-lg\">");
+function za(e) {
 	return (() => {
-		var t = Ea();
+		var t = Ia();
 		return n(() => a(t, "class", e.class)), t;
 	})();
 }
-function Aa() {
-	_a("Header");
+function Ba() {
+	Da("Header");
 	let [t, n] = p(!1), a = u(), o = () => a.locale ?? "en", c = () => [
 		{
 			to: `/${o()}/products`,
-			label: ut()
+			label: Sr()
 		},
 		{
 			to: `/${o()}/pricing`,
-			label: xt()
+			label: dr()
 		},
 		{
 			to: `/${o()}/team`,
-			label: Mt()
+			label: Wr()
 		},
 		{
 			to: `/${o()}/blog`,
-			label: Ut()
+			label: Ht()
 		},
 		{
 			to: `/${o()}/careers`,
-			label: en()
+			label: $t()
 		},
 		{
 			to: `/${o()}/faq`,
-			label: fn()
+			label: Sn()
 		},
 		{
 			to: `/${o()}/contact`,
-			label: Cn()
+			label: dn()
 		},
 		{
 			to: `/${o()}/settings`,
-			label: Pn()
+			label: Nr()
 		}
 	];
 	return (() => {
-		var a = Da(), l = a.firstChild.firstChild, u = l.firstChild, f = u.firstChild, p = f.firstChild, m = l.nextSibling, h = m.firstChild.firstChild;
+		var a = La(), l = a.firstChild.firstChild, u = l.firstChild, f = u.firstChild, p = f.firstChild, m = l.nextSibling, h = m.firstChild.firstChild;
 		return r(l, e(s, {
 			get href() {
 				return `/${o()}`;
 			},
 			class: "text-lg font-bold tracking-tight text-primary no-underline",
 			get children() {
-				return q();
+				return ti();
 			}
 		}), u), r(u, e(s, {
 			get href() {
@@ -368,7 +389,7 @@ function Aa() {
 			activeClass: "is-active",
 			inactiveClass: "",
 			get children() {
-				return je();
+				return Nn();
 			}
 		}), f), r(u, e(s, {
 			get href() {
@@ -378,14 +399,14 @@ function Aa() {
 			activeClass: "is-active",
 			inactiveClass: "",
 			get children() {
-				return He();
+				return Un();
 			}
-		}), f), p.$$click = () => n(!t()), p.addEventListener("mouseleave", () => n(!1)), p.addEventListener("mouseenter", () => n(!0)), r(p, () => $e(), null), r(p, e(ka, { get class() {
+		}), f), p.$$click = () => n(!t()), p.addEventListener("mouseleave", () => n(!1)), p.addEventListener("mouseenter", () => n(!0)), r(p, () => er(), null), r(p, e(za, { get class() {
 			return `transition-transform ${t() ? "rotate-180" : ""}`;
 		} }), null), r(f, (() => {
 			var a = i(() => !!t());
 			return () => a() && (() => {
-				var t = Oa(), i = t.firstChild;
+				var t = Ra(), i = t.firstChild;
 				return t.addEventListener("mouseleave", () => n(!1)), t.addEventListener("mouseenter", () => n(!0)), r(i, e(d, {
 					get each() {
 						return c();
@@ -402,21 +423,21 @@ function Aa() {
 					})
 				})), t;
 			})();
-		})(), null), r(h, () => be()), r(m, e(Sa, {}), null), r(m, e(Ta, {}), null), a;
+		})(), null), r(h, () => Ci()), r(m, e(Ma, {}), null), r(m, e(Fa, {}), null), a;
 	})();
 }
 t(["click"]);
-function ja(t) {
+function Va(t) {
 	let n = u(), r = typeof performance < "u" ? performance.now() : 0;
 	return m(() => {
 		h(), g("AppRoot", r);
 	}), f(() => {
 		let e = n.locale ?? "en";
-		document.documentElement.lang = e, M(e, { reload: !1 });
+		document.documentElement.lang = e, D(e, { reload: !1 });
 	}), [
-		e(Aa, {}),
+		e(Ba, {}),
 		i(() => t.children),
-		e(ga, {})
+		e(Ea, {})
 	];
 }
-export { ja as default };
+export { Va as default };

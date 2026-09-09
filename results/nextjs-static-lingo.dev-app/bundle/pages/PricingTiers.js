@@ -1,215 +1,441 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
-	return jsxs("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-3",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "flex flex-col rounded-lg border p-6 border-border bg-card",
 				children: [
-					jsx("h3", {
+					jsxDEV("h3", {
 						className: "text-lg font-semibold text-foreground",
 						children: "Starter"
-					}),
-					jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 5,
+						columnNumber: 9
+					}, this),
+					jsxDEV("div", {
 						className: "my-4",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "text-3xl font-bold text-foreground",
 							children: "$0"
-						}), jsx("span", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 7,
+							columnNumber: 11
+						}, this), jsxDEV("span", {
 							className: "text-sm text-muted-foreground",
 							children: "forever"
-						})]
-					}),
-					jsxs("ul", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 8,
+							columnNumber: 11
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 6,
+						columnNumber: 9
+					}, this),
+					jsxDEV("ul", {
 						className: "mb-6 flex-1 space-y-2",
 						children: [
-							jsxs("li", {
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " 5 benchmark runs/day"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 12,
+									columnNumber: 13
+								}, this), " 5 benchmark runs/day"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 11,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " 3 libraries"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 15,
+									columnNumber: 13
+								}, this), " 3 libraries"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 14,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Community support"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 18,
+									columnNumber: 13
+								}, this), " Community support"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 17,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Public results"]
-							})
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 21,
+									columnNumber: 13
+								}, this), " Public results"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 20,
+								columnNumber: 11
+							}, this)
 						]
-					}),
-					jsx("button", {
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 10,
+						columnNumber: 9
+					}, this),
+					jsxDEV("button", {
 						type: "button",
 						className: "w-full rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-opacity hover:bg-accent hover:opacity-90",
 						children: "Get Started"
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 24,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 4,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "flex flex-col rounded-lg border p-6 border-primary bg-primary/5 ring-1 ring-primary",
 				children: [
-					jsx("h3", {
+					jsxDEV("h3", {
 						className: "text-lg font-semibold text-foreground",
 						children: "Pro"
-					}),
-					jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 33,
+						columnNumber: 9
+					}, this),
+					jsxDEV("div", {
 						className: "my-4",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "text-3xl font-bold text-foreground",
 							children: "$29"
-						}), jsx("span", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 35,
+							columnNumber: 11
+						}, this), jsxDEV("span", {
 							className: "text-sm text-muted-foreground",
 							children: "/month"
-						})]
-					}),
-					jsxs("ul", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 36,
+							columnNumber: 11
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 34,
+						columnNumber: 9
+					}, this),
+					jsxDEV("ul", {
 						className: "mb-6 flex-1 space-y-2",
 						children: [
-							jsxs("li", {
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Unlimited runs"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 40,
+									columnNumber: 13
+								}, this), " Unlimited runs"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 39,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " All libraries"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 43,
+									columnNumber: 13
+								}, this), " All libraries"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 42,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Priority support"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 46,
+									columnNumber: 13
+								}, this), " Priority support"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 45,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Private results"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 49,
+									columnNumber: 13
+								}, this), " Private results"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 48,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " CI integration"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 52,
+									columnNumber: 13
+								}, this), " CI integration"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 51,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Historical data"]
-							})
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 55,
+									columnNumber: 13
+								}, this), " Historical data"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 54,
+								columnNumber: 11
+							}, this)
 						]
-					}),
-					jsx("button", {
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 38,
+						columnNumber: 9
+					}, this),
+					jsxDEV("button", {
 						type: "button",
 						className: "w-full rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90",
 						children: "Get Started"
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 58,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 32,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "flex flex-col rounded-lg border p-6 border-border bg-card",
 				children: [
-					jsx("h3", {
+					jsxDEV("h3", {
 						className: "text-lg font-semibold text-foreground",
 						children: "Enterprise"
-					}),
-					jsxs("div", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 67,
+						columnNumber: 9
+					}, this),
+					jsxDEV("div", {
 						className: "my-4",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "text-3xl font-bold text-foreground",
 							children: "Custom"
-						}), jsx("span", { className: "text-sm text-muted-foreground" })]
-					}),
-					jsxs("ul", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 69,
+							columnNumber: 11
+						}, this), jsxDEV("span", { className: "text-sm text-muted-foreground" }, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 70,
+							columnNumber: 11
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 68,
+						columnNumber: 9
+					}, this),
+					jsxDEV("ul", {
 						className: "mb-6 flex-1 space-y-2",
 						children: [
-							jsxs("li", {
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Everything in Pro"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 74,
+									columnNumber: 13
+								}, this), " Everything in Pro"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 73,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " On-premise option"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 77,
+									columnNumber: 13
+								}, this), " On-premise option"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 76,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " SSO & SAML"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 80,
+									columnNumber: 13
+								}, this), " SSO & SAML"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 79,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Dedicated account manager"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 83,
+									columnNumber: 13
+								}, this), " Dedicated account manager"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 82,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Custom SLAs"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 86,
+									columnNumber: 13
+								}, this), " Custom SLAs"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 85,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Audit logs"]
-							}),
-							jsxs("li", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 89,
+									columnNumber: 13
+								}, this), " Audit logs"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 88,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", {
 								className: "flex items-center gap-2 text-sm text-muted-foreground",
-								children: [jsx("span", {
+								children: [jsxDEV("span", {
 									className: "text-primary",
 									children: "✓"
-								}), " Training sessions"]
-							})
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 92,
+									columnNumber: 13
+								}, this), " Training sessions"]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 91,
+								columnNumber: 11
+							}, this)
 						]
-					}),
-					jsx("button", {
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 72,
+						columnNumber: 9
+					}, this),
+					jsxDEV("button", {
 						type: "button",
 						className: "w-full rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground transition-opacity hover:bg-accent hover:opacity-90",
 						children: "Contact Sales"
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 95,
+						columnNumber: 9
+					}, this)
 				]
-			})
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 66,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 3,
+		columnNumber: 5
+	}, this);
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -240,10 +466,6 @@ var serverUrl = "__SERVER_URL__";
 var sourceLocale = "__SOURCE_LOCALE__";
 function getClientLocale() {
 	return "en";
-}
-var __NOOP_PERSIST_LOCALE__ = () => {};
-function persistLocale(locale) {
-	return __NOOP_PERSIST_LOCALE__();
 }
 var noop = () => {};
 var IS_DEV = process.env.NODE_ENV === "development";
@@ -284,7 +506,6 @@ function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, 
 		if (router) setTranslations(initialTranslations);
 	}, [initialTranslations, router]);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		else await loadTranslations(newLocale);
@@ -390,7 +611,6 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		};
 	}, []);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		setIsLoading(true);
@@ -411,7 +631,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -449,17 +669,31 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -561,12 +795,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

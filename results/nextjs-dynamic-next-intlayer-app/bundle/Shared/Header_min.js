@@ -2,345 +2,10 @@ import { Fragment as e, createContext as t, createElement as n, isValidElement a
 import { Fragment as d, jsx as f, jsxs as p } from "react/jsx-runtime";
 import { usePathname as m, useRouter as h } from "next/navigation.js";
 import ee from "next/link";
+import { jsxDEV as g } from "react/jsx-dev-runtime";
 import { ChevronDown as te } from "lucide-react";
 import { useParams as ne, usePathname as re, useRouter as ie } from "next/navigation";
-var g = (e, t, n) => {
-	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
-	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
-		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
-	});
-}, _ = (e) => ({
-	de: () => g(Object.assign({
-		"./json/about-grid/de.json": () => import("../../.intlayer/dynamic_dictionary/json/about-grid/de.json"),
-		"./json/about-header/de.json": () => import("../../.intlayer/dynamic_dictionary/json/about-header/de.json"),
-		"./json/api-access-section/de.json": () => import("../../.intlayer/dynamic_dictionary/json/api-access-section/de.json"),
-		"./json/blog-header/de.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-header/de.json"),
-		"./json/blog-list/de.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-list/de.json"),
-		"./json/careers-benefits/de.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-benefits/de.json"),
-		"./json/careers-header/de.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-header/de.json"),
-		"./json/contact-form/de.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-form/de.json"),
-		"./json/contact-header/de.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-header/de.json"),
-		"./json/faq-header1/de.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-header1/de.json"),
-		"./json/faq-list/de.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-list/de.json"),
-		"./json/footer/de.json": () => import("../../.intlayer/dynamic_dictionary/json/footer/de.json"),
-		"./json/header/de.json": () => import("../../.intlayer/dynamic_dictionary/json/header/de.json"),
-		"./json/hero/de.json": () => import("../../.intlayer/dynamic_dictionary/json/hero/de.json"),
-		"./json/mock-banner/de.json": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/de.json"),
-		"./json/open-positions/de.json": () => import("../../.intlayer/dynamic_dictionary/json/open-positions/de.json"),
-		"./json/preferences-section/de.json": () => import("../../.intlayer/dynamic_dictionary/json/preferences-section/de.json"),
-		"./json/pricing-header/de.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-header/de.json"),
-		"./json/pricing-tiers/de.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-tiers/de.json"),
-		"./json/products-grid/de.json": () => import("../../.intlayer/dynamic_dictionary/json/products-grid/de.json"),
-		"./json/products-header/de.json": () => import("../../.intlayer/dynamic_dictionary/json/products-header/de.json"),
-		"./json/profile-section/de.json": () => import("../../.intlayer/dynamic_dictionary/json/profile-section/de.json"),
-		"./json/results-table/de.json": () => import("../../.intlayer/dynamic_dictionary/json/results-table/de.json"),
-		"./json/settings-footer/de.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-footer/de.json"),
-		"./json/settings-header/de.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-header/de.json"),
-		"./json/team-grid/de.json": () => import("../../.intlayer/dynamic_dictionary/json/team-grid/de.json"),
-		"./json/team-header/de.json": () => import("../../.intlayer/dynamic_dictionary/json/team-header/de.json"),
-		"./json/theme-toggle/de.json": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json"),
-		"./json/understanding-impact/de.json": () => import("../../.intlayer/dynamic_dictionary/json/understanding-impact/de.json"),
-		"./json/what-we-measure/de.json": () => import("../../.intlayer/dynamic_dictionary/json/what-we-measure/de.json"),
-		"./json/why-it-matters/de.json": () => import("../../.intlayer/dynamic_dictionary/json/why-it-matters/de.json")
-	}), `./json/${e}/de.json`, 4).then((e) => e.default),
-	en: () => g(Object.assign({
-		"./json/about-grid/en.json": () => import("./en-CEJUJw1X.js"),
-		"./json/about-header/en.json": () => import("./en-CWjwJCzY.js"),
-		"./json/api-access-section/en.json": () => import("./en-CrceJYhB.js"),
-		"./json/blog-header/en.json": () => import("./en-DiokDNe6.js"),
-		"./json/blog-list/en.json": () => import("./en-SFynLKHc.js"),
-		"./json/careers-benefits/en.json": () => import("./en-B4xTQT6f.js"),
-		"./json/careers-header/en.json": () => import("./en-NCUu3aNv.js"),
-		"./json/contact-form/en.json": () => import("./en-DzLGhd_V.js"),
-		"./json/contact-header/en.json": () => import("./en-B-oqZeoB.js"),
-		"./json/faq-header1/en.json": () => import("./en-iigaauqS.js"),
-		"./json/faq-list/en.json": () => import("./en-CxDTvltq.js"),
-		"./json/footer/en.json": () => import("./en-HBxwUrZF.js"),
-		"./json/header/en.json": () => import("./en-CKzF62Cy.js"),
-		"./json/hero/en.json": () => import("./en-DHK8s-ba.js"),
-		"./json/mock-banner/en.json": () => import("./en-KRtlT8G1.js"),
-		"./json/open-positions/en.json": () => import("./en-DMvhgbu5.js"),
-		"./json/preferences-section/en.json": () => import("./en-47Ujpdze.js"),
-		"./json/pricing-header/en.json": () => import("./en-CbIluh76.js"),
-		"./json/pricing-tiers/en.json": () => import("./en-CaO13g2M.js"),
-		"./json/products-grid/en.json": () => import("./en-BH6Yn3W5.js"),
-		"./json/products-header/en.json": () => import("./en-D1HRzJLT.js"),
-		"./json/profile-section/en.json": () => import("./en-DYlsaSg5.js"),
-		"./json/results-table/en.json": () => import("./en-3xIMzaXu.js"),
-		"./json/settings-footer/en.json": () => import("./en-DpNaObjo.js"),
-		"./json/settings-header/en.json": () => import("./en-PyZ3Xlkv.js"),
-		"./json/team-grid/en.json": () => import("./en-BEamSnB9.js"),
-		"./json/team-header/en.json": () => import("./en-dlwIEwOv.js"),
-		"./json/theme-toggle/en.json": () => import("./en-LD9fBPkI.js"),
-		"./json/understanding-impact/en.json": () => import("./en-C4hy4QSw.js"),
-		"./json/what-we-measure/en.json": () => import("./en-BF3vwsnr.js"),
-		"./json/why-it-matters/en.json": () => import("./en-5GNwlJ_V.js")
-	}), `./json/${e}/en.json`, 4).then((e) => e.default),
-	es: () => g(Object.assign({
-		"./json/about-grid/es.json": () => import("../../.intlayer/dynamic_dictionary/json/about-grid/es.json"),
-		"./json/about-header/es.json": () => import("../../.intlayer/dynamic_dictionary/json/about-header/es.json"),
-		"./json/api-access-section/es.json": () => import("../../.intlayer/dynamic_dictionary/json/api-access-section/es.json"),
-		"./json/blog-header/es.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-header/es.json"),
-		"./json/blog-list/es.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-list/es.json"),
-		"./json/careers-benefits/es.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-benefits/es.json"),
-		"./json/careers-header/es.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-header/es.json"),
-		"./json/contact-form/es.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-form/es.json"),
-		"./json/contact-header/es.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-header/es.json"),
-		"./json/faq-header1/es.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-header1/es.json"),
-		"./json/faq-list/es.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-list/es.json"),
-		"./json/footer/es.json": () => import("../../.intlayer/dynamic_dictionary/json/footer/es.json"),
-		"./json/header/es.json": () => import("../../.intlayer/dynamic_dictionary/json/header/es.json"),
-		"./json/hero/es.json": () => import("../../.intlayer/dynamic_dictionary/json/hero/es.json"),
-		"./json/mock-banner/es.json": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/es.json"),
-		"./json/open-positions/es.json": () => import("../../.intlayer/dynamic_dictionary/json/open-positions/es.json"),
-		"./json/preferences-section/es.json": () => import("../../.intlayer/dynamic_dictionary/json/preferences-section/es.json"),
-		"./json/pricing-header/es.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-header/es.json"),
-		"./json/pricing-tiers/es.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-tiers/es.json"),
-		"./json/products-grid/es.json": () => import("../../.intlayer/dynamic_dictionary/json/products-grid/es.json"),
-		"./json/products-header/es.json": () => import("../../.intlayer/dynamic_dictionary/json/products-header/es.json"),
-		"./json/profile-section/es.json": () => import("../../.intlayer/dynamic_dictionary/json/profile-section/es.json"),
-		"./json/results-table/es.json": () => import("../../.intlayer/dynamic_dictionary/json/results-table/es.json"),
-		"./json/settings-footer/es.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-footer/es.json"),
-		"./json/settings-header/es.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-header/es.json"),
-		"./json/team-grid/es.json": () => import("../../.intlayer/dynamic_dictionary/json/team-grid/es.json"),
-		"./json/team-header/es.json": () => import("../../.intlayer/dynamic_dictionary/json/team-header/es.json"),
-		"./json/theme-toggle/es.json": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json"),
-		"./json/understanding-impact/es.json": () => import("../../.intlayer/dynamic_dictionary/json/understanding-impact/es.json"),
-		"./json/what-we-measure/es.json": () => import("../../.intlayer/dynamic_dictionary/json/what-we-measure/es.json"),
-		"./json/why-it-matters/es.json": () => import("../../.intlayer/dynamic_dictionary/json/why-it-matters/es.json")
-	}), `./json/${e}/es.json`, 4).then((e) => e.default),
-	fr: () => g(Object.assign({
-		"./json/about-grid/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/about-grid/fr.json"),
-		"./json/about-header/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/about-header/fr.json"),
-		"./json/api-access-section/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/api-access-section/fr.json"),
-		"./json/blog-header/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-header/fr.json"),
-		"./json/blog-list/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-list/fr.json"),
-		"./json/careers-benefits/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-benefits/fr.json"),
-		"./json/careers-header/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-header/fr.json"),
-		"./json/contact-form/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-form/fr.json"),
-		"./json/contact-header/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-header/fr.json"),
-		"./json/faq-header1/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-header1/fr.json"),
-		"./json/faq-list/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-list/fr.json"),
-		"./json/footer/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/footer/fr.json"),
-		"./json/header/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/header/fr.json"),
-		"./json/hero/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/hero/fr.json"),
-		"./json/mock-banner/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json"),
-		"./json/open-positions/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/open-positions/fr.json"),
-		"./json/preferences-section/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/preferences-section/fr.json"),
-		"./json/pricing-header/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-header/fr.json"),
-		"./json/pricing-tiers/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-tiers/fr.json"),
-		"./json/products-grid/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/products-grid/fr.json"),
-		"./json/products-header/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/products-header/fr.json"),
-		"./json/profile-section/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/profile-section/fr.json"),
-		"./json/results-table/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/results-table/fr.json"),
-		"./json/settings-footer/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-footer/fr.json"),
-		"./json/settings-header/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-header/fr.json"),
-		"./json/team-grid/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/team-grid/fr.json"),
-		"./json/team-header/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/team-header/fr.json"),
-		"./json/theme-toggle/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json"),
-		"./json/understanding-impact/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/understanding-impact/fr.json"),
-		"./json/what-we-measure/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/what-we-measure/fr.json"),
-		"./json/why-it-matters/fr.json": () => import("../../.intlayer/dynamic_dictionary/json/why-it-matters/fr.json")
-	}), `./json/${e}/fr.json`, 4).then((e) => e.default),
-	it: () => g(Object.assign({
-		"./json/about-grid/it.json": () => import("../../.intlayer/dynamic_dictionary/json/about-grid/it.json"),
-		"./json/about-header/it.json": () => import("../../.intlayer/dynamic_dictionary/json/about-header/it.json"),
-		"./json/api-access-section/it.json": () => import("../../.intlayer/dynamic_dictionary/json/api-access-section/it.json"),
-		"./json/blog-header/it.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-header/it.json"),
-		"./json/blog-list/it.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-list/it.json"),
-		"./json/careers-benefits/it.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-benefits/it.json"),
-		"./json/careers-header/it.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-header/it.json"),
-		"./json/contact-form/it.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-form/it.json"),
-		"./json/contact-header/it.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-header/it.json"),
-		"./json/faq-header1/it.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-header1/it.json"),
-		"./json/faq-list/it.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-list/it.json"),
-		"./json/footer/it.json": () => import("../../.intlayer/dynamic_dictionary/json/footer/it.json"),
-		"./json/header/it.json": () => import("../../.intlayer/dynamic_dictionary/json/header/it.json"),
-		"./json/hero/it.json": () => import("../../.intlayer/dynamic_dictionary/json/hero/it.json"),
-		"./json/mock-banner/it.json": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/it.json"),
-		"./json/open-positions/it.json": () => import("../../.intlayer/dynamic_dictionary/json/open-positions/it.json"),
-		"./json/preferences-section/it.json": () => import("../../.intlayer/dynamic_dictionary/json/preferences-section/it.json"),
-		"./json/pricing-header/it.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-header/it.json"),
-		"./json/pricing-tiers/it.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-tiers/it.json"),
-		"./json/products-grid/it.json": () => import("../../.intlayer/dynamic_dictionary/json/products-grid/it.json"),
-		"./json/products-header/it.json": () => import("../../.intlayer/dynamic_dictionary/json/products-header/it.json"),
-		"./json/profile-section/it.json": () => import("../../.intlayer/dynamic_dictionary/json/profile-section/it.json"),
-		"./json/results-table/it.json": () => import("../../.intlayer/dynamic_dictionary/json/results-table/it.json"),
-		"./json/settings-footer/it.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-footer/it.json"),
-		"./json/settings-header/it.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-header/it.json"),
-		"./json/team-grid/it.json": () => import("../../.intlayer/dynamic_dictionary/json/team-grid/it.json"),
-		"./json/team-header/it.json": () => import("../../.intlayer/dynamic_dictionary/json/team-header/it.json"),
-		"./json/theme-toggle/it.json": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json"),
-		"./json/understanding-impact/it.json": () => import("../../.intlayer/dynamic_dictionary/json/understanding-impact/it.json"),
-		"./json/what-we-measure/it.json": () => import("../../.intlayer/dynamic_dictionary/json/what-we-measure/it.json"),
-		"./json/why-it-matters/it.json": () => import("../../.intlayer/dynamic_dictionary/json/why-it-matters/it.json")
-	}), `./json/${e}/it.json`, 4).then((e) => e.default),
-	ja: () => g(Object.assign({
-		"./json/about-grid/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/about-grid/ja.json"),
-		"./json/about-header/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/about-header/ja.json"),
-		"./json/api-access-section/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/api-access-section/ja.json"),
-		"./json/blog-header/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-header/ja.json"),
-		"./json/blog-list/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-list/ja.json"),
-		"./json/careers-benefits/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-benefits/ja.json"),
-		"./json/careers-header/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-header/ja.json"),
-		"./json/contact-form/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-form/ja.json"),
-		"./json/contact-header/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-header/ja.json"),
-		"./json/faq-header1/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-header1/ja.json"),
-		"./json/faq-list/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-list/ja.json"),
-		"./json/footer/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/footer/ja.json"),
-		"./json/header/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/header/ja.json"),
-		"./json/hero/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/hero/ja.json"),
-		"./json/mock-banner/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json"),
-		"./json/open-positions/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/open-positions/ja.json"),
-		"./json/preferences-section/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/preferences-section/ja.json"),
-		"./json/pricing-header/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-header/ja.json"),
-		"./json/pricing-tiers/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-tiers/ja.json"),
-		"./json/products-grid/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/products-grid/ja.json"),
-		"./json/products-header/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/products-header/ja.json"),
-		"./json/profile-section/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/profile-section/ja.json"),
-		"./json/results-table/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/results-table/ja.json"),
-		"./json/settings-footer/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-footer/ja.json"),
-		"./json/settings-header/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-header/ja.json"),
-		"./json/team-grid/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/team-grid/ja.json"),
-		"./json/team-header/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/team-header/ja.json"),
-		"./json/theme-toggle/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json"),
-		"./json/understanding-impact/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/understanding-impact/ja.json"),
-		"./json/what-we-measure/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/what-we-measure/ja.json"),
-		"./json/why-it-matters/ja.json": () => import("../../.intlayer/dynamic_dictionary/json/why-it-matters/ja.json")
-	}), `./json/${e}/ja.json`, 4).then((e) => e.default),
-	ko: () => g(Object.assign({
-		"./json/about-grid/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/about-grid/ko.json"),
-		"./json/about-header/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/about-header/ko.json"),
-		"./json/api-access-section/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/api-access-section/ko.json"),
-		"./json/blog-header/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-header/ko.json"),
-		"./json/blog-list/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-list/ko.json"),
-		"./json/careers-benefits/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-benefits/ko.json"),
-		"./json/careers-header/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-header/ko.json"),
-		"./json/contact-form/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-form/ko.json"),
-		"./json/contact-header/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-header/ko.json"),
-		"./json/faq-header1/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-header1/ko.json"),
-		"./json/faq-list/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-list/ko.json"),
-		"./json/footer/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/footer/ko.json"),
-		"./json/header/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/header/ko.json"),
-		"./json/hero/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/hero/ko.json"),
-		"./json/mock-banner/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json"),
-		"./json/open-positions/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/open-positions/ko.json"),
-		"./json/preferences-section/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/preferences-section/ko.json"),
-		"./json/pricing-header/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-header/ko.json"),
-		"./json/pricing-tiers/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-tiers/ko.json"),
-		"./json/products-grid/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/products-grid/ko.json"),
-		"./json/products-header/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/products-header/ko.json"),
-		"./json/profile-section/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/profile-section/ko.json"),
-		"./json/results-table/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/results-table/ko.json"),
-		"./json/settings-footer/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-footer/ko.json"),
-		"./json/settings-header/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-header/ko.json"),
-		"./json/team-grid/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/team-grid/ko.json"),
-		"./json/team-header/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/team-header/ko.json"),
-		"./json/theme-toggle/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json"),
-		"./json/understanding-impact/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/understanding-impact/ko.json"),
-		"./json/what-we-measure/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/what-we-measure/ko.json"),
-		"./json/why-it-matters/ko.json": () => import("../../.intlayer/dynamic_dictionary/json/why-it-matters/ko.json")
-	}), `./json/${e}/ko.json`, 4).then((e) => e.default),
-	pt: () => g(Object.assign({
-		"./json/about-grid/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/about-grid/pt.json"),
-		"./json/about-header/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/about-header/pt.json"),
-		"./json/api-access-section/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/api-access-section/pt.json"),
-		"./json/blog-header/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-header/pt.json"),
-		"./json/blog-list/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-list/pt.json"),
-		"./json/careers-benefits/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-benefits/pt.json"),
-		"./json/careers-header/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-header/pt.json"),
-		"./json/contact-form/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-form/pt.json"),
-		"./json/contact-header/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-header/pt.json"),
-		"./json/faq-header1/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-header1/pt.json"),
-		"./json/faq-list/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-list/pt.json"),
-		"./json/footer/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/footer/pt.json"),
-		"./json/header/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/header/pt.json"),
-		"./json/hero/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/hero/pt.json"),
-		"./json/mock-banner/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json"),
-		"./json/open-positions/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/open-positions/pt.json"),
-		"./json/preferences-section/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/preferences-section/pt.json"),
-		"./json/pricing-header/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-header/pt.json"),
-		"./json/pricing-tiers/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-tiers/pt.json"),
-		"./json/products-grid/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/products-grid/pt.json"),
-		"./json/products-header/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/products-header/pt.json"),
-		"./json/profile-section/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/profile-section/pt.json"),
-		"./json/results-table/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/results-table/pt.json"),
-		"./json/settings-footer/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-footer/pt.json"),
-		"./json/settings-header/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-header/pt.json"),
-		"./json/team-grid/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/team-grid/pt.json"),
-		"./json/team-header/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/team-header/pt.json"),
-		"./json/theme-toggle/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json"),
-		"./json/understanding-impact/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/understanding-impact/pt.json"),
-		"./json/what-we-measure/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/what-we-measure/pt.json"),
-		"./json/why-it-matters/pt.json": () => import("../../.intlayer/dynamic_dictionary/json/why-it-matters/pt.json")
-	}), `./json/${e}/pt.json`, 4).then((e) => e.default),
-	ru: () => g(Object.assign({
-		"./json/about-grid/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/about-grid/ru.json"),
-		"./json/about-header/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/about-header/ru.json"),
-		"./json/api-access-section/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/api-access-section/ru.json"),
-		"./json/blog-header/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-header/ru.json"),
-		"./json/blog-list/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-list/ru.json"),
-		"./json/careers-benefits/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-benefits/ru.json"),
-		"./json/careers-header/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-header/ru.json"),
-		"./json/contact-form/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-form/ru.json"),
-		"./json/contact-header/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-header/ru.json"),
-		"./json/faq-header1/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-header1/ru.json"),
-		"./json/faq-list/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-list/ru.json"),
-		"./json/footer/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/footer/ru.json"),
-		"./json/header/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/header/ru.json"),
-		"./json/hero/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/hero/ru.json"),
-		"./json/mock-banner/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json"),
-		"./json/open-positions/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/open-positions/ru.json"),
-		"./json/preferences-section/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/preferences-section/ru.json"),
-		"./json/pricing-header/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-header/ru.json"),
-		"./json/pricing-tiers/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-tiers/ru.json"),
-		"./json/products-grid/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/products-grid/ru.json"),
-		"./json/products-header/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/products-header/ru.json"),
-		"./json/profile-section/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/profile-section/ru.json"),
-		"./json/results-table/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/results-table/ru.json"),
-		"./json/settings-footer/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-footer/ru.json"),
-		"./json/settings-header/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-header/ru.json"),
-		"./json/team-grid/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/team-grid/ru.json"),
-		"./json/team-header/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/team-header/ru.json"),
-		"./json/theme-toggle/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json"),
-		"./json/understanding-impact/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/understanding-impact/ru.json"),
-		"./json/what-we-measure/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/what-we-measure/ru.json"),
-		"./json/why-it-matters/ru.json": () => import("../../.intlayer/dynamic_dictionary/json/why-it-matters/ru.json")
-	}), `./json/${e}/ru.json`, 4).then((e) => e.default),
-	zh: () => g(Object.assign({
-		"./json/about-grid/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/about-grid/zh.json"),
-		"./json/about-header/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/about-header/zh.json"),
-		"./json/api-access-section/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/api-access-section/zh.json"),
-		"./json/blog-header/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-header/zh.json"),
-		"./json/blog-list/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/blog-list/zh.json"),
-		"./json/careers-benefits/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-benefits/zh.json"),
-		"./json/careers-header/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/careers-header/zh.json"),
-		"./json/contact-form/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-form/zh.json"),
-		"./json/contact-header/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/contact-header/zh.json"),
-		"./json/faq-header1/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-header1/zh.json"),
-		"./json/faq-list/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/faq-list/zh.json"),
-		"./json/footer/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/footer/zh.json"),
-		"./json/header/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/header/zh.json"),
-		"./json/hero/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/hero/zh.json"),
-		"./json/mock-banner/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json"),
-		"./json/open-positions/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/open-positions/zh.json"),
-		"./json/preferences-section/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/preferences-section/zh.json"),
-		"./json/pricing-header/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-header/zh.json"),
-		"./json/pricing-tiers/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/pricing-tiers/zh.json"),
-		"./json/products-grid/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/products-grid/zh.json"),
-		"./json/products-header/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/products-header/zh.json"),
-		"./json/profile-section/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/profile-section/zh.json"),
-		"./json/results-table/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/results-table/zh.json"),
-		"./json/settings-footer/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-footer/zh.json"),
-		"./json/settings-header/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/settings-header/zh.json"),
-		"./json/team-grid/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/team-grid/zh.json"),
-		"./json/team-header/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/team-header/zh.json"),
-		"./json/theme-toggle/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json"),
-		"./json/understanding-impact/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/understanding-impact/zh.json"),
-		"./json/what-we-measure/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/what-we-measure/zh.json"),
-		"./json/why-it-matters/zh.json": () => import("../../.intlayer/dynamic_dictionary/json/why-it-matters/zh.json")
-	}), `./json/${e}/zh.json`, 4).then((e) => e.default)
-}), ae = _("header"), v = {
+var _ = (e) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(e), v = {
 	locales: [
 		"en",
 		"fr",
@@ -353,129 +18,322 @@ var g = (e, t, n) => {
 		"ko",
 		"ru"
 	],
+	requiredLocales: [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	strictMode: "inclusive",
 	defaultLocale: "en"
 }, y = {
 	mode: "prefix-all",
 	storage: {
 		cookies: [{
 			name: "INTLAYER_LOCALE",
-			attributes: {}
+			attributes: { path: "/" }
 		}],
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, b = {
-	internationalization: v,
-	routing: y,
-	editor: {
-		applicationURL: "http://localhost:3000",
-		editorURL: "http://localhost:8000",
-		cmsURL: "https://app.intlayer.org",
-		backendURL: "https://back.intlayer.org",
-		port: 8e3,
-		enabled: !1,
-		dictionaryPriorityStrategy: "local_first",
-		liveSync: !0,
-		liveSyncPort: 4e3,
-		liveSyncURL: "http://localhost:4000"
-	},
-	log: {
-		mode: "default",
-		prefix: "\x1B[38;5;239m[intlayer] \x1B[0m"
+}, ae = (e, t = v?.locales) => {
+	let n = _(e), r = e;
+	e?.endsWith("/") && (r = e.slice(0, -1));
+	let i = n ? new URL(r) : new URL(r, "http://e.com"), a = i.pathname;
+	a.startsWith("/") || (i.pathname = `/${a}`);
+	{
+		let e = a.split("/"), n = e[1];
+		t?.includes(n) && (e.splice(1, 1), i.pathname = e.join("/") ?? "/");
 	}
-}, x = ({ children: e, value: t, additionalProps: n }) => {
+	return n ? i.toString() : i.toString().replace("http://e.com", "");
+}, oe = (e) => {
+	try {
+		return /^https?:\/\//.test(e) ? new URL(e).hostname : e;
+	} catch {
+		return e;
+	}
+}, se = (e, t) => {
+	if (!t) return;
+	let n = Object.entries(t).filter(([, t]) => typeof t == "string" && oe(t) === e);
+	return n.length === 1 ? n[0]?.[0] : void 0;
+}, ce = (e, t, n) => (n ?? y?.rewrite, e), le = "__intlayerPreloaded", ue = ["en"], b = (e = {}) => ({
+	...e,
+	defaultLocale: e.defaultLocale ?? v?.defaultLocale ?? "en",
+	mode: e.mode ?? y?.mode ?? "prefix-no-default",
+	locales: e.locales ?? v?.locales ?? ue,
+	rewrite: e.rewrite ?? y?.rewrite,
+	domains: e.domains ?? y?.domains
+}), x = (e, t) => !!e && (t ?? v.locales).includes(e), de = (e, t = {}) => {
+	let { defaultLocale: n, mode: r, locales: i, domains: a } = b(t);
+	return !e || !x(e, i) ? {
+		prefix: "",
+		localePrefix: void 0
+	} : r === "prefix-all" || r === "prefix-no-default" && n !== e ? {
+		prefix: `${e}/`,
+		localePrefix: e
+	} : {
+		prefix: "",
+		localePrefix: void 0
+	};
+}, fe = (e, t, n) => ({
+	path: e,
+	isRewritten: !1
+}), pe = (e, t = v?.defaultLocale, n = {}) => {
+	let { defaultLocale: r, mode: i, locales: a, rewrite: o, domains: s } = b(n), c = ae(e, a), l = new URL(c, "http://e.com"), u = fe(ce(l.pathname, void 0, void 0), t, void 0).path, { prefix: d } = de(t, {
+		defaultLocale: r,
+		mode: i,
+		locales: a,
+		domains: s
+	}), f = `/${d}${u}`.replace(/\/+/g, "/");
+	return f.length > 1 && f.endsWith("/") && (f = f.slice(0, -1)), `${f}${l.search}${l.hash}`;
+}, me = (e, t = v?.defaultLocale, n = {}) => {
+	let { domains: r, currentDomain: i } = b(n), a = _(e), o = a ? new URL(e) : new URL(e, "http://e.com");
+	return `${a ? `${o.protocol}//${o.host}` : ""}${pe(`${o.pathname}${o.search}${o.hash}`, t, n)}`;
+}, he = (e, t = v?.locales, n = v?.defaultLocale) => {
+	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
+	try {
+		for (let e of r) {
+			let n = i(e), r = t.find((e) => i(e) === n);
+			if (r) return r;
+			let [a] = n.split("-"), o = t.find((e) => i(e).split("-")[0] === a);
+			if (o) return o;
+		}
+	} catch {}
+	return n;
+}, ge = (e) => {
+	if (typeof e == "number") return Date.now() + e * 1e3;
+	if (typeof e == "string") {
+		let t = Date.parse(e);
+		return Number.isNaN(t) ? void 0 : t;
+	}
+}, _e = (e, t, n) => {
+	let r = [`${e}=${encodeURIComponent(t)}`];
+	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
+	let i = ge(n.expires);
+	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
+}, ve = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var S = {
+	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
+	getLocaleStorage: (e) => localStorage.getItem(e),
+	getSessionStorage: (e) => sessionStorage.getItem(e),
+	isCookieEnabled: !0,
+	setCookieStore: (e, t, n) => cookieStore.set({
+		name: e,
+		value: t,
+		path: n.path,
+		domain: n.domain,
+		expires: n.expires,
+		sameSite: n.sameSite
+	}),
+	setCookieString: (e, t) => {
+		document.cookie = t;
+	},
+	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
+	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
+}, C = (e = S) => {
+	let { locales: t } = v;
+	if (e?.isCookieEnabled === !1) return;
+	let n = (e) => !!e && t.includes(e);
+	if (!ve) for (let t = 0; t < (y.storage.cookies ?? []).length; t++) try {
+		let r = e?.getCookie?.(y.storage.cookies[t].name);
+		if (n(r)) return r;
+	} catch {}
+}, ye = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && !ve && y.storage.cookies) for (let n = 0; n < y.storage.cookies.length; n++) {
+		let { name: r, attributes: i } = y.storage.cookies[n];
+		try {
+			t?.setCookieStore && t.setCookieStore(r, e, {
+				...i,
+				expires: ge(i.expires)
+			});
+		} catch {
+			try {
+				t?.setCookieString && t.setCookieString(r, _e(r, e, i));
+			} catch {}
+		}
+	}
+}, be = (e = "/", t) => {
+	let { defaultLocale: n, locales: r, mode: i } = b(t);
+	if (!n || !r) return n;
+	let a = _(e), o = e?.endsWith("/") && e.length > 1 ? e.slice(0, -1) : e, s = a ? new URL(o) : new URL(o, "http://e.com");
+	if (i === "search-params") {
+		let e = s.searchParams.get("locale");
+		return x(e, r) ? e : n;
+	}
+	if (i === "no-prefix") return n;
+	let c = s.pathname.split("/")[1];
+	if (x(c, r)) return c;
+	if (i === "prefix-no-default") return n;
+}, xe = (e) => {
+	let { defaultLocale: t, mode: n, domains: r } = b(e);
+	if (typeof window > "u") return t;
+	if (r) {
+		let e = se(window.location.hostname, r);
+		if (e) return e;
+	}
+	if (n === "prefix-all" || n === "prefix-no-default" || n === "search-params" && new URLSearchParams(window.location.search).has("locale")) {
+		let t = be(window.location.pathname + window.location.search, e);
+		if (t) return t;
+	}
+	return C() ?? t;
+}, w, T, E = () => {
+	let e = typeof window > "u" ? "" : window.location.pathname + window.location.search;
+	return (T === void 0 || w !== e) && (w = e, T = xe()), T;
+}, D = {
+	de: () => import("../../.intlayer/dynamic_dictionary/json/header/de.json").then((e) => e.default),
+	en: () => import("./intlayer-Header-wrapper-1faojf-en-Cq3hFgJX.js").then((e) => e.n).then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/header/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/header/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/header/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/header/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/header/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/header/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/header/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/header/zh.json").then((e) => e.default)
+}, Se = E(), Ce = D[Se];
+typeof window < "u" && typeof Ce == "function" && Ce().then((e) => {
+	D.__intlayerPreloaded = {
+		locale: Se,
+		dictionary: e
+	};
+}, () => void 0);
+var we = (e) => {
+	let t = "pending", n, r = e.then((e) => {
+		t = "success", n = e;
+	}, (e) => {
+		t = "error", n = e;
+	});
+	return {
+		settled: r,
+		read() {
+			if (t === "pending") throw r;
+			if (t === "error") throw n;
+			return n;
+		}
+	};
+}, O = /* @__PURE__ */ new Map(), Te = (e, t) => (O.has(e) || O.set(e, we(t)), O.get(e).read()), Ee = ({ children: e, value: t, additionalProps: n }) => {
 	let i = r(e) ? e : f(d, { children: e });
 	return new Proxy(i, { get(e, r, i) {
-		return r === "value" ? t : n && r in n ? n[r] : Reflect.get(e, r, i);
-	} });
-}, S = (e) => {
-	if (typeof e != "object" || !e) return e;
-	let { type: t, props: r } = ((e) => {
-		let t = e.props?.children;
-		if (Array.isArray(t)) {
-			let r = t.map((e, t) => {
-				let r = S(e);
-				if (typeof r == "object" && r && "type" in r) {
-					let e = r;
-					return n(e.type, {
-						...e.props,
-						key: t
-					}, ...Array.isArray(e.props?.children) ? e.props.children : e.props?.children === void 0 ? [] : [e.props.children]);
-				}
-				return r;
-			});
-			return {
-				...e,
-				props: {
-					...e.props,
-					children: r
-				}
-			};
-		} else if (t != null) {
-			let n = S(t);
-			return {
-				...e,
-				props: {
-					...e.props,
-					children: [n]
-				}
-			};
-		}
-		return {
-			...e,
-			props: {
-				...e.props,
-				children: []
+		if (r === "value") return t;
+		if (r === Symbol.toPrimitive) return () => t ?? "";
+		if (r === "toString") return () => String(t ?? "");
+		if (r === "valueOf") return () => t;
+		if (n && Object.hasOwn(n, r)) return n[r];
+		if (t != null && typeof r == "string" && r !== "constructor" && !(r in e)) {
+			let e = Object(t);
+			if (r in e) {
+				let n = e[r];
+				return typeof n == "function" ? n.bind(t) : n;
 			}
-		};
-	})(e);
-	return n(t ?? "span", r, ...r.children);
-}, oe = "translation", C = "insertion", se = "object", ce = "array", w = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => w(e, t));
+		}
+		return Reflect.get(e, r, i);
+	} });
+}, De = /* @__PURE__ */ new WeakMap(), Oe = 0, ke = (e) => {
+	if (!e) return "base";
+	let t = De.get(e);
+	if (t) return t;
+	Oe += 1;
+	let n = `p${Oe}`;
+	return De.set(e, n), n;
+}, Ae = 256, k = /* @__PURE__ */ new WeakMap(), je = (e) => typeof e == "object" && !!e, Me = (e, t, n) => `${e}_${t}_${ke(n)}`, Ne = (e, t) => {
+	if (!je(e)) return { hit: !1 };
+	let n = k.get(e);
+	return n?.has(t) ? {
+		hit: !0,
+		content: n.get(t)
+	} : { hit: !1 };
+}, A = (e, t, n) => {
+	if (!je(e)) return n;
+	let r = k.get(e);
+	return r || (r = /* @__PURE__ */ new Map(), k.set(e, r)), r.size >= Ae && r.clear(), r.set(t, n), n;
+}, Pe = "translation", j = "insertion", Fe = "object", Ie = "array", Le = "markdown", M = "html", N = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => N(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => w(e, {
+	if (Array.isArray(e)) return e.map((e, n) => N(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: ce,
+			type: Ie,
 			key: n
 		}]
 	}));
 	let n = {};
-	for (let r in e) Object.defineProperty(n, r, {
-		enumerable: !0,
-		configurable: !0,
-		get: function() {
-			let n = {
-				...t,
-				children: e[r],
-				keyPath: [...t.keyPath, {
-					type: se,
-					key: r
-				}]
-			}, i = w(e[r], n);
-			return Object.defineProperty(this, r, {
-				value: i,
-				enumerable: !0,
-				configurable: !0
-			}), i;
+	for (let r in e) {
+		let i = {
+			...t,
+			children: e[r],
+			keyPath: [...t.keyPath, {
+				type: Fe,
+				key: r
+			}]
+		};
+		if (t.eager) {
+			n[r] = N(e[r], i);
+			continue;
 		}
-	});
+		Object.defineProperty(n, r, {
+			enumerable: !0,
+			configurable: !0,
+			get: function() {
+				let t = N(e[r], i);
+				return Object.defineProperty(this, r, {
+					value: t,
+					enumerable: !0,
+					configurable: !0
+				}), t;
+			}
+		});
+	}
 	return n;
-}, T = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), E = (e) => {
+}, P = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), F = "default", Re = /[^A-Za-z0-9._&=-]/g, I = /[^A-Za-z0-9._-]/g, ze = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, L = (e, t) => {
+	if (e === "") return "%";
+	let n = e.replace(t, ze);
+	return n === "." || n === ".." ? n.replace(/\./g, "%002E") : n;
+}, R = (e) => e === void 0 ? F : typeof e == "string" ? L(e, Re) : Object.keys(e).sort().map((t) => `${L(t, I)}=${L(String(e[t]), I)}`).join("&"), z = (e) => Array.isArray(e) ? e.length === 0 ? [F] : e.map(R) : [R(e)], Be = (e, t) => {
+	for (let n of e) if (t(n)) return n;
+	return t("default") ? F : e[0] ?? "default";
+}, Ve = (e, t, n, r) => {
+	let i = e.split("/");
+	return t.every((e, t) => e === "variant" ? i[t] === r : n?.item === void 0 || i[t] === String(n.item));
+}, He = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, Ue = (e, t) => {
+	let n = t.split("/"), r = {
+		key: e.key,
+		content: e.content[t]
+	};
+	return e.qualifierTypes.forEach((e, t) => {
+		e === "variant" ? r.variant = n[t] : e === "item" && (r.item = Number(n[t]));
+	}), r;
+}, We = (e, t) => {
+	if (!He(e)) return e;
+	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? F : Be(z(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => Ve(e, n, t, s)).map((t) => Ue(e, t));
+	return i ? c.sort((e, t) => (e.item ?? 0) - (t.item ?? 0)) : c[0] ?? null;
+}, Ge = (e) => typeof e == "object" && e ? {
+	locale: e.locale,
+	selector: e
+} : { locale: e }, Ke = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
+	let n = e[t];
+	return `${t}:${t === "variant" ? z(n).join(",") : String(n)}`;
+}).join("|") : "", B = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, D = (e, t) => {
+}, V = (e, t) => {
 	if (e === void 0) return t;
 	if (t === void 0 || Array.isArray(e)) return e;
-	if (E(e) && E(t)) {
+	if (B(e) && B(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : D(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : V(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, le = (e, t, n) => {
+}, qe = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -491,12 +349,36 @@ var g = (e, t, n) => {
 			s.push(t);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => D(e, t));
-}, ue = process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false", de = process.env.INTLAYER_NODE_TYPE_INSERTION === "false", O = {
+	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => V(e, t));
+}, H = (e) => {
+	if (typeof e != "object" || !e || !("nodeType" in e)) return !1;
+	let { nodeType: t } = e;
+	return !1;
+}, Je = (e) => {
+	if (typeof e == "string") return e;
+	if (H(e)) return e.nodeType === "html" ? e[M] : e[Le];
+}, Ye = (e, t) => {
+	if (typeof e == "string") return t;
+	if (H(e)) {
+		let n = e.nodeType === "html" ? M : Le;
+		return {
+			...e,
+			[n]: t
+		};
+	}
+	return e;
+}, U = (e, t, n, r, i) => {
+	let a = Ye(e, P(Je(e), t));
+	return i(a, {
+		...n,
+		plugins: r,
+		children: a
+	});
+}, W = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, k = (e, t) => ue ? O : {
+}, G = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? W : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -506,29 +388,30 @@ var g = (e, t, n) => {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: oe,
+					type: Pe,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return le(o, e, t);
+		return qe(o, e, t);
 	}
-}, A = O, j = O, fe = de ? O : {
+}, Xe = W, Ze = (e) => W, Qe = W, $e = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? W : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: C }], i = e[C], a = {
+		let r = [...t.keyPath, { type: j }], i = e[j], a = {
 			id: "insertion-string-plugin",
-			canHandle: (e) => typeof e == "string",
+			canHandle: (e) => typeof e == "string" || H(e),
 			transform: (e, n, r) => {
+				if (H(e)) return (i) => U(e, i, n, t.plugins, r);
 				let i = r(e, {
 					...n,
 					children: e,
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = T(i, e);
+					let a = P(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -544,31 +427,42 @@ var g = (e, t, n) => {
 			plugins: [a, ...t.plugins ?? []]
 		});
 	}
-}, M = O, N = (e) => O, P = O, pe = (e, t = !0) => [
-	k(e ?? v.defaultLocale, t ? v.defaultLocale : void 0),
-	A,
-	j,
-	fe,
-	N(e ?? v.defaultLocale),
-	P,
-	M
-], me = (e, t, n = []) => w(e, {
+}, et = W, tt = W, nt = (e) => W, rt = W, it = (e, t = !0) => [
+	G(e ?? v.defaultLocale, t ? v.defaultLocale : void 0),
+	Xe,
+	Qe,
+	$e,
+	nt(e ?? v.defaultLocale),
+	rt,
+	et,
+	tt
+], at = (e, t, n = []) => N(e, {
 	...t,
 	plugins: n
-}), F = (e, t, n = pe(t)) => {
-	let r = {
-		dictionaryKey: e.key,
-		dictionaryPath: e.filePath,
-		keyPath: [],
-		plugins: n
+}), ot = (e, t, n) => {
+	let { locale: r, selector: i } = Ge(t), a = Me(r ?? v.defaultLocale, Ke(i), n), o = Ne(e, a);
+	if (o.hit) return o.content;
+	let s = n ?? it(r), c = We(e, i), l = (e) => {
+		let t = {
+			dictionaryKey: e.key,
+			dictionaryPath: e.filePath,
+			keyPath: [],
+			plugins: s,
+			nestedDictionaries: e.nestedDictionaries
+		};
+		return at(e.content, t, s);
 	};
-	return me(e.content, r, n);
-}, I = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", L = /\{\{\s*(.*?)\s*\}\}/g, R = (e, t = {}) => {
-	if (!Object.values(t).some(I)) return {
+	return c === null ? A(e, a, null) : Array.isArray(c) ? A(e, a, c.map(l)) : A(e, a, l(c));
+}, st = (e, t) => {
+	if (typeof e != "object" || !e) return;
+	let n = e[le];
+	if (n && n.locale === t) return n.dictionary;
+}, ct = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", lt = /\{\{\s*(.*?)\s*\}\}/g, ut = (e, t = {}) => {
+	if (!Object.values(t).some(ct)) return {
 		isSimple: !0,
-		parts: e.replace(L, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(lt, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(L), r = [];
+	let n = e.split(lt), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -578,40 +472,33 @@ var g = (e, t, n) => {
 		isSimple: !1,
 		parts: r
 	};
-}, z = process.env.INTLAYER_NODE_TYPE_INTLAYER_NODE === "false", he = process.env.INTLAYER_NODE_TYPE_REACT_NODE === "false", ge = process.env.INTLAYER_NODE_TYPE_INSERTION === "false", _e = z ? O : {
+}, dt = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { plugins: t, ...n }) => x({
+	transform: (e, { plugins: t, ...n }) => Ee({
 		...n,
 		value: n.children,
 		children: n.children
 	})
-}, ve = he ? O : {
-	id: "react-node-plugin",
-	canHandle: (e) => typeof e == "object" && e?.props !== void 0 && e.key !== void 0,
-	transform: (e, { plugins: t, ...n }) => x({
-		...n,
-		value: "[[react-element]]",
-		children: S(e)
-	})
-}, ye = (t, r) => {
-	let i = R(t, r);
+}, ft = W, pt = (t, r) => {
+	let i = ut(t, r);
 	return i.isSimple ? i.parts : n(e, null, ...i.parts.map((t, r) => n(e, { key: r }, t)));
-}, be = ge ? O : {
+}, mt = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? W : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: C }], i = e[C], a = {
+		let r = [...t.keyPath, { type: j }], i = e[j], a = {
 			id: "insertion-string-plugin",
-			canHandle: (e) => typeof e == "string",
+			canHandle: (e) => typeof e == "string" || H(e),
 			transform: (e, n, r) => {
+				if (H(e)) return (i) => U(e, i, n, t.plugins, r);
 				let i = r(e, {
 					...n,
 					children: e,
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = ye(i, e);
+					let a = pt(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -630,246 +517,183 @@ var g = (e, t, n) => {
 			return typeof n == "function" ? n(e) : n;
 		} : o;
 	}
-}, xe = O, Se = O, B = /* @__PURE__ */ new Map(), Ce = (e, t = !0) => {
+}, ht = W, gt = W, K = /* @__PURE__ */ new Map(), _t = (e, t = !0) => {
 	let n = `${e ?? v.defaultLocale}_${t}`;
-	if (B.has(n)) return B.get(n);
+	if (K.has(n)) return K.get(n);
 	let r = [
-		k(e ?? v.defaultLocale, t ? v.defaultLocale : void 0),
-		A,
-		j,
-		N(e ?? v.defaultLocale),
-		P,
-		M,
-		_e,
-		ve,
-		be,
-		xe,
-		Se
+		G(e ?? v.defaultLocale, t ? v.defaultLocale : void 0),
+		Xe,
+		Ze(e ?? v.defaultLocale),
+		Qe,
+		nt(e ?? v.defaultLocale),
+		rt,
+		et,
+		tt,
+		dt,
+		ft,
+		mt,
+		ht,
+		gt
 	];
-	return B.set(n, r), r;
-}, we = (e, t) => F(e, t, Ce(t)), V = (e) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(e), H = (e, t = v?.locales) => {
-	let n = V(e), r = e;
-	e?.endsWith("/") && (r = e.slice(0, -1));
-	let i = n ? new URL(r) : new URL(r, "http://example.com"), a = i.pathname;
-	a.startsWith("/") || (i.pathname = `/${a}`);
-	{
-		let e = a.split("/"), n = e[1];
-		t?.includes(n) && (e.splice(1, 1), i.pathname = e.join("/") ?? "/");
-	}
-	return n ? i.toString() : i.toString().replace("http://example.com", "");
-}, Te = ["en"], U = (e = {}) => ({
-	defaultLocale: v?.defaultLocale ?? "en",
-	mode: y?.mode ?? "prefix-no-default",
-	locales: v?.locales ?? Te,
-	rewrite: y?.rewrite,
-	domains: y?.domains,
-	...e
-}), Ee = (e, t = {}) => {
-	let { defaultLocale: n, mode: r, locales: i, domains: a } = U(t);
-	return !e || !i.includes(e) ? {
-		prefix: "",
-		localePrefix: void 0
-	} : r === "prefix-all" || r === "prefix-no-default" && n !== e ? {
-		prefix: `${e}/`,
-		localePrefix: e
-	} : {
-		prefix: "",
-		localePrefix: void 0
-	};
-}, De = (e, t, n) => e, Oe = (e, t, n) => ({
-	path: e,
-	isRewritten: !1
-}), W = (e, t = v?.defaultLocale, n = {}) => {
-	let { defaultLocale: r, mode: i, locales: a, rewrite: o, domains: s, currentDomain: c } = U(n), l = H(e, a), u = V(l), d = u ? new URL(l) : new URL(l, "http://example.com"), f = Oe(De(d.pathname, void 0, void 0), t, void 0).path, p = u ? `${d.protocol}//${d.host}` : "", { prefix: m } = Ee(t, {
-		defaultLocale: r,
-		mode: i,
-		locales: a,
-		domains: s
-	}), h = `/${m}${f}`.replace(/\/+/g, "/");
-	return h.length > 1 && h.endsWith("/") && (h = h.slice(0, -1)), `${p}${h}${d.search}${d.hash}`;
-}, ke = (e, t = v?.locales, n = v?.defaultLocale) => {
-	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
-	try {
-		for (let e of r) {
-			let n = i(e), r = t.find((e) => i(e) === n);
-			if (r) return r;
-			let [a] = n.split("-"), o = t.find((e) => i(e).split("-")[0] === a);
-			if (o) return o;
-		}
-	} catch {}
-	return n;
-}, G = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
-process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var Ae = (e, t, n) => {
-	let r = [`${e}=${encodeURIComponent(t)}`];
-	return n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`), n.expires instanceof Date && r.push(`Expires=${n.expires.toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, je = (e) => {
-	let { locales: t } = v;
-	if (e?.isCookieEnabled === !1) return;
-	let n = (e) => !!e && t.includes(e);
-	if (!G) for (let t = 0; t < (y.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(y.storage.cookies[t].name);
-		if (n(r)) return r;
-	} catch {}
-}, Me = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !G && y.storage.cookies) for (let n = 0; n < y.storage.cookies.length; n++) {
-		let { name: r, attributes: i } = y.storage.cookies[n];
-		try {
-			t?.setCookieStore && t.setCookieStore(r, e, {
-				...i,
-				expires: i.expires instanceof Date ? i.expires.getTime() : i.expires
-			});
-		} catch {
-			try {
-				t?.setCookieString && t.setCookieString(r, Ae(r, e, i));
-			} catch {}
-		}
-	}
-}, K = {
-	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
-	getLocaleStorage: (e) => localStorage.getItem(e),
-	getSessionStorage: (e) => sessionStorage.getItem(e),
-	isCookieEnabled: !0,
-	setCookieStore: (e, t, n) => cookieStore.set({
-		name: e,
-		value: t,
-		path: n.path,
-		domain: n.domain,
-		expires: n.expires,
-		sameSite: n.sameSite
-	}),
-	setCookieString: (e, t) => {
-		document.cookie = t;
-	},
-	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
-	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, q = je(K), J = (e, t) => Me(e, {
-	...K,
+	return K.set(n, r), r;
+}, vt = (e, t) => ot(e, t, _t(typeof t == "object" && t ? t.locale : t)), yt = C(S), bt = (e, t) => ye(e, {
+	...S,
 	isCookieEnabled: t
-}), Ne = () => {
-	let { locale: e } = a(Y) ?? {}, t = l(null);
+}), xt = () => {
+	let { locale: e } = a(q) ?? {}, t = l(null);
 	o(() => {}, []), o(() => {
-		!e || !t.current || t.current.currentLocale.set(e);
+		e && t.current && t.current.currentLocale.set(e);
 	}, [e]);
-}, Pe = ({ children: e }) => (Ne(), e), Fe = () => {
+}, St = ({ children: e }) => (xt(), e), Ct = () => {
+	let { locale: e } = a(q) ?? {}, t = l(null);
+	o(() => {}, []), o(() => {
+		e && t.current && (t.current.setLocale(e), t.current.trackPageView({ reason: "locale_change" }));
+	}, [e]);
+}, wt = ({ children: e }) => (Ct(), e), Tt = () => {
 	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, Y = t({
-	locale: q ?? v?.defaultLocale,
+}, q = t({
+	locale: yt ?? v?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), Ie = ({ locale: e, defaultLocale: t, children: n, setLocale: r, disableEditor: i, isCookieEnabled: a }) => {
-	let { locales: s, defaultLocale: c } = v ?? {}, [l, d] = u(e ?? q ?? t ?? c);
+}), Et = ({ locale: e, defaultLocale: t, variant: n, children: r, setLocale: i, disableEditor: a, isCookieEnabled: s }) => {
+	let { locales: c, defaultLocale: l } = v ?? {}, [d, p] = u(e ?? yt ?? t ?? l);
 	o(() => {
-		e && e !== l && d(e);
+		e && e !== d && p(e);
 	}, [e]), o(() => {
-		Fe();
+		Tt();
 	}, []);
-	let p = r ?? ((e) => {
-		if (l.toString() !== e.toString()) {
-			if (!s?.map(String).includes(e)) {
+	let m = i ?? ((e) => {
+		if (d.toString() !== e.toString()) {
+			if (!c?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			d(e), J(e, a);
+			p(e), bt(e, s);
 		}
-	}), m = ke(l);
-	return f(Y.Provider, {
+	}), h = he(d);
+	return f(q.Provider, {
 		value: {
-			locale: m,
-			setLocale: p,
-			disableEditor: i
+			locale: h,
+			setLocale: m,
+			variant: n,
+			disableEditor: a
 		},
-		children: n
+		children: r
 	});
-}, Le = ({ children: e, ...t }) => p(Ie, {
+}, Dt = ({ children: e, ...t }) => p(Et, {
 	...t,
-	children: [f(Pe, {}), e]
-}), Re = (e, t) => {
-	let { locale: n } = a(Y) ?? {};
-	return c(() => we(e, t ?? n), [
-		e.key,
-		n,
-		t
-	]);
-}, ze = (e) => {
-	let t = "pending", n, r = e.then((e) => {
-		t = "success", n = e;
-	}, (e) => {
-		t = "error", n = e;
-	});
-	return { read() {
-		if (t === "pending") throw r;
-		if (t === "error") throw n;
-		return n;
-	} };
-}, X = /* @__PURE__ */ new Map(), Be = (e, t) => (X.has(e) || X.set(e, ze(t)), X.get(e).read()), Z = (e, t, n) => {
-	let { locale: r } = a(Y) ?? {}, i = c(() => n ?? r ?? v.defaultLocale, [r, n]);
-	return Re(Be(`${String(t)}.${i}`, e[i]?.()), i);
-}, Ve = ({ isCookieEnabled: e, onLocaleChange: t } = {}) => {
-	let { defaultLocale: n, locales: r } = v ?? {}, { locale: o, setLocale: s, isCookieEnabled: c } = a(Y) ?? {};
+	children: [
+		f(St, {}),
+		f(wt, {}),
+		e
+	]
+}), J = (e, t, n) => {
+	let { locale: r, variant: i } = a(q) ?? {}, { locale: o, selector: s } = {
+		locale: n,
+		selector: void 0
+	}, c = o ?? r ?? v.defaultLocale, l = st(e, c);
+	if (l) return vt(l, c);
+	let u = e;
+	return vt(Te(`${String(t)}.${c}`, u[c]?.()), c);
+}, { defaultLocale: Ot, locales: Y } = v ?? {}, kt = ({ isCookieEnabled: e, onLocaleChange: t } = {}) => {
+	let { locale: n, setLocale: r, isCookieEnabled: o } = a(q) ?? {};
 	return {
-		locale: o,
-		defaultLocale: n,
-		availableLocales: r,
+		locale: n,
+		defaultLocale: Ot,
+		availableLocales: Y,
 		setLocale: i((n) => {
-			if (!r?.map(String).includes(n)) {
+			if (!Y?.map(String).includes(n)) {
 				console.error(`Locale ${n} is not available`);
 				return;
 			}
-			s(n), J(n, e ?? c ?? !0), t?.(n);
+			r(n), bt(n, e ?? o ?? !0), t?.(n);
 		}, [
-			r,
+			Y,
 			t,
-			s,
+			r,
 			e
 		])
 	};
-}, He = (e) => f(Le, { ...e }), Q = () => {
-	let e = m(), [t, n] = u(e);
-	return o(() => {
-		let t = typeof window < "u" ? window.location.search : "";
-		n(t ? `${e}${t}` : e);
-	}, [e]), c(() => H(t), [t]);
-}, Ue = ({ onChange: e = "replace" } = {}) => {
-	let { replace: t, push: n } = h(), r = Q();
+}, At = (e) => f(Dt, { ...e }), jt = () => {
+	let e = m(), [t, n] = u("");
+	o(() => {
+		let e = typeof window < "u" ? window.location.search : "";
+		n(e);
+	}, [e]);
+	let r = t ? `${e}${t}` : e;
+	return c(() => ae(r), [r]);
+}, Mt = ({ onChange: e = "replace", onLocaleChange: t, isCookieEnabled: n } = {}) => {
+	let { replace: r, push: a } = h(), o = jt();
 	return {
-		...Ve({ onLocaleChange: i((i) => {
-			if (!e) return;
-			let a = W(r, i, { currentDomain: void 0 });
-			if (typeof e == "function") {
-				e({
-					locale: i,
-					path: a
-				});
-				return;
-			}
-			e === "replace" && t(a), e === "push" && n(a);
-		}, [
-			t,
-			n,
-			r,
-			e
-		]) }),
-		pathWithoutLocale: r
+		...kt({
+			onLocaleChange: i((n) => {
+				if (!e) return;
+				let i = me(o, n, { currentDomain: void 0 });
+				if (typeof e == "function") {
+					e({
+						locale: n,
+						path: i
+					});
+					return;
+				}
+				e === "replace" && r(i), e === "push" && a(i), t?.(n);
+			}, [
+				r,
+				a,
+				o,
+				e,
+				t
+			]),
+			isCookieEnabled: n
+		}),
+		pathWithoutLocale: o
 	};
-}, We = b.internationalization.locales;
-b.internationalization.requiredLocales, b.internationalization.defaultLocale, b.editor;
-var Ge = (e) => /^https?:\/\//.test(e ?? ""), $ = ({ href: e, children: t, ...n }) => {
-	let { locale: r } = Ue(), i = Ge(e.toString());
-	return f(ee, {
-		href: e && !i ? W(e.toString(), r) : e,
+}, Nt = v.locales;
+v.requiredLocales, v.defaultLocale;
+var Pt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/Link.tsx", Ft = (e) => /^https?:\/\//.test(e ?? ""), X = ({ href: e, children: t, ...n }) => {
+	let { locale: r } = Mt(), i = Ft(e.toString()), a = e && !i ? me(e.toString(), r) : e;
+	return g(ee, {
+		href: a,
 		prefetch: !1,
 		...n,
 		children: t
-	});
-}, Ke = _("theme-toggle");
-function qe() {
-	return f("div", {
+	}, void 0, !1, {
+		fileName: Pt,
+		lineNumber: 26,
+		columnNumber: 5
+	}, void 0);
+}, Z = {
+	de: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((e) => e.default),
+	en: () => import("./intlayer-Header-wrapper-1faojf-en-Cq3hFgJX.js").then((e) => e.t).then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json").then((e) => e.default)
+}, It = E(), Lt = Z[It];
+typeof window < "u" && typeof Lt == "function" && Lt().then((e) => {
+	Z.__intlayerPreloaded = {
+		locale: It,
+		dictionary: e
+	};
+}, () => void 0);
+var Rt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/ThemeToggle.tsx";
+function zt() {
+	let e = J(Z, "theme-toggle");
+	return g("div", {
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground",
-		children: Z(Ke, "theme-toggle").a.value
-	});
+		children: e.a.value
+	}, void 0, !1, {
+		fileName: Rt,
+		lineNumber: 7,
+		columnNumber: 5
+	}, this);
 }
-function Je(e) {
+var Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/LocaleSwitcher.tsx";
+function Bt(e) {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
@@ -877,37 +701,50 @@ function Je(e) {
 		return e.toUpperCase();
 	}
 }
-function Ye() {
+function Vt() {
 	let e = ne().locale ?? "en", t = re(), n = ie(), r = (r) => {
 		let i = t.replace(`/${e}`, `/${r}`);
 		n.push(i);
 	};
-	return f("div", {
+	return g("div", {
 		className: "flex items-center gap-2",
-		children: f("select", {
+		children: g("select", {
 			value: e,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: We.map((e) => f("option", {
+			children: Nt.map((e) => g("option", {
 				value: e,
-				children: Je(e)
-			}, e))
-		})
-	});
+				children: Bt(e)
+			}, e, !1, {
+				fileName: Q,
+				lineNumber: 35,
+				columnNumber: 11
+			}, this))
+		}, void 0, !1, {
+			fileName: Q,
+			lineNumber: 29,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: Q,
+		lineNumber: 28,
+		columnNumber: 5
+	}, this);
 }
-function Xe() {
-	let e = Z(ae, "header"), t = [
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/Header.tsx";
+function Ht() {
+	let e = J(D, "header"), t = [
 		{
 			href: "/products",
-			label: e.k
+			label: e.l
 		},
 		{
 			href: "/pricing",
-			label: e.j
+			label: e.k
 		},
 		{
 			href: "/team",
-			label: e.m
+			label: e.n
 		},
 		{
 			href: "/blog",
@@ -927,85 +764,165 @@ function Xe() {
 		},
 		{
 			href: "/settings",
-			label: e.l
+			label: e.m
 		}
 	];
-	return f("header", {
+	return g("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: p("nav", {
+		children: g("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [p("div", {
+			children: [g("div", {
 				className: "flex items-center gap-8",
-				children: [f($, {
+				children: [g(X, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
-					children: e.g
-				}), p("div", {
+					children: e.h
+				}, void 0, !1, {
+					fileName: $,
+					lineNumber: 25,
+					columnNumber: 11
+				}, this), g("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						f($, {
+						g(X, {
 							href: "/",
 							className: "nav-link",
-							children: e.f
-						}),
-						f($, {
+							children: e.g
+						}, void 0, !1, {
+							fileName: $,
+							lineNumber: 33,
+							columnNumber: 13
+						}, this),
+						g(X, {
 							href: "/about",
 							className: "nav-link",
-							children: e.h
-						}),
-						p("div", {
+							children: e.i
+						}, void 0, !1, {
+							fileName: $,
+							lineNumber: 36,
+							columnNumber: 13
+						}, this),
+						g("div", {
 							className: "relative group",
-							children: [p("button", {
+							children: [g("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-								children: [e.i, f(te, {
+								children: [e.j, g(te, {
 									size: 14,
 									className: "transition-transform group-hover:rotate-180"
-								})]
-							}), f("div", {
+								}, void 0, !1, {
+									fileName: $,
+									lineNumber: 47,
+									columnNumber: 17
+								}, this)]
+							}, void 0, !0, {
+								fileName: $,
+								lineNumber: 42,
+								columnNumber: 15
+							}, this), g("div", {
 								className: "absolute left-0 top-full pt-2 w-48 hidden group-hover:block",
-								children: f("div", {
+								children: g("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: t.map((e) => f($, {
+									children: t.map((e) => g(X, {
 										href: e.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										children: e.label
-									}, e.href))
-								})
-							})]
-						})
+									}, e.href, !1, {
+										fileName: $,
+										lineNumber: 56,
+										columnNumber: 21
+									}, this))
+								}, void 0, !1, {
+									fileName: $,
+									lineNumber: 54,
+									columnNumber: 17
+								}, this)
+							}, void 0, !1, {
+								fileName: $,
+								lineNumber: 53,
+								columnNumber: 15
+							}, this)]
+						}, void 0, !0, {
+							fileName: $,
+							lineNumber: 41,
+							columnNumber: 13
+						}, this)
 					]
-				})]
-			}), p("div", {
+				}, void 0, !0, {
+					fileName: $,
+					lineNumber: 32,
+					columnNumber: 11
+				}, this)]
+			}, void 0, !0, {
+				fileName: $,
+				lineNumber: 24,
+				columnNumber: 9
+			}, this), g("div", {
 				className: "flex items-center gap-4",
 				children: [
-					p("a", {
+					g("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [f("span", {
+						children: [g("span", {
 							className: "sr-only",
 							children: e.e
-						}), f("svg", {
+						}, void 0, !1, {
+							fileName: $,
+							lineNumber: 77,
+							columnNumber: 13
+						}, this), g("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: f("path", {
+							children: g("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							})
-						})]
-					}),
-					f(Ye, {}),
-					f(qe, {})
+							}, void 0, !1, {
+								fileName: $,
+								lineNumber: 79,
+								columnNumber: 15
+							}, this)
+						}, void 0, !1, {
+							fileName: $,
+							lineNumber: 78,
+							columnNumber: 13
+						}, this)]
+					}, void 0, !0, {
+						fileName: $,
+						lineNumber: 71,
+						columnNumber: 11
+					}, this),
+					g(Vt, {}, void 0, !1, {
+						fileName: $,
+						lineNumber: 85,
+						columnNumber: 11
+					}, this),
+					g(zt, {}, void 0, !1, {
+						fileName: $,
+						lineNumber: 86,
+						columnNumber: 11
+					}, this)
 				]
-			})]
-		})
-	});
+			}, void 0, !0, {
+				fileName: $,
+				lineNumber: 70,
+				columnNumber: 9
+			}, this)]
+		}, void 0, !0, {
+			fileName: $,
+			lineNumber: 23,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: $,
+		lineNumber: 22,
+		columnNumber: 5
+	}, this);
 }
-function Ze() {
+function Ut() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -1019,505 +936,87 @@ function Ze() {
 		}
 	}
 }
-function Qe(e, t) {
+function Wt(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function $e({ children: e, locale: t }) {
+var Gt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/AppProviders.tsx";
+function Kt({ children: e, locale: t }) {
 	let [n] = u(() => typeof performance < "u" ? performance.now() : 0);
 	return s(() => {
-		Qe("AppRoot", n);
+		Wt("AppRoot", n);
 	}, [n]), o(() => {
 		t && (document.documentElement.lang = t);
 	}, [t]), o(() => {
-		Ze();
-	}, []), f(He, {
+		Ut();
+	}, []), g(At, {
 		locale: t,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: Gt,
+		lineNumber: 34,
+		columnNumber: 7
+	}, this);
 }
-function et({ children: e }) {
-	return f($e, {
+var qt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/scripts/Wrapper.tsx";
+function Jt({ children: e }) {
+	return g(Kt, {
 		locale: "en",
 		children: e
+	}, void 0, !1, {
+		fileName: qt,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
+}
+var Yt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/Header.wrapper.tsx";
+function Xt() {
+	return g(Jt, { children: g(Ht, {}, void 0, !1, {
+		fileName: Yt,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: Yt,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
+}
+export { Xt as default };
+var e = Object.defineProperty, t = (t, n) => {
+	let r = {};
+	for (var i in t) e(r, i, {
+		get: t[i],
+		enumerable: !0
 	});
-}
-function tt() {
-	return f(et, { children: f(Xe, {}) });
-}
-export { tt as default };
-var e = "results-table", t = {
-	i: "Sample Results",
-	b: "Bundle Size",
-	f: "Lookup Time",
-	d: "Lazy Loading",
-	j: "Yes",
-	g: "Manual",
-	e: "Library",
-	a: "Built-in",
-	c: {
-		fields: ["val"],
-		nodeType: "insertion",
-		insertion: "{{val}} kB"
-	},
-	h: {
-		fields: ["val"],
-		nodeType: "insertion",
-		insertion: "{{val}}ms"
-	}
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "preferences-section", t = {
-	e: "Email Notifications",
-	k: "Receive weekly benchmark reports",
-	n: "Toggle notifications",
-	c: "Dark Mode",
-	o: "Use dark color scheme",
-	m: "Toggle dark mode",
-	d: "Default Language",
-	f: "English (en)",
-	g: "French (fr)",
-	h: "German (de)",
-	l: "Spanish (es)",
-	i: "Japanese (ja)",
-	b: "Chinese Simplified (zh)",
-	a: "Arabic (ar)",
-	j: "Preferences"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "why-it-matters", t = {
-	g: "Why These Metrics Matter",
-	a: "Bundle Size",
-	f: "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
-	e: "Rendering & Hydration",
-	b: "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).",
-	c: "Dynamic Loading",
-	d: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "contact-header", t = {
-	a: "Get in Touch",
-	b: "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "careers-benefits", t = {
-	e: "Work from anywhere in the world",
-	c: "Remote-first",
-	a: "Competitive pay",
-	d: "Top-of-market compensation",
-	b: "Open source time",
-	f: "20% time for OSS contributions"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "team-grid", t = {
-	o: "Sarah Chen",
-	h: "Founder & Lead Engineer",
-	g: "Former Google engineer with 10 years of experience building internationalization systems at scale.",
-	l: "Marcus Weber",
-	n: "Performance Engineer",
-	p: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
-	a: "Aisha Patel",
-	d: "Developer Advocate",
-	m: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
-	q: "Tomás Rodríguez",
-	i: "Full-Stack Developer",
-	j: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
-	r: "Yuki Tanaka",
-	c: "Data Analyst",
-	f: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
-	e: "Elena Kowalski",
-	b: "Community Manager",
-	k: "Manages community contributions, partnerships, and events. Background in open source governance."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "what-we-measure", t = {
-	a: "Bundle size impact",
-	i: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.",
-	h: "Rendering overhead",
-	d: "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-	e: "Hydration cost",
-	b: "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
-	f: "Lazy loading effectiveness",
-	k: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).",
-	g: "Locale switch speed",
-	c: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.",
-	j: "What We Measure"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "products-grid", t = {
-	e: "Benchmark CLI",
-	r: "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
-	f: "Benchmark Cloud",
-	c: "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
-	g: "Benchmark Enterprise",
-	m: "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
-	i: "Contact Us",
-	l: "Migration Assistant",
-	a: "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
-	s: "Translation QA",
-	d: "Automated quality checks for missing translations, pluralization issues, and context errors.",
-	h: "Bundle Optimizer",
-	b: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
-	k: "Learn More",
-	j: "Free",
-	o: "$29/mo",
-	q: "$99 one-time",
-	n: "$19/mo",
-	p: "$49/mo"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "understanding-impact", t = {
-	k: "Understanding the Impact",
-	p: "Why a single large JSON can hurt performance",
-	e: "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:",
-	manageYourAccountPreferencesAnd: "Manage your account preferences and configuration.",
-	settings: "Settings",
-	h: "The JSON must be parsed on every page load — blocking the main thread.",
-	b: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
-	c: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.",
-	i: "The trade-offs of dynamic loading",
-	f: "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:",
-	saveChanges: "Save Changes",
-	cancel: "Cancel",
-	n: "Waterfall requests:",
-	d: "Flash of untranslated content (FOUC):",
-	a: "Cache invalidation:",
-	o: "What this benchmark measures",
-	j: "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.",
-	g: "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips.",
-	m: "users may briefly see translation keys or a fallback language before the chunk arrives.",
-	l: "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "about-grid", t = {
-	d: "Why This Exists",
-	a: "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
-	b: "Methodology",
-	c: "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "header", t = {
-	f: "Home",
-	h: "Methodology",
-	i: "Mock Pages",
-	k: "Products",
-	j: "Pricing",
-	m: "Team",
+	return n || e(r, Symbol.toStringTag, { value: "Module" }), r;
+}, n = t({
+	content: () => i,
+	default: () => a,
+	key: () => r
+}), r = "header", i = {
+	g: "Home",
+	i: "Methodology",
+	j: "Mock Pages",
+	l: "Products",
+	k: "Pricing",
+	n: "Team",
 	a: "Blog",
 	b: "Careers",
 	d: "FAQ",
 	c: "Contact",
-	l: "Settings",
+	m: "Settings",
 	e: "Go to GitHub",
-	header: "Header",
-	g: "i18n Bench"
-}, n = {
-	key: e,
-	content: t
+	h: "i18n Bench"
+}, a = {
+	key: r,
+	content: i
+}, o = t({
+	content: () => c,
+	default: () => l,
+	key: () => s
+}), s = "theme-toggle", c = { a: "Theme: Auto" }, l = {
+	key: s,
+	content: c
 };
-export { t as content, n as default, e as key };
-var e = "about-header", t = {
-	a: "About This Benchmark",
-	b: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "pricing-tiers", t = {
-	y: "Starter",
-	r: "$0",
-	l: "forever",
-	c: {
-		fields: [],
-		nodeType: "insertion",
-		insertion: "{runs} benchmark runs/day"
-	},
-	o: {
-		fields: [],
-		nodeType: "insertion",
-		insertion: "{libs} libraries"
-	},
-	e: "Community support",
-	w: "Public results",
-	v: "Pro",
-	s: "$29",
-	p: "/month",
-	aa: "Unlimited runs",
-	a: "All libraries",
-	t: "Priority support",
-	u: "Private results",
-	d: "CI integration",
-	n: "Historical data",
-	j: "Enterprise",
-	g: "Custom",
-	k: "Everything in Pro",
-	q: "On-premise option",
-	x: "SSO & SAML",
-	i: "Dedicated account manager",
-	h: "Custom SLAs",
-	b: "Audit logs",
-	z: "Training sessions",
-	f: "Contact Sales",
-	m: "Get Started"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "pricing-header", t = {
-	b: "Simple, Transparent Pricing",
-	a: "Choose the plan that fits your team. No hidden fees."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "api-access-section", t = {
-	a: "API Access",
-	b: "API Key",
-	d: "Use this key to access the benchmarking API programmatically.",
-	c: "Copy"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "faq-list", t = {
-	m: "What is i18n Benchmark?",
-	c: "How are benchmarks conducted?",
-	k: "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
-	n: "Which libraries are currently supported?",
-	l: "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
-	a: "Can I submit my own benchmarks?",
-	o: "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
-	e: "How often are benchmarks updated?",
-	j: "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
-	g: "Is the data reliable?",
-	i: "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
-	b: "Do you offer consulting services?",
-	p: "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
-	d: "How can I contribute?",
-	h: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
-	f: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "products-header", t = {
-	b: "Tools and services to streamline your internationalization workflow.",
-	a: "Products"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "hero", t = {
-	a: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-	d: "View Results",
-	hero: "Hero",
-	c: "Methodology",
-	b: "i18n Benchmark"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "open-positions", t = {
-	r: "Senior Frontend Engineer",
-	c: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
-	b: "Backend Engineer",
-	f: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-	s: "Technical Writer",
-	e: "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
-	g: "DevRel Engineer",
-	q: "San Francisco / Remote",
-	i: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
-	o: "QA Engineer",
-	k: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
-	m: "Open Positions",
-	a: "Apply Now",
-	p: "Remote",
-	l: "Full-time",
-	n: "Part-time",
-	j: "Engineering",
-	h: "Documentation",
-	d: "Community"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "profile-section", t = {
-	a: "Display Name",
-	c: "Profile",
-	b: "Email"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "blog-header", t = {
-	b: "Insights, tutorials, and analysis from the i18n community.",
-	a: "Blog"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "settings-footer", t = {
-	b: "Save Changes",
-	a: "Cancel"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "contact-form", t = {
-	l: "Your name",
-	a: "Bug Report",
-	h: "New Benchmark Idea",
-	f: "Methodology Question",
-	c: "Describe your question or idea...",
-	j: "Send Message",
-	g: "Name",
-	d: "Email",
-	k: "Topic",
-	b: "Contribution",
-	i: "Other",
-	e: "Message"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "footer", t = {
-	i: "Resources",
-	c: "Contact",
-	f: "GitHub",
-	h: "Methodology",
-	e: "Contributing",
-	b: "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.",
-	a: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
-	d: "contact@intlayer.org",
-	g: "i18n Benchmark"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "mock-banner", t = { a: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "theme-toggle", t = {
-	themeModeAutoSystemClick: "Theme mode: auto (system). Click to switch to light mode.",
-	themeModeLightClick: "Theme mode: light. Click to switch to dark mode.",
-	themeModeDarkClick: "Theme mode: dark. Click to switch to auto (system) mode.",
-	a: "Theme: Auto",
-	themeDark: "Theme: Dark",
-	themeLight: "Theme: Light",
-	themeModeModeClickTo: {
-		fields: ["mode"],
-		nodeType: "insertion",
-		insertion: "Theme mode: {{mode}}. Click to switch mode."
-	}
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "careers-header", t = {
-	b: "Careers",
-	a: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "settings-header", t = {
-	a: "Manage your account preferences and configuration.",
-	b: "Settings"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "blog-list", t = {
-	g: "Comparing i18n Libraries in 2026: A Deep Dive",
-	m: "March 15, 2026",
-	w: "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
-	k: "How to Reduce Your i18n Bundle by 60%",
-	n: "March 8, 2026",
-	q: "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-	u: "The State of Internationalization in React",
-	j: "February 28, 2026",
-	c: "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
-	p: "Migrating from react-i18next to Lingui",
-	i: "February 15, 2026",
-	a: "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
-	t: "Server Components and i18n: What Changes?",
-	h: "February 1, 2026",
-	r: "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
-	f: "Benchmark Methodology: How We Test",
-	l: "January 20, 2026",
-	b: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-	s: "Read More →",
-	e: "Benchmark",
-	v: "Tutorial",
-	d: "Analysis",
-	o: "Meta"
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "team-header", t = {
-	b: "Our Team",
-	a: "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
-var e = "faq-header1", t = {
-	b: "Frequently Asked Questions",
-	a: "Everything you need to know about i18n Benchmark."
-}, n = {
-	key: e,
-	content: t
-};
-export { t as content, n as default, e as key };
+export { n, o as t };

@@ -15,73 +15,53 @@ var a = {}, o = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], u = [], d, f;
-function p(e) {
-	if (u.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (d === t) return f;
-	let n = new URL(t, "http://dummy.com"), r;
-	for (let e of u) if (new a(e.match, n.href).exec(n.href)) {
-		r = e;
-		break;
-	}
-	return d = t, f = r, r;
-}
-function m(e) {
-	let t = p(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : l;
-}
-var h = void 0, g = typeof window > "u";
+], u = [], d = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var _, v = !1, y = () => {
-	if (h) {
-		let e = h?.getStore()?.locale;
-		if (e) return e;
-	}
+var f, p = !1, m = () => {
 	let e = l;
-	!g && typeof window < "u" && window.location?.href && (e = m(window.location.href));
-	let t = b(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return v || (_ = t, v = !0, S(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	!d && typeof window < "u" && window.location?.href && (e = N(window.location.href));
+	let t = h(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return p || (f = t, p = !0, _(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function b(e, t) {
+function h(e, t) {
 	let n;
 	for (let t of e) {
 		if (t === "cookie") n = ee();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && _ !== void 0) n = _;
-		else if (E(t) && T.has(t)) {
-			let e = T.get(t);
+		else if (t === "globalVariable" && f !== void 0) n = f;
+		else if (F(t) && P.has(t)) {
+			let e = P.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return w(t);
+				if (t !== void 0) return b(t);
 			}
 		}
-		let e = C(n);
+		let e = y(n);
 		if (e) return e;
 	}
 }
-var x = (e) => {
+var g = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, S = (e, t) => {
+}, _ = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = y();
+		r = m();
 	} catch {}
 	let i = [], a = l;
-	!g && typeof window < "u" && window.location?.href && (a = m(window.location.href));
-	for (let t of a) if (t === "globalVariable") _ = e;
+	!d && typeof window < "u" && window.location?.href && (a = N(window.location.href));
+	for (let t of a) if (t === "globalVariable") f = e;
 	else if (t === "cookie") {
-		if (g || typeof document > "u" || typeof window > "u") continue;
+		if (d || typeof document > "u" || typeof window > "u") continue;
 		let t = `${s}=${e}; path=/; max-age=${c}`;
-		document.cookie = t;
+		document.cookie = t, D();
 	} else if (t === "baseLocale") continue;
-	else if (E(t) && T.has(t)) {
-		let n = T.get(t);
+	else if (F(t) && P.has(t)) {
+		let n = P.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -90,84 +70,124 @@ var x = (e) => {
 		}
 	}
 	let o = () => {
-		!g && n.reload && window.location && e !== r && x(void 0);
+		!d && n.reload && window.location && e !== r && g(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
-};
-function C(e) {
+}, v = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function y(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of o) if (e.toLowerCase() === t) return e;
 }
-function w(e) {
-	let t = C(e);
+function b(e) {
+	let t = y(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${o.join(", ")}`);
 }
-function ee() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${s}=([^;]+)`))?.[2];
-	return C(e);
+function x(e) {
+	return e;
 }
-var T = /* @__PURE__ */ new Map();
-function E(e) {
+function S(e, t) {
+	return e.exec(t.href);
+}
+var C = s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), w = RegExp(`(?:^|;\\s*)${C}=([^;]*)`), T = Symbol(), E = T;
+function D() {
+	E = T;
+}
+function O() {
+	typeof queueMicrotask == "function" ? queueMicrotask(D) : Promise.resolve().then(D);
+}
+function ee() {
+	if (typeof document > "u") return;
+	if (E !== T) return E;
+	let e = document.cookie.match(w)?.[1];
+	return E = y(e), O(), E;
+}
+function k(e) {
+	return A(e);
+}
+function A(e) {
+	let t = x(typeof e == "string" ? new URL(e, v()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && y(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), x(t);
+}
+var j, M;
+function te(e) {
+	if (u.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (j === t) return M;
+	let n = x(new URL(t, "http://example.com")), r = k(n), i = r.href === n.href ? [n] : [n, r], o;
+	for (let e of i) {
+		for (let t of u) if (S(new a(t.match, e.href), e)) {
+			o = t;
+			break;
+		}
+		if (o) break;
+	}
+	return j = t, M = o, o;
+}
+function N(e) {
+	let t = te(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : l;
+}
+var P = /* @__PURE__ */ new Map();
+function F(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var te = () => "Preferences", D = () => "Préférences", O = () => "Preferencias", k = () => "Einstellungen", A = () => "Preferenze", j = () => "Preferências", M = () => "偏好", N = () => "設定", P = () => "Preferences", F = () => "Предпочтения", I = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? te(e) : n === "fr" ? D(e) : n === "es" ? O(e) : n === "de" ? k(e) : n === "it" ? A(e) : n === "pt" ? j(e) : n === "zh" ? M(e) : n === "ja" ? N(e) : n === "ko" ? P(e) : F(e);
-}), L = () => "Email Notifications", R = () => "Notifications e-mail", z = () => "Notificaciones por correo electrónico", B = () => "E-Mail-Benachrichtigungen", V = () => "Notifiche via email", H = () => "Notificações por e-mail", U = () => "电子邮件通知", W = () => "メール通知", G = () => "Email Notifications", K = () => "Уведомления по почте", q = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? L(e) : n === "fr" ? R(e) : n === "es" ? z(e) : n === "de" ? B(e) : n === "it" ? V(e) : n === "pt" ? H(e) : n === "zh" ? U(e) : n === "ja" ? W(e) : n === "ko" ? G(e) : K(e);
-}), J = () => "Receive weekly benchmark reports", Y = () => "Recevoir les rapports hebdomadaires", X = () => "Recibir informes semanales de benchmarks", Z = () => "Wöchentliche Benchmark-Berichte erhalten", Q = () => "Ricevi rapporti settimanali sui benchmark", ne = () => "Receber relatórios semanais de benchmarks", re = () => "接收每周基准测试报告", ie = () => "毎週のベンチマークレポートを受け取る", ae = () => "Receive weekly benchmark reports", oe = () => "Получать еженедельные отчеты о бенчмарках", se = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? J(e) : n === "fr" ? Y(e) : n === "es" ? X(e) : n === "de" ? Z(e) : n === "it" ? Q(e) : n === "pt" ? ne(e) : n === "zh" ? re(e) : n === "ja" ? ie(e) : n === "ko" ? ae(e) : oe(e);
-}), ce = () => "Toggle notifications", le = () => "Activer/désactiver les notifications", ue = () => "Cambiar notificaciones", de = () => "Benachrichtigungen umschalten", fe = () => "Attiva/disattiva notifiche", pe = () => "Alternar notificações", me = () => "切换通知", he = () => "通知の切り替え", ge = () => "Toggle notifications", _e = () => "Переключить уведомления", ve = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? ce(e) : n === "fr" ? le(e) : n === "es" ? ue(e) : n === "de" ? de(e) : n === "it" ? fe(e) : n === "pt" ? pe(e) : n === "zh" ? me(e) : n === "ja" ? he(e) : n === "ko" ? ge(e) : _e(e);
-}), ye = () => "Dark Mode", be = () => "Mode sombre", xe = () => "Modo oscuro", Se = () => "Dunkelmodus", Ce = () => "Modalità scura", we = () => "Modo Escuro", Te = () => "深色模式", Ee = () => "ダークモード", De = () => "Dark Mode", Oe = () => "Темная тема", ke = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? ye(e) : n === "fr" ? be(e) : n === "es" ? xe(e) : n === "de" ? Se(e) : n === "it" ? Ce(e) : n === "pt" ? we(e) : n === "zh" ? Te(e) : n === "ja" ? Ee(e) : n === "ko" ? De(e) : Oe(e);
-}), Ae = () => "Use dark color scheme", je = () => "Utiliser le thème sombre", Me = () => "Usar esquema de colores oscuro", Ne = () => "Dunkles Farbschema verwenden", Pe = () => "Usa lo schema colori scuro", Fe = () => "Usar esquema de cores escuro", Ie = () => "使用深色配色方案", Le = () => "ダークカラー（暗い配色）を使用する", Re = () => "Use dark color scheme", ze = () => "Использовать темную цветовую схему", Be = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? Ae(e) : n === "fr" ? je(e) : n === "es" ? Me(e) : n === "de" ? Ne(e) : n === "it" ? Pe(e) : n === "pt" ? Fe(e) : n === "zh" ? Ie(e) : n === "ja" ? Le(e) : n === "ko" ? Re(e) : ze(e);
-}), Ve = () => "Toggle dark mode", He = () => "Basculer le mode sombre", Ue = () => "Cambiar modo oscuro", We = () => "Dunkelmodus umschalten", Ge = () => "Attiva/disattiva modalità scura", Ke = () => "Alternar modo escuro", qe = () => "切换深色模式", Je = () => "ダークモードの切り替え", Ye = () => "Toggle dark mode", Xe = () => "Переключить темную тему", Ze = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? Ve(e) : n === "fr" ? He(e) : n === "es" ? Ue(e) : n === "de" ? We(e) : n === "it" ? Ge(e) : n === "pt" ? Ke(e) : n === "zh" ? qe(e) : n === "ja" ? Je(e) : n === "ko" ? Ye(e) : Xe(e);
-}), Qe = () => "Default Language", $e = () => "Langue par défaut", et = () => "Idioma predeterminado", tt = () => "Standardsprache", nt = () => "Lingua predefinita", rt = () => "Idioma padrão", it = () => "默认语言", at = () => "デフォルトの言語", ot = () => "Default Language", st = () => "Язык по умолчанию", ct = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? Qe(e) : n === "fr" ? $e(e) : n === "es" ? et(e) : n === "de" ? tt(e) : n === "it" ? nt(e) : n === "pt" ? rt(e) : n === "zh" ? it(e) : n === "ja" ? at(e) : n === "ko" ? ot(e) : st(e);
-}), lt = () => "English (en)", ut = () => "Anglais (en)", dt = () => "Inglés (en)", ft = () => "Englisch (en)", pt = () => "Inglese (en)", mt = () => "Inglês (en)", ht = () => "英语 (en)", gt = () => "英語 (en)", _t = () => "English (en)", vt = () => "Английский (en)", yt = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? lt(e) : n === "fr" ? ut(e) : n === "es" ? dt(e) : n === "de" ? ft(e) : n === "it" ? pt(e) : n === "pt" ? mt(e) : n === "zh" ? ht(e) : n === "ja" ? gt(e) : n === "ko" ? _t(e) : vt(e);
-}), bt = () => "French (fr)", xt = () => "Français (fr)", St = () => "Francés (fr)", Ct = () => "Französisch (fr)", wt = () => "Francese (fr)", Tt = () => "Francés (fr)", Et = () => "法语 (fr)", Dt = () => "フランス語 (fr)", Ot = () => "French (fr)", kt = () => "Французский (fr)", At = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? bt(e) : n === "fr" ? xt(e) : n === "es" ? St(e) : n === "de" ? Ct(e) : n === "it" ? wt(e) : n === "pt" ? Tt(e) : n === "zh" ? Et(e) : n === "ja" ? Dt(e) : n === "ko" ? Ot(e) : kt(e);
-}), jt = () => "German (de)", Mt = () => "Allemand (de)", Nt = () => "Alemán (de)", Pt = () => "Deutsch (de)", Ft = () => "Tedesco (de)", It = () => "Alemão (de)", Lt = () => "德语 (de)", Rt = () => "ドイツ語 (de)", zt = () => "German (de)", Bt = () => "Немецкий (de)", Vt = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? jt(e) : n === "fr" ? Mt(e) : n === "es" ? Nt(e) : n === "de" ? Pt(e) : n === "it" ? Ft(e) : n === "pt" ? It(e) : n === "zh" ? Lt(e) : n === "ja" ? Rt(e) : n === "ko" ? zt(e) : Bt(e);
-}), Ht = () => "Spanish (es)", Ut = () => "Espagnol (es)", Wt = () => "Español (es)", Gt = () => "Spanisch (es)", Kt = () => "Spagnolo (es)", qt = () => "Espanhol (es)", Jt = () => "西班牙语 (es)", Yt = () => "スペイン語 (es)", Xt = () => "Spanish (es)", Zt = () => "Испанский (es)", Qt = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? Ht(e) : n === "fr" ? Ut(e) : n === "es" ? Wt(e) : n === "de" ? Gt(e) : n === "it" ? Kt(e) : n === "pt" ? qt(e) : n === "zh" ? Jt(e) : n === "ja" ? Yt(e) : n === "ko" ? Xt(e) : Zt(e);
-}), $t = () => "Japanese (ja)", en = () => "Japonais (ja)", tn = () => "Japonés (ja)", nn = () => "Japanisch (ja)", rn = () => "Giapponese (ja)", an = () => "Japonês (ja)", on = () => "日语 (ja)", sn = () => "日本語 (ja)", cn = () => "Japanese (ja)", ln = () => "Японский (ja)", un = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? $t(e) : n === "fr" ? en(e) : n === "es" ? tn(e) : n === "de" ? nn(e) : n === "it" ? rn(e) : n === "pt" ? an(e) : n === "zh" ? on(e) : n === "ja" ? sn(e) : n === "ko" ? cn(e) : ln(e);
-}), dn = () => "Chinese Simplified (zh-CN)", fn = () => "Chinois simplifié (zh-CN)", pn = () => "Chino simplificado (zh-CN)", mn = () => "Chinesisch vereinfacht (zh-CN)", hn = () => "Cinese semplificato (zh-CN)", gn = () => "Chinês Simplificado (zh-CN)", _n = () => "简体中文 (zh-CN)", vn = () => "中国語（簡体字） (zh-CN)", yn = () => "Chinese Simplified (zh-CN)", $ = () => "Китайский упрощенный (zh-CN)", bn = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? dn(e) : n === "fr" ? fn(e) : n === "es" ? pn(e) : n === "de" ? mn(e) : n === "it" ? hn(e) : n === "pt" ? gn(e) : n === "zh" ? _n(e) : n === "ja" ? vn(e) : n === "ko" ? yn(e) : $(e);
-}), xn = () => "Arabic (ar)", Sn = () => "Arabe (ar)", Cn = () => "Árabe (ar)", wn = () => "Arabisch (ar)", Tn = () => "Arabo (ar)", En = () => "Árabe (ar)", Dn = () => "阿拉伯语 (ar)", On = () => "アラビア語 (ar)", kn = () => "Arabic (ar)", An = () => "Арабский (ar)", jn = ((e = {}, t = {}) => {
-	let n = t.locale ?? y();
-	return n === "en" ? xn(e) : n === "fr" ? Sn(e) : n === "es" ? Cn(e) : n === "de" ? wn(e) : n === "it" ? Tn(e) : n === "pt" ? En(e) : n === "zh" ? Dn(e) : n === "ja" ? On(e) : n === "ko" ? kn(e) : An(e);
-}), Mn = r("<section class=\"rounded-lg border border-border bg-card p-6\"><h2 class=\"mb-4 text-lg font-semibold text-foreground\"></h2><div class=space-y-4><div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"></p><p class=\"text-xs text-muted-foreground\"></p></div><button type=button class=\"h-6 w-11 rounded-full bg-primary transition-colors\"><span class=\"block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform\"></span></button></div><div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"></p><p class=\"text-xs text-muted-foreground\"></p></div><button type=button class=\"h-6 w-11 rounded-full bg-muted transition-colors\"><span class=\"block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform\"></span></button></div><div><label class=\"mb-1 block text-sm font-medium text-foreground\"></label><select class=\"w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring\"><option></option><option></option><option></option><option></option><option></option><option></option><option>");
-function Nn() {
+var I = () => "Arabic (ar)", L = () => "Arabe (ar)", R = () => "Árabe (ar)", z = () => "Arabisch (ar)", B = () => "Arabo (ar)", V = () => "Árabe (ar)", H = () => "阿拉伯语 (ar)", U = () => "アラビア語 (ar)", W = () => "Arabic (ar)", G = () => "Арабский (ar)", K = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? B(e) : n === "pt" ? V(e) : n === "zh" ? H(e) : n === "ja" ? U(e) : n === "ko" ? W(e) : n === "ru" ? G(e) : I(e);
+}), q = () => "Chinese Simplified (zh-CN)", J = () => "Chinois simplifié (zh-CN)", Y = () => "Chino simplificado (zh-CN)", X = () => "Chinesisch vereinfacht (zh-CN)", Z = () => "Cinese semplificato (zh-CN)", Q = () => "Chinês Simplificado (zh-CN)", ne = () => "简体中文 (zh-CN)", re = () => "中国語（簡体字） (zh-CN)", ie = () => "Chinese Simplified (zh-CN)", ae = () => "Китайский упрощенный (zh-CN)", oe = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? J(e) : n === "es" ? Y(e) : n === "de" ? X(e) : n === "it" ? Z(e) : n === "pt" ? Q(e) : n === "zh" ? ne(e) : n === "ja" ? re(e) : n === "ko" ? ie(e) : n === "ru" ? ae(e) : q(e);
+}), se = () => "Use dark color scheme", ce = () => "Utiliser le thème sombre", le = () => "Usar esquema de colores oscuro", ue = () => "Dunkles Farbschema verwenden", de = () => "Usa lo schema colori scuro", fe = () => "Usar esquema de cores escuro", pe = () => "使用深色配色方案", me = () => "ダークカラー（暗い配色）を使用する", he = () => "Use dark color scheme", ge = () => "Использовать темную цветовую схему", _e = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? ce(e) : n === "es" ? le(e) : n === "de" ? ue(e) : n === "it" ? de(e) : n === "pt" ? fe(e) : n === "zh" ? pe(e) : n === "ja" ? me(e) : n === "ko" ? he(e) : n === "ru" ? ge(e) : se(e);
+}), ve = () => "Dark Mode", ye = () => "Mode sombre", be = () => "Modo oscuro", xe = () => "Dunkelmodus", Se = () => "Modalità scura", Ce = () => "Modo Escuro", we = () => "深色模式", Te = () => "ダークモード", Ee = () => "Dark Mode", De = () => "Темная тема", Oe = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? ye(e) : n === "es" ? be(e) : n === "de" ? xe(e) : n === "it" ? Se(e) : n === "pt" ? Ce(e) : n === "zh" ? we(e) : n === "ja" ? Te(e) : n === "ko" ? Ee(e) : n === "ru" ? De(e) : ve(e);
+}), ke = () => "Default Language", Ae = () => "Langue par défaut", je = () => "Idioma predeterminado", Me = () => "Standardsprache", Ne = () => "Lingua predefinita", Pe = () => "Idioma padrão", Fe = () => "默认语言", Ie = () => "デフォルトの言語", Le = () => "Default Language", Re = () => "Язык по умолчанию", ze = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? Ae(e) : n === "es" ? je(e) : n === "de" ? Me(e) : n === "it" ? Ne(e) : n === "pt" ? Pe(e) : n === "zh" ? Fe(e) : n === "ja" ? Ie(e) : n === "ko" ? Le(e) : n === "ru" ? Re(e) : ke(e);
+}), Be = () => "Email Notifications", Ve = () => "Notifications e-mail", He = () => "Notificaciones por correo electrónico", Ue = () => "E-Mail-Benachrichtigungen", We = () => "Notifiche via email", Ge = () => "Notificações por e-mail", Ke = () => "电子邮件通知", qe = () => "メール通知", Je = () => "Email Notifications", Ye = () => "Уведомления по почте", Xe = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? Ve(e) : n === "es" ? He(e) : n === "de" ? Ue(e) : n === "it" ? We(e) : n === "pt" ? Ge(e) : n === "zh" ? Ke(e) : n === "ja" ? qe(e) : n === "ko" ? Je(e) : n === "ru" ? Ye(e) : Be(e);
+}), Ze = () => "English (en)", Qe = () => "Anglais (en)", $e = () => "Inglés (en)", et = () => "Englisch (en)", tt = () => "Inglese (en)", nt = () => "Inglês (en)", rt = () => "英语 (en)", it = () => "英語 (en)", at = () => "English (en)", ot = () => "Английский (en)", st = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? Qe(e) : n === "es" ? $e(e) : n === "de" ? et(e) : n === "it" ? tt(e) : n === "pt" ? nt(e) : n === "zh" ? rt(e) : n === "ja" ? it(e) : n === "ko" ? at(e) : n === "ru" ? ot(e) : Ze(e);
+}), ct = () => "French (fr)", lt = () => "Français (fr)", ut = () => "Francés (fr)", dt = () => "Französisch (fr)", ft = () => "Francese (fr)", pt = () => "Francés (fr)", mt = () => "法语 (fr)", ht = () => "フランス語 (fr)", gt = () => "French (fr)", _t = () => "Французский (fr)", vt = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? lt(e) : n === "es" ? ut(e) : n === "de" ? dt(e) : n === "it" ? ft(e) : n === "pt" ? pt(e) : n === "zh" ? mt(e) : n === "ja" ? ht(e) : n === "ko" ? gt(e) : n === "ru" ? _t(e) : ct(e);
+}), yt = () => "German (de)", bt = () => "Allemand (de)", xt = () => "Alemán (de)", St = () => "Deutsch (de)", Ct = () => "Tedesco (de)", wt = () => "Alemão (de)", Tt = () => "德语 (de)", Et = () => "ドイツ語 (de)", Dt = () => "German (de)", Ot = () => "Немецкий (de)", kt = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? bt(e) : n === "es" ? xt(e) : n === "de" ? St(e) : n === "it" ? Ct(e) : n === "pt" ? wt(e) : n === "zh" ? Tt(e) : n === "ja" ? Et(e) : n === "ko" ? Dt(e) : n === "ru" ? Ot(e) : yt(e);
+}), At = () => "Japanese (ja)", jt = () => "Japonais (ja)", Mt = () => "Japonés (ja)", Nt = () => "Japanisch (ja)", Pt = () => "Giapponese (ja)", Ft = () => "Japonês (ja)", It = () => "日语 (ja)", Lt = () => "日本語 (ja)", Rt = () => "Japanese (ja)", zt = () => "Японский (ja)", Bt = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? jt(e) : n === "es" ? Mt(e) : n === "de" ? Nt(e) : n === "it" ? Pt(e) : n === "pt" ? Ft(e) : n === "zh" ? It(e) : n === "ja" ? Lt(e) : n === "ko" ? Rt(e) : n === "ru" ? zt(e) : At(e);
+}), Vt = () => "Spanish (es)", Ht = () => "Espagnol (es)", Ut = () => "Español (es)", Wt = () => "Spanisch (es)", Gt = () => "Spagnolo (es)", Kt = () => "Espanhol (es)", qt = () => "西班牙语 (es)", Jt = () => "スペイン語 (es)", Yt = () => "Spanish (es)", Xt = () => "Испанский (es)", Zt = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? Ht(e) : n === "es" ? Ut(e) : n === "de" ? Wt(e) : n === "it" ? Gt(e) : n === "pt" ? Kt(e) : n === "zh" ? qt(e) : n === "ja" ? Jt(e) : n === "ko" ? Yt(e) : n === "ru" ? Xt(e) : Vt(e);
+}), Qt = () => "Preferences", $t = () => "Préférences", en = () => "Preferencias", tn = () => "Einstellungen", nn = () => "Preferenze", rn = () => "Preferências", an = () => "偏好", on = () => "設定", sn = () => "Preferences", cn = () => "Предпочтения", ln = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? $t(e) : n === "es" ? en(e) : n === "de" ? tn(e) : n === "it" ? nn(e) : n === "pt" ? rn(e) : n === "zh" ? an(e) : n === "ja" ? on(e) : n === "ko" ? sn(e) : n === "ru" ? cn(e) : Qt(e);
+}), un = () => "Toggle dark mode", dn = () => "Basculer le mode sombre", fn = () => "Cambiar modo oscuro", pn = () => "Dunkelmodus umschalten", mn = () => "Attiva/disattiva modalità scura", hn = () => "Alternar modo escuro", gn = () => "切换深色模式", _n = () => "ダークモードの切り替え", vn = () => "Toggle dark mode", yn = () => "Переключить темную тему", bn = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? dn(e) : n === "es" ? fn(e) : n === "de" ? pn(e) : n === "it" ? mn(e) : n === "pt" ? hn(e) : n === "zh" ? gn(e) : n === "ja" ? _n(e) : n === "ko" ? vn(e) : n === "ru" ? yn(e) : un(e);
+}), xn = () => "Toggle notifications", Sn = () => "Activer/désactiver les notifications", Cn = () => "Cambiar notificaciones", wn = () => "Benachrichtigungen umschalten", Tn = () => "Attiva/disattiva notifiche", En = () => "Alternar notificações", $ = () => "切换通知", Dn = () => "通知の切り替え", On = () => "Toggle notifications", kn = () => "Переключить уведомления", An = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? Sn(e) : n === "es" ? Cn(e) : n === "de" ? wn(e) : n === "it" ? Tn(e) : n === "pt" ? En(e) : n === "zh" ? $(e) : n === "ja" ? Dn(e) : n === "ko" ? On(e) : n === "ru" ? kn(e) : xn(e);
+}), jn = () => "Receive weekly benchmark reports", Mn = () => "Recevoir les rapports hebdomadaires", Nn = () => "Recibir informes semanales de benchmarks", Pn = () => "Wöchentliche Benchmark-Berichte erhalten", Fn = () => "Ricevi rapporti settimanali sui benchmark", In = () => "Receber relatórios semanais de benchmarks", Ln = () => "接收每周基准测试报告", Rn = () => "毎週のベンチマークレポートを受け取る", zn = () => "Receive weekly benchmark reports", Bn = () => "Получать еженедельные отчеты о бенчмарках", Vn = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? Mn(e) : n === "es" ? Nn(e) : n === "de" ? Pn(e) : n === "it" ? Fn(e) : n === "pt" ? In(e) : n === "zh" ? Ln(e) : n === "ja" ? Rn(e) : n === "ko" ? zn(e) : n === "ru" ? Bn(e) : jn(e);
+}), Hn = r("<section class=\"rounded-lg border border-border bg-card p-6\"><h2 class=\"mb-4 text-lg font-semibold text-foreground\"></h2><div class=space-y-4><div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"></p><p class=\"text-xs text-muted-foreground\"></p></div><button type=button class=\"h-6 w-11 rounded-full bg-primary transition-colors\"><span class=\"block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform\"></span></button></div><div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"></p><p class=\"text-xs text-muted-foreground\"></p></div><button type=button class=\"h-6 w-11 rounded-full bg-muted transition-colors\"><span class=\"block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform\"></span></button></div><div><label class=\"mb-1 block text-sm font-medium text-foreground\"></label><select class=\"w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring\"><option></option><option></option><option></option><option></option><option></option><option></option><option>");
+function Un() {
 	let r = i();
 	return (() => {
-		var i = Mn(), a = i.firstChild, o = a.nextSibling.firstChild, s = o.firstChild, c = s.firstChild, l = c.nextSibling, u = s.nextSibling, d = o.nextSibling, f = d.firstChild, p = f.firstChild, m = p.nextSibling, h = f.nextSibling, g = d.nextSibling.firstChild, _ = g.nextSibling, v = _.firstChild, y = v.nextSibling, b = y.nextSibling, x = b.nextSibling, S = x.nextSibling, C = S.nextSibling, w = C.nextSibling;
-		return t(a, () => I()), t(c, () => q()), t(l, () => se()), t(p, () => ke()), t(m, () => Be()), n(g, "for", r), t(g, () => ct()), n(_, "id", r), t(v, () => yt()), t(y, () => At()), t(b, () => Vt()), t(x, () => Qt()), t(S, () => un()), t(C, () => bn()), t(w, () => jn()), e((e) => {
-			var t = ve(), r = Ze();
+		var i = Hn(), a = i.firstChild, o = a.nextSibling.firstChild, s = o.firstChild, c = s.firstChild, l = c.nextSibling, u = s.nextSibling, d = o.nextSibling, f = d.firstChild, p = f.firstChild, m = p.nextSibling, h = f.nextSibling, g = d.nextSibling.firstChild, _ = g.nextSibling, v = _.firstChild, y = v.nextSibling, b = y.nextSibling, x = b.nextSibling, S = x.nextSibling, C = S.nextSibling, w = C.nextSibling;
+		return t(a, () => ln()), t(c, () => Xe()), t(l, () => Vn()), t(p, () => Oe()), t(m, () => _e()), n(g, "for", r), t(g, () => ze()), n(_, "id", r), t(v, () => st()), t(y, () => vt()), t(b, () => kt()), t(x, () => Zt()), t(S, () => Bt()), t(C, () => oe()), t(w, () => K()), e((e) => {
+			var t = An(), r = bn();
 			return t !== e.e && n(u, "aria-label", e.e = t), r !== e.t && n(h, "aria-label", e.t = r), e;
 		}, {
 			e: void 0,
@@ -175,4 +195,4 @@ function Nn() {
 		}), i;
 	})();
 }
-export { Nn as default };
+export { Un as default };

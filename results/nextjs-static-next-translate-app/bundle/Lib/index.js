@@ -1,7 +1,16 @@
-"use client";
-import React, { createContext, useContext, useMemo } from "react";
+import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
-import { jsx } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import en from "../locales/en.json";
+import fr from "../locales/fr.json";
+import es from "../locales/es.json";
+import de from "../locales/de.json";
+import it from "../locales/it.json";
+import pt from "../locales/pt.json";
+import zh from "../locales/zh.json";
+import ja from "../locales/ja.json";
+import ko from "../locales/ko.json";
+import ru from "../locales/ru.json";
 var context;
 if (typeof React.createContext === "function") context = React.createContext({
 	t: function(k) {
@@ -183,8 +192,13 @@ function createTranslation(defaultNS) {
 			lang
 		}), defaultNS);
 	};
+	var nsKey = namespaces ? Object.keys(namespaces).sort().join("|") : "";
 	return {
-		t: isServer() ? getT() : useMemo(getT, [defaultNS, lang]),
+		t: isServer() ? getT() : useMemo(getT, [
+			defaultNS,
+			lang,
+			nsKey
+		]),
 		lang
 	};
 }
@@ -261,15 +275,143 @@ function initialBrowserNamespaces() {
 	if (typeof window === "undefined") return {};
 	return ((_b = (_a = window.__NEXT_DATA__) === null || _a === void 0 ? void 0 : _a.props) === null || _b === void 0 ? void 0 : _b.__namespaces) || {};
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	const { t } = useTranslation("common");
 	return null;
 };
 function EmptyComponent() {
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		lang: "en",
 		namespaces: {},
-		children: jsx(TestComponent, {})
-	});
+		children: jsxDEV(TestComponent, {}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 16,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 15,
+		columnNumber: 5
+	}, this);
 }
-export { EmptyComponent as default };
+var translationsMap = {
+	en,
+	fr,
+	es,
+	de,
+	it,
+	pt,
+	zh,
+	ja,
+	ko,
+	ru
+};
+var i18n_default = {
+	locales: [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	defaultLocale: "en",
+	keySeparator: false,
+	nsSeparator: false,
+	pages: { "*": ["common"] },
+	loadLocaleFrom: async (lang) => translationsMap[lang]
+};
+function recordHydrationDuration() {
+	if (typeof window === "undefined") return;
+	console.log("--- BROWSER: RootDocument mounted");
+	performance.mark("hydration_end");
+	try {
+		if (performance.getEntriesByName("hydration_start").length > 0) {
+			performance.measure("hydration_duration", "hydration_start", "hydration_end");
+			console.log("--- BROWSER: hydration_duration measured");
+			const duration = performance.getEntriesByName("hydration_duration")[0]?.duration;
+			if (duration) console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
+		} else console.warn("--- BROWSER: hydration_start NOT FOUND");
+	} catch (err) {
+		console.warn("Could not measure hydration duration:", err);
+	}
+}
+function recordRenderTime(id, startTime) {
+	if (typeof window === "undefined") return;
+	const renderTime = performance.now() - startTime;
+	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+	window.__RENDER_METRICS__[id].push(renderTime);
+}
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/components/AppProviders.tsx";
+function AppProviders({ children, locale }) {
+	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
+	useLayoutEffect(() => {
+		recordRenderTime("AppRoot", renderStart);
+	}, [renderStart]);
+	useEffect(() => {
+		document.documentElement.lang = locale;
+	}, [locale]);
+	useEffect(() => {
+		recordHydrationDuration();
+	}, []);
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
+}
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/Wrapper.tsx";
+function Wrapper({ children }) {
+	const locale = "en";
+	const [translations, setTranslations] = useState({});
+	const [isLoaded, setIsLoaded] = useState(false);
+	useEffect(() => {
+		const loadTranslations = async () => {
+			try {
+				const trans = await i18n_default.loadLocaleFrom?.(locale, "common");
+				setTranslations(trans ?? {});
+				setIsLoaded(true);
+			} catch (error) {
+				console.error("Failed to load translations:", error);
+				setIsLoaded(true);
+			}
+		};
+		loadTranslations();
+	}, [locale]);
+	if (!isLoaded) return null;
+	return jsxDEV(I18nProvider, {
+		lang: locale,
+		namespaces: { common: translations },
+		children: jsxDEV(AppProviders, {
+			locale,
+			children
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 37,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 36,
+		columnNumber: 5
+	}, this);
+}
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/EmptyComponent.wrapper.tsx";
+function Wrapped() {
+	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
+}
+export { Wrapped as default };

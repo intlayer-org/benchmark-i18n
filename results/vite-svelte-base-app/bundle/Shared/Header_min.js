@@ -27,7 +27,7 @@ function s(e) {
 function c(e) {
 	return o.includes(e);
 }
-var l = new Set([
+var l = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -66,16 +66,14 @@ function g(t, n) {
 	e.init();
 	var u = h(), f = e.child(u);
 	e.each(f, 5, () => o, (e) => e, (t, n) => {
-		var r = m(), i = e.child(r, !0);
-		e.reset(r);
-		var a = {};
+		var r = m(), i = e.only_child(r, !0), a = {};
 		e.template_effect((t) => {
-			e.set_text(i, t), a !== (a = e.get(n)) && (r.value = (r.__value = e.get(n)) ?? "");
+			e.set_text(i, t), a !== (a = e.get(n)) && (r.value = (r.__value = a) ?? "");
 		}, [() => s(e.get(n))]), e.append(t, r);
 	}), e.reset(f);
 	var g;
 	e.init_select(f), e.reset(u), e.template_effect((t) => {
-		g !== (g = t) && (f.value = (f.__value = t) ?? "", e.select_option(f, t));
+		g !== (g = t) && (f.value = (f.__value = g) ?? "", e.select_option(f, g));
 	}, [() => i().split("/").filter(Boolean)[0] ?? "en"]), e.delegated("change", f, l), e.append(t, u), e.pop(), c();
 }
 e.delegate(["change"]);
@@ -105,8 +103,8 @@ function v(t, n) {
 		e.set(o, t, !0), i(t), window.localStorage.setItem("theme", t);
 	}
 	let c = e.derived(() => e.get(o) === "auto" ? "Theme mode: auto (system). Click to switch to light mode." : `Theme mode: ${e.get(o)}. Click to switch mode.`), l = e.derived(() => e.get(o) === "auto" ? "Theme: Auto" : e.get(o) === "dark" ? "Theme: Dark" : "Theme: Light");
-	var u = _(), d = e.child(u, !0);
-	e.reset(u), e.template_effect(() => {
+	var u = _(), d = e.only_child(u, !0);
+	e.template_effect(() => {
 		e.set_attribute(u, "aria-label", e.get(c)), e.set_attribute(u, "title", e.get(c)), e.set_text(d, e.get(l));
 	}), e.delegated("click", u, s), e.append(t, u), e.pop();
 }
@@ -166,8 +164,8 @@ function S(n, r) {
 	var A = e.sibling(O, 2), j = (t) => {
 		var n = b(), r = e.child(n);
 		e.each(r, 21, () => e.get(l), (e) => e.to, (t, n) => {
-			var r = y(), i = e.child(r, !0);
-			e.reset(r), e.template_effect(() => {
+			var r = y(), i = e.only_child(r, !0);
+			e.template_effect(() => {
 				e.set_attribute(r, "href", e.get(n).to), e.set_text(i, e.get(n).label);
 			}), e.delegated("click", r, () => e.set(s, !1)), e.append(t, r);
 		}), e.reset(r), e.reset(n), e.event("mouseenter", n, () => e.set(s, !0)), e.event("mouseleave", n, () => e.set(s, !1)), e.append(t, n);

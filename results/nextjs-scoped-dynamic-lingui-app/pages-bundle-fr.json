@@ -1,21 +1,21 @@
 {
   "app": "nextjs-scoped-dynamic-lingui-app",
   "locale": "fr",
-  "timestamp": "2026-04-21T00:45:19.503Z",
+  "timestamp": "2026-09-09T18:53:16.850Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 82,
-      "fr": 97
+      "en": 88,
+      "fr": 106
     },
     "page": {
       "home": 24,
       "about": 14,
       "blog": 13,
-      "careers": 6,
-      "contact": 5,
+      "careers": 7,
+      "contact": 3,
       "faq": 9,
       "pricing": 10,
-      "products": 8,
+      "products": 10,
       "settings": 7,
       "team": 11
     }
@@ -25,81 +25,75 @@
       "path": "/fr/",
       "page": "home",
       "locale": "fr",
-      "totalSize": 620510,
-      "totalGzipSize": 175495,
-      "jsSize": 567913,
-      "jsGzipSize": 163177,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 29923,
-      "htmlGzipSize": 7582,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 566477,
+      "totalGzipSize": 165887,
+      "jsSize": 514164,
+      "jsGzipSize": 153504,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 29552,
+      "htmlGzipSize": 7581,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr",
-          "size": 29923,
-          "gzipSize": 7582,
+          "size": 29552,
+          "gzipSize": 7581,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0jpugs_opuxfy.js",
-          "size": 11865,
-          "gzipSize": 3507,
+          "url": "/_next/static/chunks/0v1kcleacdpsc.js",
+          "size": 13249,
+          "gzipSize": 3873,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -215,81 +209,75 @@
       "path": "/fr/about",
       "page": "about",
       "locale": "fr",
-      "totalSize": 614106,
-      "totalGzipSize": 175413,
-      "jsSize": 561391,
-      "jsGzipSize": 161750,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 30041,
-      "htmlGzipSize": 8927,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 561763,
+      "totalGzipSize": 166113,
+      "jsSize": 507642,
+      "jsGzipSize": 152085,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 31360,
+      "htmlGzipSize": 9226,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr/about",
-          "size": 30041,
-          "gzipSize": 8927,
+          "size": 31360,
+          "gzipSize": 9226,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0piv_6vj877s2.js",
-          "size": 5343,
-          "gzipSize": 2080,
+          "url": "/_next/static/chunks/3i2y4xpjcgs10.js",
+          "size": 6727,
+          "gzipSize": 2454,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -389,81 +377,75 @@
       "path": "/fr/blog",
       "page": "blog",
       "locale": "fr",
-      "totalSize": 612001,
-      "totalGzipSize": 174162,
-      "jsSize": 560482,
-      "jsGzipSize": 161372,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 28845,
-      "htmlGzipSize": 8054,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 557310,
+      "totalGzipSize": 164532,
+      "jsSize": 506733,
+      "jsGzipSize": 151707,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 27816,
+      "htmlGzipSize": 8023,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr/blog",
-          "size": 28845,
-          "gzipSize": 8054,
+          "size": 27816,
+          "gzipSize": 8023,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/0wc3s6txvj6dr.js",
+          "size": 5818,
+          "gzipSize": 2076,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0t79ok5.yixz0.js",
-          "size": 4434,
-          "gzipSize": 1702,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -558,81 +540,75 @@
       "path": "/fr/careers",
       "page": "careers",
       "locale": "fr",
-      "totalSize": 613599,
-      "totalGzipSize": 175276,
-      "jsSize": 561332,
-      "jsGzipSize": 161539,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 29593,
-      "htmlGzipSize": 9001,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 558904,
+      "totalGzipSize": 165661,
+      "jsSize": 507584,
+      "jsGzipSize": 151874,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 28559,
+      "htmlGzipSize": 8985,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr/careers",
-          "size": 29593,
-          "gzipSize": 9001,
+          "size": 28559,
+          "gzipSize": 8985,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/1616y_5ce5p5~.js",
-          "size": 5284,
-          "gzipSize": 1869,
+          "url": "/_next/static/chunks/2bpigjo6--zau.js",
+          "size": 6669,
+          "gzipSize": 2243,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -647,7 +623,7 @@
           ]
         },
         "fr": {
-          "count": 8,
+          "count": 9,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
@@ -655,12 +631,13 @@
             "rémunération compétitive",
             "rémunération au-dessus du marché",
             "temps dédié à l'open source",
+            "20 % de temps pour l'oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite."
           ]
         }
       },
-      "localeLeakagePercent": 33.33333333333333,
+      "localeLeakagePercent": 30.76923076923077,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -675,12 +652,13 @@
           "found": []
         },
         "careers": {
-          "count": 6,
+          "count": 7,
           "found": [
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
             "temps dédié à l'open source",
+            "20 % de temps pour l'oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite."
           ]
@@ -716,81 +694,75 @@
       "path": "/fr/contact",
       "page": "contact",
       "locale": "fr",
-      "totalSize": 604037,
-      "totalGzipSize": 171445,
-      "jsSize": 561077,
-      "jsGzipSize": 161267,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 20286,
-      "htmlGzipSize": 5442,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 549542,
+      "totalGzipSize": 161884,
+      "jsSize": 507328,
+      "jsGzipSize": 151607,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 19453,
+      "htmlGzipSize": 5475,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr/contact",
-          "size": 20286,
-          "gzipSize": 5442,
+          "size": 19453,
+          "gzipSize": 5475,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0cpp8o7gpbv3u.js",
-          "size": 5029,
-          "gzipSize": 1597,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/1fzla6dkybi90.js",
+          "size": 6413,
+          "gzipSize": 1976,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -828,12 +800,10 @@
           "found": []
         },
         "contact": {
-          "count": 4,
+          "count": 2,
           "found": [
             "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "contact-form.contribution",
-            "contact-form.message"
+            "question sur la méthodologie"
           ]
         },
         "faq": {
@@ -863,81 +833,75 @@
       "path": "/fr/faq",
       "page": "faq",
       "locale": "fr",
-      "totalSize": 610269,
-      "totalGzipSize": 173671,
-      "jsSize": 561855,
-      "jsGzipSize": 162106,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 25740,
-      "htmlGzipSize": 6829,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 555818,
+      "totalGzipSize": 164126,
+      "jsSize": 508107,
+      "jsGzipSize": 152441,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 24950,
+      "htmlGzipSize": 6883,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr/faq",
-          "size": 25740,
-          "gzipSize": 6829,
+          "size": 24950,
+          "gzipSize": 6883,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/09xcod3s6v_3g.js",
-          "size": 5807,
-          "gzipSize": 2436,
+          "url": "/_next/static/chunks/15hjcgx_0yi37.js",
+          "size": 7192,
+          "gzipSize": 2810,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -1033,81 +997,75 @@
       "path": "/fr/pricing",
       "page": "pricing",
       "locale": "fr",
-      "totalSize": 607793,
-      "totalGzipSize": 172284,
-      "jsSize": 561754,
-      "jsGzipSize": 161674,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 23365,
-      "htmlGzipSize": 5874,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 552966,
+      "totalGzipSize": 162556,
+      "jsSize": 508006,
+      "jsGzipSize": 152016,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 22199,
+      "htmlGzipSize": 5738,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr/pricing",
-          "size": 23365,
-          "gzipSize": 5874,
+          "size": 22199,
+          "gzipSize": 5738,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/032drcpo_8lme.js",
+          "size": 7091,
+          "gzipSize": 2385,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0lz2577x02~b6.js",
-          "size": 5706,
-          "gzipSize": 2004,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -1199,101 +1157,109 @@
       "path": "/fr/products",
       "page": "products",
       "locale": "fr",
-      "totalSize": 609045,
-      "totalGzipSize": 173312,
-      "jsSize": 561219,
-      "jsGzipSize": 161577,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 25152,
-      "htmlGzipSize": 6999,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 554351,
+      "totalGzipSize": 163477,
+      "jsSize": 507358,
+      "jsGzipSize": 151969,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 24232,
+      "htmlGzipSize": 6706,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr/products",
-          "size": 25152,
-          "gzipSize": 6999,
+          "size": 24232,
+          "gzipSize": 6706,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/1c_rzajbs3xnj.js",
+          "size": 6443,
+          "gzipSize": 2338,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0cwoqopl9gfri.js",
-          "size": 5171,
-          "gzipSize": 1907,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
+          "count": 7,
           "found": [
-            "tools and services to streamline your internationalization workflow."
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
           ]
         },
         "fr": {
-          "count": 3,
+          "count": 11,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "des outils et services pour rationaliser votre flux de travail d'internationalisation."
+            "des outils et services pour rationaliser votre flux de travail d'internationalisation.",
+            "exécutez des benchmarks localement depuis votre terminal. supporte les configurations personnalisées et l'intégration ci.",
+            "benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
+            "déploiement sur site avec sso, journaux d'audit, sla personnalisés et support dédié.",
+            "assistant de migration",
+            "outil alimenté par l'ia qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.",
+            "contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
+            "optimiseur de bundle",
+            "analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code."
           ]
         }
       },
-      "localeLeakagePercent": 25,
+      "localeLeakagePercent": 38.88888888888889,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -1324,16 +1290,18 @@
           "found": []
         },
         "products": {
-          "count": 8,
+          "count": 10,
           "found": [
             "des outils et services pour rationaliser votre flux de travail d'internationalisation.",
-            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
-            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "exécutez des benchmarks localement depuis votre terminal. supporte les configurations personnalisées et l'intégration ci.",
+            "benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
             "benchmark enterprise",
-            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
-            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
-            "automated quality checks for missing translations, pluralization issues, and context errors.",
-            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+            "déploiement sur site avec sso, journaux d'audit, sla personnalisés et support dédié.",
+            "assistant de migration",
+            "outil alimenté par l'ia qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.",
+            "contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
+            "optimiseur de bundle",
+            "analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code."
           ]
         },
         "settings": {
@@ -1351,81 +1319,75 @@
       "path": "/fr/settings",
       "page": "settings",
       "locale": "fr",
-      "totalSize": 615674,
-      "totalGzipSize": 174486,
-      "jsSize": 564683,
-      "jsGzipSize": 161869,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 28317,
-      "htmlGzipSize": 7881,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 560913,
+      "totalGzipSize": 164870,
+      "jsSize": 510937,
+      "jsGzipSize": 152210,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 27215,
+      "htmlGzipSize": 7858,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr/settings",
-          "size": 28317,
-          "gzipSize": 7881,
+          "size": 27215,
+          "gzipSize": 7858,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yhsjbosan3~m.js",
-          "size": 8635,
-          "gzipSize": 2199,
+          "url": "/_next/static/chunks/3a1t2owmd4hx8.js",
+          "size": 10022,
+          "gzipSize": 2579,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -1512,88 +1474,83 @@
       "path": "/fr/team",
       "page": "team",
       "locale": "fr",
-      "totalSize": 608438,
-      "totalGzipSize": 173188,
-      "jsSize": 561139,
-      "jsGzipSize": 161650,
-      "cssSize": 22674,
-      "cssGzipSize": 4736,
-      "htmlSize": 24625,
-      "htmlGzipSize": 6802,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 553797,
+      "totalGzipSize": 163576,
+      "jsSize": 507527,
+      "jsGzipSize": 152052,
+      "cssSize": 22761,
+      "cssGzipSize": 4802,
+      "htmlSize": 23509,
+      "htmlGzipSize": 6722,
+      "fileCount": 10,
+      "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/fr/team",
-          "size": 24625,
-          "gzipSize": 6802,
+          "size": 23509,
+          "gzipSize": 6722,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/0rhn-wkkc4yy7.css",
-          "size": 22674,
-          "gzipSize": 4736,
+          "url": "/_next/static/chunks/1i70_o1l14rny.css",
+          "size": 22761,
+          "gzipSize": 4802,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10jc2.8rt-kli.js",
-          "size": 7846,
-          "gzipSize": 2869,
+          "url": "/_next/static/chunks/turbopack-2abf06faiap8d.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-0lroj2qsfubm0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06.k5v-xbxxzi.js",
-          "size": 54641,
-          "gzipSize": 12883,
+          "url": "/_next/static/chunks/1x7hex8-mu5rt.js",
+          "size": 21661,
+          "gzipSize": 6548,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0b7dmygvagsb4.js",
-          "size": 16252,
-          "gzipSize": 4287,
+          "url": "/_next/static/chunks/06xtwxmstuslu.js",
+          "size": 20985,
+          "gzipSize": 7835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/13_7gzohp-72u.js",
-          "size": 21561,
-          "gzipSize": 8057,
+          "url": "/_next/static/chunks/0jvbrauj-z9xu.js",
+          "size": 6612,
+          "gzipSize": 2421,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/12gr3s7_59x08.js",
-          "size": 5091,
-          "gzipSize": 1980,
+          "url": "/_next/static/chunks/0jop2fgb5-s44.js",
+          "size": 170775,
+          "gzipSize": 45664,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04r-d_dvtus_f.js",
-          "size": 188612,
-          "gzipSize": 47401,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/3vastj00wfs7c.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 9,
+          "count": 10,
           "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
             "founder & lead engineer",
             "former google engineer with 10 years of experience building internationalization systems at scale.",
             "performance engineer",
@@ -1623,7 +1580,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 42.857142857142854,
+      "localeLeakagePercent": 45.45454545454545,
       "pageLeakage": {
         "home": {
           "count": 0,

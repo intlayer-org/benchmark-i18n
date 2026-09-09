@@ -1,88 +1,178 @@
-import { t as e } from "./logger-D1nsn_SU.js";
+import { t as e } from "./logger-LUfhf5qs.js";
 import { createContext as t, useCallback as n, useEffect as r, useRef as i, useState as a } from "react";
-import { jsx as o, jsxs as s } from "react/jsx-runtime";
-function c() {
-	return s("section", {
+import { jsxDEV as o } from "react/jsx-dev-runtime";
+import { jsx as s } from "react/jsx-runtime";
+var c = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/home/UnderstandingImpact.tsx";
+function l() {
+	return o("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
 			o("h2", {
 				className: "text-2xl font-bold text-foreground",
 				children: "Understanding the Impact"
-			}),
-			s("div", {
+			}, void 0, !1, {
+				fileName: c,
+				lineNumber: 4,
+				columnNumber: 7
+			}, this),
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
 					o("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: "Why a single large JSON can hurt performance"
-					}),
+					}, void 0, !1, {
+						fileName: c,
+						lineNumber: 9,
+						columnNumber: 9
+					}, this),
 					o("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
-					}),
-					s("ul", {
+					}, void 0, !1, {
+						fileName: c,
+						lineNumber: 12,
+						columnNumber: 9
+					}, this),
+					o("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							o("li", { children: "The JSON must be parsed on every page load — blocking the main thread." }),
-							o("li", { children: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change." }),
-							o("li", { children: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated." })
+							o("li", { children: "The JSON must be parsed on every page load — blocking the main thread." }, void 0, !1, {
+								fileName: c,
+								lineNumber: 19,
+								columnNumber: 11
+							}, this),
+							o("li", { children: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change." }, void 0, !1, {
+								fileName: c,
+								lineNumber: 23,
+								columnNumber: 11
+							}, this),
+							o("li", { children: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated." }, void 0, !1, {
+								fileName: c,
+								lineNumber: 28,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, !0, {
+						fileName: c,
+						lineNumber: 18,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			s("div", {
+			}, void 0, !0, {
+				fileName: c,
+				lineNumber: 8,
+				columnNumber: 7
+			}, this),
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
 					o("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: "The trade-offs of dynamic loading"
-					}),
+					}, void 0, !1, {
+						fileName: c,
+						lineNumber: 37,
+						columnNumber: 9
+					}, this),
 					o("p", {
 						className: "text-sm text-muted-foreground",
 						children: "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
-					}),
-					s("ul", {
+					}, void 0, !1, {
+						fileName: c,
+						lineNumber: 40,
+						columnNumber: 9
+					}, this),
+					o("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							s("li", { children: [o("strong", {
+							o("li", { children: [o("strong", {
 								className: "text-foreground",
 								children: "Waterfall requests:"
-							}), " the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."] }),
-							s("li", { children: [
+							}, void 0, !1, {
+								fileName: c,
+								lineNumber: 47,
+								columnNumber: 13
+							}, this), " the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."] }, void 0, !0, {
+								fileName: c,
+								lineNumber: 46,
+								columnNumber: 11
+							}, this),
+							o("li", { children: [
 								o("strong", {
 									className: "text-foreground",
 									children: "Flash of untranslated content (FOUC):"
-								}),
+								}, void 0, !1, {
+									fileName: c,
+									lineNumber: 52,
+									columnNumber: 13
+								}, this),
 								" ",
 								"users may briefly see translation keys or a fallback language before the chunk arrives."
-							] }),
-							s("li", { children: [
+							] }, void 0, !0, {
+								fileName: c,
+								lineNumber: 51,
+								columnNumber: 11
+							}, this),
+							o("li", { children: [
 								o("strong", {
 									className: "text-foreground",
 									children: "Cache invalidation:"
-								}),
+								}, void 0, !1, {
+									fileName: c,
+									lineNumber: 59,
+									columnNumber: 13
+								}, this),
 								" ",
 								"updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
-							] })
+							] }, void 0, !0, {
+								fileName: c,
+								lineNumber: 58,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, !0, {
+						fileName: c,
+						lineNumber: 45,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			s("div", {
+			}, void 0, !0, {
+				fileName: c,
+				lineNumber: 36,
+				columnNumber: 7
+			}, this),
+			o("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [o("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: "What this benchmark measures"
-				}), o("p", {
+				}, void 0, !1, {
+					fileName: c,
+					lineNumber: 67,
+					columnNumber: 9
+				}, this), o("p", {
 					className: "text-sm text-muted-foreground",
 					children: "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
-				})]
-			})
+				}, void 0, !1, {
+					fileName: c,
+					lineNumber: 70,
+					columnNumber: 9
+				}, this)]
+			}, void 0, !0, {
+				fileName: c,
+				lineNumber: 66,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, !0, {
+		fileName: c,
+		lineNumber: 3,
+		columnNumber: 5
+	}, this);
 }
-var l = t(null);
-async function u(t, n, r) {
+var u = t(null);
+async function d(t, n, r) {
 	if (!r || !n || n.length === 0) return {};
 	let i = `${r}/translations/${t}`, a = new AbortController(), o = setTimeout(() => a.abort(), 3e4);
 	try {
@@ -101,16 +191,16 @@ async function u(t, n, r) {
 		clearTimeout(o);
 	}
 }
-var d = "__SERVER_URL__", f = "__SOURCE_LOCALE__";
-function p() {
+var f = "__SERVER_URL__", p = "__SOURCE_LOCALE__";
+function m() {
 	return "en";
 }
-var m = () => {}, h = process.env.NODE_ENV === "development", g = 200, _ = h ? y : v;
-function v({ initialLocale: t, initialTranslations: i = {}, router: s, children: c }) {
-	let [u, d] = a(() => t || (typeof window < "u" ? p() : f)), [h, g] = a(i), [_, v] = a(!1);
-	e.debug(`LingoProvider initialized with locale: ${u}`, i), r(() => {
-		typeof document < "u" && (document.documentElement.lang = u);
-	}, [u]);
+var h = () => {}, g = process.env.NODE_ENV === "development", _ = 200, v = g ? b : y;
+function y({ initialLocale: t, initialTranslations: i = {}, router: o, children: c }) {
+	let [l, d] = a(() => t || (typeof window < "u" ? m() : p)), [f, g] = a(i), [_, v] = a(!1);
+	e.debug(`LingoProvider initialized with locale: ${l}`, i), r(() => {
+		typeof document < "u" && (document.documentElement.lang = l);
+	}, [l]);
 	let y = n(async (t) => {
 		if (!(Object.keys(i).length > 0)) {
 			v(!0);
@@ -127,34 +217,34 @@ function v({ initialLocale: t, initialTranslations: i = {}, router: s, children:
 		}
 	}, [i]);
 	r(() => {
-		Object.keys(i).length === 0 && y(u);
+		Object.keys(i).length === 0 && y(l);
 	}, []), r(() => {
-		s && g(i);
-	}, [i, s]);
+		o && g(i);
+	}, [i, o]);
 	let b = n(async (e) => {
-		d(e), s ? s.refresh() : await y(e);
-	}, [s, y]);
-	return o(l.Provider, {
+		d(e), o ? o.refresh() : await y(e);
+	}, [o, y]);
+	return s(u.Provider, {
 		value: {
-			locale: u,
+			locale: l,
 			setLocale: b,
-			translations: h,
-			registerHashes: m,
+			translations: f,
+			registerHashes: h,
 			isLoading: _,
-			sourceLocale: f
+			sourceLocale: p
 		},
 		children: c
 	});
 }
-function y({ initialLocale: t, initialTranslations: s = {}, router: c, devWidget: m, children: h }) {
-	let [_, v] = a(() => t || p()), [y, b] = a(s), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(s), A = i(_);
+function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget: l, children: h }) {
+	let [g, v] = a(() => t || m()), [y, b] = a(o), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(g);
 	r(() => {
 		k.current = y;
 	}, [y]), r(() => {
-		A.current = _;
-	}, [_]), r(() => {
-		typeof document < "u" && (document.documentElement.lang = _);
-	}, [_]);
+		A.current = g;
+	}, [g]), r(() => {
+		typeof document < "u" && (document.documentElement.lang = g);
+	}, [g]);
 	let j = n((t) => {
 		let n = !1;
 		t.forEach((e) => {
@@ -165,16 +255,16 @@ function y({ initialLocale: t, initialTranslations: s = {}, router: c, devWidget
 		});
 	}, []);
 	r(() => {
-		e.debug(`LingoProvider checking translations for locale ${_}, seen hashes: ${C.size}`);
+		e.debug(`LingoProvider checking translations for locale ${g}, seen hashes: ${C.size}`);
 		let t = [];
 		e.debug("allSeenHashes: ", [...C.values()], [...E.current.values()]);
 		for (let e of C) !y[e] && !E.current.has(e) && !D.current.has(e) && (t.push(e), E.current.add(e));
-		e.debug("Missing hashes: ", t.join(",")), !(t.length === 0 && A.current == _) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${_}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
+		e.debug("Missing hashes: ", t.join(",")), (t.length !== 0 || A.current != g) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${g}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
 			let t = Array.from(E.current);
 			if (E.current.clear(), e.debug(`Fetching translations for ${t.length} hashes`), t.length !== 0) {
 				S(!0);
 				try {
-					let n = await u(A.current, t, d);
+					let n = await d(A.current, t, f);
 					e.debug(`Fetched translations for ${t.length} hashes:`, n);
 					let r = new Set(Object.keys(n)), i = t.filter((e) => !r.has(e));
 					if (i.length > 0) {
@@ -193,10 +283,10 @@ function y({ initialLocale: t, initialTranslations: s = {}, router: c, devWidget
 					S(!1);
 				}
 			}
-		}, g));
+		}, _));
 	}, [
 		C,
-		_,
+		g,
 		y
 	]), r(() => () => {
 		O.current && clearTimeout(O.current);
@@ -205,8 +295,8 @@ function y({ initialLocale: t, initialTranslations: s = {}, router: c, devWidget
 		v(t), c && c.refresh(), S(!0);
 		let n = performance.now();
 		try {
-			e.info(`Fetching translations for locale: ${t}. Server url: ${d}`);
-			let r = await u(t, [], d), i = performance.now();
+			e.info(`Fetching translations for locale: ${t}. Server url: ${f}`);
+			let r = await d(t, [], f), i = performance.now();
 			e.info(`Translation fetch complete for ${t} in ${(i - n).toFixed(2)}ms`);
 			let a = r.entries || {};
 			e.debug(`Translations loaded for ${t}:`, a), b(a);
@@ -217,30 +307,30 @@ function y({ initialLocale: t, initialTranslations: s = {}, router: c, devWidget
 		}
 	}, [c]);
 	return r(() => {
-		m?.enabled !== !1 && import("./lingo-dev-widget-Cc3Gggpb.js").catch((t) => {
+		l?.enabled !== !1 && import("./lingo-dev-widget-C3EvpmD3.js").catch((t) => {
 			e.error("Failed to load dev widget:", t, t.message);
 		});
-	}, [m?.enabled]), r(() => {
-		typeof window < "u" && m?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
+	}, [l?.enabled]), r(() => {
+		typeof window < "u" && l?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
 			isLoading: x,
-			locale: _,
-			sourceLocale: f,
+			locale: g,
+			sourceLocale: p,
 			pendingCount: E.current.size,
-			position: m?.position || "bottom-left"
-		}, window.__LINGO_DEV_WS_URL__ = d, window.__LINGO_DEV_UPDATE__?.());
+			position: l?.position || "bottom-left"
+		}, window.__LINGO_DEV_WS_URL__ = f, window.__LINGO_DEV_UPDATE__?.());
 	}, [
 		x,
-		_,
-		f,
-		m
-	]), o(l.Provider, {
+		g,
+		p,
+		l
+	]), s(u.Provider, {
 		value: {
-			locale: _,
+			locale: g,
 			setLocale: M,
 			translations: y,
 			registerHashes: j,
 			isLoading: x,
-			sourceLocale: f,
+			sourceLocale: p,
 			_devStats: {
 				pendingCount: E.current.size,
 				totalRegisteredCount: T.current.size
@@ -249,17 +339,31 @@ function y({ initialLocale: t, initialTranslations: s = {}, router: c, devWidget
 		children: h
 	});
 }
-function b({ children: e }) {
-	return o(_, {
+var x = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
+function S({ children: e }) {
+	return o(v, {
 		initialLocale: "en",
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: x,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
-function x() {
-	return o(b, { children: o(c, {}) });
+var C = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/home/UnderstandingImpact.wrapper.tsx";
+function w() {
+	return o(S, { children: o(l, {}, void 0, !1, {
+		fileName: C,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: C,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { x as default };
-import { t as e } from "./logger-D1nsn_SU.js";
+export { w as default };
+import { t as e } from "./logger-LUfhf5qs.js";
 var t = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -327,9 +431,7 @@ var t = class extends HTMLElement {
 					this.state && (this.state.serverProgress = void 0, this.render());
 				}, 2e3));
 				break;
-			case "batch:error":
-				this.state && this.state.serverProgress && (this.state.serverProgress.status = "error", this.render());
-				break;
+			case "batch:error": this.state && this.state.serverProgress && (this.state.serverProgress.status = "error", this.render());
 		}
 	}
 	render() {

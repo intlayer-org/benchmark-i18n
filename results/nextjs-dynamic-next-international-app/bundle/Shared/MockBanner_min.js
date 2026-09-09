@@ -1,6 +1,6 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r } from "react/jsx-runtime";
-var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as r } from "react/jsx-dev-runtime";
+var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 }), o = i((() => {})), s = (0, i(((e, t) => {
@@ -63,7 +63,11 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 			let r = n[0], o = !1;
 			r && "count" in r && (t ? a.has(`${t}.${e}`) : a.has(e)) && (e = `${e}#${s(r.count)}`, o = !0);
 			let c = t ? i[`${t}.${e}`] : i[e];
-			if (c = !c && o ? (i[`${e.split("#", 1)[0]}#other`] || e)?.toString() : (c || e)?.toString(), !r) return c;
+			if (!c && o) {
+				let t = e.split("#", 1)[0];
+				c = (i[`${t}#other`] || e)?.toString();
+			} else c = (c || e)?.toString();
+			if (!r) return c;
 			let l = !0, u = c?.split(/({[^}]*})/).map((e, t) => {
 				let n = e.match(/{(.*)}/);
 				if (n) {
@@ -135,26 +139,34 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 			useCurrentLocale: i
 		};
 	}
+	0 && (t.exports = { createI18nClient: V });
 }))().createI18nClient)({
-	en: () => import("./en-6VvYhpne.js"),
-	fr: () => import("./fr-0B0NWiXi.js"),
-	es: () => import("./es-C9Oh3qEQ.js"),
-	de: () => import("./de-BDTiQ_G0.js"),
-	it: () => import("./it-BGGWmAGL.js"),
-	pt: () => import("./pt-CNbGHncb.js"),
-	zh: () => import("./zh-BXPS2wGR.js"),
-	ja: () => import("./ja-B-8MoV68.js"),
-	ko: () => import("./ko-80JB3Vd-.js"),
-	ru: () => import("./ru-CdEKEpwl.js")
+	en: () => import("./en-Hfd-iR9Q.js"),
+	fr: () => import("./fr-DOkdQC8B.js"),
+	es: () => import("./es-CwgLPlwN.js"),
+	de: () => import("./de-DLCj-A0S.js"),
+	it: () => import("./it-DdDR_SOd.js"),
+	pt: () => import("./pt-0cvnCkG1.js"),
+	zh: () => import("./zh-DcQYdncF.js"),
+	ja: () => import("./ja-BvBjKrwS.js"),
+	ko: () => import("./ko-BO3urTDG.js"),
+	ru: () => import("./ru-CCiwUS4O.js")
 });
 function c() {
 	return s.useI18n();
 }
-var { useScopedI18n: l, I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = s, p = () => r("div", {
-	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: c()("mockBanner")
-});
-function m() {
+var { useScopedI18n: l, I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = s, p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/MockBanner.tsx", m = () => {
+	let e = c();
+	return r("div", {
+		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
+		children: e("mockBanner")
+	}, void 0, !1, {
+		fileName: p,
+		lineNumber: 8,
+		columnNumber: 5
+	}, void 0);
+};
+function h() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -168,40 +180,58 @@ function m() {
 		}
 	}
 }
-function h(e, t) {
+function g(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function g({ children: i, locale: a }) {
+var _ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
+function v({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		h("AppRoot", o);
+		g("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		m();
+		h();
 	}, []), r(u, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: _,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var _ = "en";
-function v({ children: e }) {
-	return r(g, {
-		locale: _,
+var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx", b = "en";
+function x({ children: e }) {
+	return r(v, {
+		locale: b,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: y,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function y() {
-	return r(v, { children: r(p, {}) });
+var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/MockBanner.wrapper.tsx";
+function C() {
+	return r(x, { children: r(m, {}, void 0, !1, {
+		fileName: S,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: S,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { y as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+export { C as default };
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/de.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 var t = e({
 	"careers-header": {
 		title: "Careers",
@@ -673,7 +703,7 @@ var t = e({
 	}
 });
 export { t as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/es.json";
 var n = e(t);
 export { n as default };
@@ -686,31 +716,31 @@ function e(t, n = "") {
 	return r;
 }
 export { e as t };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/fr.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/it.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/ja.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/ko.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/pt.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/ru.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/zh.json";
 var n = e(t);
 export { n as default };

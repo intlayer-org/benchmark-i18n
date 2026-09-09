@@ -1,10 +1,10 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r, jsxs as i } from "react/jsx-runtime";
-var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as r } from "react/jsx-dev-runtime";
+var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), s = a((() => {})), c = (0, a(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+}), o = i((() => {})), s = (0, i(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, s = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
@@ -18,18 +18,18 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			get: t[n],
 			enumerable: !0
 		});
-	}, h = (e, t, n, o) => {
-		if (t && typeof t == "object" || typeof t == "function") for (let s of a(t)) !u.call(e, s) && s !== n && r(e, s, {
-			get: () => t[s],
-			enumerable: !(o = i(t, s)) || o.enumerable
+	}, h = (e, t, n, a) => {
+		if (t && typeof t == "object" || typeof t == "function") for (let o of s(t)) !u.call(e, o) && o !== n && r(e, o, {
+			get: () => t[o],
+			enumerable: !(a = i(t, o)) || a.enumerable
 		});
 		return e;
 	}, g = (e, t, i) => (i = e == null ? {} : n(l(e)), h(t || !e || !e.__esModule ? r(i, "default", {
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), s();
-	var y = o("next/navigation"), b = g(o("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	m(v, { createI18nClient: () => V }), t.exports = _(v), o();
+	var y = a("next/navigation"), b = g(a("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -53,7 +53,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			}, i));
 		};
 	}
-	var D = o("react"), O = o("react"), k = o("react");
+	var D = a("react"), O = a("react"), k = a("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -63,7 +63,11 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			let r = n[0], o = !1;
 			r && "count" in r && (t ? a.has(`${t}.${e}`) : a.has(e)) && (e = `${e}#${s(r.count)}`, o = !0);
 			let c = t ? i[`${t}.${e}`] : i[e];
-			if (c = !c && o ? (i[`${e.split("#", 1)[0]}#other`] || e)?.toString() : (c || e)?.toString(), !r) return c;
+			if (!c && o) {
+				let t = e.split("#", 1)[0];
+				c = (i[`${t}#other`] || e)?.toString();
+			} else c = (c || e)?.toString();
+			if (!r) return c;
 			let l = !0, u = c?.split(/({[^}]*})/).map((e, t) => {
 				let n = e.match(/{(.*)}/);
 				if (n) {
@@ -83,7 +87,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = o("react");
+	var M = a("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -91,7 +95,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = o("next/navigation");
+	var P = a("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -113,7 +117,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			return e;
 		};
 	}
-	var L = o("next/navigation"), R = o("react"), z = "locale";
+	var L = a("next/navigation"), R = a("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -135,102 +139,191 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			useCurrentLocale: i
 		};
 	}
+	0 && (t.exports = { createI18nClient: V });
 }))().createI18nClient)({
-	en: () => import("./en-DFha1COx.js"),
-	fr: () => import("./fr-B-WONLbK.js"),
-	es: () => import("./es-Bgb9bYux.js"),
-	de: () => import("./de-CKleJJWD.js"),
-	it: () => import("./it-QEUSZnxM.js"),
-	pt: () => import("./pt-Z0oPE9lR.js"),
-	zh: () => import("./zh-t4J3qcft.js"),
-	ja: () => import("./ja-BUuV-Qhq.js"),
-	ko: () => import("./ko-DV252Y3i.js"),
-	ru: () => import("./ru-Codc4iWo.js")
-}), l = c.useScopedI18n, { I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = c;
+	en: () => import("./en-Bz-G1Uvz.js"),
+	fr: () => import("./fr-CDV8QI1P.js"),
+	es: () => import("./es-CXmrJVpW.js"),
+	de: () => import("./de-CBnJachj.js"),
+	it: () => import("./it-B3ZOYR0o.js"),
+	pt: () => import("./pt-DOcJMKxf.js"),
+	zh: () => import("./zh-CjqWaA8G.js"),
+	ja: () => import("./ja-DqPSQzIN.js"),
+	ko: () => import("./ko-D6aZpc6n.js"),
+	ru: () => import("./ru-DTmdo1G_.js")
+}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s, f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/home/UnderstandingImpact.tsx";
 function p() {
-	let e = l("understanding-impact");
-	return i("section", {
+	let e = c("understanding-impact");
+	return r("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
 			r("h2", {
 				className: "text-2xl font-bold text-foreground",
 				children: e("understandingTheImpact")
-			}),
-			i("div", {
+			}, void 0, !1, {
+				fileName: f,
+				lineNumber: 9,
+				columnNumber: 7
+			}, this),
+			r("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
 					r("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: e("whyASingleLargeJson")
-					}),
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 14,
+						columnNumber: 9
+					}, this),
 					r("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("manyI18nLibrariesStoreTranslations")
-					}),
-					i("ul", {
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 17,
+						columnNumber: 9
+					}, this),
+					r("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							r("li", { children: e("theJsonMustBeParsed") }),
-							r("li", { children: e("contextBasedArchitecturesCanCause") }),
-							r("li", { children: e("duringServerSideRenderingThe") })
+							r("li", { children: e("theJsonMustBeParsed") }, void 0, !1, {
+								fileName: f,
+								lineNumber: 21,
+								columnNumber: 11
+							}, this),
+							r("li", { children: e("contextBasedArchitecturesCanCause") }, void 0, !1, {
+								fileName: f,
+								lineNumber: 22,
+								columnNumber: 11
+							}, this),
+							r("li", { children: e("duringServerSideRenderingThe") }, void 0, !1, {
+								fileName: f,
+								lineNumber: 23,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, !0, {
+						fileName: f,
+						lineNumber: 20,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			i("div", {
+			}, void 0, !0, {
+				fileName: f,
+				lineNumber: 13,
+				columnNumber: 7
+			}, this),
+			r("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
 					r("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: e("theTradeOffsOfDynamic")
-					}),
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 28,
+						columnNumber: 9
+					}, this),
 					r("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("splittingTranslationsIntoPerRoute")
-					}),
-					i("ul", {
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 31,
+						columnNumber: 9
+					}, this),
+					r("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							i("li", { children: [
+							r("li", { children: [
 								r("strong", {
 									className: "text-foreground",
 									children: e("waterfallRequests")
-								}),
+								}, void 0, !1, {
+									fileName: f,
+									lineNumber: 36,
+									columnNumber: 13
+								}, this),
 								" ",
 								e("theAppMustFirstLoad")
-							] }),
-							i("li", { children: [
+							] }, void 0, !0, {
+								fileName: f,
+								lineNumber: 35,
+								columnNumber: 11
+							}, this),
+							r("li", { children: [
 								r("strong", {
 									className: "text-foreground",
 									children: e("flashOfUntranslatedContentFouc")
-								}),
+								}, void 0, !1, {
+									fileName: f,
+									lineNumber: 42,
+									columnNumber: 13
+								}, this),
 								" ",
 								e("usersMayBrieflySee")
-							] }),
-							i("li", { children: [
+							] }, void 0, !0, {
+								fileName: f,
+								lineNumber: 41,
+								columnNumber: 11
+							}, this),
+							r("li", { children: [
 								r("strong", {
 									className: "text-foreground",
 									children: e("cacheInvalidation")
-								}),
+								}, void 0, !1, {
+									fileName: f,
+									lineNumber: 48,
+									columnNumber: 13
+								}, this),
 								" ",
 								e("updatingTranslationsRequiresCacheBusting")
-							] })
+							] }, void 0, !0, {
+								fileName: f,
+								lineNumber: 47,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, !0, {
+						fileName: f,
+						lineNumber: 34,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			i("div", {
+			}, void 0, !0, {
+				fileName: f,
+				lineNumber: 27,
+				columnNumber: 7
+			}, this),
+			r("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [r("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: e("whatThisBenchmarkMeasures")
-				}), r("p", {
+				}, void 0, !1, {
+					fileName: f,
+					lineNumber: 57,
+					columnNumber: 9
+				}, this), r("p", {
 					className: "text-sm text-muted-foreground",
 					children: e("thisTestAppProvidesA")
-				})]
-			})
+				}, void 0, !1, {
+					fileName: f,
+					lineNumber: 60,
+					columnNumber: 9
+				}, this)]
+			}, void 0, !0, {
+				fileName: f,
+				lineNumber: 56,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, !0, {
+		fileName: f,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
 function m() {
 	if (!(typeof window > "u")) {
@@ -251,7 +344,8 @@ function h(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function g({ children: i, locale: a }) {
+var g = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
+function _({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
 		h("AppRoot", o);
@@ -259,23 +353,40 @@ function g({ children: i, locale: a }) {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
 		m();
-	}, []), r(u, {
+	}, []), r(l, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: g,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var _ = "en";
-function v({ children: e }) {
-	return r(g, {
-		locale: _,
+var v = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx", y = "en";
+function b({ children: e }) {
+	return r(_, {
+		locale: y,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: v,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function y() {
-	return r(v, { children: r(p, {}) });
+var x = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/home/UnderstandingImpact.wrapper.tsx";
+function S() {
+	return r(b, { children: r(p, {}, void 0, !1, {
+		fileName: x,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: x,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { y as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+export { S as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/de/about.json";
 import r from "../../../messages/de/blog.json";
 import i from "../../../messages/de/careers.json";
@@ -303,7 +414,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 var n = t([
 	e({
 		"about-grid.whyThisExists": "Why This Exists",
@@ -579,7 +690,7 @@ var n = t([
 	})
 ]);
 export { n as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/es/about.json";
 import r from "../../../messages/es/blog.json";
 import i from "../../../messages/es/careers.json";
@@ -607,7 +718,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/fr/about.json";
 import r from "../../../messages/fr/blog.json";
 import i from "../../../messages/fr/careers.json";
@@ -635,7 +746,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/it/about.json";
 import r from "../../../messages/it/blog.json";
 import i from "../../../messages/it/careers.json";
@@ -663,7 +774,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/ja/about.json";
 import r from "../../../messages/ja/blog.json";
 import i from "../../../messages/ja/careers.json";
@@ -691,7 +802,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/ko/about.json";
 import r from "../../../messages/ko/blog.json";
 import i from "../../../messages/ko/careers.json";
@@ -719,7 +830,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/pt/about.json";
 import r from "../../../messages/pt/blog.json";
 import i from "../../../messages/pt/careers.json";
@@ -747,7 +858,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/ru/about.json";
 import r from "../../../messages/ru/blog.json";
 import i from "../../../messages/ru/careers.json";
@@ -791,7 +902,7 @@ function t(e, n) {
 	let r = { ...e };
 	for (let [e, i] of Object.entries(n)) {
 		let n = r[e];
-		typeof i == "object" && i && !Array.isArray(i) && typeof n == "object" && n && !Array.isArray(n) ? r[e] = t(n, i) : r[e] = i;
+		r[e] = typeof i == "object" && i && !Array.isArray(i) && typeof n == "object" && n && !Array.isArray(n) ? t(n, i) : i;
 	}
 	return r;
 }
@@ -799,7 +910,7 @@ function n(e) {
 	return e.reduce((e, n) => t(e, n), {});
 }
 export { e as n, n as t };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/zh/about.json";
 import r from "../../../messages/zh/blog.json";
 import i from "../../../messages/zh/careers.json";

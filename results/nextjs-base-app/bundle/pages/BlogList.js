@@ -1,6 +1,7 @@
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-base-app/components/pages/blog/BlogList.tsx";
 function BlogList() {
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2",
 		children: [
 			{
@@ -39,34 +40,66 @@ function BlogList() {
 				excerpt: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
 				category: "Meta"
 			}
-		].map((p) => jsxs("article", {
+		].map((p) => jsxDEV("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [jsx("span", {
+					children: [jsxDEV("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: p.category
-					}), jsx("span", {
+					}, void 0, false, {
+						fileName: _jsxFileName,
+						lineNumber: 55,
+						columnNumber: 13
+					}, this), jsxDEV("span", {
 						className: "text-xs text-muted-foreground",
 						children: p.date
-					})]
-				}),
-				jsx("h2", {
+					}, void 0, false, {
+						fileName: _jsxFileName,
+						lineNumber: 58,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName,
+					lineNumber: 54,
+					columnNumber: 11
+				}, this),
+				jsxDEV("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: p.title
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName,
+					lineNumber: 60,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: p.excerpt
-				}),
-				jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName,
+					lineNumber: 63,
+					columnNumber: 11
+				}, this),
+				jsxDEV("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: "Read More →"
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName,
+					lineNumber: 64,
+					columnNumber: 11
+				}, this)
 			]
-		}, p.title))
-	});
+		}, p.title, true, {
+			fileName: _jsxFileName,
+			lineNumber: 50,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 48,
+		columnNumber: 5
+	}, this);
 }
 export { BlogList as default };

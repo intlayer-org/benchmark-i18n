@@ -1,9 +1,11 @@
-import { t as e } from "./logger-D1nsn_SU.js";
+import { t as e } from "./logger-LUfhf5qs.js";
 import { createContext as t, useCallback as n, useEffect as r, useRef as i, useState as a } from "react";
 import o from "next/link";
 import { useParams as s } from "next/navigation";
-import { jsx as c, jsxs as l } from "react/jsx-runtime";
-function u() {
+import { jsxDEV as c } from "react/jsx-dev-runtime";
+import { jsx as l } from "react/jsx-runtime";
+var u = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/Footer.tsx";
+function d() {
 	let e = s().locale ?? "en", t = [
 		{
 			label: "GitHub",
@@ -23,53 +25,117 @@ function u() {
 	];
 	return c("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: l("div", {
+		children: c("div", {
 			className: "container py-8",
-			children: [l("div", {
+			children: [c("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					l("div", { children: [c("h3", {
+					c("div", { children: [c("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), c("p", {
+					}, void 0, !1, {
+						fileName: u,
+						lineNumber: 33,
+						columnNumber: 13
+					}, this), c("p", {
 						className: "text-sm text-muted-foreground",
 						children: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
-					})] }),
-					l("div", { children: [c("h3", {
+					}, void 0, !1, {
+						fileName: u,
+						lineNumber: 36,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: u,
+						lineNumber: 32,
+						columnNumber: 11
+					}, this),
+					c("div", { children: [c("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "Resources"
-					}), c("ul", {
+					}, void 0, !1, {
+						fileName: u,
+						lineNumber: 43,
+						columnNumber: 13
+					}, this), c("ul", {
 						className: "space-y-1",
 						children: t.map((e) => c("li", { children: e.isInternal ? c(o, {
 							href: e.href,
 							prefetch: !1,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) : c("a", {
+						}, void 0, !1, {
+							fileName: u,
+							lineNumber: 50,
+							columnNumber: 21
+						}, this) : c("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) }, e.label))
-					})] }),
-					l("div", { children: [c("h3", {
+						}, void 0, !1, {
+							fileName: u,
+							lineNumber: 58,
+							columnNumber: 21
+						}, this) }, e.label, !1, {
+							fileName: u,
+							lineNumber: 48,
+							columnNumber: 17
+						}, this))
+					}, void 0, !1, {
+						fileName: u,
+						lineNumber: 46,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: u,
+						lineNumber: 42,
+						columnNumber: 11
+					}, this),
+					c("div", { children: [c("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "Contact"
-					}), c("p", {
+					}, void 0, !1, {
+						fileName: u,
+						lineNumber: 72,
+						columnNumber: 13
+					}, this), c("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, !1, {
+						fileName: u,
+						lineNumber: 75,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: u,
+						lineNumber: 71,
+						columnNumber: 11
+					}, this)
 				]
-			}), c("div", {
+			}, void 0, !0, {
+				fileName: u,
+				lineNumber: 31,
+				columnNumber: 9
+			}, this), c("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: "i18n Benchmark — Open-source project. Built with React & Next.js."
-			})]
-		})
-	});
+			}, void 0, !1, {
+				fileName: u,
+				lineNumber: 80,
+				columnNumber: 9
+			}, this)]
+		}, void 0, !0, {
+			fileName: u,
+			lineNumber: 30,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: u,
+		lineNumber: 29,
+		columnNumber: 5
+	}, this);
 }
-var d = t(null);
-async function f(t, n, r) {
+var f = t(null);
+async function p(t, n, r) {
 	if (!r || !n || n.length === 0) return {};
 	let i = `${r}/translations/${t}`, a = new AbortController(), o = setTimeout(() => a.abort(), 3e4);
 	try {
@@ -88,16 +154,16 @@ async function f(t, n, r) {
 		clearTimeout(o);
 	}
 }
-var p = "__SERVER_URL__", m = "__SOURCE_LOCALE__";
-function h() {
+var m = "__SERVER_URL__", h = "__SOURCE_LOCALE__";
+function g() {
 	return "en";
 }
-var g = () => {}, _ = process.env.NODE_ENV === "development", v = 200, y = _ ? x : b;
-function b({ initialLocale: t, initialTranslations: i = {}, router: o, children: s }) {
-	let [l, u] = a(() => t || (typeof window < "u" ? h() : m)), [f, p] = a(i), [_, v] = a(!1);
-	e.debug(`LingoProvider initialized with locale: ${l}`, i), r(() => {
-		typeof document < "u" && (document.documentElement.lang = l);
-	}, [l]);
+var _ = () => {}, v = process.env.NODE_ENV === "development", y = 200, b = v ? S : x;
+function x({ initialLocale: t, initialTranslations: i = {}, router: o, children: s }) {
+	let [c, u] = a(() => t || (typeof window < "u" ? g() : h)), [d, p] = a(i), [m, v] = a(!1);
+	e.debug(`LingoProvider initialized with locale: ${c}`, i), r(() => {
+		typeof document < "u" && (document.documentElement.lang = c);
+	}, [c]);
 	let y = n(async (t) => {
 		if (!(Object.keys(i).length > 0)) {
 			v(!0);
@@ -114,34 +180,34 @@ function b({ initialLocale: t, initialTranslations: i = {}, router: o, children:
 		}
 	}, [i]);
 	r(() => {
-		Object.keys(i).length === 0 && y(l);
+		Object.keys(i).length === 0 && y(c);
 	}, []), r(() => {
 		o && p(i);
 	}, [i, o]);
 	let b = n(async (e) => {
 		u(e), o ? o.refresh() : await y(e);
 	}, [o, y]);
-	return c(d.Provider, {
+	return l(f.Provider, {
 		value: {
-			locale: l,
+			locale: c,
 			setLocale: b,
-			translations: f,
-			registerHashes: g,
-			isLoading: _,
-			sourceLocale: m
+			translations: d,
+			registerHashes: _,
+			isLoading: m,
+			sourceLocale: h
 		},
 		children: s
 	});
 }
-function x({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget: l, children: u }) {
-	let [g, _] = a(() => t || h()), [y, b] = a(o), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(g);
+function S({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget: c, children: u }) {
+	let [d, _] = a(() => t || g()), [v, b] = a(o), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(d);
 	r(() => {
-		k.current = y;
-	}, [y]), r(() => {
-		A.current = g;
-	}, [g]), r(() => {
-		typeof document < "u" && (document.documentElement.lang = g);
-	}, [g]);
+		k.current = v;
+	}, [v]), r(() => {
+		A.current = d;
+	}, [d]), r(() => {
+		typeof document < "u" && (document.documentElement.lang = d);
+	}, [d]);
 	let j = n((t) => {
 		let n = !1;
 		t.forEach((e) => {
@@ -152,16 +218,16 @@ function x({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 		});
 	}, []);
 	r(() => {
-		e.debug(`LingoProvider checking translations for locale ${g}, seen hashes: ${C.size}`);
+		e.debug(`LingoProvider checking translations for locale ${d}, seen hashes: ${C.size}`);
 		let t = [];
 		e.debug("allSeenHashes: ", [...C.values()], [...E.current.values()]);
-		for (let e of C) !y[e] && !E.current.has(e) && !D.current.has(e) && (t.push(e), E.current.add(e));
-		e.debug("Missing hashes: ", t.join(",")), !(t.length === 0 && A.current == g) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${g}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
+		for (let e of C) !v[e] && !E.current.has(e) && !D.current.has(e) && (t.push(e), E.current.add(e));
+		e.debug("Missing hashes: ", t.join(",")), (t.length !== 0 || A.current != d) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${d}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
 			let t = Array.from(E.current);
 			if (E.current.clear(), e.debug(`Fetching translations for ${t.length} hashes`), t.length !== 0) {
 				S(!0);
 				try {
-					let n = await f(A.current, t, p);
+					let n = await p(A.current, t, m);
 					e.debug(`Fetched translations for ${t.length} hashes:`, n);
 					let r = new Set(Object.keys(n)), i = t.filter((e) => !r.has(e));
 					if (i.length > 0) {
@@ -180,11 +246,11 @@ function x({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 					S(!1);
 				}
 			}
-		}, v));
+		}, y));
 	}, [
 		C,
-		g,
-		y
+		d,
+		v
 	]), r(() => () => {
 		O.current && clearTimeout(O.current);
 	}, []);
@@ -192,8 +258,8 @@ function x({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 		_(t), s && s.refresh(), S(!0);
 		let n = performance.now();
 		try {
-			e.info(`Fetching translations for locale: ${t}. Server url: ${p}`);
-			let r = await f(t, [], p), i = performance.now();
+			e.info(`Fetching translations for locale: ${t}. Server url: ${m}`);
+			let r = await p(t, [], m), i = performance.now();
 			e.info(`Translation fetch complete for ${t} in ${(i - n).toFixed(2)}ms`);
 			let a = r.entries || {};
 			e.debug(`Translations loaded for ${t}:`, a), b(a);
@@ -204,30 +270,30 @@ function x({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 		}
 	}, [s]);
 	return r(() => {
-		l?.enabled !== !1 && import("./lingo-dev-widget-Cc3Gggpb.js").catch((t) => {
+		c?.enabled !== !1 && import("./lingo-dev-widget-C3EvpmD3.js").catch((t) => {
 			e.error("Failed to load dev widget:", t, t.message);
 		});
-	}, [l?.enabled]), r(() => {
-		typeof window < "u" && l?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
+	}, [c?.enabled]), r(() => {
+		typeof window < "u" && c?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
 			isLoading: x,
-			locale: g,
-			sourceLocale: m,
+			locale: d,
+			sourceLocale: h,
 			pendingCount: E.current.size,
-			position: l?.position || "bottom-left"
-		}, window.__LINGO_DEV_WS_URL__ = p, window.__LINGO_DEV_UPDATE__?.());
+			position: c?.position || "bottom-left"
+		}, window.__LINGO_DEV_WS_URL__ = m, window.__LINGO_DEV_UPDATE__?.());
 	}, [
 		x,
-		g,
-		m,
-		l
-	]), c(d.Provider, {
+		d,
+		h,
+		c
+	]), l(f.Provider, {
 		value: {
-			locale: g,
+			locale: d,
 			setLocale: M,
-			translations: y,
+			translations: v,
 			registerHashes: j,
 			isLoading: x,
-			sourceLocale: m,
+			sourceLocale: h,
 			_devStats: {
 				pendingCount: E.current.size,
 				totalRegisteredCount: T.current.size
@@ -236,17 +302,31 @@ function x({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 		children: u
 	});
 }
-function S({ children: e }) {
-	return c(y, {
+var C = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
+function w({ children: e }) {
+	return c(b, {
 		initialLocale: "en",
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: C,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
-function C() {
-	return c(S, { children: c(u, {}) });
+var T = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/Footer.wrapper.tsx";
+function E() {
+	return c(w, { children: c(d, {}, void 0, !1, {
+		fileName: T,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: T,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { C as default };
-import { t as e } from "./logger-D1nsn_SU.js";
+export { E as default };
+import { t as e } from "./logger-LUfhf5qs.js";
 var t = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -314,9 +394,7 @@ var t = class extends HTMLElement {
 					this.state && (this.state.serverProgress = void 0, this.render());
 				}, 2e3));
 				break;
-			case "batch:error":
-				this.state && this.state.serverProgress && (this.state.serverProgress.status = "error", this.render());
-				break;
+			case "batch:error": this.state && this.state.serverProgress && (this.state.serverProgress.status = "error", this.render());
 		}
 	}
 	render() {

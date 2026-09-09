@@ -10,7 +10,7 @@ var o = Object.create, s = Object.defineProperty, c = Object.getOwnPropertyDescr
 		enumerable: !(r = c(t, u)) || r.enumerable
 	});
 	return e;
-}, m = (e, t, n) => (n = e == null ? {} : o(u(e)), p(t || !e || !e.__esModule ? s(n, "default", {
+}, m = (e, t, n) => (n = e == null ? {} : o(u(e)), p(t || !e || !e.__esModule || !d.call(e, "default") ? s(n, "default", {
 	value: e,
 	enumerable: !0
 }) : n, e)), h = f(((e, t) => {
@@ -67,7 +67,7 @@ var o = Object.create, s = Object.defineProperty, c = Object.getOwnPropertyDescr
 		return n.isMergeableObject(e) && f(e).forEach(function(t) {
 			r[t] = c(e[t], n);
 		}), f(t).forEach(function(i) {
-			m(e, i) || (p(e, i) && n.isMergeableObject(t[i]) ? r[i] = u(i, n)(e[i], t[i], n) : r[i] = c(t[i], n));
+			m(e, i) || (r[i] = p(e, i) && n.isMergeableObject(t[i]) ? u(i, n)(e[i], t[i], n) : c(t[i], n));
 		}), r;
 	}
 	function g(e, t, r) {
@@ -1644,7 +1644,7 @@ function je(e, t) {
 			var o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = "a", l = Me(t);
 			for ((l == "H" || l == "k") && (s = 0); s-- > 0;) n += c;
 			for (; o-- > 0;) n = l + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
@@ -1795,8 +1795,10 @@ var Ye = function() {
 					},
 					err: null
 				} : this.error(D.INVALID_TAG, M(o, this.clonePosition()))) : this.error(D.UNMATCHED_CLOSING_TAG, M(s, this.clonePosition()));
-			} else return this.error(D.UNCLOSED_TAG, M(n, this.clonePosition()));
-		} else return this.error(D.INVALID_TAG, M(n, this.clonePosition()));
+			}
+			return this.error(D.UNCLOSED_TAG, M(n, this.clonePosition()));
+		}
+		return this.error(D.INVALID_TAG, M(n, this.clonePosition()));
 	}, e.prototype.parseTagName = function() {
 		var e = this.offset();
 		for (this.bump(); !this.isEOF() && Qe(this.char());) this.bump();
@@ -1848,12 +1850,13 @@ var Ye = function() {
 		var t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			var n = this.char();
-			if (n === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(n);
+			if (n === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(n);
 			this.bump();
 		}
 		return P.apply(void 0, t);
@@ -1922,26 +1925,25 @@ var Ye = function() {
 							},
 							err: null
 						};
-					} else {
-						if (p.length === 0) return this.error(D.EXPECT_DATE_TIME_SKELETON, f);
-						var m = p;
-						this.locale && (m = je(p, this.locale));
-						var u = {
-							type: k.dateTime,
-							pattern: m,
-							location: s.styleLocation,
-							parsedOptions: this.shouldParseSkeletons ? ve(m) : {}
-						};
-						return {
-							val: {
-								type: a === "date" ? O.date : O.time,
-								value: n,
-								location: f,
-								style: u
-							},
-							err: null
-						};
 					}
+					if (p.length === 0) return this.error(D.EXPECT_DATE_TIME_SKELETON, f);
+					var m = p;
+					this.locale && (m = je(p, this.locale));
+					var u = {
+						type: k.dateTime,
+						pattern: m,
+						location: s.styleLocation,
+						parsedOptions: this.shouldParseSkeletons ? ve(m) : {}
+					};
+					return {
+						val: {
+							type: a === "date" ? O.date : O.time,
+							value: n,
+							location: f,
+							style: u
+						},
+						err: null
+					};
 				}
 				return {
 					val: {
@@ -2015,9 +2017,7 @@ var Ye = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -2506,7 +2506,7 @@ function Tt(e) {
 	}).filter(([, e]) => e.length > 0);
 }
 function Et(e) {
-	return e == null ? !1 : K(e).some((e) => wt(e)?.size);
+	return e != null && K(e).some((e) => wt(e)?.size);
 }
 function Dt(e, t) {
 	return Promise.all(t.map((t) => (Ct(e, t), t().then((e) => e.default || e)))).then((t) => St(e, ...t));
@@ -2605,7 +2605,7 @@ function Vt(e) {
 }
 function K(e, t = W().fallbackLocale) {
 	let n = Vt(e);
-	return t ? [...new Set([...n, ...Vt(t)])] : n;
+	return t ? [.../* @__PURE__ */ new Set([...n, ...Vt(t)])] : n;
 }
 function q() {
 	return Bt ?? void 0;
@@ -2724,7 +2724,7 @@ function ln(e) {
 function un(e) {
 	return cn.includes(e);
 }
-var dn = new Set([
+var dn = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -2763,16 +2763,14 @@ function _n(t, r) {
 	e.init();
 	var c = gn(), l = e.child(c);
 	e.each(l, 5, () => cn, (e) => e, (t, n) => {
-		var r = hn(), i = e.child(r, !0);
-		e.reset(r);
-		var a = {};
+		var r = hn(), i = e.only_child(r, !0), a = {};
 		e.template_effect((t) => {
-			e.set_text(i, t), a !== (a = e.get(n)) && (r.value = (r.__value = e.get(n)) ?? "");
+			e.set_text(i, t), a !== (a = e.get(n)) && (r.value = (r.__value = a) ?? "");
 		}, [() => ln(e.get(n))]), e.append(t, r);
 	}), e.reset(l);
 	var u;
 	e.init_select(l), e.reset(c), e.template_effect((t) => {
-		u !== (u = t) && (l.value = (l.__value = t) ?? "", e.select_option(l, t));
+		u !== (u = t) && (l.value = (l.__value = u) ?? "", e.select_option(l, u));
 	}, [() => i().split("/").filter(Boolean)[0] ?? "en"]), e.delegated("change", l, s), e.append(t, c), e.pop(), o();
 }
 e.delegate(["change"]);
@@ -2803,8 +2801,8 @@ function yn(t, n) {
 		e.set(l, t, !0), c(t), window.localStorage.setItem("theme", t);
 	}
 	let d = e.derived(() => e.get(l) === "auto" ? r()("themeToggle.labelAuto") : r()("themeToggle.labelOther", { values: { mode: e.get(l) } })), f = e.derived(() => e.get(l) === "auto" ? r()("themeToggle.auto") : e.get(l) === "dark" ? r()("themeToggle.dark") : r()("themeToggle.light"));
-	var p = vn(), m = e.child(p, !0);
-	e.reset(p), e.template_effect(() => {
+	var p = vn(), m = e.only_child(p, !0);
+	e.template_effect(() => {
 		e.set_attribute(p, "aria-label", e.get(d)), e.set_attribute(p, "title", e.get(d)), e.set_text(m, e.get(f));
 	}), e.delegated("click", p, u), e.append(t, p), e.pop(), o();
 }
@@ -2848,17 +2846,11 @@ function Cn(t, n) {
 			msg: "header.settings"
 		}
 	]), d = e.derived(() => r().kind === "ok" && r().page === ""), f = e.derived(() => r().kind === "ok" && r().page === "about");
-	var p = Sn(), m = e.child(p), h = e.child(m), g = e.child(h), _ = e.child(g, !0);
-	e.reset(g);
-	var v = e.sibling(g, 2), y = e.child(v);
+	var p = Sn(), m = e.child(p), h = e.child(m), g = e.child(h), _ = e.only_child(g, !0), v = e.sibling(g, 2), y = e.child(v);
 	let b;
-	var x = e.child(y, !0);
-	e.reset(y);
-	var S = e.sibling(y, 2);
+	var x = e.only_child(y, !0), S = e.sibling(y, 2);
 	let C;
-	var ee = e.child(S, !0);
-	e.reset(S);
-	var w = e.sibling(S, 2), T = e.child(w), te = e.child(T), ne = e.sibling(te);
+	var ee = e.only_child(S, !0), w = e.sibling(S, 2), T = e.child(w), te = e.child(T), ne = e.sibling(te);
 	{
 		let t = e.derived(() => e.get(c) ? "transition-transform rotate-180" : "transition-transform");
 		i(ne, {
@@ -2872,8 +2864,8 @@ function Cn(t, n) {
 	var re = e.sibling(T, 2), ie = (t) => {
 		var n = xn(), r = e.child(n);
 		e.each(r, 21, () => e.get(u), (e) => e.to, (t, n) => {
-			var r = bn(), i = e.child(r, !0);
-			e.reset(r), e.template_effect((t) => {
+			var r = bn(), i = e.only_child(r, !0);
+			e.template_effect((t) => {
 				e.set_attribute(r, "href", e.get(n).to), e.set_text(i, t);
 			}, [() => a()(e.get(n).msg)]), e.delegated("click", r, () => e.set(c, !1)), e.append(t, r);
 		}), e.reset(r), e.reset(n), e.event("mouseenter", n, () => e.set(c, !0)), e.event("mouseleave", n, () => e.set(c, !1)), e.append(t, n);
@@ -2881,8 +2873,8 @@ function Cn(t, n) {
 	e.if(re, (t) => {
 		e.get(c) && t(ie);
 	}), e.reset(w), e.reset(v), e.reset(h);
-	var ae = e.sibling(h, 2), E = e.child(ae), D = e.child(E), O = e.child(D, !0);
-	e.reset(D), e.next(2), e.reset(E);
+	var ae = e.sibling(h, 2), E = e.child(ae), D = e.child(E), O = e.only_child(D, !0);
+	e.next(2), e.reset(E);
 	var k = e.sibling(E, 2);
 	_n(k, {}), yn(e.sibling(k, 2), {}), e.reset(ae), e.reset(m), e.reset(p), e.template_effect((t, n, r, i, a) => {
 		e.set_attribute(g, "href", `/${e.get(l)}`), e.set_text(_, t), e.set_attribute(y, "href", `/${e.get(l)}`), b = e.set_class(y, 1, "nav-link", null, b, { "is-active": e.get(d) }), e.set_text(x, n), e.set_attribute(S, "href", `/${e.get(l)}/about`), C = e.set_class(S, 1, "nav-link", null, C, { "is-active": e.get(f) }), e.set_text(ee, r), e.set_text(te, `${i ?? ""} `), e.set_text(O, a);

@@ -1,8 +1,8 @@
 import "svelte/internal/disclose-version";
 import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
-var root_1 = $.from_html(`<div class="rounded-lg border border-border bg-card p-4 text-center"><p class="text-sm font-semibold text-foreground"> </p> <p class="text-xs text-muted-foreground"> </p></div>`);
-var root = $.from_html(`<div class="mb-12 grid gap-4 md:grid-cols-3"></div>`);
+var root = $.from_html(`<div class="rounded-lg border border-border bg-card p-4 text-center"><p class="text-sm font-semibold text-foreground"> </p> <p class="text-xs text-muted-foreground"> </p></div>`);
+var root_1 = $.from_html(`<div class="mb-12 grid gap-4 md:grid-cols-3"></div>`);
 function CareersBenefits($$anchor) {
 	const benefits = [
 		{
@@ -18,15 +18,13 @@ function CareersBenefits($$anchor) {
 			value: "20% time for OSS contributions"
 		}
 	];
-	var div = root();
+	var div = root_1();
 	$.each(div, 5, () => benefits, (b) => b.label, ($$anchor, b) => {
-		var div_1 = root_1();
+		var div_1 = root();
 		var p = $.child(div_1);
-		var text = $.child(p, true);
-		$.reset(p);
+		var text = $.only_child(p, true);
 		var p_1 = $.sibling(p, 2);
-		var text_1 = $.child(p_1, true);
-		$.reset(p_1);
+		var text_1 = $.only_child(p_1, true);
 		$.reset(div_1);
 		$.template_effect(() => {
 			$.set_text(text, $.get(b).label);

@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { jsx } from "react/jsx-runtime";
 var locales = [
 	"en",
@@ -21,6 +22,7 @@ function getLocaleName(locale) {
 		return locale.toUpperCase();
 	}
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-intl-app/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams().locale ?? "en";
 	const pathname = usePathname();
@@ -29,18 +31,30 @@ function LocaleSwitcher() {
 		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
 		router.push(newPath);
 	};
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "flex items-center gap-2",
-		children: jsx("select", {
+		children: jsxDEV("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((l) => jsx("option", {
+			children: locales.map((l) => jsxDEV("option", {
 				value: l,
 				children: getLocaleName(l)
-			}, l))
-		})
-	});
+			}, l, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 25,
+				columnNumber: 11
+			}, this))
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 19,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 18,
+		columnNumber: 5
+	}, this);
 }
 function memoize(fn, options) {
 	const cache = options && options.cache ? options.cache : cacheDefault;
@@ -89,7 +103,6 @@ var serializerDefault = function() {
 	return JSON.stringify(arguments);
 };
 var ObjectWithoutPrototypeCache = class {
-	cache;
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -107,10 +120,26 @@ var strategies = {
 	variadic: strategyVariadic,
 	monadic: strategyMonadic
 };
-var r = function(e) {
-	return e.MISSING_MESSAGE = "MISSING_MESSAGE", e.MISSING_FORMAT = "MISSING_FORMAT", e.ENVIRONMENT_FALLBACK = "ENVIRONMENT_FALLBACK", e.INSUFFICIENT_PATH = "INSUFFICIENT_PATH", e.INVALID_MESSAGE = "INVALID_MESSAGE", e.INVALID_KEY = "INVALID_KEY", e.FORMATTING_ERROR = "FORMATTING_ERROR", e;
-}(r || {});
-function s() {
+var IntlError = class extends Error {
+	constructor(code, originalMessage) {
+		let message = code;
+		if (originalMessage) message += ": " + originalMessage;
+		super(message);
+		this.code = code;
+		if (originalMessage) this.originalMessage = originalMessage;
+	}
+};
+var IntlErrorCode = function(IntlErrorCode) {
+	IntlErrorCode["MISSING_MESSAGE"] = "MISSING_MESSAGE";
+	IntlErrorCode["MISSING_FORMAT"] = "MISSING_FORMAT";
+	IntlErrorCode["ENVIRONMENT_FALLBACK"] = "ENVIRONMENT_FALLBACK";
+	IntlErrorCode["INSUFFICIENT_PATH"] = "INSUFFICIENT_PATH";
+	IntlErrorCode["INVALID_MESSAGE"] = "INVALID_MESSAGE";
+	IntlErrorCode["INVALID_KEY"] = "INVALID_KEY";
+	IntlErrorCode["FORMATTING_ERROR"] = "FORMATTING_ERROR";
+	return IntlErrorCode;
+}(IntlErrorCode || {});
+function createCache() {
 	return {
 		dateTime: {},
 		number: {},
@@ -121,88 +150,149 @@ function s() {
 		displayNames: {}
 	};
 }
-function i$1(a, r) {
-	return memoize(a, {
-		cache: (s = r, { create: () => ({
-			get: (e) => s[e],
-			set(e, t) {
-				s[e] = t;
+function createMemoCache(store) {
+	return { create() {
+		return {
+			get(key) {
+				return store[key];
+			},
+			set(key, value) {
+				store[key] = value;
 			}
-		}) }),
+		};
+	} };
+}
+function memoFn(fn, cache) {
+	return memoize(fn, {
+		cache: createMemoCache(cache),
 		strategy: strategies.variadic
 	});
-	var s;
 }
-function I(e, t) {
-	return i$1(((...t) => new e(...t)), t);
+function memoConstructor(ConstructorFn, cache) {
+	return memoFn((...args) => new ConstructorFn(...args), cache);
 }
-function l(e) {
+function createIntlFormatters(cache) {
 	return {
-		getDateTimeFormat: I(Intl.DateTimeFormat, e.dateTime),
-		getNumberFormat: I(Intl.NumberFormat, e.number),
-		getPluralRules: I(Intl.PluralRules, e.pluralRules),
-		getRelativeTimeFormat: I(Intl.RelativeTimeFormat, e.relativeTime),
-		getListFormat: I(Intl.ListFormat, e.list),
-		getDisplayNames: I(Intl.DisplayNames, e.displayNames)
+		getDateTimeFormat: memoConstructor(Intl.DateTimeFormat, cache.dateTime),
+		getNumberFormat: memoConstructor(Intl.NumberFormat, cache.number),
+		getPluralRules: memoConstructor(Intl.PluralRules, cache.pluralRules),
+		getRelativeTimeFormat: memoConstructor(Intl.RelativeTimeFormat, cache.relativeTime),
+		getListFormat: memoConstructor(Intl.ListFormat, cache.list),
+		getDisplayNames: memoConstructor(Intl.DisplayNames, cache.displayNames)
 	};
 }
-function c(...e) {
-	return e.filter(Boolean).join(".");
+function joinPath(...parts) {
+	return parts.filter(Boolean).join(".");
 }
-function i(e) {
-	return c(e.namespace, e.key);
+function defaultGetMessageFallback(props) {
+	return joinPath(props.namespace, props.key);
 }
-function u(e) {
-	console.error(e);
+function defaultOnError(error) {
+	console.error(error);
 }
-var y = 86400;
-7 * y;
-365 * y;
-function M({ formats: e, getMessageFallback: t, messages: r, onError: n, ...o }) {
-	return {
-		...o,
-		formats: e || void 0,
-		messages: r || void 0,
-		onError: n || u,
-		getMessageFallback: t || i
-	};
-}
-var d = createContext(void 0);
-function v({ children: e, formats: o, getMessageFallback: n, locale: c, messages: i, now: f, onError: u, timeZone: l$1 }) {
-	const v = useContext(d), w = useMemo((() => v?.cache || s()), [c, v?.cache]), p = useMemo((() => v?.formatters || l(w)), [w, v?.formatters]), h = useMemo((() => ({
-		...M({
-			locale: c,
-			formats: void 0 === o ? v?.formats : o,
-			getMessageFallback: n || v?.getMessageFallback,
-			messages: void 0 === i ? v?.messages : i,
-			now: f || v?.now,
-			onError: u || v?.onError,
-			timeZone: l$1 || v?.timeZone
-		}),
-		formatters: p,
-		cache: w
-	})), [
-		w,
-		o,
-		p,
-		n,
-		c,
-		i,
-		f,
-		u,
-		v,
-		l$1
-	]);
-	return jsx(d.Provider, {
-		value: h,
-		children: e
+var DAY = 86400;
+DAY * 7;
+DAY * (365 / 12) * 3;
+DAY * 365;
+function validateMessagesSegment(messages, invalidKeyLabels, parentPath) {
+	Object.entries(messages).forEach(([key, messageOrMessages]) => {
+		if (key.includes(".")) {
+			let keyLabel = key;
+			if (parentPath) keyLabel += ` (at ${parentPath})`;
+			invalidKeyLabels.push(keyLabel);
+		}
+		if (messageOrMessages != null && typeof messageOrMessages === "object") validateMessagesSegment(messageOrMessages, invalidKeyLabels, joinPath(parentPath, key));
 	});
 }
-function t({ locale: t, ...e }) {
-	if (!t) throw new Error(void 0);
-	return jsx(v, {
-		locale: t,
-		...e
+function validateMessages(messages, onError) {
+	const invalidKeyLabels = [];
+	validateMessagesSegment(messages, invalidKeyLabels);
+	if (invalidKeyLabels.length > 0) onError(new IntlError(IntlErrorCode.INVALID_KEY, `Namespace keys cannot contain the character "." as this is used to express nesting. Please remove it or replace it with another character.
+
+Invalid ${invalidKeyLabels.length === 1 ? "key" : "keys"}: ${invalidKeyLabels.join(", ")}
+
+If you're migrating from a flat structure, you can convert your messages as follows:
+
+import {set} from "lodash";
+
+const input = {
+  "one.one": "1.1",
+  "one.two": "1.2",
+  "two.one.one": "2.1.1"
+};
+
+const output = Object.entries(input).reduce(
+  (acc, [key, value]) => set(acc, key, value),
+  {}
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+`));
+}
+function initializeConfig({ formats, getMessageFallback, messages, onError, ...rest }) {
+	const finalOnError = onError || defaultOnError;
+	const finalGetMessageFallback = getMessageFallback || defaultGetMessageFallback;
+	if (messages) validateMessages(messages, finalOnError);
+	return {
+		...rest,
+		formats: formats || void 0,
+		messages: messages || void 0,
+		onError: finalOnError,
+		getMessageFallback: finalGetMessageFallback
+	};
+}
+var IntlContext = createContext(void 0);
+function IntlProvider({ children, formats, getMessageFallback, locale, messages, now, onError, timeZone }) {
+	const prevContext = useContext(IntlContext);
+	const cache = useMemo(() => {
+		return prevContext?.cache || createCache();
+	}, [locale, prevContext?.cache]);
+	const formatters = useMemo(() => prevContext?.formatters || createIntlFormatters(cache), [cache, prevContext?.formatters]);
+	const value = useMemo(() => ({
+		...initializeConfig({
+			locale,
+			formats: formats === void 0 ? prevContext?.formats : formats,
+			getMessageFallback: getMessageFallback || prevContext?.getMessageFallback,
+			messages: messages === void 0 ? prevContext?.messages : messages,
+			now: now || prevContext?.now,
+			onError: onError || prevContext?.onError,
+			timeZone: timeZone || prevContext?.timeZone
+		}),
+		formatters,
+		cache
+	}), [
+		cache,
+		formats,
+		formatters,
+		getMessageFallback,
+		locale,
+		messages,
+		now,
+		onError,
+		prevContext,
+		timeZone
+	]);
+	return jsx(IntlContext.Provider, {
+		value,
+		children
+	});
+}
+function NextIntlClientProvider({ locale, ...rest }) {
+	if (!locale) throw new Error("Couldn't infer the `locale` prop in `NextIntlClientProvider`, please provide it explicitly.\n\nSee https://next-intl.dev/docs/configuration#locale");
+	return jsx(IntlProvider, {
+		locale,
+		...rest
 	});
 }
 function recordHydrationDuration() {
@@ -227,6 +317,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-intl-app/components/AppProviders.tsx";
 function AppProviders({ children, locale, messages }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -238,12 +329,16 @@ function AppProviders({ children, locale, messages }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(t, {
+	return jsxDEV(NextIntlClientProvider, {
 		locale,
 		messages,
 		timeZone: "UTC",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 33,
+		columnNumber: 7
+	}, this);
 }
 var namespaces = [
 	"about",
@@ -261,18 +356,18 @@ var namespaces = [
 ];
 var namespaceLoaders = {
 	en: {
-		about: () => import("./about-CI0hCK_z.js"),
-		blog: () => import("./blog-BoYbZcjg.js"),
-		careers: () => import("./careers-BbIqHZHs.js"),
-		contact: () => import("./contact-DeRuW_zw.js"),
-		faq: () => import("./faq-jwCXaHED.js"),
-		home: () => import("./home-BUQLVzYW.js"),
-		pricing: () => import("./pricing-CJibxZRa.js"),
-		products: () => import("./products-J9YRlFIA.js"),
-		route: () => import("./route-UQnagTfi.js"),
-		settings: () => import("./settings-DsPKwqRK.js"),
-		shared: () => import("./shared-j4zBdnIe.js"),
-		team: () => import("./team-B6NZ-n0G.js")
+		about: () => import("./about-imhEHqgd.js"),
+		blog: () => import("./blog-Ct9pNU-x.js"),
+		careers: () => import("./careers-bExHQzrb.js"),
+		contact: () => import("./contact-BP2s6RCt.js"),
+		faq: () => import("./faq-MlAs5Jc2.js"),
+		home: () => import("./home-BAUlyM62.js"),
+		pricing: () => import("./pricing-R8SXJylp.js"),
+		products: () => import("./products-BeaUdwbc.js"),
+		route: () => import("./route-D4J5jMKf.js"),
+		settings: () => import("./settings-3t8rcskE.js"),
+		shared: () => import("./shared-CiKUOU02.js"),
+		team: () => import("./team-C1UFKjIS.js")
 	},
 	fr: {
 		about: () => import("../messages/fr/about.json"),
@@ -444,16 +539,31 @@ async function getMessages(locale, requestedNamespaces) {
 async function getAllMessages(locale) {
 	return getMessages(locale, namespaces);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-intl-app/scripts/Wrapper.tsx";
 var locale = "en";
 async function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	const messages = await getAllMessages(locale);
+	return jsxDEV(AppProviders, {
 		locale,
-		messages: await getAllMessages(locale),
+		messages,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 14,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-intl-app/components/LocaleSwitcher.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(LocaleSwitcher, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(LocaleSwitcher, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var about_default = {

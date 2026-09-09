@@ -1,6 +1,7 @@
 import { createComponent, insert, template } from "solid-js/web";
 import { For } from "solid-js";
-var _tmpl$ = template(`<div class="mb-12 grid gap-4 md:grid-cols-3">`), _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-4 text-center"><p class="text-sm font-semibold text-foreground"></p><p class="text-xs text-muted-foreground">`);
+var _tmpl$ = template(`<div class="mb-12 grid gap-4 md:grid-cols-3">`);
+var _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-4 text-center"><p class="text-sm font-semibold text-foreground"></p><p class="text-xs text-muted-foreground">`);
 function CareersBenefits() {
 	const benefits = [
 		{

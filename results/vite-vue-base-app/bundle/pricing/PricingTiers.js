@@ -1,14 +1,9 @@
 import { Fragment, createElementBlock, createElementVNode, createTextVNode, defineComponent, normalizeClass, openBlock, renderList, toDisplayString } from "vue";
-var _hoisted_1 = { class: "grid gap-6 md:grid-cols-3" };
-var _hoisted_2 = { class: "text-lg font-semibold text-foreground" };
-var _hoisted_3 = { class: "my-4" };
-var _hoisted_4 = { class: "text-3xl font-bold text-foreground" };
-var _hoisted_5 = { class: "text-sm text-muted-foreground" };
-var _hoisted_6 = { class: "mb-6 flex-1 space-y-2" };
-var PricingTiers_default = defineComponent({
+var PricingTiers_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "PricingTiers",
-	setup(__props) {
-		const tiers = [
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const __returned__ = { tiers: [
 			{
 				name: "Starter",
 				price: "$0",
@@ -48,28 +43,45 @@ var PricingTiers_default = defineComponent({
 					"Training sessions"
 				]
 			}
-		];
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList(tiers, (t) => {
-				return createElementVNode("div", {
-					key: t.name,
-					class: normalizeClass(["flex flex-col rounded-lg border p-6", t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
-				}, [
-					createElementVNode("h3", _hoisted_2, toDisplayString(t.name), 1),
-					createElementVNode("div", _hoisted_3, [createElementVNode("span", _hoisted_4, toDisplayString(t.price), 1), createElementVNode("span", _hoisted_5, toDisplayString(t.period), 1)]),
-					createElementVNode("ul", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList(t.features, (f) => {
-						return openBlock(), createElementBlock("li", {
-							key: f,
-							class: "flex items-center gap-2 text-sm text-muted-foreground"
-						}, [_cache[0] || (_cache[0] = createElementVNode("span", { class: "text-primary" }, "✓", -1)), createTextVNode(" " + toDisplayString(f), 1)]);
-					}), 128))]),
-					createElementVNode("button", {
-						type: "button",
-						class: normalizeClass(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
-					}, toDisplayString(t.name === "Enterprise" ? "Contact Sales" : "Get Started"), 3)
-				], 2);
-			}), 64))]);
-		};
+		] };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+var _hoisted_1 = { class: "grid gap-6 md:grid-cols-3" };
+var _hoisted_2 = { class: "text-lg font-semibold text-foreground" };
+var _hoisted_3 = { class: "my-4" };
+var _hoisted_4 = { class: "text-3xl font-bold text-foreground" };
+var _hoisted_5 = { class: "text-sm text-muted-foreground" };
+var _hoisted_6 = { class: "mb-6 flex-1 space-y-2" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList($setup.tiers, (t) => {
+		return createElementVNode("div", {
+			key: t.name,
+			class: normalizeClass(["flex flex-col rounded-lg border p-6", t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
+		}, [
+			createElementVNode("h3", _hoisted_2, toDisplayString(t.name), 1),
+			createElementVNode("div", _hoisted_3, [createElementVNode("span", _hoisted_4, toDisplayString(t.price), 1), createElementVNode("span", _hoisted_5, toDisplayString(t.period), 1)]),
+			createElementVNode("ul", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList(t.features, (f) => {
+				return openBlock(), createElementBlock("li", {
+					key: f,
+					class: "flex items-center gap-2 text-sm text-muted-foreground"
+				}, [_cache[0] || (_cache[0] = createElementVNode("span", { class: "text-primary" }, "✓", -1)), createTextVNode(" " + toDisplayString(f), 1)]);
+			}), 128))]),
+			createElementVNode("button", {
+				type: "button",
+				class: normalizeClass(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
+			}, toDisplayString(t.name === "Enterprise" ? "Contact Sales" : "Get Started"), 3)
+		], 2);
+	}), 64))]);
+}
+var PricingTiers_default = _plugin_vue_export_helper_default(PricingTiers_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/pricing/PricingTiers.vue"]]);
 export { PricingTiers_default as default };

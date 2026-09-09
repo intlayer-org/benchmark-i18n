@@ -1,8 +1,9 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { Fragment, createContext, useCallback, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var LingoContext = createContext(null);
 function useLingoContext() {
 	const context = useContext(LingoContext);
@@ -43,62 +44,8 @@ function getClientLocale() {
 function persistLocale(locale) {
 	if (typeof document !== "undefined") document.cookie = `locale=${locale}; path=/; max-age=31536000`;
 }
-var noop = () => {};
-var IS_DEV = process.env.NODE_ENV === "development";
 var BATCH_DELAY = 200;
-var LingoProvider = IS_DEV ? LingoProvider__Dev : LingoProvider__Prod;
-function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, children }) {
-	const [locale, setLocaleState] = useState(() => {
-		if (initialLocale) return initialLocale;
-		if (typeof window !== "undefined") return getClientLocale();
-		return "en";
-	});
-	const [translations, setTranslations] = useState(initialTranslations);
-	const [isLoading, setIsLoading] = useState(false);
-	logger.debug(`LingoProvider initialized with locale: ${locale}`, initialTranslations);
-	useEffect(() => {
-		if (typeof document !== "undefined") document.documentElement.lang = locale;
-	}, [locale]);
-	const loadTranslations = useCallback(async (targetLocale) => {
-		if (Object.keys(initialTranslations).length > 0) return;
-		setIsLoading(true);
-		try {
-			const response = await fetch(`/translations/${targetLocale}.json`);
-			if (!response.ok) throw new Error(`Failed to load translations for ${targetLocale}: ${response.statusText}`);
-			const data = await response.json();
-			setTranslations(data.entries || data);
-			logger.debug(`Loaded translations for ${targetLocale}:`, Object.keys(data.entries || data).length);
-		} catch (error) {
-			logger.error(`Failed to load translations for ${targetLocale}:`, error);
-			setTranslations({});
-		} finally {
-			setIsLoading(false);
-		}
-	}, [initialTranslations]);
-	useEffect(() => {
-		if (Object.keys(initialTranslations).length === 0) loadTranslations(locale);
-	}, []);
-	useEffect(() => {
-		if (router) setTranslations(initialTranslations);
-	}, [initialTranslations, router]);
-	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
-		setLocaleState(newLocale);
-		if (router) router.refresh();
-		else await loadTranslations(newLocale);
-	}, [router, loadTranslations]);
-	return jsx(LingoContext.Provider, {
-		value: {
-			locale,
-			setLocale,
-			translations,
-			registerHashes: noop,
-			isLoading,
-			sourceLocale: "en"
-		},
-		children
-	});
-}
+var LingoProvider = LingoProvider__Dev;
 function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, devWidget, children }) {
 	const [locale, setLocaleState] = useState(() => {
 		if (initialLocale) return initialLocale;
@@ -209,7 +156,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -1992,7 +1939,7 @@ var trimEnd = hasTrimEnd ? function trimEnd(s) {
 } : function trimEnd(s) {
 	return s.replace(SPACE_SEPARATOR_END_REGEX, "");
 };
-var IDENTIFIER_PREFIX_RE = /* @__PURE__ */ new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+var IDENTIFIER_PREFIX_RE = new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
 function matchIdentifierAtIndex(s, index) {
 	var _a;
 	IDENTIFIER_PREFIX_RE.lastIndex = index;
@@ -2032,9 +1979,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2150,14 +2098,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return String.fromCodePoint.apply(String, codePoints);
@@ -2360,9 +2309,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -2947,6 +2894,7 @@ var useTranslation = (hashes) => {
 		locale
 	};
 };
+var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/ThemeToggle.tsx";
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -2985,14 +2933,18 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? "Theme mode: auto (system). Click to switch to light mode." : `Theme mode: ${mode}. Click to switch mode.`;
-	return jsx("button", {
+	return jsxDEV("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? "Theme: Auto" : mode === "dark" ? "Theme: Dark" : "Theme: Light"
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$4,
+		lineNumber: 71,
+		columnNumber: 5
+	}, this);
 }
 var locales = [
 	"en",
@@ -3014,6 +2966,7 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams({ strict: false }).locale ?? "en";
 	const navigate = useNavigate();
@@ -3027,18 +2980,30 @@ function LocaleSwitcher() {
 			replace: true
 		});
 	};
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "flex items-center gap-2",
-		children: jsx("select", {
+		children: jsxDEV("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeItem) => jsx("option", {
+			children: locales.map((localeItem) => jsxDEV("option", {
 				value: localeItem,
 				children: getLocaleName(localeItem)
-			}, localeItem))
-		})
-	});
+			}, localeItem, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 25,
+				columnNumber: 11
+			}, this))
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 19,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 18,
+		columnNumber: 5
+	}, this);
 }
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -3051,6 +3016,7 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/Header.tsx";
 function Header() {
 	const { t } = useTranslation([
 		"a9f56c050b58",
@@ -3062,22 +3028,26 @@ function Header() {
 	usePerformanceMeasure("Header");
 	const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
 	const currentLocale = useParams({ strict: false }).locale ?? "en";
-	return jsx("header", {
+	return jsxDEV("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxs("nav", {
+		children: jsxDEV("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [jsxs("div", {
+			children: [jsxDEV("div", {
 				className: "flex items-center gap-8",
-				children: [jsx(Link, {
+				children: [jsxDEV(Link, {
 					preload: false,
 					to: "/$locale",
 					params: { locale: currentLocale },
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: t("a9f56c050b58", "i18n Bench")
-				}), jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 46,
+					columnNumber: 11
+				}, this), jsxDEV("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						jsx(Link, {
+						jsxDEV(Link, {
 							preload: false,
 							to: "/$locale",
 							params: { locale: currentLocale },
@@ -3085,32 +3055,48 @@ function Header() {
 							activeProps: { className: "is-active" },
 							className: "nav-link",
 							children: t("239d52bcab2f", "Home")
-						}),
-						jsx(Link, {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 51,
+							columnNumber: 13
+						}, this),
+						jsxDEV(Link, {
 							preload: false,
 							to: "/$locale/about",
 							params: { locale: currentLocale },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
 							children: t("50023d03e021", "Methodology")
-						}),
-						jsxs("div", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 58,
+							columnNumber: 13
+						}, this),
+						jsxDEV("div", {
 							className: "relative",
-							children: [jsxs("button", {
+							children: [jsxDEV("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [t("5a01d1dcc7d0", "Mock Pages"), jsx(ChevronDown, {
+								children: [t("5a01d1dcc7d0", "Mock Pages"), jsxDEV(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
-								})]
-							}), isMockPagesOpen && jsx("div", {
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 66,
+									columnNumber: 303
+								}, this)]
+							}, void 0, true, {
+								fileName: _jsxFileName$2,
+								lineNumber: 66,
+								columnNumber: 15
+							}, this), isMockPagesOpen && jsxDEV("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: jsx("div", {
+								children: jsxDEV("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
 									children: [
 										{
@@ -3145,59 +3131,133 @@ function Header() {
 											to: "/$locale/settings",
 											label: "Settings"
 										}
-									].map((page) => jsx(Link, {
+									].map((page) => jsxDEV(Link, {
 										preload: false,
 										to: page.to,
 										params: { locale: currentLocale },
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
 										children: page.label
-									}, page.to))
-								})
-							})]
-						})
+									}, page.to, false, {
+										fileName: _jsxFileName$2,
+										lineNumber: 71,
+										columnNumber: 44
+									}, this))
+								}, void 0, false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 70,
+									columnNumber: 19
+								}, this)
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 69,
+								columnNumber: 35
+							}, this)]
+						}, void 0, true, {
+							fileName: _jsxFileName$2,
+							lineNumber: 65,
+							columnNumber: 13
+						}, this)
 					]
-				})]
-			}), jsxs("div", {
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 50,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 45,
+				columnNumber: 9
+			}, this), jsxDEV("div", {
 				className: "flex items-center gap-4",
 				children: [
-					jsxs("a", {
+					jsxDEV("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "sr-only",
 							children: t("acd61dd25bee", "Go to GitHub")
-						}), jsx("svg", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 84,
+							columnNumber: 13
+						}, this), jsxDEV("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: jsx("path", {
+							children: jsxDEV("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							})
-						})]
-					}),
-					jsx(LocaleSwitcher, {}),
-					jsx(ThemeToggle, {})
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 86,
+								columnNumber: 15
+							}, this)
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 85,
+							columnNumber: 13
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 83,
+						columnNumber: 11
+					}, this),
+					jsxDEV(LocaleSwitcher, {}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 89,
+						columnNumber: 11
+					}, this),
+					jsxDEV(ThemeToggle, {}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 90,
+						columnNumber: 11
+					}, this)
 				]
-			})]
-		})
-	});
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 82,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 44,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 43,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/Header.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Header, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Header, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -3299,12 +3359,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

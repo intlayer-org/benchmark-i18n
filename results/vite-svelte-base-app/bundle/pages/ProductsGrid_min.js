@@ -37,12 +37,10 @@ function r(r) {
 	];
 	var a = n();
 	e.each(a, 5, () => i, (e) => e.name, (n, r) => {
-		var i = t(), a = e.child(i), o = e.child(a), s = e.child(o, !0);
-		e.reset(o);
-		var c = e.sibling(o, 2), l = e.child(c, !0);
-		e.reset(c), e.reset(a);
-		var u = e.sibling(a, 2), d = e.child(u), f = e.child(d, !0);
-		e.reset(d), e.next(2), e.reset(u), e.reset(i), e.template_effect(() => {
+		var i = t(), a = e.child(i), o = e.child(a), s = e.only_child(o, !0), c = e.sibling(o, 2), l = e.only_child(c, !0);
+		e.reset(a);
+		var u = e.sibling(a, 2), d = e.child(u), f = e.only_child(d, !0);
+		e.next(2), e.reset(u), e.reset(i), e.template_effect(() => {
 			e.set_text(s, e.get(r).name), e.set_text(l, e.get(r).desc), e.set_text(f, e.get(r).price);
 		}), e.append(n, i);
 	}), e.reset(a), e.append(r, a);

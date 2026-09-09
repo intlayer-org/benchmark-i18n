@@ -1,6 +1,7 @@
 import { createComponent, insert, template } from "solid-js/web";
 import { For } from "solid-js";
-var _tmpl$ = template(`<div class="mx-auto max-w-3xl space-y-4">`), _tmpl$2 = template(`<details class="group rounded-lg border border-border bg-card"><summary class="cursor-pointer px-6 py-4 text-sm font-medium text-foreground transition-colors hover:bg-accent/50"></summary><p class="px-6 pb-4 text-sm text-muted-foreground">`);
+var _tmpl$ = template(`<div class="mx-auto max-w-3xl space-y-4">`);
+var _tmpl$2 = template(`<details class="group rounded-lg border border-border bg-card"><summary class="cursor-pointer px-6 py-4 text-sm font-medium text-foreground transition-colors hover:bg-accent/50"></summary><p class="px-6 pb-4 text-sm text-muted-foreground">`);
 function FAQList() {
 	const faqs = [
 		{

@@ -2,7 +2,7 @@ import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
 
 import { defaultLocale, locales } from "./config";
-import { getAllMessages } from "./getMessages";
+import { getMessages } from "./getMessages";
 
 export default getRequestConfig(async ({ requestLocale }) => {
   const requested = await requestLocale;

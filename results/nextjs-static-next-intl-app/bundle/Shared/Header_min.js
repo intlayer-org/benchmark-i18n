@@ -1651,7 +1651,7 @@ function Me(e, t) {
 			let o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = Ne(t);
 			for ((c == "H" || c == "k") && (s = 0); s-- > 0;) n += "a";
 			for (; o-- > 0;) n = c + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
@@ -1763,8 +1763,10 @@ var Ue = class {
 					},
 					err: null
 				} : this.error(D.INVALID_TAG, I(o, this.clonePosition()))) : this.error(D.UNMATCHED_CLOSING_TAG, I(e, this.clonePosition()));
-			} else return this.error(D.UNCLOSED_TAG, I(n, this.clonePosition()));
-		} else return this.error(D.INVALID_TAG, I(n, this.clonePosition()));
+			}
+			return this.error(D.UNCLOSED_TAG, I(n, this.clonePosition()));
+		}
+		return this.error(D.INVALID_TAG, I(n, this.clonePosition()));
 	}
 	parseTagName() {
 		let e = this.offset();
@@ -1821,12 +1823,13 @@ var Ue = class {
 		let t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			let e = this.char();
-			if (e === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(e);
+			if (e === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(e);
 			this.bump();
 		}
 		return String.fromCodePoint(...t);
@@ -1899,7 +1902,8 @@ var Ue = class {
 							},
 							err: null
 						};
-					} else {
+					}
+					{
 						if (t.length === 0) return this.error(D.EXPECT_DATE_TIME_SKELETON, i);
 						let r = t;
 						this.locale && (r = Me(t, this.locale));
@@ -1998,9 +2002,7 @@ var Ue = class {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -2460,7 +2462,7 @@ function rt(e, t) {
 	}), e.message);
 }
 function it(e, t) {
-	return t || /'[{}]/.test(e) || /<|{/.test(e) ? void 0 : e;
+	return t || /'[{}<#|']/.test(e) || /<|{/.test(e) ? void 0 : e;
 }
 function K(...[e, t, r, i]) {
 	if (Array.isArray(t)) throw new S(C.INVALID_MESSAGE, `Message at \`${e}\` resolved to an array, but only strings are supported. See https://next-intl.dev/docs/usage/translations#arrays-of-messages`);
@@ -2547,13 +2549,14 @@ function ut({ cache: e, formats: t, formatters: n, getMessageFallback: r = at, l
 	}
 	function d(d, f, p, m) {
 		let h = m, g;
-		if (l) if (h) g = h;
-		else return s(a), r({
-			error: a,
-			key: d,
-			namespace: o
-		});
-		else {
+		if (l) {
+			if (h) g = h;
+			else return s(a), r({
+				error: a,
+				key: d,
+				namespace: o
+			});
+		} else {
 			let e = a;
 			try {
 				g = J(i, e, d, o);
@@ -2616,7 +2619,7 @@ function ut({ cache: e, formats: t, formatters: n, getMessageFallback: r = at, l
 function dt(e, t) {
 	return e === t ? void 0 : e.slice((t + ".").length);
 }
-var Y = 3600 * 24;
+var Y = 86400;
 Y * 7, 365 / 12 * Y * 3, Y * 365;
 function ft(e, t, n) {
 	Object.entries(e).forEach(([e, r]) => {

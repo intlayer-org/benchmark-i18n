@@ -1,10 +1,10 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r, jsxs as i } from "react/jsx-runtime";
-var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as r } from "react/jsx-dev-runtime";
+var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), s = a((() => {})), c = (0, a(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+}), o = i((() => {})), s = (0, i(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, s = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
@@ -18,18 +18,18 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			get: t[n],
 			enumerable: !0
 		});
-	}, h = (e, t, n, o) => {
-		if (t && typeof t == "object" || typeof t == "function") for (let s of a(t)) !u.call(e, s) && s !== n && r(e, s, {
-			get: () => t[s],
-			enumerable: !(o = i(t, s)) || o.enumerable
+	}, h = (e, t, n, a) => {
+		if (t && typeof t == "object" || typeof t == "function") for (let o of s(t)) !u.call(e, o) && o !== n && r(e, o, {
+			get: () => t[o],
+			enumerable: !(a = i(t, o)) || a.enumerable
 		});
 		return e;
 	}, g = (e, t, i) => (i = e == null ? {} : n(l(e)), h(t || !e || !e.__esModule ? r(i, "default", {
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), s();
-	var y = o("next/navigation"), b = g(o("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	m(v, { createI18nClient: () => V }), t.exports = _(v), o();
+	var y = a("next/navigation"), b = g(a("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -53,7 +53,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			}, i));
 		};
 	}
-	var D = o("react"), O = o("react"), k = o("react");
+	var D = a("react"), O = a("react"), k = a("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -63,7 +63,11 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			let r = n[0], o = !1;
 			r && "count" in r && (t ? a.has(`${t}.${e}`) : a.has(e)) && (e = `${e}#${s(r.count)}`, o = !0);
 			let c = t ? i[`${t}.${e}`] : i[e];
-			if (c = !c && o ? (i[`${e.split("#", 1)[0]}#other`] || e)?.toString() : (c || e)?.toString(), !r) return c;
+			if (!c && o) {
+				let t = e.split("#", 1)[0];
+				c = (i[`${t}#other`] || e)?.toString();
+			} else c = (c || e)?.toString();
+			if (!r) return c;
 			let l = !0, u = c?.split(/({[^}]*})/).map((e, t) => {
 				let n = e.match(/{(.*)}/);
 				if (n) {
@@ -83,7 +87,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = o("react");
+	var M = a("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -91,7 +95,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = o("next/navigation");
+	var P = a("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -113,7 +117,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			return e;
 		};
 	}
-	var L = o("next/navigation"), R = o("react"), z = "locale";
+	var L = a("next/navigation"), R = a("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -135,92 +139,125 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			useCurrentLocale: i
 		};
 	}
+	0 && (t.exports = { createI18nClient: V });
 }))().createI18nClient)({
-	en: () => import("./en-6VvYhpne.js"),
-	fr: () => import("./fr-DXxDhnG_.js"),
-	es: () => import("./es-BIpMfLlq.js"),
-	de: () => import("./de-7EmkDr9S.js"),
-	it: () => import("./it-932cjQuA.js"),
-	pt: () => import("./pt-NwXrWDgC.js"),
-	zh: () => import("./zh-NKfK0GYz.js"),
-	ja: () => import("./ja-B0c63rBJ.js"),
-	ko: () => import("./ko-nu2zxx6o.js"),
-	ru: () => import("./ru-CaCI8NTY.js")
+	en: () => import("./en-Hfd-iR9Q.js"),
+	fr: () => import("./fr-C7LsXZI-.js"),
+	es: () => import("./es-CmpWg9pI.js"),
+	de: () => import("./de-CSeqTlAX.js"),
+	it: () => import("./it-B9IYoiAB.js"),
+	pt: () => import("./pt-CHOV3qVi.js"),
+	zh: () => import("./zh-yfdzapcK.js"),
+	ja: () => import("./ja-DOT4bmSq.js"),
+	ko: () => import("./ko-HtThxRhP.js"),
+	ru: () => import("./ru-5Z3nDjnd.js")
 });
-function l() {
-	return c.useI18n();
+function c() {
+	return s.useI18n();
 }
-var { useScopedI18n: u, I18nProviderClient: d, useChangeLocale: f, useCurrentLocale: p } = c;
+var { useScopedI18n: l, I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = s, p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/blog/BlogList.tsx";
 function m() {
-	let e = l();
+	let e = c(), t = [
+		{
+			title: e("blog.blog-list.comparingI18nLibrariesIn2026"),
+			date: e("blog.blog-list.march82026"),
+			excerpt: e("blog.blog-list.weTested12DifferentInternationalization"),
+			category: e("blog.blog-list.categoryBenchmark")
+		},
+		{
+			title: e("blog.blog-list.howToReduceYourI18n"),
+			date: e("blog.blog-list.march82026"),
+			excerpt: e("blog.blog-list.practicalStrategiesForOptimizingTranslation"),
+			category: e("blog.blog-list.categoryTutorial")
+		},
+		{
+			title: e("blog.blog-list.theStateOfInternationalizationIn"),
+			date: e("blog.blog-list.february282026"),
+			excerpt: e("blog.blog-list.anOverviewOfTheCurrent"),
+			category: e("blog.blog-list.categoryAnalysis")
+		},
+		{
+			title: e("blog.blog-list.migratingFromReactI18nextTo"),
+			date: e("blog.blog-list.february152026"),
+			excerpt: e("blog.blog-list.aStepByStepGuide"),
+			category: e("blog.blog-list.categoryTutorial")
+		},
+		{
+			title: e("blog.blog-list.serverComponentsAndI18nWhat"),
+			date: e("blog.blog-list.february12026"),
+			excerpt: e("blog.blog-list.reactServerComponentsIntroduceNew"),
+			category: e("blog.blog-list.categoryAnalysis")
+		},
+		{
+			title: e("blog.blog-list.benchmarkMethodologyHowWeTest"),
+			date: e("blog.blog-list.january202026"),
+			excerpt: e("blog.blog-list.aTransparentLookAtOur"),
+			category: e("blog.blog-list.categoryMeta")
+		}
+	];
 	return r("div", {
 		className: "grid gap-6 md:grid-cols-2",
-		children: [
-			{
-				title: e("blog.blog-list.comparingI18nLibrariesIn2026"),
-				date: e("blog.blog-list.march82026"),
-				excerpt: e("blog.blog-list.weTested12DifferentInternationalization"),
-				category: e("blog.blog-list.categoryBenchmark")
-			},
-			{
-				title: e("blog.blog-list.howToReduceYourI18n"),
-				date: e("blog.blog-list.march82026"),
-				excerpt: e("blog.blog-list.practicalStrategiesForOptimizingTranslation"),
-				category: e("blog.blog-list.categoryTutorial")
-			},
-			{
-				title: e("blog.blog-list.theStateOfInternationalizationIn"),
-				date: e("blog.blog-list.february282026"),
-				excerpt: e("blog.blog-list.anOverviewOfTheCurrent"),
-				category: e("blog.blog-list.categoryAnalysis")
-			},
-			{
-				title: e("blog.blog-list.migratingFromReactI18nextTo"),
-				date: e("blog.blog-list.february152026"),
-				excerpt: e("blog.blog-list.aStepByStepGuide"),
-				category: e("blog.blog-list.categoryTutorial")
-			},
-			{
-				title: e("blog.blog-list.serverComponentsAndI18nWhat"),
-				date: e("blog.blog-list.february12026"),
-				excerpt: e("blog.blog-list.reactServerComponentsIntroduceNew"),
-				category: e("blog.blog-list.categoryAnalysis")
-			},
-			{
-				title: e("blog.blog-list.benchmarkMethodologyHowWeTest"),
-				date: e("blog.blog-list.january202026"),
-				excerpt: e("blog.blog-list.aTransparentLookAtOur"),
-				category: e("blog.blog-list.categoryMeta")
-			}
-		].map((t) => i("article", {
+		children: t.map((t) => r("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				i("div", {
+				r("div", {
 					className: "mb-3 flex items-center gap-3",
 					children: [r("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: t.category
-					}), r("span", {
+					}, void 0, !1, {
+						fileName: p,
+						lineNumber: 55,
+						columnNumber: 13
+					}, this), r("span", {
 						className: "text-xs text-muted-foreground",
 						children: t.date
-					})]
-				}),
+					}, void 0, !1, {
+						fileName: p,
+						lineNumber: 58,
+						columnNumber: 13
+					}, this)]
+				}, void 0, !0, {
+					fileName: p,
+					lineNumber: 54,
+					columnNumber: 11
+				}, this),
 				r("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: t.title
-				}),
+				}, void 0, !1, {
+					fileName: p,
+					lineNumber: 60,
+					columnNumber: 11
+				}, this),
 				r("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: t.excerpt
-				}),
+				}, void 0, !1, {
+					fileName: p,
+					lineNumber: 63,
+					columnNumber: 11
+				}, this),
 				r("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: e("blog.blog-list.readMore")
-				})
+				}, void 0, !1, {
+					fileName: p,
+					lineNumber: 64,
+					columnNumber: 11
+				}, this)
 			]
-		}, t.title))
-	});
+		}, t.title, !0, {
+			fileName: p,
+			lineNumber: 50,
+			columnNumber: 9
+		}, this))
+	}, void 0, !1, {
+		fileName: p,
+		lineNumber: 48,
+		columnNumber: 5
+	}, this);
 }
 function h() {
 	if (!(typeof window > "u")) {
@@ -241,7 +278,8 @@ function g(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function _({ children: i, locale: a }) {
+var _ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
+function v({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
 		g("AppRoot", o);
@@ -249,27 +287,44 @@ function _({ children: i, locale: a }) {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
 		h();
-	}, []), r(d, {
+	}, []), r(u, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: _,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var v = "en";
-function y({ children: e }) {
-	return r(_, {
-		locale: v,
+var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx", b = "en";
+function x({ children: e }) {
+	return r(v, {
+		locale: b,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: y,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function b() {
-	return r(y, { children: r(m, {}) });
+var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/blog/BlogList.wrapper.tsx";
+function C() {
+	return r(x, { children: r(m, {}, void 0, !1, {
+		fileName: S,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: S,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { b as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+export { C as default };
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/de.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 var t = e({
 	"careers-header": {
 		title: "Careers",
@@ -741,7 +796,7 @@ var t = e({
 	}
 });
 export { t as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/es.json";
 var n = e(t);
 export { n as default };
@@ -754,31 +809,31 @@ function e(t, n = "") {
 	return r;
 }
 export { e as t };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/fr.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/it.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/ja.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/ko.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/pt.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/ru.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/zh.json";
 var n = e(t);
 export { n as default };

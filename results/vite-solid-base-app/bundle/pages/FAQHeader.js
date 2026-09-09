@@ -3,7 +3,8 @@ var _tmpl$$1 = template(`<div class="mb-6 rounded-md border border-border bg-mut
 function MockBanner() {
 	return _tmpl$$1();
 }
-var _tmpl$ = template(`<h1 class="mb-2 text-3xl font-bold text-foreground">Frequently Asked Questions`), _tmpl$2 = template(`<p class="mb-10 text-muted-foreground">Everything you need to know about i18n Benchmark.`);
+var _tmpl$ = template(`<h1 class="mb-2 text-3xl font-bold text-foreground">Frequently Asked Questions`);
+var _tmpl$2 = template(`<p class="mb-10 text-muted-foreground">Everything you need to know about i18n Benchmark.`);
 function FAQHeader() {
 	return [
 		createComponent(MockBanner, {}),

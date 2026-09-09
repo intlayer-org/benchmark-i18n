@@ -1,8 +1,8 @@
 import "svelte/internal/disclose-version";
 import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
-var root_1 = $.from_html(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p> <div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span></div></div> <button type="button" class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">Apply Now</button></div>`);
-var root = $.from_html(`<h2 class="mb-6 text-2xl font-bold text-foreground">Open Positions</h2> <div class="space-y-4"></div>`, 1);
+var root = $.from_html(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p> <div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span></div></div> <button type="button" class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">Apply Now</button></div>`);
+var root_1 = $.from_html(`<h2 class="mb-6 text-2xl font-bold text-foreground">Open Positions</h2> <div class="space-y-4"></div>`, 1);
 function OpenPositions($$anchor) {
 	const openings = [
 		{
@@ -41,27 +41,22 @@ function OpenPositions($$anchor) {
 			desc: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
 		}
 	];
-	var fragment = root();
+	var fragment = root_1();
 	var div = $.sibling($.first_child(fragment), 2);
 	$.each(div, 5, () => openings, (o) => o.title, ($$anchor, o) => {
-		var div_1 = root_1();
+		var div_1 = root();
 		var div_2 = $.child(div_1);
 		var h3 = $.child(div_2);
-		var text = $.child(h3, true);
-		$.reset(h3);
+		var text = $.only_child(h3, true);
 		var p = $.sibling(h3, 2);
-		var text_1 = $.child(p, true);
-		$.reset(p);
+		var text_1 = $.only_child(p, true);
 		var div_3 = $.sibling(p, 2);
 		var span = $.child(div_3);
-		var text_2 = $.child(span, true);
-		$.reset(span);
+		var text_2 = $.only_child(span, true);
 		var span_1 = $.sibling(span, 2);
-		var text_3 = $.child(span_1, true);
-		$.reset(span_1);
+		var text_3 = $.only_child(span_1, true);
 		var span_2 = $.sibling(span_1, 2);
-		var text_4 = $.child(span_2, true);
-		$.reset(span_2);
+		var text_4 = $.only_child(span_2, true);
 		$.reset(div_3);
 		$.reset(div_2);
 		$.next(2);

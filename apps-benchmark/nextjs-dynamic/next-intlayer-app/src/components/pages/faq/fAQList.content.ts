@@ -1,7 +1,7 @@
-import { type Dictionary, t } from 'intlayer';
+import { type Dictionary, t } from "intlayer";
 
 const faqListContent = {
-  key: 'faq-list',
+  key: "faq-list",
   content: {
     whatIsI18nBenchmark: t({
       en: "What is i18n Benchmark?",
@@ -209,7 +209,7 @@ const faqListContent = {
       ja: "i18n Benchmark は、JavaScript および React アプリケーション用の国際化ライブラリのパフォーマンス、バンドルサイズ、および開発者エクスペリエンスを測定および比較するオープンソースのベンチマークスイートです。",
       ko: "i18n Benchmark는 JavaScript 및 React 애플리케이션용 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 도구 모음입니다.",
       ru: "i18n Benchmark — это открытый набор тестов, который измеряет и сравнивает производительность, размер бандла и опыт разработки библиотек интернационализации для приложений JavaScript и React.",
-    })
+    }),
   },
 } satisfies Dictionary;
 

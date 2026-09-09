@@ -190,7 +190,7 @@ function defaultGetMessageFallback(props) {
 function defaultOnError(error) {
 	console.error(error);
 }
-var DAY = 3600 * 24;
+var DAY = 86400;
 DAY * 7;
 DAY * (365 / 12) * 3;
 DAY * 365;

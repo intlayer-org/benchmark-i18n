@@ -19,7 +19,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$2.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1943,9 +1943,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2061,14 +2062,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2271,9 +2273,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -3015,7 +3015,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3166,63 +3166,50 @@ function PreferencesSection($$anchor, $$props) {
 	$.init();
 	var section = root();
 	var h2 = $.child(section);
-	var text = $.child(h2, true);
-	$.reset(h2);
+	var text = $.only_child(h2, true);
 	var div = $.sibling(h2, 2);
 	var div_1 = $.child(div);
 	var div_2 = $.child(div_1);
 	var p = $.child(div_2);
-	var text_1 = $.child(p, true);
-	$.reset(p);
+	var text_1 = $.only_child(p, true);
 	var p_1 = $.sibling(p, 2);
-	var text_2 = $.child(p_1, true);
-	$.reset(p_1);
+	var text_2 = $.only_child(p_1, true);
 	$.reset(div_2);
 	var button = $.sibling(div_2, 2);
 	$.reset(div_1);
 	var div_3 = $.sibling(div_1, 2);
 	var div_4 = $.child(div_3);
 	var p_2 = $.child(div_4);
-	var text_3 = $.child(p_2, true);
-	$.reset(p_2);
+	var text_3 = $.only_child(p_2, true);
 	var p_3 = $.sibling(p_2, 2);
-	var text_4 = $.child(p_3, true);
-	$.reset(p_3);
+	var text_4 = $.only_child(p_3, true);
 	$.reset(div_4);
 	var button_1 = $.sibling(div_4, 2);
 	$.reset(div_3);
 	var div_5 = $.sibling(div_3, 2);
 	var label = $.child(div_5);
-	var text_5 = $.child(label, true);
-	$.reset(label);
+	var text_5 = $.only_child(label, true);
 	var select = $.sibling(label, 2);
 	var option = $.child(select);
-	var text_6 = $.child(option, true);
-	$.reset(option);
+	var text_6 = $.only_child(option, true);
 	var option_value = {};
 	var option_1 = $.sibling(option);
-	var text_7 = $.child(option_1, true);
-	$.reset(option_1);
+	var text_7 = $.only_child(option_1, true);
 	var option_1_value = {};
 	var option_2 = $.sibling(option_1);
-	var text_8 = $.child(option_2, true);
-	$.reset(option_2);
+	var text_8 = $.only_child(option_2, true);
 	var option_2_value = {};
 	var option_3 = $.sibling(option_2);
-	var text_9 = $.child(option_3, true);
-	$.reset(option_3);
+	var text_9 = $.only_child(option_3, true);
 	var option_3_value = {};
 	var option_4 = $.sibling(option_3);
-	var text_10 = $.child(option_4, true);
-	$.reset(option_4);
+	var text_10 = $.only_child(option_4, true);
 	var option_4_value = {};
 	var option_5 = $.sibling(option_4);
-	var text_11 = $.child(option_5, true);
-	$.reset(option_5);
+	var text_11 = $.only_child(option_5, true);
 	var option_5_value = {};
 	var option_6 = $.sibling(option_5);
-	var text_12 = $.child(option_6, true);
-	$.reset(option_6);
+	var text_12 = $.only_child(option_6, true);
 	var option_6_value = {};
 	$.reset(select);
 	$.reset(div_5);
@@ -3238,19 +3225,19 @@ function PreferencesSection($$anchor, $$props) {
 		$.set_attribute(button_1, "aria-label", $6);
 		$.set_text(text_5, $7);
 		$.set_text(text_6, $8);
-		if (option_value !== (option_value = $9)) option.__value = $9;
+		if (option_value !== (option_value = $9)) option.__value = option_value;
 		$.set_text(text_7, $10);
-		if (option_1_value !== (option_1_value = $11)) option_1.__value = $11;
+		if (option_1_value !== (option_1_value = $11)) option_1.__value = option_1_value;
 		$.set_text(text_8, $12);
-		if (option_2_value !== (option_2_value = $13)) option_2.__value = $13;
+		if (option_2_value !== (option_2_value = $13)) option_2.__value = option_2_value;
 		$.set_text(text_9, $14);
-		if (option_3_value !== (option_3_value = $15)) option_3.__value = $15;
+		if (option_3_value !== (option_3_value = $15)) option_3.__value = option_3_value;
 		$.set_text(text_10, $16);
-		if (option_4_value !== (option_4_value = $17)) option_4.__value = $17;
+		if (option_4_value !== (option_4_value = $17)) option_4.__value = option_4_value;
 		$.set_text(text_11, $18);
-		if (option_5_value !== (option_5_value = $19)) option_5.__value = $19;
+		if (option_5_value !== (option_5_value = $19)) option_5.__value = option_5_value;
 		$.set_text(text_12, $20);
-		if (option_6_value !== (option_6_value = $21)) option_6.__value = $21;
+		if (option_6_value !== (option_6_value = $21)) option_6.__value = option_6_value;
 	}, [
 		() => $_()("settings.preferences.title"),
 		() => $_()("settings.preferences.emailNotifications"),

@@ -21,27 +21,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -64,7 +43,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -106,6 +85,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -127,6 +107,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -137,58 +122,70 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_about_whatwemeasure_title2 = () => {
-	return `What We Measure`;
-};
-var fr_about_whatwemeasure_title2 = () => {
-	return `Ce que nous mesurons`;
-};
-var es_about_whatwemeasure_title2 = () => {
-	return `Qué medimos`;
-};
-var de_about_whatwemeasure_title2 = () => {
-	return `Was wir messen`;
-};
-var it_about_whatwemeasure_title2 = () => {
-	return `Cosa misuriamo`;
-};
-var pt_about_whatwemeasure_title2 = () => {
-	return `O que medimos`;
-};
-var zh_about_whatwemeasure_title2 = () => {
-	return `衡量指标`;
-};
-var ja_about_whatwemeasure_title2 = () => {
-	return `測定項目`;
-};
-var ko_about_whatwemeasure_title2 = () => {
-	return `What We Measure`;
-};
-var ru_about_whatwemeasure_title2 = () => {
-	return `Что мы измеряем`;
-};
-var about_whatwemeasure_title2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_title2(inputs);
-	if (locale === "fr") return fr_about_whatwemeasure_title2(inputs);
-	if (locale === "es") return es_about_whatwemeasure_title2(inputs);
-	if (locale === "de") return de_about_whatwemeasure_title2(inputs);
-	if (locale === "it") return it_about_whatwemeasure_title2(inputs);
-	if (locale === "pt") return pt_about_whatwemeasure_title2(inputs);
-	if (locale === "zh") return zh_about_whatwemeasure_title2(inputs);
-	if (locale === "ja") return ja_about_whatwemeasure_title2(inputs);
-	if (locale === "ko") return ko_about_whatwemeasure_title2(inputs);
-	return ru_about_whatwemeasure_title2(inputs);
-});
 var en_about_whatwemeasure_bundlesizeimpact4 = () => {
 	return `Bundle size impact`;
 };
@@ -221,7 +218,6 @@ var ru_about_whatwemeasure_bundlesizeimpact4 = () => {
 };
 var about_whatwemeasure_bundlesizeimpact4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_bundlesizeimpact4(inputs);
 	if (locale === "fr") return fr_about_whatwemeasure_bundlesizeimpact4(inputs);
 	if (locale === "es") return es_about_whatwemeasure_bundlesizeimpact4(inputs);
 	if (locale === "de") return de_about_whatwemeasure_bundlesizeimpact4(inputs);
@@ -230,7 +226,8 @@ var about_whatwemeasure_bundlesizeimpact4 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_about_whatwemeasure_bundlesizeimpact4(inputs);
 	if (locale === "ja") return ja_about_whatwemeasure_bundlesizeimpact4(inputs);
 	if (locale === "ko") return ko_about_whatwemeasure_bundlesizeimpact4(inputs);
-	return ru_about_whatwemeasure_bundlesizeimpact4(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_bundlesizeimpact4(inputs);
+	return en_about_whatwemeasure_bundlesizeimpact4(inputs);
 });
 var en_about_whatwemeasure_bundlesizeimpactdesc5 = () => {
 	return `The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.`;
@@ -264,7 +261,6 @@ var ru_about_whatwemeasure_bundlesizeimpactdesc5 = () => {
 };
 var about_whatwemeasure_bundlesizeimpactdesc5 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
 	if (locale === "fr") return fr_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
 	if (locale === "es") return es_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
 	if (locale === "de") return de_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
@@ -273,93 +269,8 @@ var about_whatwemeasure_bundlesizeimpactdesc5 = ((inputs = {}, options = {}) => 
 	if (locale === "zh") return zh_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
 	if (locale === "ja") return ja_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
 	if (locale === "ko") return ko_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
-	return ru_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
-});
-var en_about_whatwemeasure_renderingoverhead3 = () => {
-	return `Rendering overhead`;
-};
-var fr_about_whatwemeasure_renderingoverhead3 = () => {
-	return `Surcharge de rendu`;
-};
-var es_about_whatwemeasure_renderingoverhead3 = () => {
-	return `Sobrecarga de renderizado`;
-};
-var de_about_whatwemeasure_renderingoverhead3 = () => {
-	return `Rendering-Overhead`;
-};
-var it_about_whatwemeasure_renderingoverhead3 = () => {
-	return `Sovrapprezzo di rendering`;
-};
-var pt_about_whatwemeasure_renderingoverhead3 = () => {
-	return `Sobrecarga de renderização`;
-};
-var zh_about_whatwemeasure_renderingoverhead3 = () => {
-	return `渲染开销`;
-};
-var ja_about_whatwemeasure_renderingoverhead3 = () => {
-	return `レンダリングのオーバーヘッド`;
-};
-var ko_about_whatwemeasure_renderingoverhead3 = () => {
-	return `Rendering overhead`;
-};
-var ru_about_whatwemeasure_renderingoverhead3 = () => {
-	return `Накладные расходы на рендеринг`;
-};
-var about_whatwemeasure_renderingoverhead3 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_renderingoverhead3(inputs);
-	if (locale === "fr") return fr_about_whatwemeasure_renderingoverhead3(inputs);
-	if (locale === "es") return es_about_whatwemeasure_renderingoverhead3(inputs);
-	if (locale === "de") return de_about_whatwemeasure_renderingoverhead3(inputs);
-	if (locale === "it") return it_about_whatwemeasure_renderingoverhead3(inputs);
-	if (locale === "pt") return pt_about_whatwemeasure_renderingoverhead3(inputs);
-	if (locale === "zh") return zh_about_whatwemeasure_renderingoverhead3(inputs);
-	if (locale === "ja") return ja_about_whatwemeasure_renderingoverhead3(inputs);
-	if (locale === "ko") return ko_about_whatwemeasure_renderingoverhead3(inputs);
-	return ru_about_whatwemeasure_renderingoverhead3(inputs);
-});
-var en_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.`;
-};
-var fr_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `Temps supplémentaire ajouté au cycle de rendu. Les bibliothèques qui injectent les traductions via un seul provider de contexte peuvent provoquer des re-rendus inutiles.`;
-};
-var es_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `Cuánto tiempo extra añade la biblioteca al ciclo de renderizado de React. Las bibliotecas que inyectan traducciones a través de un único proveedor de contexto pueden causar re-renderizados innecesarios en todo el árbol de componentes.`;
-};
-var de_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `Wie viel zusätzliche Zeit die Bibliothek zum Renderzyklus von React hinzufügt. Bibliotheken, die Übersetzungen über einen einzigen Kontextanbieter injizieren, können unnötige Re-Renderings im gesamten Komponentenbaum verursachen.`;
-};
-var it_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `Quanto tempo extra la libreria aggiunge al ciclo di rendering di React. Le librerie che iniettano traduzioni tramite un unico provider di contesto possono causare rendering non necessari in tutto l'albero dei componenti.`;
-};
-var pt_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `Quanto tempo extra a biblioteca adiciona ao ciclo de renderização do React. Bibliotecas que injetam traduções através de um único provedor de contexto podem causar re-renderizações desnecessárias em toda a árvore de componentes.`;
-};
-var zh_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `库为 React 的渲染周期增加了多少额外时间。通过单个上下文提供程序注入翻译的库可能会导致整个组件树的不必要重新渲染。`;
-};
-var ja_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `ライブラリがReactのレンダーサイクルに追加する余分な時間。単一のコンテキストプロバイダーを介して翻訳を注入するライブラリは、コンポーネントツリー全体で不要な再レンダリングを引き起こす可能性があります。`;
-};
-var ko_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.`;
-};
-var ru_about_whatwemeasure_renderingoverheaddesc4 = () => {
-	return `Сколько дополнительного времени библиотека добавляет к циклу рендеринга React. Библиотеки, которые внедряют переводы через единый провайдер контекста, могут вызывать ненужные повторные рендеринги по всему дереву компонентов.`;
-};
-var about_whatwemeasure_renderingoverheaddesc4 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_renderingoverheaddesc4(inputs);
-	if (locale === "fr") return fr_about_whatwemeasure_renderingoverheaddesc4(inputs);
-	if (locale === "es") return es_about_whatwemeasure_renderingoverheaddesc4(inputs);
-	if (locale === "de") return de_about_whatwemeasure_renderingoverheaddesc4(inputs);
-	if (locale === "it") return it_about_whatwemeasure_renderingoverheaddesc4(inputs);
-	if (locale === "pt") return pt_about_whatwemeasure_renderingoverheaddesc4(inputs);
-	if (locale === "zh") return zh_about_whatwemeasure_renderingoverheaddesc4(inputs);
-	if (locale === "ja") return ja_about_whatwemeasure_renderingoverheaddesc4(inputs);
-	if (locale === "ko") return ko_about_whatwemeasure_renderingoverheaddesc4(inputs);
-	return ru_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
+	return en_about_whatwemeasure_bundlesizeimpactdesc5(inputs);
 });
 var en_about_whatwemeasure_hydrationcost3 = () => {
 	return `Hydration cost`;
@@ -393,7 +304,6 @@ var ru_about_whatwemeasure_hydrationcost3 = () => {
 };
 var about_whatwemeasure_hydrationcost3 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_hydrationcost3(inputs);
 	if (locale === "fr") return fr_about_whatwemeasure_hydrationcost3(inputs);
 	if (locale === "es") return es_about_whatwemeasure_hydrationcost3(inputs);
 	if (locale === "de") return de_about_whatwemeasure_hydrationcost3(inputs);
@@ -402,7 +312,8 @@ var about_whatwemeasure_hydrationcost3 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_about_whatwemeasure_hydrationcost3(inputs);
 	if (locale === "ja") return ja_about_whatwemeasure_hydrationcost3(inputs);
 	if (locale === "ko") return ko_about_whatwemeasure_hydrationcost3(inputs);
-	return ru_about_whatwemeasure_hydrationcost3(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_hydrationcost3(inputs);
+	return en_about_whatwemeasure_hydrationcost3(inputs);
 });
 var en_about_whatwemeasure_hydrationcostdesc4 = () => {
 	return `During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.`;
@@ -436,7 +347,6 @@ var ru_about_whatwemeasure_hydrationcostdesc4 = () => {
 };
 var about_whatwemeasure_hydrationcostdesc4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_hydrationcostdesc4(inputs);
 	if (locale === "fr") return fr_about_whatwemeasure_hydrationcostdesc4(inputs);
 	if (locale === "es") return es_about_whatwemeasure_hydrationcostdesc4(inputs);
 	if (locale === "de") return de_about_whatwemeasure_hydrationcostdesc4(inputs);
@@ -445,7 +355,8 @@ var about_whatwemeasure_hydrationcostdesc4 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_about_whatwemeasure_hydrationcostdesc4(inputs);
 	if (locale === "ja") return ja_about_whatwemeasure_hydrationcostdesc4(inputs);
 	if (locale === "ko") return ko_about_whatwemeasure_hydrationcostdesc4(inputs);
-	return ru_about_whatwemeasure_hydrationcostdesc4(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_hydrationcostdesc4(inputs);
+	return en_about_whatwemeasure_hydrationcostdesc4(inputs);
 });
 var en_about_whatwemeasure_lazyloading3 = () => {
 	return `Lazy loading effectiveness`;
@@ -479,7 +390,6 @@ var ru_about_whatwemeasure_lazyloading3 = () => {
 };
 var about_whatwemeasure_lazyloading3 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_lazyloading3(inputs);
 	if (locale === "fr") return fr_about_whatwemeasure_lazyloading3(inputs);
 	if (locale === "es") return es_about_whatwemeasure_lazyloading3(inputs);
 	if (locale === "de") return de_about_whatwemeasure_lazyloading3(inputs);
@@ -488,7 +398,8 @@ var about_whatwemeasure_lazyloading3 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_about_whatwemeasure_lazyloading3(inputs);
 	if (locale === "ja") return ja_about_whatwemeasure_lazyloading3(inputs);
 	if (locale === "ko") return ko_about_whatwemeasure_lazyloading3(inputs);
-	return ru_about_whatwemeasure_lazyloading3(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_lazyloading3(inputs);
+	return en_about_whatwemeasure_lazyloading3(inputs);
 });
 var en_about_whatwemeasure_lazyloadingdesc4 = () => {
 	return `Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).`;
@@ -522,7 +433,6 @@ var ru_about_whatwemeasure_lazyloadingdesc4 = () => {
 };
 var about_whatwemeasure_lazyloadingdesc4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_lazyloadingdesc4(inputs);
 	if (locale === "fr") return fr_about_whatwemeasure_lazyloadingdesc4(inputs);
 	if (locale === "es") return es_about_whatwemeasure_lazyloadingdesc4(inputs);
 	if (locale === "de") return de_about_whatwemeasure_lazyloadingdesc4(inputs);
@@ -531,7 +441,8 @@ var about_whatwemeasure_lazyloadingdesc4 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_about_whatwemeasure_lazyloadingdesc4(inputs);
 	if (locale === "ja") return ja_about_whatwemeasure_lazyloadingdesc4(inputs);
 	if (locale === "ko") return ko_about_whatwemeasure_lazyloadingdesc4(inputs);
-	return ru_about_whatwemeasure_lazyloadingdesc4(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_lazyloadingdesc4(inputs);
+	return en_about_whatwemeasure_lazyloadingdesc4(inputs);
 });
 var en_about_whatwemeasure_localeswitch3 = () => {
 	return `Locale switch speed`;
@@ -565,7 +476,6 @@ var ru_about_whatwemeasure_localeswitch3 = () => {
 };
 var about_whatwemeasure_localeswitch3 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_localeswitch3(inputs);
 	if (locale === "fr") return fr_about_whatwemeasure_localeswitch3(inputs);
 	if (locale === "es") return es_about_whatwemeasure_localeswitch3(inputs);
 	if (locale === "de") return de_about_whatwemeasure_localeswitch3(inputs);
@@ -574,7 +484,8 @@ var about_whatwemeasure_localeswitch3 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_about_whatwemeasure_localeswitch3(inputs);
 	if (locale === "ja") return ja_about_whatwemeasure_localeswitch3(inputs);
 	if (locale === "ko") return ko_about_whatwemeasure_localeswitch3(inputs);
-	return ru_about_whatwemeasure_localeswitch3(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_localeswitch3(inputs);
+	return en_about_whatwemeasure_localeswitch3(inputs);
 });
 var en_about_whatwemeasure_localeswitchdesc4 = () => {
 	return `How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.`;
@@ -608,7 +519,6 @@ var ru_about_whatwemeasure_localeswitchdesc4 = () => {
 };
 var about_whatwemeasure_localeswitchdesc4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_about_whatwemeasure_localeswitchdesc4(inputs);
 	if (locale === "fr") return fr_about_whatwemeasure_localeswitchdesc4(inputs);
 	if (locale === "es") return es_about_whatwemeasure_localeswitchdesc4(inputs);
 	if (locale === "de") return de_about_whatwemeasure_localeswitchdesc4(inputs);
@@ -617,9 +527,140 @@ var about_whatwemeasure_localeswitchdesc4 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_about_whatwemeasure_localeswitchdesc4(inputs);
 	if (locale === "ja") return ja_about_whatwemeasure_localeswitchdesc4(inputs);
 	if (locale === "ko") return ko_about_whatwemeasure_localeswitchdesc4(inputs);
-	return ru_about_whatwemeasure_localeswitchdesc4(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_localeswitchdesc4(inputs);
+	return en_about_whatwemeasure_localeswitchdesc4(inputs);
 });
-var _tmpl$ = template(`<section class="mx-auto mt-12 max-w-3xl"><h2 class="mb-4 text-2xl font-bold text-foreground"></h2><ul class=space-y-4>`), _tmpl$2 = template(`<li class="rounded-md border border-border p-4"><span class="block text-sm font-bold text-primary"></span><span class="mt-1 block text-sm text-muted-foreground">`);
+var en_about_whatwemeasure_renderingoverhead3 = () => {
+	return `Rendering overhead`;
+};
+var fr_about_whatwemeasure_renderingoverhead3 = () => {
+	return `Surcharge de rendu`;
+};
+var es_about_whatwemeasure_renderingoverhead3 = () => {
+	return `Sobrecarga de renderizado`;
+};
+var de_about_whatwemeasure_renderingoverhead3 = () => {
+	return `Rendering-Overhead`;
+};
+var it_about_whatwemeasure_renderingoverhead3 = () => {
+	return `Sovrapprezzo di rendering`;
+};
+var pt_about_whatwemeasure_renderingoverhead3 = () => {
+	return `Sobrecarga de renderização`;
+};
+var zh_about_whatwemeasure_renderingoverhead3 = () => {
+	return `渲染开销`;
+};
+var ja_about_whatwemeasure_renderingoverhead3 = () => {
+	return `レンダリングのオーバーヘッド`;
+};
+var ko_about_whatwemeasure_renderingoverhead3 = () => {
+	return `Rendering overhead`;
+};
+var ru_about_whatwemeasure_renderingoverhead3 = () => {
+	return `Накладные расходы на рендеринг`;
+};
+var about_whatwemeasure_renderingoverhead3 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_about_whatwemeasure_renderingoverhead3(inputs);
+	if (locale === "es") return es_about_whatwemeasure_renderingoverhead3(inputs);
+	if (locale === "de") return de_about_whatwemeasure_renderingoverhead3(inputs);
+	if (locale === "it") return it_about_whatwemeasure_renderingoverhead3(inputs);
+	if (locale === "pt") return pt_about_whatwemeasure_renderingoverhead3(inputs);
+	if (locale === "zh") return zh_about_whatwemeasure_renderingoverhead3(inputs);
+	if (locale === "ja") return ja_about_whatwemeasure_renderingoverhead3(inputs);
+	if (locale === "ko") return ko_about_whatwemeasure_renderingoverhead3(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_renderingoverhead3(inputs);
+	return en_about_whatwemeasure_renderingoverhead3(inputs);
+});
+var en_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.`;
+};
+var fr_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `Temps supplémentaire ajouté au cycle de rendu. Les bibliothèques qui injectent les traductions via un seul provider de contexte peuvent provoquer des re-rendus inutiles.`;
+};
+var es_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `Cuánto tiempo extra añade la biblioteca al ciclo de renderizado de React. Las bibliotecas que inyectan traducciones a través de un único proveedor de contexto pueden causar re-renderizados innecesarios en todo el árbol de componentes.`;
+};
+var de_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `Wie viel zusätzliche Zeit die Bibliothek zum Renderzyklus von React hinzufügt. Bibliotheken, die Übersetzungen über einen einzigen Kontextanbieter injizieren, können unnötige Re-Renderings im gesamten Komponentenbaum verursachen.`;
+};
+var it_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `Quanto tempo extra la libreria aggiunge al ciclo di rendering di React. Le librerie che iniettano traduzioni tramite un unico provider di contesto possono causare rendering non necessari in tutto l'albero dei componenti.`;
+};
+var pt_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `Quanto tempo extra a biblioteca adiciona ao ciclo de renderização do React. Bibliotecas que injetam traduções através de um único provedor de contexto podem causar re-renderizações desnecessárias em toda a árvore de componentes.`;
+};
+var zh_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `库为 React 的渲染周期增加了多少额外时间。通过单个上下文提供程序注入翻译的库可能会导致整个组件树的不必要重新渲染。`;
+};
+var ja_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `ライブラリがReactのレンダーサイクルに追加する余分な時間。単一のコンテキストプロバイダーを介して翻訳を注入するライブラリは、コンポーネントツリー全体で不要な再レンダリングを引き起こす可能性があります。`;
+};
+var ko_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.`;
+};
+var ru_about_whatwemeasure_renderingoverheaddesc4 = () => {
+	return `Сколько дополнительного времени библиотека добавляет к циклу рендеринга React. Библиотеки, которые внедряют переводы через единый провайдер контекста, могут вызывать ненужные повторные рендеринги по всему дереву компонентов.`;
+};
+var about_whatwemeasure_renderingoverheaddesc4 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	if (locale === "es") return es_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	if (locale === "de") return de_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	if (locale === "it") return it_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	if (locale === "pt") return pt_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	if (locale === "zh") return zh_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	if (locale === "ja") return ja_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	if (locale === "ko") return ko_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_renderingoverheaddesc4(inputs);
+	return en_about_whatwemeasure_renderingoverheaddesc4(inputs);
+});
+var en_about_whatwemeasure_title2 = () => {
+	return `What We Measure`;
+};
+var fr_about_whatwemeasure_title2 = () => {
+	return `Ce que nous mesurons`;
+};
+var es_about_whatwemeasure_title2 = () => {
+	return `Qué medimos`;
+};
+var de_about_whatwemeasure_title2 = () => {
+	return `Was wir messen`;
+};
+var it_about_whatwemeasure_title2 = () => {
+	return `Cosa misuriamo`;
+};
+var pt_about_whatwemeasure_title2 = () => {
+	return `O que medimos`;
+};
+var zh_about_whatwemeasure_title2 = () => {
+	return `衡量指标`;
+};
+var ja_about_whatwemeasure_title2 = () => {
+	return `測定項目`;
+};
+var ko_about_whatwemeasure_title2 = () => {
+	return `What We Measure`;
+};
+var ru_about_whatwemeasure_title2 = () => {
+	return `Что мы измеряем`;
+};
+var about_whatwemeasure_title2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_about_whatwemeasure_title2(inputs);
+	if (locale === "es") return es_about_whatwemeasure_title2(inputs);
+	if (locale === "de") return de_about_whatwemeasure_title2(inputs);
+	if (locale === "it") return it_about_whatwemeasure_title2(inputs);
+	if (locale === "pt") return pt_about_whatwemeasure_title2(inputs);
+	if (locale === "zh") return zh_about_whatwemeasure_title2(inputs);
+	if (locale === "ja") return ja_about_whatwemeasure_title2(inputs);
+	if (locale === "ko") return ko_about_whatwemeasure_title2(inputs);
+	if (locale === "ru") return ru_about_whatwemeasure_title2(inputs);
+	return en_about_whatwemeasure_title2(inputs);
+});
+var _tmpl$ = template(`<section class="mx-auto mt-12 max-w-3xl"><h2 class="mb-4 text-2xl font-bold text-foreground"></h2><ul class=space-y-4>`);
+var _tmpl$2 = template(`<li class="rounded-md border border-border p-4"><span class="block text-sm font-bold text-primary"></span><span class="mt-1 block text-sm text-muted-foreground">`);
 function WhatWeMeasure() {
 	const metrics = () => [
 		{

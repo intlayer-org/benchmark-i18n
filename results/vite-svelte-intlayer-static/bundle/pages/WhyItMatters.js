@@ -7,10 +7,6 @@ var why_it_matters_default = {
 	key: "why-it-matters",
 	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"title\":\"Why These Metrics Matter\",\"bundleSize\":{\"title\":\"Bundle Size\",\"description\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\"},\"renderingHydration\":{\"title\":\"Rendering & Hydration\",\"description\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\"},\"dynamicLoading\":{\"title\":\"Dynamic Loading\",\"description\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"}},\"fr\":{\"title\":\"Pourquoi ces mesures sont importantes\",\"bundleSize\":{\"title\":\"Taille du Bundle\",\"description\":\"Le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.\"},\"renderingHydration\":{\"title\":\"Rendu et Hydratation\",\"description\":\"La connexion d'un dictionnaire JSON volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arborescence. Lors de l'hydratation SSR, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le Time to Interactive (TTI).\"},\"dynamicLoading\":{\"title\":\"Chargement Dynamique\",\"description\":\"Le chargement de toutes les traductions à l'avance surcharge la charge utile initiale. Le chargement dynamique (lazy loading) répartit les traductions par itinéraire ou par espace de noms, n'envoyant que ce dont la page actuelle a besoin. Cependant, le chargement différé introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de la mise en cache. Il est essentiel de mesurer les deux stratégies.\"}},\"es\":{\"title\":\"Por qué importan estas métricas\",\"bundleSize\":{\"title\":\"Tamaño del bundle\",\"description\":\"El bundle son los datos que se envían a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código de tiempo de ejecución, además de los propios archivos de traducción.\"},\"renderingHydration\":{\"title\":\"Renderizado e Hidratación\",\"description\":\"Conectar un diccionario JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede activar re-renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la vinculación de objetos de traducción masivos añaden latencia antes de que la página se vuelva interactiva, lo que afecta directamente al tiempo de interacción (TTI).\"},\"dynamicLoading\":{\"title\":\"Carga dinámica\",\"description\":\"Cargar todas las traducciones por adelantado sobrecarga la carga útil inicial. La carga dinámica (perezosa) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, la carga perezosa introduce sus propias compensaciones: solicitudes en cascada, destellos de contenido no traducido y complejidad de almacenamiento en caché. Medir ambas estrategias es esencial.\"}},\"de\":{\"title\":\"Warum diese Metriken wichtig sind\",\"bundleSize\":{\"title\":\"Bundle-Größe\",\"description\":\"Das Bundle sind die Daten, die an jeden Benutzer auf der ganzen Welt gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten – insbesondere bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren drastisch in ihrem Gewicht: von einigen Kilobytes bis hin zu Zehntausenden von Kilobytes an Laufzeitcode, plus die Übersetzungsdateien selbst.\"},\"renderingHydration\":{\"title\":\"Rendering & Hydratation\",\"description\":\"Das Verbinden eines großen JSON-Wörterbuchs mit jeder Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings im gesamten Baum auslösen. Während der SSR-Hydratation fügt das Parsen und Anhängen massiver Übersetzungsobjekte Latenz hinzu, bevor die Seite interaktiv wird – was sich direkt auf die Time to Interactive (TTI) auswirkt.\"},\"dynamicLoading\":{\"title\":\"Dynamisches Laden\",\"description\":\"Das Laden aller Übersetzungen im Voraus überlastet die anfängliche Nutzlast. Dynamisches (Lazy) Loading teilt Übersetzungen nach Route oder Namensraum auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Wasserfall-Anfragen, Aufblitzen nicht übersetzter Inhalte und Cache-Komplexität. Die Messung beider Strategien ist unerlässlich.\"}},\"it\":{\"title\":\"Perché queste metriche sono importanti\",\"bundleSize\":{\"title\":\"Dimensioni del bundle\",\"description\":\"Il bundle è l'insieme dei dati inviati a ogni utente in tutto il mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.\"},\"renderingHydration\":{\"title\":\"Rendering e idratazione\",\"description\":\"Il collegamento di un dizionario JSON di grandi dimensioni a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può innescare nuovi rendering nell'intero albero. Durante l'idratazione SSR, l'analisi e il collegamento di enormi oggetti di traduzione aggiungono latenza prima che la pagina diventi interattiva, con un impatto diretto sul Time to Interactive (TTI).\"},\"dynamicLoading\":{\"title\":\"Caricamento dinamico\",\"description\":\"Il caricamento anticipato di tutte le traduzioni sovraccarica il payload iniziale. Il caricamento dinamico (lazy) suddivide le traduzioni per percorso o spazio dei nomi, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il caricamento pigro introduce i suoi compromessi: richieste a cascata, flash di contenuti non tradotti e complessità della memorizzazione nella cache. Misurare entrambe le strategie è essenziale.\"}},\"pt\":{\"title\":\"Por que Essas Métricas Importam\",\"bundleSize\":{\"title\":\"Tamanho do bundle\",\"description\":\"O bundle são os dados enviados a cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução.\"},\"renderingHydration\":{\"title\":\"Renderização e Hidratação\",\"description\":\"Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode disparar novas renderizações em toda a árvore. Durante a hidratação do SSR, a análise e a anexação de objetos de tradução massivos adicionam latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).\"},\"dynamicLoading\":{\"title\":\"Carregamento Dinâmico\",\"description\":\"Carregar todas as traduções antecipadamente sobrecarrega a carga útil inicial. O carregamento dinâmico (lento) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento lento introduz suas próprias compensações: solicitações em cascata, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial.\"}},\"zh\":{\"title\":\"为什么这些指标很重要\",\"bundleSize\":{\"title\":\"捆绑包大小\",\"description\":\"捆绑包是发送给全球每个用户的数据。更大的捆绑包意味着更长的下载时间——尤其是在许多地区常见的慢速 3G 连接上。i18n 库的重量差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。\"},\"renderingHydration\":{\"title\":\"渲染和注水（Hydration）\",\"description\":\"将大型 JSON 词典连接到每个组件会创建一个隐藏依赖项：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 注水期间，解析和附加海量翻译对象会增加页面变得可交互之前的延迟——直接影响可交互时间 (TTI)。\"},\"dynamicLoading\":{\"title\":\"动态加载\",\"description\":\"预先加载所有翻译会使初始负载过重。动态（延迟）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。但是，延迟加载也有其权衡：瀑布请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。\"}},\"ja\":{\"title\":\"これらの指標が重要な理由\",\"bundleSize\":{\"title\":\"バンドルサイズ\",\"description\":\"バンドルは、世界中のすべてのユーザーに送信されるデータです。バンドルが大きくなると、特に多くの地域で一般的な低速な3G接続では、ダウンロード時間が長くなります。i18nライブラリはその重量が劇的に異なり、数キロバイトから数十キロバイトのランタイムコードに加えて、翻訳ファイル自体が含まれます。\"},\"renderingHydration\":{\"title\":\"レンダリングとハイドレーション\",\"description\":\"大きなJSON辞書をすべてのコンポーネントに接続すると、隠れた依存関係が作成されます。翻訳コンテキストの変更は、ツリー全体で再レンダリングをトリガーする可能性があります。SSRハイドレーション中、大規模な翻訳オブジェクトの解析とアタッチは、ページがインタラクティブになる前にレイテンシを追加し、Time to Interactive（TTI）に直接影響します。\"},\"dynamicLoading\":{\"title\":\"動的ロード\",\"description\":\"すべての翻訳を事前にロードすると、初期ペイロードが過負荷になります。動的（遅延）ロードは、ルートや名前空間ごとに翻訳を分割し、現在のページが必要なものだけを送信します。ただし、遅延読み込みには、ウォーターフォールリクエスト、翻訳されていないコンテンツのフラッシュ、キャッシュの複雑さなど、独自のトレードオフが伴います。両方の戦略を測定することが不可欠です。\"}},\"ko\":{\"title\":\"이러한 지표가 중요한 이유\",\"bundleSize\":{\"title\":\"번들 크기\",\"description\":\"번들은 전 세계 모든 사용자에게 전송되는 데이터입니다. 번들이 클수록 다운로드 시간이 길어집니다. 특히 많은 지역에서 흔히 발생하는 느린 3G 연결에서는 더욱 그렇습니다. i18n 라이브러리는 런타임 코드 몇 킬로바이트에서 수십 킬로바이트에 이르기까지 무게가 매우 다양하며 번역 파일 자체도 포함됩니다.\"},\"renderingHydration\":{\"title\":\"렌더링 및 하이드레이션\",\"description\":\"대규모 JSON 사전을 모든 구성 요소에 연결하면 숨겨진 종속성이 생성됩니다. 번역 컨텍스트가 변경되면 전체 트리에서 재렌더링이 발생할 수 있습니다. SSR 하이드레이션 중에 대규모 번역 개체를 구문 분석하고 첨부하면 페이지가 대화형이 되기 전에 대기 시간이 추가되어 TTI(Time to Interactive)에 직접적인 영향을 미칩니다.\"},\"dynamicLoading\":{\"title\":\"동적 로딩\",\"description\":\"모든 번역을 미리 로드하면 초기 페이로드가 과부하됩니다. 동적(지연) 로딩은 경로 또는 네임스페이스별로 번역을 분할하여 현재 페이지에 필요한 내용만 전송합니다. 그러나 지연 로딩은 폭포수 요청, 번역되지 않은 콘텐츠의 플래시, 캐시 복잡성과 같은 트레이드오프를 수반합니다. 두 전략을 모두 측정하는 것이 필수적입니다.\"}},\"ru\":{\"title\":\"Почему эти показатели важны\",\"bundleSize\":{\"title\":\"Размер бандла\",\"description\":\"Бандл — это данные, отправляемые каждому пользователю по всему миру. Больший размер бандла означает более длительное время загрузки, особенно при медленном 3G-соединении, распространенном во многих регионах. Библиотеки i18n сильно различаются по своему весу: от нескольких килобайт до десятков килобайт исполняемого кода, плюс сами файлы переводов.\"},\"renderingHydration\":{\"title\":\"Рендеринг и гидратация\",\"description\":\"Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг всего дерева. Во время гидратации SSR парсинг и присоединение массивных объектов перевода увеличивает задержку до того, как страница станет интерактивной, что напрямую влияет на время до интерактивности (TTI).\"},\"dynamicLoading\":{\"title\":\"Динамическая загрузка\",\"description\":\"Предварительная загрузка всех переводов перегружает начальный объем данных. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно текущей странице. Однако ленивая загрузка влечет за собой свои компромиссы: каскадные запросы, вспышки непереведенного контента и сложность кэширования. Важно измерять обе стратегии.\"}}}}")
 };
-var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
-var getIntlayerContext = () => {
-	return getContext(INTLAYER_CONTEXT_KEY);
-};
 var internationalization = {
 	"locales": [
 		"en",
@@ -53,6 +49,79 @@ var createIntlayerStore = () => {
 	};
 };
 var intlayerStore = createIntlayerStore();
+var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
+var getIntlayerContext = () => {
+	return getContext(INTLAYER_CONTEXT_KEY);
+};
+var DEFAULT_VARIANT_ID = "default";
+var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
+var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
+var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+var encodeSegmentText = (raw, unsafeChars) => {
+	if (raw === "") return "%";
+	const encoded = raw.replace(unsafeChars, percentEncodeChar);
+	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
+	return encoded;
+};
+var serializeVariant = (variant) => {
+	if (variant === void 0) return DEFAULT_VARIANT_ID;
+	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
+	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
+};
+var serializeVariantChain = (variant) => {
+	if (!Array.isArray(variant)) return [serializeVariant(variant)];
+	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
+	return variant.map(serializeVariant);
+};
+var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
+	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
+	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
+};
+var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
+	const segments = compositeId.split("/");
+	return qualifierTypes.every((qualifierType, index) => {
+		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
+		return selector?.item === void 0 || segments[index] === String(selector.item);
+	});
+};
+var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
+var reconstructQualifiedEntry = (group, compositeId) => {
+	const segments = compositeId.split("/");
+	const entry = {
+		key: group.key,
+		content: group.content[compositeId]
+	};
+	group.qualifierTypes.forEach((qualifierType, index) => {
+		if (qualifierType === "variant") entry.variant = segments[index];
+		else if (qualifierType === "item") entry.item = Number(segments[index]);
+	});
+	return entry;
+};
+var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
+	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
+	const { qualifierTypes, content } = dictionaryOrGroup;
+	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
+	const compositeIds = Object.keys(content);
+	const variantIndex = qualifierTypes.indexOf("variant");
+	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
+	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
+	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
+	return matchedEntries[0] ?? null;
+};
+var parseDictionarySelector = (localeOrSelector) => {
+	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
+		locale: localeOrSelector.locale,
+		selector: localeOrSelector
+	};
+	return { locale: localeOrSelector };
+};
+var getDictionarySelectorCacheKey = (selector) => {
+	if (!selector) return "";
+	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
+		const value = selector[selectorKey];
+		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
+	}).join("|");
+};
 var TRANSLATION = "translation";
 var OBJECT = "object";
 var ARRAY = "array";
@@ -71,28 +140,104 @@ var deepTransformNode = (node, props) => {
 		});
 	});
 	const result = {};
-	for (const key in node) Object.defineProperty(result, key, {
-		enumerable: true,
-		configurable: true,
-		get: function() {
-			const childProps = {
-				...props,
-				children: node[key],
-				keyPath: [...props.keyPath, {
-					type: OBJECT,
-					key
-				}]
-			};
-			const transformed = deepTransformNode(node[key], childProps);
-			Object.defineProperty(this, key, {
-				value: transformed,
-				enumerable: true,
-				configurable: true
-			});
-			return transformed;
+	for (const key in node) {
+		const childProps = {
+			...props,
+			children: node[key],
+			keyPath: [...props.keyPath, {
+				type: OBJECT,
+				key
+			}]
+		};
+		if (props.eager) {
+			result[key] = deepTransformNode(node[key], childProps);
+			continue;
 		}
-	});
+		Object.defineProperty(result, key, {
+			enumerable: true,
+			configurable: true,
+			get: function() {
+				const transformed = deepTransformNode(node[key], childProps);
+				Object.defineProperty(this, key, {
+					value: transformed,
+					enumerable: true,
+					configurable: true
+				});
+				return transformed;
+			}
+		});
+	}
 	return result;
+};
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
+	return {
+		hit: true,
+		content: entries.get(cacheKey)
+	};
+};
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
+	}
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
+};
+var getBasePlugins = (locale, fallback = true) => [
+	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+	enumerationPlugin,
+	conditionPlugin,
+	insertionPlugin$1,
+	nestedPlugin(locale ?? internationalization.defaultLocale),
+	filePlugin,
+	genderPlugin,
+	selectPlugin
+];
+var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
+	...nodeProps,
+	plugins
+});
+var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = parseDictionarySelector(localeOrSelector);
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries
+		};
+		return getContent(resolvedDictionary.content, props, appliedPlugins);
+	};
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -149,7 +294,7 @@ var fallbackPlugin = {
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
@@ -170,43 +315,41 @@ var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TR
 	}
 };
 var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
 var insertionPlugin$1 = fallbackPlugin;
 var genderPlugin = fallbackPlugin;
+var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
 var filePlugin = fallbackPlugin;
-var getBasePlugins = (locale, fallback = true) => [
-	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-	enumerationPlugin,
-	conditionPlugin,
-	insertionPlugin$1,
-	nestedPlugin(locale ?? internationalization.defaultLocale),
-	filePlugin,
-	genderPlugin
-];
-var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
-	...nodeProps,
-	plugins
-});
-var getDictionary$1 = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
-	};
-	return getContent(dictionary.content, props, plugins);
-};
 function IntlayerNodeWrapper($$anchor, $$props) {
+	$.push($$props, false);
 	let Renderer = $.prop($$props, "Renderer", 8, void 0);
 	let rendererProps = $.prop($$props, "rendererProps", 24, () => ({}));
 	let value = $.prop($$props, "value", 8, void 0);
+	let ResolvedRenderer = $.mutable_source();
+	let isAwaitingRenderer = $.mutable_source(false);
+	$.legacy_pre_effect(() => $.deep_read_state(Renderer()), () => {
+		if (typeof Renderer()?.then === "function") {
+			$.set(isAwaitingRenderer, true);
+			Renderer().then((component) => {
+				$.set(ResolvedRenderer, component);
+				$.set(isAwaitingRenderer, false);
+			});
+		} else {
+			$.set(ResolvedRenderer, Renderer());
+			$.set(isAwaitingRenderer, false);
+		}
+	});
+	$.legacy_pre_effect_reset();
+	$.init();
 	var fragment = $.comment();
 	var node = $.first_child(fragment);
-	var consequent = ($$anchor) => {
+	var consequent = ($$anchor) => {};
+	var consequent_1 = ($$anchor) => {
 		var fragment_1 = $.comment();
 		var node_1 = $.first_child(fragment_1);
-		$.element(node_1, Renderer, false, ($$element, $$anchor) => {
+		$.element(node_1, () => $.get(ResolvedRenderer), false, ($$element, $$anchor) => {
 			$.attribute_effect($$element, () => ({ ...rendererProps() }));
 			var text = $.text();
 			$.template_effect(() => $.set_text(text, value()));
@@ -214,8 +357,8 @@ function IntlayerNodeWrapper($$anchor, $$props) {
 		});
 		$.append($$anchor, fragment_1);
 	};
-	var consequent_1 = ($$anchor) => {
-		Renderer()($$anchor, $.spread_props(rendererProps, {
+	var consequent_2 = ($$anchor) => {
+		$.get(ResolvedRenderer)($$anchor, $.spread_props(rendererProps, {
 			children: ($$anchor, $$slotProps) => {
 				$.next();
 				var text_1 = $.text();
@@ -231,11 +374,13 @@ function IntlayerNodeWrapper($$anchor, $$props) {
 		$.append($$anchor, text_2);
 	};
 	$.if(node, ($$render) => {
-		if (typeof Renderer() === "string") $$render(consequent);
-		else if (typeof Renderer() === "function") $$render(consequent_1, 1);
+		if ($.get(isAwaitingRenderer)) $$render(consequent);
+		else if (typeof $.get(ResolvedRenderer) === "string") $$render(consequent_1, 1);
+		else if (typeof $.get(ResolvedRenderer) === "function") $$render(consequent_2, 2);
 		else $$render(alternate, -1);
 	});
 	$.append($$anchor, fragment);
+	$.pop();
 }
 var renderIntlayerNode = (args) => {
 	const isClassComponent = Boolean(IntlayerNodeWrapper.prototype?.$destroy);
@@ -266,21 +411,46 @@ var renderIntlayerNode = (args) => {
 		configurable: true
 	});
 	Object.defineProperty(Node, "toString", {
-		value: () => args.value?.toString() ?? "",
+		value: () => String(args.value ?? ""),
 		writable: true,
 		configurable: true
 	});
+	Object.defineProperty(Node, "valueOf", {
+		value: () => args.value,
+		writable: true,
+		configurable: true
+	});
+	Object.defineProperty(Node, Symbol.toPrimitive, {
+		value: () => args.value ?? "",
+		writable: true,
+		configurable: true
+	});
+	if (args.value !== null && args.value !== void 0) {
+		const valObj = Object(args.value);
+		const proto = Object.getPrototypeOf(valObj);
+		for (const prop of Object.getOwnPropertyNames(proto)) {
+			if (prop === "constructor" || prop in Node) continue;
+			const valProp = valObj[prop];
+			if (typeof valProp === "function") Object.defineProperty(Node, prop, {
+				value: valProp.bind(args.value),
+				writable: true,
+				configurable: true
+			});
+		}
+	}
 	if (args.additionalProps) Object.assign(Node, args.additionalProps);
 	return Node;
 };
 var intlayerNodePlugins = {
 	id: "intlayer-node-plugin",
 	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
-	transform: (node, { children, ...rest }) => renderIntlayerNode({
-		value: children ?? node,
-		component: void 0,
-		props: rest
-	})
+	transform: (node, { children, ...rest }) => {
+		return renderIntlayerNode({
+			value: children ?? node,
+			component: void 0,
+			props: rest
+		});
+	}
 };
 var svelteNodePlugins = intlayerNodePlugins;
 var insertionPlugin = fallbackPlugin;
@@ -293,10 +463,12 @@ var getPlugins = (locale, fallback = true) => {
 	const plugins = [
 		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 		enumerationPlugin,
+		pluralPlugin(locale ?? internationalization.defaultLocale),
 		conditionPlugin,
 		nestedPlugin(locale ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
+		selectPlugin,
 		intlayerNodePlugins,
 		svelteNodePlugins,
 		insertionPlugin,
@@ -306,11 +478,14 @@ var getPlugins = (locale, fallback = true) => {
 	pluginsCache.set(cacheKey, plugins);
 	return plugins;
 };
-var getDictionary = (dictionary, locale) => getDictionary$1(dictionary, locale, getPlugins(locale));
-var useDictionary = (dictionary, locale) => {
+var getDictionary = (dictionary, localeOrSelector) => {
+	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
+};
+var useDictionary = (dictionary, localeOrSelector) => {
 	const context = getIntlayerContext();
 	return derived([intlayerStore], ([$store]) => {
-		return getDictionary(dictionary, locale ?? context?.locale ?? $store.locale);
+		const contextLocale = context?.locale ?? $store.locale;
+		return getDictionary(dictionary, localeOrSelector ?? contextLocale);
 	});
 };
 function usePerformanceMeasure(name) {
@@ -334,32 +509,25 @@ function WhyItMatters($$anchor, $$props) {
 	$.init();
 	var section = root();
 	var h2 = $.child(section);
-	var text = $.child(h2, true);
-	$.reset(h2);
+	var text = $.only_child(h2, true);
 	var div = $.sibling(h2, 2);
 	var div_1 = $.child(div);
 	var h3 = $.child(div_1);
-	var text_1 = $.child(h3, true);
-	$.reset(h3);
+	var text_1 = $.only_child(h3, true);
 	var p = $.sibling(h3, 2);
-	var text_2 = $.child(p, true);
-	$.reset(p);
+	var text_2 = $.only_child(p, true);
 	$.reset(div_1);
 	var div_2 = $.sibling(div_1, 2);
 	var h3_1 = $.child(div_2);
-	var text_3 = $.child(h3_1, true);
-	$.reset(h3_1);
+	var text_3 = $.only_child(h3_1, true);
 	var p_1 = $.sibling(h3_1, 2);
-	var text_4 = $.child(p_1, true);
-	$.reset(p_1);
+	var text_4 = $.only_child(p_1, true);
 	$.reset(div_2);
 	var div_3 = $.sibling(div_2, 2);
 	var h3_2 = $.child(div_3);
-	var text_5 = $.child(h3_2, true);
-	$.reset(h3_2);
+	var text_5 = $.only_child(h3_2, true);
 	var p_2 = $.sibling(h3_2, 2);
-	var text_6 = $.child(p_2, true);
-	$.reset(p_2);
+	var text_6 = $.only_child(p_2, true);
 	$.reset(div_3);
 	$.reset(div);
 	$.reset(section);

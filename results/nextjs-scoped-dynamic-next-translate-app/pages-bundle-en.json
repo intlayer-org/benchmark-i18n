@@ -1,7 +1,7 @@
 {
   "app": "nextjs-scoped-dynamic-next-translate-app",
   "locale": "en",
-  "timestamp": "2026-04-21T00:24:21.461Z",
+  "timestamp": "2026-09-09T19:06:11.899Z",
   "fingerprintCounts": {
     "locale": {
       "en": 85,
@@ -25,75 +25,69 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 599344,
-      "totalGzipSize": 169309,
-      "jsSize": 546920,
-      "jsGzipSize": 157216,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 29177,
-      "htmlGzipSize": 7240,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 543348,
+      "totalGzipSize": 159104,
+      "jsSize": 492946,
+      "jsGzipSize": 147128,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 27624,
+      "htmlGzipSize": 7170,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en",
-          "size": 29177,
-          "gzipSize": 7240,
+          "size": 27624,
+          "gzipSize": 7170,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/3adl7yr_6vsiq.js",
+          "size": 9174,
+          "gzipSize": 2502,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0quht3gxykzil.js",
-          "size": 7982,
-          "gzipSize": 2213,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
@@ -190,82 +184,91 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 591520,
-      "totalGzipSize": 167832,
-      "jsSize": 543476,
-      "jsGzipSize": 156517,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 24797,
-      "htmlGzipSize": 6462,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 539546,
+      "totalGzipSize": 158921,
+      "jsSize": 489501,
+      "jsGzipSize": 146411,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 27267,
+      "htmlGzipSize": 7704,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/about",
-          "size": 24797,
-          "gzipSize": 6462,
+          "size": 27267,
+          "gzipSize": 7704,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/3m8v1f-gxkkdv.js",
+          "size": 5729,
+          "gzipSize": 1785,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/011gsk4jbabpj.js",
-          "size": 4538,
-          "gzipSize": 1514,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 14,
+          "count": 29,
           "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
             "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
@@ -290,8 +293,24 @@
       "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 15,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 12,
@@ -343,88 +362,97 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 0
+      "pageLeakagePercent": 55.55555555555556
     },
     {
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 590309,
-      "totalGzipSize": 167358,
-      "jsSize": 542973,
-      "jsGzipSize": 156574,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 24089,
-      "htmlGzipSize": 5931,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 538540,
+      "totalGzipSize": 158638,
+      "jsSize": 488998,
+      "jsGzipSize": 146483,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 26764,
+      "htmlGzipSize": 7349,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/blog",
-          "size": 24089,
-          "gzipSize": 5931,
+          "size": 26764,
+          "gzipSize": 7349,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/020mjl6jx8_78.js",
+          "size": 5226,
+          "gzipSize": 1857,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/04mlk41l6nyua.js",
-          "size": 4035,
-          "gzipSize": 1571,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 15,
+          "count": 30,
           "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "insights, deep dives, and updates from the i18n benchmarking community.",
@@ -450,8 +478,24 @@
       "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 15,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 0,
@@ -504,88 +548,97 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 0
+      "pageLeakagePercent": 53.57142857142857
     },
     {
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 587208,
-      "totalGzipSize": 166796,
-      "jsSize": 543303,
-      "jsGzipSize": 156525,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 20658,
-      "htmlGzipSize": 5418,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 535261,
+      "totalGzipSize": 158089,
+      "jsSize": 489329,
+      "jsGzipSize": 146436,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 23154,
+      "htmlGzipSize": 6847,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/careers",
-          "size": 20658,
-          "gzipSize": 5418,
+          "size": 23154,
+          "gzipSize": 6847,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/1d6pttno0th64.js",
+          "size": 5557,
+          "gzipSize": 1810,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nxxl2e3da~.z.js",
-          "size": 4365,
-          "gzipSize": 1522,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 6,
+          "count": 21,
           "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "from anywhere in the world",
@@ -602,8 +655,24 @@
       "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 15,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 0,
@@ -647,88 +716,97 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 0
+      "pageLeakagePercent": 78.94736842105263
     },
     {
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 587545,
-      "totalGzipSize": 166826,
-      "jsSize": 543722,
-      "jsGzipSize": 156556,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 20576,
-      "htmlGzipSize": 5417,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 535776,
+      "totalGzipSize": 158114,
+      "jsSize": 489747,
+      "jsGzipSize": 146455,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 23251,
+      "htmlGzipSize": 6853,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/contact",
-          "size": 20576,
-          "gzipSize": 5417,
+          "size": 23251,
+          "gzipSize": 6853,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o~06uqf_lgze.js",
-          "size": 4784,
-          "gzipSize": 1553,
+          "url": "/_next/static/chunks/14zbwxk6nxfw1.js",
+          "size": 5975,
+          "gzipSize": 1829,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 3,
+          "count": 18,
           "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "we'll get back to you within 48 hours."
@@ -742,8 +820,24 @@
       "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 15,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 0,
@@ -785,88 +879,97 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 0
+      "pageLeakagePercent": 88.23529411764706
     },
     {
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 587406,
-      "totalGzipSize": 166988,
-      "jsSize": 542115,
-      "jsGzipSize": 156368,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 22044,
-      "htmlGzipSize": 5767,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 535637,
+      "totalGzipSize": 158267,
+      "jsSize": 488140,
+      "jsGzipSize": 146282,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 24719,
+      "htmlGzipSize": 7179,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/faq",
-          "size": 22044,
-          "gzipSize": 5767,
+          "size": 24719,
+          "gzipSize": 7179,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/3ohbctkhwircx.js",
+          "size": 4368,
+          "gzipSize": 1656,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/03jazek6.f752.js",
-          "size": 3177,
-          "gzipSize": 1365,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 9,
+          "count": 24,
           "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "frequently asked questions",
@@ -886,8 +989,24 @@
       "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 15,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 0,
@@ -934,88 +1053,97 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 0
+      "pageLeakagePercent": 68.18181818181817
     },
     {
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 590073,
-      "totalGzipSize": 167215,
-      "jsSize": 543435,
-      "jsGzipSize": 156660,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 23391,
-      "htmlGzipSize": 5702,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 538304,
+      "totalGzipSize": 158514,
+      "jsSize": 489460,
+      "jsGzipSize": 146573,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 26066,
+      "htmlGzipSize": 7135,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/pricing",
-          "size": 23391,
-          "gzipSize": 5702,
+          "size": 26066,
+          "gzipSize": 7135,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/1dmsotzuyneyj.js",
+          "size": 5688,
+          "gzipSize": 1947,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0nt8v9-y0djzp.js",
-          "size": 4497,
-          "gzipSize": 1657,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 5,
+          "count": 20,
           "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "transparent pricing for every stage of your i18n journey.",
@@ -1031,8 +1159,24 @@
       "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 15,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 0,
@@ -1075,88 +1219,97 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 0
+      "pageLeakagePercent": 83.33333333333334
     },
     {
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 589359,
-      "totalGzipSize": 166912,
-      "jsSize": 542792,
-      "jsGzipSize": 156409,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 23320,
-      "htmlGzipSize": 5650,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 537590,
+      "totalGzipSize": 158207,
+      "jsSize": 488817,
+      "jsGzipSize": 146323,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 25995,
+      "htmlGzipSize": 7078,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/products",
-          "size": 23320,
-          "gzipSize": 5650,
+          "size": 25995,
+          "gzipSize": 7078,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/26itcbgufdcmf.js",
+          "size": 5045,
+          "gzipSize": 1697,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0s35-jst~9lx9.js",
-          "size": 3854,
-          "gzipSize": 1406,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 9,
+          "count": 24,
           "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "explore our suite of tools designed to help you build better i18n apps.",
@@ -1176,8 +1329,24 @@
       "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 15,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 0,
@@ -1225,88 +1394,97 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 0
+      "pageLeakagePercent": 65.21739130434783
     },
     {
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 593485,
-      "totalGzipSize": 167681,
-      "jsSize": 546278,
-      "jsGzipSize": 156896,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 23960,
-      "htmlGzipSize": 5932,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 541182,
+      "totalGzipSize": 158988,
+      "jsSize": 492306,
+      "jsGzipSize": 146808,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 26098,
+      "htmlGzipSize": 7374,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/settings",
-          "size": 23960,
-          "gzipSize": 5932,
+          "size": 26098,
+          "gzipSize": 7374,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/0h0-_yfncs8uf.js",
+          "size": 8534,
+          "gzipSize": 2182,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01~pe10lp98f4.js",
-          "size": 7340,
-          "gzipSize": 1893,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 6,
+          "count": 21,
           "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "manage your account preferences and configuration.",
@@ -1323,8 +1501,24 @@
       "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 15,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 0,
@@ -1369,88 +1563,97 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 0
+      "pageLeakagePercent": 75
     },
     {
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 588846,
-      "totalGzipSize": 167222,
-      "jsSize": 542703,
-      "jsGzipSize": 156531,
-      "cssSize": 23247,
-      "cssGzipSize": 4853,
-      "htmlSize": 22896,
-      "htmlGzipSize": 5838,
-      "fileCount": 10,
-      "jsFileCount": 8,
+      "totalSize": 537077,
+      "totalGzipSize": 158524,
+      "jsSize": 488728,
+      "jsGzipSize": 146441,
+      "cssSize": 22778,
+      "cssGzipSize": 4806,
+      "htmlSize": 25571,
+      "htmlGzipSize": 7277,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/team",
-          "size": 22896,
-          "gzipSize": 5838,
+          "size": 25571,
+          "gzipSize": 7277,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/152-fd21t3a.f.css",
-          "size": 23247,
-          "gzipSize": 4853,
+          "url": "/_next/static/chunks/2tuqump789od4.css",
+          "size": 22778,
+          "gzipSize": 4806,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1bhcyncsk_jwn.js",
+          "size": 30393,
+          "gzipSize": 9260,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0yaej2anog99c.js",
-          "size": 8038,
-          "gzipSize": 2965,
+          "url": "/_next/static/chunks/turbopack-3xcdqnf7i66n4.js",
+          "size": 9688,
+          "gzipSize": 3833,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-16o.jrbo-soc0.js",
-          "size": 10547,
-          "gzipSize": 4132,
+          "url": "/_next/static/chunks/02-p52h0h5l-q.js",
+          "size": 170788,
+          "gzipSize": 45686,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0tqmwf_5hispe.js",
-          "size": 20511,
-          "gzipSize": 7581,
+          "url": "/_next/static/chunks/1kb_hd4iiv3xz.js",
+          "size": 19657,
+          "gzipSize": 5241,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0o45~6a1e3i8i.js",
-          "size": 54641,
-          "gzipSize": 12884,
+          "url": "/_next/static/chunks/34se6lm_klmwx.js",
+          "size": 4956,
+          "gzipSize": 1815,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0v97z_yhausy-.js",
-          "size": 3765,
-          "gzipSize": 1528,
+          "url": "/_next/static/chunks/2sjsl68wooize.js",
+          "size": 25283,
+          "gzipSize": 9270,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0u5zbr21gnm3e.js",
-          "size": 188612,
-          "gzipSize": 47400,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/0vpmhcudmhxmi.js",
+          "size": 227963,
+          "gzipSize": 71336,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 11,
+          "count": 26,
           "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
@@ -1472,8 +1675,24 @@
       "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
-          "count": 0,
-          "found": []
+          "count": 15,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
         },
         "about": {
           "count": 0,
@@ -1522,7 +1741,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 0
+      "pageLeakagePercent": 62.5
     }
   ]
 }

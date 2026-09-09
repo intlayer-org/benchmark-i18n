@@ -1613,7 +1613,7 @@ function xe(e, t) {
 			let o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = Se(t);
 			for ((c == "H" || c == "k") && (s = 0); s-- > 0;) n += "a";
 			for (; o-- > 0;) n = c + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
@@ -1725,8 +1725,10 @@ var Ne = class {
 					},
 					err: null
 				} : this.error(D.INVALID_TAG, z(o, this.clonePosition()))) : this.error(D.UNMATCHED_CLOSING_TAG, z(e, this.clonePosition()));
-			} else return this.error(D.UNCLOSED_TAG, z(n, this.clonePosition()));
-		} else return this.error(D.INVALID_TAG, z(n, this.clonePosition()));
+			}
+			return this.error(D.UNCLOSED_TAG, z(n, this.clonePosition()));
+		}
+		return this.error(D.INVALID_TAG, z(n, this.clonePosition()));
 	}
 	parseTagName() {
 		let e = this.offset();
@@ -1783,12 +1785,13 @@ var Ne = class {
 		let t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			let e = this.char();
-			if (e === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(e);
+			if (e === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(e);
 			this.bump();
 		}
 		return String.fromCodePoint(...t);
@@ -1861,7 +1864,8 @@ var Ne = class {
 							},
 							err: null
 						};
-					} else {
+					}
+					{
 						if (t.length === 0) return this.error(D.EXPECT_DATE_TIME_SKELETON, i);
 						let r = t;
 						this.locale && (r = xe(t, this.locale));
@@ -1960,9 +1964,7 @@ var Ne = class {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -2422,7 +2424,7 @@ function qe(e, t) {
 	}), e.message);
 }
 function Je(e, t) {
-	return t || /'[{}]/.test(e) || /<|{/.test(e) ? void 0 : e;
+	return t || /'[{}<#|']/.test(e) || /<|{/.test(e) ? void 0 : e;
 }
 function J(...[e, t, r, i]) {
 	if (Array.isArray(t)) throw new v(y.INVALID_MESSAGE, `Message at \`${e}\` resolved to an array, but only strings are supported. See https://next-intl.dev/docs/usage/translations#arrays-of-messages`);
@@ -2509,13 +2511,14 @@ function et({ cache: e, formats: t, formatters: n, getMessageFallback: r = Ye, l
 	}
 	function d(d, f, p, m) {
 		let h = m, g;
-		if (l) if (h) g = h;
-		else return s(a), r({
-			error: a,
-			key: d,
-			namespace: o
-		});
-		else {
+		if (l) {
+			if (h) g = h;
+			else return s(a), r({
+				error: a,
+				key: d,
+				namespace: o
+			});
+		} else {
 			let e = a;
 			try {
 				g = X(i, e, d, o);
@@ -2578,7 +2581,7 @@ function et({ cache: e, formats: t, formatters: n, getMessageFallback: r = Ye, l
 function tt(e, t) {
 	return e === t ? void 0 : e.slice((t + ".").length);
 }
-var Z = 3600 * 24;
+var Z = 86400;
 Z * 7, 365 / 12 * Z * 3, Z * 365;
 function nt(e, t, n) {
 	Object.entries(e).forEach(([e, r]) => {
@@ -2723,14 +2726,17 @@ function pt({ locale: e, ...t }) {
 		...t
 	});
 }
-var mt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intl-app/components/MockBanner.tsx", ht = () => u("div", {
-	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: ft()("mockBanner")
-}, void 0, !1, {
-	fileName: mt,
-	lineNumber: 8,
-	columnNumber: 5
-}, void 0), $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intl-app/components/pages/pricing/PricingHeader.tsx";
+var mt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intl-app/components/MockBanner.tsx", ht = () => {
+	let e = ft();
+	return u("div", {
+		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
+		children: e("mockBanner")
+	}, void 0, !1, {
+		fileName: mt,
+		lineNumber: 8,
+		columnNumber: 5
+	}, void 0);
+}, $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intl-app/components/pages/pricing/PricingHeader.tsx";
 function gt() {
 	let e = ft();
 	return u(l, { children: [u(ht, {}, void 0, !1, {
@@ -2758,7 +2764,11 @@ function gt() {
 		fileName: $,
 		lineNumber: 11,
 		columnNumber: 7
-	}, this)] }, void 0, !0);
+	}, this)] }, void 0, !0, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
 function _t() {
 	if (!(typeof window > "u")) {

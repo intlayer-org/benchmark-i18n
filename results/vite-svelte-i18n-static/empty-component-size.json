@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-04-29T23:22:54.171Z",
+  "timestamp": "2026-09-09T19:21:25.247Z",
   "packageName": "vite-svelte-i18n-static",
   "framework": "svelte",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 87389,
-    "totalMinifiedBytes": 63841,
-    "totalGzipBytes": 16300
+    "totalUnminifiedBytes": 90538,
+    "totalMinifiedBytes": 65867,
+    "totalGzipBytes": 17000
   },
   "components": [
     {
       "name": "EmptyComponent.svelte",
       "category": "Synthetic",
-      "unminifiedBytes": 87389,
-      "unminifiedGzipBytes": 19663,
-      "minifiedBytes": 63841,
-      "minifiedGzipBytes": 16300
+      "unminifiedBytes": 90538,
+      "unminifiedGzipBytes": 20459,
+      "minifiedBytes": 65867,
+      "minifiedGzipBytes": 17000
     }
   ]
 }

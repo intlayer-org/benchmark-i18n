@@ -145,7 +145,7 @@ function P(e) {
 function F(e) {
 	console.error(e);
 }
-var I = 3600 * 24;
+var I = 86400;
 I * 7, 365 / 12 * I * 3, I * 365;
 function L(e, t, n) {
 	Object.entries(e).forEach(([e, r]) => {

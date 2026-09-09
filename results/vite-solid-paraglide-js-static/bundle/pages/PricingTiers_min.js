@@ -15,54 +15,34 @@ var s = {}, c = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], f = [], p, m;
-function ee(e) {
-	if (f.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (p === t) return m;
-	let n = new URL(t, "http://dummy.com"), r;
-	for (let e of f) if (new s(e.match, n.href).exec(n.href)) {
-		r = e;
-		break;
-	}
-	return p = t, m = r, r;
-}
-function h(e) {
-	let t = ee(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : d;
-}
-var g = void 0, _ = typeof window > "u";
+], f = [], p = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var v, y = !1, b = () => {
-	if (g) {
-		let e = g?.getStore()?.locale;
-		if (e) return e;
-	}
+var m, h = !1, g = () => {
 	let e = d;
-	!_ && typeof window < "u" && window.location?.href && (e = h(window.location.href));
-	let t = x(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return y || (v = t, y = !0, te(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	!p && typeof window < "u" && window.location?.href && (e = P(window.location.href));
+	let t = ee(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return h || (m = t, h = !0, te(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function x(e, t) {
+function ee(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = w();
+		if (t === "cookie") n = O();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && v !== void 0) n = v;
-		else if (E(t) && T.has(t)) {
-			let e = T.get(t);
+		else if (t === "globalVariable" && m !== void 0) n = m;
+		else if (I(t) && F.has(t)) {
+			let e = F.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return ne(t);
+				if (t !== void 0) return y(t);
 			}
 		}
-		let e = C(n);
+		let e = v(n);
 		if (e) return e;
 	}
 }
-var S = (e) => {
+var _ = (e) => {
 	e ? window.location.href = e : window.location.reload();
 }, te = (e, t) => {
 	let n = {
@@ -70,18 +50,18 @@ var S = (e) => {
 		...t
 	}, r;
 	try {
-		r = b();
+		r = g();
 	} catch {}
 	let i = [], a = d;
-	!_ && typeof window < "u" && window.location?.href && (a = h(window.location.href));
-	for (let t of a) if (t === "globalVariable") v = e;
+	!p && typeof window < "u" && window.location?.href && (a = P(window.location.href));
+	for (let t of a) if (t === "globalVariable") m = e;
 	else if (t === "cookie") {
-		if (_ || typeof document > "u" || typeof window > "u") continue;
+		if (p || typeof document > "u" || typeof window > "u") continue;
 		let t = `${l}=${e}; path=/; max-age=${u}`;
-		document.cookie = t;
+		document.cookie = t, E();
 	} else if (t === "baseLocale") continue;
-	else if (E(t) && T.has(t)) {
-		let n = T.get(t);
+	else if (I(t) && F.has(t)) {
+		let n = F.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -90,175 +70,215 @@ var S = (e) => {
 		}
 	}
 	let o = () => {
-		!_ && n.reload && window.location && e !== r && S(void 0);
+		!p && n.reload && window.location && e !== r && _(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
-};
-function C(e) {
+}, ne = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function v(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of c) if (e.toLowerCase() === t) return e;
 }
-function ne(e) {
-	let t = C(e);
+function y(e) {
+	let t = v(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${c.join(", ")}`);
 }
-function w() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${l}=([^;]+)`))?.[2];
-	return C(e);
+function b(e) {
+	return e;
 }
-var T = /* @__PURE__ */ new Map();
-function E(e) {
+function x(e, t) {
+	return e.exec(t.href);
+}
+var S = l.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), C = RegExp(`(?:^|;\\s*)${S}=([^;]*)`), w = Symbol(), T = w;
+function E() {
+	T = w;
+}
+function D() {
+	typeof queueMicrotask == "function" ? queueMicrotask(E) : Promise.resolve().then(E);
+}
+function O() {
+	if (typeof document > "u") return;
+	if (T !== w) return T;
+	let e = document.cookie.match(C)?.[1];
+	return T = v(e), D(), T;
+}
+function k(e) {
+	return A(e);
+}
+function A(e) {
+	let t = b(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && v(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), b(t);
+}
+var j, M;
+function N(e) {
+	if (f.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (j === t) return M;
+	let n = b(new URL(t, "http://example.com")), r = k(n), i = r.href === n.href ? [n] : [n, r], a;
+	for (let e of i) {
+		for (let t of f) if (x(new s(t.match, e.href), e)) {
+			a = t;
+			break;
+		}
+		if (a) break;
+	}
+	return j = t, M = a, a;
+}
+function P(e) {
+	let t = N(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : d;
+}
+var F = /* @__PURE__ */ new Map();
+function I(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var D = () => "Starter", O = () => "Starter", k = () => "Starter", A = () => "Starter", j = () => "Starter", M = () => "Starter", N = () => "入门版", P = () => "スターター", F = () => "Starter", I = () => "Starter", L = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? D(e) : n === "fr" ? O(e) : n === "es" ? k(e) : n === "de" ? A(e) : n === "it" ? j(e) : n === "pt" ? M(e) : n === "zh" ? N(e) : n === "ja" ? P(e) : n === "ko" ? F(e) : I(e);
-}), R = () => "$0", z = () => "0 €", B = () => "0 $", V = () => "0 $", H = () => "0 $", U = () => "0 $", W = () => "0 $", G = () => "0円", K = () => "$0", q = () => "0 $", J = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? R(e) : n === "fr" ? z(e) : n === "es" ? B(e) : n === "de" ? V(e) : n === "it" ? H(e) : n === "pt" ? U(e) : n === "zh" ? W(e) : n === "ja" ? G(e) : n === "ko" ? K(e) : q(e);
-}), Y = () => "forever", X = () => "pour toujours", Z = () => "para siempre", re = () => "für immer", ie = () => "per sempre", ae = () => "para sempre", oe = () => "永久", se = () => "ずっと無料", ce = () => "forever", le = () => "навсегда", ue = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Y(e) : n === "fr" ? X(e) : n === "es" ? Z(e) : n === "de" ? re(e) : n === "it" ? ie(e) : n === "pt" ? ae(e) : n === "zh" ? oe(e) : n === "ja" ? se(e) : n === "ko" ? ce(e) : le(e);
-}), de = () => "5 benchmark runs/day", fe = () => "5 exécutions de benchmark / jour", pe = () => "5 ejecuciones de benchmark al día", me = () => "5 Benchmark-Durchläufe/Tag", he = () => "5 esecuzioni benchmark al giorno", ge = () => "5 execuções de benchmark/dia", _e = () => "每天 5 次基准测试运行", ve = () => "1日あたり5回のベンチマーク実行", ye = () => "5 benchmark runs/day", be = () => "5 запусков бенчмарка в день", xe = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? de(e) : n === "fr" ? fe(e) : n === "es" ? pe(e) : n === "de" ? me(e) : n === "it" ? he(e) : n === "pt" ? ge(e) : n === "zh" ? _e(e) : n === "ja" ? ve(e) : n === "ko" ? ye(e) : be(e);
-}), Se = () => "3 libraries", Ce = () => "3 bibliothèques", we = () => "3 bibliotecas", Te = () => "3 Bibliotheken", Ee = () => "3 librerie", De = () => "3 bibliotecas", Oe = () => "3 个库", ke = () => "3ライブラリ", Ae = () => "3 libraries", je = () => "3 библиотеки", Me = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Se(e) : n === "fr" ? Ce(e) : n === "es" ? we(e) : n === "de" ? Te(e) : n === "it" ? Ee(e) : n === "pt" ? De(e) : n === "zh" ? Oe(e) : n === "ja" ? ke(e) : n === "ko" ? Ae(e) : je(e);
-}), Ne = () => "Community support", Pe = () => "Support communautaire", Fe = () => "Soporte de la comunidad", Ie = () => "Community-Support", Le = () => "Supporto della comunità", Re = () => "Suporte da comunidade", ze = () => "社区支持", Be = () => "コミュニティサポート", Ve = () => "Community support", He = () => "Поддержка сообщества", Ue = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Ne(e) : n === "fr" ? Pe(e) : n === "es" ? Fe(e) : n === "de" ? Ie(e) : n === "it" ? Le(e) : n === "pt" ? Re(e) : n === "zh" ? ze(e) : n === "ja" ? Be(e) : n === "ko" ? Ve(e) : He(e);
-}), We = () => "Public results", Ge = () => "Résultats publics", Ke = () => "Resultados públicos", qe = () => "Öffentliche Ergebnisse", Je = () => "Risultati pubblici", Ye = () => "Resultados públicos", Xe = () => "公开结果", Ze = () => "公開結果", Qe = () => "Public results", $e = () => "Публичные результаты", et = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? We(e) : n === "fr" ? Ge(e) : n === "es" ? Ke(e) : n === "de" ? qe(e) : n === "it" ? Je(e) : n === "pt" ? Ye(e) : n === "zh" ? Xe(e) : n === "ja" ? Ze(e) : n === "ko" ? Qe(e) : $e(e);
-}), tt = () => "Pro", nt = () => "Pro", rt = () => "Pro", it = () => "Pro", at = () => "Pro", ot = () => "Pro", st = () => "专业版", ct = () => "プロ", lt = () => "Pro", ut = () => "Pro", dt = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? tt(e) : n === "fr" ? nt(e) : n === "es" ? rt(e) : n === "de" ? it(e) : n === "it" ? at(e) : n === "pt" ? ot(e) : n === "zh" ? st(e) : n === "ja" ? ct(e) : n === "ko" ? lt(e) : ut(e);
-}), ft = () => "$29", pt = () => "29 €", mt = () => "29 $", ht = () => "29 $", gt = () => "29 $", _t = () => "29 $", vt = () => "29 $", yt = () => "29ドル", bt = () => "$29", xt = () => "29 $", St = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? ft(e) : n === "fr" ? pt(e) : n === "es" ? mt(e) : n === "de" ? ht(e) : n === "it" ? gt(e) : n === "pt" ? _t(e) : n === "zh" ? vt(e) : n === "ja" ? yt(e) : n === "ko" ? bt(e) : xt(e);
-}), Ct = () => "/month", wt = () => "/ mois", Tt = () => "/mes", Et = () => "/Monat", Dt = () => "/mese", Ot = () => "/mês", kt = () => "/月", At = () => "/月", jt = () => "/month", Mt = () => "/мес", Nt = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Ct(e) : n === "fr" ? wt(e) : n === "es" ? Tt(e) : n === "de" ? Et(e) : n === "it" ? Dt(e) : n === "pt" ? Ot(e) : n === "zh" ? kt(e) : n === "ja" ? At(e) : n === "ko" ? jt(e) : Mt(e);
-}), Pt = () => "Unlimited runs", Ft = () => "Exécutions illimitées", It = () => "Ejecuciones ilimitadas", Lt = () => "Unbegrenzte Durchläufe", Rt = () => "Esecuzioni illimitate", zt = () => "Execuções ilimitadas", Bt = () => "无限次运行", Vt = () => "無制限の実行", Ht = () => "Unlimited runs", Ut = () => "Неограниченное число запусков", Wt = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Pt(e) : n === "fr" ? Ft(e) : n === "es" ? It(e) : n === "de" ? Lt(e) : n === "it" ? Rt(e) : n === "pt" ? zt(e) : n === "zh" ? Bt(e) : n === "ja" ? Vt(e) : n === "ko" ? Ht(e) : Ut(e);
-}), Gt = () => "All libraries", Kt = () => "Toutes les bibliothèques", qt = () => "Todas las bibliotecas", Jt = () => "Alle Bibliotheken", Yt = () => "Tutte le librerie", Xt = () => "Todas as bibliotecas", Zt = () => "所有库", Qt = () => "すべてのライブラリ", $t = () => "All libraries", en = () => "Все библиотеки", tn = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Gt(e) : n === "fr" ? Kt(e) : n === "es" ? qt(e) : n === "de" ? Jt(e) : n === "it" ? Yt(e) : n === "pt" ? Xt(e) : n === "zh" ? Zt(e) : n === "ja" ? Qt(e) : n === "ko" ? $t(e) : en(e);
-}), nn = () => "Priority support", rn = () => "Support prioritaire", an = () => "Soporte prioritario", on = () => "Priorisierter Support", sn = () => "Supporto prioritario", cn = () => "Suporte prioritário", ln = () => "优先支持", un = () => "優先サポート", dn = () => "Priority support", fn = () => "Приоритетная поддержка", pn = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? nn(e) : n === "fr" ? rn(e) : n === "es" ? an(e) : n === "de" ? on(e) : n === "it" ? sn(e) : n === "pt" ? cn(e) : n === "zh" ? ln(e) : n === "ja" ? un(e) : n === "ko" ? dn(e) : fn(e);
-}), mn = () => "Private results", hn = () => "Résultats privés", gn = () => "Resultados privados", _n = () => "Private Ergebnisse", vn = () => "Risultati privati", yn = () => "Resultados privados", bn = () => "私有结果", xn = () => "非公開の結果", Sn = () => "Private results", Cn = () => "Приватные результаты", wn = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? mn(e) : n === "fr" ? hn(e) : n === "es" ? gn(e) : n === "de" ? _n(e) : n === "it" ? vn(e) : n === "pt" ? yn(e) : n === "zh" ? bn(e) : n === "ja" ? xn(e) : n === "ko" ? Sn(e) : Cn(e);
-}), Tn = () => "CI integration", En = () => "Intégration CI", Dn = () => "Integración CI", On = () => "CI-Integration", kn = () => "Integrazione CI", An = () => "Integração CI", jn = () => "CI 集成", Mn = () => "CI統合", Nn = () => "CI integration", Pn = () => "Интеграция с CI", Fn = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Tn(e) : n === "fr" ? En(e) : n === "es" ? Dn(e) : n === "de" ? On(e) : n === "it" ? kn(e) : n === "pt" ? An(e) : n === "zh" ? jn(e) : n === "ja" ? Mn(e) : n === "ko" ? Nn(e) : Pn(e);
-}), In = () => "Historical data", Ln = () => "Historique", Rn = () => "Datos históricos", zn = () => "Historische Daten", Bn = () => "Dati storici", Vn = () => "Dados históricos", Hn = () => "历史数据", Un = () => "履歴データ", Wn = () => "Historical data", Gn = () => "Исторические данные", Kn = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? In(e) : n === "fr" ? Ln(e) : n === "es" ? Rn(e) : n === "de" ? zn(e) : n === "it" ? Bn(e) : n === "pt" ? Vn(e) : n === "zh" ? Hn(e) : n === "ja" ? Un(e) : n === "ko" ? Wn(e) : Gn(e);
-}), qn = () => "Enterprise", Jn = () => "Enterprise", Yn = () => "Enterprise", Xn = () => "Enterprise", Zn = () => "Enterprise", Qn = () => "Enterprise", $n = () => "企业版", er = () => "エンタープライズ", tr = () => "Enterprise", nr = () => "Enterprise", Q = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? qn(e) : n === "fr" ? Jn(e) : n === "es" ? Yn(e) : n === "de" ? Xn(e) : n === "it" ? Zn(e) : n === "pt" ? Qn(e) : n === "zh" ? $n(e) : n === "ja" ? er(e) : n === "ko" ? tr(e) : nr(e);
-}), rr = () => "Custom", ir = () => "Sur mesure", ar = () => "Personalizado", or = () => "Individuell", sr = () => "Personalizzato", cr = () => "Personalizado", lr = () => "定制", ur = () => "カスタム", dr = () => "Custom", fr = () => "Индивидуально", pr = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? rr(e) : n === "fr" ? ir(e) : n === "es" ? ar(e) : n === "de" ? or(e) : n === "it" ? sr(e) : n === "pt" ? cr(e) : n === "zh" ? lr(e) : n === "ja" ? ur(e) : n === "ko" ? dr(e) : fr(e);
-}), mr = () => "Everything in Pro", hr = () => "Tout le Pro", gr = () => "Todo lo que hay en Pro", _r = () => "Alles in Pro enthalten", vr = () => "Tutto quello che c'è in Pro", yr = () => "Tudo o que está no Pro", br = () => "包含专业版中的所有功能", xr = () => "Proプランのすべてを含む", Sr = () => "Everything in Pro", Cr = () => "Все, что есть в Pro", wr = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? mr(e) : n === "fr" ? hr(e) : n === "es" ? gr(e) : n === "de" ? _r(e) : n === "it" ? vr(e) : n === "pt" ? yr(e) : n === "zh" ? br(e) : n === "ja" ? xr(e) : n === "ko" ? Sr(e) : Cr(e);
-}), Tr = () => "On-premise option", Er = () => "Option on-premise", Dr = () => "Opción on-premise", Or = () => "On-Premise-Option", kr = () => "Opzione on-premise", Ar = () => "Opção on-premise", jr = () => "本地部署选项", Mr = () => "オンプレミスオプション", Nr = () => "On-premise option", Pr = () => "Локальная установка", Fr = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Tr(e) : n === "fr" ? Er(e) : n === "es" ? Dr(e) : n === "de" ? Or(e) : n === "it" ? kr(e) : n === "pt" ? Ar(e) : n === "zh" ? jr(e) : n === "ja" ? Mr(e) : n === "ko" ? Nr(e) : Pr(e);
-}), Ir = () => "SSO & SAML", Lr = () => "SSO et SAML", Rr = () => "SSO y SAML", zr = () => "SSO & SAML", Br = () => "SSO e SAML", Vr = () => "SSO e SAML", Hr = () => "SSO 和 SAML", Ur = () => "SSO & SAML", Wr = () => "SSO & SAML", Gr = () => "SSO и SAML", Kr = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Ir(e) : n === "fr" ? Lr(e) : n === "es" ? Rr(e) : n === "de" ? zr(e) : n === "it" ? Br(e) : n === "pt" ? Vr(e) : n === "zh" ? Hr(e) : n === "ja" ? Ur(e) : n === "ko" ? Wr(e) : Gr(e);
-}), qr = () => "Dedicated account manager", Jr = () => "Account manager dédié", Yr = () => "Gestor de cuentas dedicado", Xr = () => "Dedizierter Account Manager", Zr = () => "Account manager dedicato", Qr = () => "Gerente de conta dedicado", $r = () => "专属客户经理", ei = () => "専任のアカウントマネージャー", ti = () => "Dedicated account manager", ni = () => "Персональный менеджер", ri = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? qr(e) : n === "fr" ? Jr(e) : n === "es" ? Yr(e) : n === "de" ? Xr(e) : n === "it" ? Zr(e) : n === "pt" ? Qr(e) : n === "zh" ? $r(e) : n === "ja" ? ei(e) : n === "ko" ? ti(e) : ni(e);
-}), ii = () => "Custom SLAs", ai = () => "SLA sur mesure", oi = () => "SLAs personalizados", si = () => "Individuelle SLAs", ci = () => "SLA personalizzati", li = () => "SLAs personalizados", ui = () => "定制 SLA", di = () => "カスタムSLA", fi = () => "Custom SLAs", pi = () => "Индивидуальные SLA", mi = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? ii(e) : n === "fr" ? ai(e) : n === "es" ? oi(e) : n === "de" ? si(e) : n === "it" ? ci(e) : n === "pt" ? li(e) : n === "zh" ? ui(e) : n === "ja" ? di(e) : n === "ko" ? fi(e) : pi(e);
-}), hi = () => "Audit logs", gi = () => "Journaux d'audit", _i = () => "Registros de auditoría", vi = () => "Audit-Protokolle", yi = () => "Log di controllo", bi = () => "Logs de auditoria", xi = () => "审计日志", Si = () => "監査ログ", Ci = () => "Audit logs", wi = () => "Журналы аудита", Ti = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? hi(e) : n === "fr" ? gi(e) : n === "es" ? _i(e) : n === "de" ? vi(e) : n === "it" ? yi(e) : n === "pt" ? bi(e) : n === "zh" ? xi(e) : n === "ja" ? Si(e) : n === "ko" ? Ci(e) : wi(e);
-}), Ei = () => "Training sessions", Di = () => "Sessions de formation", Oi = () => "Sesiones de formación", ki = () => "Schulungssitzungen", Ai = () => "Sessioni di formazione", ji = () => "Sessões de treinamento", Mi = () => "培训课程", Ni = () => "トレーニングセッション", Pi = () => "Training sessions", Fi = () => "Обучающие сессии", Ii = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Ei(e) : n === "fr" ? Di(e) : n === "es" ? Oi(e) : n === "de" ? ki(e) : n === "it" ? Ai(e) : n === "pt" ? ji(e) : n === "zh" ? Mi(e) : n === "ja" ? Ni(e) : n === "ko" ? Pi(e) : Fi(e);
-}), Li = () => "Contact Sales", Ri = () => "Contacter les ventes", $ = () => "Contactar con ventas", zi = () => "Vertrieb kontaktieren", Bi = () => "Contatta l'ufficio vendite", Vi = () => "Contatar vendas", Hi = () => "联系销售", Ui = () => "営業に問い合わせる", Wi = () => "Contact Sales", Gi = () => "Связаться с отделом продаж", Ki = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? Li(e) : n === "fr" ? Ri(e) : n === "es" ? $(e) : n === "de" ? zi(e) : n === "it" ? Bi(e) : n === "pt" ? Vi(e) : n === "zh" ? Hi(e) : n === "ja" ? Ui(e) : n === "ko" ? Wi(e) : Gi(e);
-}), qi = () => "Get Started", Ji = () => "Commencer", Yi = () => "Empezar", Xi = () => "Erste Schritte", Zi = () => "Inizia ora", Qi = () => "Começar", $i = () => "开始使用", ea = () => "始める", ta = () => "Get Started", na = () => "Начать работу", ra = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? qi(e) : n === "fr" ? Ji(e) : n === "es" ? Yi(e) : n === "de" ? Xi(e) : n === "it" ? Zi(e) : n === "pt" ? Qi(e) : n === "zh" ? $i(e) : n === "ja" ? ea(e) : n === "ko" ? ta(e) : na(e);
-}), ia = a("<div class=\"grid gap-6 md:grid-cols-3\">"), aa = a("<div><h3 class=\"text-lg font-semibold text-foreground\"></h3><div class=my-4><span class=\"text-3xl font-bold text-foreground\"></span><span class=\"text-sm text-muted-foreground\"></span></div><ul class=\"mb-6 flex-1 space-y-2\"></ul><button type=button>"), oa = a("<li class=\"flex items-center gap-2 text-sm text-muted-foreground\"><span class=text-primary>✓</span> ");
-function sa() {
+var L = () => "Contact Sales", R = () => "Contacter les ventes", z = () => "Contactar con ventas", B = () => "Vertrieb kontaktieren", V = () => "Contatta l'ufficio vendite", H = () => "Contatar vendas", U = () => "联系销售", W = () => "営業に問い合わせる", G = () => "Contact Sales", K = () => "Связаться с отделом продаж", q = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? R(e) : n === "es" ? z(e) : n === "de" ? B(e) : n === "it" ? V(e) : n === "pt" ? H(e) : n === "zh" ? U(e) : n === "ja" ? W(e) : n === "ko" ? G(e) : n === "ru" ? K(e) : L(e);
+}), J = () => "Everything in Pro", Y = () => "Tout le Pro", X = () => "Todo lo que hay en Pro", Z = () => "Alles in Pro enthalten", re = () => "Tutto quello che c'è in Pro", ie = () => "Tudo o que está no Pro", ae = () => "包含专业版中的所有功能", oe = () => "Proプランのすべてを含む", se = () => "Everything in Pro", ce = () => "Все, что есть в Pro", le = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Y(e) : n === "es" ? X(e) : n === "de" ? Z(e) : n === "it" ? re(e) : n === "pt" ? ie(e) : n === "zh" ? ae(e) : n === "ja" ? oe(e) : n === "ko" ? se(e) : n === "ru" ? ce(e) : J(e);
+}), ue = () => "On-premise option", de = () => "Option on-premise", fe = () => "Opción on-premise", pe = () => "On-Premise-Option", me = () => "Opzione on-premise", he = () => "Opção on-premise", ge = () => "本地部署选项", _e = () => "オンプレミスオプション", ve = () => "On-premise option", ye = () => "Локальная установка", be = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? de(e) : n === "es" ? fe(e) : n === "de" ? pe(e) : n === "it" ? me(e) : n === "pt" ? he(e) : n === "zh" ? ge(e) : n === "ja" ? _e(e) : n === "ko" ? ve(e) : n === "ru" ? ye(e) : ue(e);
+}), xe = () => "SSO & SAML", Se = () => "SSO et SAML", Ce = () => "SSO y SAML", we = () => "SSO & SAML", Te = () => "SSO e SAML", Ee = () => "SSO e SAML", De = () => "SSO 和 SAML", Oe = () => "SSO & SAML", ke = () => "SSO & SAML", Ae = () => "SSO и SAML", je = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Se(e) : n === "es" ? Ce(e) : n === "de" ? we(e) : n === "it" ? Te(e) : n === "pt" ? Ee(e) : n === "zh" ? De(e) : n === "ja" ? Oe(e) : n === "ko" ? ke(e) : n === "ru" ? Ae(e) : xe(e);
+}), Me = () => "Dedicated account manager", Ne = () => "Account manager dédié", Pe = () => "Gestor de cuentas dedicado", Fe = () => "Dedizierter Account Manager", Ie = () => "Account manager dedicato", Le = () => "Gerente de conta dedicado", Re = () => "专属客户经理", ze = () => "専任のアカウントマネージャー", Be = () => "Dedicated account manager", Ve = () => "Персональный менеджер", He = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Ne(e) : n === "es" ? Pe(e) : n === "de" ? Fe(e) : n === "it" ? Ie(e) : n === "pt" ? Le(e) : n === "zh" ? Re(e) : n === "ja" ? ze(e) : n === "ko" ? Be(e) : n === "ru" ? Ve(e) : Me(e);
+}), Ue = () => "Custom SLAs", We = () => "SLA sur mesure", Ge = () => "SLAs personalizados", Ke = () => "Individuelle SLAs", qe = () => "SLA personalizzati", Je = () => "SLAs personalizados", Ye = () => "定制 SLA", Xe = () => "カスタムSLA", Ze = () => "Custom SLAs", Qe = () => "Индивидуальные SLA", $e = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? We(e) : n === "es" ? Ge(e) : n === "de" ? Ke(e) : n === "it" ? qe(e) : n === "pt" ? Je(e) : n === "zh" ? Ye(e) : n === "ja" ? Xe(e) : n === "ko" ? Ze(e) : n === "ru" ? Qe(e) : Ue(e);
+}), et = () => "Audit logs", tt = () => "Journaux d'audit", nt = () => "Registros de auditoría", rt = () => "Audit-Protokolle", it = () => "Log di controllo", at = () => "Logs de auditoria", ot = () => "审计日志", st = () => "監査ログ", ct = () => "Audit logs", lt = () => "Журналы аудита", ut = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? tt(e) : n === "es" ? nt(e) : n === "de" ? rt(e) : n === "it" ? it(e) : n === "pt" ? at(e) : n === "zh" ? ot(e) : n === "ja" ? st(e) : n === "ko" ? ct(e) : n === "ru" ? lt(e) : et(e);
+}), dt = () => "Training sessions", ft = () => "Sessions de formation", pt = () => "Sesiones de formación", mt = () => "Schulungssitzungen", ht = () => "Sessioni di formazione", gt = () => "Sessões de treinamento", _t = () => "培训课程", vt = () => "トレーニングセッション", yt = () => "Training sessions", bt = () => "Обучающие сессии", xt = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? ft(e) : n === "es" ? pt(e) : n === "de" ? mt(e) : n === "it" ? ht(e) : n === "pt" ? gt(e) : n === "zh" ? _t(e) : n === "ja" ? vt(e) : n === "ko" ? yt(e) : n === "ru" ? bt(e) : dt(e);
+}), St = () => "Enterprise", Ct = () => "Enterprise", wt = () => "Enterprise", Tt = () => "Enterprise", Et = () => "Enterprise", Dt = () => "Enterprise", Ot = () => "企业版", kt = () => "エンタープライズ", At = () => "Enterprise", jt = () => "Enterprise", Q = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Ct(e) : n === "es" ? wt(e) : n === "de" ? Tt(e) : n === "it" ? Et(e) : n === "pt" ? Dt(e) : n === "zh" ? Ot(e) : n === "ja" ? kt(e) : n === "ko" ? At(e) : n === "ru" ? jt(e) : St(e);
+}), Mt = () => "Custom", Nt = () => "Sur mesure", Pt = () => "Personalizado", Ft = () => "Individuell", It = () => "Personalizzato", Lt = () => "Personalizado", Rt = () => "定制", zt = () => "カスタム", Bt = () => "Custom", Vt = () => "Индивидуально", Ht = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Nt(e) : n === "es" ? Pt(e) : n === "de" ? Ft(e) : n === "it" ? It(e) : n === "pt" ? Lt(e) : n === "zh" ? Rt(e) : n === "ja" ? zt(e) : n === "ko" ? Bt(e) : n === "ru" ? Vt(e) : Mt(e);
+}), Ut = () => "Get Started", Wt = () => "Commencer", Gt = () => "Empezar", Kt = () => "Erste Schritte", qt = () => "Inizia ora", Jt = () => "Começar", Yt = () => "开始使用", Xt = () => "始める", Zt = () => "Get Started", Qt = () => "Начать работу", $t = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Wt(e) : n === "es" ? Gt(e) : n === "de" ? Kt(e) : n === "it" ? qt(e) : n === "pt" ? Jt(e) : n === "zh" ? Yt(e) : n === "ja" ? Xt(e) : n === "ko" ? Zt(e) : n === "ru" ? Qt(e) : Ut(e);
+}), en = () => "Unlimited runs", tn = () => "Exécutions illimitées", nn = () => "Ejecuciones ilimitadas", rn = () => "Unbegrenzte Durchläufe", an = () => "Esecuzioni illimitate", on = () => "Execuções ilimitadas", sn = () => "无限次运行", cn = () => "無制限の実行", ln = () => "Unlimited runs", un = () => "Неограниченное число запусков", dn = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? tn(e) : n === "es" ? nn(e) : n === "de" ? rn(e) : n === "it" ? an(e) : n === "pt" ? on(e) : n === "zh" ? sn(e) : n === "ja" ? cn(e) : n === "ko" ? ln(e) : n === "ru" ? un(e) : en(e);
+}), fn = () => "All libraries", pn = () => "Toutes les bibliothèques", mn = () => "Todas las bibliotecas", hn = () => "Alle Bibliotheken", gn = () => "Tutte le librerie", _n = () => "Todas as bibliotecas", vn = () => "所有库", yn = () => "すべてのライブラリ", bn = () => "All libraries", xn = () => "Все библиотеки", Sn = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? pn(e) : n === "es" ? mn(e) : n === "de" ? hn(e) : n === "it" ? gn(e) : n === "pt" ? _n(e) : n === "zh" ? vn(e) : n === "ja" ? yn(e) : n === "ko" ? bn(e) : n === "ru" ? xn(e) : fn(e);
+}), Cn = () => "Priority support", wn = () => "Support prioritaire", Tn = () => "Soporte prioritario", En = () => "Priorisierter Support", Dn = () => "Supporto prioritario", On = () => "Suporte prioritário", kn = () => "优先支持", An = () => "優先サポート", jn = () => "Priority support", Mn = () => "Приоритетная поддержка", Nn = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? wn(e) : n === "es" ? Tn(e) : n === "de" ? En(e) : n === "it" ? Dn(e) : n === "pt" ? On(e) : n === "zh" ? kn(e) : n === "ja" ? An(e) : n === "ko" ? jn(e) : n === "ru" ? Mn(e) : Cn(e);
+}), Pn = () => "Private results", Fn = () => "Résultats privés", In = () => "Resultados privados", Ln = () => "Private Ergebnisse", Rn = () => "Risultati privati", zn = () => "Resultados privados", Bn = () => "私有结果", Vn = () => "非公開の結果", Hn = () => "Private results", Un = () => "Приватные результаты", Wn = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Fn(e) : n === "es" ? In(e) : n === "de" ? Ln(e) : n === "it" ? Rn(e) : n === "pt" ? zn(e) : n === "zh" ? Bn(e) : n === "ja" ? Vn(e) : n === "ko" ? Hn(e) : n === "ru" ? Un(e) : Pn(e);
+}), Gn = () => "CI integration", Kn = () => "Intégration CI", qn = () => "Integración CI", Jn = () => "CI-Integration", Yn = () => "Integrazione CI", Xn = () => "Integração CI", Zn = () => "CI 集成", Qn = () => "CI統合", $n = () => "CI integration", er = () => "Интеграция с CI", tr = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Kn(e) : n === "es" ? qn(e) : n === "de" ? Jn(e) : n === "it" ? Yn(e) : n === "pt" ? Xn(e) : n === "zh" ? Zn(e) : n === "ja" ? Qn(e) : n === "ko" ? $n(e) : n === "ru" ? er(e) : Gn(e);
+}), nr = () => "Historical data", rr = () => "Historique", ir = () => "Datos históricos", ar = () => "Historische Daten", or = () => "Dati storici", sr = () => "Dados históricos", cr = () => "历史数据", lr = () => "履歴データ", ur = () => "Historical data", dr = () => "Исторические данные", fr = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? rr(e) : n === "es" ? ir(e) : n === "de" ? ar(e) : n === "it" ? or(e) : n === "pt" ? sr(e) : n === "zh" ? cr(e) : n === "ja" ? lr(e) : n === "ko" ? ur(e) : n === "ru" ? dr(e) : nr(e);
+}), pr = () => "Pro", mr = () => "Pro", hr = () => "Pro", gr = () => "Pro", _r = () => "Pro", vr = () => "Pro", yr = () => "专业版", br = () => "プロ", xr = () => "Pro", Sr = () => "Pro", Cr = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? mr(e) : n === "es" ? hr(e) : n === "de" ? gr(e) : n === "it" ? _r(e) : n === "pt" ? vr(e) : n === "zh" ? yr(e) : n === "ja" ? br(e) : n === "ko" ? xr(e) : n === "ru" ? Sr(e) : pr(e);
+}), wr = () => "/month", Tr = () => "/ mois", Er = () => "/mes", Dr = () => "/Monat", Or = () => "/mese", kr = () => "/mês", Ar = () => "/月", jr = () => "/月", Mr = () => "/month", Nr = () => "/мес", Pr = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Tr(e) : n === "es" ? Er(e) : n === "de" ? Dr(e) : n === "it" ? Or(e) : n === "pt" ? kr(e) : n === "zh" ? Ar(e) : n === "ja" ? jr(e) : n === "ko" ? Mr(e) : n === "ru" ? Nr(e) : wr(e);
+}), Fr = () => "$29", Ir = () => "29 €", Lr = () => "29 $", Rr = () => "29 $", zr = () => "29 $", Br = () => "29 $", Vr = () => "29 $", Hr = () => "29ドル", Ur = () => "$29", Wr = () => "29 $", Gr = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Ir(e) : n === "es" ? Lr(e) : n === "de" ? Rr(e) : n === "it" ? zr(e) : n === "pt" ? Br(e) : n === "zh" ? Vr(e) : n === "ja" ? Hr(e) : n === "ko" ? Ur(e) : n === "ru" ? Wr(e) : Fr(e);
+}), Kr = () => "5 benchmark runs/day", qr = () => "5 exécutions de benchmark / jour", Jr = () => "5 ejecuciones de benchmark al día", Yr = () => "5 Benchmark-Durchläufe/Tag", Xr = () => "5 esecuzioni benchmark al giorno", Zr = () => "5 execuções de benchmark/dia", Qr = () => "每天 5 次基准测试运行", $r = () => "1日あたり5回のベンチマーク実行", ei = () => "5 benchmark runs/day", ti = () => "5 запусков бенчмарка в день", ni = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? qr(e) : n === "es" ? Jr(e) : n === "de" ? Yr(e) : n === "it" ? Xr(e) : n === "pt" ? Zr(e) : n === "zh" ? Qr(e) : n === "ja" ? $r(e) : n === "ko" ? ei(e) : n === "ru" ? ti(e) : Kr(e);
+}), ri = () => "3 libraries", ii = () => "3 bibliothèques", ai = () => "3 bibliotecas", oi = () => "3 Bibliotheken", si = () => "3 librerie", ci = () => "3 bibliotecas", li = () => "3 个库", ui = () => "3ライブラリ", di = () => "3 libraries", fi = () => "3 библиотеки", pi = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? ii(e) : n === "es" ? ai(e) : n === "de" ? oi(e) : n === "it" ? si(e) : n === "pt" ? ci(e) : n === "zh" ? li(e) : n === "ja" ? ui(e) : n === "ko" ? di(e) : n === "ru" ? fi(e) : ri(e);
+}), mi = () => "Community support", hi = () => "Support communautaire", gi = () => "Soporte de la comunidad", _i = () => "Community-Support", vi = () => "Supporto della comunità", yi = () => "Suporte da comunidade", bi = () => "社区支持", xi = () => "コミュニティサポート", Si = () => "Community support", Ci = () => "Поддержка сообщества", wi = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? hi(e) : n === "es" ? gi(e) : n === "de" ? _i(e) : n === "it" ? vi(e) : n === "pt" ? yi(e) : n === "zh" ? bi(e) : n === "ja" ? xi(e) : n === "ko" ? Si(e) : n === "ru" ? Ci(e) : mi(e);
+}), Ti = () => "Public results", Ei = () => "Résultats publics", Di = () => "Resultados públicos", Oi = () => "Öffentliche Ergebnisse", ki = () => "Risultati pubblici", Ai = () => "Resultados públicos", ji = () => "公开结果", Mi = () => "公開結果", Ni = () => "Public results", Pi = () => "Публичные результаты", Fi = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Ei(e) : n === "es" ? Di(e) : n === "de" ? Oi(e) : n === "it" ? ki(e) : n === "pt" ? Ai(e) : n === "zh" ? ji(e) : n === "ja" ? Mi(e) : n === "ko" ? Ni(e) : n === "ru" ? Pi(e) : Ti(e);
+}), Ii = () => "Starter", Li = () => "Starter", Ri = () => "Starter", zi = () => "Starter", Bi = () => "Starter", Vi = () => "Starter", Hi = () => "入门版", Ui = () => "スターター", Wi = () => "Starter", Gi = () => "Starter", $ = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Li(e) : n === "es" ? Ri(e) : n === "de" ? zi(e) : n === "it" ? Bi(e) : n === "pt" ? Vi(e) : n === "zh" ? Hi(e) : n === "ja" ? Ui(e) : n === "ko" ? Wi(e) : n === "ru" ? Gi(e) : Ii(e);
+}), Ki = () => "forever", qi = () => "pour toujours", Ji = () => "para siempre", Yi = () => "für immer", Xi = () => "per sempre", Zi = () => "para sempre", Qi = () => "永久", $i = () => "ずっと無料", ea = () => "forever", ta = () => "навсегда", na = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? qi(e) : n === "es" ? Ji(e) : n === "de" ? Yi(e) : n === "it" ? Xi(e) : n === "pt" ? Zi(e) : n === "zh" ? Qi(e) : n === "ja" ? $i(e) : n === "ko" ? ea(e) : n === "ru" ? ta(e) : Ki(e);
+}), ra = () => "$0", ia = () => "0 €", aa = () => "0 $", oa = () => "0 $", sa = () => "0 $", ca = () => "0 $", la = () => "0 $", ua = () => "0円", da = () => "$0", fa = () => "0 $", pa = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? ia(e) : n === "es" ? aa(e) : n === "de" ? oa(e) : n === "it" ? sa(e) : n === "pt" ? ca(e) : n === "zh" ? la(e) : n === "ja" ? ua(e) : n === "ko" ? da(e) : n === "ru" ? fa(e) : ra(e);
+}), ma = a("<div class=\"grid gap-6 md:grid-cols-3\">"), ha = a("<div><h3 class=\"text-lg font-semibold text-foreground\"></h3><div class=my-4><span class=\"text-3xl font-bold text-foreground\"></span><span class=\"text-sm text-muted-foreground\"></span></div><ul class=\"mb-6 flex-1 space-y-2\"></ul><button type=button>"), ga = a("<li class=\"flex items-center gap-2 text-sm text-muted-foreground\"><span class=text-primary>✓</span> ");
+function _a() {
 	let a = () => [
 		{
-			name: L(),
-			price: J(),
-			period: ue(),
+			name: $(),
+			price: pa(),
+			period: na(),
 			features: [
-				xe(),
-				Me(),
-				Ue(),
-				et()
+				ni(),
+				pi(),
+				wi(),
+				Fi()
 			]
 		},
 		{
-			name: dt(),
-			price: St(),
-			period: Nt(),
+			name: Cr(),
+			price: Gr(),
+			period: Pr(),
 			features: [
-				Wt(),
-				tn(),
-				pn(),
-				wn(),
-				Fn(),
-				Kn()
+				dn(),
+				Sn(),
+				Nn(),
+				Wn(),
+				tr(),
+				fr()
 			],
 			highlighted: !0
 		},
 		{
 			name: Q(),
-			price: pr(),
+			price: Ht(),
 			period: "",
 			features: [
-				wr(),
-				Fr(),
-				Kr(),
-				ri(),
-				mi(),
-				Ti(),
-				Ii()
+				le(),
+				be(),
+				je(),
+				He(),
+				$e(),
+				ut(),
+				xt()
 			]
 		}
 	];
 	return (() => {
-		var s = ia();
+		var s = ma();
 		return r(s, t(o, {
 			get each() {
 				return a();
 			},
 			children: (a) => (() => {
-				var s = aa(), c = s.firstChild, l = c.nextSibling, u = l.firstChild, d = u.nextSibling, f = l.nextSibling, p = f.nextSibling;
+				var s = ha(), c = s.firstChild, l = c.nextSibling, u = l.firstChild, d = u.nextSibling, f = l.nextSibling, p = f.nextSibling;
 				return r(c, () => a.name), r(u, () => a.price), r(d, () => a.period), r(f, t(o, {
 					get each() {
 						return a.features;
 					},
 					children: (e) => (() => {
-						var t = oa();
+						var t = ga();
 						return t.firstChild.nextSibling, r(t, e, null), t;
 					})()
 				})), r(p, (() => {
 					var e = i(() => a.name === Q());
-					return () => e() ? Ki() : ra();
+					return () => e() ? q() : $t();
 				})()), n((t) => {
 					var n = `flex flex-col rounded-lg border p-6 ${a.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`, r = `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${a.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`;
 					return n !== t.e && e(s, t.e = n), r !== t.t && e(p, t.t = r), t;
@@ -270,4 +290,4 @@ function sa() {
 		})), s;
 	})();
 }
-export { sa as default };
+export { _a as default };

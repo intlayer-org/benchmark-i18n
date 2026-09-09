@@ -108,7 +108,7 @@ function O(e) {
 function k(e) {
 	console.error(e);
 }
-var A = 3600 * 24;
+var A = 86400;
 A * 7, 365 / 12 * A * 3, A * 365;
 function j(e, t, n) {
 	Object.entries(e).forEach(([e, r]) => {

@@ -11,7 +11,9 @@ export const Route = createFileRoute("/$locale")({
       resources = messages.default as Record<string, unknown>;
       i18n.addResourceBundle(locale, "translation", resources);
     }
-    await i18n.changeLanguage(locale);
+    if (i18n.language !== locale) {
+      await i18n.changeLanguage(locale);
+    }
     // Return resources so TanStack Router serialises them into the HTML.
     // The shellComponent reads this on the client before any component renders,
     // ensuring useTranslation() has data during hydration.

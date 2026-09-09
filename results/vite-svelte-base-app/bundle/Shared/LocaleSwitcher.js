@@ -25,7 +25,7 @@ function getLocaleName(locale) {
 function isLocale(value) {
 	return locales.includes(value);
 }
-var PAGE_SEGMENTS = new Set([
+var PAGE_SEGMENTS = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -59,8 +59,8 @@ function navigate(url, replace = false) {
 	else history.pushState(null, "", url);
 	pathname.set(window.location.pathname);
 }
-var root_1 = $.from_html(`<option> </option>`);
-var root = $.from_html(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none"></select></div>`);
+var root = $.from_html(`<option> </option>`);
+var root_1 = $.from_html(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none"></select></div>`);
 function LocaleSwitcher($$anchor, $$props) {
 	$.push($$props, false);
 	const $pathname = () => $.store_get(pathname, "$pathname", $$stores);
@@ -70,16 +70,15 @@ function LocaleSwitcher($$anchor, $$props) {
 		navigate(get(pathname).replace(/^\/[^/]+/, `/${newLocale}`) + window.location.search + window.location.hash, false);
 	}
 	$.init();
-	var div = root();
+	var div = root_1();
 	var select = $.child(div);
 	$.each(select, 5, () => locales, (localeItem) => localeItem, ($$anchor, localeItem) => {
-		var option = root_1();
-		var text = $.child(option, true);
-		$.reset(option);
+		var option = root();
+		var text = $.only_child(option, true);
 		var option_value = {};
 		$.template_effect(($0) => {
 			$.set_text(text, $0);
-			if (option_value !== (option_value = $.get(localeItem))) option.value = (option.__value = $.get(localeItem)) ?? "";
+			if (option_value !== (option_value = $.get(localeItem))) option.value = (option.__value = option_value) ?? "";
 		}, [() => getLocaleName($.get(localeItem))]);
 		$.append($$anchor, option);
 	});
@@ -88,7 +87,7 @@ function LocaleSwitcher($$anchor, $$props) {
 	$.init_select(select);
 	$.reset(div);
 	$.template_effect(($0) => {
-		if (select_value !== (select_value = $0)) select.value = (select.__value = $0) ?? "", $.select_option(select, $0);
+		if (select_value !== (select_value = $0)) select.value = (select.__value = select_value) ?? "", $.select_option(select, select_value);
 	}, [() => $pathname().split("/").filter(Boolean)[0] ?? "en"]);
 	$.delegated("change", select, handleLocaleChange);
 	$.append($$anchor, div);

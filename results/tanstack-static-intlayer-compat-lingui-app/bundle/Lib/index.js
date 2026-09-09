@@ -1,6 +1,5 @@
-import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import _2g3y8enxsru from "../.intlayer/dictionary/messages.json";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
 import { jsxDEV } from "react/jsx-dev-runtime";
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
@@ -70,41 +69,6 @@ var linguiMessageToIcu = (compiled) => {
 	if (!Array.isArray(compiled)) return String(compiled ?? "");
 	return compiled.map(tokenToIcu).join("");
 };
-var pluginsIdentities = /* @__PURE__ */ new WeakMap();
-var nextPluginsIdentity = 0;
-var getPluginsCacheKey = (plugins) => {
-	if (!plugins) return "base";
-	const existingIdentity = pluginsIdentities.get(plugins);
-	if (existingIdentity) return existingIdentity;
-	nextPluginsIdentity += 1;
-	const identity = `p${nextPluginsIdentity}`;
-	pluginsIdentities.set(plugins, identity);
-	return identity;
-};
-var MAX_ENTRIES_PER_DICTIONARY = 256;
-var transformCache = /* @__PURE__ */ new WeakMap();
-var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
-var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
-var readTransformCache = (dictionary, cacheKey) => {
-	if (!isMemoizableDictionary(dictionary)) return { hit: false };
-	const entries = transformCache.get(dictionary);
-	if (!entries?.has(cacheKey)) return { hit: false };
-	return {
-		hit: true,
-		content: entries.get(cacheKey)
-	};
-};
-var writeTransformCache = (dictionary, cacheKey, content) => {
-	if (!isMemoizableDictionary(dictionary)) return content;
-	let entries = transformCache.get(dictionary);
-	if (!entries) {
-		entries = /* @__PURE__ */ new Map();
-		transformCache.set(dictionary, entries);
-	}
-	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
-	entries.set(cacheKey, content);
-	return content;
-};
 var TRANSLATION = "translation";
 var ENUMERATION = "enumeration";
 var PLURAL = "plural";
@@ -163,474 +127,6 @@ var deepTransformNode = (node, props) => {
 		});
 	}
 	return result;
-};
-var findMatchingCondition = (enumerationContent, quantity) => {
-	const numericKeys = Object.keys(enumerationContent);
-	for (const key of numericKeys) {
-		const isEqual = !key.startsWith(">") && !key.startsWith("<") && !key.startsWith("=") && parseFloat(key) === quantity || key.startsWith("=") && parseFloat(key.slice(1)) === quantity;
-		const isSuperior = key.startsWith(">") && quantity > parseFloat(key.slice(1));
-		const isSuperiorOrEqual = key.startsWith(">=") && quantity >= parseFloat(key.slice(2));
-		const isInferior = key.startsWith("<") && quantity < parseFloat(key.slice(1));
-		const isInferiorOrEqual = key.startsWith("<=") && quantity <= parseFloat(key.slice(2));
-		if (isEqual || isSuperior || isSuperiorOrEqual || isInferior || isInferiorOrEqual) return key;
-	}
-};
-var getEnumeration = (enumerationContent, quantity) => {
-	return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
-};
-var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
-	return (values[key.trim()] ?? "").toString();
-});
-var DEFAULT_VARIANT_ID = "default";
-var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
-var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
-var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
-var encodeSegmentText = (raw, unsafeChars) => {
-	if (raw === "") return "%";
-	const encoded = raw.replace(unsafeChars, percentEncodeChar);
-	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
-	return encoded;
-};
-var serializeVariant = (variant) => {
-	if (variant === void 0) return DEFAULT_VARIANT_ID;
-	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
-	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
-};
-var serializeVariantChain = (variant) => {
-	if (!Array.isArray(variant)) return [serializeVariant(variant)];
-	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
-	return variant.map(serializeVariant);
-};
-var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
-	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
-	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
-};
-var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
-	const segments = compositeId.split("/");
-	return qualifierTypes.every((qualifierType, index) => {
-		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
-		return selector?.item === void 0 || segments[index] === String(selector.item);
-	});
-};
-var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
-var reconstructQualifiedEntry = (group, compositeId) => {
-	const segments = compositeId.split("/");
-	const entry = {
-		key: group.key,
-		content: group.content[compositeId]
-	};
-	group.qualifierTypes.forEach((qualifierType, index) => {
-		if (qualifierType === "variant") entry.variant = segments[index];
-		else if (qualifierType === "item") entry.item = Number(segments[index]);
-	});
-	return entry;
-};
-var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
-	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
-	const { qualifierTypes, content } = dictionaryOrGroup;
-	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
-	const compositeIds = Object.keys(content);
-	const variantIndex = qualifierTypes.indexOf("variant");
-	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
-	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
-	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
-	return matchedEntries[0] ?? null;
-};
-var parseDictionarySelector = (localeOrSelector) => {
-	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
-		locale: localeOrSelector.locale,
-		selector: localeOrSelector
-	};
-	return { locale: localeOrSelector };
-};
-var getDictionarySelectorCacheKey = (selector) => {
-	if (!selector) return "";
-	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
-		const value = selector[selectorKey];
-		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
-	}).join("|");
-};
-var internationalization = {
-	"locales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"requiredLocales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"strictMode": "inclusive",
-	"defaultLocale": "en"
-};
-var routing = {
-	"mode": "prefix-all",
-	"enableProxy": false,
-	"storage": {
-		"cookies": [{
-			"name": "INTLAYER_LOCALE",
-			"attributes": { "path": "/" }
-		}],
-		"headers": [{ "name": "x-intlayer-locale" }]
-	},
-	"basePath": ""
-};
-var log = {
-	"mode": "default",
-	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
-};
-var RESET = "\x1B[0m";
-var BLUE = "\x1B[34m";
-var RED = "\x1B[31m";
-var GREEN = "\x1B[32m";
-var BEIGE = "\x1B[38;5;3m";
-var getPrefix = (configPrefix) => {
-	return configPrefix;
-};
-var logger = (content, details) => {
-	const config = details?.config ?? {};
-	const mode = config.mode ?? "default";
-	if (mode === "disabled" || details?.isVerbose && mode !== "verbose") return;
-	const prefix = getPrefix(config.prefix);
-	const flatContent = prefix ? [prefix, ...[content].flat()] : [content].flat();
-	const level = details?.level ?? "info";
-	(config[level] ?? console[level] ?? config.log ?? console.log)(...flatContent);
-};
-var getAppLogger = (configuration, globalDetails) => (content, details) => logger(content, {
-	...details ?? {},
-	config: {
-		...configuration?.log,
-		...globalDetails?.config,
-		...details?.config ?? {}
-	}
-});
-var colorize = (string, color, reset) => color && typeof window === "undefined" ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
-var colorizeKey = (keyPath, color = BEIGE, reset = RESET) => [keyPath].flat().map((key) => colorize(key, color, reset)).join(`, `);
-colorize("✗", RED);
-colorize("✓", GREEN);
-colorize("⏲", BLUE);
-var dictionaries = { "messages": _2g3y8enxsru };
-var getDictionaries = () => dictionaries;
-var PROTOTYPE_METHOD_NAMES = /* @__PURE__ */ new Set([
-	"hasOwnProperty",
-	"isPrototypeOf",
-	"propertyIsEnumerable",
-	"toLocaleString"
-]);
-var createSafeFallback = (path = "") => {
-	return new Proxy((() => path), { get: (target, prop) => {
-		if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString" || prop === "valueOf") return () => path;
-		if (prop === "then") return;
-		if (PROTOTYPE_METHOD_NAMES.has(prop)) return Object.prototype[prop].bind(target);
-		if (prop === Symbol.iterator) return function* () {
-			yield path;
-		};
-		return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
-	} });
-};
-var warnedMissingDictionaries = /* @__PURE__ */ new Set();
-var getIntlayer = (key, localeOrSelector, plugins) => {
-	const dictionary = getDictionaries()[key];
-	if (!dictionary && true) {
-		if (!warnedMissingDictionaries.has(key)) {
-			getAppLogger({ log })(typeof window === "undefined" ? `Dictionary ${colorizeKey(key)} was not found. Using fallback proxy.` : `Dictionary ${key} was not found. Using fallback proxy.`, { level: "warn" });
-			warnedMissingDictionaries.add(key);
-		}
-		return createSafeFallback(key);
-	}
-	return getDictionary$1(dictionary, localeOrSelector, plugins);
-};
-var MAX_CACHE_SIZE = 50;
-var cache = /* @__PURE__ */ new Map();
-var alreadyWarnedConstructors = /* @__PURE__ */ new Set();
-var warnMissingIntlConstructor = (constructorName) => {
-	if (alreadyWarnedConstructors.has(constructorName)) return;
-	alreadyWarnedConstructors.add(constructorName);
-	console.warn(`[intlayer] \`Intl.${constructorName}\` is not available in this JavaScript engine. A degraded fallback is used instead. On React Native, load a polyfill (e.g. \`@formatjs/intl-${constructorName.toLowerCase()}/polyfill\`) before rendering your app.`);
-};
-var intlConstructorFallbacks = {
-	DisplayNames: class DisplayNamesFallback {
-		of(code) {
-			return code;
-		}
-	},
-	ListFormat: class ListFormatFallback {
-		format(list) {
-			return Array.from(list).join(", ");
-		}
-		formatToParts(list) {
-			return Array.from(list).flatMap((value, index) => index === 0 ? [{
-				type: "element",
-				value
-			}] : [{
-				type: "literal",
-				value: ", "
-			}, {
-				type: "element",
-				value
-			}]);
-		}
-	},
-	Segmenter: class SegmenterFallback {
-		segment(input) {
-			let index = 0;
-			return Array.from(input).map((segment) => {
-				const segmentStart = index;
-				index += segment.length;
-				return {
-					segment,
-					index: segmentStart
-				};
-			});
-		}
-	}
-};
-var resolveIntlConstructor = (constructorName) => {
-	const nativeConstructor = Intl[constructorName];
-	if (typeof nativeConstructor === "function") return nativeConstructor;
-	warnMissingIntlConstructor(constructorName);
-	return intlConstructorFallbacks[constructorName];
-};
-function getCachedIntl(intlConstructor, locale, options) {
-	const resLoc = locale ?? internationalization?.defaultLocale;
-	const key = `${resLoc}|${options ? JSON.stringify(options) : ""}`;
-	const cacheKey = intlConstructor;
-	let ctorCache = cache.get(cacheKey);
-	if (!ctorCache) {
-		ctorCache = /* @__PURE__ */ new Map();
-		cache.set(cacheKey, ctorCache);
-	}
-	let instance = ctorCache.get(key);
-	if (!instance) {
-		const ResolvedConstructor = typeof intlConstructor === "string" ? resolveIntlConstructor(intlConstructor) : intlConstructor;
-		if (typeof ResolvedConstructor !== "function") throw new Error(`[intlayer] \`Intl.${String(intlConstructor)}\` is not available in this JavaScript engine and has no fallback. Load the matching polyfill before formatting.`);
-		if (ctorCache.size > MAX_CACHE_SIZE) ctorCache.clear();
-		instance = new ResolvedConstructor(resLoc, options);
-		ctorCache.set(key, instance);
-	}
-	return instance;
-}
-var getPlural = (pluralContent, count, locale) => {
-	return pluralContent[getCachedIntl("PluralRules", locale).select(count)] ?? pluralContent.other;
-};
-var getSelect = (selectContent, value) => {
-	const caseList = Object.keys(selectContent);
-	const lastCase = caseList[caseList.length - 1];
-	return selectContent[value] ?? selectContent.fallback ?? selectContent.other ?? selectContent[lastCase];
-};
-var isPlainObject = (value) => {
-	if (value === null || typeof value !== "object") return false;
-	if (typeof value.then === "function") return false;
-	if (value.$$typeof !== void 0 || value.__v_isVNode !== void 0 || value._isVNode !== void 0 || value.isJSX !== void 0) return false;
-	const proto = Object.getPrototypeOf(value);
-	return proto === Object.prototype || proto === null || Array.isArray(value);
-};
-var deepMerge = (target, source) => {
-	if (target === void 0) return source;
-	if (source === void 0) return target;
-	if (Array.isArray(target)) return target;
-	if (isPlainObject(target) && isPlainObject(source)) {
-		const result = { ...target };
-		for (const key of Object.keys(source)) {
-			if (key === "__proto__" || key === "constructor" || source[key] === void 0) continue;
-			result[key] = target[key] !== void 0 ? deepMerge(target[key], source[key]) : source[key];
-		}
-		return result;
-	}
-	return target;
-};
-var getTranslation = (languageContent, locale, fallback) => {
-	const get = (loc) => languageContent[loc];
-	const seen = /* @__PURE__ */ new Set();
-	const locales = [];
-	const addLocale = (loc) => {
-		if (loc && !seen.has(loc)) {
-			seen.add(loc);
-			locales.push(loc);
-		}
-	};
-	addLocale(locale);
-	if (locale.includes("-")) addLocale(locale.split("-")[0]);
-	addLocale(fallback);
-	if (fallback?.includes("-")) addLocale(fallback.split("-")[0]);
-	const results = [];
-	for (const loc of locales) {
-		const val = get(loc);
-		if (val === void 0) continue;
-		if (typeof val === "string") {
-			if (results.length === 0) return val;
-			continue;
-		}
-		results.push(val);
-	}
-	if (results.length === 0) return void 0;
-	if (results.length === 1) return results[0];
-	if (Array.isArray(results[0])) return results[0];
-	return results.reduce((acc, curr) => deepMerge(acc, curr));
-};
-var isInterpolableWrapperNode = (node) => {
-	if (typeof node !== "object" || node === null || !("nodeType" in node)) return false;
-	const { nodeType } = node;
-	return false;
-};
-var getInterpolableContent = (node) => {
-	if (typeof node === "string") return node;
-	if (isInterpolableWrapperNode(node)) return node.nodeType === "html" ? node[HTML] : node[MARKDOWN];
-};
-var rebuildInterpolableContent = (node, interpolated) => {
-	if (typeof node === "string") return interpolated;
-	if (isInterpolableWrapperNode(node)) {
-		const key = node.nodeType === "html" ? HTML : MARKDOWN;
-		return {
-			...node,
-			[key]: interpolated
-		};
-	}
-	return node;
-};
-var transformInterpolableNode = (node, values, subProps, parentPlugins, deepTransformNode) => {
-	const children = rebuildInterpolableContent(node, getInsertion(getInterpolableContent(node), values));
-	return deepTransformNode(children, {
-		...subProps,
-		plugins: parentPlugins,
-		children
-	});
-};
-var fallbackPlugin = {
-	id: "fallback-plugin",
-	canHandle: () => false,
-	transform: (node) => node
-};
-var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
-	id: "translation-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
-	transform: (node, props, deepTransformNode) => {
-		const original = node["translation"] ?? {};
-		const result = {};
-		for (const key in original) {
-			const childProps = {
-				...props,
-				children: original[key],
-				keyPath: [...props.keyPath, {
-					type: TRANSLATION,
-					key
-				}]
-			};
-			result[key] = deepTransformNode(original[key], childProps);
-		}
-		return getTranslation(result, locale, fallback);
-	}
-};
-var enumerationPlugin = fallbackPlugin;
-var pluralPlugin = (locale) => fallbackPlugin;
-var conditionPlugin = fallbackPlugin;
-var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
-			transform: (node, subProps, deepTransformNode) => {
-				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const children = getInsertion(transformedResult, values);
-					return deepTransformNode(children, {
-						...subProps,
-						plugins: props.plugins,
-						children
-					});
-				};
-			}
-		};
-		return deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-	}
-};
-var genderPlugin = fallbackPlugin;
-var selectPlugin = fallbackPlugin;
-var nestedPlugin = (locale) => fallbackPlugin;
-var filePlugin = fallbackPlugin;
-var getBasePlugins = (locale, fallback = true) => [
-	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-	enumerationPlugin,
-	conditionPlugin,
-	insertionPlugin$1,
-	nestedPlugin(locale ?? internationalization.defaultLocale),
-	filePlugin,
-	genderPlugin,
-	selectPlugin
-];
-var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
-	...nodeProps,
-	plugins
-});
-var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
-	const { locale, selector } = parseDictionarySelector(localeOrSelector);
-	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
-	const cached = readTransformCache(dictionary, cacheKey);
-	if (cached.hit) return cached.content;
-	const appliedPlugins = plugins ?? getBasePlugins(locale);
-	const resolved = resolveQualifiedDictionary(dictionary, selector);
-	const transformDictionary = (resolvedDictionary) => {
-		const props = {
-			dictionaryKey: resolvedDictionary.key,
-			dictionaryPath: resolvedDictionary.filePath,
-			keyPath: [],
-			plugins: appliedPlugins,
-			nestedDictionaries: resolvedDictionary.nestedDictionaries
-		};
-		return getContent(resolvedDictionary.content, props, appliedPlugins);
-	};
-	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
-	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
-	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
-};
-var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
-var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
-var splitInsertionTemplate = (template, values = {}) => {
-	if (!Object.values(values).some(isComplexValue)) return {
-		isSimple: true,
-		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
-	};
-	const chunks = template.split(insertionRegex);
-	const parts = [];
-	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
-		if (chunks[i]) parts.push(chunks[i]);
-	} else {
-		const val = values[chunks[i].trim()];
-		if (val != null) parts.push(val);
-	}
-	return {
-		isSimple: false,
-		parts
-	};
 };
 var enumeration = (content) => formatNodeType(ENUMERATION, content);
 var gender = (content) => formatNodeType(GENDER, content);
@@ -1330,6 +826,142 @@ var vueI18nToIntlayerFormatter = (message) => {
 		}]
 	});
 };
+var findMatchingCondition = (enumerationContent, quantity) => {
+	const numericKeys = Object.keys(enumerationContent);
+	for (const key of numericKeys) {
+		const isEqual = !key.startsWith(">") && !key.startsWith("<") && !key.startsWith("=") && parseFloat(key) === quantity || key.startsWith("=") && parseFloat(key.slice(1)) === quantity;
+		const isSuperior = key.startsWith(">") && quantity > parseFloat(key.slice(1));
+		const isSuperiorOrEqual = key.startsWith(">=") && quantity >= parseFloat(key.slice(2));
+		const isInferior = key.startsWith("<") && quantity < parseFloat(key.slice(1));
+		const isInferiorOrEqual = key.startsWith("<=") && quantity <= parseFloat(key.slice(2));
+		if (isEqual || isSuperior || isSuperiorOrEqual || isInferior || isInferiorOrEqual) return key;
+	}
+};
+var getEnumeration = (enumerationContent, quantity) => {
+	return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
+};
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
+};
+var routing = {
+	"mode": "prefix-all",
+	"enableProxy": false,
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": { "path": "/" }
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var log = {
+	"mode": "default",
+	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
+};
+var MAX_CACHE_SIZE = 50;
+var cache = /* @__PURE__ */ new Map();
+var alreadyWarnedConstructors = /* @__PURE__ */ new Set();
+var warnMissingIntlConstructor = (constructorName) => {
+	if (alreadyWarnedConstructors.has(constructorName)) return;
+	alreadyWarnedConstructors.add(constructorName);
+	console.warn(`[intlayer] \`Intl.${constructorName}\` is not available in this JavaScript engine. A degraded fallback is used instead. On React Native, load a polyfill (e.g. \`@formatjs/intl-${constructorName.toLowerCase()}/polyfill\`) before rendering your app.`);
+};
+var intlConstructorFallbacks = {
+	DisplayNames: class DisplayNamesFallback {
+		of(code) {
+			return code;
+		}
+	},
+	ListFormat: class ListFormatFallback {
+		format(list) {
+			return Array.from(list).join(", ");
+		}
+		formatToParts(list) {
+			return Array.from(list).flatMap((value, index) => index === 0 ? [{
+				type: "element",
+				value
+			}] : [{
+				type: "literal",
+				value: ", "
+			}, {
+				type: "element",
+				value
+			}]);
+		}
+	},
+	Segmenter: class SegmenterFallback {
+		segment(input) {
+			let index = 0;
+			return Array.from(input).map((segment) => {
+				const segmentStart = index;
+				index += segment.length;
+				return {
+					segment,
+					index: segmentStart
+				};
+			});
+		}
+	}
+};
+var resolveIntlConstructor = (constructorName) => {
+	const nativeConstructor = Intl[constructorName];
+	if (typeof nativeConstructor === "function") return nativeConstructor;
+	warnMissingIntlConstructor(constructorName);
+	return intlConstructorFallbacks[constructorName];
+};
+function getCachedIntl(intlConstructor, locale, options) {
+	const resLoc = locale ?? internationalization?.defaultLocale;
+	const key = `${resLoc}|${options ? JSON.stringify(options) : ""}`;
+	const cacheKey = intlConstructor;
+	let ctorCache = cache.get(cacheKey);
+	if (!ctorCache) {
+		ctorCache = /* @__PURE__ */ new Map();
+		cache.set(cacheKey, ctorCache);
+	}
+	let instance = ctorCache.get(key);
+	if (!instance) {
+		const ResolvedConstructor = typeof intlConstructor === "string" ? resolveIntlConstructor(intlConstructor) : intlConstructor;
+		if (typeof ResolvedConstructor !== "function") throw new Error(`[intlayer] \`Intl.${String(intlConstructor)}\` is not available in this JavaScript engine and has no fallback. Load the matching polyfill before formatting.`);
+		if (ctorCache.size > MAX_CACHE_SIZE) ctorCache.clear();
+		instance = new ResolvedConstructor(resLoc, options);
+		ctorCache.set(key, instance);
+	}
+	return instance;
+}
+var getPlural = (pluralContent, count, locale) => {
+	return pluralContent[getCachedIntl("PluralRules", locale).select(count)] ?? pluralContent.other;
+};
+var getSelect = (selectContent, value) => {
+	const caseList = Object.keys(selectContent);
+	const lastCase = caseList[caseList.length - 1];
+	return selectContent[value] ?? selectContent.fallback ?? selectContent.other ?? selectContent[lastCase];
+};
 var ENUMERATION_METADATA_KEYS = [
 	"__intlayer_icu_var",
 	"__intlayer_icu_ordinal",
@@ -1430,35 +1062,18 @@ var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
 	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
-var getDictionaryKeys = () => {
-	try {
-		return Object.keys(getDictionaries());
-	} catch {
-		return [];
-	}
-};
-var lookupDictionaryMessage = (id, locale) => {
-	for (const key of getDictionaryKeys()) {
-		let dictionary;
-		try {
-			dictionary = getIntlayer(key, locale);
-		} catch {
-			continue;
-		}
-		const value = navigateLinguiCatalog(dictionary, id);
-		if (value !== void 0) return linguiMessageToIcu(value);
-	}
-};
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
 	_catalogs = {};
 	_loadFallbackWarned = false;
 	_dictionaryContent;
-	constructor({ locale = "en", locales, messages } = {}) {
+	_registry;
+	constructor({ locale = "en", locales, messages, registry } = {}) {
 		super();
 		this._locale = typeof locale === "string" ? locale : "en";
 		this._locales = locales;
+		this._registry = registry;
 		if (messages) this.mergeAllCatalogs(messages);
 	}
 	get locale() {
@@ -1468,11 +1083,8 @@ var I18nClass = class extends EventEmitter {
 		return this._locales;
 	}
 	get messages() {
-		const dictionary = {};
+		const dictionary = { ...this._registry?.all(this._locale) };
 		if (this._dictionaryContent !== void 0) Object.assign(dictionary, unwrapLinguiCatalog(this._dictionaryContent));
-		for (const key of getDictionaryKeys()) try {
-			Object.assign(dictionary, unwrapLinguiCatalog(getIntlayer(key, this._locale)));
-		} catch {}
 		return {
 			...this._catalogs[this._locale] ?? {},
 			...dictionary
@@ -1517,7 +1129,7 @@ var I18nClass = class extends EventEmitter {
 			const boundValue = navigateLinguiCatalog(this._dictionaryContent, id);
 			if (boundValue !== void 0) return linguiMessageToIcu(boundValue);
 		}
-		const fromDictionary = lookupDictionaryMessage(id, this._locale);
+		const fromDictionary = this._registry?.lookup(id, this._locale);
 		if (fromDictionary !== void 0) return fromDictionary;
 		const catalog = this._catalogs[this._locale];
 		if (catalog) {
@@ -1546,41 +1158,278 @@ var I18nClass = class extends EventEmitter {
 	}
 };
 var LinguiContext = createContext(null);
-var renderIntlayerNode = ({ children, value, additionalProps }) => {
-	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
-	return new Proxy(element, { get(target, prop, receiver) {
-		if (prop === "value") return value;
-		if (prop === Symbol.toPrimitive) return () => value ?? "";
-		if (prop === "toString") return () => String(value ?? "");
-		if (prop === "valueOf") return () => value;
-		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
-		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
-			const valObj = Object(value);
-			if (prop in valObj) {
-				const valProp = valObj[prop];
-				return typeof valProp === "function" ? valProp.bind(value) : valProp;
-			}
-		}
-		return Reflect.get(target, prop, receiver);
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
+	return {
+		hit: true,
+		content: entries.get(cacheKey)
+	};
+};
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
+	}
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
+};
+var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
+	return (values[key.trim()] ?? "").toString();
+});
+var DEFAULT_VARIANT_ID = "default";
+var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
+var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
+var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+var encodeSegmentText = (raw, unsafeChars) => {
+	if (raw === "") return "%";
+	const encoded = raw.replace(unsafeChars, percentEncodeChar);
+	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
+	return encoded;
+};
+var serializeVariant = (variant) => {
+	if (variant === void 0) return DEFAULT_VARIANT_ID;
+	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
+	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
+};
+var serializeVariantChain = (variant) => {
+	if (!Array.isArray(variant)) return [serializeVariant(variant)];
+	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
+	return variant.map(serializeVariant);
+};
+var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
+	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
+	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
+};
+var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
+	const segments = compositeId.split("/");
+	return qualifierTypes.every((qualifierType, index) => {
+		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
+		return selector?.item === void 0 || segments[index] === String(selector.item);
+	});
+};
+var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
+var reconstructQualifiedEntry = (group, compositeId) => {
+	const segments = compositeId.split("/");
+	const entry = {
+		key: group.key,
+		content: group.content[compositeId]
+	};
+	group.qualifierTypes.forEach((qualifierType, index) => {
+		if (qualifierType === "variant") entry.variant = segments[index];
+		else if (qualifierType === "item") entry.item = Number(segments[index]);
+	});
+	return entry;
+};
+var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
+	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
+	const { qualifierTypes, content } = dictionaryOrGroup;
+	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
+	const compositeIds = Object.keys(content);
+	const variantIndex = qualifierTypes.indexOf("variant");
+	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
+	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
+	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
+	return matchedEntries[0] ?? null;
+};
+var parseDictionarySelector = (localeOrSelector) => {
+	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
+		locale: localeOrSelector.locale,
+		selector: localeOrSelector
+	};
+	return { locale: localeOrSelector };
+};
+var getDictionarySelectorCacheKey = (selector) => {
+	if (!selector) return "";
+	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
+		const value = selector[selectorKey];
+		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
+	}).join("|");
+};
+var RESET = "\x1B[0m";
+var BLUE = "\x1B[34m";
+var RED = "\x1B[31m";
+var GREEN = "\x1B[32m";
+var BEIGE = "\x1B[38;5;3m";
+var getPrefix = (configPrefix) => {
+	return configPrefix;
+};
+var logger = (content, details) => {
+	const config = details?.config ?? {};
+	const mode = config.mode ?? "default";
+	if (mode === "disabled" || details?.isVerbose && mode !== "verbose") return;
+	const prefix = getPrefix(config.prefix);
+	const flatContent = prefix ? [prefix, ...[content].flat()] : [content].flat();
+	const level = details?.level ?? "info";
+	(config[level] ?? console[level] ?? config.log ?? console.log)(...flatContent);
+};
+var getAppLogger = (configuration, globalDetails) => (content, details) => logger(content, {
+	...details ?? {},
+	config: {
+		...configuration?.log,
+		...globalDetails?.config,
+		...details?.config ?? {}
+	}
+});
+var colorize = (string, color, reset) => color && typeof window === "undefined" ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
+var colorizeKey = (keyPath, color = BEIGE, reset = RESET) => [keyPath].flat().map((key) => colorize(key, color, reset)).join(`, `);
+colorize("✗", RED);
+colorize("✓", GREEN);
+colorize("⏲", BLUE);
+var getDictionaries = () => ({});
+var PROTOTYPE_METHOD_NAMES = /* @__PURE__ */ new Set([
+	"hasOwnProperty",
+	"isPrototypeOf",
+	"propertyIsEnumerable",
+	"toLocaleString"
+]);
+var createSafeFallback = (path = "") => {
+	return new Proxy((() => path), { get: (target, prop) => {
+		if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString" || prop === "valueOf") return () => path;
+		if (prop === "then") return;
+		if (PROTOTYPE_METHOD_NAMES.has(prop)) return Object.prototype[prop].bind(target);
+		if (prop === Symbol.iterator) return function* () {
+			yield path;
+		};
+		return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
 	} });
 };
-var intlayerNodePlugins = {
-	id: "intlayer-node-plugin",
-	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
-	transform: (_node, { plugins, ...rest }) => {
-		return renderIntlayerNode({
-			...rest,
-			value: rest.children,
-			children: rest.children
-		});
+var warnedMissingDictionaries = /* @__PURE__ */ new Set();
+var getIntlayer = (key, localeOrSelector, plugins) => {
+	const dictionary = getDictionaries()[key];
+	if (!dictionary && true) {
+		if (!warnedMissingDictionaries.has(key)) {
+			getAppLogger({ log })(typeof window === "undefined" ? `Dictionary ${colorizeKey(key)} was not found. Using fallback proxy.` : `Dictionary ${key} was not found. Using fallback proxy.`, { level: "warn" });
+			warnedMissingDictionaries.add(key);
+		}
+		return createSafeFallback(key);
+	}
+	return getDictionary(dictionary, localeOrSelector, plugins);
+};
+var isPlainObject = (value) => {
+	if (value === null || typeof value !== "object") return false;
+	if (typeof value.then === "function") return false;
+	if (value.$$typeof !== void 0 || value.__v_isVNode !== void 0 || value._isVNode !== void 0 || value.isJSX !== void 0) return false;
+	const proto = Object.getPrototypeOf(value);
+	return proto === Object.prototype || proto === null || Array.isArray(value);
+};
+var deepMerge = (target, source) => {
+	if (target === void 0) return source;
+	if (source === void 0) return target;
+	if (Array.isArray(target)) return target;
+	if (isPlainObject(target) && isPlainObject(source)) {
+		const result = { ...target };
+		for (const key of Object.keys(source)) {
+			if (key === "__proto__" || key === "constructor" || source[key] === void 0) continue;
+			result[key] = target[key] !== void 0 ? deepMerge(target[key], source[key]) : source[key];
+		}
+		return result;
+	}
+	return target;
+};
+var getTranslation = (languageContent, locale, fallback) => {
+	const get = (loc) => languageContent[loc];
+	const seen = /* @__PURE__ */ new Set();
+	const locales = [];
+	const addLocale = (loc) => {
+		if (loc && !seen.has(loc)) {
+			seen.add(loc);
+			locales.push(loc);
+		}
+	};
+	addLocale(locale);
+	if (locale.includes("-")) addLocale(locale.split("-")[0]);
+	addLocale(fallback);
+	if (fallback?.includes("-")) addLocale(fallback.split("-")[0]);
+	const results = [];
+	for (const loc of locales) {
+		const val = get(loc);
+		if (val === void 0) continue;
+		if (typeof val === "string") {
+			if (results.length === 0) return val;
+			continue;
+		}
+		results.push(val);
+	}
+	if (results.length === 0) return void 0;
+	if (results.length === 1) return results[0];
+	if (Array.isArray(results[0])) return results[0];
+	return results.reduce((acc, curr) => deepMerge(acc, curr));
+};
+var isInterpolableWrapperNode = (node) => {
+	if (typeof node !== "object" || node === null || !("nodeType" in node)) return false;
+	const { nodeType } = node;
+	return false;
+};
+var getInterpolableContent = (node) => {
+	if (typeof node === "string") return node;
+	if (isInterpolableWrapperNode(node)) return node.nodeType === "html" ? node[HTML] : node[MARKDOWN];
+};
+var rebuildInterpolableContent = (node, interpolated) => {
+	if (typeof node === "string") return interpolated;
+	if (isInterpolableWrapperNode(node)) {
+		const key = node.nodeType === "html" ? HTML : MARKDOWN;
+		return {
+			...node,
+			[key]: interpolated
+		};
+	}
+	return node;
+};
+var transformInterpolableNode = (node, values, subProps, parentPlugins, deepTransformNode) => {
+	const children = rebuildInterpolableContent(node, getInsertion(getInterpolableContent(node), values));
+	return deepTransformNode(children, {
+		...subProps,
+		plugins: parentPlugins,
+		children
+	});
+};
+var fallbackPlugin = {
+	id: "fallback-plugin",
+	canHandle: () => false,
+	transform: (node) => node
+};
+var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
+	id: "translation-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
+	transform: (node, props, deepTransformNode) => {
+		const original = node["translation"] ?? {};
+		const result = {};
+		for (const key in original) {
+			const childProps = {
+				...props,
+				children: original[key],
+				keyPath: [...props.keyPath, {
+					type: TRANSLATION,
+					key
+				}]
+			};
+			result[key] = deepTransformNode(original[key], childProps);
+		}
+		return getTranslation(result, locale, fallback);
 	}
 };
-var reactNodePlugins = fallbackPlugin;
-var splitAndJoinInsertion = (template, values) => {
-	const result = splitInsertionTemplate(template, values);
-	if (result.isSimple) return result.parts;
-	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
-};
+var enumerationPlugin = fallbackPlugin;
+var conditionPlugin = fallbackPlugin;
 var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
@@ -1598,56 +1447,92 @@ var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fal
 					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
 				});
 				return (values) => {
-					const result = splitAndJoinInsertion(transformedResult, values);
-					return deepTransformNode(result, {
+					const children = getInsertion(transformedResult, values);
+					return deepTransformNode(children, {
 						...subProps,
 						plugins: props.plugins,
-						children: result
+						children
 					});
 				};
 			}
 		};
-		const result = deepTransformNode(children, {
+		return deepTransformNode(children, {
 			...props,
 			children,
 			keyPath: newKeyPath,
 			plugins: [insertionStringPlugin, ...props.plugins ?? []]
 		});
-		if (typeof children === "object" && children !== null && "nodeType" in children && ["enumeration", "condition"].includes(children.nodeType)) return (values) => (arg) => {
-			const inner = result(arg);
-			if (typeof inner === "function") return inner(values);
-			return inner;
-		};
-		return result;
 	}
 };
-var markdownPlugin = fallbackPlugin;
-var htmlPlugin = fallbackPlugin;
-var pluginsCache = /* @__PURE__ */ new Map();
-var getPlugins = (locale, fallback = true) => {
-	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
-	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
-	const plugins = [
-		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		pluralPlugin(locale ?? internationalization.defaultLocale),
-		conditionPlugin,
-		nestedPlugin(locale ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		selectPlugin,
-		intlayerNodePlugins,
-		reactNodePlugins,
-		insertionPlugin,
-		markdownPlugin,
-		htmlPlugin
-	];
-	pluginsCache.set(cacheKey, plugins);
-	return plugins;
+var genderPlugin = fallbackPlugin;
+var selectPlugin = fallbackPlugin;
+var nestedPlugin = (locale) => fallbackPlugin;
+var filePlugin = fallbackPlugin;
+var getBasePlugins = (locale, fallback = true) => [
+	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+	enumerationPlugin,
+	conditionPlugin,
+	insertionPlugin,
+	nestedPlugin(locale ?? internationalization.defaultLocale),
+	filePlugin,
+	genderPlugin,
+	selectPlugin
+];
+var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
+	...nodeProps,
+	plugins
+});
+var getDictionary = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = parseDictionarySelector(localeOrSelector);
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries
+		};
+		return getContent(resolvedDictionary.content, props, appliedPlugins);
+	};
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var getDictionary = (dictionary, localeOrSelector) => {
-	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
+var getDictionaryKeys = () => {
+	try {
+		return Object.keys(getDictionaries());
+	} catch {
+		return [];
+	}
 };
+var lookupDictionaryMessage = (id, locale) => {
+	for (const key of getDictionaryKeys()) {
+		let dictionary;
+		try {
+			dictionary = getIntlayer(key, locale);
+		} catch {
+			continue;
+		}
+		const value = navigateLinguiCatalog(dictionary, id);
+		if (value !== void 0) return linguiMessageToIcu(value);
+	}
+};
+var collectRegistryMessages = (locale) => {
+	const merged = {};
+	for (const key of getDictionaryKeys()) try {
+		Object.assign(merged, unwrapLinguiCatalog(getIntlayer(key, locale)));
+	} catch {}
+	return merged;
+};
+var createRegistryResolver = () => ({
+	lookup: lookupDictionaryMessage,
+	all: collectRegistryMessages
+});
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
 	if (typeof expires === "string") {
@@ -1804,12 +1689,6 @@ var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent,
 		children
 	]
 });
-var useDictionary$1 = (dictionary, localeOrSelector) => {
-	const { locale: currentLocale, variant: contextVariant } = useContext(IntlayerClientContext) ?? {};
-	const argument = localeOrSelector ?? currentLocale;
-	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
-	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
-};
 var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
 	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
@@ -1832,6 +1711,22 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 			isCookieEnabled
 		])
 	};
+};
+var useLingui = () => {
+	const context = useContext(LinguiContext);
+	const { locale } = useLocale();
+	const derivedI18n = useMemo(() => {
+		const instance = new I18nClass({
+			locale,
+			registry: createRegistryResolver()
+		});
+		return {
+			i18n: instance,
+			_: instance._.bind(instance)
+		};
+	}, [locale]);
+	if (context) return context;
+	return derivedI18n;
 };
 var I18nProvider = ({ i18n, defaultComponent, children }) => {
 	const buildContext = (instance) => ({
@@ -1857,24 +1752,16 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		})
 	});
 };
-var setupI18n = (params) => new I18nClass(params);
+var setupI18n = (params) => new I18nClass({
+	...params,
+	registry: createRegistryResolver()
+});
 setupI18n({ locale: "en" });
-var useDictionary = (dictionary) => {
-	const content = useDictionary$1(dictionary);
-	const { locale } = useLocale();
-	return useMemo(() => {
-		const instance = new I18nClass({ locale }).bindDictionaryContent(content);
-		return {
-			i18n: instance,
-			_: instance._.bind(instance)
-		};
-	}, [locale, content]);
-};
 var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/scripts/EmptyComponent.tsx";
 var i18n = setupI18n();
 i18n.activate("en");
 var TestComponent = () => {
-	const { _, i18n } = useDictionary(_2g3y8enxsru);
+	const { _, i18n } = useLingui();
 	i18n.locale;
 	return null;
 };

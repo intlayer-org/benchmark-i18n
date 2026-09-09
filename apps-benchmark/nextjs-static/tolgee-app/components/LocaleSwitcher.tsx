@@ -11,18 +11,12 @@ export default function LocaleSwitcher() {
   const pathname = usePathname();
 
   const handleLocaleChange = (newLocale: string) => {
-
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
-
     tolgee.changeLanguage(newLocale);
-   
+
     const segments = pathname.split("/");
-   
     segments[1] = newLocale;
-   
     const newPath = segments.join("/") || `/${newLocale}`;
 
-    console.log("newPath", newPath);
     router.push(newPath);
   };
 

@@ -1,6 +1,6 @@
 import "react";
-import { Fragment as e, jsx as t, jsxs as n } from "react/jsx-runtime";
-var r = {}, i = [
+import { Fragment as e, jsxDEV as t } from "react/jsx-dev-runtime";
+var n = {}, r = [
 	"en",
 	"fr",
 	"es",
@@ -11,160 +11,211 @@ var r = {}, i = [
 	"ja",
 	"ko",
 	"ru"
-], a = "PARAGLIDE_LOCALE", o = 3456e4, s = [
+], i = "PARAGLIDE_LOCALE", a = 3456e4, o = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], c = [], l, u;
-function ee(e) {
-	if (c.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (l === t) return u;
-	let n = new URL(t, "http://dummy.com"), i;
-	for (let e of c) if (new r(e.match, n.href).exec(n.href)) {
-		i = e;
-		break;
-	}
-	return l = t, u = i, i;
-}
-function d(e) {
-	let t = ee(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
-}
-var f = void 0;
+], s = [], c = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var p, m = !1, h = () => {
-	if (f) {
-		let e = f?.getStore()?.locale;
-		if (e) return e;
-	}
-	let e = s;
-	typeof window < "u" && window.location?.href && (e = d(window.location.href));
-	let t = g(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return m || (p = t, m = !0, v(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+var l, u = !1, d = () => {
+	let e = o;
+	!c && typeof window < "u" && window.location?.href && (e = O(window.location.href));
+	let t = f(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return u || (l = t, u = !0, m(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function g(e, t) {
+function f(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = x();
+		if (t === "cookie") n = ne();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && p !== void 0) n = p;
-		else if (C(t) && S.has(t)) {
-			let e = S.get(t);
+		else if (t === "globalVariable" && l !== void 0) n = l;
+		else if (A(t) && k.has(t)) {
+			let e = k.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return b(t);
+				if (t !== void 0) return g(t);
 			}
 		}
-		let e = y(n);
+		let e = h(n);
 		if (e) return e;
 	}
 }
-var _ = (e) => {
+var p = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, v = (e, t) => {
+}, m = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = h();
+		r = d();
 	} catch {}
-	let i = [], c = s;
-	typeof window < "u" && window.location?.href && (c = d(window.location.href));
-	for (let t of c) if (t === "globalVariable") p = e;
+	let s = [], u = o;
+	!c && typeof window < "u" && window.location?.href && (u = O(window.location.href));
+	for (let t of u) if (t === "globalVariable") l = e;
 	else if (t === "cookie") {
-		if (typeof document > "u" || typeof window > "u") continue;
-		let t = `${a}=${e}; path=/; max-age=${o}`;
-		document.cookie = t;
+		if (c || typeof document > "u" || typeof window > "u") continue;
+		let t = `${i}=${e}; path=/; max-age=${a}`;
+		document.cookie = t, C();
 	} else if (t === "baseLocale") continue;
-	else if (C(t) && S.has(t)) {
-		let n = S.get(t);
+	else if (A(t) && k.has(t)) {
+		let n = k.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
 				throw Error(`Custom strategy "${t}" setLocale failed.`, { cause: e });
-			}), i.push(r));
+			}), s.push(r));
 		}
 	}
-	let l = () => {
-		n.reload && window.location && e !== r && _(void 0);
+	let f = () => {
+		!c && n.reload && window.location && e !== r && p(void 0);
 	};
-	if (i.length) return Promise.all(i).then(() => {
-		l();
+	if (s.length) return Promise.all(s).then(() => {
+		f();
 	});
-	l();
-};
-function y(e) {
+	f();
+}, ee = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function h(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of i) if (e.toLowerCase() === t) return e;
+	for (let e of r) if (e.toLowerCase() === t) return e;
 }
-function b(e) {
-	let t = y(e);
+function g(e) {
+	let t = h(e);
 	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${i.join(", ")}`);
+	throw Error(`Invalid locale: ${e}. Expected one of: ${r.join(", ")}`);
 }
-function x() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${a}=([^;]+)`))?.[2];
-	return y(e);
+function _(e) {
+	return e;
 }
-var S = /* @__PURE__ */ new Map();
-function C(e) {
+function v(e, t) {
+	return e.exec(t.href);
+}
+var y = i.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), b = RegExp(`(?:^|;\\s*)${y}=([^;]*)`), x = Symbol(), S = x;
+function C() {
+	S = x;
+}
+function te() {
+	typeof queueMicrotask == "function" ? queueMicrotask(C) : Promise.resolve().then(C);
+}
+function ne() {
+	if (typeof document > "u") return;
+	if (S !== x) return S;
+	let e = document.cookie.match(b)?.[1];
+	return S = h(e), te(), S;
+}
+function re(e) {
+	return w(e);
+}
+function w(e) {
+	let t = _(typeof e == "string" ? new URL(e, ee()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && h(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), _(t);
+}
+var T, E;
+function D(e) {
+	if (s.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (T === t) return E;
+	let r = _(new URL(t, "http://example.com")), i = re(r), a = i.href === r.href ? [r] : [r, i], o;
+	for (let e of a) {
+		for (let t of s) if (v(new n(t.match, e.href), e)) {
+			o = t;
+			break;
+		}
+		if (o) break;
+	}
+	return T = t, E = o, o;
+}
+function O(e) {
+	let t = D(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : o;
+}
+var k = /* @__PURE__ */ new Map();
+function A(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var w = () => "Work from anywhere in the world", T = () => "Travaillez de n'importe où dans le monde", E = () => "Trabaja desde cualquier lugar del mundo", D = () => "Arbeiten Sie von überall auf der Welt", O = () => "Lavora da qualsiasi parte del mondo", k = () => "Trabalhe de qualquer lugar do mundo", A = () => "在全球任何地方工作", j = () => "世界中のどこからでも働けます", M = () => "전 세계 어디서나 근무 가능", N = () => "Работайте из любой точки мира", P = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "en" ? w(e) : n === "fr" ? T(e) : n === "es" ? E(e) : n === "de" ? D(e) : n === "it" ? O(e) : n === "pt" ? k(e) : n === "zh" ? A(e) : n === "ja" ? j(e) : n === "ko" ? M(e) : N(e);
-}), F = () => "Competitive pay", I = () => "Rémunération compétitive", L = () => "Salario competitivo", R = () => "Wettbewerbsfähige Bezahlung", z = () => "Retribuzione competitiva", B = () => "Remuneração competitiva", V = () => "具有竞争力的薪酬", H = () => "競争力のある給与", U = () => "경쟁력 있는 급여", W = () => "Конкурентоспособная оплата", G = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "en" ? F(e) : n === "fr" ? I(e) : n === "es" ? L(e) : n === "de" ? R(e) : n === "it" ? z(e) : n === "pt" ? B(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : W(e);
-}), K = () => "Top-of-market compensation", te = () => "Rémunération au-dessus du marché", q = () => "Compensación superior a la del mercado", J = () => "Überdurchschnittliche Vergütung", Y = () => "Compensazione ai vertici del mercato", X = () => "Remuneração acima da média do mercado", Z = () => "市场顶尖的薪资待遇", Q = () => "市場最高水準の報酬", ne = () => "업계 최고 수준의 보상", re = () => "Компенсация выше рыночной", ie = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "en" ? K(e) : n === "fr" ? te(e) : n === "es" ? q(e) : n === "de" ? J(e) : n === "it" ? Y(e) : n === "pt" ? X(e) : n === "zh" ? Z(e) : n === "ja" ? Q(e) : n === "ko" ? ne(e) : re(e);
-}), ae = () => "Open source time", oe = () => "Temps dédié à l'open source", se = () => "Tiempo dedicado al código abierto", ce = () => "Zeit für Open Source", le = () => "Tempo dedicato all'open source", ue = () => "Tempo dedicado ao código aberto", de = () => "开源贡献时间", fe = () => "オープンソースへの貢献時間", pe = () => "오픈 소스 기여 시간", me = () => "Время на open source", he = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "en" ? ae(e) : n === "fr" ? oe(e) : n === "es" ? se(e) : n === "de" ? ce(e) : n === "it" ? le(e) : n === "pt" ? ue(e) : n === "zh" ? de(e) : n === "ja" ? fe(e) : n === "ko" ? pe(e) : me(e);
-}), ge = () => "Remote", _e = () => "À distance", ve = () => "Remoto", ye = () => "Remote", be = () => "Remoto", $ = () => "Remoto", xe = () => "远程", Se = () => "リモート", Ce = () => "원격", we = () => "Удаленно", Te = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "en" ? ge(e) : n === "fr" ? _e(e) : n === "es" ? ve(e) : n === "de" ? ye(e) : n === "it" ? be(e) : n === "pt" ? $(e) : n === "zh" ? xe(e) : n === "ja" ? Se(e) : n === "ko" ? Ce(e) : we(e);
-});
-function Ee() {
+var j = () => "Competitive pay", M = () => "Open source time", N = () => "Top-of-market compensation", P = () => "Work from anywhere in the world", F = () => "Remote", I = () => "Rémunération compétitive", L = () => "Temps dédié à l'open source", R = () => "Rémunération au-dessus du marché", z = () => "Travaillez de n'importe où dans le monde", B = () => "À distance", V = () => "Salario competitivo", H = () => "Tiempo dedicado al código abierto", U = () => "Compensación superior a la del mercado", W = () => "Trabaja desde cualquier lugar del mundo", G = () => "Remoto", K = () => "Wettbewerbsfähige Bezahlung", q = () => "Zeit für Open Source", J = () => "Überdurchschnittliche Vergütung", Y = () => "Arbeiten Sie von überall auf der Welt", X = () => "Remote", ie = () => "Retribuzione competitiva", ae = () => "Tempo dedicato all'open source", oe = () => "Compensazione ai vertici del mercato", se = () => "Lavora da qualsiasi parte del mondo", ce = () => "Remoto", le = () => "Remuneração competitiva", ue = () => "Tempo dedicado ao código aberto", de = () => "Remuneração acima da média do mercado", fe = () => "Trabalhe de qualquer lugar do mundo", pe = () => "Remoto", me = () => "具有竞争力的薪酬", he = () => "开源贡献时间", ge = () => "市场顶尖的薪资待遇", _e = () => "在全球任何地方工作", ve = () => "远程", ye = () => "競争力のある給与", be = () => "オープンソースへの貢献時間", xe = () => "市場最高水準の報酬", Se = () => "世界中のどこからでも働けます", Ce = () => "リモート", we = () => "경쟁력 있는 급여", Te = () => "오픈 소스 기여 시간", Ee = () => "업계 최고 수준의 보상", De = () => "전 세계 어디서나 근무 가능", Oe = () => "원격", ke = () => "Конкурентоспособная оплата", Ae = () => "Время на open source", je = () => "Компенсация выше рыночной", Me = () => "Работайте из любой точки мира", Ne = () => "Удаленно", Pe = ((e = {}, t = {}) => {
+	let n = t.locale ?? d();
+	return n === "fr" ? I(e) : n === "es" ? V(e) : n === "de" ? K(e) : n === "it" ? ie(e) : n === "pt" ? le(e) : n === "zh" ? me(e) : n === "ja" ? ye(e) : n === "ko" ? we(e) : n === "ru" ? ke(e) : j(e);
+}), Fe = ((e = {}, t = {}) => {
+	let n = t.locale ?? d();
+	return n === "fr" ? L(e) : n === "es" ? H(e) : n === "de" ? q(e) : n === "it" ? ae(e) : n === "pt" ? ue(e) : n === "zh" ? he(e) : n === "ja" ? be(e) : n === "ko" ? Te(e) : n === "ru" ? Ae(e) : M(e);
+}), Ie = ((e = {}, t = {}) => {
+	let n = t.locale ?? d();
+	return n === "fr" ? R(e) : n === "es" ? U(e) : n === "de" ? J(e) : n === "it" ? oe(e) : n === "pt" ? de(e) : n === "zh" ? ge(e) : n === "ja" ? xe(e) : n === "ko" ? Ee(e) : n === "ru" ? je(e) : N(e);
+}), Z = ((e = {}, t = {}) => {
+	let n = t.locale ?? d();
+	return n === "fr" ? z(e) : n === "es" ? W(e) : n === "de" ? Y(e) : n === "it" ? se(e) : n === "pt" ? fe(e) : n === "zh" ? _e(e) : n === "ja" ? Se(e) : n === "ko" ? De(e) : n === "ru" ? Me(e) : P(e);
+}), Le = ((e = {}, t = {}) => {
+	let n = t.locale ?? d();
+	return n === "fr" ? B(e) : n === "es" ? G(e) : n === "de" ? X(e) : n === "it" ? ce(e) : n === "pt" ? pe(e) : n === "zh" ? ve(e) : n === "ja" ? Ce(e) : n === "ko" ? Oe(e) : n === "ru" ? Ne(e) : F(e);
+}), Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/careers/CareersBenefits.tsx";
+function Re() {
+	let e = [
+		{
+			label: Le(),
+			value: Z()
+		},
+		{
+			label: Pe(),
+			value: Ie()
+		},
+		{
+			label: Fe(),
+			value: "20% time for OSS contributions"
+		}
+	];
 	return t("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
-		children: [
-			{
-				label: Te(),
-				value: P()
-			},
-			{
-				label: G(),
-				value: ie()
-			},
-			{
-				label: he(),
-				value: "20% time for OSS contributions"
-			}
-		].map((e) => n("div", {
+		children: e.map((e) => t("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
 			children: [t("p", {
 				className: "text-sm font-semibold text-foreground",
 				children: e.label
-			}), t("p", {
+			}, void 0, !1, {
+				fileName: Q,
+				lineNumber: 26,
+				columnNumber: 11
+			}, this), t("p", {
 				className: "text-xs text-muted-foreground",
 				children: e.value
-			})]
-		}, e.label))
-	});
+			}, void 0, !1, {
+				fileName: Q,
+				lineNumber: 27,
+				columnNumber: 11
+			}, this)]
+		}, e.label, !0, {
+			fileName: Q,
+			lineNumber: 22,
+			columnNumber: 9
+		}, this))
+	}, void 0, !1, {
+		fileName: Q,
+		lineNumber: 20,
+		columnNumber: 5
+	}, this);
 }
-v("en", { reload: !1 });
-function De({ children: n }) {
-	return t(e, { children: n });
+var ze = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
+m("en", { reload: !1 });
+function Be({ children: n }) {
+	return t(e, { children: n }, void 0, !1, {
+		fileName: ze,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
-function Oe() {
-	return t(De, { children: t(Ee, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/careers/CareersBenefits.wrapper.tsx";
+function Ve() {
+	return t(Be, { children: t(Re, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { Oe as default };
+export { Ve as default };

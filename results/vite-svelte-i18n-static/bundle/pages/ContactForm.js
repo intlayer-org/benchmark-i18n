@@ -19,7 +19,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$2.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1943,9 +1943,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2061,14 +2062,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2271,9 +2273,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -3015,7 +3015,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3158,8 +3158,8 @@ derived([$locale], () => formatTime);
 derived([$locale], () => formatDate);
 derived([$locale], () => formatNumber);
 derived([$locale, $dictionary], () => getJSON);
-var root_1 = $.from_html(`<option> </option>`);
-var root = $.from_html(`<form class="space-y-6"><div class="grid gap-4 md:grid-cols-2"><div><label class="mb-1 block text-sm font-medium text-foreground"> </label> <input class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-none"/></div> <div><label class="mb-1 block text-sm font-medium text-foreground"> </label> <input type="email" class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-none"/></div></div> <div><label class="mb-1 block text-sm font-medium text-foreground"> </label> <select class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-1 focus:ring-ring focus:outline-none"></select></div> <div><label class="mb-1 block text-sm font-medium text-foreground"> </label> <textarea class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-none"></textarea></div> <button type="submit" class="rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"> </button></form>`);
+var root = $.from_html(`<option> </option>`);
+var root_1 = $.from_html(`<form class="space-y-6"><div class="grid gap-4 md:grid-cols-2"><div><label class="mb-1 block text-sm font-medium text-foreground"> </label> <input class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-none"/></div> <div><label class="mb-1 block text-sm font-medium text-foreground"> </label> <input type="email" class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-none"/></div></div> <div><label class="mb-1 block text-sm font-medium text-foreground"> </label> <select class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-1 focus:ring-ring focus:outline-none"></select></div> <div><label class="mb-1 block text-sm font-medium text-foreground"> </label> <textarea class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:ring-1 focus:ring-ring focus:outline-none"></textarea></div> <button type="submit" class="rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"> </button></form>`);
 function ContactForm($$anchor, $$props) {
 	$.push($$props, false);
 	const $_ = () => $.store_get($format, "$_", $$stores);
@@ -3176,21 +3176,19 @@ function ContactForm($$anchor, $$props) {
 		"other"
 	];
 	$.init();
-	var form = root();
+	var form = root_1();
 	var div = $.child(form);
 	var div_1 = $.child(div);
 	var label = $.child(div_1);
 	$.set_attribute(label, "for", nameId);
-	var text = $.child(label, true);
-	$.reset(label);
+	var text = $.only_child(label, true);
 	var input = $.sibling(label, 2);
 	$.set_attribute(input, "id", nameId);
 	$.reset(div_1);
 	var div_2 = $.sibling(div_1, 2);
 	var label_1 = $.child(div_2);
 	$.set_attribute(label_1, "for", emailId);
-	var text_1 = $.child(label_1, true);
-	$.reset(label_1);
+	var text_1 = $.only_child(label_1, true);
 	var input_1 = $.sibling(label_1, 2);
 	$.set_attribute(input_1, "id", emailId);
 	$.reset(div_2);
@@ -3198,18 +3196,16 @@ function ContactForm($$anchor, $$props) {
 	var div_3 = $.sibling(div, 2);
 	var label_2 = $.child(div_3);
 	$.set_attribute(label_2, "for", topicId);
-	var text_2 = $.child(label_2, true);
-	$.reset(label_2);
+	var text_2 = $.only_child(label_2, true);
 	var select = $.sibling(label_2, 2);
 	$.set_attribute(select, "id", topicId);
 	$.each(select, 5, () => topics, (t) => t, ($$anchor, t) => {
-		var option = root_1();
-		var text_3 = $.child(option, true);
-		$.reset(option);
+		var option = root();
+		var text_3 = $.only_child(option, true);
 		var option_value = {};
 		$.template_effect(($0) => {
 			$.set_text(text_3, $0);
-			if (option_value !== (option_value = $.get(t))) option.value = (option.__value = $.get(t)) ?? "";
+			if (option_value !== (option_value = $.get(t))) option.value = (option.__value = option_value) ?? "";
 		}, [() => $_()(`contact.form.${$.get(t)}`)]);
 		$.append($$anchor, option);
 	});
@@ -3218,15 +3214,13 @@ function ContactForm($$anchor, $$props) {
 	var div_4 = $.sibling(div_3, 2);
 	var label_3 = $.child(div_4);
 	$.set_attribute(label_3, "for", messageId);
-	var text_4 = $.child(label_3, true);
-	$.reset(label_3);
+	var text_4 = $.only_child(label_3, true);
 	var textarea = $.sibling(label_3, 2);
 	$.set_attribute(textarea, "id", messageId);
 	$.set_attribute(textarea, "rows", 5);
 	$.reset(div_4);
 	var button = $.sibling(div_4, 2);
-	var text_5 = $.child(button, true);
-	$.reset(button);
+	var text_5 = $.only_child(button, true);
 	$.reset(form);
 	$.template_effect(($0, $1, $2, $3, $4, $5, $6, $7) => {
 		$.set_text(text, $0);

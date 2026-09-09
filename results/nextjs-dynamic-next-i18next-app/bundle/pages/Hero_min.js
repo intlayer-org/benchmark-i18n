@@ -1599,12 +1599,19 @@ var Ue = (e, t, n) => {
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
+}, We = [
+	"__proto__",
+	"constructor",
+	"prototype"
+], Ge = function(e, t) {
+	return !(typeof e != "string" || e.length > 128 || We.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
 };
 W.use(ke).use(function(e) {
 	return {
 		type: "backend",
 		init: function(e, t, n) {},
 		read: function(t, n, r) {
+			if (!Ge(t, !1) || !Ge(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
 			if (typeof e == "function") {
 				if (e.length < 3) {
 					try {
@@ -1642,8 +1649,8 @@ W.use(ke).use(function(e) {
 	keySeparator: !1,
 	nsSeparator: !1
 });
-var $ = W, We = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/AppProviders.tsx";
-function Ge({ children: e }) {
+var $ = W, Ke = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/AppProviders.tsx";
+function qe({ children: e }) {
 	let t = u().locale ?? "en", [n] = c(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
 		He("AppRoot", n);
@@ -1657,32 +1664,32 @@ function Ge({ children: e }) {
 		i18n: $,
 		children: e
 	}, void 0, !1, {
-		fileName: We,
+		fileName: Ke,
 		lineNumber: 38,
 		columnNumber: 7
 	}, this);
 }
-var Ke = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/scripts/Wrapper.tsx";
-function qe({ children: e }) {
-	return l(Ge, { children: e }, void 0, !1, {
-		fileName: Ke,
+var Je = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/scripts/Wrapper.tsx";
+function Ye({ children: e }) {
+	return l(qe, { children: e }, void 0, !1, {
+		fileName: Je,
 		lineNumber: 9,
 		columnNumber: 10
 	}, this);
 }
-var Je = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/pages/home/Hero.wrapper.tsx";
-function Ye() {
-	return l(qe, { children: l(Be, {}, void 0, !1, {
-		fileName: Je,
+var Xe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/pages/home/Hero.wrapper.tsx";
+function Ze() {
+	return l(Ye, { children: l(Be, {}, void 0, !1, {
+		fileName: Xe,
 		lineNumber: 9,
 		columnNumber: 11
 	}, this) }, void 0, !1, {
-		fileName: Je,
+		fileName: Xe,
 		lineNumber: 8,
 		columnNumber: 9
 	}, this);
 }
-export { Ye as default };
+export { Ze as default };
 var e = {
 	"faq.faqList.howAreTheBenchmarks": "How are the benchmarks run?",
 	"faq.faqList.allBenchmarksAreRun": "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",

@@ -1,10 +1,10 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r, jsxs as i } from "react/jsx-runtime";
-var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as r } from "react/jsx-dev-runtime";
+var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), s = a((() => {})), c = (0, a(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+}), o = i((() => {})), s = (0, i(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, s = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
@@ -18,18 +18,18 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			get: t[n],
 			enumerable: !0
 		});
-	}, h = (e, t, n, o) => {
-		if (t && typeof t == "object" || typeof t == "function") for (let s of a(t)) !u.call(e, s) && s !== n && r(e, s, {
-			get: () => t[s],
-			enumerable: !(o = i(t, s)) || o.enumerable
+	}, h = (e, t, n, a) => {
+		if (t && typeof t == "object" || typeof t == "function") for (let o of s(t)) !u.call(e, o) && o !== n && r(e, o, {
+			get: () => t[o],
+			enumerable: !(a = i(t, o)) || a.enumerable
 		});
 		return e;
 	}, g = (e, t, i) => (i = e == null ? {} : n(l(e)), h(t || !e || !e.__esModule ? r(i, "default", {
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), s();
-	var y = o("next/navigation"), b = g(o("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	m(v, { createI18nClient: () => V }), t.exports = _(v), o();
+	var y = a("next/navigation"), b = g(a("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -53,7 +53,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			}, i));
 		};
 	}
-	var D = o("react"), O = o("react"), k = o("react");
+	var D = a("react"), O = a("react"), k = a("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -63,7 +63,11 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			let r = n[0], o = !1;
 			r && "count" in r && (t ? a.has(`${t}.${e}`) : a.has(e)) && (e = `${e}#${s(r.count)}`, o = !0);
 			let c = t ? i[`${t}.${e}`] : i[e];
-			if (c = !c && o ? (i[`${e.split("#", 1)[0]}#other`] || e)?.toString() : (c || e)?.toString(), !r) return c;
+			if (!c && o) {
+				let t = e.split("#", 1)[0];
+				c = (i[`${t}#other`] || e)?.toString();
+			} else c = (c || e)?.toString();
+			if (!r) return c;
 			let l = !0, u = c?.split(/({[^}]*})/).map((e, t) => {
 				let n = e.match(/{(.*)}/);
 				if (n) {
@@ -83,7 +87,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = o("react");
+	var M = a("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -91,7 +95,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = o("next/navigation");
+	var P = a("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -113,7 +117,7 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			return e;
 		};
 	}
-	var L = o("next/navigation"), R = o("react"), z = "locale";
+	var L = a("next/navigation"), R = a("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -135,23 +139,24 @@ var a = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), o
 			useCurrentLocale: i
 		};
 	}
+	0 && (t.exports = { createI18nClient: V });
 }))().createI18nClient)({
-	en: () => import("./en-6VvYhpne.js"),
-	fr: () => import("./fr-DXxDhnG_.js"),
-	es: () => import("./es-BIpMfLlq.js"),
-	de: () => import("./de-7EmkDr9S.js"),
-	it: () => import("./it-932cjQuA.js"),
-	pt: () => import("./pt-NwXrWDgC.js"),
-	zh: () => import("./zh-NKfK0GYz.js"),
-	ja: () => import("./ja-B0c63rBJ.js"),
-	ko: () => import("./ko-nu2zxx6o.js"),
-	ru: () => import("./ru-CaCI8NTY.js")
+	en: () => import("./en-Hfd-iR9Q.js"),
+	fr: () => import("./fr-C7LsXZI-.js"),
+	es: () => import("./es-CmpWg9pI.js"),
+	de: () => import("./de-CSeqTlAX.js"),
+	it: () => import("./it-B9IYoiAB.js"),
+	pt: () => import("./pt-CHOV3qVi.js"),
+	zh: () => import("./zh-yfdzapcK.js"),
+	ja: () => import("./ja-DOT4bmSq.js"),
+	ko: () => import("./ko-HtThxRhP.js"),
+	ru: () => import("./ru-5Z3nDjnd.js")
 });
-function l() {
-	return c.useI18n();
+function c() {
+	return s.useI18n();
 }
-var { useScopedI18n: u, I18nProviderClient: d, useChangeLocale: f, useCurrentLocale: p } = c;
-function m(e) {
+var { useScopedI18n: l, I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = s;
+function p(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), t(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -161,33 +166,58 @@ function m(e) {
 		}
 	}, [e]);
 }
+var m = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/home/Hero.tsx";
 function h() {
-	let e = l();
-	return m("Hero"), i("section", {
+	let e = c();
+	return p("Hero"), r("section", {
 		className: "mb-16 text-center",
 		children: [
 			r("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
 				children: e("home.hero.title")
-			}),
+			}, void 0, !1, {
+				fileName: m,
+				lineNumber: 11,
+				columnNumber: 7
+			}, this),
 			r("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
 				children: e("home.hero.aTestApplicationDesignedTo")
-			}),
-			i("div", {
+			}, void 0, !1, {
+				fileName: m,
+				lineNumber: 14,
+				columnNumber: 7
+			}, this),
+			r("div", {
 				className: "mt-8 flex justify-center gap-4",
 				children: [r("button", {
 					type: "button",
 					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: e("home.hero.viewResults")
-				}), r("button", {
+				}, void 0, !1, {
+					fileName: m,
+					lineNumber: 18,
+					columnNumber: 9
+				}, this), r("button", {
 					type: "button",
 					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: e("header.methodology")
-				})]
-			})
+				}, void 0, !1, {
+					fileName: m,
+					lineNumber: 24,
+					columnNumber: 9
+				}, this)]
+			}, void 0, !0, {
+				fileName: m,
+				lineNumber: 17,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, !0, {
+		fileName: m,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
 }
 function g() {
 	if (!(typeof window > "u")) {
@@ -208,7 +238,8 @@ function _(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function v({ children: i, locale: a }) {
+var v = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
+function y({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
 		_("AppRoot", o);
@@ -216,27 +247,44 @@ function v({ children: i, locale: a }) {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
 		g();
-	}, []), r(d, {
+	}, []), r(u, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: v,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var y = "en";
-function b({ children: e }) {
-	return r(v, {
-		locale: y,
+var b = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx", x = "en";
+function S({ children: e }) {
+	return r(y, {
+		locale: x,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: b,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function x() {
-	return r(b, { children: r(h, {}) });
+var C = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/home/Hero.wrapper.tsx";
+function w() {
+	return r(S, { children: r(h, {}, void 0, !1, {
+		fileName: C,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: C,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { x as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+export { w as default };
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/de.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 var t = e({
 	"careers-header": {
 		title: "Careers",
@@ -708,7 +756,7 @@ var t = e({
 	}
 });
 export { t as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/es.json";
 var n = e(t);
 export { n as default };
@@ -721,31 +769,31 @@ function e(t, n = "") {
 	return r;
 }
 export { e as t };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/fr.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/it.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/ja.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/ko.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/pt.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/ru.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/zh.json";
 var n = e(t);
 export { n as default };

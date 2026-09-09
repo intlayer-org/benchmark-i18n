@@ -1,47 +1,64 @@
 import e, { createContext as t, useContext as n, useEffect as r, useLayoutEffect as i, useMemo as a, useState as o } from "react";
 import s from "next/link";
 import { useParams as c } from "next/navigation";
-import { Fragment as l, jsx as u } from "react/jsx-runtime";
+import { Fragment as l, jsxDEV as u } from "react/jsx-dev-runtime";
 import { useRouter as d } from "next/router";
-var f = (e) => /^https?:\/\//.test(e ?? "");
-function p(e, t) {
+var f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Link.tsx", p = (e) => /^https?:\/\//.test(e ?? "");
+function m(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
-var m = ({ href: e, children: t, ...n }) => {
+var h = ({ href: e, children: t, ...n }) => {
 	let r = c().lang ?? "en";
-	return e == null || typeof e != "string" || f(e) ? u(s, {
+	return e == null || typeof e != "string" ? u(s, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}) : u(s, {
-		href: p(e, r),
+	}, void 0, !1, {
+		fileName: f,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0) : p(e) ? u(s, {
+		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	});
-}, h;
-typeof e.createContext == "function" && (h = e.createContext({
+	}, void 0, !1, {
+		fileName: f,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0) : u(s, {
+		href: m(e, r),
+		prefetch: !1,
+		...n,
+		children: t
+	}, void 0, !1, {
+		fileName: f,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
+}, g;
+typeof e.createContext == "function" && (g = e.createContext({
 	t: function(e) {
 		return Array.isArray(e) ? e[0] : e;
 	},
 	lang: ""
 }));
-var g = h;
-function _(e) {
+var _ = g;
+function v(e) {
 	try {
 		return new Intl.PluralRules(e);
 	} catch {
 		return new Intl.PluralRules();
 	}
 }
-var v = function() {
-	return v = Object.assign || function(e) {
+var y = function() {
+	return y = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, v.apply(this, arguments);
+	}, y.apply(this, arguments);
 };
-function y(e, t) {
+function b(e, t) {
 	if (!t) return { i18nKey: e };
 	var n = e.indexOf(t);
 	return n < 0 ? { i18nKey: e } : {
@@ -49,16 +66,16 @@ function y(e, t) {
 		i18nKey: e.slice(n + t.length)
 	};
 }
-function b(e) {
-	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? T : a, s = t.allowEmptyStrings, c = s === void 0 ? !0 : s, l = function(e, n) {
+function x(e) {
+	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? E : a, s = t.allowEmptyStrings, c = s === void 0 || s, l = function(e, n) {
 		return Array.isArray(e) ? e.map(function(e) {
 			return l(e, n);
-		}) : e instanceof Object ? w({
+		}) : e instanceof Object ? T({
 			obj: e,
 			query: n,
 			config: t,
 			lang: i
-		}) : C({
+		}) : w({
 			text: e,
 			query: n,
 			config: t,
@@ -66,19 +83,19 @@ function b(e) {
 		});
 	}, u = function(e, i, a) {
 		e === void 0 && (e = "");
-		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = y(s, f), g = h.i18nKey, _ = h.namespace, b = _ === void 0 ? a?.ns ?? t.defaultNS : _, C = b && n[b] || {}, w = x(C, S(r, C, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
+		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = b(s, f), g = h.i18nKey, _ = h.namespace, v = _ === void 0 ? a?.ns ?? t.defaultNS : _, x = v && n[v] || {}, w = S(x, C(r, x, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
 		if (E && (m === "both" || m === (typeof window > "u" ? "node" : "browser")) && o({
-			namespace: b,
+			namespace: v,
 			i18nKey: g
 		}), E && Array.isArray(D) && D.length) {
 			var O = D[0], k = D.slice(1);
-			if (typeof O == "string") return u(O, i, v(v({}, a), { fallback: k }));
+			if (typeof O == "string") return u(O, i, y(y({}, a), { fallback: k }));
 		}
 		return E && a && a.hasOwnProperty("default") && !D?.length ? a.default ? l(a.default, i) : a.default : E ? s : l(T, i);
 	};
 	return u;
 }
-function x(e, t, n, r) {
+function S(e, t, n, r) {
 	t === void 0 && (t = ""), r === void 0 && (r = { returnObjects: !1 });
 	var i = (n || {}).keySeparator, a = i === void 0 ? "." : i, o = a ? t.split(a) : [t];
 	if (t === a && r.returnObjects) return e;
@@ -89,18 +106,18 @@ function x(e, t, n, r) {
 	}, e);
 	if (typeof s == "string" || s instanceof Object && r.returnObjects && Object.keys(s).length > 0 || Array.isArray(s) && r.returnObjects) return s;
 }
-function S(e, t, n, r, i, a) {
+function C(e, t, n, r, i, a) {
 	if (!i || typeof i.count != "number") return n;
 	var o = `${n}_${i.count}`;
-	if (x(t, o, r, a) !== void 0) return o;
+	if (S(t, o, r, a) !== void 0) return o;
 	var s = `${n}_${e.select(i.count)}`;
-	if (x(t, s, r, a) !== void 0) return s;
+	if (S(t, s, r, a) !== void 0) return s;
 	var c = `${n}.${i.count}`;
-	if (x(t, c, r, a) !== void 0) return c;
+	if (S(t, c, r, a) !== void 0) return c;
 	var l = `${n}.${e.select(i.count)}`;
-	return x(t, l, r, a) === void 0 ? n : l;
+	return S(t, l, r, a) === void 0 ? n : l;
 }
-function C(e) {
+function w(e) {
 	var t = e.text, n = e.query, r = e.config, i = e.lang;
 	if (!t || !n) return t || "";
 	var a = function(e) {
@@ -113,15 +130,15 @@ function C(e) {
 		});
 	}, t);
 }
-function w(e) {
+function T(e) {
 	var t = e.obj, n = e.query, r = e.config, i = e.lang;
 	return !n || Object.keys(n).length === 0 || Object.keys(t).forEach(function(e) {
-		t[e] instanceof Object && w({
+		t[e] instanceof Object && T({
 			obj: t[e],
 			query: n,
 			config: r,
 			lang: i
-		}), typeof t[e] == "string" && (t[e] = C({
+		}), typeof t[e] == "string" && (t[e] = w({
 			text: t[e],
 			query: n,
 			config: r,
@@ -129,7 +146,7 @@ function w(e) {
 		}));
 	}), t;
 }
-function T(e) {
+function E(e) {
 	var t = e.namespace, n = e.i18nKey;
 	if (process.env.NODE_ENV !== "production") {
 		if (!t) {
@@ -139,91 +156,95 @@ function T(e) {
 		console.warn(`[next-translate] "${t}:${n}" is missing in current namespace configuration. Try adding "${n}" to the namespace "${t}".`);
 	}
 }
-var E = function() {
-	return E = Object.assign || function(e) {
+var D = function() {
+	return D = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, E.apply(this, arguments);
+	}, D.apply(this, arguments);
 };
-function D(e, t) {
+function O(e, t) {
 	return typeof t == "string" ? function(n, r, i) {
-		return e(n, r, E({ ns: t }, i));
+		return e(n, r, D({ ns: t }, i));
 	} : e;
 }
-function O() {
+function k() {
 	return typeof window > "u";
 }
-function k(e) {
+function A(e) {
 	var t = globalThis.__NEXT_TRANSLATE__ ?? {}, n = t.lang, r = t.namespaces, i = t.config, o = i.localesToIgnore || ["default"], s = !n || o.includes(n), c = function() {
-		return D(b({
+		return O(x({
 			config: i,
 			allNamespaces: r,
-			pluralRules: _(s ? void 0 : n),
+			pluralRules: v(s ? void 0 : n),
 			lang: n
 		}), e);
-	};
+	}, l = r ? Object.keys(r).sort().join("|") : "";
 	return {
-		t: O() ? c() : a(c, [e, n]),
+		t: k() ? c() : a(c, [
+			e,
+			n,
+			l
+		]),
 		lang: n
 	};
 }
-var A = function() {
-	return A = Object.assign || function(e) {
+var j = function() {
+	return j = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, A.apply(this, arguments);
+	}, j.apply(this, arguments);
 };
-function j(e) {
-	var t = n(g);
+function M(e) {
+	var t = n(_);
 	return a(function() {
-		return A(A({}, t), { t: D(t.t, e) });
+		return j(j({}, t), { t: O(t.t, e) });
 	}, [t, e]);
 }
-function M(e) {
-	return (globalThis.__NEXT_TRANSLATE__?.config ? k : j)(e);
+function N(e) {
+	return (globalThis.__NEXT_TRANSLATE__?.config ? A : M)(e);
 }
-var N = function() {
-	return N = Object.assign || function(e) {
+var P = function() {
+	return P = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, N.apply(this, arguments);
-}, P = t({
+	}, P.apply(this, arguments);
+}, F = t({
 	ns: {},
 	config: {}
 });
-function F(t) {
-	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, u = M().lang, f = d() || {}, p = f.locale, m = f.defaultLocale, h = n(P), v = N(N(N({}, I()), h.ns), o), y = r || u || p || m || "", x = N(N({}, h.config), l), S = x.localesToIgnore || ["default"], C = !y || S.includes(y), w = a(function() {
-		return _(C ? void 0 : y);
+function I(t) {
+	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, u = N().lang, f = d() || {}, p = f.locale, m = f.defaultLocale, h = n(F), g = P(P(P({}, L()), h.ns), o), y = r || u || p || m || "", b = P(P({}, h.config), l), S = b.localesToIgnore || ["default"], C = !y || S.includes(y), w = a(function() {
+		return v(C ? void 0 : y);
 	}, [C, y]), T = a(function() {
-		return b({
-			config: x,
-			allNamespaces: v,
+		return x({
+			config: b,
+			allNamespaces: g,
 			pluralRules: w,
 			lang: y
 		});
 	}, [
-		x,
-		v,
+		b,
+		g,
 		w,
 		y
 	]);
-	return e.createElement(g.Provider, { value: {
+	return e.createElement(_.Provider, { value: {
 		lang: y,
 		t: T
-	} }, e.createElement(P.Provider, { value: {
-		ns: v,
-		config: x
+	} }, e.createElement(F.Provider, { value: {
+		ns: g,
+		config: b
 	} }, s));
 }
-function I() {
+function L() {
 	return typeof window > "u" ? {} : window.__NEXT_DATA__?.props?.__namespaces || {};
 }
-var L = (e, t, n) => {
+var R = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, R = {
+}, z = {
 	locales: [
 		"en",
 		"fr",
@@ -252,7 +273,7 @@ var L = (e, t, n) => {
 		"/[lang]/settings": ["settings"],
 		"/[lang]/team": ["team"]
 	},
-	loadLocaleFrom: (e, t) => L(Object.assign({
+	loadLocaleFrom: (e, t) => R(Object.assign({
 		"./locales/de/about.json": () => import("../locales/de/about.json"),
 		"./locales/de/blog.json": () => import("../locales/de/blog.json"),
 		"./locales/de/careers.json": () => import("../locales/de/careers.json"),
@@ -265,18 +286,18 @@ var L = (e, t, n) => {
 		"./locales/de/settings.json": () => import("../locales/de/settings.json"),
 		"./locales/de/shared.json": () => import("../locales/de/shared.json"),
 		"./locales/de/team.json": () => import("../locales/de/team.json"),
-		"./locales/en/about.json": () => import("./about-BaAYAvkE.js"),
-		"./locales/en/blog.json": () => import("./blog-CzOpmp0n.js"),
-		"./locales/en/careers.json": () => import("./careers-1TOv7qq6.js"),
-		"./locales/en/contact.json": () => import("./contact-DjqHx5tM.js"),
-		"./locales/en/faq.json": () => import("./faq-XJpq1JTj.js"),
-		"./locales/en/home.json": () => import("./home-CdZlgL3b.js"),
-		"./locales/en/pricing.json": () => import("./pricing-BPjt5t_O.js"),
-		"./locales/en/products.json": () => import("./products-Df41mIQC.js"),
-		"./locales/en/route.json": () => import("./route-5-5GFmRv.js"),
-		"./locales/en/settings.json": () => import("./settings-CmZ84y7S.js"),
-		"./locales/en/shared.json": () => import("./shared-CBRuvueV.js"),
-		"./locales/en/team.json": () => import("./team-CuN0wXZd.js"),
+		"./locales/en/about.json": () => import("./about-M1sMWj1s.js"),
+		"./locales/en/blog.json": () => import("./blog-Cn2HM2Ne.js"),
+		"./locales/en/careers.json": () => import("./careers-AcqDO_Rk.js"),
+		"./locales/en/contact.json": () => import("./contact-DMI0nGM8.js"),
+		"./locales/en/faq.json": () => import("./faq-D8Z24sSG.js"),
+		"./locales/en/home.json": () => import("./home-4xN7_Zum.js"),
+		"./locales/en/pricing.json": () => import("./pricing-CIELH6yi.js"),
+		"./locales/en/products.json": () => import("./products-Dtvi99Bo.js"),
+		"./locales/en/route.json": () => import("./route-CS6jLh6_.js"),
+		"./locales/en/settings.json": () => import("./settings-BTax84eA.js"),
+		"./locales/en/shared.json": () => import("./shared-CBduF48T.js"),
+		"./locales/en/team.json": () => import("./team-BILWd-Jf.js"),
 		"./locales/es/about.json": () => import("../locales/es/about.json"),
 		"./locales/es/blog.json": () => import("../locales/es/blog.json"),
 		"./locales/es/careers.json": () => import("../locales/es/careers.json"),
@@ -375,7 +396,7 @@ var L = (e, t, n) => {
 		"./locales/zh/team.json": () => import("../locales/zh/team.json")
 	}), `./locales/${e}/${t}.json`, 4).then((e) => e.default)
 };
-function z() {
+function B() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -389,22 +410,27 @@ function z() {
 		}
 	}
 }
-function B(e, t) {
+function V(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function V({ children: e, locale: t }) {
+var H = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
+function U({ children: e, locale: t }) {
 	let [n] = o(() => typeof performance < "u" ? performance.now() : 0);
 	return i(() => {
-		B("AppRoot", n);
+		V("AppRoot", n);
 	}, [n]), r(() => {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
-		z();
-	}, []), u(l, { children: e });
+		B();
+	}, []), u(l, { children: e }, void 0, !1, {
+		fileName: H,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
-var H = [
+var W = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx", G = [
 	"about",
 	"blog",
 	"careers",
@@ -418,30 +444,47 @@ var H = [
 	"shared",
 	"team"
 ];
-function U({ children: e }) {
+function K({ children: e }) {
 	let [t, n] = o({}), [i, a] = o(!1);
 	return r(() => {
 		(async () => {
 			try {
-				let e = await Promise.all(H.map(async (e) => [e, await R.loadLocaleFrom?.("en", e) ?? {}]));
+				let e = await Promise.all(G.map(async (e) => [e, await z.loadLocaleFrom?.("en", e) ?? {}]));
 				n(Object.fromEntries(e)), a(!0);
 			} catch (e) {
 				console.error("Failed to load translations:", e), a(!0);
 			}
 		})();
-	}, ["en"]), i ? u(F, {
+	}, ["en"]), i ? u(I, {
 		lang: "en",
 		namespaces: t,
-		children: u(V, {
+		children: u(U, {
 			locale: "en",
 			children: e
-		})
-	}) : null;
+		}, void 0, !1, {
+			fileName: W,
+			lineNumber: 58,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: W,
+		lineNumber: 57,
+		columnNumber: 5
+	}, this) : null;
 }
-function W() {
-	return u(U, { children: u(m, {}) });
+var q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Link.wrapper.tsx";
+function J() {
+	return u(K, { children: u(h, {}, void 0, !1, {
+		fileName: q,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: q,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { W as default };
+export { J as default };
 var e = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",

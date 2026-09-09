@@ -15,14 +15,13 @@ const ResultsTable = lazy(
 
 export const Route = createFileRoute("/$locale/")({
   loader: async ({ params }) => {
-    const messages = await getMessages(params.locale, [
-      "home",
-      "hero",
-      "whyItMatters",
-      "understandingImpact",
-      "resultsTable",
+    await tolgee.loadRecords([
+      { language: params.locale, namespace: "home" },
+      { language: params.locale, namespace: "hero" },
+      { language: params.locale, namespace: "whyItMatters" },
+      { language: params.locale, namespace: "understandingImpact" },
+      { language: params.locale, namespace: "resultsTable" },
     ]);
-    return { messages };
   },
   component: Home,
 });

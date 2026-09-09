@@ -1,6 +1,6 @@
 import "react";
 import { useNavigate as e, useParams as t } from "@tanstack/react-router";
-import { Fragment as n, jsx as r } from "react/jsx-runtime";
+import { Fragment as n, jsxDEV as r } from "react/jsx-dev-runtime";
 var i = {}, a = [
 	"en",
 	"fr",
@@ -16,73 +16,53 @@ var i = {}, a = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], l = [], u, d;
-function f(e) {
-	if (l.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (u === t) return d;
-	let n = new URL(t, "http://dummy.com"), r;
-	for (let e of l) if (new i(e.match, n.href).exec(n.href)) {
-		r = e;
-		break;
-	}
-	return u = t, d = r, r;
-}
-function p(e) {
-	let t = f(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : c;
-}
-var m = void 0;
+], l = [], u = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var h, g = !1, _ = () => {
-	if (m) {
-		let e = m?.getStore()?.locale;
-		if (e) return e;
-	}
+var d, f = !1, p = () => {
 	let e = c;
-	typeof window < "u" && window.location?.href && (e = p(window.location.href));
-	let t = v(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return g || (h = t, g = !0, b(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	!u && typeof window < "u" && window.location?.href && (e = P(window.location.href));
+	let t = m(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return f || (d = t, f = !0, g(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function v(e, t) {
+function m(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = C();
+		if (t === "cookie") n = O();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && h !== void 0) n = h;
-		else if (T(t) && w.has(t)) {
-			let e = w.get(t);
+		else if (t === "globalVariable" && d !== void 0) n = d;
+		else if (I(t) && F.has(t)) {
+			let e = F.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return S(t);
+				if (t !== void 0) return y(t);
 			}
 		}
-		let e = x(n);
+		let e = v(n);
 		if (e) return e;
 	}
 }
-var y = (e) => {
+var h = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, b = (e, t) => {
+}, g = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = _();
+		r = p();
 	} catch {}
 	let i = [], a = c;
-	typeof window < "u" && window.location?.href && (a = p(window.location.href));
-	for (let t of a) if (t === "globalVariable") h = e;
+	!u && typeof window < "u" && window.location?.href && (a = P(window.location.href));
+	for (let t of a) if (t === "globalVariable") d = e;
 	else if (t === "cookie") {
-		if (typeof document > "u" || typeof window > "u") continue;
+		if (u || typeof document > "u" || typeof window > "u") continue;
 		let t = `${o}=${e}; path=/; max-age=${s}`;
-		document.cookie = t;
+		document.cookie = t, E();
 	} else if (t === "baseLocale") continue;
-	else if (T(t) && w.has(t)) {
-		let n = w.get(t);
+	else if (I(t) && F.has(t)) {
+		let n = F.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -91,33 +71,74 @@ var y = (e) => {
 		}
 	}
 	let l = () => {
-		n.reload && window.location && e !== r && y(void 0);
+		!u && n.reload && window.location && e !== r && h(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		l();
 	});
 	l();
-};
-function x(e) {
+}, _ = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function v(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of a) if (e.toLowerCase() === t) return e;
 }
-function S(e) {
-	let t = x(e);
+function y(e) {
+	let t = v(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${a.join(", ")}`);
 }
-function C() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${o}=([^;]+)`))?.[2];
-	return x(e);
+function b(e) {
+	return e;
 }
-var w = /* @__PURE__ */ new Map();
-function T(e) {
+function x(e, t) {
+	return e.exec(t.href);
+}
+var S = o.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), C = RegExp(`(?:^|;\\s*)${S}=([^;]*)`), w = Symbol(), T = w;
+function E() {
+	T = w;
+}
+function D() {
+	typeof queueMicrotask == "function" ? queueMicrotask(E) : Promise.resolve().then(E);
+}
+function O() {
+	if (typeof document > "u") return;
+	if (T !== w) return T;
+	let e = document.cookie.match(C)?.[1];
+	return T = v(e), D(), T;
+}
+function k(e) {
+	return A(e);
+}
+function A(e) {
+	let t = b(typeof e == "string" ? new URL(e, _()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && v(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), b(t);
+}
+var j, M;
+function N(e) {
+	if (l.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (j === t) return M;
+	let n = b(new URL(t, "http://example.com")), r = k(n), a = r.href === n.href ? [n] : [n, r], o;
+	for (let e of a) {
+		for (let t of l) if (x(new i(t.match, e.href), e)) {
+			o = t;
+			break;
+		}
+		if (o) break;
+	}
+	return j = t, M = o, o;
+}
+function P(e) {
+	let t = N(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : c;
+}
+var F = /* @__PURE__ */ new Map();
+function I(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-function E() {
+var L = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/LocaleSwitcher.tsx";
+function R() {
 	let n = t({ strict: !1 }).locale ?? "en", i = e(), o = (e) => {
 		try {
 			let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
@@ -143,15 +164,41 @@ function E() {
 			children: a.map((e) => r("option", {
 				value: e,
 				children: o(e)
-			}, e))
-		})
-	});
+			}, e, !1, {
+				fileName: L,
+				lineNumber: 34,
+				columnNumber: 11
+			}, this))
+		}, void 0, !1, {
+			fileName: L,
+			lineNumber: 28,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: L,
+		lineNumber: 27,
+		columnNumber: 5
+	}, this);
 }
-b("en", { reload: !1 });
-function D({ children: e }) {
-	return r(n, { children: e });
+var z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
+g("en", { reload: !1 });
+function B({ children: e }) {
+	return r(n, { children: e }, void 0, !1, {
+		fileName: z,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
-function O() {
-	return r(D, { children: r(E, {}) });
+var V = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/LocaleSwitcher.wrapper.tsx";
+function H() {
+	return r(B, { children: r(R, {}, void 0, !1, {
+		fileName: V,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: V,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { O as default };
+export { H as default };

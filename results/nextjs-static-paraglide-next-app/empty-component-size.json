@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-04-20T01:23:25.002Z",
+  "timestamp": "2026-09-09T19:08:51.960Z",
   "packageName": "nextjs-static-paraglide-next-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 280,
-    "totalMinifiedBytes": 255,
-    "totalGzipBytes": 169
+    "totalUnminifiedBytes": 9829,
+    "totalMinifiedBytes": 6108,
+    "totalGzipBytes": 2316
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 280,
-      "unminifiedGzipBytes": 177,
-      "minifiedBytes": 255,
-      "minifiedGzipBytes": 169
+      "unminifiedBytes": 9829,
+      "unminifiedGzipBytes": 2978,
+      "minifiedBytes": 6108,
+      "minifiedGzipBytes": 2316
     }
   ]
 }

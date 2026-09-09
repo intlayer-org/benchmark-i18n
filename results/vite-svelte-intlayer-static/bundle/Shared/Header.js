@@ -172,10 +172,6 @@ var header_default = {
 		}
 	}
 };
-var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
-var getIntlayerContext = () => {
-	return getContext(INTLAYER_CONTEXT_KEY);
-};
 var internationalization = {
 	"locales": [
 		"en",
@@ -204,84 +200,6 @@ var internationalization = {
 	"strictMode": "inclusive",
 	"defaultLocale": "en"
 };
-var configuration = {
-	internationalization,
-	routing: {
-		"mode": "prefix-all",
-		"storage": {
-			"cookies": [{
-				"name": "INTLAYER_LOCALE",
-				"attributes": {}
-			}],
-			"headers": [{ "name": "x-intlayer-locale" }]
-		},
-		"basePath": ""
-	},
-	editor: {
-		"applicationURL": "http://localhost:3000",
-		"editorURL": "http://localhost:8000",
-		"cmsURL": "https://app.intlayer.org",
-		"backendURL": "https://back.intlayer.org",
-		"port": 8e3,
-		"enabled": false,
-		"dictionaryPriorityStrategy": "local_first",
-		"liveSync": true,
-		"liveSyncPort": 4e3,
-		"liveSyncURL": "http://localhost:4000"
-	},
-	log: {
-		"mode": "default",
-		"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
-	},
-	system: {
-		"baseDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app",
-		"moduleAugmentationDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/types",
-		"unmergedDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/unmerged_dictionary",
-		"remoteDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/remote_dictionary",
-		"dictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/dictionary",
-		"dynamicDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/dynamic_dictionary",
-		"fetchDictionariesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/fetch_dictionary",
-		"typesDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/types",
-		"mainDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/main",
-		"configDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/config",
-		"cacheDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/cache",
-		"tempDir": "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app/.intlayer/tmp"
-	},
-	content: {
-		"fileExtensions": [
-			".content.ts",
-			".content.js",
-			".content.cjs",
-			".content.mjs",
-			".content.json",
-			".content.json5",
-			".content.jsonc",
-			".content.tsx",
-			".content.jsx"
-		],
-		"contentDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app"],
-		"codeDir": ["/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-svelte-static/svelte-intlayer-app"],
-		"excludedPath": [
-			"**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.{tsx,ts,js,mjs,cjs,jsx,vue,svelte,astro}",
-			"!**/node_modulesdistbuild.intlayer.next.nuxt.expo.vercel.turbo.tanstack*.config.*",
-			"!***.spec.*",
-			"!***.d.ts",
-			"!***.map"
-		],
-		"outputFormat": ["esm", "cjs"],
-		"cache": true,
-		"checkTypes": false
-	},
-	ai,
-	dictionary,
-	build,
-	compiler: {
-		"enabled": true,
-		"dictionaryKeyPrefix": "",
-		"noMetadata": false,
-		"saveComponents": false
-	}
-};
 var defaultLocale$1 = internationalization?.defaultLocale;
 var createIntlayerStore = () => {
 	const { subscribe, set, update } = writable({ locale: defaultLocale$1 });
@@ -296,6 +214,79 @@ var createIntlayerStore = () => {
 	};
 };
 var intlayerStore = createIntlayerStore();
+var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
+var getIntlayerContext = () => {
+	return getContext(INTLAYER_CONTEXT_KEY);
+};
+var DEFAULT_VARIANT_ID = "default";
+var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
+var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
+var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+var encodeSegmentText = (raw, unsafeChars) => {
+	if (raw === "") return "%";
+	const encoded = raw.replace(unsafeChars, percentEncodeChar);
+	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
+	return encoded;
+};
+var serializeVariant = (variant) => {
+	if (variant === void 0) return DEFAULT_VARIANT_ID;
+	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
+	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
+};
+var serializeVariantChain = (variant) => {
+	if (!Array.isArray(variant)) return [serializeVariant(variant)];
+	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
+	return variant.map(serializeVariant);
+};
+var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
+	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
+	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
+};
+var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
+	const segments = compositeId.split("/");
+	return qualifierTypes.every((qualifierType, index) => {
+		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
+		return selector?.item === void 0 || segments[index] === String(selector.item);
+	});
+};
+var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
+var reconstructQualifiedEntry = (group, compositeId) => {
+	const segments = compositeId.split("/");
+	const entry = {
+		key: group.key,
+		content: group.content[compositeId]
+	};
+	group.qualifierTypes.forEach((qualifierType, index) => {
+		if (qualifierType === "variant") entry.variant = segments[index];
+		else if (qualifierType === "item") entry.item = Number(segments[index]);
+	});
+	return entry;
+};
+var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
+	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
+	const { qualifierTypes, content } = dictionaryOrGroup;
+	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
+	const compositeIds = Object.keys(content);
+	const variantIndex = qualifierTypes.indexOf("variant");
+	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
+	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
+	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
+	return matchedEntries[0] ?? null;
+};
+var parseDictionarySelector = (localeOrSelector) => {
+	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
+		locale: localeOrSelector.locale,
+		selector: localeOrSelector
+	};
+	return { locale: localeOrSelector };
+};
+var getDictionarySelectorCacheKey = (selector) => {
+	if (!selector) return "";
+	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
+		const value = selector[selectorKey];
+		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
+	}).join("|");
+};
 var TRANSLATION = "translation";
 var OBJECT = "object";
 var ARRAY = "array";
@@ -314,28 +305,104 @@ var deepTransformNode = (node, props) => {
 		});
 	});
 	const result = {};
-	for (const key in node) Object.defineProperty(result, key, {
-		enumerable: true,
-		configurable: true,
-		get: function() {
-			const childProps = {
-				...props,
-				children: node[key],
-				keyPath: [...props.keyPath, {
-					type: OBJECT,
-					key
-				}]
-			};
-			const transformed = deepTransformNode(node[key], childProps);
-			Object.defineProperty(this, key, {
-				value: transformed,
-				enumerable: true,
-				configurable: true
-			});
-			return transformed;
+	for (const key in node) {
+		const childProps = {
+			...props,
+			children: node[key],
+			keyPath: [...props.keyPath, {
+				type: OBJECT,
+				key
+			}]
+		};
+		if (props.eager) {
+			result[key] = deepTransformNode(node[key], childProps);
+			continue;
 		}
-	});
+		Object.defineProperty(result, key, {
+			enumerable: true,
+			configurable: true,
+			get: function() {
+				const transformed = deepTransformNode(node[key], childProps);
+				Object.defineProperty(this, key, {
+					value: transformed,
+					enumerable: true,
+					configurable: true
+				});
+				return transformed;
+			}
+		});
+	}
 	return result;
+};
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
+	return {
+		hit: true,
+		content: entries.get(cacheKey)
+	};
+};
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
+	}
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
+};
+var getBasePlugins = (locale, fallback = true) => [
+	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+	enumerationPlugin,
+	conditionPlugin,
+	insertionPlugin$1,
+	nestedPlugin(locale ?? internationalization.defaultLocale),
+	filePlugin,
+	genderPlugin,
+	selectPlugin
+];
+var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
+	...nodeProps,
+	plugins
+});
+var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = parseDictionarySelector(localeOrSelector);
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries
+		};
+		return getContent(resolvedDictionary.content, props, appliedPlugins);
+	};
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -392,7 +459,7 @@ var fallbackPlugin = {
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
@@ -413,43 +480,41 @@ var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TR
 	}
 };
 var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
 var insertionPlugin$1 = fallbackPlugin;
 var genderPlugin = fallbackPlugin;
+var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
 var filePlugin = fallbackPlugin;
-var getBasePlugins = (locale, fallback = true) => [
-	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-	enumerationPlugin,
-	conditionPlugin,
-	insertionPlugin$1,
-	nestedPlugin(locale ?? internationalization.defaultLocale),
-	filePlugin,
-	genderPlugin
-];
-var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
-	...nodeProps,
-	plugins
-});
-var getDictionary$1 = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
-	};
-	return getContent(dictionary.content, props, plugins);
-};
 function IntlayerNodeWrapper($$anchor, $$props) {
+	$.push($$props, false);
 	let Renderer = $.prop($$props, "Renderer", 8, void 0);
 	let rendererProps = $.prop($$props, "rendererProps", 24, () => ({}));
 	let value = $.prop($$props, "value", 8, void 0);
+	let ResolvedRenderer = $.mutable_source();
+	let isAwaitingRenderer = $.mutable_source(false);
+	$.legacy_pre_effect(() => $.deep_read_state(Renderer()), () => {
+		if (typeof Renderer()?.then === "function") {
+			$.set(isAwaitingRenderer, true);
+			Renderer().then((component) => {
+				$.set(ResolvedRenderer, component);
+				$.set(isAwaitingRenderer, false);
+			});
+		} else {
+			$.set(ResolvedRenderer, Renderer());
+			$.set(isAwaitingRenderer, false);
+		}
+	});
+	$.legacy_pre_effect_reset();
+	$.init();
 	var fragment = $.comment();
 	var node = $.first_child(fragment);
-	var consequent = ($$anchor) => {
+	var consequent = ($$anchor) => {};
+	var consequent_1 = ($$anchor) => {
 		var fragment_1 = $.comment();
 		var node_1 = $.first_child(fragment_1);
-		$.element(node_1, Renderer, false, ($$element, $$anchor) => {
+		$.element(node_1, () => $.get(ResolvedRenderer), false, ($$element, $$anchor) => {
 			$.attribute_effect($$element, () => ({ ...rendererProps() }));
 			var text = $.text();
 			$.template_effect(() => $.set_text(text, value()));
@@ -457,8 +522,8 @@ function IntlayerNodeWrapper($$anchor, $$props) {
 		});
 		$.append($$anchor, fragment_1);
 	};
-	var consequent_1 = ($$anchor) => {
-		Renderer()($$anchor, $.spread_props(rendererProps, {
+	var consequent_2 = ($$anchor) => {
+		$.get(ResolvedRenderer)($$anchor, $.spread_props(rendererProps, {
 			children: ($$anchor, $$slotProps) => {
 				$.next();
 				var text_1 = $.text();
@@ -474,11 +539,13 @@ function IntlayerNodeWrapper($$anchor, $$props) {
 		$.append($$anchor, text_2);
 	};
 	$.if(node, ($$render) => {
-		if (typeof Renderer() === "string") $$render(consequent);
-		else if (typeof Renderer() === "function") $$render(consequent_1, 1);
+		if ($.get(isAwaitingRenderer)) $$render(consequent);
+		else if (typeof $.get(ResolvedRenderer) === "string") $$render(consequent_1, 1);
+		else if (typeof $.get(ResolvedRenderer) === "function") $$render(consequent_2, 2);
 		else $$render(alternate, -1);
 	});
 	$.append($$anchor, fragment);
+	$.pop();
 }
 var renderIntlayerNode = (args) => {
 	const isClassComponent = Boolean(IntlayerNodeWrapper.prototype?.$destroy);
@@ -509,21 +576,46 @@ var renderIntlayerNode = (args) => {
 		configurable: true
 	});
 	Object.defineProperty(Node, "toString", {
-		value: () => args.value?.toString() ?? "",
+		value: () => String(args.value ?? ""),
 		writable: true,
 		configurable: true
 	});
+	Object.defineProperty(Node, "valueOf", {
+		value: () => args.value,
+		writable: true,
+		configurable: true
+	});
+	Object.defineProperty(Node, Symbol.toPrimitive, {
+		value: () => args.value ?? "",
+		writable: true,
+		configurable: true
+	});
+	if (args.value !== null && args.value !== void 0) {
+		const valObj = Object(args.value);
+		const proto = Object.getPrototypeOf(valObj);
+		for (const prop of Object.getOwnPropertyNames(proto)) {
+			if (prop === "constructor" || prop in Node) continue;
+			const valProp = valObj[prop];
+			if (typeof valProp === "function") Object.defineProperty(Node, prop, {
+				value: valProp.bind(args.value),
+				writable: true,
+				configurable: true
+			});
+		}
+	}
 	if (args.additionalProps) Object.assign(Node, args.additionalProps);
 	return Node;
 };
 var intlayerNodePlugins = {
 	id: "intlayer-node-plugin",
 	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
-	transform: (node, { children, ...rest }) => renderIntlayerNode({
-		value: children ?? node,
-		component: void 0,
-		props: rest
-	})
+	transform: (node, { children, ...rest }) => {
+		return renderIntlayerNode({
+			value: children ?? node,
+			component: void 0,
+			props: rest
+		});
+	}
 };
 var svelteNodePlugins = intlayerNodePlugins;
 var insertionPlugin = fallbackPlugin;
@@ -536,10 +628,12 @@ var getPlugins = (locale, fallback = true) => {
 	const plugins = [
 		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 		enumerationPlugin,
+		pluralPlugin(locale ?? internationalization.defaultLocale),
 		conditionPlugin,
 		nestedPlugin(locale ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
+		selectPlugin,
 		intlayerNodePlugins,
 		svelteNodePlugins,
 		insertionPlugin,
@@ -549,11 +643,14 @@ var getPlugins = (locale, fallback = true) => {
 	pluginsCache.set(cacheKey, plugins);
 	return plugins;
 };
-var getDictionary = (dictionary, locale) => getDictionary$1(dictionary, locale, getPlugins(locale));
-var useDictionary = (dictionary, locale) => {
+var getDictionary = (dictionary, localeOrSelector) => {
+	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
+};
+var useDictionary = (dictionary, localeOrSelector) => {
 	const context = getIntlayerContext();
 	return derived([intlayerStore], ([$store]) => {
-		return getDictionary(dictionary, locale ?? context?.locale ?? $store.locale);
+		const contextLocale = context?.locale ?? $store.locale;
+		return getDictionary(dictionary, localeOrSelector ?? contextLocale);
 	});
 };
 function usePerformanceMeasure(name) {
@@ -590,7 +687,7 @@ function getLocaleName(locale) {
 function isLocale(value) {
 	return locales$1.includes(value);
 }
-var PAGE_SEGMENTS = new Set([
+var PAGE_SEGMENTS = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -624,12 +721,11 @@ function navigate(url, replace = false) {
 	else history.pushState(null, "", url);
 	pathname.set(window.location.pathname);
 }
-var locales = configuration.internationalization.locales;
-configuration.internationalization.requiredLocales;
-configuration.internationalization.defaultLocale;
-configuration.editor;
-var root_1$1 = $.from_html(`<option> </option>`);
-var root$2 = $.from_html(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none"></select></div>`);
+var locales = internationalization.locales;
+internationalization.requiredLocales;
+internationalization.defaultLocale;
+var root$2 = $.from_html(`<option> </option>`);
+var root_1$1 = $.from_html(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:ring-1 focus:ring-primary focus:outline-none"></select></div>`);
 function LocaleSwitcher($$anchor, $$props) {
 	$.push($$props, false);
 	const $pathname = () => $.store_get(pathname, "$pathname", $$stores);
@@ -639,16 +735,15 @@ function LocaleSwitcher($$anchor, $$props) {
 		navigate(get(pathname).replace(/^\/[^/]+/, `/${newLocale}`) + window.location.search + window.location.hash, false);
 	}
 	$.init();
-	var div = root$2();
+	var div = root_1$1();
 	var select = $.child(div);
 	$.each(select, 5, () => locales, (localeItem) => localeItem, ($$anchor, localeItem) => {
-		var option = root_1$1();
-		var text = $.child(option, true);
-		$.reset(option);
+		var option = root$2();
+		var text = $.only_child(option, true);
 		var option_value = {};
 		$.template_effect(($0) => {
 			$.set_text(text, $0);
-			if (option_value !== (option_value = $.get(localeItem))) option.value = (option.__value = $.get(localeItem)) ?? "";
+			if (option_value !== (option_value = $.get(localeItem))) option.value = (option.__value = option_value) ?? "";
 		}, [() => getLocaleName($.get(localeItem))]);
 		$.append($$anchor, option);
 	});
@@ -657,7 +752,7 @@ function LocaleSwitcher($$anchor, $$props) {
 	$.init_select(select);
 	$.reset(div);
 	$.template_effect(($0) => {
-		if (select_value !== (select_value = $0)) select.value = (select.__value = $0) ?? "", $.select_option(select, $0);
+		if (select_value !== (select_value = $0)) select.value = (select.__value = select_value) ?? "", $.select_option(select, select_value);
 	}, [() => $pathname().split("/").filter(Boolean)[0] ?? "en"]);
 	$.delegated("change", select, handleLocaleChange);
 	$.append($$anchor, div);
@@ -796,8 +891,7 @@ function ThemeToggle($$anchor, $$props) {
 	const label = $.derived(() => $.get(mode) === "auto" ? $tt().ariaLabelAuto : $.get(mode) === "light" ? $tt().ariaLabelLight : $tt().ariaLabelDark);
 	const buttonText = $.derived(() => $.get(mode) === "auto" ? $tt().auto : $.get(mode) === "dark" ? $tt().dark : $tt().light);
 	var button = root$1();
-	var text = $.child(button, true);
-	$.reset(button);
+	var text = $.only_child(button, true);
 	$.template_effect(() => {
 		$.set_attribute(button, "aria-label", $.get(label));
 		$.set_attribute(button, "title", $.get(label));
@@ -809,9 +903,9 @@ function ThemeToggle($$anchor, $$props) {
 	$$cleanup();
 }
 $.delegate(["click"]);
-var root_2 = $.from_html(`<a class="block px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent"> </a>`);
+var root = $.from_html(`<a class="block px-4 py-2 text-sm text-foreground transition-colors hover:bg-accent"> </a>`);
 var root_1 = $.from_html(`<div class="absolute top-full left-0 w-48 pt-2" role="presentation"><div class="overflow-hidden rounded-md border border-border bg-card py-1 shadow-lg"></div></div>`);
-var root = $.from_html(`<header class="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg"><nav class="container flex h-16 items-center justify-between"><div class="flex items-center gap-8"><a class="text-lg font-bold tracking-tight text-primary no-underline"> </a> <div class="hidden items-center gap-6 text-sm font-medium md:flex"><a> </a> <a> </a> <div class="relative"><button type="button" class="nav-link flex cursor-pointer items-center gap-1 border-none bg-transparent"> <!></button> <!></div></div></div> <div class="flex items-center gap-4"><a href="https://github.com/intlayer-org/benchmark-i18n" target="_blank" rel="noreferrer" class="text-muted-foreground transition hover:text-foreground"><span class="sr-only"> </span> <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a> <!> <!></div></nav></header>`);
+var root_2 = $.from_html(`<header class="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg"><nav class="container flex h-16 items-center justify-between"><div class="flex items-center gap-8"><a class="text-lg font-bold tracking-tight text-primary no-underline"> </a> <div class="hidden items-center gap-6 text-sm font-medium md:flex"><a> </a> <a> </a> <div class="relative"><button type="button" class="nav-link flex cursor-pointer items-center gap-1 border-none bg-transparent"> <!></button> <!></div></div></div> <div class="flex items-center gap-4"><a href="https://github.com/intlayer-org/benchmark-i18n" target="_blank" rel="noreferrer" class="text-muted-foreground transition hover:text-foreground"><span class="sr-only"> </span> <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg></a> <!> <!></div></nav></header>`);
 function Header($$anchor, $$props) {
 	$.push($$props, true);
 	const $route = () => $.store_get(route, "$route", $$stores);
@@ -857,21 +951,18 @@ function Header($$anchor, $$props) {
 	]);
 	const homeActive = $.derived(() => $route().kind === "ok" && $route().page === "");
 	const methodologyActive = $.derived(() => $route().kind === "ok" && $route().page === "about");
-	var header_1 = root();
+	var header_1 = root_2();
 	var nav = $.child(header_1);
 	var div = $.child(nav);
 	var a = $.child(div);
-	var text = $.child(a, true);
-	$.reset(a);
+	var text = $.only_child(a, true);
 	var div_1 = $.sibling(a, 2);
 	var a_1 = $.child(div_1);
 	let classes;
-	var text_1 = $.child(a_1, true);
-	$.reset(a_1);
+	var text_1 = $.only_child(a_1, true);
 	var a_2 = $.sibling(a_1, 2);
 	let classes_1;
-	var text_2 = $.child(a_2, true);
-	$.reset(a_2);
+	var text_2 = $.only_child(a_2, true);
 	var div_2 = $.sibling(a_2, 2);
 	var button = $.child(div_2);
 	var text_3 = $.child(button);
@@ -891,9 +982,8 @@ function Header($$anchor, $$props) {
 		var div_3 = root_1();
 		var div_4 = $.child(div_3);
 		$.each(div_4, 21, () => $.get(mockPages), (page) => page.to, ($$anchor, page) => {
-			var a_3 = root_2();
-			var text_4 = $.child(a_3, true);
-			$.reset(a_3);
+			var a_3 = root();
+			var text_4 = $.only_child(a_3, true);
 			$.template_effect(() => {
 				$.set_attribute(a_3, "href", $.get(page).to);
 				$.set_text(text_4, $.get(page).label);
@@ -916,8 +1006,7 @@ function Header($$anchor, $$props) {
 	var div_5 = $.sibling(div, 2);
 	var a_4 = $.child(div_5);
 	var span = $.child(a_4);
-	var text_5 = $.child(span, true);
-	$.reset(span);
+	var text_5 = $.only_child(span, true);
 	$.next(2);
 	$.reset(a_4);
 	var node_2 = $.sibling(a_4, 2);

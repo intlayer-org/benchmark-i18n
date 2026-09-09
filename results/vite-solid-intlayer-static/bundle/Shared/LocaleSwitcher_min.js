@@ -22,7 +22,8 @@ var c = [
 }, u = r("<div class=\"flex items-center gap-2\"><select class=\"h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary\">"), d = r("<option>");
 function f() {
 	let r = o(), f = a(), p = i(), m = (e) => {
-		f(`${p.pathname.replace(/^\/[^/]+/, `/${e}`)}${p.search}${p.hash}`);
+		let t = p.pathname.replace(/^\/[^/]+/, `/${e}`);
+		f(`${t}${p.search}${p.hash}`);
 	};
 	return (() => {
 		var i = u(), a = i.firstChild;

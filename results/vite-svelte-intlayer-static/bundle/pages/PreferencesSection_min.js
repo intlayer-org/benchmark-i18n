@@ -180,7 +180,7 @@ var i = {
 			}
 		}
 	}
-}, a = Symbol("intlayer"), o = () => t(a), s = {
+}, a = {
 	locales: [
 		"en",
 		"fr",
@@ -207,8 +207,8 @@ var i = {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, c = s?.defaultLocale, l = (() => {
-	let { subscribe: e, set: t, update: i } = r({ locale: c });
+}, o = a?.defaultLocale, s = (() => {
+	let { subscribe: e, set: t, update: i } = r({ locale: o });
 	return {
 		subscribe: e,
 		setLocale: (e) => i((t) => ({
@@ -216,54 +216,133 @@ var i = {
 			locale: e
 		})),
 		getLocale: () => n({ subscribe: e }, (e) => e.locale),
-		reset: () => t({ locale: c })
+		reset: () => t({ locale: o })
 	};
-})(), u = "translation", d = "object", f = "array", p = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => p(e, t));
+})(), c = Symbol("intlayer"), l = () => t(c), u = "default", d = /[^A-Za-z0-9._&=-]/g, f = /[^A-Za-z0-9._-]/g, p = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, m = (e, t) => {
+	if (e === "") return "%";
+	let n = e.replace(t, p);
+	return n === "." || n === ".." ? n.replace(/\./g, "%002E") : n;
+}, h = (e) => e === void 0 ? u : typeof e == "string" ? m(e, d) : Object.keys(e).sort().map((t) => `${m(t, f)}=${m(String(e[t]), f)}`).join("&"), g = (e) => Array.isArray(e) ? e.length === 0 ? [u] : e.map(h) : [h(e)], _ = (e, t) => {
+	for (let n of e) if (t(n)) return n;
+	return t("default") ? u : e[0] ?? "default";
+}, v = (e, t, n, r) => {
+	let i = e.split("/");
+	return t.every((e, t) => e === "variant" ? i[t] === r : n?.item === void 0 || i[t] === String(n.item));
+}, y = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, b = (e, t) => {
+	let n = t.split("/"), r = {
+		key: e.key,
+		content: e.content[t]
+	};
+	return e.qualifierTypes.forEach((e, t) => {
+		e === "variant" ? r.variant = n[t] : e === "item" && (r.item = Number(n[t]));
+	}), r;
+}, x = (e, t) => {
+	if (!y(e)) return e;
+	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? u : _(g(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => v(e, n, t, s)).map((t) => b(e, t));
+	return i ? c.sort((e, t) => (e.item ?? 0) - (t.item ?? 0)) : c[0] ?? null;
+}, S = (e) => typeof e == "object" && e ? {
+	locale: e.locale,
+	selector: e
+} : { locale: e }, C = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
+	let n = e[t];
+	return `${t}:${t === "variant" ? g(n).join(",") : String(n)}`;
+}).join("|") : "", w = "translation", T = "object", E = "array", D = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => D(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => p(e, {
+	if (Array.isArray(e)) return e.map((e, n) => D(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: f,
+			type: E,
 			key: n
 		}]
 	}));
 	let n = {};
-	for (let r in e) Object.defineProperty(n, r, {
-		enumerable: !0,
-		configurable: !0,
-		get: function() {
-			let n = {
-				...t,
-				children: e[r],
-				keyPath: [...t.keyPath, {
-					type: d,
-					key: r
-				}]
-			}, i = p(e[r], n);
-			return Object.defineProperty(this, r, {
-				value: i,
-				enumerable: !0,
-				configurable: !0
-			}), i;
+	for (let r in e) {
+		let i = {
+			...t,
+			children: e[r],
+			keyPath: [...t.keyPath, {
+				type: T,
+				key: r
+			}]
+		};
+		if (t.eager) {
+			n[r] = D(e[r], i);
+			continue;
 		}
-	});
+		Object.defineProperty(n, r, {
+			enumerable: !0,
+			configurable: !0,
+			get: function() {
+				let t = D(e[r], i);
+				return Object.defineProperty(this, r, {
+					value: t,
+					enumerable: !0,
+					configurable: !0
+				}), t;
+			}
+		});
+	}
 	return n;
-}, m = (e) => {
+}, O = /* @__PURE__ */ new WeakMap(), k = 0, A = (e) => {
+	if (!e) return "base";
+	let t = O.get(e);
+	if (t) return t;
+	k += 1;
+	let n = `p${k}`;
+	return O.set(e, n), n;
+}, j = 256, M = /* @__PURE__ */ new WeakMap(), N = (e) => typeof e == "object" && !!e, P = (e, t, n) => `${e}_${t}_${A(n)}`, F = (e, t) => {
+	if (!N(e)) return { hit: !1 };
+	let n = M.get(e);
+	return n?.has(t) ? {
+		hit: !0,
+		content: n.get(t)
+	} : { hit: !1 };
+}, I = (e, t, n) => {
+	if (!N(e)) return n;
+	let r = M.get(e);
+	return r || (r = /* @__PURE__ */ new Map(), M.set(e, r)), r.size >= j && r.clear(), r.set(t, n), n;
+}, L = (e, t = !0) => [
+	W(e ?? a.defaultLocale, t ? a.defaultLocale : void 0),
+	G,
+	q,
+	J,
+	Z(e ?? a.defaultLocale),
+	ee,
+	Y,
+	X
+], R = (e, t, n = []) => D(e, {
+	...t,
+	plugins: n
+}), z = (e, t, n) => {
+	let { locale: r, selector: i } = S(t), o = P(r ?? a.defaultLocale, C(i), n), s = F(e, o);
+	if (s.hit) return s.content;
+	let c = n ?? L(r), l = x(e, i), u = (e) => {
+		let t = {
+			dictionaryKey: e.key,
+			dictionaryPath: e.filePath,
+			keyPath: [],
+			plugins: c,
+			nestedDictionaries: e.nestedDictionaries
+		};
+		return R(e.content, t, c);
+	};
+	return l === null ? I(e, o, null) : Array.isArray(l) ? I(e, o, l.map(u)) : I(e, o, u(l));
+}, B = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, h = (e, t) => {
+}, V = (e, t) => {
 	if (e === void 0) return t;
 	if (t === void 0 || Array.isArray(e)) return e;
-	if (m(e) && m(t)) {
+	if (B(e) && B(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : h(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : V(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, g = (e, t, n) => {
+}, H = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -279,12 +358,12 @@ var i = {
 			s.push(t);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => h(e, t));
-}, _ = {
+	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => V(e, t));
+}, U = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, v = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? _ : {
+}, W = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? U : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -294,45 +373,32 @@ var i = {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: u,
+					type: w,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return g(o, e, t);
+		return H(o, e, t);
 	}
-}, y = _, b = _, x = _, S = _, C = (e) => _, w = _, T = (e, t = !0) => [
-	v(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
-	y,
-	b,
-	x,
-	C(e ?? s.defaultLocale),
-	w,
-	S
-], E = (e, t, n = []) => p(e, {
-	...t,
-	plugins: n
-}), D = (e, t, n = T(t)) => {
-	let r = {
-		dictionaryKey: e.key,
-		dictionaryPath: e.filePath,
-		keyPath: [],
-		plugins: n
-	};
-	return E(e.content, r, n);
-};
-function O(t, n) {
-	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0);
-	var o = e.comment(), s = e.first_child(o), c = (t) => {
-		var n = e.comment(), o = e.first_child(n);
-		e.element(o, r, !1, (t, n) => {
+}, G = U, K = (e) => U, q = U, J = U, Y = U, X = U, Z = (e) => U, ee = U;
+function Q(t, n) {
+	e.push(n, !1);
+	let r = e.prop(n, "Renderer", 8, void 0), i = e.prop(n, "rendererProps", 24, () => ({})), a = e.prop(n, "value", 8, void 0), o = e.mutable_source(), s = e.mutable_source(!1);
+	e.legacy_pre_effect(() => e.deep_read_state(r()), () => {
+		typeof r()?.then == "function" ? (e.set(s, !0), r().then((t) => {
+			e.set(o, t), e.set(s, !1);
+		})) : (e.set(o, r()), e.set(s, !1));
+	}), e.legacy_pre_effect_reset(), e.init();
+	var c = e.comment(), l = e.first_child(c), u = (e) => {}, d = (t) => {
+		var n = e.comment(), r = e.first_child(n);
+		e.element(r, () => e.get(o), !1, (t, n) => {
 			e.attribute_effect(t, () => ({ ...i() }));
 			var r = e.text();
 			e.template_effect(() => e.set_text(r, a())), e.append(n, r);
 		}), e.append(t, n);
-	}, l = (t) => {
-		r()(t, e.spread_props(i, {
+	}, f = (t) => {
+		e.get(o)(t, e.spread_props(i, {
 			children: (t, n) => {
 				e.next();
 				var r = e.text();
@@ -340,17 +406,17 @@ function O(t, n) {
 			},
 			$$slots: { default: !0 }
 		}));
-	}, u = (t) => {
+	}, p = (t) => {
 		var n = e.text();
 		e.template_effect(() => e.set_text(n, a())), e.append(t, n);
 	};
-	e.if(s, (e) => {
-		typeof r() == "string" ? e(c) : typeof r() == "function" ? e(l, 1) : e(u, -1);
-	}), e.append(t, o);
+	e.if(l, (t) => {
+		e.get(s) ? t(u) : typeof e.get(o) == "string" ? t(d, 1) : typeof e.get(o) == "function" ? t(f, 2) : t(p, -1);
+	}), e.append(t, c), e.pop();
 }
-var k = (e) => {
-	let t = !!O.prototype?.$destroy, n;
-	return n = t ? class extends O {
+var te = (e) => {
+	let t = !!Q.prototype?.$destroy, n;
+	if (n = t ? class extends Q {
 		constructor(t) {
 			super({
 				...t,
@@ -362,7 +428,7 @@ var k = (e) => {
 				}
 			});
 		}
-	} : (t) => O(t, {
+	} : (t) => Q(t, {
 		Renderer: e.component,
 		rendererProps: e.props,
 		value: e.value
@@ -371,76 +437,79 @@ var k = (e) => {
 		writable: !0,
 		configurable: !0
 	}), Object.defineProperty(n, "toString", {
-		value: () => e.value?.toString() ?? "",
+		value: () => String(e.value ?? ""),
 		writable: !0,
 		configurable: !0
-	}), e.additionalProps && Object.assign(n, e.additionalProps), n;
-}, A = {
+	}), Object.defineProperty(n, "valueOf", {
+		value: () => e.value,
+		writable: !0,
+		configurable: !0
+	}), Object.defineProperty(n, Symbol.toPrimitive, {
+		value: () => e.value ?? "",
+		writable: !0,
+		configurable: !0
+	}), e.value !== null && e.value !== void 0) {
+		let t = Object(e.value), r = Object.getPrototypeOf(t);
+		for (let i of Object.getOwnPropertyNames(r)) {
+			if (i === "constructor" || i in n) continue;
+			let r = t[i];
+			typeof r == "function" && Object.defineProperty(n, i, {
+				value: r.bind(e.value),
+				writable: !0,
+				configurable: !0
+			});
+		}
+	}
+	return e.additionalProps && Object.assign(n, e.additionalProps), n;
+}, ne = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { children: t, ...n }) => k({
+	transform: (e, { children: t, ...n }) => te({
 		value: t ?? e,
 		component: void 0,
 		props: n
 	})
-}, j = A, M = _, N = _, P = _, F = /* @__PURE__ */ new Map(), I = (e, t = !0) => {
-	let n = `${e ?? s.defaultLocale}_${t}`;
-	if (F.has(n)) return F.get(n);
+}, re = ne, ie = U, ae = U, oe = U, $ = /* @__PURE__ */ new Map(), se = (e, t = !0) => {
+	let n = `${e ?? a.defaultLocale}_${t}`;
+	if ($.has(n)) return $.get(n);
 	let r = [
-		v(e ?? s.defaultLocale, t ? s.defaultLocale : void 0),
-		y,
-		b,
-		C(e ?? s.defaultLocale),
-		w,
-		S,
-		A,
-		j,
-		M,
-		N,
-		P
+		W(e ?? a.defaultLocale, t ? a.defaultLocale : void 0),
+		G,
+		K(e ?? a.defaultLocale),
+		q,
+		Z(e ?? a.defaultLocale),
+		ee,
+		Y,
+		X,
+		ne,
+		re,
+		ie,
+		ae,
+		oe
 	];
-	return F.set(n, r), r;
-}, L = (e, t) => D(e, t, I(t)), R = (e, t) => {
-	let r = o();
-	return n([l], ([n]) => L(e, t ?? r?.locale ?? n.locale));
-}, z = e.from_html("<section class=\"rounded-lg border border-border bg-card p-6\"><h2 class=\"mb-4 text-lg font-semibold text-foreground\"> </h2> <div class=\"space-y-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div> <button type=\"button\" class=\"h-6 w-11 rounded-full bg-primary transition-colors\"><span class=\"block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform\"></span></button></div> <div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div> <button type=\"button\" class=\"h-6 w-11 rounded-full bg-muted transition-colors\"><span class=\"block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform\"></span></button></div> <div><label for=\"settings-default-language\" class=\"mb-1 block text-sm font-medium text-foreground\"> </label> <select id=\"settings-default-language\" class=\"w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-1 focus:ring-ring focus:outline-none\"><option> </option><option> </option><option> </option><option> </option><option> </option><option> </option><option> </option></select></div></div></section>");
-function B(t, n) {
+	return $.set(n, r), r;
+}, ce = (e, t) => z(e, t, se(typeof t == "object" && t ? t.locale : t)), le = (e, t) => {
+	let r = l();
+	return n([s], ([n]) => {
+		let i = r?.locale ?? n.locale;
+		return ce(e, t ?? i);
+	});
+}, ue = e.from_html("<section class=\"rounded-lg border border-border bg-card p-6\"><h2 class=\"mb-4 text-lg font-semibold text-foreground\"> </h2> <div class=\"space-y-4\"><div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div> <button type=\"button\" class=\"h-6 w-11 rounded-full bg-primary transition-colors\"><span class=\"block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform\"></span></button></div> <div class=\"flex items-center justify-between\"><div><p class=\"text-sm font-medium text-foreground\"> </p> <p class=\"text-xs text-muted-foreground\"> </p></div> <button type=\"button\" class=\"h-6 w-11 rounded-full bg-muted transition-colors\"><span class=\"block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform\"></span></button></div> <div><label for=\"settings-default-language\" class=\"mb-1 block text-sm font-medium text-foreground\"> </label> <select id=\"settings-default-language\" class=\"w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:ring-1 focus:ring-ring focus:outline-none\"><option> </option><option> </option><option> </option><option> </option><option> </option><option> </option><option> </option></select></div></div></section>");
+function de(t, n) {
 	e.push(n, !1);
-	let r = () => e.store_get(s, "$content", a), [a, o] = e.setup_stores(), s = R(i);
+	let r = () => e.store_get(s, "$content", a), [a, o] = e.setup_stores(), s = le(i);
 	e.init();
-	var c = z(), l = e.child(c), u = e.child(l, !0);
-	e.reset(l);
-	var d = e.sibling(l, 2), f = e.child(d), p = e.child(f), m = e.child(p), h = e.child(m, !0);
-	e.reset(m);
-	var g = e.sibling(m, 2), _ = e.child(g, !0);
-	e.reset(g), e.reset(p);
+	var c = ue(), l = e.child(c), u = e.only_child(l, !0), d = e.sibling(l, 2), f = e.child(d), p = e.child(f), m = e.child(p), h = e.only_child(m, !0), g = e.sibling(m, 2), _ = e.only_child(g, !0);
+	e.reset(p);
 	var v = e.sibling(p, 2);
 	e.reset(f);
-	var y = e.sibling(f, 2), b = e.child(y), x = e.child(b), S = e.child(x, !0);
-	e.reset(x);
-	var C = e.sibling(x, 2), w = e.child(C, !0);
-	e.reset(C), e.reset(b);
+	var y = e.sibling(f, 2), b = e.child(y), x = e.child(b), S = e.only_child(x, !0), C = e.sibling(x, 2), w = e.only_child(C, !0);
+	e.reset(b);
 	var T = e.sibling(b, 2);
 	e.reset(y);
-	var E = e.sibling(y, 2), D = e.child(E), O = e.child(D, !0);
-	e.reset(D);
-	var k = e.sibling(D, 2), A = e.child(k), j = e.child(A, !0);
-	e.reset(A);
-	var M = {}, N = e.sibling(A), P = e.child(N, !0);
-	e.reset(N);
-	var F = {}, I = e.sibling(N), L = e.child(I, !0);
-	e.reset(I);
-	var B = {}, V = e.sibling(I), H = e.child(V, !0);
-	e.reset(V);
-	var U = {}, W = e.sibling(V), G = e.child(W, !0);
-	e.reset(W);
-	var K = {}, q = e.sibling(W), J = e.child(q, !0);
-	e.reset(q);
-	var Y = {}, X = e.sibling(q), Z = e.child(X, !0);
-	e.reset(X);
-	var Q = {};
+	var E = e.sibling(y, 2), D = e.child(E), O = e.only_child(D, !0), k = e.sibling(D, 2), A = e.child(k), j = e.only_child(A, !0), M = {}, N = e.sibling(A), P = e.only_child(N, !0), F = {}, I = e.sibling(N), L = e.only_child(I, !0), R = {}, z = e.sibling(I), B = e.only_child(z, !0), V = {}, H = e.sibling(z), U = e.only_child(H, !0), W = {}, G = e.sibling(H), K = e.only_child(G, !0), q = {}, J = e.sibling(G), Y = e.only_child(J, !0), X = {};
 	e.reset(k), e.reset(E), e.reset(d), e.reset(c), e.template_effect(() => {
-		e.set_text(u, r().preferences), e.set_text(h, r().emailNotifications), e.set_text(_, r().receiveWeeklyBenchmarkReports), e.set_attribute(v, "aria-label", r().toggleNotifications), e.set_text(S, r().darkMode), e.set_text(w, r().useDarkColorScheme), e.set_attribute(T, "aria-label", r().toggleDarkMode), e.set_text(O, r().defaultLanguage), e.set_text(j, r().englishEn), M !== (M = r().englishEn) && (A.__value = r().englishEn), e.set_text(P, r().frenchFr), F !== (F = r().frenchFr) && (N.__value = r().frenchFr), e.set_text(L, r().germanDe), B !== (B = r().germanDe) && (I.__value = r().germanDe), e.set_text(H, r().spanishEs), U !== (U = r().spanishEs) && (V.__value = r().spanishEs), e.set_text(G, r().japaneseJa), K !== (K = r().japaneseJa) && (W.__value = r().japaneseJa), e.set_text(J, r().chineseSimplifiedZhCn), Y !== (Y = r().chineseSimplifiedZhCn) && (q.__value = r().chineseSimplifiedZhCn), e.set_text(Z, r().arabicAr), Q !== (Q = r().arabicAr) && (X.__value = r().arabicAr);
+		e.set_text(u, r().preferences), e.set_text(h, r().emailNotifications), e.set_text(_, r().receiveWeeklyBenchmarkReports), e.set_attribute(v, "aria-label", r().toggleNotifications), e.set_text(S, r().darkMode), e.set_text(w, r().useDarkColorScheme), e.set_attribute(T, "aria-label", r().toggleDarkMode), e.set_text(O, r().defaultLanguage), e.set_text(j, r().englishEn), M !== (M = r().englishEn) && (A.__value = M), e.set_text(P, r().frenchFr), F !== (F = r().frenchFr) && (N.__value = F), e.set_text(L, r().germanDe), R !== (R = r().germanDe) && (I.__value = R), e.set_text(B, r().spanishEs), V !== (V = r().spanishEs) && (z.__value = V), e.set_text(U, r().japaneseJa), W !== (W = r().japaneseJa) && (H.__value = W), e.set_text(K, r().chineseSimplifiedZhCn), q !== (q = r().chineseSimplifiedZhCn) && (G.__value = q), e.set_text(Y, r().arabicAr), X !== (X = r().arabicAr) && (J.__value = X);
 	}), e.append(t, c), e.pop(), o();
 }
-export { B as default };
+export { de as default };

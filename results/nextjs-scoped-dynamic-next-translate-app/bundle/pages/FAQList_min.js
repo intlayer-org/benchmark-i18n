@@ -1,42 +1,42 @@
 import e, { createContext as t, useContext as n, useEffect as r, useLayoutEffect as i, useMemo as a, useState as o } from "react";
-import { Fragment as s, jsx as c, jsxs as l } from "react/jsx-runtime";
-import { useRouter as u } from "next/router";
-var d = function() {
-	return d = Object.assign || function(e) {
+import { Fragment as s, jsxDEV as c } from "react/jsx-dev-runtime";
+import { useRouter as l } from "next/router";
+var u = function() {
+	return u = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, d.apply(this, arguments);
+	}, u.apply(this, arguments);
 };
-function f(e, t) {
+function d(e, t) {
 	return typeof t == "string" ? function(n, r, i) {
-		return e(n, r, d({ ns: t }, i));
+		return e(n, r, u({ ns: t }, i));
 	} : e;
 }
-var p;
-typeof e.createContext == "function" && (p = e.createContext({
+var f;
+typeof e.createContext == "function" && (f = e.createContext({
 	t: function(e) {
 		return Array.isArray(e) ? e[0] : e;
 	},
 	lang: ""
 }));
-var m = p;
-function h() {
+var p = f;
+function m() {
 	return typeof window > "u";
 }
-function g(e) {
+function h(e) {
 	try {
 		return new Intl.PluralRules(e);
 	} catch {
 		return new Intl.PluralRules();
 	}
 }
-var _ = function() {
-	return _ = Object.assign || function(e) {
+var g = function() {
+	return g = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, _.apply(this, arguments);
+	}, g.apply(this, arguments);
 };
-function v(e, t) {
+function _(e, t) {
 	if (!t) return { i18nKey: e };
 	var n = e.indexOf(t);
 	return n < 0 ? { i18nKey: e } : {
@@ -44,16 +44,16 @@ function v(e, t) {
 		i18nKey: e.slice(n + t.length)
 	};
 }
-function y(e) {
-	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? w : a, s = t.allowEmptyStrings, c = s === void 0 ? !0 : s, l = function(e, n) {
+function v(e) {
+	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? C : a, s = t.allowEmptyStrings, c = s === void 0 || s, l = function(e, n) {
 		return Array.isArray(e) ? e.map(function(e) {
 			return l(e, n);
-		}) : e instanceof Object ? C({
+		}) : e instanceof Object ? S({
 			obj: e,
 			query: n,
 			config: t,
 			lang: i
-		}) : S({
+		}) : x({
 			text: e,
 			query: n,
 			config: t,
@@ -61,19 +61,19 @@ function y(e) {
 		});
 	}, u = function(e, i, a) {
 		e === void 0 && (e = "");
-		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = v(s, f), g = h.i18nKey, y = h.namespace, S = y === void 0 ? a?.ns ?? t.defaultNS : y, C = S && n[S] || {}, w = b(C, x(r, C, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
+		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = _(s, f), v = h.i18nKey, x = h.namespace, S = x === void 0 ? a?.ns ?? t.defaultNS : x, C = S && n[S] || {}, w = y(C, b(r, C, v, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
 		if (E && (m === "both" || m === (typeof window > "u" ? "node" : "browser")) && o({
 			namespace: S,
-			i18nKey: g
+			i18nKey: v
 		}), E && Array.isArray(D) && D.length) {
 			var O = D[0], k = D.slice(1);
-			if (typeof O == "string") return u(O, i, _(_({}, a), { fallback: k }));
+			if (typeof O == "string") return u(O, i, g(g({}, a), { fallback: k }));
 		}
 		return E && a && a.hasOwnProperty("default") && !D?.length ? a.default ? l(a.default, i) : a.default : E ? s : l(T, i);
 	};
 	return u;
 }
-function b(e, t, n, r) {
+function y(e, t, n, r) {
 	t === void 0 && (t = ""), r === void 0 && (r = { returnObjects: !1 });
 	var i = (n || {}).keySeparator, a = i === void 0 ? "." : i, o = a ? t.split(a) : [t];
 	if (t === a && r.returnObjects) return e;
@@ -84,18 +84,18 @@ function b(e, t, n, r) {
 	}, e);
 	if (typeof s == "string" || s instanceof Object && r.returnObjects && Object.keys(s).length > 0 || Array.isArray(s) && r.returnObjects) return s;
 }
-function x(e, t, n, r, i, a) {
+function b(e, t, n, r, i, a) {
 	if (!i || typeof i.count != "number") return n;
 	var o = `${n}_${i.count}`;
-	if (b(t, o, r, a) !== void 0) return o;
+	if (y(t, o, r, a) !== void 0) return o;
 	var s = `${n}_${e.select(i.count)}`;
-	if (b(t, s, r, a) !== void 0) return s;
+	if (y(t, s, r, a) !== void 0) return s;
 	var c = `${n}.${i.count}`;
-	if (b(t, c, r, a) !== void 0) return c;
+	if (y(t, c, r, a) !== void 0) return c;
 	var l = `${n}.${e.select(i.count)}`;
-	return b(t, l, r, a) === void 0 ? n : l;
+	return y(t, l, r, a) === void 0 ? n : l;
 }
-function S(e) {
+function x(e) {
 	var t = e.text, n = e.query, r = e.config, i = e.lang;
 	if (!t || !n) return t || "";
 	var a = function(e) {
@@ -108,15 +108,15 @@ function S(e) {
 		});
 	}, t);
 }
-function C(e) {
+function S(e) {
 	var t = e.obj, n = e.query, r = e.config, i = e.lang;
 	return !n || Object.keys(n).length === 0 || Object.keys(t).forEach(function(e) {
-		t[e] instanceof Object && C({
+		t[e] instanceof Object && S({
 			obj: t[e],
 			query: n,
 			config: r,
 			lang: i
-		}), typeof t[e] == "string" && (t[e] = S({
+		}), typeof t[e] == "string" && (t[e] = x({
 			text: t[e],
 			query: n,
 			config: r,
@@ -124,7 +124,7 @@ function C(e) {
 		}));
 	}), t;
 }
-function w(e) {
+function C(e) {
 	var t = e.namespace, n = e.i18nKey;
 	if (process.env.NODE_ENV !== "production") {
 		if (!t) {
@@ -134,71 +134,92 @@ function w(e) {
 		console.warn(`[next-translate] "${t}:${n}" is missing in current namespace configuration. Try adding "${n}" to the namespace "${t}".`);
 	}
 }
-function T(e) {
+function w(e) {
 	var t = globalThis.__NEXT_TRANSLATE__ ?? {}, n = t.lang, r = t.namespaces, i = t.config, o = i.localesToIgnore || ["default"], s = !n || o.includes(n), c = function() {
-		return f(y({
+		return d(v({
 			config: i,
 			allNamespaces: r,
-			pluralRules: g(s ? void 0 : n),
+			pluralRules: h(s ? void 0 : n),
 			lang: n
 		}), e);
-	};
+	}, l = r ? Object.keys(r).sort().join("|") : "";
 	return {
-		t: h() ? c() : a(c, [e, n]),
+		t: m() ? c() : a(c, [
+			e,
+			n,
+			l
+		]),
 		lang: n
 	};
 }
-var E = function() {
-	return E = Object.assign || function(e) {
+var T = function() {
+	return T = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, E.apply(this, arguments);
+	}, T.apply(this, arguments);
 };
-function D(e) {
-	var t = n(m);
+function E(e) {
+	var t = n(p);
 	return a(function() {
-		return E(E({}, t), { t: f(t.t, e) });
+		return T(T({}, t), { t: d(t.t, e) });
 	}, [t, e]);
 }
-function O(e) {
-	return (globalThis.__NEXT_TRANSLATE__?.config ? T : D)(e);
+function D(e) {
+	return (globalThis.__NEXT_TRANSLATE__?.config ? w : E)(e);
 }
+var O = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/pages/faq/FAQList.tsx";
 function k() {
-	let { t: e } = O("faq");
+	let { t: e } = D("faq"), t = [
+		{
+			q: e("faqList.howAreTheBenchmarks"),
+			a: e("faqList.allBenchmarksAreRun")
+		},
+		{
+			q: e("faqList.whatLibrariesAreCurrently"),
+			a: e("faqList.weCurrentlyBenchmarkReactI18next")
+		},
+		{
+			q: e("faqList.canIContributeA"),
+			a: e("faqList.absolutelyWeWelcomeCommunity")
+		},
+		{
+			q: e("faqList.howOftenAreResults"),
+			a: e("faqList.benchmarksRunAutomaticallyVia")
+		},
+		{
+			q: e("faqList.areTheResultsStatistically"),
+			a: e("faqList.yesWeUseThe")
+		}
+	];
 	return c("div", {
 		className: "mx-auto max-w-3xl space-y-4",
-		children: [
-			{
-				q: e("faqList.howAreTheBenchmarks"),
-				a: e("faqList.allBenchmarksAreRun")
-			},
-			{
-				q: e("faqList.whatLibrariesAreCurrently"),
-				a: e("faqList.weCurrentlyBenchmarkReactI18next")
-			},
-			{
-				q: e("faqList.canIContributeA"),
-				a: e("faqList.absolutelyWeWelcomeCommunity")
-			},
-			{
-				q: e("faqList.howOftenAreResults"),
-				a: e("faqList.benchmarksRunAutomaticallyVia")
-			},
-			{
-				q: e("faqList.areTheResultsStatistically"),
-				a: e("faqList.yesWeUseThe")
-			}
-		].map((e) => l("details", {
+		children: t.map((e) => c("details", {
 			className: "group rounded-lg border border-border bg-card",
 			children: [c("summary", {
 				className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 				children: e.q
-			}), c("p", {
+			}, void 0, !1, {
+				fileName: O,
+				lineNumber: 38,
+				columnNumber: 11
+			}, this), c("p", {
 				className: "px-6 pb-4 text-sm text-muted-foreground",
 				children: e.a
-			})]
-		}, e.q))
-	});
+			}, void 0, !1, {
+				fileName: O,
+				lineNumber: 41,
+				columnNumber: 11
+			}, this)]
+		}, e.q, !0, {
+			fileName: O,
+			lineNumber: 34,
+			columnNumber: 9
+		}, this))
+	}, void 0, !1, {
+		fileName: O,
+		lineNumber: 32,
+		columnNumber: 5
+	}, this);
 }
 var A = function() {
 	return A = Object.assign || function(e) {
@@ -210,26 +231,26 @@ var A = function() {
 	config: {}
 });
 function M(t) {
-	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, d = O().lang, f = u() || {}, p = f.locale, h = f.defaultLocale, _ = n(j), v = A(A(A({}, N()), _.ns), o), b = r || d || p || h || "", x = A(A({}, _.config), l), S = x.localesToIgnore || ["default"], C = !b || S.includes(b), w = a(function() {
-		return g(C ? void 0 : b);
+	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, u = c === void 0 ? {} : c, d = D().lang, f = l() || {}, m = f.locale, g = f.defaultLocale, _ = n(j), y = A(A(A({}, N()), _.ns), o), b = r || d || m || g || "", x = A(A({}, _.config), u), S = x.localesToIgnore || ["default"], C = !b || S.includes(b), w = a(function() {
+		return h(C ? void 0 : b);
 	}, [C, b]), T = a(function() {
-		return y({
+		return v({
 			config: x,
-			allNamespaces: v,
+			allNamespaces: y,
 			pluralRules: w,
 			lang: b
 		});
 	}, [
 		x,
-		v,
+		y,
 		w,
 		b
 	]);
-	return e.createElement(m.Provider, { value: {
+	return e.createElement(p.Provider, { value: {
 		lang: b,
 		t: T
 	} }, e.createElement(j.Provider, { value: {
-		ns: v,
+		ns: y,
 		config: x
 	} }, s));
 }
@@ -283,18 +304,18 @@ var P = (e, t, n) => {
 		"./locales/de/settings.json": () => import("../../../locales/de/settings.json"),
 		"./locales/de/shared.json": () => import("../../../locales/de/shared.json"),
 		"./locales/de/team.json": () => import("../../../locales/de/team.json"),
-		"./locales/en/about.json": () => import("./about-BaAYAvkE.js"),
-		"./locales/en/blog.json": () => import("./blog-CzOpmp0n.js"),
-		"./locales/en/careers.json": () => import("./careers-1TOv7qq6.js"),
-		"./locales/en/contact.json": () => import("./contact-DjqHx5tM.js"),
-		"./locales/en/faq.json": () => import("./faq-XJpq1JTj.js"),
-		"./locales/en/home.json": () => import("./home-CdZlgL3b.js"),
-		"./locales/en/pricing.json": () => import("./pricing-BPjt5t_O.js"),
-		"./locales/en/products.json": () => import("./products-Df41mIQC.js"),
-		"./locales/en/route.json": () => import("./route-5-5GFmRv.js"),
-		"./locales/en/settings.json": () => import("./settings-CmZ84y7S.js"),
-		"./locales/en/shared.json": () => import("./shared-CBRuvueV.js"),
-		"./locales/en/team.json": () => import("./team-CuN0wXZd.js"),
+		"./locales/en/about.json": () => import("./about-M1sMWj1s.js"),
+		"./locales/en/blog.json": () => import("./blog-Cn2HM2Ne.js"),
+		"./locales/en/careers.json": () => import("./careers-AcqDO_Rk.js"),
+		"./locales/en/contact.json": () => import("./contact-DMI0nGM8.js"),
+		"./locales/en/faq.json": () => import("./faq-D8Z24sSG.js"),
+		"./locales/en/home.json": () => import("./home-4xN7_Zum.js"),
+		"./locales/en/pricing.json": () => import("./pricing-CIELH6yi.js"),
+		"./locales/en/products.json": () => import("./products-Dtvi99Bo.js"),
+		"./locales/en/route.json": () => import("./route-CS6jLh6_.js"),
+		"./locales/en/settings.json": () => import("./settings-BTax84eA.js"),
+		"./locales/en/shared.json": () => import("./shared-CBduF48T.js"),
+		"./locales/en/team.json": () => import("./team-BILWd-Jf.js"),
 		"./locales/es/about.json": () => import("../../../locales/es/about.json"),
 		"./locales/es/blog.json": () => import("../../../locales/es/blog.json"),
 		"./locales/es/careers.json": () => import("../../../locales/es/careers.json"),
@@ -412,7 +433,8 @@ function L(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function R({ children: e, locale: t }) {
+var R = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
+function z({ children: e, locale: t }) {
 	let [n] = o(() => typeof performance < "u" ? performance.now() : 0);
 	return i(() => {
 		L("AppRoot", n);
@@ -420,9 +442,13 @@ function R({ children: e, locale: t }) {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
 		I();
-	}, []), c(s, { children: e });
+	}, []), c(s, { children: e }, void 0, !1, {
+		fileName: R,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
-var z = [
+var B = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx", V = [
 	"about",
 	"blog",
 	"careers",
@@ -436,12 +462,12 @@ var z = [
 	"shared",
 	"team"
 ];
-function B({ children: e }) {
+function H({ children: e }) {
 	let [t, n] = o({}), [i, a] = o(!1);
 	return r(() => {
 		(async () => {
 			try {
-				let e = await Promise.all(z.map(async (e) => [e, await F.loadLocaleFrom?.("en", e) ?? {}]));
+				let e = await Promise.all(V.map(async (e) => [e, await F.loadLocaleFrom?.("en", e) ?? {}]));
 				n(Object.fromEntries(e)), a(!0);
 			} catch (e) {
 				console.error("Failed to load translations:", e), a(!0);
@@ -450,16 +476,33 @@ function B({ children: e }) {
 	}, ["en"]), i ? c(M, {
 		lang: "en",
 		namespaces: t,
-		children: c(R, {
+		children: c(z, {
 			locale: "en",
 			children: e
-		})
-	}) : null;
+		}, void 0, !1, {
+			fileName: B,
+			lineNumber: 58,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: B,
+		lineNumber: 57,
+		columnNumber: 5
+	}, this) : null;
 }
-function V() {
-	return c(B, { children: c(k, {}) });
+var U = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/pages/faq/FAQList.wrapper.tsx";
+function W() {
+	return c(H, { children: c(k, {}, void 0, !1, {
+		fileName: U,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: U,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { V as default };
+export { W as default };
 var e = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",

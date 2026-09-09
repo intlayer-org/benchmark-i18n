@@ -15,73 +15,53 @@ var r = {}, i = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], c = [], l, u;
-function d(e) {
-	if (c.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (l === t) return u;
-	let n = new URL(t, "http://dummy.com"), i;
-	for (let e of c) if (new r(e.match, n.href).exec(n.href)) {
-		i = e;
-		break;
-	}
-	return l = t, u = i, i;
-}
-function f(e) {
-	let t = d(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
-}
-var p = void 0, m = typeof window > "u";
+], c = [], l = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var h, g = !1, _ = () => {
-	if (p) {
-		let e = p?.getStore()?.locale;
-		if (e) return e;
-	}
+var u, d = !1, f = () => {
 	let e = s;
-	!m && typeof window < "u" && window.location?.href && (e = f(window.location.href));
-	let t = v(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return g || (h = t, g = !0, y(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	!l && typeof window < "u" && window.location?.href && (e = M(window.location.href));
+	let t = p(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return d || (u = t, d = !0, ee(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function v(e, t) {
+function p(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = S();
+		if (t === "cookie") n = E();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && h !== void 0) n = h;
-		else if (w(t) && C.has(t)) {
-			let e = C.get(t);
+		else if (t === "globalVariable" && u !== void 0) n = u;
+		else if (P(t) && N.has(t)) {
+			let e = N.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return x(t);
+				if (t !== void 0) return _(t);
 			}
 		}
-		let e = b(n);
+		let e = g(n);
 		if (e) return e;
 	}
 }
-var ee = (e) => {
+var m = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, y = (e, t) => {
+}, ee = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = _();
+		r = f();
 	} catch {}
 	let i = [], c = s;
-	!m && typeof window < "u" && window.location?.href && (c = f(window.location.href));
-	for (let t of c) if (t === "globalVariable") h = e;
+	!l && typeof window < "u" && window.location?.href && (c = M(window.location.href));
+	for (let t of c) if (t === "globalVariable") u = e;
 	else if (t === "cookie") {
-		if (m || typeof document > "u" || typeof window > "u") continue;
+		if (l || typeof document > "u" || typeof window > "u") continue;
 		let t = `${a}=${e}; path=/; max-age=${o}`;
-		document.cookie = t;
+		document.cookie = t, w();
 	} else if (t === "baseLocale") continue;
-	else if (w(t) && C.has(t)) {
-		let n = C.get(t);
+	else if (P(t) && N.has(t)) {
+		let n = N.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -89,47 +69,87 @@ var ee = (e) => {
 			}), i.push(r));
 		}
 	}
-	let l = () => {
-		!m && n.reload && window.location && e !== r && ee(void 0);
+	let d = () => {
+		!l && n.reload && window.location && e !== r && m(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
-		l();
+		d();
 	});
-	l();
-};
-function b(e) {
+	d();
+}, h = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function g(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of i) if (e.toLowerCase() === t) return e;
 }
-function x(e) {
-	let t = b(e);
+function _(e) {
+	let t = g(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${i.join(", ")}`);
 }
-function S() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${a}=([^;]+)`))?.[2];
-	return b(e);
+function v(e) {
+	return e;
 }
-var C = /* @__PURE__ */ new Map();
-function w(e) {
+function y(e, t) {
+	return e.exec(t.href);
+}
+var b = a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), x = RegExp(`(?:^|;\\s*)${b}=([^;]*)`), S = Symbol(), C = S;
+function w() {
+	C = S;
+}
+function T() {
+	typeof queueMicrotask == "function" ? queueMicrotask(w) : Promise.resolve().then(w);
+}
+function E() {
+	if (typeof document > "u") return;
+	if (C !== S) return C;
+	let e = document.cookie.match(x)?.[1];
+	return C = g(e), T(), C;
+}
+function D(e) {
+	return O(e);
+}
+function O(e) {
+	let t = v(typeof e == "string" ? new URL(e, h()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && g(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), v(t);
+}
+var k, A;
+function j(e) {
+	if (c.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (k === t) return A;
+	let n = v(new URL(t, "http://example.com")), i = D(n), a = i.href === n.href ? [n] : [n, i], o;
+	for (let e of a) {
+		for (let t of c) if (y(new r(t.match, e.href), e)) {
+			o = t;
+			break;
+		}
+		if (o) break;
+	}
+	return k = t, A = o, o;
+}
+function M(e) {
+	let t = j(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
+}
+var N = /* @__PURE__ */ new Map();
+function P(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var T = () => "i18n Benchmark", E = () => "Benchmark i18n", D = () => "i18n Benchmark", O = () => "i18n Benchmark", k = () => "i18n Benchmark", A = () => "i18n Benchmark", j = () => "i18n Benchmark", M = () => "i18n Benchmark", N = () => "i18n Benchmark", P = () => "i18n Benchmark", F = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "en" ? T(e) : n === "fr" ? E(e) : n === "es" ? D(e) : n === "de" ? O(e) : n === "it" ? k(e) : n === "pt" ? A(e) : n === "zh" ? j(e) : n === "ja" ? M(e) : n === "ko" ? N(e) : P(e);
-}), I = () => "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.", L = () => "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.", R = () => "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el rendimiento de carga y la reactividad del renderizado.", z = () => "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.", B = () => "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.", V = () => "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade de renderização.", H = () => "一个旨在衡量国际化库对包大小、加载性能和渲染反应性实际影响的测试应用程序。", te = () => "国際化ライブラリがバンドルサイズ、読み込みパフォーマンス、レンダリングの反応性に与える実世界の影響を測定するために設計されたテストアプリケーション。", U = () => "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.", W = () => "Тестовое приложение, разработанное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.", G = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "en" ? I(e) : n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? B(e) : n === "pt" ? V(e) : n === "zh" ? H(e) : n === "ja" ? te(e) : n === "ko" ? U(e) : W(e);
-}), K = () => "View Results", q = () => "Voir les résultats", J = () => "Ver resultados", Y = () => "Ergebnisse anzeigen", X = () => "Visualizza i risultati", Z = () => "Ver Resultados", Q = () => "查看结果", ne = () => "結果を見る", re = () => "View Results", ie = () => "Посмотреть результаты", ae = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "en" ? K(e) : n === "fr" ? q(e) : n === "es" ? J(e) : n === "de" ? Y(e) : n === "it" ? X(e) : n === "pt" ? Z(e) : n === "zh" ? Q(e) : n === "ja" ? ne(e) : n === "ko" ? re(e) : ie(e);
-}), oe = () => "Methodology", se = () => "Méthodologie", ce = () => "Metodología", le = () => "Methodik", ue = () => "Metodologia", de = () => "Metodologia", fe = () => "方法论", pe = () => "手法", $ = () => "Methodology", me = () => "Методология", he = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "en" ? oe(e) : n === "fr" ? se(e) : n === "es" ? ce(e) : n === "de" ? le(e) : n === "it" ? ue(e) : n === "pt" ? de(e) : n === "zh" ? fe(e) : n === "ja" ? pe(e) : n === "ko" ? $(e) : me(e);
+var F = () => "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.", I = () => "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.", L = () => "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el rendimiento de carga y la reactividad del renderizado.", R = () => "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.", z = () => "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.", B = () => "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade de renderização.", V = () => "一个旨在衡量国际化库对包大小、加载性能和渲染反应性实际影响的测试应用程序。", H = () => "国際化ライブラリがバンドルサイズ、読み込みパフォーマンス、レンダリングの反応性に与える実世界の影響を測定するために設計されたテストアプリケーション。", U = () => "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.", W = () => "Тестовое приложение, разработанное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.", G = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? I(e) : n === "es" ? L(e) : n === "de" ? R(e) : n === "it" ? z(e) : n === "pt" ? B(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : n === "ru" ? W(e) : F(e);
+}), K = () => "Methodology", q = () => "Méthodologie", J = () => "Metodología", Y = () => "Methodik", X = () => "Metodologia", te = () => "Metodologia", Z = () => "方法论", Q = () => "手法", ne = () => "Methodology", re = () => "Методология", ie = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? q(e) : n === "es" ? J(e) : n === "de" ? Y(e) : n === "it" ? X(e) : n === "pt" ? te(e) : n === "zh" ? Z(e) : n === "ja" ? Q(e) : n === "ko" ? ne(e) : n === "ru" ? re(e) : K(e);
+}), ae = () => "i18n Benchmark", oe = () => "Benchmark i18n", se = () => "i18n Benchmark", ce = () => "i18n Benchmark", le = () => "i18n Benchmark", ue = () => "i18n Benchmark", de = () => "i18n Benchmark", fe = () => "i18n Benchmark", pe = () => "i18n Benchmark", me = () => "i18n Benchmark", he = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? oe(e) : n === "es" ? se(e) : n === "de" ? ce(e) : n === "it" ? le(e) : n === "pt" ? ue(e) : n === "zh" ? de(e) : n === "ja" ? fe(e) : n === "ko" ? pe(e) : n === "ru" ? me(e) : ae(e);
+}), ge = () => "View Results", _e = () => "Voir les résultats", ve = () => "Ver resultados", ye = () => "Ergebnisse anzeigen", be = () => "Visualizza i risultati", $ = () => "Ver Resultados", xe = () => "查看结果", Se = () => "結果を見る", Ce = () => "View Results", we = () => "Посмотреть результаты", Te = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? _e(e) : n === "es" ? ve(e) : n === "de" ? ye(e) : n === "it" ? be(e) : n === "pt" ? $(e) : n === "zh" ? xe(e) : n === "ja" ? Se(e) : n === "ko" ? Ce(e) : n === "ru" ? we(e) : ge(e);
 });
-function ge(e) {
+function Ee(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), n(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -139,11 +159,11 @@ function ge(e) {
 		}
 	});
 }
-var _e = t("<section class=\"mb-16 text-center\"><h1 class=\"mb-4 text-4xl font-bold tracking-tight text-foreground\"></h1><p class=\"mx-auto max-w-2xl text-lg text-muted-foreground\"></p><div class=\"mt-8 flex justify-center gap-4\"><button type=button class=\"rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90\"></button><button type=button class=\"rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent\">");
-function ve() {
-	return ge("Hero"), (() => {
-		var t = _e(), n = t.firstChild, r = n.nextSibling, i = r.nextSibling.firstChild, a = i.nextSibling;
-		return e(n, () => F()), e(r, () => G()), e(i, () => ae()), e(a, () => he()), t;
+var De = t("<section class=\"mb-16 text-center\"><h1 class=\"mb-4 text-4xl font-bold tracking-tight text-foreground\"></h1><p class=\"mx-auto max-w-2xl text-lg text-muted-foreground\"></p><div class=\"mt-8 flex justify-center gap-4\"><button type=button class=\"rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90\"></button><button type=button class=\"rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent\">");
+function Oe() {
+	return Ee("Hero"), (() => {
+		var t = De(), n = t.firstChild, r = n.nextSibling, i = r.nextSibling.firstChild, a = i.nextSibling;
+		return e(n, () => he()), e(r, () => G()), e(i, () => Te()), e(a, () => ie()), t;
 	})();
 }
-export { ve as default };
+export { Oe as default };

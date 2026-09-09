@@ -1,26 +1,43 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
 import r from "next/link";
 import { useParams as i } from "next/navigation";
-import { Fragment as a, jsx as o } from "react/jsx-runtime";
-var s = (e) => /^https?:\/\//.test(e ?? "");
-function c(e, t) {
+import { Fragment as a, jsxDEV as o } from "react/jsx-dev-runtime";
+var s = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/Link.tsx", c = (e) => /^https?:\/\//.test(e ?? "");
+function l(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
-var l = ({ href: e, children: t, ...n }) => {
+var u = ({ href: e, children: t, ...n }) => {
 	let a = i().locale ?? "en";
-	return e == null || typeof e != "string" || s(e) ? o(r, {
+	return e == null || typeof e != "string" ? o(r, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}) : o(r, {
-		href: c(e, a),
+	}, void 0, !1, {
+		fileName: s,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0) : c(e) ? o(r, {
+		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	});
+	}, void 0, !1, {
+		fileName: s,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0) : o(r, {
+		href: l(e, a),
+		prefetch: !1,
+		...n,
+		children: t
+	}, void 0, !1, {
+		fileName: s,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
 };
-function u() {
+function d() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -34,12 +51,12 @@ function u() {
 		}
 	}
 }
-function d(e, t) {
+function f(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var f = {}, p = [
+var p = {}, m = [
 	"en",
 	"fr",
 	"es",
@@ -50,77 +67,57 @@ var f = {}, p = [
 	"ja",
 	"ko",
 	"ru"
-], m = "PARAGLIDE_LOCALE", h = 3456e4, g = [
+], h = "PARAGLIDE_LOCALE", g = 3456e4, _ = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], _ = [], v, y;
-function b(e) {
-	if (_.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (v === t) return y;
-	let n = new URL(t, "http://dummy.com"), r;
-	for (let e of _) if (new f(e.match, n.href).exec(n.href)) {
-		r = e;
-		break;
-	}
-	return v = t, y = r, r;
-}
-function x(e) {
-	let t = b(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : g;
-}
-var S = void 0, C = typeof window > "u";
+], v = [], y = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var w, T = !1, E = () => {
-	if (S) {
-		let e = S?.getStore()?.locale;
-		if (e) return e;
-	}
-	let e = g;
-	!C && typeof window < "u" && window.location?.href && (e = x(window.location.href));
-	let t = D(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return T || (w = t, T = !0, k(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+var b, x = !1, S = () => {
+	let e = _;
+	!y && typeof window < "u" && window.location?.href && (e = U(window.location.href));
+	let t = C(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return x || (b = t, x = !0, T(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function D(e, t) {
+function C(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = M();
+		if (t === "cookie") n = L();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && w !== void 0) n = w;
-		else if (P(t) && N.has(t)) {
-			let e = N.get(t);
+		else if (t === "globalVariable" && b !== void 0) n = b;
+		else if (G(t) && W.has(t)) {
+			let e = W.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return j(t);
+				if (t !== void 0) return O(t);
 			}
 		}
-		let e = A(n);
+		let e = D(n);
 		if (e) return e;
 	}
 }
-var O = (e) => {
+var w = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, k = (e, t) => {
+}, T = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = E();
+		r = S();
 	} catch {}
-	let i = [], a = g;
-	!C && typeof window < "u" && window.location?.href && (a = x(window.location.href));
-	for (let t of a) if (t === "globalVariable") w = e;
+	let i = [], a = _;
+	!y && typeof window < "u" && window.location?.href && (a = U(window.location.href));
+	for (let t of a) if (t === "globalVariable") b = e;
 	else if (t === "cookie") {
-		if (C || typeof document > "u" || typeof window > "u") continue;
-		let t = `${m}=${e}; path=/; max-age=${h}`;
-		document.cookie = t;
+		if (y || typeof document > "u" || typeof window > "u") continue;
+		let t = `${h}=${e}; path=/; max-age=${g}`;
+		document.cookie = t, F();
 	} else if (t === "baseLocale") continue;
-	else if (P(t) && N.has(t)) {
-		let n = N.get(t);
+	else if (G(t) && W.has(t)) {
+		let n = W.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -129,46 +126,105 @@ var O = (e) => {
 		}
 	}
 	let o = () => {
-		!C && n.reload && window.location && e !== r && O(void 0);
+		!y && n.reload && window.location && e !== r && w(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
-};
-function A(e) {
+}, E = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function D(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of p) if (e.toLowerCase() === t) return e;
+	for (let e of m) if (e.toLowerCase() === t) return e;
 }
-function j(e) {
-	let t = A(e);
+function O(e) {
+	let t = D(e);
 	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${p.join(", ")}`);
+	throw Error(`Invalid locale: ${e}. Expected one of: ${m.join(", ")}`);
 }
-function M() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${m}=([^;]+)`))?.[2];
-	return A(e);
+function k(e) {
+	return e;
 }
-var N = /* @__PURE__ */ new Map();
-function P(e) {
-	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
+function A(e, t) {
+	return e.exec(t.href);
 }
-function F({ children: r }) {
-	let s = i().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
-	return t(() => {
-		d("AppRoot", c);
-	}, [c]), e(() => {
-		k(s, { reload: !1 }), document.documentElement.lang = s;
-	}, [s]), e(() => {
-		u();
-	}, []), o(a, { children: r });
+var j = h.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), M = RegExp(`(?:^|;\\s*)${j}=([^;]*)`), N = Symbol(), P = N;
+function F() {
+	P = N;
 }
-function I({ children: e }) {
-	return o(F, { children: e });
+function I() {
+	typeof queueMicrotask == "function" ? queueMicrotask(F) : Promise.resolve().then(F);
 }
 function L() {
-	return o(I, { children: o(l, {}) });
+	if (typeof document > "u") return;
+	if (P !== N) return P;
+	let e = document.cookie.match(M)?.[1];
+	return P = D(e), I(), P;
 }
-export { L as default };
+function R(e) {
+	return z(e);
+}
+function z(e) {
+	let t = k(typeof e == "string" ? new URL(e, E()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && D(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), k(t);
+}
+var B, V;
+function H(e) {
+	if (v.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (B === t) return V;
+	let n = k(new URL(t, "http://example.com")), r = R(n), i = r.href === n.href ? [n] : [n, r], a;
+	for (let e of i) {
+		for (let t of v) if (A(new p(t.match, e.href), e)) {
+			a = t;
+			break;
+		}
+		if (a) break;
+	}
+	return B = t, V = a, a;
+}
+function U(e) {
+	let t = H(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : _;
+}
+var W = /* @__PURE__ */ new Map();
+function G(e) {
+	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
+}
+var K = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
+function q({ children: r }) {
+	let s = i().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
+	return t(() => {
+		f("AppRoot", c);
+	}, [c]), e(() => {
+		T(s, { reload: !1 }), document.documentElement.lang = s;
+	}, [s]), e(() => {
+		d();
+	}, []), o(a, { children: r }, void 0, !1, {
+		fileName: K,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
+}
+var J = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
+function Y({ children: e }) {
+	return o(q, { children: e }, void 0, !1, {
+		fileName: J,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
+}
+var X = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/Link.wrapper.tsx";
+function Z() {
+	return o(Y, { children: o(u, {}, void 0, !1, {
+		fileName: X,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: X,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
+}
+export { Z as default };

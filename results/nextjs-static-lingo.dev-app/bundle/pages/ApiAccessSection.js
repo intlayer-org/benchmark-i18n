@@ -1,38 +1,72 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useId, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/settings/ApiAccessSection.tsx";
 function ApiAccessSection() {
 	const apiKeyId = useId();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: "API Access"
-		}), jsxs("div", { children: [
-			jsx("label", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 8,
+			columnNumber: 7
+		}, this), jsxDEV("div", { children: [
+			jsxDEV("label", {
 				htmlFor: apiKeyId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: "API Key"
-			}),
-			jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 10,
+				columnNumber: 9
+			}, this),
+			jsxDEV("div", {
 				className: "flex gap-2",
-				children: [jsx("input", {
+				children: [jsxDEV("input", {
 					id: apiKeyId,
 					readOnly: true,
 					defaultValue: "sk_bench_xxxxxxxxxxxxxxxxxxxx",
 					className: "flex-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-muted-foreground"
-				}), jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 17,
+					columnNumber: 11
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: "Copy"
-				})]
-			}),
-			jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 23,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 16,
+				columnNumber: 9
+			}, this),
+			jsxDEV("p", {
 				className: "mt-1 text-xs text-muted-foreground",
 				children: "Use this key to access the benchmarking API programmatically."
-			})
-		] })]
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 30,
+				columnNumber: 9
+			}, this)
+		] }, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 7,
+		columnNumber: 5
+	}, this);
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -63,10 +97,6 @@ var serverUrl = "__SERVER_URL__";
 var sourceLocale = "__SOURCE_LOCALE__";
 function getClientLocale() {
 	return "en";
-}
-var __NOOP_PERSIST_LOCALE__ = () => {};
-function persistLocale(locale) {
-	return __NOOP_PERSIST_LOCALE__();
 }
 var noop = () => {};
 var IS_DEV = process.env.NODE_ENV === "development";
@@ -107,7 +137,6 @@ function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, 
 		if (router) setTranslations(initialTranslations);
 	}, [initialTranslations, router]);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		else await loadTranslations(newLocale);
@@ -213,7 +242,6 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		};
 	}, []);
 	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
 		setLocaleState(newLocale);
 		if (router) router.refresh();
 		setIsLoading(true);
@@ -234,7 +262,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -272,17 +300,31 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/settings/ApiAccessSection.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ApiAccessSection, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ApiAccessSection, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -384,12 +426,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

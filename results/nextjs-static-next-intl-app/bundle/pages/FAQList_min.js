@@ -1613,7 +1613,7 @@ function Ce(e, t) {
 			let o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = we(t);
 			for ((c == "H" || c == "k") && (s = 0); s-- > 0;) n += "a";
 			for (; o-- > 0;) n = c + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
@@ -1725,8 +1725,10 @@ var Pe = class {
 					},
 					err: null
 				} : this.error(S.INVALID_TAG, I(o, this.clonePosition()))) : this.error(S.UNMATCHED_CLOSING_TAG, I(e, this.clonePosition()));
-			} else return this.error(S.UNCLOSED_TAG, I(n, this.clonePosition()));
-		} else return this.error(S.INVALID_TAG, I(n, this.clonePosition()));
+			}
+			return this.error(S.UNCLOSED_TAG, I(n, this.clonePosition()));
+		}
+		return this.error(S.INVALID_TAG, I(n, this.clonePosition()));
 	}
 	parseTagName() {
 		let e = this.offset();
@@ -1783,12 +1785,13 @@ var Pe = class {
 		let t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			let e = this.char();
-			if (e === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(e);
+			if (e === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(e);
 			this.bump();
 		}
 		return String.fromCodePoint(...t);
@@ -1861,7 +1864,8 @@ var Pe = class {
 							},
 							err: null
 						};
-					} else {
+					}
+					{
 						if (t.length === 0) return this.error(S.EXPECT_DATE_TIME_SKELETON, i);
 						let r = t;
 						this.locale && (r = Ce(t, this.locale));
@@ -1960,9 +1964,7 @@ var Pe = class {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -2422,7 +2424,7 @@ function Je(e, t) {
 	}), e.message);
 }
 function Ye(e, t) {
-	return t || /'[{}]/.test(e) || /<|{/.test(e) ? void 0 : e;
+	return t || /'[{}<#|']/.test(e) || /<|{/.test(e) ? void 0 : e;
 }
 function K(...[e, t, r, i]) {
 	if (Array.isArray(t)) throw new v(y.INVALID_MESSAGE, `Message at \`${e}\` resolved to an array, but only strings are supported. See https://next-intl.dev/docs/usage/translations#arrays-of-messages`);
@@ -2509,13 +2511,14 @@ function tt({ cache: e, formats: t, formatters: n, getMessageFallback: r = Xe, l
 	}
 	function d(d, f, p, m) {
 		let h = m, g;
-		if (l) if (h) g = h;
-		else return s(a), r({
-			error: a,
-			key: d,
-			namespace: o
-		});
-		else {
+		if (l) {
+			if (h) g = h;
+			else return s(a), r({
+				error: a,
+				key: d,
+				namespace: o
+			});
+		} else {
 			let e = a;
 			try {
 				g = J(i, e, d, o);
@@ -2578,7 +2581,7 @@ function tt({ cache: e, formats: t, formatters: n, getMessageFallback: r = Xe, l
 function nt(e, t) {
 	return e === t ? void 0 : e.slice((t + ".").length);
 }
-var Y = 3600 * 24;
+var Y = 86400;
 Y * 7, 365 / 12 * Y * 3, Y * 365;
 function rt(e, t, n) {
 	Object.entries(e).forEach(([e, r]) => {
@@ -2725,43 +2728,43 @@ function pt({ locale: e, ...t }) {
 }
 var Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intl-app/components/pages/faq/FAQList.tsx";
 function mt() {
-	let e = ft();
+	let e = ft(), t = [
+		{
+			q: e("faq-list.whatIsI18nBenchmark"),
+			a: e("faq-list.whatIsI18nBenchmarkAnswer")
+		},
+		{
+			q: e("faq-list.howAreBenchmarksConducted"),
+			a: e("faq-list.weRunStandardizedTestsIn")
+		},
+		{
+			q: e("faq-list.whichLibrariesAreCurrentlySupported"),
+			a: e("faq-list.weSupportReactI18nextReact")
+		},
+		{
+			q: e("faq-list.canISubmitMyOwn"),
+			a: e("faq-list.yesCommunityBenchmarkSubmissionsAre")
+		},
+		{
+			q: e("faq-list.howOftenAreBenchmarksUpdated"),
+			a: e("faq-list.weReRunAllBenchmarks")
+		},
+		{
+			q: e("faq-list.isTheDataReliable"),
+			a: e("faq-list.weFollowRigorousStatisticalMethodology")
+		},
+		{
+			q: e("faq-list.doYouOfferConsultingServices"),
+			a: e("faq-list.yesOurEnterprisePlanIncludes")
+		},
+		{
+			q: e("faq-list.howCanIContribute"),
+			a: e("faq-list.thereAreManyWaysTo")
+		}
+	];
 	return l("div", {
 		className: "mx-auto max-w-3xl space-y-4",
-		children: [
-			{
-				q: e("faq-list.whatIsI18nBenchmark"),
-				a: e("faq-list.whatIsI18nBenchmarkAnswer")
-			},
-			{
-				q: e("faq-list.howAreBenchmarksConducted"),
-				a: e("faq-list.weRunStandardizedTestsIn")
-			},
-			{
-				q: e("faq-list.whichLibrariesAreCurrentlySupported"),
-				a: e("faq-list.weSupportReactI18nextReact")
-			},
-			{
-				q: e("faq-list.canISubmitMyOwn"),
-				a: e("faq-list.yesCommunityBenchmarkSubmissionsAre")
-			},
-			{
-				q: e("faq-list.howOftenAreBenchmarksUpdated"),
-				a: e("faq-list.weReRunAllBenchmarks")
-			},
-			{
-				q: e("faq-list.isTheDataReliable"),
-				a: e("faq-list.weFollowRigorousStatisticalMethodology")
-			},
-			{
-				q: e("faq-list.doYouOfferConsultingServices"),
-				a: e("faq-list.yesOurEnterprisePlanIncludes")
-			},
-			{
-				q: e("faq-list.howCanIContribute"),
-				a: e("faq-list.thereAreManyWaysTo")
-			}
-		].map((e) => l("details", {
+		children: t.map((e) => l("details", {
 			className: "group rounded-lg border border-border bg-card",
 			children: [l("summary", {
 				className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",

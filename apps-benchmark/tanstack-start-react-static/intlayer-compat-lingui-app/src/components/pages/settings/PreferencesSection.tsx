@@ -1,7 +1,8 @@
-import { Trans } from "@lingui/react";
+import { Trans, useLingui } from "@lingui/react";
 import { useId } from "react";
 
 export default function PreferencesSection() {
+  const { i18n } = useLingui();
   const languageId = useId();
 
   return (

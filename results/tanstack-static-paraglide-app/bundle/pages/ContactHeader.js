@@ -1,5 +1,5 @@
 import "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -21,28 +21,8 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
+var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
 globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
 var _locale;
@@ -53,7 +33,7 @@ var getLocale = () => {
 		if (locale) return locale;
 	}
 	let strategyToUse = strategy;
-	if (typeof window !== "undefined" && window.location?.href) strategyToUse = getStrategyForUrl(window.location.href);
+	if (!isServer && typeof window !== "undefined" && window.location?.href) strategyToUse = getStrategyForUrl(window.location.href);
 	const resolved = resolveLocaleWithStrategies(strategyToUse, typeof window !== "undefined" ? window.location?.href : void 0);
 	if (resolved) {
 		if (!localeInitiallySet) {
@@ -63,7 +43,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -99,12 +79,13 @@ var setLocale = (newLocale, options) => {
 	const customSetLocalePromises = [];
 	let newLocation = void 0;
 	let strategyToUse = strategy;
-	if (typeof window !== "undefined" && window.location?.href) strategyToUse = getStrategyForUrl(window.location.href);
+	if (!isServer && typeof window !== "undefined" && window.location?.href) strategyToUse = getStrategyForUrl(window.location.href);
 	for (const strat of strategyToUse) if (strat === "globalVariable") _locale = newLocale;
 	else if (strat === "cookie") {
-		if (typeof document === "undefined" || typeof window === "undefined") continue;
+		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -119,12 +100,17 @@ var setLocale = (newLocale, options) => {
 		}
 	}
 	const runReload = () => {
-		if (optionsWithDefaults.reload && window.location && newLocale !== currentLocale) navigateOrReload(newLocation);
+		if (!isServer && optionsWithDefaults.reload && window.location && newLocale !== currentLocale) navigateOrReload(newLocation);
 	};
 	if (customSetLocalePromises.length) return Promise.all(customSetLocalePromises).then(() => {
 		runReload();
 	});
 	runReload();
+};
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
 };
 function toLocale(value) {
 	if (typeof value !== "string") return;
@@ -136,175 +122,270 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_contact_header_getintouch2 = () => {
+var contact_header_getintouch2$10 = () => {
 	return `Get in Touch`;
 };
-var fr_contact_header_getintouch2 = () => {
+var contact_header_haveideasfoundabug4$10 = () => {
+	return `Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at`;
+};
+var mockbanner1$10 = () => {
+	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
+};
+var contact_header_getintouch2$9 = () => {
 	return `Contactez-nous`;
 };
-var es_contact_header_getintouch2 = () => {
+var contact_header_haveideasfoundabug4$9 = () => {
+	return `Vous avez des idées, trouvé un bug ou voulez proposer un benchmark ? Contactez-nous à`;
+};
+var mockbanner1$9 = () => {
+	return `⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.`;
+};
+var contact_header_getintouch2$8 = () => {
 	return `Ponte en contacto`;
 };
-var de_contact_header_getintouch2 = () => {
+var contact_header_haveideasfoundabug4$8 = () => {
+	return `¿Tienes ideas, has encontrado un bug o quieres contribuir con un benchmark? Contáctanos en`;
+};
+var mockbanner1$8 = () => {
+	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
+};
+var contact_header_getintouch2$7 = () => {
 	return `Kontakt aufnehmen`;
 };
-var it_contact_header_getintouch2 = () => {
+var contact_header_haveideasfoundabug4$7 = () => {
+	return `Haben Sie Ideen, einen Fehler gefunden oder möchten Sie einen Benchmark beisteuern? Kontaktieren Sie uns unter`;
+};
+var mockbanner1$7 = () => {
+	return `⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.`;
+};
+var contact_header_getintouch2$6 = () => {
 	return `Mettiti in contatto`;
 };
-var pt_contact_header_getintouch2 = () => {
+var contact_header_haveideasfoundabug4$6 = () => {
+	return `Hai idee, hai trovato un bug o vuoi contribuire con un benchmark? Contattaci all'indirizzo`;
+};
+var mockbanner1$6 = () => {
+	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
+};
+var contact_header_getintouch2$5 = () => {
 	return `Entre em contato`;
 };
-var zh_contact_header_getintouch2 = () => {
+var contact_header_haveideasfoundabug4$5 = () => {
+	return `Tem ideias, encontrou um bug ou quer contribuir com um benchmark? Entre em contato conosco em`;
+};
+var mockbanner1$5 = () => {
+	return `⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.`;
+};
+var contact_header_getintouch2$4 = () => {
 	return `联系我们`;
 };
-var ja_contact_header_getintouch2 = () => {
+var contact_header_haveideasfoundabug4$4 = () => {
+	return `有想法、发现了 Bug 或想贡献基准测试？请联系我们：`;
+};
+var mockbanner1$4 = () => {
+	return `⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。`;
+};
+var contact_header_getintouch2$3 = () => {
 	return `お問い合わせ`;
 };
-var ko_contact_header_getintouch2 = () => {
+var contact_header_haveideasfoundabug4$3 = () => {
+	return `アイデアがある、バグを見つけた、またはベンチマークを提供したいですか？こちらまでご連絡ください：`;
+};
+var mockbanner1$3 = () => {
+	return `⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。`;
+};
+var contact_header_getintouch2$2 = () => {
 	return `연락하기`;
 };
-var ru_contact_header_getintouch2 = () => {
+var contact_header_haveideasfoundabug4$2 = () => {
+	return `아이디어가 있거나 버그를 발견했나요? 아니면 벤치마크를 기여하고 싶으신가요? 다음 주소로 연락주세요.`;
+};
+var mockbanner1$2 = () => {
+	return `⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.`;
+};
+var contact_header_getintouch2$1 = () => {
 	return `Свяжитесь с нами`;
+};
+var contact_header_haveideasfoundabug4$1 = () => {
+	return `Есть идеи, нашли баг или хотите предложить бенчмарк? Свяжитесь с нами по адресу`;
+};
+var mockbanner1$1 = () => {
+	return `⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.`;
 };
 var contact_header_getintouch2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_contact_header_getintouch2(inputs);
-	if (locale === "fr") return fr_contact_header_getintouch2(inputs);
-	if (locale === "es") return es_contact_header_getintouch2(inputs);
-	if (locale === "de") return de_contact_header_getintouch2(inputs);
-	if (locale === "it") return it_contact_header_getintouch2(inputs);
-	if (locale === "pt") return pt_contact_header_getintouch2(inputs);
-	if (locale === "zh") return zh_contact_header_getintouch2(inputs);
-	if (locale === "ja") return ja_contact_header_getintouch2(inputs);
-	if (locale === "ko") return ko_contact_header_getintouch2(inputs);
-	return ru_contact_header_getintouch2(inputs);
+	if (locale === "fr") return contact_header_getintouch2$9(inputs);
+	if (locale === "es") return contact_header_getintouch2$8(inputs);
+	if (locale === "de") return contact_header_getintouch2$7(inputs);
+	if (locale === "it") return contact_header_getintouch2$6(inputs);
+	if (locale === "pt") return contact_header_getintouch2$5(inputs);
+	if (locale === "zh") return contact_header_getintouch2$4(inputs);
+	if (locale === "ja") return contact_header_getintouch2$3(inputs);
+	if (locale === "ko") return contact_header_getintouch2$2(inputs);
+	if (locale === "ru") return contact_header_getintouch2$1(inputs);
+	return contact_header_getintouch2$10(inputs);
 });
-var en_contact_header_haveideasfoundabug4 = () => {
-	return `Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at`;
-};
-var fr_contact_header_haveideasfoundabug4 = () => {
-	return `Vous avez des idées, trouvé un bug ou voulez proposer un benchmark ? Contactez-nous à`;
-};
-var es_contact_header_haveideasfoundabug4 = () => {
-	return `¿Tienes ideas, has encontrado un bug o quieres contribuir con un benchmark? Contáctanos en`;
-};
-var de_contact_header_haveideasfoundabug4 = () => {
-	return `Haben Sie Ideen, einen Fehler gefunden oder möchten Sie einen Benchmark beisteuern? Kontaktieren Sie uns unter`;
-};
-var it_contact_header_haveideasfoundabug4 = () => {
-	return `Hai idee, hai trovato un bug o vuoi contribuire con un benchmark? Contattaci all'indirizzo`;
-};
-var pt_contact_header_haveideasfoundabug4 = () => {
-	return `Tem ideias, encontrou um bug ou quer contribuir com um benchmark? Entre em contato conosco em`;
-};
-var zh_contact_header_haveideasfoundabug4 = () => {
-	return `有想法、发现了 Bug 或想贡献基准测试？请联系我们：`;
-};
-var ja_contact_header_haveideasfoundabug4 = () => {
-	return `アイデアがある、バグを見つけた、またはベンチマークを提供したいですか？こちらまでご連絡ください：`;
-};
-var ko_contact_header_haveideasfoundabug4 = () => {
-	return `아이디어가 있거나 버그를 발견했나요? 아니면 벤치마크를 기여하고 싶으신가요? 다음 주소로 연락주세요.`;
-};
-var ru_contact_header_haveideasfoundabug4 = () => {
-	return `Есть идеи, нашли баг или хотите предложить бенчмарк? Свяжитесь с нами по адресу`;
-};
 var contact_header_haveideasfoundabug4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_contact_header_haveideasfoundabug4(inputs);
-	if (locale === "fr") return fr_contact_header_haveideasfoundabug4(inputs);
-	if (locale === "es") return es_contact_header_haveideasfoundabug4(inputs);
-	if (locale === "de") return de_contact_header_haveideasfoundabug4(inputs);
-	if (locale === "it") return it_contact_header_haveideasfoundabug4(inputs);
-	if (locale === "pt") return pt_contact_header_haveideasfoundabug4(inputs);
-	if (locale === "zh") return zh_contact_header_haveideasfoundabug4(inputs);
-	if (locale === "ja") return ja_contact_header_haveideasfoundabug4(inputs);
-	if (locale === "ko") return ko_contact_header_haveideasfoundabug4(inputs);
-	return ru_contact_header_haveideasfoundabug4(inputs);
+	if (locale === "fr") return contact_header_haveideasfoundabug4$9(inputs);
+	if (locale === "es") return contact_header_haveideasfoundabug4$8(inputs);
+	if (locale === "de") return contact_header_haveideasfoundabug4$7(inputs);
+	if (locale === "it") return contact_header_haveideasfoundabug4$6(inputs);
+	if (locale === "pt") return contact_header_haveideasfoundabug4$5(inputs);
+	if (locale === "zh") return contact_header_haveideasfoundabug4$4(inputs);
+	if (locale === "ja") return contact_header_haveideasfoundabug4$3(inputs);
+	if (locale === "ko") return contact_header_haveideasfoundabug4$2(inputs);
+	if (locale === "ru") return contact_header_haveideasfoundabug4$1(inputs);
+	return contact_header_haveideasfoundabug4$10(inputs);
 });
-var en_mockbanner1 = () => {
-	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
-};
-var fr_mockbanner1 = () => {
-	return `⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.`;
-};
-var es_mockbanner1 = () => {
-	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
-};
-var de_mockbanner1 = () => {
-	return `⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.`;
-};
-var it_mockbanner1 = () => {
-	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
-};
-var pt_mockbanner1 = () => {
-	return `⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.`;
-};
-var zh_mockbanner1 = () => {
-	return `⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。`;
-};
-var ja_mockbanner1 = () => {
-	return `⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。`;
-};
-var ko_mockbanner1 = () => {
-	return `⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.`;
-};
-var ru_mockbanner1 = () => {
-	return `⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.`;
-};
 var mockbanner1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_mockbanner1(inputs);
-	if (locale === "fr") return fr_mockbanner1(inputs);
-	if (locale === "es") return es_mockbanner1(inputs);
-	if (locale === "de") return de_mockbanner1(inputs);
-	if (locale === "it") return it_mockbanner1(inputs);
-	if (locale === "pt") return pt_mockbanner1(inputs);
-	if (locale === "zh") return zh_mockbanner1(inputs);
-	if (locale === "ja") return ja_mockbanner1(inputs);
-	if (locale === "ko") return ko_mockbanner1(inputs);
-	return ru_mockbanner1(inputs);
+	if (locale === "fr") return mockbanner1$9(inputs);
+	if (locale === "es") return mockbanner1$8(inputs);
+	if (locale === "de") return mockbanner1$7(inputs);
+	if (locale === "it") return mockbanner1$6(inputs);
+	if (locale === "pt") return mockbanner1$5(inputs);
+	if (locale === "zh") return mockbanner1$4(inputs);
+	if (locale === "ja") return mockbanner1$3(inputs);
+	if (locale === "ko") return mockbanner1$2(inputs);
+	if (locale === "ru") return mockbanner1$1(inputs);
+	return mockbanner1$10(inputs);
 });
-var MockBanner = () => jsx("div", {
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/MockBanner.tsx";
+var MockBanner = () => jsxDEV("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: mockbanner1()
-});
+}, void 0, false, {
+	fileName: _jsxFileName$3,
+	lineNumber: 4,
+	columnNumber: 3
+}, void 0);
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/contact/ContactHeader.tsx";
 function ContactHeader() {
-	return jsxs(Fragment, { children: [
-		jsx(MockBanner, {}),
-		jsx("h1", {
+	return jsxDEV(Fragment, { children: [
+		jsxDEV(MockBanner, {}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 7,
+			columnNumber: 7
+		}, this),
+		jsxDEV("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: contact_header_getintouch2()
-		}),
-		jsxs("p", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 8,
+			columnNumber: 7
+		}, this),
+		jsxDEV("p", {
 			className: "mb-8 text-muted-foreground mr-10",
 			children: [
 				contact_header_haveideasfoundabug4(),
 				" ",
-				jsx("a", {
+				jsxDEV("a", {
 					href: "mailto:contact@intlayer.org",
 					className: "text-primary hover:underline",
 					children: "contact@intlayer.org"
-				}),
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 13,
+					columnNumber: 9
+				}, this),
 				"."
 			]
-		})
-	] });
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 11,
+			columnNumber: 7
+		}, this)
+	] }, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/contact/ContactHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ContactHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ContactHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

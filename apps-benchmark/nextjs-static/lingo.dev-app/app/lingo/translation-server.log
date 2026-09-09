@@ -928,3 +928,53 @@
 2026-04-21T01:04:52.861Z [INFO] [Lingo.dev] Translating all 246 entries to ko
 2026-04-21T01:04:52.866Z [INFO] [Lingo.dev] Translating all 246 entries to ru
 2026-04-21T01:04:52.870Z [INFO] [Lingo.dev] Translation server stopped
+2026-09-09T00:32:15.330Z [INFO] [Lingo.dev] 🔧 Initializing translator...
+2026-09-09T00:32:15.361Z [DEBUG] [Lingo.dev] Starting translation server on port 60000
+2026-09-09T00:32:15.362Z [INFO] [Lingo.dev] Translation server listening on http://127.0.0.1:60000
+2026-09-09T00:32:15.371Z [INFO] [Lingo.dev] WebSocket server initialized
+2026-09-09T00:32:15.372Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.373Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.383Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.384Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.386Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.386Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.386Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.388Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.388Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.388Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T00:32:15.390Z [INFO] [Lingo.dev] Translating all 246 entries to en
+2026-09-09T00:32:15.391Z [INFO] [Lingo.dev] Translating all 246 entries to fr
+2026-09-09T00:32:15.391Z [INFO] [Lingo.dev] Translating all 246 entries to es
+2026-09-09T00:32:15.394Z [INFO] [Lingo.dev] Translating all 246 entries to de
+2026-09-09T00:32:15.394Z [INFO] [Lingo.dev] Translating all 246 entries to it
+2026-09-09T00:32:15.396Z [INFO] [Lingo.dev] Translating all 246 entries to pt
+2026-09-09T00:32:15.396Z [INFO] [Lingo.dev] Translating all 246 entries to zh
+2026-09-09T00:32:15.396Z [INFO] [Lingo.dev] Translating all 246 entries to ja
+2026-09-09T00:32:15.396Z [INFO] [Lingo.dev] Translating all 246 entries to ko
+2026-09-09T00:32:15.399Z [INFO] [Lingo.dev] Translating all 246 entries to ru
+2026-09-09T00:32:15.405Z [INFO] [Lingo.dev] Translation server stopped
+2026-09-09T18:37:56.506Z [INFO] [Lingo.dev] 🔧 Initializing translator...
+2026-09-09T18:37:56.541Z [DEBUG] [Lingo.dev] Starting translation server on port 60000
+2026-09-09T18:37:56.543Z [INFO] [Lingo.dev] Translation server listening on http://127.0.0.1:60000
+2026-09-09T18:37:56.543Z [INFO] [Lingo.dev] WebSocket server initialized
+2026-09-09T18:37:56.549Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.549Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.549Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.553Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.553Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.554Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.556Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.556Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.557Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.558Z [DEBUG] [Lingo.dev] Reloaded metadata: 246 entries
+2026-09-09T18:37:56.559Z [INFO] [Lingo.dev] Translating all 246 entries to en
+2026-09-09T18:37:56.559Z [INFO] [Lingo.dev] Translating all 246 entries to fr
+2026-09-09T18:37:56.561Z [INFO] [Lingo.dev] Translating all 246 entries to es
+2026-09-09T18:37:56.561Z [INFO] [Lingo.dev] Translating all 246 entries to de
+2026-09-09T18:37:56.563Z [INFO] [Lingo.dev] Translating all 246 entries to it
+2026-09-09T18:37:56.563Z [INFO] [Lingo.dev] Translating all 246 entries to pt
+2026-09-09T18:37:56.564Z [INFO] [Lingo.dev] Translating all 246 entries to zh
+2026-09-09T18:37:56.566Z [INFO] [Lingo.dev] Translating all 246 entries to ja
+2026-09-09T18:37:56.566Z [INFO] [Lingo.dev] Translating all 246 entries to ko
+2026-09-09T18:37:56.568Z [INFO] [Lingo.dev] Translating all 246 entries to ru
+2026-09-09T18:37:56.573Z [INFO] [Lingo.dev] Translation server stopped

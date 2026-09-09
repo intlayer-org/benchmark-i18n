@@ -31,14 +31,8 @@ function r(r) {
 	];
 	var a = n(), o = e.sibling(e.child(a), 2), s = e.child(o), c = e.sibling(e.child(s));
 	e.each(c, 5, () => i, (e) => e.lib, (n, r) => {
-		var i = t(), a = e.child(i), o = e.child(a, !0);
-		e.reset(a);
-		var s = e.sibling(a), c = e.child(s, !0);
-		e.reset(s);
-		var l = e.sibling(s), u = e.child(l, !0);
-		e.reset(l);
-		var d = e.sibling(l), f = e.child(d, !0);
-		e.reset(d), e.reset(i), e.template_effect(() => {
+		var i = t(), a = e.child(i), o = e.only_child(a, !0), s = e.sibling(a), c = e.only_child(s, !0), l = e.sibling(s), u = e.only_child(l, !0), d = e.sibling(l), f = e.only_child(d, !0);
+		e.reset(i), e.template_effect(() => {
 			e.set_text(o, e.get(r).lib), e.set_text(c, e.get(r).size), e.set_text(u, e.get(r).time), e.set_text(f, e.get(r).lazy);
 		}), e.append(n, i);
 	}), e.reset(c), e.reset(s), e.reset(o), e.reset(a), e.append(r, a);

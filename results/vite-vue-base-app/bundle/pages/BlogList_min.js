@@ -1,8 +1,9 @@
 import { Fragment as e, createElementBlock as t, createElementVNode as n, defineComponent as r, openBlock as i, renderList as a, toDisplayString as o } from "vue";
-var s = { class: "grid gap-6 md:grid-cols-2" }, c = { class: "mb-3 flex items-center gap-3" }, l = { class: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground" }, u = { class: "text-xs text-muted-foreground" }, d = { class: "mb-2 text-lg font-semibold text-foreground" }, f = { class: "mb-4 text-sm text-muted-foreground" }, p = r({
+var s = r({
 	__name: "BlogList",
-	setup(r) {
-		let p = [
+	setup(e, { expose: t }) {
+		t();
+		let n = { posts: [
 			{
 				title: "Comparing i18n Libraries in 2026: A Deep Dive",
 				date: "March 15, 2026",
@@ -39,19 +40,30 @@ var s = { class: "grid gap-6 md:grid-cols-2" }, c = { class: "mb-3 flex items-ce
 				excerpt: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
 				category: "Meta"
 			}
-		];
-		return (r, m) => (i(), t("div", s, [(i(), t(e, null, a(p, (e) => n("article", {
-			key: e.title,
-			class: "rounded-lg border border-border bg-card p-6"
-		}, [
-			n("div", c, [n("span", l, o(e.category), 1), n("span", u, o(e.date), 1)]),
-			n("h2", d, o(e.title), 1),
-			n("p", f, o(e.excerpt), 1),
-			m[0] ||= n("button", {
-				type: "button",
-				class: "text-sm font-medium text-primary hover:underline"
-			}, " Read More → ", -1)
-		])), 64))]));
+		] };
+		return Object.defineProperty(n, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), n;
 	}
-});
-export { p as default };
+}), c = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, l = { class: "grid gap-6 md:grid-cols-2" }, u = { class: "mb-3 flex items-center gap-3" }, d = { class: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground" }, f = { class: "text-xs text-muted-foreground" }, p = { class: "mb-2 text-lg font-semibold text-foreground" }, m = { class: "mb-4 text-sm text-muted-foreground" };
+function h(r, s, c, h, g, _) {
+	return i(), t("div", l, [(i(), t(e, null, a(h.posts, (e) => n("article", {
+		key: e.title,
+		class: "rounded-lg border border-border bg-card p-6"
+	}, [
+		n("div", u, [n("span", d, o(e.category), 1), n("span", f, o(e.date), 1)]),
+		n("h2", p, o(e.title), 1),
+		n("p", m, o(e.excerpt), 1),
+		s[0] ||= n("button", {
+			type: "button",
+			class: "text-sm font-medium text-primary hover:underline"
+		}, " Read More → ", -1)
+	])), 64))]);
+}
+var g = c(s, [["render", h], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/blog/BlogList.vue"]]);
+export { g as default };

@@ -1,7 +1,7 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { Fragment as r, jsx as i, jsxs as a } from "react/jsx-runtime";
-import { useParams as o } from "next/navigation";
-var s = {}, c = [
+import { Fragment as r, jsxDEV as i } from "react/jsx-dev-runtime";
+import { useParams as a } from "next/navigation";
+var o = {}, s = [
 	"en",
 	"fr",
 	"es",
@@ -12,77 +12,57 @@ var s = {}, c = [
 	"ja",
 	"ko",
 	"ru"
-], l = "PARAGLIDE_LOCALE", ee = 3456e4, u = [
+], c = "PARAGLIDE_LOCALE", ee = 3456e4, l = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], d = [], f, p;
-function m(e) {
-	if (d.length === 0) return;
-	let t = typeof e == "string" ? e : e.href;
-	if (f === t) return p;
-	let n = new URL(t, "http://dummy.com"), r;
-	for (let e of d) if (new s(e.match, n.href).exec(n.href)) {
-		r = e;
-		break;
-	}
-	return f = t, p = r, r;
-}
-function h(e) {
-	let t = m(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : u;
-}
-var g = void 0, _ = typeof window > "u";
+], u = [], d = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var v, y = !1, b = () => {
-	if (g) {
-		let e = g?.getStore()?.locale;
-		if (e) return e;
-	}
-	let e = u;
-	!_ && typeof window < "u" && window.location?.href && (e = h(window.location.href));
-	let t = x(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return y || (v = t, y = !0, C(t, { reload: !1 })), t;
-	throw Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+var f, p = !1, m = () => {
+	let e = l;
+	!d && typeof window < "u" && window.location?.href && (e = N(window.location.href));
+	let t = te(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return p || (f = t, p = !0, g(t, { reload: !1 })), t;
+	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function x(e, t) {
+function te(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = E();
+		if (t === "cookie") n = D();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && v !== void 0) n = v;
-		else if (O(t) && D.has(t)) {
-			let e = D.get(t);
+		else if (t === "globalVariable" && f !== void 0) n = f;
+		else if (F(t) && P.has(t)) {
+			let e = P.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return T(t);
+				if (t !== void 0) return v(t);
 			}
 		}
-		let e = w(n);
+		let e = _(n);
 		if (e) return e;
 	}
 }
-var S = (e) => {
+var h = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, C = (e, t) => {
+}, g = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = b();
+		r = m();
 	} catch {}
-	let i = [], a = u;
-	!_ && typeof window < "u" && window.location?.href && (a = h(window.location.href));
-	for (let t of a) if (t === "globalVariable") v = e;
+	let i = [], a = l;
+	!d && typeof window < "u" && window.location?.href && (a = N(window.location.href));
+	for (let t of a) if (t === "globalVariable") f = e;
 	else if (t === "cookie") {
-		if (_ || typeof document > "u" || typeof window > "u") continue;
-		let t = `${l}=${e}; path=/; max-age=${ee}`;
-		document.cookie = t;
+		if (d || typeof document > "u" || typeof window > "u") continue;
+		let t = `${c}=${e}; path=/; max-age=${ee}`;
+		document.cookie = t, T();
 	} else if (t === "baseLocale") continue;
-	else if (O(t) && D.has(t)) {
-		let n = D.get(t);
+	else if (F(t) && P.has(t)) {
+		let n = P.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -91,59 +71,119 @@ var S = (e) => {
 		}
 	}
 	let o = () => {
-		!_ && n.reload && window.location && e !== r && S(void 0);
+		!d && n.reload && window.location && e !== r && h(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
-};
-function w(e) {
+}, ne = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function _(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of c) if (e.toLowerCase() === t) return e;
+	for (let e of s) if (e.toLowerCase() === t) return e;
 }
-function T(e) {
-	let t = w(e);
+function v(e) {
+	let t = _(e);
 	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${c.join(", ")}`);
+	throw Error(`Invalid locale: ${e}. Expected one of: ${s.join(", ")}`);
+}
+function y(e) {
+	return e;
+}
+function b(e, t) {
+	return e.exec(t.href);
+}
+var x = c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), S = RegExp(`(?:^|;\\s*)${x}=([^;]*)`), C = Symbol(), w = C;
+function T() {
+	w = C;
 }
 function E() {
-	if (typeof document > "u" || !document.cookie) return;
-	let e = document.cookie.match(RegExp(`(^| )${l}=([^;]+)`))?.[2];
-	return w(e);
+	typeof queueMicrotask == "function" ? queueMicrotask(T) : Promise.resolve().then(T);
 }
-var D = /* @__PURE__ */ new Map();
+function D() {
+	if (typeof document > "u") return;
+	if (w !== C) return w;
+	let e = document.cookie.match(S)?.[1];
+	return w = _(e), E(), w;
+}
 function O(e) {
+	return k(e);
+}
+function k(e) {
+	let t = y(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && _(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), y(t);
+}
+var A, j;
+function M(e) {
+	if (u.length === 0) return;
+	let t = typeof e == "string" ? e : e.href;
+	if (A === t) return j;
+	let n = y(new URL(t, "http://example.com")), r = O(n), i = r.href === n.href ? [n] : [n, r], a;
+	for (let e of i) {
+		for (let t of u) if (b(new o(t.match, e.href), e)) {
+			a = t;
+			break;
+		}
+		if (a) break;
+	}
+	return A = t, j = a, a;
+}
+function N(e) {
+	let t = M(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : l;
+}
+var P = /* @__PURE__ */ new Map();
+function F(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var k = () => "Settings", A = () => "Paramètres", j = () => "Ajustes", M = () => "Einstellungen", N = () => "Impostazioni", P = () => "Configurações", F = () => "设置", I = () => "設定", L = () => "설정", R = () => "Настройки", z = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? k(e) : n === "fr" ? A(e) : n === "es" ? j(e) : n === "de" ? M(e) : n === "it" ? N(e) : n === "pt" ? P(e) : n === "zh" ? F(e) : n === "ja" ? I(e) : n === "ko" ? L(e) : R(e);
-}), B = () => "Manage your account preferences and configuration.", V = () => "Gérez vos préférences de compte et votre configuration.", H = () => "Gestiona las preferencias y la configuración de tu cuenta.", U = () => "Verwalten Sie Ihre Kontoeinstellungen und Konfigurationen.", te = () => "Gestisci le preferenze del tuo account e la configurazione.", W = () => "Gerencie as preferências de sua conta e a configuração.", G = () => "管理您的账户偏好和配置。", K = () => "アカウントの優先設定と構成を管理します。", q = () => "계정 기본 설정 및 구성을 관리합니다.", J = () => "Управляйте настройками и конфигурацией своего аккаунта.", Y = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? B(e) : n === "fr" ? V(e) : n === "es" ? H(e) : n === "de" ? U(e) : n === "it" ? te(e) : n === "pt" ? W(e) : n === "zh" ? G(e) : n === "ja" ? K(e) : n === "ko" ? q(e) : J(e);
-}), X = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", Z = () => "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.", Q = () => "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.", ne = () => "⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.", re = () => "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.", ie = () => "⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.", ae = () => "⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。", oe = () => "⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。", $ = () => "⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.", se = () => "⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.", ce = ((e = {}, t = {}) => {
-	let n = t.locale ?? b();
-	return n === "en" ? X(e) : n === "fr" ? Z(e) : n === "es" ? Q(e) : n === "de" ? ne(e) : n === "it" ? re(e) : n === "pt" ? ie(e) : n === "zh" ? ae(e) : n === "ja" ? oe(e) : n === "ko" ? $(e) : se(e);
-}), le = () => i("div", {
+var I = () => "Settings", L = () => "Paramètres", R = () => "Ajustes", z = () => "Einstellungen", B = () => "Impostazioni", V = () => "Configurações", H = () => "设置", U = () => "設定", W = () => "설정", G = () => "Настройки", K = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? B(e) : n === "pt" ? V(e) : n === "zh" ? H(e) : n === "ja" ? U(e) : n === "ko" ? W(e) : n === "ru" ? G(e) : I(e);
+}), q = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", J = () => "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.", Y = () => "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.", re = () => "⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.", X = () => "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.", ie = () => "⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.", ae = () => "⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。", oe = () => "⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。", se = () => "⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.", ce = () => "⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.", le = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? J(e) : n === "es" ? Y(e) : n === "de" ? re(e) : n === "it" ? X(e) : n === "pt" ? ie(e) : n === "zh" ? ae(e) : n === "ja" ? oe(e) : n === "ko" ? se(e) : n === "ru" ? ce(e) : q(e);
+}), ue = () => "Manage your account preferences and configuration.", de = () => "Gérez vos préférences de compte et votre configuration.", fe = () => "Gestiona las preferencias y la configuración de tu cuenta.", pe = () => "Verwalten Sie Ihre Kontoeinstellungen und Konfigurationen.", me = () => "Gestisci le preferenze del tuo account e la configurazione.", he = () => "Gerencie as preferências de sua conta e a configuração.", ge = () => "管理您的账户偏好和配置。", _e = () => "アカウントの優先設定と構成を管理します。", ve = () => "계정 기본 설정 및 구성을 관리합니다.", ye = () => "Управляйте настройками и конфигурацией своего аккаунта.", be = ((e = {}, t = {}) => {
+	let n = t.locale ?? m();
+	return n === "fr" ? de(e) : n === "es" ? fe(e) : n === "de" ? pe(e) : n === "it" ? me(e) : n === "pt" ? he(e) : n === "zh" ? ge(e) : n === "ja" ? _e(e) : n === "ko" ? ve(e) : n === "ru" ? ye(e) : ue(e);
+}), xe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/MockBanner.tsx", Se = () => i("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: ce()
-});
-function ue() {
-	return a(r, { children: [
-		i(le, {}),
+	children: le()
+}, void 0, !1, {
+	fileName: xe,
+	lineNumber: 6,
+	columnNumber: 3
+}, void 0), Z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/settings/SettingsHeader.tsx";
+function Ce() {
+	return i(r, { children: [
+		i(Se, {}, void 0, !1, {
+			fileName: Z,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this),
 		i("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
-			children: z()
-		}),
+			children: K()
+		}, void 0, !1, {
+			fileName: Z,
+			lineNumber: 10,
+			columnNumber: 7
+		}, this),
 		i("p", {
 			className: "mb-8 text-muted-foreground mr-10",
-			children: Y()
-		})
-	] });
+			children: be()
+		}, void 0, !1, {
+			fileName: Z,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this)
+	] }, void 0, !0, {
+		fileName: Z,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
-function de() {
+function we() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -157,25 +197,44 @@ function de() {
 		}
 	}
 }
-function fe(e, t) {
+function Q(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function pe({ children: a }) {
-	let s = o().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
+var Te = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
+function Ee({ children: o }) {
+	let s = a().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		fe("AppRoot", c);
+		Q("AppRoot", c);
 	}, [c]), e(() => {
-		C(s, { reload: !1 }), document.documentElement.lang = s;
+		g(s, { reload: !1 }), document.documentElement.lang = s;
 	}, [s]), e(() => {
-		de();
-	}, []), i(r, { children: a });
+		we();
+	}, []), i(r, { children: o }, void 0, !1, {
+		fileName: Te,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
-function me({ children: e }) {
-	return i(pe, { children: e });
+var De = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
+function Oe({ children: e }) {
+	return i(Ee, { children: e }, void 0, !1, {
+		fileName: De,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
-function he() {
-	return i(me, { children: i(ue, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/settings/SettingsHeader.wrapper.tsx";
+function ke() {
+	return i(Oe, { children: i(Ce, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { he as default };
+export { ke as default };

@@ -1,11 +1,16 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { tolgee } from "../../i18n/tolgee";
-import { getMessages } from "../../i18n/getMessages";
 
 export const Route = createFileRoute("/$locale")({
-    const messages = await getMessages(params.locale, ["common", "header", "footer", "themeToggle", "route", "mockBanner"]);
-    
-    return { locale: params.locale, messages };
+  loader: async ({ params }) => {
+    await tolgee.loadRecords([
+      { language: params.locale, namespace: "common" },
+      { language: params.locale, namespace: "header" },
+      { language: params.locale, namespace: "footer" },
+      { language: params.locale, namespace: "themeToggle" },
+      { language: params.locale, namespace: "route" },
+      { language: params.locale, namespace: "mockBanner" },
+    ]);
   },
   component: Outlet,
 });

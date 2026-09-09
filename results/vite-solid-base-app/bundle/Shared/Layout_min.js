@@ -53,7 +53,8 @@ var b = [
 }, S = o("<div class=\"flex items-center gap-2\"><select class=\"h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary\">"), C = o("<option>");
 function w() {
 	let t = u(), i = l(), a = c(), o = (e) => {
-		i(`${a.pathname.replace(/^\/[^/]+/, `/${e}`)}${a.search}${a.hash}`);
+		let t = a.pathname.replace(/^\/[^/]+/, `/${e}`);
+		i(`${t}${a.search}${a.hash}`);
 	};
 	return (() => {
 		var i = S(), a = i.firstChild;

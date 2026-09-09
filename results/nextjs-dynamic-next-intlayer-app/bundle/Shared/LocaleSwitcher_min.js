@@ -1,7 +1,8 @@
 import { createContext as e, useContext as t, useEffect as n, useLayoutEffect as r, useRef as i, useState as a } from "react";
 import { useParams as o, usePathname as s, useRouter as c } from "next/navigation";
-import { jsx as l, jsxs as u } from "react/jsx-runtime";
-var d = {
+import { jsxDEV as l } from "react/jsx-dev-runtime";
+import { jsx as u, jsxs as d } from "react/jsx-runtime";
+var f = {
 	locales: [
 		"en",
 		"fr",
@@ -14,37 +15,31 @@ var d = {
 		"ko",
 		"ru"
 	],
+	requiredLocales: [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	strictMode: "inclusive",
 	defaultLocale: "en"
-}, f = {
+}, p = {
 	mode: "prefix-all",
 	storage: {
 		cookies: [{
 			name: "INTLAYER_LOCALE",
-			attributes: {}
+			attributes: { path: "/" }
 		}],
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, p = {
-	internationalization: d,
-	routing: f,
-	editor: {
-		applicationURL: "http://localhost:3000",
-		editorURL: "http://localhost:8000",
-		cmsURL: "https://app.intlayer.org",
-		backendURL: "https://back.intlayer.org",
-		port: 8e3,
-		enabled: !1,
-		dictionaryPriorityStrategy: "local_first",
-		liveSync: !0,
-		liveSyncPort: 4e3,
-		liveSyncURL: "http://localhost:4000"
-	},
-	log: {
-		mode: "default",
-		prefix: "\x1B[38;5;239m[intlayer] \x1B[0m"
-	}
-}, m = (e, t = d?.locales, n = d?.defaultLocale) => {
+}, m = (e, t = f?.locales, n = f?.defaultLocale) => {
 	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
 	try {
 		for (let e of r) {
@@ -55,34 +50,20 @@ var d = {
 		}
 	} catch {}
 	return n;
-}, h = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
-process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var g = (e, t, n) => {
-	let r = [`${e}=${encodeURIComponent(t)}`];
-	return n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`), n.expires instanceof Date && r.push(`Expires=${n.expires.toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, _ = (e) => {
-	let { locales: t } = d;
-	if (e?.isCookieEnabled === !1) return;
-	let n = (e) => !!e && t.includes(e);
-	if (!h) for (let t = 0; t < (f.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(f.storage.cookies[t].name);
-		if (n(r)) return r;
-	} catch {}
-}, v = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !h && f.storage.cookies) for (let n = 0; n < f.storage.cookies.length; n++) {
-		let { name: r, attributes: i } = f.storage.cookies[n];
-		try {
-			t?.setCookieStore && t.setCookieStore(r, e, {
-				...i,
-				expires: i.expires instanceof Date ? i.expires.getTime() : i.expires
-			});
-		} catch {
-			try {
-				t?.setCookieString && t.setCookieString(r, g(r, e, i));
-			} catch {}
-		}
+}, h = (e) => {
+	if (typeof e == "number") return Date.now() + e * 1e3;
+	if (typeof e == "string") {
+		let t = Date.parse(e);
+		return Number.isNaN(t) ? void 0 : t;
 	}
-}, y = {
+}, g = (e, t, n) => {
+	let r = [`${e}=${encodeURIComponent(t)}`];
+	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
+	let i = h(n.expires);
+	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
+}, _ = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var v = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -100,9 +81,32 @@ var g = (e, t, n) => {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, b = p.internationalization.locales;
-p.internationalization.requiredLocales, p.internationalization.defaultLocale, p.editor;
-function x(e) {
+}, y = (e = v) => {
+	let { locales: t } = f;
+	if (e?.isCookieEnabled === !1) return;
+	let n = (e) => !!e && t.includes(e);
+	if (!_) for (let t = 0; t < (p.storage.cookies ?? []).length; t++) try {
+		let r = e?.getCookie?.(p.storage.cookies[t].name);
+		if (n(r)) return r;
+	} catch {}
+}, b = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && !_ && p.storage.cookies) for (let n = 0; n < p.storage.cookies.length; n++) {
+		let { name: r, attributes: i } = p.storage.cookies[n];
+		try {
+			t?.setCookieStore && t.setCookieStore(r, e, {
+				...i,
+				expires: h(i.expires)
+			});
+		} catch {
+			try {
+				t?.setCookieString && t.setCookieString(r, g(r, e, i));
+			} catch {}
+		}
+	}
+}, x = f.locales;
+f.requiredLocales, f.defaultLocale;
+var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/LocaleSwitcher.tsx";
+function C(e) {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
@@ -110,7 +114,7 @@ function x(e) {
 		return e.toUpperCase();
 	}
 }
-function S() {
+function w() {
 	let e = o().locale ?? "en", t = s(), n = c(), r = (r) => {
 		let i = t.replace(`/${e}`, `/${r}`);
 		n.push(i);
@@ -121,56 +125,78 @@ function S() {
 			value: e,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: b.map((e) => l("option", {
+			children: x.map((e) => l("option", {
 				value: e,
-				children: x(e)
-			}, e))
-		})
-	});
+				children: C(e)
+			}, e, !1, {
+				fileName: S,
+				lineNumber: 35,
+				columnNumber: 11
+			}, this))
+		}, void 0, !1, {
+			fileName: S,
+			lineNumber: 29,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: S,
+		lineNumber: 28,
+		columnNumber: 5
+	}, this);
 }
-var C = _(y), w = (e, t) => v(e, {
-	...y,
+var T = y(v), E = (e, t) => b(e, {
+	...v,
 	isCookieEnabled: t
-}), T = () => {
-	let { locale: e } = t(O) ?? {}, r = i(null);
+}), D = () => {
+	let { locale: e } = t(M) ?? {}, r = i(null);
 	n(() => {}, []), n(() => {
-		!e || !r.current || r.current.currentLocale.set(e);
+		e && r.current && r.current.currentLocale.set(e);
 	}, [e]);
-}, E = ({ children: e }) => (T(), e), D = () => {
+}, O = ({ children: e }) => (D(), e), k = () => {
+	let { locale: e } = t(M) ?? {}, r = i(null);
+	n(() => {}, []), n(() => {
+		e && r.current && (r.current.setLocale(e), r.current.trackPageView({ reason: "locale_change" }));
+	}, [e]);
+}, A = ({ children: e }) => (k(), e), j = () => {
 	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, O = e({
-	locale: C ?? d?.defaultLocale,
+}, M = e({
+	locale: T ?? f?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), k = ({ locale: e, defaultLocale: t, children: r, setLocale: i, disableEditor: o, isCookieEnabled: s }) => {
-	let { locales: c, defaultLocale: u } = d ?? {}, [f, p] = a(e ?? C ?? t ?? u);
+}), N = ({ locale: e, defaultLocale: t, variant: r, children: i, setLocale: o, disableEditor: s, isCookieEnabled: c }) => {
+	let { locales: l, defaultLocale: d } = f ?? {}, [p, h] = a(e ?? T ?? t ?? d);
 	n(() => {
-		e && e !== f && p(e);
+		e && e !== p && h(e);
 	}, [e]), n(() => {
-		D();
+		j();
 	}, []);
-	let h = i ?? ((e) => {
-		if (f.toString() !== e.toString()) {
-			if (!c?.map(String).includes(e)) {
+	let g = o ?? ((e) => {
+		if (p.toString() !== e.toString()) {
+			if (!l?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			p(e), w(e, s);
+			h(e), E(e, c);
 		}
-	}), g = m(f);
-	return l(O.Provider, {
+	}), _ = m(p);
+	return u(M.Provider, {
 		value: {
-			locale: g,
-			setLocale: h,
-			disableEditor: o
+			locale: _,
+			setLocale: g,
+			variant: r,
+			disableEditor: s
 		},
-		children: r
+		children: i
 	});
-}, A = ({ children: e, ...t }) => u(k, {
+}, P = ({ children: e, ...t }) => d(N, {
 	...t,
-	children: [l(E, {}), e]
-}), j = (e) => l(A, { ...e });
-function M() {
+	children: [
+		u(O, {}),
+		u(A, {}),
+		e
+	]
+}), F = (e) => u(P, { ...e });
+function I() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -184,31 +210,50 @@ function M() {
 		}
 	}
 }
-function N(e, t) {
+function L(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function P({ children: e, locale: t }) {
+var R = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/AppProviders.tsx";
+function z({ children: e, locale: t }) {
 	let [i] = a(() => typeof performance < "u" ? performance.now() : 0);
 	return r(() => {
-		N("AppRoot", i);
+		L("AppRoot", i);
 	}, [i]), n(() => {
 		t && (document.documentElement.lang = t);
 	}, [t]), n(() => {
-		M();
-	}, []), l(j, {
+		I();
+	}, []), l(F, {
 		locale: t,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: R,
+		lineNumber: 34,
+		columnNumber: 7
+	}, this);
 }
-function F({ children: e }) {
-	return l(P, {
+var B = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/scripts/Wrapper.tsx";
+function V({ children: e }) {
+	return l(z, {
 		locale: "en",
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: B,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
-function I() {
-	return l(F, { children: l(S, {}) });
+var H = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/LocaleSwitcher.wrapper.tsx";
+function U() {
+	return l(V, { children: l(w, {}, void 0, !1, {
+		fileName: H,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: H,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { I as default };
+export { U as default };

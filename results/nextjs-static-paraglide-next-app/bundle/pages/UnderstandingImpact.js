@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var URLPattern = {};
 var locales = [
@@ -22,27 +22,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -65,7 +44,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -107,6 +86,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -128,6 +108,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -138,186 +123,139 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_understanding_impact_understandingtheimpact2 = () => {
-	return `Understanding the Impact`;
+var en_understanding_impact_cacheinvalidation1 = () => {
+	return `Cache invalidation:`;
 };
-var fr_understanding_impact_understandingtheimpact2 = () => {
-	return `Comprendre l'impact`;
+var fr_understanding_impact_cacheinvalidation1 = () => {
+	return `Invalidation du cache :`;
 };
-var es_understanding_impact_understandingtheimpact2 = () => {
-	return `Entendiendo el impacto`;
+var es_understanding_impact_cacheinvalidation1 = () => {
+	return `Invalidación de la caché:`;
 };
-var de_understanding_impact_understandingtheimpact2 = () => {
-	return `Die Auswirkungen verstehen`;
+var de_understanding_impact_cacheinvalidation1 = () => {
+	return `Cache-Invalidierung:`;
 };
-var it_understanding_impact_understandingtheimpact2 = () => {
-	return `Capire l'impatto`;
+var it_understanding_impact_cacheinvalidation1 = () => {
+	return `Invalidazione della cache:`;
 };
-var pt_understanding_impact_understandingtheimpact2 = () => {
-	return `Entendendo o impacto`;
+var pt_understanding_impact_cacheinvalidation1 = () => {
+	return `Invalidação de cache:`;
 };
-var zh_understanding_impact_understandingtheimpact2 = () => {
-	return `理解影响`;
+var zh_understanding_impact_cacheinvalidation1 = () => {
+	return `缓存失效：`;
 };
-var ja_understanding_impact_understandingtheimpact2 = () => {
-	return `影響を理解する`;
+var ja_understanding_impact_cacheinvalidation1 = () => {
+	return `キャッシュの無効化:`;
 };
-var ko_understanding_impact_understandingtheimpact2 = () => {
-	return `영향 이해하기`;
+var ko_understanding_impact_cacheinvalidation1 = () => {
+	return `캐시 무효화:`;
 };
-var ru_understanding_impact_understandingtheimpact2 = () => {
-	return `Понимание влияния`;
+var ru_understanding_impact_cacheinvalidation1 = () => {
+	return `Инвалидация кэша:`;
 };
-var understanding_impact_understandingtheimpact2 = ((inputs = {}, options = {}) => {
+var understanding_impact_cacheinvalidation1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_understandingtheimpact2(inputs);
-	if (locale === "fr") return fr_understanding_impact_understandingtheimpact2(inputs);
-	if (locale === "es") return es_understanding_impact_understandingtheimpact2(inputs);
-	if (locale === "de") return de_understanding_impact_understandingtheimpact2(inputs);
-	if (locale === "it") return it_understanding_impact_understandingtheimpact2(inputs);
-	if (locale === "pt") return pt_understanding_impact_understandingtheimpact2(inputs);
-	if (locale === "zh") return zh_understanding_impact_understandingtheimpact2(inputs);
-	if (locale === "ja") return ja_understanding_impact_understandingtheimpact2(inputs);
-	if (locale === "ko") return ko_understanding_impact_understandingtheimpact2(inputs);
-	return ru_understanding_impact_understandingtheimpact2(inputs);
+	if (locale === "fr") return fr_understanding_impact_cacheinvalidation1(inputs);
+	if (locale === "es") return es_understanding_impact_cacheinvalidation1(inputs);
+	if (locale === "de") return de_understanding_impact_cacheinvalidation1(inputs);
+	if (locale === "it") return it_understanding_impact_cacheinvalidation1(inputs);
+	if (locale === "pt") return pt_understanding_impact_cacheinvalidation1(inputs);
+	if (locale === "zh") return zh_understanding_impact_cacheinvalidation1(inputs);
+	if (locale === "ja") return ja_understanding_impact_cacheinvalidation1(inputs);
+	if (locale === "ko") return ko_understanding_impact_cacheinvalidation1(inputs);
+	if (locale === "ru") return ru_understanding_impact_cacheinvalidation1(inputs);
+	return en_understanding_impact_cacheinvalidation1(inputs);
 });
-var en_understanding_impact_whyasinglelargejson4 = () => {
-	return `Why a single large JSON can hurt performance`;
+var en_understanding_impact_cacheinvalidationdesc2 = () => {
+	return `updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks.`;
 };
-var fr_understanding_impact_whyasinglelargejson4 = () => {
-	return `Pourquoi un seul JSON volumineux peut nuire aux performances`;
+var fr_understanding_impact_cacheinvalidationdesc2 = () => {
+	return `la mise à jour des traductions nécessite des stratégies de purge du cache pour garantir que les utilisateurs reçoivent le contenu frais sans re-télécharger les morceaux inchangés.`;
 };
-var es_understanding_impact_whyasinglelargejson4 = () => {
-	return `Por qué un solo JSON grande puede perjudicar el rendimiento`;
-};
-var de_understanding_impact_whyasinglelargejson4 = () => {
-	return `Warum ein einziges großes JSON die Leistung beeinträchtigen kann`;
-};
-var it_understanding_impact_whyasinglelargejson4 = () => {
-	return `Perché un singolo JSON di grandi dimensioni può danneggiare le prestazioni`;
-};
-var pt_understanding_impact_whyasinglelargejson4 = () => {
-	return `Por que um único JSON grande pode prejudicar o desempenho`;
-};
-var zh_understanding_impact_whyasinglelargejson4 = () => {
-	return `为什么单个大型 JSON 会损害性能`;
-};
-var ja_understanding_impact_whyasinglelargejson4 = () => {
-	return `ひとつの巨大な JSON がパフォーマンスを低下させる理由`;
-};
-var ko_understanding_impact_whyasinglelargejson4 = () => {
-	return `단일 대형 JSON이 성능을 저하시키는 이유`;
-};
-var ru_understanding_impact_whyasinglelargejson4 = () => {
-	return `Почему один большой JSON может снизить производительность`;
-};
-var understanding_impact_whyasinglelargejson4 = ((inputs = {}, options = {}) => {
+var es_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
+var de_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
+var it_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
+var pt_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
+var zh_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
+var ja_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
+var ko_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
+var ru_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
+var understanding_impact_cacheinvalidationdesc2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_whyasinglelargejson4(inputs);
-	if (locale === "fr") return fr_understanding_impact_whyasinglelargejson4(inputs);
-	if (locale === "es") return es_understanding_impact_whyasinglelargejson4(inputs);
-	if (locale === "de") return de_understanding_impact_whyasinglelargejson4(inputs);
-	if (locale === "it") return it_understanding_impact_whyasinglelargejson4(inputs);
-	if (locale === "pt") return pt_understanding_impact_whyasinglelargejson4(inputs);
-	if (locale === "zh") return zh_understanding_impact_whyasinglelargejson4(inputs);
-	if (locale === "ja") return ja_understanding_impact_whyasinglelargejson4(inputs);
-	if (locale === "ko") return ko_understanding_impact_whyasinglelargejson4(inputs);
-	return ru_understanding_impact_whyasinglelargejson4(inputs);
-});
-var en_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:`;
-};
-var fr_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `De nombreuses bibliothèques i18n stockent les traductions dans un seul objet JSON fourni via le contexte React. Lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. Cela signifie :`;
-};
-var es_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `Muchas bibliotecas i18n almacenan las traducciones en un único objeto JSON proporcionado a través del contexto de React. Cuando este objeto es grande (miles de claves), cada componente que consume traducciones mantiene una referencia a todo el diccionario. Esto significa:`;
-};
-var de_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `Viele i18n-Bibliotheken speichern Übersetzungen in einem einzigen JSON-Objekt, das über den React-Kontext bereitgestellt wird. Wenn dieses Objekt groß ist (Tausende von Schlüsseln), hält jede Komponente, die Übersetzungen verwendet, eine Referenz auf das gesamte Wörterbuch. Das bedeutet:`;
-};
-var it_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `Molte librerie i18n memorizzano le traduzioni in un unico oggetto JSON fornito tramite il contesto React. Quando questo oggetto è grande (migliaia di chiavi), ogni componente che consuma le traduzioni mantiene un riferimento all'intero dizionario. Questo significa:`;
-};
-var pt_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `Muitas bibliotecas de i18n armazenam as traduções em um único objeto JSON fornecido através do contexto de React. Quando este objeto é grande (milhares de chaves), cada componente que consome traduções mantém uma referência a todo o dicionário. Isto significa:`;
-};
-var zh_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当此对象很大（数千个键）时，每个消耗翻译的组件都会持有对整个字典的引用。这意味着：`;
-};
-var ja_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `多くの i18n ライブラリは、React コンテキストを介して提供される単一の JSON オブジェクトに翻訳を保存します。このオブジェクトが巨大（数千のキー）な場合、翻訳を消費するすべてのコンポーネントが辞書全体への参照を保持することになります。これは以下を意味します：`;
-};
-var ko_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `많은 i18n 라이브러리는 React 컨텍스트를 통해 제공되는 단일 JSON 객체에 번역을 저장합니다. 이 객체가 클 경우(수천 개의 키), 번역을 사용하는 모든 컴포넌트는 전체 사전에 대한 참조를 보유하게 됩니다. 이는 다음을 의미합니다:`;
-};
-var ru_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
-	return `Многие библиотеки i18n хранят переводы в одном объекте JSON, предоставляемом через контекст React. Когда этот объект большой (тысячи ключей), каждый компонент, использующий переводы, хранит ссылку на весь словарь. Это означает:`;
-};
-var understanding_impact_manyi18nlibrariesstoretranslations4 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-	if (locale === "fr") return fr_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-	if (locale === "es") return es_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-	if (locale === "de") return de_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-	if (locale === "it") return it_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-	if (locale === "pt") return pt_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-	if (locale === "zh") return zh_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-	if (locale === "ja") return ja_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-	if (locale === "ko") return ko_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-	return ru_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
-});
-var en_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `The JSON must be parsed on every page load — blocking the main thread.`;
-};
-var fr_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `Le JSON doit être analysé à chaque chargement de page — bloquant le thread principal.`;
-};
-var es_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `El JSON debe analizarse en cada carga de página, bloqueando el hilo principal.`;
-};
-var de_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `Das JSON muss bei jedem Seitenladen geparst werden — was den Haupt-Thread blockiert.`;
-};
-var it_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `Il JSON deve essere analizzato a ogni caricamento della pagina, bloccando il thread principale.`;
-};
-var pt_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `O JSON deve ser analisado em cada carga de página — bloqueando a linha de execução principal.`;
-};
-var zh_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `JSON 必须在每次页面加载时进行解析 —— 阻塞主线程。`;
-};
-var ja_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `JSON はページ読み込みのたびにパースされる必要があり、メインスレッドをブロックします。`;
-};
-var ko_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `JSON은 모든 페이지 로드 시 파싱되어야 하며, 이는 메인 스레드를 차단합니다.`;
-};
-var ru_understanding_impact_thejsonmustbeparsed4 = () => {
-	return `JSON должен парситься при каждой загрузке страницы — блокируя основной поток.`;
-};
-var understanding_impact_thejsonmustbeparsed4 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_thejsonmustbeparsed4(inputs);
-	if (locale === "fr") return fr_understanding_impact_thejsonmustbeparsed4(inputs);
-	if (locale === "es") return es_understanding_impact_thejsonmustbeparsed4(inputs);
-	if (locale === "de") return de_understanding_impact_thejsonmustbeparsed4(inputs);
-	if (locale === "it") return it_understanding_impact_thejsonmustbeparsed4(inputs);
-	if (locale === "pt") return pt_understanding_impact_thejsonmustbeparsed4(inputs);
-	if (locale === "zh") return zh_understanding_impact_thejsonmustbeparsed4(inputs);
-	if (locale === "ja") return ja_understanding_impact_thejsonmustbeparsed4(inputs);
-	if (locale === "ko") return ko_understanding_impact_thejsonmustbeparsed4(inputs);
-	return ru_understanding_impact_thejsonmustbeparsed4(inputs);
+	if (locale === "fr") return fr_understanding_impact_cacheinvalidationdesc2(inputs);
+	if (locale === "es") return es_understanding_impact_cacheinvalidationdesc2(inputs);
+	if (locale === "de") return de_understanding_impact_cacheinvalidationdesc2(inputs);
+	if (locale === "it") return it_understanding_impact_cacheinvalidationdesc2(inputs);
+	if (locale === "pt") return pt_understanding_impact_cacheinvalidationdesc2(inputs);
+	if (locale === "zh") return zh_understanding_impact_cacheinvalidationdesc2(inputs);
+	if (locale === "ja") return ja_understanding_impact_cacheinvalidationdesc2(inputs);
+	if (locale === "ko") return ko_understanding_impact_cacheinvalidationdesc2(inputs);
+	if (locale === "ru") return ru_understanding_impact_cacheinvalidationdesc2(inputs);
+	return en_understanding_impact_cacheinvalidationdesc2(inputs);
 });
 var en_understanding_impact_contextbasedarchitecturescancause4 = () => {
 	return `Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.`;
@@ -351,7 +289,6 @@ var ru_understanding_impact_contextbasedarchitecturescancause4 = () => {
 };
 var understanding_impact_contextbasedarchitecturescancause4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_contextbasedarchitecturescancause4(inputs);
 	if (locale === "fr") return fr_understanding_impact_contextbasedarchitecturescancause4(inputs);
 	if (locale === "es") return es_understanding_impact_contextbasedarchitecturescancause4(inputs);
 	if (locale === "de") return de_understanding_impact_contextbasedarchitecturescancause4(inputs);
@@ -360,7 +297,8 @@ var understanding_impact_contextbasedarchitecturescancause4 = ((inputs = {}, opt
 	if (locale === "zh") return zh_understanding_impact_contextbasedarchitecturescancause4(inputs);
 	if (locale === "ja") return ja_understanding_impact_contextbasedarchitecturescancause4(inputs);
 	if (locale === "ko") return ko_understanding_impact_contextbasedarchitecturescancause4(inputs);
-	return ru_understanding_impact_contextbasedarchitecturescancause4(inputs);
+	if (locale === "ru") return ru_understanding_impact_contextbasedarchitecturescancause4(inputs);
+	return en_understanding_impact_contextbasedarchitecturescancause4(inputs);
 });
 var en_understanding_impact_duringserversiderenderingthe4 = () => {
 	return `During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.`;
@@ -394,7 +332,6 @@ var ru_understanding_impact_duringserversiderenderingthe4 = () => {
 };
 var understanding_impact_duringserversiderenderingthe4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_duringserversiderenderingthe4(inputs);
 	if (locale === "fr") return fr_understanding_impact_duringserversiderenderingthe4(inputs);
 	if (locale === "es") return es_understanding_impact_duringserversiderenderingthe4(inputs);
 	if (locale === "de") return de_understanding_impact_duringserversiderenderingthe4(inputs);
@@ -403,163 +340,8 @@ var understanding_impact_duringserversiderenderingthe4 = ((inputs = {}, options 
 	if (locale === "zh") return zh_understanding_impact_duringserversiderenderingthe4(inputs);
 	if (locale === "ja") return ja_understanding_impact_duringserversiderenderingthe4(inputs);
 	if (locale === "ko") return ko_understanding_impact_duringserversiderenderingthe4(inputs);
-	return ru_understanding_impact_duringserversiderenderingthe4(inputs);
-});
-var en_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `The trade-offs of dynamic loading`;
-};
-var fr_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `Les compromis du chargement dynamique`;
-};
-var es_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `Las compensaciones de la carga dinámica`;
-};
-var de_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `Die Kompromisse beim dynamischen Laden`;
-};
-var it_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `I compromessi del caricamento dinamico`;
-};
-var pt_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `As compensações do carregamento dinâmico`;
-};
-var zh_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `动态加载的权衡`;
-};
-var ja_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `動的読み込みのトレードオフ`;
-};
-var ko_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `동적 로딩의 트레이드오프`;
-};
-var ru_understanding_impact_thetradeoffsofdynamic4 = () => {
-	return `Компромиссы динамической загрузки`;
-};
-var understanding_impact_thetradeoffsofdynamic4 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_thetradeoffsofdynamic4(inputs);
-	if (locale === "fr") return fr_understanding_impact_thetradeoffsofdynamic4(inputs);
-	if (locale === "es") return es_understanding_impact_thetradeoffsofdynamic4(inputs);
-	if (locale === "de") return de_understanding_impact_thetradeoffsofdynamic4(inputs);
-	if (locale === "it") return it_understanding_impact_thetradeoffsofdynamic4(inputs);
-	if (locale === "pt") return pt_understanding_impact_thetradeoffsofdynamic4(inputs);
-	if (locale === "zh") return zh_understanding_impact_thetradeoffsofdynamic4(inputs);
-	if (locale === "ja") return ja_understanding_impact_thetradeoffsofdynamic4(inputs);
-	if (locale === "ko") return ko_understanding_impact_thetradeoffsofdynamic4(inputs);
-	return ru_understanding_impact_thetradeoffsofdynamic4(inputs);
-});
-var en_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:`;
-};
-var fr_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `La division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. Mais cela introduit de nouveaux défis :`;
-};
-var es_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `Dividir las traducciones en fragmentos por ruta o por espacio de nombres puede reducir drásticamente el payload inicial. Pero introduce nuevos desafíos:`;
-};
-var de_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `Das Aufteilen von Übersetzungen in Teilstücke pro Route oder Namensraum kann den initialen Payload drastisch reduzieren. Es bringt jedoch neue Herausforderungen mit sich:`;
-};
-var it_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `La scomposizione delle traduzioni in chunk per rotta o per namespace può ridurre drasticamente il payload iniziale. Ma introduce nuove sfide:`;
-};
-var pt_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `Dividir as traduções em partes por rota ou por namespace pode reduzir drasticamente a carga útil inicial. Mas introduz novos desafios:`;
-};
-var zh_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `将翻译拆分为每个路由或每个命名空间的块可以显著减少初始负载。但它引入了新的挑战：`;
-};
-var ja_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `翻訳をルートごと、または名前空間ごとのチャンクに分割すると、初期ペイロードを劇的に削減できます。しかし、新たな課題も生じます：`;
-};
-var ko_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `번역을 경로별 또는 네임스페이스별 청크로 분할하면 초기 페이로드를 크게 줄일 수 있습니다. 하지만 새로운 과제가 발생합니다:`;
-};
-var ru_understanding_impact_splittingtranslationsintoperroute4 = () => {
-	return `Разделение переводов на чанки для каждого маршрута или пространства имен может значительно уменьшить начальный пейлоад. Но это создает новые проблемы:`;
-};
-var understanding_impact_splittingtranslationsintoperroute4 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_splittingtranslationsintoperroute4(inputs);
-	if (locale === "fr") return fr_understanding_impact_splittingtranslationsintoperroute4(inputs);
-	if (locale === "es") return es_understanding_impact_splittingtranslationsintoperroute4(inputs);
-	if (locale === "de") return de_understanding_impact_splittingtranslationsintoperroute4(inputs);
-	if (locale === "it") return it_understanding_impact_splittingtranslationsintoperroute4(inputs);
-	if (locale === "pt") return pt_understanding_impact_splittingtranslationsintoperroute4(inputs);
-	if (locale === "zh") return zh_understanding_impact_splittingtranslationsintoperroute4(inputs);
-	if (locale === "ja") return ja_understanding_impact_splittingtranslationsintoperroute4(inputs);
-	if (locale === "ko") return ko_understanding_impact_splittingtranslationsintoperroute4(inputs);
-	return ru_understanding_impact_splittingtranslationsintoperroute4(inputs);
-});
-var en_understanding_impact_waterfallrequests1 = () => {
-	return `Waterfall requests:`;
-};
-var fr_understanding_impact_waterfallrequests1 = () => {
-	return `Requêtes en cascade :`;
-};
-var es_understanding_impact_waterfallrequests1 = () => {
-	return `Solicitudes en cascada:`;
-};
-var de_understanding_impact_waterfallrequests1 = () => {
-	return `Waterfall-Anfragen:`;
-};
-var it_understanding_impact_waterfallrequests1 = () => {
-	return `Richieste a cascata:`;
-};
-var pt_understanding_impact_waterfallrequests1 = () => {
-	return `Pedidos em cascata:`;
-};
-var zh_understanding_impact_waterfallrequests1 = () => {
-	return `瀑布流请求：`;
-};
-var ja_understanding_impact_waterfallrequests1 = () => {
-	return `ウォーターフォールリクエスト:`;
-};
-var ko_understanding_impact_waterfallrequests1 = () => {
-	return `워터폴(Waterfall) 요청:`;
-};
-var ru_understanding_impact_waterfallrequests1 = () => {
-	return `Каскадные запросы (Waterfall requests):`;
-};
-var understanding_impact_waterfallrequests1 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_waterfallrequests1(inputs);
-	if (locale === "fr") return fr_understanding_impact_waterfallrequests1(inputs);
-	if (locale === "es") return es_understanding_impact_waterfallrequests1(inputs);
-	if (locale === "de") return de_understanding_impact_waterfallrequests1(inputs);
-	if (locale === "it") return it_understanding_impact_waterfallrequests1(inputs);
-	if (locale === "pt") return pt_understanding_impact_waterfallrequests1(inputs);
-	if (locale === "zh") return zh_understanding_impact_waterfallrequests1(inputs);
-	if (locale === "ja") return ja_understanding_impact_waterfallrequests1(inputs);
-	if (locale === "ko") return ko_understanding_impact_waterfallrequests1(inputs);
-	return ru_understanding_impact_waterfallrequests1(inputs);
-});
-var en_understanding_impact_waterfallrequestsdesc2 = () => {
-	return `the app must first load, determine the locale, then fetch the right chunk — adding network round-trips.`;
-};
-var fr_understanding_impact_waterfallrequestsdesc2 = () => {
-	return `l'application doit d'abord se charger, déterminer la langue, puis récupérer le bon morceau — ajoutant des allers-retours réseau.`;
-};
-var es_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
-var de_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
-var it_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
-var pt_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
-var zh_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
-var ja_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
-var ko_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
-var ru_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
-var understanding_impact_waterfallrequestsdesc2 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_waterfallrequestsdesc2(inputs);
-	if (locale === "fr") return fr_understanding_impact_waterfallrequestsdesc2(inputs);
-	if (locale === "es") return es_understanding_impact_waterfallrequestsdesc2(inputs);
-	if (locale === "de") return de_understanding_impact_waterfallrequestsdesc2(inputs);
-	if (locale === "it") return it_understanding_impact_waterfallrequestsdesc2(inputs);
-	if (locale === "pt") return pt_understanding_impact_waterfallrequestsdesc2(inputs);
-	if (locale === "zh") return zh_understanding_impact_waterfallrequestsdesc2(inputs);
-	if (locale === "ja") return ja_understanding_impact_waterfallrequestsdesc2(inputs);
-	if (locale === "ko") return ko_understanding_impact_waterfallrequestsdesc2(inputs);
-	return ru_understanding_impact_waterfallrequestsdesc2(inputs);
+	if (locale === "ru") return ru_understanding_impact_duringserversiderenderingthe4(inputs);
+	return en_understanding_impact_duringserversiderenderingthe4(inputs);
 });
 var en_understanding_impact_flashofuntranslatedcontentfouc4 = () => {
 	return `Flash of untranslated content (FOUC):`;
@@ -593,7 +375,6 @@ var ru_understanding_impact_flashofuntranslatedcontentfouc4 = () => {
 };
 var understanding_impact_flashofuntranslatedcontentfouc4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
 	if (locale === "fr") return fr_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
 	if (locale === "es") return es_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
 	if (locale === "de") return de_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
@@ -602,7 +383,8 @@ var understanding_impact_flashofuntranslatedcontentfouc4 = ((inputs = {}, option
 	if (locale === "zh") return zh_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
 	if (locale === "ja") return ja_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
 	if (locale === "ko") return ko_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
-	return ru_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
+	if (locale === "ru") return ru_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
+	return en_understanding_impact_flashofuntranslatedcontentfouc4(inputs);
 });
 var en_understanding_impact_flashofuntranslatedcontentfoucdesc5 = () => {
 	return `users may briefly see translation keys or a fallback language before the chunk arrives.`;
@@ -620,7 +402,6 @@ var ko_understanding_impact_flashofuntranslatedcontentfoucdesc5 = en_understandi
 var ru_understanding_impact_flashofuntranslatedcontentfoucdesc5 = en_understanding_impact_flashofuntranslatedcontentfoucdesc5;
 var understanding_impact_flashofuntranslatedcontentfoucdesc5 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
 	if (locale === "fr") return fr_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
 	if (locale === "es") return es_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
 	if (locale === "de") return de_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
@@ -629,120 +410,180 @@ var understanding_impact_flashofuntranslatedcontentfoucdesc5 = ((inputs = {}, op
 	if (locale === "zh") return zh_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
 	if (locale === "ja") return ja_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
 	if (locale === "ko") return ko_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
-	return ru_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
+	if (locale === "ru") return ru_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
+	return en_understanding_impact_flashofuntranslatedcontentfoucdesc5(inputs);
 });
-var en_understanding_impact_cacheinvalidation1 = () => {
-	return `Cache invalidation:`;
+var en_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:`;
 };
-var fr_understanding_impact_cacheinvalidation1 = () => {
-	return `Invalidation du cache :`;
+var fr_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `De nombreuses bibliothèques i18n stockent les traductions dans un seul objet JSON fourni via le contexte React. Lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. Cela signifie :`;
 };
-var es_understanding_impact_cacheinvalidation1 = () => {
-	return `Invalidación de la caché:`;
+var es_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `Muchas bibliotecas i18n almacenan las traducciones en un único objeto JSON proporcionado a través del contexto de React. Cuando este objeto es grande (miles de claves), cada componente que consume traducciones mantiene una referencia a todo el diccionario. Esto significa:`;
 };
-var de_understanding_impact_cacheinvalidation1 = () => {
-	return `Cache-Invalidierung:`;
+var de_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `Viele i18n-Bibliotheken speichern Übersetzungen in einem einzigen JSON-Objekt, das über den React-Kontext bereitgestellt wird. Wenn dieses Objekt groß ist (Tausende von Schlüsseln), hält jede Komponente, die Übersetzungen verwendet, eine Referenz auf das gesamte Wörterbuch. Das bedeutet:`;
 };
-var it_understanding_impact_cacheinvalidation1 = () => {
-	return `Invalidazione della cache:`;
+var it_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `Molte librerie i18n memorizzano le traduzioni in un unico oggetto JSON fornito tramite il contesto React. Quando questo oggetto è grande (migliaia di chiavi), ogni componente che consuma le traduzioni mantiene un riferimento all'intero dizionario. Questo significa:`;
 };
-var pt_understanding_impact_cacheinvalidation1 = () => {
-	return `Invalidação de cache:`;
+var pt_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `Muitas bibliotecas de i18n armazenam as traduções em um único objeto JSON fornecido através do contexto de React. Quando este objeto é grande (milhares de chaves), cada componente que consome traduções mantém uma referência a todo o dicionário. Isto significa:`;
 };
-var zh_understanding_impact_cacheinvalidation1 = () => {
-	return `缓存失效：`;
+var zh_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当此对象很大（数千个键）时，每个消耗翻译的组件都会持有对整个字典的引用。这意味着：`;
 };
-var ja_understanding_impact_cacheinvalidation1 = () => {
-	return `キャッシュの無効化:`;
+var ja_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `多くの i18n ライブラリは、React コンテキストを介して提供される単一の JSON オブジェクトに翻訳を保存します。このオブジェクトが巨大（数千のキー）な場合、翻訳を消費するすべてのコンポーネントが辞書全体への参照を保持することになります。これは以下を意味します：`;
 };
-var ko_understanding_impact_cacheinvalidation1 = () => {
-	return `캐시 무효화:`;
+var ko_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `많은 i18n 라이브러리는 React 컨텍스트를 통해 제공되는 단일 JSON 객체에 번역을 저장합니다. 이 객체가 클 경우(수천 개의 키), 번역을 사용하는 모든 컴포넌트는 전체 사전에 대한 참조를 보유하게 됩니다. 이는 다음을 의미합니다:`;
 };
-var ru_understanding_impact_cacheinvalidation1 = () => {
-	return `Инвалидация кэша:`;
+var ru_understanding_impact_manyi18nlibrariesstoretranslations4 = () => {
+	return `Многие библиотеки i18n хранят переводы в одном объекте JSON, предоставляемом через контекст React. Когда этот объект большой (тысячи ключей), каждый компонент, использующий переводы, хранит ссылку на весь словарь. Это означает:`;
 };
-var understanding_impact_cacheinvalidation1 = ((inputs = {}, options = {}) => {
+var understanding_impact_manyi18nlibrariesstoretranslations4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_cacheinvalidation1(inputs);
-	if (locale === "fr") return fr_understanding_impact_cacheinvalidation1(inputs);
-	if (locale === "es") return es_understanding_impact_cacheinvalidation1(inputs);
-	if (locale === "de") return de_understanding_impact_cacheinvalidation1(inputs);
-	if (locale === "it") return it_understanding_impact_cacheinvalidation1(inputs);
-	if (locale === "pt") return pt_understanding_impact_cacheinvalidation1(inputs);
-	if (locale === "zh") return zh_understanding_impact_cacheinvalidation1(inputs);
-	if (locale === "ja") return ja_understanding_impact_cacheinvalidation1(inputs);
-	if (locale === "ko") return ko_understanding_impact_cacheinvalidation1(inputs);
-	return ru_understanding_impact_cacheinvalidation1(inputs);
+	if (locale === "fr") return fr_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
+	if (locale === "es") return es_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
+	if (locale === "de") return de_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
+	if (locale === "it") return it_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
+	if (locale === "pt") return pt_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
+	if (locale === "zh") return zh_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
+	if (locale === "ja") return ja_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
+	if (locale === "ko") return ko_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
+	if (locale === "ru") return ru_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
+	return en_understanding_impact_manyi18nlibrariesstoretranslations4(inputs);
 });
-var en_understanding_impact_cacheinvalidationdesc2 = () => {
-	return `updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks.`;
+var en_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:`;
 };
-var fr_understanding_impact_cacheinvalidationdesc2 = () => {
-	return `la mise à jour des traductions nécessite des stratégies de purge du cache pour garantir que les utilisateurs reçoivent le contenu frais sans re-télécharger les morceaux inchangés.`;
+var fr_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `La division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. Mais cela introduit de nouveaux défis :`;
 };
-var es_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
-var de_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
-var it_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
-var pt_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
-var zh_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
-var ja_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
-var ko_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
-var ru_understanding_impact_cacheinvalidationdesc2 = en_understanding_impact_cacheinvalidationdesc2;
-var understanding_impact_cacheinvalidationdesc2 = ((inputs = {}, options = {}) => {
+var es_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `Dividir las traducciones en fragmentos por ruta o por espacio de nombres puede reducir drásticamente el payload inicial. Pero introduce nuevos desafíos:`;
+};
+var de_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `Das Aufteilen von Übersetzungen in Teilstücke pro Route oder Namensraum kann den initialen Payload drastisch reduzieren. Es bringt jedoch neue Herausforderungen mit sich:`;
+};
+var it_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `La scomposizione delle traduzioni in chunk per rotta o per namespace può ridurre drasticamente il payload iniziale. Ma introduce nuove sfide:`;
+};
+var pt_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `Dividir as traduções em partes por rota ou por namespace pode reduzir drasticamente a carga útil inicial. Mas introduz novos desafios:`;
+};
+var zh_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `将翻译拆分为每个路由或每个命名空间的块可以显著减少初始负载。但它引入了新的挑战：`;
+};
+var ja_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `翻訳をルートごと、または名前空間ごとのチャンクに分割すると、初期ペイロードを劇的に削減できます。しかし、新たな課題も生じます：`;
+};
+var ko_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `번역을 경로별 또는 네임스페이스별 청크로 분할하면 초기 페이로드를 크게 줄일 수 있습니다. 하지만 새로운 과제가 발생합니다:`;
+};
+var ru_understanding_impact_splittingtranslationsintoperroute4 = () => {
+	return `Разделение переводов на чанки для каждого маршрута или пространства имен может значительно уменьшить начальный пейлоад. Но это создает новые проблемы:`;
+};
+var understanding_impact_splittingtranslationsintoperroute4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_cacheinvalidationdesc2(inputs);
-	if (locale === "fr") return fr_understanding_impact_cacheinvalidationdesc2(inputs);
-	if (locale === "es") return es_understanding_impact_cacheinvalidationdesc2(inputs);
-	if (locale === "de") return de_understanding_impact_cacheinvalidationdesc2(inputs);
-	if (locale === "it") return it_understanding_impact_cacheinvalidationdesc2(inputs);
-	if (locale === "pt") return pt_understanding_impact_cacheinvalidationdesc2(inputs);
-	if (locale === "zh") return zh_understanding_impact_cacheinvalidationdesc2(inputs);
-	if (locale === "ja") return ja_understanding_impact_cacheinvalidationdesc2(inputs);
-	if (locale === "ko") return ko_understanding_impact_cacheinvalidationdesc2(inputs);
-	return ru_understanding_impact_cacheinvalidationdesc2(inputs);
+	if (locale === "fr") return fr_understanding_impact_splittingtranslationsintoperroute4(inputs);
+	if (locale === "es") return es_understanding_impact_splittingtranslationsintoperroute4(inputs);
+	if (locale === "de") return de_understanding_impact_splittingtranslationsintoperroute4(inputs);
+	if (locale === "it") return it_understanding_impact_splittingtranslationsintoperroute4(inputs);
+	if (locale === "pt") return pt_understanding_impact_splittingtranslationsintoperroute4(inputs);
+	if (locale === "zh") return zh_understanding_impact_splittingtranslationsintoperroute4(inputs);
+	if (locale === "ja") return ja_understanding_impact_splittingtranslationsintoperroute4(inputs);
+	if (locale === "ko") return ko_understanding_impact_splittingtranslationsintoperroute4(inputs);
+	if (locale === "ru") return ru_understanding_impact_splittingtranslationsintoperroute4(inputs);
+	return en_understanding_impact_splittingtranslationsintoperroute4(inputs);
 });
-var en_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `What this benchmark measures`;
+var en_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `The JSON must be parsed on every page load — blocking the main thread.`;
 };
-var fr_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `Ce que ce benchmark mesure`;
+var fr_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `Le JSON doit être analysé à chaque chargement de page — bloquant le thread principal.`;
 };
-var es_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `Qué mide este benchmark`;
+var es_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `El JSON debe analizarse en cada carga de página, bloqueando el hilo principal.`;
 };
-var de_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `Was dieser Benchmark misst`;
+var de_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `Das JSON muss bei jedem Seitenladen geparst werden — was den Haupt-Thread blockiert.`;
 };
-var it_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `Cosa misura questo benchmark`;
+var it_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `Il JSON deve essere analizzato a ogni caricamento della pagina, bloccando il thread principale.`;
 };
-var pt_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `O que este benchmark mede`;
+var pt_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `O JSON deve ser analisado em cada carga de página — bloqueando a linha de execução principal.`;
 };
-var zh_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `本基准测试测量什么`;
+var zh_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `JSON 必须在每次页面加载时进行解析 —— 阻塞主线程。`;
 };
-var ja_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `このベンチマークが測定するもの`;
+var ja_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `JSON はページ読み込みのたびにパースされる必要があり、メインスレッドをブロックします。`;
 };
-var ko_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `이 벤치마크가 측정하는 것`;
+var ko_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `JSON은 모든 페이지 로드 시 파싱되어야 하며, 이는 메인 스레드를 차단합니다.`;
 };
-var ru_understanding_impact_whatthisbenchmarkmeasures3 = () => {
-	return `Что измеряет этот бенчмарк`;
+var ru_understanding_impact_thejsonmustbeparsed4 = () => {
+	return `JSON должен парситься при каждой загрузке страницы — блокируя основной поток.`;
 };
-var understanding_impact_whatthisbenchmarkmeasures3 = ((inputs = {}, options = {}) => {
+var understanding_impact_thejsonmustbeparsed4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_whatthisbenchmarkmeasures3(inputs);
-	if (locale === "fr") return fr_understanding_impact_whatthisbenchmarkmeasures3(inputs);
-	if (locale === "es") return es_understanding_impact_whatthisbenchmarkmeasures3(inputs);
-	if (locale === "de") return de_understanding_impact_whatthisbenchmarkmeasures3(inputs);
-	if (locale === "it") return it_understanding_impact_whatthisbenchmarkmeasures3(inputs);
-	if (locale === "pt") return pt_understanding_impact_whatthisbenchmarkmeasures3(inputs);
-	if (locale === "zh") return zh_understanding_impact_whatthisbenchmarkmeasures3(inputs);
-	if (locale === "ja") return ja_understanding_impact_whatthisbenchmarkmeasures3(inputs);
-	if (locale === "ko") return ko_understanding_impact_whatthisbenchmarkmeasures3(inputs);
-	return ru_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	if (locale === "fr") return fr_understanding_impact_thejsonmustbeparsed4(inputs);
+	if (locale === "es") return es_understanding_impact_thejsonmustbeparsed4(inputs);
+	if (locale === "de") return de_understanding_impact_thejsonmustbeparsed4(inputs);
+	if (locale === "it") return it_understanding_impact_thejsonmustbeparsed4(inputs);
+	if (locale === "pt") return pt_understanding_impact_thejsonmustbeparsed4(inputs);
+	if (locale === "zh") return zh_understanding_impact_thejsonmustbeparsed4(inputs);
+	if (locale === "ja") return ja_understanding_impact_thejsonmustbeparsed4(inputs);
+	if (locale === "ko") return ko_understanding_impact_thejsonmustbeparsed4(inputs);
+	if (locale === "ru") return ru_understanding_impact_thejsonmustbeparsed4(inputs);
+	return en_understanding_impact_thejsonmustbeparsed4(inputs);
+});
+var en_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `The trade-offs of dynamic loading`;
+};
+var fr_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `Les compromis du chargement dynamique`;
+};
+var es_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `Las compensaciones de la carga dinámica`;
+};
+var de_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `Die Kompromisse beim dynamischen Laden`;
+};
+var it_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `I compromessi del caricamento dinamico`;
+};
+var pt_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `As compensações do carregamento dinâmico`;
+};
+var zh_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `动态加载的权衡`;
+};
+var ja_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `動的読み込みのトレードオフ`;
+};
+var ko_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `동적 로딩의 트레이드오프`;
+};
+var ru_understanding_impact_thetradeoffsofdynamic4 = () => {
+	return `Компромиссы динамической загрузки`;
+};
+var understanding_impact_thetradeoffsofdynamic4 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_understanding_impact_thetradeoffsofdynamic4(inputs);
+	if (locale === "es") return es_understanding_impact_thetradeoffsofdynamic4(inputs);
+	if (locale === "de") return de_understanding_impact_thetradeoffsofdynamic4(inputs);
+	if (locale === "it") return it_understanding_impact_thetradeoffsofdynamic4(inputs);
+	if (locale === "pt") return pt_understanding_impact_thetradeoffsofdynamic4(inputs);
+	if (locale === "zh") return zh_understanding_impact_thetradeoffsofdynamic4(inputs);
+	if (locale === "ja") return ja_understanding_impact_thetradeoffsofdynamic4(inputs);
+	if (locale === "ko") return ko_understanding_impact_thetradeoffsofdynamic4(inputs);
+	if (locale === "ru") return ru_understanding_impact_thetradeoffsofdynamic4(inputs);
+	return en_understanding_impact_thetradeoffsofdynamic4(inputs);
 });
 var en_understanding_impact_thistestappprovidesa4 = () => {
 	return `This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.`;
@@ -776,7 +617,6 @@ var ru_understanding_impact_thistestappprovidesa4 = () => {
 };
 var understanding_impact_thistestappprovidesa4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_understanding_impact_thistestappprovidesa4(inputs);
 	if (locale === "fr") return fr_understanding_impact_thistestappprovidesa4(inputs);
 	if (locale === "es") return es_understanding_impact_thistestappprovidesa4(inputs);
 	if (locale === "de") return de_understanding_impact_thistestappprovidesa4(inputs);
@@ -785,91 +625,380 @@ var understanding_impact_thistestappprovidesa4 = ((inputs = {}, options = {}) =>
 	if (locale === "zh") return zh_understanding_impact_thistestappprovidesa4(inputs);
 	if (locale === "ja") return ja_understanding_impact_thistestappprovidesa4(inputs);
 	if (locale === "ko") return ko_understanding_impact_thistestappprovidesa4(inputs);
-	return ru_understanding_impact_thistestappprovidesa4(inputs);
+	if (locale === "ru") return ru_understanding_impact_thistestappprovidesa4(inputs);
+	return en_understanding_impact_thistestappprovidesa4(inputs);
 });
+var en_understanding_impact_understandingtheimpact2 = () => {
+	return `Understanding the Impact`;
+};
+var fr_understanding_impact_understandingtheimpact2 = () => {
+	return `Comprendre l'impact`;
+};
+var es_understanding_impact_understandingtheimpact2 = () => {
+	return `Entendiendo el impacto`;
+};
+var de_understanding_impact_understandingtheimpact2 = () => {
+	return `Die Auswirkungen verstehen`;
+};
+var it_understanding_impact_understandingtheimpact2 = () => {
+	return `Capire l'impatto`;
+};
+var pt_understanding_impact_understandingtheimpact2 = () => {
+	return `Entendendo o impacto`;
+};
+var zh_understanding_impact_understandingtheimpact2 = () => {
+	return `理解影响`;
+};
+var ja_understanding_impact_understandingtheimpact2 = () => {
+	return `影響を理解する`;
+};
+var ko_understanding_impact_understandingtheimpact2 = () => {
+	return `영향 이해하기`;
+};
+var ru_understanding_impact_understandingtheimpact2 = () => {
+	return `Понимание влияния`;
+};
+var understanding_impact_understandingtheimpact2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_understanding_impact_understandingtheimpact2(inputs);
+	if (locale === "es") return es_understanding_impact_understandingtheimpact2(inputs);
+	if (locale === "de") return de_understanding_impact_understandingtheimpact2(inputs);
+	if (locale === "it") return it_understanding_impact_understandingtheimpact2(inputs);
+	if (locale === "pt") return pt_understanding_impact_understandingtheimpact2(inputs);
+	if (locale === "zh") return zh_understanding_impact_understandingtheimpact2(inputs);
+	if (locale === "ja") return ja_understanding_impact_understandingtheimpact2(inputs);
+	if (locale === "ko") return ko_understanding_impact_understandingtheimpact2(inputs);
+	if (locale === "ru") return ru_understanding_impact_understandingtheimpact2(inputs);
+	return en_understanding_impact_understandingtheimpact2(inputs);
+});
+var en_understanding_impact_waterfallrequests1 = () => {
+	return `Waterfall requests:`;
+};
+var fr_understanding_impact_waterfallrequests1 = () => {
+	return `Requêtes en cascade :`;
+};
+var es_understanding_impact_waterfallrequests1 = () => {
+	return `Solicitudes en cascada:`;
+};
+var de_understanding_impact_waterfallrequests1 = () => {
+	return `Waterfall-Anfragen:`;
+};
+var it_understanding_impact_waterfallrequests1 = () => {
+	return `Richieste a cascata:`;
+};
+var pt_understanding_impact_waterfallrequests1 = () => {
+	return `Pedidos em cascata:`;
+};
+var zh_understanding_impact_waterfallrequests1 = () => {
+	return `瀑布流请求：`;
+};
+var ja_understanding_impact_waterfallrequests1 = () => {
+	return `ウォーターフォールリクエスト:`;
+};
+var ko_understanding_impact_waterfallrequests1 = () => {
+	return `워터폴(Waterfall) 요청:`;
+};
+var ru_understanding_impact_waterfallrequests1 = () => {
+	return `Каскадные запросы (Waterfall requests):`;
+};
+var understanding_impact_waterfallrequests1 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_understanding_impact_waterfallrequests1(inputs);
+	if (locale === "es") return es_understanding_impact_waterfallrequests1(inputs);
+	if (locale === "de") return de_understanding_impact_waterfallrequests1(inputs);
+	if (locale === "it") return it_understanding_impact_waterfallrequests1(inputs);
+	if (locale === "pt") return pt_understanding_impact_waterfallrequests1(inputs);
+	if (locale === "zh") return zh_understanding_impact_waterfallrequests1(inputs);
+	if (locale === "ja") return ja_understanding_impact_waterfallrequests1(inputs);
+	if (locale === "ko") return ko_understanding_impact_waterfallrequests1(inputs);
+	if (locale === "ru") return ru_understanding_impact_waterfallrequests1(inputs);
+	return en_understanding_impact_waterfallrequests1(inputs);
+});
+var en_understanding_impact_waterfallrequestsdesc2 = () => {
+	return `the app must first load, determine the locale, then fetch the right chunk — adding network round-trips.`;
+};
+var fr_understanding_impact_waterfallrequestsdesc2 = () => {
+	return `l'application doit d'abord se charger, déterminer la langue, puis récupérer le bon morceau — ajoutant des allers-retours réseau.`;
+};
+var es_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
+var de_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
+var it_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
+var pt_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
+var zh_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
+var ja_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
+var ko_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
+var ru_understanding_impact_waterfallrequestsdesc2 = en_understanding_impact_waterfallrequestsdesc2;
+var understanding_impact_waterfallrequestsdesc2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_understanding_impact_waterfallrequestsdesc2(inputs);
+	if (locale === "es") return es_understanding_impact_waterfallrequestsdesc2(inputs);
+	if (locale === "de") return de_understanding_impact_waterfallrequestsdesc2(inputs);
+	if (locale === "it") return it_understanding_impact_waterfallrequestsdesc2(inputs);
+	if (locale === "pt") return pt_understanding_impact_waterfallrequestsdesc2(inputs);
+	if (locale === "zh") return zh_understanding_impact_waterfallrequestsdesc2(inputs);
+	if (locale === "ja") return ja_understanding_impact_waterfallrequestsdesc2(inputs);
+	if (locale === "ko") return ko_understanding_impact_waterfallrequestsdesc2(inputs);
+	if (locale === "ru") return ru_understanding_impact_waterfallrequestsdesc2(inputs);
+	return en_understanding_impact_waterfallrequestsdesc2(inputs);
+});
+var en_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `What this benchmark measures`;
+};
+var fr_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `Ce que ce benchmark mesure`;
+};
+var es_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `Qué mide este benchmark`;
+};
+var de_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `Was dieser Benchmark misst`;
+};
+var it_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `Cosa misura questo benchmark`;
+};
+var pt_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `O que este benchmark mede`;
+};
+var zh_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `本基准测试测量什么`;
+};
+var ja_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `このベンチマークが測定するもの`;
+};
+var ko_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `이 벤치마크가 측정하는 것`;
+};
+var ru_understanding_impact_whatthisbenchmarkmeasures3 = () => {
+	return `Что измеряет этот бенчмарк`;
+};
+var understanding_impact_whatthisbenchmarkmeasures3 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	if (locale === "es") return es_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	if (locale === "de") return de_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	if (locale === "it") return it_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	if (locale === "pt") return pt_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	if (locale === "zh") return zh_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	if (locale === "ja") return ja_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	if (locale === "ko") return ko_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	if (locale === "ru") return ru_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+	return en_understanding_impact_whatthisbenchmarkmeasures3(inputs);
+});
+var en_understanding_impact_whyasinglelargejson4 = () => {
+	return `Why a single large JSON can hurt performance`;
+};
+var fr_understanding_impact_whyasinglelargejson4 = () => {
+	return `Pourquoi un seul JSON volumineux peut nuire aux performances`;
+};
+var es_understanding_impact_whyasinglelargejson4 = () => {
+	return `Por qué un solo JSON grande puede perjudicar el rendimiento`;
+};
+var de_understanding_impact_whyasinglelargejson4 = () => {
+	return `Warum ein einziges großes JSON die Leistung beeinträchtigen kann`;
+};
+var it_understanding_impact_whyasinglelargejson4 = () => {
+	return `Perché un singolo JSON di grandi dimensioni può danneggiare le prestazioni`;
+};
+var pt_understanding_impact_whyasinglelargejson4 = () => {
+	return `Por que um único JSON grande pode prejudicar o desempenho`;
+};
+var zh_understanding_impact_whyasinglelargejson4 = () => {
+	return `为什么单个大型 JSON 会损害性能`;
+};
+var ja_understanding_impact_whyasinglelargejson4 = () => {
+	return `ひとつの巨大な JSON がパフォーマンスを低下させる理由`;
+};
+var ko_understanding_impact_whyasinglelargejson4 = () => {
+	return `단일 대형 JSON이 성능을 저하시키는 이유`;
+};
+var ru_understanding_impact_whyasinglelargejson4 = () => {
+	return `Почему один большой JSON может снизить производительность`;
+};
+var understanding_impact_whyasinglelargejson4 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_understanding_impact_whyasinglelargejson4(inputs);
+	if (locale === "es") return es_understanding_impact_whyasinglelargejson4(inputs);
+	if (locale === "de") return de_understanding_impact_whyasinglelargejson4(inputs);
+	if (locale === "it") return it_understanding_impact_whyasinglelargejson4(inputs);
+	if (locale === "pt") return pt_understanding_impact_whyasinglelargejson4(inputs);
+	if (locale === "zh") return zh_understanding_impact_whyasinglelargejson4(inputs);
+	if (locale === "ja") return ja_understanding_impact_whyasinglelargejson4(inputs);
+	if (locale === "ko") return ko_understanding_impact_whyasinglelargejson4(inputs);
+	if (locale === "ru") return ru_understanding_impact_whyasinglelargejson4(inputs);
+	return en_understanding_impact_whyasinglelargejson4(inputs);
+});
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/home/UnderstandingImpact.tsx";
 function UnderstandingImpact() {
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
-			jsx("h2", {
+			jsxDEV("h2", {
 				className: "text-2xl font-bold text-foreground",
 				children: understanding_impact_understandingtheimpact2()
-			}),
-			jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 8,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsx("h3", {
+					jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: understanding_impact_whyasinglelargejson4()
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 13,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: understanding_impact_manyi18nlibrariesstoretranslations4()
-					}),
-					jsxs("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 16,
+						columnNumber: 9
+					}, this),
+					jsxDEV("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsx("li", { children: understanding_impact_thejsonmustbeparsed4() }),
-							jsx("li", { children: understanding_impact_contextbasedarchitecturescancause4() }),
-							jsx("li", { children: understanding_impact_duringserversiderenderingthe4() })
+							jsxDEV("li", { children: understanding_impact_thejsonmustbeparsed4() }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 20,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: understanding_impact_contextbasedarchitecturescancause4() }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 21,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: understanding_impact_duringserversiderenderingthe4() }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 24,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 19,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 12,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsx("h3", {
+					jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: understanding_impact_thetradeoffsofdynamic4()
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 29,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: understanding_impact_splittingtranslationsintoperroute4()
-					}),
-					jsxs("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 32,
+						columnNumber: 9
+					}, this),
+					jsxDEV("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsxs("li", { children: [
-								jsx("strong", {
+							jsxDEV("li", { children: [
+								jsxDEV("strong", {
 									className: "text-foreground",
 									children: understanding_impact_waterfallrequests1()
-								}),
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 37,
+									columnNumber: 13
+								}, this),
 								" ",
 								understanding_impact_waterfallrequestsdesc2 ? understanding_impact_waterfallrequestsdesc2() : "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
-							] }),
-							jsxs("li", { children: [
-								jsx("strong", {
+							] }, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 36,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: [
+								jsxDEV("strong", {
 									className: "text-foreground",
 									children: understanding_impact_flashofuntranslatedcontentfouc4()
-								}),
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 45,
+									columnNumber: 13
+								}, this),
 								" ",
 								understanding_impact_flashofuntranslatedcontentfoucdesc5 ? understanding_impact_flashofuntranslatedcontentfoucdesc5() : "users may briefly see translation keys or a fallback language before the chunk arrives."
-							] }),
-							jsxs("li", { children: [
-								jsx("strong", {
+							] }, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 44,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: [
+								jsxDEV("strong", {
 									className: "text-foreground",
 									children: understanding_impact_cacheinvalidation1()
-								}),
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 53,
+									columnNumber: 13
+								}, this),
 								" ",
 								understanding_impact_cacheinvalidationdesc2 ? understanding_impact_cacheinvalidationdesc2() : "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
-							] })
+							] }, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 52,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 35,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 28,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [jsx("h3", {
+				children: [jsxDEV("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: understanding_impact_whatthisbenchmarkmeasures3()
-				}), jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 64,
+					columnNumber: 9
+				}, this), jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: understanding_impact_thistestappprovidesa4()
-				})]
-			})
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 67,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 63,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 7,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -893,6 +1022,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -906,12 +1036,30 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/home/UnderstandingImpact.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(UnderstandingImpact, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(UnderstandingImpact, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

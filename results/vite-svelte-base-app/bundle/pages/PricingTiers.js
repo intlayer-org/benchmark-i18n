@@ -1,9 +1,9 @@
 import "svelte/internal/disclose-version";
 import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
-var root_2 = $.from_html(`<li class="flex items-center gap-2 text-sm text-muted-foreground"><span class="text-primary">✓</span> </li>`);
+var root = $.from_html(`<li class="flex items-center gap-2 text-sm text-muted-foreground"><span class="text-primary">✓</span> </li>`);
 var root_1 = $.from_html(`<div><h3 class="text-lg font-semibold text-foreground"> </h3> <div class="my-4"><span class="text-3xl font-bold text-foreground"> </span> <span class="text-sm text-muted-foreground"> </span></div> <ul class="mb-6 flex-1 space-y-2"></ul> <button type="button"> </button></div>`);
-var root = $.from_html(`<div class="grid gap-6 md:grid-cols-3"></div>`);
+var root_2 = $.from_html(`<div class="grid gap-6 md:grid-cols-3"></div>`);
 function PricingTiers($$anchor) {
 	const tiers = [
 		{
@@ -46,23 +46,20 @@ function PricingTiers($$anchor) {
 			]
 		}
 	];
-	var div = root();
+	var div = root_2();
 	$.each(div, 5, () => tiers, (t) => t.name, ($$anchor, t) => {
 		var div_1 = root_1();
 		var h3 = $.child(div_1);
-		var text = $.child(h3, true);
-		$.reset(h3);
+		var text = $.only_child(h3, true);
 		var div_2 = $.sibling(h3, 2);
 		var span = $.child(div_2);
-		var text_1 = $.child(span, true);
-		$.reset(span);
+		var text_1 = $.only_child(span, true);
 		var span_1 = $.sibling(span, 2);
-		var text_2 = $.child(span_1, true);
-		$.reset(span_1);
+		var text_2 = $.only_child(span_1, true);
 		$.reset(div_2);
 		var ul = $.sibling(div_2, 2);
 		$.each(ul, 5, () => $.get(t).features, (f) => f, ($$anchor, f) => {
-			var li = root_2();
+			var li = root();
 			var text_3 = $.sibling($.child(li));
 			$.reset(li);
 			$.template_effect(() => $.set_text(text_3, ` ${$.get(f) ?? ""}`));
@@ -70,8 +67,7 @@ function PricingTiers($$anchor) {
 		});
 		$.reset(ul);
 		var button = $.sibling(ul, 2);
-		var text_4 = $.child(button, true);
-		$.reset(button);
+		var text_4 = $.only_child(button, true);
 		$.reset(div_1);
 		$.template_effect(() => {
 			$.set_class(div_1, 1, `flex flex-col rounded-lg border p-6 ${$.get(t).highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`);

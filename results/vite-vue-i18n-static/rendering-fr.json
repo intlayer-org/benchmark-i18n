@@ -1,44 +1,44 @@
 {
   "locale": "fr",
-  "timestamp": "2026-04-30T22:41:17.377Z",
+  "timestamp": "2026-09-09T19:23:30.107Z",
   "iterations": 5,
   "e2ePageLoad": {
     "description": "PerformanceNavigationTiming.duration — full page load wall-clock time including sub-resources (ms)",
     "raw": [
-      15.199999988079071,
-      15.399999976158142,
-      13.300000011920929,
-      17.100000023841858,
-      15.899999976158142
+      15.799999997019768,
+      12.800000004470348,
+      11.899999998509884,
+      12.899999998509884,
+      12.5
     ],
-    "avg": 15.379999995231628,
-    "min": 13.300000011920929,
-    "max": 17.100000023841858
+    "avg": 13.179999999701977,
+    "min": 11.899999998509884,
+    "max": 15.799999997019768
   },
   "hydration": {
     "description": "performance.measure('hydration_duration') — time between hydration_start mark (inline script) and hydration_end mark (useEffect) (ms). 0 means app is not instrumented.",
     "raw": [
-      7.900000035762787,
-      8.300000011920929,
-      7.199999988079071,
-      9.699999988079071,
-      9.400000035762787
+      6.700000002980232,
+      5.699999995529652,
+      5.5,
+      6.200000002980232,
+      6
     ],
-    "avg": 8.500000011920928,
-    "min": 7.199999988079071,
-    "max": 9.699999988079071
+    "avg": 6.020000000298023,
+    "min": 5.5,
+    "max": 6.700000002980232
   },
   "reactMount": {
     "description": "React Profiler actualDuration for the mount phase of <AppRoot>. 0 means Profiler is not wired up (ms).",
     "raw": [
-      2.800000011920929,
-      2.800000011920929,
-      2.700000047683716,
-      2.900000035762787,
-      2.5
+      2.100000001490116,
+      2.399999998509884,
+      2,
+      2,
+      2.2000000029802322
     ],
-    "avg": 2.7400000214576723,
-    "min": 2.5,
-    "max": 2.900000035762787
+    "avg": 2.1400000005960464,
+    "min": 2,
+    "max": 2.399999998509884
   }
 }

@@ -18,7 +18,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$2.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1942,9 +1942,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2060,14 +2061,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2270,9 +2272,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -3014,7 +3014,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3172,7 +3172,7 @@ var locales = [
 function isLocale(value) {
 	return locales.includes(value);
 }
-var PAGE_SEGMENTS = new Set([
+var PAGE_SEGMENTS = /* @__PURE__ */ new Set([
 	"",
 	"about",
 	"blog",
@@ -3198,11 +3198,12 @@ function parsePath(pathname) {
 		page: seg
 	};
 }
-var route = derived(writable(typeof window !== "undefined" ? window.location.pathname : "/en"), (p) => parsePath(p));
-var root_2 = $.from_html(`<a class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
-var root_3 = $.from_html(`<a target="_blank" rel="noreferrer" class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
-var root_1 = $.from_html(`<li><!></li>`);
-var root = $.from_html(`<footer class="mt-20 border-t border-border bg-card"><div class="container py-8"><div class="grid gap-8 md:grid-cols-3"><div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <ul class="space-y-1"></ul></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p></div></div> <div class="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground"> </div></div></footer>`);
+var pathname = writable(typeof window !== "undefined" ? window.location.pathname : "/en");
+var route = derived(pathname, (p) => parsePath(p));
+var root = $.from_html(`<a class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
+var root_1 = $.from_html(`<a target="_blank" rel="noreferrer" class="text-sm text-muted-foreground transition-colors hover:text-foreground"> </a>`);
+var root_2 = $.from_html(`<li><!></li>`);
+var root_3 = $.from_html(`<footer class="mt-20 border-t border-border bg-card"><div class="container py-8"><div class="grid gap-8 md:grid-cols-3"><div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <ul class="space-y-1"></ul></div> <div><h3 class="mb-2 text-sm font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p></div></div> <div class="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground"> </div></div></footer>`);
 function Footer($$anchor, $$props) {
 	$.push($$props, true);
 	const $route = () => $.store_get(route, "$route", $$stores);
@@ -3226,29 +3227,25 @@ function Footer($$anchor, $$props) {
 			isInternal: true
 		}
 	]);
-	var footer = root();
+	var footer = root_3();
 	var div = $.child(footer);
 	var div_1 = $.child(div);
 	var div_2 = $.child(div_1);
 	var h3 = $.child(div_2);
-	var text = $.child(h3, true);
-	$.reset(h3);
+	var text = $.only_child(h3, true);
 	var p = $.sibling(h3, 2);
-	var text_1 = $.child(p, true);
-	$.reset(p);
+	var text_1 = $.only_child(p, true);
 	$.reset(div_2);
 	var div_3 = $.sibling(div_2, 2);
 	var h3_1 = $.child(div_3);
-	var text_2 = $.child(h3_1, true);
-	$.reset(h3_1);
+	var text_2 = $.only_child(h3_1, true);
 	var ul = $.sibling(h3_1, 2);
 	$.each(ul, 21, () => $.get(footerLinks), (linkEl) => linkEl.msg, ($$anchor, linkEl) => {
-		var li = root_1();
+		var li = root_2();
 		var node = $.child(li);
 		var consequent = ($$anchor) => {
-			var a = root_2();
-			var text_3 = $.child(a, true);
-			$.reset(a);
+			var a = root();
+			var text_3 = $.only_child(a, true);
 			$.template_effect(($0) => {
 				$.set_attribute(a, "href", $.get(linkEl).to);
 				$.set_text(text_3, $0);
@@ -3256,9 +3253,8 @@ function Footer($$anchor, $$props) {
 			$.append($$anchor, a);
 		};
 		var alternate = ($$anchor) => {
-			var a_1 = root_3();
-			var text_4 = $.child(a_1, true);
-			$.reset(a_1);
+			var a_1 = root_1();
+			var text_4 = $.only_child(a_1, true);
 			$.template_effect(($0) => {
 				$.set_attribute(a_1, "href", $.get(linkEl).href);
 				$.set_text(text_4, $0);
@@ -3276,16 +3272,13 @@ function Footer($$anchor, $$props) {
 	$.reset(div_3);
 	var div_4 = $.sibling(div_3, 2);
 	var h3_2 = $.child(div_4);
-	var text_5 = $.child(h3_2, true);
-	$.reset(h3_2);
+	var text_5 = $.only_child(h3_2, true);
 	var p_1 = $.sibling(h3_2, 2);
-	var text_6 = $.child(p_1, true);
-	$.reset(p_1);
+	var text_6 = $.only_child(p_1, true);
 	$.reset(div_4);
 	$.reset(div_1);
 	var div_5 = $.sibling(div_1, 2);
-	var text_7 = $.child(div_5, true);
-	$.reset(div_5);
+	var text_7 = $.only_child(div_5, true);
 	$.reset(div);
 	$.reset(footer);
 	$.template_effect(($0, $1, $2, $3, $4, $5) => {

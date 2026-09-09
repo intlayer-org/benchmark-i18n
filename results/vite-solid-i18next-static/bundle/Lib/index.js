@@ -1,3 +1,4 @@
+import { createComponent, memo } from "solid-js/web";
 import { createSignal } from "solid-js";
 var isString = (obj) => typeof obj === "string";
 var defer = () => {
@@ -74,10 +75,13 @@ var getPathWithDefaults = (data, defaultData, key) => {
 	return getPath(defaultData, key);
 };
 var deepExtend = (target, source, overwrite) => {
-	for (const prop in source) if (prop !== "__proto__" && prop !== "constructor") if (prop in target) if (isString(target[prop]) || target[prop] instanceof String || isString(source[prop]) || source[prop] instanceof String) {
-		if (overwrite) target[prop] = source[prop];
-	} else deepExtend(target[prop], source[prop], overwrite);
-	else target[prop] = source[prop];
+	for (const prop in source) if (prop !== "__proto__" && prop !== "constructor") {
+		if (Object.prototype.hasOwnProperty.call(target, prop)) {
+			if (isString(target[prop]) || target[prop] instanceof String || isString(source[prop]) || source[prop] instanceof String) {
+				if (overwrite) target[prop] = source[prop];
+			} else deepExtend(target[prop], source[prop], overwrite);
+		} else target[prop] = source[prop];
+	}
 	return target;
 };
 var regexEscape = (str) => str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -278,9 +282,11 @@ var ResourceStore = class extends EventEmitter {
 		if (lng.includes(".")) path = lng.split(".");
 		else {
 			path = [lng, ns];
-			if (key) if (Array.isArray(key)) path.push(...key);
-			else if (isString(key) && keySeparator) path.push(...key.split(keySeparator));
-			else path.push(key);
+			if (key) {
+				if (Array.isArray(key)) path.push(...key);
+				else if (isString(key) && keySeparator) path.push(...key.split(keySeparator));
+				else path.push(key);
+			}
 		}
 		const result = getPath(this.data, path);
 		if (!result && !ns && !key && lng.includes(".")) {
@@ -383,10 +389,13 @@ function keysFromSelector(selector, opts) {
 	const { [PATH_KEY]: path } = selector(createProxy());
 	const keySeparator = opts?.keySeparator ?? ".";
 	const nsSeparator = opts?.nsSeparator ?? ":";
+	const strict = opts?.enableSelector === "strict";
 	if (path.length > 1 && nsSeparator) {
 		const ns = opts?.ns;
-		const nsArray = Array.isArray(ns) ? ns : null;
-		if (nsArray && nsArray.length > 1 && nsArray.slice(1).includes(path[0])) return `${path[0]}${nsSeparator}${path.slice(1).join(keySeparator)}`;
+		const nsList = strict ? Array.isArray(ns) ? ns : ns ? [ns] : null : Array.isArray(ns) ? ns : null;
+		if (nsList) {
+			if ((strict ? nsList : nsList.length > 1 ? nsList.slice(1) : []).includes(path[0])) return `${path[0]}${nsSeparator}${path.slice(1).join(keySeparator)}`;
+		}
 	}
 	return path.join(keySeparator);
 }
@@ -579,14 +588,16 @@ var Translator = class Translator extends EventEmitter {
 					else if (this.backendConnector?.saveMissing) this.backendConnector.saveMissing(l, namespace, k, defaultForMissing, updateMissing, opt);
 					this.emit("missingKey", l, namespace, k, res);
 				};
-				if (this.options.saveMissing) if (this.options.saveMissingPlurals && needsPluralHandling) lngs.forEach((language) => {
-					const suffixes = this.pluralResolver.getSuffixes(language, opt);
-					if (needsZeroSuffixLookup && opt[`defaultValue${this.options.pluralSeparator}zero`] && !suffixes.includes(`${this.options.pluralSeparator}zero`)) suffixes.push(`${this.options.pluralSeparator}zero`);
-					suffixes.forEach((suffix) => {
-						send([language], key + suffix, opt[`defaultValue${suffix}`] || defaultValue);
+				if (this.options.saveMissing) {
+					if (this.options.saveMissingPlurals && needsPluralHandling) lngs.forEach((language) => {
+						const suffixes = this.pluralResolver.getSuffixes(language, opt);
+						if (needsZeroSuffixLookup && opt[`defaultValue${this.options.pluralSeparator}zero`] && !suffixes.includes(`${this.options.pluralSeparator}zero`)) suffixes.push(`${this.options.pluralSeparator}zero`);
+						suffixes.forEach((suffix) => {
+							send([language], key + suffix, opt[`defaultValue${suffix}`] || defaultValue);
+						});
 					});
-				});
-				else send(lngs, key, defaultValue);
+					else send(lngs, key, defaultValue);
+				}
 			}
 			res = this.extendTranslation(res, keys, opt, resolved, lastKey);
 			if (usedKey && res === key && this.options.appendNamespaceToMissingKey) res = `${namespace}${nsSeparator}${key}`;
@@ -747,7 +758,10 @@ var Translator = class Translator extends EventEmitter {
 		];
 		const useOptionsReplaceForData = options.replace && !isString(options.replace);
 		let data = useOptionsReplaceForData ? options.replace : options;
-		if (useOptionsReplaceForData && typeof options.count !== "undefined") data.count = options.count;
+		if (useOptionsReplaceForData && typeof options.count !== "undefined") data = {
+			...data,
+			count: options.count
+		};
 		if (this.options.interpolation.defaultVariables) data = {
 			...this.options.interpolation.defaultVariables,
 			...data
@@ -769,6 +783,10 @@ var LanguageUtil = class {
 		this.options = options;
 		this.supportedLngs = this.options.supportedLngs || false;
 		this.logger = baseLogger.create("languageUtils");
+		this.resolveHierarchyCache = {};
+	}
+	clearCache() {
+		this.resolveHierarchyCache = {};
 	}
 	getScriptPartFromCode(code) {
 		code = getCleanedCode(code);
@@ -841,6 +859,27 @@ var LanguageUtil = class {
 		return found || [];
 	}
 	toResolveHierarchy(code, fallbackCode) {
+		const fallbackLng = this.options.fallbackLng;
+		const fallbackLngKey = Array.isArray(fallbackLng) ? fallbackLng.join("|") : fallbackLng;
+		if (fallbackLngKey !== this._cachedFallbackLng) {
+			this.resolveHierarchyCache = {};
+			this._cachedFallbackLng = fallbackLngKey;
+		}
+		const hasCacheableFallback = fallbackCode === void 0 || fallbackCode === false || isString(fallbackCode);
+		const usesUncacheableOptionsFallback = fallbackCode === void 0 && typeof this.options.fallbackLng === "function";
+		const cacheable = isString(code) && hasCacheableFallback && !usesUncacheableOptionsFallback;
+		let cacheKey = null;
+		if (cacheable) {
+			let fallbackCacheKey;
+			if (fallbackCode === void 0) fallbackCacheKey = "undefined";
+			else if (fallbackCode === false) fallbackCacheKey = "boolean:false";
+			else fallbackCacheKey = `string:${fallbackCode}`;
+			cacheKey = `${code.length}:${code}|${fallbackCacheKey}`;
+		}
+		if (cacheKey !== null) {
+			const cached = this.resolveHierarchyCache[cacheKey];
+			if (cached !== void 0) return cached.slice();
+		}
 		const fallbackCodes = this.getFallbackCodes((fallbackCode === false ? [] : fallbackCode) || this.options.fallbackLng || [], code);
 		const codes = [];
 		const addCode = (c) => {
@@ -856,6 +895,10 @@ var LanguageUtil = class {
 		fallbackCodes.forEach((fc) => {
 			if (!codes.includes(fc)) addCode(this.formatLanguageCode(fc));
 		});
+		if (cacheKey !== null) {
+			this.resolveHierarchyCache[cacheKey] = codes;
+			return codes.slice();
+		}
 		return codes;
 	}
 };
@@ -1003,31 +1046,32 @@ var Interpolator = class {
 		const skipOnVariables = options?.interpolation?.skipOnVariables !== void 0 ? options.interpolation.skipOnVariables : this.options.interpolation.skipOnVariables;
 		[{
 			regex: this.regexpUnescape,
-			safeValue: (val) => regexSafe(val)
+			safeValue: (val) => val
 		}, {
 			regex: this.regexp,
-			safeValue: (val) => this.escapeValue ? regexSafe(this.escape(val)) : regexSafe(val)
+			safeValue: (val) => this.escapeValue ? this.escape(val) : val
 		}].forEach((todo) => {
 			replaces = 0;
 			while (match = todo.regex.exec(str)) {
 				const matchedVar = match[1].trim();
 				value = handleFormat(matchedVar);
-				if (value === void 0) if (typeof missingInterpolationHandler === "function") {
-					const temp = missingInterpolationHandler(str, match, options);
-					value = isString(temp) ? temp : "";
-				} else if (options && Object.prototype.hasOwnProperty.call(options, matchedVar)) value = "";
-				else if (skipOnVariables) {
-					value = match[0];
-					continue;
-				} else {
-					this.logger.warn(`missed to pass in variable ${matchedVar} for interpolating ${str}`);
-					value = "";
-				}
-				else if (!isString(value) && !this.useRawValueToEscape) value = makeString(value);
+				if (value === void 0) {
+					if (typeof missingInterpolationHandler === "function") {
+						const temp = missingInterpolationHandler(str, match, options);
+						value = isString(temp) ? temp : "";
+					} else if (options && Object.prototype.hasOwnProperty.call(options, matchedVar)) value = "";
+					else if (skipOnVariables) {
+						value = match[0];
+						continue;
+					} else {
+						this.logger.warn(`missed to pass in variable ${matchedVar} for interpolating ${str}`);
+						value = "";
+					}
+				} else if (!isString(value) && !this.useRawValueToEscape) value = makeString(value);
 				const safeValue = todo.safeValue(value);
-				str = str.replace(match[0], safeValue);
+				str = str.replace(match[0], regexSafe(safeValue));
 				if (skipOnVariables) {
-					todo.regex.lastIndex += value.length;
+					todo.regex.lastIndex += safeValue.length;
 					todo.regex.lastIndex -= match[0].length;
 				} else todo.regex.lastIndex = 0;
 				replaces++;
@@ -1069,7 +1113,7 @@ var Interpolator = class {
 			clonedOptions = clonedOptions.replace && !isString(clonedOptions.replace) ? clonedOptions.replace : clonedOptions;
 			clonedOptions.applyPostProcessor = false;
 			delete clonedOptions.defaultValue;
-			const keyEndIndex = /{.*}/.test(match[1]) ? match[1].lastIndexOf("}") + 1 : match[1].indexOf(this.formatSeparator);
+			const keyEndIndex = /{.*}/s.test(match[1]) ? match[1].lastIndexOf("}") + 1 : match[1].indexOf(this.formatSeparator);
 			if (keyEndIndex !== -1) {
 				formatters = match[1].slice(keyEndIndex).split(this.formatSeparator).map((elem) => elem.trim()).filter(Boolean);
 				match[1] = match[1].slice(0, keyEndIndex);
@@ -1085,7 +1129,7 @@ var Interpolator = class {
 				...options,
 				interpolationkey: match[1].trim()
 			}), value.trim());
-			str = str.replace(match[0], value);
+			str = str.replace(match[0], regexSafe(makeString(value)));
 			this.regexp.lastIndex = 0;
 		}
 		return str;
@@ -1181,10 +1225,12 @@ var Formatter = class {
 	format(value, format, lng, options = {}) {
 		if (!format) return value;
 		if (value == null) return value;
-		const formats = format.split(this.formatSeparator);
-		if (formats.length > 1 && formats[0].indexOf("(") > 1 && !formats[0].includes(")") && formats.find((f) => f.includes(")"))) {
-			const lastIndex = formats.findIndex((f) => f.includes(")"));
-			formats[0] = [formats[0], ...formats.splice(1, lastIndex)].join(this.formatSeparator);
+		const rawFormats = format.split(this.formatSeparator);
+		const formats = [];
+		for (let i = 0; i < rawFormats.length; i++) {
+			let f = rawFormats[i];
+			while (f.indexOf("(") > -1 && !f.includes(")") && i + 1 < rawFormats.length) f = `${f}${this.formatSeparator}${rawFormats[++i]}`;
+			formats.push(f);
 		}
 		return formats.reduce((mem, f) => {
 			const { formatName, formatOptions } = parseFormatStr(f);
@@ -1412,6 +1458,7 @@ var get = () => ({
 	nsSeparator: ":",
 	pluralSeparator: "_",
 	contextSeparator: "_",
+	enableSelector: false,
 	partialBundledLanguages: false,
 	saveMissing: false,
 	updateMissing: false,
@@ -1707,24 +1754,28 @@ var instance = class I18n extends EventEmitter {
 			});
 		};
 		if (!lng && this.services.languageDetector && !this.services.languageDetector.async) setLng(this.services.languageDetector.detect());
-		else if (!lng && this.services.languageDetector && this.services.languageDetector.async) if (this.services.languageDetector.detect.length === 0) this.services.languageDetector.detect().then(setLng);
-		else this.services.languageDetector.detect(setLng);
-		else setLng(lng);
+		else if (!lng && this.services.languageDetector && this.services.languageDetector.async) {
+			if (this.services.languageDetector.detect.length === 0) this.services.languageDetector.detect().then(setLng);
+			else this.services.languageDetector.detect(setLng);
+		} else setLng(lng);
 		return deferred;
 	}
-	getFixedT(lng, ns, keyPrefix) {
+	getFixedT(lng, ns, keyPrefix, fixedOpts) {
+		const scopeNs = fixedOpts?.scopeNs;
 		const fixedT = (key, opts, ...rest) => {
 			let o;
 			if (typeof opts !== "object") o = this.options.overloadTranslationOptionHandler([key, opts].concat(rest));
 			else o = { ...opts };
 			o.lng = o.lng || fixedT.lng;
 			o.lngs = o.lngs || fixedT.lngs;
+			const explicitCallNs = o.ns !== void 0 && o.ns !== null;
 			o.ns = o.ns || fixedT.ns;
 			if (o.keyPrefix !== "") o.keyPrefix = o.keyPrefix || keyPrefix || fixedT.keyPrefix;
 			const selectorOpts = {
 				...this.options,
 				...o
 			};
+			if (Array.isArray(scopeNs) && !explicitCallNs) selectorOpts.ns = scopeNs;
 			if (typeof o.keyPrefix === "function") o.keyPrefix = keysFromSelector(o.keyPrefix, selectorOpts);
 			const keySeparator = this.options.keySeparator || ".";
 			let resultKey;
@@ -1981,4 +2032,16 @@ function EmptyComponent() {
 	t()("header.home");
 	return null;
 }
-export { EmptyComponent as default };
+instance.init({
+	fallbackLng: "en",
+	resources: { en: { translation: { header: { home: "Home" } } } }
+});
+function LibWrapper(props) {
+	return memo(() => props.children);
+}
+function Wrapped() {
+	return createComponent(LibWrapper, { get children() {
+		return createComponent(EmptyComponent, {});
+	} });
+}
+export { Wrapped as default };

@@ -1,6 +1,7 @@
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 import { Fragment, createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var LingoContext = createContext(null);
 function useLingoContext() {
 	const context = useContext(LingoContext);
@@ -41,62 +42,8 @@ function getClientLocale() {
 function persistLocale(locale) {
 	if (typeof document !== "undefined") document.cookie = `locale=${locale}; path=/; max-age=31536000`;
 }
-var noop = () => {};
-var IS_DEV = process.env.NODE_ENV === "development";
 var BATCH_DELAY = 200;
-var LingoProvider = IS_DEV ? LingoProvider__Dev : LingoProvider__Prod;
-function LingoProvider__Prod({ initialLocale, initialTranslations = {}, router, children }) {
-	const [locale, setLocaleState] = useState(() => {
-		if (initialLocale) return initialLocale;
-		if (typeof window !== "undefined") return getClientLocale();
-		return "en";
-	});
-	const [translations, setTranslations] = useState(initialTranslations);
-	const [isLoading, setIsLoading] = useState(false);
-	logger.debug(`LingoProvider initialized with locale: ${locale}`, initialTranslations);
-	useEffect(() => {
-		if (typeof document !== "undefined") document.documentElement.lang = locale;
-	}, [locale]);
-	const loadTranslations = useCallback(async (targetLocale) => {
-		if (Object.keys(initialTranslations).length > 0) return;
-		setIsLoading(true);
-		try {
-			const response = await fetch(`/translations/${targetLocale}.json`);
-			if (!response.ok) throw new Error(`Failed to load translations for ${targetLocale}: ${response.statusText}`);
-			const data = await response.json();
-			setTranslations(data.entries || data);
-			logger.debug(`Loaded translations for ${targetLocale}:`, Object.keys(data.entries || data).length);
-		} catch (error) {
-			logger.error(`Failed to load translations for ${targetLocale}:`, error);
-			setTranslations({});
-		} finally {
-			setIsLoading(false);
-		}
-	}, [initialTranslations]);
-	useEffect(() => {
-		if (Object.keys(initialTranslations).length === 0) loadTranslations(locale);
-	}, []);
-	useEffect(() => {
-		if (router) setTranslations(initialTranslations);
-	}, [initialTranslations, router]);
-	const setLocale = useCallback(async (newLocale) => {
-		persistLocale(newLocale);
-		setLocaleState(newLocale);
-		if (router) router.refresh();
-		else await loadTranslations(newLocale);
-	}, [router, loadTranslations]);
-	return jsx(LingoContext.Provider, {
-		value: {
-			locale,
-			setLocale,
-			translations,
-			registerHashes: noop,
-			isLoading,
-			sourceLocale: "en"
-		},
-		children
-	});
-}
+var LingoProvider = LingoProvider__Dev;
 function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, devWidget, children }) {
 	const [locale, setLocaleState] = useState(() => {
 		if (initialLocale) return initialLocale;
@@ -207,7 +154,7 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		}
 	}, [router]);
 	useEffect(() => {
-		if (devWidget?.enabled !== false) import("./lingo-dev-widget-2u893qcj.js").catch((err) => {
+		if (devWidget?.enabled !== false) import("./lingo-dev-widget-uniVgKyA.js").catch((err) => {
 			logger.error("Failed to load dev widget:", err, err.message);
 		});
 	}, [devWidget?.enabled]);
@@ -1990,7 +1937,7 @@ var trimEnd = hasTrimEnd ? function trimEnd(s) {
 } : function trimEnd(s) {
 	return s.replace(SPACE_SEPARATOR_END_REGEX, "");
 };
-var IDENTIFIER_PREFIX_RE = /* @__PURE__ */ new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+var IDENTIFIER_PREFIX_RE = new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
 function matchIdentifierAtIndex(s, index) {
 	var _a;
 	IDENTIFIER_PREFIX_RE.lastIndex = index;
@@ -2030,9 +1977,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2148,14 +2096,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return String.fromCodePoint.apply(String, codePoints);
@@ -2358,9 +2307,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -2945,6 +2892,7 @@ var useTranslation = (hashes) => {
 		locale
 	};
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/pages/blog/BlogList.tsx";
 function BlogList() {
 	const { t } = useTranslation([
 		"283284a6f27d",
@@ -2978,191 +2926,377 @@ function BlogList() {
 		"eaf43376e4da",
 		"f5707da695c6"
 	]);
-	return jsxs("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2",
 		children: [
-			jsxs("article", {
+			jsxDEV("article", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxs("div", {
+					jsxDEV("div", {
 						className: "mb-3 flex items-center gap-3",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 							children: t("283284a6f27d", "Benchmark")
-						}), jsx("span", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 9,
+							columnNumber: 11
+						}, this), jsxDEV("span", {
 							className: "text-xs text-muted-foreground",
 							children: t("64d0dbcc78ce", "March 15, 2026")
-						})]
-					}),
-					jsx("h2", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 10,
+							columnNumber: 11
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 8,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h2", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("4567cf4ba154", "Comparing i18n Libraries in 2026: A Deep Dive")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 12,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-4 text-sm text-muted-foreground",
 						children: t("bfc52d55aee2", "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.")
-					}),
-					jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 13,
+						columnNumber: 9
+					}, this),
+					jsxDEV("button", {
 						type: "button",
 						className: "text-sm font-medium text-primary hover:underline",
 						children: t("f5707da695c6", "Read More →")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 14,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("article", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 7,
+				columnNumber: 7
+			}, this),
+			jsxDEV("article", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxs("div", {
+					jsxDEV("div", {
 						className: "mb-3 flex items-center gap-3",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 							children: t("0ecac174e2c7", "Tutorial")
-						}), jsx("span", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 19,
+							columnNumber: 11
+						}, this), jsxDEV("span", {
 							className: "text-xs text-muted-foreground",
 							children: t("79c0ce0aaf9e", "March 8, 2026")
-						})]
-					}),
-					jsx("h2", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 20,
+							columnNumber: 11
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 18,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h2", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("87718f34018a", "How to Reduce Your i18n Bundle by 60%")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 22,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-4 text-sm text-muted-foreground",
 						children: t("03bf4612de7a", "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.")
-					}),
-					jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 23,
+						columnNumber: 9
+					}, this),
+					jsxDEV("button", {
 						type: "button",
 						className: "text-sm font-medium text-primary hover:underline",
 						children: t("f5707da695c6", "Read More →")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 24,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("article", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 17,
+				columnNumber: 7
+			}, this),
+			jsxDEV("article", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxs("div", {
+					jsxDEV("div", {
 						className: "mb-3 flex items-center gap-3",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 							children: t("6c8c03bdc66c", "Analysis")
-						}), jsx("span", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 29,
+							columnNumber: 11
+						}, this), jsxDEV("span", {
 							className: "text-xs text-muted-foreground",
 							children: t("0f8b79cdfe3b", "February 28, 2026")
-						})]
-					}),
-					jsx("h2", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 30,
+							columnNumber: 11
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 28,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h2", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("07f74ef02440", "The State of Internationalization in React")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 32,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-4 text-sm text-muted-foreground",
 						children: t("1d12c8fe40e6", "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.")
-					}),
-					jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 33,
+						columnNumber: 9
+					}, this),
+					jsxDEV("button", {
 						type: "button",
 						className: "text-sm font-medium text-primary hover:underline",
 						children: t("f5707da695c6", "Read More →")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 34,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("article", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 27,
+				columnNumber: 7
+			}, this),
+			jsxDEV("article", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxs("div", {
+					jsxDEV("div", {
 						className: "mb-3 flex items-center gap-3",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 							children: t("0ecac174e2c7", "Tutorial")
-						}), jsx("span", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 39,
+							columnNumber: 11
+						}, this), jsxDEV("span", {
 							className: "text-xs text-muted-foreground",
 							children: t("28e1276d857d", "February 15, 2026")
-						})]
-					}),
-					jsx("h2", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 40,
+							columnNumber: 11
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 38,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h2", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("034ff6957578", "Migrating from react-i18next to Lingui")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 42,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-4 text-sm text-muted-foreground",
 						children: t("2f6a11366e33", "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.")
-					}),
-					jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 43,
+						columnNumber: 9
+					}, this),
+					jsxDEV("button", {
 						type: "button",
 						className: "text-sm font-medium text-primary hover:underline",
 						children: t("f5707da695c6", "Read More →")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 44,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("article", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 37,
+				columnNumber: 7
+			}, this),
+			jsxDEV("article", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxs("div", {
+					jsxDEV("div", {
 						className: "mb-3 flex items-center gap-3",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 							children: t("6c8c03bdc66c", "Analysis")
-						}), jsx("span", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 49,
+							columnNumber: 11
+						}, this), jsxDEV("span", {
 							className: "text-xs text-muted-foreground",
 							children: t("aaf2c03f3029", "February 1, 2026")
-						})]
-					}),
-					jsx("h2", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 50,
+							columnNumber: 11
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 48,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h2", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("ba863d9c8bb0", "Server Components and i18n: What Changes?")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 52,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-4 text-sm text-muted-foreground",
 						children: t("6ed579395157", "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.")
-					}),
-					jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 53,
+						columnNumber: 9
+					}, this),
+					jsxDEV("button", {
 						type: "button",
 						className: "text-sm font-medium text-primary hover:underline",
 						children: t("f5707da695c6", "Read More →")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 54,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("article", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 47,
+				columnNumber: 7
+			}, this),
+			jsxDEV("article", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxs("div", {
+					jsxDEV("div", {
 						className: "mb-3 flex items-center gap-3",
-						children: [jsx("span", {
+						children: [jsxDEV("span", {
 							className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 							children: t("01289b0f9573", "Meta")
-						}), jsx("span", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 59,
+							columnNumber: 11
+						}, this), jsxDEV("span", {
 							className: "text-xs text-muted-foreground",
 							children: t("98fa8716afc7", "January 20, 2026")
-						})]
-					}),
-					jsx("h2", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 60,
+							columnNumber: 11
+						}, this)]
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 58,
+						columnNumber: 9
+					}, this),
+					jsxDEV("h2", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("2d03c8b7d0e7", "Benchmark Methodology: How We Test")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 62,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "mb-4 text-sm text-muted-foreground",
 						children: t("eaf43376e4da", "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.")
-					}),
-					jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 63,
+						columnNumber: 9
+					}, this),
+					jsxDEV("button", {
 						type: "button",
 						className: "text-sm font-medium text-primary hover:underline",
 						children: t("f5707da695c6", "Read More →")
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 64,
+						columnNumber: 9
+					}, this)
 				]
-			})
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 57,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 6,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/lingo.dev-app/src/components/pages/blog/BlogList.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(BlogList, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(BlogList, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
-import { t as logger } from "./logger-aqUiye9e.js";
+import { t as logger } from "./logger-CWLzb-Ic.js";
 var LingoDevWidget = class extends HTMLElement {
 	shadow;
 	state = null;
@@ -3264,12 +3398,10 @@ var LingoDevWidget = class extends HTMLElement {
 					}, 2e3);
 				}
 				break;
-			case "batch:error":
-				if (this.state && this.state.serverProgress) {
-					this.state.serverProgress.status = "error";
-					this.render();
-				}
-				break;
+			case "batch:error": if (this.state && this.state.serverProgress) {
+				this.state.serverProgress.status = "error";
+				this.render();
+			}
 		}
 	}
 	render() {

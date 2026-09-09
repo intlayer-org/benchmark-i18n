@@ -1,7 +1,6 @@
 import path from "node:path";
 import { measureLibSize } from "test-utils/measure-components";
 import pkg from "../package.json" with { type: "json" };
-import { intlayer } from "vite-intlayer";
 
 measureLibSize({
   appName: pkg.name,
@@ -26,5 +25,4 @@ measureLibSize({
       );
     }
   `,
-  additionalPlugins: [intlayer()],
 }).catch(console.error);

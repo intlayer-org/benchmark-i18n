@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTolgee, getTranslate } from "@/tolgee/server";
+import { TolgeeBase } from "@/tolgee/shared";
 import AppProviders from "@/components/AppProviders";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -9,14 +9,18 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata(): Promise<Metadata> {
-  const t = await getTranslate();
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const tolgee = TolgeeBase().init({ language: locale });
+  await tolgee.loadRequired();
+
   return {
-    title: t(
-      "metadata.title",
-      "i18n Benchmark",
-    ),
-    description: t(
+    title: tolgee.t("metadata.title", "i18n Benchmark"),
+    description: tolgee.t(
       "metadata.description",
       "An open-source benchmark for measuring the real-world impact of internationalization libraries.",
     ),
@@ -31,7 +35,7 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const tolgee = await getTolgee();
+  const tolgee = TolgeeBase().init({ language: locale });
   const staticData = await tolgee.loadRequired();
 
   return (

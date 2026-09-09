@@ -19,7 +19,7 @@ var __copyProps = (to, from, except, desc) => {
 	}
 	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule ? __defProp$2(target, "default", {
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp$2.call(mod, "default") ? __defProp$2(target, "default", {
 	value: mod,
 	enumerable: true
 }) : target, mod));
@@ -1943,9 +1943,10 @@ var Parser = function() {
 					type: TYPE.pound,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				var result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -2061,14 +2062,15 @@ var Parser = function() {
 		this.bump();
 		while (!this.isEOF()) {
 			var ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return fromCodePoint.apply(void 0, codePoints);
@@ -2271,9 +2273,7 @@ var Parser = function() {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -3015,7 +3015,7 @@ function getSubLocales(refLocale) {
 }
 function getPossibleLocales(refLocale, fallbackLocale = getOptions().fallbackLocale) {
 	const locales = getSubLocales(refLocale);
-	if (fallbackLocale) return [...new Set([...locales, ...getSubLocales(fallbackLocale)])];
+	if (fallbackLocale) return [.../* @__PURE__ */ new Set([...locales, ...getSubLocales(fallbackLocale)])];
 	return locales;
 }
 function getCurrentLocale() {
@@ -3158,10 +3158,10 @@ derived([$locale], () => formatTime);
 derived([$locale], () => formatDate);
 derived([$locale], () => formatNumber);
 derived([$locale, $dictionary], () => getJSON);
-var root_2 = $.from_html(`<span class="text-sm text-muted-foreground"> </span>`);
-var root_3 = $.from_html(`<li class="flex items-center gap-2 text-sm text-muted-foreground"><span class="text-primary">✓</span> </li>`);
-var root_1 = $.from_html(`<div><h3 class="text-lg font-semibold text-foreground"> </h3> <div class="my-4"><span class="text-3xl font-bold text-foreground"> </span> <!></div> <ul class="mb-6 flex-1 space-y-2"></ul> <button type="button"> </button></div>`);
-var root = $.from_html(`<div class="grid gap-6 md:grid-cols-3"></div>`);
+var root = $.from_html(`<span class="text-sm text-muted-foreground"> </span>`);
+var root_1 = $.from_html(`<li class="flex items-center gap-2 text-sm text-muted-foreground"><span class="text-primary">✓</span> </li>`);
+var root_2 = $.from_html(`<div><h3 class="text-lg font-semibold text-foreground"> </h3> <div class="my-4"><span class="text-3xl font-bold text-foreground"> </span> <!></div> <ul class="mb-6 flex-1 space-y-2"></ul> <button type="button"> </button></div>`);
+var root_3 = $.from_html(`<div class="grid gap-6 md:grid-cols-3"></div>`);
 function PricingTiers($$anchor, $$props) {
 	$.push($$props, false);
 	const $_ = () => $.store_get($format, "$_", $$stores);
@@ -3216,21 +3216,18 @@ function PricingTiers($$anchor, $$props) {
 		}
 	];
 	$.init();
-	var div = root();
+	var div = root_3();
 	$.each(div, 5, () => tiers, (t) => t.id, ($$anchor, t) => {
-		var div_1 = root_1();
+		var div_1 = root_2();
 		var h3 = $.child(div_1);
-		var text = $.child(h3, true);
-		$.reset(h3);
+		var text = $.only_child(h3, true);
 		var div_2 = $.sibling(h3, 2);
 		var span = $.child(div_2);
-		var text_1 = $.child(span, true);
-		$.reset(span);
+		var text_1 = $.only_child(span, true);
 		var node = $.sibling(span, 2);
 		var consequent = ($$anchor) => {
-			var span_1 = root_2();
-			var text_2 = $.child(span_1, true);
-			$.reset(span_1);
+			var span_1 = root();
+			var text_2 = $.only_child(span_1, true);
 			$.template_effect(($0) => $.set_text(text_2, $0), [() => $_()(`pricing.tiers.${$.get(t).periodKey}`)]);
 			$.append($$anchor, span_1);
 		};
@@ -3240,7 +3237,7 @@ function PricingTiers($$anchor, $$props) {
 		$.reset(div_2);
 		var ul = $.sibling(div_2, 2);
 		$.each(ul, 5, () => $.get(t).featureKeys, (fk) => fk, ($$anchor, fk) => {
-			var li = root_3();
+			var li = root_1();
 			var text_3 = $.sibling($.child(li));
 			$.reset(li);
 			$.template_effect(($0) => $.set_text(text_3, ` ${$0 ?? ""}`), [() => $_()(`pricing.tiers.${$.get(fk)}`)]);
@@ -3248,8 +3245,7 @@ function PricingTiers($$anchor, $$props) {
 		});
 		$.reset(ul);
 		var button = $.sibling(ul, 2);
-		var text_4 = $.child(button, true);
-		$.reset(button);
+		var text_4 = $.only_child(button, true);
 		$.reset(div_1);
 		$.template_effect(($0, $1, $2) => {
 			$.set_class(div_1, 1, `flex flex-col rounded-lg border p-6 ${$.get(t).highlight ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`);

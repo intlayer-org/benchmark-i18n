@@ -20,27 +20,6 @@ var strategy = [
 	"baseLocale"
 ];
 var routeStrategies = [];
-var cachedRouteStrategyUrl;
-var cachedRouteStrategy;
-function findMatchingRouteStrategy(url) {
-	if (routeStrategies.length === 0) return;
-	const urlString = typeof url === "string" ? url : url.href;
-	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
-	const urlObject = new URL(urlString, "http://dummy.com");
-	let match;
-	for (const routeStrategy of routeStrategies) if (new URLPattern(routeStrategy.match, urlObject.href).exec(urlObject.href)) {
-		match = routeStrategy;
-		break;
-	}
-	cachedRouteStrategyUrl = urlString;
-	cachedRouteStrategy = match;
-	return match;
-}
-function getStrategyForUrl(url) {
-	const routeStrategy = findMatchingRouteStrategy(url);
-	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
-	return strategy;
-}
 var serverAsyncLocalStorage = void 0;
 var isServer = typeof window === "undefined";
 globalThis.__paraglide = globalThis.__paraglide ?? {};
@@ -63,7 +42,7 @@ var getLocale = () => {
 		}
 		return resolved;
 	}
-	throw new Error("No locale found. Read the docs https://inlang.com/m/gerre34r/library-inlang-paraglideJs/errors#no-locale-found");
+	throw new Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function resolveLocaleWithStrategies(strategyToUse, urlForUrlStrategy) {
 	let locale;
@@ -105,6 +84,7 @@ var setLocale = (newLocale, options) => {
 		if (isServer || typeof document === "undefined" || typeof window === "undefined") continue;
 		const cookieString = `${cookieName}=${newLocale}; path=/; max-age=${cookieMaxAge}`;
 		document.cookie = cookieString;
+		clearLocaleCookieCache();
 	} else if (strat === "baseLocale") continue;
 	else if (isCustomStrategy(strat) && customClientStrategies.has(strat)) {
 		const handler = customClientStrategies.get(strat);
@@ -126,6 +106,11 @@ var setLocale = (newLocale, options) => {
 	});
 	runReload();
 };
+var getUrlOrigin = () => {
+	if (serverAsyncLocalStorage) return serverAsyncLocalStorage.getStore()?.origin ?? "http://fallback.com";
+	else if (typeof window !== "undefined") return window.location.origin;
+	return "http://fallback.com";
+};
 function toLocale(value) {
 	if (typeof value !== "string") return;
 	const lowerValue = value.toLowerCase();
@@ -136,57 +121,112 @@ function assertIsLocale(input) {
 	if (locale) return locale;
 	throw new Error(`Invalid locale: ${input}. Expected one of: ${locales.join(", ")}`);
 }
+function normalizeTrailingSlash(url) {
+	return url;
+}
+function execUrlPattern(pattern, url) {
+	return pattern.exec(url.href);
+}
+var cookieNamePattern = cookieName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+var localeCookiePattern = new RegExp(`(?:^|;\\s*)${cookieNamePattern}=([^;]*)`);
+var noCachedLocale = Symbol();
+var cachedLocaleFromCookie = noCachedLocale;
+function clearLocaleCookieCache() {
+	cachedLocaleFromCookie = noCachedLocale;
+}
+function scheduleLocaleCookieCacheClear() {
+	if (typeof queueMicrotask === "function") queueMicrotask(clearLocaleCookieCache);
+	else Promise.resolve().then(clearLocaleCookieCache);
+}
 function extractLocaleFromCookie() {
-	if (typeof document === "undefined" || !document.cookie) return;
-	const locale = document.cookie.match(new RegExp(`(^| )${cookieName}=([^;]+)`))?.[2];
-	return toLocale(locale);
+	if (typeof document === "undefined") return;
+	if (cachedLocaleFromCookie !== noCachedLocale) return cachedLocaleFromCookie;
+	const locale = document.cookie.match(localeCookiePattern)?.[1];
+	cachedLocaleFromCookie = toLocale(locale);
+	scheduleLocaleCookieCacheClear();
+	return cachedLocaleFromCookie;
+}
+function deLocalizeUrl(url) {
+	return deLocalizeUrlDefaultPattern(url);
+}
+function deLocalizeUrlDefaultPattern(url) {
+	const urlObj = normalizeTrailingSlash(typeof url === "string" ? new URL(url, getUrlOrigin()) : new URL(url));
+	const pathSegments = urlObj.pathname.split("/").filter(Boolean);
+	if (pathSegments.length > 0 && toLocale(pathSegments[0])) urlObj.pathname = "/" + pathSegments.slice(1).join("/");
+	return normalizeTrailingSlash(urlObj);
+}
+var cachedRouteStrategyUrl;
+var cachedRouteStrategy;
+function findMatchingRouteStrategy(url) {
+	if (routeStrategies.length === 0) return;
+	const urlString = typeof url === "string" ? url : url.href;
+	if (cachedRouteStrategyUrl === urlString) return cachedRouteStrategy;
+	const publicUrl = normalizeTrailingSlash(new URL(urlString, "http://example.com"));
+	const canonicalUrl = deLocalizeUrl(publicUrl);
+	const candidateUrls = canonicalUrl.href === publicUrl.href ? [publicUrl] : [publicUrl, canonicalUrl];
+	let match;
+	for (const candidateUrl of candidateUrls) {
+		for (const routeStrategy of routeStrategies) if (execUrlPattern(new URLPattern(routeStrategy.match, candidateUrl.href), candidateUrl)) {
+			match = routeStrategy;
+			break;
+		}
+		if (match) break;
+	}
+	cachedRouteStrategyUrl = urlString;
+	cachedRouteStrategy = match;
+	return match;
+}
+function getStrategyForUrl(url) {
+	const routeStrategy = findMatchingRouteStrategy(url);
+	if (routeStrategy && routeStrategy.exclude !== true && Array.isArray(routeStrategy.strategy)) return routeStrategy.strategy;
+	return strategy;
 }
 var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_home_whyitmatters_title2 = () => {
-	return `Why These Metrics Matter`;
+var en_home_whyitmatters_bundlesizedesc4 = () => {
+	return `The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.`;
 };
-var fr_home_whyitmatters_title2 = () => {
-	return `Pourquoi ces métriques comptent`;
+var fr_home_whyitmatters_bundlesizedesc4 = () => {
+	return `Le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. Un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3G lentes encore très répandues. Les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.`;
 };
-var es_home_whyitmatters_title2 = () => {
-	return `Por qué son importantes estas métricas`;
+var es_home_whyitmatters_bundlesizedesc4 = () => {
+	return `El bundle representa los datos enviados a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código runtime, además de los propios archivos de traducción.`;
 };
-var de_home_whyitmatters_title2 = () => {
-	return `Warum diese Metriken wichtig sind`;
+var de_home_whyitmatters_bundlesizedesc4 = () => {
+	return `Das Bundle sind die Daten, die an jeden Benutzer auf der ganzen Welt gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren stark in ihrem Gewicht: von einigen Kilobyte bis zu Dutzenden von Kilobyte an Laufzeitcode, plus die Übersetzungsdateien selbst.`;
 };
-var it_home_whyitmatters_title2 = () => {
-	return `Perché queste metriche sono importanti`;
+var it_home_whyitmatters_bundlesizedesc4 = () => {
+	return `Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.`;
 };
-var pt_home_whyitmatters_title2 = () => {
-	return `Por que estas métricas importam`;
+var pt_home_whyitmatters_bundlesizedesc4 = () => {
+	return `O bundle representa os dados enviados para cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas, comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código runtime, além dos próprios arquivos de tradução.`;
 };
-var zh_home_whyitmatters_title2 = () => {
-	return `为什么这些指标很重要`;
+var zh_home_whyitmatters_bundlesizedesc4 = () => {
+	return `包是发送给全球每个用户的数据。较大的包意味着较长的下载时间 — 特别是在许多地区常见的慢速 3G 连接下。i18n 库的重量差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。`;
 };
-var ja_home_whyitmatters_title2 = () => {
-	return `なぜこれらの指標が重要なのか`;
+var ja_home_whyitmatters_bundlesizedesc4 = () => {
+	return `バンドルは世界中のすべてのユーザーに送られるデータです。バンドルが大きいほどダウンロード時間が長くなります。これは多くの地域で一般的な低速な3G接続において特に顕著です。i18nライブラリの重量は、数キロバイトから数十キロバイトのランタイムコード、さらに翻訳ファイル自体に至るまで、劇的に異なります。`;
 };
-var ko_home_whyitmatters_title2 = () => {
-	return `Why These Metrics Matter`;
+var ko_home_whyitmatters_bundlesizedesc4 = () => {
+	return `The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.`;
 };
-var ru_home_whyitmatters_title2 = () => {
-	return `Почему эти метрики важны`;
+var ru_home_whyitmatters_bundlesizedesc4 = () => {
+	return `Бандл — это данные, отправляемые каждому пользователю по всему миру. Больший бандл означает более длительное время загрузки — особенно при медленном 3G-соединении, распространенном во многих регионах. Вес библиотек i18n сильно варьируется: от нескольких килобайт до десятков килобайт кода среды выполнения, плюс сами файлы переводов.`;
 };
-var home_whyitmatters_title2 = ((inputs = {}, options = {}) => {
+var home_whyitmatters_bundlesizedesc4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_whyitmatters_title2(inputs);
-	if (locale === "fr") return fr_home_whyitmatters_title2(inputs);
-	if (locale === "es") return es_home_whyitmatters_title2(inputs);
-	if (locale === "de") return de_home_whyitmatters_title2(inputs);
-	if (locale === "it") return it_home_whyitmatters_title2(inputs);
-	if (locale === "pt") return pt_home_whyitmatters_title2(inputs);
-	if (locale === "zh") return zh_home_whyitmatters_title2(inputs);
-	if (locale === "ja") return ja_home_whyitmatters_title2(inputs);
-	if (locale === "ko") return ko_home_whyitmatters_title2(inputs);
-	return ru_home_whyitmatters_title2(inputs);
+	if (locale === "fr") return fr_home_whyitmatters_bundlesizedesc4(inputs);
+	if (locale === "es") return es_home_whyitmatters_bundlesizedesc4(inputs);
+	if (locale === "de") return de_home_whyitmatters_bundlesizedesc4(inputs);
+	if (locale === "it") return it_home_whyitmatters_bundlesizedesc4(inputs);
+	if (locale === "pt") return pt_home_whyitmatters_bundlesizedesc4(inputs);
+	if (locale === "zh") return zh_home_whyitmatters_bundlesizedesc4(inputs);
+	if (locale === "ja") return ja_home_whyitmatters_bundlesizedesc4(inputs);
+	if (locale === "ko") return ko_home_whyitmatters_bundlesizedesc4(inputs);
+	if (locale === "ru") return ru_home_whyitmatters_bundlesizedesc4(inputs);
+	return en_home_whyitmatters_bundlesizedesc4(inputs);
 });
 var en_home_whyitmatters_bundlesizetitle4 = () => {
 	return `Bundle Size`;
@@ -220,7 +260,6 @@ var ru_home_whyitmatters_bundlesizetitle4 = () => {
 };
 var home_whyitmatters_bundlesizetitle4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_whyitmatters_bundlesizetitle4(inputs);
 	if (locale === "fr") return fr_home_whyitmatters_bundlesizetitle4(inputs);
 	if (locale === "es") return es_home_whyitmatters_bundlesizetitle4(inputs);
 	if (locale === "de") return de_home_whyitmatters_bundlesizetitle4(inputs);
@@ -229,179 +268,8 @@ var home_whyitmatters_bundlesizetitle4 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_home_whyitmatters_bundlesizetitle4(inputs);
 	if (locale === "ja") return ja_home_whyitmatters_bundlesizetitle4(inputs);
 	if (locale === "ko") return ko_home_whyitmatters_bundlesizetitle4(inputs);
-	return ru_home_whyitmatters_bundlesizetitle4(inputs);
-});
-var en_home_whyitmatters_bundlesizedesc4 = () => {
-	return `The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.`;
-};
-var fr_home_whyitmatters_bundlesizedesc4 = () => {
-	return `Le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. Un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3G lentes encore très répandues. Les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.`;
-};
-var es_home_whyitmatters_bundlesizedesc4 = () => {
-	return `El bundle representa los datos enviados a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código runtime, además de los propios archivos de traducción.`;
-};
-var de_home_whyitmatters_bundlesizedesc4 = () => {
-	return `Das Bundle sind die Daten, die an jeden Benutzer auf der ganzen Welt gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren stark in ihrem Gewicht: von einigen Kilobyte bis zu Dutzenden von Kilobyte an Laufzeitcode, plus die Übersetzungsdateien selbst.`;
-};
-var it_home_whyitmatters_bundlesizedesc4 = () => {
-	return `Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.`;
-};
-var pt_home_whyitmatters_bundlesizedesc4 = () => {
-	return `O bundle representa os dados enviados para cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas, comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código runtime, além dos próprios arquivos de tradução.`;
-};
-var zh_home_whyitmatters_bundlesizedesc4 = () => {
-	return `包是发送给全球每个用户的数据。较大的包意味着较长的下载时间 — 特别是在许多地区常见的慢速 3G 连接下。i18n 库的重量差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。`;
-};
-var ja_home_whyitmatters_bundlesizedesc4 = () => {
-	return `バンドルは世界中のすべてのユーザーに送られるデータです。バンドルが大きいほどダウンロード時間が長くなります。これは多くの地域で一般的な低速な3G接続において特に顕著です。i18nライブラリの重量は、数キロバイトから数十キロバイトのランタイムコード、さらに翻訳ファイル自体に至るまで、劇的に異なります。`;
-};
-var ko_home_whyitmatters_bundlesizedesc4 = () => {
-	return `The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.`;
-};
-var ru_home_whyitmatters_bundlesizedesc4 = () => {
-	return `Бандл — это данные, отправляемые каждому пользователю по всему миру. Больший бандл означает более длительное время загрузки — особенно при медленном 3G-соединении, распространенном во многих регионах. Вес библиотек i18n сильно варьируется: от нескольких килобайт до десятков килобайт кода среды выполнения, плюс сами файлы переводов.`;
-};
-var home_whyitmatters_bundlesizedesc4 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_whyitmatters_bundlesizedesc4(inputs);
-	if (locale === "fr") return fr_home_whyitmatters_bundlesizedesc4(inputs);
-	if (locale === "es") return es_home_whyitmatters_bundlesizedesc4(inputs);
-	if (locale === "de") return de_home_whyitmatters_bundlesizedesc4(inputs);
-	if (locale === "it") return it_home_whyitmatters_bundlesizedesc4(inputs);
-	if (locale === "pt") return pt_home_whyitmatters_bundlesizedesc4(inputs);
-	if (locale === "zh") return zh_home_whyitmatters_bundlesizedesc4(inputs);
-	if (locale === "ja") return ja_home_whyitmatters_bundlesizedesc4(inputs);
-	if (locale === "ko") return ko_home_whyitmatters_bundlesizedesc4(inputs);
-	return ru_home_whyitmatters_bundlesizedesc4(inputs);
-});
-var en_home_whyitmatters_renderingtitle3 = () => {
-	return `Rendering & Hydration`;
-};
-var fr_home_whyitmatters_renderingtitle3 = () => {
-	return `Rendu et hydratation`;
-};
-var es_home_whyitmatters_renderingtitle3 = () => {
-	return `Renderizado e hidratación`;
-};
-var de_home_whyitmatters_renderingtitle3 = () => {
-	return `Rendering & Hydrierung`;
-};
-var it_home_whyitmatters_renderingtitle3 = () => {
-	return `Rendering e idratazione`;
-};
-var pt_home_whyitmatters_renderingtitle3 = () => {
-	return `Renderização e hidratação`;
-};
-var zh_home_whyitmatters_renderingtitle3 = () => {
-	return `渲染与注水`;
-};
-var ja_home_whyitmatters_renderingtitle3 = () => {
-	return `レンダリングとハイドレーション`;
-};
-var ko_home_whyitmatters_renderingtitle3 = () => {
-	return `Rendering & Hydration`;
-};
-var ru_home_whyitmatters_renderingtitle3 = () => {
-	return `Рендеринг и гидратация`;
-};
-var home_whyitmatters_renderingtitle3 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_whyitmatters_renderingtitle3(inputs);
-	if (locale === "fr") return fr_home_whyitmatters_renderingtitle3(inputs);
-	if (locale === "es") return es_home_whyitmatters_renderingtitle3(inputs);
-	if (locale === "de") return de_home_whyitmatters_renderingtitle3(inputs);
-	if (locale === "it") return it_home_whyitmatters_renderingtitle3(inputs);
-	if (locale === "pt") return pt_home_whyitmatters_renderingtitle3(inputs);
-	if (locale === "zh") return zh_home_whyitmatters_renderingtitle3(inputs);
-	if (locale === "ja") return ja_home_whyitmatters_renderingtitle3(inputs);
-	if (locale === "ko") return ko_home_whyitmatters_renderingtitle3(inputs);
-	return ru_home_whyitmatters_renderingtitle3(inputs);
-});
-var en_home_whyitmatters_renderingdesc3 = () => {
-	return `Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).`;
-};
-var fr_home_whyitmatters_renderingdesc3 = () => {
-	return `Brancher un gros dictionnaire JSON sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. Lors de l'hydratation SSR, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le Time to Interactive (TTI).`;
-};
-var es_home_whyitmatters_renderingdesc3 = () => {
-	return `Conectar un diccionario JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede desencadenar nuevos renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la anexión de objetos de traducción masivos añaden latencia antes de que la página sea interactiva, lo que afecta directamente al Time to Interactive (TTI).`;
-};
-var de_home_whyitmatters_renderingdesc3 = () => {
-	return `Die Anbindung eines großen JSON-Verzeichnisses an jede Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings im gesamten Baum auslösen. Während der SSR-Hydrierung verursacht das Parsen und Anhängen massiver Übersetzungsobjekte Latenzzeit, bevor die Seite interaktiv wird — was sich direkt auf die Time to Interactive (TTI) auswirkt.`;
-};
-var it_home_whyitmatters_renderingdesc3 = () => {
-	return `Il collegamento di un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può scatenare nuovi rendering in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'aggiunta di enormi oggetti di traduzione aggiungono latenza prima che la pagina diventi interattiva, influenzando direttamente il Time to Interactive (TTI).`;
-};
-var pt_home_whyitmatters_renderingdesc3 = () => {
-	return `Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode disparar renderizações em toda a árvore. Durante a hidratação SSR, analisar e anexar objetos de tradução massivos adiciona latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).`;
-};
-var zh_home_whyitmatters_renderingdesc3 = () => {
-	return `将大型 JSON 字典连接到每个组件会创建隐藏的依赖关系：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 注水期间，解析和附加海量的翻译对象会增加页面变为可交互之前的延迟 — 直接影响可交互时间 (TTI)。`;
-};
-var ja_home_whyitmatters_renderingdesc3 = () => {
-	return `巨大なJSON辞書をすべてのコンポーネントに接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更は、ツリー全体の再レンダリングを引き起こす可能性があります。SSRハイドレーション中、大規模な翻訳オブジェクトの解析とアタッチは、ページがインタラクティブになるまでのレイテンシを増加させ、Time to Interactive (TTI) に直接影響します。`;
-};
-var ko_home_whyitmatters_renderingdesc3 = () => {
-	return `Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).`;
-};
-var ru_home_whyitmatters_renderingdesc3 = () => {
-	return `Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг по всему дереву. Во время SSR-гидратации парсинг и присоединение массивных объектов перевода добавляет задержку до того, как страница станет интерактивной, что напрямую влияет на время до интерактивности (TTI).`;
-};
-var home_whyitmatters_renderingdesc3 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_whyitmatters_renderingdesc3(inputs);
-	if (locale === "fr") return fr_home_whyitmatters_renderingdesc3(inputs);
-	if (locale === "es") return es_home_whyitmatters_renderingdesc3(inputs);
-	if (locale === "de") return de_home_whyitmatters_renderingdesc3(inputs);
-	if (locale === "it") return it_home_whyitmatters_renderingdesc3(inputs);
-	if (locale === "pt") return pt_home_whyitmatters_renderingdesc3(inputs);
-	if (locale === "zh") return zh_home_whyitmatters_renderingdesc3(inputs);
-	if (locale === "ja") return ja_home_whyitmatters_renderingdesc3(inputs);
-	if (locale === "ko") return ko_home_whyitmatters_renderingdesc3(inputs);
-	return ru_home_whyitmatters_renderingdesc3(inputs);
-});
-var en_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `Dynamic Loading`;
-};
-var fr_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `Chargement dynamique`;
-};
-var es_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `Carga dinámica`;
-};
-var de_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `Dynamisches Laden`;
-};
-var it_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `Caricamento dinamico`;
-};
-var pt_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `Carregamento dinâmico`;
-};
-var zh_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `动态加载`;
-};
-var ja_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `動的読み込み`;
-};
-var ko_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `Dynamic Loading`;
-};
-var ru_home_whyitmatters_dynamicloadingtitle4 = () => {
-	return `Динамическая загрузка`;
-};
-var home_whyitmatters_dynamicloadingtitle4 = ((inputs = {}, options = {}) => {
-	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_whyitmatters_dynamicloadingtitle4(inputs);
-	if (locale === "fr") return fr_home_whyitmatters_dynamicloadingtitle4(inputs);
-	if (locale === "es") return es_home_whyitmatters_dynamicloadingtitle4(inputs);
-	if (locale === "de") return de_home_whyitmatters_dynamicloadingtitle4(inputs);
-	if (locale === "it") return it_home_whyitmatters_dynamicloadingtitle4(inputs);
-	if (locale === "pt") return pt_home_whyitmatters_dynamicloadingtitle4(inputs);
-	if (locale === "zh") return zh_home_whyitmatters_dynamicloadingtitle4(inputs);
-	if (locale === "ja") return ja_home_whyitmatters_dynamicloadingtitle4(inputs);
-	if (locale === "ko") return ko_home_whyitmatters_dynamicloadingtitle4(inputs);
-	return ru_home_whyitmatters_dynamicloadingtitle4(inputs);
+	if (locale === "ru") return ru_home_whyitmatters_bundlesizetitle4(inputs);
+	return en_home_whyitmatters_bundlesizetitle4(inputs);
 });
 var en_home_whyitmatters_dynamicloadingdesc4 = () => {
 	return `Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.`;
@@ -435,7 +303,6 @@ var ru_home_whyitmatters_dynamicloadingdesc4 = () => {
 };
 var home_whyitmatters_dynamicloadingdesc4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "en") return en_home_whyitmatters_dynamicloadingdesc4(inputs);
 	if (locale === "fr") return fr_home_whyitmatters_dynamicloadingdesc4(inputs);
 	if (locale === "es") return es_home_whyitmatters_dynamicloadingdesc4(inputs);
 	if (locale === "de") return de_home_whyitmatters_dynamicloadingdesc4(inputs);
@@ -444,7 +311,180 @@ var home_whyitmatters_dynamicloadingdesc4 = ((inputs = {}, options = {}) => {
 	if (locale === "zh") return zh_home_whyitmatters_dynamicloadingdesc4(inputs);
 	if (locale === "ja") return ja_home_whyitmatters_dynamicloadingdesc4(inputs);
 	if (locale === "ko") return ko_home_whyitmatters_dynamicloadingdesc4(inputs);
-	return ru_home_whyitmatters_dynamicloadingdesc4(inputs);
+	if (locale === "ru") return ru_home_whyitmatters_dynamicloadingdesc4(inputs);
+	return en_home_whyitmatters_dynamicloadingdesc4(inputs);
+});
+var en_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `Dynamic Loading`;
+};
+var fr_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `Chargement dynamique`;
+};
+var es_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `Carga dinámica`;
+};
+var de_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `Dynamisches Laden`;
+};
+var it_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `Caricamento dinamico`;
+};
+var pt_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `Carregamento dinâmico`;
+};
+var zh_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `动态加载`;
+};
+var ja_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `動的読み込み`;
+};
+var ko_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `Dynamic Loading`;
+};
+var ru_home_whyitmatters_dynamicloadingtitle4 = () => {
+	return `Динамическая загрузка`;
+};
+var home_whyitmatters_dynamicloadingtitle4 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_home_whyitmatters_dynamicloadingtitle4(inputs);
+	if (locale === "es") return es_home_whyitmatters_dynamicloadingtitle4(inputs);
+	if (locale === "de") return de_home_whyitmatters_dynamicloadingtitle4(inputs);
+	if (locale === "it") return it_home_whyitmatters_dynamicloadingtitle4(inputs);
+	if (locale === "pt") return pt_home_whyitmatters_dynamicloadingtitle4(inputs);
+	if (locale === "zh") return zh_home_whyitmatters_dynamicloadingtitle4(inputs);
+	if (locale === "ja") return ja_home_whyitmatters_dynamicloadingtitle4(inputs);
+	if (locale === "ko") return ko_home_whyitmatters_dynamicloadingtitle4(inputs);
+	if (locale === "ru") return ru_home_whyitmatters_dynamicloadingtitle4(inputs);
+	return en_home_whyitmatters_dynamicloadingtitle4(inputs);
+});
+var en_home_whyitmatters_renderingdesc3 = () => {
+	return `Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).`;
+};
+var fr_home_whyitmatters_renderingdesc3 = () => {
+	return `Brancher un gros dictionnaire JSON sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. Lors de l'hydratation SSR, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le Time to Interactive (TTI).`;
+};
+var es_home_whyitmatters_renderingdesc3 = () => {
+	return `Conectar un diccionario JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede desencadenar nuevos renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la anexión de objetos de traducción masivos añaden latencia antes de que la página sea interactiva, lo que afecta directamente al Time to Interactive (TTI).`;
+};
+var de_home_whyitmatters_renderingdesc3 = () => {
+	return `Die Anbindung eines großen JSON-Verzeichnisses an jede Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings im gesamten Baum auslösen. Während der SSR-Hydrierung verursacht das Parsen und Anhängen massiver Übersetzungsobjekte Latenzzeit, bevor die Seite interaktiv wird — was sich direkt auf die Time to Interactive (TTI) auswirkt.`;
+};
+var it_home_whyitmatters_renderingdesc3 = () => {
+	return `Il collegamento di un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può scatenare nuovi rendering in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'aggiunta di enormi oggetti di traduzione aggiungono latenza prima che la pagina diventi interattiva, influenzando direttamente il Time to Interactive (TTI).`;
+};
+var pt_home_whyitmatters_renderingdesc3 = () => {
+	return `Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode disparar renderizações em toda a árvore. Durante a hidratação SSR, analisar e anexar objetos de tradução massivos adiciona latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).`;
+};
+var zh_home_whyitmatters_renderingdesc3 = () => {
+	return `将大型 JSON 字典连接到每个组件会创建隐藏的依赖关系：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 注水期间，解析和附加海量的翻译对象会增加页面变为可交互之前的延迟 — 直接影响可交互时间 (TTI)。`;
+};
+var ja_home_whyitmatters_renderingdesc3 = () => {
+	return `巨大なJSON辞書をすべてのコンポーネントに接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更は、ツリー全体の再レンダリングを引き起こす可能性があります。SSRハイドレーション中、大規模な翻訳オブジェクトの解析とアタッチは、ページがインタラクティブになるまでのレイテンシを増加させ、Time to Interactive (TTI) に直接影響します。`;
+};
+var ko_home_whyitmatters_renderingdesc3 = () => {
+	return `Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).`;
+};
+var ru_home_whyitmatters_renderingdesc3 = () => {
+	return `Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг по всему дереву. Во время SSR-гидратации парсинг и присоединение массивных объектов перевода добавляет задержку до того, как страница станет интерактивной, что напрямую влияет на время до интерактивности (TTI).`;
+};
+var home_whyitmatters_renderingdesc3 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_home_whyitmatters_renderingdesc3(inputs);
+	if (locale === "es") return es_home_whyitmatters_renderingdesc3(inputs);
+	if (locale === "de") return de_home_whyitmatters_renderingdesc3(inputs);
+	if (locale === "it") return it_home_whyitmatters_renderingdesc3(inputs);
+	if (locale === "pt") return pt_home_whyitmatters_renderingdesc3(inputs);
+	if (locale === "zh") return zh_home_whyitmatters_renderingdesc3(inputs);
+	if (locale === "ja") return ja_home_whyitmatters_renderingdesc3(inputs);
+	if (locale === "ko") return ko_home_whyitmatters_renderingdesc3(inputs);
+	if (locale === "ru") return ru_home_whyitmatters_renderingdesc3(inputs);
+	return en_home_whyitmatters_renderingdesc3(inputs);
+});
+var en_home_whyitmatters_renderingtitle3 = () => {
+	return `Rendering & Hydration`;
+};
+var fr_home_whyitmatters_renderingtitle3 = () => {
+	return `Rendu et hydratation`;
+};
+var es_home_whyitmatters_renderingtitle3 = () => {
+	return `Renderizado e hidratación`;
+};
+var de_home_whyitmatters_renderingtitle3 = () => {
+	return `Rendering & Hydrierung`;
+};
+var it_home_whyitmatters_renderingtitle3 = () => {
+	return `Rendering e idratazione`;
+};
+var pt_home_whyitmatters_renderingtitle3 = () => {
+	return `Renderização e hidratação`;
+};
+var zh_home_whyitmatters_renderingtitle3 = () => {
+	return `渲染与注水`;
+};
+var ja_home_whyitmatters_renderingtitle3 = () => {
+	return `レンダリングとハイドレーション`;
+};
+var ko_home_whyitmatters_renderingtitle3 = () => {
+	return `Rendering & Hydration`;
+};
+var ru_home_whyitmatters_renderingtitle3 = () => {
+	return `Рендеринг и гидратация`;
+};
+var home_whyitmatters_renderingtitle3 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_home_whyitmatters_renderingtitle3(inputs);
+	if (locale === "es") return es_home_whyitmatters_renderingtitle3(inputs);
+	if (locale === "de") return de_home_whyitmatters_renderingtitle3(inputs);
+	if (locale === "it") return it_home_whyitmatters_renderingtitle3(inputs);
+	if (locale === "pt") return pt_home_whyitmatters_renderingtitle3(inputs);
+	if (locale === "zh") return zh_home_whyitmatters_renderingtitle3(inputs);
+	if (locale === "ja") return ja_home_whyitmatters_renderingtitle3(inputs);
+	if (locale === "ko") return ko_home_whyitmatters_renderingtitle3(inputs);
+	if (locale === "ru") return ru_home_whyitmatters_renderingtitle3(inputs);
+	return en_home_whyitmatters_renderingtitle3(inputs);
+});
+var en_home_whyitmatters_title2 = () => {
+	return `Why These Metrics Matter`;
+};
+var fr_home_whyitmatters_title2 = () => {
+	return `Pourquoi ces métriques comptent`;
+};
+var es_home_whyitmatters_title2 = () => {
+	return `Por qué son importantes estas métricas`;
+};
+var de_home_whyitmatters_title2 = () => {
+	return `Warum diese Metriken wichtig sind`;
+};
+var it_home_whyitmatters_title2 = () => {
+	return `Perché queste metriche sono importanti`;
+};
+var pt_home_whyitmatters_title2 = () => {
+	return `Por que estas métricas importam`;
+};
+var zh_home_whyitmatters_title2 = () => {
+	return `为什么这些指标很重要`;
+};
+var ja_home_whyitmatters_title2 = () => {
+	return `なぜこれらの指標が重要なのか`;
+};
+var ko_home_whyitmatters_title2 = () => {
+	return `Why These Metrics Matter`;
+};
+var ru_home_whyitmatters_title2 = () => {
+	return `Почему эти метрики важны`;
+};
+var home_whyitmatters_title2 = ((inputs = {}, options = {}) => {
+	const locale = options.locale ?? getLocale();
+	if (locale === "fr") return fr_home_whyitmatters_title2(inputs);
+	if (locale === "es") return es_home_whyitmatters_title2(inputs);
+	if (locale === "de") return de_home_whyitmatters_title2(inputs);
+	if (locale === "it") return it_home_whyitmatters_title2(inputs);
+	if (locale === "pt") return pt_home_whyitmatters_title2(inputs);
+	if (locale === "zh") return zh_home_whyitmatters_title2(inputs);
+	if (locale === "ja") return ja_home_whyitmatters_title2(inputs);
+	if (locale === "ko") return ko_home_whyitmatters_title2(inputs);
+	if (locale === "ru") return ru_home_whyitmatters_title2(inputs);
+	return en_home_whyitmatters_title2(inputs);
 });
 var _tmpl$ = template(`<section class=mb-16><h2 class="mb-6 text-2xl font-bold text-foreground"></h2><div class="grid gap-6 md:grid-cols-3"><div class="rounded-lg border border-border bg-card p-6"><h3 class="mb-2 text-lg font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground"></p></div><div class="rounded-lg border border-border bg-card p-6"><h3 class="mb-2 text-lg font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground"></p></div><div class="rounded-lg border border-border bg-card p-6"><h3 class="mb-2 text-lg font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground">`);
 function WhyItMatters() {

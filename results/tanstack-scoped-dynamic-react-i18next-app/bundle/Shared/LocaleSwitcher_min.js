@@ -1,6 +1,6 @@
 import { createContext as e, createElement as t, useMemo as n } from "react";
 import { useNavigate as r, useParams as i } from "@tanstack/react-router";
-import { jsx as a } from "react/jsx-runtime";
+import { jsxDEV as a } from "react/jsx-dev-runtime";
 var o = [
 	"en",
 	"fr",
@@ -21,7 +21,8 @@ function s(e) {
 		return e.toUpperCase();
 	}
 }
-function c() {
+var c = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/src/components/LocaleSwitcher.tsx";
+function l() {
 	let e = i({ strict: !1 }).locale ?? "en", t = r(), n = (e) => {
 		t({
 			to: ".",
@@ -40,59 +41,71 @@ function c() {
 			children: o.map((e) => a("option", {
 				value: e,
 				children: s(e)
-			}, e))
-		})
-	});
+			}, e, !1, {
+				fileName: c,
+				lineNumber: 24,
+				columnNumber: 11
+			}, this))
+		}, void 0, !1, {
+			fileName: c,
+			lineNumber: 18,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: c,
+		lineNumber: 17,
+		columnNumber: 5
+	}, this);
 }
-var l = (e) => typeof e == "string", u = () => {
+var u = (e) => typeof e == "string", d = () => {
 	let e, t, n = new Promise((n, r) => {
 		e = n, t = r;
 	});
 	return n.resolve = e, n.reject = t, n;
-}, d = (e) => e == null ? "" : String(e), f = (e, t, n) => {
+}, f = (e) => e == null ? "" : String(e), p = (e, t, n) => {
 	e.forEach((e) => {
 		t[e] && (n[e] = t[e]);
 	});
-}, p = /###/g, m = (e) => e && e.includes("###") ? e.replace(p, ".") : e, h = (e) => !e || l(e), g = (e, t, n) => {
-	let r = l(t) ? t.split(".") : t, i = 0;
+}, m = /###/g, h = (e) => e && e.includes("###") ? e.replace(m, ".") : e, g = (e) => !e || u(e), _ = (e, t, n) => {
+	let r = u(t) ? t.split(".") : t, i = 0;
 	for (; i < r.length - 1;) {
-		if (h(e)) return {};
-		let t = m(r[i]);
+		if (g(e)) return {};
+		let t = h(r[i]);
 		!e[t] && n && (e[t] = new n()), e = Object.prototype.hasOwnProperty.call(e, t) ? e[t] : {}, ++i;
 	}
-	return h(e) ? {} : {
+	return g(e) ? {} : {
 		obj: e,
-		k: m(r[i])
+		k: h(r[i])
 	};
-}, _ = (e, t, n) => {
-	let { obj: r, k: i } = g(e, t, Object);
+}, v = (e, t, n) => {
+	let { obj: r, k: i } = _(e, t, Object);
 	if (r !== void 0 || t.length === 1) {
 		r[i] = n;
 		return;
 	}
-	let a = t[t.length - 1], o = t.slice(0, t.length - 1), s = g(e, o, Object);
-	for (; s.obj === void 0 && o.length;) a = `${o[o.length - 1]}.${a}`, o = o.slice(0, o.length - 1), s = g(e, o, Object), s?.obj && s.obj[`${s.k}.${a}`] !== void 0 && (s.obj = void 0);
+	let a = t[t.length - 1], o = t.slice(0, t.length - 1), s = _(e, o, Object);
+	for (; s.obj === void 0 && o.length;) a = `${o[o.length - 1]}.${a}`, o = o.slice(0, o.length - 1), s = _(e, o, Object), s?.obj && s.obj[`${s.k}.${a}`] !== void 0 && (s.obj = void 0);
 	s.obj[`${s.k}.${a}`] = n;
-}, v = (e, t, n, r) => {
-	let { obj: i, k: a } = g(e, t, Object);
+}, y = (e, t, n, r) => {
+	let { obj: i, k: a } = _(e, t, Object);
 	i[a] = i[a] || [], i[a].push(n);
-}, y = (e, t) => {
-	let { obj: n, k: r } = g(e, t);
+}, b = (e, t) => {
+	let { obj: n, k: r } = _(e, t);
 	if (n && Object.prototype.hasOwnProperty.call(n, r)) return n[r];
-}, b = (e, t, n) => {
-	let r = y(e, n);
-	return r === void 0 ? y(t, n) : r;
 }, x = (e, t, n) => {
-	for (let r in t) r !== "__proto__" && r !== "constructor" && (r in e ? l(e[r]) || e[r] instanceof String || l(t[r]) || t[r] instanceof String ? n && (e[r] = t[r]) : x(e[r], t[r], n) : e[r] = t[r]);
+	let r = b(e, n);
+	return r === void 0 ? b(t, n) : r;
+}, S = (e, t, n) => {
+	for (let r in t) r !== "__proto__" && r !== "constructor" && (Object.prototype.hasOwnProperty.call(e, r) ? u(e[r]) || e[r] instanceof String || u(t[r]) || t[r] instanceof String ? n && (e[r] = t[r]) : S(e[r], t[r], n) : e[r] = t[r]);
 	return e;
-}, S = (e) => e.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"), C = {
+}, C = (e) => e.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&"), w = {
 	"&": "&amp;",
 	"<": "&lt;",
 	">": "&gt;",
 	"\"": "&quot;",
 	"'": "&#39;",
 	"/": "&#x2F;"
-}, w = (e) => l(e) ? e.replace(/[&<>"'\/]/g, (e) => C[e]) : e, T = class {
+}, T = (e) => u(e) ? e.replace(/[&<>"'\/]/g, (e) => w[e]) : e, E = class {
 	constructor(e) {
 		this.capacity = e, this.regExpMap = /* @__PURE__ */ new Map(), this.regExpQueue = [];
 	}
@@ -102,23 +115,23 @@ var l = (e) => typeof e == "string", u = () => {
 		let n = new RegExp(e);
 		return this.regExpQueue.length === this.capacity && this.regExpMap.delete(this.regExpQueue.shift()), this.regExpMap.set(e, n), this.regExpQueue.push(e), n;
 	}
-}, E = [
+}, D = [
 	" ",
 	",",
 	"?",
 	"!",
 	";"
-], D = new T(20), O = (e, t, n) => {
+], O = new E(20), k = (e, t, n) => {
 	t ||= "", n ||= "";
-	let r = E.filter((e) => !t.includes(e) && !n.includes(e));
+	let r = D.filter((e) => !t.includes(e) && !n.includes(e));
 	if (r.length === 0) return !0;
-	let i = D.getRegExp(`(${r.map((e) => e === "?" ? "\\?" : e).join("|")})`), a = !i.test(e);
+	let i = O.getRegExp(`(${r.map((e) => e === "?" ? "\\?" : e).join("|")})`), a = !i.test(e);
 	if (!a) {
 		let t = e.indexOf(n);
 		t > 0 && !i.test(e.substring(0, t)) && (a = !0);
 	}
 	return a;
-}, k = (e, t, n = ".") => {
+}, A = (e, t, n = ".") => {
 	if (!e) return;
 	if (e[t]) return Object.prototype.hasOwnProperty.call(e, t) ? e[t] : void 0;
 	let r = t.split(n), i = e;
@@ -137,7 +150,7 @@ var l = (e) => typeof e == "string", u = () => {
 		i = t;
 	}
 	return i;
-}, A = (e) => e?.replace(/_/g, "-"), ee = {
+}, j = (e) => e?.replace(/_/g, "-"), ee = {
 	type: "logger",
 	log(e) {
 		this.output("log", e);
@@ -151,7 +164,7 @@ var l = (e) => typeof e == "string", u = () => {
 	output(e, t) {
 		console?.[e]?.apply?.(console, t);
 	}
-}, j = new class e {
+}, M = new class e {
 	constructor(e, t = {}) {
 		this.init(e, t);
 	}
@@ -171,7 +184,7 @@ var l = (e) => typeof e == "string", u = () => {
 		return this.forward(e, "warn", "WARNING DEPRECATED: ", !0);
 	}
 	forward(e, t, n, r) {
-		return r && !this.debug ? null : (l(e[0]) && (e[0] = `${n}${this.prefix} ${e[0]}`), this.logger[t](e));
+		return r && !this.debug ? null : (e = e.map((e) => u(e) ? e.replace(/[\r\n\x00-\x1F\x7F]/g, " ") : e), u(e[0]) && (e[0] = `${n}${this.prefix} ${e[0]}`), this.logger[t](e));
 	}
 	create(t) {
 		return new e(this.logger, {
@@ -182,7 +195,7 @@ var l = (e) => typeof e == "string", u = () => {
 	clone(t) {
 		return t ||= this.options, t.prefix = t.prefix || this.prefix, new e(this.logger, t);
 	}
-}(), M = class {
+}(), N = class {
 	constructor() {
 		this.observers = {};
 	}
@@ -215,7 +228,7 @@ var l = (e) => typeof e == "string", u = () => {
 			for (let i = 0; i < r; i++) n(e, ...t);
 		});
 	}
-}, N = class extends M {
+}, P = class extends N {
 	constructor(e, t = {
 		ns: ["translation"],
 		defaultNS: "translation"
@@ -231,16 +244,16 @@ var l = (e) => typeof e == "string", u = () => {
 	}
 	getResource(e, t, n, r = {}) {
 		let i = r.keySeparator === void 0 ? this.options.keySeparator : r.keySeparator, a = r.ignoreJSONStructure === void 0 ? this.options.ignoreJSONStructure : r.ignoreJSONStructure, o;
-		e.includes(".") ? o = e.split(".") : (o = [e, t], n && (Array.isArray(n) ? o.push(...n) : l(n) && i ? o.push(...n.split(i)) : o.push(n)));
-		let s = y(this.data, o);
-		return !s && !t && !n && e.includes(".") && (e = o[0], t = o[1], n = o.slice(2).join(".")), s || !a || !l(n) ? s : k(this.data?.[e]?.[t], n, i);
+		e.includes(".") ? o = e.split(".") : (o = [e, t], n && (Array.isArray(n) ? o.push(...n) : u(n) && i ? o.push(...n.split(i)) : o.push(n)));
+		let s = b(this.data, o);
+		return !s && !t && !n && e.includes(".") && (e = o[0], t = o[1], n = o.slice(2).join(".")), s || !a || !u(n) ? s : A(this.data?.[e]?.[t], n, i);
 	}
 	addResource(e, t, n, r, i = { silent: !1 }) {
 		let a = i.keySeparator === void 0 ? this.options.keySeparator : i.keySeparator, o = [e, t];
-		n && (o = o.concat(a ? n.split(a) : n)), e.includes(".") && (o = e.split("."), r = t, t = o[1]), this.addNamespaces(t), _(this.data, o, r), i.silent || this.emit("added", e, t, n, r);
+		n && (o = o.concat(a ? n.split(a) : n)), e.includes(".") && (o = e.split("."), r = t, t = o[1]), this.addNamespaces(t), v(this.data, o, r), i.silent || this.emit("added", e, t, n, r);
 	}
 	addResources(e, t, n, r = { silent: !1 }) {
-		for (let r in n) (l(n[r]) || Array.isArray(n[r])) && this.addResource(e, t, r, n[r], { silent: !0 });
+		for (let r in n) (u(n[r]) || Array.isArray(n[r])) && this.addResource(e, t, r, n[r], { silent: !0 });
 		r.silent || this.emit("added", e, t, n);
 	}
 	addResourceBundle(e, t, n, r, i, a = {
@@ -249,11 +262,11 @@ var l = (e) => typeof e == "string", u = () => {
 	}) {
 		let o = [e, t];
 		e.includes(".") && (o = e.split("."), r = n, n = t, t = o[1]), this.addNamespaces(t);
-		let s = y(this.data, o) || {};
-		a.skipCopy || (n = JSON.parse(JSON.stringify(n))), r ? x(s, n, i) : s = {
+		let s = b(this.data, o) || {};
+		a.skipCopy || (n = JSON.parse(JSON.stringify(n))), r ? S(s, n, i) : s = {
 			...s,
 			...n
-		}, _(this.data, o, s), a.silent || this.emit("added", e, t, n);
+		}, v(this.data, o, s), a.silent || this.emit("added", e, t, n);
 	}
 	removeResourceBundle(e, t) {
 		this.hasResourceBundle(e, t) && delete this.data[e][t], this.removeNamespaces(t), this.emit("removed", e, t);
@@ -274,7 +287,7 @@ var l = (e) => typeof e == "string", u = () => {
 	toJSON() {
 		return this.data;
 	}
-}, P = {
+}, F = {
 	processors: {},
 	addPostProcessor(e) {
 		this.processors[e.name] = e;
@@ -284,22 +297,22 @@ var l = (e) => typeof e == "string", u = () => {
 			t = this.processors[e]?.process(t, n, r, i) ?? t;
 		}), t;
 	}
-}, F = Symbol("i18next/PATH_KEY");
-function I() {
+}, I = Symbol("i18next/PATH_KEY");
+function te() {
 	let e = [], t = Object.create(null), n;
-	return t.get = (r, i) => (n?.revoke?.(), i === F ? e : (e.push(i), n = Proxy.revocable(r, t), n.proxy)), Proxy.revocable(Object.create(null), t).proxy;
+	return t.get = (r, i) => (n?.revoke?.(), i === I ? e : (e.push(i), n = Proxy.revocable(r, t), n.proxy)), Proxy.revocable(Object.create(null), t).proxy;
 }
 function L(e, t) {
-	let { [F]: n } = e(I()), r = t?.keySeparator ?? ".", i = t?.nsSeparator ?? ":";
+	let { [I]: n } = e(te()), r = t?.keySeparator ?? ".", i = t?.nsSeparator ?? ":", a = t?.enableSelector === "strict";
 	if (n.length > 1 && i) {
-		let e = t?.ns, a = Array.isArray(e) ? e : null;
-		if (a && a.length > 1 && a.slice(1).includes(n[0])) return `${n[0]}${i}${n.slice(1).join(r)}`;
+		let e = t?.ns, o = a ? Array.isArray(e) ? e : e ? [e] : null : Array.isArray(e) ? e : null;
+		if (o && (a ? o : o.length > 1 ? o.slice(1) : []).includes(n[0])) return `${n[0]}${i}${n.slice(1).join(r)}`;
 	}
 	return n.join(r);
 }
-var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class e extends M {
+var R = (e) => !u(e) && typeof e != "boolean" && typeof e != "number", z = class e extends N {
 	constructor(e, t = {}) {
-		super(), f([
+		super(), p([
 			"resourceStore",
 			"languageUtils",
 			"pluralResolver",
@@ -307,7 +320,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 			"backendConnector",
 			"i18nFormat",
 			"utils"
-		], e, this), this.options = t, this.options.keySeparator === void 0 && (this.options.keySeparator = "."), this.logger = j.create("translator"), this.checkedLoadedFor = {};
+		], e, this), this.options = t, this.options.keySeparator === void 0 && (this.options.keySeparator = "."), this.logger = M.create("translator"), this.checkedLoadedFor = {};
 	}
 	changeLanguage(e) {
 		e && (this.language = e);
@@ -323,19 +336,19 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 	extractFromKey(e, t) {
 		let n = t.nsSeparator === void 0 ? this.options.nsSeparator : t.nsSeparator;
 		n === void 0 && (n = ":");
-		let r = t.keySeparator === void 0 ? this.options.keySeparator : t.keySeparator, i = t.ns || this.options.defaultNS || [], a = n && e.includes(n), o = !this.options.userDefinedKeySeparator && !t.keySeparator && !this.options.userDefinedNsSeparator && !t.nsSeparator && !O(e, n, r);
+		let r = t.keySeparator === void 0 ? this.options.keySeparator : t.keySeparator, i = t.ns || this.options.defaultNS || [], a = n && e.includes(n), o = !this.options.userDefinedKeySeparator && !t.keySeparator && !this.options.userDefinedNsSeparator && !t.nsSeparator && !k(e, n, r);
 		if (a && !o) {
 			let t = e.match(this.interpolator.nestingRegexp);
 			if (t && t.length > 0) return {
 				key: e,
-				namespaces: l(i) ? [i] : i
+				namespaces: u(i) ? [i] : i
 			};
 			let a = e.split(n);
 			(n !== r || n === r && this.options.ns.includes(a[0])) && (i = a.shift()), e = a.join(r);
 		}
 		return {
 			key: e,
-			namespaces: l(i) ? [i] : i
+			namespaces: u(i) ? [i] : i
 		};
 	}
 	translate(t, n, r) {
@@ -348,32 +361,32 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 			...this.options,
 			...i
 		}) : String(e));
-		let a = i.returnDetails === void 0 ? this.options.returnDetails : i.returnDetails, o = i.keySeparator === void 0 ? this.options.keySeparator : i.keySeparator, { key: s, namespaces: c } = this.extractFromKey(t[t.length - 1], i), u = c[c.length - 1], d = i.nsSeparator === void 0 ? this.options.nsSeparator : i.nsSeparator;
+		let a = i.returnDetails === void 0 ? this.options.returnDetails : i.returnDetails, o = i.keySeparator === void 0 ? this.options.keySeparator : i.keySeparator, { key: s, namespaces: c } = this.extractFromKey(t[t.length - 1], i), l = c[c.length - 1], d = i.nsSeparator === void 0 ? this.options.nsSeparator : i.nsSeparator;
 		d === void 0 && (d = ":");
 		let f = i.lng || this.language, p = i.appendNamespaceToCIMode || this.options.appendNamespaceToCIMode;
 		if (f?.toLowerCase() === "cimode") return p ? a ? {
-			res: `${u}${d}${s}`,
+			res: `${l}${d}${s}`,
 			usedKey: s,
 			exactUsedKey: s,
 			usedLng: f,
-			usedNS: u,
+			usedNS: l,
 			usedParams: this.getUsedParamsDetails(i)
-		} : `${u}${d}${s}` : a ? {
+		} : `${l}${d}${s}` : a ? {
 			res: s,
 			usedKey: s,
 			exactUsedKey: s,
 			usedLng: f,
-			usedNS: u,
+			usedNS: l,
 			usedParams: this.getUsedParamsDetails(i)
 		} : s;
 		let m = this.resolve(t, i), h = m?.res, g = m?.usedKey || s, _ = m?.exactUsedKey || s, v = [
 			"[object Number]",
 			"[object Function]",
 			"[object RegExp]"
-		], y = i.joinArrays === void 0 ? this.options.joinArrays : i.joinArrays, b = !this.i18nFormat || this.i18nFormat.handleAsObject, x = i.count !== void 0 && !l(i.count), S = e.hasDefaultValue(i), C = x ? this.pluralResolver.getSuffix(f, i.count, i) : "", w = i.ordinal && x ? this.pluralResolver.getSuffix(f, i.count, { ordinal: !1 }) : "", T = x && !i.ordinal && i.count === 0, E = T && i[`defaultValue${this.options.pluralSeparator}zero`] || i[`defaultValue${C}`] || i[`defaultValue${w}`] || i.defaultValue, D = h;
+		], y = i.joinArrays === void 0 ? this.options.joinArrays : i.joinArrays, b = !this.i18nFormat || this.i18nFormat.handleAsObject, x = i.count !== void 0 && !u(i.count), S = e.hasDefaultValue(i), C = x ? this.pluralResolver.getSuffix(f, i.count, i) : "", w = i.ordinal && x ? this.pluralResolver.getSuffix(f, i.count, { ordinal: !1 }) : "", T = x && !i.ordinal && i.count === 0, E = T && i[`defaultValue${this.options.pluralSeparator}zero`] || i[`defaultValue${C}`] || i[`defaultValue${w}`] || i.defaultValue, D = h;
 		b && !h && S && (D = E);
 		let O = R(D), k = Object.prototype.toString.apply(D);
-		if (b && D && O && !v.includes(k) && !(l(y) && Array.isArray(D))) {
+		if (b && D && O && !v.includes(k) && !(u(y) && Array.isArray(D))) {
 			if (!i.returnObjects && !this.options.returnObjects) {
 				this.options.returnedObjectHandler || this.logger.warn("accessing an object - but returnObjects options is not enabled!");
 				let e = this.options.returnedObjectHandler ? this.options.returnedObjectHandler(g, D, {
@@ -386,12 +399,12 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 				let e = Array.isArray(D), t = e ? [] : {}, n = e ? _ : g;
 				for (let e in D) if (Object.prototype.hasOwnProperty.call(D, e)) {
 					let r = `${n}${o}${e}`;
-					S && !h ? t[e] = this.translate(r, {
+					t[e] = S && !h ? this.translate(r, {
 						...i,
 						defaultValue: R(E) ? E[e] : void 0,
 						joinArrays: !1,
 						ns: c
-					}) : t[e] = this.translate(r, {
+					}) : this.translate(r, {
 						...i,
 						joinArrays: !1,
 						ns: c
@@ -399,13 +412,13 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 				}
 				h = t;
 			}
-		} else if (b && l(y) && Array.isArray(h)) h = h.join(y), h &&= this.extendTranslation(h, t, i, r);
+		} else if (b && u(y) && Array.isArray(h)) h = h.join(y), h &&= this.extendTranslation(h, t, i, r);
 		else {
 			let e = !1, n = !1;
 			!this.isValidLookup(h) && S && (e = !0, h = E), this.isValidLookup(h) || (n = !0, h = s);
 			let a = (i.missingKeyNoValueFallbackToKey || this.options.missingKeyNoValueFallbackToKey) && n ? void 0 : h, c = S && E !== h && this.options.updateMissing;
 			if (n || e || c) {
-				if (this.logger.log(c ? "updateKey" : "missingKey", f, u, s, c ? E : h), o) {
+				if (this.logger.log(c ? "updateKey" : "missingKey", f, l, x && !c ? `${s}${this.pluralResolver.getSuffix(f, i.count, i)}` : s, c ? E : h), o) {
 					let e = this.resolve(s, {
 						...i,
 						keySeparator: !1
@@ -417,7 +430,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 				else this.options.saveMissingTo === "all" ? e = this.languageUtils.toResolveHierarchy(i.lng || this.language) : e.push(i.lng || this.language);
 				let n = (e, t, n) => {
 					let r = S && n !== h ? n : a;
-					this.options.missingKeyHandler ? this.options.missingKeyHandler(e, u, t, r, c, i) : this.backendConnector?.saveMissing && this.backendConnector.saveMissing(e, u, t, r, c, i), this.emit("missingKey", e, u, t, h);
+					this.options.missingKeyHandler ? this.options.missingKeyHandler(e, l, t, r, c, i) : this.backendConnector?.saveMissing && this.backendConnector.saveMissing(e, l, t, r, c, i), this.emit("missingKey", e, l, t, h);
 				};
 				this.options.saveMissing && (this.options.saveMissingPlurals && x ? e.forEach((e) => {
 					let t = this.pluralResolver.getSuffixes(e, i);
@@ -426,7 +439,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 					});
 				}) : n(e, s, E));
 			}
-			h = this.extendTranslation(h, t, i, m, r), n && h === s && this.options.appendNamespaceToMissingKey && (h = `${u}${d}${s}`), (n || e) && this.options.parseMissingKeyHandler && (h = this.options.parseMissingKeyHandler(this.options.appendNamespaceToMissingKey ? `${u}${d}${s}` : s, e ? h : void 0, i));
+			h = this.extendTranslation(h, t, i, m, r), n && h === s && this.options.appendNamespaceToMissingKey && (h = `${l}${d}${s}`), (n || e) && this.options.parseMissingKeyHandler && (h = this.options.parseMissingKeyHandler(this.options.appendNamespaceToMissingKey ? `${l}${d}${s}` : s, e ? h : void 0, i));
 		}
 		return a ? (m.res = h, m.usedParams = this.getUsedParamsDetails(i), m) : h;
 	}
@@ -443,12 +456,12 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 					...n.interpolation
 				}
 			});
-			let a = l(e) && (n?.interpolation?.skipOnVariables === void 0 ? this.options.interpolation.skipOnVariables : n.interpolation.skipOnVariables), o;
+			let a = u(e) && (n?.interpolation?.skipOnVariables === void 0 ? this.options.interpolation.skipOnVariables : n.interpolation.skipOnVariables), o;
 			if (a) {
 				let t = e.match(this.interpolator.nestingRegexp);
 				o = t && t.length;
 			}
-			let s = n.replace && !l(n.replace) ? n.replace : n;
+			let s = n.replace && !u(n.replace) ? n.replace : n;
 			if (this.options.interpolation.defaultVariables && (s = {
 				...this.options.interpolation.defaultVariables,
 				...s
@@ -458,8 +471,8 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 			}
 			!n.lng && r && r.res && (n.lng = this.language || r.usedLng), n.nest !== !1 && (e = this.interpolator.nest(e, (...e) => i?.[0] === e[0] && !n.context ? (this.logger.warn(`It seems you are nesting recursively key: ${e[0]} in key: ${t[0]}`), null) : this.translate(...e, t), n)), n.interpolation && this.interpolator.reset();
 		}
-		let a = n.postProcess || this.options.postProcess, o = l(a) ? [a] : a;
-		return e != null && o?.length && n.applyPostProcessor !== !1 && (e = P.handle(o, e, t, this.options && this.options.postProcessPassResolved ? {
+		let a = n.postProcess || this.options.postProcess, o = u(a) ? [a] : a;
+		return e != null && o?.length && n.applyPostProcessor !== !1 && (e = F.handle(o, e, t, this.options && this.options.postProcessPassResolved ? {
 			i18nResolved: {
 				...r,
 				usedParams: this.getUsedParamsDetails(n)
@@ -469,17 +482,17 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 	}
 	resolve(e, t = {}) {
 		let n, r, i, a, o;
-		return l(e) && (e = [e]), Array.isArray(e) && (e = e.map((e) => typeof e == "function" ? L(e, {
+		return u(e) && (e = [e]), Array.isArray(e) && (e = e.map((e) => typeof e == "function" ? L(e, {
 			...this.options,
 			...t
 		}) : e)), e.forEach((e) => {
 			if (this.isValidLookup(n)) return;
 			let s = this.extractFromKey(e, t), c = s.key;
 			r = c;
-			let u = s.namespaces;
-			this.options.fallbackNS && (u = u.concat(this.options.fallbackNS));
-			let d = t.count !== void 0 && !l(t.count), f = d && !t.ordinal && t.count === 0, p = t.context !== void 0 && (l(t.context) || typeof t.context == "number") && t.context !== "", m = t.lngs ? t.lngs : this.languageUtils.toResolveHierarchy(t.lng || this.language, t.fallbackLng);
-			u.forEach((e) => {
+			let l = s.namespaces;
+			this.options.fallbackNS && (l = l.concat(this.options.fallbackNS));
+			let d = t.count !== void 0 && !u(t.count), f = d && !t.ordinal && t.count === 0, p = t.context !== void 0 && (u(t.context) || typeof t.context == "number") && t.context !== "", m = t.lngs ? t.lngs : this.languageUtils.toResolveHierarchy(t.lng || this.language, t.fallbackLng);
+			l.forEach((e) => {
 				this.isValidLookup(n) || (o = e, !this.checkedLoadedFor[`${m[0]}-${e}`] && this.utils?.hasLoadedNamespace && !this.utils?.hasLoadedNamespace(o) && (this.checkedLoadedFor[`${m[0]}-${e}`] = !0, this.logger.warn(`key "${r}" for languages "${m.join(", ")}" won't get resolved as namespace "${o}" was not yet loaded`, "This means something IS WRONG in your setup. You access the t function before i18next.init / i18next.loadNamespace / i18next.changeLanguage was done. Wait for the callback or Promise to resolve before accessing it!!!")), m.forEach((r) => {
 					if (this.isValidLookup(n)) return;
 					a = r;
@@ -529,8 +542,11 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 			"joinArrays",
 			"postProcess",
 			"interpolation"
-		], n = e.replace && !l(e.replace), r = n ? e.replace : e;
-		if (n && e.count !== void 0 && (r.count = e.count), this.options.interpolation.defaultVariables && (r = {
+		], n = e.replace && !u(e.replace), r = n ? e.replace : e;
+		if (n && e.count !== void 0 && (r = {
+			...r,
+			count: e.count
+		}), this.options.interpolation.defaultVariables && (r = {
 			...this.options.interpolation.defaultVariables,
 			...r
 		}), !n) {
@@ -545,20 +561,23 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 	}
 }, B = class {
 	constructor(e) {
-		this.options = e, this.supportedLngs = this.options.supportedLngs || !1, this.logger = j.create("languageUtils");
+		this.options = e, this.supportedLngs = this.options.supportedLngs || !1, this.logger = M.create("languageUtils"), this.resolveHierarchyCache = {};
+	}
+	clearCache() {
+		this.resolveHierarchyCache = {};
 	}
 	getScriptPartFromCode(e) {
-		if (e = A(e), !e || !e.includes("-")) return null;
+		if (e = j(e), !e || !e.includes("-")) return null;
 		let t = e.split("-");
 		return t.length === 2 || (t.pop(), t[t.length - 1].toLowerCase() === "x") ? null : this.formatLanguageCode(t.join("-"));
 	}
 	getLanguagePartFromCode(e) {
-		if (e = A(e), !e || !e.includes("-")) return e;
+		if (e = j(e), !e || !e.includes("-")) return e;
 		let t = e.split("-");
 		return this.formatLanguageCode(t[0]);
 	}
 	formatLanguageCode(e) {
-		if (l(e) && e.includes("-")) {
+		if (u(e) && e.includes("-")) {
 			let t;
 			try {
 				t = Intl.getCanonicalLocales(e)[0];
@@ -588,18 +607,29 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 	}
 	getFallbackCodes(e, t) {
 		if (!e) return [];
-		if (typeof e == "function" && (e = e(t)), l(e) && (e = [e]), Array.isArray(e)) return e;
+		if (typeof e == "function" && (e = e(t)), u(e) && (e = [e]), Array.isArray(e)) return e;
 		if (!t) return e.default || [];
 		let n = e[t];
 		return n ||= e[this.getScriptPartFromCode(t)], n ||= e[this.formatLanguageCode(t)], n ||= e[this.getLanguagePartFromCode(t)], n ||= e.default, n || [];
 	}
 	toResolveHierarchy(e, t) {
-		let n = this.getFallbackCodes((t === !1 ? [] : t) || this.options.fallbackLng || [], e), r = [], i = (e) => {
-			e && (this.isSupportedCode(e) ? r.push(e) : this.logger.warn(`rejecting language code not found in supportedLngs: ${e}`));
+		let n = this.options.fallbackLng, r = Array.isArray(n) ? n.join("|") : n;
+		r !== this._cachedFallbackLng && (this.resolveHierarchyCache = {}, this._cachedFallbackLng = r);
+		let i = t === void 0 || t === !1 || u(t), a = t === void 0 && typeof this.options.fallbackLng == "function", o = u(e) && i && !a, s = null;
+		if (o) {
+			let n;
+			n = t === void 0 ? "undefined" : t === !1 ? "boolean:false" : `string:${t}`, s = `${e.length}:${e}|${n}`;
+		}
+		if (s !== null) {
+			let e = this.resolveHierarchyCache[s];
+			if (e !== void 0) return e.slice();
+		}
+		let c = this.getFallbackCodes((t === !1 ? [] : t) || this.options.fallbackLng || [], e), l = [], d = (e) => {
+			e && (this.isSupportedCode(e) ? l.push(e) : this.logger.warn(`rejecting language code not found in supportedLngs: ${e}`));
 		};
-		return l(e) && (e.includes("-") || e.includes("_")) ? (this.options.load !== "languageOnly" && i(this.formatLanguageCode(e)), this.options.load !== "languageOnly" && this.options.load !== "currentOnly" && i(this.getScriptPartFromCode(e)), this.options.load !== "currentOnly" && i(this.getLanguagePartFromCode(e))) : l(e) && i(this.formatLanguageCode(e)), n.forEach((e) => {
-			r.includes(e) || i(this.formatLanguageCode(e));
-		}), r;
+		return u(e) && (e.includes("-") || e.includes("_")) ? (this.options.load !== "languageOnly" && d(this.formatLanguageCode(e)), this.options.load !== "languageOnly" && this.options.load !== "currentOnly" && d(this.getScriptPartFromCode(e)), this.options.load !== "currentOnly" && d(this.getLanguagePartFromCode(e))) : u(e) && d(this.formatLanguageCode(e)), c.forEach((e) => {
+			l.includes(e) || d(this.formatLanguageCode(e));
+		}), s === null ? l : (this.resolveHierarchyCache[s] = l, l.slice());
 	}
 }, V = {
 	zero: 0,
@@ -611,15 +641,15 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 }, H = {
 	select: (e) => e === 1 ? "one" : "other",
 	resolvedOptions: () => ({ pluralCategories: ["one", "other"] })
-}, te = class {
+}, ne = class {
 	constructor(e, t = {}) {
-		this.languageUtils = e, this.options = t, this.logger = j.create("pluralResolver"), this.pluralRulesCache = {};
+		this.languageUtils = e, this.options = t, this.logger = M.create("pluralResolver"), this.pluralRulesCache = {};
 	}
 	clearCache() {
 		this.pluralRulesCache = {};
 	}
 	getRule(e, t = {}) {
-		let n = A(e === "dev" ? "en" : e), r = t.ordinal ? "ordinal" : "cardinal", i = JSON.stringify({
+		let n = j(e === "dev" ? "en" : e), r = t.ordinal ? "ordinal" : "cardinal", i = JSON.stringify({
 			cleanedCode: n,
 			type: r
 		});
@@ -651,16 +681,16 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		return r ? `${this.options.prepend}${n.ordinal ? `ordinal${this.options.prepend}` : ""}${r.select(t)}` : (this.logger.warn(`no plural rule found for: ${e}`), this.getSuffix("dev", t, n));
 	}
 }, U = (e, t, n, r = ".", i = !0) => {
-	let a = b(e, t, n);
-	return !a && i && l(n) && (a = k(e, n, r), a === void 0 && (a = k(t, n, r))), a;
+	let a = x(e, t, n);
+	return !a && i && u(n) && (a = A(e, n, r), a === void 0 && (a = A(t, n, r))), a;
 }, W = (e) => e.replace(/\$/g, "$$$$"), G = class {
 	constructor(e = {}) {
-		this.logger = j.create("interpolator"), this.options = e, this.format = e?.interpolation?.format || ((e) => e), this.init(e);
+		this.logger = M.create("interpolator"), this.options = e, this.format = e?.interpolation?.format || ((e) => e), this.init(e);
 	}
 	init(e = {}) {
 		e.interpolation ||= { escapeValue: !0 };
 		let { escape: t, escapeValue: n, useRawValueToEscape: r, prefix: i, prefixEscaped: a, suffix: o, suffixEscaped: s, formatSeparator: c, unescapeSuffix: l, unescapePrefix: u, nestingPrefix: d, nestingPrefixEscaped: f, nestingSuffix: p, nestingSuffixEscaped: m, nestingOptionsSeparator: h, maxReplaces: g, alwaysFormat: _ } = e.interpolation;
-		this.escape = t === void 0 ? w : t, this.escapeValue = n === void 0 ? !0 : n, this.useRawValueToEscape = r === void 0 ? !1 : r, this.prefix = i ? S(i) : a || "{{", this.suffix = o ? S(o) : s || "}}", this.formatSeparator = c || ",", this.unescapePrefix = l ? "" : u || "-", this.unescapeSuffix = this.unescapePrefix ? "" : l || "", this.nestingPrefix = d ? S(d) : f || S("$t("), this.nestingSuffix = p ? S(p) : m || S(")"), this.nestingOptionsSeparator = h || ",", this.maxReplaces = g || 1e3, this.alwaysFormat = _ === void 0 ? !1 : _, this.resetRegExp();
+		this.escape = t === void 0 ? T : t, this.escapeValue = n === void 0 || n, this.useRawValueToEscape = r !== void 0 && r, this.prefix = i ? C(i) : a || "{{", this.suffix = o ? C(o) : s || "}}", this.formatSeparator = c || ",", this.unescapePrefix = l ? "" : u ? C(u) : "-", this.unescapeSuffix = this.unescapePrefix ? "" : l ? C(l) : "", this.nestingPrefix = d ? C(d) : f || C("$t("), this.nestingSuffix = p ? C(p) : m || C(")"), this.nestingOptionsSeparator = h || ",", this.maxReplaces = g || 1e3, this.alwaysFormat = _ !== void 0 && _, this.resetRegExp();
 	}
 	reset() {
 		this.options && this.init(this.options);
@@ -686,28 +716,29 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 				interpolationkey: a
 			});
 		};
-		this.resetRegExp();
-		let u = r?.missingInterpolationHandler || this.options.missingInterpolationHandler, f = r?.interpolation?.skipOnVariables === void 0 ? this.options.interpolation.skipOnVariables : r.interpolation.skipOnVariables;
+		this.resetRegExp(), !this.escapeValue && typeof e == "string" && /\$t\([^)]*\{[^}]*\{\{/.test(e) && this.logger.warn("nesting options string contains interpolated variables with escapeValue: false — if any of those values are attacker-controlled they can inject additional nesting options (e.g. redirect lng/ns). Sanitise untrusted input before passing it to t(), or keep escapeValue: true.");
+		let l = r?.missingInterpolationHandler || this.options.missingInterpolationHandler, d = r?.interpolation?.skipOnVariables === void 0 ? this.options.interpolation.skipOnVariables : r.interpolation.skipOnVariables;
 		return [{
 			regex: this.regexpUnescape,
-			safeValue: (e) => W(e)
+			safeValue: (e) => e
 		}, {
 			regex: this.regexp,
-			safeValue: (e) => this.escapeValue ? W(this.escape(e)) : W(e)
+			safeValue: (e) => this.escapeValue ? this.escape(e) : e
 		}].forEach((t) => {
 			for (o = 0; i = t.regex.exec(e);) {
 				let n = i[1].trim();
-				if (a = c(n), a === void 0) if (typeof u == "function") {
-					let t = u(e, i, r);
-					a = l(t) ? t : "";
-				} else if (r && Object.prototype.hasOwnProperty.call(r, n)) a = "";
-				else if (f) {
-					a = i[0];
-					continue;
-				} else this.logger.warn(`missed to pass in variable ${n} for interpolating ${e}`), a = "";
-				else !l(a) && !this.useRawValueToEscape && (a = d(a));
+				if (a = c(n), a === void 0) {
+					if (typeof l == "function") {
+						let t = l(e, i, r);
+						a = u(t) ? t : "";
+					} else if (r && Object.prototype.hasOwnProperty.call(r, n)) a = "";
+					else if (d) {
+						a = i[0];
+						continue;
+					} else this.logger.warn(`missed to pass in variable ${n} for interpolating ${e}`), a = "";
+				} else !u(a) && !this.useRawValueToEscape && (a = f(a));
 				let s = t.safeValue(a);
-				if (e = e.replace(i[0], s), f ? (t.regex.lastIndex += a.length, t.regex.lastIndex -= i[0].length) : t.regex.lastIndex = 0, o++, o >= this.maxReplaces) break;
+				if (e = e.replace(i[0], W(s)), d ? (t.regex.lastIndex += s.length, t.regex.lastIndex -= i[0].length) : t.regex.lastIndex = 0, o++, o >= this.maxReplaces) break;
 			}
 		}), e;
 	}
@@ -715,7 +746,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		let r, i, a, o = (e, t) => {
 			let n = this.nestingOptionsSeparator;
 			if (!e.includes(n)) return e;
-			let r = e.split(RegExp(`${S(n)}[ ]*{`)), i = `{${r[1]}`;
+			let r = e.split(RegExp(`${C(n)}[ ]*{`)), i = `{${r[1]}`;
 			e = r[0], i = this.interpolate(i, a);
 			let o = i.match(/'/g), s = i.match(/"/g);
 			((o?.length ?? 0) % 2 == 0 && !s || (s?.length ?? 0) % 2 != 0) && (i = i.replace(/'/g, "\""));
@@ -731,17 +762,17 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		};
 		for (; r = this.nestingRegexp.exec(e);) {
 			let s = [];
-			a = { ...n }, a = a.replace && !l(a.replace) ? a.replace : a, a.applyPostProcessor = !1, delete a.defaultValue;
-			let c = /{.*}/.test(r[1]) ? r[1].lastIndexOf("}") + 1 : r[1].indexOf(this.formatSeparator);
-			if (c !== -1 && (s = r[1].slice(c).split(this.formatSeparator).map((e) => e.trim()).filter(Boolean), r[1] = r[1].slice(0, c)), i = t(o.call(this, r[1].trim(), a), a), i && r[0] === e && !l(i)) return i;
-			l(i) || (i = d(i)), i ||= (this.logger.warn(`missed to resolve ${r[1]} for nesting ${e}`), ""), s.length && (i = s.reduce((e, t) => this.format(e, t, n.lng, {
+			a = { ...n }, a = a.replace && !u(a.replace) ? a.replace : a, a.applyPostProcessor = !1, delete a.defaultValue;
+			let c = /{.*}/s.test(r[1]) ? r[1].lastIndexOf("}") + 1 : r[1].indexOf(this.formatSeparator);
+			if (c !== -1 && (s = r[1].slice(c).split(this.formatSeparator).map((e) => e.trim()).filter(Boolean), r[1] = r[1].slice(0, c)), i = t(o.call(this, r[1].trim(), a), a), i && r[0] === e && !u(i)) return i;
+			u(i) || (i = f(i)), i ||= (this.logger.warn(`missed to resolve ${r[1]} for nesting ${e}`), ""), s.length && (i = s.reduce((e, t) => this.format(e, t, n.lng, {
 				...n,
 				interpolationkey: r[1].trim()
-			}), i.trim())), e = e.replace(r[0], i), this.regexp.lastIndex = 0;
+			}), i.trim())), e = e.replace(r[0], W(f(i))), this.regexp.lastIndex = 0;
 		}
 		return e;
 	}
-}, ne = (e) => {
+}, re = (e) => {
 	let t = e.toLowerCase().trim(), n = {};
 	if (e.includes("(")) {
 		let r = e.split("(");
@@ -767,15 +798,15 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 			[i.interpolationkey]: void 0
 		});
 		let o = r + JSON.stringify(a), s = t[o];
-		return s || (s = e(A(r), i), t[o] = s), s(n);
+		return s || (s = e(j(r), i), t[o] = s), s(n);
 	};
-}, re = (e) => (t, n, r) => e(A(n), r)(t), ie = class {
+}, ie = (e) => (t, n, r) => e(j(n), r)(t), ae = class {
 	constructor(e = {}) {
-		this.logger = j.create("formatter"), this.options = e, this.init(e);
+		this.logger = M.create("formatter"), this.options = e, this.init(e);
 	}
 	init(e, t = { interpolation: {} }) {
 		this.formatSeparator = t.interpolation.formatSeparator || ",";
-		let n = t.cacheInBuiltFormats ? K : re;
+		let n = t.cacheInBuiltFormats ? K : ie;
 		this.formats = {
 			number: n((e, t) => {
 				let n = new Intl.NumberFormat(e, { ...t });
@@ -810,13 +841,14 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 	}
 	format(e, t, n, r = {}) {
 		if (!t || e == null) return e;
-		let i = t.split(this.formatSeparator);
-		if (i.length > 1 && i[0].indexOf("(") > 1 && !i[0].includes(")") && i.find((e) => e.includes(")"))) {
-			let e = i.findIndex((e) => e.includes(")"));
-			i[0] = [i[0], ...i.splice(1, e)].join(this.formatSeparator);
+		let i = t.split(this.formatSeparator), a = [];
+		for (let e = 0; e < i.length; e++) {
+			let t = i[e];
+			for (; t.indexOf("(") > -1 && !t.includes(")") && e + 1 < i.length;) t = `${t}${this.formatSeparator}${i[++e]}`;
+			a.push(t);
 		}
-		return i.reduce((e, t) => {
-			let { formatName: i, formatOptions: a } = ne(t);
+		return a.reduce((e, t) => {
+			let { formatName: i, formatOptions: a } = re(t);
 			if (this.formats[i]) {
 				let t = e;
 				try {
@@ -830,15 +862,15 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 					this.logger.warn(e);
 				}
 				return t;
-			} else this.logger.warn(`there was no format function for ${i}`);
-			return e;
+			}
+			return this.logger.warn(`there was no format function for ${i}`), e;
 		}, e);
 	}
-}, ae = (e, t) => {
+}, oe = (e, t) => {
 	e.pending[t] !== void 0 && (delete e.pending[t], e.pendingCount--);
-}, q = class extends M {
+}, se = class extends N {
 	constructor(e, t, n, r = {}) {
-		super(), this.backend = e, this.store = t, this.services = n, this.languageUtils = n.languageUtils, this.options = r, this.logger = j.create("backendConnector"), this.waitingReads = [], this.maxParallelReads = r.maxParallelReads || 10, this.readingCalls = 0, this.maxRetries = r.maxRetries >= 0 ? r.maxRetries : 5, this.retryTimeout = r.retryTimeout >= 1 ? r.retryTimeout : 350, this.state = {}, this.queue = [], this.backend?.init?.(n, r.backend, r);
+		super(), this.backend = e, this.store = t, this.services = n, this.languageUtils = n.languageUtils, this.options = r, this.logger = M.create("backendConnector"), this.waitingReads = [], this.maxParallelReads = r.maxParallelReads || 10, this.readingCalls = 0, this.maxRetries = r.maxRetries >= 0 ? r.maxRetries : 5, this.retryTimeout = r.retryTimeout >= 1 ? r.retryTimeout : 350, this.state = {}, this.queue = [], this.backend?.init?.(n, r.backend, r);
 	}
 	queueLoad(e, t, n, r) {
 		let i = {}, a = {}, o = {}, s = {};
@@ -866,7 +898,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		t && this.emit("failedLoading", i, a, t), !t && n && this.store.addResourceBundle(i, a, n, void 0, void 0, { skipCopy: !0 }), this.state[e] = t ? -1 : 2, t && n && (this.state[e] = 0);
 		let o = {};
 		this.queue.forEach((n) => {
-			v(n.loaded, [i], a), ae(n, e), t && n.errors.push(t), n.pendingCount === 0 && !n.done && (Object.keys(n.loaded).forEach((e) => {
+			y(n.loaded, [i], a), oe(n, e), t && n.errors.push(t), n.pendingCount === 0 && !n.done && (Object.keys(n.loaded).forEach((e) => {
 				o[e] || (o[e] = {});
 				let t = n.loaded[e];
 				t.length && t.forEach((t) => {
@@ -915,7 +947,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 	}
 	prepareLoading(e, t, n = {}, r) {
 		if (!this.backend) return this.logger.warn("No backend was added via i18next.use. Will not load resources."), r && r();
-		l(e) && (e = this.languageUtils.toResolveHierarchy(e)), l(t) && (t = [t]);
+		u(e) && (e = this.languageUtils.toResolveHierarchy(e)), u(t) && (t = [t]);
 		let i = this.queueLoad(e, t, n, r);
 		if (!i.toLoad.length) return i.pending.length || r(), null;
 		i.toLoad.forEach((e) => {
@@ -939,7 +971,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 			this.logger.warn(`did not save key "${n}" as the namespace "${t}" was not yet loaded`, "This means something IS WRONG in your setup. You access the t function before i18next.init / i18next.loadNamespace / i18next.changeLanguage was done. Wait for the callback or Promise to resolve before accessing it!!!");
 			return;
 		}
-		if (!(n == null || n === "")) {
+		if (n != null && n !== "") {
 			if (this.backend?.create) {
 				let s = {
 					...a,
@@ -953,10 +985,10 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 				}
 				else c(e, t, n, r, o, s);
 			}
-			!e || !e[0] || this.store.addResource(e[0], t, n, r);
+			e && e[0] && this.store.addResource(e[0], t, n, r);
 		}
 	}
-}, J = () => ({
+}, q = () => ({
 	debug: !1,
 	initAsync: !0,
 	ns: ["translation"],
@@ -971,6 +1003,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 	nsSeparator: ":",
 	pluralSeparator: "_",
 	contextSeparator: "_",
+	enableSelector: !1,
 	partialBundledLanguages: !1,
 	saveMissing: !1,
 	updateMissing: !1,
@@ -990,7 +1023,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 	appendNamespaceToCIMode: !1,
 	overloadTranslationOptionHandler: (e) => {
 		let t = {};
-		if (typeof e[1] == "object" && (t = e[1]), l(e[1]) && (t.defaultValue = e[1]), l(e[2]) && (t.tDescription = e[2]), typeof e[2] == "object" || typeof e[3] == "object") {
+		if (typeof e[1] == "object" && (t = e[1]), u(e[1]) && (t.defaultValue = e[1]), u(e[2]) && (t.tDescription = e[2]), typeof e[2] == "object" || typeof e[3] == "object") {
 			let n = e[3] || e[2];
 			Object.keys(n).forEach((e) => {
 				t[e] = n[e];
@@ -1011,13 +1044,13 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		skipOnVariables: !0
 	},
 	cacheInBuiltFormats: !0
-}), Y = (e) => (l(e.ns) && (e.ns = [e.ns]), l(e.fallbackLng) && (e.fallbackLng = [e.fallbackLng]), l(e.fallbackNS) && (e.fallbackNS = [e.fallbackNS]), e.supportedLngs && !e.supportedLngs.includes("cimode") && (e.supportedLngs = e.supportedLngs.concat(["cimode"])), e), X = () => {}, oe = (e) => {
+}), J = (e) => (u(e.ns) && (e.ns = [e.ns]), u(e.fallbackLng) && (e.fallbackLng = [e.fallbackLng]), u(e.fallbackNS) && (e.fallbackNS = [e.fallbackNS]), e.supportedLngs && !e.supportedLngs.includes("cimode") && (e.supportedLngs = e.supportedLngs.concat(["cimode"])), e), Y = () => {}, ce = (e) => {
 	Object.getOwnPropertyNames(Object.getPrototypeOf(e)).forEach((t) => {
 		typeof e[t] == "function" && (e[t] = e[t].bind(e));
 	});
-}, Z = class e extends M {
+}, X = class e extends N {
 	constructor(e = {}, t) {
-		if (super(), this.options = Y(e), this.services = {}, this.logger = j, this.modules = { external: [] }, oe(this), t && !this.isInitialized && !e.isClone) {
+		if (super(), this.options = J(e), this.services = {}, this.logger = M, this.modules = { external: [] }, ce(this), t && !this.isInitialized && !e.isClone) {
 			if (!this.options.initAsync) return this.init(e, t), this;
 			setTimeout(() => {
 				this.init(e, t);
@@ -1025,25 +1058,25 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		}
 	}
 	init(e = {}, t) {
-		this.isInitializing = !0, typeof e == "function" && (t = e, e = {}), e.defaultNS == null && e.ns && (l(e.ns) ? e.defaultNS = e.ns : e.ns.includes("translation") || (e.defaultNS = e.ns[0]));
-		let n = J();
+		this.isInitializing = !0, typeof e == "function" && (t = e, e = {}), e.defaultNS == null && e.ns && (u(e.ns) ? e.defaultNS = e.ns : e.ns.includes("translation") || (e.defaultNS = e.ns[0]));
+		let n = q();
 		this.options = {
 			...n,
 			...this.options,
-			...Y(e)
+			...J(e)
 		}, this.options.interpolation = {
 			...n.interpolation,
 			...this.options.interpolation
 		}, e.keySeparator !== void 0 && (this.options.userDefinedKeySeparator = e.keySeparator), e.nsSeparator !== void 0 && (this.options.userDefinedNsSeparator = e.nsSeparator), typeof this.options.overloadTranslationOptionHandler != "function" && (this.options.overloadTranslationOptionHandler = n.overloadTranslationOptionHandler);
 		let r = (e) => e ? typeof e == "function" ? new e() : e : null;
 		if (!this.options.isClone) {
-			this.modules.logger ? j.init(r(this.modules.logger), this.options) : j.init(null, this.options);
+			this.modules.logger ? M.init(r(this.modules.logger), this.options) : M.init(null, this.options);
 			let e;
-			e = this.modules.formatter ? this.modules.formatter : ie;
+			e = this.modules.formatter ? this.modules.formatter : ae;
 			let t = new B(this.options);
-			this.store = new N(this.options.resources, this.options);
+			this.store = new P(this.options.resources, this.options);
 			let n = this.services;
-			n.logger = j, n.resourceStore = this.store, n.languageUtils = t, n.pluralResolver = new te(t, { prepend: this.options.pluralSeparator }), e && (n.formatter = r(e), n.formatter.init && n.formatter.init(n, this.options), this.options.interpolation.format = n.formatter.format.bind(n.formatter)), n.interpolator = new G(this.options), n.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) }, n.backendConnector = new q(r(this.modules.backend), n.resourceStore, n, this.options), n.backendConnector.on("*", (e, ...t) => {
+			n.logger = M, n.resourceStore = this.store, n.languageUtils = t, n.pluralResolver = new ne(t, { prepend: this.options.pluralSeparator }), e && (n.formatter = r(e), n.formatter.init && n.formatter.init(n, this.options), this.options.interpolation.format = n.formatter.format.bind(n.formatter)), n.interpolator = new G(this.options), n.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) }, n.backendConnector = new se(r(this.modules.backend), n.resourceStore, n, this.options), n.backendConnector.on("*", (e, ...t) => {
 				this.emit(e, ...t);
 			}), this.modules.languageDetector && (n.languageDetector = r(this.modules.languageDetector), n.languageDetector.init && n.languageDetector.init(n, this.options.detection, this.options)), this.modules.i18nFormat && (n.i18nFormat = r(this.modules.i18nFormat), n.i18nFormat.init && n.i18nFormat.init(this)), this.translator = new z(this.services, this.options), this.translator.on("*", (e, ...t) => {
 				this.emit(e, ...t);
@@ -1051,7 +1084,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 				e.init && e.init(this);
 			});
 		}
-		if (this.format = this.options.interpolation.format, t ||= X, this.options.fallbackLng && !this.services.languageDetector && !this.options.lng) {
+		if (this.format = this.options.interpolation.format, t ||= Y, this.options.fallbackLng && !this.services.languageDetector && !this.options.lng) {
 			let e = this.services.languageUtils.getFallbackCodes(this.options.fallbackLng);
 			e.length > 0 && e[0] !== "dev" && (this.options.lng = e[0]);
 		}
@@ -1070,17 +1103,17 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		].forEach((e) => {
 			this[e] = (...t) => (this.store[e](...t), this);
 		});
-		let i = u(), a = () => {
+		let i = d(), a = () => {
 			let e = (e, n) => {
 				this.isInitializing = !1, this.isInitialized && !this.initializedStoreOnce && this.logger.warn("init: i18next is already initialized. You should call init just once!"), this.isInitialized = !0, this.options.isClone || this.logger.log("initialized", this.options), this.emit("initialized", this.options), i.resolve(n), t(e, n);
 			};
-			if (this.languages && !this.isInitialized) return e(null, this.t.bind(this));
+			if ((this.languages || this.isLanguageChangingTo) && !this.isInitialized) return e(null, this.t.bind(this));
 			this.changeLanguage(this.options.lng, e);
 		};
 		return this.options.resources || !this.options.initAsync ? a() : setTimeout(a, 0), i;
 	}
-	loadResources(e, t = X) {
-		let n = t, r = l(e) ? e : this.language;
+	loadResources(e, t = Y) {
+		let n = t, r = u(e) ? e : this.language;
 		if (typeof e == "function" && (n = e), !this.options.resources || this.options.partialBundledLanguages) {
 			if (r?.toLowerCase() === "cimode" && (!this.options.preload || this.options.preload.length === 0)) return n();
 			let e = [], t = (t) => {
@@ -1094,18 +1127,18 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		} else n(null);
 	}
 	reloadResources(e, t, n) {
-		let r = u();
-		return typeof e == "function" && (n = e, e = void 0), typeof t == "function" && (n = t, t = void 0), e ||= this.languages, t ||= this.options.ns, n ||= X, this.services.backendConnector.reload(e, t, (e) => {
+		let r = d();
+		return typeof e == "function" && (n = e, e = void 0), typeof t == "function" && (n = t, t = void 0), e ||= this.languages, t ||= this.options.ns, n ||= Y, this.services.backendConnector.reload(e, t, (e) => {
 			r.resolve(), n(e);
 		}), r;
 	}
 	use(e) {
 		if (!e) throw Error("You are passing an undefined module! Please check the object you are passing to i18next.use()");
 		if (!e.type) throw Error("You are passing a wrong module! Please check the object you are passing to i18next.use()");
-		return e.type === "backend" && (this.modules.backend = e), (e.type === "logger" || e.log && e.warn && e.error) && (this.modules.logger = e), e.type === "languageDetector" && (this.modules.languageDetector = e), e.type === "i18nFormat" && (this.modules.i18nFormat = e), e.type === "postProcessor" && P.addPostProcessor(e), e.type === "formatter" && (this.modules.formatter = e), e.type === "3rdParty" && this.modules.external.push(e), this;
+		return e.type === "backend" && (this.modules.backend = e), (e.type === "logger" || e.log && e.warn && e.error) && (this.modules.logger = e), e.type === "languageDetector" && (this.modules.languageDetector = e), e.type === "i18nFormat" && (this.modules.i18nFormat = e), e.type === "postProcessor" && F.addPostProcessor(e), e.type === "formatter" && (this.modules.formatter = e), e.type === "3rdParty" && this.modules.external.push(e), this;
 	}
 	setResolvedLanguage(e) {
-		if (!(!e || !this.languages) && !["cimode", "dev"].includes(e)) {
+		if (e && this.languages && !["cimode", "dev"].includes(e)) {
 			for (let e = 0; e < this.languages.length; e++) {
 				let t = this.languages[e];
 				if (!["cimode", "dev"].includes(t) && this.store.hasLanguageSomeTranslations(t)) {
@@ -1118,7 +1151,7 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 	}
 	changeLanguage(e, t) {
 		this.isLanguageChangingTo = e;
-		let n = u();
+		let n = d();
 		this.emit("languageChanging", e);
 		let r = (e) => {
 			this.language = e, this.languages = this.services.languageUtils.toResolveHierarchy(e), this.resolvedLanguage = void 0, this.setResolvedLanguage(e);
@@ -1126,26 +1159,28 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 			a ? this.isLanguageChangingTo === e && (r(a), this.translator.changeLanguage(a), this.isLanguageChangingTo = void 0, this.emit("languageChanged", a), this.logger.log("languageChanged", a)) : this.isLanguageChangingTo = void 0, n.resolve((...e) => this.t(...e)), t && t(i, (...e) => this.t(...e));
 		}, a = (t) => {
 			!e && !t && this.services.languageDetector && (t = []);
-			let n = l(t) ? t : t && t[0], a = this.store.hasLanguageSomeTranslations(n) ? n : this.services.languageUtils.getBestMatchFromCodes(l(t) ? [t] : t);
+			let n = u(t) ? t : t && t[0], a = this.store.hasLanguageSomeTranslations(n) ? n : this.services.languageUtils.getBestMatchFromCodes(u(t) ? [t] : t);
 			a && (this.language || r(a), this.translator.language || this.translator.changeLanguage(a), this.services.languageDetector?.cacheUserLanguage?.(a)), this.loadResources(a, (e) => {
 				i(e, a);
 			});
 		};
 		return !e && this.services.languageDetector && !this.services.languageDetector.async ? a(this.services.languageDetector.detect()) : !e && this.services.languageDetector && this.services.languageDetector.async ? this.services.languageDetector.detect.length === 0 ? this.services.languageDetector.detect().then(a) : this.services.languageDetector.detect(a) : a(e), n;
 	}
-	getFixedT(e, t, n) {
-		let r = (e, t, ...i) => {
-			let a;
-			a = typeof t == "object" ? { ...t } : this.options.overloadTranslationOptionHandler([e, t].concat(i)), a.lng = a.lng || r.lng, a.lngs = a.lngs || r.lngs, a.ns = a.ns || r.ns, a.keyPrefix !== "" && (a.keyPrefix = a.keyPrefix || n || r.keyPrefix);
-			let o = {
+	getFixedT(e, t, n, r) {
+		let i = r?.scopeNs, a = (e, t, ...r) => {
+			let o;
+			o = typeof t == "object" ? { ...t } : this.options.overloadTranslationOptionHandler([e, t].concat(r)), o.lng = o.lng || a.lng, o.lngs = o.lngs || a.lngs;
+			let s = o.ns !== void 0 && o.ns !== null;
+			o.ns = o.ns || a.ns, o.keyPrefix !== "" && (o.keyPrefix = o.keyPrefix || n || a.keyPrefix);
+			let c = {
 				...this.options,
-				...a
+				...o
 			};
-			typeof a.keyPrefix == "function" && (a.keyPrefix = L(a.keyPrefix, o));
-			let s = this.options.keySeparator || ".", c;
-			return a.keyPrefix && Array.isArray(e) ? c = e.map((e) => (typeof e == "function" && (e = L(e, o)), `${a.keyPrefix}${s}${e}`)) : (typeof e == "function" && (e = L(e, o)), c = a.keyPrefix ? `${a.keyPrefix}${s}${e}` : e), this.t(c, a);
+			Array.isArray(i) && !s && (c.ns = i), typeof o.keyPrefix == "function" && (o.keyPrefix = L(o.keyPrefix, c));
+			let l = this.options.keySeparator || ".", u;
+			return o.keyPrefix && Array.isArray(e) ? u = e.map((e) => (typeof e == "function" && (e = L(e, c)), `${o.keyPrefix}${l}${e}`)) : (typeof e == "function" && (e = L(e, c)), u = o.keyPrefix ? `${o.keyPrefix}${l}${e}` : e), this.t(u, o);
 		};
-		return l(e) ? r.lng = e : r.lngs = e, r.ns = t, r.keyPrefix = n, r;
+		return u(e) ? a.lng = e : a.lngs = e, a.ns = t, a.keyPrefix = n, a;
 	}
 	t(...e) {
 		return this.translator?.translate(...e);
@@ -1172,16 +1207,16 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		return !!(this.hasResourceBundle(n, e) || !this.services.backendConnector.backend || this.options.resources && !this.options.partialBundledLanguages || a(n, e) && (!r || a(i, e)));
 	}
 	loadNamespaces(e, t) {
-		let n = u();
-		return this.options.ns ? (l(e) && (e = [e]), e.forEach((e) => {
+		let n = d();
+		return this.options.ns ? (u(e) && (e = [e]), e.forEach((e) => {
 			this.options.ns.includes(e) || this.options.ns.push(e);
 		}), this.loadResources((e) => {
 			n.resolve(), t && t(e);
 		}), n) : (t && t(), Promise.resolve());
 	}
 	loadLanguages(e, t) {
-		let n = u();
-		l(e) && (e = [e]);
+		let n = d();
+		u(e) && (e = [e]);
 		let r = this.options.preload || [], i = e.filter((e) => !r.includes(e) && this.services.languageUtils.isSupportedCode(e));
 		return i.length ? (this.options.preload = r.concat(i), this.loadResources((e) => {
 			n.resolve(), t && t(e);
@@ -1196,14 +1231,14 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 				if (e && e.direction) return e.direction;
 			}
 		} catch {}
-		let t = /* @__PURE__ */ "ar.shu.sqr.ssh.xaa.yhd.yud.aao.abh.abv.acm.acq.acw.acx.acy.adf.ads.aeb.aec.afb.ajp.apc.apd.arb.arq.ars.ary.arz.auz.avl.ayh.ayl.ayn.ayp.bbz.pga.he.iw.ps.pbt.pbu.pst.prp.prd.ug.ur.ydd.yds.yih.ji.yi.hbo.men.xmn.fa.jpr.peo.pes.prs.dv.sam.ckb".split("."), n = this.services?.languageUtils || new B(J());
+		let t = /* @__PURE__ */ "ar.shu.sqr.ssh.xaa.yhd.yud.aao.abh.abv.acm.acq.acw.acx.acy.adf.ads.aeb.aec.afb.ajp.apc.apd.arb.arq.ars.ary.arz.auz.avl.ayh.ayl.ayn.ayp.bbz.pga.he.iw.ps.pbt.pbu.pst.prp.prd.ug.ur.ydd.yds.yih.ji.yi.hbo.men.xmn.fa.jpr.peo.pes.prs.dv.sam.ckb".split("."), n = this.services?.languageUtils || new B(q());
 		return e.toLowerCase().indexOf("-latn") > 1 ? "ltr" : t.includes(n.getLanguagePartFromCode(e)) || e.toLowerCase().indexOf("-arab") > 1 ? "rtl" : "ltr";
 	}
 	static createInstance(t = {}, n) {
 		let r = new e(t, n);
 		return r.createInstance = e.createInstance, r;
 	}
-	cloneInstance(t = {}, n = X) {
+	cloneInstance(t = {}, n = Y) {
 		let r = t.forkResourceStore;
 		r && delete t.forkResourceStore;
 		let i = {
@@ -1217,9 +1252,9 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 			"language"
 		].forEach((e) => {
 			a[e] = this[e];
-		}), a.services = { ...this.services }, a.services.utils = { hasLoadedNamespace: a.hasLoadedNamespace.bind(a) }, r && (a.store = new N(Object.keys(this.store.data).reduce((e, t) => (e[t] = { ...this.store.data[t] }, e[t] = Object.keys(e[t]).reduce((n, r) => (n[r] = { ...e[t][r] }, n), e[t]), e), {}), i), a.services.resourceStore = a.store), t.interpolation) {
+		}), a.services = { ...this.services }, a.services.utils = { hasLoadedNamespace: a.hasLoadedNamespace.bind(a) }, r && (a.store = new P(Object.keys(this.store.data).reduce((e, t) => (e[t] = { ...this.store.data[t] }, e[t] = Object.keys(e[t]).reduce((n, r) => (n[r] = { ...e[t][r] }, n), e[t]), e), {}), i), a.services.resourceStore = a.store), t.interpolation) {
 			let e = {
-				...J().interpolation,
+				...q().interpolation,
 				...this.options.interpolation,
 				...t.interpolation
 			}, n = {
@@ -1242,8 +1277,8 @@ var R = (e) => !l(e) && typeof e != "boolean" && typeof e != "number", z = class
 		};
 	}
 }.createInstance();
-Z.createInstance, Z.dir, Z.init, Z.loadResources, Z.reloadResources, Z.use, Z.changeLanguage, Z.getFixedT, Z.t, Z.exists, Z.setDefaultNamespace, Z.hasLoadedNamespace, Z.loadNamespaces, Z.loadLanguages;
-var se = /&(?:amp|#38|lt|#60|gt|#62|apos|#39|quot|#34|nbsp|#160|copy|#169|reg|#174|hellip|#8230|#x2F|#47);/g, ce = {
+X.createInstance, X.dir, X.init, X.loadResources, X.reloadResources, X.use, X.changeLanguage, X.getFixedT, X.t, X.exists, X.setDefaultNamespace, X.hasLoadedNamespace, X.loadNamespaces, X.loadLanguages;
+var le = /&(?:amp|#38|lt|#60|gt|#62|apos|#39|quot|#34|nbsp|#160|copy|#169|reg|#174|hellip|#8230|#x2F|#47);/g, ue = {
 	"&amp;": "&",
 	"&#38;": "&",
 	"&lt;": "<",
@@ -1264,7 +1299,7 @@ var se = /&(?:amp|#38|lt|#60|gt|#62|apos|#39|quot|#34|nbsp|#160|copy|#169|reg|#1
 	"&#8230;": "…",
 	"&#x2F;": "/",
 	"&#47;": "/"
-}, le = (e) => ce[e], Q = {
+}, de = (e) => ue[e], Z = {
 	bindI18n: "languageChanged",
 	bindI18nStore: "",
 	transEmptyNodeValue: "",
@@ -1277,27 +1312,62 @@ var se = /&(?:amp|#38|lt|#60|gt|#62|apos|#39|quot|#34|nbsp|#160|copy|#169|reg|#1
 		"p"
 	],
 	useSuspense: !0,
-	unescape: (e) => e.replace(se, le),
+	unescape: (e) => e.replace(le, de),
 	transDefaultProps: void 0
-}, ue = (e = {}) => {
-	Q = {
-		...Q,
+}, fe = (e = {}) => {
+	Z = {
+		...Z,
 		...e
 	};
-}, $ = {
+}, pe = {
 	type: "3rdParty",
 	init(e) {
-		ue(e.options.react);
+		fe(e.options.react);
 	}
-}, de = e();
-function fe({ i18n: e, defaultNS: r, children: i }) {
+}, me = e();
+function he({ i18n: e, defaultNS: r, children: i }) {
 	let a = n(() => ({
 		i18n: e,
 		defaultNS: r
 	}), [e, r]);
-	return t(de.Provider, { value: a }, i);
+	return t(me.Provider, { value: a }, i);
 }
-var pe = "shared", me = [
+var ge = (e, t, n) => {
+	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
+	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
+		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
+	});
+}, _e = [
+	"__proto__",
+	"constructor",
+	"prototype"
+], Q = function(e, t) {
+	return !(typeof e != "string" || e.length > 128 || _e.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
+}, ve = function(e) {
+	return {
+		type: "backend",
+		init: function(e, t, n) {},
+		read: function(t, n, r) {
+			if (!Q(t, !1) || !Q(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
+			if (typeof e == "function") {
+				if (e.length < 3) {
+					try {
+						var i = e(t, n);
+						i && typeof i.then == "function" ? i.then(function(e) {
+							return r(null, e && e.default || e);
+						}).catch(r) : r(null, i);
+					} catch (e) {
+						r(e);
+					}
+					return;
+				}
+				e(t, n, r);
+				return;
+			}
+			r(null, e && e[t] && e[t][n]);
+		}
+	};
+}, ye = "shared", be = [
 	"about",
 	"blog",
 	"careers",
@@ -1311,26 +1381,412 @@ var pe = "shared", me = [
 	"shared",
 	"team"
 ];
-function he(e = "en") {
-	let t = Z.createInstance();
-	return t.use($).init({
+function xe(e = "en") {
+	let t = X.createInstance();
+	return t.use(pe).use(ve((e, t) => ge(Object.assign({
+		"./locales/de/about.json": () => import("../i18n/locales/de/about.json"),
+		"./locales/de/blog.json": () => import("../i18n/locales/de/blog.json"),
+		"./locales/de/careers.json": () => import("../i18n/locales/de/careers.json"),
+		"./locales/de/contact.json": () => import("../i18n/locales/de/contact.json"),
+		"./locales/de/faq.json": () => import("../i18n/locales/de/faq.json"),
+		"./locales/de/home.json": () => import("../i18n/locales/de/home.json"),
+		"./locales/de/pricing.json": () => import("../i18n/locales/de/pricing.json"),
+		"./locales/de/products.json": () => import("../i18n/locales/de/products.json"),
+		"./locales/de/route.json": () => import("../i18n/locales/de/route.json"),
+		"./locales/de/settings.json": () => import("../i18n/locales/de/settings.json"),
+		"./locales/de/shared.json": () => import("../i18n/locales/de/shared.json"),
+		"./locales/de/team.json": () => import("../i18n/locales/de/team.json"),
+		"./locales/en/about.json": () => import("./about-M1sMWj1s.js"),
+		"./locales/en/blog.json": () => import("./blog-Cn2HM2Ne.js"),
+		"./locales/en/careers.json": () => import("./careers-AcqDO_Rk.js"),
+		"./locales/en/contact.json": () => import("./contact-DMI0nGM8.js"),
+		"./locales/en/faq.json": () => import("./faq-D8Z24sSG.js"),
+		"./locales/en/home.json": () => import("./home-4xN7_Zum.js"),
+		"./locales/en/pricing.json": () => import("./pricing-CIELH6yi.js"),
+		"./locales/en/products.json": () => import("./products-Dtvi99Bo.js"),
+		"./locales/en/route.json": () => import("./route-CS6jLh6_.js"),
+		"./locales/en/settings.json": () => import("./settings-BTax84eA.js"),
+		"./locales/en/shared.json": () => import("./shared-CBduF48T.js"),
+		"./locales/en/team.json": () => import("./team-BILWd-Jf.js"),
+		"./locales/es/about.json": () => import("../i18n/locales/es/about.json"),
+		"./locales/es/blog.json": () => import("../i18n/locales/es/blog.json"),
+		"./locales/es/careers.json": () => import("../i18n/locales/es/careers.json"),
+		"./locales/es/contact.json": () => import("../i18n/locales/es/contact.json"),
+		"./locales/es/faq.json": () => import("../i18n/locales/es/faq.json"),
+		"./locales/es/home.json": () => import("../i18n/locales/es/home.json"),
+		"./locales/es/pricing.json": () => import("../i18n/locales/es/pricing.json"),
+		"./locales/es/products.json": () => import("../i18n/locales/es/products.json"),
+		"./locales/es/route.json": () => import("../i18n/locales/es/route.json"),
+		"./locales/es/settings.json": () => import("../i18n/locales/es/settings.json"),
+		"./locales/es/shared.json": () => import("../i18n/locales/es/shared.json"),
+		"./locales/es/team.json": () => import("../i18n/locales/es/team.json"),
+		"./locales/fr/about.json": () => import("../i18n/locales/fr/about.json"),
+		"./locales/fr/blog.json": () => import("../i18n/locales/fr/blog.json"),
+		"./locales/fr/careers.json": () => import("../i18n/locales/fr/careers.json"),
+		"./locales/fr/contact.json": () => import("../i18n/locales/fr/contact.json"),
+		"./locales/fr/faq.json": () => import("../i18n/locales/fr/faq.json"),
+		"./locales/fr/home.json": () => import("../i18n/locales/fr/home.json"),
+		"./locales/fr/pricing.json": () => import("../i18n/locales/fr/pricing.json"),
+		"./locales/fr/products.json": () => import("../i18n/locales/fr/products.json"),
+		"./locales/fr/route.json": () => import("../i18n/locales/fr/route.json"),
+		"./locales/fr/settings.json": () => import("../i18n/locales/fr/settings.json"),
+		"./locales/fr/shared.json": () => import("../i18n/locales/fr/shared.json"),
+		"./locales/fr/team.json": () => import("../i18n/locales/fr/team.json"),
+		"./locales/it/about.json": () => import("../i18n/locales/it/about.json"),
+		"./locales/it/blog.json": () => import("../i18n/locales/it/blog.json"),
+		"./locales/it/careers.json": () => import("../i18n/locales/it/careers.json"),
+		"./locales/it/contact.json": () => import("../i18n/locales/it/contact.json"),
+		"./locales/it/faq.json": () => import("../i18n/locales/it/faq.json"),
+		"./locales/it/home.json": () => import("../i18n/locales/it/home.json"),
+		"./locales/it/pricing.json": () => import("../i18n/locales/it/pricing.json"),
+		"./locales/it/products.json": () => import("../i18n/locales/it/products.json"),
+		"./locales/it/route.json": () => import("../i18n/locales/it/route.json"),
+		"./locales/it/settings.json": () => import("../i18n/locales/it/settings.json"),
+		"./locales/it/shared.json": () => import("../i18n/locales/it/shared.json"),
+		"./locales/it/team.json": () => import("../i18n/locales/it/team.json"),
+		"./locales/ja/about.json": () => import("../i18n/locales/ja/about.json"),
+		"./locales/ja/blog.json": () => import("../i18n/locales/ja/blog.json"),
+		"./locales/ja/careers.json": () => import("../i18n/locales/ja/careers.json"),
+		"./locales/ja/contact.json": () => import("../i18n/locales/ja/contact.json"),
+		"./locales/ja/faq.json": () => import("../i18n/locales/ja/faq.json"),
+		"./locales/ja/home.json": () => import("../i18n/locales/ja/home.json"),
+		"./locales/ja/pricing.json": () => import("../i18n/locales/ja/pricing.json"),
+		"./locales/ja/products.json": () => import("../i18n/locales/ja/products.json"),
+		"./locales/ja/route.json": () => import("../i18n/locales/ja/route.json"),
+		"./locales/ja/settings.json": () => import("../i18n/locales/ja/settings.json"),
+		"./locales/ja/shared.json": () => import("../i18n/locales/ja/shared.json"),
+		"./locales/ja/team.json": () => import("../i18n/locales/ja/team.json"),
+		"./locales/ko/about.json": () => import("../i18n/locales/ko/about.json"),
+		"./locales/ko/blog.json": () => import("../i18n/locales/ko/blog.json"),
+		"./locales/ko/careers.json": () => import("../i18n/locales/ko/careers.json"),
+		"./locales/ko/contact.json": () => import("../i18n/locales/ko/contact.json"),
+		"./locales/ko/faq.json": () => import("../i18n/locales/ko/faq.json"),
+		"./locales/ko/home.json": () => import("../i18n/locales/ko/home.json"),
+		"./locales/ko/pricing.json": () => import("../i18n/locales/ko/pricing.json"),
+		"./locales/ko/products.json": () => import("../i18n/locales/ko/products.json"),
+		"./locales/ko/route.json": () => import("../i18n/locales/ko/route.json"),
+		"./locales/ko/settings.json": () => import("../i18n/locales/ko/settings.json"),
+		"./locales/ko/shared.json": () => import("../i18n/locales/ko/shared.json"),
+		"./locales/ko/team.json": () => import("../i18n/locales/ko/team.json"),
+		"./locales/pt/about.json": () => import("../i18n/locales/pt/about.json"),
+		"./locales/pt/blog.json": () => import("../i18n/locales/pt/blog.json"),
+		"./locales/pt/careers.json": () => import("../i18n/locales/pt/careers.json"),
+		"./locales/pt/contact.json": () => import("../i18n/locales/pt/contact.json"),
+		"./locales/pt/faq.json": () => import("../i18n/locales/pt/faq.json"),
+		"./locales/pt/home.json": () => import("../i18n/locales/pt/home.json"),
+		"./locales/pt/pricing.json": () => import("../i18n/locales/pt/pricing.json"),
+		"./locales/pt/products.json": () => import("../i18n/locales/pt/products.json"),
+		"./locales/pt/route.json": () => import("../i18n/locales/pt/route.json"),
+		"./locales/pt/settings.json": () => import("../i18n/locales/pt/settings.json"),
+		"./locales/pt/shared.json": () => import("../i18n/locales/pt/shared.json"),
+		"./locales/pt/team.json": () => import("../i18n/locales/pt/team.json"),
+		"./locales/ru/about.json": () => import("../i18n/locales/ru/about.json"),
+		"./locales/ru/blog.json": () => import("../i18n/locales/ru/blog.json"),
+		"./locales/ru/careers.json": () => import("../i18n/locales/ru/careers.json"),
+		"./locales/ru/contact.json": () => import("../i18n/locales/ru/contact.json"),
+		"./locales/ru/faq.json": () => import("../i18n/locales/ru/faq.json"),
+		"./locales/ru/home.json": () => import("../i18n/locales/ru/home.json"),
+		"./locales/ru/pricing.json": () => import("../i18n/locales/ru/pricing.json"),
+		"./locales/ru/products.json": () => import("../i18n/locales/ru/products.json"),
+		"./locales/ru/route.json": () => import("../i18n/locales/ru/route.json"),
+		"./locales/ru/settings.json": () => import("../i18n/locales/ru/settings.json"),
+		"./locales/ru/shared.json": () => import("../i18n/locales/ru/shared.json"),
+		"./locales/ru/team.json": () => import("../i18n/locales/ru/team.json"),
+		"./locales/zh/about.json": () => import("../i18n/locales/zh/about.json"),
+		"./locales/zh/blog.json": () => import("../i18n/locales/zh/blog.json"),
+		"./locales/zh/careers.json": () => import("../i18n/locales/zh/careers.json"),
+		"./locales/zh/contact.json": () => import("../i18n/locales/zh/contact.json"),
+		"./locales/zh/faq.json": () => import("../i18n/locales/zh/faq.json"),
+		"./locales/zh/home.json": () => import("../i18n/locales/zh/home.json"),
+		"./locales/zh/pricing.json": () => import("../i18n/locales/zh/pricing.json"),
+		"./locales/zh/products.json": () => import("../i18n/locales/zh/products.json"),
+		"./locales/zh/route.json": () => import("../i18n/locales/zh/route.json"),
+		"./locales/zh/settings.json": () => import("../i18n/locales/zh/settings.json"),
+		"./locales/zh/shared.json": () => import("../i18n/locales/zh/shared.json"),
+		"./locales/zh/team.json": () => import("../i18n/locales/zh/team.json")
+	}), `./locales/${e}/${t}.json`, 4))).init({
 		resources: {},
 		lng: e,
 		fallbackLng: "en",
-		ns: me,
-		defaultNS: pe,
+		ns: be,
+		defaultNS: ye,
 		interpolation: { escapeValue: !1 },
 		react: { useSuspense: !1 }
 	}), t;
 }
-var ge = he();
-function _e({ children: e }) {
-	return a(fe, {
-		i18n: ge,
+var Se = xe(), Ce = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/scripts/Wrapper.tsx";
+function we({ children: e }) {
+	return a(he, {
+		i18n: Se,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: Ce,
+		lineNumber: 7,
+		columnNumber: 5
+	}, this);
 }
-function ve() {
-	return a(_e, { children: a(c, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/src/components/LocaleSwitcher.wrapper.tsx";
+function Te() {
+	return a(we, { children: a(l, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { ve as default };
+export { Te as default };
+var e = {
+	"aboutHeader.methodology": "Methodology",
+	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",
+	"whatWeMeasure.bundleSizeImpact": "Bundle size impact",
+	"whatWeMeasure.theAdditionalJavascriptBytesSent": "The additional JavaScript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
+	"whatWeMeasure.renderingOverhead": "Rendering overhead",
+	"whatWeMeasure.howMuchExtraTimeThe": "How much extra time the i18n layer adds to each component render — measured using React Profiler's actualDuration.",
+	"whatWeMeasure.hydrationCost": "Hydration cost",
+	"whatWeMeasure.duringSsrTranslationDataIs": "During SSR, translation data is serialized into the HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
+	"whatWeMeasure.lazyLoadingEffectiveness": "Lazy loading effectiveness",
+	"whatWeMeasure.whetherSplittingTranslationsByRoute": "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).",
+	"whatWeMeasure.localeSwitchSpeed": "Locale switch speed",
+	"whatWeMeasure.howFastTheAppCan": "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.",
+	"whatWeMeasure.whatWeMeasure": "What We Measure",
+	"aboutGrid.testEnvironment": "Test Environment",
+	"aboutGrid.allBenchmarksRunOn": "All benchmarks run on the same hardware (M2 MacBook Pro, 16 GB RAM), same browser (Chromium 120 via Playwright), and same network conditions (simulated 4G). Each test is repeated 50 times and we report the median with P95/P99 percentiles.",
+	"aboutGrid.applicationDesign": "Application Design",
+	"aboutGrid.theBenchmarkAppHas10": "The benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. Each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
+	"aboutGrid.measurementMethodology": "Measurement Methodology",
+	"aboutGrid.weUseBrowserNativeApis": "We use browser-native APIs (Performance Timeline, Resource Timing, Layout Instability) combined with React Profiler data. Bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
+	"aboutGrid.fairComparison": "Fair Comparison",
+	"aboutGrid.eachI18nLibraryIsIntegrated": "Each i18n library is integrated following its official documentation and best practices. We consult maintainers when possible to ensure optimal configuration. The same React app, same Vite config, same deployment."
+};
+export { e as default };
+var e = {
+	"blogList.i18nBenchmark2026Results": "i18n Benchmark 2026 Results",
+	"blogList.march152026": "March 15, 2026",
+	"blogList.weTested12DifferentInternationalization": "We tested 12 different internationalization libraries across 10 pages. Here are the detailed results with interactive charts.",
+	"blogList.howToReduceYourI18n": "How to Reduce Your i18n Bundle by 60%",
+	"blogList.march82026": "March 8, 2026",
+	"blogList.practicalStrategiesForOptimizingTranslation": "Practical strategies for optimizing translation file loading, tree-shaking unused locales, and leveraging build-time compilation.",
+	"blogList.theStateOfInternationalizationIn": "The State of Internationalization in 2026",
+	"blogList.february282026": "February 28, 2026",
+	"blogList.anOverviewOfTheCurrent": "An overview of the current i18n ecosystem, comparing approaches from message catalogs to compiler-based solutions.",
+	"blogList.migratingFromReactI18nextTo": "Migrating from react-i18next to Lingui",
+	"blogList.february152026": "February 15, 2026",
+	"blogList.aStepByStepGuide": "A step-by-step guide for migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"blogList.serverComponentsAndI18nWhat": "Server Components and i18n: What Changes?",
+	"blogList.february12026": "February 1, 2026",
+	"blogList.reactServerComponentsIntroduceNew": "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"blogList.benchmarkMethodologyHowWeTest": "Benchmark Methodology: How We Test",
+	"blogList.january202026": "January 20, 2026",
+	"blogList.aTransparentLookAtOur": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"blogList.readMore": "Read More →",
+	"blogHeader.blog": "Blog",
+	"blogHeader.insightsDeepDivesAnd": "Insights, deep dives, and updates from the i18n benchmarking community."
+};
+export { e as default };
+var e = {
+	"careersHeader.careers": "Careers",
+	"careersHero.fromAnywhere": "from anywhere in the world",
+	"careersBenefits.competitivePay": "Competitive pay",
+	"careersBenefits.topOfMarket": "Top-of-market compensation",
+	"careersBenefits.openSourceTime": "Open source time",
+	"careersBenefits.twentyPercentTime": "20% time for OSS",
+	"careersPositions.seniorFrontendEngineer": "Senior Frontend Engineer",
+	"careersPositions.seniorFrontendEngineerDesc": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"openPositions.openPositions": "Open Positions",
+	"openPositions.remote": "Remote",
+	"openPositions.fullTime": "Full-time",
+	"openPositions.applyNow": "Apply Now"
+};
+export { e as default };
+var e = {
+	"contactForm.name": "Name",
+	"contactForm.email": "Email",
+	"contactForm.subject": "Subject",
+	"contactForm.message": "Message",
+	"contactForm.sendMessage": "Send Message",
+	"contactForm.wellGetBackTo": "We'll get back to you within 48 hours.",
+	"contactHeader.contactUs": "Contact Us",
+	"contactHeader.haveQuestionsOrWantTo": "Have questions or want to contribute? We'd love to hear from you."
+};
+export { e as default };
+var e = {
+	"faqList.howAreTheBenchmarks": "How are the benchmarks run?",
+	"faqList.allBenchmarksAreRun": "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",
+	"faqList.whatLibrariesAreCurrently": "What libraries are currently tested?",
+	"faqList.weCurrentlyBenchmarkReactI18next": "We currently benchmark react-i18next, react-intl (FormatJS), LinguiJS, typesafe-i18n, next-intl, and Paraglide. We plan to add more based on community requests.",
+	"faqList.canIContributeA": "Can I contribute a new library integration?",
+	"faqList.absolutelyWeWelcomeCommunity": "Absolutely! We welcome community contributions. Fork the repository, add your library integration following our template, and submit a pull request. See the Contributing guide for details.",
+	"faqList.howOftenAreResults": "How often are results updated?",
+	"faqList.benchmarksRunAutomaticallyVia": "Benchmarks run automatically via CI on every dependency update and weekly on the main branch. Results are published to the dashboard within 24 hours.",
+	"faqList.areTheResultsStatistically": "Are the results statistically significant?",
+	"faqList.yesWeUseThe": "Yes. We use the Mann-Whitney U test with a significance level of 0.05 to compare distributions. We also report confidence intervals and effect sizes.",
+	"faq-header1.frequentlyAskedQuestions": "Frequently Asked Questions",
+	"faq-header1.everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+};
+export { e as default };
+var e = {
+	"understandingImpact.understandingTheImpact": "Understanding the Impact",
+	"understandingImpact.whyASingleLargeJson": "Why a single large JSON can hurt performance",
+	"understandingImpact.manyI18nLibrariesStoreTranslations": "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:",
+	"understandingImpact.theJsonMustBeParsed": "The JSON must be parsed on every page load — blocking the main thread.",
+	"understandingImpact.contextBasedArchitecturesCanCause": "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+	"understandingImpact.duringServerSideRenderingThe": "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.",
+	"understandingImpact.theTradeOffsOfDynamic": "The trade-offs of dynamic loading",
+	"understandingImpact.splittingTranslationsIntoPerRoute": "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:",
+	"understandingImpact.waterfallRequests": "Waterfall requests:",
+	"understandingImpact.flashOfUntranslatedContentFouc": "Flash of untranslated content (FOUC):",
+	"understandingImpact.cacheInvalidation": "Cache invalidation:",
+	"understandingImpact.whatThisBenchmarkMeasures": "What this benchmark measures",
+	"understandingImpact.thisTestAppProvidesA": "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.",
+	"whyItMatters.whyTheseMetricsMatter": "Why These Metrics Matter",
+	"whyItMatters.bundleSize": "Bundle Size",
+	"whyItMatters.theBundleIsTheData": "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+	"whyItMatters.renderingHydration": "Rendering & Hydration",
+	"whyItMatters.connectingALargeJson": "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).",
+	"whyItMatters.dynamicLoading": "Dynamic Loading",
+	"whyItMatters.loadingAllTranslationsUpfront": "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.",
+	"resultsTable.sampleResults": "Sample Results",
+	"resultsTable.bundleSize": "Bundle Size",
+	"resultsTable.lookupTime": "Lookup Time",
+	"resultsTable.lazyLoading": "Lazy Loading",
+	"hero.aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+	"hero.viewResults": "View Results"
+};
+export { e as default };
+var e = {
+	"pricingTiers.starterTier": "Starter",
+	"pricingTiers.starterPrice": "$0",
+	"pricingTiers.forever": "forever",
+	"pricingTiers.runsPerDay": "5 benchmark runs/day",
+	"pricingTiers.libraries3": "3 libraries",
+	"pricingTiers.communitySupport": "Community support",
+	"pricingTiers.publicResults": "Public results",
+	"pricingTiers.getStarted": "Get Started",
+	"pricingTiers.proTier": "Pro",
+	"pricingTiers.proPrice": "$29",
+	"pricingTiers.perMonth": "/month",
+	"pricingTiers.unlimitedRuns": "Unlimited runs",
+	"pricingTiers.allLibraries": "All libraries",
+	"pricingTiers.prioritySupport": "Priority support",
+	"pricingTiers.privateResults": "Private results",
+	"pricingTiers.ciIntegration": "CI integration",
+	"pricingTiers.historicalData": "Historical data",
+	"pricingTiers.enterpriseTier": "Enterprise",
+	"pricingTiers.custom": "Custom",
+	"pricingTiers.everythingInPro": "Everything in Pro",
+	"pricingTiers.onPremiseOption": "On-premise option",
+	"pricingTiers.ssoSaml": "SSO & SAML",
+	"pricingTiers.dedicatedAccountManager": "Dedicated account manager",
+	"pricingTiers.customSLAs": "Custom SLAs",
+	"pricingTiers.auditLogs": "Audit logs",
+	"pricingTiers.trainingSessions": "Training sessions",
+	"pricingTiers.contactSales": "Contact Sales",
+	"pricingHeader.pricing": "Pricing",
+	"pricingHeader.transparentPricingForEvery": "Transparent pricing for every stage of your i18n journey."
+};
+export { e as default };
+var e = {
+	"products.benchmarkCLI": "Benchmark CLI",
+	"products.benchmarkCLIDesc": "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"products.benchmarkCLIPrice": "Free",
+	"products.benchmarkCloud": "Benchmark Cloud",
+	"products.benchmarkCloudDesc": "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"products.benchmarkCloudPrice": "$29/mo",
+	"products.benchmarkEnterprise": "Benchmark Enterprise",
+	"products.benchmarkEnterpriseDesc": "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"products.benchmarkEnterprisePrice": "Contact Us",
+	"products.migrationAssistant": "Migration Assistant",
+	"products.migrationAssistantDesc": "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"products.migrationAssistantPrice": "$99 one-time",
+	"products.translationQA": "Translation QA",
+	"products.translationQADesc": "Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"products.translationQAPrice": "$19/mo",
+	"products.bundleOptimizer": "Bundle Optimizer",
+	"products.bundleOptimizerDesc": "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
+	"products.bundleOptimizerPrice": "$49/mo",
+	"products.learnMore": "Learn More",
+	"productsHeader.ourProducts": "Our Products",
+	"productsHeader.exploreOurSuiteOfTools": "Explore our suite of tools designed to help you build better i18n apps."
+};
+export { e as default };
+var e = {
+	"route.oopsPageNotFound": "Oops! Page not found",
+	"route.returnToHome": "Return to Home",
+	"route.couldNotMeasureHydrationDuration": "Could not measure hydration duration:"
+};
+export { e as default };
+var e = {
+	"preferencesSection.preferences": "Preferences",
+	"preferencesSection.emailNotifications": "Email Notifications",
+	"preferencesSection.receiveWeeklyBenchmarkReports": "Receive weekly benchmark reports",
+	"preferencesSection.darkMode": "Dark Mode",
+	"preferencesSection.useDarkColorScheme": "Use dark color scheme",
+	"preferencesSection.defaultLanguage": "Default Language",
+	"settingsHeader.settings": "Settings",
+	"settingsHeader.manageYourAccountPreferences": "Manage your account preferences and configuration.",
+	"settingsFooter.cancel": "Cancel",
+	"settingsFooter.saveChanges": "Save Changes",
+	"apiAccessSection.apiAccess": "API Access",
+	"apiAccessSection.apiKey": "API Key",
+	"apiAccessSection.useThisKeyTo": "Use this key to access the benchmarking API programmatically.",
+	"apiAccessSection.copy": "Copy",
+	"profileSection.profile": "Profile",
+	"profileSection.displayName": "Display Name",
+	"profileSection.email": "Email"
+};
+export { e as default };
+var e = {
+	"header.home": "Home",
+	"header.methodology": "Methodology",
+	"header.mockPages": "Mock Pages",
+	"header.products": "Products",
+	"header.pricing": "Pricing",
+	"header.team": "Team",
+	"header.blog": "Blog",
+	"header.careers": "Careers",
+	"header.faq": "FAQ",
+	"header.contact": "Contact",
+	"header.settings": "Settings",
+	"header.goToGithub": "Go to GitHub",
+	"footer.resources": "Resources",
+	"footer.contact": "Contact",
+	"footer.github": "GitHub",
+	"footer.methodology": "Methodology",
+	"footer.contributing": "Contributing",
+	"footer.builtWith": "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.",
+	"footer.anOpenSourceTestApplication": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+	"mockBanner.text": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.",
+	"themeToggle.themeModeAutoSystemClick": "Theme mode: auto (system). Click to switch to light mode.",
+	"themeToggle.themeModeLightClick": "Theme mode: light. Click to switch to dark mode.",
+	"themeToggle.themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
+	"themeToggle.themeAuto": "Theme: Auto",
+	"themeToggle.themeDark": "Theme: Dark",
+	"themeToggle.themeLight": "Theme: Light"
+};
+export { e as default };
+var e = {
+	"teamGrid.sarahChen": "Sarah Chen",
+	"teamGrid.founderLeadEngineer": "Founder & Lead Engineer",
+	"teamGrid.formerGoogleEngineerWith10": "Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"teamGrid.marcusWeber": "Marcus Weber",
+	"teamGrid.performanceEngineer": "Performance Engineer",
+	"teamGrid.specializesInJavascriptPerformanceOptimization": "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"teamGrid.aishaPatel": "Aisha Patel",
+	"teamGrid.developerAdvocate": "Developer Advocate",
+	"teamGrid.passionateAboutDeveloperExperienceAnd": "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"teamGrid.tomasRodriguez": "Tomás Rodríguez",
+	"teamGrid.fullStackDeveloper": "Full-Stack Developer",
+	"teamGrid.maintainsTheBenchmarkingInfrastructureAnd": "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"teamGrid.yukiTanaka": "Yuki Tanaka",
+	"teamGrid.dataAnalyst": "Data Analyst",
+	"teamGrid.ensuresStatisticalRigorInAll": "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"teamGrid.elenaKowalski": "Elena Kowalski",
+	"teamGrid.communityManager": "Community Manager",
+	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Manages community contributions, partnerships, and events. Background in open source governance.",
+	"teamHeader.ourTeam": "Our Team",
+	"teamHeader.meetThePeopleBehindI18n": "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+};
+export { e as default };

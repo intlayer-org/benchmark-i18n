@@ -1,8 +1,8 @@
 import "svelte/internal/disclose-version";
 import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
-var root_1 = $.from_html(`<article class="rounded-lg border border-border bg-card p-6"><div class="mb-3 flex items-center gap-3"><span class="rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground"> </span> <span class="text-xs text-muted-foreground"> </span></div> <h2 class="mb-2 text-lg font-semibold text-foreground"> </h2> <p class="mb-4 text-sm text-muted-foreground"> </p> <button type="button" class="text-sm font-medium text-primary hover:underline">Read More →</button></article>`);
-var root = $.from_html(`<div class="grid gap-6 md:grid-cols-2"></div>`);
+var root = $.from_html(`<article class="rounded-lg border border-border bg-card p-6"><div class="mb-3 flex items-center gap-3"><span class="rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground"> </span> <span class="text-xs text-muted-foreground"> </span></div> <h2 class="mb-2 text-lg font-semibold text-foreground"> </h2> <p class="mb-4 text-sm text-muted-foreground"> </p> <button type="button" class="text-sm font-medium text-primary hover:underline">Read More →</button></article>`);
+var root_1 = $.from_html(`<div class="grid gap-6 md:grid-cols-2"></div>`);
 function BlogList($$anchor) {
 	const posts = [
 		{
@@ -42,23 +42,19 @@ function BlogList($$anchor) {
 			category: "Meta"
 		}
 	];
-	var div = root();
+	var div = root_1();
 	$.each(div, 5, () => posts, (p) => p.title, ($$anchor, p) => {
-		var article = root_1();
+		var article = root();
 		var div_1 = $.child(article);
 		var span = $.child(div_1);
-		var text = $.child(span, true);
-		$.reset(span);
+		var text = $.only_child(span, true);
 		var span_1 = $.sibling(span, 2);
-		var text_1 = $.child(span_1, true);
-		$.reset(span_1);
+		var text_1 = $.only_child(span_1, true);
 		$.reset(div_1);
 		var h2 = $.sibling(div_1, 2);
-		var text_2 = $.child(h2, true);
-		$.reset(h2);
+		var text_2 = $.only_child(h2, true);
 		var p_1 = $.sibling(h2, 2);
-		var text_3 = $.child(p_1, true);
-		$.reset(p_1);
+		var text_3 = $.only_child(p_1, true);
 		$.next(2);
 		$.reset(article);
 		$.template_effect(() => {

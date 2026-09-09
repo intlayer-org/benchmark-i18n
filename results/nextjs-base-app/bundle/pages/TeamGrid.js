@@ -1,6 +1,7 @@
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-base-app/components/pages/team/TeamGrid.tsx";
 function TeamGrid() {
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
 		children: [
 			{
@@ -33,27 +34,51 @@ function TeamGrid() {
 				role: "Community Manager",
 				bio: "Manages community contributions, partnerships, and events. Background in open source governance."
 			}
-		].map((m) => jsxs("div", {
+		].map((m) => jsxDEV("div", {
 			className: "rounded-lg border border-border bg-card p-6 text-center",
 			children: [
-				jsx("div", {
+				jsxDEV("div", {
 					className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 					children: m.name.split(" ").map((n) => n[0]).join("")
-				}),
-				jsx("h3", {
+				}, void 0, false, {
+					fileName: _jsxFileName,
+					lineNumber: 42,
+					columnNumber: 11
+				}, this),
+				jsxDEV("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: m.name
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName,
+					lineNumber: 48,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "mb-2 text-xs font-medium text-primary",
 					children: m.role
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName,
+					lineNumber: 49,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: m.bio
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName,
+					lineNumber: 50,
+					columnNumber: 11
+				}, this)
 			]
-		}, m.name))
-	});
+		}, m.name, true, {
+			fileName: _jsxFileName,
+			lineNumber: 38,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 36,
+		columnNumber: 5
+	}, this);
 }
 export { TeamGrid as default };

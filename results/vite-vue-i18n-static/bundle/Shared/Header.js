@@ -327,10 +327,13 @@ function createTokenizer(source, options = {}) {
 		const ctx = context();
 		pos.column += offset;
 		pos.offset += offset;
-		if (onError) onError(createCompileError(code, location ? createLocation(ctx.startLoc, pos) : null, {
-			domain: ERROR_DOMAIN$3,
-			args
-		}));
+		if (onError) {
+			const err = createCompileError(code, location ? createLocation(ctx.startLoc, pos) : null, {
+				domain: ERROR_DOMAIN$3,
+				args
+			});
+			onError(err);
+		}
 	}
 	function getToken(context, type, value) {
 		context.endLoc = currentPosition();
@@ -463,7 +466,7 @@ function createTokenizer(source, options = {}) {
 	}
 	function takeChar(scnr, fn) {
 		const ch = scnr.currentChar();
-		if (ch === EOF) return EOF;
+		if (ch === EOF) return;
 		if (fn(ch)) {
 			scnr.next();
 			return ch;
@@ -520,15 +523,16 @@ function createTokenizer(source, options = {}) {
 					scnr.next();
 				}
 			} else if (ch === "{" || ch === "}" || ch === "@" || ch === "|" || !ch) break;
-			else if (ch === CHAR_SP || ch === CHAR_LF) if (isTextStart(scnr)) {
-				buf += ch;
-				scnr.next();
-			} else if (isPluralStart(scnr)) break;
-			else {
-				buf += ch;
-				scnr.next();
-			}
-			else {
+			else if (ch === CHAR_SP || ch === CHAR_LF) {
+				if (isTextStart(scnr)) {
+					buf += ch;
+					scnr.next();
+				} else if (isPluralStart(scnr)) break;
+				else {
+					buf += ch;
+					scnr.next();
+				}
+			} else {
 				buf += ch;
 				scnr.next();
 			}
@@ -776,7 +780,6 @@ function createTokenizer(source, options = {}) {
 					return token;
 				}
 				if (isTextStart(scnr)) return getToken(context, 0, readText(scnr));
-				break;
 		}
 		return token;
 	}
@@ -822,10 +825,13 @@ function createParser(options = {}) {
 		const end = tokenzer.currentPosition();
 		end.offset += offset;
 		end.column += offset;
-		if (onError) onError(createCompileError(code, location ? createLocation(start, end) : null, {
-			domain: ERROR_DOMAIN$2,
-			args
-		}));
+		if (onError) {
+			const err = createCompileError(code, location ? createLocation(start, end) : null, {
+				domain: ERROR_DOMAIN$2,
+				args
+			});
+			onError(err);
+		}
 	}
 	function startNode(type, offset, loc) {
 		const node = { type };
@@ -1063,7 +1069,6 @@ function traverseNode(node, transformer) {
 		case 4:
 			transformer.helper("interpolate");
 			transformer.helper("named");
-			break;
 	}
 }
 function transform(ast, options = {}) {
@@ -1355,7 +1360,6 @@ function baseCompile$1(source, options = {}) {
 		};
 	}
 }
-function initFeatureFlags$1() {}
 function isMessageAST(val) {
 	return isObject(val) && resolveType(val) === 0 && (hasOwn(val, "b") || hasOwn(val, "body"));
 }
@@ -1551,16 +1555,17 @@ function getLocale(context, options) {
 var _resolveLocale;
 function resolveLocale(locale) {
 	if (isString(locale)) return locale;
-	else if (isFunction(locale)) if (locale.resolvedOnce && _resolveLocale != null) return _resolveLocale;
-	else if (locale.constructor.name === "Function") {
-		const resolve = locale();
-		if (isPromise(resolve)) throw createCoreError(CoreErrorCodes.NOT_SUPPORT_LOCALE_PROMISE_VALUE);
-		return _resolveLocale = resolve;
-	} else throw createCoreError(CoreErrorCodes.NOT_SUPPORT_LOCALE_ASYNC_FUNCTION);
-	else throw createCoreError(CoreErrorCodes.NOT_SUPPORT_LOCALE_TYPE);
+	else if (isFunction(locale)) {
+		if (locale.resolvedOnce && _resolveLocale != null) return _resolveLocale;
+		else if (locale.constructor.name === "Function") {
+			const resolve = locale();
+			if (isPromise(resolve)) throw createCoreError(CoreErrorCodes.NOT_SUPPORT_LOCALE_PROMISE_VALUE);
+			return _resolveLocale = resolve;
+		} else throw createCoreError(CoreErrorCodes.NOT_SUPPORT_LOCALE_ASYNC_FUNCTION);
+	} else throw createCoreError(CoreErrorCodes.NOT_SUPPORT_LOCALE_TYPE);
 }
 function fallbackWithSimple(ctx, fallback, start) {
-	return [...new Set([start, ...isArray(fallback) ? fallback : isObject(fallback) ? Object.keys(fallback) : isString(fallback) ? [fallback] : [start]])];
+	return [.../* @__PURE__ */ new Set([start, ...isArray(fallback) ? fallback : isObject(fallback) ? Object.keys(fallback) : isString(fallback) ? [fallback] : [start]])];
 }
 function fallbackWithLocaleChain(ctx, fallback, start) {
 	const startLocale = isString(start) ? start : DEFAULT_LOCALE;
@@ -2518,7 +2523,6 @@ function getMessageContextOptions(context, locale, message, options) {
 	if (isNumber(options.plural)) ctxOptions.pluralIndex = options.plural;
 	return ctxOptions;
 }
-initFeatureFlags$1();
 function getDevtoolsGlobalHook() {
 	return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
 }
@@ -2632,7 +2636,6 @@ function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
 	}
 }
 var VERSION = "11.4.0";
-function initFeatureFlags() {}
 var I18nErrorCodes = {
 	UNEXPECTED_RETURN_TYPE: 24,
 	INVALID_ARGUMENT: 25,
@@ -3206,9 +3209,11 @@ async function enableDevTools(app, i18n) {
 					updateComponentTreeTags(componentInstance, treeNode, i18n);
 				});
 				api.on.inspectComponent(({ componentInstance, instanceData }) => {
-					if (componentInstance.__VUE_I18N__ && instanceData) if (i18n.mode === "legacy") {
-						if (componentInstance.__VUE_I18N__ !== i18n.global.__composer) inspectComposer(instanceData, componentInstance.__VUE_I18N__);
-					} else inspectComposer(instanceData, componentInstance.__VUE_I18N__);
+					if (componentInstance.__VUE_I18N__ && instanceData) {
+						if (i18n.mode === "legacy") {
+							if (componentInstance.__VUE_I18N__ !== i18n.global.__composer) inspectComposer(instanceData, componentInstance.__VUE_I18N__);
+						} else inspectComposer(instanceData, componentInstance.__VUE_I18N__);
+					}
 				});
 				api.addInspector({
 					id: "vue-i18n-resource-inspector",
@@ -3512,7 +3517,8 @@ var Translation = defineComponent({
 			const arg = getInterpolateArg(context, keys);
 			const children = i18n[TranslateVNodeSymbol](props.keypath, arg, options);
 			const assignedAttrs = assign(create(), attrs);
-			return h(isString(props.tag) || isObject(props.tag) ? props.tag : getFragmentableTag(), assignedAttrs, children);
+			const tag = isString(props.tag) || isObject(props.tag) ? props.tag : getFragmentableTag();
+			return h(tag, assignedAttrs, children);
 		};
 	}
 });
@@ -3550,7 +3556,8 @@ function renderFormatter(props, context, slotKeys, partFormatter) {
 		});
 		else if (isString(parts)) children = [parts];
 		const assignedAttrs = assign(create(), attrs);
-		return h(isString(props.tag) || isObject(props.tag) ? props.tag : getFragmentableTag(), assignedAttrs, children);
+		const tag = isString(props.tag) || isObject(props.tag) ? props.tag : getFragmentableTag();
+		return h(tag, assignedAttrs, children);
 	};
 }
 var NumberFormat = defineComponent({
@@ -3897,7 +3904,6 @@ var DatetimeFormat = defineComponent({
 		return renderFormatter(props, context, DATETIME_FORMAT_OPTIONS_KEYS, (...args) => i18n[DatetimePartsSymbol](...args));
 	}
 });
-initFeatureFlags();
 registerMessageCompiler(compile);
 registerMessageResolver(resolveValue);
 registerLocaleFallbacker(fallbackWithLocaleChain);

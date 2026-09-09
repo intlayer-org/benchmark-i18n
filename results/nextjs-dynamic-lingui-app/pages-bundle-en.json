@@ -1,7 +1,7 @@
 {
   "app": "nextjs-dynamic-lingui-app",
   "locale": "en",
-  "timestamp": "2026-04-20T01:11:18.405Z",
+  "timestamp": "2026-09-09T18:57:30.591Z",
   "fingerprintCounts": {
     "locale": {
       "en": 87,
@@ -25,75 +25,75 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 621521,
-      "totalGzipSize": 177501,
-      "jsSize": 555475,
-      "jsGzipSize": 160233,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 42788,
-      "htmlGzipSize": 12410,
+      "totalSize": 566080,
+      "totalGzipSize": 167434,
+      "jsSize": 501576,
+      "jsGzipSize": 150277,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 41715,
+      "htmlGzipSize": 12346,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en",
-          "size": 42788,
-          "gzipSize": 12410,
+          "size": 41715,
+          "gzipSize": 12346,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.~8rbdp5qgpz.js",
-          "size": 11639,
-          "gzipSize": 3440,
+          "url": "/_next/static/chunks/2o7i6ruytpas7.js",
+          "size": 12831,
+          "gzipSize": 3720,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -326,75 +326,75 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 611737,
-      "totalGzipSize": 175307,
-      "jsSize": 548952,
-      "jsGzipSize": 158815,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 39527,
-      "htmlGzipSize": 11634,
+      "totalSize": 556379,
+      "totalGzipSize": 165244,
+      "jsSize": 495055,
+      "jsGzipSize": 148857,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 38535,
+      "htmlGzipSize": 11576,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/about",
-          "size": 39527,
-          "gzipSize": 11634,
+          "size": 38535,
+          "gzipSize": 11576,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/12nlv9z3hv9tz.js",
-          "size": 5116,
-          "gzipSize": 2022,
+          "url": "/_next/static/chunks/1pe1kf0ksjx0y.js",
+          "size": 6310,
+          "gzipSize": 2300,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -625,75 +625,75 @@
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 611316,
-      "totalGzipSize": 174932,
-      "jsSize": 548047,
-      "jsGzipSize": 158434,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 40011,
-      "htmlGzipSize": 11640,
+      "totalSize": 556202,
+      "totalGzipSize": 164906,
+      "jsSize": 494148,
+      "jsGzipSize": 148489,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 39265,
+      "htmlGzipSize": 11606,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/blog",
-          "size": 40011,
-          "gzipSize": 11640,
+          "size": 39265,
+          "gzipSize": 11606,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01d3v3~d40dc9.js",
-          "size": 4211,
-          "gzipSize": 1641,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/2q4zt9o06t437.js",
+          "size": 5403,
+          "gzipSize": 1932,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -924,75 +924,75 @@
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 610088,
-      "totalGzipSize": 175106,
-      "jsSize": 548897,
-      "jsGzipSize": 158599,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 37933,
-      "htmlGzipSize": 11649,
+      "totalSize": 554849,
+      "totalGzipSize": 165068,
+      "jsSize": 494999,
+      "jsGzipSize": 148649,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 37061,
+      "htmlGzipSize": 11608,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/careers",
-          "size": 37933,
-          "gzipSize": 11649,
+          "size": 37061,
+          "gzipSize": 11608,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/15vmx5pnyl15n.js",
-          "size": 5061,
-          "gzipSize": 1806,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/1mqo1l_dblijj.js",
+          "size": 6254,
+          "gzipSize": 2092,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -1223,75 +1223,75 @@
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 609971,
-      "totalGzipSize": 174889,
-      "jsSize": 548642,
-      "jsGzipSize": 158331,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 38071,
-      "htmlGzipSize": 11700,
+      "totalSize": 554785,
+      "totalGzipSize": 164841,
+      "jsSize": 494743,
+      "jsGzipSize": 148383,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 37253,
+      "htmlGzipSize": 11647,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/contact",
-          "size": 38071,
-          "gzipSize": 11700,
+          "size": 37253,
+          "gzipSize": 11647,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/00ot9ayn7juy8.js",
-          "size": 4806,
-          "gzipSize": 1538,
+          "url": "/_next/static/chunks/06ho1l5c3x0pa.js",
+          "size": 5998,
+          "gzipSize": 1826,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -1522,75 +1522,75 @@
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 612514,
-      "totalGzipSize": 175565,
-      "jsSize": 549386,
-      "jsGzipSize": 159152,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 39870,
-      "htmlGzipSize": 11555,
+      "totalSize": 557328,
+      "totalGzipSize": 165518,
+      "jsSize": 495487,
+      "jsGzipSize": 149201,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 39052,
+      "htmlGzipSize": 11506,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/faq",
-          "size": 39870,
-          "gzipSize": 11555,
+          "size": 39052,
+          "gzipSize": 11506,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/21dbd54ljt2li.js",
+          "size": 6742,
+          "gzipSize": 2644,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0ul_o0b4-zq84.js",
-          "size": 5550,
-          "gzipSize": 2359,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -1821,75 +1821,75 @@
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 612510,
-      "totalGzipSize": 175338,
-      "jsSize": 549320,
-      "jsGzipSize": 158738,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 39932,
-      "htmlGzipSize": 11742,
+      "totalSize": 557325,
+      "totalGzipSize": 165289,
+      "jsSize": 495421,
+      "jsGzipSize": 148794,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 39115,
+      "htmlGzipSize": 11684,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/pricing",
-          "size": 39932,
-          "gzipSize": 11742,
+          "size": 39115,
+          "gzipSize": 11684,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/06mz1s3jx1s79.js",
-          "size": 5484,
-          "gzipSize": 1945,
+          "url": "/_next/static/chunks/42d1lwkhkuo2n.js",
+          "size": 6676,
+          "gzipSize": 2237,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -2120,75 +2120,75 @@
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 611661,
-      "totalGzipSize": 175067,
-      "jsSize": 548770,
-      "jsGzipSize": 158628,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 39633,
-      "htmlGzipSize": 11581,
+      "totalSize": 556545,
+      "totalGzipSize": 165037,
+      "jsSize": 494871,
+      "jsGzipSize": 148680,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 38885,
+      "htmlGzipSize": 11546,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/products",
-          "size": 39633,
-          "gzipSize": 11581,
+          "size": 38885,
+          "gzipSize": 11546,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0xw1.gkmz.l2s.js",
-          "size": 4934,
-          "gzipSize": 1835,
+          "url": "/_next/static/chunks/12g3p2iulrwil.js",
+          "size": 6126,
+          "gzipSize": 2123,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -2419,75 +2419,75 @@
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 616208,
-      "totalGzipSize": 175788,
-      "jsSize": 552013,
-      "jsGzipSize": 158832,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 40937,
-      "htmlGzipSize": 12098,
+      "totalSize": 560615,
+      "totalGzipSize": 165727,
+      "jsSize": 498117,
+      "jsGzipSize": 148887,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 39709,
+      "htmlGzipSize": 12029,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/settings",
-          "size": 40937,
-          "gzipSize": 12098,
+          "size": 39709,
+          "gzipSize": 12029,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0erqz294rl-8_.js",
-          "size": 8177,
-          "gzipSize": 2039,
+          "url": "/_next/static/chunks/2rbse6w4ixo_s.js",
+          "size": 9372,
+          "gzipSize": 2330,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
@@ -2718,75 +2718,75 @@
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 610984,
-      "totalGzipSize": 175217,
-      "jsSize": 548560,
-      "jsGzipSize": 158703,
-      "cssSize": 23258,
-      "cssGzipSize": 4858,
-      "htmlSize": 39166,
-      "htmlGzipSize": 11656,
+      "totalSize": 555800,
+      "totalGzipSize": 165162,
+      "jsSize": 494661,
+      "jsGzipSize": 148750,
+      "cssSize": 22789,
+      "cssGzipSize": 4811,
+      "htmlSize": 38350,
+      "htmlGzipSize": 11601,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/team",
-          "size": 39166,
-          "gzipSize": 11656,
+          "size": 38350,
+          "gzipSize": 11601,
           "type": "html"
         },
         {
-          "url": "/_next/static/chunks/06zx24elwr03q.css",
-          "size": 23258,
-          "gzipSize": 4858,
+          "url": "/_next/static/chunks/0_ym93z7ik0oa.css",
+          "size": 22789,
+          "gzipSize": 4811,
           "type": "css"
         },
         {
-          "url": "/_next/static/chunks/0azkqtvms~w0j.js",
-          "size": 30239,
-          "gzipSize": 9317,
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b5mnzxqdpmo.js",
-          "size": 7846,
-          "gzipSize": 2870,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-022o-4ivwj-3i.js",
-          "size": 10547,
-          "gzipSize": 4133,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0of~o5zqumsp4.js",
-          "size": 54641,
-          "gzipSize": 12882,
+          "url": "/_next/static/chunks/007a4yq583w3g.js",
+          "size": 1121,
+          "gzipSize": 398,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/10325n.df1d3g.js",
-          "size": 25601,
-          "gzipSize": 9467,
+          "url": "/_next/static/chunks/3qk6l9kevq-lh.js",
+          "size": 5916,
+          "gzipSize": 2193,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0cq5wq.cy2arf.js",
-          "size": 4724,
-          "gzipSize": 1910,
+          "url": "/_next/static/chunks/3uqsbnokr6o89.js",
+          "size": 29359,
+          "gzipSize": 10908,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01ie9eeqj_c61.js",
-          "size": 188612,
-          "gzipSize": 47400,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0.z2pky2uw-2w.js",
-          "size": 226350,
-          "gzipSize": 70724,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],

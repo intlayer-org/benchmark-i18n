@@ -1,6 +1,6 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r } from "react/jsx-runtime";
-var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as r } from "react/jsx-dev-runtime";
+var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 }), o = i((() => {})), s = (0, i(((e, t) => {
@@ -63,7 +63,11 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 			let r = n[0], o = !1;
 			r && "count" in r && (t ? a.has(`${t}.${e}`) : a.has(e)) && (e = `${e}#${s(r.count)}`, o = !0);
 			let c = t ? i[`${t}.${e}`] : i[e];
-			if (c = !c && o ? (i[`${e.split("#", 1)[0]}#other`] || e)?.toString() : (c || e)?.toString(), !r) return c;
+			if (!c && o) {
+				let t = e.split("#", 1)[0];
+				c = (i[`${t}#other`] || e)?.toString();
+			} else c = (c || e)?.toString();
+			if (!r) return c;
 			let l = !0, u = c?.split(/({[^}]*})/).map((e, t) => {
 				let n = e.match(/{(.*)}/);
 				if (n) {
@@ -135,42 +139,43 @@ var i = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), a
 			useCurrentLocale: i
 		};
 	}
+	0 && (t.exports = { createI18nClient: V });
 }))().createI18nClient)({
-	en: () => import("./en-DFha1COx.js"),
-	fr: () => import("./fr-DopqBQTM.js"),
-	es: () => import("./es-Fh0Sda-o.js"),
-	de: () => import("./de-CxVsAQM9.js"),
-	it: () => import("./it-CGiQAyXQ.js"),
-	pt: () => import("./pt-S5iKJcgt.js"),
-	zh: () => import("./zh-BO0EZj84.js"),
-	ja: () => import("./ja-BpvhvRIc.js"),
-	ko: () => import("./ko-CPMsec0H.js"),
-	ru: () => import("./ru-CNYda61s.js")
-}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s;
-function f() {
+	en: () => import("./en-Bz-G1Uvz.js"),
+	fr: () => import("./fr-CasHq4og.js"),
+	es: () => import("./es-b0L9lZ98.js"),
+	de: () => import("./de-CqAONIB7.js"),
+	it: () => import("./it-YCXrqntH.js"),
+	pt: () => import("./pt-oi5cbcQN.js"),
+	zh: () => import("./zh-D9HG8cPB.js"),
+	ja: () => import("./ja-B1S-GRLK.js"),
+	ko: () => import("./ko-C6DeYIDJ.js"),
+	ru: () => import("./ru-GMiu7d6N.js")
+}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s, f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/ThemeToggle.tsx";
+function p() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function p(e) {
+function m(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function m() {
+function h() {
 	let t = c("theme-toggle"), [i, a] = n("auto");
 	e(() => {
-		let e = f();
-		a(e), p(e);
+		let e = p();
+		a(e), m(e);
 	}, []), e(() => {
 		if (i !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => p("auto");
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => m("auto");
 		return e.addEventListener("change", t), () => {
 			e.removeEventListener("change", t);
 		};
 	}, [i]);
 	function o() {
 		let e = i === "light" ? "dark" : i === "dark" ? "auto" : "light";
-		a(e), p(e), window.localStorage.setItem("theme", e);
+		a(e), m(e), window.localStorage.setItem("theme", e);
 	}
 	let s = t(i === "auto" ? "themeModeAutoSystemClick" : i === "light" ? "themeModeLightClick" : "themeModeDarkClick");
 	return r("button", {
@@ -180,9 +185,13 @@ function m() {
 		title: s,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: t(i === "auto" ? "themeAuto" : i === "dark" ? "themeDark" : "themeLight")
-	});
+	}, void 0, !1, {
+		fileName: f,
+		lineNumber: 77,
+		columnNumber: 5
+	}, this);
 }
-function h() {
+function g() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -196,36 +205,54 @@ function h() {
 		}
 	}
 }
-function g(e, t) {
+function _(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function _({ children: i, locale: a }) {
+var v = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
+function y({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		g("AppRoot", o);
+		_("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		h();
+		g();
 	}, []), r(l, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: v,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var v = "en";
-function y({ children: e }) {
-	return r(_, {
-		locale: v,
+var b = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx", x = "en";
+function S({ children: e }) {
+	return r(y, {
+		locale: x,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: b,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function b() {
-	return r(y, { children: r(m, {}) });
+var C = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/ThemeToggle.wrapper.tsx";
+function w() {
+	return r(S, { children: r(h, {}, void 0, !1, {
+		fileName: C,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: C,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { b as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+export { w as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/de/about.json";
 import r from "../messages/de/blog.json";
 import i from "../messages/de/careers.json";
@@ -253,7 +280,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 var n = t([
 	e({
 		"about-grid.whyThisExists": "Why This Exists",
@@ -529,7 +556,7 @@ var n = t([
 	})
 ]);
 export { n as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/es/about.json";
 import r from "../messages/es/blog.json";
 import i from "../messages/es/careers.json";
@@ -557,7 +584,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/fr/about.json";
 import r from "../messages/fr/blog.json";
 import i from "../messages/fr/careers.json";
@@ -585,7 +612,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/it/about.json";
 import r from "../messages/it/blog.json";
 import i from "../messages/it/careers.json";
@@ -613,7 +640,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/ja/about.json";
 import r from "../messages/ja/blog.json";
 import i from "../messages/ja/careers.json";
@@ -641,7 +668,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/ko/about.json";
 import r from "../messages/ko/blog.json";
 import i from "../messages/ko/careers.json";
@@ -669,7 +696,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/pt/about.json";
 import r from "../messages/pt/blog.json";
 import i from "../messages/pt/careers.json";
@@ -697,7 +724,7 @@ var m = t([
 	e(p)
 ]);
 export { m as default };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/ru/about.json";
 import r from "../messages/ru/blog.json";
 import i from "../messages/ru/careers.json";
@@ -741,7 +768,7 @@ function t(e, n) {
 	let r = { ...e };
 	for (let [e, i] of Object.entries(n)) {
 		let n = r[e];
-		typeof i == "object" && i && !Array.isArray(i) && typeof n == "object" && n && !Array.isArray(n) ? r[e] = t(n, i) : r[e] = i;
+		r[e] = typeof i == "object" && i && !Array.isArray(i) && typeof n == "object" && n && !Array.isArray(n) ? t(n, i) : i;
 	}
 	return r;
 }
@@ -749,7 +776,7 @@ function n(e) {
 	return e.reduce((e, n) => t(e, n), {});
 }
 export { e as n, n as t };
-import { n as e, t } from "./scopedMessages-DkPg9Ziu.js";
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/zh/about.json";
 import r from "../messages/zh/blog.json";
 import i from "../messages/zh/careers.json";

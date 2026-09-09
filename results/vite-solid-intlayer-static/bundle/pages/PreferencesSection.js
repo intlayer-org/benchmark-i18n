@@ -1,5 +1,5 @@
-import { Dynamic, effect, insert, setAttribute, template } from "solid-js/web";
-import { createContext, createMemo, createUniqueId, useContext } from "solid-js";
+import { effect, insert, setAttribute, template } from "solid-js/web";
+import { createContext, createMemo, createUniqueId, lazy, useContext } from "solid-js";
 var preferences_section_default = {
 	key: "preferences-section",
 	content: {
@@ -218,41 +218,34 @@ var preferences_section_default = {
 		}
 	}
 };
-var e = ({ children: e, value: t, additionalProps: n }) => {
-	let r = [e];
-	if (r.value = t, n) for (let e in n) r[e] = n[e];
-	return new Proxy(r, { get(e, n, r) {
-		return n === "value" ? t : n === "toString" ? () => String(t) : n === Symbol.toPrimitive ? (e) => e === "string" ? String(t) : e === "number" ? Number(t) : t : Reflect.get(e, n, r);
-	} });
+var e = {
+	constructor: "constructor",
+	length: "length",
+	slice: "slice",
+	promiseThen: "then",
+	toString: "toString",
+	valueOf: "valueOf",
+	value: "value"
 };
-var t = (n) => {
-	if (typeof n == "string") return n;
-	let { type: r, props: i } = ((e) => {
-		if (e?.props && typeof e.props.children == "object") {
-			let n = [], { children: r } = e.props;
-			return Object.keys(r ?? {}).forEach((e) => {
-				n.push(t(r?.[e]));
-			}), {
-				...e,
-				props: {
-					...e.props,
-					children: n
-				}
-			};
-		}
-		return {
-			...e,
-			props: {
-				...e.props,
-				children: e.props?.children ?? []
+var t = (e) => typeof e == "string" && /^\d+$/.test(e);
+var n$1 = ({ children: n, value: r, additionalProps: i }) => {
+	let a = [n];
+	if (a.value = r, i) for (let e in i) a[e] = i[e];
+	return new Proxy(a, { get(n, i, a) {
+		if (i === e.value) return r;
+		if (i === Symbol.toPrimitive) return (e) => e === "number" ? Number(r) : r ?? "";
+		if (i === e.toString) return () => String(r ?? "");
+		if (i === e.valueOf) return () => r;
+		if (i === e.slice) return Reflect.get(n, i, a);
+		if (r != null && typeof i == "string" && i !== e.constructor && i !== e.length && !t(i)) {
+			let e = Object(r);
+			if (i in e) {
+				let t = Reflect.get(e, i);
+				return typeof t == "function" ? t.bind(r) : t;
 			}
-		};
-	})(n);
-	return Dynamic({
-		component: r ?? "span",
-		...i,
-		children: i.children
-	});
+		}
+		return Reflect.get(n, i, a);
+	} });
 };
 var internationalization = {
 	"locales": [
@@ -284,14 +277,50 @@ var internationalization = {
 };
 var routing = {
 	"mode": "prefix-all",
+	"enableProxy": false,
 	"storage": {
 		"cookies": [{
 			"name": "INTLAYER_LOCALE",
-			"attributes": {}
+			"attributes": { "path": "/" }
 		}],
 		"headers": [{ "name": "x-intlayer-locale" }]
 	},
 	"basePath": ""
+};
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
+	return {
+		hit: true,
+		content: entries.get(cacheKey)
+	};
+};
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
+	}
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
 };
 var TRANSLATION = "translation";
 var OBJECT = "object";
@@ -311,28 +340,103 @@ var deepTransformNode = (node, props) => {
 		});
 	});
 	const result = {};
-	for (const key in node) Object.defineProperty(result, key, {
-		enumerable: true,
-		configurable: true,
-		get: function() {
-			const childProps = {
-				...props,
-				children: node[key],
-				keyPath: [...props.keyPath, {
-					type: OBJECT,
-					key
-				}]
-			};
-			const transformed = deepTransformNode(node[key], childProps);
-			Object.defineProperty(this, key, {
-				value: transformed,
-				enumerable: true,
-				configurable: true
-			});
-			return transformed;
+	for (const key in node) {
+		const childProps = {
+			...props,
+			children: node[key],
+			keyPath: [...props.keyPath, {
+				type: OBJECT,
+				key
+			}]
+		};
+		if (props.eager) {
+			result[key] = deepTransformNode(node[key], childProps);
+			continue;
 		}
-	});
+		Object.defineProperty(result, key, {
+			enumerable: true,
+			configurable: true,
+			get: function() {
+				const transformed = deepTransformNode(node[key], childProps);
+				Object.defineProperty(this, key, {
+					value: transformed,
+					enumerable: true,
+					configurable: true
+				});
+				return transformed;
+			}
+		});
+	}
 	return result;
+};
+var DEFAULT_VARIANT_ID = "default";
+var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
+var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
+var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+var encodeSegmentText = (raw, unsafeChars) => {
+	if (raw === "") return "%";
+	const encoded = raw.replace(unsafeChars, percentEncodeChar);
+	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
+	return encoded;
+};
+var serializeVariant = (variant) => {
+	if (variant === void 0) return DEFAULT_VARIANT_ID;
+	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
+	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
+};
+var serializeVariantChain = (variant) => {
+	if (!Array.isArray(variant)) return [serializeVariant(variant)];
+	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
+	return variant.map(serializeVariant);
+};
+var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
+	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
+	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
+};
+var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
+	const segments = compositeId.split("/");
+	return qualifierTypes.every((qualifierType, index) => {
+		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
+		return selector?.item === void 0 || segments[index] === String(selector.item);
+	});
+};
+var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
+var reconstructQualifiedEntry = (group, compositeId) => {
+	const segments = compositeId.split("/");
+	const entry = {
+		key: group.key,
+		content: group.content[compositeId]
+	};
+	group.qualifierTypes.forEach((qualifierType, index) => {
+		if (qualifierType === "variant") entry.variant = segments[index];
+		else if (qualifierType === "item") entry.item = Number(segments[index]);
+	});
+	return entry;
+};
+var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
+	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
+	const { qualifierTypes, content } = dictionaryOrGroup;
+	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
+	const compositeIds = Object.keys(content);
+	const variantIndex = qualifierTypes.indexOf("variant");
+	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
+	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
+	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
+	return matchedEntries[0] ?? null;
+};
+var parseDictionarySelector = (localeOrSelector) => {
+	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
+		locale: localeOrSelector.locale,
+		selector: localeOrSelector
+	};
+	return { locale: localeOrSelector };
+};
+var getDictionarySelectorCacheKey = (selector) => {
+	if (!selector) return "";
+	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
+		const value = selector[selectorKey];
+		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
+	}).join("|");
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -389,7 +493,7 @@ var fallbackPlugin = {
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
@@ -410,9 +514,11 @@ var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TR
 	}
 };
 var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
 var insertionPlugin = fallbackPlugin;
 var genderPlugin = fallbackPlugin;
+var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
 var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
@@ -422,66 +528,80 @@ var getBasePlugins = (locale, fallback = true) => [
 	insertionPlugin,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
-	genderPlugin
+	genderPlugin,
+	selectPlugin
 ];
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
+var getDictionary = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = parseDictionarySelector(localeOrSelector);
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries
+		};
+		return getContent(resolvedDictionary.content, props, appliedPlugins);
 	};
-	return getContent(dictionary.content, props, plugins);
-}, S$1 = {
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
+};
+var w = null;
+var T = null;
+w?.catch(() => {}), T?.catch(() => {});
+var E = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (t, { plugins: a, ...o }) => e({
-		...o,
-		value: o.children,
-		children: o.children
-	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
-	id: "solid-node-plugin",
-	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
-	transform: (a, { plugins: o, ...s }) => e({
+	transform: (n, { plugins: o, ...s }) => n$1({
 		...s,
-		value: "[[solid-element]]",
-		children: typeof Node < "u" && a instanceof Node ? a : t(a)
+		value: s.children,
+		children: s.children
 	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
+};
+var D = fallbackPlugin;
+var k = fallbackPlugin;
+lazy(() => w.then((e) => ({ default: e.MarkdownRenderer })));
+lazy(() => w.then((e) => ({ default: e.MarkdownMetadataRenderer })));
+var N = fallbackPlugin;
+lazy(() => T.then((e) => ({ default: e })));
+var F = fallbackPlugin;
+var I = /* @__PURE__ */ new Map();
+var L = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
-	if (k.has(n)) return k.get(n);
+	if (I.has(n)) return I.get(n);
 	let r = [
 		translationPlugin(e ?? internationalization.defaultLocale, t ? internationalization.defaultLocale : void 0),
 		enumerationPlugin,
+		pluralPlugin(e ?? internationalization.defaultLocale),
 		conditionPlugin,
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S$1,
-		C,
-		T,
+		selectPlugin,
+		E,
 		D,
-		O
+		k,
+		N,
+		F
 	];
-	return k.set(n, r), r;
+	return I.set(n, r), r;
 };
-var n = (n, r) => getDictionary(n, r, A(r));
-var TREE_SHAKE_STORAGE_COOKIES = process.env["INTLAYER_ROUTING_STORAGE_COOKIES"] === "false";
-process.env["INTLAYER_ROUTING_STORAGE_HEADERS"];
-var getLocaleFromStorageClient = (options = localeStorageOptions) => {
-	const { locales } = internationalization;
-	if (options?.isCookieEnabled === false) return void 0;
-	const isValidLocale = (value) => !!value && locales.includes(value);
-	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
-		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-}, localeStorageOptions = {
+var n = (n, r) => {
+	return getDictionary(n, r, L(typeof r == "object" && r ? r.locale : r));
+};
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -499,41 +619,66 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
-	locale: () => a ?? internationalization?.defaultLocale,
+};
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var b = createContext({
+	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
-var i = (i, a) => {
-	let o = useContext(y) ?? {};
-	return createMemo(() => n(i, a ?? o?.locale?.()));
+var a = Symbol("LOADABLE_SETTLED_VALUE");
+var h = (e) => {
+	if (!(e === null || typeof e != "object" && typeof e != "function")) return e[a];
+};
+var o = (o, s) => {
+	let c = useContext(b) ?? {}, l = createMemo(() => {
+		let t = c?.locale?.();
+		return n(h(o) ?? o, s ?? t);
+	});
+	return new Proxy(l, {
+		get(e, t) {
+			return e()?.[t];
+		},
+		apply(e, t, n) {
+			return Reflect.apply(e, t, n);
+		}
+	});
 };
 var _tmpl$ = template(`<section class="rounded-lg border border-border bg-card p-6"><h2 class="mb-4 text-lg font-semibold text-foreground"></h2><div class=space-y-4><div class="flex items-center justify-between"><div><p class="text-sm font-medium text-foreground"></p><p class="text-xs text-muted-foreground"></p></div><button type=button class="h-6 w-11 rounded-full bg-primary transition-colors"><span class="block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform"></span></button></div><div class="flex items-center justify-between"><div><p class="text-sm font-medium text-foreground"></p><p class="text-xs text-muted-foreground"></p></div><button type=button class="h-6 w-11 rounded-full bg-muted transition-colors"><span class="block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform"></span></button></div><div><label class="mb-1 block text-sm font-medium text-foreground"></label><select class="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"><option></option><option></option><option></option><option></option><option></option><option></option><option></option><option></option><option></option><option></option><option>`);
 function PreferencesSection() {
-	const content = i(preferences_section_default);
+	const content = o(preferences_section_default);
 	const languageId = createUniqueId();
 	return (() => {
 		var _el$ = _tmpl$(), _el$2 = _el$.firstChild, _el$4 = _el$2.nextSibling.firstChild, _el$5 = _el$4.firstChild, _el$6 = _el$5.firstChild, _el$7 = _el$6.nextSibling, _el$8 = _el$5.nextSibling, _el$9 = _el$4.nextSibling, _el$0 = _el$9.firstChild, _el$1 = _el$0.firstChild, _el$10 = _el$1.nextSibling, _el$11 = _el$0.nextSibling, _el$13 = _el$9.nextSibling.firstChild, _el$14 = _el$13.nextSibling, _el$15 = _el$14.firstChild, _el$16 = _el$15.nextSibling, _el$17 = _el$16.nextSibling, _el$18 = _el$17.nextSibling, _el$19 = _el$18.nextSibling, _el$20 = _el$19.nextSibling, _el$21 = _el$20.nextSibling, _el$22 = _el$21.nextSibling, _el$23 = _el$22.nextSibling, _el$24 = _el$23.nextSibling, _el$25 = _el$24.nextSibling;
-		insert(_el$2, () => content().preferences);
-		insert(_el$6, () => content().emailNotifications);
-		insert(_el$7, () => content().receiveWeeklyBenchmarkReports);
-		insert(_el$1, () => content().darkMode);
-		insert(_el$10, () => content().useDarkColorScheme);
+		insert(_el$2, () => content().m);
+		insert(_el$6, () => content().e);
+		insert(_el$7, () => content().n);
+		insert(_el$1, () => content().c);
+		insert(_el$10, () => content().s);
 		setAttribute(_el$13, "for", languageId);
-		insert(_el$13, () => content().defaultLanguage);
+		insert(_el$13, () => content().d);
 		setAttribute(_el$14, "id", languageId);
-		insert(_el$15, () => content().englishEn);
-		insert(_el$16, () => content().frenchFr);
-		insert(_el$17, () => content().germanDe);
-		insert(_el$18, () => content().spanishEs);
-		insert(_el$19, () => content().japaneseJa);
-		insert(_el$20, () => content().chineseSimplifiedZhCn);
-		insert(_el$21, () => content().italianIt);
-		insert(_el$22, () => content().portuguesePt);
-		insert(_el$23, () => content().koreanKo);
-		insert(_el$24, () => content().russianRu);
-		insert(_el$25, () => content().arabicAr);
+		insert(_el$15, () => content().f);
+		insert(_el$16, () => content().g);
+		insert(_el$17, () => content().h);
+		insert(_el$18, () => content().p);
+		insert(_el$19, () => content().j);
+		insert(_el$20, () => content().b);
+		insert(_el$21, () => content().i);
+		insert(_el$22, () => content().l);
+		insert(_el$23, () => content().k);
+		insert(_el$24, () => content().o);
+		insert(_el$25, () => content().a);
 		effect((_p$) => {
-			var _v$ = content().toggleNotifications.value, _v$2 = content().toggleDarkMode.value;
+			var _v$ = content().r.value, _v$2 = content().q.value;
 			_v$ !== _p$.e && setAttribute(_el$8, "aria-label", _p$.e = _v$);
 			_v$2 !== _p$.t && setAttribute(_el$11, "aria-label", _p$.t = _v$2);
 			return _p$;

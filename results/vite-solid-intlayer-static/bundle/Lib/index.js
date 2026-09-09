@@ -1,6 +1,6 @@
-import _5YAR0pGEba36ehifjZtw from "../.intlayer/dictionary/header.json";
-import { Dynamic, createComponent, memo, mergeProps } from "solid-js/web";
-import { Suspense, createContext, createEffect, createMemo, createSignal, on, onMount, untrack, useContext } from "solid-js";
+import _609x7od68v from "../.intlayer/dictionary/header.json";
+import { createComponent, memo, mergeProps } from "solid-js/web";
+import { Suspense, createContext, createEffect, createMemo, createSignal, lazy, on, onMount, untrack, useContext } from "solid-js";
 var internationalization = {
 	"locales": [
 		"en",
@@ -31,14 +31,79 @@ var internationalization = {
 };
 var routing = {
 	"mode": "prefix-all",
+	"enableProxy": false,
 	"storage": {
 		"cookies": [{
 			"name": "INTLAYER_LOCALE",
-			"attributes": {}
+			"attributes": { "path": "/" }
 		}],
 		"headers": [{ "name": "x-intlayer-locale" }]
 	},
 	"basePath": ""
+};
+var e = {
+	constructor: "constructor",
+	length: "length",
+	slice: "slice",
+	promiseThen: "then",
+	toString: "toString",
+	valueOf: "valueOf",
+	value: "value"
+};
+var t = (e) => typeof e == "string" && /^\d+$/.test(e);
+var n$1 = ({ children: n, value: r, additionalProps: i }) => {
+	let a = [n];
+	if (a.value = r, i) for (let e in i) a[e] = i[e];
+	return new Proxy(a, { get(n, i, a) {
+		if (i === e.value) return r;
+		if (i === Symbol.toPrimitive) return (e) => e === "number" ? Number(r) : r ?? "";
+		if (i === e.toString) return () => String(r ?? "");
+		if (i === e.valueOf) return () => r;
+		if (i === e.slice) return Reflect.get(n, i, a);
+		if (r != null && typeof i == "string" && i !== e.constructor && i !== e.length && !t(i)) {
+			let e = Object(r);
+			if (i in e) {
+				let t = Reflect.get(e, i);
+				return typeof t == "function" ? t.bind(r) : t;
+			}
+		}
+		return Reflect.get(n, i, a);
+	} });
+};
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
+	return {
+		hit: true,
+		content: entries.get(cacheKey)
+	};
+};
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
+	}
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
 };
 var TRANSLATION = "translation";
 var OBJECT = "object";
@@ -58,28 +123,103 @@ var deepTransformNode = (node, props) => {
 		});
 	});
 	const result = {};
-	for (const key in node) Object.defineProperty(result, key, {
-		enumerable: true,
-		configurable: true,
-		get: function() {
-			const childProps = {
-				...props,
-				children: node[key],
-				keyPath: [...props.keyPath, {
-					type: OBJECT,
-					key
-				}]
-			};
-			const transformed = deepTransformNode(node[key], childProps);
-			Object.defineProperty(this, key, {
-				value: transformed,
-				enumerable: true,
-				configurable: true
-			});
-			return transformed;
+	for (const key in node) {
+		const childProps = {
+			...props,
+			children: node[key],
+			keyPath: [...props.keyPath, {
+				type: OBJECT,
+				key
+			}]
+		};
+		if (props.eager) {
+			result[key] = deepTransformNode(node[key], childProps);
+			continue;
 		}
-	});
+		Object.defineProperty(result, key, {
+			enumerable: true,
+			configurable: true,
+			get: function() {
+				const transformed = deepTransformNode(node[key], childProps);
+				Object.defineProperty(this, key, {
+					value: transformed,
+					enumerable: true,
+					configurable: true
+				});
+				return transformed;
+			}
+		});
+	}
 	return result;
+};
+var DEFAULT_VARIANT_ID = "default";
+var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
+var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
+var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+var encodeSegmentText = (raw, unsafeChars) => {
+	if (raw === "") return "%";
+	const encoded = raw.replace(unsafeChars, percentEncodeChar);
+	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
+	return encoded;
+};
+var serializeVariant = (variant) => {
+	if (variant === void 0) return DEFAULT_VARIANT_ID;
+	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
+	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
+};
+var serializeVariantChain = (variant) => {
+	if (!Array.isArray(variant)) return [serializeVariant(variant)];
+	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
+	return variant.map(serializeVariant);
+};
+var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
+	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
+	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
+};
+var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
+	const segments = compositeId.split("/");
+	return qualifierTypes.every((qualifierType, index) => {
+		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
+		return selector?.item === void 0 || segments[index] === String(selector.item);
+	});
+};
+var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
+var reconstructQualifiedEntry = (group, compositeId) => {
+	const segments = compositeId.split("/");
+	const entry = {
+		key: group.key,
+		content: group.content[compositeId]
+	};
+	group.qualifierTypes.forEach((qualifierType, index) => {
+		if (qualifierType === "variant") entry.variant = segments[index];
+		else if (qualifierType === "item") entry.item = Number(segments[index]);
+	});
+	return entry;
+};
+var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
+	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
+	const { qualifierTypes, content } = dictionaryOrGroup;
+	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
+	const compositeIds = Object.keys(content);
+	const variantIndex = qualifierTypes.indexOf("variant");
+	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
+	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
+	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
+	return matchedEntries[0] ?? null;
+};
+var parseDictionarySelector = (localeOrSelector) => {
+	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
+		locale: localeOrSelector.locale,
+		selector: localeOrSelector
+	};
+	return { locale: localeOrSelector };
+};
+var getDictionarySelectorCacheKey = (selector) => {
+	if (!selector) return "";
+	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
+		const value = selector[selectorKey];
+		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
+	}).join("|");
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -136,7 +276,7 @@ var fallbackPlugin = {
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
@@ -157,9 +297,11 @@ var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TR
 	}
 };
 var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
 var insertionPlugin = fallbackPlugin;
 var genderPlugin = fallbackPlugin;
+var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
 var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
@@ -169,20 +311,76 @@ var getBasePlugins = (locale, fallback = true) => [
 	insertionPlugin,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
-	genderPlugin
+	genderPlugin,
+	selectPlugin
 ];
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
+var getDictionary = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = parseDictionarySelector(localeOrSelector);
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries
+		};
+		return getContent(resolvedDictionary.content, props, appliedPlugins);
 	};
-	return getContent(dictionary.content, props, plugins);
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
+};
+var w = null;
+var T = null;
+w?.catch(() => {}), T?.catch(() => {});
+var E = {
+	id: "intlayer-node-plugin",
+	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
+	transform: (n, { plugins: o, ...s }) => n$1({
+		...s,
+		value: s.children,
+		children: s.children
+	})
+};
+var D = fallbackPlugin;
+var k = fallbackPlugin;
+lazy(() => w.then((e) => ({ default: e.MarkdownRenderer })));
+lazy(() => w.then((e) => ({ default: e.MarkdownMetadataRenderer })));
+var N = fallbackPlugin;
+lazy(() => T.then((e) => ({ default: e })));
+var F = fallbackPlugin;
+var I = /* @__PURE__ */ new Map();
+var L = (e, t = !0) => {
+	let n = `${e ?? internationalization.defaultLocale}_${t}`;
+	if (I.has(n)) return I.get(n);
+	let r = [
+		translationPlugin(e ?? internationalization.defaultLocale, t ? internationalization.defaultLocale : void 0),
+		enumerationPlugin,
+		pluralPlugin(e ?? internationalization.defaultLocale),
+		conditionPlugin,
+		nestedPlugin(e ?? internationalization.defaultLocale),
+		filePlugin,
+		genderPlugin,
+		selectPlugin,
+		E,
+		D,
+		k,
+		N,
+		F
+	];
+	return I.set(n, r), r;
+};
+var n = (n, r) => {
+	return getDictionary(n, r, L(typeof r == "object" && r ? r.locale : r));
 };
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
 	const requestedLocales = [selectedLocale].flat();
@@ -199,42 +397,25 @@ var localeResolver = (selectedLocale, locales = internationalization?.locales, d
 	} catch {}
 	return defaultLocale;
 };
-var TREE_SHAKE_STORAGE_COOKIES = process.env["INTLAYER_ROUTING_STORAGE_COOKIES"] === "false";
-process.env["INTLAYER_ROUTING_STORAGE_HEADERS"];
+var resolveExpiresToTimestamp = (expires) => {
+	if (typeof expires === "number") return Date.now() + expires * 1e3;
+	if (typeof expires === "string") {
+		const time = Date.parse(expires);
+		return Number.isNaN(time) ? void 0 : time;
+	}
+};
 var buildCookieString = (name, value, attributes) => {
 	const parts = [`${name}=${encodeURIComponent(value)}`];
 	if (attributes.path) parts.push(`Path=${attributes.path}`);
 	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
-	if (attributes.expires instanceof Date) parts.push(`Expires=${attributes.expires.toUTCString()}`);
+	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
+	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
 	if (attributes.secure) parts.push("Secure");
 	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
 	return parts.join("; ");
 };
-var getLocaleFromStorageClient = (options = localeStorageOptions) => {
-	const { locales } = internationalization;
-	if (options?.isCookieEnabled === false) return void 0;
-	const isValidLocale = (value) => !!value && locales.includes(value);
-	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
-		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-};
-var setLocaleInStorageClient = (locale, options) => {
-	if (options?.isCookieEnabled === false) return;
-	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
-		const { name, attributes } = routing.storage.cookies[i];
-		try {
-			if (options?.setCookieStore) options.setCookieStore(name, locale, {
-				...attributes,
-				expires: attributes.expires instanceof Date ? attributes.expires.getTime() : attributes.expires
-			});
-		} catch {
-			try {
-				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
-			} catch {}
-		}
-	}
-};
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
 var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
@@ -254,121 +435,105 @@ var localeStorageOptions = {
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
 };
-var e = ({ children: e, value: t, additionalProps: n }) => {
-	let r = [e];
-	if (r.value = t, n) for (let e in n) r[e] = n[e];
-	return new Proxy(r, { get(e, n, r) {
-		return n === "value" ? t : n === "toString" ? () => String(t) : n === Symbol.toPrimitive ? (e) => e === "string" ? String(t) : e === "number" ? Number(t) : t : Reflect.get(e, n, r);
-	} });
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
 };
-var t = (n) => {
-	if (typeof n == "string") return n;
-	let { type: r, props: i } = ((e) => {
-		if (e?.props && typeof e.props.children == "object") {
-			let n = [], { children: r } = e.props;
-			return Object.keys(r ?? {}).forEach((e) => {
-				n.push(t(r?.[e]));
-			}), {
-				...e,
-				props: {
-					...e.props,
-					children: n
-				}
-			};
+var setLocaleInStorageClient = (locale, options) => {
+	if (options?.isCookieEnabled === false) return;
+	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
+		const { name, attributes } = routing.storage.cookies[i];
+		try {
+			if (options?.setCookieStore) options.setCookieStore(name, locale, {
+				...attributes,
+				expires: resolveExpiresToTimestamp(attributes.expires)
+			});
+		} catch {
+			try {
+				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
+			} catch {}
 		}
-		return {
-			...e,
-			props: {
-				...e.props,
-				children: e.props?.children ?? []
-			}
-		};
-	})(n);
-	return Dynamic({
-		component: r ?? "span",
-		...i,
-		children: i.children
-	});
-}, S$1 = {
-	id: "intlayer-node-plugin",
-	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (t, { plugins: a, ...o }) => e({
-		...o,
-		value: o.children,
-		children: o.children
-	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
-	id: "solid-node-plugin",
-	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
-	transform: (a, { plugins: o, ...s }) => e({
-		...s,
-		value: "[[solid-element]]",
-		children: typeof Node < "u" && a instanceof Node ? a : t(a)
-	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
-	let n = `${e ?? internationalization.defaultLocale}_${t}`;
-	if (k.has(n)) return k.get(n);
-	let r = [
-		translationPlugin(e ?? internationalization.defaultLocale, t ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		conditionPlugin,
-		nestedPlugin(e ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		S$1,
-		C,
-		T,
-		D,
-		O
-	];
-	return k.set(n, r), r;
-}, n = (n, r) => getDictionary(n, r, A(r)), a = getLocaleFromStorageClient(localeStorageOptions), s = (e, n) => setLocaleInStorageClient(e, {
+	}
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var s = (e, t) => setLocaleInStorageClient(e, {
 	...localeStorageOptions,
-	isCookieEnabled: n
+	isCookieEnabled: t
 });
 var setIntlayerIdentifier = () => {
 	if (typeof window !== "undefined") window.intlayer = { enabled: true };
-}, v = null, y = createContext({
-	locale: () => a ?? internationalization?.defaultLocale,
+};
+var v = null;
+var y = null;
+var b = createContext({
+	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
-}), x = (r) => {
-	let { defaultLocale: i, locales: o } = internationalization ?? {}, [s$1, d] = createSignal(r.locale ?? a ?? r.defaultLocale ?? i), h = r.setLocale ?? ((e) => {
-		if (s$1().toString() !== e.toString()) {
+});
+var S = (r) => {
+	let { defaultLocale: i, locales: o } = internationalization ?? {}, s$1 = r.locale ?? a$1 ?? r.defaultLocale ?? i, [d, h] = createSignal(s$1), v = r.setLocale ?? ((e) => {
+		if (d().toString() !== e.toString()) {
 			if (!o?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			d(e), s(e, r.isCookieEnabled);
+			h(e), s(e, r.isCookieEnabled);
 		}
-	}), v = createMemo(() => localeResolver(s$1()));
+	}), y = createMemo(() => localeResolver(d()));
 	return createEffect(on(() => r.locale, (e) => {
-		e && e !== untrack(s$1) && d(e);
+		e && e !== untrack(d) && h(e);
 	}, { defer: !0 })), onMount(() => {
 		setIntlayerIdentifier();
-	}), createComponent(y.Provider, {
+	}), createComponent(b.Provider, {
 		value: {
-			locale: v,
-			setLocale: h
+			locale: y,
+			setLocale: v,
+			variant: () => r.variant
 		},
 		get children() {
 			return r.children;
 		}
 	});
-}, S = (e) => createComponent(x, mergeProps(e, { get children() {
-	return [memo(() => memo(() => false)() && createComponent(Suspense, { get children() {
-		return createComponent(v, {});
-	} })), memo(() => e.children)];
+};
+var C = (e) => createComponent(S, mergeProps(e, { get children() {
+	return [
+		memo(() => memo(() => false)() && createComponent(Suspense, { get children() {
+			return createComponent(v, {});
+		} })),
+		memo(() => memo(() => false)() && createComponent(Suspense, { get children() {
+			return createComponent(y, {});
+		} })),
+		memo(() => e.children)
+	];
 } }));
-var i = (i, a) => {
-	let o = useContext(y) ?? {};
-	return createMemo(() => n(i, a ?? o?.locale?.()));
+var a = Symbol("LOADABLE_SETTLED_VALUE");
+var h = (e) => {
+	if (!(e === null || typeof e != "object" && typeof e != "function")) return e[a];
+};
+var o = (o, s) => {
+	let c = useContext(b) ?? {}, l = createMemo(() => {
+		let t = c?.locale?.();
+		return n(h(o) ?? o, s ?? t);
+	});
+	return new Proxy(l, {
+		get(e, t) {
+			return e()?.[t];
+		},
+		apply(e, t, n) {
+			return Reflect.apply(e, t, n);
+		}
+	});
 };
 var TestComponent = () => {
-	i(_5YAR0pGEba36ehifjZtw);
+	o(_609x7od68v);
 	return null;
 };
 function EmptyComponent() {
-	return createComponent(S, {
+	return createComponent(C, {
 		get locale() {
 			return "en";
 		},

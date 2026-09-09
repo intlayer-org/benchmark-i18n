@@ -2551,11 +2551,27 @@ var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
 		(typeof queueMicrotask === "function" ? queueMicrotask : setTimeout)(reject.bind(null, /* @__PURE__ */ new Error("Unknown variable dynamic import: " + path + (path.split("/").length !== segments ? ". Note that variables only represent file names one level deep." : ""))));
 	});
 };
+var UNSAFE_KEYS = [
+	"__proto__",
+	"constructor",
+	"prototype"
+];
+var isSafeIdentifier = function isSafeIdentifier(v, allowSlash) {
+	if (typeof v !== "string") return false;
+	if (v.length > 128) return false;
+	if (UNSAFE_KEYS.indexOf(v) > -1) return false;
+	if (v.indexOf("..") > -1) return false;
+	if (v.indexOf("\\") > -1) return false;
+	if (!allowSlash && v.indexOf("/") > -1) return false;
+	if (/[\x00-\x1F\x7F]/.test(v)) return false;
+	return true;
+};
 instance.use(initReactI18next).use(function resourcesToBackend(res) {
 	return {
 		type: "backend",
 		init: function init(services, backendOptions, i18nextOptions) {},
 		read: function read(language, namespace, callback) {
+			if (!isSafeIdentifier(language, false) || !isSafeIdentifier(namespace, true)) return callback(/* @__PURE__ */ new Error("i18next-resources-to-backend: unsafe language/namespace value"), false);
 			if (typeof res === "function") {
 				if (res.length < 3) {
 					try {

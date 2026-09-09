@@ -403,8 +403,8 @@ var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent,
 		children
 	]
 });
+var { defaultLocale, locales: availableLocales } = internationalization ?? {};
 var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
-	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
 	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
 	return {
 		locale,

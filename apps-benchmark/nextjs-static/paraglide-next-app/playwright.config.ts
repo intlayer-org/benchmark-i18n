@@ -31,7 +31,7 @@ export default defineConfig({
           args: [
             "--disable-dev-shm-usage",
             "--disable-gpu",
-            '--js-flags="--max-old-space-size=1024"',
+            '--js-flags=--max-old-space-size=1024',
           ],
         },
       },
@@ -44,7 +44,7 @@ export default defineConfig({
           args: [
             "--disable-dev-shm-usage",
             "--disable-gpu",
-            '--js-flags="--max-old-space-size=1024"',
+            '--js-flags=--max-old-space-size=1024',
           ],
         },
       },

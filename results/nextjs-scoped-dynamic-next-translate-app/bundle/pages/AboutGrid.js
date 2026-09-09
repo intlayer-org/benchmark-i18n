@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -182,8 +182,13 @@ function createTranslation(defaultNS) {
 			lang
 		}), defaultNS);
 	};
+	var nsKey = namespaces ? Object.keys(namespaces).sort().join("|") : "";
 	return {
-		t: isServer() ? getT() : useMemo(getT, [defaultNS, lang]),
+		t: isServer() ? getT() : useMemo(getT, [
+			defaultNS,
+			lang,
+			nsKey
+		]),
 		lang
 	};
 }
@@ -207,53 +212,106 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/pages/about/AboutGrid.tsx";
 function AboutGrid() {
 	const { t } = useTranslation("about");
-	return jsxs("div", {
+	return jsxDEV("div", {
 		className: "grid gap-8 md:grid-cols-2",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [jsx("h2", {
+				children: [jsxDEV("h2", {
 					className: "mb-3 text-xl font-semibold text-foreground",
 					children: t("aboutGrid.testEnvironment")
-				}), jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 10,
+					columnNumber: 9
+				}, this), jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: t("aboutGrid.allBenchmarksRunOn")
-				})]
-			}),
-			jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 13,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 9,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [jsx("h2", {
+				children: [jsxDEV("h2", {
 					className: "mb-3 text-xl font-semibold text-foreground",
 					children: t("aboutGrid.applicationDesign")
-				}), jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 18,
+					columnNumber: 9
+				}, this), jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: t("aboutGrid.theBenchmarkAppHas10")
-				})]
-			}),
-			jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 21,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 17,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [jsx("h2", {
+				children: [jsxDEV("h2", {
 					className: "mb-3 text-xl font-semibold text-foreground",
 					children: t("aboutGrid.measurementMethodology")
-				}), jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 26,
+					columnNumber: 9
+				}, this), jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: t("aboutGrid.weUseBrowserNativeApis")
-				})]
-			}),
-			jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 29,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 25,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [jsx("h2", {
+				children: [jsxDEV("h2", {
 					className: "mb-3 text-xl font-semibold text-foreground",
 					children: t("aboutGrid.fairComparison")
-				}), jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 34,
+					columnNumber: 9
+				}, this), jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: t("aboutGrid.eachI18nLibraryIsIntegrated")
-				})]
-			})
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 37,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 33,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -358,18 +416,18 @@ var i18n_default = {
 		"./locales/de/settings.json": () => import("../../../locales/de/settings.json"),
 		"./locales/de/shared.json": () => import("../../../locales/de/shared.json"),
 		"./locales/de/team.json": () => import("../../../locales/de/team.json"),
-		"./locales/en/about.json": () => import("./about-DrPeV7Zp.js"),
-		"./locales/en/blog.json": () => import("./blog-uUHBPsDN.js"),
-		"./locales/en/careers.json": () => import("./careers-CT6E1l5K.js"),
-		"./locales/en/contact.json": () => import("./contact-CZtCE9BE.js"),
-		"./locales/en/faq.json": () => import("./faq-BPrPn6m_.js"),
-		"./locales/en/home.json": () => import("./home-CSEOOcM2.js"),
-		"./locales/en/pricing.json": () => import("./pricing-BjZqjpMz.js"),
-		"./locales/en/products.json": () => import("./products-D8gD60Ao.js"),
-		"./locales/en/route.json": () => import("./route-UQnagTfi.js"),
-		"./locales/en/settings.json": () => import("./settings-BEbFGJAX.js"),
-		"./locales/en/shared.json": () => import("./shared-DxRtm_ck.js"),
-		"./locales/en/team.json": () => import("./team-tSYxAuqK.js"),
+		"./locales/en/about.json": () => import("./about-BjiQTpAt.js"),
+		"./locales/en/blog.json": () => import("./blog-BwncXaOP.js"),
+		"./locales/en/careers.json": () => import("./careers-CvGX3fKY.js"),
+		"./locales/en/contact.json": () => import("./contact-BAuKu6kU.js"),
+		"./locales/en/faq.json": () => import("./faq-741pCL7k.js"),
+		"./locales/en/home.json": () => import("./home-DQacKLe5.js"),
+		"./locales/en/pricing.json": () => import("./pricing-AooD5teS.js"),
+		"./locales/en/products.json": () => import("./products-5xHH59P6.js"),
+		"./locales/en/route.json": () => import("./route-D4J5jMKf.js"),
+		"./locales/en/settings.json": () => import("./settings-DcVMUGUO.js"),
+		"./locales/en/shared.json": () => import("./shared-B7H0Al_Q.js"),
+		"./locales/en/team.json": () => import("./team-BTWsMT4N.js"),
 		"./locales/es/about.json": () => import("../../../locales/es/about.json"),
 		"./locales/es/blog.json": () => import("../../../locales/es/blog.json"),
 		"./locales/es/careers.json": () => import("../../../locales/es/careers.json"),
@@ -490,6 +548,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -501,8 +560,13 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx";
 var MEASURE_NAMESPACES = [
 	"about",
 	"blog",
@@ -537,17 +601,34 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		lang: locale,
 		namespaces,
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 58,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 57,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/pages/about/AboutGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(AboutGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(AboutGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var about_default = {

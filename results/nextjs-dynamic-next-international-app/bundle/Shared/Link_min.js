@@ -1,36 +1,53 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
 import r from "next/link";
 import { useParams as i } from "next/navigation";
-import { jsx as a } from "react/jsx-runtime";
-var o = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as a } from "react/jsx-dev-runtime";
+var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), c = (e) => /^https?:\/\//.test(e ?? "");
-function l(e, t) {
+}), c = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/Link.tsx", l = (e) => /^https?:\/\//.test(e ?? "");
+function u(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
-var u = ({ href: e, children: t, ...n }) => {
+var d = ({ href: e, children: t, ...n }) => {
 	let o = i().locale ?? "en";
-	return e == null || typeof e != "string" || c(e) ? a(r, {
+	return e == null || typeof e != "string" ? a(r, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}) : a(r, {
-		href: l(e, o),
+	}, void 0, !1, {
+		fileName: c,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0) : l(e) ? a(r, {
+		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	});
-}, d = o((() => {})), { useScopedI18n: f, I18nProviderClient: p, useChangeLocale: m, useCurrentLocale: h } = (0, o(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, c = Object.getPrototypeOf, l = Object.prototype.hasOwnProperty, u = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+	}, void 0, !1, {
+		fileName: c,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0) : a(r, {
+		href: u(e, o),
+		prefetch: !1,
+		...n,
+		children: t
+	}, void 0, !1, {
+		fileName: c,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
+}, f = o((() => {})), { useScopedI18n: p, I18nProviderClient: m, useChangeLocale: h, useCurrentLocale: g } = (0, o(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, c = Object.getPrototypeOf, l = Object.prototype.hasOwnProperty, u = Object.prototype.propertyIsEnumerable, d = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
 		value: n
 	}) : e[t] = n, p = (e, t) => {
-		for (var n in t ||= {}) l.call(t, n) && f(e, n, t[n]);
-		if (o) for (var n of o(t)) u.call(t, n) && f(e, n, t[n]);
+		for (var n in t ||= {}) l.call(t, n) && d(e, n, t[n]);
+		if (o) for (var n of o(t)) u.call(t, n) && d(e, n, t[n]);
 		return e;
 	}, m = (e, t) => {
 		for (var n in t) r(e, n, {
@@ -47,7 +64,7 @@ var u = ({ href: e, children: t, ...n }) => {
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), d();
+	m(v, { createI18nClient: () => V }), t.exports = _(v), f();
 	var y = s("next/navigation"), b = g(s("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
@@ -82,7 +99,11 @@ var u = ({ href: e, children: t, ...n }) => {
 			let r = n[0], o = !1;
 			r && "count" in r && (t ? a.has(`${t}.${e}`) : a.has(e)) && (e = `${e}#${s(r.count)}`, o = !0);
 			let c = t ? i[`${t}.${e}`] : i[e];
-			if (c = !c && o ? (i[`${e.split("#", 1)[0]}#other`] || e)?.toString() : (c || e)?.toString(), !r) return c;
+			if (!c && o) {
+				let t = e.split("#", 1)[0];
+				c = (i[`${t}#other`] || e)?.toString();
+			} else c = (c || e)?.toString();
+			if (!r) return c;
 			let l = !0, u = c?.split(/({[^}]*})/).map((e, t) => {
 				let n = e.match(/{(.*)}/);
 				if (n) {
@@ -154,19 +175,20 @@ var u = ({ href: e, children: t, ...n }) => {
 			useCurrentLocale: i
 		};
 	}
+	0 && (t.exports = { createI18nClient: V });
 }))().createI18nClient)({
-	en: () => import("./en-6VvYhpne.js"),
-	fr: () => import("./fr-0B0NWiXi.js"),
-	es: () => import("./es-C9Oh3qEQ.js"),
-	de: () => import("./de-BDTiQ_G0.js"),
-	it: () => import("./it-BGGWmAGL.js"),
-	pt: () => import("./pt-CNbGHncb.js"),
-	zh: () => import("./zh-BXPS2wGR.js"),
-	ja: () => import("./ja-B-8MoV68.js"),
-	ko: () => import("./ko-80JB3Vd-.js"),
-	ru: () => import("./ru-CdEKEpwl.js")
+	en: () => import("./en-Hfd-iR9Q.js"),
+	fr: () => import("./fr-DOkdQC8B.js"),
+	es: () => import("./es-CwgLPlwN.js"),
+	de: () => import("./de-DLCj-A0S.js"),
+	it: () => import("./it-DdDR_SOd.js"),
+	pt: () => import("./pt-0cvnCkG1.js"),
+	zh: () => import("./zh-DcQYdncF.js"),
+	ja: () => import("./ja-BvBjKrwS.js"),
+	ko: () => import("./ko-BO3urTDG.js"),
+	ru: () => import("./ru-CCiwUS4O.js")
 });
-function g() {
+function _() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -180,40 +202,58 @@ function g() {
 		}
 	}
 }
-function _(e, t) {
+function v(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function v({ children: r, locale: i }) {
+var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
+function b({ children: r, locale: i }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		_("AppRoot", o);
+		v("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = i;
 	}, [i]), e(() => {
-		g();
-	}, []), a(p, {
+		_();
+	}, []), a(m, {
 		locale: i,
 		children: r
-	});
+	}, void 0, !1, {
+		fileName: y,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var y = "en";
-function b({ children: e }) {
-	return a(v, {
-		locale: y,
+var x = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx", S = "en";
+function C({ children: e }) {
+	return a(b, {
+		locale: S,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: x,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function x() {
-	return a(b, { children: a(u, {}) });
+var w = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/Link.wrapper.tsx";
+function T() {
+	return a(C, { children: a(d, {}, void 0, !1, {
+		fileName: w,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: w,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { x as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+export { T as default };
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/de.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 var t = e({
 	"careers-header": {
 		title: "Careers",
@@ -685,7 +725,7 @@ var t = e({
 	}
 });
 export { t as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/es.json";
 var n = e(t);
 export { n as default };
@@ -698,31 +738,31 @@ function e(t, n = "") {
 	return r;
 }
 export { e as t };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/fr.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/it.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/ja.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/ko.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/pt.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/ru.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/zh.json";
 var n = e(t);
 export { n as default };

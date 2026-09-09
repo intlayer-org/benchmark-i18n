@@ -106,9 +106,11 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     }
   });
 
-  if (i18n.language !== locale) {
-    i18n.changeLanguage(locale);
-  }
+  useEffect(() => {
+    if (i18n.language !== locale) {
+      i18n.changeLanguage(locale);
+    }
+  }, [locale]);
 
   useEffect(() => {
     const handler = () => {

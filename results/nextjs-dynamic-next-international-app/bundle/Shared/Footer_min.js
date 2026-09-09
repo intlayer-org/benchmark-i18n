@@ -1,12 +1,12 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
 import r from "next/link";
 import { useParams as i } from "next/navigation";
-import { jsx as a, jsxs as o } from "react/jsx-runtime";
-var s = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), c = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as a } from "react/jsx-dev-runtime";
+var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), l = s((() => {})), u = (0, s(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, s = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+}), c = o((() => {})), l = (0, o(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
@@ -26,12 +26,12 @@ var s = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), c
 			enumerable: !(o = i(t, s)) || o.enumerable
 		});
 		return e;
-	}, g = (e, t, i) => (i = e == null ? {} : n(s(e)), h(t || !e || !e.__esModule ? r(i, "default", {
+	}, g = (e, t, i) => (i = e == null ? {} : n(l(e)), h(t || !e || !e.__esModule ? r(i, "default", {
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), l();
-	var y = c("next/navigation"), b = g(c("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	m(v, { createI18nClient: () => V }), t.exports = _(v), c();
+	var y = s("next/navigation"), b = g(s("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -55,7 +55,7 @@ var s = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), c
 			}, i));
 		};
 	}
-	var D = c("react"), O = c("react"), k = c("react");
+	var D = s("react"), O = s("react"), k = s("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -65,7 +65,11 @@ var s = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), c
 			let r = n[0], o = !1;
 			r && "count" in r && (t ? a.has(`${t}.${e}`) : a.has(e)) && (e = `${e}#${s(r.count)}`, o = !0);
 			let c = t ? i[`${t}.${e}`] : i[e];
-			if (c = !c && o ? (i[`${e.split("#", 1)[0]}#other`] || e)?.toString() : (c || e)?.toString(), !r) return c;
+			if (!c && o) {
+				let t = e.split("#", 1)[0];
+				c = (i[`${t}#other`] || e)?.toString();
+			} else c = (c || e)?.toString();
+			if (!r) return c;
 			let l = !0, u = c?.split(/({[^}]*})/).map((e, t) => {
 				let n = e.match(/{(.*)}/);
 				if (n) {
@@ -85,7 +89,7 @@ var s = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), c
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = c("react");
+	var M = s("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -93,7 +97,7 @@ var s = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), c
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = c("next/navigation");
+	var P = s("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -115,7 +119,7 @@ var s = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), c
 			return e;
 		};
 	}
-	var L = c("next/navigation"), R = c("react"), z = "locale";
+	var L = s("next/navigation"), R = s("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -137,24 +141,25 @@ var s = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports), c
 			useCurrentLocale: i
 		};
 	}
+	0 && (t.exports = { createI18nClient: V });
 }))().createI18nClient)({
-	en: () => import("./en-6VvYhpne.js"),
-	fr: () => import("./fr-0B0NWiXi.js"),
-	es: () => import("./es-C9Oh3qEQ.js"),
-	de: () => import("./de-BDTiQ_G0.js"),
-	it: () => import("./it-BGGWmAGL.js"),
-	pt: () => import("./pt-CNbGHncb.js"),
-	zh: () => import("./zh-BXPS2wGR.js"),
-	ja: () => import("./ja-B-8MoV68.js"),
-	ko: () => import("./ko-80JB3Vd-.js"),
-	ru: () => import("./ru-CdEKEpwl.js")
+	en: () => import("./en-Hfd-iR9Q.js"),
+	fr: () => import("./fr-DOkdQC8B.js"),
+	es: () => import("./es-CwgLPlwN.js"),
+	de: () => import("./de-DLCj-A0S.js"),
+	it: () => import("./it-DdDR_SOd.js"),
+	pt: () => import("./pt-0cvnCkG1.js"),
+	zh: () => import("./zh-DcQYdncF.js"),
+	ja: () => import("./ja-BvBjKrwS.js"),
+	ko: () => import("./ko-BO3urTDG.js"),
+	ru: () => import("./ru-CCiwUS4O.js")
 });
-function d() {
-	return u.useI18n();
+function u() {
+	return l.useI18n();
 }
-var { useScopedI18n: f, I18nProviderClient: p, useChangeLocale: m, useCurrentLocale: h } = u;
+var { useScopedI18n: d, I18nProviderClient: f, useChangeLocale: p, useCurrentLocale: m } = l, h = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/Footer.tsx";
 function g() {
-	let e = d(), t = i().locale ?? "en", n = [
+	let e = u(), t = i().locale ?? "en", n = [
 		{
 			label: e("footer.github"),
 			href: "https://github.com/intlayer-org/benchmark-i18n",
@@ -173,50 +178,114 @@ function g() {
 	];
 	return a("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: o("div", {
+		children: a("div", {
 			className: "container py-8",
-			children: [o("div", {
+			children: [a("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					o("div", { children: [a("h3", {
+					a("div", { children: [a("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), a("p", {
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 35,
+						columnNumber: 13
+					}, this), a("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("footer.anOpenSourceTestApplication")
-					})] }),
-					o("div", { children: [a("h3", {
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 38,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: h,
+						lineNumber: 34,
+						columnNumber: 11
+					}, this),
+					a("div", { children: [a("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("footer.resources")
-					}), a("ul", {
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 43,
+						columnNumber: 13
+					}, this), a("ul", {
 						className: "space-y-1",
 						children: n.map((e) => a("li", { children: e.isInternal ? a(r, {
 							href: e.href,
 							prefetch: !1,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) : a("a", {
+						}, void 0, !1, {
+							fileName: h,
+							lineNumber: 50,
+							columnNumber: 21
+						}, this) : a("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) }, e.href))
-					})] }),
-					o("div", { children: [a("h3", {
+						}, void 0, !1, {
+							fileName: h,
+							lineNumber: 58,
+							columnNumber: 21
+						}, this) }, e.href, !1, {
+							fileName: h,
+							lineNumber: 48,
+							columnNumber: 17
+						}, this))
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 46,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: h,
+						lineNumber: 42,
+						columnNumber: 11
+					}, this),
+					a("div", { children: [a("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("footer.contact")
-					}), a("p", {
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 72,
+						columnNumber: 13
+					}, this), a("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 75,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: h,
+						lineNumber: 71,
+						columnNumber: 11
+					}, this)
 				]
-			}), a("div", {
+			}, void 0, !0, {
+				fileName: h,
+				lineNumber: 33,
+				columnNumber: 9
+			}, this), a("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: e("footer.builtWith")
-			})]
-		})
-	});
+			}, void 0, !1, {
+				fileName: h,
+				lineNumber: 80,
+				columnNumber: 9
+			}, this)]
+		}, void 0, !0, {
+			fileName: h,
+			lineNumber: 32,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: h,
+		lineNumber: 31,
+		columnNumber: 5
+	}, this);
 }
 function _() {
 	if (!(typeof window > "u")) {
@@ -237,7 +306,8 @@ function v(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function y({ children: r, locale: i }) {
+var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
+function b({ children: r, locale: i }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
 		v("AppRoot", o);
@@ -245,27 +315,44 @@ function y({ children: r, locale: i }) {
 		document.documentElement.lang = i;
 	}, [i]), e(() => {
 		_();
-	}, []), a(p, {
+	}, []), a(f, {
 		locale: i,
 		children: r
-	});
+	}, void 0, !1, {
+		fileName: y,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var b = "en";
-function x({ children: e }) {
-	return a(y, {
-		locale: b,
+var x = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx", S = "en";
+function C({ children: e }) {
+	return a(b, {
+		locale: S,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: x,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function S() {
-	return a(x, { children: a(g, {}) });
+var w = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/Footer.wrapper.tsx";
+function T() {
+	return a(C, { children: a(g, {}, void 0, !1, {
+		fileName: w,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: w,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { S as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+export { T as default };
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/de.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 var t = e({
 	"careers-header": {
 		title: "Careers",
@@ -737,7 +824,7 @@ var t = e({
 	}
 });
 export { t as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/es.json";
 var n = e(t);
 export { n as default };
@@ -750,31 +837,31 @@ function e(t, n = "") {
 	return r;
 }
 export { e as t };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/fr.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/it.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/ja.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/ko.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/pt.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/ru.json";
 var n = e(t);
 export { n as default };
-import { t as e } from "./flatten-C8ShVzoT.js";
+import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/zh.json";
 var n = e(t);
 export { n as default };

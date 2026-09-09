@@ -39,14 +39,8 @@ function r(r, i) {
 	e.init();
 	var o = n();
 	e.each(o, 5, () => a, (e) => e.name, (n, r) => {
-		var i = t(), a = e.child(i), o = e.child(a, !0);
-		e.reset(a);
-		var s = e.sibling(a, 2), c = e.child(s, !0);
-		e.reset(s);
-		var l = e.sibling(s, 2), u = e.child(l, !0);
-		e.reset(l);
-		var d = e.sibling(l, 2), f = e.child(d, !0);
-		e.reset(d), e.reset(i), e.template_effect((t) => {
+		var i = t(), a = e.child(i), o = e.only_child(a, !0), s = e.sibling(a, 2), c = e.only_child(s, !0), l = e.sibling(s, 2), u = e.only_child(l, !0), d = e.sibling(l, 2), f = e.only_child(d, !0);
+		e.reset(i), e.template_effect((t) => {
 			e.set_text(o, t), e.set_text(c, e.get(r).name), e.set_text(u, e.get(r).role), e.set_text(f, e.get(r).bio);
 		}, [() => e.get(r).name.split(" ").map((e) => e[0]).join("")]), e.append(n, i);
 	}), e.reset(o), e.append(r, o), e.pop();
