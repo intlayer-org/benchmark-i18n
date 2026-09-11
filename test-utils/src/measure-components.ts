@@ -174,6 +174,82 @@ const ENGLISH_ONLY_JSON_FILTER = (id: string) => {
   return false;
 };
 
+/**
+ * Directory names an app keeps its translation catalogs in.
+ *
+ * `measureLibSize` externalizes catalogs living under one of these, because the
+ * metric is the i18n runtime cost — provider plus translation hook — and not the
+ * size of the benchmark's own copy.
+ *
+ * Matching the directory rather than the file extension is what makes the number
+ * comparable across libraries: next-intl keeps `messages/en.json`, but lingui
+ * compiles to `locales/en/messages.mjs`, use-intl authors `messages/de.ts` and
+ * fluent-vue ships `locales/en.ftl`. Keying off `.json` alone left the full
+ * ten-locale catalog inside the measurement for every library that does not use
+ * JSON — around 200 KB of translated strings reported as library overhead.
+ */
+const CATALOG_DIRECTORY_NAMES = new Set([
+  "messages",
+  "locales",
+  "locale",
+  "translations",
+  "translation",
+  "lang",
+  "langs",
+  "dictionary",
+  "dictionaries",
+]);
+
+/**
+ * A locale tag used as a file or directory name: `en`, `zh-CN`, `pt_BR`.
+ *
+ * Deliberately narrow. A catalog directory also holds the library's own wiring
+ * — next-international keeps `locales/client.ts` and `locales/locales-map.ts`
+ * next to `locales/en.ts` — and externalizing that would delete the runtime
+ * being measured.
+ */
+const LOCALE_NAME_PATTERN = /^[a-z]{2,3}([-_][A-Za-z0-9]{2,8})*$/;
+
+/**
+ * True when `id` points at a translation catalog authored by the app.
+ *
+ * A catalog is a locale-named file under a catalog directory — `messages/de.ts`,
+ * `locales/en.ftl` — or a file inside a locale-named subdirectory of one, which
+ * is how lingui compiles (`locales/en/messages.mjs`).
+ *
+ * Only app-relative sources qualify. A dependency shipping its own `locales/`
+ * folder (zod's error messages, `@formatjs`'s data) is library code and has to
+ * stay in the measurement, so bare specifiers and anything under `node_modules`
+ * are excluded.
+ */
+const isTranslationCatalog = (id: string): boolean => {
+  // Vite hands over ids carrying its own query, and those queries contain dots
+  // that would otherwise be read as the file extension — fluent-vue's catalogs
+  // arrive as `../src/locales/de.ftl?vue&type=fluent&...&lang.fluent`.
+  const normalized = id.split(path.sep).join("/").split(/[?#]/)[0] ?? "";
+
+  if (normalized.includes("/node_modules/")) return false;
+  // Bare package specifiers (`some-lib/locales/en.js`) are dependencies.
+  if (!normalized.startsWith(".") && !normalized.startsWith("/")) return false;
+
+  const segments = normalized.split("/");
+  const fileName = segments[segments.length - 1] ?? "";
+  const directories = segments.slice(0, -1);
+
+  const isUnderCatalogDirectory = directories.some((segment) =>
+    CATALOG_DIRECTORY_NAMES.has(segment.toLowerCase()),
+  );
+  if (!isUnderCatalogDirectory) return false;
+
+  const baseName = fileName.replace(/\.[^.]+$/, "");
+  const parentDirectory = directories[directories.length - 1] ?? "";
+
+  return (
+    LOCALE_NAME_PATTERN.test(baseName) ||
+    LOCALE_NAME_PATTERN.test(parentDirectory)
+  );
+};
+
 const BLOCKED_PLUGIN_SUBSTRINGS = [
   "tanstack", // Strips tanstack-react-start:config and nested router plugins
   "vite:react", // Strips vite:react-babel, vite:react-refresh, etc.
@@ -772,6 +848,7 @@ export const measureLibSize = async ({
     ...BASE_EXTERNAL_PACKAGES,
     ...additionalExternalPackages,
     /\.json$/,
+    isTranslationCatalog,
   ];
 
   const resultsDirectory = path.join(

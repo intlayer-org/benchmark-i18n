@@ -33,7 +33,7 @@ const config: IntlayerConfig = {
     format: "icu",
   },
   build: {
-    optimize: false,
+    optimize: true,
     minify: true,
     purge: true,
     checkTypes: false,
@@ -43,12 +43,16 @@ const config: IntlayerConfig = {
     enabled: false,
   },
   // lingui is single-catalog: `locales/{locale}/messages.json` is one flat map
-  // of dotted ids. The `{key}` segment resolves to `messages`, which is the
-  // dictionary key the lingui adapter's callers are pinned to.
+  // of dotted ids. `splitKeys: "key-prefix"` groups those ids by their first
+  // dot-segment, so `footer.github` becomes dictionary `footer`, key `github`
+  // — the optimize pass then binds each `useLingui()` / `<Trans>` to the
+  // dictionaries its ids name instead of the whole catalog. The source file
+  // keeps its flat shape (write-back re-joins the ids).
   plugins: [
     syncJSON({
       format: "icu",
       source: ({ locale, key }) => `./src/locales/${locale}/${key}.json`,
+      splitKeys: "key-prefix",
     }),
   ],
 };

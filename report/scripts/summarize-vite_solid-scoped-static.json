@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-solid",
     "frameworkLabel": "Vite + Solid",
-    "generatedAt": "2026-09-09T20:07:14.294Z",
+    "generatedAt": "2026-09-11T23:31:58.009Z",
     "counts": {
       "totalLibs": 5,
       "totalApps": 6
@@ -24,6 +24,8 @@
       "scoped-static": {
         "appName": "vite-solid-base-app",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-base-app/bundle/rollup-visualizer.html",
+        "measuredCategory": "base",
+        "isFallback": false,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -878,6 +880,8 @@
       "scoped-static": {
         "appName": "vite-solid-i18next-static",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-i18next-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -1732,6 +1736,8 @@
       "scoped-static": {
         "appName": "vite-solid-intlayer-static",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-intlayer-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -2586,6 +2592,8 @@
       "scoped-static": {
         "appName": "vite-solid-paraglide-js-static",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-paraglide-js-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -3440,6 +3448,8 @@
       "scoped-static": {
         "appName": "vite-solid-primitives-i18n-static",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-primitives-i18n-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",

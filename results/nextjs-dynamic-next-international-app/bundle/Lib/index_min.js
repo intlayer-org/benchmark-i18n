@@ -141,16 +141,16 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	}
 	0 && (t.exports = { createI18nClient: V });
 }))().createI18nClient)({
-	en: () => import("./en-BWTLM3P1.js"),
-	fr: () => import("./fr-DOkdQC8B.js"),
-	es: () => import("./es-CwgLPlwN.js"),
-	de: () => import("./de-DLCj-A0S.js"),
-	it: () => import("./it-DdDR_SOd.js"),
-	pt: () => import("./pt-0cvnCkG1.js"),
-	zh: () => import("./zh-DcQYdncF.js"),
-	ja: () => import("./ja-BvBjKrwS.js"),
-	ko: () => import("./ko-BO3urTDG.js"),
-	ru: () => import("./ru-CCiwUS4O.js")
+	en: () => import("../locales/en.ts"),
+	fr: () => import("../locales/fr.ts"),
+	es: () => import("../locales/es.ts"),
+	de: () => import("../locales/de.ts"),
+	it: () => import("../locales/it.ts"),
+	pt: () => import("../locales/pt.ts"),
+	zh: () => import("../locales/zh.ts"),
+	ja: () => import("../locales/ja.ts"),
+	ko: () => import("../locales/ko.ts"),
+	ru: () => import("../locales/ru.ts")
 });
 function c() {
 	return s.useI18n();
@@ -232,52 +232,3 @@ function w() {
 	}, this);
 }
 export { w as default };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/de.json";
-var n = e(t);
-export { n as default };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/en.json";
-var n = e(t);
-export { n as default };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/es.json";
-var n = e(t);
-export { n as default };
-function e(t, n = "") {
-	let r = {};
-	for (let i in t) {
-		let a = n ? `${n}.${i}` : i;
-		typeof t[i] == "object" && t[i] !== null ? Object.assign(r, e(t[i], a)) : r[a] = String(t[i]);
-	}
-	return r;
-}
-export { e as t };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/fr.json";
-var n = e(t);
-export { n as default };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/it.json";
-var n = e(t);
-export { n as default };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/ja.json";
-var n = e(t);
-export { n as default };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/ko.json";
-var n = e(t);
-export { n as default };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/pt.json";
-var n = e(t);
-export { n as default };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/ru.json";
-var n = e(t);
-export { n as default };
-import { t as e } from "./flatten-DDFH6wLI.js";
-import t from "../messages/zh.json";
-var n = e(t);
-export { n as default };

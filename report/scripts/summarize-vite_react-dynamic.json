@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-react",
     "frameworkLabel": "Vite + React",
-    "generatedAt": "2026-09-09T20:07:14.294Z",
+    "generatedAt": "2026-09-11T23:31:58.009Z",
     "counts": {
       "totalLibs": 2,
       "totalApps": 3
@@ -23,6 +23,8 @@
       "dynamic": {
         "appName": "vite-base-app",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-base-app/bundle/rollup-visualizer.html",
+        "measuredCategory": "base",
+        "isFallback": false,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -877,6 +879,8 @@
       "dynamic": {
         "appName": "vite-react-intlayer-static",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-react-intlayer-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",

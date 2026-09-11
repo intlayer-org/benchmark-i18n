@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-vue",
     "frameworkLabel": "Vite + Vue",
-    "generatedAt": "2026-09-09T20:07:14.294Z",
+    "generatedAt": "2026-09-11T23:31:58.009Z",
     "counts": {
       "totalLibs": 4,
       "totalApps": 5
@@ -23,6 +23,8 @@
       "dynamic": {
         "appName": "vite-vue-base-app",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-base-app/bundle/rollup-visualizer.html",
+        "measuredCategory": "base",
+        "isFallback": false,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -868,15 +870,17 @@
         "version": "3.8.2",
         "libSize": {
           "status": "ok",
-          "gzip": 94958,
-          "minified": 336145,
-          "unminified": 386432
+          "gzip": 30436,
+          "minified": 101429,
+          "unminified": 145278
         }
       },
       "static": null,
       "dynamic": {
         "appName": "vite-vue-fluent-vue-static",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-fluent-vue-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -1731,6 +1735,8 @@
       "dynamic": {
         "appName": "vite-vue-intlayer-dynamic",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-intlayer-dynamic/bundle/rollup-visualizer.html",
+        "measuredCategory": "dynamic",
+        "isFallback": false,
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -2585,6 +2591,8 @@
       "dynamic": {
         "appName": "vite-vue-i18n-static",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-i18n-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",

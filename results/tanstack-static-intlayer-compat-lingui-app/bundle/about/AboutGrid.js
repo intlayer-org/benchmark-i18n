@@ -1,6 +1,10 @@
-import { Fragment, createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 import { jsxDEV } from "react/jsx-dev-runtime";
+var about_grid_default = {
+	key: "about-grid",
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"choosingAnI18nLibraryIs\":\"Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.\",\"methodology\":\"Methodology\",\"theSame10PageApp\":\"The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results.\",\"whyThisExists\":\"Why This Exists\"},\"fr\":{\"choosingAnI18nLibraryIs\":\"Choisir une bibliothèque i18n est une décision architecturale ayant des conséquences à long terme. La plupart des comparaisons se concentrent sur l'ergonomie de l'API, mais peu mesurent le coût en termes de performances : quel poids la bibliothèque ajoute-t-elle au bundle ? Comment cela affecte-t-il le rendu lorsque des milliers de clés de traduction sont chargées ? Le chargement différé aide-t-il réellement ou déplace-t-il simplement le coût ? Ce benchmark répond à ces questions avec des données réelles.\",\"methodology\":\"Méthodologie\",\"theSame10PageApp\":\"La même application de 10 pages est construite une fois par bibliothèque. Nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits Lighthouse pour les métriques de chargement et utilisons React Profiler pour capturer les temps de rendu lors des changements de langue. Tous les tests sont effectués en CI sur un matériel identique pour garantir des résultats reproductibles.\",\"whyThisExists\":\"Pourquoi cela existe\"},\"es\":{\"choosingAnI18nLibraryIs\":\"Elegir una biblioteca i18n es una decisión arquitectónica con consecuencias a largo plazo. La mayoría de las comparaciones se centran en la ergonomía de la API, pero pocas miden el coste de rendimiento: ¿cuánto peso añade la biblioteca al bundle? ¿Cómo afecta al renderizado cuando se cargan miles de claves de traducción? ¿Realmente ayuda la carga diferida o solo traslada el coste? Este benchmark responde a estas preguntas con datos reales.\",\"methodology\":\"Metodología\",\"theSame10PageApp\":\"La misma aplicación de 10 páginas se construye una vez por biblioteca. Medimos el bundle de producción (a través de rollup-plugin-visualizer), realizamos auditorías de Lighthouse para las métricas de carga y utilizamos React Profiler para capturar los tiempos de renderizado durante los cambios de idioma. Todas las pruebas se ejecutan en CI en un hardware consistente para garantizar resultados reproducibles.\",\"whyThisExists\":\"Por qué existe\"},\"de\":{\"choosingAnI18nLibraryIs\":\"Die Wahl einer i18n-Bibliothek ist eine architektonische Entscheidung mit langfristigen Folgen. Die meisten Vergleiche konzentrieren sich auf die Ergonomie der API, aber nur wenige messen die Leistungskosten: Wie viel Gewicht fügt die Bibliothek dem Bundle hinzu? Wie wirkt sie sich auf das Rendering aus, wenn Tausende von Übersetzungsschlüsseln geladen werden? Hilft Lazy Loading wirklich oder verschiebt es nur die Kosten? Dieser Benchmark beantwortet diese Fragen mit echten Daten.\",\"methodology\":\"Methodik\",\"theSame10PageApp\":\"Dieselbe 10-seitige App wird einmal pro Bibliothek erstellt. Wir messen das Produktions-Bundle (über rollup-plugin-visualizer), führen Lighthouse-Audits für Lademetriken durch und verwenden den React Profiler, um die Renderzeiten während der Gebietsschemawechsel zu erfassen. Alle Tests werden in der CI auf konsistenter Hardware ausgeführt, um reproduzierbare Ergebnisse zu gewährleisten.\",\"whyThisExists\":\"Warum dieses Projekt existiert\"},\"it\":{\"choosingAnI18nLibraryIs\":\"Scegliere una libreria i18n è una decisione architettonica con conseguenze a lungo termine. La maggior parte dei confronti si concentra sull'ergonomia delle API, ma pochi misurano il costo delle prestazioni: quanto peso aggiunge la libreria al bundle? In che modo influisce sul rendering quando vengono caricate migliaia di chiavi di traduzione? Il caricamento pigro aiuta davvero o sposta solo il costo? Questo benchmark risponde a queste domande con dati reali.\",\"methodology\":\"Metodologia\",\"theSame10PageApp\":\"La stessa app di 10 pagine viene costruita una volta per libreria. Misuriamo il bundle di produzione (tramite rollup-plugin-visualizer), eseguiamo audit Lighthouse per le metriche di caricamento e utilizziamo React Profiler per catturare i tempi di rendering durante i cambi di lingua. Tutti i test vengono eseguiti in CI su hardware coerente per garantire risultati riproducibili.\",\"whyThisExists\":\"Perché esiste questo progetto\"},\"pt\":{\"choosingAnI18nLibraryIs\":\"Escolher uma biblioteca i18n é uma decisão arquitetônica com consequências de longo prazo. A maioria das comparações se concentra na ergonomia da API, mas poucas medem o custo de desempenho: quanto peso a biblioteca adiciona ao pacote? Como isso afeta a renderização quando milhares de chaves de tradução são carregadas? O carregamento tardio realmente ajuda ou apenas desloca o custo? Este benchmark responde a essas perguntas com dados reais.\",\"methodology\":\"Metodologia\",\"theSame10PageApp\":\"O mesmo aplicativo de 10 páginas é construído uma vez por biblioteca. Medimos o bundle de produção (via rollup-plugin-visualizer), realizamos auditorias do Lighthouse para métricas de carregamento e usamos o React Profiler para capturar tempos de renderização durante as trocas de localidade. Todos os testes são executados em CI em hardware consistente para garantir resultados reproduzíveis.\",\"whyThisExists\":\"Por que isso existe\"},\"zh\":{\"choosingAnI18nLibraryIs\":\"选择 i18n 库是一项具有长期影响的架构决策。大多数比较侧重于 API 的易用性，但很少衡量性能成本：库为包增加了多少权重？加载数千个翻译键时它如何影响渲染？延迟加载是否真的有帮助，还是只是转移了成本？本基准测试用真实数据回答了这些问题。\",\"methodology\":\"方法论\",\"theSame10PageApp\":\"同一个 10 页应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行 Lighthouse 审计以获取加载指标，并使用 React Profiler 捕获语言切换期间的渲染时间。所有测试都在一致的硬件上在 CI 中运行，以确保结果的可复现性。\",\"whyThisExists\":\"为什么存在这个基准测试\"},\"ja\":{\"choosingAnI18nLibraryIs\":\"i18nライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較はAPIの使い勝手に焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリがバンドルにどれだけの重量を加えるのか？数千の翻訳キーが読み込まれたとき、レンダリングにどのような影響を与えるのか？遅延読み込みは実際に役立つのか、それとも単にコストをシフトさせているだけなのか？このベンチマークは、実際のデータでそれらの疑問に答えます。\",\"methodology\":\"方法論\",\"theSame10PageApp\":\"同じ10ページのアプリがライブラリごとに1回構築されます。rollup-plugin-visualizerを介してプロダクションバンドルを測定し、ロード指標のLighthouse監査を実行し、React Profilerを使用してロケール切り替え中のレンダリング時間をキャプチャします。すべてのテストは、再現可能な結果を確実にするために、一貫したハードウェアを使用してCI上で実行されます。\",\"whyThisExists\":\"なぜこれが存在するのか\"},\"ko\":{\"choosingAnI18nLibraryIs\":\"i18n 라이브러리를 선택하는 것은 장기적인 결과를 초래하는 아키텍처 결정입니다. 대부분의 비교는 API의 사용 편의성에 중점을 두지만, 성능 비용을 측정하는 경우는 거의 없습니다. 라이브러리가 번들에 얼마나 무게를 더하는가? 수천 개의 번역 키가 로드될 때 렌더링에 어떤 영향을 주는가? 지연 로딩이 실제로 도움이 되는가 아니면 단순히 비용을 나중으로 미루는 것인가? 이 벤치마크는 실제 데이터를 사용하여 이러한 질문에 답합니다.\",\"methodology\":\"방법론\",\"theSame10PageApp\":\"동일한 10페이지 앱이 라이브러리마다 한 번씩 구축됩니다. rollup-plugin-visualizer를 통해 프로덕션 번들을 측정하고, 로딩 지표에 대한 Lighthouse 감사를 실행하며, React Profiler를 사용하여 로케일 전환 중 렌더링 시간을 캡처합니다. 모든 테스트는 재현 가능한 결과를 보장하기 위해 일관된 하드웨어의 CI에서 실행됩니다.\",\"whyThisExists\":\"이것이 존재하는 이유\"},\"ru\":{\"choosingAnI18nLibraryIs\":\"Выбор библиотеки i18n — это архитектурное решение с долгосрочными последствиями. Большинство сравнений сосредоточены на эргономике API, но немногие измеряют стоимость производительности: какой вес библиотека добавляет в бандл? Как она влияет на рендеринг при загрузке тысяч ключей перевода? Помогает ли ленивая загрузка на самом деле или просто переносит затраты? Этот бенчмарк отвечает на эти вопросы с помощью реальных данных.\",\"methodology\":\"Методология\",\"theSame10PageApp\":\"Одно и то же 10-страничное приложение создается для каждой библиотеки. Мы измеряем производственный бандл (через rollup-plugin-visualizer), проводим аудит Lighthouse для метрик загрузки и используем React Profiler для регистрации времени рендеринга при переключении языков. Все тесты выполняются в CI на одинаковом оборудовании для обеспечения воспроизводимых результатов.\",\"whyThisExists\":\"Почему это существует\"}}}")
+};
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
 	on(event, listener) {
@@ -497,335 +501,6 @@ var icuToIntlayerFormatter = (message) => {
 		}]
 	});
 };
-var parseI18Next = (text) => {
-	let index = 0;
-	const parseNodes = () => {
-		const nodes = [];
-		let currentText = "";
-		while (index < text.length) {
-			const char = text[index];
-			if (char === "{" && text[index + 1] === "{") {
-				if (currentText) {
-					nodes.push(currentText);
-					currentText = "";
-				}
-				index += 2;
-				nodes.push(parseStandardArgument());
-			} else if (char === "{") {
-				if (currentText) {
-					nodes.push(currentText);
-					currentText = "";
-				}
-				index++;
-				nodes.push(parseICUArgument());
-			} else if (char === "}") break;
-			else {
-				currentText += char;
-				index++;
-			}
-		}
-		if (currentText) nodes.push(currentText);
-		return nodes;
-	};
-	const parseStandardArgument = () => {
-		let name = "";
-		while (index < text.length) {
-			if (text[index] === "}" && text[index + 1] === "}") {
-				index += 2;
-				return {
-					type: "argument",
-					name: name.trim()
-				};
-			}
-			name += text[index];
-			index++;
-		}
-		throw new Error("Unclosed i18next variable");
-	};
-	const parseICUArgument = () => {
-		let name = "";
-		while (index < text.length && /[^,}]/.test(text[index])) {
-			name += text[index];
-			index++;
-		}
-		name = name.trim();
-		if (index >= text.length) throw new Error("Unclosed argument");
-		if (text[index] === "}") {
-			index++;
-			return {
-				type: "argument",
-				name
-			};
-		}
-		if (text[index] === ",") {
-			index++;
-			let type = "";
-			while (index < text.length && /[^,}]/.test(text[index])) {
-				type += text[index];
-				index++;
-			}
-			type = type.trim();
-			if (index >= text.length) throw new Error("Unclosed argument");
-			if (text[index] === "}") {
-				index++;
-				return {
-					type: "argument",
-					name,
-					format: { type }
-				};
-			}
-			if (text[index] === ",") {
-				index++;
-				if (type === "plural" || type === "select") {
-					const options = {};
-					while (index < text.length && text[index] !== "}") {
-						while (index < text.length && /\s/.test(text[index])) index++;
-						let key = "";
-						while (index < text.length && /[^{\s]/.test(text[index])) {
-							key += text[index];
-							index++;
-						}
-						while (index < text.length && /\s/.test(text[index])) index++;
-						if (text[index] !== "{") throw new Error("Expected { after option key");
-						index++;
-						const value = parseNodes();
-						if (text[index] !== "}") throw new Error("Expected } after option value");
-						index++;
-						options[key] = value;
-						while (index < text.length && /\s/.test(text[index])) index++;
-					}
-					index++;
-					if (type === "plural") return {
-						type: "plural",
-						name,
-						options
-					};
-					else if (type === "select") return {
-						type: "select",
-						name,
-						options
-					};
-				} else {
-					let style = "";
-					while (index < text.length && text[index] !== "}") {
-						style += text[index];
-						index++;
-					}
-					if (index >= text.length) throw new Error("Unclosed argument");
-					style = style.trim();
-					index++;
-					return {
-						type: "argument",
-						name,
-						format: {
-							type,
-							style
-						}
-					};
-				}
-			}
-		}
-		throw new Error("Malformed argument");
-	};
-	return parseNodes();
-};
-var i18nextNodesToIntlayer = (nodes) => {
-	if (nodes.length === 0) return "";
-	if (nodes.length === 1 && typeof nodes[0] === "string") {
-		const node = nodes[0];
-		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
-		return node;
-	}
-	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
-		let str = "";
-		for (const node of nodes) if (typeof node === "string") str += node;
-		else if (typeof node !== "string" && node.type === "argument") {
-			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
-			else str += `{{${node.name}}}`;
-		}
-		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
-		return insertion(str);
-	}
-	if (nodes.length === 1) {
-		const node = nodes[0];
-		if (typeof node === "string") {
-			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
-			return node;
-		}
-		if (node.type === "argument") {
-			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
-			return insertion(`{{${node.name}}}`);
-		}
-		if (node.type === "plural") {
-			const options = {};
-			let hasExactMatch = false;
-			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
-				hasExactMatch = true;
-				break;
-			}
-			if (hasExactMatch) {
-				for (const [key, val] of Object.entries(node.options)) {
-					let newKey = key;
-					if (key.startsWith("=")) newKey = key.substring(1);
-					else if (key === "one") newKey = "1";
-					else if (key === "two") newKey = "2";
-					else if (key === "few") newKey = "<=3";
-					else if (key === "many") newKey = ">=4";
-					else if (key === "other") newKey = "fallback";
-					const replacedVal = val.map((v) => {
-						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
-						return v;
-					});
-					options[newKey] = i18nextNodesToIntlayer(replacedVal);
-				}
-				options.__intlayer_icu_var = node.name;
-				return enumeration(options);
-			} else {
-				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
-					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
-					return v;
-				}));
-				return plural(options);
-			}
-		}
-		if (node.type === "select") {
-			const options = {};
-			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
-			const optionKeys = Object.keys(options);
-			if ((options.male || options.female) && optionKeys.every((k) => [
-				"male",
-				"female",
-				"other",
-				"fallback"
-			].includes(k))) return gender({
-				fallback: options.fallback,
-				male: options.male,
-				female: options.female
-			});
-			return select(options, node.name);
-		}
-	}
-	return nodes.map((node) => i18nextNodesToIntlayer([node]));
-};
-var i18nextToIntlayerPlugin = {
-	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
-	transform: (node) => {
-		try {
-			return i18nextNodesToIntlayer(parseI18Next(node));
-		} catch {
-			return node;
-		}
-	}
-};
-var i18nextToIntlayerFormatter = (message) => {
-	return deepTransformNode(message, {
-		dictionaryKey: "i18next",
-		keyPath: [],
-		plugins: [{
-			id: "i18next",
-			...i18nextToIntlayerPlugin
-		}]
-	});
-};
-var parseVueI18nPart = (text) => {
-	let index = 0;
-	const nodes = [];
-	let currentText = "";
-	while (index < text.length) {
-		const char = text[index];
-		if (char === "{") {
-			if (currentText) {
-				nodes.push(currentText);
-				currentText = "";
-			}
-			index++;
-			let name = "";
-			while (index < text.length && text[index] !== "}") {
-				name += text[index];
-				index++;
-			}
-			if (index < text.length) index++;
-			nodes.push({
-				type: "argument",
-				name: name.trim()
-			});
-		} else {
-			currentText += char;
-			index++;
-		}
-	}
-	if (currentText) nodes.push(currentText);
-	return nodes;
-};
-var parseVueI18n = (text) => {
-	const parts = [];
-	let currentPart = "";
-	let index = 0;
-	while (index < text.length) {
-		const char = text[index];
-		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
-			currentPart += "|";
-			index += 2;
-		} else if (char === "|") {
-			parts.push(currentPart.trim());
-			currentPart = "";
-			index++;
-		} else {
-			currentPart += char;
-			index++;
-		}
-	}
-	parts.push(currentPart.trim());
-	return parts.map(parseVueI18nPart);
-};
-var vueI18nPartToIntlayer = (nodes) => {
-	if (nodes.length === 0) return "";
-	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
-	let str = "";
-	for (const node of nodes) if (typeof node === "string") str += node;
-	else str += `{{${node.name}}}`;
-	return insertion(str);
-};
-var vueI18nNodesToIntlayer = (parts) => {
-	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
-	const options = {};
-	const varName = "count";
-	if (parts.length === 2) return enumeration({
-		"1": vueI18nPartToIntlayer(parts[0]),
-		fallback: vueI18nPartToIntlayer(parts[1])
-	});
-	if (parts.length === 3) return enumeration({
-		"0": vueI18nPartToIntlayer(parts[0]),
-		"1": vueI18nPartToIntlayer(parts[1]),
-		fallback: vueI18nPartToIntlayer(parts[2])
-	});
-	parts.forEach((part, index) => {
-		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
-		else options[index.toString()] = vueI18nPartToIntlayer(part);
-	});
-	options.__intlayer_vue_i18n_var = varName;
-	return enumeration(options);
-};
-var vueI18nToIntlayerPlugin = {
-	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
-	transform: (node) => {
-		try {
-			return vueI18nNodesToIntlayer(parseVueI18n(node));
-		} catch {
-			return node;
-		}
-	}
-};
-var vueI18nToIntlayerFormatter = (message) => {
-	return deepTransformNode(message, {
-		dictionaryKey: "vue-i18n",
-		keyPath: [],
-		plugins: [{
-			id: "vue-i18n",
-			...vueI18nToIntlayerPlugin
-		}]
-	});
-};
 var findMatchingCondition = (enumerationContent, quantity) => {
 	const numericKeys = Object.keys(enumerationContent);
 	for (const key of numericKeys) {
@@ -997,9 +672,10 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
-	return value === void 0 ? match : String(value);
+	if (value === void 0) return match;
+	return type ? formatArgument(value, type, style, locale) : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1053,15 +729,11 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var DIALECT_FORMATTERS = {
-	icu: (message) => icuToIntlayerFormatter(message),
-	i18next: (message) => i18nextToIntlayerFormatter(message),
-	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
-	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
+var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
+	const resolved = resolveMessageNode(node, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
+var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -1084,12 +756,24 @@ var parseTaggedMessage = (message) => {
 	if (lastIndex < message.length) tokens.push(message.slice(lastIndex));
 	return tokens;
 };
+var resolveIcuMessage = createMessageResolver(icuToIntlayerFormatter);
+var splitMessageId = (id) => {
+	const dotPosition = id.indexOf(".");
+	if (dotPosition === -1) return {
+		dictionaryKey: id,
+		remainder: ""
+	};
+	return {
+		dictionaryKey: id.slice(0, dotPosition),
+		remainder: id.slice(dotPosition + 1)
+	};
+};
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
 	_catalogs = {};
 	_loadFallbackWarned = false;
-	_dictionaryContent;
+	_boundDictionaries = {};
 	_registry;
 	constructor({ locale = "en", locales, messages, registry } = {}) {
 		super();
@@ -1106,7 +790,7 @@ var I18nClass = class extends EventEmitter {
 	}
 	get messages() {
 		const dictionary = { ...this._registry?.all(this._locale) };
-		if (this._dictionaryContent !== void 0) Object.assign(dictionary, unwrapLinguiCatalog(this._dictionaryContent));
+		for (const content of Object.values(this._boundDictionaries)) Object.assign(dictionary, unwrapLinguiCatalog(content));
 		return {
 			...this._catalogs[this._locale] ?? {},
 			...dictionary
@@ -1137,8 +821,8 @@ var I18nClass = class extends EventEmitter {
 		if (messages) this.mergeLocaleCatalog(locale, messages);
 		this.activate(locale, locales);
 	}
-	bindDictionaryContent(content) {
-		this._dictionaryContent = content;
+	bindDictionaries(dictionaries) {
+		this._boundDictionaries = dictionaries;
 		return this;
 	}
 	activate(locale, locales) {
@@ -1146,28 +830,52 @@ var I18nClass = class extends EventEmitter {
 		this._locales = locales;
 		this.emit("change");
 	}
-	resolveTemplate(id) {
-		if (this._dictionaryContent !== void 0) {
-			const boundValue = navigateLinguiCatalog(this._dictionaryContent, id);
-			if (boundValue !== void 0) return linguiMessageToIcu(boundValue);
+	lookupBoundDictionaries(id) {
+		const { dictionaryKey, remainder } = splitMessageId(id);
+		const prefixed = this._boundDictionaries[dictionaryKey];
+		if (prefixed !== void 0) {
+			const value = navigateLinguiCatalog(prefixed, remainder);
+			if (value !== void 0) return value;
 		}
-		const fromDictionary = this._registry?.lookup(id, this._locale);
-		if (fromDictionary !== void 0) return fromDictionary;
+		for (const content of Object.values(this._boundDictionaries)) {
+			const value = navigateLinguiCatalog(content, id);
+			if (value !== void 0) return value;
+		}
+	}
+	resolveTemplate(id) {
+		const boundNode = this.lookupBoundDictionaries(id);
+		if (boundNode !== void 0) return {
+			kind: "node",
+			node: boundNode
+		};
+		const registryNode = this._registry?.lookup(id, this._locale);
+		if (registryNode !== void 0) return {
+			kind: "node",
+			node: registryNode
+		};
 		const catalog = this._catalogs[this._locale];
 		if (catalog) {
 			const raw = navigateLinguiCatalog(catalog, id);
-			if (raw !== void 0) return linguiMessageToIcu(raw);
+			if (raw !== void 0) return {
+				kind: "icu",
+				message: linguiMessageToIcu(raw)
+			};
 		}
 	}
 	_(descriptorOrId, values, options) {
 		const isDescriptor = typeof descriptorOrId === "object" && descriptorOrId !== null;
 		const id = isDescriptor ? descriptorOrId.id : descriptorOrId;
 		const defaultMessage = isDescriptor ? descriptorOrId.message ?? options?.message : options?.message;
-		const resolvedValues = isDescriptor ? {
+		const messageValues = isDescriptor ? {
 			...descriptorOrId.values ?? {},
 			...values ?? {}
 		} : values ?? {};
-		return resolveMessage(this.resolveTemplate(id) ?? defaultMessage ?? id, resolvedValues, this._locale, "icu") ?? id;
+		const locale = this._locale;
+		const template = this.resolveTemplate(id) ?? {
+			kind: "icu",
+			message: defaultMessage ?? id
+		};
+		return (template.kind === "node" ? resolveMessageNodeToString(template.node, messageValues, locale) : resolveIcuMessage(template.message, messageValues, locale)) ?? id;
 	}
 	t = (descriptorOrId, values, options) => this._(descriptorOrId, values, options);
 	date(value, format) {
@@ -1345,7 +1053,7 @@ var getIntlayer = (key, localeOrSelector, plugins) => {
 		}
 		return createSafeFallback(key);
 	}
-	return getDictionary(dictionary, localeOrSelector, plugins);
+	return getDictionary$1(dictionary, localeOrSelector, plugins);
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1451,8 +1159,9 @@ var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRA
 	}
 };
 var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
@@ -1494,7 +1203,7 @@ var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
 	conditionPlugin,
-	insertionPlugin,
+	insertionPlugin$1,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
 	genderPlugin,
@@ -1504,7 +1213,7 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary = (dictionary, localeOrSelector, plugins) => {
+var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
 	const { locale, selector } = parseDictionarySelector(localeOrSelector);
 	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
 	const cached = readTransformCache(dictionary, cacheKey);
@@ -1525,6 +1234,26 @@ var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
+var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
+var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
+var splitInsertionTemplate = (template, values = {}) => {
+	if (!Object.values(values).some(isComplexValue)) return {
+		isSimple: true,
+		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
+	};
+	const chunks = template.split(insertionRegex);
+	const parts = [];
+	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
+		if (chunks[i]) parts.push(chunks[i]);
+	} else {
+		const val = values[chunks[i].trim()];
+		if (val != null) parts.push(val);
+	}
+	return {
+		isSimple: false,
+		parts
+	};
+};
 var getDictionaryKeys = () => {
 	try {
 		return Object.keys(getDictionaries());
@@ -1533,15 +1262,23 @@ var getDictionaryKeys = () => {
 	}
 };
 var lookupDictionaryMessage = (id, locale) => {
-	for (const key of getDictionaryKeys()) {
-		let dictionary;
+	const dictionaryKeys = getDictionaryKeys();
+	const dotPosition = id.indexOf(".");
+	const prefix = dotPosition === -1 ? id : id.slice(0, dotPosition);
+	const readDictionary = (key) => {
 		try {
-			dictionary = getIntlayer(key, locale);
+			return getIntlayer(key, locale);
 		} catch {
-			continue;
+			return;
 		}
-		const value = navigateLinguiCatalog(dictionary, id);
-		if (value !== void 0) return linguiMessageToIcu(value);
+	};
+	if (dictionaryKeys.includes(prefix)) {
+		const value = navigateLinguiCatalog(readDictionary(prefix), dotPosition === -1 ? "" : id.slice(dotPosition + 1));
+		if (value !== void 0) return value;
+	}
+	for (const key of dictionaryKeys) {
+		const value = navigateLinguiCatalog(readDictionary(key), id);
+		if (value !== void 0) return value;
 	}
 };
 var collectRegistryMessages = (locale) => {
@@ -1555,6 +1292,108 @@ var createRegistryResolver = () => ({
 	lookup: lookupDictionaryMessage,
 	all: collectRegistryMessages
 });
+var renderIntlayerNode = ({ children, value, additionalProps }) => {
+	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
+	return new Proxy(element, { get(target, prop, receiver) {
+		if (prop === "value") return value;
+		if (prop === Symbol.toPrimitive) return () => value ?? "";
+		if (prop === "toString") return () => String(value ?? "");
+		if (prop === "valueOf") return () => value;
+		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
+		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
+			const valObj = Object(value);
+			if (prop in valObj) {
+				const valProp = valObj[prop];
+				return typeof valProp === "function" ? valProp.bind(value) : valProp;
+			}
+		}
+		return Reflect.get(target, prop, receiver);
+	} });
+};
+var intlayerNodePlugins = {
+	id: "intlayer-node-plugin",
+	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
+	transform: (_node, { plugins, ...rest }) => {
+		return renderIntlayerNode({
+			...rest,
+			value: rest.children,
+			children: rest.children
+		});
+	}
+};
+var reactNodePlugins = fallbackPlugin;
+var splitAndJoinInsertion = (template, values) => {
+	const result = splitInsertionTemplate(template, values);
+	if (result.isSimple) return result.parts;
+	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
+};
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const result = splitAndJoinInsertion(transformedResult, values);
+					return deepTransformNode(result, {
+						...subProps,
+						plugins: props.plugins,
+						children: result
+					});
+				};
+			}
+		};
+		const result = deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
+		});
+		if (typeof children === "object" && children !== null && "nodeType" in children && ["enumeration", "condition"].includes(children.nodeType)) return (values) => (arg) => {
+			const inner = result(arg);
+			if (typeof inner === "function") return inner(values);
+			return inner;
+		};
+		return result;
+	}
+};
+var markdownPlugin = fallbackPlugin;
+var htmlPlugin = fallbackPlugin;
+var pluginsCache = /* @__PURE__ */ new Map();
+var getPlugins = (locale, fallback = true) => {
+	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
+	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
+	const plugins = [
+		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+		enumerationPlugin,
+		pluralPlugin(locale ?? internationalization.defaultLocale),
+		conditionPlugin,
+		nestedPlugin(locale ?? internationalization.defaultLocale),
+		filePlugin,
+		genderPlugin,
+		selectPlugin,
+		intlayerNodePlugins,
+		reactNodePlugins,
+		insertionPlugin,
+		markdownPlugin,
+		htmlPlugin
+	];
+	pluginsCache.set(cacheKey, plugins);
+	return plugins;
+};
+var getDictionary = (dictionary, localeOrSelector) => {
+	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
+};
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
 	if (typeof expires === "string") {
@@ -1711,8 +1550,8 @@ var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent,
 		children
 	]
 });
+var { defaultLocale, locales: availableLocales } = internationalization ?? {};
 var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
-	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
 	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
 	return {
 		locale,
@@ -1733,22 +1572,6 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 			isCookieEnabled
 		])
 	};
-};
-var useLingui = () => {
-	const context = useContext(LinguiContext);
-	const { locale } = useLocale();
-	const derivedI18n = useMemo(() => {
-		const instance = new I18nClass({
-			locale,
-			registry: createRegistryResolver()
-		});
-		return {
-			i18n: instance,
-			_: instance._.bind(instance)
-		};
-	}, [locale]);
-	if (context) return context;
-	return derivedI18n;
 };
 var I18nProvider = ({ i18n, defaultComponent, children }) => {
 	const buildContext = (instance) => ({
@@ -1774,6 +1597,18 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		})
 	});
 };
+var createBoundLinguiContext = (locale, dictionaries) => {
+	const instance = new I18nClass({ locale }).bindDictionaries(dictionaries);
+	return {
+		i18n: instance,
+		_: instance._.bind(instance)
+	};
+};
+var useDictionary = (...dictionaries) => {
+	const { locale } = useLocale();
+	const dictionaryKeysIdentity = dictionaries.map((dictionary) => dictionary.key).join("\0");
+	return useMemo(() => createBoundLinguiContext(locale, Object.fromEntries(dictionaries.map((dictionary) => [dictionary.key, getDictionary(dictionary, locale)]))), [locale, dictionaryKeysIdentity]);
+};
 var renderTaggedTokens = (tokens, components) => tokens.map((token, tokenIndex) => {
 	if (typeof token === "string") return token;
 	const children = renderTaggedTokens(token.children, components);
@@ -1789,8 +1624,7 @@ var renderTaggedTokens = (tokens, components) => tokens.map((token, tokenIndex) 
 	}
 	return jsx(Fragment, { children }, tokenIndex);
 });
-var Trans = ({ id, message, values, components, formats: _formats, comment: _comment, render, component: WrapperComponent }) => {
-	const { i18n, defaultComponent: DefaultComponent } = useLingui();
+var renderTrans = ({ id, message, values, components, render, component: WrapperComponent }, i18n, DefaultComponent) => {
 	const translation = i18n._(id, values ?? {}, { message });
 	const hasComponents = components && Object.keys(components).length > 0;
 	let content;
@@ -1812,6 +1646,11 @@ var Trans = ({ id, message, values, components, formats: _formats, comment: _com
 	});
 	return jsx(Fragment$1, { children: content });
 };
+var TransDictionary = ({ dictionary, ...props }) => {
+	const { i18n } = useDictionary(dictionary);
+	const { defaultComponent } = useContext(LinguiContext) ?? {};
+	return renderTrans(props, i18n, defaultComponent);
+};
 var setupI18n = (params) => new I18nClass({
 	...params,
 	registry: createRegistryResolver()
@@ -1819,16 +1658,17 @@ var setupI18n = (params) => new I18nClass({
 setupI18n({ locale: "en" });
 var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/about/AboutGrid.tsx";
 function AboutGrid() {
-	const { i18n } = useLingui();
+	const { i18n } = useDictionary(about_grid_default);
 	return jsxDEV("div", {
 		className: "grid gap-8 md:grid-cols-2",
 		children: [jsxDEV("div", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [jsxDEV("h2", {
 				className: "mb-3 text-xl font-semibold text-foreground",
-				children: jsxDEV(Trans, {
+				children: jsxDEV(TransDictionary, {
 					id: "about-grid.whyThisExists",
-					message: "Why This Exists"
+					message: "Why This Exists",
+					dictionary: about_grid_default
 				}, void 0, false, {
 					fileName: _jsxFileName$2,
 					lineNumber: 11,
@@ -1840,9 +1680,10 @@ function AboutGrid() {
 				columnNumber: 9
 			}, this), jsxDEV("p", {
 				className: "text-sm text-muted-foreground",
-				children: jsxDEV(Trans, {
+				children: jsxDEV(TransDictionary, {
 					id: "about-grid.choosingAnI18nLibraryIs",
-					message: "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+					message: "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					dictionary: about_grid_default
 				}, void 0, false, {
 					fileName: _jsxFileName$2,
 					lineNumber: 14,
@@ -1861,9 +1702,10 @@ function AboutGrid() {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [jsxDEV("h2", {
 				className: "mb-3 text-xl font-semibold text-foreground",
-				children: jsxDEV(Trans, {
+				children: jsxDEV(TransDictionary, {
 					id: "about-grid.methodology",
-					message: "Methodology"
+					message: "Methodology",
+					dictionary: about_grid_default
 				}, void 0, false, {
 					fileName: _jsxFileName$2,
 					lineNumber: 22,
@@ -1875,9 +1717,10 @@ function AboutGrid() {
 				columnNumber: 9
 			}, this), jsxDEV("p", {
 				className: "text-sm text-muted-foreground",
-				children: jsxDEV(Trans, {
+				children: jsxDEV(TransDictionary, {
 					id: "about-grid.theSame10PageApp",
-					message: "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+					message: "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results.",
+					dictionary: about_grid_default
 				}, void 0, false, {
 					fileName: _jsxFileName$2,
 					lineNumber: 25,

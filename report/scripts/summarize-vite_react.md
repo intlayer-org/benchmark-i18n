@@ -1,6 +1,6 @@
 # Vite + React — i18n Benchmark Results
 
-_Generated: 2026-09-09_
+_Generated: 2026-09-11_
 
 ## Metric Legend
 
@@ -276,9 +276,9 @@ _Generated: 2026-09-09_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | 🔶 | 43.5 KB | 15.0% | 0.0% | — | — | — | — | — |
-| Dynamic | 🔶 | 43.5 KB | 15.0% | 0.0% | — | — | — | — | — |
-| Scoped Static | 🔶 | 43.5 KB | 15.0% | 0.0% | — | — | — | — | — |
-| Scoped Dynamic | 🔶 | 43.5 KB | 15.0% | 0.0% | — | — | — | — | — |
+| Dynamic | ↳ Static | 43.5 KB | 15.0% | 0.0% | — | — | — | — | — |
+| Scoped Static | ↳ Static | 43.5 KB | 15.0% | 0.0% | — | — | — | — | — |
+| Scoped Dynamic | ↳ Static | 43.5 KB | 15.0% | 0.0% | — | — | — | — | — |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>

@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-09T01:18:42.321Z",
+  "timestamp": "2026-09-11T14:30:59.337Z",
   "packageName": "tanstack-static-gt-react-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 454623,
-    "totalMinifiedBytes": 377151,
-    "totalGzipBytes": 99727
+    "totalUnminifiedBytes": 199776,
+    "totalMinifiedBytes": 135248,
+    "totalGzipBytes": 38563
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 454623,
-      "unminifiedGzipBytes": 112502,
-      "minifiedBytes": 377151,
-      "minifiedGzipBytes": 99727
+      "unminifiedBytes": 199776,
+      "unminifiedGzipBytes": 47277,
+      "minifiedBytes": 135248,
+      "minifiedGzipBytes": 38563
     }
   ]
 }

@@ -33,9 +33,10 @@ const config: IntlayerConfig = {
     format: "icu",
   },
   build: {
-    minify: true,
-    checkTypes: false,
     optimize: true,
+    minify: true,
+    purge: true,
+    checkTypes: false,
   },
   compiler: {
     // Components already call `useTranslations()`; nothing to auto-transform.

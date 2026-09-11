@@ -210,16 +210,16 @@ var client = (0, __commonJSMin(((exports, module) => {
 	}
 	0 && (module.exports = { createI18nClient });
 }))().createI18nClient)({
-	en: () => import("./en-DdZxHrkY.js"),
-	fr: () => import("./fr-BH690cXy.js"),
-	es: () => import("./es-CEkpLbnV.js"),
-	de: () => import("./de-CzaYaEfU.js"),
-	it: () => import("./it-zwHlYiDM.js"),
-	pt: () => import("./pt-DwF7iRTi.js"),
-	zh: () => import("./zh-CDC8y4Nn.js"),
-	ja: () => import("./ja-C27OBTzI.js"),
-	ko: () => import("./ko-CY7_P8I0.js"),
-	ru: () => import("./ru-BhWOgESx.js")
+	en: () => import("../locales/en.ts"),
+	fr: () => import("../locales/fr.ts"),
+	es: () => import("../locales/es.ts"),
+	de: () => import("../locales/de.ts"),
+	it: () => import("../locales/it.ts"),
+	pt: () => import("../locales/pt.ts"),
+	zh: () => import("../locales/zh.ts"),
+	ja: () => import("../locales/ja.ts"),
+	ko: () => import("../locales/ko.ts"),
+	ru: () => import("../locales/ru.ts")
 });
 function useI18n() {
 	return client.useI18n();
@@ -313,53 +313,3 @@ function Wrapped() {
 	}, this);
 }
 export { Wrapped as default };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/de.json";
-var de_default = flattenMessages(messages);
-export { de_default as default };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/en.json";
-var en_default = flattenMessages(messages);
-export { en_default as default };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/es.json";
-var es_default = flattenMessages(messages);
-export { es_default as default };
-function flattenMessages(obj, prefix = "") {
-	const result = {};
-	for (const key in obj) {
-		const fullKey = prefix ? `${prefix}.${key}` : key;
-		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
-		else result[fullKey] = String(obj[key]);
-	}
-	return result;
-}
-export { flattenMessages as t };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/fr.json";
-var fr_default = flattenMessages(messages);
-export { fr_default as default };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/it.json";
-var it_default = flattenMessages(messages);
-export { it_default as default };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/ja.json";
-var ja_default = flattenMessages(messages);
-export { ja_default as default };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/ko.json";
-var ko_default = flattenMessages(messages);
-export { ko_default as default };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/pt.json";
-var pt_default = flattenMessages(messages);
-export { pt_default as default };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/ru.json";
-var ru_default = flattenMessages(messages);
-export { ru_default as default };
-import { t as flattenMessages } from "./flatten-C1nycfDa.js";
-import messages from "../messages/zh.json";
-var zh_default = flattenMessages(messages);
-export { zh_default as default };

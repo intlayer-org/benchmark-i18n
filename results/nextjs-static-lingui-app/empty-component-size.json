@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-09T18:45:34.981Z",
+  "timestamp": "2026-09-11T14:36:41.646Z",
   "packageName": "nextjs-static-lingui-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 289703,
-    "totalMinifiedBytes": 275545,
-    "totalGzipBytes": 73877
+    "totalUnminifiedBytes": 53511,
+    "totalMinifiedBytes": 39209,
+    "totalGzipBytes": 12190
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 289703,
-      "unminifiedGzipBytes": 76117,
-      "minifiedBytes": 275545,
-      "minifiedGzipBytes": 73877
+      "unminifiedBytes": 53511,
+      "unminifiedGzipBytes": 14393,
+      "minifiedBytes": 39209,
+      "minifiedGzipBytes": 12190
     }
   ]
 }

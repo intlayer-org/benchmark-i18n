@@ -1,14 +1,14 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import messages from "../messages/de.json";
-import messages$1 from "../messages/en.json";
-import messages$2 from "../messages/es.json";
-import messages$3 from "../messages/fr.json";
-import messages$4 from "../messages/it.json";
-import messages$5 from "../messages/ja.json";
-import messages$6 from "../messages/ko.json";
-import messages$7 from "../messages/pt.json";
-import messages$8 from "../messages/ru.json";
-import messages$9 from "../messages/zh.json";
+import de from "../locales/de.ts";
+import en from "../locales/en.ts";
+import es from "../locales/es.ts";
+import fr from "../locales/fr.ts";
+import it from "../locales/it.ts";
+import ja from "../locales/ja.ts";
+import ko from "../locales/ko.ts";
+import pt from "../locales/pt.ts";
+import ru from "../locales/ru.ts";
+import zh from "../locales/zh.ts";
 import { jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -16,7 +16,7 @@ var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy 
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 });
 var require_client_only = __commonJSMin((() => {}));
-var import_client = __commonJSMin(((exports, module) => {
+var client = (0, __commonJSMin(((exports, module) => {
 	var __create = Object.create;
 	var __defProp = Object.defineProperty;
 	var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -219,37 +219,17 @@ var import_client = __commonJSMin(((exports, module) => {
 		};
 	}
 	0 && (module.exports = { createI18nClient });
-}))();
-function flattenMessages(obj, prefix = "") {
-	const result = {};
-	for (const key in obj) {
-		const fullKey = prefix ? `${prefix}.${key}` : key;
-		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
-		else result[fullKey] = String(obj[key]);
-	}
-	return result;
-}
-var de_default = flattenMessages(messages);
-var en_default = flattenMessages(messages$1);
-var es_default = flattenMessages(messages$2);
-var fr_default = flattenMessages(messages$3);
-var it_default = flattenMessages(messages$4);
-var ja_default = flattenMessages(messages$5);
-var ko_default = flattenMessages(messages$6);
-var pt_default = flattenMessages(messages$7);
-var ru_default = flattenMessages(messages$8);
-var zh_default = flattenMessages(messages$9);
-var client = (0, import_client.createI18nClient)({
-	en: () => Promise.resolve({ default: en_default }),
-	fr: () => Promise.resolve({ default: fr_default }),
-	es: () => Promise.resolve({ default: es_default }),
-	de: () => Promise.resolve({ default: de_default }),
-	it: () => Promise.resolve({ default: it_default }),
-	pt: () => Promise.resolve({ default: pt_default }),
-	zh: () => Promise.resolve({ default: zh_default }),
-	ja: () => Promise.resolve({ default: ja_default }),
-	ko: () => Promise.resolve({ default: ko_default }),
-	ru: () => Promise.resolve({ default: ru_default })
+}))().createI18nClient)({
+	en: () => Promise.resolve({ default: en }),
+	fr: () => Promise.resolve({ default: fr }),
+	es: () => Promise.resolve({ default: es }),
+	de: () => Promise.resolve({ default: de }),
+	it: () => Promise.resolve({ default: it }),
+	pt: () => Promise.resolve({ default: pt }),
+	zh: () => Promise.resolve({ default: zh }),
+	ja: () => Promise.resolve({ default: ja }),
+	ko: () => Promise.resolve({ default: ko }),
+	ru: () => Promise.resolve({ default: ru })
 });
 function useI18n() {
 	return client.useI18n();

@@ -1,13 +1,33 @@
 {
   "fallbacks": {
-    "scoped-dynamic": ["scoped-dynamic", "dynamic", "static"],
-    "scoped-static": ["scoped-static", "static"],
-    "dynamic": ["dynamic", "static"],
-    "static": ["static"]
+    "scoped-dynamic": [
+      "scoped-dynamic",
+      "dynamic",
+      "static"
+    ],
+    "scoped-static": [
+      "scoped-static",
+      "static"
+    ],
+    "dynamic": [
+      "dynamic",
+      "static"
+    ],
+    "static": [
+      "static"
+    ]
   },
   "nextjs": {
     "base": "./apps-benchmark/nextjs-base-app",
     "apps": {
+      "@intlayer/next-i18next": {
+        "static": "./apps-benchmark/nextjs-static/intlayer-compat-next-i18next-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/intlayer-compat-next-i18next-app"
+      },
+      "@intlayer/next-intl": {
+        "static": "./apps-benchmark/nextjs-static/intlayer-compat-next-intl-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/intlayer-compat-next-intl-app"
+      },
       "gt-next": {
         "static": "./apps-benchmark/nextjs-static/gt-next-app",
         "dynamic": "./apps-benchmark/nextjs-dynamic/gt-next-app",
@@ -64,6 +84,14 @@
   "tanstack": {
     "base": "./apps-benchmark/tanstack-start-react-base-app",
     "apps": {
+      "@intlayer/lingui": {
+        "static": "./apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-lingui-app"
+      },
+      "@intlayer/use-intl": {
+        "static": "./apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-use-intl-app"
+      },
       "gt-react": {
         "static": "./apps-benchmark/tanstack-start-react-static/gt-react-app",
         "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/gt-react-app",

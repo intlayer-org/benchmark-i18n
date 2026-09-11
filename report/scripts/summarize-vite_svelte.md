@@ -1,6 +1,6 @@
 # Vite + Svelte — i18n Benchmark Results
 
-_Generated: 2026-09-09_
+_Generated: 2026-09-11_
 
 ## Metric Legend
 
@@ -279,8 +279,8 @@ _Generated: 2026-09-09_
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 59.0 KB | 50.0% | 59.9% | 7.2 KB | 3.3 ms | — | 15.8 ms | 5.5 ms |
 | Dynamic | 🔶 | 38.1 KB | 36.5% | 0.0% | 3.6 KB | 1.2 ms | — | 12.7 ms | 4.2 ms |
-| Scoped Static | ✅ | 59.0 KB | 50.0% | 59.9% | 7.2 KB | 3.3 ms | — | 15.8 ms | 5.5 ms |
-| Scoped Dynamic | 🔶 | 38.1 KB | 36.5% | 0.0% | 3.6 KB | 1.2 ms | — | 12.7 ms | 4.2 ms |
+| Scoped Static | ↳ Static | 59.0 KB | 50.0% | 59.9% | 7.2 KB | 3.3 ms | — | 15.8 ms | 5.5 ms |
+| Scoped Dynamic | ↳ Dynamic | 38.1 KB | 36.5% | 0.0% | 3.6 KB | 1.2 ms | — | 12.7 ms | 4.2 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -521,9 +521,9 @@ _Generated: 2026-09-09_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 63.0 KB | 45.0% | 62.5% | 7.6 KB | 1.1 ms | — | 12.0 ms | 4.1 ms |
-| Dynamic | ✅ | 63.0 KB | 45.0% | 62.5% | 7.6 KB | 1.1 ms | — | 12.0 ms | 4.1 ms |
-| Scoped Static | ✅ | 63.0 KB | 45.0% | 62.5% | 7.6 KB | 1.1 ms | — | 12.0 ms | 4.1 ms |
-| Scoped Dynamic | ✅ | 63.0 KB | 45.0% | 62.5% | 7.6 KB | 1.1 ms | — | 12.0 ms | 4.1 ms |
+| Dynamic | ↳ Static | 63.0 KB | 45.0% | 62.5% | 7.6 KB | 1.1 ms | — | 12.0 ms | 4.1 ms |
+| Scoped Static | ↳ Static | 63.0 KB | 45.0% | 62.5% | 7.6 KB | 1.1 ms | — | 12.0 ms | 4.1 ms |
+| Scoped Dynamic | ↳ Static | 63.0 KB | 45.0% | 62.5% | 7.6 KB | 1.1 ms | — | 12.0 ms | 4.1 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -764,9 +764,9 @@ _Generated: 2026-09-09_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 103.2 KB | 50.0% | 90.0% | 16.1 KB | 0.8 ms | — | 13.9 ms | 5.6 ms |
-| Dynamic | ✅ | 103.2 KB | 50.0% | 90.0% | 16.1 KB | 0.8 ms | — | 13.9 ms | 5.6 ms |
-| Scoped Static | ✅ | 103.2 KB | 50.0% | 90.0% | 16.1 KB | 0.8 ms | — | 13.9 ms | 5.6 ms |
-| Scoped Dynamic | ✅ | 103.2 KB | 50.0% | 90.0% | 16.1 KB | 0.8 ms | — | 13.9 ms | 5.6 ms |
+| Dynamic | ↳ Static | 103.2 KB | 50.0% | 90.0% | 16.1 KB | 0.8 ms | — | 13.9 ms | 5.6 ms |
+| Scoped Static | ↳ Static | 103.2 KB | 50.0% | 90.0% | 16.1 KB | 0.8 ms | — | 13.9 ms | 5.6 ms |
+| Scoped Dynamic | ↳ Static | 103.2 KB | 50.0% | 90.0% | 16.1 KB | 0.8 ms | — | 13.9 ms | 5.6 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>

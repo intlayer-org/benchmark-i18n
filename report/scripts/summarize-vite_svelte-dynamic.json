@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-svelte",
     "frameworkLabel": "Vite + Svelte",
-    "generatedAt": "2026-09-09T20:07:14.294Z",
+    "generatedAt": "2026-09-11T23:31:58.009Z",
     "counts": {
       "totalLibs": 4,
       "totalApps": 5
@@ -23,6 +23,8 @@
       "dynamic": {
         "appName": "vite-svelte-base-app",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-svelte-base-app/bundle/rollup-visualizer.html",
+        "measuredCategory": "base",
+        "isFallback": false,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -877,6 +879,8 @@
       "dynamic": {
         "appName": "vite-svelte-intlayer-dynamic",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-svelte-intlayer-dynamic/bundle/rollup-visualizer.html",
+        "measuredCategory": "dynamic",
+        "isFallback": false,
         "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
@@ -1731,6 +1735,8 @@
       "dynamic": {
         "appName": "vite-svelte-paraglide-js-static",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-svelte-paraglide-js-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",
@@ -2585,6 +2591,8 @@
       "dynamic": {
         "appName": "vite-svelte-i18n-static",
         "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-svelte-i18n-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
         "overallStatus": "ok",
         "pageBundle": {
           "status": "ok",

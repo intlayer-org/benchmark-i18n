@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-06T07:11:37.526Z",
+  "timestamp": "2026-09-11T20:13:39.735Z",
   "packageName": "tanstack-static-intlayer-compat-use-intl-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 62324,
-    "totalMinifiedBytes": 38164,
-    "totalGzipBytes": 10779
+    "totalUnminifiedBytes": 38313,
+    "totalMinifiedBytes": 21973,
+    "totalGzipBytes": 7474
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 62324,
-      "unminifiedGzipBytes": 14659,
-      "minifiedBytes": 38164,
-      "minifiedGzipBytes": 10779
+      "unminifiedBytes": 38313,
+      "unminifiedGzipBytes": 10299,
+      "minifiedBytes": 21973,
+      "minifiedGzipBytes": 7474
     }
   ]
 }

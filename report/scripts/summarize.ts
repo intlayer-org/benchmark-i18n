@@ -246,6 +246,17 @@ interface AppSummary {
 interface CategoryData {
   appName: string;
   bundleLink: string;
+  /**
+   * The category whose app actually produced these numbers.
+   *
+   * Not every library has an app for all four categories, and `FALLBACKS` lets
+   * a missing one borrow from a neighbour. When that happens this differs from
+   * the row's own category and {@link CategoryData.isFallback} is true — the
+   * row is a copy, not a measurement, and has to be labelled as such.
+   */
+  measuredCategory: TestCategory;
+  /** True when the row was borrowed from another category via `FALLBACKS`. */
+  isFallback: boolean;
   overallStatus: "ok" | "partial" | "missing" | "error";
   pageBundle: PageBundleData;
   components: ComponentsData;
@@ -642,7 +653,11 @@ function collectLibSize(appResultDir: string): LibSizeData {
   const minified = comp.minifiedBytes ?? null;
   const unminified = comp.unminifiedBytes ?? null;
 
-  if (gzip == null || gzip === 0) {
+  // An empty bundle is a failed measurement, not a free library. Gzip alone
+  // cannot tell the two apart — compressing an empty string still yields ~20
+  // bytes of header — so the raw sizes decide. Reported as `0.0 KB` before this
+  // check, which read as "tolgee costs nothing".
+  if (gzip == null || gzip === 0 || !minified || !unminified) {
     return { status: "invalid", gzip, minified, unminified };
   }
 
@@ -1332,6 +1347,8 @@ function buildFrameworkSummary(
         return {
           appName: app.appName,
           bundleLink: getBundleLink(app.testCategory, app.appName),
+          measuredCategory: fallbackCat as TestCategory,
+          isFallback: fallbackCat !== cat,
           overallStatus: app.overallStatus,
           pageBundle: app.pageBundle,
           components: app.components,
@@ -1359,6 +1376,15 @@ function buildFrameworkSummary(
           catData = getCategory("static");
         } else if (!catData && targetCategory === "dynamic") {
           catData = getCategory("static");
+        }
+        // The chains above ask `getCategory` for a *different* category, so it
+        // reports the row as measured. Re-derive the flag against the category
+        // actually being rendered.
+        if (catData) {
+          catData = {
+            ...catData,
+            isFallback: catData.measuredCategory !== targetCategory,
+          };
         }
       }
       staticCat = targetCategory === "static" ? catData : null;
@@ -1536,8 +1562,11 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
           continue;
         }
 
-        const overallIcon =
-          catData.overallStatus === "ok"
+        // Borrowed rows carry the source category instead of a status, so a
+        // reader can tell a copy from a measurement.
+        const overallIcon = catData.isFallback
+          ? `↳ ${CATEGORY_LABELS[catData.measuredCategory] ?? catData.measuredCategory}`
+          : catData.overallStatus === "ok"
             ? "✅"
             : catData.overallStatus === "partial"
               ? "🔶"
@@ -1862,8 +1891,12 @@ function main() {
           reactivity: re,
           rendering: rd,
         } = catData;
-        const overallSym =
-          catData.overallStatus === "ok"
+        // A borrowed row is not a result for this category. Say so in the
+        // status cell rather than repeating the source row's `ok` / `partial`,
+        // which reads as though the category had been measured.
+        const overallSym = catData.isFallback
+          ? `= ${CATEGORY_LABELS[catData.measuredCategory] ?? catData.measuredCategory}`
+          : catData.overallStatus === "ok"
             ? "ok"
             : catData.overallStatus === "partial"
               ? "partial"
