@@ -1,6 +1,6 @@
 # TanStack Start (React) — i18n Benchmark Results
 
-_Generated: 2026-09-11_
+_Generated: 2026-09-12_
 
 ## Metric Legend
 

@@ -1,0 +1,1218 @@
+{
+  "app": "vite-vue-intlayer-compat-vue-i18n-static",
+  "locale": "en",
+  "timestamp": "2026-09-12T00:04:47.760Z",
+  "fingerprintCounts": {
+    "locale": {
+      "en": 2,
+      "fr": 10
+    },
+    "page": {
+      "home": 29,
+      "about": 0,
+      "blog": 0,
+      "careers": 0,
+      "contact": 0,
+      "faq": 0,
+      "pricing": 0,
+      "products": 0,
+      "settings": 2,
+      "team": 0
+    }
+  },
+  "results": [
+    {
+      "path": "/en/",
+      "page": "home",
+      "locale": "en",
+      "totalSize": 155519,
+      "totalGzipSize": 54172,
+      "jsSize": 128760,
+      "jsGzipSize": 48300,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Hero-Cw8ID4FG.js",
+          "size": 874,
+          "gzipSize": 469,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-Cmt1jaR-.js",
+          "size": 1228,
+          "gzipSize": 440,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-Dvhvw8HR.js",
+          "size": 2124,
+          "gzipSize": 578,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ResultsTable-DAmYuToL.js",
+          "size": 1695,
+          "gzipSize": 648,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 21,
+          "found": [
+            "home.hero.description",
+            "home.hero.viewresults",
+            "home.hero.methodology",
+            "home.whyitmatters.title",
+            "home.whyitmatters.bundlesizetitle",
+            "home.whyitmatters.bundlesizedesc",
+            "home.whyitmatters.renderingtitle",
+            "home.whyitmatters.renderingdesc",
+            "home.whyitmatters.dynamicloadingtitle",
+            "home.whyitmatters.dynamicloadingdesc",
+            "home.understandingimpact.title",
+            "home.understandingimpact.singlejsontitle",
+            "home.understandingimpact.singlejsonintro",
+            "home.understandingimpact.singlejsonbullet1",
+            "home.understandingimpact.singlejsonbullet2",
+            "home.understandingimpact.singlejsonbullet3",
+            "home.understandingimpact.tradeoffstitle",
+            "home.understandingimpact.tradeoffsintro",
+            "home.understandingimpact.measurestitle",
+            "home.understandingimpact.measuresdesc",
+            "home.resultstable.title"
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/about",
+      "page": "about",
+      "locale": "en",
+      "totalSize": 153057,
+      "totalGzipSize": 53699,
+      "jsSize": 126298,
+      "jsGzipSize": 47827,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/about",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/About-RMJWvak6.js",
+          "size": 1099,
+          "gzipSize": 486,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutHeader-1qpBVUyr.js",
+          "size": 413,
+          "gzipSize": 284,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutGrid-pyaN_KST.js",
+          "size": 776,
+          "gzipSize": 371,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhatWeMeasure-C5JfdLpp.js",
+          "size": 1171,
+          "gzipSize": 521,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/blog",
+      "page": "blog",
+      "locale": "en",
+      "totalSize": 152283,
+      "totalGzipSize": 53606,
+      "jsSize": 125524,
+      "jsGzipSize": 47734,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/blog",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Blog-BKQBM8Ak.js",
+          "size": 879,
+          "gzipSize": 461,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogHeader-DzMk639r.js",
+          "size": 434,
+          "gzipSize": 300,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D9lbnGWr.js",
+          "size": 308,
+          "gzipSize": 237,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogList-CPamSL8K.js",
+          "size": 1064,
+          "gzipSize": 571,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/careers",
+      "page": "careers",
+      "locale": "en",
+      "totalSize": 154237,
+      "totalGzipSize": 54214,
+      "jsSize": 127478,
+      "jsGzipSize": 48342,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 8,
+      "jsFileCount": 6,
+      "bundleFiles": [
+        {
+          "url": "/en/careers",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Careers-DDD98CZA.js",
+          "size": 1156,
+          "gzipSize": 515,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersHeader-C4w0kQxj.js",
+          "size": 442,
+          "gzipSize": 301,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D9lbnGWr.js",
+          "size": 308,
+          "gzipSize": 237,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-5cGhKXyf.js",
+          "size": 763,
+          "gzipSize": 399,
+          "type": "js"
+        },
+        {
+          "url": "/assets/OpenPositions-DEbgCIdP.js",
+          "size": 1970,
+          "gzipSize": 725,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/contact",
+      "page": "contact",
+      "locale": "en",
+      "totalSize": 153680,
+      "totalGzipSize": 53913,
+      "jsSize": 126921,
+      "jsGzipSize": 48041,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/contact",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Contact-CB0lCD71.js",
+          "size": 937,
+          "gzipSize": 486,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactHeader-D0-LePSf.js",
+          "size": 589,
+          "gzipSize": 391,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D9lbnGWr.js",
+          "size": 308,
+          "gzipSize": 237,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-BFbFpWZw.js",
+          "size": 2248,
+          "gzipSize": 762,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/faq",
+      "page": "faq",
+      "locale": "en",
+      "totalSize": 151851,
+      "totalGzipSize": 53471,
+      "jsSize": 125092,
+      "jsGzipSize": 47599,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/faq",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQ-Bh59yPnu.js",
+          "size": 874,
+          "gzipSize": 467,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQHeader-oHQETkSb.js",
+          "size": 431,
+          "gzipSize": 301,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D9lbnGWr.js",
+          "size": 308,
+          "gzipSize": 237,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQList-CIhzPZID.js",
+          "size": 640,
+          "gzipSize": 429,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/pricing",
+      "page": "pricing",
+      "locale": "en",
+      "totalSize": 152939,
+      "totalGzipSize": 53965,
+      "jsSize": 126180,
+      "jsGzipSize": 48093,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/pricing",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Pricing-CHu1j8_Q.js",
+          "size": 896,
+          "gzipSize": 468,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D9lbnGWr.js",
+          "size": 308,
+          "gzipSize": 237,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingHeader-BTBTUhkn.js",
+          "size": 459,
+          "gzipSize": 334,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingTiers-Ds7THAJ8.js",
+          "size": 1678,
+          "gzipSize": 889,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/products",
+      "page": "products",
+      "locale": "en",
+      "totalSize": 152923,
+      "totalGzipSize": 53939,
+      "jsSize": 126164,
+      "jsGzipSize": 48067,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/products",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Products-CqCvkgiY.js",
+          "size": 899,
+          "gzipSize": 467,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsHeader-BiIZXWWp.js",
+          "size": 446,
+          "gzipSize": 304,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D9lbnGWr.js",
+          "size": 308,
+          "gzipSize": 237,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsGrid-CZezdWdY.js",
+          "size": 1672,
+          "gzipSize": 894,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/settings",
+      "page": "settings",
+      "locale": "en",
+      "totalSize": 157136,
+      "totalGzipSize": 55348,
+      "jsSize": 130377,
+      "jsGzipSize": 49476,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 10,
+      "jsFileCount": 8,
+      "bundleFiles": [
+        {
+          "url": "/en/settings",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Settings-Dq2ClZtd.js",
+          "size": 1796,
+          "gzipSize": 660,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsHeader-BeUDGEYk.js",
+          "size": 445,
+          "gzipSize": 304,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D9lbnGWr.js",
+          "size": 308,
+          "gzipSize": 237,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProfileSection-DmTguR-1.js",
+          "size": 1091,
+          "gzipSize": 486,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ApiAccessSection-BBr-IvsB.js",
+          "size": 1010,
+          "gzipSize": 503,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-DzAdDzfp.js",
+          "size": 2279,
+          "gzipSize": 757,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-BaGB77ZG.js",
+          "size": 609,
+          "gzipSize": 364,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 2,
+          "found": [
+            "settings.header.title",
+            "settings.header.description"
+          ]
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 2,
+          "found": [
+            "settings.header.title",
+            "settings.header.description"
+          ]
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/team",
+      "page": "team",
+      "locale": "en",
+      "totalSize": 152885,
+      "totalGzipSize": 53972,
+      "jsSize": 126126,
+      "jsGzipSize": 48100,
+      "cssSize": 25417,
+      "cssGzipSize": 5248,
+      "htmlSize": 1342,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/team",
+          "size": 1342,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-DT1M_BLw.css",
+          "size": 25417,
+          "gzipSize": 5248,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-CjOgwMrp.js",
+          "size": 122839,
+          "gzipSize": 46165,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Team-BpCNcVwl.js",
+          "size": 879,
+          "gzipSize": 461,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamHeader-DckVKcBi.js",
+          "size": 434,
+          "gzipSize": 300,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D9lbnGWr.js",
+          "size": 308,
+          "gzipSize": 237,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamGrid-BK8hwbNv.js",
+          "size": 1666,
+          "gzipSize": 937,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 10,
+          "found": [
+            "team.header.description",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
+        }
+      },
+      "localeLeakagePercent": 100,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    }
+  ]
+}
