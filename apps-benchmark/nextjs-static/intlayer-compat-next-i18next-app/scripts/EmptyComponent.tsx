@@ -1,4 +1,4 @@
-import { IntlayerClientProvider } from "next-intlayer";
+import { IntlayerProvider } from "next-intlayer";
 import { useTranslation } from "react-i18next";
 
 const TestComponent = () => {
@@ -12,8 +12,8 @@ const TestComponent = () => {
 
 export default function EmptyComponent() {
   return (
-    <IntlayerClientProvider locale="en">
+    <IntlayerProvider locale="en">
       <TestComponent />
-    </IntlayerClientProvider>
+    </IntlayerProvider>
   );
 }

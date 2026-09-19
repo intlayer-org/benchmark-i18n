@@ -2,21 +2,40 @@
 
 import { useEffect, useLayoutEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { IntlayerClientProvider } from "next-intlayer";
-import type { LocalesValues } from "intlayer";
-import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
-import "../i18n/i18n";
+import { I18nextProvider, useTranslation } from "react-i18next";
+import {
+  recordHydrationDuration,
+  recordRenderTime,
+} from "test-utils/browser-metrics";
+import i18n from "../i18n/i18n";
 
-// `react-i18next`'s `I18nextProvider` is aliased to the compat adapter, which
-// ignores the `i18n` instance and takes no locale. `IntlayerClientProvider` is
-// the provider the compat `useTranslation()` reads its locale from, so it takes
-// its place here — everything below still calls `useTranslation()` unchanged.
-export default function AppProviders({ children }: { children: React.ReactNode }) {
+// `react-i18next` is aliased to the compat adapter, whose `I18nextProvider`
+// takes no locale. The `i18n` handed back by `useTranslation()` is bound to
+// the provider's `setLocale`, so `changeLanguage()` on it is what drives the
+// tree — the module-level `i18n.changeLanguage()` only updates the standalone
+// instance, which nothing renders from.
+function LocaleSync({ locale }: { locale: string }) {
+  const { i18n: providerI18n } = useTranslation();
+
+  useEffect(() => {
+    if (providerI18n.language !== locale) {
+      providerI18n.changeLanguage(locale);
+    }
+  }, [providerI18n, locale]);
+
+  return null;
+}
+
+export default function AppProviders({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const params = useParams();
   const locale = (params.locale as string) ?? "en";
 
   const [renderStart] = useState(() =>
-    typeof performance !== "undefined" ? performance.now() : 0
+    typeof performance !== "undefined" ? performance.now() : 0,
   );
 
   useLayoutEffect(() => {
@@ -34,8 +53,9 @@ export default function AppProviders({ children }: { children: React.ReactNode }
   }, []);
 
   return (
-      <IntlayerClientProvider locale={locale as LocalesValues}>
-        {children}
-      </IntlayerClientProvider>
+    <I18nextProvider i18n={i18n}>
+      <LocaleSync locale={locale} />
+      {children}
+    </I18nextProvider>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useState } from "react";
-import { IntlayerClientProvider } from "next-intlayer";
 import type { LocalesValues } from "intlayer";
 import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 
@@ -30,9 +29,5 @@ export default function AppProviders({
     recordHydrationDuration();
   }, []);
 
-  return (
-      <IntlayerClientProvider locale={locale}>
-        {children}
-      </IntlayerClientProvider>
-  );
+  return children;
 }

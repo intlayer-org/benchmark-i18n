@@ -1,5 +1,5 @@
 import React from "react";
-import { IntlayerClientProvider, useIntlayer } from "next-intlayer";
+import { IntlayerProvider, useIntlayer } from "next-intlayer";
 
 const TestComponent = () => {
   const content = useIntlayer("header" as never);
@@ -9,8 +9,8 @@ const TestComponent = () => {
 
 export default function EmptyComponent() {
   return (
-    <IntlayerClientProvider locale="en">
+    <IntlayerProvider locale="en">
       <TestComponent />
-    </IntlayerClientProvider>
+    </IntlayerProvider>
   );
 }

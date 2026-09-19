@@ -1,4 +1,5 @@
 import { type NextLayoutIntlayer } from "next-intlayer";
+import { IntlayerProvider } from "next-intlayer/server";
 import { getHTMLTextDir } from "intlayer";
 import AppProviders from "@/components/AppProviders";
 import Header from "@/components/Header";
@@ -21,11 +22,13 @@ const LocaleLayout: NextLayoutIntlayer = async ({ children, params }) => {
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }}
         />
-        <AppProviders locale={locale}>
-          <Header />
-          {children}
-          <Footer />
-        </AppProviders>
+        <IntlayerProvider locale={locale}>
+          <AppProviders locale={locale}>
+            <Header />
+            {children}
+            <Footer />
+          </AppProviders>
+        </IntlayerProvider>
       </body>
     </html>
   );

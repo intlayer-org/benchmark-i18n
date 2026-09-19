@@ -1,12 +1,8 @@
 "use client";
 
 import { useEffect, useLayoutEffect, useState } from "react";
-import { IntlayerClientProvider } from "next-intlayer";
 import type { LocalesValues } from "intlayer";
-import {
-  recordRenderTime,
-  recordHydrationDuration,
-} from "test-utils/browser-metrics";
+import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
 
 export default function AppProviders({
   children,
@@ -27,13 +23,11 @@ export default function AppProviders({
     if (locale) document.documentElement.lang = locale;
   }, [locale]);
 
+  // Measure time from the inline theme-init script (hydration_start mark) to
+  // first client mount, matching the pattern used in the TanStack root document.
   useEffect(() => {
     recordHydrationDuration();
   }, []);
 
-  return (
-    <IntlayerClientProvider locale={locale}>
-      {children}
-    </IntlayerClientProvider>
-  );
+  return children;
 }
