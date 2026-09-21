@@ -20,6 +20,10 @@
   "nextjs": {
     "base": "./apps-benchmark/nextjs-base-app",
     "apps": {
+      "@intlayer/lingui": {
+        "static": "./apps-benchmark/nextjs-static/intlayer-compat-lingui-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/intlayer-compat-lingui-app"
+      },
       "@intlayer/next-i18next": {
         "static": "./apps-benchmark/nextjs-static/intlayer-compat-next-i18next-app",
         "dynamic": "./apps-benchmark/nextjs-dynamic/intlayer-compat-next-i18next-app"
@@ -87,6 +91,10 @@
       "@intlayer/lingui": {
         "static": "./apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app",
         "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-lingui-app"
+      },
+      "@intlayer/react-i18next": {
+        "static": "./apps-benchmark/tanstack-start-react-static/intlayer-compat-react-i18next-app",
+        "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-react-i18next-app"
       },
       "@intlayer/use-intl": {
         "static": "./apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app",

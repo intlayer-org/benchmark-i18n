@@ -1,6 +1,6 @@
 # TanStack Start (React) — i18n Benchmark Results
 
-_Generated: 2026-09-12_
+_Generated: 2026-09-21_
 
 ## Metric Legend
 
@@ -22,6 +22,7 @@ _Generated: 2026-09-12_
 ## Libraries
 
 - [@intlayer/lingui](#intlayer-lingui)
+- [@intlayer/react-i18next](#intlayer-react-i18next)
 - [@intlayer/use-intl](#intlayer-use-intl)
 - [base](#base)
 - [gt-react](#gt-react)
@@ -273,6 +274,209 @@ _Generated: 2026-09-12_
 | :---: | ---: | ---: | ---: |
 | `en` | 21.8 ms | 20.5 ms | 5.3 ms |
 | `fr` | 19.3 ms | 18.9 ms | 5.3 ms |
+
+</details>
+
+---
+
+## @intlayer/react-i18next
+
+| Version | Lib size (gz) | Lib size (min) |
+| :--- | ---: | ---: |
+| — | 9.1 KB | 27.1 KB |
+
+| Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
+| :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Static | 🔶 | 180.6 KB | 50.0% | 89.8% | 66.2 KB | 3.5 ms | — | — | — |
+| Dynamic | 🔶 | 180.6 KB | 50.0% | 89.8% | 9.5 KB | 3.1 ms | — | — | — |
+| Scoped Static | ↳ Static | 180.6 KB | 50.0% | 89.8% | 66.2 KB | 3.5 ms | — | — | — |
+| Scoped Dynamic | ↳ Dynamic | 180.6 KB | 50.0% | 89.8% | 9.5 KB | 3.1 ms | — | — | — |
+
+<details>
+<summary><strong>Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 181.3 KB | 53.8% | 81.6% |
+| `/en/about` | 180.3 KB | 53.8% | 86.2% |
+| `/en/blog` | 180.3 KB | 53.8% | 85.1% |
+| `/en/careers` | 180.7 KB | 53.8% | 89.7% |
+| `/en/contact` | 180.3 KB | 53.8% | 97.7% |
+| `/en/faq` | 180.1 KB | 53.8% | 92.0% |
+| `/en/pricing` | 180.4 KB | 53.8% | 88.5% |
+| `/en/products` | 180.2 KB | 53.8% | 94.3% |
+| `/en/settings` | 181.7 KB | 53.8% | 94.3% |
+| `/en/team` | 180.3 KB | 53.8% | 88.5% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 181.3 KB | 46.2% | 84.3% |
+| `/fr/about` | 180.3 KB | 46.2% | 82.4% |
+| `/fr/blog` | 180.3 KB | 46.2% | 87.3% |
+| `/fr/careers` | 180.7 KB | 46.2% | 90.2% |
+| `/fr/contact` | 180.3 KB | 46.2% | 98.1% |
+| `/fr/faq` | 180.1 KB | 46.2% | 94.1% |
+| `/fr/pricing` | 180.4 KB | 46.2% | 87.3% |
+| `/fr/products` | 180.2 KB | 46.2% | 92.2% |
+| `/fr/settings` | 181.7 KB | 46.2% | 93.2% |
+| `/fr/team` | 180.3 KB | 46.2% | 89.2% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-compat-react-i18next-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 3.9 ms | 2.3 ms | 10.0 ms | 0.0 ms |
+| `fr` | 3.0 ms | 2.3 ms | 5.2 ms | 0.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 181.3 KB | 53.8% | 81.6% |
+| `/en/about` | 180.3 KB | 53.8% | 86.2% |
+| `/en/blog` | 180.3 KB | 53.8% | 85.1% |
+| `/en/careers` | 180.7 KB | 53.8% | 89.7% |
+| `/en/contact` | 180.3 KB | 53.8% | 97.7% |
+| `/en/faq` | 180.1 KB | 53.8% | 92.0% |
+| `/en/pricing` | 180.5 KB | 53.8% | 88.5% |
+| `/en/products` | 180.2 KB | 53.8% | 94.3% |
+| `/en/settings` | 181.7 KB | 53.8% | 94.3% |
+| `/en/team` | 180.3 KB | 53.8% | 88.5% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 181.3 KB | 46.2% | 84.3% |
+| `/fr/about` | 180.3 KB | 46.2% | 82.4% |
+| `/fr/blog` | 180.3 KB | 46.2% | 87.3% |
+| `/fr/careers` | 180.7 KB | 46.2% | 90.2% |
+| `/fr/contact` | 180.3 KB | 46.2% | 98.1% |
+| `/fr/faq` | 180.1 KB | 46.2% | 94.1% |
+| `/fr/pricing` | 180.5 KB | 46.2% | 87.3% |
+| `/fr/products` | 180.2 KB | 46.2% | 92.2% |
+| `/fr/settings` | 181.7 KB | 46.2% | 93.2% |
+| `/fr/team` | 180.3 KB | 46.2% | 89.2% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-dynamic-intlayer-compat-react-i18next-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 3.5 ms | 2.2 ms | 7.5 ms | 0.0 ms |
+| `fr` | 2.6 ms | 2.0 ms | 4.8 ms | 0.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 181.3 KB | 53.8% | 81.6% |
+| `/en/about` | 180.3 KB | 53.8% | 86.2% |
+| `/en/blog` | 180.3 KB | 53.8% | 85.1% |
+| `/en/careers` | 180.7 KB | 53.8% | 89.7% |
+| `/en/contact` | 180.3 KB | 53.8% | 97.7% |
+| `/en/faq` | 180.1 KB | 53.8% | 92.0% |
+| `/en/pricing` | 180.4 KB | 53.8% | 88.5% |
+| `/en/products` | 180.2 KB | 53.8% | 94.3% |
+| `/en/settings` | 181.7 KB | 53.8% | 94.3% |
+| `/en/team` | 180.3 KB | 53.8% | 88.5% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 181.3 KB | 46.2% | 84.3% |
+| `/fr/about` | 180.3 KB | 46.2% | 82.4% |
+| `/fr/blog` | 180.3 KB | 46.2% | 87.3% |
+| `/fr/careers` | 180.7 KB | 46.2% | 90.2% |
+| `/fr/contact` | 180.3 KB | 46.2% | 98.1% |
+| `/fr/faq` | 180.1 KB | 46.2% | 94.1% |
+| `/fr/pricing` | 180.4 KB | 46.2% | 87.3% |
+| `/fr/products` | 180.2 KB | 46.2% | 92.2% |
+| `/fr/settings` | 181.7 KB | 46.2% | 93.2% |
+| `/fr/team` | 180.3 KB | 46.2% | 89.2% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-compat-react-i18next-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 3.9 ms | 2.3 ms | 10.0 ms | 0.0 ms |
+| `fr` | 3.0 ms | 2.3 ms | 5.2 ms | 0.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 181.3 KB | 53.8% | 81.6% |
+| `/en/about` | 180.3 KB | 53.8% | 86.2% |
+| `/en/blog` | 180.3 KB | 53.8% | 85.1% |
+| `/en/careers` | 180.7 KB | 53.8% | 89.7% |
+| `/en/contact` | 180.3 KB | 53.8% | 97.7% |
+| `/en/faq` | 180.1 KB | 53.8% | 92.0% |
+| `/en/pricing` | 180.5 KB | 53.8% | 88.5% |
+| `/en/products` | 180.2 KB | 53.8% | 94.3% |
+| `/en/settings` | 181.7 KB | 53.8% | 94.3% |
+| `/en/team` | 180.3 KB | 53.8% | 88.5% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 181.3 KB | 46.2% | 84.3% |
+| `/fr/about` | 180.3 KB | 46.2% | 82.4% |
+| `/fr/blog` | 180.3 KB | 46.2% | 87.3% |
+| `/fr/careers` | 180.7 KB | 46.2% | 90.2% |
+| `/fr/contact` | 180.3 KB | 46.2% | 98.1% |
+| `/fr/faq` | 180.1 KB | 46.2% | 94.1% |
+| `/fr/pricing` | 180.5 KB | 46.2% | 87.3% |
+| `/fr/products` | 180.2 KB | 46.2% | 92.2% |
+| `/fr/settings` | 181.7 KB | 46.2% | 93.2% |
+| `/fr/team` | 180.3 KB | 46.2% | 89.2% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-dynamic-intlayer-compat-react-i18next-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 3.5 ms | 2.2 ms | 7.5 ms | 0.0 ms |
+| `fr` | 2.6 ms | 2.0 ms | 4.8 ms | 0.0 ms |
 
 </details>
 
@@ -3120,10 +3324,10 @@ _Generated: 2026-09-12_
 
 | Metric | Count |
 | :--- | :--- |
-| Total libraries | 13 |
-| Total app entries | 37 |
-| With lib size data | 11 |
-| With page bundle data | 51 |
-| With component data | 52 |
-| With reactivity data | 49 |
+| Total libraries | 14 |
+| Total app entries | 39 |
+| With lib size data | 12 |
+| With page bundle data | 55 |
+| With component data | 56 |
+| With reactivity data | 53 |
 | With rendering data | 51 |

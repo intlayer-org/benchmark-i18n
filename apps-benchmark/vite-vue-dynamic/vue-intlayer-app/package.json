@@ -15,14 +15,14 @@
     "test:rendering": "npx playwright test rendering.test.ts"
   },
   "dependencies": {
-    "intlayer": "^9.5.0",
+    "intlayer": "^9.5.6",
     "lucide-vue-next": "^1.0.0",
     "vue": "^3.5.42",
-    "vue-intlayer": "^9.5.0",
+    "vue-intlayer": "^9.5.6",
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
-    "@intlayer/vue-compiler": "^9.5.0",
+    "@intlayer/vue-compiler": "^9.5.6",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
@@ -34,7 +34,7 @@
     "test-utils": "workspace:*",
     "typescript": "~7.0.2",
     "vite": "^8.2.2",
-    "vite-intlayer": "^9.5.0",
+    "vite-intlayer": "^9.5.6",
     "vue-tsc": "^3.3.11"
   }
 }

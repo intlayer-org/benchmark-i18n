@@ -17,7 +17,7 @@
     "test:rendering": "playwright test rendering.test.ts"
   },
   "dependencies": {
-    "@intlayer/swc": "^9.5.0",
+    "@intlayer/swc": "^9.5.6",
     "@tailwindcss/typography": "^0.5.20",
     "intlayer": "9.5.1",
     "lucide-react": "^1.43.0",

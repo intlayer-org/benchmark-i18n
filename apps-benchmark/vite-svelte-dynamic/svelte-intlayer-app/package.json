@@ -19,14 +19,14 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
-    "intlayer": "^9.5.0",
+    "intlayer": "^9.5.6",
     "lucide-svelte": "^1.0.1",
-    "svelte-intlayer": "^9.5.0",
+    "svelte-intlayer": "^9.5.6",
     "tailwindcss": "^4.3.3",
     "test-utils": "workspace:*"
   },
   "devDependencies": {
-    "@intlayer/svelte-compiler": "^9.5.0",
+    "@intlayer/svelte-compiler": "^9.5.6",
     "@playwright/test": "^1.63.0",
     "@sveltejs/vite-plugin-svelte": "^7.3.0",
     "@tailwindcss/typography": "^0.5.20",
@@ -37,6 +37,6 @@
     "svelte-check": "^4.7.6",
     "typescript": "~7.0.2",
     "vite": "^8.2.2",
-    "vite-intlayer": "^9.5.0"
+    "vite-intlayer": "^9.5.6"
   }
 }

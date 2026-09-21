@@ -1,0 +1,104 @@
+import { useEffect, useLayoutEffect, useState } from "react";
+import type { LocalesValues } from "intlayer";
+import { IntlayerProvider } from "react-intlayer";
+import {
+  HeadContent,
+  Link,
+  Scripts,
+  createRootRoute,
+} from "@tanstack/react-router";
+import { Route as LocaleRoute } from "./$locale/route";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { defaultLocale } from "../i18n/config";
+
+import appCss from "../styles.css?url";
+
+import { recordHydrationDuration, recordRenderTime } from 'test-utils/browser-metrics';
+
+const THEME_INIT_SCRIPT = `(function(){try{
+  var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;performance.mark('hydration_start');}catch(e){}})();`;
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      {
+        charSet: "utf-8",
+      },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
+      },
+      {
+        title: "i18n Benchmark",
+      },
+    ],
+    links: [
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+    ],
+  }),
+  shellComponent: RootDocument,
+  notFoundComponent: () => {
+    const { t } = useTranslation();
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center bg-muted/30">
+      <div className="text-center">
+          <h1 className="mb-4 text-4xl font-bold">404</h1>
+          <p className="mb-4 text-xl text-muted-foreground">
+            {t("route.oopsPageNotFound")}
+          </p>
+          <Link
+            to="/$locale"
+            params={{ locale: defaultLocale || "en" }}
+            className="text-primary underline hover:text-primary/90"
+          >
+            {t("route.returnToHome")}
+          </Link>
+      </div>
+      </div>
+    );
+  },
+});
+
+// `react-i18next` is aliased to the compat adapter, whose `I18nextProvider`
+// renders a bare `IntlayerProvider`: it ignores the `i18n` prop and has no way
+// to receive the route locale, so the server would render the default locale
+// and the client would flip it after hydration. The root mounts
+// `IntlayerProvider` itself with the route's locale — the same thing the
+// use-intl compat gets from `<IntlProvider locale>` — and every component
+// below keeps its unchanged `react-i18next` imports.
+function RootDocument({ children }: { children: React.ReactNode }) {
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
+  useLayoutEffect(() => {
+    recordRenderTime("AppRoot", renderStart);
+  }, [renderStart]);
+
+  useEffect(() => {
+    recordHydrationDuration();
+  }, []);
+
+  const { locale = defaultLocale } = LocaleRoute.useParams();
+
+  return (
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      <HeadContent />
+      </head>
+      <body className="antialiased [overflow-wrap:anywhere]">
+        <IntlayerProvider locale={locale as LocalesValues}>
+          <Header />
+          {children}
+          <Footer />
+        </IntlayerProvider>
+      <Scripts />
+      </body>
+    </html>
+  );
+}

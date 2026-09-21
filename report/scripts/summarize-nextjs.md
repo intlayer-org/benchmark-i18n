@@ -1,6 +1,6 @@
 # Next.js — i18n Benchmark Results
 
-_Generated: 2026-09-12_
+_Generated: 2026-09-21_
 
 ## Metric Legend
 
@@ -21,6 +21,7 @@ _Generated: 2026-09-12_
 
 ## Libraries
 
+- [@intlayer/lingui](#intlayer-lingui)
 - [@intlayer/next-i18next](#intlayer-next-i18next)
 - [@intlayer/next-intl](#intlayer-next-intl)
 - [base](#base)
@@ -34,6 +35,209 @@ _Generated: 2026-09-12_
 - [next-translate](#next-translate)
 - [paraglide-next](#paraglide-next)
 - [tolgee](#tolgee)
+
+## @intlayer/lingui
+
+| Version | Lib size (gz) | Lib size (min) |
+| :--- | ---: | ---: |
+| 9.5.1 | 11.3 KB | 36.3 KB |
+
+| Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
+| :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Static | 🔶 | 222.1 KB | 50.0% | 90.0% | 85.0 KB | 12.9 ms | 3.9 ms | — | — |
+| Dynamic | 🔶 | 222.1 KB | 50.0% | 90.0% | 12.1 KB | 17.5 ms | 4.0 ms | — | — |
+| Scoped Static | ↳ Static | 222.1 KB | 50.0% | 90.0% | 85.0 KB | 12.9 ms | 3.9 ms | — | — |
+| Scoped Dynamic | ↳ Dynamic | 222.1 KB | 50.0% | 90.0% | 12.1 KB | 17.5 ms | 4.0 ms | — | — |
+
+<details>
+<summary><strong>Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 223.4 KB | 54.4% | 80.0% |
+| `/en/about` | 222.0 KB | 54.4% | 87.5% |
+| `/en/blog` | 221.7 KB | 54.4% | 83.8% |
+| `/en/careers` | 221.8 KB | 54.4% | 95.0% |
+| `/en/contact` | 221.6 KB | 54.4% | 98.8% |
+| `/en/faq` | 222.4 KB | 54.4% | 87.5% |
+| `/en/pricing` | 222.0 KB | 54.4% | 95.0% |
+| `/en/products` | 221.9 KB | 54.4% | 90.0% |
+| `/en/settings` | 222.1 KB | 54.4% | 95.0% |
+| `/en/team` | 221.9 KB | 54.4% | 87.5% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 223.4 KB | 45.6% | 83.3% |
+| `/fr/about` | 222.0 KB | 45.6% | 85.4% |
+| `/fr/blog` | 221.7 KB | 45.6% | 86.5% |
+| `/fr/careers` | 221.8 KB | 45.6% | 93.8% |
+| `/fr/contact` | 221.6 KB | 45.6% | 97.9% |
+| `/fr/faq` | 222.4 KB | 45.6% | 90.6% |
+| `/fr/pricing` | 222.0 KB | 45.6% | 90.6% |
+| `/fr/products` | 221.9 KB | 45.6% | 89.6% |
+| `/fr/settings` | 222.1 KB | 45.6% | 93.8% |
+| `/fr/team` | 221.9 KB | 45.6% | 88.5% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-lingui-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 13.6 ms | 11.6 ms | 18.6 ms | 3.9 ms |
+| `fr` | 12.2 ms | 10.3 ms | 16.5 ms | 3.8 ms |
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 223.4 KB | 54.4% | 80.0% |
+| `/en/about` | 222.0 KB | 54.4% | 87.5% |
+| `/en/blog` | 221.7 KB | 54.4% | 83.8% |
+| `/en/careers` | 221.8 KB | 54.4% | 95.0% |
+| `/en/contact` | 221.5 KB | 54.4% | 98.8% |
+| `/en/faq` | 222.4 KB | 54.4% | 87.5% |
+| `/en/pricing` | 222.0 KB | 54.4% | 95.0% |
+| `/en/products` | 221.8 KB | 54.4% | 90.0% |
+| `/en/settings` | 222.1 KB | 54.4% | 95.0% |
+| `/en/team` | 221.9 KB | 54.4% | 87.5% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 223.4 KB | 45.6% | 83.3% |
+| `/fr/about` | 222.0 KB | 45.6% | 85.4% |
+| `/fr/blog` | 221.7 KB | 45.6% | 86.5% |
+| `/fr/careers` | 221.8 KB | 45.6% | 93.8% |
+| `/fr/contact` | 221.5 KB | 45.6% | 97.9% |
+| `/fr/faq` | 222.4 KB | 45.6% | 90.6% |
+| `/fr/pricing` | 222.0 KB | 45.6% | 90.6% |
+| `/fr/products` | 221.8 KB | 45.6% | 89.6% |
+| `/fr/settings` | 222.1 KB | 45.6% | 93.8% |
+| `/fr/team` | 221.9 KB | 45.6% | 88.5% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-lingui-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 23.2 ms | 11.9 ms | 66.2 ms | 4.4 ms |
+| `fr` | 11.7 ms | 10.5 ms | 15.5 ms | 3.7 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 223.4 KB | 54.4% | 80.0% |
+| `/en/about` | 222.0 KB | 54.4% | 87.5% |
+| `/en/blog` | 221.7 KB | 54.4% | 83.8% |
+| `/en/careers` | 221.8 KB | 54.4% | 95.0% |
+| `/en/contact` | 221.6 KB | 54.4% | 98.8% |
+| `/en/faq` | 222.4 KB | 54.4% | 87.5% |
+| `/en/pricing` | 222.0 KB | 54.4% | 95.0% |
+| `/en/products` | 221.9 KB | 54.4% | 90.0% |
+| `/en/settings` | 222.1 KB | 54.4% | 95.0% |
+| `/en/team` | 221.9 KB | 54.4% | 87.5% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 223.4 KB | 45.6% | 83.3% |
+| `/fr/about` | 222.0 KB | 45.6% | 85.4% |
+| `/fr/blog` | 221.7 KB | 45.6% | 86.5% |
+| `/fr/careers` | 221.8 KB | 45.6% | 93.8% |
+| `/fr/contact` | 221.6 KB | 45.6% | 97.9% |
+| `/fr/faq` | 222.4 KB | 45.6% | 90.6% |
+| `/fr/pricing` | 222.0 KB | 45.6% | 90.6% |
+| `/fr/products` | 221.9 KB | 45.6% | 89.6% |
+| `/fr/settings` | 222.1 KB | 45.6% | 93.8% |
+| `/fr/team` | 221.9 KB | 45.6% | 88.5% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-intlayer-compat-lingui-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 13.6 ms | 11.6 ms | 18.6 ms | 3.9 ms |
+| `fr` | 12.2 ms | 10.3 ms | 16.5 ms | 3.8 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 223.4 KB | 54.4% | 80.0% |
+| `/en/about` | 222.0 KB | 54.4% | 87.5% |
+| `/en/blog` | 221.7 KB | 54.4% | 83.8% |
+| `/en/careers` | 221.8 KB | 54.4% | 95.0% |
+| `/en/contact` | 221.5 KB | 54.4% | 98.8% |
+| `/en/faq` | 222.4 KB | 54.4% | 87.5% |
+| `/en/pricing` | 222.0 KB | 54.4% | 95.0% |
+| `/en/products` | 221.8 KB | 54.4% | 90.0% |
+| `/en/settings` | 222.1 KB | 54.4% | 95.0% |
+| `/en/team` | 221.9 KB | 54.4% | 87.5% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 223.4 KB | 45.6% | 83.3% |
+| `/fr/about` | 222.0 KB | 45.6% | 85.4% |
+| `/fr/blog` | 221.7 KB | 45.6% | 86.5% |
+| `/fr/careers` | 221.8 KB | 45.6% | 93.8% |
+| `/fr/contact` | 221.5 KB | 45.6% | 97.9% |
+| `/fr/faq` | 222.4 KB | 45.6% | 90.6% |
+| `/fr/pricing` | 222.0 KB | 45.6% | 90.6% |
+| `/fr/products` | 221.8 KB | 45.6% | 89.6% |
+| `/fr/settings` | 222.1 KB | 45.6% | 93.8% |
+| `/fr/team` | 221.9 KB | 45.6% | 88.5% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-intlayer-compat-lingui-app/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 23.2 ms | 11.9 ms | 66.2 ms | 4.4 ms |
+| `fr` | 11.7 ms | 10.5 ms | 15.5 ms | 3.7 ms |
+
+</details>
+
+---
 
 ## @intlayer/next-i18next
 
@@ -3198,10 +3402,10 @@ _Generated: 2026-09-12_
 
 | Metric | Count |
 | :--- | :--- |
-| Total libraries | 13 |
-| Total app entries | 35 |
-| With lib size data | 12 |
-| With page bundle data | 52 |
-| With component data | 52 |
-| With reactivity data | 52 |
+| Total libraries | 14 |
+| Total app entries | 37 |
+| With lib size data | 13 |
+| With page bundle data | 56 |
+| With component data | 56 |
+| With reactivity data | 56 |
 | With rendering data | 52 |
